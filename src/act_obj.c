@@ -4110,6 +4110,18 @@ void do_quaff( CHAR_DATA *ch, char *argument )
 
 
 
+/* Whether `obj` is still something `ch` carries: walked, not trusted --
+   an extracted object's memory goes back to the pool. */
+static bool recite_still_carried( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    OBJ_DATA *o;
+
+    for ( o = ch->carrying; o != NULL; o = o->next_content )
+	if ( o == obj )
+	    return true;
+    return false;
+}
+
 void do_recite( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -4188,6 +4200,23 @@ void do_recite( CHAR_DATA *ch, char *argument )
 	}
     }
 
+    /* The scroll being read cannot also be what it is read at: it is gone
+       before the spell lands, and remove-align's explosion extracted it a
+       second time (review, 2026-10-27: "recite blank blank"). And a spell
+       that works on an object works on one the reader carries: TAR_OBJ_INV
+       is the inventory, but get_obj_here also found the floor. Both are
+       refused here, before any lag, roll or reading. */
+    if ( obj != NULL && obj == scroll )
+    {
+	act( "You cannot read $p at itself.", ch, scroll, NULL, TO_CHAR );
+	return;
+    }
+    if ( obj != NULL && obj->carried_by != ch )
+    {
+	act( "You must be carrying $p to read a scroll at it.", ch, obj, NULL, TO_CHAR );
+	return;
+    }
+
     /* A scroll whose spell works on an object -- the remove-align scroll
        SCRIBE makes -- read at nobody, or at a person, used to say "You
        can't do that." and crumble anyway. Ask for the object first. */
@@ -4242,16 +4271,47 @@ void do_recite( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	obj_cast_spell( sn1, slevel, ch, victim, obj );
-	if ( ch->in_room == NULL ) return;
-	if ( victim != NULL && victim->in_room == NULL ) victim = NULL;
+	/* Each slot is cast at what is still there: an earlier slot can
+	   destroy the object (remove align's explosion), kill or move the
+	   reader or the one it was read at. A target that is gone is not
+	   cast at -- never a pointer to something extracted. */
+	{
+	    int slots[3];
+	    int k;
+	    int deaths = IS_NPC(ch) ? 0 : ch->pcdata->session_deaths;
+	    bool aimed = victim != NULL && victim != ch;
+	    ROOM_INDEX_DATA *victim_room = victim != NULL ? victim->in_room : NULL;
 
-	obj_cast_spell( sn2, slevel, ch, victim, obj );
-	if ( ch->in_room == NULL ) return;
-	if ( victim != NULL && victim->in_room == NULL ) victim = NULL;
+	    slots[0] = sn1;
+	    slots[1] = sn2;
+	    slots[2] = sn3;
+	    for ( k = 0; k < 3; k++ )
+	    {
+		int sn = slots[k];
 
-	obj_cast_spell( sn3, slevel, ch, victim, obj );
-	if ( ch->in_room == NULL ) return;
+		if ( sn <= 0 || sn >= MAX_SKILL )
+		    continue;
+		if ( ch->in_room == NULL
+		||   ( !IS_NPC(ch) && ch->pcdata->session_deaths != deaths ) )
+		    return;
+		if ( obj != NULL && !recite_still_carried( ch, obj ) )
+		    obj = NULL;
+		if ( aimed && victim != NULL
+		&&   ( victim->in_room == NULL || victim->in_room != victim_room ) )
+		    victim = NULL;
+		if ( skill_table[sn].target == TAR_OBJ_INV && obj == NULL )
+		{
+		    send_to_char( "What you read it at is no longer in your hands.\n\r", ch );
+		    continue;
+		}
+		if ( aimed && victim == NULL
+		&&   ( skill_table[sn].target == TAR_CHAR_OFFENSIVE
+		    || skill_table[sn].target == TAR_CHAR_DEFENSIVE ) )
+		    continue;
+		obj_cast_spell( sn, slevel, ch, victim, obj );
+	    }
+	    if ( ch->in_room == NULL ) return;
+	}
 
 	check_improve(ch,gsn_scrolls,true,2);
     }

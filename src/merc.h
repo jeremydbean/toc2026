@@ -3880,6 +3880,7 @@ void    changes_load     ( void );
 void    walkto_update    ( void );
 void    fight_lag_update ( void );
 void    fight_ledger_observe ( CHAR_DATA *ch );
+void    playlog_craft    ( CHAR_DATA *ch, const char *fields );
 void    walkto_clear     ( CHAR_DATA *ch );
 void    walkto_mark_reachable ( CHAR_DATA *ch );
 bool    walkto_reached   ( ROOM_INDEX_DATA *room );

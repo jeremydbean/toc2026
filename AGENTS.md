@@ -1108,6 +1108,27 @@ which must be one of its spells and have a real `spell_fun`
 in the component vnum range, and counting them once stopped components
 spawning anywhere.
 
+**A craft is on the disk or undone** (review, 2026-10-27).
+`craft_commit` takes the ingredients out and puts the product in, saves,
+and reads the status: `DURABLE_FAILED` puts memory back to match the old
+file (ingredients in the pack, no product, the player told);
+`DURABLE_UNCERTAIN` keeps the new state, since the file may already be
+it, and says the next save confirms it. Nothing is extracted before the
+save answers. A CONCOCT failure commits its ingredients **before** the
+blast, so a fatal one leaves them in no corpse, and an undone one does
+not burn. Every attempt writes a `craft` row to `log/play.tsv`
+(`craft_audit`: attempt id, method, signature, colour, input and output
+vnums, spells, cast level, skill, chance, outcome, burn, saved,
+unconfirmed or undone; a wizinvis crafter's name is `-`). `PREVIEW` as
+the first word asks the same matcher and makes nothing. A recipe names
+spells by exact name (`craft_spell` has no prefix fallback), a quaffed
+product carries no object or offensive spell, a scroll with an object
+spell carries only those, and no recipe holds two spells that refuse
+each other -- the ironbound scroll's stone skin and shield stopped its
+own major globe (`tests/test_crafting_review.py`). RECITE refuses the
+scroll as its own target and an object the reader does not carry before
+the lag, and recasts each slot only at what is still there.
+
 **TITANIC and EMPOWER are object-only spells** (owner, 2026-10-25). Their
 skill rows sit at level 72 for every class -- `set skill all` and casting
 both pass over them -- with real `spell_titanic`/`spell_empower` so a
@@ -1590,7 +1611,10 @@ rules the code depends on:
   `save 2` for the second save, `save-<Name> 2` for that character's
   second, which an autosave of somebody else cannot take -- though one
   of that character can, so ACCEPT's save has its own `accept-save`
-  (CI, 2026-10-27); `ledger`, `crash-before-commit`), read
+  (CI, 2026-10-27), a death's `death-save-<Name>` and a craft's
+  `craft-save`; `dirsync-<Name>` makes that character's next save
+  unconfirmed, `corpse-move` fails a corpse record's move into history;
+  `ledger`, `crash-before-commit`), read
   by `recovery_fault()` and set nowhere but `tests/`.
 - **Nobody comes out of a file dead** (`revive_at_load`, end of
   `load_char_obj`): a `death` copy is written below zero hit points,

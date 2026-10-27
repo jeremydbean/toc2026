@@ -5,6 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261027e 2026-10-27
+Crafting: BREW, CONCOCT and SCRIBE PREVIEW show for free what the
+ingredients you carry would make, its spells, your chance and what a
+failure costs. The ironbound scroll's major globe now forms -- it is
+giant strength, bless and the globe. A scroll can no longer be read at
+itself, and one that works on an object wants an object you carry. A
+fatal cauldron blast uses up its ingredients instead of leaving them in
+your corpse. Crafted things answer to the spell they are known for
+(RECITE GLOBE), and say what they are when they lie on the ground.
+
 @ 20261027d 2026-10-27
 GAINLIST PREVIEW shows second and third attack as the chances they are,
 with the swings a round you can expect at each level and what dual

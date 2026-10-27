@@ -8,6 +8,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Crafting review** (2026-10-27). RECITE refused nothing when a scroll
+  was read at itself, and remove align's explosion then extracted it twice
+  (`recite blank blank`); it now refuses that and an object the reader
+  does not carry before any lag, and checks each slot's target is still
+  there. The ironbound scroll is giant strength, bless and a major globe:
+  its stone skin and shield refused its own globe. BREW, CONCOCT and
+  SCRIBE commit through `craft_commit` and act on the save's status; a
+  fatal CONCOCT blast spends its ingredients first. The scribe notice,
+  telekinesis's and Farslay's go out at `staff_notice_level`. PREVIEW,
+  product keywords and ground lines, a `craft` row per attempt in
+  `log/play.tsv`, and a refusal for surplus ingredients.
+
 - **Deaths and resurrections are ledgered transfers** (2026-10-27). A
   death opens a `death:<id>` receipt, writes the corpse, saves the player
   with a mark and commits; boot settles one a crash interrupted from the

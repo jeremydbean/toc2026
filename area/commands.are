@@ -1760,13 +1760,26 @@ See also: CASINO, SLOTS, BET, ROULETTE
 0 BREW CONCOCT~
 Syntax: brew <herb>
 Syntax: concoct <component> <component>
+Syntax: brew preview <herb>
+Syntax: concoct preview <component> <component>
 
 BREW turns one carried herb into an herbal tea. CONCOCT combines two carried
 spell components into a potion when they form a valid recipe. Component order
 does not matter. An herb with no known brew, or components that make nothing,
-are refused and left untouched. A real attempt takes a few seconds of work;
-failing it consumes the ingredients, and a botched potion burns you. A
-belladonna tea now and then brews into something you would not want to drink.
+are refused and left untouched, and so are more ingredients than the craft
+takes. A real attempt takes a few seconds of work; failing it consumes the
+ingredients, and a botched potion burns you -- the burn can kill, and the
+ingredients are spent before it lands. A belladonna tea now and then brews
+into something you would not want to drink.
+
+PREVIEW is free: no time passes and nothing is used. For ingredients you
+carry that make something, it shows what would come out, its spells and who
+they land on, the level it is cast at, your chance to make it, and what a
+failure costs. It finds only what trying would; it reveals no recipe for
+ingredients you do not hold.
+
+If the game cannot write your file at the moment of a craft, the attempt is
+undone and you are told: the ingredients stay in your pack, nothing is made.
 
 What you make is made at your level, and nobody below that level can drink
 it. Herbs and components turn up on the ground around the world and wither
@@ -1782,6 +1795,7 @@ See also: SCRIBE, QUAFF, ACHIEVEMENTS
 
 0 SCRIBE~
 Syntax: scribe <component> <component> <component>
+Syntax: scribe preview <component> <component> <component>
 
 SCRIBE combines three carried spell components into a single-use magical
 scroll when they form a valid recipe. Component order does not matter, and
@@ -1790,7 +1804,10 @@ are refused and left untouched; a real attempt takes a few seconds, and
 failing it consumes them. You must be awake to scribe.
 
 The scroll is cast at your level and needs that level to read. A scroll whose
-spell works on an object asks for one: RECITE <scroll> <object>.
+spell works on an object asks for one you carry: RECITE <scroll> <object>.
+SCRIBE PREVIEW shows, for free, what the components you carry would make and
+your chance; reading the scroll later is a separate roll on your SCROLLS
+skill, which the preview also shows. See BREW for what PREVIEW tells you.
 
 Some inks write TITANIC or EMPOWER, which a scroll can lay on you or on
 another player.
@@ -2803,6 +2820,11 @@ RECITE reads from a magical scroll, casting the inscribed spell.  The
 target argument is optional and depends on the nature of the scroll.
 Scrolls have a single charge and are consumed on use.  May require the
 SCROLLS skill.
+
+A scroll whose spell works on an object must be read at something you are
+carrying, and never at itself; either is refused before you start reading.
+Crafted scrolls, teas and potions answer to their colour, to what they are
+and to the spell they are known for: RECITE GLOBE reads an ironbound scroll.
 
 See also: BRANDISH, QUAFF, ZAP
 ~

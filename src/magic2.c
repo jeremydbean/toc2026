@@ -1416,7 +1416,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 
     snprintf( buf, sizeof buf, "%s has TK'd %s from room %d", ch->name,
               obj->name, obj->in_room->vnum );
-    wizinfo( buf, LEVEL_IMMORTAL );
+    wizinfo( buf, staff_notice_level( ch, LEVEL_IMMORTAL ) );
     obj_from_room( obj );
     obj_to_char( obj, ch );
 
@@ -2827,7 +2827,12 @@ static const CRAFT_RECIPE craft_recipes[] =
     { CRAFT_SCRIBE, { 84, 78, 87 }, { "restore mana", "mass sanctuary", "restore mana" }, "yellow", "mass sanctuary", 0 },
     { CRAFT_SCRIBE, { 77, 76, 88 }, { "vengence", NULL, NULL }, "deadly black", "vengence", CRAFT_TELL_STAFF | CRAFT_FARSLAY },
     { CRAFT_SCRIBE, { 80, 81, 79 }, { "word of recall", "refresh", NULL }, "sky-blue", "word of recall", 0 },
-    { CRAFT_SCRIBE, { 85, 86, 87 }, { "stone skin", "shield", "major globe" }, "ironbound", "major globe", 0 },
+    /* Ironbound was stone skin, shield and a major globe: a globe forms
+       around no other protective magic, so the first two refused it every
+       time and the scroll crumbled having given the lesser two (review,
+       2026-10-27). The globe stays its signature and its point; strength
+       and a blessing go with it, and neither stops a globe. */
+    { CRAFT_SCRIBE, { 85, 86, 87 }, { "giant strength", "bless", "major globe" }, "ironbound", "major globe", 0 },
     { CRAFT_SCRIBE, { 82, 83, 76 }, { "remove curse", "cure poison", "cure disease" }, "ashen", "remove curse", 0 },
     { CRAFT_SCRIBE, { 57, 78, 88 }, { "aid", "bless", "armor" }, "hallowed", "aid", 0 },
     { CRAFT_SCRIBE, { 84, 77, 81 }, { "invis", "pass door", "fly" }, "shimmering", "fly", 0 },
@@ -2837,8 +2842,10 @@ static const CRAFT_RECIPE craft_recipes[] =
     { 0, { 0, 0, 0 }, { NULL, NULL, NULL }, NULL, NULL, 0 }
 };
 
-/* The exact skill a recipe names. skill_lookup matches a prefix, which
-   read "protection" as whichever protection came first. */
+/* The exact skill a recipe names, or 0. skill_lookup matches a prefix,
+   which read "protection" as whichever protection came first; a name that
+   matches nothing exactly is a mistake in the table, which
+   tests/test_crafting_review.py fails on, not something to guess at. */
 static int craft_spell( const char *name )
 {
     int sn;
@@ -2848,7 +2855,7 @@ static int craft_spell( const char *name )
     for ( sn = 1; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
         if ( !str_cmp( name, skill_table[sn].name ) )
             return sn;
-    return skill_lookup( name ) > 0 ? skill_lookup( name ) : 0;
+    return 0;
 }
 
 /* The recipe these ingredients make, in any order, or NULL. */
@@ -2931,7 +2938,24 @@ static OBJ_DATA *craft_product( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, bool 
               recipe->method == CRAFT_BREW ? "container of " : "", noun );
     free_string( obj->short_descr );
     obj->short_descr = str_dup( buf );
-    snprintf( buf, sizeof(buf), "%s %s", colour, noun );
+    /* On the ground it says what it is: the prototype's own line named no
+       colour and no maker (review, 2026-10-27). */
+    {
+        char lying[MAX_STRING_LENGTH];
+
+        snprintf( lying, sizeof(lying), "%.200s lies here, freshly %s.", buf,
+                  recipe->method == CRAFT_BREW ? "brewed"
+                  : recipe->method == CRAFT_CONCOCT ? "concocted" : "scribed" );
+        lying[0] = UPPER( lying[0] );
+        free_string( obj->description );
+        obj->description = str_dup( lying );
+    }
+    /* The old words first -- "<colour> <noun>" -- so what players typed
+       still works; then what it does and that it was made, so "recite
+       globe" or "quaff haste" finds it too. */
+    snprintf( buf, sizeof(buf), "%s %s%s crafted %s", colour, noun,
+              recipe->method == CRAFT_BREW ? " container" : "",
+              spoiled ? "spoiled" : recipe->signature );
     free_string( obj->name );
     obj->name = str_dup( buf );
     return obj;
@@ -2948,12 +2972,13 @@ static void craft_succeeded( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, OBJ_DATA
         : ACHIEVEMENT_EVENT_SCRIBE;
     int signature = craft_spell( recipe->signature );
 
-    obj_to_char( product, ch );
     if ( IS_SET( recipe->flags, CRAFT_TELL_STAFF ) )
     {
         snprintf( buf, sizeof(buf), "%s has scribed %s.", ch->name, product->short_descr );
         log_string( buf );
-        wizinfo( buf, LEVEL_IMMORTAL );
+        /* Never below a wizinvis scriber's level: a level 60 listener was
+           told a hidden 70's name (review, 2026-10-27). */
+        wizinfo( buf, staff_notice_level( ch, LEVEL_IMMORTAL ) );
     }
     achievement_record_event( ch, event, true );
     if ( IS_SET( recipe->flags, CRAFT_FARSLAY ) )
@@ -2968,6 +2993,27 @@ static void craft_succeeded( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, OBJ_DATA
 
 /* What the three commands share before the roll: a player, the skill,
    and ingredients carried, each a different object of the right type. */
+/* The nth carried object of the kind a craft takes that answers to the
+   word: "feather" is the phoenix feather, not the feathered gold potion
+   made from one a moment ago. NULL if there is none of that kind. */
+static OBJ_DATA *craft_carried( CHAR_DATA *ch, char *word, int item_type )
+{
+    char name[MAX_INPUT_LENGTH];
+    OBJ_DATA *obj;
+    int number = number_argument( word, name );
+    int seen = 0;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->wear_loc != WEAR_NONE || obj->item_type != item_type
+        ||   !can_see_obj( ch, obj ) || !is_name( name, obj->name ) )
+            continue;
+        if ( ++seen == number )
+            return obj;
+    }
+    return NULL;
+}
+
 static bool craft_gather( CHAR_DATA *ch, int sn, char *argument, int count,
                           int item_type, OBJ_DATA **parts )
 {
@@ -2991,7 +3037,8 @@ static bool craft_gather( CHAR_DATA *ch, int sn, char *argument, int count,
                           : "What ingredients do you want to combine?\n\r", ch );
             return false;
         }
-        if ( ( parts[i] = get_obj_carry( ch, arg ) ) == NULL )
+        if ( ( parts[i] = craft_carried( ch, arg, item_type ) ) == NULL
+        &&   ( parts[i] = get_obj_carry( ch, arg ) ) == NULL )
         {
             act( "You are not carrying any $T.", ch, NULL, arg, TO_CHAR );
             return false;
@@ -3012,6 +3059,234 @@ static bool craft_gather( CHAR_DATA *ch, int sn, char *argument, int count,
             return false;
         }
     }
+    /* More named than the craft takes: say so rather than make something
+       from the first few and ignore the rest. */
+    while ( *argument == ' ' )
+        argument++;
+    if ( *argument != '\0' )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "%s takes %s; you named more (\"%.40s\").  Name "
+                  "exactly %s.\n\r",
+                  count == 1 ? "BREW" : count == 2 ? "CONCOCT" : "SCRIBE",
+                  count == 1 ? "one herb" : count == 2 ? "two components" : "three components",
+                  argument, count == 1 ? "one" : count == 2 ? "two" : "three" );
+        send_to_char( buf, ch );
+        return false;
+    }
+    return true;
+}
+
+/* ---------------------------------------------------------------------
+ * The ingredients out and the product in, on the disk or not at all
+ * (review, 2026-10-27: the save's result was ignored, so a craft announced
+ * as done was gone after a crash, the ingredients back). DURABLE_*:
+ *   OK         done.
+ *   FAILED     the old file stands, so memory is put back to match it:
+ *              the ingredients in the pack, no product; the player is told
+ *              plainly. A crash then changes nothing either way.
+ *   UNCERTAIN  the file was replaced but not confirmed: the new state
+ *              stands -- giving the ingredients back could double them if
+ *              the file is the new one -- and the next save confirms it.
+ * The ingredients are never extracted before the save says so.
+ */
+static int craft_attempt_seq = 0;
+
+static int craft_commit( CHAR_DATA *ch, OBJ_DATA **parts, int count, OBJ_DATA *product )
+{
+    char buf[MAX_STRING_LENGTH];
+    int i, status;
+
+    for ( i = 0; i < count; i++ )
+        obj_from_char( parts[i] );
+    if ( product != NULL )
+        obj_to_char( product, ch );
+    if ( recovery_fault( "craft-save" ) )
+        status = DURABLE_FAILED;
+    else
+    {
+        save_char_obj( ch );
+        status = save_char_obj_status();
+    }
+    if ( status == DURABLE_FAILED )
+    {
+        if ( product != NULL )
+        {
+            obj_from_char( product );
+            extract_obj( product );
+        }
+        for ( i = count - 1; i >= 0; i-- )
+            obj_to_char( parts[i], ch );
+        send_to_char( product != NULL
+                      ? "Your work could not be saved -- the game could not write your file "
+                        "-- so it is undone: your ingredients are back in your pack and "
+                        "nothing was made or lost.  Try again in a moment.\n\r"
+                      : "The game could not write your file, so the ingredients this "
+                        "attempt spent are back in your pack.\n\r", ch );
+        snprintf( buf, sizeof(buf), "CRAFT: %s's work was undone; their file could not be "
+                  "saved.", ch->name );
+        log_string( buf );
+        return status;
+    }
+    for ( i = 0; i < count; i++ )
+        extract_obj( parts[i] );
+    if ( status != DURABLE_OK )
+        send_to_char( "(Your work is in your file, but the disk has not confirmed it yet; "
+                      "your next save does.)\n\r", ch );
+    return status;
+}
+
+/* One line in the play journal for every real attempt (playlog.c), so a
+   lost or doubled product can be traced: an attempt id, the recipe, what
+   went in and came out, the chance, how it ended and whether it reached
+   the disk. Numbers and names of things only. */
+static void craft_inputs( OBJ_DATA **parts, int count, char *inputs, size_t size )
+{
+    int i;
+
+    inputs[0] = '\0';
+    for ( i = 0; i < count; i++ )
+    {
+        char one[16];
+
+        snprintf( one, sizeof(one), "%s%d", i > 0 ? "," : "",
+                  parts[i]->pIndexData != NULL ? parts[i]->pIndexData->vnum : 0 );
+        toc_strlcat( inputs, one, size );
+    }
+}
+
+static void craft_audit( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, const char *inputs,
+                         OBJ_DATA *product, int skill, int chance,
+                         const char *outcome, int burned, int status )
+{
+    char fields[MAX_STRING_LENGTH], spells[96];
+    int i;
+
+    spells[0] = '\0';
+    if ( product != NULL )
+        for ( i = 1; i <= 3; i++ )
+            if ( product->value[i] > 0 && product->value[i] < MAX_SKILL )
+            {
+                if ( spells[0] != '\0' )
+                    toc_strlcat( spells, ",", sizeof(spells) );
+                toc_strlcat( spells, skill_table[product->value[i]].name, sizeof(spells) );
+            }
+    snprintf( fields, sizeof(fields), "%ld-%d\t%s\t%s\t%s\t%s\t%d\t%s\t%d\t%d\t%d\t%s\t%d\t%s",
+              (long) current_time, ++craft_attempt_seq,
+              recipe->method == CRAFT_BREW ? "brew" : recipe->method == CRAFT_CONCOCT
+                  ? "concoct" : "scribe",
+              recipe->signature, recipe->colour, inputs,
+              product != NULL && product->pIndexData != NULL ? product->pIndexData->vnum : 0,
+              spells[0] != '\0' ? spells : "-",
+              product != NULL ? (int) product->value[0] : 0, skill, chance, outcome, burned,
+              status == DURABLE_OK ? "saved" : status == DURABLE_UNCERTAIN ? "unconfirmed"
+                  : status == DURABLE_FAILED ? "undone" : "-" );
+    playlog_craft( ch, fields );
+}
+
+/* ---------------------------------------------------------------------
+ * <BREW|CONCOCT|SCRIBE> PREVIEW <ingredients>: what a real attempt with
+ * these, carried now, would make and risk -- read-only, no lag, nothing
+ * used. It names a recipe only for ingredients the player already holds,
+ * through the same matcher, so it finds nothing that trying would not;
+ * a rare recipe stays something to discover.
+ */
+static const char *craft_target_words( int sn )
+{
+    if ( sn <= 0 || sn >= MAX_SKILL )
+        return "";
+    switch ( skill_table[sn].target )
+    {
+        case TAR_CHAR_OFFENSIVE: return "against a foe";
+        case TAR_OBJ_INV:        return "on an object you carry";
+        case TAR_IGNORE:         return "around you";
+        default:                 return "on whoever uses it";
+    }
+}
+
+static void craft_preview( CHAR_DATA *ch, int method, int sn, char *argument )
+{
+    static const char *const verbs[] = { "", "BREW", "CONCOCT", "SCRIBE" };
+    static const int counts[] = { 0, 1, 2, 3 };
+    OBJ_DATA *parts[3];
+    const CRAFT_RECIPE *recipe;
+    char buf[MAX_STRING_LENGTH];
+    int skill, chance, i, beats, cast_level;
+
+    if ( !craft_gather( ch, sn, argument, counts[method],
+                        method == CRAFT_BREW ? ITEM_HERB : ITEM_SPELL_COMPONENT, parts ) )
+        return;
+    if ( ( recipe = craft_find( method, parts, counts[method] ) ) == NULL )
+    {
+        send_to_char( method == CRAFT_BREW ? "You know no brew that uses that.\n\r"
+                      : method == CRAFT_CONCOCT ? "Combining those ingredients won't do anything.\n\r"
+                      : "Combining those ingredients won't make a usable ink.\n\r", ch );
+        return;
+    }
+    skill = get_skill( ch, sn );
+    chance = method == CRAFT_BREW ? URANGE( 0, skill, 100 ) : UMIN( 100, skill / 2 + 45 );
+    beats = skill_table[sn].beats;
+    cast_level = IS_SET( recipe->flags, CRAFT_HALF_LEVEL ) ? 1 + ch->level / 2 : ch->level;
+
+    snprintf( buf, sizeof(buf), "%s PREVIEW -- nothing is used and no time passes.\n\r",
+              verbs[method] );
+    send_to_char( buf, ch );
+    for ( i = 0; i < counts[method]; i++ )
+    {
+        snprintf( buf, sizeof(buf), "  %s %s\n\r", i == 0 ? "In: " : "    ",
+                  parts[i]->short_descr );
+        send_to_char( buf, ch );
+    }
+    /* Read from the recipe: no object is made to describe one. */
+    snprintf( buf, sizeof(buf), "  Out: %s %s %s%s, level %d, cast at level %d:\n\r",
+              strchr( "aeiou", LOWER( recipe->colour[0] ) ) != NULL ? "an" : "a",
+              recipe->colour, method == CRAFT_BREW ? "container of " : "",
+              method == CRAFT_BREW ? "tea" : method == CRAFT_CONCOCT ? "potion" : "scroll",
+              ch->level, cast_level );
+    send_to_char( buf, ch );
+    for ( i = 0; i < 3; i++ )
+    {
+        int spell = craft_spell( recipe->spells[i] );
+
+        if ( spell <= 0 )
+            continue;
+        snprintf( buf, sizeof(buf), "        %s, %s\n\r", skill_table[spell].name,
+                  craft_target_words( spell ) );
+        send_to_char( buf, ch );
+    }
+    snprintf( buf, sizeof(buf), "  Your chance to make it: %d%%.  An attempt costs %d.%02d "
+              "seconds of lag first.\n\r", chance, beats / PULSE_PER_SECOND,
+              ( beats % PULSE_PER_SECOND ) * 100 / PULSE_PER_SECOND );
+    send_to_char( buf, ch );
+    send_to_char( method == CRAFT_BREW ? "  If it fails, the herb is used up and nothing is made.\n\r"
+                  : method == CRAFT_CONCOCT ? "  If it fails, both are used up and the cauldron "
+                    "explodes: 2d10 fire damage to you, which can kill.\n\r"
+                  : "  If it fails, all three are used up and nothing is made.\n\r", ch );
+    if ( IS_SET( recipe->flags, CRAFT_RISKY ) )
+        send_to_char( "  One in four of these goes bad even when it brews: sleep, poison and "
+                      "blindness instead.\n\r", ch );
+    if ( IS_SET( recipe->flags, CRAFT_TELL_STAFF ) )
+        send_to_char( "  Staff are told when one of these is made.\n\r", ch );
+    if ( method == CRAFT_SCRIBE )
+    {
+        int read = URANGE( 0, 20 + get_skill( ch, gsn_scrolls ) * 4 / 5 - 1, 100 );
+
+        snprintf( buf, sizeof(buf), "  Reading it later is a separate roll: RECITE works %d%% "
+                  "of the time for you now (your scrolls skill).\n\r", read );
+        send_to_char( buf, ch );
+    }
+}
+
+/* PREVIEW as the first word: a preview, not an attempt. */
+static bool craft_wants_preview( char **argument )
+{
+    char word[MAX_INPUT_LENGTH];
+    char *rest = one_argument( *argument, word );
+
+    if ( word[0] == '\0' || str_cmp( word, "preview" ) )
+        return false;
+    *argument = rest;
     return true;
 }
 
@@ -3020,8 +3295,15 @@ void do_brew( CHAR_DATA *ch, char *argument )
     OBJ_DATA *parts[1];
     const CRAFT_RECIPE *recipe;
     OBJ_DATA *tea;
+    char inputs[64];
     bool spoiled;
+    int skill, status;
 
+    if ( craft_wants_preview( &argument ) )
+    {
+        craft_preview( ch, CRAFT_BREW, gsn_brew, argument );
+        return;
+    }
     if ( !craft_gather( ch, gsn_brew, argument, 1, ITEM_HERB, parts ) )
         return;
     if ( ( recipe = craft_find( CRAFT_BREW, parts, 1 ) ) == NULL )
@@ -3029,6 +3311,8 @@ void do_brew( CHAR_DATA *ch, char *argument )
         act( "You know no brew that uses $p.", ch, parts[0], NULL, TO_CHAR );
         return;
     }
+    craft_inputs( parts, 1, inputs, sizeof(inputs) );
+    skill = get_skill( ch, gsn_brew );
 
     WAIT_STATE( ch, skill_table[gsn_brew].beats );
     send_to_char( "You set about making your herbal brew.\n\r", ch );
@@ -3039,14 +3323,16 @@ void do_brew( CHAR_DATA *ch, char *argument )
     act( "As the brew cools down, $n spoons out a small amount.", ch,
          NULL, NULL, TO_ROOM );
 
-    if ( number_percent() > get_skill( ch, gsn_brew ) )
+    if ( number_percent() > skill )
     {
+        check_improve( ch, gsn_brew, false, 3 );
+        status = craft_commit( ch, parts, 1, NULL );
+        craft_audit( ch, recipe, inputs, NULL, skill, skill, "failed", 0, status );
+        if ( status == DURABLE_FAILED )
+            return;
         send_to_char( "It doesn't taste right. You failed.\n\r", ch );
         act( "$n spits it out. Apparently the herbs didn't mix correctly.", ch,
              NULL, NULL, TO_ROOM );
-        extract_obj( parts[0] );
-        check_improve( ch, gsn_brew, false, 3 );
-        save_char_obj( ch );
         return;
     }
 
@@ -3056,6 +3342,12 @@ void do_brew( CHAR_DATA *ch, char *argument )
         send_to_char( "You have nothing to pour it into.\n\r", ch );
         return;
     }
+    check_improve( ch, gsn_brew, true, 5 );
+    status = craft_commit( ch, parts, 1, tea );
+    craft_audit( ch, recipe, inputs, status != DURABLE_FAILED ? tea : NULL, skill, skill,
+                 spoiled ? "spoiled" : "made", 0, status );
+    if ( status == DURABLE_FAILED )
+        return;
     if ( spoiled )
         send_to_char( "Hmmm. It seems to have brewed correctly, but the taste "
                       "is slightly off.\n\r", ch );
@@ -3063,10 +3355,7 @@ void do_brew( CHAR_DATA *ch, char *argument )
     act( "$n then pours the brewed liquid into a container.", ch,
          NULL, NULL, TO_ROOM );
     send_to_char( "The herbs have brewed, and you pour the liquid into a container.\n\r", ch );
-    check_improve( ch, gsn_brew, true, 5 );
-    extract_obj( parts[0] );
     craft_succeeded( ch, recipe, tea );
-    save_char_obj( ch );
 }
 
 void do_concoct( CHAR_DATA *ch, char *argument )
@@ -3075,8 +3364,14 @@ void do_concoct( CHAR_DATA *ch, char *argument )
     const CRAFT_RECIPE *recipe;
     OBJ_DATA *potion;
     char buf[MAX_STRING_LENGTH];
-    int chance;
+    char inputs[64];
+    int skill, chance, status;
 
+    if ( craft_wants_preview( &argument ) )
+    {
+        craft_preview( ch, CRAFT_CONCOCT, gsn_concoct, argument );
+        return;
+    }
     if ( !craft_gather( ch, gsn_concoct, argument, 2, ITEM_SPELL_COMPONENT, parts ) )
         return;
     if ( ( recipe = craft_find( CRAFT_CONCOCT, parts, 2 ) ) == NULL )
@@ -3084,8 +3379,10 @@ void do_concoct( CHAR_DATA *ch, char *argument )
         send_to_char( "Combining those ingredients won't do anything.\n\r", ch );
         return;
     }
+    craft_inputs( parts, 2, inputs, sizeof(inputs) );
 
-    chance = get_skill( ch, gsn_concoct );
+    skill = get_skill( ch, gsn_concoct );
+    chance = UMIN( 100, skill / 2 + 45 );
     /* The lag comes first: a failure burns the brewer, and a command that
        deals damage pays for it before the blow (test_damage_lag.py). */
     WAIT_STATE( ch, skill_table[gsn_concoct].beats );
@@ -3100,25 +3397,26 @@ void do_concoct( CHAR_DATA *ch, char *argument )
     act( "$n then says a few arcane words over it as the contents begin to "
          "froth and smoke.", ch, NULL, NULL, TO_ROOM );
 
-    if ( number_percent() > chance / 2 + 45 )
+    if ( number_percent() > skill / 2 + 45 )
     {
-        ROOM_INDEX_DATA *brewed_in = ch->in_room;
+        int burn = dice( 2, 10 );
 
+        /* The ingredients are spent before the blast, not after it: a
+           blast that killed left them in the corpse, though a failed
+           attempt consumes them (review, 2026-10-27). */
+        check_improve( ch, gsn_concoct, false, 5 );
+        status = craft_commit( ch, parts, 2, NULL );
+        craft_audit( ch, recipe, inputs, NULL, skill, chance,
+                     status == DURABLE_FAILED ? "failed" : "exploded",
+                     status == DURABLE_FAILED ? 0 : burn, status );
+        /* Undone is undone: the file still holds the ingredients, so the
+           blast that spends them does not happen either. */
+        if ( status == DURABLE_FAILED )
+            return;
         send_to_char( "Uh oh. Something isn't right.\n\r", ch );
         act( "The cauldron explodes its noxious contents all over $n!", ch,
              NULL, NULL, TO_ROOM );
-        check_improve( ch, gsn_concoct, false, 5 );
-        /* Hurting yourself always reports a landed blow, so this read
-           "killed" every time and the ingredients survived every
-           explosion: a failed brew cost nothing (2026-10-04). */
-        damage( ch, ch, dice( 2, 10 ), gsn_concoct, DAM_FIRE );
-        if ( !gone_after_blow( ch, brewed_in ) )
-        {
-            extract_obj( parts[0] );
-            extract_obj( parts[1] );
-            save_char_obj( ch );
-        }
-        /* if ch was killed, make_corpse already moved them to the corpse */
+        damage( ch, ch, burn, gsn_concoct, DAM_FIRE );
         return;
     }
 
@@ -3128,11 +3426,13 @@ void do_concoct( CHAR_DATA *ch, char *argument )
         return;
     }
     check_improve( ch, gsn_concoct, true, 5 );
-    extract_obj( parts[0] );
-    extract_obj( parts[1] );
+    status = craft_commit( ch, parts, 2, potion );
+    craft_audit( ch, recipe, inputs, status != DURABLE_FAILED ? potion : NULL, skill, chance,
+                 "made", 0, status );
+    if ( status == DURABLE_FAILED )
+        return;
     act( "The mixture settles, and you pour off $p.", ch, potion, NULL, TO_CHAR );
     craft_succeeded( ch, recipe, potion );
-    save_char_obj( ch );
 }
 
 void do_scribe( CHAR_DATA *ch, char *argument )
@@ -3140,8 +3440,14 @@ void do_scribe( CHAR_DATA *ch, char *argument )
     OBJ_DATA *parts[3];
     const CRAFT_RECIPE *recipe;
     OBJ_DATA *scroll;
-    int chance;
+    char inputs[64];
+    int skill, chance, status;
 
+    if ( craft_wants_preview( &argument ) )
+    {
+        craft_preview( ch, CRAFT_SCRIBE, gsn_scribe, argument );
+        return;
+    }
     if ( !craft_gather( ch, gsn_scribe, argument, 3, ITEM_SPELL_COMPONENT, parts ) )
         return;
     if ( ( recipe = craft_find( CRAFT_SCRIBE, parts, 3 ) ) == NULL )
@@ -3149,8 +3455,10 @@ void do_scribe( CHAR_DATA *ch, char *argument )
         send_to_char( "Combining those ingredients won't make a usable ink.\n\r", ch );
         return;
     }
+    craft_inputs( parts, 3, inputs, sizeof(inputs) );
 
-    chance = get_skill( ch, gsn_scribe );
+    skill = get_skill( ch, gsn_scribe );
+    chance = UMIN( 100, skill / 2 + 45 );
     WAIT_STATE( ch, skill_table[gsn_scribe].beats );
     send_to_char( "You pull out your equipment and start work on the ink.\n\r", ch );
     act( "$n pulls out $p and pours it into a bowl.", ch, parts[0], NULL, TO_ROOM );
@@ -3161,16 +3469,16 @@ void do_scribe( CHAR_DATA *ch, char *argument )
     act( "A brief flash of light follows the addition of the final ingredient.", ch,
          NULL, NULL, TO_ROOM );
 
-    if ( number_percent() > chance / 2 + 45 )
+    if ( number_percent() > skill / 2 + 45 )
     {
+        check_improve( ch, gsn_scribe, false, 5 );
+        status = craft_commit( ch, parts, 3, NULL );
+        craft_audit( ch, recipe, inputs, NULL, skill, chance, "failed", 0, status );
+        if ( status == DURABLE_FAILED )
+            return;
         send_to_char( "You measured out the wrong amount of liquids.\n\r", ch );
         act( "$n throws the mix on the ground, cussing about random chance!", ch,
              NULL, NULL, TO_ROOM );
-        extract_obj( parts[0] );
-        extract_obj( parts[1] );
-        extract_obj( parts[2] );
-        check_improve( ch, gsn_scribe, false, 5 );
-        save_char_obj( ch );
         return;
     }
 
@@ -3179,18 +3487,19 @@ void do_scribe( CHAR_DATA *ch, char *argument )
         send_to_char( "You have no vellum to write on.\n\r", ch );
         return;
     }
+    check_improve( ch, gsn_scribe, true, 5 );
+    status = craft_commit( ch, parts, 3, scroll );
+    craft_audit( ch, recipe, inputs, status != DURABLE_FAILED ? scroll : NULL, skill, chance,
+                 "made", 0, status );
+    if ( status == DURABLE_FAILED )
+        return;
     send_to_char( "Success!!! The ink will work!\n\r", ch );
     send_to_char( "You get out your quill and begin writing the spells with the ink.\n\r", ch );
     act( "Smiling gleefully, $n pulls out a sheet of vellum and writes out the spells.",
          ch, NULL, NULL, TO_ROOM );
     /* Say what was made, as CONCOCT and BREW do. */
     act( "You finish $p.", ch, scroll, NULL, TO_CHAR );
-    check_improve( ch, gsn_scribe, true, 5 );
-    extract_obj( parts[0] );
-    extract_obj( parts[1] );
-    extract_obj( parts[2] );
     craft_succeeded( ch, recipe, scroll );
-    save_char_obj( ch );
 }
 
 void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
@@ -5398,7 +5707,7 @@ void do_farslay( CHAR_DATA *ch, char *argument )
     victim->mana = 1;
     victim->move = 1;
     snprintf( buf, sizeof buf, "%s farslew %s.", ch->name, victim->name );
-    wizinfo( buf, LEVEL_IMMORTAL );
+    wizinfo( buf, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
     log_string( buf );
     if ( !IS_NPC(victim) )
         achievement_record_event( victim, ACHIEVEMENT_EVENT_FARSLAYED, true );

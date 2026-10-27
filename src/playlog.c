@@ -526,6 +526,16 @@ void playlog_report( CHAR_DATA *ch, const char *kind, const char *text )
     journal_write( "report", ch, fields );
 }
 
+/* Every real BREW, CONCOCT and SCRIBE attempt (magic2.c craft_audit). A
+   wizinvis crafter's line names nobody and no room: the journal is public,
+   and their presence is not. */
+void playlog_craft( CHAR_DATA *ch, const char *fields )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    journal_write( "craft", IS_SET( ch->act, PLR_WIZINVIS ) ? NULL : ch, fields );
+}
+
 /* ------------------------------------------------------- the anomalies */
 
 static long play_wealth( CHAR_DATA *ch )
