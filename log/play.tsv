@@ -28839,3 +28839,19 @@
 1793128833	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
 1793128833	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
 1793128833	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128849	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	get	mas	I see no mas here.
+1793128851	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	get	all	I see nothing here.
+1793128853	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	wear	all	You wield the Master Sword. // The Master Sword feels like a part of you! // You stop using the Master Sword.
+1793128855	cmd	Killuminati	70	10176	glitter.are	standing	99	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) the black staff of ancient magic // <worn on finger>    the Red Ring of Hyrule
+1793128858	cmd	Killuminati	70	10176	glitter.are	standing	99	0	-	wear	new	You stop using Scythe of the Grim Reaper. // You wield (flaming) newbie sword. // (flaming) newbie sword feels like a part of you!
+1793128868	cmd	Killuminati	70	10176	glitter.are	standing	99	0	-	wear	master	You stop using (flaming) newbie sword. // You wield the Master Sword. // The Master Sword feels like a part of you!
+1793128869	cmd	Killuminati	70	10176	glitter.are	standing	99	0	-	inventory		You are carrying: //      (Glowing) the Trident of Ganon //      the Pegasus Boots
+1793128871	cmd	Killuminati	70	10176	glitter.are	standing	99	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) the black staff of ancient magic // <worn on finger>    the Red Ring of Hyrule
+1793128873	cmd	Killuminati	70	10176	glitter.are	standing	99	0	-	remove	all	You stop using the Master Sword. // You stop using the Red Ring of Hyrule. // You stop using Ganon's shadow crown.
+1793128874	cmd	Killuminati	70	10176	glitter.are	standing	101	0	-	wear	red	You wear the Red Ring of Hyrule on your left finger.
+1793128877	cmd	Killuminati	70	10176	glitter.are	standing	101	0	-	wear	2.tri	You wield the Trident of Ganon. // The Trident of Ganon feels like a part of you!
+1793128878	cmd	Killuminati	70	10176	glitter.are	standing	101	0	-	wear	mas	You stop using the Trident of Ganon. // You wield the Master Sword. // The Master Sword feels like a part of you!
+1793128879	cmd	Killuminati	70	10176	glitter.are	standing	101	0	-	wear	mas	You do not have that item.
+1793128882	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	wear	triforce	You light The Triforce and hold it.
+1793128884	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) The Triforce // <worn on finger>    the Red Ring of Hyrule
+1793128893	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	look	trifo	The Master Sword rests here, its sacred blade shining with golden light. // The the Master Sword is in perfect condition.
