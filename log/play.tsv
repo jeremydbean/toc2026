@@ -28868,3 +28868,18 @@
 1793131950	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn.
 1793131951	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	wear	mas	You wield the Master Sword. // The Master Sword feels like a part of you!
 1793131953	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793133393	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	look		The Void // [Room: 1]     [Sector: City]     [Flags: No_Mob Indoors] //   You are floating in nothing.
+1793133402	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	goto	hexley	Oak Tree Square on Hallows Eve // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square, dominated by the trunk of the biggest oak
+1793133404	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	list		Madame Hexley the Hallows End merchant says 'I don't trade with folks I can't see.'
+1793133406	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	wizinvis		You slowly fade back into existence.
+1793133407	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	list		[Lv Price] Item // [ 0        30g] a bag of candy corn. // [ 0     1p 20g] a grinning jack-o-lantern mask.
+1793133415	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	wizinvis	72	You slowly vanish into thin air.
+1793133417	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793133439	refused	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	(unknown)		Huh? Did you mean CLOAK?
+1793133442	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	cloak	72	Cloaking device re-aligned.
+1793133446	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) [CLOAKED] Killuminati, the Don. // Players found: 1
+1793133447	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	wizinvis		You slowly fade back into existence.
+1793133448	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] [CLOAKED] Killuminati, the Don. // Players found: 1
+1793133451	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1814 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
+1793133463	cmd	Killuminati	70	30615	hyrule.are	standing	100	0	-	goto	zelda	Level 9: Princess Zelda's Chamber // [Room: 30615]     [Sector: Underground]     [Flags: Dark Indoors Safe No_Recall] //   Warm light fills this quiet room, cast by two fires burning on either side
+1793133479	cmd	Killuminati	70	15068	campus.are	standing	100	0	-	enter	light	You enter a bright golden light // Your stomach flip flops. Everything goes black for a moment. // The Games Room

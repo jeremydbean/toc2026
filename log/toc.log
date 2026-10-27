@@ -209409,3 +209409,24 @@ Tue Oct 27 20:26:21 2026 :: EOF encountered on read.
 Tue Oct 27 20:30:01 2026 :: Treasure goblin: vanished from room 914 (Kitchen, olympus.are) (too long in one area).
 Tue Oct 27 20:31:26 2026 :: Sock.sinaddr:  178.156.181.172
 Tue Oct 27 20:31:26 2026 :: EOF encountered on read.
+Tue Oct 27 20:36:31 2026 :: Sock.sinaddr:  54.87.112.51
+Tue Oct 27 20:36:31 2026 :: EOF encountered on read.
+Tue Oct 27 20:36:33 2026 :: Log Killuminati [1]: lo
+Tue Oct 27 20:36:42 2026 :: Log Killuminati [1]: goto hexley
+Tue Oct 27 20:36:42 2026 :: Log Killuminati [2401]: arrived (Oak Tree Square on Hallows Eve) from 1
+Tue Oct 27 20:36:44 2026 :: Log Killuminati [2401]: list
+Tue Oct 27 20:36:46 2026 :: Log Killuminati [2401]: wizi
+Tue Oct 27 20:36:47 2026 :: Log Killuminati [2401]: list
+Tue Oct 27 20:36:55 2026 :: Log Killuminati [2401]: wizi 72
+Tue Oct 27 20:36:57 2026 :: Log Killuminati [2401]: /
+Tue Oct 27 20:37:19 2026 :: Log Killuminati [2401]: (refused) cloak72
+Tue Oct 27 20:37:22 2026 :: Log Killuminati [2401]: cloak 72
+Tue Oct 27 20:37:26 2026 :: Log Killuminati [2401]: /
+Tue Oct 27 20:37:27 2026 :: Log Killuminati [2401]: wizi
+Tue Oct 27 20:37:28 2026 :: Log Killuminati [2401]: /
+Tue Oct 27 20:37:31 2026 :: Log Killuminati [2401]: sc
+Tue Oct 27 20:37:43 2026 :: Log Killuminati [2401]: goto zelda
+Tue Oct 27 20:37:43 2026 :: Log Killuminati [30615]: arrived (Level 9: Princess Zelda's Chamber) from 2401
+Tue Oct 27 20:37:59 2026 :: Log Killuminati [30615]: en light
+Tue Oct 27 20:37:59 2026 :: Log Killuminati [15068]: arrived (The Games Room) from 30615
+Tue Oct 27 20:40:05 2026 :: Treasure goblin: vanished from room 20116 (A broom closet, prison.are) (too long in one area).
