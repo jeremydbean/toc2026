@@ -723,6 +723,10 @@ ability to alter the texture of their skin for short periods of time. The
 skin retains the flexibility of normal skin, but is as hard as the coldest
 steel.  Monks must reach level 22 in order to use iron skin.
 
+Three times in four it also makes you immune to one kind of weapon --
+blunt, piercing or slashing, chosen when your skin hardens. You are told
+which, and AFFECTS shows it for as long as it lasts.
+
 Number of trains: 2
 Trainer: Master of Movement (monk)
 

@@ -2065,7 +2065,13 @@ void do_affect( CHAR_DATA *ch, char *argument)
 				dur_str = dur_buf;
 			}
 
-			if ( paf->location != APPLY_NONE || paf->modifier != 0 )
+			/* An immunity's modifier is an IMM_ bit, not an amount
+			   (iron skin, a monster's ward): name what it turns. */
+			if ( paf->location == APPLY_IMMUNITY )
+				snprintf(buf, sizeof(buf),
+				    " grants immunity to %s for %s",
+				    imm_bit_name( paf->modifier ), dur_str );
+			else if ( paf->location != APPLY_NONE || paf->modifier != 0 )
 				snprintf(buf, sizeof(buf),
 				    " modifies %s by %d for %s",
 				    affect_loc_name( paf->location ),

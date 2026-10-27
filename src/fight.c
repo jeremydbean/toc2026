@@ -7098,6 +7098,10 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
             imm_af.bitvector  = 0;
             imm_af.bitvector2 = 0;
             affect_to_char( ch, &imm_af );
+            /* Say which: AFFECTS names it too. */
+            send_to_char( pick == 1 ? "Blunt blows cannot hurt you while it lasts.\n\r"
+                        : pick == 2 ? "Piercing blows cannot hurt you while it lasts.\n\r"
+                        :             "Slashing blows cannot hurt you while it lasts.\n\r", ch );
         }
     }
     else

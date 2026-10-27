@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261027b 2026-10-27
+Iron skin now tells you which weapons it has made you immune to --
+blunt, piercing or slashing -- and AFFECTS shows "grants immunity to
+blunt" instead of "modifies (unknown)".
+
 @ 20261027a 2026-10-27
 Balance: warriors, thieves, mages and clerics hit much harder, to stand
 beside monks and necromancers. Warriors and thieves gain weapon mastery:
