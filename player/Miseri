@@ -1,7 +1,7 @@
 #PLAYER
 Name Miseri~
 Id   10516
-LogO 1793112098
+LogO 1793112323
 Vers 4
 Prom ~
 Ignoring ~
@@ -18,13 +18,13 @@ Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 9
 Tru  70
-Plyd 778
+Plyd 1003
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4207
-HMV  174 286 775 1152 221 438
+Room 4804
+HMV  195 286 790 1152 243 438
 NewGold 55
 NewPlat 99
 NewCopp 204
@@ -54,14 +54,14 @@ Achv four-denominations 1793111917
 Achv carry-ten-platinum 1793111546
 AchSet areas 840101374 1103516333 ~
 AchSet rooms 3700 3744 3757 3759 4207 ~
-LastOut  1793112098
-Rested 0 0
+LastOut  1793112323
+Rested 0 1
 Daily 0 0 0 0 0
-SesLogin 1790851006
-SesDur   9
-SesExpG  0
-SesLvlG  1
-SesKill  0
+SesLogin 1793111353
+SesDur   970
+SesExpG  19556
+SesLvlG  8
+SesKill  14
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -109,7 +109,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 126 508 148
-Cond 0 40 40
+Cond 0 37 37
 Alias / who~
 Alias ] recall~
 Sk 8 'axe'
@@ -159,7 +159,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 187 0 0
+Val  0 0 184 0 0
 End
 
 #O
