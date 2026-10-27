@@ -28804,3 +28804,4 @@
 1793116081	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	help	mirror	MIRROR // Syntax: mirror <player> //         mirror restore
 1793116250	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	help		SUMMARY // MOVEMENT                            GROUP // north south east west up down       follow group gtell split
 1793116259	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	commands		put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      
+1793124535	session	Killuminati	70	1	limbo_halloween.are	shutdown	8708s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	9 commands	0 refused	coin: none
