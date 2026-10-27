@@ -1447,6 +1447,15 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	}
     }
 
+    /* Weapon mastery: a warrior's or thief's own weapon damage grows with
+       the level, more in the class's own guild (weapon_mastery_percent).
+       Not a backstab, which multiplies itself above, and not damroll,
+       added after, so gear does not run away with it. */
+    if ( !IS_NPC(ch) && wield != NULL && dt != gsn_backstab
+    &&   ( ch->class == CLASS_WARRIOR || ch->class == CLASS_THIEF ) )
+	dam += dam * weapon_mastery_percent( ch->level,
+	                                     ch->pcdata->guild == ch->class ) / 100;
+
     dam += GET_DAMROLL(ch) * UMIN(100,skill) /100;
 
     if ( dam <= 0 )

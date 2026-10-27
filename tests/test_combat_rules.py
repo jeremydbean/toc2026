@@ -60,7 +60,7 @@ class CombatRulesHarnessTests(unittest.TestCase):
         failed = [line for line in run.stdout.splitlines() if line.startswith("FAIL")]
         self.assertEqual(failed, [], run.stdout)
         self.assertEqual(run.returncode, 0, run.stdout)
-        self.assertGreaterEqual(run.stdout.count("\nok ") + run.stdout.startswith("ok "), 9)
+        self.assertGreaterEqual(run.stdout.count("\nok ") + run.stdout.startswith("ok "), 11)
 
 
 class CombatRulesCallSiteTests(unittest.TestCase):
@@ -124,6 +124,24 @@ class CombatRulesCallSiteTests(unittest.TestCase):
         body = function_body(ROOT / "src" / "magic.c", "void spell_heal(")
         self.assertIn("heal = heal_spell_amount( level );", body)
         self.assertNotIn("heal = 100;", body)
+
+    def test_warriors_and_thieves_take_weapon_mastery(self) -> None:
+        body = function_body(self.fight, "void one_hit(")
+        mastery = body.index("weapon_mastery_percent( ch->level")
+        self.assertLess(mastery, body.index("dam += GET_DAMROLL(ch)"),
+                        "mastery multiplies the weapon, not damroll")
+        guard = body[body.rindex("if (", 0, mastery):mastery]
+        for need in ("!IS_NPC(ch)", "wield != NULL", "dt != gsn_backstab",
+                     "CLASS_WARRIOR", "CLASS_THIEF"):
+            self.assertIn(need, guard)
+
+    def test_the_casters_spells_scale(self) -> None:
+        magic = ROOT / "src" / "magic.c"
+        self.assertIn("flamestrike_dice( level, IS_NPC(ch) || ch->class == CLASS_CLERIC )",
+                      function_body(magic, "void spell_flamestrike("))
+        bolt = function_body(magic, "void spell_lightning_bolt(")
+        self.assertIn("lightning_bolt_dice( level, IS_NPC(ch) || ch->class == CLASS_MAGE )", bolt)
+        self.assertNotIn("dam_each", bolt)
 
 
 if __name__ == "__main__":

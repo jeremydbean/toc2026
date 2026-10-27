@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The main classes brought up to the strong ones** (2026-10-27; owner:
+  scale up rather than nerf). Warriors and thieves gain weapon mastery
+  (`weapon_mastery_percent`: 4% of the weapon's own damage a level in the
+  class's own guild, 3% elsewhere, not on backstab or damroll); every
+  cleric's flamestrike and every mage's lightning bolt roll a die a level
+  (d9, d10; half the dice for another class). In 24-round yard fights at
+  level 50 the sixteen ordinary builds went from 68-180 a round to
+  174-256, the monk's band; monks, necromancers and meteor swarm are
+  unchanged.
+
 - **The class and guild review** (2026-10-26). An independent review's
   findings were checked against the source, and each confirmed bug was
   fixed with a test that fails on the old code. Backstab and smite aimed

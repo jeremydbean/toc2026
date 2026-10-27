@@ -2802,7 +2802,10 @@ void spell_flamestrike( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     int dam;
 
-    dam = dice(8, 8);
+    /* It was a flat 8d8 at every level, a scratch by 50 (class review,
+       2026-10-27): it grows with the cleric now (flamestrike_dice). */
+    dam = dice( flamestrike_dice( level, IS_NPC(ch) || ch->class == CLASS_CLERIC ),
+	        FLAMESTRIKE_SIDES );
     if ( saves_spell( level, victim ) )
 	dam /= 2;
     damage( ch, victim, dam, sn, DAM_FIRE );
@@ -3632,20 +3635,13 @@ void spell_know_alignment( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_lightning_bolt( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    static const int16_t dam_each[] =
-    {
-	 0,
-	 0,  0,  0,  0,  0,	 0,  0,  0, 25, 28,
-	31, 34, 37, 40, 40,	41, 42, 42, 43, 44,
-	44, 45, 46, 46, 47,	48, 48, 49, 50, 50,
-	51, 52, 52, 53, 54,	54, 55, 56, 56, 57,
-	58, 58, 59, 60, 60,	61, 62, 62, 63, 64
-    };
     int dam;
 
-    level	= UMIN(level, (int)(sizeof(dam_each)/sizeof(dam_each[0]) - 1));
-    level	= UMAX(0, level);
-    dam		= number_range( dam_each[level] / 2, dam_each[level] * 2 );
+    /* Every mage keeps lightning bolt in any guild, and its table stopped
+       at 64 by level 50 (class review, 2026-10-27): it grows with the mage
+       now (lightning_bolt_dice), below acid blast's level d12. */
+    dam = dice( lightning_bolt_dice( level, IS_NPC(ch) || ch->class == CLASS_MAGE ),
+	        LIGHTNING_BOLT_SIDES );
     if ( saves_spell( level, victim ) )
 	dam /= 2;
     damage( ch, victim, dam, sn, DAM_LIGHTNING );

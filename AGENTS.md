@@ -2594,6 +2594,34 @@ Balance changes from the same review, each its own commit:
   maximum less positive `APPLY_HIT` affects that will wear off. A new
   creature sized from its maker should use it too.
 
+**The main classes were brought up, not the strong ones cut down**
+(owner, 2026-10-27: scale the other main classes up to the more
+powerful ones rather than nerf them). Measured in the yard at level 50,
+the four ordinary classes sat at 68-180 a round against the monk's 271,
+the necromancer's tentacles at 417 and a mage's meteors at 690. Three
+levers, all in `combat_rules.c`, each a constant to tune:
+
+- **Weapon mastery** (`weapon_mastery_percent`): a warrior's or thief's
+  ordinary weapon blow gains `MASTERY_OWN_GUILD` (4) percent of the
+  weapon's own damage a level in the class's own guild,
+  `MASTERY_OTHER_GUILD` (3) elsewhere, to level 59. Not a backstab (it
+  multiplies itself) and not damroll, added after it, so gear does not
+  run away with it.
+- **The casters' own attack spells grow a die a level**: flamestrike
+  (every cleric's) is level d`FLAMESTRIKE_SIDES` (9), lightning bolt
+  (every mage's) level d`LIGHTNING_BOLT_SIDES` (10) -- a flat 8d8 and a
+  table that stopped at 64 before. Another class casting them rolls half
+  the dice: a warrior in the mage guild has mastery too, and must not
+  out-hit the warrior in the warriors' guild.
+- After them every main-class build sat at 174-256 a round at level 50
+  (24-round yard fights, self-buffed, equal gear) -- the monk's band.
+  The necromancer and M/M's meteors stay above it on purpose. Faster
+  kills for everybody make the Hyrule guardians' calibration (a median
+  player loses alone) easier; retune them by the simulation in
+  `wiki/hyrule-area.md` if that matters, never by nerfing a class.
+  `area/dpsboard.txt` was not reset: the standard fight did not change,
+  only who hits how hard.
+
 The tools: `tools/class_balance.py` (`milestones`, `gaps`; the 18 builds'
 kits from `const.c`), GAINLIST PREVIEW (the same in game, held to the tool
 by `tests/test_gainlist_preview.py`), and `tools/class_bench.py`, which

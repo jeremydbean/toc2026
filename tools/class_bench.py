@@ -65,10 +65,12 @@ PROMPT = re.compile(r"<(-?\d+)hp (-?\d+)m (-?\d+)mv>")
 
 # Best single-target damage first. Only what a build holds and can cast at
 # its level is used; area spells are fine against the lone dummy.
+# Demonfire is left out: it turns on a caster who is not evil, and the
+# fixtures are neutral.
 SPELL_ORDER = ("meteor swarm", "tentacles", "acid blast", "chain lightning",
-               "harm", "demonfire", "cone of cold", "fireball", "flamestrike",
-               "force sword", "energy drain", "moonbeam", "icicle",
-               "lightning bolt", "colour spray", "vampiric touch", "dust devil",
+               "lightning bolt", "flamestrike", "fireball", "harm",
+               "cone of cold", "force sword", "energy drain", "moonbeam", "icicle",
+               "colour spray", "vampiric touch", "dust devil",
                "shocking grasp", "cause critical", "skeletal hands",
                "burning hands", "cause serious", "chill touch",
                "magic missile", "cause light")
@@ -190,9 +192,32 @@ def train_cost(t: dict, cls: int, guild: int, level: int) -> int:
     return cost
 
 
+# Rough average damage a cast at a level, from src/magic*.c, so a build
+# casts what is best for it at that level; anything not named keeps its
+# place in SPELL_ORDER below these.
+SPELL_ESTIMATE = {
+    "meteor swarm": lambda lv: 16 * lv, "tentacles": lambda lv: 495,
+    "acid blast": lambda lv: 6.5 * lv, "chain lightning": lambda lv: 3.5 * lv,
+    "lightning bolt": lambda lv: 5.5 * min(lv, 59), "flamestrike": lambda lv: 5 * min(lv, 59),
+    # (a caster of another class rolls half: spell_rank halves these)
+    "fireball": lambda lv: 2.5 * lv, "harm": lambda lv: 85,
+}
+
+
+OWN_SPELL = {"lightning bolt": 0, "flamestrike": 1}
+
+
+def spell_rank(level: int, cls: int = -1) -> list:
+    def est(s):
+        v = SPELL_ESTIMATE[s](level)
+        return v / 2 if s in OWN_SPELL and OWN_SPELL[s] != cls else v
+    known = sorted((s for s in SPELL_ORDER if s in SPELL_ESTIMATE), key=lambda s: -est(s))
+    return known + [s for s in SPELL_ORDER if s not in SPELL_ESTIMATE]
+
+
 def choose_attack(held: dict, level: int, mana: int, t: dict, cls: int) -> str | None:
     usable = {s for s, pct in held.items() if pct > 1}
-    for spell in SPELL_ORDER:
+    for spell in spell_rank(level, cls):
         if spell in usable and t["skills"][spell]["spell"]:
             if mana >= t["skills"][spell]["mana"] * 2:
                 return f"cast '{spell}'"

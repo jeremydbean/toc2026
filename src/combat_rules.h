@@ -42,4 +42,27 @@ int crane_dance_mean( int hp, int level );
 #define HEAL_TOP_LEVEL  59
 int heal_spell_amount( int level );
 
+/* Weapon mastery (class review, 2026-10-27; owner: bring the main classes
+   up to the strongest rather than cut the strongest down). A warrior's or
+   thief's ordinary weapon blow -- not a backstab, which multiplies itself
+   -- gains this percent of the weapon's own damage a level, more in the
+   class's own guild, so the specialist stays ahead of the hybrid. Damroll
+   is added after, unmultiplied, so gear does not run away with it. */
+#define MASTERY_OWN_GUILD     4
+#define MASTERY_OTHER_GUILD   3
+#define MASTERY_TOP_LEVEL     59
+int weapon_mastery_percent( int level, int own_guild );
+
+/* The casters' own attack spells, which every member of the class keeps in
+   any guild, grow with the caster: flamestrike (clerics) is level d
+   FLAMESTRIKE_SIDES and lightning bolt (mages) level d LIGHTNING_BOLT_SIDES,
+   both at most MASTERY_TOP_LEVEL levels deep -- below acid blast's level
+   d12 and a mage's meteors, which stay the top of the scale. A caster of
+   another class (a warrior in the clerics' guild) rolls half the dice:
+   a hybrid that also has weapon mastery must not out-hit the specialist. */
+#define FLAMESTRIKE_SIDES     9
+#define LIGHTNING_BOLT_SIDES  10
+int flamestrike_dice( int level, int own_class );
+int lightning_bolt_dice( int level, int own_class );
+
 #endif

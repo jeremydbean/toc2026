@@ -157,5 +157,35 @@ int main( void )
             && SMITE_WEAR_MIN <= SMITE_WEAR_MAX,
             "a strain takes more than nothing and less than a whole weapon" );
 
+    /* Weapon mastery: by level, more in the class's own guild, capped. */
+    {
+        int level, ok = 1;
+
+        for ( level = 0; level < 200; level++ )
+        {
+            if ( weapon_mastery_percent( level + 1, 1 ) < weapon_mastery_percent( level, 1 )
+            ||   weapon_mastery_percent( level + 1, 0 ) < weapon_mastery_percent( level, 0 )
+            ||   weapon_mastery_percent( level, 0 ) > weapon_mastery_percent( level, 1 ) )
+                ok = 0;
+        }
+        report( "weapon_mastery",
+                ok && weapon_mastery_percent( 0, 1 ) == 0
+                && weapon_mastery_percent( 50, 1 ) == 50 * MASTERY_OWN_GUILD
+                && weapon_mastery_percent( 50, 0 ) == 50 * MASTERY_OTHER_GUILD
+                && weapon_mastery_percent( 200, 1 ) == MASTERY_TOP_LEVEL * MASTERY_OWN_GUILD,
+                "never falls, own guild above other, capped at the top level" );
+    }
+
+    /* The casters' own spells: a die a level for the class, half for any
+       other, capped, below acid blast. */
+    report( "caster_spells",
+            flamestrike_dice( 50, 1 ) == 50 && lightning_bolt_dice( 50, 1 ) == 50
+            && flamestrike_dice( 50, 0 ) == 25 && lightning_bolt_dice( 49, 0 ) == 25
+            && flamestrike_dice( 0, 1 ) == 1 && lightning_bolt_dice( -3, 0 ) == 1
+            && flamestrike_dice( 500, 1 ) == MASTERY_TOP_LEVEL
+            && lightning_bolt_dice( 500, 1 ) == MASTERY_TOP_LEVEL
+            && FLAMESTRIKE_SIDES < 12 && LIGHTNING_BOLT_SIDES < 12,
+            "a die a level for the class, half for others, smaller dice than d12" );
+
     return failures;
 }

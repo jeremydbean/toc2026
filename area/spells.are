@@ -608,7 +608,8 @@ Syntax: cast 'chain lightning' <victim>
 Syntax: cast 'call lightning'
 
 These spells inflict electrical damage on the victim.  The higher-level
-spells do more damage.
+spells do more damage.  Lightning bolt, which every mage keeps whatever
+their guild, grows with the caster: a ten-sided die for every level.
 
 Chain lightning is a dangerous area attack spell causes lightning bolts to
 appear and jump from victim to victim in the room. <victim> is the first
@@ -729,7 +730,8 @@ Syntax: cast 'meteor swarm'
 Syntax: cast 'flamestrike' <victim>
 
 These spells inflict fire damage on the victim.  The higher-level spells do
-more damage.
+more damage.  Flamestrike, which every cleric keeps whatever their guild,
+grows with the caster: a nine-sided die for every level.
 
 Meteor swarm fires 4 balls of fire.  How they strike the opponents depends
 on several factors that need not be explained.  Several balls of fire can

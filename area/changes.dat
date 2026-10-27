@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261027a 2026-10-27
+Balance: warriors, thieves, mages and clerics hit much harder, to stand
+beside monks and necromancers. Warriors and thieves gain weapon mastery:
+their weapon blows grow with every level, most of all in their own
+class's guild (HELP WARRIOR, HELP THIEF). Every cleric's flamestrike and
+every mage's lightning bolt now grow a die each level (HELP FIRE SPELLS,
+HELP ELECTRIC SPELLS). Nothing was made weaker.
+
 @ 20261026n 2026-10-26
 Balance: HEAL now grows with the caster's level -- still 100 at 25, then
 two more a level, 150 at 50 and 168 at 59 (HELP HEALSPELL). A smite no

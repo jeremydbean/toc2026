@@ -90,3 +90,43 @@ int heal_spell_amount( int level )
         return HEAL_BASE;
     return HEAL_BASE + ( level - HEAL_FLAT_TO ) * HEAL_PER_LEVEL;
 }
+
+
+/*
+ * Weapon mastery: the percent a warrior's or thief's weapon blow gains from
+ * the level, MASTERY_OWN_GUILD a level in the class's own guild and
+ * MASTERY_OTHER_GUILD elsewhere. Warriors and thieves fell to a third of the
+ * monk's damage and a fifth of a mage's meteors at level 50, with gear
+ * equal (class review bench, 2026-10-26).
+ */
+int weapon_mastery_percent( int level, int own_guild )
+{
+    if ( level < 1 )
+        return 0;
+    if ( level > MASTERY_TOP_LEVEL )
+        level = MASTERY_TOP_LEVEL;
+    return level * ( own_guild ? MASTERY_OWN_GUILD : MASTERY_OTHER_GUILD );
+}
+
+/* Flamestrike's number of dice of FLAMESTRIKE_SIDES: the level, to
+   MASTERY_TOP_LEVEL, for a cleric; half that for anyone else. It was a
+   flat 8d8 (36) at every level. */
+int flamestrike_dice( int level, int own_class )
+{
+    if ( level < 1 )
+        level = 1;
+    if ( level > MASTERY_TOP_LEVEL )
+        level = MASTERY_TOP_LEVEL;
+    return own_class ? level : ( level + 1 ) / 2;
+}
+
+/* Lightning bolt's number of dice of LIGHTNING_BOLT_SIDES: the level, to
+   MASTERY_TOP_LEVEL, for a mage; half that for anyone else. */
+int lightning_bolt_dice( int level, int own_class )
+{
+    if ( level < 1 )
+        level = 1;
+    if ( level > MASTERY_TOP_LEVEL )
+        level = MASTERY_TOP_LEVEL;
+    return own_class ? level : ( level + 1 ) / 2;
+}
