@@ -28930,3 +28930,76 @@
 1793139628	cmd	Miseri	9	5355	mirror.are	standing	100	0	-	south		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A building is to the west.
 1793139628	cmd	Miseri	9	5335	mirror.are	standing	100	0	-	west		A small guard house //   This is the barracks for Thalos' cityguards.  Guards populate this // shack ready, willing, and able to ward off any trouble.  This small
 1793139632	cmd	Miseri	9	5335	mirror.are	standing	100	0	-	kill	cit	Your punch wounds An imperial cityguard. // An imperial cityguard parries your attack. // An imperial cityguard dodges your attack.
+1793139736	cmd	Miseri	10	5335	mirror.are	standing	97	0	-	affect		You are affected by: // Spell: 'shroud'. // Spell: 'power gloves'.
+1793139738	cmd	Miseri	10	5335	mirror.are	standing	97	0	-	inventory		You are carrying: // ( 2) (Magical) an imperial sword // ( 3) an imperial belt
+1793139747	cmd	Miseri	10	5335	mirror.are	standing	97	0	-	autoloot		Autolooting removed.
+1793139749	cmd	Miseri	10	5335	mirror.are	standing	97	0	-	scan		You don't see anything near you.
+1793139750	cmd	Miseri	10	5335	mirror.are	standing	97	0	-	north		Alas, you cannot go that way.
+1793139752	cmd	Miseri	10	5335	mirror.are	standing	97	0	-	west		Alas, you cannot go that way.
+1793139753	cmd	Miseri	10	5355	mirror.are	standing	97	0	-	east		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A building is to the west.
+1793139754	cmd	Miseri	10	5355	mirror.are	standing	97	0	-	east		Alas, you cannot go that way.
+1793139755	cmd	Miseri	10	5355	mirror.are	standing	97	0	-	scan		You don't see anything near you.
+1793139755	cmd	Miseri	10	5301	mirror.are	standing	97	0	-	north		Main Street //   This is a magnificent street, immaculate all over. The streets are filled // with people rushing from building to building and a balmy zephyr blows by
+1793139756	cmd	Miseri	10	5301	mirror.are	standing	97	0	-	scan		an imperial cityguard              -to the East. // an imperial cityguard              -to the East. // an imperial cityguard              -to the East.
+1793139757	cmd	Miseri	10	5300	mirror.are	standing	97	0	-	east		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates look indestructible, yet they are elaborate in engravings.  You can
+1793139760	cmd	Miseri	10	5300	mirror.are	standing	97	0	-	kill	cit	An imperial cityguard dodges your attack. // Your punch misses an imperial cityguard. // Your punch mauls an imperial cityguard.
+1793139765	cmd	Miseri	10	5300	mirror.are	fighting	97	0	fight	skills		Level  1: dagger              20%      hand to hand        62%       //           recall              50%       // Level  3: kick                 1%      
+1793139775	cmd	Miseri	10	5300	mirror.are	fighting	97	0	fight	help	monk	Monks wander the world, seeking enlightenment.  It's a hard life, requiring // massive concentration and superb fighting skills to survive.  Martial // arts talent helps - and the guildmasters at the Palms of the Creator are
+1793139782	cmd	Miseri	11	5300	mirror.are	fighting	94	0	fight	help	monk	Monks wander the world, seeking enlightenment.  It's a hard life, requiring // massive concentration and superb fighting skills to survive.  Martial // arts talent helps - and the guildmasters at the Palms of the Creator are
+1793139792	cmd	Miseri	11	5300	mirror.are	fighting	94	0	fight	train		You can't do that here.
+1793139794	cmd	Miseri	11	5300	mirror.are	fighting	94	0	fight	list		You can't do that here.
+1793139798	refused	Miseri	11	5300	mirror.are	fighting	95	0	fight	(unknown)		Huh? Did you mean GAINLIST?
+1793139801	cmd	Miseri	11	5300	mirror.are	fighting	95	0	fight	gainlist		Abilities for a level 11 monk of the monk guild: 15 learned, 19 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793139836	cmd	Miseri	11	5300	mirror.are	fighting	95	0	fight	gainlist		Abilities for a level 11 monk of the monk guild: 15 learned, 19 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793139853	cmd	Miseri	11	5300	mirror.are	standing	95	2	-	mwhere	movement	[ 4803] The Master of Movement       [ 4807] The Training room
+1793139858	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	goto	4807	The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered
+1793139859	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     fists of fury      4     
+1793139862	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	blind	The Master of Movement trains you in the art of blinding fists.
+1793139865	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	herb	The Master of Movement trains you in the art of herbal brewing.
+1793139866	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	dis	The Master of Movement trains you in the art of disarm.
+1793139868	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	cran	The Master of Movement tells you 'You are not yet ready for that skill.'
+1793139869	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	iron	The Master of Movement trains you in the art of iron skin.
+1793139872	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	second	The Master of Movement tells you 'You are not yet ready for that skill.'
+1793139874	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // crane dance        5     fists of fury      4     levitate           2     
+1793139876	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	lev	The Master of Movement trains you in the art of levitate.
+1793139878	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	bash	The Master of Movement tells you 'You are not yet ready for that skill.'
+1793139880	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // crane dance        5     fists of fury      4     second attack      3     
+1793139887	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	13	-	set	char self train 50	You now have 50 Trains.
+1793139893	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	crane	The Master of Movement trains you in the art of crane dance.
+1793139897	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	bash	The Master of Movement trains you in the art of bash.
+1793139898	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	fis	The Master of Movement trains you in the art of fists of fury.
+1793139900	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gain	sec	The Master of Movement trains you in the art of second attack.
+1793139903	cmd	Miseri	11	4807	dresden_halloween.are	standing	98	0	-	gainlist		Abilities for a level 11 monk of the monk guild: 24 learned, 10 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793139908	cmd	Miseri	11	4806	dresden_halloween.are	standing	98	1	-	goto	silent mast	A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near
+1793139910	cmd	Miseri	11	4806	dresden_halloween.are	standing	98	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     
+1793139914	cmd	Miseri	11	4806	dresden_halloween.are	standing	98	0	-	gain	steel	The Silent Master trains you in the art of steel fist.
+1793139915	cmd	Miseri	11	4806	dresden_halloween.are	standing	98	0	-	gain	par	The Silent Master trains you in the art of parry.
+1793139917	cmd	Miseri	11	4806	dresden_halloween.are	standing	100	0	-	gain	dir	The Silent Master trains you in the art of dirt kicking.
+1793139921	cmd	Miseri	11	4806	dresden_halloween.are	standing	100	0	-	gain	stun	The Silent Master trains you in the art of stunning blow.
+1793139922	cmd	Miseri	11	4806	dresden_halloween.are	standing	100	0	-	gain	fas	The Silent Master trains you in the art of fast healing.
+1793139923	cmd	Miseri	11	4806	dresden_halloween.are	standing	100	0	-	gain	enh	The Silent Master trains you in the art of enhanced damage.
+1793139924	cmd	Miseri	11	4806	dresden_halloween.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost 
+1793139928	cmd	Miseri	11	4806	dresden_halloween.are	standing	100	0	-	gainlist		Abilities for a level 11 monk of the monk guild: 30 learned, 4 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793139944	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	1	-	goto	rakar	Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793139945	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // archery            3     shove              1     despair            1     
+1793139947	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	gain	arc	Rakar the weaponsmaster trains you in the art of archery.
+1793139948	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	gain	sho	Rakar the weaponsmaster trains you in the art of shove.
+1793139950	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	gain	des	Rakar the weaponsmaster trains you in the art of despair.
+1793139951	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost 
+1793139952	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        63%       //           recall              50%       // Level  3: kick                 1%      
+1793139965	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	14	-	set	char self kick 75	Syntax: //   set char <name> <field> <value> //   Field being one of:
+1793139972	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self kick 75	Your kick skill is now 75.
+1793139975	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        63%       //           recall              50%       // Level  3: kick                75%      
+1793139982	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self dodge 75	Your dodge skill is now 75.
+1793139986	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self shove 75	Your shove skill is now 75.
+1793139990	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self trip 75	Your trip skill is now 75.
+1793139992	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        63%       //           recall              50%       // Level  3: kick                75%      
+1793139997	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self med 75	Your meditation skill is now 75.
+1793140001	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self second 75	Your second attack skill is now 75.
+1793140005	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self parry 75	Your parry skill is now 75.
+1793140008	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost 
+1793140009	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        63%       //           recall              50%       // Level  3: kick                75%      
+1793140020	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	set	skill self hand 75	Your hand to hand skill is now 75.
+1793140023	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	look		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793140027	cmd	Miseri	11	25265	mushroom.are	standing	100	1	-	goto	drow	The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1793140030	cmd	Miseri	11	25265	mushroom.are	standing	100	0	-	kill	dro	A drow female dodges your attack. // Your punch *** DEVASTATES *** a drow female! // Your punch devastates a drow female!

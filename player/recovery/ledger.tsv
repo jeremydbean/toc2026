@@ -185,3 +185,6 @@
 185	1793111977	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	level	-	Miseri.20261027_143937.level fnv 93cd91d7 5531 bytes	c0c9da8b
 186	1793112031	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	level	-	Miseri.20261027_144031.level fnv e867c04d 5702 bytes	968d4445
 187	1793139666	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	level	-	Miseri.20261027_222106.level fnv d773ba6a 6838 bytes	9d440150
+188	1793139780	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	level	-	Miseri.20261027_222300.level fnv 00beab93 8447 bytes	fed61c8f
+189	1793139887	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	staffset	-	Miseri.20261027_222447.staffset fnv 8ea6cbb1 8530 bytes	dea305c7
+190	1793139965	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	staffset	-	Miseri.20261027_222605.staffset fnv 21800c4f 8768 bytes	2d8da401

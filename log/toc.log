@@ -209591,3 +209591,93 @@ Tue Oct 27 22:21:30 2026 :: Log Miseri [5335]: killed An imperial cityguard
 Tue Oct 27 22:21:30 2026 :: Log Miseri [5335]: coin +34 copper
 Tue Oct 27 22:22:03 2026 :: Log Miseri [5335]: killed An imperial cityguard
 Tue Oct 27 22:22:03 2026 :: Log Miseri [5335]: coin +34 copper
+Tue Oct 27 22:22:16 2026 :: Log Miseri [5335]: af
+Tue Oct 27 22:22:18 2026 :: Log Miseri [5335]: inv
+Tue Oct 27 22:22:27 2026 :: Log Miseri [5335]: autoloo
+Tue Oct 27 22:22:29 2026 :: Log Miseri [5335]: sca
+Tue Oct 27 22:22:30 2026 :: Log Miseri [5335]: n
+Tue Oct 27 22:22:32 2026 :: Log Miseri [5335]: w
+Tue Oct 27 22:22:33 2026 :: Log Miseri [5335]: e
+Tue Oct 27 22:22:33 2026 :: Log Miseri [5355]: arrived (A back alley) from 5335
+Tue Oct 27 22:22:34 2026 :: Log Miseri [5355]: e
+Tue Oct 27 22:22:35 2026 :: Log Miseri [5355]: sca
+Tue Oct 27 22:22:35 2026 :: Log Miseri [5355]: n
+Tue Oct 27 22:22:35 2026 :: Log Miseri [5301]: arrived (Main Street) from 5355
+Tue Oct 27 22:22:36 2026 :: Log Miseri [5301]: sca
+Tue Oct 27 22:22:37 2026 :: Log Miseri [5301]: e
+Tue Oct 27 22:22:37 2026 :: Log Miseri [5300]: arrived (The Grand Gate of Thalos) from 5301
+Tue Oct 27 22:22:40 2026 :: Log Miseri [5300]: kill cit
+Tue Oct 27 22:22:45 2026 :: Log Miseri [5300]: ski
+Tue Oct 27 22:22:55 2026 :: Log Miseri [5300]: help monk
+Tue Oct 27 22:23:00 2026 :: Log Miseri [5300]: level 10 -> 11 (earned)
+Tue Oct 27 22:23:00 2026 :: Miseri has achieved level 11!
+Tue Oct 27 22:23:00 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_222300.level (PRESTORE Miseri to see it).
+Tue Oct 27 22:23:00 2026 :: Log Miseri [5300]: killed an imperial cityguard
+Tue Oct 27 22:23:02 2026 :: Log Miseri [5300]: help monk
+Tue Oct 27 22:23:06 2026 :: Sock.sinaddr:  3.20.63.178
+Tue Oct 27 22:23:07 2026 :: EOF encountered on read.
+Tue Oct 27 22:23:12 2026 :: Log Miseri [5300]: train
+Tue Oct 27 22:23:14 2026 :: Log Miseri [5300]: list
+Tue Oct 27 22:23:18 2026 :: Log Miseri [5300]: (refused) trainlist
+Tue Oct 27 22:23:21 2026 :: Log Miseri [5300]: gainlist
+Tue Oct 27 22:23:42 2026 :: Log Miseri [5300]: killed an imperial cityguard
+Tue Oct 27 22:23:56 2026 :: Log Miseri [5300]: gainlist
+Tue Oct 27 22:24:09 2026 :: Log Miseri [5300]: killed an imperial cityguard
+Tue Oct 27 22:24:13 2026 :: Log Miseri [5300]: mwhere movement
+Tue Oct 27 22:24:18 2026 :: Log Miseri [5300]: goto 4807
+Tue Oct 27 22:24:18 2026 :: Log Miseri [4807]: arrived (The Training room) from 5300
+Tue Oct 27 22:24:19 2026 :: Log Miseri [4807]: gain
+Tue Oct 27 22:24:22 2026 :: Log Miseri [4807]: gain blind
+Tue Oct 27 22:24:25 2026 :: Log Miseri [4807]: gain herb
+Tue Oct 27 22:24:26 2026 :: Log Miseri [4807]: gain dis
+Tue Oct 27 22:24:28 2026 :: Log Miseri [4807]: gain cran
+Tue Oct 27 22:24:29 2026 :: Log Miseri [4807]: gain iron
+Tue Oct 27 22:24:32 2026 :: Log Miseri [4807]: gain second
+Tue Oct 27 22:24:34 2026 :: Log Miseri [4807]: gain
+Tue Oct 27 22:24:36 2026 :: Log Miseri [4807]: gain lev
+Tue Oct 27 22:24:38 2026 :: Log Miseri [4807]: gain bash
+Tue Oct 27 22:24:40 2026 :: Log Miseri [4807]: gain
+Tue Oct 27 22:24:47 2026 :: Log Miseri [4807]: set char self train 50
+Tue Oct 27 22:24:47 2026 :: Snapshot of Miseri taken before staffset: Miseri.20261027_222447.staffset (PRESTORE Miseri to see it).
+Tue Oct 27 22:24:53 2026 :: Log Miseri [4807]: gain crane
+Tue Oct 27 22:24:57 2026 :: Log Miseri [4807]: gain bash
+Tue Oct 27 22:24:58 2026 :: Log Miseri [4807]: gain fis
+Tue Oct 27 22:25:00 2026 :: Log Miseri [4807]: gain sec
+Tue Oct 27 22:25:03 2026 :: Log Miseri [4807]: gainlist
+Tue Oct 27 22:25:08 2026 :: Log Miseri [4807]: goto silent mast
+Tue Oct 27 22:25:08 2026 :: Log Miseri [4806]: arrived (A Small Clearing) from 4807
+Tue Oct 27 22:25:10 2026 :: Log Miseri [4806]: gain
+Tue Oct 27 22:25:14 2026 :: Log Miseri [4806]: gain steel
+Tue Oct 27 22:25:15 2026 :: Log Miseri [4806]: gain par
+Tue Oct 27 22:25:17 2026 :: Log Miseri [4806]: gain dir
+Tue Oct 27 22:25:21 2026 :: Log Miseri [4806]: gain stun
+Tue Oct 27 22:25:22 2026 :: Log Miseri [4806]: gain fas
+Tue Oct 27 22:25:23 2026 :: Log Miseri [4806]: gain enh
+Tue Oct 27 22:25:24 2026 :: Log Miseri [4806]: gain
+Tue Oct 27 22:25:28 2026 :: Log Miseri [4806]: gainlist
+Tue Oct 27 22:25:44 2026 :: Log Miseri [4806]: goto rakar
+Tue Oct 27 22:25:44 2026 :: Log Miseri [2433]: arrived (Temple Boulevard.) from 4806
+Tue Oct 27 22:25:45 2026 :: Log Miseri [2433]: gain
+Tue Oct 27 22:25:47 2026 :: Log Miseri [2433]: gain arc
+Tue Oct 27 22:25:48 2026 :: Log Miseri [2433]: gain sho
+Tue Oct 27 22:25:50 2026 :: Log Miseri [2433]: gain des
+Tue Oct 27 22:25:51 2026 :: Log Miseri [2433]: gain
+Tue Oct 27 22:25:52 2026 :: Log Miseri [2433]: ski
+Tue Oct 27 22:26:05 2026 :: Log Miseri [2433]: set char self kick 75
+Tue Oct 27 22:26:05 2026 :: Snapshot of Miseri taken before staffset: Miseri.20261027_222605.staffset (PRESTORE Miseri to see it).
+Tue Oct 27 22:26:12 2026 :: Log Miseri [2433]: set skill self kick 75
+Tue Oct 27 22:26:15 2026 :: Log Miseri [2433]: ski
+Tue Oct 27 22:26:22 2026 :: Log Miseri [2433]: set skill self dodge 75
+Tue Oct 27 22:26:26 2026 :: Log Miseri [2433]: set skill self shove 75
+Tue Oct 27 22:26:30 2026 :: Log Miseri [2433]: set skill self trip 75
+Tue Oct 27 22:26:32 2026 :: Log Miseri [2433]: ski
+Tue Oct 27 22:26:37 2026 :: Log Miseri [2433]: set skill self med 75
+Tue Oct 27 22:26:41 2026 :: Log Miseri [2433]: set skill self second 75
+Tue Oct 27 22:26:45 2026 :: Log Miseri [2433]: set skill self parry 75
+Tue Oct 27 22:26:48 2026 :: Log Miseri [2433]: gain
+Tue Oct 27 22:26:49 2026 :: Log Miseri [2433]: ski
+Tue Oct 27 22:27:00 2026 :: Log Miseri [2433]: set skill self hand 75
+Tue Oct 27 22:27:03 2026 :: Log Miseri [2433]: lo
+Tue Oct 27 22:27:07 2026 :: Log Miseri [2433]: goto drow
+Tue Oct 27 22:27:07 2026 :: Log Miseri [25265]: arrived (The bonfire.) from 2433
+Tue Oct 27 22:27:10 2026 :: Log Miseri [25265]: kill dro
