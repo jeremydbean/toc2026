@@ -121,7 +121,10 @@ class CorpseRestoreFailureTests(unittest.TestCase):
                 after_blocked = pfile.read_text(encoding="latin-1")
                 # The save after the pending receipt fails: offline, the
                 # copy holding the gift goes unsaved, so it is abandoned.
-                fault(mud, "save 2")
+                # Aimed at Zrevdead's saves: "save 2" counted anybody's,
+                # and an autosave of the staff character in between took
+                # the slot (CI, run 40440007584).
+                fault(mud, "save-Zrevdead 2")
                 failed = run(staff, f"prestore zrevdead corpse {cid} gear", 2.5)
                 after_failed = pfile.read_text(encoding="latin-1")
                 # Nothing in the way: given, and given once.

@@ -841,10 +841,18 @@ bool save_char_obj( CHAR_DATA *ch )
     save_last_status = DURABLE_FAILED;
     if ( IS_NPC(ch) )
 	return false;
-    if ( recovery_fault( "save" ) )
     {
-        bug( "save_char_obj: a save failed (injected by a test)", 0 );
-        return false;
+        /* "save" fails anybody's next save; "save-<Name>" only that
+           character's, which a test with an autosave running can aim. */
+        char point[64];
+
+        snprintf( point, sizeof(point), "save-%s",
+                  ch->name != NULL ? ch->name : "" );
+        if ( recovery_fault( "save" ) || recovery_fault( point ) )
+        {
+            bug( "save_char_obj: a save failed (injected by a test)", 0 );
+            return false;
+        }
     }
 
     if (ch->pcdata->ignore == NULL)
