@@ -209923,3 +209923,105 @@ Tue Oct 27 22:54:27 2026 :: Log Alaric [29204]: coin +23 silver
 Tue Oct 27 22:54:27 2026 :: Log Alaric [29204]: coin +31 copper
 Tue Oct 27 22:54:27 2026 :: Log Alaric [29204]: coin +13 gold
 Tue Oct 27 22:54:33 2026 :: Log Alaric [29204]: fi cl
+Tue Oct 27 22:57:43 2026 :: Log Alaric [29204]: affects off: ego whip
+Tue Oct 27 22:58:41 2026 :: Sock.sinaddr:  178.156.187.238
+Tue Oct 27 22:58:41 2026 :: EOF encountered on read.
+Tue Oct 27 22:59:18 2026 :: ANNOUNCE: The game restarts for an update in one minute. Finish your fight; everyone is saved first.
+Tue Oct 27 22:59:21 2026 :: Log Alaric [29204]: s
+Tue Oct 27 22:59:21 2026 :: Log Alaric [29205]: arrived (Twist in the Maze) from 29204
+Tue Oct 27 22:59:23 2026 :: Log Alaric [29205]: fi cl
+Tue Oct 27 22:59:28 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 22:59:34 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 22:59:40 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 22:59:46 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 22:59:46 2026 :: Log Alaric [29205]: killed a killer clown
+Tue Oct 27 22:59:46 2026 :: Log Alaric [29205]: coin +5 platinum
+Tue Oct 27 22:59:46 2026 :: Log Alaric [29205]: coin +23 silver
+Tue Oct 27 22:59:46 2026 :: Log Alaric [29205]: coin +31 copper
+Tue Oct 27 22:59:46 2026 :: Log Alaric [29205]: coin +13 gold
+Tue Oct 27 22:59:52 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 22:59:56 2026 :: Log Alaric [29205]: affects off: steel fist
+Tue Oct 27 22:59:58 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:03 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:05 2026 :: Treasure goblin: vanished from room 2324 (The Blood Sea Portal, mahntor.are) (too long in one area).
+Tue Oct 27 23:00:09 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:11 2026 :: Log Alaric [29205]: killed a killer clown
+Tue Oct 27 23:00:11 2026 :: Log Alaric [29205]: coin +5 platinum
+Tue Oct 27 23:00:11 2026 :: Log Alaric [29205]: coin +23 silver
+Tue Oct 27 23:00:11 2026 :: Log Alaric [29205]: coin +31 copper
+Tue Oct 27 23:00:11 2026 :: Log Alaric [29205]: coin +13 gold
+Tue Oct 27 23:00:15 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:15 2026 :: Log Alaric [29205]: who
+Tue Oct 27 23:00:15 2026 :: Log Alaric [29205]: fi cl
+Tue Oct 27 23:00:16 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:16 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:16 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:16 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:17 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:17 2026 :: Log Alaric [29205]: fi
+Tue Oct 27 23:00:18 2026 :: Log Alaric [29205]: n
+Tue Oct 27 23:00:18 2026 :: Log Alaric [29204]: arrived (Twist in the Maze) from 29205
+Tue Oct 27 23:00:19 2026 :: Log Alaric [29204]: save
+Tue Oct 27 23:00:26 2026 :: Log Alaric [29204]: steel
+Tue Oct 27 23:00:31 2026 :: Log Alaric [29204]: iron
+Tue Oct 27 23:00:38 2026 :: Log Alaric [29204]: s
+Tue Oct 27 23:00:38 2026 :: Log Alaric [29205]: arrived (Twist in the Maze) from 29204
+Tue Oct 27 23:00:39 2026 :: Log Alaric [29205]: e
+Tue Oct 27 23:00:39 2026 :: Log Alaric [29206]: arrived (Twist in the Maze) from 29205
+Tue Oct 27 23:00:39 2026 :: Log Alaric [29206]: fi cl
+Tue Oct 27 23:00:45 2026 :: Log Alaric [29206]: fi
+Tue Oct 27 23:00:51 2026 :: Log Alaric [29206]: fi
+Tue Oct 27 23:00:52 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Oct 27 23:00:56 2026 :: Log WebAdmin: fsave
+Tue Oct 27 23:00:57 2026 :: Log Alaric [29206]: fi
+Tue Oct 27 23:01:02 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Oct 27 23:01:02 2026 :: Log Alaric [29206]: fi
+Tue Oct 27 23:01:02 2026 :: Log Alaric [29206]: killed a killer clown
+Tue Oct 27 23:01:02 2026 :: Log Alaric [29206]: coin +5 platinum
+Tue Oct 27 23:01:02 2026 :: Log Alaric [29206]: coin +23 silver
+Tue Oct 27 23:01:02 2026 :: Log Alaric [29206]: coin +31 copper
+Tue Oct 27 23:01:02 2026 :: Log Alaric [29206]: coin +13 gold
+Tue Oct 27 23:01:05 2026 :: Received signal 15; saving players and shutting down.
+Tue Oct 27 23:01:05 2026 :: Closing link to Alaric.
+Tue Oct 27 23:01:05 2026 :: Normal termination of game.
+Tue Oct 27 23:01:05 2026 ::  INIT OK 
+Tue Oct 27 23:01:05 2026 :: walkto_load: 157 destinations.
+Tue Oct 27 23:01:05 2026 :: changes_load: 196 entries.
+Tue Oct 27 23:01:05 2026 :: Recovery ledger: 195 records (0 from before the check), 0 requests, 6 players.
+Tue Oct 27 23:01:05 2026 :: ROM is ready to rock on port 9000.
+Tue Oct 27 23:01:05 2026 :: Treasure goblin: appeared.
+Tue Oct 27 23:01:05 2026 :: Automated backup complete.
+Tue Oct 27 23:01:05 2026 :: Daily backup complete.
+Tue Oct 27 23:01:08 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Oct 27 23:01:10 2026 :: Loading Alaric's playerfile
+Tue Oct 27 23:01:11 2026 :: Loading Alaric's playerfile
+Tue Oct 27 23:01:11 2026 :: Alaric@208.126.22.104 has connected.
+Tue Oct 27 23:01:12 2026 :: Log Alaric [29206]: arrived (Twist in the Maze) from 0
+Tue Oct 27 23:01:14 2026 :: Log Alaric [29206]: s
+Tue Oct 27 23:01:14 2026 :: Log Alaric [29207]: arrived (Twist in the Maze) from 29206
+Tue Oct 27 23:01:14 2026 :: Log Alaric [29207]: w
+Tue Oct 27 23:01:14 2026 :: Log Alaric [29208]: arrived (Twist the Maze) from 29207
+Tue Oct 27 23:01:16 2026 :: Log Alaric [29208]: fi mad
+Tue Oct 27 23:01:22 2026 :: Log Alaric [29208]: fi
+Tue Oct 27 23:01:28 2026 :: Log Alaric [29208]: fi
+Tue Oct 27 23:01:33 2026 :: Log Alaric [29208]: fi
+Tue Oct 27 23:01:39 2026 :: Log Alaric [29208]: fi
+Tue Oct 27 23:01:45 2026 :: Log Alaric [29208]: fi
+Tue Oct 27 23:01:45 2026 :: Log Alaric [29208]: killed a deranged madman
+Tue Oct 27 23:01:45 2026 :: Log Alaric [29208]: coin +5 platinum
+Tue Oct 27 23:01:45 2026 :: Log Alaric [29208]: coin +23 silver
+Tue Oct 27 23:01:45 2026 :: Log Alaric [29208]: coin +31 copper
+Tue Oct 27 23:01:45 2026 :: Log Alaric [29208]: coin +13 gold
+Tue Oct 27 23:01:56 2026 :: Log Alaric [29208]: l
+Tue Oct 27 23:01:57 2026 :: Log Alaric [29208]: w
+Tue Oct 27 23:01:57 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 29208
+Tue Oct 27 23:01:58 2026 :: Log Alaric [29209]: fi sk
+Tue Oct 27 23:02:04 2026 :: Log Alaric [29209]: fi
+Tue Oct 27 23:02:10 2026 :: Log Alaric [29209]: fi
+Tue Oct 27 23:02:15 2026 :: Log Alaric [29209]: affects off: iron skin
+Tue Oct 27 23:02:16 2026 :: Log Alaric [29209]: fi
+Tue Oct 27 23:02:19 2026 :: Log Alaric [29209]: n
+Tue Oct 27 23:02:19 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Tue Oct 27 23:02:20 2026 :: Log Alaric [29210]: fi sk
+Tue Oct 27 23:02:27 2026 :: Log Alaric [29210]: fi sk
+Tue Oct 27 23:02:33 2026 :: Log Alaric [29210]: fi
