@@ -208870,3 +208870,109 @@ Tue Oct 27 14:32:57 2026 :: Log Miseri [3744]: killed the boar
 Tue Oct 27 14:32:57 2026 :: Log Miseri [3744]: coin +5 copper
 Tue Oct 27 14:32:57 2026 :: Log Miseri [3744]: coin +6 copper
 Tue Oct 27 14:33:00 2026 :: Log Miseri [3744]: restore self
+Tue Oct 27 14:34:06 2026 :: Log Miseri [3744]: lo
+Tue Oct 27 14:34:08 2026 :: Log Miseri [3744]: sca
+Tue Oct 27 14:34:09 2026 :: Log Miseri [3744]: s
+Tue Oct 27 14:34:09 2026 :: Log Miseri [3739]: arrived (Arena) from 3744
+Tue Oct 27 14:34:11 2026 :: Log Miseri [3739]: kil li
+Tue Oct 27 14:34:11 2026 :: Log Miseri [3739]: level 1 -> 2 (earned)
+Tue Oct 27 14:34:11 2026 :: Miseri has achieved level 2!
+Tue Oct 27 14:34:11 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_143411.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:34:11 2026 :: Log Miseri [3739]: killed the lizard
+Tue Oct 27 14:34:11 2026 :: Log Miseri [3739]: coin +1 copper
+Tue Oct 27 14:34:11 2026 :: Log Miseri [3739]: coin +4 copper
+Tue Oct 27 14:34:16 2026 :: Log Miseri [3739]: kil ra
+Tue Oct 27 14:34:16 2026 :: Log Miseri [3739]: level 2 -> 3 (earned)
+Tue Oct 27 14:34:16 2026 :: Miseri has achieved level 3!
+Tue Oct 27 14:34:16 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_143416.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:34:16 2026 :: Log Miseri [3739]: killed the rabbit
+Tue Oct 27 14:34:16 2026 :: Log Miseri [3739]: coin +2 copper
+Tue Oct 27 14:34:16 2026 :: Log Miseri [3739]: coin +2 copper
+Tue Oct 27 14:34:31 2026 :: Log Miseri [3739]: e
+Tue Oct 27 14:34:31 2026 :: Log Miseri [3740]: arrived (Arena) from 3739
+Tue Oct 27 14:34:34 2026 :: Log Miseri [3740]: e
+Tue Oct 27 14:34:34 2026 :: Log Miseri [3741]: arrived (East Wall of Arena) from 3740
+Tue Oct 27 14:34:34 2026 :: Log Miseri [3741]: e
+Tue Oct 27 14:34:35 2026 :: Log Miseri [3741]: s
+Tue Oct 27 14:34:35 2026 :: Log Miseri [3736]: arrived (East Wall of Arena) from 3741
+Tue Oct 27 14:34:36 2026 :: Log Miseri [3736]: s
+Tue Oct 27 14:34:36 2026 :: Log Miseri [3731]: arrived (East Wall of Arena) from 3736
+Tue Oct 27 14:34:38 2026 :: Log Miseri [3731]: kil bo
+Tue Oct 27 14:34:38 2026 :: Log Miseri [3731]: killed the boar
+Tue Oct 27 14:34:38 2026 :: Log Miseri [3731]: coin +5 copper
+Tue Oct 27 14:34:38 2026 :: Log Miseri [3731]: coin +6 copper
+Tue Oct 27 14:34:43 2026 :: Log Miseri [3731]: kil ra
+Tue Oct 27 14:34:43 2026 :: Log Miseri [3731]: killed the rabbit
+Tue Oct 27 14:34:43 2026 :: Log Miseri [3731]: coin +2 copper
+Tue Oct 27 14:34:43 2026 :: Log Miseri [3731]: coin +2 copper
+Tue Oct 27 14:34:52 2026 :: Log Miseri [3731]: kill fo
+Tue Oct 27 14:34:52 2026 :: Log Miseri [3731]: level 3 -> 4 (earned)
+Tue Oct 27 14:34:52 2026 :: Miseri has achieved level 4!
+Tue Oct 27 14:34:52 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_143452.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:34:52 2026 :: Log Miseri [3731]: killed the fox
+Tue Oct 27 14:34:52 2026 :: Log Miseri [3731]: coin +1 copper
+Tue Oct 27 14:34:52 2026 :: Log Miseri [3731]: coin +2 copper
+Tue Oct 27 14:35:04 2026 :: Log Miseri [3731]: af
+Tue Oct 27 14:35:39 2026 :: Sock.sinaddr:  66.228.62.150
+Tue Oct 27 14:36:01 2026 :: Log Miseri [3731]: lo
+Tue Oct 27 14:36:03 2026 :: Log Miseri [3731]: n
+Tue Oct 27 14:36:03 2026 :: Log Miseri [3736]: arrived (East Wall of Arena) from 3731
+Tue Oct 27 14:36:03 2026 :: Log Miseri [3736]: n
+Tue Oct 27 14:36:03 2026 :: Log Miseri [3741]: arrived (East Wall of Arena) from 3736
+Tue Oct 27 14:36:04 2026 :: Sock.sinaddr:  5.161.215.244
+Tue Oct 27 14:36:04 2026 :: Log Miseri [3741]: s
+Tue Oct 27 14:36:04 2026 :: Log Miseri [3736]: arrived (East Wall of Arena) from 3741
+Tue Oct 27 14:36:04 2026 :: EOF encountered on read.
+Tue Oct 27 14:36:05 2026 :: Log Miseri [3736]: kil ra
+Tue Oct 27 14:36:05 2026 :: Log Miseri [3736]: killed the rabbit
+Tue Oct 27 14:36:05 2026 :: Log Miseri [3736]: coin +2 copper
+Tue Oct 27 14:36:05 2026 :: Log Miseri [3736]: coin +2 copper
+Tue Oct 27 14:36:09 2026 :: Log Miseri [3736]: e
+Tue Oct 27 14:36:10 2026 :: Log Miseri [3736]: sca
+Tue Oct 27 14:36:11 2026 :: Log Miseri [3736]: e
+Tue Oct 27 14:36:12 2026 :: Log Miseri [3736]: sca
+Tue Oct 27 14:36:13 2026 :: Log Miseri [3736]: n
+Tue Oct 27 14:36:13 2026 :: Log Miseri [3741]: arrived (East Wall of Arena) from 3736
+Tue Oct 27 14:36:13 2026 :: Log Miseri [3741]: sca
+Tue Oct 27 14:36:14 2026 :: Log Miseri [3741]: n
+Tue Oct 27 14:36:14 2026 :: Log Miseri [3746]: arrived (North East Corner of Arena) from 3741
+Tue Oct 27 14:36:16 2026 :: Log Miseri [3746]: kil bo
+Tue Oct 27 14:36:16 2026 :: Log Miseri [3746]: killed the boar
+Tue Oct 27 14:36:16 2026 :: Log Miseri [3746]: coin +5 copper
+Tue Oct 27 14:36:16 2026 :: Log Miseri [3746]: coin +6 copper
+Tue Oct 27 14:36:28 2026 :: Log Miseri [3746]: u
+Tue Oct 27 14:36:28 2026 :: Log Miseri [3760]: arrived (A Safe Room) from 3746
+Tue Oct 27 14:36:29 2026 :: Log Miseri [3760]: u
+Tue Oct 27 14:36:29 2026 :: Log Miseri [4207]: arrived (Before the Shrouded Altar) from 3760
+Tue Oct 27 14:36:32 2026 :: Log Miseri [4207]: e
+Tue Oct 27 14:36:32 2026 :: Log Miseri [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 27 14:36:32 2026 :: Log Miseri [4202]: e
+Tue Oct 27 14:36:32 2026 :: Log Miseri [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Tue Oct 27 14:36:33 2026 :: Log Miseri [4201]: e
+Tue Oct 27 14:36:33 2026 :: Log Miseri [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Tue Oct 27 14:36:33 2026 :: Log Miseri [2427]: e
+Tue Oct 27 14:36:34 2026 :: Log Miseri [2427]: n
+Tue Oct 27 14:36:34 2026 :: Log Miseri [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 27 14:36:35 2026 :: Log Miseri [2404]: n
+Tue Oct 27 14:36:35 2026 :: Log Miseri [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Tue Oct 27 14:36:39 2026 :: Treasure goblin: vanished from room 3502 (The Cross Roads, midennir_halloween.are) (too long in one area).
+Tue Oct 27 14:36:42 2026 :: Log Miseri [2401]: e
+Tue Oct 27 14:36:42 2026 :: Log Miseri [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Oct 27 14:36:44 2026 :: Log Miseri [2403]: w
+Tue Oct 27 14:36:44 2026 :: Log Miseri [2401]: arrived (Oak Tree Square on Hallows Eve) from 2403
+Tue Oct 27 14:36:45 2026 :: Log Miseri [2401]: d
+Tue Oct 27 14:36:45 2026 :: Log Miseri [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Tue Oct 27 14:36:46 2026 :: Log Miseri [4649]: s
+Tue Oct 27 14:36:46 2026 :: Log Miseri [2419]: arrived (The Training Yard) from 4649
+Tue Oct 27 14:36:48 2026 :: Log Miseri [2419]: n
+Tue Oct 27 14:36:48 2026 :: Log Miseri [4649]: arrived (Entrance to the Hall of Hero's.) from 2419
+Tue Oct 27 14:36:48 2026 :: Log Miseri [4649]: u
+Tue Oct 27 14:36:48 2026 :: Log Miseri [2401]: arrived (Oak Tree Square on Hallows Eve) from 4649
+Tue Oct 27 14:37:30 2026 :: Log Miseri [2401]: e
+Tue Oct 27 14:37:30 2026 :: Log Miseri [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Oct 27 14:37:34 2026 :: Log Miseri [2403]: goto 'townguard'
+Tue Oct 27 14:37:34 2026 :: Log Miseri [18214]: arrived (Town Square) from 2403
+Tue Oct 27 14:37:39 2026 :: Log Miseri [18214]: mwhere townguard
+Tue Oct 27 14:37:53 2026 :: Log Miseri [18214]: goto 13201
+Tue Oct 27 14:37:53 2026 :: Log Miseri [13201]: arrived (Gateway to Solace) from 18214
+Tue Oct 27 14:37:55 2026 :: Log Miseri [13201]: kill to
