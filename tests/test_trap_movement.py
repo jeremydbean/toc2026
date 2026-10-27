@@ -44,6 +44,13 @@ class TrapMovementSourceTests(unittest.TestCase):
             self.assertIn("gone_after_blow(", after, after)
 
 
+# What interpret() says to a command typed below its position (WEST is
+# POS_STANDING): the walker never tried the exit.
+POSITION_REFUSALS = ("Lie still; you are DEAD", "You are hurt far too bad for that",
+                     "You are too stunned to do that", "In your dreams, or what?",
+                     "Better stand up first")
+
+
 def departure_outcome(said: str) -> str:
     """What one WEST out of the gas hall did, read from the order of what
     it said. The stinking cloud also goes off on everybody in its room each
@@ -61,7 +68,10 @@ def departure_outcome(said: str) -> str:
       that attempt tested nothing and is discarded, not counted;
     * "felled": the gas left the walker mortally wounded, incapacitated or
       stunned, short of dead, and the move stopped in the hall -- no death
-      to test, so discarded as well;
+      to test, so discarded as well. That includes a tick's gas that felled
+      the walker before WEST ran, answered only by the position refusal
+      (CI, 2026-10-27: "You are hurt far too bad for that." with no gas
+      inside the reply was read as unclear);
     * "unclear": anything else."""
     arrival = said.find(GAS_EXIT_NAME)
     killed = said.find("You have been KILLED")
@@ -72,6 +82,8 @@ def departure_outcome(said: str) -> str:
         felled = ("mortally wounded", "incapacitated", "You are stunned")
         if 0 <= gassed and any(text in said[gassed:] for text in felled):
             return "felled"
+        if any(text in said for text in POSITION_REFUSALS):
+            return "felled"
         return "unclear"
     if arrival >= 0:
         return "arrived" if arrival < killed else "walked-dead"
@@ -79,7 +91,8 @@ def departure_outcome(said: str) -> str:
     # down, so a WEST typed after a death from a tick is refused one way
     # or the other.
     if any(text in said[killed:] for text in ("Alas, you cannot go that way",
-                                               "You feel too relaxed")):
+                                               "You feel too relaxed")
+           + POSITION_REFUSALS):
         return "before-move"
     return "killed-leaving" if 0 <= gassed < killed else "unclear"
 
@@ -134,7 +147,7 @@ class TrapMovementLiveTests(unittest.TestCase):
                     outcomes.append(outcome)
                     self.assertNotEqual(outcome, "walked-dead",
                                         "the dead walked through the exit:\n" + said)
-                    self.assertNotEqual(outcome, "unclear", said)
+                    self.assertNotEqual(outcome, "unclear", repr(said))
                     if outcome == "killed-leaving":
                         break
                 else:
