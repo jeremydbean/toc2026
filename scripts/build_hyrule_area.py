@@ -3158,6 +3158,9 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
     # Hyrule quotes ordinary money; the burned bush's chest was a
     # "rupee chest" in the catalog.
     object_body = rename_object(object_body, 30457, "secret coin chest", "a secret coin chest")
+    # TRIFORCE means the Triforce alone (owner, 2026-10-27): the steel
+    # shield bears its symbol but does not answer to the word.
+    object_body = rename_object(object_body, 30230, "steel shield", "a steel shield")
     for dungeon in manifest["dungeons"]:
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))
