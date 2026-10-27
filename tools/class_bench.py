@@ -215,16 +215,65 @@ def spell_rank(level: int, cls: int = -1) -> list:
     return known + [s for s in SPELL_ORDER if s not in SPELL_ESTIMATE]
 
 
-def choose_attack(held: dict, level: int, mana: int, t: dict, cls: int) -> str | None:
+def cast_cost(t: dict, spell: str, cls: int, level: int) -> int:
+    """What do_cast really charges (magic.c): 50 when the spell's level is
+    two above the caster's, else max(min_mana, 100 / (2 + level - spell
+    level)) in C's integer division. The bench used to check min_mana * 2,
+    so a level 17 mage chose lightning bolt with 30 mana and was refused
+    (review, 2026-10-27)."""
+    sk = t["skills"][spell]
+    slevel = sk["levels"][cls]
+    if level + 2 == slevel:
+        return 50
+    denom = 2 + level - slevel
+    return max(sk["mana"], int(100 / denom)) if denom != 0 else 50
+
+
+# What a skill command needs before it does anything (fight.c): a monk's
+# fists 30 mana and 15 moves, nerve damage 20 and 10. The rest need none.
+SKILL_COSTS = {"fists": (30, 15), "nerve": (20, 10)}
+SKILL_COMMANDS = (("fists of fury", "fists"), ("smite", "smite"),
+                  ("nerve damage", "nerve"), ("bash", "bash"),
+                  ("kick", "kick"), ("trip", "trip"))
+
+# A command the game refused (not a missed roll): what it said, and
+# whether waiting can change it (mana and moves come back; a skill that is
+# not held never does).
+REFUSALS = (("You don't have enough mana", True), ("can't focus enough energy", True),
+            ("too tired", True), ("You're not skilled enough", False),
+            ("You don't know any spells of that name", False),
+            ("Huh?", False), ("You cannot cast", False), ("You can't do that", False))
+
+
+def refusal(reply: str):
+    """(text, recoverable) for a refused command, or None."""
+    for text, recoverable in REFUSALS:
+        if text in reply:
+            return text, recoverable
+    return None
+
+
+def choose_attack(held: dict, level: int, mana: int, t: dict, cls: int,
+                  move: int = 10**6, barred: dict | None = None,
+                  now: float = 0.0) -> str | None:
+    """The best command this build can actually afford now; a command the
+    game refused is skipped (for a while if mana or moves can mend it, for
+    good if not) so the next best is used instead of nothing."""
+    barred = barred or {}
     usable = {s for s, pct in held.items() if pct > 1}
+
+    def open_(cmd):
+        until = barred.get(cmd)
+        return until is None or (until != float("inf") and now >= until)
+
     for spell in spell_rank(level, cls):
         if spell in usable and t["skills"][spell]["spell"]:
-            if mana >= t["skills"][spell]["mana"] * 2:
-                return f"cast '{spell}'"
-    for skill, cmd in (("fists of fury", "fists"), ("smite", "smite"),
-                       ("nerve damage", "nerve"), ("bash", "bash"),
-                       ("kick", "kick"), ("trip", "trip")):
-        if skill in usable:
+            cmd = f"cast '{spell}'"
+            if mana >= cast_cost(t, spell, cls, level) and open_(cmd):
+                return cmd
+    for skill, cmd in SKILL_COMMANDS:
+        need_mana, need_move = SKILL_COSTS.get(cmd, (0, 0))
+        if skill in usable and mana >= need_mana and move >= need_move and open_(cmd):
             return cmd
     return None
 
@@ -302,21 +351,38 @@ def run_job(mud, staff, t: dict, job: dict) -> dict:
         first = opener(held) if mode != "auto" else "kill dummy"
         c.sync(first, 30)
         used = []
+        barred: dict = {}
+        refused: dict = {}
         deadline = time.monotonic() + job["rounds"] * 3.2 + 60
         while "The bell goes" not in c.transcript[mark:] and time.monotonic() < deadline:
             prompts = PROMPT.findall(c.transcript[mark:])
             mana = int(prompts[-1][1]) if prompts else 0
+            move = int(prompts[-1][2]) if prompts else 0
             if start_mana is None and prompts:
                 start_mana = int(prompts[0][1])
-            cmd = choose_attack(held, level, mana, t, cls) if mode != "auto" else None
+            now = time.monotonic()
+            cmd = (choose_attack(held, level, mana, t, cls, move, barred, now)
+                   if mode != "auto" else None)
             if cmd is None:
                 c.drain(1.5)
             else:
-                used.append(cmd)
-                c.sync(cmd, 30)
+                reply = c.sync(cmd, 30)
+                why = refusal(reply)
+                if why is None:
+                    used.append(cmd)
+                else:
+                    refused[cmd] = refused.get(cmd, 0) + 1
+                    barred[cmd] = now + 6 if why[1] else float("inf")
         c.drain(3)
         body = c.transcript[mark:]
-        result.update(parse_report(body))
+        rep = parse_report(body)
+        # A run with no report, or one cut short, is not a measurement:
+        # scoring it as zero damage ranked a broken run as a weak build.
+        if "per_round" not in rep or rep.get("rounds", 0) < job["rounds"]:
+            raise RuntimeError(f"no complete training report (rounds {rep.get('rounds')}"
+                               f" of {job['rounds']}); refused {refused}")
+        result.update(rep)
+        result["refused"] = refused
         prompts = [tuple(map(int, p)) for p in PROMPT.findall(body)]
         if prompts:
             result["mana_low"] = min(p[1] for p in prompts)
@@ -379,6 +445,8 @@ def report(path: Path) -> None:
         if "error" in r:
             print(f"{r['profile']:<4} {r['mode']:<6} L{r['level']:<2} {r['build']:<6} ERROR {r['error']}")
             continue
+        if r.get("refused"):
+            print(f"{'':<4} {'':<6} {'':<3} {r['build']:<6} (refused, then fell back: {r['refused']})")
         print(f"{r['profile']:<4} {r['mode']:<6} L{r['level']:<2} {r['build']:<6} "
               f"dmg/rd {r.get('per_round', 0):>5}  taken {r.get('taken', 0):>6}  "
               f"hp {r.get('hp_buffed', r.get('hp', 0)):>6} mana {r.get('mana', 0):>5} "
