@@ -28802,3 +28802,5 @@
 1793116031	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	diagnostics		Server diagnostics: //   Boot time: Tue Oct 27 13:46:15 2026 //   Areas: 95  Rooms: 7786  Mob indexes: 2499  Object indexes: 3723
 1793116060	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	wizhelp		142 staff commands available to you: // [65] activity      [66] advance       [65] aligncheck    [68] alist          // [72] allow         [69] anew          [64] announce      [69] asave         
 1793116081	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	help	mirror	MIRROR // Syntax: mirror <player> //         mirror restore
+1793116250	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	help		SUMMARY // MOVEMENT                            GROUP // north south east west up down       follow group gtell split
+1793116259	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	commands		put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      
