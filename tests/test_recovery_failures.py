@@ -161,14 +161,15 @@ class CorpseRestoreFailureTests(unittest.TestCase):
                 login(staff, "Zonstaff", PW)
                 login(dead, "Zondead", PW)
                 run(staff, "scroll 0", 0.5)
-                # Online, the undo copy is taken by a save of its own: the
-                # second save of Zondead is the one that gives.
-                fault(mud, "save-Zondead 2")
+                # The give's own save, by its own fault point: "save-Zondead
+                # 2" was taken by an autosave of Zondead in between, and the
+                # give's save then landed (CI, run 40542002076).
+                fault(mud, "prestore-save")
                 failed = run(staff, f"prestore zondead corpse {cid} gear", 2.5)
                 after_failed = pfile.read_text(encoding="latin-1")
                 pending = states(ledger_rows(mud), f"corpse:{cid}")
                 # The retry's own save fails too: still pending, still unsaved.
-                fault(mud, "save-Zondead")
+                fault(mud, "prestore-save")
                 retry_failed = run(staff, f"prestore zondead corpse {cid} gear", 2.5)
                 after_retry_failed = pfile.read_text(encoding="latin-1")
                 still = states(ledger_rows(mud), f"corpse:{cid}")

@@ -11065,8 +11065,16 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
         snapshot_discard_gear( list );
         if ( !offline )
         {
-            save_char_obj( victim );
-            status = save_char_obj_status();
+            /* "prestore-save" fails this save alone in a test, as it
+               does the give's below: "save-<Name>" can be taken first
+               by the character's own autosave (CI, run 40542002076). */
+            if ( recovery_fault( "prestore-save" ) )
+                status = DURABLE_FAILED;
+            else
+            {
+                save_char_obj( victim );
+                status = save_char_obj_status();
+            }
             if ( status != DURABLE_OK )
             {
                 snprintf( buf, sizeof(buf), "%s already holds that restore, but their file "
@@ -11140,8 +11148,13 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
     }
     if ( !player_fix_record( victim, mark ) )
         bug( "prestore_give: a mark that fit a moment ago did not", 0 );
-    save_char_obj( victim );
-    status = save_char_obj_status();
+    if ( recovery_fault( "prestore-save" ) )
+        status = DURABLE_FAILED;
+    else
+    {
+        save_char_obj( victim );
+        status = save_char_obj_status();
+    }
 
     if ( status != DURABLE_FAILED && recovery_fault( "crash-before-commit" ) )
         _exit( 3 );             /* the test of a crash between the two */
