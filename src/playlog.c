@@ -846,12 +846,17 @@ void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_x
 
     /* The fight in aggregate, for balance (class review, 2026-10-26):
        the guild, the buffs worn (T titanic, E empower, S sanctuary,
-       H haste), and from the fight's ledger the damage dealt and taken,
-       the hit points recovered meanwhile (healing and regeneration:
-       what was taken less what was lost) and the mana spent. Numbers
-       only -- nothing typed, said or named. */
+       H haste), and from the fight's ledger -- everything since this
+       character's own fight began (set_fighting), which is the kill's
+       encounter for a fight with one foe and the whole melee for one with
+       several -- the damage dealt; the hit points lost, every way; the
+       hit points seen to rise (healing, regeneration, drains: never
+       negative); the mana spent; and of the losses, those outside
+       damage() (reflection, traps). Numbers only -- nothing typed, said
+       or named. */
     if ( pc != NULL )
     {
+        fight_ledger_observe( gch );
         if ( is_affected( gch, gsn_titanic ) ) buffs[n++] = 'T';
         if ( is_affected( gch, gsn_empower ) ) buffs[n++] = 'E';
         if ( IS_AFFECTED( gch, AFF_SANCTUARY ) ) buffs[n++] = 'S';
@@ -860,13 +865,14 @@ void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_x
     if ( n == 0 )
         buffs[n++] = '-';
     buffs[n] = '\0';
-    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t%ld\t%ld\t%ld\t%d",
+    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t%ld\t%ld\t%ld\t%d\t%ld",
               encounter, base_xp, rested_xp, accepted_xp, members,
               pc != NULL ? pc->guild : -1, buffs,
               pc != NULL ? pc->meter_damage : 0L,
-              pc != NULL ? pc->fight_taken : 0L,
-              pc != NULL ? (long) gch->hit - pc->fight_hp_start + pc->fight_taken : 0L,
-              pc != NULL ? pc->fight_mana_start - gch->mana : 0 );
+              pc != NULL ? pc->fight_taken + pc->fight_direct : 0L,
+              pc != NULL ? pc->fight_healed : 0L,
+              pc != NULL ? pc->fight_mana_start - gch->mana : 0,
+              pc != NULL ? pc->fight_direct : 0L );
     progress_write( "kill", gch, victim, tail );
 }
 

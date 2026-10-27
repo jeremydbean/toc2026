@@ -73,8 +73,13 @@ class GainlistPreviewTests(unittest.TestCase):
                                  f"{name}: levels differ")
                 self.assertRegex(text, r"\d+ abilities: \d+ given, \d+ more to GAIN")
 
-        self.assertIn("level 50: 4", shown[(3, 3)], "a warrior in the warrior guild swings four times")
-        self.assertIn("level 50: 3", shown[(3, 0)])
+        # Expected swings, not sure blows (review, 2026-10-27: this said a
+        # warrior swings four times): two sure, second attack 49%, third
+        # attack 24% at full skill.
+        self.assertIn("level 50: 2.73", shown[(3, 3)], "a warrior in the warrior guild")
+        self.assertIn("level 50: 2.49", shown[(3, 0)], "a warrior in the mage guild, no third attack")
+        self.assertIn("second attack 49%, third attack 24%", shown[(3, 3)])
+        self.assertNotRegex(shown[(3, 3)], r"level 50: 4\b")
         self.assertRegex(shown[(3, 0)], r"gives up:[\s\S]*third attack")
         self.assertRegex(shown[(3, 0)], r"this adds:[\s\S]*fireball")
         self.assertEqual(entries(shown[(5, 5)])["tentacles"], (42, False))

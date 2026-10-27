@@ -543,6 +543,11 @@ void violence_update( void )
 	if ( ( victim = ch->fighting ) == NULL || ch->in_room == NULL )
 	    continue;
 
+	/* A player's fight ledger looks at their hit points every round, so
+	   a heal and a direct loss inside one round are not taken as one
+	   net change (playlog.c, log/progress.tsv). */
+	fight_ledger_observe( ch );
+
 	/* A benchmark run in the training yard ends itself after the
 	   number of rounds it was given.  Asked before the swing, so
 	   the run is exactly that many rounds long and two readings
@@ -1813,9 +1818,16 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( !dummy_absorb( ch, victim, dam, dt )
     &&   !is_invulnerable( victim ) )
     {
+	fight_ledger_observe( victim );
 	victim->hit -= dam;
 	if ( dam > 0 && victim != ch && !IS_NPC(victim) && victim->pcdata != NULL )
 	    victim->pcdata->fight_taken += dam;
+	/* Harm one deals oneself (poison, a brew gone wrong) is no foe's
+	   blow, but it is a loss: the ledger's direct column. */
+	else if ( dam > 0 && !IS_NPC(victim) && victim->pcdata != NULL )
+	    victim->pcdata->fight_direct += dam;
+	if ( !IS_NPC(victim) && victim->pcdata != NULL )
+	    victim->pcdata->fight_hp_seen = victim->hit;
 	/* A wound ends a Hyrule kill streak (hyrule_note_kill). */
 	if ( dam > 0 && victim != ch )
 	    hyrule_note_wound( victim );
@@ -1944,9 +1956,21 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
       if(dam1 > 0)
       {
+       int before;
+
+       fight_ledger_observe( ch );
+       before = ch->hit;
        ch->hit -= dam1;
        if(ch->hit <= 0)
          ch->hit = 1;
+       /* A shield's reflection is a loss outside damage(): counted where
+          it happens, as it really came off (review, 2026-10-27: it read as
+          negative healing). */
+       if ( !IS_NPC(ch) && ch->pcdata != NULL )
+       {
+	   ch->pcdata->fight_direct += before - ch->hit;
+	   ch->pcdata->fight_hp_seen = ch->hit;
+       }
        dam_message(victim, ch, dam1, dt1, immune);
        update_pos(ch);        /* F5: update position after reflective damage */
        if ( dam1 > ch->max_hit / 4 )
@@ -2921,6 +2945,9 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
 	ch->pcdata->meter_rounds = 0;
 	ch->pcdata->meter_active = true;
 	ch->pcdata->fight_taken = 0;
+	ch->pcdata->fight_healed = 0;
+	ch->pcdata->fight_direct = 0;
+	ch->pcdata->fight_hp_seen = ch->hit;
 	ch->pcdata->fight_hp_start = ch->hit;
 	ch->pcdata->fight_mana_start = ch->mana;
     }
@@ -3588,6 +3615,29 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 }
 
 
+
+/*
+ * The fight ledger's hit points (log/progress.tsv): losses through
+ * damage() are counted there, and reflection where it happens; anything
+ * else that moved hit points between two looks is seen here -- a rise is
+ * healing (spells, potions, regeneration, a drain), a drop is a direct
+ * loss (a trap, a disaster, a special's bite). Healing was inferred as
+ * now - start + taken, which went negative after any loss damage() never
+ * saw (review, 2026-10-27).
+ */
+void fight_ledger_observe( CHAR_DATA *ch )
+{
+    int delta;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    delta = ch->hit - ch->pcdata->fight_hp_seen;
+    if ( delta > 0 )
+        ch->pcdata->fight_healed += delta;
+    else if ( delta < 0 )
+        ch->pcdata->fight_direct -= delta;
+    ch->pcdata->fight_hp_seen = ch->hit;
+}
 
 void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 {

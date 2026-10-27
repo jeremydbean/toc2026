@@ -2385,7 +2385,10 @@ struct  pc_data
     /* The rest of the fight's ledger, for log/progress.tsv's kill lines
        (class review, 2026-10-26): damage taken, and hit points and mana
        as the fight began. Reset with the meter; memory only. */
-    long                fight_taken;
+    long                fight_taken;    /* lost to damage() since the fight began */
+    long                fight_healed;   /* hit points seen to rise, the same span */
+    long                fight_direct;   /* lost any other way: reflection, a trap */
+    int                 fight_hp_seen;  /* hit points when last looked at */
     int                 fight_hp_start;
     int                 fight_mana_start;
     int                 dummy_hits;
@@ -3876,6 +3879,7 @@ void    walkto_load      ( void );
 void    changes_load     ( void );
 void    walkto_update    ( void );
 void    fight_lag_update ( void );
+void    fight_ledger_observe ( CHAR_DATA *ch );
 void    walkto_clear     ( CHAR_DATA *ch );
 void    walkto_mark_reachable ( CHAR_DATA *ch );
 bool    walkto_reached   ( ROOM_INDEX_DATA *room );

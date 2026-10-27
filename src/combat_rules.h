@@ -65,4 +65,15 @@ int weapon_mastery_percent( int level, int own_guild );
 int flamestrike_dice( int level, int own_class );
 int lightning_bolt_dice( int level, int own_class );
 
+/* Swings a round as multi_hit rolls them for a player who is not hasted
+   (review, 2026-10-27: GAINLIST PREVIEW counted second and third attack
+   as whole sure swings). Two are sure; each extra one is a
+   number_percent() < chance roll, which lands chance - 1 times in a
+   hundred: second attack at skill/2, dual wield at (dual + the off-hand
+   weapon's skill)/5 with a weapon held there, third attack at skill/4.
+   In hundredths: at full skill a warrior expects 273, 312 dual-wielding. */
+int swing_chance_percent( int chance );
+int expected_swings_x100( int second_skill, int third_skill,
+                          int dual_skill, int dual_weapon_skill );
+
 #endif

@@ -233,7 +233,12 @@ def milestones(t: dict, only: str | None) -> list:
         tracked = sorted(((lvl, s, how) for s, (lvl, how) in held.items() if s in TRACKED))
         rows.append({"build": name, "class": CLASSES[cls], "guild": guild,
                      "count": len(held), "tracked": tracked,
-                     "attacks_at": {lvl: sum(1 for l2, s, _ in tracked if s in ("second attack", "third attack") and l2 <= lvl) for lvl in (10, 25, 40, 50)}})
+                     # Expected swings at full skill, as multi_hit rolls them
+                     # (combat_rules.c expected_swings_x100): two sure, second
+                     # attack 49%, third 24% -- not whole sure blows.
+                     "swings_at": {lvl: round(2 + sum({"second attack": 0.49, "third attack": 0.24}.get(s, 0)
+                                                     for l2, s, _ in tracked if l2 <= lvl), 2)
+                                   for lvl in (10, 25, 40, 50)}})
     return rows
 
 

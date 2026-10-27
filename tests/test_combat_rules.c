@@ -187,5 +187,29 @@ int main( void )
             && FLAMESTRIKE_SIDES < 12 && LIGHTNING_BOLT_SIDES < 12,
             "a die a level for the class, half for others, smaller dice than d12" );
 
+    /* Swings: a chance is exactly the share of number_percent() (1..100)
+       rolls below it, and the preview's expectation adds them up. */
+    {
+        int c, r, ok = 1;
+
+        for ( c = -10; c <= 200; c++ )
+        {
+            int below = 0;
+
+            for ( r = 1; r <= 100; r++ )
+                if ( r < c )
+                    below++;
+            if ( swing_chance_percent( c ) != below )
+                ok = 0;
+        }
+        report( "expected_swings",
+                ok && expected_swings_x100( 0, 0, 0, 0 ) == 200
+                && expected_swings_x100( 100, 0, 0, 0 ) == 249
+                && expected_swings_x100( 100, 100, 0, 0 ) == 273
+                && expected_swings_x100( 100, 100, 100, 100 ) == 312
+                && expected_swings_x100( 75, 75, 0, 0 ) == 200 + 36 + 17,
+                "two sure swings, then each extra one a number_percent() chance" );
+    }
+
     return failures;
 }

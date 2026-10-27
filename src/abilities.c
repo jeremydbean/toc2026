@@ -22,6 +22,7 @@
 
 #include <string.h>
 #include "merc.h"
+#include "combat_rules.h"
 #include "magic.h"
 
 #define ABILITY_NONE (-1)
@@ -601,23 +602,40 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
     if ( col % 3 != 0 )
         toc_strlcat( out, "\n\r", sizeof(out) );
 
-    /* Blows a round before haste: everyone swings twice (multi_hit),
-       second attack adds one and third attack another. */
-    toc_strlcat( out, "\n\rBlows a round, before haste:", sizeof(out) );
-    for ( i = 0; i < 4; i++ )
+    /* Swings a round before haste, as multi_hit rolls them: two sure, and
+       each extra swing a chance, not a sure blow (review, 2026-10-27: this
+       printed four for a warrior, who expects 2.73 at full skill). Shown
+       at full skill; dual wield apart, since it needs a weapon in the
+       off hand. */
     {
-        int blows = 2;
+        int dual_from = -1, x;
 
-        if ( preview_holds( cls, gsn_second_attack, given, src )
-        &&   skill_table[gsn_second_attack].skill_level[cls] <= marks[i] )
-            blows++;
-        if ( preview_holds( cls, gsn_third_attack, given, src )
-        &&   skill_table[gsn_third_attack].skill_level[cls] <= marks[i] )
-            blows++;
-        snprintf( buf, sizeof(buf), "  level %d: %d", marks[i], blows );
+        snprintf( buf, sizeof(buf), "\n\rSwings a round at full skill, before haste: two "
+                  "sure, then second attack %d%%, third attack %d%%.\n\r",
+                  swing_chance_percent( 100 / 2 ), swing_chance_percent( 100 / 4 ) );
         toc_strlcat( out, buf, sizeof(out) );
+        for ( i = 0; i < 4; i++ )
+        {
+            int second = preview_holds( cls, gsn_second_attack, given, src )
+                      && skill_table[gsn_second_attack].skill_level[cls] <= marks[i] ? 100 : 0;
+            int third = preview_holds( cls, gsn_third_attack, given, src )
+                     && skill_table[gsn_third_attack].skill_level[cls] <= marks[i] ? 100 : 0;
+
+            x = expected_swings_x100( second, third, 0, 0 );
+            snprintf( buf, sizeof(buf), "  level %d: %d.%02d", marks[i], x / 100, x % 100 );
+            toc_strlcat( out, buf, sizeof(out) );
+        }
+        toc_strlcat( out, "\n\r", sizeof(out) );
+        if ( preview_holds( cls, gsn_dual_wield, given, src ) )
+            dual_from = skill_table[gsn_dual_wield].skill_level[cls];
+        if ( dual_from >= 0 && dual_from < LEVEL_IMMORTAL )
+        {
+            x = swing_chance_percent( ( 100 + 100 ) / 5 );
+            snprintf( buf, sizeof(buf), "  Dual wield, with a weapon in the off hand: "
+                      "+0.%02d a round from level %d.\n\r", x, dual_from );
+            toc_strlcat( out, buf, sizeof(out) );
+        }
     }
-    toc_strlcat( out, "\n\r", sizeof(out) );
 
     /* What this guild costs or gives against the class's own. */
     if ( cls < CLASS_MONK && guild != cls )

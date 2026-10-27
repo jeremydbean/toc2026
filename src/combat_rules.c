@@ -122,6 +122,25 @@ int flamestrike_dice( int level, int own_class )
 
 /* Lightning bolt's number of dice of LIGHTNING_BOLT_SIDES: the level, to
    MASTERY_TOP_LEVEL, for a mage; half that for anyone else. */
+int swing_chance_percent( int chance )
+{
+    if ( chance <= 1 )
+        return 0;
+    return chance > 101 ? 100 : chance - 1;
+}
+
+int expected_swings_x100( int second_skill, int third_skill,
+                          int dual_skill, int dual_weapon_skill )
+{
+    int total = 200;
+
+    total += swing_chance_percent( second_skill / 2 );
+    if ( dual_skill > 0 )
+        total += swing_chance_percent( ( dual_skill + dual_weapon_skill ) / 5 );
+    total += swing_chance_percent( third_skill / 4 );
+    return total;
+}
+
 int lightning_bolt_dice( int level, int own_class )
 {
     if ( level < 1 )

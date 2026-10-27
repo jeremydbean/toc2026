@@ -17,6 +17,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   cannot take another is refused before anything moves.
   `tests/test_death_transfer.py`, `tests/test_resurrection_transfer.py`.
 
+- **Telemetry and previews** (2026-10-27). `progress.tsv` counts losses
+  outside `damage()` (reflected shields, self-damage) and only ever sees
+  healing rise; GAINLIST PREVIEW gives second and third attack as the
+  chances they are, with expected swings and dual wield; `class_bench.py`
+  pays the real cast cost and stops on a refused or missing report.
 
 - **The main classes brought up to the strong ones** (2026-10-27; owner:
   scale up rather than nerf). Warriors and thieves gain weapon mastery

@@ -96,7 +96,7 @@ class ProgressLogTests(unittest.TestCase):
         flees = [r for r in rows if r[1] == "flee"]
         self.assertEqual(len(kills), 2, text)
         kill, unpaid = kills
-        self.assertEqual(len(kill), 22, kill)
+        self.assertEqual(len(kill), 23, kill)
         self.assertEqual(kill[2], hunter_id)                  # the Id, not a name
         self.assertEqual((kill[3], kill[8], kill[9]), ("5", str(SMURF), "3"))
         self.assertTrue(kill[10].endswith(".are"), kill)       # an area file, never a room
@@ -109,8 +109,9 @@ class ProgressLogTests(unittest.TestCase):
         self.assertRegex(kill[16], r"^-?\d+$", "guild")
         self.assertRegex(kill[17], r"^(-|[TESH]+)$", "buffs")
         self.assertGreater(int(kill[18]), 0, "damage dealt")
-        for col in kill[19:22]:
+        for col in kill[19:23]:
             self.assertRegex(col, r"^-?\d+$", kill)
+        self.assertGreaterEqual(int(kill[20]), 0, "healing is only ever seen to rise")
         # Fifteen levels over the smurf: nothing earned, still recorded.
         self.assertEqual((unpaid[3], unpaid[8]), ("20", str(SMURF)), unpaid)
         self.assertEqual(int(unpaid[14]), 0, unpaid)
@@ -118,6 +119,60 @@ class ProgressLogTests(unittest.TestCase):
         self.assertEqual(flees[0][8], str(WORKER))
         self.assertNotIn("Zhunter", text)
         self.assertNotIn(str(HALLS), text)
+
+
+    def test_reflected_damage_is_a_loss_not_negative_healing(self) -> None:
+        """A foe's fire shield burns the attacker outside damage(): the
+        ledger inferred healing as now - start + taken and wrote a negative
+        heal with no heal cast (review, 2026-10-27). Losses outside damage()
+        are counted where they happen now, and healing is only ever seen to
+        rise."""
+        with LiveMud() as mud:
+            for name, level in (("Zburner", 20), ("Zsetter", 70)):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PW)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=level, Room=HALLS,
+                                  HMV="9000 9000 500 500 500 500", HMVP="9000 500 500")
+            with mud.connect(timeout=120) as hunter, mud.connect(timeout=120) as setter:
+                login(hunter, "Zburner", PW)
+                login(setter, "Zsetter", PW)
+                setter.must("set char zburner hitroll 40", "")
+                run(setter, f"load mob {SMURF}")
+                # Too many hit points to reach its wimpy point: it stands
+                # and burns the hunter until staff end it at one hit point.
+                setter.must("set char smurf hp 30000", "")
+                setter.must("restore smurf", "")
+                setter.must("empower smurf perm", "mpower")      # fire shield among them
+                hunter.buffer = ""
+                run(hunter, "kill smurf", 1.0)
+                hunter.expect("Flaming Aura", timeout=60)
+                # EMPOWER brings divine protection: the first death is
+                # spared and credits nobody, so it is ended twice.
+                mark = len(hunter.transcript)
+                for _ in range(2):
+                    setter.must("set char smurf hp 1", "")
+                    setter.must("restore smurf", "")
+                    hunter.send("kill smurf")       # a spared foe stops fighting
+                    hunter.expect("is DEAD", timeout=120)
+                    hunter.drain(2.0)
+                    if "experience points" in hunter.transcript[mark:]:
+                        break
+                self.assertIn("experience points", hunter.transcript[mark:])
+                for client in (hunter, setter):
+                    client.send("quit")
+                    client.wait_closed()
+            text = (mud.root / "log" / "progress.tsv").read_text(encoding="latin-1")
+
+        kills = [r for r in (line.split("\t") for line in text.splitlines()) if r[1] == "kill"]
+        self.assertEqual(len(kills), 1, text)
+        kill = kills[0]
+        self.assertEqual(len(kill), 23, kill)
+        taken, healed, direct = int(kill[19]), int(kill[20]), int(kill[22])
+        self.assertGreater(direct, 0, f"the shield's burns are direct losses: {kill}")
+        self.assertGreaterEqual(taken, direct, kill)
+        self.assertGreaterEqual(healed, 0, kill)
 
 
 class ProgressReportTests(unittest.TestCase):

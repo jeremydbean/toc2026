@@ -60,7 +60,7 @@ class CombatRulesHarnessTests(unittest.TestCase):
         failed = [line for line in run.stdout.splitlines() if line.startswith("FAIL")]
         self.assertEqual(failed, [], run.stdout)
         self.assertEqual(run.returncode, 0, run.stdout)
-        self.assertGreaterEqual(run.stdout.count("\nok ") + run.stdout.startswith("ok "), 11)
+        self.assertGreaterEqual(run.stdout.count("\nok ") + run.stdout.startswith("ok "), 12)
 
 
 class CombatRulesCallSiteTests(unittest.TestCase):
