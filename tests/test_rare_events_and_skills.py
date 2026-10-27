@@ -93,14 +93,19 @@ class RareEventAndSkillTests(unittest.TestCase):
         scribe = function_body(self.magic2, "void do_scribe", "void spell_vengence")
 
         for body, name in ((concoct, "potion"), (scribe, "scroll")):
-            self.assertLess(body.index("number_percent() > chance / 2 + 45"),
+            self.assertLess(body.index("number_percent() > skill / 2 + 45"),
                             body.index("%s = craft_product(" % name))
         self.assertRegex(
             scribe,
             r"won't make a usable ink\.\\n\\r\", ch \);\s*return;",
         )
-        self.assertGreaterEqual(concoct.count("save_char_obj( ch )"), 2)
-        self.assertGreaterEqual(scribe.count("save_char_obj( ch )"), 2)
+        # The save moved into craft_commit (review, 2026-10-27), which both
+        # outcomes of each craft go through and which reads its result.
+        self.assertGreaterEqual(concoct.count("craft_commit( ch, parts"), 2)
+        self.assertGreaterEqual(scribe.count("craft_commit( ch, parts"), 2)
+        commit = function_body(self.magic2, "static int craft_commit(", "static void craft_inputs(")
+        self.assertIn("save_char_obj( ch );", commit)
+        self.assertIn("status = save_char_obj_status();", commit)
 
     def test_event_loot_is_autolootable_and_never_empty(self) -> None:
         corpse = function_body(self.fight, "void make_corpse", "void death_cry")

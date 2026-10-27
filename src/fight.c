@@ -1815,10 +1815,13 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     &&   ch->pcdata->meter_active )
 	ch->pcdata->meter_damage += dam;
 
+    /* What moved the victim's hit points since the ledger last looked,
+       before this blow (playlog.c). Above the guard: the guard is the
+       statement on the subtraction (tests/test_training_dummy.py). */
+    fight_ledger_observe( victim );
     if ( !dummy_absorb( ch, victim, dam, dt )
     &&   !is_invulnerable( victim ) )
     {
-	fight_ledger_observe( victim );
 	victim->hit -= dam;
 	if ( dam > 0 && victim != ch && !IS_NPC(victim) && victim->pcdata != NULL )
 	    victim->pcdata->fight_taken += dam;

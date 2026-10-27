@@ -145,16 +145,21 @@ class ProgressLogTests(unittest.TestCase):
                 setter.must("set char smurf hp 30000", "")
                 setter.must("restore smurf", "")
                 setter.must("empower smurf perm", "mpower")      # fire shield among them
-                hunter.buffer = ""
-                run(hunter, "kill smurf", 1.0)
-                hunter.expect("Flaming Aura", timeout=60)
                 # EMPOWER brings divine protection: the first death is
-                # spared and credits nobody, so it is ended twice.
+                # spared and credits nobody, and the next fight starts a
+                # new ledger (set_fighting) -- so each fight is fought until
+                # the aura has burned the hunter before it is ended.
                 mark = len(hunter.transcript)
                 for _ in range(2):
+                    setter.must("set char smurf hp 30000", "")
+                    setter.must("restore smurf", "")
+                    burn = len(hunter.transcript)
+                    hunter.buffer = ""              # expect() must see this fight's lines
+                    hunter.send("kill smurf")
+                    hunter.expect("Flaming Aura", timeout=60)
+                    self.assertIn("Flaming Aura", hunter.transcript[burn:])
                     setter.must("set char smurf hp 1", "")
                     setter.must("restore smurf", "")
-                    hunter.send("kill smurf")       # a spared foe stops fighting
                     hunter.expect("is DEAD", timeout=120)
                     hunter.drain(2.0)
                     if "experience points" in hunter.transcript[mark:]:

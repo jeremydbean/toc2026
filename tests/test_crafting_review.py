@@ -335,30 +335,48 @@ class CraftingLiveTests(unittest.TestCase):
         self.assertIn("unconfirmed", [r[18] for r in rows])
 
     def test_a_blast_spends_its_ingredients_before_it_burns(self) -> None:
-        tries = 8
-        pairs = "".join(obj(v) for v in (FEATHER, TOOTH) * tries)
+        # A blast is 2d10 and a player dies at -11, so from one hit point
+        # it kills only on 12 or more -- about one blast in two; the rest
+        # leave the brewer incapacitated, and staff stand them back up at
+        # one hit point to try again (CI, 2026-10-27).
+        tries, singed_pairs = 30, 8
         with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
             make(mud, "Zsinged", Levl=30, Cla=0, Room=HALLS,
                  HMV="300 300 300 300 300 300", HMVP="300 300 300")
             make(mud, "Zdoomed", Levl=30, Cla=0, Room=HALLS,
                  HMV="1 300 300 300 300 300", HMVP="300 300 300")
+            make(mud, "Zblaststaff", Levl=70, Room=HALLS)
+            add(mud, "Zsinged", "".join(obj(v) for v in (FEATHER, TOOTH) * singed_pairs),
+                skills=("concoct",))
+            add(mud, "Zdoomed", "".join(obj(v) for v in (FEATHER, TOOTH) * tries),
+                skills=("concoct",))
             for name in ("Zsinged", "Zdoomed"):
-                add(mud, name, pairs, skills=("concoct",))
                 low_skill(mud, name, "concoct", 2)          # 46%: blasts are likely
-            with mud.connect(timeout=120) as singed, mud.connect(timeout=120) as doomed:
+            with mud.connect(timeout=120) as singed, mud.connect(timeout=120) as doomed, \
+                    mud.connect(timeout=120) as staff:
                 login(singed, "Zsinged", PW)
                 login(doomed, "Zdoomed", PW)
-                for client in (singed, doomed):
+                login(staff, "Zblaststaff", PW)
+                for client in (singed, doomed, staff):
                     client.sync("scroll 0")
-                # The fatal one first, before a tick can heal that one hit point.
-                died = until(doomed, "concoct feather tooth", "Something isn't right", tries=tries)
+                staff.must("set char zdoomed hp 1", "")
+                staff.must("restore zdoomed", "")
+                died = ""
+                for _ in range(tries):
+                    out = doomed.sync("concoct feather tooth", timeout=30)
+                    if "You have been KILLED" in out:
+                        died = out
+                        break
+                    if "Something isn't right" in out:
+                        # Burned but alive: back to one hit point, and again.
+                        staff.must("restore zdoomed", "")
                 self.assertIn("Something isn't right", died)
                 self.assertIn("You have been KILLED", died)
                 # Relocated as any death is, and still answering.
                 self.assertIn("Zdoomed", doomed.sync("score"))
 
                 blast = until(singed, "concoct feather tooth", "Something isn't right",
-                              tries=tries)
+                              tries=singed_pairs)
                 self.assertIn("Something isn't right", blast)
                 self.assertNotIn("KILLED", blast)
                 singed_left = singed.sync("inventory")
@@ -376,7 +394,7 @@ class CraftingLiveTests(unittest.TestCase):
         self.assertEqual(len(blasts), 1, mine)
         self.assertGreaterEqual(int(blasts[0][17]), 2, "burn damage recorded")
         self.assertEqual(blasts[0][18], "saved")
-        # Every attempt spent a pair: what is left is tries - attempts.
+        # Every attempt spent a pair; at least one is left.
         self.assertIn("phoenix feather", singed_left)
 
         theirs = [r for r in rows if r[2] == "Zdoomed"]
