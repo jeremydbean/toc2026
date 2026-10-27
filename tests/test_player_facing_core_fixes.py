@@ -122,8 +122,10 @@ class PlayerFacingCoreFixTests(unittest.TestCase):
         skill_help = " ".join(self.skill_help.lower().split())
 
         self.assertIn("only empty corpses are sacrificed", command_help)
-        self.assertIn("open adjacent exit", command_help)
-        self.assertIn("visible mobile through an open exit", skill_help)
+        # SHOOT and ARCHERY are one page in commands.are since the help
+        # audit (2026-10-27): skills.are's copy was never reached.
+        self.assertIn("visible mobile through an open adjacent exit", command_help)
+        self.assertNotIn("\n-1 archery bow shoot~", skill_help)
 
     def test_invalid_portals_do_not_spend_money_or_charges(self) -> None:
         enter = function_body(self.act_move, "void do_enter", "void trapped")

@@ -11,10 +11,10 @@ immortals.  They come in four disciplines:
 
 The 2nd remort gives one power from each discipline, chosen at random, the
 3rd a second from each and the 4th a third: 4, then 8, then 12.  They stack.
-The 5th and final remort gives all 17.  A remort wipes your skills, but the
-powers you were given come back each life at 1%, and a remorted character
-holding fewer than their due is topped up at login.  A power the immortals
-grant arrives with the next level you gain.
+The 5th and final remort gives all 17 psionic skills.  A remort wipes your
+skills, but the powers you were given come back each life at 1%, and a
+remorted character holding fewer than their due is topped up at login.  A
+power the immortals grant arrives with the next level you gain.
 
 Each power opens at its own level, and below it you hold the power but can
 neither use nor train it:
@@ -94,9 +94,9 @@ Each round a confused victim loses its turn wandering in a daze until it
 shakes the confusion off -- a little over one round in ten -- and attacks
 again.  It lasts four ticks, five from level 30 and six from level 40.
 
-It costs your level plus 50 mana.  A mind immune to mental attack cannot be
-confused and a resistant one may throw it off; somebody already confused is
-refused, and so is the treasure goblin, before anything is spent.
+It costs your level plus 50 mana.  A mind immune to mental damage can never
+be confused, and a mentally resistant one may throw it off; somebody already
+confused is refused, and so is the treasure goblin, before anything is spent.
 
 Level 21.  Like every psionic power it starts at 1% until practised with
 Salir, and cannot be used below its level.  A missed roll costs a little
@@ -339,8 +339,9 @@ Syntax: transfusion <character>
 
 Gives 50 of your own hit points to another character in the room, up to
 their maximum.  You lose exactly 50 whatever they gain.  It costs 20 mana,
-needs you to have more than 50 hit points, and refuses yourself and anyone
-already at full health.  It can be used in a fight, and on anybody in the
+and cannot be used when doing so would reduce you to zero hit points: you
+need more than 50.  It refuses yourself and anyone already at full health.
+It can be used in a fight, and on anybody in the
 room -- it does not ask whose side they are on.
 
 Level 28.  Like every psionic power it starts at 1% until practised with
@@ -1095,7 +1096,7 @@ weapon dice, its affects, and for potions, scrolls, pills, wands and
 staves the spells in it, each named only as often as your skill.  Every
 number is an estimate, anything from half to double the truth.  It takes
 nine seconds, and costs gold: twenty times the object's level, less twice
-your skill and half your level, so simple things are often free.  An
+your skill and half your level, possibly to zero for simple items.  An
 object that cannot be identified says only that it is magical.
 
 Usable from level: Mage 5, Cleric 6, Thief 12, Warrior 20, Monk 25; never

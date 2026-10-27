@@ -199,7 +199,10 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         self.assertIn("IS_OBJ_STAT2(obj, ITEM2_ADD_FLY)", self.handler)
 
     def test_help_matches_the_repaired_mechanics(self) -> None:
-        self.assertIn("possibly to zero for simple items", self.command_help)
+        # HELP LORE is one page, in skills.are, since the help audit
+        # (2026-10-27).
+        self.assertIn("possibly to zero for simple items",
+                      " ".join(self.skill_help.split()))
         self.assertIn("pending quest-point reward", self.command_help)
         self.assertIn("5-7 more", self.command_help)
         self.assertIn("cannot be used when doing so would reduce", self.skill_help)

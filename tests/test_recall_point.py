@@ -324,8 +324,10 @@ class RecallSourceTests(unittest.TestCase):
         self.assertIn("ROOM_VNUM_TEMPLE", helper)
 
     def test_the_help_describes_all_three_words(self) -> None:
-        for source, name in ((self.commands, "commands.are"),
-                             (self.skills, "skills.are")):
+        # One page since the help audit (2026-10-27): skills.are's copy was
+        # never read, commands.are loading first with the same keywords.
+        self.assertNotIn("\n0 RECALL /~\n", self.skills)
+        for source, name in ((self.commands, "commands.are"),):
             entry = source.split("\n0 RECALL /~\n", 1)[1].split("\n~\n", 1)[0]
             for word in ("RECALL SET", "RECALL DEFAULT", "RECALL WHERE",
                          "30 minutes"):

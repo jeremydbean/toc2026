@@ -68,7 +68,9 @@ class PsionicsSystemTests(unittest.TestCase):
 
         self.assertEqual(expected, listed)
         self.assertIn("static const int psi_set_sizes[4] = { 4, 4, 4, 5 }", self.stubs)
-        self.assertIn("all 17 psionic skills", self.command_help)
+        # HELP PSIONICS lives in skills.are since the help audit (2026-10-27):
+        # the commands.are copy loaded first and hid it.
+        self.assertIn("all 17 psionic skills", " ".join(self.skill_help.split()))
         for name in expected:
             self.assertIn(name.upper(), self.skill_help.upper())
 
@@ -293,7 +295,8 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertLessEqual(high, 50)
 
     def test_confuse_help_matches_the_implemented_ward_rules(self) -> None:
-        entry = function_body(self.command_help, "0 CONFUSE~", "0 DIRT DIRT-KICK~")
+        # One CONFUSE page, in skills.are, since the help audit (2026-10-27).
+        entry = " ".join(function_body(self.skill_help, "0 CONFUSE~", "\n~\n").split())
 
         self.assertIn("immune to mental damage can never be", entry)
         self.assertIn("mentally resistant", entry)

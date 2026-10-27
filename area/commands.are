@@ -1687,8 +1687,8 @@ See also: BREW, RECITE, ACHIEVEMENTS
 0 SHOOT ARCHERY BOW~
 Syntax: shoot <target>
 
-SHOOT fires a wielded bow at a mobile in the next room, through an open
-exit you can see; somebody in your own room is out of range.  You need the
+SHOOT fires a wielded bow at a visible mobile through an open adjacent exit,
+in the next room; somebody in your own room is out of range.  You need the
 ARCHERY skill and cannot shoot while fighting, and players cannot be shot
 at from another room.  A hit deals 2d4 piercing damage; no arrows are
 needed or used.  It costs three seconds, hit or miss, and both can improve
