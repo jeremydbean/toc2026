@@ -32,7 +32,8 @@ import pathlib
 import re
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, MIND_ARENA, create_character, login, patch_player_file,
+                      skip_reason)
 
 SKIP = skip_reason()
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -81,7 +82,7 @@ class FrictionLiveTests(unittest.TestCase):
         return client.transcript[mark:]
 
     def test_track_hide_refresh_and_practice(self) -> None:
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             for name in ("Zfriction", "Zquarry"):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PASSWORD)
@@ -139,8 +140,10 @@ class FrictionLiveTests(unittest.TestCase):
                 self.assertIn("as fresh as I can make them", self.run_cmd(client, "heal refresh", 4.0))
 
                 # PRACTICE <skill> <count> before the Weaponsmaster (mob 10,
-                # any class, any guild), brought to the Temple.
-                self.run_cmd(client, "goto %d" % TEMPLE, 1.6)
+                # any class, any guild). He is no sentinel and walked out of
+                # the Temple between two commands in CI (2026-10-27), so he
+                # is brought to the fixture arena, which has no exits.
+                self.run_cmd(client, "goto %d" % MIND_ARENA, 1.6)
                 self.run_cmd(client, "load mob 10", 1.6)
                 self.run_cmd(client, "set skill zfriction sword 1", 1.2)
                 self.run_cmd(client, "set char zfriction prac 40", 1.2)

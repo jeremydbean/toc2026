@@ -87,5 +87,6 @@ class LiveTests(unittest.TestCase):
                 self.assertIn("devours it and steps aside", fed, fed)
                 self.assertIn("north", mortal.sync("exits").lower())
 
+
 if __name__ == "__main__":
     unittest.main()
