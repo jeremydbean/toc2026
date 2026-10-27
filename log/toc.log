@@ -206822,3 +206822,37 @@ Tue Oct 27 00:39:15 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of De
 Tue Oct 27 00:39:17 2026 :: Log Alaric [4208]: sc
 Tue Oct 27 00:39:30 2026 :: Log Alaric [4208]: score
 Tue Oct 27 00:39:37 2026 :: Log Alaric [4208]: i
+Tue Oct 27 00:39:40 2026 :: Log Alaric [4208]: help heal
+Tue Oct 27 00:39:51 2026 :: Log Alaric [4208]: help healspell
+Tue Oct 27 00:39:57 2026 :: Log Alaric [4208]: affects off: iron skin
+Tue Oct 27 00:40:11 2026 :: Log Alaric [4208]: wake
+Tue Oct 27 00:40:11 2026 :: Log Alaric [4208]: l
+Tue Oct 27 00:40:14 2026 :: Log Alaric [4208]: l i pit
+Tue Oct 27 00:40:15 2026 :: Log Alaric [4208]: e
+Tue Oct 27 00:40:15 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Tue Oct 27 00:40:17 2026 :: Log Alaric [4207]: eq
+Tue Oct 27 00:40:19 2026 :: Log Alaric [4207]: steel
+Tue Oct 27 00:40:29 2026 :: Log Alaric [4207]: e
+Tue Oct 27 00:40:29 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4202]: n
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4203]: n
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4210]: s
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4203]: s
+Tue Oct 27 00:40:30 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Tue Oct 27 00:40:31 2026 :: Log Alaric [4202]: e
+Tue Oct 27 00:40:31 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Tue Oct 27 00:40:31 2026 :: Log Alaric [4201]: e
+Tue Oct 27 00:40:31 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Tue Oct 27 00:40:31 2026 :: Log Alaric [2427]: n
+Tue Oct 27 00:40:31 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 27 00:40:31 2026 :: Log Alaric [2404]: n
+Tue Oct 27 00:40:31 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Tue Oct 27 00:40:34 2026 :: Log Alaric [2401]: quit
+Tue Oct 27 00:40:34 2026 :: Alaric has quit.
+Tue Oct 27 00:40:34 2026 :: [QUIT] Player rejoined the real world.
+Tue Oct 27 00:41:05 2026 :: Treasure goblin: vanished from room 16032 (Main Deck, pirate.are) (too long in one area).
+Tue Oct 27 00:43:17 2026 :: Sock.sinaddr:  3.212.128.62
+Tue Oct 27 00:43:17 2026 :: EOF encountered on read.
