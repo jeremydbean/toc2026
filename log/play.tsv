@@ -28855,3 +28855,16 @@
 1793128882	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	wear	triforce	You light The Triforce and hold it.
 1793128884	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) The Triforce // <worn on finger>    the Red Ring of Hyrule
 1793128893	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	look	trifo	The Master Sword rests here, its sacred blade shining with golden light. // The the Master Sword is in perfect condition.
+1793131885	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793131888	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1813 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
+1793131901	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	invuln		Invulnerability on. Blows will visibly have no effect.
+1793131913	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	goto	aug	Prince Augustus' bedroom. // [Room: 10176]     [Sector: Inside]     [Flags: Indoors No_Recall] //   The ancient words can't be stopped and resound in your mind:
+1793131914	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	kill	aug	Your slash grazes Crown Prince Augustus Starfire. [-7] // The Master Sword shears through Crown Prince Augustus Starfire with terrible force! // Your slash grazes Crown Prince Augustus Starfire. [-6]
+1793131936	cmd	Killuminati	70	10176	glitter.are	fighting	100	0	fight	peace		All is peaceful.
+1793131937	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	restore		Room restored.
+1793131938	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	goto	1	The Void // [Room: 1]     [Sector: City]     [Flags: No_Mob Indoors] //   You are floating in nothing.
+1793131943	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793131949	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	remove	mas	You stop using the Master Sword.
+1793131950	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn.
+1793131951	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	wear	mas	You wield the Master Sword. // The Master Sword feels like a part of you!
+1793131953	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
