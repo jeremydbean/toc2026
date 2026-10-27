@@ -1925,7 +1925,7 @@ F
 A 0 0 {AFF_HASTE_FLAG}"""
     return object_record(
         MASTER_SWORD_VNUM,
-        "master sword blade triforce",
+        "master sword blade",
         "the Master Sword",
         "The Master Sword rests here, its sacred blade shining with golden light.",
         "steel",
@@ -1952,13 +1952,16 @@ def triforce_record() -> str:
     """
     description = """E
 triforce triangles~
-Three golden triangles join as one, embodying Power, Wisdom, and Courage.
-Nobody finds it whole: COMBINE TRIFORCE makes it from the nine pieces, one
-from each of Hyrule's dungeon guardians, and it counts as all nine.
-Wear it and it rises to hover at your shoulder, lighting the way, and the
-world shows you everything: what is invisible, hidden or cloaked in the
-dark, as a level 59 hero with holy light would see it -- though not the
-gods who hide themselves above that.
+Power, Wisdom and Courage, joined as one:
+
+               /\\
+              /  \\
+             /____\\
+            /\\    /\\
+           /  \\  /  \\
+          /____\\/____\\
+
+Wear it as a light and you see what is hidden, invisible or in the dark.
 ~"""
     return object_record(
         30286,
