@@ -28805,3 +28805,37 @@
 1793116250	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	help		SUMMARY // MOVEMENT                            GROUP // north south east west up down       follow group gtell split
 1793116259	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	commands		put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      
 1793124535	session	Killuminati	70	1	limbo_halloween.are	shutdown	8708s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	9 commands	0 refused	coin: none
+1793128638	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793128639	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	look		The Void // [Room: 1]     [Sector: City]     [Flags: No_Mob Indoors] //   You are floating in nothing.
+1793128640	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	equipment		You are using: // <worn on finger>    the Red Ring of Hyrule // <worn about body>   a dark red tunic with blue rims
+1793128642	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) (Humming) the Master Sword //      (Glowing) the Trident of Ganon
+1793128649	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	wear	mas	You wield the Master Sword. // The Master Sword feels like a part of you!
+1793128652	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	equipment		You are using: // <worn on finger>    the Red Ring of Hyrule // <worn about body>   a dark red tunic with blue rims
+1793128663	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	remove	triforce	You stop using the final Triforce piece.
+1793128667	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	wear	2.trif	You light The Triforce and hold it.
+1793128669	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) The Triforce // <worn on finger>    the Red Ring of Hyrule
+1793128673	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	eat	tri	You eat the final Triforce piece.
+1793128680	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	remove	tun	You stop using a dark red tunic with blue rims.
+1793128684	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) The Triforce // <worn on finger>    the Red Ring of Hyrule
+1793128687	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793128712	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	look	trifo	The Master Sword rests here, its sacred blade shining with golden light. // The the Master Sword is in perfect condition.
+1793128717	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	look	2.triforce	Three golden triangles join as one, embodying Power, Wisdom, and Courage. // Nobody finds it whole: COMBINE TRIFORCE makes it from the nine pieces, one // from each of Hyrule's dungeon guardians, and it counts as all nine.
+1793128744	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793128786	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793128789	cmd	Killuminati	70	10176	glitter.are	standing	100	1	-	goto	augu	Prince Augustus' bedroom. // [Room: 10176]     [Sector: Inside]     [Flags: Indoors No_Recall] //   The ancient words can't be stopped and resound in your mind:
+1793128791	cmd	Killuminati	70	10176	glitter.are	standing	100	0	-	kill	aug	Your slash wounds Crown Prince Augustus Starfire. [-20] // Your slash scratches Crown Prince Augustus Starfire. [-1] // Your slash *** DEVASTATES *** Crown Prince Augustus Starfire! [-63]
+1793128805	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	empower	self	The divine empowerment fades away. // Empowerment removed from Killuminati.
+1793128809	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	titanic	self	Your titanic stature fades away. // Titanic removed from Killuminati.
+1793128826	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128827	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128828	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128829	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128830	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128830	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128831	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128832	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128832	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128833	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	The white aura around Crown Prince Augustus Starfire's body vanishes. // Ok.
+1793128833	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128833	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
+1793128833	cmd	Killuminati	70	10176	glitter.are	fighting	99	0	fight	cast	'dispel magic' aug	You failed.
