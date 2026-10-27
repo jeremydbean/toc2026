@@ -206869,3 +206869,83 @@ Tue Oct 27 01:03:36 2026 :: Sock.sinaddr:  5.161.177.47
 Tue Oct 27 01:03:36 2026 :: EOF encountered on read.
 Tue Oct 27 01:04:49 2026 :: Sock.sinaddr:  85.217.149.35
 Tue Oct 27 01:04:49 2026 :: EOF encountered on read.
+Tue Oct 27 01:06:35 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Oct 27 01:06:36 2026 :: Loading Alaric's playerfile
+Tue Oct 27 01:06:37 2026 :: Loading Alaric's playerfile
+Tue Oct 27 01:06:37 2026 :: Alaric@208.126.22.104 has connected.
+Tue Oct 27 01:06:38 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 0
+Tue Oct 27 01:06:41 2026 :: Log Alaric [2401]: who
+Tue Oct 27 01:06:45 2026 :: Log Alaric [2401]: jump rock
+Tue Oct 27 01:06:45 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Tue Oct 27 01:06:45 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Tue Oct 27 01:06:47 2026 :: Log Alaric [4208]: l
+Tue Oct 27 01:06:49 2026 :: Log Alaric [4208]: who
+Tue Oct 27 01:06:50 2026 :: Log Alaric [4208]: eq
+Tue Oct 27 01:07:40 2026 :: Log Alaric [4208]: sc
+Tue Oct 27 01:07:42 2026 :: Log Alaric [4208]: r e 4
+Tue Oct 27 01:07:42 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Tue Oct 27 01:07:42 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 27 01:07:42 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Tue Oct 27 01:07:42 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Tue Oct 27 01:07:43 2026 :: Log Alaric [2427]: n
+Tue Oct 27 01:07:43 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 27 01:07:43 2026 :: Log Alaric [2404]: n
+Tue Oct 27 01:07:43 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Tue Oct 27 01:07:44 2026 :: Log Alaric [2401]: n
+Tue Oct 27 01:07:44 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Tue Oct 27 01:07:44 2026 :: Log Alaric [2402]: n
+Tue Oct 27 01:07:44 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Tue Oct 27 01:07:45 2026 :: Log Alaric [2415]: e
+Tue Oct 27 01:07:45 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Tue Oct 27 01:07:46 2026 :: Log Alaric [2485]: n
+Tue Oct 27 01:07:46 2026 :: Log Alaric [2482]: arrived (Nomads Tent.) from 2485
+Tue Oct 27 01:07:46 2026 :: Log Alaric [2482]: e
+Tue Oct 27 01:07:46 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2482
+Tue Oct 27 01:07:46 2026 :: Log Alaric [2483]: e
+Tue Oct 27 01:07:46 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Tue Oct 27 01:07:47 2026 :: Log Alaric [2484]: e
+Tue Oct 27 01:07:47 2026 :: Log Alaric [4]: arrived (The First National Bank of Dresden.) from 2484
+Tue Oct 27 01:07:47 2026 :: Log Alaric [4]: e
+Tue Oct 27 01:07:47 2026 :: Log Alaric [4]: e
+Tue Oct 27 01:07:48 2026 :: Log Alaric [4]: sc
+Tue Oct 27 01:07:52 2026 :: Log Alaric [4]: deposit 3000 platinum
+Tue Oct 27 01:07:53 2026 :: Log Alaric [4]: w
+Tue Oct 27 01:07:53 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 4
+Tue Oct 27 01:07:53 2026 :: Log Alaric [2484]: s
+Tue Oct 27 01:07:53 2026 :: Log Alaric [2487]: arrived (Market Plaza, the Hallows Fair) from 2484
+Tue Oct 27 01:07:54 2026 :: Log Alaric [2487]: w
+Tue Oct 27 01:07:54 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2487
+Tue Oct 27 01:07:54 2026 :: Log Alaric [2486]: w
+Tue Oct 27 01:07:54 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2486
+Tue Oct 27 01:07:54 2026 :: Log Alaric [2485]: w
+Tue Oct 27 01:07:54 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Tue Oct 27 01:07:55 2026 :: Log Alaric [2415]: w
+Tue Oct 27 01:07:55 2026 :: Log Alaric [2470]: arrived (Wizards Way.) from 2415
+Tue Oct 27 01:07:55 2026 :: Log Alaric [2470]: s
+Tue Oct 27 01:07:56 2026 :: Log Alaric [2470]: e
+Tue Oct 27 01:07:56 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2470
+Tue Oct 27 01:07:56 2026 :: Log Alaric [2415]: s
+Tue Oct 27 01:07:56 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Tue Oct 27 01:07:57 2026 :: Log Alaric [2402]: s
+Tue Oct 27 01:07:57 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2401]: u
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2410]: u
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2411]: u
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2414]: u
+Tue Oct 27 01:08:00 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Oct 27 01:08:01 2026 :: Log Alaric [2497]: u
+Tue Oct 27 01:08:01 2026 :: Log Alaric [2497]: u
+Tue Oct 27 01:08:01 2026 :: Log Alaric [2497]: u
+Tue Oct 27 01:08:01 2026 :: Log Alaric [2497]: u
+Tue Oct 27 01:08:02 2026 :: Log Alaric [2497]: steel
+Tue Oct 27 01:08:05 2026 :: Log Alaric [2497]: aq re
+Tue Oct 27 01:08:05 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in azeroth.are, 5 minutes, emergency
+Tue Oct 27 01:08:16 2026 :: Log Alaric [2497]: aq abort
+Tue Oct 27 01:08:17 2026 :: Log Alaric [2497]: quit
+Tue Oct 27 01:08:17 2026 :: Alaric has quit.
+Tue Oct 27 01:08:17 2026 :: [QUIT] Player rejoined the real world.
+Tue Oct 27 01:08:41 2026 :: Sock.sinaddr:  5.161.194.92
+Tue Oct 27 01:08:41 2026 :: EOF encountered on read.
