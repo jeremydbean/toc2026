@@ -29459,3 +29459,8 @@
 1793144221	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
 1793144223	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look	i pit	The donation pit contains: //      Nothing.
 1793144225	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-27 //   PRAY from a safe room, such as the altar of the Temple, and you come back
+1793144396	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	help	pwarrior	No help on that word.  Did you mean: WARRIOR?
+1793144400	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	help	warrior	Warriors live for combat and the thrill of battle. They are the best fighters // of all the classes, but lack the subtle skills of thieves and the magical // talents of mages and priests.  Warriors are best for those who don't mind
+1793144427	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793144428	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793144429	session	Alaric	54	4208	dresden_halloween.are	quit	2357s	+0 levels	+5659 exp	+220803072 copper	41 kills	0 deaths	0 quests	358 commands	1 refused	coin: loot 225p 93g 54s 3c
