@@ -242,8 +242,15 @@ class CraftingLiveTests(unittest.TestCase):
                 self.assertIn("An ironbound scroll lies here, freshly scribed.",
                               client.sync("look"))
                 client.must("get globe", "You get")        # a new keyword
-                read = until(client, "recite globe", "You recite")
+                # RECITE mispronounces on a roll of 100 even at 100% (CI,
+                # 2026-10-28): it says "You recite" either way and keeps the
+                # scroll, so read it again until it is not a mispronounce.
+                for _ in range(5):
+                    read = client.sync("recite globe", timeout=30)
+                    if "mispronounce" not in read:
+                        break
                 self.assertIn("You recite", read)
+                self.assertNotIn("mispronounce", read)
                 affects = client.sync("affects")
                 for spell in ("giant strength", "bless", "major globe"):
                     self.assertIn(spell, affects.lower(), affects)
