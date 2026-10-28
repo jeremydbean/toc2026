@@ -1217,7 +1217,11 @@ void do_quest(CHAR_DATA *ch, char *argument)
 
     if (questman == NULL || (!IS_SET(questman->act, ACT_QUESTM)))
     {
-        send_to_char("You can't do that here.\n\r",ch);
+        /* Say where, not just no: players typed AQUEST COMPLETE again and
+           again one room short of him (play journal, 2026-10-28). */
+        send_to_char("There is no questmaster here.  Questor Thews waits at the very "
+                     "top of the great oak:\n\rclimb up from the Oak Tree Square.  "
+                     "AQUEST INFO works anywhere.\n\r", ch);
         return;
     }
 

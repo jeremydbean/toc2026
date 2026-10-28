@@ -236,7 +236,10 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         command = function_body(self.quest, "void do_quest", "static bool")
 
         self.assertIn("static void quest_show_commands", self.quest)
-        gate = command.index("You can't do that here")
+        gate = command.index("There is no questmaster here")
+        # The refusal says where he is (2026-10-28: AQUEST COMPLETE typed
+        # seven times one room short of him).
+        self.assertIn("Questor Thews", command[gate:gate + 200])
         self.assertLess(
             command.index("quest_show_commands(ch)"), gate,
             "the command list has to be answerable before the questmaster "
