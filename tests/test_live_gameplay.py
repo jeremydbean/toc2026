@@ -125,7 +125,10 @@ class LiveGameplayTests(unittest.TestCase):
                 ("webclient", "127.0.0.1:9001/client"),
             ):
                 with self.subTest(topic=topic):
-                    output = client.command(f"help {topic}", settle=0.5)
+                    # Synced, not a half-second window: the nightly run of
+                    # 2026-10-28 read HELP MAP's answer as empty on a busy
+                    # runner.
+                    output = client.sync(f"help {topic}")
                     self.assertIn(expected.lower(), output.lower())
 
     def test_character_persists_across_a_reconnect(self) -> None:
