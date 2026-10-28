@@ -28,7 +28,9 @@ class SourceTests(unittest.TestCase):
         prose = json.loads((ROOT / "data" / "hyrule_room_prose.json").read_text(encoding="utf-8"))
         extras = prose["dungeons"]["L7:A6"]["extras"]
         words = " ".join(extra["keywords"] for extra in extras).split()
-        for word in ("bowl", "bones", "grumble", "bait"):
+        # 2026-10-28: LOOK STONES and LOOK SHUTTER found nothing, though the
+        # room names both; the "shutter" is the Goriya's seal.
+        for word in ("bowl", "bones", "grumble", "bait", "stones", "shutter"):
             self.assertIn(word, words)
         self.assertTrue(all("FEED GORIYA" in extra["text"] or "FEED the GORIYA" in extra["text"]
                             for extra in extras))
@@ -68,7 +70,7 @@ class LiveTests(unittest.TestCase):
                 staff.must(f"transfer zgoriya {HALL_OF_GRUMBLING}", "Ok")
                 self.assertIn("Hall of Grumbling", mortal.sync("look"))
 
-                for word in ("bowl", "bones", "grumble", "hungry"):
+                for word in ("bowl", "bones", "grumble", "hungry", "stones", "shutter"):
                     seen = mortal.sync(f"look {word}")
                     self.assertIn("FEED", seen, (word, seen))
                 where = mortal.sync("look bait")
