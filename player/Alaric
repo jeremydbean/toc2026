@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1793151422
+LogO 1793151891
 Vers 4
 Prom ~
 Ignoring ~
@@ -18,14 +18,14 @@ ChangesSeen 20261027m:1 20261027l:1 20261027k:1 20261027j:1 20261027i:1 20261027
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 931251
+Plyd 931720
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  1423 1423 2639 2676 425 1069
+HMV  1423 1423 2676 2676 803 1069
 NewGold 22
 NewPlat 1197
 NewCopp 7
@@ -178,7 +178,6 @@ RecallSet  1793060578
 QuestPnts 254
 CasinoWon  51
 CasinoLost 304
-QuestNext 7
 Exp  169257
 Act  4261068
 AfBy 512
