@@ -211570,3 +211570,58 @@ Wed Oct 28 00:23:15 2026 :: Log Alaric [3550]: north
 Wed Oct 28 00:23:15 2026 :: Log Alaric [18]: arrived (Entering the hills) from 3550
 Wed Oct 28 00:23:16 2026 :: Log Alaric [18]: north
 Wed Oct 28 00:23:16 2026 :: Log Alaric [4000]: arrived (The hills) from 18
+Wed Oct 28 00:23:39 2026 :: Log Alaric [4000]: north
+Wed Oct 28 00:23:39 2026 :: Log Alaric [4001]: arrived (The hills) from 4000
+Wed Oct 28 00:23:39 2026 :: Log Alaric [4001]: north
+Wed Oct 28 00:23:39 2026 :: Log Alaric [4002]: arrived (End of the path) from 4001
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4002]: north
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4010]: arrived (The cave) from 4002
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4010]: north
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4011]: arrived (The tunnel) from 4010
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4011]: north
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4014]: arrived (The tunnel) from 4011
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4014]: north
+Wed Oct 28 00:23:40 2026 :: Log Alaric [4018]: arrived (The cave) from 4014
+Wed Oct 28 00:23:41 2026 :: Log Alaric [4018]: north
+Wed Oct 28 00:23:41 2026 :: Log Alaric [4025]: arrived (The cave) from 4018
+Wed Oct 28 00:23:41 2026 :: Log Alaric [4025]: east
+Wed Oct 28 00:23:41 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4025
+Wed Oct 28 00:23:41 2026 :: Log Alaric [4026]: north
+Wed Oct 28 00:23:41 2026 :: Log Alaric [4028]: arrived (The smelly tunnel) from 4026
+Wed Oct 28 00:23:43 2026 :: Log Alaric [4028]: get all
+Wed Oct 28 00:23:44 2026 :: Log Alaric [4028]: recal
+Wed Oct 28 00:23:44 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4028
+Wed Oct 28 00:23:46 2026 :: Log Alaric [4207]: r e 3
+Wed Oct 28 00:23:46 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 00:23:46 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 00:23:46 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 00:23:46 2026 :: Log Alaric [2427]: n
+Wed Oct 28 00:23:46 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 00:23:46 2026 :: Log Alaric [2404]: n
+Wed Oct 28 00:23:46 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2401]: u
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2410]: u
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2411]: u
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2414]: u
+Wed Oct 28 00:23:47 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 00:23:48 2026 :: Log Alaric [2497]: u
+Wed Oct 28 00:23:48 2026 :: Log Alaric [2497]: aq co
+Wed Oct 28 00:23:48 2026 :: Log Alaric [2497]: copper +204423912
+Wed Oct 28 00:23:48 2026 :: Log Alaric [2497]: quest complete: 204p 42g 39s 12c, 40 quest points, rush (streak bonus 20%)
+Wed Oct 28 00:23:48 2026 :: Snapshot of Alaric taken before quest: Alaric.20261028_002348.quest (PRESTORE Alaric to see it).
+Wed Oct 28 00:23:50 2026 :: Log Alaric [2497]: aq ga no
+Wed Oct 28 00:23:53 2026 :: Log Alaric [2497]: en do
+Wed Oct 28 00:23:53 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 00:24:04 2026 :: Log Alaric [2401]: sc
+Wed Oct 28 00:24:06 2026 :: Log Alaric [2401]: wake
+Wed Oct 28 00:24:07 2026 :: Log Alaric [2401]: l
+Wed Oct 28 00:24:15 2026 :: Log Alaric [2401]: i
+Wed Oct 28 00:25:00 2026 :: Sock.sinaddr:  52.22.236.30
+Wed Oct 28 00:25:00 2026 :: EOF encountered on read.
+Wed Oct 28 00:26:58 2026 :: Log Alaric [2401]: who
+Wed Oct 28 00:27:10 2026 :: Log Alaric [2401]: prac
+Wed Oct 28 00:27:16 2026 :: Log Alaric [2401]: eq
+Wed Oct 28 00:27:23 2026 :: Log Alaric [2401]: iron
