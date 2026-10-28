@@ -1,0 +1,1520 @@
+#PLAYER
+Name Trentlin~
+Id   18408
+LogO 1793149150
+Vers 4
+Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
+Ignoring ~
+Race dwarf~
+Sex  1
+Cla  3
+Gui  3
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
+ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons~
+Cast none
+Levl 50
+Plyd 71880
+ListRemorts ~
+NumRemorts 0
+Note 1792619733
+StashMax 75
+HyruleSecrets 67108864
+Scro 22
+Room 18210
+HMV  676 909 1460 1460 313 400
+NewGold 39
+NewPlat 1966
+NewCopp 32
+NewSilv 21
+BankCP 6297385560
+IntTime 1793127612
+IntTotal 52385560
+Dcount 0
+SavedOnce 1
+Corpses	0
+PkRec 0
+PkGiv 0
+AchKills 639
+AchQuests 85
+AchDeaths 6
+AchExplore 127
+AchMaps 33
+AchCompass 127
+AchTriforce 63
+Achv level-5 1791055385
+Achv level-10 1792240482
+Achv level-15 1792281423
+Achv level-20 1792282504
+Achv level-25 1792288292
+Achv level-30 1792458713
+Achv level-40 1792464841
+Achv level-50 1792630536
+Achv first-kill 1791054159
+Achv hundred-kills 1792242368
+Achv first-quest 1791057078
+Achv ten-quests 1792251647
+Achv fifty-quests 1792805801
+Achv five-quest-streak 1792183900
+Achv ten-quest-streak 1792251647
+Achv twenty-five-quest-streak 1792665462
+Achv quest-rush 1792290848
+Achv quest-emergency 1792845944
+Achv quest-last-minute 1792755130
+Achv quest-gamble-win 1791057092
+Achv daily-first 1792669395
+Achv daily-full-day 1792669764
+Achv well-rested 1792546898
+Achv hyrule-arrival 1792335492
+Achv visit-mud-school 1791053973
+Achv visit-casino 1791056149
+Achv visit-smurf 1791055506
+Achv visit-haon-dor 1792025839
+Achv visit-gangland 1791056925
+Achv visit-moria 1792240539
+Achv visit-thalos 1791414546
+Achv visit-shire 1791414577
+Achv visit-astral 1792850098
+Achv visit-drow-city 1792281756
+Achv visit-wyvern 1792286774
+Achv visit-solace 1792281055
+Achv visit-pyramid 1792698498
+Achv visit-olympus 1792619037
+Achv visit-hell 1793065332
+Achv visit-battleground 1792342032
+Achv five-hundred-kills 1792669720
+Achv first-death 1791414685
+Achv first-deposit 1792251305
+Achv bank-one-platinum 1792251305
+Achv bank-hundred-platinum 1792499359
+Achv first-interest 1792280516
+Achv carry-one-platinum 1791054979
+Achv carry-hundred-platinum 1792459128
+Achv four-denominations 1791055231
+Achv first-triforce-shard 1792458276
+Achv hyrule-eagle 1792458093
+Achv hyrule-moon 1792622517
+Achv hyrule-manji 1792622695
+Achv hyrule-snake 1792623184
+Achv hyrule-lizard 1792626232
+Achv hyrule-dragon 1792626917
+Achv level-35 1792461361
+Achv level-45 1792547281
+Achv bank-thousand-platinum 1792669804
+Achv carry-ten-platinum 1792115503
+Achv carry-thousand-platinum 1792755130
+Achv visit-pet-shop 1793050210
+Achv visit-froboz 1791055958
+Achv visit-mob-factory 1792244162
+Achv visit-prison 1792287487
+Achv visit-emerald-forest 1792617874
+Achv visit-sands-of-sorrow 1792698283
+Achv visit-azeroth 1792241612
+Achv visit-glitter-palace 1791414563
+Achv visit-underdark 1792281756
+Achv visit-new-thalos 1791415830
+Achv visit-high-tower 1792621034
+Achv visit-ultima 1792621074
+Achv visit-korzath-fortress 1792287816
+Achv visit-ice-keep 1792455929
+Achv servant-kills-1 1793050329
+Achv mastered-1 1792926758
+Achv weapons-1 1792926758
+Achv quest-areas-5 1792963108
+Achv quest-areas-15 1793064834
+Achv areas-10 1792929153
+Achv areas-25 1793015327
+Achv rooms-500 1793015345
+Achv landmarks-10 1792926758
+Achv landmarks-25 1792926758
+Achv hyrule-bomb-wall 1792929337
+Achv hyrule-drain-lake 1792929229
+Achv hyrule-bomb-bag-7 1792926758
+Achv hyrule-hint 1792930165
+Achv hyrule-digdogger-recorder 1792966887
+Achv hyrule-chest-6 1792966519
+Achv relic-horseman-reaper 1792926758
+Achv crystalline-sceptre 1792926758
+Achv crystalline-sword 1792926758
+Achv crystalline-robe 1792926758
+Achv crystalline-cloak 1792926758
+Achv crystalline-crown 1792926758
+Achv crystalline-set 1792926758
+Achv stash-deposit 1793015100
+Achv repairs-1 1792930785
+AchCount servant-kills 1
+AchCount rush-quests 1
+AchCount daily-quests 3
+AchCount repairs 4
+AchSet quest-areas 125046133 538652305 620279468 731920456 839733202 1069968534 1388553224 1510063686 1587436180 1593743447 1639689130 1643902207 1760701179 1807702998 1838852532 1879768965 1924732122 2003934276 ~
+AchSet areas 125046133 197071549 223624429 284148374 317789980 496313020 502957651 503489925 538652305 539595008 620279468 714490472 731920456 825591343 839733202 840101374 1069968534 1103516333 1130896536 1255184829 1265975894 1368665472 1371892513 1388553224 1424519770 1436405335 1510063686 1587436180 1593743447 1639689130 1643773448 1643902207 1760701179 1766366292 1807702998 1838852532 1848883707 1879768965 1882159043 1924732122 1934232032 1937018084 2003934276 2101590810 2137261876 2140509578 ~
+AchSet rooms 15-16 19 21-23 30-31 40-43 45-47 51-52 56 59 64 300 305-306 309-315 320 322 324 326-327 332-335 601 701-704 706-707 709-713 719-722 725-726 741-742 745 750 755-756 759 762 765 768 770 776-777 782-788 901-909 911-916 925-931 934-937 1000-1002 1300-1309 1311-1314 2101-2108 2115 2120 2124-2125 2201 2204-2211 2213 2216-2220 2222-2230 2232-2236 2323 2401-2405 2410-2411 2414-2418 2420-2447 2449 2470-2479 2482 2485-2488 2494 2496-2497 2500 2505-2512 2515-2517 2550 2553-2555 2562 2569-2570 2579-2584 2801 2803 2923 3500-3503 3505 3507-3508 3510-3511 3516 3519 3521-3522 3525-3532 3700 3772 3795 3900-3908 4201-4202 4206-4208 4319 4323 5000-5002 5008-5011 5200-5204 5206 5208-5218 5222-5224 5228-5229 5239-5241 5243 5250-5253 5255-5261 5368 5375-5378 5550-5551 5553 5712-5716 5725-5726 5730 5740-5741 5745 5749 5751-5753 5755-5756 5761 5774 5800-5802 5827-5828 5900-5902 5905-5908 5954-5956 5970-5971 5977-5979 6000-6004 6006-6009 6011-6012 6014-6022 6100-6106 6108-6112 6114-6117 6122-6123 6126-6129 6135-6137 6150-6151 7022 7030-7031 7044 7049 7111-7112 7115 7129 7201-7204 7208-7210 7215-7217 7219-7221 7569 7600 8301-8302 8304 8308-8309 8314-8318 8901-8911 8913 8916-8917 8919 8950-8951 9301-9304 9308 9330-9331 9506 9509 9514-9515 9517-9531 9621 9667-9669 9774-9775 9781-9783 9790-9795 10000-10004 10006-10008 10025-10031 10200 10205 13001-13009 13011 13013-13041 13043 13048-13049 13058 13073 13082 13201-13229 13242-13252 13254-13257 13262 13272 13278-13279 13281-13282 13288-13290 13298-13301 13308-13311 13401-13405 13418 14000-14003 14013-14039 15000-15021 15024-15026 15029 15032 15037-15038 15042 15068 15070 15074 15077-15078 15087 15138-15153 15194-15202 15204-15219 15230-15231 16000-16004 16084 17001-17004 17011 17014 17016 18210-18211 18213-18214 18216-18219 18221-18224 18250-18252 18254 19101-19104 19110-19111 19118-19119 19126 19132-19133 19139 19146 19151 19164-19169 20113 20501-20506 20509 24101-24104 24119 24122 24125-24126 25100-25109 25113-25121 25123-25126 25129-25133 25135-25146 25148-25153 25158-25171 25185-25186 28101-28103 28107 28120-28122 28124 28131-28143 28145-28147 28150-28153 28161 29001-29003 29060-29063 29065-29067 29070-29071 29080 29082 29085 29089-29090 29103-29120 29123-29125 30200-30205 30216-30223 30232-30234 30248-30250 30265-30267 30278 30282-30285 30296-30297 30299-30301 30312-30315 30330 30436-30437 30500-30501 30503 30505-30509 30511-30517 30519-30521 30524 30526-30544 30681-30682 30750-30752 ~
+AchSet daily-kinds 2 ~
+LastOut  1793149150
+Rested 0 0
+Daily 8 20754 0 1 20753
+SesLogin 1793145927
+SesDur   171
+SesExpG  0
+SesLvlG  0
+SesKill  1
+SesPK    0
+SesDead  0
+SesQuest 1
+QuestPnts 5166
+QuestStrk 2
+CasinoLost 4
+QuestNext 4
+Exp  112503
+Act  206
+AfBy 512
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Prac 2
+Save  -8
+Alig  -1000
+Hit   35
+Dam   56
+ACs -78 -84 -81 53
+Attr 22 16 18 16 19
+AMod 2 4 -4 1 -4
+Pass TrjPUdRVdu8MY~
+Titl  the Master Warrior~
+Pnts 0
+TSex 1
+LLev 0
+HMVP 840 1301 394
+Cond 0 0 18
+Sk 100 'axe'
+Sk 89 'dagger'
+Sk 25 'flail'
+Sk 75 'mace'
+Sk 84 'polearm'
+Sk 81 'shield block'
+Sk 94 'spear'
+Sk 100 'sword'
+Sk 79 'whip'
+Sk 76 'bash'
+Sk 75 'destruction'
+Sk 75 'disarm'
+Sk 77 'heroic grip'
+Sk 86 'dodge'
+Sk 100 'enhanced damage'
+Sk 82 'kick'
+Sk 93 'parry'
+Sk 75 'rescue'
+Sk 90 'second attack'
+Sk 81 'third attack'
+Sk 75 'despair'
+Sk 77 'fast healing'
+Sk 75 'door bash'
+Sk 77 'shove'
+Sk 71 'recall'
+Sk 97 'smite'
+Gr 'rom basics'
+Gr 'warrior basics'
+Gr 'warrior default'
+Gr 'warrior guild'
+End
+
+#O
+Vnum 8713
+Nest 0
+Wear 13
+Lev  9
+Cost 270000
+Cond 78
+Repd 0
+Val  4 4 5 0 0
+End
+
+#O
+Vnum 29032
+Nest 0
+Wear -1
+Lev  29
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 45
+Nest 1
+Wear -1
+Time 299
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 35
+Nest 1
+Wear -1
+Time 513
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 48
+Nest 1
+Wear -1
+Time 549
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4619
+Nest 0
+Wear 6
+Lev  25
+Cost 250000000
+Cond 100
+Repd 1
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 9321
+Nest 0
+Wear -1
+Lev  25
+Cost 17500000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 30219
+Nest 0
+ExtF 2097281
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30546
+Nest 0
+ExtF 0
+Wear -1
+Lev  5
+Cost 600000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 30546
+Nest 0
+ExtF 0
+Wear -1
+Lev  5
+Cost 600000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 30543
+Nest 0
+ExtF 0
+Wear -1
+Lev  8
+Cost 800000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30400
+Nest 0
+Wear -1
+Lev  2
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29039
+Nest 0
+ExtF 256
+Wear 10
+Lev  39
+Cost 7000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 2
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+Affect -1 43 -1 -1 4 0 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 1
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16021
+Nest 0
+Wear 15
+Lev  46
+Cost 19350000
+Cond 100
+Repd 0
+Affect -1 46 -1 -3 4 0 0
+End
+
+#O
+Vnum 16021
+Nest 0
+Wear 14
+Lev  46
+Cost 19350000
+Cond 100
+Repd 0
+Affect -1 46 -1 -5 5 0 0
+End
+
+#O
+Vnum 16030
+Nest 0
+Wear -1
+Lev  52
+Cost 25600000
+Cond 100
+Repd 0
+Affect -1 52 -1 -11 17 0 0
+End
+
+#O
+Vnum 16051
+Nest 0
+Wear -1
+Lev  51
+Cost 24360000
+Cond 100
+Repd 0
+Affect -1 51 -1 -1 4 0 0
+Affect -1 51 -1 -1 17 0 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear -1
+Lev  52
+Cost 24090000
+Cond 100
+Repd 0
+Affect -1 52 -1 -3 1 0 0
+End
+
+#O
+Vnum 16013
+Nest 0
+Wear 7
+Lev  41
+Cost 14980000
+Cond 29
+Repd 0
+End
+
+#O
+Vnum 30400
+Nest 0
+Wear -1
+Lev  2
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30232
+Nest 0
+Wear -1
+Lev  4
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30410
+Nest 0
+Wear -1
+Lev  12
+Cost 36450000
+Cond 100
+Repd 0
+Affect -1 12 -1 4 23 0 0
+End
+
+#O
+Vnum 30401
+Nest 0
+Wear -1
+Lev  8
+Cost 2000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30411
+Nest 0
+Wear -1
+Lev  16
+Cost 61250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30402
+Nest 0
+Wear -1
+Lev  14
+Cost 3000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30724
+Nest 0
+Wear 12
+Lev  27
+Cost 36450000
+Cond 87
+Repd 0
+Affect -1 27 -1 -1 13 0 0
+End
+
+#O
+Vnum 30666
+Nest 0
+Wear -1
+Lev  27
+Cost 36450000
+Cond 100
+Repd 0
+Affect -1 27 -1 -3 5 0 0
+End
+
+#O
+Vnum 30369
+Nest 0
+Wear 3
+Lev  27
+Cost 36450000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30412
+Nest 0
+Wear -1
+Lev  22
+Cost 101250000
+Cond 100
+Repd 0
+Affect -1 22 -1 1 24 0 0
+End
+
+#O
+Vnum 30403
+Nest 0
+Wear -1
+Lev  20
+Cost 4000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30545
+Nest 0
+ExtF 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30374
+Nest 0
+Wear 4
+Lev  33
+Cost 54450000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30595
+Nest 0
+Wear 17
+Lev  33
+Cost 54450000
+Cond 98
+Repd 0
+Affect -1 33 -1 23 14 0 0
+Affect -1 33 -1 23 14 0 0
+Affect -1 33 -1 1 18 0 0
+Affect -1 33 -1 -4 22 0 0
+End
+
+#O
+Vnum 30222
+Nest 0
+Wear -1
+Lev  6
+Cost 25000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30404
+Nest 0
+Wear -1
+Lev  27
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30615
+Nest 0
+Wear -1
+Lev  33
+Cost 600000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'cure critical'
+End
+
+#O
+Vnum 30737
+Nest 0
+Wear 9
+Lev  40
+Cost 80000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30679
+Nest 0
+Wear 8
+Lev  40
+Cost 80000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30413
+Nest 0
+Wear -1
+Lev  30
+Cost 145800000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30405
+Nest 0
+Wear -1
+Lev  33
+Cost 6000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30615
+Nest 0
+Wear -1
+Lev  33
+Cost 600000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'cure critical'
+End
+
+#O
+Vnum 29049
+Nest 0
+Wear 0
+Lev  45
+Cost 15000000
+Cond 97
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 10002
+Nest 0
+ExtF 2100545
+Wear -1
+Lev  50
+Cost 60000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10003
+Nest 0
+ExtF 2100545
+Wear -1
+Lev  50
+Cost 90000000
+Cond 100
+Repd 0
+Affect -1 50 -1 4 22 0 0
+End
+
+#O
+Vnum 10004
+Nest 0
+ExtF 2100545
+Wear -1
+Lev  50
+Cost 30000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10052
+Nest 0
+ExtF 3149120
+Wear -1
+Lev  50
+Cost 55000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17702
+Nest 0
+Wear -1
+Lev  25
+Cost 1000000
+Cond 100
+Repd 3
+End
+
+#O
+Vnum 10000
+Nest 0
+ExtF 2100289
+Wear -1
+Lev  50
+Cost 60000000
+Cond 100
+Repd 0
+Affect -1 50 -1 -2 3 0 0
+End
+
+#O
+Vnum 10001
+Nest 0
+ExtF 2100544
+Wear -1
+Lev  50
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 50 -1 1 3 0 0
+End
+
+#O
+Vnum 10005
+Nest 0
+ExtF 2100545
+Wear -1
+Lev  49
+Cost 65000000
+Cond 100
+Repd 0
+Affect -1 49 -1 -1 14 0 0
+End
+
+#O
+Vnum 30585
+Nest 0
+Wear -1
+Lev  27
+Cost 43740000
+Cond 100
+Repd 1
+Affect -1 27 -1 -25 14 0 0
+End
+
+#O
+Vnum 30587
+Nest 0
+Wear -1
+Lev  40
+Cost 96000000
+Cond 100
+Repd 3
+Affect -1 40 -1 -1 18 0 0
+End
+
+#O
+Vnum 29920
+Nest 0
+Wear 16
+Lev  50
+Cost 1000000000
+Cond 100
+Repd 5
+Affect -1 50 -1 1 1 0 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30495
+Nest 0
+Wear -1
+Lev  40
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30695
+Nest 0
+ShD  10 bombs~
+ExtF 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+Val  10 0 0 0 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 29075
+Nest 0
+Wear -1
+Lev  40
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'high explosive'
+Spell 3 'heal'
+End
+
+#O
+Vnum 29058
+Nest 0
+Wear 5
+Lev  45
+Cost 15000000
+Cond 87
+Repd 0
+End
+
+#O
+Vnum 721
+Nest 0
+Wear -1
+Lev  48
+Cost 9500000
+Cond 100
+Repd 0
+Affect -1 48 -1 1 3 0 0
+End
+
+#O
+Vnum 700
+Nest 0
+Wear -1
+Lev  48
+Cost 25000000
+Cond 100
+Repd 0
+Affect -1 48 -1 1 2 0 0
+End
+
+#STASH
+#O
+Vnum 29015
+Nest 0
+Wear -1
+Lev  15
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 15014
+Nest 0
+Wear -1
+Lev  12
+Cost 150000
+Cond 97
+Repd 0
+Val  4 6 5 0 0
+End
+
+#O
+Vnum 10028
+Nest 0
+Wear -1
+Lev  15
+Cost 1900000
+Cond 100
+Repd 0
+Val  6 6 6 0 0
+End
+
+#O
+Vnum 5252
+Nest 0
+Wear -1
+Lev  8
+Cost 4200000
+Cond 100
+Repd 1
+Val  2 3 6 11 0
+End
+
+#O
+Vnum 29006
+Nest 0
+Wear -1
+Lev  3
+Cost 120
+Cond 94
+Repd 0
+End
+
+#O
+Vnum 29007
+Nest 0
+Wear -1
+Lev  3
+Cost 120
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3504
+Nest 0
+Wear -1
+Lev  7
+Cost 33000
+Cond 90
+Repd 0
+Affect -1 7 -1 4 23 0 0
+End
+
+#O
+Vnum 3504
+Nest 0
+Wear -1
+Lev  7
+Cost 33000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 4101
+Nest 0
+Wear -1
+Lev  8
+Cost 330000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 10022
+Nest 0
+Wear -1
+Lev  11
+Cost 2800000
+Cond 96
+Repd 0
+Val  4 5 6 0 0
+End
+
+#O
+Vnum 10022
+Nest 0
+Wear -1
+Lev  11
+Cost 2800000
+Cond 99
+Repd 0
+Val  5 5 6 0 0
+End
+
+#O
+Vnum 10057
+Nest 0
+Wear -1
+Lev  11
+Cost 16000000
+Cond 99
+Repd 0
+Val  5 5 5 0 0
+End
+
+#O
+Vnum 29010
+Nest 0
+Wear -1
+Lev  6
+Cost 11000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10029
+Nest 0
+Wear -1
+Lev  14
+Cost 2000000
+Cond 100
+Repd 1
+Val  1 4 5 3 0
+End
+
+#O
+Vnum 29012
+Nest 0
+Wear -1
+Lev  9
+Cost 49000
+Cond 100
+Repd 1
+Affect -1 9 -1 1 20 0 0
+End
+
+#O
+Vnum 1388
+Nest 0
+Wear -1
+Lev  18
+Cost 85000000
+Cond 88
+Repd 0
+Val  5 7 5 0 0
+End
+
+#O
+Vnum 1388
+Nest 0
+Wear -1
+Lev  18
+Cost 85000000
+Cond 92
+Repd 0
+Val  5 6 6 0 0
+End
+
+#O
+Vnum 9214
+Nest 0
+Wear -1
+Lev  22
+Cost 50600000
+Cond 99
+Repd 0
+Affect -1 22 -1 -5 19 0 0
+End
+
+#O
+Vnum 9213
+Nest 0
+Wear -1
+Lev  22
+Cost 55660000
+Cond 100
+Repd 1
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear -1
+Lev  7
+Cost 36000
+Cond 95
+Repd 1
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear -1
+Lev  7
+Cost 36000
+Cond 87
+Repd 1
+Affect -1 7 -1 4 22 0 0
+End
+
+#O
+Vnum 1395
+Nest 0
+Wear -1
+Lev  23
+Cost 50000000
+Cond 100
+Repd 1
+Val  6 7 7 0 0
+End
+
+#O
+Vnum 10027
+Nest 0
+Wear -1
+Lev  13
+Cost 2100000
+Cond 95
+Repd 1
+Val  5 5 6 0 0
+End
+
+#O
+Vnum 30654
+Nest 0
+Wear -1
+Lev  8
+Cost 3200000
+Cond 100
+Repd 2
+End
+
+#O
+Vnum 25106
+Nest 0
+Wear -1
+Lev  18
+Cost 10000000
+Cond 97
+Repd 0
+Val  7 5 5 0 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear -1
+Cost 0
+Cond 82
+Repd 1
+End
+
+#O
+Vnum 1395
+Nest 0
+Wear -1
+Lev  24
+Cost 50000000
+Cond 99
+Repd 1
+Val  7 6 8 0 0
+End
+
+#O
+Vnum 2390
+Nest 0
+Wear -1
+Lev  23
+Cost 100000000
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 7623
+Nest 0
+Wear -1
+Lev  25
+Cost 1500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10042
+Nest 0
+Wear -1
+Lev  23
+Cost 13000000
+Cond 100
+Repd 1
+Affect -1 23 -1 1 18 0 0
+End
+
+#O
+Vnum 24002
+Nest 0
+Wear -1
+Lev  14
+Cost 100000
+Cond 93
+Repd 0
+Val  0 0 9458 0 0
+End
+
+#O
+Vnum 10048
+Nest 0
+Wear -1
+Lev  32
+Cost 22000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10051
+Nest 0
+Wear -1
+Lev  50
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10051
+Nest 0
+Wear -1
+Lev  50
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 50 -1 -1 14 0 0
+End
+
+#O
+Vnum 10049
+Nest 0
+Wear -1
+Lev  32
+Cost 23000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10006
+Nest 0
+ExtF 2100544
+Wear -1
+Lev  49
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 49 -1 -3 1 0 0
+End
+
+#O
+Vnum 30665
+Nest 0
+Wear -1
+Lev  27
+Cost 36450000
+Cond 99
+Repd 0
+Affect -1 27 -1 19 14 0 0
+End
+
+#END
