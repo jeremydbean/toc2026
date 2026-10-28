@@ -216824,3 +216824,156 @@ Wed Oct 28 23:32:24 2026 :: Log Alaric [743]: e
 Wed Oct 28 23:32:24 2026 :: Log Alaric [747]: arrived (Victory Road) from 743
 Wed Oct 28 23:32:25 2026 :: Log Alaric [747]: scan
 Wed Oct 28 23:32:27 2026 :: Log Alaric [747]: where serf
+Wed Oct 28 23:32:35 2026 :: Log Alaric [747]: east
+Wed Oct 28 23:32:35 2026 :: Log Alaric [752]: arrived (Tourney Yard of Camelot) from 747
+Wed Oct 28 23:32:35 2026 :: Log Alaric [752]: south
+Wed Oct 28 23:32:35 2026 :: Log Alaric [758]: arrived (Tourney Yard of Camelot) from 752
+Wed Oct 28 23:32:35 2026 :: Log Alaric [758]: south
+Wed Oct 28 23:32:35 2026 :: Log Alaric [764]: arrived (Tourney Yard of Camelot) from 758
+Wed Oct 28 23:32:35 2026 :: Log Alaric [764]: west
+Wed Oct 28 23:32:35 2026 :: Log Alaric [761]: arrived (Noble Road at the South Gate) from 764
+Wed Oct 28 23:32:36 2026 :: Log Alaric [761]: open south
+Wed Oct 28 23:32:36 2026 :: Log Alaric [761]: south
+Wed Oct 28 23:32:36 2026 :: Log Alaric [767]: arrived (The Great Southern Gate) from 761
+Wed Oct 28 23:32:39 2026 :: Log Alaric [767]: s
+Wed Oct 28 23:32:39 2026 :: Log Alaric [791]: arrived (Farms) from 767
+Wed Oct 28 23:32:40 2026 :: Log Alaric [791]: s
+Wed Oct 28 23:32:40 2026 :: Log Alaric [792]: arrived (Farms) from 791
+Wed Oct 28 23:32:42 2026 :: Log Alaric [792]: w
+Wed Oct 28 23:32:42 2026 :: Log Alaric [794]: arrived (Farms) from 792
+Wed Oct 28 23:32:44 2026 :: Log Alaric [794]: nw
+Wed Oct 28 23:32:47 2026 :: Log Alaric [794]: aq time
+Wed Oct 28 23:32:49 2026 :: Log Alaric [794]: aq info
+Wed Oct 28 23:32:50 2026 :: Log Alaric [794]: wake
+Wed Oct 28 23:32:51 2026 :: Log Alaric [794]: l
+Wed Oct 28 23:32:54 2026 :: Log Alaric [794]: e
+Wed Oct 28 23:32:54 2026 :: Log Alaric [792]: arrived (Farms) from 794
+Wed Oct 28 23:32:55 2026 :: Log Alaric [792]: s
+Wed Oct 28 23:32:55 2026 :: Log Alaric [795]: arrived (Angle Raid!) from 792
+Wed Oct 28 23:32:56 2026 :: Log Alaric [795]: n
+Wed Oct 28 23:32:56 2026 :: Log Alaric [792]: arrived (Farms) from 795
+Wed Oct 28 23:32:57 2026 :: Log Alaric [792]: w
+Wed Oct 28 23:32:57 2026 :: Log Alaric [794]: arrived (Farms) from 792
+Wed Oct 28 23:32:58 2026 :: Log Alaric [794]: w
+Wed Oct 28 23:32:58 2026 :: Log Alaric [796]: arrived (An Outpost) from 794
+Wed Oct 28 23:32:58 2026 :: Log Alaric [796]: w
+Wed Oct 28 23:32:58 2026 :: Log Alaric [797]: arrived (Battle!) from 796
+Wed Oct 28 23:32:59 2026 :: Log Alaric [797]: w
+Wed Oct 28 23:33:00 2026 :: Log Alaric [797]: ow
+Wed Oct 28 23:33:00 2026 :: Log Alaric [797]: w
+Wed Oct 28 23:33:00 2026 :: Log Alaric [746]: arrived (Behind the Pict Lines) from 797
+Wed Oct 28 23:33:02 2026 :: Log Alaric [746]: e
+Wed Oct 28 23:33:02 2026 :: Log Alaric [797]: arrived (Battle!) from 746
+Wed Oct 28 23:33:02 2026 :: Log Alaric [797]: e
+Wed Oct 28 23:33:02 2026 :: Log Alaric [796]: arrived (An Outpost) from 797
+Wed Oct 28 23:33:03 2026 :: Log Alaric [796]: e
+Wed Oct 28 23:33:03 2026 :: Log Alaric [794]: arrived (Farms) from 796
+Wed Oct 28 23:33:03 2026 :: Log Alaric [794]: n
+Wed Oct 28 23:33:03 2026 :: Log Alaric [793]: arrived (Farms) from 794
+Wed Oct 28 23:33:05 2026 :: Log Alaric [793]: e
+Wed Oct 28 23:33:05 2026 :: Log Alaric [791]: arrived (Farms) from 793
+Wed Oct 28 23:33:06 2026 :: Log Alaric [791]: n
+Wed Oct 28 23:33:06 2026 :: Log Alaric [767]: arrived (The Great Southern Gate) from 791
+Wed Oct 28 23:33:06 2026 :: Log Alaric [767]: n
+Wed Oct 28 23:33:06 2026 :: Log Alaric [761]: arrived (Noble Road at the South Gate) from 767
+Wed Oct 28 23:33:07 2026 :: Log Alaric [761]: n
+Wed Oct 28 23:33:08 2026 :: Log Alaric [761]: e
+Wed Oct 28 23:33:08 2026 :: Log Alaric [764]: arrived (Tourney Yard of Camelot) from 761
+Wed Oct 28 23:33:09 2026 :: Log Alaric [764]: n
+Wed Oct 28 23:33:09 2026 :: Log Alaric [758]: arrived (Tourney Yard of Camelot) from 764
+Wed Oct 28 23:33:10 2026 :: Log Alaric [758]: scan
+Wed Oct 28 23:33:11 2026 :: Log Alaric [758]: n
+Wed Oct 28 23:33:11 2026 :: Log Alaric [752]: arrived (Tourney Yard of Camelot) from 758
+Wed Oct 28 23:33:11 2026 :: Log Alaric [752]: scan
+Wed Oct 28 23:33:13 2026 :: Log Alaric [752]: n
+Wed Oct 28 23:33:13 2026 :: Log Alaric [760]: arrived (Tourney Yard of Camelot) from 752
+Wed Oct 28 23:33:13 2026 :: Log Alaric [760]: scan
+Wed Oct 28 23:33:15 2026 :: Log Alaric [760]: n
+Wed Oct 28 23:33:15 2026 :: Log Alaric [762]: arrived (Tourney Yard of Camelot) from 760
+Wed Oct 28 23:33:15 2026 :: Log Alaric [762]: scan
+Wed Oct 28 23:33:18 2026 :: Log Alaric [762]: e
+Wed Oct 28 23:33:18 2026 :: Log Alaric [768]: arrived (Tourney Yard of Camelot) from 762
+Wed Oct 28 23:33:18 2026 :: Log Alaric [768]: scan
+Wed Oct 28 23:33:19 2026 :: Log Alaric [768]: w
+Wed Oct 28 23:33:19 2026 :: Log Alaric [762]: arrived (Tourney Yard of Camelot) from 768
+Wed Oct 28 23:33:20 2026 :: Log Alaric [762]: w
+Wed Oct 28 23:33:20 2026 :: Log Alaric [755]: arrived (Squire's Run at the North Gate) from 762
+Wed Oct 28 23:33:20 2026 :: Log Alaric [755]: scan
+Wed Oct 28 23:33:21 2026 :: Log Alaric [755]: n
+Wed Oct 28 23:33:22 2026 :: Log Alaric [755]: scan
+Wed Oct 28 23:33:22 2026 :: Log Alaric [755]: on
+Wed Oct 28 23:33:23 2026 :: Log Alaric [755]: n
+Wed Oct 28 23:33:23 2026 :: Log Alaric [756]: arrived (The Great Northern Gate of Camelot) from 755
+Wed Oct 28 23:33:23 2026 :: Log Alaric [756]: scan
+Wed Oct 28 23:33:24 2026 :: Log Alaric [756]: n
+Wed Oct 28 23:33:24 2026 :: Log Alaric [782]: arrived (The Rolling Hills) from 756
+Wed Oct 28 23:33:24 2026 :: Log Alaric [782]: scan
+Wed Oct 28 23:33:25 2026 :: Log Alaric [782]: n
+Wed Oct 28 23:33:25 2026 :: Log Alaric [783]: arrived (The Rolling Hills) from 782
+Wed Oct 28 23:33:26 2026 :: Log Alaric [783]: scan
+Wed Oct 28 23:33:27 2026 :: Log Alaric [783]: n
+Wed Oct 28 23:33:27 2026 :: Log Alaric [785]: arrived (The Highlands) from 783
+Wed Oct 28 23:33:28 2026 :: Log Alaric [785]: oe
+Wed Oct 28 23:33:29 2026 :: Log Alaric [785]: on
+Wed Oct 28 23:33:30 2026 :: Log Alaric [785]: scan
+Wed Oct 28 23:33:31 2026 :: Log Alaric [785]: s
+Wed Oct 28 23:33:31 2026 :: Log Alaric [785]: s
+Wed Oct 28 23:33:33 2026 :: Log Alaric [785]: where serv
+Wed Oct 28 23:33:36 2026 :: Log Alaric [785]: where serf
+Wed Oct 28 23:33:36 2026 :: Log Alaric [785]: s
+Wed Oct 28 23:33:37 2026 :: Log Alaric [785]: s
+Wed Oct 28 23:33:39 2026 :: Log Alaric [785]: where 2.serv
+Wed Oct 28 23:33:40 2026 :: Log Alaric [785]: s
+Wed Oct 28 23:33:41 2026 :: Log Alaric [785]: s
+Wed Oct 28 23:33:42 2026 :: Log Alaric [785]: l
+Wed Oct 28 23:33:43 2026 :: Log Alaric [785]: w
+Wed Oct 28 23:33:43 2026 :: Log Alaric [783]: arrived (The Rolling Hills) from 785
+Wed Oct 28 23:33:44 2026 :: Log Alaric [783]: s
+Wed Oct 28 23:33:44 2026 :: Log Alaric [782]: arrived (The Rolling Hills) from 783
+Wed Oct 28 23:33:45 2026 :: Log Alaric [782]: s
+Wed Oct 28 23:33:45 2026 :: Log Alaric [756]: arrived (The Great Northern Gate of Camelot) from 782
+Wed Oct 28 23:33:45 2026 :: Log Alaric [756]: s
+Wed Oct 28 23:33:45 2026 :: Log Alaric [755]: arrived (Squire's Run at the North Gate) from 756
+Wed Oct 28 23:33:45 2026 :: Log Alaric [755]: w
+Wed Oct 28 23:33:45 2026 :: Log Alaric [750]: arrived (Squire's Run) from 755
+Wed Oct 28 23:33:46 2026 :: Log Alaric [750]: w
+Wed Oct 28 23:33:46 2026 :: Log Alaric [745]: arrived (Corner of Knight's Way and Squire's Run) from 750
+Wed Oct 28 23:33:47 2026 :: Log Alaric [745]: s
+Wed Oct 28 23:33:47 2026 :: Log Alaric [742]: arrived (Knights Way before the stables) from 745
+Wed Oct 28 23:33:48 2026 :: Log Alaric [742]: scan
+Wed Oct 28 23:33:48 2026 :: Log Alaric [742]: e
+Wed Oct 28 23:33:48 2026 :: Log Alaric [798]: arrived (Stables) from 742
+Wed Oct 28 23:33:51 2026 :: Log Alaric [798]: fi ser
+Wed Oct 28 23:33:51 2026 :: Log Alaric [798]: killed A serf
+Wed Oct 28 23:33:51 2026 :: Log Alaric [798]: coin +1 silver
+Wed Oct 28 23:33:51 2026 :: Log Alaric [798]: coin +8 copper
+Wed Oct 28 23:33:59 2026 :: Log Alaric [798]: recal
+Wed Oct 28 23:33:59 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 798
+Wed Oct 28 23:33:59 2026 :: Log Alaric [4207]: recal
+Wed Oct 28 23:33:59 2026 :: Log Alaric [4207]: recal
+Wed Oct 28 23:34:00 2026 :: Log Alaric [4207]: r e 3
+Wed Oct 28 23:34:00 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 23:34:00 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 23:34:00 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 23:34:00 2026 :: Log Alaric [2427]: n
+Wed Oct 28 23:34:00 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 23:34:00 2026 :: Log Alaric [2404]: n
+Wed Oct 28 23:34:00 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 23:34:00 2026 :: Log Alaric [2401]: u
+Wed Oct 28 23:34:00 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2410]: u
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2411]: u
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2414]: u
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2497]: aq co
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2497]: copper +321237576
+Wed Oct 28 23:34:01 2026 :: Log Alaric [2497]: quest complete: 321p 23g 75s 76c, 24 quest points, rush (streak bonus 20%)
+Wed Oct 28 23:34:01 2026 :: Snapshot of Alaric taken before quest: Alaric.20261028_233401.quest (PRESTORE Alaric to see it).
+Wed Oct 28 23:34:02 2026 :: Log Alaric [2497]: aq ga no
+Wed Oct 28 23:34:52 2026 :: Log Alaric [2497]: affects off: levitate
+Wed Oct 28 23:35:49 2026 :: Log Alaric [2497]: levi
+Wed Oct 28 23:35:56 2026 :: Log Alaric [2497]: iron
+Wed Oct 28 23:36:09 2026 :: Sock.sinaddr:  3.20.63.178
+Wed Oct 28 23:36:10 2026 :: EOF encountered on read.

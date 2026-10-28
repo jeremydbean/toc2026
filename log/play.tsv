@@ -17132,3 +17132,95 @@
 1793230344	cmd	Alaric	54	747	camelot.are	standing	100	0	-	east		Victory Road //   Here Victory Road ends at the great Tourney Yard of Camelot. A podium  // for tourney winners is erected here- today it bears the coat of arms 
 1793230345	cmd	Alaric	54	747	camelot.are	standing	100	0	-	scan		The squire                         -to the East. // Sir Kay                            -to the East. // Sir Lancelot du Lake               -to the far East.
 1793230347	cmd	Alaric	54	747	camelot.are	standing	100	0	-	where	serf	A busy serf                  Farms
+1793230355	cmd	Alaric	54	752	camelot.are	standing	100	0	-	east		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230355	cmd	Alaric	54	758	camelot.are	standing	100	0	-	south		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230355	cmd	Alaric	54	764	camelot.are	standing	100	0	-	south		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230355	cmd	Alaric	54	761	camelot.are	standing	100	0	-	west		Noble Road at the South Gate //   You stand at on Noble road at the Great Southern Gate of Camelot. To the  // north lies the Noble quarters, where visiting nobility reside. The 
+1793230356	cmd	Alaric	54	761	camelot.are	standing	100	0	-	open	south	Ok.
+1793230356	cmd	Alaric	54	767	camelot.are	standing	100	0	-	south		The Great Southern Gate //   You stand before the great southern gate of Camelot. Southwards a cobbled  // road winds through fertile cultivated plains. Serfs are tilling the field 
+1793230359	cmd	Alaric	54	791	camelot.are	standing	100	0	-	south		Farms //   You have spent a day travelling though the breadbasket of Camelot, following  // a cobble stone road. The fields are producing well this year, and the 
+1793230360	cmd	Alaric	54	792	camelot.are	standing	100	0	-	south		Farms //   You have spent a day travelling though the breadbasket of Camelot, following  // a cobble stone road. The fields are producing well this year, and the 
+1793230362	cmd	Alaric	54	794	camelot.are	standing	100	0	-	west		Farms //   You have spent a day travelling though the breadbasket of Camelot,  // following a cobble stone road. This paticular section of farms is not 
+1793230364	cmd	Alaric	54	794	camelot.are	standing	100	0	-	nw		Alas, you cannot go that way.
+1793230367	cmd	Alaric	54	794	camelot.are	standing	100	0	-	aquest	time	Quest timer: 6 minutes remaining.
+1793230369	cmd	Alaric	54	794	camelot.are	standing	100	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Kill Quest // | Target: Slay A serf
+1793230370	cmd	Alaric	54	794	camelot.are	standing	100	0	-	wake		You are already standing.
+1793230371	cmd	Alaric	54	794	camelot.are	standing	100	0	-	look		Farms //   You have spent a day travelling though the breadbasket of Camelot,  // following a cobble stone road. This paticular section of farms is not 
+1793230374	cmd	Alaric	54	792	camelot.are	standing	100	0	-	east		Farms //   You have spent a day travelling though the breadbasket of Camelot, following  // a cobble stone road. The fields are producing well this year, and the 
+1793230375	cmd	Alaric	54	795	camelot.are	standing	100	0	-	south		Angle Raid! //   You are in the whirling chaos of an Angle raid on this farming village. // Farmers are defending themselves from the raiders with their farm tools.
+1793230376	cmd	Alaric	54	792	camelot.are	standing	100	0	-	north		Farms //   You have spent a day travelling though the breadbasket of Camelot, following  // a cobble stone road. The fields are producing well this year, and the 
+1793230377	cmd	Alaric	54	794	camelot.are	standing	100	0	-	west		Farms //   You have spent a day travelling though the breadbasket of Camelot,  // following a cobble stone road. This paticular section of farms is not 
+1793230378	cmd	Alaric	54	796	camelot.are	standing	100	0	-	west		An Outpost //   You have reached a fortified outpost. Your boots sink in the mud which  // is rutted and groved by the supply wagons which come her.
+1793230378	cmd	Alaric	54	797	camelot.are	standing	100	0	-	west		Battle! //   You have boldly entered the heart of a raging battle between the knights  // of Camelot and the barbaric Picts. The knights have set up a skirmish 
+1793230379	cmd	Alaric	54	797	camelot.are	standing	100	0	-	west		The ranks is closed.
+1793230380	cmd	Alaric	54	797	camelot.are	standing	100	0	-	open		Ok.
+1793230380	cmd	Alaric	54	746	camelot.are	standing	100	0	-	west		Behind the Pict Lines //   You have battled your way through the ranks of the Picts, and your  // salley has placed you behind the Pict lines! To the east the battle 
+1793230382	cmd	Alaric	54	797	camelot.are	standing	100	0	-	east		Battle! //   You have boldly entered the heart of a raging battle between the knights  // of Camelot and the barbaric Picts. The knights have set up a skirmish 
+1793230382	cmd	Alaric	54	796	camelot.are	standing	100	0	-	east		An Outpost //   You have reached a fortified outpost. Your boots sink in the mud which  // is rutted and groved by the supply wagons which come her.
+1793230383	cmd	Alaric	54	794	camelot.are	standing	100	0	-	east		Farms //   You have spent a day travelling though the breadbasket of Camelot,  // following a cobble stone road. This paticular section of farms is not 
+1793230383	cmd	Alaric	54	793	camelot.are	standing	100	0	-	north		Farms //   You have spent a day travelling though the breadbasket of Camelot,  // following a cobble stone road. The fields are producing well this year, 
+1793230385	cmd	Alaric	54	791	camelot.are	standing	100	0	-	east		Farms //   You have spent a day travelling though the breadbasket of Camelot, following  // a cobble stone road. The fields are producing well this year, and the 
+1793230386	cmd	Alaric	54	767	camelot.are	standing	100	0	-	north		The Great Southern Gate //   You stand before the great southern gate of Camelot. Southwards a cobbled  // road winds through fertile cultivated plains. Serfs are tilling the field 
+1793230386	cmd	Alaric	54	761	camelot.are	standing	100	0	-	north		Noble Road at the South Gate //   You stand at on Noble road at the Great Southern Gate of Camelot. To the  // north lies the Noble quarters, where visiting nobility reside. The 
+1793230387	cmd	Alaric	54	761	camelot.are	standing	100	0	-	north		The door is closed.
+1793230388	cmd	Alaric	54	764	camelot.are	standing	100	0	-	east		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230389	cmd	Alaric	54	758	camelot.are	standing	100	0	-	north		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230390	cmd	Alaric	54	758	camelot.are	standing	100	0	-	scan		The squire                         -to the North. // Sir Kay                            -to the North.
+1793230391	cmd	Alaric	54	752	camelot.are	standing	100	0	-	north		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230391	cmd	Alaric	54	752	camelot.are	standing	100	0	-	scan		A merchant                         -to the far North. // The squire                         -to the far North. // Sir Lancelot du Lake               -to the East.
+1793230393	cmd	Alaric	54	760	camelot.are	standing	100	0	-	north		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230393	cmd	Alaric	54	760	camelot.are	standing	100	0	-	scan		A merchant                         -to the North. // The squire                         -to the North. // the knight of quality              -to the East.
+1793230395	cmd	Alaric	54	762	camelot.are	standing	100	0	-	north		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230395	cmd	Alaric	54	762	camelot.are	standing	100	0	-	scan		The Knight Gawaine                 -to the East. // The squire                         -to the far South. // Sir Kay                            -to the far South.
+1793230398	cmd	Alaric	54	768	camelot.are	standing	100	0	-	east		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230398	cmd	Alaric	54	768	camelot.are	standing	100	0	-	scan		the knight of quality              -to the South. // Sir Lancelot du Lake               -to the far South. // A merchant                         -to the West.
+1793230399	cmd	Alaric	54	762	camelot.are	standing	100	0	-	west		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793230400	cmd	Alaric	54	755	camelot.are	standing	100	0	-	west		Squire's Run at the North Gate //   You stand on Squire's run. A steady stream of traffic is coming and going  // to the south, where the squire's barracks is. To the north is the Great 
+1793230400	cmd	Alaric	54	755	camelot.are	standing	100	0	-	scan		A merchant                         -to the East. // The squire                         -to the East. // The Knight Gawaine                 -to the far East.
+1793230401	cmd	Alaric	54	755	camelot.are	standing	100	0	-	north		The gate is closed.
+1793230402	cmd	Alaric	54	755	camelot.are	standing	100	0	-	scan		A merchant                         -to the East. // The squire                         -to the East. // The Knight Gawaine                 -to the far East.
+1793230402	cmd	Alaric	54	755	camelot.are	standing	100	0	-	open		Ok.
+1793230403	cmd	Alaric	54	756	camelot.are	standing	100	0	-	north		The Great Northern Gate of Camelot //   You stand before the great northern gate of Camelot. A dirt road winds  // down the hill upon which Camelot rests into the rolling grass hills of 
+1793230403	cmd	Alaric	54	756	camelot.are	standing	100	0	-	scan		The knight of reknown              -to the South. // The knight of reknown              -to the South. // The squire                         -to the far South.
+1793230404	cmd	Alaric	54	782	camelot.are	standing	100	0	-	north		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met 
+1793230404	cmd	Alaric	54	782	camelot.are	standing	100	0	-	scan		The knight of reknown              -to the far South. // The knight of reknown              -to the far South.
+1793230405	cmd	Alaric	54	783	camelot.are	standing	100	0	-	north		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met are 
+1793230406	cmd	Alaric	54	783	camelot.are	standing	100	0	-	scan		You don't see anything near you.
+1793230407	cmd	Alaric	54	785	camelot.are	standing	100	0	-	north		The Highlands //   You have spent the day travelling in the highlands, and you are very tired. // You stand at an old Wall that runs east and west through the hills. Not 
+1793230408	cmd	Alaric	54	785	camelot.are	standing	100	0	-	open		Ok.
+1793230409	cmd	Alaric	54	785	camelot.are	standing	100	0	-	open		Ok.
+1793230410	cmd	Alaric	54	785	camelot.are	standing	100	0	-	scan		The northern outpost commander          -to the East. // A northern border guard            -to the East.
+1793230411	cmd	Alaric	54	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793230411	cmd	Alaric	54	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793230413	cmd	Alaric	54	785	camelot.are	standing	100	0	-	where	serv	You didn't find any serv.
+1793230416	cmd	Alaric	54	785	camelot.are	standing	100	0	-	where	serf	A busy serf                  Farms
+1793230416	cmd	Alaric	54	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793230417	cmd	Alaric	54	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793230419	cmd	Alaric	54	785	camelot.are	standing	100	0	-	where	2.serv	You didn't find any 2.serv.
+1793230420	cmd	Alaric	54	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793230421	cmd	Alaric	54	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793230422	cmd	Alaric	54	785	camelot.are	standing	100	0	-	look		The Highlands //   You have spent the day travelling in the highlands, and you are very tired. // You stand at an old Wall that runs east and west through the hills. Not 
+1793230423	cmd	Alaric	54	783	camelot.are	standing	100	0	-	west		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met are 
+1793230424	cmd	Alaric	54	782	camelot.are	standing	100	0	-	south		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met 
+1793230425	cmd	Alaric	54	756	camelot.are	standing	100	1	-	south		The Great Northern Gate of Camelot //   You stand before the great northern gate of Camelot. A dirt road winds  // down the hill upon which Camelot rests into the rolling grass hills of 
+1793230425	cmd	Alaric	54	755	camelot.are	standing	100	0	-	south		Squire's Run at the North Gate //   You stand on Squire's run. A steady stream of traffic is coming and going  // to the south, where the squire's barracks is. To the north is the Great 
+1793230425	cmd	Alaric	54	750	camelot.are	standing	100	0	-	west		Squire's Run //   You stand on Squire's Run. Squires bustle up and down the road on various  // errands for their lords. You notice a scroll lying on the ground. Squire's
+1793230426	cmd	Alaric	54	745	camelot.are	standing	100	0	-	west		Corner of Knight's Way and Squire's Run //   You stand at the corner of Knight's way and Squire's run. An arched  // doorway rises up into a stalwart tower. You can see lettering above the 
+1793230427	cmd	Alaric	54	742	camelot.are	standing	100	0	-	south		Knights Way before the stables //   You stand on the white marbled road, Knights Way. You smell horses to  // the east. To the west the high walls of camelot rise. Knights way continues 
+1793230428	cmd	Alaric	54	742	camelot.are	standing	100	0	-	scan		Stirrup                            -to the East. // A serf                             -to the East. // a lady in waiting                  -to the East.
+1793230428	cmd	Alaric	54	798	camelot.are	standing	100	0	-	east		Stables //   You stand in the vast stables of Camelot. Row upon row of stalls greet  // your eye. Smells of horse sweat and fresh straw combine in a pleasant mix. 
+1793230431	cmd	Alaric	54	798	camelot.are	standing	100	11	-	fists	ser	You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ A serf! [-94] // A serf is DEAD!!
+1793230439	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793230439	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1793230439	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1793230440	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1793230440	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793230440	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793230440	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793230441	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793230441	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793230441	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793230441	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
+1793230442	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 24 quest points.
+1793230549	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793230556	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	iron		Your skin hardens.
