@@ -1283,98 +1283,6 @@ int hyrule_patra_eyes_left( CHAR_DATA *mob )
 }
 
 /*
- * The last two guardians are group fights, and that is a rule, not a
- * tuning (owner, 2026-10-28: the Level 8 guardian must need two players
- * and Ganon three). Numbers alone could not promise it: TITANIC alone
- * multiplies a buffed player's hit points by six, and a strong enough
- * soloist beat the ashen Gleeok and a buffed pair beat Ganon. So below the
- * party a blow is turned aside, an instant kill too, and the fight can
- * only be lost.
- *
- * The party is every mortal player in the room who is up and either
- * fighting the guardian or grouped with whoever struck it. Nobody can pad
- * it with a character who has not earned the way in: Level 8 and Death
- * Mountain ask each character for their own Triforce shards
- * (hyrule_progress_gate). Staff strike freely and are not counted.
- */
-#define HYRULE_ASHEN_GLEEOK_VNUM  30316
-#define HYRULE_GANON_VNUM_PARTY   30225
-
-int hyrule_party_needed( CHAR_DATA *boss )
-{
-    if ( boss == NULL || !IS_NPC(boss) || boss->pIndexData == NULL )
-        return 0;
-    if ( boss->pIndexData->vnum == HYRULE_ASHEN_GLEEOK_VNUM )
-        return HYRULE_PARTY_GLEEOK;
-    if ( boss->pIndexData->vnum == HYRULE_GANON_VNUM_PARTY )
-        return HYRULE_PARTY_GANON;
-    return 0;
-}
-
-int hyrule_party_size( CHAR_DATA *ch, CHAR_DATA *boss )
-{
-    CHAR_DATA *rch;
-    CHAR_DATA *leader;
-    int count = 0;
-
-    if ( boss == NULL || boss->in_room == NULL )
-        return 0;
-    /* A pet or charmed servant strikes for its master. */
-    leader = ch;
-    if ( leader != NULL && IS_NPC(leader) && leader->master != NULL )
-        leader = leader->master;
-
-    for ( rch = boss->in_room->people; rch != NULL; rch = rch->next_in_room )
-    {
-        if ( IS_NPC(rch) || rch->position <= POS_SLEEPING
-        ||   IS_TRUSTED(rch, LEVEL_IMMORTAL) )
-            continue;
-        if ( rch->fighting == boss
-        ||   ( leader != NULL && !IS_NPC(leader) && is_same_group( rch, leader ) ) )
-            count++;
-    }
-    return count;
-}
-
-/*
- * True when the guardian shrugs off what ch did to it because too few
- * stand against it. Says why when speak is set, once a second at most,
- * so a round of four blows is one line, not four.
- */
-bool hyrule_party_refuses( CHAR_DATA *ch, CHAR_DATA *boss, bool speak )
-{
-    static CHAR_DATA *told_ch;
-    static time_t told_at;
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *leader;
-    int needed;
-    int have;
-
-    if ( ( needed = hyrule_party_needed( boss ) ) <= 0 )
-        return false;
-    leader = ch;
-    if ( leader != NULL && IS_NPC(leader) && leader->master != NULL )
-        leader = leader->master;
-    if ( leader != NULL && !IS_NPC(leader) && IS_TRUSTED(leader, LEVEL_IMMORTAL) )
-        return false;
-    if ( ( have = hyrule_party_size( ch, boss ) ) >= needed )
-        return false;
-
-    if ( speak && leader != NULL && !IS_NPC(leader)
-    &&   ( told_ch != leader || told_at != current_time ) )
-    {
-        told_ch = leader;
-        told_at = current_time;
-        snprintf( buf, sizeof(buf),
-                  "{0B$N shrugs off the blow as if it were nothing.{00  It takes %d of you "
-                  "fighting together to wound $M, and %s.",
-                  needed, have <= 1 ? "you stand alone" : "there are too few of you" );
-        act( buf, leader, NULL, boss, TO_CHAR );
-    }
-    return true;
-}
-
-/*
  * damage()'s question, before a landed blow comes off: does something
  * turn it aside? A bubble or a blade trap cannot be harmed at all, and the
  * fight with it is over at once. A patra's great eye cannot be reached while its ring of
@@ -1390,9 +1298,6 @@ bool hyrule_blow_turned_aside( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( ch == NULL || victim == NULL || ch == victim )
         return false;
-
-    if ( hyrule_party_refuses( ch, victim, true ) )
-        return true;
 
     if ( hyrule_enemy_is_invincible( victim ) )
     {
