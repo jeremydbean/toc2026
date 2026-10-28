@@ -15704,3 +15704,56 @@
 1793150164	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 5278
 1793150166	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 5278
 1793150168	session	Trentlin	50	2497	dresden_halloween.are	quit	1157s	+0 levels	+0 exp	+866616703 copper	3 kills	0 deaths	6 quests	562 commands	2 refused	coin: loot 1g 2s 3c, quests 567p 84g 42s, dailies 310p 96g 23s, spent 12p 20g
+1793150491	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793150492	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793150492	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793150495	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	10	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A prized artifact - The Sceptre of Gravestone - has gone missing!'
+1793150505	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	7	-	aquest	abort	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 6 in a row - all gone now!'
+1793150508	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793150510	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	jump	rockk	I see no rockk here.
+1793150511	cmd	Alaric	54	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1793150513	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793150517	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793150519	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    258 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793150522	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1793150523	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793150523	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793150525	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793150526	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793150527	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793150528	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	open		Ok.
+1793150529	cmd	Alaric	54	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1793150529	cmd	Alaric	54	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1793150530	cmd	Alaric	54	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1793150530	cmd	Alaric	54	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1793150530	cmd	Alaric	54	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1793150530	cmd	Alaric	54	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1793150531	cmd	Alaric	54	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1793150534	cmd	Alaric	54	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1793150536	cmd	Alaric	54	16005	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury! // Your fists of fury DISMEMBERS The bucaneer! [-47] // Your fists of fury wounds The bucaneer. [-19]
+1793150542	cmd	Alaric	54	16005	pirate.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The bucaneer! [-36] // Your fists of fury devastates The bucaneer! [-29]
+1793150547	cmd	Alaric	54	16005	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The bucaneer. [-13] // Your fists of fury maims The bucaneer! [-35]
+1793150553	cmd	Alaric	54	16005	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The bucaneer. [-19] // Your fists of fury grazes The bucaneer. [-7]
+1793150561	cmd	Alaric	54	16021	pirate.are	standing	93	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150564	cmd	Alaric	54	16021	pirate.are	standing	93	0	-	fists	sw	You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. [-3] // Your fists of fury decimates The swashbuckler! [-26]
+1793150570	cmd	Alaric	54	16021	pirate.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The swashbuckler. [-21] // Your fists of fury *** DEMOLISHES *** The swashbuckler! [-59]
+1793150575	cmd	Alaric	54	16021	pirate.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ The swashbuckler! [-86] // Your fists of fury hits The swashbuckler. [-9]
+1793150582	cmd	Alaric	54	16021	pirate.are	standing	85	0	-	fists		Who do you want to attack?
+1793150582	cmd	Alaric	54	16021	pirate.are	standing	85	0	-	look		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150584	cmd	Alaric	54	16021	pirate.are	standing	85	0	-	crane		You flow into action, striking at all your opponents. // Your crane dance === OBLITERATES === The sailor! [-140]
+1793150590	cmd	Alaric	54	16021	pirate.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ The sailor! [-88] // Your fists of fury maims The sailor! [-33]
+1793150598	cmd	Alaric	54	16016	pirate.are	standing	85	0	-	south		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150598	cmd	Alaric	54	16016	pirate.are	standing	85	0	-	kill	s	You must MURDER a player.
+1793150601	cmd	Alaric	54	16016	pirate.are	standing	85	1	-	kill	sa	Your punch ^^^ DESTROYS ^^^ The sailor! [-87] // The sailor is DEAD!! // You receive 0 experience points.
+1793150607	cmd	Alaric	54	16016	pirate.are	standing	85	0	-	crane		You do not have the stamina.
+1793150608	cmd	Alaric	54	16016	pirate.are	standing	85	0	-	fists	pi	You attack in an all consuming fury! // Your fists of fury maims The pirate! [-33] // Your fists of fury *** DEVASTATES *** The pirate! [-76]
+1793150613	cmd	Alaric	54	16016	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** The pirate! [-58] // Your fists of fury *** DEVASTATES *** The pirate! [-71]
+1793150619	cmd	Alaric	54	16016	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The pirate! [-72] // Your fists of fury MANGLES The pirate! [-54]
+1793150625	cmd	Alaric	54	16016	pirate.are	standing	86	0	-	nerve		Who do you want to attack?
+1793150625	cmd	Alaric	54	16016	pirate.are	standing	86	0	-	look		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150626	cmd	Alaric	54	16021	pirate.are	standing	86	0	-	north		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150629	cmd	Alaric	54	16021	pirate.are	standing	86	0	-	nerve	mi	You missed the nerve. // Your nerve pinch hits The midshipman. [-9]
+1793150630	cmd	Alaric	54	16021	pirate.are	fighting	86	0	fight	nerve	mi	You missed the nerve. // Your nerve pinch grazes The midshipman. [-6]
+1793150630	cmd	Alaric	54	16021	pirate.are	fighting	84	0	fight	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch ^^^ DESTROYS ^^^ The midshipman! [-86]
+1793150633	cmd	Alaric	54	16021	pirate.are	fighting	84	0	fight	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The midshipman! [-39]
+1793150636	cmd	Alaric	54	16021	pirate.are	fighting	81	0	fight	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The midshipman! [-39]
