@@ -211527,3 +211527,46 @@ Wed Oct 28 00:15:30 2026 :: Log Alaric [2497]: score
 Wed Oct 28 00:15:30 2026 :: Log Alaric [2497]: l
 Wed Oct 28 00:15:33 2026 :: Log Alaric [2497]: en do
 Wed Oct 28 00:15:33 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 00:19:55 2026 :: Sock.sinaddr:  178.156.187.238
+Wed Oct 28 00:19:56 2026 :: EOF encountered on read.
+Wed Oct 28 00:20:36 2026 :: Treasure goblin: vanished from room 7102 (Under the Dark Pit, sewer.are) (too long in one area).
+Wed Oct 28 00:22:57 2026 :: Log Alaric [2401]: wake
+Wed Oct 28 00:22:58 2026 :: Log Alaric [2401]: steel
+Wed Oct 28 00:23:00 2026 :: Log Alaric [2401]: u
+Wed Oct 28 00:23:00 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 00:23:00 2026 :: Log Alaric [2410]: u
+Wed Oct 28 00:23:00 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 00:23:00 2026 :: Log Alaric [2411]: u
+Wed Oct 28 00:23:00 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 00:23:01 2026 :: Log Alaric [2414]: u
+Wed Oct 28 00:23:01 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 00:23:01 2026 :: Log Alaric [2497]: steel
+Wed Oct 28 00:23:06 2026 :: Log Alaric [2497]: aq re
+Wed Oct 28 00:23:06 2026 :: Log Alaric [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in moria.are, 7 minutes, rush
+Wed Oct 28 00:23:11 2026 :: Log Alaric [2497]: enter door
+Wed Oct 28 00:23:11 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2401]: south
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2404]: south
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2427]: south
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2428]: south
+Wed Oct 28 00:23:12 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Wed Oct 28 00:23:13 2026 :: Log Alaric [2429]: south
+Wed Oct 28 00:23:13 2026 :: Log Alaric [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Wed Oct 28 00:23:13 2026 :: Log Alaric [2430]: south
+Wed Oct 28 00:23:13 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Wed Oct 28 00:23:13 2026 :: Log Alaric [2431]: open south
+Wed Oct 28 00:23:13 2026 :: Log Alaric [2431]: south
+Wed Oct 28 00:23:13 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Wed Oct 28 00:23:15 2026 :: Log Alaric [2432]: south
+Wed Oct 28 00:23:15 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Wed Oct 28 00:23:15 2026 :: Log Alaric [3505]: east
+Wed Oct 28 00:23:15 2026 :: Log Alaric [3506]: arrived (The Miden'nir) from 3505
+Wed Oct 28 00:23:15 2026 :: Log Alaric [3506]: east
+Wed Oct 28 00:23:15 2026 :: Log Alaric [3550]: arrived (At The Foot of The Dark Hills) from 3506
+Wed Oct 28 00:23:15 2026 :: Log Alaric [3550]: north
+Wed Oct 28 00:23:15 2026 :: Log Alaric [18]: arrived (Entering the hills) from 3550
+Wed Oct 28 00:23:16 2026 :: Log Alaric [18]: north
+Wed Oct 28 00:23:16 2026 :: Log Alaric [4000]: arrived (The hills) from 18
