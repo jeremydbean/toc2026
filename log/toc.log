@@ -216291,3 +216291,130 @@ Wed Oct 28 22:14:52 2026 :: EOF encountered on read.
 Wed Oct 28 22:16:21 2026 :: Treasure goblin: vanished from room 9409 (Mob Factory Cafeteria, mobfact.are) (too long in one area).
 Wed Oct 28 22:19:57 2026 :: Sock.sinaddr:  3.12.251.153
 Wed Oct 28 22:19:57 2026 :: EOF encountered on read.
+Wed Oct 28 22:23:32 2026 :: Sock.sinaddr:  208.126.22.104
+Wed Oct 28 22:23:34 2026 :: Loading Alaric's playerfile
+Wed Oct 28 22:23:35 2026 :: Loading Alaric's playerfile
+Wed Oct 28 22:23:35 2026 :: Alaric@208.126.22.104 has connected.
+Wed Oct 28 22:23:35 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Wed Oct 28 22:23:38 2026 :: Log Alaric [2497]: who
+Wed Oct 28 22:23:39 2026 :: Log Alaric [2497]: en do
+Wed Oct 28 22:23:39 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 22:23:41 2026 :: Log Alaric [2401]: jump rock
+Wed Oct 28 22:23:41 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Wed Oct 28 22:23:41 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Wed Oct 28 22:23:42 2026 :: Log Alaric [4208]: l
+Wed Oct 28 22:23:43 2026 :: Log Alaric [4208]: who
+Wed Oct 28 22:23:45 2026 :: Log Alaric [4208]: changes
+Wed Oct 28 22:24:05 2026 :: Log Alaric [4208]: who
+Wed Oct 28 22:24:09 2026 :: Log Alaric [4208]: wake
+Wed Oct 28 22:24:10 2026 :: Log Alaric [4208]: i
+Wed Oct 28 22:24:14 2026 :: Log Alaric [4208]: r e 4
+Wed Oct 28 22:24:14 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 28 22:24:14 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 22:24:14 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 22:24:14 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 22:24:15 2026 :: Log Alaric [2427]: n
+Wed Oct 28 22:24:15 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 22:24:15 2026 :: Log Alaric [2404]: n
+Wed Oct 28 22:24:15 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 22:24:16 2026 :: Log Alaric [2401]: u
+Wed Oct 28 22:24:16 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 22:24:16 2026 :: Log Alaric [2410]: u
+Wed Oct 28 22:24:16 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 22:24:17 2026 :: Log Alaric [2411]: u
+Wed Oct 28 22:24:17 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 22:24:17 2026 :: Log Alaric [2414]: u
+Wed Oct 28 22:24:17 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 22:24:17 2026 :: Log Alaric [2497]: u
+Wed Oct 28 22:24:18 2026 :: Log Alaric [2497]: aq re
+Wed Oct 28 22:24:18 2026 :: Log Alaric [2497]: quest assigned: kill a patrolman (mob 2106, level 8) in hood.are, 29 minutes, ordinary
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2497]: enter door
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2401]: east
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2403]: east
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2420]: east
+Wed Oct 28 22:24:22 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2421]: south
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2441]: east
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2442]: south
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2443]: east
+Wed Oct 28 22:24:23 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Wed Oct 28 22:24:24 2026 :: Log Alaric [2444]: east
+Wed Oct 28 22:24:24 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Wed Oct 28 22:24:24 2026 :: Log Alaric [2445]: east
+Wed Oct 28 22:24:24 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Wed Oct 28 22:24:29 2026 :: Log Alaric [2101]: kill pat
+Wed Oct 28 22:24:30 2026 :: Log Alaric [2101]: e
+Wed Oct 28 22:24:30 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Wed Oct 28 22:24:30 2026 :: Log Alaric [2102]: e
+Wed Oct 28 22:24:30 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Wed Oct 28 22:24:31 2026 :: Log Alaric [2103]: e
+Wed Oct 28 22:24:31 2026 :: Log Alaric [2104]: arrived (White Dragon Boulevard at Armory) from 2103
+Wed Oct 28 22:24:31 2026 :: Log Alaric [2104]: e
+Wed Oct 28 22:24:31 2026 :: Log Alaric [2105]: arrived (White Dragon Blvd.) from 2104
+Wed Oct 28 22:24:32 2026 :: Log Alaric [2105]: e
+Wed Oct 28 22:24:32 2026 :: Log Alaric [2106]: arrived (Corner of Ice and White Dragon) from 2105
+Wed Oct 28 22:24:32 2026 :: Log Alaric [2106]: e
+Wed Oct 28 22:24:32 2026 :: Log Alaric [2107]: arrived (White Dragon Boulevard) from 2106
+Wed Oct 28 22:24:32 2026 :: Log Alaric [2107]: e
+Wed Oct 28 22:24:32 2026 :: Log Alaric [2108]: arrived (Corner of Bronze and White Dragon) from 2107
+Wed Oct 28 22:24:33 2026 :: Log Alaric [2108]: e
+Wed Oct 28 22:24:33 2026 :: Log Alaric [2108]: e
+Wed Oct 28 22:24:33 2026 :: Log Alaric [2108]: e
+Wed Oct 28 22:24:33 2026 :: Log Alaric [2108]: s
+Wed Oct 28 22:24:33 2026 :: Log Alaric [2115]: arrived (Bronze Dragon Street at wizard's back door) from 2108
+Wed Oct 28 22:24:34 2026 :: Log Alaric [2115]: s
+Wed Oct 28 22:24:34 2026 :: Log Alaric [2120]: arrived (Bronze Dragon Street) from 2115
+Wed Oct 28 22:24:34 2026 :: Log Alaric [2120]: s
+Wed Oct 28 22:24:34 2026 :: Log Alaric [2125]: arrived (Bronze Dragon Street at Warehouse) from 2120
+Wed Oct 28 22:24:34 2026 :: Log Alaric [2125]: s
+Wed Oct 28 22:24:34 2026 :: Log Alaric [2130]: arrived (Yellow Dragon Road) from 2125
+Wed Oct 28 22:24:35 2026 :: Log Alaric [2130]: s
+Wed Oct 28 22:24:36 2026 :: Log Alaric [2130]: w
+Wed Oct 28 22:24:36 2026 :: Log Alaric [2129]: arrived (Yellow Dragon Road) from 2130
+Wed Oct 28 22:24:36 2026 :: Log Alaric [2129]: s
+Wed Oct 28 22:24:36 2026 :: Log Alaric [2134]: arrived (NO MAN'S LAND) from 2129
+Wed Oct 28 22:24:36 2026 :: Log Alaric [2134]: e
+Wed Oct 28 22:24:36 2026 :: Log Alaric [2135]: arrived (NO MAN'S LAND) from 2134
+Wed Oct 28 22:24:42 2026 :: Log Alaric [2135]: kill pa
+Wed Oct 28 22:24:42 2026 :: Log Alaric [2135]: killed a patrolman
+Wed Oct 28 22:24:51 2026 :: Log Alaric [2135]: recal
+Wed Oct 28 22:24:51 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 2135
+Wed Oct 28 22:24:52 2026 :: Log Alaric [4207]: recal
+Wed Oct 28 22:24:53 2026 :: Log Alaric [4207]: r e 3
+Wed Oct 28 22:24:53 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 22:24:53 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 22:24:53 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 22:24:54 2026 :: Log Alaric [2427]: n
+Wed Oct 28 22:24:54 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 22:24:54 2026 :: Log Alaric [2404]: n
+Wed Oct 28 22:24:54 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 22:24:54 2026 :: Log Alaric [2401]: u
+Wed Oct 28 22:24:54 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 22:24:55 2026 :: Log Alaric [2410]: u
+Wed Oct 28 22:24:55 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 22:24:55 2026 :: Log Alaric [2411]: u
+Wed Oct 28 22:24:55 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 22:24:55 2026 :: Log Alaric [2414]: u
+Wed Oct 28 22:24:55 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 22:24:55 2026 :: Log Alaric [2497]: u
+Wed Oct 28 22:24:56 2026 :: Log Alaric [2497]: u
+Wed Oct 28 22:24:56 2026 :: Log Alaric [2497]: aq co
+Wed Oct 28 22:24:56 2026 :: Log Alaric [2497]: copper +131415372
+Wed Oct 28 22:24:56 2026 :: Log Alaric [2497]: quest complete: 131p 41g 53s 72c, 36 quest points (streak bonus 0%)
+Wed Oct 28 22:24:56 2026 :: Snapshot of Alaric taken before quest: Alaric.20261028_222456.quest (PRESTORE Alaric to see it).
+Wed Oct 28 22:24:58 2026 :: Log Alaric [2497]: aq ga no
+Wed Oct 28 22:25:00 2026 :: Log Alaric [2497]: score
+Wed Oct 28 22:25:03 2026 :: Sock.sinaddr:  178.156.189.249
+Wed Oct 28 22:25:03 2026 :: EOF encountered on read.
+Wed Oct 28 22:25:04 2026 :: Log Alaric [2497]: who
+Wed Oct 28 22:25:06 2026 :: Log Alaric [2497]: score
+Wed Oct 28 22:25:07 2026 :: Log Alaric [2497]: quit
+Wed Oct 28 22:25:07 2026 :: Alaric has quit.
+Wed Oct 28 22:25:07 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct 28 22:26:26 2026 :: Treasure goblin: vanished from room 10286 (The field, tritia.are) (too long in one area).
