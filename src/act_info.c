@@ -2228,6 +2228,59 @@ static bool help_keyword_exact( const char *argument, const char *keywords )
 
 
 /*
+ * Each word asked is the start of the matching word of a phrase, in order:
+ * HELP DIVINE INTER finds 'DIVINE INTERVENTION', HELP STONE SK finds
+ * 'STONE SKIN' (owner, 2026-10-28). is_name cannot: it asks each word to
+ * begin some keyword whole, and "inter" begins no keyword. Only for two or
+ * more words asked; one word is is_name's already.
+ */
+static bool help_words_prefix( const char *asked, const char *phrase )
+{
+    for ( ;; )
+    {
+        while ( *asked == ' ' )
+            asked++;
+        while ( *phrase == ' ' )
+            phrase++;
+        if ( *asked == '\0' )
+            return TRUE;
+        if ( *phrase == '\0' )
+            return FALSE;
+        while ( *asked != '\0' && *asked != ' ' )
+        {
+            if ( LOWER(*asked) != LOWER(*phrase) )
+                return FALSE;
+            asked++;
+            phrase++;
+        }
+        while ( *phrase != '\0' && *phrase != ' ' )
+            phrase++;
+    }
+}
+
+static bool help_phrase_prefix( const char *argument, const char *keywords )
+{
+    char list[MAX_STRING_LENGTH];
+    char phrase[MAX_STRING_LENGTH];
+    char *rest;
+
+    if ( argument == NULL || keywords == NULL || strchr( argument, ' ' ) == NULL )
+        return FALSE;
+
+    toc_strlcpy( list, keywords, sizeof(list) );
+    rest = list;
+    for ( ;; )
+    {
+        rest = one_argument( rest, phrase );
+        if ( phrase[0] == '\0' )
+            return FALSE;
+        if ( help_words_prefix( argument, phrase ) )
+            return TRUE;
+    }
+}
+
+
+/*
  * Edit distance between two short words, capped: anything past "limit"
  * is just "too far", which is all help_suggest needs to know.
  */
@@ -2425,17 +2478,25 @@ void do_help( CHAR_DATA *ch, char *argument )
      * DRAGON in "CASINO LUCKY DRAGON GAMBLING", and that entry is earlier in
      * the file than DRAG, so the exact command lost to a partial match on an
      * unrelated topic. An exact keyword wins if one exists; prefixes still
-     * work for everything else.
+     * work for everything else. A third pass reads a shortened phrase
+     * (help_phrase_prefix), only once nothing else matched.
      */
-    for ( pass = 0; pass < 2; pass++ )
+    for ( pass = 0; pass < 3; pass++ )
     {
     for ( pHelp = help_first; pHelp != NULL; pHelp = pHelp->next )
     {
+	bool hit;
+
 	if ( pHelp->level > get_trust( ch ) )
 	    continue;
 
-	if ( pass == 0 ? !help_keyword_exact( argall, pHelp->keyword )
-	                : !is_name( argall, pHelp->keyword ) )
+	if ( pass == 0 )
+	    hit = help_keyword_exact( argall, pHelp->keyword );
+	else if ( pass == 1 )
+	    hit = is_name( argall, pHelp->keyword );
+	else
+	    hit = help_phrase_prefix( argall, pHelp->keyword );
+	if ( !hit )
 	    continue;
 
 	{

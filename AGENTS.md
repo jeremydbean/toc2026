@@ -1073,6 +1073,12 @@ python3 scripts/area_lint.py --fail-on critical --limit 100
   name with (WEATHER).
 - `db.c`'s `help_fold_keyword` folds a header that wraps a line into one
   line; `help_keyword_exact` matches a quoted keyword whole.
+- **Three passes, in order**: an exact keyword, then `is_name`'s prefix,
+  then `help_phrase_prefix` -- two or more words asked, each the start of
+  the matching word of one keyword phrase (HELP DIVINE INTER finds
+  'DIVINE INTERVENTION'; owner, 2026-10-28). The last pass runs only when
+  nothing else matched, so no page an older query found moves.
+  `help_index.lookup` mirrors all three.
 
 ## Achievements
 

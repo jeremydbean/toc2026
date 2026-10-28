@@ -3,9 +3,10 @@
 `db.c`'s `load_helps` reads each `#HELPS` section as a token stream -- a
 number, then a `~`-terminated keyword string, then a `~`-terminated body --
 from every file `area.lst` (then `built/built.lst`) lists, in that order,
-and `do_help` in `act_info.c` answers HELP in two passes over that list:
-an exact keyword first, then `is_name`'s prefix match, skipping entries
-above the reader's trust. A spell group with no entry of its own is
+and `do_help` in `act_info.c` answers HELP in three passes over that list:
+an exact keyword first, then `is_name`'s prefix match, then a shortened
+phrase (DIVINE INTER for 'DIVINE INTERVENTION'), skipping entries above
+the reader's trust. A spell group with no entry of its own is
 answered from `group_table` after both passes find nothing.
 
 The dashboard's help pages, the Oracle's grounding and the help tests all
@@ -88,6 +89,20 @@ def is_name(string: str, namelist: str) -> bool:
         else:
             return False
     return True
+
+
+def phrase_prefix(argument: str, keyword: str) -> bool:
+    """act_info.c's help_phrase_prefix: two or more words asked, each the
+    start of the matching word of one keyword phrase, in order -- DIVINE
+    INTER finds 'DIVINE INTERVENTION'."""
+    asked = argument.lower().split()
+    if len(asked) < 2:
+        return False
+    for phrase in words_of(keyword):
+        words = phrase.split()
+        if len(words) >= len(asked) and all(w.startswith(a) for a, w in zip(asked, words)):
+            return True
+    return False
 
 
 def keyword_exact(argument: str, keyword: str) -> bool:
@@ -181,6 +196,9 @@ def lookup(entries: List[HelpEntry], argument: str, trust: int) -> Optional[Help
             return entry
     for entry in entries:
         if entry.level <= trust and is_name(argall, entry.keyword):
+            return entry
+    for entry in entries:
+        if entry.level <= trust and phrase_prefix(argall, entry.keyword):
             return entry
     return None
 

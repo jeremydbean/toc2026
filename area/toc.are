@@ -1171,7 +1171,7 @@ See also: SPELLGROUP, GAIN
 
 ~
 
--1 TRANSPORT~
+-1 TRANSPORT TRANSPORTATION~
 This group is available to all spell casters. Spells are listed by class:
 
 M/M:  Gate, Pass Door, Summon, Teleport, Portal, Haven
@@ -1534,22 +1534,23 @@ tia                tick               tifarah            time
 titanic            titanic spell      title              tk
 to hit             tocgui             topten             torment
 track              train              training           traitor
-transfusion        transport          trap the soul      travel
-treasure goblin    triforce           trip               trophy
-turn               typo               unalias            university
-university of magicunlock             up                 use
-valley elf         value              vampiric touch     vengeance
-vengence           ventriloquate      vesh               vile
-virtuous           visible            vortex             wake
-walk               walkto             wands              warrior
-water burst        water spells       weaken             weapon
-weapons            weaponsmaster      wear               weather
-weather group      weather spells     weatherspells      web
-webclient          west               where              where to hunt
-whip               who                whois              wield
-wimpy              wind spells        wisdom             withdraw
-wizlist            word of recall     world              worth
-xp                 yard               yell               zap
+transfusion        transport          transportation     trap the soul
+travel             treasure goblin    triforce           trip
+trophy             turn               typo               unalias
+university         university of magicunlock             up
+use                valley elf         value              vampiric touch
+vengeance          vengence           ventriloquate      vesh
+vile               virtuous           visible            vortex
+wake               walk               walkto             wands
+warrior            water burst        water spells       weaken
+weapon             weapons            weaponsmaster      wear
+weather            weather group      weather spells     weatherspells
+web                webclient          west               where
+where to hunt      whip               who                whois
+wield              wimpy              wind spells        wisdom
+withdraw           wizlist            word of recall     world
+worth              xp                 yard               yell
+zap
 ~
 
 0$~

@@ -8,6 +8,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **HELP matches a shortened phrase** (2026-10-28, owner). A third pass
+  in `do_help`, after the exact keyword and `is_name`, takes two or more
+  words that each begin the matching word of one keyword phrase, in
+  order (`help_phrase_prefix`): HELP DIVINE INTER finds 'DIVINE
+  INTERVENTION'. `webadmin/help_index.py` mirrors it. TRANSPORTATION is a
+  keyword of the TRANSPORT group page.
 - **GRANTPSI: band, LEVEL or NOW** (2026-10-27, owner). A plain grant
   waits for the awakening check (first level gained in 18-21; after a
   remort when past it), LEVEL pays on the next level gained, NOW at once

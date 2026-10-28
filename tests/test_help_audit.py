@@ -65,6 +65,24 @@ class HelpIndexReadsLikeTheGame(unittest.TestCase):
         self.assertEqual(help_index.lookup(entries, "drag", MORTAL).text.strip(), "exact")
         self.assertEqual(help_index.lookup(entries, "dra", MORTAL).text.strip(), "prefix")
 
+    def test_a_shortened_phrase_finds_its_page_last(self) -> None:
+        # Owner, 2026-10-28: HELP DIVINE INTER found nothing although
+        # 'DIVINE INTERVENTION' is a keyword; is_name wants each word to
+        # begin a keyword whole, and "inter" begins none.
+        entries = help_index._parse_section(
+            "0 'DIVINE INTERVENTION'~\nphrase\n~\n0 DIVINE INTER~\nwords\n~\n"
+            "0 'STONE SKIN'~\nstone\n~\n0 $~\n", "x.are", 0)
+        self.assertEqual(help_index.lookup(entries, "divine inter", MORTAL).text.strip(), "words")
+        self.assertEqual(help_index.lookup(entries[:1], "divine inter", MORTAL).text.strip(), "phrase")
+        self.assertEqual(help_index.lookup(entries, "div int", MORTAL).text.strip(), "words")
+        self.assertEqual(help_index.lookup(entries[:1], "div int", MORTAL).text.strip(), "phrase")
+        self.assertEqual(help_index.lookup(entries, "stone sk", MORTAL).text.strip(), "stone")
+        # In order, from the first word, and no longer than the phrase.
+        self.assertIsNone(help_index.lookup(entries, "skin stone", MORTAL))
+        self.assertIsNone(help_index.lookup(entries[2:], "skin", MORTAL))
+        self.assertIsNone(help_index.lookup(entries[2:], "stone skin wall", MORTAL))
+        self.assertFalse(help_index.phrase_prefix("inter", "'DIVINE INTERVENTION'"))
+
     def test_a_page_above_the_readers_trust_is_skipped(self) -> None:
         entries = help_index._parse_section(
             "66 GOBLIN~\nstaff\n~\n0 'TREASURE GOBLIN' GOBLIN~\npublic\n~\n0 $~\n",
