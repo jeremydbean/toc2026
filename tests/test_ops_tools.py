@@ -153,6 +153,23 @@ class LogReportTests(unittest.TestCase):
         self.assertEqual(self.report.format_copper(-420 * 10_000), "-4p 20g")
         self.assertEqual(self.report.format_copper(0), "0c")
 
+    def test_a_sitting_is_one_session_line(self) -> None:
+        # 2026-10-28: a link loss writes a session line and the QUIT that
+        # ends the same sitting writes another counted from the same logon,
+        # so the report listed the sitting twice.
+        def row(at, name, how, secs, kills):
+            return [str(at), "session", name, "50", "4207", "x.are", how,
+                    f"{secs}s", "+0 levels", f"{kills} kills"]
+        rows = [row(1000, "Zed", "linkdead", 900, 5),
+                row(1100, "Amy", "quit", 50, 1),
+                row(3900, "Zed", "quit", 3801, 5),
+                row(9000, "Zed", "quit", 300, 2)]
+        merged = self.report.merge_sittings(rows)
+        self.assertEqual([(r[2], r[6], r[9]) for r in merged],
+                         [("Amy", "quit", "1 kills"),
+                          ("Zed", "linkdead > quit", "5 kills"),
+                          ("Zed", "quit", "2 kills")])
+
     def test_the_same_event_is_one_line(self) -> None:
         from datetime import datetime, timedelta, timezone
         start = datetime(2026, 10, 22, tzinfo=timezone.utc)

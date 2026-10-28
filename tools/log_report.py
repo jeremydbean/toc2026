@@ -352,6 +352,33 @@ SAID_NO = re.compile(
     re.IGNORECASE)
 
 
+def merge_sittings(rows):
+    """One line per sitting. A session line is written at link loss and
+    again at the QUIT or shutdown that ends the same sitting, and the game
+    counts from the same logon both times, so the second line repeats the
+    first and adds what came after. Keep the last line of each sitting
+    (same name, same start: epoch less seconds played) and say how it went:
+    "linkdead > quit"."""
+    merged = []
+    open_at = {}
+    for r in rows:
+        try:
+            start = int(r[0]) - int(str(r[7]).rstrip("s"))
+        except (IndexError, ValueError):
+            merged.append(r)
+            continue
+        prev = open_at.get(r[2])
+        if prev is not None and abs(prev[0] - start) <= 2:
+            # The sitting is listed where it ended, in time order.
+            joined = list(r)
+            joined[6] = merged[prev[1]][6] + " > " + r[6]
+            merged[prev[1]] = None
+            r = joined
+        open_at[r[2]] = (start, len(merged))
+        merged.append(r)
+    return [r for r in merged if r is not None]
+
+
 def journal_report(args, since, buffs=None) -> None:
     rows = []
     for raw in git_show(args.ref, "log/play.tsv").splitlines():
@@ -402,6 +429,8 @@ def journal_report(args, since, buffs=None) -> None:
                         ("report", "player reports with their last commands"),
                         ("session", "sessions")):
         picked = [r for r in rows if r[1] == kind]
+        if kind == "session":
+            picked = merge_sittings(picked)
         print(f"  {title} ({len(picked)}):")
         for r in picked[-15:]:
             when = datetime.fromtimestamp(int(r[0]), timezone.utc)
