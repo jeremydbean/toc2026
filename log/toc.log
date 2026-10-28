@@ -211625,3 +211625,138 @@ Wed Oct 28 00:26:58 2026 :: Log Alaric [2401]: who
 Wed Oct 28 00:27:10 2026 :: Log Alaric [2401]: prac
 Wed Oct 28 00:27:16 2026 :: Log Alaric [2401]: eq
 Wed Oct 28 00:27:23 2026 :: Log Alaric [2401]: iron
+Wed Oct 28 00:28:19 2026 :: Log Alaric [2401]: wake
+Wed Oct 28 00:28:19 2026 :: Log Alaric [2401]: l
+Wed Oct 28 00:28:22 2026 :: Log Alaric [2401]: u
+Wed Oct 28 00:28:22 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 00:28:22 2026 :: Log Alaric [2410]: u
+Wed Oct 28 00:28:22 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 00:28:22 2026 :: Log Alaric [2411]: u
+Wed Oct 28 00:28:22 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 00:28:23 2026 :: Log Alaric [2414]: u
+Wed Oct 28 00:28:23 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 00:28:23 2026 :: Log Alaric [2497]: u
+Wed Oct 28 00:28:24 2026 :: Log Alaric [2497]: aq re
+Wed Oct 28 00:28:24 2026 :: Log Alaric [2497]: quest assigned: kill a good wife (mob 20524, level 15) in emerald.are, 25 minutes, ordinary
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2497]: enter door
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2401]: south
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2404]: south
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2427]: south
+Wed Oct 28 00:28:40 2026 :: Log Alaric [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Wed Oct 28 00:28:41 2026 :: Log Alaric [2428]: south
+Wed Oct 28 00:28:41 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Wed Oct 28 00:28:41 2026 :: Log Alaric [2429]: south
+Wed Oct 28 00:28:41 2026 :: Log Alaric [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Wed Oct 28 00:28:41 2026 :: Log Alaric [2430]: south
+Wed Oct 28 00:28:41 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Wed Oct 28 00:28:41 2026 :: Log Alaric [2431]: open south
+Wed Oct 28 00:28:42 2026 :: Log Alaric [2431]: south
+Wed Oct 28 00:28:42 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Wed Oct 28 00:28:43 2026 :: Log Alaric [2432]: south
+Wed Oct 28 00:28:43 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Wed Oct 28 00:28:43 2026 :: Log Alaric [3505]: south
+Wed Oct 28 00:28:43 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Wed Oct 28 00:28:44 2026 :: Log Alaric [3507]: west
+Wed Oct 28 00:28:44 2026 :: Log Alaric [3508]: arrived (On a Small Path) from 3507
+Wed Oct 28 00:28:44 2026 :: Log Alaric [3508]: south
+Wed Oct 28 00:28:44 2026 :: Log Alaric [3511]: arrived (The Trail) from 3508
+Wed Oct 28 00:28:44 2026 :: Log Alaric [3511]: west
+Wed Oct 28 00:28:48 2026 :: Log Alaric [3511]: open west
+Wed Oct 28 00:28:48 2026 :: Log Alaric [3511]: west
+Wed Oct 28 00:28:50 2026 :: Log Alaric [3511]: (refused) rrecal
+Wed Oct 28 00:28:52 2026 :: Log Alaric [3511]: recal
+Wed Oct 28 00:28:52 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 3511
+Wed Oct 28 00:28:53 2026 :: Log Alaric [4207]: w
+Wed Oct 28 00:28:53 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Wed Oct 28 00:28:54 2026 :: Log Alaric [4208]: heal ref
+Wed Oct 28 00:28:54 2026 :: Log Alaric [4208]: gold -130
+Wed Oct 28 00:28:58 2026 :: Log Alaric [4208]: r e 4
+Wed Oct 28 00:28:58 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 28 00:28:58 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 00:28:58 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 00:28:58 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 00:28:58 2026 :: Log Alaric [2427]: n
+Wed Oct 28 00:28:58 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 00:28:59 2026 :: Log Alaric [2404]: n
+Wed Oct 28 00:28:59 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 00:29:05 2026 :: Log Alaric [2401]: affects off: steel fist
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2401]: r s 6
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2431]: open south
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2431]: r s 3
+Wed Oct 28 00:29:11 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Wed Oct 28 00:29:11 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Wed Oct 28 00:29:11 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Wed Oct 28 00:29:12 2026 :: Log Alaric [3507]: w
+Wed Oct 28 00:29:12 2026 :: Log Alaric [3508]: arrived (On a Small Path) from 3507
+Wed Oct 28 00:29:12 2026 :: Log Alaric [3508]: s
+Wed Oct 28 00:29:12 2026 :: Log Alaric [3511]: arrived (The Trail) from 3508
+Wed Oct 28 00:29:12 2026 :: Log Alaric [3511]: open secret
+Wed Oct 28 00:29:12 2026 :: Log Alaric [3511]: w
+Wed Oct 28 00:29:12 2026 :: Log Alaric [20501]: arrived (A Fog-Shrouded Trail) from 3511
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20501]: u
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20502]: arrived (The Haunted Pine Forest) from 20501
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20502]: u
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20503]: arrived (Near the Summit) from 20502
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20503]: s
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20504]: arrived (A Mountain Pass) from 20503
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20504]: s
+Wed Oct 28 00:29:13 2026 :: Log Alaric [20505]: arrived (A Mountain Pass) from 20504
+Wed Oct 28 00:29:14 2026 :: Log Alaric [20505]: w
+Wed Oct 28 00:29:14 2026 :: Log Alaric [20506]: arrived (A Thickly-Wooded Dell) from 20505
+Wed Oct 28 00:29:14 2026 :: Log Alaric [20506]: steel
+Wed Oct 28 00:29:16 2026 :: Log Alaric [20506]: steel
+Wed Oct 28 00:30:05 2026 :: Sock.sinaddr:  178.156.189.249
+Wed Oct 28 00:30:05 2026 :: EOF encountered on read.
+Wed Oct 28 00:30:09 2026 :: Log Alaric [20506]: affects off: iron skin
+Wed Oct 28 00:30:41 2026 :: Treasure goblin: vanished from room 2216 (The Court Ends, draconia.are) (too long in one area).
+Wed Oct 28 00:31:00 2026 :: Log Alaric [20506]: west
+Wed Oct 28 00:31:00 2026 :: Log Alaric [20509]: arrived (Road to the Vale of Clover) from 20506
+Wed Oct 28 00:31:00 2026 :: Log Alaric [20509]: north
+Wed Oct 28 00:31:00 2026 :: Log Alaric [20510]: arrived (In Clover) from 20509
+Wed Oct 28 00:31:00 2026 :: Log Alaric [20510]: north
+Wed Oct 28 00:31:00 2026 :: Log Alaric [20513]: arrived (The Village Square) from 20510
+Wed Oct 28 00:31:03 2026 :: Log Alaric [20513]: fi wi
+Wed Oct 28 00:31:03 2026 :: Log Alaric [20513]: killed a good wife
+Wed Oct 28 00:31:03 2026 :: Log Alaric [20513]: coin +1 copper
+Wed Oct 28 00:31:10 2026 :: Log Alaric [20513]: recal
+Wed Oct 28 00:31:10 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 20513
+Wed Oct 28 00:31:10 2026 :: Log Alaric [4207]: recal
+Wed Oct 28 00:31:11 2026 :: Log Alaric [4207]: recal
+Wed Oct 28 00:31:11 2026 :: Log Alaric [4207]: r e 3
+Wed Oct 28 00:31:11 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 00:31:11 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 00:31:11 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 00:31:11 2026 :: Log Alaric [2427]: n
+Wed Oct 28 00:31:11 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 00:31:11 2026 :: Log Alaric [2404]: n
+Wed Oct 28 00:31:11 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2401]: u
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2410]: u
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2411]: u
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2414]: u
+Wed Oct 28 00:31:12 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 00:31:13 2026 :: Log Alaric [2497]: u
+Wed Oct 28 00:31:13 2026 :: Log Alaric [2497]: aq co
+Wed Oct 28 00:31:13 2026 :: Log Alaric [2497]: copper +87610248
+Wed Oct 28 00:31:13 2026 :: Log Alaric [2497]: quest complete: 87p 61g 2s 48c, 22 quest points (streak bonus 30%)
+Wed Oct 28 00:31:13 2026 :: Snapshot of Alaric taken before quest: Alaric.20261028_003113.quest (PRESTORE Alaric to see it).
+Wed Oct 28 00:31:13 2026 :: Log Alaric [2497]: aq ga no
+Wed Oct 28 00:31:17 2026 :: Log Alaric [2497]: score
+Wed Oct 28 00:31:18 2026 :: Log Alaric [2497]: i
+Wed Oct 28 00:31:21 2026 :: Log Alaric [2497]: score
+Wed Oct 28 00:31:22 2026 :: Log Alaric [2497]: (refused) wakke
+Wed Oct 28 00:31:23 2026 :: Log Alaric [2497]: l
+Wed Oct 28 00:31:25 2026 :: Log Alaric [2497]: en do
+Wed Oct 28 00:31:25 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
