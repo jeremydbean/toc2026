@@ -389,7 +389,8 @@ bool hyrule_defies_instant_death( CHAR_DATA *victim )
 {
     return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
         && ( is_hyrule_ganon(victim)
-          || victim->pIndexData->vnum == HYRULE_GOHMA_VNUM );
+          || victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
+          || hyrule_party_needed( victim ) > 0 );
 }
 
 static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
@@ -398,6 +399,11 @@ static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( !hyrule_defies_instant_death(victim) )
         return false;
+
+    /* Fewer than the last guardians want cannot so much as scratch them
+       (hyrule_party_refuses): a fatality is a blow like any other. */
+    if ( hyrule_party_refuses( ch, victim, ch != NULL ) )
+        return true;
 
     share = UMAX( 1, victim->max_hit / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR );
     if ( is_hyrule_ganon(victim) )
@@ -415,8 +421,12 @@ static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
     victim->hit = UMAX( 1, victim->hit - share );
     if ( victim->position <= POS_STUNNED )
         victim->position = victim->fighting != NULL ? POS_FIGHTING : POS_STANDING;
-    act( "$n reels, and $s armored eye snaps shut: only an arrow can finish $m.",
-         victim, NULL, NULL, TO_ROOM );
+    if ( victim->pIndexData->vnum == HYRULE_GOHMA_VNUM )
+        act( "$n reels, and $s armored eye snaps shut: only an arrow can finish $m.",
+             victim, NULL, NULL, TO_ROOM );
+    else
+        act( "$n reels from the blow, but its heads hold it to life: it must be worn down.",
+             victim, NULL, NULL, TO_ROOM );
     return true;
 }
 

@@ -3637,6 +3637,13 @@ bool    hyrule_bomb_creature   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    hyrule_shoot           ( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument );
 void    hyrule_burn_creature   ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *candle );
 bool    hyrule_blow_turned_aside ( CHAR_DATA *ch, CHAR_DATA *victim );
+int     hyrule_party_needed     ( CHAR_DATA *boss );
+int     hyrule_party_size       ( CHAR_DATA *ch, CHAR_DATA *boss );
+bool    hyrule_party_refuses    ( CHAR_DATA *ch, CHAR_DATA *boss, bool speak );
+/* Players who must fight together to wound the last two guardians
+   (hyrule_party_refuses, owner 2026-10-28). */
+#define HYRULE_PARTY_GLEEOK     2
+#define HYRULE_PARTY_GANON      3
 int     hyrule_patra_eyes_left ( CHAR_DATA *mob );
 bool    hyrule_enemy_is_invincible ( CHAR_DATA *victim );
 bool    hyrule_foe             ( CHAR_DATA *victim );

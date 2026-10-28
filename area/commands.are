@@ -1761,7 +1761,10 @@ the levels above: the land around each dungeon is graded for that dungeon.
 Each guardian is a hard fight for its band: an ordinary character at the
 top of the band loses alone.  Ask Hermie for her buffs first (BUFF EMPOWER,
 BUFF TITANIC, BUFF DEFENSE, BUFF COMBAT) and one can win alone, though it
-is close; a group does better.  Ganon wants a buffed group.  Gohma's eye
+is close; a group does better.  The last two are group fights, and no
+one can carry them alone: the ashen Gleeok of Level 8 cannot be wounded
+by fewer than two players fighting it together, and Ganon by fewer than
+three.  Gohma's eye
 closes against every finishing blow but an arrow: carry the bow.  A
 guardian carries its weapon and Heart Guard, and drops
 three more pieces from a table with one for every other slot, each the
@@ -1783,9 +1786,10 @@ See also: GANON, COMBINE, RECALL, HYRULE ITEMS, HYRULE SECRETS, HEARTS
 ~
 
 0 GANON RELICS 'MASTER SWORD' TRIFORCE 'RED RING'~
-Ganon is a fight for a group.  He blinks about the dark hurling fireballs
-that no parry stops, and his wounds close if he is left alone.  He can be
-wounded normally, but at one hit point he flashes red, becomes stunned, and
+Ganon is a fight for a group of three: fewer than three players fighting
+him together cannot wound him at all.  He blinks about the dark hurling
+fireballs that no parry stops, and his wounds close if he is left alone.
+He can be wounded, but at one hit point he flashes red, becomes stunned, and
 can only be finished by a level 54 or higher character wielding the Silver
 Arrow and typing SHOOT GANON.  The Silver Arrow lies in one of Death
 Mountain's cellars; a group does best with two.
