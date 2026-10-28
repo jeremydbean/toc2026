@@ -216418,3 +216418,18 @@ Wed Oct 28 22:25:07 2026 :: Log Alaric [2497]: quit
 Wed Oct 28 22:25:07 2026 :: Alaric has quit.
 Wed Oct 28 22:25:07 2026 :: [QUIT] Player rejoined the real world.
 Wed Oct 28 22:26:26 2026 :: Treasure goblin: vanished from room 10286 (The field, tritia.are) (too long in one area).
+Wed Oct 28 22:29:08 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Wed Oct 28 22:29:12 2026 :: Log WebAdmin: fsave
+Wed Oct 28 22:29:18 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Wed Oct 28 22:29:21 2026 :: Received signal 15; saving players and shutting down.
+Wed Oct 28 22:29:21 2026 :: Normal termination of game.
+Wed Oct 28 22:29:21 2026 ::  INIT OK 
+Wed Oct 28 22:29:21 2026 :: walkto_load: 157 destinations.
+Wed Oct 28 22:29:21 2026 :: changes_load: 199 entries.
+Wed Oct 28 22:29:21 2026 :: Recovery ledger: 214 records (0 from before the check), 0 requests, 6 players.
+Wed Oct 28 22:29:21 2026 :: ROM is ready to rock on port 9000.
+Wed Oct 28 22:29:21 2026 :: Treasure goblin: appeared.
+Wed Oct 28 22:29:21 2026 :: Automated backup complete.
+Wed Oct 28 22:29:21 2026 :: Daily backup complete.
+Wed Oct 28 22:30:08 2026 :: Sock.sinaddr:  5.161.177.47
+Wed Oct 28 22:30:08 2026 :: EOF encountered on read.
