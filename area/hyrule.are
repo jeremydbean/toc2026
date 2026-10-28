@@ -132,7 +132,7 @@ Arrow and SHOOT GANON to end it.
 ~
 pig~
 ABMRV CDFHJQUV -800 S
-64 32 16d10+35912 17d10+840 5d31+120 7
+64 32 16d10+44912 17d10+840 5d39+150 7
 -40 -40 -40 -40
 BCDE B CP Y
 8 8 0 0
@@ -336,7 +336,7 @@ the last shard of wisdom and leaves a heart container behind.
 ~
 dragon~
 ABMV 0 -200 S
-55 27 13d10+10428 16d10+804 4d26+80 7
+55 27 13d10+34928 16d10+804 4d42+127 7
 0 0 0 0
 0 0 0 0
 8 8 0 8978

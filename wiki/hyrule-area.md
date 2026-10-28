@@ -503,17 +503,19 @@ worn. IDENTIFY lists them as "Grants haste while worn."
 
 ### Ganon's Fight
 
-Ganon is meant to need a group: a solo level 59 with maximum stats should very
-likely lose, and three or four should win. The numbers:
+Ganon is a fight for three (owner, 2026-10-28): three average players at
+the top of the band, buffed by Hermie, should need everything they have, a
+pair should lose, and one may try but should expect to die. See "The Last
+Two Guardians" below for how that was measured. The numbers:
 
-- **Level 64, 36,000 hit points, armour -40 (-400 in game), average blow 200
-  (5d31+120), sanctuary and haste as before.** Level 64 parries and dodges a
+- **Level 64, 45,000 hit points, armour -40 (-400 in game), average blow 250,
+  sanctuary and haste as before.** Level 64 parries and dodges a
   level 59 35% of the time each (`min(30, level) + level - 59`), so about four
   in ten blows land. The armour shaves about 80 off each ordinary blow; the
   Silver Arrow's tenth of his health is taken after armour, so it is untouched.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
-  throws two fireballs of 300-420, each at a random player in the fight:
+  throws three fireballs of 250-350, each at a random player in the fight:
   anyone fighting him or grouped with someone who is. A fireball is a spell
   blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
   Red Ring takes a fifth, the Blue Ring a further tenth, and the Mirror
@@ -541,15 +543,12 @@ halved, twice) was more than the 1,640 hit points a typical level 59 holds,
 and his 350-point blow added more. That simulation's win table no longer
 describes him and has been taken out.
 
-He was retuned by hand, to fireballs of 300-420 and a 200-point blow. The
-arithmetic, for a level 59 with sanctuary: two fireballs are 150-210 each
-after the halving, about 360 a pulse; his hasted melee lands about one and a
-half blows a round through a hero's defences at about 100 each. That is
-roughly 550 every four seconds. A soloist of about 1,640 hit points lasts some
-four rounds of the seven the Silver Arrow needs, so still loses; one with
-4,000 hit points and potions can win. Three split the fire to under 200 each
-every four seconds, which a cleric keeps up with. The blows now read
-ERADICATE and ANNIHILATE rather than UNSPEAKABLE.
+He was then retuned by hand, to two fireballs of 300-420 and a 200-point
+blow (about 550 every four seconds to a soloist with sanctuary), which read
+ERADICATE and ANNIHILATE rather than UNSPEAKABLE. On 2026-10-28 group
+playtests set the numbers above. Every fireball still stays at or under 175
+through sanctuary, so none reads UNSPEAKABLE: the fight got harder by more
+fireballs and more hit points, not bigger ones.
 
 A group wants two Silver Arrows: the arrow's tenth of his health is what ends
 the fight, and the second arrow halves its length. Both cellars refill at each
@@ -615,15 +614,34 @@ Death Mountain's orbiting eye, lashes everyone fighting it each pulse
 | 5 | Digdogger | 36 | 7,500 | 195 | a roll 382-530 | lost | won; a long fight |
 | 6 | Gohma | 43 | 9,000 | 100 | the eye 119-168 | lost | won 1 of 2, the win nearly spent |
 | 7 | ancient Aquamentus | 49 | 9,500 | 116 | 3 fireballs 46-63 | lost | won 2 of 2, one at 1% |
-| 8 | ashen Gleeok | 55 | 10,500 | 133 | 4 heads 47-66 | lost | won 2 of 2, one nearly dead |
-| 9 | Ganon | 64 | 36,000 | 200 | 2 fireballs 300-420 | lost | lost; a buffed pair won 2 of 2, a trio 2 of 2 |
+| 8 | ashen Gleeok | 55 | 35,000 | 212 | 4 heads 159-222 | lost | lost; a buffed pair lost, a trio won narrowly |
+| 9 | Ganon | 64 | 45,000 | 250 | 3 fireballs 250-350 | lost | lost; a buffed trio won by a thread, a four won |
 
-Ganon's group fights were played with `tools/hyrule_playtest/ganon_group.py`:
-the same warrior, two or three of them, each buffed by Hermie, the leader
-carrying the Silver Arrow. Nobody fell in any of the four. A pair is
-therefore enough, and TITANIC is most of why: it multiplies maximum hit
-points by six, so a buffed group carries several times the health the
-fireballs were sized against.
+#### The Last Two Guardians
+
+The ashen Gleeok is a fight for two and Ganon for three (owner,
+2026-10-28), by balance, not by rule: one may try, and should expect to
+lose. They were sized with `tools/hyrule_playtest/ganon_group.py`, which
+plays any guardian against a group of the median warriors above, each
+buffed by Hermie, grouped and attacking together (Ganon's leader carries
+the Silver Arrow). First the point where the group just wins was found,
+then 25% was added to hit points, blow and fire, because real players are
+good and get good gear (owner).
+
+| Guardian | Just won by | Played | Final, +25% |
+| --- | --- | --- | --- |
+| ashen Gleeok | a pair, at 28,000 hit points, blow 170, heads 127-178: won 2 of 2, each time one saved from death and the other left under 400 | a soloist lost in 93 s; at 18,000 a pair won with half its health left | 35,000, 212, 159-222: a pair lost, a trio won with 164 left on one |
+| Ganon | a trio, at 36,000, blow 200, two fireballs 300-420: won with 242 left on one and two saved; a pair lost | three fireballs: a trio won, every save spent | 45,000, 250, three fireballs 250-350: a trio won with one dead and the others at 150 and 1; a four won |
+
+DIVINE PROTECTION, one of Hermie's buffs, spares each buffed player one
+death at three quarters of their health, and the tool counts those saves.
+Two things made earlier group results wrong, and are fixed in the tool:
+it took any "is DEAD!!" for the guardian's, so a member's death ended the
+fight and scored it a win (the old "a buffed pair beat Ganon" came from
+that), and a second fight in one run is played in the relics the first
+looted, so only a run's first fight measures anything. An instant kill
+takes a tenth of either guardian's health (`hyrule_defies_instant_death`),
+so a lucky fatality cannot skip a fight sized for a group.
 
 Hit points climb guardian by guardian to Ganon's, and no guardian's blow
 reaches his; `tests/test_hyrule_progression.py` holds both. Four of the

@@ -48,6 +48,9 @@ MAN = json.loads((ROOT / "data" / "hyrule_first_quest.json").read_text(encoding=
 boss_room = {d["level"]: d for d in MAN["dungeons"]}[DUNGEON]["boss_vnum"]
 BOSS_VNUM = gen.BOSS_MOBS[DUNGEON]
 BOSS_WORD = (parser.mobiles[BOSS_VNUM].keywords or "ganon").split()[0].lower()
+# The guardian's own death, never a member's: "Zganc is DEAD!!" ended every
+# group fight a member lost and was counted as a win until 2026-10-28.
+BOSS_DEAD = re.compile(re.escape(parser.mobiles[BOSS_VNUM].short_desc) + r" is DEAD!!", re.I)
 L = PLAN["level"]
 hp_max = int(8 + 10 * L + 0.3 * L * L)
 mana = int(100 + 4 * L)
@@ -105,14 +108,17 @@ def fight(heroes, limit=600):
             h.drain(0.7)
         for i, h in enumerate(heroes):
             text = h.transcript[marks[i]:]
-            if "You have been KILLED" in text:
+            # DIVINE PROTECTION (one of Hermie's buffs) saves a buffed
+            # player from one death at three quarters of their health; they
+            # fight on, as a player would.
+            if text.count("You have been KILLED") > text.count("spared from death by the Gods"):
                 dead[i] = True
             if text.count("DISARMS") > disarms[i] and weapon_vnum:
                 disarms[i] = text.count("DISARMS")
                 kw = obj_keyword(weapon_vnum)
                 h.send(f"get {kw}")
                 h.send(f"wield {kw}")
-            if "is DEAD!!" in text:
+            if BOSS_DEAD.search(text):
                 return True, dead.count(False), time.time() - start, \
                     [hp_of(x.transcript[m:]) for x, m in zip(heroes, marks)]
         lead = heroes[0].transcript[marks[0]:]
@@ -183,11 +189,13 @@ with LiveMud() as mud:
                 run(god, f"restore {name.lower()}", 0.6)
                 run(god, f"transfer {name.lower()} {boss_room}", 1.0)
             won, alive, secs, left = fight(heroes)
+            saves = [h.transcript.count("spared from death by the Gods") for h in heroes]
             result = dict(attempt=attempt + 1, won=won, survivors=alive,
-                          secs=round(secs), hp_left=left)
+                          secs=round(secs), hp_left=left, saves=saves)
             results["fights"].append(result)
             note(f"try {attempt + 1}: {'WON' if won else 'LOST' if won is False else 'n/a'}"
-                 f", {alive} of {MEMBERS} standing, {secs:.0f}s, hp left {left}")
+                 f", {alive} of {MEMBERS} standing, {secs:.0f}s, hp left {left}"
+                 f", saved from death so far {saves}")
             if attempt + 1 < TRIES:
                 # The dead lie in the dark in their corpses' gear: fresh copies.
                 for i, (h, name) in enumerate(zip(heroes, NAMES)):
@@ -201,6 +209,7 @@ with LiveMud() as mud:
                     run(heroes[0], f"group {name.lower()}", 0.8)
         for h in heroes:
             h.send("quit")
-        OUT.with_suffix(".hero.log").write_text(heroes[0].transcript)
+        for i, h in enumerate(heroes):
+            OUT.with_suffix(f".hero{i}.log").write_text(h.transcript)
 OUT.write_text(json.dumps(results, indent=1))
 note("done")

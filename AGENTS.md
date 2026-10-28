@@ -946,14 +946,26 @@ wearer -- is what sight compares against a wizinvis or cloak level. Add a
 new holylight check and it needs both; `tests/test_hyrule_progression.py`
 fails on a `PLR_HOLYLIGHT` sight test that does not also ask the Triforce.
 
-**Ganon needs a group, and `spec_ganon` is why.** His fireballs are spell
-blows no parry stops, two every four seconds at random members of the
-fight; his melee barely matters. Retune him with the simulation described
-in `wiki/hyrule-area.md`, not by feel: the Silver Arrow's tenth-of-health
-floor fixes the fight's length, so his damage per pulse is what decides
-who wins.
+**The last two guardians are group fights, by balance, not by rule**
+(owner, 2026-10-28: the ashen Gleeok needs two average high-level
+players, Ganon three, and "one person CAN try" -- a party rule that
+turned a soloist's blows aside was built and taken out the same day).
+The sizes are the point where Hermie-buffed median players just win,
+measured live with `tools/hyrule_playtest/ganon_group.py` (any guardian,
+any group size), **plus 25%**, because real players are good and get
+good gear (owner). His fireballs are spell blows no parry stops, three
+every four seconds at random members of the fight; add fireballs rather
+than enlarge them, since none may read UNSPEAKABLE (over 250) through
+sanctuary. Read a group playtest's transcripts, not only its verdict:
+until 2026-10-28 the tool took a member's "is DEAD!!" for the
+guardian's, so every lost group fight was scored a win, and a second
+fight in one run is played in the relics the first one looted -- only a
+run's first fight measures anything. DIVINE PROTECTION (one of Hermie's
+buffs) spares each buffed player one death at three quarters of their
+health; the tool counts those saves. An instant kill takes a tenth of
+either guardian's health (`hyrule_defies_instant_death`).
 
-**The other eight guardians are hard, and Hermie is what makes them
+**The first seven guardians are hard, and Hermie is what makes them
 possible** (owner, 2026-10-04). A median player at the top of the band
 loses alone; the same player buffed by Hermie (EMPOWER, TITANIC, the
 defence and combat groups) wins about two fights in three. "Median" is

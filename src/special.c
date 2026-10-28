@@ -522,15 +522,16 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  * The numbers must match scripts/build_hyrule_area.py's BOSS_VOLLEYS.
  * They were 1,400-1,900, which nobody met until his hit points stopped
  * overflowing in October 2026; then one pulse through sanctuary was more
- * than a typical level 59 holds. At 300-420 (150-210 through sanctuary)
- * a lone 59 still loses -- about 550 every four seconds from fire and
- * melee together, against seven rounds of Silver Arrow -- while a group
- * of three takes under 200 each and sees it through. See "Ganon's Fight"
- * in wiki/hyrule-area.md.
+ * than a typical level 59 holds. Three at 250-350 (125-175 through
+ * sanctuary) are sized, with his 45,000 hit points, so that a buffed
+ * group of three median level 59s wins narrowly and two lose (owner,
+ * 2026-10-28: the calibrated point plus a quarter). Add fireballs rather
+ * than enlarge them: none may read UNSPEAKABLE through sanctuary. See
+ * "Ganon's Fight" in wiki/hyrule-area.md.
  */
-#define GANON_FIREBALLS          2
-#define GANON_FIREBALL_MIN    300
-#define GANON_FIREBALL_MAX    420
+#define GANON_FIREBALLS          3
+#define GANON_FIREBALL_MIN    250
+#define GANON_FIREBALL_MAX    350
 #define GANON_REGEN_DIVISOR     10
 
 static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )
@@ -680,7 +681,7 @@ static const HYRULE_GUARDIAN_VOLLEY hyrule_guardian_volleys[] =
       "The ancient Aquamentus spits a roaring fan of three fireballs!",
       "A fireball from the fan streaks straight at you!",
       "A fireball from the fan streaks at $N!" },
-    { 30316, 4,  47,  66, DAM_FIRE, "fireball",
+    { 30316, 4, 159, 222, DAM_FIRE, "fireball",
       "The ashen Gleeok's four heads rear back and spit fire!",
       "A gout of fire from a Gleeok head hits you!",
       "A gout of fire from a Gleeok head hits $N!" },

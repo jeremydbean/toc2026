@@ -116,9 +116,11 @@ def fight(hero, target, limit=240, ganon=False):
             kw = obj_keyword(weapon_vnum)
             hero.send(f"get {kw}")
             hero.send(f"wield {kw}")
-        if "You have been KILLED" in text:
+        # DIVINE PROTECTION, one of Hermie's buffs, spares a buffed player
+        # one death at three quarters of their health; they fight on.
+        if text.count("You have been KILLED") > text.count("spared from death by the Gods"):
             return False, 0, time.time() - start
-        if "is DEAD!!" in text:
+        if re.search(r"(?<!You have been )\bis DEAD!!", text):
             return True, hp_of(text), time.time() - start
         if "only an arrow can finish" in text and not shot:
             hero.send("wield bow")

@@ -665,8 +665,8 @@ BOSS_STATS = {
     5: (36, 7500, 195),   # Digdogger
     6: (43, 9000, 100),   # Gohma: haste; her sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
     7: (49, 9500, 116),   # Aquamentus again, older and harder
-    8: (55, 10500, 133),   # Gleeok, four heads
-    9: (64, 36000, 200),  # Ganon -- see above, and spec_ganon
+    8: (55, 35000, 212),   # Gleeok, four heads: a fight for two (2026-10-28)
+    9: (64, 45000, 250),  # Ganon -- see above, and spec_ganon: a fight for three
 }
 # dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
 # spec_ganon; src/special.c's tables must say the same.
@@ -678,8 +678,8 @@ BOSS_VOLLEYS = {
     5: (1, 382, 530),       # Digdogger's roll; two at half each once split
     6: (1, 119, 168),       # Gohma's eye
     7: (3, 46, 63),       # the ancient Aquamentus's fan
-    8: (4, 47, 66),       # the ashen Gleeok's four heads
-    9: (2, 300, 420),     # Ganon's fireballs
+    8: (4, 159, 222),     # the ashen Gleeok's four heads
+    9: (3, 250, 350),     # Ganon's fireballs: a fight for three (2026-10-28)
 }
 GANON_VNUM = 30225
 GANON_ARMOR = -40
