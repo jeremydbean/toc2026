@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261028b 2026-10-28
+A target that only starts the word SELF (KILL S, LOOK SE) now means
+whoever in the room it names, not you; SELF in full still means you.
+AQUEST away from a questmaster says where Questor Thews is. In Hyrule's
+Hall of Grumbling, LOOK STONES and LOOK SHUTTER now say what holds the
+north passage.
+
 @ 20261028a 2026-10-28
 HELP finds a page from a shortened name of more than one word: HELP
 DIVINE INTER finds DIVINE INTERVENTION, HELP STONE SK finds STONE SKIN.
