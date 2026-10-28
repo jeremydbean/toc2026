@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1793155579
+LogO 1793155857
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,7 +17,7 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 50
-Plyd 73484
+Plyd 73762
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -25,7 +25,7 @@ StashMax 75
 HyruleSecrets 67108864
 Scro 22
 Room 2401
-HMV  894 894 1445 1445 380 400
+HMV  894 894 1445 1445 400 400
 NewGold 1
 NewPlat 801
 NewCopp 8
@@ -170,7 +170,6 @@ SesQuest 0
 QuestPnts 5559
 QuestStrk 6
 CasinoLost 4
-QuestNext 5
 Exp  112503
 Act  206
 AfBy 512
@@ -213,7 +212,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 840 1301 394
-Cond 0 1 43
+Cond 0 0 39
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
@@ -271,7 +270,7 @@ End
 Vnum 45
 Nest 1
 Wear -1
-Time 272
+Time 268
 Cost 0
 Cond 100
 Repd 0
@@ -281,7 +280,7 @@ End
 Vnum 35
 Nest 1
 Wear -1
-Time 486
+Time 482
 Cost 0
 Cond 100
 Repd 0
@@ -291,7 +290,7 @@ End
 Vnum 48
 Nest 1
 Wear -1
-Time 522
+Time 518
 Cost 0
 Cond 100
 Repd 0
