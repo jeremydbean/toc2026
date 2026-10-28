@@ -193,3 +193,5 @@
 193	1793140405	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	level	-	Miseri.20261027_223325.level fnv 4100ecfd 8781 bytes	19978567
 194	1793140612	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	level	-	Miseri.20261027_223652.level fnv 59d10392 8886 bytes	59c5e89f
 195	1793140630	snapshot	committed	P6ae0b53900b2c7a2	Miseri	-	staffset	-	Miseri.20261027_223710.staffset fnv 21306231 8887 bytes	104db681
+196	1793146016	snapshot	committed	P6adc9d850001b1ba	Alaric	-	quest	-	Alaric.20261028_000656.quest fnv 8aeafb63 27557 bytes	395dd9cd
+197	1793146075	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261028_000755.quest fnv 1d5ffe78 18086 bytes	26b35eaa

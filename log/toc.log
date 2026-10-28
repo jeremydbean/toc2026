@@ -210895,3 +210895,388 @@ Wed Oct 28 00:00:26 2026 :: ROM is ready to rock on port 9000.
 Wed Oct 28 00:00:27 2026 :: Treasure goblin: appeared.
 Wed Oct 28 00:00:27 2026 :: Automated backup complete.
 Wed Oct 28 00:00:27 2026 :: Daily backup complete.
+Wed Oct 28 00:04:43 2026 :: Sock.sinaddr:  5.161.215.244
+Wed Oct 28 00:04:44 2026 :: EOF encountered on read.
+Wed Oct 28 00:05:24 2026 :: Sock.sinaddr:  24.2.118.125
+Wed Oct 28 00:05:25 2026 :: Loading Trentlin's playerfile
+Wed Oct 28 00:05:27 2026 :: Loading Trentlin's playerfile
+Wed Oct 28 00:05:27 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Wed Oct 28 00:05:27 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Wed Oct 28 00:05:30 2026 :: Log Trentlin [2497]: aquest request
+Wed Oct 28 00:05:30 2026 :: Log Trentlin [2497]: quest assigned: kill the Gladiator (mob 19106, level 19) in rome.are, 26 minutes, ordinary
+Wed Oct 28 00:05:34 2026 :: Log Trentlin [2497]: enter door
+Wed Oct 28 00:05:34 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 00:05:35 2026 :: Log Trentlin [2401]: west
+Wed Oct 28 00:05:35 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2405]: west
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2433]: west
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2434]: west
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2435]: west
+Wed Oct 28 00:05:36 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Wed Oct 28 00:05:37 2026 :: Log Trentlin [2436]: west
+Wed Oct 28 00:05:37 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Wed Oct 28 00:05:37 2026 :: Log Trentlin [2437]: west
+Wed Oct 28 00:05:37 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Oct 28 00:05:37 2026 :: Log Trentlin [2438]: open west
+Wed Oct 28 00:05:37 2026 :: Log Trentlin [2438]: west
+Wed Oct 28 00:05:37 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Oct 28 00:05:39 2026 :: Log Trentlin [2439]: north
+Wed Oct 28 00:05:39 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3900]: north
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3901]: north
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3902]: east
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3903]: east
+Wed Oct 28 00:05:40 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [3904]: north
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [300]: north
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [315]: north
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [320]: east
+Wed Oct 28 00:05:41 2026 :: Log Trentlin [305]: arrived (Path in the plains) from 320
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [305]: north
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [306]: arrived (Path in the foothills) from 305
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [306]: north
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [326]: arrived (The pool in the foothills) from 306
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [326]: east
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [309]: arrived (Path in the foothills) from 326
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [309]: east
+Wed Oct 28 00:05:42 2026 :: Log Trentlin [310]: arrived (Path in the foothills) from 309
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [310]: east
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [311]: arrived (Path in the foothills) from 310
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [311]: east
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [312]: arrived (The path intersection) from 311
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [312]: south
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [332]: arrived (The ancient path) from 312
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [332]: south
+Wed Oct 28 00:05:43 2026 :: Log Trentlin [333]: arrived (The ancient path) from 332
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [333]: south
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [334]: arrived (The ancient path) from 333
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [334]: south
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [335]: arrived (The ancient path) from 334
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [335]: south
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [59]: arrived (Untamed Prairie) from 335
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [59]: south
+Wed Oct 28 00:05:44 2026 :: Log Trentlin [19168]: arrived (Though the Weeds) from 59
+Wed Oct 28 00:05:49 2026 :: Log Trentlin [19168]: s
+Wed Oct 28 00:05:49 2026 :: Log Trentlin [19169]: arrived (Beside Clay Road) from 19168
+Wed Oct 28 00:05:51 2026 :: Log Trentlin [19169]: s
+Wed Oct 28 00:05:51 2026 :: Log Trentlin [19165]: arrived (Clay Road) from 19169
+Wed Oct 28 00:05:52 2026 :: Log Trentlin [19165]: e
+Wed Oct 28 00:05:52 2026 :: Log Trentlin [19166]: arrived (Clay Road) from 19165
+Wed Oct 28 00:05:53 2026 :: Log Trentlin [19166]: e
+Wed Oct 28 00:05:53 2026 :: Log Trentlin [19167]: arrived (End of the Clay Road) from 19166
+Wed Oct 28 00:05:53 2026 :: Sock.sinaddr:  208.126.22.104
+Wed Oct 28 00:05:55 2026 :: Log Trentlin [19167]: w
+Wed Oct 28 00:05:55 2026 :: Log Trentlin [19166]: arrived (Clay Road) from 19167
+Wed Oct 28 00:05:55 2026 :: Log Trentlin [19166]: w
+Wed Oct 28 00:05:55 2026 :: Log Trentlin [19165]: arrived (Clay Road) from 19166
+Wed Oct 28 00:05:56 2026 :: Loading Alaric's playerfile
+Wed Oct 28 00:05:56 2026 :: Log Trentlin [19165]: eat pot
+Wed Oct 28 00:05:57 2026 :: Loading Alaric's playerfile
+Wed Oct 28 00:05:57 2026 :: Alaric@208.126.22.104 has connected.
+Wed Oct 28 00:05:58 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 0
+Wed Oct 28 00:05:58 2026 :: Log Trentlin [19165]: w
+Wed Oct 28 00:05:58 2026 :: Log Trentlin [19164]: arrived (Before Rome) from 19165
+Wed Oct 28 00:05:59 2026 :: Log Trentlin [19164]: w
+Wed Oct 28 00:05:59 2026 :: Log Trentlin [19151]: arrived (The East Gate of Rome) from 19164
+Wed Oct 28 00:06:00 2026 :: Log Alaric [4208]: r e 4
+Wed Oct 28 00:06:00 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 28 00:06:00 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 00:06:00 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 00:06:00 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 00:06:00 2026 :: Log Alaric [2427]: n
+Wed Oct 28 00:06:00 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 00:06:01 2026 :: Log Alaric [2404]: n
+Wed Oct 28 00:06:01 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 00:06:02 2026 :: Log Trentlin [19151]: l sign
+Wed Oct 28 00:06:02 2026 :: Log Alaric [2401]: prac
+Wed Oct 28 00:06:12 2026 :: Log Alaric [2401]: steel
+Wed Oct 28 00:06:13 2026 :: Log Alaric [2401]: steel
+Wed Oct 28 00:06:15 2026 :: Log Trentlin [19151]: w
+Wed Oct 28 00:06:15 2026 :: Log Trentlin [19146]: arrived (Clay Avenue) from 19151
+Wed Oct 28 00:06:15 2026 :: Log Trentlin [19146]: sca
+Wed Oct 28 00:06:18 2026 :: Log Alaric [2401]: u
+Wed Oct 28 00:06:18 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 00:06:19 2026 :: Log Alaric [2410]: u
+Wed Oct 28 00:06:19 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 00:06:19 2026 :: Log Alaric [2411]: u
+Wed Oct 28 00:06:19 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 00:06:19 2026 :: Log Alaric [2414]: u
+Wed Oct 28 00:06:19 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 00:06:21 2026 :: Log Alaric [2497]: aq re
+Wed Oct 28 00:06:21 2026 :: Log Alaric [2497]: quest assigned: kill the Ofcol cityguard (mob 600, level 19) in ofcol.are, 17 minutes, ordinary
+Wed Oct 28 00:06:26 2026 :: Log Alaric [2497]: aq re
+Wed Oct 28 00:06:28 2026 :: Log Alaric [2497]: enter door
+Wed Oct 28 00:06:28 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 00:06:28 2026 :: Log Alaric [2401]: west
+Wed Oct 28 00:06:28 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2405]: west
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2433]: west
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2434]: west
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2435]: west
+Wed Oct 28 00:06:29 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Oct 28 00:06:30 2026 :: Log Alaric [2436]: west
+Wed Oct 28 00:06:30 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Oct 28 00:06:30 2026 :: Log Alaric [2437]: west
+Wed Oct 28 00:06:30 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Oct 28 00:06:30 2026 :: Log Alaric [2438]: west
+Wed Oct 28 00:06:30 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Oct 28 00:06:30 2026 :: Log Alaric [2439]: north
+Wed Oct 28 00:06:30 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3900]: north
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3901]: north
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3902]: east
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3903]: east
+Wed Oct 28 00:06:31 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Wed Oct 28 00:06:32 2026 :: Log Alaric [3904]: north
+Wed Oct 28 00:06:32 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Wed Oct 28 00:06:32 2026 :: Log Alaric [300]: north
+Wed Oct 28 00:06:32 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Wed Oct 28 00:06:32 2026 :: Log Alaric [315]: north
+Wed Oct 28 00:06:32 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Wed Oct 28 00:06:32 2026 :: Log Alaric [320]: east
+Wed Oct 28 00:06:32 2026 :: Log Alaric [305]: arrived (Path in the plains) from 320
+Wed Oct 28 00:06:33 2026 :: Log Alaric [305]: north
+Wed Oct 28 00:06:33 2026 :: Log Alaric [306]: arrived (Path in the foothills) from 305
+Wed Oct 28 00:06:33 2026 :: Log Alaric [306]: north
+Wed Oct 28 00:06:33 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 306
+Wed Oct 28 00:06:33 2026 :: Log Alaric [326]: east
+Wed Oct 28 00:06:33 2026 :: Log Alaric [309]: arrived (Path in the foothills) from 326
+Wed Oct 28 00:06:33 2026 :: Log Alaric [309]: east
+Wed Oct 28 00:06:33 2026 :: Log Alaric [310]: arrived (Path in the foothills) from 309
+Wed Oct 28 00:06:34 2026 :: Log Alaric [310]: north
+Wed Oct 28 00:06:34 2026 :: Log Alaric [327]: arrived (The foothills) from 310
+Wed Oct 28 00:06:34 2026 :: Log Alaric [327]: east
+Wed Oct 28 00:06:34 2026 :: Log Alaric [313]: arrived (Road to Ofcol) from 327
+Wed Oct 28 00:06:34 2026 :: Log Alaric [313]: north
+Wed Oct 28 00:06:34 2026 :: Log Alaric [314]: arrived (Road to Ofcol) from 313
+Wed Oct 28 00:06:34 2026 :: Log Alaric [314]: north
+Wed Oct 28 00:06:34 2026 :: Log Alaric [52]: arrived (Outside Ofcol) from 314
+Wed Oct 28 00:06:35 2026 :: Log Alaric [52]: north
+Wed Oct 28 00:06:35 2026 :: Log Alaric [5550]: arrived (Village street) from 52
+Wed Oct 28 00:06:39 2026 :: Log Alaric [5550]: n
+Wed Oct 28 00:06:39 2026 :: Log Alaric [5551]: arrived (Village street) from 5550
+Wed Oct 28 00:06:40 2026 :: Log Alaric [5551]: scan
+Wed Oct 28 00:06:41 2026 :: Log Alaric [5551]: e
+Wed Oct 28 00:06:41 2026 :: Log Alaric [5553]: arrived (The small alley) from 5551
+Wed Oct 28 00:06:42 2026 :: Log Alaric [5553]: e
+Wed Oct 28 00:06:42 2026 :: Log Alaric [601]: arrived (The Big Intersection) from 5553
+Wed Oct 28 00:06:45 2026 :: Log Alaric [601]: fi city
+Wed Oct 28 00:06:45 2026 :: Log Alaric [601]: killed the Ofcol cityguard
+Wed Oct 28 00:06:45 2026 :: Log Alaric [601]: coin +10 silver
+Wed Oct 28 00:06:45 2026 :: Log Alaric [601]: coin +76 copper
+Wed Oct 28 00:06:45 2026 :: Log Alaric [601]: coin +3 gold
+Wed Oct 28 00:06:51 2026 :: Log Trentlin [19146]: west
+Wed Oct 28 00:06:51 2026 :: Log Trentlin [19139]: arrived (Clay Avenue) from 19146
+Wed Oct 28 00:06:51 2026 :: Log Trentlin [19139]: west
+Wed Oct 28 00:06:51 2026 :: Log Trentlin [19132]: arrived (Town Square) from 19139
+Wed Oct 28 00:06:52 2026 :: Log Trentlin [19132]: ex
+Wed Oct 28 00:06:54 2026 :: Log Trentlin [19132]: s
+Wed Oct 28 00:06:54 2026 :: Log Trentlin [19133]: arrived (Nero Drive) from 19132
+Wed Oct 28 00:06:54 2026 :: Log Alaric [601]: recal
+Wed Oct 28 00:06:54 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 601
+Wed Oct 28 00:06:54 2026 :: Log Trentlin [19133]: w
+Wed Oct 28 00:06:54 2026 :: Log Trentlin [19126]: arrived (Paved Road) from 19133
+Wed Oct 28 00:06:54 2026 :: Log Alaric [4207]: recal
+Wed Oct 28 00:06:54 2026 :: Log Alaric [4207]: r e 3
+Wed Oct 28 00:06:54 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 00:06:54 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 00:06:54 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2427]: n
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 00:06:55 2026 :: Log Trentlin [19126]: w
+Wed Oct 28 00:06:55 2026 :: Log Trentlin [19119]: arrived (The Main Highway) from 19126
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2404]: n
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2401]: u
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2410]: u
+Wed Oct 28 00:06:55 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 00:06:55 2026 :: Log Trentlin [19119]: ex
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2411]: u
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2414]: u
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2497]: aq co
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2497]: copper +160618788
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2497]: quest complete: 160p 61g 87s 88c, 15 quest points (streak bonus 0%)
+Wed Oct 28 00:06:56 2026 :: Snapshot of Alaric taken before quest: Alaric.20261028_000656.quest (PRESTORE Alaric to see it).
+Wed Oct 28 00:06:56 2026 :: Log Alaric [2497]: aq ga no
+Wed Oct 28 00:06:57 2026 :: Log Trentlin [19119]: n
+Wed Oct 28 00:06:57 2026 :: Log Trentlin [19118]: arrived (South Entrance to the Coliseum) from 19119
+Wed Oct 28 00:06:57 2026 :: Log Trentlin [19118]: ex
+Wed Oct 28 00:06:59 2026 :: Log Trentlin [19118]: w
+Wed Oct 28 00:06:59 2026 :: Log Trentlin [19111]: arrived (The First-Aid Station) from 19118
+Wed Oct 28 00:06:59 2026 :: Log Trentlin [19111]: ex
+Wed Oct 28 00:07:00 2026 :: Log Alaric [2497]: score
+Wed Oct 28 00:07:01 2026 :: Log Trentlin [19111]: w
+Wed Oct 28 00:07:01 2026 :: Log Trentlin [19104]: arrived (Southern Commoner's Seats) from 19111
+Wed Oct 28 00:07:02 2026 :: Log Trentlin [19104]: ex
+Wed Oct 28 00:07:03 2026 :: Log Trentlin [19104]: n
+Wed Oct 28 00:07:03 2026 :: Log Trentlin [19103]: arrived (West Side Commoner's Seating Area) from 19104
+Wed Oct 28 00:07:04 2026 :: Log Trentlin [19103]: ex
+Wed Oct 28 00:07:06 2026 :: Log Trentlin [19103]: d
+Wed Oct 28 00:07:06 2026 :: Log Trentlin [19110]: arrived (The Jousting Arena) from 19103
+Wed Oct 28 00:07:06 2026 :: Log Trentlin [19110]: ex
+Wed Oct 28 00:07:08 2026 :: Log Trentlin [19110]: k gla
+Wed Oct 28 00:07:08 2026 :: Log Trentlin [19110]: killed the Gladiator
+Wed Oct 28 00:07:08 2026 :: Log Trentlin [19110]: coin +5 platinum
+Wed Oct 28 00:07:08 2026 :: Log Trentlin [19110]: coin +23 silver
+Wed Oct 28 00:07:08 2026 :: Log Trentlin [19110]: coin +31 copper
+Wed Oct 28 00:07:08 2026 :: Log Trentlin [19110]: coin +13 gold
+Wed Oct 28 00:07:12 2026 :: Log Trentlin [19110]: u
+Wed Oct 28 00:07:12 2026 :: Log Trentlin [19103]: arrived (West Side Commoner's Seating Area) from 19110
+Wed Oct 28 00:07:12 2026 :: Log Alaric [2497]: wake
+Wed Oct 28 00:07:12 2026 :: Log Trentlin [19103]: u
+Wed Oct 28 00:07:12 2026 :: Log Trentlin [19102]: arrived (Caesar's Private Box) from 19103
+Wed Oct 28 00:07:13 2026 :: Log Alaric [2497]: l
+Wed Oct 28 00:07:14 2026 :: Log Trentlin [19102]: u
+Wed Oct 28 00:07:15 2026 :: Log Alaric [2497]: en do
+Wed Oct 28 00:07:15 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 00:07:16 2026 :: Log Trentlin [19102]: open up
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2401]: r e 8
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Oct 28 00:07:19 2026 :: Log Trentlin [19102]: bash up
+Wed Oct 28 00:07:19 2026 :: Log Alaric [2426]: oe
+Wed Oct 28 00:07:20 2026 :: Log Alaric [2426]: r e 25
+Wed Oct 28 00:07:20 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Wed Oct 28 00:07:20 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Wed Oct 28 00:07:20 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9506
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9517
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9527
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
+Wed Oct 28 00:07:20 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Wed Oct 28 00:07:21 2026 :: Log Alaric [9531]: oe
+Wed Oct 28 00:07:22 2026 :: Log Alaric [9531]: r e 6
+Wed Oct 28 00:07:22 2026 :: Log Alaric [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Wed Oct 28 00:07:22 2026 :: Log Alaric [9790]: arrived (On a road) from 9668
+Wed Oct 28 00:07:22 2026 :: Log Alaric [9791]: arrived (On a road) from 9790
+Wed Oct 28 00:07:22 2026 :: Log Alaric [9792]: arrived (On a road) from 9791
+Wed Oct 28 00:07:22 2026 :: Log Alaric [9793]: arrived (On a road) from 9792
+Wed Oct 28 00:07:22 2026 :: Log Alaric [9794]: arrived (Near the shore) from 9793
+Wed Oct 28 00:07:22 2026 :: Log Trentlin [19102]: doorbash up
+Wed Oct 28 00:07:23 2026 :: Log Alaric [9794]: n
+Wed Oct 28 00:07:23 2026 :: Log Alaric [41]: arrived (The new pier) from 9794
+Wed Oct 28 00:07:23 2026 :: Log Alaric [41]: n
+Wed Oct 28 00:07:23 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 41
+Wed Oct 28 00:07:23 2026 :: Log Alaric [16000]: n
+Wed Oct 28 00:07:23 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
+Wed Oct 28 00:07:24 2026 :: Log Alaric [16001]: n
+Wed Oct 28 00:07:24 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Wed Oct 28 00:07:24 2026 :: Log Alaric [16002]: n
+Wed Oct 28 00:07:24 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Wed Oct 28 00:07:24 2026 :: Log Alaric [16003]: n
+Wed Oct 28 00:07:24 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Wed Oct 28 00:07:26 2026 :: Log Alaric [16004]: e
+Wed Oct 28 00:07:26 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Wed Oct 28 00:07:26 2026 :: Log Trentlin [19102]: doorbash up
+Wed Oct 28 00:07:27 2026 :: Log Alaric [16005]: u
+Wed Oct 28 00:07:27 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Wed Oct 28 00:07:28 2026 :: Log Trentlin [19102]: wake
+Wed Oct 28 00:07:28 2026 :: Log Alaric [16021]: fi sw
+Wed Oct 28 00:07:29 2026 :: Log Trentlin [19102]: doorbash up
+Wed Oct 28 00:07:34 2026 :: Log Trentlin [19102]: u
+Wed Oct 28 00:07:34 2026 :: Log Trentlin [19101]: arrived (The Judging Booth) from 19102
+Wed Oct 28 00:07:34 2026 :: Log Alaric [16021]: fi
+Wed Oct 28 00:07:36 2026 :: Log Trentlin [19101]: con ad
+Wed Oct 28 00:07:36 2026 :: Log Trentlin [19101]: l ad
+Wed Oct 28 00:07:37 2026 :: Log Trentlin [19101]: d
+Wed Oct 28 00:07:37 2026 :: Log Trentlin [19102]: arrived (Caesar's Private Box) from 19101
+Wed Oct 28 00:07:38 2026 :: Log Trentlin [19102]: sca
+Wed Oct 28 00:07:39 2026 :: Log Trentlin [19102]: d
+Wed Oct 28 00:07:39 2026 :: Log Trentlin [19103]: arrived (West Side Commoner's Seating Area) from 19102
+Wed Oct 28 00:07:39 2026 :: Log Trentlin [19103]: sca
+Wed Oct 28 00:07:40 2026 :: Log Alaric [16021]: fi
+Wed Oct 28 00:07:40 2026 :: Log Alaric [16021]: killed The swashbuckler
+Wed Oct 28 00:07:40 2026 :: Log Alaric [16021]: coin +1 platinum
+Wed Oct 28 00:07:40 2026 :: Log Alaric [16021]: coin +6 silver
+Wed Oct 28 00:07:40 2026 :: Log Alaric [16021]: coin +8 copper
+Wed Oct 28 00:07:40 2026 :: Log Alaric [16021]: coin +3 gold
+Wed Oct 28 00:07:42 2026 :: Log Trentlin [19103]: s
+Wed Oct 28 00:07:42 2026 :: Log Trentlin [19104]: arrived (Southern Commoner's Seats) from 19103
+Wed Oct 28 00:07:44 2026 :: Log Trentlin [19104]: reca
+Wed Oct 28 00:07:44 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 19104
+Wed Oct 28 00:07:45 2026 :: Log Trentlin [4207]: w
+Wed Oct 28 00:07:45 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Wed Oct 28 00:07:47 2026 :: Log Trentlin [4208]: heal refres
+Wed Oct 28 00:07:47 2026 :: Log Trentlin [4208]: gold -70
+Wed Oct 28 00:07:50 2026 :: Log Alaric [16021]: e
+Wed Oct 28 00:07:50 2026 :: Log Alaric [16022]: arrived (Main Deck) from 16021
+Wed Oct 28 00:07:50 2026 :: Log Alaric [16022]: e
+Wed Oct 28 00:07:50 2026 :: Log Alaric [16023]: arrived (Main Deck) from 16022
+Wed Oct 28 00:07:50 2026 :: Log Trentlin [4208]: e
+Wed Oct 28 00:07:50 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 28 00:07:51 2026 :: Log Alaric [16023]: scan
+Wed Oct 28 00:07:51 2026 :: Log Trentlin [4207]: e
+Wed Oct 28 00:07:51 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 00:07:51 2026 :: Log Trentlin [4202]: e
+Wed Oct 28 00:07:51 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 00:07:51 2026 :: Log Trentlin [4201]: e
+Wed Oct 28 00:07:51 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 00:07:52 2026 :: Log Alaric [16023]: s
+Wed Oct 28 00:07:52 2026 :: Log Alaric [16018]: arrived (Main Deck of the Royal Eagle) from 16023
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2427]: n
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2404]: n
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2401]: u
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 00:07:53 2026 :: Log Alaric [16018]: fi sw
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2410]: u
+Wed Oct 28 00:07:53 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 00:07:54 2026 :: Log Trentlin [2411]: u
+Wed Oct 28 00:07:54 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 00:07:54 2026 :: Log Trentlin [2414]: u
+Wed Oct 28 00:07:54 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 00:07:55 2026 :: Log Trentlin [2497]: aquest complete
+Wed Oct 28 00:07:55 2026 :: Log Trentlin [2497]: copper +162241200
+Wed Oct 28 00:07:55 2026 :: Log Trentlin [2497]: quest complete: 162p 24g 12s, 37 quest points (streak bonus 0%)
+Wed Oct 28 00:07:55 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261028_000755.quest (PRESTORE Trentlin to see it).
+Wed Oct 28 00:07:59 2026 :: Log Alaric [16018]: fi sw
+Wed Oct 28 00:08:00 2026 :: Log Trentlin [2497]: aquest gamble yes
+Wed Oct 28 00:08:02 2026 :: Log Trentlin [2497]: sco
+Wed Oct 28 00:08:05 2026 :: Log Alaric [16018]: fi sw
+Wed Oct 28 00:08:05 2026 :: Log Alaric [16018]: killed The swashbuckler
+Wed Oct 28 00:08:05 2026 :: Log Alaric [16018]: coin +1 platinum
+Wed Oct 28 00:08:05 2026 :: Log Alaric [16018]: coin +6 silver
+Wed Oct 28 00:08:05 2026 :: Log Alaric [16018]: coin +8 copper
+Wed Oct 28 00:08:05 2026 :: Log Alaric [16018]: coin +3 gold
