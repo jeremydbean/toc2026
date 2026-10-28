@@ -37,6 +37,10 @@ class TargetSourceTests(unittest.TestCase):
         loop = fn.index("rch == ch ||")
         self_match = fn.index("is_name( arg, ch->name )")
         self.assertLess(loop, self_match)
+        # Only "self" whole is you: a prefix made "kill s" mean the looker
+        # ahead of the sailor beside him (2026-10-28).
+        self.assertIn('!str_cmp( arg, "self" )', fn)
+        self.assertNotIn('str_prefix( arg, "self" )', fn)
 
     def test_consider_hit_points_have_no_gap(self) -> None:
         """A 2,000-3,000 point difference fell through the old scale."""
@@ -92,6 +96,9 @@ class TargetLiveTests(unittest.TestCase):
                 self.assertEqual(1, sum(v in lines for v in verdicts), said)
                 self.assertNotIn("naked and weaponless", said)
                 self.assertNotIn("your own level", said.lower(), said)
+                # A word that only starts "self" is not you either.
+                said = client.sync("consider s")
+                self.assertIn("sparring guard", said.lower(), said)
                 # "self" is still you.
                 self.assertIn("your own level", run(client, "consider self", 1.6).lower())
 

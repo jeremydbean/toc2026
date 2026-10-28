@@ -2771,7 +2771,10 @@ CHAR_DATA *get_char_room( CHAR_DATA *ch, char *argument )
 
     number = number_argument( argument, arg );
     count  = 0;
-    if ( !str_prefix( arg, "self" ) )
+    /* "self" whole, as stock ROM has it. A prefix made "kill s" mean
+       you, ahead of the sailor beside you: Alaric was told "You must
+       MURDER a player." (play journal, 2026-10-28). */
+    if ( !str_cmp( arg, "self" ) )
 	return ch;
     if ( ch->in_room == NULL )
 	return NULL;
