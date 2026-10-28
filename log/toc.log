@@ -210866,3 +210866,32 @@ Tue Oct 27 23:54:33 2026 :: Sock.sinaddr:  178.156.189.249
 Tue Oct 27 23:54:33 2026 :: EOF encountered on read.
 Tue Oct 27 23:56:45 2026 :: Log Alaric [4210]: affects off: steel fist
 Tue Oct 27 23:57:36 2026 :: Log Alaric [4210]: affects off: levitate
+Tue Oct 27 23:58:42 2026 :: Log Alaric [4210]: l
+Tue Oct 27 23:58:43 2026 :: Log Alaric [4210]: wake
+Tue Oct 27 23:58:44 2026 :: Log Alaric [4210]: s
+Tue Oct 27 23:58:44 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Tue Oct 27 23:58:45 2026 :: Log Alaric [4203]: s
+Tue Oct 27 23:58:45 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Tue Oct 27 23:58:45 2026 :: Log Alaric [4202]: w
+Tue Oct 27 23:58:45 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Tue Oct 27 23:58:45 2026 :: Log Alaric [4207]: w
+Tue Oct 27 23:58:45 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Tue Oct 27 23:58:47 2026 :: Log Alaric [4208]: score
+Tue Oct 27 23:58:48 2026 :: Log Alaric [4208]: quit
+Tue Oct 27 23:58:48 2026 :: Alaric has quit.
+Tue Oct 27 23:58:48 2026 :: [QUIT] Player rejoined the real world.
+Tue Oct 27 23:59:39 2026 :: Sock.sinaddr:  54.167.223.174
+Tue Oct 27 23:59:39 2026 :: EOF encountered on read.
+Wed Oct 28 00:00:13 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Wed Oct 28 00:00:17 2026 :: Log WebAdmin: fsave
+Wed Oct 28 00:00:23 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Wed Oct 28 00:00:26 2026 :: Received signal 15; saving players and shutting down.
+Wed Oct 28 00:00:26 2026 :: Normal termination of game.
+Wed Oct 28 00:00:26 2026 ::  INIT OK 
+Wed Oct 28 00:00:26 2026 :: walkto_load: 157 destinations.
+Wed Oct 28 00:00:26 2026 :: changes_load: 197 entries.
+Wed Oct 28 00:00:26 2026 :: Recovery ledger: 195 records (0 from before the check), 0 requests, 6 players.
+Wed Oct 28 00:00:26 2026 :: ROM is ready to rock on port 9000.
+Wed Oct 28 00:00:27 2026 :: Treasure goblin: appeared.
+Wed Oct 28 00:00:27 2026 :: Automated backup complete.
+Wed Oct 28 00:00:27 2026 :: Daily backup complete.
