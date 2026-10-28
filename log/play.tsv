@@ -16284,3 +16284,10 @@
 1793210920	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1793210951	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	look	in stash	That is not a container.
 1793210952	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	stash		Your stash holds 0 of 500 things. //   It is empty.
+1793211092	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793211094	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793211096	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1815 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
+1793211100	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	look	tri	Ganon's own weapon, black iron that drinks the light around it. In // the hand of a hero it rivals the Master Sword itself, though it has // never once been carried for a good cause before.
+1793211105	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	look	triforce	Power, Wisdom and Courage, joined as one: // Wear it as a light and you see what is hidden, invisible or in the dark.
+1793211180	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	compare	tri master	A) the Trident of Ganon (level 59) // B) the Master Sword (level 58), worn // Slot: wield.  Your damage: 10% spells (vortex), 90% weapons.
+1793211237	session	Killuminati	70	4208	dresden_halloween.are	quit	317s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	10 commands	0 refused	coin: none
