@@ -216465,3 +216465,220 @@ Wed Oct 28 23:15:49 2026 :: EOF encountered on read.
 Wed Oct 28 23:20:29 2026 :: Treasure goblin: vanished from room 10079 (A dark hallway., glitter.are) (too long in one area).
 Wed Oct 28 23:20:54 2026 :: Sock.sinaddr:  178.156.187.238
 Wed Oct 28 23:20:54 2026 :: EOF encountered on read.
+Wed Oct 28 23:22:20 2026 :: Sock.sinaddr:  208.126.22.104
+Wed Oct 28 23:22:22 2026 :: Loading Alaric's playerfile
+Wed Oct 28 23:22:23 2026 :: Loading Alaric's playerfile
+Wed Oct 28 23:22:23 2026 :: Alaric@208.126.22.104 has connected.
+Wed Oct 28 23:22:23 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Wed Oct 28 23:22:25 2026 :: Log Alaric [2497]: who
+Wed Oct 28 23:22:27 2026 :: Log Alaric [2497]: aq time
+Wed Oct 28 23:22:29 2026 :: Log Alaric [2497]: wake
+Wed Oct 28 23:22:30 2026 :: Log Alaric [2497]: aq re
+Wed Oct 28 23:22:30 2026 :: Log Alaric [2497]: quest assigned: recover The Journal of Trinidad (obj 25038) in lakes.are, 20 minutes, ordinary
+Wed Oct 28 23:22:35 2026 :: Log Alaric [2497]: enter door
+Wed Oct 28 23:22:35 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2401]: west
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2405]: west
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2433]: west
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2434]: west
+Wed Oct 28 23:22:36 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Oct 28 23:22:37 2026 :: Log Alaric [2435]: west
+Wed Oct 28 23:22:37 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Oct 28 23:22:37 2026 :: Log Alaric [2436]: west
+Wed Oct 28 23:22:37 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Oct 28 23:22:37 2026 :: Log Alaric [2437]: west
+Wed Oct 28 23:22:37 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Oct 28 23:22:37 2026 :: Log Alaric [2438]: open west
+Wed Oct 28 23:22:38 2026 :: Log Alaric [2438]: west
+Wed Oct 28 23:22:38 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Oct 28 23:22:39 2026 :: Log Alaric [2439]: west
+Wed Oct 28 23:22:39 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Wed Oct 28 23:22:39 2026 :: Log Alaric [6000]: west
+Wed Oct 28 23:22:39 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Wed Oct 28 23:22:39 2026 :: Log Alaric [6001]: west
+Wed Oct 28 23:22:39 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Wed Oct 28 23:22:39 2026 :: Log Alaric [6002]: south
+Wed Oct 28 23:22:39 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6011]: south
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6008]: west
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6007]: arrived (An intersection in the dense forest) from 6008
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6007]: south
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6012]: arrived (An intersection in the dense forest) from 6007
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6012]: south
+Wed Oct 28 23:22:40 2026 :: Log Alaric [6021]: arrived (A small path in the dense forest) from 6012
+Wed Oct 28 23:22:41 2026 :: Log Alaric [6021]: east
+Wed Oct 28 23:22:41 2026 :: Log Alaric [6020]: arrived (A small path in the dense forest) from 6021
+Wed Oct 28 23:22:41 2026 :: Log Alaric [6020]: south
+Wed Oct 28 23:22:41 2026 :: Log Alaric [6019]: arrived (A small path in the dense forest) from 6020
+Wed Oct 28 23:22:41 2026 :: Log Alaric [6019]: east
+Wed Oct 28 23:22:41 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6019
+Wed Oct 28 23:22:41 2026 :: Log Alaric [6018]: south
+Wed Oct 28 23:22:41 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Wed Oct 28 23:22:42 2026 :: Log Alaric [51]: down
+Wed Oct 28 23:22:42 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Wed Oct 28 23:22:52 2026 :: Log Alaric [13001]: down
+Wed Oct 28 23:22:52 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13002]: west
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13003]: west
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13004]: arrived (East shore of Crystalmir Lake) from 13003
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13004]: north
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13007]: arrived (Path along lake) from 13004
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13007]: north
+Wed Oct 28 23:22:53 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13007
+Wed Oct 28 23:22:54 2026 :: Log Alaric [13013]: north
+Wed Oct 28 23:22:54 2026 :: Log Alaric [13036]: arrived (Northfields) from 13013
+Wed Oct 28 23:22:54 2026 :: Log Alaric [13036]: west
+Wed Oct 28 23:22:54 2026 :: Log Alaric [13035]: arrived (Northfields) from 13036
+Wed Oct 28 23:23:03 2026 :: Log Alaric [13035]: ex
+Wed Oct 28 23:23:04 2026 :: Log Alaric [13035]: s
+Wed Oct 28 23:23:04 2026 :: Log Alaric [13036]: arrived (Northfields) from 13035
+Wed Oct 28 23:23:05 2026 :: Log Alaric [13036]: ex
+Wed Oct 28 23:23:05 2026 :: Log Alaric [13036]: w
+Wed Oct 28 23:23:05 2026 :: Log Alaric [13035]: arrived (Northfields) from 13036
+Wed Oct 28 23:23:06 2026 :: Log Alaric [13035]: ex
+Wed Oct 28 23:23:07 2026 :: Log Alaric [13035]: n
+Wed Oct 28 23:23:07 2026 :: Log Alaric [13038]: arrived (Northfields) from 13035
+Wed Oct 28 23:23:08 2026 :: Log Alaric [13038]: ex
+Wed Oct 28 23:23:08 2026 :: Log Alaric [13038]: e
+Wed Oct 28 23:23:08 2026 :: Log Alaric [13037]: arrived (Northfields) from 13038
+Wed Oct 28 23:23:09 2026 :: Log Alaric [13037]: ex
+Wed Oct 28 23:23:11 2026 :: Log Alaric [13037]: w
+Wed Oct 28 23:23:11 2026 :: Log Alaric [13039]: arrived (A Farmer's House) from 13037
+Wed Oct 28 23:23:13 2026 :: Log Alaric [13039]: oe
+Wed Oct 28 23:23:13 2026 :: Log Alaric [13039]: ex
+Wed Oct 28 23:23:14 2026 :: Log Alaric [13039]: n
+Wed Oct 28 23:23:14 2026 :: Log Alaric [13037]: arrived (Northfields) from 13039
+Wed Oct 28 23:23:15 2026 :: Log Alaric [13037]: w
+Wed Oct 28 23:23:15 2026 :: Log Alaric [13039]: arrived (A Farmer's House) from 13037
+Wed Oct 28 23:23:15 2026 :: Log Alaric [13039]: w
+Wed Oct 28 23:23:15 2026 :: Log Alaric [13039]: w
+Wed Oct 28 23:23:16 2026 :: Log Alaric [13039]: w
+Wed Oct 28 23:23:16 2026 :: Log Alaric [13039]: w
+Wed Oct 28 23:23:49 2026 :: Log Alaric [13039]: north
+Wed Oct 28 23:23:49 2026 :: Log Alaric [13037]: arrived (Northfields) from 13039
+Wed Oct 28 23:23:49 2026 :: Log Alaric [13037]: north
+Wed Oct 28 23:23:49 2026 :: Log Alaric [13036]: arrived (Northfields) from 13037
+Wed Oct 28 23:23:49 2026 :: Log Alaric [13036]: north
+Wed Oct 28 23:23:49 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13036
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13013]: south
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13007]: arrived (Path along lake) from 13013
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13007]: south
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13004]: arrived (East shore of Crystalmir Lake) from 13007
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13004]: east
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13004
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13003]: east
+Wed Oct 28 23:23:50 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13003
+Wed Oct 28 23:23:54 2026 :: Log Alaric [13002]: ex
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13002]: west
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13003]: west
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13004]: arrived (East shore of Crystalmir Lake) from 13003
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13004]: north
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13007]: arrived (Path along lake) from 13004
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13007]: north
+Wed Oct 28 23:24:01 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13007
+Wed Oct 28 23:24:02 2026 :: Log Alaric [13013]: north
+Wed Oct 28 23:24:02 2026 :: Log Alaric [13036]: arrived (Northfields) from 13013
+Wed Oct 28 23:24:02 2026 :: Log Alaric [13036]: east
+Wed Oct 28 23:24:02 2026 :: Log Alaric [13037]: arrived (Northfields) from 13036
+Wed Oct 28 23:24:02 2026 :: Log Alaric [13037]: west
+Wed Oct 28 23:24:02 2026 :: Log Alaric [13039]: arrived (A Farmer's House) from 13037
+Wed Oct 28 23:24:02 2026 :: Log Alaric [13039]: open east
+Wed Oct 28 23:24:03 2026 :: Log Alaric [13039]: east
+Wed Oct 28 23:24:05 2026 :: Log Alaric [13039]: oe
+Wed Oct 28 23:24:06 2026 :: Log Alaric [13039]: open east
+Wed Oct 28 23:24:07 2026 :: Log Alaric [13039]: east
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13039]: north
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13037]: arrived (Northfields) from 13039
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13037]: north
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13036]: arrived (Northfields) from 13037
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13036]: north
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13036
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13013]: south
+Wed Oct 28 23:24:08 2026 :: Log Alaric [13007]: arrived (Path along lake) from 13013
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13007]: south
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13004]: arrived (East shore of Crystalmir Lake) from 13007
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13004]: east
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13004
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13003]: east
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13003
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13002]: up
+Wed Oct 28 23:24:09 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 13002
+Wed Oct 28 23:24:24 2026 :: Log Alaric [13001]: ex
+Wed Oct 28 23:24:26 2026 :: Log Alaric [13001]: u
+Wed Oct 28 23:24:26 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 13001
+Wed Oct 28 23:24:28 2026 :: Log Alaric [51]: d
+Wed Oct 28 23:24:28 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Wed Oct 28 23:24:30 2026 :: Log Alaric [13001]: d
+Wed Oct 28 23:24:30 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Wed Oct 28 23:24:32 2026 :: Log Alaric [13002]: s
+Wed Oct 28 23:24:32 2026 :: Log Alaric [13029]: arrived (Among the Vallenwoods) from 13002
+Wed Oct 28 23:24:56 2026 :: Log Alaric [13029]: west
+Wed Oct 28 23:24:56 2026 :: Log Alaric [13022]: arrived (Road through the forest) from 13029
+Wed Oct 28 23:24:57 2026 :: Log Alaric [13022]: west
+Wed Oct 28 23:24:57 2026 :: Log Alaric [13011]: arrived (Path along the lakeshore) from 13022
+Wed Oct 28 23:24:57 2026 :: Log Alaric [13011]: west
+Wed Oct 28 23:24:57 2026 :: Log Alaric [13010]: arrived (South shore of Crystalmir Lake) from 13011
+Wed Oct 28 23:24:57 2026 :: Log Alaric [13010]: north
+Wed Oct 28 23:24:57 2026 :: Log Alaric [13005]: arrived (Middle of Crystalmir Lake) from 13010
+Wed Oct 28 23:24:59 2026 :: Log Alaric [13005]: ex
+Wed Oct 28 23:25:00 2026 :: Log Alaric [13005]: d
+Wed Oct 28 23:25:00 2026 :: Log Alaric [13048]: arrived (Underwater) from 13005
+Wed Oct 28 23:25:01 2026 :: Log Alaric [13048]: ex
+Wed Oct 28 23:25:02 2026 :: Log Alaric [13048]: w
+Wed Oct 28 23:25:02 2026 :: Log Alaric [13053]: arrived (Underwater) from 13048
+Wed Oct 28 23:25:03 2026 :: Log Alaric [13053]: ex
+Wed Oct 28 23:25:30 2026 :: Log Alaric [13053]: south
+Wed Oct 28 23:25:30 2026 :: Log Alaric [13066]: arrived (Underwater) from 13053
+Wed Oct 28 23:25:30 2026 :: Log Alaric [13066]: south
+Wed Oct 28 23:25:30 2026 :: Log Alaric [13065]: arrived (Underwater) from 13066
+Wed Oct 28 23:25:31 2026 :: Log Alaric [13065]: west
+Wed Oct 28 23:25:31 2026 :: Log Alaric [13074]: arrived (Underwater Passageway) from 13065
+Wed Oct 28 23:25:31 2026 :: Log Alaric [13074]: west
+Wed Oct 28 23:25:31 2026 :: Log Alaric [13075]: arrived (Underwater Passageway) from 13074
+Wed Oct 28 23:25:31 2026 :: Log Alaric [13075]: south
+Wed Oct 28 23:25:31 2026 :: Log Alaric [13076]: arrived (Cave of the Turtle Dragon) from 13075
+Wed Oct 28 23:25:33 2026 :: Log Alaric [13076]: get all
+Wed Oct 28 23:25:35 2026 :: Log Alaric [13076]: n
+Wed Oct 28 23:25:35 2026 :: Log Alaric [13075]: arrived (Underwater Passageway) from 13076
+Wed Oct 28 23:25:36 2026 :: Log Alaric [13075]: scan
+Wed Oct 28 23:25:37 2026 :: Log Alaric [13075]: s
+Wed Oct 28 23:25:37 2026 :: Log Alaric [13076]: arrived (Cave of the Turtle Dragon) from 13075
+Wed Oct 28 23:25:38 2026 :: Log Alaric [13076]: kill dr
+Wed Oct 28 23:25:44 2026 :: Log Alaric [13076]: killed Turtle dragon
+Wed Oct 28 23:25:44 2026 :: Log Alaric [13076]: coin +5 platinum
+Wed Oct 28 23:25:44 2026 :: Log Alaric [13076]: coin +24 silver
+Wed Oct 28 23:25:44 2026 :: Log Alaric [13076]: coin +33 copper
+Wed Oct 28 23:25:44 2026 :: Log Alaric [13076]: coin +14 gold
+Wed Oct 28 23:25:45 2026 :: Log Alaric [13076]: l i cor
+Wed Oct 28 23:25:46 2026 :: Log Alaric [13076]: rec al
+Wed Oct 28 23:25:47 2026 :: Log Alaric [13076]: recal
+Wed Oct 28 23:25:47 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 13076
+Wed Oct 28 23:25:49 2026 :: Log Alaric [4207]: r e 3
+Wed Oct 28 23:25:49 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 23:25:49 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 23:25:49 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 23:25:49 2026 :: Log Alaric [2427]: n
+Wed Oct 28 23:25:49 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 23:25:49 2026 :: Log Alaric [2404]: n
+Wed Oct 28 23:25:49 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 23:25:50 2026 :: Log Alaric [2401]: u
+Wed Oct 28 23:25:50 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 23:25:50 2026 :: Log Alaric [2410]: u
+Wed Oct 28 23:25:50 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 23:25:50 2026 :: Log Alaric [2411]: u
+Wed Oct 28 23:25:50 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 23:25:51 2026 :: Log Alaric [2414]: u
+Wed Oct 28 23:25:51 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 23:25:51 2026 :: Log Alaric [2497]: aq co
+Wed Oct 28 23:25:51 2026 :: Log Alaric [2497]: copper +131415372
+Wed Oct 28 23:25:51 2026 :: Log Alaric [2497]: quest complete: 131p 41g 53s 72c, 28 quest points (streak bonus 10%)
+Wed Oct 28 23:25:51 2026 :: Snapshot of Alaric taken before quest: Alaric.20261028_232551.quest (PRESTORE Alaric to see it).
+Wed Oct 28 23:25:53 2026 :: Log Alaric [2497]: score
+Wed Oct 28 23:26:00 2026 :: Sock.sinaddr:  3.12.251.153
+Wed Oct 28 23:26:00 2026 :: EOF encountered on read.
