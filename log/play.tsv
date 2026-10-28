@@ -16281,3 +16281,6 @@
 1793184433	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	20	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'
 1793184436	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	5	-	aquest	gamble yes	The dice BETRAY you! Your 23 quest points are lost.
 1793184440	session	Trentlin	50	2497	dresden_halloween.are	quit	107s	+0 levels	+0 exp	+121609620 copper	0 kills	0 deaths	1 quests	83 commands	1 refused	coin: quests 121p 68g 9s, spent 7g 12s 80c
+1793210920	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793210951	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	look	in stash	That is not a container.
+1793210952	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	stash		Your stash holds 0 of 500 things. //   It is empty.
