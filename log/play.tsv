@@ -15757,3 +15757,51 @@
 1793150630	cmd	Alaric	54	16021	pirate.are	fighting	84	0	fight	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch ^^^ DESTROYS ^^^ The midshipman! [-86]
 1793150633	cmd	Alaric	54	16021	pirate.are	fighting	84	0	fight	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The midshipman! [-39]
 1793150636	cmd	Alaric	54	16021	pirate.are	fighting	81	0	fight	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The midshipman! [-39]
+1793150639	cmd	Alaric	54	16021	pirate.are	fighting	81	0	fight	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch MANGLES The midshipman! [-54] // The midshipman walks off to the south.
+1793150643	cmd	Alaric	54	16016	pirate.are	standing	81	0	-	south		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150644	cmd	Alaric	54	16016	pirate.are	standing	81	0	-	nerve	mi	You missed the nerve. // Your nerve pinch scratches The midshipman. [-3] // The midshipman walks off to the east.
+1793150648	cmd	Alaric	54	16017	pirate.are	standing	81	0	-	east		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are
+1793150649	cmd	Alaric	54	16017	pirate.are	standing	81	0	-	nerve	mi	You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch *** DEVASTATES *** The midshipman! [-65]
+1793150653	cmd	Alaric	54	16016	pirate.are	standing	81	0	-	west		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150654	cmd	Alaric	54	16021	pirate.are	standing	81	0	-	north		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1793150654	cmd	Alaric	54	16005	pirate.are	standing	81	0	-	down		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1793150655	cmd	Alaric	54	16004	pirate.are	standing	81	0	-	west		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1793150655	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	west		Seashells Galore //   This remote shop located by the seashore sells trinkets made from everything // immaginable.  The walls are stacked with shelves and shelves of multi-colored
+1793150658	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	eat	guano	You do not have that item.
+1793150658	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	eat	guano	You do not have that item.
+1793150658	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	eat	guano	You do not have that item.
+1793150659	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	eat	guano	You do not have that item.
+1793150659	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	eat	guano	You do not have that item.
+1793150661	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150662	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150662	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150663	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150663	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150663	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150663	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150664	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150664	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150664	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150664	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150665	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150665	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150665	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150665	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150666	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150666	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150666	cmd	Alaric	54	16084	pirate.are	standing	81	0	-	buy	guano	You buy guano.
+1793150666	cmd	Alaric	54	16084	pirate.are	standing	83	0	-	buy	guano	You buy guano.
+1793150667	cmd	Alaric	54	16084	pirate.are	standing	83	0	-	buy	guano	You buy guano.
+1793150667	cmd	Alaric	54	16084	pirate.are	standing	83	0	-	buy	guano	You buy guano.
+1793150667	cmd	Alaric	54	16084	pirate.are	standing	83	0	-	buy	guano	You buy guano.
+1793150667	cmd	Alaric	54	16084	pirate.are	standing	83	0	-	buy	guano	You buy guano.
+1793150668	cmd	Alaric	54	16084	pirate.are	standing	83	0	-	buy	guano	You buy guano.
+1793150668	cmd	Alaric	54	16084	pirate.are	standing	83	0	-	buy	guano	You buy guano.
+1793150668	cmd	Alaric	54	4207	dresden_halloween.are	standing	83	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793150668	cmd	Alaric	54	4208	dresden_halloween.are	standing	83	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793150670	cmd	Alaric	54	4207	dresden_halloween.are	standing	83	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793150670	cmd	Alaric	54	4202	dresden_halloween.are	standing	83	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793150671	cmd	Alaric	54	4203	dresden_halloween.are	standing	83	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793150671	cmd	Alaric	54	4210	dresden_halloween.are	standing	83	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793150672	cmd	Alaric	54	4210	dresden_halloween.are	standing	83	0	-	sleep		You go to sleep.
+1793150672	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	83	0	-	group		Alaric's group: // [54 Monk ] Alaric           1185/1423 hp 2247/2676 mana   59/1069 mv 169257 xp
