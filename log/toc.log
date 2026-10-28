@@ -214109,3 +214109,80 @@ Wed Oct 28 02:43:50 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) 
 Wed Oct 28 02:43:50 2026 :: Log Trentlin [2414]: u
 Wed Oct 28 02:43:50 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
 Wed Oct 28 02:43:51 2026 :: Log Trentlin [2497]: u
+Wed Oct 28 02:45:30 2026 :: Log Trentlin [2497]: aquest request
+Wed Oct 28 02:45:30 2026 :: Log Trentlin [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in school.are, 7 minutes, rush
+Wed Oct 28 02:45:36 2026 :: Log Trentlin [2497]: enter door
+Wed Oct 28 02:45:36 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 02:45:37 2026 :: Log Trentlin [2401]: s
+Wed Oct 28 02:45:37 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Oct 28 02:45:37 2026 :: Log Trentlin [2404]: s
+Wed Oct 28 02:45:37 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Wed Oct 28 02:45:39 2026 :: Log Trentlin [2427]: w
+Wed Oct 28 02:45:39 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Wed Oct 28 02:45:40 2026 :: Log Trentlin [4201]: w
+Wed Oct 28 02:45:40 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4201
+Wed Oct 28 02:45:40 2026 :: Log Trentlin [4202]: w
+Wed Oct 28 02:45:40 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4202
+Wed Oct 28 02:45:42 2026 :: Log Trentlin [4207]: u
+Wed Oct 28 02:45:42 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Wed Oct 28 02:45:44 2026 :: Log Trentlin [3700]: n
+Wed Oct 28 02:45:44 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3700
+Wed Oct 28 02:45:45 2026 :: Log Trentlin [3757]: w
+Wed Oct 28 02:45:45 2026 :: Log Trentlin [3758]: arrived (Eclipse's Training Room) from 3757
+Wed Oct 28 02:45:46 2026 :: Log Trentlin [3758]: e
+Wed Oct 28 02:45:46 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3758
+Wed Oct 28 02:45:48 2026 :: Log Trentlin [3757]: s
+Wed Oct 28 02:45:48 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 3757
+Wed Oct 28 02:45:48 2026 :: Log Trentlin [3700]: s
+Wed Oct 28 02:45:50 2026 :: Log Trentlin [3700]: open south
+Wed Oct 28 02:45:51 2026 :: Log Trentlin [3700]: s
+Wed Oct 28 02:45:51 2026 :: Log Trentlin [3744]: arrived (North Wall of Arena) from 3700
+Wed Oct 28 02:45:51 2026 :: Log Trentlin [3744]: d
+Wed Oct 28 02:45:52 2026 :: Log Trentlin [3744]: e
+Wed Oct 28 02:45:52 2026 :: Log Trentlin [3745]: arrived (North Wall of Arena) from 3744
+Wed Oct 28 02:45:53 2026 :: Log Trentlin [3745]: e
+Wed Oct 28 02:45:53 2026 :: Log Trentlin [3746]: arrived (North East Corner of Arena) from 3745
+Wed Oct 28 02:45:54 2026 :: Log Trentlin [3746]: w
+Wed Oct 28 02:45:54 2026 :: Log Trentlin [3745]: arrived (North Wall of Arena) from 3746
+Wed Oct 28 02:45:54 2026 :: Log Trentlin [3745]: w
+Wed Oct 28 02:45:54 2026 :: Log Trentlin [3744]: arrived (North Wall of Arena) from 3745
+Wed Oct 28 02:45:55 2026 :: Log Trentlin [3744]: w
+Wed Oct 28 02:45:55 2026 :: Log Trentlin [3743]: arrived (North Wall of Arena) from 3744
+Wed Oct 28 02:45:55 2026 :: Log Trentlin [3743]: w
+Wed Oct 28 02:45:55 2026 :: Log Trentlin [3742]: arrived (North West Corner of Arena) from 3743
+Wed Oct 28 02:45:55 2026 :: Log Trentlin [3742]: w
+Wed Oct 28 02:45:57 2026 :: Log Trentlin [3742]: get all
+Wed Oct 28 02:45:57 2026 :: Log Trentlin [3742]: u
+Wed Oct 28 02:45:57 2026 :: Log Trentlin [3760]: arrived (A Safe Room) from 3742
+Wed Oct 28 02:45:59 2026 :: Log Trentlin [3760]: u
+Wed Oct 28 02:45:59 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 3760
+Wed Oct 28 02:46:00 2026 :: Log Trentlin [4207]: e
+Wed Oct 28 02:46:00 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 28 02:46:00 2026 :: Log Trentlin [4202]: e
+Wed Oct 28 02:46:00 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 28 02:46:00 2026 :: Log Trentlin [4201]: e
+Wed Oct 28 02:46:00 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 28 02:46:01 2026 :: Log Trentlin [2427]: n
+Wed Oct 28 02:46:01 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 28 02:46:01 2026 :: Log Trentlin [2404]: n
+Wed Oct 28 02:46:01 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 28 02:46:02 2026 :: Log Trentlin [2401]: u
+Wed Oct 28 02:46:02 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 28 02:46:02 2026 :: Log Trentlin [2410]: u
+Wed Oct 28 02:46:02 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 28 02:46:03 2026 :: Log Trentlin [2411]: u
+Wed Oct 28 02:46:03 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 28 02:46:03 2026 :: Log Trentlin [2414]: u
+Wed Oct 28 02:46:03 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 28 02:46:05 2026 :: Log Trentlin [2497]: aquest complete
+Wed Oct 28 02:46:05 2026 :: Log Trentlin [2497]: copper +162241200
+Wed Oct 28 02:46:05 2026 :: Log Trentlin [2497]: quest complete: 162p 24g 12s, 81 quest points, rush (streak bonus 50%)
+Wed Oct 28 02:46:05 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261028_024605.quest (PRESTORE Trentlin to see it).
+Wed Oct 28 02:46:09 2026 :: Log Trentlin [2497]: aquest gamble yes
+Wed Oct 28 02:46:14 2026 :: Log Trentlin [2497]: aquest points
+Wed Oct 28 02:46:16 2026 :: Log Trentlin [2497]: enter door
+Wed Oct 28 02:46:16 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Wed Oct 28 02:46:19 2026 :: EOF encountered on read.
+Wed Oct 28 02:46:19 2026 :: Closing link to Trentlin.
+Wed Oct 28 02:47:17 2026 :: Sock.sinaddr:  3.212.128.62
+Wed Oct 28 02:47:18 2026 :: EOF encountered on read.
