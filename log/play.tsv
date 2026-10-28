@@ -15897,3 +15897,9 @@
 1793151049	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1793151049	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    258 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
 1793151050	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (25) guano // ( 2) (Glowing) glowing moss
+1793151406	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793151406	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793151410	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	12	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'Raiders stole The Amulet of Soulcrusher from the realm!'
+1793151416	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	6	-	aquest	abort	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'Perhaps fortune will favor you more next time.'
+1793151417	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    258 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793151422	session	Alaric	54	2497	dresden_halloween.are	linkdead	933s	+0 levels	+26 exp	+10032269 copper	5 kills	0 deaths	0 quests	198 commands	1 refused	coin: loot 10p 27g 52s 69c, spent 24g 30s

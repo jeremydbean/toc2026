@@ -213584,3 +213584,14 @@ Wed Oct 28 01:30:50 2026 :: Log Alaric [2497]: i
 Wed Oct 28 01:31:04 2026 :: Sock.sinaddr:  3.149.57.90
 Wed Oct 28 01:31:04 2026 :: EOF encountered on read.
 Wed Oct 28 01:31:09 2026 :: Treasure goblin: vanished from room 13469 (Wall of Fire, hell.are) (too long in one area).
+Wed Oct 28 01:36:09 2026 :: Sock.sinaddr:  5.161.113.195
+Wed Oct 28 01:36:09 2026 :: EOF encountered on read.
+Wed Oct 28 01:36:46 2026 :: Log Alaric [2497]: wake
+Wed Oct 28 01:36:46 2026 :: Log Alaric [2497]: l
+Wed Oct 28 01:36:50 2026 :: Log Alaric [2497]: aq re
+Wed Oct 28 01:36:50 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in azeroth.are, 15 minutes, ordinary
+Wed Oct 28 01:36:56 2026 :: Log Alaric [2497]: aq abort
+Wed Oct 28 01:36:57 2026 :: Log Alaric [2497]: score
+Wed Oct 28 01:36:58 2026 :: Log Alaric [2497]: affects off: steel fist
+Wed Oct 28 01:37:02 2026 :: EOF encountered on read.
+Wed Oct 28 01:37:02 2026 :: Closing link to Alaric.
