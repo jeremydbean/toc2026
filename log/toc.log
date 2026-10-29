@@ -219611,3 +219611,58 @@ Thu Oct 29 20:10:06 2026 :: Sock.sinaddr:  3.12.251.153
 Thu Oct 29 20:10:07 2026 :: EOF encountered on read.
 Thu Oct 29 20:15:11 2026 :: Sock.sinaddr:  3.20.63.178
 Thu Oct 29 20:15:12 2026 :: EOF encountered on read.
+Thu Oct 29 20:18:43 2026 :: Treasure goblin: vanished from room 1333 (A broom closet, htower.are) (too long in one area).
+Thu Oct 29 20:20:15 2026 :: Sock.sinaddr:  178.156.185.127
+Thu Oct 29 20:20:15 2026 :: EOF encountered on read.
+Thu Oct 29 20:20:17 2026 :: Sock.sinaddr:  24.2.118.125
+Thu Oct 29 20:20:18 2026 :: Loading Trentlin's playerfile
+Thu Oct 29 20:20:20 2026 :: Loading Trentlin's playerfile
+Thu Oct 29 20:20:20 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Thu Oct 29 20:20:21 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 0
+Thu Oct 29 20:20:21 2026 :: Spare Triforce shard: Trentlin's object 30400 taken back.
+Thu Oct 29 20:20:21 2026 :: Login fix 20261029-spare-shards (spare Triforce shards from a refilled chest) applied to Trentlin.
+Thu Oct 29 20:20:30 2026 :: Log Trentlin [2401]: u
+Thu Oct 29 20:20:30 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Thu Oct 29 20:20:30 2026 :: Log Trentlin [2410]: u
+Thu Oct 29 20:20:30 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Thu Oct 29 20:20:30 2026 :: Log Trentlin [2411]: u
+Thu Oct 29 20:20:30 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Thu Oct 29 20:20:31 2026 :: Log Trentlin [2414]: u
+Thu Oct 29 20:20:31 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Thu Oct 29 20:20:31 2026 :: Log Trentlin [2497]: u
+Thu Oct 29 20:20:31 2026 :: Log Trentlin [2497]: u
+Thu Oct 29 20:20:33 2026 :: Log Trentlin [2497]: aquest request
+Thu Oct 29 20:20:33 2026 :: Log Trentlin [2497]: quest assigned: kill An Elven Archer (mob 28103, level 20) in azeroth.are, 25 minutes, ordinary
+Thu Oct 29 20:20:36 2026 :: Log Trentlin [2497]: enter door
+Thu Oct 29 20:20:36 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Thu Oct 29 20:20:38 2026 :: Log Trentlin [2401]: south
+Thu Oct 29 20:20:38 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2404]: south
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2427]: south
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2428]: south
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2428
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2429]: south
+Thu Oct 29 20:20:39 2026 :: Log Trentlin [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Thu Oct 29 20:20:40 2026 :: Log Trentlin [2430]: south
+Thu Oct 29 20:20:40 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Thu Oct 29 20:20:40 2026 :: Log Trentlin [2431]: open south
+Thu Oct 29 20:20:40 2026 :: Log Trentlin [2431]: south
+Thu Oct 29 20:20:40 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Thu Oct 29 20:20:44 2026 :: Log Trentlin [2432]: south
+Thu Oct 29 20:20:44 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 2432
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3505]: south
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3505
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3507]: west
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3508]: arrived (On a Small Path) from 3507
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3508]: south
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3511]: arrived (The Trail) from 3508
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3511]: south
+Thu Oct 29 20:20:45 2026 :: Log Trentlin [3515]: arrived (Light Forest) from 3511
+Thu Oct 29 20:20:46 2026 :: Log Trentlin [3515]: south
+Thu Oct 29 20:20:46 2026 :: Log Trentlin [3518]: arrived (The Fading Trail) from 3515
+Thu Oct 29 20:20:46 2026 :: Log Trentlin [3518]: south
+Thu Oct 29 20:20:46 2026 :: Log Trentlin [3522]: arrived (Deep in the Forest of Miden'nir) from 3518
+Thu Oct 29 20:20:46 2026 :: Log Trentlin [3522]: south
+Thu Oct 29 20:20:46 2026 :: Log Trentlin [28161]: arrived (Watch Your Step!) from 3522
