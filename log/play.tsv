@@ -17783,3 +17783,91 @@
 1793237198	cmd	Alaric	54	2414	dresden_halloween.are	standing	47	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
 1793237198	cmd	Alaric	54	2497	dresden_halloween.are	standing	47	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1793237202	cmd	Alaric	54	2497	dresden_halloween.are	standing	47	0	-	sleep		You go to sleep.
+1793239840	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	16	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Trentlin!' // Questor Thews tells you 'A bounty has been posted on a sparrow.'
+1793239844	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793239846	cmd	Trentlin	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793239847	cmd	Trentlin	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793239847	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793239847	cmd	Trentlin	50	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793239847	cmd	Trentlin	50	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793239848	cmd	Trentlin	50	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793239848	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793239848	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1793239848	cmd	Trentlin	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793239851	cmd	Trentlin	50	3900	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1793239852	cmd	Trentlin	50	3901	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1793239852	cmd	Trentlin	50	3902	dresden_halloween.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.
+1793239852	cmd	Trentlin	50	3903	dresden_halloween.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.
+1793239852	cmd	Trentlin	50	3904	dresden_halloween.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north
+1793239853	cmd	Trentlin	50	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study
+1793239853	cmd	Trentlin	50	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.
+1793239853	cmd	Trentlin	50	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.
+1793239853	cmd	Trentlin	50	322	plains.are	standing	100	0	-	north		Grassy foothills //   You walk in the grassy foothills north of the plains. The wind is rough. // To the north you can see foothills and just behind them mountain peaks
+1793239854	cmd	Trentlin	50	324	plains.are	standing	100	0	-	north		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // To the north you can see the mountains towering over you.  Pine trees
+1793239854	cmd	Trentlin	50	45	connect.are	standing	100	0	-	north		Base of Mount Ulmo //   Before you is a mountainous path, which leads upward into the clouds // overhead!
+1793239854	cmd	Trentlin	50	1000	uargo.are	standing	100	0	-	north		A mountain path //   A fresh mountain breeze blows in your face. You walk on a small path,  // which winds its way up the Mount Ulmo. The grassy fields along the dusty 
+1793239854	cmd	Trentlin	50	1001	uargo.are	standing	100	0	-	north		A mountain path //   A steep climb lies ahead and your surroundings are filled with debris, // a few small boulders and various small stones, that have been chipped off
+1793239855	cmd	Trentlin	50	1002	uargo.are	standing	100	0	-	up		A mountain path //   After climbing up the steep path you are now able to see the Mt. Ulmo  // pass right ahead of you. From afar the pass looks more like a small crack
+1793239855	cmd	Trentlin	50	46	connect.are	standing	100	0	-	east		Steep and Winding Path //   The path continues on its difficult climb upwards. From this vantage point // you can make out the Town of Dresden far to the south, the Village of Ofcol
+1793239855	cmd	Trentlin	50	47	connect.are	standing	100	0	-	up		Chilly Path //   Whew! Sure are feeling winded.. Silently, you hope you are almost to the // top.. Starting to notice a chill in the air.. hmmm.. is that frost forming
+1793239855	cmd	Trentlin	50	18224	gelidia.are	standing	100	0	-	north		Outside the gates of Gelidia //   As you stand outside the gates to the town of Gelidia you can // feel the bitter cold that fills the town and the surrounding
+1793239856	cmd	Trentlin	50	18224	gelidia.are	standing	100	0	-	open	north	Ok.
+1793239856	cmd	Trentlin	50	18223	gelidia.are	standing	100	0	-	north		Inside the gates of Gelidia //   You are inside the gates of Gelidia and are welcomed to the  // town by a gust of cold air.  The road leads off to the north
+1793239857	cmd	Trentlin	50	18222	gelidia.are	standing	100	0	-	north		A short road //   You are on a short road that leads into the heart of the town. // The buildings that surround you are beautifully built from 
+1793239858	cmd	Trentlin	50	18221	gelidia.are	standing	100	0	-	east		End of a short road //   You have reached the end of a very short road and off to the // northeast you can see the citizens of the town going about
+1793239858	cmd	Trentlin	50	18213	gelidia.are	standing	100	0	-	northeast		Town Square //   You are in the heart of the town and all around you are  // people walking and chatting together.  The ground beneath
+1793239858	cmd	Trentlin	50	18212	gelidia.are	standing	100	0	-	north		Town Square //   As you make your way through the town square you feel at // ease with the people around you and although you are a 
+1793239858	cmd	Trentlin	50	18211	gelidia.are	standing	100	0	-	north		Town Square //   You are in the northwestern section of town square and to // the northwest you can see a small street that leads off into
+1793239859	cmd	Trentlin	50	18210	gelidia.are	standing	100	0	-	northwest		On a narrow street //   You have reached a small, narrow street that leads throughout // the town.  To the southeast you can see citizens milling around
+1793239859	cmd	Trentlin	50	18209	gelidia.are	standing	100	0	-	north		On a narrow street //   You continue along the street and to the north you can see // where the path divides leading off into different sections of
+1793239859	cmd	Trentlin	50	18208	gelidia.are	standing	100	0	-	north		A turn in the street //   You have reached a small branch in the street and a small // sign off to the side indicates that town square is to the
+1793239859	cmd	Trentlin	50	18207	gelidia.are	standing	100	0	-	east		On a narrow street //   You begin to feel colder as you make your way along the street. // All around you are dirty brown patches of ice on the ground and
+1793239860	cmd	Trentlin	50	18206	gelidia.are	standing	100	0	-	east		On a narrow street //   As you make your way along the street you notice a cold // breeze coming from the west.  You begin to wonder how anyone
+1793239860	cmd	Trentlin	50	18205	gelidia.are	standing	100	0	-	northeast		On a narrow street //   This section of the street is slightly wider than the rest // of the street and off to the side you can see a street
+1793239860	cmd	Trentlin	50	18204	gelidia.are	standing	100	0	-	north		On a narrow street //   You are on a section of the street that looks like it has // been recently repaired.  The ground beneath your feet is 
+1793239860	cmd	Trentlin	50	18203	gelidia.are	standing	100	0	-	north		On a narrow street //   As you continue along the street you notice quite a few // deep cracks in the road.  You assume that the extreme cold
+1793239861	cmd	Trentlin	50	18202	gelidia.are	standing	100	0	-	north		On a narrow street //   You are in the middle of a narrow street and as you walk  // forward you notice that the street is in poor condition and
+1793239861	cmd	Trentlin	50	18201	gelidia.are	standing	100	0	-	north		Inside the gates of Gelidia //   You have reached the inside of Gelidia and you are at the  // beginning of a narrow street that leads both to the south 
+1793239861	cmd	Trentlin	50	18201	gelidia.are	standing	100	0	-	open	north	Ok.
+1793239861	cmd	Trentlin	50	18200	gelidia.are	standing	100	0	-	north		Outside the gates of Gelidia //   You are outside the gates of Gelidia and you can feel the // wind blowing much harder now that you are outside of the 
+1793239865	cmd	Trentlin	50	18138	icekeep.are	standing	100	0	-	north		Beginning of a small trail //   This is the beginning of a small trail that appears to stretch  // for miles ahead of you into the wintery land of this frozen realm.
+1793239867	cmd	Trentlin	50	18137	icekeep.are	standing	100	0	-	north		A trail through the wilderness //   This small, winding trail seems to stretch as far as the eye  // can see.  You prepare yourself for a long journey as you travel 
+1793239869	cmd	Trentlin	50	18136	icekeep.are	standing	100	0	-	west		A trail through the wilderness //   It has begun to get slightly darker as you emerge onto this // section of the trail.  The sun is partially obscured behind
+1793239870	cmd	Trentlin	50	18135	icekeep.are	standing	100	0	-	nw		A trail through the wilderness //   The wind has begun to get much stronger now and you can feel // it swirl around you from all directions.  You can see the trail
+1793239871	cmd	Trentlin	50	18134	icekeep.are	standing	100	0	-	north		A trail through the wilderness //   The wind continues to swirl around you and it begins to get // even colder.  You can feel your extremities begin to get numb 
+1793239872	cmd	Trentlin	50	18127	icekeep.are	standing	100	0	-	east		A trail through the wilderness //   The landscape begins to become darker and the sounds of wild // animals can be heard around you.  You continue to shiver as you
+1793239872	cmd	Trentlin	50	18126	icekeep.are	standing	100	0	-	east		A trail through the wilderness //   This part of the trail feels slightly colder than the // rest of the trail and branches off to the southeast and
+1793239872	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	se		Beginning of a small path //   You have reached a small path that leads to a small, frozen // pond.  The air seems clearer here and you think you can 
+1793239878	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239881	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	sparrow	You are unable to affect your victim.
+1793239883	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	inventory		You are carrying: // (10) guano //      (Humming) Excalibur
+1793239888	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kick	sparrow	You aren't fighting anyone.
+1793239891	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239894	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	smite	spa	You are unable to affect your victim.
+1793239894	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	look		Beginning of a small path //   You have reached a small path that leads to a small, frozen // pond.  The air seems clearer here and you think you can 
+1793239896	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	look	spa	A large sparrow is here innocently singing a song. // A sparrow is in excellent condition.
+1793239897	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	inventory		You are carrying: // (10) guano //      (Humming) Excalibur
+1793239901	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	wear	lan	You stop using the Headless Horseman's Reaper. // You wield the Gohma eye-lance. // You feel quite confident with the Gohma eye-lance.
+1793239902	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239905	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	wear	gla	You stop using the Gohma eye-lance. // You wield the Gleeok twin-fang glaive. // You are skilled with the Gleeok twin-fang glaive.
+1793239905	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239910	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	wear	bow	You stop using the Gleeok twin-fang glaive. // You wield a short bow. // A short bow is a mystery to you. Better ask someone how to use it.
+1793239911	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239913	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	inventory		You are carrying: // (10) guano //      (Humming) Excalibur
+1793239915	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	wear	axe	You stop using a short bow. // You wield A Tin Axe. // A Tin Axe feels like a part of you!
+1793239916	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239924	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	remove	axe	You stop using A Tin Axe.
+1793239925	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239932	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	wear	rea	You wield the Headless Horseman's Reaper. // The Headless Horseman's Reaper feels like a part of you!
+1793239934	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	wear	sw	Excalibur rejects you: it is for the light or the balanced (not Ruthless or darker), and you are Fiend.
+1793239936	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239937	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	look		Beginning of a small path //   You have reached a small path that leads to a small, frozen // pond.  The air seems clearer here and you think you can 
+1793239941	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	consider	spoa	They're not here.
+1793239942	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	look	spa	A large sparrow is here innocently singing a song. // A sparrow is in excellent condition.
+1793239943	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	consider	spa	A sparrow is far below your level. // A sparrow has about a third of your hit points. // Blow for blow, you would need a single round to bring a sparrow down; she would need about 66 rounds for you.
+1793239949	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	kill	spa	You are unable to affect your victim.
+1793239952	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	inventory		You are carrying: // (10) guano //      (Humming) Excalibur
+1793239960	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793239964	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	help	archery	SHOOT ARCHERY BOW // Syntax: shoot <target> // SHOOT fires a wielded bow at a visible mobile through an open adjacent exit,
+1793240007	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	help	hyrule items	'HYRULE ITEMS' 'DUNGEON MAP' COMPASS 'BLUE RING' 'MAGICAL SHIELD' // What Hyrule's tools do: //   Dungeon map     LOOK or READ it: the dungeon's floor plan, @ where you
+1793240047	cmd	Trentlin	50	18139	icekeep.are	standing	100	0	-	help	hyrule secrets	'HYRULE SECRETS' 'TAKE ANY' 'MONEY CAVE' 'DOOR REPAIR' // Hyrule's caves keep the NES's rules, and what pays out once pays each // character once, for good:

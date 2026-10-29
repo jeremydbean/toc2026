@@ -218100,3 +218100,153 @@ Thu Oct 29 02:03:40 2026 :: Black market: the dealer vanished from room 28006 (T
 Thu Oct 29 02:08:37 2026 :: Sock.sinaddr:  5.161.73.160
 Thu Oct 29 02:08:37 2026 :: EOF encountered on read.
 Thu Oct 29 02:08:49 2026 :: Black market: the dealer left the world from room 7666 (Prison, ultima.are).
+Thu Oct 29 02:09:48 2026 :: Sock.sinaddr:  23.31.96.97
+Thu Oct 29 02:09:48 2026 :: EOF encountered on read.
+Thu Oct 29 02:10:34 2026 :: Sock.sinaddr:  24.2.118.125
+Thu Oct 29 02:10:34 2026 :: Loading Trentlin's playerfile
+Thu Oct 29 02:10:36 2026 :: Loading Trentlin's playerfile
+Thu Oct 29 02:10:36 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Thu Oct 29 02:10:37 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Thu Oct 29 02:10:40 2026 :: Log Trentlin [2497]: aquest request
+Thu Oct 29 02:10:40 2026 :: Log Trentlin [2497]: quest assigned: kill a sparrow (mob 18013, level 18) in icekeep.are, 11 minutes, ordinary
+Thu Oct 29 02:10:44 2026 :: Log Trentlin [2497]: enter door
+Thu Oct 29 02:10:44 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Thu Oct 29 02:10:46 2026 :: Log Trentlin [2401]: west
+Thu Oct 29 02:10:46 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2405]: west
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2433]: west
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2434]: west
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2435]: west
+Thu Oct 29 02:10:47 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Thu Oct 29 02:10:48 2026 :: Log Trentlin [2436]: west
+Thu Oct 29 02:10:48 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Thu Oct 29 02:10:48 2026 :: Log Trentlin [2437]: west
+Thu Oct 29 02:10:48 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Thu Oct 29 02:10:48 2026 :: Log Trentlin [2438]: open west
+Thu Oct 29 02:10:48 2026 :: Log Trentlin [2438]: west
+Thu Oct 29 02:10:48 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Thu Oct 29 02:10:51 2026 :: Log Trentlin [2439]: north
+Thu Oct 29 02:10:51 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3900]: north
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3901]: north
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3902]: east
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3903]: east
+Thu Oct 29 02:10:52 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [3904]: north
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [300]: north
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [315]: north
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [320]: north
+Thu Oct 29 02:10:53 2026 :: Log Trentlin [322]: arrived (Grassy foothills) from 320
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [322]: north
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [324]: arrived (The steep foothills) from 322
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [324]: north
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [45]: arrived (Base of Mount Ulmo) from 324
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [45]: north
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [1000]: arrived (A mountain path) from 45
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [1000]: north
+Thu Oct 29 02:10:54 2026 :: Log Trentlin [1001]: arrived (A mountain path) from 1000
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [1001]: up
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [1002]: arrived (A mountain path) from 1001
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [1002]: east
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [46]: arrived (Steep and Winding Path) from 1002
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [46]: up
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [47]: arrived (Chilly Path) from 46
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [47]: north
+Thu Oct 29 02:10:55 2026 :: Log Trentlin [18224]: arrived (Outside the gates of Gelidia) from 47
+Thu Oct 29 02:10:56 2026 :: Log Trentlin [18224]: open north
+Thu Oct 29 02:10:56 2026 :: Log Trentlin [18224]: north
+Thu Oct 29 02:10:56 2026 :: Log Trentlin [18223]: arrived (Inside the gates of Gelidia) from 18224
+Thu Oct 29 02:10:57 2026 :: Log Trentlin [18223]: north
+Thu Oct 29 02:10:57 2026 :: Log Trentlin [18222]: arrived (A short road) from 18223
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18222]: east
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18221]: arrived (End of a short road) from 18222
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18221]: northeast
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18213]: arrived (Town Square) from 18221
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18213]: north
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18212]: arrived (Town Square) from 18213
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18212]: north
+Thu Oct 29 02:10:58 2026 :: Log Trentlin [18211]: arrived (Town Square) from 18212
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18211]: northwest
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18210]: arrived (On a narrow street) from 18211
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18210]: north
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18209]: arrived (On a narrow street) from 18210
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18209]: north
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18208]: arrived (A turn in the street) from 18209
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18208]: east
+Thu Oct 29 02:10:59 2026 :: Log Trentlin [18207]: arrived (On a narrow street) from 18208
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18207]: east
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18206]: arrived (On a narrow street) from 18207
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18206]: northeast
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18205]: arrived (On a narrow street) from 18206
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18205]: north
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18204]: arrived (On a narrow street) from 18205
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18204]: north
+Thu Oct 29 02:11:00 2026 :: Log Trentlin [18203]: arrived (On a narrow street) from 18204
+Thu Oct 29 02:11:01 2026 :: Log Trentlin [18203]: north
+Thu Oct 29 02:11:01 2026 :: Log Trentlin [18202]: arrived (On a narrow street) from 18203
+Thu Oct 29 02:11:01 2026 :: Log Trentlin [18202]: north
+Thu Oct 29 02:11:01 2026 :: Log Trentlin [18201]: arrived (Inside the gates of Gelidia) from 18202
+Thu Oct 29 02:11:01 2026 :: Log Trentlin [18201]: open north
+Thu Oct 29 02:11:01 2026 :: Log Trentlin [18201]: north
+Thu Oct 29 02:11:01 2026 :: Log Trentlin [18200]: arrived (Outside the gates of Gelidia) from 18201
+Thu Oct 29 02:11:05 2026 :: Log Trentlin [18200]: n
+Thu Oct 29 02:11:05 2026 :: Log Trentlin [18138]: arrived (Beginning of a small trail) from 18200
+Thu Oct 29 02:11:07 2026 :: Log Trentlin [18138]: n
+Thu Oct 29 02:11:07 2026 :: Log Trentlin [18137]: arrived (A trail through the wilderness) from 18138
+Thu Oct 29 02:11:09 2026 :: Log Trentlin [18137]: w
+Thu Oct 29 02:11:09 2026 :: Log Trentlin [18136]: arrived (A trail through the wilderness) from 18137
+Thu Oct 29 02:11:10 2026 :: Log Trentlin [18136]: nw
+Thu Oct 29 02:11:10 2026 :: Log Trentlin [18135]: arrived (A trail through the wilderness) from 18136
+Thu Oct 29 02:11:11 2026 :: Log Trentlin [18135]: n
+Thu Oct 29 02:11:11 2026 :: Log Trentlin [18134]: arrived (A trail through the wilderness) from 18135
+Thu Oct 29 02:11:12 2026 :: Log Trentlin [18134]: e
+Thu Oct 29 02:11:12 2026 :: Log Trentlin [18127]: arrived (A trail through the wilderness) from 18134
+Thu Oct 29 02:11:12 2026 :: Log Trentlin [18127]: e
+Thu Oct 29 02:11:12 2026 :: Log Trentlin [18126]: arrived (A trail through the wilderness) from 18127
+Thu Oct 29 02:11:12 2026 :: Log Trentlin [18126]: se
+Thu Oct 29 02:11:12 2026 :: Log Trentlin [18139]: arrived (Beginning of a small path) from 18126
+Thu Oct 29 02:11:18 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:11:21 2026 :: Log Trentlin [18139]: k sparrow
+Thu Oct 29 02:11:23 2026 :: Log Trentlin [18139]: i
+Thu Oct 29 02:11:28 2026 :: Log Trentlin [18139]: kick sparrow
+Thu Oct 29 02:11:31 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:11:34 2026 :: Log Trentlin [18139]: smite spa
+Thu Oct 29 02:11:34 2026 :: Log Trentlin [18139]: l
+Thu Oct 29 02:11:36 2026 :: Log Trentlin [18139]: l spa
+Thu Oct 29 02:11:37 2026 :: Log Trentlin [18139]: i
+Thu Oct 29 02:11:41 2026 :: Log Trentlin [18139]: wear lan
+Thu Oct 29 02:11:42 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:11:45 2026 :: Log Trentlin [18139]: wear gla
+Thu Oct 29 02:11:45 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:11:50 2026 :: Log Trentlin [18139]: wear bow
+Thu Oct 29 02:11:51 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:11:53 2026 :: Log Trentlin [18139]: i
+Thu Oct 29 02:11:55 2026 :: Log Trentlin [18139]: wear axe
+Thu Oct 29 02:11:56 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:12:04 2026 :: Log Trentlin [18139]: rem axe
+Thu Oct 29 02:12:05 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:12:12 2026 :: Log Trentlin [18139]: wear rea
+Thu Oct 29 02:12:14 2026 :: Log Trentlin [18139]: wear sw
+Thu Oct 29 02:12:16 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:12:17 2026 :: Log Trentlin [18139]: l
+Thu Oct 29 02:12:21 2026 :: Log Trentlin [18139]: con spoa
+Thu Oct 29 02:12:22 2026 :: Log Trentlin [18139]: l spa
+Thu Oct 29 02:12:23 2026 :: Log Trentlin [18139]: con spa
+Thu Oct 29 02:12:29 2026 :: Log Trentlin [18139]: k spa
+Thu Oct 29 02:12:32 2026 :: Log Trentlin [18139]: i
+Thu Oct 29 02:12:40 2026 :: Log Trentlin [18139]: w
+Thu Oct 29 02:12:44 2026 :: Log Trentlin [18139]: help archery
+Thu Oct 29 02:13:27 2026 :: Log Trentlin [18139]: help hyrule items
+Thu Oct 29 02:13:36 2026 :: Log Trentlin [18139]: affects off: stone skin
+Thu Oct 29 02:13:42 2026 :: Sock.sinaddr:  5.161.117.52
+Thu Oct 29 02:13:43 2026 :: EOF encountered on read.
+Thu Oct 29 02:14:07 2026 :: Log Trentlin [18139]: help hyrule secrets
