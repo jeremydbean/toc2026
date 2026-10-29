@@ -194,14 +194,19 @@ def parse_time(stamp: str) -> datetime:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--ref", default="origin/main")
-    parser.add_argument("--since", help="UTC 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM' (default: 24 hours ago)")
+    parser.add_argument("--since", help="UTC 'YYYY-MM-DD', 'YYYY-MM-DD HH:MM' or "
+                        "'YYYY-MM-DDTHH:MM' (default: 24 hours ago)")
     parser.add_argument("--player", help="only this player's commands, deaths and coin")
     parser.add_argument("--chat", type=int, default=60, help="most chat lines to show (default 60)")
     args = parser.parse_args()
 
     if args.since:
-        fmt = "%Y-%m-%d %H:%M" if " " in args.since else "%Y-%m-%d"
-        since = datetime.strptime(args.since, fmt).replace(tzinfo=timezone.utc)
+        stamp = args.since.strip().replace("T", " ")
+        try:
+            fmt = "%Y-%m-%d %H:%M" if " " in stamp else "%Y-%m-%d"
+            since = datetime.strptime(stamp, fmt).replace(tzinfo=timezone.utc)
+        except ValueError:
+            parser.error("--since takes 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM' (UTC)")
     else:
         since = datetime.now(timezone.utc) - timedelta(hours=24)
 
