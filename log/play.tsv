@@ -18840,3 +18840,13 @@
 1793306404	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     21 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
 1793306406	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1793306409	session	Trentlin	50	2497	dresden_halloween.are	quit	1188s	+0 levels	+0 exp	+238904685 copper	4 kills	0 deaths	2 quests	564 commands	1 refused	coin: loot 1p 4g 28s 85c, quests 243p 36g 18s, spent 5p 50g
+1793318261	cmd	Alaric	54	2497	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793318261	cmd	Alaric	54	2497	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1793318261	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793318263	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793318264	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	jump	prock	I see no prock here.
+1793318265	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793318267	cmd	Alaric	54	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1793318268	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793318270	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793318270	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    269 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
