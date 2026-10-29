@@ -1470,87 +1470,88 @@ mage               magic missile      magic user         magical shield
 major globe        maladiction        maladictions       man
 mana convert       map                mapper             mapping
 market             marks              mass healing       mass invis
-mass sanctuary     master             master sword       maze
-meditation         merc               meteor swarm       mind blast
-mind leech         mindbar            mindblast          mindleech
-mirror             money cave         monk               moonbeam
-morgue             morgue of dresden  motd               mount
-move               mudlet             mudschool          multiclass
-murde              murder             music              ne
-necromancer        nerve              nerve damage       neutral
-neutrality field   new                newbie info        news
-night vision       nightmare          nofol              nofollow
-noloot             north              northeast          northwest
-nosummon           note               notes              nw
-open               options            oracle             order
-outfit             palms              palms of the creatorparagon
-parry              pass door          password           peek
-phase              pick               pick lock          pkill
-pkilling           plague             play               poison
-poker              polearm            portal             pose
-potion of power    potion of the giantpower gloves       power potion
-practice           practicelist       pray               project
-prompt             protection evil    protective         psionic
-psionic armor      psionics           psionist trainer   pstealing
-psychic            psychic shield     pull               push
-put                pyrotechnics       quaff              quest
-questing           question           questor            questpoint
-questpoints        qui                quiet              quit
-race               race help          races              racial trainer
-raise dead         rakar              rakar the weaponsmasterread
-recall             recite             red ring           redeem
-refresh            reissue            relics             remort
-remove             remove align       remove curse       rent
-repair             replay             reply              report
-reports            rescue             rest               rest xp
-rested             rested xp          restore mana       resurrection
-ride               riding             roll               rom
-rope trick         roulette           routelist          routes
-rules              run                ruthless           sacrifice
-salir              sanctuary          saurian            save
-say                scan               school trainer     score
-scribe             scroll             scroll of farslay  scrolls
-se                 search             second attack      secondary
-seer               sell               seraloi            settings
-shadowmeld         shield             shield block       shieldblock
-shift              shock sphere       shocking grasp     shoot
-shout              shove              shroud             silvesti
-sit                skeletal hands     skills             sleep
-sleepspell         sleight of hand    slots              slow
-smite              smuggler           sneak              social
-socials            south              southeast          southwest
-spear              speedwalk          spellgroup         spells
-spiritual hammer   split              staff              stand
-start              stash              stashlink          stats
-staves             steal              stealth            steel
-steel fist         steelfist          stone skin         story
-strength           stunning           stunning blow      sub issue
-subissue           summary            summon             sunray
-sw                 sword              take               take any
-tax                taxes              teachlist          telekinesis
-teleport           teleportspell      tell               temple of breas
-tentacles          thews              thief              third attack
-tia                tick               tifarah            time
-titanic            titanic spell      title              tk
-to hit             tocgui             topten             torment
-track              train              training           traitor
-transfusion        transport          transportation     trap the soul
-travel             treasure goblin    triforce           trip
-trophy             turn               typo               unalias
-university         university of magicunlock             up
-use                valley elf         value              vampiric touch
-vengeance          vengence           ventriloquate      vesh
-vile               virtuous           visible            vortex
-wake               walk               walkto             wands
-warrior            water burst        water spells       weaken
-weapon             weapons            weaponsmaster      wear
-weather            weather group      weather spells     weatherspells
-web                webclient          west               where
-where to hunt      whip               who                whois
-wield              wimpy              wind spells        wisdom
-withdraw           wizlist            word of recall     world
-worth              xp                 yard               yell
-zap
+mass sanctuary     master             master sword       mastery
+maze               meditation         merc               meteor swarm
+mind blast         mind leech         mindbar            mindblast
+mindleech          mirror             money cave         monk
+moonbeam           morgue             morgue of dresden  motd
+mount              move               mudlet             mudschool
+multiclass         murde              murder             music
+ne                 necromancer        nerve              nerve damage
+neutral            neutrality field   new                newbie info
+news               night vision       nightmare          nofol
+nofollow           noloot             north              northeast
+northwest          nosummon           note               notes
+nw                 open               options            oracle
+order              outfit             palms              palms of the creator
+paragon            parry              pass door          password
+peek               phase              pick               pick lock
+pkill              pkilling           plague             play
+poison             poker              polearm            portal
+pose               potion of power    potion of the giant
+power gloves       power potion       practice           practicelist
+pray               project            prompt             protection evil
+protective         psionic            psionic armor      psionics
+psionist trainer   pstealing          psychic            psychic shield
+pull               push               put                pyrotechnics
+quaff              quest              questing           question
+questor            questpoint         questpoints        qui
+quiet              quit               race               race help
+races              racial trainer     raise dead         rakar
+rakar the weaponsmaster               read               recall
+recite             red ring           redeem             refresh
+reissue            relics             remort             remove
+remove align       remove curse       rent               repair
+replay             reply              report             reports
+rescue             rest               rest xp            rested
+rested xp          restore mana       resurrection       ride
+riding             roll               rom                rope trick
+roulette           routelist          routes             rules
+run                ruthless           sacrifice          salir
+sanctuary          saurian            save               say
+scan               school trainer     score              scribe
+scroll             scroll of farslay  scrolls            se
+search             second attack      secondary          seer
+sell               seraloi            settings           shadowmeld
+shield             shield block       shieldblock        shift
+shock sphere       shocking grasp     shoot              shout
+shove              shroud             silvesti           sit
+skeletal hands     skills             sleep              sleepspell
+sleight of hand    slots              slow               smite
+smuggler           sneak              social             socials
+south              southeast          southwest          spear
+speedwalk          spellgroup         spells             spiritual hammer
+split              staff              stand              start
+stash              stashlink          stats              staves
+steal              stealth            steel              steel fist
+steelfist          stone skin         story              strength
+stunning           stunning blow      sub issue          subissue
+summary            summon             sunray             sw
+sword              take               take any           tax
+taxes              teachlist          telekinesis        teleport
+teleportspell      tell               temple of breas    tentacles
+thews              thief              third attack       tia
+tick               tifarah            time               titanic
+titanic spell      title              tk                 to hit
+tocgui             topten             torment            track
+train              training           traitor            transfusion
+transport          transportation     trap the soul      travel
+treasure goblin    triforce           trip               trophy
+turn               typo               unalias            university
+university of magic                   unlock             up                 use
+valley elf         value              vampiric touch     vengeance
+vengence           ventriloquate      vesh               vile
+virtuous           visible            vortex             wake
+walk               walkto             wands              warrior
+water burst        water spells       weaken             weapon
+weapon mastery     weapons            weaponsmaster      weaponsmastery
+wear               weather            weather group      weather spells
+weatherspells      web                webclient          west
+where              where to hunt      whip               who
+whois              wield              wimpy              wind spells
+wisdom             withdraw           wizlist            word of recall
+world              worth              xp                 yard
+yell               zap
 ~
 
 0$~

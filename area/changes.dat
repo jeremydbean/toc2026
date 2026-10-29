@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261029a 2026-10-29
+HELP WEAPON MASTERY (or HELP MASTERY) now explains a warrior's and a
+thief's weapon mastery: how much it adds to each blow, and why it is
+greater in your own class's guild.
+
 @ 20261028b 2026-10-28
 A target that only starts the word SELF (KILL S, LOOK SE) now means
 whoever in the room it names, not you; SELF in full still means you.

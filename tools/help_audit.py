@@ -191,11 +191,29 @@ def keywords_text(entries) -> str:
     words = [w for w in mortal_keywords(entries) if w.isascii()]
     width = 19
     cols = 4
+
+    def render(row) -> str:
+        # A keyword too long for its column takes the next one too, so
+        # the word after it never runs into it.
+        out = ""
+        for j, w in enumerate(row):
+            if j < len(row) - 1:
+                out += w.ljust(-(-(len(w) + 1) // width) * width)
+            else:
+                out += w
+        return out
+
     lines = []
-    for i in range(0, len(words), cols):
-        row = words[i:i + cols]
-        lines.append("".join(w.ljust(width) if j < len(row) - 1 else w
-                             for j, w in enumerate(row)).rstrip())
+    row = []
+    for w in words:
+        # A row ends at four keywords or before one would pass column 79
+        # (test_help_audit's narrow terminal).
+        if row and (len(row) == cols or len(render(row + [w])) > 79):
+            lines.append(render(row).rstrip())
+            row = []
+        row.append(w)
+    if row:
+        lines.append(render(row).rstrip())
     return KEYWORDS_HEAD + "\n".join(lines) + "\n"
 
 

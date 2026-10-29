@@ -381,7 +381,24 @@ skill at each weapon type is dependent on their primary class.
 
 Trainer: Rakar (all)
 
-See also helps on ARCHERY and PARRY.
+See also helps on ARCHERY, PARRY and WEAPON MASTERY.
+~
+
+0 'WEAPON MASTERY' MASTERY WEAPONSMASTERY~
+Weapon mastery is a warrior's and a thief's own.  It cannot be learned or
+practised: it grows by itself with every level, up to level 59.
+
+Each blow with a wielded weapon gains a share of the weapon's own damage:
+
+  - 4% a level in your own class's guild (a warrior in the warriors'
+    guild, a thief in the thieves' guild), 236% at level 59;
+  - 3% a level in any other guild, or none, 177% at level 59.
+
+It is added before damroll, so gear does not multiply it, and a backstab,
+which has its own multiplier, does not take it.  Other classes, and blows
+with no weapon, have none.
+
+See also: WARRIOR, THIEF, GUILDS, WEAPONS
 ~
 
 -1 AGGROSTAB~
