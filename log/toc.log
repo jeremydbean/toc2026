@@ -220142,3 +220142,205 @@ Thu Oct 29 20:30:50 2026 :: Log Trentlin [795]: con ga
 Thu Oct 29 20:30:51 2026 :: Log Trentlin [795]: sca
 Thu Oct 29 20:30:52 2026 :: Log Trentlin [795]: w
 Thu Oct 29 20:30:52 2026 :: Log Trentlin [788]: arrived (An Outpost) from 795
+Thu Oct 29 20:30:57 2026 :: Log Trentlin [788]: open west
+Thu Oct 29 20:30:57 2026 :: Log Trentlin [788]: w
+Thu Oct 29 20:30:57 2026 :: Log Trentlin [785]: arrived (The Highlands) from 788
+Thu Oct 29 20:30:59 2026 :: Log Trentlin [785]: w
+Thu Oct 29 20:30:59 2026 :: Log Trentlin [783]: arrived (The Rolling Hills) from 785
+Thu Oct 29 20:31:00 2026 :: Log Trentlin [783]: s
+Thu Oct 29 20:31:00 2026 :: Log Trentlin [782]: arrived (The Rolling Hills) from 783
+Thu Oct 29 20:31:01 2026 :: Log Trentlin [782]: s
+Thu Oct 29 20:31:01 2026 :: Log Trentlin [756]: arrived (The Great Northern Gate of Camelot) from 782
+Thu Oct 29 20:31:03 2026 :: Log Trentlin [756]: open south
+Thu Oct 29 20:31:03 2026 :: Log Trentlin [756]: s
+Thu Oct 29 20:31:03 2026 :: Log Trentlin [755]: arrived (Squire's Run at the North Gate) from 756
+Thu Oct 29 20:31:05 2026 :: Log Trentlin [755]: e
+Thu Oct 29 20:31:05 2026 :: Log Trentlin [762]: arrived (Tourney Yard of Camelot) from 755
+Thu Oct 29 20:31:07 2026 :: Log Trentlin [762]: con g
+Thu Oct 29 20:31:14 2026 :: Log Trentlin [762]: l g
+Thu Oct 29 20:31:18 2026 :: Log Trentlin [762]: sca
+Thu Oct 29 20:31:19 2026 :: Log Trentlin [762]: w
+Thu Oct 29 20:31:19 2026 :: Log Trentlin [755]: arrived (Squire's Run at the North Gate) from 762
+Thu Oct 29 20:31:19 2026 :: Log Trentlin [755]: w
+Thu Oct 29 20:31:19 2026 :: Log Trentlin [750]: arrived (Squire's Run) from 755
+Thu Oct 29 20:31:20 2026 :: Log Trentlin [750]: w
+Thu Oct 29 20:31:20 2026 :: Log Trentlin [745]: arrived (Corner of Knight's Way and Squire's Run) from 750
+Thu Oct 29 20:31:21 2026 :: Log Trentlin [745]: sca
+Thu Oct 29 20:31:23 2026 :: Log Trentlin [745]: u
+Thu Oct 29 20:31:23 2026 :: Log Trentlin [751]: arrived (Tower of Valor) from 745
+Thu Oct 29 20:31:24 2026 :: Log Trentlin [751]: l ga
+Thu Oct 29 20:31:25 2026 :: Log Trentlin [751]: con ga
+Thu Oct 29 20:31:25 2026 :: Log Trentlin [751]: d
+Thu Oct 29 20:31:25 2026 :: Log Trentlin [745]: arrived (Corner of Knight's Way and Squire's Run) from 751
+Thu Oct 29 20:31:26 2026 :: Log Trentlin [745]: e
+Thu Oct 29 20:31:26 2026 :: Log Trentlin [750]: arrived (Squire's Run) from 745
+Thu Oct 29 20:31:26 2026 :: Log Trentlin [750]: e
+Thu Oct 29 20:31:26 2026 :: Log Trentlin [755]: arrived (Squire's Run at the North Gate) from 750
+Thu Oct 29 20:31:27 2026 :: Log Trentlin [755]: e
+Thu Oct 29 20:31:27 2026 :: Log Trentlin [762]: arrived (Tourney Yard of Camelot) from 755
+Thu Oct 29 20:31:27 2026 :: Log Trentlin [762]: s
+Thu Oct 29 20:31:27 2026 :: Log Trentlin [760]: arrived (Tourney Yard of Camelot) from 762
+Thu Oct 29 20:31:28 2026 :: Log Trentlin [760]: e
+Thu Oct 29 20:31:28 2026 :: Log Trentlin [765]: arrived (Tourney Yard of Camelot) from 760
+Thu Oct 29 20:31:29 2026 :: Log Trentlin [765]: sca
+Thu Oct 29 20:31:30 2026 :: Log Trentlin [765]: n
+Thu Oct 29 20:31:30 2026 :: Log Trentlin [768]: arrived (Tourney Yard of Camelot) from 765
+Thu Oct 29 20:31:31 2026 :: Log Trentlin [768]: sca
+Thu Oct 29 20:31:32 2026 :: Log Trentlin [768]: s
+Thu Oct 29 20:31:32 2026 :: Log Trentlin [765]: arrived (Tourney Yard of Camelot) from 768
+Thu Oct 29 20:31:32 2026 :: Log Trentlin [765]: s
+Thu Oct 29 20:31:32 2026 :: Log Trentlin [759]: arrived (Tourney Yard of Camelot) from 765
+Thu Oct 29 20:31:33 2026 :: Log Trentlin [759]: con la
+Thu Oct 29 20:31:35 2026 :: Log Trentlin [759]: l la
+Thu Oct 29 20:31:38 2026 :: Log Trentlin [759]: e
+Thu Oct 29 20:31:38 2026 :: Log Trentlin [770]: arrived (The Court of Camelot) from 759
+Thu Oct 29 20:31:40 2026 :: Log Trentlin [770]: sca
+Thu Oct 29 20:31:43 2026 :: Log Trentlin [770]: s
+Thu Oct 29 20:31:43 2026 :: Log Trentlin [771]: arrived (The Feast Hall) from 770
+Thu Oct 29 20:31:43 2026 :: Log Trentlin [771]: sca
+Thu Oct 29 20:31:45 2026 :: Log Trentlin [771]: open south
+Thu Oct 29 20:31:46 2026 :: Log Trentlin [771]: s
+Thu Oct 29 20:31:46 2026 :: Log Trentlin [772]: arrived (The Ladies' Chambers) from 771
+Thu Oct 29 20:31:47 2026 :: Log Trentlin [772]: u
+Thu Oct 29 20:31:47 2026 :: Log Trentlin [773]: arrived (The Maiden's Tower) from 772
+Thu Oct 29 20:31:49 2026 :: Log Trentlin [773]: d
+Thu Oct 29 20:31:49 2026 :: Log Trentlin [772]: arrived (The Ladies' Chambers) from 773
+Thu Oct 29 20:31:50 2026 :: Log Trentlin [772]: n
+Thu Oct 29 20:31:50 2026 :: Log Trentlin [771]: arrived (The Feast Hall) from 772
+Thu Oct 29 20:31:50 2026 :: Log Trentlin [771]: sca
+Thu Oct 29 20:31:53 2026 :: Log Trentlin [771]: n
+Thu Oct 29 20:31:53 2026 :: Log Trentlin [770]: arrived (The Court of Camelot) from 771
+Thu Oct 29 20:31:54 2026 :: Log Trentlin [770]: con da
+Thu Oct 29 20:31:54 2026 :: Log Trentlin [770]: l da
+Thu Oct 29 20:32:01 2026 :: Log Trentlin [770]: open north\
+Thu Oct 29 20:32:01 2026 :: Log Trentlin [770]: n
+Thu Oct 29 20:32:02 2026 :: Sock.sinaddr:  66.132.195.43
+Thu Oct 29 20:32:05 2026 :: Log Trentlin [770]: open north
+Thu Oct 29 20:32:06 2026 :: Log Trentlin [770]: sca
+Thu Oct 29 20:32:09 2026 :: Log Trentlin [770]: n
+Thu Oct 29 20:32:09 2026 :: Log Trentlin [774]: arrived (Knight's Barracks) from 770
+Thu Oct 29 20:32:10 2026 :: Log Trentlin [774]: l la
+Thu Oct 29 20:32:11 2026 :: Log Trentlin [774]: con la
+Thu Oct 29 20:32:12 2026 :: Log Trentlin [774]: u
+Thu Oct 29 20:32:12 2026 :: Log Trentlin [775]: arrived (Merlin's Tower) from 774
+Thu Oct 29 20:32:14 2026 :: Log Trentlin [775]: sca
+Thu Oct 29 20:32:17 2026 :: EOF encountered on read.
+Thu Oct 29 20:32:17 2026 :: Log Trentlin [775]: open up
+Thu Oct 29 20:32:21 2026 :: Log Trentlin [775]: door bash up
+Thu Oct 29 20:32:25 2026 :: Log Trentlin [775]: sca
+Thu Oct 29 20:32:31 2026 :: Log Trentlin [775]: d
+Thu Oct 29 20:32:31 2026 :: Log Trentlin [774]: arrived (Knight's Barracks) from 775
+Thu Oct 29 20:32:32 2026 :: Log Trentlin [774]: e
+Thu Oct 29 20:32:33 2026 :: Log Trentlin [774]: d
+Thu Oct 29 20:32:34 2026 :: Log Trentlin [774]: s
+Thu Oct 29 20:32:34 2026 :: Log Trentlin [770]: arrived (The Court of Camelot) from 774
+Thu Oct 29 20:32:34 2026 :: Log Trentlin [770]: e
+Thu Oct 29 20:32:38 2026 :: Log Trentlin [770]: where gawain
+Thu Oct 29 20:32:39 2026 :: Log Trentlin [770]: e
+Thu Oct 29 20:32:42 2026 :: Log Trentlin [770]: open east
+Thu Oct 29 20:32:43 2026 :: Log Trentlin [770]: e
+Thu Oct 29 20:32:43 2026 :: Log Trentlin [776]: arrived (The Round Table) from 770
+Thu Oct 29 20:32:44 2026 :: Log Trentlin [776]: sca
+Thu Oct 29 20:32:47 2026 :: Log Trentlin [776]: w
+Thu Oct 29 20:32:47 2026 :: Log Trentlin [770]: arrived (The Court of Camelot) from 776
+Thu Oct 29 20:32:47 2026 :: Log Trentlin [770]: sca
+Thu Oct 29 20:32:50 2026 :: Log Trentlin [770]: w
+Thu Oct 29 20:32:50 2026 :: Log Trentlin [759]: arrived (Tourney Yard of Camelot) from 770
+Thu Oct 29 20:32:50 2026 :: Log Trentlin [759]: w
+Thu Oct 29 20:32:50 2026 :: Log Trentlin [752]: arrived (Tourney Yard of Camelot) from 759
+Thu Oct 29 20:32:53 2026 :: Log Trentlin [752]: con ka
+Thu Oct 29 20:32:53 2026 :: Log Trentlin [752]: l ka
+Thu Oct 29 20:32:55 2026 :: Log Trentlin [752]: w
+Thu Oct 29 20:32:55 2026 :: Log Trentlin [747]: arrived (Victory Road) from 752
+Thu Oct 29 20:32:56 2026 :: Log Trentlin [747]: sca
+Thu Oct 29 20:32:57 2026 :: Log Trentlin [747]: e
+Thu Oct 29 20:32:57 2026 :: Log Trentlin [752]: arrived (Tourney Yard of Camelot) from 747
+Thu Oct 29 20:32:57 2026 :: Log Trentlin [752]: sca
+Thu Oct 29 20:32:58 2026 :: Log Trentlin [752]: n
+Thu Oct 29 20:32:58 2026 :: Log Trentlin [760]: arrived (Tourney Yard of Camelot) from 752
+Thu Oct 29 20:33:01 2026 :: Log Trentlin [760]: n
+Thu Oct 29 20:33:01 2026 :: Log Trentlin [762]: arrived (Tourney Yard of Camelot) from 760
+Thu Oct 29 20:33:01 2026 :: Log Trentlin [762]: w
+Thu Oct 29 20:33:01 2026 :: Log Trentlin [755]: arrived (Squire's Run at the North Gate) from 762
+Thu Oct 29 20:33:02 2026 :: Log Trentlin [755]: s
+Thu Oct 29 20:33:02 2026 :: Log Trentlin [757]: arrived (Squire's Barracks) from 755
+Thu Oct 29 20:33:04 2026 :: Log Trentlin [757]: n
+Thu Oct 29 20:33:04 2026 :: Log Trentlin [755]: arrived (Squire's Run at the North Gate) from 757
+Thu Oct 29 20:33:05 2026 :: Log Trentlin [755]: e
+Thu Oct 29 20:33:05 2026 :: Log Trentlin [762]: arrived (Tourney Yard of Camelot) from 755
+Thu Oct 29 20:33:08 2026 :: Log Trentlin [762]: con g
+Thu Oct 29 20:33:08 2026 :: Log Trentlin [762]: l g
+Thu Oct 29 20:33:11 2026 :: Log Trentlin [762]: w
+Thu Oct 29 20:33:11 2026 :: Log Trentlin [755]: arrived (Squire's Run at the North Gate) from 762
+Thu Oct 29 20:33:11 2026 :: Log Trentlin [755]: n
+Thu Oct 29 20:33:11 2026 :: Log Trentlin [756]: arrived (The Great Northern Gate of Camelot) from 755
+Thu Oct 29 20:33:12 2026 :: Log Trentlin [756]: w
+Thu Oct 29 20:33:13 2026 :: Log Trentlin [756]: s
+Thu Oct 29 20:33:13 2026 :: Log Trentlin [755]: arrived (Squire's Run at the North Gate) from 756
+Thu Oct 29 20:33:15 2026 :: Log Trentlin [755]: w
+Thu Oct 29 20:33:15 2026 :: Log Trentlin [750]: arrived (Squire's Run) from 755
+Thu Oct 29 20:33:16 2026 :: Log Trentlin [750]: w
+Thu Oct 29 20:33:16 2026 :: Log Trentlin [745]: arrived (Corner of Knight's Way and Squire's Run) from 750
+Thu Oct 29 20:33:16 2026 :: Log Trentlin [745]: s
+Thu Oct 29 20:33:16 2026 :: Log Trentlin [742]: arrived (Knights Way before the stables) from 745
+Thu Oct 29 20:33:17 2026 :: Log Trentlin [742]: e
+Thu Oct 29 20:33:17 2026 :: Log Trentlin [798]: arrived (Stables) from 742
+Thu Oct 29 20:33:19 2026 :: Log Trentlin [798]: con st
+Thu Oct 29 20:33:20 2026 :: Log Trentlin [798]: l st
+Thu Oct 29 20:33:21 2026 :: Log Trentlin [798]: list
+Thu Oct 29 20:33:26 2026 :: Log Trentlin [798]: w
+Thu Oct 29 20:33:26 2026 :: Log Trentlin [742]: arrived (Knights Way before the stables) from 798
+Thu Oct 29 20:33:27 2026 :: Log Trentlin [742]: s
+Thu Oct 29 20:33:27 2026 :: Log Trentlin [741]: arrived (Victory Road and Knights Way) from 742
+Thu Oct 29 20:33:27 2026 :: Log Trentlin [741]: sca
+Thu Oct 29 20:33:56 2026 :: Log Trentlin [741]: where galahad
+Thu Oct 29 20:33:59 2026 :: Log Trentlin [741]: w
+Thu Oct 29 20:33:59 2026 :: Log Trentlin [726]: arrived (The Western Gate of Camelot) from 741
+Thu Oct 29 20:34:01 2026 :: Log Trentlin [726]: w
+Thu Oct 29 20:34:01 2026 :: Log Trentlin [725]: arrived (The Green Field Before Camelot) from 726
+Thu Oct 29 20:34:01 2026 :: Log Trentlin [725]: w
+Thu Oct 29 20:34:01 2026 :: Log Trentlin [722]: arrived (The Chasm) from 725
+Thu Oct 29 20:34:03 2026 :: Log Trentlin [722]: d
+Thu Oct 29 20:34:03 2026 :: Log Trentlin [721]: arrived (Hanging on the Rope Bridge) from 722
+Thu Oct 29 20:34:03 2026 :: Log Trentlin [721]: w
+Thu Oct 29 20:34:03 2026 :: Log Trentlin [720]: arrived (Hanging on the Rope Bridge) from 721
+Thu Oct 29 20:34:04 2026 :: Log Trentlin [720]: u
+Thu Oct 29 20:34:04 2026 :: Log Trentlin [719]: arrived (The Chasm) from 720
+Thu Oct 29 20:34:04 2026 :: Log Trentlin [719]: w
+Thu Oct 29 20:34:04 2026 :: Log Trentlin [713]: arrived (The Forest Arden) from 719
+Thu Oct 29 20:34:06 2026 :: Log Trentlin [713]: n
+Thu Oct 29 20:34:06 2026 :: Log Trentlin [714]: arrived (A Creek in the Forest Arden) from 713
+Thu Oct 29 20:34:08 2026 :: Log Trentlin [714]: sca
+Thu Oct 29 20:34:10 2026 :: Log Trentlin [714]: w
+Thu Oct 29 20:34:10 2026 :: Log Trentlin [715]: arrived (Battleplain of Arden) from 714
+Thu Oct 29 20:34:11 2026 :: Log Trentlin [715]: con ga
+Thu Oct 29 20:34:19 2026 :: Log Trentlin [715]: e
+Thu Oct 29 20:34:19 2026 :: Log Trentlin [714]: arrived (A Creek in the Forest Arden) from 715
+Thu Oct 29 20:34:19 2026 :: Log Trentlin [714]: sca
+Thu Oct 29 20:34:20 2026 :: Log Trentlin [714]: w
+Thu Oct 29 20:34:20 2026 :: Log Trentlin [715]: arrived (Battleplain of Arden) from 714
+Thu Oct 29 20:34:22 2026 :: Log Trentlin [715]: con tur
+Thu Oct 29 20:34:23 2026 :: Log Trentlin [715]: l tur
+Thu Oct 29 20:34:25 2026 :: Log Trentlin [715]: k gala
+Thu Oct 29 20:34:28 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:34:37 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:34:44 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:34:52 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:35:00 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:35:08 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:35:16 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:35:25 2026 :: Log Trentlin [715]: smite
+Thu Oct 29 20:35:27 2026 :: Log Trentlin [715]: killed Sir Galahad
+Thu Oct 29 20:35:27 2026 :: Log Trentlin [715]: coin +1 platinum
+Thu Oct 29 20:35:27 2026 :: Log Trentlin [715]: coin +6 silver
+Thu Oct 29 20:35:27 2026 :: Log Trentlin [715]: coin +8 copper
+Thu Oct 29 20:35:27 2026 :: Log Trentlin [715]: coin +3 gold
+Thu Oct 29 20:35:30 2026 :: Sock.sinaddr:  5.161.215.244
+Thu Oct 29 20:35:30 2026 :: EOF encountered on read.
+Thu Oct 29 20:35:35 2026 :: Log Trentlin [715]: l in cor
+Thu Oct 29 20:35:37 2026 :: Log Trentlin [715]: get bracer cor
+Thu Oct 29 20:35:40 2026 :: Log Trentlin [715]: get bracer cor
+Thu Oct 29 20:35:42 2026 :: Log Trentlin [715]: get grail cor
+Thu Oct 29 20:35:44 2026 :: Log Trentlin [715]: comp grail
+Thu Oct 29 20:35:48 2026 :: Log Trentlin [715]: drink grail
+Thu Oct 29 20:35:54 2026 :: Log Trentlin [715]: drop grail
