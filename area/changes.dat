@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261029b 2026-10-29
+A Hyrule chest refills at every reset, but you can no longer take a
+Triforce shard you already hold from it: one of each is all the
+Triforce needs. A spare already in your pack is taken back when you
+next log in.
+
 @ 20261029a 2026-10-29
 HELP WEAPON MASTERY (or HELP MASTERY) now explains a warrior's and a
 thief's weapon mastery: how much it adds to each blow, and why it is

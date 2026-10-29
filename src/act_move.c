@@ -129,10 +129,9 @@ static bool is_hyrule_room( ROOM_INDEX_DATA *room )
  *
  * Carrying means in the inventory, worn, or one bag down -- never the
  * stash, which is not on the character. Staff pass by trust, and a pet or
- * a charmed follower is asked about its master.
+ * a charmed follower is asked about its master. The piece vnums are
+ * HYRULE_PIECE_FIRST_VNUM to HYRULE_PIECE_LAST_VNUM in merc.h.
  */
-#define HYRULE_PIECE_FIRST_VNUM     30400
-#define HYRULE_PIECE_LAST_VNUM      30408
 
 /* HYRULE_DUNGEON_GATE is in merc.h: the dungeon maps and compasses in
    hyrule.c read the same rows through hyrule_dungeon_gate(). */

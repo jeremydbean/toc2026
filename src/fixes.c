@@ -123,6 +123,54 @@ static bool fix_mage_weapon_floors( CHAR_DATA *ch )
     return true;
 }
 
+/*
+ * A Hyrule chest refills at every reset, and until 2026-10-29 nothing
+ * stopped a character who already held a dungeon's Triforce shard from
+ * taking it again (get_obj now refuses). Trentlin replayed Level 1 on
+ * 2026-10-21 and came out with two first shards. They are NODROP, so the
+ * spare could go nowhere; it is taken back, keeping one of each.
+ */
+static bool fix_spare_triforce_shards( CHAR_DATA *ch )
+{
+    OBJ_DATA *spare[64];
+    OBJ_DATA *obj;
+    bool seen[HYRULE_PIECE_LAST_VNUM - HYRULE_PIECE_FIRST_VNUM + 1];
+    char buf[MAX_STRING_LENGTH];
+    int count = 0;
+    int i;
+
+    if ( IS_NPC(ch) )
+        return false;
+    memset( seen, 0, sizeof(seen) );
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        int vnum = obj->pIndexData != NULL ? obj->pIndexData->vnum : 0;
+
+        if ( vnum < HYRULE_PIECE_FIRST_VNUM || vnum > HYRULE_PIECE_LAST_VNUM )
+            continue;
+        if ( !seen[vnum - HYRULE_PIECE_FIRST_VNUM] )
+            seen[vnum - HYRULE_PIECE_FIRST_VNUM] = true;
+        else if ( count < (int)( sizeof(spare) / sizeof(spare[0]) ) )
+            spare[count++] = obj;
+    }
+    if ( count == 0 )
+        return false;
+    for ( i = 0; i < count; i++ )
+    {
+        snprintf( buf, sizeof(buf), "Spare Triforce shard: %s's object %d taken back.",
+                  ch->name, spare[i]->pIndexData->vnum );
+        log_string( buf );
+        extract_obj( spare[i] );
+    }
+    snprintf( buf, sizeof(buf), "{0BA correction:{00 you were carrying %s Triforce "
+              "shard%s you already had, from a chest that refilled.  The spare%s "
+              "%s been taken back; you keep one of each.\n\r",
+              count == 1 ? "a" : "copies of", count == 1 ? "" : "s",
+              count == 1 ? "" : "s", count == 1 ? "has" : "have" );
+    send_to_char( buf, ch );
+    return true;
+}
+
 static const PLAYER_FIX player_fixes[] =
 {
     /* Creation gave every new non-mage the mage's starting groups,
@@ -132,6 +180,9 @@ static const PLAYER_FIX player_fixes[] =
     /* The same bug's mage weapon floors (dagger 80, whip 20...). */
     { "20261021-mage-weapons", "mage weapon skills from the creation bug",
       fix_mage_weapon_floors, false },
+    /* A refilled Hyrule chest gave a second copy of a held shard. */
+    { "20261029-spare-shards", "spare Triforce shards from a refilled chest",
+      fix_spare_triforce_shards, false },
 };
 
 #define PLAYER_FIX_COUNT ( (int)( sizeof(player_fixes) / sizeof(player_fixes[0]) ) )

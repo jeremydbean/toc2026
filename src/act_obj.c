@@ -206,6 +206,21 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     if ( container == NULL && hyrule_claim( ch, obj ) )
 	return;
 
+    /* A Hyrule chest refills at every reset: a character who already
+       holds this Triforce shard, or the Triforce it went into, leaves the
+       copy for somebody who needs it (Trentlin took a second first shard
+       replaying Level 1, 2026-10-21). */
+    if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    &&   obj->pIndexData != NULL
+    &&   obj->pIndexData->vnum >= HYRULE_PIECE_FIRST_VNUM
+    &&   obj->pIndexData->vnum <= HYRULE_PIECE_LAST_VNUM
+    &&   hyrule_carries( ch, obj->pIndexData->vnum ) )
+    {
+	act( "You already hold $p; one is all the Triforce needs.",
+	     ch, obj, NULL, TO_CHAR );
+	return;
+    }
+
     if ( obj->item_type == ITEM_MONEY
     &&   query_carry_coins( ch, obj->value[0] ) > can_carry_w( ch ) )
     {

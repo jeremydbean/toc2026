@@ -1487,6 +1487,8 @@ const char *default_prompt_text args( ( void ) );
 #define HYRULE_NPC_LAST            30449
 #define HYRULE_ZELDA_VNUM          30338
 #define HYRULE_PIECE_VNUM(level)   ( 30399 + (level) )
+#define HYRULE_PIECE_FIRST_VNUM    30400
+#define HYRULE_PIECE_LAST_VNUM     30408
 /* Enemies are generated once per kind per band at TIER + kind * 10 +
    band - 1; a kind is named by the catalog record it used to be. */
 #define HYRULE_TIER_FIRST_VNUM     31000

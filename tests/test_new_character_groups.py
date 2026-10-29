@@ -61,7 +61,7 @@ class NewCharacterLiveTests(unittest.TestCase):
             self.assertNotIn("Gr 'mage default'", saved)
             self.assertNotIn("'magic missile'", saved)
             # Born correct: every login fix is marked, none is run.
-            self.assertIn("Fixes 20261021-mage-groups 20261021-mage-weapons~", saved)
+            self.assertIn("Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards~", saved)
 
     def test_the_stray_groups_are_taken_back_and_the_practice_refunded(self) -> None:
         """Owner, 2026-10-21: remove the mage spells from anyone who should
