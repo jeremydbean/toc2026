@@ -218794,3 +218794,44 @@ Thu Oct 29 10:54:33 2026 :: Log Trentlin [2414]: u
 Thu Oct 29 10:54:33 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
 Thu Oct 29 10:54:33 2026 :: Log Trentlin [2497]: u
 Thu Oct 29 10:54:33 2026 :: Log Trentlin [2497]: u
+Thu Oct 29 10:56:27 2026 :: Log Trentlin [2497]: (refused) ugr
+Thu Oct 29 10:56:31 2026 :: Log Trentlin [2497]: i
+Thu Oct 29 10:56:32 2026 :: Log Trentlin [2497]: eq
+Thu Oct 29 10:56:42 2026 :: Log Trentlin [2497]: eq
+Thu Oct 29 10:56:43 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:56:51 2026 :: Log Trentlin [2497]: rem mech
+Thu Oct 29 10:56:51 2026 :: Sock.sinaddr:  5.161.75.7
+Thu Oct 29 10:56:52 2026 :: EOF encountered on read.
+Thu Oct 29 10:56:52 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:56:59 2026 :: Log Trentlin [2497]: wear mec
+Thu Oct 29 10:57:00 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:01 2026 :: Log Trentlin [2497]: rem boot
+Thu Oct 29 10:57:02 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:10 2026 :: Log Trentlin [2497]: wear boot
+Thu Oct 29 10:57:12 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:16 2026 :: Log Trentlin [2497]: rem gaunt
+Thu Oct 29 10:57:17 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:20 2026 :: Log Trentlin [2497]: wear gaunt
+Thu Oct 29 10:57:22 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:23 2026 :: Log Trentlin [2497]: rem reap
+Thu Oct 29 10:57:23 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:27 2026 :: Log Trentlin [2497]: wear reap
+Thu Oct 29 10:57:32 2026 :: Log Trentlin [2497]: eq
+Thu Oct 29 10:57:41 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:44 2026 :: Log Trentlin [2497]: rem snake
+Thu Oct 29 10:57:44 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:57:51 2026 :: Log Trentlin [2497]: (refused) wearem liz
+Thu Oct 29 10:57:53 2026 :: Log Trentlin [2497]: rem liz
+Thu Oct 29 10:57:53 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:58:00 2026 :: Treasure goblin: vanished from room 9590 (Dark Passage, newthalo.are) (too long in one area).
+Thu Oct 29 10:58:01 2026 :: Log Trentlin [2497]: rem liz
+Thu Oct 29 10:58:02 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:58:07 2026 :: Log Trentlin [2497]: wear liz
+Thu Oct 29 10:58:07 2026 :: Log Trentlin [2497]: wear liz
+Thu Oct 29 10:58:09 2026 :: Log Trentlin [2497]: i
+Thu Oct 29 10:58:24 2026 :: Log Trentlin [2497]: wear snake
+Thu Oct 29 10:58:26 2026 :: Log Trentlin [2497]: eq
+Thu Oct 29 10:58:28 2026 :: Log Trentlin [2497]: att
+Thu Oct 29 10:58:30 2026 :: Log Trentlin [2497]: rem peg
+Thu Oct 29 10:58:30 2026 :: Log Trentlin [2497]: at
+Thu Oct 29 10:58:38 2026 :: Log Trentlin [2497]: wear peg

@@ -18001,3 +18001,41 @@
 1793271273	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1793271273	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
 1793271273	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1793271387	refused	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1793271391	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // ( 9) guano //      (Humming) Excalibur
+1793271392	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793271402	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793271403	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271411	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	remove	mech	You stop using a chunk of mecharmor.
+1793271412	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271419	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wear	mec	You wear a chunk of mecharmor on your body.
+1793271420	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271421	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	remove	boot	You stop using a pair of pincer-toed boots.
+1793271422	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(16)  Con: 19(15)
+1793271430	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wear	boot	You wear a pair of pincer-toed boots on your feet.
+1793271432	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271436	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	remove	gaunt	You stop using a pair of pincer gauntlets.
+1793271437	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271440	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wear	gaunt	You wear a pair of pincer gauntlets on your hands.
+1793271442	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271443	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	remove	reap	You stop using the Headless Horseman's Reaper.
+1793271443	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(25)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271447	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wear	reap	You wield the Headless Horseman's Reaper. // The Headless Horseman's Reaper feels like a part of you!
+1793271452	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793271461	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271464	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	remove	snake	You stop using the Heart Guard of the Snake.
+1793271464	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(25)  Int: 16(15)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271471	refused	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	(unknown)		Huh? Did you mean WEAR?
+1793271473	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	remove	liz	You stop using the Lizard's Heart Container.
+1793271473	cmd	Trentlin	50	2497	dresden_halloween.are	standing	107	0	-	attribute		Str: 22(25)  Int: 16(15)  Wis: 18(14)  Dex: 16(18)  Con: 19(14)
+1793271481	cmd	Trentlin	50	2497	dresden_halloween.are	standing	107	0	-	remove	liz	You stop using the Heart Guard of the Lizard.
+1793271482	cmd	Trentlin	50	2497	dresden_halloween.are	standing	107	0	-	attribute		Str: 22(25)  Int: 16(13)  Wis: 18(14)  Dex: 16(18)  Con: 19(14)
+1793271487	cmd	Trentlin	50	2497	dresden_halloween.are	standing	107	0	-	wear	liz	You hold the Lizard's Heart Container in your hands.
+1793271487	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wear	liz	You wear the Heart Guard of the Lizard around your neck.
+1793271489	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // ( 9) guano //      (Humming) Excalibur
+1793271504	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wear	snake	You wear the Heart Guard of the Snake around your neck.
+1793271506	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793271508	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(18)  Con: 19(15)
+1793271510	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	remove	peg	You stop using a pegleg.
+1793271510	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(17)  Wis: 18(14)  Dex: 16(19)  Con: 19(15)
+1793271518	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wear	peg	You wear a pegleg on your legs.
