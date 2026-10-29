@@ -17553,3 +17553,4 @@
 1793231775	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Crown of Eclipse to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'
 1793231777	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 38 quest points.
 1793231777	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    260 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793233134	session	Alaric	54	2497	dresden_halloween.are	linkdead	3391s	+0 levels	+10 exp	+649689769 copper	6 kills	0 deaths	4 quests	616 commands	0 refused	coin: loot 7p 21g 46s 17c, quests 642p 47g 51s 52c

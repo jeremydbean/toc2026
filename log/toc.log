@@ -217590,3 +217590,8 @@ Thu Oct 29 00:11:46 2026 :: EOF encountered on read.
 Thu Oct 29 00:13:16 2026 :: Log Alaric [2497]: affects off: fly
 Thu Oct 29 00:16:50 2026 :: Sock.sinaddr:  178.156.184.20
 Thu Oct 29 00:16:50 2026 :: EOF encountered on read.
+Thu Oct 29 00:18:54 2026 :: EOF encountered on read.
+Thu Oct 29 00:18:54 2026 :: Closing link to Alaric.
+Thu Oct 29 00:21:03 2026 :: Treasure goblin: vanished from room 7611 (Attic, ultima.are) (too long in one area).
+Thu Oct 29 00:21:55 2026 :: Sock.sinaddr:  3.133.226.214
+Thu Oct 29 00:21:55 2026 :: EOF encountered on read.
