@@ -18300,3 +18300,135 @@
 1793305246	cmd	Trentlin	50	3518	midennir_halloween.are	standing	86	0	-	south		The Fading Trail //   The trail becomes nearly unpassable here. You can go north // as the forest is relatively light. To the south, you can see a path.
 1793305246	cmd	Trentlin	50	3522	midennir_halloween.are	standing	86	0	-	south		Deep in the Forest of Miden'nir //   There is a sickening stench here. It smells of blood and death. // To the north, you catch glimpses of daylight. To the east, you
 1793305246	cmd	Trentlin	50	28161	azeroth.are	standing	86	0	-	south		Watch Your Step! //   Don't you hate it when that happens?  You just walked through some // bushes and slid down the side of a cliff. I don't think you'll be going
+1793305249	cmd	Trentlin	50	28101	azeroth.are	standing	86	0	-	enter	porta	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Entrance to Azeroth
+1793305250	cmd	Trentlin	50	28102	azeroth.are	standing	86	0	-	south		Outside the Barracks //   Before you lay hundreds of tents filled with training Orcish warriors. // The exits are north toward the portal and south into the barracks. There
+1793305250	cmd	Trentlin	50	28103	azeroth.are	standing	86	0	-	south		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1793305251	cmd	Trentlin	50	28107	azeroth.are	standing	86	0	-	south		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1793305251	cmd	Trentlin	50	28107	azeroth.are	standing	86	0	-	south		The door is closed.
+1793305254	cmd	Trentlin	50	28107	azeroth.are	standing	86	0	-	doorbash	bash south	You slam into the door and it shatters!!
+1793305258	cmd	Trentlin	50	28120	azeroth.are	standing	86	0	-	south		Outside the gates of Black Rock Spire //   This giant gate looks like it's impenetrable from the outside. There are // several human skulls and ruined weapons lying around out here. There
+1793305259	cmd	Trentlin	50	28121	azeroth.are	standing	86	0	-	south		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1793305259	cmd	Trentlin	50	28122	azeroth.are	standing	86	0	-	south		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1793305260	cmd	Trentlin	50	28124	azeroth.are	standing	86	0	-	west		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1793305260	cmd	Trentlin	50	28131	azeroth.are	standing	86	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1793305261	cmd	Trentlin	50	28132	azeroth.are	standing	86	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1793305261	cmd	Trentlin	50	28133	azeroth.are	standing	86	0	-	west		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1793305262	cmd	Trentlin	50	28134	azeroth.are	standing	86	0	-	west		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1793305263	cmd	Trentlin	50	28134	azeroth.are	standing	86	0	-	exits		Obvious exits: // East  - The End of The Swamp // West  - The Middle of the Forest
+1793305265	cmd	Trentlin	50	28134	azeroth.are	standing	86	0	-	open	secret	I see no secret here.
+1793305267	cmd	Trentlin	50	28134	azeroth.are	standing	86	0	-	open	south	I see no door south here.
+1793305270	cmd	Trentlin	50	28134	azeroth.are	standing	86	0	-	open	sawmo	I see no sawmo here.
+1793305276	cmd	Trentlin	50	28134	azeroth.are	standing	86	0	-	open	tree	I see no tree here.
+1793305278	cmd	Trentlin	50	28135	azeroth.are	standing	86	0	-	west		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1793305279	cmd	Trentlin	50	28136	azeroth.are	standing	86	0	-	west		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1793305280	cmd	Trentlin	50	28137	azeroth.are	standing	86	0	-	west		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1793305281	cmd	Trentlin	50	28137	azeroth.are	standing	88	0	-	scan		An Old Mage                        -to the North. // An Ogre                            -to the North. // Berserker Troll                    -to the North.
+1793305284	cmd	Trentlin	50	28140	azeroth.are	standing	88	0	-	west		The Battle Field //   You are in the middle of a huge battle! The exits are in all directions. // [Exits: north east south west]
+1793305285	cmd	Trentlin	50	28140	azeroth.are	standing	88	0	-	scan		Sire Uther Lightbringer            -to the North. // An orc grunt                       -to the North. // An orc grunt                       -to the North.
+1793305289	cmd	Trentlin	50	28147	azeroth.are	standing	88	0	-	west		The Battle Field //   You are in the middle of a battle! The exits are north, south, and east. // [Exits: north east south]
+1793305290	cmd	Trentlin	50	28147	azeroth.are	standing	88	0	-	scan		An orc grunt                       -to the North. // An Ogre Mage                       -to the North. // A footman                          -to the North.
+1793305293	cmd	Trentlin	50	28147	azeroth.are	standing	88	0	-	exits		Obvious exits: // North - The Battle Field // East  - The Battle Field
+1793305295	cmd	Trentlin	50	28148	azeroth.are	standing	88	0	-	north		The Battle Field //   You are in the middle of a battle field! Exits are north, south, and // east.
+1793305296	cmd	Trentlin	50	28151	azeroth.are	standing	88	0	-	north		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1793305298	cmd	Trentlin	50	28151	azeroth.are	standing	88	0	-	scan		An Ogre Mage                       -to the East. // An orc grunt                       -to the East. // A footman                          -to the East.
+1793305300	cmd	Trentlin	50	28152	azeroth.are	standing	88	0	-	west		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1793305301	cmd	Trentlin	50	28152	azeroth.are	standing	88	0	-	scan		An Old Mage                        -to the East. // A footman                          -to the East. // A Paladin                          -to the West.
+1793305306	cmd	Trentlin	50	28153	azeroth.are	standing	88	0	-	west		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1793305307	cmd	Trentlin	50	28154	azeroth.are	standing	88	0	-	west		Before the Front Gate //   This fort was obviously thrown together real quickly. You would think it // could easily be taken over, but a second look at it shows it was built
+1793305309	cmd	Trentlin	50	28154	azeroth.are	fighting	71	0	fight	flee		A Paladin is overcome with a feeling of despair and flees the battle. // A Paladin walks off to the south. // A Paladin has fled!
+1793305310	cmd	Trentlin	50	28154	azeroth.are	standing	71	0	-	flee		You aren't fighting anyone.
+1793305310	cmd	Trentlin	50	28154	azeroth.are	standing	71	0	-	flee		You aren't fighting anyone.
+1793305310	cmd	Trentlin	50	28153	azeroth.are	standing	71	0	-	east		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1793305310	cmd	Trentlin	50	28152	azeroth.are	standing	71	0	-	east		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1793305311	cmd	Trentlin	50	28151	azeroth.are	standing	71	2	-	east		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1793305318	cmd	Trentlin	50	28151	azeroth.are	standing	71	0	-	group		Trentlin's group: // [50 W] Trentlin          635/ 894 hp 1445/1445 mana  340/ 350 mv 112503 xp
+1793305319	cmd	Trentlin	50	28151	azeroth.are	standing	71	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793305321	cmd	Trentlin	50	28151	azeroth.are	standing	71	0	-	inventory		You are carrying: // ( 9) guano //      (Humming) Excalibur
+1793305351	cmd	Trentlin	50	28151	azeroth.are	standing	74	0	-	scan		An Ogre Mage                       -to the East. // An orc grunt                       -to the East. // A footman                          -to the East.
+1793305352	cmd	Trentlin	50	28152	azeroth.are	standing	74	0	-	west		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1793305353	cmd	Trentlin	50	28152	azeroth.are	standing	74	0	-	scan		An Old Mage                        -to the East. // A footman                          -to the East. // A Paladin                          -to the West.
+1793305357	cmd	Trentlin	50	28152	azeroth.are	standing	74	0	-	scan	west	An Old Mage                        -to the East. // A footman                          -to the East. // A Paladin                          -to the West.
+1793305365	cmd	Trentlin	50	28153	azeroth.are	standing	74	0	-	west		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1793305365	refused	Trentlin	50	28153	azeroth.are	fighting	64	0	fight	west		No way!  You are still fighting!
+1793305366	cmd	Trentlin	50	28153	azeroth.are	fighting	64	0	fight	scan		A footman                          -to the West. // A footman                          -to the West. // An Elven Archer                    -to the West.
+1793305367	cmd	Trentlin	50	28153	azeroth.are	fighting	65	0	fight	flee		A Paladin is overcome with a feeling of despair and flees the battle.
+1793305368	cmd	Trentlin	50	28153	azeroth.are	fighting	43	0	fight	flee		A Paladin is overcome with a feeling of despair and flees the battle. // A Paladin walks off to the west. // A Paladin has fled!
+1793305372	cmd	Trentlin	50	28153	azeroth.are	fighting	34	0	fight	flee		A Paladin is overcome with a feeling of despair and flees the battle.
+1793305372	cmd	Trentlin	50	28153	azeroth.are	fighting	34	0	fight	flee		A Paladin is overcome with a feeling of despair and flees the battle. // A Paladin walks off to the west. // A Paladin has fled!
+1793305372	cmd	Trentlin	50	28153	azeroth.are	standing	34	0	-	flee		You aren't fighting anyone.
+1793305373	cmd	Trentlin	50	28153	azeroth.are	standing	34	0	-	flee		You aren't fighting anyone.
+1793305373	cmd	Trentlin	50	28153	azeroth.are	standing	34	0	-	flee		You aren't fighting anyone.
+1793305375	cmd	Trentlin	50	28153	azeroth.are	standing	34	0	-	consider	ar	An Elven Archer is far below your level. // An Elven Archer has about half your hit points. // Blow for blow, you would need about 2 rounds to bring An Elven Archer down; he would need about 15 rounds for you.
+1793305378	cmd	Trentlin	50	28153	azeroth.are	standing	34	0	-	look		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1793305382	cmd	Trentlin	50	28152	azeroth.are	standing	34	0	-	east		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1793305384	cmd	Trentlin	50	28152	azeroth.are	standing	34	0	-	sleep		You go to sleep.
+1793305385	cmd	Trentlin	50	28152	azeroth.are	sleeping	34	0	-	group		Trentlin's group: // [50 W] Trentlin          305/ 894 hp 1445/1445 mana  349/ 350 mv 112503 xp
+1793305467	cmd	Trentlin	50	28152	azeroth.are	sleeping	40	0	-	group		Trentlin's group: // [50 W] Trentlin          359/ 894 hp 1445/1445 mana  350/ 350 mv 112503 xp
+1793305468	cmd	Trentlin	50	28152	azeroth.are	sleeping	40	0	-	wake		You wake and stand up.
+1793305469	cmd	Trentlin	50	28152	azeroth.are	standing	40	0	-	scan		A footman                          -to the East. // An Old Mage                        -to the East. // A footman                          -to the East.
+1793305473	cmd	Trentlin	50	28152	azeroth.are	standing	43	0	-	inventory		You are carrying: // ( 9) guano //      (Humming) Excalibur
+1793305481	cmd	Trentlin	50	28152	azeroth.are	standing	43	0	-	eat	pit	You do not have that item.
+1793305482	cmd	Trentlin	50	28152	azeroth.are	standing	43	0	-	look	in pack	A metallic pack contains: //      an alfalfa sprout //      a sprig of angelica
+1793305484	cmd	Trentlin	50	28153	azeroth.are	standing	43	0	-	west		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1793305486	cmd	Trentlin	50	28153	azeroth.are	standing	43	0	-	kill	arch	You >>> ANNIHILATE <<< An Elven Archer! // You miss An Elven Archer.
+1793305489	cmd	Trentlin	50	28153	azeroth.are	fighting	45	10	fight	smite		Your smite does UNSPEAKABLE things to An Elven Archer! // An Elven Archer is DEAD!! // You have almost finished your QUEST!
+1793305496	cmd	Trentlin	50	28153	azeroth.are	fighting	43	0	fight	flee		An Elven Archer is overcome with a feeling of despair and flees the battle. // An Elven Archer quietly slips off west. // An Elven Archer has fled!
+1793305496	cmd	Trentlin	50	28153	azeroth.are	standing	43	0	-	flee		You aren't fighting anyone.
+1793305497	cmd	Trentlin	50	28153	azeroth.are	fighting	41	0	fight	flee		PANIC! You couldn't escape!
+1793305497	cmd	Trentlin	50	28153	azeroth.are	fighting	41	0	fight	flee		An Elven Archer is overcome with a feeling of despair and flees the battle.
+1793305497	cmd	Trentlin	50	28153	azeroth.are	fighting	41	0	fight	flee		PANIC! You couldn't escape!
+1793305497	cmd	Trentlin	50	28153	azeroth.are	fighting	41	0	fight	flee		An Elven Archer is overcome with a feeling of despair and flees the battle. // An Elven Archer quietly slips off west. // An Elven Archer has fled!
+1793305498	cmd	Trentlin	50	28153	azeroth.are	standing	41	0	-	flee		You aren't fighting anyone.
+1793305498	cmd	Trentlin	50	28153	azeroth.are	standing	41	0	-	flee		You aren't fighting anyone.
+1793305498	cmd	Trentlin	50	28153	azeroth.are	standing	41	0	-	flee		You aren't fighting anyone.
+1793305498	cmd	Trentlin	50	28153	azeroth.are	standing	41	0	-	flee		You aren't fighting anyone.
+1793305499	cmd	Trentlin	50	28152	azeroth.are	standing	41	0	-	east		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1793305499	cmd	Trentlin	50	28151	azeroth.are	standing	41	0	-	east		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1793305500	cmd	Trentlin	50	28150	azeroth.are	standing	41	0	-	east		The Battle Field //   You are walking through a battle! There are exits to the east, south, // and west.
+1793305501	cmd	Trentlin	50	28141	azeroth.are	standing	41	0	-	east		The Battle Field //   You are witnessing a battle take place! The exits are south and west. // [Exits: south west]
+1793305501	cmd	Trentlin	50	28141	azeroth.are	standing	41	0	-	east		Alas, you cannot go that way.
+1793305501	cmd	Trentlin	50	28141	azeroth.are	standing	41	0	-	east		Alas, you cannot go that way.
+1793305502	cmd	Trentlin	50	28138	azeroth.are	standing	41	0	-	south		The Battle Field //   You are in the middle of a battle! The exits are north, south, and west. // [Exits: north south west]
+1793305502	cmd	Trentlin	50	28137	azeroth.are	standing	41	0	-	south		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1793305503	cmd	Trentlin	50	28136	azeroth.are	standing	41	0	-	east		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1793305503	cmd	Trentlin	50	28135	azeroth.are	standing	41	0	-	east		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1793305504	cmd	Trentlin	50	28134	azeroth.are	standing	41	0	-	east		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1793305505	cmd	Trentlin	50	28134	azeroth.are	standing	41	0	-	south		Alas, you cannot go that way.
+1793305506	cmd	Trentlin	50	28133	azeroth.are	standing	41	0	-	east		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1793305506	cmd	Trentlin	50	28132	azeroth.are	standing	41	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1793305507	cmd	Trentlin	50	28131	azeroth.are	standing	41	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1793305507	cmd	Trentlin	50	28124	azeroth.are	standing	41	0	-	east		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1793305508	cmd	Trentlin	50	28122	azeroth.are	standing	41	0	-	east		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1793305509	cmd	Trentlin	50	28121	azeroth.are	standing	41	0	-	north		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1793305509	cmd	Trentlin	50	28120	azeroth.are	standing	41	0	-	north		Outside the gates of Black Rock Spire //   This giant gate looks like it's impenetrable from the outside. There are // several human skulls and ruined weapons lying around out here. There
+1793305509	cmd	Trentlin	50	28107	azeroth.are	standing	41	0	-	north		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1793305510	cmd	Trentlin	50	28103	azeroth.are	standing	41	0	-	north		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1793305510	cmd	Trentlin	50	28102	azeroth.are	standing	41	0	-	north		Outside the Barracks //   Before you lay hundreds of tents filled with training Orcish warriors. // The exits are north toward the portal and south into the barracks. There
+1793305510	cmd	Trentlin	50	28101	azeroth.are	standing	41	0	-	north		Entrance to Azeroth //   You are surrounded by several massive stones while behind you is the // dark portal. The Orcs used this portal to gain entrance to Azeroth. Now
+1793305511	cmd	Trentlin	50	28101	azeroth.are	standing	41	0	-	north		Alas, you cannot go that way.
+1793305512	cmd	Trentlin	50	28161	azeroth.are	standing	41	0	-	enter	porta	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Watch Your Step!
+1793305513	cmd	Trentlin	50	4207	dresden_halloween.are	standing	41	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793305514	cmd	Trentlin	50	4202	dresden_halloween.are	standing	41	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793305514	cmd	Trentlin	50	4201	dresden_halloween.are	standing	41	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793305514	cmd	Trentlin	50	2427	dresden_halloween.are	standing	41	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793305514	cmd	Trentlin	50	2427	dresden_halloween.are	standing	41	0	-	east		Alas, you cannot go that way.
+1793305515	cmd	Trentlin	50	2427	dresden_halloween.are	standing	41	0	-	east		Alas, you cannot go that way.
+1793305515	cmd	Trentlin	50	2404	dresden_halloween.are	standing	41	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793305515	cmd	Trentlin	50	2401	dresden_halloween.are	standing	41	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793305515	cmd	Trentlin	50	2410	dresden_halloween.are	standing	41	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793305516	cmd	Trentlin	50	2411	dresden_halloween.are	standing	41	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793305516	cmd	Trentlin	50	2414	dresden_halloween.are	standing	44	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793305516	cmd	Trentlin	50	2497	dresden_halloween.are	standing	44	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793305518	cmd	Trentlin	50	2497	dresden_halloween.are	standing	44	18	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'
+1793305523	cmd	Trentlin	50	2497	dresden_halloween.are	standing	44	4	-	aquest	gamble yes	The dice BETRAY you! Your 45 quest points are lost.
+1793305525	cmd	Trentlin	50	2497	dresden_halloween.are	standing	44	0	-	where	hermie	You didn't find any hermie.
+1793305526	cmd	Trentlin	50	4207	dresden_halloween.are	standing	44	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793305527	cmd	Trentlin	50	4208	dresden_halloween.are	standing	44	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793305529	cmd	Trentlin	50	4208	dresden_halloween.are	standing	44	0	-	heal	ref	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)
+1793305535	cmd	Trentlin	50	4208	dresden_halloween.are	standing	44	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793305543	cmd	Trentlin	50	4207	dresden_halloween.are	standing	56	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793305543	cmd	Trentlin	50	4202	dresden_halloween.are	standing	56	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793305543	cmd	Trentlin	50	4201	dresden_halloween.are	standing	56	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793305544	cmd	Trentlin	50	2427	dresden_halloween.are	standing	56	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793305545	cmd	Trentlin	50	2404	dresden_halloween.are	standing	56	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793305546	cmd	Trentlin	50	2401	dresden_halloween.are	standing	56	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
