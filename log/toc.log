@@ -220551,3 +220551,19 @@ Thu Oct 29 20:41:41 2026 :: Sock.sinaddr:  193.47.62.29
 Thu Oct 29 20:41:41 2026 :: EOF encountered on read.
 Thu Oct 29 20:45:40 2026 :: Sock.sinaddr:  54.167.223.174
 Thu Oct 29 20:45:40 2026 :: EOF encountered on read.
+Thu Oct 29 20:48:50 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Thu Oct 29 20:48:54 2026 :: Log WebAdmin: fsave
+Thu Oct 29 20:48:57 2026 :: Treasure goblin: vanished from room 5814 (The Dried up Pond, mid_ruin.are) (too long in one area).
+Thu Oct 29 20:49:00 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Thu Oct 29 20:49:04 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct 29 20:49:04 2026 :: Normal termination of game.
+Thu Oct 29 20:49:04 2026 ::  INIT OK 
+Thu Oct 29 20:49:04 2026 :: walkto_load: 157 destinations.
+Thu Oct 29 20:49:04 2026 :: changes_load: 201 entries.
+Thu Oct 29 20:49:04 2026 :: Recovery ledger: 224 records (0 from before the check), 0 requests, 6 players.
+Thu Oct 29 20:49:04 2026 :: ROM is ready to rock on port 9000.
+Thu Oct 29 20:49:04 2026 :: Treasure goblin: appeared.
+Thu Oct 29 20:49:04 2026 :: Automated backup complete.
+Thu Oct 29 20:49:04 2026 :: Daily backup complete.
+Thu Oct 29 20:50:45 2026 :: Sock.sinaddr:  178.156.181.172
+Thu Oct 29 20:50:45 2026 :: EOF encountered on read.
