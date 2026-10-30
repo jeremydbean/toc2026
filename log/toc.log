@@ -224421,3 +224421,62 @@ Fri Oct 30 23:37:10 2026 :: Log Alaric [29209]: fi
 Fri Oct 30 23:37:15 2026 :: Log Alaric [29209]: fi
 Fri Oct 30 23:37:21 2026 :: Log Alaric [29209]: fi
 Fri Oct 30 23:37:27 2026 :: Log Alaric [29209]: fi
+Fri Oct 30 23:37:37 2026 :: Log Alaric [29209]: n
+Fri Oct 30 23:37:37 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Fri Oct 30 23:37:38 2026 :: Log Alaric [29210]: fi sk
+Fri Oct 30 23:37:47 2026 :: Log Alaric [29210]: s
+Fri Oct 30 23:37:47 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 29210
+Fri Oct 30 23:37:48 2026 :: Log Alaric [29209]: fi sk
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29209]: n
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29210]: fi sk
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29210]: coin +4 platinum
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29210]: coin +20 silver
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29210]: coin +27 copper
+Fri Oct 30 23:37:55 2026 :: Log Alaric [29210]: coin +11 gold
+Fri Oct 30 23:38:07 2026 :: Log Alaric [29210]: fi sk
+Fri Oct 30 23:38:13 2026 :: Log Alaric [29210]: fi
+Fri Oct 30 23:38:18 2026 :: Sock.sinaddr:  178.156.184.20
+Fri Oct 30 23:38:18 2026 :: EOF encountered on read.
+Fri Oct 30 23:38:19 2026 :: Log Alaric [29210]: fi
+Fri Oct 30 23:38:23 2026 :: Log Alaric [29210]: affects off: iron skin
+Fri Oct 30 23:38:27 2026 :: Log Alaric [29210]: l
+Fri Oct 30 23:38:27 2026 :: Log Alaric [29210]: iron
+Fri Oct 30 23:38:38 2026 :: Log Alaric [29210]: w
+Fri Oct 30 23:38:38 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Fri Oct 30 23:38:38 2026 :: Log Alaric [29211]: fi sk
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29211]: n
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29212]: fi sk
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29212]: killed an Animated Skeleton
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29212]: coin +4 platinum
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29212]: coin +20 silver
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29212]: coin +27 copper
+Fri Oct 30 23:38:49 2026 :: Log Alaric [29212]: coin +11 gold
+Fri Oct 30 23:38:57 2026 :: Log Alaric [29212]: fi
+Fri Oct 30 23:39:02 2026 :: Log Alaric [29212]: fi
+Fri Oct 30 23:39:08 2026 :: Log Alaric [29212]: fi
+Fri Oct 30 23:39:14 2026 :: Log Alaric [29212]: fi
+Fri Oct 30 23:39:20 2026 :: Log Alaric [29212]: fi
+Fri Oct 30 23:39:20 2026 :: Log Alaric [29212]: killed a Shadowman
+Fri Oct 30 23:39:20 2026 :: Log Alaric [29212]: coin +6 platinum
+Fri Oct 30 23:39:20 2026 :: Log Alaric [29212]: coin +30 silver
+Fri Oct 30 23:39:20 2026 :: Log Alaric [29212]: coin +41 copper
+Fri Oct 30 23:39:20 2026 :: Log Alaric [29212]: coin +17 gold
+Fri Oct 30 23:39:28 2026 :: Log Alaric [29212]: recal
+Fri Oct 30 23:39:28 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29212
+Fri Oct 30 23:39:30 2026 :: Log Alaric [4207]: w
+Fri Oct 30 23:39:30 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Fri Oct 30 23:39:31 2026 :: Log Alaric [4208]: e
+Fri Oct 30 23:39:31 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Fri Oct 30 23:39:31 2026 :: Log Alaric [4207]: e
+Fri Oct 30 23:39:31 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Fri Oct 30 23:39:31 2026 :: Log Alaric [4202]: n
+Fri Oct 30 23:39:31 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Fri Oct 30 23:39:32 2026 :: Log Alaric [4203]: n
+Fri Oct 30 23:39:32 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Fri Oct 30 23:39:32 2026 :: Log Alaric [4210]: sleep
+Fri Oct 30 23:40:23 2026 :: Log Alaric [4210]: affects off: iron skin
+Fri Oct 30 23:41:20 2026 :: Treasure goblin: vanished from room 15202 (Hallway, campus.are) (too long in one area).
+Fri Oct 30 23:41:41 2026 :: Log Alaric [4210]: affects off: levitate
