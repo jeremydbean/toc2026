@@ -19612,3 +19612,167 @@
 1793319786	cmd	Trentlin	50	6359	arac.are	standing	86	0	-	down		At the Bottom of the Tree //   The bottom is a nicely wooden surface with nothing but a black, // round-looking object in it. The object looks like a hole to another
 1793319788	cmd	Trentlin	50	6360	arac.are	standing	86	0	-	down		Yevaud's Lair //   Yevaud, the Usurper of Midgaard, resides here.  A voice cries // out, "BEWARE, the Usurper of Midgaard lives here!  FLEE while you can!"
 1793319792	cmd	Trentlin	50	6360	arac.are	standing	86	0	-	consider	ye	Yevaud is far below your level. // Yevaud has about half your hit points. // Blow for blow, you would need about 3 rounds to bring Yevaud down; he would need about 17 rounds for you.
+1793319798	cmd	Trentlin	50	6360	arac.are	standing	88	0	-	look	ye	He glares at you with a gleam in his eye as he opens his mouth and shows // you his eating utensils. // Yevaud is in excellent condition.
+1793319801	cmd	Trentlin	50	6360	arac.are	standing	88	0	-	smite	ye	Your smite does UNSPEAKABLE things to Yevaud! // Your smite >>> ANNIHILATES <<< Yevaud! // Your the Headless Horseman's Reaper groans under the blow.
+1793319809	cmd	Trentlin	50	6360	arac.are	standing	88	0	-	look	in co	Corpse of Yevaud contains: //      Nothing.
+1793319809	cmd	Trentlin	50	6360	arac.are	standing	88	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     22 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793319810	cmd	Trentlin	50	6360	arac.are	standing	88	0	-	up		Alas, you cannot go that way.
+1793319812	cmd	Trentlin	50	6360	arac.are	standing	88	0	-	look		Yevaud's Lair //   Yevaud, the Usurper of Midgaard, resides here.  A voice cries // out, "BEWARE, the Usurper of Midgaard lives here!  FLEE while you can!"
+1793319813	cmd	Trentlin	50	6355	arac.are	standing	88	0	-	east		A Link in the Ethereal Web //   This is another link in the ethereal web.  Various creatures // seem to get caught (or hypnotized) by its sticky strands.  To
+1793319814	cmd	Trentlin	50	6355	arac.are	standing	88	0	-	scan		You don't see anything near you.
+1793319815	cmd	Trentlin	50	6347	arac.are	standing	88	0	-	north		On The Web //   RRRRRRRRRRROOOOOOOOOOOOOAAAAAAAAAAAAAARR!  You hear the roar // of a powerful beast.  Dragon, you think.  You shiver in your boots
+1793319818	cmd	Trentlin	50	6347	arac.are	standing	88	0	-	scan		You don't see anything near you.
+1793319819	cmd	Trentlin	50	6346	arac.are	standing	88	0	-	east		The Quiet Tree Top //   Here is a quiet tree top. // [Exits: east west]
+1793319820	cmd	Trentlin	50	6345	arac.are	standing	88	0	-	east		A Link in the Ethereal Web //   This is another link in the ethereal web.  Various creatures // seem to get caught (or hypnotized) by its sticky strands.
+1793319821	cmd	Trentlin	50	6345	arac.are	standing	88	0	-	scan		the Ki-Rin                         -to the South.
+1793319822	cmd	Trentlin	50	6350	arac.are	standing	88	0	-	south		The Ki-Rin Chamber //   A wise ki-rin was entrapped here many years ago.  It is from her // that the ruler of this realm steals his magical strength.
+1793319826	cmd	Trentlin	50	6350	arac.are	standing	88	0	-	consider	ki	The Ki-Rin is far below your level. // The Ki-Rin has about twice your hit points. // Blow for blow, you would need about 7 rounds to bring the Ki-Rin down; she would need about 18 rounds for you.
+1793319829	cmd	Trentlin	50	6350	arac.are	standing	88	0	-	look	ki	She is the last bastion of good in this realm.  Her mission is to // someday free the slaves of the Empress. // The Ki-Rin is in excellent condition.
+1793319831	cmd	Trentlin	50	6345	arac.are	standing	88	0	-	north		A Link in the Ethereal Web //   This is another link in the ethereal web.  Various creatures // seem to get caught (or hypnotized) by its sticky strands.
+1793319831	cmd	Trentlin	50	6341	arac.are	standing	88	0	-	east		Another Tree Limb //   Once again the web crosses another tree limb.  To the side you // see the possible entrance to another creatures lair.
+1793319833	cmd	Trentlin	50	6336	arac.are	standing	88	0	-	east		The Tenuous Strand //   Very windy here since it goes up into the sky somewhat. // Still, it's safe enough to move around.
+1793319833	cmd	Trentlin	50	6336	arac.are	standing	88	0	-	scan		the ethereal spider                -to the East. // the medium dragon wormkin          -to the South.
+1793319835	cmd	Trentlin	50	6341	arac.are	standing	88	0	-	west		Another Tree Limb //   Once again the web crosses another tree limb.  To the side you // see the possible entrance to another creatures lair.
+1793319835	cmd	Trentlin	50	6341	arac.are	standing	88	0	-	scan		the Bird Spider                    -to the South.
+1793319837	cmd	Trentlin	50	6342	arac.are	standing	88	0	-	south		The Bird Spider's Lair //   This is a big game hunter among most spiders.  Crush jewels // and other weapons suggest the inhabitant must have powerful jaws.
+1793319838	cmd	Trentlin	50	6342	arac.are	standing	88	0	-	consider	sp	The Bird Spider is far below your level. // The Bird Spider has about half your hit points. // Blow for blow, you would need about 2 rounds to bring the Bird Spider down; she would need about 27 rounds for you.
+1793319840	cmd	Trentlin	50	6342	arac.are	standing	88	0	-	kill	sp	You === OBLITERATE === the Bird Spider! // You miss the Bird Spider.
+1793319845	cmd	Trentlin	50	6341	arac.are	standing	92	0	-	north		Another Tree Limb //   Once again the web crosses another tree limb.  To the side you // see the possible entrance to another creatures lair.
+1793319845	cmd	Trentlin	50	6336	arac.are	standing	92	0	-	east		The Tenuous Strand //   Very windy here since it goes up into the sky somewhat. // Still, it's safe enough to move around.
+1793319846	cmd	Trentlin	50	6336	arac.are	standing	92	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     22 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793319847	cmd	Trentlin	50	6336	arac.are	standing	92	0	-	scan		the ethereal spider                -to the East. // the medium dragon wormkin          -to the South.
+1793319848	cmd	Trentlin	50	6340	arac.are	standing	92	0	-	south		The Elder Wormkin's Room //   A more mature wormkin it seems resides here.  Various tomes of // arcane lore clutter the area, along with shards of armor and weaponry.
+1793319852	cmd	Trentlin	50	6336	arac.are	standing	92	0	-	north		The Tenuous Strand //   Very windy here since it goes up into the sky somewhat. // Still, it's safe enough to move around.
+1793319852	cmd	Trentlin	50	6335	arac.are	standing	92	0	-	east		A Link in the Ethereal Web //   This is another link in the ethereal web.  Various creatures // seem to get caught (or hypnotized) by its sticky strands.
+1793319855	cmd	Trentlin	50	6335	arac.are	standing	92	0	-	scan		the ethereal spider                -to the East.
+1793319855	cmd	Trentlin	50	6333	arac.are	standing	92	0	-	east		Above the Clouds //   You can see all of Midgaard in this ethereal web.  Many // of the larger dragons that do wish to fly seem to fly
+1793319856	cmd	Trentlin	50	6333	arac.are	standing	92	0	-	scan		the drone spider                   -to the North. // the ethereal spider                -to the West.
+1793319858	cmd	Trentlin	50	6334	arac.are	standing	92	0	-	south		On A Cloud //   Rather thick in consistency.  You realize this is not // a typical cloud, but it might be the nest of an aerial creature.
+1793319859	cmd	Trentlin	50	6333	arac.are	standing	92	0	-	north		Above the Clouds //   You can see all of Midgaard in this ethereal web.  Many // of the larger dragons that do wish to fly seem to fly
+1793319860	cmd	Trentlin	50	6331	arac.are	standing	92	0	-	north		The Base of the Web //   Large strands connect at this point.  The node shimmers and // flickers within the ether.  You see many flying creatures--
+1793319861	cmd	Trentlin	50	6331	arac.are	standing	92	0	-	scan		the young dragon wormkin           -to the North. // the drone spider                   -to the North. // the orc                            -to the East.
+1793319863	cmd	Trentlin	50	6332	arac.are	standing	92	0	-	east		Through the Trees //   This part of the web intersects through the branches of some // trees.  Various leaves and other debris that the many drones
+1793319864	cmd	Trentlin	50	6331	arac.are	standing	92	0	-	west		The Base of the Web //   Large strands connect at this point.  The node shimmers and // flickers within the ether.  You see many flying creatures--
+1793319865	cmd	Trentlin	50	6330	arac.are	standing	92	0	-	north		The Young Wormkin's Crib //   A playpen of sorts, with maggots of wasps and other baby vermin // lying about.  You feel that humans have been played with here too,
+1793319872	cmd	Trentlin	50	6331	arac.are	standing	94	0	-	south		The Base of the Web //   Large strands connect at this point.  The node shimmers and // flickers within the ether.  You see many flying creatures--
+1793319873	cmd	Trentlin	50	4207	dresden_halloween.are	standing	94	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793319873	cmd	Trentlin	50	4202	dresden_halloween.are	standing	94	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793319874	cmd	Trentlin	50	4201	dresden_halloween.are	standing	94	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793319874	cmd	Trentlin	50	2427	dresden_halloween.are	standing	94	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793319874	cmd	Trentlin	50	2427	dresden_halloween.are	standing	94	0	-	east		Alas, you cannot go that way.
+1793319874	cmd	Trentlin	50	2404	dresden_halloween.are	standing	94	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793319875	cmd	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793319875	cmd	Trentlin	50	2410	dresden_halloween.are	standing	94	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793319875	cmd	Trentlin	50	2411	dresden_halloween.are	standing	94	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793319875	cmd	Trentlin	50	2414	dresden_halloween.are	standing	94	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793319876	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793319877	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	12	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'The criminal known as the red bat has escaped from prison!'
+1793319880	cmd	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793319882	cmd	Trentlin	50	2404	dresden_halloween.are	standing	94	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793319882	cmd	Trentlin	50	2427	dresden_halloween.are	standing	94	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793319883	cmd	Trentlin	50	2428	dresden_halloween.are	standing	94	0	-	south		Main Processional, Toward the Mermaids' Bridge //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Children run past you in sheets and
+1793319883	cmd	Trentlin	50	2429	dresden_halloween.are	standing	94	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the
+1793319883	cmd	Trentlin	50	2430	dresden_halloween.are	standing	94	0	-	south		Main Processional, at the Southern Gates //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Just to the north is the Bridge of
+1793319883	cmd	Trentlin	50	2431	dresden_halloween.are	standing	94	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793319884	cmd	Trentlin	50	2431	dresden_halloween.are	standing	94	0	-	south		The gate is closed.
+1793319887	cmd	Trentlin	50	2431	dresden_halloween.are	standing	94	0	-	open	south	Ok.
+1793319888	cmd	Trentlin	50	2432	dresden_halloween.are	standing	94	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793319888	cmd	Trentlin	50	3505	midennir_halloween.are	standing	94	0	-	south		The Trail to Miden'nir //   You are in a dark forest.  The trees press close on either side, their // branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+1793319890	cmd	Trentlin	50	3506	midennir_halloween.are	standing	94	0	-	east		The Miden'nir //   You are in a dark forest. To the east, mountains block passage. From // here, only the lighter forest to the west or south offer a way to travel.
+1793319890	cmd	Trentlin	50	3550	midennir_halloween.are	standing	94	0	-	east		At The Foot of The Dark Hills //   You find yourself at the foot of a range of dark hills that streach off to // the north. In the distance you can just make out the tops of mist covered
+1793319890	cmd	Trentlin	50	18	connect.are	standing	94	0	-	north		Entering the hills //   Small hills begin to form here in the northwestern corner of the great forest // of middenir. From here if you look you can see great mountains towering 
+1793319891	cmd	Trentlin	50	4000	moria.are	standing	94	0	-	north		The hills //   You are on a small bewildered path winding its way between the hills in // lack of better things to do. To the south you have a splendid view over the
+1793319893	cmd	Trentlin	50	4000	moria.are	standing	94	0	-	exits		Obvious exits: // North - The hills // South - Entering the hills
+1793319895	cmd	Trentlin	50	4001	moria.are	standing	94	0	-	north		The hills //   You are surrounded by dark and sinister hills. Although they seemed fairly // small from a distance you now get the feeling that they're closing in on you,
+1793319896	cmd	Trentlin	50	4000	moria.are	standing	94	0	-	south		The hills //   You are on a small bewildered path winding its way between the hills in // lack of better things to do. To the south you have a splendid view over the
+1793319896	cmd	Trentlin	50	18	connect.are	standing	94	0	-	south		Entering the hills //   Small hills begin to form here in the northwestern corner of the great forest // of middenir. From here if you look you can see great mountains towering 
+1793319898	cmd	Trentlin	50	4000	moria.are	standing	94	0	-	north		The hills //   You are on a small bewildered path winding its way between the hills in // lack of better things to do. To the south you have a splendid view over the
+1793319899	cmd	Trentlin	50	4001	moria.are	standing	94	0	-	north		The hills //   You are surrounded by dark and sinister hills. Although they seemed fairly // small from a distance you now get the feeling that they're closing in on you,
+1793319900	cmd	Trentlin	50	4002	moria.are	standing	94	0	-	north		End of the path //   At this point the path has had enough. With a terrified shudder it cowers // to the ground, only staying here because you're standing on it. with a slight
+1793319900	cmd	Trentlin	50	4010	moria.are	standing	94	0	-	north		The cave //   You are in a large cave. The ceiling is lost somewhere above the reach of // your light. The floor, however, is highly illuminated, your light flickering
+1793319901	cmd	Trentlin	50	4011	moria.are	standing	94	0	-	north		The tunnel //   You squeeze your way through a small, narrow tunnel. The sharp-edged rocks // protruding from the walls threaten to scratch and cut you. 
+1793319902	cmd	Trentlin	50	4014	moria.are	standing	94	0	-	north		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1793319903	cmd	Trentlin	50	4014	moria.are	standing	94	0	-	exits		Obvious exits: // North - The cave // East  - The tunnel
+1793319905	cmd	Trentlin	50	4015	moria.are	standing	94	0	-	east		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]
+1793319905	cmd	Trentlin	50	4015	moria.are	standing	94	0	-	exits		Obvious exits: // North - The tunnel // West  - The tunnel
+1793319907	cmd	Trentlin	50	4019	moria.are	standing	94	1	-	north		The tunnel //   You are in a north-south leading tunnel. // [Exits: north south]
+1793319908	cmd	Trentlin	50	4019	moria.are	standing	94	0	-	north		You are too exhausted.
+1793319911	cmd	Trentlin	50	4019	moria.are	standing	94	0	-	eat	guan	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1793319913	cmd	Trentlin	50	4026	moria.are	standing	94	0	-	north		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1793319914	cmd	Trentlin	50	4026	moria.are	standing	94	0	-	exits		Obvious exits: // North - The smelly tunnel // East  - The tunnel
+1793319917	cmd	Trentlin	50	4028	moria.are	standing	94	0	-	north		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1793319918	cmd	Trentlin	50	4028	moria.are	standing	94	0	-	exits		Obvious exits: // North - The light cave // South - The many tunnels
+1793319919	cmd	Trentlin	50	4030	moria.are	standing	94	0	-	north		The light cave //   You are in a light cave, through a hole large above you, you see  // the sky. A small tunnel to the south is the only way out.
+1793319920	cmd	Trentlin	50	4030	moria.are	standing	94	0	-	exits		Obvious exits: // South - The smelly tunnel
+1793319921	cmd	Trentlin	50	4028	moria.are	standing	94	0	-	south		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1793319921	cmd	Trentlin	50	4026	moria.are	standing	94	0	-	south		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1793319940	cmd	Trentlin	50	4025	moria.are	standing	94	0	-	west		The cave //   You are in the north end of a cave.  To the east you see many tunnels. // [Exits: east south]
+1793319940	cmd	Trentlin	50	4018	moria.are	standing	94	0	-	south		The cave //   You are in the south end of a cave, to the south you see a tunnel. You // notice a large pile of bones in the corner.
+1793319941	cmd	Trentlin	50	4014	moria.are	standing	94	0	-	south		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1793319941	cmd	Trentlin	50	4013	moria.are	standing	94	0	-	west		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 
+1793319941	cmd	Trentlin	50	4012	moria.are	standing	94	0	-	west		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into
+1793319941	cmd	Trentlin	50	4016	moria.are	standing	94	0	-	north		The large cave //   You are in a large cave, the cave continues east and west, to the south // you notice a small tunnel.
+1793319942	cmd	Trentlin	50	4023	moria.are	standing	94	0	-	west		The large cave //   You are in the western part of the large cave, to the south you see // a damp tunnel.
+1793319942	cmd	Trentlin	50	4022	moria.are	standing	94	0	-	south		The damp tunnel //   You are in a damp tunnel.  Your clothes feel wet.  The tunnel continues // to the north; to the west you see a hole in the floor; and to the east
+1793319942	cmd	Trentlin	50	4021	moria.are	standing	94	0	-	west		The hole //   A hole in the floor leads down here. // [Exits: east down]
+1793319943	cmd	Trentlin	50	4115	moria.are	standing	94	0	-	down		The dark passage. //   You are in a dark passage, that leads east. In the ceiling you notice // a small hole, just big enough to pass through.
+1793319944	cmd	Trentlin	50	4115	moria.are	standing	94	0	-	exits		Obvious exits: // East  - The golden cave // Up    - The hole
+1793319945	cmd	Trentlin	50	4114	moria.are	standing	94	0	-	east		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the north, to the west you see a dark 
+1793319948	cmd	Trentlin	50	4109	moria.are	standing	94	0	-	north		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south, east and north.
+1793319949	cmd	Trentlin	50	4109	moria.are	standing	98	0	-	exits		Obvious exits: // North - The golden cave // East  - The golden cave
+1793319950	cmd	Trentlin	50	4106	moria.are	standing	98	0	-	north		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south and east, to the north is a narrow
+1793319951	cmd	Trentlin	50	4106	moria.are	standing	98	0	-	exits		Obvious exits: // North - The long tunnel // East  - The golden cave
+1793319952	cmd	Trentlin	50	4103	moria.are	standing	98	0	-	north		The long tunnel //   You are in a long east-west leading tunnel. The tunnel is quite // narrow at this point. You notice a small hole leading south.
+1793319952	cmd	Trentlin	50	4103	moria.are	standing	98	0	-	exits		Obvious exits: // East  - The long tunnel // South - The golden cave
+1793319955	cmd	Trentlin	50	4102	moria.are	standing	98	0	-	east		The long tunnel //   You are in a long east-west leading tunnel. The tunnel becomes // narrow to the west.
+1793319956	cmd	Trentlin	50	4101	moria.are	standing	98	0	-	east		The long tunnel //   You are in a long east-west leading tunnel. The tunnel is quite // wide at this point.
+1793319956	cmd	Trentlin	50	4100	moria.are	standing	98	0	-	east		The tunnel //   Suddenly you feel that the tunnel leads slightly down. // [Exits: north west]
+1793319958	cmd	Trentlin	50	4052	moria.are	standing	98	0	-	north		The tunnel //   You are at a turn, the tunnel continues south and west. // [Exits: south west]
+1793319959	cmd	Trentlin	50	4051	moria.are	standing	98	0	-	west		The tunnel //   You are in a narrow east-west tunnel. // [Exits: east west]
+1793319960	cmd	Trentlin	50	4050	moria.are	standing	98	0	-	west		The tunnel //   The tunnel turns here, continuing to the east and south. // [Exits: east south]
+1793319961	cmd	Trentlin	50	4053	moria.are	standing	98	0	-	south		The tunnel //   You are at a turn, the tunnel continues north and east. // [Exits: north east]
+1793319962	cmd	Trentlin	50	4054	moria.are	standing	98	0	-	east		The light cave //   You are in a cave, to south from you there is a large fire that lights // the entire cave, to the east and west tunnels leads off.
+1793319964	cmd	Trentlin	50	4054	moria.are	standing	98	0	-	exits		Obvious exits: // East  - The maze // South - The light cave
+1793319969	cmd	Trentlin	50	4055	moria.are	standing	98	0	-	east		The maze //   You are in a maze of small damp tunnels.  The only exit is west. // [Exits: west]
+1793319970	cmd	Trentlin	50	4055	moria.are	standing	98	0	-	exits		Obvious exits: // West  - The light cave
+1793319970	cmd	Trentlin	50	4054	moria.are	standing	98	0	-	west		The light cave //   You are in a cave, to south from you there is a large fire that lights // the entire cave, to the east and west tunnels leads off.
+1793319970	cmd	Trentlin	50	4056	moria.are	standing	98	0	-	south		The light cave //   You are in a light cave, a large fire in front of you lights the room. // The cave continues to the north and south.
+1793319971	cmd	Trentlin	50	4061	moria.are	standing	98	0	-	south		The light cave //   You are in the south end of a light cave. // [Exits: north west]
+1793319972	cmd	Trentlin	50	4060	moria.are	standing	98	0	-	west		The tunnel //   You are in a small tunnel, to the west the tunnel continues and  // to the east you see some light.
+1793319973	cmd	Trentlin	50	4060	moria.are	standing	98	0	-	exits		Obvious exits: // East  - The light cave // West  - The tunnel
+1793319974	cmd	Trentlin	50	4059	moria.are	standing	98	0	-	west		The tunnel //   You are in a tunnel, only exit is to the east. You sense that the // tunnel leads slightly down.
+1793319975	cmd	Trentlin	50	4024	moria.are	standing	98	0	-	north		The damp tunnel //   You are in a corner of a damp tunnel.  You can go west or south. // [Exits: south west]
+1793319976	cmd	Trentlin	50	4022	moria.are	standing	98	0	-	west		The damp tunnel //   You are in a damp tunnel.  Your clothes feel wet.  The tunnel continues // to the north; to the west you see a hole in the floor; and to the east
+1793319977	cmd	Trentlin	50	4022	moria.are	standing	98	0	-	exits		Obvious exits: // North - The large cave // East  - The damp tunnel
+1793319979	cmd	Trentlin	50	4022	moria.are	standing	98	0	-	scan		the centipede                      -to the North. // the kobold                         -to the West. // the kobold                         -to the West.
+1793319980	cmd	Trentlin	50	4021	moria.are	standing	98	0	-	west		The hole //   A hole in the floor leads down here. // [Exits: east down]
+1793319982	cmd	Trentlin	50	4115	moria.are	standing	98	0	-	down		The dark passage. //   You are in a dark passage, that leads east. In the ceiling you notice // a small hole, just big enough to pass through.
+1793319983	cmd	Trentlin	50	4114	moria.are	standing	98	0	-	east		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the north, to the west you see a dark 
+1793319985	cmd	Trentlin	50	4109	moria.are	standing	98	0	-	north		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south, east and north.
+1793319986	cmd	Trentlin	50	4106	moria.are	standing	98	0	-	north		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south and east, to the north is a narrow
+1793319987	cmd	Trentlin	50	4103	moria.are	standing	98	0	-	north		The long tunnel //   You are in a long east-west leading tunnel. The tunnel is quite // narrow at this point. You notice a small hole leading south.
+1793319988	cmd	Trentlin	50	4104	moria.are	standing	98	0	-	west		The long tunnel //   You are in a long east-west leading tunnel. The tunnel starts sloping // down towards the west.
+1793319988	cmd	Trentlin	50	4152	moria.are	standing	98	0	-	west		The tunnel //   You suddenly feel that the tunnel leads down. // [Exits: east south]
+1793319990	cmd	Trentlin	50	4153	moria.are	standing	98	0	-	south		The large tunnel //   You are in a large tunnel leading from the south to the east. The // air is damp in the area.
+1793319991	cmd	Trentlin	50	4153	moria.are	standing	98	0	-	exits		Obvious exits: // North - The tunnel // East  - The large tunnel
+1793319993	cmd	Trentlin	50	4153	moria.are	standing	98	0	-	scan		the black bat                      -to the South. // the red bat                        -to the South.
+1793319993	cmd	Trentlin	50	4157	moria.are	standing	98	0	-	south		The wet tunnel //   You are in a wet, north-south leading tunnel, the floor is // partly covered by water.
+1793319994	cmd	Trentlin	50	4157	moria.are	standing	98	11	-	kill	re d 	You <<< ERADICATE >>> the red bat! // The red bat is DEAD!! // You have almost finished your QUEST!
+1793320000	cmd	Trentlin	50	4207	dresden_halloween.are	standing	98	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793320000	cmd	Trentlin	50	4208	dresden_halloween.are	standing	98	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793320003	cmd	Trentlin	50	4208	dresden_halloween.are	standing	98	0	-	heal	refres	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)
+1793320006	cmd	Trentlin	50	4207	dresden_halloween.are	standing	98	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793320006	cmd	Trentlin	50	4202	dresden_halloween.are	standing	98	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793320006	cmd	Trentlin	50	4201	dresden_halloween.are	standing	98	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793320006	cmd	Trentlin	50	2427	dresden_halloween.are	standing	98	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793320007	cmd	Trentlin	50	2427	dresden_halloween.are	standing	98	0	-	east		Alas, you cannot go that way.
+1793320007	cmd	Trentlin	50	2404	dresden_halloween.are	standing	98	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793320007	cmd	Trentlin	50	2401	dresden_halloween.are	standing	98	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793320007	cmd	Trentlin	50	2410	dresden_halloween.are	standing	98	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793320008	cmd	Trentlin	50	2411	dresden_halloween.are	standing	98	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793320008	cmd	Trentlin	50	2414	dresden_halloween.are	standing	98	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793320008	cmd	Trentlin	50	2497	dresden_halloween.are	standing	98	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793320008	cmd	Trentlin	50	2497	dresden_halloween.are	standing	98	19	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 9 in a row! A +65% bonus has been added!'
+1793320012	cmd	Trentlin	50	2497	dresden_halloween.are	standing	98	6	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 98 quest points! **
+1793320016	cmd	Trentlin	50	2497	dresden_halloween.are	standing	98	0	-	aquest	points	Quest Points: 5984
+1793320020	session	Trentlin	50	2497	dresden_halloween.are	quit	1441s	+0 levels	+0 exp	+895376169 copper	14 kills	0 deaths	7 quests	919 commands	1 refused	coin: loot 72p 91g 60s 69c, quests 730p 8g 54s, dailies 216p 32g 16s, spent 2p 26g 60s
