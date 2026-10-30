@@ -20111,3 +20111,68 @@
 1793395558	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	secret	I see no secret here.
 1793395561	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	up	I see no door up here.
 1793395565	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	door	I see no door here.
+1793395582	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	floor	I see no floor here.
+1793395582	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	up		Alas, you cannot go that way.
+1793395583	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	look		A dark hallway. //   You've now reached the third floor. Fires have been doused to (hopefully) // slow down the rebel forces' progress, since darkness is great at concealing
+1793395585	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	floor	I see no floor here.
+1793395590	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	third	That's not a container.
+1793395591	cmd	Trentlin	50	10067	glitter.are	standing	100	0	-	down		Above the throne. //   You climbed on the throne, opened the trapdoor and managed to squeeze // your way up into this alcove here ... You see another trapdoor above you, and
+1793395593	cmd	Trentlin	50	10067	glitter.are	standing	100	0	-	open	floor	It's already open.
+1793395594	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	up		A dark hallway. //   You've now reached the third floor. Fires have been doused to (hopefully) // slow down the rebel forces' progress, since darkness is great at concealing
+1793395652	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	hidden	You open a secret door.
+1793395653	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	look		A dark hallway. //   You've now reached the third floor. Fires have been doused to (hopefully) // slow down the rebel forces' progress, since darkness is great at concealing
+1793395654	cmd	Trentlin	50	10069	glitter.are	standing	100	0	-	north		A dark hallway. //   Fires have been doused to slow down the rebel forces' progress ... thank // God you brought torches of your own with you !! You can vaguely make out the
+1793395657	cmd	Trentlin	50	10069	glitter.are	standing	100	0	-	open	east	Ok.
+1793395657	cmd	Trentlin	50	10085	glitter.are	standing	100	0	-	east		A dark hallway. //   Darkness ... but you can see doors to the south and west. The hall // continues east.
+1793395677	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	east		East end in the dark hallway. //   The darkness seems to be a bit less and you clearly see a door to the // east and one to the west.
+1793395709	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	east		The door is closed.
+1793395711	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	open	east	Ok.
+1793395712	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	east		A dark hallway. //   The darkness is complete ... you can't see a thing!!! You begin feeling // around for a door or hatch or something.
+1793395713	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793395716	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	open	door	I see no door here.
+1793395718	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	open	hatch	You open a secret door.
+1793395720	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	look		A dark hallway. //   The darkness is complete ... you can't see a thing!!! You begin feeling // around for a door or hatch or something.
+1793395721	cmd	Trentlin	50	10082	glitter.are	standing	100	0	-	south		A dark hallway. //   The darkness is almost complete ... the only exit seems to be the door // to the west.
+1793395724	cmd	Trentlin	50	10082	glitter.are	standing	100	0	-	open	west	Ok.
+1793395724	cmd	Trentlin	50	10081	glitter.are	standing	100	0	-	west		South end in the dark hallway. //   The darkness has thickened ... still you can make out a door to the east. // [Exits: north east]
+1793395725	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	north		East end in the dark hallway. //   The darkness seems to be a bit less and you clearly see a door to the // east and one to the west.
+1793395747	cmd	Trentlin	50	10085	glitter.are	standing	100	0	-	west		A dark hallway. //   Darkness ... but you can see doors to the south and west. The hall // continues east.
+1793395748	cmd	Trentlin	50	10069	glitter.are	standing	100	0	-	west		A dark hallway. //   Fires have been doused to slow down the rebel forces' progress ... thank // God you brought torches of your own with you !! You can vaguely make out the
+1793395750	cmd	Trentlin	50	10069	glitter.are	standing	100	0	-	exits		Obvious exits: // East  - A dark hallway. // South - A dark hallway.
+1793395751	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	south		A dark hallway. //   You've now reached the third floor. Fires have been doused to (hopefully) // slow down the rebel forces' progress, since darkness is great at concealing
+1793395753	cmd	Trentlin	50	10069	glitter.are	standing	100	0	-	north		A dark hallway. //   Fires have been doused to slow down the rebel forces' progress ... thank // God you brought torches of your own with you !! You can vaguely make out the
+1793395753	cmd	Trentlin	50	10085	glitter.are	standing	100	0	-	east		A dark hallway. //   Darkness ... but you can see doors to the south and west. The hall // continues east.
+1793395756	cmd	Trentlin	50	10085	glitter.are	standing	100	0	-	open	south	Ok.
+1793395803	cmd	Trentlin	50	10069	glitter.are	standing	100	0	-	west		A dark hallway. //   Fires have been doused to slow down the rebel forces' progress ... thank // God you brought torches of your own with you !! You can vaguely make out the
+1793395806	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	south		A dark hallway. //   You've now reached the third floor. Fires have been doused to (hopefully) // slow down the rebel forces' progress, since darkness is great at concealing
+1793395807	cmd	Trentlin	50	10069	glitter.are	standing	100	0	-	north		A dark hallway. //   Fires have been doused to slow down the rebel forces' progress ... thank // God you brought torches of your own with you !! You can vaguely make out the
+1793395807	cmd	Trentlin	50	10085	glitter.are	standing	100	0	-	east		A dark hallway. //   Darkness ... but you can see doors to the south and west. The hall // continues east.
+1793395808	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	east		East end in the dark hallway. //   The darkness seems to be a bit less and you clearly see a door to the // east and one to the west.
+1793395809	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	east		A dark hallway. //   The darkness is complete ... you can't see a thing!!! You begin feeling // around for a door or hatch or something.
+1793395813	cmd	Trentlin	50	10082	glitter.are	standing	100	0	-	south		A dark hallway. //   The darkness is almost complete ... the only exit seems to be the door // to the west.
+1793395814	cmd	Trentlin	50	10081	glitter.are	standing	100	0	-	west		South end in the dark hallway. //   The darkness has thickened ... still you can make out a door to the east. // [Exits: north east]
+1793395815	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	north		East end in the dark hallway. //   The darkness seems to be a bit less and you clearly see a door to the // east and one to the west.
+1793395818	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	open	north	I see no door north here.
+1793395820	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	open	secret	I see no secret here.
+1793395821	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	open	door	It's already open.
+1793395823	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	open	trapdoor	I see no trapdoor here.
+1793395825	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	open	hatch	I see no hatch here.
+1793395827	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	consider	g	They're not here.
+1793395827	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	look	g	A pair of blackened steel greaves lies here. There is an inscription on them. // The a pair of blackened steel greaves is in perfect condition.
+1793395829	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	consider	gua	They're not here.
+1793395830	cmd	Trentlin	50	10085	glitter.are	standing	100	0	-	west		A dark hallway. //   Darkness ... but you can see doors to the south and west. The hall // continues east.
+1793395830	cmd	Trentlin	50	10085	glitter.are	standing	100	0	-	scan		the loyalist                       -to the East.
+1793395831	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	east		East end in the dark hallway. //   The darkness seems to be a bit less and you clearly see a door to the // east and one to the west.
+1793395834	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	consider	lo	The loyalist is far below your level. // The loyalist has about as many hit points as you. // Blow for blow, you would need about 5 rounds to bring the loyalist down; he would need about 9 rounds for you.
+1793395836	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	look	lo	The soldier was and is loyal to his king. He is desperately seeking for a way // to the higher levels ... aren't you too ?? // The loyalist is in excellent condition.
+1793395874	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	look		East end in the dark hallway. //   The darkness seems to be a bit less and you clearly see a door to the // east and one to the west.
+1793395874	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	east		A dark hallway. //   The darkness is complete ... you can't see a thing!!! You begin feeling // around for a door or hatch or something.
+1793395876	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	open	trapdoor	I see no trapdoor here.
+1793395877	cmd	Trentlin	50	10082	glitter.are	standing	100	0	-	south		A dark hallway. //   The darkness is almost complete ... the only exit seems to be the door // to the west.
+1793395879	cmd	Trentlin	50	10082	glitter.are	standing	100	0	-	open	trapdoor	I see no trapdoor here.
+1793395880	cmd	Trentlin	50	10081	glitter.are	standing	100	0	-	west		South end in the dark hallway. //   The darkness has thickened ... still you can make out a door to the east. // [Exits: north east]
+1793395881	cmd	Trentlin	50	10081	glitter.are	standing	100	0	-	open	trapdoor	I see no trapdoor here.
+1793395882	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	north		East end in the dark hallway. //   The darkness seems to be a bit less and you clearly see a door to the // east and one to the west.
+1793395884	cmd	Trentlin	50	10083	glitter.are	standing	100	0	-	open	trapdoor	I see no trapdoor here.
+1793395885	cmd	Trentlin	50	10084	glitter.are	standing	100	0	-	east		A dark hallway. //   The darkness is complete ... you can't see a thing!!! You begin feeling // around for a door or hatch or something.
+1793395886	cmd	Trentlin	50	10082	glitter.are	standing	100	0	-	south		A dark hallway. //   The darkness is almost complete ... the only exit seems to be the door // to the west.
