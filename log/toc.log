@@ -223170,3 +223170,103 @@ Fri Oct 30 11:55:19 2026 :: Log Rockcrusher [3510]: kill goblin
 Fri Oct 30 11:55:19 2026 :: Log Rockcrusher [3510]: killed the goblin
 Fri Oct 30 11:55:28 2026 :: Log Rockcrusher [3510]: look corpse
 Fri Oct 30 11:55:30 2026 :: Log Rockcrusher [3510]: look
+Fri Oct 30 11:55:35 2026 :: Log Rockcrusher [3510]: look in corpse
+Fri Oct 30 11:55:42 2026 :: Log Rockcrusher [3510]: s
+Fri Oct 30 11:55:42 2026 :: Log Rockcrusher [3516]: arrived (Muddy Ground) from 3510
+Fri Oct 30 11:55:45 2026 :: Log Rockcrusher [3516]: s
+Fri Oct 30 11:55:45 2026 :: Log Rockcrusher [3519]: arrived (The Dark Path) from 3516
+Fri Oct 30 11:55:47 2026 :: Log Rockcrusher [3519]: s
+Fri Oct 30 11:55:47 2026 :: Log Rockcrusher [3521]: arrived (Carnage) from 3519
+Fri Oct 30 11:55:49 2026 :: Log Rockcrusher [3521]: e
+Fri Oct 30 11:55:49 2026 :: Log Rockcrusher [3523]: arrived (The Dark Forest) from 3521
+Fri Oct 30 11:55:57 2026 :: Log Rockcrusher [3523]: kill wyvern
+Fri Oct 30 11:55:57 2026 :: Log Rockcrusher [3523]: killed the wyvern
+Fri Oct 30 11:55:57 2026 :: Log Rockcrusher [3523]: coin +10 silver
+Fri Oct 30 11:55:57 2026 :: Log Rockcrusher [3523]: coin +3 copper
+Fri Oct 30 11:56:04 2026 :: Log Rockcrusher [3523]: look in corpse
+Fri Oct 30 11:56:09 2026 :: Log Rockcrusher [3523]: e
+Fri Oct 30 11:56:09 2026 :: Log Rockcrusher [3551]: arrived (The Deep in the Forest of Miden'nir) from 3523
+Fri Oct 30 11:56:13 2026 :: Log Rockcrusher [3551]: kill goblin
+Fri Oct 30 11:56:14 2026 :: Log Rockcrusher [3551]: killed the goblin lieutenant
+Fri Oct 30 11:56:14 2026 :: Log Rockcrusher [3551]: coin +1 silver
+Fri Oct 30 11:56:14 2026 :: Log Rockcrusher [3551]: coin +1 copper
+Fri Oct 30 11:56:22 2026 :: Log Rockcrusher [3551]: look in corpse
+Fri Oct 30 11:56:26 2026 :: Log Rockcrusher [3551]: s
+Fri Oct 30 11:56:26 2026 :: Log Rockcrusher [3552]: arrived (A Tunnel in the Mountains) from 3551
+Fri Oct 30 11:56:29 2026 :: Log Rockcrusher [3552]: s
+Fri Oct 30 11:56:29 2026 :: Log Rockcrusher [3553]: arrived (A Tunnel in the Mountains) from 3552
+Fri Oct 30 11:56:30 2026 :: Log Rockcrusher [3553]: e
+Fri Oct 30 11:56:30 2026 :: Log Rockcrusher [3554]: arrived (A Small Alcove) from 3553
+Fri Oct 30 11:56:32 2026 :: Log Rockcrusher [3554]: w
+Fri Oct 30 11:56:32 2026 :: Log Rockcrusher [3553]: arrived (A Tunnel in the Mountains) from 3554
+Fri Oct 30 11:56:33 2026 :: Log Rockcrusher [3553]: s
+Fri Oct 30 11:56:33 2026 :: Log Rockcrusher [3555]: arrived (A Tunnel in the Mountains) from 3553
+Fri Oct 30 11:56:37 2026 :: Log Rockcrusher [3555]: s
+Fri Oct 30 11:56:37 2026 :: Log Rockcrusher [3556]: arrived (The Goblin Headquarters) from 3555
+Fri Oct 30 11:56:44 2026 :: Log Rockcrusher [3556]: kill goblin
+Fri Oct 30 11:56:44 2026 :: Log Rockcrusher [3556]: killed the goblin lieutenant
+Fri Oct 30 11:56:44 2026 :: Log Rockcrusher [3556]: coin +1 silver
+Fri Oct 30 11:56:44 2026 :: Log Rockcrusher [3556]: coin +1 copper
+Fri Oct 30 11:56:52 2026 :: Log Rockcrusher [3556]: look in corpse
+Fri Oct 30 11:57:03 2026 :: Log Rockcrusher [3556]: get candy from corpse
+Fri Oct 30 11:57:11 2026 :: Log Rockcrusher [3556]: look candy
+Fri Oct 30 11:57:15 2026 :: Log Rockcrusher [3556]: n
+Fri Oct 30 11:57:15 2026 :: Log Rockcrusher [3555]: arrived (A Tunnel in the Mountains) from 3556
+Fri Oct 30 11:57:20 2026 :: Log Rockcrusher [3555]: kill goblin
+Fri Oct 30 11:57:20 2026 :: Log Rockcrusher [3555]: killed the goblin leader
+Fri Oct 30 11:57:20 2026 :: Log Rockcrusher [3555]: coin +2 platinum
+Fri Oct 30 11:57:20 2026 :: Log Rockcrusher [3555]: coin +12 silver
+Fri Oct 30 11:57:20 2026 :: Log Rockcrusher [3555]: coin +17 copper
+Fri Oct 30 11:57:20 2026 :: Log Rockcrusher [3555]: coin +7 gold
+Fri Oct 30 11:57:29 2026 :: Log Rockcrusher [3555]: kill goblin
+Fri Oct 30 11:57:29 2026 :: Log Rockcrusher [3555]: killed the goblin lieutenant
+Fri Oct 30 11:57:29 2026 :: Log Rockcrusher [3555]: coin +1 silver
+Fri Oct 30 11:57:29 2026 :: Log Rockcrusher [3555]: coin +1 copper
+Fri Oct 30 11:57:34 2026 :: Log Rockcrusher [3555]: kill goblin
+Fri Oct 30 11:57:34 2026 :: Log Rockcrusher [3555]: killed the goblin
+Fri Oct 30 11:57:43 2026 :: Log Rockcrusher [3555]: look in corpse
+Fri Oct 30 11:57:49 2026 :: Log Rockcrusher [3555]: l
+Fri Oct 30 11:57:56 2026 :: Log Rockcrusher [3555]: look in stinking corpse
+Fri Oct 30 11:58:06 2026 :: Log Rockcrusher [3555]: look in corpse
+Fri Oct 30 11:58:08 2026 :: Log Rockcrusher [3555]: look in corpse 2
+Fri Oct 30 11:58:12 2026 :: Log Rockcrusher [3555]: look in corpse 3
+Fri Oct 30 11:58:14 2026 :: Log Rockcrusher [3555]: n
+Fri Oct 30 11:58:14 2026 :: Log Rockcrusher [3553]: arrived (A Tunnel in the Mountains) from 3555
+Fri Oct 30 11:58:16 2026 :: Log Rockcrusher [3553]: n
+Fri Oct 30 11:58:16 2026 :: Log Rockcrusher [3552]: arrived (A Tunnel in the Mountains) from 3553
+Fri Oct 30 11:58:17 2026 :: Log Rockcrusher [3552]: n
+Fri Oct 30 11:58:17 2026 :: Log Rockcrusher [3551]: arrived (The Deep in the Forest of Miden'nir) from 3552
+Fri Oct 30 11:58:19 2026 :: Log Rockcrusher [3551]: w
+Fri Oct 30 11:58:19 2026 :: Log Rockcrusher [3523]: arrived (The Dark Forest) from 3551
+Fri Oct 30 11:58:19 2026 :: Log Rockcrusher [3523]: w
+Fri Oct 30 11:58:19 2026 :: Log Rockcrusher [3521]: arrived (Carnage) from 3523
+Fri Oct 30 11:58:20 2026 :: Log Rockcrusher [3521]: w
+Fri Oct 30 11:58:20 2026 :: Log Rockcrusher [3522]: arrived (Deep in the Forest of Miden'nir) from 3521
+Fri Oct 30 11:58:21 2026 :: Log Rockcrusher [3522]: s
+Fri Oct 30 11:58:21 2026 :: Log Rockcrusher [28161]: arrived (Watch Your Step!) from 3522
+Fri Oct 30 11:58:35 2026 :: Log Rockcrusher [28161]: enter portal
+Fri Oct 30 11:58:35 2026 :: Log Rockcrusher [28101]: arrived (Entrance to Azeroth) from 28161
+Fri Oct 30 11:58:50 2026 :: Log Rockcrusher [28101]: kill warlock
+Fri Oct 30 11:58:53 2026 :: Log Rockcrusher [28101]: confuse
+Fri Oct 30 11:59:00 2026 :: Log Rockcrusher [28101]: confuse
+Fri Oct 30 11:59:07 2026 :: Log Rockcrusher [28101]: (refused) attack
+Fri Oct 30 11:59:10 2026 :: Log Rockcrusher [28101]: skills
+Fri Oct 30 11:59:15 2026 :: Log Rockcrusher [28101]: fists of fury
+Fri Oct 30 11:59:20 2026 :: Sock.sinaddr:  3.133.226.214
+Fri Oct 30 11:59:20 2026 :: EOF encountered on read.
+Fri Oct 30 11:59:21 2026 :: Log Rockcrusher [28101]: fists of fury gul'
+Fri Oct 30 11:59:25 2026 :: Log Rockcrusher [28101]: fists of fury warlock
+Fri Oct 30 11:59:29 2026 :: Log Rockcrusher [28101]: skills
+Fri Oct 30 11:59:36 2026 :: Log Rockcrusher [28101]: ego whip
+Fri Oct 30 11:59:42 2026 :: Log Rockcrusher [28101]: skill fists of fury
+Fri Oct 30 11:59:44 2026 :: Log Rockcrusher [28101]: skill
+Fri Oct 30 11:59:47 2026 :: Log Rockcrusher [28101]: n
+Fri Oct 30 11:59:49 2026 :: Log Rockcrusher [28101]: flee
+Fri Oct 30 11:59:49 2026 :: Log Rockcrusher [28102]: arrived (Outside the Barracks) from 28101
+Fri Oct 30 11:59:52 2026 :: Log Rockcrusher [28102]: l
+Fri Oct 30 11:59:56 2026 :: Log Rockcrusher [28102]: up
+Fri Oct 30 11:59:56 2026 :: Log Rockcrusher [28104]: arrived (Going Up the Tower) from 28102
+Fri Oct 30 11:59:57 2026 :: Log Rockcrusher [28104]: up
+Fri Oct 30 11:59:57 2026 :: Log Rockcrusher [28105]: arrived (Up in the guard tower) from 28104
+Fri Oct 30 12:00:06 2026 :: Log Rockcrusher [28105]: skills
+Fri Oct 30 12:00:09 2026 :: Log Rockcrusher [28105]: recall
