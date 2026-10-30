@@ -19940,3 +19940,28 @@
 1793361013	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	help	combat	This group is primarily for mages. They gain the following spells: // Acid Blast, Chain Lightning, Color Spray, Fireball, Shocking Grasp, // Heat Metal
 1793361023	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	help	commands	COMMANDS // Syntax: commands // COMMANDS shows you all the commands in the game.
 1793361026	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	commands		put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      
+1793361073	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	abilities		Abilities for a level 52 monk of the monk guild: 23 learned, 11 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793361147	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	skills		Level  1: dagger              81%      hand to hand       100%       //           recall              83%       // Level  3: kick               100%      
+1793361158	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	gainlist	trainers	At guildmaster Rakar the weaponsmaster: // archery              have    shove                1       despair              1        // At guildmaster Dawn the Wand Maker:
+1793361183	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	help	ride	RIDE RIDING MOUNT DISMOUNT // Syntax: ride <creature> //         mount <creature>
+1793361202	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	help	fast healing	The fast healing skill improves wound healing rates, whether walking, resting, // or sleeping. It represents knowledge of healing herbs or just general // toughness and stamina.  Fast healing is checked every tick, and it is
+1793361213	refused	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	(unknown)		Huh? Did you mean TRAIN?
+1793361214	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	train		You can't do that here.
+1793361222	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      Nothing.
+1793361225	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a cyclopean eye // <worn on finger>    the Incubus crest ring
+1793361235	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	look	in pack	A metallic pack contains: //      (Glowing) Starlight // ( 2) (Humming) An assassin's ring
+1793361261	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	look	in pack at excalibur	A metallic pack contains: //      (Glowing) Starlight // ( 2) (Humming) An assassin's ring
+1793361265	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	look	excalibur	You do not see that here.
+1793361268	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	look		Main Processional, at the Southern Gates //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Just to the north is the Bridge of
+1793361280	cmd	Rockcrusher	52	2431	dresden_halloween.are	standing	100	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793361285	cmd	Rockcrusher	52	2431	dresden_halloween.are	standing	100	0	-	look	vampire	A big strong vampire of Dresden. // A Vampire is in excellent condition. // A Vampire is using:
+1793361294	cmd	Rockcrusher	52	2431	dresden_halloween.are	standing	100	0	-	south		The gate is closed.
+1793361297	cmd	Rockcrusher	52	2431	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1793361298	cmd	Rockcrusher	52	2432	dresden_halloween.are	standing	100	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793361302	cmd	Rockcrusher	52	3505	midennir_halloween.are	standing	100	0	-	south		The Trail to Miden'nir //   You are in a dark forest.  The trees press close on either side, their // branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+1793361305	cmd	Rockcrusher	52	3507	midennir_halloween.are	standing	100	0	-	south		A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned
+1793361307	cmd	Rockcrusher	52	3510	midennir_halloween.are	standing	100	0	-	south		A Crossroads //   Here footworn paths meet leading north, south and east. The trees seem to // be closing in on you at this point, and you can barely see the sky
+1793361312	cmd	Rockcrusher	52	3510	midennir_halloween.are	standing	100	0	-	kill	goblin	Your punch === OBLITERATES === the goblin! // The goblin is DEAD!! // You receive 0 experience points.
+1793361319	cmd	Rockcrusher	52	3510	midennir_halloween.are	standing	100	0	-	kill	goblin	Your punch === OBLITERATES === the goblin! // The goblin is DEAD!! // You receive 0 experience points.
+1793361328	cmd	Rockcrusher	52	3510	midennir_halloween.are	standing	100	0	-	look	corpse	The corpse of the goblin is lying here.
+1793361330	cmd	Rockcrusher	52	3510	midennir_halloween.are	standing	100	0	-	look		A Crossroads //   Here footworn paths meet leading north, south and east. The trees seem to // be closing in on you at this point, and you can barely see the sky
