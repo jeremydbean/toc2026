@@ -20341,3 +20341,83 @@
 1793396355	cmd	Trentlin	50	10067	glitter.are	standing	100	0	-	open	throne	I see no throne here.
 1793396356	cmd	Trentlin	50	10067	glitter.are	standing	100	0	-	open	secret	I see no secret here.
 1793396359	session	Trentlin	50	10067	glitter.are	quit	1094s	+0 levels	+0 exp	+5142534 copper	1 kills	0 deaths	0 quests	296 commands	3 refused	coin: loot 5p 14g 25s 34c
+1793403159	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793403160	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793403161	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (23) guano // ( 2) (Glowing) glowing moss
+1793403169	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    269 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793403170	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793403170	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793403172	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1793403172	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793403172	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793403173	cmd	Alaric	54	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793403173	cmd	Alaric	54	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1793403173	cmd	Alaric	54	2485	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793403174	cmd	Alaric	54	2482	dresden_halloween.are	standing	100	0	-	north		Nomads Tent. //   You enter a large tent where many nomads are selling goods fashioned from the // desert peoples.
+1793403174	cmd	Alaric	54	2483	dresden_halloween.are	standing	100	0	-	east		Fountain of Market Plaza. //   In the center of the plaza is a fountain with a statue of a woman sitting on a // rock surrounded by dolphins facing in all directions.  The water seems to
+1793403175	cmd	Alaric	54	2484	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793403175	cmd	Alaric	54	4	limbo_halloween.are	standing	100	0	-	east		The First National Bank of Dresden. //   The first thing you notice upon entering this place is how // white everything seems to be. The chairs are white, the walls and floor are
+1793403175	cmd	Alaric	54	4	limbo_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793403175	cmd	Alaric	54	4	limbo_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793403179	cmd	Alaric	54	4	limbo_halloween.are	standing	100	5	-	deposit	2000 platinum	You deposit your coins into the bank. // Deposited: 2000 platinum, 0 gold, 0 silver, 0 copper. // New balance: 19080 platinum, 81 gold, 26 silver, 28 copper.
+1793403180	cmd	Alaric	54	2484	dresden_halloween.are	standing	100	0	-	west		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793403180	cmd	Alaric	54	2487	dresden_halloween.are	standing	100	0	-	south		Market Plaza, the Hallows Fair //   The Market Plaza has given itself over to the fair. Booths and tents crowd // the flagstones under strings of orange and black bunting, selling toffee
+1793403181	cmd	Alaric	54	2486	dresden_halloween.are	standing	100	0	-	west		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793403181	cmd	Alaric	54	2485	dresden_halloween.are	standing	100	0	-	west		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793403181	cmd	Alaric	54	2415	dresden_halloween.are	standing	100	0	-	west		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1793403181	cmd	Alaric	54	2402	dresden_halloween.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793403185	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793403187	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793403188	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793403189	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793403190	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793403190	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793403190	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793403190	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1793403191	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	affect		You are not affected by any spells.
+1793403192	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	12	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'Raiders stole The Journal of Trinidad from the realm!'
+1793403209	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	8	-	aquest	abort	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 4 in a row - all gone now!'
+1793403210	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793403213	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	open	pump	A possessed flame has been let out of a jack o'lantern! // A possessed flame says, 'Thanks for letting me out,' // 'but I was in there for a reason.' a possessed flame grins evilly at you.
+1793403320	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793403322	cmd	Alaric	54	2422	dresden_halloween.are	standing	100	0	-	run	e 4	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793403324	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 4	Battle Road // [Exits: north east south west] // Battle Road
+1793403325	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793403326	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793403327	cmd	Alaric	54	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793403328	cmd	Alaric	54	9522	newthalo.are	standing	100	0	-	open		Ok.
+1793403329	cmd	Alaric	54	29003	korzath1.are	standing	100	0	-	run	n 8	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793403330	cmd	Alaric	54	29003	korzath1.are	standing	100	0	-	wake		You are already standing.
+1793403330	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793403333	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793403337	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.
+1793403344	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793403344	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	fists	knight	You attack in an all consuming fury! // Your fists of fury MUTILATES Guardian Knight! [-37] // Your fists of fury MASSACRES Guardian Knight! [-50]
+1793403350	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists	knight	You attack in an all consuming fury! // Your fists of fury injures Guardian Knight. [-15] // Your fists of fury maims Guardian Knight! [-36]
+1793403356	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists	knight	You attack in an all consuming fury! // Your fists of fury hits Guardian Knight. [-9] // Your fists of fury grazes Guardian Knight. [-7]
+1793403361	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists	knight	You attack in an all consuming fury! // Your fists of fury scratches Guardian Knight. [-1] // Your fists of fury grazes Guardian Knight. [-8]
+1793403367	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists	knight	You attack in an all consuming fury! // Your fists of fury injures Guardian Knight. [-16] // Your fists of fury scratches Guardian Knight. [-4]
+1793403376	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	get	key cor	You get a diamond key from a stinking corpse.
+1793403376	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793403376	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	open		Ok.
+1793403377	cmd	Alaric	54	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793403377	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793403377	cmd	Alaric	54	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793403378	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793403378	cmd	Alaric	54	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793403379	cmd	Alaric	54	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793403379	cmd	Alaric	54	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793403380	cmd	Alaric	54	29207	korzath2.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793403380	cmd	Alaric	54	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793403383	cmd	Alaric	54	29208	korzath2.are	standing	100	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-40] // Your fists of fury wounds a deranged madman. [-18]
+1793403389	cmd	Alaric	54	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a deranged madman. [-3] // Your fists of fury MASSACRES a deranged madman! [-52]
+1793403395	cmd	Alaric	54	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-94] // Your fists of fury decimates a deranged madman! [-28]
+1793403400	cmd	Alaric	54	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a deranged madman! [-41] // Your fists of fury DISEMBOWELS a deranged madman! [-41]
+1793403406	cmd	Alaric	54	29208	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a deranged madman. [-14] // Your fists of fury *** DEVASTATES *** a deranged madman! [-62]
+1793403412	cmd	Alaric	54	29208	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-62] // Your fists of fury maims a deranged madman! [-34]
+1793403421	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793403424	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-45] // Your fists of fury mauls an Animated Skeleton. [-21]
+1793403430	cmd	Alaric	54	29209	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-57] // Your fists of fury decimates an Animated Skeleton! [-27]
+1793403435	cmd	Alaric	54	29209	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an Animated Skeleton. [-10] // Your fists of fury decimates an Animated Skeleton! [-25]
+1793403441	cmd	Alaric	54	29209	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-60] // Your fists of fury MANGLES an Animated Skeleton! [-53]
+1793403447	cmd	Alaric	54	29209	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an Animated Skeleton! [-25] // An Animated Skeleton walks off to the north.
