@@ -29,10 +29,10 @@ PASSWORD = "Zhelppw12"
 
 
 def ask_help(client, topic: str) -> str:
-    mark = len(client.transcript)
-    client.send(f"help {topic}")
-    client.drain(1.2)
-    return client.transcript[mark:]
+    # Synced, not a fixed window: on a slow runner HELP STEAL's page came
+    # after a 1.2 s drain ended, and the test read only a prompt (CI,
+    # 2026-10-30).
+    return client.sync(f"help {topic}")
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -49,6 +49,7 @@ class HelpExactMatchTests(unittest.TestCase):
         with LiveMud() as mud:
             with mud.connect(timeout=120) as client:
                 create_character(client, "Zhelpone", PASSWORD)
+                client.sync("scroll 0")
                 for typed, stolen_by, expected in cases:
                     output = ask_help(client, typed)
                     header = output.strip().splitlines()

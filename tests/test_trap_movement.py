@@ -139,7 +139,15 @@ class TrapMovementLiveTests(unittest.TestCase):
                     trapper.must("restore zwalker", "restored")
                     trapper.sync("force zwalker stand")
                     trapper.must(f"transfer zwalker {GAS_HALL}", "Ok.")
-                    self.assertEqual(room_of(trapper, "zwalker"), GAS_HALL)
+                    # A tick's gas can kill the walker on 1 hit point in the
+                    # moment between TRANSFER and this check (CI, 2026-10-30:
+                    # 4216 != 32702). That attempt never reached WEST; try
+                    # again.
+                    where = room_of(trapper, "zwalker")
+                    if where == DEATH_ROOM:
+                        outcomes.append("before-move")
+                        continue
+                    self.assertEqual(where, GAS_HALL)
                     # TIME is the barrier: a walker the gas leaves mortally
                     # wounded may not type WORTH, which used to be.
                     said = walker.sync("west", timeout=60)
