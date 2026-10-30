@@ -20531,3 +20531,8 @@
 1793404279	cmd	Alaric	54	4210	dresden_halloween.are	standing	36	0	-	stash		Your stash holds 92 of 150 things. //     1) Gauntlets of Bravery //     2) a pair of mithril boots
 1793404280	cmd	Alaric	54	4210	dresden_halloween.are	standing	36	0	-	sleep		You go to sleep.
 1793404281	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	36	0	-	sleep		You are already sleeping.
+1793404384	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	63	0	-	group		Alaric's group: // [54 Monk ] Alaric            910/1423 hp 1489/2676 mana  466/1069 mv 171340 xp
+1793404387	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	63	0	-	wake		You wake and stand up.
+1793404388	refused	Alaric	54	4210	dresden_halloween.are	standing	63	0	-	(unknown)		Huh? Did you mean IRON?
+1793404390	cmd	Alaric	54	4210	dresden_halloween.are	standing	63	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.
+1793404398	cmd	Alaric	54	4210	dresden_halloween.are	standing	63	0	-	sleep		You go to sleep.
