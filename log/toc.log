@@ -223367,3 +223367,19 @@ Fri Oct 30 13:45:07 2026 :: Treasure goblin: vanished from room 28141 (The Battl
 Fri Oct 30 13:49:16 2026 :: Black market: the dealer appeared with 5 items (stock 1793368156), for 22 minutes.
 Fri Oct 30 13:50:08 2026 :: Sock.sinaddr:  178.156.185.231
 Fri Oct 30 13:50:08 2026 :: EOF encountered on read.
+Fri Oct 30 13:55:10 2026 :: Sock.sinaddr:  178.156.187.238
+Fri Oct 30 13:55:10 2026 :: EOF encountered on read.
+Fri Oct 30 13:55:12 2026 :: Treasure goblin: vanished from room 17107 (The Bog, highland.are) (too long in one area).
+Fri Oct 30 13:56:22 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Oct 30 13:56:26 2026 :: Log WebAdmin: fsave
+Fri Oct 30 13:56:32 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Oct 30 13:56:35 2026 :: Received signal 15; saving players and shutting down.
+Fri Oct 30 13:56:35 2026 :: Normal termination of game.
+Fri Oct 30 13:56:36 2026 ::  INIT OK 
+Fri Oct 30 13:56:36 2026 :: walkto_load: 157 destinations.
+Fri Oct 30 13:56:36 2026 :: changes_load: 202 entries.
+Fri Oct 30 13:56:36 2026 :: Recovery ledger: 235 records (0 from before the check), 0 requests, 7 players.
+Fri Oct 30 13:56:36 2026 :: ROM is ready to rock on port 9000.
+Fri Oct 30 13:56:36 2026 :: Treasure goblin: appeared.
+Fri Oct 30 13:56:36 2026 :: Automated backup complete.
+Fri Oct 30 13:56:36 2026 :: Daily backup complete.
