@@ -8,6 +8,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **A death the ledger cannot record never duplicates** (2026-10-30,
+  review). A refused receipt or a full Fixes list kept the corpse as an
+  ordinary one and never saved the player, so a crash laid it beside a
+  file holding the same things. Such a death is now `PEND_UNRECORDED`:
+  the corpse is unlootable, the owner's saves are refused so the file
+  keeps everything, recording is retried every ten seconds, and a crash,
+  quit or fresh login first undoes the corpse.
+- **CAST keeps its target** (2026-10-30, review). The typo mending ate a
+  target near the spell's next word (CAST 'CHILL' TORCH); a quoted name is
+  now exact, and a word naming a target of the spell here is the target.
+- **Spare Triforce shards, again** (2026-10-30, review). Login fix
+  `20261030-spare-shards-again` runs the uncapped sweep for characters the
+  capped `20261029-spare-shards` already marked.
+
 - **HELP matches a shortened phrase** (2026-10-28, owner). A third pass
   in `do_help`, after the exact keyword and `is_name`, takes two or more
   words that each begin the matching word of one keyword phrase, in

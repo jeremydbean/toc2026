@@ -143,6 +143,13 @@ which (independent review, 2026-10-23):
   crash before the save lands is settled at boot from the file: no mark,
   the file still holds everything and the corpse is not laid (its record
   goes to history as `undone`); a mark, the corpse is laid as theirs.
+- A death the ledger will not record, or whose mark the player's list of
+  fixes cannot take (2026-10-30), stays unsettled rather than becoming an
+  ordinary corpse: nobody can take from it and the player's file is not
+  saved over, so it still holds everything. The receipt is tried again
+  every ten seconds; a crash, a quit or a fresh login first undoes the
+  corpse, and the player has their things from the file. Nothing they do
+  in between is saved.
 - RESURRECTION's ACCEPT whose save is not confirmed stays pending and is
   settled by the next save, boot or login -- never undone on a guess.
 - A receipt's mark never shortens the file's list of fixes: a list that

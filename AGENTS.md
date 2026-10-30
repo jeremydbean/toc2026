@@ -727,7 +727,13 @@ Commands added or revived in September 2026, and where they live:
   `spell_suggest`; the Huh hint offers usable commands, whole names and
   known spells by `name_nearness`. `text_edit_distance` counts two
   swapped letters as one (HELP suggestions too).
-  `tests/test_command_guessing.py`.
+  `tests/test_command_guessing.py`. **Neither reading of the rest takes a
+  target** (review, 2026-10-30: CAST 'CHILL' TORCH ate Torch as a slip of
+  "touch" and struck whoever the caster was fighting): a quoted name is
+  exactly the spell's name, and a word that names something the spell
+  can be cast at here (`cast_word_is_target`, by the spell's target
+  type) is the target unless it is that word of the name whole
+  (`tests/test_cast_targets.py`).
 - Password-bearing commands must not be logged.
 - **`fread_char` dispatches on the first letter of the key.** A new
   persisted field's `KEY(...)` has to sit in the `case` for that letter or
@@ -1270,6 +1276,23 @@ receipt committed are dropped as it is rebuilt, and past
 `PLAYER_FIXES_MAX` the operation is refused, never cut short
 (`tests/test_death_transfer.py`).
 
+**A death that cannot be recorded stays unsettled** (review, 2026-10-30:
+a refused receipt or a full Fixes list left the corpse unpending, so
+`corpse_registry_death_settle` saved nothing and a crash laid the corpse
+beside a file holding the same things). The track is `PEND_UNRECORDED`
+and its record says `State unrecorded`: nobody may take from the corpse,
+and `corpse_registry_may_save` refuses every save of the owner, so their
+file goes on holding everything -- that is what makes undoing the corpse
+safe. `pend_retry` tries the receipt and mark again every ten seconds
+while the owner is in the game, then saves them and the death settles as
+any other. Before that: their leaving the game (the quit's save is
+refused), a fresh login (`corpse_registry_login`, before anything at
+login saves; a reconnect keeps the body that died) and a boot without a
+committed receipt all undo the corpse to history as `undone`. Its cost is
+that nothing the player does between the death and the recording is
+saved. `death-recorded-crash` dies between recording and the save
+(`tests/test_death_unrecorded.py`).
+
 ## The Seasonal Areas Are Generated
 
 `src/season.c` swaps three areas for a holiday copy **at boot**: `dresden`,
@@ -1648,6 +1671,14 @@ the mage's weapon floors (dagger 80, whip 20) applied to every new
 character -- for a weapon still at exactly the mage's value, which was
 never trained since.
 
+**A fix corrected after it shipped runs again under a new id.** A fix is
+marked done once it runs, whatever it did, so changing its function
+reaches nobody it already marked: `20261029-spare-shards` took back at
+most 64 shards, and lifting the cap left those it had visited with the
+rest. `20261030-spare-shards-again` runs the corrected sweep for
+everyone. Write the function so a second run is harmless
+(`tests/test_hyrule_spare_shards.py`).
+
 ## Player Backups And Restores
 
 Owner, 2026-10-23: player data is the most important thing the game
@@ -1690,7 +1721,7 @@ rules the code depends on:
   (CI, 2026-10-27), a death's `death-save-<Name>`, a craft's
   `craft-save`, GRANTPSI's `grantpsi-save` and a PRESTORE give's or retry's `prestore-save`; `dirsync-<Name>` makes that character's next save
   unconfirmed, `corpse-move` fails a corpse record's move into history;
-  `ledger`, `crash-before-commit`), read
+  `ledger`, `crash-before-commit`, `death-recorded-crash`), read
   by `recovery_fault()` and set nowhere but `tests/`.
 - **Nobody comes out of a file dead** (`revive_at_load`, end of
   `load_char_obj`): a `death` copy is written below zero hit points,

@@ -70,6 +70,18 @@ typedef struct corpse_track
 #define PEND_NONE        0
 #define PEND_DEATH       1
 #define PEND_RESURRECT   2
+/*
+ * A death whose receipt or mark could not be recorded -- the ledger would
+ * not take it, or the owner's Fixes list was full (review, 2026-10-30:
+ * the corpse was then kept as an ordinary one and the owner never saved,
+ * so a crash laid it at boot beside a file holding the same things). The
+ * corpse is kept, nobody may take from it, and the owner's file is not
+ * saved over: it still holds everything, which is what makes undoing the
+ * corpse safe. Recording is tried again every PEND_RETRY_SECS; a crash, a
+ * quit or a fresh login before it lands undoes the corpse (its twin is in
+ * the file). Its record carries state "unrecorded" so boot knows.
+ */
+#define PEND_UNRECORDED  3
 #define PEND_RETRY_SECS  10
 
 static CORPSE_TRACK *tracks = NULL;
@@ -131,6 +143,7 @@ static CORPSE_TRACK *track_add( void )
 static OBJ_DATA *corpse_make_object( const CORPSE_RECORD *rec );
 static ROOM_INDEX_DATA *corpse_room( int vnum, char *note, size_t size );
 static void corpse_fill( OBJ_DATA *corpse, OBJ_DATA *list );
+static int corpse_live_to_history( const CORPSE_RECORD *rec, const char *label );
 
 static void track_drop( int i )
 {
@@ -392,6 +405,86 @@ static void corpse_retry_endings( void )
 
 
 /*
+ * The death's receipt, then its mark in the owner's memory. True when
+ * both are kept: the death is PEND_DEATH and settles through the save.
+ * False when either could not be, with nothing left half done: the
+ * caller keeps it PEND_UNRECORDED. `loud` says the failure in the log
+ * (the first attempt; retries say only what changes).
+ */
+static bool death_record( CORPSE_TRACK *t, CHAR_DATA *ch, bool loud )
+{
+    char mark[96], buf[MAX_STRING_LENGTH];
+
+    snprintf( t->op, sizeof(t->op), "death:%s", t->rec.id );
+    snprintf( mark, sizeof(mark), "restore:%s", t->op );
+    snprintf( buf, sizeof(buf), "corpse %s in room %d", t->rec.id, t->rec.room );
+    if ( !player_fix_can_record( ch, mark ) )
+    {
+        if ( loud )
+            bug( "corpse_registry_died: the Fixes list is full; the death is not recorded", 0 );
+        return false;
+    }
+    if ( !recovery_record( "request", "pending", ch->name, t->op, "death",
+                           playlog_cause(), buf ) )
+    {
+        if ( loud )
+            bug( "corpse_registry_died: the ledger refused the death's receipt", 0 );
+        return false;
+    }
+    if ( !player_fix_record( ch, mark ) )
+    {
+        recovery_record( "request", "abandoned", ch->name, t->op, "death", "-",
+                         "the mark could not be kept; the death stays unrecorded" );
+        if ( loud )
+            bug( "corpse_registry_died: the death's mark could not be kept", 0 );
+        return false;
+    }
+    t->pending = PEND_DEATH;
+    t->held = true;
+    t->last_try = current_time;
+    toc_strlcpy( t->rec.state, "live", sizeof(t->rec.state) );
+    return true;
+}
+
+/*
+ * An unrecorded death undone: the owner's file was never saved over since
+ * it (corpse_registry_may_save refused every save), so it still holds
+ * everything, and the corpse is its twin. Its record goes to history as
+ * "undone" and the object, with what is in it, goes. False if the record
+ * could not leave live/: then nothing changes and it is tried again.
+ */
+static bool unrecorded_undo( int i, const char *how )
+{
+    CORPSE_TRACK *t = &tracks[i];
+    OBJ_DATA *corpse = t->corpse;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( corpse_live_to_history( &t->rec, "undone" ) == DURABLE_FAILED )
+    {
+        char path[MAX_STRING_LENGTH];
+        struct stat st;
+
+        /* Never written at all is no record to move; one that is there
+           and would not move stays, and is tried again. */
+        live_path( &t->rec, path, sizeof(path) );
+        if ( stat( path, &st ) == 0 )
+            return false;
+    }
+    snprintf( buf, sizeof(buf), "undone: the death was never recorded and their file, "
+              "never saved since, still holds everything (%s)", how );
+    corpse_log( &t->rec, buf );
+    recovery_record( "corpse", "undone", t->rec.owner, t->rec.id, "death", "-", buf );
+    snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s was undone -- the death was "
+              "never recorded, and their file still holds everything (%s).", t->rec.owner,
+              t->rec.id, how );
+    log_string( buf );
+    track_drop( i );
+    if ( corpse != NULL )
+        extract_obj( corpse );      /* its twin is in their file */
+    return true;
+}
+
+/*
  * A player's corpse was just made, by make_corpse, in their death room.
  * `snapshot` is the death snapshot just published, if it is this
  * character's; a corpse is written down whatever the snapshot came to,
@@ -430,33 +523,19 @@ void corpse_registry_died( CHAR_DATA *ch, OBJ_DATA *corpse, const char *snapshot
      * theirs carries it -- then the record, held: the post-death save in
      * raw_kill settles it (corpse_registry_death_settle), and a crash at
      * any point is settled from their file. Without the receipt or the
-     * mark the old way is all there is: the corpse kept as it lies.
+     * mark the death is UNRECORDED, never an ordinary corpse: their file
+     * is not saved over until it is recorded (review, 2026-10-30).
      */
-    snprintf( t->op, sizeof(t->op), "death:%s", t->rec.id );
+    if ( !death_record( t, ch, true ) )
     {
-        char mark[96];
-
-        snprintf( mark, sizeof(mark), "restore:%s", t->op );
-        snprintf( buf, sizeof(buf), "corpse %s in room %d", t->rec.id, t->rec.room );
-        if ( !player_fix_can_record( ch, mark ) )
-            bug( "corpse_registry_died: the Fixes list is full; the death is not ledgered", 0 );
-        else if ( !recovery_record( "request", "pending", ch->name, t->op, "death",
-                                    playlog_cause(), buf ) )
-            bug( "corpse_registry_died: the ledger refused the death's receipt", 0 );
-        else if ( !player_fix_record( ch, mark ) )
-        {
-            recovery_record( "request", "abandoned", ch->name, t->op, "death", "-",
-                             "the mark could not be kept; the corpse is kept as it lies" );
-            bug( "corpse_registry_died: the death's mark could not be kept", 0 );
-        }
-        else
-        {
-            t->pending = PEND_DEATH;
-            t->held = true;
-            t->last_try = current_time;
-        }
-        if ( t->pending == PEND_NONE )
-            t->op[0] = '\0';
+        t->pending = PEND_UNRECORDED;
+        t->held = true;
+        t->last_try = current_time;
+        toc_strlcpy( t->rec.state, "unrecorded", sizeof(t->rec.state) );
+        snprintf( buf, sizeof(buf), "Corpse keeper: %s's death was not recorded (corpse %s); "
+                  "their file is kept as it was, and it is tried again.", ch->name, t->rec.id );
+        log_string( buf );
+        wizinfo( buf, staff_notice_level( ch, LEVEL_IMMORTAL ) );
     }
 
     /* On the disk before the game goes on: the death is the moment it
@@ -689,7 +768,8 @@ bool corpse_registry_settling( OBJ_DATA *obj )
     if ( track_count == 0 )
         return false;
     for ( top = obj; top != NULL; top = top->in_obj )
-        if ( ( i = track_find( top ) ) >= 0 && tracks[i].pending == PEND_DEATH )
+        if ( ( i = track_find( top ) ) >= 0
+        &&   ( tracks[i].pending == PEND_DEATH || tracks[i].pending == PEND_UNRECORDED ) )
             return true;
     return false;
 }
@@ -870,6 +950,9 @@ bool corpse_registry_may_save( CHAR_DATA *ch )
     {
         CORPSE_TRACK *t = &tracks[i];
 
+        /* Not recorded: the file must go on holding everything. */
+        if ( t->pending == PEND_UNRECORDED && !str_cmp( t->rec.owner, ch->name ) )
+            return false;
         if ( t->pending != PEND_DEATH || t->record_ok || str_cmp( t->rec.owner, ch->name ) )
             continue;
         pend_mark( t, mark, sizeof(mark) );
@@ -915,8 +998,20 @@ void corpse_registry_death_settle( CHAR_DATA *ch )
     if ( ch == NULL || IS_NPC(ch) )
         return;
     for ( i = 0; i < track_count; i++ )
-        if ( tracks[i].pending == PEND_DEATH && !str_cmp( tracks[i].rec.owner, ch->name ) )
+    {
+        if ( str_cmp( tracks[i].rec.owner, ch->name ) )
+            continue;
+        if ( tracks[i].pending == PEND_DEATH )
             any = true;
+        else if ( tracks[i].pending == PEND_UNRECORDED )
+        {
+            /* Nothing to save yet: the file keeps everything until the
+               death is recorded (pend_retry). */
+            send_to_char( "Your death could not be written down yet. Your corpse keeps what "
+                          "you carried, and nothing of yours is saved until it is.\n\r", ch );
+            return;
+        }
+    }
     if ( !any )
         return;
     /* "death-save-<Name>" fails this save alone, for the tests: the death
@@ -941,6 +1036,22 @@ void corpse_registry_death_settle( CHAR_DATA *ch )
                   ? "was saved but is not confirmed on the disk" : "could not be saved" );
         log_string( buf );
     }
+}
+
+/* A fresh login, from the file just read (not a reconnect, which keeps
+   the character who died): that file was never saved over since an
+   unrecorded death of theirs, so it holds everything, and the corpse is
+   its twin. */
+void corpse_registry_login( CHAR_DATA *ch )
+{
+    int i;
+
+    if ( ch == NULL || IS_NPC(ch) || track_count == 0 )
+        return;
+    for ( i = track_count - 1; i >= 0; i-- )
+        if ( i < track_count && tracks[i].pending == PEND_UNRECORDED
+        &&   !str_cmp( tracks[i].rec.owner, ch->name ) )
+            unrecorded_undo( i, "settled at their login" );
 }
 
 /* At login, from the file just read: a pending transfer of theirs that
@@ -983,9 +1094,39 @@ static void pend_retry( void )
         if ( t->pending == PEND_NONE || current_time - t->last_try < PEND_RETRY_SECS )
             continue;
         t->last_try = current_time;
-        if ( t->pending == PEND_DEATH && !t->record_ok && t->corpse != NULL
-        &&   track_write( t ) )
+        if ( ( t->pending == PEND_DEATH || t->pending == PEND_UNRECORDED )
+        &&   !t->record_ok && t->corpse != NULL && track_write( t ) )
             t->record_ok = true;
+        if ( t->pending == PEND_UNRECORDED )
+        {
+            owner = player_in_game( t->rec.owner, &logging_in );
+            if ( owner == NULL )
+            {
+                /* They left unsaved (every save was refused): the file
+                   holds everything. */
+                unrecorded_undo( i, "they left the game before it was recorded" );
+                return;
+            }
+            if ( logging_in || IS_NPC(owner) || !death_record( t, owner, false ) )
+                continue;
+            {
+                char buf[MAX_STRING_LENGTH];
+
+                snprintf( buf, sizeof(buf), "Corpse keeper: %s's death (corpse %s) is "
+                          "recorded now; it settles through their save.", t->rec.owner,
+                          t->rec.id );
+                log_string( buf );
+                corpse_log( &t->rec, "the death is recorded now" );
+            }
+            /* The record again, saying "live": the receipt is what boot
+               reads from here on. */
+            if ( t->corpse != NULL )
+                t->record_ok = track_write( t );
+            if ( recovery_fault( "death-recorded-crash" ) )
+                _exit( 3 );     /* the test of a crash between the two */
+            save_char_obj( owner );     /* settles it, through the save */
+            return;
+        }
         pend_mark( t, mark, sizeof(mark) );
         if ( ( owner = player_in_game( t->rec.owner, &logging_in ) ) != NULL )
         {
@@ -1328,6 +1469,31 @@ void corpse_registry_boot( void )
                         bug( "corpse_registry_boot: a pending death was left unsettled", 0 );
                         continue;
                     }
+                }
+                /* A death that was never recorded: their file was never
+                   saved over since, so it holds everything, and this is
+                   its twin. Unless the receipt was written and committed
+                   after the record last said so -- then the file is the
+                   post-death one and the corpse is theirs. */
+                else if ( !strcmp( rec.state, "unrecorded" )
+                &&        recovery_request_state( op ) != RECOVERY_COMMITTED )
+                {
+                    if ( corpse_live_to_history( &rec, "undone" ) == DURABLE_FAILED )
+                    {
+                        bug( "corpse_registry_boot: an unrecorded death's record could not "
+                             "leave live/; it is not laid", 0 );
+                        continue;
+                    }
+                    recovery_record( "corpse", "undone", rec.owner, rec.id, "reconcile", "boot",
+                                     "the death was never recorded; their file still holds "
+                                     "everything, and the corpse is not laid" );
+                    corpse_log( &rec, "undone at boot: the death was never recorded, and their "
+                                "file still holds everything" );
+                    snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s was not laid -- "
+                              "the death was never recorded, and their file still holds "
+                              "everything.", rec.owner, rec.id );
+                    log_string( buf );
+                    continue;
                 }
             }
             if ( corpse_file_read( path, &rec, &list, why, sizeof(why) ) < 0

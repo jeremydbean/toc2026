@@ -3645,6 +3645,11 @@ case CON_DEFAULT_CHOICE:
 	        char_to_room( ch, get_room_index( ROOM_VNUM_TEMPLE ) );
 	    }
 
+	    /* A death of theirs never recorded: this file still holds
+	       everything, and the corpse goes (corpses.c) -- before anything
+	       here saves them. */
+	    if ( !is_new_character )
+	        corpse_registry_login( ch );
 	    act( "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
 	    do_look( ch, "auto" );
 

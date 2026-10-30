@@ -194,6 +194,13 @@ static const PLAYER_FIX player_fixes[] =
     /* A refilled Hyrule chest gave a second copy of a held shard. */
     { "20261029-spare-shards", "spare Triforce shards from a refilled chest",
       fix_spare_triforce_shards, false },
+    /* The same sweep again, for those the first visited: it took back at
+       most 64 and was marked done whatever it left, so lifting the cap
+       reached nobody it had already marked (review, 2026-10-30). The
+       sweep keeps one of each and takes nothing from anyone without a
+       spare, so running it twice is harmless. */
+    { "20261030-spare-shards-again", "spare Triforce shards the first sweep left",
+      fix_spare_triforce_shards, false },
 };
 
 #define PLAYER_FIX_COUNT ( (int)( sizeof(player_fixes) / sizeof(player_fixes[0]) ) )

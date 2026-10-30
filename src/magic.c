@@ -10,6 +10,7 @@
 #else
 #include <sys/types.h>
 #endif
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -506,6 +507,42 @@ int mana_cost (CHAR_DATA *ch, int min_mana, int level)
  */
 char *target_name;
 
+/* Whether `word` names something spell `sn` could be cast at, here: a
+   character for a spell aimed at one, an object for one aimed at an
+   object. CAST 'CHILL' TORCH took Torch for a slip of "touch", ate it and
+   cast at whoever the caster was fighting (review, 2026-10-30). */
+static bool cast_word_is_target( CHAR_DATA *ch, int sn, const char *word )
+{
+    char arg[MAX_INPUT_LENGTH];
+
+    if ( word[0] == '\0' || !skill_is_spell( sn ) )
+        return FALSE;
+    toc_strlcpy( arg, word, sizeof(arg) );
+    switch ( skill_table[sn].target )
+    {
+    case TAR_CHAR_OFFENSIVE:
+    case TAR_CHAR_DEFENSIVE:
+    case TAR_CHAR_SELF:
+        return get_char_room( ch, arg ) != NULL;
+    case TAR_OBJ_INV:
+        return get_obj_carry( ch, arg ) != NULL;
+    case TAR_OBJ_HERE:
+        return get_obj_here( ch, arg ) != NULL;
+    default:
+        return get_char_room( ch, arg ) != NULL || get_obj_here( ch, arg ) != NULL;
+    }
+}
+
+/* Whether the n-th word (from 1) of `name` is exactly `word`. */
+static bool name_word_is( const char *name, int n, const char *word )
+{
+    char w[MAX_INPUT_LENGTH];
+
+    for ( ; n > 0; n-- )
+        name = next_word( name, w, sizeof(w) );
+    return w[0] != '\0' && !str_cmp( w, word );
+}
+
 void do_cast( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -515,6 +552,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
     void *vo;
     int mana;
     int sn;
+    bool quoted;
     void check_killer args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
     LIST_ITERATOR iter;
 
@@ -540,10 +578,22 @@ void do_cast( CHAR_DATA *ch, char *argument )
      */
     target_name = one_argument( argument, arg1 );
 
+    /* A quoted name is exactly the spell's name: nothing after the
+       closing quote is part of it, mended or not (review, 2026-10-30). */
+    {
+        const char *a = argument;
+
+        while ( isspace( (unsigned char) *a ) )
+            a++;
+        quoted = *a == '\'' || *a == '"';
+    }
+
+    if ( !quoted )
     {
         char candidate[MAX_INPUT_LENGTH];
         char word[MAX_INPUT_LENGTH];
         char *rest = target_name;
+        int longer;
 
         toc_strlcpy( candidate, arg1, sizeof(candidate) );
 
@@ -557,7 +607,14 @@ void do_cast( CHAR_DATA *ch, char *argument )
             toc_strlcat( candidate, " ", sizeof(candidate) );
             toc_strlcat( candidate, word, sizeof(candidate) );
 
-            if ( find_spell( ch, candidate ) < 0 )
+            if ( ( longer = find_spell( ch, candidate ) ) < 0 )
+                break;
+            /* A word that only begins the spell's next word, when the
+               spell is the same without it, is a target if it names one
+               here: CAST CHILL T is chill touch at Torch. */
+            if ( longer == find_spell( ch, arg1 )
+            &&   !name_word_is( skill_table[longer].name, count_words( candidate ), word )
+            &&   cast_word_is_target( ch, longer, word ) )
                 break;
 
             /* The lookup below re-resolves arg1, so only the
@@ -573,7 +630,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
        and that have more words than it, the one the line is nearest to,
        word by word. A typo in the start (CUER LIGHT) is not guessed at:
        it is answered with the spells it is near. */
-    if ( !IS_NPC(ch) && arg1[0] != '\0' && target_name[0] != '\0' )
+    if ( !IS_NPC(ch) && !quoted && arg1[0] != '\0' && target_name[0] != '\0' )
     {
         char line[MAX_INPUT_LENGTH];
         int sn2, best = -1, best_s = 0, have = 1;
@@ -605,6 +662,17 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 best = sn2;
                 best_s = s;
             }
+        }
+        /* Never when the next word names a target of the spell already
+           read: CAST CHILL TORCH is chill touch at Torch. */
+        if ( best >= 0 )
+        {
+            char first[MAX_INPUT_LENGTH];
+            int now = find_spell( ch, arg1 );
+
+            next_word( target_name, first, sizeof(first) );
+            if ( cast_word_is_target( ch, now >= 0 ? now : best, first ) )
+                best = -1;
         }
         if ( best >= 0 )
         {

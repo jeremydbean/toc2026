@@ -3143,6 +3143,7 @@ bool    corpse_registry_may_save    ( CHAR_DATA *ch );
 void    corpse_registry_owner_saved ( CHAR_DATA *ch );
 void    corpse_registry_death_settle( CHAR_DATA *ch );
 bool    corpse_registry_reconcile_login( CHAR_DATA *ch, const char *op );
+void    corpse_registry_login       ( CHAR_DATA *ch );
 void    corpse_registry_moved         ( OBJ_DATA *corpse );
 void    corpse_registry_making        ( bool making );
 void    corpse_registry_forget_player ( const char *name );

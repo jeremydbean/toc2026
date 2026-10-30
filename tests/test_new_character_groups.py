@@ -61,7 +61,14 @@ class NewCharacterLiveTests(unittest.TestCase):
             self.assertNotIn("Gr 'mage default'", saved)
             self.assertNotIn("'magic missile'", saved)
             # Born correct: every login fix is marked, none is run.
-            self.assertIn("Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards~", saved)
+            # Every id in the table, read from it, so a new fix cannot be
+            # forgotten here or quietly skipped at creation.
+            fixes_c = (ROOT / "src" / "fixes.c").read_text(encoding="latin-1")
+            table = fixes_c[fixes_c.index("player_fixes[] ="):]
+            ids = re.findall(r'^\s*\{ "(\d{8}-[a-z-]+)",', table[:table.index("};")], re.M)
+            self.assertGreaterEqual(len(ids), 4)
+            marked = re.search(r"(?m)^Fixes (.*)~$", saved).group(1).split()
+            self.assertEqual(marked, ids)
 
     def test_the_stray_groups_are_taken_back_and_the_practice_refunded(self) -> None:
         """Owner, 2026-10-21: remove the mage spells from anyone who should
