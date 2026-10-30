@@ -20041,3 +20041,6 @@
 1793361774	cmd	Rockcrusher	52	4203	dresden_halloween.are	standing	83	0	-	exits		Obvious exits: // North - The Sickroom of the Restless // South - The Hall of Whispers
 1793361777	refused	Rockcrusher	52	4203	dresden_halloween.are	standing	83	0	-	(unknown)		Huh? To leave the game, type QUIT.
 1793361780	session	Rockcrusher	52	4203	dresden_halloween.are	quit	850s	+0 levels	-10 exp	+2072523 copper	8 kills	0 deaths	0 quests	109 commands	4 refused	coin: loot 2p 7g 25s 23c
+1793392976	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793392987	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	lastlog		Recent logins, newest first: // Date/Time            Character      Event      Played     Host // Fri Oct 30 20:42:54  Killuminati    connect    -          99.62.115.159
+1793393018	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1815 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
