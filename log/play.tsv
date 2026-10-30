@@ -20022,3 +20022,22 @@
 1793361597	cmd	Rockcrusher	52	28105	azeroth.are	standing	76	0	-	up		Up in the guard tower //   From up here you can get a good view of the Orcish camp. You get the // idea you shouldn't be up here. Maybe it's time to climb down before it's
 1793361606	cmd	Rockcrusher	52	28105	azeroth.are	standing	76	0	-	skills		Level  1: dagger              81%      hand to hand       100%       //           recall              83%       // Level  3: kick               100%      
 1793361609	cmd	Rockcrusher	52	28105	azeroth.are	standing	76	0	-	recall		The Gods have forsaken you.
+1793361714	cmd	Rockcrusher	52	28104	azeroth.are	standing	79	0	-	down		Going Up the Tower //   The exits are up to the top and back down to the ground. // [Exits: up down]
+1793361715	cmd	Rockcrusher	52	28102	azeroth.are	standing	79	0	-	down		Outside the Barracks //   Before you lay hundreds of tents filled with training Orcish warriors. // The exits are north toward the portal and south into the barracks. There
+1793361717	cmd	Rockcrusher	52	28101	azeroth.are	standing	79	0	-	north		Entrance to Azeroth //   You are surrounded by several massive stones while behind you is the // dark portal. The Orcs used this portal to gain entrance to Azeroth. Now
+1793361724	cmd	Rockcrusher	52	28161	azeroth.are	standing	79	0	-	enter	portal	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Watch Your Step!
+1793361733	cmd	Rockcrusher	52	28161	azeroth.are	standing	81	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1793361736	cmd	Rockcrusher	52	4207	dresden_halloween.are	standing	81	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793361742	cmd	Rockcrusher	52	4207	dresden_halloween.are	standing	81	0	-	who		[52 Dwarf   Hero  ] Rockcrusher the Madness in Your Mind // Players found: 1
+1793361744	cmd	Rockcrusher	52	4207	dresden_halloween.are	standing	81	0	-	look		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793361747	cmd	Rockcrusher	52	4204	dresden_halloween.are	standing	81	0	-	north		The Gallery of Grinning Skulls //   Rows of skulls line the walls of this domed hall on shelves of black crepe, // each with a candle guttering inside so its eyes and teeth glow. They are
+1793361748	cmd	Rockcrusher	52	4211	dresden_halloween.are	standing	81	0	-	north		Entrance to the inner Sanctum. //   This door is guarded by a very large warrior dressed in white robes and // wielding a two-handed sword.
+1793361753	cmd	Rockcrusher	52	4211	dresden_halloween.are	standing	81	0	-	north		The Templar of Devota stands immovable before you blocking your way.
+1793361759	cmd	Rockcrusher	52	4211	dresden_halloween.are	standing	81	0	-	open	door	Ok.
+1793361761	cmd	Rockcrusher	52	4211	dresden_halloween.are	standing	81	0	-	north		The Templar of Devota stands immovable before you blocking your way.
+1793361765	cmd	Rockcrusher	52	4211	dresden_halloween.are	standing	81	0	-	look		Entrance to the inner Sanctum. //   This door is guarded by a very large warrior dressed in white robes and // wielding a two-handed sword.
+1793361768	cmd	Rockcrusher	52	4204	dresden_halloween.are	standing	81	0	-	south		The Gallery of Grinning Skulls //   Rows of skulls line the walls of this domed hall on shelves of black crepe, // each with a candle guttering inside so its eyes and teeth glow. They are
+1793361770	cmd	Rockcrusher	52	4203	dresden_halloween.are	standing	83	0	-	east		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793361774	cmd	Rockcrusher	52	4203	dresden_halloween.are	standing	83	0	-	exits		Obvious exits: // North - The Sickroom of the Restless // South - The Hall of Whispers
+1793361777	refused	Rockcrusher	52	4203	dresden_halloween.are	standing	83	0	-	(unknown)		Huh? To leave the game, type QUIT.
+1793361780	session	Rockcrusher	52	4203	dresden_halloween.are	quit	850s	+0 levels	-10 exp	+2072523 copper	8 kills	0 deaths	0 quests	109 commands	4 refused	coin: loot 2p 7g 25s 23c

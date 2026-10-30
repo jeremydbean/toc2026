@@ -223270,3 +223270,36 @@ Fri Oct 30 11:59:57 2026 :: Log Rockcrusher [28104]: up
 Fri Oct 30 11:59:57 2026 :: Log Rockcrusher [28105]: arrived (Up in the guard tower) from 28104
 Fri Oct 30 12:00:06 2026 :: Log Rockcrusher [28105]: skills
 Fri Oct 30 12:00:09 2026 :: Log Rockcrusher [28105]: recall
+Fri Oct 30 12:01:54 2026 :: Log Rockcrusher [28105]: d
+Fri Oct 30 12:01:54 2026 :: Log Rockcrusher [28104]: arrived (Going Up the Tower) from 28105
+Fri Oct 30 12:01:55 2026 :: Log Rockcrusher [28104]: d
+Fri Oct 30 12:01:55 2026 :: Log Rockcrusher [28102]: arrived (Outside the Barracks) from 28104
+Fri Oct 30 12:01:57 2026 :: Log Rockcrusher [28102]: n
+Fri Oct 30 12:01:57 2026 :: Log Rockcrusher [28101]: arrived (Entrance to Azeroth) from 28102
+Fri Oct 30 12:02:04 2026 :: Log Rockcrusher [28101]: enter portal
+Fri Oct 30 12:02:04 2026 :: Log Rockcrusher [28161]: arrived (Watch Your Step!) from 28101
+Fri Oct 30 12:02:13 2026 :: Log Rockcrusher [28161]: recall
+Fri Oct 30 12:02:16 2026 :: Log Rockcrusher [28161]: recall
+Fri Oct 30 12:02:16 2026 :: Log Rockcrusher [4207]: arrived (Before the Shrouded Altar) from 28161
+Fri Oct 30 12:02:22 2026 :: Log Rockcrusher [4207]: who
+Fri Oct 30 12:02:24 2026 :: Log Rockcrusher [4207]: look
+Fri Oct 30 12:02:27 2026 :: Log Rockcrusher [4207]: n
+Fri Oct 30 12:02:27 2026 :: Log Rockcrusher [4204]: arrived (The Gallery of Grinning Skulls) from 4207
+Fri Oct 30 12:02:28 2026 :: Log Rockcrusher [4204]: n
+Fri Oct 30 12:02:28 2026 :: Log Rockcrusher [4211]: arrived (Entrance to the inner Sanctum.) from 4204
+Fri Oct 30 12:02:33 2026 :: Log Rockcrusher [4211]: n
+Fri Oct 30 12:02:39 2026 :: Log Rockcrusher [4211]: open door
+Fri Oct 30 12:02:41 2026 :: Log Rockcrusher [4211]: n
+Fri Oct 30 12:02:45 2026 :: Log Rockcrusher [4211]: look
+Fri Oct 30 12:02:48 2026 :: Log Rockcrusher [4211]: s
+Fri Oct 30 12:02:48 2026 :: Log Rockcrusher [4204]: arrived (The Gallery of Grinning Skulls) from 4211
+Fri Oct 30 12:02:50 2026 :: Log Rockcrusher [4204]: e
+Fri Oct 30 12:02:50 2026 :: Log Rockcrusher [4203]: arrived (The Hall of Cobwebs) from 4204
+Fri Oct 30 12:02:54 2026 :: Log Rockcrusher [4203]: exit
+Fri Oct 30 12:02:57 2026 :: Log Rockcrusher [4203]: (refused) logoff
+Fri Oct 30 12:03:00 2026 :: Log Rockcrusher [4203]: quit
+Fri Oct 30 12:03:00 2026 :: Rockcrusher has quit.
+Fri Oct 30 12:03:00 2026 :: [QUIT] Player rejoined the real world.
+Fri Oct 30 12:04:21 2026 :: Treasure goblin: vanished from room 5224 (Under the watchtower, oldthalo.are) (too long in one area).
+Fri Oct 30 12:04:21 2026 :: Sock.sinaddr:  5.161.113.195
+Fri Oct 30 12:04:22 2026 :: EOF encountered on read.

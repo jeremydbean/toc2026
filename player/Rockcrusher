@@ -1,7 +1,7 @@
 #PLAYER
 Name Rockcrusher~
 Id   3259
-LogO 1793361330
+LogO 1793361780
 Vers 4
 Desc You hear a dripping noise.  It gets louder and louder and louder...
 It won't go away!!!  You frantically slap yourself and smash your fists
@@ -28,7 +28,7 @@ Desc You hear a dripping noise.  It gets louder and louder and louder...
 Prom ~
 Ignoring ~
 Race dwarf~
-Sex  1
+Sex  2
 Cla  4
 Gui  4
 Psionic  1
@@ -39,17 +39,17 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards~
 Cast none
 Levl 52
-Plyd 1041370
+Plyd 1041820
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 3510
-HMV  861 861 923 923 431 431
-NewGold 23891
-NewPlat 0
-NewCopp 13
-NewSilv 1
+Room 4203
+HMV  722 861 826 923 263 431
+NewGold 23898
+NewPlat 2
+NewCopp 36
+NewSilv 26
 BankCP 0
 IntTime 1793321457
 IntTotal 0
@@ -58,7 +58,7 @@ SavedOnce 1
 Corpses	0
 PkRec 4
 PkGiv 0
-AchKills 3
+AchKills 9
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -79,28 +79,31 @@ Achv first-kill 1792459314
 Achv visit-astral 1792459086
 Achv carry-one-platinum 1789615323
 Achv carry-hundred-platinum 1789615323
+Achv four-denominations 1793361440
 Achv level-35 1792339835
 Achv level-45 1792339835
 Achv carry-ten-platinum 1792339835
 Achv visit-pet-shop 1792459357
+Achv visit-azeroth 1793361501
 Achv mastered-1 1793360930
 Achv mastered-5 1793360930
 Achv weapons-1 1793360930
-AchSet areas 502957651 840101374 1069968534 ~
-AchSet rooms 2430-2432 2562 3505 3507 3510 ~
-LastOut  1793361330
+AchSet areas 502957651 840101374 1069968534 1510063686 ~
+AchSet rooms 2430-2432 2562 3505 3507 3510 3516 3519 3521-3523 3551-3556 4203-4204 4207 4211 28101-28102 28104-28105 28161 ~
+AchSet psi-disciplines 3 ~
+LastOut  1793361780
 Rested 0 0
 Daily 0 0 0 0 0
-SesLogin 0
-SesDur   0
-SesExpG  0
+SesLogin 1793360930
+SesDur   850
+SesExpG  -10
 SesLvlG  0
-SesKill  0
+SesKill  8
 SesPK    0
 SesDead  0
 SesQuest 0
 QuestPnts 191
-Exp  129407
+Exp  129397
 Act  204
 AfBy 512
 Comm 24576
@@ -175,6 +178,7 @@ Sk 83 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
+AffD 'change sex'   6 106   1   6          0          0
 End
 
 #O
@@ -699,6 +703,15 @@ Wear 10
 Lev  51
 Cost 20000000
 Cond 100
+Repd 0
+End
+
+#O
+Vnum 29900
+Nest 0
+Wear -1
+Cost 10000
+Cond 75
 Repd 0
 End
 
