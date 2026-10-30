@@ -5,6 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261030b 2026-10-30
+The game is better at guessing what you mean. An abbreviation reaches a
+command you can use before a skill you do not have (MIND finds the
+power you hold). Multi-word skills and spells may be shortened a word at
+a time: MI LE, CR DA, CAST CU LI. CAST finds a spell you know before one
+you do not, reads a slip in the rest of a name (CAST CURE LGIHT), and
+says which of your spells you probably meant. A typo or a spell typed
+without CAST is answered with your own commands and spells, and two
+swapped letters count as one slip.
+
 @ 20261030a 2026-10-30
 A skill typed by its whole name now works: EGO WHIP, FISTS OF FURY,
 CRANE DANCE, STUNNING BLOW, NERVE DAMAGE, STEEL FIST, DIRT KICKING,

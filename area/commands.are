@@ -2981,7 +2981,11 @@ A spell name of more than one word needs no quotes: cast cure critic frag
 works, and so does cast 'cure critic' frag if you prefer them.  The longest
 run of words that names a spell is taken as the spell, and whatever is left
 is the target, so cast cure light dwarf finds cure light and heals the
-dwarf.  You can abbreviate the spell name.
+dwarf.  You can abbreviate the spell name, a word at a time if you like
+(cast cu li, cast mag mis), and an abbreviation finds a spell you know
+before one you do not.  A slip in the rest of a name you have started
+right is read as that spell (cast cure lgiht), and a name the game cannot
+place gets the spells of yours it is nearest to.
 
 When you cast an offensive spell, the victim usually gets a saving throw.
 The effect of the spell is reduced or eliminated if the victim makes the

@@ -2286,7 +2286,10 @@ static bool help_phrase_prefix( const char *argument, const char *keywords )
  */
 static int help_word_distance( const char *a, const char *b, int limit )
 {
-    int prev[MAX_INPUT_LENGTH + 1], cur[MAX_INPUT_LENGTH + 1];
+    /* Two letters swapped is one typo, not two (owner, 2026-10-30:
+       CUER for cure, LGIHT for light): the optimal string alignment
+       distance, Levenshtein's with an adjacent transposition. */
+    int prev2[MAX_INPUT_LENGTH + 1], prev[MAX_INPUT_LENGTH + 1], cur[MAX_INPUT_LENGTH + 1];
     int la = (int) strlen( a ), lb = (int) strlen( b );
     int i, j;
 
@@ -2294,7 +2297,7 @@ static int help_word_distance( const char *a, const char *b, int limit )
     ||   la - lb > limit || lb - la > limit )
         return limit + 1;
     for ( j = 0; j <= lb; j++ )
-        prev[j] = j;
+        prev2[j] = prev[j] = j;
     for ( i = 1; i <= la; i++ )
     {
         int best;
@@ -2307,14 +2310,20 @@ static int help_word_distance( const char *a, const char *b, int limit )
 
             if ( prev[j] + 1 < v ) v = prev[j] + 1;
             if ( cur[j-1] + 1 < v ) v = cur[j-1] + 1;
+            if ( i > 1 && j > 1 && LOWER(a[i-1]) == LOWER(b[j-2])
+            &&   LOWER(a[i-2]) == LOWER(b[j-1]) && prev2[j-2] + 1 < v )
+                v = prev2[j-2] + 1;
             cur[j] = v;
             if ( v < best ) best = v;
         }
-        if ( best > limit )
+        /* A transposition reaches back two rows, so the early stop waits
+           for two rows past the limit. */
+        if ( best > limit + 1 )
             return limit + 1;
+        memcpy( prev2, prev, sizeof(int) * (size_t)( lb + 1 ) );
         memcpy( prev, cur, sizeof(int) * (size_t)( lb + 1 ) );
     }
-    return prev[lb];
+    return prev[lb] > limit ? limit + 1 : prev[lb];
 }
 
 /* The same measure for anybody else who needs to catch a typo: the

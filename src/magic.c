@@ -53,6 +53,235 @@ int skill_lookup( const char *name )
 
 
 
+/* Whether skill sn is a spell, something CAST can say, rather than a
+   skill with a command of its own. */
+bool skill_is_spell( int sn )
+{
+    return sn >= 0 && sn < MAX_SKILL && skill_table[sn].name != NULL
+        && skill_table[sn].spell_fun != spell_null;
+}
+
+/* A spell this character can cast: one of theirs, at their level. */
+bool spell_known( CHAR_DATA *ch, int sn )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && skill_is_spell( sn )
+        && ch->level >= skill_table[sn].skill_level[ch->class]
+        && ch->pcdata->learned[sn] > 0;
+}
+
+/* The next word of s into word (at most size - 1 characters), past it. */
+static const char *next_word( const char *s, char *word, size_t size )
+{
+    size_t n = 0;
+
+    while ( *s == ' ' )
+        s++;
+    while ( *s != '\0' && *s != ' ' )
+    {
+        if ( n + 1 < size )
+            word[n++] = *s;
+        s++;
+    }
+    word[n] = '\0';
+    return s;
+}
+
+static int count_words( const char *s )
+{
+    char word[MAX_INPUT_LENGTH];
+    int n = 0;
+
+    for ( s = next_word( s, word, sizeof(word) ); word[0] != '\0';
+          s = next_word( s, word, sizeof(word) ) )
+        n++;
+    return n;
+}
+
+/* Two or more words, each the start of the matching word of `name`, in
+   order: MAG MIS for magic missile, CU LI for cure light, MI LE for mind
+   leech. Fewer words than the name is fine (CURE LI). */
+bool words_abbreviate( const char *asked, const char *name )
+{
+    char a[MAX_INPUT_LENGTH], b[MAX_INPUT_LENGTH];
+    int words = 0;
+
+    for ( ; ; )
+    {
+        asked = next_word( asked, a, sizeof(a) );
+        if ( a[0] == '\0' )
+            break;
+        name = next_word( name, b, sizeof(b) );
+        if ( b[0] == '\0' || str_prefix( a, b ) )
+            return FALSE;
+        words++;
+    }
+    return words >= 2;
+}
+
+/*
+ * How near a phrase is to a name, word by word: the summed typos when
+ * both have the same number of words and each word is within a typo of
+ * its match (two for a word of six letters or more) or begins it (two
+ * letters at least), or -1. MAGCI MISILE is 3 from magic missile as a
+ * whole string, past any limit for one word; word by word it is 1 + 1.
+ */
+int words_near( const char *asked, const char *name )
+{
+    char a[MAX_INPUT_LENGTH], b[MAX_INPUT_LENGTH];
+    int total = 0;
+
+    if ( count_words( asked ) != count_words( name ) || count_words( asked ) < 1 )
+        return -1;
+    for ( ; ; )
+    {
+        int limit, d;
+
+        asked = next_word( asked, a, sizeof(a) );
+        name = next_word( name, b, sizeof(b) );
+        if ( a[0] == '\0' )
+            break;
+        if ( strlen( a ) >= 2 && !str_prefix( a, b ) )
+            continue;
+        limit = strlen( b ) >= 6 ? 2 : 1;
+        d = text_edit_distance( a, b, limit );
+        if ( d > limit )
+            return -1;
+        total += d;
+    }
+    return total;
+}
+
+/*
+ * The spell a player means by `name`, leaning to their own (owner,
+ * 2026-10-30: smarter about what players mean). skill_lookup takes the
+ * first name in the table the word begins, known or not, so CAST C found
+ * a spell the caster had never learned while CURE LIGHT sat in their
+ * book. In order: an exact name; the first spell they know that the word
+ * begins; the first spell they know whose words the words begin (MAG
+ * MIS); then skill_lookup, so a name they do not know still finds its
+ * spell and is refused as before. A mobile is skill_lookup's alone.
+ */
+int find_spell( CHAR_DATA *ch, const char *name )
+{
+    int sn;
+
+    if ( name == NULL || name[0] == '\0' )
+        return -1;
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return skill_lookup( name );
+    for ( sn = 0; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+        if ( !str_cmp( name, skill_table[sn].name ) )
+            return sn;
+    for ( sn = 0; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+        if ( spell_known( ch, sn ) && !str_prefix( name, skill_table[sn].name ) )
+            return sn;
+    for ( sn = 0; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+        if ( spell_known( ch, sn ) && words_abbreviate( name, skill_table[sn].name ) )
+            return sn;
+    return skill_lookup( name );
+}
+
+/*
+ * How near the start of `line` is to skill sn's name, or -1: the first n
+ * words of the line for a name of n words, so a target after it does
+ * not count against it -- as a whole within a typo or two (ARMR), or
+ * word by word (MAGCI MISILE BOB). Quotes are not part of a name. An
+ * exact name is 0.
+ */
+int name_nearness( const char *line, const char *name )
+{
+    char plain[MAX_INPUT_LENGTH];
+    char head[MAX_INPUT_LENGTH];
+    char word[MAX_INPUT_LENGTH];
+    const char *p;
+    int want, w, limit, d, i;
+
+    toc_strlcpy( plain, line, sizeof(plain) );
+    for ( i = 0; plain[i] != '\0'; i++ )
+        if ( plain[i] == '\'' || plain[i] == '"' )
+            plain[i] = ' ';
+    head[0] = '\0';
+    want = count_words( name );
+    for ( w = 0, p = plain; w < want; w++ )
+    {
+        p = next_word( p, word, sizeof(word) );
+        if ( word[0] == '\0' )
+            break;
+        if ( w > 0 )
+            toc_strlcat( head, " ", sizeof(head) );
+        toc_strlcat( head, word, sizeof(head) );
+    }
+    if ( strlen( head ) < 3 )
+        return -1;
+    if ( !str_cmp( head, name ) )
+        return 0;
+    limit = strlen( head ) >= 6 ? 2 : 1;
+    d = text_edit_distance( head, name, limit );
+    return d <= limit ? d : words_near( head, name );
+}
+
+/*
+ * Up to three spells this character knows that `line` is nearest to,
+ * nearest first, written "'magic missile', 'armor' or 'bless'" into
+ * out; returns how many.
+ */
+int spell_suggest( CHAR_DATA *ch, const char *line, char *out, size_t size )
+{
+    int found[3], score[3];
+    int nfound = 0, sn, i;
+
+    if ( size > 0 )
+        out[0] = '\0';
+    if ( ch == NULL || IS_NPC(ch) )
+        return 0;
+    for ( sn = 0; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+    {
+        int s;
+
+        if ( !spell_known( ch, sn )
+        ||   ( s = name_nearness( line, skill_table[sn].name ) ) <= 0 )
+            continue;
+        if ( nfound < 3 )
+        {
+            found[nfound] = sn;
+            score[nfound++] = s;
+        }
+        else
+        {
+            int worst = 0;
+
+            for ( i = 1; i < 3; i++ )
+                if ( score[i] > score[worst] )
+                    worst = i;
+            if ( s >= score[worst] )
+                continue;
+            found[worst] = sn;
+            score[worst] = s;
+        }
+    }
+    for ( i = 1; i < nfound; i++ )
+    {
+        int j = i;
+
+        while ( j > 0 && score[j - 1] > score[j] )
+        {
+            int x = score[j]; score[j] = score[j - 1]; score[j - 1] = x;
+            x = found[j]; found[j] = found[j - 1]; found[j - 1] = x;
+            j--;
+        }
+    }
+    for ( i = 0; i < nfound; i++ )
+    {
+        char quoted[MAX_INPUT_LENGTH];
+
+        if ( i > 0 )
+            toc_strlcat( out, i == nfound - 1 ? " or " : ", ", size );
+        snprintf( quoted, sizeof(quoted), "'%s'", skill_table[found[i]].name );
+        toc_strlcat( out, quoted, size );
+    }
+    return nfound;
+}
+
 /*
  * Lookup a skill by slot number.
  * Used for object loading.
@@ -303,8 +532,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
      * every multi-word spell needed `cast 'create wraith' corpse'.
      * Forgetting the quotes read as the spell not existing. Quoting
      * still works -- one_argument handles it and the loop below finds
-     * the same spell on its first pass -- and so do abbreviations,
-     * because skill_lookup is still what decides.
+     * the same spell on its first pass -- and so do abbreviations: the
+     * spell is find_spell's, which leans to the caster's own.
      *
      * Greedy matters: `cast cure light dwarf' has to find cure light
      * and leave the dwarf, not stop at cure.
@@ -328,7 +557,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
             toc_strlcat( candidate, " ", sizeof(candidate) );
             toc_strlcat( candidate, word, sizeof(candidate) );
 
-            if ( skill_lookup( candidate ) < 0 )
+            if ( find_spell( ch, candidate ) < 0 )
                 break;
 
             /* The lookup below re-resolves arg1, so only the
@@ -336,6 +565,59 @@ void do_cast( CHAR_DATA *ch, char *argument )
             target_name = after;
             toc_strlcpy( arg1, candidate, sizeof(arg1) );
             rest        = after;
+        }
+    }
+
+    /* A typo in the rest of a name of their own (CURE LGIHT, CURE POISN)
+       is that spell: of the caster's spells that what was read begins
+       and that have more words than it, the one the line is nearest to,
+       word by word. A typo in the start (CUER LIGHT) is not guessed at:
+       it is answered with the spells it is near. */
+    if ( !IS_NPC(ch) && arg1[0] != '\0' && target_name[0] != '\0' )
+    {
+        char line[MAX_INPUT_LENGTH];
+        int sn2, best = -1, best_s = 0, have = 1;
+        char *p;
+
+        for ( p = arg1; *p != '\0'; p++ )
+            if ( *p == ' ' )
+                have++;
+        toc_strlcpy( line, arg1, sizeof(line) );
+        toc_strlcat( line, " ", sizeof(line) );
+        toc_strlcat( line, target_name, sizeof(line) );
+        for ( sn2 = 0; sn2 < MAX_SKILL && skill_table[sn2].name != NULL; sn2++ )
+        {
+            int words = 1, s;
+            const char *q;
+
+            if ( !spell_known( ch, sn2 ) )
+                continue;
+            for ( q = skill_table[sn2].name; *q != '\0'; q++ )
+                if ( *q == ' ' )
+                    words++;
+            if ( words <= have
+            ||   ( have == 1 ? str_prefix( arg1, skill_table[sn2].name )
+                             : !words_abbreviate( arg1, skill_table[sn2].name ) )
+            ||   ( s = name_nearness( line, skill_table[sn2].name ) ) <= 0 )
+                continue;
+            if ( best < 0 || s < best_s )
+            {
+                best = sn2;
+                best_s = s;
+            }
+        }
+        if ( best >= 0 )
+        {
+            const char *q;
+            int words = 1;
+            char skip[MAX_INPUT_LENGTH];
+
+            for ( q = skill_table[best].name; *q != '\0'; q++ )
+                if ( *q == ' ' )
+                    words++;
+            for ( ; have < words; have++ )
+                target_name = one_argument( target_name, skip );
+            toc_strlcpy( arg1, skill_table[best].name, sizeof(arg1) );
         }
     }
 
@@ -347,10 +629,19 @@ void do_cast( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( sn = skill_lookup( arg1 ) ) < 0
+    if ( ( sn = find_spell( ch, arg1 ) ) < 0
     || ( !IS_NPC(ch) && ch->level < skill_table[sn].skill_level[ch->class] ) )
     {
-	send_to_char( "You don't know any spells of that name.\n\r", ch );
+	char near[MAX_INPUT_LENGTH];
+	char buf[MAX_STRING_LENGTH];
+
+	/* A typo of one of their own spells says which. */
+	if ( spell_suggest( ch, argument, near, sizeof(near) ) > 0 )
+	    snprintf( buf, sizeof(buf), "You don't know any spells of that name. "
+	              "Did you mean %s?\n\r", near );
+	else
+	    toc_strlcpy( buf, "You don't know any spells of that name.\n\r", sizeof(buf) );
+	send_to_char( buf, ch );
 	return;
     }
 

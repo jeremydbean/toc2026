@@ -860,89 +860,6 @@ static const struct
     { NULL,      NULL }
 };
 
-static void command_not_found_hint( CHAR_DATA *ch, const char *word )
-{
-    char out[MAX_STRING_LENGTH];
-    const char *found[3];
-    int nfound = 0, i, cmd, pass, limit;
-    int trust = get_trust( ch );
-
-    for ( i = 0; command_hints[i].word != NULL; i++ )
-        if ( !str_cmp( word, command_hints[i].word ) )
-        {
-            snprintf( out, sizeof(out), "Huh? %s\n\r", command_hints[i].hint );
-            send_to_char( out, ch );
-            return;
-        }
-
-    limit = strlen( word ) >= 6 ? 2 : 1;
-    if ( strlen( word ) >= 3 )
-    {
-        /* Closest first: everything one letter off, then two. */
-        for ( pass = 1; pass <= limit && nfound < 3; pass++ )
-            for ( cmd = 0; cmd_table[cmd].name[0] != '\0' && nfound < 3; cmd++ )
-            {
-                bool dup = false;
-
-                if ( !cmd_table[cmd].show || cmd_table[cmd].level > trust
-                ||   strlen( cmd_table[cmd].name ) < 3
-                ||   text_edit_distance( word, cmd_table[cmd].name, pass ) != pass )
-                    continue;
-                for ( i = 0; i < nfound; i++ )
-                    if ( !str_cmp( found[i], cmd_table[cmd].name ) )
-                        dup = true;
-                if ( !dup )
-                    found[nfound++] = cmd_table[cmd].name;
-            }
-    }
-
-    if ( nfound == 0 )
-    {
-        send_to_char( "Huh?\n\r", ch );
-        return;
-    }
-    toc_strlcpy( out, "Huh? Did you mean ", sizeof(out) );
-    for ( i = 0; i < nfound; i++ )
-    {
-        char name[MAX_INPUT_LENGTH];
-        int k;
-
-        toc_strlcpy( name, found[i], sizeof(name) );
-        for ( k = 0; name[k] != '\0'; k++ )
-            name[k] = UPPER( name[k] );
-        if ( i > 0 )
-            toc_strlcat( out, i == nfound - 1 ? " or " : ", ", sizeof(out) );
-        toc_strlcat( out, name, sizeof(out) );
-    }
-    toc_strlcat( out, "?\n\r", sizeof(out) );
-    send_to_char( out, ch );
-}
-
-/*
- * What interpret_body decided about the command, for the play journal
- * (playlog.c): its name, the line as it may be written down, whether its
- * words are withheld, and whether the game refused it.
- */
-static int         interp_depth;
-static bool        play_begun;
-static bool        play_secret;
-static bool        play_refused;
-static const char *play_cmd_name;
-static char        play_shown[MAX_INPUT_LENGTH];
-
-static void play_note( CHAR_DATA *ch, const char *name, const char *shown,
-                       bool secret, bool refused )
-{
-    if ( interp_depth != 1 || ch == NULL || IS_NPC(ch) || play_begun )
-        return;
-    play_cmd_name = name;
-    toc_strlcpy( play_shown, shown, sizeof(play_shown) );
-    play_secret = secret;
-    play_refused = refused;
-    play_begun = true;
-    playlog_begin( ch, name, play_shown );
-}
-
 /*
  * Skills a player types by their whole name. Commands are looked up on
  * one word and by prefix, so the rest of the name went on as the target
@@ -981,6 +898,203 @@ static const struct
     { "stunning blow",  "stunning"    },
     { NULL,             NULL          }
 };
+
+static int command_index_exact( const char *name, int trust );
+static bool command_usable( CHAR_DATA *ch, int cmd );
+
+/* The spell a line typed as a command names, when it is one of the
+   character's own: the longest leading run of its words, as CAST reads
+   them (ARMOR, CURE LIGHT, MAG MIS). -1 when it is not. */
+static int command_line_spell( CHAR_DATA *ch, const char *word, const char *argument )
+{
+    char candidate[MAX_INPUT_LENGTH];
+    char rest_buf[MAX_INPUT_LENGTH];
+    char next[MAX_INPUT_LENGTH];
+    char *rest = rest_buf;
+    int best = -1, sn, words = 0;
+
+    if ( IS_NPC(ch) || strlen( word ) < 3 )
+        return -1;
+    toc_strlcpy( candidate, word, sizeof(candidate) );
+    toc_strlcpy( rest_buf, argument, sizeof(rest_buf) );
+    for ( ; ; )
+    {
+        sn = find_spell( ch, candidate );
+        if ( sn >= 0 && spell_known( ch, sn ) )
+            best = sn;
+        else if ( words > 0 )
+            break;
+        rest = one_argument( rest, next );
+        if ( next[0] == '\0' || ++words > 3 )
+            break;
+        toc_strlcat( candidate, " ", sizeof(candidate) );
+        toc_strlcat( candidate, next, sizeof(candidate) );
+    }
+    return best;
+}
+
+static void command_not_found_hint( CHAR_DATA *ch, const char *word, const char *argument )
+{
+    char out[MAX_STRING_LENGTH];
+    const char *found[3];
+    bool found_spell[3];
+    int nfound = 0, i, cmd, pass, limit;
+    int trust = get_trust( ch );
+
+    for ( i = 0; command_hints[i].word != NULL; i++ )
+        if ( !str_cmp( word, command_hints[i].word ) )
+        {
+            snprintf( out, sizeof(out), "Huh? %s\n\r", command_hints[i].hint );
+            send_to_char( out, ch );
+            return;
+        }
+
+    /* A spell of their own typed as if it were a command (ARMOR, CURE
+       LIGHT): say how it is cast. */
+    {
+        int sn = command_line_spell( ch, word, argument );
+
+        if ( sn >= 0 )
+        {
+            snprintf( out, sizeof(out), "Huh? Spells are cast: CAST '%s'.\n\r",
+                      skill_table[sn].name );
+            send_to_char( out, ch );
+            return;
+        }
+    }
+
+    /* Within a typo, nearest first: the commands this character can use
+       -- never a skill command they lack -- the whole names of multi-word
+       ones (MND LEECH), then their own spells (MAGCI MISILE), each
+       weighed word by word against as many words as its name has. */
+    if ( strlen( word ) >= 3 )
+    {
+        char line[MAX_INPUT_LENGTH];
+        int score[3];
+        int sn;
+
+        toc_strlcpy( line, word, sizeof(line) );
+        if ( argument[0] != '\0' )
+        {
+            toc_strlcat( line, " ", sizeof(line) );
+            toc_strlcat( line, argument, sizeof(line) );
+        }
+        limit = strlen( word ) >= 6 ? 2 : 1;
+#define HINT_OFFER( text, spell, s ) \
+        do { \
+            int j_, worst_ = -1; \
+            bool dup_ = false; \
+            for ( j_ = 0; j_ < nfound; j_++ ) \
+                if ( !str_cmp( found[j_], (text) ) ) dup_ = true; \
+            if ( dup_ ) break; \
+            if ( nfound < 3 ) worst_ = nfound++; \
+            else { \
+                worst_ = 0; \
+                for ( j_ = 1; j_ < 3; j_++ ) \
+                    if ( score[j_] > score[worst_] ) worst_ = j_; \
+                if ( (s) >= score[worst_] ) break; \
+            } \
+            found[worst_] = (text); found_spell[worst_] = (spell); score[worst_] = (s); \
+        } while ( 0 )
+        for ( pass = 1; pass <= limit; pass++ )
+            for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+            {
+                if ( !cmd_table[cmd].show || cmd_table[cmd].level > trust
+                ||   strlen( cmd_table[cmd].name ) < 3 || strchr( cmd_table[cmd].name, ' ' )
+                ||   !command_usable( ch, cmd )
+                ||   text_edit_distance( word, cmd_table[cmd].name, pass ) != pass )
+                    continue;
+                HINT_OFFER( cmd_table[cmd].name, false, pass );
+            }
+        for ( i = 0; full_command_names[i].phrase != NULL; i++ )
+        {
+            int s, c = command_index_exact( full_command_names[i].command, trust );
+
+            if ( c < 0 || !command_usable( ch, c )
+            ||   ( s = name_nearness( line, full_command_names[i].phrase ) ) <= 0 )
+                continue;
+            HINT_OFFER( full_command_names[i].phrase, false, s );
+        }
+        for ( sn = 0; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+        {
+            int s;
+
+            if ( !spell_known( ch, sn )
+            ||   ( s = name_nearness( line, skill_table[sn].name ) ) <= 0 )
+                continue;
+            /* A command at the same distance is offered first. */
+            HINT_OFFER( skill_table[sn].name, true, s );
+        }
+#undef HINT_OFFER
+        /* Nearest first; a command before a spell at the same distance. */
+        for ( i = 1; i < nfound; i++ )
+        {
+            int j = i;
+
+            while ( j > 0 && ( score[j - 1] > score[j]
+                    || ( score[j - 1] == score[j] && found_spell[j - 1] && !found_spell[j] ) ) )
+            {
+                const char *f = found[j]; bool b = found_spell[j]; int s = score[j];
+
+                found[j] = found[j - 1]; found_spell[j] = found_spell[j - 1]; score[j] = score[j - 1];
+                found[j - 1] = f; found_spell[j - 1] = b; score[j - 1] = s;
+                j--;
+            }
+        }
+    }
+
+    if ( nfound == 0 )
+    {
+        send_to_char( "Huh?\n\r", ch );
+        return;
+    }
+    toc_strlcpy( out, "Huh? Did you mean ", sizeof(out) );
+    for ( i = 0; i < nfound; i++ )
+    {
+        char name[MAX_INPUT_LENGTH];
+        int k;
+
+        if ( found_spell[i] )
+            snprintf( name, sizeof(name), "CAST '%s'", found[i] );
+        else
+        {
+            toc_strlcpy( name, found[i], sizeof(name) );
+            for ( k = 0; name[k] != '\0'; k++ )
+                name[k] = UPPER( name[k] );
+        }
+        if ( i > 0 )
+            toc_strlcat( out, i == nfound - 1 ? " or " : ", ", sizeof(out) );
+        toc_strlcat( out, name, sizeof(out) );
+    }
+    toc_strlcat( out, "?\n\r", sizeof(out) );
+    send_to_char( out, ch );
+}
+
+/*
+ * What interpret_body decided about the command, for the play journal
+ * (playlog.c): its name, the line as it may be written down, whether its
+ * words are withheld, and whether the game refused it.
+ */
+static int         interp_depth;
+static bool        play_begun;
+static bool        play_secret;
+static bool        play_refused;
+static const char *play_cmd_name;
+static char        play_shown[MAX_INPUT_LENGTH];
+
+static void play_note( CHAR_DATA *ch, const char *name, const char *shown,
+                       bool secret, bool refused )
+{
+    if ( interp_depth != 1 || ch == NULL || IS_NPC(ch) || play_begun )
+        return;
+    play_cmd_name = name;
+    toc_strlcpy( play_shown, shown, sizeof(play_shown) );
+    play_secret = secret;
+    play_refused = refused;
+    play_begun = true;
+    playlog_begin( ch, name, play_shown );
+}
+
 
 /* The argument past `words` when it begins with them -- whole words, any
    case -- or NULL. */
@@ -1026,10 +1140,65 @@ static int command_index_exact( const char *name, int trust )
    name; -1 when no name matches, -2 when one does that this character
    may not use -- never a prefix guess at something else then. `command`
    is the first word as typed. */
-static int full_name_command( const char *command, char *argument, int trust,
-                              char **rest )
+/* The argument past an abbreviation of a whole name -- the first word
+   already matched, then each following word of the phrase begun by the
+   next typed word, two letters at least unless it is the whole word
+   (MI LE, FI OF FU, CR DA) -- or NULL. */
+static char *skip_abbreviated_words( const char *words, char *argument )
+{
+    char *p = argument;
+
+    while ( *words != '\0' )
+    {
+        size_t lw = 0, lp = 0, i;
+
+        while ( *words == ' ' )
+            words++;
+        while ( isspace( (unsigned char) *p ) )
+            p++;
+        while ( words[lw] != '\0' && words[lw] != ' ' )
+            lw++;
+        while ( p[lp] != '\0' && !isspace( (unsigned char) p[lp] ) )
+            lp++;
+        if ( lw == 0 || lp == 0 || lp > lw || ( lp < 2 && lp != lw ) )
+            return NULL;
+        for ( i = 0; i < lp; i++ )
+            if ( LOWER( p[i] ) != LOWER( words[i] ) )
+                return NULL;
+        p += lp;
+        words += lw;
+    }
+    while ( isspace( (unsigned char) *p ) )
+        p++;
+    return p;
+}
+
+static int full_name_command( CHAR_DATA *ch, const char *command, char *argument,
+                              int trust, char **rest )
 {
     int i;
+
+    /* An abbreviation of a whole name the character can use: MI LE for
+       mind leech, CR DA BOB, DO BA NORTH. Every word of the name has to
+       be begun, so a target is never taken for part of it. */
+    if ( strlen( command ) >= 2 )
+        for ( i = 0; full_command_names[i].phrase != NULL; i++ )
+        {
+            const char *phrase = full_command_names[i].phrase;
+            size_t first = strcspn( phrase, " " );
+            char *after;
+            int cmd;
+
+            if ( strlen( command ) > first
+            ||   strncmp( command, phrase, strlen( command ) ) != 0
+            ||   ( strlen( command ) == first )      /* whole: the loop below */
+            ||   ( after = skip_abbreviated_words( phrase + first, argument ) ) == NULL
+            ||   ( cmd = command_index_exact( full_command_names[i].command, trust ) ) < 0
+            ||   !command_usable( ch, cmd ) )
+                continue;
+            *rest = after;
+            return cmd;
+        }
 
     for ( i = 0; full_command_names[i].phrase != NULL; i++ )
     {
@@ -1039,7 +1208,8 @@ static int full_name_command( const char *command, char *argument, int trust,
 
         if ( strlen( command ) != first || strncmp( command, phrase, first ) != 0 )
             continue;
-        if ( ( after = skip_words( phrase + first, argument ) ) == NULL )
+        if ( ( after = skip_words( phrase + first, argument ) ) == NULL
+        &&   ( after = skip_abbreviated_words( phrase + first, argument ) ) == NULL )
             continue;
         {
             int cmd = command_index_exact( full_command_names[i].command, trust );
@@ -1073,6 +1243,69 @@ static char *skip_full_name_rest( const char *name, char *argument )
     }
     return argument;
 }
+
+/* The skill a command answers to, by its own name or the whole name
+   in full_command_names; -1 for a command anybody may use. Only skills:
+   HEAL is the healer's command and a spell's name too, and is no
+   cleric's alone. */
+static int command_skill( int cmd )
+{
+    const char *name = cmd_table[cmd].name;
+    int i, sn;
+
+    for ( sn = 0; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+        if ( !str_cmp( name, skill_table[sn].name ) )
+            return skill_is_spell( sn ) ? -1 : sn;
+    for ( i = 0; full_command_names[i].phrase != NULL; i++ )
+    {
+        char joined[MAX_INPUT_LENGTH];
+        size_t j, k = 0;
+
+        if ( str_cmp( name, full_command_names[i].command ) )
+            continue;
+        for ( j = 0; full_command_names[i].phrase[j] != '\0' && k + 1 < sizeof(joined); j++ )
+            if ( full_command_names[i].phrase[j] != ' ' )
+                joined[k++] = full_command_names[i].phrase[j];
+        joined[k] = '\0';
+        for ( sn = 0; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+            if ( !str_cmp( full_command_names[i].phrase, skill_table[sn].name )
+            ||   !str_cmp( joined, skill_table[sn].name ) )
+                return skill_is_spell( sn ) ? -1 : sn;
+    }
+    return -1;
+}
+
+/* Whether this character can use the command: one that needs a skill
+   needs it known at their level. Staff and mobiles are never asked. */
+static bool command_usable( CHAR_DATA *ch, int cmd )
+{
+    int sn;
+
+    if ( IS_NPC(ch) || IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        return TRUE;
+    if ( ( sn = command_skill( cmd ) ) < 0 )
+        return TRUE;
+    return get_skill( ch, sn ) > 0;
+}
+
+/* Never reached by leaning an abbreviation elsewhere: what cannot be
+   taken back is typed in full or by its own first letters. */
+static bool command_lean_refused( int cmd )
+{
+    static const char *const never[] =
+    {
+        "quit", "delete", "delet", "remort", "password", "resetpwd",
+        "sacrifice", "junk", "suicide", NULL
+    };
+    int i;
+
+    for ( i = 0; never[i] != NULL; i++ )
+        if ( !str_cmp( cmd_table[cmd].name, never[i] ) )
+            return TRUE;
+    return FALSE;
+}
+
+int cmd_tab_usable_lookup( CHAR_DATA *ch, char *arg1, int trust );
 
 static void interpret_body( CHAR_DATA *ch, char *argument );
 
@@ -1309,7 +1542,7 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     {
         char *rest;
 
-        cmd = full_name_command( command, argument, trust, &rest );
+        cmd = full_name_command( ch, command, argument, trust, &rest );
         if ( cmd >= 0 )
         {
             found = true;
@@ -1319,7 +1552,24 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
         else if ( cmd == -2 )
             cmd = -1;
         else
+        {
             cmd = cmd_tab_sn_lookup(command, trust);
+            /* An abbreviation leans to what this character can use
+               (owner, 2026-10-30): a word that begins a skill command
+               they lack goes to the next command it begins that they
+               have. Somebody who has the skill gets what they always
+               did, and a single letter or a whole name typed is never
+               moved. */
+            if ( cmd >= 0 && strlen( command ) > 1
+            &&   str_cmp( command, cmd_table[cmd].name )
+            &&   !command_usable( ch, cmd ) )
+            {
+                int lean = cmd_tab_usable_lookup( ch, command, trust );
+
+                if ( lean >= 0 )
+                    cmd = lean;
+            }
+        }
     }
     if (cmd != -1) found = true;
 
@@ -1454,7 +1704,7 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
                 play_refused = false;
             }
             else
-                command_not_found_hint( ch, command );
+                command_not_found_hint( ch, command, argument );
 
             if ( watched && logline[0] != '\0' )
             {
@@ -1624,6 +1874,34 @@ CMD_LIST *cmd_list_elem;
     return -1;
   } /* ELSE */
   return -1;
+}
+
+
+/* cmd_tab_sn_lookup's walk for a word of two or more letters, taking the
+   first command the word begins that this character can use and that
+   is not one an abbreviation should never lean to; -1 when there is
+   none. Counts nothing. */
+int cmd_tab_usable_lookup( CHAR_DATA *ch, char *arg1, int trust )
+{
+    CMD_LIST *elem;
+    int index1, index2;
+
+    if ( strlen( arg1 ) < 2 || !isalpha( (unsigned char) arg1[0] )
+    ||   !isalpha( (unsigned char) arg1[1] ) )
+        return -1;
+    index1 = (int) ( LOWER(arg1[0]) - 'a' );
+    index2 = LOWER(arg1[1]) % CMDTABLE_SECOND_HASH;
+    if ( cmd_table_index[index1] == NULL
+    ||   cmd_table_index[index1]->command_ind[index2] == NULL )
+        return -1;
+    for ( elem = cmd_table_index[index1]->command_ind[index2]; elem != NULL;
+          elem = elem->next )
+        if ( !str_prefix( arg1, elem->command_name )
+        &&   cmd_table[elem->cmd_tab_sn].level <= trust
+        &&   !command_lean_refused( elem->cmd_tab_sn )
+        &&   command_usable( ch, elem->cmd_tab_sn ) )
+            return elem->cmd_tab_sn;
+    return -1;
 }
 
 

@@ -52,7 +52,7 @@ class SocialLookupTests(unittest.TestCase):
     def test_an_exact_social_beats_a_prefix_command(self) -> None:
         body = self.interp.split("void interpret(", 1)[1]
         lookup = body.index("cmd = cmd_tab_sn_lookup(command, trust);")
-        guard = body.index("str_cmp( command, cmd_table[cmd].name )")
+        guard = body.index("if ( found && !full_name && str_cmp( command, cmd_table[cmd].name )")
         self.assertLess(lookup, guard)
         block = body[guard:guard + 300]
         self.assertIn("social_exact_index( command ) >= 0", block)

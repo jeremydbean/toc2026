@@ -123,8 +123,13 @@ class AwakeningBandTests(unittest.TestCase):
         # only decides how the argument is read.
         immediate = self.grantpsi.rsplit("if ( immediate )", 1)[1]
         immediate = immediate[:immediate.index("return;")]
-        self.assertIn("save_char_obj( victim )", immediate)
+        # The save is grantpsi_save, which says how it landed (review,
+        # 2026-10-30); the copy is freed on every path, the failed one too.
+        self.assertIn("grantpsi_save( victim )", immediate)
         self.assertIn("extract_char( victim, true )", immediate)
+        act_wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="latin-1")
+        helper = act_wiz[act_wiz.index("static int grantpsi_save("):]
+        self.assertIn("save_char_obj( victim );", helper[:helper.index("\n}\n")])
 
     def test_a_miss_is_written_down_with_its_arithmetic(self) -> None:
         """"Did I miss the roll, or did it never fire?" has to be answerable."""

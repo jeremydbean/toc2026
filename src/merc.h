@@ -3758,6 +3758,13 @@ char * one_argument_case( char *argument, char *arg_first );
 /* magic.c */
 int     mana_cost       (CHAR_DATA *ch, int min_mana, int level);
 int     skill_lookup    ( const char *name );
+int     find_spell      ( CHAR_DATA *ch, const char *name );
+bool    spell_known     ( CHAR_DATA *ch, int sn );
+bool    skill_is_spell  ( int sn );
+int     spell_suggest   ( CHAR_DATA *ch, const char *line, char *out, size_t size );
+int     words_near      ( const char *asked, const char *name );
+int     name_nearness   ( const char *line, const char *name );
+bool    words_abbreviate( const char *asked, const char *name );
 int     slot_lookup     ( int slot );
 bool    saves_spell     ( int level, CHAR_DATA *victim );
 void    obj_cast_spell  ( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj );

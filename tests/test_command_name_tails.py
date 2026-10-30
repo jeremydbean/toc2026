@@ -48,7 +48,7 @@ class CommandNameTailSourceTests(unittest.TestCase):
     def test_a_whole_name_is_chosen_before_the_prefix_lookup(self) -> None:
         interp = source("interp.c")
         body = interp[interp.index("static void interpret_body( CHAR_DATA *ch, char *argument )\n{"):]
-        self.assertLess(body.index("full_name_command( command, argument, trust, &rest )"),
+        self.assertLess(body.index("full_name_command( ch, command, argument, trust, &rest )"),
                         body.index("cmd_tab_sn_lookup(command, trust)"))
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

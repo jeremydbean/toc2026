@@ -712,6 +712,22 @@ Commands added or revived in September 2026, and where they live:
   2026-10-30). A new command for a skill with a multi-word name needs a
   row; `tests/test_command_name_tails.py` checks each row names a real
   skill and command, and plays the handler chosen and its cost.
+- **An abbreviation leans to what the character can use** (owner,
+  2026-10-30). A word of two letters or more that begins a skill command
+  the character lacks (`command_usable`: the command's own name or whole
+  name as a skill, never a spell -- HEAL is the healer's) goes to the next
+  command it begins that they have (`cmd_tab_usable_lookup`, the same
+  candidate list), never to one `command_lean_refused` names (QUIT,
+  DELETE, REMORT, PASSWORD, SACRIFICE...). A single letter and a whole
+  name typed are never moved, and staff are never leaned. A whole name
+  may be abbreviated a word at a time (MI LE, CR DA BOB) when the
+  character can use it. CAST resolves through `find_spell` (exact, then
+  the caster's own by prefix, then by word, then `skill_lookup`), reads a
+  slip in the rest of a name whose start is right, and suggests from
+  `spell_suggest`; the Huh hint offers usable commands, whole names and
+  known spells by `name_nearness`. `text_edit_distance` counts two
+  swapped letters as one (HELP suggestions too).
+  `tests/test_command_guessing.py`.
 - Password-bearing commands must not be logged.
 - **`fread_char` dispatches on the first letter of the key.** A new
   persisted field's `KEY(...)` has to sit in the `case` for that letter or
