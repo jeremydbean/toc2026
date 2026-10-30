@@ -223902,3 +223902,130 @@ Fri Oct 30 21:31:25 2026 :: Log Trentlin [10083]: e
 Fri Oct 30 21:31:25 2026 :: Log Trentlin [10084]: arrived (A dark hallway.) from 10083
 Fri Oct 30 21:31:26 2026 :: Log Trentlin [10084]: s
 Fri Oct 30 21:31:26 2026 :: Log Trentlin [10082]: arrived (A dark hallway.) from 10084
+Fri Oct 30 21:31:26 2026 :: Log Trentlin [10082]: w
+Fri Oct 30 21:31:26 2026 :: Log Trentlin [10081]: arrived (South end in the dark hallway.) from 10082
+Fri Oct 30 21:31:27 2026 :: EOF encountered on read.
+Fri Oct 30 21:31:27 2026 :: Log Trentlin [10081]: n
+Fri Oct 30 21:31:27 2026 :: Log Trentlin [10083]: arrived (East end in the dark hallway.) from 10081
+Fri Oct 30 21:31:27 2026 :: Log Trentlin [10083]: w
+Fri Oct 30 21:31:27 2026 :: Log Trentlin [10085]: arrived (A dark hallway.) from 10083
+Fri Oct 30 21:31:29 2026 :: Log Trentlin [10085]: open trapdoor
+Fri Oct 30 21:31:30 2026 :: Log Trentlin [10085]: w
+Fri Oct 30 21:31:30 2026 :: Log Trentlin [10069]: arrived (A dark hallway.) from 10085
+Fri Oct 30 21:31:32 2026 :: Log Trentlin [10069]: open trapdoor
+Fri Oct 30 21:31:33 2026 :: Log Trentlin [10069]: e
+Fri Oct 30 21:31:33 2026 :: Log Trentlin [10085]: arrived (A dark hallway.) from 10069
+Fri Oct 30 21:31:33 2026 :: Log Trentlin [10085]: e
+Fri Oct 30 21:31:33 2026 :: Log Trentlin [10083]: arrived (East end in the dark hallway.) from 10085
+Fri Oct 30 21:31:35 2026 :: Log Trentlin [10083]: k lo
+Fri Oct 30 21:31:38 2026 :: Log Trentlin [10083]: smite
+Fri Oct 30 21:31:43 2026 :: Log Trentlin [10083]: smite
+Fri Oct 30 21:31:49 2026 :: Log Trentlin [10083]: smite
+Fri Oct 30 21:31:49 2026 :: Log Trentlin [10083]: killed the loyalist
+Fri Oct 30 21:31:49 2026 :: Log Trentlin [10083]: coin +5 platinum
+Fri Oct 30 21:31:49 2026 :: Log Trentlin [10083]: coin +25 silver
+Fri Oct 30 21:31:49 2026 :: Log Trentlin [10083]: coin +34 copper
+Fri Oct 30 21:31:49 2026 :: Log Trentlin [10083]: coin +14 gold
+Fri Oct 30 21:31:59 2026 :: Log Trentlin [10083]: l in co
+Fri Oct 30 21:32:01 2026 :: Log Trentlin [10083]: open north
+Fri Oct 30 21:32:03 2026 :: Log Trentlin [10083]: open up
+Fri Oct 30 21:32:04 2026 :: Log Trentlin [10083]: open down
+Fri Oct 30 21:32:05 2026 :: Log Trentlin [10083]: e
+Fri Oct 30 21:32:05 2026 :: Log Trentlin [10084]: arrived (A dark hallway.) from 10083
+Fri Oct 30 21:32:07 2026 :: Log Trentlin [10084]: open north
+Fri Oct 30 21:32:08 2026 :: Log Trentlin [10084]: open door
+Fri Oct 30 21:32:09 2026 :: Log Trentlin [10084]: s
+Fri Oct 30 21:32:09 2026 :: Log Trentlin [10082]: arrived (A dark hallway.) from 10084
+Fri Oct 30 21:32:10 2026 :: Log Trentlin [10082]: w
+Fri Oct 30 21:32:10 2026 :: Log Trentlin [10081]: arrived (South end in the dark hallway.) from 10082
+Fri Oct 30 21:32:11 2026 :: Treasure goblin: vanished from room 1128 (A grassy field, shire.are) (too long in one area).
+Fri Oct 30 21:32:12 2026 :: Log Trentlin [10081]: n
+Fri Oct 30 21:32:12 2026 :: Log Trentlin [10083]: arrived (East end in the dark hallway.) from 10081
+Fri Oct 30 21:32:18 2026 :: Log Trentlin [10083]: affects off: fly
+Fri Oct 30 21:33:39 2026 :: Log Trentlin [10083]: w
+Fri Oct 30 21:33:39 2026 :: Log Trentlin [10085]: arrived (A dark hallway.) from 10083
+Fri Oct 30 21:33:39 2026 :: Log Trentlin [10085]: w
+Fri Oct 30 21:33:39 2026 :: Log Trentlin [10069]: arrived (A dark hallway.) from 10085
+Fri Oct 30 21:33:40 2026 :: Log Trentlin [10069]: open
+Fri Oct 30 21:33:41 2026 :: Log Trentlin [10069]: w
+Fri Oct 30 21:33:42 2026 :: Log Trentlin [10069]: w
+Fri Oct 30 21:34:00 2026 :: Log Trentlin [10069]: open secret
+Fri Oct 30 21:34:01 2026 :: Log Trentlin [10069]: w
+Fri Oct 30 21:34:01 2026 :: Log Trentlin [10070]: arrived (West end in the dark hallway.) from 10069
+Fri Oct 30 21:34:03 2026 :: Log Trentlin [10070]: w
+Fri Oct 30 21:34:05 2026 :: Log Trentlin [10070]: open west
+Fri Oct 30 21:34:05 2026 :: Log Trentlin [10070]: w
+Fri Oct 30 21:34:05 2026 :: Log Trentlin [10071]: arrived (A dark room.) from 10070
+Fri Oct 30 21:34:08 2026 :: Log Trentlin [10071]: e
+Fri Oct 30 21:34:08 2026 :: Log Trentlin [10070]: arrived (West end in the dark hallway.) from 10071
+Fri Oct 30 21:34:24 2026 :: Log Trentlin [10070]: open secret
+Fri Oct 30 21:34:27 2026 :: Log Trentlin [10070]: open hidden
+Fri Oct 30 21:35:09 2026 :: Log Trentlin [10070]: s
+Fri Oct 30 21:35:09 2026 :: Log Trentlin [10074]: arrived (A dark hallway.) from 10070
+Fri Oct 30 21:35:12 2026 :: Log Trentlin [10074]: open west
+Fri Oct 30 21:35:12 2026 :: Log Trentlin [10074]: w
+Fri Oct 30 21:35:12 2026 :: Log Trentlin [10072]: arrived (A dark hallway.) from 10074
+Fri Oct 30 21:35:15 2026 :: Log Trentlin [10072]: open secret
+Fri Oct 30 21:35:18 2026 :: Log Trentlin [10072]: open hidden
+Fri Oct 30 21:35:19 2026 :: Log Trentlin [10072]: e
+Fri Oct 30 21:35:19 2026 :: Log Trentlin [10074]: arrived (A dark hallway.) from 10072
+Fri Oct 30 21:35:19 2026 :: Log Trentlin [10074]: s
+Fri Oct 30 21:35:19 2026 :: Log Trentlin [10075]: arrived (Dark end of the hall.) from 10074
+Fri Oct 30 21:35:21 2026 :: Log Trentlin [10075]: open west
+Fri Oct 30 21:35:21 2026 :: Log Trentlin [10075]: w
+Fri Oct 30 21:35:21 2026 :: Log Trentlin [10073]: arrived (A dark hallway.) from 10075
+Fri Oct 30 21:35:24 2026 :: Log Trentlin [10073]: open secrey
+Fri Oct 30 21:35:26 2026 :: Log Trentlin [10073]: open secret
+Fri Oct 30 21:35:28 2026 :: Log Trentlin [10073]: open hidden
+Fri Oct 30 21:35:28 2026 :: Log Trentlin [10073]: e
+Fri Oct 30 21:35:28 2026 :: Log Trentlin [10075]: arrived (Dark end of the hall.) from 10073
+Fri Oct 30 21:35:30 2026 :: Log Trentlin [10075]: open secret
+Fri Oct 30 21:35:32 2026 :: Log Trentlin [10075]: open hidden
+Fri Oct 30 21:35:34 2026 :: Log Trentlin [10075]: l
+Fri Oct 30 21:35:35 2026 :: Log Trentlin [10075]: e
+Fri Oct 30 21:35:35 2026 :: Log Trentlin [10076]: arrived (A dark hallway.) from 10075
+Fri Oct 30 21:35:36 2026 :: Log Trentlin [10076]: e
+Fri Oct 30 21:35:36 2026 :: Log Trentlin [10077]: arrived (A dark hallway.) from 10076
+Fri Oct 30 21:35:37 2026 :: Log Trentlin [10077]: e
+Fri Oct 30 21:35:37 2026 :: Log Trentlin [10078]: arrived (A dark room.) from 10077
+Fri Oct 30 21:35:40 2026 :: Log Trentlin [10078]: (refused) oepn east
+Fri Oct 30 21:35:41 2026 :: Log Trentlin [10078]: open south
+Fri Oct 30 21:35:45 2026 :: Log Trentlin [10078]: open east
+Fri Oct 30 21:35:46 2026 :: Log Trentlin [10078]: ex
+Fri Oct 30 21:35:47 2026 :: Log Trentlin [10078]: e
+Fri Oct 30 21:35:47 2026 :: Log Trentlin [10079]: arrived (A dark hallway.) from 10078
+Fri Oct 30 21:35:51 2026 :: Log Trentlin [10079]: open secret
+Fri Oct 30 21:35:55 2026 :: Log Trentlin [10079]: open trapdoor
+Fri Oct 30 21:36:00 2026 :: Log Trentlin [10079]: open hatch
+Fri Oct 30 21:36:01 2026 :: Log Trentlin [10079]: open hidden
+Fri Oct 30 21:36:02 2026 :: Log Trentlin [10079]: l
+Fri Oct 30 21:36:03 2026 :: Log Trentlin [10079]: n
+Fri Oct 30 21:36:03 2026 :: Log Trentlin [10082]: arrived (A dark hallway.) from 10079
+Fri Oct 30 21:36:05 2026 :: Log Trentlin [10082]: open west
+Fri Oct 30 21:36:06 2026 :: Log Trentlin [10082]: w
+Fri Oct 30 21:36:06 2026 :: Log Trentlin [10081]: arrived (South end in the dark hallway.) from 10082
+Fri Oct 30 21:36:07 2026 :: Log Trentlin [10081]: n
+Fri Oct 30 21:36:07 2026 :: Log Trentlin [10083]: arrived (East end in the dark hallway.) from 10081
+Fri Oct 30 21:36:08 2026 :: Log Trentlin [10083]: e
+Fri Oct 30 21:36:10 2026 :: Log Trentlin [10083]: open east
+Fri Oct 30 21:36:10 2026 :: Log Trentlin [10083]: e
+Fri Oct 30 21:36:10 2026 :: Log Trentlin [10084]: arrived (A dark hallway.) from 10083
+Fri Oct 30 21:36:13 2026 :: Log Trentlin [10084]: open secret
+Fri Oct 30 21:36:15 2026 :: Log Trentlin [10084]: open hatch
+Fri Oct 30 21:36:16 2026 :: Log Trentlin [10084]: l
+Fri Oct 30 21:36:17 2026 :: Log Trentlin [10084]: s
+Fri Oct 30 21:36:17 2026 :: Log Trentlin [10082]: arrived (A dark hallway.) from 10084
+Fri Oct 30 21:36:18 2026 :: Log Trentlin [10082]: w
+Fri Oct 30 21:36:18 2026 :: Log Trentlin [10081]: arrived (South end in the dark hallway.) from 10082
+Fri Oct 30 21:36:19 2026 :: Log Trentlin [10081]: n
+Fri Oct 30 21:36:19 2026 :: Log Trentlin [10083]: arrived (East end in the dark hallway.) from 10081
+Fri Oct 30 21:36:20 2026 :: Log Trentlin [10083]: w
+Fri Oct 30 21:36:20 2026 :: Log Trentlin [10085]: arrived (A dark hallway.) from 10083
+Fri Oct 30 21:36:23 2026 :: Sock.sinaddr:  178.156.185.127
+Fri Oct 30 21:36:23 2026 :: EOF encountered on read.
+Fri Oct 30 21:36:23 2026 :: Log Trentlin [10085]: open south
+Fri Oct 30 21:36:23 2026 :: Log Trentlin [10085]: s
+Fri Oct 30 21:36:23 2026 :: Log Trentlin [10086]: arrived (A dark hallway.) from 10085
+Fri Oct 30 21:36:24 2026 :: Log Trentlin [10086]: n
+Fri Oct 30 21:36:24 2026 :: Log Trentlin [10085]: arrived (A dark hallway.) from 10086
+Fri Oct 30 21:36:25 2026 :: Log Trentlin [10085]: w
