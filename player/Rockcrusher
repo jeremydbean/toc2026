@@ -1,7 +1,7 @@
 #PLAYER
 Name Rockcrusher~
 Id   3259
-LogO 1792459376
+LogO 1793360973
 Vers 4
 Desc You hear a dripping noise.  It gets louder and louder and louder...
 It won't go away!!!  You frantically slap yourself and smash your fists
@@ -36,9 +36,10 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown confuse,ego whip,psionic armor,shift~
 ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards~
 Cast none
 Levl 52
-Plyd 1040957
+Plyd 1041013
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
@@ -50,7 +51,7 @@ NewPlat 0
 NewCopp 13
 NewSilv 1
 BankCP 0
-IntTime 1792457457
+IntTime 1793321457
 IntTotal 0
 Dcount 0
 SavedOnce 1
@@ -82,7 +83,14 @@ Achv level-35 1792339835
 Achv level-45 1792339835
 Achv carry-ten-platinum 1792339835
 Achv visit-pet-shop 1792459357
-LastOut  0
+Achv mastered-1 1793360930
+Achv mastered-5 1793360930
+Achv weapons-1 1793360930
+AchSet areas 1069968534 ~
+AchSet rooms 2562 ~
+LastOut  1793360973
+Rested 0 0
+Daily 0 0 0 0 0
 SesLogin 0
 SesDur   0
 SesExpG  0

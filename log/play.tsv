@@ -19932,3 +19932,11 @@
 1793357808	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	16	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 12 in a row! A +80% bonus has been added!'
 1793357811	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	4	-	aquest	gamble yes	The dice BETRAY you! Your 63 quest points are lost.
 1793357813	session	Trentlin	50	2497	dresden_halloween.are	quit	386s	+0 levels	+0 exp	+797696103 copper	1 kills	0 deaths	2 quests	100 commands	0 refused	coin: loot 1g 2s 3c, quests 797p 68g 59s
+1793360950	cmd	Rockcrusher	52	2562	limbo_halloween.are	standing	100	0	-	who		[52 Dwarf   Hero  ] Rockcrusher the Madness in Your Mind // Players found: 1
+1793360956	cmd	Rockcrusher	52	2562	limbo_halloween.are	standing	100	0	-	whois	trentlin	No one of that name is playing.
+1793360993	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	west		Main Processional, at the Southern Gates //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Just to the north is the Bridge of
+1793361000	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	look	at skeleton	You do not see that here.
+1793361003	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	look	skeleton	A skeleton stalks the night. // A skeleton is in excellent condition.
+1793361013	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	help	combat	This group is primarily for mages. They gain the following spells: // Acid Blast, Chain Lightning, Color Spray, Fireball, Shocking Grasp, // Heat Metal
+1793361023	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	help	commands	COMMANDS // Syntax: commands // COMMANDS shows you all the commands in the game.
+1793361026	cmd	Rockcrusher	52	2430	dresden_halloween.are	standing	100	0	-	commands		put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      
