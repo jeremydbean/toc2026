@@ -111,6 +111,26 @@ class SpareShardLiveTests(unittest.TestCase):
                 client.send("quit")
                 client.wait_closed()
 
+    def test_every_spare_goes_however_many(self) -> None:
+        """The fix took back at most 64 and was marked done, so a pack of
+        80 kept 16 for good (review, 2026-10-30)."""
+        with LiveMud() as mud:
+            path = make(mud, "Zshardmany", shard(FIRST) * 80 + shard(SECOND) * 3,
+                        unfix=True, Levl=54)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zshardmany", PW)
+                client.drain(2.0)
+                self.assertIn("Triforce shards you already had", client.transcript)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            saved = path.read_text(encoding="latin-1")
+            self.assertEqual(saved.count("Vnum %d\n" % FIRST), 1)
+            self.assertEqual(saved.count("Vnum %d\n" % SECOND), 1)
+            self.assertIn("20261029-spare-shards", saved)
+            log = mud.server_output()
+            self.assertIn("Spare Triforce shard: 79 of Zshardmany's object %d" % FIRST, log)
+            self.assertIn("Spare Triforce shard: 2 of Zshardmany's object %d" % SECOND, log)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -705,6 +705,13 @@ Commands added or revived in September 2026, and where they live:
   command match for an exact social. POKE was unusable for years as an
   abbreviation of POKER. `tests/test_social_lookup.py` lists every
   social a longer command would otherwise hide.
+- **A skill typed by its whole name is that skill.** `full_command_names`
+  in `interp.c` is matched, whole words in any case, before the prefix
+  lookup: MIND LEECH ran MINDBLAST (which "mind" begins) and spent its
+  mana, and FISTS OF FURY passed "of fury" as the target (review,
+  2026-10-30). A new command for a skill with a multi-word name needs a
+  row; `tests/test_command_name_tails.py` checks each row names a real
+  skill and command, and plays the handler chosen and its cost.
 - Password-bearing commands must not be logged.
 - **`fread_char` dispatches on the first letter of the key.** A new
   persisted field's `KEY(...)` has to sit in the `case` for that letter or
@@ -1665,7 +1672,7 @@ rules the code depends on:
   second, which an autosave of somebody else cannot take -- though one
   of that character can, so ACCEPT's save has its own `accept-save`
   (CI, 2026-10-27), a death's `death-save-<Name>`, a craft's
-  `craft-save` and a PRESTORE give's or retry's `prestore-save`; `dirsync-<Name>` makes that character's next save
+  `craft-save`, GRANTPSI's `grantpsi-save` and a PRESTORE give's or retry's `prestore-save`; `dirsync-<Name>` makes that character's next save
   unconfirmed, `corpse-move` fails a corpse record's move into history;
   `ledger`, `crash-before-commit`), read
   by `recovery_fault()` and set nowhere but `tests/`.
@@ -2629,7 +2636,12 @@ mind awakens on its own. Staff hear the moment any grant lands --
 GRANTPSI, a remort or the band roll -- from `grant_psionics` itself: a
 WIZINFO (at `staff_notice_level`) and a log line naming the powers
 given. `tests/test_dns_and_grantpsi.py` walks a band grant through levels
-17 and 18 and a LEVEL grant through one level.
+17 and 18 and a LEVEL grant through one level. **GRANTPSI saves what it
+changed and says how it landed** (review, 2026-10-30: a failed offline
+save was reported as saved and the copy freed): a failed save of an
+offline character keeps nothing and says so, an online grant stays in
+effect for the next save to write, and an unconfirmed save is reported,
+never undone (`grantpsi_save`, fault point `grantpsi-save`).
 
 Four things were wrong here in 2026-09, all of them from the roll
 living in the wrong place -- open-coded as

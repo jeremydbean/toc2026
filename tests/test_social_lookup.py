@@ -61,9 +61,11 @@ class SocialLookupTests(unittest.TestCase):
 
     def test_an_exact_command_still_wins(self) -> None:
         """The guard only fires when the match was a prefix: str_cmp is
-        non-zero exactly when the typed word is not the command's name."""
+        non-zero exactly when the typed word is not the command's name,
+        and a skill typed by its whole name (full_name_command, review
+        2026-10-30) is that skill, not a social sharing its first word."""
         body = self.interp.split("void interpret(", 1)[1]
-        self.assertIn("if ( found && str_cmp( command, cmd_table[cmd].name )",
+        self.assertIn("if ( found && !full_name && str_cmp( command, cmd_table[cmd].name )",
                       body)
 
     def test_an_exact_social_beats_a_prefix_social(self) -> None:

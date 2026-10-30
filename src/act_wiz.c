@@ -8583,6 +8583,50 @@ void do_pstat( CHAR_DATA *ch, char *argument )
 }
 
 
+/*
+ * GRANTPSI writes what it changed and says how it landed (review,
+ * 2026-10-30: an offline grant whose save failed was reported as saved
+ * and its copy freed, so the grant was lost without a word). The usual
+ * contract: a failed save leaves an offline file as it was -- nothing was
+ * granted -- and an online character's grant in effect, written by their
+ * next save; a save that is in place but not confirmed is never undone.
+ * "grantpsi-save" fails it for the tests, as "craft-save" does a craft.
+ */
+static int grantpsi_save( CHAR_DATA *victim )
+{
+    if ( recovery_fault( "grantpsi-save" ) )
+        return DURABLE_FAILED;
+    save_char_obj( victim );
+    return save_char_obj_status();
+}
+
+static void grantpsi_report_save( CHAR_DATA *ch, int status, bool offline )
+{
+    if ( status == DURABLE_OK )
+        send_to_char( offline ? "Saved to their player file (they are offline).\n\r"
+                              : "Saved to their player file.\n\r", ch );
+    else if ( status == DURABLE_UNCERTAIN )
+        send_to_char( "Written to their player file, but the disk has not "
+                      "confirmed the write.\n\r", ch );
+    else
+        send_to_char( "Their player file could not be saved just now. It is "
+                      "in effect, and their next save writes it.\n\r", ch );
+}
+
+static void grantpsi_lost( CHAR_DATA *ch, CHAR_DATA *victim, const char *what )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    snprintf( buf, sizeof(buf), "%s's player file could not be saved, so the "
+              "%s was not kept: the file is as it was. Try again.\n\r",
+              victim->name, what );
+    send_to_char( buf, ch );
+    snprintf( buf, sizeof(buf), "GRANTPSI: %s's %s for offline %s was not saved; "
+              "nothing kept.", ch->name, what, victim->name );
+    log_string( buf );
+    wizinfo( buf, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
+}
+
 void do_grantpsi( CHAR_DATA *ch, char *argument )
 {
     CHAR_DATA *victim;
@@ -8594,6 +8638,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     bool immediate = false;
     bool next_level = false;
     bool offline = false;
+    int status;
 
     list_buf[0] = '\0';
 
@@ -8706,8 +8751,18 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     {
         char note[MAX_STRING_LENGTH];
 
+        int added, status;
+
         victim->pcdata->psionic_grant_pending = PSI_GRANT_NONE;
-        if ( grant_psionics( victim, 100, true ) > 0 )
+        added = grant_psionics( victim, 100, true );
+        status = grantpsi_save( victim );
+        if ( offline && status == DURABLE_FAILED )
+        {
+            grantpsi_lost( ch, victim, "immediate grant" );
+            extract_char( victim, true );
+            return;
+        }
+        if ( added > 0 )
             send_to_char( "Psionics granted immediately.\n\r", ch );
         else
             /* With no list the sets only top up to what the remorts give,
@@ -8715,20 +8770,17 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
                used to be reported as granted. */
             send_to_char( "Nothing new: they already hold every power that "
                           "grant could give. Name powers to add others.\n\r", ch );
+        grantpsi_report_save( ch, status, offline );
         snprintf( note, sizeof(note),
                   "%s granted %s psionics immediately at level %d (%s)%s.",
                   ch->name, victim->name, victim->level, list_buf,
                   offline ? " while offline" : "" );
         wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
 
-        /* An offline victim is a loaded copy. Without both of these
-           the grant is thrown away and the copy leaks into the
-           character list for the life of the process. */
+        /* An offline victim is a loaded copy: freed here, never left in
+           the character list for the life of the process. */
         if ( offline )
-        {
-            save_char_obj( victim );
             extract_char( victim, true );
-        }
         return;
     }
 
@@ -8739,6 +8791,13 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
        business having (found reviewing psionics, 2026-10-20). */
     victim->pcdata->psionic_grant_pending = next_level ? PSI_GRANT_NEXT_LEVEL
                                                        : PSI_GRANT_BAND;
+    status = grantpsi_save( victim );
+    if ( offline && status == DURABLE_FAILED )
+    {
+        grantpsi_lost( ch, victim, "grant flag" );
+        extract_char( victim, true );
+        return;
+    }
     if ( next_level )
         send_to_char( "Grant flag applied. They will receive psionics the next "
                       "time they gain a level.\n\r", ch );
@@ -8755,9 +8814,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
                       "GRANTPSI <name> LEVEL gives it on their next level, NOW "
                       "at once.\n\r", ch );
 
-    if ( offline )
-        send_to_char( "They are not online, so the flag is saved straight "
-                      "to their player file.\n\r", ch );
+    grantpsi_report_save( ch, status, offline );
 
     {
         char note[MAX_STRING_LENGTH];
@@ -8770,10 +8827,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     }
 
     if ( offline )
-    {
-        save_char_obj( victim );
         extract_char( victim, true );
-    }
 }
 
 

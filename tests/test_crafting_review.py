@@ -38,6 +38,7 @@ TEMPLE = 4207
 HALLS = 4202            # not safe: a blast may land
 FEATHER, TOOTH = 63, 70  # feathered gold: fly and haste
 TARRASQUE, CUBE, OOZE = 85, 86, 87      # ironbound
+SETS = 4                                # ironbound sets: tries and a fumble
 WING, SALIVA, BLOOD = 80, 84, 76        # blank: remove align
 DAGGER = 3701
 
@@ -216,8 +217,35 @@ class CraftingLiveTests(unittest.TestCase):
                 # The game is still answering: nothing was freed twice.
                 self.assertIn("Zreader", client.sync("score"))
 
+    def test_a_fumbled_recital_uses_the_scroll_up(self) -> None:
+        """A mispronounced scroll is spent like a read one (do_recite
+        extracts it either way); the ironbound test above makes another
+        after a fumble for that reason. At 1% in scrolls a recital lands
+        one time in five, so six scrolls all but surely hold a fumble."""
+        scroll = obj(90, "Name plain scroll~\nShD a plain scroll~\nVal 30 0 0 0 0\n"
+                         "Spell 1 'bless'\n")
+        with LiveMud() as mud:
+            make(mud, "Zfumbler", Levl=30, Cla=0, Room=TEMPLE)
+            add(mud, "Zfumbler", scroll * 6, skills=("scrolls",))
+            low_skill(mud, "Zfumbler", "scrolls", 1)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zfumbler", PW)
+                client.sync("scroll 0")
+                fumbled = False
+                for left in range(6, 0, -1):
+                    read = client.sync("recite plain", timeout=30)
+                    self.assertIn("You recite", read)
+                    held = client.sync("inventory")
+                    count = 0 if "plain scroll" not in held else int(
+                        (re.search(r"\(\s*(\d+)\) a plain scroll", held) or [0, 1])[1])
+                    self.assertEqual(count, left - 1, "every recital spends one")
+                    if "mispronounce" in read:
+                        fumbled = True
+                        break
+                self.assertTrue(fumbled, "no fumble in six tries at 1%")
+
     def test_ironbound_scroll_previewed_made_and_read(self) -> None:
-        sets = "".join(obj(v) for v in (TARRASQUE, CUBE, OOZE) * 3)
+        sets = "".join(obj(v) for v in (TARRASQUE, CUBE, OOZE) * SETS)
         with LiveMud() as mud:
             make(mud, "Zscriber", Levl=30, Cla=0, Room=TEMPLE,
                  HMV="300 300 300 300 300 300", HMVP="300 300 300")
@@ -243,12 +271,18 @@ class CraftingLiveTests(unittest.TestCase):
                               client.sync("look"))
                 client.must("get globe", "You get")        # a new keyword
                 # RECITE mispronounces on a roll of 100 even at 100% (CI,
-                # 2026-10-28): it says "You recite" either way and keeps the
-                # scroll, so read it again until it is not a mispronounce.
-                for _ in range(5):
+                # 2026-10-28), says "You recite" either way, and the scroll
+                # is used up all the same (do_recite extracts it after a
+                # fumble). So a fumble is answered with a new scroll from
+                # the next set, and that one is read.
+                for _ in range(2):
                     read = client.sync("recite globe", timeout=30)
                     if "mispronounce" not in read:
                         break
+                    self.assertNotIn("globe", client.sync("inventory"),
+                                     "a fumbled scroll is used up")
+                    remade = until(client, "scribe tarrasque cube ooze", "You finish")
+                    self.assertIn("You finish an ironbound scroll", remade)
                 self.assertIn("You recite", read)
                 self.assertNotIn("mispronounce", read)
                 affects = client.sync("affects")
@@ -269,7 +303,7 @@ class CraftingLiveTests(unittest.TestCase):
         self.assertEqual((row[15], row[18]), ("95", "saved"))
         self.assertNotIn(str(TEMPLE), "\t".join(row[6:]))
         # The scroll was read; each attempt spent a set, the rest are carried.
-        self.assertEqual(text.count("Vnum %d\n" % TARRASQUE), 3 - len(rows))
+        self.assertEqual(text.count("Vnum %d\n" % TARRASQUE), SETS - len(rows))
 
     def test_old_crafted_items_still_load_answer_and_save(self) -> None:
         old = obj(90, "Name ironbound scroll~\nShD an ironbound scroll~\nVal 30 0 0 0 0\n"

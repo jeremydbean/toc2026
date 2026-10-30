@@ -944,76 +944,134 @@ static void play_note( CHAR_DATA *ch, const char *name, const char *shown,
 }
 
 /*
- * The rest of a skill's name after the word its command answers to. A
- * command matches on one word, so EGO WHIP passed "whip" on as the
- * target and FISTS OF FURY "of fury": typed in full, in a fight, every
- * one of these was answered "They aren't here." (Rockcrusher, 2026-10-30)
- * and PICK LOCK DOOR looked for a lock to pick. A name written with a
- * space in the command table carries its own tail.
+ * Skills a player types by their whole name. Commands are looked up on
+ * one word and by prefix, so the rest of the name went on as the target
+ * -- FISTS OF FURY, EGO WHIP, CRANE DANCE in a fight were each answered
+ * "They aren't here." (Rockcrusher, 2026-10-30), PICK LOCK DOOR looked
+ * for a lock -- and a name whose first word begins an earlier command ran
+ * that one instead: MIND LEECH and MIND BAR ran MINDBLAST and spent its
+ * mana (review, 2026-10-30). A whole name typed is that command, chosen
+ * before the prefix lookup (full_name_command); a first word abbreviated
+ * still has the rest of the name passed over once the lookup has chosen
+ * the same command (skip_full_name_rest).
  */
 static const struct
 {
-    const char *command;
-    const char *tail;
-} command_name_tails[] =
+    const char *phrase;                 /* as typed, whole words */
+    const char *command;                /* cmd_table name */
+} full_command_names[] =
 {
-    { "blinding", "fists"   },
-    { "crane",    "dance"   },
-    { "danger",   "sense"   },
-    { "dirt",     "kicking" },
-    { "fists",    "of fury" },
-    { "iron",     "skin"    },
-    { "nerve",    "damage"  },
-    { "pick",     "lock"    },
-    { "psionic",  "armor"   },
-    { "psychic",  "shield"  },
-    { "steel",    "fist"    },
-    { "stunning", "blow"    },
-    { NULL,       NULL      }
+    { "astral walk",    "astral walk" },
+    { "blinding fists", "blinding"    },
+    { "crane dance",    "crane"       },
+    { "danger sense",   "danger"      },
+    { "dirt kicking",   "dirt"        },
+    { "door bash",      "doorbash"    },
+    { "ego whip",       "ego whip"    },
+    { "fists of fury",  "fists"       },
+    { "iron skin",      "iron"        },
+    { "mind bar",       "mindbar"     },
+    { "mind blast",     "mindblast"   },
+    { "mind leech",     "mindleech"   },
+    { "nerve damage",   "nerve"       },
+    { "pick lock",      "pick"        },
+    { "psionic armor",  "psionic"     },
+    { "psychic shield", "psychic"     },
+    { "steel fist",     "steel"       },
+    { "stunning blow",  "stunning"    },
+    { NULL,             NULL          }
 };
 
-/* The argument past the rest of the command's own name, when the player
-   typed it -- whole words, any case -- or the argument as it was. */
-static char *skip_command_name_tail( const char *name, char *argument )
+/* The argument past `words` when it begins with them -- whole words, any
+   case -- or NULL. */
+static char *skip_words( const char *words, char *argument )
 {
-    const char *tail = strchr( name, ' ' );
     char *p = argument;
-    int i;
 
-    if ( tail != NULL )
-        tail++;
-    else
-        for ( i = 0; command_name_tails[i].command != NULL; i++ )
-            if ( !str_cmp( name, command_name_tails[i].command ) )
-            {
-                tail = command_name_tails[i].tail;
-                break;
-            }
-    if ( tail == NULL )
-        return argument;
-
-    while ( *tail != '\0' )
+    while ( *words != '\0' )
     {
         size_t len = 0;
 
-        while ( *tail == ' ' )
-            tail++;
+        while ( *words == ' ' )
+            words++;
         while ( isspace( (unsigned char) *p ) )
             p++;
-        while ( tail[len] != '\0' && tail[len] != ' ' )
+        while ( words[len] != '\0' && words[len] != ' ' )
         {
-            if ( LOWER( p[len] ) != LOWER( tail[len] ) )
-                return argument;
+            if ( LOWER( p[len] ) != LOWER( words[len] ) )
+                return NULL;
             len++;
         }
         if ( len == 0 || ( p[len] != '\0' && !isspace( (unsigned char) p[len] ) ) )
-            return argument;
+            return NULL;
         p += len;
-        tail += len;
+        words += len;
     }
     while ( isspace( (unsigned char) *p ) )
         p++;
     return p;
+}
+
+static int command_index_exact( const char *name, int trust )
+{
+    int cmd;
+
+    for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+        if ( !str_cmp( name, cmd_table[cmd].name ) )
+            return cmd_table[cmd].level <= trust ? cmd : -1;
+    return -1;
+}
+
+/* The command a whole skill name typed names, with *rest set past the
+   name; -1 when no name matches, -2 when one does that this character
+   may not use -- never a prefix guess at something else then. `command`
+   is the first word as typed. */
+static int full_name_command( const char *command, char *argument, int trust,
+                              char **rest )
+{
+    int i;
+
+    for ( i = 0; full_command_names[i].phrase != NULL; i++ )
+    {
+        const char *phrase = full_command_names[i].phrase;
+        size_t first = strcspn( phrase, " " );
+        char *after;
+
+        if ( strlen( command ) != first || strncmp( command, phrase, first ) != 0 )
+            continue;
+        if ( ( after = skip_words( phrase + first, argument ) ) == NULL )
+            continue;
+        {
+            int cmd = command_index_exact( full_command_names[i].command, trust );
+
+            if ( cmd < 0 )
+                return -2;
+            *rest = after;
+            return cmd;
+        }
+    }
+    return -1;
+}
+
+/* After a prefix lookup: the argument past the rest of the chosen
+   command's whole name, if the player typed it (CRA DANCE), or as it
+   was. */
+static char *skip_full_name_rest( const char *name, char *argument )
+{
+    int i;
+
+    for ( i = 0; full_command_names[i].phrase != NULL; i++ )
+    {
+        const char *phrase = full_command_names[i].phrase;
+        const char *space = strchr( phrase, ' ' );
+        char *after;
+
+        if ( space == NULL || str_cmp( name, full_command_names[i].command ) )
+            continue;
+        if ( ( after = skip_words( space + 1, argument ) ) != NULL )
+            return after;
+    }
+    return argument;
 }
 
 static void interpret_body( CHAR_DATA *ch, char *argument );
@@ -1085,6 +1143,7 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     int trust;
     int counter;
     bool found;
+    bool full_name = false;   /* a whole skill name was typed */
 
     /* Read once and clear, so a command this one runs on somebody else
        (FORCE, ORDER) is not mistaken for alias output too. */
@@ -1247,7 +1306,21 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
 	}
     }
 */
-    cmd = cmd_tab_sn_lookup(command, trust);
+    {
+        char *rest;
+
+        cmd = full_name_command( command, argument, trust, &rest );
+        if ( cmd >= 0 )
+        {
+            found = true;
+            full_name = true;
+            argument = rest;
+        }
+        else if ( cmd == -2 )
+            cmd = -1;
+        else
+            cmd = cmd_tab_sn_lookup(command, trust);
+    }
     if (cmd != -1) found = true;
 
     /*
@@ -1259,7 +1332,7 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
      * that command, so the deliberate abbreviation order -- S for
      * south and the rest -- is untouched.
      */
-    if ( found && str_cmp( command, cmd_table[cmd].name )
+    if ( found && !full_name && str_cmp( command, cmd_table[cmd].name )
     &&   social_exact_index( command ) >= 0 )
     {
         found = false;
@@ -1463,7 +1536,8 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     /*
      * Dispatch the command, past the rest of its own name if typed.
      */
-    argument = skip_command_name_tail( cmd_table[cmd].name, argument );
+    if ( !full_name )
+        argument = skip_full_name_rest( cmd_table[cmd].name, argument );
     (*cmd_table[cmd].do_fun) ( ch, argument );
 
     {

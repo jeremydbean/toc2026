@@ -170,6 +170,22 @@ class LogReportTests(unittest.TestCase):
                           ("Zed", "linkdead > quit", "5 kills"),
                           ("Zed", "quit", "2 kills")])
 
+    def test_a_quit_ends_its_sitting(self) -> None:
+        # Review, 2026-10-30: quit, login, quit two seconds apart -- starts
+        # 99 and 101 -- were merged into one "quit > quit".
+        quick = [["100", "session", "Zjournal", "20", "4207", "limbo.are", "quit", "1s"],
+                 ["102", "session", "Zjournal", "20", "4207", "limbo.are", "quit", "1s"]]
+        self.assertEqual([r[6] for r in self.report.merge_sittings(quick)], ["quit", "quit"])
+
+        def row(at, how, secs):
+            return [str(at), "session", "Zjournal", "20", "4207", "limbo.are", how, f"{secs}s"]
+        # A shutdown ends one too; link losses run on until the sitting ends.
+        rows = [row(100, "shutdown", 50), row(101, "quit", 50),
+                row(500, "linkdead", 100), row(900, "linkdead", 500),
+                row(1000, "quit", 600), row(1001, "quit", 600)]
+        self.assertEqual([r[6] for r in self.report.merge_sittings(rows)],
+                         ["shutdown", "quit", "linkdead > linkdead > quit", "quit"])
+
     def test_the_same_event_is_one_line(self) -> None:
         from datetime import datetime, timedelta, timezone
         start = datetime(2026, 10, 22, tzinfo=timezone.utc)

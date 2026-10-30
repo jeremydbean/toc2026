@@ -24,6 +24,7 @@
 #endif
 
 #include "merc.h"
+#include "text_fold.h"
 #include "interp.h"
 #include <limits.h>
 #pragma GCC diagnostic ignored "-Wformat-security"
@@ -773,26 +774,16 @@ bool area_is_buildable( AREA_DATA *pArea )
 static void help_fold_keyword( HELP_DATA *pHelp )
 {
     char buf[MAX_STRING_LENGTH];
-    const char *p;
-    size_t n = 0;
-    bool space = FALSE;
-    bool changed = FALSE;
+    int changed = 0;
 
-    for ( p = pHelp->keyword; *p != '\0' && n + 1 < sizeof(buf); p++ )
+    /* fold_whitespace never writes past buf and never cuts a keyword
+       short: a header too long to fold is kept as read, and said. */
+    if ( fold_whitespace( pHelp->keyword, buf, sizeof(buf), &changed ) < 0 )
     {
-        if ( isspace( (unsigned char) *p ) )
-        {
-            if ( *p != ' ' || space )
-                changed = TRUE;
-            space = TRUE;
-            continue;
-        }
-        if ( space && n > 0 )
-            buf[n++] = ' ';
-        space = FALSE;
-        buf[n++] = *p;
+        bug( "Load_helps: a keyword header over %d characters is kept unfolded.",
+             (int) sizeof(buf) - 1 );
+        return;
     }
-    buf[n] = '\0';
     if ( changed )
         pHelp->keyword = str_dup( buf );
 }

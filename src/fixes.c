@@ -132,9 +132,10 @@ static bool fix_mage_weapon_floors( CHAR_DATA *ch )
  */
 static bool fix_spare_triforce_shards( CHAR_DATA *ch )
 {
-    OBJ_DATA *spare[64];
-    OBJ_DATA *obj;
+    int spare[HYRULE_PIECE_LAST_VNUM - HYRULE_PIECE_FIRST_VNUM + 1];
     bool seen[HYRULE_PIECE_LAST_VNUM - HYRULE_PIECE_FIRST_VNUM + 1];
+    OBJ_DATA *obj;
+    OBJ_DATA *obj_next;
     char buf[MAX_STRING_LENGTH];
     int count = 0;
     int i;
@@ -142,26 +143,36 @@ static bool fix_spare_triforce_shards( CHAR_DATA *ch )
     if ( IS_NPC(ch) )
         return false;
     memset( seen, 0, sizeof(seen) );
-    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    memset( spare, 0, sizeof(spare) );
+    /* Every spare, however many: the fix is marked done once it runs, so
+       one it left would stay for good (review, 2026-10-30: a cap of 64
+       left 16 of 80). A shard holds nothing, so taking one out leaves
+       the rest of the list as it was; the next is read first. */
+    for ( obj = ch->carrying; obj != NULL; obj = obj_next )
     {
         int vnum = obj->pIndexData != NULL ? obj->pIndexData->vnum : 0;
 
+        obj_next = obj->next_content;
         if ( vnum < HYRULE_PIECE_FIRST_VNUM || vnum > HYRULE_PIECE_LAST_VNUM )
             continue;
         if ( !seen[vnum - HYRULE_PIECE_FIRST_VNUM] )
+        {
             seen[vnum - HYRULE_PIECE_FIRST_VNUM] = true;
-        else if ( count < (int)( sizeof(spare) / sizeof(spare[0]) ) )
-            spare[count++] = obj;
+            continue;
+        }
+        spare[vnum - HYRULE_PIECE_FIRST_VNUM]++;
+        count++;
+        extract_obj( obj );
     }
     if ( count == 0 )
         return false;
-    for ( i = 0; i < count; i++ )
-    {
-        snprintf( buf, sizeof(buf), "Spare Triforce shard: %s's object %d taken back.",
-                  ch->name, spare[i]->pIndexData->vnum );
-        log_string( buf );
-        extract_obj( spare[i] );
-    }
+    for ( i = 0; i < HYRULE_PIECE_LAST_VNUM - HYRULE_PIECE_FIRST_VNUM + 1; i++ )
+        if ( spare[i] > 0 )
+        {
+            snprintf( buf, sizeof(buf), "Spare Triforce shard: %d of %s's object %d "
+                      "taken back.", spare[i], ch->name, HYRULE_PIECE_FIRST_VNUM + i );
+            log_string( buf );
+        }
     snprintf( buf, sizeof(buf), "{0BA correction:{00 you were carrying %s Triforce "
               "shard%s you already had, from a chest that refilled.  The spare%s "
               "%s been taken back; you keep one of each.\n\r",

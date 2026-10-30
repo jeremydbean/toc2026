@@ -236,3 +236,100 @@ class GrantPsiLandsWhereAskedTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def fault(mud: LiveMud, point: str) -> None:
+    (mud.root / "fault.once").write_text(point + "\n")
+
+
+FAULT_ENV = {"TOC_FAULT_FILE": "../fault.once", "TOC_FAULT": "autowrite"}
+
+
+def mortal(mud: LiveMud, name: str, level: int = 16) -> None:
+    with mud.connect(timeout=120) as maker:
+        create_character(maker, name, PASSWORD)
+        maker.send("quit")
+        maker.wait_closed()
+    patch_player_file(mud, name, Levl=level)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class GrantPsiSaveTests(unittest.TestCase):
+    """GRANTPSI says what reached the file (review, 2026-10-30): an offline
+    grant whose save failed was reported as saved and its copy freed, so
+    the grant was lost. A failed offline save keeps nothing and says so;
+    an online grant stays in effect and is written by the next save; an
+    unconfirmed save is reported and never undone. TOC_FAULT=autowrite
+    keeps autosaves from writing the file behind the command's back."""
+
+    def test_a_failed_offline_flag_says_so_and_changes_nothing(self) -> None:
+        with LiveMud(extra_env=FAULT_ENV) as mud:
+            immortal(mud, "Zpsisvimm")
+            mortal(mud, "Zpsilost")
+            with mud.connect(timeout=120) as god:
+                login(god, "Zpsisvimm", PASSWORD)
+                fault(mud, "grantpsi-save")
+                reply = god.sync("grantpsi Zpsilost level mindblast")
+                self.assertIn("could not be saved", reply)
+                self.assertIn("was not kept", reply)
+                self.assertNotIn("Saved to their player file", reply)
+                self.assertIn("PsiGrant 0", saved_file(mud, "Zpsilost"))
+
+                # Nothing is pending afterwards: asked again, it lands.
+                again = god.sync("grantpsi Zpsilost level mindblast")
+                self.assertIn("Saved to their player file (they are offline)", again)
+                self.assertIn("PsiGrant 2", saved_file(mud, "Zpsilost"))
+            self.assertIn("was not saved; nothing kept", mud.server_output())
+
+    def test_a_failed_offline_now_grant_keeps_nothing(self) -> None:
+        with LiveMud(extra_env=FAULT_ENV) as mud:
+            immortal(mud, "Zpsisvimmb")
+            mortal(mud, "Zpsilostnow")
+            with mud.connect(timeout=120) as god:
+                login(god, "Zpsisvimmb", PASSWORD)
+                fault(mud, "grantpsi-save")
+                reply = god.sync("grantpsi Zpsilostnow now mindblast")
+                self.assertIn("immediate grant was not kept", reply)
+                self.assertNotIn("granted immediately", reply)
+                self.assertNotIn("Zpsilostnow", god.sync("who"))
+            saved = saved_file(mud, "Zpsilostnow")
+            self.assertRegex(saved, r"(?m)^Psionic\s+0$")
+            self.assertNotIn("'mindblast'", saved)
+
+    def test_an_online_grant_is_saved_and_a_failure_waits_for_the_next_save(self) -> None:
+        with LiveMud(extra_env=FAULT_ENV) as mud:
+            immortal(mud, "Zpsisvimmc")
+            mortal(mud, "Zpsilive")
+            mortal(mud, "Zpsilivetwo")
+            with mud.connect(timeout=120) as god, \
+                 mud.connect(timeout=120) as one, \
+                 mud.connect(timeout=120) as two:
+                login(god, "Zpsisvimmc", PASSWORD)
+                login(one, "Zpsilive", PASSWORD)
+                login(two, "Zpsilivetwo", PASSWORD)
+
+                # Saved at once, not left for an autosave.
+                self.assertIn("Saved to their player file.",
+                              god.sync("grantpsi Zpsilive level"))
+                self.assertIn("PsiGrant 2", saved_file(mud, "Zpsilive"))
+
+                fault(mud, "grantpsi-save")
+                reply = god.sync("grantpsi Zpsilivetwo level")
+                self.assertIn("their next save writes it", reply)
+                self.assertIn("PsiGrant 0", saved_file(mud, "Zpsilivetwo"))
+                two.send("quit")
+                self.assertTrue(two.wait_closed())
+            self.assertIn("PsiGrant 2", saved_file(mud, "Zpsilivetwo"))
+
+    def test_an_unconfirmed_offline_save_is_reported_not_undone(self) -> None:
+        with LiveMud(extra_env=FAULT_ENV) as mud:
+            immortal(mud, "Zpsisvimmd")
+            mortal(mud, "Zpsiunsure")
+            with mud.connect(timeout=120) as god:
+                login(god, "Zpsisvimmd", PASSWORD)
+                # The second save of theirs: the "grantpsi" snapshot
+                # milestone saves the copy first.
+                fault(mud, "dirsync-Zpsiunsure 2")
+                reply = god.sync("grantpsi Zpsiunsure level")
+                self.assertIn("has not confirmed the write", reply)
+            self.assertIn("PsiGrant 2", saved_file(mud, "Zpsiunsure"))

@@ -363,7 +363,12 @@ def merge_sittings(rows):
     counts from the same logon both times, so the second line repeats the
     first and adds what came after. Keep the last line of each sitting
     (same name, same start: epoch less seconds played) and say how it went:
-    "linkdead > quit"."""
+    "linkdead > quit".
+
+    Only a link loss leaves a sitting open: QUIT and shutdown end it, so
+    the next line is a new sitting however close its start (review,
+    2026-10-30: a quit, a login and a quit two seconds apart read as one
+    "quit > quit" and lost the first session's numbers)."""
     merged = []
     open_at = {}
     for r in rows:
@@ -372,14 +377,15 @@ def merge_sittings(rows):
         except (IndexError, ValueError):
             merged.append(r)
             continue
-        prev = open_at.get(r[2])
+        prev = open_at.pop(r[2], None)
         if prev is not None and abs(prev[0] - start) <= 2:
             # The sitting is listed where it ended, in time order.
             joined = list(r)
             joined[6] = merged[prev[1]][6] + " > " + r[6]
             merged[prev[1]] = None
             r = joined
-        open_at[r[2]] = (start, len(merged))
+        if str(r[6]).split(" > ")[-1] == "linkdead":
+            open_at[r[2]] = (start, len(merged))
         merged.append(r)
     return [r for r in merged if r is not None]
 

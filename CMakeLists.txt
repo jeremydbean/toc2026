@@ -41,6 +41,7 @@ set(SRC_FILES
     src/disaster.c
     src/dummy.c
     src/dstring.c
+    src/text_fold.c
     src/edit.c
     src/fight.c
     src/gear_compare.c
