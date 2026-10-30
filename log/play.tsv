@@ -18850,3 +18850,11 @@
 1793318268	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
 1793318270	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1793318270	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    269 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793318280	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793318281	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    269 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793318282	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793318282	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (23) guano // ( 2) (Glowing) glowing moss
+1793318283	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-29 //   A Hyrule chest refills at every reset, but you can no longer take a
+1793318332	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	help	mastery	'WEAPON MASTERY' MASTERY WEAPONSMASTERY // Weapon mastery is a warrior's and a thief's own.  It cannot be learned or // practised: it grows by itself with every level, up to level 59.
+1793318394	session	Alaric	54	4208	dresden_halloween.are	quit	135s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	17 commands	0 refused	coin: none
+1793318583	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	17	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'Bandits have made off with The Journal of Trinidad!'
