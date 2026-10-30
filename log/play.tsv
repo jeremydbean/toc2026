@@ -20056,3 +20056,58 @@
 1793395276	cmd	Trentlin	50	2425	dresden_halloween.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.
 1793395276	cmd	Trentlin	50	2426	dresden_halloween.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
 1793395276	cmd	Trentlin	50	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1793395276	cmd	Trentlin	50	2440	dresden_halloween.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793395279	cmd	Trentlin	50	3503	midennir_halloween.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of Dresden.  A line of carved pumpkins marks // the city boundary, their flames burning in no wind.  To the east lies the
+1793395280	cmd	Trentlin	50	3502	midennir_halloween.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  A crow sits at the center of the
+1793395280	cmd	Trentlin	50	3501	midennir_halloween.are	standing	100	0	-	north		The Lane //   You stroll along a lane that in daylight would be pleasant and shaded. // Tonight the branches form grasping arches overhead, and the spaces between
+1793395280	cmd	Trentlin	50	3500	midennir_halloween.are	standing	100	0	-	north		The Plains //   You are standing on the plains. This is a vast desolate place where the // wind can howl undisturbed since nothing but you bars its way.  Tonight the
+1793395280	cmd	Trentlin	50	21	connect.are	standing	100	0	-	northwest		A twisting path //   A small twisting path leads off of the northeastern plains. Way to the // southwest you can make out the high walls of the city of dresden, and from
+1793395281	cmd	Trentlin	50	22	connect.are	standing	100	0	-	west		Before the great circle //   You stand here before a monument, that stands out of time and space.  // Impossibly large stones make up what looks like a ritual or meeting 
+1793395281	cmd	Trentlin	50	23	connect.are	standing	100	0	-	south		The Great Portal //   Here stands one of the last of the great portals. These magical gateways were // placed here in this land, by the elder race. Each was supposed to lead to
+1793395281	cmd	Trentlin	50	10000	glitter.are	standing	100	0	-	enter	portal	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Before the crystal bridge.
+1793395284	cmd	Trentlin	50	10001	glitter.are	standing	100	0	-	north		A crystal bridge. //   You are walking on a crystal bridge. In the far the Glittering Palace // towers above you ... you also seem to hear some noises now.
+1793395285	cmd	Trentlin	50	10002	glitter.are	standing	100	0	-	north		Royal Island. //   You step off the bridge and clearly hear sounds of a raging battle ... // OHHH MY GOD .... THE PALACE IS UNDER ATTACK !!! ....
+1793395285	cmd	Trentlin	50	10002	glitter.are	standing	100	0	-	north		The gate is closed.
+1793395288	cmd	Trentlin	50	10002	glitter.are	standing	100	0	-	doorbash	bash north	You slam into the door but it refuses to budge.
+1793395294	cmd	Trentlin	50	10002	glitter.are	resting	100	0	-	wake		You stand up.
+1793395294	cmd	Trentlin	50	10002	glitter.are	standing	100	0	-	doorbash	bash north	You slam into the door and it shatters!!
+1793395299	cmd	Trentlin	50	10003	glitter.are	standing	100	0	-	north		The Glitter Palace's Grand Gate. //   Once proud palace guards lie on the ground ... nothing much remains of // them but a bloody pulp, Jeeezzz you sure you wanna get caught up in the middle
+1793395301	cmd	Trentlin	50	10003	glitter.are	standing	100	0	-	open	westy	I see no westy here.
+1793395304	cmd	Trentlin	50	10003	glitter.are	standing	100	0	-	open	west	Ok.
+1793395305	cmd	Trentlin	50	10003	glitter.are	standing	100	0	-	open	north	Ok.
+1793395306	cmd	Trentlin	50	10003	glitter.are	standing	100	0	-	exits		Obvious exits: // North - A large hall. // South - Royal Island.
+1793395310	cmd	Trentlin	50	10004	glitter.are	standing	100	0	-	north		A large hall. //   The hall is really big. You notice its splendidly decorated too ... hmm, // those gold embroidered rugs would really liven up your place.
+1793395311	cmd	Trentlin	50	10006	glitter.are	standing	100	0	-	north		A large hall. //   Wow, this reception hall is really big and luxuriously decorated too !! // You can't help but wonder how much those antique chinese vases must have
+1793395311	cmd	Trentlin	50	10007	glitter.are	standing	100	0	-	north		A large hall. //   The hall is as nicely decorated as before ... still your attention is // now drawn towards the maimed bodies, strewn on the floor. Some of them were
+1793395312	cmd	Trentlin	50	10008	glitter.are	standing	100	0	-	north		A high domed intersection. //   You are in awe of the craftsmanship of the masons that build this dome ... // hallways extend to all directions.
+1793395314	cmd	Trentlin	50	10008	glitter.are	standing	100	0	-	exits		Obvious exits: // North - The northern wing. // East  - The eastern wing.
+1793395331	cmd	Trentlin	50	10025	glitter.are	standing	100	0	-	north		The northern wing. //   Once beautiful vases and mirrors lie now shattered on the ground. // [Exits: north south]
+1793395332	cmd	Trentlin	50	10026	glitter.are	standing	100	0	-	north		The northern wing. //   The hall is empty. To the far north you can hear sounds of an on-going // battle.
+1793395332	cmd	Trentlin	50	10027	glitter.are	standing	100	0	-	north		The northern wing. //   A large stairway leads up to the second floor. // [Exits: south up]
+1793395333	cmd	Trentlin	50	10027	glitter.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793395334	cmd	Trentlin	50	10028	glitter.are	standing	100	0	-	up		The royal stairway. //   The royal stairway leads up to the second floor and down to the second. // [Exits: up down]
+1793395336	cmd	Trentlin	50	10028	glitter.are	standing	100	0	-	exits		Obvious exits: // Up    - A grand hallway. // Down  - The northern wing.
+1793395336	cmd	Trentlin	50	10029	glitter.are	standing	100	0	-	up		A grand hallway. //   The Palace Guards that defended the staircase lie dead at your feet. // [Exits: north down]
+1793395337	cmd	Trentlin	50	10029	glitter.are	standing	100	0	-	exits		Obvious exits: // North - A grand hallway. // Down  - The royal stairway.
+1793395338	cmd	Trentlin	50	10030	glitter.are	standing	100	0	-	north		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...
+1793395339	cmd	Trentlin	50	10031	glitter.are	standing	100	0	-	north		An intersection. //   You get the awkward feeling again that somebody is looking at you ... // jeeeeez man !!!, pull yourself together, you're seeing ghosts.
+1793395340	cmd	Trentlin	50	10031	glitter.are	standing	100	0	-	exits		Obvious exits: // North - A grand hallway. // East  - A cul-de-sac.
+1793395471	cmd	Trentlin	50	10052	glitter.are	standing	100	0	-	north		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...
+1793395471	cmd	Trentlin	50	10053	glitter.are	standing	100	0	-	north		A grand hallway. //   There are two large gilted doors to the north, a gold-framed sign hangs // near them on the wall.
+1793395472	cmd	Trentlin	50	10053	glitter.are	standing	100	0	-	north		The doors is closed.
+1793395476	cmd	Trentlin	50	10053	glitter.are	standing	100	0	-	open	north	Ok.
+1793395476	cmd	Trentlin	50	10054	glitter.are	standing	100	0	-	north		Throne Room. //   You walk between rows of tables. It seems king Amodius Starfire was // holding a grand banquet, all the Blood Royal of the realm, the guardians clad
+1793395478	cmd	Trentlin	50	10059	glitter.are	standing	100	0	-	north		Center of the throne Room. //   You are walking between rows of tables, several Blood Royal lay slain on // the ground. Corpses of many mind-deads prove they fought bravely though.
+1793395478	cmd	Trentlin	50	10062	glitter.are	standing	100	0	-	north		The Throne. //   King Amodius Starfire sits on his throne, then you notice the gaping // wound on his forehead. A mortally wounded guardian manages to whisper in your
+1793395481	cmd	Trentlin	50	10062	glitter.are	standing	100	0	-	open	throne	I see no throne here.
+1793395485	cmd	Trentlin	50	10062	glitter.are	standing	100	0	-	open	secret	I see no secret here.
+1793395487	cmd	Trentlin	50	10062	glitter.are	standing	100	0	-	open	up	I see no door up here.
+1793395513	cmd	Trentlin	50	10062	glitter.are	standing	100	0	-	open	trapdoor	You open a secret door.
+1793395514	cmd	Trentlin	50	10067	glitter.are	standing	100	0	-	up		Above the throne. //   You climbed on the throne, opened the trapdoor and managed to squeeze // your way up into this alcove here ... You see another trapdoor above you, and
+1793395516	refused	Trentlin	50	10067	glitter.are	standing	100	0	-	(unknown)		Huh? Did you mean OPEN?
+1793395518	cmd	Trentlin	50	10067	glitter.are	standing	100	0	-	open	up	Ok.
+1793395518	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	up		A dark hallway. //   You've now reached the third floor. Fires have been doused to (hopefully) // slow down the rebel forces' progress, since darkness is great at concealing
+1793395557	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	trapdoor	It's already open.
+1793395558	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	secret	I see no secret here.
+1793395561	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	up	I see no door up here.
+1793395565	cmd	Trentlin	50	10068	glitter.are	standing	100	0	-	open	door	I see no door here.

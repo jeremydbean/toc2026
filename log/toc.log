@@ -223712,3 +223712,92 @@ Fri Oct 30 21:21:16 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War
 Fri Oct 30 21:21:16 2026 :: Log Trentlin [2425]: east
 Fri Oct 30 21:21:16 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
 Fri Oct 30 21:21:16 2026 :: Log Trentlin [2426]: open east
+Fri Oct 30 21:21:16 2026 :: Log Trentlin [2426]: east
+Fri Oct 30 21:21:16 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Fri Oct 30 21:21:19 2026 :: Log Trentlin [2440]: east
+Fri Oct 30 21:21:19 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [3503]: east
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [3502]: north
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [3501]: arrived (The Lane) from 3502
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [3501]: north
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [3500]: arrived (The Plains) from 3501
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [3500]: northwest
+Fri Oct 30 21:21:20 2026 :: Log Trentlin [21]: arrived (A twisting path) from 3500
+Fri Oct 30 21:21:21 2026 :: Log Trentlin [21]: west
+Fri Oct 30 21:21:21 2026 :: Log Trentlin [22]: arrived (Before the great circle) from 21
+Fri Oct 30 21:21:21 2026 :: Log Trentlin [22]: south
+Fri Oct 30 21:21:21 2026 :: Log Trentlin [23]: arrived (The Great Portal) from 22
+Fri Oct 30 21:21:21 2026 :: Log Trentlin [23]: enter portal
+Fri Oct 30 21:21:21 2026 :: Log Trentlin [10000]: arrived (Before the crystal bridge.) from 23
+Fri Oct 30 21:21:24 2026 :: Log Trentlin [10000]: n
+Fri Oct 30 21:21:24 2026 :: Log Trentlin [10001]: arrived (A crystal bridge.) from 10000
+Fri Oct 30 21:21:25 2026 :: Log Trentlin [10001]: n
+Fri Oct 30 21:21:25 2026 :: Log Trentlin [10002]: arrived (Royal Island.) from 10001
+Fri Oct 30 21:21:25 2026 :: Log Trentlin [10002]: n
+Fri Oct 30 21:21:28 2026 :: Log Trentlin [10002]: door bash north
+Fri Oct 30 21:21:34 2026 :: Log Trentlin [10002]: wake
+Fri Oct 30 21:21:34 2026 :: Log Trentlin [10002]: door bash north
+Fri Oct 30 21:21:39 2026 :: Log Trentlin [10002]: n
+Fri Oct 30 21:21:39 2026 :: Log Trentlin [10003]: arrived (The Glitter Palace's Grand Gate.) from 10002
+Fri Oct 30 21:21:41 2026 :: Log Trentlin [10003]: open westy
+Fri Oct 30 21:21:44 2026 :: Log Trentlin [10003]: open west
+Fri Oct 30 21:21:45 2026 :: Log Trentlin [10003]: open north
+Fri Oct 30 21:21:46 2026 :: Log Trentlin [10003]: ex
+Fri Oct 30 21:21:50 2026 :: Log Trentlin [10003]: n
+Fri Oct 30 21:21:50 2026 :: Log Trentlin [10004]: arrived (A large hall.) from 10003
+Fri Oct 30 21:21:51 2026 :: Log Trentlin [10004]: n
+Fri Oct 30 21:21:51 2026 :: Log Trentlin [10006]: arrived (A large hall.) from 10004
+Fri Oct 30 21:21:51 2026 :: Log Trentlin [10006]: n
+Fri Oct 30 21:21:51 2026 :: Log Trentlin [10007]: arrived (A large hall.) from 10006
+Fri Oct 30 21:21:52 2026 :: Log Trentlin [10007]: n
+Fri Oct 30 21:21:52 2026 :: Log Trentlin [10008]: arrived (A high domed intersection.) from 10007
+Fri Oct 30 21:21:54 2026 :: Log Trentlin [10008]: ex
+Fri Oct 30 21:22:06 2026 :: Treasure goblin: vanished from room 2145 (Corner of Ajax and Hector, hood.are) (too long in one area).
+Fri Oct 30 21:22:11 2026 :: Log Trentlin [10008]: n
+Fri Oct 30 21:22:11 2026 :: Log Trentlin [10025]: arrived (The northern wing.) from 10008
+Fri Oct 30 21:22:12 2026 :: Log Trentlin [10025]: n
+Fri Oct 30 21:22:12 2026 :: Log Trentlin [10026]: arrived (The northern wing.) from 10025
+Fri Oct 30 21:22:12 2026 :: Log Trentlin [10026]: n
+Fri Oct 30 21:22:12 2026 :: Log Trentlin [10027]: arrived (The northern wing.) from 10026
+Fri Oct 30 21:22:13 2026 :: Log Trentlin [10027]: n
+Fri Oct 30 21:22:14 2026 :: Log Trentlin [10027]: u
+Fri Oct 30 21:22:14 2026 :: Log Trentlin [10028]: arrived (The royal stairway.) from 10027
+Fri Oct 30 21:22:16 2026 :: Log Trentlin [10028]: ex
+Fri Oct 30 21:22:16 2026 :: Log Trentlin [10028]: u
+Fri Oct 30 21:22:16 2026 :: Log Trentlin [10029]: arrived (A grand hallway.) from 10028
+Fri Oct 30 21:22:17 2026 :: Log Trentlin [10029]: ex
+Fri Oct 30 21:22:18 2026 :: Log Trentlin [10029]: n
+Fri Oct 30 21:22:18 2026 :: Log Trentlin [10030]: arrived (A grand hallway.) from 10029
+Fri Oct 30 21:22:19 2026 :: Log Trentlin [10030]: n
+Fri Oct 30 21:22:19 2026 :: Log Trentlin [10031]: arrived (An intersection.) from 10030
+Fri Oct 30 21:22:20 2026 :: Log Trentlin [10031]: ex
+Fri Oct 30 21:24:31 2026 :: Log Trentlin [10031]: n
+Fri Oct 30 21:24:31 2026 :: Log Trentlin [10052]: arrived (A grand hallway.) from 10031
+Fri Oct 30 21:24:31 2026 :: Log Trentlin [10052]: n
+Fri Oct 30 21:24:31 2026 :: Log Trentlin [10053]: arrived (A grand hallway.) from 10052
+Fri Oct 30 21:24:32 2026 :: Log Trentlin [10053]: n
+Fri Oct 30 21:24:36 2026 :: Log Trentlin [10053]: open north
+Fri Oct 30 21:24:36 2026 :: Log Trentlin [10053]: n
+Fri Oct 30 21:24:36 2026 :: Log Trentlin [10054]: arrived (Throne Room.) from 10053
+Fri Oct 30 21:24:38 2026 :: Log Trentlin [10054]: n
+Fri Oct 30 21:24:38 2026 :: Log Trentlin [10059]: arrived (Center of the throne Room.) from 10054
+Fri Oct 30 21:24:38 2026 :: Log Trentlin [10059]: n
+Fri Oct 30 21:24:38 2026 :: Log Trentlin [10062]: arrived (The Throne.) from 10059
+Fri Oct 30 21:24:41 2026 :: Log Trentlin [10062]: open throne
+Fri Oct 30 21:24:45 2026 :: Log Trentlin [10062]: open secret
+Fri Oct 30 21:24:47 2026 :: Log Trentlin [10062]: open up
+Fri Oct 30 21:25:13 2026 :: Log Trentlin [10062]: open trapdoor
+Fri Oct 30 21:25:14 2026 :: Log Trentlin [10062]: u
+Fri Oct 30 21:25:14 2026 :: Log Trentlin [10067]: arrived (Above the throne.) from 10062
+Fri Oct 30 21:25:16 2026 :: Log Trentlin [10067]: (refused) op[en up
+Fri Oct 30 21:25:18 2026 :: Log Trentlin [10067]: open up
+Fri Oct 30 21:25:18 2026 :: Log Trentlin [10067]: u
+Fri Oct 30 21:25:18 2026 :: Log Trentlin [10068]: arrived (A dark hallway.) from 10067
+Fri Oct 30 21:25:57 2026 :: Log Trentlin [10068]: open trapdoor
+Fri Oct 30 21:25:58 2026 :: Log Trentlin [10068]: open secret
+Fri Oct 30 21:26:01 2026 :: Log Trentlin [10068]: open up
+Fri Oct 30 21:26:05 2026 :: Log Trentlin [10068]: open door
+Fri Oct 30 21:26:07 2026 :: Black market: the dealer vanished from room 15038 (The Back Hall, campus.are) (too long in one area).
+Fri Oct 30 21:26:12 2026 :: Sock.sinaddr:  54.87.112.51
+Fri Oct 30 21:26:13 2026 :: EOF encountered on read.
