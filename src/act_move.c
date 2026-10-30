@@ -644,6 +644,13 @@ void do_look( CHAR_DATA *ch, char *argument )
 
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
+    /* LOOK AT SKELETON is LOOK SKELETON: "at" was taken for the thing to
+       look at and nothing answered to it (Rockcrusher, 2026-10-30). */
+    if ( !str_cmp( arg1, "at" ) && arg2[0] != '\0' )
+    {
+        toc_strlcpy( arg1, arg2, sizeof(arg1) );
+        argument = one_argument( argument, arg2 );
+    }
     number = number_argument(arg1,arg3);
     count = 0;
 

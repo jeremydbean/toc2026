@@ -943,6 +943,79 @@ static void play_note( CHAR_DATA *ch, const char *name, const char *shown,
     playlog_begin( ch, name, play_shown );
 }
 
+/*
+ * The rest of a skill's name after the word its command answers to. A
+ * command matches on one word, so EGO WHIP passed "whip" on as the
+ * target and FISTS OF FURY "of fury": typed in full, in a fight, every
+ * one of these was answered "They aren't here." (Rockcrusher, 2026-10-30)
+ * and PICK LOCK DOOR looked for a lock to pick. A name written with a
+ * space in the command table carries its own tail.
+ */
+static const struct
+{
+    const char *command;
+    const char *tail;
+} command_name_tails[] =
+{
+    { "blinding", "fists"   },
+    { "crane",    "dance"   },
+    { "danger",   "sense"   },
+    { "dirt",     "kicking" },
+    { "fists",    "of fury" },
+    { "iron",     "skin"    },
+    { "nerve",    "damage"  },
+    { "pick",     "lock"    },
+    { "psionic",  "armor"   },
+    { "psychic",  "shield"  },
+    { "steel",    "fist"    },
+    { "stunning", "blow"    },
+    { NULL,       NULL      }
+};
+
+/* The argument past the rest of the command's own name, when the player
+   typed it -- whole words, any case -- or the argument as it was. */
+static char *skip_command_name_tail( const char *name, char *argument )
+{
+    const char *tail = strchr( name, ' ' );
+    char *p = argument;
+    int i;
+
+    if ( tail != NULL )
+        tail++;
+    else
+        for ( i = 0; command_name_tails[i].command != NULL; i++ )
+            if ( !str_cmp( name, command_name_tails[i].command ) )
+            {
+                tail = command_name_tails[i].tail;
+                break;
+            }
+    if ( tail == NULL )
+        return argument;
+
+    while ( *tail != '\0' )
+    {
+        size_t len = 0;
+
+        while ( *tail == ' ' )
+            tail++;
+        while ( isspace( (unsigned char) *p ) )
+            p++;
+        while ( tail[len] != '\0' && tail[len] != ' ' )
+        {
+            if ( LOWER( p[len] ) != LOWER( tail[len] ) )
+                return argument;
+            len++;
+        }
+        if ( len == 0 || ( p[len] != '\0' && !isspace( (unsigned char) p[len] ) ) )
+            return argument;
+        p += len;
+        tail += len;
+    }
+    while ( isspace( (unsigned char) *p ) )
+        p++;
+    return p;
+}
+
 static void interpret_body( CHAR_DATA *ch, char *argument );
 
 /*
@@ -1388,8 +1461,9 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     }
 
     /*
-     * Dispatch the command.
+     * Dispatch the command, past the rest of its own name if typed.
      */
+    argument = skip_command_name_tail( cmd_table[cmd].name, argument );
     (*cmd_table[cmd].do_fun) ( ch, argument );
 
     {

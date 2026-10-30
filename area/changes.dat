@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261030a 2026-10-30
+A skill typed by its whole name now works: EGO WHIP, FISTS OF FURY,
+CRANE DANCE, STUNNING BLOW, NERVE DAMAGE, STEEL FIST, DIRT KICKING,
+BLINDING FISTS and the rest no longer take the rest of the name for a
+target, and PICK LOCK DOOR picks the door. LOOK AT <thing> works like
+LOOK <thing>.
+
 @ 20261029b 2026-10-29
 A Hyrule chest refills at every reset, but you can no longer take a
 Triforce shard you already hold from it: one of each is all the
