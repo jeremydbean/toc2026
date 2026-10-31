@@ -21139,3 +21139,120 @@
 1793447389	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
 1793447391	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
 1793447391	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793447394	cmd	Trentlin	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793447395	cmd	Trentlin	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793447395	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	south		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793447395	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	west		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793447395	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793447396	cmd	Trentlin	50	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793447396	cmd	Trentlin	50	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax
+1793447396	cmd	Trentlin	50	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring
+1793447396	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance
+1793447397	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793447397	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793447397	cmd	Trentlin	50	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793447397	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793447398	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793447398	cmd	Trentlin	50	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793447398	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1793447398	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793447399	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793447399	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall
+1793447399	cmd	Trentlin	50	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins
+1793447401	cmd	Trentlin	50	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start //   A wall of brown rock rises along the north side of a grassy field, its face // scarred and cracked. One section looks weaker than the rest, a hollow knock
+1793447402	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	west		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow
+1793447403	cmd	Trentlin	50	30221	hyrule.are	standing	100	0	-	west		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy
+1793447403	cmd	Trentlin	50	30220	hyrule.are	standing	100	0	-	west		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter
+1793447404	cmd	Trentlin	50	30236	hyrule.are	standing	100	0	-	north		Forest River Ford //   A swift river splashes over a stony ford in the middle of the woods, cold // and clear. The banks are slick with mud and covered in wet prints, and a
+1793447405	cmd	Trentlin	50	30252	hyrule.are	standing	100	0	-	north		Riverside Cave //   A swift green river cuts through the woods here, its banks lined with reeds // and smooth grey stones. Across a stretch of grass a low cave mouth is set
+1793447405	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	north		The Silent Sentinels //   A cluster of stone soldiers stands guard on a patch of sandy ground, raised // in two rows like an honour guard. The sand around them is restless and
+1793447407	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	list		You can't do that here.
+1793447420	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	open	statue	I see no statue here.
+1793447426	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	open	sentintel	I see no sentintel here.
+1793447430	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	open	secret	I see no secret here.
+1793447433	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	open	hidden	I see no hidden here.
+1793447435	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	open	down	I see no door down here.
+1793447436	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	open	shop	That's not a container.
+1793447440	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	look	statue	Weathered almost smooth, this is one of the oldest armos in Hyrule, its // features worn away to a suggestion of a face and its shield cracked // through. Touched, it wakes with a sound like a landslide and turns a hard,
+1793447444	cmd	Trentlin	50	30268	hyrule.are	standing	100	0	-	kill	stat	An Armos knight parries your attack. // You ^^^ DESTROY ^^^ an Armos knight!
+1793447447	cmd	Trentlin	50	30268	hyrule.are	fighting	100	0	fight	smite		Your smite >>> ANNIHILATES <<< an Armos knight! // Your smite does UNSPEAKABLE things to an Armos knight!
+1793447455	cmd	Trentlin	50	30268	hyrule.are	fighting	87	0	fight	smite		Your smite misses an Armos knight.
+1793447472	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	look	in cor	Corpse of an Armos knight contains: //      Nothing.
+1793447474	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	sacrifice	cor	The Gods give you 90 copper coins for your sacrifice.
+1793447474	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	look		The Silent Sentinels //   A cluster of stone soldiers stands guard on a patch of sandy ground, raised // in two rows like an honour guard. The sand around them is restless and
+1793447478	refused	Trentlin	50	30268	hyrule.are	standing	81	0	-	(unknown)		Huh? Did you mean OPEN?
+1793447484	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	look	statue	An Armos statue rests over something hidden.
+1793447490	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	open	statue	I see no statue here.
+1793447492	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	push	statue	You push a sleeping Armos statue. // A previously hidden door mysteriously opens. // You hear a strange noise off in the distance.
+1793447495	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	look		The Silent Sentinels //   A cluster of stone soldiers stands guard on a patch of sandy ground, raised // in two rows like an honour guard. The sand around them is restless and
+1793447496	cmd	Trentlin	50	30688	hyrule.are	standing	81	0	-	down		Under the Middle Sentinel //   Pushing the middle statue aside revealed a stair into this jewel-box of a // shop, where blue light off a velvet cushion explains the gleam that shone
+1793447497	cmd	Trentlin	50	30688	hyrule.are	standing	81	0	-	list		[Lv Price] Item // [20        60g] enemy bait. // [45     2p 50g] the Blue Ring of Hyrule.
+1793447502	cmd	Trentlin	50	30688	hyrule.are	standing	81	0	-	buy	bait	You buy enemy bait.
+1793447504	cmd	Trentlin	50	30688	hyrule.are	standing	81	0	-	buy	bait	You buy enemy bait.
+1793447509	cmd	Trentlin	50	30268	hyrule.are	standing	81	0	-	up		The Silent Sentinels //   A cluster of stone soldiers stands guard on a patch of sandy ground, raised // in two rows like an honour guard. The sand around them is restless and
+1793447510	cmd	Trentlin	50	30252	hyrule.are	standing	81	0	-	south		Riverside Cave //   A swift green river cuts through the woods here, its banks lined with reeds // and smooth grey stones. Across a stretch of grass a low cave mouth is set
+1793447510	cmd	Trentlin	50	30236	hyrule.are	standing	81	0	-	south		Forest River Ford //   A swift river splashes over a stony ford in the middle of the woods, cold // and clear. The banks are slick with mud and covered in wet prints, and a
+1793447511	cmd	Trentlin	50	30220	hyrule.are	standing	81	0	-	south		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter
+1793447512	cmd	Trentlin	50	30221	hyrule.are	standing	81	0	-	east		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy
+1793447512	cmd	Trentlin	50	30222	hyrule.are	standing	81	0	-	east		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow
+1793447515	cmd	Trentlin	50	30682	hyrule.are	standing	81	0	-	down		The Waxlight Shop //   Drips of old wax have built up on every ledge of this cave into pale, lumpy // spires, and the warm smell of tallow is thick enough to taste. Two fires
+1793447515	cmd	Trentlin	50	30682	hyrule.are	standing	81	0	-	list		[Lv Price] Item // [ 5        60g] a Blue Candle. // [ 1         1p] a small key.
+1793447517	cmd	Trentlin	50	30222	hyrule.are	standing	81	0	-	up		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow
+1793447517	cmd	Trentlin	50	30221	hyrule.are	standing	81	0	-	west		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy
+1793447518	cmd	Trentlin	50	4207	dresden_halloween.are	standing	81	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793447519	cmd	Trentlin	50	4208	dresden_halloween.are	standing	81	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793447520	cmd	Trentlin	50	4207	dresden_halloween.are	standing	81	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793447521	cmd	Trentlin	50	4202	dresden_halloween.are	standing	81	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793447521	cmd	Trentlin	50	4203	dresden_halloween.are	standing	81	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793447522	cmd	Trentlin	50	4210	dresden_halloween.are	standing	81	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793447523	cmd	Trentlin	50	4210	dresden_halloween.are	standing	81	0	-	sleep		You go to sleep.
+1793447541	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	99	0	-	tell		(withheld)
+1793447550	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin          888/ 894 hp 1445/1445 mana  226/ 350 mv 112503 xp
+1793447553	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	99	0	-	wake		You wake and stand up.
+1793447554	cmd	Trentlin	50	4210	dresden_halloween.are	standing	99	0	-	look	ala	You see nothing special about him. // Alaric is in excellent condition. // Alaric is using:
+1793447559	cmd	Trentlin	50	4210	dresden_halloween.are	standing	99	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1793447560	cmd	Trentlin	50	4210	dresden_halloween.are	standing	99	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793447561	cmd	Trentlin	50	4203	dresden_halloween.are	standing	99	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793447562	cmd	Trentlin	50	4202	dresden_halloween.are	standing	99	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793447563	cmd	Trentlin	50	4201	dresden_halloween.are	standing	99	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793447563	cmd	Trentlin	50	2427	dresden_halloween.are	standing	99	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793447564	cmd	Trentlin	50	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793447564	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793447569	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	list		[Lv Price] Item // [ 0        30g] a bag of candy corn. // [ 0     1p 20g] a grinning jack-o-lantern mask.
+1793447571	cmd	Trentlin	50	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793447571	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793447571	cmd	Trentlin	50	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793447572	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793447572	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		Alas, you cannot go that way.
+1793447572	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		Alas, you cannot go that way.
+1793447576	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	1	-	aquest	points	Quest Points: 6439
+1793447669	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1793447669	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793447671	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1793447673	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793447673	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793447674	cmd	Alaric	54	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793447674	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793447675	cmd	Alaric	54	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793447675	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793447675	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793447676	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793447676	cmd	Alaric	54	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793447677	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793447679	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793447680	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		It's already open.
+1793447681	cmd	Alaric	54	3529	midennir_halloween.are	standing	100	0	-	run	e 8	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793447682	cmd	Alaric	54	3529	midennir_halloween.are	standing	100	0	-	open		There is no door to the east, just open passage.
+1793447684	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	run	e 19	Near the Sands of Sorrow // [Exits: east west] // Near the Sands of Sorrow
+1793447688	cmd	Alaric	54	9531	newthalo.are	resting	100	0	-	open		Ok.
+1793447689	refused	Alaric	54	9531	newthalo.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1793447689	refused	Alaric	54	9531	newthalo.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1793447689	refused	Alaric	54	9531	newthalo.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1793447689	refused	Alaric	54	9531	newthalo.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1793447691	cmd	Alaric	54	9531	newthalo.are	resting	100	0	-	wake		You stand up.
+1793447691	cmd	Alaric	54	9530	newthalo.are	standing	100	0	-	west		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and
+1793447692	cmd	Alaric	54	9529	newthalo.are	standing	100	0	-	west		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the
+1793447692	cmd	Alaric	54	9528	newthalo.are	standing	100	0	-	west		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also
+1793447692	cmd	Alaric	54	9527	newthalo.are	standing	100	0	-	west		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to
+1793447693	cmd	Alaric	54	9517	newthalo.are	standing	100	0	-	west		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is
+1793447693	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	west		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle

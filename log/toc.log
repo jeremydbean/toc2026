@@ -226370,3 +226370,233 @@ Sat Oct 31 11:49:51 2026 :: Log Trentlin [2427]: n
 Sat Oct 31 11:49:51 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
 Sat Oct 31 11:49:51 2026 :: Log Trentlin [2404]: n
 Sat Oct 31 11:49:51 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 31 11:49:54 2026 :: Log Trentlin [2401]: west
+Sat Oct 31 11:49:54 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [2405]: west
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [2433]: south
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 2433
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [4201]: west
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4201
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [4202]: west
+Sat Oct 31 11:49:55 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4202
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [4207]: up
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [3700]: up
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [3772]: up
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [3795]: enter portal
+Sat Oct 31 11:49:56 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15000]: east
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15001]: east
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15002]: east
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15003]: east
+Sat Oct 31 11:49:57 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15004]: north
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15010]: north
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15011]: north
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15012]: north
+Sat Oct 31 11:49:58 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Sat Oct 31 11:49:59 2026 :: Log Trentlin [15013]: east
+Sat Oct 31 11:49:59 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Sat Oct 31 11:49:59 2026 :: Log Trentlin [15038]: east
+Sat Oct 31 11:49:59 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Sat Oct 31 11:49:59 2026 :: Log Trentlin [15068]: enter cabinet
+Sat Oct 31 11:49:59 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Sat Oct 31 11:50:01 2026 :: Log Trentlin [30200]: n
+Sat Oct 31 11:50:01 2026 :: Log Trentlin [30223]: arrived (Rock Wall Above the Start) from 30200
+Sat Oct 31 11:50:02 2026 :: Log Trentlin [30223]: w
+Sat Oct 31 11:50:02 2026 :: Log Trentlin [30222]: arrived (Candle Shop Knoll) from 30223
+Sat Oct 31 11:50:03 2026 :: Log Trentlin [30222]: w
+Sat Oct 31 11:50:03 2026 :: Log Trentlin [30221]: arrived (Forest Stream) from 30222
+Sat Oct 31 11:50:03 2026 :: Log Trentlin [30221]: w
+Sat Oct 31 11:50:03 2026 :: Log Trentlin [30220]: arrived (The Herb-Gatherers' Wood) from 30221
+Sat Oct 31 11:50:04 2026 :: Log Trentlin [30220]: n
+Sat Oct 31 11:50:04 2026 :: Log Trentlin [30236]: arrived (Forest River Ford) from 30220
+Sat Oct 31 11:50:05 2026 :: Log Trentlin [30236]: n
+Sat Oct 31 11:50:05 2026 :: Log Trentlin [30252]: arrived (Riverside Cave) from 30236
+Sat Oct 31 11:50:05 2026 :: Log Trentlin [30252]: n
+Sat Oct 31 11:50:05 2026 :: Log Trentlin [30268]: arrived (The Silent Sentinels) from 30252
+Sat Oct 31 11:50:07 2026 :: Log Trentlin [30268]: list
+Sat Oct 31 11:50:20 2026 :: Log Trentlin [30268]: open statue
+Sat Oct 31 11:50:26 2026 :: Log Trentlin [30268]: open sentintel
+Sat Oct 31 11:50:30 2026 :: Log Trentlin [30268]: open secret
+Sat Oct 31 11:50:33 2026 :: Log Trentlin [30268]: open hidden
+Sat Oct 31 11:50:35 2026 :: Log Trentlin [30268]: open down
+Sat Oct 31 11:50:36 2026 :: Log Trentlin [30268]: open shop
+Sat Oct 31 11:50:40 2026 :: Log Trentlin [30268]: l statue
+Sat Oct 31 11:50:44 2026 :: Log Trentlin [30268]: k stat
+Sat Oct 31 11:50:45 2026 :: Black market: the dealer vanished from room 7623 (Library, ultima.are) (wandering).
+Sat Oct 31 11:50:47 2026 :: Log Trentlin [30268]: smite
+Sat Oct 31 11:50:55 2026 :: Log Trentlin [30268]: smite
+Sat Oct 31 11:51:03 2026 :: Log Trentlin [30268]: killed an Armos knight
+Sat Oct 31 11:51:03 2026 :: Log Trentlin [30268]: coin +12 gold
+Sat Oct 31 11:51:03 2026 :: Log Trentlin [30268]: coin +126 silver
+Sat Oct 31 11:51:03 2026 :: Log Trentlin [30268]: coin +105 copper
+Sat Oct 31 11:51:03 2026 :: Log Trentlin [30268]: coin +27 gold
+Sat Oct 31 11:51:12 2026 :: Log Trentlin [30268]: l in cor
+Sat Oct 31 11:51:14 2026 :: Log Trentlin [30268]: sac cor
+Sat Oct 31 11:51:14 2026 :: Log Trentlin [30268]: coin +90 copper
+Sat Oct 31 11:51:14 2026 :: Log Trentlin [30268]: l
+Sat Oct 31 11:51:18 2026 :: Log Trentlin [30268]: (refused) opemn statue
+Sat Oct 31 11:51:24 2026 :: Log Trentlin [30268]: l statue
+Sat Oct 31 11:51:30 2026 :: Log Trentlin [30268]: open statue
+Sat Oct 31 11:51:32 2026 :: Log Trentlin [30268]: push statue
+Sat Oct 31 11:51:35 2026 :: Log Trentlin [30268]: l
+Sat Oct 31 11:51:36 2026 :: Log Trentlin [30268]: d
+Sat Oct 31 11:51:36 2026 :: Log Trentlin [30688]: arrived (Under the Middle Sentinel) from 30268
+Sat Oct 31 11:51:37 2026 :: Log Trentlin [30688]: list
+Sat Oct 31 11:51:42 2026 :: Log Trentlin [30688]: buy bait
+Sat Oct 31 11:51:42 2026 :: Log Trentlin [30688]: copper -600000
+Sat Oct 31 11:51:42 2026 :: Log Trentlin [30688]: bought enemy bait (vnum 30552) for 600000 copper from a lanky merchant
+Sat Oct 31 11:51:44 2026 :: Log Trentlin [30688]: buy bait
+Sat Oct 31 11:51:44 2026 :: Log Trentlin [30688]: copper -600000
+Sat Oct 31 11:51:44 2026 :: Log Trentlin [30688]: bought enemy bait (vnum 30552) for 600000 copper from a lanky merchant
+Sat Oct 31 11:51:49 2026 :: Log Trentlin [30688]: u
+Sat Oct 31 11:51:49 2026 :: Log Trentlin [30268]: arrived (The Silent Sentinels) from 30688
+Sat Oct 31 11:51:50 2026 :: Log Trentlin [30268]: s
+Sat Oct 31 11:51:50 2026 :: Log Trentlin [30252]: arrived (Riverside Cave) from 30268
+Sat Oct 31 11:51:50 2026 :: Log Trentlin [30252]: s
+Sat Oct 31 11:51:50 2026 :: Log Trentlin [30236]: arrived (Forest River Ford) from 30252
+Sat Oct 31 11:51:51 2026 :: Log Trentlin [30236]: s
+Sat Oct 31 11:51:51 2026 :: Log Trentlin [30220]: arrived (The Herb-Gatherers' Wood) from 30236
+Sat Oct 31 11:51:52 2026 :: Log Trentlin [30220]: e
+Sat Oct 31 11:51:52 2026 :: Log Trentlin [30221]: arrived (Forest Stream) from 30220
+Sat Oct 31 11:51:52 2026 :: Log Trentlin [30221]: e
+Sat Oct 31 11:51:52 2026 :: Log Trentlin [30222]: arrived (Candle Shop Knoll) from 30221
+Sat Oct 31 11:51:55 2026 :: Log Trentlin [30222]: d
+Sat Oct 31 11:51:55 2026 :: Log Trentlin [30682]: arrived (The Waxlight Shop) from 30222
+Sat Oct 31 11:51:55 2026 :: Log Trentlin [30682]: list
+Sat Oct 31 11:51:57 2026 :: Log Trentlin [30682]: u
+Sat Oct 31 11:51:57 2026 :: Log Trentlin [30222]: arrived (Candle Shop Knoll) from 30682
+Sat Oct 31 11:51:57 2026 :: Log Trentlin [30222]: w
+Sat Oct 31 11:51:57 2026 :: Log Trentlin [30221]: arrived (Forest Stream) from 30222
+Sat Oct 31 11:51:58 2026 :: Log Trentlin [30221]: reca
+Sat Oct 31 11:51:58 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 30221
+Sat Oct 31 11:51:59 2026 :: Log Trentlin [4207]: w
+Sat Oct 31 11:51:59 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 31 11:52:00 2026 :: Log Trentlin [4208]: e
+Sat Oct 31 11:52:00 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 31 11:52:01 2026 :: Log Trentlin [4207]: e
+Sat Oct 31 11:52:01 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 31 11:52:01 2026 :: Log Trentlin [4202]: n
+Sat Oct 31 11:52:01 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4202
+Sat Oct 31 11:52:02 2026 :: Log Trentlin [4203]: n
+Sat Oct 31 11:52:02 2026 :: Log Trentlin [4210]: arrived (The Sickroom of the Restless) from 4203
+Sat Oct 31 11:52:03 2026 :: Log Trentlin [4210]: sleep
+Sat Oct 31 11:52:21 2026 :: Log Trentlin [4210]: tell (arguments withheld)
+Sat Oct 31 11:52:30 2026 :: Log Trentlin [4210]: gr
+Sat Oct 31 11:52:33 2026 :: Log Trentlin [4210]: wake
+Sat Oct 31 11:52:34 2026 :: Log Trentlin [4210]: l ala
+Sat Oct 31 11:52:39 2026 :: Log Trentlin [4210]: who
+Sat Oct 31 11:52:40 2026 :: Log Trentlin [4210]: l
+Sat Oct 31 11:52:41 2026 :: Log Trentlin [4210]: s
+Sat Oct 31 11:52:41 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4210
+Sat Oct 31 11:52:42 2026 :: Log Trentlin [4203]: s
+Sat Oct 31 11:52:42 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4203
+Sat Oct 31 11:52:43 2026 :: Log Trentlin [4202]: e
+Sat Oct 31 11:52:43 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 31 11:52:43 2026 :: Log Trentlin [4201]: e
+Sat Oct 31 11:52:43 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 31 11:52:44 2026 :: Log Trentlin [2427]: n
+Sat Oct 31 11:52:44 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 31 11:52:44 2026 :: Log Trentlin [2404]: n
+Sat Oct 31 11:52:44 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 31 11:52:49 2026 :: Log Trentlin [2401]: list
+Sat Oct 31 11:52:51 2026 :: Log Trentlin [2401]: u
+Sat Oct 31 11:52:51 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 31 11:52:51 2026 :: Log Trentlin [2410]: u
+Sat Oct 31 11:52:51 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 31 11:52:51 2026 :: Log Trentlin [2411]: u
+Sat Oct 31 11:52:51 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 31 11:52:52 2026 :: Log Trentlin [2414]: u
+Sat Oct 31 11:52:52 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 31 11:52:52 2026 :: Log Trentlin [2497]: u
+Sat Oct 31 11:52:52 2026 :: Log Trentlin [2497]: u
+Sat Oct 31 11:52:56 2026 :: Log Trentlin [2497]: aquest points
+Sat Oct 31 11:54:29 2026 :: Log Alaric [4210]: wake
+Sat Oct 31 11:54:29 2026 :: Log Alaric [4210]: l
+Sat Oct 31 11:54:31 2026 :: Log Alaric [4210]: who
+Sat Oct 31 11:54:33 2026 :: Log Alaric [4210]: wake
+Sat Oct 31 11:54:33 2026 :: Log Alaric [4210]: l
+Sat Oct 31 11:54:34 2026 :: Log Alaric [4210]: s
+Sat Oct 31 11:54:34 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Sat Oct 31 11:54:34 2026 :: Log Alaric [4203]: s
+Sat Oct 31 11:54:34 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Sat Oct 31 11:54:35 2026 :: Log Alaric [4202]: e
+Sat Oct 31 11:54:35 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 31 11:54:35 2026 :: Log Alaric [4201]: e
+Sat Oct 31 11:54:35 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 31 11:54:35 2026 :: Log Alaric [2427]: n
+Sat Oct 31 11:54:35 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 31 11:54:36 2026 :: Log Alaric [2404]: n
+Sat Oct 31 11:54:36 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 31 11:54:36 2026 :: Log Alaric [2401]: n
+Sat Oct 31 11:54:36 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Oct 31 11:54:37 2026 :: Log Alaric [2402]: s
+Sat Oct 31 11:54:37 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 31 11:54:39 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 31 11:54:40 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct 31 11:54:40 2026 :: Log Alaric [2426]: oe
+Sat Oct 31 11:54:40 2026 :: EOF encountered on read.
+Sat Oct 31 11:54:41 2026 :: Log Alaric [2426]: r e 8
+Sat Oct 31 11:54:41 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 31 11:54:41 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 31 11:54:41 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 31 11:54:41 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 31 11:54:41 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 31 11:54:41 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sat Oct 31 11:54:41 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sat Oct 31 11:54:41 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sat Oct 31 11:54:42 2026 :: Log Alaric [3529]: oe
+Sat Oct 31 11:54:44 2026 :: Log Alaric [3529]: r e 19
+Sat Oct 31 11:54:44 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Oct 31 11:54:44 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Oct 31 11:54:44 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Oct 31 11:54:44 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9506
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9517
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9527
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
+Sat Oct 31 11:54:44 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sat Oct 31 11:54:48 2026 :: Log Alaric [9531]: oe
+Sat Oct 31 11:54:49 2026 :: Log Alaric [9531]: w
+Sat Oct 31 11:54:49 2026 :: Log Alaric [9531]: w
+Sat Oct 31 11:54:49 2026 :: Log Alaric [9531]: w
+Sat Oct 31 11:54:49 2026 :: Log Alaric [9531]: w
+Sat Oct 31 11:54:51 2026 :: Log Alaric [9531]: wake
+Sat Oct 31 11:54:51 2026 :: Log Alaric [9531]: w
+Sat Oct 31 11:54:51 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9531
+Sat Oct 31 11:54:52 2026 :: Log Alaric [9530]: w
+Sat Oct 31 11:54:52 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9530
+Sat Oct 31 11:54:52 2026 :: Log Alaric [9529]: w
+Sat Oct 31 11:54:52 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9529
+Sat Oct 31 11:54:52 2026 :: Log Alaric [9528]: w
+Sat Oct 31 11:54:52 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9528
+Sat Oct 31 11:54:53 2026 :: Log Alaric [9527]: w
+Sat Oct 31 11:54:53 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9527
+Sat Oct 31 11:54:53 2026 :: Log Alaric [9517]: w
+Sat Oct 31 11:54:53 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9517
