@@ -224898,3 +224898,41 @@ Sat Oct 31 00:07:52 2026 :: Log Alaric [29004]: unl north
 Sat Oct 31 00:07:53 2026 :: Log Alaric [29004]: on
 Sat Oct 31 00:07:53 2026 :: Log Alaric [29004]: n
 Sat Oct 31 00:07:53 2026 :: Log Alaric [29201]: arrived (Heroes Hall) from 29004
+Sat Oct 31 00:07:53 2026 :: Log Alaric [29201]: n
+Sat Oct 31 00:07:53 2026 :: Log Alaric [29202]: arrived (Hall of Past Heroes) from 29201
+Sat Oct 31 00:07:54 2026 :: Log Alaric [29202]: n
+Sat Oct 31 00:07:54 2026 :: Log Alaric [29202]: w
+Sat Oct 31 00:07:54 2026 :: Log Alaric [29203]: arrived (Passage to the Maze) from 29202
+Sat Oct 31 00:07:54 2026 :: Log Alaric [29203]: w
+Sat Oct 31 00:07:54 2026 :: Log Alaric [29204]: arrived (Twist in the Maze) from 29203
+Sat Oct 31 00:07:55 2026 :: Log Alaric [29204]: w
+Sat Oct 31 00:07:57 2026 :: Log Alaric [29204]: steel
+Sat Oct 31 00:08:02 2026 :: Log Alaric [29204]: iron
+Sat Oct 31 00:08:09 2026 :: Log Alaric [29204]: levi
+Sat Oct 31 00:08:09 2026 :: Log Alaric [29204]: fi clown
+Sat Oct 31 00:08:15 2026 :: Log Alaric [29204]: fi clown
+Sat Oct 31 00:08:21 2026 :: Log Alaric [29204]: fi clown
+Sat Oct 31 00:08:26 2026 :: Log Alaric [29204]: who
+Sat Oct 31 00:08:27 2026 :: Log Alaric [29204]: fi
+Sat Oct 31 00:08:32 2026 :: Log Alaric [29204]: fi
+Sat Oct 31 00:08:38 2026 :: Log Alaric [29204]: fi
+Sat Oct 31 00:08:44 2026 :: Log Alaric [29204]: who
+Sat Oct 31 00:08:44 2026 :: Log Alaric [29204]: flee
+Sat Oct 31 00:08:44 2026 :: Log Alaric [29203]: arrived (Passage to the Maze) from 29204
+Sat Oct 31 00:08:45 2026 :: Log Alaric [29203]: flee
+Sat Oct 31 00:08:46 2026 :: Log Alaric [29203]: recal
+Sat Oct 31 00:08:46 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29203
+Sat Oct 31 00:08:47 2026 :: Log Alaric [4207]: e
+Sat Oct 31 00:08:47 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 31 00:08:47 2026 :: Sock.sinaddr:  178.156.189.113
+Sat Oct 31 00:08:47 2026 :: Log Alaric [4202]: n
+Sat Oct 31 00:08:47 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sat Oct 31 00:08:48 2026 :: EOF encountered on read.
+Sat Oct 31 00:08:48 2026 :: Log Alaric [4203]: n
+Sat Oct 31 00:08:48 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sat Oct 31 00:08:48 2026 :: Log Alaric [4210]: sleep
+Sat Oct 31 00:09:11 2026 :: Log Alaric [4210]: affects off: iron skin
+Sat Oct 31 00:09:56 2026 :: Sock.sinaddr:  23.31.96.97
+Sat Oct 31 00:09:56 2026 :: EOF encountered on read.
+Sat Oct 31 00:11:34 2026 :: Treasure goblin: vanished from room 7575 (North End of the Hall, astral.are) (too long in one area).
+Sat Oct 31 00:12:53 2026 :: Log Alaric [4210]: affects off: levitate

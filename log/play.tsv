@@ -20621,3 +20621,26 @@
 1793405272	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
 1793405273	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	open		Ok.
 1793405273	cmd	Alaric	54	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793405273	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793405274	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793405274	cmd	Alaric	54	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793405274	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793405275	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793405277	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793405282	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	iron		Your skin hardens.
+1793405289	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793405289	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	fists	clown	You attack in an all consuming fury! // Your fists of fury DISMEMBERS a killer clown! [-46] // Your fists of fury maims a killer clown! [-36]
+1793405295	cmd	Alaric	54	29204	korzath2.are	fighting	92	0	fight	fists	clown	You attack in an all consuming fury! // Your fists of fury DISMEMBERS a killer clown! [-45]
+1793405301	cmd	Alaric	54	29204	korzath2.are	fighting	78	0	fight	fists	clown	You attack in an all consuming fury! // Your fists of fury MUTILATES a killer clown! [-40]
+1793405306	cmd	Alaric	54	29204	korzath2.are	fighting	62	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793405307	cmd	Alaric	54	29204	korzath2.are	fighting	62	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a killer clown! [-30] // Your fists of fury DISMEMBERS a killer clown! [-45]
+1793405312	cmd	Alaric	54	29204	korzath2.are	fighting	41	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-21] // Your fists of fury DISEMBOWELS a killer clown! [-42]
+1793405318	cmd	Alaric	54	29204	korzath2.are	fighting	29	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a killer clown. [-6] // Your fists of fury DISMEMBERS a killer clown! [-45]
+1793405324	cmd	Alaric	54	29204	korzath2.are	fighting	10	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793405324	cmd	Alaric	54	29203	korzath2.are	fighting	10	0	fight	flee		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793405325	cmd	Alaric	54	29203	korzath2.are	standing	10	0	-	flee		You aren't fighting anyone.
+1793405326	cmd	Alaric	54	4207	dresden_halloween.are	standing	10	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793405327	cmd	Alaric	54	4202	dresden_halloween.are	standing	10	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793405327	cmd	Alaric	54	4203	dresden_halloween.are	standing	10	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793405328	cmd	Alaric	54	4210	dresden_halloween.are	standing	10	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793405328	cmd	Alaric	54	4210	dresden_halloween.are	standing	10	0	-	sleep		You go to sleep.
