@@ -22443,3 +22443,8 @@
 1793455740	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	eat	pie	You eat a big pot pie. // You are no longer hungry.
 1793455750	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	help	gainlist trainers	No help on that word.
 1793455754	session	Trentlin	50	2497	dresden_halloween.are	quit	566s	+0 levels	+0 exp	+145791667 copper	2 kills	0 deaths	1 quests	316 commands	0 refused	coin: loot 1g 7s 13c, quests 148p 72g 11s, spent 2p 94g 1s 46c
+1793463551	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	42	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793463552	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	42	0	-	wake		You wake and stand up.
+1793463552	cmd	Alaric	54	4210	dresden_halloween.are	standing	42	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793463556	cmd	Alaric	54	4210	dresden_halloween.are	standing	45	0	-	where	herm	You didn't find any herm.
+1793463556	cmd	Alaric	54	4210	dresden_halloween.are	standing	45	0	-	sleep		You go to sleep.
