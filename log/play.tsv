@@ -22926,3 +22926,6 @@
 1793470109	cmd	Trentlin	50	2497	dresden_halloween.are	standing	88	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1793470111	cmd	Trentlin	50	2497	dresden_halloween.are	standing	88	21	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Amulet of Soulcrusher to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'
 1793470115	cmd	Trentlin	50	2497	dresden_halloween.are	standing	88	5	-	aquest	gamble yes	The dice BETRAY you! Your 64 quest points are lost.
+1793470121	cmd	Trentlin	50	2497	dresden_halloween.are	standing	91	0	-	aquest	points	Quest Points: 6535
+1793470123	cmd	Trentlin	50	2497	dresden_halloween.are	standing	91	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
+1793470124	session	Trentlin	50	2497	dresden_halloween.are	quit	666s	+0 levels	+0 exp	+410346458 copper	10 kills	0 deaths	2 quests	379 commands	0 refused	coin: loot 5p 14g 34s 58c, quests 405p 60g 30s, spent 40g
