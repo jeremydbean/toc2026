@@ -225672,3 +225672,63 @@ Sat Oct 31 01:03:26 2026 :: Log Alaric [29209]: n
 Sat Oct 31 01:03:26 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
 Sat Oct 31 01:03:27 2026 :: Log Alaric [29210]: fi sk
 Sat Oct 31 01:03:33 2026 :: Log Alaric [29210]: fi
+Sat Oct 31 01:03:39 2026 :: Log Alaric [29210]: fi
+Sat Oct 31 01:03:39 2026 :: Log Alaric [29210]: fi
+Sat Oct 31 01:03:39 2026 :: Log Alaric [29210]: fi
+Sat Oct 31 01:03:39 2026 :: Log Alaric [29210]: fi
+Sat Oct 31 01:03:40 2026 :: Log Alaric [29210]: fi
+Sat Oct 31 01:03:40 2026 :: Log Alaric [29210]: w
+Sat Oct 31 01:03:40 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Sat Oct 31 01:03:40 2026 :: Log Alaric [29211]: kill sk
+Sat Oct 31 01:03:50 2026 :: Log Alaric [29211]: killed an Animated Skeleton
+Sat Oct 31 01:03:50 2026 :: Log Alaric [29211]: coin +4 platinum
+Sat Oct 31 01:03:50 2026 :: Log Alaric [29211]: coin +20 silver
+Sat Oct 31 01:03:50 2026 :: Log Alaric [29211]: coin +27 copper
+Sat Oct 31 01:03:50 2026 :: Log Alaric [29211]: coin +11 gold
+Sat Oct 31 01:03:52 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:03:57 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:03 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:09 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:15 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:20 2026 :: Log Alaric [29211]: who
+Sat Oct 31 01:04:24 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:32 2026 :: Log Alaric [29211]: nerv
+Sat Oct 31 01:04:32 2026 :: Log Alaric [29211]: killed a deranged madman
+Sat Oct 31 01:04:32 2026 :: Log Alaric [29211]: coin +5 platinum
+Sat Oct 31 01:04:32 2026 :: Log Alaric [29211]: coin +23 silver
+Sat Oct 31 01:04:32 2026 :: Log Alaric [29211]: coin +31 copper
+Sat Oct 31 01:04:32 2026 :: Log Alaric [29211]: coin +13 gold
+Sat Oct 31 01:04:37 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:40 2026 :: Sock.sinaddr:  3.133.226.214
+Sat Oct 31 01:04:40 2026 :: EOF encountered on read.
+Sat Oct 31 01:04:43 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:49 2026 :: Log Alaric [29211]: who
+Sat Oct 31 01:04:49 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:04:56 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:05:02 2026 :: Log Alaric [29211]: e
+Sat Oct 31 01:05:02 2026 :: Log Alaric [29211]: kill sk
+Sat Oct 31 01:05:04 2026 :: Log Alaric [29211]: who
+Sat Oct 31 01:05:04 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:05:11 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:05:17 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:05:19 2026 :: Log Alaric [29211]: affects off: iron skin
+Sat Oct 31 01:05:23 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:05:29 2026 :: Log Alaric [29211]: fi
+Sat Oct 31 01:05:32 2026 :: Log Alaric [29211]: killed a deranged madman
+Sat Oct 31 01:05:32 2026 :: Log Alaric [29211]: coin +5 platinum
+Sat Oct 31 01:05:32 2026 :: Log Alaric [29211]: coin +23 silver
+Sat Oct 31 01:05:32 2026 :: Log Alaric [29211]: coin +31 copper
+Sat Oct 31 01:05:32 2026 :: Log Alaric [29211]: coin +13 gold
+Sat Oct 31 01:05:38 2026 :: Log Alaric [29211]: recal
+Sat Oct 31 01:05:38 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29211
+Sat Oct 31 01:05:38 2026 :: Log Alaric [4207]: recal
+Sat Oct 31 01:05:38 2026 :: Log Alaric [4207]: where herm
+Sat Oct 31 01:05:39 2026 :: Log Alaric [4207]: e
+Sat Oct 31 01:05:39 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 31 01:05:39 2026 :: Log Alaric [4202]: n
+Sat Oct 31 01:05:39 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sat Oct 31 01:05:39 2026 :: Log Alaric [4203]: n
+Sat Oct 31 01:05:39 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sat Oct 31 01:05:40 2026 :: Log Alaric [4210]: sleep
+Sat Oct 31 01:05:41 2026 :: Log Alaric [4210]: score
+Sat Oct 31 01:06:26 2026 :: Black market: the dealer vanished from room 25132 (The corridor., underdrk.are) (wandering).
