@@ -20787,3 +20787,32 @@
 1793406355	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	44	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
 1793406356	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	44	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    270 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
 1793406358	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	44	0	-	sleep		You are already sleeping.
+1793407356	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1793407356	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793407358	cmd	Alaric	54	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793407358	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793407358	cmd	Alaric	54	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793407359	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793407359	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793407359	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793407360	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793407360	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793407362	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793407363	cmd	Alaric	54	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793407363	cmd	Alaric	54	9522	newthalo.are	standing	100	0	-	open		Ok.
+1793407365	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	run	n 9	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793407366	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	wake		You are already standing.
+1793407368	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	unlock	north	You lack the key.
+1793407369	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793407371	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793407376	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793407376	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	fists	guard	You attack in an all consuming fury! // Your fists of fury scratches Guardian Knight. [-3] // Your fists of fury mauls Guardian Knight. [-24]
+1793407382	cmd	Alaric	54	29004	korzath1.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Guardian Knight! [-29] // Your fists of fury MUTILATES Guardian Knight! [-39]
+1793407387	cmd	Alaric	54	29004	korzath1.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Guardian Knight. [-18] // Your fists of fury hits Guardian Knight. [-11]
+1793407393	cmd	Alaric	54	29004	korzath1.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Guardian Knight! [-27] // Your fists of fury injures Guardian Knight. [-14]
+1793407399	cmd	Alaric	54	29004	korzath1.are	standing	89	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793407399	cmd	Alaric	54	29004	korzath1.are	standing	89	0	-	fists		Who do you want to attack?
+1793407400	cmd	Alaric	54	29004	korzath1.are	standing	89	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1793407402	cmd	Alaric	54	29004	korzath1.are	standing	89	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793407402	cmd	Alaric	54	29004	korzath1.are	standing	89	0	-	open		Ok.
+1793407403	cmd	Alaric	54	29004	korzath1.are	standing	89	0	-	open		It's already open.
