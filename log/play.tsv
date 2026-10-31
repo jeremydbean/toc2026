@@ -21859,3 +21859,189 @@
 1793448592	cmd	Trentlin	50	18117	icekeep.are	standing	74	0	-	west		Inside the smokey tower //   You can't see a thing! // [Exits: east (down)]
 1793448594	cmd	Trentlin	50	18117	icekeep.are	standing	74	0	-	open	down	Ok.
 1793448594	cmd	Trentlin	50	18117	icekeep.are	standing	74	0	-	exits		Obvious exits: // East  - Inside the smokey tower // Down  - A smokey room
+1793448625	cmd	Trentlin	50	18116	icekeep.are	standing	77	0	-	east		Inside the smokey tower //   You can't see a thing! // [Exits: north west]
+1793448626	cmd	Trentlin	50	18115	icekeep.are	standing	77	0	-	north		Inside the smokey tower //   You can't see a thing! // [Exits: north south]
+1793448627	cmd	Trentlin	50	18114	icekeep.are	standing	77	0	-	north		Inside the smokey tower //   You can't see a thing! // [Exits: east south]
+1793448628	cmd	Trentlin	50	18113	icekeep.are	standing	77	0	-	east		Inside the smokey tower //   You are in a small hallway that is completely filled with // smoke.  The smoke makes your eyes water and it is extremely
+1793448630	cmd	Trentlin	50	18106	icekeep.are	standing	77	0	-	north		Inside the smokey tower //   As you make your way into the tower you choke and gag // on the noxious fumes that surround you.  Maybe you
+1793448631	cmd	Trentlin	50	18105	icekeep.are	standing	77	0	-	east		Inside the smokey tower //   You are inside the smokey tower and the smoke filled // air all around you makes it very difficult to breathe.
+1793448631	cmd	Trentlin	50	18060	icekeep.are	standing	77	0	-	south		Inside the smokey tower //   You have reached the insides of a very smokey tower.  You  // choke and gasp for air as you make your way inside.  This 
+1793448632	cmd	Trentlin	50	18045	icekeep.are	standing	77	0	-	se		A turn in the hallway //   You have reached a turn in the hallway.  The hall continues // to the south and to the east.  There is an enormous smokey
+1793448633	cmd	Trentlin	50	18046	icekeep.are	standing	77	0	-	south		A long hallway //   This hallway is completely black and you have trouble seeing // even with the help of a light.  The hall continues on to the
+1793448633	cmd	Trentlin	50	18047	icekeep.are	standing	77	0	-	south		A long hallway //   This hallway is completely black and you have trouble seeing // even with the help of a light.  The hall continues on to the
+1793448633	cmd	Trentlin	50	18048	icekeep.are	standing	77	0	-	south		A long hallway //   The hallway begins to widen as you near the end.  It is  // still completely black but you can sense the end is near.
+1793448633	cmd	Trentlin	50	18049	icekeep.are	standing	77	0	-	south		A long hallway //   The hall begins to get brighter as you enter the room.  There // seems to be something shining from the next room giving off
+1793448634	cmd	Trentlin	50	18050	icekeep.are	standing	77	0	-	south		The end of the hall //   You have reached the end of the long hallway and it would // appear that you have to turn back.  The walls here are 
+1793448634	refused	Trentlin	50	18050	icekeep.are	fighting	77	0	fight	south		No way!  You are still fighting!
+1793448642	cmd	Trentlin	50	18050	icekeep.are	fighting	55	0	fight	smite		Your smite misses A Blizzard Demon.
+1793448654	cmd	Trentlin	50	18050	icekeep.are	fighting	43	0	fight	smite		Your smite <<< ERADICATES >>> A Blizzard Demon! // Your smite ^^^ DESTROYS ^^^ A Blizzard Demon!
+1793448680	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	look	in co	Corpse of A Blizzard Demon contains: //      Nothing.
+1793448681	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	sacrifice	co	The Gods give you 94 copper coins for your sacrifice.
+1793448682	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	look		The end of the hall //   You have reached the end of the long hallway and it would // appear that you have to turn back.  The walls here are 
+1793448686	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	open	secret	I see no secret here.
+1793448687	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	exits		Obvious exits: // North - A long hallway
+1793448688	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	open	west	I see no door west here.
+1793448691	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	open	ice	I see no ice here.
+1793448694	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	open	hidden	I see no hidden here.
+1793448710	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	open	abcdghi	You open a secret door.
+1793448712	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	look		The end of the hall //   You have reached the end of the long hallway and it would // appear that you have to turn back.  The walls here are 
+1793448714	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	look	ice	A giant block of ice fills much of the space here.
+1793448715	cmd	Trentlin	50	18050	icekeep.are	standing	30	0	-	scan		A Blizzard Demon                   -to the West.
+1793448724	cmd	Trentlin	50	18080	icekeep.are	standing	30	0	-	west		A secret room //   You have stumbled upon a small, unlit room inside the vast // ice keep.  Written in small letters on the back wall you
+1793448724	cmd	Trentlin	50	18080	icekeep.are	standing	30	0	-	get	all	You get The Crown of Eclipse.
+1793448725	cmd	Trentlin	50	18080	icekeep.are	standing	30	0	-	flee		You aren't fighting anyone.
+1793448725	cmd	Trentlin	50	18050	icekeep.are	standing	34	0	-	east		The end of the hall //   You have reached the end of the long hallway and it would // appear that you have to turn back.  The walls here are 
+1793448729	cmd	Trentlin	50	18050	icekeep.are	standing	34	0	-	recall		The Gods have forsaken you.
+1793448730	cmd	Trentlin	50	18049	icekeep.are	standing	34	0	-	north		A long hallway //   The hall begins to get brighter as you enter the room.  There // seems to be something shining from the next room giving off
+1793448731	cmd	Trentlin	50	18048	icekeep.are	standing	34	0	-	north		A long hallway //   The hallway begins to widen as you near the end.  It is  // still completely black but you can sense the end is near.
+1793448732	cmd	Trentlin	50	18048	icekeep.are	standing	34	0	-	recall		The Gods have forsaken you.
+1793448733	cmd	Trentlin	50	18048	icekeep.are	standing	34	0	-	affect		You are not affected by any spells.
+1793448734	cmd	Trentlin	50	18047	icekeep.are	standing	34	0	-	north		A long hallway //   This hallway is completely black and you have trouble seeing // even with the help of a light.  The hall continues on to the
+1793448734	cmd	Trentlin	50	18046	icekeep.are	standing	34	0	-	north		A long hallway //   This hallway is completely black and you have trouble seeing // even with the help of a light.  The hall continues on to the
+1793448735	cmd	Trentlin	50	18045	icekeep.are	standing	34	0	-	north		A turn in the hallway //   You have reached a turn in the hallway.  The hall continues // to the south and to the east.  There is an enormous smokey
+1793448735	cmd	Trentlin	50	18044	icekeep.are	standing	34	0	-	east		A long hallway //   The hallway continues inside the ice keep and the silence  // is broken from time to time by the screams of animals
+1793448736	cmd	Trentlin	50	18043	icekeep.are	standing	34	0	-	east		A long hallway //   The hallway continues inside the ice keep and the silence // is broken from time to time by the screams of animals
+1793448736	cmd	Trentlin	50	18042	icekeep.are	standing	34	0	-	east		A long hallway //   You have reached the middle of the long hallway and this // room is strangely illuminated from an unknown source.  The
+1793448736	cmd	Trentlin	50	18041	icekeep.are	standing	34	0	-	east		A long hallway //   The sound of animals begins to get louder as you make your // way down the hallway.  It begins to get darker and you are
+1793448736	cmd	Trentlin	50	18040	icekeep.are	standing	34	0	-	east		A long hallway //   The hallway continues inside the ice keep and the silence // is broken from time to time by the screams of animals
+1793448737	cmd	Trentlin	50	18039	icekeep.are	standing	34	0	-	east		A turn in the hallway //   You have reached a turn in the hallway.  The hallway continues // on toward the west and to the south.  There is an enormous
+1793448737	cmd	Trentlin	50	18038	icekeep.are	standing	34	0	-	south		A long hallway //   You are nearing the end of the hallway and you can barely // make out some light ahead to discern that the hallway curves 
+1793448738	cmd	Trentlin	50	18037	icekeep.are	standing	34	0	-	south		A long hallway //   You feel like you've been traveling this hallway forever // and it is too dark ahead to see any end.
+1793448738	cmd	Trentlin	50	18036	icekeep.are	standing	34	0	-	south		A long hallway //   As you make your way down the hall your footsteps echo in  // the silence.  The entire hall is quiet.  Strangely, now 
+1793448738	cmd	Trentlin	50	18035	icekeep.are	standing	34	0	-	south		A long hallway //   You make your way down the hallway and begin to feel less  // afraid.  The silence all around you is peaceful and you feel
+1793448738	cmd	Trentlin	50	18034	icekeep.are	standing	34	0	-	south		A long hallway //   You turn down another long hallway and begin to feel a  // little warmer.  Strange sounds can be heard all around you
+1793448739	cmd	Trentlin	50	18033	icekeep.are	standing	34	0	-	south		A turn in the hallway //   You have reached a turn in the hallway.  The hallway continues // on toward the north and to the west.  There is an enormous
+1793448740	cmd	Trentlin	50	18033	icekeep.are	standing	34	0	-	se		The door is closed.
+1793448743	cmd	Trentlin	50	18033	icekeep.are	standing	34	0	-	open	southeast	It's locked.
+1793448747	cmd	Trentlin	50	18033	icekeep.are	standing	34	0	-	doorbash	southeast	You slam into the door and it shatters!!
+1793448751	cmd	Trentlin	50	18058	icekeep.are	standing	34	0	-	se		Inside the white tower //   You are now inside the white tower.  All of the walls are // completely covered in the color white and inch thick coats
+1793448753	cmd	Trentlin	50	18084	icekeep.are	standing	34	0	-	east		Inside the white tower //   You are in a small hallway inside the white tower.  All // of the walls are white and the whole place seems to have
+1793448756	cmd	Trentlin	50	18058	icekeep.are	standing	34	0	-	west		Inside the white tower //   You are now inside the white tower.  All of the walls are // completely covered in the color white and inch thick coats
+1793448757	cmd	Trentlin	50	18033	icekeep.are	standing	34	0	-	nw		A turn in the hallway //   You have reached a turn in the hallway.  The hallway continues // on toward the north and to the west.  There is an enormous
+1793448757	cmd	Trentlin	50	18032	icekeep.are	standing	34	0	-	west		A long hallway //   As you make your way down the long hall it becomes darker // and you can barely see what lies ahead of you.
+1793448758	cmd	Trentlin	50	18031	icekeep.are	standing	34	0	-	west		A long hallway //   You are in a long hallway inside the great keep.  Strange // sounds can be heard all around you and you shiver at the
+1793448758	cmd	Trentlin	50	18028	icekeep.are	standing	34	0	-	west		Inside the ice keep //   The air is chilly inside this section of the keep and you // can still see your breath in the air in front of you.  The
+1793448759	cmd	Trentlin	50	18027	icekeep.are	standing	34	0	-	west		Inside the ice keep //   You make your way inside the ice keep and start to feel warmer // as the blizzard continues outside.  The solid, ice-laden walls
+1793448760	cmd	Trentlin	50	18026	icekeep.are	standing	34	0	-	down		Entrance to the ice keep //   You have reached the entrance to a giant ice keep.  Perhaps you // should go inside for shelter.
+1793448761	cmd	Trentlin	50	18025	icekeep.are	standing	34	0	-	west		A snow covered trail //   The blanket of snow that has fallen now completely covers // the trail and off to the east you can see a giant, ice covered
+1793448762	cmd	Trentlin	50	4207	dresden_halloween.are	standing	34	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793448764	cmd	Trentlin	50	4202	dresden_halloween.are	standing	34	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793448764	cmd	Trentlin	50	4201	dresden_halloween.are	standing	34	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793448764	cmd	Trentlin	50	2427	dresden_halloween.are	standing	34	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793448764	cmd	Trentlin	50	2427	dresden_halloween.are	standing	34	0	-	east		Alas, you cannot go that way.
+1793448765	cmd	Trentlin	50	2427	dresden_halloween.are	standing	34	0	-	east		Alas, you cannot go that way.
+1793448765	cmd	Trentlin	50	2404	dresden_halloween.are	standing	34	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793448765	cmd	Trentlin	50	2401	dresden_halloween.are	standing	34	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793448765	cmd	Trentlin	50	2410	dresden_halloween.are	standing	34	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793448766	cmd	Trentlin	50	2411	dresden_halloween.are	standing	34	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793448766	cmd	Trentlin	50	2414	dresden_halloween.are	standing	34	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793448766	cmd	Trentlin	50	2497	dresden_halloween.are	standing	34	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793448768	cmd	Trentlin	50	2497	dresden_halloween.are	standing	34	21	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Crown of Eclipse to Questor Thews. //                     ACHIEVEMENT EARNED
+1793448773	cmd	Trentlin	50	2497	dresden_halloween.are	standing	34	10	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'The criminal known as the guardian snake has escaped from prison!'
+1793448777	cmd	Trentlin	50	2401	dresden_halloween.are	standing	34	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793448780	cmd	Trentlin	50	2404	dresden_halloween.are	standing	34	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793448780	cmd	Trentlin	50	2427	dresden_halloween.are	standing	34	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793448781	cmd	Trentlin	50	2428	dresden_halloween.are	standing	34	0	-	south		Main Processional, Toward the Mermaids' Bridge //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Children run past you in sheets and
+1793448781	cmd	Trentlin	50	2429	dresden_halloween.are	standing	34	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the
+1793448781	cmd	Trentlin	50	2430	dresden_halloween.are	standing	34	0	-	south		Main Processional, at the Southern Gates //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Just to the north is the Bridge of
+1793448781	cmd	Trentlin	50	2431	dresden_halloween.are	standing	34	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793448782	cmd	Trentlin	50	2431	dresden_halloween.are	standing	34	0	-	open	south	Ok.
+1793448782	cmd	Trentlin	50	2432	dresden_halloween.are	standing	34	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793448785	cmd	Trentlin	50	3505	midennir_halloween.are	standing	34	0	-	south		The Trail to Miden'nir //   You are in a dark forest.  The trees press close on either side, their // branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+1793448785	cmd	Trentlin	50	3506	midennir_halloween.are	standing	34	0	-	east		The Miden'nir //   You are in a dark forest. To the east, mountains block passage. From // here, only the lighter forest to the west or south offer a way to travel.
+1793448785	cmd	Trentlin	50	3550	midennir_halloween.are	standing	34	0	-	east		At The Foot of The Dark Hills //   You find yourself at the foot of a range of dark hills that streach off to // the north. In the distance you can just make out the tops of mist covered
+1793448786	cmd	Trentlin	50	18	connect.are	standing	34	0	-	north		Entering the hills //   Small hills begin to form here in the northwestern corner of the great forest // of middenir. From here if you look you can see great mountains towering 
+1793448786	cmd	Trentlin	50	4000	moria.are	standing	34	0	-	north		The hills //   You are on a small bewildered path winding its way between the hills in // lack of better things to do. To the south you have a splendid view over the
+1793448788	cmd	Trentlin	50	4001	moria.are	standing	34	0	-	north		The hills //   You are surrounded by dark and sinister hills. Although they seemed fairly // small from a distance you now get the feeling that they're closing in on you,
+1793448789	cmd	Trentlin	50	4002	moria.are	standing	34	0	-	north		End of the path //   At this point the path has had enough. With a terrified shudder it cowers // to the ground, only staying here because you're standing on it. with a slight
+1793448790	cmd	Trentlin	50	4010	moria.are	standing	34	0	-	north		The cave //   You are in a large cave. The ceiling is lost somewhere above the reach of // your light. The floor, however, is highly illuminated, your light flickering
+1793448792	cmd	Trentlin	50	4011	moria.are	standing	34	0	-	north		The tunnel //   You squeeze your way through a small, narrow tunnel. The sharp-edged rocks // protruding from the walls threaten to scratch and cut you. 
+1793448793	cmd	Trentlin	50	4014	moria.are	standing	34	0	-	north		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1793448794	cmd	Trentlin	50	4015	moria.are	standing	34	0	-	east		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]
+1793448795	cmd	Trentlin	50	4019	moria.are	standing	34	0	-	north		The tunnel //   You are in a north-south leading tunnel. // [Exits: north south]
+1793448798	cmd	Trentlin	50	4019	moria.are	standing	34	0	-	where	guardian	the guardian snake           The long tunnel
+1793448801	cmd	Trentlin	50	4019	moria.are	standing	34	0	-	exits		Obvious exits: // North - The many tunnels // South - The tunnel
+1793448802	cmd	Trentlin	50	4026	moria.are	standing	34	0	-	north		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1793448804	cmd	Trentlin	50	4026	moria.are	standing	37	0	-	scan		the orc                            -to the North. // the orc                            -to the North. // the kobold                         -to the East.
+1793448805	cmd	Trentlin	50	4028	moria.are	standing	37	0	-	north		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1793448806	cmd	Trentlin	50	4028	moria.are	standing	37	0	-	scan		the giant pygmy rattlesnake          -to the North.
+1793448807	cmd	Trentlin	50	4030	moria.are	standing	37	0	-	north		The light cave //   You are in a light cave, through a hole large above you, you see  // the sky. A small tunnel to the south is the only way out.
+1793448807	cmd	Trentlin	50	4030	moria.are	standing	37	0	-	scan		the orc                            -to the South. // the orc                            -to the South.
+1793448808	cmd	Trentlin	50	4028	moria.are	standing	37	0	-	south		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1793448808	cmd	Trentlin	50	4026	moria.are	standing	37	0	-	south		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1793448809	cmd	Trentlin	50	4027	moria.are	standing	37	0	-	east		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1793448810	cmd	Trentlin	50	4029	moria.are	standing	37	0	-	north		The cave //   You are in a cave that is filled with fresh air, you sense the // wind blowing from the north. To the south you see a small tunnel
+1793448811	cmd	Trentlin	50	4031	moria.are	standing	37	0	-	north		The valley //   You are in a small valley, surrounded by hills and a mountain to  // the south and to the north. In the southern mountain there is a cave.
+1793448812	cmd	Trentlin	50	4032	moria.are	standing	37	0	-	north		The valley //   You are on a winding path that leads through the valley on the // other side of the mountain.  The path continues north.
+1793448814	cmd	Trentlin	50	4031	moria.are	standing	37	0	-	south		The valley //   You are in a small valley, surrounded by hills and a mountain to  // the south and to the north. In the southern mountain there is a cave.
+1793448814	cmd	Trentlin	50	4029	moria.are	standing	37	0	-	south		The cave //   You are in a cave that is filled with fresh air, you sense the // wind blowing from the north. To the south you see a small tunnel
+1793448814	cmd	Trentlin	50	4027	moria.are	standing	37	0	-	south		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1793448815	cmd	Trentlin	50	4020	moria.are	standing	37	0	-	south		The hole //   You are by a hole in the floor, you can leave down, or north. // [Exits: north down]
+1793448816	cmd	Trentlin	50	4064	moria.are	standing	37	0	-	down		The tunnel //   You are at the eastern end of a tunnel. // [Exits: west up]
+1793448817	cmd	Trentlin	50	4063	moria.are	standing	37	0	-	west		The maze //   You are in a maze of small damp tunnels. // [Exits: north east]
+1793448819	cmd	Trentlin	50	4058	moria.are	standing	37	0	-	north		The maze //   You are in a maze of small damp tunnels. // [Exits: south west]
+1793448820	cmd	Trentlin	50	4057	moria.are	standing	37	0	-	west		The maze //   You are in a maze of small damp tunnels. // [Exits: east south]
+1793448821	cmd	Trentlin	50	4062	moria.are	standing	37	0	-	south		The maze //   You are in a maze of small damp tunnels. // [Exits: north east]
+1793448822	cmd	Trentlin	50	4065	moria.are	standing	37	0	-	east		The maze //   You are in a maze of small damp tunnels. // [Exits: east west]
+1793448824	cmd	Trentlin	50	4066	moria.are	standing	37	0	-	east		The maze //   You are in a maze of small damp tunnels. // [Exits: east south west]
+1793448825	cmd	Trentlin	50	4069	moria.are	standing	37	0	-	south		The large cave //   You are in the northeast end of a large cave. To the north the // is a small damp tunnel.
+1793448826	cmd	Trentlin	50	4069	moria.are	standing	37	0	-	exits		Obvious exits: // North - The maze // South - The large cave
+1793448826	cmd	Trentlin	50	4069	moria.are	standing	37	0	-	scan		the large hobgoblin                -to the South. // the snake                          -to the West.
+1793448827	cmd	Trentlin	50	4068	moria.are	standing	37	0	-	west		The large cave //   You are in the northwest end of a large cave. // [Exits: east south]
+1793448828	cmd	Trentlin	50	4068	moria.are	standing	37	0	-	scan		the warrior                        -to the South.
+1793448828	cmd	Trentlin	50	4070	moria.are	standing	37	0	-	south		The large cave //   You are in the southwest end of a large cave. // [Exits: north east]
+1793448829	cmd	Trentlin	50	4070	moria.are	standing	37	0	-	scan		the snake                          -to the North. // the large hobgoblin                -to the East.
+1793448830	cmd	Trentlin	50	4071	moria.are	standing	37	0	-	east		The large cave //   You are in the southeast end of a large cave. To the east you // notice a small tunnel.
+1793448831	cmd	Trentlin	50	4072	moria.are	standing	37	0	-	east		The tunnel //   You are in a narrow tunnel, which leads both to the east and the // south. There is also an exit towards the west, where you see a large
+1793448832	cmd	Trentlin	50	4074	moria.are	standing	37	0	-	south		The hole //   You are at a small hole in the floor, you can either leave north // or try your luck and leave down into the unknown!
+1793448833	cmd	Trentlin	50	4171	moria.are	standing	37	0	-	down		End of maze //   You are at the end of the small maze which continues north. // Above you a hole leads up.
+1793448834	cmd	Trentlin	50	4167	moria.are	standing	37	1	-	north		The wet maze //   You are in a small maze, the floor is covered by water, the // maze continues east, west and south.
+1793448835	cmd	Trentlin	50	4167	moria.are	standing	37	0	-	scan		the small troll                    -to the East.
+1793448836	cmd	Trentlin	50	4166	moria.are	standing	37	0	-	west		The wet maze //   You are in a part of the maze where the floor is fully covered // by water. The maze continues to the north, east and south.
+1793448837	cmd	Trentlin	50	4166	moria.are	standing	37	0	-	scan		the snake                          -to the North. // the Mage                           -to the East. // the Mage                           -to the East.
+1793448838	cmd	Trentlin	50	4162	moria.are	standing	37	0	-	north		The small maze //   You are in a small maze. The floor is mainly covered by // water, exits leads north, east and south.
+1793448839	cmd	Trentlin	50	4162	moria.are	standing	37	0	-	scan		You don't see anything near you.
+1793448840	cmd	Trentlin	50	4162	moria.are	standing	37	0	-	exits		Obvious exits: // North - The small maze // East  - The small maze
+1793448841	cmd	Trentlin	50	4158	moria.are	standing	37	0	-	north		The small maze //   You are in a small maze, exits leads off to the east,  south // and west. The floor is partly covered by water.
+1793448841	cmd	Trentlin	50	4158	moria.are	standing	37	0	-	exits		Obvious exits: // East  - The small maze // South - The small maze
+1793448842	cmd	Trentlin	50	4157	moria.are	standing	37	0	-	west		The wet tunnel //   You are in a wet, north-south leading tunnel, the floor is // partly covered by water.
+1793448843	cmd	Trentlin	50	4157	moria.are	standing	37	0	-	scan		the small troll                    -to the North. // the orc                            -to the South.
+1793448844	cmd	Trentlin	50	4157	moria.are	standing	37	0	-	exits		Obvious exits: // North - The large tunnel // East  - The small maze
+1793448846	cmd	Trentlin	50	4153	moria.are	standing	37	0	-	north		The large tunnel //   You are in a large tunnel leading from the south to the east. The // air is damp in the area.
+1793448847	cmd	Trentlin	50	4153	moria.are	standing	37	0	-	scan		the black bat                      -to the South. // the red bat                        -to the South.
+1793448847	cmd	Trentlin	50	4153	moria.are	standing	37	0	-	exits		Obvious exits: // North - The tunnel // East  - The large tunnel
+1793448850	cmd	Trentlin	50	4152	moria.are	standing	37	0	-	north		The tunnel //   You suddenly feel that the tunnel leads down. // [Exits: east south]
+1793448851	cmd	Trentlin	50	4152	moria.are	standing	37	0	-	scan		the small troll                    -to the South.
+1793448851	cmd	Trentlin	50	4152	moria.are	standing	37	0	-	exits		Obvious exits: // East  - The long tunnel // South - The large tunnel
+1793448852	cmd	Trentlin	50	4104	moria.are	standing	37	0	-	east		The long tunnel //   You are in a long east-west leading tunnel. The tunnel starts sloping // down towards the west.
+1793448853	cmd	Trentlin	50	4104	moria.are	standing	37	0	-	scan		the guardian snake                 -to the East.
+1793448854	cmd	Trentlin	50	4103	moria.are	standing	37	0	-	east		The long tunnel //   You are in a long east-west leading tunnel. The tunnel is quite // narrow at this point. You notice a small hole leading south.
+1793448855	cmd	Trentlin	50	4103	moria.are	standing	37	11	-	kill	sna	You >>> ANNIHILATE <<< the guardian snake! // The guardian snake is DEAD!! // You have almost finished your QUEST!
+1793448859	cmd	Trentlin	50	4207	dresden_halloween.are	standing	37	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793448860	cmd	Trentlin	50	4208	dresden_halloween.are	standing	37	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793448862	cmd	Trentlin	50	4208	dresden_halloween.are	standing	37	0	-	heal	refresh	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)
+1793448865	cmd	Trentlin	50	4207	dresden_halloween.are	standing	40	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793448865	cmd	Trentlin	50	4202	dresden_halloween.are	standing	40	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793448865	cmd	Trentlin	50	4201	dresden_halloween.are	standing	40	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793448865	cmd	Trentlin	50	2427	dresden_halloween.are	standing	40	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793448866	cmd	Trentlin	50	2427	dresden_halloween.are	standing	40	0	-	east		Alas, you cannot go that way.
+1793448866	cmd	Trentlin	50	2427	dresden_halloween.are	standing	40	0	-	east		Alas, you cannot go that way.
+1793448866	cmd	Trentlin	50	2427	dresden_halloween.are	standing	40	0	-	east		Alas, you cannot go that way.
+1793448866	cmd	Trentlin	50	2404	dresden_halloween.are	standing	40	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793448867	cmd	Trentlin	50	2401	dresden_halloween.are	standing	40	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793448867	cmd	Trentlin	50	2410	dresden_halloween.are	standing	40	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793448867	cmd	Trentlin	50	2411	dresden_halloween.are	standing	40	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793448867	cmd	Trentlin	50	2414	dresden_halloween.are	standing	40	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793448868	cmd	Trentlin	50	2497	dresden_halloween.are	standing	40	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793448868	cmd	Trentlin	50	2497	dresden_halloween.are	standing	40	15	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 4 in a row! A +30% bonus has been added!'
+1793448872	cmd	Trentlin	50	2497	dresden_halloween.are	standing	40	6	-	aquest	gamble yes	The dice BETRAY you! Your 14 quest points are lost.
+1793448876	cmd	Trentlin	50	2497	dresden_halloween.are	standing	40	0	-	aquest	points	Quest Points: 6535
+1793448880	cmd	Trentlin	50	2401	dresden_halloween.are	standing	40	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793448881	cmd	Trentlin	50	2404	dresden_halloween.are	standing	40	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793448881	cmd	Trentlin	50	2427	dresden_halloween.are	standing	40	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793448882	cmd	Trentlin	50	4201	dresden_halloween.are	standing	40	0	-	west		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793448882	cmd	Trentlin	50	4202	dresden_halloween.are	standing	40	0	-	west		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793448883	cmd	Trentlin	50	4203	dresden_halloween.are	standing	40	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793448883	cmd	Trentlin	50	4210	dresden_halloween.are	standing	40	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793448885	cmd	Trentlin	50	4210	dresden_halloween.are	standing	40	0	-	sleep		You go to sleep.
+1793448886	session	Trentlin	50	4210	dresden_halloween.are	quit	1643s	+0 levels	+0 exp	+659904116 copper	23 kills	0 deaths	6 quests	925 commands	4 refused	coin: loot 15p 91g 4s 23c, quests 459p 68g 34s, dailies 216p 32g 16s, spent 32p 1g 13s 7c
