@@ -229243,3 +229243,19 @@ Sat Oct 31 16:40:23 2026 :: Sock.sinaddr:  204.76.203.44
 Sat Oct 31 16:40:23 2026 :: Sock.sinaddr:  204.76.203.38
 Sat Oct 31 16:43:37 2026 :: Sock.sinaddr:  178.156.181.172
 Sat Oct 31 16:43:37 2026 :: EOF encountered on read.
+Sat Oct 31 16:48:42 2026 :: Sock.sinaddr:  34.198.201.66
+Sat Oct 31 16:48:43 2026 :: EOF encountered on read.
+Sat Oct 31 16:48:51 2026 :: Log Alaric [4210]: wake
+Sat Oct 31 16:48:51 2026 :: Log Alaric [4210]: l
+Sat Oct 31 16:48:52 2026 :: Log Alaric [4210]: s
+Sat Oct 31 16:48:52 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Sat Oct 31 16:48:53 2026 :: Log Alaric [4203]: s
+Sat Oct 31 16:48:53 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Sat Oct 31 16:48:53 2026 :: Log Alaric [4202]: w
+Sat Oct 31 16:48:53 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Sat Oct 31 16:48:53 2026 :: Log Alaric [4207]: w
+Sat Oct 31 16:48:53 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 31 16:48:55 2026 :: Log Alaric [4208]: quit
+Sat Oct 31 16:48:55 2026 :: Alaric has quit.
+Sat Oct 31 16:48:55 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct 31 16:48:59 2026 :: Treasure goblin: vanished from room 1340 (A hallway, htower.are) (too long in one area).
