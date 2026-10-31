@@ -2722,6 +2722,8 @@ def lookup_player_help(topic: str) -> Optional[Dict[str, Any]]:
     entries, public = _load_help_entries()
     found = help_index.lookup(entries, topic, HELP_PUBLIC_MAX_LEVEL)
     if found is None:
+        found = help_index.first_word_fallback(entries, topic, HELP_PUBLIC_MAX_LEVEL)
+    if found is None:
         return None
     for record in public:
         if record["order"] == found.order:

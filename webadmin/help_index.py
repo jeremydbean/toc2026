@@ -203,6 +203,26 @@ def lookup(entries: List[HelpEntry], argument: str, trust: int) -> Optional[Help
     return None
 
 
+def first_word_fallback(entries: List[HelpEntry], argument: str,
+                        trust: int) -> Optional[HelpEntry]:
+    """do_help's last resort before its suggestions, after lookup() and the
+    group answer found nothing: for two or more words, the first word's
+    page -- its exact keyword, or from three letters a keyword it begins.
+    HELP GAINLIST TRAINERS found nothing (play journal, 2026-10-31)."""
+    words = ask(argument).split()
+    if len(words) < 2:
+        return None
+    first = words[0]
+    for entry in entries:
+        if entry.level <= trust and keyword_exact(first, entry.keyword):
+            return entry
+    if len(first) >= 3:
+        for entry in entries:
+            if entry.level <= trust and is_name(first, entry.keyword):
+                return entry
+    return None
+
+
 def reachable_by(entries: List[HelpEntry], entry: HelpEntry, trust: int) -> Optional[str]:
     """A keyword that brings this entry up at this trust, or None when every
     keyword it has lands on an earlier entry first."""

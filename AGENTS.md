@@ -1120,6 +1120,13 @@ python3 scripts/area_lint.py --fail-on critical --limit 100
   'DIVINE INTERVENTION'; owner, 2026-10-28). The last pass runs only when
   nothing else matched, so no page an older query found moves.
   `help_index.lookup` mirrors all three.
+- **Then the group, then the first word.** After the three passes and the
+  spell-group answer, two or more words fall back to the first word's
+  page -- its exact keyword, or from three letters a keyword it begins --
+  saying "No help on '<asked>'; here is <word>:" (play journal,
+  2026-10-31: HELP GAINLIST TRAINERS found nothing). Only then the
+  suggestions. `help_index.first_word_fallback` mirrors it for the
+  website (`tests/test_help_exact_match.py`).
 
 ## Achievements
 

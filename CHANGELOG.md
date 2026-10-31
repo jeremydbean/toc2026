@@ -8,6 +8,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **HELP falls back to the first word** (2026-10-31). Two or more words
+  that find no page, phrase or spell group show the first word's page,
+  saying so: HELP GAINLIST TRAINERS answered "No help on that word."
+  (play journal). `help_index.first_word_fallback` does the same for the
+  website.
+
 - **A death the ledger cannot record never duplicates** (2026-10-30,
   review). A refused receipt or a full Fixes list kept the corpse as an
   ordinary one and never saved the player, so a crash laid it beside a

@@ -2450,11 +2450,53 @@ static int help_group_exact( const char *name )
     return -1;
 }
 
+/* The first page `asked` reaches in passes first_pass..last_pass (0 an
+   exact keyword, 1 is_name's prefix, 2 a shortened phrase), or NULL. */
+static HELP_DATA *help_find( CHAR_DATA *ch, char *asked, int first_pass, int last_pass )
+{
+    HELP_DATA *pHelp;
+    int pass;
+
+    for ( pass = first_pass; pass <= last_pass; pass++ )
+	for ( pHelp = help_first; pHelp != NULL; pHelp = pHelp->next )
+	{
+	    bool hit;
+
+	    if ( pHelp->level > get_trust( ch ) )
+		continue;
+	    if ( pass == 0 )
+		hit = help_keyword_exact( asked, pHelp->keyword );
+	    else if ( pass == 1 )
+		hit = is_name( asked, pHelp->keyword );
+	    else
+		hit = help_phrase_prefix( asked, pHelp->keyword );
+	    if ( hit )
+		return pHelp;
+	}
+    return NULL;
+}
+
+static void help_show( CHAR_DATA *ch, HELP_DATA *pHelp, const char *asked )
+{
+    if ( pHelp->level >= 0 && str_cmp( asked, "imotd" ) )
+    {
+	send_to_char( pHelp->keyword, ch );
+	send_to_char( "\n\r", ch );
+    }
+
+    /*
+     * Strip leading '.' to allow initial blanks.
+     */
+    if ( pHelp->text[0] == '.' )
+	page_to_char( pHelp->text+1, ch );
+    else
+	page_to_char( pHelp->text  , ch );
+}
+
 void do_help( CHAR_DATA *ch, char *argument )
 {
     HELP_DATA *pHelp;
     char argall[MAX_INPUT_LENGTH],argone[MAX_INPUT_LENGTH];
-    int pass;
 
     if ( argument[0] == '\0' )
 	argument = "summary";
@@ -2490,41 +2532,10 @@ void do_help( CHAR_DATA *ch, char *argument )
      * work for everything else. A third pass reads a shortened phrase
      * (help_phrase_prefix), only once nothing else matched.
      */
-    for ( pass = 0; pass < 3; pass++ )
+    if ( ( pHelp = help_find( ch, argall, 0, 2 ) ) != NULL )
     {
-    for ( pHelp = help_first; pHelp != NULL; pHelp = pHelp->next )
-    {
-	bool hit;
-
-	if ( pHelp->level > get_trust( ch ) )
-	    continue;
-
-	if ( pass == 0 )
-	    hit = help_keyword_exact( argall, pHelp->keyword );
-	else if ( pass == 1 )
-	    hit = is_name( argall, pHelp->keyword );
-	else
-	    hit = help_phrase_prefix( argall, pHelp->keyword );
-	if ( !hit )
-	    continue;
-
-	{
-	    if ( pHelp->level >= 0 && str_cmp( argall, "imotd" ) )
-	    {
-		send_to_char( pHelp->keyword, ch );
-		send_to_char( "\n\r", ch );
-	    }
-
-	    /*
-	     * Strip leading '.' to allow initial blanks.
-	     */
-	    if ( pHelp->text[0] == '.' )
-		page_to_char( pHelp->text+1, ch );
-	    else
-		page_to_char( pHelp->text  , ch );
-	    return;
-	}
-    }
+	help_show( ch, pHelp, argall );
+	return;
     }
 
     /*
@@ -2539,6 +2550,29 @@ void do_help( CHAR_DATA *ch, char *argument )
 	if ( gn >= 0 )
 	{
 	    help_show_group( ch, gn );
+	    return;
+	}
+    }
+
+    /*
+     * Words after a topic that has a page: HELP GAINLIST TRAINERS, typed
+     * after GAINLIST's own output named GAINLIST TRAINERS, was told there
+     * was no help (play journal, 2026-10-31). The first word's page is
+     * the answer, said so -- by its exact keyword or, from three letters,
+     * a keyword it begins, as HELP alone reads it.
+     */
+    if ( strchr( argall, ' ' ) != NULL )
+    {
+	char first[MAX_INPUT_LENGTH];
+
+	one_argument( argall, first );
+	if ( ( pHelp = help_find( ch, first, 0, strlen( first ) >= 3 ? 1 : 0 ) ) != NULL )
+	{
+	    char line[MAX_STRING_LENGTH];
+
+	    snprintf( line, sizeof(line), "No help on '%s'; here is %s:\n\r", argall, first );
+	    send_to_char( line, ch );
+	    help_show( ch, pHelp, first );
 	    return;
 	}
     }
