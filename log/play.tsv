@@ -22376,3 +22376,70 @@
 1793455568	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	1	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
 1793455570	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	star	You stop using Starlight.
 1793455572	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	star	The hooded headsman repairs your Starlight. // It cost you 27g 75s 28c to repair Starlight.  It's been repaired 1 times now.
+1793455573	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	star	You light Starlight and hold it.
+1793455576	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	ring	You stop using a pirate's ring.
+1793455576	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	ring	You stop using a pirate's ring.
+1793455577	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	pir	But a pirate's ring is already in perfect condition!
+1793455580	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	2.pir	The hooded headsman repairs your a pirate's ring. // It cost you 26g 52s 83c to repair a pirate's ring.  It's been repaired 1 times now.
+1793455582	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	pir	You wear a pirate's ring on your left finger.
+1793455582	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	pir	You wear a pirate's ring on your right finger.
+1793455583	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     23 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793455585	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // ( 2) enemy bait // ( 3) a big pot pie
+1793455586	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793455588	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	gua	You stop using the Heart Guard of the Lizard.
+1793455588	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	gua	You stop using the Heart Guard of the Snake.
+1793455591	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	snake	But the Heart Guard of the Snake is already in perfect condition!
+1793455593	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	liza	The hooded headsman repairs your the Heart Guard of the Lizard. // It cost you 20g 40s 59c to repair the Heart Guard of the Lizard.  It's been repaired 1 times now.
+1793455594	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	gua	You stop using a great war helmet. // You wear guano on your head.
+1793455595	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	gua	You stop using guano. // You wear guano on your head.
+1793455597	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	mech	You stop using a chunk of mecharmor.
+1793455598	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	4	-	repair	mec	The hooded headsman repairs your a chunk of mecharmor. // It cost you 36g 7s 86c to repair a chunk of mecharmor.  It's been repaired 1 times now.
+1793455601	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	mec	You wear a chunk of mecharmor on your body.
+1793455601	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // ( 2) enemy bait // ( 3) a big pot pie
+1793455603	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793455611	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	hel	You stop using guano. // You wear a great war helmet on your head.
+1793455614	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	wa	You stop using a great war helmet.
+1793455617	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	war	But a great war helmet is already in perfect condition!
+1793455620	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	war	You wear a great war helmet on your head.
+1793455623	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793455628	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	guard	You wear the Heart Guard of the Lizard around your neck.
+1793455628	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	guard	You wear the Heart Guard of the Snake around your neck.
+1793455631	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	pin	You stop using a pair of pincer-toed boots.
+1793455632	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	pin	You stop using a pair of pincer gauntlets.
+1793455634	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	pin	But a pair of pincer-toed boots is already in perfect condition!
+1793455635	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	pin	You wear a pair of pincer-toed boots on your feet.
+1793455637	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	pin	But a pair of pincer gauntlets is already in perfect condition!
+1793455639	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	pin	You wear a pair of pincer gauntlets on your hands.
+1793455640	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	mant	You stop using a twin-headed mantle.
+1793455642	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	man	The hooded headsman repairs your a twin-headed mantle. // It cost you 14g 59s 46c to repair a twin-headed mantle.  It's been repaired 1 times now.
+1793455643	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	man	You wear a twin-headed mantle about your body.
+1793455645	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	vam	You stop using black steel vambraces.
+1793455646	cmd	Trentlin	50	2494	dresden_halloween.are	standing	98	0	-	repair	vam	The hooded headsman repairs your black steel vambraces. // It cost you 18g 56s 92c to repair black steel vambraces.  It's been repaired 1 times now.
+1793455649	cmd	Trentlin	50	2494	dresden_halloween.are	standing	98	0	-	wear	vam	You wear black steel vambraces on your arms.
+1793455650	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	look	vam	Vambraces made of some strange dark metal lie here forgotten. // The black steel vambraces is in perfect condition.
+1793455652	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // ( 2) enemy bait // ( 3) a big pot pie
+1793455654	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793455656	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	look	brac	A humming, blinding white bracer lies here! // The a white bracer is in perfect condition.
+1793455659	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	look	2.brac	A humming, blinding white bracer lies here! // The a white bracer is in perfect condition.
+1793455661	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	look	quick	There is a nice-looking break-away sheathe discarded here. // The a quick sheathe is in good condition.
+1793455663	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	remove	quick	You stop using a quick sheathe.
+1793455665	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	quick	The hooded headsman repairs your a quick sheathe. // It cost you 8s 52c to repair a quick sheathe.  It's been repaired 1 times now.
+1793455667	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	quick	You wear a quick sheathe about your waist.
+1793455668	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	look		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1793455672	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	axe	But A Tin Axe is already in perfect condition!
+1793455672	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793455673	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	west		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1793455673	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793455674	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793455676	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793455676	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793455677	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793455677	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793455678	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     23 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793455682	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	worth		You have 2623 platinum, 38 gold, 1 silver, 91 copper // and 112503 experience (2247 exp to level).
+1793455688	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     23 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793455694	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	help	dual wield	SECONDARY 'DUAL WIELD' DUAL // Syntax: secondary <weapon> // Wields a second weapon in your off hand, the slot a shield would use; a
+1793455730	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	gainlist		Abilities for a level 50 warrior of the warrior guild: 26 learned, 12 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793455740	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	eat	pie	You eat a big pot pie. // You are no longer hungry.
+1793455750	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	help	gainlist trainers	No help on that word.
+1793455754	session	Trentlin	50	2497	dresden_halloween.are	quit	566s	+0 levels	+0 exp	+145791667 copper	2 kills	0 deaths	1 quests	316 commands	0 refused	coin: loot 1g 7s 13c, quests 148p 72g 11s, spent 2p 94g 1s 46c
