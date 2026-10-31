@@ -20997,3 +20997,7 @@
 1793408739	cmd	Alaric	54	4210	dresden_halloween.are	standing	11	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1793408740	cmd	Alaric	54	4210	dresden_halloween.are	standing	11	0	-	sleep		You go to sleep.
 1793408741	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	11	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    270 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793409052	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	58	0	-	wake		You wake and stand up.
+1793409053	cmd	Alaric	54	4210	dresden_halloween.are	standing	58	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    270 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793409057	cmd	Alaric	54	4210	dresden_halloween.are	standing	58	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 16 for 0 hours.
+1793409058	session	Alaric	54	4210	dresden_halloween.are	quit	5906s	+0 levels	+6041 exp	+167930412 copper	28 kills	0 deaths	0 quests	660 commands	13 refused	coin: loot 120p 22g 83s 81c
