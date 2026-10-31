@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261031b 2026-10-31
+The rift in the Witch Sisters' cavern in the Emerald Forest no longer
+seems to invite a plunge: it was only ever scenery, and now says so.
+
 @ 20261031a 2026-10-31
 HELP with extra words now shows the first word's topic instead of
 finding nothing: HELP GAINLIST TRAINERS shows HELP GAINLIST, and says so.
