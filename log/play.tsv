@@ -23055,3 +23055,26 @@
 1793477691	cmd	Alaric	54	29210	korzath2.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-14] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-69]
 1793477697	cmd	Alaric	54	29210	korzath2.are	fighting	73	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1793477697	cmd	Alaric	54	29210	korzath2.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an Animated Skeleton. [-11] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-61]
+1793477703	cmd	Alaric	54	29210	korzath2.are	fighting	61	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-69] // Your fists of fury MASSACRES an Animated Skeleton! [-51]
+1793477709	cmd	Alaric	54	29210	korzath2.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an Animated Skeleton! [-25] // Your fists of fury MUTILATES an Animated Skeleton! [-39]
+1793477715	cmd	Alaric	54	29210	korzath2.are	fighting	49	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-67] // Your fists of fury ^^^ DESTROYS ^^^ an Animated Skeleton! [-88]
+1793477721	cmd	Alaric	54	29210	korzath2.are	standing	49	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793477721	cmd	Alaric	54	29210	korzath2.are	standing	49	0	-	fists		Who do you want to attack?
+1793477721	cmd	Alaric	54	29209	korzath2.are	standing	49	0	-	south		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793477721	cmd	Alaric	54	29209	korzath2.are	standing	49	0	-	kill	sk	An Animated Skeleton parries your attack. // An Animated Skeleton parries your attack. // An Animated Skeleton parries your attack.
+1793477726	cmd	Alaric	54	29210	korzath2.are	standing	52	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793477726	cmd	Alaric	54	29210	korzath2.are	standing	52	0	-	kill	sk	Your punch mauls an Animated Skeleton. [-22] // An Animated Skeleton walks off to the west. // An Animated Skeleton has fled!
+1793477732	cmd	Alaric	54	29211	korzath2.are	standing	52	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793477732	cmd	Alaric	54	29211	korzath2.are	standing	52	0	-	kill	fk	They aren't here.
+1793477735	cmd	Alaric	54	29211	korzath2.are	standing	52	0	-	kill	sk	An Animated Skeleton dodges your attack. // An Animated Skeleton dodges your attack.
+1793477741	cmd	Alaric	54	4207	dresden_halloween.are	fighting	15	0	fight	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793477742	cmd	Alaric	54	4208	dresden_halloween.are	standing	15	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793477743	cmd	Alaric	54	4207	dresden_halloween.are	standing	15	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793477743	cmd	Alaric	54	4202	dresden_halloween.are	standing	15	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793477743	cmd	Alaric	54	4203	dresden_halloween.are	standing	15	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793477744	cmd	Alaric	54	4210	dresden_halloween.are	standing	15	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793477744	cmd	Alaric	54	4210	dresden_halloween.are	standing	15	0	-	sleep		You go to sleep.
+1793477947	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	63	0	-	wake		You wake and stand up.
+1793477948	cmd	Alaric	54	4210	dresden_halloween.are	standing	63	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793477953	cmd	Alaric	54	4210	dresden_halloween.are	standing	63	0	-	levitate		You slowly rise up off the ground.
+1793477953	cmd	Alaric	54	4210	dresden_halloween.are	standing	63	0	-	sleep		You go to sleep.
