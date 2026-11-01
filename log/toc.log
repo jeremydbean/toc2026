@@ -237961,3 +237961,8 @@ Sun Nov  1 14:50:25 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) fro
 Sun Nov  1 14:50:25 2026 :: Log Alaric [4203]: n
 Sun Nov  1 14:50:25 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
 Sun Nov  1 14:50:26 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 14:51:12 2026 :: Log Alaric [4210]: affects off: levitate
+Sun Nov  1 14:53:59 2026 :: Sock.sinaddr:  178.156.189.113
+Sun Nov  1 14:53:59 2026 :: EOF encountered on read.
+Sun Nov  1 14:54:09 2026 :: Treasure goblin: vanished from room 2465 (Hallway., dresden_halloween.are) (too long in one area).
+Sun Nov  1 14:55:50 2026 :: Log Alaric [4210]: affects off: steel fist
