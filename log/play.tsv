@@ -24716,3 +24716,6 @@
 1793503097	cmd	Alaric	55	4210	dresden_halloween.are	standing	5	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1793503099	cmd	Alaric	55	4210	dresden_halloween.are	standing	5	0	-	where	herm	You didn't find any herm.
 1793503099	cmd	Alaric	55	4210	dresden_halloween.are	standing	5	0	-	sleep		You go to sleep.
+1793503205	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	33	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    275 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793503208	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	33	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793503234	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	33	0	-	who		[55 Dwarf   Mastr ] Alaric. // Players found: 1
