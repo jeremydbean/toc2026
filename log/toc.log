@@ -231857,3 +231857,11 @@ Sun Nov  1 01:06:12 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Rest
 Sun Nov  1 01:06:12 2026 :: Log Alaric [4210]: sleep
 Sun Nov  1 01:06:14 2026 :: Sock.sinaddr:  3.133.226.214
 Sun Nov  1 01:06:15 2026 :: EOF encountered on read.
+Sun Nov  1 01:08:24 2026 :: Log Alaric [4210]: affects off: iron skin
+Sun Nov  1 01:09:33 2026 :: Log Alaric [4210]: affects off: levitate
+Sun Nov  1 01:09:59 2026 :: Sock.sinaddr:  23.31.96.97
+Sun Nov  1 01:09:59 2026 :: EOF encountered on read.
+Sun Nov  1 01:10:32 2026 :: Log Alaric [4210]: affects off: steel fist
+Sun Nov  1 01:11:19 2026 :: Sock.sinaddr:  52.87.72.16
+Sun Nov  1 01:11:19 2026 :: EOF encountered on read.
+Sun Nov  1 01:12:34 2026 :: Treasure goblin: vanished from room 1393 (A hallway, htower.are) (too long in one area).
