@@ -26091,3 +26091,67 @@
 1793543726	cmd	Alaric	55	29218	korzath2.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-19] // Your fists of fury devastates a deranged madman! [-32]
 1793543732	cmd	Alaric	55	29218	korzath2.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-90] // Your fists of fury *** DEVASTATES *** a deranged madman! [-67]
 1793543738	cmd	Alaric	55	29218	korzath2.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-10] // Your fists of fury MANGLES a deranged madman! [-54]
+1793543744	cmd	Alaric	55	29218	korzath2.are	fighting	58	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-12] // Your fists of fury MUTILATES a deranged madman! [-39]
+1793543749	cmd	Alaric	55	29218	korzath2.are	fighting	58	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-26] // Your fists of fury hits a deranged madman. [-12]
+1793543755	cmd	Alaric	55	29218	korzath2.are	standing	58	0	-	fists		Who do you want to attack?
+1793543756	cmd	Alaric	55	4207	dresden_halloween.are	standing	58	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793543757	cmd	Alaric	55	4208	dresden_halloween.are	standing	58	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793543758	cmd	Alaric	55	4207	dresden_halloween.are	standing	58	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793543758	cmd	Alaric	55	4202	dresden_halloween.are	standing	58	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793543758	cmd	Alaric	55	4203	dresden_halloween.are	standing	58	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793543759	cmd	Alaric	55	4210	dresden_halloween.are	standing	58	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793543759	cmd	Alaric	55	4210	dresden_halloween.are	standing	58	0	-	sleep		You go to sleep.
+1793543761	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	58	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    276 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793543803	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	70	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793543834	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	70	0	-	inventory		You are carrying: //      a diamond key // (15) guano
+1793543841	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	80	0	-	wake		You wake and stand up.
+1793543842	cmd	Alaric	55	4210	dresden_halloween.are	standing	80	0	-	drop	moss	You drop glowing moss.
+1793543842	cmd	Alaric	55	4210	dresden_halloween.are	standing	80	0	-	drop	moss	You drop glowing moss.
+1793543844	cmd	Alaric	55	4210	dresden_halloween.are	standing	80	0	-	sacrifice	moss	The Gods give you 0 copper coins for your sacrifice.
+1793543844	cmd	Alaric	55	4210	dresden_halloween.are	standing	80	0	-	sacrifice	moss	The Gods give you 0 copper coins for your sacrifice.
+1793543846	cmd	Alaric	55	4210	dresden_halloween.are	standing	80	0	-	sleep		You go to sleep.
+1793543930	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	89	0	-	affect		You are affected by: // Skill: 'levitate' for 0 hours. // Skill: 'ego whip' modifies intelligence by -5 for 6 hours.
+1793543931	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	89	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    276 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793543938	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	89	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  
+1793543966	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1793543966	cmd	Alaric	55	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793543966	cmd	Alaric	55	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793543966	cmd	Alaric	55	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793543967	cmd	Alaric	55	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793543968	cmd	Alaric	55	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (13 castings, 130 gold.)
+1793543973	cmd	Alaric	55	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1793543973	cmd	Alaric	55	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793543973	cmd	Alaric	55	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793543973	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793543975	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793543976	cmd	Alaric	55	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793543977	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793543978	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	open		Ok.
+1793543979	cmd	Alaric	55	29003	korzath1.are	standing	100	0	-	run	n 8	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793543979	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793543980	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	north		The door is closed.
+1793543981	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793543981	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	open		Ok.
+1793543982	cmd	Alaric	55	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793543982	cmd	Alaric	55	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793543982	cmd	Alaric	55	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793543983	cmd	Alaric	55	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793543983	cmd	Alaric	55	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793543984	cmd	Alaric	55	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793543984	cmd	Alaric	55	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793543985	cmd	Alaric	55	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793543985	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793543988	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793543992	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793543992	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.
+1793544001	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a deranged madman! [-43] // Your fists of fury wounds a deranged madman. [-17]
+1793544007	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-19] // Your fists of fury decimates a deranged madman! [-26]
+1793544012	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-26] // Your fists of fury grazes a deranged madman. [-5]
+1793544018	cmd	Alaric	55	29208	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a deranged madman. [-15] // Your fists of fury wounds a deranged madman. [-17]
+1793544024	cmd	Alaric	55	29208	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a deranged madman. [-4] // Your fists of fury wounds a deranged madman. [-20]
+1793544030	cmd	Alaric	55	29208	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-38] // Your fists of fury MANGLES a deranged madman! [-55]
+1793544035	cmd	Alaric	55	29208	korzath2.are	fighting	87	0	fight	who		[55 Dwarf   Mastr ] Alaric. // Players found: 1
+1793544036	cmd	Alaric	55	29208	korzath2.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-20] // Your fists of fury DISMEMBERS a deranged madman! [-45]
+1793544045	cmd	Alaric	55	29209	korzath2.are	standing	87	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793544047	cmd	Alaric	55	29209	korzath2.are	standing	87	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ an Animated Skeleton! [-86] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-79]
+1793544052	cmd	Alaric	55	29209	korzath2.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-61] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-69]
