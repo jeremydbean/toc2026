@@ -236992,3 +236992,91 @@ Sun Nov  1 14:10:17 2026 :: Log Alaric [4210]: steel
 Sun Nov  1 14:10:22 2026 :: Log Alaric [4210]: levi
 Sun Nov  1 14:10:28 2026 :: Log Alaric [4210]: rest
 Sun Nov  1 14:10:29 2026 :: Log Alaric [4210]: score
+Sun Nov  1 14:10:39 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Nov  1 14:10:40 2026 :: Loading Trentlin's playerfile
+Sun Nov  1 14:10:42 2026 :: Closing link to Trentlin.
+Sun Nov  1 14:10:53 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Nov  1 14:11:01 2026 :: Loading Trentlin's playerfile
+Sun Nov  1 14:11:04 2026 :: Loading Trentlin's playerfile
+Sun Nov  1 14:11:04 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sun Nov  1 14:11:04 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sun Nov  1 14:11:07 2026 :: Log Trentlin [2497]: aquest request
+Sun Nov  1 14:11:07 2026 :: Log Trentlin [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in mobfact.are, 23 minutes, ordinary
+Sun Nov  1 14:11:09 2026 :: Log Trentlin [2497]: enter door
+Sun Nov  1 14:11:09 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2401]: north
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2402]: north
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2415]: east
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2485]: east
+Sun Nov  1 14:11:12 2026 :: Log Trentlin [2486]: arrived (Market Plaza.) from 2485
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2486]: north
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2483]: arrived (Fountain of Market Plaza.) from 2486
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2483]: east
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2484]: arrived (Market Plaza.) from 2483
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2484]: north
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2481]: arrived (Market Plaza.) from 2484
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2481]: north
+Sun Nov  1 14:11:13 2026 :: Log Trentlin [2514]: arrived (Dark Alley.) from 2481
+Sun Nov  1 14:11:14 2026 :: Log Trentlin [2514]: east
+Sun Nov  1 14:11:14 2026 :: Log Trentlin [2505]: arrived (Dark Alley.) from 2514
+Sun Nov  1 14:11:14 2026 :: Log Trentlin [2505]: east
+Sun Nov  1 14:11:14 2026 :: Log Trentlin [9400]: arrived (Entrance to the Mob Factory) from 2505
+Sun Nov  1 14:11:16 2026 :: Log Trentlin [9400]: e
+Sun Nov  1 14:11:16 2026 :: Log Trentlin [9407]: arrived (Entrance Hallway to Mob Factory) from 9400
+Sun Nov  1 14:11:17 2026 :: Log Trentlin [9407]: e
+Sun Nov  1 14:11:17 2026 :: Log Trentlin [9412]: arrived (Entrance Hallway to Mob Factory) from 9407
+Sun Nov  1 14:11:18 2026 :: Log Trentlin [9412]: ex
+Sun Nov  1 14:11:20 2026 :: Log Trentlin [9412]: e
+Sun Nov  1 14:11:20 2026 :: Log Trentlin [9417]: arrived (Primary Assembly Line) from 9412
+Sun Nov  1 14:11:20 2026 :: Log Alaric [4210]: affects off: iron skin
+Sun Nov  1 14:11:23 2026 :: Log Trentlin [9417]: get crow
+Sun Nov  1 14:11:34 2026 :: Log Trentlin [9417]: w
+Sun Nov  1 14:11:34 2026 :: Log Trentlin [9412]: arrived (Entrance Hallway to Mob Factory) from 9417
+Sun Nov  1 14:11:34 2026 :: Log Trentlin [9412]: w
+Sun Nov  1 14:11:34 2026 :: Log Trentlin [9407]: arrived (Entrance Hallway to Mob Factory) from 9412
+Sun Nov  1 14:11:34 2026 :: Log Trentlin [9407]: w
+Sun Nov  1 14:11:34 2026 :: Log Trentlin [9400]: arrived (Entrance to the Mob Factory) from 9407
+Sun Nov  1 14:11:35 2026 :: Log Trentlin [9400]: w
+Sun Nov  1 14:11:35 2026 :: Log Trentlin [2505]: arrived (Dark Alley.) from 9400
+Sun Nov  1 14:11:36 2026 :: Log Trentlin [2505]: w
+Sun Nov  1 14:11:36 2026 :: Log Trentlin [2514]: arrived (Dark Alley.) from 2505
+Sun Nov  1 14:11:36 2026 :: Log Trentlin [2514]: s
+Sun Nov  1 14:11:36 2026 :: Log Trentlin [2481]: arrived (Market Plaza.) from 2514
+Sun Nov  1 14:11:38 2026 :: Log Trentlin [2481]: w
+Sun Nov  1 14:11:38 2026 :: Log Trentlin [2480]: arrived (Market Plaza.) from 2481
+Sun Nov  1 14:11:39 2026 :: Log Trentlin [2480]: w
+Sun Nov  1 14:11:39 2026 :: Log Trentlin [2479]: arrived (Market Plaza.) from 2480
+Sun Nov  1 14:11:39 2026 :: Log Trentlin [2479]: w
+Sun Nov  1 14:11:39 2026 :: Log Trentlin [2416]: arrived (Main Processional, Among the Scarecrows) from 2479
+Sun Nov  1 14:11:40 2026 :: Log Trentlin [2416]: s
+Sun Nov  1 14:11:40 2026 :: Log Trentlin [2496]: arrived (Main Processional, Where the Candles Burn) from 2416
+Sun Nov  1 14:11:40 2026 :: Log Trentlin [2496]: s
+Sun Nov  1 14:11:40 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2496
+Sun Nov  1 14:11:40 2026 :: Log Trentlin [2415]: s
+Sun Nov  1 14:11:40 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sun Nov  1 14:11:41 2026 :: Log Trentlin [2402]: s
+Sun Nov  1 14:11:41 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sun Nov  1 14:11:43 2026 :: Log Trentlin [2401]: u
+Sun Nov  1 14:11:43 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Nov  1 14:11:43 2026 :: Log Trentlin [2410]: u
+Sun Nov  1 14:11:43 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Nov  1 14:11:43 2026 :: Log Trentlin [2411]: u
+Sun Nov  1 14:11:43 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sun Nov  1 14:11:44 2026 :: Log Trentlin [2414]: u
+Sun Nov  1 14:11:44 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Nov  1 14:11:45 2026 :: Log Trentlin [2497]: aquest complete
+Sun Nov  1 14:11:45 2026 :: Log Trentlin [2497]: copper +121680900
+Sun Nov  1 14:11:45 2026 :: Log Trentlin [2497]: quest complete: 121p 68g 9s, 49 quest points (streak bonus 85%)
+Sun Nov  1 14:11:45 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261101_141145.quest (PRESTORE Trentlin to see it).
+Sun Nov  1 14:11:49 2026 :: Log Trentlin [2497]: aquest gamble yes
+Sun Nov  1 14:11:53 2026 :: Log Trentlin [2497]: aquest points
+Sun Nov  1 14:11:54 2026 :: Log Trentlin [2497]: quit
+Sun Nov  1 14:11:54 2026 :: Trentlin has quit.
+Sun Nov  1 14:11:54 2026 :: [QUIT] Player rejoined the real world.
+Sun Nov  1 14:13:20 2026 :: Sock.sinaddr:  52.15.147.27
+Sun Nov  1 14:13:21 2026 :: EOF encountered on read.
+Sun Nov  1 14:13:50 2026 :: Treasure goblin: vanished from room 9339 (On the Mystic Chains, galaxy.are) (too long in one area).
+Sun Nov  1 14:14:52 2026 :: Log Alaric [4210]: affects off: levitate, steel fist
