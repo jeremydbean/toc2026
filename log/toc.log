@@ -234605,3 +234605,56 @@ Sun Nov  1 11:26:06 2026 :: Treasure goblin: vanished from room 10070 (West end 
 Sun Nov  1 11:30:49 2026 :: Sock.sinaddr:  3.12.251.153
 Sun Nov  1 11:30:49 2026 :: EOF encountered on read.
 Sun Nov  1 11:32:31 2026 :: Black market: the dealer appeared with 5 items (stock 1793532751), for 28 minutes.
+Sun Nov  1 11:35:54 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Nov  1 11:35:54 2026 :: EOF encountered on read.
+Sun Nov  1 11:36:11 2026 :: Treasure goblin: vanished from room 2234 (Tunnel, draconia.are) (too long in one area).
+Sun Nov  1 11:38:51 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Nov  1 11:38:52 2026 :: Loading Trentlin's playerfile
+Sun Nov  1 11:38:53 2026 :: Loading Trentlin's playerfile
+Sun Nov  1 11:38:53 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sun Nov  1 11:38:54 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sun Nov  1 11:38:58 2026 :: Log Trentlin [2497]: aquest request
+Sun Nov  1 11:38:58 2026 :: Log Trentlin [2497]: quest assigned: kill an Orgeem Imp (mob 1017, level 31) in uargo.are, 7 minutes, rush
+Sun Nov  1 11:39:03 2026 :: Log Trentlin [2497]: enter door
+Sun Nov  1 11:39:03 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Nov  1 11:39:05 2026 :: Log Trentlin [2401]: west
+Sun Nov  1 11:39:05 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2405]: west
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2433]: west
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2434]: west
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2435]: west
+Sun Nov  1 11:39:06 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov  1 11:39:07 2026 :: Log Trentlin [2436]: west
+Sun Nov  1 11:39:07 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov  1 11:39:07 2026 :: Log Trentlin [2437]: west
+Sun Nov  1 11:39:07 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov  1 11:39:07 2026 :: Log Trentlin [2438]: open west
+Sun Nov  1 11:39:07 2026 :: Log Trentlin [2438]: west
+Sun Nov  1 11:39:07 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov  1 11:39:10 2026 :: Log Trentlin [2439]: north
+Sun Nov  1 11:39:10 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Sun Nov  1 11:39:10 2026 :: Log Trentlin [3900]: north
+Sun Nov  1 11:39:10 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [3901]: north
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [3902]: east
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [3903]: east
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [3904]: north
+Sun Nov  1 11:39:11 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [300]: north
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [315]: north
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [320]: north
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [322]: arrived (Grassy foothills) from 320
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [322]: north
+Sun Nov  1 11:39:12 2026 :: Log Trentlin [324]: arrived (The steep foothills) from 322
+Sun Nov  1 11:39:13 2026 :: Log Trentlin [324]: north
+Sun Nov  1 11:39:13 2026 :: Log Trentlin [45]: arrived (Base of Mount Ulmo) from 324
+Sun Nov  1 11:39:13 2026 :: Log Trentlin [45]: north
+Sun Nov  1 11:39:13 2026 :: Log Trentlin [1000]: arrived (A mountain path) from 45
