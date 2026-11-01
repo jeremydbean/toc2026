@@ -25797,3 +25797,6 @@
 1793541518	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	sleep		You go to sleep.
 1793541593	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	affect		You are affected by: // Skill: 'nightmare' modifies mana by -87 for 17 hours. // Skill: 'steel fist' modifies damage roll by 16 for 4 hours.
 1793541598	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	rest		You rest.
+1793541684	cmd	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	wake		You stand up.
+1793541685	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793541693	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	rest		You rest.
