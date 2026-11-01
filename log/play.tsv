@@ -25800,3 +25800,18 @@
 1793541684	cmd	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	wake		You stand up.
 1793541685	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1793541693	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	rest		You rest.
+1793542135	cmd	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	affect		You are affected by: // Skill: 'nightmare' modifies mana by -87 for 8 hours.
+1793542137	refused	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	mindbar		Nah... You feel too relaxed...
+1793542138	cmd	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	wake		You stand up.
+1793542140	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	mindbar		You lost your concentration.
+1793542140	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	mindbar		You lost your concentration.
+1793542141	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	mindbar		A mental fortress protects your mind.
+1793542147	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	sleep		You go to sleep.
+1793542173	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	rest		You rest.
+1793542174	cmd	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	affect		You are affected by: // Skill: 'mindbar' for 8 hours. // Skill: 'nightmare' modifies mana by -87 for 7 hours.
+1793542209	cmd	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	wake		You stand up.
+1793542210	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	iron		Your skin hardens.
+1793542217	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793542222	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	levitate		You slowly rise up off the ground.
+1793542228	cmd	Alaric	55	4210	dresden_halloween.are	standing	59	0	-	rest		You rest.
+1793542229	cmd	Alaric	55	4210	dresden_halloween.are	resting	59	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    276 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
