@@ -1132,7 +1132,10 @@ python3 scripts/area_lint.py --fail-on critical --limit 100
 
 `src/achievements.c`; the player guide is `wiki/achievements.md`, whose
 catalog table `tests/test_achievement_expansion.py` holds to the source.
-378 entries since the 2026-10-25 expansion (owner: about 175 new ones).
+378 entries since the 2026-10-25 expansion (owner: about 175 new ones),
+386 since the close calls and comedy rows (owner, 2026-11-01: fleeing on
+one hit point, other close calls, funny things;
+`tests/test_achievement_close_calls.py`).
 Rules the code depends on:
 
 - **The table is append-only.** Earned achievements are saved by key

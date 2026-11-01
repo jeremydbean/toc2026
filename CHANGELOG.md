@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Close calls and comedy: eight achievements** (2026-11-01, owner).
+  By a Thread (flee on one hit point), Live to Fight Another Day and
+  Answered Prayer (flee or recall out of a fight on a twentieth of your
+  hit points or less), Last One Standing (a kill on the same), Not Today
+  (spared by divine protection), and three hidden ones: Sleepwalker, No
+  Place Like Home and Brave Sir Robin. Staff earn none, as with every row
+  since the expansion.
+
 - **HELP falls back to the first word** (2026-10-31). Two or more words
   that find no page, phrase or spell group show the first word's page,
   saying so: HELP GAINLIST TRAINERS answered "No help on that word."

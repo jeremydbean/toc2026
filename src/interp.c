@@ -1745,6 +1745,7 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
 
 	case POS_SLEEPING:
 	    send_to_char( "In your dreams, or what?\n\r", ch );
+	    achievement_record_event( ch, ACHIEVEMENT_EVENT_SLEEPWALK, true );
 	    break;
 
 	case POS_RESTING:

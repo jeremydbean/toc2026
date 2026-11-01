@@ -60,7 +60,7 @@ documentation.
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.
-- A permanent 378-achievement progression system with points, earned dates,
+- A permanent 386-achievement progression system with points, earned dates,
   hidden discoveries, live progress, retroactive milestones, group boss credit,
   world bosses, rare relics, crafting, banking and casino feats, unusual deaths,
   treasure goblins, the black dragon, Vesh, disasters, exploration, teamwork,

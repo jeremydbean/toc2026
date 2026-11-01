@@ -49,8 +49,10 @@ class AchievementSystemTests(unittest.TestCase):
         # Top of the Board, for the training yard's benchmark record;
         # 203 from 2026-10-20 with six daily-quest feats and Well Rested;
         # 378 from 2026-10-25 with the expansion's 175
-        # (tests/test_achievement_expansion.py holds those).
-        self.assertEqual(len(self.entries), 378)
+        # (tests/test_achievement_expansion.py holds those); 386 from
+        # 2026-11-01 with the close calls and comedy rows
+        # (tests/test_achievement_close_calls.py).
+        self.assertEqual(len(self.entries), 386)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))

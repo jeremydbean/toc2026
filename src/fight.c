@@ -2078,6 +2078,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 			  send_to_char("A bright flash of light fills the room and envelops you...\n\r",victim);
 				send_to_char("            You have been spared from death by the Gods.\n\r",victim);
 				send_to_char("                        ...your divine protection fades.\n\r\n\r",victim);
+				achievement_record_event( victim, ACHIEVEMENT_EVENT_DIVINE_SAVE, true );
 
 				remove_hate( ch, victim );
 				  snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s has been spared by the gods divine protection from certain death at the hands of %s!", victim->name,
@@ -3694,6 +3695,11 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 
     quest_record_kill(ch, victim);
 
+    /* A close call: the killing blow struck on a twentieth of your hit
+       points or less (achievements.c). */
+    if ( !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0 && ch->hit * 20 <= ch->max_hit )
+	achievement_record_event( ch, ACHIEVEMENT_EVENT_KILL_LOW_HP, true );
+
     members = 0;
     group_levels = 0;
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
@@ -5228,6 +5234,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *now_in;
     CHAR_DATA *victim;
     int attempt, chance;
+    int fled_on;
     static bool despair_answering = false;
 
     if ( ( victim = ch->fighting ) == NULL )
@@ -5235,8 +5242,11 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	if ( ch->position == POS_FIGHTING )
 	    ch->position = POS_STANDING;
 	send_to_char( "You aren't fighting anyone.\n\r", ch );
+	achievement_record_event( ch, ACHIEVEMENT_EVENT_FLEE_NOTHING, true );
 	return;
     }
+    /* The hit points fled on, before the way out can change them. */
+    fled_on = ch->hit;
 /*
     if (!IS_NPC(ch) && ch->battleticks > 0) {
        send_to_char("Not while you are in battle mode.\n\r",ch);
@@ -5303,6 +5313,16 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	}
 
 	stop_fighting( ch, true );
+	/* Close calls, after the flight is done (achievements.c) -- and
+	   only if the way out did not kill them (a trap moves the dead to
+	   the death room). */
+	if ( !IS_NPC(ch) && fled_on > 0 && ch->in_room == now_in )
+	{
+	    if ( fled_on == 1 )
+		achievement_record_event( ch, ACHIEVEMENT_EVENT_FLEE_ONE_HP, true );
+	    if ( ch->max_hit > 0 && fled_on * 20 <= ch->max_hit )
+		achievement_record_event( ch, ACHIEVEMENT_EVENT_FLEE_LOW_HP, true );
+	}
 	return;
     }
 

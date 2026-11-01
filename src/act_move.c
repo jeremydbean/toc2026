@@ -3493,6 +3493,8 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
                   : "You are already at %s.\n\r",
                   where );
         send_to_char( buf, ch );
+        if ( own_prayer )
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_ALREADY_HOME, true );
         return;
     }
 
@@ -3535,6 +3537,11 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
     {
        if (chance < skill)
        {
+          /* A close call: out of a fight on a twentieth of their hit
+             points or less, by their own prayer (achievements.c). */
+          if ( own_prayer && !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0
+          &&   ch->hit * 20 <= ch->max_hit )
+             achievement_record_event( ch, ACHIEVEMENT_EVENT_RECALL_LOW_HP, true );
           if (chance < 5 && (IS_NPC(ch)
            || ch->pcdata->num_remorts < REMORTS_FOR_SURE_RECALL))
           {

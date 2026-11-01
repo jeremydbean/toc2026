@@ -564,7 +564,18 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "disaster-fire", "Through the Fire", "Live through a wildfire.", ACH_CAT_MISADVENTURE, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DISASTER_FIRST + 6, 0 },
     { "disaster-tidal", "Riding the Wave", "Live through a tidal wave.", ACH_CAT_MISADVENTURE, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DISASTER_FIRST + 7, 0 },
     { "disaster-all", "Act of the Gods", "Live through every kind of disaster but the dragon.", ACH_CAT_MISADVENTURE, 50, false, ACH_REQ_COHORT, 0, ACH_COHORT_DISASTERS },
-    { "rare-sightings", "Rare Sightings", "Earn Follow the Money I, Dragon Trouble I and Under the Counter I.", ACH_CAT_ENCOUNTERS, 30, false, ACH_REQ_COHORT, 0, ACH_COHORT_RARE_SIGHTINGS }
+    { "rare-sightings", "Rare Sightings", "Earn Follow the Money I, Dragon Trouble I and Under the Counter I.", ACH_CAT_ENCOUNTERS, 30, false, ACH_REQ_COHORT, 0, ACH_COHORT_RARE_SIGHTINGS },
+    /* Close calls and comedy (owner, 2026-11-01: fleeing on one hit
+       point, other close calls, funny things). "Low" is a twentieth of
+       the character's maximum hit points or less. */
+    { "close-call-thread", "By a Thread", "Flee from a fight with a single hit point left.", ACH_CAT_MISADVENTURE, 25, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FLEE_ONE_HP, 0 },
+    { "close-call-flee", "Live to Fight Another Day", "Flee from a fight with a twentieth of your hit points or less.", ACH_CAT_MISADVENTURE, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FLEE_LOW_HP, 0 },
+    { "close-call-recall", "Answered Prayer", "Recall out of a fight with a twentieth of your hit points or less.", ACH_CAT_MISADVENTURE, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_RECALL_LOW_HP, 0 },
+    { "close-call-kill", "Last One Standing", "Slay a foe with a twentieth of your hit points or less.", ACH_CAT_COMBAT, 20, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_KILL_LOW_HP, 0 },
+    { "close-call-divine", "Not Today", "Be spared certain death by divine protection.", ACH_CAT_MISADVENTURE, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DIVINE_SAVE, 0 },
+    { "funny-sleepwalk", "Sleepwalker", "Try to do something while fast asleep.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_SLEEPWALK, 0 },
+    { "funny-already-home", "No Place Like Home", "Pray to recall while already standing at your recall point.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_ALREADY_HOME, 0 },
+    { "funny-flee-nothing", "Brave Sir Robin", "Try to flee when nothing is fighting you.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FLEE_NOTHING, 0 }
 };
 
 typedef char achievement_table_must_fit[
