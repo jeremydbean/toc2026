@@ -23766,3 +23766,23 @@
 1793496136	cmd	Alaric	54	29210	korzath2.are	standing	88	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
 1793496137	cmd	Alaric	54	29211	korzath2.are	standing	88	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
 1793496144	cmd	Alaric	54	29211	korzath2.are	standing	88	0	-	sleep		You go to sleep.
+1793496183	cmd	Alaric	54	29211	korzath2.are	sleeping	93	0	-	wake		You wake and stand up.
+1793496183	cmd	Alaric	54	29211	korzath2.are	standing	93	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793496186	cmd	Alaric	54	29211	korzath2.are	standing	93	0	-	levitate		You slowly rise up off the ground.
+1793496187	cmd	Alaric	54	29211	korzath2.are	standing	93	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.
+1793496196	cmd	Alaric	54	29212	korzath2.are	standing	93	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793496197	cmd	Alaric	54	29212	korzath2.are	standing	93	0	-	fists		Who do you want to attack?
+1793496201	cmd	Alaric	54	29212	korzath2.are	standing	93	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-50] // Your fists of fury scratches a deranged madman. [-3]
+1793496207	cmd	Alaric	54	29212	korzath2.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-17] // Your fists of fury hits a deranged madman. [-10]
+1793496213	cmd	Alaric	54	29212	korzath2.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-10] // Your fists of fury wounds a deranged madman. [-18]
+1793496219	cmd	Alaric	54	29212	korzath2.are	fighting	45	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793496219	cmd	Alaric	54	29212	korzath2.are	fighting	45	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a deranged madman! [-36] // Your fists of fury DISEMBOWELS a deranged madman! [-42]
+1793496225	cmd	Alaric	54	29212	korzath2.are	fighting	38	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a deranged madman! [-33] // Your fists of fury decimates a deranged madman! [-25]
+1793496233	cmd	Alaric	54	29211	korzath2.are	fighting	19	0	fight	flee		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793496233	refused	Alaric	54	29211	korzath2.are	standing	19	0	-	(unknown)		Huh?
+1793496235	cmd	Alaric	54	4207	dresden_halloween.are	standing	19	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793496236	cmd	Alaric	54	4202	dresden_halloween.are	standing	19	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793496237	cmd	Alaric	54	4203	dresden_halloween.are	standing	19	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793496237	cmd	Alaric	54	4210	dresden_halloween.are	standing	19	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793496238	cmd	Alaric	54	4210	dresden_halloween.are	standing	19	0	-	where	herm	You didn't find any herm.
+1793496239	cmd	Alaric	54	4210	dresden_halloween.are	standing	19	0	-	sleep		You go to sleep.

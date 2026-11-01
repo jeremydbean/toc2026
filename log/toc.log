@@ -232128,3 +232128,33 @@ Sun Nov  1 01:22:17 2026 :: Log Alaric [29210]: w
 Sun Nov  1 01:22:17 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
 Sun Nov  1 01:22:24 2026 :: Log Alaric [29211]: sleep
 Sun Nov  1 01:22:38 2026 :: Treasure goblin: vanished from room 24102 (On a Road in the Forest Murkmire, coven.are) (too long in one area).
+Sun Nov  1 01:22:59 2026 :: Log Alaric [29211]: affects off: iron skin, levitate, steel fist
+Sun Nov  1 01:23:03 2026 :: Log Alaric [29211]: wake
+Sun Nov  1 01:23:03 2026 :: Log Alaric [29211]: steel
+Sun Nov  1 01:23:06 2026 :: Log Alaric [29211]: levi
+Sun Nov  1 01:23:07 2026 :: Log Alaric [29211]: iron
+Sun Nov  1 01:23:16 2026 :: Log Alaric [29211]: n
+Sun Nov  1 01:23:16 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Sun Nov  1 01:23:17 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 01:23:21 2026 :: Log Alaric [29212]: fi mad
+Sun Nov  1 01:23:27 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 01:23:33 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 01:23:39 2026 :: Log Alaric [29212]: who
+Sun Nov  1 01:23:39 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 01:23:45 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 01:23:53 2026 :: Log Alaric [29212]: flee
+Sun Nov  1 01:23:53 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29212
+Sun Nov  1 01:23:53 2026 :: Log Alaric [29211]: (refused) recla
+Sun Nov  1 01:23:55 2026 :: Log Alaric [29211]: recal
+Sun Nov  1 01:23:55 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29211
+Sun Nov  1 01:23:56 2026 :: Log Alaric [4207]: e
+Sun Nov  1 01:23:56 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Nov  1 01:23:57 2026 :: Log Alaric [4202]: n
+Sun Nov  1 01:23:57 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sun Nov  1 01:23:57 2026 :: Log Alaric [4203]: n
+Sun Nov  1 01:23:57 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sun Nov  1 01:23:58 2026 :: Log Alaric [4210]: where herm
+Sun Nov  1 01:23:59 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 01:25:37 2026 :: Log Alaric [4210]: affects off: iron skin
+Sun Nov  1 01:26:32 2026 :: Sock.sinaddr:  178.156.189.249
+Sun Nov  1 01:26:33 2026 :: EOF encountered on read.
