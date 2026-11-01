@@ -23224,3 +23224,69 @@
 1793491681	cmd	Alaric	54	4210	dresden_halloween.are	standing	16	0	-	sleep		You go to sleep.
 1793491879	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	47	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    272 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
 1793491882	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	47	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  
+1793491938	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	47	0	-	gainlist		Abilities for a level 54 monk of the monk guild: 25 learned, 9 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793491949	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	64	0	-	help	[fast	No help on that word.
+1793491951	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	64	0	-	help	fast	The fast healing skill improves wound healing rates, whether walking, resting, // or sleeping. It represents knowledge of healing herbs or just general // toughness and stamina.  Fast healing is checked every tick, and it is
+1793491961	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	64	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  
+1793492108	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	99	0	-	wake		You wake and stand up.
+1793492109	cmd	Alaric	54	4210	dresden_halloween.are	standing	99	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793492111	cmd	Alaric	54	4203	dresden_halloween.are	standing	99	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793492111	cmd	Alaric	54	4202	dresden_halloween.are	standing	99	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793492111	cmd	Alaric	54	4201	dresden_halloween.are	standing	99	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793492112	cmd	Alaric	54	2427	dresden_halloween.are	standing	99	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793492112	cmd	Alaric	54	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793492112	cmd	Alaric	54	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793492112	cmd	Alaric	54	2426	dresden_halloween.are	standing	99	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793492113	cmd	Alaric	54	2426	dresden_halloween.are	standing	99	0	-	open		Ok.
+1793492113	cmd	Alaric	54	9506	newthalo.are	standing	99	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793492113	cmd	Alaric	54	9522	newthalo.are	standing	99	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793492113	cmd	Alaric	54	9522	newthalo.are	standing	99	0	-	open		Ok.
+1793492114	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	run	n 9	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793492114	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	unlock	north	You lack the key.
+1793492114	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	open		It's locked.
+1793492114	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	north		The door is closed.
+1793492115	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	north		The door is closed.
+1793492115	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	west		Alas, you cannot go that way.
+1793492115	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	west		Alas, you cannot go that way.
+1793492115	cmd	Alaric	54	29003	korzath1.are	standing	99	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793492116	cmd	Alaric	54	29003	korzath1.are	standing	99	0	-	east		Alas, you cannot go that way.
+1793492116	cmd	Alaric	54	29002	korzath1.are	standing	99	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793492116	cmd	Alaric	54	29002	korzath1.are	standing	99	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793492120	cmd	Alaric	54	29002	korzath1.are	standing	99	0	-	levitate		You slowly rise up off the ground.
+1793492120	cmd	Alaric	54	29003	korzath1.are	standing	99	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793492120	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793492121	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	fists	gu	You attack in an all consuming fury! // Your fists of fury maims Guardian Knight! [-34] // Your fists of fury mauls Guardian Knight. [-21]
+1793492127	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury injures Guardian Knight. [-13] // Your fists of fury decimates Guardian Knight! [-25]
+1793492132	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS Guardian Knight! [-43] // Your fists of fury decimates Guardian Knight! [-28]
+1793492138	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury devastates Guardian Knight! [-31] // Your fists of fury injures Guardian Knight. [-13]
+1793492144	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	fists	gu	They aren't here.
+1793492144	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	fists		Who do you want to attack?
+1793492144	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	fists		Who do you want to attack?
+1793492145	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1793492145	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793492145	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	open		Ok.
+1793492145	cmd	Alaric	54	29201	korzath2.are	standing	99	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793492146	cmd	Alaric	54	29202	korzath2.are	standing	99	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793492146	cmd	Alaric	54	29203	korzath2.are	standing	99	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793492147	cmd	Alaric	54	29204	korzath2.are	standing	99	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793492147	cmd	Alaric	54	29205	korzath2.are	standing	99	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793492148	cmd	Alaric	54	29206	korzath2.are	standing	99	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793492148	cmd	Alaric	54	29207	korzath2.are	standing	99	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793492149	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793492150	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.
+1793492158	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-9] // Your fists of fury MANGLES a deranged madman! [-54]
+1793492164	cmd	Alaric	54	29208	korzath2.are	fighting	100	0	fight	fists	mad	You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-27] // Your fists of fury decimates a deranged madman! [-28]
+1793492170	cmd	Alaric	54	29208	korzath2.are	fighting	100	0	fight	fists	mad	You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-7] // Your fists of fury maims a deranged madman! [-36]
+1793492175	cmd	Alaric	54	29208	korzath2.are	fighting	100	0	fight	fists	mad	You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-101] // Your fists of fury devastates a deranged madman! [-29]
+1793492181	cmd	Alaric	54	29208	korzath2.are	fighting	100	0	fight	fists	mad	You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-37] // Your fists of fury MANGLES a deranged madman! [-54]
+1793492188	cmd	Alaric	54	29208	korzath2.are	fighting	96	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793492189	cmd	Alaric	54	29208	korzath2.are	fighting	96	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793492189	cmd	Alaric	54	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-38] // Your fists of fury *** DEVASTATES *** a deranged madman! [-67]
+1793492195	cmd	Alaric	54	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-8] // Your fists of fury mauls a deranged madman. [-24]
+1793492201	cmd	Alaric	54	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-17] // Your fists of fury devastates a deranged madman! [-30]
+1793492208	cmd	Alaric	54	29209	korzath2.are	standing	93	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793492209	cmd	Alaric	54	29209	korzath2.are	standing	93	0	-	fists	mad	They aren't here.
+1793492211	cmd	Alaric	54	29209	korzath2.are	standing	93	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-15] // Your fists of fury injures an Animated Skeleton. [-16]
+1793492216	cmd	Alaric	54	29209	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates an Animated Skeleton! [-32] // Your fists of fury maims an Animated Skeleton! [-34]
+1793492222	cmd	Alaric	54	29209	korzath2.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds an Animated Skeleton. [-19] // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-59]
+1793492228	cmd	Alaric	54	29209	korzath2.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Animated Skeleton. [-6] // Your fists of fury injures an Animated Skeleton. [-14]
