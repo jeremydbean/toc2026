@@ -24627,3 +24627,24 @@
 1793502526	cmd	Alaric	55	29212	korzath2.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a Shadowman! [-25] // Your fists of fury scratches a Shadowman. [-1]
 1793502532	cmd	Alaric	55	29212	korzath2.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a Shadowman. [-16] // Your fists of fury scratches a Shadowman. [-4]
 1793502538	cmd	Alaric	55	29212	korzath2.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a Shadowman. [-10] // Your fists of fury scratches a Shadowman. [-1]
+1793502544	cmd	Alaric	55	29212	korzath2.are	standing	61	0	-	fists		Who do you want to attack?
+1793502544	cmd	Alaric	55	29212	korzath2.are	standing	61	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793502546	cmd	Alaric	55	29212	korzath2.are	standing	61	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-39] // Your fists of fury *** DEMOLISHES *** a deranged madman! [-58]
+1793502552	cmd	Alaric	55	29212	korzath2.are	fighting	49	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a deranged madman! [-29] // Your fists of fury injures a deranged madman. [-13]
+1793502558	cmd	Alaric	55	29212	korzath2.are	fighting	32	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a deranged madman. [-21] // Your fists of fury MANGLES a deranged madman! [-53]
+1793502564	cmd	Alaric	55	29214	korzath2.are	fighting	11	0	fight	flee		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1793502564	cmd	Alaric	55	29214	korzath2.are	standing	11	0	-	flee		You aren't fighting anyone.
+1793502565	cmd	Alaric	55	4207	dresden_halloween.are	standing	11	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793502566	cmd	Alaric	55	4202	dresden_halloween.are	standing	11	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793502567	cmd	Alaric	55	4203	dresden_halloween.are	standing	11	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793502567	cmd	Alaric	55	4210	dresden_halloween.are	standing	11	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793502568	cmd	Alaric	55	4210	dresden_halloween.are	standing	11	0	-	where	herm	You didn't find any herm.
+1793502569	cmd	Alaric	55	4210	dresden_halloween.are	standing	11	0	-	sleep		You go to sleep.
+1793502581	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	11	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    275 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793502753	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	48	0	-	inventory		You are carrying: //      a diamond key // (23) guano
+1793502756	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	48	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793502770	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	48	0	-	inventory		You are carrying: //      a diamond key // (23) guano
+1793502771	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	48	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    275 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793502790	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	48	0	-	affect		You are affected by: // Skill: 'ego whip' modifies strength by -5 for 7 hours. // Skill: 'levitate' for 1 hours.
+1793502805	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	63	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  
+1793502835	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	63	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    275 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
