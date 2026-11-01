@@ -24582,3 +24582,48 @@
 1793502043	refused	Alaric	55	4210	dresden_halloween.are	sleeping	69	0	-	(unknown)		Huh?
 1793502044	refused	Alaric	55	4210	dresden_halloween.are	sleeping	69	0	-	(unknown)		Huh?
 1793502044	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	69	0	-	affect		You are affected by: // Skill: 'iron skin' modifies armor class by -26 for 1 hours. // Skill: 'steel fist' modifies damage roll by 13 for 3 hours.
+1793502467	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1793502467	cmd	Alaric	55	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793502468	cmd	Alaric	55	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793502469	cmd	Alaric	55	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793502469	cmd	Alaric	55	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793502469	cmd	Alaric	55	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793502469	cmd	Alaric	55	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793502470	cmd	Alaric	55	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793502470	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793502470	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793502470	cmd	Alaric	55	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793502471	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793502471	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	open		Ok.
+1793502471	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	run	n 9	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793502471	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793502472	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	open		Ok.
+1793502472	cmd	Alaric	55	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793502472	cmd	Alaric	55	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793502472	cmd	Alaric	55	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793502473	cmd	Alaric	55	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793502473	cmd	Alaric	55	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793502473	cmd	Alaric	55	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793502473	cmd	Alaric	55	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793502476	cmd	Alaric	55	29207	korzath2.are	standing	100	0	-	steel		You lost your concentration.
+1793502477	cmd	Alaric	55	29207	korzath2.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793502481	cmd	Alaric	55	29207	korzath2.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793502482	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793502482	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	iron		Your skin hardens.
+1793502490	cmd	Alaric	55	29209	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793502492	cmd	Alaric	55	29209	korzath2.are	standing	100	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury grazes an Animated Skeleton. [-7] // Your fists of fury MANGLES an Animated Skeleton! [-54]
+1793502498	cmd	Alaric	55	29209	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES an Animated Skeleton! [-55] // Your fists of fury DISEMBOWELS an Animated Skeleton! [-41]
+1793502504	cmd	Alaric	55	29209	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-57] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-65]
+1793502510	cmd	Alaric	55	29209	korzath2.are	standing	92	0	-	fists		Who do you want to attack?
+1793502510	cmd	Alaric	55	29209	korzath2.are	standing	92	0	-	fists		Who do you want to attack?
+1793502511	cmd	Alaric	55	29210	korzath2.are	standing	92	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793502512	cmd	Alaric	55	29210	korzath2.are	standing	92	0	-	kill	sk	An Animated Skeleton parries your attack. // An Animated Skeleton parries your attack.
+1793502515	cmd	Alaric	55	29210	korzath2.are	standing	92	0	-	fists		Who do you want to attack?
+1793502516	cmd	Alaric	55	29209	korzath2.are	standing	92	0	-	south		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793502517	cmd	Alaric	55	29209	korzath2.are	standing	92	0	-	kill	sk	An Animated Skeleton parries your attack. // Your punch <<< ERADICATES >>> an Animated Skeleton! [-195] // An Animated Skeleton is DEAD!!
+1793502522	cmd	Alaric	55	29210	korzath2.are	standing	92	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793502523	cmd	Alaric	55	29211	korzath2.are	standing	92	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793502524	cmd	Alaric	55	29212	korzath2.are	standing	92	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793502526	cmd	Alaric	55	29212	korzath2.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a Shadowman! [-25] // Your fists of fury scratches a Shadowman. [-1]
+1793502532	cmd	Alaric	55	29212	korzath2.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a Shadowman. [-16] // Your fists of fury scratches a Shadowman. [-4]
+1793502538	cmd	Alaric	55	29212	korzath2.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a Shadowman. [-10] // Your fists of fury scratches a Shadowman. [-1]
