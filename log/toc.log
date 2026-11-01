@@ -232706,3 +232706,37 @@ Sun Nov  1 01:47:55 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from
 Sun Nov  1 01:47:58 2026 :: Log Alaric [29209]: fi sk
 Sun Nov  1 01:48:04 2026 :: Log Alaric [29209]: fi
 Sun Nov  1 01:48:10 2026 :: Log Alaric [29209]: fi
+Sun Nov  1 01:48:15 2026 :: Log Alaric [29209]: fi
+Sun Nov  1 01:48:21 2026 :: Log Alaric [29209]: fi
+Sun Nov  1 01:48:31 2026 :: Log Alaric [29209]: n
+Sun Nov  1 01:48:31 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Sun Nov  1 01:48:33 2026 :: Log Alaric [29210]: fi sk
+Sun Nov  1 01:48:34 2026 :: Log Alaric [29210]: affects off: iron skin
+Sun Nov  1 01:48:38 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Sun Nov  1 01:48:38 2026 :: Log Alaric [29210]: coin +4 platinum
+Sun Nov  1 01:48:38 2026 :: Log Alaric [29210]: coin +20 silver
+Sun Nov  1 01:48:38 2026 :: Log Alaric [29210]: coin +27 copper
+Sun Nov  1 01:48:38 2026 :: Log Alaric [29210]: coin +11 gold
+Sun Nov  1 01:48:42 2026 :: Log Alaric [29210]: recal
+Sun Nov  1 01:48:42 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29210
+Sun Nov  1 01:48:42 2026 :: Log Alaric [4207]: recal
+Sun Nov  1 01:48:42 2026 :: Log Alaric [4207]: recal
+Sun Nov  1 01:48:43 2026 :: Log Alaric [4207]: w
+Sun Nov  1 01:48:43 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Nov  1 01:48:43 2026 :: Log Alaric [4208]: e
+Sun Nov  1 01:48:43 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Nov  1 01:48:44 2026 :: Log Alaric [4207]: e
+Sun Nov  1 01:48:44 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Nov  1 01:48:44 2026 :: Log Alaric [4202]: n
+Sun Nov  1 01:48:44 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sun Nov  1 01:48:44 2026 :: Log Alaric [4203]: n
+Sun Nov  1 01:48:44 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sun Nov  1 01:48:45 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 01:48:46 2026 :: Log Alaric [4210]: sc
+Sun Nov  1 01:50:56 2026 :: Log Alaric [4210]: l
+Sun Nov  1 01:51:55 2026 :: Sock.sinaddr:  178.156.185.127
+Sun Nov  1 01:51:55 2026 :: EOF encountered on read.
+Sun Nov  1 01:52:52 2026 :: Treasure goblin: vanished from room 1550 (A Damp Hallway, gnome.are) (too long in one area).
+Sun Nov  1 01:53:03 2026 :: Log Alaric [4210]: eq
+Sun Nov  1 01:53:06 2026 :: Log Alaric [4210]: i
+Sun Nov  1 01:53:12 2026 :: Black market: the dealer vanished from room 9119 (Treacherous Cliff., dylan.are) (too long in one area).
