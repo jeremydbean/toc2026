@@ -24996,3 +24996,313 @@
 1793538509	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	17	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
 1793538511	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	4	-	aquest	gamble no	Wise choice. You safely collect 80 quest points.
 1793538514	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 6785
+1793538618	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	group		Trentlin's group: // [50 W] Trentlin          894/ 894 hp 1445/1445 mana  143/ 350 mv 112503 xp
+1793538621	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793538622	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793538625	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
+1793538629	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	15	-	aquest	daily request	You ask Questor Thews for the day's work. // Questor Thews tells you 'A prized artifact - The Journal of Trinidad - has gone missing!' // Questor Thews tells you 'Find it and I'll reward you handsomely in quest points!'
+1793538634	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793538636	cmd	Trentlin	50	2403	dresden_halloween.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1793538636	cmd	Trentlin	50	2420	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1793538637	cmd	Alaric	55	4208	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1793538637	cmd	Trentlin	50	2421	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1793538637	cmd	Trentlin	50	2422	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1793538637	cmd	Alaric	55	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793538637	cmd	Trentlin	50	2423	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a
+1793538637	cmd	Trentlin	50	2424	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.
+1793538638	cmd	Trentlin	50	2425	dresden_halloween.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.
+1793538638	cmd	Trentlin	50	2426	dresden_halloween.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793538638	cmd	Trentlin	50	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1793538638	cmd	Trentlin	50	2440	dresden_halloween.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793538640	cmd	Trentlin	50	3503	midennir_halloween.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of Dresden.  A line of carved pumpkins marks // the city boundary, their flames burning in no wind.  To the east lies the
+1793538640	cmd	Trentlin	50	3502	midennir_halloween.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  A crow sits at the center of the
+1793538640	cmd	Trentlin	50	5261	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.
+1793538641	cmd	Alaric	55	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (23) guano // ( 2) (Glowing) glowing moss
+1793538643	cmd	Alaric	55	4208	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793538644	cmd	Trentlin	50	5260	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.
+1793538645	cmd	Alaric	55	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793538645	cmd	Trentlin	50	5259	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.
+1793538645	cmd	Trentlin	50	5258	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.
+1793538645	cmd	Alaric	55	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793538645	cmd	Trentlin	50	5258	oldthalo.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793538645	cmd	Trentlin	50	5257	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest //   A side trail here leads from the dwarf forest.  It is definitely drier // and hotter here.  The trail continues to the west, and to the east, you see
+1793538646	cmd	Alaric	55	4203	dresden_halloween.are	standing	100	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793538646	cmd	Trentlin	50	5256	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest //   The trail ends here, with short, dry stumps of trees all around you. // To the west, you can see the ruins of a huge city.  Something about it gives
+1793538646	cmd	Alaric	55	4210	dresden_halloween.are	standing	100	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793538646	cmd	Trentlin	50	5200	oldthalo.are	standing	100	0	-	west		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates have been forced open and have rusted in place. A hollow
+1793538647	cmd	Trentlin	50	5201	oldthalo.are	standing	100	0	-	west		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending.  A dark alley
+1793538647	cmd	Alaric	55	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793538647	cmd	Alaric	55	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793538647	cmd	Trentlin	50	5201	oldthalo.are	standing	100	0	-	exits		Obvious exits: // North - A back alley // East  - The Grand Gate of Thalos
+1793538648	cmd	Alaric	55	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793538648	cmd	Alaric	55	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793538648	cmd	Alaric	55	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793538648	cmd	Alaric	55	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793538649	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793538649	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	open		It's already open.
+1793538649	cmd	Alaric	55	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793538649	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793538650	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	open		Ok.
+1793538650	cmd	Trentlin	50	5239	oldthalo.are	standing	100	0	-	north		A back alley //   A narrow back alley goes south to main street and north towards // a watchtower. A mass of howls catches you of guard.
+1793538650	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	run	n 9	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793538650	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	unlock	north	You lack the key.
+1793538650	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	open		It's locked.
+1793538650	cmd	Trentlin	50	5240	oldthalo.are	standing	100	0	-	north		A back alley //   A narrow back alley leads north to one of the city watchtowers // and south towards main street. To the west is a doorway to a small
+1793538651	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	north		The door is closed.
+1793538651	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	north		The door is closed.
+1793538651	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793538651	cmd	Trentlin	50	5241	oldthalo.are	standing	100	0	-	north		Under a watchtower //   You stand under a tall watchtower. Narrow back alleys lead west and // south and a very weak looking ladder leads up into the tower.
+1793538651	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793538652	cmd	Alaric	55	29003	korzath1.are	standing	100	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793538652	cmd	Alaric	55	29003	korzath1.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793538652	cmd	Alaric	55	29002	korzath1.are	standing	100	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793538652	cmd	Trentlin	50	5240	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow back alley leads north to one of the city watchtowers // and south towards main street. To the west is a doorway to a small
+1793538652	cmd	Trentlin	50	5239	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow back alley goes south to main street and north towards // a watchtower. A mass of howls catches you of guard.
+1793538653	cmd	Trentlin	50	5201	oldthalo.are	standing	100	0	-	south		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending.  A dark alley
+1793538653	cmd	Trentlin	50	5255	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A ruined building is to the west.
+1793538653	cmd	Trentlin	50	5253	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow alley leads south to one of the city watchtowers. // [Exits: north south]
+1793538654	cmd	Trentlin	50	5252	oldthalo.are	standing	100	0	-	south		Under a ruined watchtower //   You stand at the base of a tall watchtower built to protect the city // from invaders. From the looks of things, it did not do a good job.
+1793538654	cmd	Trentlin	50	5252	oldthalo.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793538655	cmd	Trentlin	50	5251	oldthalo.are	standing	100	0	-	west		A back alley //   A narrow alley leads east to a wider street and west to one of // the city watchtowers.
+1793538657	cmd	Alaric	55	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793538657	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793538657	cmd	Trentlin	50	5214	oldthalo.are	standing	100	0	-	west		A side street //   You are at the end of a long street leading to the center of the city. // A long dark alley runs east and west.
+1793538658	cmd	Trentlin	50	5218	oldthalo.are	standing	100	0	-	west		A back alley //   A narrow alley leads east to a wider street and west to one of // the city watchtowers.
+1793538659	cmd	Trentlin	50	5215	oldthalo.are	standing	100	0	-	west		Under a ruined watchtower //   You stand at the base of a tall watchtower built to protect the city // from invaders. From the looks of things, it did not do a good job.
+1793538660	cmd	Trentlin	50	5215	oldthalo.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793538660	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793538661	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793538661	cmd	Trentlin	50	5216	oldthalo.are	standing	100	0	-	north		A back alley //   This alley leads to the rear of what used to be a meat stand. You wince // at the stench. South is one of the city watchtowers.
+1793538661	cmd	Trentlin	50	5217	oldthalo.are	standing	100	0	-	north		The meat stand //   A large stand has been set up here with metal hooks and wooden racks // in the background. Hanging on the hooks are very small scraps of meat
+1793538662	cmd	Trentlin	50	5216	oldthalo.are	standing	100	0	-	south		A back alley //   This alley leads to the rear of what used to be a meat stand. You wince // at the stench. South is one of the city watchtowers.
+1793538664	cmd	Trentlin	50	5216	oldthalo.are	standing	100	0	-	get	jour	You get The Journal of Trinidad.
+1793538665	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793538665	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793538666	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	fists	guard	You attack in an all consuming fury! // Your fists of fury scratches Guardian Knight. [-1] // Your fists of fury wounds Guardian Knight. [-19]
+1793538667	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	refresh	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)
+1793538670	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793538671	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793538671	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793538671	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793538671	cmd	Alaric	55	29004	korzath1.are	fighting	100	0	fight	fists	guard	You attack in an all consuming fury! // Your fists of fury devastates Guardian Knight! [-31] // Your fists of fury injures Guardian Knight. [-16]
+1793538671	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793538672	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793538672	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793538672	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793538672	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793538673	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793538674	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793538674	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793538674	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793538677	cmd	Alaric	55	29004	korzath1.are	fighting	96	0	fight	fists	guard	You attack in an all consuming fury! // Your fists of fury devastates Guardian Knight! [-32] // Your fists of fury wounds Guardian Knight. [-18]
+1793538677	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	17	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Your daily task is done. Well worked!'
+1793538680	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	10	-	aquest	daily request	You ask Questor Thews for the day's work. // Questor Thews tells you 'Security threatens the peace of the realm!' // Questor Thews tells you 'Deal with them before 3 more innocents suffer!'
+1793538682	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793538683	cmd	Alaric	55	29004	korzath1.are	fighting	97	0	fight	fists	guard	You attack in an all consuming fury! // Your fists of fury grazes Guardian Knight. [-6] // Your fists of fury wounds Guardian Knight. [-19]
+1793538685	cmd	Trentlin	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793538686	cmd	Trentlin	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793538686	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	south		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793538686	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	west		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793538686	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793538687	cmd	Trentlin	50	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793538687	cmd	Trentlin	50	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax
+1793538687	cmd	Trentlin	50	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring
+1793538687	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance
+1793538689	cmd	Alaric	55	29004	korzath1.are	fighting	97	0	fight	fists	guard	You attack in an all consuming fury! // Your fists of fury decimates Guardian Knight! [-27] // Your fists of fury decimates Guardian Knight! [-27]
+1793538689	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538690	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign
+1793538691	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538692	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	scan		You don't see anything near you.
+1793538692	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538693	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	scan		You don't see anything near you.
+1793538694	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	north		The door is closed.
+1793538694	cmd	Alaric	55	29004	korzath1.are	fighting	97	0	fight	get	key cor	That's not a container.
+1793538695	cmd	Alaric	55	29004	korzath1.are	fighting	97	0	fight	unlock	north	You can't do that, your fighting!
+1793538695	cmd	Alaric	55	29004	korzath1.are	fighting	97	0	fight	open		It's locked.
+1793538695	refused	Alaric	55	29004	korzath1.are	fighting	97	0	fight	north		No way!  You are still fighting!
+1793538695	refused	Alaric	55	29004	korzath1.are	fighting	97	0	fight	north		No way!  You are still fighting!
+1793538696	refused	Alaric	55	29004	korzath1.are	fighting	97	0	fight	west		No way!  You are still fighting!
+1793538696	refused	Alaric	55	29004	korzath1.are	fighting	97	0	fight	west		No way!  You are still fighting!
+1793538697	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	open	north	It's locked.
+1793538697	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	north		The door is closed.
+1793538698	cmd	Alaric	55	29004	korzath1.are	standing	97	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1793538700	cmd	Alaric	55	29004	korzath1.are	standing	97	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793538701	cmd	Alaric	55	29004	korzath1.are	standing	97	0	-	open		Ok.
+1793538701	cmd	Alaric	55	29201	korzath2.are	standing	97	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793538701	cmd	Alaric	55	29202	korzath2.are	standing	97	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793538701	cmd	Alaric	55	29203	korzath2.are	standing	97	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793538702	cmd	Alaric	55	29204	korzath2.are	standing	97	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793538702	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	doorbash	bash north	You slam into the door and it shatters!! // You have become better at door bash!
+1793538703	cmd	Alaric	55	29205	korzath2.are	standing	97	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793538703	cmd	Alaric	55	29206	korzath2.are	standing	97	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793538704	cmd	Alaric	55	29207	korzath2.are	standing	97	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793538705	cmd	Alaric	55	29208	korzath2.are	standing	97	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793538705	cmd	Alaric	55	29209	korzath2.are	standing	97	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793538707	cmd	Alaric	55	29209	korzath2.are	standing	97	0	-	iron		Your skin hardens.
+1793538707	cmd	Trentlin	50	15025	campus.are	standing	100	0	-	north		Victoria Hall //   This is a locked room with no method of entry... yet... The main // reason for this is the high number of already existing dormitories
+1793538710	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	south		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538710	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	south		Leonard Hall Lobby //   This is the lobby of the all-males residence.  To the north you can see // Campus Crescent.  To both the east and west you can see locked doors.
+1793538712	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	open	east	It's locked.
+1793538714	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	open	west	It's locked.
+1793538714	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	north		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538714	cmd	Trentlin	50	15025	campus.are	standing	100	0	-	north		Victoria Hall //   This is a locked room with no method of entry... yet... The main // reason for this is the high number of already existing dormitories
+1793538715	cmd	Trentlin	50	15025	campus.are	standing	100	0	-	get	key	You get THE Key to Vic.
+1793538715	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	south		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538716	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	south		Leonard Hall Lobby //   This is the lobby of the all-males residence.  To the north you can see // Campus Crescent.  To both the east and west you can see locked doors.
+1793538717	cmd	Alaric	55	29209	korzath2.are	standing	97	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS an Animated Skeleton! [-44] // Your fists of fury injures an Animated Skeleton. [-15]
+1793538717	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	unlock	east	You lack the key.
+1793538721	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	drop	key	You drop THE Key to Vic.
+1793538723	cmd	Alaric	55	29209	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-47] // Your fists of fury wounds an Animated Skeleton. [-19]
+1793538723	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	doorbash	bash east	You slam into the door and it shatters!!
+1793538728	cmd	Alaric	55	29209	korzath2.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates an Animated Skeleton! [-32] // Your fists of fury scratches an Animated Skeleton. [-3]
+1793538728	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	doorbash	bash west	You slam into the door and it shatters!!
+1793538732	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	exits		Obvious exits: // North - Campus Crescent // East  - East Stairwell
+1793538734	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	scan		You don't see anything near you.
+1793538734	cmd	Alaric	55	29209	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Animated Skeleton. [-5] // Your fists of fury wounds an Animated Skeleton. [-19]
+1793538735	cmd	Trentlin	50	15194	campus.are	standing	100	0	-	east		East Stairwell //   This stairwell leads up into the heights of Leonard Hall. // [Exits: west up]
+1793538736	cmd	Trentlin	50	15196	campus.are	standing	100	0	-	up		Junction //   This hallway leads north and south and there is a stairwell leading // down in the place where the western wall should be found.
+1793538737	cmd	Trentlin	50	15202	campus.are	standing	100	0	-	south		Hallway //   This hallway grinds to a halt here.  The main reason it halts is because // there is a room to the south and a door to the east.  The hallway grinds
+1793538739	cmd	Trentlin	50	15203	campus.are	standing	100	0	-	south		Smithville //   This room is a replica of Smithville. // In a really, really small form that is.
+1793538740	cmd	Alaric	55	29209	korzath2.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES an Animated Skeleton! [-51] // Your fists of fury devastates an Animated Skeleton! [-31]
+1793538741	cmd	Trentlin	50	15202	campus.are	standing	100	0	-	north		Hallway //   This hallway grinds to a halt here.  The main reason it halts is because // there is a room to the south and a door to the east.  The hallway grinds
+1793538742	cmd	Trentlin	50	15196	campus.are	standing	100	0	-	north		Junction //   This hallway leads north and south and there is a stairwell leading // down in the place where the western wall should be found.
+1793538743	cmd	Trentlin	50	15194	campus.are	standing	100	0	-	down		East Stairwell //   This stairwell leads up into the heights of Leonard Hall. // [Exits: west up]
+1793538743	cmd	Trentlin	50	15026	campus.are	standing	100	0	-	west		Leonard Hall Lobby //   This is the lobby of the all-males residence.  To the north you can see // Campus Crescent.  To both the east and west you can see locked doors.
+1793538744	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	north		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538746	cmd	Alaric	55	29209	korzath2.are	standing	81	0	-	fists		Who do you want to attack?
+1793538746	cmd	Alaric	55	29209	korzath2.are	standing	81	0	-	who		[55 Dwarf   Mastr ] Alaric. // [50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 2
+1793538746	cmd	Alaric	55	29209	korzath2.are	standing	81	0	-	fists		Who do you want to attack?
+1793538750	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	where	security	Security                     Mob Chute A
+1793538752	cmd	Trentlin	50	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538753	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793538754	cmd	Alaric	55	29209	korzath2.are	standing	81	0	-	look		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793538754	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793538755	cmd	Trentlin	50	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793538755	cmd	Alaric	55	29210	korzath2.are	standing	81	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793538756	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1793538756	cmd	Alaric	55	29210	korzath2.are	standing	81	0	-	kill	sk	Your punch *** DEVASTATES *** an Animated Skeleton! [-72] // An Animated Skeleton is DEAD!! // You receive 322 experience points (161 of them rested).
+1793538757	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793538757	cmd	Trentlin	50	15024	campus.are	standing	100	0	-	north		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many
+1793538758	cmd	Trentlin	50	15150	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.
+1793538760	cmd	Trentlin	50	15150	campus.are	standing	100	0	-	exits		Obvious exits: // North - The Ghetto // East  - Gael House
+1793538762	cmd	Alaric	55	29211	korzath2.are	standing	81	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793538764	cmd	Alaric	55	29212	korzath2.are	standing	81	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793538765	cmd	Alaric	55	29212	korzath2.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a deranged madman! [-34] // Your fists of fury injures a deranged madman. [-16]
+1793538771	cmd	Alaric	55	29212	korzath2.are	fighting	47	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-6] // Your fists of fury MANGLES a deranged madman! [-53]
+1793538777	cmd	Alaric	55	29212	korzath2.are	fighting	35	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-6] // Your fists of fury injures a deranged madman. [-14]
+1793538786	cmd	Alaric	55	29211	korzath2.are	fighting	27	0	fight	flee		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793538787	cmd	Alaric	55	4207	dresden_halloween.are	standing	27	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793538788	cmd	Alaric	55	4202	dresden_halloween.are	standing	27	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793538789	cmd	Alaric	55	4203	dresden_halloween.are	standing	27	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793538789	cmd	Alaric	55	4210	dresden_halloween.are	standing	27	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793538790	cmd	Alaric	55	4210	dresden_halloween.are	standing	27	0	-	sleep		You go to sleep.
+1793538825	cmd	Trentlin	50	15024	campus.are	standing	100	0	-	south		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many
+1793538827	cmd	Trentlin	50	15150	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.
+1793538827	cmd	Trentlin	50	15149	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.
+1793538827	cmd	Trentlin	50	15148	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.
+1793538828	cmd	Trentlin	50	15147	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.
+1793538828	cmd	Trentlin	50	15141	campus.are	standing	100	1	-	north		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.
+1793538829	cmd	Trentlin	50	15140	campus.are	standing	100	0	-	north		The Ghetto //   The road would normally run north-south, but the way north is blocked // by a small obstacle... An overturned policemobile.  There is a house
+1793538830	cmd	Trentlin	50	15141	campus.are	standing	100	0	-	south		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.
+1793538830	cmd	Trentlin	50	15155	campus.are	standing	100	0	-	west		Boss House //   Papers and calculators litter the room, making an otherwise neat house, // messy.
+1793538832	cmd	Trentlin	50	15141	campus.are	standing	100	0	-	east		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.
+1793538832	cmd	Trentlin	50	15147	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.
+1793538833	cmd	Trentlin	50	15148	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.
+1793538833	cmd	Trentlin	50	15149	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.
+1793538834	cmd	Trentlin	50	15150	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.
+1793538834	cmd	Trentlin	50	15024	campus.are	standing	100	0	-	south		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many
+1793538835	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793538835	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1793538836	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793538837	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793538839	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	west		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793538840	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1793538842	cmd	Trentlin	50	15014	campus.are	standing	100	0	-	east		Union Street //   This non-descript road segment runs east-west between University Avenue // and Division Road.  To the north is the student centre.
+1793538844	cmd	Trentlin	50	15037	campus.are	standing	100	0	-	north		The Central Annex //   This nicely decorated, cavernous room resembles a large meeting hall. // To the east you can see the Infobank, and to the west, you can see
+1793538846	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	north		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793538847	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	west		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793538849	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793538849	cmd	Trentlin	50	15070	campus.are	standing	100	0	-	north		The Post Office //   This seems to be the standard post office given to any university by // the wonderful Nedserd government.  You can tell that it is a university
+1793538851	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	south		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793538852	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall
+1793538858	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	west		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793538858	cmd	Trentlin	50	15037	campus.are	standing	100	0	-	south		The Central Annex //   This nicely decorated, cavernous room resembles a large meeting hall. // To the east you can see the Infobank, and to the west, you can see
+1793538859	cmd	Trentlin	50	15067	campus.are	standing	100	0	-	east		The Infobank //   This is the Infobank of the university.  From previous experience you // realize that any information will be grossly inaccurate, if truthful
+1793538860	cmd	Trentlin	50	15067	campus.are	standing	100	0	-	down		The plank is closed.
+1793538861	cmd	Trentlin	50	15067	campus.are	standing	100	0	-	open	down	Ok.
+1793538862	cmd	Trentlin	50	15071	campus.are	standing	100	0	-	down		The Special Hidden Room //   This room is completely empty except for the things you can see in it. // The only thing of real importance you can see is the plank in the
+1793538865	cmd	Trentlin	50	15067	campus.are	standing	100	0	-	up		The Infobank //   This is the Infobank of the university.  From previous experience you // realize that any information will be grossly inaccurate, if truthful
+1793538865	cmd	Trentlin	50	15037	campus.are	standing	100	0	-	west		The Central Annex //   This nicely decorated, cavernous room resembles a large meeting hall. // To the east you can see the Infobank, and to the west, you can see
+1793538865	cmd	Trentlin	50	15014	campus.are	standing	100	0	-	south		Union Street //   This non-descript road segment runs east-west between University Avenue // and Division Road.  To the north is the student centre.
+1793538866	cmd	Trentlin	50	15015	campus.are	standing	100	0	-	east		Union Street //   This non-descript road segment runs east-west between University Avenue // and Division Road.  There are buildings on either side of the street.
+1793538868	cmd	Trentlin	50	15015	campus.are	standing	100	0	-	kill	sec	You miss Security. // You MANGLE Security! // You MANGLE Security!
+1793538868	cmd	Alaric	55	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793538869	cmd	Alaric	55	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793538869	cmd	Alaric	55	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793538869	cmd	Alaric	55	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793538869	cmd	Alaric	55	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793538870	cmd	Alaric	55	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793538870	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793538870	cmd	Alaric	55	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793538870	cmd	Alaric	55	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793538871	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793538871	cmd	Alaric	55	9522	newthalo.are	standing	100	0	-	open		Ok.
+1793538871	cmd	Trentlin	50	15015	campus.are	fighting	100	8	fight	smite		Your smite <<< ERADICATES >>> Security! // Your smite <<< ERADICATES >>> Security! // Security is DEAD!!
+1793538871	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	run	n 9	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793538871	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793538872	cmd	Alaric	55	29004	korzath1.are	standing	100	0	-	open		Ok.
+1793538872	cmd	Alaric	55	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793538872	cmd	Alaric	55	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793538872	cmd	Alaric	55	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793538873	cmd	Alaric	55	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793538873	cmd	Alaric	55	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793538873	cmd	Alaric	55	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793538873	cmd	Alaric	55	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793538875	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793538875	cmd	Alaric	55	29209	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793538878	cmd	Alaric	55	29209	korzath2.are	standing	100	0	-	iron		Your skin hardens.
+1793538878	cmd	Trentlin	50	15014	campus.are	standing	100	0	-	west		Union Street //   This non-descript road segment runs east-west between University Avenue // and Division Road.  To the north is the student centre.
+1793538878	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	west		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1793538879	cmd	Trentlin	50	15011	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793538879	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793538881	cmd	Trentlin	50	15032	campus.are	standing	100	0	-	west		Entrance To Ellis Hall //   This entrance is covered in finely wrought carvings depicting great // engineering events (like the construction of this area) that have taken
+1793538881	cmd	Trentlin	50	15074	campus.are	standing	100	0	-	west		Ellis Hall Lobby //   This large room seems to serve as a display area for neat engineering // devices and awards.  There are four exits.  The east exit will take you
+1793538881	cmd	Trentlin	50	15077	campus.are	standing	100	0	-	west		Hallway //   This non-descript hallway has an exit to the east and one to the west. // Unfortunately, you can't see what the exits lead to.  Just before you
+1793538882	cmd	Trentlin	50	15078	campus.are	standing	100	0	-	west		The Back Exit //   This corridor comes to a sudden halt here as a door seems to be blocking // the way to the west.  If you were to go east, though, you would not have
+1793538882	cmd	Trentlin	50	15078	campus.are	standing	100	0	-	west		The door is closed.
+1793538883	cmd	Trentlin	50	15077	campus.are	standing	100	0	-	east		Hallway //   This non-descript hallway has an exit to the east and one to the west. // Unfortunately, you can't see what the exits lead to.  Just before you
+1793538884	cmd	Trentlin	50	15074	campus.are	standing	100	0	-	east		Ellis Hall Lobby //   This large room seems to serve as a display area for neat engineering // devices and awards.  There are four exits.  The east exit will take you
+1793538885	cmd	Trentlin	50	15032	campus.are	standing	100	0	-	east		Entrance To Ellis Hall //   This entrance is covered in finely wrought carvings depicting great // engineering events (like the construction of this area) that have taken
+1793538885	cmd	Trentlin	50	15032	campus.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793538886	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	east		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793538886	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793538888	cmd	Trentlin	50	15003	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538888	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538888	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793538889	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign
+1793538889	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793538889	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793538889	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793538890	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793538890	cmd	Trentlin	50	3795	school.are	standing	100	0	-	enter	por	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time
+1793538891	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793538892	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793538892	cmd	Alaric	55	29210	korzath2.are	standing	100	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793538892	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793538892	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793538893	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793538893	cmd	Alaric	55	29211	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793538893	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793538893	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793538893	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793538894	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793538894	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793538894	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793538894	cmd	Alaric	55	29212	korzath2.are	standing	100	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793538894	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793538896	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	aquest	complete	There is no questmaster here.  Questor Thews waits at the very top of the great oak: // climb up from the Oak Tree Square.  AQUEST INFO works anywhere.
+1793538896	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793538897	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1793538899	cmd	Alaric	55	29212	korzath2.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-51] // Your fists of fury MUTILATES a deranged madman! [-38]
+1793538899	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	15	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Your daily task is done. Well worked!' // Questor Thews says 'Here's your 121p 68g 9s - and 1 daily point.'
+1793538901	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	11	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Trentlin!' // Questor Thews tells you 'A prized artifact - The Amulet of Soulcrusher - has gone missing!'
