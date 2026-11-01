@@ -25411,3 +25411,38 @@
 1793539484	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.
 1793539492	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a deranged madman! [-41] // Your fists of fury hits a deranged madman. [-9]
 1793539498	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-8] // Your fists of fury DISMEMBERS a deranged madman! [-47]
+1793539503	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-10] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-119]
+1793539509	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-50] // Your fists of fury wounds a deranged madman. [-18]
+1793539515	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-11] // Your fists of fury DISEMBOWELS a deranged madman! [-43]
+1793539521	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a deranged madman. [-13] // Your fists of fury MANGLES a deranged madman! [-54]
+1793539526	cmd	Alaric	55	29208	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a deranged madman! [-47] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-86]
+1793539532	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793539533	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793539533	cmd	Alaric	55	29208	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793539533	cmd	Alaric	55	29209	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793539535	cmd	Alaric	55	29209	korzath2.are	standing	100	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ an Animated Skeleton! [-99] // Your fists of fury DISEMBOWELS an Animated Skeleton! [-41]
+1793539541	cmd	Alaric	55	29209	korzath2.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-47] // Your fists of fury MASSACRES an Animated Skeleton! [-50]
+1793539547	cmd	Alaric	55	29209	korzath2.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-47] // Your fists of fury decimates an Animated Skeleton! [-25]
+1793539552	cmd	Alaric	55	29209	korzath2.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates an Animated Skeleton! [-32] // Your fists of fury DISEMBOWELS an Animated Skeleton! [-42]
+1793539558	cmd	Alaric	55	29209	korzath2.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ an Animated Skeleton! [-83] // Your fists of fury DISEMBOWELS an Animated Skeleton! [-41]
+1793539564	cmd	Alaric	55	29209	korzath2.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-75] // An Animated Skeleton is DEAD!!
+1793539570	cmd	Alaric	55	29209	korzath2.are	standing	70	0	-	fists		Who do you want to attack?
+1793539570	cmd	Alaric	55	29209	korzath2.are	standing	70	0	-	fists		Who do you want to attack?
+1793539570	cmd	Alaric	55	29209	korzath2.are	standing	70	0	-	fists		Who do you want to attack?
+1793539571	cmd	Alaric	55	29210	korzath2.are	standing	70	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793539573	cmd	Alaric	55	29210	korzath2.are	standing	72	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.
+1793539580	cmd	Alaric	55	29211	korzath2.are	standing	72	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793539582	cmd	Alaric	55	29212	korzath2.are	standing	72	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793539583	cmd	Alaric	55	29212	korzath2.are	fighting	67	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES an insane lieutenant! [-56] // Your fists of fury mauls an insane lieutenant. [-23]
+1793539589	cmd	Alaric	55	29212	korzath2.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an insane lieutenant! [-26] // Your fists of fury hits an insane lieutenant. [-10]
+1793539595	cmd	Alaric	55	29212	korzath2.are	fighting	50	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an insane lieutenant! [-48] // Your fists of fury DISMEMBERS an insane lieutenant! [-48]
+1793539600	cmd	Alaric	55	29212	korzath2.are	fighting	50	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES an insane lieutenant! [-55] // Your fists of fury injures an insane lieutenant. [-13]
+1793539606	cmd	Alaric	55	29212	korzath2.are	fighting	42	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an insane lieutenant. [-11] // Your fists of fury grazes an insane lieutenant. [-5]
+1793539612	cmd	Alaric	55	29212	korzath2.are	fighting	39	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS an insane lieutenant! [-44] // Your fists of fury decimates an insane lieutenant! [-28]
+1793539620	cmd	Alaric	55	4207	dresden_halloween.are	standing	39	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793539621	cmd	Alaric	55	4202	dresden_halloween.are	standing	39	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793539621	cmd	Alaric	55	4203	dresden_halloween.are	standing	39	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793539621	cmd	Alaric	55	4210	dresden_halloween.are	standing	39	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793539622	cmd	Alaric	55	4210	dresden_halloween.are	standing	39	0	-	where	herm	You didn't find any herm.
+1793539623	cmd	Alaric	55	4210	dresden_halloween.are	standing	39	0	-	sleep		You go to sleep.
+1793539775	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	78	0	-	inventory		You are carrying: //      a diamond key // (23) guano
