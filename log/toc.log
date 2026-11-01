@@ -231196,3 +231196,33 @@ Sun Nov  1 00:22:16 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from
 Sun Nov  1 00:22:17 2026 :: Log Alaric [29211]: n
 Sun Nov  1 00:22:17 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
 Sun Nov  1 00:22:20 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 00:22:25 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 00:22:29 2026 :: Log Alaric [29212]: killed a Shadowman
+Sun Nov  1 00:22:29 2026 :: Log Alaric [29212]: coin +6 platinum
+Sun Nov  1 00:22:29 2026 :: Log Alaric [29212]: coin +30 silver
+Sun Nov  1 00:22:29 2026 :: Log Alaric [29212]: coin +41 copper
+Sun Nov  1 00:22:29 2026 :: Log Alaric [29212]: coin +17 gold
+Sun Nov  1 00:22:31 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 00:22:37 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 00:22:43 2026 :: Log Alaric [29212]: who
+Sun Nov  1 00:22:43 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 00:22:49 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 00:22:56 2026 :: Log Alaric [29212]: flee
+Sun Nov  1 00:22:56 2026 :: Log Alaric [29218]: arrived (Twist in the Maze) from 29212
+Sun Nov  1 00:22:57 2026 :: Log Alaric [29218]: recal
+Sun Nov  1 00:22:57 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29218
+Sun Nov  1 00:22:58 2026 :: Log Alaric [4207]: w
+Sun Nov  1 00:22:58 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Nov  1 00:22:59 2026 :: Log Alaric [4208]: e
+Sun Nov  1 00:22:59 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Nov  1 00:22:59 2026 :: Log Alaric [4207]: e
+Sun Nov  1 00:22:59 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Nov  1 00:22:59 2026 :: Log Alaric [4202]: n
+Sun Nov  1 00:22:59 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sun Nov  1 00:23:00 2026 :: Log Alaric [4203]: n
+Sun Nov  1 00:23:00 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sun Nov  1 00:23:00 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 00:24:06 2026 :: Log Alaric [4210]: affects off: iron skin
+Sun Nov  1 00:25:40 2026 :: Sock.sinaddr:  178.156.189.249
+Sun Nov  1 00:25:40 2026 :: EOF encountered on read.
+Sun Nov  1 00:27:15 2026 :: Log Alaric [4210]: affects off: levitate
