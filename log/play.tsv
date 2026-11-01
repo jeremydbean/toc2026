@@ -23216,3 +23216,11 @@
 1793478900	cmd	Alaric	54	4210	dresden_halloween.are	standing	16	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1793478901	cmd	Alaric	54	4210	dresden_halloween.are	standing	16	0	-	sleep		You go to sleep.
 1793478903	session	Alaric	54	4210	dresden_halloween.are	quit	163s	+0 levels	+542 exp	+13356385 copper	3 kills	0 deaths	0 quests	72 commands	0 refused	coin: loot 13p 35g 63s 85c
+1793491675	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	16	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793491676	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	16	0	-	wake		You wake and stand up.
+1793491678	cmd	Alaric	54	4210	dresden_halloween.are	standing	16	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793491678	cmd	Alaric	54	4210	dresden_halloween.are	standing	16	0	-	inventory		You are carrying: // (23) guano // ( 2) (Glowing) glowing moss
+1793491680	cmd	Alaric	54	4210	dresden_halloween.are	standing	16	0	-	where	herm	You didn't find any herm.
+1793491681	cmd	Alaric	54	4210	dresden_halloween.are	standing	16	0	-	sleep		You go to sleep.
+1793491879	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	47	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    272 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793491882	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	47	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  

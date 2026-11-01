@@ -230863,3 +230863,25 @@ Sun Nov  1 00:00:17 2026 :: EOF encountered on read.
 Sun Nov  1 00:02:01 2026 :: Treasure goblin: vanished from room 29041 (Dining Room, korzath1.are) (too long in one area).
 Sun Nov  1 00:05:21 2026 :: Sock.sinaddr:  18.116.205.62
 Sun Nov  1 00:05:21 2026 :: EOF encountered on read.
+Sun Nov  1 00:07:37 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Nov  1 00:07:41 2026 :: Loading Alaric's playerfile
+Sun Nov  1 00:07:43 2026 :: Closing link to Alaric.
+Sun Nov  1 00:07:46 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Nov  1 00:07:48 2026 :: Loading Alaric's playerfile
+Sun Nov  1 00:07:49 2026 :: Loading Alaric's playerfile
+Sun Nov  1 00:07:49 2026 :: Alaric@208.126.22.104 has connected.
+Sun Nov  1 00:07:50 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 0
+Sun Nov  1 00:07:55 2026 :: Log Alaric [4210]: who
+Sun Nov  1 00:07:56 2026 :: Log Alaric [4210]: wake
+Sun Nov  1 00:07:58 2026 :: Log Alaric [4210]: l
+Sun Nov  1 00:07:58 2026 :: Log Alaric [4210]: i
+Sun Nov  1 00:08:00 2026 :: Log Alaric [4210]: where herm
+Sun Nov  1 00:08:01 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 00:10:04 2026 :: Sock.sinaddr:  23.31.96.97
+Sun Nov  1 00:10:04 2026 :: EOF encountered on read.
+Sun Nov  1 00:10:07 2026 :: Log Alaric [4210]: affects off: iron skin
+Sun Nov  1 00:10:26 2026 :: Sock.sinaddr:  5.161.113.195
+Sun Nov  1 00:10:26 2026 :: EOF encountered on read.
+Sun Nov  1 00:11:19 2026 :: Log Alaric [4210]: score
+Sun Nov  1 00:11:22 2026 :: Log Alaric [4210]: prac
+Sun Nov  1 00:12:05 2026 :: Treasure goblin: vanished from room 1828 (The Snow Queen's Entry Hall, haven.are) (too long in one area).
