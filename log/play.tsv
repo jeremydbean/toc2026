@@ -24471,3 +24471,43 @@
 1793501316	cmd	Alaric	55	29212	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-6] // Your fists of fury devastates a deranged madman! [-29]
 1793501322	cmd	Alaric	55	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a deranged madman! [-33] // Your fists of fury decimates a deranged madman! [-27]
 1793501328	cmd	Alaric	55	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-26] // Your fists of fury DISEMBOWELS a deranged madman! [-41]
+1793501334	cmd	Alaric	55	29212	korzath2.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a deranged madman! [-35] // Your fists of fury devastates a deranged madman! [-30]
+1793501339	cmd	Alaric	55	29212	korzath2.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a deranged madman! [-55] // Your fists of fury === OBLITERATES === a deranged madman! [-139]
+1793501345	cmd	Alaric	55	29212	korzath2.are	fighting	88	0	fight	who		[55 Dwarf   Mastr ] Alaric. // Players found: 1
+1793501345	cmd	Alaric	55	29212	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-50] // Your fists of fury decimates a deranged madman! [-28]
+1793501351	cmd	Alaric	55	29212	korzath2.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a deranged madman! [-45] // Your fists of fury DISEMBOWELS a deranged madman! [-43]
+1793501359	cmd	Alaric	55	29212	korzath2.are	fighting	87	0	fight	fists	mad	You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-49] // Your fists of fury maims a deranged madman! [-36]
+1793501365	cmd	Alaric	55	29212	korzath2.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a deranged madman! [-30] // Your fists of fury MUTILATES a deranged madman! [-37]
+1793501371	cmd	Alaric	55	29212	korzath2.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-5] // Your fists of fury maims a deranged madman! [-34]
+1793501377	cmd	Alaric	55	29212	korzath2.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a deranged madman! [-31] // Your fists of fury scratches a deranged madman. [-1]
+1793501382	cmd	Alaric	55	29212	korzath2.are	fighting	85	0	fight	who		[55 Dwarf   Mastr ] Alaric. // Players found: 1
+1793501383	cmd	Alaric	55	29212	korzath2.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-18] // Your fists of fury *** DEMOLISHES *** a deranged madman! [-60]
+1793501388	cmd	Alaric	55	29212	korzath2.are	standing	85	0	-	fists		Who do you want to attack?
+1793501389	cmd	Alaric	55	29212	korzath2.are	standing	85	0	-	affect		You are affected by: // Skill: 'iron skin' grants immunity to blunt for 0 hours. // Skill: 'iron skin' modifies armor class by -26 for 0 hours.
+1793501390	cmd	Alaric	55	29212	korzath2.are	standing	85	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793501392	cmd	Alaric	55	29212	korzath2.are	standing	85	0	-	scan		a Shadowman                        -to the North. // a deranged madman                  -to the North. // an Animated Skeleton               -to the North.
+1793501397	cmd	Alaric	55	29212	korzath2.are	standing	87	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.
+1793501407	cmd	Alaric	55	29214	korzath2.are	standing	87	0	-	west		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1793501407	cmd	Alaric	55	29214	korzath2.are	standing	87	0	-	fists	shad	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a Shadowman! [-42] // Your fists of fury maims a Shadowman! [-36]
+1793501413	cmd	Alaric	55	29214	korzath2.are	fighting	77	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a Shadowman. [-13] // Your fists of fury DISEMBOWELS a Shadowman! [-42]
+1793501419	cmd	Alaric	55	29214	korzath2.are	fighting	62	0	fight	who		[55 Dwarf   Mastr ] Alaric. // Players found: 1
+1793501419	cmd	Alaric	55	29214	korzath2.are	fighting	62	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a Shadowman. [-15] // Your fists of fury MANGLES a Shadowman! [-56]
+1793501425	cmd	Alaric	55	29214	korzath2.are	fighting	52	2	fight	fists		You attack in an all consuming fury! // Your fists of fury <<< ERADICATES >>> a Shadowman! [-151] // Your fists of fury *** DEVASTATES *** a Shadowman! [-72]
+1793501433	cmd	Alaric	55	29214	korzath2.are	fighting	43	0	fight	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    274 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793501433	cmd	Alaric	55	29214	korzath2.are	fighting	43	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an animated vampire! [-45] // Your fists of fury *** DEVASTATES *** an animated vampire! [-64]
+1793501441	cmd	Alaric	55	29214	korzath2.are	fighting	28	0	fight	who		[55 Dwarf   Mastr ] Alaric. // Players found: 1
+1793501443	cmd	Alaric	55	29214	korzath2.are	fighting	22	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an animated vampire! [-75] // Your fists of fury MANGLES an animated vampire! [-56]
+1793501451	cmd	Alaric	55	29214	korzath2.are	fighting	19	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an animated vampire! [-61] // Your fists of fury *** DEVASTATES *** an animated vampire! [-75]
+1793501456	cmd	Alaric	55	29214	korzath2.are	fighting	20	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an animated vampire! [-64] // Your fists of fury hits an animated vampire. [-10]
+1793501463	cmd	Alaric	55	4207	dresden_halloween.are	fighting	17	0	fight	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793501465	cmd	Alaric	55	4208	dresden_halloween.are	standing	17	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793501465	cmd	Alaric	55	4207	dresden_halloween.are	standing	17	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793501466	cmd	Alaric	55	4202	dresden_halloween.are	standing	17	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793501466	cmd	Alaric	55	4203	dresden_halloween.are	standing	17	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793501466	cmd	Alaric	55	4210	dresden_halloween.are	standing	17	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793501467	cmd	Alaric	55	4210	dresden_halloween.are	standing	17	0	-	sleep		You go to sleep.
+1793501468	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	17	0	-	score		| Name:         Alaric | Level:      55 | Class:        Monk | // | Played:    274 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793501534	cmd	Alaric	55	4210	dresden_halloween.are	sleeping	32	0	-	wake		You wake and stand up.
+1793501536	refused	Alaric	55	4210	dresden_halloween.are	standing	32	0	-	(unknown)		Huh?
+1793501537	cmd	Alaric	55	4210	dresden_halloween.are	standing	32	0	-	iron		Your skin hardens.
+1793501546	cmd	Alaric	55	4210	dresden_halloween.are	standing	32	0	-	sleep		You go to sleep.
