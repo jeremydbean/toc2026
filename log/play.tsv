@@ -24156,3 +24156,5 @@
 1793498807	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	16	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    274 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
 1793498842	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	16	0	-	score		| Name:         Alaric | Level:      54 | Class:        Monk | // | Played:    274 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
 1793498843	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	16	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793499125	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	75	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793499213	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	86	0	-	gainlist		Abilities for a level 54 monk of the monk guild: 25 learned, 9 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
