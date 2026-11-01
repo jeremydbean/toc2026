@@ -233977,3 +233977,36 @@ Sun Nov  1 02:58:59 2026 :: Log Alaric [29209]: coin +4 platinum
 Sun Nov  1 02:58:59 2026 :: Log Alaric [29209]: coin +20 silver
 Sun Nov  1 02:58:59 2026 :: Log Alaric [29209]: coin +27 copper
 Sun Nov  1 02:58:59 2026 :: Log Alaric [29209]: coin +11 gold
+Sun Nov  1 02:59:09 2026 :: Log Alaric [29209]: n
+Sun Nov  1 02:59:09 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Sun Nov  1 02:59:09 2026 :: Log Alaric [29210]: w
+Sun Nov  1 02:59:09 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Sun Nov  1 02:59:12 2026 :: Log Alaric [29211]: recal
+Sun Nov  1 02:59:12 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29211
+Sun Nov  1 02:59:13 2026 :: Log Alaric [4207]: w
+Sun Nov  1 02:59:13 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Nov  1 02:59:16 2026 :: Log Alaric [4208]: l i pit
+Sun Nov  1 02:59:17 2026 :: Log Alaric [4208]: e
+Sun Nov  1 02:59:17 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Nov  1 02:59:17 2026 :: Log Alaric [4207]: e
+Sun Nov  1 02:59:17 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Nov  1 02:59:17 2026 :: Log Alaric [4202]: n
+Sun Nov  1 02:59:17 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sun Nov  1 02:59:18 2026 :: Log Alaric [4203]: n
+Sun Nov  1 02:59:18 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sun Nov  1 02:59:18 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 02:59:19 2026 :: Log Alaric [4210]: sc
+Sun Nov  1 02:59:20 2026 :: Log Alaric [4210]: prac
+Sun Nov  1 02:59:29 2026 :: Log Alaric [4210]: ach
+Sun Nov  1 02:59:37 2026 :: Log Alaric [4210]: affects off: iron skin
+Sun Nov  1 02:59:44 2026 :: Log Alaric [4210]: help redeem
+Sun Nov  1 03:00:33 2026 :: Log Alaric [4210]: wake
+Sun Nov  1 03:00:35 2026 :: Log Alaric [4210]: iron
+Sun Nov  1 03:00:43 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 03:00:43 2026 :: Log Alaric [4210]: (refused) adf
+Sun Nov  1 03:00:44 2026 :: Log Alaric [4210]: (refused) adf
+Sun Nov  1 03:00:44 2026 :: Log Alaric [4210]: af
+Sun Nov  1 03:02:01 2026 :: Log Alaric [4210]: affects off: iron skin, levitate
+Sun Nov  1 03:03:00 2026 :: Sock.sinaddr:  5.161.177.47
+Sun Nov  1 03:03:00 2026 :: EOF encountered on read.
+Sun Nov  1 03:03:25 2026 :: Treasure goblin: vanished from room 5216 (A back alley, oldthalo.are) (too long in one area).
