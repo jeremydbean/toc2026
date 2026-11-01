@@ -237180,3 +237180,54 @@ Sun Nov  1 14:20:39 2026 :: Log Alaric [29209]: fi
 Sun Nov  1 14:20:39 2026 :: Log Alaric [29209]: n
 Sun Nov  1 14:20:39 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
 Sun Nov  1 14:20:39 2026 :: Log Alaric [29210]: kill sk
+Sun Nov  1 14:20:50 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Sun Nov  1 14:20:50 2026 :: Log Alaric [29210]: coin +4 platinum
+Sun Nov  1 14:20:50 2026 :: Log Alaric [29210]: coin +20 silver
+Sun Nov  1 14:20:50 2026 :: Log Alaric [29210]: coin +27 copper
+Sun Nov  1 14:20:50 2026 :: Log Alaric [29210]: coin +11 gold
+Sun Nov  1 14:20:53 2026 :: Log Alaric [29210]: w
+Sun Nov  1 14:20:53 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Sun Nov  1 14:20:55 2026 :: Log Alaric [29211]: n
+Sun Nov  1 14:20:55 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Sun Nov  1 14:21:00 2026 :: Log Alaric [29212]: fi mad
+Sun Nov  1 14:21:05 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 14:21:11 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 14:21:17 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 14:21:23 2026 :: Log Alaric [29212]: who
+Sun Nov  1 14:21:23 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 14:21:29 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 14:21:29 2026 :: Log Alaric [29212]: affects off: iron skin
+Sun Nov  1 14:21:38 2026 :: Log Alaric [29212]: sc
+Sun Nov  1 14:21:39 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 14:21:39 2026 :: Log Alaric [29212]: killed a deranged madman
+Sun Nov  1 14:21:39 2026 :: Log Alaric [29212]: coin +5 platinum
+Sun Nov  1 14:21:39 2026 :: Log Alaric [29212]: coin +23 silver
+Sun Nov  1 14:21:39 2026 :: Log Alaric [29212]: coin +31 copper
+Sun Nov  1 14:21:39 2026 :: Log Alaric [29212]: coin +13 gold
+Sun Nov  1 14:21:47 2026 :: Log Alaric [29212]: fi
+Sun Nov  1 14:21:54 2026 :: Log Alaric [29212]: flee
+Sun Nov  1 14:21:54 2026 :: Log Alaric [29218]: arrived (Twist in the Maze) from 29212
+Sun Nov  1 14:21:54 2026 :: Log Alaric [29218]: flee
+Sun Nov  1 14:21:55 2026 :: Log Alaric [29218]: recal
+Sun Nov  1 14:21:55 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29218
+Sun Nov  1 14:21:58 2026 :: Log Alaric [4207]: w
+Sun Nov  1 14:21:58 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Nov  1 14:21:58 2026 :: Log Alaric [4208]: e
+Sun Nov  1 14:21:58 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Nov  1 14:21:59 2026 :: Log Alaric [4207]: e
+Sun Nov  1 14:21:59 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Nov  1 14:21:59 2026 :: Log Alaric [4202]: n
+Sun Nov  1 14:21:59 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sun Nov  1 14:21:59 2026 :: Log Alaric [4203]: n
+Sun Nov  1 14:21:59 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sun Nov  1 14:22:00 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 14:22:01 2026 :: Log Alaric [4210]: score
+Sun Nov  1 14:22:08 2026 :: Log Alaric [4210]: sl
+Sun Nov  1 14:23:30 2026 :: Sock.sinaddr:  178.156.189.249
+Sun Nov  1 14:23:31 2026 :: EOF encountered on read.
+Sun Nov  1 14:23:55 2026 :: Treasure goblin: vanished from room 17792 (A narrow hallway, landoz.are) (too long in one area).
+Sun Nov  1 14:24:17 2026 :: Log Alaric [4210]: prac
+Sun Nov  1 14:24:35 2026 :: Log Alaric [4210]: skil
+Sun Nov  1 14:25:21 2026 :: Log Alaric [4210]: affects off: levitate
+Sun Nov  1 14:25:25 2026 :: Log Alaric [4210]: i
+Sun Nov  1 14:25:27 2026 :: Log Alaric [4210]: gr
