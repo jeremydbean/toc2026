@@ -23569,3 +23569,12 @@
 1793494233	cmd	Alaric	54	4210	dresden_halloween.are	standing	11	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1793494233	cmd	Alaric	54	4210	dresden_halloween.are	standing	11	0	-	where	herm	You didn't find any herm.
 1793494233	cmd	Alaric	54	4210	dresden_halloween.are	standing	11	0	-	sleep		You go to sleep.
+1793494405	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	49	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793494410	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	49	0	-	wake		You wake and stand up.
+1793494411	cmd	Alaric	54	4210	dresden_halloween.are	standing	49	0	-	iron		Your skin hardens.
+1793494418	cmd	Alaric	54	4210	dresden_halloween.are	standing	49	0	-	sleep		You go to sleep.
+1793494466	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	58	0	-	wake		You wake and stand up.
+1793494467	cmd	Alaric	54	4210	dresden_halloween.are	standing	58	0	-	iron		Your skin is already as hard as iron.
+1793494468	cmd	Alaric	54	4210	dresden_halloween.are	standing	58	0	-	steel		You lost your concentration.
+1793494471	cmd	Alaric	54	4210	dresden_halloween.are	standing	58	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793494475	cmd	Alaric	54	4210	dresden_halloween.are	standing	58	0	-	sleep		You go to sleep.

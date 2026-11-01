@@ -231667,3 +231667,16 @@ Sun Nov  1 00:51:01 2026 :: Sock.sinaddr:  178.156.187.238
 Sun Nov  1 00:51:02 2026 :: EOF encountered on read.
 Sun Nov  1 00:52:24 2026 :: Treasure goblin: vanished from room 10138 (A forgotten hallway., glitter.are) (too long in one area).
 Sun Nov  1 00:52:39 2026 :: Log Alaric [4210]: affects off: levitate
+Sun Nov  1 00:53:25 2026 :: Log Alaric [4210]: who
+Sun Nov  1 00:53:30 2026 :: Log Alaric [4210]: wake
+Sun Nov  1 00:53:31 2026 :: Log Alaric [4210]: iron
+Sun Nov  1 00:53:38 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 00:53:48 2026 :: Log Alaric [4210]: affects off: steel fist
+Sun Nov  1 00:54:26 2026 :: Log Alaric [4210]: wake
+Sun Nov  1 00:54:27 2026 :: Log Alaric [4210]: iron
+Sun Nov  1 00:54:28 2026 :: Log Alaric [4210]: steel
+Sun Nov  1 00:54:31 2026 :: Log Alaric [4210]: steel
+Sun Nov  1 00:54:35 2026 :: Log Alaric [4210]: sleep
+Sun Nov  1 00:56:06 2026 :: Sock.sinaddr:  178.156.185.231
+Sun Nov  1 00:56:06 2026 :: EOF encountered on read.
+Sun Nov  1 00:56:13 2026 :: Log Alaric [4210]: affects off: iron skin
