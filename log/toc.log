@@ -242756,3 +242756,33 @@ Mon Nov  2 02:57:18 2026 :: Log Alaric [4203]: n
 Mon Nov  2 02:57:18 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
 Mon Nov  2 02:57:19 2026 :: Log Alaric [4210]: sleep
 Mon Nov  2 02:57:20 2026 :: Log Alaric [4210]: score
+Mon Nov  2 02:59:53 2026 :: Log Alaric [4210]: affects off: levitate
+Mon Nov  2 03:00:14 2026 :: Sock.sinaddr:  52.87.72.16
+Mon Nov  2 03:00:14 2026 :: EOF encountered on read.
+Mon Nov  2 03:00:34 2026 :: Log Alaric [4210]: affects off: steel fist
+Mon Nov  2 03:01:55 2026 :: Log Alaric [4210]: wake
+Mon Nov  2 03:01:55 2026 :: Log Alaric [4210]: l
+Mon Nov  2 03:02:00 2026 :: Log Alaric [4210]: score
+Mon Nov  2 03:02:02 2026 :: Log Alaric [4210]: s
+Mon Nov  2 03:02:02 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Mon Nov  2 03:02:02 2026 :: Log Alaric [4203]: s
+Mon Nov  2 03:02:02 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Mon Nov  2 03:02:02 2026 :: Log Alaric [4202]: e
+Mon Nov  2 03:02:02 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Nov  2 03:02:02 2026 :: Log Alaric [4201]: e
+Mon Nov  2 03:02:02 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Mon Nov  2 03:02:03 2026 :: Log Alaric [2427]: n
+Mon Nov  2 03:02:03 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Nov  2 03:02:03 2026 :: Log Alaric [2404]: n
+Mon Nov  2 03:02:03 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Mon Nov  2 03:02:07 2026 :: Log Alaric [2401]: jump rock
+Mon Nov  2 03:02:07 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Mon Nov  2 03:02:08 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Mon Nov  2 03:02:09 2026 :: Log Alaric [4208]: heal ref
+Mon Nov  2 03:02:09 2026 :: Log Alaric [4208]: gold -80
+Mon Nov  2 03:02:13 2026 :: Log Alaric [4208]: l
+Mon Nov  2 03:02:17 2026 :: Log Alaric [4208]: l i pit
+Mon Nov  2 03:02:17 2026 :: Log Alaric [4208]: quit
+Mon Nov  2 03:02:17 2026 :: Alaric has quit.
+Mon Nov  2 03:02:17 2026 :: [QUIT] Player rejoined the real world.
+Mon Nov  2 03:02:49 2026 :: Treasure goblin: vanished from room 6018 (An intersection in the light forest, haon.are) (too long in one area).
