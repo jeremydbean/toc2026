@@ -28495,3 +28495,97 @@
 1793619796	cmd	Alaric	56	29210	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
 1793619812	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
 1793619814	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ an Animated Skeleton! [-81] // Your fists of fury MUTILATES an Animated Skeleton! [-38]
+1793619819	cmd	Alaric	56	29211	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls an Animated Skeleton. [-22] // Your fists of fury decimates an Animated Skeleton! [-27]
+1793619825	cmd	Alaric	56	29211	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds an Animated Skeleton. [-18] // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-58]
+1793619831	cmd	Alaric	56	29211	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS an Animated Skeleton! [-42] // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-57]
+1793619837	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793619837	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793619837	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793619838	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793619838	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793619838	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	fists		Who do you want to attack?
+1793619843	cmd	Alaric	56	29210	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793619845	cmd	Alaric	56	29210	korzath2.are	standing	100	0	-	kill	sk	An Animated Skeleton parries your attack. // Your punch injures an Animated Skeleton. [-14]
+1793619851	cmd	Alaric	56	29211	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793619854	cmd	Alaric	56	29212	korzath2.are	standing	100	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793619855	cmd	Alaric	56	29212	korzath2.are	standing	100	0	-	iron		You lost your concentration.
+1793619856	cmd	Alaric	56	29212	korzath2.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.
+1793619864	cmd	Alaric	56	29212	korzath2.are	standing	100	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-61] // Your fists of fury decimates a deranged madman! [-28]
+1793619870	cmd	Alaric	56	29212	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a deranged madman! [-30] // Your fists of fury DISMEMBERS a deranged madman! [-45]
+1793619876	cmd	Alaric	56	29212	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-18] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-98]
+1793619882	cmd	Alaric	56	29212	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-37] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-110]
+1793619887	cmd	Alaric	56	29212	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-51] // Your fists of fury DISEMBOWELS a deranged madman! [-43]
+1793619893	cmd	Alaric	56	29212	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-18] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-95]
+1793619899	cmd	Alaric	56	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-50] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-92]
+1793619905	cmd	Alaric	56	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a deranged madman! [-31] // Your fists of fury hits a deranged madman. [-10]
+1793619911	cmd	Alaric	56	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-61] // Your fists of fury scratches a deranged madman. [-1]
+1793619916	cmd	Alaric	56	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a deranged madman! [-32] // Your fists of fury maims a deranged madman! [-33]
+1793619922	cmd	Alaric	56	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a deranged madman. [-22] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-85]
+1793619928	cmd	Alaric	56	29212	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a deranged madman. [-23] // Your fists of fury injures a deranged madman. [-14]
+1793619934	cmd	Alaric	56	29212	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a deranged madman. [-15] // Your fists of fury *** DEVASTATES *** a deranged madman! [-66]
+1793619934	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	70	0	-	group		Trentlin's group: // [51 W] Trentlin          643/ 911 hp 1454/1454 mana  244/ 356 mv 115308 xp
+1793619939	cmd	Alaric	56	29212	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a deranged madman. [-15] // Your fists of fury maims a deranged madman! [-33]
+1793619945	cmd	Alaric	56	29212	korzath2.are	fighting	95	0	fight	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    280 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793619947	cmd	Alaric	56	29212	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-17] // Your fists of fury *** DEMOLISHES *** a deranged madman! [-57]
+1793619958	cmd	Alaric	56	29212	korzath2.are	standing	95	0	-	scan		a deranged madman                  -to the North. // a deranged madman                  -to the North. // a killer clown                     -to the South.
+1793619960	cmd	Alaric	56	29214	korzath2.are	standing	95	0	-	west		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1793619962	cmd	Alaric	56	29214	korzath2.are	standing	95	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-27] // Your fists of fury *** DEMOLISHES *** a deranged madman! [-58]
+1793619968	cmd	Alaric	56	29214	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-64] // Your fists of fury *** DEVASTATES *** a deranged madman! [-76]
+1793619973	cmd	Alaric	56	29214	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-101] // Your fists of fury DISMEMBERS a deranged madman! [-45]
+1793619979	cmd	Alaric	56	29214	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-25] // Your fists of fury *** DEVASTATES *** a deranged madman! [-76]
+1793619985	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	86	0	-	group		Trentlin's group: // [51 W] Trentlin          789/ 911 hp 1454/1454 mana  315/ 356 mv 115308 xp
+1793619985	cmd	Alaric	56	29214	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a deranged madman. [-3] // Your fists of fury DISMEMBERS a deranged madman! [-45]
+1793619986	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	86	0	-	wake		You wake and stand up.
+1793619986	cmd	Trentlin	51	4210	dresden_halloween.are	standing	86	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793619987	cmd	Trentlin	51	4203	dresden_halloween.are	standing	86	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793619987	cmd	Trentlin	51	4202	dresden_halloween.are	standing	86	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793619988	cmd	Trentlin	51	4207	dresden_halloween.are	standing	86	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793619988	cmd	Trentlin	51	4208	dresden_halloween.are	standing	86	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793619988	cmd	Trentlin	51	4208	dresden_halloween.are	standing	86	0	-	west		Alas, you cannot go that way.
+1793619991	cmd	Alaric	56	29214	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a deranged madman! [-44] // Your fists of fury hits a deranged madman. [-9]
+1793619991	cmd	Trentlin	51	4208	dresden_halloween.are	standing	86	0	-	where	hermie	You didn't find any hermie.
+1793619993	cmd	Trentlin	51	4208	dresden_halloween.are	standing	86	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793619996	cmd	Alaric	56	29214	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-49] // Your fists of fury MANGLES a deranged madman! [-54]
+1793620002	cmd	Alaric	56	29214	korzath2.are	standing	88	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    280 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793620003	cmd	Alaric	56	4207	dresden_halloween.are	standing	88	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793620003	cmd	Alaric	56	4207	dresden_halloween.are	standing	88	0	-	scan		Templar of Devota                  -to the far North. // Trentlin                           -to the West. // the cackling witch-healer          -to the West.
+1793620005	cmd	Alaric	56	4202	dresden_halloween.are	standing	88	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793620005	cmd	Alaric	56	4203	dresden_halloween.are	standing	88	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793620006	cmd	Alaric	56	4210	dresden_halloween.are	standing	88	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793620007	cmd	Alaric	56	4210	dresden_halloween.are	standing	88	0	-	sleep		You go to sleep.
+1793620081	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	100	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    280 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793620093	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1793620094	cmd	Alaric	56	4210	dresden_halloween.are	standing	100	0	-	where		Players near you: // Trentlin                     The Shrouded Altar of Devota
+1793620096	cmd	Alaric	56	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793620096	cmd	Alaric	56	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793620097	cmd	Alaric	56	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793620097	cmd	Alaric	56	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793620098	cmd	Alaric	56	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793620098	cmd	Alaric	56	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793620099	cmd	Alaric	56	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793620100	cmd	Alaric	56	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793620101	cmd	Alaric	56	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793620102	cmd	Alaric	56	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793620103	cmd	Alaric	56	9522	newthalo.are	standing	100	0	-	open		Ok.
+1793620105	cmd	Alaric	56	29004	korzath1.are	standing	100	0	-	run	n 9	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1793620107	cmd	Alaric	56	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793620108	cmd	Alaric	56	29004	korzath1.are	standing	100	0	-	open		Ok.
+1793620108	cmd	Alaric	56	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793620108	cmd	Alaric	56	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793620109	cmd	Alaric	56	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793620109	cmd	Alaric	56	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793620110	cmd	Alaric	56	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793620111	cmd	Alaric	56	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793620111	cmd	Alaric	56	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793620111	cmd	Alaric	56	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793620114	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793620114	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793620114	cmd	Trentlin	51	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793620114	cmd	Trentlin	51	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793620115	cmd	Trentlin	51	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793620115	cmd	Alaric	56	29207	korzath2.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793620115	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793620116	cmd	Alaric	56	29207	korzath2.are	standing	100	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.
+1793620117	cmd	Trentlin	51	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793620117	cmd	Trentlin	51	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793620120	cmd	Trentlin	51	2401	dresden_halloween.are	standing	100	0	-	where	missionary	Grill the missionary of breas Courtyard.
