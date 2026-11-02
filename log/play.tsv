@@ -28234,3 +28234,24 @@
 1793586616	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	62	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    279 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
 1793586623	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	62	0	-	who		[56 Dwarf   Lord  ] Alaric. // Players found: 1
 1793586624	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	62	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793586858	cmd	Alaric	56	4210	dresden_halloween.are	standing	62	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 14 for 1 hours. // Skill: 'nightmare' modifies mana by -37 for 7 hours.
+1793586859	cmd	Alaric	56	4210	dresden_halloween.are	standing	62	0	-	wake		You are already standing.
+1793586860	cmd	Alaric	56	4210	dresden_halloween.are	standing	62	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793586863	cmd	Alaric	56	4203	dresden_halloween.are	standing	62	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793586863	cmd	Alaric	56	4202	dresden_halloween.are	standing	62	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793586864	cmd	Alaric	56	4207	dresden_halloween.are	standing	62	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793586864	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793586866	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	heal		The cackling witch-healer says 'I offer the following spells:' //   light:   cure light wounds     50 gold //   serious: cure serious wounds  150 gold
+1793586873	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	heal	disease	The cackling witch-healer utters the words 'judicandus eugzagz'.
+1793586880	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	heal	uncurse	The cackling witch-healer says 'I see no curse on you or on anything you carry.'
+1793586883	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 14 for 0 hours. // Skill: 'nightmare' modifies mana by -37 for 6 hours.
+1793586889	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 14 for 0 hours. // Skill: 'nightmare' modifies mana by -37 for 6 hours.
+1793586892	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.
+1793586899	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	levitate		You slowly rise up off the ground.
+1793587043	refused	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	(unknown)		Huh? Did you mean STEEL?
+1793587045	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	inventory		You are carrying: //      a diamond key //      (Glowing) a piece of trick-or-treat candy
+1793587047	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793587052	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.
+1793587066	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	mindbar		You lost your concentration.
+1793587067	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	mindbar		A mental fortress protects your mind.
+1793587073	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	affect		You are affected by: // Skill: 'mindbar' for 9 hours. // Skill: 'iron skin' grants immunity to piercing for 1 hours.

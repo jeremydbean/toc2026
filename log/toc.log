@@ -242365,3 +242365,34 @@ Mon Nov  2 02:30:23 2026 :: Log Alaric [4210]: who
 Mon Nov  2 02:30:24 2026 :: Log Alaric [4210]: eq
 Mon Nov  2 02:31:19 2026 :: Log Alaric [4210]: affects off: iron skin, ego whip
 Mon Nov  2 02:32:35 2026 :: Treasure goblin: vanished from room 5333 (East wing of the city hall, mirror.are) (too long in one area).
+Mon Nov  2 02:33:31 2026 :: Log Alaric [4210]: affects off: levitate
+Mon Nov  2 02:34:18 2026 :: Log Alaric [4210]: af
+Mon Nov  2 02:34:19 2026 :: Log Alaric [4210]: wake
+Mon Nov  2 02:34:20 2026 :: Log Alaric [4210]: l
+Mon Nov  2 02:34:23 2026 :: Log Alaric [4210]: s
+Mon Nov  2 02:34:23 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Mon Nov  2 02:34:23 2026 :: Log Alaric [4203]: s
+Mon Nov  2 02:34:23 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Mon Nov  2 02:34:24 2026 :: Log Alaric [4202]: w
+Mon Nov  2 02:34:24 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Mon Nov  2 02:34:24 2026 :: Log Alaric [4207]: w
+Mon Nov  2 02:34:24 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Mon Nov  2 02:34:26 2026 :: Log Alaric [4208]: heal
+Mon Nov  2 02:34:33 2026 :: Log Alaric [4208]: heal disease
+Mon Nov  2 02:34:33 2026 :: Log Alaric [4208]: gold -100
+Mon Nov  2 02:34:40 2026 :: Log Alaric [4208]: heal uncurse
+Mon Nov  2 02:34:43 2026 :: Log Alaric [4208]: af
+Mon Nov  2 02:34:49 2026 :: Log Alaric [4208]: af
+Mon Nov  2 02:34:52 2026 :: Log Alaric [4208]: iron
+Mon Nov  2 02:34:53 2026 :: Sock.sinaddr:  178.156.189.249
+Mon Nov  2 02:34:54 2026 :: EOF encountered on read.
+Mon Nov  2 02:34:59 2026 :: Log Alaric [4208]: levi
+Mon Nov  2 02:35:30 2026 :: Log Alaric [4208]: affects off: steel fist
+Mon Nov  2 02:37:23 2026 :: Log Alaric [4208]: (refused) steeli
+Mon Nov  2 02:37:25 2026 :: Log Alaric [4208]: i
+Mon Nov  2 02:37:25 2026 :: Log Alaric [4208]: affects off: iron skin
+Mon Nov  2 02:37:27 2026 :: Log Alaric [4208]: steel
+Mon Nov  2 02:37:32 2026 :: Log Alaric [4208]: iron
+Mon Nov  2 02:37:46 2026 :: Log Alaric [4208]: mindbar
+Mon Nov  2 02:37:47 2026 :: Log Alaric [4208]: mindbar
+Mon Nov  2 02:37:53 2026 :: Log Alaric [4208]: af
