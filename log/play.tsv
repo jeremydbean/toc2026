@@ -27004,3 +27004,43 @@
 1793579809	cmd	Alaric	56	29208	korzath2.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-83] // Your fists of fury injures a deranged madman. [-15]
 1793579818	cmd	Alaric	56	29209	korzath2.are	standing	66	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
 1793579818	cmd	Alaric	56	29209	korzath2.are	standing	66	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury mauls an Animated Skeleton. [-24] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-73]
+1793579824	cmd	Alaric	56	29209	korzath2.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Animated Skeleton! [-35] // Your fists of fury maims an Animated Skeleton! [-34]
+1793579830	cmd	Alaric	56	29209	korzath2.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-45] // Your fists of fury hits an Animated Skeleton. [-10]
+1793579835	cmd	Alaric	56	29209	korzath2.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches an Animated Skeleton. [-1] // Your fists of fury DISEMBOWELS an Animated Skeleton! [-42]
+1793579841	cmd	Alaric	56	29209	korzath2.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an Animated Skeleton! [-28] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-77]
+1793579847	cmd	Alaric	56	29209	korzath2.are	standing	68	0	-	fists		Who do you want to attack?
+1793579847	cmd	Alaric	56	29209	korzath2.are	standing	68	0	-	fists		Who do you want to attack?
+1793579848	cmd	Alaric	56	29209	korzath2.are	standing	68	0	-	fists		Who do you want to attack?
+1793579848	cmd	Alaric	56	29209	korzath2.are	standing	68	0	-	fists		Who do you want to attack?
+1793579848	cmd	Alaric	56	29209	korzath2.are	standing	68	0	-	fists		Who do you want to attack?
+1793579848	cmd	Alaric	56	29209	korzath2.are	standing	68	0	-	fists		Who do you want to attack?
+1793579853	cmd	Alaric	56	29210	korzath2.are	standing	68	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793579854	cmd	Alaric	56	29211	korzath2.are	standing	68	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793579858	cmd	Alaric	56	29211	korzath2.are	standing	68	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-37] // Your fists of fury maims a deranged madman! [-34]
+1793579864	cmd	Alaric	56	29211	korzath2.are	fighting	59	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a deranged madman. [-24] // Your fists of fury scratches a deranged madman. [-4]
+1793579872	cmd	Alaric	56	29211	korzath2.are	fighting	46	0	fight	who		[56 Dwarf   Lord  ] Alaric. // Players found: 1
+1793579873	cmd	Alaric	56	29211	korzath2.are	fighting	46	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-27] // Your fists of fury maims a deranged madman! [-34]
+1793579879	cmd	Alaric	56	29211	korzath2.are	fighting	36	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-40] // Your fists of fury *** DEVASTATES *** a deranged madman! [-64]
+1793579884	cmd	Alaric	56	29211	korzath2.are	fighting	32	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a deranged madman! [-45] // Your fists of fury *** DEMOLISHES *** a deranged madman! [-59]
+1793579890	cmd	Alaric	56	29211	korzath2.are	fighting	26	0	fight	who		[56 Dwarf   Lord  ] Alaric. // Players found: 1
+1793579892	cmd	Alaric	56	29211	korzath2.are	fighting	26	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-19] // Your fists of fury decimates a deranged madman! [-27]
+1793579899	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES an Animated Skeleton! [-56] // Your fists of fury DISMEMBERS an Animated Skeleton! [-47]
+1793579905	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES an Animated Skeleton! [-51] // Your fists of fury MANGLES an Animated Skeleton! [-55]
+1793579911	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-74] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-79]
+1793579916	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-79] // Your fists of fury grazes an Animated Skeleton. [-8]
+1793579922	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    278 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793579923	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-60] // Your fists of fury MASSACRES an Animated Skeleton! [-52]
+1793579928	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-16] // Your fists of fury injures an Animated Skeleton. [-14]
+1793579934	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-46] // Your fists of fury scratches an Animated Skeleton. [-1]
+1793579940	cmd	Alaric	56	29211	korzath2.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Animated Skeleton! [-36] // An Animated Skeleton walks off to the east.
+1793579948	cmd	Alaric	56	29210	korzath2.are	standing	29	0	-	east		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793579949	cmd	Alaric	56	29210	korzath2.are	standing	29	0	-	kill	sk	An Animated Skeleton parries your attack. // Your punch <<< ERADICATES >>> an Animated Skeleton! [-168] // An Animated Skeleton walks off to the south.
+1793579953	cmd	Alaric	56	29209	korzath2.are	standing	29	0	-	south		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793579953	cmd	Alaric	56	29209	korzath2.are	standing	29	0	-	kill	sk	An Animated Skeleton dodges your attack. // Your punch <<< ERADICATES >>> an Animated Skeleton! [-181] // An Animated Skeleton is DEAD!!
+1793579960	cmd	Alaric	56	4207	dresden_halloween.are	standing	29	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793579960	cmd	Alaric	56	4207	dresden_halloween.are	standing	29	0	-	scan		Templar of Devota                  -to the far North. // the cackling witch-healer          -to the West.
+1793579961	cmd	Alaric	56	4202	dresden_halloween.are	standing	29	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793579962	cmd	Alaric	56	4203	dresden_halloween.are	standing	29	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793579962	cmd	Alaric	56	4210	dresden_halloween.are	standing	29	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793579963	cmd	Alaric	56	4210	dresden_halloween.are	standing	29	0	-	sleep		You go to sleep.
+1793579964	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	29	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    278 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
