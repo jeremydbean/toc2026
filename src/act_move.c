@@ -2394,7 +2394,7 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
 
     if( ch->fighting != NULL)
     {
-      send_to_char("You can't do that, your fighting!\n\r",ch);
+      send_to_char("You can't do that, you're fighting!\n\r",ch);
       return;
     }
 
@@ -2465,7 +2465,7 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 
     if( ch->fighting != NULL)
     {
-      send_to_char("You can't do that, your fighting!\n\r",ch);
+      send_to_char("You can't do that, you're fighting!\n\r",ch);
       return;
     }
 
