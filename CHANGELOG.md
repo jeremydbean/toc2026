@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **SCORE is one box** (2026-11-02). The stash line (and who shares the
+  stash) printed below the sheet's closing rule; it is a row inside the
+  box now. The casino row's middle bar sat two columns left of the
+  others (labels padded to 11 where "Quest Points:" runs to 13), and the
+  jail line had no closing bar. `score_box_row` pads or cuts a full-width
+  row to the box. Test: `test_score_box`.
+
 - **Holiday lifecycle review** (2026-11-02). The vendor and the event
   boss were recognised by address, and the pool hands a freed CHAR_DATA
   to the next mobile created: PURGE ROSALIND then LOAD MOB made the new

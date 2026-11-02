@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261102d 2026-11-02
+SCORE tidied: your stash now shows inside the score box, and the casino
+line lines up with the rest.
+
 @ 20261102c 2026-11-02
 HOLIDAYS ON <date> tells you what any day will be (HOLIDAYS ON 2027-03-28).
 A four-leaf clover now says how much luck you are carrying, and one too

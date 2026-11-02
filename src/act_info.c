@@ -1571,6 +1571,23 @@ void do_worth( CHAR_DATA *ch, char *argument )
 }
 
 
+/* One full-width row of the SCORE box: "| text ... |", 62 columns in all
+   as the rest of the sheet. Text too long for the 58 between the bars
+   is cut with "...", so the box never breaks. */
+static void score_box_row( CHAR_DATA *ch, const char *text )
+{
+    char row[MAX_STRING_LENGTH];
+    char cut[64];
+
+    if ( strlen( text ) > 58 )
+    {
+        snprintf( cut, sizeof(cut), "%.55s...", text );
+        text = cut;
+    }
+    snprintf( row, sizeof(row), "| %-58s |\n\r", text );
+    send_to_char( row, ch );
+}
+
 void do_score( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
@@ -1872,16 +1889,36 @@ void do_score( CHAR_DATA *ch, char *argument )
         toc_strlcpy( jail_ts, ctime(&ch->pcdata->jw_timer), sizeof(jail_ts) );
         jail_nl = strchr( jail_ts, '\n' );
         if ( jail_nl ) *jail_nl = '\0';
-        snprintf(buf, sizeof(buf), "| You are jailed until %s.\n\r", jail_ts);
-        send_to_char(buf,ch);
+        snprintf(buf, sizeof(buf), "You are jailed until %s.", jail_ts);
+        score_box_row(ch, buf);
       }
 
       if ( ch->pcdata->casino_winnings > 0 || ch->pcdata->casino_losses > 0 )
       {
-        snprintf( buf, sizeof(buf), "| %-11s %8ld | %-14s %18ld |\n\r",
+        /* The labels pad to 13, as Quest Points and Achievements do, so
+           the middle bar lines up with theirs. */
+        snprintf( buf, sizeof(buf), "| %-13s %8ld | %-14s %18ld |\n\r",
             "Casino Won:", ch->pcdata->casino_winnings,
             "Casino Lost:", ch->pcdata->casino_losses );
         send_to_char( buf, ch );
+      }
+
+      /* The stash, and anybody sharing it. Worth a line here because it
+         is the one store a character owns that is not on their person,
+         so nothing else on this sheet hints that it exists. Inside the
+         box, like everything else on the sheet. */
+      {
+        char shared[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "Stash: %d of %d used",
+            stash_count( ch ), ch->pcdata->stash_max );
+        score_box_row( ch, buf );
+        stash_link_report( ch, shared, sizeof(shared) );
+        if ( shared[0] != '\0' )
+        {
+            snprintf( buf, sizeof(buf), "Stash shared with: %s", shared );
+            score_box_row( ch, buf );
+        }
       }
 
       if ( IS_IMMORTAL(ch))
@@ -1916,25 +1953,6 @@ void do_score( CHAR_DATA *ch, char *argument )
       }
       send_to_char(kader, ch);
     }
-
-  /* The stash, and anybody sharing it. Worth a line here because it is
-     the one store a character owns that is not on their person, so
-     nothing else on this sheet hints that it exists. */
-  if ( !IS_NPC(ch) && ch->pcdata != NULL )
-  {
-      char shared[MAX_STRING_LENGTH];
-
-      snprintf( buf, sizeof(buf), "Stash: %d of %d used.\n\r",
-          stash_count( ch ), ch->pcdata->stash_max );
-      send_to_char( buf, ch );
-
-      stash_link_report( ch, shared, sizeof(shared) );
-      if ( shared[0] != '\0' )
-      {
-          snprintf( buf, sizeof(buf), "Stash shared with: %s\n\r", shared );
-          send_to_char( buf, ch );
-      }
-  }
 
   return;
 
