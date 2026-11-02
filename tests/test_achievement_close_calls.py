@@ -51,7 +51,11 @@ def make(mud: LiveMud, name: str, skills: dict, **fields) -> None:
 
 
 def earned(text: str, title: str) -> bool:
-    return re.search(r"ACHIEVEMENT EARNED\s*(?:\x1b\[[0-9;]*m)*\s*" + re.escape(title), text) is not None
+    """The banner, then the title on the next line: colour codes and line
+    breaks between them are stripped first, so neither can hide it."""
+    plain = re.sub(r"\x1b\[[0-9;]*m", "", text)
+    plain = re.sub(r"\s+", " ", plain)
+    return re.search(r"ACHIEVEMENT EARNED " + re.escape(title), plain) is not None
 
 
 class CloseCallSourceTests(unittest.TestCase):
@@ -82,10 +86,13 @@ class CloseCallLiveTests(unittest.TestCase):
                 hero.sync("scroll 0")
 
                 # The comedy, in the Temple.
-                self.assertTrue(earned(hero.sync("flee"), "Brave Sir Robin"))
-                self.assertTrue(earned(hero.sync("recall"), "No Place Like Home"))
+                said = hero.sync("flee")
+                self.assertTrue(earned(said, "Brave Sir Robin"), repr(said))
+                said = hero.sync("recall")
+                self.assertTrue(earned(said, "No Place Like Home"), repr(said))
                 hero.must("sleep", "You go to sleep")
-                self.assertTrue(earned(hero.sync("north"), "Sleepwalker"))
+                said = hero.sync("north")
+                self.assertTrue(earned(said, "Sleepwalker"), repr(said))
                 hero.must("wake", "You wake")
 
                 # One hit point of a hundred: max to 1, restore, max to 100.
@@ -105,8 +112,8 @@ class CloseCallLiveTests(unittest.TestCase):
                     if "You flee from combat" in fled:
                         break
                 self.assertIn("You flee from combat", fled)
-                self.assertTrue(earned(fled, "By a Thread"), fled)
-                self.assertTrue(earned(fled, "Live to Fight Another Day"), fled)
+                self.assertTrue(earned(fled, "By a Thread"), repr(fled))
+                self.assertTrue(earned(fled, "Live to Fight Another Day"), repr(fled))
 
                 # Recall out of the same fight, still on one hit point.
                 staff.must(f"transfer zcclose {YARD}", "Ok.")
@@ -116,7 +123,7 @@ class CloseCallLiveTests(unittest.TestCase):
                     prayed = hero.sync("recall")
                     if "You recall from combat" in prayed or "Something is very wrong" in prayed:
                         break
-                self.assertTrue(earned(prayed, "Answered Prayer"), prayed)
+                self.assertTrue(earned(prayed, "Answered Prayer"), repr(prayed))
 
                 # Slay a guard on one hit point of its own, hitting surely.
                 staff.must(f"goto {FLOOR}", "")
@@ -127,7 +134,7 @@ class CloseCallLiveTests(unittest.TestCase):
                 staff.must(f"transfer zcclose {FLOOR}", "Ok.")
                 slain = hero.sync("kill sparring")
                 self.assertIn("is DEAD", slain)
-                self.assertTrue(earned(slain, "Last One Standing"), slain)
+                self.assertTrue(earned(slain, "Last One Standing"), repr(slain))
 
                 # Each once: a second flee from nothing earns nothing.
                 self.assertNotIn("ACHIEVEMENT EARNED", hero.sync("flee"))
