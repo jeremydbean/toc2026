@@ -29845,3 +29845,59 @@
 1793660347	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1793660350	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1816 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
 1793660766	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793662319	cmd	Trentlin	52	4208	dresden.are	standing	33	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.
+1793662325	cmd	Trentlin	52	4208	dresden.are	standing	45	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.
+1793662329	cmd	Trentlin	52	4208	dresden.are	standing	57	0	-	rested		You are rested: your kills earn double experience until 8644 more is spent (57% of a level). // Quitting here would let you rest. // Each hour away banks 5% of a level, up to 150%.
+1793662333	cmd	Trentlin	52	4208	dresden.are	standing	57	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.
+1793662339	cmd	Trentlin	52	4208	dresden.are	standing	69	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.
+1793662343	cmd	Trentlin	52	4208	dresden.are	standing	81	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.
+1793662348	cmd	Trentlin	52	4208	dresden.are	standing	93	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.
+1793662351	cmd	Trentlin	52	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)
+1793662354	cmd	Trentlin	52	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793662354	cmd	Trentlin	52	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793662355	cmd	Trentlin	52	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793662355	cmd	Trentlin	52	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793662355	cmd	Trentlin	52	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793662355	cmd	Trentlin	52	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793662356	cmd	Trentlin	52	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793662359	cmd	Trentlin	52	2401	dresden.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are clothed in mystical armor. // You feel righteous.
+1793662363	cmd	Trentlin	52	9506	newthalo.are	standing	100	0	-	run	e 27	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793662365	cmd	Trentlin	52	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793662366	cmd	Trentlin	52	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1793662367	cmd	Trentlin	52	29003	korzath1.are	standing	100	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793662368	cmd	Trentlin	52	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793662371	cmd	Trentlin	52	29004	korzath1.are	standing	100	0	-	unlock	north	You lack the key.
+1793662374	cmd	Trentlin	52	29004	korzath1.are	standing	100	0	-	kill	g	Guardian Knight parries your attack. // You decimate Guardian Knight! // You ^^^ DESTROY ^^^ Guardian Knight!
+1793662376	cmd	Trentlin	52	29004	korzath1.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Guardian Knight! // Your smite <<< ERADICATES >>> Guardian Knight! // Your smite === OBLITERATES === Guardian Knight!
+1793662385	cmd	Trentlin	52	29004	korzath1.are	fighting	99	1	fight	smite		Your smite <<< ERADICATES >>> Guardian Knight! // Guardian Knight is DEAD!! // You receive 0 experience points.
+1793662393	cmd	Trentlin	52	29004	korzath1.are	standing	99	0	-	get	key co	You get a diamond key from corpse of Guardian Knight.
+1793662393	cmd	Trentlin	52	29004	korzath1.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793662393	cmd	Trentlin	52	29004	korzath1.are	standing	99	0	-	open	north	Ok.
+1793662393	cmd	Trentlin	52	29201	korzath2.are	standing	99	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793662394	cmd	Trentlin	52	29202	korzath2.are	standing	99	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793662396	cmd	Trentlin	52	29203	korzath2.are	standing	99	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793662396	cmd	Trentlin	52	29204	korzath2.are	standing	99	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793662399	cmd	Trentlin	52	29204	korzath2.are	standing	99	0	-	smite	mad	They aren't here.
+1793662402	cmd	Trentlin	52	29204	korzath2.are	standing	99	0	-	smite	clow	Your smite >>> ANNIHILATES <<< a killer clown! // Your smite <<< ERADICATES >>> a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793662408	cmd	Trentlin	52	29204	korzath2.are	fighting	99	0	fight	smite		Your smite <<< ERADICATES >>> a killer clown! // Your smite <<< ERADICATES >>> a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown!
+1793662415	cmd	Trentlin	52	29204	korzath2.are	fighting	98	0	fight	smite		Your smite does UNSPEAKABLE things to a killer clown! // A killer clown is DEAD!! // You receive 748 experience points (374 of them rested).
+1793662423	cmd	Trentlin	52	29204	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793662424	cmd	Trentlin	52	29205	korzath2.are	standing	98	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793662428	cmd	Trentlin	52	29205	korzath2.are	standing	98	0	-	shove	clown north	A killer clown resists your efforts to move him.
+1793662432	cmd	Trentlin	52	29205	korzath2.are	standing	98	0	-	shove	clown north	A killer clown resists your efforts to move him.
+1793662439	cmd	Trentlin	52	29205	korzath2.are	standing	98	0	-	shove	2.clown north	A killer clown resists your efforts to move him. // A killer clown decides he's tired of being shoved around! // You parry a killer clown's attack.
+1793662443	cmd	Trentlin	52	29205	korzath2.are	fighting	97	0	fight	smite		Your smite misses a killer clown.
+1793662449	cmd	Trentlin	52	29205	korzath2.are	fighting	96	0	fight	smite		Your smite === OBLITERATES === a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown! // Your smite does UNSPEAKABLE things to a killer clown!
+1793662457	cmd	Trentlin	52	29205	korzath2.are	fighting	94	0	fight	smite		Your smite does UNSPEAKABLE things to a killer clown! // Your smite ^^^ DESTROYS ^^^ a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793662465	cmd	Trentlin	52	29205	korzath2.are	fighting	94	0	fight	smite		Your smite does UNSPEAKABLE things to a killer clown! // Your smite does UNSPEAKABLE things to a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793662480	cmd	Trentlin	52	29205	korzath2.are	standing	93	0	-	look		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793662480	cmd	Trentlin	52	29206	korzath2.are	standing	93	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793662483	cmd	Trentlin	52	29206	korzath2.are	standing	93	0	-	smite	clown	Your smite <<< ERADICATES >>> a killer clown! // Your smite does UNSPEAKABLE things to a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793662491	cmd	Trentlin	52	29206	korzath2.are	fighting	93	0	fight	smite		Your smite >>> ANNIHILATES <<< a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown! // The Headless Horseman's Reaper shears through a killer clown with terrible force!
+1793662499	cmd	Trentlin	52	29206	korzath2.are	standing	93	0	-	look		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793662500	cmd	Trentlin	52	29207	korzath2.are	standing	93	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793662502	cmd	Trentlin	52	29208	korzath2.are	standing	93	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793662505	cmd	Trentlin	52	29208	korzath2.are	standing	93	0	-	look	mad	This deranged madman was trapped in the maze once he was determined to be // 'unworthy' in the Battleground Arena. // A deranged madman is in excellent condition.
+1793662508	cmd	Trentlin	52	29208	korzath2.are	standing	93	0	-	kill	mad	You MUTILATE a deranged madman! // A deranged madman dodges your attack. // A deranged madman parries your attack.
+1793662512	cmd	Trentlin	52	29208	korzath2.are	fighting	93	0	fight	smite		Your smite <<< ERADICATES >>> a deranged madman! // Your smite >>> ANNIHILATES <<< a deranged madman! // Your smite <<< ERADICATES >>> a deranged madman!
+1793662520	cmd	Trentlin	52	29208	korzath2.are	fighting	92	0	fight	smite		Your smite misses a deranged madman.
