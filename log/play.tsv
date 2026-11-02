@@ -28156,3 +28156,28 @@
 1793586177	cmd	Alaric	56	29211	korzath2.are	standing	74	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
 1793586178	cmd	Alaric	56	29211	korzath2.are	fighting	67	0	fight	kill	sk	You do the best you can!
 1793586181	cmd	Alaric	56	29211	korzath2.are	fighting	67	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a Shadowman. [-17] // Your fists of fury DISMEMBERS a Shadowman! [-48]
+1793586187	cmd	Alaric	56	29211	korzath2.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a Shadowman. [-24] // Your fists of fury decimates a Shadowman! [-28]
+1793586192	cmd	Alaric	56	29211	korzath2.are	fighting	32	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a Shadowman! [-39] // Your fists of fury ^^^ DESTROYS ^^^ a Shadowman! [-96]
+1793586198	cmd	Alaric	56	29211	korzath2.are	standing	23	0	-	fists		Who do you want to attack?
+1793586198	cmd	Alaric	56	29211	korzath2.are	standing	23	0	-	fists		Who do you want to attack?
+1793586212	cmd	Alaric	56	29211	korzath2.are	fighting	15	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a Shadowman! [-40] // Your fists of fury *** DEVASTATES *** a Shadowman! [-77]
+1793586218	cmd	Alaric	56	29211	korzath2.are	fighting	7	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a Shadowman! [-39] // Your fists of fury mauls a Shadowman. [-23]
+1793586225	cmd	Alaric	56	4207	dresden_halloween.are	standing	7	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793586225	cmd	Alaric	56	4207	dresden_halloween.are	standing	7	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar. //                     ACHIEVEMENT EARNED // No Place Like Home  +5 points
+1793586230	cmd	Alaric	56	4202	dresden_halloween.are	standing	7	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793586231	cmd	Alaric	56	4207	dresden_halloween.are	standing	7	0	-	north		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793586232	cmd	Alaric	56	4208	dresden_halloween.are	standing	7	0	-	north		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793586234	cmd	Alaric	56	4208	dresden_halloween.are	standing	7	0	-	sleep		You go to sleep.
+1793586235	cmd	Alaric	56	4208	dresden_halloween.are	sleeping	7	0	-	affect		You are affected by: // Skill: 'confuse' for 5 hours. // Skill: 'ego whip' modifies strength by -5 for 8 hours.
+1793586342	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'confuse' for 3 hours. // Skill: 'ego whip' modifies strength by -5 for 6 hours.
+1793586343	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      a diamond key //      (Glowing) a piece of trick-or-treat candy
+1793586349	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	commands	pcharm	put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      
+1793586352	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	compare	charm	A) a pumpkin-lantern charm (level 0) // B) the Crystalline Royal Cloak (level 50), worn // Slot: neck.  Your damage comes from weapons.
+1793586369	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    279 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793586370	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	leveling		Leveling channel is now OFF.
+1793586371	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	leveling		Leveling channel is now ON.
+1793586374	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	commands		put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      
+1793586394	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	help	blinding	BLINDING // Syntax: blinding <victim> // A precision strike or magical technique aimed directly at an enemy's eyes.
+1793586415	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	help	fist of	'FISTS OF FURY' FISTS // Syntax: fists <victim> // Fists of Fury is a more aggressive version of Blinding Fists, focused on
+1793586422	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	gainlist		Abilities for a level 56 monk of the monk guild: 25 learned, 9 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793586447	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'confuse' for 1 hours. // Skill: 'ego whip' modifies strength by -5 for 4 hours.
