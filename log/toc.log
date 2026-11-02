@@ -245928,3 +245928,22 @@ Mon Nov  2 13:59:31 2026 :: Black market: the dealer vanished from room 1644 (It
 Mon Nov  2 14:00:06 2026 :: Sock.sinaddr:  3.20.63.178
 Mon Nov  2 14:00:06 2026 :: EOF encountered on read.
 Mon Nov  2 14:00:23 2026 :: Black market: the dealer vanished from room 5806 (The Ruins of the Park Cafe, mid_ruin.are) (wandering).
+Mon Nov  2 14:05:10 2026 :: Sock.sinaddr:  52.87.72.16
+Mon Nov  2 14:05:10 2026 :: EOF encountered on read.
+Mon Nov  2 14:06:07 2026 :: Treasure goblin: vanished from room 1032 (A bushy clearing, uargo.are) (too long in one area).
+Mon Nov  2 14:06:57 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Mon Nov  2 14:07:01 2026 :: Log WebAdmin: fsave
+Mon Nov  2 14:07:07 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Mon Nov  2 14:07:07 2026 :: Black market: the dealer left the world from room 18236 (The inn restaurant, gelidia.are).
+Mon Nov  2 14:07:11 2026 :: Received signal 15; saving players and shutting down.
+Mon Nov  2 14:07:11 2026 :: Normal termination of game.
+Mon Nov  2 14:07:11 2026 ::  INIT OK 
+Mon Nov  2 14:07:11 2026 :: walkto_load: 157 destinations.
+Mon Nov  2 14:07:11 2026 :: changes_load: 207 entries.
+Mon Nov  2 14:07:11 2026 :: Recovery ledger: 259 records (0 from before the check), 0 requests, 7 players.
+Mon Nov  2 14:07:11 2026 :: ROM is ready to rock on port 9000.
+Mon Nov  2 14:07:11 2026 :: Treasure goblin: appeared.
+Mon Nov  2 14:07:11 2026 :: Automated backup complete.
+Mon Nov  2 14:07:11 2026 :: Daily backup complete.
+Mon Nov  2 14:10:00 2026 :: Sock.sinaddr:  23.31.96.97
+Mon Nov  2 14:10:00 2026 :: EOF encountered on read.
