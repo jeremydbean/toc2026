@@ -1170,6 +1170,42 @@ SCAN.
 See also: 'BLACK MARKET'
 ~
 
+0 HOLIDAYS HOLIDAY FESTIVALS 'HOLIDAY FAIR'~
+Syntax: holidays            (what is on, and this year's dates)
+        holidays <year>     (the dates in another year)
+
+The world keeps a calendar of holidays.  While one is on, a vendor and a
+decoration stand in the Oak Tree Square, the creatures of the world now
+and then carry the holiday's treat, shopkeepers mention it, and TIME and
+your login say so.  The vendors sell (BUY) and buy nothing.
+
+  Winter Veil         Dec 16 - Jan  6   gifts; Father Winter; Tinsel
+  Lunar Festival      Jan 21 - Feb  4   red envelopes: OPEN them for
+                                        lucky money; lanterns, rockets
+  Love is in the Air  Feb  7 - Feb 20   candy hearts; GIVE a red rose to
+                                        another adventurer to bless you both
+  St. Patrick's Day   Mar 14 - Mar 17   four-leaf clovers: EAT one and the
+                                        next foe you slay spills a pot of gold
+  Noblegarden         Easter week       painted eggs hidden all over
+                                        Dresden: OPEN them
+  Children's Week     Apr 30 - May  6   lollipops; toys for the orphanage
+  Midsummer Fire      Jun 21 - Jul  5   a bonfire; DROP a festival
+                                        firework and the whole area sees it
+  Pirates' Day        Sep 19            grog and tricorn hats.  Arr.
+  Brewfest            Sep 20 - Oct  6   DRINK from the festival keg, free
+  Hallows End         Oct 18 - Nov  1   trick-or-treat candy: EAT it for a
+                                        treat or a trick; the Horseman
+  Day of the Dead     Nov  2 - Nov  3   sugar skulls let you see a little
+                                        of what the departed see
+  Pilgrim's Bounty    Thanksgiving week a feast; pie and roast turkey
+
+Clovers, candy hearts and trick-or-treat candy are a bite, not a meal:
+you can eat them even when you are full.  A clover's luck keeps until
+you use it, up to three at a time, but not past leaving the game.
+
+See also: TIME, 'BLACK MARKET'
+~
+
 0 DISASTERS 'BLACK DRAGON'~
 Now and then a disaster strikes an area somebody is in: a flood, a
 lightning storm, an earthquake, a tornado, a sand storm, a brush fire or

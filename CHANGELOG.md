@@ -8,6 +8,22 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Holidays on a calendar** (2026-11-02, owner: World of Warcraft's
+  schedule, minor holidays simple). `src/holiday.c` holds the calendar --
+  Winter Veil, the Lunar Festival, Love is in the Air, St. Patrick's Day,
+  Noblegarden (Easter week, computed), Children's Week, the Midsummer
+  Fire Festival, Pirates' Day, Brewfest, Hallows End, the Day of the Dead
+  and Pilgrim's Bounty (Thanksgiving week, computed) -- and each one's
+  fair: a vendor and a decoration in the Oak Tree Square for the whole
+  holiday, a treat on NPC kills, a login line, TIME and a word from every
+  shopkeeper. Treats with a purpose: a four-leaf clover's pot of gold, a
+  red envelope of lucky money, a rose that blesses two, a firework the
+  area sees, painted eggs hidden in Dresden, trick-or-treat candy. New
+  `area/holidays.are` (29800-29899), the HOLIDAYS command and help, three
+  achievements. Hallows End and Winter Veil now read the same calendar,
+  and their vendors stand for the whole season instead of turning up at
+  random. Tests: `tests/test_holidays.py`.
+
 - **The black market's stock is logged** (2026-11-02, owner). Every
   stock he lays out -- at each visit and each staff restock -- writes
   `Black market: stock <id>: <item> (<vnum>, level <n>, <price>); ...`

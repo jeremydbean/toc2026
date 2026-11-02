@@ -1,0 +1,792 @@
+#AREA	{  0  0} Built-In  Holiday Fairs~
+
+
+
+#MOBILES
+#29800
+lin grandmother lantern seller vendor~
+Grandmother Lin the lantern seller~
+Grandmother Lin sits beneath a pole hung with red paper lanterns.
+~
+A tiny, bright-eyed old woman wrapped in red silk embroidered with golden
+clouds.  A bamboo pole over her shoulder is strung with paper lanterns, and
+a lacquered box at her feet holds sweets and rockets for the new year.  She
+bows to everyone who passes, as though each of them were her elder.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 2 0
+0 0 S 0
+
+#29801
+rosalind flower seller vendor~
+Rosalind the flower seller~
+Rosalind arranges red roses in a cart trimmed with paper hearts.
+~
+A young woman with rose petals caught in her dark curls and a pink ribbon
+around her wrist.  Her little cart overflows with red roses, boxes of
+chocolates and lockets on silver chains, and she hums a love song as she
+works.  She seems certain that everybody is in love with somebody.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 2 0
+0 0 S 0
+
+#29802
+finnegan tinker vendor~
+Finnegan the tinker~
+Finnegan the tinker sits on an overturned keg, whistling a jig.
+~
+A red-bearded little man in a green coat with brass buttons and a hat
+with a buckle on it.  He keeps a basket of clovers on one knee and a pint
+on the other, and swears that every clover in the basket is lucky -- the
+four-leafed ones especially, which he will not sell at any price.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 1 0
+0 0 S 0
+
+#29803
+hopscotch egg warden vendor~
+Hopscotch the egg warden~
+Hopscotch the egg warden peers about for eggs nobody has found yet.
+~
+A halfling in a waistcoat painted with flowers, wearing a pair of long
+cloth rabbit ears that flop when he nods.  He has hidden painted eggs all
+over Dresden and is very pleased with himself about it.  Somewhere in each
+egg, he says, is a little something for whoever finds it.
+~
+hobbit~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 1 0
+0 0 S 0
+
+#29804
+abigail matron orphanage vendor~
+Matron Abigail of the orphanage~
+Matron Abigail keeps one eye on her stall and one on a crowd of children.
+~
+A stout, kindly woman in a starched apron, surrounded by a small storm
+of orphans who keep stealing her lollipops.  She sells toys for the
+children's week fair and gives every copper of it to the orphanage, and
+she will tell you so whether you ask or not.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 2 0
+0 0 S 0
+
+#29805
+ashby keeper flame vendor~
+Keeper Ashby of the summer flame~
+Keeper Ashby tends the midsummer fire, sparks dancing about his hands.
+~
+A lean man in a robe of orange and gold, his eyebrows long since singed
+away.  He has kept the midsummer fire burning since before most of
+Dresden was born, and he sells flower crowns and rockets to anyone who
+will promise to honour the flame -- or at least not to put it out.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 1 0
+0 0 S 0
+
+#29806
+saltbeard captain pirate vendor~
+Captain Saltbeard~
+Captain Saltbeard leans on a barrel of grog, a parrot muttering on his shoulder.
+~
+A weathered old sea dog with one good eye, one peg leg and a beard white
+with salt.  His parrot repeats every price he names, a little higher.
+He has come ashore for one day a year to sell hats, grog and tall tales,
+and to see that the whole of Dresden talks like a proper pirate.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 1 0
+0 0 S 0
+
+#29807
+barley thumbtap brewmaster vendor~
+Barley Thumbtap the brewmaster~
+Barley Thumbtap the brewmaster rolls a keg across the square, beaming.
+~
+A dwarf as round as one of his own kegs, with a beard plaited around a
+wooden tap and an apron stained with every ale ever brewed.  He sells
+steins and pretzels for Brewfest and keeps the festival keg flowing for
+anyone thirsty enough to drink from it.
+~
+dwarf~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 1 0
+0 0 S 0
+
+#29808
+catrina candle keeper vendor~
+Catrina the candle-keeper~
+Catrina the candle-keeper lights candles on an altar of marigolds.
+~
+A slender woman whose face is painted as a smiling skull, white and
+black with flowers about the eyes.  She lights a candle for every name
+that is spoken to her and sells garlands and masks so that the living may
+dress as the dead, and the dead may feel at home among them.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 2 0
+0 0 S 0
+
+#29809
+prudence goodwife cook vendor~
+Goodwife Prudence the cook~
+Goodwife Prudence lays yet another dish on the harvest table.
+~
+A plump, flour-dusted woman with her sleeves rolled up and a ladle in
+each hand.  She has been cooking for the Pilgrim's Bounty feast for a
+week and will not rest until everyone in Dresden has eaten twice.  The
+smell of roast turkey and pumpkin pie follows her everywhere.
+~
+human~
+ABGM 0 0 S
+15 0 1d1+300 1d1+50 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 2 0
+0 0 S 0
+
+#0
+
+
+
+#OBJECTS
+#29810
+lanterns red paper decorations~
+strings of red paper lanterns~
+Strings of red paper lanterns sway overhead, glowing for the Lunar Festival.~
+paper~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+lanterns red paper decorations~
+Hundreds of red paper lanterns hang on strings from tree to tree across
+the square, each with a golden tassel and a wish written on it in neat
+black brush strokes.  When the wind moves them they glow like a field of
+little suns.  Rockets and red envelopes are said to bring luck this time
+of year; the lantern seller has the one, and the creatures of the world
+seem to carry the other.
+~
+
+#29811
+garland paper hearts decorations~
+a garland of paper hearts~
+A garland of paper hearts is strung across the square for Love is in the Air.~
+paper~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+garland paper hearts decorations~
+Pink and red paper hearts, hundreds of them, strung on ribbons from the
+oak's lowest branches to every lamp post in the square.  Some carry names.
+Some carry two names.  A red rose given to someone, the flower seller
+says, blesses the one who gives it and the one who receives it alike.
+~
+
+#29812
+rainbow painted pot gold decorations~
+a painted rainbow over a pot of gold~
+A rainbow painted on canvas arches over a pot of (painted) gold.~
+canvas~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+rainbow painted pot gold decorations~
+A great arch of canvas painted in every colour, propped on two poles, and
+at its foot a wooden pot painted gold.  The pot is empty -- somebody has
+checked.  The tinker swears the real gold turns up for those who eat a
+four-leafed clover, and that the creatures of the world have been finding
+four-leafed clovers all week.
+~
+
+#29813
+basket painted eggs decorations~
+a giant basket of painted eggs~
+A giant wicker basket of painted eggs sits at the foot of the oak.~
+wicker~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+basket painted eggs decorations~
+A wicker basket taller than a man, heaped with eggs painted in stripes,
+spots and swirls of every colour.  None of them are for taking: the egg
+warden has hidden plenty of others all over Dresden for that, and says
+that each one opens to show a little something inside.
+~
+
+#29814
+banner children week decorations~
+a banner painted by children~
+A long banner painted by children hangs across the square.~
+cloth~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+banner children week decorations~
+A long cloth banner painted in bright, wobbly letters: CHILDRENS WEEK.  Around
+the letters are dozens of small handprints, a lopsided dragon, a cat with
+seven legs, and what is probably the Oak Tree, drawn very large.
+~
+
+#29815
+bonfire midsummer fire flame decorations~
+a great midsummer bonfire~
+A great midsummer bonfire roars in the middle of the square.~
+wood~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+bonfire midsummer fire flame decorations~
+A pyramid of logs as tall as a house, roaring with flame and throwing
+sparks up past the leaves of the Oak Tree.  Flower crowns have been tossed
+into it for luck.  Now and then someone drops a festival rocket on the
+ground nearby, and the whole sky lights up.
+~
+
+#29816
+flag jolly roger pirate decorations~
+a tattered pirate flag~
+A tattered black flag with a grinning skull flaps from the oak's lowest branch.~
+cloth~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+flag jolly roger pirate decorations~
+A ragged black flag bearing a grinning skull above two crossed cutlasses.
+Somebody has run it up the Oak Tree for Pirates' Day, and nobody has dared
+to take it down.  Arr.
+~
+
+#29817
+keg festival brewfest decorations~
+a towering festival keg~
+A towering festival keg stands on a cradle, its tap dripping foam.~
+oak~
+25 A 0
+1000 1000 3 0 0
+0 1000 0 P
+E
+keg festival brewfest decorations~
+A keg the size of a cart, bound in iron hoops and painted with sheaves of
+barley.  Its brass tap drips foam onto the cobbles.  Anybody may DRINK
+from it, and Barley Thumbtap will not hear of anybody paying.
+~
+
+#29818
+ofrenda altar marigolds candles decorations~
+an ofrenda of marigolds and candles~
+An ofrenda heaped with marigolds and candles stands beneath the oak.~
+wood~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+ofrenda altar marigolds candles decorations~
+A tiered altar of painted wood, covered in orange marigolds, candles,
+sugar skulls and small portraits of the dead.  The candles never seem to
+burn down.  It is a day for remembering, the candle-keeper says, not for
+mourning, and the sugar skulls show you a little of what the dead see.
+~
+
+#29819
+harvest table feast decorations~
+a long harvest table laden with food~
+A long harvest table laden with food runs the length of the square.~
+wood~
+13 A 0
+0 0 0 0 0
+0 100 0 P
+E
+harvest table feast decorations~
+Trestle tables pushed end to end and buried under platters: roast turkey,
+sweet potatoes, cranberries, cornbread and more pumpkin pie than any town
+could eat.  Goodwife Prudence keeps adding to it.  A good meal, she says,
+leaves you stronger for the road.
+~
+
+#29820
+envelope red lucky~
+a red envelope~
+A red envelope stamped with a golden character lies here.~
+paper~
+15 A A
+5 5 0 5 100
+0 1 0 P
+E
+envelope red lucky~
+A little envelope of red paper stamped with a golden character for luck.
+Lucky money is given in these at the new year.  It is sealed: OPEN it and
+see what fortune holds.
+~
+
+#29821
+heart candy~
+a candy heart~
+A little pastel candy heart lies here.~
+sugar~
+26 A A
+10 3 0 0 0
+0 1 0 P
+E
+heart candy~
+A small, chalky candy heart in pale pink, with a message pressed into it
+in red letters.  You will have to eat it to read it properly.
+~
+
+#29822
+clover four-leaf four leaf shamrock~
+a four-leaf clover~
+A four-leaf clover lies here, green and lucky.~
+leaf~
+19 A A
+1 0 0 0 0
+0 1 0 P
+E
+clover four-leaf four leaf shamrock~
+A perfect four-leafed clover, the rarest of all.  Eat it, the tinker says,
+and the next foe you slay will turn up a pot of gold.
+~
+
+#29823
+egg painted~
+a brightly painted egg~
+A brightly painted egg sits here, half hidden.~
+eggshell~
+15 A A
+5 5 0 5 100
+0 1 0 P
+E
+egg painted~
+An egg painted in bright stripes and spots.  It is hollow and rattles a
+little when shaken: OPEN it to find what is inside.
+~
+
+#29824
+lollipop swirl candy~
+a swirled lollipop~
+A swirled rainbow lollipop lies here.~
+sugar~
+26 A A
+10 81 16 0 0
+0 1 150 P
+E
+lollipop swirl candy~
+A lollipop as big as your palm, swirled in every colour there is.  Eating
+it leaves you refreshed and a little less bruised.
+~
+
+#29825
+firework rocket festival~
+a festival firework~
+A festival firework, a paper rocket on a stick, lies here.~
+paper~
+13 A AO
+0 0 0 0 0
+0 1 500 P
+E
+firework rocket festival~
+A paper rocket on a long stick, painted red and gold, with a short fuse
+twisted from its tail.  DROP it and stand back.
+~
+
+#29826
+grog bottle~
+a bottle of grog~
+A dusty bottle of grog lies here.~
+glass~
+17 A A
+10 10 5 0 0
+0 1 200 P
+E
+grog bottle~
+A squat brown bottle of something that smells like rum, sugar and the
+bottom of a ship.  Pirates drink it.  Pirates are not known for their
+judgement.
+~
+
+#29827
+mug ale autumn~
+a mug of autumn ale~
+A frothing mug of autumn ale sits here.~
+pottery~
+17 A A
+10 10 3 0 0
+0 1 200 P
+E
+mug ale autumn~
+A heavy clay mug of dark autumn ale, spiced with something warm, a head of
+foam slopping over the rim.  Brewed for Brewfest.
+~
+
+#29828
+skull sugar~
+a sugar skull~
+A brightly decorated sugar skull lies here.~
+sugar~
+26 A A
+15 19 44 0 0
+0 1 200 P
+E
+skull sugar~
+A skull moulded from white sugar and decorated with icing flowers and
+coloured foil eyes.  They say that eating one lets you see a little of what
+the departed see.
+~
+
+#29829
+pie pumpkin slice~
+a slice of pumpkin pie~
+A slice of pumpkin pie sits here on a cloth.~
+food~
+26 A A
+15 3 16 0 0
+0 1 200 P
+E
+pie pumpkin slice~
+A thick wedge of pumpkin pie with a dollop of cream on top, smelling of
+cinnamon and clove.  A slice of this sets anyone up for the day.
+~
+
+#29830
+lantern red paper~
+a red paper lantern~
+A red paper lantern glows softly here.~
+paper~
+1 A A
+0 0 500 0 0
+0 1 300 P
+E
+lantern red paper~
+A round lantern of red paper over a bamboo frame, with a golden tassel
+hanging from the bottom.  A little candle inside burns a long time.
+~
+
+#29831
+rice cake sweet~
+a sweet rice cake~
+A sweet rice cake wrapped in a leaf sits here.~
+food~
+26 A A
+10 81 3 0 0
+0 1 200 P
+E
+rice cake sweet~
+A sticky, sweet rice cake wrapped in a bamboo leaf, eaten for luck at the
+new year.  It leaves you refreshed and blessed.
+~
+
+#29832
+rose red~
+a red rose~
+A single red rose lies here.~
+flower~
+13 A AO
+0 0 0 0 0
+0 1 300 P
+E
+rose red~
+A single long-stemmed red rose, its thorns carefully removed.  GIVE it to
+someone: the rose blesses the one who gives it and the one who receives it,
+and then it is spent.
+~
+
+#29833
+chocolates box heart~
+a heart-shaped box of chocolates~
+A heart-shaped box of chocolates sits here.~
+cardboard~
+26 A A
+15 61 81 0 0
+0 1 400 P
+E
+chocolates box heart~
+A red cardboard box shaped like a heart and tied with a ribbon, full of
+chocolates.  Eating them leaves you warm, refreshed and somewhat mended.
+~
+
+#29834
+locket heart silver~
+a heart-shaped locket~
+A silver heart-shaped locket on a chain lies here.~
+silver~
+9 A AC
+0 0 0 0 0
+0 1 500 P
+E
+locket heart silver~
+A little silver locket shaped like a heart, on a fine chain.  It opens to
+show a space for a portrait, which is empty.
+~
+
+#29835
+hat green felt buckle~
+a green felt hat~
+A tall green felt hat with a gold buckle lies here.~
+felt~
+9 A AE
+0 0 0 0 0
+0 1 400 P
+E
+hat green felt buckle~
+A tall green felt hat with a wide brim and a shining gold buckle on its
+band, with a sprig of shamrock tucked behind the buckle for luck.
+~
+
+#29836
+stout green pint~
+a pint of green stout~
+A pint of stout dyed a startling green sits here.~
+glass~
+17 A A
+10 10 4 0 0
+0 1 200 P
+E
+stout green pint~
+A pint glass of thick dark stout that somebody has dyed a startling green.
+It tastes exactly like stout, which is a relief.
+~
+
+#29837
+ears bunny rabbit~
+a pair of bunny ears~
+A pair of floppy cloth bunny ears lies here.~
+cloth~
+9 A AE
+0 0 0 0 0
+0 1 400 P
+E
+ears bunny rabbit~
+A headband with two long cloth rabbit ears, white outside and pink inside.
+They flop when you nod.
+~
+
+#29838
+rabbit chocolate~
+a chocolate rabbit~
+A chocolate rabbit wrapped in gold foil sits here.~
+chocolate~
+19 A A
+6 0 0 0 0
+0 1 200 P
+E
+rabbit chocolate~
+A hollow chocolate rabbit wrapped in gold foil, with a little red bow
+around its neck.  The ears are always the first to go.
+~
+
+#29839
+top spinning toy~
+a spinning top~
+A painted wooden spinning top lies here.~
+wood~
+13 A AO
+0 0 0 0 0
+0 1 200 P
+E
+top spinning toy~
+A wooden top painted with red and yellow spirals.  Give it a twist and it
+hums as it spins across the floor.
+~
+
+#29840
+kite paper toy~
+a paper kite~
+A paper kite with a long ribbon tail lies here.~
+paper~
+13 A AO
+0 0 0 0 0
+0 1 200 P
+E
+kite paper toy~
+A diamond-shaped kite of blue paper on a frame of reeds, with a long tail
+of knotted ribbons.  It tugs at your hand even when there is no wind.
+~
+
+#29841
+crown flowers summer~
+a crown of summer flowers~
+A crown of woven summer flowers lies here.~
+flower~
+9 A AE
+0 0 0 0 0
+0 1 400 P
+E
+crown flowers summer~
+A circlet of woven daisies, poppies and cornflowers, worn for the
+midsummer fire.  It smells of a long warm evening.
+~
+
+#29842
+hat tricorn pirate~
+a pirate's tricorn hat~
+A battered black tricorn hat lies here.~
+felt~
+9 A AE
+0 0 0 0 0
+0 1 400 P
+E
+hat tricorn pirate~
+A three-cornered black hat trimmed with frayed gold braid and a white
+feather.  It makes anybody who wears it say "arr" at least once.
+~
+
+#29843
+stein brewfest~
+a Brewfest stein~
+A great Brewfest stein with a pewter lid sits here.~
+pottery~
+17 A A
+20 0 0 0 0
+0 1 400 P
+E
+stein brewfest~
+A great stoneware stein painted with dancing dwarves and sheaves of
+barley, with a hinged pewter lid.  It holds a lot, and the festival keg is
+free to fill it from.
+~
+
+#29844
+pretzel soft~
+a soft pretzel~
+A warm soft pretzel speckled with salt sits here.~
+bread~
+19 A A
+8 0 0 0 0
+0 1 150 P
+E
+pretzel soft~
+A soft, warm pretzel the size of your two hands together, speckled with
+coarse salt.  The perfect thing to eat with an ale.
+~
+
+#29845
+garland marigold~
+a marigold garland~
+A garland of orange marigolds lies here.~
+flower~
+9 A AC
+0 0 0 0 0
+0 1 400 P
+E
+garland marigold~
+A thick garland of bright orange marigolds, worn about the neck on the Day
+of the Dead.  Marigolds, they say, light the way home.
+~
+
+#29846
+mask skull painted~
+a painted skull mask~
+A skull mask painted with flowers lies here.~
+paper~
+9 A AE
+0 0 0 0 0
+0 1 400 P
+E
+mask skull painted~
+A papier-mache mask in the shape of a smiling skull, painted white and
+black with bright flowers about the eye holes.
+~
+
+#29847
+hat pilgrim buckle black~
+a pilgrim's hat~
+A tall black pilgrim's hat with a buckle lies here.~
+felt~
+9 A AE
+0 0 0 0 0
+0 1 400 P
+E
+hat pilgrim buckle black~
+A tall, flat-topped black hat with a broad brim and a square silver
+buckle on its band.  Very sober.  Very serious.  Very hard to fit through
+a door.
+~
+
+#29848
+turkey roast plate~
+a plate of roast turkey~
+A steaming plate of roast turkey sits here.~
+food~
+26 A A
+15 39 81 0 0
+0 1 400 P
+E
+turkey roast plate~
+A heaped plate of roast turkey, stuffing and gravy.  A meal like this
+leaves you stronger and ready for the road.
+~
+
+#0
+
+
+
+#ROOMS
+#0
+
+
+
+#RESETS
+S
+
+
+
+#SHOPS
+29800 0 0 0 0 0 100 0 0 23
+29801 0 0 0 0 0 100 0 0 23
+29802 0 0 0 0 0 100 0 0 23
+29803 0 0 0 0 0 100 0 0 23
+29804 0 0 0 0 0 100 0 0 23
+29805 0 0 0 0 0 100 0 0 23
+29806 0 0 0 0 0 100 0 0 23
+29807 0 0 0 0 0 100 0 0 23
+29808 0 0 0 0 0 100 0 0 23
+29809 0 0 0 0 0 100 0 0 23
+0
+
+
+
+#$

@@ -5,9 +5,10 @@
  * area.lst so that the appropriate holiday variant is loaded automatically.
  * No area.lst edits or reboots are needed to switch seasons.
  *
- * WoW-inspired seasonal calendar:
- *   Hallows End  : Oct 18 – Nov  1  (halloween variants)
- *   Winter Veil  : Dec 16 – Jan  6  (xmas variants)
+ * The dates are holiday.c's calendar (holiday_key), which has every
+ * holiday; two of them swap areas here:
+ *   Hallows End  : Oct 18 - Nov  1  (halloween variants)
+ *   Winter Veil  : Dec 16 - Jan  6  (xmas variants)
  *   (all other dates load the standard versions)
  */
 
@@ -31,40 +32,14 @@ typedef enum
  */
 static SEASON_TYPE get_current_season( void )
 {
-    time_t     now;
-    struct tm *tm_now;
-    int        mon, day;
-    const char *forced;
+    /* One calendar for both (holiday.c, which also reads TOC_SEASON and
+       TOC_DATE): two of its holidays swap areas here. */
+    const char *key = holiday_key();
 
-    /* TOC_SEASON in the environment overrides the calendar: "none" for
-       the ordinary world, "halloween" or "xmas" for a season out of its
-       dates. The live tests set "none" so a run in late October or
-       December is not asserting on decorated room names, and set a
-       season on purpose to check its world boots whole (2026-10-19). */
-    forced = getenv( "TOC_SEASON" );
-    if ( forced != NULL && forced[0] != '\0' )
-    {
-        if ( !str_cmp( forced, "none" ) || !str_cmp( forced, "off" ) )
-            return SEASON_NORMAL;
-        if ( !str_cmp( forced, "halloween" ) )
-            return SEASON_HALLOWEEN;
-        if ( !str_cmp( forced, "xmas" ) || !str_cmp( forced, "christmas" ) )
-            return SEASON_CHRISTMAS;
-    }
-
-    now    = time( NULL );
-    tm_now = localtime( &now );
-    mon    = tm_now->tm_mon + 1;   /* 1-12 */
-    day    = tm_now->tm_mday;      /* 1-31 */
-
-    /* Hallows End: Oct 18 – Nov 1 */
-    if ( (mon == 10 && day >= 18) || (mon == 11 && day == 1) )
+    if ( key != NULL && !str_cmp( key, "halloween" ) )
         return SEASON_HALLOWEEN;
-
-    /* Winter Veil: Dec 16 – Jan 6 */
-    if ( (mon == 12 && day >= 16) || (mon == 1 && day <= 6) )
+    if ( key != NULL && !str_cmp( key, "xmas" ) )
         return SEASON_CHRISTMAS;
-
     return SEASON_NORMAL;
 }
 
@@ -148,29 +123,6 @@ static time_t event_boss_spawn_time = 0;
 
 /* Average ticks between spawns: 48 hours × 60 ticks/hour = 2880. */
 #define EVENT_BOSS_SPAWN_ODDS  2880
-
-/* ---- Seasonal vendors ---- */
-CHAR_DATA *event_vendor_halloween = NULL;
-CHAR_DATA *event_vendor_winter    = NULL;
-static time_t vendor_spawn_time   = 0;
-
-/* Average ticks before vendors spawn: 6 hours × 60 ticks/hour = 360. */
-#define VENDOR_SPAWN_ODDS  360
-
-static bool seasonal_character_exists( const CHAR_DATA *target )
-{
-    LIST_ITERATOR iter;
-    CHAR_DATA *ch;
-
-    if ( target == NULL )
-        return FALSE;
-
-    FOR_EACH_CHARACTER( iter, ch )
-        if ( ch == target )
-            return TRUE;
-
-    return FALSE;
-}
 
 
 /* -----------------------------------------------------------
@@ -444,8 +396,8 @@ void despawn_event_boss( void )
  * ----------------------------------------------------------- */
 void tick_event_boss( void )
 {
-    /* Tick vendor spawning alongside boss spawning. */
-    tick_seasonal_vendors();
+    /* The holiday fair in the square: vendor, decoration, eggs. */
+    holiday_tick();
 
     /* --- Case 1: check if boss still lives --- */
     if ( event_boss_mob != NULL && !verify_event_boss() )
@@ -530,154 +482,3 @@ void tick_event_boss( void )
             spawn_event_boss( 0 );  /* 0 = auto-detect from season */
     }
 }
-
-
-/* ===========================================================
- * Seasonal vendor support
- * ===========================================================
- *
- * During active seasonal events, one or two wandering merchants
- * appear in Dresden's Oak Tree Square selling holiday items.
- * They despawn after VENDOR_DURATION seconds (4 hours).
- * =========================================================== */
-
-/* One of each, as a shop's endless stock (ITEM_INVENTORY): BUY hands over
-   a fresh copy and LIST shows the item once. She used to carry ten plain
-   copies of each, and LIST printed all twenty (2026-10-23). */
-static void give_vendor_items( CHAR_DATA *vendor, int item_vnum1, int item_vnum2 )
-{
-    int vnums[2];
-    OBJ_INDEX_DATA *pObj;
-    OBJ_DATA       *obj;
-    int             i;
-
-    vnums[0] = item_vnum1;
-    vnums[1] = item_vnum2;
-    for ( i = 0; i < 2; i++ )
-    {
-        if ( ( pObj = get_obj_index( vnums[i] ) ) == NULL )
-            continue;
-        obj = create_object( pObj, 0 );
-        SET_BIT( obj->extra_flags, ITEM_INVENTORY );
-        obj_to_char( obj, vendor );
-    }
-}
-
-
-void spawn_seasonal_vendors( void )
-{
-    MOB_INDEX_DATA  *pMob;
-    ROOM_INDEX_DATA *room;
-    SEASON_TYPE      season;
-
-    season = get_current_season();
-    if ( season == SEASON_NORMAL )
-        return;
-
-    if ( ( room = get_room_index( VENDOR_SPAWN_ROOM ) ) == NULL )
-    {
-        bug( "spawn_seasonal_vendors: spawn room %d not found.", VENDOR_SPAWN_ROOM );
-        return;
-    }
-
-    if ( season == SEASON_HALLOWEEN && event_vendor_halloween == NULL )
-    {
-        if ( ( pMob = get_mob_index( MOB_VNUM_VENDOR_HALLOWEEN ) ) != NULL )
-        {
-            event_vendor_halloween = create_mobile( pMob );
-            char_to_room( event_vendor_halloween, room );
-            give_vendor_items( event_vendor_halloween,
-                               OBJ_VNUM_JACK_O_MASK,
-                               OBJ_VNUM_CANDY_CORN );
-            boss_global_shout(
-                "Madame Hexley the Hallows End merchant has appeared in "
-                "Dresden's Oak Tree Square with holiday wares for sale!" );
-        }
-    }
-    else if ( season == SEASON_CHRISTMAS && event_vendor_winter == NULL )
-    {
-        if ( ( pMob = get_mob_index( MOB_VNUM_VENDOR_WINTER ) ) != NULL )
-        {
-            event_vendor_winter = create_mobile( pMob );
-            char_to_room( event_vendor_winter, room );
-            give_vendor_items( event_vendor_winter,
-                               OBJ_VNUM_ELF_HAT,
-                               OBJ_VNUM_SPICED_CIDER );
-            boss_global_shout(
-                "Tinsel the Winter Veil gift elf has skipped into Dresden's "
-                "Oak Tree Square with holiday gifts and treats for sale!" );
-        }
-    }
-
-    vendor_spawn_time = time( NULL );
-}
-
-
-void despawn_seasonal_vendors( void )
-{
-    if ( event_vendor_halloween != NULL
-    &&   !seasonal_character_exists(event_vendor_halloween) )
-        event_vendor_halloween = NULL;
-    if ( event_vendor_winter != NULL
-    &&   !seasonal_character_exists(event_vendor_winter) )
-        event_vendor_winter = NULL;
-
-    if ( event_vendor_halloween != NULL )
-    {
-        act( "$N calls out 'Come find me again next year!' and vanishes into the shadows.",
-             NULL, NULL, event_vendor_halloween, TO_ROOM );
-        extract_char( event_vendor_halloween, TRUE );
-        event_vendor_halloween = NULL;
-    }
-    if ( event_vendor_winter != NULL )
-    {
-        act( "$N gives a cheerful wave and disappears in a flurry of snowflakes.",
-             NULL, NULL, event_vendor_winter, TO_ROOM );
-        extract_char( event_vendor_winter, TRUE );
-        event_vendor_winter = NULL;
-    }
-    vendor_spawn_time = 0;
-}
-
-
-void tick_seasonal_vendors( void )
-{
-    SEASON_TYPE season;
-
-    /* Clear stale pointers before any timed path dereferences a vendor. */
-    if ( event_vendor_halloween != NULL
-    &&   !seasonal_character_exists(event_vendor_halloween) )
-        event_vendor_halloween = NULL;
-    if ( event_vendor_winter != NULL
-    &&   !seasonal_character_exists(event_vendor_winter) )
-        event_vendor_winter = NULL;
-
-    if ( event_vendor_halloween == NULL && event_vendor_winter == NULL )
-        vendor_spawn_time = 0;
-
-    /* Despawn if either live vendor has overstayed their welcome. */
-    if ( ( event_vendor_halloween != NULL || event_vendor_winter != NULL )
-    &&   vendor_spawn_time > 0
-    &&   ( time(NULL) - vendor_spawn_time ) >= VENDOR_DURATION )
-    {
-        despawn_seasonal_vendors();
-        return;
-    }
-
-    /* Roll for a new spawn if none active. */
-    season = get_current_season();
-    if ( season == SEASON_NORMAL )
-        return;
-
-    if ( season == SEASON_HALLOWEEN && event_vendor_halloween == NULL )
-    {
-        if ( number_range( 1, VENDOR_SPAWN_ODDS ) == 1 )
-            spawn_seasonal_vendors();
-    }
-    else if ( season == SEASON_CHRISTMAS && event_vendor_winter == NULL )
-    {
-        if ( number_range( 1, VENDOR_SPAWN_ODDS ) == 1 )
-            spawn_seasonal_vendors();
-    }
-}
-

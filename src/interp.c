@@ -278,6 +278,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "heal",		do_heal,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "hearts",		do_hearts,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "hold",		do_wear,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "holidays",	do_holidays,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "list",		do_list,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "lock",		do_lock,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "move",		do_move,	POS_RESTING,	 0,  LOG_NORMAL, 1 },

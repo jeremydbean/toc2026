@@ -519,6 +519,7 @@ DECLARE_DO_FUN( do_pray         );
 DECLARE_DO_FUN( do_farslay      );
 DECLARE_DO_FUN( do_spellpurge   );
 DECLARE_DO_FUN( do_summonevent  );
+DECLARE_DO_FUN( do_holidays     );
 DECLARE_DO_FUN( do_resetpwd     );
 DECLARE_DO_FUN( do_newbie       );
 DECLARE_DO_FUN( do_unalias      );

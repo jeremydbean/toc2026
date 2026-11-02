@@ -2149,10 +2149,10 @@ void do_time( CHAR_DATA *ch, char *argument )
     }
 
     {
-        const char *season = get_season_name();
+        const char *season = holiday_name();
         if ( season != NULL )
         {
-            snprintf(buf, sizeof(buf), "The world is celebrating %s!\n\r", season);
+            snprintf(buf, sizeof(buf), "The world is celebrating %s! (HOLIDAYS)\n\r", season);
             send_to_char( buf, ch );
         }
     }

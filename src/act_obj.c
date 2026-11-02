@@ -2086,6 +2086,10 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	act( "$n drops $p.", ch, obj, NULL, TO_ROOM );
 	act( "You drop $p.", ch, obj, NULL, TO_CHAR );
 
+	/* A festival firework goes up (holiday.c). */
+	if ( holiday_dropped( ch, obj ) )
+	    return;
+
 	/* Get rid of sub issue stuff *HAIKU*/
 	if ( obj->pIndexData != NULL
 	&&   (obj->pIndexData->vnum >= 3700)
@@ -2345,6 +2349,8 @@ void do_give( CHAR_DATA *ch, char *argument )
     act( "$n gives $p to $N.", ch, obj, victim, TO_NOTVICT );
     act( "$n gives you $p.",   ch, obj, victim, TO_VICT    );
     act( "You give $p to $N.", ch, obj, victim, TO_CHAR    );
+    /* A red rose blesses giver and taker and is spent (holiday.c). */
+    holiday_given( ch, victim, obj );
     return;
 }
 /*
@@ -3128,6 +3134,7 @@ void do_eat( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     bool save_reward = false;
+    int eaten_vnum;
 
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
@@ -3157,7 +3164,8 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	/* Heroes never fill (gain_condition), so they are never too
 	   full: a pill or a training cake is not a meal. */
 	if ( !IS_NPC(ch) && ch->level < LEVEL_HERO
-	&&   ch->pcdata->condition[COND_FULL] > 40 )
+	&&   ch->pcdata->condition[COND_FULL] > 40
+	&&   !holiday_snack( obj ) )
 	{
 	    send_to_char( "You are too full to eat more.\n\r", ch );
 	    return;
@@ -3181,6 +3189,7 @@ void do_eat( CHAR_DATA *ch, char *argument )
 
     act( "$n eats $p.",  ch, obj, NULL, TO_ROOM );
     act( "You eat $p.", ch, obj, NULL, TO_CHAR );
+    eaten_vnum = obj->pIndexData != NULL ? obj->pIndexData->vnum : 0;
 
     switch ( obj->item_type )
     {
@@ -3230,6 +3239,7 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	    obj_cast_spell( sn2, plevel, ch, ch, NULL );
 	    if ( ch->in_room == NULL ) return;
 	    obj_cast_spell( sn3, plevel, ch, ch, NULL );
+	    holiday_eaten( ch, eaten_vnum );
 	}
 	return;
 
@@ -3252,6 +3262,7 @@ void do_eat( CHAR_DATA *ch, char *argument )
     if ( !( obj->item_type == ITEM_FOOD
          && obj->value[VAL_ENDLESS_SLOT] == VAL_ENDLESS ) )
 	extract_obj( obj );
+    holiday_eaten( ch, eaten_vnum );
     if ( save_reward )
 	save_char_obj( ch );
     return;
@@ -5151,14 +5162,8 @@ void do_list( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	/* Seasonal shop flavour message */
-	{
-	    const char *season = get_season_name();
-	    if ( season != NULL && !str_cmp( season, "Hallows End" ) )
-	        act( "$n slides a bowl of trick-or-treat candy across the counter with a grin.", keeper, NULL, ch, TO_VICT );
-	    else if ( season != NULL && !str_cmp( season, "Winter Veil" ) )
-	        act( "$n gestures to the small evergreen decorated behind the counter. 'Happy Winter Veil!'", keeper, NULL, ch, TO_VICT );
-	}
+	/* The holiday's word from every shopkeeper (holiday.c). */
+	holiday_shop_flavour( keeper, ch );
 	return;
     }
 }

@@ -3213,16 +3213,9 @@ void make_corpse( CHAR_DATA *ch )
     if ( IS_NPC(ch) )
         hyrule_boss_drops( ch, corpse );
 
-    /* Seasonal event drops: 15% chance a killed NPC drops a seasonal item. */
+    /* The holiday's treat, now and then (holiday.c's table). */
     if ( IS_NPC(ch) )
-    {
-        const char *season = get_season_name();
-        int drop_vnum = 0;
-        if ( season != NULL && !str_cmp( season, "Hallows End"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_CANDY;
-        if ( season != NULL && !str_cmp( season, "Winter Veil"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_GIFT;
-        if ( drop_vnum != 0 && number_percent() <= 15 )
-            add_loot_to_corpse( corpse, drop_vnum );
-    }
+        holiday_corpse_drop( corpse, ch );
 
     /* Event boss drops: the table in season.c, which LOOK shows players,
        so what they were told and what falls cannot differ. */
@@ -3516,6 +3509,9 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         treasure_goblin_slain( ch, victim );
       if ( is_disaster_dragon( victim ) )
         disaster_dragon_slain( ch, victim );
+      /* A four-leaf clover's pot of gold, into the purse the corpse
+         takes its coin from. */
+      holiday_kill( ch, victim );
       make_corpse( victim );
       if ( IS_NPC(victim) )
       {

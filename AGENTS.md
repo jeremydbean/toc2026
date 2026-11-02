@@ -187,12 +187,19 @@ git diff --check
 Current October 2026 Python baseline:
 
 ```text
-102 listed area entries
-2,498 mobiles
-3,722 objects
+103 listed area entries
+2,508 mobiles
+3,760 objects
 7,786 rooms
-0 critical, 12 warning, 1,648 information findings
+0 critical, 12 warning, 1,698 information findings
 ```
+
+The holiday fairs (`area/holidays.are`, 2026-11-02) added the entry, ten
+mobiles (the vendors), thirty-nine objects and exactly fifty information
+findings: every one of them is made by `holiday.c` -- a vendor when its
+holiday starts, its wares, the decoration, the treats on corpses and the
+eggs -- and nothing places them with a reset. The count read 102, 2,498,
+3,721 and 1,648 before them.
 
 The October 2026 fidelity audit's enemy corrections added generated
 Hyrule enemies for kinds new to their band (darknuts in Levels 5 and 8, zols
@@ -245,7 +252,7 @@ parsing mistake behind the claim.
 
 Seven list entries are help/social files without `#AREA` (`commands`,
 `routelist`, `skills`, `spells`, `masters`, `toc`, `social`), so the native
-validator reports 95 areas against the Python tools' 102 entries. Online
+validator reports 96 areas against the Python tools' 103 entries. Online
 building saves into `custom.are` (`BUILDER_AREA_FILE`); because `area.lst`
 lists it, boot creates no extra area. Do not force native and Python area
 totals to match by removing valid files or hiding the builder area.
@@ -1302,6 +1309,57 @@ committed receipt all undo the corpse to history as `undone`. Its cost is
 that nothing the player does between the death and the recording is
 saved. `death-recorded-crash` dies between recording and the save
 (`tests/test_death_unrecorded.py`).
+
+## The Holiday Calendar
+
+`src/holiday.c` (owner, 2026-11-02: World of Warcraft's schedule; minor
+holidays simple -- clovers with a purpose, a Valentine's theme). One
+table, `holidays[]`, holds every holiday: its key, name, dates, login and
+TIME line, shopkeepers' word, treat and its chance, vendor and wares, and
+decoration. Rules the code depends on:
+
+- **One calendar.** `holiday_current()` decides what is on; season.c's
+  `get_current_season()` asks `holiday_key()` and swaps areas for
+  `halloween` and `xmas` only. A date is never compared anywhere else.
+  The table is checked in order and the first match wins, so St.
+  Patrick's Day (Mar 14-17) beats a Noblegarden that reaches back into
+  it. Noblegarden is Easter week (`easter_date`, the Gregorian computus),
+  Pilgrim's Bounty Thanksgiving week (`thanksgiving_day`, the fourth
+  Thursday of November); the rest are fixed, Winter Veil across the new
+  year. `HOLIDAYS <year>` prints any year's dates from the same code.
+- **Test switches**: `TOC_SEASON` takes any holiday's key (`love`,
+  `stpatrick`, `noblegarden`, ...) or `none`, which `tests/live_mud.py`
+  sets by default; `TOC_DATE=YYYY-MM-DD` sets the date the calendar reads;
+  `TOC_HOLIDAY_DROPS=always` makes every NPC kill drop the treat. TIME's
+  holiday line is the last line of `TIME_BARRIER_RE`, so a synced reply
+  never carries it.
+- **The fair is put up by the tick** (`holiday_tick`, from
+  `tick_event_boss`): the decoration in the Oak Tree Square (2401) and
+  the vendor for the whole holiday, both taken down when it ends, eggs
+  too. Staff `HOLIDAYS REFRESH` runs it at once. The vendor is found
+  again before use (`holiday_char_exists`), as a purge can take it. The
+  two seasons' vendors (Hexley, Tinsel) are rows like the rest and no
+  longer spawn at random. A decoration is found by vnum, never kept as a
+  pointer.
+- **Treats with a purpose**, each one hook: `holiday_corpse_drop`
+  (make_corpse; red envelopes and eggs are filled as made, coin counted
+  in kills at the carrier's level), `holiday_kill` (raw_kill, before the
+  corpse: a clover's pot of gold goes into the victim's purse so the
+  corpse lays it out), `holiday_eaten` (do_eat, after the object is gone:
+  clover luck, candy heart, trick-or-treat), `holiday_given` (do_give: a
+  rose to another player blesses both and is spent), `holiday_dropped`
+  (single DROP: a firework; the area hears one at most every
+  `FIREWORK_AREA_GAP` seconds, so rockets are no way to shout). Clover
+  luck is `pcdata->holiday_luck`, memory only, at most `LUCK_MAX`.
+  `holiday_snack` lets a clover, a candy heart and trick-or-treat candy
+  past "too full" -- every new character starts full.
+- **Holiday objects are unlevelled** (level 0), so
+  `tools/reprice_by_level.py` leaves their prices alone and they price no
+  shelf; nothing sold is free, since a shop sells at least for a copper.
+- `tests/test_holidays.py` plays the calendar by date (Noblegarden in
+  2027, Easter and Thanksgiving across two years), Love's rose, St.
+  Patrick's clover and pot of gold, the Lunar envelope, Midsummer's
+  firework, trick-or-treat candy and an empty square out of season.
 
 ## The Seasonal Areas Are Generated
 

@@ -544,6 +544,33 @@ them only where the relevant game operator is present. Hi/Lo and roulette bets
 range from 1 to 100,000 gold and require confirmation above 500 gold. Video
 poker accepts 5 to 200 gold.
 
+## Holidays
+
+The world keeps a calendar of holidays, after World of Warcraft's: the
+Lunar Festival, Love is in the Air, St. Patrick's Day, Noblegarden (Easter
+week), Children's Week, the Midsummer Fire Festival, Pirates' Day,
+Brewfest, Hallows End, the Day of the Dead, Pilgrim's Bounty
+(Thanksgiving week) and Winter Veil. `HOLIDAYS` lists this year's dates;
+`HOLIDAYS 2027` another year's.
+
+While one is on, a vendor and a decoration stand in the Oak Tree Square,
+the creatures of the world now and then carry the holiday's treat, and
+TIME and your login say so. Some treats do something:
+
+| Holiday | Treat | What it does |
+| --- | --- | --- |
+| Lunar Festival | red envelope | `OPEN` it: lucky money, about three kills' coin |
+| Love is in the Air | red rose (bought) | `GIVE` it to another player: you are both blessed |
+| St. Patrick's Day | four-leaf clover | `EAT` it: the next foe you slay spills a pot of gold |
+| Noblegarden | painted egg | hidden all over Dresden; `OPEN` it for a sweet, a toy or coin |
+| Midsummer | festival firework | `DROP` it: it bursts over the whole area |
+| Brewfest | festival keg | `DRINK` from it in the square, free |
+| Hallows End | trick-or-treat candy | `EAT` it: a treat, or a harmless trick |
+| Day of the Dead | sugar skull | `EAT` it: see the invisible and the hidden |
+
+Clovers, candy hearts and trick-or-treat candy can be eaten even when you
+are full. `HELP HOLIDAYS` has the whole list.
+
 ## Groups And Social Play
 
 Use `follow <leader>`, `group <name>`, `gtell <message>`, `report`, `rescue`,

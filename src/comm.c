@@ -3727,6 +3727,7 @@ case CON_DEFAULT_CHOICE:
 	       anyone, and player reports for staff. Both used to be
 	       silent -- a report went into a flat file that nothing in
 	       the game ever mentioned again. */
+	    holiday_login_notice( ch );
 	    report_login_notice( ch );
 	}
 	break;

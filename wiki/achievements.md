@@ -5,11 +5,12 @@ the progression and collection model used by modern MMORPGs. Achievements are
 recognition and long-term goals: they award points, dates, and announcements,
 but never combat stats or economic rewards.
 
-The catalog holds **386** achievements: 203 from before 2026-10-25, the
+The catalog holds **389** achievements: 203 from before 2026-10-25, the
 175 of the 2026-10-25 expansion (rare encounters, more named bosses,
 combat and teamwork, skills and crafting, quests and exploration, Hyrule's
-actions and secrets, collection, services and world events), and 8 close
-calls and comedy rows from 2026-11-01. Every point
+actions and secrets, collection, services and world events), 8 close
+calls and comedy rows from 2026-11-01, and 3 for the holiday fairs from
+2026-11-02. Every point
 earned is also a **mark** that can be spent at `REDEEM` on cosmetic and
 convenience perks; spending marks never lowers points.
 
@@ -393,6 +394,9 @@ the hooks are installed.
 | `funny-sleepwalk` | Sleepwalker | Try to do something while fast asleep. | 5 | yes | interp.c interpret_body (refused asleep) | from now |
 | `funny-already-home` | No Place Like Home | Pray to recall while already standing at your recall point. | 5 | yes | act_move.c recall_travel (own prayer) | from now |
 | `funny-flee-nothing` | Brave Sir Robin | Try to flee when nothing is fighting you. | 5 | yes | fight.c do_flee (not fighting) | from now |
+| `holiday-rose` | A Rose by Any Name | Give a red rose to another adventurer. | 10 |  | holiday.c holiday_given (Love is in the Air's rose, to a player) | from now |
+| `holiday-firework` | Light Up the Sky | Set off a festival firework. | 5 |  | holiday.c holiday_dropped | from now |
+| `holiday-gold` | Pot of Gold | Slay a foe with a four-leaf clover's luck on you. | 10 |  | holiday.c holiday_kill (St. Patrick's clover) | from now |
 
 ### Deferred candidates
 
@@ -448,7 +452,7 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 
 The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 512
 timestamp slots through `MAX_ACHIEVEMENTS`, checked at compile time by
-`achievement_table_must_fit`; the current catalog uses 386. Add a new entry
+`achievement_table_must_fit`; the current catalog uses 389. Add a new entry
 only with a unique key that will never be repurposed, at the end of the
 table, and never move an old row.
 

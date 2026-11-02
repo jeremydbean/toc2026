@@ -575,7 +575,12 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "close-call-divine", "Not Today", "Be spared certain death by divine protection.", ACH_CAT_MISADVENTURE, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DIVINE_SAVE, 0 },
     { "funny-sleepwalk", "Sleepwalker", "Try to do something while fast asleep.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_SLEEPWALK, 0 },
     { "funny-already-home", "No Place Like Home", "Pray to recall while already standing at your recall point.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_ALREADY_HOME, 0 },
-    { "funny-flee-nothing", "Brave Sir Robin", "Try to flee when nothing is fighting you.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FLEE_NOTHING, 0 }
+    { "funny-flee-nothing", "Brave Sir Robin", "Try to flee when nothing is fighting you.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FLEE_NOTHING, 0 },
+
+    /* The holiday fairs (holiday.c; owner, 2026-11-02). */
+    { "holiday-rose", "A Rose by Any Name", "Give a red rose to another adventurer.", ACH_CAT_ENCOUNTERS, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_HOLIDAY_ROSE, 0 },
+    { "holiday-firework", "Light Up the Sky", "Set off a festival firework.", ACH_CAT_ENCOUNTERS, 5, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_HOLIDAY_FIREWORK, 0 },
+    { "holiday-gold", "Pot of Gold", "Slay a foe with a four-leaf clover's luck on you.", ACH_CAT_ENCOUNTERS, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_HOLIDAY_GOLD, 0 }
 };
 
 typedef char achievement_table_must_fit[

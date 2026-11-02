@@ -202,7 +202,10 @@ typedef enum
     ACHIEVEMENT_EVENT_DIVINE_SAVE,
     ACHIEVEMENT_EVENT_SLEEPWALK,
     ACHIEVEMENT_EVENT_ALREADY_HOME,
-    ACHIEVEMENT_EVENT_FLEE_NOTHING
+    ACHIEVEMENT_EVENT_FLEE_NOTHING,
+    ACHIEVEMENT_EVENT_HOLIDAY_ROSE,
+    ACHIEVEMENT_EVENT_HOLIDAY_FIREWORK,
+    ACHIEVEMENT_EVENT_HOLIDAY_GOLD
 } achievement_event_type;
 
 /* Counted achievements (achievements.c). Saved by name as
@@ -1610,10 +1613,60 @@ typedef struct hyrule_dungeon_gate
 #define OBJ_VNUM_CANDY_CORN        29932  /* a bag of candy corn */
 #define OBJ_VNUM_SPICED_CIDER      29933  /* a cup of hot spiced cider */
 
+/* The holiday fairs (holidays.are, holiday.c). */
+#define MOB_VNUM_VENDOR_LUNAR        29800
+#define MOB_VNUM_VENDOR_LOVE         29801
+#define MOB_VNUM_VENDOR_STPATRICK    29802
+#define MOB_VNUM_VENDOR_NOBLEGARDEN  29803
+#define MOB_VNUM_VENDOR_CHILDREN     29804
+#define MOB_VNUM_VENDOR_MIDSUMMER    29805
+#define MOB_VNUM_VENDOR_PIRATES      29806
+#define MOB_VNUM_VENDOR_BREWFEST     29807
+#define MOB_VNUM_VENDOR_DEADDAY      29808
+#define MOB_VNUM_VENDOR_PILGRIM      29809
+#define OBJ_VNUM_DECOR_LUNAR         29810
+#define OBJ_VNUM_DECOR_LOVE          29811
+#define OBJ_VNUM_DECOR_STPATRICK     29812
+#define OBJ_VNUM_DECOR_NOBLEGARDEN   29813
+#define OBJ_VNUM_DECOR_CHILDREN      29814
+#define OBJ_VNUM_DECOR_MIDSUMMER     29815
+#define OBJ_VNUM_DECOR_PIRATES       29816
+#define OBJ_VNUM_DECOR_BREWFEST      29817
+#define OBJ_VNUM_DECOR_DEADDAY       29818
+#define OBJ_VNUM_DECOR_PILGRIM       29819
+#define OBJ_VNUM_RED_ENVELOPE        29820
+#define OBJ_VNUM_CANDY_HEART         29821
+#define OBJ_VNUM_FOUR_LEAF_CLOVER    29822
+#define OBJ_VNUM_PAINTED_EGG         29823
+#define OBJ_VNUM_LOLLIPOP            29824
+#define OBJ_VNUM_FIREWORK            29825
+#define OBJ_VNUM_GROG                29826
+#define OBJ_VNUM_AUTUMN_ALE          29827
+#define OBJ_VNUM_SUGAR_SKULL         29828
+#define OBJ_VNUM_PUMPKIN_PIE         29829
+#define OBJ_VNUM_PAPER_LANTERN       29830
+#define OBJ_VNUM_RICE_CAKE           29831
+#define OBJ_VNUM_RED_ROSE            29832
+#define OBJ_VNUM_CHOCOLATES          29833
+#define OBJ_VNUM_HEART_LOCKET        29834
+#define OBJ_VNUM_GREEN_HAT           29835
+#define OBJ_VNUM_GREEN_STOUT         29836
+#define OBJ_VNUM_BUNNY_EARS          29837
+#define OBJ_VNUM_CHOCOLATE_RABBIT    29838
+#define OBJ_VNUM_SPINNING_TOP        29839
+#define OBJ_VNUM_PAPER_KITE          29840
+#define OBJ_VNUM_FLOWER_CROWN        29841
+#define OBJ_VNUM_TRICORN             29842
+#define OBJ_VNUM_STEIN               29843
+#define OBJ_VNUM_PRETZEL             29844
+#define OBJ_VNUM_MARIGOLDS           29845
+#define OBJ_VNUM_SKULL_MASK          29846
+#define OBJ_VNUM_PILGRIM_HAT         29847
+#define OBJ_VNUM_ROAST_TURKEY        29848
+
 /* Spawn room for seasonal event bosses and vendors: Dresden Oak Tree Square */
 #define EVENT_BOSS_SPAWN_ROOM      2401
 #define VENDOR_SPAWN_ROOM          2401   /* same square as bosses */
-#define VENDOR_DURATION            14400  /* seconds before vendor despawns (4 hours) */
 
 /* Item types. */
 #define ITEM_LIGHT                    1
@@ -2357,6 +2410,7 @@ struct  pc_data
     /* Last session snapshot (persisted to player file) */
     long                last_logout;          /* when they last left the game */
     long                oracle_daze_until;    /* back from the Oracle, dazed until (memory only) */
+    int                 holiday_luck;         /* four-leaf clovers eaten, not yet spent (memory only) */
     long                rest_xp;              /* rested bonus experience left (rested.c) */
     bool                rest_eligible;        /* quit somewhere they could rest */
     int                 daily_points;         /* daily quest points, apart from quest points */
@@ -3956,12 +4010,22 @@ const EVENT_DROP *event_boss_drops     ( int mob_vnum );
 void              event_boss_show_drops( CHAR_DATA *victim, CHAR_DATA *ch );
 void        tick_event_boss         ( void );
 int         get_event_boss_vnum     ( void );
-void        spawn_seasonal_vendors  ( void );
-void        despawn_seasonal_vendors( void );
-void        tick_seasonal_vendors   ( void );
 extern CHAR_DATA *event_boss_mob;
-extern CHAR_DATA *event_vendor_halloween;
-extern CHAR_DATA *event_vendor_winter;
+
+/* holiday.c */
+void        holiday_date            ( int *year, int *mon, int *day );
+const char *holiday_name            ( void );
+const char *holiday_key             ( void );
+void        holiday_tick            ( void );
+void        holiday_corpse_drop     ( OBJ_DATA *corpse, CHAR_DATA *victim );
+void        holiday_eaten           ( CHAR_DATA *ch, int vnum );
+bool        holiday_snack           ( OBJ_DATA *obj );
+bool        holiday_given           ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj );
+bool        holiday_dropped         ( CHAR_DATA *ch, OBJ_DATA *obj );
+void        holiday_kill            ( CHAR_DATA *ch, CHAR_DATA *victim );
+void        holiday_login_notice    ( CHAR_DATA *ch );
+void        holiday_shop_flavour    ( CHAR_DATA *keeper, CHAR_DATA *ch );
+extern CHAR_DATA *event_vendor;
 
 #undef  CD
 #undef  MID

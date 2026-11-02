@@ -147,7 +147,9 @@ TIME_BARRIER_RE = re.compile(
     r"It is \d+ o'clock [ap]m, Day of [^\n]*\n\r?"
     r"TOC started up at [^\n]*\n\r?"
     r"The system time is [^\n]*\n\r?"
-    r"(?:(?:A New Moon is in the sky|A Crescent Moon is in the sky|A Full Moon is up)\.\n?\r?)?")
+    r"(?:(?:A New Moon is in the sky|A Crescent Moon is in the sky|A Full Moon is up)\.\n?\r?)?"
+    # And in a holiday (holiday.c; tests pick one with TOC_SEASON) its line.
+    r"(?:The world is celebrating [^\n]*\n?\r?)?")
 BARRIERS = {"worth": BARRIER_RE, "time": TIME_BARRIER_RE}
 
 

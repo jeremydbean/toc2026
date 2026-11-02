@@ -122,15 +122,17 @@ class RareEventAndSkillTests(unittest.TestCase):
         self.assertIn("event_boss_spawn_time = 0", self.season)
 
     def test_stale_event_vendors_are_checked_before_despawn(self) -> None:
-        tick = function_body(
-            self.season, "void tick_seasonal_vendors", "\n}"
-        )
-        stale_check = tick.index("Clear stale pointers")
-        timed_despawn = tick.index("Despawn if either live vendor")
-
-        self.assertLess(stale_check, timed_despawn)
-        self.assertIn("seasonal_character_exists(event_vendor_halloween)", tick)
-        self.assertIn("seasonal_character_exists(event_vendor_winter)", tick)
+        # The vendors moved to holiday.c (2026-11-02): one vendor for
+        # whatever holiday is on, gone when it ends. A purged vendor must
+        # still be found missing before anything reads it.
+        holiday = (ROOT / "src" / "holiday.c").read_text(encoding="latin-1")
+        tick = function_body(holiday, "void holiday_tick", "\n}")
+        stale_check = tick.index("holiday_char_exists( event_vendor )")
+        leave = tick.index("vendor_leave()")
+        self.assertLess(stale_check, leave)
+        leaving = function_body(holiday, "static void vendor_leave", "\n}")
+        self.assertLess(leaving.index("holiday_char_exists( event_vendor )"),
+                        leaving.index("extract_char( event_vendor"))
 
     def test_hero_quest_progress_and_cleanup_are_persistent(self) -> None:
         quest_master = function_body(

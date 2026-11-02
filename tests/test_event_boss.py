@@ -74,7 +74,7 @@ class SeasonalVendorSourceTests(unittest.TestCase):
         # Madame Hexley carried ten plain copies of each item and LIST
         # printed all twenty (2026-10-23); one ITEM_INVENTORY copy is a
         # shop's endless stock and lists once.
-        text = (ROOT / "src" / "season.c").read_text(encoding="latin-1")
+        text = (ROOT / "src" / "holiday.c").read_text(encoding="latin-1")
         body = text[text.index("static void give_vendor_items"):]
         body = body[:body.index("\n}\n")]
         self.assertIn("SET_BIT( obj->extra_flags, ITEM_INVENTORY )", body)
