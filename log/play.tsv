@@ -27695,3 +27695,114 @@
 1793583409	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	who		[56 Dwarf   Lord  ] Alaric. // [51 Dwarf   Hero  ] Trentlin the Hero of the Fifth Order // Players found: 2
 1793583409	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	where		Players near you: // There's no one around you.
 1793583421	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	gossip	how do i get the key for bg1?	You gossip 'how do i get the key for bg1?'
+1793583453	cmd	Alaric	56	4205	dresden_halloween.are	standing	100	0	-	gossip	After the levers are pulled, should be able to go down and fight the gatekeeper, or guardian. Whatever it's called	You gossip 'After the levers are pulled, should be able to go down and fight the gatekeeper, or guardian. Whatever it's called'
+1793583454	cmd	Alaric	56	4205	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793583455	cmd	Alaric	56	4205	dresden_halloween.are	standing	100	0	-	look		The Hall of Guttering Candles //   A thousand candles stand on every ledge and flagstone of this domed hall, // and a draught from nowhere keeps making them gutter all at once, so that the
+1793583456	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	north		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583459	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	run	e 3	You can't run until you regain your sense of direction.
+1793583459	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	north		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793583460	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	north		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583461	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	run	e 8	You can't run until you regain your sense of direction.
+1793583461	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	open		There is no door to the east, just open passage.
+1793583462	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	run	e 19	You can't run until you regain your sense of direction.
+1793583463	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793583464	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	look		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583465	cmd	Alaric	56	4205	dresden_halloween.are	standing	100	0	-	east		The Hall of Guttering Candles //   A thousand candles stand on every ledge and flagstone of this domed hall, // and a draught from nowhere keeps making them gutter all at once, so that the
+1793583465	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583466	cmd	Alaric	56	3700	school.are	standing	100	0	-	east		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793583466	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	north		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583466	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	north		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793583467	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	run	e 8	You can't run until you regain your sense of direction.
+1793583469	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'confuse' for 4 hours. // Skill: 'levitate' for 3 hours.
+1793583470	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793583471	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793583471	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	east		The door is closed.
+1793583472	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	look		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583475	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	pull	5	You can't do that to the 5.
+1793583477	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	east		The door is closed.
+1793583478	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583483	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	look	mad	You do not see that here.
+1793583486	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	look	guy	A guy in a clown mask wanders around aimlessly. // A killer clown is in excellent condition.
+1793583488	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	consider	clo	A killer clown is well above your level. // A killer clown has about twice your hit points. // Blow for blow, you would need about 7 rounds to bring a killer clown down; he would need about 7 rounds for you.
+1793583492	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	scan		You don't see anything near you.
+1793583494	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583495	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583496	cmd	Trentlin	51	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793583497	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	east		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583501	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583502	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	scan		Guardian Knight                    -to the far South. // a killer clown                     -to the West.
+1793583504	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583506	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	kill	clo	You ^^^ DESTROY ^^^ a killer clown! // You ^^^ DESTROY ^^^ a killer clown! // A killer clown parries your attack.
+1793583508	cmd	Trentlin	51	29203	korzath2.are	fighting	92	0	fight	smite		Your smite <<< ERADICATES >>> a killer clown! // Your smite <<< ERADICATES >>> a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793583516	cmd	Trentlin	51	29203	korzath2.are	fighting	62	0	fight	smite		Your smite misses a killer clown.
+1793583523	cmd	Trentlin	51	29203	korzath2.are	fighting	47	0	fight	smite		Your smite >>> ANNIHILATES <<< a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793583528	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	gossip	Then has an exit that goes back to the directions to choose which wing you go to	You gossip 'Then has an exit that goes back to the directions to choose which wing you go to'
+1793583536	cmd	Trentlin	51	29203	korzath2.are	fighting	33	0	fight	smite		Your smite misses a killer clown.
+1793583544	cmd	Trentlin	51	29203	korzath2.are	fighting	25	0	fight	smite		Your smite misses a killer clown. // Your smite <<< ERADICATES >>> a killer clown! // A killer clown is DEAD!!
+1793583553	cmd	Trentlin	51	29203	korzath2.are	standing	27	0	-	look	in co	Corpse of a killer clown contains: //      Nothing.
+1793583562	cmd	Trentlin	51	29203	korzath2.are	standing	27	0	-	sacrifice	cor	The Gods give you 118 copper coins for your sacrifice.
+1793583563	cmd	Trentlin	51	29203	korzath2.are	standing	27	0	-	scan		You don't see anything near you.
+1793583564	cmd	Trentlin	51	29203	korzath2.are	standing	27	0	-	look		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583568	cmd	Trentlin	51	29203	korzath2.are	standing	27	0	-	look	stone	You read the stone: // The First of Three Hero Tests // The first test will evaluate your combat skills and test your
+1793583576	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	look		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583577	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583578	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583581	cmd	Trentlin	51	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793583584	cmd	Trentlin	51	29204	korzath2.are	standing	100	0	-	scan		a killer clown                     -to the South. // a killer clown                     -to the South. // a killer clown                     -to the South.
+1793583586	cmd	Trentlin	51	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793583590	cmd	Trentlin	51	29205	korzath2.are	standing	100	0	-	shove	clown north	A killer clown resists your efforts to move him.
+1793583594	cmd	Trentlin	51	29205	korzath2.are	standing	100	0	-	shove	clown north	A killer clown resists your efforts to move him. // A killer clown decides he's tired of being shoved around! // You parry a killer clown's attack.
+1793583596	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'confuse' for 2 hours. // Skill: 'levitate' for 1 hours.
+1793583601	cmd	Trentlin	51	29205	korzath2.are	fighting	63	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle.
+1793583601	cmd	Trentlin	51	29205	korzath2.are	fighting	63	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the east. // A killer clown has fled!
+1793583602	cmd	Trentlin	51	29205	korzath2.are	standing	63	0	-	flee		You aren't fighting anyone.
+1793583602	cmd	Trentlin	51	29205	korzath2.are	standing	63	0	-	flee		You aren't fighting anyone.
+1793583604	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	who		[56 Dwarf   Lord  ] Alaric. // [51 Dwarf   Hero  ] Trentlin the Hero of the Fifth Order // Players found: 2
+1793583605	cmd	Trentlin	51	29205	korzath2.are	fighting	49	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the north. // A killer clown has fled!
+1793583605	cmd	Trentlin	51	29205	korzath2.are	standing	49	0	-	flee		You aren't fighting anyone.
+1793583605	cmd	Trentlin	51	29205	korzath2.are	standing	49	0	-	flee		You aren't fighting anyone.
+1793583605	cmd	Trentlin	51	29205	korzath2.are	standing	49	0	-	flee		You aren't fighting anyone.
+1793583606	cmd	Trentlin	51	29205	korzath2.are	standing	49	0	-	flee		You aren't fighting anyone.
+1793583606	refused	Trentlin	51	29205	korzath2.are	fighting	49	0	fight	(unknown)		Huh?
+1793583607	cmd	Trentlin	51	29205	korzath2.are	fighting	49	0	fight	look		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793583608	cmd	Trentlin	51	29205	korzath2.are	fighting	49	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the north. // A killer clown has fled!
+1793583608	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	group		Alaric's group: // [56 Monk ] Alaric           1455/1455 hp 2758/2758 mana  614/1087 mv 235021 xp
+1793583608	cmd	Trentlin	51	29205	korzath2.are	standing	49	0	-	flee		You aren't fighting anyone.
+1793583609	cmd	Trentlin	51	29204	korzath2.are	standing	49	0	-	north		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793583610	cmd	Trentlin	51	29203	korzath2.are	standing	49	0	-	east		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793583612	cmd	Trentlin	51	29202	korzath2.are	standing	49	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583615	cmd	Trentlin	51	29202	korzath2.are	standing	49	0	-	sleep		You go to sleep.
+1793583617	cmd	Trentlin	51	29202	korzath2.are	sleeping	49	0	-	group		Trentlin's group: // [51 W] Trentlin          449/ 911 hp 1454/1454 mana  349/ 356 mv 115308 xp
+1793583618	cmd	Trentlin	51	29202	korzath2.are	sleeping	49	0	-	wake		You wake and stand up.
+1793583618	cmd	Trentlin	51	29201	korzath2.are	standing	49	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793583618	cmd	Trentlin	51	29004	korzath1.are	standing	49	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793583618	cmd	Trentlin	51	29003	korzath1.are	standing	49	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793583620	cmd	Trentlin	51	29003	korzath1.are	standing	49	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1793583622	cmd	Trentlin	51	29003	korzath1.are	standing	49	0	-	recall		Your prayer goes up and comes back unanswered.
+1793583623	cmd	Trentlin	51	29003	korzath1.are	standing	49	0	-	recall		Your prayer goes up and comes back unanswered.
+1793583624	cmd	Alaric	56	4208	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793583626	cmd	Trentlin	51	4207	dresden_halloween.are	standing	52	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583629	cmd	Trentlin	51	4208	dresden_halloween.are	standing	52	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793583632	cmd	Trentlin	51	4207	dresden_halloween.are	standing	52	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583632	cmd	Trentlin	51	4202	dresden_halloween.are	standing	52	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793583634	cmd	Trentlin	51	4203	dresden_halloween.are	standing	52	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793583634	cmd	Trentlin	51	4210	dresden_halloween.are	standing	52	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793583634	cmd	Trentlin	51	4210	dresden_halloween.are	standing	52	0	-	north		Alas, you cannot go that way.
+1793583635	cmd	Trentlin	51	4210	dresden_halloween.are	standing	52	0	-	sleep		You go to sleep.
+1793583644	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	52	0	-	gossip	cool, thanks, have to work at that tomorrow	You gossip 'cool, thanks, have to work at that tomorrow'
+1793583646	session	Trentlin	51	4210	dresden_halloween.are	quit	1225s	+1 levels	+2805 exp	+85757911 copper	4 kills	0 deaths	1 quests	541 commands	3 refused	coin: loot 11p 41g 72s 11c, quests 94p 64g 7s, spent 20p 30g
+1793583661	cmd	Alaric	56	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583661	cmd	Alaric	56	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793583662	cmd	Alaric	56	4201	dresden_halloween.are	standing	100	0	-	north		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793583662	cmd	Alaric	56	2427	dresden_halloween.are	standing	100	0	-	north		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793583664	cmd	Alaric	56	2427	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    278 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793583735	cmd	Alaric	56	2427	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793583735	cmd	Alaric	56	2427	dresden_halloween.are	standing	100	0	-	look		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793583737	cmd	Alaric	56	2428	dresden_halloween.are	standing	100	0	-	south		Main Processional, Toward the Mermaids' Bridge //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Children run past you in sheets and
+1793583738	cmd	Alaric	56	2427	dresden_halloween.are	standing	100	0	-	north		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793583739	cmd	Alaric	56	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793583740	cmd	Alaric	56	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793583744	cmd	Alaric	56	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      a diamond key //      (Glowing) a piece of trick-or-treat candy
+1793583748	cmd	Alaric	56	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793583749	cmd	Alaric	56	2426	dresden_halloween.are	standing	100	0	-	open		It's already open.
+1793583750	cmd	Alaric	56	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
