@@ -3487,8 +3487,11 @@ does the same at `GOBLIN_AREA_MAX` while nobody is with or after him.
 **Logged -- but never where he is now.** `log/` reaches a public
 repository every five minutes, and he stays twenty to forty minutes, so a
 logged room was a map to him (found in review, 2026-10-20: the synced log
-named his room within minutes). Arrivals (stock size, how long) and
-purchases (buyer, item, vnum, price) go to the log without a room;
+named his room within minutes). Arrivals (stock size, how long),
+every stock in full (`bm_log_stock`, from `black_market_restock`: each
+item's name, vnum, level and price; owner, 2026-11-02: always log what he
+carries) and purchases (buyer, item, vnum, price) go to the log without a
+room;
 WIZINFO, which only staff online see, carries the room as well.
 Departures and vanishings log the room he *left* and why, never where he
 went, and a staff summons logs who called him, not to where. The goblin

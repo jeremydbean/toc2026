@@ -293,6 +293,14 @@ class BlackMarketLiveTests(unittest.TestCase):
             self.assertRegex(saved, re.compile(r"^BlackMarket \d+ .*\b%d\b.*~$" % vnum, re.M))
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
             self.assertIn("Black market: Zbuyer bought", log)
+            # Every stock is logged whole -- the last one is what he held --
+            # and names no room (owner, 2026-11-02).
+            stocks = re.findall(r"Black market: stock \d+: (.*)$", log, re.M)
+            self.assertGreaterEqual(len(stocks), 13, "the arrival and each restock")
+            logged = [int(v) for v in re.findall(r"\((\d+), level \d+, [^)]+\)", stocks[-1])]
+            self.assertEqual(sorted(logged), sorted(stock), stocks[-1])
+            self.assertNotIn("room", stocks[-1])
+            self.assertNotIn("{", stocks[-1], "colour tokens are stripped")
             self.assertIn("Black market: the dealer vanished from room %d" % TEMPLE, log)
             # The buyer is watched (LOG ALL), and log/ is public within
             # minutes: their lines beside the dealer name no room.

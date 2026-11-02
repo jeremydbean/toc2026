@@ -35,6 +35,8 @@
  * each neighbouring room, so it sees him one room out; do_scan skips him
  * any further.
  */
+#include <ctype.h>
+#include <string.h>
 #include <time.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -552,6 +554,53 @@ static bool bm_stock_one( CHAR_DATA *dealer, int vnum )
     return true;
 }
 
+/* Append text to a line with its colour tokens ({ and two hex digits)
+   dropped: the log is read as plain text. */
+static void bm_append_plain( char *line, size_t size, const char *text )
+{
+    size_t len = strlen( line );
+
+    while ( *text != '\0' && len + 1 < size )
+    {
+        if ( text[0] == '{' && isxdigit( (unsigned char) text[1] )
+        &&   isxdigit( (unsigned char) text[2] ) )
+        {
+            text += 3;
+            continue;
+        }
+        line[len++] = *text++;
+    }
+    line[len] = '\0';
+}
+
+/* Every stock is written down whole (owner, 2026-11-02: always log the
+   items he carries) -- name, vnum, level and price -- so what the market
+   has offered can be read back later. Never the room: that is the arrival
+   line's WIZINFO alone. */
+static void bm_log_stock( CHAR_DATA *dealer )
+{
+    OBJ_DATA *obj;
+    char line[MAX_STRING_LENGTH * 2];
+    char price[64];
+    char item[96];
+
+    snprintf( line, sizeof(line), "Black market: stock %ld:", bm_stock_id );
+    for ( obj = dealer->carrying; obj != NULL; obj = obj->next_content )
+    {
+        toc_strlcat( line, obj == dealer->carrying ? " " : "; ", sizeof(line) );
+        bm_append_plain( line, sizeof(line),
+                         obj->short_descr != NULL ? obj->short_descr : "something" );
+        format_price( obj->cost, price, sizeof(price) );
+        snprintf( item, sizeof(item), " (%d, level %d, %s)",
+                  obj->pIndexData->vnum, obj->level, price );
+        toc_strlcat( line, item, sizeof(line) );
+    }
+    if ( dealer->carrying == NULL )
+        toc_strlcat( line, " nothing", sizeof(line) );
+    toc_strlcat( line, ".", sizeof(line) );
+    log_string( line );
+}
+
 #define BM_PICK(list) \
     ( (list)[number_range( 0, (int)( sizeof(list) / sizeof((list)[0]) ) - 1 )] )
 
@@ -588,6 +637,8 @@ void black_market_restock( void )
     for ( tries = 0; tries < 50 && bm_pool_size > 0
           && bm_stock_count( dealer ) < BM_STOCK_MAX; tries++ )
         bm_stock_one( dealer, bm_pool[number_range( 0, bm_pool_size - 1 )] );
+
+    bm_log_stock( dealer );
 }
 
 

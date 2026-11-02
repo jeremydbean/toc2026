@@ -8,6 +8,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The black market's stock is logged** (2026-11-02, owner). Every
+  stock he lays out -- at each visit and each staff restock -- writes
+  `Black market: stock <id>: <item> (<vnum>, level <n>, <price>); ...`
+  to the log, colour stripped, never with a room. Until now the log
+  said only how many items he carried.
+
 - **Close calls and comedy: eight achievements** (2026-11-01, owner).
   By a Thread (flee on one hit point), Live to Fight Another Day and
   Answered Prayer (flee or recall out of a fight on a twentieth of your
