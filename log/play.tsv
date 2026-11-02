@@ -26707,3 +26707,14 @@
 1793554816	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
 1793554818	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	where	hermie	You didn't find any hermie.
 1793554822	session	Trentlin	50	2497	dresden_halloween.are	quit	56s	+0 levels	+0 exp	+121680900 copper	1 kills	0 deaths	1 quests	58 commands	0 refused	coin: loot 1g 2s 3c, quests 121p 68g 9s, spent 60g
+1793578135	cmd	Alaric	56	4208	dresden_halloween.are	standing	69	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793578138	cmd	Alaric	56	4207	dresden_halloween.are	standing	69	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793578138	cmd	Alaric	56	4202	dresden_halloween.are	standing	69	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793578139	cmd	Alaric	56	4203	dresden_halloween.are	standing	69	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793578139	cmd	Alaric	56	4210	dresden_halloween.are	standing	69	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793578140	cmd	Alaric	56	4210	dresden_halloween.are	standing	69	0	-	sleep		You go to sleep.
+1793578140	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	69	0	-	sleep		You are already sleeping.
+1793578141	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	69	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    277 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793578145	refused	Alaric	56	4210	dresden_halloween.are	sleeping	69	0	-	(unknown)		Huh? Did you mean TIME?
+1793578146	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	69	0	-	time		It is 1 o'clock pm, Day of the Sun, 13th the Month of the Spring. // TOC started up at Sun Nov  1 23:11:01 2026 // The system time is Mon Nov  2 00:09:06 2026
+1793578152	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	85	0	-	changes		What is new, newest first: // 2026-11-01 //   Eight new achievements for close calls: flee on a single hit point, flee
