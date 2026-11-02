@@ -5285,7 +5285,18 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-	move_char( ch, door, false );
+	{
+	    /* Deaths so far: a trap on the way out or in kills inside
+	       move_char and moves a player to the death room, which reads
+	       as a room other than was_in, and the room captured after the
+	       move cannot tell an escape from that (review, 2026-11-02). */
+	    long deaths = IS_NPC(ch) ? 0 : ch->pcdata->achievement_deaths;
+
+	    move_char( ch, door, false );
+	    if ( ch->in_room == NULL || ch->position == POS_DEAD
+	    ||   ( !IS_NPC(ch) && ch->pcdata->achievement_deaths != deaths ) )
+		return;     /* the way out killed them: no flight, no close call */
+	}
 	if ( ( now_in = ch->in_room ) == was_in )
 	    continue;
 

@@ -13571,9 +13571,8 @@ void do_summonevent( CHAR_DATA *ch, char *argument )
     one_argument( argument, arg );
     season_name = get_season_name();   /* NULL if off-season */
 
-    /* Validate event_boss_mob -- it may be a dangling pointer if the boss
-     * was killed by players since the last tick fired verify_event_boss(). */
-    verify_event_boss();
+    /* event_boss_mob is cleared as the boss leaves the world (its death,
+       or event_boss_forget from extract_char), so it is never stale. */
 
     /* --- Status query --- */
     if ( !str_cmp( arg, "status" ) )
@@ -13585,6 +13584,11 @@ void do_summonevent( CHAR_DATA *ch, char *argument )
         }
         else
             send_to_char( "Active season  : none (off-season)\n\r", ch );
+        snprintf( buf, sizeof(buf), "Areas loaded   : %s\n\r",
+                  season_loaded_name() != NULL
+                      ? season_loaded_name()
+                      : "the ordinary ones (no seasonal copies at boot)" );
+        send_to_char( buf, ch );
 
         if ( event_boss_mob != NULL )
         {

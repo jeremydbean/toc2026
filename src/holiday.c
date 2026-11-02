@@ -51,6 +51,7 @@
 #include <stdio.h>
 #include "merc.h"
 #include "list.h"
+#include "holiday_rules.h"
 
 enum { RULE_FIXED, RULE_EASTER, RULE_THANKSGIVING };
 
@@ -234,63 +235,67 @@ static const HOLIDAY *decorated = NULL;
 
 /* ------------------------------------------------------------ the date */
 
-/* Days from 1970-01-01 to y-m-d, proleptic Gregorian (Hinnant's). */
-static long days_from_civil( int y, int m, int d )
-{
-    long era, yoe, doy, doe;
+#define days_from_civil   holiday_days_from_civil
+#define easter_date       holiday_easter
+#define thanksgiving_day  holiday_thanksgiving
 
-    y -= m <= 2;
-    era = ( y >= 0 ? y : y - 399 ) / 400;
-    yoe = y - era * 400;
-    doy = ( 153 * ( m + ( m > 2 ? -3 : 9 ) ) + 2 ) / 5 + d - 1;
-    doe = yoe * 365 + yoe / 4 - yoe / 100 + doy;
-    return era * 146097 + doe - 719468;
+/* A test's date, from TOC_DATE_FILE (read at every call, so one running
+   world can be walked from holiday to holiday) or TOC_DATE. Either must
+   be a whole, real YYYY-MM-DD; anything else is logged once and ignored,
+   and the host's clock is used. */
+static bool holiday_test_date( int *y, int *m, int *d )
+{
+    static char complained[64];
+    const char *file = getenv( "TOC_DATE_FILE" );
+    const char *text = getenv( "TOC_DATE" );
+    char line[64];
+
+    if ( file != NULL && file[0] != '\0' )
+    {
+        FILE *fp = fopen( file, "r" );
+
+        line[0] = '\0';
+        if ( fp != NULL )
+        {
+            if ( fgets( line, sizeof(line), fp ) == NULL )
+                line[0] = '\0';
+            fclose( fp );
+        }
+        line[strcspn( line, "\r\n" )] = '\0';
+        if ( line[0] == '\0' )
+            return false;          /* an empty file: the clock */
+        text = line;
+    }
+    if ( text == NULL || text[0] == '\0' )
+        return false;
+    if ( holiday_parse_date( text, y, m, d ) )
+        return true;
+    if ( strcmp( complained, text ) )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        toc_strlcpy( complained, text, sizeof(complained) );
+        snprintf( buf, sizeof(buf), "holiday: test date '%s' is not a real "
+                  "YYYY-MM-DD; using the clock.", text );
+        log_string( buf );
+    }
+    return false;
 }
 
-/* Today, from TOC_DATE when a test sets it, else the host's clock. */
+/* Today. The calendar follows the host's local clock (localtime, so the
+   TZ the game runs under), unless a test sets a date. */
 void holiday_date( int *year, int *mon, int *day )
 {
-    const char *forced = getenv( "TOC_DATE" );
-    int y, m, d;
+    time_t now;
+    struct tm *tm_now;
 
-    if ( forced != NULL && sscanf( forced, "%d-%d-%d", &y, &m, &d ) == 3
-    &&   y >= 1900 && y <= 9999 && m >= 1 && m <= 12 && d >= 1 && d <= 31 )
-    {
-        *year = y; *mon = m; *day = d;
+    if ( holiday_test_date( year, mon, day ) )
         return;
-    }
-    {
-        time_t now = time( NULL );
-        struct tm *tm_now = localtime( &now );
-
-        *year = tm_now->tm_year + 1900;
-        *mon  = tm_now->tm_mon + 1;
-        *day  = tm_now->tm_mday;
-    }
-}
-
-/* Easter Sunday (the anonymous Gregorian computus). */
-static void easter_date( int y, int *mon, int *day )
-{
-    int a = y % 19, b = y / 100, c = y % 100, d = b / 4, e = b % 4;
-    int f = ( b + 8 ) / 25, g = ( b - f + 1 ) / 3;
-    int h = ( 19 * a + b - d - g + 15 ) % 30;
-    int i = c / 4, k = c % 4;
-    int l = ( 32 + 2 * e + 2 * i - h - k ) % 7;
-    int m = ( a + 11 * h + 22 * l ) / 451;
-
-    *mon = ( h + l - 7 * m + 114 ) / 31;
-    *day = ( ( h + l - 7 * m + 114 ) % 31 ) + 1;
-}
-
-/* The fourth Thursday of November. */
-static int thanksgiving_day( int y )
-{
-    long nov1 = days_from_civil( y, 11, 1 );
-    int  wday = (int)( ( ( nov1 % 7 ) + 7 + 4 ) % 7 );   /* 0 is Sunday */
-    int  first = 1 + ( 4 - wday + 7 ) % 7;
-
-    return first + 21;
+    now = time( NULL );
+    tm_now = localtime( &now );
+    *year = tm_now->tm_year + 1900;
+    *mon  = tm_now->tm_mon + 1;
+    *day  = tm_now->tm_mday;
 }
 
 /* The first and last day of a holiday whose window holds year y's date
@@ -518,6 +523,24 @@ bool holiday_snack( OBJ_DATA *obj )
     return false;
 }
 
+/* do_eat, before anything is eaten: a clover is refused, and kept, when
+   the eater already carries all the luck they can -- it used to be eaten
+   and wasted with a line saying so. True when refused. */
+bool holiday_eat_refused( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( ch == NULL || obj == NULL || obj->pIndexData == NULL || IS_NPC(ch)
+    ||   obj->pIndexData->vnum != OBJ_VNUM_FOUR_LEAF_CLOVER
+    ||   ch->pcdata->holiday_luck < LUCK_MAX )
+        return false;
+    snprintf( buf, sizeof(buf),
+              "You already carry all the luck one person can: %d kills' worth. "
+              "Keep the clover until a pot of gold has spilled.\n\r", LUCK_MAX );
+    send_to_char( buf, ch );
+    return true;
+}
+
 /* do_eat, once the thing is eaten (and gone): what holiday treats do
    besides feed or cast. The character may be gone if a pill's spell
    moved them, so the caller asks first. */
@@ -535,13 +558,16 @@ void holiday_eaten( CHAR_DATA *ch, int vnum )
         if ( IS_NPC(ch) )
             return;
         if ( ch->pcdata->holiday_luck >= LUCK_MAX )
-        {
-            send_to_char( "You already have all the luck one person can carry.\n\r", ch );
-            return;
-        }
+            return;      /* holiday_eat_refused stops this before the bite */
         ch->pcdata->holiday_luck++;
-        send_to_char( "{0AA warm, green luck settles over you. The next foe you "
-                      "slay will spill a pot of gold.{00\n\r", ch );
+        snprintf( buf, sizeof(buf),
+                  "{0AA warm, green luck settles over you. The next foe you slay "
+                  "will spill a pot of gold.{00\n\r"
+                  "You carry luck for %d kill%s (at most %d). It lasts until you "
+                  "leave the game.\n\r",
+                  ch->pcdata->holiday_luck, ch->pcdata->holiday_luck == 1 ? "" : "s",
+                  LUCK_MAX );
+        send_to_char( buf, ch );
         return;
 
     case OBJ_VNUM_CANDY_HEART:
@@ -612,13 +638,28 @@ bool holiday_given( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj )
     return true;
 }
 
+/* When each area last heard a firework burst overhead. One slot per area
+   (review, 2026-11-02: a single "last area" forgot A's burst as soon as
+   B had one, so A, B, A broadcast three times in a few seconds). Areas
+   are few and never freed, so a slot is kept for good; past the table's
+   end the oldest slot is reused, which errs toward a broadcast. */
+#define FIREWORK_AREAS  512
+static HOLIDAY_COOLDOWN firework_heard[FIREWORK_AREAS];
+
+/* True, and the area's clock started, when it may hear another burst
+   (holiday_cooldown_ready, which tests/test_holiday_rules.c plays at
+   the boundary). */
+static bool firework_area_ready( AREA_DATA *area )
+{
+    return holiday_cooldown_ready( firework_heard, FIREWORK_AREAS, area,
+                                   (long) current_time, FIREWORK_AREA_GAP ) != 0;
+}
+
 /* do_drop, a single thing dropped: a firework goes up. True when obj is
    gone. The whole area sees it, but no more than once in a while, so a
    bag of rockets cannot be a way to shout. */
 bool holiday_dropped( CHAR_DATA *ch, OBJ_DATA *obj )
 {
-    static time_t last_burst = 0;
-    static AREA_DATA *last_area = NULL;
     static const char *bursts[] =
     {
         "{0Ca shower of green and gold stars{00",
@@ -647,10 +688,8 @@ bool holiday_dropped( CHAR_DATA *ch, OBJ_DATA *obj )
         achievement_record_event( ch, ACHIEVEMENT_EVENT_HOLIDAY_FIREWORK, true );
 
     area = ch->in_room->area;
-    if ( area == last_area && current_time - last_burst < FIREWORK_AREA_GAP )
+    if ( !firework_area_ready( area ) )
         return true;
-    last_area = area;
-    last_burst = current_time;
 
     snprintf( buf, sizeof(buf), "Overhead, a firework bursts into %s.\n\r", bursts[n] );
     for ( d = descriptor_list; d != NULL; d = d->next )
@@ -690,17 +729,17 @@ void holiday_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 
 /* ------------------------------------------------ the fair in the square */
 
-static bool holiday_char_exists( const CHAR_DATA *target )
+/* extract_char, before the CHAR_DATA can be reused: the vendor is
+   gone, whatever took them. Comparing addresses against the character
+   list instead was fooled by the next mobile created, which the pool
+   hands the same address (review, 2026-11-02: PURGE ROSALIND then LOAD
+   MOB made the loaded guard "the vendor", and the next holiday's change
+   took the guard away). vendor_holiday stays, so the tick puts the same
+   holiday's vendor back quietly. */
+void holiday_forget( CHAR_DATA *ch )
 {
-    LIST_ITERATOR iter;
-    CHAR_DATA *ch;
-
-    if ( target == NULL )
-        return false;
-    FOR_EACH_CHARACTER( iter, ch )
-        if ( ch == target )
-            return true;
-    return false;
+    if ( ch != NULL && ch == event_vendor )
+        event_vendor = NULL;
 }
 
 /* One of each, as a shop's endless stock (ITEM_INVENTORY): BUY hands over
@@ -741,13 +780,11 @@ static void holiday_shout( const char *msg )
 
 static void vendor_leave( void )
 {
-    if ( event_vendor != NULL && !holiday_char_exists( event_vendor ) )
-        event_vendor = NULL;
     if ( event_vendor != NULL )
     {
         if ( vendor_holiday != NULL && vendor_holiday->vendor_leave != NULL )
             act( vendor_holiday->vendor_leave, event_vendor, NULL, NULL, TO_ROOM );
-        extract_char( event_vendor, true );
+        extract_char( event_vendor, true );   /* holiday_forget clears it */
     }
     event_vendor = NULL;
     vendor_holiday = NULL;
@@ -789,27 +826,47 @@ static OBJ_DATA *decoration_in( ROOM_INDEX_DATA *room, int vnum )
     return NULL;
 }
 
-/* Eggs lying in rooms (not carried, not inside anything); with remove,
-   gathered first and taken away after the walk. */
-static int eggs_lying( bool remove )
+/* A painted egg lying on the ground (not carried, not inside anything). */
+static bool egg_lying( const OBJ_DATA *obj )
+{
+    return obj->pIndexData != NULL && obj->pIndexData->vnum == OBJ_VNUM_PAINTED_EGG
+        && obj->in_room != NULL;
+}
+
+/* Eggs lying in one area's rooms, or anywhere with area NULL. The hunt's
+   budget counts only the square's own area, where hide_an_egg puts them:
+   counting the world let a dozen eggs dropped elsewhere stop the hunt
+   for good (review, 2026-11-02). */
+static int eggs_lying( const AREA_DATA *area )
 {
     LIST_ITERATOR iter;
     OBJ_DATA *obj;
-    OBJ_DATA *found[EGG_CEILING * 8];
-    int n = 0, i;
+    int n = 0;
 
     FOR_EACH_OBJECT( iter, obj )
-    {
-        if ( obj->pIndexData == NULL || obj->pIndexData->vnum != OBJ_VNUM_PAINTED_EGG
-        ||   obj->in_room == NULL )
-            continue;
-        if ( n < (int)( sizeof(found) / sizeof(found[0]) ) )
-            found[n] = obj;
-        n++;
-    }
-    if ( remove )
-        for ( i = 0; i < n && i < (int)( sizeof(found) / sizeof(found[0]) ); i++ )
-            extract_obj( found[i] );
+        if ( egg_lying( obj ) && ( area == NULL || obj->in_room->area == area ) )
+            n++;
+    return n;
+}
+
+/* When Noblegarden ends: every egg on the ground anywhere, however many.
+   It gathered into a fixed array before and left everything past the
+   ninety-sixth (review, 2026-11-02). Extracting as it walks is safe: the
+   object list tombstones what is removed (list.c), the egg's own
+   contents included, and the iterator steps over them. Eggs someone
+   carries, or has put in a bag, are theirs and stay. */
+static int eggs_clear( void )
+{
+    LIST_ITERATOR iter;
+    OBJ_DATA *obj;
+    int n = 0;
+
+    FOR_EACH_OBJECT( iter, obj )
+        if ( egg_lying( obj ) )
+        {
+            extract_obj( obj );
+            n++;
+        }
     return n;
 }
 
@@ -841,8 +898,6 @@ void holiday_tick( void )
     bool fresh = false;
 
     booted = true;
-    if ( event_vendor != NULL && !holiday_char_exists( event_vendor ) )
-        event_vendor = NULL;
 
     if ( decorated != h )
     {
@@ -850,7 +905,7 @@ void holiday_tick( void )
         &&   ( decor = decoration_in( square, decorated->decor_vnum ) ) != NULL )
             extract_obj( decor );
         if ( decorated != NULL && decorated->drop_vnum == OBJ_VNUM_PAINTED_EGG )
-            eggs_lying( true );
+            eggs_clear();
         decorated = h;
     }
     if ( vendor_holiday != h )
@@ -875,7 +930,7 @@ void holiday_tick( void )
         vendor_arrive( h, loud && fresh );
 
     if ( h->drop_vnum == OBJ_VNUM_PAINTED_EGG && telnet_count_players() > 0
-    &&   eggs_lying( false ) < EGG_CEILING )
+    &&   square != NULL && eggs_lying( square->area ) < EGG_CEILING )
         hide_an_egg();
 }
 
@@ -909,26 +964,10 @@ static void holiday_span_words( const HOLIDAY *h, int y, char *buf, size_t size 
         "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
     long first, last;
     int fy, fm, fd, ly, lm, ld;
-    long z;
 
     holiday_span( h, y, h->rule == RULE_FIXED ? h->m1 : 6, &first, &last );
-
-    /* Back from day numbers (Hinnant's civil_from_days). */
-#define CIVIL(dn, Y, M, D) do { \
-        long era_, doe_, yoe_, doy_, mp_; \
-        z = (dn) + 719468; \
-        era_ = ( z >= 0 ? z : z - 146096 ) / 146097; \
-        doe_ = z - era_ * 146097; \
-        yoe_ = ( doe_ - doe_ / 1460 + doe_ / 36524 - doe_ / 146096 ) / 365; \
-        doy_ = doe_ - ( 365 * yoe_ + yoe_ / 4 - yoe_ / 100 ); \
-        mp_ = ( 5 * doy_ + 2 ) / 153; \
-        D = (int)( doy_ - ( 153 * mp_ + 2 ) / 5 + 1 ); \
-        M = (int)( mp_ < 10 ? mp_ + 3 : mp_ - 9 ); \
-        Y = (int)( yoe_ + era_ * 400 + ( M <= 2 ) ); \
-    } while ( 0 )
-    CIVIL( first, fy, fm, fd );
-    CIVIL( last, ly, lm, ld );
-#undef CIVIL
+    holiday_civil_from_days( first, &fy, &fm, &fd );
+    holiday_civil_from_days( last, &ly, &lm, &ld );
     UNUSED_PARAM( fy );
     UNUSED_PARAM( ly );
     if ( first == last )
@@ -937,8 +976,77 @@ static void holiday_span_words( const HOLIDAY *h, int y, char *buf, size_t size 
         snprintf( buf, size, "%s %2d - %s %2d", months[fm], fd, months[lm], ld );
 }
 
-/* HOLIDAYS: what is on, and the year's calendar. Staff: HOLIDAYS REFRESH
-   puts up the fair now instead of at the next tick. */
+/* What a staff HOLIDAYS adds: where the date came from, what is on and
+   why, which seasonal areas boot loaded (they change only at a reboot,
+   so they can disagree with the calendar), and the fair as it stands. */
+static void holiday_staff_lines( CHAR_DATA *ch, const HOLIDAY *now )
+{
+    ROOM_INDEX_DATA *square = get_room_index( VENDOR_SPAWN_ROOM );
+    const char *forced = getenv( "TOC_SEASON" );
+    const char *file = getenv( "TOC_DATE_FILE" );
+    const char *loaded = season_loaded_name();
+    const char *source;
+    char buf[MAX_STRING_LENGTH];
+    char decor[MAX_INPUT_LENGTH];
+    int y, m, d;
+
+    if ( holiday_test_date( &y, &m, &d ) )
+        source = file != NULL && file[0] != '\0' ? "TOC_DATE_FILE" : "TOC_DATE";
+    else
+    {
+        holiday_date( &y, &m, &d );
+        source = "the host's clock, local time";
+    }
+    snprintf( buf, sizeof(buf), "\n\r[staff] date %04d-%02d-%02d, from %s.\n\r",
+              y, m, d, source );
+    send_to_char( buf, ch );
+
+    if ( forced != NULL && forced[0] != '\0'
+    &&   ( !str_cmp( forced, "none" ) || !str_cmp( forced, "off" )
+           || holiday_by_key( forced ) != NULL ) )
+        snprintf( buf, sizeof(buf), "[staff] holiday: %s (TOC_SEASON=%s sets it, "
+                  "not the date).\n\r", now != NULL ? now->name : "none", forced );
+    else
+        snprintf( buf, sizeof(buf), "[staff] holiday: %s, by the calendar.\n\r",
+                  now != NULL ? now->name : "none" );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+              "[staff] seasonal areas loaded at boot: %s%s\n\r",
+              loaded != NULL ? loaded : "the ordinary ones",
+              ( loaded == NULL ) != ( get_season_name() == NULL )
+              || ( loaded != NULL && get_season_name() != NULL
+                   && strcmp( loaded, get_season_name() ) )
+                  ? " -- not the season now; they change only at a reboot." : "." );
+    send_to_char( buf, ch );
+
+    if ( now == NULL || now->decor_vnum == 0 )
+        toc_strlcpy( decor, "none", sizeof(decor) );
+    else
+        snprintf( decor, sizeof(decor), "%s",
+                  decoration_in( square, now->decor_vnum ) != NULL ? "standing" : "missing" );
+    if ( event_vendor != NULL )
+        snprintf( buf, sizeof(buf), "[staff] fair: vendor %s (mob %d) in room %d; "
+                  "decoration %s; eggs lying in the square's area %d of %d, "
+                  "anywhere %d.\n\r",
+                  event_vendor->short_descr,
+                  event_vendor->pIndexData != NULL ? event_vendor->pIndexData->vnum : 0,
+                  event_vendor->in_room != NULL ? event_vendor->in_room->vnum : 0,
+                  decor, square != NULL ? eggs_lying( square->area ) : 0, EGG_CEILING,
+                  eggs_lying( NULL ) );
+    else
+        snprintf( buf, sizeof(buf), "[staff] fair: no vendor; decoration %s; eggs "
+                  "lying in the square's area %d of %d, anywhere %d.\n\r",
+                  decor, square != NULL ? eggs_lying( square->area ) : 0, EGG_CEILING,
+                  eggs_lying( NULL ) );
+    send_to_char( buf, ch );
+    send_to_char( "[staff] HOLIDAYS REFRESH puts the fair up now.\n\r", ch );
+}
+
+/* HOLIDAYS: what is on, and the year's calendar. HOLIDAYS <year> shows
+   another year's dates and HOLIDAYS ON <yyyy-mm-dd> what any one day
+   would be, from the same code as today. Staff: HOLIDAYS REFRESH puts up
+   the fair now instead of at the next tick. */
 void do_holidays( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -947,13 +1055,35 @@ void do_holidays( CHAR_DATA *ch, char *argument )
     const HOLIDAY *now;
     int y, m, d, i;
 
-    one_argument( argument, arg );
+    argument = one_argument( argument, arg );
     holiday_date( &y, &m, &d );
 
     if ( !str_cmp( arg, "refresh" ) && IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
     {
         holiday_tick();
         send_to_char( "The fair in the Oak Tree Square is up to date.\n\r", ch );
+        return;
+    }
+    if ( !str_cmp( arg, "on" ) )
+    {
+        const HOLIDAY *then;
+        char date[MAX_INPUT_LENGTH];
+
+        one_argument( argument, date );
+        if ( !holiday_parse_date( date, &y, &m, &d ) )
+        {
+            send_to_char( "Name a real day as YYYY-MM-DD, from 1900 to 9999: "
+                          "HOLIDAYS ON 2027-03-28.\n\r", ch );
+            return;
+        }
+        then = holiday_on( y, m, d );
+        if ( then != NULL )
+            snprintf( buf, sizeof(buf), "On %04d-%02d-%02d the world celebrates %s.\n\r",
+                      y, m, d, then->name );
+        else
+            snprintf( buf, sizeof(buf), "No holiday falls on %04d-%02d-%02d.\n\r",
+                      y, m, d );
+        send_to_char( buf, ch );
         return;
     }
     if ( is_number( arg ) )
@@ -966,6 +1096,11 @@ void do_holidays( CHAR_DATA *ch, char *argument )
             return;
         }
         y = asked;
+    }
+    else if ( arg[0] != '\0' )
+    {
+        send_to_char( "HOLIDAYS, HOLIDAYS <year> or HOLIDAYS ON <yyyy-mm-dd>.\n\r", ch );
+        return;
     }
 
     now = holiday_current();
@@ -990,14 +1125,5 @@ void do_holidays( CHAR_DATA *ch, char *argument )
     send_to_char( "\n\rHELP HOLIDAYS says what each one brings.\n\r", ch );
 
     if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
-    {
-        snprintf( buf, sizeof(buf),
-                  "\n\r[staff] date %04d-%02d-%02d; vendor %s; eggs lying %d. "
-                  "HOLIDAYS REFRESH puts the fair up now.\n\r",
-                  y, m, d,
-                  event_vendor != NULL && holiday_char_exists( event_vendor )
-                      ? event_vendor->short_descr : "none",
-                  eggs_lying( false ) );
-        send_to_char( buf, ch );
-    }
+        holiday_staff_lines( ch, now );
 }

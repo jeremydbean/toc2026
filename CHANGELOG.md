@@ -8,6 +8,40 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Holiday lifecycle review** (2026-11-02). The vendor and the event
+  boss were recognised by address, and the pool hands a freed CHAR_DATA
+  to the next mobile created: PURGE ROSALIND then LOAD MOB made the new
+  mobile "the vendor", and a purged boss's successor was "the boss"
+  (SUMMONEVENT STATUS called it alive, refused to summon another, and its
+  despawn extracted the wrong mobile). `extract_char` now clears both
+  (`holiday_forget`, `event_boss_forget`); a boss taken out without being
+  slain is logged and no longer announced as defeated at the next tick;
+  the boss's arrival and departure are seen in the room (the act() calls
+  had no actor and sent nothing). Painted eggs: every egg on the ground is
+  gathered when Noblegarden ends (the gather stopped at 96), and the
+  hunt's budget counts only the square's area, so eggs elsewhere no
+  longer stop it. The calendar arithmetic, strict date parsing and the
+  firework cooldown table moved to `src/holiday_rules.c`, checked over
+  every day from 1900 to 9999 by `tests/test_holiday_rules.c`.
+  `TOC_DATE_FILE` lets one world be walked from holiday to holiday; an
+  invalid test date is logged and the clock used. `HOLIDAYS ON <date>`;
+  staff HOLIDAYS shows the date's source, the fair and which seasonal
+  areas boot loaded (also in SUMMONEVENT STATUS). A clover past the luck
+  cap is refused and kept; eating one says how much luck is held. Tests:
+  `test_holiday_rules`, `test_holiday_lifecycle`.
+
+- **Review fixes** (2026-11-02). An unrecorded death froze the owner's
+  saves but not their trading: WITHDRAW and GIVE then quit made money
+  from nothing. Every command that moves coin or things to or from
+  somebody or something else now refuses while either party's death is
+  unrecorded (`corpse_registry_refuses_trade`). CAST CAUSE LI no longer
+  eats Lightfoot as "light" when the longer name is another spell. A
+  flight that dies on arrival no longer says "You flee from combat" or
+  awards the flee achievements. Each area keeps its own firework
+  cooldown. Tests: `test_death_unrecorded_trade`, `test_cast_targets`,
+  `test_achievement_close_calls`, `test_holidays`; the fixture world gains
+  a bout ring and a lava pit.
+
 - **Holidays on a calendar** (2026-11-02, owner: World of Warcraft's
   schedule, minor holidays simple). `src/holiday.c` holds the calendar --
   Winter Veil, the Lunar Festival, Love is in the Air, St. Patrick's Day,

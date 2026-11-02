@@ -63,6 +63,7 @@ set(SRC_FILES
     src/script_event.c
     src/season.c
     src/holiday.c
+    src/holiday_rules.c
     src/speak_filter.c
     src/special.c
     src/string_safe.c

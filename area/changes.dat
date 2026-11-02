@@ -5,6 +5,18 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261102c 2026-11-02
+HOLIDAYS ON <date> tells you what any day will be (HOLIDAYS ON 2027-03-28).
+A four-leaf clover now says how much luck you are carrying, and one too
+many is kept instead of wasted. You can now see a holiday boss arrive and
+leave when you are standing in the square, even with shouts turned off.
+
+@ 20261102b 2026-11-02
+CAST keeps your target even when the start of the next word would make a
+different spell's name: CAST CAUSE LI, with Lightfoot beside you, casts at
+Lightfoot. And fleeing into something that kills you no longer says you
+got away.
+
 @ 20261102a 2026-11-02
 Holidays! The world now keeps a calendar: the Lunar Festival, Love is in
 the Air, St. Patrick's Day, Noblegarden, Children's Week, the Midsummer

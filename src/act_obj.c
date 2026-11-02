@@ -801,6 +801,8 @@ void do_stash( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
 
     at_altar = ( ch->in_room != NULL
               && ch->in_room->vnum == STASH_ROOM_VNUM );
@@ -1382,6 +1384,9 @@ void do_donate( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
 
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
+
     if ( arg[0] == '\0' || !str_cmp( arg, ch->name ) )
     {
 	send_to_char("Donate what?\n",ch);
@@ -1500,6 +1505,17 @@ void do_get( CHAR_DATA *ch, char *argument )
     {
 	send_to_char( "Get what?\n\r", ch );
 	return;
+    }
+
+    /* From the room, or from anything not carried, is into their hands
+       from somebody else's: refused while their death is unsettled. */
+    if ( corpse_registry_holds_still( ch ) )
+    {
+	OBJ_DATA *from = arg2[0] != '\0' ? get_obj_here( ch, arg2 ) : NULL;
+
+	if ( ( arg2[0] == '\0' || ( from != NULL && from->carried_by != ch ) )
+	&&   corpse_registry_refuses_trade( ch, NULL ) )
+	    return;
     }
 
     if ( arg2[0] == '\0' )
@@ -1760,6 +1776,11 @@ void do_put( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Into something not carried is out of their hands. */
+    if ( container->carried_by != ch
+    &&   corpse_registry_refuses_trade( ch, NULL ) )
+	return;
+
     if ( IS_SET(container->value[1], CONT_CLOSED) )
     {
 	act( "The $d is closed.", ch, NULL, container->name, TO_CHAR );
@@ -1938,6 +1959,9 @@ void do_drop( CHAR_DATA *ch, char *argument )
     int count;
 
     argument = one_argument( argument, arg );
+
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
 
     if ( arg[0] == '\0' )
     {
@@ -2210,6 +2234,10 @@ void do_give( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
+	/* Nothing changes hands while either side's death is unsettled. */
+	if ( corpse_registry_refuses_trade( ch, victim ) )
+	    return;
+
         if (query_carry_coins(victim,amount) > can_carry_w(victim))
         {   act("$N wouldn't survive this extra weight.",ch,NULL,victim,TO_CHAR);
             return;
@@ -2315,6 +2343,10 @@ void do_give( CHAR_DATA *ch, char *argument )
 	send_to_char( "They aren't here.\n\r", ch );
 	return;
     }
+
+    /* Nothing changes hands while either side's death is unsettled. */
+    if ( corpse_registry_refuses_trade( ch, victim ) )
+	return;
 
     if ( !can_drop_obj( ch, obj ) )
     {
@@ -2763,6 +2795,8 @@ void do_deposit( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) )
         return;
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
 
     if (!parse_coin_amount(argument, &amount, &coin_type))
     {
@@ -2826,6 +2860,8 @@ void do_withdraw( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) )
         return;
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
 
     if (!parse_coin_amount(argument, &amount, &coin_type))
     {
@@ -3148,6 +3184,9 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	send_to_char( "You do not have that item.\n\r", ch );
 	return;
     }
+
+    if ( holiday_eat_refused( ch, obj ) )
+	return;
 
     /* Staff can eat anything, which is how an item is destroyed on the
        spot. By trust, as every staff gate is: by level it refused a
@@ -4013,6 +4052,9 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
 
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
+
     if ( arg[0] == '\0' || !str_cmp(arg,ch->name)) {
 	act( "$n offers $mself to the Gods, who graciously decline.",
 	    ch, NULL, NULL, TO_ROOM );
@@ -4582,6 +4624,10 @@ void do_steal( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Nothing changes hands while either side's death is unsettled. */
+    if ( corpse_registry_refuses_trade( ch, victim ) )
+	return;
+
     if ( victim == ch )
     {
 	send_to_char( "That's pointless.\n\r", ch );
@@ -4959,6 +5005,9 @@ void do_buy( CHAR_DATA *ch, char *argument )
     int count = 1;
     int bought = 0;
 
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
+
     if(argument[0] == '\0') {
 	send_to_char( "Buy what?\n\r", ch );
 	return;
@@ -5180,6 +5229,9 @@ void do_sell( CHAR_DATA *ch, char *argument )
     int roll;
 
     one_argument( argument, arg );
+
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
 
     if ( arg[0] == '\0' )
     {

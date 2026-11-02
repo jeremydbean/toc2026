@@ -17,6 +17,7 @@ character a synthetic Z fixture.
 from __future__ import annotations
 
 import re
+import time
 import unittest
 from pathlib import Path
 
@@ -114,7 +115,7 @@ class HolidayCalendarLiveTests(unittest.TestCase):
                 self.assertIn("Hopscotch the egg warden", square)
                 self.assertIn("bunny ears", plain(hero.sync("list")))
                 status = plain(staff.sync("holidays"))
-                self.assertRegex(status, r"eggs lying [1-9]")
+                self.assertRegex(status, r"eggs lying in the square's area [1-9]")
 
                 # A kill's egg opens on something (fixtures autoloot).
                 self.assertIn("You get a brightly painted egg",
@@ -240,6 +241,46 @@ class HolidayFairLiveTests(unittest.TestCase):
                 square = plain(staff.sync("look"))
                 for decoration in ("bonfire", "paper lanterns", "painted eggs", "Rosalind"):
                     self.assertNotIn(decoration, square)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class FireworkCooldownLiveTests(unittest.TestCase):
+    """An area hears a firework overhead at most every FIREWORK_AREA_GAP
+    (20) seconds, each area on its own clock (review, 2026-11-02: one
+    "last area" forgot area A's burst when B had one, so A, B, A was three
+    broadcasts in a few seconds). Every rocket still goes up and is spent
+    where it is dropped."""
+
+    def test_each_area_keeps_its_own_cooldown(self) -> None:
+        paddock = 32704      # the fixture world's open paddock, outdoors
+        with LiveMud(fixtures=True) as mud:
+            make(mud, "Zholstaff", Levl=70, Room=SQUARE)
+            make(mud, "Zholhero", Levl=20, Room=SQUARE)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zholstaff", PW)
+                login(hero, "Zholhero", PW)
+                staff.sync("scroll 0")
+                hero.sync("scroll 0")
+                for _ in range(5):
+                    staff.must("load obj 29825", "You create")
+                    staff.must("give firework zholhero", "You give")
+                self.assertRegex(plain(hero.sync("inventory")), r"\(\s*5\).*a festival firework")
+
+                def launch(room: int) -> bool:
+                    staff.must(f"transfer zholhero {room}", "Ok.")
+                    said = plain(hero.sync("drop firework"))
+                    self.assertIn("bursts!", said, "every rocket goes up")
+                    return "Overhead, a firework bursts" in said
+
+                started = time.monotonic()
+                self.assertTrue(launch(paddock), "A: the first burst is heard")
+                self.assertFalse(launch(paddock), "A, A: the second is not")
+                self.assertTrue(launch(SQUARE), "B has a clock of its own")
+                self.assertFalse(launch(paddock), "A, B, A: A still remembers")
+                self.assertLess(time.monotonic() - started, 20, "the steps outran the gap")
+                time.sleep(max(0.0, 21 - (time.monotonic() - started)))
+                self.assertTrue(launch(paddock), "after the gap, A hears one again")
+                self.assertNotIn("firework", plain(hero.sync("inventory")))
 
 
 if __name__ == "__main__":

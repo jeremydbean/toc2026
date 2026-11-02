@@ -551,7 +551,8 @@ Lunar Festival, Love is in the Air, St. Patrick's Day, Noblegarden (Easter
 week), Children's Week, the Midsummer Fire Festival, Pirates' Day,
 Brewfest, Hallows End, the Day of the Dead, Pilgrim's Bounty
 (Thanksgiving week) and Winter Veil. `HOLIDAYS` lists this year's dates;
-`HOLIDAYS 2027` another year's.
+`HOLIDAYS 2027` another year's, and `HOLIDAYS ON 2027-03-28` what any one
+day is. The dates follow the server's own clock and time zone.
 
 While one is on, a vendor and a decoration stand in the Oak Tree Square,
 the creatures of the world now and then carry the holiday's treat, and
@@ -569,7 +570,9 @@ TIME and your login say so. Some treats do something:
 | Day of the Dead | sugar skull | `EAT` it: see the invisible and the hidden |
 
 Clovers, candy hearts and trick-or-treat candy can be eaten even when you
-are full. `HELP HOLIDAYS` has the whole list.
+are full. Each clover is luck for one kill, three at most; eating one says
+how many you hold, a fourth is kept rather than wasted, and the luck is
+gone when you leave the game. `HELP HOLIDAYS` has the whole list.
 
 ## Groups And Social Play
 

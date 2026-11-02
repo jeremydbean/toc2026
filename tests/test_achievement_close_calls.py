@@ -64,12 +64,6 @@ class CloseCallSourceTests(unittest.TestCase):
         spared = fight[fight.index("You have been spared from death by the Gods."):]
         self.assertIn("ACHIEVEMENT_EVENT_DIVINE_SAVE", spared[:400])
 
-    def test_a_flee_into_a_trap_is_no_close_call(self) -> None:
-        fight = source("fight.c")
-        flee = fight[fight.index("void do_flee( CHAR_DATA *ch, char *argument )"):]
-        flee = flee[:flee.index("\n}\n")]
-        self.assertIn("fled_on = ch->hit;", flee)
-        self.assertIn("ch->in_room == now_in", flee)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -138,6 +132,44 @@ class CloseCallLiveTests(unittest.TestCase):
 
                 # Each once: a second flee from nothing earns nothing.
                 self.assertNotIn("ACHIEVEMENT EARNED", hero.sync("flee"))
+
+    def test_a_flee_that_kills_is_no_close_call(self) -> None:
+        """A flight into a trap that kills on arrival announces nothing and
+        awards nothing (review, 2026-11-02). The room was read after the
+        move, so the death room counted as the escape and both flee
+        achievements fired for a corpse. The fixture's bout ring has one
+        way out, north into a lava pit (a VOLCANIC room affect of 200d100,
+        never survived)."""
+        ring, death_room = 32707, 4216
+        with LiveMud(fixtures=True) as mud:
+            make(mud, "Zccstaff", {}, Levl=70)
+            make(mud, "Zcclava", {"second attack": 100}, Levl=30, Cla=3,
+                 HMV="100 2000 100 100 300 300")
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zccstaff", PW)
+                login(hero, "Zcclava", PW)
+                staff.sync("scroll 0")
+                hero.sync("scroll 0")
+                # A twentieth of the maximum: 100 of 2000, the old code's
+                # "Live to Fight Another Day".
+                self.assertRegex(staff.must("stat char zcclava", "Hp:"), r"Hp: 100/2000\b")
+                staff.must(f"goto {ring}", "")
+                staff.must(f"load mob {SPARRING_GUARD}", "You create a sparring guard")
+                staff.must("set char sparring damroll -100", "damroll set to -100")
+                staff.must(f"transfer zcclava {ring}", "Ok.")
+                hero.sync("kill sparring")
+                said = ""
+                for _ in range(30):
+                    said = hero.sync("flee")
+                    if "KILLED" in said or "flee from combat" in said:
+                        break
+                self.assertIn("You have been KILLED", said)
+                self.assertNotIn("You flee from combat", said)
+                # The death's own first-death achievement may come; no
+                # flight's may.
+                for title in ("Live to Fight Another Day", "By a Thread"):
+                    self.assertFalse(earned(said, title), repr(said))
+                self.assertEqual(room_of(staff, "zcclava"), death_room)
 
     def test_staff_earn_none_of_them(self) -> None:
         with LiveMud() as mud:

@@ -966,6 +966,45 @@ bool corpse_registry_may_save( CHAR_DATA *ch )
     return true;
 }
 
+/* The owner's file is being held still: a death of theirs is unrecorded
+   (or its record cannot be written), so corpse_registry_may_save refuses
+   every save and whatever they do now is undone when they leave, log in
+   again or the game restarts -- that is what makes undoing the corpse
+   safe. Nothing may change hands meanwhile (review, 2026-11-02): coin
+   withdrawn and given away was kept by the taker and came back to the
+   bank at the next login, and anything passed to them would be lost.
+   May write the corpse's record as may_save does, which can settle it. */
+bool corpse_registry_holds_still( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || track_count == 0 )
+        return false;
+    return !corpse_registry_may_save( ch );
+}
+
+/* Asked first by every command that moves coin or things between a
+   character and anybody or anything else: GIVE, DROP, PUT and GET with
+   anything not carried, DONATE, BUY, SELL, the bank, the stash, SPLIT,
+   STEAL and SACRIFICE. `other` is the far party, when there is one.
+   Says why and returns true when the move must not happen; nothing has
+   changed by then. */
+bool corpse_registry_refuses_trade( CHAR_DATA *ch, CHAR_DATA *other )
+{
+    if ( corpse_registry_holds_still( ch ) )
+    {
+        send_to_char( "Your last death has not been laid to rest yet, so nothing of "
+                      "yours can change hands -- not given, dropped, banked, sold or "
+                      "stashed. It is tried again every few seconds.\n\r", ch );
+        return true;
+    }
+    if ( other != NULL && other != ch && corpse_registry_holds_still( other ) )
+    {
+        act( "$N's last death has not been laid to rest yet; nothing can pass "
+             "between you until it is.", ch, NULL, other, TO_CHAR );
+        return true;
+    }
+    return false;
+}
+
 /* After a save of `ch` that is on the disk: every transfer of theirs
    whose mark it carried is settled. */
 void corpse_registry_owner_saved( CHAR_DATA *ch )

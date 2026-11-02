@@ -95,6 +95,30 @@ A bare test arena joined to nothing, where players may fight each other.
 ~
 0 DV 0
 S
+#32707
+The Bout Ring~
+A bare test ring joined to nothing.  Its only way out is north, into the
+lava pit -- for a flight that kills.
+~
+0 D 0
+D0
+The lava pit.
+~
+~
+0 -1 32708
+S
+#32708
+The Lava Pit~
+A test room whose floor is molten rock: anybody arriving burns to death.
+~
+0 DH 0
+3 50 0 0 0 0 0 200 100
+D2
+The bout ring.
+~
+~
+0 -1 32707
+S
 
 #0
 

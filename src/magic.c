@@ -609,13 +609,22 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
             if ( ( longer = find_spell( ch, candidate ) ) < 0 )
                 break;
-            /* A word that only begins the spell's next word, when the
-               spell is the same without it, is a target if it names one
-               here: CAST CHILL T is chill touch at Torch. */
-            if ( longer == find_spell( ch, arg1 )
-            &&   !name_word_is( skill_table[longer].name, count_words( candidate ), word )
-            &&   cast_word_is_target( ch, longer, word ) )
-                break;
+            /* A word that only begins the next word of a name is a
+               target if it names one here for the spell already read --
+               whether or not the longer name is the same spell: CAST
+               CHILL T is chill touch at Torch, and CAST CAUSE LI, with
+               cause critical and cause light both known, is the first
+               at Lightfoot, as CAST 'CAUSE' LI is (review, 2026-11-02).
+               A word that is that word of the name whole still extends
+               it. */
+            {
+                int shorter = find_spell( ch, arg1 );
+
+                if ( shorter >= 0
+                &&   !name_word_is( skill_table[longer].name, count_words( candidate ), word )
+                &&   cast_word_is_target( ch, shorter, word ) )
+                    break;
+            }
 
             /* The lookup below re-resolves arg1, so only the
                text and the remaining target carry forward. */

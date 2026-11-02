@@ -4420,6 +4420,9 @@ void do_split( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, arg );
     one_argument( argument, arg2 );
 
+    if ( corpse_registry_refuses_trade( ch, NULL ) )
+	return;
+
     if ( arg[0] == '\0' )
     {
 	send_to_char( "Split how much?\n\r", ch );

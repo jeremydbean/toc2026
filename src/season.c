@@ -3,7 +3,12 @@
  *
  * At boot, the area loader calls get_seasonal_area() for each filename in
  * area.lst so that the appropriate holiday variant is loaded automatically.
- * No area.lst edits or reboots are needed to switch seasons.
+ * area.lst never changes to switch seasons, but the swap happens only at
+ * boot: a world booted before Hallows End or Winter Veil keeps the
+ * ordinary areas until its next reboot, and one booted in season keeps
+ * the decorated copies after it ends (season_loaded_name() says which a
+ * running world has). The fair in the square -- holiday.c -- follows the
+ * calendar without a reboot.
  *
  * The dates are holiday.c's calendar (holiday_key), which has every
  * holiday; two of them swap areas here:
@@ -68,14 +73,22 @@ const char *get_season_name( void )
  *                  limbo_xmas.are         (Christmas)
  *   midennir.are → midennir_halloween.are (Halloween only)
  */
-const char *get_seasonal_area( const char *area_file )
+/* The season whose copies boot loaded (the first base name it mapped),
+   which is not always the season now: see the top of this file. */
+static SEASON_TYPE season_loaded = SEASON_NORMAL;
+
+const char *season_loaded_name( void )
 {
-    SEASON_TYPE season;
+    switch ( season_loaded )
+    {
+        case SEASON_HALLOWEEN: return "Hallows End";
+        case SEASON_CHRISTMAS: return "Winter Veil";
+        default:               return NULL;
+    }
+}
 
-    if ( area_file == NULL )
-        return area_file;
-
-    season = get_current_season();
+static const char *seasonal_variant( SEASON_TYPE season, const char *area_file )
+{
 
     if ( season == SEASON_HALLOWEEN )
     {
@@ -91,6 +104,21 @@ const char *get_seasonal_area( const char *area_file )
     }
 
     return area_file;
+}
+
+const char *get_seasonal_area( const char *area_file )
+{
+    SEASON_TYPE season;
+    const char *variant;
+
+    if ( area_file == NULL )
+        return area_file;
+
+    season  = get_current_season();
+    variant = seasonal_variant( season, area_file );
+    if ( variant != area_file )
+        season_loaded = season;
+    return variant;
 }
 
 /* =========================================================
@@ -174,28 +202,34 @@ static void boss_global_shout( const char *msg )
 
 
 /* -----------------------------------------------------------
- * Verify the event_boss_mob pointer is still valid by scanning
- * character_list.  If the mob was killed/extracted, clears the pointer.
- * Returns TRUE if the boss is alive.
+ * Whether the boss is in the world. event_boss_mob is cleared the moment
+ * the boss leaves it -- record_event_boss_defeat at a death, and
+ * event_boss_forget from extract_char for any other way out -- so the
+ * pointer is never stale. It used to be checked by scanning the
+ * character list for the same address, which a purged boss's recycled
+ * CHAR_DATA passed: the next MLOAD came back at that address and was
+ * taken for the boss (review, 2026-11-02).
  * ----------------------------------------------------------- */
 bool verify_event_boss( void )
 {
-    LIST_ITERATOR iter;
-    CHAR_DATA    *ch;
+    return event_boss_mob != NULL;
+}
 
-    if ( event_boss_mob == NULL )
-        return FALSE;
+/* extract_char, before the CHAR_DATA can be reused: a boss taken out any
+   way but a death (PURGE, a staff despawn, the timer) is gone quietly --
+   it was not defeated, and nobody is told it was. */
+void event_boss_forget( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
 
-    FOR_EACH_CHARACTER( iter, ch )
-    {
-        if ( ch == event_boss_mob )
-            return TRUE;
-    }
-
-    /* Not found in character_list: was killed or extracted. */
+    if ( ch == NULL || ch != event_boss_mob )
+        return;
+    snprintf( buf, sizeof(buf), "Event boss %s (mob %d) left the world without being slain.",
+              ch->short_descr != NULL ? ch->short_descr : "?",
+              ch->pIndexData != NULL ? ch->pIndexData->vnum : 0 );
+    log_string( buf );
     event_boss_mob        = NULL;
     event_boss_spawn_time = 0;
-    return FALSE;
 }
 
 void record_event_boss_defeat( CHAR_DATA *boss )
@@ -363,8 +397,11 @@ void spawn_event_boss( int forced_vnum )
 
     boss_global_shout( msg );
 
-    /* Local act so players IN the room see the arrival too. */
-    act( "$N arrives with a thunderous crash!", NULL, NULL, event_boss_mob, TO_ROOM );
+    /* Local act so players IN the room see the arrival too. The boss is
+       the actor: act() with no actor sends nothing at all, so with the
+       shouts turned off a player standing in the square saw no boss
+       arrive (review, 2026-11-02). */
+    act( "$n arrives with a thunderous crash!", event_boss_mob, NULL, NULL, TO_ROOM );
 }
 
 
@@ -377,9 +414,10 @@ void despawn_event_boss( void )
     if ( !verify_event_boss() )
         return;
 
-    /* Farewell message. */
-    act( "$N lets out a final roar and fades from the world!", NULL, NULL, event_boss_mob, TO_ROOM );
+    /* Farewell message, the boss its actor (see spawn_event_boss). */
+    act( "$n lets out a final roar and fades from the world!", event_boss_mob, NULL, NULL, TO_ROOM );
 
+    /* extract_char clears event_boss_mob through event_boss_forget. */
     extract_char( event_boss_mob, TRUE );
     event_boss_mob        = NULL;
     event_boss_spawn_time = 0;
@@ -389,7 +427,8 @@ void despawn_event_boss( void )
 /* -----------------------------------------------------------
  * Called once per PULSE_TICK (~60 real seconds) from update_handler.
  *
- *  1. If the boss was killed, clears state.
+ *  1. (A boss's death is announced by record_event_boss_defeat, and any
+ *     other way out clears it in event_boss_forget.)
  *  2. If the boss has been up too long, despawns it.
  *  3. If the boss is alive, occasionally makes it yell.
  *  4. If no boss is alive, rolls for a new spawn (holiday season only).
@@ -398,15 +437,6 @@ void tick_event_boss( void )
 {
     /* The holiday fair in the square: vendor, decoration, eggs. */
     holiday_tick();
-
-    /* --- Case 1: check if boss still lives --- */
-    if ( event_boss_mob != NULL && !verify_event_boss() )
-    {
-        /* Already cleared by verify_event_boss; announce the defeat. */
-        boss_global_shout(
-            "The event boss has been defeated!  Dresden breathes again." );
-        return;
-    }
 
     /* --- Case 2: boss alive -- check despawn timer --- */
     if ( event_boss_mob != NULL )

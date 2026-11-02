@@ -542,8 +542,10 @@ Live-test gotchas that look like product bugs and are not:
   advice here, and it never worked: SET MOB refuses every prototype that
   came with the game, and the tests checked only that the reply lacked
   "Syntax". `LiveMud(fixtures=True)` loads `tests/fixtures/area/ztestfix.are`
-  into the test world (rooms 32700-32705 joined to nothing, a sentinel
-  sparring guard, mob 32700) and `place_sparring_guard()` loads it and
+  into the test world (rooms 32700-32708 joined to nothing -- the bout
+  ring 32707 leads only into the lava pit 32708, whose VOLCANIC room
+  affect kills whoever arrives -- a sentinel sparring guard, mob 32700)
+  and `place_sparring_guard()` loads it and
   proves with STAT that it stands where it was put.
   `tests/test_fixture_hygiene.py` fails on the old habit.
 - **Confirm a setup command by what it says, not by a missing error.**
@@ -740,7 +742,10 @@ Commands added or revived in September 2026, and where they live:
   exactly the spell's name, and a word that names something the spell
   can be cast at here (`cast_word_is_target`, by the spell's target
   type) is the target unless it is that word of the name whole
-  (`tests/test_cast_targets.py`).
+  (`tests/test_cast_targets.py`) -- asked of the spell already read,
+  whether or not the longer name is the same spell: CAST CAUSE LI, with
+  cause critical and cause light known, is the first at Lightfoot
+  (review, 2026-11-02).
 - Password-bearing commands must not be logged.
 - **`fread_char` dispatches on the first letter of the key.** A new
   persisted field's `KEY(...)` has to sit in the `case` for that letter or
@@ -1308,7 +1313,17 @@ login saves; a reconnect keeps the body that died) and a boot without a
 committed receipt all undo the corpse to history as `undone`. Its cost is
 that nothing the player does between the death and the recording is
 saved. `death-recorded-crash` dies between recording and the save
-(`tests/test_death_unrecorded.py`).
+(`tests/test_death_unrecorded.py`). **And nothing changes hands
+meanwhile** (review, 2026-11-02: WITHDRAW one gold, GIVE it away, quit
+and log in -- the taker kept it and the bank had it all back).
+`corpse_registry_refuses_trade(ch, other)` -- true while
+`corpse_registry_holds_still` (the owner's saves are refused) for either
+party -- is asked first by GIVE (both ways), DROP, PUT into and GET from
+anything not carried, DONATE, BUY, SELL, DEPOSIT, WITHDRAW, STASH,
+SPLIT, STEAL and SACRIFICE, before anything moves. A new command that
+moves coin or things between a character and anybody or anything else
+asks it too. Saves stay refused: allowing them would defeat the
+corpse's recovery (`tests/test_death_unrecorded_trade.py`).
 
 ## The Holiday Calendar
 
@@ -1326,21 +1341,48 @@ decoration. Rules the code depends on:
   it. Noblegarden is Easter week (`easter_date`, the Gregorian computus),
   Pilgrim's Bounty Thanksgiving week (`thanksgiving_day`, the fourth
   Thursday of November); the rest are fixed, Winter Veil across the new
-  year. `HOLIDAYS <year>` prints any year's dates from the same code.
+  year. `HOLIDAYS <year>` prints any year's dates and `HOLIDAYS ON
+  <yyyy-mm-dd>` any day's holiday from the same code. The calendar reads
+  the host's local clock (`localtime`, the TZ the game runs under).
+- **The arithmetic is `src/holiday_rules.c`** (review, 2026-11-02): day
+  numbers, strict date parsing (`holiday_parse_date`: a real YYYY-MM-DD
+  from 1900 to 9999, nothing else), Easter, Thanksgiving and the
+  firework cooldown table. It includes no `merc.h`, so
+  `tests/test_holiday_rules.c` checks every day from 1900 to 9999 and the
+  cooldown at its boundaries; put new pure calendar rules there.
 - **Test switches**: `TOC_SEASON` takes any holiday's key (`love`,
   `stpatrick`, `noblegarden`, ...) or `none`, which `tests/live_mud.py`
-  sets by default; `TOC_DATE=YYYY-MM-DD` sets the date the calendar reads;
-  `TOC_HOLIDAY_DROPS=always` makes every NPC kill drop the treat. TIME's
+  sets by default; `TOC_DATE=YYYY-MM-DD` sets the date the calendar reads,
+  and `TOC_DATE_FILE` names a file holding one, read at every look at the
+  date, so a test walks one running world from holiday to holiday
+  (`tests/test_holiday_lifecycle.py`). A test date that is not a real
+  date is logged once and the clock used; staff HOLIDAYS says where the
+  date came from. `TOC_HOLIDAY_DROPS=always` makes every NPC kill drop
+  the treat. TIME's
   holiday line is the last line of `TIME_BARRIER_RE`, so a synced reply
   never carries it.
 - **The fair is put up by the tick** (`holiday_tick`, from
   `tick_event_boss`): the decoration in the Oak Tree Square (2401) and
   the vendor for the whole holiday, both taken down when it ends, eggs
-  too. Staff `HOLIDAYS REFRESH` runs it at once. The vendor is found
-  again before use (`holiday_char_exists`), as a purge can take it. The
-  two seasons' vendors (Hexley, Tinsel) are rows like the rest and no
-  longer spawn at random. A decoration is found by vnum, never kept as a
+  too. Staff `HOLIDAYS REFRESH` runs it at once, and repeated refreshes
+  never double it. **The vendor and the event boss are cleared at
+  extraction** (`holiday_forget`, `event_boss_forget`, from
+  `extract_char` beside `black_market_forget`), never found again by
+  scanning the character list for their address: the pool hands a freed
+  CHAR_DATA to the next mobile created, so PURGE ROSALIND then LOAD MOB
+  made the loaded mobile "the vendor" (review, 2026-11-02). A boss slain
+  is announced by `record_event_boss_defeat`; any other way out (PURGE,
+  SUMMONEVENT, the timer) is logged "left the world without being slain"
+  and announced as nothing. The boss is the actor of its own arrival and
+  departure lines -- `act()` with no actor sends nothing. The two
+  seasons' vendors (Hexley, Tinsel) are rows like the rest and no longer
+  spawn at random. A decoration is found by vnum, never kept as a
   pointer.
+- **Eggs**: the hunt keeps `EGG_CEILING` eggs lying in the square's own
+  area (`eggs_lying(square->area)`; eggs dropped elsewhere do not starve
+  it), and when Noblegarden ends `eggs_clear()` takes every egg lying on
+  the ground anywhere, extracting as it walks the object list (tombstones
+  make that safe); carried and contained eggs are their holders'.
 - **Treats with a purpose**, each one hook: `holiday_corpse_drop`
   (make_corpse; red envelopes and eggs are filled as made, coin counted
   in kills at the carrier's level), `holiday_kill` (raw_kill, before the
@@ -1348,9 +1390,13 @@ decoration. Rules the code depends on:
   corpse lays it out), `holiday_eaten` (do_eat, after the object is gone:
   clover luck, candy heart, trick-or-treat), `holiday_given` (do_give: a
   rose to another player blesses both and is spent), `holiday_dropped`
-  (single DROP: a firework; the area hears one at most every
-  `FIREWORK_AREA_GAP` seconds, so rockets are no way to shout). Clover
-  luck is `pcdata->holiday_luck`, memory only, at most `LUCK_MAX`.
+  (single DROP: a firework; each area hears one at most every
+  `FIREWORK_AREA_GAP` seconds, on its own clock in `firework_heard[]`,
+  so rockets are no way to shout -- a single "last area" let A, B, A
+  broadcast three times; review, 2026-11-02). Clover
+  luck is `pcdata->holiday_luck`, memory only, at most `LUCK_MAX`; a
+  clover past the cap is refused before the bite (`holiday_eat_refused`)
+  and eating one says how much luck is held.
   `holiday_snack` lets a clover, a candy heart and trick-or-treat candy
   past "too full" -- every new character starts full.
 - **Holiday objects are unlevelled** (level 0), so
@@ -1359,7 +1405,14 @@ decoration. Rules the code depends on:
 - `tests/test_holidays.py` plays the calendar by date (Noblegarden in
   2027, Easter and Thanksgiving across two years), Love's rose, St.
   Patrick's clover and pot of gold, the Lunar envelope, Midsummer's
-  firework, trick-or-treat candy and an empty square out of season.
+  firework, trick-or-treat candy and an empty square out of season;
+  `tests/test_holiday_lifecycle.py` the review's findings (a recycled
+  vendor or boss, removal against defeat, the boss's room lines, the egg
+  budget and cleanup at 1, 96, 97 and 120, transitions in one process)
+  and a HOLIDAYS ON matrix of every holiday's boundaries.
+- **Staff HOLIDAYS** also says which seasonal areas boot loaded
+  (`season_loaded_name()`; SUMMONEVENT STATUS too): they swap only at a
+  reboot, so they can disagree with the holiday on the calendar.
 
 ## The Seasonal Areas Are Generated
 

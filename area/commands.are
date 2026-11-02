@@ -1171,8 +1171,9 @@ See also: 'BLACK MARKET'
 ~
 
 0 HOLIDAYS HOLIDAY FESTIVALS 'HOLIDAY FAIR'~
-Syntax: holidays            (what is on, and this year's dates)
-        holidays <year>     (the dates in another year)
+Syntax: holidays               (what is on, and this year's dates)
+        holidays <year>        (the dates in another year)
+        holidays on <date>     (what any one day is: holidays on 2027-03-28)
 
 The world keeps a calendar of holidays.  While one is on, a vendor and a
 decoration stand in the Oak Tree Square, the creatures of the world now
@@ -1200,8 +1201,16 @@ your login say so.  The vendors sell (BUY) and buy nothing.
   Pilgrim's Bounty    Thanksgiving week a feast; pie and roast turkey
 
 Clovers, candy hearts and trick-or-treat candy are a bite, not a meal:
-you can eat them even when you are full.  A clover's luck keeps until
-you use it, up to three at a time, but not past leaving the game.
+you can eat them even when you are full.  Each clover is luck for one
+kill, and you can carry luck for three at a time: eating one tells you
+how many you hold, and a fourth is refused (and kept) until a pot of
+gold has spilled.  Luck is not saved -- it is gone when you leave the
+game, so eat clovers when you mean to hunt.
+
+The dates follow the game's own clock, in the time zone the server runs
+in, and change at its midnight.  The fair in the square comes and goes
+by itself; the decorated towns of Hallows End and Winter Veil appear
+when the world next restarts in their season.
 
 See also: TIME, 'BLACK MARKET'
 ~

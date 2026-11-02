@@ -124,15 +124,20 @@ class RareEventAndSkillTests(unittest.TestCase):
     def test_stale_event_vendors_are_checked_before_despawn(self) -> None:
         # The vendors moved to holiday.c (2026-11-02): one vendor for
         # whatever holiday is on, gone when it ends. A purged vendor must
-        # still be found missing before anything reads it.
+        # be known gone before anything reads it. That used to be a scan
+        # of the character list for the vendor's address, which the next
+        # mobile created could pass in the vendor's recycled CHAR_DATA
+        # (review, 2026-11-02); extract_char now clears the vendor and the
+        # boss before the struct can be reused, and
+        # tests/test_holiday_lifecycle.py plays PURGE then LOAD MOB live.
+        handler = (ROOT / "src" / "handler.c").read_text(encoding="latin-1")
+        extract = function_body(handler, "void extract_char( CHAR_DATA *ch, bool fPull )", "\n}")
+        self.assertLess(extract.index("holiday_forget( ch );"), extract.index("free_char"))
+        self.assertLess(extract.index("event_boss_forget( ch );"), extract.index("free_char"))
         holiday = (ROOT / "src" / "holiday.c").read_text(encoding="latin-1")
-        tick = function_body(holiday, "void holiday_tick", "\n}")
-        stale_check = tick.index("holiday_char_exists( event_vendor )")
-        leave = tick.index("vendor_leave()")
-        self.assertLess(stale_check, leave)
-        leaving = function_body(holiday, "static void vendor_leave", "\n}")
-        self.assertLess(leaving.index("holiday_char_exists( event_vendor )"),
-                        leaving.index("extract_char( event_vendor"))
+        forget = function_body(holiday, "void holiday_forget", "\n}")
+        self.assertIn("event_vendor = NULL", forget)
+        self.assertNotIn("holiday_char_exists", holiday)
 
     def test_hero_quest_progress_and_cleanup_are_persistent(self) -> None:
         quest_master = function_body(
