@@ -29556,3 +29556,205 @@
 1793621320	cmd	Trentlin	51	29204	korzath2.are	standing	97	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
 1793621323	cmd	Trentlin	51	29204	korzath2.are	fighting	89	0	fight	smite		Your smite misses a killer clown.
 1793621330	cmd	Trentlin	51	29204	korzath2.are	fighting	85	0	fight	smite		Your smite <<< ERADICATES >>> a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown!
+1793621343	cmd	Trentlin	51	29204	korzath2.are	fighting	51	0	fight	smite		Your smite <<< ERADICATES >>> a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793621351	cmd	Trentlin	51	29204	korzath2.are	fighting	36	0	fight	smite		Your smite >>> ANNIHILATES <<< a killer clown! // A killer clown is DEAD!! // You receive 838 experience points (419 of them rested).
+1793621360	cmd	Trentlin	51	29204	korzath2.are	standing	36	0	-	sacrifice	cor	The Gods give you 118 copper coins for your sacrifice.
+1793621360	cmd	Trentlin	51	4207	dresden_halloween.are	standing	36	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793621363	cmd	Trentlin	51	4208	dresden_halloween.are	standing	36	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793621365	cmd	Trentlin	51	4208	dresden_halloween.are	standing	36	0	-	heal	refres	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)
+1793621369	cmd	Trentlin	51	4208	dresden_halloween.are	standing	36	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621372	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621376	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621379	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621382	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621385	cmd	Trentlin	51	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793621385	cmd	Trentlin	51	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793621385	cmd	Trentlin	51	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793621385	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793621386	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793621386	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793621387	cmd	Trentlin	51	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793621387	cmd	Trentlin	51	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793621387	cmd	Trentlin	51	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793621388	cmd	Trentlin	51	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1793621388	cmd	Trentlin	51	2485	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793621388	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	south		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1793621389	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793621389	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793621390	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	war	You stop using a great war helmet.
+1793621391	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	war	The hooded headsman repairs your a great war helmet. // It cost you 10g 41s to repair a great war helmet.  It's been repaired 2 times now.
+1793621392	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	war	You wear a great war helmet on your head.
+1793621393	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	white	You stop using a white bracer.
+1793621394	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	white	You stop using a white bracer.
+1793621396	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	white	But a white bracer is already in perfect condition!
+1793621398	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	2.white	The hooded headsman repairs your a white bracer. // It cost you 24g 69s 16c to repair a white bracer.  It's been repaired 1 times now.
+1793621401	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	white	You wear a white bracer around your left wrist.
+1793621401	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	white	You wear a white bracer around your right wrist.
+1793621402	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	gaurd	You do not have that item.
+1793621402	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	gaurd	You do not have that item.
+1793621404	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	guard	You stop using the Heart Guard of the Lizard.
+1793621405	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	guard	You stop using the Heart Guard of the Snake.
+1793621406	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	guard	The hooded headsman repairs your the Heart Guard of the Lizard. // It cost you 20g 40s 59c to repair the Heart Guard of the Lizard.  It's been repaired 2 times now.
+1793621407	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	gua	You stop using a great war helmet. // You wear guano on your head.
+1793621415	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	wart	You aren't carrying or wearing that.
+1793621416	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	war	But a great war helmet is already in perfect condition!
+1793621418	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	war	You stop using guano. // You wear a great war helmet on your head.
+1793621425	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	lizard	You wear the Heart Guard of the Lizard around your neck.
+1793621427	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	guard	But the Heart Guard of the Snake is already in perfect condition!
+1793621429	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	guard	You wear the Heart Guard of the Snake around your neck.
+1793621430	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	remove	boot	You stop using a pair of pincer-toed boots.
+1793621432	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	repair	boot	The hooded headsman repairs your a pair of pincer-toed boots. // It cost you 24g 69s 16c to repair a pair of pincer-toed boots.  It's been repaired 1 times now.
+1793621434	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	wear	boot	You wear a pair of pincer-toed boots on your feet.
+1793621435	cmd	Trentlin	51	2494	dresden_halloween.are	standing	100	0	-	look		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1793621436	cmd	Trentlin	51	2485	dresden_halloween.are	standing	100	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793621436	cmd	Trentlin	51	2415	dresden_halloween.are	standing	100	0	-	west		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1793621436	cmd	Trentlin	51	2402	dresden_halloween.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793621437	cmd	Trentlin	51	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793621438	cmd	Trentlin	51	2403	dresden_halloween.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1793621439	cmd	Trentlin	51	2420	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1793621439	cmd	Trentlin	51	2421	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1793621439	cmd	Trentlin	51	2422	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1793621439	cmd	Trentlin	51	2423	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a
+1793621440	cmd	Trentlin	51	2424	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.
+1793621440	cmd	Trentlin	51	2425	dresden_halloween.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.
+1793621440	cmd	Trentlin	51	2426	dresden_halloween.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793621440	cmd	Trentlin	51	2440	dresden_halloween.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793621441	cmd	Trentlin	51	3503	midennir_halloween.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of Dresden.  A line of carved pumpkins marks // the city boundary, their flames burning in no wind.  To the east lies the
+1793621442	cmd	Trentlin	51	3502	midennir_halloween.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  A crow sits at the center of the
+1793621442	cmd	Trentlin	51	3525	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  
+1793621442	cmd	Trentlin	51	3526	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded
+1793621442	cmd	Trentlin	51	3527	midennir_halloween.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to
+1793621443	cmd	Trentlin	51	3528	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between
+1793621443	cmd	Trentlin	51	3529	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially
+1793621443	cmd	Trentlin	51	3530	midennir_halloween.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste
+1793621443	cmd	Trentlin	51	3531	midennir_halloween.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your
+1793621444	cmd	Trentlin	51	3532	midennir_halloween.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous
+1793621444	cmd	Trentlin	51	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities
+1793621445	cmd	Trentlin	51	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.
+1793621445	cmd	Trentlin	51	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on
+1793621445	cmd	Trentlin	51	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field
+1793621445	cmd	Trentlin	51	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into
+1793621446	cmd	Trentlin	51	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of
+1793621446	cmd	Trentlin	51	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern
+1793621447	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle
+1793621448	cmd	Trentlin	51	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the
+1793621448	cmd	Trentlin	51	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on
+1793621448	cmd	Trentlin	51	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small
+1793621449	cmd	Trentlin	51	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you
+1793621449	cmd	Trentlin	51	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate
+1793621449	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of
+1793621449	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793621450	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793621450	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793621450	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793621450	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793621452	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	open	north	Ok.
+1793621452	cmd	Trentlin	51	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east
+1793621452	cmd	Trentlin	51	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East
+1793621452	cmd	Trentlin	51	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt
+1793621453	cmd	Trentlin	51	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large
+1793621453	cmd	Trentlin	51	64	connect.are	standing	100	1	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful
+1793621453	cmd	Trentlin	51	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance
+1793621454	cmd	Trentlin	51	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793621455	cmd	Trentlin	51	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793621455	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793621459	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793621461	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	open	north	Ok.
+1793621462	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793621462	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793621462	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793621463	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793621464	cmd	Trentlin	51	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793621466	cmd	Trentlin	51	29204	korzath2.are	standing	100	0	-	smite	clown	Your smite >>> ANNIHILATES <<< a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown!
+1793621475	cmd	Trentlin	51	29204	korzath2.are	fighting	87	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown! // Your smite ^^^ DESTROYS ^^^ a killer clown!
+1793621483	cmd	Trentlin	51	29204	korzath2.are	fighting	81	0	fight	smite		Your smite misses a killer clown.
+1793621492	cmd	Trentlin	51	29204	korzath2.are	fighting	69	0	fight	smite		Your smite misses a killer clown.
+1793621500	cmd	Trentlin	51	29204	korzath2.are	fighting	56	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793621508	cmd	Trentlin	51	29204	korzath2.are	standing	56	0	-	sacrifice	cor	The Gods give you 118 copper coins for your sacrifice.
+1793621508	cmd	Trentlin	51	29204	korzath2.are	standing	56	0	-	scan		a killer clown                     -to the South. // a killer clown                     -to the South.
+1793621509	cmd	Trentlin	51	29205	korzath2.are	standing	56	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793621513	cmd	Trentlin	51	29205	korzath2.are	standing	56	0	-	shove	clown north	A killer clown resists your efforts to move him.
+1793621521	cmd	Trentlin	51	29205	korzath2.are	standing	59	0	-	shove	2.clown north	A killer clown resists your efforts to move him. // You learn from your mistakes, and your shove skill improves.
+1793621529	cmd	Trentlin	51	29205	korzath2.are	standing	59	0	-	shove	clown north	A killer clown resists your efforts to move him. // A killer clown decides he's tired of being shoved around! // A killer clown's pound MANGLES you!
+1793621532	cmd	Trentlin	51	29205	korzath2.are	fighting	38	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the east. // A killer clown has fled!
+1793621532	cmd	Trentlin	51	29205	korzath2.are	standing	38	0	-	flee		You aren't fighting anyone.
+1793621532	cmd	Trentlin	51	29205	korzath2.are	standing	38	0	-	flee		You aren't fighting anyone.
+1793621539	cmd	Trentlin	51	29205	korzath2.are	fighting	38	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a killer clown! // Your smite <<< ERADICATES >>> a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown!
+1793621550	cmd	Trentlin	51	29205	korzath2.are	fighting	27	0	fight	smite		Your smite does UNSPEAKABLE things to a killer clown! // Your smite <<< ERADICATES >>> a killer clown!
+1793621557	cmd	Trentlin	51	29205	korzath2.are	fighting	11	0	fight	flee		PANIC! You couldn't escape!
+1793621557	cmd	Trentlin	51	29205	korzath2.are	fighting	11	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the north. // A killer clown has fled!
+1793621559	cmd	Trentlin	51	29204	korzath2.are	standing	11	0	-	north		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793621559	cmd	Trentlin	51	29203	korzath2.are	standing	11	0	-	east		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793621560	cmd	Trentlin	51	29202	korzath2.are	standing	11	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793621560	cmd	Trentlin	51	29202	korzath2.are	standing	11	1	-	east		The door is closed.
+1793621561	cmd	Trentlin	51	29202	korzath2.are	standing	11	0	-	recall		The Gods have forsaken you.
+1793621562	cmd	Trentlin	51	29201	korzath2.are	standing	11	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793621562	cmd	Trentlin	51	29004	korzath1.are	standing	11	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793621562	cmd	Trentlin	51	29003	korzath1.are	standing	11	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793621563	cmd	Trentlin	51	4207	dresden_halloween.are	standing	11	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793621564	cmd	Trentlin	51	4208	dresden_halloween.are	standing	11	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793621565	cmd	Trentlin	51	4208	dresden_halloween.are	standing	11	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621568	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621571	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621574	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621577	cmd	Trentlin	51	4208	dresden_halloween.are	standing	100	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793621580	cmd	Trentlin	51	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793621580	cmd	Trentlin	51	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793621581	cmd	Trentlin	51	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793621581	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793621581	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793621581	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793621582	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793621583	cmd	Trentlin	51	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793621583	cmd	Trentlin	51	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793621584	cmd	Trentlin	51	2426	dresden_halloween.are	standing	100	0	-	run	e 27	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793621585	cmd	Trentlin	51	2426	dresden_halloween.are	resting	100	0	-	wake		You stand up.
+1793621587	cmd	Trentlin	51	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1793621588	cmd	Trentlin	51	9526	newthalo.are	standing	100	0	-	run	e 17	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793621589	cmd	Trentlin	51	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern
+1793621590	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle
+1793621592	cmd	Trentlin	51	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the
+1793621592	cmd	Trentlin	51	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on
+1793621592	cmd	Trentlin	51	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small
+1793621592	cmd	Trentlin	51	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you
+1793621593	cmd	Trentlin	51	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate
+1793621593	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of
+1793621593	cmd	Trentlin	51	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east
+1793621593	cmd	Trentlin	51	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East
+1793621594	cmd	Trentlin	51	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt
+1793621594	cmd	Trentlin	51	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large
+1793621595	cmd	Trentlin	51	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful
+1793621595	cmd	Trentlin	51	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance
+1793621595	cmd	Trentlin	51	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793621595	cmd	Trentlin	51	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793621596	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793621596	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	north		The door is closed.
+1793621596	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	north		The door is closed.
+1793621600	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793621602	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	open	north	Ok.
+1793621603	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793621603	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793621603	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793621603	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793621604	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793621604	cmd	Trentlin	51	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793621604	cmd	Trentlin	51	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793621606	cmd	Trentlin	51	29204	korzath2.are	standing	100	0	-	kill	cl	A killer clown parries your attack. // A killer clown dodges your attack.
+1793621609	cmd	Trentlin	52	29204	korzath2.are	fighting	100	23	fight	smite		Your smite >>> ANNIHILATES <<< a killer clown! // Your smite <<< ERADICATES >>> a killer clown! // A killer clown is DEAD!!
+1793621619	cmd	Trentlin	52	29204	korzath2.are	standing	100	0	-	sacrifice	cor	The Gods give you 118 copper coins for your sacrifice.
+1793621621	cmd	Trentlin	52	29204	korzath2.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793621621	cmd	Trentlin	52	29204	korzath2.are	standing	100	0	-	scan		You don't see anything near you.
+1793621622	cmd	Trentlin	52	29204	korzath2.are	standing	100	0	-	look		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793621623	cmd	Trentlin	52	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793621624	cmd	Trentlin	52	29205	korzath2.are	standing	100	0	-	scan		a killer clown                     -to the East. // a killer clown                     -to the East. // a killer clown                     -to the East.
+1793621626	cmd	Trentlin	52	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793621626	cmd	Trentlin	52	29205	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793621628	cmd	Trentlin	52	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793621628	cmd	Trentlin	52	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793621630	cmd	Trentlin	52	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793621631	cmd	Trentlin	52	29207	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793621631	cmd	Trentlin	52	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793621632	cmd	Trentlin	52	29208	korzath2.are	standing	100	0	-	consider	mad	A deranged madman is well above your level. // A deranged madman has about twice your hit points. // Blow for blow, you would need about 8 rounds to bring a deranged madman down; he would need about 7 rounds for you.
+1793621633	cmd	Trentlin	52	29208	korzath2.are	standing	100	0	-	look	mad	This deranged madman was trapped in the maze once he was determined to be // 'unworthy' in the Battleground Arena. // A deranged madman is in excellent condition.
+1793621634	cmd	Trentlin	52	29207	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793621640	cmd	Trentlin	52	29207	korzath2.are	standing	100	0	-	scan		a killer clown                     -to the North. // a killer clown                     -to the North. // a killer clown                     -to the North.
