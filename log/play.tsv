@@ -29758,3 +29758,65 @@
 1793621633	cmd	Trentlin	52	29208	korzath2.are	standing	100	0	-	look	mad	This deranged madman was trapped in the maze once he was determined to be // 'unworthy' in the Battleground Arena. // A deranged madman is in excellent condition.
 1793621634	cmd	Trentlin	52	29207	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
 1793621640	cmd	Trentlin	52	29207	korzath2.are	standing	100	0	-	scan		a killer clown                     -to the North. // a killer clown                     -to the North. // a killer clown                     -to the North.
+1793621644	cmd	Trentlin	52	29206	korzath2.are	standing	100	0	-	north		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793621644	refused	Trentlin	52	29206	korzath2.are	fighting	100	0	fight	west		No way!  You are still fighting!
+1793621645	cmd	Trentlin	52	29206	korzath2.are	fighting	80	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the west. // A killer clown has fled!
+1793621646	cmd	Trentlin	52	29206	korzath2.are	standing	80	0	-	flee		You aren't fighting anyone.
+1793621646	cmd	Trentlin	52	29206	korzath2.are	standing	80	0	-	flee		You aren't fighting anyone.
+1793621646	cmd	Trentlin	52	29206	korzath2.are	standing	80	0	-	flee		You aren't fighting anyone.
+1793621646	cmd	Trentlin	52	29206	korzath2.are	standing	80	0	-	flee		You aren't fighting anyone.
+1793621647	cmd	Trentlin	52	29205	korzath2.are	standing	80	0	-	west		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793621647	cmd	Trentlin	52	29205	korzath2.are	standing	80	0	-	west		Alas, you cannot go that way.
+1793621647	refused	Trentlin	52	29205	korzath2.are	standing	80	0	-	(unknown)		Huh?
+1793621658	cmd	Trentlin	52	29205	korzath2.are	fighting	67	0	fight	smite		Your smite misses a killer clown.
+1793621667	cmd	Trentlin	52	29205	korzath2.are	fighting	56	0	fight	smite		Your smite === OBLITERATES === a killer clown! // Your smite >>> ANNIHILATES <<< a killer clown!
+1793621679	cmd	Trentlin	52	29205	korzath2.are	fighting	30	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the north. // A killer clown has fled!
+1793621679	cmd	Trentlin	52	29205	korzath2.are	standing	30	0	-	flee		You aren't fighting anyone.
+1793621680	cmd	Trentlin	52	29205	korzath2.are	standing	30	0	-	flee		You aren't fighting anyone.
+1793621681	cmd	Trentlin	52	29204	korzath2.are	standing	30	0	-	north		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793621682	cmd	Trentlin	52	29203	korzath2.are	standing	30	0	-	east		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793621682	cmd	Trentlin	52	29202	korzath2.are	standing	30	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793621682	cmd	Trentlin	52	29202	korzath2.are	standing	30	0	-	east		The door is closed.
+1793621683	cmd	Trentlin	52	29201	korzath2.are	standing	30	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793621683	cmd	Trentlin	52	29004	korzath1.are	standing	30	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793621683	cmd	Trentlin	52	29003	korzath1.are	standing	30	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793621684	cmd	Trentlin	52	29002	korzath1.are	standing	30	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793621684	cmd	Trentlin	52	4207	dresden_halloween.are	standing	30	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793621685	cmd	Trentlin	52	4202	dresden_halloween.are	standing	30	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793621685	cmd	Trentlin	52	4201	dresden_halloween.are	standing	30	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793621685	cmd	Trentlin	52	2427	dresden_halloween.are	standing	30	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793621686	cmd	Trentlin	52	2427	dresden_halloween.are	standing	30	0	-	east		Alas, you cannot go that way.
+1793621686	cmd	Trentlin	52	2404	dresden_halloween.are	standing	30	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793621686	cmd	Trentlin	52	2401	dresden_halloween.are	standing	30	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793621686	cmd	Trentlin	52	2402	dresden_halloween.are	standing	30	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793621687	cmd	Trentlin	52	2415	dresden_halloween.are	standing	30	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1793621687	cmd	Trentlin	52	2485	dresden_halloween.are	standing	30	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793621687	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	south		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1793621688	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	south		Alas, you cannot go that way.
+1793621690	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	remove	quick	You stop using a quick sheathe.
+1793621694	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	repair	quick	The hooded headsman repairs your a quick sheathe. // It cost you 9s 29c to repair a quick sheathe.  It's been repaired 2 times now.
+1793621696	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	wear	qui	You stop using the Lizard's Heart Container. // You hold a quiver of arrows in your hands.
+1793621697	cmd	Trentlin	52	2494	dresden_halloween.are	standing	33	0	-	remove	reap	You stop using the Headless Horseman's Reaper.
+1793621699	cmd	Trentlin	52	2494	dresden_halloween.are	standing	33	0	-	repair	reap	The hooded headsman repairs your the Headless Horseman's Reaper. // It cost you 8p 97g 60s 96c to repair the Headless Horseman's Reaper.  It's been repaired 7 times now.
+1793621701	cmd	Trentlin	52	2494	dresden_halloween.are	standing	33	0	-	wear	reap	You wield the Headless Horseman's Reaper. // The Headless Horseman's Reaper feels like a part of you!
+1793621706	cmd	Trentlin	52	2494	dresden_halloween.are	standing	33	0	-	wear	contain	You stop using a quiver of arrows. // You hold the Lizard's Heart Container in your hands.
+1793621709	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	wear	shea	You wear a quick sheathe about your waist.
+1793621713	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	look		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1793621716	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	wear	sca	Arthur's scabbard rejects you: it is for the light or the balanced (not Ruthless or darker), and you are Vile.
+1793621720	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	score		| Name:       Trentlin | Level:      52 | Class:     Warrior | // | Played:     24 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793621722	cmd	Trentlin	52	2494	dresden_halloween.are	standing	30	0	-	inventory		You are carrying: // ( 7) a potion of true sight // ( 4) a grey potion
+1793621726	cmd	Trentlin	52	4207	dresden_halloween.are	standing	33	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793621727	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793621727	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	west		Alas, you cannot go that way.
+1793621728	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	look	stash	An oaken chest bound with iron, older than the temple around it.  There is // no lock, and no lid anybody has managed to lift.  Whatever is inside answers // only to the person it belongs to.
+1793621731	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	look	in stash	That is not a container.
+1793621732	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	stash		Your stash holds 40 of 75 things. //     1) (Humming) an assassin's dagger //     2) (Glowing) the Crystalline Sceptre of Commanding
+1793621743	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	6	-	stash	put sceptre	You put the Sceptre of Might away for safe keeping.
+1793621748	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	help	stash	STASH // Syntax: stash                          -- what is in it //         stash put <item>               -- from anywhere in the world
+1793621753	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	stash	get command	There is nothing like that in your stash.
+1793621755	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	stash	get commanding	There is nothing like that in your stash.
+1793621758	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	6	-	stash	get sceptre	You take the Sceptre of Might out of your stash. //                     ACHIEVEMENT EARNED // Right Where I Left It  +5 points
+1793621760	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	6	-	stash	get sceptre	You take the Crystalline Sceptre of Commanding out of your stash.
+1793621765	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	6	-	stash	put might	You put the Sceptre of Might away for safe keeping.
+1793621768	cmd	Trentlin	52	4208	dresden_halloween.are	standing	33	0	-	score		| Name:       Trentlin | Level:      52 | Class:     Warrior | // | Played:     24 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793621772	session	Trentlin	52	4208	dresden_halloween.are	quit	1846s	+1 levels	+9660 exp	-211972251 copper	11 kills	0 deaths	0 quests	1071 commands	6 refused	coin: loot 55p 43g 67s 15c, spent 267p 40g 89s 66c

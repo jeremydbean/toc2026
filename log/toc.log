@@ -245773,3 +245773,98 @@ Mon Nov  2 12:13:53 2026 :: Log Trentlin [29208]: l mad
 Mon Nov  2 12:13:54 2026 :: Log Trentlin [29208]: e
 Mon Nov  2 12:13:54 2026 :: Log Trentlin [29207]: arrived (Twist in the Maze) from 29208
 Mon Nov  2 12:14:00 2026 :: Log Trentlin [29207]: sca
+Mon Nov  2 12:14:04 2026 :: Log Trentlin [29207]: n
+Mon Nov  2 12:14:04 2026 :: Log Trentlin [29206]: arrived (Twist in the Maze) from 29207
+Mon Nov  2 12:14:04 2026 :: Log Trentlin [29206]: w
+Mon Nov  2 12:14:05 2026 :: Log Trentlin [29206]: flee
+Mon Nov  2 12:14:06 2026 :: Log Trentlin [29206]: flee
+Mon Nov  2 12:14:06 2026 :: Log Trentlin [29206]: flee
+Mon Nov  2 12:14:06 2026 :: Log Trentlin [29206]: flee
+Mon Nov  2 12:14:06 2026 :: Log Trentlin [29206]: flee
+Mon Nov  2 12:14:07 2026 :: Log Trentlin [29206]: w
+Mon Nov  2 12:14:07 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29206
+Mon Nov  2 12:14:07 2026 :: Log Trentlin [29205]: w
+Mon Nov  2 12:14:07 2026 :: Log Trentlin [29205]: (refused) nm
+Mon Nov  2 12:14:18 2026 :: Log Trentlin [29205]: smite
+Mon Nov  2 12:14:27 2026 :: Log Trentlin [29205]: smite
+Mon Nov  2 12:14:39 2026 :: Log Trentlin [29205]: flee
+Mon Nov  2 12:14:39 2026 :: Log Trentlin [29205]: flee
+Mon Nov  2 12:14:40 2026 :: Log Trentlin [29205]: flee
+Mon Nov  2 12:14:41 2026 :: Log Trentlin [29205]: n
+Mon Nov  2 12:14:41 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29205
+Mon Nov  2 12:14:42 2026 :: Log Trentlin [29204]: e
+Mon Nov  2 12:14:42 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29204
+Mon Nov  2 12:14:42 2026 :: Log Trentlin [29203]: e
+Mon Nov  2 12:14:42 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29203
+Mon Nov  2 12:14:42 2026 :: Log Trentlin [29202]: e
+Mon Nov  2 12:14:43 2026 :: Log Trentlin [29202]: s
+Mon Nov  2 12:14:43 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29202
+Mon Nov  2 12:14:43 2026 :: Log Trentlin [29201]: s
+Mon Nov  2 12:14:43 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29201
+Mon Nov  2 12:14:43 2026 :: Log Trentlin [29004]: s
+Mon Nov  2 12:14:43 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Mon Nov  2 12:14:44 2026 :: Log Trentlin [29003]: s
+Mon Nov  2 12:14:44 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29003
+Mon Nov  2 12:14:44 2026 :: Log Trentlin [29002]: reca
+Mon Nov  2 12:14:44 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 29002
+Mon Nov  2 12:14:45 2026 :: Log Trentlin [4207]: e
+Mon Nov  2 12:14:45 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Mon Nov  2 12:14:45 2026 :: Log Trentlin [4202]: e
+Mon Nov  2 12:14:45 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Nov  2 12:14:45 2026 :: Log Trentlin [4201]: e
+Mon Nov  2 12:14:45 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Mon Nov  2 12:14:46 2026 :: Log Trentlin [2427]: e
+Mon Nov  2 12:14:46 2026 :: Log Trentlin [2427]: n
+Mon Nov  2 12:14:46 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Nov  2 12:14:46 2026 :: Log Trentlin [2404]: n
+Mon Nov  2 12:14:46 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Mon Nov  2 12:14:46 2026 :: Log Trentlin [2401]: n
+Mon Nov  2 12:14:46 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Mon Nov  2 12:14:47 2026 :: Log Trentlin [2402]: n
+Mon Nov  2 12:14:47 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Mon Nov  2 12:14:47 2026 :: Log Trentlin [2415]: e
+Mon Nov  2 12:14:47 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Mon Nov  2 12:14:47 2026 :: Log Trentlin [2485]: s
+Mon Nov  2 12:14:47 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Mon Nov  2 12:14:48 2026 :: Log Trentlin [2494]: s
+Mon Nov  2 12:14:50 2026 :: Log Trentlin [2494]: rem quick
+Mon Nov  2 12:14:54 2026 :: Log Trentlin [2494]: repair quick
+Mon Nov  2 12:14:54 2026 :: Log Trentlin [2494]: copper -929
+Mon Nov  2 12:14:56 2026 :: Log Trentlin [2494]: wear qui
+Mon Nov  2 12:14:57 2026 :: Log Trentlin [2494]: rem reap
+Mon Nov  2 12:14:59 2026 :: Log Trentlin [2494]: repair reap
+Mon Nov  2 12:14:59 2026 :: Log Trentlin [2494]: copper -8976096
+Mon Nov  2 12:15:01 2026 :: Log Trentlin [2494]: wear reap
+Mon Nov  2 12:15:06 2026 :: Log Trentlin [2494]: wear contain
+Mon Nov  2 12:15:09 2026 :: Log Trentlin [2494]: wear shea
+Mon Nov  2 12:15:13 2026 :: Log Trentlin [2494]: l
+Mon Nov  2 12:15:16 2026 :: Log Trentlin [2494]: wear sca
+Mon Nov  2 12:15:16 2026 :: Treasure goblin: vanished from room 9407 (Entrance Hallway to Mob Factory, mobfact.are) (too long in one area).
+Mon Nov  2 12:15:20 2026 :: Log Trentlin [2494]: sco
+Mon Nov  2 12:15:22 2026 :: Log Trentlin [2494]: i
+Mon Nov  2 12:15:25 2026 :: Log Trentlin [2494]: affects off: fly
+Mon Nov  2 12:15:26 2026 :: Log Trentlin [2494]: reca
+Mon Nov  2 12:15:26 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 2494
+Mon Nov  2 12:15:27 2026 :: Log Trentlin [4207]: w
+Mon Nov  2 12:15:27 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Mon Nov  2 12:15:27 2026 :: Log Trentlin [4208]: w
+Mon Nov  2 12:15:28 2026 :: Log Trentlin [4208]: l stash
+Mon Nov  2 12:15:31 2026 :: Log Trentlin [4208]: l in stash
+Mon Nov  2 12:15:32 2026 :: Log Trentlin [4208]: stash
+Mon Nov  2 12:15:43 2026 :: Log Trentlin [4208]: stash put sceptre
+Mon Nov  2 12:15:43 2026 :: Log Trentlin [4208]: stashed the Sceptre of Might (vnum 9321)
+Mon Nov  2 12:15:48 2026 :: Log Trentlin [4208]: help stash
+Mon Nov  2 12:15:53 2026 :: Log Trentlin [4208]: stash get command
+Mon Nov  2 12:15:55 2026 :: Log Trentlin [4208]: stash get commanding
+Mon Nov  2 12:15:58 2026 :: Log Trentlin [4208]: stash get sceptre
+Mon Nov  2 12:15:58 2026 :: Log Trentlin [4208]: withdrew the Sceptre of Might (vnum 9321) from the stash
+Mon Nov  2 12:16:00 2026 :: Log Trentlin [4208]: stash get sceptre
+Mon Nov  2 12:16:00 2026 :: Log Trentlin [4208]: withdrew the Crystalline Sceptre of Commanding (vnum 10000) from the stash
+Mon Nov  2 12:16:05 2026 :: Log Trentlin [4208]: stash put might
+Mon Nov  2 12:16:05 2026 :: Log Trentlin [4208]: stashed the Sceptre of Might (vnum 9321)
+Mon Nov  2 12:16:08 2026 :: Log Trentlin [4208]: sco
+Mon Nov  2 12:16:12 2026 :: Log Trentlin [4208]: quit
+Mon Nov  2 12:16:12 2026 :: Trentlin has quit.
+Mon Nov  2 12:16:12 2026 :: [QUIT] Player rejoined the real world.
+Mon Nov  2 12:18:32 2026 :: Sock.sinaddr:  178.156.185.127
+Mon Nov  2 12:18:32 2026 :: EOF encountered on read.
