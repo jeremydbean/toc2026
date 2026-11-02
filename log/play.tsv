@@ -27359,3 +27359,185 @@
 1793582835	cmd	Alaric	56	9522	newthalo.are	standing	89	0	-	open		Ok.
 1793582837	cmd	Alaric	56	29004	korzath1.are	standing	89	0	-	run	n 9	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
 1793582838	cmd	Alaric	56	29004	korzath1.are	standing	89	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793582844	cmd	Alaric	56	29004	korzath1.are	standing	89	0	-	fists	gu	You attack in an all consuming fury! // Your fists of fury injures Guardian Knight. [-13] // Your fists of fury grazes Guardian Knight. [-7]
+1793582849	cmd	Alaric	56	29004	korzath1.are	fighting	89	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury scratches Guardian Knight. [-4] // Your fists of fury maims Guardian Knight! [-33]
+1793582855	cmd	Alaric	56	29004	korzath1.are	fighting	89	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury injures Guardian Knight. [-16] // Your fists of fury wounds Guardian Knight. [-18]
+1793582861	cmd	Alaric	56	29004	korzath1.are	fighting	89	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury scratches Guardian Knight. [-2] // Your fists of fury mauls Guardian Knight. [-22]
+1793582867	cmd	Alaric	56	29004	korzath1.are	fighting	89	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury mauls Guardian Knight. [-23] // Your fists of fury wounds Guardian Knight. [-18]
+1793582872	cmd	Alaric	56	29004	korzath1.are	fighting	91	0	fight	fists	gu	You attack in an all consuming fury! // Your fists of fury decimates Guardian Knight! [-27] // Your fists of fury mauls Guardian Knight. [-24]
+1793582874	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	gossip	good so far, ehh cant remember these questions probably gonna go do something else instead	You gossip 'good so far, ehh cant remember these questions probably gonna go do something else instead'
+1793582874	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	look		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793582875	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793582876	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793582876	cmd	Trentlin	51	29003	korzath1.are	standing	100	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793582879	cmd	Trentlin	51	29002	korzath1.are	standing	100	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793582879	cmd	Trentlin	51	29001	korzath1.are	standing	100	0	-	south		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance
+1793582879	cmd	Trentlin	51	64	connect.are	standing	100	0	-	south		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful
+1793582880	cmd	Trentlin	51	9783	newthalo.are	standing	100	0	-	south		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large
+1793582880	cmd	Trentlin	51	9782	newthalo.are	standing	100	0	-	south		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt
+1793582880	cmd	Trentlin	51	9781	newthalo.are	standing	100	0	-	south		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East
+1793582881	cmd	Trentlin	51	9667	newthalo.are	standing	100	0	-	south		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east
+1793582881	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	south		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of
+1793582882	cmd	Trentlin	51	9521	newthalo.are	standing	100	0	-	south		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate
+1793582882	cmd	Trentlin	51	9520	newthalo.are	standing	100	0	-	south		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you
+1793582883	cmd	Trentlin	51	9520	newthalo.are	standing	100	0	-	drink		Drink what?
+1793582884	cmd	Trentlin	51	9519	newthalo.are	standing	100	0	-	south		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small
+1793582885	cmd	Trentlin	51	9518	newthalo.are	standing	100	0	-	south		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on
+1793582885	cmd	Trentlin	51	9515	newthalo.are	standing	100	0	-	south		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the
+1793582886	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	south		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle
+1793582887	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1793582887	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1793582887	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1793582888	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1793582888	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1793582888	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1793582891	cmd	Trentlin	51	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is
+1793582891	cmd	Trentlin	51	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to
+1793582892	cmd	Trentlin	51	9528	newthalo.are	standing	100	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also
+1793582892	cmd	Trentlin	51	9529	newthalo.are	standing	100	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the
+1793582892	cmd	Trentlin	51	9530	newthalo.are	standing	100	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and
+1793582892	cmd	Trentlin	51	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on
+1793582893	cmd	Trentlin	51	9531	newthalo.are	standing	100	0	-	open	east	Ok.
+1793582893	cmd	Trentlin	51	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.
+1793582894	cmd	Trentlin	51	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews
+1793582895	cmd	Trentlin	51	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road
+1793582895	cmd	Trentlin	51	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the
+1793582895	cmd	Trentlin	51	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel
+1793582895	cmd	Trentlin	51	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1793582896	cmd	Trentlin	51	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1793582896	cmd	Trentlin	51	29350	voyage.are	standing	100	0	-	east		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One
+1793582896	cmd	Trentlin	51	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1793582896	cmd	Trentlin	51	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1793582897	cmd	Trentlin	51	29353	voyage.are	standing	100	0	-	northeast		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.
+1793582897	cmd	Trentlin	51	29354	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea
+1793582897	cmd	Trentlin	51	29355	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 
+1793582897	cmd	Trentlin	51	29356	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 
+1793582898	cmd	Trentlin	51	29357	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 
+1793582898	cmd	Trentlin	51	29358	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther
+1793582898	cmd	Trentlin	51	29359	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther
+1793582898	cmd	Trentlin	51	29360	voyage.are	standing	100	0	-	north		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther
+1793582899	cmd	Trentlin	51	29361	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something
+1793582899	cmd	Trentlin	51	29362	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,
+1793582899	cmd	Trentlin	51	29363	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,
+1793582899	cmd	Trentlin	51	29364	voyage.are	standing	100	0	-	south		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,
+1793582900	cmd	Trentlin	51	29365	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      Sunlight begins to break through the dark clouds above you.  As you
+1793582900	cmd	Trentlin	51	29366	voyage.are	standing	100	0	-	east		Across the Sea //   LAND HO!!! //      The voyage is almost complete!  You can clearly see the coast that ends
+1793582900	cmd	Trentlin	51	29381	voyage.are	standing	100	0	-	east		On the Beach //   You arrived here on land from a small row boat from the "Dragonfly" // ship to the west.  You can see it anchored safely away from the shore.
+1793582900	cmd	Trentlin	51	29410	world.are	standing	100	0	-	north		By the Shore //   The waves wash over this part of the beach.  It continues to stretch // to the north, east, and south.
+1793582901	cmd	Trentlin	51	29428	world.are	standing	100	0	-	north		Sandy plains //   The beach dissipates here.  You see the beginnings of a forest to the // north.
+1793582901	cmd	Trentlin	51	29432	world.are	standing	100	0	-	north		Edge of the forest //   You leave the smells of the beach and sea behind as they are replaced // by the smell of trees and leaves.  The forest grows much thicker here.
+1793582901	cmd	Trentlin	51	29435	world.are	standing	100	0	-	northeast		The thick forest //   This part of the forest is clogged with numerous types of trees, many // of which tower fifty to seventy feet above you.  A path leads east and north.
+1793582901	cmd	Trentlin	51	29453	world.are	standing	100	0	-	north		The thick forest //   The towering trees above you branch out in so many directions that the // sky is nearly blocked from view.  The path here leads north.
+1793582902	cmd	Trentlin	51	29450	world.are	standing	100	0	-	north		The thick forest //   The path breaks off into three parts here.  Part of it leads north // while the other parts lead west and south.
+1793582902	cmd	Trentlin	51	29449	world.are	standing	100	0	-	west		The thick forest //   The path twists and turns through the trees as it leads north. // [Exits: north east]
+1793582902	cmd	Trentlin	51	29448	world.are	standing	100	0	-	north		The thick forest //   The path here seems to lead northeast. // [Exits: south northeast]
+1793582902	cmd	Trentlin	51	29495	world.are	standing	100	1	-	northeast		The thick forest //   The tree density isn't as bad here.  You see a trail to the west. // [Exits: west southeast southwest]
+1793582903	cmd	Trentlin	51	29496	world.are	standing	100	0	-	west		Above the City of Lud //   A large sign is attached to a stake that is planted firmly in the // ground here.  Down below is a city past a rushing river.  A dilapidated
+1793582910	cmd	Trentlin	51	29495	world.are	standing	100	0	-	east		The thick forest //   The tree density isn't as bad here.  You see a trail to the west. // [Exits: west southeast southwest]
+1793582913	cmd	Trentlin	51	29496	world.are	standing	100	0	-	west		Above the City of Lud //   A large sign is attached to a stake that is planted firmly in the // ground here.  Down below is a city past a rushing river.  A dilapidated
+1793582915	cmd	Trentlin	51	29496	world.are	standing	100	0	-	look	sign	It reads: // # The Beautiful City Of Lud # // #      "Just over the river and through #
+1793582919	cmd	Alaric	56	29004	korzath1.are	standing	91	0	-	gossip	The levers?	You gossip 'The levers?'
+1793582919	cmd	Trentlin	51	29496	world.are	standing	100	0	-	jump		Jump where?
+1793582927	cmd	Alaric	56	29004	korzath1.are	standing	91	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793582931	cmd	Alaric	56	29004	korzath1.are	standing	91	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1793582933	cmd	Alaric	56	29004	korzath1.are	standing	91	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793582934	cmd	Alaric	56	29004	korzath1.are	standing	91	0	-	open		Ok.
+1793582934	cmd	Alaric	56	29201	korzath2.are	standing	91	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793582935	cmd	Alaric	56	29202	korzath2.are	standing	91	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793582935	cmd	Alaric	56	29202	korzath2.are	standing	91	0	-	north		The door is closed.
+1793582936	cmd	Alaric	56	29203	korzath2.are	standing	91	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793582937	cmd	Alaric	56	29204	korzath2.are	standing	91	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793582938	cmd	Alaric	56	29204	korzath2.are	standing	91	0	-	west		Alas, you cannot go that way.
+1793582938	cmd	Alaric	56	29205	korzath2.are	standing	91	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793582939	cmd	Alaric	56	29206	korzath2.are	standing	91	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793582939	cmd	Trentlin	51	29496	world.are	standing	100	0	-	gossip	yeah i think i didnt actually go in, was looking at the map on the website	You gossip 'yeah i think i didnt actually go in, was looking at the map on the website'
+1793582939	cmd	Alaric	56	29207	korzath2.are	standing	91	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793582941	cmd	Trentlin	51	29501	lud.are	standing	100	0	-	jump	jagged	You take a running start and jump over a jagged, black chasm! // The Steel Bridge //   Before you swings a rickety, twisted steel bridge standing over the river
+1793582943	cmd	Trentlin	51	29501	lud.are	standing	100	0	-	scan		You don't see anything near you.
+1793582944	cmd	Trentlin	51	29502	lud.are	standing	100	0	-	north		In the Water/On the Shore //   You swim through the freezing water of the river Send.  This place better // be worth exploring.  You carefully evade the wooden spears planted in the
+1793582945	cmd	Trentlin	51	29502	lud.are	standing	100	0	-	scan		You don't see anything near you.
+1793582946	cmd	Trentlin	51	29502	lud.are	standing	100	0	-	look	sign	You look at the sign: //    |   BEWARE:  This area is for HEROES only.  Players on the lower end    | //    |            of this spectrum should turn back the way they came.       |
+1793582954	cmd	Trentlin	51	29502	lud.are	standing	100	0	-	scan		You don't see anything near you.
+1793582955	cmd	Trentlin	51	29577	lud.are	standing	100	0	-	north		Entrance to The City of Lud //   You climb out of the waters and stand at the entrance to the large // and decimated city of Lud.  The Pube's side of the city lies to the west
+1793582956	cmd	Trentlin	51	29577	lud.are	standing	100	0	-	scan		Gray                               -to the East. // Pube                               -to the West.
+1793582957	cmd	Trentlin	51	29504	lud.are	standing	100	0	-	west		Pube's Side //   The streets here are littered with trash and glass.  Automobiles; a remnant // of the past; sit abandoned and create the feeling of a graveyard.  You notice
+1793582958	cmd	Trentlin	51	29504	lud.are	standing	100	0	-	consider	p	Pube is about your level. // Pube has about twice your hit points. // Blow for blow, you would need about 12 rounds to bring Pube down; he would need about 6 rounds for you.
+1793582963	cmd	Alaric	56	29207	korzath2.are	standing	94	0	-	gossip	Pull five, pull eight.   They're the CoT and something else. Goes to the boss of BG1	You gossip 'Pull five, pull eight.   They're the CoT and something else. Goes to the boss of BG1'
+1793582965	cmd	Trentlin	51	29577	lud.are	standing	100	0	-	east		Entrance to The City of Lud //   You climb out of the waters and stand at the entrance to the large // and decimated city of Lud.  The Pube's side of the city lies to the west
+1793582970	cmd	Alaric	56	29207	korzath2.are	standing	94	0	-	look		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793582971	cmd	Trentlin	51	29577	lud.are	standing	100	0	-	scan		Gray                               -to the East. // Pube                               -to the West.
+1793582972	cmd	Trentlin	51	29503	lud.are	standing	100	0	-	east		Gray's Side //   You have passed the barricade that separates the Gray's side from the // Pube's side.  Both groups have lost their minds by living in a city destroyed
+1793582973	cmd	Alaric	56	29207	korzath2.are	standing	94	0	-	levitate		You slowly rise up off the ground.
+1793582973	cmd	Trentlin	51	29503	lud.are	standing	100	0	-	consider	gr	Gray is about your level. // Gray has about twice your hit points. // Blow for blow, you would need about 11 rounds to bring Gray down; he would need about 6 rounds for you.
+1793582974	cmd	Trentlin	51	29503	lud.are	standing	100	0	-	look	gr	This Gray suffers from a disease called "Mandrus" but known to many as // "Whore's Blossoms."  The Pubes and Grays have been killing each other for // many years now in a vain attempt to please what they think are Gods that
+1793582975	cmd	Alaric	56	29207	korzath2.are	standing	94	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793582977	cmd	Trentlin	51	29503	lud.are	standing	100	0	-	scan		Gray                               -to the North. // Gray                               -to the far North. // Pube                               -to the far West.
+1793582980	cmd	Trentlin	51	29577	lud.are	standing	100	0	-	west		Entrance to The City of Lud //   You climb out of the waters and stand at the entrance to the large // and decimated city of Lud.  The Pube's side of the city lies to the west
+1793582980	cmd	Trentlin	51	29504	lud.are	standing	100	0	-	west		Pube's Side //   The streets here are littered with trash and glass.  Automobiles; a remnant // of the past; sit abandoned and create the feeling of a graveyard.  You notice
+1793582982	cmd	Trentlin	51	29504	lud.are	standing	100	0	-	kill	p	Pube parries your attack. // You wound Pube.
+1793582985	cmd	Trentlin	51	29504	lud.are	fighting	100	0	fight	smite		Your smite misses Pube.
+1793582995	cmd	Trentlin	51	29504	lud.are	fighting	88	0	fight	smite		Your smite wounds Pube. // Your smite <<< ERADICATES >>> Pube!
+1793583003	cmd	Trentlin	51	29504	lud.are	fighting	82	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Pube! // Your smite misses Pube. // Your smite <<< ERADICATES >>> Pube!
+1793583009	cmd	Alaric	56	29207	korzath2.are	standing	95	0	-	gossip	I usually just kill the madmen and skeletons in BG1 in a loop, decent xp.	You gossip 'I usually just kill the madmen and skeletons in BG1 in a loop, decent xp.'
+1793583013	cmd	Trentlin	51	29504	lud.are	fighting	69	0	fight	smite		Your smite === OBLITERATES === Pube! // Your smite *** DEVASTATES *** Pube! // Your smite *** DEVASTATES *** Pube!
+1793583022	cmd	Alaric	56	29207	korzath2.are	standing	95	0	-	gossip	Excalibur does wonders on the Shadowmen and Vampire that come	You gossip 'Excalibur does wonders on the Shadowmen and Vampire that come'
+1793583022	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	look	in co	Corpse of Pube contains: //      Nothing.
+1793583024	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	sacrifice	co	The Gods give you 100 copper coins for your sacrifice.
+1793583025	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	score		| Name:       Trentlin | Level:      51 | Class:     Warrior | // | Played:     23 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793583030	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793583040	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	gossip	yeah ive got excalibur, just need to stop being evil	You gossip 'yeah ive got excalibur, just need to stop being evil'
+1793583040	cmd	Alaric	56	29207	korzath2.are	standing	95	0	-	gossip	and if you haven't gotten that yet, Arthurs scabbard should be a decent upgrade	You gossip 'and if you haven't gotten that yet, Arthurs scabbard should be a decent upgrade'
+1793583046	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793583048	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	inventory		You are carrying: //      (Glowing) the Horseman's cursed helm // ( 2) enemy bait
+1793583051	cmd	Trentlin	51	29504	lud.are	standing	70	0	-	compare	ass	A) An assassin's ring (level 52) -- can't use: needs level 52 // B) a pirate's ring (level 43), worn // Slot: finger.  Your damage comes from weapons.
+1793583055	cmd	Trentlin	51	29504	lud.are	standing	73	0	-	look		Pube's Side //   The streets here are littered with trash and glass.  Automobiles; a remnant // of the past; sit abandoned and create the feeling of a graveyard.  You notice
+1793583056	cmd	Trentlin	51	29504	lud.are	standing	73	0	-	scan		Pube                               -to the North. // Pube                               -to the far North. // Gray                               -to the far East.
+1793583058	cmd	Trentlin	51	29507	lud.are	standing	73	0	-	north		Alleyway //   This alleyway leads deep into the Pubes side of town.  For a brief moment // some light reflects off of a silver object that darts around the corner
+1793583059	cmd	Alaric	56	29207	korzath2.are	standing	98	0	-	gossip	Think those mobs will push you up in alignment	You gossip 'Think those mobs will push you up in alignment'
+1793583060	cmd	Alaric	56	29207	korzath2.are	standing	98	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    278 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793583061	cmd	Alaric	56	29207	korzath2.are	standing	98	0	-	score		| Name:         Alaric | Level:      56 | Class:        Monk | // | Played:    278 hours | Sex:      Male | Guild:        Monk | // | Age:        30 years | Race:    Dwarf | Castle:       None |
+1793583064	cmd	Trentlin	51	29507	lud.are	standing	73	0	-	kill	pu	You DISEMBOWEL Pube! // You miss Pube. // You miss Pube.
+1793583067	cmd	Trentlin	51	29507	lud.are	fighting	73	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Pube! // Your smite ^^^ DESTROYS ^^^ Pube!
+1793583079	cmd	Trentlin	51	29507	lud.are	fighting	52	0	fight	smite		Your smite misses Pube.
+1793583090	cmd	Trentlin	51	29507	lud.are	fighting	33	0	fight	smite		Your smite === OBLITERATES === Pube! // Your smite *** DEVASTATES *** Pube! // Your smite ^^^ DESTROYS ^^^ Pube!
+1793583095	cmd	Alaric	56	29207	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793583098	cmd	Alaric	56	29207	korzath2.are	standing	98	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.
+1793583106	cmd	Trentlin	51	29507	lud.are	fighting	7	0	fight	flee		Pube is overcome with a feeling of despair and flees the battle.
+1793583106	cmd	Trentlin	51	29507	lud.are	fighting	7	0	fight	flee		Pube is overcome with a feeling of despair and flees the battle.
+1793583106	cmd	Trentlin	51	29507	lud.are	fighting	7	0	fight	flee		Pube is overcome with a feeling of despair and flees the battle.
+1793583106	cmd	Alaric	56	29208	korzath2.are	standing	98	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793583106	cmd	Trentlin	51	29551	lud.are	fighting	7	0	fight	flee		Deep In The Alley //   You wander down the littered alley looking for a sign of what or who you // saw.  You notice a fresh corpse lying in the open trunk of an ancient
+1793583107	cmd	Trentlin	51	29551	lud.are	standing	7	0	-	flee		You aren't fighting anyone. //                     ACHIEVEMENT EARNED // Brave Sir Robin  +5 points
+1793583107	cmd	Trentlin	51	29551	lud.are	standing	7	0	-	flee		You aren't fighting anyone.
+1793583109	cmd	Alaric	56	29208	korzath2.are	standing	98	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-12] // Your fists of fury DISEMBOWELS a deranged madman! [-44]
+1793583110	cmd	Trentlin	51	29551	lud.are	standing	7	0	-	scan		Pube                               -to the East.
+1793583111	cmd	Trentlin	51	29551	lud.are	standing	7	0	-	recall		The Gods have forsaken you.
+1793583113	cmd	Trentlin	51	29551	lud.are	standing	7	0	-	inventory		You are carrying: //      (Glowing) the Horseman's cursed helm // ( 2) enemy bait
+1793583115	cmd	Alaric	56	29208	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-20] // Your fists of fury *** DEVASTATES *** a deranged madman! [-63]
+1793583120	cmd	Alaric	56	29208	korzath2.are	fighting	94	1	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a deranged madman. [-17] // Your fists of fury *** DEVASTATES *** a deranged madman! [-63]
+1793583126	cmd	Trentlin	51	29551	lud.are	standing	9	0	-	inventory		You are carrying: //      (Glowing) the Horseman's cursed helm // ( 2) enemy bait
+1793583126	cmd	Alaric	56	29208	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-76] // Your fists of fury wounds a deranged madman. [-19]
+1793583128	cmd	Trentlin	51	29551	lud.are	standing	9	0	-	look		Deep In The Alley //   You wander down the littered alley looking for a sign of what or who you // saw.  You notice a fresh corpse lying in the open trunk of an ancient
+1793583130	cmd	Trentlin	51	29551	lud.are	standing	9	0	-	scan		Pube                               -to the East.
+1793583130	cmd	Trentlin	51	29551	lud.are	standing	9	0	-	exits		Obvious exits: // East  - Alleyway // Down  - Long Hallway
+1793583131	cmd	Trentlin	51	29507	lud.are	standing	9	0	-	east		Alleyway //   This alleyway leads deep into the Pubes side of town.  For a brief moment // some light reflects off of a silver object that darts around the corner
+1793583132	cmd	Trentlin	51	29506	lud.are	standing	9	0	-	east		Center of Lud //   You have come upon a large paved city square.  A pedestal with a statue // of a mighty copper war-horse on its hindlegs dominates the center of the
+1793583132	cmd	Alaric	56	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury === OBLITERATES === a deranged madman! [-122] // Your fists of fury decimates a deranged madman! [-25]
+1793583133	cmd	Trentlin	51	29577	lud.are	standing	9	0	-	south		Entrance to The City of Lud //   You climb out of the waters and stand at the entrance to the large // and decimated city of Lud.  The Pube's side of the city lies to the west
+1793583133	cmd	Trentlin	51	29502	lud.are	standing	9	0	-	south		In the Water/On the Shore //   You swim through the freezing water of the river Send.  This place better // be worth exploring.  You carefully evade the wooden spears planted in the
+1793583133	cmd	Trentlin	51	29501	lud.are	standing	9	0	-	south		The Steel Bridge //   Before you swings a rickety, twisted steel bridge standing over the river // Send and leading to the remains of the desolate city known as LUD.  The
+1793583134	cmd	Trentlin	51	29501	lud.are	standing	9	0	-	south		Alas, you cannot go that way.
+1793583134	cmd	Trentlin	51	29501	lud.are	standing	9	0	-	south		Alas, you cannot go that way.
+1793583135	cmd	Trentlin	51	29501	lud.are	standing	9	0	-	recall		The Gods have forsaken you.
+1793583138	cmd	Alaric	56	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-9] // Your fists of fury grazes a deranged madman. [-5]
+1793583138	cmd	Trentlin	51	29496	world.are	standing	9	0	-	jump	jagged	You take a running start and jump over a jagged black chasm! // Above the City of Lud //   A large sign is attached to a stake that is planted firmly in the
+1793583140	cmd	Trentlin	51	4207	dresden_halloween.are	standing	9	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583141	cmd	Trentlin	51	4208	dresden_halloween.are	standing	9	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793583143	cmd	Trentlin	51	4207	dresden_halloween.are	standing	9	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583144	cmd	Alaric	56	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-67] // Your fists of fury injures a deranged madman. [-14]
+1793583144	cmd	Trentlin	51	4202	dresden_halloween.are	standing	9	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793583144	cmd	Trentlin	51	4203	dresden_halloween.are	standing	9	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793583144	cmd	Trentlin	51	4210	dresden_halloween.are	standing	9	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793583145	cmd	Trentlin	51	4210	dresden_halloween.are	standing	9	0	-	north		Alas, you cannot go that way.
+1793583145	cmd	Trentlin	51	4210	dresden_halloween.are	standing	9	0	-	north		Alas, you cannot go that way.
+1793583146	cmd	Trentlin	51	4210	dresden_halloween.are	standing	9	0	-	sleep		You go to sleep.
