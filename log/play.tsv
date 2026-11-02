@@ -27541,3 +27541,157 @@
 1793583145	cmd	Trentlin	51	4210	dresden_halloween.are	standing	9	0	-	north		Alas, you cannot go that way.
 1793583145	cmd	Trentlin	51	4210	dresden_halloween.are	standing	9	0	-	north		Alas, you cannot go that way.
 1793583146	cmd	Trentlin	51	4210	dresden_halloween.are	standing	9	0	-	sleep		You go to sleep.
+1793583164	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	9	0	-	gossip	what are the answers to get through the question hall again?	You gossip 'what are the answers to get through the question hall again?'
+1793583183	cmd	Alaric	56	29208	korzath2.are	standing	95	0	-	gossip	The BG2 ones? WUSNE	You gossip 'The BG2 ones? WUSNE'
+1793583183	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	22	0	-	group		Trentlin's group: // [51 W] Trentlin          208/ 911 hp 1454/1454 mana  237/ 356 mv 114922 xp
+1793583185	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	22	0	-	aquest	list	There is no questmaster here.  Questor Thews waits at the very top of the great oak: // climb up from the Oak Tree Square.  AQUEST INFO works anywhere.
+1793583188	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	22	0	-	group		Trentlin's group: // [51 W] Trentlin          208/ 911 hp 1454/1454 mana  237/ 356 mv 114922 xp
+1793583199	cmd	Alaric	56	29208	korzath2.are	standing	95	0	-	look		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793583201	cmd	Alaric	56	29209	korzath2.are	standing	95	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793583203	cmd	Alaric	56	29209	korzath2.are	standing	95	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-14] // Your fists of fury scratches an Animated Skeleton. [-3]
+1793583205	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	22	0	-	group		Trentlin's group: // [51 W] Trentlin          208/ 911 hp 1454/1454 mana  237/ 356 mv 114922 xp
+1793583207	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	22	0	-	areas		[25+]   Soul.   Temple Despair         [ 5 15] PinkF   Mob Factory             // [  0  0] Built-In  Seasonal Items      [ ALL ] Soul.   All Hallow's Eve Village // [None ] Diku    Limbo                  [ ALL ] ToC     Training Dummy Yard
+1793583209	cmd	Alaric	56	29209	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-14] // Your fists of fury MASSACRES an Animated Skeleton! [-51]
+1793583214	cmd	Alaric	56	29209	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates an Animated Skeleton! [-31] // Your fists of fury MANGLES an Animated Skeleton! [-55]
+1793583220	cmd	Alaric	56	29209	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-70] // Your fists of fury ^^^ DESTROYS ^^^ an Animated Skeleton! [-90]
+1793583226	cmd	Alaric	56	29209	korzath2.are	standing	95	0	-	fists		Who do you want to attack?
+1793583226	cmd	Alaric	56	29209	korzath2.are	standing	95	0	-	fists		Who do you want to attack?
+1793583227	cmd	Alaric	56	29210	korzath2.are	standing	95	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793583228	cmd	Alaric	56	29210	korzath2.are	standing	95	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-14] // Your fists of fury MANGLES an Animated Skeleton! [-56]
+1793583234	cmd	Alaric	56	29210	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-80] // Your fists of fury MASSACRES an Animated Skeleton! [-52]
+1793583240	cmd	Alaric	56	29210	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates an Animated Skeleton! [-32] // Your fists of fury wounds an Animated Skeleton. [-17]
+1793583242	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	group		Trentlin's group: // [51 W] Trentlin          406/ 911 hp 1454/1454 mana  308/ 356 mv 114922 xp
+1793583246	cmd	Alaric	56	29210	korzath2.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-70] // Your fists of fury DISEMBOWELS an Animated Skeleton! [-43]
+1793583248	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	group		Trentlin's group: // [51 W] Trentlin          406/ 911 hp 1454/1454 mana  308/ 356 mv 114922 xp
+1793583252	cmd	Alaric	56	29210	korzath2.are	standing	83	0	-	fists		Who do you want to attack?
+1793583288	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	group		Trentlin's group: // [51 W] Trentlin          406/ 911 hp 1454/1454 mana  308/ 356 mv 114922 xp
+1793583289	refused	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	look		In your dreams, or what? //                     ACHIEVEMENT EARNED // Sleepwalker  +5 points
+1793583293	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	affect		You are not affected by any spells.
+1793583296	cmd	Alaric	56	29210	korzath2.are	standing	83	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793583298	cmd	Alaric	56	29211	korzath2.are	standing	83	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793583300	cmd	Alaric	56	29211	korzath2.are	fighting	77	0	fight	fists	sk	You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-13]
+1793583306	cmd	Alaric	56	29211	korzath2.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a Shadowman! [-92] // Your fists of fury hits a Shadowman. [-11]
+1793583308	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	group		Trentlin's group: // [51 W] Trentlin          406/ 911 hp 1454/1454 mana  308/ 356 mv 114922 xp
+1793583312	cmd	Alaric	56	29211	korzath2.are	fighting	62	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a Shadowman! [-34] // Your fists of fury devastates a Shadowman! [-32]
+1793583315	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	group		Trentlin's group: // [51 W] Trentlin          406/ 911 hp 1454/1454 mana  308/ 356 mv 114922 xp
+1793583315	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	44	0	-	who		[56 Dwarf   Lord  ] Alaric. // [51 Dwarf   Hero  ] Trentlin the Hero of the Fifth Order // Players found: 2
+1793583317	cmd	Alaric	56	29211	korzath2.are	fighting	59	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a Shadowman. [-15] // Your fists of fury DISEMBOWELS a Shadowman! [-44]
+1793583321	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	57	0	-	group		Trentlin's group: // [51 W] Trentlin          528/ 911 hp 1454/1454 mana  356/ 356 mv 114922 xp
+1793583321	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	57	0	-	affect		You are not affected by any spells.
+1793583323	cmd	Trentlin	51	4210	dresden_halloween.are	sleeping	57	0	-	wake		You wake and stand up.
+1793583323	cmd	Trentlin	51	4203	dresden_halloween.are	standing	57	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793583323	cmd	Alaric	56	29211	korzath2.are	fighting	48	0	fight	levitate		You slowly rise up off the ground.
+1793583323	cmd	Trentlin	51	4202	dresden_halloween.are	standing	57	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793583323	cmd	Alaric	56	29211	korzath2.are	fighting	36	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a Shadowman! [-33] // Your fists of fury injures a Shadowman. [-13]
+1793583323	cmd	Trentlin	51	4207	dresden_halloween.are	standing	57	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583324	cmd	Trentlin	51	4208	dresden_halloween.are	standing	57	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793583324	cmd	Trentlin	51	4208	dresden_halloween.are	standing	57	0	-	west		Alas, you cannot go that way.
+1793583324	cmd	Trentlin	51	4208	dresden_halloween.are	standing	57	0	-	west		Alas, you cannot go that way.
+1793583325	cmd	Trentlin	51	4208	dresden_halloween.are	standing	57	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793583329	cmd	Alaric	56	29211	korzath2.are	fighting	36	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a Shadowman. [-22] // A Shadowman is DEAD!!
+1793583330	cmd	Trentlin	51	4208	dresden_halloween.are	standing	70	0	-	heal		The cackling witch-healer says 'I offer the following spells:' //   light:   cure light wounds     50 gold //   serious: cure serious wounds  150 gold
+1793583331	cmd	Trentlin	51	4208	dresden_halloween.are	standing	70	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793583335	cmd	Alaric	56	29211	korzath2.are	fighting	36	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Animated Skeleton! [-35] // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-59]
+1793583336	cmd	Trentlin	51	4208	dresden_halloween.are	standing	82	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793583340	cmd	Trentlin	51	4208	dresden_halloween.are	standing	94	0	-	heal	heal	The cackling witch-healer utters the words 'pzar'. // A warm feeling fills your body.
+1793583341	cmd	Alaric	56	29211	korzath2.are	fighting	31	0	fight	who		[56 Dwarf   Lord  ] Alaric. // [51 Dwarf   Hero  ] Trentlin the Hero of the Fifth Order // Players found: 2
+1793583341	cmd	Alaric	56	29211	korzath2.are	fighting	31	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-58] // Your fists of fury hits an Animated Skeleton. [-11]
+1793583343	cmd	Trentlin	51	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583343	cmd	Trentlin	51	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793583343	cmd	Trentlin	51	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793583343	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793583344	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793583344	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793583344	cmd	Trentlin	51	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793583344	cmd	Trentlin	51	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793583345	cmd	Trentlin	51	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793583347	cmd	Alaric	56	29211	korzath2.are	fighting	31	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-68] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-66]
+1793583347	cmd	Trentlin	51	2426	dresden_halloween.are	standing	100	0	-	run	e 10	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793583348	cmd	Trentlin	51	2426	dresden_halloween.are	resting	100	0	-	wake		You stand up.
+1793583349	refused	Trentlin	51	2426	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1793583350	cmd	Trentlin	51	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1793583351	cmd	Trentlin	51	2440	dresden_halloween.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793583351	cmd	Trentlin	51	3503	midennir_halloween.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of Dresden.  A line of carved pumpkins marks // the city boundary, their flames burning in no wind.  To the east lies the
+1793583351	cmd	Trentlin	51	3502	midennir_halloween.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  A crow sits at the center of the
+1793583351	cmd	Trentlin	51	3525	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  
+1793583352	cmd	Trentlin	51	3526	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded
+1793583352	cmd	Trentlin	51	3527	midennir_halloween.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to
+1793583352	cmd	Trentlin	51	3528	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between
+1793583352	cmd	Alaric	56	29211	korzath2.are	fighting	28	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an Animated Skeleton. [-11] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-61]
+1793583352	cmd	Trentlin	51	3529	midennir_halloween.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially
+1793583353	cmd	Trentlin	51	3530	midennir_halloween.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste
+1793583353	cmd	Trentlin	51	3531	midennir_halloween.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your
+1793583353	cmd	Trentlin	51	3532	midennir_halloween.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous
+1793583354	cmd	Trentlin	51	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities
+1793583354	cmd	Trentlin	51	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.
+1793583355	cmd	Trentlin	51	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on
+1793583355	cmd	Trentlin	51	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field
+1793583356	cmd	Trentlin	51	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into
+1793583356	cmd	Trentlin	51	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of
+1793583357	cmd	Trentlin	51	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern
+1793583357	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle
+1793583358	cmd	Trentlin	51	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is
+1793583358	cmd	Alaric	56	29211	korzath2.are	fighting	21	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-46] // Your fists of fury DISMEMBERS an Animated Skeleton! [-46]
+1793583359	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	west		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle
+1793583360	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1793583360	cmd	Trentlin	51	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the
+1793583360	cmd	Trentlin	51	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on
+1793583360	cmd	Trentlin	51	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small
+1793583361	cmd	Trentlin	51	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you
+1793583361	cmd	Trentlin	51	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate
+1793583361	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of
+1793583362	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793583362	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793583362	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793583362	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793583363	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	north		The gate is closed.
+1793583364	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	open	north	Ok.
+1793583364	cmd	Trentlin	51	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east
+1793583365	cmd	Trentlin	51	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East
+1793583365	cmd	Trentlin	51	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt
+1793583365	cmd	Trentlin	51	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large
+1793583365	cmd	Trentlin	51	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful
+1793583366	cmd	Trentlin	51	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance
+1793583366	cmd	Trentlin	51	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793583366	cmd	Trentlin	51	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793583366	cmd	Alaric	56	29211	korzath2.are	fighting	12	0	fight	fill		Fill what?
+1793583366	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793583367	refused	Alaric	56	29211	korzath2.are	fighting	12	0	fight	(unknown)		Huh? Did you mean FLEE?
+1793583367	cmd	Alaric	56	29212	korzath2.are	fighting	12	0	fight	flee		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793583367	cmd	Alaric	56	29212	korzath2.are	standing	12	0	-	flee		You aren't fighting anyone. //                     ACHIEVEMENT EARNED // Brave Sir Robin  +5 points
+1793583368	cmd	Alaric	56	29212	korzath2.are	standing	12	0	-	flee		You aren't fighting anyone.
+1793583368	cmd	Alaric	56	4207	dresden_halloween.are	standing	12	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583369	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	get	key	You get a diamond key.
+1793583370	cmd	Alaric	56	4204	dresden_halloween.are	standing	12	0	-	east		The Gallery of Grinning Skulls //   Rows of skulls line the walls of this domed hall on shelves of black crepe, // each with a candle guttering inside so its eyes and teeth glow. They are
+1793583371	cmd	Alaric	56	4207	dresden_halloween.are	standing	12	0	-	north		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793583371	cmd	Alaric	56	4205	dresden_halloween.are	standing	12	0	-	north		The Hall of Guttering Candles //   A thousand candles stand on every ledge and flagstone of this domed hall, // and a draught from nowhere keeps making them gutter all at once, so that the
+1793583372	cmd	Alaric	56	4205	dresden_halloween.are	standing	12	0	-	sleep		You go to sleep.
+1793583374	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793583375	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	open	north	Ok.
+1793583376	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	drop	key	You drop a diamond key.
+1793583376	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793583377	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583380	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	look	sign	You do not see that here.
+1793583382	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	open	east	It's locked.
+1793583383	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793583383	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793583383	cmd	Trentlin	51	29003	korzath1.are	standing	100	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793583385	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793583386	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	get	all	You get a diamond key.
+1793583387	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793583387	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583387	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793583389	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	unlock	east	You lack the key.
+1793583391	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	open	east	It's locked.
+1793583392	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793583392	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793583394	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	drop	keyt	You do not have that item.
+1793583397	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	drop	key	You drop a diamond key.
+1793583397	cmd	Trentlin	51	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793583397	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793583398	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793583398	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793583398	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	north		The door is closed.
+1793583409	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	who		[56 Dwarf   Lord  ] Alaric. // [51 Dwarf   Hero  ] Trentlin the Hero of the Fifth Order // Players found: 2
+1793583409	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	where		Players near you: // There's no one around you.
+1793583421	cmd	Trentlin	51	29202	korzath2.are	standing	100	0	-	gossip	how do i get the key for bg1?	You gossip 'how do i get the key for bg1?'
