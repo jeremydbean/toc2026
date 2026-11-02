@@ -28255,3 +28255,11 @@
 1793587066	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	mindbar		You lost your concentration.
 1793587067	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	mindbar		A mental fortress protects your mind.
 1793587073	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	affect		You are affected by: // Skill: 'mindbar' for 9 hours. // Skill: 'iron skin' grants immunity to piercing for 1 hours.
+1793587223	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	affect		You are affected by: // Skill: 'mindbar' for 6 hours. // Skill: 'steel fist' modifies damage roll by 14 for 4 hours.
+1793587257	cmd	Alaric	56	4208	dresden_halloween.are	standing	62	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793587257	cmd	Alaric	56	4207	dresden_halloween.are	standing	62	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793587258	cmd	Alaric	56	4202	dresden_halloween.are	standing	62	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793587259	cmd	Alaric	56	4203	dresden_halloween.are	standing	62	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793587259	cmd	Alaric	56	4210	dresden_halloween.are	standing	62	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793587260	cmd	Alaric	56	4210	dresden_halloween.are	standing	62	0	-	sleep		You go to sleep.
+1793587318	cmd	Alaric	56	4210	dresden_halloween.are	sleeping	75	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  

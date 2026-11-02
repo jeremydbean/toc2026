@@ -242396,3 +242396,23 @@ Mon Nov  2 02:37:32 2026 :: Log Alaric [4208]: iron
 Mon Nov  2 02:37:46 2026 :: Log Alaric [4208]: mindbar
 Mon Nov  2 02:37:47 2026 :: Log Alaric [4208]: mindbar
 Mon Nov  2 02:37:53 2026 :: Log Alaric [4208]: af
+Mon Nov  2 02:39:03 2026 :: Log Alaric [4208]: affects off: iron skin
+Mon Nov  2 02:39:37 2026 :: Sock.sinaddr:  20.46.255.49
+Mon Nov  2 02:39:38 2026 :: Sock.sinaddr:  20.46.255.49
+Mon Nov  2 02:39:44 2026 :: Log Alaric [4208]: affects off: levitate
+Mon Nov  2 02:39:58 2026 :: Sock.sinaddr:  5.161.61.238
+Mon Nov  2 02:39:58 2026 :: EOF encountered on read.
+Mon Nov  2 02:40:23 2026 :: Log Alaric [4208]: af
+Mon Nov  2 02:40:43 2026 :: Log Alaric [4208]: affects off: nightmare; max mana 2721 -> 2758
+Mon Nov  2 02:40:57 2026 :: Log Alaric [4208]: l
+Mon Nov  2 02:40:57 2026 :: Log Alaric [4208]: e
+Mon Nov  2 02:40:57 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Nov  2 02:40:58 2026 :: Log Alaric [4207]: e
+Mon Nov  2 02:40:58 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Mon Nov  2 02:40:59 2026 :: Log Alaric [4202]: n
+Mon Nov  2 02:40:59 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Mon Nov  2 02:40:59 2026 :: Log Alaric [4203]: n
+Mon Nov  2 02:40:59 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Mon Nov  2 02:41:00 2026 :: Log Alaric [4210]: sleep
+Mon Nov  2 02:41:58 2026 :: Log Alaric [4210]: prac
+Mon Nov  2 02:42:40 2026 :: Treasure goblin: vanished from room 7014 (Muddy sewer, sewer.are) (too long in one area).
