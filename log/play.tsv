@@ -15090,3 +15090,218 @@
 1793663121	cmd	Trentlin	53	2415	dresden.are	standing	97	0	-	west		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
 1793663122	cmd	Trentlin	53	2402	dresden.are	standing	97	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
 1793663122	cmd	Trentlin	53	2401	dresden.are	standing	97	0	-	south		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793663125	cmd	Trentlin	53	2404	dresden.are	standing	97	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793663125	cmd	Trentlin	53	2427	dresden.are	standing	97	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793663125	cmd	Trentlin	53	4201	dresden.are	standing	97	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793663126	cmd	Trentlin	53	4202	dresden.are	standing	97	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793663126	cmd	Trentlin	53	4207	dresden.are	standing	97	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793663126	cmd	Trentlin	53	3700	school.are	standing	97	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793663126	cmd	Trentlin	53	3772	school.are	standing	97	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax
+1793663127	cmd	Trentlin	53	3795	school.are	standing	97	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring
+1793663127	cmd	Trentlin	53	15000	campus.are	standing	97	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance
+1793663127	cmd	Trentlin	53	15001	campus.are	standing	97	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793663127	cmd	Trentlin	53	15002	campus.are	standing	97	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793663128	cmd	Trentlin	53	15003	campus.are	standing	97	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793663128	cmd	Trentlin	53	15004	campus.are	standing	97	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793663128	cmd	Trentlin	53	15010	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793663128	cmd	Trentlin	53	15011	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793663129	cmd	Trentlin	53	15012	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1793663129	cmd	Trentlin	53	15013	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793663129	cmd	Trentlin	53	15038	campus.are	standing	97	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793663129	cmd	Trentlin	53	15068	campus.are	standing	97	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall
+1793663130	cmd	Trentlin	53	30200	hyrule.are	standing	97	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins
+1793663133	cmd	Trentlin	53	30250	hyrule.are	standing	97	0	-	play	recorder 7	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Still Pond
+1793663138	cmd	Trentlin	53	30250	hyrule.are	standing	97	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room.
+1793663138	cmd	Trentlin	53	30527	hyrule.are	standing	97	0	-	down		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1793663140	cmd	Trentlin	53	30530	hyrule.are	standing	97	0	-	north		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1793663140	cmd	Trentlin	53	30530	hyrule.are	standing	97	0	-	north		Alas, you cannot go that way.
+1793663141	cmd	Trentlin	53	30530	hyrule.are	standing	97	0	-	north		Alas, you cannot go that way.
+1793663142	cmd	Trentlin	53	30530	hyrule.are	standing	97	0	-	look	comp	The needle points north -- at the bare wall, as though the way lay through the stone. // The Triforce chest lies 15 rooms away, behind the guardian's chamber, which is 14 rooms away.
+1793663145	cmd	Trentlin	53	30530	hyrule.are	standing	97	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1793663146	cmd	Trentlin	53	30536	hyrule.are	standing	97	0	-	north		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1793663146	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	north		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793663147	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1793663149	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	open	north	The shutter is sealed fast, and will not open while enemies remain here.
+1793663150	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1793663152	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	look	comp	The needle swings north. // The Triforce chest lies 13 rooms away, behind the guardian's chamber, which is 12 rooms away.
+1793663154	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	look		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793663156	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	kill	bub	Nothing harms a bubble. Go round it.
+1793663163	cmd	Trentlin	53	30540	hyrule.are	standing	97	0	-	kill	gor	You miss a blue goriya. // You >>> ANNIHILATE <<< a blue goriya! // You do UNSPEAKABLE things to a blue goriya!
+1793663169	cmd	Trentlin	53	30540	hyrule.are	fighting	98	0	fight	kick		Your kick maims a blue goriya!
+1793663175	cmd	Trentlin	53	30540	hyrule.are	fighting	98	0	fight	kick		Your kick MUTILATES a blue goriya!
+1793663179	cmd	Trentlin	53	30540	hyrule.are	fighting	99	0	fight	kick		Your kick maims a blue goriya!
+1793663184	cmd	Trentlin	53	30540	hyrule.are	standing	99	0	-	look		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793663184	cmd	Trentlin	53	30540	hyrule.are	standing	99	0	-	open	north	Ok.
+1793663185	cmd	Trentlin	53	30542	hyrule.are	standing	99	0	-	north		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663187	cmd	Trentlin	53	30542	hyrule.are	standing	99	0	-	west		The shutter is sealed fast, and will not open while enemies remain here.
+1793663190	cmd	Trentlin	53	30542	hyrule.are	standing	99	0	-	kill	di	A digdogger parries your attack. // A digdogger parries your attack. // Your blow bounces off a digdogger's great rolling bulk: it is far too big to hurt. Something must make it smaller -- a tune, the old men say.
+1793663197	cmd	Trentlin	53	30542	hyrule.are	fighting	99	0	fight	play	recorder	You play the Recorder, and an ancient melody fills the room. // A digdogger shudders at the melody and shrinks to a third of its size -- now a blade can bite!
+1793663205	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	look	comp	The needle swings west. // The Triforce chest lies 12 rooms away, behind the guardian's chamber, which is 11 rooms away.
+1793663208	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	open	west	Ok.
+1793663208	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663211	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	open	north	It's locked.
+1793663212	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663216	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	drop	bait	You drop enemy bait.
+1793663217	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663225	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	give	bait gor	You give enemy bait to a red goriya.
+1793663226	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663228	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	kill	gor	A red goriya parries your attack. // You do UNSPEAKABLE things to a red goriya! // A red goriya dodges your attack.
+1793663236	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	get	all cor	You get enemy bait from corpse of a red goriya.
+1793663238	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	unlock	niorth	I see no niorth here.
+1793663241	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	unlock	north	I see no door north here.
+1793663242	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663243	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793663247	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	use	bait	You eat enemy bait.
+1793663250	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Humming) a brittle key //      a straight jacket
+1793663252	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663253	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	get	bait	You get enemy bait.
+1793663255	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look	comp	The needle points north -- at the bare wall, as though the way lay through the stone. // The Triforce chest lies 10 rooms away, behind the guardian's chamber, which is 9 rooms away.
+1793663257	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793663266	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	open	north	I see no door north here.
+1793663269	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.
+1793663271	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663280	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	where	goriya	a blue goriya                Level 7: Goriya Barracks
+1793663281	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663281	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663282	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793663285	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1793663285	cmd	Trentlin	53	30543	hyrule.are	standing	100	0	-	east		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1793663287	cmd	Trentlin	53	30543	hyrule.are	standing	100	0	-	get	key	You get a small key.
+1793663289	cmd	Trentlin	53	30543	hyrule.are	standing	100	0	-	drop	bait	You drop enemy bait.
+1793663290	cmd	Trentlin	53	30543	hyrule.are	standing	100	0	-	look		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1793663290	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	west		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663291	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	scan		a bubble                           -to the South. // a blue goriya                      -to the far South. // a red goriya                       -to the far South.
+1793663298	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.
+1793663299	cmd	Trentlin	53	30543	hyrule.are	standing	100	0	-	east		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1793663301	cmd	Trentlin	53	30543	hyrule.are	standing	100	0	-	get	bait	You get enemy bait.
+1793663301	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	west		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663302	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663302	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793663303	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663305	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	drop	bait	You drop enemy bait.
+1793663306	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663307	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	kill	go	You >>> ANNIHILATE <<< a blue goriya! // You <<< ERADICATE >>> a blue goriya! // A blue goriya parries your attack.
+1793663316	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	kill	go	A red goriya dodges your attack. // You <<< ERADICATE >>> a red goriya! // You do UNSPEAKABLE things to a red goriya!
+1793663325	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663327	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	get	bai	You get enemy bait.
+1793663327	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663329	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	se		Alas, you cannot go that way.
+1793663330	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663330	cmd	Trentlin	53	30540	hyrule.are	standing	100	0	-	south		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793663332	cmd	Trentlin	53	30536	hyrule.are	standing	100	0	-	south		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1793663332	cmd	Trentlin	53	30535	hyrule.are	standing	100	0	-	west		Level 7: Dodongo Den //   Huge three-toed prints are pressed into the soot that coats this chamber, // and the walls are scorched black in broad arcs where swallowed bombs went
+1793663333	cmd	Trentlin	53	30539	hyrule.are	standing	100	0	-	north		Level 7: Demon's Powder Store //   Small and square, this room feels strangely safe after the halls below, and // the smell of black powder lingers in its corners. Low braziers crackle on
+1793663336	cmd	Trentlin	53	30539	hyrule.are	standing	100	0	-	list		[Lv Price] Item // [ 1         1p] a bigger bomb bag.
+1793663339	cmd	Trentlin	53	30539	hyrule.are	standing	100	0	-	buy	bomb	"You have had your bigger bag from me already," the old man says.
+1793663341	cmd	Trentlin	53	30535	hyrule.are	standing	100	0	-	south		Level 7: Dodongo Den //   Huge three-toed prints are pressed into the soot that coats this chamber, // and the walls are scorched black in broad arcs where swallowed bombs went
+1793663341	cmd	Trentlin	53	30529	hyrule.are	standing	100	0	-	south		Level 7: Blade Trap Corridor //   Deep grooves are worn into the floor between the corners, where blocks of // spiked iron sit in shallow recesses, polished bright by endless sliding at
+1793663343	cmd	Trentlin	53	30526	hyrule.are	standing	100	0	-	south		Level 7: Hall of Shed Skins //   Pale, papery snakeskins lie curled in the corners of this low chamber, and // thin sinuous tracks wind through the grit, snapping into straight furrows
+1793663345	cmd	Trentlin	53	30529	hyrule.are	standing	100	0	-	north		Level 7: Blade Trap Corridor //   Deep grooves are worn into the floor between the corners, where blocks of // spiked iron sit in shallow recesses, polished bright by endless sliding at
+1793663345	cmd	Trentlin	53	30535	hyrule.are	standing	100	0	-	north		Level 7: Dodongo Den //   Huge three-toed prints are pressed into the soot that coats this chamber, // and the walls are scorched black in broad arcs where swallowed bombs went
+1793663346	cmd	Trentlin	53	30536	hyrule.are	standing	100	0	-	east		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1793663347	cmd	Trentlin	53	30540	hyrule.are	standing	100	0	-	north		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793663348	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	north		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663348	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793663349	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663356	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.
+1793663357	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	open	north	Ok.
+1793663357	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663359	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	sacrifice	cor	The Gods give you 84 copper coins for your sacrifice.
+1793663365	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	drop	bait	You drop enemy bait.
+1793663366	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663417	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793663418	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663419	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663420	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663421	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793663426	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	open	shutter	I see no shutter here.
+1793663430	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.
+1793663432	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663433	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663433	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	scan		You don't see anything near you.
+1793663435	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	sacrifice	cor	The Gods give you 84 copper coins for your sacrifice.
+1793663435	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[53 Dwarf   Hero  ] Trentlin the Knight of the Castle // [70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 2
+1793663435	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	sacrifice	cor	The Gods give you 88 copper coins for your sacrifice.
+1793663436	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663437	cmd	Trentlin	53	30543	hyrule.are	standing	100	0	-	east		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1793663439	session	Killuminati	70	2401	dresden.are	quit	3885s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	26 commands	0 refused	coin: none
+1793663440	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	west		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663441	cmd	Trentlin	53	30540	hyrule.are	standing	100	0	-	south		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793663444	cmd	Trentlin	53	30536	hyrule.are	standing	100	0	-	south		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1793663446	cmd	Trentlin	53	30536	hyrule.are	standing	100	0	-	kill	go	You >>> ANNIHILATE <<< a blue goriya! // A blue goriya dodges your attack. // You >>> ANNIHILATE <<< a blue goriya!
+1793663460	cmd	Trentlin	53	30536	hyrule.are	standing	99	0	-	kill	go	You >>> ANNIHILATE <<< a red goriya! // You >>> ANNIHILATE <<< a red goriya! // A red goriya dodges your attack.
+1793663469	cmd	Trentlin	53	30540	hyrule.are	standing	100	0	-	north		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793663470	cmd	Trentlin	53	30542	hyrule.are	standing	100	0	-	north		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1793663472	cmd	Trentlin	53	30541	hyrule.are	standing	100	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1793663473	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663474	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793663476	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663478	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look	baitr	You do not see that here.
+1793663479	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look	bait	Strong-smelling bait. The hungry Goriya that blocks the north door of // the Hall of Grumbling, in Level 7, will let nobody by until it is fed: // carry this there and type FEED GORIYA, and it eats the bait and steps
+1793663491	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	get	all	You get enemy bait.
+1793663494	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	feed	goriya	                    ACHIEVEMENT EARNED // Grumble, Grumble  +15 points // Feed the hungry Goriya.
+1793663495	cmd	Trentlin	53	30544	hyrule.are	standing	100	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1793663496	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	north		Level 7: Teeming Moat Hall //   Dark water runs in a broad channel around the edges of this crowded hall, // leaving a broad central floor scattered with feathers, droppings and
+1793663500	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	open	chest	It's already open.
+1793663502	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	look	in chest	The Demon's equipment chest contains: //      (Magical) a Gleeok-fang spear //      (Magical) a dragonfire helm
+1793663507	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	get	all chest	You get a Gleeok-fang spear from the Demon's equipment chest. // You get a dragonfire helm from the Demon's equipment chest. // You get a pair of Gleeok-scale bracers from the Demon's equipment chest.
+1793663509	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	compare	spear	A) a Gleeok-fang spear (level 46) // B) the Headless Horseman's Reaper (level 50), worn // Slot: wield.  Your damage comes from weapons.
+1793663512	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	drop	spear	You drop a Gleeok-fang spear.
+1793663515	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	compare	helm	A) a dragonfire helm (level 45) // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.
+1793663517	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	drop	helm	You drop a dragonfire helm.
+1793663520	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	compare	bracer	A) a pair of Gleeok-scale bracers (level 44) // B) a white bracer (level 40), worn // Slot: wrist.  Your damage comes from weapons.
+1793663522	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	drop	bracer	You drop a pair of Gleeok-scale bracers.
+1793663525	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	compare	saba	A) a pair of stepladder sabatons (level 43) // B) a pair of pincer-toed boots (level 40), worn // Slot: feet.  Your damage comes from weapons.
+1793663527	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	drop	saba	You drop a pair of stepladder sabatons.
+1793663528	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Magical) a Like Like-hide cloak //      (Magical) a serpent-crested shield
+1793663542	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	compare	cloak	A) a Like Like-hide cloak (level 41) // B) a twin-headed mantle (level 27), worn // Slot: about body.  Your damage comes from weapons.
+1793663545	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	drop	cloak	You drop a Like Like-hide cloak.
+1793663547	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	compare	jacket	A) a straight jacket (level 51) // B) a chunk of mecharmor (level 45), worn // Slot: body.  Your damage comes from weapons.
+1793663553	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	wear	jack	You stop using a chunk of mecharmor. // You wear a straight jacket on your body. // You feel as crazy as a cow, a mad cow that is MAD hohheeieoeieoe!!"
+1793663555	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	affect		You are affected by: // Spell: 'titanic' modifies experience by 50 for 12 hours. // Spell: 'titanic' modifies moves by 1810 for 12 hours.
+1793663560	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Magical) a serpent-crested shield //      (Humming) a brittle key
+1793663567	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	drop	mech	You drop a chunk of mecharmor.
+1793663568	cmd	Trentlin	53	30548	hyrule.are	standing	100	0	-	look		Level 7: Teeming Moat Hall //   Dark water runs in a broad channel around the edges of this crowded hall, // leaving a broad central floor scattered with feathers, droppings and
+1793663570	cmd	Trentlin	53	30549	hyrule.are	standing	100	0	-	east		Level 7: Twin Pillar Hall //   Two massive square pillars of green stone rise from the floor of this hall, // their bases worn smooth where countless hands have steadied themselves and
+1793663574	cmd	Trentlin	53	30549	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1793663575	cmd	Trentlin	53	30550	hyrule.are	standing	100	0	-	east		Level 7: Hall of the Loose Block //   Blocks of carved stone stand in neat rows across this chamber, all but one // set firmly into the floor. That one sits a finger's width out of line, with
+1793663578	cmd	Trentlin	53	30550	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1793663579	cmd	Trentlin	53	30551	hyrule.are	standing	100	0	-	east		Level 7: Hall of Keyholes //   Two stout doors banded with iron face this chamber from the north and east, // each with a dark keyhole at its heart. Between them the floor is laid in a
+1793663583	cmd	Trentlin	53	30552	hyrule.are	standing	100	0	-	east		Level 7: Spined Sand Pit //   Fine sand has been heaped into ridges across this chamber, ploughed into // furrows by something round, spiked and heavy. Snapped spines jut from the
+1793663586	cmd	Trentlin	53	30552	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1793663590	cmd	Trentlin	53	30552	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A digdogger shudders at the melody and shrinks to a third of its size -- now a blade can bite!
+1793663596	cmd	Trentlin	53	30552	hyrule.are	standing	100	0	-	kill	dig	The Headless Horseman's Reaper shears through a digdogger with terrible force! // You do UNSPEAKABLE things to a digdogger! // You <<< ERADICATE >>> a digdogger!
+1793663601	cmd	Trentlin	53	30552	hyrule.are	standing	100	0	-	look	comp	The needle swings north. // The Triforce chest lies 5 rooms away, behind the guardian's chamber, which is 4 rooms away.
+1793663603	cmd	Trentlin	53	30557	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 7: Smoke-Stained Den //   The ceiling of this low den is blackened with old smoke, and great scaly
+1793663607	cmd	Trentlin	53	30557	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1793663607	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	east		Level 7: Grasping Wall Chamber //   Long gouges run down the walls of this chamber as if great hands had // dragged themselves out of the stone and back again, hauling whatever they
+1793663610	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	look	com	The needle swings upward, to the stair above. // The Triforce chest lies 3 rooms away, behind the guardian's chamber, which is 2 rooms away.
+1793663611	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	look	wall	Huge and grey-green as a drowned thing, this hand bears scars across the // palm and nails grown long and black as horn. It has haunted the Demon's // walls so long that it moves with an eerie patience, slipping out of the
+1793663612	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	consider	wall	A wallmaster is far below your level. // A wallmaster has about a third of your hit points. // Blow for blow, you would need about 3 rounds to bring a wallmaster down; it would need over a hundred rounds for you.
+1793663614	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	kill	wall	You do UNSPEAKABLE things to a wallmaster! // You do UNSPEAKABLE things to a wallmaster! // You do UNSPEAKABLE things to a wallmaster!
+1793663619	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	look	in cor	Corpse of a wallmaster contains: //      Nothing.
+1793663621	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	look		Level 7: Grasping Wall Chamber //   Long gouges run down the walls of this chamber as if great hands had // dragged themselves out of the stone and back again, hauling whatever they
+1793663629	cmd	Trentlin	53	30558	hyrule.are	standing	100	0	-	look	comp	The needle swings upward, to the stair above. // The Triforce chest lies 3 rooms away, behind the guardian's chamber, which is 2 rooms away.
+1793663631	cmd	Trentlin	53	30545	hyrule.are	standing	100	0	-	up		Level 7: Stairwell of the Demon //   A narrow stone stair drops away through the floor in one corner of this // chamber, descending into a long, dripping passage that runs far beneath the
+1793663636	cmd	Trentlin	53	30545	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1793663636	cmd	Trentlin	53	30546	hyrule.are	standing	100	0	-	east		Level 7: Hall of the Horned Ledge //   A long hall of scorched brick ends at a raised ledge where something huge // and horned has worn the stone smooth. The walls are pocked with blackened
+1793663639	cmd	Trentlin	53	30546	hyrule.are	standing	100	0	-	consider	aq	Ancient Aquamentus is a little below your level. // Ancient Aquamentus has about twice your hit points. // Blow for blow, you would need about 15 rounds to bring ancient Aquamentus down; it would need about 94 rounds for you.
+1793663641	cmd	Trentlin	53	30546	hyrule.are	standing	100	0	-	kill	aq	Ancient Aquamentus dodges your attack. // You do UNSPEAKABLE things to ancient Aquamentus! // You >>> ANNIHILATE <<< ancient Aquamentus!
+1793663649	cmd	Trentlin	53	30546	hyrule.are	fighting	99	0	fight	smite		Your smite does UNSPEAKABLE things to ancient Aquamentus! // Your smite does UNSPEAKABLE things to ancient Aquamentus! // Your smite does UNSPEAKABLE things to ancient Aquamentus!
+1793663663	cmd	Trentlin	53	30546	hyrule.are	fighting	96	0	fight	smite		Your smite misses ancient Aquamentus.
+1793663672	cmd	Trentlin	53	30546	hyrule.are	fighting	94	0	fight	kick		Your kick misses ancient Aquamentus.
+1793663674	cmd	Trentlin	53	30546	hyrule.are	fighting	95	0	fight	smite		Your smite misses ancient Aquamentus.
+1793663683	cmd	Trentlin	53	30546	hyrule.are	fighting	93	1	fight	smite		Your smite does UNSPEAKABLE things to ancient Aquamentus! // Your smite does UNSPEAKABLE things to ancient Aquamentus! // Your smite does UNSPEAKABLE things to ancient Aquamentus!
+1793663691	cmd	Trentlin	53	30546	hyrule.are	standing	93	0	-	look	in co	Corpse of ancient Aquamentus contains: //      (Magical) an ancient-scale bracer //      (Magical) a pair of ashstride boots
+1793663695	cmd	Trentlin	53	30546	hyrule.are	standing	93	0	-	get	bracer co	You get an ancient-scale bracer from corpse of ancient Aquamentus.
+1793663699	cmd	Trentlin	53	30546	hyrule.are	standing	93	0	-	compare	bra	A) an ancient-scale bracer (level 46) // B) a white bracer (level 40), worn // Slot: wrist.  Your damage comes from weapons.
+1793663702	cmd	Trentlin	53	30546	hyrule.are	standing	93	0	-	drop	bra	You drop an ancient-scale bracer.
+1793663704	cmd	Trentlin	53	30546	hyrule.are	standing	93	0	-	get	boot co	You get a pair of ashstride boots from corpse of ancient Aquamentus.
+1793663706	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	compare	boot	A) a pair of ashstride boots (level 46) // B) a pair of pincer-toed boots (level 40), worn // Slot: feet.  Your damage comes from weapons.
+1793663712	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	attribute		Str: 22(26)  Int: 16(20)  Wis: 18(22)  Dex: 16(20)  Con: 19(23)
+1793663714	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	wear	boot	You stop using a pair of pincer-toed boots. // You wear a pair of ashstride boots on your feet.
+1793663718	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	attribute		Str: 22(26)  Int: 16(20)  Wis: 18(22)  Dex: 16(20)  Con: 19(23)
+1793663721	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	drop	boot	You drop a pair of pincer-toed boots.
+1793663723	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	look	in co	A stinking corpse contains: //      (Magical) a suit of demon-scale plate //      (Magical) the Heart Guard of the Demon
+1793663725	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	get	plate co	You get a suit of demon-scale plate from a stinking corpse.
+1793663728	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	compare	plate	A) a suit of demon-scale plate (level 46) -- can't use: what you wear there won't come off // B) a straight jacket (level 51), worn // Slot: body.  Your damage comes from weapons.
