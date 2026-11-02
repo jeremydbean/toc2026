@@ -242573,3 +242573,12 @@ Mon Nov  2 02:47:56 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) fro
 Mon Nov  2 02:47:56 2026 :: Log Alaric [4203]: n
 Mon Nov  2 02:47:56 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
 Mon Nov  2 02:47:57 2026 :: Log Alaric [4210]: sleep
+Mon Nov  2 02:49:59 2026 :: Sock.sinaddr:  23.31.96.97
+Mon Nov  2 02:50:07 2026 :: Sock.sinaddr:  3.20.63.178
+Mon Nov  2 02:50:07 2026 :: EOF encountered on read.
+Mon Nov  2 02:50:29 2026 :: EOF encountered on read.
+Mon Nov  2 02:50:30 2026 :: Sock.sinaddr:  23.31.96.97
+Mon Nov  2 02:50:30 2026 :: EOF encountered on read.
+Mon Nov  2 02:50:52 2026 :: Log Alaric [4210]: score
+Mon Nov  2 02:51:27 2026 :: Log Alaric [4210]: affects off: steel fist, levitate
+Mon Nov  2 02:52:44 2026 :: Treasure goblin: vanished from room 20150 (A cell, prison.are) (too long in one area).
