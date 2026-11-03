@@ -19188,3 +19188,35 @@
 1793708413	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 13 quest points.
 1793708414	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
 1793708415	session	Alaric	57	2497	dresden.are	quit	156s	+0 levels	+0 exp	+77262017 copper	1 kills	0 deaths	1 quests	99 commands	0 refused	coin: loot 19g 76s 47c, quests 77p 6g 45s 70c, spent 2s
+1793714212	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793714220	cmd	Killuminati	70	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. // [Room: 2402]     [Sector: City]     [Flags: none] //   This is the northern exit from Oak Tree Square.  Here you can get back on the
+1793714221	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	south		Center of Oak Tree Square. // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square.  It is dominated by the trunk of the biggest
+1793714228	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look	str	You do not see that here.
+1793714230	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	get	all	You can't take that.
+1793714235	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look	can	A slender woman whose face is painted as a smiling skull, white and // black with flowers about the eyes.  She lights a candle for every name // that is spoken to her and sells garlands and masks so that the living may
+1793714243	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	consider	cat	Don't even think about it.
+1793714244	cmd	Killuminati	70	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. // [Room: 2402]     [Sector: City]     [Flags: none] //   This is the northern exit from Oak Tree Square.  Here you can get back on the
+1793714247	cmd	Killuminati	70	2415	dresden.are	standing	100	0	-	north		Main Processional. // [Room: 2415]     [Sector: City]     [Flags: none] //   You are on a very well made stone road that goes through the center of town.
+1793714247	cmd	Killuminati	70	2402	dresden.are	standing	100	0	-	south		Northern Oak Tree Square. // [Room: 2402]     [Sector: City]     [Flags: none] //   This is the northern exit from Oak Tree Square.  Here you can get back on the
+1793714248	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	south		Center of Oak Tree Square. // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square.  It is dominated by the trunk of the biggest
+1793714248	cmd	Killuminati	70	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. // [Room: 2403]     [Sector: City]     [Flags: none] //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road
+1793714249	cmd	Killuminati	70	2420	dresden.are	standing	100	0	-	east		Battle Road // [Room: 2420]     [Sector: City]     [Flags: none] //   You are on a very well made stone road that goes from the East Gates to Oak
+1793714250	cmd	Killuminati	70	2403	dresden.are	standing	100	0	-	west		Eastern Oak Tree Square. // [Room: 2403]     [Sector: City]     [Flags: none] //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road
+1793714250	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	west		Center of Oak Tree Square. // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square.  It is dominated by the trunk of the biggest
+1793714251	cmd	Killuminati	70	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. // [Room: 2404]     [Sector: City]     [Flags: none] //   This is the Southern exit from Oak Tree Square.  It connects to the Main
+1793714252	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square.  It is dominated by the trunk of the biggest
+1793714252	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	list		Catrina the candle-keeper says 'I don't trade with folks I can't see.'
+1793714254	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	wizinvis		You slowly fade back into existence.
+1793714255	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	list		[Lv Price] Item // [ 0         2s] a sugar skull. // [ 0         4s] a painted skull mask.
+1793714257	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	buy	skull	You haggle the price down to 1s 1c. // You buy a sugar skull.
+1793714260	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	eat	skull	You eat a sugar skull. // Your eyes tingle. // Your awareness improves.
+1793714261	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793714265	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	wizinvis		You slowly vanish into thin air.
+1793714266	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793714270	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) The Triforce // <worn on finger>    the Red Ring of Hyrule
+1793714272	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	consider	swo	They're not here.
+1793714273	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Trident of Ganon //      Ganon's shadow crown
+1793714275	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	compare	sword	A) (flaming) newbie sword (level 68) // B) the Master Sword (level 58), worn // Slot: wield.  Your damage: 10% spells (vortex), 90% weapons.
+1793714306	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	compare	trid	A) the Trident of Ganon (level 59) // B) the Master Sword (level 58), worn // Slot: wield.  Your damage: 10% spells (vortex), 90% weapons.
+1793714322	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) (Humming) The Triforce // <worn on finger>    the Red Ring of Hyrule
+1793714333	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look	triforce	Power, Wisdom and Courage, joined as one: // Wear it as a light and you see what is hidden, invisible or in the dark.

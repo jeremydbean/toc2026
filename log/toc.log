@@ -254221,3 +254221,56 @@ Tue Nov  3 13:47:18 2026 :: Sock.sinaddr:  5.161.117.52
 Tue Nov  3 13:47:18 2026 :: EOF encountered on read.
 Tue Nov  3 13:52:23 2026 :: Sock.sinaddr:  52.22.236.30
 Tue Nov  3 13:52:23 2026 :: EOF encountered on read.
+Tue Nov  3 13:56:05 2026 :: Treasure goblin: vanished from room 17247 (In a secret gangway, highland.are) (too long in one area).
+Tue Nov  3 13:56:47 2026 :: Loading Killuminati's playerfile
+Tue Nov  3 13:56:48 2026 :: Loading Killuminati's playerfile
+Tue Nov  3 13:56:48 2026 :: Killuminati@99.62.115.159 has connected.
+Tue Nov  3 13:56:49 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 0
+Tue Nov  3 13:56:52 2026 :: Log Killuminati [2401]: /
+Tue Nov  3 13:57:00 2026 :: Log Killuminati [2401]: n
+Tue Nov  3 13:57:00 2026 :: Log Killuminati [2402]: arrived (Northern Oak Tree Square.) from 2401
+Tue Nov  3 13:57:01 2026 :: Log Killuminati [2402]: s
+Tue Nov  3 13:57:01 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2402
+Tue Nov  3 13:57:08 2026 :: Log Killuminati [2401]: look str
+Tue Nov  3 13:57:10 2026 :: Log Killuminati [2401]: get all
+Tue Nov  3 13:57:15 2026 :: Log Killuminati [2401]: look can
+Tue Nov  3 13:57:23 2026 :: Log Killuminati [2401]: con cat
+Tue Nov  3 13:57:24 2026 :: Log Killuminati [2401]: n
+Tue Nov  3 13:57:24 2026 :: Log Killuminati [2402]: arrived (Northern Oak Tree Square.) from 2401
+Tue Nov  3 13:57:27 2026 :: Log Killuminati [2402]: n
+Tue Nov  3 13:57:27 2026 :: Log Killuminati [2415]: arrived (Main Processional.) from 2402
+Tue Nov  3 13:57:27 2026 :: Sock.sinaddr:  178.156.187.238
+Tue Nov  3 13:57:27 2026 :: Log Killuminati [2415]: s
+Tue Nov  3 13:57:27 2026 :: Log Killuminati [2402]: arrived (Northern Oak Tree Square.) from 2415
+Tue Nov  3 13:57:28 2026 :: EOF encountered on read.
+Tue Nov  3 13:57:28 2026 :: Log Killuminati [2402]: s
+Tue Nov  3 13:57:28 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2402
+Tue Nov  3 13:57:28 2026 :: Log Killuminati [2401]: e
+Tue Nov  3 13:57:28 2026 :: Log Killuminati [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Nov  3 13:57:29 2026 :: Log Killuminati [2403]: e
+Tue Nov  3 13:57:29 2026 :: Log Killuminati [2420]: arrived (Battle Road) from 2403
+Tue Nov  3 13:57:30 2026 :: Log Killuminati [2420]: w
+Tue Nov  3 13:57:30 2026 :: Log Killuminati [2403]: arrived (Eastern Oak Tree Square.) from 2420
+Tue Nov  3 13:57:30 2026 :: Log Killuminati [2403]: w
+Tue Nov  3 13:57:30 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2403
+Tue Nov  3 13:57:31 2026 :: Log Killuminati [2401]: s
+Tue Nov  3 13:57:31 2026 :: Log Killuminati [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Nov  3 13:57:32 2026 :: Log Killuminati [2404]: n
+Tue Nov  3 13:57:32 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov  3 13:57:32 2026 :: Log Killuminati [2401]: list
+Tue Nov  3 13:57:34 2026 :: Log Killuminati [2401]: wizi
+Tue Nov  3 13:57:35 2026 :: Log Killuminati [2401]: list
+Tue Nov  3 13:57:37 2026 :: Log Killuminati [2401]: buy skull
+Tue Nov  3 13:57:37 2026 :: Log Killuminati [2401]: copper -101
+Tue Nov  3 13:57:37 2026 :: Log Killuminati [2401]: bought a sugar skull (vnum 29828) for 101 copper from Catrina the candle-keeper
+Tue Nov  3 13:57:40 2026 :: Log Killuminati [2401]: eat skull
+Tue Nov  3 13:57:41 2026 :: Log Killuminati [2401]: af
+Tue Nov  3 13:57:45 2026 :: Log Killuminati [2401]: wizi
+Tue Nov  3 13:57:46 2026 :: Log Killuminati [2401]: /
+Tue Nov  3 13:57:50 2026 :: Log Killuminati [2401]: eq
+Tue Nov  3 13:57:52 2026 :: Log Killuminati [2401]: con swo
+Tue Nov  3 13:57:53 2026 :: Log Killuminati [2401]: inv
+Tue Nov  3 13:57:55 2026 :: Log Killuminati [2401]: compare sword
+Tue Nov  3 13:58:26 2026 :: Log Killuminati [2401]: compare trid
+Tue Nov  3 13:58:42 2026 :: Log Killuminati [2401]: eq
+Tue Nov  3 13:58:53 2026 :: Log Killuminati [2401]: look triforce
