@@ -15305,3 +15305,202 @@
 1793663723	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	look	in co	A stinking corpse contains: //      (Magical) a suit of demon-scale plate //      (Magical) the Heart Guard of the Demon
 1793663725	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	get	plate co	You get a suit of demon-scale plate from a stinking corpse.
 1793663728	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	compare	plate	A) a suit of demon-scale plate (level 46) -- can't use: what you wear there won't come off // B) a straight jacket (level 51), worn // Slot: body.  Your damage comes from weapons.
+1793663744	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	get	heart co	You get the Heart Guard of the Demon from a stinking corpse.
+1793663746	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	compare	heart	A) the Heart Guard of the Demon (level 46) // B) the Heart Guard of the Snake (level 27), worn // Slot: neck.  Your damage comes from weapons.
+1793663750	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	wear	heart	You stop using the Heart Guard of the Lizard. // You wear the Heart Guard of the Demon around your neck.
+1793663752	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	drop	heart	You drop the Heart Guard of the Lizard.
+1793663753	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	look	in co	A stinking corpse contains: //      (Magical) (Glowing) the Demon's dragonbone sword //      (Magical) (Glowing) the Demon's Heart Container
+1793663758	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	get	key co	You get the Demon's key from a stinking corpse.
+1793663761	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	get	sword co	You get the Demon's dragonbone sword from a stinking corpse.
+1793663762	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	compare	swo	A) the Demon's dragonbone sword (level 46) // B) the Headless Horseman's Reaper (level 50), worn // Slot: wield.  Your damage comes from weapons.
+1793663770	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	drop	swo	You drop the Demon's dragonbone sword.
+1793663771	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	look	in co	A rotting corpse contains: //      (Magical) (Glowing) the Demon's Heart Container
+1793663773	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	get	cont co	You get the Demon's Heart Container from a rotting corpse.
+1793663775	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	compare	cont	A) the Demon's Heart Container (level 46) // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.
+1793663779	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	drop	cont	You drop the Demon's Heart Container.
+1793663779	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	look		Level 7: Hall of the Horned Ledge //   A long hall of scorched brick ends at a raised ledge where something huge // and horned has worn the stone smooth. The walls are pocked with blackened
+1793663786	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	unlock	east	There is a flash of light as you unlock the demon.
+1793663787	cmd	Trentlin	53	30546	hyrule.are	standing	94	0	-	open	east	Ok.
+1793663788	cmd	Trentlin	53	30547	hyrule.are	standing	94	0	-	east		Level 7: Demon's Stepped Sanctum //   A hush fills this small, high chamber, broken only by a faint golden hum // from the stones themselves. The floor rises in shallow steps to a dais
+1793663791	cmd	Trentlin	53	30547	hyrule.are	standing	94	0	-	unlock	chest	*Click*
+1793663792	cmd	Trentlin	53	30547	hyrule.are	standing	94	0	-	open	chest	Ok. //                     ACHIEVEMENT EARNED // The Demon's Vault  +28 points
+1793663794	cmd	Trentlin	53	30547	hyrule.are	standing	94	0	-	look	in chest	The Demon's treasure chest contains: //      (Magical) (Glowing) the seventh Triforce shard
+1793663795	cmd	Trentlin	53	30547	hyrule.are	standing	94	0	-	get	all chest	You get the seventh Triforce shard from the Demon's treasure chest.
+1793663797	cmd	Trentlin	53	30250	hyrule.are	standing	94	0	-	enter	light	You enter the Demon's returning light // Your stomach flip flops. Everything goes black for a moment. // The Still Pond
+1793663810	cmd	Trentlin	53	30229	hyrule.are	standing	94	0	-	play	recorder 8	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lion's Thicket
+1793663817	cmd	Trentlin	53	30229	hyrule.are	standing	94	0	-	look		The Lion's Thicket //   A quiet clearing in the eastern forest is empty but for a single bush // standing apart, dry and brittle and rooted in strangely flat, square-cut
+1793663818	cmd	Trentlin	53	30229	hyrule.are	standing	94	0	-	burn	bush	You need a lit candle in hand to do that.
+1793663821	cmd	Trentlin	53	30229	hyrule.are	standing	94	0	-	wear	acnd	You do not have that item.
+1793663822	cmd	Trentlin	53	30229	hyrule.are	standing	94	0	-	wear	cand	You stop using Starlight. // You light a Blue Candle and hold it.
+1793663824	cmd	Trentlin	53	30229	hyrule.are	standing	94	0	-	burn	bush	You touch a dry green bush with the candle flame, revealing a hidden passage! //                     ACHIEVEMENT EARNED // Burning Bush  +10 points
+1793663826	cmd	Trentlin	53	30229	hyrule.are	standing	94	0	-	look		The Lion's Thicket //   A quiet clearing in the eastern forest is empty but for a single bush // standing apart, dry and brittle and rooted in strangely flat, square-cut
+1793663827	cmd	Trentlin	53	30562	hyrule.are	standing	94	0	-	down		Level 8: Lion's Gate //   Fine grey ash sifts down the stair from the burned bush overhead, settling // on the first flagstones of a stern stone vestibule. Carved lion heads glare
+1793663828	cmd	Trentlin	53	30562	hyrule.are	standing	94	0	-	wear	star	You stop using a Blue Candle. // You light Starlight and hold it.
+1793663830	cmd	Trentlin	53	30562	hyrule.are	standing	94	0	-	scan		a bubble                           -to the East. // a keese                            -to the East. // a red moblin                       -right above you.
+1793663832	cmd	Trentlin	53	30563	hyrule.are	standing	94	0	-	east		Level 8: Eastern Roost //   Droppings streak the walls of this small dead-end chamber, and a faint // chill lingers near the floor no matter how still the air, where a flaming
+1793663837	cmd	Trentlin	53	30563	hyrule.are	standing	94	0	-	get	key	You get a small key.
+1793663837	cmd	Trentlin	53	30562	hyrule.are	standing	94	0	-	west		Level 8: Lion's Gate //   Fine grey ash sifts down the stair from the burned bush overhead, settling // on the first flagstones of a stern stone vestibule. Carved lion heads glare
+1793663837	cmd	Trentlin	53	30561	hyrule.are	standing	94	0	-	west		Level 8: Western Antechamber //   A plain chamber of pale grey brick, its floor swept bare save for a few // drifts of ash carried in from the entry stair. A stone lion lies across the
+1793663840	cmd	Trentlin	53	30561	hyrule.are	standing	94	0	-	open	west	Ok.
+1793663840	cmd	Trentlin	53	30560	hyrule.are	standing	94	0	-	west		Level 8: Spiced Linen Crypt //   Shreds of yellowed linen cling to the corners of this cold crypt, and the // air carries a dry, spiced smell of old embalming. Stone blocks stand in a
+1793663850	cmd	Trentlin	53	30560	hyrule.are	standing	94	0	-	push	block	You push a movable stone block. // A previously hidden door mysteriously opens. // You hear a strange noise off in the distance.
+1793663852	cmd	Trentlin	53	30560	hyrule.are	standing	94	0	-	look		Level 8: Spiced Linen Crypt //   Shreds of yellowed linen cling to the corners of this cold crypt, and the // air carries a dry, spiced smell of old embalming. Stone blocks stand in a
+1793663853	cmd	Trentlin	53	30585	hyrule.are	standing	94	0	-	down		Level 8: Magic Book Cellar //   Beneath the crooked block, a ladder leads down into a narrow basement of // rough brick that smells of dust and old parchment. A single stone ledge
+1793663860	cmd	Trentlin	53	30585	hyrule.are	standing	94	0	-	look	book	The Magic Book crackles with fire around its ancient pages.
+1793663862	cmd	Trentlin	53	30585	hyrule.are	standing	94	0	-	get	all	You get the Magic Book.
+1793663865	cmd	Trentlin	53	30560	hyrule.are	standing	94	0	-	up		Level 8: Spiced Linen Crypt //   Shreds of yellowed linen cling to the corners of this cold crypt, and the // air carries a dry, spiced smell of old embalming. Stone blocks stand in a
+1793663865	cmd	Trentlin	53	30561	hyrule.are	standing	94	0	-	east		Level 8: Western Antechamber //   A plain chamber of pale grey brick, its floor swept bare save for a few // drifts of ash carried in from the entry stair. A stone lion lies across the
+1793663866	cmd	Trentlin	53	30562	hyrule.are	standing	94	0	-	east		Level 8: Lion's Gate //   Fine grey ash sifts down the stair from the burned bush overhead, settling // on the first flagstones of a stern stone vestibule. Carved lion heads glare
+1793663867	cmd	Trentlin	53	30564	hyrule.are	standing	94	0	-	north		Level 8: Narrow Passage Hall //   A tall, narrow hall of grey stone runs north from the entry, its walls // lined with shallow alcoves where stone lions once crouched. Only their
+1793663869	cmd	Trentlin	53	30564	hyrule.are	standing	94	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1793663870	cmd	Trentlin	53	30567	hyrule.are	standing	94	0	-	north		Level 8: Slime-Slick Crossing //   Glistening trails of green slime crisscross the flagstones of this four-way // chamber, and the floor gives a faint squelch underfoot where large blobs
+1793663873	cmd	Trentlin	53	30567	hyrule.are	standing	94	0	-	consider	da	A blue darknut is about your level. // A blue darknut has about as many hit points as you. // Blow for blow, you would need about 8 rounds to bring a blue darknut down; it would need about 61 rounds for you.
+1793663874	cmd	Trentlin	53	30568	hyrule.are	standing	94	0	-	east		Level 8: Warren of Long Ears //   Pale fur drifts like snow across the floor of this crowded chamber, and the // walls are scuffed low down by countless thumping feet. The air is warm and
+1793663876	cmd	Trentlin	53	30568	hyrule.are	standing	94	0	-	get	com	You get the Lion dungeon compass.
+1793663877	cmd	Trentlin	53	30568	hyrule.are	standing	94	0	-	look	com	The needle swings west. // The Triforce chest lies 7 rooms away, behind the guardian's chamber, which is 6 rooms away.
+1793663878	cmd	Trentlin	53	30567	hyrule.are	standing	94	0	-	west		Level 8: Slime-Slick Crossing //   Glistening trails of green slime crisscross the flagstones of this four-way // chamber, and the floor gives a faint squelch underfoot where large blobs
+1793663879	cmd	Trentlin	53	30567	hyrule.are	standing	94	0	-	look	com	The needle swings north. // The Triforce chest lies 6 rooms away, behind the guardian's chamber, which is 5 rooms away.
+1793663880	cmd	Trentlin	53	30567	hyrule.are	standing	94	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1793663882	cmd	Trentlin	53	30567	hyrule.are	standing	94	0	-	kill	da	A blue darknut parries your attack. // You <<< ERADICATE >>> a blue darknut! // A blue darknut dodges your attack.
+1793663889	cmd	Trentlin	53	30567	hyrule.are	fighting	94	0	fight	smite		Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut!
+1793663907	cmd	Trentlin	53	30567	hyrule.are	fighting	92	2	fight	smite		Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut! // A blue darknut is DEAD!!
+1793663916	cmd	Trentlin	53	30567	hyrule.are	standing	92	0	-	look	in co	Corpse of a blue darknut contains: //      Nothing.
+1793663917	cmd	Trentlin	53	30567	hyrule.are	standing	92	0	-	sacrifice	co	The Gods give you 104 copper coins for your sacrifice.
+1793663918	cmd	Trentlin	53	30567	hyrule.are	standing	92	0	-	look		Level 8: Slime-Slick Crossing //   Glistening trails of green slime crisscross the flagstones of this four-way // chamber, and the floor gives a faint squelch underfoot where large blobs
+1793663922	cmd	Trentlin	53	30567	hyrule.are	standing	92	0	-	shove	darknut south	A blue darknut stands its ground. Hyrule's foes have to be beaten, not pushed aside.
+1793663927	cmd	Trentlin	53	30567	hyrule.are	standing	92	0	-	kill	dar	A blue darknut parries your attack. // You === OBLITERATE === a blue darknut! // You >>> ANNIHILATE <<< a blue darknut!
+1793663929	cmd	Trentlin	53	30567	hyrule.are	fighting	93	0	fight	smite		Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut!
+1793663943	cmd	Trentlin	53	30567	hyrule.are	fighting	91	0	fight	kick		Your kick hits a blue darknut.
+1793663947	cmd	Trentlin	53	30567	hyrule.are	fighting	92	0	fight	kick		Your kick hits a blue darknut.
+1793663953	cmd	Trentlin	53	30567	hyrule.are	fighting	91	0	fight	kick		Your kick misses a blue darknut.
+1793663959	cmd	Trentlin	53	30567	hyrule.are	fighting	91	0	fight	kick		Your kick scratches a blue darknut.
+1793663968	cmd	Trentlin	53	30567	hyrule.are	fighting	90	0	fight	kick		Your kick wounds a blue darknut.
+1793663971	cmd	Trentlin	53	30567	hyrule.are	standing	91	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1793663973	cmd	Trentlin	53	30567	hyrule.are	standing	91	0	-	look		Level 8: Slime-Slick Crossing //   Glistening trails of green slime crisscross the flagstones of this four-way // chamber, and the floor gives a faint squelch underfoot where large blobs
+1793663975	cmd	Trentlin	53	30567	hyrule.are	standing	91	0	-	kill	dark	The Headless Horseman's Reaper shears through a blue darknut with terrible force! // You do UNSPEAKABLE things to a blue darknut! // A blue darknut parries your attack.
+1793663978	cmd	Trentlin	53	30567	hyrule.are	fighting	91	0	fight	kick		Your kick hits a blue darknut.
+1793663986	cmd	Trentlin	53	30567	hyrule.are	fighting	90	0	fight	kick		Your kick devastates a blue darknut!
+1793663993	cmd	Trentlin	53	30567	hyrule.are	fighting	89	0	fight	kick		Your kick misses a blue darknut.
+1793663997	cmd	Trentlin	53	30567	hyrule.are	fighting	89	0	fight	kick		Your kick misses a blue darknut.
+1793664010	cmd	Trentlin	53	30567	hyrule.are	fighting	89	0	fight	kick		Your kick misses a blue darknut.
+1793664020	cmd	Trentlin	53	30567	hyrule.are	fighting	88	0	fight	kick		Your kick decimates a blue darknut!
+1793664025	cmd	Trentlin	53	30572	hyrule.are	standing	89	0	-	north		The shutter opens now that the chamber is clear. // Level 8: Locked Crossway //   Two iron-bound doors with dark keyholes face this chamber from the north
+1793664030	cmd	Trentlin	53	30572	hyrule.are	standing	89	0	-	look	com	The needle swings north. // The Triforce chest lies 5 rooms away, behind the guardian's chamber, which is 4 rooms away.
+1793664032	cmd	Trentlin	53	30576	hyrule.are	standing	89	0	-	north		Level 8: Chamber of Three Doors //   A plain chamber of grey stone where three very different ways out meet: a // locked door with a keyhole to the south, a heavy iron shutter to the east,
+1793664034	cmd	Trentlin	53	30576	hyrule.are	standing	89	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1793664036	cmd	Trentlin	53	30576	hyrule.are	standing	89	0	-	look	com	The needle swings east. // The Triforce chest lies 4 rooms away, behind the guardian's chamber, which is 3 rooms away.
+1793664037	cmd	Trentlin	53	30576	hyrule.are	standing	89	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1793664040	cmd	Trentlin	53	30576	hyrule.are	standing	89	0	-	kill	dark	A blue darknut parries your attack. // You <<< ERADICATE >>> a blue darknut! // A blue darknut parries your attack.
+1793664047	cmd	Trentlin	53	30576	hyrule.are	fighting	89	0	fight	kick		Your kick misses a blue darknut.
+1793664050	cmd	Trentlin	53	30576	hyrule.are	fighting	90	0	fight	score		| Name:       Trentlin | Level:      53 | Class:     Warrior | // | Played:     24 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793664053	cmd	Trentlin	53	30576	hyrule.are	fighting	88	0	fight	kick		Your kick misses a blue darknut.
+1793664062	cmd	Trentlin	53	30576	hyrule.are	fighting	88	0	fight	kick		Your kick decimates a blue darknut!
+1793664070	cmd	Trentlin	53	30576	hyrule.are	fighting	86	0	fight	kick		Your kick mauls a blue darknut.
+1793664078	cmd	Trentlin	53	30576	hyrule.are	standing	86	0	-	look		Level 8: Chamber of Three Doors //   A plain chamber of grey stone where three very different ways out meet: a // locked door with a keyhole to the south, a heavy iron shutter to the east,
+1793664079	cmd	Trentlin	53	30576	hyrule.are	standing	86	0	-	kill	dark	A blue darknut dodges your attack. // You >>> ANNIHILATE <<< a blue darknut! // You <<< ERADICATE >>> a blue darknut!
+1793664083	cmd	Trentlin	53	30576	hyrule.are	fighting	86	0	fight	smite		Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut!
+1793664089	cmd	Trentlin	53	30576	hyrule.are	fighting	87	0	fight	smite		Your smite misses a blue darknut.
+1793664097	cmd	Trentlin	53	30576	hyrule.are	fighting	87	0	fight	smite		Your smite misses a blue darknut. // Your smite does UNSPEAKABLE things to a blue darknut! // Your smite does UNSPEAKABLE things to a blue darknut!
+1793664107	cmd	Trentlin	53	30576	hyrule.are	standing	86	0	-	look		Level 8: Chamber of Three Doors //   A plain chamber of grey stone where three very different ways out meet: a // locked door with a keyhole to the south, a heavy iron shutter to the east,
+1793664108	cmd	Trentlin	53	30577	hyrule.are	standing	86	0	-	east		The shutter opens now that the chamber is clear. // Level 8: Knight's Guardroom //   Dented shields and broken spear shafts are stacked against the walls of
+1793664112	cmd	Trentlin	53	30577	hyrule.are	standing	86	0	-	look	gib	Centuries in the Lion's dungeon have turned this gibdo's linen nearly // black, and someone long ago bound iron bands around its chest and limbs as // though to hold the thing together. It is taller than the mummies of the
+1793664115	cmd	Trentlin	53	30577	hyrule.are	standing	86	0	-	look	comp	The needle swings upward, to the stair above. // The Triforce chest lies 3 rooms away, behind the guardian's chamber, which is 2 rooms away.
+1793664116	cmd	Trentlin	53	30570	hyrule.are	standing	86	0	-	up		Level 8: Stair Beneath the Lion //   A steep stone stair opens in one corner of this chamber, leading down into // a passage that runs far to the east beneath the dungeon. A great stone
+1793664119	cmd	Trentlin	53	30570	hyrule.are	standing	86	0	-	get	key	You get a small key.
+1793664121	cmd	Trentlin	53	30570	hyrule.are	standing	86	0	-	look	comp	The needle points north -- at the bare wall, as though the way lay through the stone. // The Triforce chest lies 2 rooms away, behind the guardian's chamber, which is 1 room away.
+1793664130	cmd	Trentlin	53	30570	hyrule.are	standing	86	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1793664131	cmd	Trentlin	53	30570	hyrule.are	standing	86	0	-	north		The way to the Lion's guardian is utterly, unnaturally dark.  You need // the Red Candle from Level 7's cellar to light it.
+1793664140	cmd	Trentlin	53	30570	hyrule.are	standing	86	0	-	look		Level 8: Stair Beneath the Lion //   A steep stone stair opens in one corner of this chamber, leading down into // a passage that runs far to the east beneath the dungeon. A great stone
+1793664141	cmd	Trentlin	53	30577	hyrule.are	standing	86	0	-	down		Level 8: Knight's Guardroom //   Dented shields and broken spear shafts are stacked against the walls of // this guardroom, and the floor is scored by the tread of heavy armoured
+1793664142	cmd	Trentlin	53	30576	hyrule.are	standing	86	0	-	west		Level 8: Chamber of Three Doors //   A plain chamber of grey stone where three very different ways out meet: a // locked door with a keyhole to the south, a heavy iron shutter to the east,
+1793664143	cmd	Trentlin	53	30572	hyrule.are	standing	86	0	-	south		Level 8: Locked Crossway //   Two iron-bound doors with dark keyholes face this chamber from the north // and west, and the floor between them is slick with old slime. A faint chill
+1793664144	cmd	Trentlin	53	30567	hyrule.are	standing	86	0	-	south		Level 8: Slime-Slick Crossing //   Glistening trails of green slime crisscross the flagstones of this four-way // chamber, and the floor gives a faint squelch underfoot where large blobs
+1793664144	cmd	Trentlin	53	30564	hyrule.are	standing	86	0	-	south		Level 8: Narrow Passage Hall //   A tall, narrow hall of grey stone runs north from the entry, its walls // lined with shallow alcoves where stone lions once crouched. Only their
+1793664145	cmd	Trentlin	53	30562	hyrule.are	standing	86	0	-	south		Level 8: Lion's Gate //   Fine grey ash sifts down the stair from the burned bush overhead, settling // on the first flagstones of a stern stone vestibule. Carved lion heads glare
+1793664147	cmd	Trentlin	53	30229	hyrule.are	standing	86	0	-	up		The Lion's Thicket //   A quiet clearing in the eastern forest is empty but for a single bush // standing apart, dry and brittle and rooted in strangely flat, square-cut
+1793664149	cmd	Trentlin	53	4207	dresden.are	standing	86	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793664152	cmd	Trentlin	53	4202	dresden.are	standing	86	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793664152	cmd	Trentlin	53	4201	dresden.are	standing	86	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793664153	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793664153	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Alas, you cannot go that way.
+1793664153	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Alas, you cannot go that way.
+1793664153	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Alas, you cannot go that way.
+1793664154	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Alas, you cannot go that way.
+1793664154	cmd	Trentlin	53	2404	dresden.are	standing	86	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793664154	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793664155	cmd	Trentlin	53	2402	dresden.are	standing	86	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793664155	cmd	Trentlin	53	2415	dresden.are	standing	87	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793664156	cmd	Trentlin	53	2485	dresden.are	standing	87	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793664157	cmd	Trentlin	53	2494	dresden.are	standing	87	0	-	south		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1793664158	cmd	Trentlin	53	2494	dresden.are	standing	87	1	-	remove	reap	You stop using the Headless Horseman's Reaper.
+1793664160	cmd	Trentlin	53	2494	dresden.are	standing	87	0	-	repair	reap	The weaponsmith repairs your the Headless Horseman's Reaper. // It cost you 15p 70g 81s 68c to repair the Headless Horseman's Reaper.  It's been repaired 9 times now.
+1793664161	cmd	Trentlin	53	2485	dresden.are	standing	87	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1793664161	cmd	Trentlin	53	2415	dresden.are	standing	87	0	-	west		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793664162	cmd	Trentlin	53	2402	dresden.are	standing	87	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1793664162	cmd	Trentlin	53	2401	dresden.are	standing	87	0	-	south		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793664163	cmd	Trentlin	53	2404	dresden.are	standing	87	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793664164	cmd	Trentlin	53	2427	dresden.are	standing	87	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793664165	cmd	Trentlin	53	4201	dresden.are	standing	87	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793664165	cmd	Trentlin	53	4202	dresden.are	standing	87	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793664165	cmd	Trentlin	53	4207	dresden.are	standing	87	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793664165	cmd	Trentlin	53	4208	dresden.are	standing	87	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793664166	cmd	Trentlin	53	4208	dresden.are	standing	87	0	-	west		Alas, you cannot go that way.
+1793664166	cmd	Trentlin	53	4208	dresden.are	standing	87	0	-	west		Alas, you cannot go that way.
+1793664167	cmd	Trentlin	53	4208	dresden.are	standing	87	0	-	heal	uncurse	The healer utters the words 'candussido judifgz'. // A straight jacket glows blue.
+1793664172	cmd	Trentlin	53	4208	dresden.are	standing	87	0	-	wear	palte	You do not have that item.
+1793664173	cmd	Trentlin	53	4208	dresden.are	standing	87	0	-	wear	pla	You stop using a straight jacket. // You wear a suit of demon-scale plate on your body.
+1793664173	cmd	Trentlin	53	4208	dresden.are	standing	86	0	-	drop	jack	You drop a straight jacket.
+1793664175	refused	Trentlin	53	4208	dresden.are	standing	86	0	-	(unknown)		Huh?
+1793664178	cmd	Trentlin	53	4208	dresden.are	standing	86	0	-	sacrifice	jack	The Gods give you 102 copper coins for your sacrifice.
+1793664179	cmd	Trentlin	53	4207	dresden.are	standing	86	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793664179	cmd	Trentlin	53	4202	dresden.are	standing	86	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793664179	cmd	Trentlin	53	4201	dresden.are	standing	86	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793664179	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793664180	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Alas, you cannot go that way.
+1793664180	cmd	Trentlin	53	2427	dresden.are	standing	86	0	-	east		Alas, you cannot go that way.
+1793664180	cmd	Trentlin	53	2404	dresden.are	standing	86	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793664181	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793664250	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	affect		You are affected by: // Spell: 'titanic' modifies experience by 50 for 0 hours. // Spell: 'titanic' modifies moves by 1810 for 0 hours.
+1793664255	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	score		| Name:       Trentlin | Level:      53 | Class:     Warrior | // | Played:     24 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793664257	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793664261	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	inventory		You are carrying: // (11) a small key //      (Magical) the Lion dungeon compass
+1793664267	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	drop	demon	You drop the Demon's key.
+1793664273	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	get	demon	You get the Demon's key.
+1793664276	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	compare	cloak	A) the Crystalline Royal Cloak (level 50) -- can't use: made for another side // B) the Heart Guard of the Snake (level 27), worn // Slot: neck.  Your damage comes from weapons.
+1793664281	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	compare	ring	A) An assassin's ring (level 52) // B) a pirate's ring (level 43), worn // Slot: finger.  Your damage comes from weapons.
+1793664286	cmd	Trentlin	53	2401	dresden.are	standing	86	0	-	wear	ring	You stop using a pirate's ring. // You wear An assassin's ring on your left finger.
+1793664289	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	drop	pirate	You drop a pirate's ring.
+1793664290	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	sacrifice	pirate	The Gods give you 86 copper coins for your sacrifice.
+1793664293	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are clothed in mystical armor. // You feel righteous.
+1793664298	cmd	Trentlin	53	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793664298	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793664298	cmd	Trentlin	53	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793664299	cmd	Trentlin	53	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793664299	cmd	Trentlin	53	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793664299	cmd	Trentlin	53	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793664299	cmd	Trentlin	53	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax
+1793664300	cmd	Trentlin	53	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring
+1793664300	cmd	Trentlin	53	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance
+1793664300	cmd	Trentlin	53	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793664300	cmd	Trentlin	53	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793664301	cmd	Trentlin	53	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793664301	cmd	Trentlin	53	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793664301	cmd	Trentlin	53	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793664301	cmd	Trentlin	53	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793664302	cmd	Trentlin	53	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1793664302	cmd	Trentlin	53	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1793664302	cmd	Trentlin	53	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
+1793664302	cmd	Trentlin	53	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall
+1793664303	cmd	Trentlin	53	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins
+1793664306	cmd	Trentlin	53	30250	hyrule.are	standing	100	0	-	play	recorder 7	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Still Pond
+1793664312	cmd	Trentlin	53	30250	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room.
+1793664312	cmd	Trentlin	53	30527	hyrule.are	standing	100	0	-	down		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1793664322	cmd	Trentlin	53	30530	hyrule.are	standing	100	0	-	north		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1793664322	cmd	Trentlin	53	30530	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793664325	cmd	Trentlin	53	30530	hyrule.are	standing	100	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1793664325	cmd	Trentlin	53	30536	hyrule.are	standing	100	0	-	north		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1793664326	cmd	Trentlin	53	30540	hyrule.are	standing	100	0	-	north		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1793664327	cmd	Trentlin	53	30540	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1793664330	cmd	Trentlin	53	30540	hyrule.are	standing	100	0	-	kill	gor	A blue goriya parries your attack. // Your punch scratches a blue goriya. // Your punch scratches a blue goriya.
+1793664334	cmd	Trentlin	53	30540	hyrule.are	fighting	100	0	fight	wear	reap	You wield the Headless Horseman's Reaper. // The Headless Horseman's Reaper feels like a part of you!
+1793664335	cmd	Trentlin	53	30540	hyrule.are	fighting	100	0	fight	smite		The Headless Horseman's Reaper shears through a blue goriya with terrible force! // Your smite does UNSPEAKABLE things to a blue goriya! // Your smite does UNSPEAKABLE things to a blue goriya!
