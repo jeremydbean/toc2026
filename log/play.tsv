@@ -19240,3 +19240,7 @@
 1793716988	cmd	Killuminati	70	2401	dresden.are	standing	100	1	-	component		Scattered 4 herbs and 1 spell component. // The world now holds 21 of 40 herbs and 4 of 25 components.
 1793716989	cmd	Killuminati	70	2401	dresden.are	standing	100	1	-	component		Scattered 5 herbs and 0 spell components. // The world now holds 26 of 40 herbs and 4 of 25 components.
 1793717000	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793717094	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793717099	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	holylight		Holy light mode on.
+1793717101	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793717102	session	Killuminati	70	2401	dresden.are	quit	228s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	22 commands	1 refused	coin: none
