@@ -15967,3 +15967,91 @@
 1793665543	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	west		The Medicine Woman's Ledge //   Walled in on three sides by brown crags, this quiet ledge opens only to the // east. A dark cave mouth is set into the rock, its threshold swept clean,
 1793665545	cmd	Trentlin	53	30693	hyrule.are	standing	100	0	-	down		The Herbwife's Cave //   The swept threshold gives way to a cave hung with drying leaves, mushroom // caps and knotted roots, and the bitter smell of medicine fills it end to
 1793665547	cmd	Trentlin	53	30693	hyrule.are	standing	100	0	-	list		A rosy-cheeked old woman looks you over for a royal seal. "Show me the Princess's letter first."
+1793665586	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	up		The Medicine Woman's Ledge //   Walled in on three sides by brown crags, this quiet ledge opens only to the // east. A dark cave mouth is set into the rock, its threshold swept clean,
+1793665588	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	east		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.
+1793665588	cmd	Trentlin	53	30318	hyrule.are	standing	100	0	-	east		East of Spectacle Rock //   A broad shelf of packed earth stretches between rows of brown boulders, the // twin humps of Spectacle Rock just visible to the west. Wind-flattened weeds
+1793665590	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	west		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.
+1793665591	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	west		The Medicine Woman's Ledge //   Walled in on three sides by brown crags, this quiet ledge opens only to the // east. A dark cave mouth is set into the rock, its threshold swept clean,
+1793665591	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793665601	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	wear	star	You stop using the Red Candle. // You light Starlight and hold it.
+1793665603	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	bomb	north	You find no cracked surface to bomb there.
+1793665611	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	east		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.
+1793665615	cmd	Trentlin	53	30271	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Eagle's Gate
+1793665625	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock
+1793665631	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	bomb	north	You find no cracked surface to bomb there.
+1793665641	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	push	rock	I see no rock here.
+1793665643	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	bomb	left	You find no cracked surface to bomb there.
+1793665644	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	west		The Medicine Woman's Ledge //   Walled in on three sides by brown crags, this quiet ledge opens only to the // east. A dark cave mouth is set into the rock, its threshold swept clean,
+1793665646	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	bomb	north	You find no cracked surface to bomb there.
+1793665648	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	east		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.
+1793665655	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	push	boulder	I see no boulder here.
+1793665665	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	left	You do not see that here.
+1793665667	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	boulder	You do not see that here.
+1793665668	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	stone	You do not see that here.
+1793665669	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	rock	You do not see that here.
+1793665689	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	open	rock	I see no rock here.
+1793665691	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	bomb	rock	You find no cracked surface to bomb there.
+1793665696	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	bomb	2.rock	You find no cracked surface to bomb there.
+1793665698	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	spectacle	You do not see that here.
+1793665700	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	rock	You do not see that here.
+1793665701	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.
+1793665712	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	bomb	boulder	You find no cracked surface to bomb there.
+1793665717	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	bomb	2.boulder	You find no cracked surface to bomb there.
+1793665720	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	bomb	left boulder	You find no cracked surface to bomb there.
+1793665722	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	boulder	You do not see that here.
+1793665724	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	spectacle	You do not see that here.
+1793665725	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	look	spectacles	You do not see that here.
+1793665726	cmd	Trentlin	53	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793665728	cmd	Trentlin	53	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793665728	cmd	Trentlin	53	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793665728	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793665728	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793665729	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793665729	cmd	Trentlin	53	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793665730	cmd	Trentlin	53	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793665730	cmd	Trentlin	53	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793665730	cmd	Trentlin	53	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793665731	cmd	Trentlin	53	4208	dresden.are	standing	100	0	-	heal	uncurse	The healer says 'I see no curse on you or on anything you carry.'
+1793665735	cmd	Trentlin	53	4208	dresden.are	standing	100	0	-	drop	bone	You drop a bone mace.
+1793665737	cmd	Trentlin	53	4208	dresden.are	standing	100	0	-	sacrifice	bone	The Gods give you 102 copper coins for your sacrifice.
+1793665737	cmd	Trentlin	53	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793665738	cmd	Trentlin	53	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793665738	cmd	Trentlin	53	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793665738	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793665738	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793665739	cmd	Trentlin	53	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793665739	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793665743	cmd	Trentlin	53	9506	newthalo.are	standing	100	0	-	run	e 27	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793665744	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793665745	cmd	Trentlin	53	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1793665746	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793665747	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	kill	gua	You MASSACRE Guardian Knight! // Guardian Knight parries your attack. // You devastate Guardian Knight!
+1793665750	cmd	Trentlin	53	29004	korzath1.are	fighting	100	0	fight	smite		Your smite <<< ERADICATES >>> Guardian Knight! // The Headless Horseman's Reaper shears through Guardian Knight with terrible force! // Your smite does UNSPEAKABLE things to Guardian Knight!
+1793665759	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	get	key co	You get a diamond key from corpse of Guardian Knight.
+1793665762	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793665763	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	open	north	Ok.
+1793665763	cmd	Trentlin	53	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793665764	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793665764	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1793665766	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	unlock	east	You lack the key.
+1793665770	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	get	brittle pack	You get a brittle key from a metallic pack.
+1793665772	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	unlock	east	There is a flash of light as you unlock the door.
+1793665774	cmd	Trentlin	53	29235	korzath2.are	standing	100	0	-	east		Path of Questions //   You walk into the room and see a tattered sign with missing letters // before you:
+1793665782	cmd	Trentlin	53	29236	korzath2.are	standing	100	0	-	east		Question //   QUESTION #1: // Sarmini has twelve apples.  Kalak comes by and gives
+1793665785	cmd	Trentlin	53	29237	korzath2.are	standing	100	0	-	west		Question //   QUESTION #2: // Paco the Pawn Shop owner was found murdered in Dresden.
+1793665787	cmd	Trentlin	53	29238	korzath2.are	standing	100	0	-	up		Question //   QUESTION #3: // A tub is one hundred liters in size and it is filled
+1793665788	cmd	Trentlin	53	29239	korzath2.are	standing	100	0	-	south		Question //   QUESTION #4: // When both hands of a clock point to twelve, and it is
+1793665790	cmd	Trentlin	53	29240	korzath2.are	standing	100	0	-	north		Question //   QUESTION #5: // 1. The name of Korzath's Grandmother.
+1793665793	cmd	Trentlin	53	29241	korzath2.are	standing	100	0	-	east		Question //   You stand before a long rope bridge that stretches the expanse of a // deep black chasm here inside the mountain.  The cavern here is so large
+1793665797	cmd	Trentlin	53	29241	korzath2.are	standing	100	0	-	exits		Obvious exits: // South - Question // Northeast - Center of the Bridge
+1793665800	cmd	Trentlin	53	29241	korzath2.are	standing	100	0	-	exits		Obvious exits: // South - Question // Northeast - Center of the Bridge
+1793665801	cmd	Trentlin	53	29242	korzath2.are	standing	100	0	-	ne		Center of the Bridge //   As you approach the center of the bridge you feel it sway and move // beneath your feet.  You glance up and notice a horridly ugly creature
+1793665803	cmd	Trentlin	53	29242	korzath2.are	standing	100	0	-	consider	gua	A Bridge Guardian is about your level. // A Bridge Guardian has about half your hit points. // Blow for blow, you would need about 10 rounds to bring a Bridge Guardian down; he would need about 59 rounds for you.
+1793665806	cmd	Trentlin	53	29242	korzath2.are	standing	100	0	-	look	gua	The Guardian of the Bridge only allows captured beings to be sent across the // bridge and into the Battleground Arena. // A Bridge Guardian is in excellent condition.
+1793665807	cmd	Trentlin	53	29242	korzath2.are	standing	100	0	-	kill	gua	You *** DEVASTATE *** a Bridge Guardian! // A Bridge Guardian parries your attack. // A Bridge Guardian dodges your attack.
+1793665812	cmd	Trentlin	53	29242	korzath2.are	fighting	98	0	fight	smite		Your smite === OBLITERATES === a Bridge Guardian! // Your smite ^^^ DESTROYS ^^^ a Bridge Guardian! // Your smite === OBLITERATES === a Bridge Guardian!
+1793665821	cmd	Trentlin	53	29242	korzath2.are	fighting	98	0	fight	smite		Your smite injures a Bridge Guardian. // Your smite ^^^ DESTROYS ^^^ a Bridge Guardian! // Your smite *** DEVASTATES *** a Bridge Guardian!
+1793665827	cmd	Trentlin	53	29242	korzath2.are	fighting	97	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a Bridge Guardian! // Your smite <<< ERADICATES >>> a Bridge Guardian! // Your smite *** DEVASTATES *** a Bridge Guardian!
+1793665834	cmd	Trentlin	53	29242	korzath2.are	fighting	97	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a Bridge Guardian! // Your smite wounds a Bridge Guardian. // Your smite MUTILATES a Bridge Guardian!
+1793665844	cmd	Trentlin	53	29242	korzath2.are	fighting	96	0	fight	kick		Your kick scratches a Bridge Guardian.
+1793665849	cmd	Trentlin	53	29242	korzath2.are	fighting	96	0	fight	kick		Your kick misses a Bridge Guardian.
