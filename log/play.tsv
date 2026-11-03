@@ -18668,3 +18668,79 @@
 1793674886	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'Perhaps fortune will favor you more next time.'
 1793674887	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
 1793675530	session	Alaric	57	2497	dresden.are	quit	4741s	+0 levels	+0 exp	-819248291 copper	6 kills	0 deaths	4 quests	649 commands	1 refused	coin: loot 84p 20g 93s 21c, quests 647p 34g 23s 88c, spent 1550p 80g
+1793706066	cmd	Trentlin	54	4202	dresden.are	standing	96	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793706066	cmd	Trentlin	54	4201	dresden.are	standing	96	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793706067	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793706067	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.
+1793706067	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.
+1793706067	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.
+1793706068	cmd	Trentlin	54	2404	dresden.are	standing	96	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793706068	cmd	Trentlin	54	2401	dresden.are	standing	96	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793706080	cmd	Trentlin	54	2426	dresden.are	standing	96	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // An elite elf guard tells you,"Remember evil lurks in the hearts of all men and women."
+1793706080	cmd	Trentlin	54	2426	dresden.are	standing	96	0	-	open	east	Ok.
+1793706081	cmd	Trentlin	54	3502	midennir.are	standing	96	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793706081	cmd	Trentlin	54	5258	oldthalo.are	standing	96	0	-	run	s 4	The dwarf forest // [Exits: north south southeast] // The dwarf forest
+1793706081	cmd	Trentlin	54	5262	oldthalo.are	standing	96	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks
+1793706081	cmd	Trentlin	54	5263	oldthalo.are	standing	96	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south
+1793706082	cmd	Trentlin	54	5264	oldthalo.are	standing	96	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east
+1793706082	cmd	Trentlin	54	5265	oldthalo.are	standing	96	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1793706082	cmd	Trentlin	54	5266	oldthalo.are	standing	96	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1793706082	cmd	Trentlin	54	5267	oldthalo.are	standing	96	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and
+1793706083	cmd	Trentlin	54	5267	oldthalo.are	standing	96	0	-	open	hole	It's locked.
+1793706084	cmd	Trentlin	54	5267	oldthalo.are	standing	96	0	-	west		Alas, you cannot go that way.
+1793706084	cmd	Trentlin	54	62	connect.are	standing	96	0	-	south		Minor Path //   Before you, lies the main eastern road. Go to the west and you are back // in the dark valley.
+1793706085	cmd	Trentlin	54	62	connect.are	standing	96	0	-	down		Alas, you cannot go that way.
+1793706085	cmd	Trentlin	54	62	connect.are	standing	96	0	-	open	secret	I see no secret here.
+1793706085	cmd	Trentlin	54	62	connect.are	standing	96	0	-	down		Alas, you cannot go that way.
+1793706085	cmd	Trentlin	54	5267	oldthalo.are	standing	96	0	-	west		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and
+1793706086	cmd	Trentlin	54	5271	oldthalo.are	standing	96	0	-	north		The Valley in the dark dwarf forest //   You are in a valley in the forest.  To the north is a trail out of this // dark valley.  South is more of this valley.
+1793706086	cmd	Trentlin	54	5271	oldthalo.are	standing	96	0	-	run	w 18	You slam into a wall!.
+1793706086	refused	Trentlin	54	5271	oldthalo.are	resting	96	0	-	run	s	Nah... You feel too relaxed...
+1793706086	cmd	Trentlin	54	5271	oldthalo.are	resting	96	0	-	stand		You stand up.
+1793706087	cmd	Trentlin	54	5271	oldthalo.are	standing	96	0	-	sw		Alas, you cannot go that way.
+1793706087	cmd	Trentlin	54	5271	oldthalo.are	standing	96	0	-	sw		Alas, you cannot go that way.
+1793706087	cmd	Trentlin	54	5271	oldthalo.are	standing	96	0	-	west		Alas, you cannot go that way.
+1793706090	cmd	Trentlin	54	5267	oldthalo.are	standing	96	1	-	south		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and
+1793706092	cmd	Trentlin	54	4207	dresden.are	standing	96	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793706094	cmd	Trentlin	54	4208	dresden.are	standing	96	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793706094	cmd	Trentlin	54	4208	dresden.are	standing	96	0	-	west		Alas, you cannot go that way.
+1793706094	cmd	Trentlin	54	4208	dresden.are	standing	96	0	-	west		Alas, you cannot go that way.
+1793706096	cmd	Trentlin	54	4208	dresden.are	standing	96	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (33 castings, 330 gold.)
+1793706099	cmd	Trentlin	54	4207	dresden.are	standing	96	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793706100	cmd	Trentlin	54	4202	dresden.are	standing	96	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793706100	cmd	Trentlin	54	4201	dresden.are	standing	96	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793706100	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793706100	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.
+1793706101	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.
+1793706101	cmd	Trentlin	54	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.
+1793706101	cmd	Trentlin	54	2404	dresden.are	standing	96	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793706101	cmd	Trentlin	54	2401	dresden.are	standing	96	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793706105	cmd	Trentlin	54	2426	dresden.are	standing	96	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // An elite elf guard tells you,"Remember evil lurks in the hearts of all men and women."
+1793706105	cmd	Trentlin	54	2426	dresden.are	standing	96	0	-	open	east	It's already open.
+1793706105	cmd	Trentlin	54	3502	midennir.are	standing	96	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793706106	cmd	Trentlin	54	5258	oldthalo.are	standing	96	0	-	run	s 4	The dwarf forest // [Exits: north south southeast] // The dwarf forest
+1793706106	cmd	Trentlin	54	5262	oldthalo.are	standing	96	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks
+1793706106	cmd	Trentlin	54	5263	oldthalo.are	standing	96	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south
+1793706106	cmd	Trentlin	54	5264	oldthalo.are	standing	96	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east
+1793706107	cmd	Trentlin	54	5265	oldthalo.are	standing	96	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1793706107	cmd	Trentlin	54	5266	oldthalo.are	standing	96	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1793706107	cmd	Trentlin	54	5267	oldthalo.are	standing	96	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and
+1793706107	cmd	Trentlin	54	5267	oldthalo.are	standing	96	0	-	open	hole	It's locked.
+1793706113	cmd	Trentlin	54	5267	oldthalo.are	standing	96	0	-	open	fox	You open a secret door.
+1793706118	cmd	Trentlin	54	5268	oldthalo.are	standing	96	0	-	west		A small ugly cave //   You see a small cave.  Skeletons of many types of creatures litter the area. // Obviously, no fox lives here!  The oppression makes you want to leave and
+1793706119	cmd	Trentlin	54	5269	oldthalo.are	standing	96	0	-	south		A small ugly cave //   You are in a small ugly cave.  More skeletons lie around.  It is obvious // that the owner doesn't want you here.  The exit north is still visible.
+1793706119	cmd	Trentlin	54	5270	oldthalo.are	standing	96	0	-	down		Down the path into a dead end //   You are down the path.  There is no obvious exit in this place, exit the // one back up north.  All around you, you see skeletons.
+1793706119	cmd	Trentlin	54	5270	oldthalo.are	standing	96	0	-	open	secret	You open a secret door.
+1793706119	cmd	Trentlin	54	5100	drow1.are	standing	96	0	-	down		City Entrance //   You are at the entrance to a small underground city. A great adamantite // gate lies open to the west allowing entrance into the city.
+1793706120	cmd	Trentlin	54	5101	drow1.are	standing	96	1	-	west		City street //   You walk along a highly ornate street going north-south. A large gate // lies to the east while a building lies to the west.
+1793706120	cmd	Trentlin	54	5123	drow1.are	standing	96	0	-	north		City street //   You walk along a highly ornate city street leading west and south. To the // north is a relatively small house.
+1793706120	cmd	Trentlin	54	25203	mushroom.are	standing	96	0	-	run	w 18	City street // [Exits: north east south west] // City street
+1793706120	cmd	Trentlin	54	25262	mushroom.are	standing	96	0	-	run	s	The pathway south. // [Exits: north south] // Before the bridge.
+1793706121	cmd	Trentlin	54	25262	mushroom.are	resting	96	0	-	stand		You stand up.
+1793706121	cmd	Trentlin	54	25263	mushroom.are	standing	96	0	-	sw		The strangled path. //   The path here is overgrown and quiet.  This is one part of the grove that // no towers are around and the only part you have seen so far that makes
+1793706121	cmd	Trentlin	54	25264	mushroom.are	standing	96	0	-	sw		The strangled path. //   Light seems to be coming from a clearing in the west along with several // shadows of dancing figures.  You can also hear music with a fast rhythm
+1793706121	cmd	Trentlin	54	25265	mushroom.are	standing	96	0	-	west		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1793706123	cmd	Trentlin	54	25265	mushroom.are	standing	96	0	-	consider	e	Eilistraee is well above your level. // Eilistraee has about twice your hit points. // Blow for blow, you would need about 29 rounds to bring Eilistraee down; she would need about 75 rounds for you.
+1793706135	cmd	Trentlin	54	25265	mushroom.are	standing	96	0	-	kill	ei	Your cleave injures Eilistraee. // Eilistraee parries your attack. // Your cleave ^^^ DESTROYS ^^^ Eilistraee!
+1793706138	cmd	Trentlin	54	25265	mushroom.are	fighting	96	0	fight	smite		Your smite does UNSPEAKABLE things to Eilistraee! // Your smite >>> ANNIHILATES <<< Eilistraee! // Your smite misses Eilistraee.
+1793706147	cmd	Trentlin	54	25265	mushroom.are	fighting	96	0	fight	smite		Your smite does UNSPEAKABLE things to Eilistraee! // Your smite === OBLITERATES === Eilistraee! // Your smite does UNSPEAKABLE things to Eilistraee!
