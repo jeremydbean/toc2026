@@ -253463,3 +253463,94 @@ Tue Nov  3 11:42:03 2026 :: Log Trentlin [25265]: con e
 Tue Nov  3 11:42:15 2026 :: Log Trentlin [25265]: k ei
 Tue Nov  3 11:42:18 2026 :: Log Trentlin [25265]: smite
 Tue Nov  3 11:42:27 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:42:37 2026 :: Log Trentlin [25265]: get axe
+Tue Nov  3 11:42:38 2026 :: Log Trentlin [25265]: wear axe
+Tue Nov  3 11:42:40 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:42:48 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:42:55 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:03 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:11 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:19 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:31 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:39 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:51 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:58 2026 :: Log Trentlin [25265]: smite
+Tue Nov  3 11:43:58 2026 :: Log Trentlin [25265]: killed Eilistraee
+Tue Nov  3 11:43:58 2026 :: Log Trentlin [25265]: coin +6 platinum
+Tue Nov  3 11:43:58 2026 :: Log Trentlin [25265]: coin +318 silver
+Tue Nov  3 11:43:58 2026 :: Log Trentlin [25265]: coin +118 copper
+Tue Nov  3 11:43:58 2026 :: Log Trentlin [25265]: coin +90 gold
+Tue Nov  3 11:44:07 2026 :: Log Trentlin [25265]: l in cor
+Tue Nov  3 11:44:08 2026 :: Log Trentlin [25265]: reca
+Tue Nov  3 11:44:09 2026 :: Log Trentlin [25265]: reca
+Tue Nov  3 11:44:10 2026 :: Log Trentlin [25265]: reca
+Tue Nov  3 11:44:10 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 25265
+Tue Nov  3 11:44:11 2026 :: Log Trentlin [4207]: reca
+Tue Nov  3 11:45:26 2026 :: Log Trentlin [4207]: w
+Tue Nov  3 11:45:26 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov  3 11:45:26 2026 :: Log Trentlin [4208]: w
+Tue Nov  3 11:45:28 2026 :: Sock.sinaddr:  52.87.72.16
+Tue Nov  3 11:45:28 2026 :: EOF encountered on read.
+Tue Nov  3 11:45:29 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:45:33 2026 :: Log Trentlin [4208]: l triforce
+Tue Nov  3 11:45:59 2026 :: Log Trentlin [4208]: stash put pack
+Tue Nov  3 11:46:05 2026 :: Log Trentlin [4208]: l in pack
+Tue Nov  3 11:46:17 2026 :: Log Trentlin [4208]: get angel pack
+Tue Nov  3 11:46:19 2026 :: Log Trentlin [4208]: drop angel
+Tue Nov  3 11:46:21 2026 :: Log Trentlin [4208]: get angle pack
+Tue Nov  3 11:46:23 2026 :: Log Trentlin [4208]: get angel pack
+Tue Nov  3 11:46:24 2026 :: Log Trentlin [4208]: drop angel
+Tue Nov  3 11:46:29 2026 :: Log Trentlin [4208]: get alfal pack
+Tue Nov  3 11:46:30 2026 :: Log Trentlin [4208]: eat alfal
+Tue Nov  3 11:46:33 2026 :: Log Trentlin [4208]: drop alfal
+Tue Nov  3 11:46:35 2026 :: Log Trentlin [4208]: stash put pack
+Tue Nov  3 11:46:38 2026 :: Log Trentlin [4208]: get hoof pack
+Tue Nov  3 11:46:40 2026 :: Log Trentlin [4208]: drop hoof
+Tue Nov  3 11:46:43 2026 :: Log Trentlin [4208]: stash put pack
+Tue Nov  3 11:46:43 2026 :: Log Trentlin [4208]: stashed a metallic pack (vnum 29032)
+Tue Nov  3 11:46:44 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:46:49 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 11:46:49 2026 :: Log Trentlin [4208]: stashed the Crystalline Sceptre of Commanding (vnum 10000)
+Tue Nov  3 11:46:49 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 11:46:49 2026 :: Log Trentlin [4208]: stashed the Crystalline Crown of Perception (vnum 10005)
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stashed (Flaming) the Crystalline Sword of Justice (vnum 10001)
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stashed the Crystalline Royal Cloak (vnum 10004)
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stashed the Crystalline Robe of Shielding (vnum 10003)
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 11:46:50 2026 :: Log Trentlin [4208]: stashed the Crystalline Diadem of Perception (vnum 10002)
+Tue Nov  3 11:46:51 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 11:46:52 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:46:58 2026 :: Log Trentlin [4208]: stash pout saber
+Tue Nov  3 11:47:01 2026 :: Log Trentlin [4208]: stash put saber
+Tue Nov  3 11:47:01 2026 :: Log Trentlin [4208]: stashed (Flaming) A Light Saber (vnum 10052)
+Tue Nov  3 11:47:04 2026 :: Log Trentlin [4208]: stash put reaper
+Tue Nov  3 11:47:04 2026 :: Log Trentlin [4208]: stashed the Headless Horseman's Reaper (vnum 29920)
+Tue Nov  3 11:47:06 2026 :: Log Trentlin [4208]: stash put axe
+Tue Nov  3 11:47:06 2026 :: Log Trentlin [4208]: stashed A Tin Axe (vnum 17702)
+Tue Nov  3 11:47:08 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:47:17 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:17 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:18 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:18 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:18 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:20 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:20 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:20 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:20 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:21 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:21 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:21 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:21 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:22 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:22 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:22 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:22 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:23 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:23 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:23 2026 :: Log Trentlin [4208]: drop potion
+Tue Nov  3 11:47:24 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:47:29 2026 :: Log Trentlin [4208]: stash put red
+Tue Nov  3 11:47:29 2026 :: Log Trentlin [4208]: stashed the Red Candle (vnum 30414)

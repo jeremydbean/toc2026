@@ -18744,3 +18744,74 @@
 1793706135	cmd	Trentlin	54	25265	mushroom.are	standing	96	0	-	kill	ei	Your cleave injures Eilistraee. // Eilistraee parries your attack. // Your cleave ^^^ DESTROYS ^^^ Eilistraee!
 1793706138	cmd	Trentlin	54	25265	mushroom.are	fighting	96	0	fight	smite		Your smite does UNSPEAKABLE things to Eilistraee! // Your smite >>> ANNIHILATES <<< Eilistraee! // Your smite misses Eilistraee.
 1793706147	cmd	Trentlin	54	25265	mushroom.are	fighting	96	0	fight	smite		Your smite does UNSPEAKABLE things to Eilistraee! // Your smite === OBLITERATES === Eilistraee! // Your smite does UNSPEAKABLE things to Eilistraee!
+1793706157	cmd	Trentlin	54	25265	mushroom.are	fighting	95	0	fight	get	axe	You get the Lion's four-crowned axe.
+1793706158	cmd	Trentlin	54	25265	mushroom.are	fighting	95	0	fight	wear	axe	You wield the Lion's four-crowned axe. // The Lion's four-crowned axe feels like a part of you!
+1793706160	cmd	Trentlin	54	25265	mushroom.are	fighting	95	0	fight	smite		Your smite <<< ERADICATES >>> Eilistraee! // Your smite does UNSPEAKABLE things to Eilistraee! // Your smite misses Eilistraee.
+1793706168	cmd	Trentlin	54	25265	mushroom.are	fighting	95	0	fight	smite		Your smite misses Eilistraee.
+1793706175	cmd	Trentlin	54	25265	mushroom.are	fighting	91	0	fight	smite		Your smite does UNSPEAKABLE things to Eilistraee! // Your smite <<< ERADICATES >>> Eilistraee! // Your smite <<< ERADICATES >>> Eilistraee!
+1793706183	cmd	Trentlin	54	25265	mushroom.are	fighting	90	0	fight	smite		Your smite does UNSPEAKABLE things to Eilistraee! // Your smite does UNSPEAKABLE things to Eilistraee! // Your smite <<< ERADICATES >>> Eilistraee!
+1793706191	cmd	Trentlin	54	25265	mushroom.are	fighting	90	0	fight	smite		Your smite misses Eilistraee.
+1793706199	cmd	Trentlin	54	25265	mushroom.are	fighting	90	0	fight	smite		You learn from your mistakes, and your smite skill improves. // Your smite misses Eilistraee.
+1793706211	cmd	Trentlin	54	25265	mushroom.are	fighting	90	0	fight	smite		Your smite misses Eilistraee.
+1793706219	cmd	Trentlin	54	25265	mushroom.are	fighting	90	0	fight	smite		Your smite does UNSPEAKABLE things to Eilistraee! // Your smite <<< ERADICATES >>> Eilistraee! // Your smite >>> ANNIHILATES <<< Eilistraee!
+1793706231	cmd	Trentlin	54	25265	mushroom.are	fighting	90	0	fight	smite		Your smite misses Eilistraee.
+1793706238	cmd	Trentlin	54	25265	mushroom.are	fighting	90	1	fight	smite		Your smite >>> ANNIHILATES <<< Eilistraee! // Your smite does UNSPEAKABLE things to Eilistraee! // Your smite misses Eilistraee.
+1793706247	cmd	Trentlin	54	25265	mushroom.are	standing	90	0	-	look	in cor	Corpse of Eilistraee contains: //      Nothing.
+1793706248	cmd	Trentlin	54	25265	mushroom.are	standing	90	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1793706249	cmd	Trentlin	54	25265	mushroom.are	standing	91	0	-	recall		Your prayer goes up and comes back unanswered.
+1793706250	cmd	Trentlin	54	4207	dresden.are	standing	91	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793706251	cmd	Trentlin	54	4207	dresden.are	standing	91	0	-	recall		You are already standing at your recall point, Before the Altar. //                     ACHIEVEMENT EARNED // No Place Like Home  +5 points
+1793706326	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793706326	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	west		Alas, you cannot go that way.
+1793706329	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	inventory		You are carrying: // ( 4) a small key // ( 2) (Magical) a potion of protection
+1793706333	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	look	triforce	This is the eighth of the eight shards of Wisdom, from the Lion's chest. It // is one of nine Triforce pieces, one from each of Hyrule's dungeon // guardians: eight of Wisdom, and Ganon's Power. Carry it: Level 9's door
+1793706359	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	stash	put pack	Something in a metallic pack will not last long enough to be worth keeping.
+1793706365	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	look	in pack	A metallic pack contains: // ( 2) a sprig of angelica //      a nightmare's hoof clipping
+1793706377	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	get	angel pack	You get a sprig of angelica from a metallic pack.
+1793706379	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	angel	You drop a sprig of angelica.
+1793706381	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	get	angle pack	I see nothing like that in the pack.
+1793706383	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	get	angel pack	You get a sprig of angelica from a metallic pack.
+1793706384	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	angel	You drop a sprig of angelica.
+1793706389	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	get	alfal pack	You get an alfalfa sprout from a metallic pack.
+1793706390	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	eat	alfal	That's not edible.
+1793706393	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	alfal	You drop an alfalfa sprout.
+1793706395	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	stash	put pack	Something in a metallic pack will not last long enough to be worth keeping.
+1793706398	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	get	hoof pack	You get a nightmare's hoof clipping from a metallic pack.
+1793706400	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	hoof	You drop a nightmare's hoof clipping.
+1793706403	cmd	Trentlin	54	4208	dresden.are	standing	91	11	-	stash	put pack	You put a metallic pack away for safe keeping.
+1793706404	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	inventory		You are carrying: // ( 4) a small key // ( 2) (Magical) a potion of protection
+1793706409	cmd	Trentlin	54	4208	dresden.are	standing	91	5	-	stash	put crystall	You put the Crystalline Sceptre of Commanding away for safe keeping.
+1793706409	cmd	Trentlin	54	4208	dresden.are	standing	91	4	-	stash	put crystall	You put the Crystalline Crown of Perception away for safe keeping.
+1793706410	cmd	Trentlin	54	4208	dresden.are	standing	91	4	-	stash	put crystall	You put (Flaming) the Crystalline Sword of Justice away for safe keeping.
+1793706410	cmd	Trentlin	54	4208	dresden.are	standing	91	4	-	stash	put crystall	You put the Crystalline Royal Cloak away for safe keeping.
+1793706410	cmd	Trentlin	54	4208	dresden.are	standing	91	4	-	stash	put crystall	You put the Crystalline Robe of Shielding away for safe keeping.
+1793706410	cmd	Trentlin	54	4208	dresden.are	standing	91	4	-	stash	put crystall	You put the Crystalline Diadem of Perception away for safe keeping.
+1793706411	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	stash	put crystall	You are not carrying that.
+1793706412	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	inventory		You are carrying: // ( 4) a small key // ( 2) (Magical) a potion of protection
+1793706418	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	stash	pout saber	Syntax: stash                     -- what is in it //         stash put <item>          -- from anywhere in the world //         stash get <item>          -- at the altar only
+1793706421	cmd	Trentlin	54	4208	dresden.are	standing	91	5	-	stash	put saber	You put (Flaming) A Light Saber away for safe keeping.
+1793706424	cmd	Trentlin	54	4208	dresden.are	standing	91	5	-	stash	put reaper	You put the Headless Horseman's Reaper away for safe keeping.
+1793706426	cmd	Trentlin	54	4208	dresden.are	standing	91	6	-	stash	put axe	You put A Tin Axe away for safe keeping.
+1793706428	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	inventory		You are carrying: // ( 4) a small key // ( 2) (Magical) a potion of protection
+1793706437	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of protection.
+1793706437	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of protection.
+1793706438	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop an opaque potion.
+1793706438	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop an opaque potion.
+1793706438	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of true sight.
+1793706440	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of true sight.
+1793706440	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of true sight.
+1793706440	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of true sight.
+1793706440	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a grey potion.
+1793706441	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a grey potion.
+1793706441	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a grey potion.
+1793706441	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a grey potion.
+1793706441	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of true sight.
+1793706442	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of true sight.
+1793706442	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of true sight.
+1793706442	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You drop a potion of flying.
+1793706442	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You do not have that item.
+1793706443	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You do not have that item.
+1793706443	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You do not have that item.
+1793706443	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You do not have that item.
+1793706444	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	inventory		You are carrying: // ( 4) a small key //      (Magical) (Glowing) the eighth Triforce shard
+1793706449	cmd	Trentlin	54	4208	dresden.are	standing	91	5	-	stash	put red	You put the Red Candle away for safe keeping.
