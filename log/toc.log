@@ -252568,3 +252568,60 @@ Tue Nov  3 02:31:42 2026 :: Log Alaric [2497]: aq ga no
 Tue Nov  3 02:31:43 2026 :: Log Alaric [2497]: score
 Tue Nov  3 02:31:46 2026 :: Log Alaric [2497]: who
 Tue Nov  3 02:31:48 2026 :: Log Alaric [2497]: changes
+Tue Nov  3 02:31:58 2026 :: Sock.sinaddr:  5.161.117.52
+Tue Nov  3 02:31:58 2026 :: EOF encountered on read.
+Tue Nov  3 02:32:20 2026 :: Log Alaric [2497]: who
+Tue Nov  3 02:32:21 2026 :: Log Alaric [2497]: score
+Tue Nov  3 02:32:29 2026 :: Log Alaric [2497]: ach
+Tue Nov  3 02:32:34 2026 :: Log Alaric [2497]: ach economy
+Tue Nov  3 02:33:19 2026 :: Treasure goblin: vanished from room 5331 (South wing of the city hall, mirror.are) (too long in one area).
+Tue Nov  3 02:33:21 2026 :: Log Alaric [2497]: help stash
+Tue Nov  3 02:33:32 2026 :: Log Alaric [2497]: stash buy
+Tue Nov  3 02:33:35 2026 :: Log Alaric [2497]: l
+Tue Nov  3 02:33:36 2026 :: Log Alaric [2497]: en do
+Tue Nov  3 02:33:36 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 02:33:37 2026 :: Log Alaric [2401]: jump rock
+Tue Nov  3 02:33:37 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Tue Nov  3 02:33:37 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Tue Nov  3 02:33:39 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:39 2026 :: Log Alaric [4208]: copper -62500000
+Tue Nov  3 02:33:41 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:41 2026 :: Log Alaric [4208]: copper -90000000
+Tue Nov  3 02:33:42 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:42 2026 :: Log Alaric [4208]: copper -122500000
+Tue Nov  3 02:33:43 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:43 2026 :: Log Alaric [4208]: copper -160000000
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: copper -202500000
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: copper -250000000
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: copper -302500000
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:44 2026 :: Log Alaric [4208]: copper -360000000
+Tue Nov  3 02:33:45 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:45 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:45 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:45 2026 :: Log Alaric [4208]: stash buy
+Tue Nov  3 02:33:47 2026 :: Log Alaric [4208]: score
+Tue Nov  3 02:33:53 2026 :: Log Alaric [4208]: l
+Tue Nov  3 02:33:56 2026 :: Log Alaric [4208]: heal ref
+Tue Nov  3 02:33:56 2026 :: Log Alaric [4208]: gold -80
+Tue Nov  3 02:34:00 2026 :: Log Alaric [4208]: r e 4
+Tue Nov  3 02:34:00 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Tue Nov  3 02:34:00 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 02:34:00 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 02:34:00 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Tue Nov  3 02:34:00 2026 :: Log Alaric [2427]: n
+Tue Nov  3 02:34:00 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2404]: n
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2401]: u
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2410]: u
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2411]: u
+Tue Nov  3 02:34:01 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov  3 02:34:02 2026 :: Log Alaric [2414]: u
+Tue Nov  3 02:34:02 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Nov  3 02:36:26 2026 :: Log Alaric [2497]: affects off: levitate

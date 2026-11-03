@@ -18436,3 +18436,34 @@
 1793673103	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
 1793673106	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
 1793673108	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	changes		What is new, newest first: // 2026-11-03 //   The ten levers in the Battleground now answer to their numbers as well as
+1793673140	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793673141	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793673149	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	achievements		========================= ACHIEVEMENTS ========================= // Points: 2140 / 11721     Earned: 118 / 389 // Marks to spend: 2140 (see REDEEM)
+1793673154	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	achievements	economy	==================== Economy ACHIEVEMENTS ==================== // [Earned 2026-09-19] A Place to Keep It  5 points //       Make your first successful bank deposit.
+1793673201	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	help	stash	STASH // Syntax: stash                          -- what is in it //         stash put <item>               -- from anywhere in the world
+1793673212	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	stash	buy	Room is bought at the altar.
+1793673215	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793673216	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793673217	cmd	Alaric	57	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1793673219	cmd	Alaric	57	4208	dresden.are	standing	100	12	-	stash	buy	You pay 62p 50g.  Your stash now holds 175. //                     ACHIEVEMENT EARNED // More Shelf Space  +10 points
+1793673221	cmd	Alaric	57	4208	dresden.are	standing	100	4	-	stash	buy	You pay 90p.  Your stash now holds 200.
+1793673222	cmd	Alaric	57	4208	dresden.are	standing	100	4	-	stash	buy	You pay 122p 50g.  Your stash now holds 225.
+1793673223	cmd	Alaric	57	4208	dresden.are	standing	100	4	-	stash	buy	You pay 160p.  Your stash now holds 250.
+1793673224	cmd	Alaric	57	4208	dresden.are	standing	100	4	-	stash	buy	You pay 202p 50g.  Your stash now holds 275.
+1793673224	cmd	Alaric	57	4208	dresden.are	standing	100	4	-	stash	buy	You pay 250p.  Your stash now holds 300.
+1793673224	cmd	Alaric	57	4208	dresden.are	standing	100	4	-	stash	buy	You pay 302p 50g.  Your stash now holds 325.
+1793673224	cmd	Alaric	57	4208	dresden.are	standing	100	4	-	stash	buy	You pay 360p.  Your stash now holds 350.
+1793673225	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	stash	buy	Another 25 slots cost 422p 50g, and you do not have it.
+1793673225	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	stash	buy	Another 25 slots cost 422p 50g, and you do not have it.
+1793673225	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	stash	buy	Another 25 slots cost 422p 50g, and you do not have it.
+1793673225	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	stash	buy	Another 25 slots cost 422p 50g, and you do not have it.
+1793673227	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793673233	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793673236	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (8 castings, 80 gold.)
+1793673240	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	run	e 4	Before the Altar. // [Exits: north east south west up] // Halls of Healing.
+1793673240	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793673241	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793673241	cmd	Alaric	57	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793673241	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793673241	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793673242	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
