@@ -19777,3 +19777,102 @@
 1793744950	cmd	Trentlin	6	11006	ancala.are	standing	58	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
 1793744950	cmd	Trentlin	6	11006	ancala.are	standing	58	0	-	scan		You don't see anything near you.	-	-
 1793744952	cmd	Trentlin	6	11006	ancala.are	standing	58	0	-	exits		Obvious exits: // North - A Stone Tunnel // East  - Further Down The Dragon's Throat	-	+
+1793744973	cmd	Trentlin	6	11055	ancala.are	standing	58	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1793744973	cmd	Trentlin	6	11055	ancala.are	standing	58	0	-	exits		Obvious exits: // East  - A Junction // West  - Ancalador's Stomach	-	-
+1793744973	cmd	Trentlin	6	11055	ancala.are	standing	58	0	-	scan		You don't see anything near you.	-	-
+1793744974	cmd	Trentlin	6	11012	ancala.are	standing	58	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1793744975	cmd	Trentlin	6	11012	ancala.are	standing	63	0	-	scan		the yellow crystal spider          -right below you.	-	-
+1793744975	cmd	Trentlin	6	11012	ancala.are	standing	63	0	-	exits		Obvious exits: // East  - A Stone Tunnel // West  - A Wooden Bridge	-	+
+1793744977	cmd	Trentlin	6	11020	ancala.are	standing	63	0	-	down		The Acid Forest //   You stand before an amazing sight.  Wrapped within the mists here // on the cavern floor is a forest of oddly shaped stalagmites surrounded	-	+
+1793744978	cmd	Trentlin	6	11020	ancala.are	standing	63	0	-	consider	sp	The yellow crystal spider is about your level. // The yellow crystal spider has about a third of your hit points. // Blow for blow, you would need about 9 rounds to bring the yellow crystal spider down; it would need about 32 rounds for yo	-	+
+1793744979	cmd	Trentlin	6	11020	ancala.are	standing	63	0	-	scan		the green crystal spider           -to the North. // the green crystal spider           -to the East. // the yellow crystal spider          -to the South.	-	+
+1793744981	cmd	Trentlin	6	11020	ancala.are	standing	63	0	-	look	sp	Slightly smaller than its green cousin, this creature also appears // to be made of living crystalline substance which glows yellow. // The yellow crystal spider is in excellent condition.	-	-
+1793744982	cmd	Trentlin	6	11017	ancala.are	standing	63	5	-	north		The Acid Forest //   Sharp stalagmites reach up wards, created by the mineral ichors // dripping off stalactites far above.  Pools of acid fill every crevice	-	+
+1793744983	cmd	Trentlin	6	11017	ancala.are	standing	63	0	-	look	sp	The fantastic beast seems to be made of a crystalline substance // which is giving off a green light.  It clicks its crystal mandibles // in irritation with you.	-	+
+1793744984	cmd	Trentlin	6	11017	ancala.are	standing	63	0	-	consider	sp	The green crystal spider is a little above your level. // The green crystal spider has about half your hit points. // Blow for blow, you would need about 10 rounds to bring the green crystal spider down; it would need about 23 rounds for y	-	+
+1793744985	cmd	Trentlin	6	11017	ancala.are	standing	63	0	-	scan		the yellow crystal spider          -to the East. // the yellow crystal spider          -to the South.	-	-
+1793744987	cmd	Trentlin	6	11020	ancala.are	standing	63	0	-	south		The Acid Forest //   You stand before an amazing sight.  Wrapped within the mists here // on the cavern floor is a forest of oddly shaped stalagmites surrounded	-	+
+1793744988	cmd	Trentlin	6	11021	ancala.are	standing	63	0	-	east		The Acid Forest //   You are in the center of the dragons stomach cavern.  A wooden // bridge passes far overhead.  Sharp stalagmites poise here to meet	-	+
+1793744989	cmd	Trentlin	6	11021	ancala.are	standing	63	0	-	look	sp	The fantastic beast seems to be made of a crystalline substance // which is giving off a green light.  It clicks its crystal mandibles // in irritation with you.	-	+
+1793744990	cmd	Trentlin	6	11021	ancala.are	standing	63	0	-	scan		the yellow crystal spider          -to the North. // the green crystal spider           -to the East. // the yellow crystal spider          -to the West.	-	-
+1793744992	cmd	Trentlin	6	11022	ancala.are	standing	63	0	-	east		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1793744993	cmd	Trentlin	6	11022	ancala.are	standing	63	0	-	look	sp	The fantastic beast seems to be made of a crystalline substance // which is giving off a green light.  It clicks its crystal mandibles // in irritation with you.	-	+
+1793744993	cmd	Trentlin	6	11022	ancala.are	standing	63	0	-	scan		the yellow crystal spider          -to the South. // the green crystal spider           -to the South. // the green crystal spider           -to the West.	-	-
+1793744994	cmd	Trentlin	6	11022	ancala.are	standing	63	0	-	kill	sp	Your punch misses the green crystal spider. // Your punch misses the green crystal spider.	-	-
+1793744997	cmd	Trentlin	6	11022	ancala.are	fighting	63	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745001	cmd	Trentlin	6	11022	ancala.are	fighting	63	0	fight	kick		Your kick grazes the green crystal spider.	-	-
+1793745006	cmd	Trentlin	6	11022	ancala.are	fighting	63	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745010	cmd	Trentlin	6	11022	ancala.are	fighting	63	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745015	cmd	Trentlin	6	11022	ancala.are	fighting	59	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745019	cmd	Trentlin	6	11022	ancala.are	fighting	59	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745022	cmd	Trentlin	6	11022	ancala.are	fighting	56	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745024	cmd	Trentlin	6	11022	ancala.are	fighting	56	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745027	cmd	Trentlin	6	11022	ancala.are	fighting	56	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745030	cmd	Trentlin	6	11022	ancala.are	fighting	56	0	fight	kick		Your kick grazes the green crystal spider.	-	-
+1793745033	cmd	Trentlin	6	11022	ancala.are	fighting	56	0	fight	kick		Your kick misses the green crystal spider.	-	-
+1793745036	cmd	Trentlin	6	11022	ancala.are	fighting	56	0	fight	kick		Your kick scratches the green crystal spider. // The green crystal spider crawls off south. // The green crystal spider has fled!	-	-
+1793745040	cmd	Trentlin	6	11025	ancala.are	standing	56	0	-	south		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1793745041	cmd	Trentlin	6	11025	ancala.are	standing	56	0	-	kill	spid	Your punch misses the green crystal spider. // Your punch scratches the green crystal spider. // The green crystal spider crawls off north.	-	+
+1793745046	cmd	Trentlin	6	11022	ancala.are	standing	56	0	-	north		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1793745046	cmd	Trentlin	6	11022	ancala.are	standing	56	0	-	kill	sp	Your punch misses the green crystal spider. // Your punch misses the green crystal spider.	-	-
+1793745049	cmd	Trentlin	6	11022	ancala.are	fighting	56	0	fight	kick		Your kick scratches the green crystal spider. // The green crystal spider crawls off north. // The green crystal spider has fled!	-	-
+1793745054	cmd	Trentlin	6	11019	ancala.are	standing	61	0	-	north		The Acid Forest //   Sharp stalagmites reach upwards, created by the mineral ichors // dripping off stalactites far above.  Pools of acid fill every crevice	-	+
+1793745055	cmd	Trentlin	6	11019	ancala.are	standing	61	0	-	kill	spi	Your punch misses the green crystal spider. // Your punch misses the green crystal spider.	-	-
+1793745057	cmd	Trentlin	6	11019	ancala.are	fighting	58	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745060	cmd	Trentlin	6	11019	ancala.are	fighting	54	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745063	cmd	Trentlin	6	11019	ancala.are	fighting	54	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745067	cmd	Trentlin	6	11019	ancala.are	fighting	50	0	fight	kick		Your kick scratches the green crystal spider. // The green crystal spider crawls off south. // The green crystal spider has fled!	-	-
+1793745071	cmd	Trentlin	6	11022	ancala.are	standing	50	0	-	south		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1793745072	cmd	Trentlin	6	11022	ancala.are	standing	50	0	-	kill	spid	The green crystal spider parries your attack. // Your punch misses the green crystal spider.	-	-
+1793745074	cmd	Trentlin	6	11022	ancala.are	fighting	50	1	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793745079	cmd	Trentlin	6	11022	ancala.are	standing	50	0	-	get	all co	You get a minstrel's glove from corpse of the green crystal spider.	-	-
+1793745080	state	Trentlin	6	11022	ancala.are	lvl=6 hp=127/252 mana=314/314 mv=209/221 align=-773 exp=15614 coin=4630714277 bank=10977624596 qp=27 prac=12 train=1 stash=69/75 remorts=1
+1793745080	cmd	Trentlin	6	11022	ancala.are	standing	50	0	-	score		| Name:       Trentlin | Level:       6 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793745082	cmd	Trentlin	6	4207	dresden.are	standing	50	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793745083	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793745084	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	attribute		Str: 13(15)  Int: 16(20)  Wis: 18(22)  Dex: 14(14)  Con: 21(25)	-	-
+1793745086	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	wear	glo	You stop using a pair of sub issue gloves. // You wear a minstrel's glove on your hands.	-	-
+1793745087	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	attribute		Str: 13(15)  Int: 16(20)  Wis: 18(22)  Dex: 14(14)  Con: 21(25)	-	-
+1793745091	state	Trentlin	6	4208	dresden.are	lvl=6 hp=127/252 mana=314/314 mv=103/221 align=-773 exp=15614 coin=4630714277 bank=10977624596 qp=27 prac=12 train=1 stash=69/75 remorts=1
+1793745091	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	score		| Name:       Trentlin | Level:       6 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793745095	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	drop	glo	You drop a pair of sub issue gloves. // A pair of sub issue gloves burst into flames as it hits the ground.	-	-
+1793745097	cmd	Trentlin	6	4207	dresden.are	standing	50	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793745097	cmd	Trentlin	6	3700	school.are	standing	50	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793745098	cmd	Trentlin	6	3757	school.are	standing	50	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793745098	cmd	Trentlin	6	3759	school.are	standing	50	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1793745099	cmd	Trentlin	6	3759	school.are	standing	50	0	-	practice		dodge               75%  recall             100%  dagger              75%   // hand to hand        75%  kick                75%   // You have 12 practice sessions left.	-	-
+1793745104	cmd	Trentlin	6	3759	school.are	standing	50	0	-	gain	convert	The adept of Soulcrusher helps you apply your practice to training	-	-
+1793745104	cmd	Trentlin	6	3757	school.are	standing	50	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793745105	cmd	Trentlin	6	3758	school.are	standing	50	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1793745105	cmd	Trentlin	6	3758	school.are	standing	50	0	-	train		You have 2 training sessions. // You can train: str dex hp mana.	-	-
+1793745107	cmd	Trentlin	6	3758	school.are	standing	50	0	-	train	str	Your strength increases!	-	-
+1793745107	cmd	Trentlin	6	3758	school.are	standing	50	0	-	train	str	Your strength increases!	-	-
+1793745108	cmd	Trentlin	6	3757	school.are	standing	50	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793745108	cmd	Trentlin	6	3700	school.are	standing	50	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793745108	cmd	Trentlin	6	3700	school.are	standing	50	0	-	south		The door is closed.	-	-
+1793745109	cmd	Trentlin	6	3700	school.are	standing	50	0	-	south		The door is closed.	-	-
+1793745109	cmd	Trentlin	6	4207	dresden.are	standing	50	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793745111	cmd	Trentlin	6	4207	dresden.are	standing	50	0	-	attribute		Str: 15(17)  Int: 16(20)  Wis: 18(22)  Dex: 14(14)  Con: 21(25)	-	-
+1793745112	cmd	Trentlin	6	4207	dresden.are	standing	50	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn on finger>    a pink ice ring	-	+
+1793745114	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793745117	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	stash		Your stash holds 69 of 75 things. //     1) (Glowing) a Silver star-hilted dagger //     2) (Humming) an assassin's dagger	-	+
+1793745134	refused	Trentlin	6	4208	dresden.are	standing	55	2	-	(unknown)		Huh? Did you mean STASH?	refusal:unknown-command	-
+1793745138	cmd	Trentlin	6	4208	dresden.are	standing	55	10	-	stash	get captain	You take some captain's boots out of your stash.	-	-
+1793745141	cmd	Trentlin	6	4208	dresden.are	standing	55	4	-	stash	get quick	You take a quick sheathe out of your stash.	-	-
+1793745142	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	attribute		Str: 15(17)  Int: 16(20)  Wis: 18(22)  Dex: 14(14)  Con: 21(25)	-	-
+1793745144	state	Trentlin	6	4208	dresden.are	lvl=6 hp=140/252 mana=314/314 mv=118/221 align=-773 exp=15614 coin=4630714277 bank=10977624596 qp=27 prac=2 train=0 stash=67/75 remorts=1
+1793745144	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	score		| Name:       Trentlin | Level:       6 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793745144	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	wear	boo	You wear some captain's boots on your feet.	-	-
+1793745146	state	Trentlin	6	4208	dresden.are	lvl=6 hp=140/252 mana=314/314 mv=118/221 align=-773 exp=15614 coin=4630714277 bank=10977624596 qp=27 prac=2 train=0 stash=67/75 remorts=1
+1793745146	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	score		| Name:       Trentlin | Level:       6 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793745149	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	attribute		Str: 15(17)  Int: 16(20)  Wis: 18(22)  Dex: 14(15)  Con: 21(25)	-	-
+1793745152	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	inventory		You are carrying: //      a quick sheathe //      a long slim dagger	-	+
+1793745153	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	attribute		Str: 15(17)  Int: 16(20)  Wis: 18(22)  Dex: 14(15)  Con: 21(25)	-	-
+1793745154	cmd	Trentlin	6	4208	dresden.are	standing	55	0	-	wear	qu	You must be level 9 to use this object.	-	-
+1793745163	cmd	Trentlin	6	4207	dresden.are	standing	55	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793745164	cmd	Trentlin	6	4202	dresden.are	standing	55	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793745164	cmd	Trentlin	6	4203	dresden.are	standing	55	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793745164	cmd	Trentlin	6	4210	dresden.are	standing	55	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793745164	cmd	Trentlin	6	4210	dresden.are	standing	55	0	-	north		Alas, you cannot go that way.	-	-
+1793745165	cmd	Trentlin	6	4210	dresden.are	standing	55	0	-	sleep		You go to sleep.	-	-
+1793745166	session	Trentlin	6	4210	dresden.are	quit	1537s	+2 levels	+6259 exp	-10299416 copper	16 kills	0 deaths	0 quests	623 commands	1 refused	coin: loot 5s 87c, spent 10p 30g

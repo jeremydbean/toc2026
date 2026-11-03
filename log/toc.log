@@ -255481,3 +255481,135 @@ Tue Nov  3 22:29:10 2026 :: Log Trentlin [11005]: w
 Tue Nov  3 22:29:10 2026 :: Log Trentlin [11006]: arrived (A Junction) from 11005
 Tue Nov  3 22:29:10 2026 :: Log Trentlin [11006]: sca
 Tue Nov  3 22:29:12 2026 :: Log Trentlin [11006]: ex
+Tue Nov  3 22:29:33 2026 :: Log Trentlin [11006]: w
+Tue Nov  3 22:29:33 2026 :: Log Trentlin [11055]: arrived (A Stone Tunnel) from 11006
+Tue Nov  3 22:29:33 2026 :: Log Trentlin [11055]: ex
+Tue Nov  3 22:29:33 2026 :: Log Trentlin [11055]: sca
+Tue Nov  3 22:29:34 2026 :: Log Trentlin [11055]: w
+Tue Nov  3 22:29:34 2026 :: Log Trentlin [11012]: arrived (Ancalador's Stomach) from 11055
+Tue Nov  3 22:29:35 2026 :: Log Trentlin [11012]: sca
+Tue Nov  3 22:29:35 2026 :: Log Trentlin [11012]: ex
+Tue Nov  3 22:29:37 2026 :: Log Trentlin [11012]: d
+Tue Nov  3 22:29:37 2026 :: Log Trentlin [11020]: arrived (The Acid Forest) from 11012
+Tue Nov  3 22:29:38 2026 :: Log Trentlin [11020]: con sp
+Tue Nov  3 22:29:39 2026 :: Log Trentlin [11020]: sca
+Tue Nov  3 22:29:41 2026 :: Log Trentlin [11020]: l sp
+Tue Nov  3 22:29:42 2026 :: Log Trentlin [11020]: n
+Tue Nov  3 22:29:42 2026 :: Log Trentlin [11017]: arrived (The Acid Forest) from 11020
+Tue Nov  3 22:29:43 2026 :: Log Trentlin [11017]: l sp
+Tue Nov  3 22:29:44 2026 :: Log Trentlin [11017]: con sp
+Tue Nov  3 22:29:45 2026 :: Log Trentlin [11017]: sca
+Tue Nov  3 22:29:47 2026 :: Log Trentlin [11017]: s
+Tue Nov  3 22:29:47 2026 :: Log Trentlin [11020]: arrived (The Acid Forest) from 11017
+Tue Nov  3 22:29:48 2026 :: Log Trentlin [11020]: e
+Tue Nov  3 22:29:48 2026 :: Log Trentlin [11021]: arrived (The Acid Forest) from 11020
+Tue Nov  3 22:29:49 2026 :: Log Trentlin [11021]: l sp
+Tue Nov  3 22:29:50 2026 :: Log Trentlin [11021]: sca
+Tue Nov  3 22:29:52 2026 :: Log Trentlin [11021]: e
+Tue Nov  3 22:29:52 2026 :: Log Trentlin [11022]: arrived (The Acid Forest) from 11021
+Tue Nov  3 22:29:53 2026 :: Log Trentlin [11022]: l sp
+Tue Nov  3 22:29:53 2026 :: Log Trentlin [11022]: sca
+Tue Nov  3 22:29:54 2026 :: Log Trentlin [11022]: k sp
+Tue Nov  3 22:29:57 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:01 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:03 2026 :: Sock.sinaddr:  5.161.113.195
+Tue Nov  3 22:30:03 2026 :: EOF encountered on read.
+Tue Nov  3 22:30:06 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:10 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:15 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:19 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:22 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:24 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:27 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:30 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:33 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:36 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:40 2026 :: Log Trentlin [11022]: s
+Tue Nov  3 22:30:40 2026 :: Log Trentlin [11025]: arrived (The Acid Forest) from 11022
+Tue Nov  3 22:30:41 2026 :: Log Trentlin [11025]: k spid
+Tue Nov  3 22:30:46 2026 :: Log Trentlin [11025]: n
+Tue Nov  3 22:30:46 2026 :: Log Trentlin [11022]: arrived (The Acid Forest) from 11025
+Tue Nov  3 22:30:46 2026 :: Log Trentlin [11022]: k sp
+Tue Nov  3 22:30:49 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:30:54 2026 :: Log Trentlin [11022]: n
+Tue Nov  3 22:30:54 2026 :: Log Trentlin [11019]: arrived (The Acid Forest) from 11022
+Tue Nov  3 22:30:55 2026 :: Log Trentlin [11019]: k spi
+Tue Nov  3 22:30:57 2026 :: Log Trentlin [11019]: kick
+Tue Nov  3 22:31:00 2026 :: Log Trentlin [11019]: kick
+Tue Nov  3 22:31:03 2026 :: Log Trentlin [11019]: kick
+Tue Nov  3 22:31:07 2026 :: Log Trentlin [11019]: kick
+Tue Nov  3 22:31:11 2026 :: Log Trentlin [11019]: s
+Tue Nov  3 22:31:11 2026 :: Log Trentlin [11022]: arrived (The Acid Forest) from 11019
+Tue Nov  3 22:31:12 2026 :: Log Trentlin [11022]: k spid
+Tue Nov  3 22:31:14 2026 :: Log Trentlin [11022]: kick
+Tue Nov  3 22:31:14 2026 :: Log Trentlin [11022]: killed the green crystal spider
+Tue Nov  3 22:31:14 2026 :: Log Trentlin [11022]: coin +2 silver
+Tue Nov  3 22:31:14 2026 :: Log Trentlin [11022]: coin +32 copper
+Tue Nov  3 22:31:15 2026 :: Treasure goblin: vanished from room 912 (Western Wing, olympus.are) (too long in one area).
+Tue Nov  3 22:31:19 2026 :: Log Trentlin [11022]: get all co
+Tue Nov  3 22:31:20 2026 :: Log Trentlin [11022]: sco
+Tue Nov  3 22:31:22 2026 :: Log Trentlin [11022]: reca
+Tue Nov  3 22:31:22 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 11022
+Tue Nov  3 22:31:23 2026 :: Log Trentlin [4207]: w
+Tue Nov  3 22:31:23 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov  3 22:31:24 2026 :: Log Trentlin [4208]: att
+Tue Nov  3 22:31:26 2026 :: Log Trentlin [4208]: wear glo
+Tue Nov  3 22:31:27 2026 :: Log Trentlin [4208]: att
+Tue Nov  3 22:31:31 2026 :: Log Trentlin [4208]: sco
+Tue Nov  3 22:31:35 2026 :: Log Trentlin [4208]: drop glo
+Tue Nov  3 22:31:37 2026 :: Log Trentlin [4208]: e
+Tue Nov  3 22:31:37 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov  3 22:31:37 2026 :: Log Trentlin [4207]: u
+Tue Nov  3 22:31:37 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov  3 22:31:38 2026 :: Log Trentlin [3700]: n
+Tue Nov  3 22:31:38 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3700
+Tue Nov  3 22:31:38 2026 :: Log Trentlin [3757]: e
+Tue Nov  3 22:31:38 2026 :: Log Trentlin [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Tue Nov  3 22:31:39 2026 :: Log Trentlin [3759]: prac
+Tue Nov  3 22:31:44 2026 :: Log Trentlin [3759]: gain convert
+Tue Nov  3 22:31:44 2026 :: Log Trentlin [3759]: w
+Tue Nov  3 22:31:44 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3759
+Tue Nov  3 22:31:45 2026 :: Log Trentlin [3757]: w
+Tue Nov  3 22:31:45 2026 :: Log Trentlin [3758]: arrived (Eclipse's Training Room) from 3757
+Tue Nov  3 22:31:45 2026 :: Log Trentlin [3758]: train
+Tue Nov  3 22:31:47 2026 :: Log Trentlin [3758]: train str
+Tue Nov  3 22:31:47 2026 :: Log Trentlin [3758]: train str
+Tue Nov  3 22:31:48 2026 :: Log Trentlin [3758]: e
+Tue Nov  3 22:31:48 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3758
+Tue Nov  3 22:31:48 2026 :: Log Trentlin [3757]: s
+Tue Nov  3 22:31:48 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 3757
+Tue Nov  3 22:31:48 2026 :: Log Trentlin [3700]: s
+Tue Nov  3 22:31:49 2026 :: Log Trentlin [3700]: s
+Tue Nov  3 22:31:49 2026 :: Log Trentlin [3700]: d
+Tue Nov  3 22:31:49 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3700
+Tue Nov  3 22:31:51 2026 :: Log Trentlin [4207]: att
+Tue Nov  3 22:31:52 2026 :: Log Trentlin [4207]: eq
+Tue Nov  3 22:31:54 2026 :: Log Trentlin [4207]: w
+Tue Nov  3 22:31:54 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov  3 22:31:57 2026 :: Log Trentlin [4208]: stash
+Tue Nov  3 22:32:14 2026 :: Log Trentlin [4208]: (refused) stasth get captains
+Tue Nov  3 22:32:18 2026 :: Log Trentlin [4208]: stash get captain
+Tue Nov  3 22:32:18 2026 :: Log Trentlin [4208]: withdrew some captain's boots (vnum 29010) from the stash
+Tue Nov  3 22:32:21 2026 :: Log Trentlin [4208]: stash get quick
+Tue Nov  3 22:32:21 2026 :: Log Trentlin [4208]: withdrew a quick sheathe (vnum 8713) from the stash
+Tue Nov  3 22:32:22 2026 :: Log Trentlin [4208]: att
+Tue Nov  3 22:32:24 2026 :: Log Trentlin [4208]: sco
+Tue Nov  3 22:32:24 2026 :: Log Trentlin [4208]: wear boo
+Tue Nov  3 22:32:26 2026 :: Log Trentlin [4208]: sco
+Tue Nov  3 22:32:29 2026 :: Log Trentlin [4208]: att
+Tue Nov  3 22:32:32 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 22:32:33 2026 :: Log Trentlin [4208]: att
+Tue Nov  3 22:32:34 2026 :: Log Trentlin [4208]: wear qu
+Tue Nov  3 22:32:43 2026 :: Log Trentlin [4208]: e
+Tue Nov  3 22:32:43 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov  3 22:32:44 2026 :: Log Trentlin [4207]: e
+Tue Nov  3 22:32:44 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 22:32:44 2026 :: Log Trentlin [4202]: n
+Tue Nov  3 22:32:44 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Tue Nov  3 22:32:44 2026 :: Log Trentlin [4203]: n
+Tue Nov  3 22:32:44 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Tue Nov  3 22:32:44 2026 :: Log Trentlin [4210]: n
+Tue Nov  3 22:32:45 2026 :: Log Trentlin [4210]: sleep
+Tue Nov  3 22:32:46 2026 :: Log Trentlin [4210]: quit
+Tue Nov  3 22:32:46 2026 :: Trentlin has quit.
+Tue Nov  3 22:32:46 2026 :: [QUIT] Player rejoined the real world.
