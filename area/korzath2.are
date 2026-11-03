@@ -1451,7 +1451,7 @@ adamantite~
 999 29 29251 0 0
 51 9000 50000000 P
 #29256
-one~
+one 1~
 one~
 Lever 1.~
 steel~
@@ -1459,7 +1459,7 @@ steel~
 3 29217 0 1 0
 51 900 50000000 P
 #29257
-two~
+two 2~
 two~
 Lever 2.~
 steel~
@@ -1467,7 +1467,7 @@ steel~
 3 29234 2 1 0
 51 900 50000000 P
 #29258
-three~
+three 3~
 three~
 Lever 3.~
 steel~
@@ -1475,7 +1475,7 @@ steel~
 3 29217 3 1 0
 51 900 50000000 P
 #29259
-four~
+four 4~
 four~
 Lever 4.~
 steel~
@@ -1483,7 +1483,7 @@ steel~
 3 29217 4 1 0
 51 900 50000000 P
 #29260
-five~
+five 5~
 five~
 Lever 5.~
 steel~
@@ -1491,7 +1491,7 @@ steel~
 3 29233 5 1 0
 51 900 50000000 P
 #29261
-six~
+six 6~
 six~
 Lever 6.~
 steel~
@@ -1499,7 +1499,7 @@ steel~
 3 29234 5 1 0
 51 900 50000000 P
 #29262
-seven~
+seven 7~
 seven~
 Lever 7.~
 steel~
@@ -1507,7 +1507,7 @@ steel~
 3 29217 1 1 0
 51 900 50000000 P
 #29263
-eight~
+eight 8~
 eight~
 Lever 8.~
 steel~
@@ -1515,7 +1515,7 @@ steel~
 3 29217 5 1 0
 51 900 50000000 P
 #29264
-nine~
+nine 9~
 nine~
 Lever 9.~
 steel~
@@ -1523,7 +1523,7 @@ steel~
 3 29234 4 1 0
 51 900 50000000 P
 #29265
-ten~
+ten 10~
 ten~
 Lever 10.~
 steel~
@@ -2569,7 +2569,7 @@ Most commonly used abbreviations on this mud...
   \   /  \   /  \   /  \   /  \   /  \   /  \   /  \   /  \   /  \   /
    \_/    \_/    \_/    \_/    \_/    \_/    \_/    \_/    \_/    \_/
    CoR    R&R    BRH    RFK    COT    DBD    DEA    ToC    TBC  ROFLMAO
-Pull the lever(s) that match the correct answer(s).
+Pull the lever(s) that match the correct answer(s): PULL 5 or PULL FIVE.
 ~
 292 NQ 0
 D0

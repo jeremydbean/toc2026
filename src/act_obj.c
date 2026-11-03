@@ -6170,7 +6170,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      return;
    }
 
-   if ( ( obj = get_obj_here( ch, arg ) ) == NULL )
+   if ( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
 	{ act( "I see no $T here.", ch, NULL, arg, TO_CHAR ); return; }
 
    if( obj->item_type != ITEM_MANIPULATION )

@@ -4422,6 +4422,33 @@ void extract_room( ROOM_INDEX_DATA *pRoom )
     return;
 }
 
+/*
+ * The thing a manipulation verb (FLIP, MOVE, PULL, PUSH, TURN, CLIMB,
+ * CRAWL, JUMP and do_manipulate itself) acts on. A manipulable object in
+ * the room whose keyword is exactly the word typed wins over any prefix
+ * match: the Battleground's ten levers answer to their numbers as well as
+ * their names, and "1" is the start of "10", so PULL 1 found lever ten
+ * whenever it came first in the room (play journal, 2026-11-02: PULL 5
+ * was refused three times, the levers answering only to "five").
+ * Anything else -- a numbered "2.lever", a word nothing has exactly --
+ * is found as get_obj_here always found it.
+ */
+OBJ_DATA *get_manipulation_here( CHAR_DATA *ch, char *arg )
+{
+    OBJ_DATA *obj;
+
+    if ( ch != NULL && ch->in_room != NULL && arg != NULL && arg[0] != '\0'
+    &&   strchr( arg, '.' ) == NULL && strchr( arg, ' ' ) == NULL )
+    {
+        for ( obj = ch->in_room->contents; obj != NULL; obj = obj->next_content )
+            if ( obj->item_type == ITEM_MANIPULATION
+            &&   can_see_obj( ch, obj )
+            &&   is_full_name( arg, obj->name ) )
+                return obj;
+    }
+    return get_obj_here( ch, arg );
+}
+
 void do_flip( CHAR_DATA *ch, char *argument )
 {
    OBJ_DATA *obj = NULL;
@@ -4436,7 +4463,7 @@ void do_flip( CHAR_DATA *ch, char *argument )
     * reached: FLIP alone said "I see no  here." Anything that is not
     * an object here -- nothing at all, or a person -- is the social.
     */
-   if( arg[0] == '\0' || ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( arg[0] == '\0' || ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    {
       char social[] = "flip";
 
@@ -4468,7 +4495,7 @@ void do_move( CHAR_DATA *ch, char *argument )
 
    one_argument( argument, arg );
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
    if( obj->item_type != ITEM_MANIPULATION )
@@ -4492,7 +4519,7 @@ void do_pull( CHAR_DATA *ch, char *argument )
 
    one_argument( argument, arg );
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
    if( obj->item_type != ITEM_MANIPULATION )
@@ -4521,7 +4548,7 @@ void do_push( CHAR_DATA *ch, char *argument )
 
    one_argument( argument, arg );
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
    if( obj->item_type != ITEM_MANIPULATION )
@@ -4545,7 +4572,7 @@ void do_turn( CHAR_DATA *ch, char *argument )
 
    one_argument( argument, arg );
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
    if( obj->item_type != ITEM_MANIPULATION )
@@ -4569,7 +4596,7 @@ void do_climb( CHAR_DATA *ch, char *argument )
 
    one_argument( argument, arg );
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
    if( obj->item_type != ITEM_MANIPULATION )
@@ -4596,7 +4623,7 @@ void do_crawl( CHAR_DATA *ch, char *argument )
    if ( arg[0] == '\0' )
    { send_to_char( "Crawl through what?\n\r", ch ); return; }
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
    if( obj->item_type != ITEM_MANIPULATION )
@@ -4623,7 +4650,7 @@ void do_jump( CHAR_DATA *ch, char *argument )
    if ( arg[0] == '\0' )
    { send_to_char( "Jump where?\n\r", ch ); return; }
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
+   if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
    if( obj->item_type != ITEM_MANIPULATION )

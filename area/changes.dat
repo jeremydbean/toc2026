@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261103a 2026-11-03
+The ten levers in the Battleground now answer to their numbers as well as
+their names: PULL 5 works as well as PULL FIVE.
+
 @ 20261102d 2026-11-02
 SCORE tidied: your stash now shows inside the score box, and the casino
 line lines up with the rest.

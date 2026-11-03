@@ -3619,6 +3619,7 @@ int     can_carry_n     ( CHAR_DATA *ch );
 int     can_carry_w     ( CHAR_DATA *ch );
 bool    is_name         ( const char *str, const char *namelist );
 bool    is_full_name    ( char *str, char *namelist );
+OBJ_DATA *get_manipulation_here( CHAR_DATA *ch, char *arg );
 void    affect_to_char  ( CHAR_DATA *ch, AFFECT_DATA *paf );
 void    affect_to_obj   ( OBJ_DATA *obj, AFFECT_DATA *paf );
 void    affect_remove   ( CHAR_DATA *ch, AFFECT_DATA *paf );

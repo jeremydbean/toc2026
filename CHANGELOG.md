@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The Battleground levers answer to their numbers** (2026-11-03). The
+  ten levers in korzath2 room 29217 are drawn labelled 1 to 10 but only
+  answered to their numbers in words; PULL 5 was refused three times in
+  one evening. Each now has its digit as a keyword, and the manipulation
+  verbs (FLIP, MOVE, PULL, PUSH, TURN, CLIMB, CRAWL, JUMP and
+  do_manipulate) take an object in the room whose keyword is exactly the
+  word typed before any prefix match (`get_manipulation_here`), since
+  "1" begins "10" and PULL 1 would otherwise pull lever ten. Test:
+  `test_lever_numbers`.
+
 - **SCORE is one box** (2026-11-02). The stash line (and who shares the
   stash) printed below the sheet's closing rule; it is a row inside the
   box now. The casino row's middle bar sat two columns left of the
