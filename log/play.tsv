@@ -16445,3 +16445,4 @@
 1793666719	cmd	Trentlin	53	4210	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.
 1793666721	cmd	Trentlin	53	4210	dresden.are	standing	100	0	-	sleep		You go to sleep.
 1793666723	session	Trentlin	53	4210	dresden.are	quit	4411s	+1 levels	+31778 exp	+547079956 copper	61 kills	0 deaths	0 quests	1533 commands	7 refused	coin: loot 651p 9g 94s 31c, spent 134p 1g 94s 75c
+1793666852	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
