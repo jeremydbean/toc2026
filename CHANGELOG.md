@@ -15,7 +15,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the Master Sword's haste are listed. The level is `sight_trust()`, the
   one wizinvis and cloak are compared against; `holylight_level()` in
   handler.c answers AFFECTS and the Char.Affects feed alike. HELP
-  HOLYLIGHT is level 59 (it was 60), rewritten for Triforce wearers too.
+  HOLYLIGHT is level 58 (it was 60), the Triforce's own level, rewritten
+  for its wearers too.
   Test: `test_holylight_affect`.
 
 - **The Battleground levers answer to their numbers** (2026-11-03). The

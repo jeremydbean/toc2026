@@ -5658,7 +5658,7 @@ flag on it that can be used as a quest item.
 See also: PURGE, LOAD, VNUM
 ~
 
-59 HOLYLIGHT~
+58 HOLYLIGHT~
 Syntax: holylight   (staff)
 
 Holy sight sees virtually everything regardless of visibility: invisible
