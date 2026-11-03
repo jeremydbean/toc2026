@@ -17794,3 +17794,179 @@
 1793670388	cmd	Alaric	57	1	limbo.are	standing	100	0	-	up		The Void //   You are floating in nothing. // [Exits: none]
 1793670390	cmd	Alaric	57	7747	ultima.are	standing	100	0	-	recall		The Desert Moongate //   Your thirst seems to slacken as you see the comforting glow of // the moongate.
 1793670391	cmd	Alaric	57	7746	ultima.are	standing	100	0	-	west		The Desert //   The sands blows into your ear and eyes. // [Exits: east south west]
+1793670393	cmd	Alaric	57	7742	ultima.are	standing	100	0	-	south		The Desert //   You trudge on.  This desert seems endless. // [Exits: north east west]
+1793670394	cmd	Alaric	57	7746	ultima.are	standing	100	0	-	north		The Desert //   The sands blows into your ear and eyes. // [Exits: east south west]
+1793670394	cmd	Alaric	57	7745	ultima.are	standing	100	0	-	west		The Desert //   There is a large cave to the north.  Smoke pours out of it, at // regular intervals.
+1793670395	cmd	Alaric	57	7745	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Dragon Cave // East  - The Desert
+1793670396	cmd	Alaric	57	7745	ultima.are	standing	100	0	-	scan		the dragon                         -to the North.
+1793670397	cmd	Alaric	57	7748	ultima.are	standing	100	0	-	north		The Dragon Cave //   The cave is smoky.  There is a glint of gold. // [Exits: south]
+1793670398	cmd	Alaric	57	7748	ultima.are	standing	100	0	-	fists	dr	You attack in an all consuming fury! // Your fists of fury maims the dragon! [-36] // The dragon is unaffected by your fists of fury!
+1793670404	cmd	Alaric	57	7748	ultima.are	standing	100	0	-	fists		Who do you want to attack?
+1793670404	cmd	Alaric	57	7748	ultima.are	standing	100	0	-	fists		Who do you want to attack?
+1793670406	cmd	Alaric	57	7748	ultima.are	standing	100	0	-	look	i cor	Corpse of the dragon contains: //      (Humming) Moonstone
+1793670408	cmd	Alaric	57	7748	ultima.are	standing	100	0	-	get	all cor	You get Moonstone from corpse of the dragon.
+1793670409	cmd	Alaric	57	7745	ultima.are	standing	100	0	-	south		The Desert //   There is a large cave to the north.  Smoke pours out of it, at // regular intervals.
+1793670409	cmd	Alaric	57	7746	ultima.are	standing	100	0	-	east		The Desert //   The sands blows into your ear and eyes. // [Exits: east south west]
+1793670410	cmd	Alaric	57	7747	ultima.are	standing	100	0	-	east		The Desert Moongate //   Your thirst seems to slacken as you see the comforting glow of // the moongate.
+1793670412	cmd	Alaric	57	7747	ultima.are	standing	100	0	-	unlock	up	It can't be unlocked.
+1793670414	cmd	Alaric	57	7746	ultima.are	standing	100	0	-	west		The Desert //   The sands blows into your ear and eyes. // [Exits: east south west]
+1793670415	cmd	Alaric	57	7742	ultima.are	standing	100	0	-	south		The Desert //   You trudge on.  This desert seems endless. // [Exits: north east west]
+1793670415	cmd	Alaric	57	7743	ultima.are	standing	100	0	-	east		The Desert Moongate //   Your thirst seems to slacken as you see the comforting glow of // the moongate.
+1793670417	cmd	Alaric	57	7743	ultima.are	standing	100	0	-	unlock	up	*Click*
+1793670419	cmd	Alaric	57	7743	ultima.are	standing	100	0	-	open	up	Ok.
+1793670419	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	up		The Shrine of Spirituality //   In this room a huge ankh sits on a pedestal.  The Shrine is the // source of all magical power.  The Timelord himself lives here. 
+1793670422	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	look	time	The Hourglass that he holds in his hand actually controls the // fickle powers of time.  This being is so awe-inspiring that you // fell an urge to prostrate yourself to him.  But as all godly
+1793670424	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	scan		the ghost                          -to the North. // the daemon                         -to the far North.
+1793670428	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	fists	time	You attack in an all consuming fury! // Your fists of fury decimates the Timelord! [-26] // Your fists of fury devastates the Timelord! [-30]
+1793670433	cmd	Alaric	57	7749	ultima.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls the Timelord. [-23] // Your fists of fury grazes the Timelord. [-6]
+1793670439	cmd	Alaric	57	7749	ultima.are	fighting	99	0	fight	exits		Obvious exits: // North - The Place of Ultimate Evil // South - The Graveyard
+1793670439	cmd	Alaric	57	7749	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds the Timelord. [-18] // Your fists of fury mauls the Timelord. [-22]
+1793670445	cmd	Alaric	57	7749	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates the Timelord! [-30] // Your fists of fury MANGLES the Timelord! [-56]
+1793670451	cmd	Alaric	57	7749	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches the Timelord. [-1] // Your fists of fury injures the Timelord. [-13]
+1793670459	cmd	Alaric	57	7749	ultima.are	standing	99	0	-	look	i cor	Corpse of the Timelord contains: //      (Glowing) the Hourglass //      (Glowing) an aura of power
+1793670460	cmd	Alaric	57	7749	ultima.are	standing	99	0	-	get	all cor	You get the Hourglass from corpse of the Timelord. // You get an aura of power from corpse of the Timelord.
+1793670461	cmd	Alaric	57	7749	ultima.are	standing	99	0	-	steel		You lost your concentration.
+1793670462	cmd	Alaric	57	7749	ultima.are	standing	99	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793670468	cmd	Alaric	57	7749	ultima.are	standing	99	0	-	recall	set	You moved your recall too recently. Try again in 29 minutes. // RECALL DEFAULT puts it back to the Temple at any time.
+1793670468	cmd	Alaric	57	7749	ultima.are	standing	99	0	-	exits		Obvious exits: // North - The Place of Ultimate Evil // South - The Graveyard
+1793670469	cmd	Alaric	57	7757	ultima.are	standing	99	0	-	south		The Graveyard //   When you walk into here you are immediately soothed.  Nothing // could be wrong with the world.  All your senses are pleased.
+1793670470	cmd	Alaric	57	7757	ultima.are	standing	99	0	-	scan		the ghost                          -to the far North. // the ghost                          -to the far North.
+1793670475	cmd	Alaric	57	7756	ultima.are	standing	99	0	-	west		The Graveyard //   The graveyard background noises seem to sooth you.  The are light // and peaceful.  Your own voices carries so well and softly that
+1793670476	cmd	Alaric	57	7759	ultima.are	standing	99	0	-	south		The Graveyard //   The ground itself here seems to welcome your footsteps.  It is // springy and causes you little fatigue.
+1793670476	cmd	Alaric	57	7760	ultima.are	standing	99	0	-	east		The Graveyard //   The scent of the air refreshes you.  It is sweet and lovely. // [Exits: north east west]
+1793670477	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	east		The Graveyard //   The light here is bright and lovely. // [Exits: north west]
+1793670479	cmd	Alaric	57	7758	ultima.are	standing	99	0	-	north		The Graveyard //   You feel a light breath of air under your clothing.  It massages // you.
+1793670480	cmd	Alaric	57	7758	ultima.are	standing	99	0	-	scan		the spirit                         -to the South. // the mourner                        -to the South. // the spirit                         -to the South.
+1793670482	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	south		The Graveyard //   The light here is bright and lovely. // [Exits: north west]
+1793670483	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	look	sh	The last Warrior of Destiny, Shamino sits here in a yoga // position.  The Enlightened smile on his face confirms that he // indeed is one with the spirit of Spirituality.
+1793670486	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	fists	sh	You attack in an all consuming fury! // Your fists of fury maims Shamino the Ranger! [-35] // Your fists of fury scratches Shamino the Ranger. [-3]
+1793670491	cmd	Alaric	57	7761	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Shamino the Ranger! [-30] // Your fists of fury grazes Shamino the Ranger. [-7]
+1793670497	cmd	Alaric	57	7761	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Shamino the Ranger! [-32] // Your fists of fury maims Shamino the Ranger! [-33]
+1793670503	cmd	Alaric	57	7761	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Shamino the Ranger. [-11] // Your fists of fury MUTILATES Shamino the Ranger! [-38]
+1793670509	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	fists		Who do you want to attack?
+1793670509	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670509	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	fists		Who do you want to attack?
+1793670510	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	fists		Who do you want to attack?
+1793670511	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	look	i cor	Corpse of Shamino the Ranger contains: //      (Glowing) a magic cloak //      (Humming) Ohm
+1793670514	cmd	Alaric	57	7761	ultima.are	standing	99	0	-	get	oh cor	You get Ohm from corpse of Shamino the Ranger.
+1793670514	cmd	Alaric	57	7758	ultima.are	standing	99	0	-	north		The Graveyard //   You feel a light breath of air under your clothing.  It massages // you.
+1793670515	cmd	Alaric	57	7757	ultima.are	standing	99	0	-	west		The Graveyard //   When you walk into here you are immediately soothed.  Nothing // could be wrong with the world.  All your senses are pleased.
+1793670516	cmd	Alaric	57	7749	ultima.are	standing	99	0	-	north		The Shrine of Spirituality //   In this room a huge ankh sits on a pedestal.  The Shrine is the // source of all magical power.  The Timelord himself lives here. 
+1793670517	cmd	Alaric	57	7754	ultima.are	standing	99	0	-	north		The Place of Ultimate Evil //   When you enter this place all of your senses are immediately // blasted.  You breath in that total evilness and feel dirty.  You
+1793670520	cmd	Alaric	57	7754	ultima.are	standing	100	0	-	scan		the daemon                         -to the North. // the skeleton                       -to the East. // the reaper                         -to the East.
+1793670522	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	north		The Place of Ultimate Evil //   The air sickens you.  You choke on whatever flows through the // air.
+1793670524	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	scan		the reaper                         -to the East. // the ghost                          -to the South. // the ghost                          -to the South.
+1793670525	cmd	Alaric	57	7754	ultima.are	standing	100	0	-	south		The Place of Ultimate Evil //   When you enter this place all of your senses are immediately // blasted.  You breath in that total evilness and feel dirty.  You
+1793670525	cmd	Alaric	57	7754	ultima.are	standing	100	0	-	scan		the daemon                         -to the North. // the skeleton                       -to the East. // the reaper                         -to the East.
+1793670527	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	north		The Place of Ultimate Evil //   The air sickens you.  You choke on whatever flows through the // air.
+1793670528	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	look	da	The most dangerous undead, and among the most dangerous of all // monsters, this beast can use all magics, is strong and hardy.  // Right now he seems to be busy... killing you.
+1793670529	cmd	Alaric	57	7752	ultima.are	standing	100	0	-	east		The Place of Ultimate Evil //   It is dark, there is no evidence of light except what you have // with you.  And this is swallowed by the darkness within 2 feet.
+1793670530	cmd	Alaric	57	7752	ultima.are	standing	100	0	-	scan		the skeleton                       -to the South. // the reaper                         -to the South. // the daemon                         -to the West.
+1793670531	cmd	Alaric	57	7755	ultima.are	standing	100	0	-	south		The Place of Ultimate Evil //   You feel things all over your body.  Sucking it and hurting it. // [Exits: north west]
+1793670532	cmd	Alaric	57	7755	ultima.are	standing	100	0	-	scan		the reaper                         -to the North. // the ghost                          -to the West. // the ghost                          -to the West.
+1793670532	cmd	Alaric	57	7754	ultima.are	standing	100	0	-	west		The Place of Ultimate Evil //   When you enter this place all of your senses are immediately // blasted.  You breath in that total evilness and feel dirty.  You
+1793670533	cmd	Alaric	57	7753	ultima.are	standing	100	0	-	west		The Place of Ultimate Evil //   Sounds are very weird in this place.  Some sounds, like shrieks // and blood-curdling shouts are amplified, and you hear them
+1793670534	cmd	Alaric	57	7753	ultima.are	standing	100	0	-	scan		the reaper                         -to the North. // the ghost                          -to the East. // the ghost                          -to the East.
+1793670534	cmd	Alaric	57	7750	ultima.are	standing	100	0	-	north		The Place of Ultimate Evil //   The ground itself seems malevolent.  It sinks and engulfs you. // [Exits: east south]
+1793670536	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	east		The Place of Ultimate Evil //   The air sickens you.  You choke on whatever flows through the // air.
+1793670541	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	fists	da	You attack in an all consuming fury! // Your fists of fury DISMEMBERS the daemon! [-46] // Your fists of fury hits the daemon. [-12]
+1793670546	cmd	Alaric	57	7751	ultima.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS the daemon! [-47] // Your fists of fury mauls the daemon. [-24]
+1793670552	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	fists		Who do you want to attack?
+1793670552	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	look	i cor	Corpse of the daemon contains: //      (Humming) Moonstone
+1793670554	cmd	Alaric	57	7751	ultima.are	standing	100	0	-	get	all cor	You get Moonstone from corpse of the daemon.
+1793670555	cmd	Alaric	57	7754	ultima.are	standing	100	0	-	south		The Place of Ultimate Evil //   When you enter this place all of your senses are immediately // blasted.  You breath in that total evilness and feel dirty.  You
+1793670557	cmd	Alaric	57	7754	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Place of Ultimate Evil // East  - The Place of Ultimate Evil
+1793670559	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	south		The Shrine of Spirituality //   In this room a huge ankh sits on a pedestal.  The Shrine is the // source of all magical power.  The Timelord himself lives here. 
+1793670560	cmd	Alaric	57	7757	ultima.are	standing	100	0	-	south		The Graveyard //   When you walk into here you are immediately soothed.  Nothing // could be wrong with the world.  All your senses are pleased.
+1793670562	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	north		The Shrine of Spirituality //   In this room a huge ankh sits on a pedestal.  The Shrine is the // source of all magical power.  The Timelord himself lives here. 
+1793670564	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	unlock	up	*Click*
+1793670565	cmd	Alaric	57	7749	ultima.are	standing	100	0	-	open	up	Ok.
+1793670566	cmd	Alaric	57	7762	ultima.are	standing	100	0	-	up		Lord British's Castle Entrance //   This building is awe-inspiring.  Just smaller than Yaz's own.  // Anyway Lord British's personal Jester is here to entertain you.
+1793670569	cmd	Alaric	57	7762	ultima.are	standing	100	0	-	look	ch	Chuckles the Jester is here mumbling, 'Spam Spam.'  This annoying // characters is Lord British's major entertainment.  He is laughing // and telling corny jokes.  He seems to hold his dinner in his
+1793670571	cmd	Alaric	57	7763	ultima.are	standing	100	0	-	north		Castle Fountain //   A lovely fountain sits here.  To the north you see a guard. // [Exits: north south]
+1793670573	cmd	Alaric	57	7763	ultima.are	standing	100	0	-	scan		Sentri                             -to the North. // Lord British                       -to the far North. // The Avatar                         -to the far North.
+1793670575	cmd	Alaric	57	7765	ultima.are	standing	100	0	-	north		Hallways //   This is the entrance for Lord British.  Through the great doors // to the north you can enter.  Another hallways passes across this
+1793670576	cmd	Alaric	57	7765	ultima.are	standing	100	0	-	look	sen	Sentri is a powerful man, whose only job is to protect the life // of Lord British.  In seeing this done he is completely armored // and wields a heavy blade.
+1793670578	cmd	Alaric	57	7765	ultima.are	standing	100	0	-	scan		Lord British                       -to the North. // The Avatar                         -to the North. // Chuckles the Jester                -to the far South.
+1793670581	cmd	Alaric	57	7767	ultima.are	standing	100	0	-	north		The Throne Room //   In the Throne Room there are the two most important figures in // the world.  The avatar and Lord British himself.
+1793670583	cmd	Alaric	57	7767	ultima.are	standing	100	0	-	look	ac	You do not see that here.
+1793670586	cmd	Alaric	57	7767	ultima.are	standing	100	0	-	look	av	The Avatar is the symbol of courage and truth and love, and all // that descends from it.  He has mastered Compassion, Humility, // Justice, Spirituality, Honesty, Sacrifice, Valor, and Honor.  He
+1793670588	cmd	Alaric	57	7767	ultima.are	standing	100	0	-	fists	br	You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-23] // Your fists of fury scratches Lord British. [-3]
+1793670593	cmd	Alaric	57	7767	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-3] // Your fists of fury decimates Lord British! [-25]
+1793670599	cmd	Alaric	57	7767	ultima.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-14] // Your fists of fury devastates Lord British! [-29]
+1793670608	refused	Alaric	57	7767	ultima.are	fighting	98	0	fight	(unknown)		Huh?
+1793670608	cmd	Alaric	57	7767	ultima.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-19] // Your fists of fury wounds Lord British. [-19]
+1793670614	cmd	Alaric	57	7767	ultima.are	fighting	96	0	fight	levitate		You are already airborne.
+1793670616	cmd	Alaric	57	7767	ultima.are	fighting	96	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670617	cmd	Alaric	57	7767	ultima.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-5] // Your fists of fury wounds Lord British. [-20]
+1793670623	cmd	Alaric	57	7767	ultima.are	fighting	95	0	fight	look	brit	Lord British sits in his throne.  When you see him, you know the // meaning of true leadership.  His charisma is almost tangible.  On // him you see the three crown jewels.  These hold power both
+1793670623	cmd	Alaric	57	7767	ultima.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-4] // Your fists of fury grazes Lord British. [-7]
+1793670629	cmd	Alaric	57	7767	ultima.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-7] // Your fists of fury decimates Lord British! [-25]
+1793670634	cmd	Alaric	57	7767	ultima.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Lord British! [-28] // Your fists of fury grazes Lord British. [-6]
+1793670640	cmd	Alaric	57	7767	ultima.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-2] // Your fists of fury grazes Lord British. [-7]
+1793670646	cmd	Alaric	57	7767	ultima.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-2] // Your fists of fury maims Lord British! [-33]
+1793670652	cmd	Alaric	57	7767	ultima.are	fighting	93	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670652	cmd	Alaric	57	7767	ultima.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Lord British! [-27] // Your fists of fury decimates Lord British! [-27]
+1793670662	cmd	Alaric	57	7767	ultima.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Lord British! [-30] // Your fists of fury grazes Lord British. [-5]
+1793670667	cmd	Alaric	57	7767	ultima.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-18] // Your fists of fury injures Lord British. [-16]
+1793670673	cmd	Alaric	57	7767	ultima.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-16] // Your fists of fury grazes Lord British. [-5]
+1793670679	cmd	Alaric	57	7767	ultima.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-3] // Your fists of fury mauls Lord British. [-23]
+1793670685	cmd	Alaric	57	7767	ultima.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-12] // Your fists of fury grazes Lord British. [-8]
+1793670690	cmd	Alaric	57	7767	ultima.are	fighting	91	0	fight	gossip	No :)	You gossip 'No :)'
+1793670691	cmd	Alaric	57	7767	ultima.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-11] // Your fists of fury devastates Lord British! [-32]
+1793670696	cmd	Alaric	57	7767	ultima.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-15] // Your fists of fury injures Lord British. [-13]
+1793670702	cmd	Alaric	57	7767	ultima.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-5] // Your fists of fury grazes Lord British. [-8]
+1793670708	cmd	Alaric	57	7767	ultima.are	fighting	89	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793670708	cmd	Alaric	57	7767	ultima.are	fighting	89	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670708	cmd	Alaric	57	7767	ultima.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-5] // Your fists of fury injures Lord British. [-15]
+1793670714	cmd	Alaric	57	7767	ultima.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-9] // Your fists of fury wounds Lord British. [-19]
+1793670720	cmd	Alaric	57	7767	ultima.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-18] // Your fists of fury mauls Lord British. [-22]
+1793670726	cmd	Alaric	57	7767	ultima.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-5] // Your fists of fury hits Lord British. [-12]
+1793670732	cmd	Alaric	57	7767	ultima.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-1] // Your fists of fury mauls Lord British. [-22]
+1793670737	cmd	Alaric	57	7767	ultima.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-24] // Your fists of fury decimates Lord British! [-25]
+1793670743	cmd	Alaric	57	7767	ultima.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-22] // Your fists of fury mauls Lord British. [-21]
+1793670749	cmd	Alaric	57	7767	ultima.are	fighting	87	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670749	cmd	Alaric	57	7767	ultima.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-7] // Your fists of fury decimates Lord British! [-26]
+1793670755	cmd	Alaric	57	7767	ultima.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-12] // Your fists of fury injures Lord British. [-14]
+1793670761	cmd	Alaric	57	7767	ultima.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-12] // Your fists of fury scratches Lord British. [-1]
+1793670766	cmd	Alaric	57	7767	ultima.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-9] // Your fists of fury mauls Lord British. [-24]
+1793670776	cmd	Alaric	57	7767	ultima.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-2] // Your fists of fury scratches Lord British. [-3]
+1793670780	session	Alaric	57	7767	ultima.are	shutdown	5355s	+0 levels	+0 exp	+861266918 copper	37 kills	0 deaths	5 quests	1552 commands	5 refused	coin: loot 24p 89g 19s 88c, quests 786p 5g 86s 14c
+1793670790	cmd	Alaric	57	7767	ultima.are	standing	85	0	-	steel		Your hands can't get any harder.
+1793670793	cmd	Alaric	57	7767	ultima.are	standing	85	0	-	iron		You lost your concentration.
+1793670796	cmd	Alaric	57	7767	ultima.are	standing	85	0	-	look	av	The Avatar is the symbol of courage and truth and love, and all // that descends from it.  He has mastered Compassion, Humility, // Justice, Spirituality, Honesty, Sacrifice, Valor, and Honor.  He
+1793670797	cmd	Alaric	57	7767	ultima.are	standing	85	0	-	fists	br	You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-17] // Your fists of fury grazes Lord British. [-5]
+1793670803	cmd	Alaric	57	7767	ultima.are	fighting	84	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-19] // Your fists of fury scratches Lord British. [-3]
+1793670813	cmd	Alaric	57	7767	ultima.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-1] // Your fists of fury wounds Lord British. [-18]
+1793670822	cmd	Alaric	57	7767	ultima.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-18] // Your fists of fury decimates Lord British! [-28]
+1793670828	cmd	Alaric	57	7767	ultima.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-20] // Your fists of fury scratches Lord British. [-2]
+1793670834	cmd	Alaric	57	7767	ultima.are	fighting	82	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670834	cmd	Alaric	57	7767	ultima.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-15] // Your fists of fury scratches Lord British. [-2]
+1793670840	cmd	Alaric	57	7767	ultima.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-17] // Your fists of fury devastates Lord British! [-31]
+1793670846	cmd	Alaric	57	7767	ultima.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-19] // Your fists of fury injures Lord British. [-16]
+1793670852	cmd	Alaric	57	7767	ultima.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-8] // Your fists of fury injures Lord British. [-13]
+1793670861	cmd	Alaric	57	7767	ultima.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims Lord British! [-33] // Your fists of fury mauls Lord British. [-23]
+1793670867	cmd	Alaric	57	7767	ultima.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-22] // Your fists of fury injures Lord British. [-13]
+1793670873	cmd	Alaric	57	7767	ultima.are	fighting	78	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670873	cmd	Alaric	57	7767	ultima.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-10] // Your fists of fury devastates Lord British! [-31]
+1793670879	cmd	Alaric	57	7767	ultima.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-18] // Your fists of fury grazes Lord British. [-5]
+1793670888	cmd	Alaric	57	7767	ultima.are	fighting	77	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-16] // Your fists of fury injures Lord British. [-14]
+1793670895	cmd	Alaric	57	7767	ultima.are	fighting	76	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793670895	cmd	Alaric	57	7767	ultima.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-6] // Your fists of fury wounds Lord British. [-20]
+1793670901	cmd	Alaric	57	7767	ultima.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Lord British! [-25] // Your fists of fury hits Lord British. [-12]
+1793670906	cmd	Alaric	57	7767	ultima.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-7] // Your fists of fury decimates Lord British! [-28]
+1793670912	cmd	Alaric	57	7767	ultima.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Lord British! [-29] // Your fists of fury decimates Lord British! [-25]
+1793670918	cmd	Alaric	57	7767	ultima.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Lord British! [-29] // Your fists of fury hits Lord British. [-9]
+1793670930	cmd	Alaric	57	7767	ultima.are	fighting	75	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670930	cmd	Alaric	57	7767	ultima.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-5] // Your fists of fury devastates Lord British! [-32]
+1793670939	cmd	Alaric	57	7767	ultima.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-24] // Your fists of fury grazes Lord British. [-6]
+1793670945	cmd	Alaric	57	7767	ultima.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-1] // Your fists of fury grazes Lord British. [-6]
+1793670951	cmd	Alaric	57	7767	ultima.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-24] // Your fists of fury decimates Lord British! [-26]
+1793670957	cmd	Alaric	57	7767	ultima.are	fighting	73	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793670957	cmd	Alaric	57	7767	ultima.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-22] // Your fists of fury scratches Lord British. [-1]
+1793670963	cmd	Alaric	57	7767	ultima.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-11] // Your fists of fury wounds Lord British. [-17]
+1793670969	cmd	Alaric	57	7767	ultima.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-22] // Your fists of fury mauls Lord British. [-23]
+1793670975	cmd	Alaric	57	7767	ultima.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-9] // Your fists of fury scratches Lord British. [-4]
+1793670981	cmd	Alaric	57	7767	ultima.are	fighting	71	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793670981	cmd	Alaric	57	7767	ultima.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-9] // Your fists of fury injures Lord British. [-14]
+1793670987	cmd	Alaric	57	7767	ultima.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-15] // Your fists of fury maims Lord British! [-35]

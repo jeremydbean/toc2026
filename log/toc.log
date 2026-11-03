@@ -251427,3 +251427,262 @@ Tue Nov  3 01:46:30 2026 :: Log Alaric [1]: recal
 Tue Nov  3 01:46:30 2026 :: Log Alaric [7747]: arrived (The Desert Moongate) from 1
 Tue Nov  3 01:46:31 2026 :: Log Alaric [7747]: w
 Tue Nov  3 01:46:31 2026 :: Log Alaric [7746]: arrived (The Desert) from 7747
+Tue Nov  3 01:46:33 2026 :: Log Alaric [7746]: s
+Tue Nov  3 01:46:33 2026 :: Log Alaric [7742]: arrived (The Desert) from 7746
+Tue Nov  3 01:46:34 2026 :: Log Alaric [7742]: n
+Tue Nov  3 01:46:34 2026 :: Log Alaric [7746]: arrived (The Desert) from 7742
+Tue Nov  3 01:46:34 2026 :: Log Alaric [7746]: w
+Tue Nov  3 01:46:34 2026 :: Log Alaric [7745]: arrived (The Desert) from 7746
+Tue Nov  3 01:46:35 2026 :: Log Alaric [7745]: ex
+Tue Nov  3 01:46:36 2026 :: Log Alaric [7745]: scan
+Tue Nov  3 01:46:37 2026 :: Log Alaric [7745]: n
+Tue Nov  3 01:46:37 2026 :: Log Alaric [7748]: arrived (The Dragon Cave) from 7745
+Tue Nov  3 01:46:38 2026 :: Log Alaric [7748]: fi dr
+Tue Nov  3 01:46:43 2026 :: Log Alaric [7748]: killed the dragon
+Tue Nov  3 01:46:43 2026 :: Log Alaric [7748]: coin +1 platinum
+Tue Nov  3 01:46:43 2026 :: Log Alaric [7748]: coin +6 silver
+Tue Nov  3 01:46:43 2026 :: Log Alaric [7748]: coin +8 copper
+Tue Nov  3 01:46:43 2026 :: Log Alaric [7748]: coin +3 gold
+Tue Nov  3 01:46:44 2026 :: Log Alaric [7748]: fi
+Tue Nov  3 01:46:44 2026 :: Log Alaric [7748]: fi
+Tue Nov  3 01:46:46 2026 :: Log Alaric [7748]: l i cor
+Tue Nov  3 01:46:48 2026 :: Log Alaric [7748]: get all cor
+Tue Nov  3 01:46:49 2026 :: Log Alaric [7748]: s
+Tue Nov  3 01:46:49 2026 :: Log Alaric [7745]: arrived (The Desert) from 7748
+Tue Nov  3 01:46:49 2026 :: Log Alaric [7745]: e
+Tue Nov  3 01:46:49 2026 :: Log Alaric [7746]: arrived (The Desert) from 7745
+Tue Nov  3 01:46:50 2026 :: Log Alaric [7746]: e
+Tue Nov  3 01:46:50 2026 :: Log Alaric [7747]: arrived (The Desert Moongate) from 7746
+Tue Nov  3 01:46:52 2026 :: Log Alaric [7747]: unl up
+Tue Nov  3 01:46:54 2026 :: Log Alaric [7747]: w
+Tue Nov  3 01:46:54 2026 :: Log Alaric [7746]: arrived (The Desert) from 7747
+Tue Nov  3 01:46:55 2026 :: Log Alaric [7746]: s
+Tue Nov  3 01:46:55 2026 :: Log Alaric [7742]: arrived (The Desert) from 7746
+Tue Nov  3 01:46:55 2026 :: Log Alaric [7742]: e
+Tue Nov  3 01:46:55 2026 :: Log Alaric [7743]: arrived (The Desert Moongate) from 7742
+Tue Nov  3 01:46:57 2026 :: Log Alaric [7743]: unl up
+Tue Nov  3 01:46:59 2026 :: Log Alaric [7743]: open up
+Tue Nov  3 01:46:59 2026 :: Log Alaric [7743]: u
+Tue Nov  3 01:46:59 2026 :: Log Alaric [7749]: arrived (The Shrine of Spirituality) from 7743
+Tue Nov  3 01:47:02 2026 :: Log Alaric [7749]: look time
+Tue Nov  3 01:47:04 2026 :: Log Alaric [7749]: scan
+Tue Nov  3 01:47:08 2026 :: Log Alaric [7749]: fi time
+Tue Nov  3 01:47:13 2026 :: Log Alaric [7749]: fi
+Tue Nov  3 01:47:19 2026 :: Log Alaric [7749]: ex
+Tue Nov  3 01:47:19 2026 :: Log Alaric [7749]: fi
+Tue Nov  3 01:47:25 2026 :: Log Alaric [7749]: fi
+Tue Nov  3 01:47:31 2026 :: Log Alaric [7749]: fi
+Tue Nov  3 01:47:31 2026 :: Log Alaric [7749]: killed the Timelord
+Tue Nov  3 01:47:31 2026 :: Log Alaric [7749]: coin +1 platinum
+Tue Nov  3 01:47:31 2026 :: Log Alaric [7749]: coin +6 silver
+Tue Nov  3 01:47:31 2026 :: Log Alaric [7749]: coin +8 copper
+Tue Nov  3 01:47:31 2026 :: Log Alaric [7749]: coin +3 gold
+Tue Nov  3 01:47:39 2026 :: Log Alaric [7749]: l i cor
+Tue Nov  3 01:47:40 2026 :: Log Alaric [7749]: get all cor
+Tue Nov  3 01:47:41 2026 :: Log Alaric [7749]: steel
+Tue Nov  3 01:47:42 2026 :: Log Alaric [7749]: steel
+Tue Nov  3 01:47:48 2026 :: Log Alaric [7749]: recall set
+Tue Nov  3 01:47:48 2026 :: Log Alaric [7749]: ex
+Tue Nov  3 01:47:49 2026 :: Log Alaric [7749]: s
+Tue Nov  3 01:47:49 2026 :: Log Alaric [7757]: arrived (The Graveyard) from 7749
+Tue Nov  3 01:47:50 2026 :: Log Alaric [7757]: scan
+Tue Nov  3 01:47:55 2026 :: Log Alaric [7757]: w
+Tue Nov  3 01:47:55 2026 :: Log Alaric [7756]: arrived (The Graveyard) from 7757
+Tue Nov  3 01:47:56 2026 :: Log Alaric [7756]: s
+Tue Nov  3 01:47:56 2026 :: Log Alaric [7759]: arrived (The Graveyard) from 7756
+Tue Nov  3 01:47:56 2026 :: Log Alaric [7759]: e
+Tue Nov  3 01:47:56 2026 :: Log Alaric [7760]: arrived (The Graveyard) from 7759
+Tue Nov  3 01:47:57 2026 :: Log Alaric [7760]: e
+Tue Nov  3 01:47:57 2026 :: Log Alaric [7761]: arrived (The Graveyard) from 7760
+Tue Nov  3 01:47:59 2026 :: Log Alaric [7761]: n
+Tue Nov  3 01:47:59 2026 :: Log Alaric [7758]: arrived (The Graveyard) from 7761
+Tue Nov  3 01:48:00 2026 :: Log Alaric [7758]: scan
+Tue Nov  3 01:48:02 2026 :: Log Alaric [7758]: s
+Tue Nov  3 01:48:02 2026 :: Log Alaric [7761]: arrived (The Graveyard) from 7758
+Tue Nov  3 01:48:03 2026 :: Log Alaric [7761]: look sh
+Tue Nov  3 01:48:06 2026 :: Log Alaric [7761]: fi sh
+Tue Nov  3 01:48:11 2026 :: Log Alaric [7761]: fi
+Tue Nov  3 01:48:17 2026 :: Log Alaric [7761]: fi
+Tue Nov  3 01:48:23 2026 :: Log Alaric [7761]: fi
+Tue Nov  3 01:48:29 2026 :: Log Alaric [7761]: killed Shamino the Ranger
+Tue Nov  3 01:48:29 2026 :: Log Alaric [7761]: coin +3 silver
+Tue Nov  3 01:48:29 2026 :: Log Alaric [7761]: coin +5 copper
+Tue Nov  3 01:48:29 2026 :: Log Alaric [7761]: coin +2 gold
+Tue Nov  3 01:48:29 2026 :: Log Alaric [7761]: fi
+Tue Nov  3 01:48:29 2026 :: Log Alaric [7761]: who
+Tue Nov  3 01:48:29 2026 :: Log Alaric [7761]: fi
+Tue Nov  3 01:48:30 2026 :: Log Alaric [7761]: fi
+Tue Nov  3 01:48:31 2026 :: Log Alaric [7761]: l i cor
+Tue Nov  3 01:48:34 2026 :: Log Alaric [7761]: get oh cor
+Tue Nov  3 01:48:34 2026 :: Log Alaric [7761]: n
+Tue Nov  3 01:48:34 2026 :: Log Alaric [7758]: arrived (The Graveyard) from 7761
+Tue Nov  3 01:48:35 2026 :: Log Alaric [7758]: w
+Tue Nov  3 01:48:35 2026 :: Log Alaric [7757]: arrived (The Graveyard) from 7758
+Tue Nov  3 01:48:36 2026 :: Log Alaric [7757]: n
+Tue Nov  3 01:48:36 2026 :: Log Alaric [7749]: arrived (The Shrine of Spirituality) from 7757
+Tue Nov  3 01:48:37 2026 :: Log Alaric [7749]: n
+Tue Nov  3 01:48:37 2026 :: Log Alaric [7754]: arrived (The Place of Ultimate Evil) from 7749
+Tue Nov  3 01:48:40 2026 :: Log Alaric [7754]: scan
+Tue Nov  3 01:48:42 2026 :: Log Alaric [7754]: n
+Tue Nov  3 01:48:42 2026 :: Log Alaric [7751]: arrived (The Place of Ultimate Evil) from 7754
+Tue Nov  3 01:48:44 2026 :: Log Alaric [7751]: scan
+Tue Nov  3 01:48:45 2026 :: Log Alaric [7751]: s
+Tue Nov  3 01:48:45 2026 :: Log Alaric [7754]: arrived (The Place of Ultimate Evil) from 7751
+Tue Nov  3 01:48:45 2026 :: Log Alaric [7754]: scan
+Tue Nov  3 01:48:47 2026 :: Log Alaric [7754]: n
+Tue Nov  3 01:48:47 2026 :: Log Alaric [7751]: arrived (The Place of Ultimate Evil) from 7754
+Tue Nov  3 01:48:48 2026 :: Log Alaric [7751]: look da
+Tue Nov  3 01:48:49 2026 :: Log Alaric [7751]: e
+Tue Nov  3 01:48:49 2026 :: Log Alaric [7752]: arrived (The Place of Ultimate Evil) from 7751
+Tue Nov  3 01:48:50 2026 :: Log Alaric [7752]: scan
+Tue Nov  3 01:48:51 2026 :: Log Alaric [7752]: s
+Tue Nov  3 01:48:51 2026 :: Log Alaric [7755]: arrived (The Place of Ultimate Evil) from 7752
+Tue Nov  3 01:48:52 2026 :: Log Alaric [7755]: scan
+Tue Nov  3 01:48:52 2026 :: Log Alaric [7755]: w
+Tue Nov  3 01:48:52 2026 :: Log Alaric [7754]: arrived (The Place of Ultimate Evil) from 7755
+Tue Nov  3 01:48:53 2026 :: Log Alaric [7754]: w
+Tue Nov  3 01:48:53 2026 :: Log Alaric [7753]: arrived (The Place of Ultimate Evil) from 7754
+Tue Nov  3 01:48:54 2026 :: Log Alaric [7753]: scan
+Tue Nov  3 01:48:54 2026 :: Log Alaric [7753]: n
+Tue Nov  3 01:48:54 2026 :: Log Alaric [7750]: arrived (The Place of Ultimate Evil) from 7753
+Tue Nov  3 01:48:56 2026 :: Log Alaric [7750]: e
+Tue Nov  3 01:48:56 2026 :: Log Alaric [7751]: arrived (The Place of Ultimate Evil) from 7750
+Tue Nov  3 01:49:01 2026 :: Log Alaric [7751]: fi da
+Tue Nov  3 01:49:06 2026 :: Log Alaric [7751]: fi
+Tue Nov  3 01:49:11 2026 :: Log Alaric [7751]: killed the daemon
+Tue Nov  3 01:49:11 2026 :: Log Alaric [7751]: coin +2 platinum
+Tue Nov  3 01:49:11 2026 :: Log Alaric [7751]: coin +12 silver
+Tue Nov  3 01:49:11 2026 :: Log Alaric [7751]: coin +17 copper
+Tue Nov  3 01:49:11 2026 :: Log Alaric [7751]: coin +7 gold
+Tue Nov  3 01:49:12 2026 :: Log Alaric [7751]: fi
+Tue Nov  3 01:49:12 2026 :: Log Alaric [7751]: l i cor
+Tue Nov  3 01:49:14 2026 :: Log Alaric [7751]: get all cor
+Tue Nov  3 01:49:15 2026 :: Log Alaric [7751]: s
+Tue Nov  3 01:49:15 2026 :: Log Alaric [7754]: arrived (The Place of Ultimate Evil) from 7751
+Tue Nov  3 01:49:17 2026 :: Log Alaric [7754]: ex
+Tue Nov  3 01:49:19 2026 :: Log Alaric [7754]: s
+Tue Nov  3 01:49:19 2026 :: Log Alaric [7749]: arrived (The Shrine of Spirituality) from 7754
+Tue Nov  3 01:49:20 2026 :: Log Alaric [7749]: s
+Tue Nov  3 01:49:20 2026 :: Log Alaric [7757]: arrived (The Graveyard) from 7749
+Tue Nov  3 01:49:22 2026 :: Log Alaric [7757]: n
+Tue Nov  3 01:49:22 2026 :: Log Alaric [7749]: arrived (The Shrine of Spirituality) from 7757
+Tue Nov  3 01:49:23 2026 :: Treasure goblin: vanished from room 10103 (spiral staircase., glitter.are) (too long in one area).
+Tue Nov  3 01:49:24 2026 :: Log Alaric [7749]: unl up
+Tue Nov  3 01:49:25 2026 :: Log Alaric [7749]: open up
+Tue Nov  3 01:49:26 2026 :: Log Alaric [7749]: u
+Tue Nov  3 01:49:26 2026 :: Log Alaric [7762]: arrived (Lord British's Castle Entrance) from 7749
+Tue Nov  3 01:49:29 2026 :: Log Alaric [7762]: look ch
+Tue Nov  3 01:49:31 2026 :: Log Alaric [7762]: n
+Tue Nov  3 01:49:31 2026 :: Log Alaric [7763]: arrived (Castle Fountain) from 7762
+Tue Nov  3 01:49:33 2026 :: Log Alaric [7763]: scan
+Tue Nov  3 01:49:35 2026 :: Log Alaric [7763]: n
+Tue Nov  3 01:49:35 2026 :: Log Alaric [7765]: arrived (Hallways) from 7763
+Tue Nov  3 01:49:36 2026 :: Log Alaric [7765]: look sen
+Tue Nov  3 01:49:38 2026 :: Log Alaric [7765]: scan
+Tue Nov  3 01:49:41 2026 :: Log Alaric [7765]: n
+Tue Nov  3 01:49:41 2026 :: Log Alaric [7767]: arrived (The Throne Room) from 7765
+Tue Nov  3 01:49:43 2026 :: Log Alaric [7767]: look ac
+Tue Nov  3 01:49:46 2026 :: Log Alaric [7767]: look av
+Tue Nov  3 01:49:48 2026 :: Log Alaric [7767]: fi br
+Tue Nov  3 01:49:53 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:49:59 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:08 2026 :: Log Alaric [7767]: (refused) llk brit
+Tue Nov  3 01:50:08 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:14 2026 :: Log Alaric [7767]: levi
+Tue Nov  3 01:50:16 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:50:17 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:23 2026 :: Log Alaric [7767]: look brit
+Tue Nov  3 01:50:23 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:29 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:34 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:40 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:46 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:50:52 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:50:52 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:02 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:06 2026 :: ANNOUNCE: The game restarts for an update in one minute. Finish your fight; everyone is saved first.
+Tue Nov  3 01:51:07 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:13 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:19 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:21 2026 :: Sock.sinaddr:  5.161.177.47
+Tue Nov  3 01:51:21 2026 :: EOF encountered on read.
+Tue Nov  3 01:51:25 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:30 2026 :: Log Alaric [7767]: gos No :)
+Tue Nov  3 01:51:31 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:36 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:42 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:48 2026 :: Log Alaric [7767]: score
+Tue Nov  3 01:51:48 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:51:48 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:51:54 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:00 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:06 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:12 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:17 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:23 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:29 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:52:29 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:35 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:41 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:46 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Nov  3 01:52:46 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:50 2026 :: Log WebAdmin: fsave
+Tue Nov  3 01:52:56 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:52:56 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Nov  3 01:53:00 2026 :: Received signal 15; saving players and shutting down.
+Tue Nov  3 01:53:00 2026 :: Closing link to Alaric.
+Tue Nov  3 01:53:00 2026 :: Normal termination of game.
+Tue Nov  3 01:53:00 2026 ::  INIT OK 
+Tue Nov  3 01:53:00 2026 :: walkto_load: 157 destinations.
+Tue Nov  3 01:53:00 2026 :: changes_load: 212 entries.
+Tue Nov  3 01:53:00 2026 :: Recovery ledger: 266 records (0 from before the check), 0 requests, 7 players.
+Tue Nov  3 01:53:00 2026 :: ROM is ready to rock on port 9000.
+Tue Nov  3 01:53:00 2026 :: Treasure goblin: appeared.
+Tue Nov  3 01:53:00 2026 :: Automated backup complete.
+Tue Nov  3 01:53:00 2026 :: Daily backup complete.
+Tue Nov  3 01:53:05 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Nov  3 01:53:07 2026 :: Loading Alaric's playerfile
+Tue Nov  3 01:53:08 2026 :: Loading Alaric's playerfile
+Tue Nov  3 01:53:08 2026 :: Alaric@208.126.22.104 has connected.
+Tue Nov  3 01:53:09 2026 :: Log Alaric [7767]: arrived (The Throne Room) from 0
+Tue Nov  3 01:53:10 2026 :: Log Alaric [7767]: steel
+Tue Nov  3 01:53:13 2026 :: Log Alaric [7767]: iron
+Tue Nov  3 01:53:16 2026 :: Log Alaric [7767]: look av
+Tue Nov  3 01:53:17 2026 :: Log Alaric [7767]: fi br
+Tue Nov  3 01:53:23 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:53:33 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:53:42 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:53:48 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:53:54 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:53:54 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:00 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:04 2026 :: Log Alaric [7767]: affects off: steel fist
+Tue Nov  3 01:54:06 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:12 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:21 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:27 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:33 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:54:33 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:39 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:48 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:54:55 2026 :: Log Alaric [7767]: sc
+Tue Nov  3 01:54:55 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:01 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:06 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:12 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:18 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:30 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:55:30 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:39 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:45 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:51 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:55:57 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:55:57 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:03 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:09 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:15 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:21 2026 :: Log Alaric [7767]: score
+Tue Nov  3 01:56:21 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:26 2026 :: Sock.sinaddr:  5.161.177.47
+Tue Nov  3 01:56:27 2026 :: EOF encountered on read.
+Tue Nov  3 01:56:27 2026 :: Log Alaric [7767]: fi
