@@ -18521,3 +18521,55 @@
 1793673655	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 105 quest points.
 1793673657	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
 1793673659	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793673915	refused	Alaric	57	2497	dresden.are	standing	100	0	-	(unknown)		Huh?
+1793673916	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.
+1793673918	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793673923	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 17 for 6 hours.
+1793673927	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793673935	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	help	align	ALIGNMENT ALIGN GOOD EVIL NEUTRAL DEVOTE PARAGON VIRTUOUS RUTHLESS VILE FIEND // Syntax: alignment //         devote light | dark | balance     (at the Temple)
+1793673942	cmd	Alaric	57	2497	dresden.are	standing	100	12	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'Raiders stole The Sceptre of Gravestone from the realm!'
+1793673948	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793673948	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1793673948	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1793673949	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1793673949	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793673949	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793673949	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793673950	cmd	Alaric	57	2444	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793673950	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793673950	cmd	Alaric	57	2446	dresden.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1793673950	cmd	Alaric	57	2448	dresden.are	standing	100	0	-	south		First Pier. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1793673951	cmd	Alaric	57	2448	dresden.are	standing	100	0	-	south		You need a boat to go there.
+1793673953	cmd	Alaric	57	2448	dresden.are	standing	100	0	-	south		You need a boat to go there.
+1793673955	cmd	Alaric	57	2448	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793673956	cmd	Alaric	57	2518	dresden.are	standing	100	0	-	south		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the
+1793673956	cmd	Alaric	57	2517	dresden.are	standing	100	0	-	east		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the
+1793673956	cmd	Alaric	57	2516	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling
+1793673956	cmd	Alaric	57	2515	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling
+1793673957	cmd	Alaric	57	5000	eastern.are	standing	100	0	-	east		A long tunnel //   You encounter some rapids as you enter this tunnel cut out of // the mountains by the river.
+1793673957	cmd	Alaric	57	5001	eastern.are	standing	100	0	-	east		A long, branched tunnel //   The tunnel continues east and it also branches to the southeast. // [Exits: east west southeast]
+1793673957	cmd	Alaric	57	5002	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off north. // [Exits: north east west]
+1793673957	cmd	Alaric	57	5003	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off south. // [Exits: east south west]
+1793673958	cmd	Alaric	57	5004	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off to the south. // [Exits: east south west]
+1793673958	cmd	Alaric	57	5005	eastern.are	standing	100	0	-	east		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river
+1793673958	cmd	Alaric	57	5006	eastern.are	standing	100	0	-	east		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1793673958	cmd	Alaric	57	5007	eastern.are	standing	100	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1793673959	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793673959	cmd	Alaric	57	5007	eastern.are	standing	100	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1793674004	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674004	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674004	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674008	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674009	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674009	cmd	Alaric	57	5032	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674012	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674012	cmd	Alaric	57	5063	eastern.are	standing	100	0	-	north		The wind-swept ledge //   Being very careful not to lose your balance, you look around and // find that this canyon is about a half a kilometer deep. To the west is
+1793674012	cmd	Alaric	57	5064	eastern.are	standing	100	0	-	west		The cave mouth //   The air in here is MUCH cooler than outside. From the west you hear // strange sounds, but can see nothing. The cave slopes down into the
+1793674012	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	west		The mysterious lair. //   You have stumbled upon the home of something. From the treasure // haphazardly strewn about and the rotting carcasses, you would guess that
+1793674013	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	open	west	It's locked.
+1793674013	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	west		The door is closed.
+1793674015	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	open	west	It's locked.
+1793674015	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	west		The door is closed.
+1793674018	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	open		It's locked.
+1793674019	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	open	west	It's locked.
+1793674019	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	west		The door is closed.

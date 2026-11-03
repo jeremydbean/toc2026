@@ -252731,3 +252731,94 @@ Tue Nov  3 02:40:54 2026 :: Snapshot of Alaric taken before quest: Alaric.202611
 Tue Nov  3 02:40:55 2026 :: Log Alaric [2497]: aq ga no
 Tue Nov  3 02:40:57 2026 :: Log Alaric [2497]: score
 Tue Nov  3 02:40:59 2026 :: Log Alaric [2497]: who
+Tue Nov  3 02:42:07 2026 :: Sock.sinaddr:  52.15.147.27
+Tue Nov  3 02:42:08 2026 :: EOF encountered on read.
+Tue Nov  3 02:43:24 2026 :: Treasure goblin: vanished from room 24364 (The Black Square, chess.are) (too long in one area).
+Tue Nov  3 02:45:15 2026 :: Log Alaric [2497]: (refused) eskr
+Tue Nov  3 02:45:16 2026 :: Log Alaric [2497]: wake
+Tue Nov  3 02:45:18 2026 :: Log Alaric [2497]: steel
+Tue Nov  3 02:45:23 2026 :: Log Alaric [2497]: af
+Tue Nov  3 02:45:27 2026 :: Log Alaric [2497]: score
+Tue Nov  3 02:45:35 2026 :: Log Alaric [2497]: help align
+Tue Nov  3 02:45:42 2026 :: Log Alaric [2497]: aq re
+Tue Nov  3 02:45:42 2026 :: Log Alaric [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in pyramid.are, 25 minutes, ordinary
+Tue Nov  3 02:45:48 2026 :: Log Alaric [2497]: enter door
+Tue Nov  3 02:45:48 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 02:45:48 2026 :: Log Alaric [2401]: east
+Tue Nov  3 02:45:48 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Nov  3 02:45:48 2026 :: Log Alaric [2403]: east
+Tue Nov  3 02:45:48 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2420]: east
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2421]: south
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2441]: east
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2442]: south
+Tue Nov  3 02:45:49 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2443]: east
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2444]: east
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2445]: south
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2446]: arrived (Docks of Dresden.) from 2445
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2446]: south
+Tue Nov  3 02:45:50 2026 :: Log Alaric [2448]: arrived (First Pier.) from 2446
+Tue Nov  3 02:45:51 2026 :: Log Alaric [2448]: south
+Tue Nov  3 02:45:53 2026 :: Log Alaric [2448]: south
+Tue Nov  3 02:45:55 2026 :: Log Alaric [2448]: levi
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2448]: south
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2518]: arrived (River of Wonders.) from 2448
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2518]: east
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2517]: arrived (River of Wonders.) from 2518
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2517]: east
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2516]: arrived (Tunnel on the River of Wonders.) from 2517
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2516]: east
+Tue Nov  3 02:45:56 2026 :: Log Alaric [2515]: arrived (Tunnel on the River of Wonders.) from 2516
+Tue Nov  3 02:45:57 2026 :: Log Alaric [2515]: east
+Tue Nov  3 02:45:57 2026 :: Log Alaric [5000]: arrived (A long tunnel) from 2515
+Tue Nov  3 02:45:57 2026 :: Log Alaric [5000]: east
+Tue Nov  3 02:45:57 2026 :: Log Alaric [5001]: arrived (A long, branched tunnel) from 5000
+Tue Nov  3 02:45:57 2026 :: Log Alaric [5001]: east
+Tue Nov  3 02:45:57 2026 :: Log Alaric [5002]: arrived (A long tunnel) from 5001
+Tue Nov  3 02:45:57 2026 :: Log Alaric [5002]: east
+Tue Nov  3 02:45:57 2026 :: Log Alaric [5003]: arrived (A long tunnel) from 5002
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5003]: east
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5004]: arrived (A long tunnel) from 5003
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5004]: east
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5005]: arrived (An underground lake) from 5004
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5005]: east
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5006]: arrived (A long narrow tunnel) from 5005
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5006]: east
+Tue Nov  3 02:45:58 2026 :: Log Alaric [5007]: arrived (A wide tunnel) from 5006
+Tue Nov  3 02:45:59 2026 :: Log Alaric [5007]: east
+Tue Nov  3 02:45:59 2026 :: Log Alaric [5027]: arrived (The Sands of Sorrow) from 5007
+Tue Nov  3 02:45:59 2026 :: Log Alaric [5027]: east
+Tue Nov  3 02:45:59 2026 :: Log Alaric [5007]: arrived (A wide tunnel) from 5027
+Tue Nov  3 02:46:44 2026 :: Log Alaric [5007]: east
+Tue Nov  3 02:46:44 2026 :: Log Alaric [5027]: arrived (The Sands of Sorrow) from 5007
+Tue Nov  3 02:46:44 2026 :: Log Alaric [5027]: south
+Tue Nov  3 02:46:44 2026 :: Log Alaric [5030]: arrived (The Sands of Sorrow) from 5027
+Tue Nov  3 02:46:44 2026 :: Log Alaric [5030]: north
+Tue Nov  3 02:46:44 2026 :: Log Alaric [5027]: arrived (The Sands of Sorrow) from 5030
+Tue Nov  3 02:46:48 2026 :: Log Alaric [5027]: south
+Tue Nov  3 02:46:48 2026 :: Log Alaric [5030]: arrived (The Sands of Sorrow) from 5027
+Tue Nov  3 02:46:49 2026 :: Log Alaric [5030]: east
+Tue Nov  3 02:46:49 2026 :: Log Alaric [5031]: arrived (The Sands of Sorrow) from 5030
+Tue Nov  3 02:46:49 2026 :: Log Alaric [5031]: south
+Tue Nov  3 02:46:49 2026 :: Log Alaric [5032]: arrived (The Sands of Sorrow) from 5031
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5032]: east
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5031]: arrived (The Sands of Sorrow) from 5032
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5031]: north
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5063]: arrived (The wind-swept ledge) from 5031
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5063]: west
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5064]: arrived (The cave mouth) from 5063
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5064]: west
+Tue Nov  3 02:46:52 2026 :: Log Alaric [5065]: arrived (The mysterious lair.) from 5064
+Tue Nov  3 02:46:53 2026 :: Log Alaric [5065]: open west
+Tue Nov  3 02:46:53 2026 :: Log Alaric [5065]: west
+Tue Nov  3 02:46:55 2026 :: Log Alaric [5065]: open west
+Tue Nov  3 02:46:55 2026 :: Log Alaric [5065]: west
+Tue Nov  3 02:46:58 2026 :: Log Alaric [5065]: ow
+Tue Nov  3 02:46:59 2026 :: Log Alaric [5065]: open west
+Tue Nov  3 02:46:59 2026 :: Log Alaric [5065]: west
