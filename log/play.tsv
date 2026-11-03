@@ -18859,3 +18859,143 @@
 1793706728	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	elf	Elves are slightly taller than humans, but have a much lighter build.  They // lack the strength and stamina of the other races, but are for more agile, // both in body and mind.  Elves are superb mages and thieves, but have at
 1793706732	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	dwarf	Dwarves are a short, stocky demi-human race, known for foul temper and great // stamina.  Dwarves have high strength and constitution, but poor dexterity. // They are not as smart as humans, but are usually wiser due to their long
 1793706747	cmd	Trentlin	54	4208	dresden.are	standing	94	0	-	help	hobbit	Hobbits are a demi-human race, slightly shorter than dwarves. They resist // poison and disease like dwarves.  They are vulnerable to strong wind, // due to their small size and weight.  Of all the races, they have the
+1793706751	cmd	Trentlin	54	4208	dresden.are	standing	94	0	-	help	remort	REMORT // Syntax: REMORT <password> <class> <guild> <race> // REMORT allows a character at their current maximum level to start over as a
+1793706761	cmd	Trentlin	54	4208	dresden.are	standing	94	0	-	remort		(withheld)
+1793706778	cmd	Trentlin	3	4207	dresden.are	standing	94	269	-	remort		(withheld)
+1793706782	cmd	Trentlin	3	4207	dresden.are	standing	100	0	-	look		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793706783	cmd	Trentlin	3	4207	dresden.are	standing	100	0	-	inventory		You are carrying: // ( 4) a small key //      (Glowing) the eighth Triforce shard
+1793706788	cmd	Trentlin	3	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793706790	cmd	Trentlin	3	4208	dresden.are	standing	100	0	-	get	all	You get guano. // You get guano. // You get guano.
+1793706792	cmd	Trentlin	3	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793706793	cmd	Trentlin	3	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793706796	cmd	Trentlin	3	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793706796	cmd	Trentlin	3	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with
+1793706798	cmd	Trentlin	3	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793706798	cmd	Trentlin	3	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 
+1793706798	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train		You have 14 training sessions. // You can train: str int wis dex con hp mana.
+1793706800	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706801	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706801	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706801	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706801	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706802	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706802	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706802	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1793706802	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution is already at maximum.
+1793706803	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution is already at maximum.
+1793706803	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution is already at maximum.
+1793706803	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	con	Your constitution is already at maximum.
+1793706805	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence increases!
+1793706805	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence increases!
+1793706806	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence increases!
+1793706806	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence is already at maximum.
+1793706806	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence is already at maximum.
+1793706806	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence is already at maximum.
+1793706807	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence is already at maximum.
+1793706807	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	int	Your intelligence is already at maximum.
+1793706808	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	Your wisdom increases!
+1793706808	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	Your wisdom increases!
+1793706809	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	Your wisdom increases!
+1793706809	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	You don't have enough training sessions.
+1793706809	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	You don't have enough training sessions.
+1793706809	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	You don't have enough training sessions.
+1793706810	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	You don't have enough training sessions.
+1793706810	cmd	Trentlin	3	3758	school.are	standing	100	0	-	train	wis	You don't have enough training sessions.
+1793706810	cmd	Trentlin	3	3757	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793706811	cmd	Trentlin	3	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with
+1793706811	cmd	Trentlin	3	3759	school.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793706811	cmd	Trentlin	3	3759	school.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793706811	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice		recall             100%  dagger              20%  hand to hand        40%   // kick                 1%   // You have 29 practice sessions left.
+1793706814	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1793706814	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1793706815	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	hand	You are now learned at hand to hand.
+1793706817	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	kick	You practice kick.
+1793706818	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	kick	You practice kick.
+1793706818	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	kick	You practice kick.
+1793706818	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	kick	You practice kick.
+1793706818	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	kick	You practice kick.
+1793706819	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	kick	You practice kick.
+1793706819	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	kick	You are now learned at kick.
+1793706822	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	dagg	You practice dagger.
+1793706822	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	dagg	You practice dagger.
+1793706822	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	dagg	You practice dagger.
+1793706823	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	dagg	You are now learned at dagger.
+1793706823	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	dagg	You are already learned at dagger.
+1793706823	cmd	Trentlin	3	3759	school.are	standing	100	0	-	practice	dagg	You are already learned at dagger.
+1793706824	cmd	Trentlin	3	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793706825	cmd	Trentlin	3	3701	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706827	cmd	Trentlin	3	3702	school.are	standing	100	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706829	cmd	Trentlin	3	3707	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706831	cmd	Trentlin	3	3702	school.are	standing	100	0	-	up		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706833	cmd	Trentlin	3	3703	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706833	cmd	Trentlin	3	3709	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706835	cmd	Trentlin	3	3711	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706837	cmd	Trentlin	3	3712	school.are	standing	100	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.
+1793706840	cmd	Trentlin	3	3794	school.are	standing	100	0	-	ne		The storage room //   This room has a single light in the ceiling above you casting a pale radiance // over the contents of the room.  Some buckets and mops sit in one corner.
+1793706844	cmd	Trentlin	3	3794	school.are	standing	100	0	-	open	jar	The goblin has been let out of a dragon jar!
+1793706846	cmd	Trentlin	3	3794	school.are	standing	100	0	-	kill	gob	Your punch misses the goblin. // Your punch scratches the goblin.
+1793706849	cmd	Trentlin	3	3794	school.are	fighting	99	0	fight	kick		Your kick scratches the goblin.
+1793706853	cmd	Trentlin	3	3794	school.are	fighting	99	0	fight	kick		Your kick scratches the goblin.
+1793706860	cmd	Trentlin	3	3794	school.are	standing	99	0	-	get	all co	I see nothing in the co.
+1793706862	cmd	Trentlin	3	3794	school.are	standing	99	0	-	look	in cor	Corpse of the goblin contains: //      Nothing.
+1793706863	cmd	Trentlin	3	3794	school.are	standing	99	0	-	look		The storage room //   This room has a single light in the ceiling above you casting a pale radiance // over the contents of the room.  Some buckets and mops sit in one corner.
+1793706867	cmd	Trentlin	3	3712	school.are	standing	99	0	-	sw		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.
+1793706869	cmd	Trentlin	3	3717	school.are	standing	99	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed
+1793706872	cmd	Trentlin	3	3717	school.are	standing	99	0	-	open	east	Ok.
+1793706872	cmd	Trentlin	3	3719	school.are	standing	99	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706874	cmd	Trentlin	3	3720	school.are	standing	99	0	-	north		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.
+1793706876	cmd	Trentlin	3	3720	school.are	standing	100	0	-	look	clo	This guy must be a real nut case.  He seems to have painted his face // into a demonic mask.  He looks pretty tough, but that key around his // neck looks like it might be pretty important.
+1793706879	cmd	Trentlin	3	3720	school.are	standing	100	0	-	kill	clo	Your punch misses the clown. // Your punch misses the clown.
+1793706882	cmd	Trentlin	3	3720	school.are	fighting	100	0	fight	kick		Your kick scratches the clown.
+1793706888	cmd	Trentlin	3	3720	school.are	fighting	100	0	fight	kick		Your kick scratches the clown.
+1793706895	cmd	Trentlin	3	3720	school.are	fighting	100	0	fight	kick		Your kick scratches the clown.
+1793706901	cmd	Trentlin	3	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.
+1793706909	cmd	Trentlin	3	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.
+1793706916	cmd	Trentlin	3	3720	school.are	fighting	99	0	fight	kick		Your kick scratches the clown.
+1793706919	cmd	Trentlin	3	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.
+1793706922	cmd	Trentlin	3	3720	school.are	fighting	96	0	fight	kick		Your kick misses the clown.
+1793706925	cmd	Trentlin	3	3720	school.are	fighting	96	0	fight	kick		Your kick scratches the clown. // The clown is DEAD!! // You receive 478 experience points.
+1793706930	cmd	Trentlin	3	3720	school.are	standing	96	0	-	get	all cor	You get a pair of sub issue gloves from corpse of the clown. // You get a pair of sub issue sleeves from corpse of the clown. // You get a key from corpse of the clown.
+1793706934	cmd	Trentlin	3	3720	school.are	standing	96	0	-	attribute		Str: 13(13)  Int: 16(16)  Wis: 16(16)  Dex: 13(13)  Con: 21(21)
+1793706935	cmd	Trentlin	3	3720	school.are	standing	96	0	-	wear	glo	You wear a pair of sub issue gloves on your hands.
+1793706935	cmd	Trentlin	3	3720	school.are	standing	96	0	-	attribute		Str: 13(13)  Int: 16(16)  Wis: 16(16)  Dex: 13(13)  Con: 21(21)
+1793706939	cmd	Trentlin	3	3720	school.are	standing	96	0	-	wear	slee	You wear a pair of sub issue sleeves on your arms.
+1793706939	cmd	Trentlin	3	3720	school.are	standing	96	0	-	attribute		Str: 13(13)  Int: 16(16)  Wis: 16(16)  Dex: 13(13)  Con: 21(21)
+1793706944	cmd	Trentlin	3	3720	school.are	standing	96	0	-	get	all cor	Bracer: you can't carry that many items.
+1793706946	cmd	Trentlin	3	3720	school.are	standing	96	0	-	inventory		You are carrying: //      a key // ( 2) a sprig of angelica
+1793706948	cmd	Trentlin	3	3720	school.are	standing	96	0	-	eat	guan	You eat guano. // Stone skin never takes on a monk or a necromancer. // Your feet rise off the ground.
+1793706950	cmd	Trentlin	3	3720	school.are	standing	96	0	-	get	all cor	You get a sub issue bracer from corpse of the clown.
+1793706951	cmd	Trentlin	3	3720	school.are	standing	96	0	-	score		| Name:       Trentlin | Level:       3 | Class:        Monk | // | Played:     25 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793706953	cmd	Trentlin	3	3720	school.are	standing	96	0	-	attribute		Str: 13(13)  Int: 16(16)  Wis: 16(16)  Dex: 13(13)  Con: 21(21)
+1793706954	cmd	Trentlin	3	3720	school.are	standing	96	0	-	wear	nra	You do not have that item.
+1793706956	cmd	Trentlin	3	3720	school.are	standing	100	0	-	wear	bra	You wear a sub issue bracer around your left wrist.
+1793706956	cmd	Trentlin	3	3720	school.are	standing	100	0	-	attribute		Str: 13(13)  Int: 16(16)  Wis: 16(16)  Dex: 13(13)  Con: 21(21)
+1793706961	cmd	Trentlin	3	3720	school.are	standing	100	0	-	score		| Name:       Trentlin | Level:       3 | Class:        Monk | // | Played:     25 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793706963	cmd	Trentlin	3	3720	school.are	standing	100	0	-	look		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.
+1793706965	cmd	Trentlin	3	3720	school.are	standing	100	0	-	affect		You are affected by: // Spell: 'fly'.
+1793706966	cmd	Trentlin	3	3719	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1793706966	cmd	Trentlin	3	3719	school.are	standing	100	0	-	east		The door is closed.
+1793706968	cmd	Trentlin	3	3719	school.are	standing	100	0	-	open	east	It's locked.
+1793706970	cmd	Trentlin	3	3719	school.are	standing	100	0	-	unlock	east	*Click*
+1793706971	cmd	Trentlin	3	3719	school.are	standing	100	0	-	open	east	Ok.
+1793706971	cmd	Trentlin	3	3721	school.are	standing	100	0	-	east		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every
+1793706974	cmd	Trentlin	3	3721	school.are	standing	100	0	-	kill	gob	Your punch scratches the educated goblin. // Your punch misses the educated goblin.
+1793706977	cmd	Trentlin	3	3721	school.are	fighting	100	0	fight	drop	key	You drop a key.
+1793706982	cmd	Trentlin	3	3721	school.are	fighting	95	0	fight	kick		Your kick scratches the educated goblin.
+1793706991	cmd	Trentlin	3	3721	school.are	fighting	91	0	fight	kick		Your kick scratches the educated goblin.
+1793706997	cmd	Trentlin	3	3721	school.are	fighting	90	0	fight	kick		Your kick scratches the educated goblin.
+1793707002	cmd	Trentlin	3	3721	school.are	fighting	87	0	fight	skills		Level  1: dagger              75%      hand to hand        75%       //           recall             100%       // Level  3: kick                75%      
+1793707005	cmd	Trentlin	3	3721	school.are	fighting	87	0	fight	kick		Your kick misses the educated goblin.
+1793707013	cmd	Trentlin	3	3721	school.are	fighting	87	0	fight	kick		Your kick scratches the educated goblin.
+1793707018	cmd	Trentlin	3	3721	school.are	fighting	83	0	fight	kick		Your kick scratches the educated goblin.
+1793707024	cmd	Trentlin	3	3721	school.are	standing	83	0	-	get	all cor	You get a sugar skull from corpse of the educated goblin. // Diploma: you can't carry that many items.
+1793707027	cmd	Trentlin	3	3721	school.are	standing	92	0	-	eat	sk	You eat a sugar skull. // Your eyes tingle. // Your awareness improves.
+1793707029	cmd	Trentlin	3	3721	school.are	standing	97	0	-	get	all cor	You get a mud school diploma from corpse of the educated goblin.
+1793707030	cmd	Trentlin	3	3721	school.are	standing	97	0	-	score		| Name:       Trentlin | Level:       3 | Class:        Monk | // | Played:     25 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793707031	cmd	Trentlin	3	3721	school.are	standing	97	0	-	attribute		Str: 13(13)  Int: 16(16)  Wis: 16(16)  Dex: 13(13)  Con: 21(21)
+1793707032	cmd	Trentlin	3	3721	school.are	standing	97	0	-	wear	di	You hold a mud school diploma in your hands.
+1793707032	cmd	Trentlin	3	3721	school.are	standing	97	0	-	attribute		Str: 13(13)  Int: 16(20)  Wis: 16(22)  Dex: 13(13)  Con: 21(25)
+1793707037	cmd	Trentlin	3	3721	school.are	standing	97	0	-	inventory		You are carrying: // ( 2) a sprig of angelica //      an alfalfa sprout
+1793707042	cmd	Trentlin	3	3721	school.are	standing	97	0	-	heal		You can't do that here.
+1793707043	cmd	Trentlin	3	3721	school.are	standing	97	0	-	affect		You are affected by: // Spell: 'armor'. // Spell: 'detect hidden'.
+1793707045	cmd	Trentlin	3	3721	school.are	standing	97	0	-	gainlist		Abilities for a level 3 monk of the monk guild: 16 learned, 18 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  - ride (3 trains):
