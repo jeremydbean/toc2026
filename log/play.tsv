@@ -18999,3 +18999,93 @@
 1793707042	cmd	Trentlin	3	3721	school.are	standing	97	0	-	heal		You can't do that here.
 1793707043	cmd	Trentlin	3	3721	school.are	standing	97	0	-	affect		You are affected by: // Spell: 'armor'. // Spell: 'detect hidden'.
 1793707045	cmd	Trentlin	3	3721	school.are	standing	97	0	-	gainlist		Abilities for a level 3 monk of the monk guild: 16 learned, 18 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  - ride (3 trains):
+1793707062	cmd	Trentlin	3	3721	school.are	standing	97	0	-	look		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every
+1793707065	cmd	Trentlin	3	3721	school.are	standing	97	0	-	open	north	Ok.
+1793707066	cmd	Trentlin	3	3721	school.are	standing	97	0	-	look	sign	You have graduated from Mud School!  Take your diploma...if you can. // Go 'NORTH' from here to visit our arena.  There are plenty of low-level // monsters, but DON'T attack other players.
+1793707067	cmd	Trentlin	3	3722	school.are	standing	97	0	-	north		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793707069	cmd	Trentlin	3	3729	school.are	standing	97	0	-	north		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793707071	cmd	Trentlin	3	3729	school.are	standing	97	0	-	kill	li	Your punch misses the lizard. // Your punch scratches the lizard.
+1793707074	cmd	Trentlin	3	3729	school.are	fighting	97	0	fight	kick		Your kick scratches the lizard.
+1793707077	cmd	Trentlin	3	3729	school.are	fighting	97	0	fight	kick		Your kick scratches the lizard.
+1793707083	cmd	Trentlin	3	3729	school.are	fighting	96	0	fight	kick		Your kick scratches the lizard.
+1793707087	cmd	Trentlin	3	3729	school.are	fighting	94	0	fight	kick		Your kick scratches the lizard.
+1793707092	cmd	Trentlin	3	3729	school.are	fighting	94	0	fight	kick		Your kick scratches the lizard.
+1793707096	cmd	Trentlin	3	3729	school.are	fighting	94	0	fight	kick		Your kick scratches the lizard.
+1793707101	cmd	Trentlin	3	3729	school.are	fighting	97	0	fight	kick		Your kick scratches the lizard.
+1793707105	cmd	Trentlin	3	3729	school.are	fighting	97	0	fight	kick		Your kick misses the lizard.
+1793707108	cmd	Trentlin	3	3729	school.are	fighting	96	0	fight	kick		Your kick scratches the lizard.
+1793707111	cmd	Trentlin	3	3729	school.are	fighting	96	0	fight	kick		Your kick misses the lizard.
+1793707114	cmd	Trentlin	3	3729	school.are	fighting	94	0	fight	kick		Your kick misses the lizard.
+1793707119	cmd	Trentlin	3	3729	school.are	standing	94	0	-	look		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793707120	cmd	Trentlin	3	3734	school.are	standing	94	0	-	north		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793707121	cmd	Trentlin	3	3734	school.are	standing	94	0	-	score		| Name:       Trentlin | Level:       3 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793707122	cmd	Trentlin	3	3739	school.are	standing	94	0	-	north		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793707123	cmd	Trentlin	3	3744	school.are	standing	94	0	-	north		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793707125	cmd	Trentlin	3	3744	school.are	standing	94	0	-	kill	ra	Your punch misses the rabbit. // Your punch scratches the rabbit.
+1793707128	cmd	Trentlin	3	3744	school.are	fighting	94	0	fight	kick		Your kick scratches the rabbit.
+1793707134	cmd	Trentlin	4	3760	school.are	standing	87	0	-	up		A Safe Room //   You are in a safe room, away from all the mean rabbits and snails of the Arena. // You can rest here, and go up to go back to the Temple of Devota.
+1793707135	cmd	Trentlin	4	3760	school.are	standing	87	0	-	score		| Name:       Trentlin | Level:       4 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793707136	cmd	Trentlin	4	4207	dresden.are	standing	87	0	-	up		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793707137	cmd	Trentlin	4	3700	school.are	standing	87	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793707138	cmd	Trentlin	4	3757	school.are	standing	87	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793707138	cmd	Trentlin	4	3758	school.are	standing	87	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 
+1793707139	cmd	Trentlin	4	3758	school.are	standing	87	0	-	train		You have 1 training sessions. // You can train: str wis dex hp mana.
+1793707142	cmd	Trentlin	4	3758	school.are	standing	87	0	-	train	wis	Your wisdom increases!
+1793707143	cmd	Trentlin	4	3757	school.are	standing	87	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793707143	cmd	Trentlin	4	3759	school.are	standing	87	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with
+1793707144	cmd	Trentlin	4	3759	school.are	standing	87	0	-	practice		recall             100%  dagger              75%  hand to hand        75%   // kick                75%   // You have 19 practice sessions left.
+1793707146	cmd	Trentlin	4	3759	school.are	standing	87	0	-	skills		Level  1: dagger              75%      hand to hand        75%       //           recall             100%       // Level  3: kick                75%      
+1793707152	cmd	Trentlin	4	3759	school.are	standing	87	0	-	gain	convert	The adept of Soulcrusher helps you apply your practice to training
+1793707152	cmd	Trentlin	4	3757	school.are	standing	87	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793707152	cmd	Trentlin	4	3758	school.are	standing	87	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 
+1793707153	cmd	Trentlin	4	3758	school.are	standing	87	0	-	west		Alas, you cannot go that way.
+1793707153	cmd	Trentlin	4	3758	school.are	standing	87	0	-	train		You have 1 training sessions. // You can train: str wis dex hp mana.
+1793707154	cmd	Trentlin	4	3758	school.are	standing	87	0	-	train	wis	Your wisdom increases!
+1793707156	cmd	Trentlin	4	3758	school.are	standing	87	0	-	attribute		Str: 13(13)  Int: 16(20)  Wis: 18(22)  Dex: 13(13)  Con: 21(25)
+1793707159	cmd	Trentlin	4	3757	school.are	standing	87	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793707159	cmd	Trentlin	4	3700	school.are	standing	87	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793707160	cmd	Trentlin	4	3700	school.are	standing	87	0	-	south		The door is closed.
+1793707161	cmd	Trentlin	4	4207	dresden.are	standing	87	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793707162	cmd	Trentlin	4	4208	dresden.are	standing	87	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793707165	cmd	Trentlin	4	4208	dresden.are	standing	87	0	-	look	in pit	The donation pit contains: //      Nothing.
+1793707167	cmd	Trentlin	4	4208	dresden.are	standing	87	0	-	stash		Your stash holds 72 of 75 things. //     1) Trentlin's level 54 gear //     2) the Heart Guard of the Demon
+1793707192	cmd	Trentlin	4	4208	dresden.are	standing	100	9	-	stash	get light	You take a *twinkling* ball of light out of your stash.
+1793707195	cmd	Trentlin	4	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:       4 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793707196	cmd	Trentlin	4	4208	dresden.are	standing	100	0	-	wear	li	You must be level 14 to use this object.
+1793707201	cmd	Trentlin	4	4208	dresden.are	standing	100	0	-	stash		Your stash holds 71 of 75 things. //     1) Trentlin's level 54 gear //     2) the Heart Guard of the Demon
+1793707218	cmd	Trentlin	4	4208	dresden.are	standing	100	7	-	stash	get dip	You take a mud school diploma out of your stash.
+1793707220	cmd	Trentlin	4	4208	dresden.are	standing	100	0	-	drop	dip	You drop a mud school diploma.
+1793707221	cmd	Trentlin	4	4208	dresden.are	standing	100	0	-	sacrifice	dip	The Gods give you 0 copper coins for your sacrifice.
+1793707223	cmd	Trentlin	4	4208	dresden.are	standing	100	4	-	stash	get dagger	You take an assassin's dagger out of your stash.
+1793707223	cmd	Trentlin	4	4208	dresden.are	standing	100	5	-	stash	get dagger	You take (Flaming) the Crystalline Dagger of Wonders out of your stash.
+1793707224	cmd	Trentlin	4	4208	dresden.are	standing	100	4	-	stash	get dagger	You take a Silver star-hilted dagger out of your stash.
+1793707225	cmd	Trentlin	4	4208	dresden.are	standing	100	4	-	stash	get dagger	You take a long slim dagger out of your stash.
+1793707228	cmd	Trentlin	4	4208	dresden.are	standing	100	0	-	wear	long	You must be level 8 to use this object.
+1793707234	cmd	Trentlin	4	4208	dresden.are	standing	100	4	-	stash	put crystall	You put (Flaming) the Crystalline Dagger of Wonders away for safe keeping.
+1793707238	cmd	Trentlin	4	4208	dresden.are	standing	100	5	-	stash	put ass	You put an assassin's dagger away for safe keeping.
+1793707241	cmd	Trentlin	4	4208	dresden.are	standing	100	4	-	stash	put star	You put a Silver star-hilted dagger away for safe keeping.
+1793707242	cmd	Trentlin	4	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793707244	cmd	Trentlin	4	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793707247	cmd	Trentlin	4	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793707247	cmd	Trentlin	4	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793707247	cmd	Trentlin	4	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793707249	cmd	Trentlin	4	2428	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793707249	cmd	Trentlin	4	2429	dresden.are	standing	100	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the
+1793707249	cmd	Trentlin	4	2430	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793707250	cmd	Trentlin	4	2431	dresden.are	standing	100	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793707251	cmd	Trentlin	4	2431	dresden.are	standing	100	0	-	south		The gate is closed.
+1793707252	cmd	Trentlin	4	2431	dresden.are	standing	100	0	-	open	south	Ok.
+1793707252	cmd	Trentlin	4	2432	dresden.are	standing	100	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793707253	cmd	Trentlin	4	3505	midennir.are	standing	100	0	-	south		The Trail to Miden'nir //   You are in a light forest. A path leads south, but the passage to the // east is easy enough. To the west, smoke can be seen rising above the
+1793707254	cmd	Trentlin	4	3507	midennir.are	standing	100	0	-	south		A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned
+1793707255	cmd	Trentlin	4	3507	midennir.are	standing	100	0	-	scan		the goblin                         -to the West. // the goblin                         -to the West.
+1793707256	cmd	Trentlin	4	3508	midennir.are	standing	100	0	-	west		On a Small Path //   A path is here, leading east and south through the dark woods of // Miden'nir. Mountains slash the scenery to the west of here.
+1793707260	cmd	Trentlin	4	3508	midennir.are	fighting	96	0	fight	kick		Your kick scratches the goblin.
+1793707265	cmd	Trentlin	4	3508	midennir.are	fighting	94	0	fight	kick		Your kick misses the goblin.
+1793707271	cmd	Trentlin	4	3508	midennir.are	fighting	87	0	fight	kick		Your kick scratches the goblin.
+1793707276	cmd	Trentlin	4	3508	midennir.are	fighting	82	0	fight	kick		Your kick misses the goblin.
+1793707282	cmd	Trentlin	4	3508	midennir.are	fighting	78	0	fight	kick		Your kick scratches the goblin.
+1793707289	cmd	Trentlin	4	3508	midennir.are	fighting	73	0	fight	kick		Your kick scratches the goblin.
+1793707294	cmd	Trentlin	4	4207	dresden.are	fighting	75	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793707296	cmd	Trentlin	4	4208	dresden.are	standing	75	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793707298	session	Trentlin	4	4208	dresden.are	quit	1238s	-50 levels	-150645 exp	+3631921 copper	6 kills	0 deaths	0 quests	421 commands	1 refused	coin: loot 6p 93g 19s 21c, spent 3p 30g

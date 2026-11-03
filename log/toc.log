@@ -253797,3 +253797,145 @@ Tue Nov  3 11:57:17 2026 :: Log Trentlin [3721]: i
 Tue Nov  3 11:57:22 2026 :: Log Trentlin [3721]: heal
 Tue Nov  3 11:57:23 2026 :: Log Trentlin [3721]: aff
 Tue Nov  3 11:57:25 2026 :: Log Trentlin [3721]: gainlist
+Tue Nov  3 11:57:42 2026 :: Log Trentlin [3721]: l
+Tue Nov  3 11:57:45 2026 :: Log Trentlin [3721]: open north
+Tue Nov  3 11:57:46 2026 :: Log Trentlin [3721]: l sign
+Tue Nov  3 11:57:47 2026 :: Log Trentlin [3721]: n
+Tue Nov  3 11:57:47 2026 :: Log Trentlin [3722]: arrived (South Wall of Arena) from 3721
+Tue Nov  3 11:57:49 2026 :: Log Trentlin [3722]: n
+Tue Nov  3 11:57:49 2026 :: Log Trentlin [3729]: arrived (Arena) from 3722
+Tue Nov  3 11:57:51 2026 :: Log Trentlin [3729]: k li
+Tue Nov  3 11:57:54 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:57:57 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:03 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:07 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:12 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:16 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:21 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:25 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:28 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:31 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:34 2026 :: Log Trentlin [3729]: kick
+Tue Nov  3 11:58:36 2026 :: Log Trentlin [3729]: killed the lizard
+Tue Nov  3 11:58:36 2026 :: Log Trentlin [3729]: coin +1 copper
+Tue Nov  3 11:58:39 2026 :: Log Trentlin [3729]: l
+Tue Nov  3 11:58:40 2026 :: Log Trentlin [3729]: n
+Tue Nov  3 11:58:40 2026 :: Log Trentlin [3734]: arrived (Center of Arena) from 3729
+Tue Nov  3 11:58:41 2026 :: Log Trentlin [3734]: sco
+Tue Nov  3 11:58:42 2026 :: Log Trentlin [3734]: n
+Tue Nov  3 11:58:42 2026 :: Log Trentlin [3739]: arrived (Arena) from 3734
+Tue Nov  3 11:58:43 2026 :: Log Trentlin [3739]: n
+Tue Nov  3 11:58:43 2026 :: Log Trentlin [3744]: arrived (North Wall of Arena) from 3739
+Tue Nov  3 11:58:45 2026 :: Log Trentlin [3744]: k ra
+Tue Nov  3 11:58:48 2026 :: Log Trentlin [3744]: kick
+Tue Nov  3 11:58:48 2026 :: Log Trentlin [3744]: level 3 -> 4 (earned)
+Tue Nov  3 11:58:48 2026 :: Trentlin has achieved level 4!
+Tue Nov  3 11:58:48 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261103_115848.level (PRESTORE Trentlin to see it).
+Tue Nov  3 11:58:48 2026 :: Log Trentlin [3744]: killed the rabbit
+Tue Nov  3 11:58:48 2026 :: Log Trentlin [3744]: coin +1 copper
+Tue Nov  3 11:58:54 2026 :: Log Trentlin [3744]: u
+Tue Nov  3 11:58:54 2026 :: Log Trentlin [3760]: arrived (A Safe Room) from 3744
+Tue Nov  3 11:58:55 2026 :: Log Trentlin [3760]: sco
+Tue Nov  3 11:58:56 2026 :: Log Trentlin [3760]: u
+Tue Nov  3 11:58:56 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3760
+Tue Nov  3 11:58:57 2026 :: Log Trentlin [4207]: u
+Tue Nov  3 11:58:57 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov  3 11:58:58 2026 :: Log Trentlin [3700]: n
+Tue Nov  3 11:58:58 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3700
+Tue Nov  3 11:58:58 2026 :: Log Trentlin [3757]: w
+Tue Nov  3 11:58:58 2026 :: Log Trentlin [3758]: arrived (Eclipse's Training Room) from 3757
+Tue Nov  3 11:58:59 2026 :: Log Trentlin [3758]: train
+Tue Nov  3 11:59:02 2026 :: Log Trentlin [3758]: train wis
+Tue Nov  3 11:59:03 2026 :: Log Trentlin [3758]: e
+Tue Nov  3 11:59:03 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3758
+Tue Nov  3 11:59:03 2026 :: Log Trentlin [3757]: e
+Tue Nov  3 11:59:03 2026 :: Log Trentlin [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Tue Nov  3 11:59:04 2026 :: Log Trentlin [3759]: prac
+Tue Nov  3 11:59:06 2026 :: Log Trentlin [3759]: sk
+Tue Nov  3 11:59:12 2026 :: Log Trentlin [3759]: gain convert
+Tue Nov  3 11:59:12 2026 :: Log Trentlin [3759]: w
+Tue Nov  3 11:59:12 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3759
+Tue Nov  3 11:59:12 2026 :: Log Trentlin [3757]: w
+Tue Nov  3 11:59:12 2026 :: Log Trentlin [3758]: arrived (Eclipse's Training Room) from 3757
+Tue Nov  3 11:59:13 2026 :: Log Trentlin [3758]: w
+Tue Nov  3 11:59:13 2026 :: Log Trentlin [3758]: train
+Tue Nov  3 11:59:14 2026 :: Log Trentlin [3758]: train wis
+Tue Nov  3 11:59:16 2026 :: Log Trentlin [3758]: att
+Tue Nov  3 11:59:19 2026 :: Log Trentlin [3758]: e
+Tue Nov  3 11:59:19 2026 :: Log Trentlin [3757]: arrived (A Room in Mud School) from 3758
+Tue Nov  3 11:59:19 2026 :: Log Trentlin [3757]: s
+Tue Nov  3 11:59:19 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 3757
+Tue Nov  3 11:59:20 2026 :: Log Trentlin [3700]: s
+Tue Nov  3 11:59:21 2026 :: Log Trentlin [3700]: d
+Tue Nov  3 11:59:21 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3700
+Tue Nov  3 11:59:22 2026 :: Log Trentlin [4207]: w
+Tue Nov  3 11:59:22 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov  3 11:59:25 2026 :: Log Trentlin [4208]: l in pit
+Tue Nov  3 11:59:27 2026 :: Log Trentlin [4208]: stash
+Tue Nov  3 11:59:52 2026 :: Log Trentlin [4208]: stash get light
+Tue Nov  3 11:59:52 2026 :: Log Trentlin [4208]: withdrew a *twinkling* ball of light (vnum 24002) from the stash
+Tue Nov  3 11:59:55 2026 :: Log Trentlin [4208]: sco
+Tue Nov  3 11:59:56 2026 :: Log Trentlin [4208]: wear li
+Tue Nov  3 12:00:01 2026 :: Log Trentlin [4208]: stash
+Tue Nov  3 12:00:18 2026 :: Log Trentlin [4208]: stash get dip
+Tue Nov  3 12:00:18 2026 :: Log Trentlin [4208]: withdrew a mud school diploma (vnum 3715) from the stash
+Tue Nov  3 12:00:20 2026 :: Log Trentlin [4208]: drop dip
+Tue Nov  3 12:00:21 2026 :: Log Trentlin [4208]: sac dip
+Tue Nov  3 12:00:23 2026 :: Log Trentlin [4208]: stash get dagger
+Tue Nov  3 12:00:23 2026 :: Log Trentlin [4208]: withdrew an assassin's dagger (vnum 16051) from the stash
+Tue Nov  3 12:00:23 2026 :: Log Trentlin [4208]: stash get dagger
+Tue Nov  3 12:00:23 2026 :: Log Trentlin [4208]: withdrew (Flaming) the Crystalline Dagger of Wonders (vnum 10006) from the stash
+Tue Nov  3 12:00:24 2026 :: Log Trentlin [4208]: stash get dagger
+Tue Nov  3 12:00:24 2026 :: Log Trentlin [4208]: withdrew a Silver star-hilted dagger (vnum 10049) from the stash
+Tue Nov  3 12:00:25 2026 :: Log Trentlin [4208]: stash get dagger
+Tue Nov  3 12:00:25 2026 :: Log Trentlin [4208]: withdrew a long slim dagger (vnum 5252) from the stash
+Tue Nov  3 12:00:28 2026 :: Log Trentlin [4208]: wear long
+Tue Nov  3 12:00:34 2026 :: Log Trentlin [4208]: stash put crystall
+Tue Nov  3 12:00:34 2026 :: Log Trentlin [4208]: stashed (Flaming) the Crystalline Dagger of Wonders (vnum 10006)
+Tue Nov  3 12:00:38 2026 :: Log Trentlin [4208]: stash put ass
+Tue Nov  3 12:00:38 2026 :: Log Trentlin [4208]: stashed an assassin's dagger (vnum 16051)
+Tue Nov  3 12:00:40 2026 :: Sock.sinaddr:  5.161.113.195
+Tue Nov  3 12:00:40 2026 :: EOF encountered on read.
+Tue Nov  3 12:00:41 2026 :: Log Trentlin [4208]: stash put star
+Tue Nov  3 12:00:41 2026 :: Log Trentlin [4208]: stashed a Silver star-hilted dagger (vnum 10049)
+Tue Nov  3 12:00:42 2026 :: Log Trentlin [4208]: l
+Tue Nov  3 12:00:44 2026 :: Log Trentlin [4208]: e
+Tue Nov  3 12:00:44 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov  3 12:00:47 2026 :: Log Trentlin [4207]: e
+Tue Nov  3 12:00:47 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 12:00:47 2026 :: Log Trentlin [4202]: e
+Tue Nov  3 12:00:47 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 12:00:47 2026 :: Log Trentlin [4201]: e
+Tue Nov  3 12:00:47 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov  3 12:00:49 2026 :: Log Trentlin [2427]: s
+Tue Nov  3 12:00:49 2026 :: Log Trentlin [2428]: arrived (Main Processional.) from 2427
+Tue Nov  3 12:00:49 2026 :: Log Trentlin [2428]: s
+Tue Nov  3 12:00:49 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2428
+Tue Nov  3 12:00:49 2026 :: Log Trentlin [2429]: s
+Tue Nov  3 12:00:49 2026 :: Log Trentlin [2430]: arrived (Main Processional.) from 2429
+Tue Nov  3 12:00:50 2026 :: Log Trentlin [2430]: s
+Tue Nov  3 12:00:50 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Tue Nov  3 12:00:51 2026 :: Log Trentlin [2431]: s
+Tue Nov  3 12:00:52 2026 :: Log Trentlin [2431]: open south
+Tue Nov  3 12:00:52 2026 :: Log Trentlin [2431]: s
+Tue Nov  3 12:00:52 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Tue Nov  3 12:00:53 2026 :: Log Trentlin [2432]: s
+Tue Nov  3 12:00:53 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 2432
+Tue Nov  3 12:00:54 2026 :: Log Trentlin [3505]: s
+Tue Nov  3 12:00:54 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3505
+Tue Nov  3 12:00:55 2026 :: Log Trentlin [3507]: sca
+Tue Nov  3 12:00:56 2026 :: Log Trentlin [3507]: w
+Tue Nov  3 12:00:56 2026 :: Log Trentlin [3508]: arrived (On a Small Path) from 3507
+Tue Nov  3 12:01:00 2026 :: Log Trentlin [3508]: kick
+Tue Nov  3 12:01:05 2026 :: Log Trentlin [3508]: kick
+Tue Nov  3 12:01:11 2026 :: Log Trentlin [3508]: kick
+Tue Nov  3 12:01:16 2026 :: Log Trentlin [3508]: kick
+Tue Nov  3 12:01:22 2026 :: Log Trentlin [3508]: kick
+Tue Nov  3 12:01:29 2026 :: Log Trentlin [3508]: kick
+Tue Nov  3 12:01:34 2026 :: Log Trentlin [3508]: reca
+Tue Nov  3 12:01:34 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3508
+Tue Nov  3 12:01:36 2026 :: Log Trentlin [4207]: w
+Tue Nov  3 12:01:36 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov  3 12:01:38 2026 :: Log Trentlin [4208]: quit
+Tue Nov  3 12:01:38 2026 :: Trentlin has quit.
+Tue Nov  3 12:01:38 2026 :: [QUIT] Player rejoined the real world.
