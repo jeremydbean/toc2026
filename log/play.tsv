@@ -18031,3 +18031,26 @@
 1793671283	cmd	Alaric	57	4208	dresden.are	standing	64	7	-	stash	put helm	You put battle helmet away for safe keeping.
 1793671284	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	inventory		You are carrying: //      (Invis) (Magical) The Glass Sword //      (Glowing) British's amulet
 1793671287	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	compare	scep	A) British's sceptre (level 54) // B) the Crystalline Sceptre of Commanding (level 50), worn // Slot: held.  Your damage comes from weapons.
+1793671295	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	wear	scep	You stop using the Crystalline Sceptre of Commanding. // You hold British's sceptre in your hands.
+1793671299	cmd	Alaric	57	4208	dresden.are	standing	63	10	-	stash	put scep	You put the Crystalline Sceptre of Commanding away for safe keeping.
+1793671302	cmd	Alaric	57	4208	dresden.are	standing	63	0	-	compare	aura	A) an aura of power (level 40) // B) Divine Breast Plate (level 51), worn // Slot: body.  Your damage comes from weapons.
+1793671314	cmd	Alaric	57	4208	dresden.are	standing	63	0	-	inventory		You are carrying: //      (Invis) (Magical) The Glass Sword //      (Glowing) British's amulet
+1793671319	cmd	Alaric	57	4208	dresden.are	standing	63	0	-	compare	amulet	A) British's amulet (level 54) // B) the Crystalline Royal Cloak (level 50), worn // Slot: neck.  Your damage comes from weapons.
+1793671326	cmd	Alaric	57	4208	dresden.are	standing	63	0	-	inventory		You are carrying: //      (Invis) (Magical) The Glass Sword //      (Glowing) British's amulet
+1793671335	cmd	Alaric	57	4208	dresden.are	standing	63	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793671336	cmd	Alaric	57	4208	dresden.are	standing	63	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793671398	cmd	Alaric	57	4208	dresden.are	standing	63	0	-	inventory		You are carrying: //      (Invis) (Magical) The Glass Sword //      (Glowing) British's amulet
+1793671407	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	compare	glass	A) The Glass Sword (level 50) // B) nothing -- the slot is empty // Slot: wield.  Your damage comes from weapons.
+1793671414	cmd	Alaric	57	4208	dresden.are	standing	64	11	-	stash	put glass	You put The Glass Sword away for safe keeping.
+1793671416	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	wake		You are already standing.
+1793671416	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793671417	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	achievements		========================= ACHIEVEMENTS ========================= // Points: 2140 / 11721     Earned: 118 / 389 // Marks to spend: 2140 (see REDEEM)
+1793671424	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	achievements	collection	==================== Collection ACHIEVEMENTS ==================== // [  0%] The World in Your Hands  50 points //       Acquire the Power of the world from the Crypt. (0/1)
+1793671587	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	wake		You are already standing.
+1793671587	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793671589	cmd	Alaric	57	4201	dresden.are	standing	64	0	-	run	e 3	Before the Altar. // [Exits: north east south west up] // Halls of Healing.
+1793671589	cmd	Alaric	57	2433	dresden.are	standing	64	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793671590	cmd	Alaric	57	2433	dresden.are	standing	64	0	-	north		Alas, you cannot go that way.
+1793671592	cmd	Alaric	57	2433	dresden.are	standing	64	0	-	wake		You are already standing.
+1793671592	cmd	Alaric	57	2405	dresden.are	standing	64	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793671593	cmd	Alaric	57	2406	dresden.are	standing	64	0	-	north		Northwestern Oak Tree Square. //   This is the northwestern corner of Oak Tree Square. // [Exits: east south]

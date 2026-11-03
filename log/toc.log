@@ -251766,3 +251766,35 @@ Tue Nov  3 02:01:24 2026 :: Log Alaric [4208]: i
 Tue Nov  3 02:01:27 2026 :: Log Alaric [4208]: comp scep
 Tue Nov  3 02:01:31 2026 :: Sock.sinaddr:  3.149.57.90
 Tue Nov  3 02:01:32 2026 :: EOF encountered on read.
+Tue Nov  3 02:01:35 2026 :: Log Alaric [4208]: wear scep
+Tue Nov  3 02:01:39 2026 :: Log Alaric [4208]: stash put scep
+Tue Nov  3 02:01:39 2026 :: Log Alaric [4208]: stashed the Crystalline Sceptre of Commanding (vnum 10000)
+Tue Nov  3 02:01:42 2026 :: Log Alaric [4208]: comp aura
+Tue Nov  3 02:01:54 2026 :: Log Alaric [4208]: i
+Tue Nov  3 02:01:59 2026 :: Log Alaric [4208]: comp amulet
+Tue Nov  3 02:02:06 2026 :: Log Alaric [4208]: i
+Tue Nov  3 02:02:15 2026 :: Log Alaric [4208]: score
+Tue Nov  3 02:02:16 2026 :: Log Alaric [4208]: eq
+Tue Nov  3 02:03:05 2026 :: Treasure goblin: vanished from room 24312 (The Black Square, chess.are) (too long in one area).
+Tue Nov  3 02:03:18 2026 :: Log Alaric [4208]: i
+Tue Nov  3 02:03:27 2026 :: Log Alaric [4208]: comp glass
+Tue Nov  3 02:03:34 2026 :: Log Alaric [4208]: stash put glass
+Tue Nov  3 02:03:34 2026 :: Log Alaric [4208]: stashed The Glass Sword (vnum 7663)
+Tue Nov  3 02:03:36 2026 :: Log Alaric [4208]: wake
+Tue Nov  3 02:03:36 2026 :: Log Alaric [4208]: l
+Tue Nov  3 02:03:37 2026 :: Log Alaric [4208]: ach
+Tue Nov  3 02:03:44 2026 :: Log Alaric [4208]: ach collection
+Tue Nov  3 02:06:27 2026 :: Log Alaric [4208]: wake
+Tue Nov  3 02:06:27 2026 :: Log Alaric [4208]: l
+Tue Nov  3 02:06:29 2026 :: Log Alaric [4208]: r e 3
+Tue Nov  3 02:06:29 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Tue Nov  3 02:06:29 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 02:06:29 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 02:06:29 2026 :: Log Alaric [4201]: n
+Tue Nov  3 02:06:29 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Tue Nov  3 02:06:30 2026 :: Log Alaric [2433]: n
+Tue Nov  3 02:06:32 2026 :: Log Alaric [2433]: wake
+Tue Nov  3 02:06:32 2026 :: Log Alaric [2433]: e
+Tue Nov  3 02:06:32 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2433
+Tue Nov  3 02:06:33 2026 :: Log Alaric [2405]: n
+Tue Nov  3 02:06:33 2026 :: Log Alaric [2406]: arrived (Northwestern Oak Tree Square.) from 2405
