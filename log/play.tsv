@@ -20270,3 +20270,112 @@
 1793749129	cmd	Alaric	57	6405	sea.are	standing	62	0	-	down		Decent into the Depths //   You are under water. As you look around you, you notice a // hole in the reef behind you, and below you is the sea floor.	-	+
 1793749131	cmd	Alaric	57	6405	sea.are	standing	62	0	-	kill	eel	Your slash grazes a giant eel. [-8] // Your slash mauls a giant eel. [-21]	-	-
 1793749172	cmd	Alaric	57	6405	sea.are	fighting	30	0	fight	kick		Your kick misses a giant eel. [-0]	-	-
+1793749202	cmd	Alaric	57	2497	dresden.are	standing	28	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793749204	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	quest qp=930->930 daily=4->4 coin=+61651656
+1793749204	cmd	Alaric	57	2497	dresden.are	standing	28	18	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 2 in a row! A +10% bonus has been added!'	success:-	+
+1793749205	cmd	Alaric	57	2497	dresden.are	standing	28	5	-	aquest	ga no	Wise choice. You safely collect 41 quest points.	-	-
+1793749207	cmd	Alaric	57	2497	dresden.are	standing	28	0	-	remove	long	You stop using a long sword.	-	-
+1793749210	cmd	Alaric	57	2497	dresden.are	standing	28	0	-	drop	long	You drop a long sword.	-	-
+1793749211	cmd	Alaric	57	2497	dresden.are	standing	28	0	-	sacrifice	long	The Gods give you 20 copper coins for your sacrifice.	-	-
+1793749212	cmd	Alaric	57	2497	dresden.are	standing	28	0	-	wake		You are already standing.	-	-
+1793749212	cmd	Alaric	57	2497	dresden.are	standing	28	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793749215	cmd	Alaric	57	2401	dresden.are	standing	28	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793749217	cmd	Alaric	57	2401	dresden.are	standing	28	0	-	list		[Lv Price] Item // [ 0         2s] a sugar skull. // [ 0         4s] a painted skull mask.	-	+
+1793749220	cmd	Alaric	57	2404	dresden.are	standing	28	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793749220	cmd	Alaric	57	2427	dresden.are	standing	28	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793749220	cmd	Alaric	57	4201	dresden.are	standing	28	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793749221	cmd	Alaric	57	4202	dresden.are	standing	28	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793749221	cmd	Alaric	57	4203	dresden.are	standing	28	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793749222	cmd	Alaric	57	4210	dresden.are	standing	28	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793749224	cmd	Alaric	57	4210	dresden.are	standing	28	0	-	sleep		You go to sleep.	-	-
+1793749350	cmd	Alaric	57	4210	dresden.are	sleeping	51	0	-	wake		You wake and stand up.	-	-
+1793749351	cmd	Alaric	57	4210	dresden.are	standing	51	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793749351	cmd	Alaric	57	4203	dresden.are	standing	51	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793749352	cmd	Alaric	57	4202	dresden.are	standing	51	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793749352	cmd	Alaric	57	4201	dresden.are	standing	51	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793749352	cmd	Alaric	57	2427	dresden.are	standing	51	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793749352	cmd	Alaric	57	2404	dresden.are	standing	51	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793749353	cmd	Alaric	57	2401	dresden.are	standing	51	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793749353	cmd	Alaric	57	2426	dresden.are	standing	51	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road	-	+
+1793749354	cmd	Alaric	57	2426	dresden.are	standing	51	0	-	open		It's already open.	-	-
+1793749355	cmd	Alaric	57	3502	midennir.are	standing	51	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance	-	+
+1793749356	cmd	Alaric	57	3501	midennir.are	standing	51	0	-	north		The Lane //   You are strolling along a pleasant, shady lane. The road is lined on both // sides by tall, stately trees which lend the scene with a sense of quiet	-	+
+1793749356	cmd	Alaric	57	3500	midennir.are	standing	51	0	-	north		The Plains //   You are standing on the plains. This is a vast desolate place where the // wind can howl undisturbed since nothing but you bars its way. However you	-	+
+1793749357	cmd	Alaric	57	21	connect.are	standing	51	0	-	nw		A twisting path //   A small twisting path leads off of the northeastern plains. Way to the // southwest you can make out the high walls of the city of dresden, and from	-	+
+1793749358	cmd	Alaric	57	22	connect.are	standing	53	0	-	west		Before the great circle //   You stand here before a monument, that stands out of time and space.  // Impossibly large stones make up what looks like a ritual or meeting 	-	+
+1793749358	cmd	Alaric	57	23	connect.are	standing	53	0	-	south		The Great Portal //   Here stands one of the last of the great portals. These magical gateways were // placed here in this land, by the elder race. Each was supposed to lead to	-	+
+1793749359	cmd	Alaric	57	10000	glitter.are	standing	53	0	-	enter	po	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Before the crystal bridge.	-	+
+1793749365	cmd	Alaric	57	10001	glitter.are	standing	53	0	-	north		A crystal bridge. //   You are walking on a crystal bridge. In the far the Glittering Palace // towers above you ... you also seem to hear some noises now.	-	+
+1793749365	cmd	Alaric	57	10002	glitter.are	standing	53	0	-	north		Royal Island. //   You step off the bridge and clearly hear sounds of a raging battle ... // OHHH MY GOD .... THE PALACE IS UNDER ATTACK !!! ....	-	+
+1793749366	cmd	Alaric	57	10002	glitter.are	standing	53	0	-	north		The gate is closed.	-	-
+1793749366	cmd	Alaric	57	10002	glitter.are	standing	53	0	-	north		The gate is closed.	-	-
+1793749366	cmd	Alaric	57	10002	glitter.are	standing	53	0	-	open		Ok.	-	-
+1793749367	cmd	Alaric	57	10003	glitter.are	standing	53	0	-	north		The Glitter Palace's Grand Gate. //   Once proud palace guards lie on the ground ... nothing much remains of // them but a bloody pulp, Jeeezzz you sure you wanna get caught up in the middle	-	+
+1793749367	cmd	Alaric	57	10003	glitter.are	standing	53	0	-	open		Ok.	-	-
+1793749368	cmd	Alaric	57	10004	glitter.are	standing	53	0	-	north		A large hall. //   The hall is really big. You notice its splendidly decorated too ... hmm, // those gold embroidered rugs would really liven up your place.	-	+
+1793749369	cmd	Alaric	57	10027	glitter.are	standing	53	0	-	run	n	A large hall. // [Exits: north south] // A large hall.	-	+
+1793749369	cmd	Alaric	57	10027	glitter.are	resting	53	0	-	wake		You stand up.	-	-
+1793749370	cmd	Alaric	57	10028	glitter.are	standing	53	0	-	up		The royal stairway. //   The royal stairway leads up to the second floor and down to the second. // [Exits: up down]	-	-
+1793749370	cmd	Alaric	57	10029	glitter.are	standing	53	0	-	up		A grand hallway. //   The Palace Guards that defended the staircase lie dead at your feet. // [Exits: north down]	-	+
+1793749371	cmd	Alaric	57	10030	glitter.are	standing	53	0	-	north		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...	-	+
+1793749371	cmd	Alaric	57	10031	glitter.are	standing	53	0	-	north		An intersection. //   You get the awkward feeling again that somebody is looking at you ... // jeeeeez man !!!, pull yourself together, you're seeing ghosts.	-	+
+1793749373	cmd	Alaric	57	10033	glitter.are	standing	53	0	-	west		A grand hallway. //   To the west is the business section of the palace. // [Exits: east west]	-	-
+1793749374	cmd	Alaric	57	10034	glitter.are	standing	53	0	-	west		Intersection in the hall of commerce. //   The normally crowded hallway is now deserted. // [Exits: north east south]	-	-
+1793749374	cmd	Alaric	57	10041	glitter.are	standing	53	0	-	south		The hall of commerce. //   The normally crowded hall now seems quite deserted. To the east is a // shop, its name-sign is nailed on the wall.	-	+
+1793749375	cmd	Alaric	57	10042	glitter.are	standing	53	0	-	south		The hall of commerce. //   You see a shop to the east, a name-sign is nailed to the door. The // medical section is to the west.	-	+
+1793749375	cmd	Alaric	57	10046	glitter.are	standing	53	0	-	south		A cul-de-sac. //   The cul-de-sac is quite empty ... makes sense since there's nothing to // do here and you really can't 'hide' your anxiety to do something, so go do	-	+
+1793749376	cmd	Alaric	57	10046	glitter.are	standing	53	0	-	open		I see no door south here.	-	-
+1793749378	cmd	Alaric	57	10046	glitter.are	standing	53	0	-	open	hidden	You open a secret door.	-	-
+1793749379	cmd	Alaric	57	10046	glitter.are	standing	53	0	-	open		It's already open.	-	-
+1793749379	cmd	Alaric	57	10047	glitter.are	standing	53	0	-	south		A secret hallway. //   To the south you can make out the faint outlines of a door. A sign, // shaped like an eight-pointed star, is nailed on it.	-	+
+1793749379	cmd	Alaric	57	10047	glitter.are	standing	53	0	-	south		The door is closed.	-	-
+1793749379	cmd	Alaric	57	10047	glitter.are	standing	53	0	-	south		The door is closed.	-	-
+1793749380	cmd	Alaric	57	10047	glitter.are	standing	53	0	-	south		The door is closed.	-	-
+1793749380	cmd	Alaric	57	10047	glitter.are	standing	53	0	-	open		Ok.	-	-
+1793749381	cmd	Alaric	57	10048	glitter.are	standing	53	0	-	south		Temple of Adamant. //   You see rows of empty benches, and in the middle an adamantine shrine. // [Exits: north]	-	-
+1793749381	cmd	Alaric	57	10048	glitter.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1793749381	cmd	Alaric	57	10048	glitter.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1793749383	cmd	Alaric	57	10048	glitter.are	standing	53	0	-	open	hidden	You open a secret door.	-	-
+1793749384	cmd	Alaric	57	10049	glitter.are	standing	53	0	-	south		A dark back passage. //   You are walking in the dark hidden passage you found in the temple. // To the south you hear chanting of arcane words.	-	+
+1793749385	cmd	Alaric	57	10050	glitter.are	standing	53	0	-	south		An Room of Adamant. //   Prayers resound in this most holy place : //     'Gloria in excelsis Deo. Et in terra pax hominibus bonea voluntatis.	-	+
+1793749387	cmd	Alaric	57	10050	glitter.are	standing	53	0	-	look	wa	He is wearing a black velvet robe. He also bears scars on his right arm, but // he's got ones on other places too, although those are battle scars and not // self-inflicted as are those on his right arm. He's wielding a silver dagger ...	-	+
+1793749388	cmd	Alaric	57	10050	glitter.are	standing	53	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1793749396	cmd	Alaric	57	10050	glitter.are	standing	53	0	-	fists	war	You attack in an all consuming fury! // Your fists of fury scratches the Warrior-Priest. [-2] // Your fists of fury decimates the Warrior-Priest! [-26]	-	+
+1793749402	cmd	Alaric	57	10050	glitter.are	fighting	53	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims the Warrior-Priest! [-33] // Your fists of fury scratches the Warrior-Priest. [-4]	-	+
+1793749409	cmd	Alaric	57	10050	glitter.are	fighting	53	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds the Warrior-Priest. [-20] // Your fists of fury injures the Warrior-Priest. [-15]	-	+
+1793749415	cmd	Alaric	57	10050	glitter.are	fighting	52	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures the Warrior-Priest. [-14] // Your fists of fury mauls the Warrior-Priest. [-23]	-	+
+1793749420	cmd	Alaric	57	10050	glitter.are	fighting	53	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1793749421	cmd	Alaric	57	10050	glitter.are	fighting	53	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits the Warrior-Priest. [-12] // Your fists of fury decimates the Warrior-Priest! [-25]	-	+
+1793749426	cmd	Alaric	57	10050	glitter.are	fighting	53	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1793749427	cmd	Alaric	57	10050	glitter.are	fighting	53	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims the Warrior-Priest! [-34] // Your fists of fury MANGLES the Warrior-Priest! [-54]	-	+
+1793749435	cmd	Alaric	57	10049	glitter.are	standing	53	0	-	north		A dark back passage. //   You are walking in the dark hidden passage you found in the temple. // To the south you hear chanting of arcane words.	-	+
+1793749435	cmd	Alaric	57	10048	glitter.are	standing	53	0	-	north		Temple of Adamant. //   You see rows of empty benches, and in the middle an adamantine shrine. // [Exits: north south]	-	-
+1793749435	cmd	Alaric	57	10047	glitter.are	standing	53	0	-	north		A secret hallway. //   To the south you can make out the faint outlines of a door. A sign, // shaped like an eight-pointed star, is nailed on it.	-	+
+1793749438	cmd	Alaric	57	10046	glitter.are	standing	53	0	-	north		A cul-de-sac. //   The cul-de-sac is quite empty ... makes sense since there's nothing to // do here and you really can't 'hide' your anxiety to do something, so go do	-	+
+1793749438	cmd	Alaric	57	10042	glitter.are	standing	53	0	-	north		The hall of commerce. //   You see a shop to the east, a name-sign is nailed to the door. The // medical section is to the west.	-	+
+1793749438	cmd	Alaric	57	10041	glitter.are	standing	53	0	-	north		The hall of commerce. //   The normally crowded hall now seems quite deserted. To the east is a // shop, its name-sign is nailed on the wall.	-	+
+1793749439	cmd	Alaric	57	10034	glitter.are	standing	53	0	-	north		Intersection in the hall of commerce. //   The normally crowded hallway is now deserted. // [Exits: north east south]	-	-
+1793749439	cmd	Alaric	57	10033	glitter.are	standing	53	0	-	east		A grand hallway. //   To the west is the business section of the palace. // [Exits: east west]	-	-
+1793749440	cmd	Alaric	57	10031	glitter.are	standing	53	0	-	east		An intersection. //   You get the awkward feeling again that somebody is looking at you ... // jeeeeez man !!!, pull yourself together, you're seeing ghosts.	-	+
+1793749440	cmd	Alaric	57	10030	glitter.are	standing	53	0	-	south		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...	-	+
+1793749440	cmd	Alaric	57	10029	glitter.are	standing	53	0	-	south		A grand hallway. //   The Palace Guards that defended the staircase lie dead at your feet. // [Exits: north down]	-	+
+1793749441	cmd	Alaric	57	10029	glitter.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1793749441	cmd	Alaric	57	10028	glitter.are	standing	53	0	-	down		The royal stairway. //   The royal stairway leads up to the second floor and down to the second. // [Exits: up down]	-	-
+1793749442	cmd	Alaric	57	10027	glitter.are	standing	53	0	-	down		The northern wing. //   A large stairway leads up to the second floor. // [Exits: south up]	-	-
+1793749442	cmd	Alaric	57	10027	glitter.are	standing	53	0	-	down		Alas, you cannot go that way.	-	-
+1793749442	cmd	Alaric	57	10027	glitter.are	standing	53	0	-	down		Alas, you cannot go that way.	-	-
+1793749443	cmd	Alaric	57	10000	glitter.are	standing	53	0	-	run	s	The northern wing. // [Exits: north south] // The northern wing.	-	+
+1793749443	cmd	Alaric	57	10000	glitter.are	resting	53	0	-	wake		You stand up.	-	-
+1793749445	cmd	Alaric	57	23	connect.are	standing	53	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Great Portal	-	+
+1793749447	cmd	Alaric	57	2497	dresden.are	standing	53	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793749449	cmd	Alaric	57	2401	dresden.are	standing	53	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793749450	cmd	Alaric	57	2404	dresden.are	standing	53	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793749450	cmd	Alaric	57	2427	dresden.are	standing	53	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793749450	cmd	Alaric	57	4201	dresden.are	standing	53	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793749450	cmd	Alaric	57	4202	dresden.are	standing	53	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793749451	cmd	Alaric	57	4203	dresden.are	standing	53	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793749451	cmd	Alaric	57	4210	dresden.are	standing	53	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793749451	cmd	Alaric	57	4210	dresden.are	standing	53	0	-	sleep		You go to sleep.	-	-
+1793749452	state	Alaric	57	4210	dresden.are	lvl=57 hp=829/1544 mana=2691/2875 mv=281/983 align=880 exp=252749 coin=450560226 bank=20176843100 qp=971 prac=36 train=76 stash=95/350 remorts=3
+1793749452	cmd	Alaric	57	4210	dresden.are	sleeping	53	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793749455	session	Alaric	57	4210	dresden.are	quit	985s	+0 levels	+0 exp	+67494559 copper	2 kills	0 deaths	1 quests	500 commands	0 refused	coin: loot 8p 53g 79s 3c, quests 61p 65g 16s 56c, spent 2p 69g 50s
