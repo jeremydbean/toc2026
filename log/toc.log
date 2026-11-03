@@ -251798,3 +251798,122 @@ Tue Nov  3 02:06:32 2026 :: Log Alaric [2433]: e
 Tue Nov  3 02:06:32 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2433
 Tue Nov  3 02:06:33 2026 :: Log Alaric [2405]: n
 Tue Nov  3 02:06:33 2026 :: Log Alaric [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Tue Nov  3 02:06:35 2026 :: Log Alaric [2406]: e
+Tue Nov  3 02:06:35 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2406
+Tue Nov  3 02:06:35 2026 :: Log Alaric [2402]: s
+Tue Nov  3 02:06:35 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2402
+Tue Nov  3 02:06:36 2026 :: Sock.sinaddr:  18.116.205.62
+Tue Nov  3 02:06:37 2026 :: EOF encountered on read.
+Tue Nov  3 02:06:37 2026 :: Log Alaric [2401]: list
+Tue Nov  3 02:06:44 2026 :: Log Alaric [2401]: u
+Tue Nov  3 02:06:44 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov  3 02:06:45 2026 :: Log Alaric [2410]: u
+Tue Nov  3 02:06:45 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov  3 02:06:45 2026 :: Log Alaric [2411]: u
+Tue Nov  3 02:06:45 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov  3 02:06:46 2026 :: Log Alaric [2414]: u
+Tue Nov  3 02:06:46 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Nov  3 02:07:03 2026 :: Log Alaric [2497]: aq re
+Tue Nov  3 02:07:03 2026 :: Log Alaric [2497]: quest assigned: kill Citizen of Solace (mob 13206, level 10) in solace.are, 7 minutes, rush
+Tue Nov  3 02:07:06 2026 :: Log Alaric [2497]: enter door
+Tue Nov  3 02:07:06 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2401]: west
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2405]: west
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2433]: west
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2434]: west
+Tue Nov  3 02:07:07 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Tue Nov  3 02:07:08 2026 :: Log Alaric [2435]: west
+Tue Nov  3 02:07:08 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Tue Nov  3 02:07:08 2026 :: Log Alaric [2436]: west
+Tue Nov  3 02:07:08 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Tue Nov  3 02:07:08 2026 :: Log Alaric [2437]: west
+Tue Nov  3 02:07:08 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Tue Nov  3 02:07:08 2026 :: Log Alaric [2438]: open west
+Tue Nov  3 02:07:09 2026 :: Log Alaric [2438]: west
+Tue Nov  3 02:07:09 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Tue Nov  3 02:07:10 2026 :: Log Alaric [2439]: west
+Tue Nov  3 02:07:10 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Tue Nov  3 02:07:10 2026 :: Log Alaric [6000]: west
+Tue Nov  3 02:07:10 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Tue Nov  3 02:07:10 2026 :: Log Alaric [6001]: west
+Tue Nov  3 02:07:10 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6002]: south
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6011]: south
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6008]: east
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6009]: arrived (Outside a small cabin in the forest) from 6008
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6009]: south
+Tue Nov  3 02:07:11 2026 :: Log Alaric [6014]: arrived (An intersection in the dense forest) from 6009
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6014]: east
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6015]: arrived (A small path in the dense forest) from 6014
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6015]: south
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6016]: arrived (A small path in the dense forest) from 6015
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6016]: south
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6017]: arrived (A small path in the dense forest) from 6016
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6017]: west
+Tue Nov  3 02:07:12 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6017
+Tue Nov  3 02:07:13 2026 :: Log Alaric [6018]: south
+Tue Nov  3 02:07:13 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Tue Nov  3 02:07:13 2026 :: Log Alaric [51]: down
+Tue Nov  3 02:07:13 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Tue Nov  3 02:07:13 2026 :: Log Alaric [13001]: down
+Tue Nov  3 02:07:13 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Tue Nov  3 02:07:13 2026 :: Log Alaric [13002]: west
+Tue Nov  3 02:07:13 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Tue Nov  3 02:07:14 2026 :: Log Alaric [13003]: north
+Tue Nov  3 02:07:14 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13003
+Tue Nov  3 02:07:15 2026 :: Log Alaric [13201]: w
+Tue Nov  3 02:07:15 2026 :: Log Alaric [13217]: arrived (Small Alleyway.) from 13201
+Tue Nov  3 02:07:16 2026 :: Log Alaric [13217]: e
+Tue Nov  3 02:07:16 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13217
+Tue Nov  3 02:07:17 2026 :: Log Alaric [13201]: n
+Tue Nov  3 02:07:17 2026 :: Log Alaric [13202]: arrived (Main Road) from 13201
+Tue Nov  3 02:07:17 2026 :: Log Alaric [13202]: n
+Tue Nov  3 02:07:17 2026 :: Log Alaric [13203]: arrived (Main Road) from 13202
+Tue Nov  3 02:07:18 2026 :: Log Alaric [13203]: n
+Tue Nov  3 02:07:18 2026 :: Log Alaric [13204]: arrived (Main Road) from 13203
+Tue Nov  3 02:07:19 2026 :: Log Alaric [13204]: n
+Tue Nov  3 02:07:19 2026 :: Log Alaric [13205]: arrived (Intersection at Main Road.) from 13204
+Tue Nov  3 02:07:20 2026 :: Log Alaric [13205]: n
+Tue Nov  3 02:07:20 2026 :: Log Alaric [13228]: arrived (Main Road) from 13205
+Tue Nov  3 02:07:21 2026 :: Log Alaric [13228]: scan
+Tue Nov  3 02:07:21 2026 :: Log Alaric [13228]: n
+Tue Nov  3 02:07:21 2026 :: Log Alaric [13229]: arrived (End of the Main Road) from 13228
+Tue Nov  3 02:07:22 2026 :: Log Alaric [13229]: scan
+Tue Nov  3 02:07:24 2026 :: Log Alaric [13229]: e
+Tue Nov  3 02:07:24 2026 :: Log Alaric [13262]: arrived (Dusty road.) from 13229
+Tue Nov  3 02:07:26 2026 :: Log Alaric [13262]: kill ci
+Tue Nov  3 02:07:26 2026 :: Log Alaric [13262]: killed Citizen of Solace
+Tue Nov  3 02:07:26 2026 :: Log Alaric [13262]: coin +1 silver
+Tue Nov  3 02:07:26 2026 :: Log Alaric [13262]: coin +1 copper
+Tue Nov  3 02:07:30 2026 :: Log Alaric [13262]: recal
+Tue Nov  3 02:07:30 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 13262
+Tue Nov  3 02:07:32 2026 :: Log Alaric [4207]: r e 3
+Tue Nov  3 02:07:32 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 02:07:32 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 02:07:32 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Tue Nov  3 02:07:32 2026 :: Log Alaric [2427]: n
+Tue Nov  3 02:07:32 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov  3 02:07:33 2026 :: Log Alaric [2404]: n
+Tue Nov  3 02:07:33 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov  3 02:07:33 2026 :: Log Alaric [2401]: u
+Tue Nov  3 02:07:33 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov  3 02:07:33 2026 :: Log Alaric [2410]: u
+Tue Nov  3 02:07:33 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2411]: u
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2414]: u
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2497]: u
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2497]: aq co
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2497]: copper +277432452
+Tue Nov  3 02:07:34 2026 :: Log Alaric [2497]: quest complete: 277p 43g 24s 52c, 72 quest points, rush (streak bonus 20%)
+Tue Nov  3 02:07:34 2026 :: Snapshot of Alaric taken before quest: Alaric.20261103_020734.quest (PRESTORE Alaric to see it).
+Tue Nov  3 02:07:35 2026 :: Log Alaric [2497]: aq ga no
+Tue Nov  3 02:07:36 2026 :: Log Alaric [2497]: score
+Tue Nov  3 02:10:30 2026 :: Sock.sinaddr:  23.31.96.97
+Tue Nov  3 02:10:30 2026 :: EOF encountered on read.
