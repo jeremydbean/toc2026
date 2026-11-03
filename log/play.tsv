@@ -16055,3 +16055,132 @@
 1793665834	cmd	Trentlin	53	29242	korzath2.are	fighting	97	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a Bridge Guardian! // Your smite wounds a Bridge Guardian. // Your smite MUTILATES a Bridge Guardian!
 1793665844	cmd	Trentlin	53	29242	korzath2.are	fighting	96	0	fight	kick		Your kick scratches a Bridge Guardian.
 1793665849	cmd	Trentlin	53	29242	korzath2.are	fighting	96	0	fight	kick		Your kick misses a Bridge Guardian.
+1793665852	cmd	Trentlin	53	29242	korzath2.are	fighting	96	1	fight	smite		Your smite ^^^ DESTROYS ^^^ a Bridge Guardian! // A Bridge Guardian is DEAD!! // You receive 336 experience points (168 of them rested).
+1793665859	cmd	Trentlin	53	29242	korzath2.are	standing	96	0	-	look	in cor	Corpse of a Bridge Guardian contains: //      a blood red key
+1793665860	cmd	Trentlin	53	29242	korzath2.are	standing	96	0	-	get	key cor	You get a blood red key from corpse of a Bridge Guardian.
+1793665862	cmd	Trentlin	53	29242	korzath2.are	standing	96	0	-	inventory		You are carrying: //      a blood red key //      (Humming) a brittle key
+1793665866	cmd	Trentlin	53	29242	korzath2.are	standing	96	0	-	compare	exca	A) Excalibur (level 48) -- can't use: made for another side // B) the Headless Horseman's Reaper (level 50), worn // Slot: wield.  Your damage comes from weapons.
+1793665871	cmd	Trentlin	53	29242	korzath2.are	standing	96	0	-	compare	axe	A) the Lion's four-crowned axe (level 52) // B) the Headless Horseman's Reaper (level 50), worn // Slot: wield.  Your damage comes from weapons.
+1793665878	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	ne		End of Freedom //   The bridge and chasm come to an end on this small ledge of rock.  A // huge door stands before you and it glows with an etherally sick light.
+1793665881	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	look	gua	The heart guard of the lion rests here, ready for another hero. // The the Heart Guard of the Lion is in perfect condition.
+1793665883	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	look	elite	The man raises his head to speak to you: //      "We...tried," he whispers, "tried to...stop him." //      "Who?" you ask.
+1793665900	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	open	north	It's locked.
+1793665903	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793665905	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	open	north	Ok.
+1793665906	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	scan		You don't see anything near you.
+1793665909	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	wear	axe	You stop using the Headless Horseman's Reaper. // You wield the Lion's four-crowned axe. // The Lion's four-crowned axe feels like a part of you!
+1793665910	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	wear	s	You hold the eighth Triforce shard in your hands.
+1793665914	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	wear	shie	You wear the four-crowned lion shield as a shield.
+1793665915	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793665916	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	inventory		You are carrying: //      a blood red key //      (Humming) a brittle key
+1793665920	cmd	Trentlin	53	29243	korzath2.are	standing	96	0	-	wear	contain	You stop using the eighth Triforce shard. // You hold the Lizard's Heart Container in your hands.
+1793665922	cmd	Trentlin	53	29243	korzath2.are	standing	94	0	-	look		End of Freedom //   The bridge and chasm come to an end on this small ledge of rock.  A // huge door stands before you and it glows with an etherally sick light.
+1793665923	cmd	Trentlin	53	29246	korzath2.are	standing	94	0	-	north		The Battleground Arena //   This is the legendary Battleground Arena that is hidden deep in the // heart of Korzath's Fortress.  Korzath uses this arena to test the strength
+1793665925	cmd	Trentlin	53	29246	korzath2.are	standing	94	0	-	scan		a cyclops                          -to the East. // a cyclops                          -to the West. // a minotaur warrior                 -to the West.
+1793665927	cmd	Trentlin	53	29247	korzath2.are	standing	94	0	-	east		Battleground Arena //   To the south of you is the hundread foot high rock wall that closes // in the Battleground Arena.  To the north and west of you there is more
+1793665928	cmd	Trentlin	53	29247	korzath2.are	standing	94	0	-	consider	c	A cyclops is about your level. // A cyclops has about half your hit points. // Blow for blow, you would need about 4 rounds to bring a cyclops down; he would need about 66 rounds for you.
+1793665932	cmd	Trentlin	53	29247	korzath2.are	fighting	94	0	fight	smite		Your smite does UNSPEAKABLE things to a cyclops! // Your smite does UNSPEAKABLE things to a cyclops! // Your smite does UNSPEAKABLE things to a cyclops!
+1793665941	cmd	Trentlin	53	29247	korzath2.are	standing	94	0	-	look	in cor	Corpse of a cyclops contains: //      (Glowing) a cyclopean eye //      a tattered bow
+1793665943	cmd	Trentlin	53	29247	korzath2.are	standing	94	0	-	get	eye cor	You get a cyclopean eye from corpse of a cyclops.
+1793665944	cmd	Trentlin	53	29247	korzath2.are	standing	94	1	-	score		| Name:       Trentlin | Level:      53 | Class:     Warrior | // | Played:     25 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793665946	cmd	Trentlin	53	29247	korzath2.are	standing	94	0	-	compare	eye	A) a cyclopean eye (level 51) // B) Starlight (level 45), worn // Slot: light.  Your damage comes from weapons.
+1793665950	cmd	Trentlin	53	29247	korzath2.are	standing	94	0	-	sacrifice	cor	The Gods give you 108 copper coins for your sacrifice.
+1793665951	cmd	Trentlin	53	29247	korzath2.are	standing	94	0	-	drop	eye	You drop a cyclopean eye.
+1793665952	cmd	Trentlin	53	29246	korzath2.are	standing	94	0	-	west		The Battleground Arena //   This is the legendary Battleground Arena that is hidden deep in the // heart of Korzath's Fortress.  Korzath uses this arena to test the strength
+1793665952	cmd	Trentlin	53	29245	korzath2.are	standing	94	0	-	west		Battleground Arena //   To the south of you is the hundread foot high rock wall that closes // in the Battleground Arena.  To the north and east of you there is more
+1793665954	cmd	Trentlin	53	29245	korzath2.are	fighting	94	0	fight	smite		Your smite misses a cyclops.
+1793665960	cmd	Trentlin	53	29245	korzath2.are	fighting	94	0	fight	smite		Your smite does UNSPEAKABLE things to a cyclops! // Your smite does UNSPEAKABLE things to a cyclops! // Your smite does UNSPEAKABLE things to a cyclops!
+1793665968	cmd	Trentlin	53	29245	korzath2.are	fighting	93	0	fight	smite		Your smite does UNSPEAKABLE things to a minotaur warrior! // Your smite does UNSPEAKABLE things to a minotaur warrior! // Your smite does UNSPEAKABLE things to a minotaur warrior!
+1793665974	cmd	Trentlin	53	29245	korzath2.are	fighting	94	0	fight	look	war	The minotaur warrior glares at you with his deep, blood red eyes.  He // rears his black head back and wails out a terrifying battle cry as he moves // to attack you.
+1793665983	cmd	Trentlin	53	29245	korzath2.are	standing	93	0	-	get	all cor	You get battle helmet from corpse of a minotaur warrior. // You get a beaded bracelet from corpse of a minotaur warrior. // You get an opaque potion from corpse of a minotaur warrior.
+1793665987	cmd	Trentlin	53	29245	korzath2.are	standing	93	0	-	compare	helm	A) battle helmet (level 51) // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.
+1793665991	cmd	Trentlin	53	29245	korzath2.are	standing	93	0	-	wear	helm	You stop using a great war helmet. // You wear battle helmet on your head.
+1793665997	cmd	Trentlin	53	29245	korzath2.are	standing	93	12	-	stash	put helm	You put the Horseman's cursed helm away for safe keeping.
+1793666001	cmd	Trentlin	53	29245	korzath2.are	standing	93	0	-	compare	brace	A) a beaded bracelet (level 40) // B) a white bracer (level 40), worn // Slot: wrist.  Your damage comes from weapons.
+1793666005	cmd	Trentlin	53	29245	korzath2.are	standing	93	0	-	drop	brac	You drop a beaded bracelet.
+1793666007	cmd	Trentlin	53	29245	korzath2.are	standing	93	0	-	quaff	pot	You quaff an opaque potion. // You are already blessed. // You are already in sanctuary.
+1793666009	cmd	Trentlin	53	29245	korzath2.are	standing	93	0	-	look		Battleground Arena //   To the south of you is the hundread foot high rock wall that closes // in the Battleground Arena.  To the north and east of you there is more
+1793666011	cmd	Trentlin	53	29250	korzath2.are	standing	93	0	-	north		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666012	cmd	Trentlin	53	29250	korzath2.are	standing	93	0	-	scan		a necromancer                      -to the North. // a minotaur warrior                 -to the far North. // a minotaur warrior                 -to the far East.
+1793666013	cmd	Trentlin	53	29249	korzath2.are	standing	93	0	-	west		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666017	cmd	Trentlin	53	29249	korzath2.are	fighting	93	0	fight	smite		Your smite misses a necromancer. // Your smite does UNSPEAKABLE things to a necromancer! // Your smite does UNSPEAKABLE things to a necromancer!
+1793666031	cmd	Trentlin	53	29249	korzath2.are	standing	93	0	-	look	in cor	Corpse of a necromancer contains: //      Doomsday Blade //      (Magical) a plague pill
+1793666035	cmd	Trentlin	53	29249	korzath2.are	standing	93	0	-	open	south	Ok.
+1793666036	cmd	Trentlin	53	29244	korzath2.are	standing	93	0	-	south		Cornerground //   This room is at the base of one of the four towers that are placed // around the Battleground Arena.  Atop the tower are some of Korzath's
+1793666043	cmd	Trentlin	53	29249	korzath2.are	standing	93	0	-	north		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666043	cmd	Trentlin	53	29254	korzath2.are	standing	93	0	-	north		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666046	cmd	Trentlin	53	29254	korzath2.are	standing	93	0	-	look	in corpse	You do not see that here.
+1793666048	cmd	Trentlin	53	29254	korzath2.are	standing	93	0	-	look	guard	The heart guard of the lion rests here, ready for another hero. // The the Heart Guard of the Lion is in perfect condition.
+1793666050	cmd	Trentlin	53	29254	korzath2.are	standing	93	0	-	look	elite	You do not see that here.
+1793666052	cmd	Trentlin	53	29254	korzath2.are	standing	93	0	-	look	royal	You do not see that here.
+1793666054	cmd	Trentlin	53	29254	korzath2.are	standing	93	0	-	look	in cor	You do not see that here.
+1793666054	cmd	Trentlin	53	29254	korzath2.are	standing	93	0	-	scan		a necromancer                      -to the East.
+1793666056	cmd	Trentlin	53	29255	korzath2.are	standing	93	0	-	east		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666058	cmd	Trentlin	53	29255	korzath2.are	fighting	93	0	fight	smite		Your smite does UNSPEAKABLE things to a necromancer! // Your smite does UNSPEAKABLE things to a necromancer! // Your smite does UNSPEAKABLE things to a necromancer!
+1793666064	cmd	Trentlin	53	29255	korzath2.are	standing	93	0	-	smite		Smite whom?
+1793666066	cmd	Trentlin	53	29255	korzath2.are	standing	93	0	-	look	in co	Corpse of a necromancer contains: //      Doomsday Blade //      (Magical) a plague pill
+1793666066	cmd	Trentlin	53	29255	korzath2.are	standing	93	0	-	scan		a minotaur warrior                 -to the North.
+1793666067	cmd	Trentlin	53	29260	korzath2.are	standing	93	0	-	north		Battleground Arena //   The way north and east is blocked by the walls of the high standing // cross shaped structure of the arena.
+1793666071	cmd	Trentlin	53	29260	korzath2.are	fighting	93	0	fight	smite		Your smite does UNSPEAKABLE things to a minotaur warrior! // Your smite does UNSPEAKABLE things to a minotaur warrior! // Your smite does UNSPEAKABLE things to a minotaur warrior!
+1793666080	cmd	Trentlin	53	29260	korzath2.are	standing	93	0	-	get	all co	You get a beaded bracelet from corpse of a minotaur warrior. // You get an opaque potion from corpse of a minotaur warrior.
+1793666082	cmd	Trentlin	53	29260	korzath2.are	standing	93	0	-	drop	brace	You drop a beaded bracelet.
+1793666083	cmd	Trentlin	53	29255	korzath2.are	standing	93	0	-	south		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666083	cmd	Trentlin	53	29250	korzath2.are	standing	93	0	-	south		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666084	cmd	Trentlin	53	29249	korzath2.are	standing	93	0	-	west		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666084	cmd	Trentlin	53	29244	korzath2.are	standing	93	0	-	south		Cornerground //   This room is at the base of one of the four towers that are placed // around the Battleground Arena.  Atop the tower are some of Korzath's
+1793666085	cmd	Trentlin	53	29244	korzath2.are	standing	93	0	-	recall		The Gods have forsaken you.
+1793666094	cmd	Trentlin	53	29249	korzath2.are	standing	100	0	-	north		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666095	cmd	Trentlin	53	29250	korzath2.are	standing	100	0	-	east		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666095	cmd	Trentlin	53	29245	korzath2.are	standing	100	0	-	south		Battleground Arena //   To the south of you is the hundread foot high rock wall that closes // in the Battleground Arena.  To the north and east of you there is more
+1793666096	cmd	Trentlin	53	29246	korzath2.are	standing	100	0	-	east		The Battleground Arena //   This is the legendary Battleground Arena that is hidden deep in the // heart of Korzath's Fortress.  Korzath uses this arena to test the strength
+1793666096	cmd	Trentlin	53	29243	korzath2.are	standing	100	0	-	south		End of Freedom //   The bridge and chasm come to an end on this small ledge of rock.  A // huge door stands before you and it glows with an etherally sick light.
+1793666097	cmd	Trentlin	53	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793666099	cmd	Trentlin	53	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793666099	cmd	Trentlin	53	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793666100	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793666100	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793666100	cmd	Trentlin	53	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793666101	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793666102	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1793666106	cmd	Trentlin	53	9506	newthalo.are	standing	100	0	-	run	e 27	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793666108	cmd	Trentlin	53	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the
+1793666110	cmd	Trentlin	53	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on
+1793666111	cmd	Trentlin	53	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small
+1793666111	cmd	Trentlin	53	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you
+1793666111	cmd	Trentlin	53	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate
+1793666111	cmd	Trentlin	53	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of
+1793666112	cmd	Trentlin	53	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east
+1793666112	cmd	Trentlin	53	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East
+1793666112	cmd	Trentlin	53	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt
+1793666112	cmd	Trentlin	53	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large
+1793666113	cmd	Trentlin	53	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful
+1793666113	cmd	Trentlin	53	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance
+1793666113	cmd	Trentlin	53	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793666114	cmd	Trentlin	53	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793666115	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793666115	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1793666117	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793666118	cmd	Trentlin	53	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793666119	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793666122	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	unlock	east	It's already unlocked.
+1793666122	cmd	Trentlin	53	29235	korzath2.are	standing	100	0	-	east		Path of Questions //   You walk into the room and see a tattered sign with missing letters // before you:
+1793666124	cmd	Trentlin	53	29236	korzath2.are	standing	100	0	-	east		Question //   QUESTION #1: // Sarmini has twelve apples.  Kalak comes by and gives
+1793666125	cmd	Trentlin	53	29237	korzath2.are	standing	100	0	-	west		Question //   QUESTION #2: // Paco the Pawn Shop owner was found murdered in Dresden.
+1793666125	cmd	Trentlin	53	29238	korzath2.are	standing	100	0	-	up		Question //   QUESTION #3: // A tub is one hundred liters in size and it is filled
+1793666126	cmd	Trentlin	53	29239	korzath2.are	standing	100	0	-	south		Question //   QUESTION #4: // When both hands of a clock point to twelve, and it is
+1793666127	cmd	Trentlin	53	29240	korzath2.are	standing	100	0	-	north		Question //   QUESTION #5: // 1. The name of Korzath's Grandmother.
+1793666127	cmd	Trentlin	53	29241	korzath2.are	standing	100	0	-	east		Question //   You stand before a long rope bridge that stretches the expanse of a // deep black chasm here inside the mountain.  The cavern here is so large
+1793666128	cmd	Trentlin	53	29242	korzath2.are	standing	100	0	-	ne		Center of the Bridge //   As you approach the center of the bridge you feel it sway and move // beneath your feet.  You glance up and notice a horridly ugly creature
+1793666128	cmd	Trentlin	53	29243	korzath2.are	standing	100	0	-	ne		End of Freedom //   The bridge and chasm come to an end on this small ledge of rock.  A // huge door stands before you and it glows with an etherally sick light.
+1793666129	cmd	Trentlin	53	29246	korzath2.are	standing	100	0	-	north		The Battleground Arena //   This is the legendary Battleground Arena that is hidden deep in the // heart of Korzath's Fortress.  Korzath uses this arena to test the strength
+1793666131	cmd	Trentlin	53	29251	korzath2.are	standing	100	0	-	north		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666131	cmd	Trentlin	53	29252	korzath2.are	standing	100	0	-	east		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666132	cmd	Trentlin	53	29252	korzath2.are	standing	100	0	-	scan		a minotaur warrior                 -to the North.
+1793666134	cmd	Trentlin	53	29247	korzath2.are	standing	100	0	-	south		Battleground Arena //   To the south of you is the hundread foot high rock wall that closes // in the Battleground Arena.  To the north and west of you there is more
+1793666135	cmd	Trentlin	53	29252	korzath2.are	standing	100	0	-	north		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666135	cmd	Trentlin	53	29257	korzath2.are	standing	100	0	-	north		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666136	cmd	Trentlin	53	29258	korzath2.are	standing	100	0	-	east		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666138	cmd	Trentlin	53	29258	korzath2.are	fighting	99	0	fight	smite		Your smite does UNSPEAKABLE things to a cyclops! // Your smite does UNSPEAKABLE things to a cyclops! // Your smite does UNSPEAKABLE things to a cyclops!
+1793666146	cmd	Trentlin	53	29258	korzath2.are	fighting	98	0	fight	smite		Your smite does UNSPEAKABLE things to a necromancer! // Your smite does UNSPEAKABLE things to a necromancer! // Your smite does UNSPEAKABLE things to a necromancer!
+1793666153	cmd	Trentlin	53	29253	korzath2.are	standing	98	0	-	south		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666153	cmd	Trentlin	53	29248	korzath2.are	standing	98	0	-	south		Cornerground //   This room is at the base of one of the four towers that are placed // around the Battleground Arena.  Atop the tower are some of Korzath's
