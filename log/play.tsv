@@ -19089,3 +19089,5 @@
 1793707294	cmd	Trentlin	4	4207	dresden.are	fighting	75	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
 1793707296	cmd	Trentlin	4	4208	dresden.are	standing	75	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
 1793707298	session	Trentlin	4	4208	dresden.are	quit	1238s	-50 levels	-150645 exp	+3631921 copper	6 kills	0 deaths	0 quests	421 commands	1 refused	coin: loot 6p 93g 19s 21c, spent 3p 30g
+1793708261	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793708263	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.
