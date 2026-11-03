@@ -18815,3 +18815,47 @@
 1793706443	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	potion	You do not have that item.
 1793706444	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	inventory		You are carrying: // ( 4) a small key //      (Magical) (Glowing) the eighth Triforce shard
 1793706449	cmd	Trentlin	54	4208	dresden.are	standing	91	5	-	stash	put red	You put the Red Candle away for safe keeping.
+1793706458	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	guan	You drop guano.
+1793706458	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	guan	You drop guano.
+1793706458	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	guan	You drop guano.
+1793706459	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	guan	You drop guano.
+1793706459	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	guan	You drop guano.
+1793706459	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	drop	guan	You drop guano.
+1793706461	cmd	Trentlin	54	4208	dresden.are	standing	91	9	-	stash	put excal	You put Excalibur away for safe keeping.
+1793706464	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	stash	put arthut	You are not carrying that.
+1793706465	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	stash	put arthu	You are not carrying that.
+1793706468	cmd	Trentlin	54	4208	dresden.are	standing	91	9	-	stash	put scabb	You put Arthur's scabbard away for safe keeping.
+1793706470	cmd	Trentlin	54	4208	dresden.are	standing	91	0	-	inventory		You are carrying: // ( 4) a small key //      (Magical) (Glowing) the eighth Triforce shard
+1793706481	cmd	Trentlin	54	4208	dresden.are	standing	92	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793706488	cmd	Trentlin	54	4208	dresden.are	standing	92	0	-	remove	all	You stop using the Lion's four-crowned axe. // You stop using some corduroys. // You stop using a black hole.
+1793706492	cmd	Trentlin	54	4208	dresden.are	standing	93	7	-	stash	put bracer	You put a white bracer away for safe keeping.
+1793706493	cmd	Trentlin	54	4208	dresden.are	standing	93	6	-	stash	put bracer	You put a white bracer away for safe keeping.
+1793706495	cmd	Trentlin	54	4208	dresden.are	standing	93	7	-	stash	put ass	You put An assassin's ring away for safe keeping.
+1793706498	cmd	Trentlin	54	4208	dresden.are	standing	93	5	-	stash	put star	You put Starlight away for safe keeping.
+1793706509	cmd	Trentlin	54	4208	dresden.are	standing	93	6	-	stash	put vam	You put black steel vambraces away for safe keeping.
+1793706516	cmd	Trentlin	54	4208	dresden.are	standing	93	6	-	stash	put lion	You put the Lion's four-crowned axe away for safe keeping.
+1793706516	cmd	Trentlin	54	4208	dresden.are	standing	93	4	-	stash	put lion	You put the Heart Guard of the Lion away for safe keeping.
+1793706516	cmd	Trentlin	54	4208	dresden.are	standing	93	4	-	stash	put lion	You put a lion-head girdle away for safe keeping.
+1793706516	cmd	Trentlin	54	4208	dresden.are	standing	93	4	-	stash	put lion	You put the four-crowned lion shield away for safe keeping.
+1793706517	cmd	Trentlin	54	4208	dresden.are	standing	93	6	-	stash	put lion	You put the Lion dungeon compass away for safe keeping.
+1793706518	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	stash	put lion	You are not carrying that.
+1793706523	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	stash		Your stash holds 67 of 75 things. //     1) (Magical) the Lion dungeon compass //     2) (Magical) the four-crowned lion shield
+1793706527	cmd	Trentlin	54	4208	dresden.are	standing	93	6	-	stash	get compass	You take the Lion dungeon compass out of your stash.
+1793706529	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	inventory		You are carrying: //      (Magical) the Lion dungeon compass // ( 4) a small key
+1793706532	cmd	Trentlin	54	4208	dresden.are	standing	93	8	-	stash	put mantle	You put a twin-headed mantle away for safe keeping.
+1793706536	cmd	Trentlin	54	4208	dresden.are	standing	93	4	-	stash	put gaunt	You put a pair of pincer gauntlets away for safe keeping.
+1793706540	cmd	Trentlin	54	4208	dresden.are	standing	93	4	-	stash	put plate	You put a suit of demon-scale plate away for safe keeping.
+1793706542	cmd	Trentlin	54	4208	dresden.are	standing	93	5	-	stash	put boots	You put a pair of ashstride boots away for safe keeping.
+1793706543	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	inventory		You are carrying: //      (Magical) the Lion dungeon compass // ( 4) a small key
+1793706553	cmd	Trentlin	54	4208	dresden.are	standing	93	6	-	stash	put guard	You put the Heart Guard of the Demon away for safe keeping.
+1793706553	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	stash	put guard	You are not carrying that.
+1793706563	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	monk	Monks wander the world, seeking enlightenment.  It's a hard life, requiring // massive concentration and superb fighting skills to survive.  Martial // arts talent helps - and the guildmasters at the Palms of the Creator are
+1793706580	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	cleric	Clerics are the most defensively orientated of all the classes.  Most of their // spells focus on healing or defending the faithful, with their few combat spells // being far less powerful than those of mages. However, clerics are the best
+1793706598	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	guilds	The guild system on ToC is designed to allow players to gain knowledge in // a class other than the one they started with or to become specialized in // their chosen profession.  This creates something that is close to a
+1793706619	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	remort	REMORT // Syntax: REMORT <password> <class> <guild> <race> // REMORT allows a character at their current maximum level to start over as a
+1793706692	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	race	ToC has the following races for player characters: // Human    the standard race // Dwarf    good warriors and priests
+1793706701	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	saurian	The Saurian race migrated to this world when theirs was on the brink of // destruction.  When it was discovered that their world would soon perish, // the mages created a powerful dimensional portal.  So much power was focused
+1793706724	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	human	Humans are the most common race in the world, and make up the majority of // adventurers. Although they have no special talents like the other races, // they are more versatile, being skilled in all four classes. Humans may
+1793706728	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	elf	Elves are slightly taller than humans, but have a much lighter build.  They // lack the strength and stamina of the other races, but are for more agile, // both in body and mind.  Elves are superb mages and thieves, but have at
+1793706732	cmd	Trentlin	54	4208	dresden.are	standing	93	0	-	help	dwarf	Dwarves are a short, stocky demi-human race, known for foul temper and great // stamina.  Dwarves have high strength and constitution, but poor dexterity. // They are not as smart as humans, but are usually wiser due to their long
+1793706747	cmd	Trentlin	54	4208	dresden.are	standing	94	0	-	help	hobbit	Hobbits are a demi-human race, slightly shorter than dwarves. They resist // poison and disease like dwarves.  They are vulnerable to strong wind, // due to their small size and weight.  Of all the races, they have the

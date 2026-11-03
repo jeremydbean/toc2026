@@ -253554,3 +253554,68 @@ Tue Nov  3 11:47:23 2026 :: Log Trentlin [4208]: drop potion
 Tue Nov  3 11:47:24 2026 :: Log Trentlin [4208]: i
 Tue Nov  3 11:47:29 2026 :: Log Trentlin [4208]: stash put red
 Tue Nov  3 11:47:29 2026 :: Log Trentlin [4208]: stashed the Red Candle (vnum 30414)
+Tue Nov  3 11:47:38 2026 :: Log Trentlin [4208]: drop guan
+Tue Nov  3 11:47:38 2026 :: Log Trentlin [4208]: drop guan
+Tue Nov  3 11:47:38 2026 :: Log Trentlin [4208]: drop guan
+Tue Nov  3 11:47:39 2026 :: Log Trentlin [4208]: drop guan
+Tue Nov  3 11:47:39 2026 :: Log Trentlin [4208]: drop guan
+Tue Nov  3 11:47:39 2026 :: Log Trentlin [4208]: drop guan
+Tue Nov  3 11:47:41 2026 :: Log Trentlin [4208]: stash put excal
+Tue Nov  3 11:47:41 2026 :: Log Trentlin [4208]: stashed Excalibur (vnum 700)
+Tue Nov  3 11:47:44 2026 :: Log Trentlin [4208]: stash put arthut
+Tue Nov  3 11:47:45 2026 :: Log Trentlin [4208]: stash put arthu
+Tue Nov  3 11:47:48 2026 :: Log Trentlin [4208]: stash put scabb
+Tue Nov  3 11:47:48 2026 :: Log Trentlin [4208]: stashed Arthur's scabbard (vnum 721)
+Tue Nov  3 11:47:50 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:48:01 2026 :: Log Trentlin [4208]: eq
+Tue Nov  3 11:48:08 2026 :: Log Trentlin [4208]: rem all
+Tue Nov  3 11:48:08 2026 :: Trentlin did a remove all.
+Tue Nov  3 11:48:12 2026 :: Log Trentlin [4208]: stash put bracer
+Tue Nov  3 11:48:12 2026 :: Log Trentlin [4208]: stashed a white bracer (vnum 717)
+Tue Nov  3 11:48:13 2026 :: Log Trentlin [4208]: stash put bracer
+Tue Nov  3 11:48:13 2026 :: Log Trentlin [4208]: stashed a white bracer (vnum 717)
+Tue Nov  3 11:48:15 2026 :: Log Trentlin [4208]: stash put ass
+Tue Nov  3 11:48:15 2026 :: Log Trentlin [4208]: stashed An assassin's ring (vnum 16033)
+Tue Nov  3 11:48:18 2026 :: Log Trentlin [4208]: stash put star
+Tue Nov  3 11:48:18 2026 :: Log Trentlin [4208]: stashed Starlight (vnum 29049)
+Tue Nov  3 11:48:29 2026 :: Log Trentlin [4208]: stash put vam
+Tue Nov  3 11:48:29 2026 :: Log Trentlin [4208]: stashed black steel vambraces (vnum 3609)
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stash put lion
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stashed the Lion's four-crowned axe (vnum 30589)
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stash put lion
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stashed the Heart Guard of the Lion (vnum 30385)
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stash put lion
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stashed a lion-head girdle (vnum 30687)
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stash put lion
+Tue Nov  3 11:48:36 2026 :: Log Trentlin [4208]: stashed the four-crowned lion shield (vnum 30686)
+Tue Nov  3 11:48:37 2026 :: Log Trentlin [4208]: stash put lion
+Tue Nov  3 11:48:37 2026 :: Log Trentlin [4208]: stashed the Lion dungeon compass (vnum 30496)
+Tue Nov  3 11:48:38 2026 :: Log Trentlin [4208]: stash put lion
+Tue Nov  3 11:48:43 2026 :: Log Trentlin [4208]: stash
+Tue Nov  3 11:48:47 2026 :: Log Trentlin [4208]: stash get compass
+Tue Nov  3 11:48:47 2026 :: Log Trentlin [4208]: withdrew the Lion dungeon compass (vnum 30496) from the stash
+Tue Nov  3 11:48:49 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:48:52 2026 :: Log Trentlin [4208]: stash put mantle
+Tue Nov  3 11:48:52 2026 :: Log Trentlin [4208]: stashed a twin-headed mantle (vnum 30724)
+Tue Nov  3 11:48:56 2026 :: Log Trentlin [4208]: stash put gaunt
+Tue Nov  3 11:48:56 2026 :: Log Trentlin [4208]: stashed a pair of pincer gauntlets (vnum 30737)
+Tue Nov  3 11:49:00 2026 :: Log Trentlin [4208]: stash put plate
+Tue Nov  3 11:49:00 2026 :: Log Trentlin [4208]: stashed a suit of demon-scale plate (vnum 30680)
+Tue Nov  3 11:49:02 2026 :: Log Trentlin [4208]: stash put boots
+Tue Nov  3 11:49:02 2026 :: Log Trentlin [4208]: stashed a pair of ashstride boots (vnum 30743)
+Tue Nov  3 11:49:03 2026 :: Log Trentlin [4208]: i
+Tue Nov  3 11:49:13 2026 :: Log Trentlin [4208]: stash put guard
+Tue Nov  3 11:49:13 2026 :: Log Trentlin [4208]: stashed the Heart Guard of the Demon (vnum 30382)
+Tue Nov  3 11:49:13 2026 :: Log Trentlin [4208]: stash put guard
+Tue Nov  3 11:49:23 2026 :: Log Trentlin [4208]: help monk
+Tue Nov  3 11:49:40 2026 :: Log Trentlin [4208]: help cleric
+Tue Nov  3 11:49:58 2026 :: Log Trentlin [4208]: help guilds
+Tue Nov  3 11:50:19 2026 :: Log Trentlin [4208]: help remort
+Tue Nov  3 11:50:32 2026 :: Sock.sinaddr:  178.156.189.113
+Tue Nov  3 11:50:33 2026 :: EOF encountered on read.
+Tue Nov  3 11:51:32 2026 :: Log Trentlin [4208]: help race
+Tue Nov  3 11:51:41 2026 :: Log Trentlin [4208]: help saurian
+Tue Nov  3 11:52:04 2026 :: Log Trentlin [4208]: help human
+Tue Nov  3 11:52:08 2026 :: Log Trentlin [4208]: help elf
+Tue Nov  3 11:52:12 2026 :: Log Trentlin [4208]: help dwarf
+Tue Nov  3 11:52:27 2026 :: Log Trentlin [4208]: help hobbit
