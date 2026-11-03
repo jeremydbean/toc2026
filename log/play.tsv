@@ -18178,3 +18178,76 @@
 1793672184	cmd	Trentlin	53	29218	korzath2.are	fighting	97	0	fight	smite		Your smite misses an insane lieutenant.
 1793672191	cmd	Trentlin	53	29218	korzath2.are	fighting	97	0	fight	smite		Your smite misses an insane lieutenant.
 1793672198	cmd	Trentlin	53	29218	korzath2.are	fighting	96	0	fight	smite		Your smite misses an insane lieutenant.
+1793672204	cmd	Trentlin	53	29218	korzath2.are	fighting	96	0	fight	smite		Your smite misses an insane lieutenant.
+1793672210	cmd	Trentlin	54	29218	korzath2.are	fighting	96	24	fight	smite		Your smite does UNSPEAKABLE things to an insane lieutenant! // Your smite does UNSPEAKABLE things to an insane lieutenant! // An insane lieutenant is DEAD!!
+1793672220	cmd	Trentlin	54	29212	korzath2.are	standing	96	0	-	south		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793672220	cmd	Trentlin	54	29211	korzath2.are	standing	96	0	-	south		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793672220	cmd	Trentlin	54	29211	korzath2.are	standing	96	0	-	south		Alas, you cannot go that way.
+1793672224	cmd	Trentlin	54	29210	korzath2.are	standing	96	0	-	east		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793672224	cmd	Trentlin	54	29210	korzath2.are	standing	96	0	-	east		Alas, you cannot go that way.
+1793672225	cmd	Trentlin	54	29209	korzath2.are	standing	96	0	-	south		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793672226	cmd	Trentlin	54	29208	korzath2.are	standing	96	0	-	east		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793672227	cmd	Trentlin	54	29207	korzath2.are	standing	96	0	-	east		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793672228	cmd	Trentlin	54	29206	korzath2.are	standing	96	0	-	north		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793672229	cmd	Trentlin	54	29205	korzath2.are	standing	96	0	-	west		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793672229	cmd	Trentlin	54	29204	korzath2.are	standing	96	0	-	north		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793672229	cmd	Trentlin	54	29203	korzath2.are	standing	96	0	-	east		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793672230	cmd	Trentlin	54	29202	korzath2.are	standing	96	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793672231	cmd	Trentlin	54	29201	korzath2.are	standing	96	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793672231	cmd	Trentlin	54	29004	korzath1.are	standing	96	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793672231	cmd	Trentlin	54	29003	korzath1.are	standing	96	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1793672231	cmd	Trentlin	54	29002	korzath1.are	standing	96	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1793672232	cmd	Trentlin	54	4207	dresden.are	standing	96	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793672234	session	Trentlin	54	4207	dresden.are	quit	219s	+1 levels	+3254 exp	+37007841 copper	7 kills	0 deaths	0 quests	87 commands	0 refused	coin: loot 37p 80s 41c, spent 2s
+1793672450	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.
+1793672450	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793672452	cmd	Alaric	57	2497	dresden.are	standing	100	18	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'The criminal known as a gang member has escaped from prison!'
+1793672455	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793672456	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1793672456	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1793672456	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1793672456	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793672457	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793672457	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793672457	cmd	Alaric	57	2444	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793672457	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1793672458	cmd	Alaric	57	2101	hood.are	standing	100	0	-	east		A Dark Alleyway //   The walls of the alleyway have been spray-painted over many times // over the years.  One section of graffiti actually looks legible,
+1793672460	cmd	Alaric	57	2102	hood.are	standing	100	0	-	east		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once
+1793672461	cmd	Alaric	57	2103	hood.are	standing	100	0	-	east		Along White Dragon Boulevard //   Everywhere you look you see signs of recent violence.  Patches of blood // lie everywhere and broken sticks and abandoned knives are strewn here
+1793672462	cmd	Alaric	57	2104	hood.are	standing	100	0	-	east		White Dragon Boulevard at Armory //   Only gang members dare wander the streets here. // What used to be the armory lies to the south.  White Dragon Boulevard
+1793672462	cmd	Alaric	57	2105	hood.are	standing	100	0	-	east		White Dragon Blvd. //   Black Dragon Avenue used to run south from here but the way has been // blocked by the toppling of a building into the street.  White Dragon
+1793672463	cmd	Alaric	57	2106	hood.are	standing	100	0	-	east		Corner of Ice and White Dragon //   Ice Dragon Way leads south from here.  It used to run the whole length // of the neighborhood and way lined with beautiful crystal sculptures.
+1793672463	cmd	Alaric	57	2107	hood.are	standing	100	0	-	east		White Dragon Boulevard //   A once majestic inn with a white marble facade lies to the south. // Unfortunately, it has fallen into disrepair and decay.  You can continue
+1793672464	cmd	Alaric	57	2108	hood.are	standing	100	0	-	east		Corner of Bronze and White Dragon //   This is the north-east corner of the neighborhood. White Dragon // boulevard heads west and Bronze Dragon street heads south.
+1793672464	cmd	Alaric	57	2108	hood.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793672465	cmd	Alaric	57	2108	hood.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793672466	cmd	Alaric	57	2115	hood.are	standing	100	0	-	south		Bronze Dragon Street at wizard's back door //   Bronze Dragon street goes north and south.  The back door to what // remains of the magic shop is west.
+1793672467	cmd	Alaric	57	2120	hood.are	standing	100	0	-	south		Bronze Dragon Street //   There used to be a gate out to the east here which led to distant lands. // The gate has rusted permanently shut.  The street goes north and south.
+1793672467	cmd	Alaric	57	2125	hood.are	standing	100	0	-	south		Bronze Dragon Street at Warehouse //   The street runs north and south.  There is an old wooden door leading // to a warehouse to the west.  The warehouse LOOKS abandoned. . .
+1793672468	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Yellow Dragon Road //   Bronze Dragon Street intersects here and runs north.  Yellow Dragon ends // here but continues to the west.
+1793672468	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793672469	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793672469	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793672469	cmd	Alaric	57	2129	hood.are	standing	100	0	-	west		Yellow Dragon Road //   There is a barred window to the north.  There appears to be a light // coming from the cracks around it.  The road extends east and west
+1793672470	cmd	Alaric	57	2134	hood.are	standing	100	0	-	south		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south,
+1793672470	cmd	Alaric	57	2135	hood.are	standing	100	0	-	east		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south
+1793672471	cmd	Alaric	57	2140	hood.are	standing	100	0	-	south		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south
+1793672471	cmd	Alaric	57	2145	hood.are	standing	100	0	-	south		Corner of Ajax and Hector //   There is a grand fountain to the east but the water doesn't // look good to drink.  Ajax street heads south and Hector
+1793672473	cmd	Alaric	57	2145	hood.are	standing	100	8	-	kill	ga	Your punch <<< ERADICATES >>> a gang member! [-176] // A gang member is DEAD!! // You have almost finished your QUEST!
+1793672477	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793672477	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Altar.
+1793672478	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	aquest	co	There is no questmaster here.  Questor Thews waits at the very top of the great oak: // climb up from the Oak Tree Square.  AQUEST INFO works anywhere.
+1793672478	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	aquest	ga no	You have no pending double-or-nothing offer.
+1793672483	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Altar.
+1793672485	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	run	e 3	Halls of Healing. // [Exits: north east south west] // Entrance to the Temple of Devota.
+1793672485	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793672485	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793672486	cmd	Alaric	57	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793672486	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793672486	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793672486	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793672487	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.
+1793672488	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	recall	set	You fix this place in your mind. Recall will bring you to A sudden wind blows you from the tree!.
+1793672489	cmd	Alaric	57	2497	dresden.are	standing	100	15	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 4 in a row! A +30% bonus has been added!'
+1793672491	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 35 quest points.
+1793672492	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
