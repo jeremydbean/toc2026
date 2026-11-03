@@ -249211,3 +249211,68 @@ Tue Nov  3 00:55:29 2026 :: EOF encountered on read.
 Tue Nov  3 00:58:59 2026 :: Treasure goblin: vanished from room 10148 (A staircase., glitter.are) (too long in one area).
 Tue Nov  3 01:00:33 2026 :: Sock.sinaddr:  178.156.189.113
 Tue Nov  3 01:00:33 2026 :: EOF encountered on read.
+Tue Nov  3 01:05:28 2026 :: Log Alaric [2497]: wake
+Tue Nov  3 01:05:31 2026 :: Log Alaric [2497]: aq re
+Tue Nov  3 01:05:31 2026 :: Log Alaric [2497]: quest assigned: kill a dust cloud (mob 9224, level 7) in canyon.are, 26 minutes, ordinary
+Tue Nov  3 01:05:36 2026 :: Log Alaric [2497]: enter door
+Tue Nov  3 01:05:36 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 01:05:36 2026 :: Log Alaric [2401]: west
+Tue Nov  3 01:05:36 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Nov  3 01:05:37 2026 :: Log Alaric [2405]: west
+Tue Nov  3 01:05:37 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Tue Nov  3 01:05:37 2026 :: Sock.sinaddr:  178.156.184.20
+Tue Nov  3 01:05:37 2026 :: Log Alaric [2433]: west
+Tue Nov  3 01:05:37 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Tue Nov  3 01:05:37 2026 :: EOF encountered on read.
+Tue Nov  3 01:05:37 2026 :: Log Alaric [2434]: west
+Tue Nov  3 01:05:37 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Tue Nov  3 01:05:38 2026 :: Log Alaric [2435]: west
+Tue Nov  3 01:05:38 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Tue Nov  3 01:05:38 2026 :: Log Alaric [2436]: west
+Tue Nov  3 01:05:38 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Tue Nov  3 01:05:38 2026 :: Log Alaric [2437]: west
+Tue Nov  3 01:05:38 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Tue Nov  3 01:05:38 2026 :: Log Alaric [2438]: open west
+Tue Nov  3 01:05:39 2026 :: Log Alaric [2438]: west
+Tue Nov  3 01:05:39 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Tue Nov  3 01:05:40 2026 :: Log Alaric [2439]: north
+Tue Nov  3 01:05:40 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Tue Nov  3 01:05:40 2026 :: Log Alaric [3900]: north
+Tue Nov  3 01:05:40 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Tue Nov  3 01:05:41 2026 :: Log Alaric [3901]: north
+Tue Nov  3 01:05:41 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Tue Nov  3 01:05:41 2026 :: Log Alaric [3902]: east
+Tue Nov  3 01:05:41 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Tue Nov  3 01:05:41 2026 :: Log Alaric [3903]: east
+Tue Nov  3 01:05:41 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Tue Nov  3 01:05:41 2026 :: Log Alaric [3904]: north
+Tue Nov  3 01:05:41 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Tue Nov  3 01:05:42 2026 :: Log Alaric [300]: north
+Tue Nov  3 01:05:42 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Tue Nov  3 01:05:42 2026 :: Log Alaric [315]: west
+Tue Nov  3 01:05:42 2026 :: Log Alaric [318]: arrived (Grassy plains) from 315
+Tue Nov  3 01:05:42 2026 :: Log Alaric [318]: north
+Tue Nov  3 01:05:42 2026 :: Log Alaric [319]: arrived (Grassy plains) from 318
+Tue Nov  3 01:05:42 2026 :: Log Alaric [319]: north
+Tue Nov  3 01:05:42 2026 :: Log Alaric [330]: arrived (In front of hut in foothills) from 319
+Tue Nov  3 01:05:43 2026 :: Log Alaric [330]: north
+Tue Nov  3 01:05:43 2026 :: Log Alaric [323]: arrived (The steep foothills) from 330
+Tue Nov  3 01:05:43 2026 :: Log Alaric [323]: west
+Tue Nov  3 01:05:43 2026 :: Log Alaric [24]: arrived (Crossing the Foothills) from 323
+Tue Nov  3 01:05:43 2026 :: Log Alaric [24]: northwest
+Tue Nov  3 01:05:43 2026 :: Log Alaric [25]: arrived (The Switchbacks) from 24
+Tue Nov  3 01:05:43 2026 :: Log Alaric [25]: north
+Tue Nov  3 01:05:43 2026 :: Log Alaric [9201]: arrived (A Mountain Path) from 25
+Tue Nov  3 01:05:45 2026 :: Log Alaric [9201]: u
+Tue Nov  3 01:05:45 2026 :: Log Alaric [9202]: arrived (A Mountain Path) from 9201
+Tue Nov  3 01:05:46 2026 :: Log Alaric [9202]: u
+Tue Nov  3 01:05:46 2026 :: Log Alaric [9203]: arrived (Mountainside Tombs) from 9202
+Tue Nov  3 01:05:47 2026 :: Log Alaric [9203]: u
+Tue Nov  3 01:05:47 2026 :: Log Alaric [9204]: arrived (A Blind Curve on the Mountain Path.) from 9203
+Tue Nov  3 01:05:48 2026 :: Log Alaric [9204]: u
+Tue Nov  3 01:05:48 2026 :: Log Alaric [9205]: arrived (Vista) from 9204
+Tue Nov  3 01:05:49 2026 :: Log Alaric [9205]: u
+Tue Nov  3 01:05:50 2026 :: Log Alaric [9205]: n
+Tue Nov  3 01:05:50 2026 :: Log Alaric [9206]: arrived (The Overlook) from 9205
+Tue Nov  3 01:05:58 2026 :: Log Alaric [9206]: d
+Tue Nov  3 01:05:58 2026 :: Log Alaric [9207]: arrived (Entrance to Elemental Canyon) from 9206
