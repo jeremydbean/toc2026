@@ -19091,3 +19091,100 @@
 1793707298	session	Trentlin	4	4208	dresden.are	quit	1238s	-50 levels	-150645 exp	+3631921 copper	6 kills	0 deaths	0 quests	421 commands	1 refused	coin: loot 6p 93g 19s 21c, spent 3p 30g
 1793708261	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
 1793708263	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.
+1793708270	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793708272	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	list		[Lv Price] Item // [ 0         2s] a sugar skull. // [ 0         4s] a painted skull mask.
+1793708274	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	buy	sugar	You buy a sugar skull.
+1793708277	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	eat	sugar	You eat a sugar skull. // Your eyes tingle. // Your awareness improves.
+1793708278	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'detect hidden' for 15 hours. // Spell: 'detect invis' for 15 hours.
+1793708281	cmd	Alaric	57	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1793708281	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1793708281	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1793708282	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793708282	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.
+1793708283	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A bounty has been posted on a sea beast.'
+1793708288	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793708290	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793708290	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	open		Ok.
+1793708293	cmd	Alaric	57	9531	newthalo.are	standing	100	0	-	run	e 29	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793708294	cmd	Alaric	57	9531	newthalo.are	resting	100	0	-	wake		You stand up.
+1793708295	cmd	Alaric	57	9531	newthalo.are	standing	100	0	-	open		Ok.
+1793708295	cmd	Alaric	57	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.
+1793708295	cmd	Alaric	57	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews
+1793708295	cmd	Alaric	57	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road
+1793708296	cmd	Alaric	57	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the
+1793708298	cmd	Alaric	57	9792	newthalo.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793708302	cmd	Alaric	57	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel
+1793708302	cmd	Alaric	57	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1793708302	cmd	Alaric	57	9795	newthalo.are	standing	100	0	-	east		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time
+1793708303	cmd	Alaric	57	9789	newthalo.are	standing	100	0	-	east		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye
+1793708303	cmd	Alaric	57	9789	newthalo.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793708308	cmd	Alaric	57	9789	newthalo.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793708312	cmd	Alaric	57	9796	newthalo.are	standing	100	0	-	south		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye
+1793708315	cmd	Alaric	57	9787	newthalo.are	standing	100	0	-	west		The Dragon Sea //   The Dragon Sea comes up along the shore here, the deep blue waters // rolling in and crashing against the beach. To the north you see a
+1793708316	cmd	Alaric	57	9795	newthalo.are	standing	100	0	-	north		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time
+1793708316	cmd	Alaric	57	9789	newthalo.are	standing	100	0	-	east		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye
+1793708317	cmd	Alaric	57	9798	newthalo.are	standing	100	0	-	down		Under the dock //   You are swimming underneath the dock. You can see the four wooden // pylons that support the structure. The murky water clouds your vision
+1793708320	cmd	Alaric	57	9798	newthalo.are	standing	100	0	-	exits		Obvious exits: // West  - Lair of the Ixitxachitl // Up    - The Dragon Sea
+1793708323	cmd	Alaric	57	9789	newthalo.are	standing	100	0	-	up		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye
+1793708323	cmd	Alaric	57	9795	newthalo.are	standing	100	0	-	west		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time
+1793708323	cmd	Alaric	57	9794	newthalo.are	standing	100	0	-	west		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1793708323	cmd	Alaric	57	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1793708324	cmd	Alaric	57	29350	voyage.are	standing	100	0	-	east		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One
+1793708327	cmd	Alaric	57	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1793708328	cmd	Alaric	57	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1793708330	cmd	Alaric	57	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.
+1793708332	cmd	Alaric	57	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.
+1793708333	cmd	Alaric	57	29353	voyage.are	standing	100	0	-	exits		Obvious exits: // North - Across the Sea // South - Across the Sea
+1793708334	cmd	Alaric	57	29380	voyage.are	standing	100	0	-	north		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the
+1793708336	cmd	Alaric	57	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1793708341	cmd	Alaric	57	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1793708341	cmd	Alaric	57	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1793708343	cmd	Alaric	57	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.
+1793708344	cmd	Alaric	57	29380	voyage.are	standing	100	0	-	south		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the
+1793708351	cmd	Alaric	57	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1793708351	cmd	Alaric	57	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1793708352	cmd	Alaric	57	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.
+1793708353	cmd	Alaric	57	29354	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea
+1793708355	cmd	Alaric	57	29354	voyage.are	standing	100	0	-	exits		Obvious exits: // East  - Across the Sea // South - Across the Sea
+1793708357	cmd	Alaric	57	29380	voyage.are	standing	100	0	-	east		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the
+1793708363	cmd	Alaric	57	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1793708363	cmd	Alaric	57	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1793708363	cmd	Alaric	57	29352	voyage.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793708364	cmd	Alaric	57	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.
+1793708365	cmd	Alaric	57	29354	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea
+1793708367	cmd	Alaric	57	29355	voyage.are	standing	100	0	-	se		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 
+1793708371	cmd	Alaric	57	29355	voyage.are	standing	100	0	-	scan		the mutant barnacle                -to the far East. // a sailor                           -to the Northwest.
+1793708375	cmd	Alaric	57	29356	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 
+1793708376	cmd	Alaric	57	29356	voyage.are	standing	100	0	-	scan		You don't see anything near you.
+1793708378	cmd	Alaric	57	29357	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 
+1793708379	cmd	Alaric	57	29357	voyage.are	standing	100	0	-	scan		the mutant barnacle                -to the West. // a tentacle                         -to the West. // a soldier                          -to the Southeast.
+1793708383	cmd	Alaric	57	29358	voyage.are	standing	100	0	-	se		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther
+1793708384	cmd	Alaric	57	29358	voyage.are	standing	100	0	-	scan		a passenger                        -to the Northeast. // a sea beast                        -to the Northeast. // a sea beast                        -to the Northwest.
+1793708386	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther
+1793708387	cmd	Alaric	57	29359	voyage.are	standing	100	11	-	kill	be	Your punch >>> ANNIHILATES <<< a sea beast! [-206] // Your punch does UNSPEAKABLE things to a sea beast! [-283] // A sea beast is DEAD!!
+1793708392	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1793708392	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1793708392	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	aquest	co	There is no questmaster here.  Questor Thews waits at the very top of the great oak: // climb up from the Oak Tree Square.  AQUEST INFO works anywhere.
+1793708395	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	look		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther
+1793708397	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1793708406	cmd	Alaric	57	29374	voyage.are	standing	100	0	-	southwest		Across the Sea //   The ship heads back towards the port... //      The weather has taken a turn for the worse as the ship travels farther
+1793708407	cmd	Alaric	57	29375	voyage.are	standing	100	0	-	northwest		Across the Sea //   The ship heads back towards the port... //      The wind is beginning to die down but the fighting has not.  Sailors,
+1793708407	cmd	Alaric	57	29376	voyage.are	standing	100	0	-	west		Across the Sea //   The ship heads back towards the port... //      The wind is beginning to die down but the fighting has not.  Sailors,
+1793708407	cmd	Alaric	57	29377	voyage.are	standing	100	0	-	west		Across the Sea //   The ship heads back towards the port... //      The wind is beginning to die down but the fighting has not.  Sailors,
+1793708407	cmd	Alaric	57	29378	voyage.are	standing	100	0	-	northwest		Across the Sea //   The ship heads back towards the port... //      Sunlight begins to break through the dark clouds above you.  As you
+1793708408	cmd	Alaric	57	29379	voyage.are	standing	100	0	-	southwest		Across the Sea //   LAND HO!!! //      Once again the port alonside New Thalos is in sight.  The sea creatures
+1793708408	cmd	Alaric	57	29352	voyage.are	standing	100	0	-	northwest		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1793708408	cmd	Alaric	57	29351	voyage.are	standing	100	0	-	west		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1793708408	cmd	Alaric	57	29350	voyage.are	standing	100	0	-	west		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One
+1793708409	cmd	Alaric	57	41	connect.are	standing	100	0	-	west		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1793708409	cmd	Alaric	57	9794	newthalo.are	standing	100	0	-	south		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1793708409	cmd	Alaric	57	9793	newthalo.are	standing	100	0	-	west		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel
+1793708409	cmd	Alaric	57	9792	newthalo.are	standing	100	0	-	west		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the
+1793708410	cmd	Alaric	57	9791	newthalo.are	standing	100	0	-	west		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road
+1793708410	cmd	Alaric	57	9790	newthalo.are	standing	100	0	-	west		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews
+1793708410	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793708410	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793708412	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Here's your 77p 6g 45s 70c - well earned!'
+1793708413	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 13 quest points.
+1793708414	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793708415	session	Alaric	57	2497	dresden.are	quit	156s	+0 levels	+0 exp	+77262017 copper	1 kills	0 deaths	1 quests	99 commands	0 refused	coin: loot 19g 76s 47c, quests 77p 6g 45s 70c, spent 2s
