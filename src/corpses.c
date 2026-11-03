@@ -994,12 +994,14 @@ bool corpse_registry_refuses_trade( CHAR_DATA *ch, CHAR_DATA *other )
         send_to_char( "Your last death has not been laid to rest yet, so nothing of "
                       "yours can change hands -- not given, dropped, banked, sold or "
                       "stashed. It is tried again every few seconds.\n\r", ch );
+        playlog_result( ch, "refusal", "frozen" );
         return true;
     }
     if ( other != NULL && other != ch && corpse_registry_holds_still( other ) )
     {
         act( "$N's last death has not been laid to rest yet; nothing can pass "
              "between you until it is.", ch, NULL, other, TO_CHAR );
+        playlog_result( ch, "refusal", "other-frozen" );
         return true;
     }
     return false;

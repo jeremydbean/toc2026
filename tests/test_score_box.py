@@ -66,6 +66,36 @@ class ScoreBoxLiveTests(unittest.TestCase):
                     client.sync("color")
                     self.check_sheet(client)
 
+    def test_large_casino_totals_stay_inside_the_box(self) -> None:
+        # A field width is a minimum: nine digits won pushed the row to 63
+        # columns (review, 2026-11-03). Past eight digits won or eighteen
+        # lost, each total takes a full-width row, every digit kept.
+        cases = {
+            "Zscoreeight": (99999999, 123456789012345678, True),     # fits the row
+            "Zscorenine": (100000000, 7, False),                     # nine digits won
+            "Zscorelost": (5, 1234567890123456789, False),           # nineteen lost
+            "Zscoremax": (9223372036854775807, 9223372036854775807, False),
+            "Zscoreten": (1234567890, 0, False),                     # nothing lost yet
+        }
+        with LiveMud() as mud:
+            for name, (won, lost, _) in cases.items():
+                make(mud, name, Levl=20, CasinoWon=won, CasinoLost=lost)
+            for name, (won, lost, one_row) in cases.items():
+                with self.subTest(name=name), mud.connect(timeout=120) as client:
+                    login(client, name, PW)
+                    client.sync("scroll 0")
+                    for colour in ("on", "off"):
+                        lines = self.check_sheet(client)
+                        text = "\n".join(lines)
+                        self.assertIn(str(won), text, colour)
+                        self.assertIn(str(lost), text, colour)
+                        rows = [line for line in lines if "Casino" in line]
+                        self.assertEqual(len(rows), 1 if one_row else 2, text)
+                        if one_row:
+                            quest = next(line for line in lines if "Quest Points:" in line)
+                            self.assertEqual(rows[0].index("|", 1), quest.index("|", 1))
+                        client.sync("color")
+
 
 if __name__ == "__main__":
     unittest.main()

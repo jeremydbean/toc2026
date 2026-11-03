@@ -30,6 +30,7 @@
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <stdlib.h>
+#include <unistd.h>
 #include "merc.h"
 #include "interp.h"
 
@@ -792,6 +793,183 @@ static void stash_show( CHAR_DATA *ch )
     page_to_char( out, ch );
 }
 
+/* Put an object taken out of a stash back where it was, after `prev`
+   (NULL: at the front), counted as owned again. */
+static void stash_reinsert( CHAR_DATA *owner, OBJ_DATA *obj, OBJ_DATA *prev )
+{
+    stash_maxload( obj, +1 );
+    obj->carried_by = NULL;
+    obj->in_room    = NULL;
+    obj->in_obj     = NULL;
+    if ( prev == NULL )
+    {
+        obj->next_content   = owner->pcdata->stash;
+        owner->pcdata->stash = obj;
+    }
+    else
+    {
+        obj->next_content  = prev->next_content;
+        prev->next_content = obj;
+    }
+}
+
+/* One save of a shared-stash transfer, with its own fault point for the
+   tests ("stash-owner-save", "stash-taker-save" through TOC_FAULT_FILE;
+   "stash-owner-rewrite", the putting back, through TOC_FAULT, whose
+   points are matched by substring and so must not hold "save"):
+   "save-<Name>" can be taken first by an autosave. */
+static int stash_transfer_save( CHAR_DATA *who, const char *point )
+{
+    if ( recovery_fault( point ) )
+        return DURABLE_FAILED;
+    save_char_obj( who );
+    return save_char_obj_status();
+}
+
+/*
+ * STASH TAKE: an object leaves the owner's stash for the taker's hands.
+ * Two files change, and two saves are not one atomic write, so it is
+ * done in the order that never makes a copy (review, 2026-11-03: the
+ * saves were unchecked, and a frozen owner's refused save kept the
+ * object in their file while the taker saved it into theirs):
+ *
+ *   1. a pending "transfer" receipt in the recovery ledger, naming the
+ *      object, both characters and an operation id -- or nothing moves;
+ *   2. the object moves in memory;
+ *   3. the owner is saved without it.  FAILED: it goes back where it
+ *      was and nothing happened (the old file still holds it);
+ *   4. the taker is saved with it.  FAILED: it goes back to the owner
+ *      and the owner is saved again; if even that fails, it stays where
+ *      a later save can still write it -- the owner's memory, or the
+ *      taker's when the owner is an offline copy about to be freed;
+ *   5. the receipt says how it ended.
+ *
+ * UNCERTAIN is never undone: the file was renamed into place and may
+ * already be the new one; the next save confirms it. A crash between 3
+ * and 4 leaves the object in neither file, never in both, and leaves the
+ * pending receipt naming it, which is what staff restore it from
+ * (PRESTORE <owner> ... STASH from the snapshot taken before step 3).
+ */
+static void stash_take_commit( CHAR_DATA *ch, CHAR_DATA *owner, OBJ_DATA *obj,
+                               OBJ_DATA *prev, bool offline )
+{
+    char op[64];
+    char detail[MAX_STRING_LENGTH];
+    char note[MAX_STRING_LENGTH];
+    int owner_status, taker_status;
+
+    snprintf( op, sizeof(op), "stash:%ld", recovery_sequence() + 1 );
+    snprintf( detail, sizeof(detail), "vnum %d (%s) from %s's stash to %s",
+              obj->pIndexData->vnum, obj->short_descr, owner->name, ch->name );
+    if ( !recovery_record( "transfer", "pending", owner->name, op, "stash-take",
+                           ch->name, detail ) )
+    {
+        send_to_char( "The stash will not open just now -- its ledger cannot be "
+                      "written.  Nothing was taken.\n\r", ch );
+        playlog_outcome( ch, "stash-take", "failure", "ledger", op, detail );
+        return;
+    }
+
+    /* 2: out of the stash, into the taker's hands. */
+    if ( prev == NULL )
+        owner->pcdata->stash = obj->next_content;
+    else
+        prev->next_content = obj->next_content;
+    obj->next_content = NULL;
+    stash_maxload( obj, -1 );
+    obj_to_char( obj, ch );
+
+    /* 3: the owner's file without it. */
+    owner_status = stash_transfer_save( owner, "stash-owner-save" );
+    if ( owner_status == DURABLE_FAILED )
+    {
+        obj_from_char( obj );
+        stash_reinsert( owner, obj, prev );
+        recovery_record( "transfer", "abandoned", owner->name, op, "stash-take", ch->name,
+                         "the owner's save failed; the object is back in their stash" );
+        send_to_char( "Their stash could not be written, so nothing was taken.\n\r", ch );
+        playlog_outcome( ch, "stash-take", "failure", "owner-save", op, detail );
+        return;
+    }
+
+    /* The test of a crash between the two saves: never in both files. */
+    if ( recovery_fault( "stash-crash-between" ) )
+        _exit( 3 );
+
+    /* 4: the taker's file with it. */
+    taker_status = stash_transfer_save( ch, "stash-taker-save" );
+    if ( taker_status == DURABLE_FAILED )
+    {
+        int back;
+
+        obj_from_char( obj );
+        stash_reinsert( owner, obj, prev );
+        back = stash_transfer_save( owner, "stash-owner-rewrite" );
+        if ( back != DURABLE_FAILED )
+        {
+            recovery_record( "transfer", "abandoned", owner->name, op, "stash-take", ch->name,
+                             back == DURABLE_OK
+                                 ? "the taker's save failed; the object went back to the owner"
+                                 : "the taker's save failed; the object went back to the owner"
+                                   " (that save not yet confirmed on the disk)" );
+            send_to_char( "Your file could not be written, so it went back into their "
+                          "stash.\n\r", ch );
+            playlog_outcome( ch, "stash-take", "failure", "taker-save", op, detail );
+            return;
+        }
+        /* Neither file holds it now. Keep it where a save can still
+           write it: an offline copy is freed when this returns. */
+        if ( offline )
+        {
+            /* Take it back off the owner's copy, which is about to go. */
+            OBJ_DATA *walk;
+            OBJ_DATA *before = NULL;
+
+            for ( walk = owner->pcdata->stash; walk != NULL && walk != obj;
+                  walk = walk->next_content )
+                before = walk;
+            if ( walk == obj )
+            {
+                if ( before == NULL )
+                    owner->pcdata->stash = obj->next_content;
+                else
+                    before->next_content = obj->next_content;
+                obj->next_content = NULL;
+                stash_maxload( obj, -1 );
+                obj_to_char( obj, ch );
+            }
+        }
+        snprintf( note, sizeof(note),
+                  "neither file could be written; the object is held in %s's memory "
+                  "until their next save lands", offline ? ch->name : owner->name );
+        recovery_record( "transfer", "retry", owner->name, op, "stash-take", ch->name, note );
+        bug( "stash take: neither save landed; the object is only in memory", 0 );
+        send_to_char( offline
+            ? "Neither file could be written.  You hold it, and your next save keeps it.\n\r"
+            : "Neither file could be written.  It is back in their stash, and their next "
+              "save keeps it.\n\r", ch );
+        playlog_outcome( ch, "stash-take", "pending", "both-saves", op, detail );
+        return;
+    }
+
+    /* 5: on both files, or renamed into place and not yet confirmed. */
+    {
+        bool sure = owner_status == DURABLE_OK && taker_status == DURABLE_OK;
+
+        recovery_record( "transfer", "committed", owner->name, op, "stash-take", ch->name,
+                         sure ? detail : "written, not yet confirmed on the disk" );
+        watch_log( ch, "took %s (vnum %d) from %s's stash",
+            obj->short_descr, obj->pIndexData->vnum, owner->name );
+        watch_log( owner, "%s took %s (vnum %d) from this stash",
+            ch->name, obj->short_descr, obj->pIndexData->vnum );
+        act( "You take $p out of their stash.", ch, obj, NULL, TO_CHAR );
+        if ( !sure )
+            send_to_char( "(Written, but the disk has not confirmed it yet; your next "
+                          "save does.)\n\r", ch );
+        playlog_outcome( ch, "stash-take", sure ? "success" : "uncertain", "-", op, detail );
+    }
+}
+
 void do_stash( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -801,8 +979,6 @@ void do_stash( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
-    if ( corpse_registry_refuses_trade( ch, NULL ) )
-	return;
 
     at_altar = ( ch->in_room != NULL
               && ch->in_room->vnum == STASH_ROOM_VNUM );
@@ -812,10 +988,17 @@ void do_stash( CHAR_DATA *ch, char *argument )
     if ( arg[0] == '\0' || !str_prefix( arg, "list" ) )
     {
         /* Readable from anywhere: knowing what you own is not the same
-           as reaching it. */
+           as reaching it. Readable while a death is unsettled too: a
+           look moves nothing (review, 2026-11-03). */
         stash_show( ch );
         return;
     }
+
+    /* Everything below but STASH OF changes something; a character whose
+       file is held still may change nothing (corpse_registry_refuses_trade).
+       STASH TAKE asks again about the owner once it has found them. */
+    if ( str_prefix( arg, "of" ) && corpse_registry_refuses_trade( ch, NULL ) )
+        return;
 
     if ( !str_prefix( arg, "put" ) || !str_prefix( arg, "store" ) )
     {
@@ -1232,6 +1415,20 @@ void do_stash( CHAR_DATA *ch, char *argument )
             return;
         }
 
+        /* The owner's file held still (an unsettled death): what leaves
+           their stash in memory would come back with their file, and the
+           taker would keep a copy (review, 2026-11-03). Looking is fine. */
+        if ( taking && corpse_registry_holds_still( owner ) )
+        {
+            snprintf( buf, sizeof(buf),
+                "%s's last death has not been laid to rest yet; nothing can leave "
+                "their stash until it is.\n\r", capitalize( owner->name ) );
+            send_to_char( buf, ch );
+            if ( offline )
+                extract_char( owner, true );
+            return;
+        }
+
         if ( !taking )
         {
             OBJ_DATA *obj;
@@ -1274,27 +1471,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
                 send_to_char( "There is nothing like that in their stash.\n\r",
                     ch );
             else
-            {
-                if ( prev == NULL )
-                    owner->pcdata->stash = obj->next_content;
-                else
-                    prev->next_content = obj->next_content;
-                obj->next_content = NULL;
-
-                stash_maxload( obj, -1 );
-                obj_to_char( obj, ch );
-                watch_log( ch, "took %s (vnum %d) from %s's stash",
-                    obj->short_descr, obj->pIndexData->vnum, owner->name );
-                watch_log( owner, "%s took %s (vnum %d) from this stash",
-                    ch->name, obj->short_descr, obj->pIndexData->vnum );
-                act( "You take $p out of their stash.", ch, obj, NULL,
-                    TO_CHAR );
-
-                /* Both files: the item left one and joined the other,
-                   and a crash between the two would copy it. */
-                save_char_obj( owner );
-                save_char_obj( ch );
-            }
+                stash_take_commit( ch, owner, obj, prev, offline );
         }
 
         if ( offline )
@@ -6707,8 +6884,12 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
 {
     char buf[MAX_STRING_LENGTH];
     char price[MAX_INPUT_LENGTH];
+    char before[96];
 
     format_price( cost, price, sizeof(price) );
+    snprintf( before, sizeof(before), "cond=%d ac=%ld/%ld/%ld/%ld",
+              obj->condition, (long) obj->value[0], (long) obj->value[1],
+              (long) obj->value[2], (long) obj->value[3] );
     obj->number_repair++;
     /* Repairs never destroy a piece and never leave it short of new.  An
        item can be battered to where it must be repaired before it can be
@@ -6765,6 +6946,12 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
         {
         REMOVE_BIT(obj->extra_flags, ITEM_DAMAGED);
         }
+        /* Before and after, for the play journal. */
+        snprintf( buf, sizeof(buf), "vnum=%d %s -> cond=%d ac=%ld/%ld/%ld/%ld cost=%ld",
+                  obj->pIndexData != NULL ? obj->pIndexData->vnum : 0, before,
+                  obj->condition, (long) obj->value[0], (long) obj->value[1],
+                  (long) obj->value[2], (long) obj->value[3], cost );
+        playlog_outcome( ch, "repair", "success", "-", NULL, buf );
     }
 }
 

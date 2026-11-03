@@ -1906,11 +1906,27 @@ void do_score( CHAR_DATA *ch, char *argument )
       if ( ch->pcdata->casino_winnings > 0 || ch->pcdata->casino_losses > 0 )
       {
         /* The labels pad to 13, as Quest Points and Achievements do, so
-           the middle bar lines up with theirs. */
-        snprintf( buf, sizeof(buf), "| %-13s %8ld | %-14s %18ld |\n\r",
-            "Casino Won:", ch->pcdata->casino_winnings,
-            "Casino Lost:", ch->pcdata->casino_losses );
-        send_to_char( buf, ch );
+           the middle bar lines up with theirs. A field width is only a
+           minimum: past eight digits won (or eighteen lost) the row grew
+           past the box (review, 2026-11-03), so then each total takes a
+           full-width row of its own, every digit kept. */
+        char won[32], lost[32];
+
+        snprintf( won, sizeof(won), "%ld", ch->pcdata->casino_winnings );
+        snprintf( lost, sizeof(lost), "%ld", ch->pcdata->casino_losses );
+        if ( strlen( won ) <= 8 && strlen( lost ) <= 18 )
+        {
+            snprintf( buf, sizeof(buf), "| %-13s %8s | %-14s %18s |\n\r",
+                "Casino Won:", won, "Casino Lost:", lost );
+            send_to_char( buf, ch );
+        }
+        else
+        {
+            snprintf( buf, sizeof(buf), "Casino Won:  %s", won );
+            score_box_row( ch, buf );
+            snprintf( buf, sizeof(buf), "Casino Lost: %s", lost );
+            score_box_row( ch, buf );
+        }
       }
 
       /* The stash, and anybody sharing it. Worth a line here because it
@@ -1962,6 +1978,9 @@ void do_score( CHAR_DATA *ch, char *argument )
         send_to_char(buf, ch);
       }
       send_to_char(kader, ch);
+      /* The sheet as numbers, for the play journal: its row keeps only
+         the first lines (review, 2026-11-03). */
+      playlog_state( ch );
     }
 
   return;

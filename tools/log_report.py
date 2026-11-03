@@ -421,6 +421,22 @@ def journal_report(args, since, buffs=None) -> None:
     if not said_no:
         print("    (none)")
 
+    # 2026-11-03: a cmd row may carry what its handler said it came to
+    # (column 13, "result:reason") and an outcome row says how an
+    # operation ended, under its recovery id. Older rows have neither.
+    ended = Counter()
+    for r in commands:
+        if len(r) > 13 and r[13] not in ("-", "") and not r[13].startswith("success"):
+            ended[(r[10], r[13])] += 1
+    for r in rows:
+        if r[1] == "outcome" and len(r) > 8 and r[7] != "success":
+            ended[(r[6], f"{r[7]}:{r[8]}")] += 1
+    print("  what did not succeed, as the game said (op: result:reason, times):")
+    for (op, how), n in ended.most_common(15):
+        print(f"    x{n:<4} {op}: {clean(how)[:80]}")
+    if not ended:
+        print("    (none)")
+
     misses = help_misses(commands)
     print("  HELP that found nothing:")
     for topic, n in misses.most_common(15):

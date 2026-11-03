@@ -348,7 +348,20 @@ void do_accept( CHAR_DATA *ch, char *argument )
         snprintf( note, sizeof(note), "RESURRECT: %s's ACCEPT was undone: their file could "
                   "not be saved (corpse %s).", ch->name, id );
         log_string( note );
+        snprintf( note, sizeof(note), "objects=%d moved=0 caster=%s", given, caster_name );
+        playlog_outcome( ch, "resurrect-accept", "failure", "save", op, note );
         return;
+    }
+    /* The rest of the way it reached the disk: say so in the journal,
+       under the receipt's id (review, 2026-11-03). No room: where the
+       corpse lay is the corpse's business. */
+    {
+        char jnote[128];
+
+        snprintf( jnote, sizeof(jnote), "objects=%d caster=%s", given, caster_name );
+        playlog_outcome( ch, "resurrect-accept",
+                         status == DURABLE_OK ? "success" : "uncertain",
+                         status == DURABLE_OK ? "-" : "save-unconfirmed", op, jnote );
     }
     if ( status != DURABLE_OK )
     {

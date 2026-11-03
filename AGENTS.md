@@ -1326,7 +1326,15 @@ anything not carried, DONATE, BUY, SELL, DEPOSIT, WITHDRAW, STASH,
 SPLIT, STEAL and SACRIFICE, before anything moves. A new command that
 moves coin or things between a character and anybody or anything else
 asks it too. Saves stay refused: allowing them would defeat the
-corpse's recovery (`tests/test_death_unrecorded_trade.py`).
+corpse's recovery (`tests/test_death_unrecorded_trade.py`). **Ask about
+every party, not only the one typing** (review, 2026-11-03): STASH TAKE
+asks about the owner it takes from (`corpse_registry_holds_still(owner)`,
+an offline copy included) and SPLIT about every member it would pay --
+the autosplit that picking up coin does goes through SPLIT -- and the
+whole operation is refused. Looking moves nothing: STASH and STASH OF
+stay open to a frozen character, and the actor's guard in `do_stash`
+sits below them (`tests/test_stash_shared_transfer.py`,
+`tests/test_split_frozen.py`).
 
 ## The Holiday Calendar
 
@@ -1845,7 +1853,10 @@ rules the code depends on:
   (CI, 2026-10-27), a death's `death-save-<Name>`, a craft's
   `craft-save`, GRANTPSI's `grantpsi-save` and a PRESTORE give's or retry's `prestore-save`; `dirsync-<Name>` makes that character's next save
   unconfirmed, `corpse-move` fails a corpse record's move into history;
-  `ledger`, `crash-before-commit`, `death-recorded-crash`), read
+  `ledger`, `crash-before-commit`, `death-recorded-crash`; STASH TAKE's
+  `stash-owner-save`, `stash-taker-save` and `stash-crash-between`, and
+  `stash-owner-rewrite` -- the putting back, named without `save` so
+  `TOC_FAULT` can hold it beside a `TOC_FAULT_FILE` point), read
   by `recovery_fault()` and set nowhere but `tests/`.
 - **Nobody comes out of a file dead** (`revive_at_load`, end of
   `load_char_obj`): a `death` copy is written below zero hit points,
@@ -2622,6 +2633,24 @@ log says what a player typed; the journal says what happened, in columns
   cap, more than three levels of experience or two thousand kills of
   coin in one tick. One line per kind per player per ten minutes, to the
   journal and to toc.log as `ANOMALY:`.
+- **Outcomes, truncation and state** (review, 2026-11-03: a known
+  command that failed inside its handler read as an ordinary `cmd`, and
+  53 SCORE rows in a day held only the header). `cmd`/`refused` rows
+  carry two columns after the reply, so a reader that stops at the
+  reply reads them all: the outcome a handler gave with
+  `playlog_result(ch, result, reason)` -- `success`, `refusal`,
+  `partial`, `failure`, `pending` or `uncertain`, then a short reason
+  (`refusal:frozen`, `failure:owner-save`), `-` when none was given --
+  and `+` when the reply kept is only the start of what was said.
+  `playlog_outcome(ch, op, result, reason, op_id, detail)` adds an
+  `outcome` row: the op, result, reason, the recovery ledger's
+  operation id (or `-`) and the before/after numbers as key=value words.
+  Wired at STASH TAKE, SPLIT, REPAIR, quest completion, the craft audit,
+  PRESTORE's gives and ACCEPT; a frozen-trade refusal sets
+  `refusal:frozen` or `refusal:other-frozen`. SCORE writes a `state` row
+  of the sheet's numbers (`playlog_state`). A wizinvis actor's outcome
+  and state rows name nobody, as craft rows do. Never put private words,
+  addresses or a hidden room in a detail.
 
 - **`log/progress.tsv`** (2026-10-22, the progression pass): a line per
   credited kill (`progress_kill`, from `group_gain` after `gain_exp`) and
@@ -3166,6 +3195,20 @@ evaporates at the next login -- worse than not selling it at all.
 
 Every deposit and withdrawal calls `save_char_obj()` immediately. A
 stash written only at quit is a duplication bug waiting for a crash.
+
+**STASH TAKE from a linked partner is a receipted transfer**
+(`stash_take_commit`, review 2026-11-03: two unchecked saves copied or
+lost the object). A pending `transfer` record in the recovery ledger
+(`stash:<seq>`, naming the vnum, the object and both characters) or
+nothing moves; the owner is saved without it first -- FAILED puts it back
+where it was -- then the taker with it -- FAILED gives it back to the
+owner and saves them again; if that fails too it stays in whoever's
+memory can still save it (the taker's when the owner is an offline copy)
+and the receipt says `retry`. UNCERTAIN is never undone. The order means
+a crash between the saves leaves the object in neither file, never in
+both, with the pending receipt naming it for a PRESTORE STASH from the
+owner's snapshot; that window is not closed automatically, because
+objects carry no identity a boot could match.
 
 Fifty slots to start, twenty-five per purchase at `250 * n^2` gold, to
 a ceiling of 500. The whole road is 527,250 gold, which against the

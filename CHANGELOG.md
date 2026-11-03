@@ -8,6 +8,29 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Shared stash, SPLIT and SCORE fixes from the 2026-11-03 review.**
+  STASH TAKE never asked whether the owner's file was held still by an
+  unsettled death, so a partner could take from a frozen owner and keep
+  the object while the owner's file brought it back -- a copy -- and its
+  two saves were unchecked. It now refuses while either side is held
+  still and moves the object as a receipted transfer (a `transfer`
+  record in the recovery ledger; the owner saved first, then the taker;
+  a failed save undone, an unconfirmed one kept). STASH and STASH OF stay
+  readable while frozen. SPLIT (and autosplit) refuses the whole split
+  when any member it would pay is frozen, which had lost that member's
+  share. SCORE's casino row no longer grows past the box for totals over
+  eight digits won or eighteen lost: each takes a full-width row.
+  `tests/test_stash_shared_transfer.py`, `tests/test_split_frozen.py`,
+  `tests/test_score_box.py`.
+- **The play journal records outcomes** (review, 2026-11-03). `cmd` and
+  `refused` rows gain two trailing columns -- the outcome a handler
+  reported (`playlog_result`) and `+` when the kept reply is truncated --
+  and new `outcome` rows (op, result, reason, recovery operation id,
+  before/after numbers) cover stash takes, splits, repairs, quest
+  completions, crafting, PRESTORE gives and ACCEPT. SCORE writes a
+  `state` row with the sheet's numbers. `tools/log_report.py` lists what
+  did not succeed. Existing readers are unaffected.
+
 - **Janitors and scavengers leave Noblegarden's eggs alone** (2026-11-03,
   found by CI). An egg is cheap, and `spec_janitor` takes anything cheap
   every pulse, so Dresden's janitors swept up the hunt the players were

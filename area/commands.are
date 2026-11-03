@@ -842,6 +842,12 @@ USING A SHARED STASH
   The other character does not have to be logged in.  Their saved
   stash is read straight off the disk.
 
+  Both files are written when something is taken: theirs without it,
+  then yours with it.  If either cannot be written, you are told, and
+  the item goes back into their stash - never lost, never copied.
+  While either of you has a death still being laid to rest, nothing
+  can be taken, though both stashes can still be looked at.
+
 UNLINKING
   STASH UNLINK <character> ends your half at once.  Nothing is lost:
   every item stays in the stash of whoever put it there.

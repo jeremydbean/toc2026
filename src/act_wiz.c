@@ -11067,6 +11067,19 @@ static bool prestore_corpse_exists( const char *capname )
     return false;
 }
 
+/* A restore's result in the play journal, under the ledger's operation
+   id so the two can be read together (review, 2026-11-03). */
+static void prestore_journal( CHAR_DATA *ch, const char *kind, const char *result,
+                              const char *reason, const char *op, const char *capname,
+                              int count, const char *source )
+{
+    char what[32], detail[256];
+
+    snprintf( what, sizeof(what), "prestore-%s", kind );
+    snprintf( detail, sizeof(detail), "objects=%d to=%s from=%s", count, capname, source );
+    playlog_outcome( ch, what, result, reason, op, detail );
+}
+
 /*
  * Give objects read aside to a player -- PRESTORE GEAR, STASH and CORPSE
  * all come here -- as one operation that is either done or not, and says
@@ -11229,6 +11242,7 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
             snprintf( buf, sizeof(buf), "%s's %s restore for %s from %s: the save failed; "
                       "abandoned, nothing given", ch->name, kind, capname, source );
             log_string( buf );
+            prestore_journal( ch, kind, "failure", "save", op, capname, count, source );
             return;
         }
         snprintf( buf, sizeof(buf), "%s has the %d object%s in hand, but their file could "
@@ -11240,6 +11254,7 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
                   "save failed; pending", ch->name, kind, capname, source );
         log_string( buf );
         wizinfo( buf, LEVEL_IMMORTAL );
+        prestore_journal( ch, kind, "pending", "save", op, capname, count, source );
         return;
     }
 
@@ -11247,6 +11262,9 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
     if ( status == DURABLE_UNCERTAIN
     ||   !recovery_record( "request", "committed", capname, op, kind, ch->name, detail ) )
     {
+        prestore_journal( ch, kind, "uncertain",
+                          status == DURABLE_UNCERTAIN ? "save-unconfirmed" : "ledger",
+                          op, capname, count, source );
         snprintf( buf, sizeof(buf), "Given: %d object%s to %s, saved -- but %s.  The "
                   "receipt is settled at their next login from the mark in their file.\n\r",
                   count, count == 1 ? "" : "s", capname,
@@ -11256,6 +11274,7 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
     }
     else if ( to_stash )
     {
+        prestore_journal( ch, kind, "success", "-", op, capname, count, source );
         snprintf( buf, sizeof(buf),
                   "Restored %d object%s from %s into %s's stash, which now holds %d of %d.\n\r",
                   count, count == 1 ? "" : "s", source, capname,
@@ -11264,6 +11283,7 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
     }
     else
     {
+        prestore_journal( ch, kind, "success", "-", op, capname, count, source );
         snprintf( buf, sizeof(buf), "Restored %d object%s from %s into %s's inventory.\n\r",
                   count, count == 1 ? "" : "s", source, capname );
         send_to_char( buf, ch );

@@ -164,6 +164,19 @@ class PlaylogLiveTests(unittest.TestCase):
             score = next(r for r in mine if r[1] == "cmd" and r[10] == "score")
             self.assertEqual(score[12].count(" // "), 2, "SCORE's first three lines")
             self.assertNotIn("----", score[12], "a rule says nothing and is skipped")
+            # 2026-11-03: two columns after the reply. SCORE says far more
+            # than three lines, so its reply is marked as only the start;
+            # no handler said how it came out, so the outcome is "-". And
+            # the sheet itself is a state row of numbers.
+            self.assertEqual(len(score), 15, score)
+            self.assertEqual((score[13], score[14]), ("-", "+"))
+            state = [r for r in mine if r[1] == "state"]
+            self.assertTrue(state, "SCORE writes the state behind the sheet")
+            self.assertRegex(state[0][6], r"^lvl=10 hp=\d+/\d+ mana=\d+/\d+ mv=\d+/\d+ "
+                                          r"align=-?\d+ exp=\d+ coin=\d+ bank=\d+ qp=\d+ "
+                                          r"prac=\d+ train=\d+ stash=\d+/\d+ remorts=\d+$")
+            drop = next(r for r in mine if r[1] == "cmd" and r[10] == "drop")
+            self.assertEqual((drop[13], drop[14]), ("-", "-"), "one line, all of it kept")
 
             session = [r for r in mine if r[1] == "session"][-1]
             coin = next(f for f in session if f.startswith("coin: "))

@@ -4508,16 +4508,23 @@ void do_split( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    /* Validate every recipient before moving any coins. */
+    /* Validate every recipient before moving any coins. A member whose
+       file is held still (an unsettled death) would lose their share when
+       it comes back, so the whole split is refused (review, 2026-11-03);
+       an autosplit after looting goes through here too, and the looter
+       then keeps it all. */
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
     {
-        if ( gch != ch && is_same_group( gch, ch )
-        &&   !IS_AFFECTED( gch, AFF_CHARM )
-        && ( query_carry_coins( gch, share ) > can_carry_w( gch )
-          || !can_adjust_coin_balance(gch, share, coin_type) ) )
+        if ( gch == ch || !is_same_group( gch, ch ) || IS_AFFECTED( gch, AFF_CHARM ) )
+            continue;
+        if ( corpse_registry_refuses_trade( ch, gch ) )
+            return;
+        if ( query_carry_coins( gch, share ) > can_carry_w( gch )
+          || !can_adjust_coin_balance(gch, share, coin_type) )
         {
             act( "$N cannot carry a share that heavy.",
                  ch, NULL, gch, TO_CHAR );
+            playlog_result( ch, "refusal", "share-too-heavy" );
             return;
         }
     }
@@ -4566,6 +4573,13 @@ void do_split( CHAR_DATA *ch, char *argument )
         }
     }
 
+    {
+        char detail[160];
+
+        snprintf( detail, sizeof(detail), "split=%ld %s members=%d share=%ld kept=%ld",
+                  amount, coin_name, members, share, share + extra );
+        playlog_outcome( ch, "split", "success", "-", NULL, detail );
+    }
     return;
 }
 

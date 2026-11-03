@@ -3183,6 +3183,13 @@ static void craft_audit( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, const char *
               status == DURABLE_OK ? "saved" : status == DURABLE_UNCERTAIN ? "unconfirmed"
                   : status == DURABLE_FAILED ? "undone" : "-" );
     playlog_craft( ch, fields );
+    /* The command's row says how it came out, too (review, 2026-11-03):
+       an undone save is a failure, an unconfirmed one uncertain, and a
+       roll that made nothing a failure of the attempt. */
+    playlog_result( ch, status == DURABLE_FAILED ? "failure"
+                      : status == DURABLE_UNCERTAIN ? "uncertain"
+                      : !strcmp( outcome, "made" ) ? "success" : "failure",
+                    status == DURABLE_FAILED ? "save" : outcome );
 }
 
 /* ---------------------------------------------------------------------

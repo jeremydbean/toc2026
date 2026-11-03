@@ -74,6 +74,9 @@ static char current_room[16];
 static char current_line[100];
 static char current_cmd[32];        /* the command's own name, for coin */
 static bool current_set;
+/* What the running command came to, when a handler said so
+   (playlog_result / playlog_outcome): "result:reason", or "" for none. */
+static char current_outcome[48];
 
 /* Where a session's coin came from (playlog_coin). SPENT is every loss. */
 enum { COIN_LOOT, COIN_QUEST, COIN_DAILY, COIN_SOLD, COIN_GAMBLING,
@@ -239,11 +242,12 @@ static void reply_add( char *dest, size_t size, char *line, size_t *n, int *line
  * enough: AQUEST COMPLETE, SCORE and EQUIPMENT all open with a line that
  * says nothing (2026-10-22), and the reward or the change was on the next.
  */
-static void first_reply_line( const char *out, int len, char *dest, size_t size )
+static bool first_reply_line( const char *out, int len, char *dest, size_t size )
 {
     char line[PLAY_REPLY];
     size_t n = 0;
     int i, lines = 0;
+    bool cut = false;
 
     dest[0] = '\0';
     for ( i = 0; i < len && lines < PLAY_REPLY_LINES; i++ )
@@ -276,11 +280,49 @@ static void first_reply_line( const char *out, int len, char *dest, size_t size 
             reply_add( dest, size, line, &n, &lines );
             continue;
         }
-        if ( c >= 32 && c < 127 && n + 1 < sizeof(line) )
-            line[n++] = (char) c;
+        if ( c >= 32 && c < 127 )
+        {
+            if ( n + 1 < sizeof(line) )
+                line[n++] = (char) c;
+            else
+                cut = true;             /* a line longer than is kept */
+        }
     }
     if ( lines < PLAY_REPLY_LINES )
         reply_add( dest, size, line, &n, &lines );
+    /* Anything the game said past the lines kept -- another line with
+       something in it -- means the record holds only the start. */
+    for ( ; !cut && i < len; i++ )
+    {
+        unsigned char c = (unsigned char) out[i];
+
+        if ( c == 255 )                 /* Telnet: GMCP is not words */
+        {
+            if ( i + 1 < len && (unsigned char) out[i + 1] == 250 )
+            {
+                for ( i += 2; i + 1 < len; i++ )
+                    if ( (unsigned char) out[i] == 255
+                    &&   (unsigned char) out[i + 1] == 240 )
+                        break;
+                i++;
+            }
+            else
+                i += 2;
+            continue;
+        }
+        if ( c == 27 )                  /* a colour code's digits neither */
+        {
+            for ( i++; i < len && !( ( out[i] >= 'A' && out[i] <= 'Z' )
+                                  || ( out[i] >= 'a' && out[i] <= 'z' ) ); i++ )
+                ;
+            continue;
+        }
+        if ( isalnum( c ) )
+            cut = true;
+    }
+    if ( strlen( dest ) + 1 >= size )
+        cut = true;
+    return cut;
 }
 
 /* -------------------------------------------------------------- crash */
@@ -415,6 +457,7 @@ void playlog_begin( CHAR_DATA *ch, const char *cmd_name, const char *shown )
     else
         snprintf( current_room, sizeof(current_room), "%d", ch->in_room->vnum );
     play_clean( current_line, sizeof(current_line), shown );
+    current_outcome[0] = '\0';
     current_set = true;
     playlog_phase = "a command";
 
@@ -447,6 +490,7 @@ void playlog_end( CHAR_DATA *ch, const char *cmd_name, const char *shown,
     char fields[PLAY_LINE];
     char args[120];
     const char *space;
+    bool cut = false;
 
     current_set = false;
     playlog_phase = "game loop";
@@ -461,14 +505,93 @@ void playlog_end( CHAR_DATA *ch, const char *cmd_name, const char *shown,
     if ( secret || out == NULL || out_len <= 0 )
         reply[0] = '\0';
     else
-        first_reply_line( out, out_len, reply, sizeof(reply) );
+        cut = first_reply_line( out, out_len, reply, sizeof(reply) );
 
-    snprintf( fields, sizeof(fields), "%s\t%d\t%ld\t%s\t%s\t%s\t%s",
+    /* Two columns after the reply (2026-11-03), so a reader that stops at
+       the reply still reads every row: what the command came to, when its
+       handler said (playlog_result), and "+" when the reply kept is only
+       the start of what the game said. */
+    snprintf( fields, sizeof(fields), "%s\t%d\t%ld\t%s\t%s\t%s\t%s\t%s\t%s",
               play_position( pos_before ), hp_pct_before, ms,
               fighting_before ? "fight" : "-",
               cmd_name != NULL ? cmd_name : "?", args,
-              secret ? "(withheld)" : reply );
+              secret ? "(withheld)" : reply,
+              current_outcome[0] != '\0' ? current_outcome
+                                         : refused ? "refusal:unknown-command" : "-",
+              cut && !secret ? "+" : "-" );
+    current_outcome[0] = '\0';
     journal_write( refused ? "refused" : "cmd", ch, fields );
+}
+
+/*
+ * What a command came to, from inside its handler: a command the game
+ * knows can still fail, and its row said only "cmd" (review, 2026-11-03).
+ * `result` is one of success, refusal, partial, failure, pending or
+ * uncertain; `reason` a short code ("frozen", "owner-save"). Kept for the
+ * running command of `ch` only, and written as its row's outcome column;
+ * the first result said wins, since the first refusal is the reason.
+ */
+void playlog_result( CHAR_DATA *ch, const char *result, const char *reason )
+{
+    char clean[48];
+
+    if ( ch == NULL || IS_NPC(ch) || !current_set || current_outcome[0] != '\0'
+    ||   ch->name == NULL || str_cmp( ch->name, current_name ) )
+        return;
+    snprintf( clean, sizeof(clean), "%s:%s", result != NULL ? result : "?",
+              reason != NULL && reason[0] != '\0' ? reason : "-" );
+    play_clean( current_outcome, sizeof(current_outcome), clean );
+}
+
+/*
+ * An operation that moves or changes something worth following: one
+ * "outcome" row -- op, result, reason, the recovery operation id it rode
+ * under ("-" for none), and `detail`, the before/after numbers as
+ * key=value words ("qp=120->160 coin=+3g"). Also the running command's
+ * outcome. Callers pass no private words, addresses or hidden rooms; the
+ * row's own room is written by the journal's rules.
+ */
+void playlog_outcome( CHAR_DATA *ch, const char *op, const char *result,
+                      const char *reason, const char *op_id, const char *detail )
+{
+    char fields[PLAY_LINE];
+    char c_op[32], c_res[16], c_reason[32], c_id[48], c_detail[PLAY_LINE / 2];
+
+    if ( ch == NULL || IS_NPC(ch) )
+        return;
+    playlog_result( ch, result, reason );
+    play_clean( c_op, sizeof(c_op), op );
+    play_clean( c_res, sizeof(c_res), result );
+    play_clean( c_reason, sizeof(c_reason), reason != NULL && reason[0] != '\0' ? reason : "-" );
+    play_clean( c_id, sizeof(c_id), op_id != NULL && op_id[0] != '\0' ? op_id : "-" );
+    play_clean( c_detail, sizeof(c_detail), detail != NULL ? detail : "" );
+    snprintf( fields, sizeof(fields), "%s\t%s\t%s\t%s\t%s", c_op, c_res, c_reason,
+              c_id, c_detail );
+    journal_write( "outcome", IS_SET( ch->act, PLR_WIZINVIS ) ? NULL : ch, fields );
+}
+
+/*
+ * SCORE, as numbers: a SCORE row keeps only the first lines of the sheet
+ * -- 53 of them in one day held nothing but its header (review,
+ * 2026-11-03) -- so the state behind it goes in a row of its own, words
+ * of key=value: level, pools, alignment, wealth (copper, carried and
+ * banked), quest points, practices, trains, stash and remorts.
+ */
+void playlog_state( CHAR_DATA *ch )
+{
+    char fields[PLAY_LINE];
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    snprintf( fields, sizeof(fields),
+              "lvl=%d hp=%d/%d mana=%d/%d mv=%d/%d align=%d exp=%ld coin=%ld bank=%ld "
+              "qp=%d prac=%d train=%d stash=%d/%d remorts=%d",
+              ch->level, ch->hit, ch->max_hit, ch->mana, ch->max_mana,
+              ch->move, ch->max_move, ch->alignment, (long) ch->exp,
+              coins_to_copper( ch ), ch->pcdata->bank, ch->questpoints,
+              ch->practice, ch->train, stash_count( ch ), ch->pcdata->stash_max,
+              ch->pcdata->num_remorts );
+    journal_write( "state", IS_SET( ch->act, PLR_WIZINVIS ) ? NULL : ch, fields );
 }
 
 /* For bug(): " (during Name's 'look' in room 4207)", or "". */

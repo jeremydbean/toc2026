@@ -806,9 +806,28 @@ static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
 static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
                                       int kills_min, int kills_max )
 {
+    bool was_questor = !IS_NPC(ch) && IS_SET( ch->act, PLR_QUESTOR );
+    bool daily = ch->questdaily;
+    int qp = ch->questpoints;
+    int dp = ch->pcdata != NULL ? ch->pcdata->daily_points : 0;
+    long coin = coins_to_copper( ch );
+
     complete_automatic_quest_body( ch, questman, kills_min, kills_max );
     if ( !IS_NPC(ch) )
+    {
+        char detail[160];
+
+        /* What the reward came to, for the play journal (review,
+           2026-11-03). Done means the quest is no longer held. */
+        snprintf( detail, sizeof(detail), "%s qp=%d->%d daily=%d->%d coin=%+ld",
+                  daily ? "daily" : "quest", qp, ch->questpoints,
+                  dp, ch->pcdata != NULL ? ch->pcdata->daily_points : 0,
+                  coins_to_copper( ch ) - coin );
+        playlog_outcome( ch, "quest-complete",
+                         was_questor && !IS_SET( ch->act, PLR_QUESTOR ) ? "success" : "refusal",
+                         "-", NULL, detail );
         player_snapshot_milestone( ch, "quest", true );
+    }
 }
 
 static void credit_automatic_quest_kill( CHAR_DATA *ch, int target_vnum )

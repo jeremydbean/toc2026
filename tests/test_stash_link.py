@@ -190,8 +190,15 @@ class StashLinkSourceTests(unittest.TestCase):
         between the two writes would copy it."""
         body = self.obj.split('if ( !str_prefix( arg, "of" )', 1)[1]
         body = body.split('if ( !str_prefix( arg, "buy" )', 1)[0]
-        self.assertIn("save_char_obj( owner )", body)
-        self.assertIn("save_char_obj( ch )", body)
+        # Since 2026-11-03 the move is stash_take_commit's: the owner saved
+        # without it first, then the taker with it, each save checked
+        # (tests/test_stash_shared_transfer.py plays the failures).
+        self.assertIn("stash_take_commit( ch, owner, obj, prev, offline )", body)
+        commit = self.obj.split("static void stash_take_commit(", 1)[1]
+        commit = commit.split("\nvoid do_stash(", 1)[0]
+        owner_save = commit.index('stash_transfer_save( owner, "stash-owner-save" )')
+        taker_save = commit.index('stash_transfer_save( ch, "stash-taker-save" )')
+        self.assertLess(owner_save, taker_save, "the owner's file first: never a copy")
 
 
 if __name__ == "__main__":

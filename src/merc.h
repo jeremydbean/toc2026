@@ -1040,6 +1040,10 @@ void  playlog_bug            args( ( const char *message ) );
 void  playlog_report         args( ( CHAR_DATA *ch, const char *kind, const char *text ) );
 void  playlog_tick           args( ( CHAR_DATA *ch ) );
 void  playlog_session        args( ( CHAR_DATA *ch, const char *how ) );
+void  playlog_result         args( ( CHAR_DATA *ch, const char *result, const char *reason ) );
+void  playlog_outcome        args( ( CHAR_DATA *ch, const char *op, const char *result,
+                                     const char *reason, const char *op_id, const char *detail ) );
+void  playlog_state          args( ( CHAR_DATA *ch ) );
 long  playlog_now_ms         args( ( void ) );
 void  progress_kill          args( ( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp,
                                      int rested_xp, long accepted_xp, int members ) );

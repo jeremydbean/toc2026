@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261103d 2026-11-03
+STASH TAKE from a linked character now says plainly if either file could
+not be written, and puts the item back rather than losing or copying it.
+While a death is still being laid to rest you can look at your stash and
+a partner's, but nothing moves -- and nobody can split coin with you
+until it is settled. SCORE keeps very large casino totals inside the box.
+
 @ 20261103c 2026-11-03
 The Magic Book from Hyrule is now a recipe book: READ or OPEN it to see
 every brew, potion and scroll, what each does and what goes into it.
