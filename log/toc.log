@@ -251686,3 +251686,83 @@ Tue Nov  3 01:56:21 2026 :: Log Alaric [7767]: fi
 Tue Nov  3 01:56:26 2026 :: Sock.sinaddr:  5.161.177.47
 Tue Nov  3 01:56:27 2026 :: EOF encountered on read.
 Tue Nov  3 01:56:27 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:32 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:39 2026 :: Log Alaric [7767]: sc
+Tue Nov  3 01:56:40 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:45 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:51 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:56:59 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:05 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:10 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:16 2026 :: Log Alaric [7767]: sc
+Tue Nov  3 01:57:16 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:22 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:28 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:34 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:57:34 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:42 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:57:46 2026 :: Log Alaric [7767]: killed Lord British
+Tue Nov  3 01:57:46 2026 :: Log Alaric [7767]: coin +55 platinum
+Tue Nov  3 01:57:46 2026 :: Log Alaric [7767]: coin +256 silver
+Tue Nov  3 01:57:46 2026 :: Log Alaric [7767]: coin +344 copper
+Tue Nov  3 01:57:46 2026 :: Log Alaric [7767]: coin +144 gold
+Tue Nov  3 01:57:51 2026 :: Log Alaric [7767]: get all cor
+Tue Nov  3 01:57:55 2026 :: Log Alaric [7767]: l
+Tue Nov  3 01:57:58 2026 :: Log Alaric [7767]: fi av
+Tue Nov  3 01:58:04 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:10 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:15 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:21 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:27 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:33 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:38 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:44 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:50 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:58:56 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:01 2026 :: Log Alaric [7767]: score
+Tue Nov  3 01:59:02 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:07 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:13 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:19 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:25 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:30 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:36 2026 :: Log Alaric [7767]: who
+Tue Nov  3 01:59:37 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:42 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:48 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 01:59:54 2026 :: Log Alaric [7767]: score
+Tue Nov  3 01:59:54 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 02:00:00 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 02:00:07 2026 :: Log Alaric [7767]: fi
+Tue Nov  3 02:00:07 2026 :: Log Alaric [7767]: killed The Avatar
+Tue Nov  3 02:00:07 2026 :: Log Alaric [7767]: coin +5 platinum
+Tue Nov  3 02:00:07 2026 :: Log Alaric [7767]: coin +25 silver
+Tue Nov  3 02:00:07 2026 :: Log Alaric [7767]: coin +34 copper
+Tue Nov  3 02:00:07 2026 :: Log Alaric [7767]: coin +14 gold
+Tue Nov  3 02:00:15 2026 :: Log Alaric [7767]: get all cor
+Tue Nov  3 02:00:19 2026 :: Log Alaric [7767]: recal
+Tue Nov  3 02:00:19 2026 :: Log Alaric [7747]: arrived (The Desert Moongate) from 7767
+Tue Nov  3 02:00:23 2026 :: Log Alaric [7747]: w
+Tue Nov  3 02:00:23 2026 :: Log Alaric [7746]: arrived (The Desert) from 7747
+Tue Nov  3 02:00:24 2026 :: Log Alaric [7746]: s
+Tue Nov  3 02:00:24 2026 :: Log Alaric [7742]: arrived (The Desert) from 7746
+Tue Nov  3 02:00:38 2026 :: Log Alaric [7742]: w
+Tue Nov  3 02:00:38 2026 :: Log Alaric [7741]: arrived (The Desert) from 7742
+Tue Nov  3 02:00:41 2026 :: Log Alaric [7741]: score
+Tue Nov  3 02:00:45 2026 :: Log Alaric [7741]: recall default
+Tue Nov  3 02:00:47 2026 :: Log Alaric [7741]: recal
+Tue Nov  3 02:00:47 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 7741
+Tue Nov  3 02:00:50 2026 :: Log Alaric [4207]: w
+Tue Nov  3 02:00:50 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov  3 02:00:51 2026 :: Log Alaric [4208]: eq
+Tue Nov  3 02:00:54 2026 :: Log Alaric [4208]: sc
+Tue Nov  3 02:00:55 2026 :: Log Alaric [4208]: i
+Tue Nov  3 02:00:59 2026 :: Log Alaric [4208]: comp amulet
+Tue Nov  3 02:01:10 2026 :: Log Alaric [4208]: comp crown
+Tue Nov  3 02:01:20 2026 :: Log Alaric [4208]: wear crow
+Tue Nov  3 02:01:23 2026 :: Log Alaric [4208]: stash put helm
+Tue Nov  3 02:01:23 2026 :: Log Alaric [4208]: stashed battle helmet (vnum 29215)
+Tue Nov  3 02:01:24 2026 :: Log Alaric [4208]: i
+Tue Nov  3 02:01:27 2026 :: Log Alaric [4208]: comp scep
+Tue Nov  3 02:01:31 2026 :: Sock.sinaddr:  3.149.57.90
+Tue Nov  3 02:01:32 2026 :: EOF encountered on read.

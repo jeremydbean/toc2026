@@ -17970,3 +17970,64 @@
 1793670981	cmd	Alaric	57	7767	ultima.are	fighting	71	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
 1793670981	cmd	Alaric	57	7767	ultima.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-9] // Your fists of fury injures Lord British. [-14]
 1793670987	cmd	Alaric	57	7767	ultima.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-15] // Your fists of fury maims Lord British! [-35]
+1793670992	cmd	Alaric	57	7767	ultima.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Lord British! [-32] // Your fists of fury mauls Lord British. [-24]
+1793670999	cmd	Alaric	57	7767	ultima.are	fighting	70	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793671000	cmd	Alaric	57	7767	ultima.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-23] // Your fists of fury mauls Lord British. [-21]
+1793671005	cmd	Alaric	57	7767	ultima.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-16] // Your fists of fury mauls Lord British. [-24]
+1793671011	cmd	Alaric	57	7767	ultima.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Lord British! [-29] // Your fists of fury devastates Lord British! [-32]
+1793671019	cmd	Alaric	57	7767	ultima.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-5] // Your fists of fury devastates Lord British! [-31]
+1793671025	cmd	Alaric	57	7767	ultima.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Lord British. [-23] // Your fists of fury scratches Lord British. [-3]
+1793671030	cmd	Alaric	57	7767	ultima.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Lord British. [-7] // Your fists of fury hits Lord British. [-12]
+1793671036	cmd	Alaric	57	7767	ultima.are	fighting	68	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793671036	cmd	Alaric	57	7767	ultima.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Lord British! [-28] // Your fists of fury scratches Lord British. [-3]
+1793671042	cmd	Alaric	57	7767	ultima.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Lord British. [-15] // Your fists of fury grazes Lord British. [-5]
+1793671048	cmd	Alaric	57	7767	ultima.are	fighting	67	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Lord British. [-19] // Your fists of fury injures Lord British. [-16]
+1793671054	cmd	Alaric	57	7767	ultima.are	fighting	67	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793671054	cmd	Alaric	57	7767	ultima.are	fighting	67	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Lord British. [-1] // Your fists of fury injures Lord British. [-14]
+1793671062	cmd	Alaric	57	7767	ultima.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Lord British. [-10] // Your fists of fury hits Lord British. [-11]
+1793671071	cmd	Alaric	57	7767	ultima.are	standing	66	1	-	get	all cor	You get British's crown from corpse of Lord British. //                     ACHIEVEMENT EARNED // Heavy Is the Head  +40 points
+1793671075	cmd	Alaric	57	7767	ultima.are	standing	66	0	-	look		The Throne Room //   In the Throne Room there are the two most important figures in // the world.  The avatar and Lord British himself.
+1793671078	cmd	Alaric	57	7767	ultima.are	standing	66	0	-	fists	av	You attack in an all consuming fury! // Your fists of fury scratches The Avatar. [-3] // Your fists of fury scratches The Avatar. [-3]
+1793671084	cmd	Alaric	57	7767	ultima.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The Avatar. [-6] // Your fists of fury hits The Avatar. [-10]
+1793671090	cmd	Alaric	57	7767	ultima.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The Avatar. [-20] // Your fists of fury wounds The Avatar. [-19]
+1793671095	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The Avatar. [-1] // Your fists of fury injures The Avatar. [-14]
+1793671101	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The Avatar. [-8] // Your fists of fury hits The Avatar. [-9]
+1793671107	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The Avatar. [-18] // Your fists of fury grazes The Avatar. [-6]
+1793671113	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Avatar. [-21] // Your fists of fury grazes The Avatar. [-6]
+1793671118	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The Avatar. [-18] // Your fists of fury grazes The Avatar. [-8]
+1793671124	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The Avatar. [-11] // Your fists of fury mauls The Avatar. [-24]
+1793671130	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Avatar. [-24] // Your fists of fury mauls The Avatar. [-21]
+1793671136	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Avatar. [-23] // Your fists of fury wounds The Avatar. [-19]
+1793671141	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793671142	cmd	Alaric	57	7767	ultima.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The Avatar! [-26] // Your fists of fury devastates The Avatar! [-29]
+1793671147	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Avatar. [-22] // Your fists of fury wounds The Avatar. [-17]
+1793671153	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The Avatar. [-7] // Your fists of fury grazes The Avatar. [-8]
+1793671159	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The Avatar. [-10] // Your fists of fury mauls The Avatar. [-24]
+1793671165	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The Avatar. [-11] // Your fists of fury wounds The Avatar. [-20]
+1793671170	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The Avatar. [-16] // Your fists of fury decimates The Avatar! [-27]
+1793671176	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793671177	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The Avatar. [-20] // Your fists of fury devastates The Avatar! [-29]
+1793671182	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The Avatar. [-9] // Your fists of fury injures The Avatar. [-15]
+1793671188	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The Avatar. [-15] // Your fists of fury grazes The Avatar. [-7]
+1793671194	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793671194	cmd	Alaric	57	7767	ultima.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The Avatar. [-15] // Your fists of fury injures The Avatar. [-16]
+1793671200	cmd	Alaric	57	7767	ultima.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The Avatar. [-19] // Your fists of fury scratches The Avatar. [-2]
+1793671207	cmd	Alaric	57	7767	ultima.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Avatar. [-24] // Your fists of fury devastates The Avatar! [-29]
+1793671215	cmd	Alaric	57	7767	ultima.are	standing	63	0	-	get	all cor	You get The Glass Sword from corpse of The Avatar.
+1793671219	cmd	Alaric	57	7747	ultima.are	standing	63	0	-	recall		The Desert Moongate //   Your thirst seems to slacken as you see the comforting glow of // the moongate.
+1793671223	cmd	Alaric	57	7746	ultima.are	standing	63	0	-	west		The Desert //   The sands blows into your ear and eyes. // [Exits: east south west]
+1793671224	cmd	Alaric	57	7742	ultima.are	standing	63	0	-	south		The Desert //   You trudge on.  This desert seems endless. // [Exits: north east west]
+1793671238	cmd	Alaric	57	7741	ultima.are	standing	63	0	-	west		The Desert //   The Desert is an ugly place.  Sand whips into your eyes, making // you unsure of where you are and what you see.
+1793671241	cmd	Alaric	57	7741	ultima.are	standing	64	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793671245	cmd	Alaric	57	7741	ultima.are	standing	64	12	-	recall	default	Your recall settles back to the Temple.
+1793671247	cmd	Alaric	57	4207	dresden.are	standing	64	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793671250	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a
+1793671251	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793671254	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793671255	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	inventory		You are carrying: //      (Invis) (Magical) The Glass Sword //      (Glowing) British's amulet
+1793671259	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	compare	amulet	A) British's amulet (level 54) // B) the Crystalline Royal Cloak (level 50), worn // Slot: neck.  Your damage comes from weapons.
+1793671270	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	compare	crown	A) British's crown (level 54) // B) battle helmet (level 51), worn // Slot: head.  Your damage comes from weapons.
+1793671280	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	wear	crow	You stop using battle helmet. // You wear British's crown on your head.
+1793671283	cmd	Alaric	57	4208	dresden.are	standing	64	7	-	stash	put helm	You put battle helmet away for safe keeping.
+1793671284	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	inventory		You are carrying: //      (Invis) (Magical) The Glass Sword //      (Glowing) British's amulet
+1793671287	cmd	Alaric	57	4208	dresden.are	standing	64	0	-	compare	scep	A) British's sceptre (level 54) // B) the Crystalline Sceptre of Commanding (level 50), worn // Slot: held.  Your damage comes from weapons.
