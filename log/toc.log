@@ -249893,3 +249893,345 @@ Tue Nov  3 01:26:20 2026 :: Log Alaric [7616]: w
 Tue Nov  3 01:26:20 2026 :: Log Alaric [7636]: arrived (Library) from 7616
 Tue Nov  3 01:26:21 2026 :: Log Alaric [7636]: s
 Tue Nov  3 01:26:21 2026 :: Log Alaric [7635]: arrived (Web) from 7636
+Tue Nov  3 01:26:23 2026 :: Log Alaric [7635]: kill sp
+Tue Nov  3 01:26:23 2026 :: Log Alaric [7635]: killed the giant spider
+Tue Nov  3 01:26:23 2026 :: Log Alaric [7635]: coin +2 silver
+Tue Nov  3 01:26:23 2026 :: Log Alaric [7635]: coin +4 copper
+Tue Nov  3 01:26:27 2026 :: Log Alaric [7635]: l i cor
+Tue Nov  3 01:26:30 2026 :: Log Alaric [7635]: get moon cor
+Tue Nov  3 01:26:31 2026 :: Log Alaric [7635]: s
+Tue Nov  3 01:26:31 2026 :: Log Alaric [7634]: arrived (Library) from 7635
+Tue Nov  3 01:26:32 2026 :: Log Alaric [7634]: s
+Tue Nov  3 01:26:32 2026 :: Log Alaric [7633]: arrived (Library) from 7634
+Tue Nov  3 01:26:33 2026 :: Log Alaric [7633]: e
+Tue Nov  3 01:26:33 2026 :: Log Alaric [7632]: arrived (Library) from 7633
+Tue Nov  3 01:26:34 2026 :: Log Alaric [7632]: os
+Tue Nov  3 01:26:35 2026 :: Log Alaric [7632]: s
+Tue Nov  3 01:26:35 2026 :: Log Alaric [7628]: arrived (The Library Moongate) from 7632
+Tue Nov  3 01:26:37 2026 :: Log Alaric [7628]: unl up
+Tue Nov  3 01:26:39 2026 :: Log Alaric [7628]: open up
+Tue Nov  3 01:26:39 2026 :: Log Alaric [7628]: u
+Tue Nov  3 01:26:39 2026 :: Log Alaric [7637]: arrived (The Center of the Tavern) from 7628
+Tue Nov  3 01:26:42 2026 :: Log Alaric [7637]: w
+Tue Nov  3 01:26:42 2026 :: Log Alaric [7641]: arrived (The West Wall of the Tavern) from 7637
+Tue Nov  3 01:26:44 2026 :: Log Alaric [7641]: n
+Tue Nov  3 01:26:44 2026 :: Log Alaric [7638]: arrived (The Northwest Corner of the Tavern) from 7641
+Tue Nov  3 01:26:45 2026 :: Log Alaric [7638]: e
+Tue Nov  3 01:26:45 2026 :: Log Alaric [7639]: arrived (The North Wall of the Tavern) from 7638
+Tue Nov  3 01:26:47 2026 :: Log Alaric [7639]: e
+Tue Nov  3 01:26:47 2026 :: Log Alaric [7640]: arrived (The Northeast Corner of the Tavern) from 7639
+Tue Nov  3 01:26:48 2026 :: Log Alaric [7640]: s
+Tue Nov  3 01:26:48 2026 :: Log Alaric [7642]: arrived (The East Wall of the Tavern) from 7640
+Tue Nov  3 01:26:48 2026 :: Log Alaric [7642]: s
+Tue Nov  3 01:26:48 2026 :: Log Alaric [7645]: arrived (The Southeast Corner of the Tavern) from 7642
+Tue Nov  3 01:26:52 2026 :: Log Alaric [7645]: fi gq
+Tue Nov  3 01:26:57 2026 :: Log Alaric [7645]: fi gw
+Tue Nov  3 01:27:03 2026 :: Log Alaric [7645]: fi
+Tue Nov  3 01:27:06 2026 :: Log Alaric [7645]: killed Gwenno the Bard
+Tue Nov  3 01:27:06 2026 :: Log Alaric [7645]: coin +1 silver
+Tue Nov  3 01:27:06 2026 :: Log Alaric [7645]: coin +2 copper
+Tue Nov  3 01:27:06 2026 :: Log Alaric [7645]: coin +1 gold
+Tue Nov  3 01:27:09 2026 :: Log Alaric [7645]: l i cor
+Tue Nov  3 01:27:11 2026 :: Log Alaric [7645]: l
+Tue Nov  3 01:27:12 2026 :: Log Alaric [7645]: w
+Tue Nov  3 01:27:12 2026 :: Log Alaric [7644]: arrived (The South Wall of the Tavern) from 7645
+Tue Nov  3 01:27:14 2026 :: Log Alaric [7644]: w
+Tue Nov  3 01:27:14 2026 :: Log Alaric [7643]: arrived (The Southwest Corner of the Tavern) from 7644
+Tue Nov  3 01:27:16 2026 :: Log Alaric [7643]: open down
+Tue Nov  3 01:27:17 2026 :: Log Alaric [7643]: d
+Tue Nov  3 01:27:17 2026 :: Log Alaric [7646]: arrived (Cellar) from 7643
+Tue Nov  3 01:27:18 2026 :: Log Alaric [7646]: scan
+Tue Nov  3 01:27:20 2026 :: Log Alaric [7646]: e
+Tue Nov  3 01:27:20 2026 :: Log Alaric [7647]: arrived (Cellar) from 7646
+Tue Nov  3 01:27:21 2026 :: Log Alaric [7647]: e
+Tue Nov  3 01:27:21 2026 :: Log Alaric [7648]: arrived (Cellar) from 7647
+Tue Nov  3 01:27:22 2026 :: Log Alaric [7648]: fi io
+Tue Nov  3 01:27:28 2026 :: Log Alaric [7648]: fi
+Tue Nov  3 01:27:33 2026 :: Log Alaric [7648]: fi
+Tue Nov  3 01:27:39 2026 :: Log Alaric [7648]: fi
+Tue Nov  3 01:27:42 2026 :: Log Alaric [7648]: killed Iolo the Bard
+Tue Nov  3 01:27:45 2026 :: Log Alaric [7648]: who
+Tue Nov  3 01:27:45 2026 :: Log Alaric [7648]: fi
+Tue Nov  3 01:27:45 2026 :: Log Alaric [7648]: l i cor
+Tue Nov  3 01:27:48 2026 :: Log Alaric [7648]: get mu cor
+Tue Nov  3 01:27:48 2026 :: Log Alaric [7648]: l
+Tue Nov  3 01:27:50 2026 :: Log Alaric [7648]: w
+Tue Nov  3 01:27:50 2026 :: Log Alaric [7647]: arrived (Cellar) from 7648
+Tue Nov  3 01:27:50 2026 :: Log Alaric [7647]: n
+Tue Nov  3 01:27:51 2026 :: Log Alaric [7647]: w
+Tue Nov  3 01:27:51 2026 :: Log Alaric [7646]: arrived (Cellar) from 7647
+Tue Nov  3 01:27:52 2026 :: Log Alaric [7646]: n
+Tue Nov  3 01:27:53 2026 :: Log Alaric [7646]: u
+Tue Nov  3 01:27:53 2026 :: Log Alaric [7643]: arrived (The Southwest Corner of the Tavern) from 7646
+Tue Nov  3 01:27:55 2026 :: Log Alaric [7643]: e
+Tue Nov  3 01:27:55 2026 :: Log Alaric [7644]: arrived (The South Wall of the Tavern) from 7643
+Tue Nov  3 01:27:56 2026 :: Log Alaric [7644]: n
+Tue Nov  3 01:27:56 2026 :: Log Alaric [7637]: arrived (The Center of the Tavern) from 7644
+Tue Nov  3 01:27:57 2026 :: Log Alaric [7637]: e
+Tue Nov  3 01:27:57 2026 :: Log Alaric [7642]: arrived (The East Wall of the Tavern) from 7637
+Tue Nov  3 01:27:58 2026 :: Log Alaric [7642]: n
+Tue Nov  3 01:27:58 2026 :: Log Alaric [7640]: arrived (The Northeast Corner of the Tavern) from 7642
+Tue Nov  3 01:27:59 2026 :: Log Alaric [7640]: n
+Tue Nov  3 01:27:59 2026 :: Log Alaric [7640]: w
+Tue Nov  3 01:27:59 2026 :: Log Alaric [7639]: arrived (The North Wall of the Tavern) from 7640
+Tue Nov  3 01:28:00 2026 :: Log Alaric [7639]: w
+Tue Nov  3 01:28:00 2026 :: Log Alaric [7638]: arrived (The Northwest Corner of the Tavern) from 7639
+Tue Nov  3 01:28:01 2026 :: Log Alaric [7638]: s
+Tue Nov  3 01:28:01 2026 :: Log Alaric [7641]: arrived (The West Wall of the Tavern) from 7638
+Tue Nov  3 01:28:01 2026 :: Log Alaric [7641]: s
+Tue Nov  3 01:28:01 2026 :: Log Alaric [7643]: arrived (The Southwest Corner of the Tavern) from 7641
+Tue Nov  3 01:28:02 2026 :: Log Alaric [7643]: s
+Tue Nov  3 01:28:03 2026 :: Log Alaric [7643]: e
+Tue Nov  3 01:28:03 2026 :: Log Alaric [7644]: arrived (The South Wall of the Tavern) from 7643
+Tue Nov  3 01:28:04 2026 :: Log Alaric [7644]: n
+Tue Nov  3 01:28:04 2026 :: Log Alaric [7637]: arrived (The Center of the Tavern) from 7644
+Tue Nov  3 01:28:07 2026 :: Log Alaric [7637]: e
+Tue Nov  3 01:28:07 2026 :: Log Alaric [7642]: arrived (The East Wall of the Tavern) from 7637
+Tue Nov  3 01:28:08 2026 :: Log Alaric [7642]: e
+Tue Nov  3 01:28:09 2026 :: Log Alaric [7642]: s
+Tue Nov  3 01:28:09 2026 :: Log Alaric [7645]: arrived (The Southeast Corner of the Tavern) from 7642
+Tue Nov  3 01:28:11 2026 :: Log Alaric [7645]: n
+Tue Nov  3 01:28:11 2026 :: Log Alaric [7642]: arrived (The East Wall of the Tavern) from 7645
+Tue Nov  3 01:28:11 2026 :: Log Alaric [7642]: n
+Tue Nov  3 01:28:11 2026 :: Log Alaric [7640]: arrived (The Northeast Corner of the Tavern) from 7642
+Tue Nov  3 01:28:12 2026 :: Log Alaric [7640]: w
+Tue Nov  3 01:28:12 2026 :: Log Alaric [7639]: arrived (The North Wall of the Tavern) from 7640
+Tue Nov  3 01:28:14 2026 :: Log Alaric [7639]: n
+Tue Nov  3 01:28:14 2026 :: Log Alaric [7639]: s
+Tue Nov  3 01:28:14 2026 :: Log Alaric [7637]: arrived (The Center of the Tavern) from 7639
+Tue Nov  3 01:28:15 2026 :: Log Alaric [7637]: s
+Tue Nov  3 01:28:15 2026 :: Log Alaric [7644]: arrived (The South Wall of the Tavern) from 7637
+Tue Nov  3 01:28:16 2026 :: Log Alaric [7644]: s
+Tue Nov  3 01:28:17 2026 :: Log Alaric [7644]: w
+Tue Nov  3 01:28:17 2026 :: Log Alaric [7643]: arrived (The Southwest Corner of the Tavern) from 7644
+Tue Nov  3 01:28:18 2026 :: Log Alaric [7643]: n
+Tue Nov  3 01:28:18 2026 :: Log Alaric [7641]: arrived (The West Wall of the Tavern) from 7643
+Tue Nov  3 01:28:18 2026 :: Log Alaric [7641]: n
+Tue Nov  3 01:28:18 2026 :: Log Alaric [7638]: arrived (The Northwest Corner of the Tavern) from 7641
+Tue Nov  3 01:28:19 2026 :: Log Alaric [7638]: n
+Tue Nov  3 01:28:19 2026 :: Log Alaric [7638]: s
+Tue Nov  3 01:28:19 2026 :: Log Alaric [7641]: arrived (The West Wall of the Tavern) from 7638
+Tue Nov  3 01:28:20 2026 :: Log Alaric [7641]: s
+Tue Nov  3 01:28:20 2026 :: Log Alaric [7643]: arrived (The Southwest Corner of the Tavern) from 7641
+Tue Nov  3 01:28:20 2026 :: Log Alaric [7643]: d
+Tue Nov  3 01:28:20 2026 :: Log Alaric [7646]: arrived (Cellar) from 7643
+Tue Nov  3 01:28:22 2026 :: Log Alaric [7646]: s
+Tue Nov  3 01:28:22 2026 :: Log Alaric [7649]: arrived (Cellar) from 7646
+Tue Nov  3 01:28:24 2026 :: Log Alaric [7649]: e
+Tue Nov  3 01:28:24 2026 :: Log Alaric [7650]: arrived (The Britain Moongate) from 7649
+Tue Nov  3 01:28:26 2026 :: Log Alaric [7650]: unl up
+Tue Nov  3 01:28:29 2026 :: Log Alaric [7650]: scan
+Tue Nov  3 01:28:31 2026 :: Log Alaric [7650]: n
+Tue Nov  3 01:28:31 2026 :: Log Alaric [7647]: arrived (Cellar) from 7650
+Tue Nov  3 01:28:32 2026 :: Log Alaric [7647]: scan
+Tue Nov  3 01:28:33 2026 :: Log Alaric [7647]: e
+Tue Nov  3 01:28:33 2026 :: Log Alaric [7648]: arrived (Cellar) from 7647
+Tue Nov  3 01:28:33 2026 :: Log Alaric [7648]: scan
+Tue Nov  3 01:28:34 2026 :: Log Alaric [7648]: w
+Tue Nov  3 01:28:34 2026 :: Log Alaric [7647]: arrived (Cellar) from 7648
+Tue Nov  3 01:28:35 2026 :: Log Alaric [7647]: scan
+Tue Nov  3 01:28:36 2026 :: Log Alaric [7647]: s
+Tue Nov  3 01:28:36 2026 :: Log Alaric [7650]: arrived (The Britain Moongate) from 7647
+Tue Nov  3 01:28:36 2026 :: Log Alaric [7650]: s
+Tue Nov  3 01:28:36 2026 :: Log Alaric [7653]: arrived (Cellar) from 7650
+Tue Nov  3 01:28:38 2026 :: Log Alaric [7653]: kill sn
+Tue Nov  3 01:28:38 2026 :: Log Alaric [7653]: killed the snake
+Tue Nov  3 01:28:38 2026 :: Log Alaric [7653]: coin +2 silver
+Tue Nov  3 01:28:38 2026 :: Log Alaric [7653]: coin +19 copper
+Tue Nov  3 01:28:42 2026 :: Log Alaric [7653]: l i cor
+Tue Nov  3 01:28:45 2026 :: Log Alaric [7653]: get all cor
+Tue Nov  3 01:28:46 2026 :: Log Alaric [7653]: l
+Tue Nov  3 01:28:47 2026 :: Log Alaric [7653]: n
+Tue Nov  3 01:28:47 2026 :: Log Alaric [7650]: arrived (The Britain Moongate) from 7653
+Tue Nov  3 01:28:49 2026 :: Log Alaric [7650]: unl up
+Tue Nov  3 01:28:50 2026 :: Log Alaric [7650]: open up
+Tue Nov  3 01:28:51 2026 :: Log Alaric [7650]: u
+Tue Nov  3 01:28:51 2026 :: Log Alaric [7656]: arrived (In Front of the Courthouse) from 7650
+Tue Nov  3 01:28:52 2026 :: Log Alaric [7656]: scan
+Tue Nov  3 01:28:55 2026 :: Log Alaric [7656]: n
+Tue Nov  3 01:28:55 2026 :: Log Alaric [7655]: arrived (The Yew Entrance) from 7656
+Tue Nov  3 01:28:55 2026 :: Log Alaric [7655]: n
+Tue Nov  3 01:28:55 2026 :: Log Alaric [7670]: arrived (Yew Forest) from 7655
+Tue Nov  3 01:28:58 2026 :: Log Alaric [7670]: fi jaa
+Tue Nov  3 01:29:00 2026 :: Log Alaric [7670]: killed Jaana the Druid
+Tue Nov  3 01:29:00 2026 :: Log Alaric [7670]: coin +1 silver
+Tue Nov  3 01:29:00 2026 :: Log Alaric [7670]: coin +1 copper
+Tue Nov  3 01:29:05 2026 :: Log Alaric [7670]: l i cor
+Tue Nov  3 01:29:08 2026 :: Log Alaric [7670]: get beh cor
+Tue Nov  3 01:29:09 2026 :: Log Alaric [7670]: scan
+Tue Nov  3 01:29:10 2026 :: Log Alaric [7670]: n
+Tue Nov  3 01:29:10 2026 :: Log Alaric [7655]: arrived (The Yew Entrance) from 7670
+Tue Nov  3 01:29:10 2026 :: Log Alaric [7655]: n
+Tue Nov  3 01:29:10 2026 :: Log Alaric [7670]: arrived (Yew Forest) from 7655
+Tue Nov  3 01:29:12 2026 :: Log Alaric [7670]: n
+Tue Nov  3 01:29:12 2026 :: Log Alaric [7655]: arrived (The Yew Entrance) from 7670
+Tue Nov  3 01:29:13 2026 :: Log Alaric [7655]: w
+Tue Nov  3 01:29:13 2026 :: Treasure goblin: vanished from room 20171 (Middle of the yard, prison.are) (too long in one area).
+Tue Nov  3 01:29:14 2026 :: Log Alaric [7655]: n
+Tue Nov  3 01:29:14 2026 :: Log Alaric [7670]: arrived (Yew Forest) from 7655
+Tue Nov  3 01:29:15 2026 :: Log Alaric [7670]: ex
+Tue Nov  3 01:29:16 2026 :: Log Alaric [7670]: e
+Tue Nov  3 01:29:16 2026 :: Log Alaric [7671]: arrived (Yew Forest) from 7670
+Tue Nov  3 01:29:17 2026 :: Log Alaric [7671]: ex
+Tue Nov  3 01:29:17 2026 :: Log Alaric [7671]: n
+Tue Nov  3 01:29:17 2026 :: Log Alaric [7670]: arrived (Yew Forest) from 7671
+Tue Nov  3 01:29:18 2026 :: Log Alaric [7670]: ex
+Tue Nov  3 01:29:19 2026 :: Log Alaric [7670]: n
+Tue Nov  3 01:29:19 2026 :: Log Alaric [7655]: arrived (The Yew Entrance) from 7670
+Tue Nov  3 01:29:20 2026 :: Log Alaric [7655]: w
+Tue Nov  3 01:29:20 2026 :: Log Alaric [7655]: ex
+Tue Nov  3 01:29:21 2026 :: Log Alaric [7655]: n
+Tue Nov  3 01:29:21 2026 :: Log Alaric [7670]: arrived (Yew Forest) from 7655
+Tue Nov  3 01:29:22 2026 :: Log Alaric [7670]: ex
+Tue Nov  3 01:29:23 2026 :: Log Alaric [7670]: s
+Tue Nov  3 01:29:23 2026 :: Log Alaric [7669]: arrived (Yew Forest) from 7670
+Tue Nov  3 01:29:24 2026 :: Log Alaric [7669]: ex
+Tue Nov  3 01:29:25 2026 :: Log Alaric [7669]: e
+Tue Nov  3 01:29:25 2026 :: Log Alaric [7678]: arrived (Yew Forest) from 7669
+Tue Nov  3 01:29:26 2026 :: Log Alaric [7678]: ex
+Tue Nov  3 01:29:29 2026 :: Log Alaric [7678]: fi dr
+Tue Nov  3 01:29:29 2026 :: Log Alaric [7678]: killed the forest druid
+Tue Nov  3 01:29:29 2026 :: Log Alaric [7678]: coin +1 silver
+Tue Nov  3 01:29:29 2026 :: Log Alaric [7678]: coin +1 copper
+Tue Nov  3 01:29:36 2026 :: Log Alaric [7678]: l i cor
+Tue Nov  3 01:29:38 2026 :: Log Alaric [7678]: scan
+Tue Nov  3 01:29:39 2026 :: Log Alaric [7678]: ex
+Tue Nov  3 01:29:40 2026 :: Log Alaric [7678]: n
+Tue Nov  3 01:29:40 2026 :: Log Alaric [7674]: arrived (Yew Forest) from 7678
+Tue Nov  3 01:29:41 2026 :: Log Alaric [7674]: ex
+Tue Nov  3 01:29:42 2026 :: Log Alaric [7674]: n
+Tue Nov  3 01:29:42 2026 :: Log Alaric [7678]: arrived (Yew Forest) from 7674
+Tue Nov  3 01:29:42 2026 :: Log Alaric [7678]: ex
+Tue Nov  3 01:29:44 2026 :: Log Alaric [7678]: e
+Tue Nov  3 01:29:44 2026 :: Log Alaric [7679]: arrived (Yew Forest) from 7678
+Tue Nov  3 01:29:44 2026 :: Log Alaric [7679]: ex
+Tue Nov  3 01:29:46 2026 :: Log Alaric [7679]: w
+Tue Nov  3 01:29:46 2026 :: Log Alaric [7683]: arrived (Yew Forest) from 7679
+Tue Nov  3 01:29:46 2026 :: Log Alaric [7683]: ex
+Tue Nov  3 01:29:48 2026 :: Log Alaric [7683]: s
+Tue Nov  3 01:29:48 2026 :: Log Alaric [7679]: arrived (Yew Forest) from 7683
+Tue Nov  3 01:29:48 2026 :: Log Alaric [7679]: ex
+Tue Nov  3 01:29:50 2026 :: Log Alaric [7679]: w
+Tue Nov  3 01:29:50 2026 :: Log Alaric [7683]: arrived (Yew Forest) from 7679
+Tue Nov  3 01:29:51 2026 :: Log Alaric [7683]: ex
+Tue Nov  3 01:29:52 2026 :: Log Alaric [7683]: n
+Tue Nov  3 01:29:52 2026 :: Log Alaric [7673]: arrived (Yew Forest) from 7683
+Tue Nov  3 01:29:53 2026 :: Log Alaric [7673]: ex
+Tue Nov  3 01:29:56 2026 :: Log Alaric [7673]: fi trol
+Tue Nov  3 01:29:56 2026 :: Log Alaric [7673]: killed the troll
+Tue Nov  3 01:30:04 2026 :: Log Alaric [7673]: l i cor
+Tue Nov  3 01:30:06 2026 :: Log Alaric [7673]: n
+Tue Nov  3 01:30:06 2026 :: Log Alaric [7683]: arrived (Yew Forest) from 7673
+Tue Nov  3 01:30:07 2026 :: Log Alaric [7683]: ex
+Tue Nov  3 01:30:08 2026 :: Log Alaric [7683]: w
+Tue Nov  3 01:30:08 2026 :: Log Alaric [7682]: arrived (Yew Forest) from 7683
+Tue Nov  3 01:30:08 2026 :: Log Alaric [7682]: ex
+Tue Nov  3 01:30:09 2026 :: Log Alaric [7682]: e
+Tue Nov  3 01:30:09 2026 :: Log Alaric [7672]: arrived (Yew Forest) from 7682
+Tue Nov  3 01:30:09 2026 :: Log Alaric [7672]: ex
+Tue Nov  3 01:30:10 2026 :: Log Alaric [7672]: n
+Tue Nov  3 01:30:10 2026 :: Log Alaric [7673]: arrived (Yew Forest) from 7672
+Tue Nov  3 01:30:11 2026 :: Log Alaric [7673]: ex
+Tue Nov  3 01:30:12 2026 :: Log Alaric [7673]: s
+Tue Nov  3 01:30:12 2026 :: Log Alaric [7669]: arrived (Yew Forest) from 7673
+Tue Nov  3 01:30:12 2026 :: Log Alaric [7669]: ex
+Tue Nov  3 01:30:13 2026 :: Log Alaric [7669]: e
+Tue Nov  3 01:30:13 2026 :: Log Alaric [7678]: arrived (Yew Forest) from 7669
+Tue Nov  3 01:30:14 2026 :: Log Alaric [7678]: ex
+Tue Nov  3 01:30:15 2026 :: Log Alaric [7678]: s
+Tue Nov  3 01:30:15 2026 :: Log Alaric [7669]: arrived (Yew Forest) from 7678
+Tue Nov  3 01:30:15 2026 :: Log Alaric [7669]: ex
+Tue Nov  3 01:30:16 2026 :: Log Alaric [7669]: w
+Tue Nov  3 01:30:16 2026 :: Log Alaric [7673]: arrived (Yew Forest) from 7669
+Tue Nov  3 01:30:16 2026 :: Log Alaric [7673]: ex
+Tue Nov  3 01:30:17 2026 :: Log Alaric [7673]: w
+Tue Nov  3 01:30:17 2026 :: Log Alaric [7672]: arrived (Yew Forest) from 7673
+Tue Nov  3 01:30:18 2026 :: Log Alaric [7672]: ex
+Tue Nov  3 01:30:18 2026 :: Log Alaric [7672]: w
+Tue Nov  3 01:30:18 2026 :: Log Alaric [7671]: arrived (Yew Forest) from 7672
+Tue Nov  3 01:30:19 2026 :: Log Alaric [7671]: ex
+Tue Nov  3 01:30:20 2026 :: Log Alaric [7671]: n
+Tue Nov  3 01:30:20 2026 :: Log Alaric [7670]: arrived (Yew Forest) from 7671
+Tue Nov  3 01:30:20 2026 :: Log Alaric [7670]: ex
+Tue Nov  3 01:30:21 2026 :: Log Alaric [7670]: s
+Tue Nov  3 01:30:21 2026 :: Log Alaric [7669]: arrived (Yew Forest) from 7670
+Tue Nov  3 01:30:23 2026 :: Log Alaric [7669]: ex
+Tue Nov  3 01:30:24 2026 :: Log Alaric [7669]: n
+Tue Nov  3 01:30:24 2026 :: Log Alaric [7679]: arrived (Yew Forest) from 7669
+Tue Nov  3 01:30:24 2026 :: Log Alaric [7679]: ex
+Tue Nov  3 01:30:25 2026 :: Log Alaric [7679]: w
+Tue Nov  3 01:30:25 2026 :: Log Alaric [7683]: arrived (Yew Forest) from 7679
+Tue Nov  3 01:30:26 2026 :: Log Alaric [7683]: ex
+Tue Nov  3 01:30:27 2026 :: Log Alaric [7683]: s
+Tue Nov  3 01:30:27 2026 :: Log Alaric [7679]: arrived (Yew Forest) from 7683
+Tue Nov  3 01:30:27 2026 :: Log Alaric [7679]: ex
+Tue Nov  3 01:30:28 2026 :: Log Alaric [7679]: w
+Tue Nov  3 01:30:28 2026 :: Log Alaric [7683]: arrived (Yew Forest) from 7679
+Tue Nov  3 01:30:29 2026 :: Log Alaric [7683]: ex
+Tue Nov  3 01:30:30 2026 :: Log Alaric [7683]: w
+Tue Nov  3 01:30:30 2026 :: Log Alaric [7682]: arrived (Yew Forest) from 7683
+Tue Nov  3 01:30:30 2026 :: Log Alaric [7682]: ex
+Tue Nov  3 01:30:31 2026 :: Log Alaric [7682]: e
+Tue Nov  3 01:30:31 2026 :: Log Alaric [7672]: arrived (Yew Forest) from 7682
+Tue Nov  3 01:30:32 2026 :: Log Alaric [7672]: ex
+Tue Nov  3 01:30:33 2026 :: Log Alaric [7672]: n
+Tue Nov  3 01:30:33 2026 :: Log Alaric [7673]: arrived (Yew Forest) from 7672
+Tue Nov  3 01:30:34 2026 :: Log Alaric [7673]: ex
+Tue Nov  3 01:30:35 2026 :: Log Alaric [7673]: s
+Tue Nov  3 01:30:35 2026 :: Log Alaric [7669]: arrived (Yew Forest) from 7673
+Tue Nov  3 01:30:35 2026 :: Log Alaric [7669]: ex
+Tue Nov  3 01:30:37 2026 :: Log Alaric [7669]: n
+Tue Nov  3 01:30:37 2026 :: Log Alaric [7679]: arrived (Yew Forest) from 7669
+Tue Nov  3 01:30:37 2026 :: Log Alaric [7679]: ex
+Tue Nov  3 01:30:38 2026 :: Log Alaric [7679]: e
+Tue Nov  3 01:30:38 2026 :: Log Alaric [7680]: arrived (Yew Forest) from 7679
+Tue Nov  3 01:30:39 2026 :: Log Alaric [7680]: ex
+Tue Nov  3 01:30:41 2026 :: Log Alaric [7680]: fi ap
+Tue Nov  3 01:30:41 2026 :: Log Alaric [7680]: killed the orc
+Tue Nov  3 01:30:48 2026 :: Log Alaric [7680]: l i cor
+Tue Nov  3 01:30:49 2026 :: Log Alaric [7680]: w
+Tue Nov  3 01:30:49 2026 :: Log Alaric [7684]: arrived (The Yew Moongate) from 7680
+Tue Nov  3 01:30:51 2026 :: Log Alaric [7684]: unl up
+Tue Nov  3 01:30:54 2026 :: Log Alaric [7684]: ex
+Tue Nov  3 01:30:54 2026 :: Log Alaric [7684]: s
+Tue Nov  3 01:30:54 2026 :: Log Alaric [7680]: arrived (Yew Forest) from 7684
+Tue Nov  3 01:30:56 2026 :: Log Alaric [7680]: e
+Tue Nov  3 01:30:56 2026 :: Log Alaric [7677]: arrived (Yew Forest) from 7680
+Tue Nov  3 01:30:56 2026 :: Log Alaric [7677]: ex
+Tue Nov  3 01:30:57 2026 :: Log Alaric [7677]: n
+Tue Nov  3 01:30:57 2026 :: Log Alaric [7676]: arrived (Yew Forest) from 7677
+Tue Nov  3 01:30:57 2026 :: Log Alaric [7676]: ex
+Tue Nov  3 01:30:58 2026 :: Log Alaric [7676]: scan
+Tue Nov  3 01:30:59 2026 :: Log Alaric [7676]: w
+Tue Nov  3 01:30:59 2026 :: Log Alaric [7681]: arrived (Yew Forest) from 7676
+Tue Nov  3 01:31:01 2026 :: Sock.sinaddr:  3.212.128.62
+Tue Nov  3 01:31:01 2026 :: EOF encountered on read.
+Tue Nov  3 01:31:01 2026 :: Log Alaric [7681]: fi wi
+Tue Nov  3 01:31:03 2026 :: Log Alaric [7681]: killed the wisp
+Tue Nov  3 01:31:07 2026 :: Log Alaric [7681]: l i cor
+Tue Nov  3 01:31:08 2026 :: Log Alaric [7681]: n
+Tue Nov  3 01:31:08 2026 :: Log Alaric [7671]: arrived (Yew Forest) from 7681
+Tue Nov  3 01:31:09 2026 :: Log Alaric [7671]: scan
+Tue Nov  3 01:31:10 2026 :: Log Alaric [7671]: e
+Tue Nov  3 01:31:10 2026 :: Log Alaric [7672]: arrived (Yew Forest) from 7671
+Tue Nov  3 01:31:11 2026 :: Log Alaric [7672]: scan
+Tue Nov  3 01:31:11 2026 :: Log Alaric [7672]: n
+Tue Nov  3 01:31:11 2026 :: Log Alaric [7673]: arrived (Yew Forest) from 7672
+Tue Nov  3 01:31:12 2026 :: Log Alaric [7673]: scan
+Tue Nov  3 01:31:13 2026 :: Log Alaric [7673]: n
+Tue Nov  3 01:31:13 2026 :: Log Alaric [7683]: arrived (Yew Forest) from 7673
+Tue Nov  3 01:31:13 2026 :: Log Alaric [7683]: scan
+Tue Nov  3 01:31:14 2026 :: Log Alaric [7683]: e
+Tue Nov  3 01:31:14 2026 :: Log Alaric [7674]: arrived (Yew Forest) from 7683
+Tue Nov  3 01:31:16 2026 :: Log Alaric [7674]: scan
+Tue Nov  3 01:31:17 2026 :: Log Alaric [7674]: n
+Tue Nov  3 01:31:17 2026 :: Log Alaric [7678]: arrived (Yew Forest) from 7674
+Tue Nov  3 01:31:18 2026 :: Log Alaric [7678]: ex
+Tue Nov  3 01:31:19 2026 :: Log Alaric [7678]: w
+Tue Nov  3 01:31:19 2026 :: Log Alaric [7677]: arrived (Yew Forest) from 7678
+Tue Nov  3 01:31:19 2026 :: Log Alaric [7677]: ex
+Tue Nov  3 01:31:20 2026 :: Log Alaric [7677]: s
+Tue Nov  3 01:31:20 2026 :: Log Alaric [7678]: arrived (Yew Forest) from 7677
+Tue Nov  3 01:31:20 2026 :: Log Alaric [7678]: ex
+Tue Nov  3 01:31:21 2026 :: Log Alaric [7678]: e
+Tue Nov  3 01:31:21 2026 :: Log Alaric [7679]: arrived (Yew Forest) from 7678

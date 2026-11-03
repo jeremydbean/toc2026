@@ -16875,3 +16875,216 @@
 1793669178	cmd	Alaric	57	7616	ultima.are	standing	100	0	-	up		Library //   This is an amazing HUGE library.  Its musty smell, and the // collapsed bookshelf to your north, tell you that it also must be
 1793669180	cmd	Alaric	57	7636	ultima.are	standing	100	0	-	west		Library //   The Library continues here, with exits to the north and east. // [Exits: east south]
 1793669181	cmd	Alaric	57	7635	ultima.are	standing	100	0	-	south		Web //   There is a Huge Web sitting here, stretching from shelf to shelf. // And stupid you wandered into it.
+1793669183	cmd	Alaric	57	7635	ultima.are	standing	100	0	-	kill	sp	Your punch <<< ERADICATES >>> the giant spider! [-181] // The giant spider is DEAD!! // You receive 0 experience points.
+1793669187	cmd	Alaric	57	7635	ultima.are	standing	100	0	-	look	i cor	Corpse of the giant spider contains: //      (Humming) Moonstone //      a wrinkled scroll
+1793669190	cmd	Alaric	57	7635	ultima.are	standing	100	0	-	get	moon cor	You get Moonstone from corpse of the giant spider.
+1793669191	cmd	Alaric	57	7634	ultima.are	standing	100	0	-	south		Library //   The Library continues here, with exits to the south and north. // [Exits: north south]
+1793669192	cmd	Alaric	57	7633	ultima.are	standing	100	0	-	south		Library //   The Library continues here, with exits to the east and north. // [Exits: north east]
+1793669193	cmd	Alaric	57	7632	ultima.are	standing	100	0	-	east		Library //   The Library continues here, with exits to the east and west.. // [Exits: east (south) west]
+1793669194	cmd	Alaric	57	7632	ultima.are	standing	100	0	-	open		Ok.
+1793669195	cmd	Alaric	57	7628	ultima.are	standing	100	0	-	south		The Library Moongate //   A blue moongate is here, lighting up the otherwise featureless // room.
+1793669197	cmd	Alaric	57	7628	ultima.are	standing	100	0	-	unlock	up	*Click*
+1793669199	cmd	Alaric	57	7628	ultima.are	standing	100	0	-	open	up	Ok.
+1793669199	cmd	Alaric	57	7637	ultima.are	standing	100	0	-	up		The Center of the Tavern //   The moongate has opened inside of a huge party.  There are bards // and other townsman.  This must be Britain.  There are people
+1793669202	cmd	Alaric	57	7641	ultima.are	standing	100	0	-	west		The West Wall of the Tavern //   The band has set up here, against the west wall.  Many people // dance to the music.
+1793669204	cmd	Alaric	57	7638	ultima.are	standing	100	0	-	north		The Northwest Corner of the Tavern //   This is where the tavern entrance would be if it wasn't packed // with humans trying to get in or get out.  There is no chance of
+1793669205	cmd	Alaric	57	7639	ultima.are	standing	100	0	-	east		The North Wall of the Tavern //   Party-goers mingle here in front of the bar.  They seem to be // having a great time and wish for you to join them.  You can
+1793669207	cmd	Alaric	57	7640	ultima.are	standing	100	0	-	east		The Northeast Corner of the Tavern //   Along this east wall of the tavern are all the tables for the // meals.  Outside the windows you see cobblestone streets.
+1793669208	cmd	Alaric	57	7642	ultima.are	standing	100	0	-	south		The East Wall of the Tavern //   The tables are set up here, you see many couples and group just // sitting and talking.  They have drinks on their tables and smiles
+1793669208	cmd	Alaric	57	7645	ultima.are	standing	100	0	-	south		The Southeast Corner of the Tavern //   There are tables here that continue to the north.  The // party-goers just mingle and hit on each other.
+1793669212	cmd	Alaric	57	7645	ultima.are	standing	100	0	-	fists	gq	They aren't here.
+1793669217	cmd	Alaric	57	7645	ultima.are	standing	100	0	-	fists	gw	You attack in an all consuming fury! // Your fists of fury injures Gwenno the Bard. [-16] // Your fists of fury scratches Gwenno the Bard. [-2]
+1793669223	cmd	Alaric	57	7645	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Gwenno the Bard. [-9] // Your fists of fury mauls Gwenno the Bard. [-24]
+1793669229	cmd	Alaric	57	7645	ultima.are	standing	99	0	-	look	i cor	Corpse of Gwenno the Bard contains: //      (Glowing) (Humming) the Infinity Bow
+1793669231	cmd	Alaric	57	7645	ultima.are	standing	99	0	-	look		The Southeast Corner of the Tavern //   There are tables here that continue to the north.  The // party-goers just mingle and hit on each other.
+1793669232	cmd	Alaric	57	7644	ultima.are	standing	99	0	-	west		The South Wall of the Tavern //   The South Wall windows overlook the sea.  There seems to be a // island far to the south, and boats just floating in the ports. 
+1793669234	cmd	Alaric	57	7643	ultima.are	standing	99	0	-	west		The Southwest Corner of the Tavern //   There are many people here, but even through their scent, there // seems to be a slight stench.
+1793669236	cmd	Alaric	57	7643	ultima.are	standing	99	0	-	open	down	Ok.
+1793669237	cmd	Alaric	57	7646	ultima.are	standing	99	0	-	down		Cellar //   The stairway seems to lie down into the cellar.  It stinks of // wine, beer and snakes here.
+1793669238	cmd	Alaric	57	7646	ultima.are	standing	99	0	-	scan		Iolo the Bard                      -to the far East. // the slime                          -to the far South.
+1793669240	cmd	Alaric	57	7647	ultima.are	standing	99	0	-	east		Cellar //   There are huge wine casks against this wall.  Most seem intact // though one is eaten through, and the inside seems to have a gooey
+1793669241	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	east		Cellar //   There is a chair in corner.  And plenty of empty bottles.  There // is also the evidence of the green substance here as well.
+1793669242	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	fists	io	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS Iolo the Bard! [-43] // Your fists of fury MUTILATES Iolo the Bard! [-37]
+1793669248	cmd	Alaric	57	7648	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Iolo the Bard. [-12] // Your fists of fury injures Iolo the Bard. [-15]
+1793669253	cmd	Alaric	57	7648	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES Iolo the Bard! [-37] // Your fists of fury injures Iolo the Bard. [-14]
+1793669259	cmd	Alaric	57	7648	ultima.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Iolo the Bard! [-28] // Your fists of fury decimates Iolo the Bard! [-27]
+1793669265	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1
+1793669265	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	fists		Who do you want to attack?
+1793669265	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	look	i cor	Corpse of Iolo the Bard contains: //      the bottle //      (Glowing) (Humming) Iolo's bow
+1793669268	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	get	mu cor	You get Mu from corpse of Iolo the Bard.
+1793669268	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	look		Cellar //   There is a chair in corner.  And plenty of empty bottles.  There // is also the evidence of the green substance here as well.
+1793669270	cmd	Alaric	57	7647	ultima.are	standing	99	0	-	west		Cellar //   There are huge wine casks against this wall.  Most seem intact // though one is eaten through, and the inside seems to have a gooey
+1793669270	cmd	Alaric	57	7647	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669271	cmd	Alaric	57	7646	ultima.are	standing	99	0	-	west		Cellar //   The stairway seems to lie down into the cellar.  It stinks of // wine, beer and snakes here.
+1793669272	cmd	Alaric	57	7646	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669273	cmd	Alaric	57	7643	ultima.are	standing	99	0	-	up		The Southwest Corner of the Tavern //   There are many people here, but even through their scent, there // seems to be a slight stench.
+1793669275	cmd	Alaric	57	7644	ultima.are	standing	99	0	-	east		The South Wall of the Tavern //   The South Wall windows overlook the sea.  There seems to be a // island far to the south, and boats just floating in the ports. 
+1793669276	cmd	Alaric	57	7637	ultima.are	standing	99	0	-	north		The Center of the Tavern //   The moongate has opened inside of a huge party.  There are bards // and other townsman.  This must be Britain.  There are people
+1793669277	cmd	Alaric	57	7642	ultima.are	standing	99	0	-	east		The East Wall of the Tavern //   The tables are set up here, you see many couples and group just // sitting and talking.  They have drinks on their tables and smiles
+1793669278	cmd	Alaric	57	7640	ultima.are	standing	99	0	-	north		The Northeast Corner of the Tavern //   Along this east wall of the tavern are all the tables for the // meals.  Outside the windows you see cobblestone streets.
+1793669279	cmd	Alaric	57	7640	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669279	cmd	Alaric	57	7639	ultima.are	standing	99	0	-	west		The North Wall of the Tavern //   Party-goers mingle here in front of the bar.  They seem to be // having a great time and wish for you to join them.  You can
+1793669280	cmd	Alaric	57	7638	ultima.are	standing	99	0	-	west		The Northwest Corner of the Tavern //   This is where the tavern entrance would be if it wasn't packed // with humans trying to get in or get out.  There is no chance of
+1793669281	cmd	Alaric	57	7641	ultima.are	standing	99	0	-	south		The West Wall of the Tavern //   The band has set up here, against the west wall.  Many people // dance to the music.
+1793669281	cmd	Alaric	57	7643	ultima.are	standing	99	0	-	south		The Southwest Corner of the Tavern //   There are many people here, but even through their scent, there // seems to be a slight stench.
+1793669282	cmd	Alaric	57	7643	ultima.are	standing	99	0	-	south		Alas, you cannot go that way.
+1793669283	cmd	Alaric	57	7644	ultima.are	standing	99	0	-	east		The South Wall of the Tavern //   The South Wall windows overlook the sea.  There seems to be a // island far to the south, and boats just floating in the ports. 
+1793669284	cmd	Alaric	57	7637	ultima.are	standing	99	0	-	north		The Center of the Tavern //   The moongate has opened inside of a huge party.  There are bards // and other townsman.  This must be Britain.  There are people
+1793669287	cmd	Alaric	57	7642	ultima.are	standing	99	0	-	east		The East Wall of the Tavern //   The tables are set up here, you see many couples and group just // sitting and talking.  They have drinks on their tables and smiles
+1793669288	cmd	Alaric	57	7642	ultima.are	standing	99	0	-	east		Alas, you cannot go that way.
+1793669289	cmd	Alaric	57	7645	ultima.are	standing	99	0	-	south		The Southeast Corner of the Tavern //   There are tables here that continue to the north.  The // party-goers just mingle and hit on each other.
+1793669291	cmd	Alaric	57	7642	ultima.are	standing	99	0	-	north		The East Wall of the Tavern //   The tables are set up here, you see many couples and group just // sitting and talking.  They have drinks on their tables and smiles
+1793669291	cmd	Alaric	57	7640	ultima.are	standing	99	0	-	north		The Northeast Corner of the Tavern //   Along this east wall of the tavern are all the tables for the // meals.  Outside the windows you see cobblestone streets.
+1793669292	cmd	Alaric	57	7639	ultima.are	standing	99	0	-	west		The North Wall of the Tavern //   Party-goers mingle here in front of the bar.  They seem to be // having a great time and wish for you to join them.  You can
+1793669294	cmd	Alaric	57	7639	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669294	cmd	Alaric	57	7637	ultima.are	standing	99	0	-	south		The Center of the Tavern //   The moongate has opened inside of a huge party.  There are bards // and other townsman.  This must be Britain.  There are people
+1793669295	cmd	Alaric	57	7644	ultima.are	standing	99	0	-	south		The South Wall of the Tavern //   The South Wall windows overlook the sea.  There seems to be a // island far to the south, and boats just floating in the ports. 
+1793669296	cmd	Alaric	57	7644	ultima.are	standing	99	0	-	south		Alas, you cannot go that way.
+1793669297	cmd	Alaric	57	7643	ultima.are	standing	99	0	-	west		The Southwest Corner of the Tavern //   There are many people here, but even through their scent, there // seems to be a slight stench.
+1793669298	cmd	Alaric	57	7641	ultima.are	standing	99	0	-	north		The West Wall of the Tavern //   The band has set up here, against the west wall.  Many people // dance to the music.
+1793669298	cmd	Alaric	57	7638	ultima.are	standing	99	0	-	north		The Northwest Corner of the Tavern //   This is where the tavern entrance would be if it wasn't packed // with humans trying to get in or get out.  There is no chance of
+1793669299	cmd	Alaric	57	7638	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669299	cmd	Alaric	57	7641	ultima.are	standing	99	0	-	south		The West Wall of the Tavern //   The band has set up here, against the west wall.  Many people // dance to the music.
+1793669300	cmd	Alaric	57	7643	ultima.are	standing	99	0	-	south		The Southwest Corner of the Tavern //   There are many people here, but even through their scent, there // seems to be a slight stench.
+1793669300	cmd	Alaric	57	7646	ultima.are	standing	99	0	-	down		Cellar //   The stairway seems to lie down into the cellar.  It stinks of // wine, beer and snakes here.
+1793669302	cmd	Alaric	57	7649	ultima.are	standing	99	2	-	south		Cellar //   There is a slime trail here.  There seems to be much broken glass // down here.
+1793669304	cmd	Alaric	57	7650	ultima.are	standing	99	0	-	east		The Britain Moongate //   The place around the moongate, as always, seems clean and neat.  // The blue light of the moongate has become a comforting sight to
+1793669306	cmd	Alaric	57	7650	ultima.are	standing	99	0	-	unlock	up	You lack the key.
+1793669309	cmd	Alaric	57	7650	ultima.are	standing	99	0	-	scan		the snake                          -to the South.
+1793669311	cmd	Alaric	57	7647	ultima.are	standing	99	0	-	north		Cellar //   There are huge wine casks against this wall.  Most seem intact // though one is eaten through, and the inside seems to have a gooey
+1793669312	cmd	Alaric	57	7647	ultima.are	standing	99	0	-	scan		the snake                          -to the far South.
+1793669313	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	east		Cellar //   There is a chair in corner.  And plenty of empty bottles.  There // is also the evidence of the green substance here as well.
+1793669313	cmd	Alaric	57	7648	ultima.are	standing	99	0	-	scan		You don't see anything near you.
+1793669314	cmd	Alaric	57	7647	ultima.are	standing	99	0	-	west		Cellar //   There are huge wine casks against this wall.  Most seem intact // though one is eaten through, and the inside seems to have a gooey
+1793669315	cmd	Alaric	57	7647	ultima.are	standing	99	0	-	scan		the snake                          -to the far South.
+1793669316	cmd	Alaric	57	7650	ultima.are	standing	99	0	-	south		The Britain Moongate //   The place around the moongate, as always, seems clean and neat.  // The blue light of the moongate has become a comforting sight to
+1793669316	cmd	Alaric	57	7653	ultima.are	standing	99	0	-	south		Cellar //   The smells and ventilation of this cellar are overpowering. // [Exits: north east west]
+1793669318	cmd	Alaric	57	7653	ultima.are	standing	99	0	-	kill	sn	Your punch >>> ANNIHILATES <<< the snake! [-237] // The snake is DEAD!! // You receive 0 experience points.
+1793669322	cmd	Alaric	57	7653	ultima.are	standing	99	0	-	look	i cor	Corpse of the snake contains: //      (Humming) Moonstone
+1793669325	cmd	Alaric	57	7653	ultima.are	standing	99	0	-	get	all cor	You get Moonstone from corpse of the snake.
+1793669326	cmd	Alaric	57	7653	ultima.are	standing	99	0	-	look		Cellar //   The smells and ventilation of this cellar are overpowering. // [Exits: north east west]
+1793669327	cmd	Alaric	57	7650	ultima.are	standing	99	0	-	north		The Britain Moongate //   The place around the moongate, as always, seems clean and neat.  // The blue light of the moongate has become a comforting sight to
+1793669329	cmd	Alaric	57	7650	ultima.are	standing	100	0	-	unlock	up	*Click*
+1793669330	cmd	Alaric	57	7650	ultima.are	standing	100	0	-	open	up	Ok.
+1793669331	cmd	Alaric	57	7656	ultima.are	standing	100	0	-	up		In Front of the Courthouse //   The immense Courthouse faces this street.  All of Brittainia's // crime goes here to be tried.  There is little crime anymore
+1793669332	cmd	Alaric	57	7656	ultima.are	standing	100	0	-	scan		Jaana the Druid                    -to the far North. // The Judge                          -to the far South.
+1793669335	cmd	Alaric	57	7655	ultima.are	standing	100	0	-	north		The Yew Entrance //   To the south you see a large courthouse and a small part of Yew.  // Most of Yew is secretly hidden in the branches of the forest. 
+1793669335	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669338	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	fists	jaa	You attack in an all consuming fury! // Your fists of fury scratches Jaana the Druid. [-3] // Your fists of fury scratches Jaana the Druid. [-1]
+1793669345	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	look	i cor	Corpse of Jaana the Druid contains: //      (Humming) Beh //      (Glowing) a staff
+1793669348	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	get	beh cor	You get Beh from corpse of Jaana the Druid.
+1793669349	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	scan		You don't see anything near you.
+1793669350	cmd	Alaric	57	7655	ultima.are	standing	100	0	-	north		The Yew Entrance //   To the south you see a large courthouse and a small part of Yew.  // Most of Yew is secretly hidden in the branches of the forest. 
+1793669350	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669352	cmd	Alaric	57	7655	ultima.are	standing	100	0	-	north		The Yew Entrance //   To the south you see a large courthouse and a small part of Yew.  // Most of Yew is secretly hidden in the branches of the forest. 
+1793669353	cmd	Alaric	57	7655	ultima.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793669354	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669355	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Yew Entrance // East  - Yew Forest
+1793669356	cmd	Alaric	57	7671	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669357	cmd	Alaric	57	7671	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669357	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669358	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Yew Entrance // East  - Yew Forest
+1793669359	cmd	Alaric	57	7655	ultima.are	standing	100	0	-	north		The Yew Entrance //   To the south you see a large courthouse and a small part of Yew.  // Most of Yew is secretly hidden in the branches of the forest. 
+1793669360	cmd	Alaric	57	7655	ultima.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793669360	cmd	Alaric	57	7655	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // South - In Front of the Courthouse
+1793669361	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669362	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Yew Entrance // East  - Yew Forest
+1793669363	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669364	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669365	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669366	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669369	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	fists	dr	You attack in an all consuming fury! // Your fists of fury DISMEMBERS the forest druid! [-48] // Your fists of fury ^^^ DESTROYS ^^^ the forest druid! [-83]
+1793669376	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	look	i cor	Corpse of the forest druid contains: //      Nothing.
+1793669378	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	scan		the orc                            -to the far East.
+1793669379	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669380	cmd	Alaric	57	7674	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669381	cmd	Alaric	57	7674	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669382	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669382	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669384	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669384	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669386	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669386	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669388	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669388	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669390	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669391	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669392	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669393	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669396	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	fists	trol	You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** the troll! [-79] // Your fists of fury === OBLITERATES === the troll! [-133]
+1793669404	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	look	i cor	A stinking corpse contains: //      a stone club
+1793669406	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669407	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669408	cmd	Alaric	57	7682	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669408	cmd	Alaric	57	7682	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669409	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669409	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669410	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669411	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669412	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669412	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669413	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669414	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669415	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669415	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669416	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669416	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669417	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669418	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669418	cmd	Alaric	57	7671	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669419	cmd	Alaric	57	7671	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669420	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669420	cmd	Alaric	57	7670	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Yew Entrance // East  - Yew Forest
+1793669421	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669423	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669424	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669424	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669425	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669426	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669427	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669427	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669428	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669429	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669430	cmd	Alaric	57	7682	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669430	cmd	Alaric	57	7682	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669431	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669432	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669433	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669434	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669435	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669435	cmd	Alaric	57	7669	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669437	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669437	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669438	cmd	Alaric	57	7680	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669439	cmd	Alaric	57	7680	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669441	cmd	Alaric	57	7680	ultima.are	standing	100	0	-	fists	ap	You attack in an all consuming fury! // Your fists of fury MANGLES the orc! [-55] // Your fists of fury ^^^ DESTROYS ^^^ the orc! [-103]
+1793669448	cmd	Alaric	57	7680	ultima.are	standing	100	0	-	look	i cor	Corpse of the orc contains: //      a wooden spear
+1793669449	cmd	Alaric	57	7684	ultima.are	standing	100	0	-	west		The Yew Moongate //   There is your way out, through the blue moongate. // [Exits: south (up)]
+1793669451	cmd	Alaric	57	7684	ultima.are	standing	100	0	-	unlock	up	You lack the key.
+1793669454	cmd	Alaric	57	7684	ultima.are	standing	100	0	-	exits		Obvious exits: // South - Yew Forest // Up    - Closed moongate
+1793669454	cmd	Alaric	57	7680	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669456	cmd	Alaric	57	7677	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669456	cmd	Alaric	57	7677	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669457	cmd	Alaric	57	7676	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669457	cmd	Alaric	57	7676	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669458	cmd	Alaric	57	7676	ultima.are	standing	100	0	-	scan		the wisp                           -to the West.
+1793669459	cmd	Alaric	57	7681	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669461	cmd	Alaric	57	7681	ultima.are	standing	100	0	-	fists	wi	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS the wisp! [-41] // Your fists of fury grazes the wisp. [-7]
+1793669467	cmd	Alaric	57	7681	ultima.are	standing	100	0	-	look	i cor	Corpse of the wisp contains: //      Nothing.
+1793669468	cmd	Alaric	57	7671	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669469	cmd	Alaric	57	7671	ultima.are	standing	100	0	-	scan		You don't see anything near you.
+1793669470	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669471	cmd	Alaric	57	7672	ultima.are	standing	100	0	-	scan		You don't see anything near you.
+1793669471	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669472	cmd	Alaric	57	7673	ultima.are	standing	100	0	-	scan		You don't see anything near you.
+1793669473	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669473	cmd	Alaric	57	7683	ultima.are	standing	100	0	-	scan		You don't see anything near you.
+1793669474	cmd	Alaric	57	7674	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669476	cmd	Alaric	57	7674	ultima.are	standing	100	0	-	scan		You don't see anything near you.
+1793669477	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	north		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669478	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669479	cmd	Alaric	57	7677	ultima.are	standing	100	0	-	west		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669479	cmd	Alaric	57	7677	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669480	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	south		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
+1793669480	cmd	Alaric	57	7678	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Yew Forest // East  - Yew Forest
+1793669481	cmd	Alaric	57	7679	ultima.are	standing	100	0	-	east		Yew Forest //   This is the Yew Forest.  The trees look all the same.  Consequently // you are lost.
