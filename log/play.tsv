@@ -15864,3 +15864,106 @@
 1793665240	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	up		Level 8: Stair Beneath the Lion //   A steep stone stair opens in one corner of this chamber, leading down into // a passage that runs far to the east beneath the dungeon. A great stone
 1793665240	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	kill	g	Ashen Gleeok parries your attack. // Ashen Gleeok parries your attack. // You === OBLITERATE === ashen Gleeok!
 1793665243	cmd	Trentlin	53	30570	hyrule.are	fighting	100	0	fight	smite		Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok!
+1793665251	cmd	Trentlin	53	30570	hyrule.are	fighting	89	0	fight	smite		Your smite misses ashen Gleeok.
+1793665262	cmd	Trentlin	53	30570	hyrule.are	fighting	72	0	fight	smite		Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok!
+1793665268	cmd	Trentlin	53	30570	hyrule.are	fighting	62	0	fight	smite		Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok!
+1793665274	cmd	Trentlin	53	30570	hyrule.are	fighting	56	0	fight	smite		Your smite misses ashen Gleeok.
+1793665280	cmd	Trentlin	53	30570	hyrule.are	fighting	47	0	fight	smite		Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok! // Your smite does UNSPEAKABLE things to ashen Gleeok!
+1793665289	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	get	all cor	You get the four-crowned lion shield from corpse of ashen Gleeok. // You get a mantle of drifting ash from corpse of ashen Gleeok. // You get a lion-head girdle from corpse of ashen Gleeok.
+1793665297	cmd	Trentlin	53	30570	hyrule.are	standing	100	1	-	compare	heart	A) the Lion's Heart Container (level 52) // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.
+1793665302	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	drop	heart	You drop the Lion's Heart Container.
+1793665303	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	compare	gird	A) a lion-head girdle (level 52) // B) a rib bone belt (level 50), worn // Slot: waist.  Your damage comes from weapons.
+1793665311	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	attribute		Str: 22(26)  Int: 16(20)  Wis: 18(22)  Dex: 16(20)  Con: 19(23)
+1793665312	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	wear	gird	You stop using a rib bone belt. // You wear a lion-head girdle about your waist.
+1793665313	cmd	Trentlin	53	30570	hyrule.are	standing	99	0	-	attribute		Str: 22(26)  Int: 16(20)  Wis: 18(22)  Dex: 16(20)  Con: 19(23)
+1793665319	cmd	Trentlin	53	30570	hyrule.are	standing	99	0	-	score		| Name:       Trentlin | Level:      53 | Class:     Warrior | // | Played:     25 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793665320	cmd	Trentlin	53	30570	hyrule.are	standing	99	0	-	wear	belt	You stop using a lion-head girdle. // You wear a rib bone belt about your waist.
+1793665322	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	score		| Name:       Trentlin | Level:      53 | Class:     Warrior | // | Played:     25 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793665335	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Lion's key //      (Magical) (Glowing) the Lion's four-crowned axe
+1793665343	cmd	Trentlin	53	30570	hyrule.are	standing	100	0	-	wear	gird	You stop using a rib bone belt. // You wear a lion-head girdle about your waist.
+1793665345	cmd	Trentlin	53	30570	hyrule.are	standing	99	0	-	drop	belt	You drop a rib bone belt.
+1793665346	cmd	Trentlin	53	30570	hyrule.are	standing	99	0	-	sacrifice	belt	The Gods give you 100 copper coins for your sacrifice.
+1793665347	cmd	Trentlin	53	30570	hyrule.are	standing	99	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Lion's key //      (Magical) (Glowing) the Lion's four-crowned axe
+1793665350	cmd	Trentlin	53	30570	hyrule.are	standing	99	0	-	look		Level 8: Stair Beneath the Lion //   A steep stone stair opens in one corner of this chamber, leading down into // a passage that runs far to the east beneath the dungeon. A great stone
+1793665352	cmd	Trentlin	53	30574	hyrule.are	standing	99	0	-	north		Level 8: Hall of Four Gouges //   Four deep troughs are gouged into the north wall where four long dragon // necks thrashed against the stone, and the floor below is blackened and
+1793665354	cmd	Trentlin	53	30574	hyrule.are	standing	99	0	-	north		The lion has been Wizard Locked. You can not pass
+1793665356	cmd	Trentlin	53	30574	hyrule.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the lion.
+1793665358	cmd	Trentlin	53	30574	hyrule.are	standing	99	0	-	open	north	Ok.
+1793665359	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	north		Level 8: Lion's Last Sanctum //   Golden light glows faintly from the walls of this small, still chamber, // though no flame burns anywhere within it. On a plain stone dais stands an
+1793665361	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	unlock	chest	*Click*
+1793665363	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	open	chest	Ok.
+1793665364	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	get	all chest	You get the eighth Triforce shard from the Lion's treasure chest. //                     ACHIEVEMENT EARNED // Wisdom Restored  +50 points
+1793665369	cmd	Trentlin	53	30578	hyrule.are	standing	99	16	-	combine	triforce	The Triforce is made from nine pieces, one from each of Hyrule's // dungeon guardians, and you are carrying 8 of them.
+1793665375	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	inventory		You are carrying: //      (Magical) (Glowing) the eighth Triforce shard //      (Magical) (Glowing) the Lion's key
+1793665389	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	compare	mantle	A) a mantle of drifting ash (level 52) // B) a twin-headed mantle (level 27), worn // Slot: about body.  Your damage comes from weapons.
+1793665392	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	drop	mantle	You drop a mantle of drifting ash.
+1793665396	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	wear	sh	You stop using the Lizard's Heart Container. // You hold the eighth Triforce shard in your hands.
+1793665400	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	wear	cont	You stop using the eighth Triforce shard. // You hold the Lizard's Heart Container in your hands.
+1793665402	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	wear	shie	Not gonna happen. Find a smaller weapon.
+1793665404	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	remove	reap	You stop using the Headless Horseman's Reaper.
+1793665405	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	wear	shie	You wear the four-crowned lion shield as a shield.
+1793665407	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	compare	shie	A) a serpent-crested shield (level 42) // B) the four-crowned lion shield (level 52), worn // Slot: off hand.  Your damage comes from weapons.
+1793665413	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	drop	shie	You drop a serpent-crested shield.
+1793665415	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	wear	reap	You wield the Headless Horseman's Reaper. // You remove your shield to handle the massive weapon. // The Headless Horseman's Reaper feels like a part of you!
+1793665416	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	inventory		You are carrying: //      (Magical) (Glowing) the eighth Triforce shard //      (Magical) (Glowing) the Lion's key
+1793665425	refused	Alaric	57	4209	dresden.are	standing	25	0	-	(unknown)		Huh?
+1793665425	refused	Alaric	57	4209	dresden.are	standing	25	0	-	(unknown)		Huh?
+1793665425	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	compare	heart	A) the Heart Guard of the Lion (level 52) // B) the Heart Guard of the Snake (level 27), worn // Slot: neck.  Your damage comes from weapons.
+1793665427	cmd	Alaric	57	4209	dresden.are	standing	25	0	-	who		[57 Dwarf   Emper ] Alaric. // [53 Dwarf   Hero  ] Trentlin the Knight of the Castle // Players found: 2
+1793665427	cmd	Alaric	57	4209	dresden.are	standing	25	0	-	wake		You are already standing.
+1793665427	cmd	Alaric	57	4209	dresden.are	standing	25	0	-	look		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You
+1793665431	cmd	Alaric	57	4205	dresden.are	standing	25	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793665431	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	wear	heart	You stop using the Heart Guard of the Demon. // You wear the Heart Guard of the Lion around your neck.
+1793665433	cmd	Alaric	57	4207	dresden.are	standing	25	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793665434	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	remove	heart	You stop using the Heart Guard of the Lion.
+1793665434	cmd	Trentlin	53	30578	hyrule.are	standing	99	0	-	remove	heart	You stop using the Lizard's Heart Container.
+1793665434	cmd	Alaric	57	4202	dresden.are	standing	25	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793665435	cmd	Alaric	57	4203	dresden.are	standing	25	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793665435	cmd	Alaric	57	4210	dresden.are	standing	25	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]
+1793665436	cmd	Alaric	57	4210	dresden.are	standing	25	0	-	sleep		You go to sleep.
+1793665436	cmd	Alaric	57	4210	dresden.are	sleeping	25	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    280 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793665437	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	wear	lion	You hold the Lion's key in your hands.
+1793665439	cmd	Alaric	57	4210	dresden.are	sleeping	25	0	-	who		[57 Dwarf   Emper ] Alaric. // [53 Dwarf   Hero  ] Trentlin the Knight of the Castle // Players found: 2
+1793665440	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	remove	lion	You stop using the Lion's key.
+1793665445	cmd	Alaric	57	4210	dresden.are	sleeping	25	0	-	inventory		You are carrying: //      (Glowing) a piece of trick-or-treat candy // (15) guano
+1793665447	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	wear	2.lion	You stop using the Headless Horseman's Reaper. // You wield the Lion's four-crowned axe. // The Lion's four-crowned axe feels like a part of you!
+1793665447	cmd	Alaric	57	4210	dresden.are	sleeping	25	0	-	sleep		You are already sleeping.
+1793665450	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	wear	reap	You stop using the Lion's four-crowned axe. // You wield the Headless Horseman's Reaper. // The Headless Horseman's Reaper feels like a part of you!
+1793665452	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	wear	guard	You hold the Lion's key in your hands.
+1793665453	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	wear	guard	You wear the Heart Guard of the Lion around your neck.
+1793665454	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	wear	guard	You stop using the Lion's key. // You hold the Demon's key in your hands.
+1793665457	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	remove	key	You stop using the Demon's key.
+1793665458	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	remove	key	You do not have that item.
+1793665458	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	look		Level 8: Lion's Last Sanctum //   Golden light glows faintly from the walls of this small, still chamber, // though no flame burns anywhere within it. On a plain stone dais stands an
+1793665463	cmd	Trentlin	53	30578	hyrule.are	standing	100	0	-	look	in chest	The Lion's treasure chest contains: //      Nothing.
+1793665465	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	enter	light	You enter the Lion's returning light // Your stomach flip flops. Everything goes black for a moment. // The Lion's Thicket
+1793665475	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	look		The Lion's Thicket //   A quiet clearing in the eastern forest is empty but for a single bush // standing apart, dry and brittle and rooted in strangely flat, square-cut
+1793665477	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop the Lion's key.
+1793665477	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665477	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop the Demon's key.
+1793665478	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665478	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665479	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a brittle key.
+1793665479	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a diamond key.
+1793665480	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665480	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665481	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665481	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665481	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	key	You drop a small key.
+1793665483	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	get	brittle	You get a brittle key.
+1793665487	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	put	brittle pack	You put a brittle key in a metallic pack.
+1793665488	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the eighth Triforce shard //      (Magical) (Glowing) the Lion's four-crowned axe
+1793665493	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	wear	guard	You stop using the Heart Guard of the Lion. // You wear the Heart Guard of the Demon around your neck.
+1793665494	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	wear	guard	You stop using the Heart Guard of the Demon. // You wear the Heart Guard of the Lion around your neck.
+1793665499	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	compare	demon	A) the Heart Guard of the Demon (level 46) // B) the Heart Guard of the Snake (level 27), worn // Slot: neck.  Your damage comes from weapons.
+1793665506	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	wear	demon	You stop using the Heart Guard of the Lion. // You wear the Heart Guard of the Demon around your neck.
+1793665512	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	wear	lion	You stop using the Headless Horseman's Reaper. // You wield the Lion's four-crowned axe. // The Lion's four-crowned axe feels like a part of you!
+1793665513	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	remove	snake	You stop using the Heart Guard of the Snake.
+1793665516	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	drop	snake	You drop the Heart Guard of the Snake.
+1793665519	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	wear	guard	You wear the Heart Guard of the Lion around your neck.
+1793665520	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	wear	reap	You stop using the Lion's four-crowned axe. // You wield the Headless Horseman's Reaper. // The Headless Horseman's Reaper feels like a part of you!
+1793665520	cmd	Trentlin	53	30229	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the eighth Triforce shard //      (Magical) (Glowing) the Lion's four-crowned axe
+1793665535	cmd	Trentlin	53	30317	hyrule.are	standing	100	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock
+1793665543	cmd	Trentlin	53	30316	hyrule.are	standing	100	0	-	west		The Medicine Woman's Ledge //   Walled in on three sides by brown crags, this quiet ledge opens only to the // east. A dark cave mouth is set into the rock, its threshold swept clean,
+1793665545	cmd	Trentlin	53	30693	hyrule.are	standing	100	0	-	down		The Herbwife's Cave //   The swept threshold gives way to a cave hung with drying leaves, mushroom // caps and knotted roots, and the bitter smell of medicine fills it end to
+1793665547	cmd	Trentlin	53	30693	hyrule.are	standing	100	0	-	list		A rosy-cheeked old woman looks you over for a royal seal. "Show me the Princess's letter first."

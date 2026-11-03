@@ -248101,3 +248101,132 @@ Tue Nov  3 00:20:40 2026 :: Log Trentlin [30577]: u
 Tue Nov  3 00:20:40 2026 :: Log Trentlin [30570]: arrived (Level 8: Stair Beneath the Lion) from 30577
 Tue Nov  3 00:20:40 2026 :: Log Trentlin [30570]: k g
 Tue Nov  3 00:20:43 2026 :: Log Trentlin [30570]: smite
+Tue Nov  3 00:20:51 2026 :: Log Trentlin [30570]: smite
+Tue Nov  3 00:21:02 2026 :: Log Trentlin [30570]: smite
+Tue Nov  3 00:21:08 2026 :: Log Trentlin [30570]: smite
+Tue Nov  3 00:21:14 2026 :: Log Trentlin [30570]: smite
+Tue Nov  3 00:21:20 2026 :: Log Trentlin [30570]: smite
+Tue Nov  3 00:21:20 2026 :: Log Trentlin [30570]: killed ashen Gleeok
+Tue Nov  3 00:21:20 2026 :: Log Trentlin [30570]: coin +50 platinum
+Tue Nov  3 00:21:20 2026 :: Log Trentlin [30570]: coin +230 silver
+Tue Nov  3 00:21:20 2026 :: Log Trentlin [30570]: coin +309 copper
+Tue Nov  3 00:21:20 2026 :: Log Trentlin [30570]: coin +130 gold
+Tue Nov  3 00:21:29 2026 :: Log Trentlin [30570]: get all cor
+Tue Nov  3 00:21:37 2026 :: Log Trentlin [30570]: comp heart
+Tue Nov  3 00:21:42 2026 :: Log Trentlin [30570]: drop heart
+Tue Nov  3 00:21:43 2026 :: Log Trentlin [30570]: comp gird
+Tue Nov  3 00:21:51 2026 :: Log Trentlin [30570]: att
+Tue Nov  3 00:21:52 2026 :: Log Trentlin [30570]: wear gird
+Tue Nov  3 00:21:53 2026 :: Log Trentlin [30570]: att
+Tue Nov  3 00:21:59 2026 :: Log Trentlin [30570]: sco
+Tue Nov  3 00:22:00 2026 :: Log Trentlin [30570]: wear belt
+Tue Nov  3 00:22:02 2026 :: Log Trentlin [30570]: sco
+Tue Nov  3 00:22:15 2026 :: Log Trentlin [30570]: i
+Tue Nov  3 00:22:23 2026 :: Log Trentlin [30570]: wear gird
+Tue Nov  3 00:22:25 2026 :: Log Trentlin [30570]: drop belt
+Tue Nov  3 00:22:26 2026 :: Log Trentlin [30570]: sac belt
+Tue Nov  3 00:22:26 2026 :: Log Trentlin [30570]: coin +100 copper
+Tue Nov  3 00:22:27 2026 :: Log Trentlin [30570]: i
+Tue Nov  3 00:22:30 2026 :: Log Trentlin [30570]: l
+Tue Nov  3 00:22:32 2026 :: Log Trentlin [30570]: n
+Tue Nov  3 00:22:32 2026 :: Log Trentlin [30574]: arrived (Level 8: Hall of Four Gouges) from 30570
+Tue Nov  3 00:22:34 2026 :: Log Trentlin [30574]: n
+Tue Nov  3 00:22:36 2026 :: Log Trentlin [30574]: unlock north
+Tue Nov  3 00:22:38 2026 :: Log Trentlin [30574]: open north
+Tue Nov  3 00:22:39 2026 :: Log Trentlin [30574]: n
+Tue Nov  3 00:22:39 2026 :: Log Trentlin [30578]: arrived (Level 8: Lion's Last Sanctum) from 30574
+Tue Nov  3 00:22:41 2026 :: Log Trentlin [30578]: unlock chest
+Tue Nov  3 00:22:43 2026 :: Log Trentlin [30578]: open chest
+Tue Nov  3 00:22:44 2026 :: Log Trentlin [30578]: get all chest
+Tue Nov  3 00:22:49 2026 :: Log Trentlin [30578]: combine triforce
+Tue Nov  3 00:22:49 2026 :: Snapshot of Trentlin taken before combine: Trentlin.20261103_002249.combine (PRESTORE Trentlin to see it).
+Tue Nov  3 00:22:55 2026 :: Log Trentlin [30578]: i
+Tue Nov  3 00:23:09 2026 :: Log Trentlin [30578]: comp mantle
+Tue Nov  3 00:23:12 2026 :: Log Trentlin [30578]: drop mantle
+Tue Nov  3 00:23:16 2026 :: Log Trentlin [30578]: wear sh
+Tue Nov  3 00:23:20 2026 :: Log Trentlin [30578]: wear cont
+Tue Nov  3 00:23:22 2026 :: Log Trentlin [30578]: wear shie
+Tue Nov  3 00:23:24 2026 :: Log Trentlin [30578]: rem reap
+Tue Nov  3 00:23:25 2026 :: Log Trentlin [30578]: wear shie
+Tue Nov  3 00:23:27 2026 :: Log Trentlin [30578]: comp shie
+Tue Nov  3 00:23:33 2026 :: Log Trentlin [30578]: drop shie
+Tue Nov  3 00:23:35 2026 :: Log Trentlin [30578]: wear reap
+Tue Nov  3 00:23:36 2026 :: Log Trentlin [30578]: i
+Tue Nov  3 00:23:41 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Nov  3 00:23:43 2026 :: Loading Alaric's playerfile
+Tue Nov  3 00:23:44 2026 :: Loading Alaric's playerfile
+Tue Nov  3 00:23:44 2026 :: Alaric@208.126.22.104 has connected.
+Tue Nov  3 00:23:45 2026 :: Log Alaric [4209]: arrived (Private Prayer Room.) from 0
+Tue Nov  3 00:23:45 2026 :: Log Alaric [4209]: (refused) alaric
+Tue Nov  3 00:23:45 2026 :: Log Alaric [4209]: (refused) alaric
+Tue Nov  3 00:23:45 2026 :: Log Trentlin [30578]: comp heart
+Tue Nov  3 00:23:47 2026 :: Log Alaric [4209]: who
+Tue Nov  3 00:23:47 2026 :: Log Alaric [4209]: wake
+Tue Nov  3 00:23:47 2026 :: Log Alaric [4209]: l
+Tue Nov  3 00:23:51 2026 :: Log Alaric [4209]: n
+Tue Nov  3 00:23:51 2026 :: Log Alaric [4205]: arrived (Halls of Healing.) from 4209
+Tue Nov  3 00:23:51 2026 :: Log Trentlin [30578]: wear heart
+Tue Nov  3 00:23:53 2026 :: Log Alaric [4205]: n
+Tue Nov  3 00:23:53 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4205
+Tue Nov  3 00:23:54 2026 :: Log Trentlin [30578]: rem heart
+Tue Nov  3 00:23:54 2026 :: Log Trentlin [30578]: rem heart
+Tue Nov  3 00:23:54 2026 :: Log Alaric [4207]: e
+Tue Nov  3 00:23:54 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 00:23:55 2026 :: Log Alaric [4202]: n
+Tue Nov  3 00:23:55 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Tue Nov  3 00:23:55 2026 :: Log Alaric [4203]: n
+Tue Nov  3 00:23:55 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Tue Nov  3 00:23:56 2026 :: Log Alaric [4210]: sleep
+Tue Nov  3 00:23:56 2026 :: Log Alaric [4210]: score
+Tue Nov  3 00:23:57 2026 :: Log Trentlin [30578]: wear lion
+Tue Nov  3 00:23:59 2026 :: Log Alaric [4210]: who
+Tue Nov  3 00:24:00 2026 :: Log Trentlin [30578]: rem lion
+Tue Nov  3 00:24:05 2026 :: Log Alaric [4210]: i
+Tue Nov  3 00:24:07 2026 :: Log Trentlin [30578]: wear 2.lion
+Tue Nov  3 00:24:07 2026 :: Log Alaric [4210]: sleep
+Tue Nov  3 00:24:10 2026 :: Log Trentlin [30578]: wear reap
+Tue Nov  3 00:24:12 2026 :: Log Trentlin [30578]: wear guard
+Tue Nov  3 00:24:13 2026 :: Log Trentlin [30578]: wear guard
+Tue Nov  3 00:24:14 2026 :: Log Trentlin [30578]: wear guard
+Tue Nov  3 00:24:17 2026 :: Log Trentlin [30578]: rem key
+Tue Nov  3 00:24:18 2026 :: Log Trentlin [30578]: rem key
+Tue Nov  3 00:24:18 2026 :: Log Trentlin [30578]: l
+Tue Nov  3 00:24:23 2026 :: Log Trentlin [30578]: l in chest
+Tue Nov  3 00:24:25 2026 :: Log Trentlin [30578]: enter light
+Tue Nov  3 00:24:25 2026 :: Log Trentlin [30229]: arrived (The Lion's Thicket) from 30578
+Tue Nov  3 00:24:35 2026 :: Log Trentlin [30229]: l
+Tue Nov  3 00:24:37 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:37 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:37 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:38 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:38 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:39 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:39 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:40 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:40 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:41 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:41 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:41 2026 :: Log Trentlin [30229]: drop key
+Tue Nov  3 00:24:41 2026 :: Log Alaric [4210]: affects off: levitate, iron skin
+Tue Nov  3 00:24:43 2026 :: Log Trentlin [30229]: get brittle
+Tue Nov  3 00:24:47 2026 :: Log Trentlin [30229]: put brittle pack
+Tue Nov  3 00:24:48 2026 :: Log Trentlin [30229]: i
+Tue Nov  3 00:24:53 2026 :: Log Trentlin [30229]: wear guard
+Tue Nov  3 00:24:54 2026 :: Log Trentlin [30229]: wear guard
+Tue Nov  3 00:24:58 2026 :: Sock.sinaddr:  3.12.251.153
+Tue Nov  3 00:24:59 2026 :: EOF encountered on read.
+Tue Nov  3 00:24:59 2026 :: Log Trentlin [30229]: comp demon
+Tue Nov  3 00:25:06 2026 :: Log Trentlin [30229]: wear demon
+Tue Nov  3 00:25:12 2026 :: Log Trentlin [30229]: wear lion
+Tue Nov  3 00:25:13 2026 :: Log Trentlin [30229]: rem snake
+Tue Nov  3 00:25:16 2026 :: Log Trentlin [30229]: drop snake
+Tue Nov  3 00:25:19 2026 :: Log Trentlin [30229]: wear guard
+Tue Nov  3 00:25:20 2026 :: Log Trentlin [30229]: wear reap
+Tue Nov  3 00:25:20 2026 :: Log Trentlin [30229]: i
+Tue Nov  3 00:25:35 2026 :: Log Trentlin [30229]: play recorder 9
+Tue Nov  3 00:25:35 2026 :: Log Trentlin [30317]: arrived (Spectacle Rock) from 30229
+Tue Nov  3 00:25:43 2026 :: Log Trentlin [30317]: w
+Tue Nov  3 00:25:43 2026 :: Log Trentlin [30316]: arrived (The Medicine Woman's Ledge) from 30317
+Tue Nov  3 00:25:45 2026 :: Log Trentlin [30316]: d
+Tue Nov  3 00:25:45 2026 :: Log Trentlin [30693]: arrived (The Herbwife's Cave) from 30316
+Tue Nov  3 00:25:47 2026 :: Log Trentlin [30693]: list
