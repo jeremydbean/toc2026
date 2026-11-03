@@ -19543,3 +19543,136 @@
 1793744336	cmd	Trentlin	5	24332	chess.are	standing	91	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
 1793744337	cmd	Trentlin	5	24347	chess.are	standing	91	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
 1793744338	cmd	Trentlin	5	24347	chess.are	standing	91	0	-	east		The door is closed.	-	-
+1793744353	cmd	Trentlin	5	24347	chess.are	standing	97	0	-	kill	qu	Your punch misses the Black Queen. // Your punch misses the Black Queen.	-	-
+1793744355	cmd	Trentlin	5	24347	chess.are	fighting	97	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744361	cmd	Trentlin	5	24347	chess.are	fighting	94	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744364	cmd	Trentlin	5	24347	chess.are	fighting	94	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744367	cmd	Trentlin	5	24347	chess.are	fighting	94	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744375	cmd	Trentlin	5	24347	chess.are	fighting	91	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744385	cmd	Trentlin	5	24347	chess.are	fighting	81	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744391	cmd	Trentlin	5	24347	chess.are	fighting	81	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744397	cmd	Trentlin	5	24347	chess.are	fighting	76	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744403	cmd	Trentlin	5	24347	chess.are	fighting	68	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744409	cmd	Trentlin	5	24347	chess.are	fighting	64	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744412	cmd	Trentlin	5	24347	chess.are	fighting	67	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744417	cmd	Trentlin	5	24347	chess.are	fighting	67	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744420	cmd	Trentlin	5	24347	chess.are	fighting	63	0	fight	eat	guan	You eat guano. // Stone skin never takes on a monk or a necromancer. // Your feet rise off the ground.	-	+
+1793744427	cmd	Trentlin	5	24347	chess.are	fighting	57	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744432	cmd	Trentlin	5	24347	chess.are	fighting	57	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744439	cmd	Trentlin	5	24347	chess.are	fighting	54	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744445	cmd	Trentlin	5	24347	chess.are	fighting	50	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744454	cmd	Trentlin	5	24347	chess.are	fighting	49	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744461	cmd	Trentlin	5	24347	chess.are	fighting	49	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744466	cmd	Trentlin	5	24347	chess.are	fighting	46	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744472	cmd	Trentlin	5	24347	chess.are	fighting	39	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744479	cmd	Trentlin	5	24347	chess.are	fighting	37	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744484	cmd	Trentlin	5	24347	chess.are	fighting	37	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744490	cmd	Trentlin	5	24347	chess.are	fighting	37	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744496	cmd	Trentlin	5	24347	chess.are	fighting	32	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744500	cmd	Trentlin	5	24347	chess.are	fighting	28	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744505	cmd	Trentlin	5	24347	chess.are	fighting	24	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744511	cmd	Trentlin	5	24347	chess.are	fighting	22	0	fight	kick		Your kick misses the Black Queen.	-	-
+1793744515	cmd	Trentlin	5	24347	chess.are	fighting	22	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744520	cmd	Trentlin	5	24347	chess.are	fighting	25	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744524	cmd	Trentlin	5	24347	chess.are	fighting	22	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744529	cmd	Trentlin	5	24347	chess.are	fighting	22	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1793744534	cmd	Trentlin	6	24347	chess.are	standing	21	0	-	look	in co	Corpse of the Black Queen contains: //      a silvery skin //      a queens black key	-	-
+1793744537	cmd	Trentlin	6	24347	chess.are	standing	21	0	-	get	all co	You get a silvery skin from corpse of the Black Queen. // You get a queens black key from corpse of the Black Queen.	-	-
+1793744538	cmd	Trentlin	6	24347	chess.are	standing	21	0	-	compare	skin	A) a silvery skin (level 3) // B) a sub issue vest (level 0), worn // Slot: body.  Your damage comes from weapons.	-	+
+1793744543	cmd	Trentlin	6	24347	chess.are	standing	21	0	-	wear	skin	You stop using a sub issue vest. // You wear a silvery skin on your body.	-	-
+1793744546	cmd	Trentlin	6	24347	chess.are	standing	21	0	-	drop	vest	You drop a sub issue vest. // A sub issue vest burst into flames as it hits the ground.	-	-
+1793744547	cmd	Trentlin	6	4207	dresden.are	standing	21	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744548	cmd	Trentlin	6	4208	dresden.are	standing	21	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793744549	cmd	Trentlin	6	4208	dresden.are	standing	21	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793744554	cmd	Trentlin	6	4208	dresden.are	standing	66	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793744557	cmd	Trentlin	6	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744557	cmd	Trentlin	6	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793744557	cmd	Trentlin	6	4202	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1793744558	cmd	Trentlin	6	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744559	cmd	Trentlin	6	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793744559	cmd	Trentlin	6	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1793744559	cmd	Trentlin	6	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1793744559	cmd	Trentlin	6	24300	chess.are	standing	100	0	-	north		The Stone Door //   You find yourself standing in a dry circular room which is // illuminated by a small brass torch set in the wall.  Flickering	-	+
+1793744561	cmd	Trentlin	6	24301	chess.are	standing	100	1	-	north		The Smooth Tunnel //   Looking down at your feet, you are somewhat surprised to find that you  // are walking on a thick woven rug. The walls of the tunnel that you are in 	-	+
+1793744561	cmd	Trentlin	6	24302	chess.are	standing	100	0	-	north		The Furnished Chamber //   This chamber is furnished quite nicely, with a thick woven  // rug beneath your feet, and tapestries along the walls.  There is a	-	+
+1793744562	cmd	Trentlin	6	24302	chess.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1793744562	cmd	Trentlin	6	24303	chess.are	standing	100	0	-	down		The Stone Staircase //   You find yourself in a rough stone staircase, which winds around // a smooth core of stone, descending deeper into the bowels of the earth.	-	+
+1793744563	cmd	Trentlin	6	24304	chess.are	standing	100	0	-	down		Down..Down..Down.. //   Your descent picks up speed, and you trip over an unseen obstacle // in the stairway!  As you tumble, the stairs start to become narrower and	-	+
+1793744563	cmd	Trentlin	6	24305	chess.are	standing	100	0	-	down		The Slide //   You come out of the last spin, and are abruptly deposited on a // slide made of some slick metal.  You descend rapidy, being abruptly slammed	-	+
+1793744563	cmd	Trentlin	6	24306	chess.are	standing	100	0	-	down		The Ledge //   You pop out of the slide, sail through the air for several long // moments, crash into the side of a cavern, and land on a ledge in a	-	+
+1793744563	cmd	Trentlin	6	24307	chess.are	standing	100	0	-	down		The Ladder //   You are on a simple wooden ladder, which has been bolted by means // of small metal hooks to the cavern wall.  The ledge is above you, and the	-	+
+1793744564	cmd	Trentlin	6	24312	chess.are	standing	100	0	-	down		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744565	cmd	Trentlin	6	24313	chess.are	standing	100	0	-	east		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744565	cmd	Trentlin	6	24314	chess.are	standing	100	0	-	east		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744566	cmd	Trentlin	6	24315	chess.are	standing	100	0	-	east		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744566	cmd	Trentlin	6	24316	chess.are	standing	100	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744566	cmd	Trentlin	6	24331	chess.are	standing	100	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744567	cmd	Trentlin	6	24332	chess.are	standing	100	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744567	cmd	Trentlin	6	24347	chess.are	standing	100	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744570	cmd	Trentlin	6	24347	chess.are	standing	100	0	-	look	paw	The pawn seems to be made of carved wood, and animated by  // some magical means. // The Black Pawn is in excellent condition.	-	-
+1793744571	cmd	Trentlin	6	24347	chess.are	standing	100	0	-	unlock	east	*Click*	-	-
+1793744573	cmd	Trentlin	6	24347	chess.are	standing	100	0	-	open	east	Ok.	-	-
+1793744574	cmd	Trentlin	6	24347	chess.are	standing	100	0	-	drop	key	You drop a queens black key.	-	-
+1793744574	cmd	Trentlin	6	24376	chess.are	standing	100	0	-	east		The Black Queen's Chamber //   You are in a small chamber, containing only a bed, basin, // mirror and braided rug.  Despite being very small, it looks comfortable 	-	+
+1793744576	cmd	Trentlin	6	24376	chess.are	standing	100	0	-	open	down	Ok.	-	-
+1793744577	cmd	Trentlin	6	24379	chess.are	standing	100	0	-	down		The Landing //   You drop down from the trap-door, and land on soft dirt.  You // seem to be inside some sort of enclave, and you see an underground river	-	+
+1793744578	cmd	Trentlin	6	24381	chess.are	standing	100	0	-	west		The Dock //   As you step onto the dock, it sags crazily and settles more // firmly into the river.  A sudden bright light shines out from upriver,	-	+
+1793744579	cmd	Trentlin	6	24382	chess.are	standing	100	0	-	north		The Sulking Swan //   The sulking swan is a large wooden craft, carved to the exact  // likeness of a swan.  Its wooden sides thump hollowly against the tunnel 	-	+
+1793744581	cmd	Trentlin	6	24382	chess.are	standing	100	0	-	consider	f	The flying Fish is a little below your level. // The flying Fish has a fraction of your hit points. // Blow for blow, you would need about 4 rounds to bring the flying Fish down; it would need about 70 rounds for you.	-	+
+1793744584	cmd	Trentlin	6	24383	chess.are	standing	100	0	-	north		The Underground River //   You bob along lazily in the strange craft, spinning in complete  // circles at points, but always headed downstream.  In the distance you see 	-	+
+1793744585	cmd	Trentlin	6	24384	chess.are	standing	100	0	-	north		Arrival //   The Sulking Swan heads directly to its berth, lining up alongside  // the wooden platform.  Ropes move of their own accord, rising from the 	-	+
+1793744588	cmd	Trentlin	6	24385	chess.are	standing	100	0	-	east		The Second Dock //   You decide that this dock is much sturdier than the first, and it  // feels quite nice to stand on firm ground again.  The boat is tied to the 	-	+
+1793744588	cmd	Trentlin	6	24386	chess.are	standing	100	0	-	east		The Entrance Hall //   You find yourself standing at the beginning of a giant entrance  // hall.  A fine red carpet leads north, and extravagant silks line the 	-	+
+1793744591	cmd	Trentlin	6	24386	chess.are	standing	100	0	-	consider	ca	A card of the suit hearts is about your level. // A card of the suit hearts has about a third of your hit points. // Blow for blow, you would need about 7 rounds to bring a card of the suit hearts down; it would need about 96 rounds for yo	-	+
+1793744591	cmd	Trentlin	6	24386	chess.are	standing	100	1	-	look	ca	The playing card grins at you evilly. // He is of the suit diamonds. // A card of the suit diamonds is in excellent condition.	-	-
+1793744596	cmd	Trentlin	6	24387	chess.are	standing	100	0	-	north		The Entrance Hall //   You are standing on a fine red carpet, halfway down the length of  // the entrance hall.  There is retreat to the south, and a giant throne to 	-	+
+1793744597	cmd	Trentlin	6	24388	chess.are	standing	100	0	-	north		The Joker's Throne //   You stand before a giant throne, made entirely of fool's gold.   // This seems to be the domain of the Joker- It may be wise to leave him to 	-	+
+1793744599	cmd	Trentlin	6	24388	chess.are	standing	100	0	-	consider	jok	The Joker is well above your level. // The Joker has about half your hit points. // Blow for blow, you would need about 18 rounds to bring the Joker down; it would need about 15 rounds for you.	-	+
+1793744603	cmd	Trentlin	6	24388	chess.are	standing	100	0	-	look	jok	The Joker cackles happily and ruffles your hair. // "So nice to see you dearie, would you like some tea?" // The Joker is NUTS!	-	+
+1793744606	cmd	Trentlin	6	24388	chess.are	standing	100	0	-	kill	jok	Your punch misses the Joker. // The Joker parries your attack.	-	-
+1793744610	cmd	Trentlin	6	24388	chess.are	fighting	94	0	fight	kick		Your kick scratches the Joker.	-	-
+1793744619	cmd	Trentlin	6	24388	chess.are	fighting	79	0	fight	kick		Your kick scratches the Joker.	-	-
+1793744623	cmd	Trentlin	6	24388	chess.are	fighting	73	0	fight	flee		PANIC! You couldn't escape!	-	-
+1793744623	cmd	Trentlin	6	24388	chess.are	fighting	73	0	fight	flee		PANIC! You couldn't escape!	-	-
+1793744624	cmd	Trentlin	6	24387	chess.are	fighting	73	0	fight	flee		The Entrance Hall //   You are standing on a fine red carpet, halfway down the length of  // the entrance hall.  There is retreat to the south, and a giant throne to 	-	+
+1793744624	cmd	Trentlin	6	24387	chess.are	standing	73	0	-	flee		You aren't fighting anyone.	-	-
+1793744625	cmd	Trentlin	6	4207	dresden.are	standing	73	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744627	cmd	Trentlin	6	4208	dresden.are	standing	73	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793744630	cmd	Trentlin	6	4208	dresden.are	standing	84	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1793744636	cmd	Trentlin	6	4208	dresden.are	standing	84	0	-	heal	refres	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1793744641	cmd	Trentlin	6	4207	dresden.are	standing	89	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744641	cmd	Trentlin	6	4202	dresden.are	standing	89	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793744641	cmd	Trentlin	6	4201	dresden.are	standing	89	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793744642	cmd	Trentlin	6	2433	dresden.are	standing	89	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793744642	cmd	Trentlin	6	2405	dresden.are	standing	89	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793744642	cmd	Trentlin	6	2401	dresden.are	standing	89	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793744642	cmd	Trentlin	6	2403	dresden.are	standing	89	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793744643	cmd	Trentlin	6	2420	dresden.are	standing	89	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793744643	cmd	Trentlin	6	2421	dresden.are	standing	89	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793744643	cmd	Trentlin	6	2422	dresden.are	standing	89	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793744643	cmd	Trentlin	6	2423	dresden.are	standing	89	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1793744644	cmd	Trentlin	6	2424	dresden.are	standing	89	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1793744644	cmd	Trentlin	6	2425	dresden.are	standing	89	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1793744644	cmd	Trentlin	6	2426	dresden.are	standing	89	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793744644	cmd	Trentlin	6	2426	dresden.are	standing	89	0	-	open	east	Ok.	-	-
+1793744645	cmd	Trentlin	6	2440	dresden.are	standing	89	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793744647	cmd	Trentlin	6	3503	midennir.are	standing	89	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1793744647	cmd	Trentlin	6	3502	midennir.are	standing	89	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1793744647	cmd	Trentlin	6	5261	oldthalo.are	standing	89	0	-	south		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1793744647	cmd	Trentlin	6	5260	oldthalo.are	standing	89	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1793744648	cmd	Trentlin	6	5259	oldthalo.are	standing	89	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1793744648	cmd	Trentlin	6	5258	oldthalo.are	standing	89	0	-	south		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1793744648	cmd	Trentlin	6	5262	oldthalo.are	standing	89	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks	-	+
+1793744648	cmd	Trentlin	6	5263	oldthalo.are	standing	89	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south	-	+
+1793744649	cmd	Trentlin	6	5264	oldthalo.are	standing	89	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east	-	+
+1793744649	cmd	Trentlin	6	5265	oldthalo.are	standing	89	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1793744649	cmd	Trentlin	6	5266	oldthalo.are	standing	89	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1793744649	cmd	Trentlin	6	5267	oldthalo.are	standing	89	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and	-	+
+1793744650	cmd	Trentlin	6	5271	oldthalo.are	standing	89	0	-	north		The Valley in the dark dwarf forest //   You are in a valley in the forest.  To the north is a trail out of this // dark valley.  South is more of this valley.	-	+
+1793744650	cmd	Trentlin	6	5272	oldthalo.are	standing	89	0	-	north		A dim trail in the dwarf forest //   You are in a dim trail in the dwarf forest.  Not much light passes through // here.  To the south is a gloomy valley, while to the north the light grows	-	+
+1793744650	cmd	Trentlin	6	5273	oldthalo.are	standing	89	0	-	north		A dim trail in the dwarf forest //   You are in a dim trail in the dwarf forest.  Not much light passes through // here.  The trail runs north and south, and the light seems to come from the	-	+
+1793744650	cmd	Trentlin	6	5280	oldthalo.are	standing	89	0	-	east		A dark bend in the forest //   You are in a dark bend in the forest.  To the west, you see the trail // leading back to the dwarven forest, and to the south, you see a dark and	-	+
+1793744651	cmd	Trentlin	6	39	connect.are	standing	89	0	-	south		Dark Path //   Your thoughts wander to past adventures as you trudge down the dismal // path but your progress is suddenly halted by a large dark mountain range	-	+
+1793744651	cmd	Trentlin	6	6500	dwarves.are	standing	89	0	-	east		Path to Dwarven Village //   All around you are the mountains of the southern range, home of dwarves and  // giants.  You can climb back down the mountains to the west and leave these 	-	+
+1793744651	cmd	Trentlin	6	44	connect.are	standing	89	0	-	south		Before the Dwarven Daycare //   Before you is a small building. Toys in various stages of disrepair litter // the rocky yard. From inside the building, you can hear the sounds of chaos	-	+
+1793744651	cmd	Trentlin	6	6601	daycare.are	standing	89	0	-	south		The Dwarven Drop Off //   This is where the dwarven mommies and daddies come to drop off their // annoying little brats.  You have the urge to leave.  There is a sign here.	-	+
