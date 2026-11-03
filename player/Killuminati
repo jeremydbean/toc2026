@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1793714459
+LogO 1793714784
 Vers 4
 Desc You see something very special about him.
 ~
@@ -20,7 +20,7 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6541945
+Plyd 6542270
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -112,7 +112,7 @@ Achv weapons-5 1793019785
 Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
-LastOut  1793714459
+LastOut  1793714784
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1793659554
@@ -422,8 +422,8 @@ Gr 'mage default'
 Gr 'warrior default'
 Gr 'monk default'
 Gr 'warrior guild'
-AffD 'detect hidden'  47  12   0   0         32          0
-AffD 'detect invis'  49  12   0   0          8          0
+AffD 'detect hidden'  47   7   0   0         32          0
+AffD 'detect invis'  48   7   0   0          8          0
 End
 
 #O
