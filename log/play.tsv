@@ -18251,3 +18251,8 @@
 1793672489	cmd	Alaric	57	2497	dresden.are	standing	100	15	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 4 in a row! A +30% bonus has been added!'
 1793672491	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 35 quest points.
 1793672492	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793672604	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793672618	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand       100%       //           recall             100%       // Level  3: kick                 1%      
+1793672625	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793672627	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793672627	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) British's amulet //      (Glowing) an aura of power
