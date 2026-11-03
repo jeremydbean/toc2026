@@ -16531,3 +16531,23 @@
 1793667949	cmd	Alaric	57	9205	canyon.are	standing	100	0	-	up		Alas, you cannot go that way.
 1793667950	cmd	Alaric	57	9206	canyon.are	standing	100	0	-	north		The Overlook //   You see various elemental servants wandering around the canyon.  The noise of // humming coming from the canyon gets louder.  The path makes a steep descent
 1793667958	cmd	Alaric	57	9207	canyon.are	standing	100	0	-	down		Entrance to Elemental Canyon //   You are awed by the sounds and sights of great powers at works here. // Elemental servants bustle back and forth doing the biddings of the elemental
+1793667988	cmd	Alaric	57	9209	canyon.are	standing	100	0	-	north		Elemental Gateway //   To the west a path dips and winds among some flowing firepits.  To the // northeast a path goes toward the river.  Beyond toward the northeast and
+1793667989	cmd	Alaric	57	9212	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at
+1793667989	cmd	Alaric	57	9215	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at
+1793667989	cmd	Alaric	57	9218	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at
+1793667989	cmd	Alaric	57	9219	canyon.are	standing	100	0	-	east		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at
+1793667990	cmd	Alaric	57	9254	canyon.are	standing	100	0	-	north		Mesa East //   A path starts to the north.  The mesa continues to the west. // Or you can climb down to the canyon floor to the south.
+1793667990	cmd	Alaric	57	9255	canyon.are	standing	100	0	-	north		Floating in Air //   Last you knew, you were walking on the mesa.  Abruptly the path dropped // from beneath your feet much to quick for you to recover.  Instead of
+1793667992	cmd	Alaric	57	9256	canyon.are	standing	100	0	-	east		Floating in Air //   You look down and see the ground 100 feet below you.  The wind whispering // in your ear seems to reassure you that this is fine.  To the north aways
+1793667993	cmd	Alaric	57	9258	canyon.are	standing	100	0	-	north		Floating in Air //   You look down and see the ground 100 feet below you.  The wind whispering // in your ear seems to reassure you that this is fine. There is a portal
+1793667996	cmd	Alaric	57	9258	canyon.are	standing	100	0	-	kill	cl	They aren't here.
+1793667998	cmd	Alaric	57	9258	canyon.are	standing	100	0	-	look		Floating in Air //   You look down and see the ground 100 feet below you.  The wind whispering // in your ear seems to reassure you that this is fine. There is a portal
+1793668000	cmd	Alaric	57	9258	canyon.are	standing	100	11	-	kill	du	Your punch <<< ERADICATES >>> a dust cloud! [-190] // A dust cloud is DEAD!! // You have almost finished your QUEST!
+1793668004	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793668004	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1793668004	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'
+1793668005	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 39 quest points.
+1793668166	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    281 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793668186	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793668189	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	affect		You are not affected by any spells.
+1793668193	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    281 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
