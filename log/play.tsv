@@ -19222,3 +19222,21 @@
 1793714333	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look	triforce	Power, Wisdom and Courage, joined as one: // Wear it as a light and you see what is hidden, invisible or in the dark.
 1793715616	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1793715631	session	Killuminati	70	2401	dresden.are	quit	1422s	+0 levels	+0 exp	-101 copper	0 kills	0 deaths	0 quests	34 commands	0 refused	coin: spent 1s 1c
+1793716875	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793716880	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	holylight		Holy light mode off.
+1793716881	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793716889	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	holylight		Holy light mode on.
+1793716890	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793716897	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	holylight		Holy light mode off.
+1793716898	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'sanctuary' from the Red Ring of Hyrule, for as long as it is worn. // Spell: 'haste' from the Master Sword, for as long as it is worn.
+1793716902	refused	Killuminati	70	2401	dresden.are	standing	100	0	-	(unknown)		Huh?
+1793716903	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1817 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
+1793716932	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	help	concocy	No help on that word.  Did you mean: CONCOCT?
+1793716934	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	help	concoct	BREW CONCOCT 'HERBAL BREWING' // Syntax: brew <herb> // Syntax: concoct <component> <component>
+1793716977	cmd	Killuminati	70	2401	dresden.are	standing	100	2	-	component		Scattered 5 herbs and 2 spell components. // The world now holds 5 of 40 herbs and 2 of 25 components.
+1793716982	cmd	Killuminati	70	2401	dresden.are	standing	100	1	-	component		Scattered 4 herbs and 0 spell components. // The world now holds 9 of 40 herbs and 2 of 25 components.
+1793716983	cmd	Killuminati	70	2401	dresden.are	standing	100	1	-	component		Scattered 5 herbs and 0 spell components. // The world now holds 14 of 40 herbs and 2 of 25 components.
+1793716987	cmd	Killuminati	70	2401	dresden.are	standing	100	1	-	component		Scattered 3 herbs and 1 spell component. // The world now holds 17 of 40 herbs and 3 of 25 components.
+1793716988	cmd	Killuminati	70	2401	dresden.are	standing	100	1	-	component		Scattered 4 herbs and 1 spell component. // The world now holds 21 of 40 herbs and 4 of 25 components.
+1793716989	cmd	Killuminati	70	2401	dresden.are	standing	100	1	-	component		Scattered 5 herbs and 0 spell components. // The world now holds 26 of 40 herbs and 4 of 25 components.
+1793717000	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
