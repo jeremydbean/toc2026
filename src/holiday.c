@@ -870,16 +870,31 @@ static int eggs_clear( void )
     return n;
 }
 
+/* Somewhere a player can walk in and find an egg: not the square
+   itself, not the sky, deep or under water, and not an arena. A pick
+   that fails is tried again, up to eight times, so a refresh hides an
+   egg rather than now and then giving up on a single unlucky roll. */
+static bool egg_room_ok( const ROOM_INDEX_DATA *room, const ROOM_INDEX_DATA *square )
+{
+    return room != NULL && room != square
+        && room->sector_type != SECT_AIR
+        && room->sector_type != SECT_WATER_NOSWIM
+        && room->sector_type != SECT_UNDER_WATER
+        && !IS_SET( room->room_flags, ROOM_ARENA );
+}
+
 static void hide_an_egg( void )
 {
     ROOM_INDEX_DATA *square = get_room_index( VENDOR_SPAWN_ROOM );
-    ROOM_INDEX_DATA *room;
+    ROOM_INDEX_DATA *room = NULL;
     OBJ_DATA *egg;
+    int tries;
 
     if ( square == NULL )
         return;
-    room = random_scatter_room( square->area );
-    if ( room == NULL || room == square || ( egg = holiday_make( OBJ_VNUM_PAINTED_EGG ) ) == NULL )
+    for ( tries = 0; tries < 8 && !egg_room_ok( room, square ); tries++ )
+        room = random_scatter_room( square->area );
+    if ( !egg_room_ok( room, square ) || ( egg = holiday_make( OBJ_VNUM_PAINTED_EGG ) ) == NULL )
         return;
     holiday_fill( egg, number_range( 5, 30 ) );
     obj_to_room( egg, room );

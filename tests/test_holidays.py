@@ -109,13 +109,17 @@ class HolidayCalendarLiveTests(unittest.TestCase):
                 self.assertIn("Name a year", hero.sync("holidays 12"))
 
                 # The fair: decoration and vendor, and eggs hidden in Dresden.
-                staff.must("holidays refresh", "up to date")
+                # Each refresh hides one more egg in Dresden while players
+                # are on; three, so one unlucky pick cannot leave none.
+                staff.must("holidays refresh;holidays refresh;holidays refresh", "up to date")
                 square = plain(hero.sync("look"))
                 self.assertIn("giant wicker basket of painted eggs", square)
                 self.assertIn("Hopscotch the egg warden", square)
                 self.assertIn("bunny ears", plain(hero.sync("list")))
                 status = plain(staff.sync("holidays"))
-                self.assertRegex(status, r"eggs lying in the square's area [1-9]")
+                fair = re.search(r"\[staff\] fair:[^.]*\.", status)
+                self.assertRegex(status, r"eggs lying in the square's area [1-9]",
+                                 fair.group(0) if fair else status[-400:])
 
                 # A kill's egg opens on something (fixtures autoloot).
                 self.assertIn("You get a brightly painted egg",
