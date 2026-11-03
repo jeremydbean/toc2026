@@ -249652,3 +249652,244 @@ Tue Nov  3 01:20:43 2026 :: Snapshot of Alaric taken before quest: Alaric.202611
 Tue Nov  3 01:20:43 2026 :: Log Alaric [2497]: aq ga no
 Tue Nov  3 01:20:51 2026 :: Sock.sinaddr:  178.156.187.238
 Tue Nov  3 01:20:51 2026 :: EOF encountered on read.
+Tue Nov  3 01:23:46 2026 :: Log Alaric [2497]: wake
+Tue Nov  3 01:23:46 2026 :: Log Alaric [2497]: l
+Tue Nov  3 01:23:48 2026 :: Log Alaric [2497]: en do
+Tue Nov  3 01:23:48 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 01:23:49 2026 :: Log Alaric [2401]: heal all
+Tue Nov  3 01:23:49 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 2401.
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2401]: west
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2405]: west
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2433]: west
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2434]: west
+Tue Nov  3 01:23:55 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2435]: west
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2436]: west
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2437]: west
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2438]: west
+Tue Nov  3 01:23:56 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Tue Nov  3 01:23:57 2026 :: Log Alaric [2439]: west
+Tue Nov  3 01:23:57 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Tue Nov  3 01:23:57 2026 :: Log Alaric [6000]: west
+Tue Nov  3 01:23:57 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Tue Nov  3 01:23:57 2026 :: Log Alaric [6001]: west
+Tue Nov  3 01:23:57 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Tue Nov  3 01:23:57 2026 :: Log Alaric [6002]: west
+Tue Nov  3 01:23:57 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6003]: west
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6004]: west
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6100]: west
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6101]: south
+Tue Nov  3 01:23:58 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6104]: south
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6105]: west
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6106]: south
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6117]: west
+Tue Nov  3 01:23:59 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6116]: south
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6115]: west
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6114]: west
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6122]: south
+Tue Nov  3 01:24:00 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Tue Nov  3 01:24:01 2026 :: Log Alaric [6123]: south
+Tue Nov  3 01:24:01 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 6123
+Tue Nov  3 01:24:01 2026 :: Log Alaric [9774]: west
+Tue Nov  3 01:24:01 2026 :: Log Alaric [9775]: arrived (On the Dark River) from 9774
+Tue Nov  3 01:24:01 2026 :: Log Alaric [9775]: southwest
+Tue Nov  3 01:24:01 2026 :: Log Alaric [15]: arrived (Bend in River) from 9775
+Tue Nov  3 01:24:01 2026 :: Log Alaric [15]: west
+Tue Nov  3 01:24:01 2026 :: Log Alaric [16]: arrived (Misty River) from 15
+Tue Nov  3 01:24:02 2026 :: Log Alaric [16]: north
+Tue Nov  3 01:24:02 2026 :: Log Alaric [1300]: arrived (Entrance to the Shadow Grove) from 16
+Tue Nov  3 01:24:08 2026 :: Log Alaric [1300]: n
+Tue Nov  3 01:24:08 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1300
+Tue Nov  3 01:24:08 2026 :: Log Alaric [1308]: ex
+Tue Nov  3 01:24:09 2026 :: Log Alaric [1308]: w
+Tue Nov  3 01:24:09 2026 :: Log Alaric [1300]: arrived (Entrance to the Shadow Grove) from 1308
+Tue Nov  3 01:24:10 2026 :: Log Alaric [1300]: ex
+Tue Nov  3 01:24:10 2026 :: Log Alaric [1300]: n
+Tue Nov  3 01:24:10 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1300
+Tue Nov  3 01:24:11 2026 :: Log Alaric [1308]: n
+Tue Nov  3 01:24:11 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Tue Nov  3 01:24:12 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:24:13 2026 :: Log Alaric [1307]: e
+Tue Nov  3 01:24:13 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:24:13 2026 :: Log Alaric [1304]: ex
+Tue Nov  3 01:24:15 2026 :: Log Alaric [1304]: n
+Tue Nov  3 01:24:15 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1304
+Tue Nov  3 01:24:15 2026 :: Log Alaric [1301]: ex
+Tue Nov  3 01:24:16 2026 :: Log Alaric [1301]: w
+Tue Nov  3 01:24:16 2026 :: Log Alaric [1303]: arrived (The Shadow Grove) from 1301
+Tue Nov  3 01:24:17 2026 :: Log Alaric [1303]: ex
+Tue Nov  3 01:24:18 2026 :: Log Alaric [1303]: w
+Tue Nov  3 01:24:18 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1303
+Tue Nov  3 01:24:18 2026 :: Log Alaric [1306]: ex
+Tue Nov  3 01:24:20 2026 :: Log Alaric [1306]: w
+Tue Nov  3 01:24:20 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1306
+Tue Nov  3 01:24:20 2026 :: Log Alaric [1309]: ex
+Tue Nov  3 01:24:22 2026 :: Log Alaric [1309]: s
+Tue Nov  3 01:24:22 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1309
+Tue Nov  3 01:24:22 2026 :: Log Alaric [1306]: ex
+Tue Nov  3 01:24:24 2026 :: Log Alaric [1306]: e
+Tue Nov  3 01:24:24 2026 :: Log Alaric [1303]: arrived (The Shadow Grove) from 1306
+Tue Nov  3 01:24:25 2026 :: Log Alaric [1303]: ex
+Tue Nov  3 01:24:26 2026 :: Log Alaric [1303]: n
+Tue Nov  3 01:24:26 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1303
+Tue Nov  3 01:24:26 2026 :: Log Alaric [1309]: ex
+Tue Nov  3 01:24:27 2026 :: Log Alaric [1309]: n
+Tue Nov  3 01:24:27 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1309
+Tue Nov  3 01:24:28 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:24:29 2026 :: Log Alaric [1307]: e
+Tue Nov  3 01:24:29 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:24:30 2026 :: Log Alaric [1304]: ex
+Tue Nov  3 01:24:32 2026 :: Log Alaric [1304]: n
+Tue Nov  3 01:24:32 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1304
+Tue Nov  3 01:24:33 2026 :: Log Alaric [1301]: ex
+Tue Nov  3 01:24:33 2026 :: Log Alaric [1301]: w
+Tue Nov  3 01:24:33 2026 :: Log Alaric [1303]: arrived (The Shadow Grove) from 1301
+Tue Nov  3 01:24:34 2026 :: Log Alaric [1303]: ex
+Tue Nov  3 01:24:35 2026 :: Log Alaric [1303]: n
+Tue Nov  3 01:24:35 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1303
+Tue Nov  3 01:24:36 2026 :: Log Alaric [1309]: ex
+Tue Nov  3 01:24:37 2026 :: Log Alaric [1309]: s
+Tue Nov  3 01:24:37 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1309
+Tue Nov  3 01:24:38 2026 :: Log Alaric [1306]: ex
+Tue Nov  3 01:24:39 2026 :: Log Alaric [1306]: w
+Tue Nov  3 01:24:39 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1306
+Tue Nov  3 01:24:40 2026 :: Log Alaric [1309]: ex
+Tue Nov  3 01:24:41 2026 :: Log Alaric [1309]: n
+Tue Nov  3 01:24:41 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1309
+Tue Nov  3 01:24:41 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:24:42 2026 :: Log Alaric [1307]: w
+Tue Nov  3 01:24:42 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:24:43 2026 :: Log Alaric [1308]: ex
+Tue Nov  3 01:24:45 2026 :: Log Alaric [1308]: n
+Tue Nov  3 01:24:45 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Tue Nov  3 01:24:46 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:24:46 2026 :: Log Alaric [1307]: e
+Tue Nov  3 01:24:46 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:24:47 2026 :: Log Alaric [1304]: ex
+Tue Nov  3 01:24:48 2026 :: Log Alaric [1304]: e
+Tue Nov  3 01:24:48 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1304
+Tue Nov  3 01:24:49 2026 :: Log Alaric [1305]: ex
+Tue Nov  3 01:24:50 2026 :: Log Alaric [1305]: n
+Tue Nov  3 01:24:50 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1305
+Tue Nov  3 01:24:51 2026 :: Log Alaric [1308]: ex
+Tue Nov  3 01:24:52 2026 :: Log Alaric [1308]: n
+Tue Nov  3 01:24:52 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Tue Nov  3 01:24:53 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:24:54 2026 :: Log Alaric [1307]: w
+Tue Nov  3 01:24:54 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:24:54 2026 :: Log Alaric [1308]: ex
+Tue Nov  3 01:24:56 2026 :: Log Alaric [1308]: n
+Tue Nov  3 01:24:56 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Tue Nov  3 01:24:56 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:24:57 2026 :: Log Alaric [1307]: e
+Tue Nov  3 01:24:57 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:24:58 2026 :: Log Alaric [1304]: ex
+Tue Nov  3 01:25:00 2026 :: Log Alaric [1304]: w
+Tue Nov  3 01:25:00 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1304
+Tue Nov  3 01:25:00 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:25:01 2026 :: Log Alaric [1307]: s
+Tue Nov  3 01:25:01 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:25:02 2026 :: Log Alaric [1301]: ex
+Tue Nov  3 01:25:03 2026 :: Log Alaric [1301]: n
+Tue Nov  3 01:25:03 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1301
+Tue Nov  3 01:25:03 2026 :: Log Alaric [1304]: ex
+Tue Nov  3 01:25:04 2026 :: Log Alaric [1304]: n
+Tue Nov  3 01:25:04 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1304
+Tue Nov  3 01:25:05 2026 :: Log Alaric [1301]: ex
+Tue Nov  3 01:25:06 2026 :: Log Alaric [1301]: n
+Tue Nov  3 01:25:06 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1301
+Tue Nov  3 01:25:08 2026 :: Log Alaric [1304]: ex
+Tue Nov  3 01:25:09 2026 :: Log Alaric [1304]: e
+Tue Nov  3 01:25:09 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1304
+Tue Nov  3 01:25:10 2026 :: Log Alaric [1305]: ex
+Tue Nov  3 01:25:11 2026 :: Log Alaric [1305]: n
+Tue Nov  3 01:25:11 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1305
+Tue Nov  3 01:25:12 2026 :: Log Alaric [1308]: ex
+Tue Nov  3 01:25:13 2026 :: Log Alaric [1308]: n
+Tue Nov  3 01:25:13 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Tue Nov  3 01:25:14 2026 :: Log Alaric [1307]: ex
+Tue Nov  3 01:25:15 2026 :: Log Alaric [1307]: s
+Tue Nov  3 01:25:15 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1307
+Tue Nov  3 01:25:15 2026 :: Log Alaric [1301]: ex
+Tue Nov  3 01:25:16 2026 :: Log Alaric [1301]: e
+Tue Nov  3 01:25:16 2026 :: Log Alaric [1302]: arrived (The Shadow Grove) from 1301
+Tue Nov  3 01:25:17 2026 :: Log Alaric [1302]: ex
+Tue Nov  3 01:25:18 2026 :: Log Alaric [1302]: e
+Tue Nov  3 01:25:18 2026 :: Log Alaric [1311]: arrived (A small clearing) from 1302
+Tue Nov  3 01:25:21 2026 :: Log Alaric [1311]: en mo
+Tue Nov  3 01:25:21 2026 :: Log Alaric [7600]: arrived (Entrance to Ultima) from 1311
+Tue Nov  3 01:25:23 2026 :: Log Alaric [7600]: s
+Tue Nov  3 01:25:23 2026 :: Log Alaric [7601]: arrived (New Magincia Road) from 7600
+Tue Nov  3 01:25:25 2026 :: Log Alaric [7601]: s
+Tue Nov  3 01:25:25 2026 :: Log Alaric [7602]: arrived (New Magincia Road) from 7601
+Tue Nov  3 01:25:26 2026 :: Log Alaric [7602]: s
+Tue Nov  3 01:25:26 2026 :: Log Alaric [7603]: arrived (The New Magincia Moongate) from 7602
+Tue Nov  3 01:25:30 2026 :: Log Alaric [7603]: open up
+Tue Nov  3 01:25:32 2026 :: Log Alaric [7603]: unl up
+Tue Nov  3 01:25:33 2026 :: Log Alaric [7603]: w
+Tue Nov  3 01:25:33 2026 :: Log Alaric [7608]: arrived (Humility Lane) from 7603
+Tue Nov  3 01:25:35 2026 :: Log Alaric [7608]: n
+Tue Nov  3 01:25:35 2026 :: Log Alaric [7607]: arrived (Barn) from 7608
+Tue Nov  3 01:25:36 2026 :: Log Alaric [7607]: on
+Tue Nov  3 01:25:37 2026 :: Log Alaric [7607]: n
+Tue Nov  3 01:25:37 2026 :: Log Alaric [7606]: arrived (Stables) from 7607
+Tue Nov  3 01:25:39 2026 :: Log Alaric [7606]: (refused) kjill sm
+Tue Nov  3 01:25:39 2026 :: Log Alaric [7606]: fi sm
+Tue Nov  3 01:25:42 2026 :: Log Alaric [7606]: killed Mr. Smithy
+Tue Nov  3 01:25:42 2026 :: Log Alaric [7606]: coin +58 silver
+Tue Nov  3 01:25:42 2026 :: Log Alaric [7606]: coin +286 copper
+Tue Nov  3 01:25:42 2026 :: Log Alaric [7606]: coin +36 gold
+Tue Nov  3 01:25:47 2026 :: Log Alaric [7606]: l i cor
+Tue Nov  3 01:25:49 2026 :: Log Alaric [7606]: s
+Tue Nov  3 01:25:49 2026 :: Log Alaric [7607]: arrived (Barn) from 7606
+Tue Nov  3 01:25:49 2026 :: Log Alaric [7607]: s
+Tue Nov  3 01:25:49 2026 :: Log Alaric [7608]: arrived (Humility Lane) from 7607
+Tue Nov  3 01:25:52 2026 :: Log Alaric [7608]: e
+Tue Nov  3 01:25:52 2026 :: Log Alaric [7603]: arrived (The New Magincia Moongate) from 7608
+Tue Nov  3 01:25:53 2026 :: Log Alaric [7603]: e
+Tue Nov  3 01:25:53 2026 :: Log Alaric [7613]: arrived (Humility Lane) from 7603
+Tue Nov  3 01:25:55 2026 :: Log Alaric [7613]: n
+Tue Nov  3 01:25:55 2026 :: Log Alaric [7612]: arrived (House) from 7613
+Tue Nov  3 01:25:56 2026 :: Log Alaric [7612]: n
+Tue Nov  3 01:25:56 2026 :: Sock.sinaddr:  18.116.205.62
+Tue Nov  3 01:25:56 2026 :: EOF encountered on read.
+Tue Nov  3 01:26:01 2026 :: Log Alaric [7612]: open up
+Tue Nov  3 01:26:02 2026 :: Log Alaric [7612]: u
+Tue Nov  3 01:26:02 2026 :: Log Alaric [7611]: arrived (Attic) from 7612
+Tue Nov  3 01:26:05 2026 :: Log Alaric [7611]: kill bat
+Tue Nov  3 01:26:05 2026 :: Log Alaric [7611]: killed the bat
+Tue Nov  3 01:26:05 2026 :: Log Alaric [7611]: coin +1 copper
+Tue Nov  3 01:26:09 2026 :: Log Alaric [7611]: l i cor
+Tue Nov  3 01:26:12 2026 :: Log Alaric [7611]: get all cor
+Tue Nov  3 01:26:12 2026 :: Log Alaric [7611]: d
+Tue Nov  3 01:26:12 2026 :: Log Alaric [7612]: arrived (House) from 7611
+Tue Nov  3 01:26:13 2026 :: Log Alaric [7612]: s
+Tue Nov  3 01:26:13 2026 :: Log Alaric [7613]: arrived (Humility Lane) from 7612
+Tue Nov  3 01:26:14 2026 :: Log Alaric [7613]: w
+Tue Nov  3 01:26:14 2026 :: Log Alaric [7603]: arrived (The New Magincia Moongate) from 7613
+Tue Nov  3 01:26:17 2026 :: Log Alaric [7603]: unl up
+Tue Nov  3 01:26:18 2026 :: Log Alaric [7603]: open up
+Tue Nov  3 01:26:18 2026 :: Log Alaric [7603]: u
+Tue Nov  3 01:26:18 2026 :: Log Alaric [7616]: arrived (Library) from 7603
+Tue Nov  3 01:26:20 2026 :: Log Alaric [7616]: w
+Tue Nov  3 01:26:20 2026 :: Log Alaric [7636]: arrived (Library) from 7616
+Tue Nov  3 01:26:21 2026 :: Log Alaric [7636]: s
+Tue Nov  3 01:26:21 2026 :: Log Alaric [7635]: arrived (Web) from 7636

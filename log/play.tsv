@@ -16732,3 +16732,146 @@
 1793668842	cmd	Alaric	57	2497	dresden.are	standing	88	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
 1793668843	cmd	Alaric	57	2497	dresden.are	standing	88	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
 1793668843	cmd	Alaric	57	2497	dresden.are	standing	88	4	-	aquest	ga no	Wise choice. You safely collect 28 quest points.
+1793669026	cmd	Alaric	57	2497	dresden.are	standing	88	0	-	wake		You are already standing.
+1793669026	cmd	Alaric	57	2497	dresden.are	standing	88	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793669028	cmd	Alaric	57	2401	dresden.are	standing	88	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793669029	cmd	Alaric	57	2401	dresden.are	standing	88	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1793669035	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793669035	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793669035	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793669035	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793669036	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793669036	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793669036	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793669036	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793669037	cmd	Alaric	57	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1793669037	cmd	Alaric	57	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1793669037	cmd	Alaric	57	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1793669037	cmd	Alaric	57	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.
+1793669038	cmd	Alaric	57	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains
+1793669038	cmd	Alaric	57	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in
+1793669038	cmd	Alaric	57	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,
+1793669038	cmd	Alaric	57	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues
+1793669039	cmd	Alaric	57	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.
+1793669039	cmd	Alaric	57	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1793669039	cmd	Alaric	57	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1793669039	cmd	Alaric	57	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1793669040	cmd	Alaric	57	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1793669040	cmd	Alaric	57	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.
+1793669040	cmd	Alaric	57	6122	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.
+1793669040	cmd	Alaric	57	6123	haon.are	standing	100	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows
+1793669041	cmd	Alaric	57	9774	newthalo.are	standing	100	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.
+1793669041	cmd	Alaric	57	9775	newthalo.are	standing	100	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]
+1793669041	cmd	Alaric	57	15	connect.are	standing	100	0	-	southwest		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the
+1793669041	cmd	Alaric	57	16	connect.are	standing	100	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank
+1793669042	cmd	Alaric	57	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1793669048	cmd	Alaric	57	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669048	cmd	Alaric	57	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669049	cmd	Alaric	57	1300	htower.are	standing	100	0	-	west		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1793669050	cmd	Alaric	57	1300	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // South - Misty River
+1793669050	cmd	Alaric	57	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669051	cmd	Alaric	57	1307	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669052	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669053	cmd	Alaric	57	1304	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669053	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669055	cmd	Alaric	57	1301	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669055	cmd	Alaric	57	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669056	cmd	Alaric	57	1303	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669057	cmd	Alaric	57	1303	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669058	cmd	Alaric	57	1306	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669058	cmd	Alaric	57	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1793669060	cmd	Alaric	57	1309	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669060	cmd	Alaric	57	1309	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669062	cmd	Alaric	57	1306	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669062	cmd	Alaric	57	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1793669064	cmd	Alaric	57	1303	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669065	cmd	Alaric	57	1303	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669066	cmd	Alaric	57	1309	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669066	cmd	Alaric	57	1309	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669067	cmd	Alaric	57	1307	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669068	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669069	cmd	Alaric	57	1304	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669070	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669072	cmd	Alaric	57	1301	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669073	cmd	Alaric	57	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669073	cmd	Alaric	57	1303	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669074	cmd	Alaric	57	1303	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669075	cmd	Alaric	57	1309	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669076	cmd	Alaric	57	1309	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669077	cmd	Alaric	57	1306	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669078	cmd	Alaric	57	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1793669079	cmd	Alaric	57	1309	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669080	cmd	Alaric	57	1309	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669081	cmd	Alaric	57	1307	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669081	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669082	cmd	Alaric	57	1308	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669083	cmd	Alaric	57	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669085	cmd	Alaric	57	1307	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669086	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669086	cmd	Alaric	57	1304	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669087	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669088	cmd	Alaric	57	1305	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669089	cmd	Alaric	57	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669090	cmd	Alaric	57	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669091	cmd	Alaric	57	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669092	cmd	Alaric	57	1307	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669093	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669094	cmd	Alaric	57	1308	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669094	cmd	Alaric	57	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669096	cmd	Alaric	57	1307	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669096	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669097	cmd	Alaric	57	1304	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669098	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669100	cmd	Alaric	57	1307	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669100	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669101	cmd	Alaric	57	1301	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669102	cmd	Alaric	57	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669103	cmd	Alaric	57	1304	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669103	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669104	cmd	Alaric	57	1301	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669105	cmd	Alaric	57	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669106	cmd	Alaric	57	1304	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669108	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669109	cmd	Alaric	57	1305	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669110	cmd	Alaric	57	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669111	cmd	Alaric	57	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669112	cmd	Alaric	57	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669113	cmd	Alaric	57	1307	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669114	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669115	cmd	Alaric	57	1301	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669115	cmd	Alaric	57	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1793669116	cmd	Alaric	57	1302	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1793669117	cmd	Alaric	57	1302	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - A small clearing
+1793669118	cmd	Alaric	57	1311	htower.are	standing	100	0	-	east		A small clearing //   You are in a small clearing in the shadow grove. There is charred grass // underfoot, and the signs of fire here and there. It is almost as if the
+1793669121	cmd	Alaric	57	7600	ultima.are	standing	100	0	-	enter	mo	You enter a red moongate // Your stomach flip flops. Everything goes black for a moment. // Entrance to Ultima
+1793669123	cmd	Alaric	57	7601	ultima.are	standing	100	0	-	south		New Magincia Road //   This is the main road of New Magincia.  To the south the dirt // path continues to the south and a huge gate to the north.
+1793669125	cmd	Alaric	57	7602	ultima.are	standing	100	0	-	south		New Magincia Road //   The path continues to the south and the north.  You see the // tracks of sheep here.
+1793669126	cmd	Alaric	57	7603	ultima.are	standing	100	0	-	south		The New Magincia Moongate //   You see another moongate here, exactly between the crossing of // two paths.
+1793669130	cmd	Alaric	57	7603	ultima.are	standing	100	0	-	open	up	It's locked.
+1793669132	cmd	Alaric	57	7603	ultima.are	standing	100	0	-	unlock	up	You lack the key.
+1793669133	cmd	Alaric	57	7608	ultima.are	standing	100	0	-	west		Humility Lane //   This is an even smaller dirt path that crosses New Maginica Road.  // To your north there is a barn, and to the south you see a
+1793669135	cmd	Alaric	57	7607	ultima.are	standing	100	0	-	north		Barn //   This is your basic barn, with hay and stables to the north. // [Exits: north (south)]
+1793669136	cmd	Alaric	57	7607	ultima.are	standing	100	0	-	open		There is no door to the north, just open passage.
+1793669137	cmd	Alaric	57	7606	ultima.are	standing	100	0	-	north		Stables //   This is the stables for the shepherd.  There are many fine horses // here.  You can return to the barn in to the south.
+1793669139	refused	Alaric	57	7606	ultima.are	standing	100	0	-	(unknown)		Huh? Did you mean KILL?
+1793669139	cmd	Alaric	57	7606	ultima.are	standing	100	0	-	fists	sm	You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** Mr. Smithy! [-80] // Your fists of fury *** DEVASTATES *** Mr. Smithy! [-64]
+1793669147	cmd	Alaric	57	7606	ultima.are	standing	100	0	-	look	i cor	Corpse of Mr. Smithy contains: //      (Glowing) horseshoes
+1793669149	cmd	Alaric	57	7607	ultima.are	standing	100	0	-	south		Barn //   This is your basic barn, with hay and stables to the north. // [Exits: north (south)]
+1793669149	cmd	Alaric	57	7608	ultima.are	standing	100	0	-	south		Humility Lane //   This is an even smaller dirt path that crosses New Maginica Road.  // To your north there is a barn, and to the south you see a
+1793669152	cmd	Alaric	57	7603	ultima.are	standing	100	0	-	east		The New Magincia Moongate //   You see another moongate here, exactly between the crossing of // two paths.
+1793669153	cmd	Alaric	57	7613	ultima.are	standing	100	0	-	east		Humility Lane //   This is a very small path.  It ends here with a fence to the // east.  To the west is the Moongate, and to the north there is a
+1793669155	cmd	Alaric	57	7612	ultima.are	standing	100	0	-	north		House //   This is a small humble house.  You do not see much here, though // there are some faint squeaking.
+1793669156	cmd	Alaric	57	7612	ultima.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793669161	cmd	Alaric	57	7612	ultima.are	standing	100	0	-	open	up	Ok.
+1793669162	cmd	Alaric	57	7611	ultima.are	standing	100	0	-	up		Attic //   The attic is dark, and you smell some vestiges of bat guano. // [Exits: down]
+1793669165	cmd	Alaric	57	7611	ultima.are	standing	100	0	-	kill	bat	Your punch <<< ERADICATES >>> the bat! [-194] // The bat is DEAD!! // You receive 0 experience points.
+1793669169	cmd	Alaric	57	7611	ultima.are	standing	100	0	-	look	i cor	Corpse of the bat contains: //      (Humming) Moonstone
+1793669172	cmd	Alaric	57	7611	ultima.are	standing	100	0	-	get	all cor	You get Moonstone from corpse of the bat.
+1793669172	cmd	Alaric	57	7612	ultima.are	standing	100	0	-	down		House //   This is a small humble house.  You do not see much here, though // there are some faint squeaking.
+1793669173	cmd	Alaric	57	7613	ultima.are	standing	100	0	-	south		Humility Lane //   This is a very small path.  It ends here with a fence to the // east.  To the west is the Moongate, and to the north there is a
+1793669174	cmd	Alaric	57	7603	ultima.are	standing	100	0	-	west		The New Magincia Moongate //   You see another moongate here, exactly between the crossing of // two paths.
+1793669177	cmd	Alaric	57	7603	ultima.are	standing	100	0	-	unlock	up	*Click*
+1793669178	cmd	Alaric	57	7603	ultima.are	standing	100	0	-	open	up	Ok.
+1793669178	cmd	Alaric	57	7616	ultima.are	standing	100	0	-	up		Library //   This is an amazing HUGE library.  Its musty smell, and the // collapsed bookshelf to your north, tell you that it also must be
+1793669180	cmd	Alaric	57	7636	ultima.are	standing	100	0	-	west		Library //   The Library continues here, with exits to the north and east. // [Exits: east south]
+1793669181	cmd	Alaric	57	7635	ultima.are	standing	100	0	-	south		Web //   There is a Huge Web sitting here, stretching from shelf to shelf. // And stupid you wandered into it.
