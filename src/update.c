@@ -950,6 +950,11 @@ void mobile_update( void )
 	    obj_best    = 0;
 	    for ( obj = ch->in_room->contents; obj; obj = obj->next_content )
 	    {
+		/* Noblegarden's eggs are hidden for players to find: a
+		   scavenger in Dresden walked off with them and the hunt
+		   came up short (CI, 2026-11-03). */
+		if ( obj->pIndexData->vnum == OBJ_VNUM_PAINTED_EGG )
+		    continue;
 		if ( CAN_WEAR(obj, ITEM_TAKE) && can_loot(ch, obj)
 		     && obj->cost > max  && obj->cost > 0 )
 		{

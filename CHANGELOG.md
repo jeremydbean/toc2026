@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Janitors and scavengers leave Noblegarden's eggs alone** (2026-11-03,
+  found by CI). An egg is cheap, and `spec_janitor` takes anything cheap
+  every pulse, so Dresden's janitors swept up the hunt the players were
+  meant to find; the scavengers (thief, vagabond, servant) took them now
+  and then too. Both now pass over a painted egg. `test_holiday_lifecycle`
+  counted 11 of 12 eggs under CI load.
+
 - **The Magic Book is a recipe book** (2026-11-03, owner). READ or OPEN
   Hyrule's Magic Book (object 30415) and it pages every BREW, CONCOCT and
   SCRIBE recipe: the product, its spells (a repeat counted, foxglove's

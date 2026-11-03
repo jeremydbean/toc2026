@@ -1534,6 +1534,10 @@ bool spec_janitor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	trash_next = trash->next_content;
 	if ( !IS_SET( trash->wear_flags, ITEM_TAKE ) || !can_loot(mob,trash))
 	    continue;
+	/* Noblegarden's eggs are cheap, so Dresden's janitors swept up
+	   the hunt the players were meant to find (CI, 2026-11-03). */
+	if ( trash->pIndexData->vnum == OBJ_VNUM_PAINTED_EGG )
+	    continue;
 	if ( trash->item_type == ITEM_DRINK_CON
 	||   trash->item_type == ITEM_TRASH
 	||   trash->cost < 10L * COPPER_PER_GOLD )

@@ -169,6 +169,20 @@ class CalendarSpecTests(unittest.TestCase):
         self.assertIsNone(expected_holiday(datetime.date(2027, 1, 7)))
         self.assertGreater(len(matrix_dates()), 80)
 
+    def test_janitors_and_scavengers_leave_the_hunt_alone(self) -> None:
+        # Dresden's janitors take anything cheap every pulse, and its
+        # thief, vagabond and servant scavenge; they took hidden eggs and
+        # the hunt's count came up 11 of 12 in CI (2026-11-03).
+        src = Path(__file__).resolve().parents[1] / "src"
+        update = (src / "update.c").read_text(encoding="latin-1")
+        scavenge = update[update.index("IS_SET(ch->act, ACT_SCAVENGER)"):]
+        scavenge = scavenge[:scavenge.index("obj_to_char( obj_best, ch )")]
+        self.assertIn("OBJ_VNUM_PAINTED_EGG", scavenge)
+        special = (src / "special.c").read_text(encoding="latin-1")
+        janitor = special[special.index("bool spec_janitor("):]
+        janitor = janitor[:janitor.index("obj_to_char( trash, mob )")]
+        self.assertIn("OBJ_VNUM_PAINTED_EGG", janitor)
+
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class HolidayCalendarMatrixLiveTests(unittest.TestCase):
