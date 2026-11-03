@@ -249104,3 +249104,107 @@ Tue Nov  3 00:48:55 2026 :: Treasure goblin: vanished from room 17728 (The Haunt
 Tue Nov  3 00:50:23 2026 :: Sock.sinaddr:  178.156.181.172
 Tue Nov  3 00:50:23 2026 :: EOF encountered on read.
 Tue Nov  3 00:50:39 2026 :: EOF encountered on read.
+Tue Nov  3 00:51:25 2026 :: Log Alaric [2497]: aq re
+Tue Nov  3 00:51:25 2026 :: Log Alaric [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in sewer.are, 30 minutes, ordinary
+Tue Nov  3 00:51:30 2026 :: Log Alaric [2497]: enter door
+Tue Nov  3 00:51:30 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2401]: north
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2402]: north
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2415]: east
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2485]: east
+Tue Nov  3 00:51:31 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2486]: east
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2486
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2487]: east
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2509]: arrived (Dark Alley.) from 2487
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2509]: north
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2508]: arrived (Dark Alley.) from 2509
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2508]: east
+Tue Nov  3 00:51:32 2026 :: Log Alaric [2507]: arrived (Dark Alley.) from 2508
+Tue Nov  3 00:51:33 2026 :: Log Alaric [2507]: north
+Tue Nov  3 00:51:33 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2507
+Tue Nov  3 00:51:33 2026 :: Log Alaric [2505]: north
+Tue Nov  3 00:51:33 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Tue Nov  3 00:51:33 2026 :: Log Alaric [2506]: open down
+Tue Nov  3 00:51:33 2026 :: Log Alaric [2506]: down
+Tue Nov  3 00:51:33 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Tue Nov  3 00:52:36 2026 :: Log Alaric [7030]: north
+Tue Nov  3 00:52:36 2026 :: Log Alaric [7029]: arrived (The Triple Junction) from 7030
+Tue Nov  3 00:52:36 2026 :: Log Alaric [7029]: east
+Tue Nov  3 00:52:36 2026 :: Log Alaric [7035]: arrived (The sewer pipe bend) from 7029
+Tue Nov  3 00:52:36 2026 :: Log Alaric [7035]: north
+Tue Nov  3 00:52:36 2026 :: Log Alaric [7034]: arrived (A bend in the sewer pipe) from 7035
+Tue Nov  3 00:52:37 2026 :: Log Alaric [7034]: west
+Tue Nov  3 00:52:37 2026 :: Log Alaric [7028]: arrived (The sewer junction) from 7034
+Tue Nov  3 00:52:37 2026 :: Log Alaric [7028]: west
+Tue Nov  3 00:52:37 2026 :: Log Alaric [7015]: arrived (The old well) from 7028
+Tue Nov  3 00:52:48 2026 :: Log Alaric [7015]: east
+Tue Nov  3 00:52:48 2026 :: Log Alaric [7028]: arrived (The sewer junction) from 7015
+Tue Nov  3 00:52:48 2026 :: Log Alaric [7028]: east
+Tue Nov  3 00:52:48 2026 :: Log Alaric [7034]: arrived (A bend in the sewer pipe) from 7028
+Tue Nov  3 00:52:48 2026 :: Log Alaric [7034]: south
+Tue Nov  3 00:52:48 2026 :: Log Alaric [7035]: arrived (The sewer pipe bend) from 7034
+Tue Nov  3 00:52:49 2026 :: Log Alaric [7035]: west
+Tue Nov  3 00:52:49 2026 :: Log Alaric [7029]: arrived (The Triple Junction) from 7035
+Tue Nov  3 00:52:49 2026 :: Log Alaric [7029]: south
+Tue Nov  3 00:52:49 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 7029
+Tue Nov  3 00:52:49 2026 :: Log Alaric [7030]: west
+Tue Nov  3 00:52:49 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Tue Nov  3 00:53:02 2026 :: Log Alaric [7022]: down
+Tue Nov  3 00:53:02 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Tue Nov  3 00:53:02 2026 :: Log Alaric [7112]: west
+Tue Nov  3 00:53:02 2026 :: Log Alaric [7104]: arrived (A junction in the sewer pipes) from 7112
+Tue Nov  3 00:53:02 2026 :: Log Alaric [7104]: west
+Tue Nov  3 00:53:02 2026 :: Log Alaric [7102]: arrived (Under the Dark Pit) from 7104
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7102]: up
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7004]: arrived (The Dark Pit) from 7102
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7004]: east
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7009]: arrived (The Sewer Junction) from 7004
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7009]: east
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7017]: arrived (The sewer junction) from 7009
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7017]: south
+Tue Nov  3 00:53:03 2026 :: Log Alaric [7018]: arrived (The ordinary junction) from 7017
+Tue Nov  3 00:53:04 2026 :: Log Alaric [7018]: east
+Tue Nov  3 00:53:04 2026 :: Log Alaric [7031]: arrived (A triple junction) from 7018
+Tue Nov  3 00:53:04 2026 :: Log Alaric [7031]: north
+Tue Nov  3 00:53:04 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 7031
+Tue Nov  3 00:53:15 2026 :: Log Alaric [7030]: south
+Tue Nov  3 00:53:15 2026 :: Log Alaric [7031]: arrived (A triple junction) from 7030
+Tue Nov  3 00:53:15 2026 :: Log Alaric [7031]: east
+Tue Nov  3 00:53:15 2026 :: Log Alaric [7044]: arrived (The junction going three ways) from 7031
+Tue Nov  3 00:53:15 2026 :: Log Alaric [7044]: north
+Tue Nov  3 00:53:15 2026 :: Log Alaric [7043]: arrived (The Sewer Entrance) from 7044
+Tue Nov  3 00:53:16 2026 :: Log Alaric [7043]: north
+Tue Nov  3 00:53:16 2026 :: Log Alaric [7041]: arrived (The Shaft) from 7043
+Tue Nov  3 00:53:20 2026 :: Log Alaric [7041]: d
+Tue Nov  3 00:53:20 2026 :: Log Alaric [7123]: arrived (Under The Shaft) from 7041
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7123]: west
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7120]: arrived (The narrow eastern ledge) from 7123
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7120]: south
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7121]: arrived (The southeastern corner of the ledge) from 7120
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7121]: west
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7115]: arrived (The Broad ledge) from 7121
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7115]: south
+Tue Nov  3 00:53:39 2026 :: Log Alaric [7129]: arrived (The sewer line.) from 7115
+Tue Nov  3 00:53:42 2026 :: Log Alaric [7129]: d
+Tue Nov  3 00:53:42 2026 :: Log Alaric [7221]: arrived (The sewer drain.) from 7129
+Tue Nov  3 00:54:42 2026 :: Log Alaric [7221]: west
+Tue Nov  3 00:54:42 2026 :: Log Alaric [7220]: arrived (A boring drain.) from 7221
+Tue Nov  3 00:54:42 2026 :: Log Alaric [7220]: north
+Tue Nov  3 00:54:42 2026 :: Log Alaric [7219]: arrived (A dry sewer drain.) from 7220
+Tue Nov  3 00:54:42 2026 :: Log Alaric [7219]: east
+Tue Nov  3 00:54:42 2026 :: Log Alaric [7217]: arrived (The half-dry drain.) from 7219
+Tue Nov  3 00:54:45 2026 :: Log Alaric [7217]: get all
+Tue Nov  3 00:54:46 2026 :: Log Alaric [7217]: recal
+Tue Nov  3 00:54:46 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7217
+Tue Nov  3 00:54:47 2026 :: Log Alaric [2497]: aq co
+Tue Nov  3 00:54:47 2026 :: Log Alaric [2497]: copper +138716226
+Tue Nov  3 00:54:47 2026 :: Log Alaric [2497]: quest complete: 138p 71g 62s 26c, 38 quest points (streak bonus 10%)
+Tue Nov  3 00:54:47 2026 :: Snapshot of Alaric taken before quest: Alaric.20261103_005447.quest (PRESTORE Alaric to see it).
+Tue Nov  3 00:54:49 2026 :: Log Alaric [2497]: aq ga no
+Tue Nov  3 00:54:51 2026 :: Log Alaric [2497]: score
+Tue Nov  3 00:55:28 2026 :: Sock.sinaddr:  3.20.63.178
+Tue Nov  3 00:55:29 2026 :: EOF encountered on read.
