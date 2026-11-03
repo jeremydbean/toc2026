@@ -254655,3 +254655,115 @@ Tue Nov  3 21:59:37 2026 :: EOF encountered on read.
 Tue Nov  3 22:01:01 2026 :: Treasure goblin: vanished from room 29103 (Checkpoint, korzath1.are) (too long in one area).
 Tue Nov  3 22:01:12 2026 :: Sock.sinaddr:  205.210.31.83
 Tue Nov  3 22:01:13 2026 :: EOF encountered on read.
+Tue Nov  3 22:04:39 2026 :: Sock.sinaddr:  5.161.117.52
+Tue Nov  3 22:04:40 2026 :: EOF encountered on read.
+Tue Nov  3 22:07:03 2026 :: Sock.sinaddr:  24.2.118.125
+Tue Nov  3 22:07:06 2026 :: Loading Trentlin's playerfile
+Tue Nov  3 22:07:08 2026 :: Loading Trentlin's playerfile
+Tue Nov  3 22:07:08 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Tue Nov  3 22:07:09 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 0
+Tue Nov  3 22:07:12 2026 :: Log Trentlin [4208]: wake
+Tue Nov  3 22:07:16 2026 :: Log Trentlin [4208]: who
+Tue Nov  3 22:07:19 2026 :: Log Trentlin [4208]: where hermie
+Tue Nov  3 22:07:22 2026 :: Log Trentlin [4208]: e
+Tue Nov  3 22:07:22 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov  3 22:07:23 2026 :: Log Trentlin [4207]: u
+Tue Nov  3 22:07:23 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov  3 22:07:25 2026 :: Log Trentlin [3700]: prac
+Tue Nov  3 22:07:26 2026 :: Log Trentlin [3700]: train
+Tue Nov  3 22:07:32 2026 :: Log Trentlin [3700]: open south
+Tue Nov  3 22:07:32 2026 :: Log Trentlin [3700]: s
+Tue Nov  3 22:07:32 2026 :: Log Trentlin [3744]: arrived (North Wall of Arena) from 3700
+Tue Nov  3 22:07:33 2026 :: Log Trentlin [3744]: s
+Tue Nov  3 22:07:33 2026 :: Log Trentlin [3739]: arrived (Arena) from 3744
+Tue Nov  3 22:07:34 2026 :: Log Trentlin [3739]: s
+Tue Nov  3 22:07:34 2026 :: Log Trentlin [3734]: arrived (Center of Arena) from 3739
+Tue Nov  3 22:07:35 2026 :: Log Trentlin [3734]: sca
+Tue Nov  3 22:07:36 2026 :: Log Trentlin [3734]: w
+Tue Nov  3 22:07:36 2026 :: Log Trentlin [3733]: arrived (Arena) from 3734
+Tue Nov  3 22:07:37 2026 :: Log Trentlin [3733]: k sna
+Tue Nov  3 22:07:37 2026 :: Log Trentlin [3733]: killed the snail
+Tue Nov  3 22:07:37 2026 :: Log Trentlin [3733]: coin +1 copper
+Tue Nov  3 22:07:41 2026 :: Log Trentlin [3733]: e
+Tue Nov  3 22:07:41 2026 :: Log Trentlin [3734]: arrived (Center of Arena) from 3733
+Tue Nov  3 22:07:41 2026 :: Log Trentlin [3734]: k ra
+Tue Nov  3 22:07:48 2026 :: Log Trentlin [3734]: kick
+Tue Nov  3 22:07:52 2026 :: Log Trentlin [3734]: kick
+Tue Nov  3 22:07:55 2026 :: Log Trentlin [3734]: killed the rabbit
+Tue Nov  3 22:07:55 2026 :: Log Trentlin [3734]: coin +2 copper
+Tue Nov  3 22:08:41 2026 :: Log Trentlin [3734]: l
+Tue Nov  3 22:08:43 2026 :: Log Trentlin [3734]: u
+Tue Nov  3 22:08:43 2026 :: Log Trentlin [3760]: arrived (A Safe Room) from 3734
+Tue Nov  3 22:08:43 2026 :: Log Trentlin [3760]: u
+Tue Nov  3 22:08:43 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3760
+Tue Nov  3 22:08:47 2026 :: Log Trentlin [4207]: east
+Tue Nov  3 22:08:47 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [4202]: east
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [4201]: north
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [2433]: east
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [2405]: east
+Tue Nov  3 22:08:48 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2401]: east
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2403]: east
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2420]: east
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2421]: east
+Tue Nov  3 22:08:49 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2422]: east
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2423]: east
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2424]: east
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2425]: east
+Tue Nov  3 22:08:50 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Tue Nov  3 22:08:51 2026 :: Log Trentlin [2426]: open east
+Tue Nov  3 22:08:51 2026 :: Log Trentlin [2426]: east
+Tue Nov  3 22:08:51 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Tue Nov  3 22:08:52 2026 :: Log Trentlin [2440]: east
+Tue Nov  3 22:08:52 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Tue Nov  3 22:08:52 2026 :: Log Trentlin [3503]: east
+Tue Nov  3 22:08:52 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [3502]: south
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [5261]: arrived (The dwarf forest) from 3502
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [5261]: south
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [5260]: arrived (The dwarf forest) from 5261
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [5260]: south
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [5259]: arrived (The dwarf forest) from 5260
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [5259]: south
+Tue Nov  3 22:08:53 2026 :: Log Trentlin [5258]: arrived (The dwarf forest) from 5259
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5258]: east
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5262]: arrived (The dwarf forest) from 5258
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5262]: east
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5263]: arrived (The darker dwarf forest) from 5262
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5263]: south
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5264]: arrived (The darker dwarf forest) from 5263
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5264]: east
+Tue Nov  3 22:08:54 2026 :: Log Trentlin [5265]: arrived (The darker dwarf forest) from 5264
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5265]: east
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5266]: arrived (The darker dwarf forest) from 5265
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5266]: down
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5267]: north
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5271]: arrived (The Valley in the dark dwarf forest) from 5267
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5271]: north
+Tue Nov  3 22:08:55 2026 :: Log Trentlin [5272]: arrived (A dim trail in the dwarf forest) from 5271
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [5272]: north
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [5273]: arrived (A dim trail in the dwarf forest) from 5272
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [5273]: east
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [5280]: arrived (A dark bend in the forest) from 5273
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [5280]: south
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [39]: arrived (Dark Path) from 5280
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [39]: east
+Tue Nov  3 22:08:56 2026 :: Log Trentlin [6500]: arrived (Path to Dwarven Village) from 39
+Tue Nov  3 22:08:57 2026 :: Log Trentlin [6500]: south
+Tue Nov  3 22:08:57 2026 :: Log Trentlin [44]: arrived (Before the Dwarven Daycare) from 6500
+Tue Nov  3 22:08:57 2026 :: Log Trentlin [44]: south
+Tue Nov  3 22:08:57 2026 :: Log Trentlin [6601]: arrived (The Dwarven Drop Off) from 44
+Tue Nov  3 22:09:00 2026 :: Log Trentlin [6601]: s
+Tue Nov  3 22:09:00 2026 :: Log Trentlin [6602]: arrived (Day Care Center) from 6601
