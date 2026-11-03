@@ -250665,3 +250665,291 @@ Tue Nov  3 01:36:18 2026 :: Log Alaric [7784]: arrived (The Lagoon) from 7713
 Tue Nov  3 01:36:19 2026 :: Log Alaric [7784]: n
 Tue Nov  3 01:36:19 2026 :: Log Alaric [7718]: arrived (The Whirlpool) from 7784
 Tue Nov  3 01:36:21 2026 :: Log Alaric [7718]: scan
+Tue Nov  3 01:36:22 2026 :: Log Alaric [7718]: e
+Tue Nov  3 01:36:22 2026 :: Log Alaric [7721]: arrived (The Whirlpool) from 7718
+Tue Nov  3 01:36:24 2026 :: Log Alaric [7721]: kill se
+Tue Nov  3 01:36:25 2026 :: Log Alaric [7721]: killed the seahorse
+Tue Nov  3 01:36:25 2026 :: Log Alaric [7721]: coin +35 silver
+Tue Nov  3 01:36:25 2026 :: Log Alaric [7721]: coin +20 copper
+Tue Nov  3 01:36:25 2026 :: Log Alaric [7721]: coin +43 gold
+Tue Nov  3 01:36:27 2026 :: Log Alaric [7721]: l i cor
+Tue Nov  3 01:36:30 2026 :: Log Alaric [7721]: scan
+Tue Nov  3 01:36:31 2026 :: Log Alaric [7721]: n
+Tue Nov  3 01:36:31 2026 :: Log Alaric [7722]: arrived (The Whirlpool) from 7721
+Tue Nov  3 01:36:32 2026 :: Log Alaric [7722]: kill sh
+Tue Nov  3 01:36:34 2026 :: Log Alaric [7722]: killed the shark
+Tue Nov  3 01:36:34 2026 :: Log Alaric [7722]: coin +51 silver
+Tue Nov  3 01:36:34 2026 :: Log Alaric [7722]: coin +259 copper
+Tue Nov  3 01:36:34 2026 :: Log Alaric [7722]: coin +16 gold
+Tue Nov  3 01:36:36 2026 :: Log Alaric [7722]: l i cor
+Tue Nov  3 01:36:37 2026 :: Log Alaric [7722]: scan
+Tue Nov  3 01:36:39 2026 :: Log Alaric [7722]: e
+Tue Nov  3 01:36:39 2026 :: Log Alaric [7723]: arrived (The Whirlpool) from 7722
+Tue Nov  3 01:36:40 2026 :: Log Alaric [7723]: kill sq
+Tue Nov  3 01:36:46 2026 :: Log Alaric [7723]: killed the squid
+Tue Nov  3 01:36:46 2026 :: Log Alaric [7723]: coin +61 silver
+Tue Nov  3 01:36:46 2026 :: Log Alaric [7723]: coin +27 copper
+Tue Nov  3 01:36:46 2026 :: Log Alaric [7723]: coin +85 gold
+Tue Nov  3 01:36:46 2026 :: Log Alaric [7723]: l i cor
+Tue Nov  3 01:36:48 2026 :: Log Alaric [7723]: get all cor
+Tue Nov  3 01:36:49 2026 :: Log Alaric [7723]: n
+Tue Nov  3 01:36:49 2026 :: Log Alaric [7722]: arrived (The Whirlpool) from 7723
+Tue Nov  3 01:36:49 2026 :: Log Alaric [7722]: ex
+Tue Nov  3 01:36:50 2026 :: Log Alaric [7722]: n
+Tue Nov  3 01:36:50 2026 :: Log Alaric [7719]: arrived (The Whirlpool) from 7722
+Tue Nov  3 01:36:51 2026 :: Log Alaric [7719]: ex
+Tue Nov  3 01:36:51 2026 :: Log Alaric [7719]: e
+Tue Nov  3 01:36:51 2026 :: Log Alaric [7720]: arrived (The Whirlpool) from 7719
+Tue Nov  3 01:36:52 2026 :: Log Alaric [7720]: ex
+Tue Nov  3 01:36:53 2026 :: Log Alaric [7720]: n
+Tue Nov  3 01:36:53 2026 :: Log Alaric [7719]: arrived (The Whirlpool) from 7720
+Tue Nov  3 01:36:53 2026 :: Log Alaric [7719]: ex
+Tue Nov  3 01:36:54 2026 :: Log Alaric [7719]: w
+Tue Nov  3 01:36:54 2026 :: Log Alaric [7718]: arrived (The Whirlpool) from 7719
+Tue Nov  3 01:36:54 2026 :: Log Alaric [7718]: ex
+Tue Nov  3 01:36:56 2026 :: Log Alaric [7718]: n
+Tue Nov  3 01:36:56 2026 :: Log Alaric [7719]: arrived (The Whirlpool) from 7718
+Tue Nov  3 01:36:56 2026 :: Log Alaric [7719]: ex
+Tue Nov  3 01:36:57 2026 :: Log Alaric [7719]: n
+Tue Nov  3 01:36:57 2026 :: Log Alaric [7725]: arrived (The Whirlpool) from 7719
+Tue Nov  3 01:36:58 2026 :: Log Alaric [7725]: ex
+Tue Nov  3 01:36:59 2026 :: Log Alaric [7725]: w
+Tue Nov  3 01:36:59 2026 :: Log Alaric [7722]: arrived (The Whirlpool) from 7725
+Tue Nov  3 01:36:59 2026 :: Log Alaric [7722]: ex
+Tue Nov  3 01:37:00 2026 :: Log Alaric [7722]: n
+Tue Nov  3 01:37:00 2026 :: Log Alaric [7719]: arrived (The Whirlpool) from 7722
+Tue Nov  3 01:37:01 2026 :: Log Alaric [7719]: ex
+Tue Nov  3 01:37:01 2026 :: Log Alaric [7719]: e
+Tue Nov  3 01:37:01 2026 :: Log Alaric [7720]: arrived (The Whirlpool) from 7719
+Tue Nov  3 01:37:02 2026 :: Log Alaric [7720]: ex
+Tue Nov  3 01:37:03 2026 :: Log Alaric [7720]: n
+Tue Nov  3 01:37:03 2026 :: Log Alaric [7719]: arrived (The Whirlpool) from 7720
+Tue Nov  3 01:37:03 2026 :: Log Alaric [7719]: ex
+Tue Nov  3 01:37:04 2026 :: Log Alaric [7719]: n
+Tue Nov  3 01:37:04 2026 :: Log Alaric [7725]: arrived (The Whirlpool) from 7719
+Tue Nov  3 01:37:04 2026 :: Log Alaric [7725]: ex
+Tue Nov  3 01:37:05 2026 :: Log Alaric [7725]: n
+Tue Nov  3 01:37:05 2026 :: Log Alaric [7719]: arrived (The Whirlpool) from 7725
+Tue Nov  3 01:37:06 2026 :: Log Alaric [7719]: ex
+Tue Nov  3 01:37:06 2026 :: Log Alaric [7719]: w
+Tue Nov  3 01:37:06 2026 :: Log Alaric [7718]: arrived (The Whirlpool) from 7719
+Tue Nov  3 01:37:07 2026 :: Log Alaric [7718]: ex
+Tue Nov  3 01:37:08 2026 :: Log Alaric [7718]: n
+Tue Nov  3 01:37:08 2026 :: Log Alaric [7719]: arrived (The Whirlpool) from 7718
+Tue Nov  3 01:37:18 2026 :: Log Alaric [7719]: west
+Tue Nov  3 01:37:18 2026 :: Log Alaric [7718]: arrived (The Whirlpool) from 7719
+Tue Nov  3 01:37:18 2026 :: Log Alaric [7718]: west
+Tue Nov  3 01:37:18 2026 :: Log Alaric [7784]: arrived (The Lagoon) from 7718
+Tue Nov  3 01:37:18 2026 :: Log Alaric [7784]: east
+Tue Nov  3 01:37:18 2026 :: Log Alaric [7713]: arrived (The Beach) from 7784
+Tue Nov  3 01:37:20 2026 :: Log Alaric [7713]: e
+Tue Nov  3 01:37:20 2026 :: Log Alaric [7714]: arrived (The Beach) from 7713
+Tue Nov  3 01:37:20 2026 :: Log Alaric [7714]: e
+Tue Nov  3 01:37:20 2026 :: Log Alaric [7715]: arrived (The Beach) from 7714
+Tue Nov  3 01:37:21 2026 :: Log Alaric [7715]: e
+Tue Nov  3 01:37:21 2026 :: Log Alaric [7716]: arrived (The Beach) from 7715
+Tue Nov  3 01:37:23 2026 :: Log Alaric [7716]: e
+Tue Nov  3 01:37:23 2026 :: Log Alaric [7717]: arrived (The Beach) from 7716
+Tue Nov  3 01:37:26 2026 :: Log Alaric [7717]: fi ch
+Tue Nov  3 01:37:27 2026 :: Log Alaric [7717]: w
+Tue Nov  3 01:37:27 2026 :: Log Alaric [7716]: arrived (The Beach) from 7717
+Tue Nov  3 01:37:27 2026 :: Log Alaric [7716]: scan
+Tue Nov  3 01:37:28 2026 :: Log Alaric [7716]: e
+Tue Nov  3 01:37:28 2026 :: Log Alaric [7717]: arrived (The Beach) from 7716
+Tue Nov  3 01:37:29 2026 :: Log Alaric [7717]: fi mi
+Tue Nov  3 01:37:31 2026 :: Log Alaric [7717]: killed the mimic
+Tue Nov  3 01:37:31 2026 :: Log Alaric [7717]: coin +73 silver
+Tue Nov  3 01:37:31 2026 :: Log Alaric [7717]: coin +328 copper
+Tue Nov  3 01:37:31 2026 :: Log Alaric [7717]: coin +10 gold
+Tue Nov  3 01:37:38 2026 :: Log Alaric [7717]: l i cor
+Tue Nov  3 01:37:39 2026 :: Log Alaric [7717]: w
+Tue Nov  3 01:37:39 2026 :: Log Alaric [7716]: arrived (The Beach) from 7717
+Tue Nov  3 01:37:40 2026 :: Log Alaric [7716]: w
+Tue Nov  3 01:37:40 2026 :: Log Alaric [7715]: arrived (The Beach) from 7716
+Tue Nov  3 01:37:40 2026 :: Log Alaric [7715]: s
+Tue Nov  3 01:37:40 2026 :: Log Alaric [7702]: arrived (Minoc) from 7715
+Tue Nov  3 01:37:42 2026 :: Log Alaric [7702]: s
+Tue Nov  3 01:37:42 2026 :: Log Alaric [7704]: arrived (Minoc's Fountain) from 7702
+Tue Nov  3 01:37:43 2026 :: Log Alaric [7704]: ex
+Tue Nov  3 01:37:44 2026 :: Log Alaric [7704]: e
+Tue Nov  3 01:37:44 2026 :: Log Alaric [7705]: arrived (The Weaponsmith) from 7704
+Tue Nov  3 01:37:45 2026 :: Log Alaric [7705]: w
+Tue Nov  3 01:37:45 2026 :: Log Alaric [7704]: arrived (Minoc's Fountain) from 7705
+Tue Nov  3 01:37:45 2026 :: Log Alaric [7704]: w
+Tue Nov  3 01:37:45 2026 :: Log Alaric [7703]: arrived (The Armourer) from 7704
+Tue Nov  3 01:37:47 2026 :: Log Alaric [7703]: fi arm
+Tue Nov  3 01:37:55 2026 :: Log Alaric [7703]: flee
+Tue Nov  3 01:37:55 2026 :: Log Alaric [7704]: arrived (Minoc's Fountain) from 7703
+Tue Nov  3 01:37:56 2026 :: Log Alaric [7704]: e
+Tue Nov  3 01:37:56 2026 :: Log Alaric [7705]: arrived (The Weaponsmith) from 7704
+Tue Nov  3 01:37:59 2026 :: Log Alaric [7705]: fi wea
+Tue Nov  3 01:38:10 2026 :: Log Alaric [7705]: flee
+Tue Nov  3 01:38:11 2026 :: Log Alaric [7705]: flee
+Tue Nov  3 01:38:11 2026 :: Log Alaric [7704]: arrived (Minoc's Fountain) from 7705
+Tue Nov  3 01:38:13 2026 :: Log Alaric [7704]: s
+Tue Nov  3 01:38:13 2026 :: Log Alaric [7708]: arrived (Sacrifice Street) from 7704
+Tue Nov  3 01:38:15 2026 :: Log Alaric [7708]: ex
+Tue Nov  3 01:38:16 2026 :: Log Alaric [7708]: fi ti
+Tue Nov  3 01:38:16 2026 :: Log Alaric [7708]: killed a tinker
+Tue Nov  3 01:38:16 2026 :: Log Alaric [7708]: coin +1 silver
+Tue Nov  3 01:38:16 2026 :: Log Alaric [7708]: coin +2 copper
+Tue Nov  3 01:38:16 2026 :: Log Alaric [7708]: coin +1 gold
+Tue Nov  3 01:38:23 2026 :: Log Alaric [7708]: l i cor
+Tue Nov  3 01:38:25 2026 :: Log Alaric [7708]: w
+Tue Nov  3 01:38:25 2026 :: Log Alaric [7707]: arrived (Sacrifice Street) from 7708
+Tue Nov  3 01:38:28 2026 :: Log Alaric [7707]: os
+Tue Nov  3 01:38:28 2026 :: Log Alaric [7707]: ow
+Tue Nov  3 01:38:30 2026 :: Log Alaric [7707]: fi la
+Tue Nov  3 01:38:36 2026 :: Log Alaric [7707]: fi
+Tue Nov  3 01:38:41 2026 :: Log Alaric [7707]: fi
+Tue Nov  3 01:38:43 2026 :: Log Alaric [7707]: killed The Lady of Empath Abbey
+Tue Nov  3 01:38:43 2026 :: Log Alaric [7707]: coin +3 silver
+Tue Nov  3 01:38:43 2026 :: Log Alaric [7707]: coin +4 copper
+Tue Nov  3 01:38:43 2026 :: Log Alaric [7707]: coin +1 gold
+Tue Nov  3 01:38:47 2026 :: Log Alaric [7707]: fi
+Tue Nov  3 01:38:47 2026 :: Log Alaric [7707]: l i cor
+Tue Nov  3 01:38:48 2026 :: Log Alaric [7707]: l
+Tue Nov  3 01:38:49 2026 :: Log Alaric [7707]: w
+Tue Nov  3 01:38:49 2026 :: Log Alaric [7706]: arrived (The Boatseller) from 7707
+Tue Nov  3 01:38:51 2026 :: Log Alaric [7706]: e
+Tue Nov  3 01:38:51 2026 :: Log Alaric [7707]: arrived (Sacrifice Street) from 7706
+Tue Nov  3 01:38:51 2026 :: Log Alaric [7707]: s
+Tue Nov  3 01:38:51 2026 :: Log Alaric [7711]: arrived (Residence) from 7707
+Tue Nov  3 01:38:53 2026 :: Log Alaric [7711]: n
+Tue Nov  3 01:38:53 2026 :: Log Alaric [7707]: arrived (Sacrifice Street) from 7711
+Tue Nov  3 01:38:53 2026 :: Log Alaric [7707]: e
+Tue Nov  3 01:38:53 2026 :: Log Alaric [7708]: arrived (Sacrifice Street) from 7707
+Tue Nov  3 01:38:54 2026 :: Log Alaric [7708]: e
+Tue Nov  3 01:38:54 2026 :: Log Alaric [7709]: arrived (Sacrifice Street) from 7708
+Tue Nov  3 01:38:55 2026 :: Log Alaric [7709]: oe
+Tue Nov  3 01:38:56 2026 :: Log Alaric [7709]: so
+Tue Nov  3 01:38:56 2026 :: Log Alaric [7712]: arrived (Residence) from 7709
+Tue Nov  3 01:38:57 2026 :: Log Alaric [7712]: n
+Tue Nov  3 01:38:57 2026 :: Log Alaric [7709]: arrived (Sacrifice Street) from 7712
+Tue Nov  3 01:38:58 2026 :: Log Alaric [7709]: e
+Tue Nov  3 01:38:58 2026 :: Log Alaric [7710]: arrived (Forge) from 7709
+Tue Nov  3 01:38:59 2026 :: Log Alaric [7710]: w
+Tue Nov  3 01:38:59 2026 :: Log Alaric [7709]: arrived (Sacrifice Street) from 7710
+Tue Nov  3 01:39:00 2026 :: Log Alaric [7709]: w
+Tue Nov  3 01:39:00 2026 :: Log Alaric [7708]: arrived (Sacrifice Street) from 7709
+Tue Nov  3 01:39:01 2026 :: Log Alaric [7708]: n
+Tue Nov  3 01:39:01 2026 :: Log Alaric [7704]: arrived (Minoc's Fountain) from 7708
+Tue Nov  3 01:39:02 2026 :: Log Alaric [7704]: ex
+Tue Nov  3 01:39:02 2026 :: Log Alaric [7704]: n
+Tue Nov  3 01:39:02 2026 :: Log Alaric [7702]: arrived (Minoc) from 7704
+Tue Nov  3 01:39:03 2026 :: Log Alaric [7702]: n
+Tue Nov  3 01:39:03 2026 :: Log Alaric [7715]: arrived (The Beach) from 7702
+Tue Nov  3 01:39:03 2026 :: Log Alaric [7715]: n
+Tue Nov  3 01:39:04 2026 :: Log Alaric [7715]: ex
+Tue Nov  3 01:39:05 2026 :: Log Alaric [7715]: e
+Tue Nov  3 01:39:05 2026 :: Log Alaric [7716]: arrived (The Beach) from 7715
+Tue Nov  3 01:39:06 2026 :: Log Alaric [7716]: e
+Tue Nov  3 01:39:06 2026 :: Log Alaric [7717]: arrived (The Beach) from 7716
+Tue Nov  3 01:39:07 2026 :: Log Alaric [7717]: w
+Tue Nov  3 01:39:07 2026 :: Log Alaric [7716]: arrived (The Beach) from 7717
+Tue Nov  3 01:39:08 2026 :: Log Alaric [7716]: w
+Tue Nov  3 01:39:08 2026 :: Log Alaric [7715]: arrived (The Beach) from 7716
+Tue Nov  3 01:39:08 2026 :: Log Alaric [7715]: w
+Tue Nov  3 01:39:08 2026 :: Log Alaric [7714]: arrived (The Beach) from 7715
+Tue Nov  3 01:39:09 2026 :: Log Alaric [7714]: n
+Tue Nov  3 01:39:09 2026 :: Log Alaric [7714]: w
+Tue Nov  3 01:39:09 2026 :: Log Alaric [7713]: arrived (The Beach) from 7714
+Tue Nov  3 01:39:10 2026 :: Log Alaric [7713]: n
+Tue Nov  3 01:39:11 2026 :: Log Alaric [7713]: w
+Tue Nov  3 01:39:11 2026 :: Log Alaric [7784]: arrived (The Lagoon) from 7713
+Tue Nov  3 01:39:11 2026 :: Log Alaric [7784]: n
+Tue Nov  3 01:39:11 2026 :: Log Alaric [7718]: arrived (The Whirlpool) from 7784
+Tue Nov  3 01:39:12 2026 :: Log Alaric [7718]: ex
+Tue Nov  3 01:39:13 2026 :: Log Alaric [7718]: n
+Tue Nov  3 01:39:13 2026 :: Log Alaric [7784]: arrived (The Lagoon) from 7718
+Tue Nov  3 01:39:14 2026 :: Log Alaric [7784]: ex
+Tue Nov  3 01:39:14 2026 :: Log Alaric [7784]: n
+Tue Nov  3 01:39:14 2026 :: Log Alaric [7718]: arrived (The Whirlpool) from 7784
+Tue Nov  3 01:39:15 2026 :: Log Alaric [7718]: ex
+Tue Nov  3 01:39:16 2026 :: Log Alaric [7718]: e
+Tue Nov  3 01:39:16 2026 :: Log Alaric [7720]: arrived (The Whirlpool) from 7718
+Tue Nov  3 01:39:16 2026 :: Log Alaric [7720]: ex
+Tue Nov  3 01:39:17 2026 :: Log Alaric [7720]: n
+Tue Nov  3 01:39:17 2026 :: Log Alaric [7726]: arrived (The Whirlpool) from 7720
+Tue Nov  3 01:39:17 2026 :: Log Alaric [7726]: ex
+Tue Nov  3 01:39:18 2026 :: Treasure goblin: vanished from room 656 (Small House, ofcol.are) (too long in one area).
+Tue Nov  3 01:39:18 2026 :: Log Alaric [7726]: e
+Tue Nov  3 01:39:18 2026 :: Log Alaric [7724]: arrived (The Whirlpool) from 7726
+Tue Nov  3 01:39:19 2026 :: Log Alaric [7724]: ex
+Tue Nov  3 01:39:20 2026 :: Log Alaric [7724]: n
+Tue Nov  3 01:39:20 2026 :: Log Alaric [7727]: arrived (The Minoc Moongate) from 7724
+Tue Nov  3 01:39:21 2026 :: Log Alaric [7727]: unl up
+Tue Nov  3 01:39:23 2026 :: Log Alaric [7727]: open up
+Tue Nov  3 01:39:23 2026 :: Log Alaric [7727]: u
+Tue Nov  3 01:39:23 2026 :: Log Alaric [7728]: arrived (A Campfire) from 7727
+Tue Nov  3 01:39:25 2026 :: Log Alaric [7728]: scan
+Tue Nov  3 01:39:25 2026 :: Log Alaric [7728]: os
+Tue Nov  3 01:39:26 2026 :: Log Alaric [7728]: scan
+Tue Nov  3 01:39:27 2026 :: Log Alaric [7728]: ex
+Tue Nov  3 01:39:29 2026 :: Log Alaric [7728]: s
+Tue Nov  3 01:39:29 2026 :: Log Alaric [7732]: arrived (A Small Tent) from 7728
+Tue Nov  3 01:39:31 2026 :: Log Alaric [7732]: fi pal
+Tue Nov  3 01:39:37 2026 :: Log Alaric [7732]: fi
+Tue Nov  3 01:39:40 2026 :: Log Alaric [7732]: killed the paladin
+Tue Nov  3 01:39:43 2026 :: Log Alaric [7732]: fi
+Tue Nov  3 01:39:43 2026 :: Log Alaric [7732]: l i cor
+Tue Nov  3 01:39:44 2026 :: Log Alaric [7732]: n
+Tue Nov  3 01:39:44 2026 :: Log Alaric [7728]: arrived (A Campfire) from 7732
+Tue Nov  3 01:39:46 2026 :: Log Alaric [7728]: e
+Tue Nov  3 01:39:46 2026 :: Log Alaric [7729]: arrived (Between the Tents) from 7728
+Tue Nov  3 01:39:47 2026 :: Log Alaric [7729]: e
+Tue Nov  3 01:39:47 2026 :: Log Alaric [7730]: arrived (In front of the Grand Tent) from 7729
+Tue Nov  3 01:39:50 2026 :: Log Alaric [7730]: is
+Tue Nov  3 01:39:51 2026 :: Log Alaric [7730]: os
+Tue Nov  3 01:39:51 2026 :: Log Alaric [7730]: oe
+Tue Nov  3 01:39:52 2026 :: Log Alaric [7730]: scan
+Tue Nov  3 01:39:54 2026 :: Log Alaric [7730]: s
+Tue Nov  3 01:39:54 2026 :: Log Alaric [7734]: arrived (The Grand Tent) from 7730
+Tue Nov  3 01:39:54 2026 :: Log Alaric [7734]: s
+Tue Nov  3 01:39:54 2026 :: Log Alaric [7736]: arrived (Dupre's Tent) from 7734
+Tue Nov  3 01:39:56 2026 :: Log Alaric [7736]: look du
+Tue Nov  3 01:39:58 2026 :: Log Alaric [7736]: fi du
+Tue Nov  3 01:40:03 2026 :: Log Alaric [7736]: fi
+Tue Nov  3 01:40:09 2026 :: Log Alaric [7736]: fi
+Tue Nov  3 01:40:13 2026 :: Log Alaric [7736]: killed Dupre the Paladin
+Tue Nov  3 01:40:15 2026 :: Log Alaric [7736]: fi
+Tue Nov  3 01:40:15 2026 :: Log Alaric [7736]: l i cor
+Tue Nov  3 01:40:18 2026 :: Log Alaric [7736]: get sum cor
+Tue Nov  3 01:40:18 2026 :: Log Alaric [7736]: n
+Tue Nov  3 01:40:18 2026 :: Log Alaric [7734]: arrived (The Grand Tent) from 7736
+Tue Nov  3 01:40:19 2026 :: Log Alaric [7734]: w
+Tue Nov  3 01:40:19 2026 :: Log Alaric [7733]: arrived (The Treasure Tent) from 7734
+Tue Nov  3 01:40:21 2026 :: Log Alaric [7733]: e
+Tue Nov  3 01:40:21 2026 :: Log Alaric [7734]: arrived (The Grand Tent) from 7733
+Tue Nov  3 01:40:21 2026 :: Log Alaric [7734]: n
+Tue Nov  3 01:40:21 2026 :: Log Alaric [7730]: arrived (In front of the Grand Tent) from 7734
+Tue Nov  3 01:40:22 2026 :: Log Alaric [7730]: e
+Tue Nov  3 01:40:22 2026 :: Log Alaric [7731]: arrived (A Small Tent) from 7730
+Tue Nov  3 01:40:23 2026 :: Log Alaric [7731]: e
+Tue Nov  3 01:40:24 2026 :: Log Alaric [7731]: w
+Tue Nov  3 01:40:24 2026 :: Log Alaric [7730]: arrived (In front of the Grand Tent) from 7731
+Tue Nov  3 01:40:24 2026 :: Log Alaric [7730]: w
+Tue Nov  3 01:40:24 2026 :: Log Alaric [7729]: arrived (Between the Tents) from 7730
+Tue Nov  3 01:40:25 2026 :: Log Alaric [7729]: w
+Tue Nov  3 01:40:25 2026 :: Log Alaric [7728]: arrived (A Campfire) from 7729
+Tue Nov  3 01:40:26 2026 :: Log Alaric [7728]: n
+Tue Nov  3 01:40:26 2026 :: Log Alaric [7738]: arrived (Desert Entrance) from 7728
+Tue Nov  3 01:40:28 2026 :: Log Alaric [7738]: oe
+Tue Nov  3 01:40:29 2026 :: Log Alaric [7738]: ow
+Tue Nov  3 01:40:29 2026 :: Log Alaric [7738]: scan
+Tue Nov  3 01:40:31 2026 :: Log Alaric [7738]: n
+Tue Nov  3 01:40:31 2026 :: Log Alaric [7741]: arrived (The Desert) from 7738
+Tue Nov  3 01:40:32 2026 :: Log Alaric [7741]: scan
+Tue Nov  3 01:40:34 2026 :: Log Alaric [7741]: w
+Tue Nov  3 01:40:34 2026 :: Log Alaric [7740]: arrived (The Desert) from 7741
+Tue Nov  3 01:40:35 2026 :: Log Alaric [7740]: n
+Tue Nov  3 01:40:35 2026 :: Log Alaric [7744]: arrived (The Desert Moongate) from 7740
+Tue Nov  3 01:40:37 2026 :: Log Alaric [7744]: unl up
+Tue Nov  3 01:40:40 2026 :: Log Alaric [7744]: open up
+Tue Nov  3 01:40:40 2026 :: Log Alaric [7744]: u
+Tue Nov  3 01:40:40 2026 :: Log Alaric [1]: arrived (The Void) from 7744
+Tue Nov  3 01:40:44 2026 :: Log Alaric [1]: l
+Tue Nov  3 01:40:51 2026 :: Log Alaric [1]: l
+Tue Nov  3 01:41:11 2026 :: Sock.sinaddr:  178.156.184.20
+Tue Nov  3 01:41:11 2026 :: EOF encountered on read.
+Tue Nov  3 01:41:27 2026 :: Log Alaric [1]: l

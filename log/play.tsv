@@ -17354,3 +17354,175 @@
 1793669778	cmd	Alaric	57	7784	ultima.are	standing	100	0	-	west		The Lagoon //   The whirlpool-like ocean is to the north, and the beach is back to the east. // [Exits: north east]
 1793669779	cmd	Alaric	57	7718	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
 1793669781	cmd	Alaric	57	7718	ultima.are	standing	100	0	-	scan		the seahorse                       -to the East.
+1793669782	cmd	Alaric	57	7721	ultima.are	standing	100	0	-	east		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669784	cmd	Alaric	57	7721	ultima.are	standing	100	0	-	kill	se	Your punch ^^^ DESTROYS ^^^ the seahorse! [-101] // Your punch ^^^ DESTROYS ^^^ the seahorse! [-86] // Your punch ^^^ DESTROYS ^^^ the seahorse! [-87]
+1793669787	cmd	Alaric	57	7721	ultima.are	standing	100	0	-	look	i cor	Corpse of the seahorse contains: //      Nothing.
+1793669790	cmd	Alaric	57	7721	ultima.are	standing	100	0	-	scan		the shark                          -to the North. // the squid                          -to the South.
+1793669791	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669792	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	kill	sh	Your punch === OBLITERATES === the shark! [-136] // Your punch ^^^ DESTROYS ^^^ the shark! [-95] // Your punch <<< ERADICATES >>> the shark! [-152]
+1793669796	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	look	i cor	Corpse of the shark contains: //      Nothing.
+1793669797	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	scan		the squid                          -to the East.
+1793669799	cmd	Alaric	57	7723	ultima.are	standing	100	0	-	east		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669800	cmd	Alaric	57	7723	ultima.are	standing	100	0	-	kill	sq	Your punch ^^^ DESTROYS ^^^ the squid! [-97] // Your punch === OBLITERATES === the squid! [-132] // Your punch ^^^ DESTROYS ^^^ the squid! [-98]
+1793669806	cmd	Alaric	57	7723	ultima.are	standing	100	0	-	look	i cor	Corpse of the squid contains: //      (Humming) Moonstone
+1793669808	cmd	Alaric	57	7723	ultima.are	standing	100	0	-	get	all cor	You get Moonstone from corpse of the squid.
+1793669809	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669809	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669810	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669811	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669811	cmd	Alaric	57	7720	ultima.are	standing	100	0	-	east		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669812	cmd	Alaric	57	7720	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669813	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669813	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669814	cmd	Alaric	57	7718	ultima.are	standing	100	0	-	west		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669814	cmd	Alaric	57	7718	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669816	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669816	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669817	cmd	Alaric	57	7725	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669818	cmd	Alaric	57	7725	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669819	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	west		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669819	cmd	Alaric	57	7722	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669820	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669821	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669821	cmd	Alaric	57	7720	ultima.are	standing	100	0	-	east		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669822	cmd	Alaric	57	7720	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669823	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669823	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669824	cmd	Alaric	57	7725	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669824	cmd	Alaric	57	7725	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669825	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669826	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669826	cmd	Alaric	57	7718	ultima.are	standing	100	0	-	west		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669827	cmd	Alaric	57	7718	ultima.are	standing	100	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669828	cmd	Alaric	57	7719	ultima.are	standing	100	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669838	cmd	Alaric	57	7718	ultima.are	standing	100	0	-	west		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669838	cmd	Alaric	57	7784	ultima.are	standing	100	0	-	west		The Lagoon //   The whirlpool-like ocean is to the north, and the beach is back to the east. // [Exits: north east]
+1793669838	cmd	Alaric	57	7713	ultima.are	standing	100	0	-	east		The Beach //   This beach ends here.  You can go east or west. // [Exits: east west]
+1793669840	cmd	Alaric	57	7714	ultima.are	standing	100	0	-	east		The Beach //   The beach extends from west to east, the waves are too heavy here // to enter the ocean.
+1793669840	cmd	Alaric	57	7715	ultima.are	standing	100	0	-	east		The Beach //   The beach here is perfect, glistening white sands, perfect sun.  // Too bad there is a monster infestation....
+1793669841	cmd	Alaric	57	7716	ultima.are	standing	100	0	-	east		The Beach //   The Beach seems so idyllic, too bad these monsters keep showing up. // [Exits: east west]
+1793669843	cmd	Alaric	57	7717	ultima.are	standing	100	0	-	east		The Beach //   The Beach ends here. // [Exits: west]
+1793669846	cmd	Alaric	57	7717	ultima.are	standing	100	0	-	fists	ch	They aren't here.
+1793669847	cmd	Alaric	57	7716	ultima.are	standing	100	0	-	west		The Beach //   The Beach seems so idyllic, too bad these monsters keep showing up. // [Exits: east west]
+1793669847	cmd	Alaric	57	7716	ultima.are	standing	100	0	-	scan		the mimic                          -to the East.
+1793669848	cmd	Alaric	57	7717	ultima.are	standing	100	0	-	east		The Beach //   The Beach ends here. // [Exits: west]
+1793669849	cmd	Alaric	57	7717	ultima.are	standing	100	0	-	fists	mi	You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** the mimic! [-71] // Your fists of fury maims the mimic! [-35]
+1793669858	cmd	Alaric	57	7717	ultima.are	standing	100	0	-	look	i cor	Corpse of the mimic contains: //      Nothing.
+1793669859	cmd	Alaric	57	7716	ultima.are	standing	100	0	-	west		The Beach //   The Beach seems so idyllic, too bad these monsters keep showing up. // [Exits: east west]
+1793669860	cmd	Alaric	57	7715	ultima.are	standing	100	0	-	west		The Beach //   The beach here is perfect, glistening white sands, perfect sun.  // Too bad there is a monster infestation....
+1793669860	cmd	Alaric	57	7702	ultima.are	standing	100	0	-	south		Minoc //   The moongate has lead to the ocean side city of Minoc.  To the // north, there is the sea; and to the south there is the town of
+1793669862	cmd	Alaric	57	7704	ultima.are	standing	100	0	-	south		Minoc's Fountain //   This is the entrance of Minoc.  To the east you see the // weaponsmith, and to the west is the Armourer.  To the south there
+1793669863	cmd	Alaric	57	7704	ultima.are	standing	100	0	-	exits		Obvious exits: // North - Minoc // East  - The Weaponsmith
+1793669864	cmd	Alaric	57	7705	ultima.are	standing	100	0	-	east		The Weaponsmith //   The best Weaponsmith in the realm is here.  His shop is full of // hanging weapons.
+1793669865	cmd	Alaric	57	7704	ultima.are	standing	100	0	-	west		Minoc's Fountain //   This is the entrance of Minoc.  To the east you see the // weaponsmith, and to the west is the Armourer.  To the south there
+1793669865	cmd	Alaric	57	7703	ultima.are	standing	100	0	-	west		The Armourer //   The Armourer buys and sells armor.  His smithy is impressive // with all of his greatest works hanging on the walls.
+1793669867	cmd	Alaric	57	7703	ultima.are	standing	100	0	-	fists	arm	You attack in an all consuming fury! // The armourer is unaffected by your fists of fury! // The armourer is unaffected by your fists of fury!
+1793669875	cmd	Alaric	57	7704	ultima.are	fighting	99	0	fight	flee		Minoc's Fountain //   This is the entrance of Minoc.  To the east you see the // weaponsmith, and to the west is the Armourer.  To the south there
+1793669876	cmd	Alaric	57	7705	ultima.are	standing	99	0	-	east		The Weaponsmith //   The best Weaponsmith in the realm is here.  His shop is full of // hanging weapons.
+1793669879	cmd	Alaric	57	7705	ultima.are	standing	99	0	-	fists	wea	You attack in an all consuming fury! // The weaponseller is unaffected by your fists of fury! // The weaponseller is unaffected by your fists of fury!
+1793669890	cmd	Alaric	57	7705	ultima.are	fighting	99	0	fight	flee		PANIC! You couldn't escape!
+1793669891	cmd	Alaric	57	7704	ultima.are	fighting	99	0	fight	flee		Minoc's Fountain //   This is the entrance of Minoc.  To the east you see the // weaponsmith, and to the west is the Armourer.  To the south there
+1793669893	cmd	Alaric	57	7708	ultima.are	standing	99	0	-	south		Sacrifice Street //   This Street runs from east to west. To the west there is a shop, // and to there east there is a forge.
+1793669895	cmd	Alaric	57	7708	ultima.are	standing	99	0	-	exits		Obvious exits: // North - Minoc's Fountain // East  - Sacrifice Street
+1793669896	cmd	Alaric	57	7708	ultima.are	standing	99	0	-	fists	ti	You attack in an all consuming fury! // Your fists of fury <<< ERADICATES >>> a tinker! [-151] // Your fists of fury ^^^ DESTROYS ^^^ a tinker! [-93]
+1793669903	cmd	Alaric	57	7708	ultima.are	standing	99	0	-	look	i cor	Corpse of a tinker contains: //      a hammer
+1793669905	cmd	Alaric	57	7707	ultima.are	standing	99	2	-	west		Sacrifice Street //   This Street goes from east to west.  To the west is a shop and to // the south is a home.
+1793669908	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	open		Ok.
+1793669908	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	open		Ok.
+1793669910	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	fists	la	You attack in an all consuming fury! // Your fists of fury wounds The Lady of Empath Abbey. [-18] // Your fists of fury maims The Lady of Empath Abbey! [-35]
+1793669916	cmd	Alaric	57	7707	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The Lady of Empath Abbey. [-13] // Your fists of fury scratches The Lady of Empath Abbey. [-3]
+1793669921	cmd	Alaric	57	7707	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The Lady of Empath Abbey. [-11] // Your fists of fury hits The Lady of Empath Abbey. [-11]
+1793669927	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	fists		Who do you want to attack?
+1793669927	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	look	i cor	Corpse of The Lady of Empath Abbey contains: //      the Amulet of Love
+1793669928	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	look		Sacrifice Street //   This Street goes from east to west.  To the west is a shop and to // the south is a home.
+1793669929	cmd	Alaric	57	7706	ultima.are	standing	99	0	-	west		The Boatseller //   This is the shop where you can purchase vehicles to cross the // sea.
+1793669931	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	east		Sacrifice Street //   This Street goes from east to west.  To the west is a shop and to // the south is a home.
+1793669931	cmd	Alaric	57	7711	ultima.are	standing	99	0	-	south		Residence //   This residence is very small.  It befits the teaching of // sacrifice without any item that is extra.
+1793669933	cmd	Alaric	57	7707	ultima.are	standing	99	0	-	north		Sacrifice Street //   This Street goes from east to west.  To the west is a shop and to // the south is a home.
+1793669933	cmd	Alaric	57	7708	ultima.are	standing	99	0	-	east		Sacrifice Street //   This Street runs from east to west. To the west there is a shop, // and to there east there is a forge.
+1793669934	cmd	Alaric	57	7709	ultima.are	standing	99	0	-	east		Sacrifice Street //   This Street runs from west to east.  There is a home to the south // and forge to the east.
+1793669935	cmd	Alaric	57	7709	ultima.are	standing	99	0	-	open		Ok.
+1793669936	cmd	Alaric	57	7712	ultima.are	standing	99	1	-	south		Residence //   This residence is very small.  It befits the teaching of // sacrifice without any item that is extra.
+1793669937	cmd	Alaric	57	7709	ultima.are	standing	99	0	-	north		Sacrifice Street //   This Street runs from west to east.  There is a home to the south // and forge to the east.
+1793669938	cmd	Alaric	57	7710	ultima.are	standing	99	0	-	east		Forge //   The heat of the place cause blisters to form.  The rhythmic beat // of hammer against the forge causes you to believe that someone is
+1793669939	cmd	Alaric	57	7709	ultima.are	standing	99	0	-	west		Sacrifice Street //   This Street runs from west to east.  There is a home to the south // and forge to the east.
+1793669940	cmd	Alaric	57	7708	ultima.are	standing	99	0	-	west		Sacrifice Street //   This Street runs from east to west. To the west there is a shop, // and to there east there is a forge.
+1793669941	cmd	Alaric	57	7704	ultima.are	standing	99	0	-	north		Minoc's Fountain //   This is the entrance of Minoc.  To the east you see the // weaponsmith, and to the west is the Armourer.  To the south there
+1793669942	cmd	Alaric	57	7704	ultima.are	standing	99	0	-	exits		Obvious exits: // North - Minoc // East  - The Weaponsmith
+1793669942	cmd	Alaric	57	7702	ultima.are	standing	99	0	-	north		Minoc //   The moongate has lead to the ocean side city of Minoc.  To the // north, there is the sea; and to the south there is the town of
+1793669943	cmd	Alaric	57	7715	ultima.are	standing	99	0	-	north		The Beach //   The beach here is perfect, glistening white sands, perfect sun.  // Too bad there is a monster infestation....
+1793669943	cmd	Alaric	57	7715	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669944	cmd	Alaric	57	7715	ultima.are	standing	99	0	-	exits		Obvious exits: // East  - The Beach // South - Minoc
+1793669945	cmd	Alaric	57	7716	ultima.are	standing	99	0	-	east		The Beach //   The Beach seems so idyllic, too bad these monsters keep showing up. // [Exits: east west]
+1793669946	cmd	Alaric	57	7717	ultima.are	standing	99	0	-	east		The Beach //   The Beach ends here. // [Exits: west]
+1793669947	cmd	Alaric	57	7716	ultima.are	standing	99	0	-	west		The Beach //   The Beach seems so idyllic, too bad these monsters keep showing up. // [Exits: east west]
+1793669948	cmd	Alaric	57	7715	ultima.are	standing	99	0	-	west		The Beach //   The beach here is perfect, glistening white sands, perfect sun.  // Too bad there is a monster infestation....
+1793669948	cmd	Alaric	57	7714	ultima.are	standing	99	0	-	west		The Beach //   The beach extends from west to east, the waves are too heavy here // to enter the ocean.
+1793669949	cmd	Alaric	57	7714	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669949	cmd	Alaric	57	7713	ultima.are	standing	99	0	-	west		The Beach //   This beach ends here.  You can go east or west. // [Exits: east west]
+1793669950	cmd	Alaric	57	7713	ultima.are	standing	99	0	-	north		Alas, you cannot go that way.
+1793669951	cmd	Alaric	57	7784	ultima.are	standing	99	0	-	west		The Lagoon //   The whirlpool-like ocean is to the north, and the beach is back to the east. // [Exits: north east]
+1793669951	cmd	Alaric	57	7718	ultima.are	standing	99	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669952	cmd	Alaric	57	7718	ultima.are	standing	99	0	-	exits		Obvious exits: // North - The Lagoon // East  - The Whirlpool
+1793669953	cmd	Alaric	57	7784	ultima.are	standing	99	0	-	north		The Lagoon //   The whirlpool-like ocean is to the north, and the beach is back to the east. // [Exits: north east]
+1793669954	cmd	Alaric	57	7784	ultima.are	standing	99	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Beach
+1793669954	cmd	Alaric	57	7718	ultima.are	standing	99	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669955	cmd	Alaric	57	7718	ultima.are	standing	99	0	-	exits		Obvious exits: // North - The Lagoon // East  - The Whirlpool
+1793669956	cmd	Alaric	57	7720	ultima.are	standing	99	0	-	east		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669956	cmd	Alaric	57	7720	ultima.are	standing	99	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669957	cmd	Alaric	57	7726	ultima.are	standing	99	0	-	north		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669957	cmd	Alaric	57	7726	ultima.are	standing	99	0	-	exits		Obvious exits: // North - The Whirlpool // East  - The Whirlpool
+1793669958	cmd	Alaric	57	7724	ultima.are	standing	99	0	-	east		The Whirlpool //   This is a nasty whirlpool.  The boat is tossed and turned // everywhere.
+1793669959	cmd	Alaric	57	7724	ultima.are	standing	99	0	-	exits		Obvious exits: // North - The Minoc Moongate // East  - The Whirlpool
+1793669960	cmd	Alaric	57	7727	ultima.are	standing	99	0	-	north		The Minoc Moongate //   The sea waves lap up against the Moongate. // [Exits: south (up)]
+1793669961	cmd	Alaric	57	7727	ultima.are	standing	99	0	-	unlock	up	*Click*
+1793669963	cmd	Alaric	57	7727	ultima.are	standing	99	0	-	open	up	Ok.
+1793669963	cmd	Alaric	57	7728	ultima.are	standing	99	0	-	up		A Campfire //   This campfire sits in the middle of the camp.  Many of the // paladins stand by it looking it the desert beyond.  Some just
+1793669965	cmd	Alaric	57	7728	ultima.are	standing	99	0	-	scan		the paladin                        -to the North. // the sandtrap                       -to the far North. // the paladin                        -to the far East.
+1793669965	cmd	Alaric	57	7728	ultima.are	standing	99	0	-	open		Ok.
+1793669966	cmd	Alaric	57	7728	ultima.are	standing	99	1	-	scan		the paladin                        -to the North. // the sandtrap                       -to the far North. // the paladin                        -to the far East.
+1793669967	cmd	Alaric	57	7728	ultima.are	standing	99	0	-	exits		Obvious exits: // North - Desert Entrance // East  - Between the Tents
+1793669969	cmd	Alaric	57	7732	ultima.are	standing	99	0	-	south		A Small Tent //   The paladin's tent is very Spartan, as he has to live without // much in order to develop his Honor.
+1793669971	cmd	Alaric	57	7732	ultima.are	standing	99	0	-	fists	pal	You attack in an all consuming fury! // Your fists of fury injures the paladin. [-14] // Your fists of fury mauls the paladin. [-21]
+1793669977	cmd	Alaric	57	7732	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches the paladin. [-2] // Your fists of fury mauls the paladin. [-23]
+1793669983	cmd	Alaric	57	7732	ultima.are	standing	99	0	-	fists		Who do you want to attack?
+1793669983	cmd	Alaric	57	7732	ultima.are	standing	99	0	-	look	i cor	A stinking corpse contains: //      a shiny sword //      shiny armor
+1793669984	cmd	Alaric	57	7728	ultima.are	standing	99	0	-	north		A Campfire //   This campfire sits in the middle of the camp.  Many of the // paladins stand by it looking it the desert beyond.  Some just
+1793669986	cmd	Alaric	57	7729	ultima.are	standing	99	0	-	east		Between the Tents //   There is a grand tent to the south, entered into through the // east.
+1793669987	cmd	Alaric	57	7730	ultima.are	standing	99	0	-	east		In front of the Grand Tent //   To the south, there is a huge tent.  To the east lies a smaller // tent.
+1793669990	cmd	Alaric	57	7730	ultima.are	standing	99	0	-	issue		Find it yourself!
+1793669991	cmd	Alaric	57	7730	ultima.are	standing	99	0	-	open		Ok.
+1793669991	cmd	Alaric	57	7730	ultima.are	standing	99	0	-	open		Ok.
+1793669992	cmd	Alaric	57	7730	ultima.are	standing	99	0	-	scan		the paladin                        -to the East. // Dupre the Paladin                  -to the far South.
+1793669994	cmd	Alaric	57	7734	ultima.are	standing	99	0	-	south		The Grand Tent //   This tent is absolutely huge.  To the east is the map room.  To // the south there is Dupre.  To the east is the treasure room.
+1793669994	cmd	Alaric	57	7736	ultima.are	standing	99	0	-	south		Dupre's Tent //   This is the commander tent.  It is full of commander type things. // [Exits: north]
+1793669996	cmd	Alaric	57	7736	ultima.are	standing	99	0	-	look	du	Dupre the Paladin was constant companion of the Avatar and a // Warrior of Destiny.  He is a symbol of Honor.  He is right now // trying to figure out a plan of attack to get the dragon.
+1793669998	cmd	Alaric	57	7736	ultima.are	standing	99	0	-	fists	du	You attack in an all consuming fury! // Your fists of fury injures Dupre the Paladin. [-16] // Your fists of fury hits Dupre the Paladin. [-11]
+1793670003	cmd	Alaric	57	7736	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Dupre the Paladin. [-3] // Your fists of fury grazes Dupre the Paladin. [-8]
+1793670009	cmd	Alaric	57	7736	ultima.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Dupre the Paladin. [-20] // Your fists of fury wounds Dupre the Paladin. [-20]
+1793670015	cmd	Alaric	57	7736	ultima.are	standing	99	0	-	fists		Who do you want to attack?
+1793670015	cmd	Alaric	57	7736	ultima.are	standing	99	0	-	look	i cor	Corpse of Dupre the Paladin contains: //      (Humming) Summ //      (Glowing) a rapier
+1793670018	cmd	Alaric	57	7736	ultima.are	standing	99	0	-	get	sum cor	You get Summ from corpse of Dupre the Paladin.
+1793670018	cmd	Alaric	57	7734	ultima.are	standing	99	0	-	north		The Grand Tent //   This tent is absolutely huge.  To the east is the map room.  To // the south there is Dupre.  To the east is the treasure room.
+1793670019	cmd	Alaric	57	7733	ultima.are	standing	99	0	-	west		The Treasure Tent //   There is a HUGE stack of treasure here.  It is truly immense.  It // would make you easily a millionaire.  If you could even take a
+1793670021	cmd	Alaric	57	7734	ultima.are	standing	99	0	-	east		The Grand Tent //   This tent is absolutely huge.  To the east is the map room.  To // the south there is Dupre.  To the east is the treasure room.
+1793670021	cmd	Alaric	57	7730	ultima.are	standing	99	0	-	north		In front of the Grand Tent //   To the south, there is a huge tent.  To the east lies a smaller // tent.
+1793670022	cmd	Alaric	57	7731	ultima.are	standing	99	0	-	east		A Small Tent //   The paladin's tent is very Spartan, as he has to live without // much in order to develop his Honor.
+1793670023	cmd	Alaric	57	7731	ultima.are	standing	99	0	-	east		Alas, you cannot go that way.
+1793670024	cmd	Alaric	57	7730	ultima.are	standing	99	0	-	west		In front of the Grand Tent //   To the south, there is a huge tent.  To the east lies a smaller // tent.
+1793670024	cmd	Alaric	57	7729	ultima.are	standing	99	0	-	west		Between the Tents //   There is a grand tent to the south, entered into through the // east.
+1793670025	cmd	Alaric	57	7728	ultima.are	standing	99	0	-	west		A Campfire //   This campfire sits in the middle of the camp.  Many of the // paladins stand by it looking it the desert beyond.  Some just
+1793670026	cmd	Alaric	57	7738	ultima.are	standing	99	0	-	north		Desert Entrance //   You feel the hot desert wind blow sand into your face as you look // at those dunes.
+1793670028	cmd	Alaric	57	7738	ultima.are	standing	99	0	-	open		Ok.
+1793670029	cmd	Alaric	57	7738	ultima.are	standing	99	0	-	open		Ok.
+1793670029	cmd	Alaric	57	7738	ultima.are	standing	99	0	-	scan		the sandtrap                       -to the North. // the paladin                        -to the East. // the paladin                        -to the West.
+1793670031	cmd	Alaric	57	7741	ultima.are	standing	99	0	-	north		The Desert //   The Desert is an ugly place.  Sand whips into your eyes, making // you unsure of where you are and what you see.
+1793670032	cmd	Alaric	57	7741	ultima.are	standing	99	0	-	scan		the paladin                        -to the South. // the sandtrap                       -to the West.
+1793670034	cmd	Alaric	57	7740	ultima.are	standing	99	0	-	west		The Desert //   The desert in the northeast part of Britannia is a perfect // example of its kind.  Dry, ugly, and lots of sand.
+1793670035	cmd	Alaric	57	7744	ultima.are	standing	99	0	-	north		The Desert Moongate //   Your thirst seems to slacken as you see the comforting glow of // the moongate.
+1793670037	cmd	Alaric	57	7744	ultima.are	standing	99	0	-	unlock	up	It can't be unlocked.
+1793670040	cmd	Alaric	57	7744	ultima.are	standing	99	0	-	open	up	It's locked.
+1793670040	cmd	Alaric	57	1	limbo.are	standing	99	0	-	up		The Void //   You are floating in nothing. // [Exits: none]
+1793670044	cmd	Alaric	57	1	limbo.are	standing	99	0	-	look		The Void //   You are floating in nothing. // [Exits: none]
+1793670051	cmd	Alaric	57	1	limbo.are	standing	99	0	-	look		The Void //   You are floating in nothing. // [Exits: none]
+1793670087	cmd	Alaric	57	1	limbo.are	standing	99	0	-	look		The Void //   You are floating in nothing. // [Exits: none]
