@@ -3267,6 +3267,30 @@ int sight_trust( const CHAR_DATA *ch )
 }
 
 /*
+ * Holy sight as AFFECTS and the Char.Affects feed show it: the level it
+ * sees at (sight_trust -- what wizinvis and cloak levels are compared
+ * against), or 0 when the character has none. *source is the Triforce
+ * when the sight comes from wearing it, and NULL when it is the
+ * character's own HOLYLIGHT, which wins when both are on (owner,
+ * 2026-11-03: listed like the Red Ring's sanctuary, with the level).
+ */
+int holylight_level( const CHAR_DATA *ch, OBJ_DATA **source )
+{
+    bool own;
+
+    if ( source != NULL )
+	*source = NULL;
+    if ( ch == NULL || IS_NPC(ch) )
+	return 0;
+    own = IS_SET( ch->act, PLR_HOLYLIGHT );
+    if ( !own && !triforce_sight( ch ) )
+	return 0;
+    if ( !own && source != NULL )
+	*source = get_eq_char( (CHAR_DATA *) ch, WEAR_LIGHT );
+    return sight_trust( ch );
+}
+
+/*
  * The first thing the character is wearing that grants this affected_by
  * bit, through an object affect's bitvector or an ITEM2_ADD_* flag, or
  * NULL.

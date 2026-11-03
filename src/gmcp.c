@@ -520,6 +520,30 @@ void gmcp_send_affects( DESCRIPTOR_DATA *d )
         }
     }
 
+    /* Holy sight: the staff flag or the Triforce, at the level it sees. */
+    {
+        OBJ_DATA *holy_source;
+        int holy_level = holylight_level( ch, &holy_source );
+
+        if ( holy_level > 0 )
+        {
+            if ( !first )
+                toc_strlcat( json, ",", sizeof(json) );
+            first = false;
+            toc_strlcat( json, "{\"name\":\"holylight\",\"duration\":-1,\"level\":",
+                         sizeof(json) );
+            snprintf( number, sizeof(number), "%d", holy_level );
+            toc_strlcat( json, number, sizeof(json) );
+            if ( holy_source != NULL )
+            {
+                toc_strlcat( json, ",\"source\":", sizeof(json) );
+                gmcp_json_append_quoted( json, sizeof(json),
+                    holy_source->short_descr != NULL ? holy_source->short_descr : "" );
+            }
+            toc_strlcat( json, "}", sizeof(json) );
+        }
+    }
+
     if ( !IS_NPC(ch) && IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
     {
         if ( !first )

@@ -1998,6 +1998,8 @@ void do_affect( CHAR_DATA *ch, char *argument)
     const char *gear_names[MAX_GEAR_AFFECTS];
     OBJ_DATA *gear_sources[MAX_GEAR_AFFECTS];
     int gear_count;
+    int holy_level;
+    OBJ_DATA *holy_source;
     int i;
 
     /*
@@ -2014,7 +2016,11 @@ void do_affect( CHAR_DATA *ch, char *argument)
        by hand as well, with what is giving it. */
     gear_count = equipment_affects( ch, gear_names, gear_sources, MAX_GEAR_AFFECTS );
 
-    if( ch->affected == NULL && !melded && gear_count == 0 )
+    /* Holy sight is a flag or the Triforce, not an AFFECT_DATA either:
+       listed by hand with the level it sees at. */
+    holy_level = holylight_level( ch, &holy_source );
+
+    if( ch->affected == NULL && !melded && gear_count == 0 && holy_level == 0 )
     {
 	send_to_char( "You are not affected by any spells.\n\r",ch);
 	return;
@@ -2046,6 +2052,21 @@ void do_affect( CHAR_DATA *ch, char *argument)
 	    snprintf( buf, sizeof(buf),
 		"Spell: '%s' from %s, for as long as it is worn.\n\r",
 		gear_names[i], gear_sources[i]->short_descr );
+	    send_to_char( buf, ch );
+	}
+
+	if ( holy_level > 0 && holy_source != NULL )
+	{
+	    snprintf( buf, sizeof(buf),
+		"Spell: 'holylight' at level %d from %s, for as long as it is worn.\n\r",
+		holy_level, holy_source->short_descr );
+	    send_to_char( buf, ch );
+	}
+	else if ( holy_level > 0 )
+	{
+	    snprintf( buf, sizeof(buf),
+		"Power: 'holylight' at level %d, until you turn it off.\n\r",
+		holy_level );
 	    send_to_char( buf, ch );
 	}
 

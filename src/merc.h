@@ -3734,6 +3734,7 @@ bool    hyrule_fairy_restores  ( CHAR_DATA *fairy );
 /* achievements.c, beside the others */
 bool    achievement_has_key    ( const CHAR_DATA *ch, const char *key );
 bool    triforce_sight  ( const CHAR_DATA *ch );
+int     holylight_level ( const CHAR_DATA *ch, OBJ_DATA **source );
 int     sight_trust     ( const CHAR_DATA *ch );
 bool    equipment_grants_affect ( const CHAR_DATA *ch, int bit );
 OBJ_DATA *equipment_affect_source ( const CHAR_DATA *ch, int bit );

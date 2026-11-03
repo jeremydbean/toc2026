@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **AFFECTS lists holy sight** (2026-11-03, owner). Staff with HOLYLIGHT
+  on see "Power: 'holylight' at level N, until you turn it off.", and a
+  player wearing the Triforce "Spell: 'holylight' at level 59 from The
+  Triforce, for as long as it is worn.", as the Red Ring's sanctuary and
+  the Master Sword's haste are listed. The level is `sight_trust()`, the
+  one wizinvis and cloak are compared against; `holylight_level()` in
+  handler.c answers AFFECTS and the Char.Affects feed alike. HELP
+  HOLYLIGHT is level 59 (it was 60), rewritten for Triforce wearers too.
+  Test: `test_holylight_affect`.
+
 - **The Battleground levers answer to their numbers** (2026-11-03). The
   ten levers in korzath2 room 29217 are drawn labelled 1 to 10 but only
   answered to their numbers in words; PULL 5 was refused three times in

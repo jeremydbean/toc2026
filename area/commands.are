@@ -4294,6 +4294,10 @@ Some effects change no statistic at all - a psionic ward such as MINDBAR
 is a named protection and a duration and nothing else.  Those show the
 name and how long is left.
 
+Gear that grants a spell while worn is listed too, naming the item: the
+Red Ring's sanctuary, the Master Sword's haste.  Wearing the Triforce
+lists 'holylight' with the level it sees at.
+
 See also: SCORE, IDENTIFY, ATTRIBUTE
 ~
 
@@ -5654,20 +5658,22 @@ flag on it that can be used as a quest item.
 See also: PURGE, LOAD, VNUM
 ~
 
-60 HOLYLIGHT~
-Syntax: holylight
+59 HOLYLIGHT~
+Syntax: holylight   (staff)
 
-HOLYLIGHT is a toggle.  When active, you can see virtually everything in
-the game regardless of visibility conditions: invisible characters, mobs,
-and objects; dark rooms; hidden players; and camouflaged entities.
+Holy sight sees virtually everything regardless of visibility: invisible
+characters, mobiles and objects; dark rooms; hidden, stealthed and
+shadowmelded players.  It also sees through wizinvis and cloak at or
+below its level.
 
-When HOLYLIGHT is off, you see what mortal players see - useful for testing
-how a room or mob appears to players without elevated vision.
+Staff toggle it with HOLYLIGHT; when it is off, they see what mortal
+players see.  Wearing the Triforce in the light slot gives the same sight
+at level 59 for as long as it is worn -- no command needed.
 
-Holylight can be toggled on and off at any time.  It does not affect
-whether other players can see you.
+AFFECT lists holy sight while you have it, with the level it sees at.
+It does not change whether anybody else can see you.
 
-See also: WIZINVIS, INVIS, DETECT
+See also: AFFECT, TRIFORCE, WIZINVIS, DETECT
 ~
 
 60 WIZINVIS~

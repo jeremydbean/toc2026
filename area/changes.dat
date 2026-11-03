@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261103b 2026-11-03
+Wearing the Triforce now shows in AFFECT: 'holylight' at level 59, for as
+long as it is worn, beside any other powers your gear grants.
+
 @ 20261103a 2026-11-03
 The ten levers in the Battleground now answer to their numbers as well as
 their names: PULL 5 works as well as PULL FIVE.

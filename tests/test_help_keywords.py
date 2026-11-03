@@ -26,7 +26,9 @@ PASSWORD = "Zhelper1pass"
 # Topics deliberately gated at a mortal level: each describes a command or
 # channel the character cannot use below it, and a lower level asking
 # should get nothing rather than a description of something they lack.
-ALLOWED_GATES = {"TEACHLIST", "CGOS CASTLECHAT CC -", "HERO ="}
+# HOLYLIGHT at 59 (owner, 2026-11-03): a staff command, and the sight the
+# Triforce gives its wearers at the top of the mortal levels.
+ALLOWED_GATES = {"TEACHLIST", "CGOS CASTLECHAT CC -", "HERO =", "HOLYLIGHT"}
 
 # word asked -> text the topic a mortal gets must contain
 WANTED = {
