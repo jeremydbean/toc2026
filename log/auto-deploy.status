@@ -1,1 +1,1 @@
-2026-11-03T20:39:17Z waiting for CI on 41966038 (in_progress) before deploying 81b506e8
+2026-11-03T20:49:20Z not deploying 7d8612c9: CI on 41966038 says failure; push a fix
