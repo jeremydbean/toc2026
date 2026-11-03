@@ -18573,3 +18573,92 @@
 1793674018	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	open		It's locked.
 1793674019	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	open	west	It's locked.
 1793674019	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	west		The door is closed.
+1793674020	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	kill	dr	Your punch DISMEMBERS the brass dragon! [-45] // Your punch misses the brass dragon. [-0]
+1793674023	cmd	Alaric	57	5065	eastern.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims the brass dragon! [-33] // Your fists of fury scratches the brass dragon. [-1]
+1793674030	cmd	Alaric	57	5065	eastern.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // The brass dragon is unaffected by your fists of fury! // Your fists of fury DISMEMBERS the brass dragon! [-48]
+1793674040	cmd	Alaric	57	5065	eastern.are	standing	99	0	-	get	key cor	You get a golden key from corpse of the brass dragon.
+1793674042	cmd	Alaric	57	5065	eastern.are	standing	99	0	-	unlock	west	*Click*
+1793674043	cmd	Alaric	57	5065	eastern.are	standing	100	0	-	open		Ok.
+1793674044	cmd	Alaric	57	5066	eastern.are	standing	100	0	-	west		A wide tunnel //   This tunnel seems to go on forever into the darkness. You carefully // feel your way along the walls.
+1793674045	cmd	Alaric	57	5067	eastern.are	standing	100	0	-	west		A narrower tunnel //   The tunnel becomes very narrow and you fight to squeeze your way through. // The floor seems to level off a little.
+1793674047	cmd	Alaric	57	5067	eastern.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793674048	cmd	Alaric	57	5068	eastern.are	standing	100	0	-	south		A narrow crack //   This part of the tunnel is the hardest to move through as the walls // move in to meet you.
+1793674048	cmd	Alaric	57	5069	eastern.are	standing	100	0	-	west		A small cavern. //   It is dark and damp and bats hang from the ceiling. A narrow crack is // in the east wall. The floor now slopes upwards.
+1793674049	cmd	Alaric	57	5069	eastern.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793674051	cmd	Alaric	57	5070	eastern.are	standing	100	0	-	north		A small shaft //   From within this shaft you can see a narrow hole in the roof just // large enough for one person. Back east is the cavern.
+1793674052	cmd	Alaric	57	5070	eastern.are	standing	100	0	-	exits		Obvious exits: // South - A small cavern. // Up    - At the foot of the rubble
+1793674053	cmd	Alaric	57	5009	eastern.are	standing	100	0	-	up		At the foot of the rubble //   You are at the bottom of a large pile of rubble. A tunnel branches // off to the north and east.
+1793674055	cmd	Alaric	57	5009	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Cave entrance // East  - Narrow bend
+1793674063	cmd	Alaric	57	5008	eastern.are	standing	100	0	-	up		Cave-in //   You stand at the edge of a large pile of rubble created from the last // rockslide.
+1793674065	cmd	Alaric	57	5002	eastern.are	standing	100	0	-	south		A long tunnel //   The tunnel branches off north. // [Exits: north east west]
+1793674066	cmd	Alaric	57	5002	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Cave-in // East  - A long tunnel
+1793674067	cmd	Alaric	57	5003	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off south. // [Exits: east south west]
+1793674068	cmd	Alaric	57	5003	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - A long tunnel // South - Narrow crawlway
+1793674071	cmd	Alaric	57	5004	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off to the south. // [Exits: east south west]
+1793674076	cmd	Alaric	57	5005	eastern.are	standing	100	0	-	east		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river
+1793674080	cmd	Alaric	57	5006	eastern.are	standing	100	0	-	east		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1793674081	cmd	Alaric	57	5007	eastern.are	standing	100	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1793674081	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674081	cmd	Alaric	57	5028	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674081	cmd	Alaric	57	5025	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674084	cmd	Alaric	57	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674085	cmd	Alaric	57	5028	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674086	cmd	Alaric	57	5028	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674086	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674087	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - A wide tunnel
+1793674088	cmd	Alaric	57	5024	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674089	cmd	Alaric	57	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674090	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674090	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674091	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674092	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - A wide tunnel
+1793674093	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674094	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674094	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674095	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The wind-swept ledge // East  - The Sands of Sorrow
+1793674097	cmd	Alaric	57	5032	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674097	cmd	Alaric	57	5032	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674098	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674099	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The wind-swept ledge // East  - The Sands of Sorrow
+1793674100	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674100	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674101	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674102	cmd	Alaric	57	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - A wide tunnel
+1793674105	cmd	Alaric	57	5028	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674106	cmd	Alaric	57	5028	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674107	cmd	Alaric	57	5025	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674107	cmd	Alaric	57	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674110	cmd	Alaric	57	5056	eastern.are	standing	100	0	-	west		A nomad camp //   This small group of desert nomads has stopped for the day to rest // and refresh themselves beside this beautiful oasis. Three tents and some
+1793674112	cmd	Alaric	57	5056	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Beside the camels // East  - Inside a small tent
+1793674113	cmd	Alaric	57	5025	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674114	cmd	Alaric	57	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674115	cmd	Alaric	57	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674116	cmd	Alaric	57	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674117	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674117	cmd	Alaric	57	5030	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674118	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674119	cmd	Alaric	57	5031	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The wind-swept ledge // East  - The Sands of Sorrow
+1793674120	cmd	Alaric	57	5028	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674121	cmd	Alaric	57	5028	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674121	cmd	Alaric	57	5029	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1793674122	cmd	Alaric	57	5029	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1793674124	cmd	Alaric	57	5062	eastern.are	standing	100	0	-	south		Strange Glowing Sand //   A vast desert stretches for miles, the sand constantly shifting around // you.  But this patch of desert looks different...the sand glows.  LOOK! To
+1793674125	cmd	Alaric	57	5062	eastern.are	standing	100	0	-	exits		Obvious exits: // South - Sand // West  - The Sands of Sorrow
+1793674127	cmd	Alaric	57	54	connect.are	standing	100	0	-	south		Sand //   As you wander around aimlessly in the desert, you begin to appreciate the // beauty of sand... But then you come to your senses.
+1793674130	cmd	Alaric	57	28000	pyramid.are	standing	100	0	-	south		The Great Eastern Desert //   A vast desert stretches for miles, the sands constantly shifting around you. // Rising out of the sand to the east you see a mighty pyramid.
+1793674170	cmd	Alaric	57	28001	pyramid.are	standing	100	0	-	east		At the Base of the Pyramid //   The mighty pyramid towers above you out of the hot desert sands, made from // huge blocks of stone that have been coated over with a rough sandy plaster-like
+1793674172	cmd	Alaric	57	28002	pyramid.are	standing	100	0	-	up		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  So far you have made it halfway up the side.  The
+1793674173	cmd	Alaric	57	28002	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Climbing the Great Pyramid // South - Climbing the Great Pyramid
+1793674174	cmd	Alaric	57	28003	pyramid.are	standing	100	1	-	north		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  The walls of the pyramid are quite steep, and you
+1793674175	cmd	Alaric	57	28003	pyramid.are	standing	100	0	-	exits		Obvious exits: // East  - Climbing the Great Pyramid // West  - Climbing the Great Pyramid
+1793674177	cmd	Alaric	57	28002	pyramid.are	standing	100	0	-	west		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  So far you have made it halfway up the side.  The
+1793674177	cmd	Alaric	57	28002	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Climbing the Great Pyramid // South - Climbing the Great Pyramid
+1793674179	cmd	Alaric	57	28003	pyramid.are	standing	100	0	-	north		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  The walls of the pyramid are quite steep, and you
+1793674179	cmd	Alaric	57	28003	pyramid.are	standing	100	0	-	exits		Obvious exits: // East  - Climbing the Great Pyramid // West  - Climbing the Great Pyramid
+1793674180	cmd	Alaric	57	28007	pyramid.are	standing	100	0	-	up		Climbing the Great Pyramid //   Here the elements have carved away at the sides of the pyramid quite a // bit.  You aren't so sure of your footing anymore...
+1793674181	cmd	Alaric	57	28007	pyramid.are	standing	100	0	-	exits		Obvious exits: // None.
+1793674183	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793674187	cmd	Alaric	57	2497	dresden.are	standing	100	11	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 6 in a row - all gone now!'
+1793674187	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793674271	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793674272	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a golden key //      (Glowing) British's amulet
