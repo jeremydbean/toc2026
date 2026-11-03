@@ -18662,3 +18662,8 @@
 1793674187	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
 1793674271	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
 1793674272	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a golden key //      (Glowing) British's amulet
+1793674872	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.
+1793674872	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793674880	cmd	Alaric	57	2497	dresden.are	standing	100	16	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'Bandits have made off with The Journal of Trinidad!'
+1793674886	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'Perhaps fortune will favor you more next time.'
+1793674887	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
