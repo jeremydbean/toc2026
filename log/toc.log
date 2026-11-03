@@ -248678,3 +248678,168 @@ Tue Nov  3 00:35:53 2026 :: Log Trentlin [29258]: s
 Tue Nov  3 00:35:53 2026 :: Log Trentlin [29253]: arrived (Battleground Arena) from 29258
 Tue Nov  3 00:35:53 2026 :: Log Trentlin [29253]: s
 Tue Nov  3 00:35:53 2026 :: Log Trentlin [29248]: arrived (Cornerground) from 29253
+Tue Nov  3 00:35:54 2026 :: Log Trentlin [29248]: n
+Tue Nov  3 00:35:54 2026 :: Log Trentlin [29253]: arrived (Battleground Arena) from 29248
+Tue Nov  3 00:35:55 2026 :: Log Trentlin [29253]: n
+Tue Nov  3 00:35:55 2026 :: Log Trentlin [29258]: arrived (Battleground Arena) from 29253
+Tue Nov  3 00:35:56 2026 :: Log Trentlin [29258]: sca
+Tue Nov  3 00:35:59 2026 :: Log Trentlin [29258]: n
+Tue Nov  3 00:35:59 2026 :: Log Trentlin [29263]: arrived (Battleground Arena) from 29258
+Tue Nov  3 00:36:00 2026 :: Log Trentlin [29263]: l dra
+Tue Nov  3 00:36:02 2026 :: Log Trentlin [29263]: smite
+Tue Nov  3 00:36:07 2026 :: Log Trentlin [29263]: smite
+Tue Nov  3 00:36:14 2026 :: Log Trentlin [29263]: smite
+Tue Nov  3 00:36:23 2026 :: Log Trentlin [29263]: get dragon cor
+Tue Nov  3 00:36:24 2026 :: Log Trentlin [29263]: killed an undead dragon
+Tue Nov  3 00:36:24 2026 :: Log Trentlin [29263]: coin +5 platinum
+Tue Nov  3 00:36:24 2026 :: Log Trentlin [29263]: coin +25 silver
+Tue Nov  3 00:36:24 2026 :: Log Trentlin [29263]: coin +34 copper
+Tue Nov  3 00:36:24 2026 :: Log Trentlin [29263]: coin +14 gold
+Tue Nov  3 00:36:28 2026 :: Log Trentlin [29263]: get drag co
+Tue Nov  3 00:36:29 2026 :: Log Alaric [4210]: wake
+Tue Nov  3 00:36:30 2026 :: Log Alaric [4210]: l
+Tue Nov  3 00:36:30 2026 :: Log Trentlin [29263]: comp dra
+Tue Nov  3 00:36:32 2026 :: Log Alaric [4210]: s
+Tue Nov  3 00:36:32 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Tue Nov  3 00:36:33 2026 :: Log Alaric [4203]: s
+Tue Nov  3 00:36:33 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Tue Nov  3 00:36:33 2026 :: Log Alaric [4202]: e
+Tue Nov  3 00:36:33 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 00:36:33 2026 :: Log Alaric [4201]: e
+Tue Nov  3 00:36:33 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2427]: n
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2404]: n
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2401]: u
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2410]: u
+Tue Nov  3 00:36:34 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov  3 00:36:35 2026 :: Log Alaric [2411]: u
+Tue Nov  3 00:36:35 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov  3 00:36:35 2026 :: Log Alaric [2414]: u
+Tue Nov  3 00:36:35 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Nov  3 00:36:35 2026 :: Log Trentlin [29263]: drop dra
+Tue Nov  3 00:36:36 2026 :: Log Trentlin [29263]: l in co
+Tue Nov  3 00:36:37 2026 :: Log Alaric [2497]: recall set
+Tue Nov  3 00:36:37 2026 :: Log Trentlin [29263]: l
+Tue Nov  3 00:36:38 2026 :: Log Trentlin [29263]: sca
+Tue Nov  3 00:36:38 2026 :: Log Alaric [2497]: aq re
+Tue Nov  3 00:36:38 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in ag.are, 14 minutes, ordinary
+Tue Nov  3 00:36:39 2026 :: Log Trentlin [29263]: n
+Tue Nov  3 00:36:39 2026 :: Log Trentlin [29268]: arrived (Battleground Arena) from 29263
+Tue Nov  3 00:36:43 2026 :: Log Trentlin [29268]: l x
+Tue Nov  3 00:36:43 2026 :: Log Trentlin [29268]: smite
+Tue Nov  3 00:36:48 2026 :: Log Alaric [2497]: aq abort
+Tue Nov  3 00:36:49 2026 :: Log Trentlin [29268]: smite
+Tue Nov  3 00:36:55 2026 :: Log Trentlin [29268]: smite
+Tue Nov  3 00:36:55 2026 :: Log Trentlin [29268]: killed an X300
+Tue Nov  3 00:36:55 2026 :: Log Trentlin [29268]: coin +5 platinum
+Tue Nov  3 00:36:55 2026 :: Log Trentlin [29268]: coin +25 silver
+Tue Nov  3 00:36:55 2026 :: Log Trentlin [29268]: coin +34 copper
+Tue Nov  3 00:36:55 2026 :: Log Trentlin [29268]: coin +14 gold
+Tue Nov  3 00:37:03 2026 :: Log Trentlin [29268]: get all cor
+Tue Nov  3 00:37:04 2026 :: Log Trentlin [29268]: comp visio
+Tue Nov  3 00:37:11 2026 :: Log Trentlin [29268]: drop visi
+Tue Nov  3 00:37:13 2026 :: Log Trentlin [29268]: comp clamp
+Tue Nov  3 00:37:15 2026 :: Log Trentlin [29268]: drop clamp
+Tue Nov  3 00:37:19 2026 :: Log Trentlin [29268]: drink carr
+Tue Nov  3 00:37:21 2026 :: Log Trentlin [29268]: quaff car
+Tue Nov  3 00:37:24 2026 :: Log Trentlin [29268]: l
+Tue Nov  3 00:37:26 2026 :: Log Trentlin [29268]: sca
+Tue Nov  3 00:37:27 2026 :: Log Trentlin [29268]: n
+Tue Nov  3 00:37:27 2026 :: Log Trentlin [29273]: arrived (Battleground Arena) from 29268
+Tue Nov  3 00:37:29 2026 :: Log Trentlin [29273]: con n
+Tue Nov  3 00:37:31 2026 :: Log Trentlin [29273]: k n
+Tue Nov  3 00:37:34 2026 :: Log Trentlin [29273]: smite
+Tue Nov  3 00:37:40 2026 :: Log Trentlin [29273]: smite
+Tue Nov  3 00:37:47 2026 :: Log Trentlin [29273]: smite
+Tue Nov  3 00:37:47 2026 :: Log Trentlin [29273]: killed a Nothingman
+Tue Nov  3 00:37:47 2026 :: Log Trentlin [29273]: coin +8 platinum
+Tue Nov  3 00:37:47 2026 :: Log Trentlin [29273]: coin +38 silver
+Tue Nov  3 00:37:47 2026 :: Log Trentlin [29273]: coin +51 copper
+Tue Nov  3 00:37:47 2026 :: Log Trentlin [29273]: coin +21 gold
+Tue Nov  3 00:37:55 2026 :: Log Trentlin [29273]: l in co
+Tue Nov  3 00:37:57 2026 :: Sock.sinaddr:  64.113.5.77
+Tue Nov  3 00:37:58 2026 :: Log Trentlin [29273]: get all co
+Tue Nov  3 00:37:59 2026 :: Log Trentlin [29273]: comp cor
+Tue Nov  3 00:38:01 2026 :: EOF encountered on read.
+Tue Nov  3 00:38:06 2026 :: Log Trentlin [29273]: wear cor
+Tue Nov  3 00:38:10 2026 :: Log Trentlin [29273]: stash put greav
+Tue Nov  3 00:38:10 2026 :: Log Trentlin [29273]: stashed a pair of blackened steel greaves (vnum 728)
+Tue Nov  3 00:38:12 2026 :: Log Trentlin [29273]: l in hole
+Tue Nov  3 00:38:13 2026 :: Log Trentlin [29273]: comp hole
+Tue Nov  3 00:38:14 2026 :: Log Trentlin [29273]: open hole
+Tue Nov  3 00:38:16 2026 :: Log Trentlin [29273]: l in hole
+Tue Nov  3 00:38:18 2026 :: Log Trentlin [29273]: unlock hole
+Tue Nov  3 00:38:26 2026 :: Log Trentlin [29273]: wear hole
+Tue Nov  3 00:38:28 2026 :: Log Trentlin [29273]: i
+Tue Nov  3 00:38:35 2026 :: Log Trentlin [29273]: eat cake
+Tue Nov  3 00:38:38 2026 :: Log Trentlin [29273]: stash put war
+Tue Nov  3 00:38:38 2026 :: Log Trentlin [29273]: stashed a great war helmet (vnum 4619)
+Tue Nov  3 00:38:39 2026 :: Log Trentlin [29273]: l
+Tue Nov  3 00:38:40 2026 :: Log Trentlin [29273]: n
+Tue Nov  3 00:38:40 2026 :: Log Trentlin [29278]: arrived (Battleground Arena) from 29273
+Tue Nov  3 00:38:43 2026 :: Log Trentlin [29278]: con sun
+Tue Nov  3 00:38:50 2026 :: Treasure goblin: vanished from room 17124 (A path uphill, highland.are) (too long in one area).
+Tue Nov  3 00:38:51 2026 :: Log Trentlin [29278]: smite
+Tue Nov  3 00:38:56 2026 :: Log Trentlin [29278]: smite
+Tue Nov  3 00:38:56 2026 :: Log Trentlin [29278]: killed a Sunbeast
+Tue Nov  3 00:38:56 2026 :: Log Trentlin [29278]: coin +6 platinum
+Tue Nov  3 00:38:56 2026 :: Log Trentlin [29278]: coin +30 silver
+Tue Nov  3 00:38:56 2026 :: Log Trentlin [29278]: coin +41 copper
+Tue Nov  3 00:38:56 2026 :: Log Trentlin [29278]: coin +17 gold
+Tue Nov  3 00:39:04 2026 :: Log Trentlin [29278]: l in cor
+Tue Nov  3 00:39:07 2026 :: Log Trentlin [29278]: get all cor
+Tue Nov  3 00:39:09 2026 :: Log Trentlin [29278]: comp staff
+Tue Nov  3 00:39:10 2026 :: Log Trentlin [29278]: drop staff
+Tue Nov  3 00:39:14 2026 :: Log Trentlin [29278]: comp staf
+Tue Nov  3 00:39:16 2026 :: Log Trentlin [29278]: drop staff
+Tue Nov  3 00:39:17 2026 :: Log Trentlin [29278]: i
+Tue Nov  3 00:39:21 2026 :: Log Trentlin [29278]: eat seed
+Tue Nov  3 00:39:23 2026 :: Log Trentlin [29278]: l
+Tue Nov  3 00:39:24 2026 :: Log Trentlin [29278]: sca
+Tue Nov  3 00:39:26 2026 :: Log Trentlin [29278]: w
+Tue Nov  3 00:39:26 2026 :: Log Trentlin [29277]: arrived (Battleground Arena) from 29278
+Tue Nov  3 00:39:29 2026 :: Log Trentlin [29277]: con da
+Tue Nov  3 00:39:31 2026 :: Log Trentlin [29277]: l da
+Tue Nov  3 00:39:36 2026 :: Log Trentlin [29277]: e
+Tue Nov  3 00:39:36 2026 :: Log Trentlin [29278]: arrived (Battleground Arena) from 29277
+Tue Nov  3 00:39:38 2026 :: Log Trentlin [29278]: n
+Tue Nov  3 00:39:38 2026 :: Log Trentlin [29283]: arrived (Battleground Arena) from 29278
+Tue Nov  3 00:39:39 2026 :: Log Trentlin [29283]: sca
+Tue Nov  3 00:39:40 2026 :: Log Trentlin [29283]: n
+Tue Nov  3 00:39:40 2026 :: Log Trentlin [29288]: arrived (Battleground Arena) from 29283
+Tue Nov  3 00:39:42 2026 :: Log Trentlin [29288]: con gra
+Tue Nov  3 00:39:45 2026 :: Log Trentlin [29288]: smite
+Tue Nov  3 00:39:54 2026 :: Log Trentlin [29288]: l stalk
+Tue Nov  3 00:40:02 2026 :: Log Trentlin [29288]: smite
+Tue Nov  3 00:40:11 2026 :: Log Trentlin [29288]: smite
+Tue Nov  3 00:40:13 2026 :: Sock.sinaddr:  5.161.61.238
+Tue Nov  3 00:40:13 2026 :: EOF encountered on read.
+Tue Nov  3 00:40:20 2026 :: Log Trentlin [29288]: smite
+Tue Nov  3 00:40:28 2026 :: Log Trentlin [29288]: smite
+Tue Nov  3 00:40:28 2026 :: Log Trentlin [29288]: killed a Grand Warlock
+Tue Nov  3 00:40:28 2026 :: Log Trentlin [29288]: coin +12 platinum
+Tue Nov  3 00:40:28 2026 :: Log Trentlin [29288]: coin +56 silver
+Tue Nov  3 00:40:28 2026 :: Log Trentlin [29288]: coin +75 copper
+Tue Nov  3 00:40:28 2026 :: Log Trentlin [29288]: coin +31 gold
+Tue Nov  3 00:40:36 2026 :: Log Trentlin [29288]: l
+Tue Nov  3 00:40:36 2026 :: Log Trentlin [29288]: l in corpse
+Tue Nov  3 00:40:39 2026 :: Log Trentlin [29288]: get all corpse
+Tue Nov  3 00:40:41 2026 :: Log Trentlin [29288]: comp staff
+Tue Nov  3 00:40:43 2026 :: Log Trentlin [29288]: drop staff
+Tue Nov  3 00:40:44 2026 :: Log Trentlin [29288]: n
+Tue Nov  3 00:40:44 2026 :: Log Trentlin [29293]: arrived (Cornerground) from 29288
+Tue Nov  3 00:40:47 2026 :: Log Trentlin [29293]: s
+Tue Nov  3 00:40:47 2026 :: Log Trentlin [29288]: arrived (Battleground Arena) from 29293
+Tue Nov  3 00:40:48 2026 :: Log Trentlin [29288]: sca
+Tue Nov  3 00:40:50 2026 :: Log Trentlin [29288]: w
+Tue Nov  3 00:40:50 2026 :: Log Trentlin [29287]: arrived (Battleground Arena) from 29288
+Tue Nov  3 00:40:52 2026 :: Log Trentlin [29287]: sca
+Tue Nov  3 00:40:54 2026 :: Log Trentlin [29287]: l doom
+Tue Nov  3 00:40:55 2026 :: Log Trentlin [29287]: sca
+Tue Nov  3 00:40:57 2026 :: Log Trentlin [29287]: n
+Tue Nov  3 00:40:57 2026 :: Log Trentlin [29292]: arrived (Battleground Arena) from 29287
+Tue Nov  3 00:40:59 2026 :: Log Trentlin [29292]: con ps
+Tue Nov  3 00:41:00 2026 :: Log Trentlin [29292]: l ps
