@@ -16292,3 +16292,156 @@
 1793666457	cmd	Trentlin	53	29292	korzath2.are	standing	69	0	-	north		Battleground Arena //   You've reached the northern wall of the arena.  A wall lies to your // east but you can follow the wall west or head south.
 1793666459	cmd	Trentlin	53	29292	korzath2.are	standing	69	0	-	consider	ps	A psionicist is a little above your level. // A psionicist has about half your hit points. // Blow for blow, you would need about 7 rounds to bring a psionicist down; he would need about 57 rounds for you.
 1793666460	cmd	Trentlin	53	29292	korzath2.are	standing	69	0	-	look	ps	This man has merged his soul, body, and mind to become a truly powerful // psionicist.  You can feel his mind probing and proding your thoughts as // he digs to find a weakness in you.
+1793666463	cmd	Trentlin	53	29292	korzath2.are	standing	69	0	-	smite	ps	Your smite misses a psionicist.
+1793666468	cmd	Trentlin	53	29292	korzath2.are	fighting	70	0	fight	smite		Your smite does UNSPEAKABLE things to a psionicist! // Your smite does UNSPEAKABLE things to a psionicist! // Your smite does UNSPEAKABLE things to a psionicist!
+1793666476	cmd	Trentlin	53	29292	korzath2.are	fighting	70	0	fight	smite		Your smite does UNSPEAKABLE things to a psionicist! // Your smite does UNSPEAKABLE things to a psionicist! // A psionicist is DEAD!!
+1793666487	cmd	Trentlin	53	29292	korzath2.are	standing	70	0	-	get	all corpse	You get a psioniscist's ring from corpse of a psionicist. // You get mind beam from corpse of a psionicist. // You get a potion of protection from corpse of a psionicist.
+1793666491	cmd	Trentlin	53	29292	korzath2.are	standing	70	0	-	compare	mind	A) mind beam (level 53) // B) a black hole (level 52), worn // Slot: held.  Your damage comes from weapons.
+1793666493	cmd	Trentlin	53	29292	korzath2.are	standing	70	0	-	drop	mind	You drop mind beam.
+1793666495	cmd	Trentlin	53	29292	korzath2.are	standing	70	0	-	compare	ring	A) a psioniscist's ring (level 53) // B) a pirate's ring (level 43), worn // Slot: finger.  Your damage comes from weapons.
+1793666499	cmd	Trentlin	53	29292	korzath2.are	standing	70	0	-	drop	ring	You drop a psioniscist's ring.
+1793666500	cmd	Trentlin	53	29292	korzath2.are	standing	70	0	-	scan		a Doomsayer                        -to the South. // a Doomsayer                        -to the far West. // a Grand Warlock                    -to the far West.
+1793666501	cmd	Trentlin	53	29292	korzath2.are	standing	70	0	-	look		Battleground Arena //   You've reached the northern wall of the arena.  A wall lies to your // east but you can follow the wall west or head south.
+1793666502	cmd	Trentlin	53	29291	korzath2.are	standing	70	0	-	west		Battleground Arena //   To the north of you is the massive northern wall of the Battleground // Arena.  You notice this room is a bit darker than the others in the arena.
+1793666503	cmd	Trentlin	53	29291	korzath2.are	standing	70	0	-	scan		a psionicist                       -to the East. // a Doomsayer                        -to the South. // a Doomsayer                        -to the West.
+1793666511	cmd	Trentlin	53	29286	korzath2.are	standing	70	0	-	south		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666512	cmd	Trentlin	53	29286	korzath2.are	standing	70	0	-	scan		a Doomsayer                        -to the East. // a Nothingman                       -to the far South.
+1793666514	cmd	Trentlin	53	29281	korzath2.are	standing	70	0	-	south		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666514	cmd	Trentlin	53	29281	korzath2.are	standing	70	0	-	scan		a Doomsayer                        -to the North. // a Nothingman                       -to the South. // a Sunbeast                         -to the far West.
+1793666517	cmd	Trentlin	53	29276	korzath2.are	standing	70	0	-	south		Battleground Arena //   To the south of you is the cross of the Battleground.  Maybe there // is a way in from here?
+1793666517	cmd	Trentlin	53	29276	korzath2.are	standing	70	0	-	scan		a Doomsayer                        -to the far North. // David the Hawk                     -to the East.
+1793666519	cmd	Trentlin	53	29281	korzath2.are	standing	70	0	-	north		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666520	cmd	Trentlin	53	29286	korzath2.are	standing	70	0	-	north		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666520	cmd	Trentlin	53	29291	korzath2.are	standing	70	0	-	north		Battleground Arena //   To the north of you is the massive northern wall of the Battleground // Arena.  You notice this room is a bit darker than the others in the arena.
+1793666520	cmd	Trentlin	53	29291	korzath2.are	standing	70	0	-	north		Alas, you cannot go that way.
+1793666522	cmd	Trentlin	53	29290	korzath2.are	standing	70	0	-	west		Battleground Arena //   You've reached the northern wall of the arena.  A wall lies to your // west but you can follow the wall east or head south.
+1793666523	refused	Trentlin	53	29290	korzath2.are	fighting	70	0	fight	south		No way!  You are still fighting!
+1793666524	cmd	Trentlin	53	29290	korzath2.are	fighting	70	0	fight	smite		Your smite does UNSPEAKABLE things to a Grand Warlock! // Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite does UNSPEAKABLE things to a Grand Warlock!
+1793666530	cmd	Trentlin	53	29290	korzath2.are	fighting	69	0	fight	smite		Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite ^^^ DESTROYS ^^^ a Grand Warlock!
+1793666536	cmd	Trentlin	53	29290	korzath2.are	fighting	68	0	fight	smite		Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite misses a Grand Warlock.
+1793666542	cmd	Trentlin	53	29290	korzath2.are	fighting	67	0	fight	smite		Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite === OBLITERATES === a Grand Warlock! // Your smite >>> ANNIHILATES <<< a Grand Warlock!
+1793666548	cmd	Trentlin	53	29290	korzath2.are	fighting	66	0	fight	get	axe	You get the Lion's four-crowned axe.
+1793666548	cmd	Trentlin	53	29290	korzath2.are	fighting	66	0	fight	wear	axe	You wield the Lion's four-crowned axe. // The Lion's four-crowned axe feels like a part of you!
+1793666549	cmd	Trentlin	53	29290	korzath2.are	fighting	66	1	fight	smite		Your smite <<< ERADICATES >>> a Grand Warlock! // Your smite <<< ERADICATES >>> a Grand Warlock! // Your smite does UNSPEAKABLE things to a Grand Warlock!
+1793666556	cmd	Trentlin	53	29290	korzath2.are	fighting	67	0	fight	smite		Your smite misses a Doomsayer. // Your smite does UNSPEAKABLE things to a Doomsayer! // Your smite does UNSPEAKABLE things to a Doomsayer!
+1793666562	cmd	Trentlin	53	29290	korzath2.are	fighting	67	0	fight	smite		Your smite does UNSPEAKABLE things to a Doomsayer! // Your smite does UNSPEAKABLE things to a Doomsayer! // Your smite does UNSPEAKABLE things to a Doomsayer!
+1793666567	cmd	Trentlin	53	29290	korzath2.are	fighting	68	0	fight	smite		Your smite does UNSPEAKABLE things to a Doomsayer! // A Doomsayer is DEAD!! // You receive 334 experience points.
+1793666575	cmd	Trentlin	53	29290	korzath2.are	standing	68	0	-	look		Battleground Arena //   You've reached the northern wall of the arena.  A wall lies to your // west but you can follow the wall east or head south.
+1793666576	cmd	Trentlin	53	29290	korzath2.are	standing	68	0	-	scan		a psionicist                       -to the far East. // a psionicist                       -to the South.
+1793666577	cmd	Trentlin	53	29285	korzath2.are	standing	68	0	-	south		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666578	cmd	Trentlin	53	29285	korzath2.are	standing	68	0	-	scan		a Doomsayer                        -to the East. // a Grand Warlock                    -to the West.
+1793666581	cmd	Trentlin	53	29284	korzath2.are	standing	68	0	-	west		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666582	cmd	Trentlin	53	29284	korzath2.are	standing	68	0	-	scan		a psionicist                       -to the East. // a Doomsayer                        -to the far East. // a Sunbeast                         -to the South.
+1793666582	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793666582	cmd	Trentlin	53	29285	korzath2.are	standing	68	0	-	east		Battleground Arena //   All around you are creatures screaming in fits of anguish and rage. // Some stumble about, crippled by the wounds and sores that tattoo their
+1793666583	cmd	Alaric	57	2497	dresden.are	standing	100	11	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'Raiders stole The Heart of Tifarah from the realm!'
+1793666583	cmd	Trentlin	53	29284	korzath2.are	standing	68	0	-	west		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666584	cmd	Trentlin	53	29289	korzath2.are	standing	68	0	-	north		Cornerground //   This room is at the base of one of the four towers that are placed // around the Battleground Arena.  Atop the tower are some of Korzath's
+1793666586	cmd	Trentlin	53	29284	korzath2.are	standing	68	0	-	south		Battleground Arena //   More of the Battleground Arena lies before you.  Off in the distance // you can see more hideous creatures walking around aimlessly in the arena.
+1793666586	refused	Trentlin	53	29284	korzath2.are	fighting	68	0	fight	south		No way!  You are still fighting!
+1793666587	refused	Trentlin	53	29284	korzath2.are	fighting	68	0	fight	south		No way!  You are still fighting!
+1793666587	refused	Trentlin	53	29284	korzath2.are	fighting	68	0	fight	south		No way!  You are still fighting!
+1793666589	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.
+1793666589	cmd	Trentlin	53	29284	korzath2.are	fighting	68	0	fight	smite		Your smite misses a Grand Warlock.
+1793666589	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793666590	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793666590	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793666590	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793666590	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793666591	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793666591	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793666591	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.
+1793666591	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793666593	cmd	Alaric	57	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1793666593	cmd	Alaric	57	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1793666593	cmd	Alaric	57	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.
+1793666593	cmd	Alaric	57	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.
+1793666594	cmd	Alaric	57	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north
+1793666594	cmd	Alaric	57	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study
+1793666594	cmd	Alaric	57	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.
+1793666594	cmd	Alaric	57	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.
+1793666595	cmd	Alaric	57	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the
+1793666595	cmd	Alaric	57	306	plains.are	standing	100	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful
+1793666595	cmd	Alaric	57	326	plains.are	standing	100	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred
+1793666595	cmd	Alaric	57	309	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path
+1793666596	cmd	Alaric	57	310	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.
+1793666596	cmd	Alaric	57	327	plains.are	standing	100	0	-	north		The foothills //   You are walking in some foothills. It is rather hard to move here. // Further to the north you can see the mountains towering over you.
+1793666596	cmd	Alaric	57	313	plains.are	standing	100	0	-	east		Road to Ofcol //   You are walking on a wide road with trail marks on it.  To the north // you see the village of Ofcol and to the south there is the T intersection.
+1793666596	cmd	Alaric	57	314	plains.are	standing	100	0	-	north		Road to Ofcol //   You are walking on a wide road with trail marks on it.  From the north // you hear the villagers of Ofcol go about their daily business. To the south
+1793666597	cmd	Alaric	57	52	connect.are	standing	100	0	-	north		Outside Ofcol //   You are standing outside the village of Ofcol. // The village looks very small, but still a nice and safe place to stay.
+1793666597	cmd	Trentlin	53	29284	korzath2.are	fighting	67	0	fight	smite		Your smite <<< ERADICATES >>> a Grand Warlock! // Your smite === OBLITERATES === a Grand Warlock! // Your smite does UNSPEAKABLE things to a Grand Warlock!
+1793666597	cmd	Alaric	57	5550	ofcol.are	standing	100	0	-	north		Village street //   You stand at the small village street in Ofcol. // From here you see small houses and only few people.
+1793666603	cmd	Trentlin	53	29284	korzath2.are	fighting	67	0	fight	smite		Your smite does UNSPEAKABLE things to a Grand Warlock! // Your smite does UNSPEAKABLE things to a Grand Warlock! // Your smite does UNSPEAKABLE things to a Grand Warlock!
+1793666609	cmd	Trentlin	53	29284	korzath2.are	fighting	67	0	fight	smite		Your smite misses a Grand Warlock.
+1793666615	cmd	Trentlin	53	29284	korzath2.are	fighting	67	0	fight	smite		Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite does UNSPEAKABLE things to a Grand Warlock! // Your smite <<< ERADICATES >>> a Grand Warlock!
+1793666621	cmd	Trentlin	53	29284	korzath2.are	fighting	66	0	fight	smite		Your smite misses a Grand Warlock.
+1793666626	cmd	Alaric	57	5551	ofcol.are	standing	100	0	-	north		Village street //   You are standing on the village street of Ofcol. // East from here is a small alley and north you enter the village
+1793666627	cmd	Alaric	57	5553	ofcol.are	standing	100	0	-	east		The small alley //   You are in a small, quiet alley.  From here you see the village street // to the west and a small room lies to the south.
+1793666628	cmd	Trentlin	53	29284	korzath2.are	fighting	65	0	fight	smite		Your smite <<< ERADICATES >>> a Grand Warlock! // Your smite >>> ANNIHILATES <<< a Grand Warlock! // Your smite >>> ANNIHILATES <<< a Grand Warlock!
+1793666629	cmd	Alaric	57	5553	ofcol.are	standing	100	0	-	get	all	You get The Heart of Tifarah.
+1793666630	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793666631	cmd	Alaric	57	2497	dresden.are	standing	100	24	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'
+1793666633	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 40 quest points.
+1793666634	cmd	Trentlin	53	29284	korzath2.are	fighting	60	0	fight	smite		Your smite misses a Grand Warlock.
+1793666639	cmd	Trentlin	53	29284	korzath2.are	fighting	60	1	fight	smite		Your smite >>> ANNIHILATES <<< someone! // Someone is DEAD!! // You receive 320 experience points.
+1793666647	cmd	Trentlin	53	29284	korzath2.are	standing	60	0	-	affect		You are affected by: // Spell: 'blindness' modifies hit roll by -4 for 59 hours. // Spell: 'titanic' modifies experience by 50 for 21 hours.
+1793666652	cmd	Trentlin	53	29285	korzath2.are	standing	60	0	-	east		You can't see a thing!
+1793666653	cmd	Trentlin	53	29286	korzath2.are	standing	60	0	-	east		You can't see a thing!
+1793666653	cmd	Trentlin	53	29287	korzath2.are	standing	60	0	-	east		You can't see a thing!
+1793666653	cmd	Trentlin	53	29288	korzath2.are	standing	60	0	-	east		You can't see a thing!
+1793666654	cmd	Trentlin	53	29283	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666654	cmd	Trentlin	53	29278	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666655	cmd	Trentlin	53	29273	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666655	cmd	Trentlin	53	29268	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666655	cmd	Trentlin	53	29263	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666655	cmd	Trentlin	53	29258	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666656	cmd	Trentlin	53	29253	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666656	cmd	Trentlin	53	29248	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666656	cmd	Trentlin	53	29248	korzath2.are	standing	60	0	-	south		Alas, you cannot go that way.
+1793666658	cmd	Trentlin	53	29253	korzath2.are	standing	60	0	-	north		You can't see a thing!
+1793666658	cmd	Trentlin	53	29252	korzath2.are	standing	60	0	-	west		You can't see a thing!
+1793666659	cmd	Trentlin	53	29247	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666659	cmd	Trentlin	53	29246	korzath2.are	standing	60	0	-	west		You can't see a thing!
+1793666660	cmd	Trentlin	53	29243	korzath2.are	standing	60	0	-	south		You can't see a thing!
+1793666661	cmd	Trentlin	53	29243	korzath2.are	standing	60	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1793666663	cmd	Trentlin	53	4207	dresden.are	standing	60	0	-	recall		You can't see a thing!
+1793666665	cmd	Trentlin	53	4202	dresden.are	standing	60	0	-	east		You can't see a thing!
+1793666665	cmd	Trentlin	53	4201	dresden.are	standing	60	0	-	east		You can't see a thing!
+1793666665	cmd	Trentlin	53	2427	dresden.are	standing	60	0	-	east		You can't see a thing!
+1793666665	cmd	Trentlin	53	2427	dresden.are	standing	60	0	-	east		Alas, you cannot go that way.
+1793666666	cmd	Trentlin	53	2427	dresden.are	standing	60	0	-	east		Alas, you cannot go that way.
+1793666666	cmd	Trentlin	53	2404	dresden.are	standing	60	0	-	north		You can't see a thing!
+1793666666	cmd	Trentlin	53	2401	dresden.are	standing	60	0	-	north		You can't see a thing!
+1793666667	cmd	Trentlin	53	2401	dresden.are	standing	60	0	-	heal	all	Someone rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1793666669	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'invis' for 30 hours. // Spell: 'titanic' modifies experience by 50 for 21 hours.
+1793666670	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793666676	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	inventory		You are carrying: // ( 2) (Magical) a potion of protection // ( 2) (Magical) an opaque potion
+1793666682	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      53 | Class:     Warrior | // | Played:     25 hours | Sex:      Male | Guild:     Warrior | // | Age:        18 years | Race:    Dwarf | Castle:       None |
+1793666684	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	inventory		You are carrying: // ( 2) (Magical) a potion of protection // ( 2) (Magical) an opaque potion
+1793666695	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	put	key pack	You put a blood red key in a metallic pack.
+1793666696	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	put	key pack	You put a brittle key in a metallic pack.
+1793666696	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	put	key pack	You put a diamond key in a metallic pack.
+1793666696	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	put	key pack	You put a small key in a metallic pack.
+1793666696	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	put	key pack	You put a small key in a metallic pack.
+1793666702	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793666704	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	drop	blue	You drop a Blue Candle.
+1793666704	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	drop	blue	You drop a Blue Candle.
+1793666706	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	sacrifice	blue	The Gods give you 10 copper coins for your sacrifice.
+1793666706	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	sacrifice	blue	The Gods give you 10 copper coins for your sacrifice.
+1793666709	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [53 Dwarf   Hero  ] Trentlin the Knight of the Castle // Players found: 2
+1793666711	cmd	Trentlin	53	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793666711	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793666712	cmd	Trentlin	53	2428	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793666713	cmd	Trentlin	53	2429	dresden.are	standing	100	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the
+1793666714	cmd	Trentlin	53	2429	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793666714	cmd	Trentlin	53	2429	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793666715	cmd	Trentlin	53	2428	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793666715	cmd	Trentlin	53	2428	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793666715	cmd	Trentlin	53	2428	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793666716	cmd	Trentlin	53	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.
+1793666717	cmd	Trentlin	53	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793666719	cmd	Trentlin	53	4203	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793666719	cmd	Trentlin	53	4210	dresden.are	standing	100	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]
+1793666719	cmd	Trentlin	53	4210	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793666721	cmd	Trentlin	53	4210	dresden.are	standing	100	0	-	sleep		You go to sleep.
+1793666723	session	Trentlin	53	4210	dresden.are	quit	4411s	+1 levels	+31778 exp	+547079956 copper	61 kills	0 deaths	0 quests	1533 commands	7 refused	coin: loot 651p 9g 94s 31c, spent 134p 1g 94s 75c
