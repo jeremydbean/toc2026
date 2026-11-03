@@ -18112,3 +18112,69 @@
 1793671654	cmd	Alaric	57	2497	dresden.are	standing	64	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
 1793671655	cmd	Alaric	57	2497	dresden.are	standing	64	5	-	aquest	ga no	Wise choice. You safely collect 72 quest points.
 1793671656	cmd	Alaric	57	2497	dresden.are	standing	64	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    282 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |
+1793672021	cmd	Trentlin	53	4210	dresden.are	sleeping	100	0	-	wake		You wake and stand up.
+1793672024	cmd	Trentlin	53	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793672025	cmd	Trentlin	53	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers
+1793672025	cmd	Trentlin	53	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.
+1793672026	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in
+1793672026	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793672026	cmd	Trentlin	53	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793672027	cmd	Trentlin	53	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793672027	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793672031	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	look	ofr	A tiered altar of painted wood, covered in orange marigolds, candles, // sugar skulls and small portraits of the dead.  The candles never seem to // burn down.  It is a day for remembering, the candle-keeper says, not for
+1793672039	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	list		Catrina the candle-keeper says 'I don't trade with folks I can't see.' // (You are invisible. VISIBLE will fix that.)
+1793672042	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	visible		Ok.
+1793672042	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	list		[Lv Price] Item // [ 0         2s] a sugar skull. // [ 0         4s] a painted skull mask.
+1793672046	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	buy	sugar	You buy a sugar skull.
+1793672046	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one
+1793672049	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	put	sugar of	That's not a container.
+1793672051	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	put	sugar ofrenda	That's not a container.
+1793672053	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	look	sugar	A skull moulded from white sugar and decorated with icing flowers and // coloured foil eyes.  They say that eating one lets you see a little of what // the departed see.
+1793672056	cmd	Trentlin	53	2401	dresden.are	standing	100	0	-	eat	suga	You eat a sugar skull. // You can already see invisible. // You are already as alert as you can be. 
+1793672060	cmd	Trentlin	53	9506	newthalo.are	standing	100	0	-	run	e 27	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793672061	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793672062	cmd	Trentlin	53	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1793672062	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793672066	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	unlock	north	You lack the key.
+1793672070	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	get	key pack	You get a small key from a metallic pack.
+1793672070	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	get	key pack	You get a small key from a metallic pack.
+1793672071	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	get	key pack	I see nothing like that in the pack.
+1793672071	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	get	key pack	I see nothing like that in the pack.
+1793672071	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	get	key pack	I see nothing like that in the pack.
+1793672074	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	kill	gua	Guardian Knight parries your attack. // Guardian Knight dodges your attack. // Guardian Knight parries your attack.
+1793672076	cmd	Trentlin	53	29004	korzath1.are	fighting	100	0	fight	smite		Your smite >>> ANNIHILATES <<< Guardian Knight! // Your smite misses Guardian Knight. // Your smite misses Guardian Knight.
+1793672089	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	get	key co	You get a diamond key from a stinking corpse.
+1793672089	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793672089	cmd	Trentlin	53	29004	korzath1.are	standing	100	0	-	open	north	Ok.
+1793672090	cmd	Trentlin	53	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793672092	cmd	Trentlin	53	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793672093	cmd	Trentlin	53	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793672093	cmd	Trentlin	53	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793672094	cmd	Trentlin	53	29204	korzath2.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793672095	cmd	Trentlin	53	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793672096	cmd	Trentlin	53	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793672097	cmd	Trentlin	53	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793672098	cmd	Trentlin	53	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793672099	cmd	Trentlin	53	29209	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793672101	cmd	Trentlin	53	29209	korzath2.are	standing	100	0	-	kill	sk	An Animated Skeleton dodges your attack. // Your cleave <<< ERADICATES >>> an Animated Skeleton! // An Animated Skeleton parries your attack.
+1793672104	cmd	Trentlin	53	29209	korzath2.are	fighting	100	0	fight	smite		Your smite does UNSPEAKABLE things to an Animated Skeleton! // Your smite does UNSPEAKABLE things to an Animated Skeleton! // An Animated Skeleton is DEAD!!
+1793672112	cmd	Trentlin	53	29210	korzath2.are	standing	100	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793672116	cmd	Trentlin	53	29210	korzath2.are	standing	100	0	-	smite	skele	Your smite does UNSPEAKABLE things to an Animated Skeleton! // Your smite does UNSPEAKABLE things to an Animated Skeleton! // Your smite does UNSPEAKABLE things to an Animated Skeleton!
+1793672123	cmd	Trentlin	53	29210	korzath2.are	standing	100	0	-	scan		an Animated Skeleton               -to the West.
+1793672124	cmd	Trentlin	53	29210	korzath2.are	standing	100	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793672125	cmd	Trentlin	53	29210	korzath2.are	standing	100	0	-	scan		an Animated Skeleton               -to the West.
+1793672126	cmd	Trentlin	53	29211	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793672128	cmd	Trentlin	53	29211	korzath2.are	standing	100	0	-	smite	skel	Your smite does UNSPEAKABLE things to an Animated Skeleton! // Your smite does UNSPEAKABLE things to an Animated Skeleton! // Your smite does UNSPEAKABLE things to an Animated Skeleton!
+1793672137	cmd	Trentlin	53	29212	korzath2.are	standing	100	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793672141	cmd	Trentlin	53	29212	korzath2.are	fighting	99	0	fight	smite	shad	Your smite does UNSPEAKABLE things to a Shadowman! // Your smite >>> ANNIHILATES <<< a Shadowman! // Your smite does UNSPEAKABLE things to a Shadowman!
+1793672147	cmd	Trentlin	53	29212	korzath2.are	fighting	99	0	fight	smite		Your smite misses a Shadowman.
+1793672153	cmd	Trentlin	53	29212	korzath2.are	fighting	98	0	fight	smite		Your smite does UNSPEAKABLE things to a Shadowman! // Your smite does UNSPEAKABLE things to a Shadowman! // A Shadowman is DEAD!!
+1793672160	cmd	Trentlin	53	29212	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793672161	cmd	Trentlin	53	29212	korzath2.are	standing	98	0	-	scan		a Shadowman                        -to the North. // an insane lieutenant               -to the North. // a deranged madman                  -to the West.
+1793672162	cmd	Trentlin	53	29218	korzath2.are	standing	98	0	-	north		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1793672164	cmd	Trentlin	53	29218	korzath2.are	standing	98	0	-	smite	shadow	Your smite does UNSPEAKABLE things to a Shadowman! // Your smite does UNSPEAKABLE things to a Shadowman! // Your smite does UNSPEAKABLE things to a Shadowman!
+1793672170	cmd	Trentlin	53	29218	korzath2.are	fighting	98	1	fight	smite		Your smite does UNSPEAKABLE things to a Shadowman! // A Shadowman is DEAD!! // You receive 661 experience points (320 of them rested).
+1793672177	cmd	Trentlin	53	29218	korzath2.are	fighting	97	0	fight	smite		Your smite misses an insane lieutenant.
+1793672184	cmd	Trentlin	53	29218	korzath2.are	fighting	97	0	fight	smite		Your smite misses an insane lieutenant.
+1793672191	cmd	Trentlin	53	29218	korzath2.are	fighting	97	0	fight	smite		Your smite misses an insane lieutenant.
+1793672198	cmd	Trentlin	53	29218	korzath2.are	fighting	96	0	fight	smite		Your smite misses an insane lieutenant.
