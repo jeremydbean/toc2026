@@ -19676,3 +19676,104 @@
 1793744651	cmd	Trentlin	6	6500	dwarves.are	standing	89	0	-	east		Path to Dwarven Village //   All around you are the mountains of the southern range, home of dwarves and  // giants.  You can climb back down the mountains to the west and leave these 	-	+
 1793744651	cmd	Trentlin	6	44	connect.are	standing	89	0	-	south		Before the Dwarven Daycare //   Before you is a small building. Toys in various stages of disrepair litter // the rocky yard. From inside the building, you can hear the sounds of chaos	-	+
 1793744651	cmd	Trentlin	6	6601	daycare.are	standing	89	0	-	south		The Dwarven Drop Off //   This is where the dwarven mommies and daddies come to drop off their // annoying little brats.  You have the urge to leave.  There is a sign here.	-	+
+1793744653	cmd	Trentlin	6	6602	daycare.are	standing	89	0	-	south		Day Care Center //   You are in the north-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a kitchen to the east.	-	+
+1793744655	cmd	Trentlin	6	6602	daycare.are	standing	89	0	-	scan		a raggedy anne doll                -to the South. // the dwarven youth                  -to the South. // the dwarven youth                  -to the West.	-	-
+1793744656	cmd	Trentlin	6	6603	daycare.are	standing	89	0	-	west		Day Care Center //   You are in the north-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a bathroom to the west.	-	+
+1793744657	cmd	Trentlin	6	6603	daycare.are	standing	89	0	-	scan		a teddy bear                       -to the East. // the nanny                          -to the East. // the nanny                          -to the East.	-	+
+1793744659	cmd	Trentlin	6	6606	daycare.are	standing	89	0	-	west		The Messy Bathroom //   You hold your nose as you realize you have made the worst mistake of your // life.  The air is rancid and the walls are stained.	-	+
+1793744660	cmd	Trentlin	6	6606	daycare.are	standing	89	0	-	kill	old	Your punch misses an old doll. // Your punch misses an old doll.	-	-
+1793744662	cmd	Trentlin	6	6606	daycare.are	fighting	88	0	fight	kick		Your kick scratches an old doll.	-	-
+1793744667	cmd	Trentlin	6	6606	daycare.are	fighting	88	0	fight	kick		Your kick misses an old doll.	-	-
+1793744673	cmd	Trentlin	6	6606	daycare.are	fighting	88	0	fight	kick		Your kick scratches an old doll.	-	-
+1793744677	cmd	Trentlin	6	6606	daycare.are	fighting	87	0	fight	kick		Your kick scratches an old doll. // An old doll is DEAD!! // You receive 58 experience points.	-	+
+1793744681	cmd	Trentlin	6	6606	daycare.are	fighting	87	0	fight	look	in corpse	Corpse of an old doll contains: //      Nothing.	-	-
+1793744683	cmd	Trentlin	6	6606	daycare.are	fighting	87	0	fight	kick		Your kick scratches a teddy bear.	-	-
+1793744688	cmd	Trentlin	6	6606	daycare.are	fighting	89	0	fight	kick		Your kick scratches a teddy bear.	-	-
+1793744692	cmd	Trentlin	6	6603	daycare.are	standing	89	0	-	east		Day Care Center //   You are in the north-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a bathroom to the west.	-	+
+1793744692	cmd	Trentlin	6	6603	daycare.are	standing	89	0	-	scan		a teddy bear                       -to the East. // the nanny                          -to the East. // the nanny                          -to the East.	-	+
+1793744692	cmd	Trentlin	6	6605	daycare.are	standing	89	0	-	south		Day Care Center //   You are in the south-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a staircase to the west.	-	+
+1793744696	cmd	Trentlin	6	6605	daycare.are	standing	89	0	-	look	old	This doll has been hugged and played with until there is almost nothing left. // An old doll is in excellent condition. // An old doll is using:	-	+
+1793744697	cmd	Trentlin	6	6605	daycare.are	standing	89	0	-	kill	old	Your punch misses an old doll. // Your punch misses an old doll.	-	-
+1793744700	cmd	Trentlin	6	6605	daycare.are	fighting	89	0	fight	kick		Your kick scratches an old doll. // An old doll is DEAD!! // You receive 84 experience points.	-	+
+1793744705	cmd	Trentlin	6	6605	daycare.are	standing	89	0	-	get	ring corpse	You get a pink ice ring from corpse of an old doll.	-	-
+1793744706	cmd	Trentlin	6	6605	daycare.are	standing	89	0	-	wear	ring	You wear a pink ice ring on your right finger.	-	-
+1793744707	cmd	Trentlin	6	4207	dresden.are	standing	87	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744776	cmd	Trentlin	6	4202	dresden.are	standing	92	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793744776	cmd	Trentlin	6	4201	dresden.are	standing	92	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793744777	cmd	Trentlin	6	2433	dresden.are	standing	92	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793744777	cmd	Trentlin	6	2434	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793744777	cmd	Trentlin	6	2435	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793744777	cmd	Trentlin	6	2436	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793744778	cmd	Trentlin	6	2437	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793744778	cmd	Trentlin	6	2438	dresden.are	standing	92	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793744778	cmd	Trentlin	6	2438	dresden.are	standing	92	0	-	open	west	Ok.	-	-
+1793744778	cmd	Trentlin	6	2439	dresden.are	standing	92	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793744782	cmd	Trentlin	6	6000	haon.are	standing	92	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1793744782	cmd	Trentlin	6	6001	haon.are	standing	92	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1793744782	cmd	Trentlin	6	6002	haon.are	standing	92	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1793744783	cmd	Trentlin	6	6003	haon.are	standing	92	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1793744783	cmd	Trentlin	6	6004	haon.are	standing	92	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1793744783	cmd	Trentlin	6	6100	haon.are	standing	92	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1793744783	cmd	Trentlin	6	6101	haon.are	standing	92	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1793744784	cmd	Trentlin	6	6104	haon.are	standing	92	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1793744784	cmd	Trentlin	6	6105	haon.are	standing	92	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1793744784	cmd	Trentlin	6	6106	haon.are	standing	92	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1793744784	cmd	Trentlin	6	6117	haon.are	standing	92	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1793744785	cmd	Trentlin	6	6118	haon.are	standing	92	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1793744785	cmd	Trentlin	6	6119	haon.are	standing	92	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.	-	+
+1793744785	cmd	Trentlin	6	6120	haon.are	standing	92	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom	-	+
+1793744785	cmd	Trentlin	6	6121	haon.are	standing	92	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To	-	+
+1793744786	cmd	Trentlin	6	58	connect.are	standing	92	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find	-	+
+1793744786	cmd	Trentlin	6	11057	ancala.are	standing	92	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross	-	+
+1793744804	cmd	Trentlin	6	11057	ancala.are	standing	92	0	-	exits		Obvious exits: // East  - Eerie Clearing // West  - A Wild Valley	-	-
+1793744805	cmd	Trentlin	6	11000	ancala.are	standing	92	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1793744808	cmd	Trentlin	6	11000	ancala.are	standing	92	0	-	consider	he	The hermit is a little above your level. // The hermit has about half your hit points. // Blow for blow, you would need about 13 rounds to bring the hermit down; it would need about 11 rounds for you.	-	+
+1793744808	cmd	Trentlin	6	11000	ancala.are	standing	92	0	-	look	he	Although raving mad, the hermit has come out of his isolation since he // has not spoken with anyone for ages.  The shaggy hermit draws you over // and begins to tell a strange tale,	-	+
+1793744816	cmd	Trentlin	6	11000	ancala.are	standing	92	0	-	where	crystal	You didn't find any crystal.	-	-
+1793744818	cmd	Trentlin	6	11000	ancala.are	standing	92	0	-	where	green	the green crystal spider     The Acid Forest	-	-
+1793744821	cmd	Trentlin	6	11001	ancala.are	standing	98	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1793744822	cmd	Trentlin	6	11001	ancala.are	standing	98	0	-	exits		Obvious exits: // East  - A Wild Valley // West  - In The Dragon's Mouth	-	-
+1793744822	cmd	Trentlin	6	11002	ancala.are	standing	98	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1793744823	cmd	Trentlin	6	11002	ancala.are	standing	98	0	-	scan		the green slime                    -to the West. // the green slime                    -to the West.	-	-
+1793744824	cmd	Trentlin	6	11003	ancala.are	standing	98	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1793744824	cmd	Trentlin	6	11003	ancala.are	standing	98	0	-	scan		You don't see anything near you.	-	-
+1793744825	cmd	Trentlin	6	11003	ancala.are	fighting	96	0	fight	consider	sl	The green slime is about your level. // The green slime has about a third of your hit points. // Blow for blow, you would need about 8 rounds to bring the green slime down; it would need about 62 rounds for you.	-	+
+1793744829	cmd	Trentlin	6	11003	ancala.are	fighting	95	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744835	cmd	Trentlin	6	11003	ancala.are	fighting	95	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744841	cmd	Trentlin	6	11003	ancala.are	fighting	92	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744844	state	Trentlin	6	11003	ancala.are	lvl=6 hp=229/252 mana=314/314 mv=123/221 align=-773 exp=14826 coin=4630713819 bank=10977624596 qp=27 prac=12 train=1 stash=69/75 remorts=1
+1793744844	cmd	Trentlin	6	11003	ancala.are	fighting	90	0	fight	score		| Name:       Trentlin | Level:       6 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793744847	cmd	Trentlin	6	11003	ancala.are	fighting	90	0	fight	kick		Your kick misses the green slime.	-	-
+1793744852	cmd	Trentlin	6	11003	ancala.are	fighting	88	0	fight	kick		Your kick misses the green slime.	-	-
+1793744857	cmd	Trentlin	6	11003	ancala.are	fighting	85	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744859	cmd	Trentlin	6	11003	ancala.are	fighting	84	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744868	cmd	Trentlin	6	11003	ancala.are	fighting	74	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744871	cmd	Trentlin	6	11003	ancala.are	fighting	74	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744874	cmd	Trentlin	6	11003	ancala.are	fighting	73	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744877	cmd	Trentlin	6	11003	ancala.are	fighting	73	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744880	cmd	Trentlin	6	11003	ancala.are	fighting	71	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744884	cmd	Trentlin	6	11003	ancala.are	fighting	68	0	fight	kick		Your kick misses the green slime.	-	-
+1793744887	cmd	Trentlin	6	11003	ancala.are	fighting	66	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744893	cmd	Trentlin	6	11003	ancala.are	fighting	68	0	fight	look	in corpse	Corpse of the green slime contains: //      Nothing.	-	-
+1793744895	cmd	Trentlin	6	11003	ancala.are	fighting	66	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744898	cmd	Trentlin	6	11003	ancala.are	fighting	66	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744901	state	Trentlin	6	11003	ancala.are	lvl=6 hp=163/252 mana=314/314 mv=148/221 align=-773 exp=15070 coin=4630713932 bank=10977624596 qp=27 prac=12 train=1 stash=69/75 remorts=1
+1793744901	cmd	Trentlin	6	11003	ancala.are	fighting	64	0	fight	score		| Name:       Trentlin | Level:       6 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793744904	cmd	Trentlin	6	11003	ancala.are	fighting	64	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744909	cmd	Trentlin	6	11003	ancala.are	fighting	64	0	fight	kick		Your kick misses the green slime.	-	-
+1793744913	cmd	Trentlin	6	11003	ancala.are	fighting	64	0	fight	skills		Level  1: dagger              75%      hand to hand        75%       //           recall             100%       // Level  3: kick                75%      	-	+
+1793744921	cmd	Trentlin	6	11003	ancala.are	fighting	64	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744925	cmd	Trentlin	6	11003	ancala.are	fighting	61	0	fight	kick		Your kick misses the green slime.	-	-
+1793744928	cmd	Trentlin	6	11003	ancala.are	fighting	59	0	fight	help	hand to hand	Learning the rare hand to hand style of fighting gives the player a weapon // even when disarmed -- bare hands.  Trained hand to hand experts are far more // effective than many swordsmen, and those of the monk class are even more	-	+
+1793744937	cmd	Trentlin	6	11003	ancala.are	fighting	60	0	fight	kick		Your kick misses the green slime.	-	-
+1793744940	cmd	Trentlin	6	11003	ancala.are	fighting	60	0	fight	kick		Your kick grazes the green slime.	-	-
+1793744943	cmd	Trentlin	6	11003	ancala.are	fighting	58	0	fight	kick		Your kick scratches the green slime.	-	-
+1793744946	cmd	Trentlin	6	11003	ancala.are	standing	58	0	-	kick		You aren't fighting anyone.	-	-
+1793744947	cmd	Trentlin	6	11003	ancala.are	standing	58	0	-	scan		You don't see anything near you.	-	-
+1793744947	cmd	Trentlin	6	11004	ancala.are	standing	58	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1793744948	cmd	Trentlin	6	11004	ancala.are	standing	58	0	-	scan		You don't see anything near you.	-	-
+1793744949	cmd	Trentlin	6	11005	ancala.are	standing	58	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1793744949	cmd	Trentlin	6	11005	ancala.are	standing	58	0	-	scan		You don't see anything near you.	-	-
+1793744950	cmd	Trentlin	6	11006	ancala.are	standing	58	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1793744950	cmd	Trentlin	6	11006	ancala.are	standing	58	0	-	scan		You don't see anything near you.	-	-
+1793744952	cmd	Trentlin	6	11006	ancala.are	standing	58	0	-	exits		Obvious exits: // North - A Stone Tunnel // East  - Further Down The Dragon's Throat	-	+
