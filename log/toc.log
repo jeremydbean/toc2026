@@ -249315,3 +249315,176 @@ Tue Nov  3 01:09:51 2026 :: EOF encountered on read.
 Tue Nov  3 01:09:53 2026 :: Log Alaric [2497]: score
 Tue Nov  3 01:10:42 2026 :: Sock.sinaddr:  3.20.63.178
 Tue Nov  3 01:10:42 2026 :: EOF encountered on read.
+Tue Nov  3 01:12:03 2026 :: Log Alaric [2497]: aq re
+Tue Nov  3 01:12:03 2026 :: Log Alaric [2497]: quest assigned: kill a cityguard (mob 4469, level 20) in limbo.are, 5 minutes, emergency
+Tue Nov  3 01:12:10 2026 :: Log Alaric [2497]: enter door
+Tue Nov  3 01:12:10 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2401]: south
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2404]: south
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2427]: south
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2428]: south
+Tue Nov  3 01:12:11 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Tue Nov  3 01:12:12 2026 :: Log Alaric [2429]: south
+Tue Nov  3 01:12:12 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Tue Nov  3 01:12:12 2026 :: Log Alaric [2430]: east
+Tue Nov  3 01:12:12 2026 :: Log Alaric [2562]: arrived (The Pet Shop of Exotic Creatures.) from 2430
+Tue Nov  3 01:12:17 2026 :: Log Alaric [2562]: w
+Tue Nov  3 01:12:17 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2562
+Tue Nov  3 01:12:18 2026 :: Log Alaric [2430]: east
+Tue Nov  3 01:12:18 2026 :: Log Alaric [2562]: arrived (The Pet Shop of Exotic Creatures.) from 2430
+Tue Nov  3 01:12:34 2026 :: Log Alaric [2562]: w
+Tue Nov  3 01:12:34 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2562
+Tue Nov  3 01:12:35 2026 :: Log Alaric [2430]: n
+Tue Nov  3 01:12:35 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2430
+Tue Nov  3 01:12:36 2026 :: Log Alaric [2429]: n
+Tue Nov  3 01:12:36 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2429
+Tue Nov  3 01:12:37 2026 :: Log Alaric [2428]: n
+Tue Nov  3 01:12:37 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2428
+Tue Nov  3 01:12:37 2026 :: Log Alaric [2427]: n
+Tue Nov  3 01:12:37 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov  3 01:12:38 2026 :: Log Alaric [2404]: n
+Tue Nov  3 01:12:38 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov  3 01:12:41 2026 :: Log Alaric [2401]: e
+Tue Nov  3 01:12:41 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Nov  3 01:12:42 2026 :: Log Alaric [2403]: e
+Tue Nov  3 01:12:42 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Tue Nov  3 01:12:43 2026 :: Log Alaric [2420]: e
+Tue Nov  3 01:12:43 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Tue Nov  3 01:12:43 2026 :: Log Alaric [2421]: e
+Tue Nov  3 01:12:43 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Tue Nov  3 01:12:44 2026 :: Log Alaric [2422]: e
+Tue Nov  3 01:12:44 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Tue Nov  3 01:12:45 2026 :: Log Alaric [2423]: e
+Tue Nov  3 01:12:45 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Tue Nov  3 01:12:45 2026 :: Log Alaric [2424]: e
+Tue Nov  3 01:12:45 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Tue Nov  3 01:12:46 2026 :: Log Alaric [2425]: e
+Tue Nov  3 01:12:46 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Tue Nov  3 01:12:46 2026 :: Log Alaric [2426]: e
+Tue Nov  3 01:12:51 2026 :: Log Alaric [2426]: recal
+Tue Nov  3 01:12:51 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2426
+Tue Nov  3 01:12:53 2026 :: Log Alaric [2497]: aq ab
+Tue Nov  3 01:12:55 2026 :: Log Alaric [2497]: score
+Tue Nov  3 01:13:04 2026 :: Log Alaric [2497]: l
+Tue Nov  3 01:13:05 2026 :: Log Alaric [2497]: en do
+Tue Nov  3 01:13:05 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov  3 01:13:08 2026 :: Log Alaric [2401]: heal all
+Tue Nov  3 01:13:08 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 2401.
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2401]: r e 8
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Tue Nov  3 01:13:15 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Tue Nov  3 01:13:17 2026 :: Log Alaric [2426]: r e 25
+Tue Nov  3 01:13:17 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Tue Nov  3 01:13:17 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Tue Nov  3 01:13:17 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9506
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9517
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9527
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
+Tue Nov  3 01:13:17 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Tue Nov  3 01:13:18 2026 :: Log Alaric [9531]: n
+Tue Nov  3 01:13:18 2026 :: Log Alaric [9625]: arrived (Entrance to the Mage's Tower) from 9531
+Tue Nov  3 01:13:18 2026 :: Log Alaric [9625]: n
+Tue Nov  3 01:13:18 2026 :: Log Alaric [9625]: n
+Tue Nov  3 01:13:18 2026 :: Log Alaric [9625]: n
+Tue Nov  3 01:13:21 2026 :: Log Alaric [9625]: s
+Tue Nov  3 01:13:21 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9625
+Tue Nov  3 01:13:22 2026 :: Log Alaric [9531]: oe
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9531]: r e 25
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9790]: arrived (On a road) from 9668
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9791]: arrived (On a road) from 9790
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9792]: arrived (On a road) from 9791
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9793]: arrived (On a road) from 9792
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9794]: arrived (Near the shore) from 9793
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9795]: arrived (On a dock) from 9794
+Tue Nov  3 01:13:23 2026 :: Log Alaric [9789]: arrived (The Dragon Sea) from 9795
+Tue Nov  3 01:13:25 2026 :: Log Alaric [9789]: wake
+Tue Nov  3 01:13:25 2026 :: Log Alaric [9789]: w
+Tue Nov  3 01:13:25 2026 :: Log Alaric [9795]: arrived (On a dock) from 9789
+Tue Nov  3 01:13:26 2026 :: Log Alaric [9795]: w
+Tue Nov  3 01:13:26 2026 :: Log Alaric [9794]: arrived (Near the shore) from 9795
+Tue Nov  3 01:13:26 2026 :: Log Alaric [9794]: n
+Tue Nov  3 01:13:26 2026 :: Log Alaric [41]: arrived (The new pier) from 9794
+Tue Nov  3 01:13:26 2026 :: Log Alaric [41]: n
+Tue Nov  3 01:13:26 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 41
+Tue Nov  3 01:13:27 2026 :: Log Alaric [16000]: n
+Tue Nov  3 01:13:27 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
+Tue Nov  3 01:13:27 2026 :: Log Alaric [16001]: n
+Tue Nov  3 01:13:27 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Tue Nov  3 01:13:27 2026 :: Log Alaric [16002]: n
+Tue Nov  3 01:13:27 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Tue Nov  3 01:13:28 2026 :: Log Alaric [16003]: n
+Tue Nov  3 01:13:28 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Tue Nov  3 01:13:28 2026 :: Log Alaric [16004]: e
+Tue Nov  3 01:13:28 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Tue Nov  3 01:13:31 2026 :: Log Alaric [16005]: u
+Tue Nov  3 01:13:31 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Tue Nov  3 01:13:33 2026 :: Log Alaric [16021]: s
+Tue Nov  3 01:13:33 2026 :: Log Alaric [16016]: arrived (Main Deck of the Royal Eagle - Port) from 16021
+Tue Nov  3 01:13:34 2026 :: Log Alaric [16016]: u
+Tue Nov  3 01:13:34 2026 :: Log Alaric [16011]: arrived (Aft Deck - Port Side) from 16016
+Tue Nov  3 01:13:34 2026 :: Log Alaric [16011]: e
+Tue Nov  3 01:13:34 2026 :: Log Alaric [16012]: arrived (Aft Deck) from 16011
+Tue Nov  3 01:13:35 2026 :: Log Alaric [16012]: e
+Tue Nov  3 01:13:35 2026 :: Log Alaric [16013]: arrived (Center Aft Deck) from 16012
+Tue Nov  3 01:13:37 2026 :: Log Alaric [16013]: steel
+Tue Nov  3 01:13:42 2026 :: Log Alaric [16013]: iron
+Tue Nov  3 01:13:43 2026 :: Log Alaric [16013]: iron
+Tue Nov  3 01:13:46 2026 :: Log Alaric [16013]: iron
+Tue Nov  3 01:13:53 2026 :: Log Alaric [16013]: fi amos
+Tue Nov  3 01:13:59 2026 :: Log Alaric [16013]: fi amos
+Tue Nov  3 01:14:04 2026 :: Log Alaric [16013]: fi amos
+Tue Nov  3 01:14:11 2026 :: Log Alaric [16013]: who
+Tue Nov  3 01:14:11 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:17 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:23 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:29 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:34 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:40 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:46 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:52 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:14:57 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:03 2026 :: Log Alaric [16013]: who
+Tue Nov  3 01:15:03 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:09 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:15 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:17 2026 :: Log Alaric [16013]: affects off: iron skin
+Tue Nov  3 01:15:21 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:26 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:32 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:38 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:44 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:47 2026 :: Sock.sinaddr:  54.87.112.51
+Tue Nov  3 01:15:47 2026 :: EOF encountered on read.
+Tue Nov  3 01:15:49 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:15:55 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:16:01 2026 :: Log Alaric [16013]: fi
+Tue Nov  3 01:16:07 2026 :: Log Alaric [16013]: score
+Tue Nov  3 01:16:07 2026 :: Log Alaric [16013]: fi
