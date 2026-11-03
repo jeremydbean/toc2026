@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The Magic Book is a recipe book** (2026-11-03, owner). READ or OPEN
+  Hyrule's Magic Book (object 30415) and it pages every BREW, CONCOCT and
+  SCRIBE recipe: the product, its spells (a repeat counted, foxglove's
+  half level and belladonna's risk noted) and its ingredients by name.
+  `craft_recipe_book` in magic2.c writes it from `craft_recipes` itself,
+  so it cannot drift from what crafting makes. HELP BREW and HELP SCRIBE
+  point to it. Tests: `test_magic_book` (every recipe, no line past 79
+  columns, colour off, paging) and an any-order case in
+  `test_crafting_review` (CONCOCT both ways, all six SCRIBE orders).
+
 - **AFFECTS lists holy sight** (2026-11-03, owner). Staff with HOLYLIGHT
   on see "Power: 'holylight' at level N, until you turn it off.", and a
   player wearing the Triforce "Spell: 'holylight' at level 59 from The

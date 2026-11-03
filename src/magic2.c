@@ -3290,6 +3290,176 @@ static bool craft_wants_preview( char **argument )
     return true;
 }
 
+/* ---------------------------------------------------- the Magic Book */
+
+/* Append text to buf, wrapped at width with indent spaces before every
+   line but the first (which the caller has begun). */
+static void book_wrap( char *buf, size_t size, const char *text, int col, int indent )
+{
+    const char *p = text;
+    int width = 76;
+    bool first = true;
+
+    while ( *p != '\0' )
+    {
+        const char *word;
+        int len = 0;
+        char piece[128];
+
+        while ( *p == ' ' )
+            p++;
+        if ( *p == '\0' )
+            break;
+        word = p;
+        while ( word[len] != '\0' && word[len] != ' ' )
+            len++;
+        /* The space goes before a word, never at the end of a line. */
+        if ( !first && col + 1 + len > width && col > indent )
+        {
+            int i;
+
+            toc_strlcat( buf, "\n\r", size );
+            for ( i = 0; i < indent; i++ )
+                toc_strlcat( buf, " ", size );
+            col = indent;
+        }
+        else if ( !first )
+        {
+            toc_strlcat( buf, " ", size );
+            col++;
+        }
+        snprintf( piece, sizeof(piece), "%.*s", len < 120 ? len : 120, word );
+        toc_strlcat( buf, piece, size );
+        col += len;
+        first = false;
+        p = word + len;
+    }
+}
+
+/* "heal x2, sanctuary": a recipe's spells, a repeated one counted. */
+static void book_spells( const CRAFT_RECIPE *recipe, char *out, size_t size )
+{
+    int i, j;
+
+    out[0] = '\0';
+    for ( i = 0; i < 3; i++ )
+    {
+        int times = 0;
+        bool seen = false;
+        char piece[64];
+
+        if ( recipe->spells[i] == NULL )
+            continue;
+        for ( j = 0; j < i; j++ )
+            if ( recipe->spells[j] != NULL && !str_cmp( recipe->spells[j], recipe->spells[i] ) )
+                seen = true;
+        if ( seen )
+            continue;
+        for ( j = i; j < 3; j++ )
+            if ( recipe->spells[j] != NULL && !str_cmp( recipe->spells[j], recipe->spells[i] ) )
+                times++;
+        if ( times > 1 )
+            snprintf( piece, sizeof(piece), "%s x%d", recipe->spells[i], times );
+        else
+            snprintf( piece, sizeof(piece), "%s", recipe->spells[i] );
+        if ( out[0] != '\0' )
+            toc_strlcat( out, ", ", size );
+        toc_strlcat( out, piece, size );
+    }
+    if ( IS_SET( recipe->flags, CRAFT_HALF_LEVEL ) )
+        toc_strlcat( out, " (cast at half your level)", size );
+    if ( IS_SET( recipe->flags, CRAFT_RISKY ) )
+        toc_strlcat( out, " (one in four goes bad)", size );
+}
+
+/*
+ * READ or OPEN the Magic Book (Hyrule, object 30415): every recipe BREW,
+ * CONCOCT and SCRIBE know, written from craft_recipes itself so the book
+ * can never list one the table does not make (owner, 2026-11-03). True
+ * when obj is the book and it was read.
+ */
+bool craft_recipe_book( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    static const struct { int method; const char *title; const char *what; const char *how; } parts[] =
+    {
+        { CRAFT_BREW,    "BREW",    "one herb, a container of tea",    "BREW <herb>" },
+        { CRAFT_CONCOCT, "CONCOCT", "two components, a potion",        "CONCOCT <one> <two>" },
+        { CRAFT_SCRIBE,  "SCRIBE",  "three components, a scroll",      "SCRIBE <a> <b> <c>" },
+    };
+    char *buf;
+    const size_t size = 30000;
+    char line[MAX_STRING_LENGTH];
+    char spells[MAX_STRING_LENGTH];
+    char from[MAX_STRING_LENGTH];
+    size_t s;
+    int i, p;
+
+    if ( ch == NULL || obj == NULL || obj->pIndexData == NULL
+    ||   obj->pIndexData->vnum != OBJ_VNUM_HYRULE_MAGIC_BOOK )
+        return false;
+
+    buf = alloc_mem( size );
+    buf[0] = '\0';
+    toc_strlcat( buf,
+        "{0F         .-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-.{00\n\r"
+        "{0F         |         ~  T H E   M A G I C   B O O K  ~         |{00\n\r"
+        "{0F         '-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-'{00\n\r"
+        "  Fire crackles along the edges of pages older than the kingdom. Every\n\r"
+        "  brew, potion and scroll the craft knows is written here. Ingredients\n\r"
+        "  may be named in any order, and what you make is made at your level.\n\r",
+        size );
+
+    for ( s = 0; s < sizeof(parts) / sizeof(parts[0]); s++ )
+    {
+        snprintf( line, sizeof(line),
+                  "\n\r{0F%-8s{00 %-34s %s\n\r"
+                  "{0F---------------------------------------------------------------------------{00\n\r",
+                  parts[s].title, parts[s].what, parts[s].how );
+        toc_strlcat( buf, line, size );
+
+        for ( i = 0; craft_recipes[i].method != 0; i++ )
+        {
+            const CRAFT_RECIPE *recipe = &craft_recipes[i];
+            const char *noun = recipe->method == CRAFT_BREW ? "tea"
+                             : recipe->method == CRAFT_CONCOCT ? "potion" : "scroll";
+            char product[96];
+
+            if ( recipe->method != parts[s].method )
+                continue;
+            snprintf( product, sizeof(product), "%s %s", recipe->colour, noun );
+            book_spells( recipe, spells, sizeof(spells) );
+            snprintf( line, sizeof(line), "  {0D%-22s{00 ", product );
+            toc_strlcat( buf, line, size );
+            book_wrap( buf, size, spells, 25, 25 );
+            toc_strlcat( buf, "\n\r", size );
+
+            from[0] = '\0';
+            for ( p = 0; p < 3 && recipe->parts[p] != 0; p++ )
+            {
+                OBJ_INDEX_DATA *part = get_obj_index( recipe->parts[p] );
+
+                if ( p > 0 )
+                    toc_strlcat( from, " + ", sizeof(from) );
+                toc_strlcat( from, part != NULL ? part->short_descr : "something lost",
+                             sizeof(from) );
+            }
+            toc_strlcat( buf, "        from ", size );
+            book_wrap( buf, size, from, 13, 13 );
+            toc_strlcat( buf, "\n\r", size );
+        }
+    }
+    toc_strlcat( buf,
+        "\n\r  Not sure? PREVIEW first -- BREW PREVIEW <herb>, CONCOCT PREVIEW <one>\n\r"
+        "  <two>, SCRIBE PREVIEW <a> <b> <c> -- says what you would make and your\n\r"
+        "  chance, and uses nothing up.\n\r", size );
+
+    act( "You open $p, and fire crackles along its ancient pages.", ch, obj, NULL, TO_CHAR );
+    act( "$n opens $p and reads.", ch, obj, NULL, TO_ROOM );
+    page_to_char( buf, ch );
+    free_mem( buf, size );
+    return true;
+}
+
 void do_brew( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *parts[1];

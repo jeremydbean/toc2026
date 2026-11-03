@@ -244,6 +244,30 @@ class CraftingLiveTests(unittest.TestCase):
                         break
                 self.assertTrue(fumbled, "no fumble in six tries at 1%")
 
+    def test_ingredients_may_be_named_in_any_order(self) -> None:
+        """Every order of a recipe's ingredients makes the same thing
+        (owner, 2026-11-03): CONCOCT both ways round, SCRIBE all six, and a
+        real SCRIBE in an order unlike the table's."""
+        import itertools
+        kit = obj(FEATHER) + obj(TOOTH) + "".join(obj(v) for v in (TARRASQUE, CUBE, OOZE) * SETS)
+        with LiveMud() as mud:
+            make(mud, "Zorderly", Levl=30, Cla=0, Room=TEMPLE,
+                 HMV="300 300 300 300 300 300", HMVP="300 300 300")
+            add(mud, "Zorderly", kit, skills=("scribe", "concoct"))
+            with mud.connect(timeout=120) as client:
+                login(client, "Zorderly", PW)
+                client.sync("scroll 0")
+                for order in itertools.permutations(("feather", "tooth")):
+                    with self.subTest(concoct=order):
+                        said = client.must("concoct preview " + " ".join(order), "PREVIEW")
+                        self.assertIn("feathered gold", said)
+                for order in itertools.permutations(("tarrasque", "cube", "ooze")):
+                    with self.subTest(scribe=order):
+                        said = client.must("scribe preview " + " ".join(order), "PREVIEW")
+                        self.assertIn("ironbound scroll", said)
+                made = until(client, "scribe ooze tarrasque cube", "You finish")
+                self.assertIn("You finish an ironbound scroll", made)
+
     def test_ironbound_scroll_previewed_made_and_read(self) -> None:
         sets = "".join(obj(v) for v in (TARRASQUE, CUBE, OOZE) * SETS)
         with LiveMud() as mud:

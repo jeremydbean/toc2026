@@ -1991,6 +1991,10 @@ void do_open( CHAR_DATA *ch, char *argument )
     {
 	/* 'open object' */
 
+	/* The Magic Book opens on its recipes (magic2.c). */
+	if ( craft_recipe_book( ch, obj ) )
+	    return;
+
 	  if(obj->trapped != NULL)
 	  {
 	    CHAR_DATA *temp_ch;

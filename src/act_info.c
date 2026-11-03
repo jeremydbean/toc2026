@@ -1411,6 +1411,16 @@ void do_read (CHAR_DATA *ch, char *argument )
     if ( hyrule_look_tool( ch, argument ) )
         return;
 
+    /* The Magic Book: every recipe BREW, CONCOCT and SCRIBE know. */
+    {
+        char arg[MAX_INPUT_LENGTH];
+        OBJ_DATA *book;
+
+        one_argument( argument, arg );
+        if ( ( book = get_obj_here( ch, arg ) ) != NULL && craft_recipe_book( ch, book ) )
+            return;
+    }
+
     do_look(ch,argument);
 }
 

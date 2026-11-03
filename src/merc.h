@@ -3493,6 +3493,7 @@ long    flag_convert    ( char letter);
 void * alloc_mem       ( int sMem );
 void * alloc_perm      ( int sMem );
 void    free_mem        ( void *pMem, int sMem );
+bool    craft_recipe_book ( CHAR_DATA *ch, OBJ_DATA *obj );
 char * str_dup         ( const char *str );
 char *  str_perm        ( const char *str );
 void    free_string     ( char *pstr );

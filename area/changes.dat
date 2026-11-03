@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261103c 2026-11-03
+The Magic Book from Hyrule is now a recipe book: READ or OPEN it to see
+every brew, potion and scroll, what each does and what goes into it.
+
 @ 20261103b 2026-11-03
 Wearing the Triforce now shows in AFFECT: 'holylight' at level 59, for as
 long as it is worn, beside any other powers your gear grants.
