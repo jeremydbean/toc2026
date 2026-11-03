@@ -19418,3 +19418,128 @@
 1793744041	cmd	Trentlin	5	6603	daycare.are	standing	70	0	-	scan		a teddy bear                       -to the East. // the nanny                          -to the East. // the nanny                          -to the East.	-	+
 1793744043	cmd	Trentlin	5	6602	daycare.are	standing	70	0	-	east		Day Care Center //   You are in the north-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a kitchen to the east.	-	+
 1793744043	cmd	Trentlin	5	6602	daycare.are	standing	70	0	-	scan		a raggedy anne doll                -to the South. // the dwarven youth                  -to the South. // the dwarven youth                  -to the West.	-	-
+1793744044	cmd	Trentlin	5	6626	daycare.are	standing	70	0	-	east		Messy Kitchen //   You stand in the kitchen and eating area of the day care center.  Pots and // pans are everywhere, while the toddlers continue to create chaos.	-	+
+1793744045	cmd	Trentlin	5	6626	daycare.are	standing	70	0	-	scan		a teddy bear                       -to the West. // the nanny                          -to the West. // the nanny                          -to the West.	-	+
+1793744047	cmd	Trentlin	5	6602	daycare.are	standing	70	0	-	west		Day Care Center //   You are in the north-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a kitchen to the east.	-	+
+1793744048	cmd	Trentlin	5	6604	daycare.are	standing	70	0	-	south		Day Care Center //   You are in the south-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a playground to the east.	-	+
+1793744048	cmd	Trentlin	5	6604	daycare.are	standing	70	0	-	south		Alas, you cannot go that way.	-	-
+1793744049	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	west		Day Care Center //   You are in the south-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a staircase to the west.	-	+
+1793744049	cmd	Trentlin	5	6607	daycare.are	standing	70	0	-	west		The Staircase //   You stand on top of a staircase leading down, and wonder what mystery could // lie down under.  Beware!	-	+
+1793744050	cmd	Trentlin	5	6612	daycare.are	standing	70	0	-	down		Entrance to the Mini-Maze //   You stand in the entrance to a small, but confusing maze.  You really hope // that you don't get lost.	-	+
+1793744051	cmd	Trentlin	5	6612	daycare.are	standing	70	0	-	scan		You don't see anything near you.	-	-
+1793744052	cmd	Trentlin	5	6613	daycare.are	standing	70	0	-	east		Mini-Maze //   You are in a small passage that looks just like every other one. // [Exits: north south west]	-	-
+1793744052	cmd	Trentlin	5	6613	daycare.are	standing	70	0	-	scan		You don't see anything near you.	-	-
+1793744053	cmd	Trentlin	5	6614	daycare.are	standing	70	0	-	south		Mini-Maze //   You are in a small passage that looks just like every other one. // [Exits: south west]	-	-
+1793744053	cmd	Trentlin	5	6614	daycare.are	standing	70	0	-	scan		You don't see anything near you.	-	-
+1793744054	cmd	Trentlin	5	6616	daycare.are	standing	70	0	-	west		Mini-Maze //   You are in a small passage that looks just like every other one. // [Exits: north south west]	-	-
+1793744055	cmd	Trentlin	5	6616	daycare.are	standing	70	0	-	scan		the armed guard                    -to the West.	-	-
+1793744056	cmd	Trentlin	5	6616	daycare.are	standing	70	0	-	exits		Obvious exits: // North - Mini-Maze // South - Mini-Maze	-	+
+1793744057	cmd	Trentlin	5	6624	daycare.are	standing	70	0	-	west		End of the Mini-Maze //   You stand at the end of your journey.  There is a big sign here and you had // better read it!	-	+
+1793744058	cmd	Trentlin	5	6624	daycare.are	standing	70	0	-	consider	g	The armed guard is a little above your level. // The armed guard has about half your hit points. // Blow for blow, you would need about 12 rounds to bring the armed guard down; he would need about 18 rounds for you.	-	+
+1793744059	cmd	Trentlin	5	6624	daycare.are	standing	70	0	-	look	g	This is a big mean bully who is tired of being lost in this maze. // You suddenly think that you had better flee. // The armed guard is in excellent condition.	-	+
+1793744060	cmd	Trentlin	5	6624	daycare.are	standing	70	0	-	scan		the spoiled brat                   -to the South.	-	-
+1793744062	cmd	Trentlin	5	6631	daycare.are	standing	70	0	-	south		The End? //   You have reached the final lair.  It is dominated by a huge five headed // dragon (actually an overgrown brat with a Halloween mask).	-	+
+1793744063	cmd	Trentlin	5	6631	daycare.are	standing	70	0	-	look	br	You see a little tyke who has always gotten what he wanted.  You have the // biggest urge to put him out of his misery. // The spoiled brat is in excellent condition.	-	-
+1793744066	cmd	Trentlin	5	6631	daycare.are	standing	70	0	-	consider	bra	The spoiled brat is a little below your level. // The spoiled brat has a fraction of your hit points. // Blow for blow, you would need about 3 rounds to bring the spoiled brat down; he would need over a hundred rounds for you.	-	+
+1793744067	cmd	Trentlin	5	4207	dresden.are	standing	70	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744068	cmd	Trentlin	5	4208	dresden.are	standing	70	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793744070	cmd	Trentlin	5	4207	dresden.are	standing	76	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744071	cmd	Trentlin	5	3700	school.are	standing	76	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793744071	cmd	Trentlin	5	3757	school.are	standing	76	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793744072	cmd	Trentlin	5	3758	school.are	standing	76	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1793744074	cmd	Trentlin	5	3758	school.are	standing	76	0	-	train		You have 1 training sessions. // You can train: str dex hp mana.	-	-
+1793744076	cmd	Trentlin	5	3758	school.are	standing	76	0	-	train	dex	Your dexterity increases!	-	-
+1793744077	cmd	Trentlin	5	3757	school.are	standing	76	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793744077	cmd	Trentlin	5	3759	school.are	standing	76	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1793744078	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice		dodge                1%  recall             100%  dagger              75%   // hand to hand        75%  kick                75%   // You have 13 practice sessions left.	-	-
+1793744080	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice	dod	You practice dodge.	-	-
+1793744081	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice	dod	You practice dodge.	-	-
+1793744081	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice	dod	You practice dodge.	-	-
+1793744084	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice		dodge               49%  recall             100%  dagger              75%   // hand to hand        75%  kick                75%   // You have 10 practice sessions left.	-	-
+1793744086	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice	dod	You practice dodge.	-	-
+1793744086	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice	dod	You are now learned at dodge.	-	-
+1793744087	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice	dod	You are already learned at dodge.	-	-
+1793744087	cmd	Trentlin	5	3759	school.are	standing	76	0	-	practice	dod	You are already learned at dodge.	-	-
+1793744088	cmd	Trentlin	5	3759	school.are	standing	76	0	-	look		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1793744089	cmd	Trentlin	5	3757	school.are	standing	76	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793744090	cmd	Trentlin	5	3700	school.are	standing	76	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793744091	cmd	Trentlin	5	4207	dresden.are	standing	76	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744092	cmd	Trentlin	5	4208	dresden.are	standing	76	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793744123	cmd	Trentlin	5	4208	dresden.are	standing	81	0	-	group		Trentlin's group: // [ 5 Monk ] Trentlin          194/ 237 hp  276/ 276 mana  137/ 214 mv 13058 xp	-	-
+1793744124	cmd	Trentlin	5	4208	dresden.are	standing	81	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793744125	cmd	Trentlin	5	4207	dresden.are	standing	81	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793744127	cmd	Trentlin	5	3700	school.are	standing	81	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793744128	cmd	Trentlin	5	3772	school.are	standing	81	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1793744128	cmd	Trentlin	5	3795	school.are	standing	81	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1793744128	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	north		                    ACHIEVEMENT EARNED // Your Move  +10 points // Reach the stone door of the Chessboard.	-	+
+1793744130	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	north		The door is closed.	-	-
+1793744133	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	exits		Obvious exits: // North - Closed door // South - Strange Blending of Time	-	-
+1793744136	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	open	north	It's locked.	-	-
+1793744139	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	look	in vase	A painted vase contains: //      a silver key	-	-
+1793744141	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	get	key vase	You get a silver key from a painted vase.	-	-
+1793744143	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	unlock	north	*Click*	-	-
+1793744145	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	open	north	Ok.	-	-
+1793744148	cmd	Trentlin	5	24300	chess.are	standing	81	0	-	drop	key	You drop a silver key.	-	-
+1793744148	cmd	Trentlin	5	24301	chess.are	standing	81	0	-	north		The Smooth Tunnel //   Looking down at your feet, you are somewhat surprised to find that you  // are walking on a thick woven rug. The walls of the tunnel that you are in 	-	+
+1793744150	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	consider	tr	The Tunnel Troll is a little below your level. // The Tunnel Troll has a fraction of your hit points. // Blow for blow, you would need about 3 rounds to bring the Tunnel Troll down; it would need about 75 rounds for you.	-	+
+1793744154	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744157	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744162	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744168	cmd	Trentlin	5	24301	chess.are	fighting	80	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744173	cmd	Trentlin	5	24301	chess.are	fighting	80	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744177	cmd	Trentlin	5	24301	chess.are	fighting	79	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744181	cmd	Trentlin	5	24301	chess.are	fighting	78	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1793744186	cmd	Trentlin	5	24301	chess.are	fighting	82	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744189	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744194	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744198	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744201	cmd	Trentlin	5	24301	chess.are	fighting	81	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1793744204	cmd	Trentlin	5	24301	chess.are	fighting	80	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1793744208	cmd	Trentlin	5	24301	chess.are	standing	80	0	-	look	in cor	Corpse of the Tunnel Troll contains: //      (Glowing) a sugar skull //      a dirty loincloth	-	-
+1793744209	cmd	Trentlin	5	24302	chess.are	standing	80	0	-	north		The Furnished Chamber //   This chamber is furnished quite nicely, with a thick woven  // rug beneath your feet, and tapestries along the walls.  There is a	-	+
+1793744210	cmd	Trentlin	5	24302	chess.are	standing	80	0	-	scan		You don't see anything near you.	-	-
+1793744211	cmd	Trentlin	5	24303	chess.are	standing	80	0	-	down		The Stone Staircase //   You find yourself in a rough stone staircase, which winds around // a smooth core of stone, descending deeper into the bowels of the earth.	-	+
+1793744212	cmd	Trentlin	5	24303	chess.are	standing	80	0	-	scan		You don't see anything near you.	-	-
+1793744212	cmd	Trentlin	5	24304	chess.are	standing	80	0	-	down		Down..Down..Down.. //   Your descent picks up speed, and you trip over an unseen obstacle // in the stairway!  As you tumble, the stairs start to become narrower and	-	+
+1793744213	cmd	Trentlin	5	24304	chess.are	standing	80	0	-	scan		You don't see anything near you.	-	-
+1793744214	cmd	Trentlin	5	24305	chess.are	standing	80	0	-	down		The Slide //   You come out of the last spin, and are abruptly deposited on a // slide made of some slick metal.  You descend rapidy, being abruptly slammed	-	+
+1793744214	cmd	Trentlin	5	24306	chess.are	standing	80	0	-	down		The Ledge //   You pop out of the slide, sail through the air for several long // moments, crash into the side of a cavern, and land on a ledge in a	-	+
+1793744215	cmd	Trentlin	5	24307	chess.are	standing	80	0	-	down		The Ladder //   You are on a simple wooden ladder, which has been bolted by means // of small metal hooks to the cavern wall.  The ledge is above you, and the	-	+
+1793744217	cmd	Trentlin	5	24312	chess.are	standing	80	0	-	down		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744218	cmd	Trentlin	5	24312	chess.are	standing	80	0	-	scan		You don't see anything near you.	-	-
+1793744220	cmd	Trentlin	5	24312	chess.are	standing	80	0	-	where	joker	the Joker                    The Joker's Throne	-	-
+1793744222	cmd	Trentlin	5	24311	chess.are	standing	80	0	-	west		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744223	cmd	Trentlin	5	24310	chess.are	standing	80	0	-	west		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744223	cmd	Trentlin	5	24309	chess.are	standing	80	0	-	west		The White Square //   You are standing on a highly polished white marble tile, which  // extends about six feet in either direction.	-	+
+1793744224	cmd	Trentlin	5	24308	chess.are	standing	80	0	-	west		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction. 	-	+
+1793744224	cmd	Trentlin	5	24308	chess.are	standing	80	0	-	west		Alas, you cannot go that way.	-	-
+1793744225	cmd	Trentlin	5	24323	chess.are	standing	80	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744225	cmd	Trentlin	5	24324	chess.are	standing	80	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744225	cmd	Trentlin	5	24339	chess.are	standing	80	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744228	cmd	Trentlin	5	24339	chess.are	standing	80	0	-	open	west	It's locked.	-	-
+1793744230	cmd	Trentlin	5	24339	chess.are	standing	80	0	-	look	q	The White Queen stares into you eyes and screams, "Mop // the floor, you nitwit!" // The White Queen is in excellent condition.	-	+
+1793744232	cmd	Trentlin	5	24339	chess.are	standing	80	0	-	consider	q	The White Queen is well above your level. // The White Queen has about half your hit points. // Blow for blow, you would need about 13 rounds to bring the White Queen down; it would need about 29 rounds for you.	-	+
+1793744239	cmd	Trentlin	5	24339	chess.are	standing	86	0	-	exits		Obvious exits: // North - The Black Square // East  - The Black Square	-	+
+1793744296	cmd	Trentlin	5	24338	chess.are	standing	86	0	-	east		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744296	cmd	Trentlin	5	24337	chess.are	standing	86	0	-	east		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744297	cmd	Trentlin	5	24336	chess.are	standing	86	0	-	east		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744297	cmd	Trentlin	5	24335	chess.are	standing	86	0	-	east		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744297	cmd	Trentlin	5	24334	chess.are	standing	86	0	-	east		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744297	cmd	Trentlin	5	24333	chess.are	standing	86	0	-	east		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744298	cmd	Trentlin	5	24332	chess.are	standing	86	0	-	east		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744300	cmd	Trentlin	5	24332	chess.are	standing	86	0	-	look	k	The Black King looks rather haggard.  He tells you,  // "Take my wife...pleeeaase."  You decide that the king // is not much of a comedian.	-	+
+1793744301	cmd	Trentlin	5	24332	chess.are	standing	86	0	-	consider	k	The Black King is a little above your level. // The Black King has about half your hit points. // Blow for blow, you would need about 12 rounds to bring the Black King down; it would need about 44 rounds for you.	-	+
+1793744302	cmd	Trentlin	5	24331	chess.are	standing	86	0	-	north		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744303	cmd	Trentlin	5	24316	chess.are	standing	86	0	-	north		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744303	cmd	Trentlin	5	24315	chess.are	standing	91	0	-	north		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744305	cmd	Trentlin	5	24316	chess.are	standing	91	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744305	cmd	Trentlin	5	24316	chess.are	standing	91	0	-	east		Alas, you cannot go that way.	-	-
+1793744330	cmd	Trentlin	5	24316	chess.are	standing	91	0	-	east		Alas, you cannot go that way.	-	-
+1793744330	cmd	Trentlin	5	24316	chess.are	standing	91	0	-	east		Alas, you cannot go that way.	-	-
+1793744332	cmd	Trentlin	5	24315	chess.are	standing	91	0	-	north		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744335	cmd	Trentlin	5	24315	chess.are	standing	91	0	-	open	secret	I see no secret here.	-	-
+1793744336	cmd	Trentlin	5	24316	chess.are	standing	91	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744336	cmd	Trentlin	5	24331	chess.are	standing	91	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744336	cmd	Trentlin	5	24332	chess.are	standing	91	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1793744337	cmd	Trentlin	5	24347	chess.are	standing	91	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1793744338	cmd	Trentlin	5	24347	chess.are	standing	91	0	-	east		The door is closed.	-	-
