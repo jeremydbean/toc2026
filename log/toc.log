@@ -254767,3 +254767,158 @@ Tue Nov  3 22:08:57 2026 :: Log Trentlin [44]: south
 Tue Nov  3 22:08:57 2026 :: Log Trentlin [6601]: arrived (The Dwarven Drop Off) from 44
 Tue Nov  3 22:09:00 2026 :: Log Trentlin [6601]: s
 Tue Nov  3 22:09:00 2026 :: Log Trentlin [6602]: arrived (Day Care Center) from 6601
+Tue Nov  3 22:09:03 2026 :: Log Trentlin [6602]: l nan
+Tue Nov  3 22:09:05 2026 :: Log Trentlin [6602]: l nea
+Tue Nov  3 22:09:07 2026 :: Log Trentlin [6602]: l dwa
+Tue Nov  3 22:09:10 2026 :: Log Trentlin [6602]: l bear
+Tue Nov  3 22:09:10 2026 :: Log Trentlin [6602]: sca
+Tue Nov  3 22:09:13 2026 :: Log Trentlin [6602]: s
+Tue Nov  3 22:09:13 2026 :: Log Trentlin [6604]: arrived (Day Care Center) from 6602
+Tue Nov  3 22:09:13 2026 :: Log Trentlin [6604]: l do
+Tue Nov  3 22:09:14 2026 :: Log Trentlin [6604]: w
+Tue Nov  3 22:09:14 2026 :: Log Trentlin [6605]: arrived (Day Care Center) from 6604
+Tue Nov  3 22:09:16 2026 :: Log Trentlin [6605]: sca
+Tue Nov  3 22:09:19 2026 :: Log Trentlin [6605]: w
+Tue Nov  3 22:09:19 2026 :: Log Trentlin [6607]: arrived (The Staircase) from 6605
+Tue Nov  3 22:09:21 2026 :: Log Trentlin [6607]: ex
+Tue Nov  3 22:09:21 2026 :: Log Trentlin [6607]: sca
+Tue Nov  3 22:09:23 2026 :: Log Trentlin [6607]: e
+Tue Nov  3 22:09:23 2026 :: Log Trentlin [6605]: arrived (Day Care Center) from 6607
+Tue Nov  3 22:09:23 2026 :: Log Trentlin [6605]: e
+Tue Nov  3 22:09:23 2026 :: Log Trentlin [6604]: arrived (Day Care Center) from 6605
+Tue Nov  3 22:09:23 2026 :: Log Trentlin [6604]: e
+Tue Nov  3 22:09:23 2026 :: Log Trentlin [6610]: arrived (The Playground) from 6604
+Tue Nov  3 22:09:26 2026 :: Log Trentlin [6610]: l sol
+Tue Nov  3 22:09:27 2026 :: Log Trentlin [6610]: l doll
+Tue Nov  3 22:09:28 2026 :: Log Trentlin [6610]: sca
+Tue Nov  3 22:09:29 2026 :: Log Trentlin [6610]: e
+Tue Nov  3 22:09:29 2026 :: Log Trentlin [6611]: arrived (The Playground) from 6610
+Tue Nov  3 22:09:31 2026 :: Log Trentlin [6611]: l bea
+Tue Nov  3 22:09:34 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:09:37 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:09:44 2026 :: Sock.sinaddr:  3.20.63.178
+Tue Nov  3 22:09:44 2026 :: EOF encountered on read.
+Tue Nov  3 22:09:44 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:09:47 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:09:51 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:09:56 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:00 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:02 2026 :: Sock.sinaddr:  23.31.96.97
+Tue Nov  3 22:10:03 2026 :: EOF encountered on read.
+Tue Nov  3 22:10:05 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:11 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:17 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:21 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:23 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:27 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:30 2026 :: Log Trentlin [6611]: kick
+Tue Nov  3 22:10:31 2026 :: Log Trentlin [6611]: killed the ugly bear
+Tue Nov  3 22:10:35 2026 :: Log Trentlin [6611]: l in cor
+Tue Nov  3 22:10:36 2026 :: Log Trentlin [6611]: l
+Tue Nov  3 22:10:36 2026 :: Log Trentlin [6611]: sca
+Tue Nov  3 22:10:38 2026 :: Log Trentlin [6611]: w
+Tue Nov  3 22:10:38 2026 :: Log Trentlin [6610]: arrived (The Playground) from 6611
+Tue Nov  3 22:10:39 2026 :: Log Trentlin [6610]: l old
+Tue Nov  3 22:10:40 2026 :: Log Trentlin [6610]: k old
+Tue Nov  3 22:10:43 2026 :: Log Trentlin [6610]: level 4 -> 5 (earned)
+Tue Nov  3 22:10:43 2026 :: Trentlin has achieved level 5!
+Tue Nov  3 22:10:43 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261103_221043.level (PRESTORE Trentlin to see it).
+Tue Nov  3 22:10:43 2026 :: Log Trentlin [6610]: killed an old doll
+Tue Nov  3 22:10:43 2026 :: Log Trentlin [6610]: coin +1 copper
+Tue Nov  3 22:10:49 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:10:52 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:10:55 2026 :: Log Trentlin [6610]: l in cor
+Tue Nov  3 22:10:57 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:01 2026 :: Log Trentlin [6610]: sac co
+Tue Nov  3 22:11:01 2026 :: Log Trentlin [6610]: coin +2 copper
+Tue Nov  3 22:11:02 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:06 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:06 2026 :: Treasure goblin: vanished from room 9633 (The Whet Stone, newthalo.are) (too long in one area).
+Tue Nov  3 22:11:09 2026 :: Log Trentlin [6610]: sco
+Tue Nov  3 22:11:14 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:34 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:39 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:44 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:50 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:53 2026 :: Log Trentlin [6610]: sk
+Tue Nov  3 22:11:55 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:11:59 2026 :: Log Trentlin [6610]: kick
+Tue Nov  3 22:12:16 2026 :: Log Trentlin [6610]: killed a toy soldier
+Tue Nov  3 22:12:16 2026 :: Log Trentlin [6610]: coin +5 copper
+Tue Nov  3 22:12:28 2026 :: Log Trentlin [6610]: l in co
+Tue Nov  3 22:12:29 2026 :: Log Trentlin [6610]: get gun co
+Tue Nov  3 22:12:32 2026 :: Log Trentlin [6610]: i
+Tue Nov  3 22:12:33 2026 :: Log Trentlin [6610]: eat pie
+Tue Nov  3 22:12:35 2026 :: Log Trentlin [6610]: wear bal
+Tue Nov  3 22:12:40 2026 :: Log Trentlin [6610]: drop small
+Tue Nov  3 22:12:40 2026 :: Log Trentlin [6610]: drop small
+Tue Nov  3 22:12:41 2026 :: Log Trentlin [6610]: drop small
+Tue Nov  3 22:12:41 2026 :: Log Trentlin [6610]: drop small
+Tue Nov  3 22:12:41 2026 :: Log Trentlin [6610]: drop small
+Tue Nov  3 22:12:42 2026 :: Log Trentlin [6610]: l
+Tue Nov  3 22:12:44 2026 :: Log Trentlin [6610]: get gun co
+Tue Nov  3 22:12:45 2026 :: Log Trentlin [6610]: sco
+Tue Nov  3 22:12:46 2026 :: Log Trentlin [6610]: wear gu
+Tue Nov  3 22:12:50 2026 :: Log Trentlin [6610]: rem gu
+Tue Nov  3 22:12:51 2026 :: Log Trentlin [6610]: drop gun
+Tue Nov  3 22:12:52 2026 :: Log Trentlin [6610]: wear sh
+Tue Nov  3 22:12:53 2026 :: Log Trentlin [6610]: sca
+Tue Nov  3 22:12:55 2026 :: Log Trentlin [6610]: n
+Tue Nov  3 22:12:55 2026 :: Log Trentlin [6608]: arrived (The Playground) from 6610
+Tue Nov  3 22:12:55 2026 :: Log Trentlin [6608]: sca
+Tue Nov  3 22:12:57 2026 :: Log Trentlin [6608]: s
+Tue Nov  3 22:12:57 2026 :: Log Trentlin [6610]: arrived (The Playground) from 6608
+Tue Nov  3 22:12:57 2026 :: Log Trentlin [6610]: w
+Tue Nov  3 22:12:57 2026 :: Log Trentlin [6604]: arrived (Day Care Center) from 6610
+Tue Nov  3 22:12:58 2026 :: Log Trentlin [6604]: sca
+Tue Nov  3 22:13:00 2026 :: Log Trentlin [6604]: w
+Tue Nov  3 22:13:00 2026 :: Log Trentlin [6605]: arrived (Day Care Center) from 6604
+Tue Nov  3 22:13:01 2026 :: Log Trentlin [6605]: k old
+Tue Nov  3 22:13:05 2026 :: Log Trentlin [6605]: kick
+Tue Nov  3 22:13:10 2026 :: Log Trentlin [6605]: killed an old doll
+Tue Nov  3 22:13:10 2026 :: Log Trentlin [6605]: coin +1 copper
+Tue Nov  3 22:13:12 2026 :: Log Trentlin [6605]: kick
+Tue Nov  3 22:13:14 2026 :: Log Trentlin [6605]: l in cor
+Tue Nov  3 22:13:18 2026 :: Log Trentlin [6605]: sac ring cor
+Tue Nov  3 22:13:22 2026 :: Log Trentlin [6605]: get ring corpse
+Tue Nov  3 22:13:25 2026 :: Log Trentlin [6605]: killed a raggedy anne doll
+Tue Nov  3 22:13:25 2026 :: Log Trentlin [6605]: coin +3 copper
+Tue Nov  3 22:13:26 2026 :: Log Trentlin [6605]: kick
+Tue Nov  3 22:13:27 2026 :: Log Trentlin [6605]: sco
+Tue Nov  3 22:13:28 2026 :: Log Trentlin [6605]: att
+Tue Nov  3 22:13:29 2026 :: Log Trentlin [6605]: wear ri
+Tue Nov  3 22:13:30 2026 :: Log Trentlin [6605]: att
+Tue Nov  3 22:13:31 2026 :: Log Trentlin [6605]: l
+Tue Nov  3 22:13:33 2026 :: Log Trentlin [6605]: l in cor
+Tue Nov  3 22:13:34 2026 :: Log Trentlin [6605]: sac cor
+Tue Nov  3 22:13:34 2026 :: Log Trentlin [6605]: coin +4 copper
+Tue Nov  3 22:13:35 2026 :: Log Trentlin [6605]: l in co
+Tue Nov  3 22:13:36 2026 :: Log Trentlin [6605]: sac co
+Tue Nov  3 22:13:36 2026 :: Log Trentlin [6605]: coin +2 copper
+Tue Nov  3 22:13:37 2026 :: Log Trentlin [6605]: sca
+Tue Nov  3 22:13:39 2026 :: Log Trentlin [6605]: w
+Tue Nov  3 22:13:39 2026 :: Log Trentlin [6607]: arrived (The Staircase) from 6605
+Tue Nov  3 22:13:40 2026 :: Log Trentlin [6607]: sca
+Tue Nov  3 22:13:41 2026 :: Log Trentlin [6607]: e
+Tue Nov  3 22:13:41 2026 :: Log Trentlin [6605]: arrived (Day Care Center) from 6607
+Tue Nov  3 22:13:41 2026 :: Log Trentlin [6605]: n
+Tue Nov  3 22:13:41 2026 :: Log Trentlin [6603]: arrived (Day Care Center) from 6605
+Tue Nov  3 22:13:42 2026 :: Log Trentlin [6603]: sca
+Tue Nov  3 22:13:43 2026 :: Log Trentlin [6603]: w
+Tue Nov  3 22:13:43 2026 :: Log Trentlin [6606]: arrived (The Messy Bathroom) from 6603
+Tue Nov  3 22:13:44 2026 :: Log Trentlin [6606]: k old
+Tue Nov  3 22:13:47 2026 :: Log Trentlin [6606]: kick
+Tue Nov  3 22:13:51 2026 :: Log Trentlin [6606]: kick
+Tue Nov  3 22:13:51 2026 :: Log Trentlin [6606]: killed an old doll
+Tue Nov  3 22:13:51 2026 :: Log Trentlin [6606]: coin +1 copper
+Tue Nov  3 22:13:56 2026 :: Log Trentlin [6606]: l in co
+Tue Nov  3 22:13:58 2026 :: Log Trentlin [6606]: sac cor
+Tue Nov  3 22:13:58 2026 :: Log Trentlin [6606]: coin +2 copper
+Tue Nov  3 22:13:59 2026 :: Log Trentlin [6606]: where old
+Tue Nov  3 22:14:00 2026 :: Log Trentlin [6606]: l
+Tue Nov  3 22:14:01 2026 :: Log Trentlin [6606]: e
+Tue Nov  3 22:14:01 2026 :: Log Trentlin [6603]: arrived (Day Care Center) from 6606
+Tue Nov  3 22:14:01 2026 :: Log Trentlin [6603]: sca
+Tue Nov  3 22:14:03 2026 :: Log Trentlin [6603]: e
+Tue Nov  3 22:14:03 2026 :: Log Trentlin [6602]: arrived (Day Care Center) from 6603
+Tue Nov  3 22:14:03 2026 :: Log Trentlin [6602]: sca

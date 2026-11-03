@@ -19301,3 +19301,120 @@
 1793743737	cmd	Trentlin	4	44	connect.are	standing	80	0	-	south		Before the Dwarven Daycare //   Before you is a small building. Toys in various stages of disrepair litter // the rocky yard. From inside the building, you can hear the sounds of chaos	-	+
 1793743737	cmd	Trentlin	4	6601	daycare.are	standing	80	0	-	south		The Dwarven Drop Off //   This is where the dwarven mommies and daddies come to drop off their // annoying little brats.  You have the urge to leave.  There is a sign here.	-	+
 1793743740	cmd	Trentlin	4	6602	daycare.are	standing	80	0	-	south		Day Care Center //   You are in the north-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a kitchen to the east.	-	+
+1793743743	cmd	Trentlin	4	6602	daycare.are	standing	80	0	-	look	nan	You see an old dwarven lady who has been hunched over with age.  However, it // appears that there is still some fight left in her. // The nanny is in excellent condition.	-	+
+1793743745	cmd	Trentlin	4	6602	daycare.are	standing	80	0	-	look	nea	You do not see that here.	-	-
+1793743747	cmd	Trentlin	4	6602	daycare.are	standing	80	0	-	look	dwa	This is a young but not totally harmless creature. // The dwarven youth is in excellent condition. // The dwarven youth is using:	-	+
+1793743750	cmd	Trentlin	4	6602	daycare.are	standing	80	0	-	look	bear	This is a tiny little bear with a heart on his chest. // A teddy bear is in excellent condition.	-	-
+1793743750	cmd	Trentlin	4	6602	daycare.are	standing	86	0	-	scan		the nanny                          -to the South. // a raggedy anne doll                -to the South. // the dwarven youth                  -to the South.	-	+
+1793743753	cmd	Trentlin	4	6604	daycare.are	standing	86	0	-	south		Day Care Center //   You are in the south-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a playground to the east.	-	+
+1793743753	cmd	Trentlin	4	6604	daycare.are	standing	86	0	-	look	do	You see a small little cute rag doll. // A raggedy anne doll is in excellent condition.	-	-
+1793743754	cmd	Trentlin	4	6605	daycare.are	standing	86	0	-	west		Day Care Center //   You are in the south-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a staircase to the west.	-	+
+1793743756	cmd	Trentlin	4	6605	daycare.are	standing	86	0	-	scan		the dwarven youth                  -to the North. // the nanny                          -to the East. // a raggedy anne doll                -to the East.	-	+
+1793743759	cmd	Trentlin	4	6607	daycare.are	standing	86	0	-	west		The Staircase //   You stand on top of a staircase leading down, and wonder what mystery could // lie down under.  Beware!	-	+
+1793743761	cmd	Trentlin	4	6607	daycare.are	standing	86	0	-	exits		Obvious exits: // East  - Day Care Center // Down  - Entrance to the Mini-Maze	-	-
+1793743761	cmd	Trentlin	4	6607	daycare.are	standing	86	0	-	scan		an old doll                        -to the East. // a raggedy anne doll                -to the East. // the dwarven youth                  -to the East.	-	-
+1793743763	cmd	Trentlin	4	6605	daycare.are	standing	86	0	-	east		Day Care Center //   You are in the south-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a staircase to the west.	-	+
+1793743763	cmd	Trentlin	4	6604	daycare.are	standing	86	0	-	east		Day Care Center //   You are in the south-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a playground to the east.	-	+
+1793743763	cmd	Trentlin	4	6610	daycare.are	standing	86	0	-	east		The Playground //   You are in the south-west corner of the playground. // [Exits: north east west]	-	+
+1793743766	cmd	Trentlin	4	6610	daycare.are	standing	86	0	-	look	sol	The toy is looking for target practice. // A toy soldier is in excellent condition. // A toy soldier is using:	-	+
+1793743767	cmd	Trentlin	4	6610	daycare.are	standing	86	0	-	look	doll	This doll has been hugged and played with until there is almost nothing left. // An old doll is in excellent condition.	-	-
+1793743768	cmd	Trentlin	4	6610	daycare.are	standing	86	0	-	scan		a toy soldier                      -to the North. // the ugly bear                      -to the East. // the nanny                          -to the West.	-	+
+1793743769	cmd	Trentlin	4	6611	daycare.are	standing	86	0	-	east		The Playground //   You are in the south-east corner of the playground. // [Exits: north west]	-	+
+1793743771	cmd	Trentlin	4	6611	daycare.are	fighting	86	0	fight	look	bea	This is obviously a reject from the factory. // He snarls and growls at you. // The ugly bear is in excellent condition.	-	-
+1793743774	cmd	Trentlin	4	6611	daycare.are	fighting	86	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743777	cmd	Trentlin	4	6611	daycare.are	fighting	86	0	fight	kick		Your kick misses the ugly bear.	-	-
+1793743784	cmd	Trentlin	4	6611	daycare.are	fighting	82	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743787	cmd	Trentlin	4	6611	daycare.are	fighting	82	0	fight	kick		Your kick misses the ugly bear.	-	-
+1793743791	cmd	Trentlin	4	6611	daycare.are	fighting	82	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743796	cmd	Trentlin	4	6611	daycare.are	fighting	82	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743800	cmd	Trentlin	4	6611	daycare.are	fighting	82	0	fight	kick		Your kick misses the ugly bear.	-	-
+1793743805	cmd	Trentlin	4	6611	daycare.are	fighting	85	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743811	cmd	Trentlin	4	6611	daycare.are	fighting	85	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743817	cmd	Trentlin	4	6611	daycare.are	fighting	83	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743821	cmd	Trentlin	4	6611	daycare.are	fighting	83	0	fight	kick		Your kick misses the ugly bear.	-	-
+1793743823	cmd	Trentlin	4	6611	daycare.are	fighting	82	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743827	cmd	Trentlin	4	6611	daycare.are	fighting	80	0	fight	kick		Your kick misses the ugly bear.	-	-
+1793743830	cmd	Trentlin	4	6611	daycare.are	fighting	79	0	fight	kick		Your kick scratches the ugly bear.	-	-
+1793743835	cmd	Trentlin	4	6611	daycare.are	standing	79	0	-	look	in cor	Corpse of the ugly bear contains: //      Nothing.	-	-
+1793743836	cmd	Trentlin	4	6611	daycare.are	standing	79	0	-	look		The Playground //   You are in the south-east corner of the playground. // [Exits: north west]	-	+
+1793743836	cmd	Trentlin	4	6611	daycare.are	standing	79	0	-	scan		a toy soldier                      -to the North. // a toy soldier                      -to the North. // the ugly bear                      -to the North.	-	+
+1793743838	cmd	Trentlin	4	6610	daycare.are	standing	79	0	-	west		The Playground //   You are in the south-west corner of the playground. // [Exits: north east west]	-	+
+1793743839	cmd	Trentlin	4	6610	daycare.are	standing	79	0	-	look	old	This doll has been hugged and played with until there is almost nothing left. // An old doll is in excellent condition.	-	-
+1793743840	cmd	Trentlin	4	6610	daycare.are	standing	79	0	-	kill	old	Your punch misses an old doll. // Your punch misses an old doll.	-	-
+1793743849	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	kick		Your kick misses a toy soldier.	-	-
+1793743852	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743855	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	look	in cor	Corpse of an old doll contains: //      Nothing.	-	-
+1793743857	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	kick		Your kick misses a toy soldier.	-	-
+1793743861	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	sacrifice	co	The Gods give you 2 copper coins for your sacrifice.	-	-
+1793743862	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743866	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743869	state	Trentlin	5	6610	daycare.are	lvl=5 hp=168/233 mana=239/276 mv=125/214 align=-779 exp=11841 coin=4641013696 bank=10977624596 qp=27 prac=13 train=1 stash=69/75 remorts=1
+1793743869	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	score		| Name:       Trentlin | Level:       5 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793743874	cmd	Trentlin	5	6610	daycare.are	fighting	75	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743894	cmd	Trentlin	5	6610	daycare.are	fighting	72	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743899	cmd	Trentlin	5	6610	daycare.are	fighting	71	0	fight	kick		Your kick misses a toy soldier.	-	-
+1793743904	cmd	Trentlin	5	6610	daycare.are	fighting	71	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743910	cmd	Trentlin	5	6610	daycare.are	fighting	71	0	fight	kick		Your kick misses a toy soldier.	-	-
+1793743913	cmd	Trentlin	5	6610	daycare.are	fighting	70	0	fight	skills		Level  1: dagger              75%      hand to hand        75%       //           recall             100%       // Level  3: kick                75%      	-	+
+1793743915	cmd	Trentlin	5	6610	daycare.are	fighting	74	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743919	cmd	Trentlin	5	6610	daycare.are	fighting	73	0	fight	kick		Your kick scratches a toy soldier.	-	-
+1793743948	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	look	in co	Corpse of a toy soldier contains: //      a toy gun	-	-
+1793743949	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	get	gun co	Gun: you can't carry that many items.	-	-
+1793743952	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	inventory		You are carrying: //      a long slim dagger //      (Glowing) a *twinkling* ball of light	-	+
+1793743953	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	eat	pie	That's not edible.	-	-
+1793743955	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	wear	bal	You must be level 14 to use this object.	-	-
+1793743960	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	drop	small	You drop a small key.	-	-
+1793743960	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	drop	small	You drop a small key.	-	-
+1793743961	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	drop	small	You drop a small key.	-	-
+1793743961	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	drop	small	You drop a small key.	-	-
+1793743961	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	drop	small	You do not have that item.	-	-
+1793743962	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	look		The Playground //   You are in the south-west corner of the playground. // [Exits: north east west]	-	+
+1793743964	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	get	gun co	You get a toy gun from corpse of a toy soldier.	-	-
+1793743965	state	Trentlin	5	6610	daycare.are	lvl=5 hp=168/233 mana=249/276 mv=175/214 align=-776 exp=12268 coin=4641013701 bank=10977624596 qp=27 prac=13 train=1 stash=69/75 remorts=1
+1793743965	cmd	Trentlin	5	6610	daycare.are	standing	72	0	-	score		| Name:       Trentlin | Level:       5 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793743966	cmd	Trentlin	5	6610	daycare.are	standing	77	0	-	wear	gu	You wield a toy gun. // You remove your shield to handle the massive weapon. // You fumble and almost drop a toy gun.	-	-
+1793743970	cmd	Trentlin	5	6610	daycare.are	standing	77	0	-	remove	gu	You stop using a toy gun.	-	-
+1793743971	cmd	Trentlin	5	6610	daycare.are	standing	77	0	-	drop	gun	You drop a toy gun.	-	-
+1793743972	cmd	Trentlin	5	6610	daycare.are	standing	77	0	-	wear	sh	You wear a sub issue shield as a shield.	-	-
+1793743973	cmd	Trentlin	5	6610	daycare.are	standing	77	0	-	scan		a toy soldier                      -to the North. // a raggedy anne doll                -to the West. // the dwarven youth                  -to the West.	-	-
+1793743975	cmd	Trentlin	5	6608	daycare.are	standing	77	0	-	north		The Playground //   You are in the north-west corner of the playground. // [Exits: east south]	-	+
+1793743975	cmd	Trentlin	5	6608	daycare.are	standing	77	0	-	scan		a toy soldier                      -to the East. // a toy soldier                      -to the East. // the ugly bear                      -to the East.	-	+
+1793743977	cmd	Trentlin	5	6610	daycare.are	standing	77	0	-	south		The Playground //   You are in the south-west corner of the playground. // [Exits: north east west]	-	+
+1793743977	cmd	Trentlin	5	6604	daycare.are	standing	77	0	-	west		Day Care Center //   You are in the south-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a playground to the east.	-	+
+1793743978	cmd	Trentlin	5	6604	daycare.are	standing	77	0	-	scan		the nanny                          -to the North. // the nanny                          -to the North. // the dwarven youth                  -to the North.	-	+
+1793743980	cmd	Trentlin	5	6605	daycare.are	standing	77	0	-	west		Day Care Center //   You are in the south-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a staircase to the west.	-	+
+1793743981	cmd	Trentlin	5	6605	daycare.are	standing	77	0	-	kill	old	Your punch misses an old doll. // Your punch misses an old doll.	-	-
+1793743985	cmd	Trentlin	5	6605	daycare.are	fighting	75	0	fight	kick		Your kick misses an old doll.	-	-
+1793743992	cmd	Trentlin	5	6605	daycare.are	fighting	72	0	fight	kick		Your kick misses a raggedy anne doll.	-	-
+1793743994	cmd	Trentlin	5	6605	daycare.are	fighting	71	0	fight	look	in cor	Corpse of an old doll contains: //      (Glowing) a sugar skull //      a pink ice ring	-	-
+1793743998	cmd	Trentlin	5	6605	daycare.are	fighting	69	0	fight	sacrifice	ring cor	You can't find it.	-	-
+1793744002	cmd	Trentlin	5	6605	daycare.are	fighting	68	0	fight	get	ring corpse	You get a pink ice ring from corpse of an old doll.	-	-
+1793744006	cmd	Trentlin	5	6605	daycare.are	standing	66	0	-	kick		You aren't fighting anyone.	-	-
+1793744007	state	Trentlin	5	6605	daycare.are	lvl=5 hp=155/233 mana=257/276 mv=196/214 align=-779 exp=12909 coin=4641013705 bank=10977624596 qp=27 prac=13 train=1 stash=69/75 remorts=1
+1793744007	cmd	Trentlin	5	6605	daycare.are	standing	66	0	-	score		| Name:       Trentlin | Level:       5 | Class:        Monk | // | Played:     26 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793744008	cmd	Trentlin	5	6605	daycare.are	standing	66	0	-	attribute		Str: 13(13)  Int: 16(20)  Wis: 18(22)  Dex: 13(13)  Con: 21(25)	-	-
+1793744009	cmd	Trentlin	5	6605	daycare.are	standing	66	0	-	wear	ri	You wear a pink ice ring on your left finger.	-	-
+1793744010	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	attribute		Str: 13(14)  Int: 16(20)  Wis: 18(22)  Dex: 13(13)  Con: 21(25)	-	-
+1793744011	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	look		Day Care Center //   You are in the south-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a staircase to the west.	-	+
+1793744013	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	look	in cor	A stinking corpse contains: //      a rotten steak	-	-
+1793744014	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	sacrifice	cor	The Gods give you 4 copper coins for your sacrifice.	-	-
+1793744015	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	look	in co	Corpse of an old doll contains: //      (Glowing) a sugar skull	-	-
+1793744016	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	sacrifice	co	The Gods give you 2 copper coins for your sacrifice.	-	-
+1793744017	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	scan		the dwarven youth                  -to the North. // a raggedy anne doll                -to the East. // the dwarven youth                  -to the East.	-	-
+1793744019	cmd	Trentlin	5	6607	daycare.are	standing	70	0	-	west		The Staircase //   You stand on top of a staircase leading down, and wonder what mystery could // lie down under.  Beware!	-	+
+1793744020	cmd	Trentlin	5	6607	daycare.are	standing	70	0	-	scan		the dwarven youth                  -to the East.	-	-
+1793744021	cmd	Trentlin	5	6605	daycare.are	standing	70	0	-	east		Day Care Center //   You are in the south-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a staircase to the west.	-	+
+1793744021	cmd	Trentlin	5	6603	daycare.are	standing	70	0	-	north		Day Care Center //   You are in the north-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a bathroom to the west.	-	+
+1793744022	cmd	Trentlin	5	6603	daycare.are	standing	70	0	-	scan		a teddy bear                       -to the East. // the nanny                          -to the East. // the nanny                          -to the East.	-	+
+1793744023	cmd	Trentlin	5	6606	daycare.are	standing	70	0	-	west		The Messy Bathroom //   You hold your nose as you realize you have made the worst mistake of your // life.  The air is rancid and the walls are stained.	-	+
+1793744024	cmd	Trentlin	5	6606	daycare.are	standing	70	0	-	kill	old	Your punch misses an old doll. // Your punch misses an old doll.	-	-
+1793744027	cmd	Trentlin	5	6606	daycare.are	fighting	70	0	fight	kick		Your kick scratches an old doll.	-	-
+1793744031	cmd	Trentlin	5	6606	daycare.are	fighting	70	0	fight	kick		Your kick scratches an old doll. // An old doll is DEAD!! // You receive 149 experience points.	-	+
+1793744036	cmd	Trentlin	5	6606	daycare.are	standing	70	0	-	look	in co	Corpse of an old doll contains: //      Nothing.	-	-
+1793744038	cmd	Trentlin	5	6606	daycare.are	standing	70	0	-	sacrifice	cor	The Gods give you 2 copper coins for your sacrifice.	-	-
+1793744039	cmd	Trentlin	5	6606	daycare.are	standing	70	0	-	where	old	You didn't find any old.	-	-
+1793744040	cmd	Trentlin	5	6606	daycare.are	standing	70	0	-	look		The Messy Bathroom //   You hold your nose as you realize you have made the worst mistake of your // life.  The air is rancid and the walls are stained.	-	+
+1793744041	cmd	Trentlin	5	6603	daycare.are	standing	70	0	-	east		Day Care Center //   You are in the north-west corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a bathroom to the west.	-	+
+1793744041	cmd	Trentlin	5	6603	daycare.are	standing	70	0	-	scan		a teddy bear                       -to the East. // the nanny                          -to the East. // the nanny                          -to the East.	-	+
+1793744043	cmd	Trentlin	5	6602	daycare.are	standing	70	0	-	east		Day Care Center //   You are in the north-east corner of the main part of the center.  Toys and // toddlers are all over the room.  There is a kitchen to the east.	-	+
+1793744043	cmd	Trentlin	5	6602	daycare.are	standing	70	0	-	scan		a raggedy anne doll                -to the South. // the dwarven youth                  -to the South. // the dwarven youth                  -to the West.	-	-
