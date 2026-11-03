@@ -533,7 +533,10 @@ Live-test gotchas that look like product bugs and are not:
   earthquake stunned a level 20 fixture in the Temple mid-test in CI on
   2026-10-23 -- "You are too stunned to do that." -- which is what
   started the rework below. A low-level fixture at a few hit points with
-  no fight is the sign.
+  no fight is the sign. Nor random visits from Herbie the angel
+  (`TOC_NO_HERBIE`, 2026-11-03), who heals the most hurt player in the
+  world: a fixture set to one hit point was healed before its next
+  command in CI. Staff HERBIE still sends him.
 - **A mobile a test loads may walk away -- use the fixture world.** The
   Korzath security guard (29012) six tests fought is WIMPY and STAY_AREA,
   and on a busy runner it left the room between LOAD and the first KILL

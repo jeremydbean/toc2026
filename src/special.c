@@ -3024,6 +3024,13 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
   if ( cmd != NULL || mob == NULL || mob->in_room == NULL
   ||   mob->fighting != NULL )
 	return false;
+
+  /* Test worlds turn the random visit off (TOC_NO_HERBIE, set by
+     tests/live_mud.py): it heals the most hurt player in the world, and
+     a test that set somebody to one hit point was healed before its next
+     command (CI, 2026-11-03). Staff's HERBIE still sends him. */
+  if ( getenv( "TOC_NO_HERBIE" ) != NULL )
+	return false;
  
   chancez = number_percent();
 

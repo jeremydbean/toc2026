@@ -125,9 +125,26 @@ class CloseCallLiveTests(unittest.TestCase):
                 staff.must("set char sparring hp 1", "now set to 1")
                 staff.must("restore sparring", "")
                 staff.must("set char zcclose hitroll 300", "hitroll set to 300")
+                # 80 of 2,000 hit points right before the fight: under a
+                # twentieth, with room to take the guard's punches. The
+                # flee and recall loops above take long enough on a slow
+                # runner for a tick to heal one hit point past a twentieth
+                # of 100 (CI, 2026-11-03: 15 of 100 at the kill, no award),
+                # and on one hit point the guard's first punch could kill
+                # the hero before the blow landed.
+                staff.must("set char zcclose hp 80", "now set to 80")
+                staff.must("restore zcclose", "restored")
+                staff.must("set char zcclose hp 2000", "now set to 2000")
+                self.assertRegex(staff.must("stat char zcclose", "Hp:"), r"Hp: 80/2000\b")
                 staff.must(f"transfer zcclose {FLOOR}", "Ok.")
-                slain = hero.sync("kill sparring")
+                mark = len(hero.transcript)
+                if "is DEAD" not in hero.sync("kill sparring"):
+                    # It may dodge or parry a round; the fight goes on alone.
+                    hero.expect("is DEAD", timeout=30)
+                hero.sync("look")
+                slain = hero.transcript[mark:]
                 self.assertIn("is DEAD", slain)
+                self.assertNotIn("You have been KILLED", slain)
                 self.assertTrue(earned(slain, "Last One Standing"), repr(slain))
 
                 # Each once: a second flee from nothing earns nothing.

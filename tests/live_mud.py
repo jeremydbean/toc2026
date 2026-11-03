@@ -551,6 +551,11 @@ class LiveMud:
         # once landed between a fixture's two commands in CI. Pass
         # extra_env={"TOC_NO_DISASTERS": None} to allow them.
         env.setdefault("TOC_NO_DISASTERS", "1")
+        # Herbie the angel (spec_paramedic) visits the most hurt player in
+        # the world at random and heals them, which undid a fixture set to
+        # one hit point in CI (2026-11-03). Staff's HERBIE still works.
+        # Pass extra_env={"TOC_NO_HERBIE": None} to allow the random visit.
+        env.setdefault("TOC_NO_HERBIE", "1")
         env.update(self.extra_env)
         for key, value in self.extra_env.items():
             if value is None:
