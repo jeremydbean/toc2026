@@ -146,7 +146,12 @@ class FollowUpSourceTests(unittest.TestCase):
     def test_a_stashed_limited_item_stays_counted(self) -> None:
         obj = (SRC / "act_obj.c").read_text(encoding="latin-1")
         self.assertIn("stash_maxload( obj, +1 );", obj)
-        self.assertEqual(obj.count("stash_maxload( obj, -1 );"), 2)
+        # Every way out of a stash un-counts the object once, right before
+        # obj_to_char counts it again: STASH GET, STASH TAKE's move, and
+        # (2026-11-03) its hand-back to the taker when neither save lands.
+        self.assertEqual(obj.count("stash_maxload( obj, -1 );"), 3)
+        for at in [i for i in range(len(obj)) if obj.startswith("stash_maxload( obj, -1 );", i)]:
+            self.assertIn("obj_to_char( obj, ch );", obj[at:at + 120])
         extract = body("act_obj.c", "void stash_extract(")
         self.assertIn("extract_obj_player( obj );", extract)
 

@@ -67,7 +67,13 @@ class BackupSourceTests(unittest.TestCase):
         self.assertIn('player_snapshot_milestone( ch, "level", true );', level[:400])
         quest = (ROOT / "src" / "quest.c").read_text(encoding="latin-1")
         wrapper = quest[quest.index("static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,"):]
-        self.assertIn('player_snapshot_milestone( ch, "quest", true );', wrapper[:500])
+        # The whole wrapper, to its closing brace: since 2026-11-03 it also
+        # notes the reward for the play journal before the milestone.
+        wrapper = wrapper[:wrapper.index("\n}\n")]
+        self.assertIn('player_snapshot_milestone( ch, "quest", true );', wrapper)
+        self.assertLess(wrapper.index("complete_automatic_quest_body("),
+                        wrapper.index('player_snapshot_milestone( ch, "quest", true );'),
+                        "the copy is taken as the reward left them")
         merc = (ROOT / "src" / "merc.h").read_text(encoding="latin-1")
         self.assertIn("#define PLAYER_SNAPSHOT_MIN_INTERVAL 60", merc)
 
