@@ -247863,3 +247863,241 @@ Tue Nov  3 00:15:09 2026 :: Log Trentlin [30572]: n
 Tue Nov  3 00:15:09 2026 :: Log Trentlin [30576]: arrived (Level 8: Chamber of Three Doors) from 30572
 Tue Nov  3 00:15:10 2026 :: Log Trentlin [30576]: e
 Tue Nov  3 00:15:12 2026 :: Log Trentlin [30576]: k dark
+Tue Nov  3 00:16:13 2026 :: Log Trentlin [30576]: killed a blue darknut
+Tue Nov  3 00:16:13 2026 :: Log Trentlin [30576]: coin +21 platinum
+Tue Nov  3 00:16:13 2026 :: Log Trentlin [30576]: coin +52 silver
+Tue Nov  3 00:16:13 2026 :: Log Trentlin [30576]: coin +65 copper
+Tue Nov  3 00:16:13 2026 :: Log Trentlin [30576]: coin +170 gold
+Tue Nov  3 00:16:59 2026 :: Log Trentlin [30576]: l
+Tue Nov  3 00:17:00 2026 :: Log Trentlin [30576]: k dark
+Tue Nov  3 00:17:22 2026 :: Log Trentlin [30576]: smite
+Tue Nov  3 00:17:35 2026 :: Log Trentlin [30576]: smite
+Tue Nov  3 00:17:35 2026 :: Log Trentlin [30576]: killed a blue darknut
+Tue Nov  3 00:17:35 2026 :: Log Trentlin [30576]: coin +21 platinum
+Tue Nov  3 00:17:35 2026 :: Log Trentlin [30576]: coin +52 silver
+Tue Nov  3 00:17:35 2026 :: Log Trentlin [30576]: coin +65 copper
+Tue Nov  3 00:17:35 2026 :: Log Trentlin [30576]: coin +170 gold
+Tue Nov  3 00:17:42 2026 :: Log Trentlin [30576]: l
+Tue Nov  3 00:17:43 2026 :: Log Trentlin [30576]: e
+Tue Nov  3 00:17:43 2026 :: Log Trentlin [30577]: arrived (Level 8: Knight's Guardroom) from 30576
+Tue Nov  3 00:17:44 2026 :: Log Trentlin [30577]: sca
+Tue Nov  3 00:17:45 2026 :: Log Trentlin [30577]: u
+Tue Nov  3 00:17:45 2026 :: Log Trentlin [30570]: arrived (Level 8: Stair Beneath the Lion) from 30577
+Tue Nov  3 00:17:46 2026 :: Log Trentlin [30570]: sca
+Tue Nov  3 00:17:49 2026 :: Log Trentlin [30570]: unlock west
+Tue Nov  3 00:17:52 2026 :: Log Trentlin [30570]: l
+Tue Nov  3 00:17:53 2026 :: Log Trentlin [30570]: w
+Tue Nov  3 00:17:58 2026 :: Log Trentlin [30570]: l com
+Tue Nov  3 00:18:01 2026 :: Log Trentlin [30570]: bomb north
+Tue Nov  3 00:18:02 2026 :: Log Trentlin [30570]: sca
+Tue Nov  3 00:18:06 2026 :: Log Trentlin [30570]: n
+Tue Nov  3 00:18:06 2026 :: Log Trentlin [30574]: arrived (Level 8: Hall of Four Gouges) from 30570
+Tue Nov  3 00:18:07 2026 :: Log Trentlin [30574]: smite glee
+Tue Nov  3 00:18:14 2026 :: Log Trentlin [30574]: bash
+Tue Nov  3 00:18:24 2026 :: Log Trentlin [30574]: smite
+Tue Nov  3 00:18:40 2026 :: Treasure goblin: vanished from room 2219 (Crypt, draconia.are) (too long in one area).
+Tue Nov  3 00:18:55 2026 :: Log Trentlin [30574]: flee
+Tue Nov  3 00:18:55 2026 :: Log Trentlin [30574]: flee
+Tue Nov  3 00:18:55 2026 :: Log Trentlin [30570]: arrived (Level 8: Stair Beneath the Lion) from 30574
+Tue Nov  3 00:18:55 2026 :: Log Trentlin [30570]: flee
+Tue Nov  3 00:18:56 2026 :: Log Trentlin [30570]: flee
+Tue Nov  3 00:18:56 2026 :: Log Trentlin [30570]: flee
+Tue Nov  3 00:18:57 2026 :: Log Trentlin [30570]: d
+Tue Nov  3 00:18:57 2026 :: Log Trentlin [30577]: arrived (Level 8: Knight's Guardroom) from 30570
+Tue Nov  3 00:18:58 2026 :: Log Trentlin [30577]: w
+Tue Nov  3 00:18:58 2026 :: Log Trentlin [30576]: arrived (Level 8: Chamber of Three Doors) from 30577
+Tue Nov  3 00:18:59 2026 :: Log Trentlin [30576]: s
+Tue Nov  3 00:18:59 2026 :: Log Trentlin [30572]: arrived (Level 8: Locked Crossway) from 30576
+Tue Nov  3 00:19:00 2026 :: Log Trentlin [30572]: s
+Tue Nov  3 00:19:00 2026 :: Log Trentlin [30567]: arrived (Level 8: Slime-Slick Crossing) from 30572
+Tue Nov  3 00:19:00 2026 :: Log Trentlin [30567]: s
+Tue Nov  3 00:19:00 2026 :: Log Trentlin [30564]: arrived (Level 8: Narrow Passage Hall) from 30567
+Tue Nov  3 00:19:00 2026 :: Log Trentlin [30564]: s
+Tue Nov  3 00:19:00 2026 :: Log Trentlin [30562]: arrived (Level 8: Lion's Gate) from 30564
+Tue Nov  3 00:19:00 2026 :: Log Trentlin [30562]: s
+Tue Nov  3 00:19:01 2026 :: Log Trentlin [30562]: s
+Tue Nov  3 00:19:01 2026 :: Log Trentlin [30562]: s
+Tue Nov  3 00:19:02 2026 :: Log Trentlin [30562]: u
+Tue Nov  3 00:19:02 2026 :: Log Trentlin [30229]: arrived (The Lion's Thicket) from 30562
+Tue Nov  3 00:19:03 2026 :: Log Trentlin [30229]: reca
+Tue Nov  3 00:19:03 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30229
+Tue Nov  3 00:19:03 2026 :: Log Trentlin [4207]: e
+Tue Nov  3 00:19:03 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 00:19:04 2026 :: Log Trentlin [4202]: e
+Tue Nov  3 00:19:04 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 00:19:04 2026 :: Log Trentlin [4201]: e
+Tue Nov  3 00:19:04 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov  3 00:19:04 2026 :: Log Trentlin [2427]: e
+Tue Nov  3 00:19:05 2026 :: Log Trentlin [2427]: n
+Tue Nov  3 00:19:05 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov  3 00:19:05 2026 :: Log Trentlin [2404]: n
+Tue Nov  3 00:19:05 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov  3 00:19:06 2026 :: Log Trentlin [2401]: heal all
+Tue Nov  3 00:19:06 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 2401.
+Tue Nov  3 00:19:10 2026 :: Log Trentlin [2401]: south
+Tue Nov  3 00:19:10 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [2404]: south
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [2427]: west
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [4201]: west
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [4202]: west
+Tue Nov  3 00:19:11 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [4207]: up
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [3700]: up
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [3772]: up
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [3795]: enter portal
+Tue Nov  3 00:19:12 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15000]: east
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15001]: east
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15002]: east
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15003]: east
+Tue Nov  3 00:19:13 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15004]: north
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15010]: north
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15011]: north
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15012]: north
+Tue Nov  3 00:19:14 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Tue Nov  3 00:19:15 2026 :: Log Trentlin [15013]: east
+Tue Nov  3 00:19:15 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Tue Nov  3 00:19:15 2026 :: Log Trentlin [15038]: east
+Tue Nov  3 00:19:15 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Tue Nov  3 00:19:15 2026 :: Log Trentlin [15068]: enter cabinet
+Tue Nov  3 00:19:15 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Tue Nov  3 00:19:17 2026 :: Log Trentlin [30200]: play recorder 8
+Tue Nov  3 00:19:17 2026 :: Log Trentlin [30229]: arrived (The Lion's Thicket) from 30200
+Tue Nov  3 00:19:20 2026 :: Log Trentlin [30229]: burn bush
+Tue Nov  3 00:19:20 2026 :: Log Trentlin [30229]: d
+Tue Nov  3 00:19:20 2026 :: Log Trentlin [30562]: arrived (Level 8: Lion's Gate) from 30229
+Tue Nov  3 00:19:21 2026 :: Log Trentlin [30562]: n
+Tue Nov  3 00:19:21 2026 :: Log Trentlin [30564]: arrived (Level 8: Narrow Passage Hall) from 30562
+Tue Nov  3 00:19:21 2026 :: Log Trentlin [30564]: n
+Tue Nov  3 00:19:21 2026 :: Log Trentlin [30567]: arrived (Level 8: Slime-Slick Crossing) from 30564
+Tue Nov  3 00:19:22 2026 :: Log Trentlin [30567]: n
+Tue Nov  3 00:19:22 2026 :: Log Trentlin [30572]: arrived (Level 8: Locked Crossway) from 30567
+Tue Nov  3 00:19:22 2026 :: Log Trentlin [30572]: n
+Tue Nov  3 00:19:22 2026 :: Log Trentlin [30576]: arrived (Level 8: Chamber of Three Doors) from 30572
+Tue Nov  3 00:19:22 2026 :: Log Trentlin [30576]: n
+Tue Nov  3 00:19:23 2026 :: Log Trentlin [30576]: e
+Tue Nov  3 00:19:23 2026 :: Log Trentlin [30577]: arrived (Level 8: Knight's Guardroom) from 30576
+Tue Nov  3 00:19:25 2026 :: Log Trentlin [30577]: u
+Tue Nov  3 00:19:25 2026 :: Log Trentlin [30570]: arrived (Level 8: Stair Beneath the Lion) from 30577
+Tue Nov  3 00:19:25 2026 :: Log Trentlin [30570]: n
+Tue Nov  3 00:19:25 2026 :: Log Trentlin [30574]: arrived (Level 8: Hall of Four Gouges) from 30570
+Tue Nov  3 00:19:26 2026 :: Log Trentlin [30574]: n
+Tue Nov  3 00:19:28 2026 :: Log Trentlin [30574]: smite
+Tue Nov  3 00:19:35 2026 :: Log Trentlin [30574]: smite
+Tue Nov  3 00:19:44 2026 :: Log Trentlin [30574]: smite
+Tue Nov  3 00:19:54 2026 :: Sock.sinaddr:  52.15.147.27
+Tue Nov  3 00:19:54 2026 :: EOF encountered on read.
+Tue Nov  3 00:19:58 2026 :: Log Trentlin [30574]: smite
+Tue Nov  3 00:20:09 2026 :: Log Trentlin [30574]: flee
+Tue Nov  3 00:20:09 2026 :: Log Trentlin [30574]: flee
+Tue Nov  3 00:20:09 2026 :: Log Trentlin [30574]: flee
+Tue Nov  3 00:20:10 2026 :: Log Trentlin [30574]: flee
+Tue Nov  3 00:20:11 2026 :: Log Trentlin [30574]: reca
+Tue Nov  3 00:20:12 2026 :: Log Trentlin [30574]: s
+Tue Nov  3 00:20:12 2026 :: Log Trentlin [30570]: arrived (Level 8: Stair Beneath the Lion) from 30574
+Tue Nov  3 00:20:12 2026 :: Log Trentlin [30570]: d
+Tue Nov  3 00:20:12 2026 :: Log Trentlin [30577]: arrived (Level 8: Knight's Guardroom) from 30570
+Tue Nov  3 00:20:13 2026 :: Log Trentlin [30577]: w
+Tue Nov  3 00:20:13 2026 :: Log Trentlin [30576]: arrived (Level 8: Chamber of Three Doors) from 30577
+Tue Nov  3 00:20:14 2026 :: Log Trentlin [30576]: s
+Tue Nov  3 00:20:14 2026 :: Log Trentlin [30572]: arrived (Level 8: Locked Crossway) from 30576
+Tue Nov  3 00:20:14 2026 :: Log Trentlin [30572]: s
+Tue Nov  3 00:20:14 2026 :: Log Trentlin [30567]: arrived (Level 8: Slime-Slick Crossing) from 30572
+Tue Nov  3 00:20:15 2026 :: Log Trentlin [30567]: s
+Tue Nov  3 00:20:15 2026 :: Log Trentlin [30564]: arrived (Level 8: Narrow Passage Hall) from 30567
+Tue Nov  3 00:20:15 2026 :: Log Trentlin [30564]: s
+Tue Nov  3 00:20:15 2026 :: Log Trentlin [30562]: arrived (Level 8: Lion's Gate) from 30564
+Tue Nov  3 00:20:15 2026 :: Log Trentlin [30562]: s
+Tue Nov  3 00:20:15 2026 :: Log Trentlin [30562]: s
+Tue Nov  3 00:20:16 2026 :: Log Trentlin [30562]: u
+Tue Nov  3 00:20:16 2026 :: Log Trentlin [30229]: arrived (The Lion's Thicket) from 30562
+Tue Nov  3 00:20:17 2026 :: Log Trentlin [30229]: reca
+Tue Nov  3 00:20:19 2026 :: Log Trentlin [30229]: reca
+Tue Nov  3 00:20:20 2026 :: Log Trentlin [30229]: reca
+Tue Nov  3 00:20:20 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30229
+Tue Nov  3 00:20:21 2026 :: Log Trentlin [4207]: e
+Tue Nov  3 00:20:21 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov  3 00:20:21 2026 :: Log Trentlin [4202]: e
+Tue Nov  3 00:20:21 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov  3 00:20:22 2026 :: Log Trentlin [4201]: e
+Tue Nov  3 00:20:22 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov  3 00:20:22 2026 :: Log Trentlin [2427]: e
+Tue Nov  3 00:20:22 2026 :: Log Trentlin [2427]: e
+Tue Nov  3 00:20:22 2026 :: Log Trentlin [2427]: n
+Tue Nov  3 00:20:22 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov  3 00:20:23 2026 :: Log Trentlin [2404]: n
+Tue Nov  3 00:20:23 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov  3 00:20:24 2026 :: Log Trentlin [2401]: heal all
+Tue Nov  3 00:20:24 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 2401.
+Tue Nov  3 00:20:26 2026 :: Log Trentlin [2401]: south
+Tue Nov  3 00:20:26 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [2404]: south
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [2427]: west
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [4201]: west
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [4202]: west
+Tue Nov  3 00:20:27 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [4207]: up
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [3700]: up
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [3772]: up
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [3795]: enter portal
+Tue Nov  3 00:20:28 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15000]: east
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15001]: east
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15002]: east
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15003]: east
+Tue Nov  3 00:20:29 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15004]: north
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15010]: north
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15011]: north
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15012]: north
+Tue Nov  3 00:20:30 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Tue Nov  3 00:20:31 2026 :: Log Trentlin [15013]: east
+Tue Nov  3 00:20:31 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Tue Nov  3 00:20:31 2026 :: Log Trentlin [15038]: east
+Tue Nov  3 00:20:31 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Tue Nov  3 00:20:31 2026 :: Log Trentlin [15068]: enter cabinet
+Tue Nov  3 00:20:31 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Tue Nov  3 00:20:32 2026 :: Log Trentlin [30200]: play recorder 8
+Tue Nov  3 00:20:32 2026 :: Log Trentlin [30229]: arrived (The Lion's Thicket) from 30200
+Tue Nov  3 00:20:36 2026 :: Log Trentlin [30229]: d
+Tue Nov  3 00:20:36 2026 :: Log Trentlin [30562]: arrived (Level 8: Lion's Gate) from 30229
+Tue Nov  3 00:20:36 2026 :: Log Trentlin [30562]: n
+Tue Nov  3 00:20:36 2026 :: Log Trentlin [30564]: arrived (Level 8: Narrow Passage Hall) from 30562
+Tue Nov  3 00:20:36 2026 :: Log Trentlin [30564]: n
+Tue Nov  3 00:20:36 2026 :: Log Trentlin [30567]: arrived (Level 8: Slime-Slick Crossing) from 30564
+Tue Nov  3 00:20:37 2026 :: Log Trentlin [30567]: n
+Tue Nov  3 00:20:37 2026 :: Log Trentlin [30572]: arrived (Level 8: Locked Crossway) from 30567
+Tue Nov  3 00:20:37 2026 :: Log Trentlin [30572]: n
+Tue Nov  3 00:20:37 2026 :: Log Trentlin [30576]: arrived (Level 8: Chamber of Three Doors) from 30572
+Tue Nov  3 00:20:37 2026 :: Log Trentlin [30576]: n
+Tue Nov  3 00:20:38 2026 :: Log Trentlin [30576]: e
+Tue Nov  3 00:20:38 2026 :: Log Trentlin [30577]: arrived (Level 8: Knight's Guardroom) from 30576
+Tue Nov  3 00:20:40 2026 :: Log Trentlin [30577]: u
+Tue Nov  3 00:20:40 2026 :: Log Trentlin [30570]: arrived (Level 8: Stair Beneath the Lion) from 30577
+Tue Nov  3 00:20:40 2026 :: Log Trentlin [30570]: k g
+Tue Nov  3 00:20:43 2026 :: Log Trentlin [30570]: smite
