@@ -257767,3 +257767,79 @@ Wed Nov  4 02:23:42 2026 :: Log Alaric [17705]: ex
 Wed Nov  4 02:23:43 2026 :: Log Alaric [17705]: recal
 Wed Nov  4 02:23:43 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 17705
 Wed Nov  4 02:23:44 2026 :: Log Alaric [2497]: aq ab
+Wed Nov  4 02:28:40 2026 :: Sock.sinaddr:  5.161.61.238
+Wed Nov  4 02:28:40 2026 :: EOF encountered on read.
+Wed Nov  4 02:29:25 2026 :: Log Alaric [2497]: affects off: levitate
+Wed Nov  4 02:29:47 2026 :: Log Alaric [2497]: wake
+Wed Nov  4 02:29:48 2026 :: Log Alaric [2497]: l
+Wed Nov  4 02:29:50 2026 :: Log Alaric [2497]: changes
+Wed Nov  4 02:30:12 2026 :: Log Alaric [2497]: eq
+Wed Nov  4 02:30:14 2026 :: Log Alaric [2497]: i
+Wed Nov  4 02:31:25 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 02:31:25 2026 :: Log Alaric [2497]: quest assigned: kill the Ofcol cityguard (mob 623, level 19) in ofcol.are, 16 minutes, ordinary
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2401]: west
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2405]: west
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2433]: west
+Wed Nov  4 02:31:33 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2434]: west
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2435]: west
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2436]: west
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2437]: west
+Wed Nov  4 02:31:34 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Nov  4 02:31:35 2026 :: Log Alaric [2438]: open west
+Wed Nov  4 02:31:35 2026 :: Log Alaric [2438]: west
+Wed Nov  4 02:31:35 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Nov  4 02:31:38 2026 :: Log Alaric [2439]: north
+Wed Nov  4 02:31:38 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Wed Nov  4 02:31:38 2026 :: Log Alaric [3900]: north
+Wed Nov  4 02:31:38 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Wed Nov  4 02:31:38 2026 :: Log Alaric [3901]: north
+Wed Nov  4 02:31:38 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Wed Nov  4 02:31:38 2026 :: Log Alaric [3902]: east
+Wed Nov  4 02:31:38 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Wed Nov  4 02:31:39 2026 :: Log Alaric [3903]: east
+Wed Nov  4 02:31:39 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Wed Nov  4 02:31:39 2026 :: Log Alaric [3904]: north
+Wed Nov  4 02:31:39 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Wed Nov  4 02:31:39 2026 :: Log Alaric [300]: north
+Wed Nov  4 02:31:39 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Wed Nov  4 02:31:39 2026 :: Log Alaric [315]: north
+Wed Nov  4 02:31:39 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Wed Nov  4 02:31:40 2026 :: Log Alaric [320]: east
+Wed Nov  4 02:31:40 2026 :: Log Alaric [305]: arrived (Path in the plains) from 320
+Wed Nov  4 02:31:40 2026 :: Log Alaric [305]: north
+Wed Nov  4 02:31:40 2026 :: Log Alaric [306]: arrived (Path in the foothills) from 305
+Wed Nov  4 02:31:40 2026 :: Log Alaric [306]: north
+Wed Nov  4 02:31:40 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 306
+Wed Nov  4 02:31:40 2026 :: Log Alaric [326]: east
+Wed Nov  4 02:31:40 2026 :: Log Alaric [309]: arrived (Path in the foothills) from 326
+Wed Nov  4 02:31:41 2026 :: Log Alaric [309]: east
+Wed Nov  4 02:31:41 2026 :: Log Alaric [310]: arrived (Path in the foothills) from 309
+Wed Nov  4 02:31:41 2026 :: Log Alaric [310]: north
+Wed Nov  4 02:31:41 2026 :: Log Alaric [327]: arrived (The foothills) from 310
+Wed Nov  4 02:31:41 2026 :: Log Alaric [327]: east
+Wed Nov  4 02:31:41 2026 :: Log Alaric [313]: arrived (Road to Ofcol) from 327
+Wed Nov  4 02:31:41 2026 :: Log Alaric [313]: north
+Wed Nov  4 02:31:41 2026 :: Log Alaric [314]: arrived (Road to Ofcol) from 313
+Wed Nov  4 02:31:42 2026 :: Log Alaric [314]: north
+Wed Nov  4 02:31:42 2026 :: Log Alaric [52]: arrived (Outside Ofcol) from 314
+Wed Nov  4 02:31:42 2026 :: Log Alaric [52]: north
+Wed Nov  4 02:31:42 2026 :: Log Alaric [5550]: arrived (Village street) from 52
+Wed Nov  4 02:31:43 2026 :: Log Alaric [5550]: levi
+Wed Nov  4 02:31:45 2026 :: Log Alaric [5550]: n
+Wed Nov  4 02:31:45 2026 :: Log Alaric [5551]: arrived (Village street) from 5550
+Wed Nov  4 02:31:46 2026 :: Log Alaric [5551]: scan
+Wed Nov  4 02:31:48 2026 :: Log Alaric [5551]: e
+Wed Nov  4 02:31:48 2026 :: Log Alaric [5553]: arrived (The small alley) from 5551
+Wed Nov  4 02:31:48 2026 :: Log Alaric [5553]: e
+Wed Nov  4 02:31:48 2026 :: Log Alaric [601]: arrived (The Big Intersection) from 5553
+Wed Nov  4 02:31:50 2026 :: Log Alaric [601]: scan
+Wed Nov  4 02:31:52 2026 :: Log Alaric [601]: e
+Wed Nov  4 02:31:52 2026 :: Log Alaric [666]: arrived (Raff Way) from 601
