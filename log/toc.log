@@ -257367,3 +257367,49 @@ Wed Nov  4 01:30:00 2026 :: Log Alaric [2497]: copper +92477484
 Wed Nov  4 01:30:00 2026 :: Log Alaric [2497]: quest complete: 92p 47g 74s 84c, 24 quest points (streak bonus 60%)
 Wed Nov  4 01:30:00 2026 :: Snapshot of Alaric taken before quest: Alaric.20261104_013000.quest (PRESTORE Alaric to see it).
 Wed Nov  4 01:30:01 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov  4 01:32:40 2026 :: Treasure goblin: vanished from room 9166 (Front door, dylan.are) (too long in one area).
+Wed Nov  4 01:32:50 2026 :: Sock.sinaddr:  5.161.177.47
+Wed Nov  4 01:32:50 2026 :: EOF encountered on read.
+Wed Nov  4 01:35:42 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 01:35:42 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in underdrk.are, 17 minutes, ordinary
+Wed Nov  4 01:35:46 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 01:35:46 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 01:35:46 2026 :: Log Alaric [2401]: north
+Wed Nov  4 01:35:46 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Wed Nov  4 01:35:46 2026 :: Log Alaric [2402]: north
+Wed Nov  4 01:35:46 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2415]: east
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2485]: east
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2486]: north
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2486
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2483]: east
+Wed Nov  4 01:35:47 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Wed Nov  4 01:35:48 2026 :: Log Alaric [2484]: north
+Wed Nov  4 01:35:48 2026 :: Log Alaric [2481]: arrived (Market Plaza.) from 2484
+Wed Nov  4 01:35:48 2026 :: Log Alaric [2481]: north
+Wed Nov  4 01:35:48 2026 :: Log Alaric [2514]: arrived (Dark Alley.) from 2481
+Wed Nov  4 01:35:48 2026 :: Log Alaric [2514]: east
+Wed Nov  4 01:35:48 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2514
+Wed Nov  4 01:35:48 2026 :: Log Alaric [2505]: levi
+Wed Nov  4 01:35:49 2026 :: Log Alaric [2505]: north
+Wed Nov  4 01:35:49 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Wed Nov  4 01:35:49 2026 :: Log Alaric [2506]: open down
+Wed Nov  4 01:35:49 2026 :: Log Alaric [2506]: down
+Wed Nov  4 01:35:49 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Wed Nov  4 01:35:49 2026 :: Log Alaric [7030]: quit
+Wed Nov  4 01:35:49 2026 :: Alaric has quit.
+Wed Nov  4 01:35:49 2026 :: [QUIT] Player rejoined the real world.
+Wed Nov  4 01:35:53 2026 :: Sock.sinaddr:  208.126.22.104
+Wed Nov  4 01:35:55 2026 :: Loading Alaric's playerfile
+Wed Nov  4 01:35:56 2026 :: Loading Alaric's playerfile
+Wed Nov  4 01:35:56 2026 :: Alaric@208.126.22.104 has connected.
+Wed Nov  4 01:35:57 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 0
+Wed Nov  4 01:36:02 2026 :: Log Alaric [7030]: recal
+Wed Nov  4 01:36:02 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7030
+Wed Nov  4 01:36:05 2026 :: Log Alaric [2497]: i
+Wed Nov  4 01:36:09 2026 :: Log Alaric [2497]: eq
+Wed Nov  4 01:36:10 2026 :: Log Alaric [2497]: af
+Wed Nov  4 01:36:12 2026 :: Log Alaric [2497]: steel
+Wed Nov  4 01:36:16 2026 :: Log Alaric [2497]: af
