@@ -257574,3 +257574,196 @@ Wed Nov  4 02:21:42 2026 :: Log Alaric [17755]: e
 Wed Nov  4 02:21:42 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17755
 Wed Nov  4 02:21:44 2026 :: Log Alaric [17752]: n
 Wed Nov  4 02:21:44 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17752
+Wed Nov  4 02:21:54 2026 :: Log Alaric [17753]: north
+Wed Nov  4 02:21:54 2026 :: Log Alaric [17758]: arrived (The Yellow Brick Road) from 17753
+Wed Nov  4 02:21:54 2026 :: Log Alaric [17758]: north
+Wed Nov  4 02:21:54 2026 :: Log Alaric [17762]: arrived (The Yellow Brick Road) from 17758
+Wed Nov  4 02:21:54 2026 :: Log Alaric [17762]: north
+Wed Nov  4 02:21:54 2026 :: Log Alaric [17763]: arrived (The Yellow Brick Road) from 17762
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17763]: north
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17764]: arrived (The Yellow Brick Road) from 17763
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17764]: north
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17765]: arrived (The Yellow Brick Road) from 17764
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17765]: north
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17767]: arrived (Yellow Brick Road) from 17765
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17767]: north
+Wed Nov  4 02:21:55 2026 :: Log Alaric [17768]: arrived (Yellow Brick Road) from 17767
+Wed Nov  4 02:21:56 2026 :: Log Alaric [17768]: north
+Wed Nov  4 02:21:56 2026 :: Log Alaric [17769]: arrived (Yellow Brick Road) from 17768
+Wed Nov  4 02:21:56 2026 :: Log Alaric [17769]: north
+Wed Nov  4 02:21:56 2026 :: Log Alaric [17770]: arrived (Yellow Brick Road) from 17769
+Wed Nov  4 02:21:56 2026 :: Log Alaric [17770]: north
+Wed Nov  4 02:21:56 2026 :: Log Alaric [17771]: arrived (Entrance to the Emerald City) from 17770
+Wed Nov  4 02:21:56 2026 :: Log Alaric [17771]: open north
+Wed Nov  4 02:21:57 2026 :: Log Alaric [17771]: north
+Wed Nov  4 02:21:57 2026 :: Log Alaric [17772]: arrived (The Emerald City) from 17771
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17772]: west
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17773]: arrived (The Emerald City) from 17772
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17773]: north
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17774]: arrived (The Emerald City) from 17773
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17774]: north
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17775]: arrived (The Emerald City) from 17774
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17775]: east
+Wed Nov  4 02:22:01 2026 :: Log Alaric [17776]: arrived (The Emerald City) from 17775
+Wed Nov  4 02:22:02 2026 :: Log Alaric [17776]: south
+Wed Nov  4 02:22:02 2026 :: Log Alaric [17780]: arrived (Entrance to the Wizard's throne room) from 17776
+Wed Nov  4 02:22:05 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:10 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:10 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:13 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:13 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:16 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:16 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:17 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:17 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:18 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:19 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:21 2026 :: Log Alaric [17780]: north
+Wed Nov  4 02:22:21 2026 :: Log Alaric [17776]: arrived (The Emerald City) from 17780
+Wed Nov  4 02:22:21 2026 :: Log Alaric [17776]: east
+Wed Nov  4 02:22:21 2026 :: Log Alaric [17777]: arrived (The Emerald City) from 17776
+Wed Nov  4 02:22:21 2026 :: Log Alaric [17777]: south
+Wed Nov  4 02:22:21 2026 :: Log Alaric [17778]: arrived (The Emerald City) from 17777
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17778]: south
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17779]: arrived (The Emerald City) from 17778
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17779]: west
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17772]: arrived (The Emerald City) from 17779
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17772]: south
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17771]: arrived (Entrance to the Emerald City) from 17772
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17771]: south
+Wed Nov  4 02:22:22 2026 :: Log Alaric [17770]: arrived (Yellow Brick Road) from 17771
+Wed Nov  4 02:22:23 2026 :: Log Alaric [17770]: south
+Wed Nov  4 02:22:23 2026 :: Log Alaric [17769]: arrived (Yellow Brick Road) from 17770
+Wed Nov  4 02:22:27 2026 :: Log Alaric [17769]: north
+Wed Nov  4 02:22:27 2026 :: Log Alaric [17770]: arrived (Yellow Brick Road) from 17769
+Wed Nov  4 02:22:27 2026 :: Log Alaric [17770]: north
+Wed Nov  4 02:22:27 2026 :: Log Alaric [17771]: arrived (Entrance to the Emerald City) from 17770
+Wed Nov  4 02:22:27 2026 :: Log Alaric [17771]: north
+Wed Nov  4 02:22:27 2026 :: Log Alaric [17772]: arrived (The Emerald City) from 17771
+Wed Nov  4 02:22:28 2026 :: Log Alaric [17772]: east
+Wed Nov  4 02:22:28 2026 :: Log Alaric [17779]: arrived (The Emerald City) from 17772
+Wed Nov  4 02:22:28 2026 :: Log Alaric [17779]: north
+Wed Nov  4 02:22:28 2026 :: Log Alaric [17778]: arrived (The Emerald City) from 17779
+Wed Nov  4 02:22:29 2026 :: Log Alaric [17778]: n
+Wed Nov  4 02:22:29 2026 :: Log Alaric [17777]: arrived (The Emerald City) from 17778
+Wed Nov  4 02:22:30 2026 :: Log Alaric [17777]: n
+Wed Nov  4 02:22:33 2026 :: Log Alaric [17777]: w
+Wed Nov  4 02:22:33 2026 :: Log Alaric [17776]: arrived (The Emerald City) from 17777
+Wed Nov  4 02:22:34 2026 :: Log Alaric [17776]: e
+Wed Nov  4 02:22:34 2026 :: Log Alaric [17777]: arrived (The Emerald City) from 17776
+Wed Nov  4 02:22:34 2026 :: Log Alaric [17777]: s
+Wed Nov  4 02:22:34 2026 :: Log Alaric [17778]: arrived (The Emerald City) from 17777
+Wed Nov  4 02:22:35 2026 :: Log Alaric [17778]: e
+Wed Nov  4 02:22:36 2026 :: Log Alaric [17778]: s
+Wed Nov  4 02:22:36 2026 :: Log Alaric [17779]: arrived (The Emerald City) from 17778
+Wed Nov  4 02:22:37 2026 :: Log Alaric [17779]: s
+Wed Nov  4 02:22:40 2026 :: Log Alaric [17779]: north
+Wed Nov  4 02:22:40 2026 :: Log Alaric [17778]: arrived (The Emerald City) from 17779
+Wed Nov  4 02:22:40 2026 :: Log Alaric [17778]: north
+Wed Nov  4 02:22:40 2026 :: Log Alaric [17777]: arrived (The Emerald City) from 17778
+Wed Nov  4 02:22:41 2026 :: Log Alaric [17777]: west
+Wed Nov  4 02:22:41 2026 :: Log Alaric [17776]: arrived (The Emerald City) from 17777
+Wed Nov  4 02:22:41 2026 :: Log Alaric [17776]: south
+Wed Nov  4 02:22:41 2026 :: Log Alaric [17780]: arrived (Entrance to the Wizard's throne room) from 17776
+Wed Nov  4 02:22:41 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:41 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:45 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:45 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:46 2026 :: Log Alaric [17780]: open up
+Wed Nov  4 02:22:46 2026 :: Log Alaric [17780]: up
+Wed Nov  4 02:22:47 2026 :: Log Alaric [17780]: north
+Wed Nov  4 02:22:47 2026 :: Log Alaric [17776]: arrived (The Emerald City) from 17780
+Wed Nov  4 02:22:47 2026 :: Log Alaric [17776]: east
+Wed Nov  4 02:22:47 2026 :: Log Alaric [17777]: arrived (The Emerald City) from 17776
+Wed Nov  4 02:22:47 2026 :: Log Alaric [17777]: south
+Wed Nov  4 02:22:47 2026 :: Log Alaric [17778]: arrived (The Emerald City) from 17777
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17778]: south
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17779]: arrived (The Emerald City) from 17778
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17779]: west
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17772]: arrived (The Emerald City) from 17779
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17772]: south
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17771]: arrived (Entrance to the Emerald City) from 17772
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17771]: south
+Wed Nov  4 02:22:48 2026 :: Log Alaric [17770]: arrived (Yellow Brick Road) from 17771
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17770]: south
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17769]: arrived (Yellow Brick Road) from 17770
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17769]: south
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17768]: arrived (Yellow Brick Road) from 17769
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17768]: south
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17767]: arrived (Yellow Brick Road) from 17768
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17767]: south
+Wed Nov  4 02:22:49 2026 :: Log Alaric [17765]: arrived (The Yellow Brick Road) from 17767
+Wed Nov  4 02:22:50 2026 :: Log Alaric [17765]: south
+Wed Nov  4 02:22:50 2026 :: Log Alaric [17764]: arrived (The Yellow Brick Road) from 17765
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17764]: south
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17763]: arrived (The Yellow Brick Road) from 17764
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17763]: south
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17762]: arrived (The Yellow Brick Road) from 17763
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17762]: south
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17758]: arrived (The Yellow Brick Road) from 17762
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17758]: south
+Wed Nov  4 02:22:55 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17758
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17753]: south
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17753
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17752]: south
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17700]: arrived (Entrance to the Land of Oz) from 17752
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17700]: east
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17701]: arrived (Faint trail through the woods) from 17700
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17701]: east
+Wed Nov  4 02:22:56 2026 :: Log Alaric [17702]: arrived (Faint trail through the woods) from 17701
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17702]: northeast
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17706]: arrived (Clearing in the woods) from 17702
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17706]: north
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17708]: arrived (Clearing in the woods) from 17706
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17708]: east
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17709]: arrived (Clearing in the woods) from 17708
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17709]: east
+Wed Nov  4 02:22:57 2026 :: Log Alaric [17714]: arrived (The path continues) from 17709
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17714]: north
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17715]: arrived (Entrance to the Haunted Forest) from 17714
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17715]: north
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17716]: arrived (The Haunted Forest) from 17715
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17716]: north
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17728]: arrived (The Haunted Forest) from 17716
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17728]: north
+Wed Nov  4 02:22:58 2026 :: Log Alaric [17734]: arrived (A Steep Trail) from 17728
+Wed Nov  4 02:22:59 2026 :: Log Alaric [17734]: west
+Wed Nov  4 02:22:59 2026 :: Log Alaric [17740]: arrived (Beginning of a dusty trail) from 17734
+Wed Nov  4 02:23:03 2026 :: Treasure goblin: vanished from room 934 (Ares Street, olympus.are) (too long in one area).
+Wed Nov  4 02:23:24 2026 :: Log Alaric [17740]: east
+Wed Nov  4 02:23:24 2026 :: Log Alaric [17734]: arrived (A Steep Trail) from 17740
+Wed Nov  4 02:23:24 2026 :: Log Alaric [17734]: south
+Wed Nov  4 02:23:24 2026 :: Log Alaric [17728]: arrived (The Haunted Forest) from 17734
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17728]: south
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17716]: arrived (The Haunted Forest) from 17728
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17716]: east
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17717]: arrived (The Haunted Forest) from 17716
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17717]: east
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17718]: arrived (The Haunted Forest) from 17717
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17718]: south
+Wed Nov  4 02:23:25 2026 :: Log Alaric [17719]: arrived (The Haunted Forest) from 17718
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17719]: southwest
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17722]: arrived (The Haunted Forest) from 17719
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17722]: southeast
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17723]: arrived (The Haunted Forest) from 17722
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17723]: south
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17724]: arrived (The Haunted Forest) from 17723
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17724]: south
+Wed Nov  4 02:23:26 2026 :: Log Alaric [17725]: arrived (A turn in the path) from 17724
+Wed Nov  4 02:23:27 2026 :: Log Alaric [17725]: west
+Wed Nov  4 02:23:27 2026 :: Log Alaric [17726]: arrived (The Haunted Forest) from 17725
+Wed Nov  4 02:23:27 2026 :: Log Alaric [17726]: west
+Wed Nov  4 02:23:27 2026 :: Log Alaric [17727]: arrived (The Haunted Forest) from 17726
+Wed Nov  4 02:23:29 2026 :: Log Alaric [17727]: w
+Wed Nov  4 02:23:29 2026 :: Log Alaric [17705]: arrived (A Dead End) from 17727
+Wed Nov  4 02:23:36 2026 :: Sock.sinaddr:  5.161.61.238
+Wed Nov  4 02:23:36 2026 :: Log Alaric [17705]: l
+Wed Nov  4 02:23:36 2026 :: Log Alaric [17705]: affects off: levitate
+Wed Nov  4 02:23:36 2026 :: EOF encountered on read.
+Wed Nov  4 02:23:37 2026 :: Log Alaric [17705]: i
+Wed Nov  4 02:23:38 2026 :: Log Alaric [17705]: levi
+Wed Nov  4 02:23:41 2026 :: Log Alaric [17705]: w
+Wed Nov  4 02:23:42 2026 :: Log Alaric [17705]: ex
+Wed Nov  4 02:23:43 2026 :: Log Alaric [17705]: recal
+Wed Nov  4 02:23:43 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 17705
+Wed Nov  4 02:23:44 2026 :: Log Alaric [2497]: aq ab

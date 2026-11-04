@@ -20850,3 +20850,111 @@
 1793758901	cmd	Alaric	57	17755	landoz.are	standing	100	0	-	up		A small house //   You are inside a small house which doesn't seem quite in // place with the rest of the village.  It feels as if the	-	+
 1793758902	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	east		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
 1793758904	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	north		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1793758914	cmd	Alaric	57	17758	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You have reached the exit leading out of the land of the // munchkins.  To the north continues a road constructed out	-	+
+1793758914	cmd	Alaric	57	17762	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You make your way along the road stopping from time to time // to enjoy the beauty of the great Land of Oz.  This road leads	-	+
+1793758914	cmd	Alaric	57	17763	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   As you continue along the road you stop and notice that // beside the road in a giant field of corn is a man made of 	-	+
+1793758915	cmd	Alaric	57	17764	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down up you.  You feel very safe	-	+
+1793758915	cmd	Alaric	57	17765	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   As you continue along the road you stop and see a very rusty // man standing next to a log cabin.  	-	+
+1793758915	cmd	Alaric	57	17767	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down upon you.  You feel very safe	-	+
+1793758915	cmd	Alaric	57	17768	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You are quite a long way from the entrance to the Land of Oz  // now and it is starting to get dark.  Standing in the middle of	-	+
+1793758916	cmd	Alaric	57	17769	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You continue along the road and are nearing the Emerald City. // [Exits: north south]	-	-
+1793758916	cmd	Alaric	57	17770	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You have travelled quite a long way and you can see the entrance // to the Emerald City to the north.	-	+
+1793758916	cmd	Alaric	57	17771	landoz.are	standing	100	0	-	north		Entrance to the Emerald City //   You have reached the entrance to the famous Emerald City.  You // are astonished to see that everything in the city is actually	-	+
+1793758916	cmd	Alaric	57	17771	landoz.are	standing	100	0	-	open	north	Ok.	-	-
+1793758917	cmd	Alaric	57	17772	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758921	cmd	Alaric	57	17773	landoz.are	standing	100	0	-	west		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758921	cmd	Alaric	57	17774	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758921	cmd	Alaric	57	17775	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758921	cmd	Alaric	57	17776	landoz.are	standing	100	0	-	east		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758922	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	south		Entrance to the Wizard's throne room //   This is the entrance to the Wizard's throne room.  Hope you have // all the keys needed to gain entrance.  As you gaze upwards, you notice	-	+
+1793758925	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758930	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758930	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758933	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758933	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758936	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758936	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758937	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758937	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758938	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758939	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758941	cmd	Alaric	57	17776	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758941	cmd	Alaric	57	17777	landoz.are	standing	100	0	-	east		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758941	cmd	Alaric	57	17778	landoz.are	standing	100	0	-	south		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758942	cmd	Alaric	57	17779	landoz.are	standing	100	0	-	south		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758942	cmd	Alaric	57	17772	landoz.are	standing	100	0	-	west		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758942	cmd	Alaric	57	17771	landoz.are	standing	100	0	-	south		Entrance to the Emerald City //   You have reached the entrance to the famous Emerald City.  You // are astonished to see that everything in the city is actually	-	+
+1793758942	cmd	Alaric	57	17770	landoz.are	standing	100	0	-	south		Yellow Brick Road //   You have travelled quite a long way and you can see the entrance // to the Emerald City to the north.	-	+
+1793758943	cmd	Alaric	57	17769	landoz.are	standing	100	0	-	south		Yellow Brick Road //   You continue along the road and are nearing the Emerald City. // [Exits: north south]	-	-
+1793758947	cmd	Alaric	57	17770	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You have travelled quite a long way and you can see the entrance // to the Emerald City to the north.	-	+
+1793758947	cmd	Alaric	57	17771	landoz.are	standing	100	0	-	north		Entrance to the Emerald City //   You have reached the entrance to the famous Emerald City.  You // are astonished to see that everything in the city is actually	-	+
+1793758947	cmd	Alaric	57	17772	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758948	cmd	Alaric	57	17779	landoz.are	standing	100	0	-	east		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758948	cmd	Alaric	57	17778	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758949	cmd	Alaric	57	17777	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758950	cmd	Alaric	57	17777	landoz.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1793758953	cmd	Alaric	57	17776	landoz.are	standing	100	0	-	west		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758954	cmd	Alaric	57	17777	landoz.are	standing	100	0	-	east		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758954	cmd	Alaric	57	17778	landoz.are	standing	100	0	-	south		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758955	cmd	Alaric	57	17778	landoz.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793758956	cmd	Alaric	57	17779	landoz.are	standing	100	0	-	south		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758957	cmd	Alaric	57	17779	landoz.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793758960	cmd	Alaric	57	17778	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758960	cmd	Alaric	57	17777	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758961	cmd	Alaric	57	17776	landoz.are	standing	100	0	-	west		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758961	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	south		Entrance to the Wizard's throne room //   This is the entrance to the Wizard's throne room.  Hope you have // all the keys needed to gain entrance.  As you gaze upwards, you notice	-	+
+1793758961	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758961	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758965	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758965	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758966	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	open	up	It's locked.	-	-
+1793758966	cmd	Alaric	57	17780	landoz.are	standing	100	0	-	up		The door is closed.	-	-
+1793758967	cmd	Alaric	57	17776	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758967	cmd	Alaric	57	17777	landoz.are	standing	100	0	-	east		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758967	cmd	Alaric	57	17778	landoz.are	standing	100	0	-	south		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758968	cmd	Alaric	57	17779	landoz.are	standing	100	0	-	south		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758968	cmd	Alaric	57	17772	landoz.are	standing	100	0	-	west		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1793758968	cmd	Alaric	57	17771	landoz.are	standing	100	0	-	south		Entrance to the Emerald City //   You have reached the entrance to the famous Emerald City.  You // are astonished to see that everything in the city is actually	-	+
+1793758968	cmd	Alaric	57	17770	landoz.are	standing	100	0	-	south		Yellow Brick Road //   You have travelled quite a long way and you can see the entrance // to the Emerald City to the north.	-	+
+1793758969	cmd	Alaric	57	17769	landoz.are	standing	100	0	-	south		Yellow Brick Road //   You continue along the road and are nearing the Emerald City. // [Exits: north south]	-	-
+1793758969	cmd	Alaric	57	17768	landoz.are	standing	100	0	-	south		Yellow Brick Road //   You are quite a long way from the entrance to the Land of Oz  // now and it is starting to get dark.  Standing in the middle of	-	+
+1793758969	cmd	Alaric	57	17767	landoz.are	standing	100	0	-	south		Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down upon you.  You feel very safe	-	+
+1793758969	cmd	Alaric	57	17765	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   As you continue along the road you stop and see a very rusty // man standing next to a log cabin.  	-	+
+1793758970	cmd	Alaric	57	17764	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down up you.  You feel very safe	-	+
+1793758975	cmd	Alaric	57	17763	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   As you continue along the road you stop and notice that // beside the road in a giant field of corn is a man made of 	-	+
+1793758975	cmd	Alaric	57	17762	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   You make your way along the road stopping from time to time // to enjoy the beauty of the great Land of Oz.  This road leads	-	+
+1793758975	cmd	Alaric	57	17758	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   You have reached the exit leading out of the land of the // munchkins.  To the north continues a road constructed out	-	+
+1793758975	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	south		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1793758976	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	south		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1793758976	cmd	Alaric	57	17700	landoz.are	standing	100	0	-	south		Entrance to the Land of Oz //   As you enter the Land of Oz you can't help but marvel at the  // beautiful landscape that surrounds you.  In the distance you 	-	+
+1793758976	cmd	Alaric	57	17701	landoz.are	standing	100	0	-	east		Faint trail through the woods //   You are on a well-worn trail that leads away from the Munchkin // Land and into a very thick section of woods.	-	+
+1793758976	cmd	Alaric	57	17702	landoz.are	standing	100	0	-	east		Faint trail through the woods //   You find yourself in a thicker section of the woods.  You can  // hear strange sounds coming from all directions.  It might be 	-	+
+1793758977	cmd	Alaric	57	17706	landoz.are	standing	100	0	-	northeast		Clearing in the woods //   You have reached a small clearing in the woods and the sun  // shines down bright upon you.  You feel a sudden relief to be 	-	+
+1793758977	cmd	Alaric	57	17708	landoz.are	standing	100	0	-	north		Clearing in the woods //   You are at the northern edge of a small clearing.  The  // path continues to the north, south and to the east.	-	+
+1793758977	cmd	Alaric	57	17709	landoz.are	standing	100	0	-	east		Clearing in the woods //   You are at the northern edge of a small clearing.  The  // path continues to the east, west and to the south.	-	+
+1793758977	cmd	Alaric	57	17714	landoz.are	standing	100	0	-	east		The path continues //   This path continues along through the woods and you get the  // feeling that you are not alone.  The sudden silence is eerie 	-	+
+1793758978	cmd	Alaric	57	17715	landoz.are	standing	100	0	-	north		Entrance to the Haunted Forest //   You have reached the entrance to the Haunted Forest.  The  // legends say that this forest was once a happy place but now 	-	+
+1793758978	cmd	Alaric	57	17716	landoz.are	standing	100	0	-	north		The Haunted Forest //   You feel the evil totally surrounding you and you shudder at  // the thought of what might happen to you.  There are strange 	-	+
+1793758978	cmd	Alaric	57	17728	landoz.are	standing	100	0	-	north		The Haunted Forest //   This is an extremely dark section of the Haunted Forest and // you start to feel very uneasy.  You can feel many eyes watching	-	+
+1793758978	cmd	Alaric	57	17734	landoz.are	standing	100	0	-	north		A Steep Trail //   You make your way along a steep trail in the Haunted Forest // and the trail branches off to the west and the north.	-	+
+1793758979	cmd	Alaric	57	17740	landoz.are	standing	100	0	-	west		Beginning of a dusty trail //   You are at the beginning of a dusty trail that leads far off // into the distance toward a steep mountain.  You can feel a 	-	+
+1793759004	cmd	Alaric	57	17734	landoz.are	standing	100	0	-	east		A Steep Trail //   You make your way along a steep trail in the Haunted Forest // and the trail branches off to the west and the north.	-	+
+1793759004	cmd	Alaric	57	17728	landoz.are	standing	100	0	-	south		The Haunted Forest //   This is an extremely dark section of the Haunted Forest and // you start to feel very uneasy.  You can feel many eyes watching	-	+
+1793759005	cmd	Alaric	57	17716	landoz.are	standing	100	1	-	south		The Haunted Forest //   You feel the evil totally surrounding you and you shudder at  // the thought of what might happen to you.  There are strange 	-	+
+1793759005	cmd	Alaric	57	17717	landoz.are	standing	100	0	-	east		The Haunted Forest //   You are on a small trail in the Haunted Forest.  The trail  // continues to the east and west.	-	+
+1793759005	cmd	Alaric	57	17718	landoz.are	standing	100	0	-	east		The Haunted Forest //   The trail seems to disappear here and you make your way through // the thick underbrush.  Vines and weeds seem to reach out and 	-	+
+1793759005	cmd	Alaric	57	17719	landoz.are	standing	100	0	-	south		The Haunted Forest //   You have reached a point in the thick brush where you can see // two faint but distinct paths through the forest.  Each path 	-	+
+1793759006	cmd	Alaric	57	17722	landoz.are	standing	100	0	-	southwest		The Haunted Forest //   You have reached the beginning of a wide path that leads to // unknown places in the Haunted Forest.	-	+
+1793759006	cmd	Alaric	57	17723	landoz.are	standing	100	0	-	southeast		The Haunted Forest //   As you continue along a wide path through the Haunted Forest // the trees begin to thin and you can see a little sunlight trying	-	+
+1793759006	cmd	Alaric	57	17724	landoz.are	standing	100	0	-	south		The Haunted Forest //   As you continue along a wide path through the Haunted Forest // the trees begin to thin and you can see a little sunlight trying	-	+
+1793759006	cmd	Alaric	57	17725	landoz.are	standing	100	0	-	south		A turn in the path //   You have reached a point in the path that takes a sharp turn // and the path seems to be nearing an end.	-	+
+1793759007	cmd	Alaric	57	17726	landoz.are	standing	100	0	-	west		The Haunted Forest //   The path you are on seems quite endless and you begin to wonder // exactly where this is leading.	-	+
+1793759007	cmd	Alaric	57	17727	landoz.are	standing	100	0	-	west		The Haunted Forest //   This is another quite dark section of the forest.  You debate // whether or not to continue on or turn back.	-	+
+1793759009	cmd	Alaric	57	17705	landoz.are	standing	100	0	-	west		A Dead End //   You managed to hack and slash your way into the room but  // unfortunately the exit disappeared behind you.  YOU ARE TRAPPED!	-	+
+1793759016	cmd	Alaric	57	17705	landoz.are	standing	100	0	-	look		A Dead End //   You managed to hack and slash your way into the room but  // unfortunately the exit disappeared behind you.  YOU ARE TRAPPED!	-	+
+1793759017	cmd	Alaric	57	17705	landoz.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) British's amulet //      (Glowing) an aura of power	-	+
+1793759018	cmd	Alaric	57	17705	landoz.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1793759021	cmd	Alaric	57	17705	landoz.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1793759022	cmd	Alaric	57	17705	landoz.are	standing	100	0	-	exits		Obvious exits: // None.	-	-
+1793759023	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793759024	cmd	Alaric	57	2497	dresden.are	standing	100	11	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'Perhaps fortune will favor you more next time.'	-	-
