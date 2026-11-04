@@ -260102,3 +260102,12 @@ Wed Nov  4 17:42:34 2026 :: EOF encountered on read.
 Wed Nov  4 17:47:40 2026 :: Sock.sinaddr:  178.156.185.127
 Wed Nov  4 17:47:40 2026 :: EOF encountered on read.
 Wed Nov  4 17:50:54 2026 :: Treasure goblin: vanished from room 4012 (The tunnel, moria.are) (too long in one area).
+Wed Nov  4 17:52:43 2026 :: Sock.sinaddr:  34.198.201.66
+Wed Nov  4 17:52:44 2026 :: EOF encountered on read.
+Wed Nov  4 17:54:46 2026 :: Loading Eclipse's playerfile
+Wed Nov  4 17:54:49 2026 :: Loading Eclipse's playerfile
+Wed Nov  4 17:54:49 2026 :: Eclipse@97.202.254.41 has connected.
+Wed Nov  4 17:54:51 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 0
+Wed Nov  4 17:54:53 2026 :: Log Eclipse [9988]: who
+Wed Nov  4 17:55:57 2026 :: EOF encountered on read.
+Wed Nov  4 17:55:57 2026 :: Closing link to Eclipse.

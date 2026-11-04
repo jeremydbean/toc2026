@@ -22042,3 +22042,5 @@
 1793803647	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1817 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |	-	+
 1793803652	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square.  It is dominated by the trunk of the biggest	-	+
 1793803654	session	Killuminati	70	2401	dresden.are	quit	25s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	9 commands	0 refused	coin: none
+1793814893	cmd	Eclipse	70	9988	valhalla.are	standing	100	0	-	who		[70 Night   IMP   ] Eclipse is waiting to hear back on issues from you // Players found: 1	-	-
+1793814957	session	Eclipse	70	9988	valhalla.are	linkdead	66s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	1 commands	0 refused	coin: none
