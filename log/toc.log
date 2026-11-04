@@ -257497,3 +257497,80 @@ Wed Nov  4 02:10:11 2026 :: EOF encountered on read.
 Wed Nov  4 02:12:58 2026 :: Treasure goblin: vanished from room 13213 (Southeast Guardpost and Watchtower., solace.are) (too long in one area).
 Wed Nov  4 02:13:26 2026 :: Sock.sinaddr:  178.156.185.127
 Wed Nov  4 02:13:27 2026 :: EOF encountered on read.
+Wed Nov  4 02:18:15 2026 :: Sock.sinaddr:  208.126.22.104
+Wed Nov  4 02:18:17 2026 :: Loading Alaric's playerfile
+Wed Nov  4 02:18:18 2026 :: Loading Alaric's playerfile
+Wed Nov  4 02:18:18 2026 :: Alaric@208.126.22.104 has connected.
+Wed Nov  4 02:18:19 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 0
+Wed Nov  4 02:18:21 2026 :: Log Alaric [6123]: who
+Wed Nov  4 02:18:23 2026 :: Log Alaric [6123]: recal
+Wed Nov  4 02:18:23 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 6123
+Wed Nov  4 02:18:26 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 02:18:26 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in landoz.are, 17 minutes, ordinary
+Wed Nov  4 02:18:31 2026 :: Sock.sinaddr:  3.212.128.62
+Wed Nov  4 02:18:31 2026 :: EOF encountered on read.
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2401]: west
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2405]: west
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2433]: west
+Wed Nov  4 02:18:33 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2434]: west
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2435]: west
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2436]: west
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2437]: west
+Wed Nov  4 02:18:34 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Nov  4 02:18:35 2026 :: Log Alaric [2438]: open west
+Wed Nov  4 02:18:35 2026 :: Log Alaric [2438]: west
+Wed Nov  4 02:18:35 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Nov  4 02:18:40 2026 :: Log Alaric [2439]: west
+Wed Nov  4 02:18:40 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Wed Nov  4 02:18:40 2026 :: Log Alaric [6000]: west
+Wed Nov  4 02:18:40 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Wed Nov  4 02:18:40 2026 :: Log Alaric [6001]: west
+Wed Nov  4 02:18:40 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6002]: west
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6003]: west
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6004]: west
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6100]: west
+Wed Nov  4 02:18:41 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6101]: west
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6102]: west
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6103]: south
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6108]: arrived (A narrow trail through the deep, dark forest) from 6103
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6108]: west
+Wed Nov  4 02:18:42 2026 :: Log Alaric [6109]: arrived (A narrow trail through the deep, dark forest) from 6108
+Wed Nov  4 02:18:43 2026 :: Log Alaric [6109]: west
+Wed Nov  4 02:18:43 2026 :: Log Alaric [6110]: arrived (A narrow trail through the deep, dark forest) from 6109
+Wed Nov  4 02:18:43 2026 :: Log Alaric [6110]: north
+Wed Nov  4 02:18:43 2026 :: Log Alaric [6144]: arrived (A small path in the deep, dark forest) from 6110
+Wed Nov  4 02:18:43 2026 :: Log Alaric [6144]: west
+Wed Nov  4 02:18:43 2026 :: Log Alaric [6130]: arrived (A narrow trail through the deep, dark forest) from 6144
+Wed Nov  4 02:18:43 2026 :: Log Alaric [6130]: north
+Wed Nov  4 02:18:43 2026 :: Log Alaric [66]: arrived (A dark section of the forest) from 6130
+Wed Nov  4 02:18:44 2026 :: Log Alaric [66]: enter portal
+Wed Nov  4 02:18:44 2026 :: Log Alaric [17700]: arrived (Entrance to the Land of Oz) from 66
+Wed Nov  4 02:21:32 2026 :: Log Alaric [17700]: north
+Wed Nov  4 02:21:32 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17700
+Wed Nov  4 02:21:32 2026 :: Log Alaric [17752]: west
+Wed Nov  4 02:21:32 2026 :: Log Alaric [17755]: arrived (A small house) from 17752
+Wed Nov  4 02:21:36 2026 :: Log Alaric [17755]: (refused) opwn down
+Wed Nov  4 02:21:39 2026 :: Log Alaric [17755]: open down
+Wed Nov  4 02:21:39 2026 :: Log Alaric [17755]: d
+Wed Nov  4 02:21:39 2026 :: Log Alaric [17761]: arrived (Basement of a small house) from 17755
+Wed Nov  4 02:21:41 2026 :: Log Alaric [17761]: u
+Wed Nov  4 02:21:41 2026 :: Log Alaric [17755]: arrived (A small house) from 17761
+Wed Nov  4 02:21:42 2026 :: Log Alaric [17755]: e
+Wed Nov  4 02:21:42 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17755
+Wed Nov  4 02:21:44 2026 :: Log Alaric [17752]: n
+Wed Nov  4 02:21:44 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17752
