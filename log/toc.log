@@ -256653,3 +256653,106 @@ Wed Nov  4 00:42:16 2026 :: Treasure goblin: vanished from room 7442 (The northe
 Wed Nov  4 00:42:57 2026 :: Log Alaric [4210]: affects off: levitate
 Wed Nov  4 00:44:27 2026 :: Log Alaric [4210]: score
 Wed Nov  4 00:44:28 2026 :: Log Alaric [4210]: who
+Wed Nov  4 00:46:21 2026 :: Log Alaric [4210]: wake
+Wed Nov  4 00:46:21 2026 :: Log Alaric [4210]: s
+Wed Nov  4 00:46:21 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Wed Nov  4 00:46:21 2026 :: Log Alaric [4203]: s
+Wed Nov  4 00:46:21 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Wed Nov  4 00:46:22 2026 :: Log Alaric [4202]: e
+Wed Nov  4 00:46:22 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov  4 00:46:22 2026 :: Log Alaric [4201]: e
+Wed Nov  4 00:46:22 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Nov  4 00:46:22 2026 :: Log Alaric [2427]: n
+Wed Nov  4 00:46:22 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov  4 00:46:22 2026 :: Log Alaric [2404]: n
+Wed Nov  4 00:46:22 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2401]: u
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2410]: u
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2411]: u
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2414]: u
+Wed Nov  4 00:46:24 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Nov  4 00:46:26 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 00:46:26 2026 :: Log Alaric [2497]: quest assigned: kill the hobgoblin bodyguard (mob 1518, level 7) in gnome.are, 29 minutes, ordinary
+Wed Nov  4 00:46:31 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 00:46:31 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 00:46:31 2026 :: Log Alaric [2401]: east
+Wed Nov  4 00:46:31 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2403]: east
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2420]: east
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2421]: east
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2422]: east
+Wed Nov  4 00:46:32 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Nov  4 00:46:33 2026 :: Log Alaric [2423]: east
+Wed Nov  4 00:46:33 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Nov  4 00:46:33 2026 :: Log Alaric [2424]: east
+Wed Nov  4 00:46:33 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Nov  4 00:46:33 2026 :: Log Alaric [2425]: east
+Wed Nov  4 00:46:33 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Nov  4 00:46:33 2026 :: Log Alaric [2426]: open east
+Wed Nov  4 00:46:34 2026 :: Log Alaric [2426]: east
+Wed Nov  4 00:46:34 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Nov  4 00:46:35 2026 :: Log Alaric [2440]: east
+Wed Nov  4 00:46:35 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Wed Nov  4 00:46:35 2026 :: Log Alaric [3503]: east
+Wed Nov  4 00:46:35 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Wed Nov  4 00:46:35 2026 :: Log Alaric [3502]: east
+Wed Nov  4 00:46:35 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Wed Nov  4 00:46:36 2026 :: Log Alaric [3525]: east
+Wed Nov  4 00:46:36 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Wed Nov  4 00:46:36 2026 :: Log Alaric [3526]: south
+Wed Nov  4 00:46:36 2026 :: Log Alaric [55]: arrived (Dusty Path) from 3526
+Wed Nov  4 00:46:36 2026 :: Log Alaric [55]: east
+Wed Nov  4 00:46:36 2026 :: Log Alaric [1501]: arrived (Entrance to Gnome Village) from 55
+Wed Nov  4 00:46:40 2026 :: Log Alaric [1501]: levi
+Wed Nov  4 00:46:41 2026 :: Log Alaric [1501]: e
+Wed Nov  4 00:46:41 2026 :: Log Alaric [1502]: arrived (A Dusty Path) from 1501
+Wed Nov  4 00:47:10 2026 :: Sock.sinaddr:  52.87.72.16
+Wed Nov  4 00:47:10 2026 :: EOF encountered on read.
+Wed Nov  4 00:47:23 2026 :: Log Alaric [1502]: east
+Wed Nov  4 00:47:23 2026 :: Log Alaric [1503]: arrived (A Road in the Village) from 1502
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1503]: east
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1504]: arrived (A Dusty Path) from 1503
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1504]: east
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1559]: arrived (The Unused Path) from 1504
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1559]: east
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1560]: arrived (The Overgrown Path) from 1559
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1560]: east
+Wed Nov  4 00:47:24 2026 :: Log Alaric [1561]: arrived (The Clearing) from 1560
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1561]: north
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1562]: arrived (Entrance to the Mine Shaft) from 1561
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1562]: east
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1563]: arrived (Mine Shaft) from 1562
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1563]: east
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1564]: arrived (Mine Shaft) from 1563
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1564]: east
+Wed Nov  4 00:47:25 2026 :: Log Alaric [1565]: arrived (Mine Shaft) from 1564
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1565]: east
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1566]: arrived (Walkway) from 1565
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1566]: south
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1567]: arrived (Walkway) from 1566
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1567]: south
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1568]: arrived (The Grand Hall) from 1567
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1568]: south
+Wed Nov  4 00:47:26 2026 :: Log Alaric [1569]: arrived (The Throne Room) from 1568
+Wed Nov  4 00:47:30 2026 :: Log Alaric [1569]: fi bo
+Wed Nov  4 00:47:30 2026 :: Log Alaric [1569]: alignment 880 -> 905 (Paragon)
+Wed Nov  4 00:47:30 2026 :: Log Alaric [1569]: killed the hobgoblin bodyguard
+Wed Nov  4 00:47:30 2026 :: Log Alaric [1569]: coin +2 silver
+Wed Nov  4 00:47:30 2026 :: Log Alaric [1569]: coin +2 copper
+Wed Nov  4 00:47:30 2026 :: Log Alaric [1569]: coin +1 gold
+Wed Nov  4 00:47:41 2026 :: Log Alaric [1569]: recal
+Wed Nov  4 00:47:41 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1569
+Wed Nov  4 00:47:41 2026 :: Log Alaric [2497]: aq co
+Wed Nov  4 00:47:41 2026 :: Log Alaric [2497]: copper +154129140
+Wed Nov  4 00:47:41 2026 :: Log Alaric [2497]: quest complete: 154p 12g 91s 40c, 42 quest points (streak bonus 20%)
+Wed Nov  4 00:47:41 2026 :: Snapshot of Alaric taken before quest: Alaric.20261104_004741.quest (PRESTORE Alaric to see it).
+Wed Nov  4 00:47:42 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov  4 00:48:42 2026 :: Log Alaric [2497]: sc
+Wed Nov  4 00:48:55 2026 :: Log Alaric [2497]: affects off: steel fist
+Wed Nov  4 00:49:00 2026 :: Log Alaric [2497]: sc
