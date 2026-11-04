@@ -21848,3 +21848,112 @@
 1793762239	cmd	Trentlin	9	3570	midennir.are	standing	85	0	-	east		The Front of the Inn //   You are standing on a well-worn path which opens into a clearing. // An old, wooden building is here with smoke billowing from its	-	+
 1793762241	cmd	Trentlin	9	3572	midennir.are	standing	85	0	-	south		South of the Inn //   You are standing south of the inn.  You could easily go north and enter // through the front door, or west and to the rear of the establishment.  You	-	+
 1793762241	cmd	Trentlin	9	3575	midennir.are	standing	85	0	-	south		The Ambush Point //   This is an overgrown foot-trail south of the inn. It leads west, but you // would be hard pressed to follow it far. A number of bushes are trampled on	-	+
+1793762244	cmd	Trentlin	9	3581	midennir.are	standing	85	0	-	west		On the Trail of the Horsemen //   The path continues east and west of here.  You notice fresh tracks in // the soft ground that show the horsemen fled to the west.	-	+
+1793762246	cmd	Trentlin	9	3582	midennir.are	standing	85	0	-	west		On the Trail of the Horsemen //   The path continues east and south.  You notice fresh tracks in // the soft ground that show the horsemen turned, and fled south.	-	+
+1793762247	cmd	Trentlin	9	3583	midennir.are	standing	85	0	-	south		On the Trail of the Horsemen //   The trail of the horsemen continues east and north along this path through // the forest.  The tracks are still fresh, so they must be near.	-	+
+1793762249	cmd	Trentlin	9	3583	midennir.are	standing	85	0	-	consider	ho	The dark horseman is about your level. // The dark horseman has about a third of your hit points. // Blow for blow, you would need about 5 rounds to bring the dark horseman down; he would need about 78 rounds for you.	-	+
+1793762250	cmd	Trentlin	9	3583	midennir.are	standing	85	0	-	look	ho	The man is obviously an outlaw, and has no qualms about slashing you into // little bits. // The dark horseman is in excellent condition.	-	+
+1793762252	cmd	Trentlin	9	3583	midennir.are	standing	85	0	-	kill	ho	Your pierce misses the dark horseman. // Your pierce grazes the dark horseman.	-	-
+1793762255	cmd	Trentlin	9	3583	midennir.are	fighting	85	0	fight	kick		Your kick scratches the dark horseman.	-	-
+1793762258	cmd	Trentlin	9	3583	midennir.are	fighting	85	0	fight	kick		Your kick grazes the dark horseman.	-	-
+1793762263	cmd	Trentlin	9	3583	midennir.are	fighting	85	0	fight	kick		Your kick scratches the dark horseman.	-	-
+1793762266	cmd	Trentlin	9	3583	midennir.are	fighting	88	0	fight	kick		Your kick grazes the dark horseman.	-	-
+1793762269	cmd	Trentlin	9	3583	midennir.are	fighting	86	0	fight	kick		Your kick scratches the dark horseman.	-	-
+1793762272	cmd	Trentlin	9	3583	midennir.are	fighting	86	0	fight	kick		Your kick scratches the dark horseman.	-	-
+1793762275	cmd	Trentlin	9	3583	midennir.are	fighting	85	0	fight	kick		Your kick scratches the dark horseman.	-	-
+1793762278	cmd	Trentlin	9	3583	midennir.are	fighting	83	0	fight	kick		Your kick scratches the dark horseman.	-	-
+1793762282	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	west		A Dead End Trail //   The path comes to an abrupt end here, as the trees close around you and // make any further exploration impossible.  Fresh tracks cover the ground, and	-	+
+1793762283	state	Trentlin	9	3584	midennir.are	lvl=9 hp=256/305 mana=428/428 mv=145/267 align=-781 exp=21230 coin=4629907736 bank=10977624596 qp=27 prac=4 train=1 stash=58/75 remorts=1
+1793762283	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	score		| Name:       Trentlin | Level:       9 | Class:        Monk | // | Played:     27 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793762285	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	look		A Dead End Trail //   The path comes to an abrupt end here, as the trees close around you and // make any further exploration impossible.  Fresh tracks cover the ground, and	-	+
+1793762289	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	underbrush	I see no underbrush here.	-	-
+1793762291	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	hole	I see no hole here.	-	-
+1793762294	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	secret	I see no secret here.	-	-
+1793762297	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	west	I see no door west here.	-	-
+1793762299	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	south	I see no door south here.	-	-
+1793762300	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	bush	I see no bush here.	-	-
+1793762303	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	hidden	I see no hidden here.	-	-
+1793762307	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	down	I see no door down here.	-	-
+1793762309	cmd	Trentlin	9	3584	midennir.are	standing	83	0	-	open	track	I see no track here.	-	-
+1793762333	anomaly	Trentlin	9	3584	midennir.are	coin jump	2051013 copper in one tick, 918 a kill
+1793762374	cmd	Trentlin	9	3583	midennir.are	standing	88	0	-	east		On the Trail of the Horsemen //   The trail of the horsemen continues east and north along this path through // the forest.  The tracks are still fresh, so they must be near.	-	+
+1793762376	cmd	Trentlin	9	3582	midennir.are	standing	93	0	-	north		On the Trail of the Horsemen //   The path continues east and south.  You notice fresh tracks in // the soft ground that show the horsemen turned, and fled south.	-	+
+1793762376	cmd	Trentlin	9	3581	midennir.are	standing	93	0	-	east		On the Trail of the Horsemen //   The path continues east and west of here.  You notice fresh tracks in // the soft ground that show the horsemen fled to the west.	-	+
+1793762376	cmd	Trentlin	9	3575	midennir.are	standing	93	0	-	east		The Ambush Point //   This is an overgrown foot-trail south of the inn. It leads west, but you // would be hard pressed to follow it far. A number of bushes are trampled on	-	+
+1793762377	cmd	Trentlin	9	3575	midennir.are	standing	93	0	-	east		Alas, you cannot go that way.	-	-
+1793762379	cmd	Trentlin	9	3572	midennir.are	standing	93	0	-	north		South of the Inn //   You are standing south of the inn.  You could easily go north and enter // through the front door, or west and to the rear of the establishment.  You	-	+
+1793762380	cmd	Trentlin	9	3572	midennir.are	standing	93	0	-	east		Alas, you cannot go that way.	-	-
+1793762380	cmd	Trentlin	9	3575	midennir.are	standing	93	0	-	south		The Ambush Point //   This is an overgrown foot-trail south of the inn. It leads west, but you // would be hard pressed to follow it far. A number of bushes are trampled on	-	+
+1793762381	cmd	Trentlin	9	3572	midennir.are	standing	93	0	-	north		South of the Inn //   You are standing south of the inn.  You could easily go north and enter // through the front door, or west and to the rear of the establishment.  You	-	+
+1793762382	cmd	Trentlin	9	3570	midennir.are	standing	93	0	-	north		The Front of the Inn //   You are standing on a well-worn path which opens into a clearing. // An old, wooden building is here with smoke billowing from its	-	+
+1793762382	cmd	Trentlin	9	3505	midennir.are	standing	93	0	-	east		The Trail to Miden'nir //   You are in a light forest. A path leads south, but the passage to the // east is easy enough. To the west, smoke can be seen rising above the	-	+
+1793762383	cmd	Trentlin	9	3507	midennir.are	standing	93	0	-	south		A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned	-	+
+1793762383	cmd	Trentlin	9	3510	midennir.are	standing	93	0	-	south		A Crossroads //   Here footworn paths meet leading north, south and east. The trees seem to // be closing in on you at this point, and you can barely see the sky	-	+
+1793762384	refused	Trentlin	9	3510	midennir.are	fighting	93	0	fight	south		No way!  You are still fighting!	refusal:unknown-command	-
+1793762386	cmd	Trentlin	9	3510	midennir.are	fighting	93	0	fight	kick		Your kick misses the goblin.	-	-
+1793762390	cmd	Trentlin	9	3510	midennir.are	fighting	92	0	fight	kick		Your kick scratches the goblin.	-	-
+1793762393	cmd	Trentlin	9	3510	midennir.are	fighting	92	0	fight	kick		Your kick misses the goblin.	-	-
+1793762395	cmd	Trentlin	9	3510	midennir.are	fighting	92	0	fight	kick		Your kick scratches the goblin.	-	-
+1793762399	cmd	Trentlin	9	3510	midennir.are	fighting	92	0	fight	kick		Your kick scratches the goblin. // The goblin is DEAD!! // You receive 135 experience points.	-	+
+1793762403	cmd	Trentlin	9	3510	midennir.are	fighting	92	0	fight	kick		Your kick scratches the goblin.	-	-
+1793762406	cmd	Trentlin	9	3510	midennir.are	fighting	92	0	fight	kick		Your kick scratches the goblin.	-	-
+1793762409	cmd	Trentlin	9	3510	midennir.are	fighting	92	0	fight	kick		Your kick misses the goblin.	-	-
+1793762412	cmd	Trentlin	9	3510	midennir.are	fighting	90	0	fight	kick		Your kick scratches the goblin.	-	-
+1793762414	cmd	Trentlin	9	3510	midennir.are	fighting	90	0	fight	kick		Your kick scratches the goblin.	-	-
+1793762417	cmd	Trentlin	9	3510	midennir.are	fighting	90	0	fight	kick		Your kick grazes the goblin.	-	-
+1793762420	cmd	Trentlin	9	3510	midennir.are	standing	90	0	-	kick		You aren't fighting anyone.	-	-
+1793762420	cmd	Trentlin	9	3507	midennir.are	standing	90	0	-	north		A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned	-	+
+1793762420	cmd	Trentlin	9	3505	midennir.are	standing	90	0	-	north		The Trail to Miden'nir //   You are in a light forest. A path leads south, but the passage to the // east is easy enough. To the west, smoke can be seen rising above the	-	+
+1793762421	cmd	Trentlin	9	2432	dresden.are	standing	90	0	-	north		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793762421	cmd	Trentlin	9	2432	dresden.are	standing	90	0	-	north		The gate is closed.	-	-
+1793762421	state	Trentlin	9	2432	dresden.are	lvl=9 hp=277/305 mana=428/428 mv=181/267 align=-771 exp=21468 coin=4629907736 bank=10977624596 qp=27 prac=4 train=1 stash=58/75 remorts=1
+1793762421	cmd	Trentlin	9	2432	dresden.are	standing	90	0	-	score		| Name:       Trentlin | Level:       9 | Class:        Monk | // | Played:     27 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793762424	cmd	Trentlin	9	2432	dresden.are	standing	90	0	-	open	north	Ok.	-	-
+1793762424	cmd	Trentlin	9	2431	dresden.are	standing	90	0	-	north		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793762425	cmd	Trentlin	9	2430	dresden.are	standing	90	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793762425	cmd	Trentlin	9	2429	dresden.are	standing	90	0	-	north		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1793762426	cmd	Trentlin	9	2428	dresden.are	standing	90	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793762427	cmd	Trentlin	9	2427	dresden.are	standing	90	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793762428	cmd	Trentlin	9	2404	dresden.are	standing	90	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793762429	cmd	Trentlin	9	2401	dresden.are	standing	90	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793762429	cmd	Trentlin	9	2402	dresden.are	standing	90	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1793762430	cmd	Trentlin	9	2415	dresden.are	standing	90	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793762432	cmd	Trentlin	9	2415	dresden.are	standing	90	0	-	kill	cit	A citizen of Dresden dodges your attack. // Your pierce grazes a citizen of Dresden.	-	-
+1793762435	cmd	Trentlin	9	2415	dresden.are	fighting	90	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793762438	cmd	Trentlin	9	2415	dresden.are	fighting	88	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793762443	cmd	Trentlin	9	2415	dresden.are	fighting	87	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793762448	cmd	Trentlin	9	2415	dresden.are	fighting	86	0	fight	remove	da	You stop using a long slim dagger.	-	-
+1793762450	cmd	Trentlin	9	2415	dresden.are	standing	86	0	-	scan		a dwarven guard                    -to the North. // the janitor                        -to the North. // a citizen of Dresden               -to the East.	-	+
+1793762453	cmd	Trentlin	9	2485	dresden.are	standing	91	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1793762455	cmd	Trentlin	9	2485	dresden.are	standing	91	0	-	kill	cit	Your punch injures a citizen of Dresden. // Your punch hits a citizen of Dresden.	-	-
+1793762458	cmd	Trentlin	9	2485	dresden.are	fighting	90	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793762462	cmd	Trentlin	9	2485	dresden.are	fighting	89	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793762465	cmd	Trentlin	9	2485	dresden.are	fighting	86	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793762468	cmd	Trentlin	9	2485	dresden.are	standing	86	0	-	scan		Jazair the merchant                -to the North. // the weaponsmith                    -to the South. // the beastly fido                   -to the West.	-	-
+1793762470	cmd	Trentlin	9	2494	dresden.are	standing	86	0	-	south		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of	-	+
+1793762472	cmd	Trentlin	9	2485	dresden.are	standing	86	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1793762472	cmd	Trentlin	9	2415	dresden.are	standing	86	0	-	west		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793762472	cmd	Trentlin	9	2402	dresden.are	standing	86	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1793762473	cmd	Trentlin	9	2407	dresden.are	standing	86	0	-	east		Northeastern Oak Tree Square. //   This is the northeastern corner of Oak Tree Square. // [Exits: south west]	-	-
+1793762474	cmd	Trentlin	9	2403	dresden.are	standing	86	0	-	south		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793762475	cmd	Trentlin	9	2420	dresden.are	standing	86	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793762476	cmd	Trentlin	9	2421	dresden.are	standing	86	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793762480	cmd	Trentlin	9	2421	dresden.are	standing	86	0	-	gainlist		Abilities for a level 9 monk of the monk guild: 16 learned, 18 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1793762486	cmd	Trentlin	9	2421	dresden.are	standing	86	0	-	walkto	silent master	You set off for Silent Master (Palm of the Creator), about 22 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1793762501	cmd	Trentlin	9	4803	dresden.are	standing	86	0	-	look		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.	-	+
+1793762504	cmd	Trentlin	9	4804	dresden.are	standing	86	0	-	gain	list	You can't do that here.	-	-
+1793762505	cmd	Trentlin	9	4804	dresden.are	standing	86	0	-	scan		The Grand Monk                     -to the North. // The Silent Master                  -to the East. // The Master of Movement             -to the West.	-	-
+1793762507	cmd	Trentlin	9	4805	dresden.are	standing	86	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1793762508	cmd	Trentlin	9	4805	dresden.are	standing	86	0	-	gain	list	You can't do that here.	-	-
+1793762510	cmd	Trentlin	9	4805	dresden.are	standing	86	0	-	gain		You can't do that here.	-	-
+1793762513	cmd	Trentlin	9	4805	dresden.are	standing	86	0	-	train		You have 1 training sessions. // You can train: str hp mana.	-	-
+1793762514	cmd	Trentlin	9	4805	dresden.are	standing	86	0	-	practice		dagger              75%  flail                6%  whip                15%   // dodge               76%  hand to hand        75%  kick                78%   // meditation           1%  recall             100%  	-	+
+1793762515	cmd	Trentlin	9	4805	dresden.are	standing	86	0	-	train	str	Your strength increases!	-	-
+1793762518	cmd	Trentlin	9	4805	dresden.are	standing	86	0	-	practice	medi	But there is no one here to teach you!	-	-
+1793762521	cmd	Trentlin	9	4804	dresden.are	standing	86	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793762523	cmd	Trentlin	9	4804	dresden.are	standing	86	0	-	scan		The Grand Monk                     -to the North. // The Silent Master                  -to the East. // The Master of Movement             -to the West.	-	-
+1793762524	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1793762525	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	practice		hand to hand        75%  kick                78%  dodge               76%   // You have 4 practice sessions left.	-	-
+1793762528	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	train		You have 0 training sessions. // You can train: str hp mana.	-	-
+1793762529	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1793762533	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	help	steel fist	'STEEL FIST' STEEL STEELFIST // Syntax: steel // By altering their body's chemistry, monks have the option of increasing the	-	+

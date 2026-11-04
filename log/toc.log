@@ -259243,3 +259243,183 @@ Wed Nov  4 03:17:21 2026 :: Log Trentlin [3570]: s
 Wed Nov  4 03:17:21 2026 :: Log Trentlin [3572]: arrived (South of the Inn) from 3570
 Wed Nov  4 03:17:21 2026 :: Log Trentlin [3572]: s
 Wed Nov  4 03:17:21 2026 :: Log Trentlin [3575]: arrived (The Ambush Point) from 3572
+Wed Nov  4 03:17:24 2026 :: Log Trentlin [3575]: w
+Wed Nov  4 03:17:24 2026 :: Log Trentlin [3581]: arrived (On the Trail of the Horsemen) from 3575
+Wed Nov  4 03:17:26 2026 :: Log Trentlin [3581]: w
+Wed Nov  4 03:17:26 2026 :: Log Trentlin [3582]: arrived (On the Trail of the Horsemen) from 3581
+Wed Nov  4 03:17:27 2026 :: Log Trentlin [3582]: s
+Wed Nov  4 03:17:27 2026 :: Log Trentlin [3583]: arrived (On the Trail of the Horsemen) from 3582
+Wed Nov  4 03:17:29 2026 :: Log Trentlin [3583]: con ho
+Wed Nov  4 03:17:30 2026 :: Log Trentlin [3583]: l ho
+Wed Nov  4 03:17:32 2026 :: Log Trentlin [3583]: k ho
+Wed Nov  4 03:17:35 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:17:38 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:17:43 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:17:46 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:17:49 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:17:52 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:17:55 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:17:58 2026 :: Log Trentlin [3583]: kick
+Wed Nov  4 03:18:00 2026 :: Log Trentlin [3583]: killed the dark horseman
+Wed Nov  4 03:18:00 2026 :: Log Trentlin [3583]: coin +2 platinum
+Wed Nov  4 03:18:00 2026 :: Log Trentlin [3583]: coin +10 silver
+Wed Nov  4 03:18:00 2026 :: Log Trentlin [3583]: coin +13 copper
+Wed Nov  4 03:18:00 2026 :: Log Trentlin [3583]: coin +5 gold
+Wed Nov  4 03:18:02 2026 :: Log Trentlin [3583]: w
+Wed Nov  4 03:18:02 2026 :: Log Trentlin [3584]: arrived (A Dead End Trail) from 3583
+Wed Nov  4 03:18:03 2026 :: Log Trentlin [3584]: sco
+Wed Nov  4 03:18:05 2026 :: Log Trentlin [3584]: l
+Wed Nov  4 03:18:09 2026 :: Log Trentlin [3584]: open underbrush
+Wed Nov  4 03:18:11 2026 :: Log Trentlin [3584]: open hole
+Wed Nov  4 03:18:14 2026 :: Log Trentlin [3584]: open secret
+Wed Nov  4 03:18:17 2026 :: Log Trentlin [3584]: open west
+Wed Nov  4 03:18:19 2026 :: Log Trentlin [3584]: open south
+Wed Nov  4 03:18:20 2026 :: Log Trentlin [3584]: open bush
+Wed Nov  4 03:18:23 2026 :: Log Trentlin [3584]: open hidden
+Wed Nov  4 03:18:27 2026 :: Log Trentlin [3584]: open down
+Wed Nov  4 03:18:29 2026 :: Log Trentlin [3584]: open track
+Wed Nov  4 03:18:53 2026 :: ANOMALY: Trentlin: coin jump (2051013 copper in one tick, 918 a kill)
+Wed Nov  4 03:19:25 2026 :: Sock.sinaddr:  178.156.185.231
+Wed Nov  4 03:19:25 2026 :: EOF encountered on read.
+Wed Nov  4 03:19:34 2026 :: Log Trentlin [3584]: e
+Wed Nov  4 03:19:34 2026 :: Log Trentlin [3583]: arrived (On the Trail of the Horsemen) from 3584
+Wed Nov  4 03:19:36 2026 :: Log Trentlin [3583]: n
+Wed Nov  4 03:19:36 2026 :: Log Trentlin [3582]: arrived (On the Trail of the Horsemen) from 3583
+Wed Nov  4 03:19:36 2026 :: Log Trentlin [3582]: e
+Wed Nov  4 03:19:36 2026 :: Log Trentlin [3581]: arrived (On the Trail of the Horsemen) from 3582
+Wed Nov  4 03:19:36 2026 :: Log Trentlin [3581]: e
+Wed Nov  4 03:19:36 2026 :: Log Trentlin [3575]: arrived (The Ambush Point) from 3581
+Wed Nov  4 03:19:37 2026 :: Log Trentlin [3575]: e
+Wed Nov  4 03:19:39 2026 :: Log Trentlin [3575]: n
+Wed Nov  4 03:19:39 2026 :: Log Trentlin [3572]: arrived (South of the Inn) from 3575
+Wed Nov  4 03:19:40 2026 :: Log Trentlin [3572]: e
+Wed Nov  4 03:19:40 2026 :: Log Trentlin [3572]: s
+Wed Nov  4 03:19:40 2026 :: Log Trentlin [3575]: arrived (The Ambush Point) from 3572
+Wed Nov  4 03:19:41 2026 :: Log Trentlin [3575]: n
+Wed Nov  4 03:19:41 2026 :: Log Trentlin [3572]: arrived (South of the Inn) from 3575
+Wed Nov  4 03:19:42 2026 :: Log Trentlin [3572]: n
+Wed Nov  4 03:19:42 2026 :: Log Trentlin [3570]: arrived (The Front of the Inn) from 3572
+Wed Nov  4 03:19:42 2026 :: Log Trentlin [3570]: e
+Wed Nov  4 03:19:42 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 3570
+Wed Nov  4 03:19:43 2026 :: Log Trentlin [3505]: s
+Wed Nov  4 03:19:43 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3505
+Wed Nov  4 03:19:43 2026 :: Log Trentlin [3507]: s
+Wed Nov  4 03:19:43 2026 :: Log Trentlin [3510]: arrived (A Crossroads) from 3507
+Wed Nov  4 03:19:44 2026 :: Log Trentlin [3510]: s
+Wed Nov  4 03:19:46 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:19:50 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:19:53 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:19:55 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:19:59 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:19:59 2026 :: Log Trentlin [3510]: killed the goblin
+Wed Nov  4 03:20:03 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:20:06 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:20:09 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:20:12 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:20:14 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:20:17 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:20:19 2026 :: Log Trentlin [3510]: killed the goblin
+Wed Nov  4 03:20:20 2026 :: Log Trentlin [3510]: kick
+Wed Nov  4 03:20:20 2026 :: Log Trentlin [3510]: n
+Wed Nov  4 03:20:20 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3510
+Wed Nov  4 03:20:20 2026 :: Log Trentlin [3507]: n
+Wed Nov  4 03:20:20 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 3507
+Wed Nov  4 03:20:21 2026 :: Log Trentlin [3505]: n
+Wed Nov  4 03:20:21 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 3505
+Wed Nov  4 03:20:21 2026 :: Log Trentlin [2432]: n
+Wed Nov  4 03:20:21 2026 :: Log Trentlin [2432]: sco
+Wed Nov  4 03:20:24 2026 :: Log Trentlin [2432]: open north
+Wed Nov  4 03:20:24 2026 :: Log Trentlin [2432]: n
+Wed Nov  4 03:20:24 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2432
+Wed Nov  4 03:20:25 2026 :: Log Trentlin [2431]: n
+Wed Nov  4 03:20:25 2026 :: Log Trentlin [2430]: arrived (Main Processional.) from 2431
+Wed Nov  4 03:20:25 2026 :: Log Trentlin [2430]: n
+Wed Nov  4 03:20:25 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2430
+Wed Nov  4 03:20:26 2026 :: Log Trentlin [2429]: n
+Wed Nov  4 03:20:26 2026 :: Log Trentlin [2428]: arrived (Main Processional.) from 2429
+Wed Nov  4 03:20:27 2026 :: Log Trentlin [2428]: n
+Wed Nov  4 03:20:27 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2428
+Wed Nov  4 03:20:28 2026 :: Log Trentlin [2427]: n
+Wed Nov  4 03:20:28 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov  4 03:20:29 2026 :: Log Trentlin [2404]: n
+Wed Nov  4 03:20:29 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov  4 03:20:29 2026 :: Log Trentlin [2401]: n
+Wed Nov  4 03:20:29 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Wed Nov  4 03:20:30 2026 :: Log Trentlin [2402]: n
+Wed Nov  4 03:20:30 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2402
+Wed Nov  4 03:20:31 2026 :: Log Trentlin [2415]: coin -3 silver
+Wed Nov  4 03:20:32 2026 :: Log Trentlin [2415]: k cit
+Wed Nov  4 03:20:35 2026 :: Log Trentlin [2415]: kick
+Wed Nov  4 03:20:38 2026 :: Log Trentlin [2415]: kick
+Wed Nov  4 03:20:43 2026 :: Log Trentlin [2415]: kick
+Wed Nov  4 03:20:48 2026 :: Log Trentlin [2415]: rem da
+Wed Nov  4 03:20:48 2026 :: Do_remove: Trentlin : da
+Wed Nov  4 03:20:49 2026 :: Log Trentlin [2415]: killed a citizen of Dresden
+Wed Nov  4 03:20:49 2026 :: Log Trentlin [2415]: coin +1 platinum
+Wed Nov  4 03:20:49 2026 :: Log Trentlin [2415]: coin +10 silver
+Wed Nov  4 03:20:49 2026 :: Log Trentlin [2415]: coin +10 copper
+Wed Nov  4 03:20:49 2026 :: Log Trentlin [2415]: coin +4 gold
+Wed Nov  4 03:20:50 2026 :: Log Trentlin [2415]: sca
+Wed Nov  4 03:20:53 2026 :: Log Trentlin [2415]: e
+Wed Nov  4 03:20:53 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Wed Nov  4 03:20:55 2026 :: Log Trentlin [2485]: k cit
+Wed Nov  4 03:20:58 2026 :: Log Trentlin [2485]: kick
+Wed Nov  4 03:21:02 2026 :: Log Trentlin [2485]: kick
+Wed Nov  4 03:21:05 2026 :: Log Trentlin [2485]: kick
+Wed Nov  4 03:21:07 2026 :: Log Trentlin [2485]: killed a citizen of Dresden
+Wed Nov  4 03:21:07 2026 :: Log Trentlin [2485]: coin +3 silver
+Wed Nov  4 03:21:07 2026 :: Log Trentlin [2485]: coin +5 copper
+Wed Nov  4 03:21:07 2026 :: Log Trentlin [2485]: coin +2 gold
+Wed Nov  4 03:21:08 2026 :: Log Trentlin [2485]: sca
+Wed Nov  4 03:21:10 2026 :: Log Trentlin [2485]: s
+Wed Nov  4 03:21:10 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Wed Nov  4 03:21:12 2026 :: Log Trentlin [2494]: n
+Wed Nov  4 03:21:12 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2494
+Wed Nov  4 03:21:12 2026 :: Log Trentlin [2485]: w
+Wed Nov  4 03:21:12 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2485
+Wed Nov  4 03:21:12 2026 :: Log Trentlin [2415]: s
+Wed Nov  4 03:21:12 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Wed Nov  4 03:21:13 2026 :: Log Trentlin [2402]: e
+Wed Nov  4 03:21:13 2026 :: Log Trentlin [2407]: arrived (Northeastern Oak Tree Square.) from 2402
+Wed Nov  4 03:21:14 2026 :: Log Trentlin [2407]: s
+Wed Nov  4 03:21:14 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2407
+Wed Nov  4 03:21:15 2026 :: Log Trentlin [2403]: e
+Wed Nov  4 03:21:15 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Wed Nov  4 03:21:16 2026 :: Log Trentlin [2420]: e
+Wed Nov  4 03:21:16 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Wed Nov  4 03:21:20 2026 :: Log Trentlin [2421]: gainlist
+Wed Nov  4 03:21:26 2026 :: Log Trentlin [2421]: walkto silent master
+Wed Nov  4 03:21:26 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2421
+Wed Nov  4 03:21:27 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2420
+Wed Nov  4 03:21:28 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2403
+Wed Nov  4 03:21:28 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov  4 03:21:29 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov  4 03:21:30 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov  4 03:21:31 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov  4 03:21:31 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov  4 03:21:32 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov  4 03:21:33 2026 :: Log Trentlin [4800]: arrived (Another Dimension) from 2437
+Wed Nov  4 03:21:34 2026 :: Log Trentlin [4801]: arrived (The passage way) from 4800
+Wed Nov  4 03:21:34 2026 :: Log Trentlin [4802]: arrived (The narrow entrance) from 4801
+Wed Nov  4 03:21:35 2026 :: Log Trentlin [4803]: arrived (The Palm of the Creator) from 4802
+Wed Nov  4 03:21:41 2026 :: Log Trentlin [4803]: l
+Wed Nov  4 03:21:43 2026 :: Log Trentlin [4804]: arrived (The Quiet Place) from 4803
+Wed Nov  4 03:21:44 2026 :: Log Trentlin [4804]: gain list
+Wed Nov  4 03:21:45 2026 :: Log Trentlin [4804]: sca
+Wed Nov  4 03:21:47 2026 :: Log Trentlin [4804]: n
+Wed Nov  4 03:21:47 2026 :: Log Trentlin [4805]: arrived (The Masters Place) from 4804
+Wed Nov  4 03:21:48 2026 :: Log Trentlin [4805]: gain list
+Wed Nov  4 03:21:50 2026 :: Log Trentlin [4805]: gain
+Wed Nov  4 03:21:53 2026 :: Log Trentlin [4805]: train
+Wed Nov  4 03:21:54 2026 :: Log Trentlin [4805]: prac
+Wed Nov  4 03:21:55 2026 :: Log Trentlin [4805]: train str
+Wed Nov  4 03:21:58 2026 :: Log Trentlin [4805]: prac medi
+Wed Nov  4 03:22:01 2026 :: Log Trentlin [4805]: s
+Wed Nov  4 03:22:01 2026 :: Log Trentlin [4804]: arrived (The Quiet Place) from 4805
+Wed Nov  4 03:22:03 2026 :: Log Trentlin [4804]: sca
+Wed Nov  4 03:22:04 2026 :: Log Trentlin [4804]: e
+Wed Nov  4 03:22:04 2026 :: Log Trentlin [4806]: arrived (A Small Clearing) from 4804
+Wed Nov  4 03:22:05 2026 :: Log Trentlin [4806]: prac
+Wed Nov  4 03:22:08 2026 :: Log Trentlin [4806]: train
+Wed Nov  4 03:22:09 2026 :: Log Trentlin [4806]: gain
+Wed Nov  4 03:22:13 2026 :: Log Trentlin [4806]: help steel fist
