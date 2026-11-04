@@ -257094,3 +257094,127 @@ Wed Nov  4 01:07:28 2026 :: EOF encountered on read.
 Wed Nov  4 01:08:46 2026 :: Log Alaric [2497]: affects off: steel fist
 Wed Nov  4 01:10:08 2026 :: Sock.sinaddr:  23.31.96.97
 Wed Nov  4 01:10:09 2026 :: EOF encountered on read.
+Wed Nov  4 01:12:30 2026 :: Treasure goblin: vanished from room 9342 (On a Hill, galaxy.are) (too long in one area).
+Wed Nov  4 01:12:32 2026 :: Sock.sinaddr:  5.161.61.238
+Wed Nov  4 01:12:32 2026 :: EOF encountered on read.
+Wed Nov  4 01:14:20 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 01:14:20 2026 :: Log Alaric [2497]: quest assigned: kill a dunk (mob 8004, level 10) in mega1.are, 5 minutes, emergency
+Wed Nov  4 01:14:27 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 01:14:27 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 01:14:27 2026 :: Log Alaric [2401]: west
+Wed Nov  4 01:14:27 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2405]: west
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2433]: west
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2434]: west
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2435]: west
+Wed Nov  4 01:14:28 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov  4 01:14:29 2026 :: Log Alaric [2436]: west
+Wed Nov  4 01:14:29 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov  4 01:14:29 2026 :: Log Alaric [2437]: west
+Wed Nov  4 01:14:29 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Nov  4 01:14:29 2026 :: Log Alaric [2438]: open west
+Wed Nov  4 01:14:29 2026 :: Log Alaric [2438]: west
+Wed Nov  4 01:14:29 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Nov  4 01:14:35 2026 :: Log Alaric [2439]: north
+Wed Nov  4 01:14:35 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3900]: north
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3901]: north
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3902]: east
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3903]: east
+Wed Nov  4 01:14:36 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Wed Nov  4 01:14:37 2026 :: Log Alaric [3904]: north
+Wed Nov  4 01:14:37 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Wed Nov  4 01:14:37 2026 :: Log Alaric [300]: north
+Wed Nov  4 01:14:37 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Wed Nov  4 01:14:37 2026 :: Log Alaric [315]: west
+Wed Nov  4 01:14:37 2026 :: Log Alaric [318]: arrived (Grassy plains) from 315
+Wed Nov  4 01:14:37 2026 :: Log Alaric [318]: north
+Wed Nov  4 01:14:37 2026 :: Log Alaric [319]: arrived (Grassy plains) from 318
+Wed Nov  4 01:14:38 2026 :: Log Alaric [319]: north
+Wed Nov  4 01:14:38 2026 :: Log Alaric [330]: arrived (In front of hut in foothills) from 319
+Wed Nov  4 01:14:38 2026 :: Log Alaric [330]: north
+Wed Nov  4 01:14:38 2026 :: Log Alaric [323]: arrived (The steep foothills) from 330
+Wed Nov  4 01:14:38 2026 :: Log Alaric [323]: west
+Wed Nov  4 01:14:38 2026 :: Log Alaric [24]: arrived (Crossing the Foothills) from 323
+Wed Nov  4 01:14:38 2026 :: Log Alaric [24]: northwest
+Wed Nov  4 01:14:38 2026 :: Log Alaric [25]: arrived (The Switchbacks) from 24
+Wed Nov  4 01:14:39 2026 :: Log Alaric [25]: north
+Wed Nov  4 01:14:39 2026 :: Log Alaric [9201]: arrived (A Mountain Path) from 25
+Wed Nov  4 01:14:39 2026 :: Log Alaric [9201]: up
+Wed Nov  4 01:14:39 2026 :: Log Alaric [9202]: arrived (A Mountain Path) from 9201
+Wed Nov  4 01:14:39 2026 :: Log Alaric [9202]: up
+Wed Nov  4 01:14:39 2026 :: Log Alaric [9203]: arrived (Mountainside Tombs) from 9202
+Wed Nov  4 01:14:39 2026 :: Log Alaric [9203]: up
+Wed Nov  4 01:14:39 2026 :: Log Alaric [9204]: arrived (A Blind Curve on the Mountain Path.) from 9203
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9204]: up
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9205]: arrived (Vista) from 9204
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9205]: north
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9206]: arrived (The Overlook) from 9205
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9206]: down
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9207]: arrived (Entrance to Elemental Canyon) from 9206
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9207]: north
+Wed Nov  4 01:14:40 2026 :: Log Alaric [9209]: arrived (Elemental Gateway) from 9207
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9209]: west
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9208]: arrived (The Floor of the Canyon) from 9209
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9208]: north
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9211]: arrived (The Floor of the Canyon) from 9208
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9211]: north
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9214]: arrived (The Floor of the Canyon) from 9211
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9214]: north
+Wed Nov  4 01:14:41 2026 :: Log Alaric [9217]: arrived (The Floor of the Canyon) from 9214
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9217]: north
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9253]: arrived (Mesa West) from 9217
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9253]: west
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9246]: arrived (Electric Pathway) from 9253
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9246]: north
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9248]: arrived (The Electric Playground) from 9246
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9248]: north
+Wed Nov  4 01:14:42 2026 :: Log Alaric [9250]: arrived (The Electric Playground) from 9248
+Wed Nov  4 01:14:43 2026 :: Log Alaric [9250]: east
+Wed Nov  4 01:14:43 2026 :: Log Alaric [9251]: arrived (Lightning Causeway) from 9250
+Wed Nov  4 01:14:43 2026 :: Log Alaric [9251]: up
+Wed Nov  4 01:14:43 2026 :: Log Alaric [9252]: arrived (Lightning Chamber) from 9251
+Wed Nov  4 01:14:43 2026 :: Log Alaric [9252]: north
+Wed Nov  4 01:14:43 2026 :: Log Alaric [28]: arrived (Eye of the Storm) from 9252
+Wed Nov  4 01:14:43 2026 :: Log Alaric [28]: enter portal
+Wed Nov  4 01:14:43 2026 :: Log Alaric [8001]: arrived (Entrance to Mega-City One) from 28
+Wed Nov  4 01:14:49 2026 :: Log Alaric [8001]: s
+Wed Nov  4 01:14:49 2026 :: Log Alaric [8002]: arrived (Mahmount Allesh Megway) from 8001
+Wed Nov  4 01:14:50 2026 :: Log Alaric [8002]: scan
+Wed Nov  4 01:14:50 2026 :: Log Alaric [8002]: s
+Wed Nov  4 01:14:50 2026 :: Log Alaric [8003]: arrived (Intersection of Junket Way and Megway) from 8002
+Wed Nov  4 01:14:52 2026 :: Log Alaric [8003]: kill du
+Wed Nov  4 01:14:52 2026 :: Log Alaric [8003]: killed a dunk
+Wed Nov  4 01:14:52 2026 :: Log Alaric [8003]: coin +15 silver
+Wed Nov  4 01:14:52 2026 :: Log Alaric [8003]: coin +61 copper
+Wed Nov  4 01:14:52 2026 :: Log Alaric [8003]: coin +7 gold
+Wed Nov  4 01:14:56 2026 :: Log Alaric [8003]: n
+Wed Nov  4 01:14:56 2026 :: Log Alaric [8002]: arrived (Mahmount Allesh Megway) from 8003
+Wed Nov  4 01:14:56 2026 :: Log Alaric [8002]: n
+Wed Nov  4 01:14:56 2026 :: Log Alaric [8001]: arrived (Entrance to Mega-City One) from 8002
+Wed Nov  4 01:14:57 2026 :: Log Alaric [8001]: n
+Wed Nov  4 01:14:57 2026 :: Log Alaric [8001]: en disc
+Wed Nov  4 01:14:57 2026 :: Log Alaric [8001]: recal
+Wed Nov  4 01:15:02 2026 :: Log Alaric [8001]: l
+Wed Nov  4 01:15:04 2026 :: Log Alaric [8001]: en disc
+Wed Nov  4 01:15:06 2026 :: Log Alaric [8001]: en po
+Wed Nov  4 01:15:06 2026 :: Log Alaric [28]: arrived (Eye of the Storm) from 8001
+Wed Nov  4 01:15:08 2026 :: Log Alaric [28]: recal
+Wed Nov  4 01:15:08 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 28
+Wed Nov  4 01:15:09 2026 :: Log Alaric [2497]: aq co
+Wed Nov  4 01:15:09 2026 :: Log Alaric [2497]: copper +924774840
+Wed Nov  4 01:15:09 2026 :: Log Alaric [2497]: quest complete: 924p 77g 48s 40c, 209 quest points, emergency (streak bonus 55%)
+Wed Nov  4 01:15:09 2026 :: Snapshot of Alaric taken before quest: Alaric.20261104_011509.quest (PRESTORE Alaric to see it).
+Wed Nov  4 01:15:10 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov  4 01:15:12 2026 :: Log Alaric [2497]: score
+Wed Nov  4 01:15:47 2026 :: Log Alaric [2497]: wake
+Wed Nov  4 01:15:48 2026 :: Log Alaric [2497]: steel
+Wed Nov  4 01:15:50 2026 :: Log Alaric [2497]: steel
+Wed Nov  4 01:15:51 2026 :: Log Alaric [2497]: steel
+Wed Nov  4 01:15:57 2026 :: Log Alaric [2497]: iron
