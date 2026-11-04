@@ -257950,3 +257950,104 @@ Wed Nov  4 02:33:45 2026 :: EOF encountered on read.
 Wed Nov  4 02:36:17 2026 :: Log Alaric [2497]: affects off: levitate
 Wed Nov  4 02:36:38 2026 :: Log Alaric [2497]: levi
 Wed Nov  4 02:36:40 2026 :: Log Alaric [2497]: iron
+Wed Nov  4 02:36:54 2026 :: Log Alaric [2497]: help pass
+Wed Nov  4 02:36:59 2026 :: Log Alaric [2497]: help pass door
+Wed Nov  4 02:37:09 2026 :: Log Alaric [2497]: help transportation
+Wed Nov  4 02:37:19 2026 :: Log Alaric [2497]: l
+Wed Nov  4 02:37:20 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 02:37:20 2026 :: Log Alaric [2497]: quest assigned: kill the senior mindflayer (mob 7201, level 8) in sewer.are, 12 minutes, ordinary
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2401]: north
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2402]: north
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2415]: east
+Wed Nov  4 02:37:28 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2485]: east
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2486]: east
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2486
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2487]: east
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2509]: arrived (Dark Alley.) from 2487
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2509]: north
+Wed Nov  4 02:37:29 2026 :: Log Alaric [2508]: arrived (Dark Alley.) from 2509
+Wed Nov  4 02:37:30 2026 :: Log Alaric [2508]: east
+Wed Nov  4 02:37:30 2026 :: Log Alaric [2507]: arrived (Dark Alley.) from 2508
+Wed Nov  4 02:37:30 2026 :: Log Alaric [2507]: north
+Wed Nov  4 02:37:30 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2507
+Wed Nov  4 02:37:30 2026 :: Log Alaric [2505]: north
+Wed Nov  4 02:37:30 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Wed Nov  4 02:37:30 2026 :: Log Alaric [2506]: open down
+Wed Nov  4 02:37:31 2026 :: Log Alaric [2506]: down
+Wed Nov  4 02:37:31 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Wed Nov  4 02:37:59 2026 :: Log Alaric [7030]: affects off: steel fist
+Wed Nov  4 02:38:40 2026 :: Log Alaric [7030]: affects off: iron skin
+Wed Nov  4 02:38:42 2026 :: Log Alaric [7030]: west
+Wed Nov  4 02:38:42 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7022]: down
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7112]: west
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7104]: arrived (A junction in the sewer pipes) from 7112
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7104]: west
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7102]: arrived (Under the Dark Pit) from 7104
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7102]: up
+Wed Nov  4 02:38:43 2026 :: Log Alaric [7004]: arrived (The Dark Pit) from 7102
+Wed Nov  4 02:38:47 2026 :: Log Alaric [7004]: d
+Wed Nov  4 02:38:47 2026 :: Log Alaric [7102]: arrived (Under the Dark Pit) from 7004
+Wed Nov  4 02:38:48 2026 :: Sock.sinaddr:  5.161.61.238
+Wed Nov  4 02:38:48 2026 :: EOF encountered on read.
+Wed Nov  4 02:38:49 2026 :: Log Alaric [7102]: scan
+Wed Nov  4 02:39:24 2026 :: Log Alaric [7102]: east
+Wed Nov  4 02:39:24 2026 :: Log Alaric [7104]: arrived (A junction in the sewer pipes) from 7102
+Wed Nov  4 02:39:24 2026 :: Log Alaric [7104]: east
+Wed Nov  4 02:39:24 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7104
+Wed Nov  4 02:39:24 2026 :: Log Alaric [7112]: north
+Wed Nov  4 02:39:24 2026 :: Log Alaric [7111]: arrived (The southwestern corner of the ledge) from 7112
+Wed Nov  4 02:39:25 2026 :: Log Alaric [7111]: east
+Wed Nov  4 02:39:25 2026 :: Log Alaric [7115]: arrived (The Broad ledge) from 7111
+Wed Nov  4 02:39:25 2026 :: Log Alaric [7115]: south
+Wed Nov  4 02:39:25 2026 :: Log Alaric [7129]: arrived (The sewer line.) from 7115
+Wed Nov  4 02:39:27 2026 :: Log Alaric [7129]: d
+Wed Nov  4 02:39:27 2026 :: Log Alaric [7221]: arrived (The sewer drain.) from 7129
+Wed Nov  4 02:39:29 2026 :: Log Alaric [7221]: scan
+Wed Nov  4 02:40:02 2026 :: Log Alaric [7221]: west
+Wed Nov  4 02:40:02 2026 :: Log Alaric [7220]: arrived (A boring drain.) from 7221
+Wed Nov  4 02:40:02 2026 :: Log Alaric [7220]: north
+Wed Nov  4 02:40:02 2026 :: Log Alaric [7219]: arrived (A dry sewer drain.) from 7220
+Wed Nov  4 02:40:02 2026 :: Log Alaric [7219]: east
+Wed Nov  4 02:40:02 2026 :: Log Alaric [7217]: arrived (The half-dry drain.) from 7219
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7217]: north
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7216]: arrived (Under water in the sewer.) from 7217
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7216]: north
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7215]: arrived (The half-wet drain.) from 7216
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7215]: north
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7210]: arrived (The four-way junction.) from 7215
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7210]: west
+Wed Nov  4 02:40:03 2026 :: Log Alaric [7209]: arrived (The crawlway.) from 7210
+Wed Nov  4 02:40:04 2026 :: Log Alaric [7209]: west
+Wed Nov  4 02:40:04 2026 :: Log Alaric [7208]: arrived (The lair entrance.) from 7209
+Wed Nov  4 02:40:04 2026 :: Log Alaric [7208]: open north
+Wed Nov  4 02:40:04 2026 :: Log Alaric [7208]: north
+Wed Nov  4 02:40:04 2026 :: Log Alaric [7204]: arrived (The Lair) from 7208
+Wed Nov  4 02:40:10 2026 :: Log Alaric [7204]: north
+Wed Nov  4 02:40:10 2026 :: Log Alaric [7203]: arrived (The Lair) from 7204
+Wed Nov  4 02:40:13 2026 :: Log Alaric [7203]: fi mind
+Wed Nov  4 02:40:13 2026 :: Log Alaric [7203]: alignment 897 -> 922 (Paragon)
+Wed Nov  4 02:40:13 2026 :: Log Alaric [7203]: killed the senior mindflayer
+Wed Nov  4 02:40:13 2026 :: Log Alaric [7203]: coin +2 platinum
+Wed Nov  4 02:40:13 2026 :: Log Alaric [7203]: coin +10 silver
+Wed Nov  4 02:40:13 2026 :: Log Alaric [7203]: coin +13 copper
+Wed Nov  4 02:40:13 2026 :: Log Alaric [7203]: coin +5 gold
+Wed Nov  4 02:40:21 2026 :: Log Alaric [7203]: recal
+Wed Nov  4 02:40:21 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7203
+Wed Nov  4 02:40:21 2026 :: Log Alaric [2497]: recal
+Wed Nov  4 02:40:22 2026 :: Log Alaric [2497]: aq co
+Wed Nov  4 02:40:22 2026 :: Log Alaric [2497]: copper +123303312
+Wed Nov  4 02:40:22 2026 :: Log Alaric [2497]: quest complete: 123p 30g 33s 12c, 39 quest points (streak bonus 10%)
+Wed Nov  4 02:40:22 2026 :: Snapshot of Alaric taken before quest: Alaric.20261104_024022.quest (PRESTORE Alaric to see it).
+Wed Nov  4 02:40:22 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov  4 02:41:39 2026 :: Log Alaric [2497]: sc
+Wed Nov  4 02:41:41 2026 :: Log Alaric [2497]: who
+Wed Nov  4 02:41:42 2026 :: Log Alaric [2497]: i
+Wed Nov  4 02:41:43 2026 :: Log Alaric [2497]: score
