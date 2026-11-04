@@ -21181,3 +21181,134 @@
 1793760414	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
 1793760418	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	inventory		You are carrying: //      a commoner's piwafwi //      a quick sheathe	-	+
 1793760422	cmd	Trentlin	6	4208	dresden.are	standing	50	6	-	stash	put piwa	You put a commoner's piwafwi away for safe keeping.	-	-
+1793760446	cmd	Trentlin	6	4208	dresden.are	standing	59	9	-	stash	get enchanted leather 	You take an enchanted leather bracer out of your stash.	-	-
+1793760446	cmd	Trentlin	6	4208	dresden.are	standing	59	4	-	stash	get enchanted leather 	You take an enchanted leather bracer out of your stash.	-	-
+1793760452	cmd	Trentlin	6	4208	dresden.are	standing	59	0	-	remove	bra	You stop using a sub issue bracer.	-	-
+1793760454	cmd	Trentlin	6	4208	dresden.are	standing	59	0	-	wear	lea	You must be level 7 to use this object.	-	-
+1793760454	cmd	Trentlin	6	4208	dresden.are	standing	59	0	-	wear	lea	You must be level 7 to use this object.	-	-
+1793760459	cmd	Trentlin	6	4208	dresden.are	standing	59	0	-	drop	brac	You drop an enchanted leather bracer.	-	-
+1793760461	cmd	Trentlin	6	4207	dresden.are	standing	59	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793760463	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[ 6 Dwarf   Monk  ] Trentlin the Student of Form // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1793760464	cmd	Trentlin	6	3700	school.are	standing	59	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793760465	cmd	Trentlin	6	3700	school.are	standing	59	0	-	south		The door is closed.	-	-
+1793760468	cmd	Trentlin	6	3700	school.are	standing	64	0	-	open	south	Ok.	-	-
+1793760468	cmd	Trentlin	6	3744	school.are	standing	64	0	-	south		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760470	cmd	Trentlin	6	3744	school.are	standing	64	0	-	kill	l	Your punch misses the lizard. // Your punch misses the lizard.	-	-
+1793760473	cmd	Trentlin	6	3744	school.are	fighting	64	0	fight	kick		Your kick scratches the lizard.	-	-
+1793760480	cmd	Trentlin	6	3744	school.are	fighting	64	0	fight	kick		Your kick scratches the lizard.	-	-
+1793760484	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	gossip	Was gonna say gratz on the Knight, but I see you remorted too!	You gossip 'Was gonna say gratz on the Knight, but I see you remorted too!'	-	-
+1793760488	cmd	Trentlin	6	3744	school.are	fighting	63	0	fight	kick		Your kick misses the lizard.	-	-
+1793760498	cmd	Trentlin	6	3744	school.are	standing	63	0	-	gossip	yeah trying out monk	You gossip 'yeah trying out monk'	-	-
+1793760498	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[ 6 Dwarf   Monk  ] Trentlin the Student of Form // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1793760499	cmd	Trentlin	6	3744	school.are	standing	63	0	-	look		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760500	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=935/983 align=922 exp=252749 coin=493285479 bank=22227285207 qp=1469 prac=36 train=76 stash=95/350 remorts=3
+1793760500	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793760501	cmd	Trentlin	6	3744	school.are	standing	63	0	-	scan		the lizard                         -to the West.	-	-
+1793760501	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793760502	cmd	Trentlin	6	3743	school.are	standing	63	0	-	west		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  You can barely see the ceiling.  You feel as if you are being watched	-	+
+1793760505	cmd	Trentlin	6	3743	school.are	standing	63	0	-	kill	li	Your punch misses the lizard. // Your punch misses the lizard.	-	-
+1793760507	cmd	Alaric	57	2497	dresden.are	standing	100	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'The criminal known as a ranger has escaped from prison!'	-	+
+1793760508	cmd	Trentlin	6	3743	school.are	fighting	63	0	fight	kick		Your kick misses the lizard.	-	-
+1793760512	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793760512	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793760512	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793760513	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793760513	cmd	Alaric	57	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793760513	cmd	Alaric	57	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1793760513	cmd	Alaric	57	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1793760514	cmd	Alaric	57	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1793760514	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793760514	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1793760514	cmd	Alaric	57	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793760516	cmd	Trentlin	6	3743	school.are	fighting	66	0	fight	kick		Your kick scratches the lizard. // You have become better at kick!	-	-
+1793760516	cmd	Alaric	57	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1793760516	cmd	Alaric	57	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1793760516	cmd	Alaric	57	5261	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1793760517	cmd	Alaric	57	5260	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1793760517	cmd	Alaric	57	5259	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1793760517	cmd	Alaric	57	5258	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1793760517	cmd	Alaric	57	5262	oldthalo.are	standing	100	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks	-	+
+1793760518	cmd	Alaric	57	5263	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south	-	+
+1793760518	cmd	Alaric	57	5264	oldthalo.are	standing	100	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east	-	+
+1793760518	cmd	Alaric	57	5265	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1793760518	cmd	Alaric	57	5266	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1793760519	cmd	Alaric	57	5267	oldthalo.are	standing	100	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and	-	+
+1793760519	cmd	Alaric	57	62	connect.are	standing	100	0	-	south		Minor Path //   Before you, lies the main eastern road. Go to the west and you are back // in the dark valley.	-	+
+1793760519	cmd	Alaric	57	1701	wyvern.are	standing	100	0	-	east		Main Eastern Road //   You are on the old Eastern Road.  The crossroads to the east joins ANOTHER // northern route to this road, which continues east.  South of the crossroads is	-	+
+1793760521	cmd	Alaric	57	1702	wyvern.are	standing	100	0	-	east		Crossroads to the Wilderness //   You are at a crossroads to the wilderness areas east and north of here, // and the more civilized areas to the west. The main road is west, an	-	+
+1793760521	cmd	Trentlin	6	3743	school.are	fighting	66	0	fight	kick		Your kick scratches the lizard.	-	-
+1793760521	cmd	Alaric	57	1703	wyvern.are	standing	100	0	-	south		Trading Post //   You are in a trading post just south of the crossroads, where rangers, // trappers and hunters from the surrounding area come to buy, sell, and	-	+
+1793760524	cmd	Alaric	57	1703	wyvern.are	standing	100	0	-	kill	ra	Your punch *** DEVASTATES *** a ranger! [-76] // Your punch MANGLES a ranger! [-56] // Your punch *** DEVASTATES *** a ranger! [-69]	-	-
+1793760525	cmd	Trentlin	6	3743	school.are	fighting	66	0	fight	kick		Your kick scratches the lizard.	-	-
+1793760528	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793760528	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.	-	-
+1793760528	cmd	Trentlin	6	3743	school.are	fighting	66	0	fight	kick		Your kick misses the lizard.	-	-
+1793760528	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.	-	-
+1793760529	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	quest qp=1469->1469 daily=4->4 coin=+123303312
+1793760529	cmd	Alaric	57	2497	dresden.are	standing	100	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'	success:-	+
+1793760529	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 46 quest points.	-	-
+1793760532	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=461/983 align=897 exp=252749 coin=616588791 bank=22227285207 qp=1515 prac=36 train=76 stash=95/350 remorts=3
+1793760532	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793760533	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[ 6 Dwarf   Monk  ] Trentlin the Student of Form // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1793760534	cmd	Trentlin	6	3743	school.are	fighting	65	0	fight	kick		Your kick grazes the lizard. // The lizard is DEAD!! // You receive 192 experience points (96 of them rested).	-	+
+1793760538	cmd	Trentlin	6	3744	school.are	standing	65	0	-	east		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760538	cmd	Trentlin	6	3744	school.are	standing	65	0	-	kill	ra	Your punch grazes the rabbit. // Your punch scratches the rabbit.	-	-
+1793760542	cmd	Trentlin	6	3744	school.are	standing	65	0	-	scan		You don't see anything near you.	-	-
+1793760543	cmd	Trentlin	6	3739	school.are	standing	65	0	-	south		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760544	cmd	Trentlin	6	3734	school.are	standing	65	0	-	south		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760546	cmd	Trentlin	6	3734	school.are	standing	65	0	-	look		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760549	cmd	Trentlin	6	3734	school.are	standing	65	0	-	look	sign	Those with high bravery or low senses of cautiousness might wish to go below // to the Dungeon.  However, know that there are aggressive monsters down there, // and there is no quick escape back out of here when you are in the dungeon.	-	-
+1793760551	cmd	Trentlin	6	3734	school.are	standing	65	0	-	kill	fo	Your punch grazes the fox. // Your punch misses the fox.	-	-
+1793760558	cmd	Trentlin	6	3734	school.are	fighting	65	0	fight	kick		Your kick misses the fox.	-	-
+1793760565	cmd	Trentlin	7	3734	school.are	standing	62	0	-	wear	lea	You wear an enchanted leather bracer around your left wrist.	-	-
+1793760566	cmd	Trentlin	7	3734	school.are	standing	62	0	-	wear	lea	You do not have that item.	-	-
+1793760567	cmd	Trentlin	7	3734	school.are	standing	62	0	-	inventory		You are carrying: //      a quick sheathe //      a long slim dagger	-	+
+1793760569	cmd	Trentlin	7	3734	school.are	standing	62	0	-	wear	qu	You must be level 9 to use this object.	-	-
+1793760570	cmd	Trentlin	7	3734	school.are	standing	62	0	-	wear	da	You must be level 8 to use this object.	-	-
+1793760573	cmd	Trentlin	7	3734	school.are	standing	62	0	-	look		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760578	cmd	Trentlin	7	3734	school.are	standing	66	0	-	look		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1793760583	cmd	Trentlin	7	4207	dresden.are	standing	66	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793760584	cmd	Trentlin	7	4208	dresden.are	standing	66	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760587	cmd	Trentlin	7	4208	dresden.are	standing	66	0	-	stash		Your stash holds 65 of 75 things. //     1) a commoner's piwafwi //     2) (Glowing) a Silver star-hilted dagger	-	+
+1793760593	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793760603	cmd	Trentlin	7	4208	dresden.are	standing	66	0	-	stash	egt soldier	Syntax: stash                     -- what is in it //         stash put <item>          -- from anywhere in the world //         stash get <item>          -- at the altar only	-	+
+1793760603	cmd	Trentlin	7	4208	dresden.are	standing	66	0	-	stash	egt soldier	Syntax: stash                     -- what is in it //         stash put <item>          -- from anywhere in the world //         stash get <item>          -- at the altar only	-	+
+1793760608	cmd	Trentlin	7	4208	dresden.are	standing	75	5	-	stash	get soldier	You take some soldier leggings out of your stash.	-	-
+1793760608	cmd	Trentlin	7	4208	dresden.are	standing	75	4	-	stash	get soldier	You take some soldier arm plates out of your stash.	-	-
+1793760608	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	gossip	Zooming	You gossip 'Zooming'	-	-
+1793760609	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793760610	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793760610	cmd	Trentlin	7	4208	dresden.are	standing	75	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760612	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793760613	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	where		Players near you: // Trentlin                     Altar of the Temple of Devota.	-	-
+1793760614	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793760614	cmd	Trentlin	7	4208	dresden.are	standing	75	0	-	wear	sold	You stop using a pair of sub issue sleeves. // You wear some soldier arm plates on your arms.	-	-
+1793760614	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793760614	cmd	Alaric	57	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793760615	cmd	Alaric	57	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793760615	cmd	Trentlin	7	4208	dresden.are	standing	75	0	-	wear	sold	You wear some soldier leggings on your legs.	-	-
+1793760615	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793760616	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760617	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look	tr	You see nothing special about it. // Trentlin is injured. // Trentlin is using:	-	+
+1793760617	cmd	Trentlin	7	4208	dresden.are	standing	75	0	-	drop	sub	You drop a sub issue bracer. // A sub issue bracer burst into flames as it hits the ground.	-	-
+1793760619	cmd	Trentlin	7	4208	dresden.are	standing	75	0	-	inventory		You are carrying: //      a quick sheathe //      a long slim dagger	-	+
+1793760622	cmd	Trentlin	7	4208	dresden.are	standing	75	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn on finger>    a pink ice ring	-	+
+1793760626	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760626	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	look	in stash	That is not a container.	-	-
+1793760628	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	stash		Your stash holds 63 of 75 things. //     1) a commoner's piwafwi //     2) (Glowing) a Silver star-hilted dagger	-	+
+1793760637	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	stash	egt tray	Syntax: stash                     -- what is in it //         stash put <item>          -- from anywhere in the world //         stash get <item>          -- at the altar only	-	+
+1793760637	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	say	Leave yourself gear in your stash?	You say 'Leave yourself gear in your stash?'	-	-
+1793760641	cmd	Trentlin	7	4208	dresden.are	standing	80	10	-	stash	get tray	You take a serving tray out of your stash.	-	-
+1793760650	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	say	yeah looking in there to see whats what	You say 'yeah looking in there to see whats what'	-	-
+1793760652	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	wear	tra	You must be level 9 to use this object.	-	-
+1793760653	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760658	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	get	lea	You get an enchanted leather bracer.	-	-
+1793760659	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	wear	lea	You wear an enchanted leather bracer around your right wrist.	-	-
+1793760663	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn on finger>    a pink ice ring	-	+
+1793760668	cmd	Trentlin	7	4208	dresden.are	standing	80	0	-	stash		Your stash holds 62 of 75 things. //     1) a commoner's piwafwi //     2) (Glowing) a Silver star-hilted dagger	-	+
+1793760684	cmd	Trentlin	7	4208	dresden.are	standing	85	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760709	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	say	Makes remorting a lot easier to just grab the gear out your stash on the next loop!	You say 'Makes remorting a lot easier to just grab the gear out your stash on the next loop!'	-	-
+1793760710	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1793760712	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793760712	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760723	cmd	Trentlin	7	4208	dresden.are	standing	85	0	-	(social)		You nod.	-	-

@@ -258177,3 +258177,200 @@ Wed Nov  4 02:46:54 2026 :: Log Trentlin [4208]: l
 Wed Nov  4 02:46:58 2026 :: Log Trentlin [4208]: i
 Wed Nov  4 02:47:02 2026 :: Log Trentlin [4208]: stash put piwa
 Wed Nov  4 02:47:02 2026 :: Log Trentlin [4208]: stashed a commoner's piwafwi (vnum 25106)
+Wed Nov  4 02:47:26 2026 :: Log Trentlin [4208]: stash get enchanted leather 
+Wed Nov  4 02:47:26 2026 :: Log Trentlin [4208]: withdrew an enchanted leather bracer (vnum 3504) from the stash
+Wed Nov  4 02:47:26 2026 :: Log Trentlin [4208]: stash get enchanted leather 
+Wed Nov  4 02:47:26 2026 :: Log Trentlin [4208]: withdrew an enchanted leather bracer (vnum 3504) from the stash
+Wed Nov  4 02:47:32 2026 :: Log Trentlin [4208]: rem bra
+Wed Nov  4 02:47:34 2026 :: Log Trentlin [4208]: wear lea
+Wed Nov  4 02:47:34 2026 :: Log Trentlin [4208]: wear lea
+Wed Nov  4 02:47:39 2026 :: Log Trentlin [4208]: drop brac
+Wed Nov  4 02:47:41 2026 :: Log Trentlin [4208]: e
+Wed Nov  4 02:47:41 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Wed Nov  4 02:47:43 2026 :: Log Alaric [2497]: who
+Wed Nov  4 02:47:44 2026 :: Log Trentlin [4207]: u
+Wed Nov  4 02:47:44 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Wed Nov  4 02:47:45 2026 :: Log Trentlin [3700]: s
+Wed Nov  4 02:47:48 2026 :: Log Alaric [2497]: affects off: levitate
+Wed Nov  4 02:47:48 2026 :: Log Trentlin [3700]: open south
+Wed Nov  4 02:47:48 2026 :: Log Trentlin [3700]: s
+Wed Nov  4 02:47:48 2026 :: Log Trentlin [3744]: arrived (North Wall of Arena) from 3700
+Wed Nov  4 02:47:50 2026 :: Log Trentlin [3744]: k l
+Wed Nov  4 02:47:53 2026 :: Log Trentlin [3744]: kick
+Wed Nov  4 02:48:00 2026 :: Log Trentlin [3744]: kick
+Wed Nov  4 02:48:04 2026 :: Log Alaric [2497]: gos Was gonna say gratz on the Knight, but I see you remorted too!
+Wed Nov  4 02:48:08 2026 :: Log Trentlin [3744]: kick
+Wed Nov  4 02:48:14 2026 :: Log Trentlin [3744]: killed the lizard
+Wed Nov  4 02:48:14 2026 :: Log Trentlin [3744]: coin +2 copper
+Wed Nov  4 02:48:18 2026 :: Log Trentlin [3744]: go yeah trying out monk
+Wed Nov  4 02:48:18 2026 :: Log Alaric [2497]: who
+Wed Nov  4 02:48:19 2026 :: Log Trentlin [3744]: l
+Wed Nov  4 02:48:20 2026 :: Log Alaric [2497]: score
+Wed Nov  4 02:48:21 2026 :: Log Trentlin [3744]: sca
+Wed Nov  4 02:48:21 2026 :: Log Alaric [2497]: l
+Wed Nov  4 02:48:22 2026 :: Log Trentlin [3744]: w
+Wed Nov  4 02:48:22 2026 :: Log Trentlin [3743]: arrived (North Wall of Arena) from 3744
+Wed Nov  4 02:48:25 2026 :: Log Trentlin [3743]: k li
+Wed Nov  4 02:48:27 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 02:48:27 2026 :: Log Alaric [2497]: quest assigned: kill a ranger (mob 1706, level 19) in wyvern.are, 10 minutes, ordinary
+Wed Nov  4 02:48:28 2026 :: Log Trentlin [3743]: kick
+Wed Nov  4 02:48:32 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 02:48:32 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 02:48:32 2026 :: Log Alaric [2401]: east
+Wed Nov  4 02:48:32 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov  4 02:48:32 2026 :: Log Alaric [2403]: east
+Wed Nov  4 02:48:32 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2420]: east
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2421]: east
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2422]: east
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2423]: east
+Wed Nov  4 02:48:33 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Nov  4 02:48:34 2026 :: Log Alaric [2424]: east
+Wed Nov  4 02:48:34 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Nov  4 02:48:34 2026 :: Log Alaric [2425]: east
+Wed Nov  4 02:48:34 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Nov  4 02:48:34 2026 :: Log Alaric [2426]: open east
+Wed Nov  4 02:48:34 2026 :: Log Alaric [2426]: east
+Wed Nov  4 02:48:34 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Nov  4 02:48:36 2026 :: Log Trentlin [3743]: kick
+Wed Nov  4 02:48:36 2026 :: Log Alaric [2440]: east
+Wed Nov  4 02:48:36 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Wed Nov  4 02:48:36 2026 :: Log Alaric [3503]: east
+Wed Nov  4 02:48:36 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Wed Nov  4 02:48:36 2026 :: Log Alaric [3502]: south
+Wed Nov  4 02:48:36 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5261]: south
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5260]: south
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5259]: south
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5258]: east
+Wed Nov  4 02:48:37 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5262]: east
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5263]: south
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5264]: east
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5265]: east
+Wed Nov  4 02:48:38 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Wed Nov  4 02:48:39 2026 :: Log Alaric [5266]: down
+Wed Nov  4 02:48:39 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Wed Nov  4 02:48:39 2026 :: Log Alaric [5267]: south
+Wed Nov  4 02:48:39 2026 :: Log Alaric [62]: arrived (Minor Path) from 5267
+Wed Nov  4 02:48:39 2026 :: Log Alaric [62]: east
+Wed Nov  4 02:48:39 2026 :: Log Alaric [1701]: arrived (Main Eastern Road) from 62
+Wed Nov  4 02:48:41 2026 :: Log Alaric [1701]: e
+Wed Nov  4 02:48:41 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1701
+Wed Nov  4 02:48:41 2026 :: Log Trentlin [3743]: kick
+Wed Nov  4 02:48:41 2026 :: Log Alaric [1702]: s
+Wed Nov  4 02:48:41 2026 :: Log Alaric [1703]: arrived (Trading Post) from 1702
+Wed Nov  4 02:48:44 2026 :: Log Alaric [1703]: kill ra
+Wed Nov  4 02:48:44 2026 :: Log Alaric [1703]: alignment 922 -> 897 (Virtuous)
+Wed Nov  4 02:48:44 2026 :: Log Alaric [1703]: killed a ranger
+Wed Nov  4 02:48:45 2026 :: Log Trentlin [3743]: kick
+Wed Nov  4 02:48:48 2026 :: Log Alaric [1703]: recal
+Wed Nov  4 02:48:48 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1703
+Wed Nov  4 02:48:48 2026 :: Log Alaric [2497]: recal
+Wed Nov  4 02:48:48 2026 :: Log Trentlin [3743]: kick
+Wed Nov  4 02:48:48 2026 :: Log Alaric [2497]: recal
+Wed Nov  4 02:48:49 2026 :: Log Alaric [2497]: aq co
+Wed Nov  4 02:48:49 2026 :: Log Alaric [2497]: copper +123303312
+Wed Nov  4 02:48:49 2026 :: Log Alaric [2497]: quest complete: 123p 30g 33s 12c, 46 quest points (streak bonus 20%)
+Wed Nov  4 02:48:49 2026 :: Snapshot of Alaric taken before quest: Alaric.20261104_024849.quest (PRESTORE Alaric to see it).
+Wed Nov  4 02:48:49 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov  4 02:48:52 2026 :: Log Alaric [2497]: score
+Wed Nov  4 02:48:53 2026 :: Log Alaric [2497]: who
+Wed Nov  4 02:48:54 2026 :: Log Trentlin [3743]: kick
+Wed Nov  4 02:48:54 2026 :: Log Trentlin [3743]: killed the lizard
+Wed Nov  4 02:48:54 2026 :: Log Trentlin [3743]: coin +2 copper
+Wed Nov  4 02:48:57 2026 :: Sock.sinaddr:  178.156.181.172
+Wed Nov  4 02:48:57 2026 :: EOF encountered on read.
+Wed Nov  4 02:48:58 2026 :: Log Trentlin [3743]: e
+Wed Nov  4 02:48:58 2026 :: Log Trentlin [3744]: arrived (North Wall of Arena) from 3743
+Wed Nov  4 02:48:58 2026 :: Log Trentlin [3744]: k ra
+Wed Nov  4 02:48:59 2026 :: Log Trentlin [3744]: killed the rabbit
+Wed Nov  4 02:48:59 2026 :: Log Trentlin [3744]: coin +2 copper
+Wed Nov  4 02:49:02 2026 :: Log Trentlin [3744]: sca
+Wed Nov  4 02:49:03 2026 :: Log Trentlin [3744]: s
+Wed Nov  4 02:49:03 2026 :: Log Trentlin [3739]: arrived (Arena) from 3744
+Wed Nov  4 02:49:04 2026 :: Log Trentlin [3739]: s
+Wed Nov  4 02:49:04 2026 :: Log Trentlin [3734]: arrived (Center of Arena) from 3739
+Wed Nov  4 02:49:06 2026 :: Log Trentlin [3734]: l
+Wed Nov  4 02:49:09 2026 :: Log Trentlin [3734]: l sign
+Wed Nov  4 02:49:11 2026 :: Log Trentlin [3734]: k fo
+Wed Nov  4 02:49:18 2026 :: Log Trentlin [3734]: kick
+Wed Nov  4 02:49:23 2026 :: Log Trentlin [3734]: level 6 -> 7 (earned)
+Wed Nov  4 02:49:23 2026 :: Trentlin has achieved level 7!
+Wed Nov  4 02:49:23 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261104_024923.level (PRESTORE Trentlin to see it).
+Wed Nov  4 02:49:23 2026 :: Log Trentlin [3734]: killed the fox
+Wed Nov  4 02:49:23 2026 :: Log Trentlin [3734]: coin +2 copper
+Wed Nov  4 02:49:25 2026 :: Log Trentlin [3734]: wear lea
+Wed Nov  4 02:49:26 2026 :: Log Trentlin [3734]: wear lea
+Wed Nov  4 02:49:27 2026 :: Log Trentlin [3734]: i
+Wed Nov  4 02:49:29 2026 :: Log Trentlin [3734]: wear qu
+Wed Nov  4 02:49:30 2026 :: Log Trentlin [3734]: wear da
+Wed Nov  4 02:49:33 2026 :: Log Trentlin [3734]: l
+Wed Nov  4 02:49:33 2026 :: Log Trentlin [3734]: affects off: fly
+Wed Nov  4 02:49:38 2026 :: Log Trentlin [3734]: l
+Wed Nov  4 02:49:43 2026 :: Log Trentlin [3734]: reca
+Wed Nov  4 02:49:43 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3734
+Wed Nov  4 02:49:44 2026 :: Log Trentlin [4207]: w
+Wed Nov  4 02:49:44 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Nov  4 02:49:47 2026 :: Log Trentlin [4208]: stash
+Wed Nov  4 02:49:53 2026 :: Log Alaric [2497]: wake
+Wed Nov  4 02:50:03 2026 :: Log Trentlin [4208]: stash egt soldier
+Wed Nov  4 02:50:03 2026 :: Log Trentlin [4208]: stash egt soldier
+Wed Nov  4 02:50:08 2026 :: Log Trentlin [4208]: stash get soldier
+Wed Nov  4 02:50:08 2026 :: Log Trentlin [4208]: withdrew some soldier leggings (vnum 29007) from the stash
+Wed Nov  4 02:50:08 2026 :: Log Trentlin [4208]: stash get soldier
+Wed Nov  4 02:50:08 2026 :: Log Trentlin [4208]: withdrew some soldier arm plates (vnum 29006) from the stash
+Wed Nov  4 02:50:08 2026 :: Log Alaric [2497]: gos Zooming
+Wed Nov  4 02:50:09 2026 :: Log Alaric [2497]: wake
+Wed Nov  4 02:50:10 2026 :: Log Alaric [2497]: l
+Wed Nov  4 02:50:10 2026 :: Log Trentlin [4208]: l
+Wed Nov  4 02:50:12 2026 :: Log Alaric [2497]: en do
+Wed Nov  4 02:50:12 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 02:50:13 2026 :: Log Alaric [2401]: where
+Wed Nov  4 02:50:14 2026 :: Log Alaric [2401]: s
+Wed Nov  4 02:50:14 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Nov  4 02:50:14 2026 :: Log Trentlin [4208]: wear sold
+Wed Nov  4 02:50:14 2026 :: Log Alaric [2404]: s
+Wed Nov  4 02:50:14 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Wed Nov  4 02:50:14 2026 :: Log Alaric [2427]: w
+Wed Nov  4 02:50:14 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Wed Nov  4 02:50:15 2026 :: Log Alaric [4201]: w
+Wed Nov  4 02:50:15 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4201
+Wed Nov  4 02:50:15 2026 :: Log Trentlin [4208]: wear sold
+Wed Nov  4 02:50:15 2026 :: Log Alaric [4202]: w
+Wed Nov  4 02:50:15 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Wed Nov  4 02:50:16 2026 :: Log Alaric [4207]: w
+Wed Nov  4 02:50:16 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Nov  4 02:50:17 2026 :: Log Alaric [4208]: look tr
+Wed Nov  4 02:50:17 2026 :: Log Trentlin [4208]: drop sub
+Wed Nov  4 02:50:19 2026 :: Log Trentlin [4208]: i
+Wed Nov  4 02:50:22 2026 :: Log Trentlin [4208]: eq
+Wed Nov  4 02:50:26 2026 :: Log Alaric [4208]: l
+Wed Nov  4 02:50:26 2026 :: Log Trentlin [4208]: l in stash
+Wed Nov  4 02:50:28 2026 :: Log Trentlin [4208]: stash
+Wed Nov  4 02:50:37 2026 :: Log Trentlin [4208]: stash egt tray
+Wed Nov  4 02:50:37 2026 :: Log Alaric [4208]: say Leave yourself gear in your stash?
+Wed Nov  4 02:50:41 2026 :: Log Trentlin [4208]: stash get tray
+Wed Nov  4 02:50:41 2026 :: Log Trentlin [4208]: withdrew a serving tray (vnum 29012) from the stash
+Wed Nov  4 02:50:50 2026 :: Log Trentlin [4208]: say yeah looking in there to see whats what
+Wed Nov  4 02:50:52 2026 :: Log Trentlin [4208]: wear tra
+Wed Nov  4 02:50:53 2026 :: Log Trentlin [4208]: l
+Wed Nov  4 02:50:58 2026 :: Log Trentlin [4208]: get lea
+Wed Nov  4 02:50:59 2026 :: Log Trentlin [4208]: wear lea
+Wed Nov  4 02:51:03 2026 :: Log Trentlin [4208]: eq
+Wed Nov  4 02:51:08 2026 :: Log Trentlin [4208]: stash
+Wed Nov  4 02:51:24 2026 :: Log Trentlin [4208]: l
+Wed Nov  4 02:51:49 2026 :: Log Alaric [4208]: say Makes remorting a lot easier to just grab the gear out your stash on the next loop!
+Wed Nov  4 02:51:50 2026 :: Log Alaric [4208]: eq
+Wed Nov  4 02:51:52 2026 :: Log Alaric [4208]: wake
+Wed Nov  4 02:51:52 2026 :: Log Alaric [4208]: l
+Wed Nov  4 02:52:03 2026 :: Log Trentlin [4208]: (social) nod
