@@ -21107,3 +21107,77 @@
 1793760102	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) British's amulet //      (Glowing) an aura of power	-	+
 1793760103	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2865/2875 mv=536/983 align=922 exp=252749 coin=493285479 bank=22227285207 qp=1469 prac=36 train=76 stash=95/350 remorts=3
 1793760103	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793760174	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1793760176	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  	-	+
+1793760196	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	mindbar		You lost your concentration.	-	-
+1793760198	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	mindbar		You lost your concentration.	-	-
+1793760198	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	mindbar		A mental fortress protects your mind.	-	-
+1793760225	cmd	Trentlin	6	4210	dresden.are	sleeping	88	0	-	wake		You wake and stand up.	-	-
+1793760226	cmd	Trentlin	6	4210	dresden.are	standing	88	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793760227	cmd	Trentlin	6	4203	dresden.are	standing	88	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793760227	cmd	Trentlin	6	4202	dresden.are	standing	88	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793760228	cmd	Trentlin	6	4207	dresden.are	standing	93	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793760228	cmd	Trentlin	6	4208	dresden.are	standing	93	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760229	cmd	Trentlin	6	4208	dresden.are	standing	93	0	-	west		Alas, you cannot go that way.	-	-
+1793760231	cmd	Trentlin	6	4208	dresden.are	standing	93	0	-	where	hermie	You didn't find any hermie.	-	-
+1793760233	cmd	Trentlin	6	4207	dresden.are	standing	93	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793760233	cmd	Trentlin	6	4202	dresden.are	standing	93	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793760233	cmd	Trentlin	6	4201	dresden.are	standing	93	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793760233	cmd	Trentlin	6	2427	dresden.are	standing	93	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793760234	cmd	Trentlin	6	2427	dresden.are	standing	93	0	-	east		Alas, you cannot go that way.	-	-
+1793760236	cmd	Trentlin	6	2404	dresden.are	standing	93	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793760236	cmd	Trentlin	6	2401	dresden.are	standing	93	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793760237	cmd	Trentlin	6	2401	dresden.are	standing	93	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn on finger>    a pink ice ring	-	+
+1793760289	cmd	Trentlin	6	2402	dresden.are	standing	93	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1793760289	cmd	Trentlin	6	2415	dresden.are	standing	93	1	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793760289	cmd	Trentlin	6	2485	dresden.are	standing	93	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1793760289	cmd	Trentlin	6	2486	dresden.are	standing	93	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1793760290	cmd	Trentlin	6	2483	dresden.are	standing	93	0	-	north		Fountain of Market Plaza. //   In the center of the plaza is a fountain with a statue of a woman sitting on a // rock surrounded by dolphins facing in all directions.  The water seems to	-	+
+1793760290	cmd	Trentlin	6	2484	dresden.are	standing	93	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1793760290	cmd	Trentlin	6	2481	dresden.are	standing	93	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1793760290	cmd	Trentlin	6	2514	dresden.are	standing	93	0	-	north		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1793760291	cmd	Trentlin	6	2505	dresden.are	standing	93	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1793760291	cmd	Trentlin	6	2506	dresden.are	standing	93	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at	-	+
+1793760291	cmd	Trentlin	6	2506	dresden.are	standing	93	0	-	open	down	Ok.	-	-
+1793760291	cmd	Trentlin	6	7030	sewer.are	standing	93	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1793760293	cmd	Trentlin	6	7030	sewer.are	standing	93	0	-	scan		the great sewer rat                -to the South. // the regular guard                  -right above you.	-	-
+1793760298	cmd	Trentlin	6	7030	sewer.are	standing	98	0	-	where	drow	You didn't find any drow.	-	-
+1793760301	cmd	Trentlin	6	7030	sewer.are	standing	98	0	-	where	guard	the guardian naga            Dark tunnel	-	-
+1793760303	cmd	Trentlin	6	7030	sewer.are	standing	98	0	-	scan		the great sewer rat                -to the South. // the regular guard                  -right above you.	-	-
+1793760313	cmd	Trentlin	6	7022	sewer.are	standing	98	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1793760313	cmd	Trentlin	6	7112	sewer.are	standing	98	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1793760313	cmd	Trentlin	6	7111	sewer.are	standing	98	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 	-	+
+1793760314	cmd	Trentlin	6	7115	sewer.are	standing	98	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit	-	+
+1793760314	cmd	Trentlin	6	7129	sewer.are	standing	98	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.	-	+
+1793760314	cmd	Trentlin	6	7221	sewer.are	standing	98	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.	-	+
+1793760314	cmd	Trentlin	6	7220	sewer.are	standing	98	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]	-	+
+1793760315	cmd	Trentlin	6	7219	sewer.are	standing	98	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]	-	-
+1793760315	cmd	Trentlin	6	7217	sewer.are	standing	98	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west	-	+
+1793760315	cmd	Trentlin	6	7216	sewer.are	standing	98	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light	-	+
+1793760315	cmd	Trentlin	6	7215	sewer.are	standing	98	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.	-	+
+1793760316	cmd	Trentlin	6	7210	sewer.are	standing	98	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1793760316	cmd	Trentlin	6	7209	sewer.are	standing	98	0	-	west		The crawlway. //   You are in a narrow crawlway.  You don't notice anything interesting here. // [Exits: east west]	-	-
+1793760316	cmd	Trentlin	6	7208	sewer.are	standing	98	0	-	west		The lair entrance. //   You are in a dry part of the sewer. To the north is a wooden door, you  // can see some slime at the lower part of the door. You also see some skulls	-	+
+1793760316	cmd	Trentlin	6	7208	sewer.are	standing	98	0	-	open	north	Ok.	-	-
+1793760317	cmd	Trentlin	6	7204	sewer.are	standing	98	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1793760319	cmd	Trentlin	6	7203	sewer.are	standing	98	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1793760319	cmd	Trentlin	6	7202	sewer.are	standing	98	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce. To the north 	-	+
+1793760320	cmd	Trentlin	6	7202	sewer.are	standing	98	0	-	open	north	Ok.	-	-
+1793760320	cmd	Trentlin	6	7201	sewer.are	standing	98	0	-	north		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.	-	+
+1793760324	cmd	Trentlin	6	7201	sewer.are	fighting	91	0	fight	consider	mind	The master mindflayer is well above your level. // The master mindflayer has about as many hit points as you. // Blow for blow, you would need about 15 rounds to bring the master mindflayer down; it would need about 18 rounds for you.	-	+
+1793760329	cmd	Trentlin	6	7201	sewer.are	fighting	84	0	fight	kick		Your kick misses the master mindflayer.	-	-
+1793760338	cmd	Trentlin	6	7201	sewer.are	fighting	81	0	fight	kick		Your kick scratches the master mindflayer.	-	-
+1793760344	cmd	Trentlin	6	7201	sewer.are	fighting	79	0	fight	kick		Your kick grazes the master mindflayer.	-	-
+1793760350	cmd	Trentlin	6	7201	sewer.are	fighting	75	0	fight	kick		Your kick scratches the master mindflayer.	-	-
+1793760361	cmd	Trentlin	6	7201	sewer.are	fighting	67	0	fight	kick		Your kick grazes the master mindflayer.	-	-
+1793760369	cmd	Trentlin	6	7201	sewer.are	fighting	59	0	fight	kick		Your kick scratches the master mindflayer.	-	-
+1793760372	cmd	Trentlin	6	7201	sewer.are	fighting	55	0	fight	kick		Your kick scratches the master mindflayer.	-	-
+1793760380	cmd	Trentlin	6	4207	dresden.are	fighting	44	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793760382	cmd	Trentlin	6	4208	dresden.are	standing	44	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760408	cmd	Trentlin	6	4208	dresden.are	standing	50	10	-	stash	get piwa	You take a commoner's piwafwi out of your stash.	-	-
+1793760410	state	Trentlin	6	4208	dresden.are	lvl=6 hp=126/252 mana=314/314 mv=119/221 align=-773 exp=15589 coin=4630714277 bank=10977624596 qp=27 prac=2 train=0 stash=66/75 remorts=1
+1793760410	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	score		| Name:       Trentlin | Level:       6 | Class:        Monk | // | Played:     26 hours | Sex:   Sexless | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793760412	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	wear	piwa	You must be level 18 to use this object.	-	-
+1793760414	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793760418	cmd	Trentlin	6	4208	dresden.are	standing	50	0	-	inventory		You are carrying: //      a commoner's piwafwi //      a quick sheathe	-	+
+1793760422	cmd	Trentlin	6	4208	dresden.are	standing	50	6	-	stash	put piwa	You put a commoner's piwafwi away for safe keeping.	-	-
