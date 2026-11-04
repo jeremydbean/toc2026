@@ -258930,3 +258930,155 @@ Wed Nov  4 03:06:58 2026 :: Log Trentlin [2444]: coin +5 copper
 Wed Nov  4 03:06:58 2026 :: Log Trentlin [2444]: coin +2 gold
 Wed Nov  4 03:07:06 2026 :: Log Trentlin [2444]: wear q
 Wed Nov  4 03:07:06 2026 :: Log Trentlin [2444]: wear tra
+Wed Nov  4 03:07:25 2026 :: Log Trentlin [2444]: drop shi
+Wed Nov  4 03:07:27 2026 :: Log Trentlin [2444]: i
+Wed Nov  4 03:07:30 2026 :: Log Trentlin [2444]: reca
+Wed Nov  4 03:07:30 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2444
+Wed Nov  4 03:07:31 2026 :: Log Trentlin [4207]: w
+Wed Nov  4 03:07:31 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Nov  4 03:07:31 2026 :: Log Trentlin [4208]: w
+Wed Nov  4 03:07:33 2026 :: Log Trentlin [4208]: stash
+Wed Nov  4 03:07:43 2026 :: Log Trentlin [4208]: stash get rimmed
+Wed Nov  4 03:07:43 2026 :: Log Trentlin [4208]: stash get rimmed
+Wed Nov  4 03:07:51 2026 :: Log Trentlin [4208]: stash get white cloak
+Wed Nov  4 03:07:52 2026 :: Log Trentlin [4208]: stash get white cloak
+Wed Nov  4 03:07:56 2026 :: Log Trentlin [4208]: stash get cloak
+Wed Nov  4 03:07:56 2026 :: Log Trentlin [4208]: withdrew the Crystalline Royal Cloak (vnum 10004) from the stash
+Wed Nov  4 03:07:57 2026 :: Log Trentlin [4208]: stash get cloak
+Wed Nov  4 03:07:57 2026 :: Log Trentlin [4208]: withdrew a Blue rimmed, white cloak (vnum 10022) from the stash
+Wed Nov  4 03:07:58 2026 :: Log Trentlin [4208]: stash get cloak
+Wed Nov  4 03:07:58 2026 :: Log Trentlin [4208]: withdrew a Blue rimmed, white cloak (vnum 10022) from the stash
+Wed Nov  4 03:07:58 2026 :: Log Trentlin [4208]: stash get cloak
+Wed Nov  4 03:08:03 2026 :: Log Trentlin [4208]: stash put crystall
+Wed Nov  4 03:08:03 2026 :: Log Trentlin [4208]: stashed the Crystalline Royal Cloak (vnum 10004)
+Wed Nov  4 03:08:07 2026 :: Log Alaric [2497]: wake
+Wed Nov  4 03:08:09 2026 :: Log Alaric [2497]: sc
+Wed Nov  4 03:08:40 2026 :: Log Trentlin [4208]: wear cloa
+Wed Nov  4 03:08:42 2026 :: Log Trentlin [4208]: wear cloa
+Wed Nov  4 03:08:45 2026 :: Log Trentlin [4208]: stash
+Wed Nov  4 03:09:02 2026 :: Log Trentlin [4208]: stash get hairnet
+Wed Nov  4 03:09:02 2026 :: Log Trentlin [4208]: withdrew a hairnet (vnum 15014) from the stash
+Wed Nov  4 03:09:06 2026 :: Log Trentlin [4208]: stash get leggings
+Wed Nov  4 03:09:06 2026 :: Log Trentlin [4208]: withdrew a pair of Roman-style leggings (vnum 10028) from the stash
+Wed Nov  4 03:09:15 2026 :: Sock.sinaddr:  52.22.236.30
+Wed Nov  4 03:09:15 2026 :: EOF encountered on read.
+Wed Nov  4 03:09:49 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 03:09:49 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in mega1.are, 30 minutes, ordinary
+Wed Nov  4 03:09:56 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 03:09:56 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 03:09:56 2026 :: Log Alaric [2401]: west
+Wed Nov  4 03:09:56 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov  4 03:09:56 2026 :: Log Alaric [2405]: west
+Wed Nov  4 03:09:56 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2433]: west
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2434]: west
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2435]: west
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2436]: west
+Wed Nov  4 03:09:57 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov  4 03:09:58 2026 :: Log Alaric [2437]: west
+Wed Nov  4 03:09:58 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Nov  4 03:09:58 2026 :: Log Alaric [2438]: open west
+Wed Nov  4 03:09:58 2026 :: Log Alaric [2438]: west
+Wed Nov  4 03:09:58 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Nov  4 03:09:59 2026 :: Log Alaric [2439]: north
+Wed Nov  4 03:09:59 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Wed Nov  4 03:09:59 2026 :: Log Alaric [3900]: north
+Wed Nov  4 03:09:59 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Wed Nov  4 03:10:00 2026 :: Log Alaric [3901]: north
+Wed Nov  4 03:10:00 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Wed Nov  4 03:10:00 2026 :: Log Alaric [3902]: east
+Wed Nov  4 03:10:00 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Wed Nov  4 03:10:00 2026 :: Log Alaric [3903]: east
+Wed Nov  4 03:10:00 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Wed Nov  4 03:10:00 2026 :: Log Alaric [3904]: north
+Wed Nov  4 03:10:00 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Wed Nov  4 03:10:01 2026 :: Log Alaric [300]: west
+Wed Nov  4 03:10:01 2026 :: Log Alaric [316]: arrived (Grassy plains) from 300
+Wed Nov  4 03:10:01 2026 :: Log Alaric [316]: north
+Wed Nov  4 03:10:01 2026 :: Log Alaric [318]: arrived (Grassy plains) from 316
+Wed Nov  4 03:10:01 2026 :: Log Alaric [318]: north
+Wed Nov  4 03:10:01 2026 :: Log Alaric [319]: arrived (Grassy plains) from 318
+Wed Nov  4 03:10:01 2026 :: Log Alaric [319]: north
+Wed Nov  4 03:10:01 2026 :: Log Alaric [330]: arrived (In front of hut in foothills) from 319
+Wed Nov  4 03:10:02 2026 :: Log Alaric [330]: north
+Wed Nov  4 03:10:02 2026 :: Log Alaric [323]: arrived (The steep foothills) from 330
+Wed Nov  4 03:10:02 2026 :: Log Alaric [323]: west
+Wed Nov  4 03:10:02 2026 :: Log Alaric [24]: arrived (Crossing the Foothills) from 323
+Wed Nov  4 03:10:02 2026 :: Log Alaric [24]: northwest
+Wed Nov  4 03:10:02 2026 :: Log Alaric [25]: arrived (The Switchbacks) from 24
+Wed Nov  4 03:10:02 2026 :: Log Alaric [25]: north
+Wed Nov  4 03:10:02 2026 :: Log Alaric [9201]: arrived (A Mountain Path) from 25
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9201]: up
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9202]: arrived (A Mountain Path) from 9201
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9202]: up
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9203]: arrived (Mountainside Tombs) from 9202
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9203]: up
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9204]: arrived (A Blind Curve on the Mountain Path.) from 9203
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9204]: up
+Wed Nov  4 03:10:03 2026 :: Log Alaric [9205]: arrived (Vista) from 9204
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9205]: north
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9206]: arrived (The Overlook) from 9205
+Wed Nov  4 03:10:04 2026 :: Sock.sinaddr:  23.31.96.97
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9206]: down
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9207]: arrived (Entrance to Elemental Canyon) from 9206
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9207]: north
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9209]: arrived (Elemental Gateway) from 9207
+Wed Nov  4 03:10:04 2026 :: EOF encountered on read.
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9209]: west
+Wed Nov  4 03:10:04 2026 :: Log Alaric [9208]: arrived (The Floor of the Canyon) from 9209
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9208]: north
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9211]: arrived (The Floor of the Canyon) from 9208
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9211]: north
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9214]: arrived (The Floor of the Canyon) from 9211
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9214]: north
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9217]: arrived (The Floor of the Canyon) from 9214
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9217]: north
+Wed Nov  4 03:10:05 2026 :: Log Alaric [9253]: arrived (Mesa West) from 9217
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9253]: west
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9246]: arrived (Electric Pathway) from 9253
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9246]: north
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9248]: arrived (The Electric Playground) from 9246
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9248]: north
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9250]: arrived (The Electric Playground) from 9248
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9250]: east
+Wed Nov  4 03:10:06 2026 :: Log Alaric [9251]: arrived (Lightning Causeway) from 9250
+Wed Nov  4 03:10:07 2026 :: Log Alaric [9251]: up
+Wed Nov  4 03:10:07 2026 :: Log Alaric [9252]: arrived (Lightning Chamber) from 9251
+Wed Nov  4 03:10:07 2026 :: Log Alaric [9252]: north
+Wed Nov  4 03:10:07 2026 :: Log Alaric [28]: arrived (Eye of the Storm) from 9252
+Wed Nov  4 03:10:07 2026 :: Log Alaric [28]: enter portal
+Wed Nov  4 03:10:07 2026 :: Log Alaric [8001]: arrived (Entrance to Mega-City One) from 28
+Wed Nov  4 03:10:14 2026 :: Log Alaric [8001]: south
+Wed Nov  4 03:10:14 2026 :: Log Alaric [8002]: arrived (Mahmount Allesh Megway) from 8001
+Wed Nov  4 03:10:14 2026 :: Log Alaric [8002]: south
+Wed Nov  4 03:10:14 2026 :: Log Alaric [8003]: arrived (Intersection of Junket Way and Megway) from 8002
+Wed Nov  4 03:10:16 2026 :: Log Alaric [8003]: get all
+Wed Nov  4 03:10:17 2026 :: Log Alaric [8003]: n
+Wed Nov  4 03:10:17 2026 :: Log Alaric [8002]: arrived (Mahmount Allesh Megway) from 8003
+Wed Nov  4 03:10:17 2026 :: Log Alaric [8002]: n
+Wed Nov  4 03:10:17 2026 :: Log Alaric [8001]: arrived (Entrance to Mega-City One) from 8002
+Wed Nov  4 03:10:17 2026 :: Log Alaric [8001]: n
+Wed Nov  4 03:10:18 2026 :: Log Alaric [8001]: n
+Wed Nov  4 03:10:19 2026 :: Log Alaric [8001]: en po
+Wed Nov  4 03:10:19 2026 :: Log Alaric [28]: arrived (Eye of the Storm) from 8001
+Wed Nov  4 03:10:20 2026 :: Log Alaric [28]: recal
+Wed Nov  4 03:10:20 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 28
+Wed Nov  4 03:10:20 2026 :: Log Trentlin [4208]: wear hair
+Wed Nov  4 03:10:22 2026 :: Log Alaric [2497]: aq co
+Wed Nov  4 03:10:22 2026 :: Log Alaric [2497]: copper +154129140
+Wed Nov  4 03:10:22 2026 :: Log Alaric [2497]: quest complete: 154p 12g 91s 40c, 31 quest points (streak bonus 50%)
+Wed Nov  4 03:10:22 2026 :: Snapshot of Alaric taken before quest: Alaric.20261104_031022.quest (PRESTORE Alaric to see it).
+Wed Nov  4 03:10:22 2026 :: Log Trentlin [4208]: l
+Wed Nov  4 03:10:23 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov  4 03:10:24 2026 :: Log Alaric [2497]: score
+Wed Nov  4 03:10:26 2026 :: Log Trentlin [4208]: wear legg
+Wed Nov  4 03:10:26 2026 :: Log Alaric [2497]: who
+Wed Nov  4 03:10:27 2026 :: Log Trentlin [4208]: l
+Wed Nov  4 03:10:33 2026 :: Log Alaric [2497]: gos Later!
+Wed Nov  4 03:10:34 2026 :: Log Alaric [2497]: quit
+Wed Nov  4 03:10:34 2026 :: Alaric has quit.
+Wed Nov  4 03:10:34 2026 :: [QUIT] Player rejoined the real world.
+Wed Nov  4 03:10:42 2026 :: Log Trentlin [4208]: go cya

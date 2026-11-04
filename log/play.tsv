@@ -21662,3 +21662,92 @@
 1793761618	cmd	Trentlin	9	2444	dresden.are	fighting	69	21	fight	kick		Your kick scratches a citizen of Dresden. // A citizen of Dresden is DEAD!! // You receive 492 experience points.	-	+
 1793761626	cmd	Trentlin	9	2444	dresden.are	standing	66	0	-	wear	q	You wear a quick sheathe about your waist.	-	-
 1793761626	cmd	Trentlin	9	2444	dresden.are	standing	66	0	-	wear	tra	You stop using a sub issue shield. // You wear a serving tray as a shield.	-	-
+1793761645	cmd	Trentlin	9	2444	dresden.are	standing	68	0	-	drop	shi	You drop a sub issue shield. // A sub issue shield burst into flames as it hits the ground.	-	-
+1793761647	cmd	Trentlin	9	2444	dresden.are	standing	68	0	-	inventory		You are carrying: //      (Glowing) a *twinkling* ball of light // ( 2) a sprig of angelica	-	+
+1793761650	cmd	Trentlin	9	4207	dresden.are	standing	68	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793761651	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793761651	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	west		Alas, you cannot go that way.	-	-
+1793761653	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	stash		Your stash holds 62 of 75 things. //     1) a commoner's piwafwi //     2) (Glowing) a Silver star-hilted dagger	-	+
+1793761663	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	stash	get rimmed	There is nothing like that in your stash.	-	-
+1793761663	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	stash	get rimmed	There is nothing like that in your stash.	-	-
+1793761671	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	stash	get white cloak	There is nothing like that in your stash.	-	-
+1793761672	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	stash	get white cloak	There is nothing like that in your stash.	-	-
+1793761676	cmd	Trentlin	9	4208	dresden.are	standing	68	6	-	stash	get cloak	You take the Crystalline Royal Cloak out of your stash.	-	-
+1793761677	cmd	Trentlin	9	4208	dresden.are	standing	68	5	-	stash	get cloak	You take a Blue rimmed, white cloak out of your stash.	-	-
+1793761678	cmd	Trentlin	9	4208	dresden.are	standing	68	8	-	stash	get cloak	You take a Blue rimmed, white cloak out of your stash.	-	-
+1793761678	cmd	Trentlin	9	4208	dresden.are	standing	68	0	-	stash	get cloak	There is nothing like that in your stash.	-	-
+1793761683	cmd	Trentlin	9	4208	dresden.are	standing	68	4	-	stash	put crystall	You put the Crystalline Royal Cloak away for safe keeping.	-	-
+1793761687	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793761689	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=682/983 align=897 exp=252749 coin=1109202039 bank=22227285207 qp=1609 prac=36 train=76 stash=95/350 remorts=3
+1793761689	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793761720	cmd	Trentlin	9	4208	dresden.are	standing	73	0	-	wear	cloa	You must be level 11 to use this object.	-	-
+1793761722	cmd	Trentlin	9	4208	dresden.are	standing	73	0	-	wear	cloa	You must be level 11 to use this object.	-	-
+1793761725	cmd	Trentlin	9	4208	dresden.are	standing	73	0	-	stash		Your stash holds 60 of 75 things. //     1) (Glowing) the Crystalline Royal Cloak //     2) a commoner's piwafwi	-	+
+1793761742	cmd	Trentlin	9	4208	dresden.are	standing	73	9	-	stash	get hairnet	You take a hairnet out of your stash.	-	-
+1793761746	cmd	Trentlin	9	4208	dresden.are	standing	73	4	-	stash	get leggings	You take a pair of Roman-style leggings out of your stash.	-	-
+1793761789	cmd	Alaric	57	2497	dresden.are	standing	100	16	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'A prized artifact - The Heart of Tifarah - has gone missing!'	-	+
+1793761796	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793761796	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793761796	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793761797	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793761797	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793761797	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793761797	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793761798	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793761798	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1793761798	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793761799	cmd	Alaric	57	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1793761799	cmd	Alaric	57	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1793761800	cmd	Alaric	57	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1793761800	cmd	Alaric	57	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1793761800	cmd	Alaric	57	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1793761800	cmd	Alaric	57	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1793761801	cmd	Alaric	57	316	plains.are	standing	100	0	-	west		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. Far to the north you can see the foothills and further on	-	+
+1793761801	cmd	Alaric	57	318	plains.are	standing	100	0	-	north		Grassy plains //   You walk in the beautiful grassy plains. The wind is strong and rough. // Far to the north you can see the foothills and further on mountain peaks	-	+
+1793761801	cmd	Alaric	57	319	plains.are	standing	100	0	-	north		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. To the north you can see the foothills and just behind	-	+
+1793761801	cmd	Alaric	57	330	plains.are	standing	100	0	-	north		In front of hut in foothills //   You are standing in the foothills. To the west, well hidden among the small // foothills and pines, you see a small hut. To the north you can see	-	+
+1793761802	cmd	Alaric	57	323	plains.are	standing	100	0	-	north		The steep foothills //   You walk in the steep foothills. It is rather hard to move here. // To the north you can see a grassy valley with wildflowers. To the west 	-	+
+1793761802	cmd	Alaric	57	24	connect.are	standing	100	0	-	west		Crossing the Foothills //   The hills grow steadily steeper as you trudge up the narrow trails.  To the // northwest, the trail degenerates into a narrow series of switchbacks, 	-	+
+1793761802	cmd	Alaric	57	25	connect.are	standing	100	0	-	northwest		The Switchbacks //   You continue climbing a rocky path.  You need to scramble over boulders and // jump crevices to make any progress.  The path twists so often you can never	-	+
+1793761802	cmd	Alaric	57	9201	canyon.are	standing	100	0	-	north		A Mountain Path //   You are on a mountain path which ascends a steep mountainside.  The trail // curves around the mountain so that you cannot really see what lies ahead.	-	+
+1793761803	cmd	Alaric	57	9202	canyon.are	standing	100	0	-	up		A Mountain Path //   You are on a rocky mountain path leading up and around a steep mountainside. // You sense a glow from the area beyond the mountain, which you cannot see yet.	-	+
+1793761803	cmd	Alaric	57	9203	canyon.are	standing	100	0	-	up		Mountainside Tombs //   There are a few stone heaps here and there, the tombs of those who did not // last the arduous journey up the mountain.  Curiously you notice a few	-	+
+1793761803	cmd	Alaric	57	9204	canyon.are	standing	100	0	-	up		A Blind Curve on the Mountain Path. //   This looks like a normal mountain path, but it is NOT!  This section of the // path is habitated by a huge (and of course, man-eating) Cyclops.  The path	-	+
+1793761803	cmd	Alaric	57	9205	canyon.are	standing	100	0	-	up		Vista //   This is a stunning vista overlooking a canyon.  There is a sign here that says: // BEHOLD -- ELEMENTAL CANYON	-	+
+1793761804	cmd	Alaric	57	9206	canyon.are	standing	100	0	-	north		The Overlook //   You see various elemental servants wandering around the canyon.  The noise of // humming coming from the canyon gets louder.  The path makes a steep descent	-	+
+1793761804	cmd	Alaric	57	9207	canyon.are	standing	100	0	-	down		Entrance to Elemental Canyon //   You are awed by the sounds and sights of great powers at works here. // Elemental servants bustle back and forth doing the biddings of the elemental	-	+
+1793761804	cmd	Alaric	57	9209	canyon.are	standing	100	0	-	north		Elemental Gateway //   To the west a path dips and winds among some flowing firepits.  To the // northeast a path goes toward the river.  Beyond toward the northeast and	-	+
+1793761804	cmd	Alaric	57	9208	canyon.are	standing	100	0	-	west		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at all.	-	+
+1793761805	cmd	Alaric	57	9211	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1793761805	cmd	Alaric	57	9214	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1793761805	cmd	Alaric	57	9217	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1793761805	cmd	Alaric	57	9253	canyon.are	standing	100	0	-	north		Mesa West //   An electric path starts to the west.  The mesa continues to the east. // Or you can climb down to the canyon floor to the south.	-	+
+1793761806	cmd	Alaric	57	9246	canyon.are	standing	100	0	-	west		Electric Pathway //   The pathway glows and hums because of the electricity pulsing through it. // It seems almost soothing to your weary feet.  To the north there is a	-	+
+1793761806	cmd	Alaric	57	9248	canyon.are	standing	100	0	-	north		The Electric Playground //   Though there is a seemingly carefree atmosphere here, you sense that // something much more important takes place near by.  There is an electric	-	+
+1793761806	cmd	Alaric	57	9250	canyon.are	standing	100	0	-	north		The Electric Playground //   Though there is a seemingly carefree atmosphere here, you sense that // something much more important takes place near by.  The playground is	-	+
+1793761806	cmd	Alaric	57	9251	canyon.are	standing	100	0	-	east		Lightning Causeway //   Up a set of stairs carved into the hill you see intermittent flashes of // lightning.  A continuous hum also comes form that direction.  To the west	-	+
+1793761807	cmd	Alaric	57	9252	canyon.are	standing	100	0	-	up		Lightning Chamber //   There is some sort of control panel here. Apparently the Lightning Ruler // observes and controls electric forces from here.  A set of steps carved into	-	+
+1793761807	cmd	Alaric	57	28	connect.are	standing	100	0	-	north		Eye of the Storm //   Swirling particles of energy galavant around this room in a continual  // vortex of motion. Here, placed by the great leaders of the elements is one	-	+
+1793761807	cmd	Alaric	57	8001	mega1.are	standing	100	0	-	enter	portal	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Entrance to Mega-City One	-	+
+1793761814	cmd	Alaric	57	8002	mega1.are	standing	100	0	-	south		Mahmount Allesh Megway //   You are on one mile of over 13 and a half billion kilometers of // roadway in Mega-City One.  The Megway continues north and south.	-	+
+1793761814	cmd	Alaric	57	8003	mega1.are	standing	100	0	-	south		Intersection of Junket Way and Megway //   The Megway intersects with Junket Way here.  Junket Way is to the east, // the Megway continues north and south, and the Pustule Palace Cafe is	-	+
+1793761816	cmd	Alaric	57	8003	mega1.are	standing	100	0	-	get	all	You get The Heart of Tifarah.	-	-
+1793761817	cmd	Alaric	57	8002	mega1.are	standing	100	0	-	north		Mahmount Allesh Megway //   You are on one mile of over 13 and a half billion kilometers of // roadway in Mega-City One.  The Megway continues north and south.	-	+
+1793761817	cmd	Alaric	57	8001	mega1.are	standing	100	0	-	north		Entrance to Mega-City One //   A small cobblestone road leads up to the giant gates of a futuristic city. // This seems to be a place not of your time, maybe a little exploring is	-	+
+1793761817	cmd	Alaric	57	8001	mega1.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1793761818	cmd	Alaric	57	8001	mega1.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1793761819	cmd	Alaric	57	28	connect.are	standing	100	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Eye of the Storm	-	+
+1793761820	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793761820	cmd	Trentlin	9	4208	dresden.are	standing	82	0	-	wear	hair	You must be level 12 to use this object.	-	-
+1793761822	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	quest qp=1609->1609 daily=4->4 coin=+154129140
+1793761822	cmd	Alaric	57	2497	dresden.are	standing	100	18	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1793761822	cmd	Trentlin	9	4208	dresden.are	standing	82	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793761823	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 31 quest points.	-	-
+1793761824	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=383/983 align=897 exp=252749 coin=1263331179 bank=22227285207 qp=1640 prac=36 train=76 stash=95/350 remorts=3
+1793761824	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793761826	cmd	Trentlin	9	4208	dresden.are	standing	82	0	-	wear	legg	You must be level 15 to use this object.	-	-
+1793761826	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[ 9 Dwarf   Monk  ] Trentlin the Student of Movement // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1793761827	cmd	Trentlin	9	4208	dresden.are	standing	82	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793761833	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	gossip	Later!	You gossip 'Later!'	-	-
+1793761834	session	Alaric	57	2497	dresden.are	quit	3135s	+0 levels	+0 exp	+1080275499 copper	3 kills	0 deaths	6 quests	527 commands	1 refused	coin: loot 3p 7g 15s 19c, quests 1078p 90g 39s 80c, spent 1p 70g
+1793761842	cmd	Trentlin	9	4208	dresden.are	standing	96	0	-	gossip	cya	You gossip 'cya'	-	-
