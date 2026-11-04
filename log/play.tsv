@@ -21544,3 +21544,121 @@
 1793761324	cmd	Trentlin	8	4201	dresden.are	standing	65	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
 1793761325	cmd	Trentlin	8	2427	dresden.are	standing	65	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
 1793761326	cmd	Trentlin	8	2404	dresden.are	standing	65	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793761327	cmd	Trentlin	8	2401	dresden.are	standing	65	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793761328	cmd	Trentlin	8	2402	dresden.are	standing	65	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1793761330	cmd	Trentlin	8	2415	dresden.are	standing	65	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793761332	cmd	Trentlin	8	2415	dresden.are	standing	65	0	-	consider	cit	A citizen of Dresden is a little above your level. // A citizen of Dresden has about a third of your hit points. // Blow for blow, you would need about 5 rounds to bring a citizen of Dresden down; he would need about 27 rounds for you.	-	+
+1793761334	cmd	Trentlin	8	2402	dresden.are	standing	65	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1793761334	cmd	Trentlin	8	2402	dresden.are	standing	65	0	-	scan		a citizen of Dresden               -to the North. // the janitor                        -to the North. // the beastly fido                   -to the North.	-	+
+1793761336	cmd	Trentlin	8	2415	dresden.are	standing	65	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793761338	cmd	Trentlin	8	2415	dresden.are	standing	65	0	-	kill	cit	Your pierce hits a citizen of Dresden. // Your pierce hits a citizen of Dresden.	-	-
+1793761340	cmd	Trentlin	8	2415	dresden.are	fighting	65	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761344	cmd	Trentlin	8	2415	dresden.are	fighting	61	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761348	cmd	Trentlin	8	2415	dresden.are	fighting	59	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793761353	cmd	Trentlin	8	2415	dresden.are	fighting	55	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793761356	cmd	Trentlin	8	2415	dresden.are	fighting	58	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761359	cmd	Trentlin	8	2415	dresden.are	fighting	58	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793761363	cmd	Trentlin	8	2415	dresden.are	fighting	55	0	fight	kick		Your kick scratches a citizen of Dresden. // A citizen of Dresden is DEAD!! // You receive 476 experience points.	-	+
+1793761369	cmd	Trentlin	8	2415	dresden.are	standing	55	0	-	where	hermie	You didn't find any hermie.	-	-
+1793761370	state	Trentlin	8	2415	dresden.are	lvl=8 hp=156/281 mana=384/389 mv=256/260 align=-774 exp=19018 coin=4631754995 bank=10977624596 qp=27 prac=0 train=0 stash=62/75 remorts=1
+1793761370	cmd	Trentlin	8	2415	dresden.are	standing	55	0	-	score		| Name:       Trentlin | Level:       8 | Class:        Monk | // | Played:     26 hours | Sex:   Sexless | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793761373	cmd	Trentlin	8	2415	dresden.are	standing	55	0	-	scan		a dwarven guard                    -to the North. // the janitor                        -to the North. // a citizen of Dresden               -to the North.	-	+
+1793761375	cmd	Trentlin	8	2485	dresden.are	standing	55	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1793761378	cmd	Trentlin	8	2485	dresden.are	standing	55	0	-	kill	cit	Your pierce hits a citizen of Dresden. // Your pierce grazes a citizen of Dresden.	-	-
+1793761381	cmd	Trentlin	8	2485	dresden.are	fighting	55	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761384	cmd	Trentlin	8	2485	dresden.are	fighting	52	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761387	cmd	Trentlin	8	2485	dresden.are	fighting	52	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761392	cmd	Trentlin	8	2485	dresden.are	fighting	49	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761395	cmd	Trentlin	8	2485	dresden.are	fighting	47	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761399	cmd	Trentlin	8	2485	dresden.are	fighting	47	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761402	cmd	Trentlin	8	2485	dresden.are	fighting	46	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761405	cmd	Trentlin	8	2485	dresden.are	fighting	44	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761408	cmd	Trentlin	8	2485	dresden.are	fighting	45	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761411	cmd	Trentlin	8	2485	dresden.are	fighting	44	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761417	cmd	Trentlin	8	2485	dresden.are	fighting	44	0	fight	kick		Your kick scratches a citizen of Dresden. // A citizen of Dresden is DEAD!! // You receive 527 experience points.	-	+
+1793761422	cmd	Trentlin	8	24235	crypt.are	standing	100	0	-	recall		Something is very wrong! // A Crypt //   Standing in this part of the crypt, you notice that there is a set	-	+
+1793761423	cmd	Trentlin	8	24235	crypt.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793761423	cmd	Trentlin	8	24235	crypt.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793761424	cmd	Trentlin	8	24235	crypt.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793761424	cmd	Trentlin	8	24235	crypt.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793761424	cmd	Trentlin	8	24235	crypt.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793761425	cmd	Trentlin	8	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793761426	cmd	Trentlin	8	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793761427	cmd	Trentlin	8	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793761427	cmd	Trentlin	8	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793761427	cmd	Trentlin	8	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793761427	cmd	Trentlin	8	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793761428	cmd	Trentlin	8	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793761428	cmd	Trentlin	8	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793761429	cmd	Trentlin	8	2401	dresden.are	standing	100	0	-	scan		the beastly fido                   -to the South.	-	-
+1793761430	cmd	Trentlin	8	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793761430	cmd	Trentlin	8	2403	dresden.are	standing	100	0	-	scan		the beastly fido                   -to the East. // Krill                              -to the West.	-	-
+1793761432	cmd	Trentlin	8	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793761433	cmd	Trentlin	8	2420	dresden.are	standing	100	0	-	scan		the beastly fido                   -to the East.	-	-
+1793761433	cmd	Trentlin	8	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793761435	cmd	Trentlin	8	2421	dresden.are	standing	100	0	-	scan		the ninja master                   -to the East. // the drunk                          -to the South. // the vagabond                       -to the South.	-	+
+1793761438	cmd	Trentlin	8	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793761440	cmd	Trentlin	8	2441	dresden.are	standing	100	0	-	consider	dr	The drunk is well below your level. // The drunk has a fraction of your hit points. // The drunk could barely scratch you; you would need about 2 rounds to bring him down.	-	+
+1793761442	cmd	Trentlin	8	2441	dresden.are	standing	100	0	-	kill	dr	Your pierce misses the drunk. // Your pierce scratches the drunk.	-	-
+1793761444	cmd	Trentlin	8	2441	dresden.are	fighting	100	0	fight	kick		Your kick misses the drunk.	-	-
+1793761456	cmd	Alaric	57	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1793761456	cmd	Alaric	57	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1793761456	cmd	Alaric	57	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1793761457	cmd	Alaric	57	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1793761457	cmd	Alaric	57	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1793761457	cmd	Alaric	57	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1793761457	cmd	Alaric	57	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1793761458	cmd	Alaric	57	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1793761458	cmd	Alaric	57	9528	newthalo.are	standing	100	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1793761458	cmd	Alaric	57	9564	newthalo.are	standing	100	0	-	north		Guildsman's Row //   This small cramped road is worn with travel as apprentices to the guilds // run merchandise from the guildhouses to the shops on market square. The	-	+
+1793761458	cmd	Alaric	57	9563	newthalo.are	standing	100	0	-	north		Guildsman's Row //   After the guilds were built the people of the city used some of the extra // space to erect a shrine to their patron saints. The result of this labor	-	+
+1793761459	cmd	Alaric	57	9562	newthalo.are	standing	100	0	-	north		Guildsman's Row //   Only one guild offers its door to this stretch of the row; the Tanner's // Guild, to the west. To the east is a beautifully sculpted marble door	-	+
+1793761459	cmd	Alaric	57	9561	newthalo.are	standing	100	0	-	north		Guildsman's Row //   The guilds continue here, to the west is the Weaver's guild, and to the // east stands the Craftsman's Guild. The row of guilds continues north	-	+
+1793761459	cmd	Alaric	57	9560	newthalo.are	standing	100	0	-	north		Guildsman's Row //   This row is a hive of activity second only to the actual market // square itself. Along this row stands all the guilds of the working	-	+
+1793761459	cmd	Alaric	57	9551	newthalo.are	standing	100	0	-	north		The Casbah //   The din of the guilds assaults your senses as you reach this intersection; // the sound of hammering, the smell of tanned leather, and the smoke rising	-	+
+1793761460	cmd	Alaric	57	9552	newthalo.are	standing	100	0	-	east		The Casbah //   You walk between the solid stone wall of the city and that of the Mason's // guild. Young children and their nannies walk around enjoying the safety	-	+
+1793761460	cmd	Alaric	57	9553	newthalo.are	standing	100	0	-	east		The Casbah //   You have almost reached the end of the avenue in this direction. Walking // towards the north-east corner of the city you notice the population density	-	+
+1793761460	cmd	Trentlin	8	2441	dresden.are	standing	100	0	-	scan		the beastly fido                   -to the North. // a citizen of Dresden               -to the East. // the beggar                         -to the East.	-	+
+1793761460	cmd	Alaric	57	9554	newthalo.are	standing	100	0	-	east		The Casbah //   The avenue ends here, turning south to become Kali Row. Traveling in that // direction will take you to the library and the grand dance hall of the city.	-	+
+1793761460	cmd	Alaric	57	9555	newthalo.are	standing	100	0	-	south		Kali Row //   This is a small, newly added section of the town. The city's library // can be entered through the door to the west and The Casbah	-	+
+1793761461	cmd	Alaric	57	9651	newthalo.are	standing	100	0	-	west		The Library //   This building holds the vast collection of books and documents that // have been brought here by the committee appointed to recover the	-	+
+1793761462	cmd	Trentlin	8	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793761463	cmd	Alaric	57	9651	newthalo.are	standing	100	0	-	get	all	You get The Journal of Trinidad.	-	-
+1793761463	cmd	Trentlin	8	2442	dresden.are	standing	100	0	-	kill	cit	Your pierce hits a citizen of Dresden. // Your pierce misses a citizen of Dresden.	-	-
+1793761463	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793761464	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	quest qp=1593->1593 daily=4->4 coin=+184954968
+1793761464	cmd	Alaric	57	2497	dresden.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1793761466	cmd	Trentlin	8	2442	dresden.are	fighting	97	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761467	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 16 quest points.	-	-
+1793761467	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=454/983 align=897 exp=252749 coin=1109202039 bank=22227285207 qp=1609 prac=36 train=76 stash=95/350 remorts=3
+1793761467	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793761469	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[ 8 Dwarf   Monk  ] Trentlin the Student of Size // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1793761471	cmd	Trentlin	8	2442	dresden.are	fighting	95	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761474	cmd	Trentlin	8	2442	dresden.are	fighting	95	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761478	cmd	Trentlin	8	2442	dresden.are	fighting	97	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761480	cmd	Trentlin	8	2442	dresden.are	fighting	96	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761483	cmd	Trentlin	8	2442	dresden.are	fighting	94	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761490	cmd	Trentlin	8	2442	dresden.are	fighting	93	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761495	cmd	Trentlin	8	2442	dresden.are	fighting	88	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761498	cmd	Trentlin	8	2442	dresden.are	fighting	86	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761502	cmd	Trentlin	8	2442	dresden.are	standing	86	0	-	scan		the drunk                          -to the North. // the leather worker                 -to the North. // a citizen of Dresden               -to the South.	-	+
+1793761506	cmd	Trentlin	8	2443	dresden.are	standing	86	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793761507	state	Trentlin	8	2443	dresden.are	lvl=8 hp=242/281 mana=389/389 mv=70/260 align=-788 exp=19965 coin=4632816112 bank=10977624596 qp=27 prac=0 train=0 stash=62/75 remorts=1
+1793761507	cmd	Trentlin	8	2443	dresden.are	standing	86	0	-	score		| Name:       Trentlin | Level:       8 | Class:        Monk | // | Played:     26 hours | Sex:   Sexless | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793761509	cmd	Trentlin	8	2443	dresden.are	standing	86	0	-	kill	cit	A citizen of Dresden parries your attack. // A citizen of Dresden dodges your attack.	-	-
+1793761513	cmd	Trentlin	8	2443	dresden.are	fighting	86	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761518	cmd	Trentlin	8	2443	dresden.are	fighting	83	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761522	cmd	Trentlin	8	2443	dresden.are	fighting	82	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761525	cmd	Trentlin	8	2443	dresden.are	fighting	82	0	fight	kick		Your kick grazes a citizen of Dresden.	-	-
+1793761586	cmd	Trentlin	8	2443	dresden.are	standing	77	0	-	scan		the beggar                         -to the North. // a citizen of Dresden               -to the East. // a citizen of Dresden               -to the East.	-	-
+1793761588	cmd	Trentlin	8	2444	dresden.are	standing	77	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793761590	cmd	Trentlin	8	2444	dresden.are	standing	77	0	-	kill	cit	Your pierce scratches a citizen of Dresden. // Your pierce scratches a citizen of Dresden.	-	-
+1793761592	cmd	Trentlin	8	2444	dresden.are	fighting	76	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761596	cmd	Trentlin	8	2444	dresden.are	fighting	73	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761600	cmd	Trentlin	8	2444	dresden.are	fighting	72	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761603	cmd	Trentlin	8	2444	dresden.are	fighting	72	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761608	cmd	Trentlin	8	2444	dresden.are	fighting	71	0	fight	kick		Your kick scratches a citizen of Dresden.	-	-
+1793761615	cmd	Trentlin	8	2444	dresden.are	fighting	70	0	fight	kick		Your kick misses a citizen of Dresden.	-	-
+1793761618	cmd	Trentlin	9	2444	dresden.are	fighting	69	21	fight	kick		Your kick scratches a citizen of Dresden. // A citizen of Dresden is DEAD!! // You receive 492 experience points.	-	+
+1793761626	cmd	Trentlin	9	2444	dresden.are	standing	66	0	-	wear	q	You wear a quick sheathe about your waist.	-	-
+1793761626	cmd	Trentlin	9	2444	dresden.are	standing	66	0	-	wear	tra	You stop using a sub issue shield. // You wear a serving tray as a shield.	-	-
