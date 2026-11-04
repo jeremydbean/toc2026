@@ -64,7 +64,8 @@ def departure_outcome(said: str) -> str:
     * "walked-dead": KILLED and then the arrival -- the dead walked on
       through the exit, which is the bug this module exists for;
     * "before-move": a tick killed the walker in the hall before WEST ran,
-      and WEST was then typed in the death room (resting, no west exit);
+      and WEST was then typed in the death room (resting, no west exit),
+      whether or not the death itself fell inside the reply;
       that attempt tested nothing and is discarded, not counted;
     * "felled": the gas left the walker mortally wounded, incapacitated or
       stunned, short of dead, and the move stopped in the hall -- no death
@@ -84,6 +85,12 @@ def departure_outcome(said: str) -> str:
             return "felled"
         if any(text in said for text in POSITION_REFUSALS):
             return "felled"
+        # The walker is stood up before every attempt, so resting means a
+        # tick's gas killed it after the room check and before WEST, with
+        # the death told before the barrier began (CI, 2026-11-04: the
+        # reply was "Nah... You feel too relaxed..." alone).
+        if "You feel too relaxed" in said:
+            return "before-move"
         return "unclear"
     if arrival >= 0:
         return "arrived" if arrival < killed else "walked-dead"
