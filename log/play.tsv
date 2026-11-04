@@ -20581,3 +20581,8 @@
 1793754018	state	Alaric	57	2497	dresden.are	lvl=57 hp=1539/1544 mana=2845/2875 mv=283/983 align=922 exp=252749 coin=1073254311 bank=20227285207 qp=1147 prac=36 train=76 stash=95/350 remorts=3
 1793754018	cmd	Alaric	57	2497	dresden.are	standing	99	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
 1793754019	cmd	Alaric	57	2497	dresden.are	standing	99	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1793754101	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793754102	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1793754111	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2874/2875 mv=397/983 align=922 exp=252749 coin=1073254311 bank=20227285207 qp=1147 prac=36 train=76 stash=95/350 remorts=3
+1793754111	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    284 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793754111	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 16 for 5 hours. // Skill: 'levitate' for 2 hours.	-	-
