@@ -21957,3 +21957,24 @@
 1793762528	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	train		You have 0 training sessions. // You can train: str hp mana.	-	-
 1793762529	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
 1793762533	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	help	steel fist	'STEEL FIST' STEEL STEELFIST // Syntax: steel // By altering their body's chemistry, monks have the option of increasing the	-	+
+1793762545	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	help	stunning blow	'STUNNING BLOW' // Syntax: stun <victim> // This skill allows the martial artist to strike at an exposed part of his	-	+
+1793762554	cmd	Trentlin	9	4806	dresden.are	standing	90	0	-	practice		hand to hand        75%  kick                78%  dodge               76%   // You have 4 practice sessions left.	-	-
+1793762555	cmd	Trentlin	9	4804	dresden.are	standing	90	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793762556	cmd	Trentlin	9	4807	dresden.are	standing	90	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1793762557	cmd	Trentlin	9	4807	dresden.are	standing	90	0	-	practice		meditation           1%   // You have 4 practice sessions left.	-	-
+1793762559	cmd	Trentlin	9	4807	dresden.are	standing	90	0	-	practice	med	You practice meditation.	-	-
+1793762560	cmd	Trentlin	9	4807	dresden.are	standing	90	0	-	practice	med	You practice meditation.	-	-
+1793762560	cmd	Trentlin	9	4807	dresden.are	standing	90	0	-	practice	med	You practice meditation.	-	-
+1793762560	cmd	Trentlin	9	4807	dresden.are	standing	90	0	-	practice	med	You practice meditation.	-	-
+1793762563	cmd	Trentlin	9	4807	dresden.are	standing	90	0	-	help	meditation	This skill is similar to fast healing, but relies on concentration and // mantras to increase mana recovery when the character is sleeping or resting. // Having the skill is all that is required to make it work; you will	-	+
+1793762567	cmd	Trentlin	9	4807	dresden.are	standing	95	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     fists of fury      4     	-	+
+1793762574	cmd	Trentlin	9	4807	dresden.are	standing	95	0	-	help	blinding fists	'BLINDING FISTS' // Syntax: blind <victim> // This is an assortment of various punches aimed at a foe, delivering	-	+
+1793762583	cmd	Trentlin	9	4807	dresden.are	standing	95	0	-	help	fists of fury	'FISTS OF FURY' FISTS // Syntax: fists <victim> // Fists of Fury is a more aggressive version of Blinding Fists, focused on	-	+
+1793762592	cmd	Trentlin	9	4807	dresden.are	standing	95	0	-	help	crane dance	'CRANE DANCE' CRANE // Syntax: crane // The adept martial artist has many specialized movements in his repertoire	-	+
+1793762617	cmd	Trentlin	9	4804	dresden.are	standing	95	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793762619	cmd	Trentlin	9	4808	dresden.are	standing	95	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1793762621	cmd	Trentlin	9	4804	dresden.are	standing	95	0	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793762621	cmd	Trentlin	9	4809	dresden.are	standing	95	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in	-	+
+1793762624	cmd	Trentlin	9	4207	dresden.are	standing	95	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793762625	cmd	Trentlin	9	4208	dresden.are	standing	95	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793762627	session	Trentlin	9	4208	dresden.are	quit	2406s	+3 levels	+6455 exp	+254474 copper	29 kills	0 deaths	0 quests	610 commands	3 refused	coin: loot 5p 25g 47s 74c, spent 5p 3s
