@@ -20685,3 +20685,4 @@
 1793754950	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You lost your concentration.	-	-
 1793754951	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
 1793754957	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1793754965	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	affect		You are affected by: // Skill: 'iron skin' grants immunity to blunt for 1 hours. // Skill: 'iron skin' modifies armor class by -26 for 1 hours.	-	+
