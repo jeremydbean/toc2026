@@ -5,6 +5,18 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261104a 2026-11-04
+A few creatures were carrying far more coin than anything their size
+should -- a level 8 outlaw had two platinum on him. Every creature's purse
+is now kept within reach of what others of its level carry. Rich ones are
+still rich for their level.
+
+@ 20261103e 2026-11-03
+Ganon has grown stronger: more of him to wear down, a heavier blow, and a
+fourth fireball every time he blinks through the dark. Bring friends. And
+the guardians of Hyrule's Levels 7 and 8 now heal when you run from them,
+as Ganon does: their fights must be won in one go.
+
 @ 20261103d 2026-11-03
 STASH TAKE from a linked character now says plainly if either file could
 not be written, and puts the item back rather than losing or copying it.

@@ -775,6 +775,13 @@ Commands added or revived in September 2026, and where they live:
   **gold**, so a cost computed in gold -- REPAIR's, for one -- must be
   multiplied by `COPPER_PER_GOLD` before `format_price` sees it, and clamped
   first so the multiply cannot overflow a 32-bit `long`.
+  **An area file's wealth figure is held to the level** (owner,
+  2026-11-04): the figure splits into every denomination at once, so 400
+  on a level 8 outlaw was two platinum, and `mob_index_set_wealth` now
+  caps the coin at `MOB_WEALTH_CAP_ROLLS` (3) times the most the level
+  roll gives (`mob_wealth_roll_max`), keeping the figure itself for the
+  area writer (`tests/test_mob_wealth_cap.py`). Change the roll and the
+  cap's mirror of it together.
 - Carried denominations, bank copper, and lifetime casino totals are `long`.
   Route gameplay changes through `add_money()` (gold) or
   `spend_copper()`/`gain_copper()` (copper); preflight both source and
@@ -997,10 +1004,19 @@ turned a soloist's blows aside was built and taken out the same day).
 The sizes are the point where Hermie-buffed median players just win,
 measured live with `tools/hyrule_playtest/ganon_group.py` (any guardian,
 any group size), **plus 25%**, because real players are good and get
-good gear (owner). His fireballs are spell blows no parry stops, three
-every four seconds at random members of the fight; add fireballs rather
-than enlarge them, since none may read UNSPEAKABLE (over 250) through
-sanctuary. Read a group playtest's transcripts, not only its verdict:
+good gear (owner). Ganon was then made half as hard again (owner,
+2026-11-03): 67,500 hit points, a 350 blow (not 375, whose biggest roll
+is UNSPEAKABLE through sanctuary) and fire a pulse +50%. His fireballs
+are spell blows no parry stops, four every four seconds at random members
+of the fight; add fireballs rather than enlarge them, since none may read
+UNSPEAKABLE (over 250) through sanctuary -- and neither may his biggest
+blow. **The guardians past Level 6 heal out of a fight** (owner,
+2026-11-03): a tenth of their health a pulse -- Ganon in `spec_ganon`,
+Levels 7 and 8 in `spec_hyrule_guardian` (`hyrule_guardians_that_heal`,
+held to `BOSS_MOBS` by `tests/test_hyrule_guardian_heal.py`). Before it
+the ashen Gleeok, a fight for two, fell to one player on 2026-11-02 who
+fled twice, healed in town and came back to its open wounds. Levels 1-6
+keep their wounds. Read a group playtest's transcripts, not only its verdict:
 until 2026-10-28 the tool took a member's "is DEAD!!" for the
 guardian's, so every lost group fight was scored a win, and a second
 fight in one run is played in the relics the first one looted -- only a

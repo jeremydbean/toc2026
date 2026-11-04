@@ -8,6 +8,30 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **A mobile's coin is held to its level** (2026-11-04, owner): an area
+  file's wealth figure split into every denomination at once (a 179th
+  in platinum, a 69th in gold...), so the dark horseman's 400 at level 8
+  was two platinum, and 479 of the 1,704 mobiles with a figure paid more
+  than three times the most their level's roll gives. `mob_index_set_wealth`
+  now caps the coin at `MOB_WEALTH_CAP_ROLLS` (3) times that roll
+  (`mob_wealth_roll_max`); the figure itself is kept, so a saved area
+  round-trips. `tests/test_mob_wealth_cap.py`.
+- **A position refusal is journalled as one** (2026-11-04): a known
+  command refused for the character's position (asleep, fighting, dead)
+  wrote a `refused` row with no outcome, which read like an unknown
+  word; it now carries `refusal:position`.
+- **Guardians past Level 6 heal when left alone** (2026-11-03, owner):
+  the ancient Aquamentus and the ashen Gleeok recover a tenth of their
+  health every four seconds out of a fight, as Ganon always has. The
+  ashen Gleeok, sized for two, had fallen to one player who fled twice,
+  healed in town and came back to its open wounds.
+  `tests/test_hyrule_guardian_heal.py`.
+- **Ganon is half as hard again** (2026-11-03, owner): 67,500 hit points
+  (45,000), four fireballs of 290-385 a pulse (three of 250-350), and a
+  350 blow (250) -- +40% on the blow so its biggest roll stays under
+  UNSPEAKABLE through sanctuary. Generator, `spec_ganon` and the wiki
+  agree; `area/hyrule.are` regenerated (one stat line).
+
 - **Shared stash, SPLIT and SCORE fixes from the 2026-11-03 review.**
   STASH TAKE never asked whether the owner's file was held still by an
   unsettled death, so a partner could take from a frozen owner and keep

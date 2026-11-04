@@ -508,21 +508,23 @@ the top of the band, buffed by Hermie, should need everything they have, a
 pair should lose, and one may try but should expect to die. See "The Last
 Two Guardians" below for how that was measured. The numbers:
 
-- **Level 64, 45,000 hit points, armour -40 (-400 in game), average blow 250,
-  sanctuary and haste as before.** Level 64 parries and dodges a
+- **Level 64, 67,500 hit points, armour -40 (-400 in game), average blow 350,
+  sanctuary and haste as before.** Half as hard again since 2026-11-03
+  (owner): see "Half As Hard Again" below. Level 64 parries and dodges a
   level 59 35% of the time each (`min(30, level) + level - 59`), so about four
   in ten blows land. The armour shaves about 80 off each ordinary blow; the
   Silver Arrow's tenth of his health is taken after armour, so it is untouched.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
-  throws three fireballs of 250-350, each at a random player in the fight:
+  throws four fireballs of 290-385, each at a random player in the fight:
   anyone fighting him or grouped with someone who is. A fireball is a spell
   blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
   Red Ring takes a fifth, the Blue Ring a further tenth, and the Mirror
   Shield three twentieths. His melee is
   ordinary, and a hero with every defence learned turns most of it aside --
   the fireballs are the fight.
-- **Left alone, he heals.** Out of a fight he recovers a tenth of his health
+- **Left alone, he heals** -- and since 2026-11-03 so do the guardians of
+  Levels 7 and 8. Out of a fight he recovers a tenth of his health
   every pulse, as the NES Ganon is whole again when you come back, so the
   Silver Arrow's tenths cannot be banked by running out to rest. A collapsed
   Ganon (one hit point, `AFF2_NO_RECOVER`) does not heal: the finishing shot
@@ -615,7 +617,7 @@ Death Mountain's orbiting eye, lashes everyone fighting it each pulse
 | 6 | Gohma | 43 | 9,000 | 100 | the eye 119-168 | lost | won 1 of 2, the win nearly spent |
 | 7 | ancient Aquamentus | 49 | 9,500 | 116 | 3 fireballs 46-63 | lost | won 2 of 2, one at 1% |
 | 8 | ashen Gleeok | 55 | 35,000 | 212 | 4 heads 159-222 | lost | lost; a buffed pair lost, a trio won narrowly |
-| 9 | Ganon | 64 | 45,000 | 250 | 3 fireballs 250-350 | lost | lost; a buffed trio won by a thread, a four won |
+| 9 | Ganon | 64 | 67,500 | 350 | 4 fireballs 290-385 | lost | +50% on 2026-11-03; see "Half As Hard Again" |
 
 #### The Last Two Guardians
 
@@ -632,6 +634,43 @@ good and get good gear (owner).
 | --- | --- | --- | --- |
 | ashen Gleeok | a pair, at 28,000 hit points, blow 170, heads 127-178: won 2 of 2, each time one saved from death and the other left under 400 | a soloist lost in 93 s; at 18,000 a pair won with half its health left | 35,000, 212, 159-222: a pair lost, a trio won with 164 left on one |
 | Ganon | a trio, at 36,000, blow 200, two fireballs 300-420: won with 242 left on one and two saved; a pair lost | three fireballs: a trio won, every save spent | 45,000, 250, three fireballs 250-350: a trio won with one dead and the others at 150 and 1; a four won |
+
+#### Half As Hard Again
+
+Ganon was made half as hard again on 2026-11-03 (owner), the way the first
+quarter was added -- to hit points, blow and fire alike:
+
+| | Before | Now |
+| --- | --- | --- |
+| Hit points | 45,000 | 67,500 |
+| Fire a pulse | 3 fireballs 250-350, 900 on average | 4 fireballs 290-385, 1,350 on average |
+| Average blow | 250 (5d39+150) | 350 (5d55+210) |
+
+The blow stops at +40%: 375 would be 5d59+225, which can roll 520 --
+UNSPEAKABLE through sanctuary. 5d55+210 tops out at 485 (242 through
+sanctuary), and the biggest fireball at 192. The fire, which is the
+fight, is the full half again, by adding a fireball as the owner's rule
+asks. The Silver Arrow still takes a tenth of his health a landed blow,
+so ten of them still end it; the hit points weigh on everybody else's
+blows.
+
+Played with `tools/hyrule_playtest/ganon_group.py` (median level 59
+warriors in the dungeon-9 gear plan, Hermie-buffed, the leader with the
+Silver Arrow): a trio lost both tries, everyone dead in about four
+minutes; a four lost both, in about five; a five won, four standing and
+one at one hit point, each member's DIVINE PROTECTION spent. For median
+players he is now a fight for five; the +25% above was added because real
+players are better than the median, so a strong four may manage it.
+
+The ashen Gleeok was meant for two and a soloist beat it on 2026-11-02
+(Trentlin, level 53, buffed): out of a fight it did not heal, as Ganon
+does, so three tries -- fleeing at 13% and 28% health, healing in town
+and walking back -- wore its 35,000 hit points down, and the last try
+needed only 9,615 of them. Since 2026-11-03 (owner) every guardian past
+Level 6 heals as Ganon does, a tenth of its health every four seconds
+once nobody is fighting it, so the ancient Aquamentus and the ashen
+Gleeok are whole again before anyone is back from town. The guardians of
+Levels 1-6 keep their wounds.
 
 DIVINE PROTECTION, one of Hermie's buffs, spares each buffed player one
 death at three quarters of their health, and the tool counts those saves.

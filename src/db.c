@@ -991,11 +991,44 @@ static void read_m_mob_extras( FILE *fp, MOB_INDEX_DATA *pMobIndex )
 }
  
 /*
+ * The most the level roll below can give a mobile of this level, in
+ * copper -- the yardstick for a figure the area file gives instead.
+ */
+static long mob_wealth_roll_max( int level )
+{
+    long l = UMAX( 1, level );
+
+    if ( l < 5 )
+        return 2 * l;
+    if ( l < 10 )
+        return 2 * l * COPPER_PER_SILVER + 4 * l;
+    if ( l < 20 )
+        return l * COPPER_PER_GOLD + 2 * l * COPPER_PER_SILVER + 8 * l;
+    if ( l < 30 )
+        return 2 * l * COPPER_PER_GOLD + 4 * l * COPPER_PER_SILVER + 16 * l;
+    if ( l < 50 )
+        return 3 * l * COPPER_PER_GOLD + 6 * l * COPPER_PER_SILVER + 12 * l;
+    return ( l / 2 ) * COPPER_PER_PLATINUM + 4 * l * COPPER_PER_GOLD
+         + 8 * l * COPPER_PER_SILVER + 4 * l;
+}
+
+/*
  * A mobile's coin, from the one wealth figure an area file gives it. A
  * figure of 0 means "what a mobile of this level carries", rolled once
  * here for the prototype. The level has to be set first. The figure itself
  * is kept so that saving the area writes back what was read.
+ *
+ * A figure splits into every denomination at once (a 179th of it in
+ * platinum, a 69th in gold...), so 400 is two platinum: a level 8 outlaw
+ * paid a level 9 more than two thousand of his kills (play journal,
+ * 2026-11-04), and 414 of the world's mobiles paid over ten times what
+ * their level carries. A figure's coin is now held to MOB_WEALTH_CAP_ROLLS
+ * times the most the level roll gives (owner: "fix the gold thing"), so a
+ * rich mobile is still rich for its level and prices, which are sized
+ * against the roll, keep their meaning.
  */
+#define MOB_WEALTH_CAP_ROLLS 3
+
 void mob_index_set_wealth( MOB_INDEX_DATA *pMobIndex, long total )
 {
     pMobIndex->wealth       = total;
@@ -1009,6 +1042,24 @@ void mob_index_set_wealth( MOB_INDEX_DATA *pMobIndex, long total )
         pMobIndex->new_gold     = UMAX(0,total/69);
         pMobIndex->new_silver   = UMAX(0,total/39);
         pMobIndex->new_copper   = UMAX(0,total/29);
+
+        {
+            long cap = MOB_WEALTH_CAP_ROLLS * mob_wealth_roll_max( pMobIndex->level );
+            long have = pMobIndex->new_platinum * COPPER_PER_PLATINUM
+                      + pMobIndex->new_gold * COPPER_PER_GOLD
+                      + pMobIndex->new_silver * COPPER_PER_SILVER
+                      + pMobIndex->new_copper;
+
+            if ( have > cap )
+            {
+                pMobIndex->new_platinum = cap / COPPER_PER_PLATINUM;
+                cap %= COPPER_PER_PLATINUM;
+                pMobIndex->new_gold     = cap / COPPER_PER_GOLD;
+                cap %= COPPER_PER_GOLD;
+                pMobIndex->new_silver   = cap / COPPER_PER_SILVER;
+                pMobIndex->new_copper   = cap % COPPER_PER_SILVER;
+            }
+        }
     } else {
         if(pMobIndex->level < 5) {
             pMobIndex->new_copper = number_range(1,2*pMobIndex->level);

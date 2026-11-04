@@ -1729,6 +1729,10 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     if ( ch->position < cmd_table[cmd].position )
     {
 	play_refused = true;
+	/* The journal's outcome column: a known command refused for the
+	   position, not an unknown word (2026-11-04: SOUTH in a fight read
+	   "refusal:unknown-command"). */
+	playlog_result( ch, "refusal", "position" );
 	switch( ch->position )
 	{
 	case POS_DEAD:

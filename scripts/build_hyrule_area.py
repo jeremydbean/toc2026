@@ -644,6 +644,12 @@ def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
 # GANON_ARMOR is the file value, times ten in game: -400 shaves about 80
 # off each ordinary blow, while the Silver Arrow's tenth of his health is
 # taken after armour and is untouched.
+#
+# Half as hard again (owner, 2026-11-03), the way the first quarter was
+# added: hit points 45,000 to 67,500, fire per pulse three of 250-350 to
+# four of 290-385 (900 to 1,350 on average; the biggest is 192 through
+# sanctuary), and the blow 250 to 350 -- not 375, whose 5d59+225 can roll
+# 520, UNSPEAKABLE through sanctuary; 5d55+210 tops out at 485.
 # --------------------------------------------------------------------------
 
 #
@@ -666,7 +672,7 @@ BOSS_STATS = {
     6: (43, 9000, 100),   # Gohma: haste; her sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
     7: (49, 9500, 116),   # Aquamentus again, older and harder
     8: (55, 35000, 212),   # Gleeok, four heads: a fight for two (2026-10-28)
-    9: (64, 45000, 250),  # Ganon -- see above, and spec_ganon: a fight for three
+    9: (64, 67500, 350),  # Ganon -- see above, and spec_ganon: a fight for three, +50% (2026-11-03)
 }
 # dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
 # spec_ganon; src/special.c's tables must say the same.
@@ -679,7 +685,7 @@ BOSS_VOLLEYS = {
     6: (1, 119, 168),       # Gohma's eye
     7: (3, 46, 63),       # the ancient Aquamentus's fan
     8: (4, 159, 222),     # the ashen Gleeok's four heads
-    9: (3, 250, 350),     # Ganon's fireballs: a fight for three (2026-10-28)
+    9: (4, 290, 385),     # Ganon's fireballs: a fight for three, +50% (2026-11-03)
 }
 GANON_VNUM = 30225
 GANON_ARMOR = -40

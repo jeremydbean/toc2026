@@ -523,15 +523,17 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  * They were 1,400-1,900, which nobody met until his hit points stopped
  * overflowing in October 2026; then one pulse through sanctuary was more
  * than a typical level 59 holds. Three at 250-350 (125-175 through
- * sanctuary) are sized, with his 45,000 hit points, so that a buffed
+ * sanctuary) were sized, with his 45,000 hit points, so that a buffed
  * group of three median level 59s wins narrowly and two lose (owner,
- * 2026-10-28: the calibrated point plus a quarter). Add fireballs rather
+ * 2026-10-28: the calibrated point plus a quarter); then half as hard
+ * again (owner, 2026-11-03): four at 290-385 (145-192 through
+ * sanctuary) and 67,500 hit points. Add fireballs rather
  * than enlarge them: none may read UNSPEAKABLE through sanctuary. See
  * "Ganon's Fight" in wiki/hyrule-area.md.
  */
-#define GANON_FIREBALLS          3
-#define GANON_FIREBALL_MIN    250
-#define GANON_FIREBALL_MAX    350
+#define GANON_FIREBALLS          4
+#define GANON_FIREBALL_MIN    290
+#define GANON_FIREBALL_MAX    385
 #define GANON_REGEN_DIVISOR     10
 
 static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )
@@ -687,6 +689,26 @@ static const HYRULE_GUARDIAN_VOLLEY hyrule_guardian_volleys[] =
       "A gout of fire from a Gleeok head hits $N!" },
 };
 
+/* Guardians past Level 6 heal when left alone, as Ganon does (owner,
+   2026-11-03): the ashen Gleeok, sized for two, fell to one player who
+   fled at 13% and 28% of his own health, healed in town and came back to
+   find its wounds still open -- three tries wore its 35,000 hit points
+   down. Levels 7 and 8 here; Ganon, Level 9, heals in spec_ganon at the
+   same rate. Must match BOSS_MOBS[7] and [8] in the generator
+   (tests/test_hyrule_progression.py). */
+static const int hyrule_guardians_that_heal[] = { 30314, 30316 };
+#define GUARDIAN_REGEN_DIVISOR  10
+
+static bool hyrule_guardian_heals( const CHAR_DATA *mob )
+{
+    size_t n;
+
+    for ( n = 0; n < sizeof(hyrule_guardians_that_heal) / sizeof(hyrule_guardians_that_heal[0]); n++ )
+	if ( mob->pIndexData->vnum == hyrule_guardians_that_heal[n] )
+	    return true;
+    return false;
+}
+
 bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
     const HYRULE_GUARDIAN_VOLLEY *volley = NULL;
@@ -702,9 +724,24 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
 
-    if ( cmd != NULL || mob->in_room == NULL || mob->pIndexData == NULL
-    ||   mob->fighting == NULL || mob->position != POS_FIGHTING )
+    if ( cmd != NULL || mob->in_room == NULL || mob->pIndexData == NULL )
 	return false;
+
+    /* Out of a fight: the later guardians close their wounds, a tenth of
+       their health a pulse, so the fight must be won in one go. */
+    if ( mob->fighting == NULL || mob->position != POS_FIGHTING )
+    {
+	if ( mob->position > POS_STUNNED && mob->hit < mob->max_hit
+	&&   hyrule_guardian_heals( mob ) )
+	{
+	    mob->hit = UMIN( mob->max_hit,
+			     mob->hit + UMAX( 1, mob->max_hit / GUARDIAN_REGEN_DIVISOR ) );
+	    if ( mob->hit == mob->max_hit )
+		act( "$n's wounds close over, and it stands whole again.",
+		     mob, NULL, NULL, TO_ROOM );
+	}
+	return false;
+    }
 
     for ( n = 0; n < sizeof(hyrule_guardian_volleys) / sizeof(hyrule_guardian_volleys[0]); n++ )
 	if ( hyrule_guardian_volleys[n].vnum == mob->pIndexData->vnum )

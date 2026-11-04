@@ -45,6 +45,16 @@ class PlaylogSourceTests(unittest.TestCase):
         self.assertIn('play_note( ch, "(unknown)", command, false, true );', interp,
                       "an unknown word is written alone")
 
+    def test_a_position_refusal_is_not_an_unknown_word(self) -> None:
+        # SOUTH typed in a fight was journalled refusal:unknown-command
+        # (2026-11-04): the position check sets the same refused flag.
+        interp = source("interp.c")
+        check = interp[interp.index("if ( ch->position < cmd_table[cmd].position )"):]
+        check = check[:check.index("switch( ch->position )")]
+        self.assertIn('playlog_result( ch, "refusal", "position" );', check)
+        self.assertIn('refused ? "refusal:unknown-command"', source("playlog.c"),
+                      "an unknown word keeps its label")
+
     def test_private_words_are_never_journalled(self) -> None:
         interp = source("interp.c")
         self.assertIn("privacy != LINE_PUBLIC, false );", interp)
