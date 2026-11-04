@@ -257416,3 +257416,67 @@ Wed Nov  4 01:36:16 2026 :: Log Alaric [2497]: af
 Wed Nov  4 01:37:54 2026 :: Sock.sinaddr:  52.87.72.16
 Wed Nov  4 01:37:54 2026 :: EOF encountered on read.
 Wed Nov  4 01:41:04 2026 :: Log Alaric [2497]: affects off: levitate
+Wed Nov  4 01:42:03 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 01:42:03 2026 :: Log Alaric [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in world.are, 13 minutes, ordinary
+Wed Nov  4 01:42:07 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 01:42:07 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2401]: west
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2405]: west
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2433]: west
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2434]: west
+Wed Nov  4 01:42:08 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov  4 01:42:09 2026 :: Log Alaric [2435]: west
+Wed Nov  4 01:42:09 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov  4 01:42:09 2026 :: Log Alaric [2436]: west
+Wed Nov  4 01:42:09 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov  4 01:42:09 2026 :: Log Alaric [2437]: west
+Wed Nov  4 01:42:09 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Nov  4 01:42:09 2026 :: Log Alaric [2438]: open west
+Wed Nov  4 01:42:10 2026 :: Log Alaric [2438]: west
+Wed Nov  4 01:42:10 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Nov  4 01:42:15 2026 :: Log Alaric [2439]: west
+Wed Nov  4 01:42:15 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6000]: west
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6001]: west
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6002]: west
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6003]: west
+Wed Nov  4 01:42:16 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6004]: west
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6100]: west
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6101]: south
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6104]: south
+Wed Nov  4 01:42:17 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6105]: west
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6106]: south
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6117]: affects off: steel fist
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6117]: west
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6116]: south
+Wed Nov  4 01:42:18 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Wed Nov  4 01:42:19 2026 :: Log Alaric [6115]: west
+Wed Nov  4 01:42:19 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Wed Nov  4 01:42:19 2026 :: Log Alaric [6114]: west
+Wed Nov  4 01:42:19 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Wed Nov  4 01:42:19 2026 :: Log Alaric [6122]: south
+Wed Nov  4 01:42:19 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Wed Nov  4 01:42:19 2026 :: Log Alaric [6123]: south
+Wed Nov  4 01:42:23 2026 :: Log Alaric [6123]: open south
+Wed Nov  4 01:42:24 2026 :: Log Alaric [6123]: south
+Wed Nov  4 01:42:26 2026 :: Log Alaric [6123]: levi
+Wed Nov  4 01:42:34 2026 :: Log Alaric [6123]: quit
+Wed Nov  4 01:42:34 2026 :: Alaric has quit.
+Wed Nov  4 01:42:34 2026 :: [QUIT] Player rejoined the real world.
+Wed Nov  4 01:42:44 2026 :: Treasure goblin: vanished from room 25211 (Outside the Northern Gate of Nethril., mushroom.are) (too long in one area).
+Wed Nov  4 01:42:58 2026 :: Sock.sinaddr:  52.22.236.30
+Wed Nov  4 01:42:58 2026 :: EOF encountered on read.
