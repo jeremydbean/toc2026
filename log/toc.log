@@ -258374,3 +258374,223 @@ Wed Nov  4 02:51:50 2026 :: Log Alaric [4208]: eq
 Wed Nov  4 02:51:52 2026 :: Log Alaric [4208]: wake
 Wed Nov  4 02:51:52 2026 :: Log Alaric [4208]: l
 Wed Nov  4 02:52:03 2026 :: Log Trentlin [4208]: (social) nod
+Wed Nov  4 02:52:05 2026 :: Log Trentlin [4208]: east
+Wed Nov  4 02:52:05 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Wed Nov  4 02:52:05 2026 :: Log Trentlin [4207]: east
+Wed Nov  4 02:52:05 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov  4 02:52:05 2026 :: Log Trentlin [4202]: east
+Wed Nov  4 02:52:05 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [4201]: east
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [2427]: north
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [2404]: north
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [2401]: east
+Wed Nov  4 02:52:06 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2403]: east
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2420]: east
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2421]: south
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2441]: arrived (River Road.) from 2421
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2441]: east
+Wed Nov  4 02:52:07 2026 :: Log Trentlin [2442]: arrived (River Road.) from 2441
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2442]: south
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2443]: arrived (River Road.) from 2442
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2443]: east
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2444]: arrived (River Road.) from 2443
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2444]: east
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2445]: arrived (End of River Road.) from 2444
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2445]: east
+Wed Nov  4 02:52:08 2026 :: Log Trentlin [2101]: arrived (A Dark Alleyway) from 2445
+Wed Nov  4 02:52:10 2026 :: Log Trentlin [2101]: e
+Wed Nov  4 02:52:10 2026 :: Log Trentlin [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Wed Nov  4 02:52:11 2026 :: Log Alaric [4208]: heal ref
+Wed Nov  4 02:52:11 2026 :: Log Alaric [4208]: gold -60
+Wed Nov  4 02:52:13 2026 :: Log Trentlin [2102]: k mem
+Wed Nov  4 02:52:16 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:52:16 2026 :: Log Alaric [4208]: r e 4
+Wed Nov  4 02:52:16 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Wed Nov  4 02:52:16 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov  4 02:52:16 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov  4 02:52:16 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Nov  4 02:52:16 2026 :: Log Alaric [2427]: n
+Wed Nov  4 02:52:16 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2404]: n
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2401]: u
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2410]: u
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2411]: u
+Wed Nov  4 02:52:17 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Nov  4 02:52:18 2026 :: Log Alaric [2414]: u
+Wed Nov  4 02:52:18 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Nov  4 02:52:25 2026 :: Sock.sinaddr:  23.31.96.97
+Wed Nov  4 02:52:30 2026 :: Log Trentlin [2102]: affects off: chill touch
+Wed Nov  4 02:52:35 2026 :: Log Trentlin [2102]: killed a gang member
+Wed Nov  4 02:52:54 2026 :: Log Trentlin [2102]: con va
+Wed Nov  4 02:52:55 2026 :: EOF encountered on read.
+Wed Nov  4 02:52:56 2026 :: Sock.sinaddr:  23.31.96.97
+Wed Nov  4 02:52:57 2026 :: EOF encountered on read.
+Wed Nov  4 02:52:57 2026 :: Log Trentlin [2102]: k va
+Wed Nov  4 02:53:00 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:08 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:12 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:12 2026 :: Log Alaric [2497]: affects off: mindbar
+Wed Nov  4 02:53:16 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:17 2026 :: Log Alaric [2497]: aq re
+Wed Nov  4 02:53:17 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in rome.are, 7 minutes, rush
+Wed Nov  4 02:53:17 2026 :: Treasure goblin: vanished from room 1315 (The Hallway, htower.are) (too long in one area).
+Wed Nov  4 02:53:21 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:22 2026 :: Log Alaric [2497]: enter door
+Wed Nov  4 02:53:22 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov  4 02:53:22 2026 :: Log Alaric [2401]: west
+Wed Nov  4 02:53:22 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov  4 02:53:22 2026 :: Log Alaric [2405]: west
+Wed Nov  4 02:53:22 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2433]: west
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2434]: west
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2435]: west
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2436]: west
+Wed Nov  4 02:53:23 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov  4 02:53:24 2026 :: Log Alaric [2437]: west
+Wed Nov  4 02:53:24 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Nov  4 02:53:24 2026 :: Log Alaric [2438]: open west
+Wed Nov  4 02:53:24 2026 :: Log Alaric [2438]: west
+Wed Nov  4 02:53:24 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Nov  4 02:53:25 2026 :: Log Alaric [2439]: north
+Wed Nov  4 02:53:25 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3900]: north
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3901]: north
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3902]: east
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3903]: east
+Wed Nov  4 02:53:26 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Wed Nov  4 02:53:27 2026 :: Log Alaric [3904]: north
+Wed Nov  4 02:53:27 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Wed Nov  4 02:53:27 2026 :: Log Alaric [300]: north
+Wed Nov  4 02:53:27 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Wed Nov  4 02:53:27 2026 :: Log Alaric [315]: north
+Wed Nov  4 02:53:27 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Wed Nov  4 02:53:27 2026 :: Log Alaric [320]: east
+Wed Nov  4 02:53:27 2026 :: Log Alaric [305]: arrived (Path in the plains) from 320
+Wed Nov  4 02:53:28 2026 :: Log Alaric [305]: north
+Wed Nov  4 02:53:28 2026 :: Log Alaric [306]: arrived (Path in the foothills) from 305
+Wed Nov  4 02:53:28 2026 :: Log Alaric [306]: north
+Wed Nov  4 02:53:28 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 306
+Wed Nov  4 02:53:28 2026 :: Log Alaric [326]: east
+Wed Nov  4 02:53:28 2026 :: Log Alaric [309]: arrived (Path in the foothills) from 326
+Wed Nov  4 02:53:28 2026 :: Log Alaric [309]: east
+Wed Nov  4 02:53:28 2026 :: Log Alaric [310]: arrived (Path in the foothills) from 309
+Wed Nov  4 02:53:29 2026 :: Log Alaric [310]: east
+Wed Nov  4 02:53:29 2026 :: Log Alaric [311]: arrived (Path in the foothills) from 310
+Wed Nov  4 02:53:29 2026 :: Log Alaric [311]: east
+Wed Nov  4 02:53:29 2026 :: Log Alaric [312]: arrived (The path intersection) from 311
+Wed Nov  4 02:53:29 2026 :: Log Alaric [312]: south
+Wed Nov  4 02:53:29 2026 :: Log Alaric [332]: arrived (The ancient path) from 312
+Wed Nov  4 02:53:29 2026 :: Log Alaric [332]: south
+Wed Nov  4 02:53:29 2026 :: Log Alaric [333]: arrived (The ancient path) from 332
+Wed Nov  4 02:53:30 2026 :: Log Alaric [333]: south
+Wed Nov  4 02:53:30 2026 :: Log Alaric [334]: arrived (The ancient path) from 333
+Wed Nov  4 02:53:30 2026 :: Log Alaric [334]: south
+Wed Nov  4 02:53:30 2026 :: Log Alaric [335]: arrived (The ancient path) from 334
+Wed Nov  4 02:53:30 2026 :: Log Alaric [335]: south
+Wed Nov  4 02:53:30 2026 :: Log Alaric [59]: arrived (Untamed Prairie) from 335
+Wed Nov  4 02:53:30 2026 :: Log Alaric [59]: south
+Wed Nov  4 02:53:30 2026 :: Log Alaric [19168]: arrived (Though the Weeds) from 59
+Wed Nov  4 02:53:32 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:37 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:45 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:52 2026 :: Log Trentlin [2102]: kick
+Wed Nov  4 02:53:53 2026 :: Log Trentlin [2102]: killed a vandal
+Wed Nov  4 02:53:59 2026 :: Log Trentlin [2102]: l
+Wed Nov  4 02:53:59 2026 :: Log Trentlin [2102]: sca
+Wed Nov  4 02:54:00 2026 :: Sock.sinaddr:  178.156.185.127
+Wed Nov  4 02:54:00 2026 :: Log Trentlin [2102]: e
+Wed Nov  4 02:54:00 2026 :: Log Trentlin [2103]: arrived (Along White Dragon Boulevard) from 2102
+Wed Nov  4 02:54:01 2026 :: EOF encountered on read.
+Wed Nov  4 02:54:01 2026 :: Log Trentlin [2103]: k mem
+Wed Nov  4 02:54:05 2026 :: Log Trentlin [2103]: kick
+Wed Nov  4 02:54:13 2026 :: Log Trentlin [2103]: kick
+Wed Nov  4 02:54:19 2026 :: Log Trentlin [2103]: kick
+Wed Nov  4 02:54:23 2026 :: Log Trentlin [2103]: killed a gang member
+Wed Nov  4 02:54:24 2026 :: Log Trentlin [2103]: w
+Wed Nov  4 02:54:24 2026 :: Log Trentlin [2102]: arrived (Beginning of White Dragon Boulevard) from 2103
+Wed Nov  4 02:54:25 2026 :: Log Trentlin [2102]: s
+Wed Nov  4 02:54:25 2026 :: Log Trentlin [2109]: arrived (An over-grown lot) from 2102
+Wed Nov  4 02:54:26 2026 :: Log Trentlin [2109]: k mem
+Wed Nov  4 02:54:29 2026 :: Log Trentlin [2109]: kick
+Wed Nov  4 02:54:33 2026 :: Log Trentlin [2109]: kick
+Wed Nov  4 02:54:34 2026 :: Log Alaric [19168]: south
+Wed Nov  4 02:54:34 2026 :: Log Alaric [19169]: arrived (Beside Clay Road) from 19168
+Wed Nov  4 02:54:34 2026 :: Log Alaric [19169]: south
+Wed Nov  4 02:54:34 2026 :: Log Alaric [19165]: arrived (Clay Road) from 19169
+Wed Nov  4 02:54:34 2026 :: Log Alaric [19165]: west
+Wed Nov  4 02:54:34 2026 :: Log Alaric [19164]: arrived (Before Rome) from 19165
+Wed Nov  4 02:54:35 2026 :: Log Alaric [19164]: west
+Wed Nov  4 02:54:35 2026 :: Log Alaric [19151]: arrived (The East Gate of Rome) from 19164
+Wed Nov  4 02:54:35 2026 :: Log Alaric [19151]: west
+Wed Nov  4 02:54:35 2026 :: Log Alaric [19146]: arrived (Clay Avenue) from 19151
+Wed Nov  4 02:54:37 2026 :: Log Alaric [19146]: u
+Wed Nov  4 02:54:37 2026 :: Log Alaric [19145]: arrived (Outside the Capitol) from 19146
+Wed Nov  4 02:54:40 2026 :: Log Alaric [19145]: get all
+Wed Nov  4 02:54:41 2026 :: Log Trentlin [2109]: kick
+Wed Nov  4 02:54:41 2026 :: Log Alaric [19145]: recal
+Wed Nov  4 02:54:41 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 19145
+Wed Nov  4 02:54:42 2026 :: Log Alaric [2497]: aq co
+Wed Nov  4 02:54:42 2026 :: Log Alaric [2497]: copper +308258280
+Wed Nov  4 02:54:42 2026 :: Log Alaric [2497]: quest complete: 308p 25g 82s 80c, 78 quest points, rush (streak bonus 30%)
+Wed Nov  4 02:54:42 2026 :: Snapshot of Alaric taken before quest: Alaric.20261104_025442.quest (PRESTORE Alaric to see it).
+Wed Nov  4 02:54:43 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov  4 02:54:44 2026 :: Log Alaric [2497]: score
+Wed Nov  4 02:54:45 2026 :: Log Alaric [2497]: who
+Wed Nov  4 02:54:48 2026 :: Log Trentlin [2109]: kick
+Wed Nov  4 02:54:55 2026 :: Log Trentlin [2109]: kick
+Wed Nov  4 02:54:58 2026 :: Log Trentlin [2109]: kick
+Wed Nov  4 02:55:02 2026 :: Log Trentlin [2109]: killed a gang member
+Wed Nov  4 02:55:02 2026 :: Log Alaric [2497]: score
+Wed Nov  4 02:55:04 2026 :: Log Trentlin [2109]: sca
+Wed Nov  4 02:55:05 2026 :: Log Trentlin [2109]: s
+Wed Nov  4 02:55:07 2026 :: Log Trentlin [2109]: e
+Wed Nov  4 02:55:07 2026 :: Log Trentlin [2110]: arrived (East end of an over-grown plot of land) from 2109
+Wed Nov  4 02:55:10 2026 :: Log Trentlin [2110]: s
+Wed Nov  4 02:55:10 2026 :: Log Trentlin [2116]: arrived (Dracolich Plaza) from 2110
+Wed Nov  4 02:55:13 2026 :: Log Trentlin [2116]: k mem
+Wed Nov  4 02:55:18 2026 :: Log Trentlin [2116]: kick
+Wed Nov  4 02:55:24 2026 :: Log Trentlin [2116]: kick
+Wed Nov  4 02:55:30 2026 :: Log Trentlin [2116]: kick
+Wed Nov  4 02:55:32 2026 :: Log Trentlin [2116]: killed a gang member
+Wed Nov  4 02:55:36 2026 :: Log Trentlin [2116]: kick
+Wed Nov  4 02:55:50 2026 :: Log Alaric [2497]: who
+Wed Nov  4 02:55:52 2026 :: Log Alaric [2497]: wake
+Wed Nov  4 02:55:52 2026 :: Log Alaric [2497]: l
+Wed Nov  4 02:55:56 2026 :: Log Alaric [2497]: skill
+Wed Nov  4 02:56:00 2026 :: Log Trentlin [2116]: kick
+Wed Nov  4 02:56:04 2026 :: Log Trentlin [2116]: kick
+Wed Nov  4 02:56:09 2026 :: Log Trentlin [2116]: kick
+Wed Nov  4 02:56:11 2026 :: Log Trentlin [2116]: killed a gang member
+Wed Nov  4 02:56:15 2026 :: Log Trentlin [2116]: e
+Wed Nov  4 02:56:15 2026 :: Log Trentlin [2117]: arrived (Shortcut) from 2116
+Wed Nov  4 02:56:17 2026 :: Log Trentlin [2117]: k mem
+Wed Nov  4 02:56:20 2026 :: Log Trentlin [2117]: kick
+Wed Nov  4 02:56:24 2026 :: Log Trentlin [2117]: kick
+Wed Nov  4 02:56:29 2026 :: Log Trentlin [2117]: kick
+Wed Nov  4 02:56:35 2026 :: Log Trentlin [2117]: kick
+Wed Nov  4 02:56:35 2026 :: Log Trentlin [2117]: killed a gang member
+Wed Nov  4 02:56:40 2026 :: Log Trentlin [2117]: e
+Wed Nov  4 02:56:43 2026 :: Log Trentlin [2117]: n
+Wed Nov  4 02:56:43 2026 :: Log Trentlin [2111]: arrived (Armory) from 2117
+Wed Nov  4 02:56:44 2026 :: Log Trentlin [2111]: k mem
+Wed Nov  4 02:56:46 2026 :: Log Alaric [2497]: help remort
+Wed Nov  4 02:56:47 2026 :: Log Trentlin [2111]: kick
+Wed Nov  4 02:56:51 2026 :: Log Trentlin [2111]: kick
+Wed Nov  4 02:56:55 2026 :: Log Trentlin [2111]: kick
+Wed Nov  4 02:57:00 2026 :: Log Trentlin [2111]: kick
+Wed Nov  4 02:57:03 2026 :: Log Trentlin [2111]: kick

@@ -21312,3 +21312,135 @@
 1793760712	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
 1793760712	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
 1793760723	cmd	Trentlin	7	4208	dresden.are	standing	85	0	-	(social)		You nod.	-	-
+1793760725	cmd	Trentlin	7	4207	dresden.are	standing	85	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793760725	cmd	Trentlin	7	4202	dresden.are	standing	85	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793760725	cmd	Trentlin	7	4201	dresden.are	standing	85	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793760726	cmd	Trentlin	7	2427	dresden.are	standing	85	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793760726	cmd	Trentlin	7	2404	dresden.are	standing	85	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793760726	cmd	Trentlin	7	2401	dresden.are	standing	85	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793760726	cmd	Trentlin	7	2403	dresden.are	standing	85	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793760727	cmd	Trentlin	7	2420	dresden.are	standing	85	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793760727	cmd	Trentlin	7	2421	dresden.are	standing	85	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793760727	cmd	Trentlin	7	2441	dresden.are	standing	85	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793760727	cmd	Trentlin	7	2442	dresden.are	standing	85	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793760728	cmd	Trentlin	7	2443	dresden.are	standing	85	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793760728	cmd	Trentlin	7	2444	dresden.are	standing	85	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793760728	cmd	Trentlin	7	2445	dresden.are	standing	85	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793760728	cmd	Trentlin	7	2101	hood.are	standing	85	0	-	east		A Dark Alleyway //   The walls of the alleyway have been spray-painted over many times // over the years.  One section of graffiti actually looks legible,	-	+
+1793760730	cmd	Trentlin	7	2102	hood.are	standing	85	0	-	east		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1793760731	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)	-	-
+1793760733	cmd	Trentlin	7	2102	hood.are	standing	85	0	-	kill	mem	Your punch grazes a gang member. // Your punch scratches a gang member.	-	-
+1793760736	cmd	Trentlin	7	2102	hood.are	fighting	85	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760736	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	run	e 4	Before the Altar. // [Exits: north east south west up] // Halls of Healing.	-	+
+1793760736	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793760737	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793760737	cmd	Alaric	57	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1793760737	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1793760737	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1793760738	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793760774	cmd	Trentlin	7	2102	hood.are	standing	88	0	-	consider	va	A vandal is a little above your level. // A vandal has about half your hit points. // Blow for blow, you would need about 8 rounds to bring a vandal down; he would need about 32 rounds for you.	-	+
+1793760777	cmd	Trentlin	7	2102	hood.are	standing	88	0	-	kill	va	Your punch misses a vandal. // Your punch misses a vandal.	-	-
+1793760780	cmd	Trentlin	7	2102	hood.are	fighting	88	0	fight	kick		Your kick scratches a vandal.	-	-
+1793760788	cmd	Trentlin	7	2102	hood.are	fighting	87	0	fight	kick		Your kick scratches a vandal.	-	-
+1793760792	cmd	Trentlin	7	2102	hood.are	fighting	86	0	fight	kick		Your kick scratches a vandal.	-	-
+1793760796	cmd	Trentlin	7	2102	hood.are	fighting	85	0	fight	kick		Your kick scratches a vandal.	-	-
+1793760797	cmd	Alaric	57	2497	dresden.are	standing	100	11	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'Bandits have made off with The Heart of Tifarah!'	-	+
+1793760801	cmd	Trentlin	7	2102	hood.are	fighting	83	0	fight	kick		Your kick scratches a vandal.	-	-
+1793760802	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793760802	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793760802	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793760803	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793760803	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793760803	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793760803	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793760804	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793760804	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1793760804	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793760805	cmd	Alaric	57	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1793760806	cmd	Alaric	57	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1793760806	cmd	Alaric	57	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1793760806	cmd	Alaric	57	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1793760806	cmd	Alaric	57	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1793760807	cmd	Alaric	57	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1793760807	cmd	Alaric	57	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1793760807	cmd	Alaric	57	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1793760807	cmd	Alaric	57	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the	-	+
+1793760808	cmd	Alaric	57	306	plains.are	standing	100	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful	-	+
+1793760808	cmd	Alaric	57	326	plains.are	standing	100	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred	-	+
+1793760808	cmd	Alaric	57	309	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path	-	+
+1793760808	cmd	Alaric	57	310	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.	-	+
+1793760809	cmd	Alaric	57	311	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on the long, narrow path through the foothills. // To your east you see a T-intersection and to the west the path	-	+
+1793760809	cmd	Alaric	57	312	plains.are	standing	100	0	-	east		The path intersection //   You are standing on an intersection between 3 paths. // To the west you can follow a long, narrow path through the foothills.	-	+
+1793760809	cmd	Alaric	57	332	plains.are	standing	100	0	-	south		The ancient path //   You are moving on an ancient path. The path is slightly covered with // leaves and twitches.	-	+
+1793760809	cmd	Alaric	57	333	plains.are	standing	100	0	-	south		The ancient path //   You are standing on the ancient path which runs north and south. // The path is hardly visible here.	-	+
+1793760810	cmd	Alaric	57	334	plains.are	standing	100	0	-	south		The ancient path //   You are standing on the ancient path which runs north and south. // The path is hardly visible here.	-	+
+1793760810	cmd	Alaric	57	335	plains.are	standing	100	0	-	south		The ancient path //   The path runs north and east from here.  You notice some markers placed // along the side of the path.	-	+
+1793760810	cmd	Alaric	57	59	connect.are	standing	100	0	-	south		Untamed Prairie //   Stepping off the path, you find yourself wading through chest high grasses // of an untamed prairie but sounds of a busy city lead you to invistigate	-	+
+1793760810	cmd	Alaric	57	19168	rome.are	standing	100	0	-	south		Though the Weeds //   Small unseen animals scurry out of your way and annoying insects buzz around // your head as you fight your way through the tall weeds. The noise of the city	-	+
+1793760812	cmd	Trentlin	7	2102	hood.are	fighting	76	0	fight	kick		Your kick misses a vandal.	-	-
+1793760817	cmd	Trentlin	7	2102	hood.are	fighting	76	0	fight	kick		Your kick scratches a vandal.	-	-
+1793760825	cmd	Trentlin	7	2102	hood.are	fighting	76	0	fight	kick		Your kick misses a vandal.	-	-
+1793760832	cmd	Trentlin	7	2102	hood.are	fighting	76	0	fight	kick		Your kick scratches a vandal.	-	-
+1793760839	cmd	Trentlin	7	2102	hood.are	standing	76	0	-	look		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1793760839	cmd	Trentlin	7	2102	hood.are	standing	76	0	-	scan		a gang member                      -to the East. // a gang member                      -to the South.	-	-
+1793760840	cmd	Trentlin	7	2103	hood.are	standing	76	0	-	east		Along White Dragon Boulevard //   Everywhere you look you see signs of recent violence.  Patches of blood // lie everywhere and broken sticks and abandoned knives are strewn here	-	+
+1793760841	cmd	Trentlin	7	2103	hood.are	standing	76	0	-	kill	mem	Your punch hits a gang member. // Your punch grazes a gang member.	-	-
+1793760845	cmd	Trentlin	7	2103	hood.are	fighting	75	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760853	cmd	Trentlin	7	2103	hood.are	fighting	73	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760859	cmd	Trentlin	7	2103	hood.are	fighting	73	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760864	cmd	Trentlin	7	2102	hood.are	standing	73	0	-	west		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1793760865	cmd	Trentlin	7	2109	hood.are	standing	73	0	-	south		An over-grown lot //   A huge building was going to be built here, but they gave the // project up when violence took over the town.  Now it is just a	-	+
+1793760866	cmd	Trentlin	7	2109	hood.are	standing	73	0	-	kill	mem	Your punch misses a gang member. // Your punch misses a gang member.	-	-
+1793760869	cmd	Trentlin	7	2109	hood.are	fighting	74	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760873	cmd	Trentlin	7	2109	hood.are	fighting	74	0	fight	kick		Your kick misses a gang member.	-	-
+1793760874	cmd	Alaric	57	19169	rome.are	standing	100	0	-	south		Beside Clay Road //   Fighting your way out of the tall grass, you find yourself standing beside // a wide paved road. The noise of a busy city sounds very near. Was that the 	-	+
+1793760874	cmd	Alaric	57	19165	rome.are	standing	100	0	-	south		Clay Road //   You travel upon an East-West road wide enough for 30 men to march abreast. // It is packed hard through heavy use. To the west, you eyes catch the	-	+
+1793760874	cmd	Alaric	57	19164	rome.are	standing	100	0	-	west		Before Rome //   You travel upon an East-West road wide enough for 30 men to march // abreast.  It is packed hard through heavy use.  To the west stands the	-	+
+1793760875	cmd	Alaric	57	19151	rome.are	standing	100	0	-	west		The East Gate of Rome //   You are standing inside of the eastern gate of Rome.  There are two tall // spires built into the city wall, from which the guards can see the whole	-	+
+1793760875	cmd	Alaric	57	19146	rome.are	standing	100	0	-	west		Clay Avenue //   You are standing on a wide, heavily traveled road that runs east and west // through the heart of the city.  There are marble steps leading up.  To the	-	+
+1793760877	cmd	Alaric	57	19145	rome.are	standing	100	0	-	up		Outside the Capitol //   You stand on white marble steps that lead up and into the Capitol Building. // There are several statues, none of any real significance, at the entrance to	-	+
+1793760880	cmd	Alaric	57	19145	rome.are	standing	100	0	-	get	all	You get The Heart of Tifarah.	-	-
+1793760881	cmd	Trentlin	7	2109	hood.are	fighting	72	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760881	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793760882	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	quest qp=1515->1515 daily=4->4 coin=+308258280
+1793760882	cmd	Alaric	57	2497	dresden.are	standing	100	22	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'	success:-	+
+1793760883	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 78 quest points.	-	-
+1793760884	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=480/983 align=897 exp=252749 coin=924247071 bank=22227285207 qp=1593 prac=36 train=76 stash=95/350 remorts=3
+1793760884	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793760885	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[ 7 Dwarf   Monk  ] Trentlin the Student of Shape // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1793760888	cmd	Trentlin	7	2109	hood.are	fighting	69	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760895	cmd	Trentlin	7	2109	hood.are	fighting	68	0	fight	kick		Your kick grazes a gang member.	-	-
+1793760898	cmd	Trentlin	7	2109	hood.are	fighting	68	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760902	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=480/983 align=897 exp=252749 coin=924247071 bank=22227285207 qp=1593 prac=36 train=76 stash=95/350 remorts=3
+1793760902	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793760904	cmd	Trentlin	7	2109	hood.are	standing	68	0	-	scan		You don't see anything near you.	-	-
+1793760905	cmd	Trentlin	7	2109	hood.are	standing	68	0	-	south		Alas, you cannot go that way.	-	-
+1793760907	cmd	Trentlin	7	2110	hood.are	standing	68	0	-	east		East end of an over-grown plot of land //   This was planned to be a park, but the developer was scared out // of town by the gang.  Now it is just a dusty square of land. The	-	+
+1793760910	cmd	Trentlin	7	2116	hood.are	standing	68	0	-	south		Dracolich Plaza //   They began construction of a pleasant plaza here.  You wouldn't have // known it though if i hadn't told you.  It has been renamed in honor	-	+
+1793760913	cmd	Trentlin	7	2116	hood.are	standing	68	0	-	kill	mem	A gang member parries your attack. // Your punch misses a gang member.	-	-
+1793760918	cmd	Trentlin	7	2116	hood.are	fighting	66	0	fight	kick		Your kick misses a gang member.	-	-
+1793760924	cmd	Trentlin	7	2116	hood.are	fighting	64	0	fight	kick		Your kick grazes a gang member. // You have become better at kick!	-	-
+1793760930	cmd	Trentlin	7	2116	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760936	cmd	Trentlin	7	2116	hood.are	fighting	57	0	fight	kick		Your kick grazes a gang member.	-	-
+1793760950	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[ 7 Dwarf   Monk  ] Trentlin the Student of Shape // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1793760952	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793760952	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793760956	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand       100%       //           recall             100%       // Level  3: kick                 1%      	-	+
+1793760960	cmd	Trentlin	7	2116	hood.are	fighting	57	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760964	cmd	Trentlin	7	2116	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760969	cmd	Trentlin	7	2116	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760975	cmd	Trentlin	7	2117	hood.are	standing	56	0	-	east		Shortcut //   This is a shortcut between Dracolich Plaza and the center of town. // Dracolich Plaza is to the west and the shortcut continues south.	-	+
+1793760977	cmd	Trentlin	7	2117	hood.are	standing	56	0	-	kill	mem	A gang member parries your attack. // Your punch misses a gang member.	-	-
+1793760980	cmd	Trentlin	7	2117	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760984	cmd	Trentlin	7	2117	hood.are	fighting	56	0	fight	kick		Your kick grazes a gang member.	-	-
+1793760989	cmd	Trentlin	7	2117	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793760995	cmd	Trentlin	7	2117	hood.are	fighting	56	0	fight	kick		Your kick grazes a gang member.	-	-
+1793761000	cmd	Trentlin	7	2117	hood.are	standing	56	0	-	east		Alas, you cannot go that way.	-	-
+1793761003	cmd	Trentlin	7	2111	hood.are	standing	56	0	-	north		Armory //   Well actually, this is what USED to be the armory.  The equipment has // all been stolen or broken beyond repair. The back wall of the	-	+
+1793761004	cmd	Trentlin	7	2111	hood.are	standing	56	0	-	kill	mem	Your punch grazes a gang member. // Your punch scratches a gang member.	-	-
+1793761006	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	help	remort	REMORT // Syntax: REMORT <password> <class> <guild> <race> // REMORT allows a character at their current maximum level to start over as a	-	+
+1793761007	cmd	Trentlin	7	2111	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761011	cmd	Trentlin	7	2111	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761015	cmd	Trentlin	7	2111	hood.are	fighting	59	0	fight	kick		Your kick misses a gang member.	-	-
+1793761020	cmd	Trentlin	7	2111	hood.are	fighting	59	0	fight	kick		Your kick grazes a gang member.	-	-
+1793761023	cmd	Trentlin	7	2111	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
