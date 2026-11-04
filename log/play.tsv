@@ -20379,3 +20379,10 @@
 1793749452	state	Alaric	57	4210	dresden.are	lvl=57 hp=829/1544 mana=2691/2875 mv=281/983 align=880 exp=252749 coin=450560226 bank=20176843100 qp=971 prac=36 train=76 stash=95/350 remorts=3
 1793749452	cmd	Alaric	57	4210	dresden.are	sleeping	53	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
 1793749455	session	Alaric	57	4210	dresden.are	quit	985s	+0 levels	+0 exp	+67494559 copper	2 kills	0 deaths	1 quests	500 commands	0 refused	coin: loot 8p 53g 79s 3c, quests 61p 65g 16s 56c, spent 2p 69g 50s
+1793752923	cmd	Alaric	57	4210	dresden.are	sleeping	53	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1793752924	cmd	Alaric	57	4210	dresden.are	sleeping	53	0	-	wake		You wake and stand up.	-	-
+1793752924	cmd	Alaric	57	4210	dresden.are	standing	53	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793752927	cmd	Alaric	57	4210	dresden.are	standing	53	0	-	sleep		You go to sleep.	-	-
+1793753067	state	Alaric	57	4210	dresden.are	lvl=57 hp=1101/1544 mana=2786/2875 mv=435/983 align=880 exp=252749 coin=450560226 bank=20176843100 qp=971 prac=36 train=76 stash=95/350 remorts=3
+1793753067	cmd	Alaric	57	4210	dresden.are	sleeping	71	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    283 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793753068	cmd	Alaric	57	4210	dresden.are	sleeping	71	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
