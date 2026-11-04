@@ -21444,3 +21444,103 @@
 1793761015	cmd	Trentlin	7	2111	hood.are	fighting	59	0	fight	kick		Your kick misses a gang member.	-	-
 1793761020	cmd	Trentlin	7	2111	hood.are	fighting	59	0	fight	kick		Your kick grazes a gang member.	-	-
 1793761023	cmd	Trentlin	7	2111	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761029	cmd	Trentlin	7	2111	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761035	cmd	Trentlin	7	2111	hood.are	standing	59	0	-	look		Armory //   Well actually, this is what USED to be the armory.  The equipment has // all been stolen or broken beyond repair. The back wall of the	-	+
+1793761036	cmd	Trentlin	7	2104	hood.are	standing	59	0	-	north		White Dragon Boulevard at Armory //   Only gang members dare wander the streets here. // What used to be the armory lies to the south.  White Dragon Boulevard	-	+
+1793761038	cmd	Trentlin	7	2104	hood.are	standing	59	0	-	kill	mem	Your punch misses a gang member. // Your punch misses a gang member.	-	-
+1793761038	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand       100%       //           recall             100%       // Level  3: kick                 1%      	-	+
+1793761040	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	spells		You know no spells.	-	-
+1793761041	cmd	Trentlin	7	2104	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761043	cmd	Trentlin	7	2104	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761050	cmd	Trentlin	7	2104	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761053	cmd	Trentlin	7	2104	hood.are	fighting	59	0	fight	kick		Your kick misses a gang member.	-	-
+1793761058	cmd	Trentlin	7	2104	hood.are	fighting	57	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761063	cmd	Trentlin	7	2104	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761067	cmd	Trentlin	7	2104	hood.are	fighting	59	0	fight	kick		Your kick misses a gang member.	-	-
+1793761070	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=651/983 align=897 exp=252749 coin=924247071 bank=22227285207 qp=1593 prac=36 train=76 stash=95/350 remorts=3
+1793761070	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793761071	cmd	Trentlin	7	2104	hood.are	fighting	59	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761074	cmd	Trentlin	7	2104	hood.are	fighting	57	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761077	cmd	Trentlin	7	2104	hood.are	fighting	57	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761081	cmd	Trentlin	7	2105	hood.are	standing	57	0	-	east		White Dragon Blvd. //   Black Dragon Avenue used to run south from here but the way has been // blocked by the toppling of a building into the street.  White Dragon	-	+
+1793761083	cmd	Trentlin	7	2106	hood.are	standing	57	0	-	east		Corner of Ice and White Dragon //   Ice Dragon Way leads south from here.  It used to run the whole length // of the neighborhood and way lined with beautiful crystal sculptures.	-	+
+1793761088	cmd	Trentlin	7	2106	hood.are	standing	57	0	-	kill	mem	Your punch misses a gang member. // Your punch scratches a gang member.	-	-
+1793761090	cmd	Trentlin	7	2106	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761095	cmd	Trentlin	7	2106	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761098	cmd	Trentlin	7	2106	hood.are	fighting	56	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761102	cmd	Trentlin	7	2106	hood.are	fighting	53	0	fight	kick		Your kick misses a gang member.	-	-
+1793761105	cmd	Trentlin	7	2106	hood.are	fighting	50	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761111	cmd	Trentlin	7	2106	hood.are	fighting	47	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761114	cmd	Trentlin	7	2106	hood.are	fighting	46	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761117	cmd	Trentlin	7	2106	hood.are	fighting	43	0	fight	kick		Your kick scratches a gang member. // A gang member is DEAD!! // You receive 166 experience points.	-	+
+1793761120	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	gossip	I've been unlucky with getting the golden goose of Psi powers, but the extra stats are nice for climbing through the le	You gossip 'I've been unlucky with getting the golden goose of Psi powers, but the extra stats are nice for climbing through the levels again.'	-	-
+1793761121	cmd	Trentlin	7	2106	hood.are	fighting	43	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761129	cmd	Trentlin	7	2106	hood.are	fighting	43	0	fight	kick		Your kick misses a gang member.	-	-
+1793761132	cmd	Trentlin	7	2106	hood.are	fighting	43	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761135	cmd	Trentlin	7	2106	hood.are	fighting	43	0	fight	kick		Your kick scratches a gang member.	-	-
+1793761138	cmd	Trentlin	7	2106	hood.are	fighting	43	0	fight	kick		Your kick misses a gang member.	-	-
+1793761141	cmd	Trentlin	7	2106	hood.are	fighting	42	0	fight	kick		Your kick misses a gang member.	-	-
+1793761147	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	gossip	I threw away my gears early on, but having all the low level stuff ready to go was a huge boost to the recent remort	You gossip 'I threw away my gears early on, but having all the low level stuff ready to go was a huge boost to the recent remort'	-	-
+1793761148	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	look		Corner of Ice and White Dragon //   Ice Dragon Way leads south from here.  It used to run the whole length // of the neighborhood and way lined with beautiful crystal sculptures.	-	+
+1793761150	cmd	Alaric	57	2497	dresden.are	standing	100	10	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'Raiders stole The Journal of Trinidad from the realm!'	-	+
+1793761154	state	Trentlin	8	2106	hood.are	lvl=8 hp=114/281 mana=352/389 mv=253/260 align=-769 exp=18542 coin=4630714285 bank=10977624596 qp=27 prac=10 train=2 stash=62/75 remorts=1
+1793761154	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	score		| Name:       Trentlin | Level:       8 | Class:        Monk | // | Played:     26 hours | Sex:   Sexless | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793761155	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793761155	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793761155	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793761155	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793761156	cmd	Alaric	57	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793761156	cmd	Alaric	57	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1793761156	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	wear	qui	You must be level 9 to use this object.	-	-
+1793761156	cmd	Alaric	57	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1793761156	cmd	Alaric	57	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1793761157	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793761157	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1793761157	state	Trentlin	8	2106	hood.are	lvl=8 hp=114/281 mana=352/389 mv=253/260 align=-769 exp=18542 coin=4630714285 bank=10977624596 qp=27 prac=10 train=2 stash=62/75 remorts=1
+1793761157	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	score		| Name:       Trentlin | Level:       8 | Class:        Monk | // | Played:     26 hours | Sex:   Sexless | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793761157	cmd	Alaric	57	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793761159	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	inventory		You are carrying: //      a serving tray //      a quick sheathe	-	+
+1793761159	cmd	Alaric	57	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1793761160	cmd	Alaric	57	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1793761160	cmd	Alaric	57	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1793761160	cmd	Alaric	57	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1793761160	cmd	Alaric	57	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1793761161	cmd	Alaric	57	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1793761161	cmd	Alaric	57	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1793761161	cmd	Alaric	57	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1793761161	cmd	Alaric	57	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1793761162	cmd	Alaric	57	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1793761162	cmd	Alaric	57	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1793761162	cmd	Alaric	57	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1793761164	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	wear	tra	You must be level 9 to use this object.	-	-
+1793761167	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	wear	quick	You must be level 9 to use this object.	-	-
+1793761169	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	wear	da	You wield a long slim dagger. // You are skilled with a long slim dagger.	-	-
+1793761176	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	drop	sub	You drop a pair of sub issue sleeves. // A pair of sub issue sleeves burst into flames as it hits the ground.	-	-
+1793761177	cmd	Trentlin	8	2106	hood.are	standing	40	0	-	look		Corner of Ice and White Dragon //   Ice Dragon Way leads south from here.  It used to run the whole length // of the neighborhood and way lined with beautiful crystal sculptures.	-	+
+1793761179	cmd	Trentlin	8	4207	dresden.are	standing	40	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793761181	cmd	Trentlin	8	3700	school.are	standing	40	1	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793761181	cmd	Trentlin	8	3757	school.are	standing	40	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793761181	cmd	Trentlin	8	3759	school.are	standing	40	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1793761182	cmd	Trentlin	8	3759	school.are	standing	40	0	-	practice		dodge               75%  recall             100%  dagger              75%   // hand to hand        75%  kick                77%   // You have 10 practice sessions left.	-	-
+1793761186	cmd	Trentlin	8	3759	school.are	standing	40	0	-	practice		dodge               75%  recall             100%  dagger              75%   // hand to hand        75%  kick                77%   // You have 10 practice sessions left.	-	-
+1793761189	cmd	Trentlin	8	3759	school.are	standing	45	0	-	gain	convert	The adept of Soulcrusher helps you apply your practice to training	-	-
+1793761189	cmd	Trentlin	8	3757	school.are	standing	45	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793761189	cmd	Trentlin	8	3758	school.are	standing	45	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1793761190	cmd	Trentlin	8	3758	school.are	standing	45	0	-	train		You have 3 training sessions. // You can train: str dex hp mana.	-	-
+1793761193	cmd	Trentlin	8	3758	school.are	standing	45	0	-	train		You have 3 training sessions. // You can train: str dex hp mana.	-	-
+1793761196	cmd	Trentlin	8	3758	school.are	standing	45	0	-	train	dex	Your dexterity increases!	-	-
+1793761197	cmd	Trentlin	8	3758	school.are	standing	45	0	-	train	dex	Your dexterity increases!	-	-
+1793761197	cmd	Trentlin	8	3758	school.are	standing	45	0	-	train	dex	Your dexterity is already at maximum.	-	-
+1793761200	cmd	Trentlin	8	3758	school.are	standing	45	0	-	train		You have 1 training sessions. // You can train: str hp mana.	-	-
+1793761203	cmd	Trentlin	8	3758	school.are	standing	45	0	-	train	str	Your strength increases!	-	-
+1793761204	cmd	Trentlin	8	3757	school.are	standing	45	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793761205	cmd	Trentlin	8	3700	school.are	standing	45	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793761205	cmd	Trentlin	8	3700	school.are	standing	45	0	-	south		The door is closed.	-	-
+1793761205	cmd	Trentlin	8	3700	school.are	standing	45	0	-	south		The door is closed.	-	-
+1793761205	cmd	Trentlin	8	4207	dresden.are	standing	45	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793761207	cmd	Trentlin	8	4208	dresden.are	standing	45	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793761242	cmd	Trentlin	8	4207	dresden.are	standing	55	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793761322	cmd	Trentlin	8	4202	dresden.are	standing	65	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793761324	cmd	Trentlin	8	4201	dresden.are	standing	65	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793761325	cmd	Trentlin	8	2427	dresden.are	standing	65	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793761326	cmd	Trentlin	8	2404	dresden.are	standing	65	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
