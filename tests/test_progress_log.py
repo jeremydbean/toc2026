@@ -54,6 +54,8 @@ class ProgressLogTests(unittest.TestCase):
                 # SET sets the maximum; RESTORE brings it down to it.
                 setter.must("set char smurf hp 1", "")
                 setter.must("restore smurf", "")
+                # Coin it carries when it falls: the last column (2026-11-05).
+                setter.must("set char smurf gold 3", "Gold amount")
                 hunter.buffer = ""
                 run(hunter, "kill smurf", 1.0)
                 hunter.expect("is DEAD", timeout=60)
@@ -87,6 +89,7 @@ class ProgressLogTests(unittest.TestCase):
                     client.send("quit")
                     client.wait_closed()
             text = (mud.root / "log" / "progress.tsv").read_text(encoding="latin-1")
+            journal = (mud.root / "log" / "play.tsv").read_text(encoding="latin-1")
             hunter_id = next(line.split()[1] for line in
                              (mud.player_dir / "Zhunter").read_text(encoding="latin-1").splitlines()
                              if line.startswith("Id "))
@@ -96,7 +99,7 @@ class ProgressLogTests(unittest.TestCase):
         flees = [r for r in rows if r[1] == "flee"]
         self.assertEqual(len(kills), 2, text)
         kill, unpaid = kills
-        self.assertEqual(len(kill), 23, kill)
+        self.assertEqual(len(kill), 24, kill)
         self.assertEqual(kill[2], hunter_id)                  # the Id, not a name
         self.assertEqual((kill[3], kill[8], kill[9]), ("5", str(SMURF), "3"))
         self.assertTrue(kill[10].endswith(".are"), kill)       # an area file, never a room
@@ -112,6 +115,9 @@ class ProgressLogTests(unittest.TestCase):
         for col in kill[19:23]:
             self.assertRegex(col, r"^-?\d+$", kill)
         self.assertGreaterEqual(int(kill[20]), 0, "healing is only ever seen to rise")
+        # Three gold set on the smurf, in copper, and whatever it rolled.
+        self.assertGreaterEqual(int(kill[23]), 3 * 100 * 100, kill)
+        self.assertRegex(unpaid[23], r"^\d+$", unpaid)
         # Fifteen levels over the smurf: nothing earned, still recorded.
         self.assertEqual((unpaid[3], unpaid[8]), ("20", str(SMURF)), unpaid)
         self.assertEqual(int(unpaid[14]), 0, unpaid)
@@ -119,6 +125,13 @@ class ProgressLogTests(unittest.TestCase):
         self.assertEqual(flees[0][8], str(WORKER))
         self.assertNotIn("Zhunter", text)
         self.assertNotIn(str(HALLS), text)
+        # The session says where the experience came from and went
+        # (2026-11-05): the paid kill, and the ten a flee costs.
+        session = [r for r in (line.split("\t") for line in journal.splitlines())
+                   if len(r) > 2 and r[1] == "session" and r[2] == "Zhunter"][-1]
+        exp = next(f for f in session if f.startswith("exp: "))
+        self.assertRegex(exp, r"kills \+\d+", session)
+        self.assertIn("flee -10", exp, session)
 
 
     def test_reflected_damage_is_a_loss_not_negative_healing(self) -> None:
@@ -173,7 +186,7 @@ class ProgressLogTests(unittest.TestCase):
         kills = [r for r in (line.split("\t") for line in text.splitlines()) if r[1] == "kill"]
         self.assertEqual(len(kills), 1, text)
         kill = kills[0]
-        self.assertEqual(len(kill), 23, kill)
+        self.assertEqual(len(kill), 24, kill)
         taken, healed, direct = int(kill[19]), int(kill[20]), int(kill[22])
         self.assertGreater(direct, 0, f"the shield's burns are direct losses: {kill}")
         self.assertGreaterEqual(taken, direct, kill)
@@ -233,6 +246,49 @@ class ProgressReportTests(unittest.TestCase):
             "by_foe"][("coven.are", "24112", "32")]
         self.assertEqual((foe["xp"], foe["timed_xp"], foe["ms"], foe["untimed"]), (1050, 100, 60000, 2))
         self.assertEqual(foe["timed_xp"] / (foe["ms"] / 60000), 100)
+
+    def test_coin_carried_and_the_session_economy(self) -> None:
+        """2026-11-05: a kill row's last column is the coin the foe
+        carried, averaged per foe; a session's "spent on" and "exp"
+        columns add up across sittings (a link loss and the quit after it
+        counted once), and quest outcomes are priced in kills."""
+        from datetime import datetime, timezone
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+        import log_report
+
+        tail = "\t1\t-\t500\t20\t0\t0\t0"
+        text = ("1792700000\tkill\t4242\t30\t3\t0\t80\t100\t24112\t32\tcoven.are\t60000\t900\t0\t900\t1"
+                + tail + "\t30000\n"
+                "1792700100\tkill\t4242\t30\t3\t0\t80\t100\t24112\t32\tcoven.are\t60000\t900\t0\t900\t1"
+                + tail + "\t10000\n"
+                # A row from before the column: counted as a kill, not as coin.
+                "1792700200\tkill\t4242\t30\t3\t0\t80\t100\t24112\t32\tcoven.are\t60000\t900\t0\t900\t1\n")
+        foe = log_report.progress_summary(text, datetime(2026, 1, 1, tzinfo=timezone.utc))[
+            "by_foe"][("coven.are", "24112", "32")]
+        self.assertEqual((foe["kills"], foe["coin"], foe["coined"]), (3, 40000, 2))
+
+        def session(at, secs, how, spent, exp):
+            return [str(at), "session", "Zeco", "30", "4207", "midgaard.are", how, f"{secs}s",
+                    "+0 levels", "+0 exp", "+0 copper", "0 kills", "0 deaths", "0 quests",
+                    "5 commands", "0 refused", "coin: none", f"spent on: {spent}", f"exp: {exp}"]
+        rows = [
+            # One sitting written twice: only the quit's totals count.
+            session(1000, 100, "linkdead", "stash 1g", "kills +100"),
+            session(1050, 150, "quit", "stash 1g, heal 5s", "kills +300, flee -10"),
+            session(5000, 60, "quit", "stash 2g", "capped:kills +40"),
+            ["1792700300", "outcome", "Zeco", "30", "4207", "midgaard.are", "quest-complete",
+             "success", "-", "-", "rush qp=10->10 offered=50 daily=0->0 coin=+400000 kill=20000"
+             " streak=2 level=30 target=3011"],
+            ["1792700400", "outcome", "Zeco", "30", "4207", "midgaard.are", "quest-complete",
+             "refusal", "-", "-", "ordinary qp=10->10 offered=0 daily=0->0 coin=+0 kill=20000"
+             " streak=0 level=30 target=3011"],
+        ]
+        economy = log_report.economy_summary(rows)
+        self.assertEqual(dict(economy["spent"]), {"stash": 30000, "heal": 500})
+        self.assertEqual(dict(economy["exp"]), {"kills": 300, "flee": -10, "capped:kills": 40})
+        self.assertEqual(economy["quests"], {"rush": {"n": 1, "coin": 400000, "kills": 20.0,
+                                                      "priced": 1, "points": 50}})
 
 
 if __name__ == "__main__":

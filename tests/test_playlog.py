@@ -192,6 +192,10 @@ class PlaylogLiveTests(unittest.TestCase):
             coin = next(f for f in session if f.startswith("coin: "))
             self.assertIn("loot 5g", coin, "coin picked up is loot")
             self.assertIn("spent 5g", coin, "coin dropped is spent")
+            # And what it was spent on, by command (2026-11-05); nothing
+            # earned or lost any experience.
+            self.assertEqual(session[session.index(coin) + 1], "spent on: drop 5g", session)
+            self.assertEqual(session[session.index(coin) + 2], "exp: none", session)
 
             watch = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
             self.assertRegex(watch, r"Log Zcoiner \[\d+\]: quest assigned: (kill|recover) .+ "

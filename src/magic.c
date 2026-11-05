@@ -3111,6 +3111,7 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
     }
     else
     {
+	playlog_exp_as( "drained" );
 	gain_exp( victim, 0 - 2 * number_range( level/3, level / 2 ) );
 	victim->mana	= (int)(victim->mana - victim->mana * .15);
 	victim->move	= (int)(victim->move - victim->move * .15);

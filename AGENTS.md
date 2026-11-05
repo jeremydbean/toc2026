@@ -2641,8 +2641,17 @@ log says what a player typed; the journal says what happened, in columns
   and the numbers (hit points over max also says what the maximum was a
   tick ago). `report`: BUG/TYPO/IDEA, the text, hp, the last
   `PLAY_RECENT` commands. `session`: at QUIT, link loss and shutdown,
-  what the sitting came to, ending `coin: loot 3p, quests 162p, ...` --
-  the session's coin by source. Trimmed past `PLAY_JOURNAL_MAX` lines to the newest
+  what the sitting came to, then `coin: loot 3p, quests 162p, ...` --
+  the session's coin by source -- and (2026-11-05) two more columns:
+  `spent on: stash 1550p, heal 5g` (each loss by the character's own
+  command, else what `playlog_coin_as` named, else `other`) and
+  `exp: kills +12034, flee -10, capped:kills +900` (`playlog_exp`, from
+  every way out of `gain_exp` and the two exchanges outside it; a caller
+  names the source with `playlog_exp_as` just before -- kills, death,
+  flee, recall, drained, skill use, exchange -- and every `gain_exp`
+  spends it; a gain refused at level 50 or the remort cap is
+  `capped:<source>`). Each tally keeps `PLAY_TALLY_KINDS` labels, the
+  last `other`; a new `gain_exp` caller names its source. Trimmed past `PLAY_JOURNAL_MAX` lines to the newest
   `PLAY_JOURNAL_KEEP`, like the channel journal; the whole of `log/`
   reaches git with the state sync and CI ignores it.
 - **`interpret()` is now a wrapper** round `interpret_body()`: it times
@@ -2704,7 +2713,10 @@ log says what a player typed; the journal says what happened, in columns
   `outcome` row: the op, result, reason, the recovery ledger's
   operation id (or `-`) and the before/after numbers as key=value words.
   Wired at STASH TAKE, SPLIT, REPAIR, quest completion, the craft audit,
-  PRESTORE's gives and ACCEPT; a frozen-trade refusal sets
+  PRESTORE's gives and ACCEPT (quest completion's detail names the kind
+  -- ordinary, rush, emergency, daily -- the points `offered` to the
+  gamble, the coin, one `kill` at the questor's level, the streak, level
+  and target vnum, so a quest's pay reads in kills); a frozen-trade refusal sets
   `refusal:frozen` or `refusal:other-frozen`. SCORE writes a `state` row
   of the sheet's numbers (`playlog_state`). A wizinvis actor's outcome
   and state rows name nobody, as craft rows do. Never put private words,
@@ -2716,14 +2728,16 @@ log says what a player typed; the journal says what happened, in columns
   epoch, kind, the character's file **Id, never a name**, level, class,
   remorts, hp%, mana%, foe vnum and level, **area file, never a room**;
   a kill adds encounter ms, base, rested and accepted XP (what `gain_exp`
-  took, so the level 50 stop shows) and group size. The encounter starts
+  took, so the level 50 stop shows) and group size, then the fight's
+  ledger, then (2026-11-05) the coin the foe carried, in copper, read in
+  `group_gain` before the corpse is made. The encounter starts
   at `fight_began_ms`, stamped in `set_fighting` when a mobile enters a
   fight or a player strikes one that is in none, and never cleared --
   `damage()` stops a dead victim's fight before `group_gain` reads it.
   The dealer and the goblin are never written. Trimmed past
   `PROGRESS_MAX` to `PROGRESS_KEEP`. `tools/log_report.py` aggregates it
-  by foe and area -- XP per combat minute, median encounter, flees,
-  deaths, distinct characters -- and prints no ids
+  by foe and area -- XP per combat minute, median encounter, coin per
+  kill, flees, deaths, distinct characters -- and prints no ids
   (`tests/test_progress_log.py`).
 
 `tools/log_report.py` prints the slowest commands, what the game said no

@@ -898,6 +898,7 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
                     skill_table[sn].name);
 	    send_to_char(buf,ch);
 	    ch->pcdata->learned[sn]++;
+	    playlog_exp_as( "skill use" );
 	    gain_exp(ch,2 * skill_table[sn].rating[ch->class]);
 	    if ( ch->pcdata->learned[sn] >= 100 )
 		achievement_check_state( ch, true );
@@ -915,6 +916,7 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
 	    send_to_char(buf,ch);
 	    ch->pcdata->learned[sn] += number_range(1,3);
 	    ch->pcdata->learned[sn] = UMIN(ch->pcdata->learned[sn],100);
+	    playlog_exp_as( "skill use" );
 	    gain_exp(ch,2 * skill_table[sn].rating[ch->class]);
 	    if ( ch->pcdata->learned[sn] >= 100 )
 		achievement_check_state( ch, true );

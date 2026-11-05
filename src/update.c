@@ -554,18 +554,31 @@ long next_xp_level( CHAR_DATA *ch )
 void gain_exp( CHAR_DATA *ch, int gain )
 {
 
-    if ( IS_NPC(ch) || ch->level > LEVEL_KING || ch->level == 50)
-	     return;
+    long before;
 
+    /* Every way out tells the play journal where the experience came
+       from and what it came to (playlog_exp), which also spends the
+       source a caller named with playlog_exp_as. */
+    if ( IS_NPC(ch) )
+    {
+        playlog_exp( ch, 0, false );
+        return;
+    }
+    if ( ch->level > LEVEL_KING || ch->level == 50
     /* At or past the cap. Past it happens when staff ADVANCE a character
        beyond their remorts; with == they went on levelling to 60. */
-    if (ch -> level >= 54 + ch->pcdata->num_remorts)
+    ||   ch->level >= 54 + ch->pcdata->num_remorts )
+    {
+        playlog_exp( ch, gain > 0 ? gain : 0, true );
         return;
+    }
 
      if ( gain > 0 && !IS_NPC(ch) && ch->pcdata->exp_bonus > 0 )
          gain += gain * ch->pcdata->exp_bonus / 100;
 
+     before = ch->exp;
      ch->exp = UMAX( exp_per_level(ch,ch->pcdata->points), ch->exp + gain );
+     playlog_exp( ch, ch->exp - before, false );
 
      if(ch->level >= LEVEL_HERO)
      {

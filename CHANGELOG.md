@@ -8,6 +8,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The play journal says where coin and experience went** (2026-11-05).
+  Session rows end with `spent on:` (each loss by the command that made
+  it: 1,550 platinum on STASH BUY read only as "spent" before) and `exp:`
+  (kills, death, flee, recall, drained, skill use, exchange, and gains
+  refused at a cap as `capped:`). A progress kill row ends with the coin
+  the foe carried; a quest-complete outcome names its kind, the points
+  offered, a kill's worth at the questor's level, streak, level and
+  target. `tools/log_report.py` sums all of it.
+  `tests/test_playlog.py`, `tests/test_progress_log.py`.
 - **STASH GET takes the list number** (2026-11-05): the number STASH shows
   beside an item, counted over what the character can see; a number past
   the end says how far the list runs. `tests/test_stash.py`.

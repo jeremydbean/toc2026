@@ -811,20 +811,34 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     int qp = ch->questpoints;
     int dp = ch->pcdata != NULL ? ch->pcdata->daily_points : 0;
     long coin = coins_to_copper( ch );
+    const char *kind = daily ? "daily" : ch->questemergency ? "emergency"
+                     : ch->questrush ? "rush" : "ordinary";
+    int streak = ch->queststreak;
+    int target = ch->questmob;
+    int level = ch->level;
 
     complete_automatic_quest_body( ch, questman, kills_min, kills_max );
     if ( !IS_NPC(ch) )
     {
-        char detail[160];
+        char detail[200];
+        bool done = was_questor && !IS_SET( ch->act, PLR_QUESTOR );
 
         /* What the reward came to, for the play journal (review,
-           2026-11-03). Done means the quest is no longer held. */
-        snprintf( detail, sizeof(detail), "%s qp=%d->%d daily=%d->%d coin=%+ld",
-                  daily ? "daily" : "quest", qp, ch->questpoints,
+           2026-11-03). Done means the quest is no longer held. The
+           points an ordinary quest pays are offered to the gamble and
+           reach questpoints only after it, so "offered" is what was
+           earned (2026-11-05); the kind, streak, level and target let
+           the coin be held against what the contract promised. */
+        snprintf( detail, sizeof(detail),
+                  "%s qp=%d->%d offered=%d daily=%d->%d coin=%+ld kill=%ld"
+                  " streak=%d level=%d target=%d",
+                  kind, qp, ch->questpoints,
+                  daily || !done ? 0 : ch->questgamble_pts,
                   dp, ch->pcdata != NULL ? ch->pcdata->daily_points : 0,
-                  coins_to_copper( ch ) - coin );
+                  coins_to_copper( ch ) - coin, black_market_kill_value( level ),
+                  streak, level, target );
         playlog_outcome( ch, "quest-complete",
-                         was_questor && !IS_SET( ch->act, PLR_QUESTOR ) ? "success" : "refusal",
+                         done ? "success" : "refusal",
                          "-", NULL, detail );
         player_snapshot_milestone( ch, "quest", true );
     }

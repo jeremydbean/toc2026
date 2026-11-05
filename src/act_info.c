@@ -4982,6 +4982,8 @@ void do_exchange( CHAR_DATA *ch, char *argument )
     }
 
     ch->exp   -= EXCHANGE_EXP_COST;
+    playlog_exp_as( "exchange" );
+    playlog_exp( ch, -EXCHANGE_EXP_COST, false );
     practices  = number_range( 5, 7 );
     ch->practice = (int16_t)( ch->practice + practices );
 

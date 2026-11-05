@@ -3574,6 +3574,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
              char_to_room(ch,location);
              ch->move /= 2;
              lose = (ch->desc != NULL) ? 25 : 50;
+             playlog_exp_as( "recall" );
              gain_exp(ch, 0 - lose);
              do_look(ch,"auto");
 

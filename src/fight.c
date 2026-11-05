@@ -2175,6 +2175,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
                    a death that was a bug (handoff review, 2026-10-23). */
                 if ( !is_creator_in_person( victim ) )
                     player_snapshot_milestone( victim, "prepenalty", true );
+                playlog_exp_as( "death" );
                 gain_exp(victim, (int)UMIN(-1L * ((curr_exp - base_exp)/16),-1L));
               } else if (curr_exp < base_exp) {
                 { snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "[GAMEDRIVER] %s has %ld exp at level %d. Minimum for level is %ld.",
@@ -3790,10 +3791,12 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 	    {
 		long before = gch->exp;
 
+		playlog_exp_as( "kills" );
 		gain_exp( gch, xp + rested );
 		/* What gain_exp accepted, not what was offered: the level 50
 		   stop and the remort cap take some or all of it. */
-		progress_kill( gch, victim, xp, rested, gch->exp - before, members );
+		progress_kill( gch, victim, xp, rested, gch->exp - before, members,
+		               coins_to_copper( victim ) );
 	    }
 	}
 
@@ -5353,6 +5356,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	if ( !IS_NPC(ch) )
 	{
 	    send_to_char( "You flee from combat!  You lose 10 exps.\n\r", ch );
+	    playlog_exp_as( "flee" );
 	    gain_exp( ch, -10 );
 	    progress_event( ch, "flee", victim );   /* log/progress.tsv */
 	}
@@ -6078,7 +6082,10 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
               base_exp = exp_per_level(victim,victim->pcdata->points) * victim->level;
               curr_exp = victim->exp;
               if (curr_exp > base_exp)
+              {
+                playlog_exp_as( "death" );
                 gain_exp(victim, (int)UMIN(-1L * ((curr_exp - base_exp)/2),-1L));
+              }
               else if (curr_exp < base_exp)
               { snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "[GAMEDRIVER] %s has %ld exp at level %d. Minimum for level is %ld.",
                                   victim->name, curr_exp, victim->level, base_exp);

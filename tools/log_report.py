@@ -24,7 +24,9 @@ minutes. This reads them from a git ref (origin/main by default, after
               one line with a count
   quests      what the quest master handed out, by area and kind
   coin        the biggest coin gains per player, to spot an exploit, and
-              each session's coin split by where it came from
+              each session's coin split by where it came from; what coin
+              was spent on, where experience came from, what each kind of
+              quest paid in kills, and what each foe carried
   chat        public channel lines (never tells; they are not logged)
 
 Addresses and hostnames are stripped from everything printed. Run from
@@ -86,6 +88,68 @@ def git_show(ref: str, path: str) -> str:
     out = subprocess.run(["git", "show", f"{ref}:{path}"], cwd=ROOT, capture_output=True)
     return out.stdout.decode("latin-1", "replace") if out.returncode == 0 else ""
 
+
+PRICE_UNITS = {"p": 1_000_000, "g": 10_000, "s": 100, "c": 1}
+
+
+def parse_price(text: str) -> int:
+    """format_price's words back to copper: "1p 20g", "5s", "free"."""
+    total = 0
+    for amount, letter in re.findall(r"(\d+)([pgsc])\b", text):
+        total += int(amount) * PRICE_UNITS[letter]
+    return total
+
+
+def parse_tally(field: str, prefix: str, coin: bool) -> dict:
+    """A session's "spent on: stash 1550p, heal 5g" or "exp: kills +900,
+    flee -10" as {label: amount}; "none" or a missing column is {}."""
+    if not field.startswith(prefix):
+        return {}
+    body = field[len(prefix):].strip()
+    if body in ("", "none"):
+        return {}
+    out = {}
+    for part in body.split(", "):
+        if coin:
+            m = re.match(r"^(.*?) ((?:\d+[pgsc] ?)+|free)$", part)
+            if m:
+                out[m.group(1)] = out.get(m.group(1), 0) + parse_price(m.group(2))
+        else:
+            m = re.match(r"^(.*) ([+-]\d+)$", part)
+            if m:
+                out[m.group(1)] = out.get(m.group(1), 0) + int(m.group(2))
+    return out
+
+
+def economy_summary(rows) -> dict:
+    """Where coin went and experience came from, over every sitting in
+    the window, and what each kind of quest paid against the kill it is
+    priced in (2026-11-05). Sittings are merged first, since a link loss
+    and the quit after it carry the same running totals."""
+    spent: Counter = Counter()
+    exp: Counter = Counter()
+    for r in merge_sittings([r for r in rows if r[1] == "session"]):
+        for field in r[6:]:
+            for label, amount in parse_tally(field, "spent on: ", True).items():
+                spent[label] += amount
+            for label, amount in parse_tally(field, "exp: ", False).items():
+                exp[label] += amount
+    quests: dict = {}
+    for r in rows:
+        if r[1] != "outcome" or len(r) < 11 or r[6] != "quest-complete" or r[7] != "success":
+            continue
+        words = dict(w.split("=", 1) for w in r[10].split() if "=" in w)
+        kind = r[10].split()[0] if r[10] else "-"
+        q = quests.setdefault(kind, {"n": 0, "coin": 0, "kills": 0.0, "priced": 0, "points": 0})
+        q["n"] += 1
+        coin = int(words.get("coin", "0").lstrip("+") or 0)
+        q["coin"] += coin
+        kill = int(words.get("kill", "0") or 0)
+        if kill > 0:            # rows from before 2026-11-05 carry no kill=
+            q["kills"] += coin / kill
+            q["priced"] += 1
+        q["points"] += int(words.get("offered", "0") or 0)
+    return {"spent": spent, "exp": exp, "quests": quests}
 
 
 def format_copper(copper: int) -> str:
@@ -475,6 +539,25 @@ def journal_report(args, since, buffs=None) -> None:
                 if before:
                     print(f"      just before: {clean(before[-1])[:150]}")
 
+    economy = economy_summary(rows)
+    print("  coin spent, by what it went on (2026-11-05 on):")
+    for label, copper in economy["spent"].most_common(12):
+        print(f"    {format_copper(copper):>16}  {clean(label)}")
+    if not economy["spent"]:
+        print("    (none recorded)")
+    print("  experience, by where it came from (capped: offered and refused):")
+    for label, amount in sorted(economy["exp"].items(), key=lambda kv: -abs(kv[1]))[:12]:
+        print(f"    {amount:>+14,}  {clean(label)}")
+    if not economy["exp"]:
+        print("    (none recorded)")
+    print("  quests paid, by kind (coin also as kills at the questor's level):")
+    for kind, q in sorted(economy["quests"].items(), key=lambda kv: -kv[1]["n"]):
+        each = f"~{q['kills'] / q['priced']:.0f} kills each" if q["priced"] else "kills -"
+        print(f"    {kind:<10} x{q['n']:<4} coin {format_copper(q['coin']):>14}"
+              f"  {each}  points offered {q['points']}")
+    if not economy["quests"]:
+        print("    (none recorded)")
+
     crash = git_show(args.ref, "log/crash.log")
     blocks = [b for b in crash.split("=== crash:")[1:]]
     print(f"\n== crashes ({len(blocks)} on record)")
@@ -490,7 +573,8 @@ def journal_report(args, since, buffs=None) -> None:
 # foe vnum, foe level, area file; a kill adds encounter ms, base, rested
 # and accepted xp, and group members, then (2026-10-26) guild, buffs worn
 # (T E S H or -), damage dealt and taken, hit points recovered and mana
-# spent in the fight. Reported in aggregate only: the
+# spent in the fight, then (2026-11-05) the coin the foe carried, in
+# copper. Reported in aggregate only: the
 # ids count independent characters and are never printed.
 def progress_summary(text: str, since: datetime) -> dict:
     by_foe: dict = {}
@@ -514,8 +598,12 @@ def progress_summary(text: str, since: datetime) -> dict:
         here["kills"] += 1
         foe = by_foe.setdefault((area, f[8], f[9]), {"kills": 0, "xp": 0, "ms": 0, "timed": 0,
                                                      "timed_xp": 0, "untimed": 0,
-                                                     "times": [], "who": set()})
+                                                     "times": [], "who": set(),
+                                                     "coin": 0, "coined": 0})
         foe["kills"] += 1
+        if len(f) > 23 and f[23].isdigit():
+            foe["coin"] += int(f[23])
+            foe["coined"] += 1
         foe["who"].add(who)
         xp = int(f[14]) if f[14].lstrip("-").isdigit() else 0
         foe["xp"] += xp
@@ -539,13 +627,15 @@ def progress_report(args, since) -> None:
     if not by_foe and not summary["by_area"]:
         print("  (no log/progress.tsv records in the window)")
         return
-    print("  area                 foe    lvl  kills chars  med s  xp/combat-min  untimed")
+    print("  area                 foe    lvl  kills chars  med s  xp/combat-min  untimed"
+          "  coin/kill")
     for (area, vnum, level), foe in sorted(by_foe.items(), key=lambda kv: -kv[1]["kills"])[:25]:
         times = sorted(foe["times"])
         median = times[len(times) // 2] / 1000 if times else 0
         rate = foe["timed_xp"] / (foe["ms"] / 60000) if foe["ms"] else 0
+        coin = format_copper(foe["coin"] // foe["coined"]) if foe["coined"] else "-"
         print(f"  {area[:20]:<20} {vnum:>6} {level:>4} {foe['kills']:>6} {len(foe['who']):>5}"
-              f" {median:>6.1f} {rate:>14.0f} {foe['untimed']:>8}")
+              f" {median:>6.1f} {rate:>14.0f} {foe['untimed']:>8}  {coin:>9}")
     print("  area                 kills  flees deaths chars")
     for area, here in sorted(summary["by_area"].items(), key=lambda kv: -kv[1]["kills"])[:25]:
         print(f"  {area[:20]:<20} {here['kills']:>5} {here['flee']:>6} {here['death']:>6} {len(here['who']):>5}")

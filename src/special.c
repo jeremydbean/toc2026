@@ -2685,6 +2685,8 @@ bool spec_xp_converter( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      act( buf, ch, NULL, mob, TO_CHAR    );
      ch->practice = (sh_int)(ch->practice + practices);
      ch->exp -= 5000;
+     playlog_exp_as( "exchange" );
+     playlog_exp( ch, -5000, false );
      save_char_obj(ch);
    }
    else

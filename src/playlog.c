@@ -84,8 +84,50 @@ enum { COIN_LOOT, COIN_QUEST, COIN_DAILY, COIN_SOLD, COIN_GAMBLING,
 static const char *const coin_source_names[PLAY_COIN_KINDS] =
     { "loot", "quests", "dailies", "sales", "gambling", "other", "spent" };
 static const char *coin_override;   /* playlog_coin_as() */
+static const char *exp_override;    /* playlog_exp_as() */
 
 /* ------------------------------------------------------------ helpers */
+
+/*
+ * Add `amount` under `label` in a session tally of PLAY_TALLY_KINDS
+ * labels: its own slot, the first free one, or past the last, "other".
+ * The label is cleaned and cut to fit; sums saturate.
+ */
+static void tally_add( char names[][PLAY_TALLY_NAME], long *vals,
+                       const char *label, long amount )
+{
+    char clean[PLAY_TALLY_NAME];
+    size_t n = 0;
+    int i, slot = PLAY_TALLY_KINDS - 1;
+
+    for ( ; label != NULL && *label != '\0' && n + 1 < sizeof(clean); label++ )
+        if ( *label > ' ' && *label < 127 && *label != ',' )
+            clean[n++] = (char) LOWER( *label );
+    clean[n] = '\0';
+    if ( clean[0] == '\0' )
+        toc_strlcpy( clean, "other", sizeof(clean) );
+    for ( i = 0; i < PLAY_TALLY_KINDS - 1; i++ )
+        if ( names[i][0] == '\0' || !strcmp( names[i], clean ) )
+        {
+            slot = i;
+            break;
+        }
+    if ( slot == PLAY_TALLY_KINDS - 1 )     /* full: into "other" */
+        for ( i = 0; i < PLAY_TALLY_KINDS - 1; i++ )
+            if ( !strcmp( names[i], "other" ) )
+            {
+                slot = i;
+                break;
+            }
+    toc_strlcpy( names[slot], slot < PLAY_TALLY_KINDS - 1 ? clean : "other",
+                 PLAY_TALLY_NAME );
+    if ( amount > 0 && vals[slot] > LONG_MAX - amount )
+        vals[slot] = LONG_MAX;
+    else if ( amount < 0 && vals[slot] < LONG_MIN - amount )
+        vals[slot] = LONG_MIN;
+    else
+        vals[slot] += amount;
+}
 
 static const char *play_position( int pos )
 {
@@ -802,7 +844,16 @@ void playlog_coin( CHAR_DATA *ch, long amount, long unit, bool pile )
                 return;
 
     if ( amount < 0 )
+    {
         kind = COIN_SPENT;
+        /* What it went on: the character's own command (STASH, HEAL,
+           REPAIR, BUY, TRAIN ...), what playlog_coin_as() names, or
+           "other" -- somebody else's command took it. */
+        tally_add( ch->pcdata->play_spent_on, ch->pcdata->play_spent,
+                   coin_override != NULL ? coin_override
+                                         : own ? current_cmd : "other",
+                   copper );
+    }
     else
     {
         kind = pile ? COIN_LOOT : COIN_OTHER;
@@ -825,6 +876,64 @@ void playlog_coin( CHAR_DATA *ch, long amount, long unit, bool pile )
         ch->pcdata->play_coin[kind] = LONG_MAX;
     else
         ch->pcdata->play_coin[kind] += copper;
+}
+
+/*
+ * Experience, from gain_exp -- the one place that changes it in play --
+ * and the two exchanges that take it outside gain_exp. The source is what
+ * playlog_exp_as() named just before (kills, death, flee, recall,
+ * drained, skill use, exchange), else the character's own command, else
+ * "other". A gain gain_exp refused outright (level 50, the remort cap) is
+ * tallied as "capped:<source>" with what was offered, so a session that
+ * fought for nothing says so. The override is spent by every call.
+ */
+void playlog_exp_as( const char *source )
+{
+    exp_override = source;
+}
+
+void playlog_exp( CHAR_DATA *ch, long amount, bool capped )
+{
+    char label[48];
+    const char *source = exp_override;
+    bool own;
+
+    exp_override = NULL;
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || amount == 0 )
+        return;
+    own = current_set && ch->name != NULL && !str_cmp( current_name, ch->name );
+    if ( source == NULL )
+        source = own ? current_cmd : "other";
+    if ( capped )
+    {
+        snprintf( label, sizeof(label), "capped:%s", source );
+        source = label;
+    }
+    tally_add( ch->pcdata->play_exp_from, ch->pcdata->play_exp, source, amount );
+}
+
+/* "stash 1550p, heal 30g" -- "kills +12034, death -800" -- or "none". */
+static void tally_summary( char names[][PLAY_TALLY_NAME], const long *vals,
+                           bool coin, char *buf, size_t size )
+{
+    char amount[64], part[96];
+    int i;
+
+    buf[0] = '\0';
+    for ( i = 0; i < PLAY_TALLY_KINDS; i++ )
+    {
+        if ( names[i][0] == '\0' || vals[i] == 0 )
+            continue;
+        if ( coin )
+            format_price( vals[i], amount, sizeof(amount) );
+        else
+            snprintf( amount, sizeof(amount), "%+ld", vals[i] );
+        snprintf( part, sizeof(part), "%s%s %s", buf[0] != '\0' ? ", " : "",
+                  names[i], amount );
+        toc_strlcat( buf, part, size );
+    }
+    if ( buf[0] == '\0' )
+        toc_strlcpy( buf, "none", size );
 }
 
 /* "loot 3p 20g, quests 162p, spent 400g" -- or "none". */
@@ -853,15 +962,23 @@ static void coin_summary( CHAR_DATA *ch, char *buf, size_t size )
 void playlog_session( CHAR_DATA *ch, const char *how )
 {
     char fields[PLAY_LINE];
-    char coin[PLAY_LINE / 2];
+    char coin[PLAY_LINE / 4], spent[PLAY_LINE / 4], exp[PLAY_LINE / 4];
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
     ||   ch->pcdata->session_logon <= 0 )
         return;
     coin_summary( ch, coin, sizeof(coin) );
+    tally_summary( ch->pcdata->play_spent_on, ch->pcdata->play_spent, true,
+                   spent, sizeof(spent) );
+    tally_summary( ch->pcdata->play_exp_from, ch->pcdata->play_exp, false,
+                   exp, sizeof(exp) );
+    /* Two columns after the coin (2026-11-05), so a reader that stops at
+       the coin reads them all: what the spending went on, and where the
+       experience came from and went. */
     snprintf( fields, sizeof(fields),
               "%s\t%lds\t%+d levels\t%+ld exp\t%+ld copper\t%d kills\t%d deaths"
-              "\t%d quests\t%d commands\t%d refused\tcoin: %s",
+              "\t%d quests\t%d commands\t%d refused\tcoin: %s"
+              "\tspent on: %s\texp: %s",
               how, (long) ( current_time - ch->pcdata->session_logon ),
               (int) ch->level - ch->pcdata->session_start_level,
               ch->exp - ch->pcdata->session_start_exp,
@@ -869,7 +986,7 @@ void playlog_session( CHAR_DATA *ch, const char *how )
                   ? play_wealth( ch ) - ch->pcdata->play_start_wealth : 0L,
               ch->pcdata->session_kills, ch->pcdata->session_deaths,
               ch->pcdata->session_quests, ch->pcdata->play_cmds,
-              ch->pcdata->play_refused, coin );
+              ch->pcdata->play_refused, coin, spent, exp );
     journal_write( "session", ch, fields );
 }
 
@@ -967,7 +1084,7 @@ static void progress_write( const char *kind, CHAR_DATA *ch, CHAR_DATA *foe, con
 }
 
 void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_xp,
-                    long accepted_xp, int members )
+                    long accepted_xp, int members, long victim_coin )
 {
     char tail[256];
     long encounter = victim != NULL && victim->fight_began_ms > 0
@@ -998,14 +1115,17 @@ void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_x
     if ( n == 0 )
         buffs[n++] = '-';
     buffs[n] = '\0';
-    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t%ld\t%ld\t%ld\t%d\t%ld",
+    /* Last, the coin the foe carried when it fell (2026-11-05), copper:
+       what its corpse holds before any holiday treat, so loot per kill
+       can be held against the level roll (mob_index_set_wealth). */
+    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t%ld\t%ld\t%ld\t%d\t%ld\t%ld",
               encounter, base_xp, rested_xp, accepted_xp, members,
               pc != NULL ? pc->guild : -1, buffs,
               pc != NULL ? pc->meter_damage : 0L,
               pc != NULL ? pc->fight_taken + pc->fight_direct : 0L,
               pc != NULL ? pc->fight_healed : 0L,
               pc != NULL ? pc->fight_mana_start - gch->mana : 0,
-              pc != NULL ? pc->fight_direct : 0L );
+              pc != NULL ? pc->fight_direct : 0L, victim_coin );
     progress_write( "kill", gch, victim, tail );
 }
 

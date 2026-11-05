@@ -324,6 +324,8 @@ typedef struct script_loop_prepoll_payload
 #define MAX_ALIASES             20
 #define PLAY_RECENT             6     /* commands kept for a BUG report (playlog.c) */
 #define PLAY_COIN_KINDS         7     /* a session's coin by source (playlog.c) */
+#define PLAY_TALLY_KINDS        8     /* labels in a session's spend and exp tallies */
+#define PLAY_TALLY_NAME         16    /* a tally label, the last slot "other" */
 #define ALIAS_MAX_COMMANDS      10   /* commands one alias may hold */
 #define ALIAS_MAX_QUEUED        20   /* alias lines waiting in one inbuf */
 #define MAX_HUNTERS             50
@@ -1031,6 +1033,8 @@ void  playlog_boot           args( ( void ) );
 void  playlog_begin          args( ( CHAR_DATA *ch, const char *cmd_name, const char *shown ) );
 void  playlog_coin           args( ( CHAR_DATA *ch, long amount, long unit, bool pile ) );
 void  playlog_coin_as        args( ( const char *source ) );
+void  playlog_exp            args( ( CHAR_DATA *ch, long amount, bool capped ) );
+void  playlog_exp_as         args( ( const char *source ) );
 void  playlog_end            args( ( CHAR_DATA *ch, const char *cmd_name, const char *shown,
                                      bool secret, bool refused, const char *out, int out_len,
                                      long ms, int pos_before, int hp_pct_before,
@@ -1046,7 +1050,8 @@ void  playlog_outcome        args( ( CHAR_DATA *ch, const char *op, const char *
 void  playlog_state          args( ( CHAR_DATA *ch ) );
 long  playlog_now_ms         args( ( void ) );
 void  progress_kill          args( ( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp,
-                                     int rested_xp, long accepted_xp, int members ) );
+                                     int rested_xp, long accepted_xp, int members,
+                                     long victim_coin ) );
 void  progress_event         args( ( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe ) );
 /* alignment.c -- tiers, what moves alignment and what it gives */
 #define ALIGN_DEED_SHIFT       100          /* one DEVOTE */
@@ -2434,6 +2439,10 @@ struct  pc_data
     int                 play_refused;
     int                 play_last_max_hit;    /* max hit points at the last tick */
     long                play_coin[PLAY_COIN_KINDS]; /* this session's coin by source, copper */
+    char                play_spent_on[PLAY_TALLY_KINDS][PLAY_TALLY_NAME]; /* coin spent, by command */
+    long                play_spent[PLAY_TALLY_KINDS];
+    char                play_exp_from[PLAY_TALLY_KINDS][PLAY_TALLY_NAME]; /* exp, by source */
+    long                play_exp[PLAY_TALLY_KINDS];
     char                play_recent[PLAY_RECENT][96];
     int                 play_recent_next;
     char *              fixes_done;           /* login fixes applied (fixes.c) */
