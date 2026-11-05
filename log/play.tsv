@@ -23246,3 +23246,188 @@
 1793845619	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
 1793845620	cmd	Trentlin	12	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
 1793845620	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793845624	cmd	Trentlin	12	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793845624	cmd	Trentlin	12	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793845624	cmd	Trentlin	12	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793845624	cmd	Trentlin	12	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793845625	cmd	Trentlin	12	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793845625	cmd	Trentlin	12	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793845625	cmd	Trentlin	12	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793845625	cmd	Trentlin	12	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1793845626	cmd	Trentlin	12	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793845627	cmd	Trentlin	12	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1793845627	cmd	Trentlin	12	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1793845627	cmd	Trentlin	12	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1793845627	cmd	Trentlin	12	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1793845628	cmd	Trentlin	12	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1793845628	cmd	Trentlin	12	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1793845628	cmd	Trentlin	12	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1793845628	cmd	Trentlin	12	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1793845629	cmd	Trentlin	12	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1793845629	cmd	Trentlin	12	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1793845629	cmd	Trentlin	12	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1793845629	cmd	Trentlin	12	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1793845630	cmd	Trentlin	12	6119	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.	-	+
+1793845630	cmd	Trentlin	12	6120	haon.are	standing	100	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom	-	+
+1793845630	cmd	Trentlin	12	6121	haon.are	standing	100	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To	-	+
+1793845630	cmd	Trentlin	12	58	connect.are	standing	100	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find	-	+
+1793845631	cmd	Trentlin	12	11057	ancala.are	standing	100	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross	-	+
+1793845632	cmd	Trentlin	12	11000	ancala.are	standing	100	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1793845632	cmd	Trentlin	12	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1793845632	cmd	Trentlin	12	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1793845633	cmd	Trentlin	12	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1793845633	cmd	Trentlin	12	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1793845633	cmd	Trentlin	12	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1793845633	cmd	Trentlin	12	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1793845634	cmd	Trentlin	12	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1793845635	cmd	Trentlin	12	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1793845636	cmd	Trentlin	12	11012	ancala.are	standing	100	0	-	exits		Obvious exits: // East  - A Stone Tunnel // West  - A Wooden Bridge	-	+
+1793845636	cmd	Trentlin	12	11020	ancala.are	standing	100	0	-	down		The Acid Forest //   You stand before an amazing sight.  Wrapped within the mists here // on the cavern floor is a forest of oddly shaped stalagmites surrounded	-	+
+1793845637	cmd	Trentlin	12	11020	ancala.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1793845639	cmd	Trentlin	12	11017	ancala.are	standing	100	0	-	north		The Acid Forest //   Sharp stalagmites reach up wards, created by the mineral ichors // dripping off stalactites far above.  Pools of acid fill every crevice	-	+
+1793845640	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	east		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1793845641	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	kill	gr	Your punch maims the green crystal spider! // Your punch decimates the green crystal spider!	-	-
+1793845644	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	trip		But you aren't fighting anyone!	-	-
+1793845645	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	look	in co	Corpse of the green crystal spider contains: //      Nothing.	-	-
+1793845647	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	sacrifice	co	The Gods give you 16 copper coins for your sacrifice.	-	-
+1793845648	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	kill	sp	Your punch wounds the green crystal spider. // Your punch devastates the green crystal spider!	-	-
+1793845656	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	look	in co	Corpse of the green crystal spider contains: //      (Glowing) a minstrel's glove	-	-
+1793845658	cmd	Trentlin	12	11018	ancala.are	standing	100	0	-	sacrifice	co	The Gods give you 16 copper coins for your sacrifice.	-	-
+1793845658	cmd	Trentlin	12	11019	ancala.are	standing	100	0	-	east		The Acid Forest //   Sharp stalagmites reach upwards, created by the mineral ichors // dripping off stalactites far above.  Pools of acid fill every crevice	-	+
+1793845659	cmd	Trentlin	12	11022	ancala.are	standing	100	0	-	south		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1793845661	cmd	Trentlin	12	11022	ancala.are	standing	100	0	-	kill	gr	Your punch wounds the green crystal spider. // The green crystal spider parries your attack.	-	-
+1793845664	cmd	Trentlin	12	11022	ancala.are	fighting	100	0	fight	kick		Your kick scratches the green crystal spider.	-	-
+1793845669	cmd	Trentlin	12	11022	ancala.are	standing	100	0	-	look	in co	Corpse of the green crystal spider contains: //      Nothing.	-	-
+1793845670	cmd	Trentlin	12	11022	ancala.are	standing	100	0	-	sacrifice	co	The Gods give you 16 copper coins for your sacrifice.	-	-
+1793845670	cmd	Trentlin	12	11025	ancala.are	standing	100	0	-	south		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1793845671	cmd	Trentlin	12	11024	ancala.are	standing	100	0	-	west		The Acid Forest //   Sharp stalagmites reach upwards, created by the mineral ichors // dripping off stalactites far above.  Pools of acid fill every crevice	-	+
+1793845672	cmd	Trentlin	12	11024	ancala.are	standing	100	0	-	kill	gr	Your punch devastates the green crystal spider! // Your punch hits the green crystal spider.	-	-
+1793845675	cmd	Trentlin	12	11024	ancala.are	fighting	100	0	fight	kick		Your kick scratches the green crystal spider. // The green crystal spider crawls off west. // The green crystal spider has fled!	-	-
+1793845679	cmd	Trentlin	12	11023	ancala.are	standing	100	0	-	west		The Acid Forest //   Mists swirl around strange crystal egg shells here.  The cavern // continues to the north and to the east.	-	+
+1793845680	cmd	Trentlin	12	11023	ancala.are	standing	100	0	-	kill	gr	Your punch injures the green crystal spider. // The green crystal spider crawls off north. // The green crystal spider has fled!	-	-
+1793845684	cmd	Trentlin	12	11020	ancala.are	standing	100	0	-	north		The Acid Forest //   You stand before an amazing sight.  Wrapped within the mists here // on the cavern floor is a forest of oddly shaped stalagmites surrounded	-	+
+1793845685	cmd	Trentlin	12	11020	ancala.are	standing	100	0	-	kill	gr	Your punch mauls the green crystal spider. // The green crystal spider is DEAD!! // You receive 76 experience points.	-	+
+1793845690	cmd	Trentlin	12	11020	ancala.are	standing	100	0	-	look	in co	Corpse of the green crystal spider contains: //      an arsenal buckler	-	-
+1793845693	cmd	Trentlin	12	11020	ancala.are	standing	100	0	-	get	buck co	You get an arsenal buckler from corpse of the green crystal spider.	-	-
+1793845694	cmd	Trentlin	12	11020	ancala.are	standing	100	0	-	wear	bu	You stop using a serving tray. // You wear an arsenal buckler as a shield.	-	-
+1793845696	cmd	Trentlin	12	11020	ancala.are	standing	102	0	-	sacrifice	co	The Gods give you 16 copper coins for your sacrifice.	-	-
+1793845698	cmd	Trentlin	12	11020	ancala.are	standing	102	6	-	stash	put tray	You put a serving tray away for safe keeping.	-	-
+1793845701	cmd	Trentlin	12	11020	ancala.are	standing	102	0	-	kill	sp	Your punch injures the yellow crystal spider. // Your punch devastates the yellow crystal spider!	-	-
+1793845707	cmd	Trentlin	12	11020	ancala.are	standing	102	0	-	kill	sp	Your punch grazes the yellow crystal spider. // Your punch decimates the yellow crystal spider!	-	-
+1793845713	state	Trentlin	12	11020	ancala.are	lvl=12 hp=349/339 mana=542/542 mv=208/288 align=-686 exp=29634 coin=4560839781 bank=11005068657 qp=339 prac=5 train=2 stash=56/75 remorts=1
+1793845713	cmd	Trentlin	12	11020	ancala.are	standing	102	0	-	score		| Name:       Trentlin | Level:      12 | Class:        Monk | // | Played:     27 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793845731	cmd	Trentlin	12	4207	dresden.are	standing	102	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845732	cmd	Trentlin	12	4202	dresden.are	standing	102	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845732	cmd	Trentlin	12	4201	dresden.are	standing	102	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793845733	cmd	Trentlin	12	2427	dresden.are	standing	102	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793845733	cmd	Trentlin	12	2427	dresden.are	standing	102	0	-	east		Alas, you cannot go that way.	-	-
+1793845733	cmd	Trentlin	12	2427	dresden.are	standing	102	0	-	east		Alas, you cannot go that way.	-	-
+1793845734	cmd	Trentlin	12	2404	dresden.are	standing	102	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793845734	cmd	Trentlin	12	2401	dresden.are	standing	102	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793845736	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	eat	gua	You eat guano. // Stone skin never takes on a monk or a necromancer. // Your feet rise off the ground.	-	+
+1793845742	cmd	Trentlin	12	2426	dresden.are	standing	100	0	-	run	e	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road	-	+
+1793845743	cmd	Trentlin	12	2426	dresden.are	resting	100	0	-	wake		You stand up.	-	-
+1793845744	cmd	Trentlin	12	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1793845745	cmd	Trentlin	12	9531	newthalo.are	standing	100	0	-	run	e	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance	-	+
+1793845746	cmd	Trentlin	12	9531	newthalo.are	resting	100	0	-	wake		You stand up.	-	-
+1793845748	cmd	Trentlin	12	9531	newthalo.are	standing	100	0	-	open	east	Ok.	-	-
+1793845748	cmd	Trentlin	12	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1793845748	cmd	Trentlin	12	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1793845748	cmd	Trentlin	12	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1793845749	cmd	Trentlin	12	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1793845749	cmd	Trentlin	12	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1793845749	cmd	Trentlin	12	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1793845750	cmd	Trentlin	12	9795	newthalo.are	standing	100	0	-	east		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time	-	+
+1793845751	cmd	Trentlin	12	9789	newthalo.are	standing	100	0	-	east		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye	-	+
+1793845752	cmd	Trentlin	12	9789	newthalo.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793845755	cmd	Trentlin	12	9795	newthalo.are	standing	100	0	-	west		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time	-	+
+1793845756	cmd	Trentlin	12	9794	newthalo.are	standing	100	0	-	west		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1793845757	cmd	Trentlin	12	9795	newthalo.are	standing	100	0	-	east		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time	-	+
+1793845758	cmd	Trentlin	12	9789	newthalo.are	standing	100	0	-	east		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye	-	+
+1793845758	cmd	Trentlin	12	9798	newthalo.are	standing	100	0	-	down		Under the dock //   You are swimming underneath the dock. You can see the four wooden // pylons that support the structure. The murky water clouds your vision	-	+
+1793845760	cmd	Trentlin	12	9799	newthalo.are	standing	100	0	-	west		Lair of the Ixitxachitl //   Blood swirls around in the water as the Ixitxachitl devours the // last of its meal. Swirling around quickly as you intrude upon	-	+
+1793845762	cmd	Trentlin	12	9799	newthalo.are	standing	100	0	-	consider	ra	They're not here.	-	-
+1793845763	cmd	Trentlin	12	9798	newthalo.are	standing	100	0	-	east		Under the dock //   You are swimming underneath the dock. You can see the four wooden // pylons that support the structure. The murky water clouds your vision	-	+
+1793845764	cmd	Trentlin	12	9798	newthalo.are	standing	100	0	-	scan		the Ixitxachitl                    -to the West.	-	-
+1793845765	cmd	Trentlin	12	9799	newthalo.are	standing	100	0	-	west		Lair of the Ixitxachitl //   Blood swirls around in the water as the Ixitxachitl devours the // last of its meal. Swirling around quickly as you intrude upon	-	+
+1793845766	cmd	Trentlin	12	9799	newthalo.are	standing	100	0	-	consider	ic	They're not here.	-	-
+1793845768	cmd	Trentlin	12	9799	newthalo.are	standing	100	0	-	consider	ix	Don't even think about it.	-	-
+1793845769	cmd	Trentlin	12	9799	newthalo.are	standing	100	0	-	look	ix	You see a large ray with sharp fangs and a barbed tail. // The Ixitxachitl is in excellent condition.	-	-
+1793845770	cmd	Trentlin	12	9799	newthalo.are	standing	100	0	-	list		You can't do that here.	-	-
+1793845771	cmd	Trentlin	12	9798	newthalo.are	standing	100	0	-	east		Under the dock //   You are swimming underneath the dock. You can see the four wooden // pylons that support the structure. The murky water clouds your vision	-	+
+1793845772	cmd	Trentlin	12	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845773	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793845775	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1793845778	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1793845778	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1793845779	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1793845779	cmd	Trentlin	12	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845779	cmd	Trentlin	12	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845779	cmd	Trentlin	12	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793845780	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793845780	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793845780	cmd	Trentlin	12	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793845780	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793845793	cmd	Trentlin	12	2426	dresden.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road	-	+
+1793845794	cmd	Trentlin	12	2426	dresden.are	standing	100	0	-	open	gate	It's already open.	-	-
+1793845794	cmd	Trentlin	12	9669	newthalo.are	standing	100	0	-	run	e 13	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance	-	+
+1793845794	cmd	Trentlin	12	9669	newthalo.are	standing	100	0	-	open	gate	It's already open.	-	-
+1793845794	cmd	Trentlin	12	9531	newthalo.are	standing	100	0	-	run	e 12	Inside the West Gate of New Thalos // [Exits: east south (west)] // West Main Street	-	+
+1793845795	cmd	Trentlin	12	9531	newthalo.are	standing	100	0	-	open	gate	It's already open.	-	-
+1793845795	cmd	Trentlin	12	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road	-	+
+1793845795	cmd	Trentlin	12	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1793845795	cmd	Trentlin	12	29350	voyage.are	standing	100	0	-	east		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One	-	+
+1793845809	cmd	Trentlin	12	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1793845809	cmd	Trentlin	12	29351	voyage.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845810	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1793845810	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845812	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1793845812	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.	-	-
+1793845814	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	north		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1793845815	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845818	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1793845819	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1793845821	cmd	Trentlin	12	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1793845821	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1793845822	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845822	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	exits		Obvious exits: // West  - Along the Dock // Northeast - Across the Sea	-	-
+1793845823	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1793845823	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.	-	-
+1793845824	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	exits		Obvious exits: // North - Across the Sea // South - Across the Sea	-	+
+1793845827	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	north		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1793845829	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793845832	cmd	Trentlin	12	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1793845833	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1793845834	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1793845836	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.	-	-
+1793845836	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	exits		Obvious exits: // North - Across the Sea // South - Across the Sea	-	+
+1793845837	cmd	Trentlin	12	29354	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea	-	+
+1793845838	cmd	Trentlin	12	29354	voyage.are	standing	100	0	-	consider	te	A tentacle is about your level. // A tentacle has about half your hit points. // Blow for blow, you would need about 5 rounds to bring a tentacle down; he would need about 38 rounds for you.	-	+
+1793845841	cmd	Trentlin	12	29354	voyage.are	standing	100	0	-	kill	te	Your punch decimates a tentacle! // Your punch mauls a tentacle.	-	-
+1793845846	cmd	Trentlin	12	29354	voyage.are	fighting	99	0	fight	kick		Your kick misses a tentacle.	-	-
+1793845849	cmd	Trentlin	12	29354	voyage.are	fighting	100	0	fight	kick		Your kick scratches a tentacle.	-	-
+1793845852	cmd	Trentlin	12	29354	voyage.are	fighting	100	1	fight	kick		Your kick scratches a tentacle.	-	-
+1793845857	cmd	Trentlin	12	29354	voyage.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845858	cmd	Trentlin	12	29354	voyage.are	standing	100	0	-	exits		Obvious exits: // East  - Across the Sea // South - Across the Sea	-	+
+1793845862	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	east		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1793845867	cmd	Trentlin	12	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1793845868	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1793845869	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1793845870	cmd	Trentlin	12	29354	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea	-	+
+1793845874	cmd	Trentlin	12	29380	voyage.are	standing	100	0	-	south		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1793845879	cmd	Trentlin	12	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1793845880	cmd	Trentlin	12	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1793845881	cmd	Trentlin	12	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1793845883	cmd	Trentlin	12	29354	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea	-	+
+1793845884	cmd	Trentlin	12	29355	voyage.are	standing	100	0	-	se		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1793845885	cmd	Trentlin	12	29355	voyage.are	standing	100	0	-	scan		a sailor                           -to the Northwest.	-	-
+1793845886	cmd	Trentlin	12	29355	voyage.are	standing	100	0	-	exits		Obvious exits: // North - Across the Sea // East  - Across the Sea	-	+
+1793845887	cmd	Trentlin	12	29378	voyage.are	standing	100	0	-	nw		Across the Sea //   The ship heads back towards the port... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
+1793845888	cmd	Trentlin	12	29378	voyage.are	standing	100	0	-	consider	sai	A sailor is a little above your level. // A sailor has about as many hit points as you. // Blow for blow, you would need about 6 rounds to bring a sailor down; he would need about 26 rounds for you.	-	+
+1793845890	cmd	Trentlin	12	29378	voyage.are	standing	100	0	-	kill	sai	Your punch grazes a sailor. // Your punch mauls a sailor.	-	-
+1793845893	cmd	Trentlin	12	29378	voyage.are	fighting	100	0	fight	trip		You trip a sailor and a sailor goes down! // Your trip scratches a sailor.	-	-
+1793845899	cmd	Trentlin	12	29378	voyage.are	fighting	100	0	fight	trip		You trip a sailor and a sailor goes down! // Your trip scratches a sailor.	-	-
+1793845905	cmd	Trentlin	12	29378	voyage.are	fighting	100	0	fight	trip		Your trip misses a sailor.	-	-
+1793845911	cmd	Trentlin	12	29378	voyage.are	fighting	97	0	fight	trip		Your trip misses a sailor. // You learn from your mistakes, and your trip skill improves.	-	-
+1793845916	cmd	Trentlin	12	29378	voyage.are	fighting	93	0	fight	trip		Your trip misses a sailor.	-	-
+1793845920	cmd	Trentlin	12	29378	voyage.are	fighting	90	0	fight	trip		You trip a sailor and a sailor goes down! // Your trip scratches a sailor.	-	-
