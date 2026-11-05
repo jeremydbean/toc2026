@@ -23701,3 +23701,4 @@
 1793879245	cmd	Trentlin	13	4208	dresden.are	standing	34	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
 1793879247	cmd	Trentlin	13	4208	dresden.are	standing	34	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
 1793879250	cmd	Trentlin	13	4208	dresden.are	standing	66	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793879285	session	Trentlin	13	4208	dresden.are	quit	148s	+0 levels	-25 exp	-10000000 copper	0 kills	0 deaths	0 quests	59 commands	0 refused	coin: spent 10p
