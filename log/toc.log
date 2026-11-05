@@ -264127,3 +264127,20 @@ Thu Nov  5 21:03:02 2026 :: Sock.sinaddr:  54.87.112.51
 Thu Nov  5 21:03:02 2026 :: EOF encountered on read.
 Thu Nov  5 21:08:07 2026 :: Sock.sinaddr:  5.161.194.92
 Thu Nov  5 21:08:07 2026 :: EOF encountered on read.
+Thu Nov  5 21:10:14 2026 :: Sock.sinaddr:  23.31.96.97
+Thu Nov  5 21:10:14 2026 :: EOF encountered on read.
+Thu Nov  5 21:10:15 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Thu Nov  5 21:10:19 2026 :: Log WebAdmin: fsave
+Thu Nov  5 21:10:25 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Thu Nov  5 21:10:28 2026 :: Received signal 15; saving players and shutting down.
+Thu Nov  5 21:10:28 2026 :: Normal termination of game.
+Thu Nov  5 21:10:29 2026 ::  INIT OK 
+Thu Nov  5 21:10:29 2026 :: walkto_load: 157 destinations.
+Thu Nov  5 21:10:29 2026 :: changes_load: 220 entries.
+Thu Nov  5 21:10:29 2026 :: Recovery ledger: 299 records (0 from before the check), 0 requests, 7 players.
+Thu Nov  5 21:10:29 2026 :: ROM is ready to rock on port 9000.
+Thu Nov  5 21:10:29 2026 :: Treasure goblin: appeared.
+Thu Nov  5 21:10:29 2026 :: Automated backup complete.
+Thu Nov  5 21:10:29 2026 :: Daily backup complete.
+Thu Nov  5 21:13:12 2026 :: Sock.sinaddr:  18.116.205.62
+Thu Nov  5 21:13:12 2026 :: EOF encountered on read.

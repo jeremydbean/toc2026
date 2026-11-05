@@ -23702,3 +23702,4 @@
 1793879247	cmd	Trentlin	13	4208	dresden.are	standing	34	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
 1793879250	cmd	Trentlin	13	4208	dresden.are	standing	66	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
 1793879285	session	Trentlin	13	4208	dresden.are	quit	148s	+0 levels	-25 exp	-10000000 copper	0 kills	0 deaths	0 quests	59 commands	0 refused	coin: spent 10p
+1793913029	stall	-	0	0	-	541ms	slowest disaster_update 538ms	command - 0ms	0 players	0 more since
