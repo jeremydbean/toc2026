@@ -8,6 +8,31 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **STASH GET takes the list number** (2026-11-05): the number STASH shows
+  beside an item, counted over what the character can see; a number past
+  the end says how far the list runs. `tests/test_stash.py`.
+- **Recovery and combat review, 2026-11-04.**
+  - DELETE refuses unless its `delete` milestone -- the character as they
+    stand, saved, on the disk and in the ledger -- landed; it then checks
+    the uid's retirement and the unlink, and quits without saving. It went
+    on after a failed save, kept a milestone of the older file and deleted
+    the newer one. REMORT, COMBINE, ADVANCE and staff SET use the same
+    `player_milestone_required`. `tests/test_delete_milestone.py`.
+  - RAISE DEAD gives a corpse back through `corpse_give_to_owner`, the
+    protected transfer ACCEPT now shares (held record, pending receipt,
+    mark, checked save; failed put back, unconfirmed kept pending). It
+    also finds the owner among those playing, respects WIZINVIS, rank,
+    travel rules and private rooms. `tests/test_raise_dead_transfer.py`.
+  - VAMPIRIC TOUCH heals half of the hit points the blow really takes,
+    inside `damage()` (`damage_drain_next`), not the rolled number before
+    it; a fire or frost shield's reflection no longer hurts a character
+    with INVULN. `tests/test_drain_and_reflection.py`.
+  - A new or found snapshot directory is flushed into its parent before a
+    copy in it is called durable.
+  - Faster: the snapshot throttle remembers each player's newest copy
+    instead of reading the directory on every save; a milestone's prune
+    reads the directory once; `recovery_snapshot_uid` answers from an
+    index built at boot instead of rereading the ledger.
 - **A mobile's coin is held to its level** (2026-11-04, owner): an area
   file's wealth figure split into every denomination at once (a 179th
   in platinum, a 69th in gold...), so the dark horseman's 400 at level 8

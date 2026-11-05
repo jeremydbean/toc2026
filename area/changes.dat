@@ -5,6 +5,23 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261105a 2026-11-05
+STASH GET now takes the number STASH shows beside an item: STASH GET 7
+takes out the seventh thing on the list.
+
+@ 20261104b 2026-11-04
+DELETE now makes sure the copy of your character it keeps is safely
+written before it deletes anything; if it cannot, nothing is deleted and
+you are told. RAISE DEAD returns your things only once your own file holds
+them, so a hiccup can no longer lose them. Vampiric touch now heals you
+for half of what it really takes, and nothing from a foe it cannot hurt.
+
+@ 20261104c 2026-11-04 staff
+INVULN now holds against a fire or frost shield's reflection, in both
+modes. REMORT, COMBINE, ADVANCE and SET on a player refuse if the snapshot
+before them does not land on the disk; CREATOR and GRANTPSI say so and go
+ahead.
+
 @ 20261104a 2026-11-04
 A few creatures were carrying far more coin than anything their size
 should -- a level 8 outlaw had two platinum on him. Every creature's purse

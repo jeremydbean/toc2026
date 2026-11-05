@@ -752,7 +752,7 @@ See also: CHANNELS, GOSSIP, TELL
 Syntax: stash                          -- what is in it
         stash put <item>               -- from anywhere in the world
         stash put all                  -- everything you can spare
-        stash get <item>               -- at the altar only
+        stash get <item or number>     -- at the altar only
         stash buy                      -- more room, at the altar
         stash link <character>         -- share with another of yours
         stash unlink <character>       -- stop sharing
@@ -770,7 +770,8 @@ anywhere - knowing what you own is not the same as reaching it.
 
 STASH PUT works from anywhere in the world, so you can set something
 aside the moment you find it.  STASH PUT ALL sends everything in your
-hands that is allowed in.  STASH GET works only at the altar, one step
+hands that is allowed in.  STASH GET takes an item's name or the number
+STASH shows beside it, and works only at the altar, one step
 west of where you land when you recall.  That is deliberate: the stash
 stores loot, it is not a way to carry it.
 
@@ -3450,7 +3451,9 @@ whole word.  Nobody can force you to delete.
 
 The name becomes free for others.  The game keeps a copy of the character
 as it stood, so staff can bring back a deletion that was a mistake -- ask
-them quickly, before somebody else takes the name.
+them quickly, before somebody else takes the name.  If that copy cannot be
+written safely first, nothing is deleted: you are told, and you can try
+again in a moment.  You cannot delete yourself while you lie dying.
 
 See also: QUIT, PASSWORD, GODS
 ~

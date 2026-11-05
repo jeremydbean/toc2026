@@ -80,6 +80,30 @@ class StashTests(unittest.TestCase):
                           run(client, "stash get bag", 1.8))
             self.assertIn("bag", run(client, "inventory", 1.8))
 
+    def test_get_takes_the_number_the_list_shows(self) -> None:
+        """STASH numbers its list, and players typed the number (play
+        journal, 2026-11-05: STASH GET 57 found nothing). The number is
+        the place in the list as shown; a number past the end says how
+        far the list runs, and a name still works."""
+        mud = self.player()
+        with mud.connect(timeout=120) as client:
+            login(client, "Zhoarder", PASSWORD)
+            client.sync("scroll 0")
+            client.must("load obj 3032", "You create")      # a bag
+            client.must("load obj 3701", "You create")      # a dagger
+            client.must("stash put bag", "safe keeping")
+            client.must("stash put dagger", "safe keeping")
+            listing = client.sync("stash")
+            numbered = dict(re.findall(r"(\d+)\) (.+)", listing))
+            self.assertEqual(len(numbered), 2, listing)
+            second = numbered["2"].strip()
+            taken = client.must("stash get 2", "out of your stash")
+            self.assertIn(second.split()[-1], taken)
+            self.assertIn("lists 1 to 1", client.sync("stash get 7"))
+            self.assertIn("no number 0", client.sync("stash get 0"))
+            self.assertIn("out of your stash", client.sync("stash get 1"))
+            self.assertIn("Your stash is empty", client.sync("stash get 1"))
+
     def test_the_listing_is_readable_from_anywhere(self) -> None:
         """Knowing what you own is not the same as reaching it."""
         mud = self.player(room=MUD_SCHOOL)

@@ -1134,17 +1134,49 @@ void do_stash( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
+        /* By the number STASH shows beside it, or by name. The list is
+           numbered, and players typed the number (play journal,
+           2026-11-05: STASH GET 57 found nothing). The count walks the
+           same objects the list does, the ones the character can see. */
+        if ( is_number( argument ) && argument[0] != '-' && argument[0] != '+' )
         {
-            if ( can_see_obj( ch, obj ) && is_name( argument, obj->name ) )
-                break;
-            prev = obj;
-        }
+            /* Six digits is past any stash; longer is never a place in it. */
+            int want = strlen( argument ) <= 6 ? atoi( argument ) : -1, seen = 0;
 
-        if ( obj == NULL )
+            for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
+            {
+                if ( can_see_obj( ch, obj ) && ++seen == want )
+                    break;
+                prev = obj;
+            }
+            if ( obj == NULL )
+            {
+                char buf[MAX_INPUT_LENGTH];
+
+                if ( seen == 0 )
+                    snprintf( buf, sizeof(buf), "Your stash is empty.\n\r" );
+                else
+                    snprintf( buf, sizeof(buf), "Your stash has no number %s: "
+                              "STASH lists 1 to %d.\n\r", argument, seen );
+                send_to_char( buf, ch );
+                return;
+            }
+        }
+        else
         {
-            send_to_char( "There is nothing like that in your stash.\n\r", ch );
-            return;
+            for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
+            {
+                if ( can_see_obj( ch, obj ) && is_name( argument, obj->name ) )
+                    break;
+                prev = obj;
+            }
+
+            if ( obj == NULL )
+            {
+                send_to_char( "There is nothing like that in your stash.  STASH "
+                              "GET takes a name or the number STASH shows.\n\r", ch );
+                return;
+            }
         }
 
         /* No carry check (owner, 2026-10-04): what is in the stash is
