@@ -172,25 +172,35 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
                     # Level 5's cellar, empty and no safe room.
                     god.must(f"transfer zmechhero {LIZARD_CELLAR}", "")
                     god.sync(f"goto {LIZARD_CELLAR}")
-                    load(god, DIGDOGGER, "digdogger", 3000)
-                    mark = len(hero.transcript)
-                    hero.sync("kill digdogger", 30)
-                    hero.drain(3)
-                    self.assertIn("too big to hurt", hero.transcript[mark:])
-                    self.assertEqual((3000, 3000), hit_points(god, "digdogger"))
-                    give(god, "zmechhero", RECORDER, "recorder")
-                    played = hero.sync("play recorder", 30)
-                    self.assertIn("shrinks to a third", played, played)
-                    self.assertLessEqual(hit_points(god, "digdogger")[0], 1000)
-                    mark = len(hero.transcript)
-                    for _ in range(60):
-                        if "Digdogger is DEAD" in hero.transcript[mark:]:
-                            break
-                        hero.drain(1)
-                    self.assertIn("Digdogger is DEAD", hero.transcript[mark:])
-                    self.assertNotIn("shrinks to a third", hero.sync("play recorder", 30))
-                    god.must(f"transfer zmechhero {SPARRING_FLOOR}", "")
-                    god.sync(f"goto {SPARRING_FLOOR}")
+                    try:
+                        load(god, DIGDOGGER, "digdogger", 3000)
+                        mark = len(hero.transcript)
+                        hero.sync("kill digdogger", 30)
+                        hero.drain(3)
+                        self.assertIn("too big to hurt", hero.transcript[mark:])
+                        self.assertEqual((3000, 3000), hit_points(god, "digdogger"))
+                        give(god, "zmechhero", RECORDER, "recorder")
+                        played = hero.sync("play recorder", 30)
+                        self.assertIn("shrinks to a third", played, played)
+                        self.assertLessEqual(hit_points(god, "digdogger")[0], 1000)
+                        # Two blows a round against up to a thousand hit
+                        # points: a busy nightly runner took more than a
+                        # minute of rounds (CI, 2026-11-05), so allow three.
+                        mark = len(hero.transcript)
+                        for _ in range(180):
+                            if "Digdogger is DEAD" in hero.transcript[mark:]:
+                                break
+                            hero.drain(1)
+                        self.assertIn("Digdogger is DEAD", hero.transcript[mark:])
+                        self.assertNotIn("shrinks to a third", hero.sync("play recorder", 30))
+                    finally:
+                        # Back to the floor whatever happened, so a failure
+                        # here is not also the candle's (it read a Hyrule
+                        # cellar as the room and burned nothing).
+                        god.sync("peace")
+                        god.sync("purge digdogger")
+                        god.must(f"transfer zmechhero {SPARRING_FLOOR}", "")
+                        god.sync(f"goto {SPARRING_FLOOR}")
 
                 with self.subTest("every Dodongo swallows a bomb for half its health"):
                     load(god, DODONGO, "dodongo", 1000)

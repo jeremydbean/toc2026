@@ -91,10 +91,18 @@ class GuardianHealLiveTests(unittest.TestCase):
                 staff.sync("purge gohma")
 
                 # Level 8, wounded in a real fight and then left: whole again.
+                # Fought until a blow lands, not for a fixed two rounds: a
+                # nightly run's staff missed every swing in six seconds
+                # (CI, 2026-11-05). A hitroll that lands, and a deadline.
+                staff.must("set char zhealstaff hitroll 300", "")
                 staff.sync(f"load mob {BOSS_MOBS[8]}")
                 staff.sync("kill ashen")
-                staff.drain(6.0)
-                hit, top = self.hp(staff, "ashen")
+                deadline = time.monotonic() + 45
+                while True:
+                    staff.drain(3.0)
+                    hit, top = self.hp(staff, "ashen")
+                    if hit < top or time.monotonic() > deadline:
+                        break
                 self.assertLess(hit, top, "wounded while the fight lasted")
                 staff.sync("peace")
                 time.sleep(6)
