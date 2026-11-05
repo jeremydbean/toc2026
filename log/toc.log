@@ -262933,3 +262933,96 @@ Thu Nov  5 02:31:45 2026 :: Log Trentlin [29378]: trip
 Thu Nov  5 02:31:51 2026 :: Log Trentlin [29378]: trip
 Thu Nov  5 02:31:56 2026 :: Log Trentlin [29378]: trip
 Thu Nov  5 02:32:00 2026 :: Log Trentlin [29378]: trip
+Thu Nov  5 02:32:06 2026 :: Log Trentlin [29378]: trip
+Thu Nov  5 02:32:12 2026 :: Log Trentlin [29378]: trip
+Thu Nov  5 02:32:17 2026 :: Log Trentlin [29378]: level 12 -> 13 (earned)
+Thu Nov  5 02:32:17 2026 :: Trentlin has achieved level 13!
+Thu Nov  5 02:32:17 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261105_023217.level (PRESTORE Trentlin to see it).
+Thu Nov  5 02:32:17 2026 :: Log Trentlin [29378]: killed a sailor
+Thu Nov  5 02:32:17 2026 :: Log Trentlin [29378]: coin +23 silver
+Thu Nov  5 02:32:17 2026 :: Log Trentlin [29378]: coin +73 copper
+Thu Nov  5 02:32:17 2026 :: Log Trentlin [29378]: coin +14 gold
+Thu Nov  5 02:32:21 2026 :: Log Trentlin [29378]: l in co
+Thu Nov  5 02:32:24 2026 :: Log Trentlin [29378]: sac co
+Thu Nov  5 02:32:24 2026 :: Log Trentlin [29378]: coin +30 copper
+Thu Nov  5 02:32:24 2026 :: Log Trentlin [29378]: sca
+Thu Nov  5 02:32:25 2026 :: Log Trentlin [29378]: ex
+Thu Nov  5 02:32:28 2026 :: Log Trentlin [29378]: s
+Thu Nov  5 02:32:31 2026 :: Log Trentlin [29378]: w
+Thu Nov  5 02:32:31 2026 :: Log Trentlin [29380]: arrived (Across the Sea) from 29378
+Thu Nov  5 02:32:35 2026 :: Log Trentlin [29350]: arrived (Dock before the Sea) from 29380
+Thu Nov  5 02:32:37 2026 :: Log Trentlin [29350]: reca
+Thu Nov  5 02:32:38 2026 :: Log Trentlin [29350]: w
+Thu Nov  5 02:32:38 2026 :: Log Trentlin [41]: arrived (The new pier) from 29350
+Thu Nov  5 02:32:38 2026 :: Log Trentlin [41]: reca
+Thu Nov  5 02:32:38 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 41
+Thu Nov  5 02:32:39 2026 :: Log Trentlin [4207]: w
+Thu Nov  5 02:32:39 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Thu Nov  5 02:32:42 2026 :: Log Trentlin [4208]: heal refresh
+Thu Nov  5 02:32:42 2026 :: Log Trentlin [4208]: gold -30
+Thu Nov  5 02:32:45 2026 :: Log Trentlin [4208]: e
+Thu Nov  5 02:32:45 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov  5 02:32:46 2026 :: Log Trentlin [4207]: gainlist
+Thu Nov  5 02:32:59 2026 :: Log Trentlin [4207]: walkto silent master
+Thu Nov  5 02:32:59 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov  5 02:33:00 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov  5 02:33:01 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Thu Nov  5 02:33:01 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Thu Nov  5 02:33:02 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Thu Nov  5 02:33:03 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Thu Nov  5 02:33:04 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Thu Nov  5 02:33:04 2026 :: Log Trentlin [4800]: arrived (Another Dimension) from 2437
+Thu Nov  5 02:33:05 2026 :: Log Trentlin [4801]: arrived (The passage way) from 4800
+Thu Nov  5 02:33:06 2026 :: Log Trentlin [4802]: arrived (The narrow entrance) from 4801
+Thu Nov  5 02:33:07 2026 :: Log Trentlin [4803]: arrived (The Palm of the Creator) from 4802
+Thu Nov  5 02:33:14 2026 :: Log Trentlin [4804]: arrived (The Quiet Place) from 4803
+Thu Nov  5 02:33:15 2026 :: Log Trentlin [4806]: arrived (A Small Clearing) from 4804
+Thu Nov  5 02:33:18 2026 :: Log Trentlin [4806]: l in ot
+Thu Nov  5 02:33:18 2026 :: Log Trentlin [4806]: e
+Thu Nov  5 02:33:19 2026 :: Log Trentlin [4806]: w
+Thu Nov  5 02:33:19 2026 :: Log Trentlin [4804]: arrived (The Quiet Place) from 4806
+Thu Nov  5 02:33:20 2026 :: Log Trentlin [4804]: l in pit
+Thu Nov  5 02:33:21 2026 :: Log Trentlin [4804]: e
+Thu Nov  5 02:33:21 2026 :: Log Trentlin [4806]: arrived (A Small Clearing) from 4804
+Thu Nov  5 02:33:22 2026 :: Log Trentlin [4806]: prac
+Thu Nov  5 02:33:25 2026 :: Log Trentlin [4806]: gain
+Thu Nov  5 02:33:31 2026 :: Log Trentlin [4806]: sco
+Thu Nov  5 02:33:33 2026 :: Log Trentlin [4806]: gain
+Thu Nov  5 02:33:40 2026 :: Log Trentlin [4806]: gain parry
+Thu Nov  5 02:33:41 2026 :: Log Trentlin [4806]: prac
+Thu Nov  5 02:33:44 2026 :: Log Trentlin [4806]: prac parry
+Thu Nov  5 02:33:45 2026 :: Log Trentlin [4806]: prac parry
+Thu Nov  5 02:33:45 2026 :: Log Trentlin [4806]: prac parry
+Thu Nov  5 02:33:46 2026 :: Log Trentlin [4806]: prac parry
+Thu Nov  5 02:33:46 2026 :: Log Trentlin [4806]: prac parry
+Thu Nov  5 02:33:49 2026 :: Log Trentlin [4806]: l
+Thu Nov  5 02:33:49 2026 :: Log Trentlin [4806]: w
+Thu Nov  5 02:33:49 2026 :: Log Trentlin [4804]: arrived (The Quiet Place) from 4806
+Thu Nov  5 02:33:50 2026 :: Log Trentlin [4804]: w
+Thu Nov  5 02:33:50 2026 :: Log Trentlin [4807]: arrived (The Training room) from 4804
+Thu Nov  5 02:33:52 2026 :: Log Trentlin [4807]: prac
+Thu Nov  5 02:33:54 2026 :: Log Trentlin [4807]: prac med
+Thu Nov  5 02:33:55 2026 :: Log Trentlin [4807]: prac med
+Thu Nov  5 02:33:55 2026 :: Log Trentlin [4807]: prac med
+Thu Nov  5 02:33:56 2026 :: Log Trentlin [4807]: prac med
+Thu Nov  5 02:33:57 2026 :: Log Trentlin [4807]: (refused) orac
+Thu Nov  5 02:33:58 2026 :: Log Trentlin [4807]: prac
+Thu Nov  5 02:33:59 2026 :: Log Trentlin [4807]: e
+Thu Nov  5 02:33:59 2026 :: Log Trentlin [4804]: arrived (The Quiet Place) from 4807
+Thu Nov  5 02:34:01 2026 :: Log Trentlin [4804]: reca
+Thu Nov  5 02:34:01 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4804
+Thu Nov  5 02:34:03 2026 :: Log Trentlin [4207]: e
+Thu Nov  5 02:34:03 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov  5 02:34:04 2026 :: Log Trentlin [4202]: n
+Thu Nov  5 02:34:04 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Thu Nov  5 02:34:04 2026 :: Log Trentlin [4203]: n
+Thu Nov  5 02:34:04 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Thu Nov  5 02:34:04 2026 :: Log Trentlin [4210]: n
+Thu Nov  5 02:34:05 2026 :: Log Trentlin [4210]: sleep
+Thu Nov  5 02:34:07 2026 :: Log Trentlin [4210]: wake
+Thu Nov  5 02:34:08 2026 :: Log Trentlin [4210]: i
+Thu Nov  5 02:34:11 2026 :: Log Trentlin [4210]: quit
+Thu Nov  5 02:34:11 2026 :: Trentlin has quit.
+Thu Nov  5 02:34:11 2026 :: [QUIT] Player rejoined the real world.
+Thu Nov  5 02:36:05 2026 :: Sock.sinaddr:  5.161.75.7
+Thu Nov  5 02:36:05 2026 :: EOF encountered on read.

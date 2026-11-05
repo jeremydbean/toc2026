@@ -23431,3 +23431,56 @@
 1793845911	cmd	Trentlin	12	29378	voyage.are	fighting	97	0	fight	trip		Your trip misses a sailor. // You learn from your mistakes, and your trip skill improves.	-	-
 1793845916	cmd	Trentlin	12	29378	voyage.are	fighting	93	0	fight	trip		Your trip misses a sailor.	-	-
 1793845920	cmd	Trentlin	12	29378	voyage.are	fighting	90	0	fight	trip		You trip a sailor and a sailor goes down! // Your trip scratches a sailor.	-	-
+1793845926	cmd	Trentlin	12	29378	voyage.are	fighting	86	0	fight	trip		You trip a sailor and a sailor goes down! // Your trip scratches a sailor.	-	-
+1793845932	cmd	Trentlin	12	29378	voyage.are	fighting	82	0	fight	trip		You trip a sailor and a sailor goes down! // Your trip scratches a sailor.	-	-
+1793845941	cmd	Trentlin	13	29378	voyage.are	standing	76	0	-	look	in co	Corpse of a sailor contains: //      Nothing.	-	-
+1793845944	cmd	Trentlin	13	29378	voyage.are	standing	76	0	-	sacrifice	co	The Gods give you 30 copper coins for your sacrifice.	-	-
+1793845944	cmd	Trentlin	13	29378	voyage.are	standing	76	0	-	scan		You don't see anything near you.	-	-
+1793845945	cmd	Trentlin	13	29378	voyage.are	standing	76	0	-	exits		Obvious exits: // West  - Across the Sea // Northwest - Across the Sea	-	+
+1793845948	cmd	Trentlin	13	29378	voyage.are	standing	76	0	-	south		Alas, you cannot go that way.	-	-
+1793845951	cmd	Trentlin	13	29380	voyage.are	standing	76	0	-	west		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1793845957	cmd	Trentlin	13	29350	voyage.are	standing	76	0	-	recall		The Gods have forsaken you.	-	-
+1793845958	cmd	Trentlin	13	41	connect.are	standing	76	0	-	west		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1793845958	cmd	Trentlin	13	4207	dresden.are	standing	76	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845959	cmd	Trentlin	13	4208	dresden.are	standing	80	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793845962	cmd	Trentlin	13	4208	dresden.are	standing	80	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1793845965	cmd	Trentlin	13	4207	dresden.are	standing	80	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845966	cmd	Trentlin	13	4207	dresden.are	standing	80	0	-	gainlist		Abilities for a level 13 monk of the monk guild: 16 learned, 18 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1793845979	cmd	Trentlin	13	4207	dresden.are	standing	80	0	-	walkto	silent master	You set off for Silent Master (Palm of the Creator), about 20 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1793845998	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	look	in ot	You do not see that here.	-	-
+1793845998	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	east		Alas, you cannot go that way.	-	-
+1793845999	cmd	Trentlin	13	4804	dresden.are	standing	80	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793846000	cmd	Trentlin	13	4804	dresden.are	standing	80	0	-	look	in pit	The donation pit contains: //      Nothing.	-	-
+1793846001	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1793846002	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	practice		hand to hand        77%  kick                78%  dodge               76%   // trip                77%   // You have 9 practice sessions left.	-	-
+1793846005	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1793846011	state	Trentlin	13	4806	dresden.are	lvl=13 hp=282/351 mana=552/580 mv=280/295 align=-686 exp=30110 coin=4560234370 bank=11005068657 qp=339 prac=9 train=3 stash=56/75 remorts=1
+1793846011	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	score		| Name:       Trentlin | Level:      13 | Class:        Monk | // | Played:     27 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793846013	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1793846020	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	gain	parry	The Silent Master trains you in the art of parry.	-	-
+1793846021	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	practice		hand to hand        77%  kick                78%  dodge               76%   // parry                1%  trip                77%   // You have 9 practice sessions left.	-	-
+1793846024	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	practice	parry	You practice parry.	-	-
+1793846025	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	practice	parry	You practice parry.	-	-
+1793846025	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	practice	parry	You practice parry.	-	-
+1793846026	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	practice	parry	You practice parry.	-	-
+1793846026	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	practice	parry	You are now learned at parry.	-	-
+1793846029	cmd	Trentlin	13	4806	dresden.are	standing	80	0	-	look		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1793846029	cmd	Trentlin	13	4804	dresden.are	standing	80	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793846030	cmd	Trentlin	13	4807	dresden.are	standing	80	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1793846032	cmd	Trentlin	13	4807	dresden.are	standing	84	0	-	practice		meditation          37%  bash                 1%   // You have 4 practice sessions left.	-	-
+1793846034	cmd	Trentlin	13	4807	dresden.are	standing	84	0	-	practice	med	You practice meditation.	-	-
+1793846035	cmd	Trentlin	13	4807	dresden.are	standing	84	0	-	practice	med	You practice meditation.	-	-
+1793846035	cmd	Trentlin	13	4807	dresden.are	standing	84	0	-	practice	med	You practice meditation.	-	-
+1793846036	cmd	Trentlin	13	4807	dresden.are	standing	84	0	-	practice	med	You practice meditation.	-	-
+1793846037	refused	Trentlin	13	4807	dresden.are	standing	84	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1793846038	cmd	Trentlin	13	4807	dresden.are	standing	84	0	-	practice		meditation          73%  bash                 1%   // You have 0 practice sessions left.	-	-
+1793846039	cmd	Trentlin	13	4804	dresden.are	standing	84	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793846041	cmd	Trentlin	13	4207	dresden.are	standing	84	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793846043	cmd	Trentlin	13	4202	dresden.are	standing	84	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793846044	cmd	Trentlin	13	4203	dresden.are	standing	84	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793846044	cmd	Trentlin	13	4210	dresden.are	standing	84	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793846044	cmd	Trentlin	13	4210	dresden.are	standing	84	0	-	north		Alas, you cannot go that way.	-	-
+1793846045	cmd	Trentlin	13	4210	dresden.are	standing	84	0	-	sleep		You go to sleep.	-	-
+1793846047	cmd	Trentlin	13	4210	dresden.are	sleeping	84	0	-	wake		You wake and stand up.	-	-
+1793846048	cmd	Trentlin	13	4210	dresden.are	standing	84	0	-	inventory		You are carrying: //      a granite key //      a pair of Roman-style leggings	-	+
+1793846051	session	Trentlin	13	4210	dresden.are	quit	2358s	+4 levels	+8041 exp	-70734381 copper	41 kills	0 deaths	1 quests	1304 commands	18 refused	coin: loot 66g 14s 39c, quests 91s 80c, spent 71p 40g 50s
