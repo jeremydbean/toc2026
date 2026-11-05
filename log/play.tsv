@@ -23099,3 +23099,150 @@
 1793845322	cmd	Trentlin	12	7101	sewer.are	standing	100	0	-	open	ozone	You open a secret door.	-	-
 1793845322	cmd	Trentlin	12	25160	underdrk.are	standing	100	0	-	down		The Trade Route. //   The glowing moss that covers the walls gives off more than enough light to see // by.  This huge corridor is used for trade between the different underground	-	+
 1793845323	cmd	Trentlin	12	25201	mushroom.are	standing	100	0	-	run	w 8	The Trade Route. // [Exits: east south west] // The Trade Route.	-	+
+1793845325	cmd	Trentlin	12	25202	mushroom.are	standing	100	0	-	west		The road through the grove. //   The Trade Route continues through the grove and into the City of Nethril. // You can see slaves all through the grove working on harvesting the massive	-	+
+1793845325	cmd	Trentlin	12	25202	mushroom.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845326	cmd	Trentlin	12	25203	mushroom.are	standing	100	0	-	west		The road through the grove. //   The city is getting closer, but still looks as if it's miles away.  There // is traffic along the road consisting of many of the underground races and	-	+
+1793845326	cmd	Trentlin	12	25203	mushroom.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845328	cmd	Trentlin	12	25259	mushroom.are	standing	100	0	-	south		The pathway south. //   This path has several torches on it lighting up the whole area.  The dust // in the path looks well worn.  Several sweet smelling mushrooms fill the	-	+
+1793845329	cmd	Trentlin	12	25260	mushroom.are	standing	100	0	-	south		Before the bridge. //   A bridge spans out over the river below and enters a heavily overgrown // area on the otherside.  From here you can make out the small lights of	-	+
+1793845330	cmd	Trentlin	12	25260	mushroom.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845330	cmd	Trentlin	12	25261	mushroom.are	standing	100	0	-	south		On the bridge. //   This bridge has been carved out of stone.  Exquisite carvings are on every // part of it and no carving is repeated twice.  The railing along the bridge	-	+
+1793845331	cmd	Trentlin	12	25261	mushroom.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845333	cmd	Trentlin	12	25262	mushroom.are	standing	100	0	-	south		The southern end of the bridge. //   The light from the torches are quickly swallowed by the undergrowth that is // so ambundant here.  Mushrooms of all colors and sizes have grown to such	-	+
+1793845334	cmd	Trentlin	12	25263	mushroom.are	standing	100	0	-	sw		The strangled path. //   The path here is overgrown and quiet.  This is one part of the grove that // no towers are around and the only part you have seen so far that makes	-	+
+1793845335	cmd	Trentlin	12	25264	mushroom.are	standing	100	0	-	sw		The strangled path. //   Light seems to be coming from a clearing in the west along with several // shadows of dancing figures.  You can also hear music with a fast rhythm	-	+
+1793845336	cmd	Trentlin	12	25265	mushroom.are	standing	100	0	-	west		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall	-	+
+1793845339	cmd	Trentlin	12	25265	mushroom.are	standing	100	0	-	consider	dro	A drow female is well above your level. // A drow female has about as many hit points as you. // Blow for blow, you would need about 7 rounds to bring a drow female down; she would need about 17 rounds for you.	-	+
+1793845344	cmd	Trentlin	12	25264	mushroom.are	standing	100	0	-	east		The strangled path. //   Light seems to be coming from a clearing in the west along with several // shadows of dancing figures.  You can also hear music with a fast rhythm	-	+
+1793845345	cmd	Trentlin	12	25263	mushroom.are	standing	100	0	-	ne		The strangled path. //   The path here is overgrown and quiet.  This is one part of the grove that // no towers are around and the only part you have seen so far that makes	-	+
+1793845346	cmd	Trentlin	12	25262	mushroom.are	standing	100	0	-	ne		The southern end of the bridge. //   The light from the torches are quickly swallowed by the undergrowth that is // so ambundant here.  Mushrooms of all colors and sizes have grown to such	-	+
+1793845348	cmd	Trentlin	12	25261	mushroom.are	standing	100	0	-	north		On the bridge. //   This bridge has been carved out of stone.  Exquisite carvings are on every // part of it and no carving is repeated twice.  The railing along the bridge	-	+
+1793845348	cmd	Trentlin	12	25260	mushroom.are	standing	100	0	-	north		Before the bridge. //   A bridge spans out over the river below and enters a heavily overgrown // area on the otherside.  From here you can make out the small lights of	-	+
+1793845349	cmd	Trentlin	12	25259	mushroom.are	standing	100	0	-	north		The pathway south. //   This path has several torches on it lighting up the whole area.  The dust // in the path looks well worn.  Several sweet smelling mushrooms fill the	-	+
+1793845349	cmd	Trentlin	12	25203	mushroom.are	standing	100	0	-	north		The road through the grove. //   The city is getting closer, but still looks as if it's miles away.  There // is traffic along the road consisting of many of the underground races and	-	+
+1793845349	cmd	Trentlin	12	25245	mushroom.are	standing	100	0	-	north		Before the mushroom tower. //   You can see the interior of the mushroom through the open door.  It looks // burned out though and smoke still blows out of it.  There is a sign on the	-	+
+1793845350	cmd	Trentlin	12	25245	mushroom.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1793845353	cmd	Trentlin	12	25287	mushroom.are	standing	100	0	-	enter	door	You enter the door to the tower // Your stomach flip flops. Everything goes black for a moment. // The burned tower.	-	+
+1793845356	cmd	Trentlin	12	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845358	cmd	Trentlin	12	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845358	cmd	Trentlin	12	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793845358	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793845359	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793845359	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793845360	cmd	Trentlin	12	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793845360	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793845363	cmd	Trentlin	12	2415	dresden.are	standing	100	0	-	run	n 2	Northern Oak Tree Square. // [Exits: north east south west] // An elite hobbit guard tells you,"May peace favor your sword!"	-	+
+1793845364	cmd	Trentlin	12	2509	dresden.are	standing	100	0	-	run	e 4	Market Plaza. // [Exits: north east south west] // Market Plaza.	-	+
+1793845364	cmd	Trentlin	12	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1793845364	cmd	Trentlin	12	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1793845364	cmd	Trentlin	12	2506	dresden.are	standing	100	0	-	run	n 2	Dark Alley. // [Exits: north east south west] // Dead End.	-	+
+1793845365	cmd	Trentlin	12	2506	dresden.are	standing	100	0	-	open	down	It's already open.	-	-
+1793845368	cmd	Trentlin	12	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1793845368	cmd	Trentlin	12	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1793845368	cmd	Trentlin	12	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1793845368	cmd	Trentlin	12	7104	sewer.are	standing	100	0	-	west		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1793845369	cmd	Trentlin	12	7103	sewer.are	standing	100	0	-	north		A muddy bend in the sewer system //   You are standing in what looks like a bend in the pipe system of the // sewer. The 'floor' is covered completely by mud! This includes covering	-	+
+1793845369	cmd	Trentlin	12	7101	sewer.are	standing	100	0	-	west		Under the mudhole //   You stand in a small room with a great big opening in the ceiling. From this // opening there's mud dripping down in large lumps. >YUCK<. You can smell the 	-	+
+1793845369	cmd	Trentlin	12	7101	sewer.are	standing	100	0	-	open	ozone	It's already open.	-	-
+1793845369	cmd	Trentlin	12	25160	underdrk.are	standing	100	0	-	down		The Trade Route. //   The glowing moss that covers the walls gives off more than enough light to see // by.  This huge corridor is used for trade between the different underground	-	+
+1793845370	cmd	Trentlin	12	25201	mushroom.are	standing	100	0	-	run	w 8	The Trade Route. // [Exits: east south west] // The Trade Route.	-	+
+1793845372	cmd	Trentlin	12	25201	mushroom.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1793845372	cmd	Trentlin	12	25202	mushroom.are	standing	100	0	-	west		The road through the grove. //   The Trade Route continues through the grove and into the City of Nethril. // You can see slaves all through the grove working on harvesting the massive	-	+
+1793845373	cmd	Trentlin	12	25203	mushroom.are	standing	100	0	-	west		The road through the grove. //   The city is getting closer, but still looks as if it's miles away.  There // is traffic along the road consisting of many of the underground races and	-	+
+1793845374	cmd	Trentlin	12	25204	mushroom.are	standing	100	0	-	west		The road continues. //   The road continues here and there is a path to the north.  You are close // enough to the city now to make more of it out.  Still, far away, the details	-	+
+1793845375	cmd	Trentlin	12	25205	mushroom.are	standing	100	0	-	west		The road north of a mushroom. //   There is another giant mushroom to the north here.  On this one you can see // dark shapes standing at the top watching all the travelers on the road for	-	+
+1793845376	cmd	Trentlin	12	25205	mushroom.are	standing	100	0	-	scan		a duergar mercenary                -to the South.	-	-
+1793845380	cmd	Trentlin	12	25205	mushroom.are	standing	100	0	-	consider	mer	A duergar mercenary is well above your level. // A duergar mercenary has about as many hit points as you. // Blow for blow, you would need about 7 rounds to bring a duergar mercenary down; he would need about 12 rounds for you.	-	+
+1793845384	cmd	Trentlin	12	25205	mushroom.are	standing	100	0	-	kill	mer	A duergar mercenary blocks your attack with his shield. // A duergar mercenary blocks your attack with his shield.	-	-
+1793845386	cmd	Trentlin	12	25205	mushroom.are	fighting	91	0	fight	trip		Your trip misses a duergar mercenary.	-	-
+1793845395	cmd	Trentlin	12	25205	mushroom.are	fighting	77	0	fight	trip		Your trip misses a duergar mercenary.	-	-
+1793845404	cmd	Trentlin	12	25205	mushroom.are	fighting	59	0	fight	trip		Your trip misses a duergar mercenary.	-	-
+1793845413	cmd	Trentlin	12	25205	mushroom.are	fighting	41	0	fight	trip		You trip a duergar mercenary and a duergar mercenary goes down! // Your trip scratches a duergar mercenary.	-	-
+1793845424	cmd	Trentlin	12	25204	mushroom.are	fighting	17	0	fight	flee		The road continues. //   The road continues here and there is a path to the north.  You are close // enough to the city now to make more of it out.  Still, far away, the details	-	+
+1793845426	cmd	Trentlin	12	4207	dresden.are	standing	17	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845427	cmd	Trentlin	12	4208	dresden.are	standing	17	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793845428	cmd	Trentlin	12	4208	dresden.are	standing	17	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793845431	cmd	Trentlin	12	4208	dresden.are	standing	49	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793845435	cmd	Trentlin	12	4208	dresden.are	standing	81	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793845438	cmd	Trentlin	12	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845438	cmd	Trentlin	12	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845438	cmd	Trentlin	12	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793845438	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793845439	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793845439	cmd	Trentlin	12	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793845439	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793845466	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	eat	gua	You eat guano. // Stone skin never takes on a monk or a necromancer. // You are already airborne.	-	+
+1793845469	cmd	Trentlin	12	2415	dresden.are	standing	100	0	-	run	n 2	Northern Oak Tree Square. // [Exits: north east south west] // An elite hobbit guard tells you,"May peace favor your sword!"	-	+
+1793845470	cmd	Trentlin	12	2509	dresden.are	standing	100	0	-	run	e 4	Market Plaza. // [Exits: north east south west] // Market Plaza.	-	+
+1793845470	cmd	Trentlin	12	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1793845470	cmd	Trentlin	12	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1793845470	cmd	Trentlin	12	2506	dresden.are	standing	100	0	-	run	n 2	Dark Alley. // [Exits: north east south west] // Dead End.	-	+
+1793845471	cmd	Trentlin	12	2506	dresden.are	standing	100	0	-	open	down	It's already open.	-	-
+1793845471	cmd	Trentlin	12	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1793845471	cmd	Trentlin	12	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1793845471	cmd	Trentlin	12	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1793845472	cmd	Trentlin	12	7104	sewer.are	standing	100	0	-	west		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1793845472	refused	Trentlin	12	7104	sewer.are	fighting	100	0	fight	north		No way!  You are still fighting!	refusal:position	-
+1793845472	refused	Trentlin	12	7104	sewer.are	fighting	100	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1793845472	cmd	Trentlin	12	7104	sewer.are	fighting	100	0	fight	open	ozone	I see no ozone here.	-	-
+1793845473	refused	Trentlin	12	7104	sewer.are	fighting	100	0	fight	down		No way!  You are still fighting!	refusal:position	-
+1793845473	refused	Trentlin	12	7104	sewer.are	fighting	100	0	fight	run	w 8	No way!  You are still fighting!	refusal:position	-
+1793845482	cmd	Trentlin	12	7104	sewer.are	fighting	100	0	fight	worth		You have 4560 platinum, 95 gold, 96 silver, 86 copper // and 28592 experience (1308 exp to level).	-	-
+1793845486	cmd	Trentlin	12	7104	sewer.are	standing	100	0	-	look		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1793845487	cmd	Trentlin	12	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845488	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793845490	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1793845493	cmd	Trentlin	12	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1793845493	cmd	Trentlin	12	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845493	cmd	Trentlin	12	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845493	cmd	Trentlin	12	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793845494	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793845494	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793845494	cmd	Trentlin	12	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793845494	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793845496	cmd	Trentlin	12	2415	dresden.are	standing	100	0	-	run	n 2	Northern Oak Tree Square. // [Exits: north east south west] // An elite hobbit guard tells you,"May peace favor your sword!"	-	+
+1793845496	cmd	Trentlin	12	2509	dresden.are	standing	100	0	-	run	e 4	Market Plaza. // [Exits: north east south west] // Market Plaza.	-	+
+1793845496	cmd	Trentlin	12	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1793845497	cmd	Trentlin	12	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1793845497	cmd	Trentlin	12	2506	dresden.are	standing	100	0	-	run	n 2	Dark Alley. // [Exits: north east south west] // Dead End.	-	+
+1793845497	cmd	Trentlin	12	2506	dresden.are	standing	100	0	-	open	down	It's already open.	-	-
+1793845497	cmd	Trentlin	12	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1793845498	cmd	Trentlin	12	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1793845498	cmd	Trentlin	12	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1793845498	cmd	Trentlin	12	7104	sewer.are	standing	100	0	-	west		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1793845498	cmd	Trentlin	12	7103	sewer.are	standing	100	0	-	north		A muddy bend in the sewer system //   You are standing in what looks like a bend in the pipe system of the // sewer. The 'floor' is covered completely by mud! This includes covering	-	+
+1793845499	cmd	Trentlin	12	7101	sewer.are	standing	100	0	-	west		Under the mudhole //   You stand in a small room with a great big opening in the ceiling. From this // opening there's mud dripping down in large lumps. >YUCK<. You can smell the 	-	+
+1793845499	cmd	Trentlin	12	7101	sewer.are	standing	100	0	-	open	ozone	It's already open.	-	-
+1793845499	cmd	Trentlin	12	25160	underdrk.are	standing	100	0	-	down		The Trade Route. //   The glowing moss that covers the walls gives off more than enough light to see // by.  This huge corridor is used for trade between the different underground	-	+
+1793845499	cmd	Trentlin	12	25201	mushroom.are	standing	100	0	-	run	w 8	The Trade Route. // [Exits: east south west] // The Trade Route.	-	+
+1793845501	cmd	Trentlin	12	25202	mushroom.are	standing	100	0	-	west		The road through the grove. //   The Trade Route continues through the grove and into the City of Nethril. // You can see slaves all through the grove working on harvesting the massive	-	+
+1793845501	cmd	Trentlin	12	25203	mushroom.are	standing	100	0	-	west		The road through the grove. //   The city is getting closer, but still looks as if it's miles away.  There // is traffic along the road consisting of many of the underground races and	-	+
+1793845502	cmd	Trentlin	12	25204	mushroom.are	standing	100	0	-	west		The road continues. //   The road continues here and there is a path to the north.  You are close // enough to the city now to make more of it out.  Still, far away, the details	-	+
+1793845503	cmd	Trentlin	12	25204	mushroom.are	standing	100	0	-	scan		a duergar mercenary                -to the West.	-	-
+1793845504	cmd	Trentlin	12	25205	mushroom.are	standing	100	0	-	west		The road north of a mushroom. //   There is another giant mushroom to the north here.  On this one you can see // dark shapes standing at the top watching all the travelers on the road for	-	+
+1793845505	cmd	Trentlin	12	25205	mushroom.are	fighting	92	0	fight	kill	me	You do the best you can!	-	-
+1793845507	cmd	Trentlin	12	25205	mushroom.are	fighting	92	0	fight	kick		Your kick scratches a duergar mercenary.	-	-
+1793845512	cmd	Trentlin	12	25205	mushroom.are	fighting	77	0	fight	kick		Your kick misses a duergar mercenary.	-	-
+1793845515	cmd	Trentlin	12	25205	mushroom.are	fighting	67	0	fight	kick		Your kick hits a duergar mercenary.	-	-
+1793845521	cmd	Trentlin	12	25205	mushroom.are	fighting	60	0	fight	trip		You trip a duergar mercenary and a duergar mercenary goes down! // Your trip scratches a duergar mercenary.	-	-
+1793845527	cmd	Trentlin	12	25205	mushroom.are	fighting	42	0	fight	trip		Your trip misses a duergar mercenary.	-	-
+1793845533	cmd	Trentlin	12	25205	mushroom.are	fighting	26	0	fight	trip		Your trip misses a duergar mercenary.	-	-
+1793845536	cmd	Trentlin	12	25205	mushroom.are	fighting	26	0	fight	trip		You trip a duergar mercenary and a duergar mercenary goes down! // Your trip grazes a duergar mercenary.	-	-
+1793845545	cmd	Trentlin	12	25205	mushroom.are	standing	26	0	-	look	in co	Corpse of a duergar mercenary contains: //      a two-handed battle axe //      a well-used shield	-	-
+1793845550	cmd	Trentlin	12	25205	mushroom.are	standing	30	0	-	get	sh co	You get a well-used shield from corpse of a duergar mercenary.	-	-
+1793845553	cmd	Trentlin	12	25205	mushroom.are	standing	30	0	-	compare	sh	A) a well-used shield (level 25) -- can't use: needs level 25 // B) a serving tray (level 9), worn // Slot: off hand.  Your damage comes from weapons.	-	+
+1793845558	cmd	Trentlin	12	25205	mushroom.are	standing	30	0	-	drop	sh	You drop a well-used shield.	-	-
+1793845559	cmd	Trentlin	12	4207	dresden.are	standing	30	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793845561	cmd	Trentlin	12	4202	dresden.are	standing	30	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845562	cmd	Trentlin	12	4203	dresden.are	standing	30	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845562	cmd	Trentlin	12	4210	dresden.are	standing	30	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793845562	cmd	Trentlin	12	4210	dresden.are	standing	30	0	-	north		Alas, you cannot go that way.	-	-
+1793845562	cmd	Trentlin	12	4210	dresden.are	standing	30	0	-	north		Alas, you cannot go that way.	-	-
+1793845563	cmd	Trentlin	12	4210	dresden.are	standing	30	0	-	sleep		You go to sleep.	-	-
+1793845617	cmd	Trentlin	12	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845618	cmd	Trentlin	12	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793845619	cmd	Trentlin	12	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793845619	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793845619	cmd	Trentlin	12	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793845620	cmd	Trentlin	12	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793845620	cmd	Trentlin	12	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
