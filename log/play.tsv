@@ -23704,3 +23704,28 @@
 1793879285	session	Trentlin	13	4208	dresden.are	quit	148s	+0 levels	-25 exp	-10000000 copper	0 kills	0 deaths	0 quests	59 commands	0 refused	coin: spent 10p
 1793913029	stall	-	0	0	-	541ms	slowest disaster_update 538ms	command - 0ms	0 players	0 more since
 1793914717	stall	-	0	0	-	267ms	slowest input 267ms	command - 0ms	0 players	0 more since
+1793920209	stall	-	0	0	-	496ms	slowest input 496ms	command - 0ms	0 players	0 more since
+1793920214	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793920214	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1793920217	cmd	Alaric	57	2497	dresden.are	standing	100	24	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'a gang member threatens the peace of the realm!'	-	+
+1793920220	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793920220	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793920221	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793920221	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793920221	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793920221	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793920222	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793920222	cmd	Alaric	57	2444	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793920222	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793920222	cmd	Alaric	57	2101	hood.are	standing	100	0	-	east		A Dark Alleyway //   The walls of the alleyway have been spray-painted over many times // over the years.  One section of graffiti actually looks legible,	-	+
+1793920228	cmd	Alaric	57	2102	hood.are	standing	100	0	-	east		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1793920229	cmd	Alaric	57	2103	hood.are	standing	100	0	-	east		Along White Dragon Boulevard //   Everywhere you look you see signs of recent violence.  Patches of blood // lie everywhere and broken sticks and abandoned knives are strewn here	-	+
+1793920229	cmd	Alaric	57	2102	hood.are	standing	100	0	-	west		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1793920231	cmd	Alaric	57	2102	hood.are	standing	100	10	-	kill	ga	Your punch misses a gang member. [-0] // Your punch === OBLITERATES === a gang member! [-140] // A gang member is DEAD!!	-	+
+1793920234	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793920235	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=1697->1697 offered=16 daily=4->4 coin=+92477484 kill=15412914 streak=0 level=57 target=-1
+1793920235	cmd	Alaric	57	2497	dresden.are	standing	100	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Here's your 92p 47g 74s 84c - well earned!'	success:-	+
+1793920236	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 16 quest points.	-	-
+1793920237	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=69/983 align=897 exp=252749 coin=1525350717 bank=22282853420 qp=1713 prac=36 train=76 stash=95/350 remorts=3
+1793920237	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793920239	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	afk		You are now in AFK mode.	-	-

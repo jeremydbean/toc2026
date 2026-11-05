@@ -264212,3 +264212,57 @@ Thu Nov  5 22:59:52 2026 :: EOF encountered on read.
 Thu Nov  5 23:01:20 2026 :: Treasure goblin: vanished from room 15154 (Gael House, campus.are) (too long in one area).
 Thu Nov  5 23:04:56 2026 :: Sock.sinaddr:  54.167.223.174
 Thu Nov  5 23:04:57 2026 :: EOF encountered on read.
+Thu Nov  5 23:09:59 2026 :: Sock.sinaddr:  54.167.223.174
+Thu Nov  5 23:10:00 2026 :: EOF encountered on read.
+Thu Nov  5 23:10:08 2026 :: Sock.sinaddr:  23.31.96.97
+Thu Nov  5 23:10:08 2026 :: EOF encountered on read.
+Thu Nov  5 23:10:09 2026 :: Sock.sinaddr:  208.126.22.104
+Thu Nov  5 23:10:10 2026 :: Loading Alaric's playerfile
+Thu Nov  5 23:10:11 2026 :: Loading Alaric's playerfile
+Thu Nov  5 23:10:11 2026 :: Alaric@208.126.22.104 has connected.
+Thu Nov  5 23:10:12 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Thu Nov  5 23:10:14 2026 :: Log Alaric [2497]: wake
+Thu Nov  5 23:10:14 2026 :: Log Alaric [2497]: who
+Thu Nov  5 23:10:17 2026 :: Log Alaric [2497]: aq re
+Thu Nov  5 23:10:17 2026 :: Log Alaric [2497]: quest assigned: kill a gang member (mob 2101, level 5) in hood.are, 22 minutes, ordinary
+Thu Nov  5 23:10:20 2026 :: Log Alaric [2497]: enter door
+Thu Nov  5 23:10:20 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov  5 23:10:20 2026 :: Log Alaric [2401]: east
+Thu Nov  5 23:10:20 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2403]: east
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2420]: east
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2421]: south
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2441]: east
+Thu Nov  5 23:10:21 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2442]: south
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2443]: east
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2444]: east
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2445]: east
+Thu Nov  5 23:10:22 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Thu Nov  5 23:10:28 2026 :: Log Alaric [2101]: e
+Thu Nov  5 23:10:28 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Thu Nov  5 23:10:29 2026 :: Log Alaric [2102]: e
+Thu Nov  5 23:10:29 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Thu Nov  5 23:10:29 2026 :: Log Alaric [2103]: w
+Thu Nov  5 23:10:29 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2103
+Thu Nov  5 23:10:31 2026 :: Log Alaric [2102]: kill ga
+Thu Nov  5 23:10:31 2026 :: Log Alaric [2102]: killed a gang member
+Thu Nov  5 23:10:34 2026 :: Log Alaric [2102]: recal
+Thu Nov  5 23:10:34 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2102
+Thu Nov  5 23:10:35 2026 :: Log Alaric [2497]: aq co
+Thu Nov  5 23:10:35 2026 :: Log Alaric [2497]: copper +92477484
+Thu Nov  5 23:10:35 2026 :: Log Alaric [2497]: quest complete: 92p 47g 74s 84c, 16 quest points (streak bonus 0%)
+Thu Nov  5 23:10:35 2026 :: Snapshot of Alaric taken before quest: Alaric.20261105_231035.quest (PRESTORE Alaric to see it).
+Thu Nov  5 23:10:36 2026 :: Log Alaric [2497]: aq ga no
+Thu Nov  5 23:10:37 2026 :: Log Alaric [2497]: score
+Thu Nov  5 23:10:39 2026 :: Log Alaric [2497]: afk
+Thu Nov  5 23:11:25 2026 :: Treasure goblin: vanished from room 29360 (Across the Sea, voyage.are) (too long in one area).
+Thu Nov  5 23:11:46 2026 :: Sock.sinaddr:  71.6.134.235
+Thu Nov  5 23:11:47 2026 :: EOF encountered on read.
+Thu Nov  5 23:13:31 2026 :: Log Alaric [2497]: affects off: levitate
