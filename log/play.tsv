@@ -22745,3 +22745,200 @@
 1793844710	cmd	Trentlin	10	11026	ancala.are	standing	94	0	-	unlock	west	*Click*	-	-
 1793844711	cmd	Trentlin	10	11026	ancala.are	standing	94	0	-	exits		Obvious exits: // East  - A Wooden Bridge // West  - Closed door	-	+
 1793844713	cmd	Trentlin	10	11026	ancala.are	standing	94	0	-	open	west	Ok.	-	-
+1793844714	cmd	Trentlin	10	11056	ancala.are	standing	94	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1793844715	cmd	Trentlin	10	11056	ancala.are	standing	94	0	-	drop	key	You drop a granite key.	-	-
+1793844717	cmd	Trentlin	10	11056	ancala.are	standing	94	0	-	open	souith	I see no souith here.	-	-
+1793844718	cmd	Trentlin	10	11056	ancala.are	standing	94	0	-	open	south	Ok.	-	-
+1793844719	cmd	Trentlin	10	11056	ancala.are	standing	94	0	-	scan		the putrid zombie                  -to the South.	-	-
+1793844720	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	south		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793844721	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	consider	z	The putrid zombie is a little above your level. // The putrid zombie has about half your hit points. // Blow for blow, you would need about 4 rounds to bring the putrid zombie down; it would need about 17 rounds for you.	-	+
+1793844723	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	kill	z	Your punch mauls the putrid zombie. // Your punch devastates the putrid zombie!	-	-
+1793844727	cmd	Trentlin	10	11027	ancala.are	fighting	94	0	fight	trip		Your trip misses the putrid zombie.	-	-
+1793844733	state	Trentlin	10	11027	ancala.are	lvl=10 hp=303/319 mana=465/465 mv=51/274 align=-727 exp=25059 coin=4624527821 bank=11005068657 qp=339 prac=0 train=0 stash=55/75 remorts=1
+1793844733	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	score		| Name:       Trentlin | Level:      10 | Class:        Monk | // | Played:     27 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793844735	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	look		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793844736	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	scan		the undead riding beetle           -to the East. // the wraith knight                  -right below you.	-	-
+1793844738	cmd	Trentlin	10	11045	ancala.are	standing	94	0	-	east		An Undead Garden //   Shaking shrubberies and quivering palms surround a few skeletal // trees that make up this gruesome garden.  The shriveled plantlife, set	-	+
+1793844740	cmd	Trentlin	10	11045	ancala.are	standing	94	0	-	consider	b	The undead riding beetle is about your level. // The undead riding beetle has about half your hit points. // Blow for blow, you would need about 4 rounds to bring the undead riding beetle down; he would need about 43 rounds for you.	-	+
+1793844741	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	west		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793844743	cmd	Trentlin	10	11027	ancala.are	standing	94	0	-	look	in co	Corpse of the putrid zombie contains: //      Nothing.	-	-
+1793844744	cmd	Trentlin	10	11045	ancala.are	standing	94	0	-	east		An Undead Garden //   Shaking shrubberies and quivering palms surround a few skeletal // trees that make up this gruesome garden.  The shriveled plantlife, set	-	+
+1793844745	cmd	Trentlin	10	11045	ancala.are	standing	94	0	-	kill	b	Your punch devastates the undead riding beetle! // Your punch injures the undead riding beetle.	-	-
+1793844748	cmd	Trentlin	10	11045	ancala.are	fighting	98	0	fight	trip		Your trip misses the undead riding beetle.	-	-
+1793844752	cmd	Trentlin	10	11045	ancala.are	fighting	98	0	fight	trip		Your trip misses someone.	-	-
+1793844758	cmd	Trentlin	10	11045	ancala.are	fighting	98	0	fight	trip		Your trip misses someone.	-	-
+1793844765	cmd	Trentlin	11	11045	ancala.are	standing	94	0	-	affect		You are affected by: // Spell: 'blindness'. // Spell: 'fly'.	-	+
+1793844766	cmd	Trentlin	11	4207	dresden.are	standing	94	0	-	recall		You can't see a thing!	-	-
+1793844767	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	west		You can't see a thing!	-	-
+1793844770	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	heal	blind	Someone utters the words 'judicandus noselacri'. // You can see again. // Your vision returns!	-	-
+1793844775	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1793844778	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1793844779	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	skills		Level  1: dagger              75%      hand to hand        76%       //           recall             100%       // Level  3: kick                78%      	-	+
+1793844782	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	inventory		You are carrying: //      a pair of Roman-style leggings //      (Glowing) a hairnet	-	+
+1793844785	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	wear	leg	You must be level 15 to use this object.	-	-
+1793844786	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	wear	hair	You must be level 12 to use this object.	-	-
+1793844790	cmd	Trentlin	11	4208	dresden.are	standing	94	0	-	wear	cloa	You stop using a horse shoe. // You wear a Blue rimmed, white cloak around your neck.	-	-
+1793844816	cmd	Trentlin	11	4208	dresden.are	standing	98	0	-	remove	horse	You stop using a horse shoe.	-	-
+1793844819	cmd	Trentlin	11	4208	dresden.are	standing	98	0	-	drop	horse	You drop a horse shoe.	-	-
+1793844819	cmd	Trentlin	11	4208	dresden.are	standing	98	0	-	drop	horse	You drop a horse shoe.	-	-
+1793844820	cmd	Trentlin	11	4208	dresden.are	standing	98	0	-	sacrifice	horse	The Gods give you 12 copper coins for your sacrifice.	-	-
+1793844821	cmd	Trentlin	11	4208	dresden.are	standing	98	0	-	sacrifice	horse	The Gods give you 12 copper coins for your sacrifice.	-	-
+1793844822	cmd	Trentlin	11	4208	dresden.are	standing	98	0	-	wear	cloa	You wear a Blue rimmed, white cloak around your neck.	-	-
+1793844824	cmd	Trentlin	11	4207	dresden.are	standing	98	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793844824	cmd	Trentlin	11	4202	dresden.are	standing	98	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793844824	cmd	Trentlin	11	4201	dresden.are	standing	98	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793844824	cmd	Trentlin	11	2427	dresden.are	standing	98	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793844826	cmd	Trentlin	11	4201	dresden.are	standing	98	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793844826	cmd	Trentlin	11	4202	dresden.are	standing	98	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793844827	cmd	Trentlin	11	4207	dresden.are	standing	98	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793844828	cmd	Trentlin	11	3700	school.are	standing	98	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793844829	cmd	Trentlin	11	3757	school.are	standing	98	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793844829	cmd	Trentlin	11	3759	school.are	standing	98	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1793844831	cmd	Trentlin	11	3759	school.are	standing	98	0	-	practice		dodge               76%  recall             100%  sword                3%   // dagger              75%  hand to hand        76%  kick                78%   // trip                49%  	-	+
+1793844833	cmd	Trentlin	11	3759	school.are	standing	98	0	-	practice	trip	You practice trip.	-	-
+1793844834	cmd	Trentlin	11	3759	school.are	standing	98	0	-	practice	trip	You practice trip.	-	-
+1793844834	cmd	Trentlin	11	3759	school.are	standing	98	0	-	practice	trip	You are now learned at trip.	-	-
+1793844835	cmd	Trentlin	11	3759	school.are	standing	98	0	-	practice	trip	You are already learned at trip.	-	-
+1793844837	cmd	Trentlin	11	3757	school.are	standing	98	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793844837	cmd	Trentlin	11	3758	school.are	standing	98	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1793844837	cmd	Trentlin	11	3758	school.are	standing	98	0	-	west		Alas, you cannot go that way.	-	-
+1793844838	cmd	Trentlin	11	3758	school.are	standing	98	0	-	train		You have 1 training sessions. // You can train: str hp mana.	-	-
+1793844840	cmd	Trentlin	11	3758	school.are	standing	98	0	-	train	str	Your strength increases!	-	-
+1793844840	cmd	Trentlin	11	3757	school.are	standing	98	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1793844841	cmd	Trentlin	11	3700	school.are	standing	98	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1793844841	cmd	Trentlin	11	3700	school.are	standing	98	0	-	south		The door is closed.	-	-
+1793844841	cmd	Trentlin	11	3700	school.are	standing	98	0	-	south		The door is closed.	-	-
+1793844841	cmd	Trentlin	11	4207	dresden.are	standing	98	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793844842	cmd	Trentlin	11	4202	dresden.are	standing	98	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793844843	cmd	Trentlin	11	4201	dresden.are	standing	98	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793844843	cmd	Trentlin	11	2427	dresden.are	standing	98	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793844843	cmd	Trentlin	11	2427	dresden.are	standing	98	0	-	east		Alas, you cannot go that way.	-	-
+1793844844	cmd	Trentlin	11	2404	dresden.are	standing	98	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793844844	cmd	Trentlin	11	2401	dresden.are	standing	98	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793844846	cmd	Trentlin	11	2405	dresden.are	standing	98	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793844847	cmd	Trentlin	11	2433	dresden.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793844847	cmd	Trentlin	11	2434	dresden.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844847	cmd	Trentlin	11	2435	dresden.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844847	cmd	Trentlin	11	2436	dresden.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844848	cmd	Trentlin	11	2437	dresden.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844848	cmd	Trentlin	11	2438	dresden.are	standing	98	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793844848	cmd	Trentlin	11	2438	dresden.are	standing	98	0	-	open	west	Ok.	-	-
+1793844848	cmd	Trentlin	11	2439	dresden.are	standing	98	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793844849	cmd	Trentlin	11	6000	haon.are	standing	98	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1793844850	cmd	Trentlin	11	6001	haon.are	standing	98	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1793844850	cmd	Trentlin	11	6002	haon.are	standing	98	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1793844850	cmd	Trentlin	11	6003	haon.are	standing	98	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1793844850	cmd	Trentlin	11	6004	haon.are	standing	98	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1793844851	cmd	Trentlin	11	6100	haon.are	standing	98	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1793844851	cmd	Trentlin	11	6101	haon.are	standing	98	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1793844851	cmd	Trentlin	11	6104	haon.are	standing	98	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1793844851	cmd	Trentlin	11	6105	haon.are	standing	98	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1793844852	cmd	Trentlin	11	6106	haon.are	standing	98	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1793844852	cmd	Trentlin	11	6117	haon.are	standing	98	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1793844852	cmd	Trentlin	11	6118	haon.are	standing	98	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1793844852	cmd	Trentlin	11	6119	haon.are	standing	98	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.	-	+
+1793844853	cmd	Trentlin	11	6120	haon.are	standing	98	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom	-	+
+1793844853	cmd	Trentlin	11	6121	haon.are	standing	98	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To	-	+
+1793844853	cmd	Trentlin	11	58	connect.are	standing	98	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find	-	+
+1793844853	cmd	Trentlin	11	11057	ancala.are	standing	98	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross	-	+
+1793844855	cmd	Trentlin	11	11000	ancala.are	standing	98	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1793844855	cmd	Trentlin	11	11001	ancala.are	standing	98	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1793844855	cmd	Trentlin	11	11002	ancala.are	standing	98	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1793844855	cmd	Trentlin	11	11003	ancala.are	standing	98	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1793844856	cmd	Trentlin	11	11004	ancala.are	standing	98	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1793844856	cmd	Trentlin	11	11005	ancala.are	standing	98	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1793844856	cmd	Trentlin	11	11006	ancala.are	standing	98	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1793844856	cmd	Trentlin	11	11055	ancala.are	standing	98	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1793844857	cmd	Trentlin	11	11012	ancala.are	standing	98	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1793844857	cmd	Trentlin	11	11013	ancala.are	standing	98	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1793844858	cmd	Trentlin	11	11014	ancala.are	standing	98	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.	-	+
+1793844858	cmd	Trentlin	11	11015	ancala.are	standing	98	0	-	west		A Wooden Bridge //   The wood here is old and acid eaten, similar to the rest of the // bridge. The deadly stalagmites jut up from below and more of the green	-	+
+1793844858	cmd	Trentlin	11	11026	ancala.are	standing	98	0	-	west		The End Of The Stomach //   The wooden bridge ends here, on a large plateau above the cavern // floor. The plateau overlooks the entire forest of acid and stone	-	+
+1793844860	cmd	Trentlin	11	11026	ancala.are	standing	98	0	-	west		The door is closed.	-	-
+1793844861	cmd	Trentlin	11	11026	ancala.are	standing	98	0	-	kill	wa	The Petrified Warden dodges your attack. // The Petrified Warden dodges your attack.	-	-
+1793844864	cmd	Trentlin	11	11026	ancala.are	fighting	93	0	fight	trip		Your trip misses the Petrified Warden.	-	-
+1793844867	cmd	Trentlin	11	11026	ancala.are	fighting	93	0	fight	trip		You trip the Petrified Warden and the Petrified Warden goes down! // Your trip scratches the Petrified Warden.	-	-
+1793844873	cmd	Trentlin	11	11026	ancala.are	fighting	96	0	fight	trip		You trip the Petrified Warden and the Petrified Warden goes down! // Your trip scratches the Petrified Warden.	-	-
+1793844879	cmd	Trentlin	11	11026	ancala.are	fighting	91	0	fight	trip		Your trip misses the Petrified Warden.	-	-
+1793844885	cmd	Trentlin	11	11026	ancala.are	standing	91	0	-	get	key co	You get a granite key from corpse of the Petrified Warden.	-	-
+1793844885	cmd	Trentlin	11	11026	ancala.are	standing	91	0	-	unlock	west	*Click*	-	-
+1793844886	cmd	Trentlin	11	11026	ancala.are	standing	91	0	-	open	west	Ok.	-	-
+1793844888	cmd	Trentlin	11	11026	ancala.are	standing	91	0	-	drop	key	You drop a granite key.	-	-
+1793844888	cmd	Trentlin	11	11056	ancala.are	standing	91	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1793844891	cmd	Trentlin	11	11056	ancala.are	standing	91	0	-	open	south	Ok.	-	-
+1793844891	cmd	Trentlin	11	11027	ancala.are	standing	91	0	-	south		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793844893	cmd	Trentlin	11	11027	ancala.are	standing	91	0	-	kill	zom	Your punch misses the putrid zombie. // The putrid zombie parries your attack.	-	-
+1793844896	cmd	Trentlin	11	11027	ancala.are	fighting	88	0	fight	trip		You trip the putrid zombie and the putrid zombie goes down! // Your trip scratches the putrid zombie.	-	-
+1793844902	cmd	Trentlin	11	11027	ancala.are	fighting	84	0	fight	trip		Your trip misses the putrid zombie.	-	-
+1793844906	cmd	Trentlin	11	11027	ancala.are	fighting	85	0	fight	trip		You trip the putrid zombie and the putrid zombie goes down! // Your trip scratches the putrid zombie.	-	-
+1793844913	cmd	Trentlin	11	11049	ancala.are	standing	83	0	-	down		Cold Storage //   The stink of this storage chamber makes you balk at once.  Through // your nausea you make out cadavers kept cool in niches in the stone	-	+
+1793844919	cmd	Trentlin	11	11049	ancala.are	fighting	80	0	fight	consider	wra	The wraith knight is a little above your level. // The wraith knight has about half your hit points. // Blow for blow, you would need about 3 rounds to bring the wraith knight down; he would need about 10 rounds for you.	-	+
+1793844920	cmd	Trentlin	11	11049	ancala.are	fighting	66	0	fight	trip		You trip the wraith knight and the wraith knight goes down! // You have become better at trip! // Your trip scratches the wraith knight.	-	-
+1793844931	cmd	Trentlin	11	11049	ancala.are	fighting	61	0	fight	trip		You trip the wraith knight and the wraith knight goes down! // Your trip scratches the wraith knight.	-	-
+1793844937	cmd	Trentlin	11	11049	ancala.are	fighting	53	0	fight	trip		Your trip misses someone.	-	-
+1793844942	cmd	Trentlin	11	11049	ancala.are	fighting	45	0	fight	trip		Your trip misses someone.	-	-
+1793844945	cmd	Trentlin	11	11049	ancala.are	fighting	45	0	fight	trip		You trip someone and someone goes down! // Your trip scratches someone.	-	-
+1793844951	cmd	Trentlin	11	11049	ancala.are	fighting	37	0	fight	trip		Your trip misses someone.	-	-
+1793844956	cmd	Trentlin	11	4207	dresden.are	standing	37	0	-	recall		You can't see a thing!	-	-
+1793844958	cmd	Trentlin	11	4208	dresden.are	standing	37	0	-	west		You can't see a thing!	-	-
+1793844959	cmd	Trentlin	11	4208	dresden.are	standing	37	1	-	heal	blind	Someone utters the words 'judicandus noselacri'. // You can see again. // Your vision returns!	-	-
+1793844966	cmd	Trentlin	11	4208	dresden.are	standing	37	0	-	heal	poison	The healer utters the words 'judicandus sausabru'. // You feel less sick. // A warm feeling runs through your body.	-	-
+1793844972	cmd	Trentlin	11	4208	dresden.are	standing	37	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793844976	cmd	Trentlin	11	4208	dresden.are	standing	71	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793844979	state	Trentlin	11	4208	dresden.are	lvl=11 hp=335/335 mana=495/503 mv=159/281 align=-711 exp=27300 coin=4611277845 bank=11005068657 qp=339 prac=1 train=0 stash=55/75 remorts=1
+1793844979	cmd	Trentlin	11	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      11 | Class:        Monk | // | Played:     27 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793844981	cmd	Trentlin	11	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793844981	cmd	Trentlin	11	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793844981	cmd	Trentlin	11	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793844981	cmd	Trentlin	11	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793844982	cmd	Trentlin	11	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793844982	cmd	Trentlin	11	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793844982	cmd	Trentlin	11	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793844982	cmd	Trentlin	11	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793844985	cmd	Trentlin	11	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793844985	cmd	Trentlin	11	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793844985	cmd	Trentlin	11	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844986	cmd	Trentlin	11	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844986	cmd	Trentlin	11	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844986	cmd	Trentlin	11	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793844986	cmd	Trentlin	11	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793844987	cmd	Trentlin	11	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1793844987	cmd	Trentlin	11	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793844988	cmd	Trentlin	11	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1793844988	cmd	Trentlin	11	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1793844988	cmd	Trentlin	11	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1793844989	cmd	Trentlin	11	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1793844989	cmd	Trentlin	11	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1793844989	cmd	Trentlin	11	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1793844989	cmd	Trentlin	11	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1793844990	cmd	Trentlin	11	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1793844990	cmd	Trentlin	11	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1793844990	cmd	Trentlin	11	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1793844990	cmd	Trentlin	11	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1793844991	cmd	Trentlin	11	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1793844991	cmd	Trentlin	11	6119	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.	-	+
+1793844991	cmd	Trentlin	11	6120	haon.are	standing	100	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom	-	+
+1793844991	cmd	Trentlin	11	6121	haon.are	standing	100	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To	-	+
+1793844992	cmd	Trentlin	11	58	connect.are	standing	100	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find	-	+
+1793844992	cmd	Trentlin	11	11057	ancala.are	standing	100	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross	-	+
+1793844994	cmd	Trentlin	11	11000	ancala.are	standing	100	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1793844994	cmd	Trentlin	11	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1793844994	cmd	Trentlin	11	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1793844994	cmd	Trentlin	11	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1793844995	cmd	Trentlin	11	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1793844995	cmd	Trentlin	11	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1793844995	cmd	Trentlin	11	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1793844995	cmd	Trentlin	11	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1793844996	cmd	Trentlin	11	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1793844996	cmd	Trentlin	11	11013	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1793844997	cmd	Trentlin	11	11014	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.	-	+
+1793844997	cmd	Trentlin	11	11015	ancala.are	standing	100	0	-	west		A Wooden Bridge //   The wood here is old and acid eaten, similar to the rest of the // bridge. The deadly stalagmites jut up from below and more of the green	-	+
+1793844998	cmd	Trentlin	11	11026	ancala.are	standing	100	0	-	west		The End Of The Stomach //   The wooden bridge ends here, on a large plateau above the cavern // floor. The plateau overlooks the entire forest of acid and stone	-	+
+1793844998	cmd	Trentlin	11	11056	ancala.are	standing	100	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1793844999	cmd	Trentlin	11	11027	ancala.are	standing	100	0	-	south		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793845000	cmd	Trentlin	11	11049	ancala.are	standing	100	0	-	down		Cold Storage //   The stink of this storage chamber makes you balk at once.  Through // your nausea you make out cadavers kept cool in niches in the stone	-	+
+1793845002	cmd	Trentlin	11	11049	ancala.are	standing	100	0	-	look	in cor	A stinking corpse contains: //      (Glowing) (Humming) a falchion //      a silver coin	-	+
+1793845003	cmd	Trentlin	11	11049	ancala.are	standing	100	0	-	scan		the Necromancer                    -to the South. // the putrid zombie                  -to the South.	-	-
+1793845005	cmd	Trentlin	11	11052	ancala.are	standing	100	0	-	south		The Guildhall //   This is the largest chamber cut from Ancalador's pancreas.  A long // feasting table made of coffins lashed together fills the length of the	-	+
+1793845008	cmd	Trentlin	11	11052	ancala.are	standing	100	0	-	consider	ne	The Necromancer is well above your level. // The Necromancer has about half your hit points. // Blow for blow, you would need about 5 rounds to bring the Necromancer down; he would need about 19 rounds for you.	-	+
+1793845010	cmd	Trentlin	11	11052	ancala.are	standing	100	0	-	look	ne	Evil reeks from his dark robes.  His hands are adorned with the // long, wicked nails which are stained with the ichor of embalmers // and malignant salves.	-	+
