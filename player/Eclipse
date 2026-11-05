@@ -1,7 +1,7 @@
 #PLAYER
 Name Eclipse~
 Id   2891
-LogO 1793814957
+LogO 1793889214
 Vers 4
 Desc Blah
 ~
@@ -20,7 +20,7 @@ Fixes 20261021-mage-groups~
 Cast none
 Levl 70
 Tru  70
-Plyd 11015820
+Plyd 11090077
 ListRemorts 0  0 ~
 NumRemorts 1
 Note 1792619733
@@ -32,7 +32,7 @@ NewPlat 4
 NewCopp 4
 NewSilv 0
 BankCP 0
-IntTime 1793802797
+IntTime 1793889197
 IntTotal 0
 Dcount 0
 SavedOnce 1
