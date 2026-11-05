@@ -3177,7 +3177,7 @@ const char *recovery_uid      ( const char *name );
 bool    recovery_snapshot_uid ( const char *snapname, char *out, size_t size );
 bool    recovery_reinstate_uid( const char *name, const char *uid, const char *why );
 void    recovery_player_login ( CHAR_DATA *ch, bool new_character );
-void    recovery_player_retire ( const char *name, const char *why );
+bool    recovery_player_retire ( const char *name, const char *why );
 /* corpses.c: a player's corpse outlasts a restart, as it actually is */
 #define PC_CORPSE_TICKS  10080          /* a week of minute ticks */
 typedef struct corpse_record
@@ -3201,6 +3201,16 @@ void    corpse_registry_died          ( CHAR_DATA *ch, OBJ_DATA *corpse,
 void    corpse_note_change            ( OBJ_DATA *container, OBJ_DATA *obj,
                                         bool in );
 void    corpse_registry_touched       ( OBJ_DATA *corpse, const char *why );
+/* resurrect.c: a corpse's contents to their owner, on the disk or not at
+   all -- ACCEPT and RAISE DEAD. Answers a DURABLE_* status, or this when
+   nothing was begun. */
+#define CORPSE_GIVE_REFUSED  (-1)
+int     corpse_give_to_owner    ( CHAR_DATA *owner, OBJ_DATA *corpse, const char *spell,
+                                  const char *by, bool only_what_fits, const char *fault_point,
+                                  OBJ_DATA **moved, int max_moved, int *given,
+                                  char *op, size_t opsize, char *why, size_t whysize );
+void    resurrect_corpse_owner  ( OBJ_DATA *corpse, char *out, size_t size );
+CHAR_DATA *resurrect_find_owner ( const char *name );
 bool    corpse_registry_hold    ( OBJ_DATA *corpse, char *id, size_t size );
 void    corpse_registry_unhold  ( OBJ_DATA *corpse );
 void    corpse_registry_pending     ( OBJ_DATA *corpse, const char *op );
@@ -3539,6 +3549,7 @@ void    one_hit         ( CHAR_DATA *ch, CHAR_DATA *victim, int dt );
 void    raw_kill        ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    hyrule_defies_instant_death ( CHAR_DATA *victim );
 bool    damage          ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int class );
+void    damage_drain_next ( int divisor );
 void    update_pos      ( CHAR_DATA *victim );
 void    stop_fighting   ( CHAR_DATA *ch, bool fBoth );
 void    add_hate        ( CHAR_DATA *ch, CHAR_DATA *vict );
@@ -3878,6 +3889,7 @@ void    player_snapshot ( const char *name );  /* versioned snapshot of player f
 void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */
 void    player_snapshot_pin ( const char *file ); /* rotation skips it; NULL unpins */
 bool    player_snapshot_milestone ( CHAR_DATA *ch, const char *tag, bool save_first );
+bool    player_milestone_required ( CHAR_DATA *asker, CHAR_DATA *ch, const char *tag );
 
 /* skills.c */
 bool    parse_gen_groups ( CHAR_DATA *ch,char *argument );

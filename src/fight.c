@@ -103,6 +103,19 @@ bool    check_shield_block      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 /* Set by one_hit for a vampiric weapon's swing and taken by the next
    damage() call, which drinks from what that blow really takes. */
 static bool vampiric_blow;
+/* Set by a draining spell (VAMPIRIC TOUCH) for the one blow that follows:
+   the caster drinks 1/divisor of what that blow really takes from the
+   victim's hit points -- after sanctuary, resistance, immunity and every
+   other rule in damage(), never the overkill, never the dummy or the
+   treasure goblin (review, 2026-11-04: the spell healed before the blow,
+   so an invulnerable target fed its caster while losing nothing). Taken
+   at damage()'s entry, so it can never carry to another blow. */
+static int drain_next_divisor;
+
+void damage_drain_next( int divisor )
+{
+    drain_next_divisor = divisor > 0 ? divisor : 0;
+}
 /* Set by a caller for the one blow that follows: a blow whose size the
    NES fixes -- an arrow that bursts a pols voice, a boomerang that kills a
    keese or a gel, the bomb a Dodongo swallows for half its health.
@@ -1517,9 +1530,11 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     LIST_ITERATOR iter;
     /* This blow's, taken at once so it can never carry to another. */
     bool vampiric = vampiric_blow;
+    int drain = drain_next_divisor;
     int exact = hyrule_exact_blow ? dam : 0;
 
     vampiric_blow = false;
+    drain_next_divisor = 0;
     hyrule_exact_blow = false;
 
     if ( victim->position == POS_DEAD )
@@ -1855,6 +1870,15 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	    if ( !IS_NPC(ch) )
 		alignment_shift( ch, -1, false );   /* quietly: every landed hit */
 	}
+	/* A draining spell's share, from the same place and by the same
+	   rules: what came off, never past what the victim had. */
+	if ( drain > 0 && dam > 0 && ch != victim )
+	{
+	    int taken = victim->hit < 0 ? dam + victim->hit : dam;
+
+	    if ( taken > 0 && !is_treasure_goblin( victim ) )
+		ch->hit = UMIN( ch->max_hit, ch->hit + taken / drain );
+	}
     }
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
@@ -1965,15 +1989,29 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
       dam1 = apply_hyrule_relic_damage_reduction( ch, dam1, dam_type1 );
 
+      /* Staff invulnerability holds against a shield's reflection as it
+         does against a blow (review, 2026-11-04: the reflection took hit
+         points straight off an invulnerable attacker). ABSORB reads as
+         the immunity it is; DAMAGE reads as a blow and takes nothing. The
+         predicate is the shared one: trust, never a switched mobile. */
+      if ( dam1 > 0 && is_invulnerable( ch ) && IS_SET(ch->act, PLR_INVULN_ABSORB) )
+      {
+       dam1 = 0;
+       dam_message(victim, ch, 0, dt1, true);
+      }
+
       if(dam1 > 0)
       {
        int before;
 
        fight_ledger_observe( ch );
        before = ch->hit;
-       ch->hit -= dam1;
-       if(ch->hit <= 0)
-         ch->hit = 1;
+       if ( !is_invulnerable( ch ) )
+       {
+         ch->hit -= dam1;
+         if(ch->hit <= 0)
+           ch->hit = 1;
+       }
        /* A shield's reflection is a loss outside damage(): counted where
           it happens, as it really came off (review, 2026-10-27: it read as
           negative healing). */

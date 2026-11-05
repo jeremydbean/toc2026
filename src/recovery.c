@@ -473,6 +473,85 @@ static int ledger_split( char *line, char *col[10] )
     return kind;
 }
 
+
+/*
+ * Whose each milestone snapshot is: the uid of the last whole "snapshot"
+ * record naming it (its detail starts with the snapshot's name and a
+ * space), as recovery_snapshot_uid used to find by reading the whole
+ * ledger on every call (review, 2026-11-04: 40 ms a lookup at 100,000
+ * records). Built from the same whole, checked records at boot -- a torn
+ * end is cut off first and a line that is not a whole record skipped --
+ * and kept up as each record is appended. A record with no uid ("-")
+ * changes nothing, as it never did.
+ */
+typedef struct snap_uid
+{
+    struct snap_uid *next;
+    char            *snap;
+    char             uid[24];
+} SNAP_UID;
+
+#define SNAP_UID_BUCKETS 4096
+static SNAP_UID *snap_uids[SNAP_UID_BUCKETS];
+
+static unsigned snap_uid_hash( const char *s, size_t len )
+{
+    unsigned long h = 2166136261UL;
+    size_t i;
+
+    for ( i = 0; i < len; i++ )
+        h = ( ( h ^ (unsigned char) s[i] ) * 16777619UL ) & 0xffffffffUL;
+    return (unsigned) ( h % SNAP_UID_BUCKETS );
+}
+
+static void snap_uid_clear( void )
+{
+    int i;
+
+    for ( i = 0; i < SNAP_UID_BUCKETS; i++ )
+        while ( snap_uids[i] != NULL )
+        {
+            SNAP_UID *next = snap_uids[i]->next;
+
+            free( snap_uids[i]->snap );
+            free( snap_uids[i] );
+            snap_uids[i] = next;
+        }
+}
+
+/* A "snapshot" record's detail and uid into the index. */
+static void snap_uid_note( const char *detail, const char *uid )
+{
+    const char *space;
+    size_t len;
+    unsigned b;
+    SNAP_UID *e;
+
+    if ( detail == NULL || uid == NULL || uid[0] == '\0' || !strcmp( uid, "-" )
+    ||   ( space = strchr( detail, ' ' ) ) == NULL || space == detail )
+        return;
+    len = (size_t) ( space - detail );
+    b = snap_uid_hash( detail, len );
+    for ( e = snap_uids[b]; e != NULL; e = e->next )
+        if ( strlen( e->snap ) == len && !strncmp( e->snap, detail, len ) )
+        {
+            toc_strlcpy( e->uid, uid, sizeof(e->uid) );
+            return;
+        }
+    if ( ( e = malloc( sizeof(*e) ) ) == NULL
+    ||   ( e->snap = malloc( len + 1 ) ) == NULL )
+    {
+        free( e );
+        bug( "recovery: out of memory for the snapshot index", 0 );
+        return;
+    }
+    memcpy( e->snap, detail, len );
+    e->snap[len] = '\0';
+    toc_strlcpy( e->uid, uid, sizeof(e->uid) );
+    e->next = snap_uids[b];
+    snap_uids[b] = e;
+}
+
 void recovery_boot( void )
 {
     FILE *fp;
@@ -483,6 +562,7 @@ void recovery_boot( void )
     ledger_request_count = 0;
     ledger_uid_count = 0;
     ledger_seq = 0;
+    snap_uid_clear();
     ledger_tail_doubtful = !ledger_trim_tail();
     if ( ( fp = fopen( RECOVERY_LEDGER, "r" ) ) == NULL )
         return;
@@ -512,6 +592,8 @@ void recovery_boot( void )
             ledger_note_request( col[6], col[5], ledger_state_code( col[3] ) );
         else if ( !strcmp( col[2], "uid" ) )
             ledger_note_uid( col[5], col[4], !strcmp( col[3], "assign" ) );
+        else if ( !strcmp( col[2], "snapshot" ) )
+            snap_uid_note( col[9], col[4] );
     }
     fclose( fp );
     snprintf( line, sizeof(line), "Recovery ledger: %ld records (%ld from before the "
@@ -625,6 +707,8 @@ bool recovery_record( const char *event, const char *state, const char *player,
     ledger_seq++;
     if ( ( !strcmp( event, "request" ) || !strcmp( event, "prestore" ) ) && request != NULL )
         ledger_note_request( request, player, ledger_state_code( state ) );
+    else if ( !strcmp( event, "snapshot" ) )
+        snap_uid_note( f_detail, uid );
     return true;
 }
 
@@ -759,29 +843,22 @@ void recovery_player_login( CHAR_DATA *ch, bool new_character )
  */
 bool recovery_snapshot_uid( const char *snapname, char *out, size_t size )
 {
-    FILE *fp;
-    char line[MAX_STRING_LENGTH * 2];
     size_t namelen;
+    SNAP_UID *e;
 
     if ( size > 0 )
         out[0] = '\0';
-    if ( snapname == NULL || snapname[0] == '\0'
-    ||   ( fp = fopen( RECOVERY_LEDGER, "r" ) ) == NULL )
+    if ( snapname == NULL || snapname[0] == '\0' )
         return false;
+    if ( !ledger_loaded )
+        recovery_boot();
     namelen = strlen( snapname );
-    while ( fgets( line, sizeof(line), fp ) != NULL )
-    {
-        char *col[10];
-        int kind = ledger_split( line, col );
-
-        if ( kind != LEDGER_ROW_OK && kind != LEDGER_ROW_LEGACY )
-            continue;
-        if ( strcmp( col[2], "snapshot" ) || strncmp( col[9], snapname, namelen )
-        ||   col[9][namelen] != ' ' || !strcmp( col[4], "-" ) )
-            continue;
-        toc_strlcpy( out, col[4], size );
-    }
-    fclose( fp );
+    for ( e = snap_uids[snap_uid_hash( snapname, namelen )]; e != NULL; e = e->next )
+        if ( !strcmp( e->snap, snapname ) )
+        {
+            toc_strlcpy( out, e->uid, size );
+            break;
+        }
     return out[0] != '\0';
 }
 
@@ -806,15 +883,20 @@ bool recovery_reinstate_uid( const char *name, const char *uid, const char *why 
     return true;
 }
 
-/* A deleted character's uid goes with them; their history keeps it. */
-void recovery_player_retire( const char *name, const char *why )
+/* A deleted character's uid goes with them; their history keeps it.
+   Says whether that is so: false when the retirement could not be
+   written down, and then the uid stays theirs (DELETE then stops: review,
+   2026-11-04). A name with no uid has nothing to retire. */
+bool recovery_player_retire( const char *name, const char *why )
 {
     const char *uid = recovery_uid( name );
     char was[24];
 
     if ( uid[0] == '\0' )
-        return;
+        return true;
     toc_strlcpy( was, uid, sizeof(was) );
-    recovery_record( "uid", "retire", name, "-", "player", "-", why );
+    if ( !recovery_record( "uid", "retire", name, "-", "player", "-", why ) )
+        return false;
     ledger_note_uid( capitalize( name ), was, false );
+    return true;
 }

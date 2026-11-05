@@ -152,6 +152,20 @@ which (independent review, 2026-10-23):
   in between is saved.
 - RESURRECTION's ACCEPT whose save is not confirmed stays pending and is
   settled by the next save, boot or login -- never undone on a guess.
+- RAISE DEAD gives a corpse back the same way ACCEPT does (2026-11-04):
+  the corpse's record held whole, a pending `resurrect:<id>` receipt, the
+  mark, the save. A failed save puts everything back in the corpse and the
+  owner stays where they were; an unconfirmed one stays pending. What the
+  owner could not carry falls to the floor only after the transfer is on
+  the disk, and the corpse's whole record goes to history.
+- DELETE waits for its `delete` milestone (2026-11-04): the character as
+  they stand, saved and copied to the disk and the ledger. If that fails,
+  or the uid's retirement cannot be recorded, or the file cannot be
+  removed, nothing is deleted and the player is told. REMORT, COMBINE,
+  ADVANCE and a staff SET refuse the same way.
+- A versions directory counts as on the disk only once its entry has been
+  flushed into its parent; a snapshot inside one that is not confirmed is
+  published but never reported durable.
 - A receipt's mark never shortens the file's list of fixes: a list that
   cannot take another refuses the restore, death or ACCEPT before
   anything moves.

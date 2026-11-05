@@ -63,7 +63,8 @@ static bool snapshot_capitalize_name args( ( char *dst, size_t dst_size,
 static bool snapshot_join_path args( ( char *dst, size_t dst_size,
                                        const char *dir, const char *file ) );
 
-static bool snapshot_ensure_dir args( ( const char *path ) );
+static int snapshot_ensure_dir args( ( const char *path ) );
+static char *snap_strdup args( ( const char *s ) );
 static int player_snapshot_internal args( ( const char *name, bool force,
                                              const char *tag, SNAPSHOT_RESULT *out ) );
 
@@ -205,20 +206,139 @@ static bool snapshot_join_path( char *dst, size_t dst_size,
 
 
 
-static bool snapshot_ensure_dir( const char *path )
+/*
+ * The snapshot directories this process has seen confirmed in their
+ * parents. mkdir said a directory was there and nothing flushed its entry
+ * into its parent, so a snapshot inside a directory made a moment before
+ * could be called durable while the directory itself might not survive a
+ * power cut (review, 2026-11-04). A directory found already there
+ * (EEXIST) is not taken as confirmed either -- an earlier run may have
+ * made it and failed to confirm it -- so the first time this process
+ * uses it, its parent is flushed once.
+ */
+static char **snap_dirs_confirmed;
+static int snap_dirs_count, snap_dirs_cap;
+
+static bool snap_dir_is_confirmed( const char *path )
+{
+    int i;
+
+    for ( i = 0; i < snap_dirs_count; i++ )
+        if ( !strcmp( snap_dirs_confirmed[i], path ) )
+            return true;
+    return false;
+}
+
+static void snap_dir_note_confirmed( const char *path )
+{
+    char *copy;
+
+    if ( snap_dirs_count >= snap_dirs_cap )
+    {
+        int cap = snap_dirs_cap ? snap_dirs_cap * 2 : 64;
+        char **grown = realloc( snap_dirs_confirmed, (size_t) cap * sizeof(*grown) );
+
+        if ( grown == NULL )
+            return;             /* asked again next time: slower, never wrong */
+        snap_dirs_confirmed = grown;
+        snap_dirs_cap = cap;
+    }
+    if ( ( copy = snap_strdup( path ) ) == NULL )
+        return;
+    snap_dirs_confirmed[snap_dirs_count++] = copy;
+}
+
+/*
+ * DURABLE_OK: the directory is there and its entry in its parent is on
+ * the disk. DURABLE_UNCERTAIN: it is there, but that could not be
+ * confirmed -- whatever is published inside it is not called durable.
+ * DURABLE_FAILED: it is not there. A test fails the confirmation once
+ * with the fault point "snapshot-dir".
+ */
+static int snapshot_ensure_dir( const char *path )
 {
     struct stat st;
 
-    if ( mkdir( path, 0755 ) == 0 )
-        return true;
+    if ( mkdir( path, 0755 ) != 0 )
+    {
+        if ( errno != EEXIST || stat( path, &st ) != 0 || !S_ISDIR( st.st_mode ) )
+            return DURABLE_FAILED;
+        if ( snap_dir_is_confirmed( path ) )
+            return DURABLE_OK;
+    }
+    if ( recovery_fault( "snapshot-dir" ) || !durable_dir_sync( path ) )
+        return DURABLE_UNCERTAIN;
+    snap_dir_note_confirmed( path );
+    return DURABLE_OK;
+}
 
-    if ( errno != EEXIST )
-        return false;
+/*
+ * The newest snapshot of each player this process has seen (review,
+ * 2026-11-04: every ordinary save read the whole versions directory just
+ * to decide it was too soon for another copy -- 33 ms at 50,000 copies).
+ * Filled by one scan the first time a player is asked about, kept up by
+ * each copy this process publishes, and scanned again whenever the file
+ * it names is gone. The throttle still reads the file's own time.
+ */
+typedef struct
+{
+    char name[32];
+    char newest[MAX_INPUT_LENGTH];
+} SNAP_NEWEST;
 
-    if ( stat( path, &st ) != 0 )
-        return false;
+static SNAP_NEWEST *snap_newest;
+static int snap_newest_count, snap_newest_cap;
 
-    return S_ISDIR( st.st_mode );
+static SNAP_NEWEST *snap_newest_slot( const char *cap_name, bool create )
+{
+    int i;
+
+    for ( i = 0; i < snap_newest_count; i++ )
+        if ( !strcmp( snap_newest[i].name, cap_name ) )
+            return &snap_newest[i];
+    if ( !create )
+        return NULL;
+    if ( snap_newest_count >= snap_newest_cap )
+    {
+        int cap = snap_newest_cap ? snap_newest_cap * 2 : 128;
+        SNAP_NEWEST *grown = realloc( snap_newest, (size_t) cap * sizeof(*grown) );
+
+        if ( grown == NULL )
+            return NULL;
+        snap_newest = grown;
+        snap_newest_cap = cap;
+    }
+    toc_strlcpy( snap_newest[snap_newest_count].name, cap_name,
+                 sizeof(snap_newest[0].name) );
+    snap_newest[snap_newest_count].newest[0] = '\0';
+    return &snap_newest[snap_newest_count++];
+}
+
+/* The newest snapshot's name by reading the directory, as the throttle
+   always did; "" for none. */
+static void snap_newest_scan( const char *vdir, const char *cap_name, char *out, size_t size )
+{
+    DIR *dp = opendir( vdir );
+    struct dirent *ent;
+
+    out[0] = '\0';
+    if ( dp == NULL )
+        return;
+    while ( ( ent = readdir( dp ) ) != NULL )
+        if ( snapshot_name_parse( ent->d_name, cap_name, NULL, NULL )
+          && strcmp( ent->d_name, out ) > 0 )
+            toc_strlcpy( out, ent->d_name, size );
+    closedir( dp );
+}
+
+static void snap_newest_published( const char *cap_name, const char *file )
+{
+    SNAP_NEWEST *slot = snap_newest_slot( cap_name, false );
+
+    /* Only a player already scanned: one never asked about is scanned
+       when first asked, which finds this copy too. */
+    if ( slot != NULL && strcmp( file, slot->newest ) > 0 )
+        toc_strlcpy( slot->newest, file, sizeof(slot->newest) );
 }
 
 
@@ -393,18 +513,15 @@ int snapshot_list_sorted( const char *cap_name, char ***out )
     return count;
 }
 
-static void snapshot_prune( const char *vdir, const char *cap_name,
-                            const char *tag, time_t now )
+/* One weighing of one kind -- a milestone's tag, or the ordinary saves
+   (tag NULL) -- over the list snapshot_prune read and sorted once. */
+static void snapshot_prune_pass( const char *vdir, const char *cap_name,
+                                 char **names, int count, const char *tag, time_t now )
 {
     size_t nlen = strlen( cap_name );
     bool tagged = tag != NULL && tag[0] != '\0';
     char last_bucket[16] = "";
-    char **names;
-    int count, kept = 0, i;
-
-    count = snapshot_list( vdir, cap_name, &names );
-    if ( count > 1 )
-        qsort( names, (size_t) count, sizeof(char *), snap_newest_first );
+    int kept = 0, i;
 
     for ( i = 0; i < count; i++ )
     {
@@ -452,6 +569,28 @@ static void snapshot_prune( const char *vdir, const char *cap_name,
                 remove( to_del );
         }
     }
+}
+
+/*
+ * After a copy is published: its own kind weighed, and for a milestone
+ * the ordinary saves too, as the untagged copy PRESTORE used to take
+ * first did, or the ones past their year waited for a save the throttle
+ * let through. The directory is read and sorted once for both (review,
+ * 2026-11-04: it was read and sorted twice); the two weighings touch
+ * disjoint files, so one list serves both.
+ */
+static void snapshot_prune( const char *vdir, const char *cap_name,
+                            const char *tag, time_t now )
+{
+    char **names;
+    int count;
+
+    count = snapshot_list( vdir, cap_name, &names );
+    if ( count > 1 )
+        qsort( names, (size_t) count, sizeof(char *), snap_newest_first );
+    snapshot_prune_pass( vdir, cap_name, names, count, tag, now );
+    if ( tag != NULL && tag[0] != '\0' )
+        snapshot_prune_pass( vdir, cap_name, names, count, NULL, now );
     snapshot_list_free( names, count );
 }
 
@@ -479,6 +618,7 @@ static int player_snapshot_internal( const char *name, bool force,
     unsigned long hash = 2166136261UL;
     long bytes = 0;
     struct stat st;
+    int dirs = DURABLE_FAILED, vdir_status = DURABLE_FAILED;
 
     if ( !snapshot_capitalize_name( cap_name, sizeof(cap_name), name ) )
     {
@@ -511,46 +651,57 @@ static int player_snapshot_internal( const char *name, bool force,
        PLAYER_SNAPSHOT_MIN_INTERVAL; a milestone or a forced copy always. */
     if (!force)
     {
-        DIR *dp = opendir( vdir );
-        if ( dp != NULL )
-        {
-            char newest[MAX_INPUT_LENGTH] = "";
-            struct dirent *ent;
+        SNAP_NEWEST *known = snap_newest_slot( cap_name, false );
+        char newest[MAX_INPUT_LENGTH];
+        int pass;
 
-            while ( (ent = readdir( dp )) != NULL )
+        /* What this process last knew, then -- if that file is gone, or
+           it never knew -- the directory itself. */
+        for ( pass = known != NULL ? 0 : 1; pass < 2; pass++ )
+        {
+            char fpath[MAX_STRING_LENGTH];
+            struct stat fst;
+
+            if ( pass == 0 )
+                toc_strlcpy( newest, known->newest, sizeof(newest) );
+            else
             {
-                if ( snapshot_name_parse( ent->d_name, cap_name, NULL, NULL )
-                  && strcmp( ent->d_name, newest ) > 0 )
-                    toc_strlcpy( newest, ent->d_name, sizeof(newest) );
+                snap_newest_scan( vdir, cap_name, newest, sizeof(newest) );
+                if ( ( known = snap_newest_slot( cap_name, true ) ) != NULL )
+                    toc_strlcpy( known->newest, newest, sizeof(known->newest) );
             }
-            closedir( dp );
-            if ( newest[0] != '\0' )
+            if ( newest[0] == '\0' )
             {
-                char fpath[MAX_STRING_LENGTH];
-                struct stat fst;
-                if ( !snapshot_join_path( fpath, sizeof(fpath), vdir, newest ) )
-                {
-                    fclose( in );
-                    bug( "player_snapshot: newest path too long", 0 );
-                    return SNAP_FAILED;
-                }
-                if ( stat( fpath, &fst ) == 0
-                  && difftime( now, fst.st_mtime ) < PLAYER_SNAPSHOT_MIN_INTERVAL )
-                {
-                    fclose( in );
-                    return SNAP_THROTTLED;
-                }
+                if ( pass == 0 )
+                    continue;
+                break;
             }
+            if ( !snapshot_join_path( fpath, sizeof(fpath), vdir, newest ) )
+            {
+                fclose( in );
+                bug( "player_snapshot: newest path too long", 0 );
+                return SNAP_FAILED;
+            }
+            if ( stat( fpath, &fst ) != 0 )
+                continue;           /* gone: read the directory */
+            if ( difftime( now, fst.st_mtime ) < PLAYER_SNAPSHOT_MIN_INTERVAL )
+            {
+                fclose( in );
+                return SNAP_THROTTLED;
+            }
+            break;
         }
     }
 
-    if ( !snapshot_ensure_dir( PLAYER_VER_DIR )
-      || !snapshot_ensure_dir( vdir ) )
+    if ( ( dirs = snapshot_ensure_dir( PLAYER_VER_DIR ) ) == DURABLE_FAILED
+      || ( vdir_status = snapshot_ensure_dir( vdir ) ) == DURABLE_FAILED )
     {
         fclose( in );
         bug( "player_snapshot: mkdir failed", 0 );
         return SNAP_FAILED;
     }
+    if ( vdir_status != DURABLE_OK )
+        dirs = vdir_status;
 
     tm_now = localtime( &now );
     if ( tm_now == NULL
@@ -676,22 +827,22 @@ static int player_snapshot_internal( const char *name, bool force,
         }
     }
 
-    if ( out != NULL )
+    snap_newest_published( cap_name, file );
     {
-        out->ok = true;
-        out->durable = durable_dir_sync( dest );
-        toc_strlcpy( out->name, file, sizeof(out->name) );
-        out->hash = hash;
-        out->bytes = bytes;
+        /* On the disk: the copy's own entry, and the directories it sits
+           in, each confirmed in its parent. */
+        bool durable = durable_dir_sync( dest ) && dirs == DURABLE_OK;
+
+        if ( out != NULL )
+        {
+            out->ok = true;
+            out->durable = durable;
+            toc_strlcpy( out->name, file, sizeof(out->name) );
+            out->hash = hash;
+            out->bytes = bytes;
+        }
     }
-    else
-        durable_dir_sync( dest );
     snapshot_prune( vdir, cap_name, tag, now );
-    /* A milestone weighs only its own kind; the ordinary saves are weighed
-       too, as the untagged copy PRESTORE used to take first did, or the
-       ones past their year waited for a save the throttle let through. */
-    if ( tag != NULL && tag[0] != '\0' )
-        snapshot_prune( vdir, cap_name, NULL, now );
     return SNAP_OK;
 }
 
@@ -808,6 +959,42 @@ bool player_snapshot_milestone( CHAR_DATA *ch, const char *tag, bool save_first 
     SNAPSHOT_RESULT res;
 
     return player_snapshot_milestone_result( ch, tag, save_first, &res ) && res.ok;
+}
+
+/*
+ * The milestone before something a player or staff chose to do that
+ * cannot be taken back by itself -- DELETE, REMORT, COMBINE, a demotion,
+ * a staff SET. It must be the character as they stand now (the save
+ * before it landed), published whole and on the disk, and in the ledger;
+ * otherwise nothing is done and whoever asked is told why. DELETE went
+ * on after a failed save and left a milestone of the older file, then
+ * deleted the newer one (review, 2026-11-04). A death is not refused
+ * this way -- it cannot be -- and keeps its own handling.
+ */
+bool player_milestone_required( CHAR_DATA *asker, CHAR_DATA *ch, const char *tag )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( player_snapshot_milestone( ch, tag, true ) )
+        return true;
+    snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+              "%s: %s refused -- the snapshot before it is not on the disk.",
+              ch != NULL && ch->name != NULL ? ch->name : "?", tag );
+    log_string( log_buf );
+    if ( asker == NULL )
+        return false;
+    if ( asker == ch )
+        snprintf( buf, sizeof(buf),
+                  "Your character could not be saved safely first, so nothing has "
+                  "been changed. Try again in a moment; if it keeps failing, tell "
+                  "the staff.\n\r" );
+    else
+        snprintf( buf, sizeof(buf),
+                  "The snapshot of %s before %s did not land on the disk, so "
+                  "nothing was changed.\n\r",
+                  ch != NULL && ch->name != NULL ? ch->name : "them", tag );
+    send_to_char( buf, asker );
+    return false;
 }
 
 

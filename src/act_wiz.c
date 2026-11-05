@@ -3516,8 +3516,10 @@ void do_advance( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    /* Before the level changes: a demotion resets everything to level 1. */
-    player_snapshot_milestone( victim, "advance", true );
+    /* Before the level changes: a demotion resets everything to level 1,
+       so without the copy on the disk nothing changes. */
+    if ( !player_milestone_required( ch, victim, "advance" ) )
+	return;
 
     /*
 	* Lower level:
@@ -3771,7 +3773,10 @@ void do_creator( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    player_snapshot_milestone( victim, "creator", true );
+    /* A rank changes nothing a snapshot would bring back, so a copy that
+       did not land is said and the change goes ahead. */
+    if ( !player_snapshot_milestone( victim, "creator", true ) )
+        send_to_char( "(The snapshot before this did not land on the disk.)\n\r", ch );
     victim->pcdata->creator = on;
     if ( !on && victim->invis_level > get_trust( victim ) )
         victim->invis_level = clamp_sh_int( get_trust( victim ) );
@@ -4640,8 +4645,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
     }
 
     /* A staff SET on a player can change anything; keep them as they were. */
-    if ( !IS_NPC(victim) )
-	player_snapshot_milestone( victim, "staffset", true );
+    if ( !IS_NPC(victim) && !player_milestone_required( ch, victim, "staffset" ) )
+	return;
 
     /*
      * Snarf the value (which need not be numeric).
@@ -8686,8 +8691,10 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     argument = one_argument( argument, mode );
 
-    /* A grant is irreversible; keep the character as they were. */
-    player_snapshot_milestone( victim, "grantpsi", true );
+    /* A grant is irreversible; keep the character as they were. It takes
+       nothing away, so a copy that did not land is said, not a refusal. */
+    if ( !player_snapshot_milestone( victim, "grantpsi", true ) )
+        send_to_char( "(The snapshot before this did not land on the disk.)\n\r", ch );
 
     if ( !str_cmp( mode, "now" ) )
     {

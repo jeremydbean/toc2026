@@ -2705,19 +2705,17 @@ void spell_vampiric_touch( int sn, int level, CHAR_DATA *ch, void *vo )
     }
 
     dam		 = dice(5, ch->level/3);
-    /* Heal from what the blow can take: nothing from a target immune to
-       negative energy (undead), half from one resistant to it. */
-    switch ( check_immune( victim, DAM_NEGATIVE ) )
-    {
-    case IS_IMMUNE:    break;
-    case IS_RESISTANT: ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 4 ); break;
-    default:           ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 2 ); break;
-    }
 
     act("$n's hand touches you, devouring your life force.",ch,
        NULL,victim,TO_VICT);
     act("You touch $N and devour $s life force.",ch,
        NULL,victim,TO_CHAR);
+    /* The caster drinks half of what the touch really takes, measured
+       where hit points come off (damage_drain_next): nothing from a target
+       immune to negative energy, invulnerable, or the dummy; less from one
+       resistant or sanctified; never more than the victim had. It healed
+       from the rolled number before the blow (review, 2026-11-04). */
+    damage_drain_next( 2 );
     damage( ch, victim, dam, sn, DAM_NEGATIVE );
 
     return;
@@ -3845,41 +3843,45 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     return;
 }
 
-static CHAR_DATA *find_online_player_exact( const char *name )
-{
-    LIST_ITERATOR iter;
-    CHAR_DATA *victim;
-
-    if ( name == NULL || name[0] == '\0' )
-        return NULL;
-
-    FOR_EACH_CHARACTER( iter, victim )
-        if ( !IS_NPC(victim) && !str_cmp(victim->name, name) )
-            return victim;
-
-    return NULL;
-}
+/*
+ * RAISE DEAD pulls a corpse's owner to the caster and gives back what
+ * they can carry; the rest falls to the floor and the corpse is used up.
+ * Unlike RESURRECTION it asks no consent (NOSUMMON is the owner's no),
+ * and it moves only what fits. The giving is corpse_give_to_owner's, the
+ * same protected transfer ACCEPT makes (review, 2026-11-04: it moved the
+ * things, extracted the corpse and ignored the save, so a failed save and
+ * a crash lost the kit it had given back): nothing happens -- the owner
+ * stays where they are and the corpse whole -- unless the owner's file
+ * took it, or may have (a save not confirmed, settled later from the
+ * file's mark).
+ */
+#define RAISE_DEAD_MAX_OBJECTS  512
 
 void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
 {
+    OBJ_DATA *corpse = (OBJ_DATA *) vo;
+    OBJ_DATA *moved[RAISE_DEAD_MAX_OBJECTS];
+    CHAR_DATA *victim;
+    char name[MAX_INPUT_LENGTH];
+    char op[64], why[MAX_STRING_LENGTH], note[MAX_STRING_LENGTH];
+    int given = 0, status;
+
     UNUSED_PARAM(sn);
     UNUSED_PARAM(level);
-    OBJ_DATA *corpse = (OBJ_DATA *) vo;
-    OBJ_DATA *obj;
-    OBJ_DATA *obj_next;
-    CHAR_DATA *victim;
-    char arg[MAX_INPUT_LENGTH];
 
-
-    if(corpse->item_type != ITEM_CORPSE_PC)
+    if ( corpse == NULL || corpse->item_type != ITEM_CORPSE_PC || ch->in_room == NULL )
     {
       send_to_char("That's not a players corpse!\n\r",ch);
       return;
     }
 
-    one_argument(corpse->name, arg);
-
-    if(( victim = find_online_player_exact(arg) ) == NULL)
+    /* Whose body, as the registry reads it; and only somebody playing --
+       never a copy loaded from a file for a moment -- and nobody the
+       caster's rank cannot see or command. */
+    resurrect_corpse_owner( corpse, name, sizeof(name) );
+    victim = name[0] != '\0' ? resurrect_find_owner( name ) : NULL;
+    if ( victim == NULL || wizinvis_hides( victim, ch )
+    ||   ( victim != ch && IS_TRUSTED( victim, LEVEL_IMMORTAL ) && rank_protects( ch, victim ) ) )
     {
       send_to_char("Their spirit is adrift on another plane right now.\n\r",ch);
       return;
@@ -3899,13 +3901,19 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
 
     /* It moves the player to the caster: a summons, held to earth
        travel's rules -- no way out of a jail or a no-recall room, none
-       into one, a private room or the middle of a fight. */
+       into one, a private room, the middle of a fight, or anywhere the
+       travel spells may not take them (another class's guild rooms, a
+       guard's hall, Hyrule's order). */
     if ( victim->in_room == NULL || victim->fighting != NULL
+    ||   victim->position < POS_RESTING
     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
     ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
     ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
     ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-    ||   ( victim->in_room != ch->in_room && room_is_private( ch->in_room ) ) )
+    ||   ( victim->in_room != ch->in_room
+        && ( travel_spell_refuses( victim, ch->in_room )
+          || ( room_is_private( ch->in_room )
+            && !can_enter_private_room( victim, ch->in_room ) ) ) ) )
     {
       send_to_char("Their spirit cannot find its way to you from there.\n\r",ch);
       return;
@@ -3928,6 +3936,37 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
       act("$n then shouts, 'NATHRAC VENCOSE ELMORTIS $N'",ch,NULL,victim,TO_ROOM);
     }
 
+    /* The belongings first, while the owner stands where they are: only
+       once the owner's file has them (or may have) does anything else
+       happen. */
+    status = corpse_give_to_owner( victim, corpse, "raised", ch->name, true, "raise-save",
+                                   moved, RAISE_DEAD_MAX_OBJECTS, &given, op, sizeof(op),
+                                   why, sizeof(why) );
+    if ( status == CORPSE_GIVE_REFUSED )
+    {
+      act("The corpse of $N will not answer.",ch,NULL,victim,TO_CHAR);
+      send_to_char( why, ch );
+      send_to_char( "\n\r", ch );
+      return;
+    }
+    if ( status == DURABLE_FAILED )
+    {
+      act("$N's spirit stirs, then slips away: nothing could be written down, and the "
+          "corpse lies as it was.",ch,NULL,victim,TO_CHAR);
+      send_to_char("Something pulls at your spirit, then lets go: your return could not be "
+                   "written down, and your body still lies where it was with everything in "
+                   "it.\n\r",victim);
+      snprintf( note, sizeof(note), "RAISE DEAD: %s's return by %s was undone: their file "
+                "could not be saved (%s).", victim->name, ch->name, op );
+      log_string( note );
+      snprintf( note, sizeof(note), "moved=0 caster=%s", ch->name );
+      playlog_outcome( victim, "raise-dead", "failure", "save", op, note );
+      return;
+    }
+    snprintf( note, sizeof(note), "objects=%d caster=%s", given, ch->name );
+    playlog_outcome( victim, "raise-dead", status == DURABLE_OK ? "success" : "uncertain",
+                     status == DURABLE_OK ? "-" : "save-unconfirmed", op, note );
+
     if(victim->in_room != ch->in_room)
     {
       act("$n slowly loses $s corporeal form to return to a previous existance.", victim, NULL,NULL, TO_ROOM);
@@ -3936,23 +3975,10 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
       char_to_room(victim, ch->in_room);
     }
 
-    for ( obj = corpse->contains; obj != NULL; obj = obj_next )
-    {
-      obj_next = obj->next_content;
-
-      if( victim->carry_number + get_obj_number( obj ) > can_carry_n( victim ) )
-	continue;
-
-      if( query_carry_weight(victim) + get_obj_weight( obj ) > can_carry_w( victim ) )
-	continue;
-
-      obj_from_obj( obj );
-      obj_to_char(obj, victim);
-    }
-
     /* Always used up. A corpse left holding what was too heavy could be
        raised again and again, pulling its owner to the caster from
-       anywhere each time; what does not fit falls to the floor here. */
+       anywhere each time; what does not fit falls to the floor here. Its
+       held record, whole, is the history's copy of all of it. */
     if ( corpse->contains != NULL )
     {
       send_to_char("Some belongings were too heavy to carry and fall to the ground.\n\r",victim);

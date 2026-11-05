@@ -88,6 +88,10 @@ void do_delet( CHAR_DATA *ch, char *argument)
     send_to_char("You must type the full command to delete yourself.\n\r",ch);
 }
 
+/* Set by DELETE around its QUIT: the file is already gone and the
+   milestone holds the character, so QUIT must not write it back. */
+static bool quit_discards_file = FALSE;
+
 void do_delete( CHAR_DATA *ch, char *argument)
 {
     char strsave[MAX_INPUT_LENGTH];
@@ -111,15 +115,69 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	    return;
 	}
 
+	ch->pcdata->confirm_delete = FALSE;
+	/* QUIT refuses the dying, and a deletion that cannot leave the game
+	   would take the file from under a character still in it. */
+	if ( ch->position < POS_STUNNED )
+	{
+	    send_to_char( "You cannot delete yourself while you lie dying.\n\r", ch );
+	    return;
+	}
         snprintf( strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
-        log_string("[DELETE] Character self-deleted.");
 	stop_fighting(ch,TRUE);
-	/* The versions directory outlives the file, so a deletion regretted
-	   -- or done by somebody else at the keyboard -- can be undone. */
-	player_snapshot_milestone( ch, "delete", true );
-	recovery_player_retire( ch->name, "deleted" );
+	/*
+	 * Every step must land before the next, and the file goes last
+	 * (review, 2026-11-04: a save that failed here left a milestone of
+	 * the older file, QUIT's newer save was not copied -- the milestone
+	 * had just throttled it -- and the newer file was deleted, taking
+	 * the last thing picked up with it):
+	 *   1. the "delete" milestone, of the character as they stand now,
+	 *      on the disk and in the ledger -- the versions directory
+	 *      outlives the file, so a deletion regretted, or done by
+	 *      somebody else at the keyboard, can be undone;
+	 *   2. the uid retired in the ledger;
+	 *   3. the file removed.
+	 * Any one failing stops the deletion with the character still here.
+	 * QUIT then leaves without saving: the milestone is the character,
+	 * and a save would write the file back.
+	 */
+	if ( !player_milestone_required( ch, ch, "delete" ) )
+	{
+	    send_to_char( "Delete cancelled.\n\r", ch );
+	    playlog_result( ch, "refusal", "snapshot" );
+	    return;
+	}
+	{
+	    char uid[24];
+
+	    toc_strlcpy( uid, recovery_uid( ch->name ), sizeof(uid) );
+	    if ( !recovery_player_retire( ch->name, "deleted" ) )
+	    {
+		log_string( "[DELETE] Refused: the uid's retirement could not be recorded." );
+		send_to_char( "Your deletion could not be recorded, so nothing has been "
+			      "deleted. Delete cancelled.\n\r", ch );
+		playlog_result( ch, "failure", "ledger" );
+		return;
+	    }
+	    if ( unlink( strsave ) != 0 && errno != ENOENT )
+	    {
+		/* The file is still theirs, so the uid is too. */
+		if ( uid[0] != '\0' )
+		    recovery_reinstate_uid( ch->name, uid,
+			"deletion stopped: the file could not be removed" );
+		log_string( "[DELETE] Refused: the player file could not be removed." );
+		send_to_char( "Your file could not be removed, so nothing has been "
+			      "deleted. Delete cancelled.\n\r", ch );
+		playlog_result( ch, "failure", "unlink" );
+		return;
+	    }
+	}
+	durable_dir_sync( strsave );
+	log_string("[DELETE] Character self-deleted.");
+	playlog_result( ch, "success", "-" );
+	quit_discards_file = TRUE;
 	do_quit(ch,"");
-	unlink(strsave);
+	quit_discards_file = FALSE;
 	return;
     }
 
@@ -4011,7 +4069,8 @@ void do_quit( CHAR_DATA *ch, char *argument )
     /* save_char_obj now takes a post-mv snapshot internally, so the final
        quit state (with session stats) is always captured without a separate
        call here. */
-    save_char_obj( ch );
+    if ( !quit_discards_file )
+        save_char_obj( ch );
     /* extract_char frees ch, so take the name while it is still there. */
     toc_strlcpy( quitter_name, ch->name != NULL ? ch->name : "",
                  sizeof(quitter_name) );

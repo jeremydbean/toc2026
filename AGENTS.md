@@ -1296,7 +1296,21 @@ at boot: a pending receipt whose owner's file holds the mark
 (`player_file_fix_has`) sends the record to history instead of laying
 it; without the mark the corpse is laid whole and the receipt abandoned;
 an unreadable file keeps the record and lays nothing.
-`tests/test_resurrection_transfer.py`.
+`tests/test_resurrection_transfer.py`. **RAISE DEAD makes the same
+transfer** (review, 2026-11-04: it moved the things, extracted the corpse
+and ignored the save, so a failed save and a crash lost the kit it gave
+back): both go through `corpse_give_to_owner` in `resurrect.c` --
+`CORPSE_GIVE_REFUSED` before anything begins (an unsettled death, a held
+corpse, a full Fixes list, a refused receipt), `DURABLE_FAILED` with
+everything put back, `DURABLE_UNCERTAIN` left pending -- under the same
+`resurrect:<id>` receipt, so boot and login settle either spell. RAISE
+DEAD keeps its own rules: no consent, only what the owner can carry (the
+rest falls to the floor once the transfer is on the disk; the held record,
+whole, goes to history), and the owner is pulled to the caster only after.
+It finds the owner by `resurrect_find_owner` (playing, never a copy loaded
+from a file), refuses an owner hidden by WIZINVIS or protected by rank,
+and asks `travel_spell_refuses` and `can_enter_private_room` of the
+caster's room (`tests/test_raise_dead_transfer.py`).
 
 **A death is the same kind of transfer** (review, 2026-10-27: the save
 after a death was commented out, so a crash laid the corpse at boot and
@@ -1859,7 +1873,33 @@ rules the code depends on:
   `durable` are separate; a milestone goes in the ledger with its
   checksum. Record nothing, and report nothing done, on the strength of a
   save or snapshot that is not `DURABLE_OK` (independent review,
-  2026-10-23: unconfirmed writes were reported as done). Test faults:
+  2026-10-23: unconfirmed writes were reported as done). **A snapshot's
+  directories are durable too** (review, 2026-11-04): `snapshot_ensure_dir`
+  flushes a new directory's parent, and one found already there (EEXIST)
+  is flushed once per process before it counts, since an earlier run may
+  have made it without confirming it; a copy inside a directory not
+  confirmed is published but not `durable`.
+- **A choice that cannot be taken back waits for its milestone**
+  (review, 2026-11-04: DELETE went on after its save failed, left a
+  milestone of the older file and deleted the newer one).
+  `player_milestone_required(asker, ch, tag)` is the current character
+  saved, copied whole, on the disk and in the ledger, or a refusal that
+  says so; DELETE, REMORT, COMBINE, ADVANCE and a staff SET ask it.
+  DELETE then retires the uid (`recovery_player_retire` answers whether
+  it was recorded) and removes the file, each checked and the uid put
+  back if the file stays, and only then quits without saving
+  (`quit_discards_file`) -- a save would write the file back. CREATOR and
+  GRANTPSI take nothing away and only report a copy that did not land; a
+  death cannot be refused and keeps its own handling
+  (`tests/test_delete_milestone.py`).
+- **The throttle and the prune read the directory as little as they
+  can** (review, 2026-11-04). The newest copy of each player is kept in
+  memory (`snap_newest`) from one scan and every publication, and read
+  again only when the file it names is gone; the throttle still reads that
+  file's own time. A milestone's prune reads and sorts the directory once
+  for both its kind and the ordinary saves (`snapshot_prune_pass`), and
+  `recovery_snapshot_uid` answers from an index built at boot from the
+  ledger's whole records and kept up by each append (`snap_uid_note`). Test faults:
   `TOC_FAULT` (`fsync`, `dirsync`, and `autowrite`, which holds every
   save the tick makes on its own -- the autosave and bank interest's -- off for a test that must know which save wrote a file --
   matched by substring, so never a name holding `save`) and `TOC_FAULT_FILE` (one named point,
@@ -1869,7 +1909,9 @@ rules the code depends on:
   (CI, 2026-10-27), a death's `death-save-<Name>`, a craft's
   `craft-save`, GRANTPSI's `grantpsi-save` and a PRESTORE give's or retry's `prestore-save`; `dirsync-<Name>` makes that character's next save
   unconfirmed, `corpse-move` fails a corpse record's move into history;
-  `ledger`, `crash-before-commit`, `death-recorded-crash`; STASH TAKE's
+  `ledger`, `crash-before-commit`, `death-recorded-crash`, RAISE DEAD's
+`raise-save`, `snapshot-dir` (a versions directory's flush into its
+parent); STASH TAKE's
   `stash-owner-save`, `stash-taker-save` and `stash-crash-between`, and
   `stash-owner-rewrite` -- the putting back, named without `save` so
   `TOC_FAULT` can hold it beside a `TOC_FAULT_FILE` point), read
@@ -4063,7 +4105,11 @@ trust is assigned. A switched immortal is not protected: `PLR_INVULN`
 shares a bitfield with the `ACT_*` flags, so the `!IS_NPC` guard is load
 bearing and a mobile's own bit must never be read as this one. `damage()` honours it in three places: an
 early return for `PLR_INVULN_ABSORB`, the `damage_eq` call, and the
-subtraction from hit points. Leaving the subtraction as the chokepoint is
+subtraction from hit points -- and a fire or frost shield's reflection,
+which takes hit points outside `damage()`, asks it too (review,
+2026-11-04: `ch->hit -= dam1` burned an invulnerable attacker): ABSORB
+reads as immunity, DAMAGE as a blow that takes nothing
+(`tests/test_drain_and_reflection.py`). Leaving the subtraction as the chokepoint is
 deliberate -- everything above it, `dam_message` included, still runs, so
 the default reading of a blow is the ordinary one and only the loss is
 skipped. Nothing displays the flag: not `score`, not the room. That is a
@@ -4698,6 +4744,11 @@ has a live or behaviour test that fails on the old code.
   entry, and the twentieth and the point toward the dark come where hit
   points really come off, beside `alignment_drain` -- never the overkill,
   never the goblin, never the dummy (`tests/test_vampiric_landing.py`).
+  **So does VAMPIRIC TOUCH** (review, 2026-11-04: it healed from the
+  rolled number before the blow): `damage_drain_next(2)` before its
+  `damage()`, and the caster drinks half of what came off, in the same
+  place by the same rules. A new draining spell does the same
+  (`tests/test_drain_and_reflection.py`).
 - **Lag counts down every pulse in a fight** (owner, 2026-10-22):
   `fight_lag_update()`, beside `walkto_update` in `update_handler`, takes
   a pulse off a fighting player's `wait` when nothing is typed. Without

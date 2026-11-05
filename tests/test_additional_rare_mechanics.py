@@ -100,9 +100,16 @@ class AdditionalRareMechanicTests(unittest.TestCase):
             self.magic2, "void spell_raise_dead", "void spell_dust_devil"
         )
 
-        self.assertIn("find_online_player_exact(arg)", raise_dead)
+        # The owner is found among those playing (never by sight, never a
+        # copy loaded from a file), and only what fits is given, through
+        # the protected transfer ACCEPT shares (review, 2026-11-04).
+        self.assertIn("resurrect_find_owner( name )", raise_dead)
         self.assertNotIn("get_char_world(ch,arg)", raise_dead)
-        self.assertGreaterEqual(raise_dead.count("continue;"), 2)
+        self.assertRegex(raise_dead, r'corpse_give_to_owner\( victim, corpse, "raised", ch->name, true,')
+        resurrect = (Path(__file__).resolve().parents[1] / "src" / "resurrect.c").read_text(encoding="latin-1")
+        give = resurrect.split("int corpse_give_to_owner(", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("can_carry_n( owner )", give)
+        self.assertIn("can_carry_w( owner )", give)
         # What does not fit is spilled to the floor, never destroyed with
         # the corpse: the corpse is always used up, so it cannot be raised
         # again to pull its owner across the world.

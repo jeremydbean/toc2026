@@ -695,7 +695,9 @@ Energy drain saps the experience points, mana, and movement points of its
 target.  This is a very evil spell and should be used sparingly.
 
 Vampiric touch drains the life force of your victim, transferring some of
-the power back to you.
+the power back to you: half of the hit points the touch really takes.  A
+victim the touch cannot hurt -- immune, or one nothing can wound -- gives
+you nothing, and one with little life left gives only what it had.
 
 For energy drain, minimum level depends on your primary class and is:
 Mage:35  Cleric:36  Thief:40  Warrior:40  Monk:N/A  Necromancer:28
@@ -1182,9 +1184,12 @@ See also: FORCE SWORD, GIANT STRENGTH, ENCHANTMENT
 Syntax: cast 'raise dead' corpse
 
 This spell will bring back to life a player who has had the misfortune of
-dying. It returns each corpse item the player can currently carry; anything
-too heavy remains safely in the corpse instead of being destroyed. The spell
-will fail if the player is offline or has nosummon on.
+dying, pulling them to the caster. It returns each corpse item the player
+can currently carry; anything too heavy falls to the ground beside them,
+and the corpse is used up. The spell fails if the player is offline, has
+nosummon on, or stands somewhere a summons cannot reach. Nothing happens
+until the player's own file holds what was returned: if that cannot be
+written, the corpse stays as it was and the player stays where they are.
 
 Only C/C of level 31 or higher and necromancers of level 29 or higher can
 raise the dead.

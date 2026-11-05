@@ -1271,8 +1271,10 @@ void do_combine(CHAR_DATA *ch, char *argument)
         for ( i = 0; i < sizeof(combine_recipes) / sizeof(combine_recipes[0]); i++ )
             if ( !str_prefix( arg, combine_recipes[i].name ) )
             {
-                /* Nine pieces become one item: keep them as they were. */
-                player_snapshot_milestone( ch, "combine", true );
+                /* Nine pieces become one item: keep them as they were,
+                   or make nothing. */
+                if ( !player_milestone_required( ch, ch, "combine" ) )
+                    return;
                 combine_recipe( ch, &combine_recipes[i] );
                 return;
             }
@@ -5660,8 +5662,10 @@ void do_remort( CHAR_DATA *ch, char *arg)
                    " warrior, or none.\n\r", ch);
       return;
    }
-   /* HEHE, FINALLY A VALID CHOICE */
-   player_snapshot_milestone( ch, "remort", true );
+   /* HEHE, FINALLY A VALID CHOICE -- and the life being given up is
+      kept on the disk first, or there is no remort. */
+   if ( !player_milestone_required( ch, ch, "remort" ) )
+      return;
    /* A level 3 character does not keep the undead a level 56 raised, */
    dismiss_undead_servants( ch );
    /* nor anything else they charmed: a level 50 under charm person would

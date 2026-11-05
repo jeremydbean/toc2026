@@ -25,13 +25,17 @@ TEMPLE = 4207
 class MilestoneSourceTests(unittest.TestCase):
     def test_every_big_moment_takes_a_copy(self) -> None:
         sources = {
-            "remort": ("act_info.c", "player_snapshot_milestone( ch, \"remort\", true );"),
+            # A choice that cannot be taken back refuses without its copy
+            # (player_milestone_required, review 2026-11-04); a death cannot
+            # be refused; CREATOR and GRANTPSI take nothing away and say a
+            # copy that did not land.
+            "remort": ("act_info.c", "player_milestone_required( ch, ch, \"remort\" )"),
             "death": ("fight.c", "player_snapshot_milestone( victim, \"death\", true );"),
-            "delete": ("act_comm.c", "player_snapshot_milestone( ch, \"delete\", true );"),
-            "advance": ("act_wiz.c", "player_snapshot_milestone( victim, \"advance\", true );"),
-            "staffset": ("act_wiz.c", "player_snapshot_milestone( victim, \"staffset\", true );"),
-            "grantpsi": ("act_wiz.c", "player_snapshot_milestone( victim, \"grantpsi\", true );"),
-            "combine": ("act_info.c", "player_snapshot_milestone( ch, \"combine\", true );"),
+            "delete": ("act_comm.c", "player_milestone_required( ch, ch, \"delete\" )"),
+            "advance": ("act_wiz.c", "player_milestone_required( ch, victim, \"advance\" )"),
+            "staffset": ("act_wiz.c", "player_milestone_required( ch, victim, \"staffset\" )"),
+            "grantpsi": ("act_wiz.c", "player_snapshot_milestone( victim, \"grantpsi\", true )"),
+            "combine": ("act_info.c", "player_milestone_required( ch, ch, \"combine\" )"),
             "repair": ("handler.c", "player_snapshot_milestone( ch, \"repair\", false );"),
         }
         for reason, (name, call) in sources.items():
@@ -42,7 +46,7 @@ class MilestoneSourceTests(unittest.TestCase):
     def test_the_remort_copy_is_taken_before_anything_changes(self) -> None:
         act_info = (ROOT / "src" / "act_info.c").read_text(encoding="latin-1")
         body = act_info.split("void do_remort(", 1)[1]
-        self.assertLess(body.index('player_snapshot_milestone( ch, "remort", true );'),
+        self.assertLess(body.index('player_milestone_required( ch, ch, "remort" )'),
                         body.index("unequip_char(ch, worn[iWear]);"))
 
 
