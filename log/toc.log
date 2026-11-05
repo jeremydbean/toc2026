@@ -263935,3 +263935,7 @@ Thu Nov  5 16:09:16 2026 :: Black market: the dealer appeared with 5 items (stoc
 Thu Nov  5 16:10:04 2026 :: Black market: the dealer vanished from room 10064 (A hidden alcove., glitter.are) (wandering).
 Thu Nov  5 16:10:14 2026 :: Sock.sinaddr:  23.31.96.97
 Thu Nov  5 16:10:14 2026 :: EOF encountered on read.
+Thu Nov  5 16:13:00 2026 :: Black market: the dealer vanished from room 18031 (A long hallway, icekeep.are) (wandering).
+Thu Nov  5 16:13:39 2026 :: Sock.sinaddr:  52.15.147.27
+Thu Nov  5 16:13:39 2026 :: EOF encountered on read.
+Thu Nov  5 16:14:53 2026 :: Treasure goblin: vanished from room 1046 (A bushy clearing, uargo.are) (too long in one area).
