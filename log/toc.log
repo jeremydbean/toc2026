@@ -263792,3 +263792,8 @@ Thu Nov  5 12:30:21 2026 :: Sock.sinaddr:  5.161.61.238
 Thu Nov  5 12:30:21 2026 :: EOF encountered on read.
 Thu Nov  5 12:32:48 2026 :: Black market: stock 1793881968: a chunk of mecharmor (29058, level 45, 45p); Mordred's golden armor (738, level 34, 31p); an obsidian bracer (13213, level 29, 18p); a gown of virginity (20149, level 45, 41p); a pearl bracelet (16021, level 46, 58p).
 Thu Nov  5 12:32:48 2026 :: Black market: the dealer appeared with 5 items (stock 1793881968), for 27 minutes.
+Thu Nov  5 12:34:56 2026 :: Black market: the dealer vanished from room 20558 (The Shady bridge, emerald.are) (wandering).
+Thu Nov  5 12:35:25 2026 :: Sock.sinaddr:  178.156.185.231
+Thu Nov  5 12:35:26 2026 :: EOF encountered on read.
+Thu Nov  5 12:36:40 2026 :: Black market: the dealer vanished from room 1511 (A Small Gnome House, gnome.are) (wandering).
+Thu Nov  5 12:36:44 2026 :: Treasure goblin: vanished from room 24130 (A Small Room, coven.are) (too long in one area).
