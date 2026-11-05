@@ -22044,3 +22044,7 @@
 1793803654	session	Killuminati	70	2401	dresden.are	quit	25s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	9 commands	0 refused	coin: none
 1793814893	cmd	Eclipse	70	9988	valhalla.are	standing	100	0	-	who		[70 Night   IMP   ] Eclipse is waiting to hear back on issues from you // Players found: 1	-	-
 1793814957	session	Eclipse	70	9988	valhalla.are	linkdead	66s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	1 commands	0 refused	coin: none
+1793841686	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1793841689	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	changes		What is new, newest first: // 2026-11-04 //   A few creatures were carrying far more coin than anything their size	-	+
+1793841707	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	cast		Cast which what where?	-	-
+1793841708	session	Alaric	57	2497	dresden.are	quit	23s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	4 commands	0 refused	coin: none
