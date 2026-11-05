@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Deep bug rows in the play journal** (2026-11-05). `stall` rows when a
+  pulse runs past its quarter second, naming the phase and the command
+  that took the time; `death` rows with the killing blow, the hit points
+  before it, the biggest blow of the last minute and the foes on the
+  player; `item` rows when something a player held leaves the game, with
+  the command or update phase that took it; `quest-failed` outcomes with
+  the target and whether the world still held one. `tools/log_report.py`
+  groups them. `tests/test_playlog_deep.py`.
 - **The play journal says where coin and experience went** (2026-11-05).
   Session rows end with `spent on:` (each loss by the command that made
   it: 1,550 platinum on STASH BUY read only as "spent" before) and `exp:`

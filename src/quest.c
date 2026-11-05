@@ -63,6 +63,7 @@ DECLARE_DO_FUN( do_say );
 
 void generate_quest	args(( CHAR_DATA *ch, CHAR_DATA *questman ));
 static void quest_log_assigned args(( CHAR_DATA *ch ));
+static void quest_log_failed args(( CHAR_DATA *ch, const char *how ));
 void quest_update	args(( void ));
 bool chance		args(( int num ));
 void advance_level	args(( CHAR_DATA *ch, bool is_advance ));
@@ -1822,6 +1823,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
         {
             bool daily = ch->questdaily;
 
+            quest_log_failed(ch, "abandoned");
             snprintf(buf, sizeof(buf),
 		"Very well, %s. Your quest obligation is lifted.", ch->name);
 	    do_say(questman,buf);
@@ -2085,6 +2087,47 @@ static void quest_log_assigned( CHAR_DATA *ch )
     }
 }
 
+/*
+ * A quest lost to the clock or given up, for the play journal (2026-11-05):
+ * which target, how many of it the world still holds -- none means the
+ * quest could never be finished, a target nobody can reach or one that
+ * died to somebody else -- its level and area, whether the questor was in
+ * that area at the end, and the streak it cost. The area file, never the
+ * room, as quest_log_assigned writes it.
+ */
+static void quest_log_failed( CHAR_DATA *ch, const char *how )
+{
+    char detail[200];
+    ROOM_INDEX_DATA *room = get_room_index( ch->questroom );
+    const char *area = room != NULL && room->area != NULL ? room->area->file_name : "?";
+    const char *kind = ch->questdaily     ? "daily"
+                     : ch->questemergency ? "emergency"
+                     : ch->questrush      ? "rush" : "ordinary";
+    bool there = room != NULL && ch->in_room != NULL && ch->in_room->area == room->area;
+
+    if ( IS_NPC(ch) )
+        return;
+    if ( ch->questmob > 0 )
+    {
+        MOB_INDEX_DATA *mob = get_mob_index( ch->questmob );
+
+        snprintf( detail, sizeof(detail),
+                  "%s target=mob:%d level=%d alive=%d area=%s there=%d streak=%d",
+                  kind, ch->questmob, mob != NULL ? mob->level : 0,
+                  mob != NULL ? mob->count : 0, area, there ? 1 : 0, ch->queststreak );
+    }
+    else
+    {
+        OBJ_INDEX_DATA *obj = get_obj_index( ch->questobj );
+
+        snprintf( detail, sizeof(detail),
+                  "%s target=obj:%d level=%d alive=%d area=%s there=%d streak=%d",
+                  kind, ch->questobj, obj != NULL ? obj->level : 0,
+                  obj != NULL ? obj->count : 0, area, there ? 1 : 0, ch->queststreak );
+    }
+    playlog_outcome( ch, "quest-failed", "failure", how, NULL, detail );
+}
+
 void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 {
     CHAR_DATA *victim;
@@ -2308,6 +2351,7 @@ void quest_update(void)
             {
                 /* A daily lost to the clock costs nothing but the try. */
                 send_to_char("You have run out of time for your daily quest.\n\r", ch);
+		quest_log_failed(ch, "timeout");
 		remove_automatic_quest_tokens(ch);
                 REMOVE_BIT(ch->act, PLR_QUESTOR);
                 ch->questgiver = NULL;
@@ -2329,6 +2373,7 @@ void quest_update(void)
                     ch->nextquest = 15;
                 snprintf(buf, sizeof(buf), "You have run out of time for your quest!\n\rYou may quest again in %d minutes.\n\r",ch->nextquest);
                 send_to_char(buf, ch);
+                quest_log_failed(ch, "timeout");
                 if (ch->queststreak > 0)
                 {
                     snprintf(buf, sizeof(buf),

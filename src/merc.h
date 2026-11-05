@@ -1035,6 +1035,12 @@ void  playlog_coin           args( ( CHAR_DATA *ch, long amount, long unit, bool
 void  playlog_coin_as        args( ( const char *source ) );
 void  playlog_exp            args( ( CHAR_DATA *ch, long amount, bool capped ) );
 void  playlog_exp_as         args( ( const char *source ) );
+void  playlog_pulse_begin    args( ( void ) );
+void  playlog_pulse_end      args( ( void ) );
+void  playlog_phase_enter    args( ( const char *phase ) );
+void  playlog_blow           args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
+void  playlog_death          args( ( CHAR_DATA *killer, CHAR_DATA *victim ) );
+void  playlog_obj_gone       args( ( OBJ_DATA *obj ) );
 void  playlog_end            args( ( CHAR_DATA *ch, const char *cmd_name, const char *shown,
                                      bool secret, bool refused, const char *out, int out_len,
                                      long ms, int pos_before, int hp_pct_before,
@@ -2443,6 +2449,12 @@ struct  pc_data
     long                play_spent[PLAY_TALLY_KINDS];
     char                play_exp_from[PLAY_TALLY_KINDS][PLAY_TALLY_NAME]; /* exp, by source */
     long                play_exp[PLAY_TALLY_KINDS];
+    /* the last blow taken and the biggest in the last minute (playlog_blow),
+       for the death row: never saved */
+    int                 blow_last_dam, blow_last_dt, blow_last_hp, blow_last_from;
+    time_t              blow_last_at;
+    int                 blow_big_dam, blow_big_dt, blow_big_from;
+    time_t              blow_big_at;
     char                play_recent[PLAY_RECENT][96];
     int                 play_recent_next;
     char *              fixes_done;           /* login fixes applied (fixes.c) */

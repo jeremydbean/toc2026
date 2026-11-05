@@ -27,6 +27,9 @@ minutes. This reads them from a git ref (origin/main by default, after
               each session's coin split by where it came from; what coin
               was spent on, where experience came from, what each kind of
               quest paid in kills, and what each foe carried
+  deep        pulses past their budget and what took the time, deaths
+              with the killing blow (one-blow deaths apart), things gone
+              from players and why, quests lost and their targets
   chat        public channel lines (never tells; they are not logged)
 
 Addresses and hostnames are stripped from everything printed. Run from
@@ -150,6 +153,48 @@ def economy_summary(rows) -> dict:
             q["priced"] += 1
         q["points"] += int(words.get("offered", "0") or 0)
     return {"spent": spent, "exp": exp, "quests": quests}
+
+
+def deep_summary(rows) -> dict:
+    """The deep bug rows (2026-11-05): stalls by the phase that took the
+    time, deaths by killer with the one-blow ones apart, things gone from
+    players by why, and lost quests by target -- a target the world held
+    none of (alive=0) could never have been finished."""
+    stalls: Counter = Counter()
+    stall_ms: dict = {}
+    deaths: Counter = Counter()
+    one_blow = []
+    gone: Counter = Counter()
+    lost: Counter = Counter()
+    impossible: Counter = Counter()
+    for r in rows:
+        kind = r[1] if len(r) > 1 else ""
+        if kind == "stall" and len(r) > 8:
+            m = re.match(r"^slowest (\S+) (\d+)ms$", r[7])
+            phase = m.group(1) if m else "?"
+            stalls[phase] += 1
+            total = int(r[6].rstrip("ms") or 0) if r[6].rstrip("ms").isdigit() else 0
+            stall_ms[phase] = max(stall_ms.get(phase, 0), total)
+        elif kind == "death" and len(r) > 7:
+            deaths[r[6]] += 1
+            words = dict(re.findall(r"(\w+)=(-?\d+)", r[7]))
+            last = re.search(r"last=(\d+)", r[7])
+            dam = int(last.group(1)) if last else 0
+            before = int(words.get("hp_before", 0))
+            top = int(words.get("max_hp", 0))
+            # Killed by one blow from at least half health.
+            if top > 0 and dam >= before and before * 2 >= top:
+                one_blow.append((r[2], r[6], dam, before, top))
+        elif kind == "item" and len(r) > 9:
+            gone[(r[9], r[7])] += 1
+        elif kind == "outcome" and len(r) > 10 and r[6] == "quest-failed":
+            target = re.search(r"target=(\S+)", r[10])
+            name = target.group(1) if target else "?"
+            lost[(name, r[8])] += 1
+            if "alive=0" in r[10]:
+                impossible[name] += 1
+    return {"stalls": stalls, "stall_ms": stall_ms, "deaths": deaths, "one_blow": one_blow,
+            "gone": gone, "lost": lost, "impossible": impossible}
 
 
 def format_copper(copper: int) -> str:
@@ -556,6 +601,31 @@ def journal_report(args, since, buffs=None) -> None:
         print(f"    {kind:<10} x{q['n']:<4} coin {format_copper(q['coin']):>14}"
               f"  {each}  points offered {q['points']}")
     if not economy["quests"]:
+        print("    (none recorded)")
+
+    deep = deep_summary(rows)
+    print("  pulses past their quarter second, by the phase that took longest:")
+    for phase, n in deep["stalls"].most_common(10):
+        print(f"    x{n:<4} {clean(phase):<24} worst {deep['stall_ms'][phase]} ms")
+    if not deep["stalls"]:
+        print("    (none recorded)")
+    print("  player deaths, by killer:")
+    for killer, n in deep["deaths"].most_common(12):
+        print(f"    x{n:<4} {clean(killer)[:60]}")
+    if not deep["deaths"]:
+        print("    (none recorded)")
+    for who, killer, dam, before, top in deep["one_blow"][-10:]:
+        print(f"    one blow: {who:<12} {dam} from {before}/{top} hp by {clean(killer)[:40]}")
+    print("  things gone from players (why: what), consumables left out:")
+    for (why, what), n in deep["gone"].most_common(15):
+        print(f"    x{n:<4} {clean(why)[:24]:<24} {clean(what)[:50]}")
+    if not deep["gone"]:
+        print("    (none recorded)")
+    print("  quests lost (target, how):")
+    for (target, how), n in deep["lost"].most_common(12):
+        flag = "  <- none left in the world" if target in deep["impossible"] else ""
+        print(f"    x{n:<4} {clean(target):<14} {clean(how)}{flag}")
+    if not deep["lost"]:
         print("    (none recorded)")
 
     crash = git_show(args.ref, "log/crash.log")

@@ -2722,6 +2722,30 @@ log says what a player typed; the journal says what happened, in columns
   and state rows name nobody, as craft rows do. Never put private words,
   addresses or a hidden room in a detail.
 
+- **Deep bug rows** (2026-11-05: what players report and nothing wrote
+  down). `stall`: a pulse past `STALL_MS` (250, one pulse) -- the total,
+  the slowest stretch (`input`, one of update_handler's phases, `output`)
+  and the slowest command, players online, and how many stalls the
+  `STALL_QUIET` minute left out; update_handler times its phases with
+  `playlog_phase_enter()`, never by setting `playlog_phase`, and the game
+  loop calls `playlog_pulse_begin`/`_end` around the pulse. `death`: a
+  player's death from `raw_kill_internal` -- the killer (`mob <vnum>
+  <short>`, `player`, `self`, `none`), then key=value words: the last
+  blow (`playlog_blow`, recorded where hit points come off in `damage()`)
+  with the hit points before it and its age, the biggest blow of the last
+  minute, max hp, foes on them, wimpy, a death-trap room, sanctuary,
+  linkdead. `item`: an object a player held, at any depth, leaving the
+  game through `extract_obj` (`playlog_obj_gone`, asked before it is
+  taken from its holder) -- vnum, short description, type, level, worn,
+  timer, condition, what was inside, and why: the holder's command,
+  another's (`<cmd> (another's)`) or the update phase. Quitting frees a
+  player's things through `extract_obj_player`, which never asks, so a
+  row is a real loss; food, potions, pills, scrolls, coin, herbs,
+  components and cakes are left out. `outcome` `quest-failed`
+  (`timeout` or `abandoned`): the kind, target, how many of it the world
+  holds (`alive=0` is a quest nobody could finish), its area and whether
+  the questor was in it, and the streak. `tests/test_playlog_deep.py`.
+
 - **`log/progress.tsv`** (2026-10-22, the progression pass): a line per
   credited kill (`progress_kill`, from `group_gain` after `gain_exp`) and
   per player flee or death by a mobile (`progress_event`). Columns:

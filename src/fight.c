@@ -1846,6 +1846,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     &&   !is_invulnerable( victim ) )
     {
 	victim->hit -= dam;
+	/* The last and the biggest blow a player took, for the play
+	   journal's death row (playlog_blow, which adds the blow back for
+	   the hit points before it). */
+	playlog_blow( ch, victim, dam, dt );
 	if ( dam > 0 && victim != ch && !IS_NPC(victim) && victim->pcdata != NULL )
 	    victim->pcdata->fight_taken += dam;
 	/* Harm one deals oneself (poison, a brew gone wrong) is no foe's
@@ -3465,6 +3469,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         player_snapshot_milestone( victim, "death", true );
         if ( ch != NULL && ch != victim && IS_NPC(ch) )
             progress_event( victim, "death", ch );  /* log/progress.tsv */
+        playlog_death( ch, victim );                /* log/play.tsv */
     }
 
     /* The creator cannot be killed by any route -- a death trap, a death

@@ -3065,10 +3065,11 @@ void update_handler( void )
     static  int	    pulse_dtrap=0;
     static  int     pulse_event=0;
 
+    playlog_phase_enter( "update" );
     if ( --pulse_area     <= 0 )
     {
 	pulse_area	= number_range( PULSE_AREA / 2, 3 * PULSE_AREA / 2 );
-	playlog_phase = "area_update";
+	playlog_phase_enter( "area_update" );
 	area_update	( );
 	sanity_check	( );
 	quest_update	( );
@@ -3078,13 +3079,14 @@ void update_handler( void )
     if ( --pulse_room	  <= 0 )
     {
 	pulse_room	= PULSE_ROOM;
+	playlog_phase_enter( "room_update" );
 	room_update	( );
     }
 
     if ( --pulse_mobile   <= 0 )
     {
 	pulse_mobile	= PULSE_MOBILE;
-	playlog_phase = "mobile_update";
+	playlog_phase_enter( "mobile_update" );
 	mobile_update	( );
 	black_market_update( );
 	treasure_goblin_update( );
@@ -3093,7 +3095,7 @@ void update_handler( void )
     if ( --pulse_violence <= 0 )
     {
 	pulse_violence	= PULSE_VIOLENCE;
-	playlog_phase = "violence_update";
+	playlog_phase_enter( "violence_update" );
 	violence_update	( );
     }
 
@@ -3101,6 +3103,7 @@ void update_handler( void )
     {
 /*      pulse_disaster = number_range( PULSE_DISASTER/4, PULSE_DISASTER/3);
 */    pulse_disaster = number_range( PULSE_DISASTER/5, PULSE_DISASTER/4);
+      playlog_phase_enter( "disaster_update" );
       disaster_update();
     }
 
@@ -3108,10 +3111,10 @@ void update_handler( void )
     {
 	pulse_point     = number_range( 2*PULSE_TICK/3, 4*PULSE_TICK/3 );
 	weather_update	( );
-	playlog_phase = "char_update";
+	playlog_phase_enter( "char_update" );
 	char_update	( );
 	btick_update	();
-	playlog_phase = "obj_update";
+	playlog_phase_enter( "obj_update" );
 	obj_update	( );
 	room_aff_update ( );
 //	update_relics   ();  REMOVERELIC
@@ -3120,24 +3123,25 @@ void update_handler( void )
     if ( --pulse_hunting   <= 0 )
     {
 	pulse_hunting    = PULSE_HUNTING;
+	playlog_phase_enter( "hunting_update" );
 	hunting_update   ( );
     }
 
     /* Every pulse: walkto.c paces each walker by their own lag. */
-    playlog_phase = "walkto_update";
+    playlog_phase_enter( "walkto_update" );
     walkto_update( );
-    playlog_phase = "fight_lag_update";
+    playlog_phase_enter( "fight_lag_update" );
     fight_lag_update( );
-    playlog_phase = "oracle_daze_update";
+    playlog_phase_enter( "oracle_daze_update" );
     oracle_daze_update( );
     /* Player corpses written down within a second of a change. */
-    playlog_phase = "corpse_registry_update";
+    playlog_phase_enter( "corpse_registry_update" );
     corpse_registry_update( );
 
     if ( --pulse_aggr <= 0 )
     {
 	pulse_aggr	= PULSE_AGGR;
-	playlog_phase = "aggr_update";
+	playlog_phase_enter( "aggr_update" );
 	aggr_update( );
 	hate_update( );
     }
@@ -3145,6 +3149,7 @@ void update_handler( void )
     if( --pulse_dtrap <= 0 )
     {
 	pulse_dtrap 	= PULSE_DEATHTRAP;
+	playlog_phase_enter( "dtrap_update" );
 	dtrap_update();
     }
 
@@ -3152,10 +3157,11 @@ void update_handler( void )
     if ( --pulse_event <= 0 )
     {
         pulse_event = PULSE_TICK;
+        playlog_phase_enter( "event_boss" );
         tick_event_boss();
     }
 
-    playlog_phase = "game loop";
+    playlog_phase_enter( "game loop" );
     tail_chain( );
     return;
 }

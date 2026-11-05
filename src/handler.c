@@ -2586,6 +2586,9 @@ void extract_obj( OBJ_DATA *obj )
     int vnum,i=0;
 
     corpse_registry_touched( obj, "it is gone" );
+    /* Gone from a player's hands for good: the play journal says what
+       and why (playlog_obj_gone). Quitting never comes here. */
+    playlog_obj_gone( obj );
     vnum = obj ->pIndexData -> vnum;
 
     if(vnum == 4)	i=1;

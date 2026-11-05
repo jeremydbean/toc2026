@@ -838,6 +838,10 @@ void game_loop_unix( int control )
         process_shutdown_signal();
         if ( merc_down )
             break;
+        /* A pulse that runs past its quarter second is written down with
+           where it went (playlog.c: input, update_handler's phases,
+           output, the slowest command). */
+        playlog_pulse_begin( );
 
         if ( current_time - last_watchdog_time >= 10 )
         {
@@ -1070,6 +1074,7 @@ void game_loop_unix( int control )
 	/*
 	 * Output.
 	 */
+	playlog_phase_enter( "output" );
 	for ( d = descriptor_list; d != NULL; d = d_next )
 	{
 	    d_next = d->next;
@@ -1096,6 +1101,8 @@ void game_loop_unix( int control )
 		}
 	    }
 	}
+
+	playlog_pulse_end( );
 
 	/*
 	 * Synchronize to a clock.

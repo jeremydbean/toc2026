@@ -85,6 +85,7 @@ static const char *const coin_source_names[PLAY_COIN_KINDS] =
     { "loot", "quests", "dailies", "sales", "gambling", "other", "spent" };
 static const char *coin_override;   /* playlog_coin_as() */
 static const char *exp_override;    /* playlog_exp_as() */
+static void playlog_pulse_command( const char *name, long ms );
 
 /* ------------------------------------------------------------ helpers */
 
@@ -536,6 +537,7 @@ void playlog_end( CHAR_DATA *ch, const char *cmd_name, const char *shown,
 
     current_set = false;
     playlog_phase = "game loop";
+    playlog_pulse_command( refused ? "(refused)" : cmd_name, ms );
     if ( ch == NULL || IS_NPC(ch) )
         return;
     if ( refused && ch->pcdata != NULL )
@@ -1133,4 +1135,255 @@ void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_x
 void progress_event( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe )
 {
     progress_write( kind, ch, foe, "" );
+}
+
+
+/* --------------------------------------------------------------------
+ * Deep bug logging (2026-11-05): what a player feels and nothing else
+ * wrote down -- the game hitching, how a death came about, and things
+ * vanishing from a pack. Rows in log/play.tsv like the rest.
+ * ------------------------------------------------------------------ */
+
+/*
+ * A pulse is a quarter of a second (PULSE_PER_SECOND). One that runs past
+ * STALL_MS is lag every player feels, and the row says where it went: the
+ * slowest stretch of the pulse (input -- the commands typed -- or one of
+ * update_handler's phases, or output) and the slowest command. One row a
+ * STALL_QUIET at most; the next says how many were left out since.
+ */
+#define STALL_MS        250
+#define STALL_QUIET     60
+
+static long pulse_start_ms;
+static long pulse_mark_ms;
+static long pulse_phase_ms;
+static const char *pulse_phase_now = "input";
+static const char *pulse_phase_worst = "-";
+static long pulse_cmd_ms;
+static char pulse_cmd[32];
+static time_t stall_last;
+static int stall_unwritten;
+
+void playlog_pulse_begin( void )
+{
+    pulse_start_ms = pulse_mark_ms = playlog_now_ms();
+    pulse_phase_now = "input";
+    pulse_phase_worst = "-";
+    pulse_phase_ms = 0;
+    pulse_cmd_ms = 0;
+    pulse_cmd[0] = '\0';
+}
+
+/* update_handler's phases: also playlog_phase, which BUG lines and the
+   crash recorder name. The time since the last mark is the last phase's. */
+void playlog_phase_enter( const char *phase )
+{
+    long now = playlog_now_ms();
+
+    if ( pulse_start_ms > 0 && now - pulse_mark_ms > pulse_phase_ms )
+    {
+        pulse_phase_ms = now - pulse_mark_ms;
+        pulse_phase_worst = pulse_phase_now;
+    }
+    pulse_mark_ms = now;
+    pulse_phase_now = phase;
+    playlog_phase = phase;
+}
+
+static void playlog_pulse_command( const char *name, long ms )
+{
+    if ( ms > pulse_cmd_ms )
+    {
+        pulse_cmd_ms = ms;
+        play_clean( pulse_cmd, sizeof(pulse_cmd), name != NULL ? name : "?" );
+    }
+}
+
+void playlog_pulse_end( void )
+{
+    char fields[PLAY_LINE];
+    DESCRIPTOR_DATA *d;
+    long total;
+    int players = 0;
+
+    if ( pulse_start_ms <= 0 )
+        return;
+    playlog_phase_enter( "game loop" );
+    total = pulse_mark_ms - pulse_start_ms;
+    pulse_start_ms = 0;
+    if ( total < STALL_MS )
+        return;
+    if ( stall_last + STALL_QUIET > current_time )
+    {
+        stall_unwritten++;
+        return;
+    }
+    for ( d = descriptor_list; d != NULL; d = d->next )
+        if ( d->connected == CON_PLAYING )
+            players++;
+    snprintf( fields, sizeof(fields), "%ldms\tslowest %s %ldms\tcommand %s %ldms"
+              "\t%d players\t%d more since",
+              total, pulse_phase_worst, pulse_phase_ms,
+              pulse_cmd[0] != '\0' ? pulse_cmd : "-", pulse_cmd_ms,
+              players, stall_unwritten );
+    journal_write( "stall", NULL, fields );
+    stall_last = current_time;
+    stall_unwritten = 0;
+}
+
+/* What a blow was: a skill or spell by name, else the weapon's noun. */
+static const char *blow_noun( int dt )
+{
+    static int attacks = -1;
+
+    if ( attacks < 0 )
+        for ( attacks = 0; attack_table[attacks].name != NULL; attacks++ )
+            ;
+    if ( dt >= 0 && dt < MAX_SKILL && skill_table[dt].name != NULL )
+        return skill_table[dt].name;
+    if ( dt >= TYPE_HIT && dt - TYPE_HIT < attacks )
+        return attack_table[dt - TYPE_HIT].name;
+    return "hit";
+}
+
+/* Who struck: a mobile's vnum, -1 another player, 0 the victim themself. */
+static int blow_from( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( ch == NULL || ch == victim )
+        return 0;
+    if ( IS_NPC(ch) && ch->pIndexData != NULL )
+        return ch->pIndexData->vnum;
+    return -1;
+}
+
+/*
+ * damage(), just after a player's hit points really come off: the last blow,
+ * and the biggest in the last minute, so a death can say what did it --
+ * one blow from full, or a slow bleed -- and a balance question has its
+ * number. Memory only.
+ */
+void playlog_blow( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
+{
+    PC_DATA *pc;
+
+    if ( victim == NULL || IS_NPC(victim) || ( pc = victim->pcdata ) == NULL || dam <= 0 )
+        return;
+    pc->blow_last_dam = dam;
+    pc->blow_last_dt = dt;
+    pc->blow_last_hp = victim->hit + dam;     /* called after the subtraction */
+    pc->blow_last_from = blow_from( ch, victim );
+    pc->blow_last_at = current_time;
+    if ( dam >= pc->blow_big_dam || pc->blow_big_at + 60 < current_time )
+    {
+        pc->blow_big_dam = dam;
+        pc->blow_big_dt = dt;
+        pc->blow_big_from = blow_from( ch, victim );
+        pc->blow_big_at = current_time;
+    }
+}
+
+/*
+ * A player's death (raw_kill_internal): what killed them and how. The
+ * killer is a mobile by vnum and short description, "player", "self"
+ * (poison, a brew) or "none" (a death trap, a slay); the last blow with
+ * the hit points before it and how long ago it landed -- a death with no
+ * recent blow was not a fight -- the biggest blow of the last minute, the
+ * maximum, how many foes were on them, wimpy, and the room's death-trap
+ * flag. Never a room the journal hides.
+ */
+void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
+{
+    char fields[PLAY_LINE];
+    char who[64];
+    CHAR_DATA *rch;
+    PC_DATA *pc;
+    int foes = 0;
+
+    if ( victim == NULL || IS_NPC(victim) || ( pc = victim->pcdata ) == NULL )
+        return;
+    if ( killer == NULL )
+        toc_strlcpy( who, "none", sizeof(who) );
+    else if ( killer == victim )
+        toc_strlcpy( who, "self", sizeof(who) );
+    else if ( IS_NPC(killer) && killer->pIndexData != NULL )
+    {
+        char shortd[40];
+
+        play_clean( shortd, sizeof(shortd), killer->short_descr );
+        snprintf( who, sizeof(who), "mob %d %s", killer->pIndexData->vnum, shortd );
+    }
+    else
+        toc_strlcpy( who, "player", sizeof(who) );
+    if ( victim->in_room != NULL )
+        for ( rch = victim->in_room->people; rch != NULL; rch = rch->next_in_room )
+            if ( rch->fighting == victim )
+                foes++;
+    snprintf( fields, sizeof(fields),
+              "%s\tkiller_lvl=%d last=%d %s hp_before=%d from=%d age=%lds"
+              " big=%d %s from=%d age=%lds max_hp=%d foes=%d wimpy=%d dt_room=%d"
+              " sanct=%d linkdead=%d",
+              who, killer != NULL ? killer->level : 0,
+              pc->blow_last_dam, pc->blow_last_at > 0 ? blow_noun( pc->blow_last_dt ) : "-",
+              pc->blow_last_hp, pc->blow_last_from,
+              pc->blow_last_at > 0 ? (long) ( current_time - pc->blow_last_at ) : -1L,
+              pc->blow_big_dam, pc->blow_big_at > 0 ? blow_noun( pc->blow_big_dt ) : "-",
+              pc->blow_big_from,
+              pc->blow_big_at > 0 ? (long) ( current_time - pc->blow_big_at ) : -1L,
+              victim->max_hit, foes, victim->wimpy,
+              victim->in_room != NULL && IS_SET( victim->in_room->room_flags, ROOM_DT ) ? 1 : 0,
+              IS_AFFECTED( victim, AFF_SANCTUARY ) ? 1 : 0,
+              victim->desc == NULL ? 1 : 0 );
+    journal_write( "death", victim, fields );
+    pc->blow_last_at = pc->blow_big_at = 0;
+    pc->blow_last_dam = pc->blow_big_dam = 0;
+}
+
+/*
+ * An object a player holds, at any depth, leaving the game (extract_obj):
+ * "my sword vanished" is a report nobody could answer. Quitting frees a
+ * player's things through extract_obj_player, never here, so whatever
+ * reaches this is gone for good -- rotted on its timer, shattered, taken
+ * by a keyed quit, junked, eaten by a spell. The why is the holder's own
+ * command, someone else's command, or the update phase running. Things
+ * meant to be used up (food, potions, pills, scrolls, coin, herbs and
+ * components, cakes) are left out; a container counts what went with it.
+ */
+void playlog_obj_gone( OBJ_DATA *obj )
+{
+    char fields[PLAY_LINE];
+    char shortd[60], why[48];
+    OBJ_DATA *top, *in;
+    CHAR_DATA *holder;
+    int inside = 0;
+
+    if ( obj == NULL || obj->pIndexData == NULL )
+        return;
+    switch ( obj->item_type )
+    {
+    case ITEM_POTION: case ITEM_PILL: case ITEM_FOOD: case ITEM_SCROLL:
+    case ITEM_MONEY: case ITEM_HERB: case ITEM_SPELL_COMPONENT: case ITEM_CAKE:
+        return;
+    default:
+        break;
+    }
+    for ( top = obj; top->in_obj != NULL; top = top->in_obj )
+        ;
+    holder = top->carried_by;
+    if ( holder == NULL || IS_NPC(holder) || holder->pcdata == NULL )
+        return;
+    for ( in = obj->contains; in != NULL; in = in->next_content )
+        inside++;
+    if ( current_set && holder->name != NULL && !str_cmp( current_name, holder->name ) )
+        snprintf( why, sizeof(why), "%s", current_cmd );
+    else if ( current_set )
+        snprintf( why, sizeof(why), "%s (another's)", current_cmd );
+    else
+        snprintf( why, sizeof(why), "%s", playlog_phase != NULL ? playlog_phase : "?" );
+    play_clean( shortd, sizeof(shortd), obj->short_descr );
+    snprintf( fields, sizeof(fields),
+              "%d\t%s\ttype=%s level=%d worn=%d nested=%d timer=%d cond=%d inside=%d\t%s",
+              obj->pIndexData->vnum, shortd, item_type_name( obj ), obj->level,
+              obj->wear_loc != WEAR_NONE ? 1 : 0, obj != top ? 1 : 0,
+              obj->timer, obj->condition, inside, why );
+    journal_write( "item", IS_SET( holder->act, PLR_WIZINVIS ) ? NULL : holder, fields );
 }
