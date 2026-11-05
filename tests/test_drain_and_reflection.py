@@ -182,11 +182,20 @@ class DrainLiveTests(unittest.TestCase):
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ReflectionLiveTests(unittest.TestCase):
     def missile(self, staff, attacker, name: str) -> tuple:
-        before = hp(staff, name)
-        said = attacker.sync("cast 'magic missile' sparring", timeout=60)
-        after = hp(staff, name)
-        staff.sync("peace")
-        return before, after, said
+        """One magic missile that landed on the shielded guard, with the
+        caster's hit points either side of it. A cast whose reply holds
+        no missile (lost concentration, a reply that came back empty on
+        a busy runner -- CI, 2026-11-05) proves nothing either way and is
+        cast again."""
+        for _ in range(4):
+            staff.sync(f"restore {name}")
+            before = hp(staff, name)
+            said = attacker.sync("cast 'magic missile' sparring", timeout=60)
+            after = hp(staff, name)
+            staff.sync("peace")
+            if "missile" in said.lower():
+                return before, after, said
+        self.fail(f"no magic missile landed: {said!r}\n{attacker.transcript[-1500:]}")
 
     def test_an_invulnerable_attacker_takes_nothing_from_either_shield(self) -> None:
         with LiveMud(fixtures=True) as mud:
@@ -225,7 +234,6 @@ class ReflectionLiveTests(unittest.TestCase):
                     # Without it, the shield burns: the check is live.
                     burned = False
                     for _ in range(3):
-                        god.must("restore zreftrust", "")
                         before, after, said = self.missile(god, low, "zreftrust")
                         if after < before:
                             burned = True

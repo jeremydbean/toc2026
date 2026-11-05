@@ -43,10 +43,14 @@ class RareEventAndSkillTests(unittest.TestCase):
             self.magic2, "void spell_vampiric_touch", "void do_brew"
         )
 
-        for spell in (energy_drain, vampiric_touch):
-            with self.subTest(spell=spell[:40]):
-                self.assertIn("UMIN( ch->max_hit, ch->hit + dam / 2 )", spell)
-                self.assertNotIn("ch->hit\t\t+= dam/2", spell)
+        self.assertIn("UMIN( ch->max_hit, ch->hit + dam / 2 )", energy_drain)
+        self.assertNotIn("ch->hit\t\t+= dam/2", energy_drain)
+        # VAMPIRIC TOUCH drinks inside damage(), from what came off and
+        # capped at the caster's maximum there (review, 2026-11-04).
+        self.assertIn("damage_drain_next( 2 )", vampiric_touch)
+        self.assertNotIn("ch->hit", vampiric_touch)
+        fight = (Path(__file__).resolve().parents[1] / "src" / "fight.c").read_text(encoding="latin-1")
+        self.assertIn("ch->hit = UMIN( ch->max_hit, ch->hit + taken / drain );", fight)
 
     def test_elemental_shields_are_mutually_exclusive(self) -> None:
         fire = function_body(

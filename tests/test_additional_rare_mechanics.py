@@ -213,7 +213,9 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         self.assertIn("pending quest-point reward", self.command_help)
         self.assertIn("5-7 more", self.command_help)
         self.assertIn("cannot be used when doing so would reduce", self.skill_help)
-        self.assertIn("too heavy remains safely in the corpse", self.spell_help)
+        # RAISE DEAD spills what does not fit, as the code always did; the
+        # help said otherwise until 2026-11-04.
+        self.assertIn("too heavy falls to the ground", " ".join(self.spell_help.split()))
         self.assertIn("Water burst consumes 20 units", self.spell_help)
         self.assertIn("Geyser consumes 45 units", self.spell_help)
 

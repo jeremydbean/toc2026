@@ -99,7 +99,14 @@ class NecroReviewTests(unittest.TestCase):
                       read("src", "act_info.c"))
 
     def test_drain_heals_nothing_from_the_undead(self) -> None:
-        self.assertIn("check_immune( victim, DAM_NEGATIVE )", read("src", "magic2.c"))
+        # VAMPIRIC TOUCH drinks what damage() takes (review, 2026-11-04):
+        # an undead's immunity to negative energy makes that nothing.
+        touch = body(read("src", "magic2.c"), "void spell_vampiric_touch(")
+        self.assertIn("damage_drain_next( 2 )", touch)
+        self.assertIn("DAM_NEGATIVE", touch)
+        fight = read("src", "fight.c")
+        self.assertLess(fight.index("victim->hit -= dam;"),
+                        fight.index("ch->hit = UMIN( ch->max_hit, ch->hit + taken / drain );"))
         self.assertIn("check_immune( victim, DAM_NEGATIVE )", read("src", "magic.c"))
 
     def test_the_undead_template_is_nokill_in_every_limbo(self) -> None:
