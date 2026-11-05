@@ -22048,3 +22048,61 @@
 1793841689	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	changes		What is new, newest first: // 2026-11-04 //   A few creatures were carrying far more coin than anything their size	-	+
 1793841707	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	cast		Cast which what where?	-	-
 1793841708	session	Alaric	57	2497	dresden.are	quit	23s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	4 commands	0 refused	coin: none
+1793843697	cmd	Trentlin	9	4208	dresden.are	standing	95	0	-	wake		You are already standing.	-	-
+1793843699	cmd	Trentlin	9	4208	dresden.are	standing	95	0	-	where	hermie	You didn't find any hermie.	-	-
+1793843701	cmd	Trentlin	9	4207	dresden.are	standing	95	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793843701	cmd	Trentlin	9	4202	dresden.are	standing	95	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793843701	cmd	Trentlin	9	4201	dresden.are	standing	95	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793843701	cmd	Trentlin	9	2427	dresden.are	standing	95	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793843702	cmd	Trentlin	9	2427	dresden.are	standing	95	0	-	east		Alas, you cannot go that way.	-	-
+1793843702	cmd	Trentlin	9	2427	dresden.are	standing	95	0	-	east		Alas, you cannot go that way.	-	-
+1793843702	cmd	Trentlin	9	2404	dresden.are	standing	95	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793843702	cmd	Trentlin	9	2401	dresden.are	standing	95	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793843704	cmd	Trentlin	9	2410	dresden.are	standing	95	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1793843704	cmd	Trentlin	9	2411	dresden.are	standing	95	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1793843705	cmd	Trentlin	9	2414	dresden.are	standing	95	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1793843705	cmd	Trentlin	9	2497	dresden.are	standing	95	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793843707	cmd	Trentlin	9	2497	dresden.are	standing	95	16	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'The criminal known as the ferocious warg has escaped from prison!'	-	+
+1793843711	cmd	Trentlin	9	2401	dresden.are	standing	95	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793843713	cmd	Trentlin	9	2405	dresden.are	standing	95	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793843713	cmd	Trentlin	9	2433	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793843713	cmd	Trentlin	9	2434	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793843713	cmd	Trentlin	9	2435	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793843714	cmd	Trentlin	9	2436	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793843714	cmd	Trentlin	9	2437	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793843714	cmd	Trentlin	9	2438	dresden.are	standing	95	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793843714	cmd	Trentlin	9	2438	dresden.are	standing	95	0	-	open	west	Ok.	-	-
+1793843715	cmd	Trentlin	9	2439	dresden.are	standing	95	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793843716	cmd	Trentlin	9	6000	haon.are	standing	95	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1793843722	cmd	Trentlin	9	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1793843723	cmd	Trentlin	9	6001	haon.are	standing	100	0	-	exits		Obvious exits: // East  - The edge of the forest // South - Path to the Wayhouse	-	+
+1793843725	cmd	Trentlin	9	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1793843725	cmd	Trentlin	9	6002	haon.are	standing	100	0	-	exits		Obvious exits: // East  - A trail through the light forest // South - A small path through the light forest	-	+
+1793843727	cmd	Trentlin	9	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1793843728	cmd	Trentlin	9	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1793843729	cmd	Trentlin	9	6004	haon.are	standing	100	0	-	exits		Obvious exits: // East  - A trail through the dense forest // South - A small path in the dense forest	-	+
+1793843732	cmd	Trentlin	9	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1793843732	cmd	Trentlin	9	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1793843734	cmd	Trentlin	9	6101	haon.are	standing	100	0	-	exits		Obvious exits: // East  - A narrow trail through the deep, dark forest // South - A small path in the deep, dark forest	-	+
+1793843736	cmd	Trentlin	9	6102	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard.. everything	-	+
+1793843737	cmd	Trentlin	9	6103	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are where the dusty trail bends, as to avoid conflict with a colossal // trunk to the west.  Not a sound is to be heard.. everything is ominously	-	+
+1793843743	cmd	Trentlin	9	6103	haon.are	standing	100	0	-	exits		Obvious exits: // North - The narrow trail. // East  - A narrow trail through the deep, dark forest	-	+
+1793843744	cmd	Trentlin	9	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west and to the south, a frail	-	+
+1793843750	cmd	Trentlin	9	6108	haon.are	fighting	100	0	fight	kick		Your kick scratches the large, grey wolf.	-	-
+1793843753	cmd	Trentlin	9	6108	haon.are	fighting	99	0	fight	kick		Your kick misses the large, grey wolf.	-	-
+1793843758	cmd	Trentlin	9	6108	haon.are	fighting	99	0	fight	kick		Your kick misses the large, grey wolf.	-	-
+1793843762	cmd	Trentlin	9	6108	haon.are	standing	99	0	-	kick		You aren't fighting anyone.	-	-
+1793843762	cmd	Trentlin	9	6108	haon.are	standing	99	0	-	exits		Obvious exits: // North - A narrow trail through the deep, dark forest // South - A small path in the deep, dark forest	-	+
+1793843764	cmd	Trentlin	9	6109	haon.are	standing	99	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard..	-	+
+1793843767	cmd	Trentlin	9	6110	haon.are	standing	99	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees that // stand close on all sides.  The trail leads east and south.  To the north,	-	+
+1793843768	cmd	Trentlin	9	6110	haon.are	standing	99	0	-	exits		Obvious exits: // North - A small path in the deep, dark forest // East  - A narrow trail through the deep, dark forest	-	+
+1793843770	cmd	Trentlin	9	6111	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way north-south between huge, ancient // trees that loom ominously above you.	-	+
+1793843771	cmd	Trentlin	9	6112	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees // standing close on all sides.  The trail leads north and west and to the	-	+
+1793843773	cmd	Trentlin	9	6112	haon.are	fighting	100	0	fight	kick		Your kick scratches the large, black wolf.	-	-
+1793843781	cmd	Trentlin	9	6112	haon.are	fighting	100	0	fight	kick		Your kick grazes the large, black wolf.	-	-
+1793843785	cmd	Trentlin	9	6112	haon.are	standing	100	0	-	exits		Obvious exits: // North - A narrow trail through the deep, dark forest // East  - A small path in the deep, dark forest	-	+
+1793843788	cmd	Trentlin	9	6127	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees // standing close on all sides.  The trail leads east and south.	-	+
+1793843790	cmd	Trentlin	9	6127	haon.are	fighting	100	0	fight	kick		Your kick scratches the ferocious warg.	-	-
+1793843792	cmd	Trentlin	9	6127	haon.are	fighting	100	0	fight	kick		Your kick misses the ferocious warg.	-	-
+1793843797	cmd	Trentlin	9	6127	haon.are	fighting	100	0	fight	kick		Your kick scratches the ferocious warg.	-	-
+1793843800	cmd	Trentlin	9	6127	haon.are	fighting	100	0	fight	kick		Your kick grazes the ferocious warg.	-	-
