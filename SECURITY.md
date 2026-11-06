@@ -108,17 +108,31 @@ game now (`src/connguard.c`, owner's rules of 2026-11-06):
   new character or waiting connection refused, and the hourly count;
 - never pauses or limits an address a player has logged in from in the last
   90 days, or is playing from now. Those addresses are kept in
-  `log/player_addresses.tsv` (seeded from the login journal and `toc.log`);
-- allows any address at most eight connections waiting to log in;
+  `log/player_addresses.tsv`: a line a day at most per address, measured
+  from the last line that landed, every write checked and a failed one
+  retried (`src/guardstore.c`). With no file yet it is started once from
+  the login journals' records that name their own numeric address, never
+  from a host name or a connection line joined to a later login;
+- allows any address at most eight connections waiting to log in, and the
+  whole game two hundred from addresses no player uses; refuses a
+  descriptor `select()` could not hold (`FD_SETSIZE`);
+- keeps pauses in memory: a restart lifts them, deliberately (the record of
+  players' addresses is what is kept);
 - closes a connection that types nothing at the login prompts for ten
   minutes;
 - looks up host names on a worker thread, and only for a connection that
   sends a line, so no connection can stall the game while a resolver
   answers.
 
-An immortal's `BAN` is a separate list and still shuts out anybody; a ban
-written against a host name is asked again when the name arrives. Staff
-`DNS GUARD` lists pauses; `DNS ALLOW <address>` lifts one. Loopback is
+An immortal's `BAN` is a separate list and still shuts out anybody. Every
+connection keeps its address by family and bytes (`src/netaddr.c`) apart
+from the host name the resolver may later put in its place: a ban on an
+address (IPv4, or IPv6 in any spelling, stored canonically) matches that
+address whatever DNS has done, and a ban on a host name is asked of the
+resolved name, again when it arrives. Shared-address notices, SOCKETS IP
+and DNS LIST read the address too; a shared address is reported as an
+observation, not as proof of one person. Staff `DNS GUARD` lists pauses;
+`DNS ALLOW <address>` (IPv4 or IPv6) lifts one. Loopback is
 exempt (`TOC_GUARD_LOOPBACK=1` includes it for tests). This is no firewall:
 a flood that fills the kernel's accept queue is a host's job (`ufw limit`,
 fail2ban), below.

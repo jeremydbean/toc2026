@@ -24,6 +24,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   connections in an hourly line, and tells staff each pause, refusal and
   lifted pause as WIZINFO. Staff `DNS GUARD` and `DNS ALLOW`.
   `tests/test_connection_guard.py`.
+- **A connection's address is kept apart from its host name** (review,
+  2026-11-06). `src/netaddr.c` holds each connection's address by family
+  and bytes; bans on an address match it whatever the resolver has done
+  (a numeric ban had stopped matching once a PTR name arrived), IPv6 bans
+  match in any spelling, the shared-address notice compares exact
+  addresses, DNS LIST shows real addresses and hides whoever SOCKETS
+  hides, and DNS ALLOW takes IPv6. The record of players' addresses
+  (`src/guardstore.c`) writes a day after the last line that landed, checks
+  and retries every write, and starts once only from login records naming
+  their own address. Two resolver workers, cancelled and expired lookups,
+  resolver counters in DNS, a game-wide cap on waiting connections from
+  untrusted addresses, and descriptors past `FD_SETSIZE` refused. HELP BAN
+  rewritten: bans were never suffix matches and are saved.
+  `tests/test_client_addresses.py`, `tests/test_guard_addresses.py`.
 - **Deep bug rows in the play journal** (2026-11-05). `stall` rows when a
   pulse runs past its quarter second, naming the phase and the command
   that took the time; `death` rows with the killing blow, the hit points

@@ -42,14 +42,14 @@ class GuardSourceTests(unittest.TestCase):
         self.assertNotIn("getnameinfo(", accept, "accept never waits on a resolver")
         self.assertIn("dns_async_submit", comm)
         collect = comm.split("static void dns_collect( void )", 1)[1].split("\n}\n", 1)[0]
-        self.assertIn("check_ban( d->host, BAN_ALL )", collect, "a host-name ban is asked again")
+        self.assertIn("check_ban( d, BAN_ALL )", collect, "a host-name ban is asked again")
         self.assertIn("host_name_clean( host )", collect)
         loop = comm.split("void game_loop_unix( int control )", 1)[1]
         self.assertLess(loop.index("dns_collect( );"), loop.index("update_handler( );"))
         self.assertIn("login_idle_sweep( );", loop)
         # Players' addresses are trusted at both kinds of login.
-        self.assertIn("conn_guard_trust( d->ip, who );", comm.split("static void login_note_success", 1)[1])
-        self.assertEqual(comm.count("conn_guard_trust( d->ip, who )"), 2)
+        self.assertIn("conn_guard_trust( &d->addr, who );", comm.split("static void login_note_success", 1)[1])
+        self.assertEqual(comm.count("conn_guard_trust( &d->addr, who )"), 2)
 
     def test_what_is_never_a_strike(self) -> None:
         comm = (ROOT / "src" / "comm.c").read_text(encoding="latin-1")
@@ -96,6 +96,18 @@ def wait_for_log(mud: LiveMud, text: str, timeout: float = 15.0) -> bool:
     return False
 
 
+def forget_player_addresses(mud: LiveMud) -> None:
+    """An empty record: the file is the record once it exists, so the
+    journals (which hold this world's logins from 127.0.0.1) are not read
+    to start it again."""
+    (mud.root / "log" / "player_addresses.tsv").write_text("# empty\n", encoding="latin-1")
+
+
+def ctime(when: float) -> str:
+    """toc.log's own time stamp."""
+    return time.strftime("%a %b %e %H:%M:%S %Y", time.localtime(when))
+
+
 def make(mud: LiveMud, name: str, **fields) -> None:
     with mud.connect(timeout=120) as client:
         create_character(client, name, PW)
@@ -113,8 +125,7 @@ class GuardLiveTests(unittest.TestCase):
             make(mud, "Zguardold", Levl=70)
             # Forget that a player came from here: a new ISP, say.
             mud._stop()
-            for name in ("player_addresses.tsv", "logins.tsv"):
-                (mud.root / "log" / name).unlink(missing_ok=True)
+            forget_player_addresses(mud)
             mud._launch()
 
             for _ in range(3):                   # three that go nowhere
@@ -137,6 +148,44 @@ class GuardLiveTests(unittest.TestCase):
         # A connection that never said a word is not logged one by one.
         self.assertNotIn("EOF encountered on read.", log)
 
+    def test_the_record_starts_once_from_logins_that_name_an_address(self) -> None:
+        with LiveMud() as mud:
+            mud._stop()
+            now = time.time()
+            log = mud.root / "log"
+            (log / "player_addresses.tsv").unlink(missing_ok=True)
+            (log / "logins.tsv").write_text(
+                f"{int(now) - 600}\tZed\t203.0.113.50\tconnect\n"        # an address: trusted
+                f"{int(now) - 500}\tZed\thost.example.net\tconnect\n"    # a name: nothing
+                f"{int(now) - 400}\tZed\t203.0.113.51\tquit\t60\n",      # a logout: nothing
+                encoding="latin-1")
+            # Two connections interleave before a login by host name, and a
+            # login that names its own address comes later: only that one.
+            with (log / "toc.log").open("a", encoding="latin-1") as fp:
+                fp.write(f"{ctime(now - 300)} :: Sock.sinaddr:  198.51.100.60\n"
+                         f"{ctime(now - 299)} :: Sock.sinaddr:  198.51.100.61\n"
+                         f"{ctime(now - 290)} :: Zed@host.example.net has connected.\n"
+                         f"{ctime(now - 200)} :: Zed@198.51.100.62 has connected.\n")
+            mud._launch()
+            with mud.connect(timeout=30) as probe:           # the boot is done
+                probe.expect("by what name", "name:")
+            record = (log / "player_addresses.tsv").read_text(encoding="latin-1")
+            addresses = {line.split("\t")[0] for line in record.splitlines()
+                         if line and not line.startswith("#")}
+            self.assertEqual(addresses, {"203.0.113.50", "198.51.100.62"}, record)
+
+            # Once the record exists it is the record: the journals are not
+            # read again, and a restart keeps what it holds.
+            mud._stop()
+            with (log / "logins.tsv").open("a", encoding="latin-1") as fp:
+                fp.write(f"{int(now)}\tZed\t203.0.113.70\tconnect\n")
+            mud._launch()
+            with mud.connect(timeout=30) as probe:
+                probe.expect("by what name", "name:")
+            again = (log / "player_addresses.tsv").read_text(encoding="latin-1")
+            self.assertNotIn("203.0.113.70", again)
+            self.assertIn("198.51.100.62\t", again)
+
     def test_a_flood_is_refused(self) -> None:
         env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_FLOOD": "4", "TOC_GUARD_BURST": "50"}
         with LiveMud(extra_env=env) as mud:
@@ -156,6 +205,24 @@ class GuardLiveTests(unittest.TestCase):
         self.assertEqual(greeted + refused, 7)
         self.assertGreaterEqual(refused, 4, "refused, and it stays refused")
         self.assertRegex(log, r"Connection guard: 127\.0\.0\.1 refused for 60 minutes")
+
+    def test_the_game_wide_waiting_budget_spares_players(self) -> None:
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_GLOBAL_PENDING": "2",
+               "TOC_GUARD_STRIKES": "50", "TOC_GUARD_BURST": "50"}
+        with LiveMud(extra_env=env) as mud:
+            held = [mud.connect(timeout=30), mud.connect(timeout=30)]
+            try:
+                for client in held:
+                    client.expect("by what name", "name:")
+                with mud.connect(timeout=30) as third:
+                    got = third.expect("by what name", "very busy", timeout=20)
+                    self.assertIn("very busy", got)
+                    self.assertTrue(third.wait_closed())
+            finally:
+                for client in held:
+                    client.close()
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        self.assertIn("connections are waiting at the login prompts", log)
 
     def test_a_client_left_open_never_strikes(self) -> None:
         env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "2", "TOC_LOGIN_IDLE_SECS": "2"}

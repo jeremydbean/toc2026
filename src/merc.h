@@ -31,6 +31,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include "netaddr.h"
 #if !defined(NOCRYPT) && !defined(__APPLE__)
 #include <crypt.h>
 #endif
@@ -619,7 +620,17 @@ struct  descriptor_data
     DESCRIPTOR_DATA * snoop_by;
     CHAR_DATA * character;
     CHAR_DATA * original;
-    char * host;
+    char * host;                /* display: the address, or the name the resolver gave */
+    /*
+     * The client's address, by family and bytes, as accepted or as the web
+     * bridge's PROXY header named it, and its canonical text. Unlike host it
+     * never changes while the connection lasts: a numeric ban, the shared
+     * address notice and the staff views read these, never the host name
+     * (review, 2026-11-06). ip below is its guard key (net_addr_guard_key).
+     */
+    NET_ADDR            addr;
+    char                addr_text[NET_ADDR_TEXT];
+    bool                host_resolved;  /* host is a name dnsasync.c found */
     sh_int              id;
     int                 ifd;
     pid_t               ipid;
@@ -3668,7 +3679,7 @@ bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
 /* connguard.c -- what the game does about addresses that connect and never play */
 const char *conn_guard_admit  args( ( DESCRIPTOR_DATA *d, char *buf, size_t size ) );
-void  conn_guard_trust        args( ( uint32_t ip, const char *who ) );
+void  conn_guard_trust        args( ( const NET_ADDR *addr, const char *who ) );
 bool  conn_guard_trusted      args( ( uint32_t ip ) );
 void  conn_guard_closed       args( ( DESCRIPTOR_DATA *d ) );
 const char *conn_guard_new_char args( ( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size ) );

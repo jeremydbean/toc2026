@@ -35,9 +35,13 @@ class SameHostSourceTests(unittest.TestCase):
         self.assertEqual(2, comm.count("wizinfo_same_host( d, ch );"))
         body = comm.split("static void wizinfo_same_host( DESCRIPTOR_DATA *d", 1)[1]
         body = body.split("\n}", 1)[0]
-        self.assertIn("str_cmp( od->host, d->host )", body)
+        # By the address itself, never the host string the resolver
+        # rewrites (review, 2026-11-06): one address was missed when only
+        # one connection had resolved, two with one PTR name were merged.
+        self.assertIn("net_addr_equal( &od->addr, &d->addr )", body)
         self.assertNotIn("strstr", body)
-        self.assertIn('!str_prefix( "127.", d->host )', body)
+        self.assertNotIn("od->host", body)
+        self.assertIn("net_addr_is_loopback( &d->addr )", body)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

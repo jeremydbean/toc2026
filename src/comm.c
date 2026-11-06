@@ -351,7 +351,7 @@ static void wizinfo_same_host   ( DESCRIPTOR_DATA *d, CHAR_DATA *ch );
 static void creator_arrives_unseen ( CHAR_DATA *ch );
 bool    check_playing           ( DESCRIPTOR_DATA *d, char *name );
 bool    write_to_descriptor     ( DESCRIPTOR_DATA *d, const char *txt, int length );
-static bool check_ban           ( const char *site, int type );
+static bool check_ban           ( DESCRIPTOR_DATA *d, int type );
 static int  weapon_lookup       ( const char *name );
 char * crypt                   ( const char *key, const char *salt );
 void    log_auth                ( DESCRIPTOR_DATA *d );
@@ -817,6 +817,7 @@ static void save_dropped_player( DESCRIPTOR_DATA *d )
  * lookup runs on dnsasync.c's thread; dns_collect gives the answer back.
  */
 static long dns_next_serial;
+long        dns_stale_results;   /* names whose connection had gone: DNS */
 
 static void connection_spoke( DESCRIPTOR_DATA *d )
 {
@@ -828,7 +829,7 @@ static void connection_spoke( DESCRIPTOR_DATA *d )
         return;
     if ( !is_loopback_ip( d->ip ) )
     {
-        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s", d->host );
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s", d->addr_text );
         log_string( log_buf );
     }
     if ( !dns_lookup_enabled )
@@ -842,14 +843,16 @@ static void connection_spoke( DESCRIPTOR_DATA *d )
         struct sockaddr_in *four = (struct sockaddr_in *) &addr;
         struct sockaddr_in6 *six = (struct sockaddr_in6 *) &addr;
 
-        if ( inet_pton( AF_INET, d->host, &four->sin_addr ) == 1 )
+        if ( d->addr.family == 4 )
         {
             four->sin_family = AF_INET;
+            memcpy( &four->sin_addr, d->addr.b, 4 );
             len = sizeof(*four);
         }
-        else if ( inet_pton( AF_INET6, d->host, &six->sin6_addr ) == 1 )
+        else if ( d->addr.family == 6 )
         {
             six->sin6_family = AF_INET6;
+            memcpy( &six->sin6_addr, d->addr.b, 16 );
             len = sizeof(*six);
         }
     }
@@ -891,15 +894,19 @@ static void dns_collect( void )
         for ( d = descriptor_list; d != NULL; d = d->next )
             if ( d->dns_serial == serial )
                 break;
+        if ( d == NULL )
+            dns_stale_results++;
         if ( d == NULL || !host_name_clean( host ) )
             continue;
         d->dns_serial = 0;
         free_string( d->host );
         d->host = str_dup( host );
-        if ( check_ban( d->host, BAN_ALL ) )
+        d->host_resolved = TRUE;
+        if ( check_ban( d, BAN_ALL ) )
         {
             snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
-                      "Banning access to %s (its name came after it connected).", d->host );
+                      "Banning access to %s (its name, %s, came after it connected).",
+                      d->addr_text, d->host );
             log_string( log_buf );
             write_to_buffer( d, "Access denied.\n\r", 0 );
             if ( d->connected == CON_PLAYING )
@@ -1467,7 +1474,7 @@ static void login_note_success( DESCRIPTOR_DATA *d )
 
         snprintf( who, sizeof(who), "%s logged in from it",
                   d->character != NULL && d->character->name != NULL ? d->character->name : "a player" );
-        conn_guard_trust( d->ip, who );
+        conn_guard_trust( &d->addr, who );
     }
 
     if ( (entry = login_fail_lookup(d->ip)) != NULL )
@@ -1555,6 +1562,24 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     size = sizeof(sock);
     if ((desc = accept(control, (struct sockaddr *)&sock, &size)) < 0) {
         perror("New_descriptor: accept");
+        return NULL;
+    }
+
+    /*
+     * The game loop waits with select(), whose sets hold descriptors below
+     * FD_SETSIZE and nothing above: FD_SET on a larger one writes past the
+     * set. Refuse it here, before it is ever a descriptor (review,
+     * 2026-11-06). A player already in the game keeps their connection;
+     * only a new one is turned away while the table is that full.
+     */
+    if ( desc >= FD_SETSIZE ) {
+        static time_t said;
+
+        if ( current_time - said >= 60 ) {
+            said = current_time;
+            log_string( "New_descriptor: refused a connection: descriptor past FD_SETSIZE." );
+        }
+        close( desc );
         return NULL;
     }
 
@@ -1657,8 +1682,10 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
          * now on another thread, and only for a connection that sends a
          * line (connection_spoke), so a silent probe costs no lookup.
          */
-        dnew->host = str_dup(inet_ntoa(sock.sin_addr));
-        dnew->ip = sock.sin_addr.s_addr;
+        net_addr_from_v4( sock.sin_addr.s_addr, &dnew->addr );
+        net_addr_text( &dnew->addr, dnew->addr_text, sizeof(dnew->addr_text) );
+        dnew->host = str_dup( dnew->addr_text );
+        dnew->ip = net_addr_guard_key( &dnew->addr );
     }
 
     return dnew;
@@ -1673,6 +1700,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
     /* A connection that never said a word is counted, not logged. An
        answer the resolver has yet to give goes to nobody. */
     conn_guard_closed( dclose );
+    dns_async_cancel( dclose->dns_serial );   /* still queued: never made */
     dclose->dns_serial = 0;
 
     if ( dclose->outtop > 0 )
@@ -3092,7 +3120,7 @@ static bool login_reload_character( DESCRIPTOR_DATA *d, const char *password )
         return FALSE;
     }
 
-    if ( check_ban( d->host, BAN_ALL ) )
+    if ( check_ban( d, BAN_ALL ) )
     {
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Banning access to %s@%s.",
                   ch->name, d->host );
@@ -3237,7 +3265,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             return;
         }
 
-        if ( check_ban( d->host, BAN_ALL ) )
+        if ( check_ban( d, BAN_ALL ) )
         {
             snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Banning access to %s@%s.", argument, d->host );
             log_string( log_buf );
@@ -3309,7 +3337,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
                 return;
             }
 
-	    if (check_ban(d->host,BAN_NEWBIES))
+	    if (check_ban(d,BAN_NEWBIES))
 	    {
 		write_to_buffer(d,
 		    "New players are not allowed from your site.\n\r",0);
@@ -3630,7 +3658,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             char who[MAX_INPUT_LENGTH];         /* a player's address now */
 
             snprintf( who, sizeof(who), "%s was made there", ch->name );
-            conn_guard_trust( d->ip, who );
+            conn_guard_trust( &d->addr, who );
         }
         /* An existing character logging in announces itself with its
            host; a brand new one did not, so the arrival staff would
@@ -4025,17 +4053,37 @@ bool check_parse_name( char *name )
 
 
 /*
- * Check if a site is banned.
+ * Whether a connection is banned (review, 2026-11-06).
+ *
+ * A ban that is an address -- IPv4 or IPv6, in any spelling -- is compared
+ * with the connection's address by family and bytes, whatever the resolver
+ * has done to the host name: it is asked of d->addr, which never changes.
+ * The host string used to be all a ban was compared with, and the resolver
+ * replaces it, so a numeric ban stopped matching the moment a PTR name came
+ * back. Any other ban is a host name, compared with the name the resolver
+ * gave -- only once it has given one; dns_collect asks again when it does.
  */
-static bool check_ban( const char *site, int type )
+static bool check_ban( DESCRIPTOR_DATA *d, int type )
 {
     BAN_DATA *pban;
 
     UNUSED_PARAM(type);
 
+    if ( d == NULL )
+        return FALSE;
     for ( pban = ban_list; pban != NULL; pban = pban->next )
     {
-        if ( pban->name != NULL && !str_cmp( pban->name, site ) )
+        NET_ADDR banned;
+
+        if ( pban->name == NULL || pban->name[0] == '\0' )
+            continue;
+        if ( net_addr_parse( pban->name, &banned ) )
+        {
+            if ( net_addr_equal( &banned, &d->addr ) )
+                return TRUE;
+            continue;
+        }
+        if ( d->host_resolved && d->host != NULL && !str_cmp( pban->name, d->host ) )
             return TRUE;
     }
 
@@ -5095,33 +5143,21 @@ static void login_journal_trim( void )
  *   PROXY TCP6 <src ip6> <dst ip6> <src port> <dst port>
  *   PROXY UNKNOWN ...      (the bridge knew no peer: consumed, changes nothing)
  *
- * The descriptor keeps an IPv4 number (d->ip) for the throttle. An IPv6
- * peer that is a mapped IPv4 address is that address; any other IPv6 peer
- * keeps its own text as the host, and its number is a key folded from its
- * /64 -- what one subscriber is normally given, so stepping through
- * addresses inside it does not escape a block -- into 240.0.0.0/4, which
- * no real IPv4 peer can come from. Until 2026-10-22 the bridge sent no
- * header for an IPv6 peer at all, so those players stayed "loopback":
- * unthrottled and all recorded as one.
+ * The descriptor keeps the address itself (d->addr, its canonical text in
+ * d->addr_text and, until a name comes back, d->host) and a 32-bit key
+ * (d->ip) for the throttle and the connection guard. An IPv6 peer that is a
+ * mapped IPv4 address is that address; any other IPv6 peer's key is folded
+ * from its /64 -- what one subscriber is normally given, so stepping
+ * through addresses inside it does not escape a block -- into
+ * 240.0.0.0/4, which no real IPv4 peer can come from (net_addr_guard_key).
+ * The key is internal: nothing shows it as an address. Until 2026-10-22
+ * the bridge sent no header for an IPv6 peer at all, so those players
+ * stayed "loopback": unthrottled and all recorded as one.
  */
-static uint32_t proxy_ipv6_key( const struct in6_addr *addr )
-{
-    uint32_t hash = 2166136261u;        /* FNV-1a over the /64 */
-    int i;
-
-    for ( i = 0; i < 8; i++ )
-    {
-        hash ^= addr->s6_addr[i];
-        hash *= 16777619u;
-    }
-    return htonl( 0xF0000000u | ( hash & 0x0FFFFFFFu ) );
-}
-
 bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
 {
     char src[64];
-    struct in_addr parsed;
-    struct in6_addr parsed6;
+    NET_ADDR parsed;
     const char *p;
     size_t length;
     bool six;
@@ -5154,46 +5190,21 @@ bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
     if ( length == 0 )
         return FALSE;
 
-    if ( six )
-    {
-        static const unsigned char mapped[12] =
-            { 0,0,0,0, 0,0,0,0, 0,0,0xff,0xff };
-        char text[INET_ADDRSTRLEN];
-
-        if ( inet_pton( AF_INET6, src, &parsed6 ) != 1 )
-            return FALSE;
-
-        /* ::1 tells us nothing more than loopback did. */
-        if ( IN6_IS_ADDR_LOOPBACK( &parsed6 ) )
-            return TRUE;
-
-        if ( memcmp( parsed6.s6_addr, mapped, sizeof(mapped) ) != 0 )
-        {
-            free_string( d->host );
-            d->host = str_dup( src );
-            d->ip   = proxy_ipv6_key( &parsed6 );
-            return TRUE;
-        }
-
-        /* ::ffff:a.b.c.d is an IPv4 peer: record it as one. */
-        memcpy( &parsed.s_addr, parsed6.s6_addr + 12, 4 );
-        if ( inet_ntop( AF_INET, &parsed, text, sizeof(text) ) == NULL )
-            return FALSE;
-        toc_strlcpy( src, text, sizeof(src) );
-    }
-    /* inet_pton, not inet_aton: macOS hides inet_aton under the feature
-       macros this file sets, and the build failed there (remort report,
-       2026-10-21). A PROXY header carries a dotted quad either way. */
-    else if ( inet_pton( AF_INET, src, &parsed ) != 1 )
+    /* The whole field, IPv4 or IPv6 as the header said; a mapped IPv6
+       address is its IPv4 address (net_addr_parse). */
+    if ( !net_addr_parse( src, &parsed ) || ( six ? 0 : parsed.family != 4 ) )
         return FALSE;
 
     /* A header naming loopback tells us nothing; keep what we had. */
-    if ( ( ntohl(parsed.s_addr) >> 24 ) == 127 )
+    if ( net_addr_is_loopback( &parsed ) )
         return TRUE;
 
+    d->addr = parsed;
+    net_addr_text( &d->addr, d->addr_text, sizeof(d->addr_text) );
     free_string( d->host );
-    d->host = str_dup( src );
-    d->ip   = parsed.s_addr;
+    d->host = str_dup( d->addr_text );
+    d->host_resolved = FALSE;
+    d->ip   = net_addr_guard_key( &d->addr );
     return TRUE;
 }
 
@@ -5338,8 +5349,15 @@ void record_logout( const char *name, const char *host, const char *event,
  * already playing from, and who. This was Ricochet's, from 1998, and it
  * went missing in the November 2025 rewrite of this file. Compared
  * exactly -- the original's strstr() matched 1.2.3.4 against 1.2.3.45 --
- * and loopback is skipped: web players arrive with their own address in
- * host, so anything still showing loopback is the dashboard itself.
+ * and by the address itself, family and bytes (review, 2026-11-06): the
+ * host strings it compared before are changed by the resolver, so one
+ * address was missed when only one connection's name had come back, and
+ * two addresses with the same PTR name were taken for one. This is the
+ * exact address, not the IPv6 /64 the throttle counts by. Loopback is
+ * skipped: web players arrive with their own address, so anything still
+ * on loopback is the dashboard itself. A shared address is an
+ * observation -- a household, a campus, a carrier's NAT -- not proof that
+ * the characters are one person, and the line says so.
  */
 static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
 {
@@ -5349,8 +5367,7 @@ static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
     int others = 0;
     int level;
 
-    if ( d == NULL || ch == NULL || d->host == NULL || d->host[0] == '\0'
-    ||   !str_cmp( d->host, "localhost" ) || !str_prefix( "127.", d->host ) )
+    if ( d == NULL || ch == NULL || d->addr.family == 0 || net_addr_is_loopback( &d->addr ) )
         return;
 
     names[0] = '\0';
@@ -5359,8 +5376,8 @@ static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
     {
         CHAR_DATA *och;
 
-        if ( od == d || od->connected != CON_PLAYING || od->host == NULL
-        ||   str_cmp( od->host, d->host ) )
+        if ( od == d || od->connected != CON_PLAYING
+        ||   !net_addr_equal( &od->addr, &d->addr ) )
             continue;
         och = od->original != NULL ? od->original : od->character;
         if ( och == NULL || och == ch )
@@ -5375,8 +5392,9 @@ static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
         return;
 
     snprintf( buf, sizeof(buf),
-              "%s shares an address with %s: %d players on from %s.",
-              ch->name, names, others + 1, d->host );
+              "%s shares an address with %s: %d players on from %s. "
+              "(One address can be one household or network; it is not proof of one person.)",
+              ch->name, names, others + 1, d->addr_text );
     log_string( buf );
     wizinfo( buf, level );
 }

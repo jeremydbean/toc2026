@@ -86,6 +86,8 @@ set(SRC_FILES
     src/wizlist.c
     src/dnsasync.c
     src/connguard.c
+    src/netaddr.c
+    src/guardstore.c
 )
 
 add_executable(${TARGET_NAME})

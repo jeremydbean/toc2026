@@ -4147,7 +4147,39 @@ host characters (`host_name_clean`), and asks `check_ban` again, closing a
 connection banned by name. Both builds link threads (`-pthread`,
 `Threads::Threads`). `DNS <address>` by hand still blocks, deliberately.
 `TOC_DNS_LOOPBACK=1` looks loopback up and `TOC_DNS_DELAY_MS` slows the
-worker, for tests.
+worker, for tests. Two workers (`DNS_WORKERS`), so one slow resolver
+does not hold every lookup behind it; `close_socket` cancels a queued
+lookup (`dns_async_cancel`), a job queued past `DNS_JOB_MAX_AGE` is
+dropped, and staff DNS shows the counters (`dns_async_stats`: asked,
+named, nameless, queue full, cancelled, expired, stale, average and
+slowest ms). There is no cache and no per-lookup deadline: `getnameinfo`
+cannot be interrupted safely, and a thread is never cancelled.
+
+**A connection's address is not its host name** (review, 2026-11-06).
+`d->addr` (`NET_ADDR`, `src/netaddr.c`: family and bytes) and
+`d->addr_text` (canonical text) are set at accept or by the PROXY header
+and never change; `d->host` is display only, and `d->host_resolved` says
+whether it is a name `dns_collect` gave. `d->ip` is the 32-bit guard and
+throttle key (`net_addr_guard_key`: IPv4 itself, an IPv6 /64 folded into
+240.0.0.0/4) -- internal, never shown as an address. **Anything that asks
+"is this the same address" or "is this banned" reads `d->addr`**:
+`check_ban(d, type)` matches an address ban by bytes (`net_addr_equal`)
+whatever DNS did, and a host-name ban only against a resolved name;
+`wizinfo_same_host` compares `d->addr`, exact (not the /64); SOCKETS IP
+and DNS LIST show `addr_text`. The host string used to be what all of
+them compared, and the resolver rewrites it: a numeric ban stopped
+matching once a PTR name came back, one address went unreported as
+shared while only one connection had resolved, and two addresses with
+one PTR name were reported as one. BAN and ALLOW store an address in its
+canonical spelling (`net_addr_canonical`), so an IPv6 ban typed whole
+matches the compressed form the web bridge sends. A parsed address is
+the whole string (`net_addr_parse`): a numeric prefix is no address.
+Staff listings of connections ask `staff_may_see_descriptor` (SOCKETS's
+rule: the body and, switched, the original) and leave a hidden row out
+whole; DNS LIST had shown a creator SOCKETS hid. `new_descriptor`
+refuses a descriptor at or past `FD_SETSIZE` before it is one.
+`tests/test_client_addresses.py`, `tests/test_guard_addresses.py` (the C
+harness for `netaddr.c` and `guardstore.c`).
 
 **The connection guard** (`src/connguard.c`; owner's rules, 2026-11-06:
 never auto-ban an address a player uses; staff BAN still applies; staff
@@ -4173,11 +4205,28 @@ is refused before the greeting, by `conn_guard_admit()` in
 `GUARD_PENDING_MAX` (8) not yet playing from one address. **An address a
 player logged in from within `GUARD_TRUST_DAYS` (90), or is playing from
 now, is never counted, limited or paused**: `login_note_success` and the
-new-player path call `conn_guard_trust(ip, who)`, kept in
-`log/player_addresses.tsv` (an address and the last login from it; a line
-a day at most, the newest wins, rewritten past `GUARD_TRUST_FILE_MAX`) and
-seeded at boot from `log/logins.tsv`'s numeric hosts and `toc.log`'s
-`Sock.sinaddr` lines followed by a login. **Staff hear it** through
+new-player path call `conn_guard_trust(&d->addr, who)`, kept in
+`log/player_addresses.tsv` by `src/guardstore.c` (no `merc.h`; an
+address, IPv4 or IPv6, and the last login from it; the newest line
+wins; rewritten past `GUARD_TRUST_FILE_MAX`). **A row keeps two times**:
+`last`, the newest login seen, and `persisted`, the newest the file is
+known to hold; a write is due a day after the last line that *landed*
+(`guard_store_due`), never a day after the last login -- measured from
+the last login, a player who logged in more often than daily postponed
+the write for ever and a restart read back their first login. Every
+`fprintf`/`fflush`/`fclose` is checked; a failed write leaves `persisted`
+alone and is tried at the next login and every five minutes by
+`conn_guard_tick`. **The file is the record**: once it exists the
+journals are never read to repair it. With none, `guard_load` starts it
+once from `log/logins.tsv` connect/reconnect/new rows and `toc.log`
+`Name@host has connected/reconnected/new player.` lines whose host is a
+numeric address (`guard_seed_login_row`, `guard_seed_log_line`), and
+nothing else: a host-name login ties no address, and a `Sock.sinaddr`
+line is never joined to a later login by nearness -- the old seeding
+did, and an interleaved connection gave the trust to the wrong address.
+A player missed is never shut out (a pause stops only new characters,
+and their login is recorded). Pauses, strikes and floods are memory
+only: a restart lifts them, deliberately. **Staff hear it** through
 `guard_say()` (log and WIZINFO): each pause and flood, a pause lifted by a
 login, and -- once an address in `GUARD_NOTICE_SECS` -- a new character or
 waiting connection refused; the hourly summary goes to WIZINFO when
@@ -4191,7 +4240,12 @@ a connection that spoke. `login_idle_sweep()` closes a connection not
 playing after `LOGIN_IDLE_SECS` (600; `TOC_LOGIN_IDLE_SECS`) without input
 (`d->input_at`). Staff `DNS GUARD`/`DNS ALLOW <address>`. A test that
 needs an untrusted loopback after creating a character stops the server,
-removes `log/player_addresses.tsv` and `log/logins.tsv`, and boots again.
+writes an empty `log/player_addresses.tsv` (a comment line) -- deleting
+it starts the record again from the journals, which hold the world's own
+logins from 127.0.0.1 -- and boots again. A test of the start deletes it
+and writes the journals it wants read. `GUARD_GLOBAL_PENDING` (200;
+`TOC_GUARD_GLOBAL_PENDING`) caps connections not yet playing across the
+game, for untrusted addresses only.
 `tests/test_connection_guard.py`, also in `SANITIZE_MODULES`.
 
 ## Staff Invulnerability

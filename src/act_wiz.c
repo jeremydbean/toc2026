@@ -4258,6 +4258,19 @@ void do_peace( CHAR_DATA *ch, char *argument )
 BAN_DATA *              ban_free;
 BAN_DATA *              ban_list;
 
+/* Two ban entries name the same thing: the same address by family and
+   bytes, however each was spelled, or the same host name. */
+static bool ban_names_same( const char *a, const char *b )
+{
+    NET_ADDR x, y;
+
+    if ( a == NULL || b == NULL )
+        return FALSE;
+    if ( net_addr_parse( a, &x ) && net_addr_parse( b, &y ) )
+        return net_addr_equal( &x, &y );
+    return !str_cmp( a, b );
+}
+
 void do_ban( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -4268,6 +4281,10 @@ void do_ban( CHAR_DATA *ch, char *argument )
 	return;
 
     one_argument( argument, arg );
+    /* An address is kept in its one canonical spelling, so an IPv6 ban
+       typed whole matches the compressed form a connection arrives as;
+       anything else is a host name (review, 2026-11-06). */
+    net_addr_canonical( arg, arg, sizeof(arg) );
 
     if ( arg[0] == '\0' )
     {
@@ -4283,7 +4300,7 @@ void do_ban( CHAR_DATA *ch, char *argument )
 
     for ( pban = ban_list; pban != NULL; pban = pban->next )
     {
-	if ( !str_cmp( arg, pban->name ) )
+	if ( ban_names_same( arg, pban->name ) )
 	{
 	    send_to_char( "That site is already banned!\n\r", ch );
 	    return;
@@ -4303,7 +4320,13 @@ void do_ban( CHAR_DATA *ch, char *argument )
     pban->name  = str_dup( arg );
     pban->next  = ban_list;
     ban_list    = pban;
-    snprintf(buf, sizeof(buf),"%s is now banned.\n\r",pban->name);
+    {
+        NET_ADDR parsed;
+
+        snprintf( buf, sizeof(buf), "%s is now banned%s.\n\r", pban->name,
+                  net_addr_parse( pban->name, &parsed ) ? " (an address: matched exactly)"
+                                                        : " (a host name: matched once it resolves)" );
+    }
     send_to_char( buf, ch );
     ban_update( );
     return;
@@ -4317,6 +4340,7 @@ void do_allow( CHAR_DATA *ch, char *argument )
     BAN_DATA *curr;
 
     one_argument( argument, arg );
+    net_addr_canonical( arg, arg, sizeof(arg) );
 
     if ( arg[0] == '\0' )
     {
@@ -4327,7 +4351,7 @@ void do_allow( CHAR_DATA *ch, char *argument )
     prev = NULL;
     for ( curr = ban_list; curr != NULL; prev = curr, curr = curr->next )
     {
-	if ( !str_cmp( arg, curr->name ) )
+	if ( ban_names_same( arg, curr->name ) )
 	{
 	    if ( prev == NULL )
 		ban_list   = ban_list->next;
@@ -7608,6 +7632,22 @@ void do_undeny(CHAR_DATA *ch, char *argument)
  * DNS: the resolver switch, what it made of the people connected, and a
  * lookup for one address.
  */
+/*
+ * Whether a staff listing of connections may show this one to ch: a
+ * connection still at the login prompts with nobody loaded, or one whose
+ * body -- and, when switched, whose original, by whose name it is listed --
+ * ch can see (review, 2026-10-22). SOCKETS and DNS LIST both ask it, and a
+ * row it refuses is left out whole, address included: DNS LIST showed a
+ * creator SOCKETS hid (review, 2026-11-06).
+ */
+static bool staff_may_see_descriptor( CHAR_DATA *ch, DESCRIPTOR_DATA *d )
+{
+    if ( d->character == NULL )
+        return TRUE;
+    return can_see( ch, d->character )
+        && ( d->original == NULL || can_see( ch, d->original ) );
+}
+
 void do_dns( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -7619,12 +7659,29 @@ void do_dns( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
+        extern long dns_stale_results;
+        DNS_ASYNC_STATS stats;
+        long made;
+
+        dns_async_stats( &stats );
+        made = stats.found + stats.failed;
+        snprintf( buf, sizeof(buf),
+            "Resolver: %d worker%s; %ld asked, %ld named, %ld with no name, %ld refused (queue\n\r"
+            "full), %ld dropped (connection closed), %ld dropped (waited too long), %ld\n\r"
+            "names for connections already gone; average %ld ms, slowest %ld ms.\n\r",
+            stats.workers, stats.workers == 1 ? "" : "s", stats.submitted, stats.found,
+            stats.failed, stats.queue_full, stats.cancelled, stats.expired, dns_stale_results,
+            made > 0 ? stats.total_ms / made : 0, stats.slowest_ms );
+        send_to_char( buf, ch );
+        if ( stats.workers == 0 && stats.submitted == 0 && dns_lookup_enabled )
+            send_to_char( "(No lookup has been asked yet, or no worker could be started.)\n\r", ch );
         snprintf( buf, sizeof(buf),
             "Hostname lookups are %s (made off the game loop; %d waiting).\n\r"
             "  dns on | off       resolve connecting addresses, or do not\n\r"
             "  dns list           what the resolver made of who is connected\n\r"
-            "  dns guard          the connection guard: blocks and player addresses\n\r"
-            "  dns allow <addr>   lift a guard block and count the address a player's\n\r"
+            "  dns guard          the connection guard: pauses and player addresses\n\r"
+            "  dns allow <addr>   lift a guard pause and count the address (IPv4 or\n\r"
+            "                     IPv6) a player's\n\r"
             "  dns <address>      look one up now\n\r",
             dns_lookup_enabled ? "ON" : "OFF", dns_async_pending() );
         send_to_char( buf, ch );
@@ -7639,7 +7696,8 @@ void do_dns( CHAR_DATA *ch, char *argument )
         send_to_char( buf, ch );
 
         if ( !dns_lookup_enabled )
-            send_to_char( "Bans written against host names will not match.\n\r", ch );
+            send_to_char( "Bans written against host names will not match; bans on\n\r"
+                          "addresses still do.\n\r", ch );
 
         snprintf( buf, sizeof(buf), "%s turned DNS lookups %s.",
                   ch->name, dns_lookup_enabled ? "on" : "off" );
@@ -7657,14 +7715,17 @@ void do_dns( CHAR_DATA *ch, char *argument )
     if ( !str_cmp( arg, "allow" ) )
     {
         char addr[MAX_INPUT_LENGTH];
+        char canonical[NET_ADDR_TEXT];
 
         argument = one_argument( argument, arg );
         one_argument( argument, addr );
-        if ( !conn_guard_allow( addr ) )
+        if ( !net_addr_canonical( addr, canonical, sizeof(canonical) )
+        ||   !conn_guard_allow( canonical ) )
         {
-            send_to_char( "Syntax: dns allow <dotted IPv4 address>\n\r", ch );
+            send_to_char( "Syntax: dns allow <IPv4 or IPv6 address>\n\r", ch );
             return;
         }
+        toc_strlcpy( addr, canonical, sizeof(addr) );
         snprintf( buf, sizeof(buf), "%s is no longer held back by the connection guard.\n\r", addr );
         send_to_char( buf, ch );
         snprintf( buf, sizeof(buf), "%s lifted the connection guard from %s.", ch->name, addr );
@@ -7680,17 +7741,15 @@ void do_dns( CHAR_DATA *ch, char *argument )
         for ( d = descriptor_list; d != NULL; d = d->next )
         {
             CHAR_DATA *who = ( d->original != NULL ) ? d->original : d->character;
-            struct in_addr address;
-            char numeric[INET_ADDRSTRLEN];
 
-            address.s_addr = d->ip;
-            if ( inet_ntop( AF_INET, &address, numeric, sizeof(numeric) ) == NULL )
-                toc_strlcpy( numeric, "?", sizeof(numeric) );
-
+            if ( !staff_may_see_descriptor( ch, d ) )
+                continue;
+            /* The address as the connection came (or as the web bridge
+               named it), never the throttle's key folded from it. */
             snprintf( buf, sizeof(buf), "  %-14s %-32s %s\n\r",
                 who != NULL && who->name != NULL ? who->name : "(connecting)",
                 d->host != NULL ? d->host : "(none)",
-                numeric );
+                d->addr_text[0] != '\0' ? d->addr_text : "?" );
             send_to_char( buf, ch );
             count++;
         }
@@ -7775,7 +7834,9 @@ void do_sockets( CHAR_DATA *ch, char *argument )
 
                 for ( d = descriptor_list; d != NULL; d = d->next )
                 {
-                     toc_strlcpy(chhost, d->host, sizeof(chhost));
+                     /* The host and the address: a resolved name hid the
+                        address an IP search was for. */
+                     snprintf( chhost, sizeof(chhost), "%s %s", d->host, d->addr_text );
 
                    if (d->character == NULL)
                    {
@@ -7793,8 +7854,7 @@ void do_sockets( CHAR_DATA *ch, char *argument )
                      }
                    }
 
-                   if ( d->character != NULL && can_see( ch, d->character )
-                   &&   ( d->original == NULL || can_see( ch, d->original ) ) )
+                   if ( d->character != NULL && staff_may_see_descriptor( ch, d ) )
                    {
                      if (!str_infix(arg2,chhost))
                      {
@@ -7833,8 +7893,7 @@ void do_sockets( CHAR_DATA *ch, char *argument )
 
 	/* Listed by the original's name when switched, so the original
 	   must be visible as well as the body (review, 2026-10-22). */
-	if ( d->character != NULL && can_see( ch, d->character )
-	&& ( d->original == NULL || can_see( ch, d->original ) )
+	if ( d->character != NULL && staff_may_see_descriptor( ch, d )
 	&& (arg[0] == '\0' || is_name(arg,d->character->name)
 			   || (d->original && is_name(arg,d->original->name))))
 	{

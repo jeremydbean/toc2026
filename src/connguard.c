@@ -18,13 +18,15 @@
  *  - A successful login trusts its address while it stays active: a player
  *    logged in from it within GUARD_TRUST_DAYS (90; owner, 2026-11-06:
  *    "players who've logged in within the last few months"). Trusted
- *    addresses are kept in log/player_addresses.tsv (a dotted address and
- *    when a player last logged in from it, a line; a login adds a line once
- *    a day at most, and the newest line for an address wins), seeded at
- *    boot from that file, from the login journal's numeric hosts and times,
- *    and from the log's own record of which connection logged in. log/ is
- *    published, as the login journal already is; the file holds nothing
- *    that journal and toc.log do not.
+ *    addresses are kept in log/player_addresses.tsv (an address, IPv4 or
+ *    IPv6, and when a player last logged in from it, a line; a line a day
+ *    at most, measured from the last line that landed, every write checked
+ *    and a failed one retried, the newest line for an address winning --
+ *    guardstore.c). The file is the record; with none yet it is started
+ *    once from the login journal's and toc.log's login records that name
+ *    their own numeric address, and nothing else. log/ is published, as
+ *    the login journal already is; the file holds nothing that journal and
+ *    toc.log do not.
  *  - A pause stops new characters, never a login. A real player on an
  *    address the list does not know yet -- a new ISP, a phone, a carrier's
  *    shared address -- still gets the greeting, logs in with their
@@ -44,7 +46,15 @@
  *    before the greeting for GUARD_FLOOD_SECS, flat. No player's client
  *    reconnects sixty times a minute; the busiest seen did fifteen.
  *  - Any address holds at most GUARD_PENDING_MAX connections that are not
- *    playing yet; the next is refused, not paused.
+ *    playing yet; the next is refused, not paused. And the whole game holds
+ *    at most GUARD_GLOBAL_PENDING such connections from addresses no player
+ *    uses (a flood from many addresses); a player's address is never
+ *    refused by either limit.
+ *  - Pauses and the strikes behind them are kept in memory only: a restart
+ *    lifts them all. That is deliberate -- a scanner that keeps coming is
+ *    paused again within six connections, and a pause written to disk
+ *    could outlive the mistake that caused it -- while the record of
+ *    players' addresses, which protects players, is on disk.
  *  - Silent connections -- closed without sending a line -- are counted, not
  *    logged one by one; GUARD_REPORT_SECS apart a summary line says how many
  *    there were, how many were refused and how many addresses were paused,
@@ -72,6 +82,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "guardstore.h"
 
 #define GUARD_SLOTS           512
 #define GUARD_TRUST_MAX      4096
@@ -85,6 +96,7 @@
 #define GUARD_FLOOD            60
 #define GUARD_FLOOD_SECS     3600
 #define GUARD_PENDING_MAX       8
+#define GUARD_GLOBAL_PENDING  200   /* not playing yet, from every address */
 #define GUARD_REPORT_SECS    3600
 #define GUARD_NOTICE_SECS     600
 #define GUARD_TRUST_FILE     "../log/player_addresses.tsv"
@@ -105,19 +117,17 @@ typedef struct guard_entry
     int      blocks;         /* pauses in the last week, for doubling */
     time_t   flood_until;    /* a flood: refused before the greeting */
     time_t   noticed_at;     /* staff last told of a refusal here */
+    char     text[NET_ADDR_TEXT];   /* the address last seen for this key */
 } GUARD_ENTRY;
 
 static GUARD_ENTRY guard_table[GUARD_SLOTS];
-typedef struct guard_trust
-{
-    uint32_t ip;
-    time_t   last;      /* a player last logged in from it */
-} GUARD_TRUST;
 
-static GUARD_TRUST guard_trusted[GUARD_TRUST_MAX];
-static int         guard_trusted_count;
-static long        guard_trust_lines;  /* lines in the file, for the rewrite */
+/* Players' addresses: guardstore.c, which keeps the login seen apart from
+   the login the file holds and checks every write. */
+static GUARD_TRUST guard_trust_rows[GUARD_TRUST_MAX];
+static GUARD_STORE guard_trust;
 static bool        guard_loaded;
+static time_t      guard_retry_at;    /* the next look for unwritten logins */
 static long        guard_silent;     /* since the last report */
 static long        guard_refused;
 static long        guard_blocks_new;
@@ -135,14 +145,14 @@ static int guard_limit( const char *env, int fallback )
     return n > 0 && n < 100000 ? (int) n : fallback;
 }
 
-/* Whether the guard looks at this address at all. */
+/* Whether the guard looks at this key at all. */
 static bool guard_applies( uint32_t ip )
 {
     const char *opt;
 
     if ( ip == 0 )
         return false;
-    if ( ( ntohl( ip ) >> 24 ) == 127 )
+    if ( !net_addr_key_is_v6( ip ) && ( ntohl( ip ) >> 24 ) == 127 )
     {
         opt = getenv( "TOC_GUARD_LOOPBACK" );
         return opt != NULL && opt[0] == '1';
@@ -150,195 +160,77 @@ static bool guard_applies( uint32_t ip )
     return true;
 }
 
-static GUARD_TRUST *guard_trust_find( uint32_t ip )
-{
-    int i;
-
-    for ( i = 0; i < guard_trusted_count; i++ )
-        if ( guard_trusted[i].ip == ip )
-            return &guard_trusted[i];
-    return NULL;
-}
-
 /* A player logged in from it within GUARD_TRUST_DAYS. */
 static bool guard_trusted_has( uint32_t ip )
 {
-    GUARD_TRUST *t = guard_trust_find( ip );
-
-    return t != NULL && current_time - t->last <= (time_t) GUARD_TRUST_DAYS * 86400;
-}
-
-/* Note a login from ip at `when`: the newest time wins. The previous time,
-   or 0 for an address not on the list. */
-static time_t guard_trusted_note( uint32_t ip, time_t when )
-{
-    GUARD_TRUST *t;
-    time_t before;
-    int i, oldest;
-
-    if ( ip == 0 || when <= 0 )
-        return 0;
-    if ( ( t = guard_trust_find( ip ) ) != NULL )
-    {
-        before = t->last;
-        if ( when > t->last )
-            t->last = when;
-        return before;
-    }
-    if ( guard_trusted_count >= GUARD_TRUST_MAX )
-    {
-        /* The address longest unseen gives way: the list is bounded so a
-           long life cannot grow it without end. */
-        oldest = 0;
-        for ( i = 1; i < guard_trusted_count; i++ )
-            if ( guard_trusted[i].last < guard_trusted[oldest].last )
-                oldest = i;
-        guard_trusted[oldest] = guard_trusted[--guard_trusted_count];
-    }
-    guard_trusted[guard_trusted_count].ip = ip;
-    guard_trusted[guard_trusted_count].last = when;
-    guard_trusted_count++;
-    return 0;
+    return guard_store_trusted( &guard_trust, ip, current_time, GUARD_TRUST_DAYS );
 }
 
 static int guard_active_count( void )
 {
-    int i, n = 0;
-
-    for ( i = 0; i < guard_trusted_count; i++ )
-        if ( current_time - guard_trusted[i].last <= (time_t) GUARD_TRUST_DAYS * 86400 )
-            n++;
-    return n;
+    return guard_store_active( &guard_trust, current_time, GUARD_TRUST_DAYS );
 }
 
-/* toc.log's "Wed Nov  4 03:18:53 2026 :: ..." as an epoch, or 0. Local
-   time, as the log writes it. */
-static time_t guard_log_time( const char *line )
+/* The whole list, written aside and renamed in; logged if it fails. */
+static bool guard_trust_rewrite( void )
 {
-    static const char *const months[] =
-        { "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec" };
-    char wday[4], mon[4];
-    struct tm tm;
-    int day, hh, mm, ss, year, i;
-
-    if ( sscanf( line, "%3s %3s %d %d:%d:%d %d", wday, mon, &day, &hh, &mm, &ss, &year ) != 7 )
-        return 0;
-    memset( &tm, 0, sizeof(tm) );
-    tm.tm_mon = -1;
-    for ( i = 0; i < 12; i++ )
-        if ( !strcmp( mon, months[i] ) )
-            tm.tm_mon = i;
-    if ( tm.tm_mon < 0 )
-        return 0;
-    tm.tm_mday = day;
-    tm.tm_hour = hh;
-    tm.tm_min = mm;
-    tm.tm_sec = ss;
-    tm.tm_year = year - 1900;
-    tm.tm_isdst = -1;
-    return mktime( &tm );
-}
-
-/* A dotted IPv4 address, whole, or 0. */
-static uint32_t guard_parse( const char *text )
-{
-    struct in_addr address;
-    char buf[INET_ADDRSTRLEN];
-    size_t n = 0;
-
-    while ( text[n] != '\0' && ( isdigit( (unsigned char) text[n] ) || text[n] == '.' )
-         && n + 1 < sizeof(buf) )
-    {
-        buf[n] = text[n];
-        n++;
-    }
-    buf[n] = '\0';
-    if ( n == 0 || inet_pton( AF_INET, buf, &address ) != 1 )
-        return 0;
-    return address.s_addr;
+    if ( guard_store_rewrite( &guard_trust, GUARD_TRUST_FILE, GUARD_TRUST_FILE ".tmp" ) )
+        return true;
+    log_string( "Connection guard: could not rewrite " GUARD_TRUST_FILE "; will try again." );
+    return false;
 }
 
 /*
- * Boot: the trusted list, its own file first, then what the login journal
- * and the log already say about which addresses players came from. The
- * journal records a numeric host when the lookup gave none; the log names a
- * connection's address ("Sock.sinaddr:") and, a line or few later, the
- * player it carried ("... has connected.", "... reconnected.", "... new
- * player."). Anything misread here only trusts an address too readily,
- * which is the safe way round.
+ * Boot: the record of players' addresses. Its own file is the record; once
+ * it exists the older journals are never read again, so nothing depends on
+ * them to repair it (review, 2026-11-06).
+ *
+ * With no file yet, the record is started once from what the journals
+ * reliably say: a login row or line that names its own numeric address
+ * (guard_seed_login_row, guard_seed_log_line). A login recorded by host
+ * name is left out -- before 2026-11-06 the name was looked up at accept,
+ * so most were -- and so is the old guess that joined a connection line
+ * to the next login line, which an unrelated connection between them
+ * made wrong. A player missed this way is not shut out: a pause stops only
+ * new characters, and their next login trusts the address.
  */
 static void guard_load( void )
 {
     char line[1024];
     FILE *fp;
-    uint32_t pending = 0;
-    int since = 0;
+    NET_ADDR a;
+    time_t when;
+    long seeded = 0;
 
     if ( guard_loaded )
         return;
     guard_loaded = true;
+    guard_store_init( &guard_trust, guard_trust_rows, GUARD_TRUST_MAX );
+    if ( guard_report_at == 0 )
+        guard_report_at = current_time;
 
-    if ( ( fp = fopen( GUARD_TRUST_FILE, "r" ) ) != NULL )
-    {
-        while ( fgets( line, sizeof(line), fp ) != NULL )
-        {
-            char *tab = strchr( line, '\t' );
+    if ( guard_store_load( &guard_trust, GUARD_TRUST_FILE ) >= 0 )
+        return;
 
-            guard_trust_lines++;
-            if ( tab != NULL )
-                guard_trusted_note( guard_parse( line ), (time_t) strtol( tab + 1, NULL, 10 ) );
-        }
-        fclose( fp );
-    }
-
-    /* <epoch> <name> <host> <event>...: a numeric host is an address. */
     if ( ( fp = fopen( GUARD_LOGINS_FILE, "r" ) ) != NULL )
     {
         while ( fgets( line, sizeof(line), fp ) != NULL )
-        {
-            char *tab = strchr( line, '\t' );
-
-            if ( tab != NULL && ( tab = strchr( tab + 1, '\t' ) ) != NULL )
-                guard_trusted_note( guard_parse( tab + 1 ), (time_t) strtol( line, NULL, 10 ) );
-        }
+            if ( guard_seed_login_row( line, &a, &when ) && guard_store_note( &guard_trust, &a, when ) )
+                seeded++;
         fclose( fp );
     }
-
     if ( ( fp = fopen( GUARD_TOC_LOG, "r" ) ) != NULL )
     {
         while ( fgets( line, sizeof(line), fp ) != NULL )
-        {
-            char *at = strstr( line, ":: Sock.sinaddr:" );
-
-            if ( at != NULL )
-            {
-                at += strlen( ":: Sock.sinaddr:" );
-                while ( *at == ' ' )
-                    at++;
-                pending = guard_parse( at );
-                since = 0;
-                continue;
-            }
-            if ( pending == 0 )
-                continue;
-            if ( ++since > 12 )
-            {
-                pending = 0;
-                continue;
-            }
-            if ( strstr( line, " has connected." ) != NULL
-            ||   strstr( line, " reconnected." ) != NULL
-            ||   strstr( line, " new player." ) != NULL )
-            {
-                guard_trusted_note( pending, guard_log_time( line ) );
-                pending = 0;
-            }
-        }
+            if ( guard_seed_log_line( line, &a, &when ) && guard_store_note( &guard_trust, &a, when ) )
+                seeded++;
         fclose( fp );
     }
-
-    if ( guard_report_at == 0 )
-        guard_report_at = current_time;
+    snprintf( line, sizeof(line),
+              "Connection guard: started the record of players' addresses from the journals: "
+              "%d addresses from %ld login records naming one.", guard_trust.count, seeded );
+    log_string( line );
+    guard_trust_rewrite();
 }
 
 /* At boot, before the game loop: toc.log runs to megabytes, and reading it
@@ -378,13 +270,16 @@ static GUARD_ENTRY *guard_find( uint32_t ip, bool claim )
     return oldest;
 }
 
-static void guard_ip_text( uint32_t ip, char *buf, size_t size )
+/* What staff see for an entry: its address, and for IPv6 that the guard
+   counts the whole /64 -- never the internal key as though it were one. */
+static void guard_ip_text( const GUARD_ENTRY *e, char *buf, size_t size )
 {
-    struct in_addr address;
-
-    address.s_addr = ip;
-    if ( inet_ntop( AF_INET, &address, buf, (socklen_t) size ) == NULL )
+    if ( e->text[0] == '\0' )
         toc_strlcpy( buf, "?", size );
+    else if ( net_addr_key_is_v6( e->ip ) )
+        snprintf( buf, size, "%s (its /64)", e->text );
+    else
+        toc_strlcpy( buf, e->text, size );
 }
 
 /* Staff are told, and the log keeps it. */
@@ -398,7 +293,7 @@ static void guard_say( const char *text )
    one lifts it. */
 static void guard_block( GUARD_ENTRY *e, const char *why )
 {
-    char addr[INET_ADDRSTRLEN];
+    char addr[NET_ADDR_TEXT + 16];
     char buf[MAX_STRING_LENGTH];
     long length;
     int shift;
@@ -414,7 +309,7 @@ static void guard_block( GUARD_ENTRY *e, const char *why )
     e->blocked_until = current_time + length;
     e->conns = 0;
     guard_blocks_new++;
-    guard_ip_text( e->ip, addr, sizeof(addr) );
+    guard_ip_text( e, addr, sizeof(addr) );
     snprintf( buf, sizeof(buf),
               "Connection guard: %s paused for %ld hours (%s; no player has logged in from it "
               "in %d days). Logins still work; new characters wait. DNS ALLOW %s lifts it.",
@@ -463,14 +358,16 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
 {
     DESCRIPTOR_DATA *od;
     GUARD_ENTRY *e;
-    char addr[INET_ADDRSTRLEN];
+    char addr[NET_ADDR_TEXT + 16];
     char note[MAX_STRING_LENGTH];
     int pending = 0;
+    int everyone = 0;
 
     if ( d == NULL || !guard_watches( d->ip, d ) )
         return NULL;
     e = guard_find( d->ip, true );
     e->last_seen = current_time;
+    toc_strlcpy( e->text, d->addr_text, sizeof(e->text) );
 
     if ( e->flood_until > current_time )
     {
@@ -495,7 +392,7 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
         e->burst = 0;
         guard_blocks_new++;
         guard_refused++;
-        guard_ip_text( e->ip, addr, sizeof(addr) );
+        guard_ip_text( e, addr, sizeof(addr) );
         snprintf( note, sizeof(note),
                   "Connection guard: %s refused for %d minutes (%d connections in a minute; "
                   "no player has logged in from it in %d days). DNS ALLOW %s lifts it.",
@@ -510,14 +407,38 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
         guard_block( e, "too many connections in a minute" );
 
     for ( od = descriptor_list; od != NULL; od = od->next )
-        if ( od != d && od->ip == d->ip && od->connected != CON_PLAYING )
-            pending++;
+        if ( od != d && od->connected != CON_PLAYING )
+        {
+            everyone++;
+            if ( od->ip == d->ip )
+                pending++;
+        }
+    /* The whole game's budget of connections not yet playing: a flood from
+       many addresses at once is shed here, untrusted connections first --
+       a player's address returned above and is never refused by it, and
+       nobody already playing is touched (review, 2026-11-06). */
+    if ( everyone >= guard_limit( "TOC_GUARD_GLOBAL_PENDING", GUARD_GLOBAL_PENDING ) )
+    {
+        static time_t said;
+
+        guard_refused++;
+        if ( current_time - said >= GUARD_NOTICE_SECS )
+        {
+            said = current_time;
+            snprintf( note, sizeof(note),
+                      "Connection guard: %d connections are waiting at the login prompts; "
+                      "new ones from addresses no player uses are refused for now.", everyone );
+            guard_say( note );
+        }
+        snprintf( buf, size, "The game is very busy; please try again in a minute.\n\r" );
+        return buf;
+    }
     if ( pending >= GUARD_PENDING_MAX )
     {
         guard_refused++;
         if ( guard_notice_due( e ) )
         {
-            guard_ip_text( e->ip, addr, sizeof(addr) );
+            guard_ip_text( e, addr, sizeof(addr) );
             snprintf( note, sizeof(note),
                       "Connection guard: %s refused a connection: %d already waiting at the login "
                       "prompt (told again in %d minutes at most).",
@@ -551,6 +472,7 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
         return;
     e = guard_find( d->ip, true );
     e->last_seen = current_time;
+    toc_strlcpy( e->text, d->addr_text, sizeof(e->text) );
     if ( e->window_start == 0 || current_time - e->window_start > GUARD_STRIKE_WINDOW )
     {
         e->window_start = current_time;
@@ -570,7 +492,7 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
 const char *conn_guard_new_char( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size )
 {
     GUARD_ENTRY *e;
-    char addr[INET_ADDRSTRLEN];
+    char addr[NET_ADDR_TEXT + 16];
     char note[MAX_STRING_LENGTH];
     long left;
 
@@ -582,7 +504,7 @@ const char *conn_guard_new_char( DESCRIPTOR_DATA *d, const char *name, char *buf
     guard_new_refused++;
     if ( guard_notice_due( e ) )
     {
-        guard_ip_text( e->ip, addr, sizeof(addr) );
+        guard_ip_text( e, addr, sizeof(addr) );
         snprintf( note, sizeof(note),
                   "Connection guard: new character '%s' refused from paused %s "
                   "(%ld minutes left). DNS ALLOW %s lets it in.",
@@ -596,64 +518,56 @@ const char *conn_guard_new_char( DESCRIPTOR_DATA *d, const char *name, char *buf
     return buf;
 }
 
-/* The whole list, newest times only, written aside and renamed in. */
-static void guard_trust_rewrite( void )
+/* A login's address, written down when a day has passed since the last
+   line that landed for it; a write that fails is tried again (here at the
+   next login, or by conn_guard_tick). */
+static void guard_trust_persist( GUARD_TRUST *t )
 {
-    char addr[INET_ADDRSTRLEN];
-    FILE *fp;
-    int i;
+    static time_t said;
 
-    if ( ( fp = fopen( GUARD_TRUST_FILE ".tmp", "w" ) ) == NULL )
+    if ( t == NULL || !guard_store_due( t ) )
         return;
-    for ( i = 0; i < guard_trusted_count; i++ )
+    if ( guard_trust.file_lines >= GUARD_TRUST_FILE_MAX )
     {
-        guard_ip_text( guard_trusted[i].ip, addr, sizeof(addr) );
-        fprintf( fp, "%s\t%ld\n", addr, (long) guard_trusted[i].last );
+        guard_trust_rewrite();
+        return;
     }
-    if ( temp_file_commit( fp, GUARD_TRUST_FILE ".tmp", GUARD_TRUST_FILE ) )
-        guard_trust_lines = guard_trusted_count;
+    if ( guard_store_append( &guard_trust, GUARD_TRUST_FILE, t ) )
+        return;
+    if ( current_time - said >= 3600 )
+    {
+        said = current_time;
+        log_string( "Connection guard: could not write " GUARD_TRUST_FILE "; will try again." );
+    }
 }
 
 /* A player logged in (or staff allowed the address): it is trusted for
-   GUARD_TRUST_DAYS from now, and any pause on it ends. Written down once a
-   day at most per address. `who` says why, for staff; NULL when the caller
-   tells them itself. */
-void conn_guard_trust( uint32_t ip, const char *who )
+   GUARD_TRUST_DAYS from now, and any pause on it ends. `who` says why, for
+   staff; NULL when the caller tells them itself. */
+void conn_guard_trust( const NET_ADDR *a, const char *who )
 {
     GUARD_ENTRY *e;
-    FILE *fp;
-    char addr[INET_ADDRSTRLEN];
+    char addr[NET_ADDR_TEXT + 16];
     char buf[MAX_STRING_LENGTH];
-    time_t before;
+    uint32_t ip = net_addr_guard_key( a );
 
     if ( !guard_applies( ip ) )
         return;
     guard_load();
-    guard_ip_text( ip, addr, sizeof(addr) );
     if ( ( e = guard_find( ip, false ) ) != NULL )
     {
+        if ( e->text[0] == '\0' )
+            net_addr_text( a, e->text, sizeof(e->text) );
         if ( who != NULL && ( e->blocked_until > current_time || e->flood_until > current_time ) )
         {
+            guard_ip_text( e, addr, sizeof(addr) );
             snprintf( buf, sizeof(buf), "Connection guard: pause on %s lifted -- %s.", addr, who );
             guard_say( buf );
         }
         e->blocked_until = e->flood_until = 0;
         e->conns = e->burst = 0;
     }
-    before = guard_trusted_note( ip, current_time );
-    if ( before != 0 && current_time - before < 86400 )
-        return;
-    if ( guard_trust_lines >= GUARD_TRUST_FILE_MAX )
-    {
-        guard_trust_rewrite();
-        return;
-    }
-    if ( ( fp = fopen( GUARD_TRUST_FILE, "a" ) ) != NULL )
-    {
-        fprintf( fp, "%s\t%ld\n", addr, (long) current_time );
-        fclose( fp );
-        guard_trust_lines++;
-    }
+    guard_trust_persist( guard_store_note( &guard_trust, a, current_time ) );
 }
 
 bool conn_guard_trusted( uint32_t ip )
@@ -672,6 +586,14 @@ void conn_guard_tick( void )
 
     if ( guard_report_at == 0 )
         guard_report_at = current_time;
+    /* A login whose line did not land is written again, so the record does
+       not wait on that player's next login. */
+    if ( guard_loaded && current_time >= guard_retry_at )
+    {
+        guard_retry_at = current_time + 300;
+        for ( i = 0; i < guard_trust.count; i++ )
+            guard_trust_persist( &guard_trust.rows[i] );
+    }
     if ( current_time - guard_report_at < GUARD_REPORT_SECS )
         return;
     guard_report_at = current_time;
@@ -702,7 +624,7 @@ void conn_guard_tick( void )
 void conn_guard_report( CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
-    char addr[INET_ADDRSTRLEN];
+    char addr[NET_ADDR_TEXT + 16];
     int shown = 0;
     int i;
 
@@ -727,7 +649,7 @@ void conn_guard_report( CHAR_DATA *ch )
 
         if ( !e->used || ( e->blocked_until <= current_time && e->flood_until <= current_time ) )
             continue;
-        guard_ip_text( e->ip, addr, sizeof(addr) );
+        guard_ip_text( e, addr, sizeof(addr) );
         if ( e->flood_until > current_time )
             snprintf( buf, sizeof(buf), "  %-16s refused %ld more minutes (a flood)\n\r",
                       addr, (long) ( e->flood_until - current_time + 59 ) / 60 );
@@ -741,13 +663,15 @@ void conn_guard_report( CHAR_DATA *ch )
         send_to_char( "  Nobody is paused.\n\r", ch );
 }
 
-/* Staff DNS ALLOW <address>: lift a pause and trust the address. */
+/* Staff DNS ALLOW <address>: lift a pause and trust the address -- IPv4,
+   or IPv6, whose whole /64 the guard counts as one, exactly as admission
+   keys it. */
 bool conn_guard_allow( const char *text )
 {
-    uint32_t ip = guard_parse( text );
+    NET_ADDR a;
 
-    if ( ip == 0 )
+    if ( !net_addr_parse( text, &a ) )
         return false;
-    conn_guard_trust( ip, NULL );   /* DNS ALLOW says so itself */
+    conn_guard_trust( &a, NULL );   /* DNS ALLOW says so itself */
     return true;
 }

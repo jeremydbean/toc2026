@@ -29,4 +29,24 @@ int  dns_async_take( long *serial, char *host, size_t size );
 /* Lookups queued or running, for staff DNS. */
 int  dns_async_pending( void );
 
+/* A connection closed: its lookup, if still queued, is dropped. One a
+   worker is already making finishes and is thrown away on collection. */
+void dns_async_cancel( long serial );
+
+/* What the resolver has done since boot, for staff DNS. */
+typedef struct dns_async_stats
+{
+    int  workers;          /* started; 0 when none could be */
+    long submitted;
+    long queue_full;       /* refused: the queue was full */
+    long cancelled;        /* dropped from the queue: its connection closed */
+    long expired;          /* dropped from the queue: waited past DNS_JOB_MAX_AGE */
+    long found;
+    long failed;           /* the resolver found no name */
+    long slowest_ms;       /* the longest single lookup */
+    long total_ms;         /* all lookups, for the average */
+} DNS_ASYNC_STATS;
+
+void dns_async_stats( DNS_ASYNC_STATS *out );
+
 #endif

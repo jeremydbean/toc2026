@@ -20,6 +20,11 @@
    without end: past the limit a connection keeps its address. */
 #define DNS_QUEUE_MAX   64
 #define DNS_HOST_MAX    256
+/* Two workers, so one resolver that takes its time does not hold up every
+   lookup queued behind it; a queued job older than this is dropped unmade
+   (its connection has long since been shown its address). */
+#define DNS_WORKERS      2
+#define DNS_JOB_MAX_AGE 30
 
 typedef struct dns_job
 {
@@ -28,6 +33,7 @@ typedef struct dns_job
     socklen_t len;
     char host[DNS_HOST_MAX];
     int found;
+    time_t queued;
 } DNS_JOB;
 
 static pthread_mutex_t dns_lock = PTHREAD_MUTEX_INITIALIZER;
@@ -36,9 +42,18 @@ static DNS_JOB dns_todo[DNS_QUEUE_MAX];
 static int     dns_todo_count;
 static DNS_JOB dns_done[DNS_QUEUE_MAX];
 static int     dns_done_count;
-static int     dns_running;            /* a lookup the worker holds */
+static int     dns_running;            /* lookups the workers hold */
 static int     dns_started;            /* 1 started, -1 could not start */
 static long    dns_delay_ms;           /* TOC_DNS_DELAY_MS, tests only */
+static DNS_ASYNC_STATS dns_stats;      /* under dns_lock */
+
+static long dns_now_ms( void )
+{
+    struct timespec now;
+
+    clock_gettime( CLOCK_MONOTONIC, &now );
+    return (long) now.tv_sec * 1000L + now.tv_nsec / 1000000L;
+}
 
 static void *dns_worker( void *unused )
 {
@@ -46,14 +61,21 @@ static void *dns_worker( void *unused )
     for ( ;; )
     {
         DNS_JOB job;
+        long began, took;
 
         pthread_mutex_lock( &dns_lock );
-        while ( dns_todo_count == 0 )
-            pthread_cond_wait( &dns_wake, &dns_lock );
-        job = dns_todo[0];
-        memmove( &dns_todo[0], &dns_todo[1], sizeof(DNS_JOB) * (size_t) ( dns_todo_count - 1 ) );
-        dns_todo_count--;
-        dns_running = 1;
+        for ( ;; )
+        {
+            while ( dns_todo_count == 0 )
+                pthread_cond_wait( &dns_wake, &dns_lock );
+            job = dns_todo[0];
+            memmove( &dns_todo[0], &dns_todo[1], sizeof(DNS_JOB) * (size_t) ( dns_todo_count - 1 ) );
+            dns_todo_count--;
+            if ( time( NULL ) - job.queued <= DNS_JOB_MAX_AGE )
+                break;
+            dns_stats.expired++;
+        }
+        dns_running++;
         pthread_mutex_unlock( &dns_lock );
 
         if ( dns_delay_ms > 0 )
@@ -65,11 +87,20 @@ static void *dns_worker( void *unused )
             nanosleep( &pause, NULL );
         }
         /* NI_NAMEREQD: no name is no answer, and the address stays. */
+        began = dns_now_ms();
         job.found = getnameinfo( (struct sockaddr *) &job.addr, job.len,
                                  job.host, sizeof(job.host), NULL, 0, NI_NAMEREQD ) == 0;
+        took = dns_now_ms() - began;
 
         pthread_mutex_lock( &dns_lock );
-        dns_running = 0;
+        dns_running--;
+        if ( job.found )
+            dns_stats.found++;
+        else
+            dns_stats.failed++;
+        dns_stats.total_ms += took;
+        if ( took > dns_stats.slowest_ms )
+            dns_stats.slowest_ms = took;
         if ( job.found && dns_done_count < DNS_QUEUE_MAX )
             dns_done[dns_done_count++] = job;
         pthread_mutex_unlock( &dns_lock );
@@ -82,6 +113,7 @@ static int dns_start( void )
     pthread_attr_t attr;
     pthread_t thread;
     const char *delay;
+    int i, started = 0;
 
     if ( dns_started != 0 )
         return dns_started > 0;
@@ -94,9 +126,15 @@ static int dns_start( void )
     if ( pthread_attr_init( &attr ) != 0 )
         return 0;
     pthread_attr_setdetachstate( &attr, PTHREAD_CREATE_DETACHED );
-    if ( pthread_create( &thread, &attr, dns_worker, NULL ) == 0 )
-        dns_started = 1;
+    for ( i = 0; i < DNS_WORKERS; i++ )
+        if ( pthread_create( &thread, &attr, dns_worker, NULL ) == 0 )
+            started++;
     pthread_attr_destroy( &attr );
+    pthread_mutex_lock( &dns_lock );
+    dns_stats.workers = started;
+    pthread_mutex_unlock( &dns_lock );
+    if ( started > 0 )
+        dns_started = 1;
     return dns_started > 0;
 }
 
@@ -116,9 +154,13 @@ int dns_async_submit( long serial, const struct sockaddr *addr, socklen_t len )
         job->serial = serial;
         memcpy( &job->addr, addr, (size_t) len );
         job->len = len;
+        job->queued = time( NULL );
         queued = 1;
+        dns_stats.submitted++;
         pthread_cond_signal( &dns_wake );
     }
+    else
+        dns_stats.queue_full++;
     pthread_mutex_unlock( &dns_lock );
     return queued;
 }
@@ -153,4 +195,31 @@ int dns_async_pending( void )
     n = dns_todo_count + dns_running;
     pthread_mutex_unlock( &dns_lock );
     return n;
+}
+
+void dns_async_cancel( long serial )
+{
+    int i;
+
+    if ( dns_started <= 0 || serial == 0 )
+        return;
+    pthread_mutex_lock( &dns_lock );
+    for ( i = 0; i < dns_todo_count; i++ )
+        if ( dns_todo[i].serial == serial )
+        {
+            memmove( &dns_todo[i], &dns_todo[i + 1], sizeof(DNS_JOB) * (size_t) ( dns_todo_count - i - 1 ) );
+            dns_todo_count--;
+            dns_stats.cancelled++;
+            break;
+        }
+    pthread_mutex_unlock( &dns_lock );
+}
+
+void dns_async_stats( DNS_ASYNC_STATS *out )
+{
+    if ( out == NULL )
+        return;
+    pthread_mutex_lock( &dns_lock );
+    *out = dns_stats;
+    pthread_mutex_unlock( &dns_lock );
 }

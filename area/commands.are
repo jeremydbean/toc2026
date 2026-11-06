@@ -2906,23 +2906,29 @@ Syntax: dns
         dns allow <address>
         dns <address or host name>
 
-DNS with no argument reports whether hostname lookups are on, and how many
-are waiting on the resolver.
+DNS with no argument reports whether hostname lookups are on, how many are
+waiting, and what the resolver has done since boot: lookups asked, named,
+nameless, refused for a full queue, dropped because their connection
+closed or because they waited too long, names that came back after their
+connection had gone, and the average and slowest lookup.
 
 DNS ON | OFF controls whether a connection is resolved to a host name.
-Lookups run on a thread of their own, so the game never waits on one: a
-connection shows its numeric address until the name comes back, and only
-a connection that sends a line is looked up at all -- a scanner that
-connects and hangs up costs nothing.  When a name arrives, a ban written
-against it is asked again, and a banned connection is closed then.
+Lookups run on two threads of their own, so the game never waits on one: a
+connection shows its address until the name comes back, and only a
+connection that sends a line is looked up at all -- a scanner that
+connects and hangs up costs nothing.  A connection's address never
+changes; the name is only shown.  When a name arrives, the bans are asked
+again, and a banned connection is closed then.
 
 The cost of off: bans written against host names will not match, because
-there is no host name to match against.  Bans on numeric addresses still
-work.  See BAN.
+there is no host name to match against.  Bans on addresses always work.
+See BAN.
 
-DNS LIST shows every connected descriptor with the host name the resolver
-produced and the numeric address behind it, which is how you tell a stale
-or spoofed-looking name from the address it really came from.
+DNS LIST shows the connections you could see in SOCKETS, each with the host
+name the resolver produced and the address behind it (IPv4 or IPv6, as it
+connected), which is how you tell a stale or spoofed-looking name from the
+address it really came from.  Anyone SOCKETS hides from you, DNS LIST
+hides too, address and all.
 
 DNS GUARD shows the connection guard.  An address no player has logged in
 from in the last 90 days is paused for six hours after six connections in
@@ -2931,7 +2937,10 @@ each time it happens again in a week, to seven days.  A pause stops new
 characters only: the greeting still comes, a player logs in as usual, and
 that login lifts the pause.  Sixty connections in a minute is a flood,
 refused before the greeting for an hour.  No address may hold more than
-eight connections waiting to log in.
+eight connections waiting to log in, and when two hundred are waiting
+across the whole game, new ones from addresses no player uses are refused
+until that falls.  An IPv6 address is counted with the rest of its /64.
+Pauses live in memory: a reboot lifts them all.
 
 Never a strike: a connection the login prompt timed out (a client left
 open reconnects on its own), one that asked for MSSP (the listing
@@ -2945,8 +2954,19 @@ Staff hear each pause, flood and lifted pause on WIZINFO, and a new
 character or a waiting connection refused (once an address in ten
 minutes), with the hourly count when anything was refused.
 
-DNS ALLOW <address> lifts a pause and counts the address as a player's for
-the next 90 days.
+DNS ALLOW <address> lifts a pause and counts the address -- IPv4, or IPv6
+and with it its /64 -- as a player's for the next 90 days.
+
+The record of players' addresses is log/player_addresses.tsv: each login
+writes a line a day at most per address, every write is checked, and one
+that fails is tried again.  When the file does not exist it is started
+once from the login journals, from logins that name their own numeric
+address and nothing else; a player missed that way is never shut out,
+since their next login is recorded.
+
+A shared-address notice ("shares an address with") compares exact
+addresses.  One address can be one household or network: it is an
+observation, not proof that the characters are one person.
 
 DNS <address> resolves one thing now: an IPv4 address gets a reverse
 lookup, anything else a forward one.  This one does block the game for the
@@ -5033,13 +5053,25 @@ Syntax: allow   <site>
 
 BAN <site> prohibits players from that site from logging in.  BAN with
 no arguments lists the banned sites.  ALLOW <site> removes a site from
-the ban list.
+the ban list.  The list is saved and kept across reboots.
 
-The site ban test works by suffix comparison, so if you ban 'foo.edu',
-all sites within 'foo.edu' are banned as well.
+A site is an address or a host name, and the two are matched differently:
 
-Site bans are not saved; every time the server is rebooted, the site
-ban list is cleared.
+  An address (IPv4 such as 203.0.113.9, or IPv6 in any spelling, such as
+  2001:db8::42 or 2001:0db8:0000:0000:0000:0000:0000:0042) is kept in one
+  canonical form and matched against the connection's own address, exactly
+  -- whether or not its host name has been looked up, whether the lookup
+  failed, and whether DNS is on.  A web client player is matched by the
+  address the web bridge names.
+
+  Anything else is a host name, matched whole (not by suffix) against the
+  name the resolver found.  It cannot match until a name comes back, so a
+  host-name ban closes a connection a moment after it arrives; with DNS
+  OFF, or for an address with no name, it never matches.  Ban the address
+  when it must hold.
+
+A ban is checked when a name is typed, again when the password is
+accepted, and again when a host name arrives.
 
 See also: BAN, DNS
 ~
