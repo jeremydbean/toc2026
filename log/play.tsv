@@ -24440,3 +24440,33 @@
 1793997795	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	brea	You do not have that item.	-	-
 1793997798	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	arm	You stop using a Roman-style breastplate. // You wear a Standard military battle armor on your body.	-	-
 1793997799	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
+1793997805	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	brea	You stop using a Standard military battle armor. // You wear a Roman-style breastplate on your body.	-	-
+1793997808	cmd	Trentlin	16	4208	dresden.are	standing	100	10	-	stash	put arm	You put a Standard military battle armor away for safe keeping.	-	-
+1793997809	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a spiked collar // ( 2) an onyx bracelet	-	+
+1793997812	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	coll	You must be level 24 to use this object.	-	-
+1793997816	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	stash		Your stash holds 55 of 75 things. //     1) a Standard military battle armor //     2) a silvery skin	-	+
+1793997823	cmd	Trentlin	16	4208	dresden.are	standing	100	4	-	stash	get mantle	You take a twin-headed mantle out of your stash.	-	-
+1793997825	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	man	You must be level 27 to use this object.	-	-
+1793997830	refused	Trentlin	16	4208	dresden.are	standing	100	0	-	(unknown)		Huh? Did you mean STASH?	refusal:unknown-command	-
+1793997833	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	stash		Your stash holds 54 of 75 things. //     1) a Standard military battle armor //     2) a silvery skin	-	+
+1793997841	cmd	Trentlin	16	4208	dresden.are	standing	100	10	-	stash	get haub	You take a twin-dragon hauberk out of your stash.	-	-
+1793997844	cmd	Trentlin	16	4208	dresden.are	standing	100	4	-	stash	get gaunt	You take a pair of pincer gauntlets out of your stash.	-	-
+1793997846	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	hau	You must be level 27 to use this object.	-	-
+1793997849	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	gaunt	You must be level 40 to use this object.	-	-
+1793997852	cmd	Trentlin	16	4208	dresden.are	standing	100	5	-	stash	get ogre	You take gauntlets of ogre power out of your stash.	-	-
+1793997859	cmd	Trentlin	16	4208	dresden.are	standing	100	6	-	stash	put pinc	You put a pair of pincer gauntlets away for safe keeping.	-	-
+1793997861	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	gaun	You must be level 23 to use this object.	-	-
+1793997862	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793997864	cmd	Trentlin	16	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997864	cmd	Trentlin	16	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793997865	cmd	Trentlin	16	4203	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793997865	cmd	Trentlin	16	4210	dresden.are	standing	100	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1793997865	cmd	Trentlin	16	4210	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1793997867	cmd	Trentlin	16	4210	dresden.are	standing	100	0	-	skills		Level  1: dagger              75%      hand to hand        77%       //           recall             100%       // Level  3: kick                79%      	-	+
+1793997873	cmd	Trentlin	16	4210	dresden.are	standing	100	0	-	practice		axe                  8%  dagger              75%  flail                6%   // mace                80%  spear                7%  sword                3%   // whip                15%  bash                 1%  dodge               76%  	-	+
+1793997875	cmd	Trentlin	16	4210	dresden.are	standing	100	0	-	train		You can't do that here.	-	-
+1793997877	state	Trentlin	16	4210	dresden.are	lvl=16 hp=396/396 mana=694/694 mv=287/291 align=-571 exp=38494 coin=4536357793 bank=11060093999 qp=451 prac=6 train=0 stash=52/75 remorts=1
+1793997877	cmd	Trentlin	16	4210	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997880	cmd	Trentlin	16	4210	dresden.are	standing	100	0	-	sleep		You go to sleep.	-	-
+1793997882	cmd	Trentlin	16	4210	dresden.are	sleeping	100	0	-	who		[16 Dwarf   Monk  ] Trentlin the Initiate of Writing // Players found: 1	-	-
+1793997884	session	Trentlin	16	4210	dresden.are	quit	1128s	+3 levels	+7733 exp	-14327465 copper	23 kills	0 deaths	1 quests	650 commands	2 refused	coin: loot 12g 42s 31c, quests 89g 83s 4c, spent 15p 35g	spent on: heal 15p 35g	exp: kills +7747, flee -20, skilluse +6
