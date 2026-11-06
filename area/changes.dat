@@ -9,6 +9,12 @@
 The game no longer freezes for a moment whenever somebody connects. A
 login prompt left with nothing typed for ten minutes now disconnects.
 
+@ 20261106f 2026-11-06
+A wrong password at login now says how many more are allowed before your
+address is locked out, and for how long. Each lockout within a week lasts
+longer. When you log in you are told of failed password attempts made on
+your character. HELP PASSWORD.
+
 @ 20261106e 2026-11-06 staff
 A password is now checked against the character as it is: an old one
 can no longer take over a character whose password changed meanwhile.

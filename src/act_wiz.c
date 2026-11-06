@@ -7718,6 +7718,7 @@ void do_dns( CHAR_DATA *ch, char *argument )
     if ( !str_cmp( arg, "guard" ) )
     {
         conn_guard_report( ch );
+        login_lock_report( ch );
         return;
     }
 
@@ -7737,6 +7738,15 @@ void do_dns( CHAR_DATA *ch, char *argument )
         toc_strlcpy( addr, canonical, sizeof(addr) );
         snprintf( buf, sizeof(buf), "%s is no longer held back by the connection guard.\n\r", addr );
         send_to_char( buf, ch );
+        {
+            NET_ADDR lifted;
+
+            if ( net_addr_parse( addr, &lifted ) && login_lock_lift( &lifted ) )
+            {
+                snprintf( buf, sizeof(buf), "Its wrong-password lockout and history are cleared.\n\r" );
+                send_to_char( buf, ch );
+            }
+        }
         snprintf( buf, sizeof(buf), "%s lifted the connection guard from %s.",
                   staff_actor( ch )->name, addr );
         log_string( buf );

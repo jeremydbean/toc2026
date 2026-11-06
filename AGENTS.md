@@ -4280,6 +4280,30 @@ logins from 127.0.0.1 -- and boots again. A test of the start deletes it
 and writes the journals it wants read. `GUARD_GLOBAL_PENDING` (200;
 `TOC_GUARD_GLOBAL_PENDING`) caps connections not yet playing across the
 game, for untrusted addresses only.
+
+**Wrong passwords are `src/loginlock.c`** (owner, 2026-11-06: "if the
+wrong password is entered over x times I want to ban the IP for x time.
+Increasing with warning"; it replaced the old throttle in `comm.c`).
+Every password refusal goes through `login_wrong_password(d, ch)` -- the
+name prompt's copy, the live-password check and `login_reload_character`
+-- which counts it, writes "Wrong password." and what comes next, and
+leaves the close to the caller; `login_lock_remaining`/`login_lock_refusal`
+refuse a locked-out address before the greeting and again after a PROXY
+header. `LOCK_THRESHOLD` (5) in `LOCK_WINDOW` (15 min) locks out for the
+next rung of `lock_ladder` (15 min, 1 h, 6 h, 1 d, 7 d) by lockouts within
+`LOCK_MEMORY` (a week); a guard-trusted address is capped at
+`LOCK_TRUSTED_MAX` (an hour) -- exempt from the scanner guard, never from
+password limits. Lockouts are kept in `log/login_lockouts.tsv` (written
+aside and renamed; read at boot by `login_lock_boot`, whole lines only).
+`login_lock_success`, from `login_note_success`, clears the count only when
+every counted failure named the character that logged in, and tells them
+of attempts on them (`lock_names`: per character, across addresses;
+WIZINFO at their `staff_notice_level` at `LOCK_ACCOUNT_ALERT` (10) in an
+hour). Its words never say "wrong password": a client -- and
+`tests/live_mud.py`'s `login()` -- reads that as its own login failing.
+`TOC_THROTTLE_LOOPBACK=1` counts loopback; `TOC_LOGIN_LOCK_SECS` sets the
+first rung and scales the rest, for tests. DNS GUARD lists lockouts, DNS
+ALLOW lifts one. `tests/test_login_throttle.py` (a serial module).
 `tests/test_connection_guard.py`, also in `SANITIZE_MODULES`.
 
 ## Staff Invulnerability

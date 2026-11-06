@@ -3681,6 +3681,14 @@ extern bool dns_lookup_enabled;
 const char *conn_guard_admit  args( ( DESCRIPTOR_DATA *d, char *buf, size_t size ) );
 void  conn_guard_trust        args( ( const NET_ADDR *addr, const char *who, int notice_level ) );
 bool  conn_guard_trusted      args( ( uint32_t ip ) );
+/* loginlock.c: wrong passwords, warnings and escalating lockouts */
+void  login_lock_boot         args( ( void ) );
+long  login_lock_remaining    args( ( const DESCRIPTOR_DATA *d ) );
+void  login_lock_refusal      args( ( const DESCRIPTOR_DATA *d, char *buf, size_t size ) );
+void  login_wrong_password    args( ( DESCRIPTOR_DATA *d, CHAR_DATA *ch ) );
+void  login_lock_success      args( ( DESCRIPTOR_DATA *d, CHAR_DATA *ch ) );
+bool  login_lock_lift         args( ( const NET_ADDR *a ) );
+void  login_lock_report       args( ( CHAR_DATA *ch ) );
 void  conn_guard_closed       args( ( DESCRIPTOR_DATA *d ) );
 const char *conn_guard_new_char args( ( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size ) );
 void  conn_guard_tick         args( ( void ) );

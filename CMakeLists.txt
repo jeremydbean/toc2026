@@ -88,6 +88,7 @@ set(SRC_FILES
     src/connguard.c
     src/netaddr.c
     src/guardstore.c
+    src/loginlock.c
 )
 
 add_executable(${TARGET_NAME})

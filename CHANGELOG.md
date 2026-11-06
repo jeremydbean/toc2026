@@ -8,6 +8,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Wrong passwords warn, and lockouts grow** (2026-11-06,
+  `src/loginlock.c`). Every wrong password says how many more an address
+  may make and how long the lockout will be; five in fifteen minutes lock
+  it out for 15 minutes, then 1 hour, 6 hours, 1 day and 7 days for each
+  lockout in a week (a player's address an hour at most), kept across
+  reboots. Logging into one's own character between guesses no longer
+  resets the count; a character hears of attempts made on them, and staff
+  of ten in an hour. DNS GUARD lists lockouts, DNS ALLOW lifts one.
+  `tests/test_login_throttle.py`.
 - **Connecting never stalls the game, and scanners are held off** (2026-11-06).
   Host names are looked up on a worker thread (`src/dnsasync.c`) and only
   for a connection that sends a line; the play journal's stall rows had

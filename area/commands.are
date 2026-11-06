@@ -2955,7 +2955,14 @@ character or a waiting connection refused (once an address in ten
 minutes), with the hourly count when anything was refused.
 
 DNS ALLOW <address> lifts a pause and counts the address -- IPv4, or IPv6
-and with it its /64 -- as a player's for the next 90 days.
+and with it its /64 -- as a player's for the next 90 days.  It also lifts a
+wrong-password lockout on it and forgets its history.
+
+DNS GUARD also lists wrong-password lockouts: five wrong passwords in
+fifteen minutes lock an address out for 15 minutes, then 1 hour, 6 hours,
+1 day and 7 days for each lockout in a week (a player's address an hour at
+most).  They are kept across reboots.  Staff hear each lockout, and a
+character drawing ten wrong passwords in an hour, on WIZINFO.
 
 The record of players' addresses is log/player_addresses.tsv: each login
 writes a line a day at most per address, every write is checked, and one
@@ -4089,6 +4096,14 @@ PASSWORD changes your character's password.  The first argument must be
 your old password.  The second argument is your new password.
 
 The PASSWORD command is protected against being snooped or logged.
+
+Wrong passwords at login are counted for your address.  Each one says how
+many more are allowed: five within fifteen minutes lock your address out
+for fifteen minutes, and each further lockout within a week lasts longer
+-- an hour, six hours, a day, a week.  An address you play from is never
+locked out for more than an hour.  When you log in, you are told how many
+failed attempts were made on your character since your last login; if they
+were not yours, choose a new password.
 
 See also: DELETE, QUIT, SAVE
 ~

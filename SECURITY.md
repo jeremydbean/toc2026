@@ -68,18 +68,38 @@ rollback and old-file compatibility during that work.
 
 ### Login Rate Limiting
 
-Failed password attempts are counted per source address. After five failures
-the address is refused at accept() time, before the greeting, with an
-escalating backoff starting at 30 seconds and capped at 15 minutes. A
-successful login clears the address, and history older than ten minutes
-decays, so an honest player who mistypes is clear again shortly. The table is
-a fixed 64 entries, so it cannot be used to exhaust memory; the least recently
-active entry is recycled.
+Failed password attempts are counted per source address (an IPv6 /64
+counts as one), in `src/loginlock.c` (owner, 2026-11-06: "if the wrong
+password is entered over x times I want to ban the IP for x time.
+Increasing with warning"):
 
-Blocks are logged and sent to WizInfo.
+- Every wrong password says how many more the address may make within 15
+  minutes and how long the lockout will be.
+- Five within 15 minutes lock the address out, refused before the greeting:
+  15 minutes the first time, then 1 hour, 6 hours, 1 day and 7 days for
+  each further lockout within a week. An address a player has logged in
+  from in the last 90 days is locked out for an hour at most, so a
+  forgotten password cannot shut a household out for a week.
+- Lockouts and their history are kept in `log/login_lockouts.tsv` and read
+  at boot: a reboot or a deploy does not lift them.
+- A successful login clears the count only when every failure counted was
+  for that same character; logging into one's own character between
+  guesses at another's resets nothing.
+- Failures are also counted per character across addresses: the character
+  is told at their next login how many attempts were made and from how
+  many addresses, and staff get a WizInfo when one character draws ten in
+  an hour (guessing spread over many addresses).
+- The table holds 1,024 addresses and never recycles a standing lockout
+  while anything else will do, so it cannot be used to exhaust memory or
+  to push a lockout out.
+
+Lockouts are logged and sent to WizInfo; staff `DNS GUARD` lists them and
+`DNS ALLOW <address>` lifts one.
 
 **Loopback is exempt by default.** The browser client bridges through the
-dashboard on the same host, so every web player shares `127.0.0.1`.
+dashboard on the same host and names each player's real address in a PROXY
+header, which is what is counted; a connection still on `127.0.0.1` is the
+dashboard itself.
 Throttling it would let one fumbled web login lock out every web player,
 which is a worse denial of service than the problem being solved, and a local
 attacker already has host access. Set `TOC_THROTTLE_LOOPBACK=1` to include
