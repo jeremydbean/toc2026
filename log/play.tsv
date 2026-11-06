@@ -23777,3 +23777,5 @@
 1793924402	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 41 quest points.	-	-
 1793924404	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=460/983 align=897 exp=252749 coin=1710305685 bank=22282853420 qp=1754 prac=36 train=76 stash=95/350 remorts=3
 1793924404	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    286 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1793927449	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] [*AFK*] Alaric. // Players found: 1	-	-
+1793927449	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 1710 platinum, 30 gold, 56 silver, 85 copper // and 252749 experience (39551 exp to level).	-	-
