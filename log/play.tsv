@@ -24102,3 +24102,156 @@
 1793997198	cmd	Trentlin	15	6121	haon.are	standing	81	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To	-	+
 1793997199	cmd	Trentlin	15	58	connect.are	standing	81	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find	-	+
 1793997199	cmd	Trentlin	15	11057	ancala.are	standing	81	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross	-	+
+1793997200	cmd	Trentlin	15	11000	ancala.are	standing	81	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1793997200	cmd	Trentlin	15	11001	ancala.are	standing	81	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1793997200	cmd	Trentlin	15	11002	ancala.are	standing	81	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1793997200	cmd	Trentlin	15	11003	ancala.are	standing	81	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1793997201	cmd	Trentlin	15	11004	ancala.are	standing	81	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1793997201	cmd	Trentlin	15	11005	ancala.are	standing	81	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1793997201	cmd	Trentlin	15	11006	ancala.are	standing	81	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1793997201	cmd	Trentlin	15	11055	ancala.are	standing	81	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1793997202	cmd	Trentlin	15	11012	ancala.are	standing	81	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1793997202	cmd	Trentlin	15	11013	ancala.are	standing	81	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1793997203	cmd	Trentlin	15	11014	ancala.are	standing	81	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.	-	+
+1793997203	cmd	Trentlin	15	11015	ancala.are	standing	81	0	-	west		A Wooden Bridge //   The wood here is old and acid eaten, similar to the rest of the // bridge. The deadly stalagmites jut up from below and more of the green	-	+
+1793997203	cmd	Trentlin	15	11026	ancala.are	standing	81	0	-	west		The End Of The Stomach //   The wooden bridge ends here, on a large plateau above the cavern // floor. The plateau overlooks the entire forest of acid and stone	-	+
+1793997204	cmd	Trentlin	15	11026	ancala.are	standing	81	0	-	west		The door is closed.	-	-
+1793997205	cmd	Trentlin	15	11026	ancala.are	standing	81	0	-	get	key	You get a granite key.	-	-
+1793997207	cmd	Trentlin	15	11026	ancala.are	standing	81	0	-	unlock	est	I see no est here.	-	-
+1793997209	cmd	Trentlin	15	11026	ancala.are	standing	81	0	-	unlock	west	*Click*	-	-
+1793997210	cmd	Trentlin	15	11026	ancala.are	standing	81	0	-	open	west	Ok.	-	-
+1793997211	cmd	Trentlin	15	11026	ancala.are	standing	81	0	-	drop	key	You drop a granite key.	-	-
+1793997211	cmd	Trentlin	15	11056	ancala.are	standing	81	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1793997213	cmd	Trentlin	15	11056	ancala.are	standing	81	0	-	open	south	Ok.	-	-
+1793997214	cmd	Trentlin	15	11027	ancala.are	standing	81	0	-	south		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793997215	cmd	Trentlin	15	11027	ancala.are	standing	81	0	-	kill	zo	Your punch MUTILATES the putrid zombie! // Your punch wounds the putrid zombie.	-	-
+1793997218	cmd	Trentlin	15	11027	ancala.are	fighting	83	0	fight	kick		Your kick scratches the putrid zombie.	-	-
+1793997221	cmd	Trentlin	15	11027	ancala.are	fighting	83	0	fight	kick		Your kick hits the putrid zombie.	-	-
+1793997224	cmd	Trentlin	15	11027	ancala.are	fighting	83	0	fight	kick		Your kick misses the putrid zombie.	-	-
+1793997228	cmd	Trentlin	15	11027	ancala.are	standing	83	0	-	look		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793997229	cmd	Trentlin	15	11045	ancala.are	standing	83	0	-	east		An Undead Garden //   Shaking shrubberies and quivering palms surround a few skeletal // trees that make up this gruesome garden.  The shriveled plantlife, set	-	+
+1793997230	cmd	Trentlin	15	11045	ancala.are	standing	83	0	-	scan		You don't see anything near you.	-	-
+1793997231	cmd	Trentlin	15	11050	ancala.are	standing	83	0	-	down		The Kennel Of The Demised //   This chamber of hard stone is empty save for a sturdy iron ring set // in the floor.  A large, heavy chain with collar at one end is attached	-	+
+1793997232	cmd	Trentlin	15	11050	ancala.are	standing	83	0	-	scan		the Necromancer                    -to the South. // the putrid zombie                  -to the South. // the putrid zombie                  -to the South.	-	+
+1793997235	cmd	Trentlin	15	11051	ancala.are	standing	83	0	-	south		The Operating Room //   This circular chamber is dominated by a large stone slab in the // center which bears the stains of countless horrible experiments.  The	-	+
+1793997238	cmd	Trentlin	15	11051	ancala.are	standing	83	0	-	look	in pool	That is not a container.	-	-
+1793997241	cmd	Trentlin	15	11051	ancala.are	standing	83	0	-	look	pool	Wow!  Perfect for the vampire in you!  I wonder if it is human or // animal blood however...	-	-
+1793997245	cmd	Trentlin	15	11051	ancala.are	standing	83	0	-	scan		You don't see anything near you.	-	-
+1793997246	cmd	Trentlin	15	11051	ancala.are	standing	83	0	-	exits		Obvious exits: // North - The Kennel Of The Demised // Up    - The Macabre Amphitheather	-	-
+1793997248	cmd	Trentlin	15	11051	ancala.are	standing	83	0	-	kill	zo	Your punch decimates the putrid zombie! // Your punch wounds the putrid zombie.	-	-
+1793997251	cmd	Trentlin	15	11051	ancala.are	fighting	78	0	fight	trip		You trip the putrid zombie and the putrid zombie goes down! // Your trip grazes the putrid zombie.	-	-
+1793997257	cmd	Trentlin	15	11051	ancala.are	fighting	75	0	fight	trip		You trip the putrid zombie and the putrid zombie goes down! // Your trip scratches the putrid zombie.	-	-
+1793997263	cmd	Trentlin	15	11051	ancala.are	fighting	75	0	fight	trip		You trip the putrid zombie and the putrid zombie goes down! // Your trip scratches the putrid zombie.	-	-
+1793997269	cmd	Trentlin	15	11051	ancala.are	fighting	73	0	fight	trip		Your trip misses the putrid zombie.	-	-
+1793997273	cmd	Trentlin	15	11051	ancala.are	fighting	66	0	fight	trip		You trip the putrid zombie and the putrid zombie goes down! // Your trip scratches the putrid zombie.	-	-
+1793997282	cmd	Trentlin	16	11051	ancala.are	standing	67	0	-	kill	nec	Your punch mauls the Necromancer. // Your punch devastates the Necromancer!	-	-
+1793997285	cmd	Trentlin	16	11051	ancala.are	fighting	68	0	fight	trip		You trip the Necromancer and the Necromancer goes down! // Your trip scratches the Necromancer.	-	-
+1793997291	cmd	Trentlin	16	11051	ancala.are	fighting	68	0	fight	trip		Your trip misses the Necromancer.	-	-
+1793997296	cmd	Trentlin	16	11050	ancala.are	standing	68	0	-	north		The Kennel Of The Demised //   This chamber of hard stone is empty save for a sturdy iron ring set // in the floor.  A large, heavy chain with collar at one end is attached	-	+
+1793997297	cmd	Trentlin	16	11050	ancala.are	standing	68	0	-	trip	necro	You trip the Necromancer and the Necromancer goes down! // Your trip scratches the Necromancer.	-	-
+1793997305	cmd	Trentlin	16	11050	ancala.are	standing	68	0	-	look	in cor	Corpse of the Necromancer contains: //      a grave beater //      a skeleton key	-	+
+1793997308	cmd	Trentlin	16	11050	ancala.are	standing	68	0	-	get	key cor	You get a skeleton key from corpse of the Necromancer.	-	-
+1793997309	cmd	Trentlin	16	11051	ancala.are	standing	68	0	-	south		The Operating Room //   This circular chamber is dominated by a large stone slab in the // center which bears the stains of countless horrible experiments.  The	-	+
+1793997309	cmd	Trentlin	16	11047	ancala.are	standing	68	0	-	up		The Macabre Amphitheather //   You are in on a wide, circular ledge overlooking a large slab of // stone in the chamber below.  Crude seats are fashioned here from the	-	+
+1793997313	cmd	Trentlin	16	11047	ancala.are	standing	68	0	-	open	east	Ok.	-	-
+1793997314	cmd	Trentlin	16	11046	ancala.are	standing	68	0	-	east		The Private Chambers //   This small room seems to have been carved by hand from the pancreas // of Ancalador.  It has some amenities, like a soft bed and a small	-	+
+1793997316	cmd	Trentlin	16	11046	ancala.are	standing	68	0	-	consider	la	Lazarus is a little above your level. // Lazarus has about half your hit points. // Blow for blow, you would need about 8 rounds to bring Lazarus down; he would need about 22 rounds for you.	-	+
+1793997325	cmd	Trentlin	16	11046	ancala.are	standing	68	0	-	look	la	This master herbalist was found too valuable to the Guild as a maker // of both soothing balms and poisons.  Even death could not release // him... the necromancers just reanimated him.	-	+
+1793997328	cmd	Trentlin	16	11046	ancala.are	standing	68	0	-	look	in coff	It is closed.	-	-
+1793997330	cmd	Trentlin	16	11046	ancala.are	standing	68	0	-	open	cof	The deadly asp has been let out of the copper coffer! // The deadly asp says, 'Thanks for letting me out,' // 'but I was in there for a reason.' the deadly asp grins evilly at you.	-	+
+1793997332	cmd	Trentlin	16	11046	ancala.are	fighting	65	0	fight	trip		Your trip misses the deadly asp.	-	-
+1793997336	cmd	Trentlin	16	11046	ancala.are	fighting	67	0	fight	kick		Your kick misses the deadly asp.	-	-
+1793997339	cmd	Trentlin	16	11046	ancala.are	fighting	67	0	fight	kick		Your kick misses the deadly asp.	-	-
+1793997341	cmd	Trentlin	16	11046	ancala.are	fighting	64	0	fight	kick		Your kick grazes the deadly asp.	-	-
+1793997347	cmd	Trentlin	16	11046	ancala.are	standing	64	0	-	look	in coff	You do not see that here.	-	-
+1793997349	cmd	Trentlin	16	11046	ancala.are	standing	64	0	-	look	in cor	Corpse of the deadly asp contains: //      a tonic of comfrey root //      an elixir of Adder's Tongue	-	-
+1793997354	cmd	Trentlin	16	11046	ancala.are	standing	64	0	-	look		The Private Chambers //   This small room seems to have been carved by hand from the pancreas // of Ancalador.  It has some amenities, like a soft bed and a small	-	+
+1793997356	cmd	Trentlin	16	11046	ancala.are	standing	64	0	-	kill	la	Your punch grazes Lazarus. // Your punch injures Lazarus.	-	-
+1793997359	cmd	Trentlin	16	11046	ancala.are	fighting	60	0	fight	trip		You trip Lazarus and Lazarus goes down! // Your trip scratches Lazarus.	-	-
+1793997365	cmd	Trentlin	16	11046	ancala.are	fighting	60	0	fight	trip		You trip Lazarus and Lazarus goes down! // Your trip scratches Lazarus.	-	-
+1793997370	cmd	Trentlin	16	11046	ancala.are	fighting	53	0	fight	trip		Your trip misses Lazarus.	-	-
+1793997378	cmd	Trentlin	16	11047	ancala.are	fighting	25	0	fight	flee		The Macabre Amphitheather //   You are in on a wide, circular ledge overlooking a large slab of // stone in the chamber below.  Crude seats are fashioned here from the	-	+
+1793997378	cmd	Trentlin	16	11047	ancala.are	standing	25	0	-	flee		You aren't fighting anyone.	-	-
+1793997380	cmd	Trentlin	16	11047	ancala.are	standing	25	0	-	inventory		You are carrying: //      a skeleton key //      a pair of Roman-style leggings	-	+
+1793997382	cmd	Trentlin	16	11047	ancala.are	standing	25	0	-	quaff	opa	This liquid is too powerful for you to drink.	-	-
+1793997387	cmd	Trentlin	16	11047	ancala.are	standing	25	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1793997392	cmd	Trentlin	16	11047	ancala.are	standing	25	0	-	sleep		You go to sleep.	-	-
+1793997394	cmd	Trentlin	16	11047	ancala.are	sleeping	25	0	-	group		Trentlin's group: // [16 Monk ] Trentlin          102/ 396 hp  656/ 694 mana  122/ 316 mv 37549 xp	-	-
+1793997401	cmd	Trentlin	16	11047	ancala.are	sleeping	25	0	-	skills		Level  1: dagger              75%      hand to hand        77%       //           recall             100%       // Level  3: kick                79%      	-	+
+1793997403	refused	Trentlin	16	11047	ancala.are	sleeping	25	0	-	gain	list	In your dreams, or what?	refusal:position	-
+1793997405	cmd	Trentlin	16	11047	ancala.are	sleeping	25	0	-	gainlist		Abilities for a level 16 monk of the monk guild: 17 learned, 17 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1793997412	cmd	Trentlin	16	11047	ancala.are	sleeping	25	0	-	help	nerve damage	'NERVE DAMAGE' // Syntax: nerve <victim> // Intimate knowledge of anatomy has enabled the studious monks to	-	+
+1793997415	cmd	Trentlin	16	11047	ancala.are	sleeping	37	0	-	wake		You wake and stand up.	-	-
+1793997416	cmd	Trentlin	16	4207	dresden.are	standing	37	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997418	cmd	Trentlin	16	4208	dresden.are	standing	37	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793997421	cmd	Trentlin	16	4208	dresden.are	standing	37	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793997424	cmd	Trentlin	16	4208	dresden.are	standing	65	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1793997429	cmd	Trentlin	16	4208	dresden.are	standing	93	0	-	gainlist		Abilities for a level 16 monk of the monk guild: 17 learned, 17 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1793997436	cmd	Trentlin	16	4208	dresden.are	standing	93	0	-	walkto	master of movement	You set off for Master of Movement (Palm of the Creator), about 21 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1793997455	cmd	Trentlin	16	4807	dresden.are	standing	93	0	-	train		You have 3 training sessions. // You can train: str hp mana.	-	-
+1793997457	cmd	Trentlin	16	4807	dresden.are	standing	97	0	-	train	str	Your strength increases!	-	-
+1793997457	cmd	Trentlin	16	4807	dresden.are	standing	97	0	-	train	str	Your strength is already at maximum.	-	-
+1793997458	cmd	Trentlin	16	4807	dresden.are	standing	97	0	-	train	str	Your strength is already at maximum.	-	-
+1793997459	cmd	Trentlin	16	4807	dresden.are	standing	97	1	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     fists of fury      4     	-	+
+1793997465	cmd	Trentlin	16	4807	dresden.are	standing	97	0	-	gain	iron skin	The Master of Movement trains you in the art of iron skin.	-	-
+1793997465	cmd	Trentlin	16	4807	dresden.are	standing	97	0	-	practice		meditation          73%  bash                 1%   // You have 12 practice sessions left.	-	-
+1793997468	cmd	Trentlin	16	4807	dresden.are	standing	97	0	-	practice	med	You are now learned at meditation.	-	-
+1793997469	cmd	Trentlin	16	4804	dresden.are	standing	97	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1793997469	cmd	Trentlin	16	4806	dresden.are	standing	97	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1793997470	cmd	Trentlin	16	4806	dresden.are	standing	97	0	-	practice		nerve damage         1%  hand to hand        77%  kick                79%   // dodge               76%  parry               75%  trip                77%   // You have 11 practice sessions left.	-	-
+1793997473	cmd	Trentlin	16	4806	dresden.are	standing	97	0	-	practice	nerve	You practice nerve damage.	-	-
+1793997473	cmd	Trentlin	16	4806	dresden.are	standing	97	0	-	practice	nerve	You practice nerve damage.	-	-
+1793997474	cmd	Trentlin	16	4806	dresden.are	standing	97	0	-	practice	nerve	You practice nerve damage.	-	-
+1793997474	cmd	Trentlin	16	4806	dresden.are	standing	97	0	-	practice	nerve	You practice nerve damage.	-	-
+1793997475	cmd	Trentlin	16	4806	dresden.are	standing	97	0	-	practice	nerve	You are now learned at nerve damage.	-	-
+1793997476	cmd	Trentlin	16	4207	dresden.are	standing	97	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997477	cmd	Trentlin	16	4208	dresden.are	standing	97	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793997478	cmd	Trentlin	16	4208	dresden.are	standing	97	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1793997483	cmd	Trentlin	16	4207	dresden.are	standing	97	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997484	cmd	Trentlin	16	4202	dresden.are	standing	97	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793997484	cmd	Trentlin	16	4201	dresden.are	standing	97	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793997484	cmd	Trentlin	16	2433	dresden.are	standing	97	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793997484	cmd	Trentlin	16	2434	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997485	cmd	Trentlin	16	2435	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997485	cmd	Trentlin	16	2436	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997485	cmd	Trentlin	16	2437	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997485	cmd	Trentlin	16	2438	dresden.are	standing	97	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793997486	cmd	Trentlin	16	2438	dresden.are	standing	97	0	-	open	west	Ok.	-	-
+1793997486	cmd	Trentlin	16	2439	dresden.are	standing	97	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793997487	cmd	Trentlin	16	6000	haon.are	standing	97	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1793997487	cmd	Trentlin	16	6001	haon.are	standing	97	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1793997488	cmd	Trentlin	16	6002	haon.are	standing	97	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1793997488	cmd	Trentlin	16	6003	haon.are	standing	97	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1793997488	cmd	Trentlin	16	6004	haon.are	standing	97	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1793997488	cmd	Trentlin	16	6100	haon.are	standing	97	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1793997489	cmd	Trentlin	16	6101	haon.are	standing	97	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1793997489	cmd	Trentlin	16	6104	haon.are	standing	97	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1793997489	cmd	Trentlin	16	6105	haon.are	standing	97	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1793997489	cmd	Trentlin	16	6106	haon.are	standing	97	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1793997490	cmd	Trentlin	16	6117	haon.are	standing	97	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1793997490	cmd	Trentlin	16	6118	haon.are	standing	97	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1793997490	cmd	Trentlin	16	6119	haon.are	standing	97	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.	-	+
+1793997490	cmd	Trentlin	16	6120	haon.are	standing	97	1	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom	-	+
+1793997491	cmd	Trentlin	16	6121	haon.are	standing	97	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To	-	+
+1793997491	cmd	Trentlin	16	58	connect.are	standing	97	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find	-	+
+1793997491	cmd	Trentlin	16	11057	ancala.are	standing	97	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross	-	+
+1793997492	cmd	Trentlin	16	11000	ancala.are	standing	97	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1793997493	cmd	Trentlin	16	11001	ancala.are	standing	97	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1793997493	cmd	Trentlin	16	11002	ancala.are	standing	97	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1793997493	cmd	Trentlin	16	11003	ancala.are	standing	97	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1793997493	cmd	Trentlin	16	11004	ancala.are	standing	97	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1793997494	cmd	Trentlin	16	11005	ancala.are	standing	97	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1793997494	cmd	Trentlin	16	11006	ancala.are	standing	97	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1793997494	cmd	Trentlin	16	11055	ancala.are	standing	97	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1793997495	cmd	Trentlin	16	11012	ancala.are	standing	97	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1793997495	cmd	Trentlin	16	11013	ancala.are	standing	97	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1793997495	cmd	Trentlin	16	11014	ancala.are	standing	97	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.	-	+
+1793997496	cmd	Trentlin	16	11015	ancala.are	standing	97	0	-	west		A Wooden Bridge //   The wood here is old and acid eaten, similar to the rest of the // bridge. The deadly stalagmites jut up from below and more of the green	-	+
+1793997496	cmd	Trentlin	16	11026	ancala.are	standing	97	0	-	west		The End Of The Stomach //   The wooden bridge ends here, on a large plateau above the cavern // floor. The plateau overlooks the entire forest of acid and stone	-	+
+1793997498	cmd	Trentlin	16	11026	ancala.are	standing	97	0	-	get	key	You get a granite key.	-	-
+1793997500	cmd	Trentlin	16	11026	ancala.are	standing	97	0	-	unlock	west	*Click*	-	-
+1793997501	cmd	Trentlin	16	11026	ancala.are	standing	97	0	-	open	west	Ok.	-	-
+1793997502	cmd	Trentlin	16	11026	ancala.are	standing	97	0	-	drop	key	You drop a granite key.	-	-
+1793997502	cmd	Trentlin	16	11056	ancala.are	standing	97	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1793997502	cmd	Trentlin	16	11056	ancala.are	standing	97	0	-	south		The fissure is closed.	-	-
+1793997502	cmd	Trentlin	16	11056	ancala.are	standing	97	0	-	down		Alas, you cannot go that way.	-	-
