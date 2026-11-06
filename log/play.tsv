@@ -24255,3 +24255,188 @@
 1793997502	cmd	Trentlin	16	11056	ancala.are	standing	97	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
 1793997502	cmd	Trentlin	16	11056	ancala.are	standing	97	0	-	south		The fissure is closed.	-	-
 1793997502	cmd	Trentlin	16	11056	ancala.are	standing	97	0	-	down		Alas, you cannot go that way.	-	-
+1793997504	cmd	Trentlin	16	11056	ancala.are	standing	97	0	-	open	south	Ok.	-	-
+1793997505	cmd	Trentlin	16	11027	ancala.are	standing	97	0	-	south		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793997506	cmd	Trentlin	16	11049	ancala.are	standing	97	0	-	down		Cold Storage //   The stink of this storage chamber makes you balk at once.  Through // your nausea you make out cadavers kept cool in niches in the stone	-	+
+1793997512	cmd	Trentlin	16	11049	ancala.are	fighting	94	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the wraith knight.	-	-
+1793997517	cmd	Trentlin	16	11049	ancala.are	fighting	93	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the wraith knight.	-	-
+1793997519	cmd	Trentlin	16	11049	ancala.are	fighting	89	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the wraith knight.	-	-
+1793997527	cmd	Trentlin	16	11049	ancala.are	standing	89	0	-	look		Cold Storage //   The stink of this storage chamber makes you balk at once.  Through // your nausea you make out cadavers kept cool in niches in the stone	-	+
+1793997528	cmd	Trentlin	16	11027	ancala.are	standing	89	0	-	up		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1793997529	cmd	Trentlin	16	11045	ancala.are	standing	89	0	-	east		An Undead Garden //   Shaking shrubberies and quivering palms surround a few skeletal // trees that make up this gruesome garden.  The shriveled plantlife, set	-	+
+1793997530	cmd	Trentlin	16	11050	ancala.are	standing	89	0	-	down		The Kennel Of The Demised //   This chamber of hard stone is empty save for a sturdy iron ring set // in the floor.  A large, heavy chain with collar at one end is attached	-	+
+1793997531	cmd	Trentlin	16	11051	ancala.are	standing	89	0	-	south		The Operating Room //   This circular chamber is dominated by a large stone slab in the // center which bears the stains of countless horrible experiments.  The	-	+
+1793997533	cmd	Trentlin	16	11047	ancala.are	standing	89	0	-	up		The Macabre Amphitheather //   You are in on a wide, circular ledge overlooking a large slab of // stone in the chamber below.  Crude seats are fashioned here from the	-	+
+1793997535	cmd	Trentlin	16	11047	ancala.are	standing	89	0	-	open	east	Ok.	-	-
+1793997535	cmd	Trentlin	16	11046	ancala.are	standing	89	0	-	east		The Private Chambers //   This small room seems to have been carved by hand from the pancreas // of Ancalador.  It has some amenities, like a soft bed and a small	-	+
+1793997544	cmd	Trentlin	16	11046	ancala.are	fighting	72	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Lazarus.	-	-
+1793997548	cmd	Trentlin	16	11046	ancala.are	fighting	69	0	fight	nerve		You jab Lazarus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Lazarus.	-	-
+1793997551	cmd	Trentlin	16	11046	ancala.are	fighting	69	0	fight	nerve		You jab Lazarus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Lazarus.	-	-
+1793997555	cmd	Trentlin	16	11046	ancala.are	fighting	66	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Lazarus.	-	-
+1793997559	cmd	Trentlin	16	11046	ancala.are	fighting	66	0	fight	nerve		You jab Lazarus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Lazarus.	-	-
+1793997562	cmd	Trentlin	16	11046	ancala.are	fighting	66	0	fight	nerve		You jab Lazarus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Lazarus.	-	-
+1793997562	stall	-	0	0	-	412ms	slowest input 411ms	command - 0ms	1 players	0 more since
+1793997566	cmd	Trentlin	16	11046	ancala.are	fighting	66	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Lazarus.	-	-
+1793997569	cmd	Trentlin	16	11046	ancala.are	fighting	59	0	fight	nerve		You jab Lazarus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Lazarus.	-	-
+1793997573	cmd	Trentlin	16	11046	ancala.are	standing	59	0	-	nerve		Who do you want to attack?	-	-
+1793997574	cmd	Trentlin	16	11046	ancala.are	standing	59	0	-	look	in cor	Corpse of Lazarus contains: //      a blowgun	-	-
+1793997575	cmd	Trentlin	16	11046	ancala.are	standing	59	0	-	look		The Private Chambers //   This small room seems to have been carved by hand from the pancreas // of Ancalador.  It has some amenities, like a soft bed and a small	-	+
+1793997576	cmd	Trentlin	16	11047	ancala.are	standing	59	0	-	west		The Macabre Amphitheather //   You are in on a wide, circular ledge overlooking a large slab of // stone in the chamber below.  Crude seats are fashioned here from the	-	+
+1793997577	cmd	Trentlin	16	11048	ancala.are	standing	59	0	-	west		The Temple Of Death //   You are in a small shrine in honor of the 'Pale Priest of the Mute // People'.  Here, Hell's Grim Tyrant is sought as a source of	-	+
+1793997580	cmd	Trentlin	16	11048	ancala.are	fighting	52	0	fight	kill	wr	You do the best you can!	-	-
+1793997582	cmd	Trentlin	16	11048	ancala.are	fighting	52	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the wraith knight.	-	-
+1793997585	cmd	Trentlin	16	11048	ancala.are	fighting	48	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch hits the wraith knight.	-	-
+1793997591	cmd	Trentlin	16	11048	ancala.are	fighting	49	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch hits the wraith knight.	-	-
+1793997593	cmd	Trentlin	16	11048	ancala.are	fighting	49	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the wraith knight.	-	-
+1793997596	cmd	Trentlin	16	11048	ancala.are	fighting	43	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the wraith knight.	-	-
+1793997598	cmd	Trentlin	16	11048	ancala.are	fighting	43	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the wraith knight.	-	-
+1793997601	cmd	Trentlin	16	11048	ancala.are	fighting	43	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the wraith knight.	-	-
+1793997605	cmd	Trentlin	16	4207	dresden.are	standing	40	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997607	cmd	Trentlin	16	4208	dresden.are	standing	40	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793997611	cmd	Trentlin	16	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997611	cmd	Trentlin	16	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793997612	cmd	Trentlin	16	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793997612	cmd	Trentlin	16	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793997612	cmd	Trentlin	16	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793997612	cmd	Trentlin	16	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793997613	cmd	Trentlin	16	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793997613	cmd	Trentlin	16	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793997614	cmd	Trentlin	16	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1793997614	cmd	Trentlin	16	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1793997614	cmd	Trentlin	16	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1793997614	cmd	Trentlin	16	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793997615	cmd	Trentlin	16	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1793997616	cmd	Trentlin	16	2497	dresden.are	standing	100	17	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Bandits have made off with The Sceptre of Gravestone!'	-	+
+1793997618	cmd	Trentlin	16	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793997621	cmd	Trentlin	16	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1793997621	cmd	Trentlin	16	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1793997622	cmd	Trentlin	16	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997622	cmd	Trentlin	16	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997622	cmd	Trentlin	16	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997622	cmd	Trentlin	16	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1793997623	cmd	Trentlin	16	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1793997623	cmd	Trentlin	16	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1793997623	cmd	Trentlin	16	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1793997625	cmd	Trentlin	16	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1793997625	cmd	Trentlin	16	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1793997625	cmd	Trentlin	16	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1793997625	cmd	Trentlin	16	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1793997626	cmd	Trentlin	16	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1793997626	cmd	Trentlin	16	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1793997626	cmd	Trentlin	16	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1793997626	cmd	Trentlin	16	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1793997627	cmd	Trentlin	16	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the	-	+
+1793997627	cmd	Trentlin	16	306	plains.are	standing	100	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful	-	+
+1793997627	cmd	Trentlin	16	326	plains.are	standing	100	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred	-	+
+1793997627	cmd	Trentlin	16	309	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path	-	+
+1793997628	cmd	Trentlin	16	310	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.	-	+
+1793997628	cmd	Trentlin	16	311	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on the long, narrow path through the foothills. // To your east you see a T-intersection and to the west the path	-	+
+1793997628	cmd	Trentlin	16	312	plains.are	standing	100	0	-	east		The path intersection //   You are standing on an intersection between 3 paths. // To the west you can follow a long, narrow path through the foothills.	-	+
+1793997628	cmd	Trentlin	16	332	plains.are	standing	100	0	-	south		The ancient path //   You are moving on an ancient path. The path is slightly covered with // leaves and twitches.	-	+
+1793997629	cmd	Trentlin	16	333	plains.are	standing	100	0	-	south		The ancient path //   You are standing on the ancient path which runs north and south. // The path is hardly visible here.	-	+
+1793997629	cmd	Trentlin	16	334	plains.are	standing	100	0	-	south		The ancient path //   You are standing on the ancient path which runs north and south. // The path is hardly visible here.	-	+
+1793997629	cmd	Trentlin	16	335	plains.are	standing	100	0	-	south		The ancient path //   The path runs north and east from here.  You notice some markers placed // along the side of the path.	-	+
+1793997629	cmd	Trentlin	16	59	connect.are	standing	100	0	-	south		Untamed Prairie //   Stepping off the path, you find yourself wading through chest high grasses // of an untamed prairie but sounds of a busy city lead you to invistigate	-	+
+1793997630	cmd	Trentlin	16	19168	rome.are	standing	100	0	-	south		Though the Weeds //   Small unseen animals scurry out of your way and annoying insects buzz around // your head as you fight your way through the tall weeds. The noise of the city	-	+
+1793997633	cmd	Trentlin	16	19169	rome.are	standing	100	0	-	south		Beside Clay Road //   Fighting your way out of the tall grass, you find yourself standing beside // a wide paved road. The noise of a busy city sounds very near. Was that the 	-	+
+1793997634	cmd	Trentlin	16	19169	rome.are	standing	99	0	-	exits		Obvious exits: // North - Though the Weeds // South - Clay Road	-	-
+1793997635	cmd	Trentlin	16	19165	rome.are	standing	99	0	-	south		Clay Road //   You travel upon an East-West road wide enough for 30 men to march abreast. // It is packed hard through heavy use. To the west, you eyes catch the	-	+
+1793997637	cmd	Trentlin	16	19165	rome.are	standing	99	0	-	exits		Obvious exits: // North - Beside Clay Road // East  - Clay Road	-	+
+1793997638	cmd	Trentlin	16	19164	rome.are	standing	99	0	-	west		Before Rome //   You travel upon an East-West road wide enough for 30 men to march // abreast.  It is packed hard through heavy use.  To the west stands the	-	+
+1793997639	cmd	Trentlin	16	19164	rome.are	standing	99	0	-	exits		Obvious exits: // East  - Clay Road // West  - The East Gate of Rome	-	-
+1793997640	cmd	Trentlin	16	19151	rome.are	standing	99	0	-	west		The East Gate of Rome //   You are standing inside of the eastern gate of Rome.  There are two tall // spires built into the city wall, from which the guards can see the whole	-	+
+1793997640	cmd	Trentlin	16	19151	rome.are	standing	99	0	-	exits		Obvious exits: // East  - Before Rome // West  - Clay Avenue	-	-
+1793997642	cmd	Trentlin	16	19146	rome.are	standing	99	0	-	west		Clay Avenue //   You are standing on a wide, heavily traveled road that runs east and west // through the heart of the city.  There are marble steps leading up.  To the	-	+
+1793997643	cmd	Trentlin	16	19146	rome.are	standing	99	0	-	exits		Obvious exits: // North - The General Store // East  - The East Gate of Rome	-	+
+1793997645	cmd	Trentlin	16	19146	rome.are	standing	99	0	-	up		You are too exhausted.	-	-
+1793997648	cmd	Trentlin	16	19146	rome.are	standing	99	0	-	eat	guan	You do not have that item.	-	-
+1793997650	cmd	Trentlin	16	19146	rome.are	standing	99	0	-	inventory		You are carrying: //      a skeleton key //      a pair of Roman-style leggings	-	+
+1793997655	cmd	Trentlin	16	19146	rome.are	standing	99	0	-	quaff	fly	You quaff a potion of flying. // Your feet rise off the ground.	-	-
+1793997656	cmd	Trentlin	16	19145	rome.are	standing	99	0	-	up		Outside the Capitol //   You stand on white marble steps that lead up and into the Capitol Building. // There are several statues, none of any real significance, at the entrance to	-	+
+1793997657	cmd	Trentlin	16	19145	rome.are	standing	99	0	-	get	all	You get The Sceptre of Gravestone.	-	-
+1793997659	cmd	Trentlin	16	19145	rome.are	standing	99	0	-	consider	cit	A citizen is well below your level. // A citizen has about half your hit points. // Blow for blow, you would need about 3 rounds to bring A citizen down; he would need about 96 rounds for you.	-	+
+1793997661	state	Trentlin	16	19145	rome.are	lvl=16 hp=395/396 mana=694/694 mv=0/316 align=-571 exp=38494 coin=4536809489 bank=11060093999 qp=451 prac=6 train=0 stash=56/75 remorts=1
+1793997661	cmd	Trentlin	16	19145	rome.are	standing	99	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997663	cmd	Trentlin	16	17185	highland.are	standing	99	0	-	recall		Something is very wrong! // A path along a cliff //   Watch out here.  There are mountain goats up the cliff and they will	-	+
+1793997664	cmd	Trentlin	16	4207	dresden.are	standing	99	1	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997666	cmd	Trentlin	16	4207	dresden.are	standing	99	0	-	recall		You are already standing at your recall point, Before the Altar.	-	-
+1793997667	cmd	Trentlin	16	4207	dresden.are	standing	99	0	-	sleep		You go to sleep.	-	-
+1793997668	cmd	Trentlin	16	4207	dresden.are	sleeping	99	0	-	group		Trentlin's group: // [16 Monk ] Trentlin          395/ 396 hp  694/ 694 mana    0/ 316 mv 38494 xp	-	-
+1793997671	cmd	Trentlin	16	4207	dresden.are	sleeping	99	0	-	group		Trentlin's group: // [16 Monk ] Trentlin          395/ 396 hp  694/ 694 mana    0/ 316 mv 38494 xp	-	-
+1793997672	cmd	Trentlin	16	4207	dresden.are	sleeping	99	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
+1793997675	cmd	Trentlin	16	4207	dresden.are	sleeping	99	0	-	inventory		You are carrying: //      The Sceptre of Gravestone //      a skeleton key	-	+
+1793997678	cmd	Trentlin	16	4207	dresden.are	sleeping	99	0	-	group		Trentlin's group: // [16 Monk ] Trentlin          395/ 396 hp  694/ 694 mana    0/ 316 mv 38494 xp	-	-
+1793997684	cmd	Trentlin	16	4207	dresden.are	sleeping	99	0	-	group		Trentlin's group: // [16 Monk ] Trentlin          395/ 396 hp  694/ 694 mana    0/ 316 mv 38494 xp	-	-
+1793997686	cmd	Trentlin	16	4207	dresden.are	standing	99	0	-	wake		You are already standing.	-	-
+1793997687	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793997689	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	heal	poison	The healer utters the words 'judicandus sausabru'. // You feel less sick. // A warm feeling runs through your body.	-	-
+1793997694	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)	-	-
+1793997697	cmd	Trentlin	16	4207	dresden.are	standing	99	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997697	cmd	Trentlin	16	4202	dresden.are	standing	99	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793997698	cmd	Trentlin	16	4201	dresden.are	standing	99	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793997698	cmd	Trentlin	16	2427	dresden.are	standing	99	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793997698	cmd	Trentlin	16	2427	dresden.are	standing	99	0	-	east		Alas, you cannot go that way.	-	-
+1793997698	cmd	Trentlin	16	2427	dresden.are	standing	99	0	-	east		Alas, you cannot go that way.	-	-
+1793997699	cmd	Trentlin	16	2404	dresden.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793997699	cmd	Trentlin	16	2401	dresden.are	standing	99	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1793997699	cmd	Trentlin	16	2410	dresden.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1793997699	cmd	Trentlin	16	2411	dresden.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1793997700	cmd	Trentlin	16	2414	dresden.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1793997700	cmd	Trentlin	16	2497	dresden.are	standing	99	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793997700	item	Trentlin	16	2497	dresden.are	25041	The Sceptre of Gravestone	type=trash level=59 worn=0 nested=0 timer=118 cond=100 inside=0	aquest
+1793997700	outcome	Trentlin	16	2497	dresden.are	quest-complete	success	-	-	ordinary qp=451->451 offered=59 daily=18->18 coin=+898304 kill=81664 streak=17 level=16 target=0
+1793997700	cmd	Trentlin	16	2497	dresden.are	standing	99	20	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Sceptre of Gravestone to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'	success:-	+
+1793997701	cmd	Trentlin	16	2497	dresden.are	standing	99	4	-	aquest	gamble yes	The dice BETRAY you! Your 59 quest points are lost.	-	-
+1793997703	cmd	Trentlin	16	2401	dresden.are	standing	99	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793997704	cmd	Trentlin	16	2401	dresden.are	standing	99	0	-	drop	key	You drop a skeleton key.	-	-
+1793997704	cmd	Trentlin	16	2401	dresden.are	standing	99	0	-	drop	key	You do not have that item.	-	-
+1793997704	cmd	Trentlin	16	2401	dresden.are	standing	99	0	-	drop	key	You do not have that item.	-	-
+1793997705	cmd	Trentlin	16	2404	dresden.are	standing	99	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1793997705	cmd	Trentlin	16	2427	dresden.are	standing	99	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1793997706	cmd	Trentlin	16	4201	dresden.are	standing	99	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1793997706	cmd	Trentlin	16	4202	dresden.are	standing	99	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1793997706	cmd	Trentlin	16	4207	dresden.are	standing	99	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1793997706	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1793997707	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	west		Alas, you cannot go that way.	-	-
+1793997707	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	west		Alas, you cannot go that way.	-	-
+1793997707	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	west		Alas, you cannot go that way.	-	-
+1793997708	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
+1793997709	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	wear	leg	You stop using some soldier leggings. // You wear a pair of Roman-style leggings on your legs.	-	-
+1793997709	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
+1793997713	state	Trentlin	16	4208	dresden.are	lvl=16 hp=394/396 mana=694/694 mv=300/291 align=-571 exp=38494 coin=4536357793 bank=11060093999 qp=451 prac=6 train=0 stash=56/75 remorts=1
+1793997713	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997714	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	wear	legh	You do not have that item.	-	-
+1793997716	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	wear	leg	You stop using a pair of Roman-style leggings. // You wear some soldier leggings on your legs.	-	-
+1793997717	state	Trentlin	16	4208	dresden.are	lvl=16 hp=394/396 mana=694/694 mv=300/316 align=-571 exp=38494 coin=4536357793 bank=11060093999 qp=451 prac=6 train=0 stash=56/75 remorts=1
+1793997717	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997719	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	wear	legh	You do not have that item.	-	-
+1793997721	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	wear	leg	You stop using some soldier leggings. // You wear a pair of Roman-style leggings on your legs.	-	-
+1793997723	cmd	Trentlin	16	4208	dresden.are	standing	99	5	-	stash	put leg	You put some soldier leggings away for safe keeping.	-	-
+1793997724	cmd	Trentlin	16	4208	dresden.are	standing	99	0	-	inventory		You are carrying: //      a long slim dagger //      a sprig of angelica	-	+
+1793997729	cmd	Trentlin	16	4208	dresden.are	standing	100	4	-	stash	put dagger	You put a long slim dagger away for safe keeping.	-	-
+1793997733	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	stash		Your stash holds 58 of 75 things. //     1) a long slim dagger //     2) (Glowing) some soldier leggings	-	+
+1793997748	cmd	Trentlin	16	4208	dresden.are	standing	100	4	-	stash	get armor	You take a Standard military battle armor out of your stash.	-	-
+1793997751	state	Trentlin	16	4208	dresden.are	lvl=16 hp=396/396 mana=694/694 mv=291/291 align=-571 exp=38494 coin=4536357793 bank=11060093999 qp=451 prac=6 train=0 stash=57/75 remorts=1
+1793997751	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997752	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	arm	You stop using a silvery skin. // You wear a Standard military battle armor on your body.	-	-
+1793997754	state	Trentlin	16	4208	dresden.are	lvl=16 hp=396/396 mana=694/694 mv=291/291 align=-571 exp=38494 coin=4536357793 bank=11060093999 qp=451 prac=6 train=0 stash=57/75 remorts=1
+1793997754	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997756	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
+1793997759	cmd	Trentlin	16	4208	dresden.are	standing	100	5	-	stash	put skin	You put a silvery skin away for safe keeping.	-	-
+1793997761	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	look	in cor	You do not see that here.	-	-
+1793997762	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	stash		Your stash holds 58 of 75 things. //     1) a silvery skin //     2) a long slim dagger	-	+
+1793997769	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	stash	get all	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1793997775	cmd	Trentlin	16	4208	dresden.are	standing	100	12	-	stash	get onyx	You take an onyx bracelet out of your stash.	-	-
+1793997777	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	on	You must be level 18 to use this object.	-	-
+1793997780	cmd	Trentlin	16	4208	dresden.are	standing	100	7	-	stash	get onyx	You take an onyx bracelet out of your stash.	-	-
+1793997783	cmd	Trentlin	16	4208	dresden.are	standing	100	4	-	stash	get collar	You take a spiked collar out of your stash.	-	-
+1793997787	cmd	Trentlin	16	4208	dresden.are	standing	100	4	-	stash	get breast	You take a Roman-style breastplate out of your stash.	-	-
+1793997788	state	Trentlin	16	4208	dresden.are	lvl=16 hp=396/396 mana=694/694 mv=291/291 align=-571 exp=38494 coin=4536357793 bank=11060093999 qp=451 prac=6 train=0 stash=54/75 remorts=1
+1793997788	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997790	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	brea	You stop using a Standard military battle armor. // You wear a Roman-style breastplate on your body.	-	-
+1793997792	state	Trentlin	16	4208	dresden.are	lvl=16 hp=396/396 mana=694/694 mv=291/291 align=-571 exp=38494 coin=4536357793 bank=11060093999 qp=451 prac=6 train=0 stash=54/75 remorts=1
+1793997792	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      16 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1793997794	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
+1793997795	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	brea	You do not have that item.	-	-
+1793997798	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	wear	arm	You stop using a Roman-style breastplate. // You wear a Standard military battle armor on your body.	-	-
+1793997799	cmd	Trentlin	16	4208	dresden.are	standing	100	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
