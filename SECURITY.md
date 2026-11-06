@@ -117,7 +117,16 @@ game now (`src/connguard.c`, owner's rules of 2026-11-06):
   whole game two hundred from addresses no player uses; refuses a
   descriptor `select()` could not hold (`FD_SETSIZE`);
 - keeps pauses in memory: a restart lifts them, deliberately (the record of
-  players' addresses is what is kept);
+  players' addresses is what is kept). That record is believed only when
+  read whole -- an unreadable file is never taken for a missing one or
+  written over -- and only record by record: a torn line, a time that
+  overflows or lies more than a day ahead is refused, and every write
+  error is kept, so a failed write is never mistaken for a saved one;
+- trusts an address only after a login has passed every check: the
+  password against the character as it stands now (in the game, or the
+  file), then deny, ban and wizlock -- a refused login trusts nothing and
+  clears no failures; staff notices naming a player go no lower than
+  that player's wizinvis level;
 - closes a connection that types nothing at the login prompts for ten
   minutes;
 - looks up host names on a worker thread, and only for a connection that

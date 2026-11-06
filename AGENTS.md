@@ -4226,7 +4226,41 @@ line is never joined to a later login by nearness -- the old seeding
 did, and an interleaved connection gave the trust to the wrong address.
 A player missed is never shut out (a pause stops only new characters,
 and their login is recorded). Pauses, strikes and floods are memory
-only: a restart lifts them, deliberately. **Staff hear it** through
+only: a restart lifts them, deliberately. **The file is read whole or
+not trusted** (review of f1388da0): `guard_store_load` returns
+`GUARD_LOAD_ABSENT` only for ENOENT -- the one case that starts the
+record from the journals -- and `GUARD_LOAD_UNREADABLE` for a file that
+is there and could not be read whole (permission, `ferror`, a failed
+close), which makes the store `read_only`: what was read is used and
+nothing is ever appended or rewritten over the file until a reboot
+reads it (DNS GUARD says so). A record counts only whole: an address, a
+tab, digits that do not overflow, above zero and no more than
+`GUARD_CLOCK_SKEW` (a day) ahead of now, and a newline; lines that fail
+are counted (`bad_lines`) and the next rewrite drops them. An append
+first ends an unfinished last record with a newline (`ends_whole`), so a
+torn line and the new one are never read as one record with a
+far-future time -- which had made trust permanent. Every write error is
+sticky (`finish`: the flush, the stream's `ferror`, `fsync` only after a
+good flush, the close always), and a rewrite renames nothing after any
+failure; `tests/test_guard_addresses.c` injects a first flush that
+fails and later ones that succeed (`-DGUARD_STORE_FFLUSH`).
+
+**A login is noted only once it is one** (review of f1388da0).
+`login_note_success` -- trusting the address and clearing its failures --
+runs after the reconnect, or after `login_reload_character` and
+`creator_arrives_unseen`, and after a "connect anyway" reconnect; never
+straight after the password matched the copy loaded at the name prompt,
+which the file could then refuse (a password changed meanwhile).
+`login_password_current` asks the live character's password too, before
+anything else: that copy carries the password as it was, so "connect
+anyway" took over a playing character whose password had changed since.
+**Guard and DNS notices that name somebody go out at their
+`staff_notice_level`**: `guard_say(text, level)` (an address-only notice
+at `LEVEL_IMMORTAL`), `conn_guard_trust(addr, why, level)`, and DNS
+ALLOW and DNS ON/OFF name `staff_actor(ch)` -- a switched immortal's own
+character -- at that character's level. A wizinvis creator lifting a
+pause by logging in was named to every immortal. The log still keeps
+the name, as every notice's does. **Staff hear it** through
 `guard_say()` (log and WIZINFO): each pause and flood, a pause lifted by a
 login, and -- once an address in `GUARD_NOTICE_SECS` -- a new character or
 waiting connection refused; the hourly summary goes to WIZINFO when

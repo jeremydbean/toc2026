@@ -1460,21 +1460,32 @@ static void login_note_failure( DESCRIPTOR_DATA *d )
     wizinfo( log_buf, LEVEL_IMMORTAL );
 }
 
+/*
+ * A login that has finished: every check passed and the character is in
+ * (or reconnected). Called only then (review of f1388da0, 2026-11-06): it
+ * ran straight after the password matched the copy loaded at the name
+ * prompt, so a login the file then refused -- the password had changed
+ * meanwhile -- had already made its address a player's and cleared its
+ * failures. And after creator_arrives_unseen, so the guard's notice that
+ * names the character goes no lower than they can be seen.
+ */
 static void login_note_success( DESCRIPTOR_DATA *d )
 {
     LOGIN_FAIL_ENTRY *entry;
+    CHAR_DATA *who;
 
     if ( d == NULL || d->ip == 0 )
         return;
+    who = d->original != NULL ? d->original : d->character;
 
     /* A player's address: never limited by the connection guard while
        they keep logging in from it. */
     {
-        char who[MAX_INPUT_LENGTH];
+        char why[MAX_INPUT_LENGTH];
 
-        snprintf( who, sizeof(who), "%s logged in from it",
-                  d->character != NULL && d->character->name != NULL ? d->character->name : "a player" );
-        conn_guard_trust( &d->addr, who );
+        snprintf( why, sizeof(why), "%s logged in from it",
+                  who != NULL && who->name != NULL ? who->name : "a player" );
+        conn_guard_trust( &d->addr, why, staff_notice_level( who, LEVEL_IMMORTAL ) );
     }
 
     if ( (entry = login_fail_lookup(d->ip)) != NULL )
@@ -3141,6 +3152,28 @@ static bool login_reload_character( DESCRIPTOR_DATA *d, const char *password )
 }
 
 /*
+ * Whether `password` is the password of the character named `name` as
+ * it stands in the game now, if they are in it (playing or link-dead);
+ * TRUE when they are not, since login_reload_character then asks the
+ * file itself.
+ */
+static bool login_password_current( const char *name, const char *password )
+{
+    CHAR_DATA *live;
+    LIST_ITERATOR iter;
+
+    FOR_EACH_CHARACTER( iter, live )
+    {
+        if ( IS_NPC(live) || live->pcdata == NULL || str_cmp( live->name, name ) )
+            continue;
+        if ( live->desc != NULL && live->desc->connected != CON_PLAYING )
+            continue;           /* another login's copy, not the character */
+        return !strcmp( crypt( password, live->pcdata->pwd ), live->pcdata->pwd );
+    }
+    return TRUE;
+}
+
+/*
  * Deal with sockets that haven't logged in yet.
  */
 void nanny( DESCRIPTOR_DATA *d, char *argument )
@@ -3378,7 +3411,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	}
 
-	login_note_success( d );
+	/* The copy loaded at the name prompt carries the password as it was
+	   then. While the character is in the game, theirs is the password
+	   that counts: a reconnect or "connect anyway" otherwise took over a
+	   character with a password changed since (review of f1388da0). */
+	if ( !login_password_current( ch->name, argument ) )
+	{
+	    login_note_failure( d );
+	    write_to_buffer( d, "Wrong password.\n\r", 0 );
+	    close_socket( d );
+	    return;
+	}
 
 	write_to_buffer( d, echo_on_str, 0 );
 
@@ -3386,7 +3429,10 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 
 	if ( check_reconnect( d, ch->name, TRUE ) )
+	{
+	    login_note_success( d );
 	    return;
+	}
 
 	/* Nobody has them in the game: go in with the file as it is now,
 	   not as it was at the name prompt. */
@@ -3395,6 +3441,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	ch = d->character;
 
 	creator_arrives_unseen( ch );
+	login_note_success( d );       /* only now is it a login */
 
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s has connected.", ch->name, d->host );
         log_string( log_buf );
@@ -3436,7 +3483,10 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 		close_socket(d_old);
 	    }
 	    if (check_reconnect(d,ch->name,TRUE))
-	    	return;
+	    {
+		login_note_success( d );
+		return;
+	    }
 	    write_to_buffer(d,"Reconnect attempt failed.\n\rName: ",0);
             if ( d->character != NULL )
             {
@@ -3658,7 +3708,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             char who[MAX_INPUT_LENGTH];         /* a player's address now */
 
             snprintf( who, sizeof(who), "%s was made there", ch->name );
-            conn_guard_trust( &d->addr, who );
+            conn_guard_trust( &d->addr, who, staff_notice_level( ch, LEVEL_IMMORTAL ) );
         }
         /* An existing character logging in announces itself with its
            host; a brand new one did not, so the arrival staff would

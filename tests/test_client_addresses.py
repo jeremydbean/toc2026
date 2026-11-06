@@ -24,6 +24,7 @@ from __future__ import annotations
 import re
 import time
 import unittest
+from contextlib import ExitStack
 from pathlib import Path
 
 from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
@@ -50,6 +51,17 @@ def reboot_with_bans(mud: LiveMud, *bans: str) -> None:
     (mud.root / "area" / "ban.txt").write_text("".join(f"{ban}~\n" for ban in bans),
                                                encoding="latin-1")
     mud._launch()
+
+
+def logged_in(stack: ExitStack, mud: LiveMud, name: str):
+    """A character in the game, its connection closed with the stack."""
+    client = stack.enter_context(mud.connect(timeout=120))
+    try:
+        login(client, name, PW)
+        client.sync("scroll 0")
+    except AssertionError as err:
+        raise AssertionError(f"setup: {name} could not log in: {err}") from err
+    return client
 
 
 def proxied(mud: LiveMud, header: str, timeout: float = 60):
@@ -196,46 +208,131 @@ class AddressStaffLiveTests(unittest.TestCase):
         self.assertNotRegex(trusted, r"(?m)^2[4-5]\d\.")
 
     def test_dns_list_hides_who_sockets_hides(self) -> None:
-        with LiveMud(fixtures=True) as mud:
+        with LiveMud(fixtures=True) as mud, ExitStack() as stack:
             for name in ("Killuminati", "Zaddrimpl", "Zaddrsevn"):
                 make(mud, name, Levl=70, Room=TEMPLE)
             make(mud, "Zaddrmort", Room=TEMPLE)
-            with mud.connect(timeout=120) as creator, \
-                    mud.connect(timeout=120) as impl, \
-                    mud.connect(timeout=120) as seventy_one, \
-                    mud.connect(timeout=120) as mortal:
-                login(creator, "Killuminati", PW)
-                login(impl, "Zaddrimpl", PW)
-                login(seventy_one, "Zaddrsevn", PW)
-                login(mortal, "Zaddrmort", PW)
-                for client in (creator, impl, seventy_one):
-                    client.sync("scroll 0")
-                creator.must("trust zaddrsevn 71", "trusted at level 71")
+            # One at a time: each connection is in the game before the next
+            # opens (four opened at once once failed setup with a reset).
+            creator = logged_in(stack, mud, "Killuminati")
+            impl = logged_in(stack, mud, "Zaddrimpl")
+            seventy_one = logged_in(stack, mud, "Zaddrsevn")
+            logged_in(stack, mud, "Zaddrmort")
+            creator.must("trust zaddrsevn 71", "trusted at level 71")
 
-                def views(client) -> str:
-                    return client.must("sockets", "[") + client.must("dns list", "Connected descriptors")
+            def views(client) -> str:
+                return client.must("sockets", "[") + client.must("dns list", "Connected descriptors")
 
-                # The creator arrives wizinvis at 72: hidden from 70 and 71.
-                for viewer in (impl, seventy_one):
-                    seen = views(viewer)
-                    self.assertNotIn("Killuminati", seen)
-                    self.assertIn("Zaddrmort", seen, "an ordinary player is listed")
-
-                # Wizinvis 71: the 71 sees him in both lists, the 70 in neither.
-                creator.must("wizinvis 71", "")
-                self.assertEqual(views(seventy_one).count("Killuminati"), 2)
-                self.assertNotIn("Killuminati", views(impl))
-
-                # Switched into a mobile the implementor can see: the row is
-                # listed by his name, so it stays hidden whole.
-                creator.must("wizinvis 72", "")
-                creator.must("goto 32700", "")
-                creator.must("load mob 32700", "You create")
-                creator.must("switch sparring", "Possessed")
-                seen = views(impl)
+            # The creator arrives wizinvis at 72: hidden from 70 and 71.
+            for viewer in (impl, seventy_one):
+                seen = views(viewer)
                 self.assertNotIn("Killuminati", seen)
-                self.assertNotIn("sparring", seen.lower())
-                creator.send("return")
+                self.assertIn("Zaddrmort", seen, "an ordinary player is listed")
+
+            # Wizinvis 71: the 71 sees him in both lists, the 70 in neither.
+            creator.must("wizinvis 71", "")
+            self.assertEqual(views(seventy_one).count("Killuminati"), 2)
+            self.assertNotIn("Killuminati", views(impl))
+
+            # Switched into a mobile the implementor can see: the row is
+            # listed by his name, so it stays hidden whole.
+            creator.must("wizinvis 72", "")
+            creator.must("goto 32700", "")
+            creator.must("load mob 32700", "You create")
+            creator.must("switch sparring", "Possessed")
+            seen = views(impl)
+            self.assertNotIn("Killuminati", seen)
+            self.assertNotIn("sparring", seen.lower())
+            creator.send("return")
+
+    def test_guard_and_dns_notices_name_nobody_hidden(self) -> None:
+        """Review of f1388da0: a wizinvis creator logging in from a paused
+        address was named to every immortal ("Killuminati logged in from
+        it"), and DNS ALLOW and DNS ON/OFF named their actor the same way."""
+        env = {"TOC_GUARD_BURST": "3"}
+        with LiveMud(fixtures=True, extra_env=env) as mud, ExitStack() as stack:
+            for name in ("Killuminati", "Zgdimp", "Zgdsevn"):
+                make(mud, name, Levl=70, Room=TEMPLE)
+            make(mud, "Zgdmort", Room=TEMPLE)
+            impl = logged_in(stack, mud, "Zgdimp")
+            seventy_one = logged_in(stack, mud, "Zgdsevn")
+            with mud.connect(timeout=120) as setup:
+                login(setup, "Killuminati", PW)
+                setup.sync("scroll 0")
+                setup.must("trust zgdsevn 71", "trusted at level 71")
+                setup.send("quit")
+                self.assertTrue(setup.wait_closed())
+
+            def pause(address: str) -> None:
+                for port in range(3):           # three in a minute: paused
+                    probe = proxied(mud, f"PROXY TCP4 {address} 127.0.0.1 5100{port} {mud.port}")
+                    probe.close()
+                deadline = time.monotonic() + 15
+                while time.monotonic() < deadline:
+                    if f"Connection guard: {address} paused" in (
+                            mud.root / "log" / "toc.log").read_text(encoding="latin-1"):
+                        return
+                    time.sleep(0.25)
+                self.fail(f"{address} was not paused")
+
+            def heard(client) -> str:
+                """What another client was sent: read its socket for a while
+                (a wizinfo is not a reply to anything it typed)."""
+                return client.drain(1.0)
+
+            # Ordinary staff hear a mortal's login lift a pause.
+            pause("203.0.113.81")
+            mortal = stack.enter_context(mud.connect(timeout=120))
+            mortal.send(f"PROXY TCP4 203.0.113.81 127.0.0.1 51010 {mud.port}")
+            login(mortal, "Zgdmort", PW)
+            impl.drain(1.0)
+            self.assertIn("pause on 203.0.113.81 lifted -- Zgdmort logged in from it", impl.transcript)
+
+            # The creator, wizinvis at 72, lifting one: named to nobody below.
+            pause("203.0.113.80")
+            marks = {id(c): len(c.transcript) for c in (impl, seventy_one)}
+            creator = stack.enter_context(mud.connect(timeout=120))
+            creator.send(f"PROXY TCP4 203.0.113.80 127.0.0.1 51020 {mud.port}")
+            login(creator, "Killuminati", PW)
+            creator.sync("scroll 0")
+            for client in (impl, seventy_one):
+                client.drain(1.0)
+                self.assertNotIn("Killuminati", client.transcript[marks[id(client)]:])
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+            self.assertIn("pause on 203.0.113.80 lifted -- Killuminati logged in from it", log,
+                          "the pause was lifted, and only the log says by whom")
+
+            # DNS ALLOW at wizinvis 71: the 71 hears who, the 70 does not.
+            creator.must("wizinvis 71", "")
+            marks = {id(c): len(c.transcript) for c in (impl, seventy_one)}
+            creator.must("dns allow 198.51.100.90", "no longer held back")
+            for client in (impl, seventy_one):
+                heard(client)
+            self.assertIn("Killuminati lifted the connection guard",
+                          seventy_one.transcript[marks[id(seventy_one)]:])
+            self.assertNotIn("Killuminati", impl.transcript[marks[id(impl)]:])
+
+            # Switched, wizinvis 72: DNS OFF and ON name him to neither.
+            creator.must("wizinvis 72", "")
+            creator.must("goto 32700", "")
+            creator.must("load mob 32700", "You create")
+            creator.must("switch sparring", "Possessed")
+            marks = {id(c): len(c.transcript) for c in (impl, seventy_one)}
+            creator.must("dns off", "Hostname lookups are now OFF")
+            creator.must("dns on", "Hostname lookups are now ON")
+            for client in (impl, seventy_one):
+                heard(client)
+                said = client.transcript[marks[id(client)]:]
+                self.assertNotIn("Killuminati", said)
+                self.assertNotIn("turned DNS lookups", said)
+            creator.send("return")
+
+            # An ordinary implementor's DNS ALLOW is heard as before.
+            mark = len(seventy_one.transcript)
+            impl.must("dns allow 198.51.100.91", "no longer held back")
+            heard(seventy_one)
+            self.assertIn("Zgdimp lifted the connection guard from 198.51.100.91",
+                          seventy_one.transcript[mark:])
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

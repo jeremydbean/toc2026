@@ -209,8 +209,36 @@ static void guard_load( void )
     if ( guard_report_at == 0 )
         guard_report_at = current_time;
 
-    if ( guard_store_load( &guard_trust, GUARD_TRUST_FILE ) >= 0 )
+    switch ( guard_store_load( &guard_trust, GUARD_TRUST_FILE, current_time ) )
+    {
+    case GUARD_LOAD_ABSENT:
+        break;                          /* no record yet: start one below */
+    case GUARD_LOAD_UNREADABLE:
+        /* There, and not read whole (permission, an I/O error). Only a file
+           that is truly absent may be started again from the journals:
+           this one may hold more than memory does, so the store is read-
+           only until a reboot finds it readable (review of f1388da0). */
+        snprintf( line, sizeof(line),
+                  "Connection guard: " GUARD_TRUST_FILE " exists but could not be read "
+                  "whole (%d addresses read); it will not be written until a reboot "
+                  "can read it.", guard_trust.count );
+        log_string( line );
         return;
+    default:
+        if ( guard_trust.bad_lines > 0 )
+        {
+            /* An unfinished last record or a line that is no record: the
+               good ones are kept and the file is written again without the
+               rest. */
+            snprintf( line, sizeof(line),
+                      "Connection guard: %d line%s of " GUARD_TRUST_FILE " were not "
+                      "records (an unfinished write, a bad time); rewriting without them.",
+                      guard_trust.bad_lines, guard_trust.bad_lines == 1 ? "" : "s" );
+            log_string( line );
+            guard_trust_rewrite();
+        }
+        return;
+    }
 
     if ( ( fp = fopen( GUARD_LOGINS_FILE, "r" ) ) != NULL )
     {
@@ -282,11 +310,15 @@ static void guard_ip_text( const GUARD_ENTRY *e, char *buf, size_t size )
         toc_strlcpy( buf, e->text, size );
 }
 
-/* Staff are told, and the log keeps it. */
-static void guard_say( const char *text )
+/* Staff are told, and the log keeps it. `level` is the least trust that
+   hears it: LEVEL_IMMORTAL for a notice naming only an address, and a
+   character's staff_notice_level for one naming them, so a wizinvis
+   creator logging in is never named to staff who cannot see him (review
+   of f1388da0, 2026-11-06). */
+static void guard_say( const char *text, int level )
 {
     log_string( text );
-    wizinfo( text, LEVEL_IMMORTAL );
+    wizinfo( text, UMAX( level, LEVEL_IMMORTAL ) );
 }
 
 /* A pause: no new characters from it for a while. Logins still work, and
@@ -314,7 +346,7 @@ static void guard_block( GUARD_ENTRY *e, const char *why )
               "Connection guard: %s paused for %ld hours (%s; no player has logged in from it "
               "in %d days). Logins still work; new characters wait. DNS ALLOW %s lifts it.",
               addr, length / 3600, why, GUARD_TRUST_DAYS, addr );
-    guard_say( buf );
+    guard_say( buf, LEVEL_IMMORTAL );
 }
 
 /* Whether staff should hear of another refusal at this address yet. */
@@ -398,7 +430,7 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
                   "no player has logged in from it in %d days). DNS ALLOW %s lifts it.",
                   addr, GUARD_FLOOD_SECS / 60, guard_limit( "TOC_GUARD_FLOOD", GUARD_FLOOD ),
                   GUARD_TRUST_DAYS, addr );
-        guard_say( note );
+        guard_say( note, LEVEL_IMMORTAL );
         snprintf( buf, size, "Connections from your address are paused for a while.\n\r" );
         return buf;
     }
@@ -428,7 +460,7 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
             snprintf( note, sizeof(note),
                       "Connection guard: %d connections are waiting at the login prompts; "
                       "new ones from addresses no player uses are refused for now.", everyone );
-            guard_say( note );
+            guard_say( note, LEVEL_IMMORTAL );
         }
         snprintf( buf, size, "The game is very busy; please try again in a minute.\n\r" );
         return buf;
@@ -443,7 +475,7 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
                       "Connection guard: %s refused a connection: %d already waiting at the login "
                       "prompt (told again in %d minutes at most).",
                       addr, pending, GUARD_NOTICE_SECS / 60 );
-            guard_say( note );
+            guard_say( note, LEVEL_IMMORTAL );
         }
         snprintf( buf, size, "Too many connections from your address are waiting to log in.\n\r" );
         return buf;
@@ -509,7 +541,7 @@ const char *conn_guard_new_char( DESCRIPTOR_DATA *d, const char *name, char *buf
                   "Connection guard: new character '%s' refused from paused %s "
                   "(%ld minutes left). DNS ALLOW %s lets it in.",
                   name != NULL ? name : "?", addr, ( left + 59 ) / 60, addr );
-        guard_say( note );
+        guard_say( note, LEVEL_IMMORTAL );
     }
     snprintf( buf, size,
               "New characters cannot be made from your address for %ld more minute%s.\n\r"
@@ -525,7 +557,7 @@ static void guard_trust_persist( GUARD_TRUST *t )
 {
     static time_t said;
 
-    if ( t == NULL || !guard_store_due( t ) )
+    if ( t == NULL || guard_trust.read_only || !guard_store_due( t ) )
         return;
     if ( guard_trust.file_lines >= GUARD_TRUST_FILE_MAX )
     {
@@ -543,8 +575,9 @@ static void guard_trust_persist( GUARD_TRUST *t )
 
 /* A player logged in (or staff allowed the address): it is trusted for
    GUARD_TRUST_DAYS from now, and any pause on it ends. `who` says why, for
-   staff; NULL when the caller tells them itself. */
-void conn_guard_trust( const NET_ADDR *a, const char *who )
+   staff; NULL when the caller tells them itself. `notice_level` is the
+   least trust that may read `who` -- the player's staff_notice_level. */
+void conn_guard_trust( const NET_ADDR *a, const char *who, int notice_level )
 {
     GUARD_ENTRY *e;
     char addr[NET_ADDR_TEXT + 16];
@@ -562,7 +595,7 @@ void conn_guard_trust( const NET_ADDR *a, const char *who )
         {
             guard_ip_text( e, addr, sizeof(addr) );
             snprintf( buf, sizeof(buf), "Connection guard: pause on %s lifted -- %s.", addr, who );
-            guard_say( buf );
+            guard_say( buf, notice_level );
         }
         e->blocked_until = e->flood_until = 0;
         e->conns = e->burst = 0;
@@ -643,6 +676,10 @@ void conn_guard_report( CHAR_DATA *ch )
               guard_limit( "TOC_GUARD_FLOOD", GUARD_FLOOD ), GUARD_FLOOD_SECS / 60,
               guard_silent, guard_refused, guard_new_refused );
     send_to_char( buf, ch );
+    if ( guard_trust.read_only )
+        send_to_char( "The record of players' addresses could not be read at boot: what was\n\r"
+                      "read is used, and nothing is written to it until a reboot can read it.\n\r",
+                      ch );
     for ( i = 0; i < GUARD_SLOTS; i++ )
     {
         const GUARD_ENTRY *e = &guard_table[i];
@@ -672,6 +709,6 @@ bool conn_guard_allow( const char *text )
 
     if ( !net_addr_parse( text, &a ) )
         return false;
-    conn_guard_trust( &a, NULL );   /* DNS ALLOW says so itself */
+    conn_guard_trust( &a, NULL, LEVEL_IMMORTAL );   /* DNS ALLOW says so itself */
     return true;
 }

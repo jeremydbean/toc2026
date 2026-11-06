@@ -3679,7 +3679,7 @@ bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
 /* connguard.c -- what the game does about addresses that connect and never play */
 const char *conn_guard_admit  args( ( DESCRIPTOR_DATA *d, char *buf, size_t size ) );
-void  conn_guard_trust        args( ( const NET_ADDR *addr, const char *who ) );
+void  conn_guard_trust        args( ( const NET_ADDR *addr, const char *who, int notice_level ) );
 bool  conn_guard_trusted      args( ( uint32_t ip ) );
 void  conn_guard_closed       args( ( DESCRIPTOR_DATA *d ) );
 const char *conn_guard_new_char args( ( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size ) );

@@ -24,6 +24,7 @@
 #include "netaddr.h"
 
 #define GUARD_PERSIST_GAP  86400    /* a line an address a day, at most */
+#define GUARD_CLOCK_SKEW   86400    /* a record this far ahead of now is still believed */
 
 typedef struct guard_trust
 {
@@ -39,6 +40,13 @@ typedef struct guard_store
     int          count;
     int          max;
     long         file_lines;        /* lines in the file, for the rewrite */
+    /* The file exists but could not be read whole (permission, an I/O
+       error): what was read is used, and nothing is ever written over the
+       file, which may hold more than memory does. */
+    int          read_only;
+    /* The load found lines it would not believe -- an unfinished last
+       record, a bad timestamp -- and the next rewrite drops them. */
+    int          bad_lines;
 } GUARD_STORE;
 
 /* An empty store of at most `max` addresses (rows is caller's array). */
@@ -64,17 +72,28 @@ int          guard_store_due    ( const GUARD_TRUST *t );
 int          guard_store_dirty  ( const GUARD_TRUST *t );
 
 /* Append `t`'s newest login to `path`; 1 only when every byte reached the
-   file and it closed cleanly, and then `persisted` is that login. */
+   file and it closed cleanly, and then `persisted` is that login. A last
+   record left unfinished (no newline: a crash or a failed write) is ended
+   first, so the new record is a line of its own. Never on a read-only
+   store. */
 int          guard_store_append ( GUARD_STORE *s, const char *path, GUARD_TRUST *t );
 
 /* Write the whole store to `tmp` and rename it over `path`: 1 on success,
-   every row then persisted. A failure leaves `path` as it was. */
+   every row then persisted. Any failed write, flush, sync or close -- even
+   one a later flush seemed to recover from -- leaves `path` as it was.
+   Never on a read-only store. */
 int          guard_store_rewrite( GUARD_STORE *s, const char *path, const char *tmp );
 
-/* Read `path` into the store: the number of lines read, or -1 when there
-   is no such file. Rows read are persisted at the time the file gives.
-   Lines starting with # are comments. */
-long         guard_store_load   ( GUARD_STORE *s, const char *path );
+/* Read `path` into the store: the number of lines read; GUARD_LOAD_ABSENT
+   when there is no such file (and only then); GUARD_LOAD_UNREADABLE when
+   it exists and could not be read whole, which also marks the store
+   read-only. Rows read are persisted at the time the file gives. A record
+   counts only whole: an address, a tab, a decimal time that does not
+   overflow, is above zero and no more than GUARD_CLOCK_SKEW ahead of `now`,
+   and a newline. Lines starting with # are comments. */
+#define GUARD_LOAD_ABSENT     (-1)
+#define GUARD_LOAD_UNREADABLE (-2)
+long         guard_store_load   ( GUARD_STORE *s, const char *path, time_t now );
 
 /*
  * The one-time start from older journals, for a store with no file yet.

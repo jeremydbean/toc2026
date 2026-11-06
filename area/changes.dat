@@ -9,6 +9,12 @@
 The game no longer freezes for a moment whenever somebody connects. A
 login prompt left with nothing typed for ten minutes now disconnects.
 
+@ 20261106e 2026-11-06 staff
+A password is now checked against the character as it is: an old one
+can no longer take over a character whose password changed meanwhile.
+Connection guard and DNS notices that name somebody are heard only by
+staff who can see them.
+
 @ 20261106d 2026-11-06 staff
 A ban on an address now holds whatever the resolver does: it is matched
 against the connection's own address, not the host name the lookup puts

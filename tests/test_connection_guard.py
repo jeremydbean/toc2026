@@ -48,8 +48,18 @@ class GuardSourceTests(unittest.TestCase):
         self.assertLess(loop.index("dns_collect( );"), loop.index("update_handler( );"))
         self.assertIn("login_idle_sweep( );", loop)
         # Players' addresses are trusted at both kinds of login.
-        self.assertIn("conn_guard_trust( &d->addr, who );", comm.split("static void login_note_success", 1)[1])
-        self.assertEqual(comm.count("conn_guard_trust( &d->addr, who )"), 2)
+        self.assertIn("conn_guard_trust( &d->addr, why, staff_notice_level( who, LEVEL_IMMORTAL ) );",
+                      comm.split("static void login_note_success", 1)[1])
+        self.assertIn("conn_guard_trust( &d->addr, who, staff_notice_level( ch, LEVEL_IMMORTAL ) );", comm)
+        # A login is noted only once it is one: after every check, and
+        # after a creator is made unseen (review of f1388da0).
+        password = comm.split("case CON_GET_OLD_PASSWORD:", 1)[1].split("case CON_BREAK_CONNECT:", 1)[0]
+        self.assertLess(password.index("login_password_current( ch->name, argument )"),
+                        password.index("check_playing(d,ch->name)"))
+        self.assertLess(password.index("login_reload_character( d, argument )"),
+                        password.rindex("login_note_success( d );"))
+        self.assertLess(password.index("creator_arrives_unseen( ch );"),
+                        password.rindex("login_note_success( d );"))
 
     def test_what_is_never_a_strike(self) -> None:
         comm = (ROOT / "src" / "comm.c").read_text(encoding="latin-1")
@@ -68,8 +78,8 @@ class GuardSourceTests(unittest.TestCase):
 
     def test_staff_hear_of_it(self) -> None:
         guard = (ROOT / "src" / "connguard.c").read_text(encoding="latin-1")
-        say = guard.split("static void guard_say( const char *text )", 1)[1].split("\n}\n", 1)[0]
-        self.assertIn("wizinfo( text, LEVEL_IMMORTAL );", say)
+        say = guard.split("static void guard_say( const char *text, int level )", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("wizinfo( text, UMAX( level, LEVEL_IMMORTAL ) );", say)
         for fn in ("static void guard_block(", "const char *conn_guard_admit(",
                    "const char *conn_guard_new_char(", "void conn_guard_trust("):
             body = guard.split(fn, 1)[1].split("\n}\n", 1)[0]
@@ -185,6 +195,55 @@ class GuardLiveTests(unittest.TestCase):
             again = (log / "player_addresses.tsv").read_text(encoding="latin-1")
             self.assertNotIn("203.0.113.70", again)
             self.assertIn("198.51.100.62\t", again)
+
+    def test_a_rejected_login_trusts_nothing(self) -> None:
+        """Review of f1388da0: a login checked against the copy loaded at the
+        name prompt trusted its address before the file -- with a password
+        changed meanwhile -- refused it. And while the character was still in
+        the game, "connect anyway" took over with the old password."""
+        with LiveMud() as mud:
+            make(mud, "Zorderhero")
+            log = mud.root / "log"
+
+            def stale_attempt(address: str, port: int):
+                b = mud.connect(timeout=60)
+                b.send(f"PROXY TCP4 {address} 127.0.0.1 {port} {mud.port}")
+                b.expect("by what name", "name:")
+                b.expect("Name:", timeout=20)
+                b.send("Zorderhero")
+                b.expect("Password", timeout=20)
+                return b
+
+            # A changes the password and quits while B waits at the prompt.
+            with mud.connect(timeout=120) as a:
+                login(a, "Zorderhero", PW)
+                a.sync("scroll 0")
+                b = stale_attempt("203.0.113.95", 52001)
+                a.must(f"password {PW} Zneworder2", "Ok")
+                a.send("quit")
+                self.assertTrue(a.wait_closed())
+            with b:
+                b.send(PW)
+                b.expect("Wrong password", timeout=20)
+                self.assertTrue(b.wait_closed())
+
+            # A changes it and stays: the old one takes nothing over.
+            with mud.connect(timeout=120) as a:
+                login(a, "Zorderhero", "Zneworder2")
+                a.sync("scroll 0")
+                b = stale_attempt("203.0.113.96", 52002)
+                # A password differs only in its first eight characters.
+                a.must("password Zneworder2 Zfreshpw3", "Ok")
+                with b:
+                    b.send("Zneworder2")
+                    got = b.expect("Wrong password", "connect anyway", timeout=20)
+                    self.assertIn("Wrong password", got)
+                self.assertIn("Zorderhero", a.must("score", "Zorderhero"), "A still plays")
+
+            record = (log / "player_addresses.tsv").read_text(encoding="latin-1") \
+                if (log / "player_addresses.tsv").exists() else ""
+        self.assertNotIn("203.0.113.95", record, "a refused login trusts no address")
+        self.assertNotIn("203.0.113.96", record)
 
     def test_a_flood_is_refused(self) -> None:
         env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_FLOOD": "4", "TOC_GUARD_BURST": "50"}

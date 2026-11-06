@@ -38,6 +38,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   untrusted addresses, and descriptors past `FD_SETSIZE` refused. HELP BAN
   rewritten: bans were never suffix matches and are saved.
   `tests/test_client_addresses.py`, `tests/test_guard_addresses.py`.
+- **Logins, notices and the address record, after review** (2026-11-06).
+  A password is checked against the character as it is now: "connect
+  anyway" took over a playing character with a password changed since.
+  A login trusts its address and clears its failures only once it is
+  admitted (a stale-copy match the file refused already had). Guard and
+  DNS notices naming somebody honour their wizinvis level. The address
+  record is never overwritten when unreadable, believes only whole
+  records (a torn line had read as permanent trust), and keeps every
+  write error.
 - **Deep bug rows in the play journal** (2026-11-05). `stall` rows when a
   pulse runs past its quarter second, naming the phase and the command
   that took the time; `death` rows with the killing blow, the hit points

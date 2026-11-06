@@ -7640,6 +7640,15 @@ void do_undeny(CHAR_DATA *ch, char *argument)
  * row it refuses is left out whole, address included: DNS LIST showed a
  * creator SOCKETS hid (review, 2026-11-06).
  */
+/* Who did it: a switched immortal's own character, not the body. A notice
+   naming them goes out at that character's staff_notice_level, never
+   LEVEL_IMMORTAL flat -- DNS ALLOW and DNS ON/OFF named a wizinvis creator
+   to every immortal (review of f1388da0, 2026-11-06). */
+static CHAR_DATA *staff_actor( CHAR_DATA *ch )
+{
+    return ch->desc != NULL && ch->desc->original != NULL ? ch->desc->original : ch;
+}
+
 static bool staff_may_see_descriptor( CHAR_DATA *ch, DESCRIPTOR_DATA *d )
 {
     if ( d->character == NULL )
@@ -7700,9 +7709,9 @@ void do_dns( CHAR_DATA *ch, char *argument )
                           "addresses still do.\n\r", ch );
 
         snprintf( buf, sizeof(buf), "%s turned DNS lookups %s.",
-                  ch->name, dns_lookup_enabled ? "on" : "off" );
+                  staff_actor( ch )->name, dns_lookup_enabled ? "on" : "off" );
         log_string( buf );
-        wizinfo( buf, LEVEL_IMMORTAL );
+        wizinfo( buf, staff_notice_level( staff_actor( ch ), LEVEL_IMMORTAL ) );
         return;
     }
 
@@ -7728,9 +7737,10 @@ void do_dns( CHAR_DATA *ch, char *argument )
         toc_strlcpy( addr, canonical, sizeof(addr) );
         snprintf( buf, sizeof(buf), "%s is no longer held back by the connection guard.\n\r", addr );
         send_to_char( buf, ch );
-        snprintf( buf, sizeof(buf), "%s lifted the connection guard from %s.", ch->name, addr );
+        snprintf( buf, sizeof(buf), "%s lifted the connection guard from %s.",
+                  staff_actor( ch )->name, addr );
         log_string( buf );
-        wizinfo( buf, LEVEL_IMMORTAL );
+        wizinfo( buf, staff_notice_level( staff_actor( ch ), LEVEL_IMMORTAL ) );
         return;
     }
 

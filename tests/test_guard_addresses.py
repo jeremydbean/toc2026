@@ -13,7 +13,14 @@ alone, against a synthetic clock and a disk that fails:
   tried again at the next chance;
 - the start from older journals takes only a login record that names its
   own numeric address -- never a host name, never a connection line joined
-  to a later login by nearness.
+  to a later login by nearness;
+- (review of f1388da0) a file that is there and cannot be read is never
+  taken for absent or written over; a record counts only whole -- a
+  timestamp that overflows, runs on, is negative or lies beyond the clock
+  skew is refused -- and an unfinished last record is ended before the
+  next append, so the two never read as one far-future record; a rewrite
+  or append whose first flush failed fails even when the next flush
+  works, and the good file stays.
 """
 from __future__ import annotations
 
@@ -35,6 +42,7 @@ class GuardAddressHarnessTests(unittest.TestCase):
             binary = Path(tmp) / "test_guard_addresses"
             build = subprocess.run(
                 [CC, "-std=gnu89", "-Wall", "-Werror", "-I", str(ROOT / "src"),
+                 "-DGUARD_STORE_FFLUSH=test_fflush",
                  "-o", str(binary), str(ROOT / "tests" / "test_guard_addresses.c"),
                  str(ROOT / "src" / "netaddr.c"), str(ROOT / "src" / "guardstore.c")],
                 capture_output=True, text=True)
