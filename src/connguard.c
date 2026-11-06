@@ -9,10 +9,11 @@
  * a descriptor that nothing ever timed out.
  *
  * The owner's rule (2026-11-06): an address a player has logged in from in
- * the last few months, or is playing from now, is never held back, however often its client times
- * out and reconnects; an address that keeps connecting and has never carried
- * a player is shut out for a while. An immortal's BAN is a separate list and
- * still shuts out anybody. So:
+ * the last few months, or is playing from now, is never held back, however
+ * often its client times out and reconnects; an address that keeps
+ * connecting and has never carried a player is shut out for a while. An
+ * immortal's BAN is a separate list and still shuts out anybody. And (owner,
+ * the same day) staff hear of every automatic pause. So:
  *
  *  - A successful login trusts its address while it stays active: a player
  *    logged in from it within GUARD_TRUST_DAYS (90; owner, 2026-11-06:
@@ -24,23 +25,40 @@
  *    and from the log's own record of which connection logged in. log/ is
  *    published, as the login journal already is; the file holds nothing
  *    that journal and toc.log do not.
- *  - An untrusted address is blocked after GUARD_STRIKES connections within
- *    GUARD_STRIKE_WINDOW, or GUARD_BURST within a minute: GUARD_BLOCK_BASE
- *    the first time, doubling for each block in the last week, to
- *    GUARD_BLOCK_MAX. A blocked connection is told how long and closed
- *    before the greeting, with no lookup and no log line.
+ *  - A pause stops new characters, never a login. A real player on an
+ *    address the list does not know yet -- a new ISP, a phone, a carrier's
+ *    shared address -- still gets the greeting, logs in with their
+ *    character, and that login trusts the address and lifts the pause. Only
+ *    creating a character is refused while it lasts, with how long is left.
+ *  - An untrusted address is paused after GUARD_STRIKES connections within
+ *    GUARD_STRIKE_WINDOW that went nowhere, or GUARD_BURST connections
+ *    within a minute: GUARD_BLOCK_BASE the first time, doubling for each
+ *    pause in the last week, to GUARD_BLOCK_MAX. A connection "went
+ *    nowhere" when it closed before reaching a password prompt -- an
+ *    existing character's, or a new one's after its name was confirmed.
+ *    Never a strike: a connection the login prompt timed out (a client left
+ *    open, which reconnects on its own), one that asked for MSSP (the
+ *    listing crawlers), and one bridged by the web client (a page reload is
+ *    a connection).
+ *  - A flood -- GUARD_FLOOD connections within a minute -- is refused
+ *    before the greeting for GUARD_FLOOD_SECS, flat. No player's client
+ *    reconnects sixty times a minute; the busiest seen did fifteen.
  *  - Any address holds at most GUARD_PENDING_MAX connections that are not
- *    playing yet; the next is refused, not blocked.
+ *    playing yet; the next is refused, not paused.
  *  - Silent connections -- closed without sending a line -- are counted, not
  *    logged one by one; GUARD_REPORT_SECS apart a summary line says how many
- *    there were, how many were refused and how many addresses were blocked.
+ *    there were, how many were refused and how many addresses were paused,
+ *    to the log, and to staff as WIZINFO when anything was refused or paused.
+ *  - Staff hear, as WIZINFO: every pause and flood refusal, a pause lifted
+ *    by a login, a new character refused, and an address that hits the
+ *    waiting limit -- the last two once an address in GUARD_NOTICE_SECS.
  *
  * Loopback is exempt, as the login throttle exempts it (the web bridge and
  * the health probe); TOC_GUARD_LOOPBACK=1 includes it, for the tests (apart
  * from the throttle's switch, whose tests make many failed connections),
  * and TOC_GUARD_STRIKES / TOC_GUARD_BURST lower the limits for them.
- * Staff DNS GUARD lists blocks and trusted counts; DNS ALLOW <address> lifts
- * a block and trusts the address.
+ * TOC_GUARD_FLOOD lowers the flood. Staff DNS GUARD lists pauses and trusted
+ * counts; DNS ALLOW <address> lifts a pause and trusts the address.
  */
 #if defined(macintosh)
 #include <types.h>
@@ -64,8 +82,11 @@
 #define GUARD_BURST            20
 #define GUARD_BLOCK_BASE     ( 6 * 3600 )
 #define GUARD_BLOCK_MAX      ( 7 * 86400 )
+#define GUARD_FLOOD            60
+#define GUARD_FLOOD_SECS     3600
 #define GUARD_PENDING_MAX       8
 #define GUARD_REPORT_SECS    3600
+#define GUARD_NOTICE_SECS     600
 #define GUARD_TRUST_FILE     "../log/player_addresses.tsv"
 #define GUARD_LOGINS_FILE    "../log/logins.tsv"
 #define GUARD_TOC_LOG        "../log/toc.log"
@@ -79,9 +100,11 @@ typedef struct guard_entry
     int      conns;
     time_t   burst_start;    /* the minute */
     int      burst;
-    time_t   blocked_until;
-    time_t   last_block;     /* when the last block began */
-    int      blocks;         /* blocks in the last week, for doubling */
+    time_t   blocked_until;  /* a pause: no new characters */
+    time_t   last_block;     /* when the last pause began */
+    int      blocks;         /* pauses in the last week, for doubling */
+    time_t   flood_until;    /* a flood: refused before the greeting */
+    time_t   noticed_at;     /* staff last told of a refusal here */
 } GUARD_ENTRY;
 
 static GUARD_ENTRY guard_table[GUARD_SLOTS];
@@ -98,6 +121,7 @@ static bool        guard_loaded;
 static long        guard_silent;     /* since the last report */
 static long        guard_refused;
 static long        guard_blocks_new;
+static long        guard_new_refused;  /* new characters refused */
 static time_t      guard_report_at;
 
 static int guard_limit( const char *env, int fallback )
@@ -363,6 +387,15 @@ static void guard_ip_text( uint32_t ip, char *buf, size_t size )
         toc_strlcpy( buf, "?", size );
 }
 
+/* Staff are told, and the log keeps it. */
+static void guard_say( const char *text )
+{
+    log_string( text );
+    wizinfo( text, LEVEL_IMMORTAL );
+}
+
+/* A pause: no new characters from it for a while. Logins still work, and
+   one lifts it. */
 static void guard_block( GUARD_ENTRY *e, const char *why )
 {
     char addr[INET_ADDRSTRLEN];
@@ -380,44 +413,68 @@ static void guard_block( GUARD_ENTRY *e, const char *why )
     e->last_block = current_time;
     e->blocked_until = current_time + length;
     e->conns = 0;
-    e->burst = 0;
     guard_blocks_new++;
     guard_ip_text( e->ip, addr, sizeof(addr) );
     snprintf( buf, sizeof(buf),
-              "Connection guard: %s blocked for %ld hours (%s; no player has ever logged in from it).",
-              addr, length / 3600, why );
-    log_string( buf );
-    wizinfo( buf, LEVEL_IMMORTAL );
+              "Connection guard: %s paused for %ld hours (%s; no player has logged in from it "
+              "in %d days). Logins still work; new characters wait. DNS ALLOW %s lifts it.",
+              addr, length / 3600, why, GUARD_TRUST_DAYS, addr );
+    guard_say( buf );
+}
+
+/* Whether staff should hear of another refusal at this address yet. */
+static bool guard_notice_due( GUARD_ENTRY *e )
+{
+    if ( e->noticed_at != 0 && current_time - e->noticed_at < GUARD_NOTICE_SECS )
+        return false;
+    e->noticed_at = current_time;
+    return true;
+}
+
+/* The address counts for the guard at all: not loopback (bar the tests),
+   no player logged in from it lately, nobody playing from it now. */
+static bool guard_watches( uint32_t ip, DESCRIPTOR_DATA *self )
+{
+    DESCRIPTOR_DATA *od;
+
+    if ( !guard_applies( ip ) )
+        return false;
+    guard_load();
+    /* A player's address is never held back by the guard (owner,
+       2026-11-06): one a player has logged in from in the last
+       GUARD_TRUST_DAYS, or one a player is playing from now. An immortal's
+       BAN is another list, asked at the name and the password as always,
+       and still shuts anybody out. */
+    if ( guard_trusted_has( ip ) )
+        return false;
+    for ( od = descriptor_list; od != NULL; od = od->next )
+        if ( od != self && od->ip == ip && od->connected == CON_PLAYING )
+            return false;
+    return true;
 }
 
 /*
  * At accept, before the greeting: NULL to admit, or the line to send before
- * closing. Counts the connection against its address.
+ * closing. Counts the connection's minute against its address; a paused
+ * address is admitted and marked (d->guard_paused), since a player may be
+ * behind it.
  */
 const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
 {
     DESCRIPTOR_DATA *od;
     GUARD_ENTRY *e;
+    char addr[INET_ADDRSTRLEN];
+    char note[MAX_STRING_LENGTH];
     int pending = 0;
 
-    if ( d == NULL || !guard_applies( d->ip ) )
+    if ( d == NULL || !guard_watches( d->ip, d ) )
         return NULL;
-    guard_load();
-    /* A player's address is never held back by the guard (owner,
-       2026-11-06): one a player has logged in from in the last
-       GUARD_TRUST_DAYS, or one a player is playing from now. An immortal's BAN is another list, asked at the
-       name and the password as always, and still shuts anybody out. */
-    if ( guard_trusted_has( d->ip ) )
-        return NULL;
-    for ( od = descriptor_list; od != NULL; od = od->next )
-        if ( od != d && od->ip == d->ip && od->connected == CON_PLAYING )
-            return NULL;
     e = guard_find( d->ip, true );
     e->last_seen = current_time;
 
-    if ( e->blocked_until > current_time )
+    if ( e->flood_until > current_time )
     {
-        long left = (long) ( e->blocked_until - current_time );
+        long left = (long) ( e->flood_until - current_time );
 
         guard_refused++;
         snprintf( buf, size,
@@ -426,28 +483,31 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
         return buf;
     }
 
-    if ( e->window_start == 0 || current_time - e->window_start > GUARD_STRIKE_WINDOW )
-    {
-        e->window_start = current_time;
-        e->conns = 0;
-    }
     if ( e->burst_start == 0 || current_time - e->burst_start > 60 )
     {
         e->burst_start = current_time;
         e->burst = 0;
     }
-    e->conns++;
     e->burst++;
-    if ( e->burst >= guard_limit( "TOC_GUARD_BURST", GUARD_BURST ) )
-        guard_block( e, "too many connections in a minute" );
-    else if ( e->conns >= guard_limit( "TOC_GUARD_STRIKES", GUARD_STRIKES ) )
-        guard_block( e, "kept connecting without playing" );
-    if ( e->blocked_until > current_time )
+    if ( e->burst >= guard_limit( "TOC_GUARD_FLOOD", GUARD_FLOOD ) )
     {
+        e->flood_until = current_time + GUARD_FLOOD_SECS;
+        e->burst = 0;
+        guard_blocks_new++;
         guard_refused++;
+        guard_ip_text( e->ip, addr, sizeof(addr) );
+        snprintf( note, sizeof(note),
+                  "Connection guard: %s refused for %d minutes (%d connections in a minute; "
+                  "no player has logged in from it in %d days). DNS ALLOW %s lifts it.",
+                  addr, GUARD_FLOOD_SECS / 60, guard_limit( "TOC_GUARD_FLOOD", GUARD_FLOOD ),
+                  GUARD_TRUST_DAYS, addr );
+        guard_say( note );
         snprintf( buf, size, "Connections from your address are paused for a while.\n\r" );
         return buf;
     }
+    if ( e->burst >= guard_limit( "TOC_GUARD_BURST", GUARD_BURST )
+    &&   e->blocked_until <= current_time )
+        guard_block( e, "too many connections in a minute" );
 
     for ( od = descriptor_list; od != NULL; od = od->next )
         if ( od != d && od->ip == d->ip && od->connected != CON_PLAYING )
@@ -455,10 +515,85 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
     if ( pending >= GUARD_PENDING_MAX )
     {
         guard_refused++;
+        if ( guard_notice_due( e ) )
+        {
+            guard_ip_text( e->ip, addr, sizeof(addr) );
+            snprintf( note, sizeof(note),
+                      "Connection guard: %s refused a connection: %d already waiting at the login "
+                      "prompt (told again in %d minutes at most).",
+                      addr, pending, GUARD_NOTICE_SECS / 60 );
+            guard_say( note );
+        }
         snprintf( buf, size, "Too many connections from your address are waiting to log in.\n\r" );
         return buf;
     }
+    d->guard_paused = e->blocked_until > current_time;
     return NULL;
+}
+
+/*
+ * A connection closed. One that went nowhere -- no password prompt reached
+ * -- is a strike against its address, unless it is one a player's client
+ * makes on its own: timed out at the prompt, an MSSP poll, a web bridge.
+ */
+void conn_guard_closed( DESCRIPTOR_DATA *d )
+{
+    GUARD_ENTRY *e;
+
+    if ( d == NULL || d->guard_refused || !guard_applies( d->ip ) )
+        return;
+    if ( !d->first_line_read )
+        guard_silent++;
+    if ( d->guard_named || d->guard_idle_closed || d->guard_mssp || d->guard_proxied
+    ||   d->connected == CON_PLAYING )
+        return;
+    if ( !guard_watches( d->ip, d ) )
+        return;
+    e = guard_find( d->ip, true );
+    e->last_seen = current_time;
+    if ( e->window_start == 0 || current_time - e->window_start > GUARD_STRIKE_WINDOW )
+    {
+        e->window_start = current_time;
+        e->conns = 0;
+    }
+    e->conns++;
+    if ( e->conns >= guard_limit( "TOC_GUARD_STRIKES", GUARD_STRIKES )
+    &&   e->blocked_until <= current_time )
+        guard_block( e, "kept connecting without logging in" );
+}
+
+/*
+ * A new character asked for: NULL to go on, or the line to send. Only a
+ * pause stops one; the player is told how long and that a character
+ * already made may still log in.
+ */
+const char *conn_guard_new_char( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size )
+{
+    GUARD_ENTRY *e;
+    char addr[INET_ADDRSTRLEN];
+    char note[MAX_STRING_LENGTH];
+    long left;
+
+    if ( d == NULL || !guard_watches( d->ip, d ) )
+        return NULL;
+    if ( ( e = guard_find( d->ip, false ) ) == NULL || e->blocked_until <= current_time )
+        return NULL;
+    left = (long) ( e->blocked_until - current_time );
+    guard_new_refused++;
+    if ( guard_notice_due( e ) )
+    {
+        guard_ip_text( e->ip, addr, sizeof(addr) );
+        snprintf( note, sizeof(note),
+                  "Connection guard: new character '%s' refused from paused %s "
+                  "(%ld minutes left). DNS ALLOW %s lets it in.",
+                  name != NULL ? name : "?", addr, ( left + 59 ) / 60, addr );
+        guard_say( note );
+    }
+    snprintf( buf, size,
+              "New characters cannot be made from your address for %ld more minute%s.\n\r"
+              "If you already play here, log in with your character.\n\rName: ",
+              ( left + 59 ) / 60, ( left + 59 ) / 60 == 1 ? "" : "s" );
+    return buf;
 }
 
 /* The whole list, newest times only, written aside and renamed in. */
@@ -479,21 +614,30 @@ static void guard_trust_rewrite( void )
         guard_trust_lines = guard_trusted_count;
 }
 
-/* A player logged in: their address is trusted for GUARD_TRUST_DAYS from
-   now. Written down once a day at most per address. */
-void conn_guard_trust( uint32_t ip )
+/* A player logged in (or staff allowed the address): it is trusted for
+   GUARD_TRUST_DAYS from now, and any pause on it ends. Written down once a
+   day at most per address. `who` says why, for staff; NULL when the caller
+   tells them itself. */
+void conn_guard_trust( uint32_t ip, const char *who )
 {
     GUARD_ENTRY *e;
     FILE *fp;
     char addr[INET_ADDRSTRLEN];
+    char buf[MAX_STRING_LENGTH];
     time_t before;
 
     if ( !guard_applies( ip ) )
         return;
     guard_load();
+    guard_ip_text( ip, addr, sizeof(addr) );
     if ( ( e = guard_find( ip, false ) ) != NULL )
     {
-        e->blocked_until = 0;
+        if ( who != NULL && ( e->blocked_until > current_time || e->flood_until > current_time ) )
+        {
+            snprintf( buf, sizeof(buf), "Connection guard: pause on %s lifted -- %s.", addr, who );
+            guard_say( buf );
+        }
+        e->blocked_until = e->flood_until = 0;
         e->conns = e->burst = 0;
     }
     before = guard_trusted_note( ip, current_time );
@@ -504,7 +648,6 @@ void conn_guard_trust( uint32_t ip )
         guard_trust_rewrite();
         return;
     }
-    guard_ip_text( ip, addr, sizeof(addr) );
     if ( ( fp = fopen( GUARD_TRUST_FILE, "a" ) ) != NULL )
     {
         fprintf( fp, "%s\t%ld\n", addr, (long) current_time );
@@ -519,18 +662,12 @@ bool conn_guard_trusted( uint32_t ip )
     return guard_trusted_has( ip );
 }
 
-/* A connection that closed without a word: counted for the summary. */
-void conn_guard_silent( DESCRIPTOR_DATA *d )
-{
-    if ( d != NULL && guard_applies( d->ip ) )
-        guard_silent++;
-}
-
-/* Once a pulse: the summary, GUARD_REPORT_SECS apart, when there is one. */
+/* Once a pulse: the summary, GUARD_REPORT_SECS apart, when there is one;
+   staff hear it when something was refused or paused. */
 void conn_guard_tick( void )
 {
     char buf[MAX_STRING_LENGTH];
-    int blocked = 0;
+    int paused = 0, flooded = 0;
     int i;
 
     if ( guard_report_at == 0 )
@@ -538,17 +675,27 @@ void conn_guard_tick( void )
     if ( current_time - guard_report_at < GUARD_REPORT_SECS )
         return;
     guard_report_at = current_time;
-    if ( guard_silent == 0 && guard_refused == 0 && guard_blocks_new == 0 )
+    if ( guard_silent == 0 && guard_refused == 0 && guard_blocks_new == 0 && guard_new_refused == 0 )
         return;
     for ( i = 0; i < GUARD_SLOTS; i++ )
-        if ( guard_table[i].used && guard_table[i].blocked_until > current_time )
-            blocked++;
+    {
+        if ( !guard_table[i].used )
+            continue;
+        if ( guard_table[i].flood_until > current_time )
+            flooded++;
+        else if ( guard_table[i].blocked_until > current_time )
+            paused++;
+    }
     snprintf( buf, sizeof(buf),
               "Connection guard: last hour %ld closed without a word, %ld refused, "
-              "%ld newly blocked; %d addresses blocked now, %d active player addresses.",
-              guard_silent, guard_refused, guard_blocks_new, blocked, guard_active_count() );
+              "%ld new characters refused, %ld newly paused; %d addresses paused and %d refused "
+              "now, %d active player addresses.",
+              guard_silent, guard_refused, guard_new_refused, guard_blocks_new, paused, flooded,
+              guard_active_count() );
     log_string( buf );
-    guard_silent = guard_refused = guard_blocks_new = 0;
+    if ( guard_refused > 0 || guard_blocks_new > 0 || guard_new_refused > 0 )
+        wizinfo( buf, LEVEL_IMMORTAL );
+    guard_silent = guard_refused = guard_blocks_new = guard_new_refused = 0;
 }
 
 /* Staff DNS GUARD. */
@@ -562,36 +709,45 @@ void conn_guard_report( CHAR_DATA *ch )
     guard_load();
     snprintf( buf, sizeof(buf),
               "Connection guard: %d active player addresses (a player logged in from each\n\r"
-              "in the last %d days) are never limited or blocked; an immortal's BAN still is.\n\r"
-              "Untrusted: blocked after %d connections in %d hours or %d in a minute,\n\r"
-              "for %d hours doubling to %d days. Since the last hourly line: %ld silent,\n\r"
-              "%ld refused.\n\r",
+              "in the last %d days) are never limited or paused; an immortal's BAN still is.\n\r"
+              "Untrusted: paused after %d connections in %d hours that reach no password\n\r"
+              "prompt, or %d in a minute, for %d hours doubling to %d days. A pause stops\n\r"
+              "new characters only; a login lifts it. %d in a minute is refused outright\n\r"
+              "for %d minutes. Since the last hourly line: %ld silent, %ld refused,\n\r"
+              "%ld new characters refused.\n\r",
               guard_active_count(), GUARD_TRUST_DAYS, guard_limit( "TOC_GUARD_STRIKES", GUARD_STRIKES ),
               GUARD_STRIKE_WINDOW / 3600, guard_limit( "TOC_GUARD_BURST", GUARD_BURST ),
-              GUARD_BLOCK_BASE / 3600, GUARD_BLOCK_MAX / 86400, guard_silent, guard_refused );
+              GUARD_BLOCK_BASE / 3600, GUARD_BLOCK_MAX / 86400,
+              guard_limit( "TOC_GUARD_FLOOD", GUARD_FLOOD ), GUARD_FLOOD_SECS / 60,
+              guard_silent, guard_refused, guard_new_refused );
     send_to_char( buf, ch );
     for ( i = 0; i < GUARD_SLOTS; i++ )
     {
-        if ( !guard_table[i].used || guard_table[i].blocked_until <= current_time )
+        const GUARD_ENTRY *e = &guard_table[i];
+
+        if ( !e->used || ( e->blocked_until <= current_time && e->flood_until <= current_time ) )
             continue;
-        guard_ip_text( guard_table[i].ip, addr, sizeof(addr) );
-        snprintf( buf, sizeof(buf), "  %-16s blocked %ld more minutes (block %d this week)\n\r",
-                  addr, (long) ( guard_table[i].blocked_until - current_time + 59 ) / 60,
-                  guard_table[i].blocks );
+        guard_ip_text( e->ip, addr, sizeof(addr) );
+        if ( e->flood_until > current_time )
+            snprintf( buf, sizeof(buf), "  %-16s refused %ld more minutes (a flood)\n\r",
+                      addr, (long) ( e->flood_until - current_time + 59 ) / 60 );
+        else
+            snprintf( buf, sizeof(buf), "  %-16s paused %ld more minutes (pause %d this week)\n\r",
+                      addr, (long) ( e->blocked_until - current_time + 59 ) / 60, e->blocks );
         send_to_char( buf, ch );
         shown++;
     }
     if ( shown == 0 )
-        send_to_char( "  Nobody is blocked.\n\r", ch );
+        send_to_char( "  Nobody is paused.\n\r", ch );
 }
 
-/* Staff DNS ALLOW <address>: lift a block and trust the address. */
+/* Staff DNS ALLOW <address>: lift a pause and trust the address. */
 bool conn_guard_allow( const char *text )
 {
     uint32_t ip = guard_parse( text );
 
     if ( ip == 0 )
         return false;
-    conn_guard_trust( ip );
+    conn_guard_trust( ip, NULL );   /* DNS ALLOW says so itself */
     return true;
 }

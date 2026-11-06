@@ -317,6 +317,7 @@ static void telnet_send_mssp( DESCRIPTOR_DATA *d )
 
     if ( d == NULL )
         return;
+    d->guard_mssp = TRUE;   /* a listing crawler: never a connection-guard strike */
 
     buf[len++] = (char)(unsigned char)IAC;
     buf[len++] = (char)(unsigned char)SB;

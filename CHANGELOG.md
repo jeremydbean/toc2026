@@ -13,11 +13,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   for a connection that sends a line; the play journal's stall rows had
   every outside connection freezing all players for up to half a second.
   The connection guard (`src/connguard.c`) pauses an address no player has
-  logged in from in 90 days after repeated connections (six in six hours,
-  twenty in a minute; six hours doubling to seven days), never an active
-  player's, limits waiting connections per address to eight, closes a
-  login prompt left alone ten minutes, and counts silent connections in an
-  hourly line instead of logging each. Staff `DNS GUARD` and `DNS ALLOW`.
+  logged in from in 90 days after repeated connections that reach no
+  password prompt (six in six hours, twenty in a minute; six hours
+  doubling to seven days), never an active player's. A pause stops new
+  characters only -- a player on the address still logs in, and that
+  lifts it -- and a connection the login prompt timed out, an MSSP poll
+  or a web connection is never a strike; sixty in a minute is refused
+  outright for an hour. It limits waiting connections per address to
+  eight, closes a login prompt left alone ten minutes, counts silent
+  connections in an hourly line, and tells staff each pause, refusal and
+  lifted pause as WIZINFO. Staff `DNS GUARD` and `DNS ALLOW`.
   `tests/test_connection_guard.py`.
 - **Deep bug rows in the play journal** (2026-11-05). `stall` rows when a
   pulse runs past its quarter second, naming the phase and the command

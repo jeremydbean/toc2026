@@ -95,9 +95,17 @@ between 2026-09-17 and 11-06; 951 of those addresses never logged in). The
 game now (`src/connguard.c`, owner's rules of 2026-11-06):
 
 - pauses an address **no player has logged in from in the last 90 days**
-  for six hours after six connections in six hours or twenty in a minute,
-  doubling for each pause in a week, to seven days -- told how long and
-  closed before the greeting;
+  for six hours after six connections in six hours that reach no password
+  prompt, or twenty in a minute, doubling for each pause in a week, to
+  seven days. A pause stops **new characters only**: a player on an
+  address the guard does not know yet (a new ISP, a phone, a carrier's
+  shared address) still logs in, and that lifts the pause. A connection
+  the login prompt timed out, an MSSP poll and a web-bridge connection are
+  never strikes;
+- refuses a flood -- sixty connections in a minute -- before the greeting
+  for an hour;
+- tells staff, as WIZINFO, every pause, flood refusal and lifted pause, a
+  new character or waiting connection refused, and the hourly count;
 - never pauses or limits an address a player has logged in from in the last
   90 days, or is playing from now. Those addresses are kept in
   `log/player_addresses.tsv` (seeded from the login journal and `toc.log`);

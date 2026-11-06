@@ -4150,28 +4150,48 @@ connection banned by name. Both builds link threads (`-pthread`,
 worker, for tests.
 
 **The connection guard** (`src/connguard.c`; owner's rules, 2026-11-06:
-never auto-ban an address a player uses; staff BAN still applies):
-`conn_guard_admit()` in `init_descriptor` (and again after a PROXY
-header) refuses before the greeting an address paused for repeated
-connections -- `GUARD_STRIKES` (6) in `GUARD_STRIKE_WINDOW` (6 h) or
-`GUARD_BURST` (20) in a minute, `GUARD_BLOCK_BASE` (6 h) doubling per
-pause in a week to `GUARD_BLOCK_MAX` (7 days) -- or one holding
-`GUARD_PENDING_MAX` (8) connections not yet playing. **An address a
+never auto-ban an address a player uses; staff BAN still applies; staff
+hear of every automatic action). **A pause stops new characters, never a
+login** (false-positive review, the same day): a real player on an address
+the guard does not know yet -- a new ISP, a phone, a carrier's shared
+address -- gets the greeting, logs in, and that login trusts the address
+and lifts the pause; `conn_guard_new_char()` in the nanny's new-name path
+refuses creation with the minutes left and re-prompts. An address is
+paused after `GUARD_STRIKES` (6) strikes in `GUARD_STRIKE_WINDOW` (6 h) or
+`GUARD_BURST` (20) connections in a minute, `GUARD_BLOCK_BASE` (6 h)
+doubling per pause in a week to `GUARD_BLOCK_MAX` (7 days). **A strike is
+counted at close** (`conn_guard_closed`, from `close_socket`) for a
+connection that reached no password prompt (`d->guard_named`, set at the
+old character's password prompt and at a new name's confirmation) -- and
+never for one the login prompt timed out (`guard_idle_closed`: a client
+left open reconnects by itself), one that asked for MSSP (`guard_mssp`,
+the listing crawlers) or one through the web bridge (`guard_proxied`: a
+reload is a connection). Only a flood -- `GUARD_FLOOD` (60) in a minute --
+is refused before the greeting, by `conn_guard_admit()` in
+`init_descriptor` (and again after a PROXY header), for
+`GUARD_FLOOD_SECS` (an hour) flat; so is a connection past
+`GUARD_PENDING_MAX` (8) not yet playing from one address. **An address a
 player logged in from within `GUARD_TRUST_DAYS` (90), or is playing from
 now, is never counted, limited or paused**: `login_note_success` and the
-new-player path call `conn_guard_trust()`, kept in
+new-player path call `conn_guard_trust(ip, who)`, kept in
 `log/player_addresses.tsv` (an address and the last login from it; a line
 a day at most, the newest wins, rewritten past `GUARD_TRUST_FILE_MAX`) and
 seeded at boot from `log/logins.tsv`'s numeric hosts and `toc.log`'s
-`Sock.sinaddr` lines followed by a login. Loopback is exempt
-(`TOC_GUARD_LOOPBACK=1` for tests -- apart from the login throttle's
-`TOC_THROTTLE_LOOPBACK`, whose tests make many failed connections).
-Silent connections (closed with no line) are counted into one
-`Connection guard:` log line an hour, not logged one by one; "EOF
-encountered on read." is logged only for a connection that spoke.
-`login_idle_sweep()` closes a connection not playing after
-`LOGIN_IDLE_SECS` (600; `TOC_LOGIN_IDLE_SECS`) without input
-(`d->input_at`). Staff `DNS GUARD`/`DNS ALLOW <address>`.
+`Sock.sinaddr` lines followed by a login. **Staff hear it** through
+`guard_say()` (log and WIZINFO): each pause and flood, a pause lifted by a
+login, and -- once an address in `GUARD_NOTICE_SECS` -- a new character or
+waiting connection refused; the hourly summary goes to WIZINFO when
+anything was refused or paused. Loopback is exempt (`TOC_GUARD_LOOPBACK=1`
+for tests -- apart from the login throttle's `TOC_THROTTLE_LOOPBACK`,
+whose tests make many failed connections; `TOC_GUARD_STRIKES`,
+`TOC_GUARD_BURST`, `TOC_GUARD_FLOOD` lower the limits). Silent connections
+(closed with no line) are counted into one `Connection guard:` log line an
+hour, not logged one by one; "EOF encountered on read." is logged only for
+a connection that spoke. `login_idle_sweep()` closes a connection not
+playing after `LOGIN_IDLE_SECS` (600; `TOC_LOGIN_IDLE_SECS`) without input
+(`d->input_at`). Staff `DNS GUARD`/`DNS ALLOW <address>`. A test that
+needs an untrusted loopback after creating a character stops the server,
+removes `log/player_addresses.tsv` and `log/logins.tsv`, and boots again.
 `tests/test_connection_guard.py`, also in `SANITIZE_MODULES`.
 
 ## Staff Invulnerability

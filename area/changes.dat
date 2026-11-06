@@ -9,6 +9,13 @@
 The game no longer freezes for a moment whenever somebody connects. A
 login prompt left with nothing typed for ten minutes now disconnects.
 
+@ 20261106c 2026-11-06 staff
+The connection guard's pause now stops only new characters: a player on a
+paused address still logs in, and that lifts it. Strikes count only
+connections that reach no password prompt, never one the login prompt
+timed out, an MSSP poll or a web connection; sixty in a minute is refused
+for an hour. Every pause, refusal and lifted pause comes on WIZINFO.
+
 @ 20261106b 2026-11-06 staff
 DNS GUARD shows the connection guard: an address no player has logged in
 from in 90 days is paused after repeated connections (six in six hours or

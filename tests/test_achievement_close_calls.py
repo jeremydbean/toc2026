@@ -125,17 +125,22 @@ class CloseCallLiveTests(unittest.TestCase):
                 staff.must("set char sparring hp 1", "now set to 1")
                 staff.must("restore sparring", "")
                 staff.must("set char zcclose hitroll 300", "hitroll set to 300")
-                # 80 of 2,000 hit points right before the fight: under a
+                # 50 of 2,000 hit points right before the fight: under a
                 # twentieth, with room to take the guard's punches. The
                 # flee and recall loops above take long enough on a slow
                 # runner for a tick to heal one hit point past a twentieth
                 # of 100 (CI, 2026-11-03: 15 of 100 at the kill, no award),
                 # and on one hit point the guard's first punch could kill
                 # the hero before the blow landed.
-                staff.must("set char zcclose hp 80", "now set to 80")
+                # And a tick may land between RESTORE and STAT (CI,
+                # 2026-11-06: 80 read as 94), so start at 50 and ask for
+                # what the award needs -- under a twentieth -- not a number.
+                staff.must("set char zcclose hp 50", "now set to 50")
                 staff.must("restore zcclose", "restored")
                 staff.must("set char zcclose hp 2000", "now set to 2000")
-                self.assertRegex(staff.must("stat char zcclose", "Hp:"), r"Hp: 80/2000\b")
+                hp = re.search(r"Hp: (\d+)/2000\b", staff.must("stat char zcclose", "Hp:"))
+                self.assertIsNotNone(hp)
+                self.assertLess(int(hp.group(1)), 100)
                 staff.must(f"transfer zcclose {FLOOR}", "Ok.")
                 mark = len(hero.transcript)
                 if "is DEAD" not in hero.sync("kill sparring"):

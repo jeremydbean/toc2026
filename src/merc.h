@@ -728,6 +728,15 @@ struct  descriptor_data
     time_t              input_at;
     /* Refused at accept by the connection guard: not a silent connection. */
     bool                guard_refused;
+    /* The connection guard's view of this connection (connguard.c): its
+       address was paused when it came (no new characters); it reached a
+       password prompt; the login prompt timed it out; it asked for MSSP;
+       it came through the web bridge. The last four are never a strike. */
+    bool                guard_paused;
+    bool                guard_named;
+    bool                guard_idle_closed;
+    bool                guard_mssp;
+    bool                guard_proxied;
 };
 
 struct were_form
@@ -3659,9 +3668,10 @@ bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
 /* connguard.c -- what the game does about addresses that connect and never play */
 const char *conn_guard_admit  args( ( DESCRIPTOR_DATA *d, char *buf, size_t size ) );
-void  conn_guard_trust        args( ( uint32_t ip ) );
+void  conn_guard_trust        args( ( uint32_t ip, const char *who ) );
 bool  conn_guard_trusted      args( ( uint32_t ip ) );
-void  conn_guard_silent       args( ( DESCRIPTOR_DATA *d ) );
+void  conn_guard_closed       args( ( DESCRIPTOR_DATA *d ) );
+const char *conn_guard_new_char args( ( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size ) );
 void  conn_guard_tick         args( ( void ) );
 void  conn_guard_boot         args( ( void ) );
 void  conn_guard_report       args( ( CHAR_DATA *ch ) );

@@ -941,6 +941,7 @@ static void login_idle_sweep( void )
         ||   d->input_at <= 0 || current_time - d->input_at < limit )
             continue;
         write_to_buffer( d, "\n\rNothing typed for a while -- connect again when you are ready.\n\r", 0 );
+        d->guard_idle_closed = TRUE;    /* a client left open: never a strike */
         close_socket( d );
     }
 }
@@ -1461,7 +1462,13 @@ static void login_note_success( DESCRIPTOR_DATA *d )
 
     /* A player's address: never limited by the connection guard while
        they keep logging in from it. */
-    conn_guard_trust( d->ip );
+    {
+        char who[MAX_INPUT_LENGTH];
+
+        snprintf( who, sizeof(who), "%s logged in from it",
+                  d->character != NULL && d->character->name != NULL ? d->character->name : "a player" );
+        conn_guard_trust( d->ip, who );
+    }
 
     if ( (entry = login_fail_lookup(d->ip)) != NULL )
         entry->used = false;
@@ -1483,9 +1490,11 @@ void init_descriptor( int control )
     descriptor_list = dnew;
 
     /*
-     * The connection guard (connguard.c): an address that keeps connecting
-     * and has never carried a player is shut out for a while, before the
-     * greeting and without a lookup or a log line.
+     * The connection guard (connguard.c): an address flooding the port
+     * (sixty connections a minute) that has never carried a player is
+     * refused here, before the greeting and without a lookup or a log line.
+     * A paused address is let through -- a player may be behind it -- and
+     * only a new character is refused.
      */
     {
         char guard_buf[MAX_INPUT_LENGTH];
@@ -1663,8 +1672,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 
     /* A connection that never said a word is counted, not logged. An
        answer the resolver has yet to give goes to nobody. */
-    if ( !dclose->first_line_read && !dclose->guard_refused )
-        conn_guard_silent( dclose );
+    conn_guard_closed( dclose );
     dclose->dns_serial = 0;
 
     if ( dclose->outtop > 0 )
@@ -3150,6 +3158,8 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             {
                 long block;
 
+                d->guard_proxied = TRUE;    /* a page reload is a connection */
+
                 /* The throttle was asked at connect, when this still
                    looked like loopback, which it never blocks: ask again
                    for the address the header named, or no web player
@@ -3253,6 +3263,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	if ( fOld )
 	{
 	    /* Old player */
+	    d->guard_named = TRUE;     /* a character's password prompt */
 	    write_to_buffer( d, "Password: ", 0 );
 	    write_to_buffer( d, echo_off_str, 0 );
 	    d->connected = CON_GET_OLD_PASSWORD;
@@ -3304,6 +3315,19 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 		    "New players are not allowed from your site.\n\r",0);
 		close_socket(d);
 		return;
+	    }
+	    /* The connection guard's pause stops new characters only: a
+	       player on the address logs in, and that lifts it. */
+	    {
+		const char *refusal = conn_guard_new_char( d, ch->name, buf, sizeof(buf) );
+
+		if ( refusal != NULL )
+		{
+		    write_to_buffer( d, refusal, 0 );
+		    free_char( d->character );
+		    d->character = NULL;
+		    return;
+		}
 	    }
 	
             snprintf( buf, sizeof(buf), "Did I get that right, %s (Y/N)? ", argument );
@@ -3414,6 +3438,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	switch ( *argument )
 	{
         case 'y': case 'Y':
+            d->guard_named = TRUE;     /* a new character's password prompt */
             snprintf( buf, sizeof(buf), "New character.\n\rGive me a password for %s: %s",
                 ch->name, echo_off_str );
             write_to_buffer( d, buf, 0 );
@@ -3601,7 +3626,12 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s new player.", ch->name, d->host );
         log_string( log_buf );
         record_login( ch->name, d->host, "new" );
-        conn_guard_trust( d->ip );        /* a player's address now */
+        {
+            char who[MAX_INPUT_LENGTH];         /* a player's address now */
+
+            snprintf( who, sizeof(who), "%s was made there", ch->name );
+            conn_guard_trust( d->ip, who );
+        }
         /* An existing character logging in announces itself with its
            host; a brand new one did not, so the arrival staff would
            most want to see was the one that never reached them. */

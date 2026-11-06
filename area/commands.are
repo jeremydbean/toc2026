@@ -2926,13 +2926,24 @@ or spoofed-looking name from the address it really came from.
 
 DNS GUARD shows the connection guard.  An address no player has logged in
 from in the last 90 days is paused for six hours after six connections in
-six hours, or twenty in a minute -- doubling each time it happens again in
-a week, to seven days -- and no address may hold more than eight
-connections waiting to log in.  An address a player has logged in from in
-the last 90 days, or is playing from now, is never limited or paused.  A
-connection at the login prompts that types nothing for ten minutes is
-closed.  Silent connections are counted in one log line an hour, not one
-each.  BAN is a separate list and still shuts out anybody.
+six hours that reach no password prompt, or twenty in a minute -- doubling
+each time it happens again in a week, to seven days.  A pause stops new
+characters only: the greeting still comes, a player logs in as usual, and
+that login lifts the pause.  Sixty connections in a minute is a flood,
+refused before the greeting for an hour.  No address may hold more than
+eight connections waiting to log in.
+
+Never a strike: a connection the login prompt timed out (a client left
+open reconnects on its own), one that asked for MSSP (the listing
+crawlers), or one through the web client.  An address a player has logged
+in from in the last 90 days, or is playing from now, is never limited or
+paused.  A connection at the login prompts that types nothing for ten
+minutes is closed.  Silent connections are counted in one line an hour.
+BAN is a separate list and still shuts out anybody.
+
+Staff hear each pause, flood and lifted pause on WIZINFO, and a new
+character or a waiting connection refused (once an address in ten
+minutes), with the hourly count when anything was refused.
 
 DNS ALLOW <address> lifts a pause and counts the address as a player's for
 the next 90 days.
