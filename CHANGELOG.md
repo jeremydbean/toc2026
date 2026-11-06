@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Connecting never stalls the game, and scanners are held off** (2026-11-06).
+  Host names are looked up on a worker thread (`src/dnsasync.c`) and only
+  for a connection that sends a line; the play journal's stall rows had
+  every outside connection freezing all players for up to half a second.
+  The connection guard (`src/connguard.c`) pauses an address no player has
+  logged in from in 90 days after repeated connections (six in six hours,
+  twenty in a minute; six hours doubling to seven days), never an active
+  player's, limits waiting connections per address to eight, closes a
+  login prompt left alone ten minutes, and counts silent connections in an
+  hourly line instead of logging each. Staff `DNS GUARD` and `DNS ALLOW`.
+  `tests/test_connection_guard.py`.
 - **Deep bug rows in the play journal** (2026-11-05). `stall` rows when a
   pulse runs past its quarter second, naming the phase and the command
   that took the time; `death` rows with the killing blow, the hit points

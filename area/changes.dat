@@ -5,6 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261106a 2026-11-06
+The game no longer freezes for a moment whenever somebody connects. A
+login prompt left with nothing typed for ten minutes now disconnects.
+
+@ 20261106b 2026-11-06 staff
+DNS GUARD shows the connection guard: an address no player has logged in
+from in 90 days is paused after repeated connections (six in six hours or
+twenty in a minute), never an active player's. DNS ALLOW <address> lifts a
+pause. Host names are now looked up off the game loop. HELP DNS.
+
 @ 20261105a 2026-11-05
 STASH GET now takes the number STASH shows beside an item: STASH GET 7
 takes out the seventh thing on the list.

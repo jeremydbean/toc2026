@@ -72,6 +72,7 @@
 #include "interp.h"
 #include "telnet_proto.h"
 #include "db.h"
+#include "dnsasync.h"
 
 #ifndef NI_MAXHOST
 #define NI_MAXHOST 1025
@@ -563,6 +564,7 @@ int main( int argc, char **argv )
     control = init_socket( port );
     boot_db( );
     playlog_boot( );        /* the crash recorder, once the world is up */
+    conn_guard_boot( );     /* players' addresses, read before the loop */
     /* The recovery ledger: restore receipts and player identities. */
     recovery_boot( );
     /* Player corpses a restart would have lost, made again (corpses.c). */
@@ -808,6 +810,141 @@ static void save_dropped_player( DESCRIPTOR_DATA *d )
         save_char_obj( who );
 }
 
+/*
+ * A connection's first line (nanny, CON_GET_NAME, after a PROXY header has
+ * named the real address): only now is it worth a log line and a hostname
+ * lookup, so a scanner that connects and hangs up costs neither. The
+ * lookup runs on dnsasync.c's thread; dns_collect gives the answer back.
+ */
+static long dns_next_serial;
+
+static void connection_spoke( DESCRIPTOR_DATA *d )
+{
+    struct sockaddr_storage addr;
+    socklen_t len = 0;
+    const char *opt;
+
+    if ( d == NULL || d->host == NULL )
+        return;
+    if ( !is_loopback_ip( d->ip ) )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s", d->host );
+        log_string( log_buf );
+    }
+    if ( !dns_lookup_enabled )
+        return;
+    opt = getenv( "TOC_DNS_LOOPBACK" );   /* the tests' way to look one up */
+    if ( is_loopback_ip( d->ip ) && ( opt == NULL || opt[0] != '1' ) )
+        return;
+
+    memset( &addr, 0, sizeof(addr) );
+    {
+        struct sockaddr_in *four = (struct sockaddr_in *) &addr;
+        struct sockaddr_in6 *six = (struct sockaddr_in6 *) &addr;
+
+        if ( inet_pton( AF_INET, d->host, &four->sin_addr ) == 1 )
+        {
+            four->sin_family = AF_INET;
+            len = sizeof(*four);
+        }
+        else if ( inet_pton( AF_INET6, d->host, &six->sin6_addr ) == 1 )
+        {
+            six->sin6_family = AF_INET6;
+            len = sizeof(*six);
+        }
+    }
+    if ( len == 0 )
+        return;
+    d->dns_serial = ++dns_next_serial;
+    if ( !dns_async_submit( d->dns_serial, (struct sockaddr *) &addr, len ) )
+        d->dns_serial = 0;
+}
+
+/* A name the resolver found, as a host: letters, digits, dots, hyphens
+   and underscores, or nothing -- a PTR record is the far end's to write. */
+static bool host_name_clean( const char *name )
+{
+    const char *p;
+
+    if ( name == NULL || name[0] == '\0' || strlen( name ) > 200 )
+        return FALSE;
+    for ( p = name; *p != '\0'; p++ )
+        if ( !isalnum( (unsigned char) *p ) && *p != '.' && *p != '-' && *p != '_' )
+            return FALSE;
+    return TRUE;
+}
+
+/*
+ * Each pulse, before input: the names the resolver found, each given to the
+ * descriptor still waiting on it. A ban written against a host name is
+ * asked again now -- the name prompt and the password asked it of the
+ * address while the name was still on its way.
+ */
+static void dns_collect( void )
+{
+    char host[NI_MAXHOST];
+    DESCRIPTOR_DATA *d;
+    long serial;
+
+    while ( dns_async_take( &serial, host, sizeof(host) ) )
+    {
+        for ( d = descriptor_list; d != NULL; d = d->next )
+            if ( d->dns_serial == serial )
+                break;
+        if ( d == NULL || !host_name_clean( host ) )
+            continue;
+        d->dns_serial = 0;
+        free_string( d->host );
+        d->host = str_dup( host );
+        if ( check_ban( d->host, BAN_ALL ) )
+        {
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+                      "Banning access to %s (its name came after it connected).", d->host );
+            log_string( log_buf );
+            write_to_buffer( d, "Access denied.\n\r", 0 );
+            if ( d->connected == CON_PLAYING )
+                save_dropped_player( d );
+            close_socket( d );
+        }
+    }
+}
+
+/*
+ * Once a second: a connection that is not in the game and has sent nothing
+ * for LOGIN_IDLE_SECS is closed. Nothing ever timed one out, so a scanner
+ * could hold sockets open at the name prompt until the game ran out of
+ * descriptors. Ten minutes covers anybody reading the creation screens.
+ */
+#define LOGIN_IDLE_SECS 600
+
+static void login_idle_sweep( void )
+{
+    static time_t last;
+    static long limit = -1;
+    DESCRIPTOR_DATA *d, *d_next;
+
+    if ( current_time == last )
+        return;
+    last = current_time;
+    if ( limit < 0 )
+    {
+        const char *opt = getenv( "TOC_LOGIN_IDLE_SECS" );
+
+        limit = opt != NULL ? strtol( opt, NULL, 10 ) : 0;
+        if ( limit <= 0 || limit > 86400 )
+            limit = LOGIN_IDLE_SECS;
+    }
+    for ( d = descriptor_list; d != NULL; d = d_next )
+    {
+        d_next = d->next;
+        if ( d->connected == CON_PLAYING || d->connected == CON_COPYOVER_RECOVER
+        ||   d->input_at <= 0 || current_time - d->input_at < limit )
+            continue;
+        write_to_buffer( d, "\n\rNothing typed for a while -- connect again when you are ready.\n\r", 0 );
+        close_socket( d );
+    }
+}
+
 void game_loop_unix( int control )
 {
     static struct timeval null_time;
@@ -842,6 +979,9 @@ void game_loop_unix( int control )
            where it went (playlog.c: input, update_handler's phases,
            output, the slowest command). */
         playlog_pulse_begin( );
+        dns_collect( );
+        login_idle_sweep( );
+        conn_guard_tick( );
 
         if ( current_time - last_watchdog_time >= 10 )
         {
@@ -1319,6 +1459,10 @@ static void login_note_success( DESCRIPTOR_DATA *d )
     if ( d == NULL || d->ip == 0 )
         return;
 
+    /* A player's address: never limited by the connection guard while
+       they keep logging in from it. */
+    conn_guard_trust( d->ip );
+
     if ( (entry = login_fail_lookup(d->ip)) != NULL )
         entry->used = false;
 }
@@ -1337,6 +1481,24 @@ void init_descriptor( int control )
 
     dnew->next      = descriptor_list;
     descriptor_list = dnew;
+
+    /*
+     * The connection guard (connguard.c): an address that keeps connecting
+     * and has never carried a player is shut out for a while, before the
+     * greeting and without a lookup or a log line.
+     */
+    {
+        char guard_buf[MAX_INPUT_LENGTH];
+        const char *refusal = conn_guard_admit( dnew, guard_buf, sizeof(guard_buf) );
+
+        if ( refusal != NULL )
+        {
+            dnew->guard_refused = TRUE;
+            write_to_buffer( dnew, refusal, 0 );
+            close_socket( dnew );
+            return;
+        }
+    }
 
     /*
      * Refuse a throttled address before the greeting, so a guessing script
@@ -1380,7 +1542,6 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     struct sockaddr_in sock;
     socklen_t size;
     int desc;
-    char host[NI_MAXHOST];
 
     size = sizeof(sock);
     if ((desc = accept(control, (struct sockaddr *)&sock, &size)) < 0) {
@@ -1471,6 +1632,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     dnew->write_failed = FALSE;
     dnew->write_stalled_ms = 0;
     dnew->first_line_read = FALSE;
+    dnew->input_at = current_time;
 
     size = sizeof(sock);
     if (getpeername(desc, (struct sockaddr *)&sock, &size) < 0) {
@@ -1478,31 +1640,16 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
         dnew->host = str_dup("(unknown)");
     } else {
         /*
-         * Modern networking lookup
-         * Attempts to resolve the hostname, falls back to IP string if it fails.
+         * The address is the host until a name comes back. The lookup used
+         * to be made here, and getnameinfo blocks: every outside connection
+         * froze every player for as long as the resolver took -- up to half
+         * a second each, the play journal's stall rows showed, and nearly
+         * all of them scanners that hang up at once (2026-11-06). It is made
+         * now on another thread, and only for a connection that sends a
+         * line (connection_spoke), so a silent probe costs no lookup.
          */
-        /* This is a blocking call in a single-threaded loop: a slow
-           resolver stalls the game while somebody is logging in, which is
-           why `dns off' exists. */
-        if (dns_lookup_enabled
-         && getnameinfo((struct sockaddr *)&sock, size, host, sizeof(host), NULL, 0, 0) == 0) {
-            dnew->host = str_dup(host);
-        } else {
-            dnew->host = str_dup(inet_ntoa(sock.sin_addr));
-        }
-        
-        /* Store numerical IP for possible bans/logging */
+        dnew->host = str_dup(inet_ntoa(sock.sin_addr));
         dnew->ip = sock.sin_addr.s_addr;
-        
-        /* The healthcheck connects from loopback every two minutes.
-           Logging that pair of lines each time buries the entries that
-           matter under roughly 1,400 a day. */
-        if ( !is_loopback_ip( dnew->ip ) )
-        {
-            snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s",
-                     inet_ntoa(sock.sin_addr));
-            log_string(log_buf);
-        }
     }
 
     return dnew;
@@ -1513,6 +1660,12 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 {
     CHAR_DATA *ch;
     char buf[MAX_STRING_LENGTH];
+
+    /* A connection that never said a word is counted, not logged. An
+       answer the resolver has yet to give goes to nobody. */
+    if ( !dclose->first_line_read && !dclose->guard_refused )
+        conn_guard_silent( dclose );
+    dclose->dns_serial = 0;
 
     if ( dclose->outtop > 0 )
 	process_output( dclose, FALSE );
@@ -1693,7 +1846,10 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
             (size_t)UMIN( space_left, (int)sizeof(raw) ) );
         if ( nRead > 0 )
         {
-            size_t kept = telnet_filter_input( d, raw, (size_t)nRead,
+            size_t kept;
+
+            d->input_at = current_time;
+            kept = telnet_filter_input( d, raw, (size_t)nRead,
                                                d->inbuf + iStart,
                                                (size_t)space_left );
             iStart += (int)kept;
@@ -1712,8 +1868,10 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
         else if ( nRead == 0 )
         {
             /* Same reasoning as the connect line: a loopback probe
-               closing is not news. Anything else still is. */
-            if ( !is_loopback_ip( d->ip ) )
+               closing is not news, and nor is a connection that never
+               said a word -- the connection guard counts those into one
+               hourly line (connguard.c). Anything else still is. */
+            if ( !is_loopback_ip( d->ip ) && d->first_line_read )
                 log_string( "EOF encountered on read." );
             return FALSE;
         }
@@ -3005,9 +3163,23 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
                     close_socket( d );
                     return;
                 }
+                /* And the connection guard, for the same reason. */
+                {
+                    const char *refusal = conn_guard_admit( d, buf, sizeof(buf) );
+
+                    if ( refusal != NULL )
+                    {
+                        d->guard_refused = TRUE;
+                        write_to_buffer( d, refusal, 0 );
+                        close_socket( d );
+                        return;
+                    }
+                }
+                connection_spoke( d );
                 write_to_buffer( d, "Name: ", 0 );
                 return;
             }
+            connection_spoke( d );
         }
 
 	if ( argument[0] == '\0' )
@@ -3429,6 +3601,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s new player.", ch->name, d->host );
         log_string( log_buf );
         record_login( ch->name, d->host, "new" );
+        conn_guard_trust( d->ip );        /* a player's address now */
         /* An existing character logging in announces itself with its
            host; a brand new one did not, so the arrival staff would
            most want to see was the one that never reached them. */

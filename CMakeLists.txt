@@ -84,6 +84,8 @@ set(SRC_FILES
     src/playlog.c
     src/resurrect.c
     src/wizlist.c
+    src/dnsasync.c
+    src/connguard.c
 )
 
 add_executable(${TARGET_NAME})
@@ -136,3 +138,7 @@ endif()
 # zlib backs MCCP2 output compression (src/telnet_proto.c).
 find_package(ZLIB REQUIRED)
 target_link_libraries(${TARGET_NAME} PRIVATE ZLIB::ZLIB)
+
+# One worker thread makes hostname lookups off the game loop (src/dnsasync.c).
+find_package(Threads REQUIRED)
+target_link_libraries(${TARGET_NAME} PRIVATE Threads::Threads)

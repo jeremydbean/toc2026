@@ -720,6 +720,14 @@ struct  descriptor_data
      * player on loopback could rename their address at any name prompt.
      */
     bool                first_line_read;
+    /* A hostname lookup this connection waits on (dnsasync.c), 0 none:
+       an answer is given only to the descriptor still holding its serial. */
+    long                dns_serial;
+    /* When input last arrived, or the connection was accepted: a login
+       prompt left this long untouched is closed (LOGIN_IDLE_SECS). */
+    time_t              input_at;
+    /* Refused at accept by the connection guard: not a silent connection. */
+    bool                guard_refused;
 };
 
 struct were_form
@@ -3649,6 +3657,15 @@ bool    append_area_to_list ( const char *list, const char *entry,
                               char *why, size_t why_size );
 bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
+/* connguard.c -- what the game does about addresses that connect and never play */
+const char *conn_guard_admit  args( ( DESCRIPTOR_DATA *d, char *buf, size_t size ) );
+void  conn_guard_trust        args( ( uint32_t ip ) );
+bool  conn_guard_trusted      args( ( uint32_t ip ) );
+void  conn_guard_silent       args( ( DESCRIPTOR_DATA *d ) );
+void  conn_guard_tick         args( ( void ) );
+void  conn_guard_boot         args( ( void ) );
+void  conn_guard_report       args( ( CHAR_DATA *ch ) );
+bool  conn_guard_allow        args( ( const char *text ) );
 extern bool hyrule_exact_blow;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );
 int     get_max_train   ( CHAR_DATA *ch, int stat );

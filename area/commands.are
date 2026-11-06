@@ -2902,15 +2902,19 @@ See also: ASAVE, MCREATE, OCREATE, BUILDING
 Syntax: dns
         dns on | off
         dns list
+        dns guard
+        dns allow <address>
         dns <address or host name>
 
-DNS with no argument reports whether hostname lookups are on.
+DNS with no argument reports whether hostname lookups are on, and how many
+are waiting on the resolver.
 
-DNS ON | OFF controls whether a connecting address is resolved to a host
-name.  The lookup happens while the game is single-threaded, so a slow or
-unreachable resolver stalls everything for as long as it takes -- during a
-login, which is the worst moment for it.  Turning lookups off records the
-numeric address instead and removes that stall.
+DNS ON | OFF controls whether a connection is resolved to a host name.
+Lookups run on a thread of their own, so the game never waits on one: a
+connection shows its numeric address until the name comes back, and only
+a connection that sends a line is looked up at all -- a scanner that
+connects and hangs up costs nothing.  When a name arrives, a ban written
+against it is asked again, and a banned connection is closed then.
 
 The cost of off: bans written against host names will not match, because
 there is no host name to match against.  Bans on numeric addresses still
@@ -2920,10 +2924,22 @@ DNS LIST shows every connected descriptor with the host name the resolver
 produced and the numeric address behind it, which is how you tell a stale
 or spoofed-looking name from the address it really came from.
 
+DNS GUARD shows the connection guard.  An address no player has logged in
+from in the last 90 days is paused for six hours after six connections in
+six hours, or twenty in a minute -- doubling each time it happens again in
+a week, to seven days -- and no address may hold more than eight
+connections waiting to log in.  An address a player has logged in from in
+the last 90 days, or is playing from now, is never limited or paused.  A
+connection at the login prompts that types nothing for ten minutes is
+closed.  Silent connections are counted in one log line an hour, not one
+each.  BAN is a separate list and still shuts out anybody.
+
+DNS ALLOW <address> lifts a pause and counts the address as a player's for
+the next 90 days.
+
 DNS <address> resolves one thing now: an IPv4 address gets a reverse
-lookup, anything else a forward one.  This blocks the game for the duration
-of the query, exactly as a connection would, so do not point it at
-something you expect to hang.
+lookup, anything else a forward one.  This one does block the game for the
+duration of the query, so do not point it at something you expect to hang.
 
 See also: BAN, ALLOW, SOCKETS
 ~

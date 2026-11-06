@@ -17,9 +17,9 @@ DEPFLAGS := -MMD -MP
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-	LDFLAGS := -lm -lz
+	LDFLAGS := -lm -lz -pthread
 else
-	LDFLAGS := -lcrypt -lm -lz
+	LDFLAGS := -lcrypt -lm -lz -pthread
 endif
 
 SRC_DIR  := src

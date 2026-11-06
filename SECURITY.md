@@ -88,6 +88,33 @@ loopback; the test suite uses this to exercise the code.
 This bounds online guessing. It does nothing for an attacker who has already
 stolen a player file, which remains the reason the DES hashes above matter.
 
+### Connection Guard
+
+Scanners made up nearly all outside connections (13,977 from 982 addresses
+between 2026-09-17 and 11-06; 951 of those addresses never logged in). The
+game now (`src/connguard.c`, owner's rules of 2026-11-06):
+
+- pauses an address **no player has logged in from in the last 90 days**
+  for six hours after six connections in six hours or twenty in a minute,
+  doubling for each pause in a week, to seven days -- told how long and
+  closed before the greeting;
+- never pauses or limits an address a player has logged in from in the last
+  90 days, or is playing from now. Those addresses are kept in
+  `log/player_addresses.tsv` (seeded from the login journal and `toc.log`);
+- allows any address at most eight connections waiting to log in;
+- closes a connection that types nothing at the login prompts for ten
+  minutes;
+- looks up host names on a worker thread, and only for a connection that
+  sends a line, so no connection can stall the game while a resolver
+  answers.
+
+An immortal's `BAN` is a separate list and still shuts out anybody; a ban
+written against a host name is asked again when the name arrives. Staff
+`DNS GUARD` lists pauses; `DNS ALLOW <address>` lifts one. Loopback is
+exempt (`TOC_GUARD_LOOPBACK=1` includes it for tests). This is no firewall:
+a flood that fills the kernel's accept queue is a host's job (`ufw limit`,
+fail2ban), below.
+
 ### Dashboard Read Endpoints
 
 `WEB_ADMIN_TOKEN` protects operational routes, but several read routes are

@@ -40,6 +40,7 @@
 #include <netdb.h>
 #include "merc.h"
 #include "interp.h"
+#include "dnsasync.h"
 
 /* macOS hides NI_MAXHOST under _POSIX_C_SOURCE; comm.c does the same. */
 #ifndef NI_MAXHOST
@@ -7619,11 +7620,13 @@ void do_dns( CHAR_DATA *ch, char *argument )
     if ( arg[0] == '\0' )
     {
         snprintf( buf, sizeof(buf),
-            "Hostname lookups are %s.\n\r"
-            "  dns on | off      resolve connecting addresses, or do not\n\r"
-            "  dns list          what the resolver made of who is connected\n\r"
-            "  dns <address>     look one up now\n\r",
-            dns_lookup_enabled ? "ON" : "OFF" );
+            "Hostname lookups are %s (made off the game loop; %d waiting).\n\r"
+            "  dns on | off       resolve connecting addresses, or do not\n\r"
+            "  dns list           what the resolver made of who is connected\n\r"
+            "  dns guard          the connection guard: blocks and player addresses\n\r"
+            "  dns allow <addr>   lift a guard block and count the address a player's\n\r"
+            "  dns <address>      look one up now\n\r",
+            dns_lookup_enabled ? "ON" : "OFF", dns_async_pending() );
         send_to_char( buf, ch );
         return;
     }
@@ -7640,6 +7643,31 @@ void do_dns( CHAR_DATA *ch, char *argument )
 
         snprintf( buf, sizeof(buf), "%s turned DNS lookups %s.",
                   ch->name, dns_lookup_enabled ? "on" : "off" );
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+        return;
+    }
+
+    if ( !str_cmp( arg, "guard" ) )
+    {
+        conn_guard_report( ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "allow" ) )
+    {
+        char addr[MAX_INPUT_LENGTH];
+
+        argument = one_argument( argument, arg );
+        one_argument( argument, addr );
+        if ( !conn_guard_allow( addr ) )
+        {
+            send_to_char( "Syntax: dns allow <dotted IPv4 address>\n\r", ch );
+            return;
+        }
+        snprintf( buf, sizeof(buf), "%s is no longer held back by the connection guard.\n\r", addr );
+        send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "%s lifted the connection guard from %s.", ch->name, addr );
         log_string( buf );
         wizinfo( buf, LEVEL_IMMORTAL );
         return;

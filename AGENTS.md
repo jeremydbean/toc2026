@@ -4131,6 +4131,49 @@ crafted) and GRANTPSI named a wizinvis participant to every builder until
 `say_spell` skips anyone `wizinvis_hides` the caster from
 (`tests/test_notice_visibility.py`).
 
+## Connections: Lookups Off The Loop, And The Guard
+
+Found by the play journal's stall rows (2026-11-06): every slow pulse
+lined up with an outside connection, because `new_descriptor` called
+`getnameinfo` on the single game thread. **Nothing on the game loop may
+wait on a resolver.** `src/dnsasync.c` is a worker thread with two bounded
+queues and no game state (it includes no `merc.h`); `connection_spoke()`
+in `comm.c` submits a lookup at a connection's first line -- after a
+PROXY header has named the real address -- and logs `Sock.sinaddr` then,
+so a silent scanner costs neither. `dns_collect()` runs at the top of
+each pulse, gives a name only to the descriptor still holding its
+`dns_serial` (`close_socket` zeroes it), refuses a name that is not plain
+host characters (`host_name_clean`), and asks `check_ban` again, closing a
+connection banned by name. Both builds link threads (`-pthread`,
+`Threads::Threads`). `DNS <address>` by hand still blocks, deliberately.
+`TOC_DNS_LOOPBACK=1` looks loopback up and `TOC_DNS_DELAY_MS` slows the
+worker, for tests.
+
+**The connection guard** (`src/connguard.c`; owner's rules, 2026-11-06:
+never auto-ban an address a player uses; staff BAN still applies):
+`conn_guard_admit()` in `init_descriptor` (and again after a PROXY
+header) refuses before the greeting an address paused for repeated
+connections -- `GUARD_STRIKES` (6) in `GUARD_STRIKE_WINDOW` (6 h) or
+`GUARD_BURST` (20) in a minute, `GUARD_BLOCK_BASE` (6 h) doubling per
+pause in a week to `GUARD_BLOCK_MAX` (7 days) -- or one holding
+`GUARD_PENDING_MAX` (8) connections not yet playing. **An address a
+player logged in from within `GUARD_TRUST_DAYS` (90), or is playing from
+now, is never counted, limited or paused**: `login_note_success` and the
+new-player path call `conn_guard_trust()`, kept in
+`log/player_addresses.tsv` (an address and the last login from it; a line
+a day at most, the newest wins, rewritten past `GUARD_TRUST_FILE_MAX`) and
+seeded at boot from `log/logins.tsv`'s numeric hosts and `toc.log`'s
+`Sock.sinaddr` lines followed by a login. Loopback is exempt
+(`TOC_GUARD_LOOPBACK=1` for tests -- apart from the login throttle's
+`TOC_THROTTLE_LOOPBACK`, whose tests make many failed connections).
+Silent connections (closed with no line) are counted into one
+`Connection guard:` log line an hour, not logged one by one; "EOF
+encountered on read." is logged only for a connection that spoke.
+`login_idle_sweep()` closes a connection not playing after
+`LOGIN_IDLE_SECS` (600; `TOC_LOGIN_IDLE_SECS`) without input
+(`d->input_at`). Staff `DNS GUARD`/`DNS ALLOW <address>`.
+`tests/test_connection_guard.py`, also in `SANITIZE_MODULES`.
+
 ## Staff Invulnerability
 
 `is_invulnerable(ch)` is the one test, and it asks
