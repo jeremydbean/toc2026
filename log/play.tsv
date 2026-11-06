@@ -23729,3 +23729,5 @@
 1793920237	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=69/983 align=897 exp=252749 coin=1525350717 bank=22282853420 qp=1713 prac=36 train=76 stash=95/350 remorts=3
 1793920237	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    285 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
 1793920239	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	afk		You are now in AFK mode.	-	-
+1793923454	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] [*AFK*] Alaric. // Players found: 1	-	-
+1793923454	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 1525 platinum, 35 gold, 7 silver, 17 copper // and 252749 experience (39551 exp to level).	-	-
