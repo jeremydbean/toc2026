@@ -23731,3 +23731,49 @@
 1793920239	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	afk		You are now in AFK mode.	-	-
 1793923454	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] [*AFK*] Alaric. // Players found: 1	-	-
 1793923454	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 1525 platinum, 35 gold, 7 silver, 17 copper // and 252749 experience (39551 exp to level).	-	-
+1793924381	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1793924382	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793924382	cmd	Alaric	57	2497	dresden.are	standing	100	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'a gang member threatens the peace of the realm!'	-	+
+1793924385	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1793924385	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1793924386	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1793924386	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1793924386	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793924386	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793924387	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793924387	cmd	Alaric	57	2444	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793924387	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1793924387	cmd	Alaric	57	2101	hood.are	standing	100	0	-	east		A Dark Alleyway //   The walls of the alleyway have been spray-painted over many times // over the years.  One section of graffiti actually looks legible,	-	+
+1793924388	cmd	Alaric	57	2102	hood.are	standing	100	0	-	east		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1793924389	cmd	Alaric	57	2103	hood.are	standing	100	0	-	east		Along White Dragon Boulevard //   Everywhere you look you see signs of recent violence.  Patches of blood // lie everywhere and broken sticks and abandoned knives are strewn here	-	+
+1793924390	cmd	Alaric	57	2104	hood.are	standing	100	0	-	east		White Dragon Boulevard at Armory //   Only gang members dare wander the streets here. // What used to be the armory lies to the south.  White Dragon Boulevard	-	+
+1793924390	cmd	Alaric	57	2105	hood.are	standing	100	0	-	east		White Dragon Blvd. //   Black Dragon Avenue used to run south from here but the way has been // blocked by the toppling of a building into the street.  White Dragon	-	+
+1793924390	cmd	Alaric	57	2106	hood.are	standing	100	0	-	east		Corner of Ice and White Dragon //   Ice Dragon Way leads south from here.  It used to run the whole length // of the neighborhood and way lined with beautiful crystal sculptures.	-	+
+1793924390	cmd	Alaric	57	2107	hood.are	standing	100	0	-	east		White Dragon Boulevard //   A once majestic inn with a white marble facade lies to the south. // Unfortunately, it has fallen into disrepair and decay.  You can continue	-	+
+1793924391	cmd	Alaric	57	2108	hood.are	standing	100	0	-	east		Corner of Bronze and White Dragon //   This is the north-east corner of the neighborhood. White Dragon // boulevard heads west and Bronze Dragon street heads south.	-	+
+1793924391	cmd	Alaric	57	2108	hood.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793924391	cmd	Alaric	57	2108	hood.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793924391	cmd	Alaric	57	2108	hood.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1793924392	cmd	Alaric	57	2115	hood.are	standing	100	0	-	south		Bronze Dragon Street at wizard's back door //   Bronze Dragon street goes north and south.  The back door to what // remains of the magic shop is west.	-	+
+1793924392	cmd	Alaric	57	2120	hood.are	standing	100	0	-	south		Bronze Dragon Street //   There used to be a gate out to the east here which led to distant lands. // The gate has rusted permanently shut.  The street goes north and south.	-	+
+1793924392	cmd	Alaric	57	2125	hood.are	standing	100	0	-	south		Bronze Dragon Street at Warehouse //   The street runs north and south.  There is an old wooden door leading // to a warehouse to the west.  The warehouse LOOKS abandoned. . .	-	+
+1793924392	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Yellow Dragon Road //   Bronze Dragon Street intersects here and runs north.  Yellow Dragon ends // here but continues to the west.	-	+
+1793924393	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793924393	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793924393	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793924393	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793924394	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793924394	cmd	Alaric	57	2130	hood.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1793924394	cmd	Alaric	57	2129	hood.are	standing	100	0	-	west		Yellow Dragon Road //   There is a barred window to the north.  There appears to be a light // coming from the cracks around it.  The road extends east and west	-	+
+1793924394	cmd	Alaric	57	2134	hood.are	standing	100	0	-	south		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south,	-	+
+1793924395	cmd	Alaric	57	2135	hood.are	standing	100	0	-	east		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south	-	+
+1793924396	cmd	Alaric	57	2140	hood.are	standing	100	0	-	south		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south	-	+
+1793924396	cmd	Alaric	57	2145	hood.are	standing	100	0	-	south		Corner of Ajax and Hector //   There is a grand fountain to the east but the water doesn't // look good to drink.  Ajax street heads south and Hector	-	+
+1793924398	cmd	Alaric	57	2145	hood.are	standing	100	7	-	kill	ga	Your punch <<< ERADICATES >>> a gang member! [-159] // A gang member is DEAD!! // You have almost finished your QUEST!	-	+
+1793924402	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1793924402	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.	-	-
+1793924402	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	rush qp=1713->1713 offered=41 daily=4->4 coin=+184954968 kill=15412914 streak=1 level=57 target=-1
+1793924402	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
+1793924402	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 41 quest points.	-	-
+1793924404	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=460/983 align=897 exp=252749 coin=1710305685 bank=22282853420 qp=1754 prac=36 train=76 stash=95/350 remorts=3
+1793924404	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    286 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
