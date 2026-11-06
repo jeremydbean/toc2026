@@ -24471,3 +24471,4 @@
 1793997882	cmd	Trentlin	16	4210	dresden.are	sleeping	100	0	-	who		[16 Dwarf   Monk  ] Trentlin the Initiate of Writing // Players found: 1	-	-
 1793997884	session	Trentlin	16	4210	dresden.are	quit	1128s	+3 levels	+7733 exp	-14327465 copper	23 kills	0 deaths	1 quests	650 commands	2 refused	coin: loot 12g 42s 31c, quests 89g 83s 4c, spent 15p 35g	spent on: heal 15p 35g	exp: kills +7747, flee -20, skilluse +6
 1794002410	stall	-	0	0	-	576ms	slowest disaster_update 572ms	command - 0ms	0 players	0 more since
+1794007837	stall	-	0	0	-	546ms	slowest disaster_update 542ms	command - 0ms	0 players	0 more since

@@ -266317,3 +266317,16 @@ Fri Nov  6 23:00:10 2026 :: Connection guard: last hour 18 closed without a word
 Fri Nov  6 23:00:38 2026 :: Treasure goblin: vanished from room 6508 (Narrow north-south path, dwarves.are) (too long in one area).
 Fri Nov  6 23:10:43 2026 :: Treasure goblin: vanished from room 10044 (The medical section., glitter.are) (too long in one area).
 Fri Nov  6 23:20:47 2026 :: Treasure goblin: vanished from room 3839 (On the Other Side of the Dimensional Portal, ratslair.are) (too long in one area).
+Fri Nov  6 23:30:23 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Nov  6 23:30:27 2026 :: Log WebAdmin: fsave
+Fri Nov  6 23:30:33 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Nov  6 23:30:36 2026 :: Received signal 15; saving players and shutting down.
+Fri Nov  6 23:30:36 2026 :: Normal termination of game.
+Fri Nov  6 23:30:37 2026 ::  INIT OK 
+Fri Nov  6 23:30:37 2026 :: walkto_load: 157 destinations.
+Fri Nov  6 23:30:37 2026 :: changes_load: 225 entries.
+Fri Nov  6 23:30:37 2026 :: Recovery ledger: 305 records (0 from before the check), 0 requests, 7 players.
+Fri Nov  6 23:30:37 2026 :: ROM is ready to rock on port 9000.
+Fri Nov  6 23:30:37 2026 :: Treasure goblin: appeared.
+Fri Nov  6 23:30:37 2026 :: Automated backup complete.
+Fri Nov  6 23:30:37 2026 :: Daily backup complete.
