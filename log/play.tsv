@@ -26014,3 +26014,99 @@
 1794055071	cmd	Trentlin	18	30413	hyrule.are	fighting	61	0	fight	trip		You trip Aquamentus and Aquamentus goes down! // Your trip scratches Aquamentus.	-	-
 1794055077	cmd	Trentlin	18	30413	hyrule.are	fighting	54	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus. // You have become better at nerve damage!	-	-
 1794055082	cmd	Trentlin	18	30413	hyrule.are	fighting	51	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794055086	cmd	Trentlin	18	30413	hyrule.are	fighting	48	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794055088	cmd	Trentlin	18	30413	hyrule.are	fighting	48	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794055091	cmd	Trentlin	18	30413	hyrule.are	fighting	46	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794055093	cmd	Trentlin	18	30413	hyrule.are	fighting	44	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794055098	cmd	Trentlin	18	30413	hyrule.are	fighting	40	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794055105	cmd	Trentlin	18	30413	hyrule.are	fighting	29	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794055110	cmd	Trentlin	18	30413	hyrule.are	fighting	25	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794055114	cmd	Trentlin	18	30413	hyrule.are	fighting	23	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794055130	cmd	Trentlin	18	30413	hyrule.are	fighting	13	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794055133	cmd	Trentlin	18	30413	hyrule.are	fighting	10	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Aquamentus.	-	-
+1794055139	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	get	all cor	You get an eagle's-eye ring from corpse of Aquamentus. // You get an Eagle-feather cloak from corpse of Aquamentus. // You get a horn-crested helm from corpse of Aquamentus.	-	+
+1794055140	state	Trentlin	18	30413	hyrule.are	lvl=18 hp=43/423 mana=525/770 mv=110/305 align=-480 exp=41904 coin=4496952573 bank=11060093999 qp=931 prac=10 train=0 stash=55/75 remorts=1
+1794055140	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	score		| Name:       Trentlin | Level:      18 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794055142	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	compare	ring	A) an eagle's-eye ring (level 8) // B) a pink ice ring (level 3), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1794055148	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	drop	ring	You drop an eagle's-eye ring.	-	-
+1794055151	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	sacrifice	ring	The Gods give you 16 copper coins for your sacrifice.	-	-
+1794055152	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	inventory		You are carrying: //      (Glowing) the Eagle's key //      (Glowing) the Eagle's Heart Container	-	+
+1794055153	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794055155	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	unlock	est	I see no est here.	-	-
+1794055159	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	unlock	east	There is a flash of light as you unlock the eagle.	-	-
+1794055160	cmd	Trentlin	18	30413	hyrule.are	standing	10	0	-	open	east	Ok.	-	-
+1794055164	cmd	Trentlin	18	30414	hyrule.are	standing	10	0	-	east		Level 1: Eagle's Golden Sanctum //   Smooth teal stone encloses this small, hushed sanctum, its walls inlaid // with a triangle within a triangle. A soft golden glow hangs in the air	-	+
+1794055165	cmd	Trentlin	18	30414	hyrule.are	standing	10	0	-	unlock	chest	*Click*	-	-
+1794055167	cmd	Trentlin	18	30414	hyrule.are	standing	10	0	-	look	in chest	It is closed.	-	-
+1794055169	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	open	chest	Ok. //                     ACHIEVEMENT EARNED // Eagle's Hoard  +10 points	-	+
+1794055174	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	look	in chest	The Eagle's treasure chest contains: //      (Glowing) the first Triforce shard	-	-
+1794055176	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	drop	key	You drop the Eagle's key.	-	-
+1794055177	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	inventory		You are carrying: //      (Glowing) the Eagle's Heart Container //      (Glowing) an Aquamentus horn-spear	-	+
+1794055180	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	compare	conta	A) the Eagle's Heart Container (level 8) // B) a mud school diploma (level 0), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794055186	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	drop	contai	You drop the Eagle's Heart Container.	-	-
+1794055188	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	sacrifice	contai	The Gods give you 16 copper coins for your sacrifice.	-	-
+1794055188	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	inventory		You are carrying: //      (Glowing) an Aquamentus horn-spear //      the Heart Guard of the Eagle	-	+
+1794055190	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	compare	spea	A) an Aquamentus horn-spear (level 8) // B) nothing -- the slot is empty // Slot: wield.  Your damage comes from weapons.	-	+
+1794055197	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	compare	guard	A) the Heart Guard of the Eagle (level 8) // B) a Blue rimmed, white cloak (level 11), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794055201	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	drop	guard	You drop the Heart Guard of the Eagle.	-	-
+1794055203	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	sacrifice	guard	The Gods give you 16 copper coins for your sacrifice.	-	-
+1794055204	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	inventory		You are carrying: //      (Glowing) an Aquamentus horn-spear //      a horn-crested helm	-	+
+1794055206	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	compare	helm	A) a horn-crested helm (level 8) // B) a hairnet (level 12), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794055224	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	wear	helm	You stop using a hairnet. // You wear a horn-crested helm on your head.	-	-
+1794055226	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	drop	hair	You drop a hairnet.	-	-
+1794055228	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	sacrifice	hair	The Gods give you 24 copper coins for your sacrifice.	-	-
+1794055229	cmd	Trentlin	18	30414	hyrule.are	standing	13	0	-	inventory		You are carrying: //      (Glowing) an Aquamentus horn-spear //      an Eagle-feather cloak	-	+
+1794055231	cmd	Trentlin	18	30414	hyrule.are	standing	16	0	-	compare	cloa	A) an Eagle-feather cloak (level 8) // B) a Keese-wing cloak (level 7), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794055238	cmd	Trentlin	18	30414	hyrule.are	standing	16	0	-	wear	cloa	You stop using a Keese-wing cloak. // You wear an Eagle-feather cloak about your body.	-	-
+1794055240	cmd	Trentlin	18	30414	hyrule.are	standing	16	0	-	drop	cloa	You drop a Keese-wing cloak.	-	-
+1794055241	cmd	Trentlin	18	30414	hyrule.are	standing	16	0	-	sacrifice	cloa	The Gods give you 14 copper coins for your sacrifice.	-	-
+1794055242	cmd	Trentlin	18	30414	hyrule.are	standing	16	0	-	look		Level 1: Eagle's Golden Sanctum //   Smooth teal stone encloses this small, hushed sanctum, its walls inlaid // with a triangle within a triangle. A soft golden glow hangs in the air	-	+
+1794055244	cmd	Trentlin	18	30414	hyrule.are	standing	16	0	-	inventory		You are carrying: //      (Glowing) an Aquamentus horn-spear //      (Glowing) (Humming) a small boomerang	-	+
+1794055248	cmd	Trentlin	18	30271	hyrule.are	standing	16	0	-	enter	light	You enter the Eagle's returning light // Your stomach flip flops. Everything goes black for a moment. // The Eagle's Gate	-	+
+1794055252	cmd	Trentlin	18	4207	dresden.are	standing	16	1	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794055255	cmd	Trentlin	18	4207	dresden.are	standing	16	0	-	skills		Level  1: dagger              75%      hand to hand        79%       //           recall             100%       // Level  3: kick                79%      	-	+
+1794055269	cmd	Trentlin	18	3700	school.are	standing	16	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794055270	cmd	Trentlin	18	3757	school.are	standing	16	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1794055270	cmd	Trentlin	18	3757	school.are	standing	16	0	-	north		Alas, you cannot go that way.	-	-
+1794055271	cmd	Trentlin	18	3759	school.are	standing	16	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1794055272	cmd	Trentlin	18	3759	school.are	standing	16	0	-	practice		dodge               76%  recall             100%  parry               76%   // sword                3%  mace                80%  dagger              75%   // hand to hand        79%  kick                79%  trip                77%  	-	+
+1794055278	cmd	Trentlin	18	3757	school.are	standing	16	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1794055278	cmd	Trentlin	18	3700	school.are	standing	16	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794055278	cmd	Trentlin	18	3700	school.are	standing	16	0	-	south		The door is closed.	-	-
+1794055279	cmd	Trentlin	18	3700	school.are	standing	16	0	-	south		The door is closed.	-	-
+1794055279	cmd	Trentlin	18	4207	dresden.are	standing	16	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794055281	cmd	Trentlin	18	4207	dresden.are	standing	16	0	-	walkto	rakar	You set off for Rakar the weaponsmaster (City of Dresden), about 4 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794055286	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	practice		axe                  8%  dagger              75%  flail                6%   // mace                80%  spear                7%  sword                3%   // whip                15%  	-	+
+1794055288	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	practice	spear	You practice spear.	-	-
+1794055288	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	practice	spear	You practice spear.	-	-
+1794055288	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	practice	spear	You practice spear.	-	-
+1794055288	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	practice	spear	You practice spear.	-	-
+1794055289	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	practice	spear	You practice spear.	-	-
+1794055289	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	practice	spear	You are now learned at spear.	-	-
+1794055292	state	Trentlin	18	2405	dresden.are	lvl=18 hp=73/442 mana=550/793 mv=64/305 align=-480 exp=41904 coin=4496952659 bank=11060093999 qp=931 prac=4 train=0 stash=55/75 remorts=1
+1794055292	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	score		| Name:       Trentlin | Level:      18 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794055294	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	wear	spea	You wield an Aquamentus horn-spear. // You are skilled with an Aquamentus horn-spear.	-	-
+1794055296	state	Trentlin	18	2405	dresden.are	lvl=18 hp=73/442 mana=550/798 mv=64/305 align=-480 exp=41904 coin=4496952659 bank=11060093999 qp=931 prac=4 train=0 stash=55/75 remorts=1
+1794055296	cmd	Trentlin	18	2405	dresden.are	standing	16	0	-	score		| Name:       Trentlin | Level:      18 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794055301	cmd	Trentlin	18	4207	dresden.are	standing	19	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794055302	cmd	Trentlin	18	4208	dresden.are	standing	19	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794055304	cmd	Trentlin	18	4208	dresden.are	standing	19	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794055308	cmd	Trentlin	18	4208	dresden.are	standing	45	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794055311	cmd	Trentlin	18	4208	dresden.are	standing	70	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794055314	cmd	Trentlin	18	4208	dresden.are	standing	95	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794055376	cmd	Trentlin	18	4207	dresden.are	standing	99	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794055376	cmd	Trentlin	18	4202	dresden.are	standing	99	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794055376	cmd	Trentlin	18	4202	dresden.are	standing	99	0	-	up		Alas, you cannot go that way.	-	-
+1794055379	cmd	Trentlin	18	4201	dresden.are	standing	99	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794055379	cmd	Trentlin	18	2433	dresden.are	standing	99	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794055379	cmd	Trentlin	18	2434	dresden.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794055379	cmd	Trentlin	18	2435	dresden.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794055380	cmd	Trentlin	18	2436	dresden.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794055380	cmd	Trentlin	18	2437	dresden.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794055380	cmd	Trentlin	18	2438	dresden.are	standing	99	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794055380	cmd	Trentlin	18	2438	dresden.are	standing	99	0	-	open	west	Ok.	-	-
+1794055381	cmd	Trentlin	18	2439	dresden.are	standing	99	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794055382	cmd	Trentlin	18	6000	haon.are	standing	99	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794055383	cmd	Trentlin	18	6001	haon.are	standing	99	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794055383	cmd	Trentlin	18	6002	haon.are	standing	99	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794055383	cmd	Trentlin	18	6003	haon.are	standing	99	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
