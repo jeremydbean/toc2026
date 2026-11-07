@@ -266964,3 +266964,52 @@ Sat Nov  7 02:30:21 2026 :: Treasure goblin: vanished from room 29084 (Engineeri
 Sat Nov  7 02:30:37 2026 :: Connection guard: last hour 16 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov  7 02:40:26 2026 :: Treasure goblin: vanished from room 623 (Grass Field, ofcol.are) (too long in one area).
 Sat Nov  7 02:50:30 2026 :: Treasure goblin: vanished from room 19137 (The Senate Chambers, rome.are) (too long in one area).
+Sat Nov  7 03:00:35 2026 :: Treasure goblin: vanished from room 18244 (Inside a small bathroom, gelidia.are) (too long in one area).
+Sat Nov  7 03:01:18 2026 :: Sock.sinaddr:  24.2.118.125
+Sat Nov  7 03:01:18 2026 :: Loading Trentlin's playerfile
+Sat Nov  7 03:01:19 2026 :: Loading Trentlin's playerfile
+Sat Nov  7 03:01:19 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sat Nov  7 03:01:20 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 0
+Sat Nov  7 03:01:24 2026 :: Log Trentlin [2401]: wake
+Sat Nov  7 03:01:24 2026 :: Log Trentlin [2401]: s
+Sat Nov  7 03:01:24 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sat Nov  7 03:01:25 2026 :: Log Trentlin [2404]: s
+Sat Nov  7 03:01:25 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [2427]: w
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [4201]: w
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [4202]: w
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [4207]: w
+Sat Nov  7 03:01:27 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Nov  7 03:01:28 2026 :: Log Trentlin [4208]: w
+Sat Nov  7 03:01:28 2026 :: Log Trentlin [4208]: w
+Sat Nov  7 03:01:29 2026 :: Log Trentlin [4208]: i
+Sat Nov  7 03:01:33 2026 :: Log Trentlin [4208]: wear col
+Sat Nov  7 03:01:35 2026 :: Log Trentlin [4208]: wear bra
+Sat Nov  7 03:01:40 2026 :: Log Trentlin [4208]: affects off: fly
+Sat Nov  7 03:01:40 2026 :: Log Trentlin [4208]: stash
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [4208]: e
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [4207]: e
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [4202]: e
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [4201]: e
+Sat Nov  7 03:01:58 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sat Nov  7 03:02:00 2026 :: Log Trentlin [2427]: n
+Sat Nov  7 03:02:00 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Nov  7 03:02:00 2026 :: Log Trentlin [2404]: n
+Sat Nov  7 03:02:00 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Nov  7 03:02:00 2026 :: Log Trentlin [2401]: u
+Sat Nov  7 03:02:00 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Nov  7 03:02:01 2026 :: Log Trentlin [2410]: u
+Sat Nov  7 03:02:01 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Nov  7 03:02:01 2026 :: Log Trentlin [2411]: u
+Sat Nov  7 03:02:01 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Nov  7 03:02:03 2026 :: Log Trentlin [2414]: aquest request
+Sat Nov  7 03:02:03 2026 :: Log Trentlin [2414]: u
+Sat Nov  7 03:02:03 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Nov  7 03:02:05 2026 :: Log Trentlin [2497]: aquest request
+Sat Nov  7 03:02:05 2026 :: Log Trentlin [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in rome.are, 8 minutes, rush
