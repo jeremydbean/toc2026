@@ -127,6 +127,12 @@ class DeepLiveTests(unittest.TestCase):
                 god.must(f"load obj {DAGGER}", "You create")
                 god.must("set obj dagger timer 1", "")
                 god.must("give dagger zdeephero", "You give")
+                # Hyrule's bombs on the same tick: used up as meant, never
+                # written down as lost (a kill's bomb folding into the bag
+                # read as "four bombs" gone, 2026-11-07).
+                god.must("load obj 30695", "You create")
+                god.must("set obj bombs timer 1", "")
+                god.must("give bombs zdeephero", "You give")
 
                 # A quest asked for and given up.
                 hero.must("aquest request", "")
@@ -153,6 +159,7 @@ class DeepLiveTests(unittest.TestCase):
         self.assertEqual(items[0][6], str(DAGGER), items[0])
         self.assertIn("type=weapon", items[0][8])
         self.assertEqual(items[0][9], "obj_update", "rotted on the tick, not by a command")
+        self.assertEqual([r for r in items if r[6] == "30695"], [], "bombs are never lost")
 
         failed = [r for r in mine if r[1] == "outcome" and r[6] == "quest-failed"]
         self.assertEqual(len(failed), 1, mine[-20:])

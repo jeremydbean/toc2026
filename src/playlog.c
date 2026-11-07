@@ -1346,7 +1346,8 @@ void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
  * by a keyed quit, junked, eaten by a spell. The why is the holder's own
  * command, someone else's command, or the update phase running. Things
  * meant to be used up (food, potions, pills, scrolls, coin, herbs and
- * components, cakes) are left out; a container counts what went with it.
+ * components, cakes, Hyrule's bombs, a key UNLOCK spends) are left out; a
+ * container counts what went with it.
  */
 void playlog_obj_gone( OBJ_DATA *obj )
 {
@@ -1366,6 +1367,14 @@ void playlog_obj_gone( OBJ_DATA *obj )
     default:
         break;
     }
+    /* Used up as meant, not lost (play journal, 2026-11-07): Hyrule's
+       bombs are spent by BOMB and a new bundle folds into the one already
+       carried -- a kill's bomb read as "four bombs" gone on KILL -- and a
+       dungeon's small key vanishes into the lock UNLOCK opens with it. */
+    if ( obj->pIndexData->vnum == OBJ_VNUM_HYRULE_BOMBS )
+        return;
+    if ( obj->item_type == ITEM_KEY && current_set && !str_cmp( current_cmd, "unlock" ) )
+        return;
     for ( top = obj; top->in_obj != NULL; top = top->in_obj )
         ;
     holder = top->carried_by;
