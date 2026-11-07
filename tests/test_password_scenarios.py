@@ -29,7 +29,8 @@ from __future__ import annotations
 import time
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, _enter_game, create_character, login, patch_player_file,
+                      skip_reason)
 from test_password import des_hash, set_pass, stored_pass
 
 SKIP = skip_reason()
@@ -56,8 +57,8 @@ def make_legacy(mud: LiveMud, name: str, password: str, **fields) -> str:
 
 def try_password(mud: LiveMud, name: str, password: str) -> str:
     """One attempt that stops at the outcome: 'wrong', 'locked', 'in'
-    (the character is let in and the connection quits again) or
-    'playing' (connect anyway asked, answered no)."""
+    (the character is let in and quits again) or 'playing' (connect
+    anyway asked, answered no)."""
     with mud.connect(timeout=60) as client:
         first = client.expect("by what name", "too many failed login", timeout=60)
         if first == "too many failed login":
@@ -65,18 +66,28 @@ def try_password(mud: LiveMud, name: str, password: str) -> str:
         client.send(name)
         client.expect("password", timeout=60)
         client.send(password)
-        said = client.expect("wrong password", "connect anyway", "[hit return",
-                             "press enter", "mv>", "reconnecting", timeout=60)
+        said = client.expect("wrong password", "connect anyway", "reconnecting",
+                             "motd", timeout=60)
         if said == "wrong password":
             assert client.wait_closed(30)
             return "wrong"
         if said == "connect anyway":
             client.send("N")
             return "playing"
-        client.send("")
-        client.sync("time")
+        _enter_game(client)
         quit_out(client)
         return "in"
+
+
+def wait_unlocked(mud: LiveMud, timeout: float = 60.0) -> None:
+    """Until the address's lockout has run out."""
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        with mud.connect(timeout=30) as client:
+            if client.expect("by what name", "too many failed login", timeout=30) == "by what name":
+                return
+        time.sleep(1.0)
+    raise AssertionError("still locked out")
 
 
 def login_and_quit(mud: LiveMud, name: str, password: str) -> str:
@@ -114,7 +125,7 @@ class PasswordScenarioTests(unittest.TestCase):
                 self.assertEqual(try_password(mud, "Zscfail", "Zwrongpass"), "wrong")
             self.assertEqual(try_password(mud, "Zscfail", "Zfailpassw0rd"), "locked")
             self.assertEqual(stored_pass(mud, "Zscfail"), moved)
-            time.sleep(3)                                   # the 2-second lockout ends
+            wait_unlocked(mud)                              # the 2-second lockout ends
             later = login_and_quit(mud, "Zscfail", "Zfailpas")
             self.assertNotIn(NOTICE, later)
             self.assertEqual(stored_pass(mud, "Zscfail"), moved, "moved once")
@@ -125,7 +136,7 @@ class PasswordScenarioTests(unittest.TestCase):
                 try_password(mud, "Zsclock", "Zwrongpass")
             self.assertEqual(try_password(mud, "Zsclock", "Zlockedpass1"), "locked")
             self.assertEqual(stored_pass(mud, "Zsclock"), des2)
-            time.sleep(3)
+            wait_unlocked(mud)                              # the second lockout: 8 seconds
             self.assertIn(NOTICE, login_and_quit(mud, "Zsclock", "Zlockedpass1"))
             self.assertTrue(stored_pass(mud, "Zsclock").startswith("$6$.8"))
 
@@ -175,18 +186,19 @@ class PasswordScenarioTests(unittest.TestCase):
                 self.assertTrue(client.wait_closed(30))
             self.assertEqual(stored_pass(mud, "Zscdrop"), moved)
 
-            # A second old character typing straight through the MOTD into
-            # a quit, never waiting for anything.
+            # A second old character typing straight through the MOTD and
+            # the pager, and commands after them, never waiting for anything.
             make_legacy(mud, "Zscrush", "Zrushpassword")
             with mud.connect() as client:
                 client.expect("by what name")
                 client.send("Zscrush")
                 client.expect("password")
                 client.send("Zrushpassword")
-                client.send("")
-                client.send("")
-                client.send("quit")
-                self.assertTrue(client.wait_closed(30), "never got out")
+                for line in ("", "", "look", "!", "inventory", "score"):
+                    client.send(line)
+                _enter_game(client)
+                self.assertIn(NOTICE, client.transcript)
+                quit_out(client)
             rushed = stored_pass(mud, "Zscrush")
             self.assertTrue(rushed.startswith("$6$.8"), rushed)
             self.assertNotIn(NOTICE, login_and_quit(mud, "Zscrush", "Zrushpas"))
@@ -241,8 +253,7 @@ class PasswordScenarioTests(unittest.TestCase):
             fast.close()
             self.assertEqual(stored_pass(mud, "Zscrace"), moved, "moved once, by the first")
 
-            # The racer whose password is wrong is refused by the character
-            # in the game, whatever the old file said.
+            # A wrong password after it all is refused.
             slow = mud.connect()
             slow.expect("by what name")
             slow.send("Zscrace")
