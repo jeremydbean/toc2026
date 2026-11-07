@@ -270877,3 +270877,75 @@ Sat Nov  7 15:23:44 2026 :: Log Alaric [3772]: up
 Sat Nov  7 15:23:44 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
 Sat Nov  7 15:23:44 2026 :: Log Alaric [3795]: enter portal
 Sat Nov  7 15:23:44 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sat Nov  7 15:25:11 2026 :: Log Alaric [15000]: east
+Sat Nov  7 15:25:11 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15001]: east
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15002]: east
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15003]: east
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15004]: east
+Sat Nov  7 15:25:12 2026 :: Log Alaric [15005]: arrived (Campus Crescent) from 15004
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15005]: east
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15005
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15006]: south
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15030]: arrived (The Entrance To Sterling Hall) from 15006
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15030]: east
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15220]: arrived (Hallway) from 15030
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15220]: south
+Sat Nov  7 15:25:13 2026 :: Log Alaric [15226]: arrived (Lecture Hall "B") from 15220
+Sat Nov  7 15:25:22 2026 :: Log Alaric [15226]: ex
+Sat Nov  7 15:25:23 2026 :: Log Alaric [15226]: n
+Sat Nov  7 15:25:23 2026 :: Log Alaric [15220]: arrived (Hallway) from 15226
+Sat Nov  7 15:25:23 2026 :: Log Alaric [15220]: ex
+Sat Nov  7 15:25:25 2026 :: Log Alaric [15220]: w
+Sat Nov  7 15:25:25 2026 :: Log Alaric [15030]: arrived (The Entrance To Sterling Hall) from 15220
+Sat Nov  7 15:25:25 2026 :: Log Alaric [15030]: ex
+Sat Nov  7 15:25:26 2026 :: Log Alaric [15030]: w
+Sat Nov  7 15:25:26 2026 :: Log Alaric [15224]: arrived (Hallway) from 15030
+Sat Nov  7 15:25:27 2026 :: Log Alaric [15224]: ex
+Sat Nov  7 15:25:28 2026 :: Log Alaric [15224]: s
+Sat Nov  7 15:25:28 2026 :: Log Alaric [15229]: arrived (Lecture Hall "C") from 15224
+Sat Nov  7 15:25:30 2026 :: Log Alaric [15229]: get all
+Sat Nov  7 15:25:32 2026 :: Log Alaric [15229]: north
+Sat Nov  7 15:25:32 2026 :: Log Alaric [15224]: arrived (Hallway) from 15229
+Sat Nov  7 15:25:32 2026 :: Log Alaric [15224]: east
+Sat Nov  7 15:25:32 2026 :: Log Alaric [15030]: arrived (The Entrance To Sterling Hall) from 15224
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15030]: north
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15030
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15006]: west
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15005]: arrived (Campus Crescent) from 15006
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15005]: west
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15005
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15004]: west
+Sat Nov  7 15:25:33 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Sat Nov  7 15:25:34 2026 :: Log Alaric [15003]: west
+Sat Nov  7 15:25:34 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Sat Nov  7 15:25:34 2026 :: Log Alaric [15002]: west
+Sat Nov  7 15:25:34 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Sat Nov  7 15:25:34 2026 :: Log Alaric [15001]: west
+Sat Nov  7 15:25:34 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Sat Nov  7 15:25:34 2026 :: Log Alaric [15000]: enter portal
+Sat Nov  7 15:25:34 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Sat Nov  7 15:25:35 2026 :: Log Alaric [3795]: down
+Sat Nov  7 15:25:35 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3795
+Sat Nov  7 15:25:35 2026 :: Log Alaric [3772]: down
+Sat Nov  7 15:25:35 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 3772
+Sat Nov  7 15:25:35 2026 :: Log Alaric [3700]: down
+Sat Nov  7 15:25:35 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 3700
+Sat Nov  7 15:25:35 2026 :: Log Alaric [4207]: east
+Sat Nov  7 15:25:35 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov  7 15:25:36 2026 :: Log Alaric [4202]: east
+Sat Nov  7 15:25:36 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Nov  7 15:25:36 2026 :: Log Alaric [4201]: north
+Sat Nov  7 15:25:36 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Sat Nov  7 15:25:36 2026 :: Log Alaric [2433]: recal
+Sat Nov  7 15:25:36 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2433
+Sat Nov  7 15:25:36 2026 :: Log Alaric [2497]: east
+Sat Nov  7 15:25:38 2026 :: Log Alaric [2497]: aq co
+Sat Nov  7 15:25:38 2026 :: Log Alaric [2497]: copper +92477484
+Sat Nov  7 15:25:38 2026 :: Log Alaric [2497]: quest complete: 92p 47g 74s 84c, 28 quest points (streak bonus 20%)
+Sat Nov  7 15:25:38 2026 :: Snapshot of Alaric taken before quest: Alaric.20261107_152538.quest (PRESTORE Alaric to see it).
+Sat Nov  7 15:25:39 2026 :: Log Alaric [2497]: aq ga no
+Sat Nov  7 15:27:31 2026 :: Treasure goblin: vanished from room 9342 (On a Hill, galaxy.are) (too long in one area).
