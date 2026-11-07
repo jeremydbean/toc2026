@@ -28435,3 +28435,4 @@
 1794084557	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=963/983 align=897 exp=252749 coin=94438738 bank=24394406954 qp=1835 prac=36 train=76 stash=95/350 remorts=3
 1794084557	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    289 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
 1794084561	session	Alaric	57	2497	dresden.are	quit	108s	+0 levels	+0 exp	+152929140 copper	3 kills	0 deaths	1 quests	70 commands	1 refused	coin: quests 154p 12g 91s 40c, spent 1p 20g	spent on: heal 1p 20g	exp: none
+1794085179	stall	-	0	0	-	604ms	slowest disaster_update 599ms	command - 0ms	0 players	0 more since
