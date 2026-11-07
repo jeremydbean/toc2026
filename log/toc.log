@@ -268220,3 +268220,34 @@ Sat Nov  7 03:17:07 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) fro
 Sat Nov  7 03:17:08 2026 :: Log Trentlin [4207]: w
 Sat Nov  7 03:17:08 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
 Sat Nov  7 03:17:10 2026 :: Log Trentlin [4208]: i
+Sat Nov  7 03:17:17 2026 :: Log Trentlin [4208]: stash get gear
+Sat Nov  7 03:17:17 2026 :: Log Trentlin [4208]: withdrew Trentlin's level 54 gear (vnum 3032) from the stash
+Sat Nov  7 03:17:19 2026 :: Log Trentlin [4208]: l in gear
+Sat Nov  7 03:17:22 2026 :: Log Trentlin [4208]: get book gear
+Sat Nov  7 03:17:23 2026 :: Log Trentlin [4208]: i
+Sat Nov  7 03:17:27 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:27 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:28 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:28 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:28 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:28 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:29 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:29 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:29 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:29 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:30 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:30 2026 :: Log Trentlin [4208]: drop potion
+Sat Nov  7 03:17:31 2026 :: Log Trentlin [4208]: get book gear
+Sat Nov  7 03:17:36 2026 :: Log Trentlin [4208]: stash put gear
+Sat Nov  7 03:17:36 2026 :: Log Trentlin [4208]: stashed Trentlin's level 54 gear (vnum 3032)
+Sat Nov  7 03:17:37 2026 :: Log Trentlin [4208]: get all
+Sat Nov  7 03:17:42 2026 :: Log Trentlin [4208]: i
+Sat Nov  7 03:17:43 2026 :: Log Trentlin [4208]: l book
+Sat Nov  7 03:17:46 2026 :: Log Trentlin [4208]: read book
+Sat Nov  7 03:18:23 2026 :: Log Trentlin [4208]: stash put book
+Sat Nov  7 03:18:23 2026 :: Log Trentlin [4208]: stashed the Magic Book (vnum 30415)
+Sat Nov  7 03:18:24 2026 :: Log Trentlin [4208]: l
+Sat Nov  7 03:18:26 2026 :: Log Trentlin [4208]: quit
+Sat Nov  7 03:18:26 2026 :: Trentlin has quit.
+Sat Nov  7 03:18:26 2026 :: [QUIT] Player rejoined the real world.
+Sat Nov  7 03:20:44 2026 :: Treasure goblin: vanished from room 5351 (A back alley, mirror.are) (too long in one area).

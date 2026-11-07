@@ -25510,3 +25510,28 @@
 1794021427	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
 1794021428	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
 1794021430	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	inventory		You are carrying: // ( 2) (Magical) a potion of protection // ( 2) (Magical) an opaque potion	-	+
+1794021437	cmd	Trentlin	18	4208	dresden.are	standing	100	17	-	stash	get gear	You take Trentlin's level 54 gear out of your stash.	-	-
+1794021439	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	look	in gear	Trentlin's level 54 gear contains: //      a quiver of arrows //      a pirate's ring	-	+
+1794021442	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	get	book gear	Magic: you can't carry that many items.	-	-
+1794021443	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      Trentlin's level 54 gear // ( 2) (Magical) a potion of protection	-	+
+1794021447	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of protection.	-	-
+1794021447	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of protection.	-	-
+1794021448	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop an opaque potion.	-	-
+1794021448	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop an opaque potion.	-	-
+1794021448	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of true sight.	-	-
+1794021448	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of true sight.	-	-
+1794021449	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of true sight.	-	-
+1794021449	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a grey potion.	-	-
+1794021449	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a grey potion.	-	-
+1794021449	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of true sight.	-	-
+1794021450	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of true sight.	-	-
+1794021450	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	potion	You drop a potion of true sight.	-	-
+1794021451	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	get	book gear	You get the Magic Book from Trentlin's level 54 gear.	-	-
+1794021456	cmd	Trentlin	18	4208	dresden.are	standing	100	6	-	stash	put gear	You put Trentlin's level 54 gear away for safe keeping.	-	-
+1794021457	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	get	all	You get a potion of true sight. // You get a potion of true sight. // You get a potion of true sight.	-	+
+1794021462	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a big pot pie // ( 2) (Magical) a potion of protection	-	+
+1794021463	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	look	book	The Magic Book crackles with fire around its ancient pages. // The the Magic Book is in perfect condition.	-	-
+1794021466	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	read	book	You open the Magic Book, and fire crackles along its ancient pages. //          |         ~  T H E   M A G I C   B O O K  ~         | //   Fire crackles along the edges of pages older than the kingdom. Every	-	+
+1794021503	cmd	Trentlin	18	4208	dresden.are	standing	100	11	-	stash	put book	You put the Magic Book away for safe keeping.	-	-
+1794021504	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794021506	session	Trentlin	18	4208	dresden.are	quit	1026s	+1 levels	+1166 exp	-19622463 copper	18 kills	0 deaths	1 quests	726 commands	0 refused	coin: loot 2p 8g 37s 85c, quests 1p 21g 47s 52c, spent 22p 92g 10s	spent on: heal 22p 90g, buy 2g 10s	exp: kills +1187, skilluse +4, recall -25
