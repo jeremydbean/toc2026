@@ -270821,3 +270821,6 @@ Sat Nov  7 14:28:14 2026 :: Sock.sinaddr:  104.248.181.231
 Sat Nov  7 14:28:18 2026 :: EOF encountered on read.
 Sat Nov  7 14:28:18 2026 :: Connection guard: 104.248.181.231 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 104.248.181.231 lifts it.
 Sat Nov  7 14:37:08 2026 :: Treasure goblin: vanished from room 13452 (Stone Arch, hell.are) (too long in one area).
+Sat Nov  7 14:47:13 2026 :: Treasure goblin: vanished from room 18015 (An icy trail, icekeep.are) (too long in one area).
+Sat Nov  7 14:47:37 2026 :: Black market: stock 1794062857: a many colored cloak (719, level 34, 31p); (Dark) platinum helmet (29061, level 43, 39p); an ebony bracer (4463, level 35, 32p); a piece of shadowed horseman's cake (29926, level 0, 2704p); the Winter Veil mantle (29923, level 50, 13500p).
+Sat Nov  7 14:47:37 2026 :: Black market: the dealer appeared with 5 items (stock 1794062857), for 34 minutes.
