@@ -27139,3 +27139,7 @@
 1794066247	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    289 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
 1794066249	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	changes		What is new, newest first: // 2026-11-07 //   Passwords are now kept with stronger encryption (SHA-512). You log in	-	+
 1794066290	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	stash		Your stash holds 95 of 350 things. //     1) (Glowing) the Crystalline Sceptre of Commanding //     2) battle helmet	-	+
+1794066338	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794066339	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=584/983 align=897 exp=252749 coin=1941509598 bank=22394406954 qp=1809 prac=36 train=76 stash=95/350 remorts=3
+1794066339	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    289 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794066341	session	Alaric	57	2497	dresden.are	quit	1328s	+0 levels	+0 exp	+231203913 copper	1 kills	0 deaths	2 quests	127 commands	0 refused	coin: loot 1g 2s 3c, quests 231p 19g 37s 10c	spent on: none	exp: none
