@@ -321,3 +321,4 @@
 321	1794070488	request	pending	P6adca00b00079e30	Trentlin	death:c6aef57d8014fe2	death	(violence_update)	corpse c6aef57d8014fe2 in room 15009	32726884
 322	1794070488	corpse	created	P6adca00b00079e30	Trentlin	c6aef57d8014fe2	death	-	made in room 15009 holding 45 objects; death snapshot Trentlin.20261107_165448.death	3907a81f
 323	1794070488	request	committed	P6adca00b00079e30	Trentlin	death:c6aef57d8014fe2	death	-	their save reached the disk	efe84c9b
+324	1794084501	snapshot	committed	P6adc9d850001b1ba	Alaric	-	quest	-	Alaric.20261107_204821.quest fnv 69d23718 31217 bytes	6fa904a9
