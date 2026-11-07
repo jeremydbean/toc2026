@@ -27484,3 +27484,92 @@
 1794067791	cmd	Trentlin	20	30432	hyrule.are	standing	84	0	-	north		Level 2: Smoke-Stained Antechamber //   Gouged walls and scattered stone chips mark this chamber below the // dungeon's northern end. A low rumble comes from beyond the north wall, and	-	+
 1794067795	cmd	Trentlin	20	30432	hyrule.are	standing	84	0	-	consider	g	A red goriya is far below your level. // A red goriya has about half your hit points. // Blow for blow, you would need about 3 rounds to bring a red goriya down; it would need over a hundred rounds for you.	-	+
 1794067797	cmd	Trentlin	20	30432	hyrule.are	standing	84	0	-	kill	go	Your punch wounds a red goriya. // Your punch DISMEMBERS a red goriya!	-	-
+1794067808	cmd	Trentlin	20	30432	hyrule.are	standing	84	0	-	open	north	Ok.	-	-
+1794067808	cmd	Trentlin	20	30435	hyrule.are	standing	84	0	-	north		Level 2: Dodongo's Lair //   A broad, low chamber that stinks of smoke and scorched rock, its floor // pitted with blast craters and pressed by huge three-toed footprints of a	-	+
+1794067811	cmd	Trentlin	20	30435	hyrule.are	standing	84	0	-	consider	do	The Dodongo is a little below your level. // The Dodongo has many times your hit points. // Blow for blow, you would need about 38 rounds to bring The Dodongo down; it would need about 5 rounds for you.	-	+
+1794067823	cmd	Trentlin	20	30432	hyrule.are	standing	87	0	-	south		Level 2: Smoke-Stained Antechamber //   Gouged walls and scattered stone chips mark this chamber below the // dungeon's northern end. A low rumble comes from beyond the north wall, and	-	+
+1794067868	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	north		Level 2: Dodongo's Lair //   A broad, low chamber that stinks of smoke and scorched rock, its floor // pitted with blast craters and pressed by huge three-toed footprints of a	-	+
+1794067871	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	bomb	dodongo	You roll a bomb beneath The Dodongo. It swallows it -- and the blast tears through its hide! //                     ACHIEVEMENT EARNED // Dodongo Dislikes Smoke  +15 points	-	+
+1794067874	cmd	Trentlin	20	30435	hyrule.are	fighting	87	0	fight	bomb	dodongo	You roll a bomb beneath The Dodongo. It swallows it -- and the blast tears through its hide! // You do UNSPEAKABLE things to The Dodongo! // The Dodongo is DEAD!!	-	+
+1794067880	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	look	in cor	Corpse of The Dodongo contains: //      a pair of pebble-hide mitts //      a Dodongo skull cap	-	+
+1794067882	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	get	all cor	You get a pair of pebble-hide mitts from corpse of The Dodongo. // You get a Dodongo skull cap from corpse of The Dodongo. // You get a pair of Dodongo stompers from corpse of The Dodongo.	-	+
+1794067883	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	look		Level 2: Dodongo's Lair //   A broad, low chamber that stinks of smoke and scorched rock, its floor // pitted with blast craters and pressed by huge three-toed footprints of a	-	+
+1794067886	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	unlock	west	There is a flash of light as you unlock the moon.	-	-
+1794067886	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	west		The moon is closed.	-	-
+1794067888	cmd	Trentlin	20	30435	hyrule.are	standing	87	0	-	open	west	Ok.	-	-
+1794067888	cmd	Trentlin	20	30434	hyrule.are	standing	87	0	-	west		Level 2: Crescent Moon Sanctum //   Quiet blue stone walls this sanctum in the dungeon's far northwest, a // crescent moon carved above a triangle of gold leaf. A gentle golden light	-	+
+1794067890	cmd	Trentlin	20	30434	hyrule.are	standing	87	0	-	unlock	chest	*Click*	-	-
+1794067891	cmd	Trentlin	20	30434	hyrule.are	standing	87	0	-	look	in chest	It is closed.	-	-
+1794067894	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	open	chest	Ok. //                     ACHIEVEMENT EARNED // Under the Moon  +13 points	-	+
+1794067896	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	look	in chest	The Moon's treasure chest contains: //      (Glowing) the second Triforce shard	-	-
+1794067897	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	drop	key	You drop the Moon's key.	-	-
+1794067898	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	inventory		You are carrying: //      (Glowing) the Moon's Heart Container //      (Glowing) a Dodongo tail-club	-	+
+1794067901	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	compare	contain	A) the Moon's Heart Container (level 14) // B) a mud school diploma (level 0), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794067906	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	drop	contain	You drop the Moon's Heart Container.	-	-
+1794067908	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	sacrifice	contain	The Gods give you 28 copper coins for your sacrifice.	-	-
+1794067909	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	inventory		You are carrying: //      (Glowing) a Dodongo tail-club //      the Heart Guard of the Moon	-	+
+1794067913	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	drop	tail	You drop a Dodongo tail-club.	-	-
+1794067915	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	sacrifice	tail	The Gods give you 28 copper coins for your sacrifice.	-	-
+1794067916	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	compare	heart	A) the Heart Guard of the Moon (level 14) // B) a Blue rimmed, white cloak (level 11), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794067929	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	wear	heart	You stop using a Blue rimmed, white cloak. // You wear the Heart Guard of the Moon around your neck.	-	-
+1794067932	cmd	Trentlin	20	30434	hyrule.are	standing	91	9	-	stash	put cloak	You put a Blue rimmed, white cloak away for safe keeping.	-	-
+1794067933	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	inventory		You are carrying: //      a pair of Dodongo stompers //      a Dodongo skull cap	-	+
+1794067935	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	compare	stomp	A) a pair of Dodongo stompers (level 14) // B) some captain's boots (level 6), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794067940	cmd	Trentlin	20	30434	hyrule.are	standing	91	0	-	wear	stomp	You stop using some captain's boots. // You wear a pair of Dodongo stompers on your feet.	-	-
+1794067943	cmd	Trentlin	20	30434	hyrule.are	standing	85	5	-	stash	put captain	You put some captain's boots away for safe keeping.	-	-
+1794067944	cmd	Trentlin	20	30434	hyrule.are	standing	85	0	-	inventory		You are carrying: //      a Dodongo skull cap //      a pair of pebble-hide mitts	-	+
+1794067946	cmd	Trentlin	20	30434	hyrule.are	standing	85	0	-	compare	cap	A) a Dodongo skull cap (level 14) // B) a horn-crested helm (level 8), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794067955	cmd	Trentlin	20	30434	hyrule.are	standing	85	0	-	wear	cao	You do not have that item.	-	-
+1794067957	cmd	Trentlin	20	30434	hyrule.are	standing	85	0	-	wear	cap	You stop using a horn-crested helm. // You wear a Dodongo skull cap on your head.	-	-
+1794067963	cmd	Trentlin	20	30434	hyrule.are	standing	89	0	-	drop	helm	You drop a horn-crested helm.	-	-
+1794067964	cmd	Trentlin	20	30434	hyrule.are	standing	89	0	-	sacrifice	helm	The Gods give you 16 copper coins for your sacrifice.	-	-
+1794067965	cmd	Trentlin	20	30434	hyrule.are	standing	89	0	-	inventory		You are carrying: //      a pair of pebble-hide mitts //      the Magical Boomerang	-	+
+1794067968	cmd	Trentlin	20	30434	hyrule.are	standing	92	0	-	compare	mitt	A) a pair of pebble-hide mitts (level 14) // B) swordsman's gloves (level 8), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794067973	cmd	Trentlin	20	30434	hyrule.are	standing	92	0	-	wear	mitt	You stop using swordsman's gloves. // You wear a pair of pebble-hide mitts on your hands.	-	-
+1794067977	cmd	Trentlin	20	30434	hyrule.are	standing	82	4	-	stash	put gloves	You put swordsman's gloves away for safe keeping.	-	-
+1794067978	cmd	Trentlin	20	30434	hyrule.are	standing	82	0	-	look		Level 2: Crescent Moon Sanctum //   Quiet blue stone walls this sanctum in the dungeon's far northwest, a // crescent moon carved above a triangle of gold leaf. A gentle golden light	-	+
+1794067980	cmd	Trentlin	20	30434	hyrule.are	standing	82	0	-	enter	chest	You can not enter the chest.	-	-
+1794067983	cmd	Trentlin	20	30276	hyrule.are	standing	82	0	-	enter	light	You enter the Moon's returning light // Your stomach flip flops. Everything goes black for a moment. // The Moon Gate	-	+
+1794067986	cmd	Trentlin	20	30205	hyrule.are	standing	82	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794067990	cmd	Trentlin	20	30437	hyrule.are	standing	82	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794067991	cmd	Trentlin	20	30205	hyrule.are	standing	82	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794067991	cmd	Trentlin	20	30205	hyrule.are	standing	82	0	-	consider	tek	A red tektite is well below your level. // A red tektite has about a third of your hit points. // Blow for blow, you would need about 2 rounds to bring a red tektite down; it would need about 42 rounds for you.	-	+
+1794067993	cmd	Trentlin	20	30205	hyrule.are	standing	82	0	-	kill	tek	Your punch DISMEMBERS a red tektite! // Your punch DISEMBOWELS a red tektite!	-	-
+1794067997	cmd	Trentlin	20	30437	hyrule.are	standing	82	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794068000	cmd	Trentlin	20	30436	hyrule.are	standing	82	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794068002	cmd	Trentlin	20	30436	hyrule.are	standing	82	0	-	consider	zo	A zol is a little below your level. // A zol has about half your hit points. // Blow for blow, you would need about 4 rounds to bring a zol down; it would need about 38 rounds for you.	-	+
+1794068003	cmd	Trentlin	20	30436	hyrule.are	standing	82	0	-	get	all	You get a small key.	-	-
+1794068003	cmd	Trentlin	20	30436	hyrule.are	standing	82	0	-	kill	z	Your punch DISEMBOWELS a zol! // A zol parries your attack.	-	-
+1794068017	cmd	Trentlin	20	30436	hyrule.are	standing	81	0	-	levitate		You slowly rise up off the ground.	-	-
+1794068018	state	Trentlin	20	30436	hyrule.are	lvl=20 hp=440/539 mana=602/946 mv=248/319 align=-275 exp=47292 coin=4413520794 bank=11060093999 qp=1115 prac=12 train=2 stash=58/75 remorts=1
+1794068018	cmd	Trentlin	20	30436	hyrule.are	standing	81	0	-	score		| Name:       Trentlin | Level:      20 | Class:        Monk | // | Played:     29 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794068020	cmd	Trentlin	20	30436	hyrule.are	standing	81	0	-	look	in co	Corpse of a zol contains: //      Nothing.	-	-
+1794068020	cmd	Trentlin	20	30436	hyrule.are	standing	81	0	-	look		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794068028	cmd	Trentlin	20	30436	hyrule.are	standing	81	0	-	look	block	You do not see that here.	-	-
+1794068029	cmd	Trentlin	20	30439	hyrule.are	standing	81	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794068030	cmd	Trentlin	20	30439	hyrule.are	standing	81	0	-	consider	z	A zol is a little below your level. // A zol has about half your hit points. // Blow for blow, you would need about 4 rounds to bring a zol down; it would need about 38 rounds for you.	-	+
+1794068031	cmd	Trentlin	20	30439	hyrule.are	standing	81	0	-	kill	z	A zol dodges your attack. // Your punch MUTILATES a zol!	-	-
+1794068033	cmd	Trentlin	20	30439	hyrule.are	fighting	81	0	fight	nerve		You jab a zol with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a zol!	-	-
+1794068038	cmd	Trentlin	20	30439	hyrule.are	fighting	80	0	fight	nerve		You jab a zol with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a zol.	-	-
+1794068046	cmd	Trentlin	20	30439	hyrule.are	standing	78	0	-	get	key	You get a small key.	-	-
+1794068047	cmd	Trentlin	20	30439	hyrule.are	standing	78	0	-	look		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794068050	cmd	Trentlin	20	30442	hyrule.are	standing	78	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794068052	cmd	Trentlin	20	30442	hyrule.are	standing	78	0	-	consider	da	A red darknut is about your level. // A red darknut has about as many hit points as you. // Blow for blow, you would need about 6 rounds to bring a red darknut down; it would need about 20 rounds for you.	-	+
+1794068054	cmd	Trentlin	20	30442	hyrule.are	standing	81	0	-	kill	da	Your punch wounds a red darknut. // A red darknut dodges your attack.	-	-
+1794068057	cmd	Trentlin	20	30442	hyrule.are	fighting	76	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068060	cmd	Trentlin	20	30442	hyrule.are	fighting	71	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068063	cmd	Trentlin	20	30442	hyrule.are	fighting	69	0	fight	kick		Your kick grazes a red darknut.	-	-
+1794068065	cmd	Trentlin	20	30442	hyrule.are	fighting	69	0	fight	kick		Your kick misses a red darknut.	-	-
+1794068071	cmd	Trentlin	20	30442	hyrule.are	fighting	69	0	fight	kick		Your kick misses a red darknut.	-	-
+1794068076	cmd	Trentlin	20	30442	hyrule.are	fighting	65	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a red darknut.	-	-
+1794068079	cmd	Trentlin	20	30442	hyrule.are	fighting	65	0	fight	kick		Your kick scratches a red darknut.	-	-
+1794068081	cmd	Trentlin	20	30442	hyrule.are	fighting	65	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a red darknut.	-	-
+1794068084	cmd	Trentlin	20	30442	hyrule.are	fighting	65	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a red darknut!	-	-
+1794068090	cmd	Trentlin	20	30442	hyrule.are	standing	65	0	-	look	in co	Corpse of a red darknut contains: //      Nothing.	-	-
+1794068092	cmd	Trentlin	20	30442	hyrule.are	standing	65	0	-	sacrifice	co	The Gods give you 38 copper coins for your sacrifice.	-	-
+1794068093	cmd	Trentlin	20	30442	hyrule.are	standing	65	0	-	look		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794068095	cmd	Trentlin	20	30442	hyrule.are	standing	65	0	-	scan		a zol                              -to the North. // a blade trap                       -to the West. // a keese                            -to the West.	-	+
+1794068098	item	Trentlin	20	30442	hyrule.are	30695	a bomb	type=treasure level=1 worn=0 nested=0 timer=0 cond=100 inside=0	bomb
+1794068098	cmd	Trentlin	20	30442	hyrule.are	standing	65	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794068098	cmd	Trentlin	20	30443	hyrule.are	standing	65	0	-	east		Level 3: Eastern Slime Hall //   Glistening sludge coats the floor of this chamber in thick, drying layers, // and the smell of damp moss hangs heavy. A row of blocks lines the far wall.	-	+
+1794068100	cmd	Trentlin	20	30443	hyrule.are	standing	65	0	-	consider	dak	They're not here.	-	-

@@ -271697,3 +271697,133 @@ Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: killed a red goriya
 Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: coin +11 silver
 Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: coin +74 copper
 Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: coin +5 gold
+Sat Nov  7 16:10:08 2026 :: Log Trentlin [30432]: open north
+Sat Nov  7 16:10:08 2026 :: Log Trentlin [30432]: n
+Sat Nov  7 16:10:08 2026 :: Log Trentlin [30435]: arrived (Level 2: Dodongo's Lair) from 30432
+Sat Nov  7 16:10:11 2026 :: Log Trentlin [30435]: con do
+Sat Nov  7 16:10:23 2026 :: Log Trentlin [30435]: s
+Sat Nov  7 16:10:23 2026 :: Log Trentlin [30432]: arrived (Level 2: Smoke-Stained Antechamber) from 30435
+Sat Nov  7 16:11:08 2026 :: Log Trentlin [30432]: n
+Sat Nov  7 16:11:08 2026 :: Log Trentlin [30435]: arrived (Level 2: Dodongo's Lair) from 30432
+Sat Nov  7 16:11:11 2026 :: Log Trentlin [30435]: bomb dodongo
+Sat Nov  7 16:11:14 2026 :: Log Trentlin [30435]: bomb dodongo
+Sat Nov  7 16:11:14 2026 :: Log Trentlin [30435]: killed The Dodongo
+Sat Nov  7 16:11:14 2026 :: Log Trentlin [30435]: coin +3 silver
+Sat Nov  7 16:11:14 2026 :: Log Trentlin [30435]: coin +74 copper
+Sat Nov  7 16:11:14 2026 :: Log Trentlin [30435]: coin +9 gold
+Sat Nov  7 16:11:20 2026 :: Log Trentlin [30435]: l in cor
+Sat Nov  7 16:11:22 2026 :: Log Trentlin [30435]: get all cor
+Sat Nov  7 16:11:23 2026 :: Log Trentlin [30435]: l
+Sat Nov  7 16:11:26 2026 :: Log Trentlin [30435]: unlock west
+Sat Nov  7 16:11:26 2026 :: Log Trentlin [30435]: w
+Sat Nov  7 16:11:28 2026 :: Log Trentlin [30435]: open west
+Sat Nov  7 16:11:28 2026 :: Log Trentlin [30435]: w
+Sat Nov  7 16:11:28 2026 :: Log Trentlin [30434]: arrived (Level 2: Crescent Moon Sanctum) from 30435
+Sat Nov  7 16:11:30 2026 :: Log Trentlin [30434]: unlock chest
+Sat Nov  7 16:11:31 2026 :: Log Trentlin [30434]: l in chest
+Sat Nov  7 16:11:32 2026 :: Log Trentlin [30434]: affects off: levitate
+Sat Nov  7 16:11:34 2026 :: Log Trentlin [30434]: open chest
+Sat Nov  7 16:11:36 2026 :: Log Trentlin [30434]: l in chest
+Sat Nov  7 16:11:37 2026 :: Log Trentlin [30434]: drop key
+Sat Nov  7 16:11:38 2026 :: Log Trentlin [30434]: i
+Sat Nov  7 16:11:41 2026 :: Log Trentlin [30434]: comp contain
+Sat Nov  7 16:11:46 2026 :: Log Trentlin [30434]: drop contain
+Sat Nov  7 16:11:48 2026 :: Log Trentlin [30434]: sac contain
+Sat Nov  7 16:11:48 2026 :: Log Trentlin [30434]: coin +28 copper
+Sat Nov  7 16:11:49 2026 :: Log Trentlin [30434]: i
+Sat Nov  7 16:11:53 2026 :: Log Trentlin [30434]: drop tail
+Sat Nov  7 16:11:55 2026 :: Log Trentlin [30434]: sac tail
+Sat Nov  7 16:11:55 2026 :: Log Trentlin [30434]: coin +28 copper
+Sat Nov  7 16:11:56 2026 :: Log Trentlin [30434]: comp heart
+Sat Nov  7 16:12:09 2026 :: Log Trentlin [30434]: wear heart
+Sat Nov  7 16:12:12 2026 :: Log Trentlin [30434]: stash put cloak
+Sat Nov  7 16:12:12 2026 :: Log Trentlin [30434]: stashed a Blue rimmed, white cloak (vnum 10022)
+Sat Nov  7 16:12:13 2026 :: Log Trentlin [30434]: i
+Sat Nov  7 16:12:15 2026 :: Log Trentlin [30434]: comp stomp
+Sat Nov  7 16:12:20 2026 :: Log Trentlin [30434]: wear stomp
+Sat Nov  7 16:12:23 2026 :: Log Trentlin [30434]: stash put captain
+Sat Nov  7 16:12:23 2026 :: Log Trentlin [30434]: stashed some captain's boots (vnum 29010)
+Sat Nov  7 16:12:24 2026 :: Log Trentlin [30434]: i
+Sat Nov  7 16:12:26 2026 :: Log Trentlin [30434]: comp cap
+Sat Nov  7 16:12:35 2026 :: Log Trentlin [30434]: wear cao
+Sat Nov  7 16:12:37 2026 :: Log Trentlin [30434]: wear cap
+Sat Nov  7 16:12:43 2026 :: Log Trentlin [30434]: drop helm
+Sat Nov  7 16:12:44 2026 :: Log Trentlin [30434]: sac helm
+Sat Nov  7 16:12:44 2026 :: Log Trentlin [30434]: coin +16 copper
+Sat Nov  7 16:12:45 2026 :: Log Trentlin [30434]: i
+Sat Nov  7 16:12:48 2026 :: Log Trentlin [30434]: comp mitt
+Sat Nov  7 16:12:53 2026 :: Log Trentlin [30434]: wear mitt
+Sat Nov  7 16:12:57 2026 :: Log Trentlin [30434]: stash put gloves
+Sat Nov  7 16:12:57 2026 :: Log Trentlin [30434]: stashed swordsman's gloves (vnum 4101)
+Sat Nov  7 16:12:58 2026 :: Log Trentlin [30434]: l
+Sat Nov  7 16:13:00 2026 :: Log Trentlin [30434]: enter chest
+Sat Nov  7 16:13:03 2026 :: Log Trentlin [30434]: enter light
+Sat Nov  7 16:13:03 2026 :: Log Trentlin [30276]: arrived (The Moon Gate) from 30434
+Sat Nov  7 16:13:06 2026 :: Log Trentlin [30276]: play recorder 3
+Sat Nov  7 16:13:06 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30276
+Sat Nov  7 16:13:10 2026 :: Log Trentlin [30205]: d
+Sat Nov  7 16:13:10 2026 :: Log Trentlin [30437]: arrived (Level 3: Manji Gate) from 30205
+Sat Nov  7 16:13:11 2026 :: Log Trentlin [30437]: u
+Sat Nov  7 16:13:11 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30437
+Sat Nov  7 16:13:11 2026 :: Log Trentlin [30205]: con tek
+Sat Nov  7 16:13:13 2026 :: Log Trentlin [30205]: k tek
+Sat Nov  7 16:13:15 2026 :: Log Trentlin [30205]: killed a red tektite
+Sat Nov  7 16:13:15 2026 :: Log Trentlin [30205]: coin +2 gold
+Sat Nov  7 16:13:15 2026 :: Log Trentlin [30205]: coin +27 silver
+Sat Nov  7 16:13:15 2026 :: Log Trentlin [30205]: coin +17 copper
+Sat Nov  7 16:13:15 2026 :: Log Trentlin [30205]: coin +8 gold
+Sat Nov  7 16:13:17 2026 :: Log Trentlin [30205]: d
+Sat Nov  7 16:13:17 2026 :: Log Trentlin [30437]: arrived (Level 3: Manji Gate) from 30205
+Sat Nov  7 16:13:20 2026 :: Log Trentlin [30437]: w
+Sat Nov  7 16:13:20 2026 :: Log Trentlin [30436]: arrived (Level 3: Ooze Chamber) from 30437
+Sat Nov  7 16:13:22 2026 :: Log Trentlin [30436]: con zo
+Sat Nov  7 16:13:23 2026 :: Log Trentlin [30436]: get all
+Sat Nov  7 16:13:23 2026 :: Log Trentlin [30436]: k z
+Sat Nov  7 16:13:36 2026 :: Log Trentlin [30436]: killed a zol
+Sat Nov  7 16:13:36 2026 :: Log Trentlin [30436]: coin +13 silver
+Sat Nov  7 16:13:36 2026 :: Log Trentlin [30436]: coin +55 copper
+Sat Nov  7 16:13:36 2026 :: Log Trentlin [30436]: coin +10 gold
+Sat Nov  7 16:13:37 2026 :: Log Trentlin [30436]: levitate
+Sat Nov  7 16:13:38 2026 :: Log Trentlin [30436]: sco
+Sat Nov  7 16:13:40 2026 :: Log Trentlin [30436]: l in co
+Sat Nov  7 16:13:40 2026 :: Log Trentlin [30436]: l
+Sat Nov  7 16:13:48 2026 :: Log Trentlin [30436]: l block
+Sat Nov  7 16:13:49 2026 :: Log Trentlin [30436]: n
+Sat Nov  7 16:13:49 2026 :: Log Trentlin [30439]: arrived (Level 3: Streaked Hall) from 30436
+Sat Nov  7 16:13:50 2026 :: Log Trentlin [30439]: con z
+Sat Nov  7 16:13:51 2026 :: Log Trentlin [30439]: k z
+Sat Nov  7 16:13:53 2026 :: Log Trentlin [30439]: nerve
+Sat Nov  7 16:13:58 2026 :: Log Trentlin [30439]: nerve
+Sat Nov  7 16:14:03 2026 :: Log Trentlin [30439]: killed a zol
+Sat Nov  7 16:14:03 2026 :: Log Trentlin [30439]: coin +13 silver
+Sat Nov  7 16:14:03 2026 :: Log Trentlin [30439]: coin +55 copper
+Sat Nov  7 16:14:03 2026 :: Log Trentlin [30439]: coin +10 gold
+Sat Nov  7 16:14:06 2026 :: Log Trentlin [30439]: get key
+Sat Nov  7 16:14:07 2026 :: Log Trentlin [30439]: l
+Sat Nov  7 16:14:10 2026 :: Log Trentlin [30439]: n
+Sat Nov  7 16:14:10 2026 :: Log Trentlin [30442]: arrived (Level 3: Manji Crossing) from 30439
+Sat Nov  7 16:14:12 2026 :: Log Trentlin [30442]: con da
+Sat Nov  7 16:14:14 2026 :: Log Trentlin [30442]: k da
+Sat Nov  7 16:14:17 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:14:20 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:14:23 2026 :: Log Trentlin [30442]: kick
+Sat Nov  7 16:14:25 2026 :: Log Trentlin [30442]: kick
+Sat Nov  7 16:14:31 2026 :: Log Trentlin [30442]: kick
+Sat Nov  7 16:14:36 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:14:39 2026 :: Log Trentlin [30442]: kick
+Sat Nov  7 16:14:41 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:14:44 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:14:45 2026 :: Log Trentlin [30442]: killed a red darknut
+Sat Nov  7 16:14:45 2026 :: Log Trentlin [30442]: coin +10 gold
+Sat Nov  7 16:14:45 2026 :: Log Trentlin [30442]: coin +5 silver
+Sat Nov  7 16:14:45 2026 :: Log Trentlin [30442]: coin +16 copper
+Sat Nov  7 16:14:45 2026 :: Log Trentlin [30442]: coin +19 gold
+Sat Nov  7 16:14:50 2026 :: Log Trentlin [30442]: l in co
+Sat Nov  7 16:14:52 2026 :: Log Trentlin [30442]: sac co
+Sat Nov  7 16:14:52 2026 :: Log Trentlin [30442]: coin +38 copper
+Sat Nov  7 16:14:53 2026 :: Log Trentlin [30442]: l
+Sat Nov  7 16:14:55 2026 :: Log Trentlin [30442]: sca
+Sat Nov  7 16:14:58 2026 :: Log Trentlin [30442]: bomb east
+Sat Nov  7 16:14:58 2026 :: Log Trentlin [30442]: e
+Sat Nov  7 16:14:58 2026 :: Log Trentlin [30443]: arrived (Level 3: Eastern Slime Hall) from 30442
+Sat Nov  7 16:15:00 2026 :: Log Trentlin [30443]: con dak
