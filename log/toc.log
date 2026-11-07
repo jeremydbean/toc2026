@@ -273208,3 +273208,48 @@ Sat Nov  7 20:29:33 2026 :: Treasure goblin: vanished from room 9161 (Lawn, dyla
 Sat Nov  7 20:30:14 2026 :: Sock.sinaddr:  3.130.168.2
 Sat Nov  7 20:30:15 2026 :: EOF encountered on read.
 Sat Nov  7 20:39:38 2026 :: Treasure goblin: vanished from room 9522 (Inside the Northern Gate of New Thalos, newthalo.are) (too long in one area).
+Sat Nov  7 20:47:30 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Nov  7 20:47:30 2026 :: Loading Alaric's playerfile
+Sat Nov  7 20:47:32 2026 :: Loading Alaric's playerfile
+Sat Nov  7 20:47:32 2026 :: Alaric@208.126.22.104 has connected.
+Sat Nov  7 20:47:33 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sat Nov  7 20:47:35 2026 :: Log Alaric [2497]: wake
+Sat Nov  7 20:47:36 2026 :: Log Alaric [2497]: l
+Sat Nov  7 20:47:40 2026 :: Log Alaric [2497]: aq re
+Sat Nov  7 20:47:40 2026 :: Log Alaric [2497]: quest assigned: kill The factory worker (mob 9407, level 3) in mobfact.are, 14 minutes, ordinary
+Sat Nov  7 20:47:43 2026 :: Log Alaric [2497]: enter door
+Sat Nov  7 20:47:43 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov  7 20:47:43 2026 :: Log Alaric [2401]: north
+Sat Nov  7 20:47:43 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Nov  7 20:47:43 2026 :: Log Alaric [2402]: north
+Sat Nov  7 20:47:43 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2415]: east
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2485]: east
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2486]: north
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2486
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2483]: east
+Sat Nov  7 20:47:44 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Sat Nov  7 20:47:45 2026 :: Log Alaric [2484]: north
+Sat Nov  7 20:47:45 2026 :: Log Alaric [2481]: arrived (Market Plaza.) from 2484
+Sat Nov  7 20:47:45 2026 :: Log Alaric [2481]: north
+Sat Nov  7 20:47:45 2026 :: Log Alaric [2514]: arrived (Dark Alley.) from 2481
+Sat Nov  7 20:47:45 2026 :: Log Alaric [2514]: east
+Sat Nov  7 20:47:45 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2514
+Sat Nov  7 20:47:45 2026 :: Log Alaric [2505]: east
+Sat Nov  7 20:47:45 2026 :: Log Alaric [9400]: arrived (Entrance to the Mob Factory) from 2505
+Sat Nov  7 20:47:47 2026 :: Log Alaric [9400]: e
+Sat Nov  7 20:47:47 2026 :: Log Alaric [9407]: arrived (Entrance Hallway to Mob Factory) from 9400
+Sat Nov  7 20:47:48 2026 :: Log Alaric [9407]: scan
+Sat Nov  7 20:47:50 2026 :: Log Alaric [9407]: e
+Sat Nov  7 20:47:50 2026 :: Log Alaric [9412]: arrived (Entrance Hallway to Mob Factory) from 9407
+Sat Nov  7 20:47:50 2026 :: Log Alaric [9412]: e
+Sat Nov  7 20:47:50 2026 :: Log Alaric [9417]: arrived (Primary Assembly Line) from 9412
+Sat Nov  7 20:47:53 2026 :: Log Alaric [9417]: kill work
+Sat Nov  7 20:47:53 2026 :: Log Alaric [9417]: killed The factory worker
+Sat Nov  7 20:47:59 2026 :: Log Alaric [9417]: n
+Sat Nov  7 20:47:59 2026 :: Log Alaric [9416]: arrived (Primary Assembly Line) from 9417
+Sat Nov  7 20:47:59 2026 :: Log Alaric [9416]: scan
+Sat Nov  7 20:48:01 2026 :: Log Alaric [9416]: n
+Sat Nov  7 20:48:01 2026 :: Log Alaric [9415]: arrived (Primary Assembly Line) from 9416
