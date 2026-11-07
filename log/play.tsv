@@ -26278,3 +26278,64 @@
 1794055657	cmd	Trentlin	18	11053	ancala.are	standing	72	0	-	look		The Altar Of Annihilation //   You stand before the horrific Altar of Annihilation where the magic // and power of extinguishment and dissolution are full explored.  You	-	+
 1794055659	cmd	Trentlin	18	11053	ancala.are	standing	72	0	-	consider	mor	Morticia is well above your level. // Morticia has about as many hit points as you. // Blow for blow, you would need about 11 rounds to bring Morticia down; she would need about 11 rounds for you.	-	+
 1794055663	cmd	Trentlin	18	11053	ancala.are	standing	72	0	-	look	mor	Her long, raven black hair drapes those stunning curves of hers.  How // did such a sweet thing become the leader of this cult?  As a bard once // wrote,	-	+
+1794055731	cmd	Trentlin	18	11052	ancala.are	standing	76	1	-	east		The Guildhall //   This is the largest chamber cut from Ancalador's pancreas.  A long // feasting table made of coffins lashed together fills the length of the	-	+
+1794055734	cmd	Trentlin	18	11052	ancala.are	standing	76	0	-	kill	zo	Your punch maims the putrid zombie! // Your punch MUTILATES the putrid zombie!	-	-
+1794055740	cmd	Trentlin	18	11052	ancala.are	standing	73	0	-	look		The Guildhall //   This is the largest chamber cut from Ancalador's pancreas.  A long // feasting table made of coffins lashed together fills the length of the	-	+
+1794055743	cmd	Trentlin	18	11052	ancala.are	standing	73	0	-	kill	nec	Your punch mauls the Necromancer. // Your punch MUTILATES the Necromancer!	-	-
+1794055745	cmd	Trentlin	18	11052	ancala.are	fighting	73	0	fight	nerve		You jab the Necromancer with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates the Necromancer!	-	-
+1794055750	cmd	Trentlin	18	11048	ancala.are	standing	73	0	-	up		The Temple Of Death //   You are in a small shrine in honor of the 'Pale Priest of the Mute // People'.  Here, Hell's Grim Tyrant is sought as a source of	-	+
+1794055754	cmd	Trentlin	18	11048	ancala.are	fighting	69	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the wraith knight.	-	-
+1794055761	cmd	Trentlin	19	11048	ancala.are	fighting	67	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes the wraith knight.	-	-
+1794055769	cmd	Trentlin	19	11048	ancala.are	fighting	67	0	fight	nerve		You jab the wraith knight with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the wraith knight.	-	-
+1794055775	cmd	Trentlin	19	11048	ancala.are	standing	67	0	-	trip	necr	You trip the Necromancer and the Necromancer goes down! // Your trip scratches the Necromancer.	-	-
+1794055782	cmd	Trentlin	19	11048	ancala.are	standing	67	0	-	look		The Temple Of Death //   You are in a small shrine in honor of the 'Pale Priest of the Mute // People'.  Here, Hell's Grim Tyrant is sought as a source of	-	+
+1794055783	cmd	Trentlin	19	11052	ancala.are	standing	67	0	-	down		The Guildhall //   This is the largest chamber cut from Ancalador's pancreas.  A long // feasting table made of coffins lashed together fills the length of the	-	+
+1794055783	cmd	Trentlin	19	11053	ancala.are	standing	67	0	-	west		The Altar Of Annihilation //   You stand before the horrific Altar of Annihilation where the magic // and power of extinguishment and dissolution are full explored.  You	-	+
+1794055788	cmd	Trentlin	19	11053	ancala.are	standing	67	0	-	open	down	It's locked.	-	-
+1794055791	cmd	Trentlin	19	11053	ancala.are	standing	67	0	-	kill	mor	Your punch injures Morticia. // Your punch wounds Morticia.	-	-
+1794055794	cmd	Trentlin	19	11053	ancala.are	fighting	67	0	fight	nerve		You jab Morticia with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Morticia.	-	-
+1794055797	cmd	Trentlin	19	11053	ancala.are	fighting	61	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Morticia.	-	-
+1794055803	cmd	Trentlin	19	11053	ancala.are	fighting	55	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Morticia.	-	-
+1794055806	cmd	Trentlin	19	11053	ancala.are	fighting	49	0	fight	nerve		You jab Morticia with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Morticia.	-	-
+1794055814	cmd	Trentlin	19	11053	ancala.are	fighting	42	0	fight	nerve		You jab Morticia with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Morticia.	-	-
+1794055817	cmd	Trentlin	19	11053	ancala.are	fighting	42	0	fight	trip		Your trip misses Morticia.	-	-
+1794055821	cmd	Trentlin	19	11053	ancala.are	fighting	28	0	fight	trip		Your trip misses Morticia.	-	-
+1794055835	cmd	Trentlin	19	11052	ancala.are	fighting	16	0	fight	flee		The Guildhall //   This is the largest chamber cut from Ancalador's pancreas.  A long // feasting table made of coffins lashed together fills the length of the	-	+
+1794055835	cmd	Trentlin	19	11052	ancala.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1794055835	cmd	Trentlin	19	11052	ancala.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1794055837	cmd	Trentlin	19	11048	ancala.are	standing	16	0	-	up		The Temple Of Death //   You are in a small shrine in honor of the 'Pale Priest of the Mute // People'.  Here, Hell's Grim Tyrant is sought as a source of	-	+
+1794055838	cmd	Trentlin	19	11047	ancala.are	standing	16	0	-	east		The Macabre Amphitheather //   You are in on a wide, circular ledge overlooking a large slab of // stone in the chamber below.  Crude seats are fashioned here from the	-	+
+1794055840	cmd	Trentlin	19	11047	ancala.are	standing	16	0	-	east		The door is closed.	-	-
+1794055842	cmd	Trentlin	19	11048	ancala.are	standing	16	0	-	west		The Temple Of Death //   You are in a small shrine in honor of the 'Pale Priest of the Mute // People'.  Here, Hell's Grim Tyrant is sought as a source of	-	+
+1794055844	cmd	Trentlin	19	11052	ancala.are	standing	16	0	-	down		The Guildhall //   This is the largest chamber cut from Ancalador's pancreas.  A long // feasting table made of coffins lashed together fills the length of the	-	+
+1794055845	cmd	Trentlin	19	11049	ancala.are	standing	16	0	-	north		Cold Storage //   The stink of this storage chamber makes you balk at once.  Through // your nausea you make out cadavers kept cool in niches in the stone	-	+
+1794055846	cmd	Trentlin	19	11027	ancala.are	standing	16	0	-	up		The Dragon's Pancreas //   You are in an oddly shaped chamber, what might have been some foul // organ of Ancalador.  A yellowish light fills the room from nowhere, as	-	+
+1794055847	cmd	Trentlin	19	11056	ancala.are	standing	16	0	-	north		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1794055849	cmd	Trentlin	19	11056	ancala.are	standing	19	0	-	sleep		You go to sleep.	-	-
+1794055851	cmd	Trentlin	19	11056	ancala.are	sleeping	19	0	-	group		Trentlin's group: // [19 Monk ] Trentlin           90/ 456 hp  436/ 830 mana  150/ 312 mv 44026 xp	-	-
+1794055852	cmd	Trentlin	19	11056	ancala.are	sleeping	19	0	-	inventory		You are carrying: //      A straw key //      (Glowing) (Humming) a small boomerang	-	+
+1794055854	cmd	Trentlin	19	11056	ancala.are	sleeping	19	0	-	wake		You wake and stand up.	-	-
+1794055856	cmd	Trentlin	19	11056	ancala.are	standing	19	0	-	drop	key	You drop A straw key.	-	-
+1794055857	cmd	Trentlin	19	11056	ancala.are	standing	19	0	-	sacrifice	key	The Gods give you 0 copper coins for your sacrifice.	-	-
+1794055861	cmd	Trentlin	19	11056	ancala.are	standing	19	0	-	quaff	opa	This liquid is too powerful for you to drink.	-	-
+1794055863	cmd	Trentlin	19	11056	ancala.are	standing	19	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794055868	cmd	Trentlin	19	11056	ancala.are	standing	19	0	-	quaff	gre	You quaff a grey potion. // Stone skin never takes on a monk or a necromancer. // Your spell wounds you.	-	+
+1794055871	cmd	Trentlin	19	11056	ancala.are	standing	15	0	-	sleep		You go to sleep.	-	-
+1794055919	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	group		Trentlin's group: // [19 Monk ] Trentlin          119/ 456 hp  486/ 830 mana  193/ 312 mv 44026 xp	-	-
+1794055925	state	Trentlin	19	11056	ancala.are	lvl=19 hp=119/456 mana=486/830 mv=193/312 align=-434 exp=44026 coin=4476153472 bank=11060093999 qp=931 prac=8 train=1 stash=55/75 remorts=1
+1794055925	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	score		| Name:       Trentlin | Level:      19 | Class:        Monk | // | Played:     29 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794055934	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	gainlist		Abilities for a level 19 monk of the monk guild: 20 learned, 14 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1794055942	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	help	fast healing	The fast healing skill improves wound healing rates, whether walking, resting, // or sleeping. It represents knowledge of healing herbs or just general // toughness and stamina.  Fast healing is checked every tick, and it is	-	+
+1794055950	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	help	enhanced damage	Monks and members of the warriors guild can become skilled enough in // combat that they are able to inflict more damage than other classes.  Enhanced // damage is checked for with each hit, although with a low skill, the chance	-	+
+1794055959	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	aquest	list	There is no questmaster here.  Questor Thews waits at the very top of the great oak: // climb up from the Oak Tree Square.  AQUEST INFO works anywhere.	-	-
+1794055963	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	aquest	info	.-[ Quest Summary ]-------------------------------------------. // | Quest Points: 931 // | Next Quest  : Ready! Find a questmaster and type AQUEST REQUEST.	-	+
+1794055969	cmd	Trentlin	19	11056	ancala.are	sleeping	26	0	-	group		Trentlin's group: // [19 Monk ] Trentlin          119/ 456 hp  486/ 830 mana  193/ 312 mv 44026 xp	-	-
+1794055974	state	Trentlin	19	11056	ancala.are	lvl=19 hp=166/456 mana=536/830 mv=236/312 align=-434 exp=44026 coin=4476153472 bank=11060093999 qp=931 prac=8 train=1 stash=55/75 remorts=1
+1794055974	cmd	Trentlin	19	11056	ancala.are	sleeping	36	0	-	score		| Name:       Trentlin | Level:      19 | Class:        Monk | // | Played:     29 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794055975	cmd	Trentlin	19	11056	ancala.are	sleeping	36	0	-	wake		You wake and stand up.	-	-
+1794055976	cmd	Trentlin	19	11056	ancala.are	standing	36	0	-	look		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1794055976	cmd	Trentlin	19	4207	dresden.are	standing	36	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794055977	cmd	Trentlin	19	4208	dresden.are	standing	36	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794055977	cmd	Trentlin	19	4208	dresden.are	standing	36	0	-	west		Alas, you cannot go that way.	-	-
+1794055979	cmd	Trentlin	19	4208	dresden.are	standing	36	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794055982	cmd	Trentlin	19	4208	dresden.are	standing	60	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
