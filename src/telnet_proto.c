@@ -263,8 +263,68 @@ void telnet_offer_options( DESCRIPTOR_DATA *d )
     telnet_command( d, WILL, TELOPT_GMCP );
     telnet_command( d, WILL, TELOPT_COMPRESS2 );
 
-    /* And we would like to know the client's window size. */
+    /* And we would like to know the client's window size, and who it is
+       (TTYPE, with MTTS's capability bits on the third answer). */
     telnet_command( d, DO,   TELOPT_NAWS );
+    telnet_command( d, DO,   TELOPT_TTYPE );
+}
+
+/* Ask for the next terminal type: MTTS answers the client's name, then its
+   terminal, then "MTTS <bits>", and repeats the last when it has no more. */
+static void telnet_ask_ttype( DESCRIPTOR_DATA *d )
+{
+    char buf[6];
+
+    buf[0] = (char)(unsigned char)IAC;
+    buf[1] = (char)(unsigned char)SB;
+    buf[2] = (char)TELOPT_TTYPE;
+    buf[3] = (char)TTYPE_SEND;
+    buf[4] = (char)(unsigned char)IAC;
+    buf[5] = (char)(unsigned char)SE;
+    telnet_send_raw( d, buf, sizeof(buf) );
+}
+
+static void telnet_note_ttype( DESCRIPTOR_DATA *d )
+{
+    char value[32];
+    size_t i, n = 0;
+
+    if ( d->telnet_sb_len < 1 || (unsigned char)d->telnet_sb[0] != TTYPE_IS )
+        return;
+    for ( i = 1; i < (size_t)d->telnet_sb_len && n + 1 < sizeof(value); i++ )
+        if ( (unsigned char)d->telnet_sb[i] >= 0x20 && (unsigned char)d->telnet_sb[i] < 0x7f )
+            value[n++] = d->telnet_sb[i];
+    value[n] = '\0';
+    if ( value[0] == '\0' )
+        return;
+
+    if ( !str_prefix( "MTTS ", value ) )
+    {
+        d->client_mtts = atoi( value + 5 );
+        d->client_mtts_known = true;
+        d->ttype_round = 4;                 /* the last answer there is */
+        return;
+    }
+    if ( d->ttype_round <= 1 )
+    {
+        /* The client's name; Core.Hello, when it comes, says it better. */
+        if ( d->client_name[0] == '\0' )
+            toc_strlcpy( d->client_name, value, sizeof(d->client_name) );
+    }
+    else
+    {
+        if ( !str_cmp( value, d->client_term ) || !str_cmp( value, d->client_name ) )
+        {
+            d->ttype_round = 4;             /* repeated: the list is done */
+            return;
+        }
+        toc_strlcpy( d->client_term, value, sizeof(d->client_term) );
+    }
+    if ( d->ttype_round < 3 )
+    {
+        d->ttype_round++;
+        telnet_ask_ttype( d );
+    }
 }
 
 /* ------------------------------------------------------------------ MSSP */
@@ -421,6 +481,10 @@ static void telnet_handle_subneg( DESCRIPTOR_DATA *d )
         telnet_send_mssp( d );
         break;
 
+    case TELOPT_TTYPE:
+        telnet_note_ttype( d );
+        break;
+
     case TELOPT_GMCP:
         if ( d->telnet_sb_len < MAX_TELNET_SUBNEG )
         {
@@ -541,6 +605,14 @@ size_t telnet_filter_input( DESCRIPTOR_DATA *d, const char *raw, size_t length,
                     {
                         d->term_width  = 0;
                         d->term_height = 0;
+                    }
+                }
+                else if ( option == TELOPT_TTYPE )
+                {
+                    if ( verb == WILL && d->ttype_round == 0 )
+                    {
+                        d->ttype_round = 1;
+                        telnet_ask_ttype( d );
                     }
                 }
                 else if ( verb == WILL )

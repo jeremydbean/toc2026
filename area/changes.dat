@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261107b 2026-11-07
+Mudlet players: the game now plays short sounds for a level, a finished
+quest, an achievement, a tell, a death and a Hyrule secret (SOUND OFF
+silences them); shows your character and area in Discord when Mudlet's
+Discord option is on; and logs you in with the name and password your
+Mudlet profile keeps. HELP MUDLET and HELP SOUND.
+
 @ 20261107a 2026-11-07
 Passwords are now kept with stronger encryption (SHA-512). You log in
 exactly as before; your password moves over at your next login, and you

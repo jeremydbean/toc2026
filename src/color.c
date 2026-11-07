@@ -94,6 +94,43 @@ const struct col_table_type col_table[] =
 
 static const char *const color_reset_sequence = "\x1b[0m";
 
+/*
+ * The nearest of the sixteen for each 256-colour name, for a client that
+ * told us (MTTS, telnet_proto.c) it shows neither 256 colours nor true
+ * colour (2026-11-07). Such a client used to show those in its default.
+ * A client that says nothing keeps the 256-colour codes, as before.
+ */
+static const struct { const char *name; int basic; } color_basic_fallback[] =
+{
+    { "orange", COLOR_BROWN },          { "amber", COLOR_YELLOW },
+    { "gold", COLOR_YELLOW },           { "lime", COLOR_BRIGHT_GREEN },
+    { "mint", COLOR_BRIGHT_GREEN },     { "teal", COLOR_CYAN },
+    { "turquoise", COLOR_BRIGHT_CYAN }, { "sky", COLOR_BRIGHT_CYAN },
+    { "navy", COLOR_BLUE },             { "indigo", COLOR_BLUE },
+    { "purple", COLOR_MAGENTA },        { "violet", COLOR_BRIGHT_MAGENTA },
+    { "lavender", COLOR_BRIGHT_MAGENTA }, { "pink", COLOR_BRIGHT_MAGENTA },
+    { "rose", COLOR_BRIGHT_RED },       { "crimson", COLOR_RED },
+    { "maroon", COLOR_RED },            { "coral", COLOR_BRIGHT_RED },
+    { "salmon", COLOR_BRIGHT_RED },     { "peach", COLOR_YELLOW },
+    { "tan", COLOR_BROWN },             { "olive", COLOR_BROWN },
+    { "silver", COLOR_BRIGHT_GREY },    { "charcoal", COLOR_GREY },
+    { NULL, 0 }
+};
+
+static int color_for_client( const CHAR_DATA *ch, int entry )
+{
+    const DESCRIPTOR_DATA *d = ch != NULL ? ch->desc : NULL;
+    int i;
+
+    if ( d == NULL || !d->client_mtts_known || ( d->client_mtts & ( 8 | 256 ) ) != 0
+      || entry <= COLOR_PLAIN )
+        return entry;
+    for ( i = 0; color_basic_fallback[i].name != NULL; i++ )
+        if ( !str_cmp( color_basic_fallback[i].name, col_disp_table[entry].type ) )
+            return color_basic_fallback[i].basic;
+    return entry;
+}
+
 static int color_hex_value( char ch );
 bool color_parse_slot( const char *str, unsigned char *slot_out );
 
@@ -209,7 +246,7 @@ const char *color_code( const CHAR_DATA *ch, int slot )
         return "";
     }
 
-    return col_disp_table[entry].ansi_str;
+    return col_disp_table[color_for_client( ch, entry )].ansi_str;
 }
 
 /*

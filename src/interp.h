@@ -128,6 +128,7 @@ DECLARE_DO_FUN(	do_ban		);
 DECLARE_DO_FUN( do_doorbash     );
 DECLARE_DO_FUN( do_bash		);
 DECLARE_DO_FUN( do_beep		);
+DECLARE_DO_FUN( do_sound	);
 DECLARE_DO_FUN( do_berserk	);
 DECLARE_DO_FUN(do_blinding_fists);
 DECLARE_DO_FUN(do_brandish	);

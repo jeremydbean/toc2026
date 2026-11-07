@@ -184,6 +184,19 @@ WHAT THE INTERFACE SHOWS
 Package updates are offered automatically when the server advertises a new
 version.
 
+SOUNDS, DISCORD AND LOGIN
+  Sounds    A short sound for a level, a finished quest, an achievement,
+            a tell, a death and a Hyrule secret, when the profile allows
+            server media.  SOUND OFF silences them; SOUND ON brings them
+            back.
+  Discord   With Mudlet's Discord option on, Discord shows your
+            character, level, class and area while you play.  A wizinvis
+            character's area is not shown.
+  Login     A profile that keeps a character name and password logs in
+            by itself: Mudlet hands them to the game, which checks them
+            exactly as if you had typed them.  Leave them blank to type
+            them yourself.
+
 COMMANDS
 These are local Mudlet aliases, not game commands.  They do nothing over
 plain Telnet or in the browser client.
@@ -210,7 +223,22 @@ If the interface says GMCP is waiting, enable GMCP and server packages in
 the profile, then reconnect.  Manual package files and source are at:
   github.com/jeremydbean/toc2026/tree/main/mudlet
 
-See also: MAP, WALK, GMCP, WEB, WEBCLIENT
+See also: MAP, WALK, GMCP, SOUND, WEB, WEBCLIENT
+~
+
+0 SOUND~
+Syntax: sound
+Syntax: sound on
+Syntax: sound off
+
+A client that plays a game's sounds -- Mudlet, with "Allow server to play
+media" left on in the profile -- hears a short sound when you gain a level,
+finish a quest, earn an achievement, receive a tell, die, or find a secret
+in Hyrule.  SOUND alone says whether they are on and whether your client
+has said it plays them.  SOUND OFF silences them for this character;
+SOUND ON brings them back.  Clients that play no sounds are unaffected.
+
+See also: MUDLET, GMCP
 ~
 
 0 WALK CLICKTOWALK~
@@ -489,6 +517,11 @@ GMCP can receive:
                   you hear it, in the colour you chose for it
   Client.Map    - location of the official world atlas
   Client.GUI    - version and location of the official Mudlet package
+  Client.Media  - a short sound for a level, quest, achievement, tell,
+                  death or Hyrule secret (SOUND OFF stops them)
+  External.Discord.Status - your character and area, for Discord
+  Char.Login    - logs in with the name and password the client keeps,
+                  through the same checks as typing them
 
 Comm.Channel is sent where the line is delivered, so a client receives
 exactly what the character heard and nothing else: a yell from another

@@ -185,6 +185,281 @@ static uint32_t gmcp_room_hash( const char *json )
     return hash;
 }
 
+/* ------------------------------------------------------------------
+ * Mudlet's extras (2026-11-07): who the client is, Discord status,
+ * sounds and GMCP login. Wire formats are Mudlet's own (Host.cpp,
+ * TMedia.cpp, GMCPAuthenticator.cpp in Mudlet's source).
+ * ------------------------------------------------------------------ */
+
+#define TOC_GAME_NAME   "Times of Chaos"
+#define TOC_MEDIA_URL \
+    "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/media/"
+
+/* Printable ASCII only, cut to fit: a client names itself, and nothing a
+   client sends may reach a log or a staff screen as control bytes. */
+static void gmcp_copy_clean( char *out, size_t size, const char *in, size_t len )
+{
+    size_t i, n = 0;
+
+    if ( size == 0 )
+        return;
+    for ( i = 0; in != NULL && i < len && in[i] != '\0' && n + 1 < size; i++ )
+        if ( (unsigned char)in[i] >= 0x20 && (unsigned char)in[i] < 0x7f )
+            out[n++] = in[i];
+    out[n] = '\0';
+}
+
+/* A JSON string member's value, unescaped, into out. Only what GMCP sends
+   us needs reading, so this is small: "key" : "value", with the common
+   escapes; a \u escape outside ASCII becomes '?'. False when absent or
+   not a string, or when it does not fit. */
+static bool gmcp_json_string( const char *json, const char *key, char *out, size_t size )
+{
+    char quoted[64];
+    const char *p;
+    size_t n = 0;
+
+    if ( json == NULL || key == NULL || out == NULL || size == 0 )
+        return false;
+    out[0] = '\0';
+    snprintf( quoted, sizeof(quoted), "\"%s\"", key );
+    for ( p = strstr( json, quoted ); p != NULL; p = strstr( p + 1, quoted ) )
+    {
+        const char *v = p + strlen( quoted );
+
+        while ( isspace( (unsigned char)*v ) )
+            v++;
+        if ( *v != ':' )
+            continue;
+        v++;
+        while ( isspace( (unsigned char)*v ) )
+            v++;
+        if ( *v != '"' )
+            return false;
+        for ( v++; *v != '\0' && *v != '"'; v++ )
+        {
+            char c = *v;
+
+            if ( c == '\\' )
+            {
+                v++;
+                switch ( *v )
+                {
+                case 'n': c = '\n'; break;
+                case 't': c = '\t'; break;
+                case 'r': c = '\r'; break;
+                case 'b': c = '\b'; break;
+                case 'f': c = '\f'; break;
+                case 'u':
+                {
+                    int k;
+                    unsigned int code = 0;
+
+                    for ( k = 1; k <= 4; k++ )
+                    {
+                        if ( !isxdigit( (unsigned char)v[k] ) )
+                            return false;
+                        code = code * 16 + (unsigned int)( isdigit( (unsigned char)v[k] )
+                               ? v[k] - '0' : tolower( (unsigned char)v[k] ) - 'a' + 10 );
+                    }
+                    v += 4;
+                    c = code < 0x80 ? (char)code : '?';
+                    break;
+                }
+                case '\0': return false;
+                default: c = *v; break;     /* \" \\ \/ */
+                }
+            }
+            if ( n + 1 >= size )
+                return false;
+            out[n++] = c;
+        }
+        out[n] = '\0';
+        return *v == '"';
+    }
+    return false;
+}
+
+/* Whether a Core.Supports list names package (any case), as "Pkg 1". */
+static bool gmcp_list_has( const char *payload, const char *package )
+{
+    size_t len = strlen( package );
+    const char *p;
+
+    for ( p = payload; p != NULL && *p != '\0'; p++ )
+        if ( *p == '"' && !str_prefix( package, p + 1 )
+          && ( p[1 + len] == ' ' || p[1 + len] == '"' ) )
+            return true;
+    return false;
+}
+
+/* "Mudlet 4.19.1, 256 colours, screen reader" for staff screens. */
+const char *client_describe( const DESCRIPTOR_DATA *d, char *buf, size_t size )
+{
+    if ( buf == NULL || size == 0 )
+        return "";
+    buf[0] = '\0';
+    if ( d == NULL )
+        return buf;
+    if ( d->client_name[0] != '\0' )
+        snprintf( buf, size, "%s%s%s", d->client_name,
+                  d->client_version[0] != '\0' ? " " : "", d->client_version );
+    else if ( d->client_term[0] != '\0' )
+        snprintf( buf, size, "%s", d->client_term );
+    if ( d->client_mtts_known )
+    {
+        if ( d->client_mtts & 256 )
+            toc_strlcat( buf, buf[0] ? ", truecolor" : "truecolor", size );
+        else if ( d->client_mtts & 8 )
+            toc_strlcat( buf, buf[0] ? ", 256 colours" : "256 colours", size );
+        if ( d->client_mtts & 64 )
+            toc_strlcat( buf, buf[0] ? ", screen reader" : "screen reader", size );
+    }
+    return buf;
+}
+
+static void gmcp_send_media_default( DESCRIPTOR_DATA *d )
+{
+    if ( d == NULL || !d->gmcp_enabled || !d->gmcp_media || d->gmcp_media_default_sent )
+        return;
+    d->gmcp_media_default_sent = true;
+    telnet_send_gmcp( d, "Client.Media.Default", "{\"url\":\"" TOC_MEDIA_URL "\"}" );
+}
+
+/*
+ * A sound for something that happened to ch: levelup, achievement, quest,
+ * death, tell, secret. Only to a client that said it plays Client.Media,
+ * never to one whose player typed SOUND OFF, and only in the game. The
+ * files are mudlet/media/toc-<sound>.wav, generated by
+ * tools/build_sounds.py (nothing anybody else owns).
+ */
+void gmcp_play_sound( CHAR_DATA *ch, const char *sound )
+{
+    DESCRIPTOR_DATA *d;
+    char json[256];
+    const char *p;
+
+    if ( ch == NULL || IS_NPC(ch) || sound == NULL || sound[0] == '\0' )
+        return;
+    for ( p = sound; *p != '\0'; p++ )
+        if ( !isalnum( (unsigned char)*p ) )
+            return;
+    d = ch->desc;
+    if ( d == NULL || !d->gmcp_enabled || !d->gmcp_media || d->connected != CON_PLAYING
+      || IS_SET(ch->comm, COMM_NOSOUND) )
+        return;
+    gmcp_send_media_default( d );
+    snprintf( json, sizeof(json),
+              "{\"name\":\"toc-%s.wav\",\"type\":\"sound\",\"tag\":\"toc\","
+              "\"volume\":60,\"key\":\"toc-%s\"}", sound, sound );
+    telnet_send_gmcp( d, "Client.Media.Play", json );
+}
+
+/*
+ * The player's Discord status, for a client that relays it: the game, who
+ * they are and where. Sent when any of it changes. A wizinvis player's
+ * whereabouts stay their own.
+ */
+void gmcp_send_discord( DESCRIPTOR_DATA *d )
+{
+    char json[MAX_STRING_LENGTH];
+    char text[MAX_INPUT_LENGTH];
+    CHAR_DATA *ch;
+    uint32_t hash;
+
+    if ( d == NULL || !d->gmcp_enabled || !d->gmcp_discord )
+        return;
+    ch = d->original != NULL ? d->original : d->character;
+
+    toc_strlcpy( json, "{\"game\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json), TOC_GAME_NAME );
+    if ( d->connected == CON_PLAYING && ch != NULL && !IS_NPC(ch) )
+    {
+        snprintf( text, sizeof(text), "%s, level %d %s", ch->name, ch->level,
+                  ch->class >= 0 && ch->class < MAX_CLASS ? class_table[ch->class].name : "adventurer" );
+        toc_strlcat( json, ",\"details\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), text );
+        if ( IS_SET(ch->act, PLR_WIZINVIS) || ch->in_room == NULL || ch->in_room->area == NULL )
+            toc_strlcpy( text, "Somewhere unseen", sizeof(text) );
+        else
+            snprintf( text, sizeof(text), "In %s", gmcp_area_name( ch->in_room->area->name ) );
+        toc_strlcat( json, ",\"state\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), text );
+        snprintf( text, sizeof(text), ",\"starttime\":%ld", (long) ch->logon );
+        toc_strlcat( json, text, sizeof(json) );
+    }
+    else
+    {
+        toc_strlcat( json, ",\"details\":\"Logging in\",\"state\":\"\"", sizeof(json) );
+    }
+    toc_strlcat( json, "}", sizeof(json) );
+
+    hash = gmcp_room_hash( json );
+    if ( hash == d->gmcp_last_discord_hash )
+        return;
+    d->gmcp_last_discord_hash = hash;
+    telnet_send_gmcp( d, "External.Discord.Status", json );
+}
+
+void gmcp_login_result( DESCRIPTOR_DATA *d, bool success, const char *message )
+{
+    char json[MAX_STRING_LENGTH];
+
+    if ( d == NULL || !d->gmcp_enabled )
+        return;
+    if ( success )
+        toc_strlcpy( json, "{\"success\":true}", sizeof(json) );
+    else
+    {
+        toc_strlcpy( json, "{\"success\":false,\"message\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), message != NULL ? message : "" );
+        toc_strlcat( json, "}", sizeof(json) );
+    }
+    telnet_send_gmcp( d, "Char.Login.Result", json );
+}
+
+/* What Core.Supports said, kept: Set replaces the list, Add and Remove
+   change it. Then whatever the newly named packages want sent. */
+static void gmcp_note_supports( DESCRIPTOR_DATA *d, const char *payload, int mode )
+{
+    bool media = gmcp_list_has( payload, "Client.Media" );
+    bool discord = gmcp_list_has( payload, "External.Discord" );
+    bool login = gmcp_list_has( payload, "Char.Login" );
+
+    if ( mode == 0 )
+    {
+        d->gmcp_media = media;
+        d->gmcp_discord = discord;
+        d->gmcp_login = login;
+    }
+    else if ( mode == 1 )
+    {
+        d->gmcp_media = d->gmcp_media || media;
+        d->gmcp_discord = d->gmcp_discord || discord;
+        d->gmcp_login = d->gmcp_login || login;
+    }
+    else
+    {
+        if ( media )   d->gmcp_media = false;
+        if ( discord ) d->gmcp_discord = false;
+        if ( login )   d->gmcp_login = false;
+    }
+
+    if ( d->gmcp_media )
+        gmcp_send_media_default( d );
+    if ( d->gmcp_discord )
+    {
+        d->gmcp_last_discord_hash = 0;
+        gmcp_send_discord( d );
+    }
+    /* Offered once, at the name prompt: password-credentials, version 1. */
+    if ( d->gmcp_login && !d->gmcp_login_offered && d->connected == CON_GET_NAME )
+    {
+        d->gmcp_login_offered = true;
+        telnet_send_gmcp( d, "Char.Login.Default", "{\"type\":[\"password-credentials\"]}" );
+    }
+}
+
 static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
 {
     if ( d == NULL )
@@ -192,6 +467,7 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
 
     d->gmcp_vitals_valid = false;
     d->gmcp_status_valid = false;
+    d->gmcp_last_discord_hash = 0;
     d->gmcp_last_character = NULL;
     d->gmcp_last_room = -1;
     d->gmcp_last_room_hash = 0;
@@ -260,6 +536,10 @@ void gmcp_on_disabled( DESCRIPTOR_DATA *d )
 
     d->gmcp_enabled = false;
     d->gmcp_initial_sent = false;
+    d->gmcp_media = false;
+    d->gmcp_media_default_sent = false;
+    d->gmcp_discord = false;
+    d->gmcp_login = false;
     gmcp_reset_snapshots( d );
 }
 
@@ -278,9 +558,44 @@ void gmcp_handle_message( DESCRIPTOR_DATA *d, const char *message )
         return;
     }
 
+    if ( gmcp_token_equal(message, "Core.Hello") )
+    {
+        char value[64];
+
+        payload = gmcp_payload( message );
+        if ( gmcp_json_string( payload, "client", value, sizeof(value) ) )
+            gmcp_copy_clean( d->client_name, sizeof(d->client_name), value, strlen(value) );
+        if ( gmcp_json_string( payload, "version", value, sizeof(value) ) )
+            gmcp_copy_clean( d->client_version, sizeof(d->client_version), value, strlen(value) );
+        return;
+    }
+
+    if ( gmcp_token_equal(message, "Char.Login.Credentials") )
+    {
+        char account[MAX_INPUT_LENGTH], password[MAX_INPUT_LENGTH];
+
+        payload = gmcp_payload( message );
+        /* No account is the client's hand-off: the player signs in by
+           typing, as ever. Neither word is ever logged. */
+        if ( gmcp_json_string( payload, "account", account, sizeof(account) )
+          && gmcp_json_string( payload, "password", password, sizeof(password) )
+          && account[0] != '\0' && password[0] != '\0' )
+            gmcp_login_begin( d, account, password );
+        memset( password, 0, sizeof(password) );
+        return;
+    }
+
+    if ( gmcp_token_equal(message, "Core.Supports.Remove") )
+    {
+        gmcp_note_supports( d, gmcp_payload( message ), 2 );
+        return;
+    }
+
     if ( gmcp_token_equal(message, "Core.Supports.Set")
       || gmcp_token_equal(message, "Core.Supports.Add") )
     {
+        gmcp_note_supports( d, gmcp_payload( message ),
+                            gmcp_token_equal(message, "Core.Supports.Set") ? 0 : 1 );
         /* A package installed after login can miss the first state snapshot. */
         gmcp_send_initial( d );
         gmcp_reset_snapshots( d );
@@ -397,6 +712,7 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
         d->gmcp_last_race = ch->race;
         d->gmcp_last_tier = (sh_int) alignment_tier( ch->alignment );
         d->gmcp_status_valid = true;
+        gmcp_send_discord( d );     /* a level or class changed */
     }
 }
 
@@ -1161,6 +1477,7 @@ void gmcp_send_achievement( CHAR_DATA *ch, const char *title,
         return;
     if ( !ch->desc->gmcp_enabled || ch->desc->connected != CON_PLAYING )
         return;
+    gmcp_play_sound( ch, "achievement" );
 
     toc_strlcpy( json, "{\"title\":", sizeof(json) );
     gmcp_json_append_quoted( json, sizeof(json), title );
@@ -1299,6 +1616,7 @@ void gmcp_send_room( DESCRIPTOR_DATA *d )
         return;
 
     room = ch->in_room;
+    gmcp_send_discord( d );     /* the area may have changed */
 
     snprintf( json, sizeof(json), "{\"num\":%d,\"name\":", room->vnum );
     gmcp_json_append_quoted( json, sizeof(json), room->name );

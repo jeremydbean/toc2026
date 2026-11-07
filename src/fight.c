@@ -3470,6 +3470,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         if ( ch != NULL && ch != victim && IS_NPC(ch) )
             progress_event( victim, "death", ch );  /* log/progress.tsv */
         playlog_death( ch, victim );                /* log/play.tsv */
+        gmcp_play_sound( victim, "death" );         /* Client.Media */
     }
 
     /* The creator cannot be killed by any route -- a death trap, a death

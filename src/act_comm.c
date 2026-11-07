@@ -1385,6 +1385,35 @@ void do_cgos( CHAR_DATA *ch, char *argument )
 
 
 /*
+ * SOUND [ON|OFF]: the game's sounds in a client that plays them (Mudlet's
+ * Client.Media, gmcp_play_sound in gmcp.c), on by default.
+ */
+void do_sound( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    bool plays = ch->desc != NULL && ch->desc->gmcp_enabled && ch->desc->gmcp_media;
+
+    if ( IS_NPC(ch) )
+        return;
+    one_argument( argument, arg );
+    if ( !str_cmp( arg, "on" ) )
+        REMOVE_BIT( ch->comm, COMM_NOSOUND );
+    else if ( !str_cmp( arg, "off" ) )
+        SET_BIT( ch->comm, COMM_NOSOUND );
+    else if ( arg[0] != '\0' )
+    {
+        send_to_char( "Syntax: sound [on|off]\n\r", ch );
+        return;
+    }
+    send_to_char( IS_SET( ch->comm, COMM_NOSOUND )
+        ? "Game sounds are {0FOFF{00. SOUND ON turns them back on.\n\r"
+        : "Game sounds are {0FON{00: a level, a quest, an achievement, a tell, a death\n\r"
+          "and a Hyrule secret each have one. SOUND OFF silences them.\n\r", ch );
+    if ( !plays )
+        send_to_char( "Your client has not said it plays sounds; Mudlet does.\n\r", ch );
+}
+
+/*
  * Get one immortal's attention even when they have the staff channel off.
  * That is the whole point of it, so COMM_NOWIZ is deliberately not checked
  * -- only the victim's own COMM_NOBEEP.
@@ -2838,6 +2867,7 @@ void do_tell( CHAR_DATA *ch, char *argument )
             teller, argument );
     }
     tell_history_add( victim, stamp );
+    gmcp_play_sound( victim, "tell" );
     victim->reply	= ch;
 
     return;
@@ -2939,6 +2969,7 @@ void do_reply( CHAR_DATA *ch, char *argument )
             teller, argument );
     }
     tell_history_add( victim, stamp );
+    gmcp_play_sound( victim, "tell" );
     victim->reply	= ch;
 
     return;

@@ -824,6 +824,9 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
         char detail[200];
         bool done = was_questor && !IS_SET( ch->act, PLR_QUESTOR );
 
+        if ( done )
+            gmcp_play_sound( ch, "quest" );
+
         /* What the reward came to, for the play journal (review,
            2026-11-03). Done means the quest is no longer held. The
            points an ordinary quest pays are offered to the gamble and
@@ -1339,6 +1342,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
                 ch->exp = exp_per_level(ch,ch->pcdata->points) * ch->level;
                 send_to_char("You raise a level!  ", ch );
                 advance_level(ch,false);
+                gmcp_play_sound( ch, "levelup" );
                 save_char_obj(ch);
             }
 	    else

@@ -100,6 +100,7 @@ env:
     test_building_mobs_objs test_building_wizard test_building_rooms_shops
     test_black_market test_treasure_goblin test_rested_and_dailies test_audit_leads
     test_achievement_set_load test_connection_guard test_client_addresses test_password
+    test_mudlet_extras
   # Modules that measure against the wall clock and need a machine to
   # themselves: the login throttle.
   SERIAL_MODULES: test_login_throttle

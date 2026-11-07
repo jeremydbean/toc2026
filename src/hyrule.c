@@ -606,6 +606,7 @@ static void secret_set( CHAR_DATA *ch, int bit )
         return;
     ch->pcdata->hyrule_secrets |= 1UL << bit;
     ch->pcdata->hyrule_secrets &= SECRET_MASK;
+    gmcp_play_sound( ch, "secret" );
 }
 
 /*

@@ -1122,6 +1122,8 @@ void game_loop_unix( int control )
 
             d_next = d->next;
 
+            if ( d->gmcp_login_state == 3 )
+                gmcp_login_start( d );      /* a Mudlet login's name */
             if ( !read_from_buffer( d ) )
                 continue;
 
@@ -1133,6 +1135,19 @@ void game_loop_unix( int control )
             if ( d->connected != CON_PLAYING )
             {
                 nanny( d, d->incomm );
+                /* A Mudlet login under way types its next line, or says
+                   how it ended -- if the connection is still there. */
+                if ( d->gmcp_login_state != 0 )
+                {
+                    DESCRIPTOR_DATA *live;
+
+                    for ( live = descriptor_list; live != NULL; live = live->next )
+                        if ( live == d )
+                        {
+                            gmcp_login_after_nanny( d );
+                            break;
+                        }
+                }
                 d->incomm[0] = '\0';
                 d->incomm_from_alias = FALSE;
                 continue;
@@ -1311,6 +1326,121 @@ void game_loop_unix( int control )
  * wrong password, and lockouts that grow with each one in a week, kept
  * across reboots.
  */
+
+/*
+ * GMCP login (Mudlet's Char.Login, 2026-11-07). Mudlet answers our
+ * Char.Login.Default with the profile's saved name and password; they are
+ * typed for the player, a line at a time, through the ordinary prompts --
+ * so every check a typed login meets (bans, the guard, lockouts, the
+ * password's own rules, reconnects) is met, and nothing here decides who
+ * gets in. The password waits on the descriptor only until the password
+ * prompt takes it, and is wiped then, at the end and at close.
+ */
+void gmcp_login_forget( DESCRIPTOR_DATA *d )
+{
+    if ( d == NULL )
+        return;
+    memset( d->gmcp_login_pw, 0, sizeof(d->gmcp_login_pw) );
+    d->gmcp_login_account[0] = '\0';
+    d->gmcp_login_state = 0;
+}
+
+/* line, then a newline, ahead of anything else waiting. */
+static bool gmcp_login_type( DESCRIPTOR_DATA *d, const char *line )
+{
+    size_t len = strlen( line ), have = strlen( d->inbuf );
+
+    if ( len + 1 + have >= sizeof(d->inbuf) - 2 )
+        return false;
+    memmove( d->inbuf + len + 1, d->inbuf, have + 1 );
+    memcpy( d->inbuf, line, len );
+    d->inbuf[len] = '\n';
+    return true;
+}
+
+void gmcp_login_begin( DESCRIPTOR_DATA *d, const char *account, const char *password )
+{
+    const char *p;
+
+    if ( d == NULL || account == NULL || password == NULL )
+        return;
+    /* Only at the name prompt, and only before the player starts typing. */
+    if ( d->connected != CON_GET_NAME || d->gmcp_login_state != 0
+      || d->incomm[0] != '\0' || d->inbuf[0] != '\0' )
+    {
+        gmcp_login_result( d, false, "Type your name to log in." );
+        return;
+    }
+    for ( p = account; *p != '\0'; p++ )
+        if ( !isalpha( (unsigned char)*p ) )
+            break;
+    if ( *p != '\0' || strlen( account ) > 12
+      || strlen( password ) >= sizeof(d->gmcp_login_pw) - 2 )
+    {
+        gmcp_login_result( d, false, "That name cannot log in here: type it to see why." );
+        return;
+    }
+    for ( p = password; *p != '\0'; p++ )
+        if ( *p == '\n' || *p == '\r' )
+        {
+            gmcp_login_result( d, false, "That password cannot be typed for you." );
+            return;
+        }
+    toc_strlcpy( d->gmcp_login_pw, password, sizeof(d->gmcp_login_pw) );
+    toc_strlcpy( d->gmcp_login_account, account, sizeof(d->gmcp_login_account) );
+    /* Typed at the top of the next input pass (gmcp_login_start): the
+       read that carried this message writes its own bytes over the input
+       buffer when it returns. */
+    d->gmcp_login_state = 3;
+}
+
+/* The name, typed for the player, once the read is done with the buffer. */
+void gmcp_login_start( DESCRIPTOR_DATA *d )
+{
+    if ( d == NULL || d->gmcp_login_state != 3 )
+        return;
+    if ( d->connected != CON_GET_NAME || d->incomm[0] != '\0' || d->inbuf[0] != '\0'
+      || !gmcp_login_type( d, d->gmcp_login_account ) )
+    {
+        gmcp_login_forget( d );
+        gmcp_login_result( d, false, "Type your name to log in." );
+        return;
+    }
+    d->gmcp_login_account[0] = '\0';
+    d->gmcp_login_state = 1;
+}
+
+/* After the line typed for the player has been read. */
+void gmcp_login_after_nanny( DESCRIPTOR_DATA *d )
+{
+    if ( d == NULL )
+        return;
+    if ( d->gmcp_login_state == 1 )
+    {
+        if ( d->connected == CON_GET_OLD_PASSWORD && d->gmcp_login_pw[0] != '\0'
+          && gmcp_login_type( d, d->gmcp_login_pw ) )
+        {
+            memset( d->gmcp_login_pw, 0, sizeof(d->gmcp_login_pw) );
+            d->gmcp_login_state = 2;
+            return;
+        }
+        gmcp_login_forget( d );
+        gmcp_login_result( d, false,
+            d->connected == CON_CONFIRM_NEW_NAME
+                ? "There is no character by that name yet: answer the game to make one."
+                : "That name did not log in: see what the game said." );
+        return;
+    }
+    if ( d->gmcp_login_state == 2 )
+    {
+        gmcp_login_forget( d );
+        if ( d->connected == CON_READ_MOTD || d->connected == CON_READ_IMOTD
+          || d->connected == CON_PLAYING || d->connected == CON_BREAK_CONNECT )
+            gmcp_login_result( d, true, NULL );
+        else
+            gmcp_login_result( d, false, "The login did not finish: see what the game said." );
+    }
+}
 
 /*
  * What a player is told the first time they log in after their password
@@ -1638,6 +1768,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
     /* A connection that never said a word is counted, not logged. An
        answer the resolver has yet to give goes to nobody. */
     conn_guard_closed( dclose );
+    gmcp_login_forget( dclose );              /* no password left behind */
     dns_async_cancel( dclose->dns_serial );   /* still queued: never made */
     dclose->dns_serial = 0;
 
@@ -3844,6 +3975,11 @@ case CON_DEFAULT_CHOICE:
 	            do_help(ch,"NEWBIE INFO");
 	            ch->lines = save_lines;
 	        }
+	        /* Mudlet's listing asks that a game's interface be named at
+	           character creation with the way to turn it off (2026-11-07). */
+	        send_to_char( "\n\r{0E[Mudlet]{00 Playing in Mudlet? The Times of Chaos interface -- map,\n\r"
+	                      "gauges and chat -- installs itself. Type {0FTOCGUI OFF{00 to hide it and\n\r"
+	                      "{0FTOCGUI ON{00 to bring it back. HELP MUDLET says more.\n\r", ch );
 	        send_to_char("\n\r",ch);
 	        save_char_obj( ch );
 	    }

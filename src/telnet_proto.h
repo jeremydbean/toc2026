@@ -33,6 +33,11 @@ struct descriptor_data;
 #ifndef TELOPT_COMPRESS2
 #define TELOPT_COMPRESS2 86
 #endif
+#ifndef TELOPT_TTYPE
+#define TELOPT_TTYPE    24
+#endif
+#define TTYPE_IS        0
+#define TTYPE_SEND      1
 
 /* MSSP in-band markers. */
 #define MSSP_VAR        1

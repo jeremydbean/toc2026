@@ -4357,6 +4357,31 @@ own windows, and a coloured gossip reached Mudlet's chat pane as
 `TOC_MUDLET_PACKAGE_VERSION`, `config.lua` and `tocMudlet.version`
 together, or installed packages never fetch it.
 
+**Mudlet's extras** (2026-11-07; formats read from Mudlet's own source,
+since its wiki is unreachable from a cloud session). `gmcp_note_supports`
+keeps what `Core.Supports.Set/Add/Remove` named: **Client.Media** gets
+`Client.Media.Default` (the repository's `mudlet/media/`) and
+`gmcp_play_sound(ch, name)` plays `toc-<name>.wav` -- six sounds, generated
+by `tools/build_sounds.py` (`--check` in the tests; never a borrowed file),
+not to a player with `COMM_NOSOUND` (SOUND OFF); **External.Discord** gets
+`External.Discord.Status` (game, "Name, level N Class", "In <area>" or
+"Somewhere unseen" for wizinvis, starttime), sent when its hash changes from
+`gmcp_send_room` and the Char.Status branch; **Char.Login** gets
+`Char.Login.Default {"type":["password-credentials"]}` once at the name
+prompt. `Char.Login.Credentials` is never logged: the name is typed for the
+player at the top of the next input pass (`gmcp_login_start` -- not inside
+the read, which writes its own bytes over `d->inbuf`), the password at the
+password prompt (`gmcp_login_after_nanny`), and `Char.Login.Result` says how
+it ended (`login_wrong_password` says "Wrong password."); the password sits
+on the descriptor only between the two and is wiped at close. Every check
+a typed login meets still applies. **TTYPE/MTTS** (`telnet_note_ttype`)
+and `Core.Hello` fill `client_name`/`client_term`/`client_mtts`; DNS LIST
+shows them (`client_describe`), and `color_code` gives a client whose MTTS
+lacks 256 colours and true colour the nearest basic colour for a 256-colour
+name. New characters are told TOCGUI OFF/ON (Mudlet's listing requires it).
+`tests/test_mudlet_extras.py`; `mudlet/listing-submission.md` has the
+listing status.
+
 **`Room.Info`** carries `exits`, and since 2026-09-30 also `doors`
 (per direction: open, closed or locked), `flags`, and `services` --
 what the room is *for*, being a shop, questmaster, guildmaster,

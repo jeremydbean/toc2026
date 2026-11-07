@@ -7766,10 +7766,17 @@ void do_dns( CHAR_DATA *ch, char *argument )
                 continue;
             /* The address as the connection came (or as the web bridge
                named it), never the throttle's key folded from it. */
-            snprintf( buf, sizeof(buf), "  %-14s %-32s %s\n\r",
-                who != NULL && who->name != NULL ? who->name : "(connecting)",
-                d->host != NULL ? d->host : "(none)",
-                d->addr_text[0] != '\0' ? d->addr_text : "?" );
+            {
+                char client[96];
+
+                client_describe( d, client, sizeof(client) );
+                snprintf( buf, sizeof(buf), "  %-14s %-32s %s%s%s%s\n\r",
+                    who != NULL && who->name != NULL ? who->name : "(connecting)",
+                    d->host != NULL ? d->host : "(none)",
+                    d->addr_text[0] != '\0' ? d->addr_text : "?",
+                    client[0] != '\0' ? "  [" : "", client,
+                    client[0] != '\0' ? "]" : "" );
+            }
             send_to_char( buf, ch );
             count++;
         }

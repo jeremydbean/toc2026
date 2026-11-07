@@ -587,6 +587,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
 	send_to_char( "You raise a level!!  ", ch );
 	ch->level += 1;
 	advance_level( ch, false );
+	gmcp_play_sound( ch, "levelup" );
 	save_char_obj(ch);
        }
 
@@ -598,6 +599,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
 	  send_to_char( "You raise a level!!  ", ch );
 	  ch->level += 1;
 	  advance_level( ch, false );
+	  gmcp_play_sound( ch, "levelup" );
 
 	  if(ch->level == 50)
 	  {

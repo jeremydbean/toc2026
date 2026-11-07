@@ -755,6 +755,27 @@ struct  descriptor_data
        a character still holding the first (login_password_upgrade). */
     char                pwd_upgrade_from[PASSWORD_HASH_MAX];
     char                pwd_upgrade_to[PASSWORD_HASH_MAX];
+    /* Who is on the other end (2026-11-07): the client's own name and
+       version from GMCP Core.Hello or telnet TTYPE, its terminal type, and
+       its MTTS capability bits (client_mtts_known when it sent them). */
+    char                client_name[32];
+    char                client_version[24];
+    char                client_term[32];
+    int                 client_mtts;
+    bool                client_mtts_known;
+    sh_int              ttype_round;
+    /* What the client told Core.Supports it handles (gmcp.c). */
+    bool                gmcp_media;
+    bool                gmcp_media_default_sent;
+    bool                gmcp_discord;
+    uint32_t            gmcp_last_discord_hash;
+    bool                gmcp_login;
+    bool                gmcp_login_offered;
+    /* A GMCP Char.Login in progress (comm.c): 1 the account was typed for
+       the player, 2 the password; the password waits here only between. */
+    sh_int              gmcp_login_state;
+    char                gmcp_login_account[16];
+    char                gmcp_login_pw[MAX_INPUT_LENGTH];
 };
 
 struct were_form
@@ -2109,6 +2130,7 @@ typedef struct hyrule_dungeon_gate
 #define COMM_NOTITLE            (aa)
 #define COMM_NOBEEP             (bb)
 #define COMM_MUTE               (cc)
+#define COMM_NOSOUND            (dd)    /* no Client.Media sounds (SOUND OFF) */
 
 #define IS_QUESTOR(ch)          (IS_SET((ch)->act, PLR_QUESTOR ) )
 
@@ -3509,6 +3531,15 @@ void    gmcp_send_achievement ( CHAR_DATA *ch, const char *title,
                              int total );
 void    gmcp_send_channel  ( DESCRIPTOR_DATA *d, const char *channel,
                              const char *speaker, const char *text );
+/* Mudlet's extras (2026-11-07): Discord status, sounds, GMCP login. */
+void    gmcp_send_discord  ( DESCRIPTOR_DATA *d );
+void    gmcp_play_sound    ( CHAR_DATA *ch, const char *sound );
+void    gmcp_login_result  ( DESCRIPTOR_DATA *d, bool success, const char *message );
+void    gmcp_login_begin   ( DESCRIPTOR_DATA *d, const char *account, const char *password );
+void    gmcp_login_after_nanny( DESCRIPTOR_DATA *d );
+void    gmcp_login_start   ( DESCRIPTOR_DATA *d );
+void    gmcp_login_forget  ( DESCRIPTOR_DATA *d );
+const char *client_describe( const DESCRIPTOR_DATA *d, char *buf, size_t size );
 void    channel_history_add ( const char *channel, CHAR_DATA *ch,
                               const char *text );
 void    tell_history_add ( CHAR_DATA *ch, const char *line );

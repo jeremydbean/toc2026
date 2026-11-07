@@ -412,6 +412,13 @@ void login_wrong_password( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
     bool trusted;
     long dur;
 
+    /* A Mudlet login told how it ended, before the close (comm.c). */
+    if ( d != NULL && d->gmcp_login_state == 2 )
+    {
+        gmcp_login_forget( d );
+        gmcp_login_result( d, false, "Wrong password." );
+    }
+
     lock_count_character( d, ch );
     if ( !lock_applies( d ) )
     {
