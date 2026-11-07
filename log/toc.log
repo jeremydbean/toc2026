@@ -270950,3 +270950,145 @@ Sat Nov  7 15:25:38 2026 :: Snapshot of Alaric taken before quest: Alaric.202611
 Sat Nov  7 15:25:39 2026 :: Log Alaric [2497]: aq ga no
 Sat Nov  7 15:27:31 2026 :: Treasure goblin: vanished from room 9342 (On a Hill, galaxy.are) (too long in one area).
 Sat Nov  7 15:37:36 2026 :: Treasure goblin: vanished from room 25059 (Dead End, mountain.are) (too long in one area).
+Sat Nov  7 15:41:32 2026 :: Log Alaric [2497]: aq re
+Sat Nov  7 15:41:32 2026 :: Log Alaric [2497]: quest assigned: kill the guildguard (mob 9556, level 21) in newthalo.are, 27 minutes, ordinary
+Sat Nov  7 15:41:38 2026 :: Log Alaric [2497]: enter door
+Sat Nov  7 15:41:38 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov  7 15:41:38 2026 :: Log Alaric [2401]: east
+Sat Nov  7 15:41:38 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2403]: east
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2420]: east
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2421]: east
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2422]: east
+Sat Nov  7 15:41:39 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Nov  7 15:41:40 2026 :: Log Alaric [2423]: east
+Sat Nov  7 15:41:40 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Nov  7 15:41:40 2026 :: Log Alaric [2424]: east
+Sat Nov  7 15:41:40 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Nov  7 15:41:40 2026 :: Log Alaric [2425]: east
+Sat Nov  7 15:41:40 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Nov  7 15:41:40 2026 :: Log Alaric [2426]: open east
+Sat Nov  7 15:41:41 2026 :: Log Alaric [2426]: east
+Sat Nov  7 15:41:41 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Nov  7 15:41:42 2026 :: Log Alaric [2440]: east
+Sat Nov  7 15:41:42 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3503]: east
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3502]: east
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3525]: east
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3526]: east
+Sat Nov  7 15:41:43 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3527]: east
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3528]: east
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3529]: east
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3530]: east
+Sat Nov  7 15:41:44 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Nov  7 15:41:45 2026 :: Log Alaric [3531]: east
+Sat Nov  7 15:41:45 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Nov  7 15:41:45 2026 :: Log Alaric [3532]: east
+Sat Nov  7 15:41:45 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Nov  7 15:41:45 2026 :: Log Alaric [42]: east
+Sat Nov  7 15:41:45 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Nov  7 15:42:53 2026 :: Log Alaric [9669]: east
+Sat Nov  7 15:42:53 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Nov  7 15:42:53 2026 :: Log Alaric [9523]: east
+Sat Nov  7 15:42:53 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9524]: east
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9525]: east
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9526]: east
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9509]: north
+Sat Nov  7 15:42:54 2026 :: Log Alaric [9514]: arrived (The Northwestern Market Square) from 9509
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9514]: east
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9515]: arrived (The Northern Market Square) from 9514
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9515]: north
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9518]: arrived (Sultan's Walk) from 9515
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9518]: north
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9519]: arrived (Sultan's Walk) from 9518
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9519]: north
+Sat Nov  7 15:42:55 2026 :: Log Alaric [9520]: arrived (Sultan's Walk) from 9519
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9520]: west
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9658]: arrived (The Palace Gate) from 9520
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9658]: west
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9650]: arrived (The Grand Entrance) from 9658
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9650]: west
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9705]: arrived (Hall) from 9650
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9705]: west
+Sat Nov  7 15:42:56 2026 :: Log Alaric [9673]: arrived (Hall) from 9705
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9673]: north
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9674]: arrived (Hall) from 9673
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9674]: west
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9679]: arrived (Hall) from 9674
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9679]: west
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9684]: arrived (Hall) from 9679
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9684]: north
+Sat Nov  7 15:42:57 2026 :: Log Alaric [9685]: arrived (Guard Room) from 9684
+Sat Nov  7 15:43:02 2026 :: Log Alaric [9685]: south
+Sat Nov  7 15:43:02 2026 :: Log Alaric [9684]: arrived (Hall) from 9685
+Sat Nov  7 15:43:02 2026 :: Log Alaric [9684]: east
+Sat Nov  7 15:43:02 2026 :: Log Alaric [9679]: arrived (Hall) from 9684
+Sat Nov  7 15:43:02 2026 :: Log Alaric [9679]: north
+Sat Nov  7 15:43:02 2026 :: Log Alaric [9680]: arrived (Art Exhibit) from 9679
+Sat Nov  7 15:43:41 2026 :: Log Alaric [9680]: south
+Sat Nov  7 15:43:41 2026 :: Log Alaric [9679]: arrived (Hall) from 9680
+Sat Nov  7 15:43:41 2026 :: Log Alaric [9679]: east
+Sat Nov  7 15:43:41 2026 :: Log Alaric [9674]: arrived (Hall) from 9679
+Sat Nov  7 15:43:41 2026 :: Log Alaric [9674]: south
+Sat Nov  7 15:43:41 2026 :: Log Alaric [9673]: arrived (Hall) from 9674
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9673]: east
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9705]: arrived (Hall) from 9673
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9705]: east
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9650]: arrived (The Grand Entrance) from 9705
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9650]: east
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9658]: arrived (The Palace Gate) from 9650
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9658]: east
+Sat Nov  7 15:43:42 2026 :: Log Alaric [9520]: arrived (Sultan's Walk) from 9658
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9520]: south
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9519]: arrived (Sultan's Walk) from 9520
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9519]: south
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9518]: arrived (Sultan's Walk) from 9519
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9518]: south
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9515]: arrived (The Northern Market Square) from 9518
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9515]: east
+Sat Nov  7 15:43:43 2026 :: Log Alaric [9516]: arrived (The Northeastern Market Square) from 9515
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9516]: south
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9516
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9517]: east
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9517
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9527]: east
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9527
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9528]: east
+Sat Nov  7 15:43:44 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
+Sat Nov  7 15:43:45 2026 :: Log Alaric [9529]: east
+Sat Nov  7 15:43:45 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
+Sat Nov  7 15:43:45 2026 :: Log Alaric [9530]: east
+Sat Nov  7 15:43:45 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sat Nov  7 15:43:45 2026 :: Log Alaric [9531]: north
+Sat Nov  7 15:43:45 2026 :: Log Alaric [9625]: arrived (Entrance to the Mage's Tower) from 9531
+Sat Nov  7 15:43:47 2026 :: Log Alaric [9625]: fi gu
+Sat Nov  7 15:43:49 2026 :: Log Alaric [9625]: killed the guildguard
+Sat Nov  7 15:43:49 2026 :: Log Alaric [9625]: coin +2 silver
+Sat Nov  7 15:43:49 2026 :: Log Alaric [9625]: coin +3 copper
+Sat Nov  7 15:43:49 2026 :: Log Alaric [9625]: coin +1 gold
+Sat Nov  7 15:43:55 2026 :: Log Alaric [9625]: recal
+Sat Nov  7 15:43:55 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 9625
+Sat Nov  7 15:43:55 2026 :: Log Alaric [2497]: aq co
+Sat Nov  7 15:43:55 2026 :: Log Alaric [2497]: copper +138716226
+Sat Nov  7 15:43:55 2026 :: Log Alaric [2497]: quest complete: 138p 71g 62s 26c, 27 quest points (streak bonus 30%)
+Sat Nov  7 15:43:55 2026 :: Snapshot of Alaric taken before quest: Alaric.20261107_154355.quest (PRESTORE Alaric to see it).
+Sat Nov  7 15:43:55 2026 :: Log Alaric [2497]: aq ga no
+Sat Nov  7 15:43:57 2026 :: Log Alaric [2497]: sc
+Sat Nov  7 15:44:06 2026 :: Log Alaric [2497]: where herm
+Sat Nov  7 15:44:07 2026 :: Log Alaric [2497]: score
+Sat Nov  7 15:44:09 2026 :: Log Alaric [2497]: changes
+Sat Nov  7 15:44:50 2026 :: Log Alaric [2497]: stash
