@@ -273013,3 +273013,127 @@ Sat Nov  7 16:55:32 2026 :: Log Trentlin [15013]: s
 Sat Nov  7 16:55:32 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15013
 Sat Nov  7 16:55:32 2026 :: Log Trentlin [15012]: s
 Sat Nov  7 16:55:32 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15012
+Sat Nov  7 16:55:34 2026 :: Log Trentlin [15011]: s
+Sat Nov  7 16:55:34 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15011
+Sat Nov  7 16:55:34 2026 :: Log Trentlin [15010]: s
+Sat Nov  7 16:55:34 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15010
+Sat Nov  7 16:55:35 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:55:35 2026 :: Log Trentlin [15005]: arrived (Campus Crescent) from 15004
+Sat Nov  7 16:55:35 2026 :: Log Trentlin [15005]: flee
+Sat Nov  7 16:55:38 2026 :: Log Trentlin [15005]: sca
+Sat Nov  7 16:55:38 2026 :: Log Trentlin [15005]: flee
+Sat Nov  7 16:55:38 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15005
+Sat Nov  7 16:55:39 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:55:40 2026 :: Log Trentlin [15004]: w
+Sat Nov  7 16:55:41 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:55:41 2026 :: Log Trentlin [15008]: arrived (University Avenue) from 15004
+Sat Nov  7 16:55:42 2026 :: Log Trentlin [15008]: flee
+Sat Nov  7 16:55:42 2026 :: Log Trentlin [15008]: w
+Sat Nov  7 16:55:42 2026 :: Log Trentlin [15028]: arrived (Mary Rotte Cafeteria Entrance) from 15008
+Sat Nov  7 16:55:46 2026 :: Log Trentlin [15028]: help corpse
+Sat Nov  7 16:55:57 2026 :: Log Trentlin [15028]: l
+Sat Nov  7 16:56:31 2026 :: Log Trentlin [15028]: sca
+Sat Nov  7 16:56:34 2026 :: Log Trentlin [15028]: ex
+Sat Nov  7 16:56:36 2026 :: Log Trentlin [15028]: e
+Sat Nov  7 16:56:36 2026 :: Log Trentlin [15008]: arrived (University Avenue) from 15028
+Sat Nov  7 16:56:36 2026 :: Log Trentlin [15008]: n
+Sat Nov  7 16:56:36 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15008
+Sat Nov  7 16:56:38 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:56:38 2026 :: Log Trentlin [15005]: arrived (Campus Crescent) from 15004
+Sat Nov  7 16:56:39 2026 :: Log Trentlin [15005]: n
+Sat Nov  7 16:56:40 2026 :: Log Trentlin [15005]: flee
+Sat Nov  7 16:56:40 2026 :: Log Trentlin [15034]: arrived (Corry-Mack Hall) from 15005
+Sat Nov  7 16:56:41 2026 :: Log Trentlin [15034]: s
+Sat Nov  7 16:56:41 2026 :: Log Trentlin [15005]: arrived (Campus Crescent) from 15034
+Sat Nov  7 16:56:41 2026 :: Log Trentlin [15005]: s
+Sat Nov  7 16:56:41 2026 :: Log Trentlin [15031]: arrived (The Student Health Services Entrance) from 15005
+Sat Nov  7 16:56:41 2026 :: Log Trentlin [15031]: s
+Sat Nov  7 16:56:41 2026 :: Log Trentlin [15073]: arrived (De-Tox Unit) from 15031
+Sat Nov  7 16:56:44 2026 :: Log Trentlin [15073]: n
+Sat Nov  7 16:56:44 2026 :: Log Trentlin [15031]: arrived (The Student Health Services Entrance) from 15073
+Sat Nov  7 16:56:44 2026 :: Log Trentlin [15031]: sca
+Sat Nov  7 16:56:51 2026 :: Log Trentlin [15031]: n
+Sat Nov  7 16:56:51 2026 :: Log Trentlin [15005]: arrived (Campus Crescent) from 15031
+Sat Nov  7 16:56:51 2026 :: Log Trentlin [15005]: s
+Sat Nov  7 16:56:51 2026 :: Log Trentlin [15031]: arrived (The Student Health Services Entrance) from 15005
+Sat Nov  7 16:57:05 2026 :: Log Trentlin [15031]: north
+Sat Nov  7 16:57:05 2026 :: Log Trentlin [15005]: arrived (Campus Crescent) from 15031
+Sat Nov  7 16:57:06 2026 :: Log Trentlin [15005]: west
+Sat Nov  7 16:57:06 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15005
+Sat Nov  7 16:57:09 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:57:09 2026 :: Log Trentlin [15008]: arrived (University Avenue) from 15004
+Sat Nov  7 16:57:12 2026 :: Log Trentlin [15008]: flee
+Sat Nov  7 16:57:12 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15008
+Sat Nov  7 16:57:12 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:57:12 2026 :: Log Trentlin [15004]: s
+Sat Nov  7 16:57:15 2026 :: Log Trentlin [15004]: get all coirpse
+Sat Nov  7 16:57:15 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:57:15 2026 :: Log Trentlin [15008]: arrived (University Avenue) from 15004
+Sat Nov  7 16:57:16 2026 :: Log Trentlin [15008]: flee
+Sat Nov  7 16:57:16 2026 :: Log Trentlin [15028]: arrived (Mary Rotte Cafeteria Entrance) from 15008
+Sat Nov  7 16:57:16 2026 :: Log Trentlin [15028]: n
+Sat Nov  7 16:57:20 2026 :: Log Trentlin [15028]: sca
+Sat Nov  7 16:57:21 2026 :: Log Trentlin [15028]: ex
+Sat Nov  7 16:57:29 2026 :: Log Trentlin [15028]: e
+Sat Nov  7 16:57:29 2026 :: Log Trentlin [15008]: arrived (University Avenue) from 15028
+Sat Nov  7 16:57:29 2026 :: Log Trentlin [15008]: s
+Sat Nov  7 16:57:29 2026 :: Log Trentlin [15009]: arrived (University Avenue) from 15008
+Sat Nov  7 16:57:29 2026 :: Log Trentlin [15009]: s
+Sat Nov  7 16:57:29 2026 :: Treasure goblin: vanished from room 29002 (Inside Korzath's Private Fortress, korzath1.are) (too long in one area).
+Sat Nov  7 16:57:32 2026 :: Log Trentlin [15009]: get all cor
+Sat Nov  7 16:57:33 2026 :: Log Trentlin [15009]: wear all
+Sat Nov  7 16:57:34 2026 :: Log Trentlin [15009]: flee
+Sat Nov  7 16:57:34 2026 :: Log Trentlin [15008]: arrived (University Avenue) from 15009
+Sat Nov  7 16:57:35 2026 :: Log Trentlin [15008]: flee
+Sat Nov  7 16:57:35 2026 :: Log Trentlin [15008]: flee
+Sat Nov  7 16:57:35 2026 :: Log Trentlin [15008]: flee
+Sat Nov  7 16:57:35 2026 :: Log Trentlin [15008]: w
+Sat Nov  7 16:57:36 2026 :: Log Trentlin [15008]: w
+Sat Nov  7 16:57:36 2026 :: Log Trentlin [15008]: w
+Sat Nov  7 16:57:36 2026 :: Log Trentlin [15008]: w
+Sat Nov  7 16:57:37 2026 :: Log Trentlin [15008]: flee
+Sat Nov  7 16:57:37 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15008
+Sat Nov  7 16:57:37 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:57:37 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:57:37 2026 :: Log Trentlin [15004]: w
+Sat Nov  7 16:57:38 2026 :: Log Trentlin [15004]: w
+Sat Nov  7 16:57:38 2026 :: Log Trentlin [15004]: w
+Sat Nov  7 16:57:38 2026 :: Log Trentlin [15004]: w
+Sat Nov  7 16:57:39 2026 :: Log Trentlin [15004]: flee
+Sat Nov  7 16:57:39 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15004
+Sat Nov  7 16:57:39 2026 :: Log Trentlin [15003]: flee
+Sat Nov  7 16:57:39 2026 :: Log Trentlin [15003]: flee
+Sat Nov  7 16:57:39 2026 :: Log Trentlin [15003]: flee
+Sat Nov  7 16:57:40 2026 :: Log Trentlin [15003]: s
+Sat Nov  7 16:57:40 2026 :: Log Trentlin [15027]: arrived (Mary Rotte Cafeteria Entrance) from 15003
+Sat Nov  7 16:57:40 2026 :: Log Trentlin [15027]: s
+Sat Nov  7 16:57:40 2026 :: Log Trentlin [15045]: arrived (Dining Hall) from 15027
+Sat Nov  7 16:57:46 2026 :: Log Trentlin [15045]: sca
+Sat Nov  7 16:57:48 2026 :: Log Trentlin [15045]: n
+Sat Nov  7 16:57:48 2026 :: Log Trentlin [15027]: arrived (Mary Rotte Cafeteria Entrance) from 15045
+Sat Nov  7 16:57:48 2026 :: Log Trentlin [15027]: sca
+Sat Nov  7 16:57:49 2026 :: Log Trentlin [15027]: n
+Sat Nov  7 16:57:49 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15027
+Sat Nov  7 16:57:50 2026 :: Log Trentlin [15003]: sca
+Sat Nov  7 16:57:51 2026 :: Log Trentlin [15003]: w
+Sat Nov  7 16:57:51 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15003
+Sat Nov  7 16:57:52 2026 :: Log Trentlin [15002]: w
+Sat Nov  7 16:57:52 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15002
+Sat Nov  7 16:57:53 2026 :: Log Trentlin [15001]: w
+Sat Nov  7 16:57:53 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 15001
+Sat Nov  7 16:57:55 2026 :: Log Trentlin [15000]: enter portal
+Sat Nov  7 16:57:55 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 15000
+Sat Nov  7 16:57:55 2026 :: Log Trentlin [3795]: reca
+Sat Nov  7 16:57:55 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3795
+Sat Nov  7 16:57:57 2026 :: Log Trentlin [4207]: e
+Sat Nov  7 16:57:57 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov  7 16:57:57 2026 :: Log Trentlin [4202]: n
+Sat Nov  7 16:57:57 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sat Nov  7 16:57:58 2026 :: Log Trentlin [4203]: n
+Sat Nov  7 16:57:58 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Nov  7 16:57:58 2026 :: Log Trentlin [4210]: n
+Sat Nov  7 16:57:58 2026 :: Log Trentlin [4210]: sleep
+Sat Nov  7 16:58:00 2026 :: Log Trentlin [4210]: quit
+Sat Nov  7 16:58:00 2026 :: Trentlin has quit.
+Sat Nov  7 16:58:00 2026 :: [QUIT] Player rejoined the real world.
+Sat Nov  7 16:58:09 2026 :: Connection guard: 54.167.223.174 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 54.167.223.174 lifts it.

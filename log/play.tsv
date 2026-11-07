@@ -28271,3 +28271,84 @@
 1794070529	cmd	Trentlin	21	15013	campus.are	standing	77	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
 1794070532	cmd	Trentlin	21	15012	campus.are	standing	77	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
 1794070532	cmd	Trentlin	21	15011	campus.are	standing	77	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794070534	cmd	Trentlin	21	15010	campus.are	standing	77	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794070534	cmd	Trentlin	21	15004	campus.are	standing	77	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794070535	cmd	Trentlin	21	15005	campus.are	fighting	57	0	fight	flee		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070535	cmd	Trentlin	21	15005	campus.are	standing	57	0	-	flee		You aren't fighting anyone.	-	-
+1794070538	cmd	Trentlin	21	15005	campus.are	fighting	50	0	fight	scan		Chris                              -to the East. // Security                           -to the East. // Security                           -to the East.	-	+
+1794070538	cmd	Trentlin	21	15004	campus.are	fighting	50	0	fight	flee		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794070539	cmd	Trentlin	21	15004	campus.are	standing	50	0	-	flee		You aren't fighting anyone.	-	-
+1794070540	refused	Trentlin	21	15004	campus.are	fighting	36	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070541	cmd	Trentlin	21	15008	campus.are	fighting	36	0	fight	flee		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.	-	+
+1794070542	cmd	Trentlin	21	15008	campus.are	standing	36	0	-	flee		You aren't fighting anyone.	-	-
+1794070542	cmd	Trentlin	21	15028	campus.are	standing	36	0	-	west		Mary Rotte Cafeteria Entrance //   As you walk through the entrance of the cafeteria, your appetite // suddenly disappears.  In this entrance, you'll normally find long	-	+
+1794070546	cmd	Trentlin	21	15028	campus.are	standing	36	0	-	help	corpse	DYING DEATH CORPSE CORPSES // When your character dies, you are reincarnated back at the Altar of the Temple // of Devota.  Your corpse is left behind in the room where you were killed,	-	+
+1794070557	cmd	Trentlin	21	15028	campus.are	standing	100	0	-	look		Mary Rotte Cafeteria Entrance //   As you walk through the entrance of the cafeteria, your appetite // suddenly disappears.  In this entrance, you'll normally find long	-	+
+1794070591	cmd	Trentlin	21	15028	campus.are	standing	100	0	-	scan		the froshie                        -to the East. // the froshie                        -to the East. // the froshie                        -to the East.	-	+
+1794070594	cmd	Trentlin	21	15028	campus.are	standing	100	0	-	exits		Obvious exits: // East  - University Avenue // South - Closed door	-	+
+1794070596	cmd	Trentlin	21	15008	campus.are	standing	100	0	-	east		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.	-	+
+1794070596	cmd	Trentlin	21	15004	campus.are	standing	100	0	-	north		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794070598	cmd	Trentlin	21	15005	campus.are	fighting	86	0	fight	flee		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070599	refused	Trentlin	21	15005	campus.are	fighting	75	0	fight	north		No way!  You are still fighting!	refusal:position	-
+1794070600	cmd	Trentlin	21	15034	campus.are	fighting	61	0	fight	flee		Corry-Mack Hall //   The Arts faculty building was obviously the brain child of a maze // enthusiast.  Its twisting halls have absolutely boggled the greatest	-	+
+1794070601	cmd	Trentlin	21	15005	campus.are	standing	61	0	-	south		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070601	cmd	Trentlin	21	15031	campus.are	standing	61	0	-	south		The Student Health Services Entrance //   This nice and inviting building does not seem quite so nice and inviting // anymore now that you can smell the Formeldehyde.  But life has brightened	-	+
+1794070601	cmd	Trentlin	21	15073	campus.are	standing	61	0	-	south		De-Tox Unit //   This room seems to be the place where people get "detoxified".  Although // it smells pretty bad, it wouldn't be a bad idea to remember where this is	-	+
+1794070604	cmd	Trentlin	21	15031	campus.are	standing	61	0	-	north		The Student Health Services Entrance //   This nice and inviting building does not seem quite so nice and inviting // anymore now that you can smell the Formeldehyde.  But life has brightened	-	+
+1794070604	cmd	Trentlin	21	15031	campus.are	standing	61	0	-	scan		Security                           -to the North. // the froshie                        -to the North. // the student                        -to the North.	-	+
+1794070611	cmd	Trentlin	21	15005	campus.are	standing	61	0	-	north		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070611	cmd	Trentlin	21	15031	campus.are	standing	61	0	-	south		The Student Health Services Entrance //   This nice and inviting building does not seem quite so nice and inviting // anymore now that you can smell the Formeldehyde.  But life has brightened	-	+
+1794070625	cmd	Trentlin	21	15005	campus.are	standing	61	0	-	north		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070626	cmd	Trentlin	21	15004	campus.are	standing	61	0	-	west		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794070629	cmd	Trentlin	21	15008	campus.are	fighting	55	0	fight	flee		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.	-	+
+1794070632	cmd	Trentlin	21	15004	campus.are	fighting	52	0	fight	flee		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794070632	cmd	Trentlin	21	15004	campus.are	standing	52	0	-	flee		You aren't fighting anyone.	-	-
+1794070632	refused	Trentlin	21	15004	campus.are	fighting	41	0	fight	south		No way!  You are still fighting!	refusal:position	-
+1794070635	cmd	Trentlin	21	15004	campus.are	fighting	41	0	fight	get	all coirpse	I see no coirpse here.	-	-
+1794070635	cmd	Trentlin	21	15008	campus.are	fighting	41	0	fight	flee		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.	-	+
+1794070636	cmd	Trentlin	21	15028	campus.are	fighting	41	0	fight	flee		Mary Rotte Cafeteria Entrance //   As you walk through the entrance of the cafeteria, your appetite // suddenly disappears.  In this entrance, you'll normally find long	-	+
+1794070636	cmd	Trentlin	21	15028	campus.are	standing	41	0	-	north		Alas, you cannot go that way.	-	-
+1794070640	cmd	Trentlin	21	15028	campus.are	standing	41	0	-	scan		the froshie                        -to the East. // the froshie                        -to the East. // the froshie                        -to the East.	-	+
+1794070641	cmd	Trentlin	21	15028	campus.are	standing	41	0	-	exits		Obvious exits: // East  - University Avenue // South - Closed door	-	+
+1794070649	cmd	Trentlin	21	15008	campus.are	standing	41	0	-	east		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.	-	+
+1794070649	cmd	Trentlin	21	15009	campus.are	standing	41	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  But it ends here.  It is // normally filled with students.  There is a dormitory to west.	-	+
+1794070649	cmd	Trentlin	21	15009	campus.are	standing	41	0	-	south		Alas, you cannot go that way.	-	-
+1794070652	cmd	Trentlin	21	15009	campus.are	fighting	34	3	fight	get	all cor	You get a wooden sword from corpse of Trentlin. // You get the first Triforce shard from corpse of Trentlin. // You get the second Triforce shard from corpse of Trentlin.	-	+
+1794070653	cmd	Trentlin	21	15009	campus.are	fighting	10	0	fight	wear	all	You light a Blue Candle and hold it. // You wear the Heart Guard of the Moon around your neck. // You wear a pair of Dodongo stompers on your feet.	-	+
+1794070654	cmd	Trentlin	21	15008	campus.are	fighting	8	0	fight	flee		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.	-	+
+1794070655	cmd	Trentlin	21	15008	campus.are	standing	8	0	-	flee		You aren't fighting anyone.	-	-
+1794070655	cmd	Trentlin	21	15008	campus.are	standing	8	0	-	flee		You aren't fighting anyone.	-	-
+1794070655	cmd	Trentlin	21	15008	campus.are	standing	8	0	-	flee		You aren't fighting anyone.	-	-
+1794070655	refused	Trentlin	21	15008	campus.are	fighting	8	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070656	refused	Trentlin	21	15008	campus.are	fighting	8	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070656	refused	Trentlin	21	15008	campus.are	fighting	8	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070656	refused	Trentlin	21	15008	campus.are	fighting	8	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070657	cmd	Trentlin	21	15004	campus.are	fighting	8	0	fight	flee		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794070657	cmd	Trentlin	21	15004	campus.are	standing	8	0	-	flee		You aren't fighting anyone.	-	-
+1794070657	cmd	Trentlin	21	15004	campus.are	standing	8	0	-	flee		You aren't fighting anyone.	-	-
+1794070657	refused	Trentlin	21	15004	campus.are	fighting	4	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070658	refused	Trentlin	21	15004	campus.are	fighting	4	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070658	refused	Trentlin	21	15004	campus.are	fighting	4	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070658	refused	Trentlin	21	15004	campus.are	fighting	4	0	fight	west		No way!  You are still fighting!	refusal:position	-
+1794070659	cmd	Trentlin	21	15003	campus.are	fighting	4	0	fight	flee		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070659	cmd	Trentlin	21	15003	campus.are	standing	4	0	-	flee		You aren't fighting anyone.	-	-
+1794070659	cmd	Trentlin	21	15003	campus.are	standing	4	0	-	flee		You aren't fighting anyone.	-	-
+1794070659	cmd	Trentlin	21	15003	campus.are	standing	4	0	-	flee		You aren't fighting anyone.	-	-
+1794070660	cmd	Trentlin	21	15027	campus.are	standing	4	0	-	south		Mary Rotte Cafeteria Entrance //   As you walk through the entrance of the cafeteria, your appetite // suddenly disappears.  In this entrance, you'll normally find long	-	+
+1794070660	cmd	Trentlin	21	15045	campus.are	standing	4	0	-	south		Dining Hall //   The cafeteria dining hall is filled with poor students that are forced // to eat this food to subsist.  You feel pity upon them as you watch them	-	+
+1794070666	cmd	Trentlin	21	15045	campus.are	standing	4	0	-	scan		a caf employee                     -to the North. // the froshie                        -to the East. // the froshie                        -to the East.	-	+
+1794070668	cmd	Trentlin	21	15027	campus.are	standing	4	0	-	north		Mary Rotte Cafeteria Entrance //   As you walk through the entrance of the cafeteria, your appetite // suddenly disappears.  In this entrance, you'll normally find long	-	+
+1794070668	cmd	Trentlin	21	15027	campus.are	standing	4	0	-	scan		the froshie                        -to the North. // the froshie                        -to the North. // the froshie                        -to the South.	-	+
+1794070669	cmd	Trentlin	21	15003	campus.are	standing	4	0	-	north		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070670	cmd	Trentlin	21	15003	campus.are	standing	4	0	-	scan		the student                        -to the East. // Security                           -to the East. // the student                        -to the East.	-	+
+1794070671	cmd	Trentlin	21	15002	campus.are	standing	4	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070672	cmd	Trentlin	21	15001	campus.are	standing	4	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794070673	cmd	Trentlin	21	15000	campus.are	standing	4	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign	-	+
+1794070675	cmd	Trentlin	21	3795	school.are	standing	4	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time	-	+
+1794070675	cmd	Trentlin	21	4207	dresden.are	standing	4	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794070677	cmd	Trentlin	21	4202	dresden.are	standing	4	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794070677	cmd	Trentlin	21	4203	dresden.are	standing	4	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794070678	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794070678	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	north		Alas, you cannot go that way.	-	-
+1794070678	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	sleep		You go to sleep.	-	-
+1794070680	session	Trentlin	21	4210	dresden.are	quit	3925s	+1 levels	+2335 exp	-39249908 copper	38 kills	1 deaths	1 quests	1190 commands	31 refused	coin: loot 2p 38g 80s 12c, quests 12p 86g 20s 80c, spent 54p 50g	spent on: heal 53p 90g, buy 60g	exp: kills +2552, skilluse +20, flee -220, death -17
