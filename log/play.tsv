@@ -25535,3 +25535,4 @@
 1794021503	cmd	Trentlin	18	4208	dresden.are	standing	100	11	-	stash	put book	You put the Magic Book away for safe keeping.	-	-
 1794021504	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
 1794021506	session	Trentlin	18	4208	dresden.are	quit	1026s	+1 levels	+1166 exp	-19622463 copper	18 kills	0 deaths	1 quests	726 commands	0 refused	coin: loot 2p 8g 37s 85c, quests 1p 21g 47s 52c, spent 22p 92g 10s	spent on: heal 22p 90g, buy 2g 10s	exp: kills +1187, skilluse +4, recall -25
+1794026583	stall	-	0	0	-	558ms	slowest disaster_update 555ms	command - 0ms	0 players	0 more since

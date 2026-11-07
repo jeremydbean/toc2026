@@ -268263,3 +268263,19 @@ Sat Nov  7 04:11:08 2026 :: Treasure goblin: vanished from room 28043 (A Dead En
 Sat Nov  7 04:21:12 2026 :: Treasure goblin: vanished from room 7641 (The West Wall of the Tavern, ultima.are) (too long in one area).
 Sat Nov  7 04:30:37 2026 :: Connection guard: last hour 16 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov  7 04:31:17 2026 :: Treasure goblin: vanished from room 13513 (Office of Complaints, hell.are) (too long in one area).
+Sat Nov  7 04:41:22 2026 :: Treasure goblin: vanished from room 5713 (Old Main Street, mid_ruin.are) (too long in one area).
+Sat Nov  7 04:42:49 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Nov  7 04:42:53 2026 :: Log WebAdmin: fsave
+Sat Nov  7 04:42:59 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Nov  7 04:43:02 2026 :: Received signal 15; saving players and shutting down.
+Sat Nov  7 04:43:02 2026 :: Normal termination of game.
+Sat Nov  7 04:43:03 2026 ::  INIT OK 
+Sat Nov  7 04:43:03 2026 :: walkto_load: 157 destinations.
+Sat Nov  7 04:43:03 2026 :: changes_load: 226 entries.
+Sat Nov  7 04:43:03 2026 :: Recovery ledger: 309 records (0 from before the check), 0 requests, 7 players.
+Sat Nov  7 04:43:03 2026 :: ROM is ready to rock on port 9000.
+Sat Nov  7 04:43:03 2026 :: Treasure goblin: appeared.
+Sat Nov  7 04:43:03 2026 :: Automated backup complete.
+Sat Nov  7 04:43:03 2026 :: Daily backup complete.
+Sat Nov  7 04:45:54 2026 :: Sock.sinaddr:  199.165.159.193
+Sat Nov  7 04:45:54 2026 :: EOF encountered on read.
