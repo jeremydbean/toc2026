@@ -108,7 +108,7 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	    return;
 	}
 
-	if (strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ))
+	if ( !password_matches( argument, ch->pcdata->pwd ) )
 	{
 	    send_to_char("Wrong password. Delete cancelled.\n\r",ch);
 	    ch->pcdata->confirm_delete = FALSE;

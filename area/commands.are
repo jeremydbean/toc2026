@@ -891,8 +891,8 @@ There are no accounts here.  Each character is its own login: the name you
 typed at the prompt and that character's password.  Make as many characters
 as you like, and log into each by name.
 
-PASSWORD changes the password of the character you are playing.  Only the
-first eight letters count.  There is no way to recover a forgotten one by
+PASSWORD changes the password of the character you are playing.  Every
+letter of a new password counts.  There is no way to recover a forgotten one by
 mail: ask an immortal, who can reset it.  DELETE removes the character you
 are playing, for good.
 
@@ -4096,6 +4096,12 @@ PASSWORD changes your character's password.  The first argument must be
 your old password.  The second argument is your new password.
 
 The PASSWORD command is protected against being snooped or logged.
+
+Passwords are kept with SHA-512 encryption.  A password chosen before
+November 2026 moved to it at your first login since, without changing
+anything you type: only its first eight letters still count, as they always
+did.  A new password -- choose one with PASSWORD -- counts every letter, so
+a longer one is stronger.
 
 Wrong passwords at login are counted for your address.  Each one says how
 many more are allowed: five within fifteen minutes lock your address out

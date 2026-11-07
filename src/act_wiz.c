@@ -13795,8 +13795,8 @@ void do_summonevent( CHAR_DATA *ch, char *argument )
  *   - Caller must outrank the target (by trust level from the save file).
  *   - New password must be >=5 chars and must not contain '~' (tilde is
  *     the area-file string terminator and would corrupt the save file).
- *   - Canonical crypt(3) hash is stored, identical to what comm.c uses
- *     during normal password creation.
+ *   - A SHA-512 crypt hash is stored (password_hash), as character
+ *     creation and PASSWORD store.
  *   - The reset is logged via wizinfo so all online immortals see it.
  */
 void do_resetpwd( CHAR_DATA *ch, char *argument )
@@ -13809,7 +13809,7 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
     char linebuf [4096];
     FILE *fpin;
     FILE *fpout;
-    const char *pwdhash;
+    char pwdhash[PASSWORD_HASH_MAX];
     const char *p;
     int  target_trust;
     bool protected_rank = false;
@@ -13941,26 +13941,12 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Hash the new password with the player's name as salt (same as comm.c) */
-    pwdhash = crypt( arg_pwd, capitalize( arg_name ) );
-
-    /* Safety check: crypt() failure returns NULL on some platforms */
-    if ( pwdhash == NULL )
+    /* SHA-512, as every new password is (password.c): never a tilde. */
+    if ( !password_hash( arg_pwd, capitalize( arg_name ), pwdhash, sizeof(pwdhash) ) )
     {
         fclose( fpin );
         send_to_char( "Password hashing failed -- password not changed.\n\r", ch );
         return;
-    }
-
-    /* Double-check the hash contains no tilde */
-    for ( p = pwdhash; *p != '\0'; p++ )
-    {
-        if ( *p == '~' )
-        {
-            fclose( fpin );
-            send_to_char( "Hashed password contains '~' -- choose a different password.\n\r", ch );
-            return;
-        }
     }
 
     /* Write to a temp file then rename (atomic-ish, avoids file corruption) */

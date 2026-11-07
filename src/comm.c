@@ -353,7 +353,6 @@ bool    check_playing           ( DESCRIPTOR_DATA *d, char *name );
 bool    write_to_descriptor     ( DESCRIPTOR_DATA *d, const char *txt, int length );
 static bool check_ban           ( DESCRIPTOR_DATA *d, int type );
 static int  weapon_lookup       ( const char *name );
-char * crypt                   ( const char *key, const char *salt );
 void    log_auth                ( DESCRIPTOR_DATA *d );
 void    process_web_admin_queue ( void );
 void    run_web_command         ( char *argument );
@@ -566,6 +565,12 @@ int main( int argc, char **argv )
     playlog_boot( );        /* the crash recorder, once the world is up */
     conn_guard_boot( );     /* players' addresses, read before the loop */
     login_lock_boot( );     /* lockouts a reboot must not forget */
+    /* Passwords: our SHA-512 crypt against its specification's vectors.
+       If it fails, nothing is written in SHA-512 and DES goes on. */
+    if ( password_sha512_ok( ) )
+        log_string( "Passwords: SHA-512 crypt self-test passed." );
+    else
+        bug( "Passwords: SHA-512 crypt self-test FAILED; passwords stay DES.", 0 );
     /* The recovery ledger: restore receipts and player identities. */
     recovery_boot( );
     /* Player corpses a restart would have lost, made again (corpses.c). */
@@ -1308,6 +1313,54 @@ void game_loop_unix( int control )
  */
 
 /*
+ * What a player is told the first time they log in after their password
+ * moved to SHA-512 (owner, 2026-11-07). Nothing they type changes.
+ */
+static void password_upgrade_notice( DESCRIPTOR_DATA *d )
+{
+    if ( d == NULL )
+        return;
+    write_to_buffer( d,
+        "\n\rYour password is now kept with stronger encryption (SHA-512).\n\r"
+        "Nothing changes for you: log in exactly as you always have.\n\r"
+        "For the full benefit, choose a new one with PASSWORD <old> <new> --\n\r"
+        "a new password counts every character, not only the first eight.\n\r\n\r", 0 );
+}
+
+/*
+ * The SHA-512 hash CON_GET_OLD_PASSWORD made for an old DES password goes
+ * on the character that has just come in -- only if it still holds the
+ * hash the password was accepted against, so a password changed since is
+ * never undone. A reconnect is in the game already: it is told and saved
+ * now. A fresh login is told and saved once it stands in its room
+ * (CON_READ_MOTD), since a character not yet placed is not saved.
+ */
+static void login_password_upgrade( DESCRIPTOR_DATA *d, CHAR_DATA *who )
+{
+    if ( d->pwd_upgrade_to[0] != '\0' && d->pwd_upgrade_from[0] != '\0'
+      && who != NULL && !IS_NPC(who) && who->pcdata != NULL
+      && who->pcdata->pwd != NULL
+      && strcmp( who->pcdata->pwd, d->pwd_upgrade_from ) == 0
+      && password_is_legacy( who->pcdata->pwd ) )
+    {
+        free_string( who->pcdata->pwd );
+        who->pcdata->pwd = str_dup( d->pwd_upgrade_to );
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+                  "Passwords: %s's password moved to SHA-512.", who->name );
+        log_string( log_buf );
+        if ( d->connected == CON_PLAYING && who->in_room != NULL )
+        {
+            password_upgrade_notice( d );
+            save_char_obj( who );
+        }
+        else
+            who->pcdata->pwd_upgraded = true;
+    }
+    memset( d->pwd_upgrade_from, 0, sizeof(d->pwd_upgrade_from) );
+    memset( d->pwd_upgrade_to, 0, sizeof(d->pwd_upgrade_to) );
+}
+
+/*
  * A login that has finished: every check passed and the character is in
  * (or reconnected). Called only then (review of f1388da0, 2026-11-06): it
  * ran straight after the password matched the copy loaded at the name
@@ -1320,9 +1373,12 @@ static void login_note_success( DESCRIPTOR_DATA *d )
 {
     CHAR_DATA *who;
 
-    if ( d == NULL || d->ip == 0 )
+    if ( d == NULL )
         return;
     who = d->original != NULL ? d->original : d->character;
+    login_password_upgrade( d, who );
+    if ( d->ip == 0 )
+        return;
 
     /* A player's address: never limited by the connection guard while
        they keep logging in from it. */
@@ -2955,7 +3011,7 @@ static bool login_reload_character( DESCRIPTOR_DATA *d, const char *password )
         return FALSE;
     }
 
-    if ( strcmp( crypt( password, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+    if ( !password_matches( password, ch->pcdata->pwd ) )
     {
         login_wrong_password( d, ch );   /* the file's own copy: the authority */
         close_socket( d );
@@ -3009,7 +3065,7 @@ static bool login_password_current( const char *name, const char *password )
             continue;
         if ( live->desc != NULL && live->desc->connected != CON_PLAYING )
             continue;           /* another login's copy, not the character */
-        return !strcmp( crypt( password, live->pcdata->pwd ), live->pcdata->pwd );
+        return password_matches( password, live->pcdata->pwd );
     }
     return TRUE;
 }
@@ -3023,8 +3079,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *ch;
-    char *pwdnew;
-    char *p;
+    char pwdnew[PASSWORD_HASH_MAX];
     int iClass,race,i,weapon;
     bool fOld;
 
@@ -3240,7 +3295,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	write_to_buffer( d, "\n\r", 2 );
 #endif
 
-	if ( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+	if ( !password_matches( argument, ch->pcdata->pwd ) )
 	{
 	    login_wrong_password( d, ch );
 	    close_socket( d );
@@ -3257,6 +3312,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    close_socket( d );
 	    return;
 	}
+
+	/* An old DES password moves to SHA-512 now, while it is in hand:
+	   the new hash accepts exactly what the old one did. Applied only
+	   once the login is one, and only to a character still holding the
+	   hash it was accepted against (login_password_upgrade). */
+	d->pwd_upgrade_from[0] = '\0';
+	d->pwd_upgrade_to[0] = '\0';
+	if ( password_is_legacy( ch->pcdata->pwd )
+	  && password_upgrade( argument, ch->pcdata->pwd,
+	                       d->pwd_upgrade_to, sizeof(d->pwd_upgrade_to) ) )
+	    toc_strlcpy( d->pwd_upgrade_from, ch->pcdata->pwd, sizeof(d->pwd_upgrade_from) );
 
 	write_to_buffer( d, echo_on_str, 0 );
 
@@ -3384,16 +3450,13 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	}
 
-	pwdnew = crypt( argument, ch->name );
-	for ( p = pwdnew; *p != '\0'; p++ )
+	/* SHA-512, every character counting (password.c). */
+	if ( !password_hash( argument, ch->name, pwdnew, sizeof(pwdnew) ) )
 	{
-	    if ( *p == '~' )
-	    {
-		write_to_buffer( d,
-		    "New password not acceptable, try again.\n\rPassword: ",
-		    0 );
-		return;
-	    }
+	    write_to_buffer( d,
+		"New password not acceptable, try again.\n\rPassword: ",
+		0 );
+	    return;
 	}
 
 	free_string( ch->pcdata->pwd );
@@ -3407,7 +3470,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	write_to_buffer( d, "\n\r", 2 );
 #endif
 
-	if ( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+	if ( !password_matches( argument, ch->pcdata->pwd ) )
 	{
 	    write_to_buffer( d, "Passwords don't match.\n\rRetype password: ",
 		0 );
@@ -3804,6 +3867,14 @@ case CON_DEFAULT_CHOICE:
 	       restore of their file (recovery.c). */
 	    recovery_player_login( ch, is_new_character );
 	    player_fixes_login( ch, is_new_character );
+	    /* Their password moved to SHA-512 at this login: say so, once,
+	       and write it down (login_password_upgrade). */
+	    if ( !IS_NPC(ch) && ch->pcdata->pwd_upgraded )
+	    {
+	        ch->pcdata->pwd_upgraded = false;
+	        password_upgrade_notice( d );
+	        save_char_obj( ch );
+	    }
 	    /* Staff restores a crash or a failed save left pending, settled
 	       by the mark in their file; then restores asked for through git,
 	       once each (recovery.c, restores.c). */

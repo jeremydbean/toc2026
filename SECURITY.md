@@ -45,26 +45,36 @@ credential.
 SSH tunnel, TLS wrapper, or HTTPS/WSS browser path when confidentiality matters,
 and explain which path players are actually using.
 
-### Traditional DES Password Hashes
+### Password Hashes
 
-New passwords and password changes call `crypt(password, character_name)`. On
-the supported Linux runtime, existing player hashes are traditional 13-character
-DES `crypt` hashes.
+Since 2026-11-07 passwords are SHA-512 crypt (`$6$`, 5,000 rounds, a
+16-character random salt), implemented in `src/password.c` and checked at
+boot against the specification's test vectors (`tests/test_password.c` also
+holds it to libxcrypt). Three kinds of hash can be in a player file:
 
-Consequences:
+- **SHA-512** (`$6$<salt>$...`): every password set since -- creation,
+  PASSWORD, RESETPWD. Every byte counts.
+- **Moved DES** (`$6$.8<salt>$...`): an old DES hash, moved at the player's
+  first login since. It is the SHA-512 crypt of the password as DES read it
+  -- the first eight bytes, seven bits each -- so the player types exactly
+  what they always did and nothing else is accepted. Only eight characters
+  still count until the player chooses a new password, and a DES hash of the
+  same password remains in git history, so a moved hash is no stronger
+  against an attacker holding that history; it is much slower to test than
+  DES against one who does not.
+- **DES** (13 characters): a character who has not logged in since. Read by
+  the system's `crypt()` exactly as before, never written again.
 
-- only the first eight password bytes affect the hash
-- the effective salt is only the traditional two-character DES salt derived
-  from the character name
-- the format is intentionally fast and inexpensive to test offline
-- a stolen player file should be treated as credential exposure
-- adding characters after byte eight does not strengthen or meaningfully change
-  the credential
+A stolen player file should still be treated as credential exposure, and the
+repository's history holds every DES hash ever synced. SHA-512 crypt is
+salted and iterated, not memory-hard; a further move to Argon2id would follow
+the same pattern (verify the old, rehash at login, mark the format).
 
-This is compatibility behavior, not modern password storage. A future migration
-should use a versioned password field and a slow, memory-hard password KDF such
-as Argon2id, with transparent upgrade after a successful legacy login. Preserve
-rollback and old-file compatibility during that work.
+If the SHA-512 self-test ever fails, the game logs a BUG, writes DES as it
+always did and moves nothing. A rollback to code from before this change
+still reads every `$6$` hash through libxcrypt, and a moved one for any
+password of eight characters or fewer; a moved password typed longer than
+eight characters would be refused by such code until the rollback is undone.
 
 ### Login Rate Limiting
 
@@ -468,7 +478,8 @@ port 9000 Telnet secure.
 The following improvements would materially strengthen ToC while preserving
 legacy compatibility when implemented carefully:
 
-1. Versioned Argon2id password hashes with successful-login migration from DES.
+1. Argon2id password hashes (SHA-512 crypt with login migration from DES is
+   done, 2026-11-07).
 2. A TLS-capable player endpoint or a documented maintained TLS proxy path.
 3. Authentication and authorization for every dashboard route, especially the
    MUD WebSocket bridge and detailed world data.
@@ -524,12 +535,12 @@ collisions, and deploy only a reviewed corrected revision.
 
 Hosts should publish a short notice equivalent to:
 
-> This game uses an unencrypted Telnet connection and legacy DES password
-> hashes. Use a unique game-only password of eight random characters and never
-> reuse a password from another service. Do not send passwords to staff.
+> This game uses an unencrypted Telnet connection. Use a unique game-only
+> password and never reuse a password from another service. Do not send
+> passwords to staff.
 
-Do not imply that a long password is fully honored while the legacy DES format
-remains active.
+A password chosen before 2026-11-07 still counts only its first eight
+characters until the player changes it.
 
 ## Security Validation Before Release
 

@@ -89,6 +89,7 @@ set(SRC_FILES
     src/netaddr.c
     src/guardstore.c
     src/loginlock.c
+    src/password.c
 )
 
 add_executable(${TARGET_NAME})

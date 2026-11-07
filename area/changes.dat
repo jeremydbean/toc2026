@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261107a 2026-11-07
+Passwords are now kept with stronger encryption (SHA-512). You log in
+exactly as before; your password moves over at your next login, and you
+are told when it has. A new password, chosen with PASSWORD, counts every
+letter, not only the first eight. HELP PASSWORD.
+
 @ 20261106a 2026-11-06
 The game no longer freezes for a moment whenever somebody connects. A
 login prompt left with nothing typed for ten minutes now disconnects.

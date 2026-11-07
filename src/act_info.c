@@ -4378,8 +4378,7 @@ void do_password( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
-    char *pwdnew;
-    char *p;
+    char pwdnew[PASSWORD_HASH_MAX];
 
     if ( IS_NPC(ch) )
 	return;
@@ -4393,7 +4392,7 @@ void do_password( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+    if ( !password_matches( arg1, ch->pcdata->pwd ) )
     {
 	WAIT_STATE( ch, 40 );
 	send_to_char( "Wrong password.  Wait 10 seconds.\n\r", ch );
@@ -4408,17 +4407,13 @@ void do_password( CHAR_DATA *ch, char *argument )
     }
 
     /*
-     * No tilde allowed because of player file format.
+     * SHA-512, every character counting (password.c); never a tilde,
+     * which would end the string in the player file.
      */
-    pwdnew = crypt( arg2, ch->name );
-    for ( p = pwdnew; *p != '\0'; p++ )
+    if ( !password_hash( arg2, ch->name, pwdnew, sizeof(pwdnew) ) )
     {
-	if ( *p == '~' )
-	{
-	    send_to_char(
-		"New password not acceptable, try again.\n\r", ch );
-	    return;
-	}
+	send_to_char( "New password not acceptable, try again.\n\r", ch );
+	return;
     }
 
     free_string( ch->pcdata->pwd );
@@ -5373,14 +5368,14 @@ void do_pkill( CHAR_DATA *ch, char *argument)
         return;
     }
 
-    if ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+    if ( !password_matches( arg1, ch->pcdata->pwd ) )
     {
         WAIT_STATE( ch, 40 );
         send_to_char( "Wrong password.  Wait 10 seconds.\n\r", ch );
         return;
     }
 
-    if (!strcmp( crypt(arg1, ch->pcdata->pwd),ch->pcdata->pwd) )
+    if ( password_matches( arg1, ch->pcdata->pwd ) )
     {
             send_to_char("You are now a PKILLER!\n\r",ch);
             snprintf(buf, sizeof(buf),"%s is now a Pkiller!",ch->name);
@@ -5470,7 +5465,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
      send_to_char("Please make sure you have read the helps about remorting\n\r",ch);
      return;
    }
-   if ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) ) {
+   if ( !password_matches( arg1, ch->pcdata->pwd ) ) {
      WAIT_STATE( ch, 40 );
      send_to_char( "Wrong password.  Wait 10 seconds.\n\r", ch );
      return;

@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Passwords are SHA-512** (2026-11-07, `src/password.c`). New passwords
+  (creation, PASSWORD, RESETPWD) are SHA-512 crypt, every character
+  counting. An old DES hash moves at the player's next login to the
+  SHA-512 crypt of the password as DES read it (first eight characters,
+  salt marked `.8`), so exactly what DES accepted is still accepted; the
+  player is told once, the move is logged. SHA-512 crypt is implemented in
+  the tree (self-tested against the specification's vectors at boot, held
+  to libxcrypt by `tests/test_password.c`), so a hash the game wrote reads
+  on any host; if the self-test fails the game stays on DES.
+  `tests/test_password.py`.
 - **Wrong passwords warn, and lockouts grow** (2026-11-06,
   `src/loginlock.c`). Every wrong password says how many more an address
   may make and how long the lockout will be; five in fifteen minutes lock

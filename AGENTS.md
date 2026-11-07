@@ -2107,8 +2107,24 @@ is still WAKE.
 ## Security Facts
 
 - Game transport is plain Telnet.
-- Supported player password files use traditional DES `crypt` hashes.
-- Only the first eight password bytes are effective.
+- **Passwords are SHA-512 crypt** (`src/password.c`, 2026-11-07). Every
+  password check is `password_matches(typed, stored)` and every new hash
+  `password_hash(typed, name, out, size)` -- never `crypt()` directly
+  (`tests/test_password.py` fails on one). A new password counts every
+  byte. An old 13-character DES hash moves at the next login
+  (`password_upgrade`, prepared at CON_GET_OLD_PASSWORD while the typed
+  password is in hand, applied by `login_password_upgrade` from
+  `login_note_success` only to a character still holding that DES hash; a
+  fresh login is told and saved at CON_READ_MOTD, a reconnect at once) to
+  `$6$.8<salt>$...`: SHA-512 of the first eight bytes, seven bits each, so
+  exactly what DES accepted is accepted. Never move or rehash a password
+  without the typed one, and never change what an existing hash accepts.
+  The SHA-512 is our own, self-tested at boot ("Passwords: SHA-512 crypt
+  self-test passed." in toc.log); on failure the game writes DES and moves
+  nothing. A test fixture that plants a DES hash computes it through
+  libcrypt by ctypes (Python 3.13 has no `crypt`), and must quit and wait
+  for the close: a character left link-dead keeps its old password, and
+  the next login is checked against that.
 - Player files and backups must be treated as exposed credentials if stolen.
 - The dashboard should be loopback/private even with a token.
 - Do not provide offensive password-cracking automation from repository data.

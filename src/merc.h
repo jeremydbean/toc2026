@@ -32,6 +32,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "netaddr.h"
+#include "password.h"
 #if !defined(NOCRYPT) && !defined(__APPLE__)
 #include <crypt.h>
 #endif
@@ -748,6 +749,12 @@ struct  descriptor_data
     bool                guard_idle_closed;
     bool                guard_mssp;
     bool                guard_proxied;
+    /* A login's move of an old DES password to SHA-512 (password.h):
+       the hash the password was accepted against and the one replacing
+       it, made while the typed password was in hand and applied only to
+       a character still holding the first (login_password_upgrade). */
+    char                pwd_upgrade_from[PASSWORD_HASH_MAX];
+    char                pwd_upgrade_to[PASSWORD_HASH_MAX];
 };
 
 struct were_form
@@ -2339,6 +2346,7 @@ struct  pc_data
     PC_DATA * next;
     int                 id;
     char * pwd;
+    bool                pwd_upgraded;   /* moved to SHA-512 this login: tell them (memory) */
     char * bamfin;
     char * bamfout;
     char * trans;
