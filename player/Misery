@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1792546411
+LogO 1794087417
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -108,13 +108,14 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown clairvoyance,confuse,ego whip,mindbar~
 ChangesSeen ~
+Fixes ~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1677804
+Plyd 1677839
 ListRemorts ~
 NumRemorts 0
-Note 1790386686
+Note 1792619733
 Scro 22
 Room 17109
 HMV  2318 2318 1035 1035 368 368
@@ -173,14 +174,14 @@ Achv bank-thousand-platinum 1790711500
 Achv carry-ten-platinum 1790711500
 Achv carry-thousand-platinum 1790711500
 Achv benchmark-champion 1790837597
-LastOut  1792546411
+LastOut  1794087417
 Rested 0 0
 Daily 0 0 0 0 0
-SesLogin 1792546190
-SesDur   221
+SesLogin 1794087383
+SesDur   34
 SesExpG  0
 SesLvlG  0
-SesKill  1
+SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -189,9 +190,10 @@ RecallSet  1790711702
 QuestPnts 347
 QuestStrk 3
 Exp  177312
-Act  33960136
+Act  33976520
 AfBy 512
 Comm 24576
+Invi 70
 Mounted 0
 On_Quest 0
 Quest_Pause 0
@@ -223,7 +225,7 @@ Dam   27
 ACs -96 -99 -105 -27
 Attr 20 16 18 18 19
 AMod 11 -3 2 18 2
-Pass Kilrpis9ggekI~
+Pass $6$.8p1Nq8Pjy.VJkh0$J2y7eWvH56QuwSxLoFuPmjyP3SxgTVJYdm2usAn.a6p2ygAO0YFkssP.TPCMqrK.IGGEt1QSQKHZgzo64G.pH0~
 Ariv $n lets an arrow fly to $T.~
 Dprt $n lets an arrow fly to $T.~
 Titl ... the man, the myth, the legend. ~
@@ -459,8 +461,8 @@ Lev  51
 Cost 5000000
 Cond 100
 Repd 0
-Affect -1 51 -1 4 24 0 0
 Affect -1 51 -1 -8 17 0 0
+Affect -1 51 -1 4 24 0 0
 End
 
 #O
@@ -613,7 +615,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -628,7 +630,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -643,7 +645,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -658,7 +660,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -673,7 +675,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -688,7 +690,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -703,7 +705,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -718,7 +720,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -733,7 +735,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -748,7 +750,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -763,7 +765,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -778,7 +780,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 12 77 106 0
+Val  51 12 77 107 0
 Spell 1 'cancellation'
 Spell 2 'heal'
 Spell 3 'restore mana'
@@ -793,7 +795,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -808,7 +810,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -823,7 +825,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -838,7 +840,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -853,7 +855,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -868,7 +870,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -883,7 +885,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -898,7 +900,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -913,7 +915,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -928,7 +930,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -943,7 +945,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -958,7 +960,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -973,7 +975,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -988,7 +990,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -1003,7 +1005,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -1018,7 +1020,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'
@@ -1132,7 +1134,7 @@ Wear -1
 Cost 4000000
 Cond 100
 Repd 0
-Val  51 106 106 106 0
+Val  51 107 107 107 0
 Spell 1 'restore mana'
 Spell 2 'restore mana'
 Spell 3 'restore mana'

@@ -28436,3 +28436,9 @@
 1794084557	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    289 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
 1794084561	session	Alaric	57	2497	dresden.are	quit	108s	+0 levels	+0 exp	+152929140 copper	3 kills	0 deaths	1 quests	70 commands	1 refused	coin: quests 154p 12g 91s 40c, spent 1p 20g	spent on: heal 1p 20g	exp: none
 1794085179	stall	-	0	0	-	604ms	slowest disaster_update 599ms	command - 0ms	0 players	0 more since
+1794087391	cmd	Misery	54	17109	highland.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] [*Fors] Misery... the man, the myth, the legend.  // Players found: 1	-	-
+1794087399	cmd	Misery	54	17109	highland.are	standing	100	0	-	wizinvis	72	Invis level must be between 2 and your level.	-	-
+1794087405	cmd	Misery	54	17109	highland.are	standing	100	0	-	wizinvis	70	You slowly vanish into thin air.	-	-
+1794087411	cmd	Misery	54	17109	highland.are	standing	100	0	-	note		(withheld)	-	-
+1794087416	cmd	Misery	54	17109	highland.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] [*Fors] (WIZI) Misery... the man, the myth, the legend.  // Players found: 1	-	-
+1794087417	session	Misery	54	17109	highland.are	quit	34s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	6 commands	0 refused	coin: none	spent on: none	exp: none
