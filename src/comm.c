@@ -1314,17 +1314,46 @@ void game_loop_unix( int control )
 
 /*
  * What a player is told the first time they log in after their password
- * moved to SHA-512 (owner, 2026-11-07). Nothing they type changes.
+ * moved to SHA-512 (owner, 2026-11-07, in colour: the unread-notes box's
+ * frame). Nothing they type changes. Each row is padded to the box by
+ * what shows, colour tokens taking no room.
  */
-static void password_upgrade_notice( DESCRIPTOR_DATA *d )
+static void password_notice_row( char *out, size_t size, const char *text )
 {
-    if ( d == NULL )
+    int shown = 0;
+    const char *p;
+    char row[MAX_STRING_LENGTH];
+
+    for ( p = text; *p != '\0'; p++ )
+    {
+        if ( *p == '{' && p[1] != '\0' && p[2] != '\0' )
+        {
+            p += 2;
+            continue;
+        }
+        shown++;
+    }
+    snprintf( row, sizeof(row), "{0E|{00 %s%*s{0E|{00\n\r", text, UMAX( 0, 59 - shown ), "" );
+    toc_strlcat( out, row, size );
+}
+
+static void password_upgrade_notice( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    const char *rule = "{0E+------------------------------------------------------------+{00\n\r";
+
+    if ( ch == NULL )
         return;
-    write_to_buffer( d,
-        "\n\rYour password is now kept with stronger encryption (SHA-512).\n\r"
-        "Nothing changes for you: log in exactly as you always have.\n\r"
-        "For the full benefit, choose a new one with PASSWORD <old> <new> --\n\r"
-        "a new password counts every character, not only the first eight.\n\r\n\r", 0 );
+    snprintf( buf, sizeof(buf), "\n\r%s", rule );
+    password_notice_row( buf, sizeof(buf), "{0DYour password is now kept with stronger encryption.{00" );
+    password_notice_row( buf, sizeof(buf), "It moved to SHA-512 at this login. Nothing changes for you:" );
+    password_notice_row( buf, sizeof(buf), "log in exactly as you always have." );
+    password_notice_row( buf, sizeof(buf), "" );
+    password_notice_row( buf, sizeof(buf), "For the full benefit, choose a new one with" );
+    password_notice_row( buf, sizeof(buf), "{09PASSWORD <old> <new>{00 -- a new password counts every" );
+    password_notice_row( buf, sizeof(buf), "character, not only the first eight." );
+    toc_strlcat( buf, rule, sizeof(buf) );
+    send_to_char( buf, ch );
 }
 
 /*
@@ -1350,7 +1379,7 @@ static void login_password_upgrade( DESCRIPTOR_DATA *d, CHAR_DATA *who )
         log_string( log_buf );
         if ( d->connected == CON_PLAYING && who->in_room != NULL )
         {
-            password_upgrade_notice( d );
+            password_upgrade_notice( d->character );
             save_char_obj( who );
         }
         else
@@ -3872,7 +3901,7 @@ case CON_DEFAULT_CHOICE:
 	    if ( !IS_NPC(ch) && ch->pcdata->pwd_upgraded )
 	    {
 	        ch->pcdata->pwd_upgraded = false;
-	        password_upgrade_notice( d );
+	        password_upgrade_notice( ch );
 	        save_char_obj( ch );
 	    }
 	    /* Staff restores a crash or a failed save left pending, settled

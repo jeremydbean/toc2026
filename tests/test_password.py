@@ -169,6 +169,9 @@ class PasswordLiveTests(unittest.TestCase):
             first = self._login(mud, "Zpwold", "Zlongpassw0rd")
             self.assertIn("now kept with stronger encryption", first)
             self.assertIn("log in exactly as you always have", first)
+            # Boxed, in the unread-notes notice's colours (owner, 2026-11-07).
+            self.assertIn("+------------------------------------------------------------+", first)
+            self.assertRegex(first, r"\| log in exactly as you always have\. +\|")
             moved = stored_pass(mud, "Zpwold")
             self.assertTrue(moved.startswith("$6$.8"), moved)
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
