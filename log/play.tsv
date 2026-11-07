@@ -27573,3 +27573,88 @@
 1794068098	cmd	Trentlin	20	30442	hyrule.are	standing	65	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
 1794068098	cmd	Trentlin	20	30443	hyrule.are	standing	65	0	-	east		Level 3: Eastern Slime Hall //   Glistening sludge coats the floor of this chamber in thick, drying layers, // and the smell of damp moss hangs heavy. A row of blocks lines the far wall.	-	+
 1794068100	cmd	Trentlin	20	30443	hyrule.are	standing	65	0	-	consider	dak	They're not here.	-	-
+1794068105	cmd	Trentlin	20	30443	hyrule.are	standing	65	0	-	open	east	The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794068106	cmd	Trentlin	20	30443	hyrule.are	standing	65	0	-	kill	da	Your punch devastates a red darknut! // Your punch injures a red darknut.	-	-
+1794068109	cmd	Trentlin	20	30443	hyrule.are	fighting	60	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a red darknut.	-	-
+1794068116	cmd	Trentlin	20	30443	hyrule.are	fighting	60	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a red darknut.	-	-
+1794068119	cmd	Trentlin	20	30443	hyrule.are	fighting	57	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a red darknut.	-	-
+1794068122	cmd	Trentlin	20	30443	hyrule.are	fighting	57	0	fight	nerve		You missed the nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068125	cmd	Trentlin	20	30443	hyrule.are	fighting	53	0	fight	nerve		You missed the nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068128	cmd	Trentlin	20	30443	hyrule.are	fighting	53	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068131	cmd	Trentlin	20	30443	hyrule.are	fighting	53	0	fight	kick		Your kick scratches a red darknut.	-	-
+1794068134	cmd	Trentlin	20	30443	hyrule.are	fighting	53	0	fight	trip		You trip a red darknut and a red darknut goes down! // Your trip grazes a red darknut.	-	-
+1794068142	cmd	Trentlin	20	30443	hyrule.are	standing	53	0	-	look		Level 3: Eastern Slime Hall //   Glistening sludge coats the floor of this chamber in thick, drying layers, // and the smell of damp moss hangs heavy. A row of blocks lines the far wall.	-	+
+1794068145	cmd	Trentlin	20	30443	hyrule.are	standing	53	0	-	open	east	Ok.	-	-
+1794068145	cmd	Trentlin	20	30444	hyrule.are	standing	53	0	-	east		Level 3: Chamber of Cold Flickers //   A creeping chill hangs in this small chamber, and pale blue flickers dance // at the edge of sight before winking out, like a flaming skull bouncing from	-	+
+1794068149	cmd	Trentlin	20	30444	hyrule.are	standing	53	0	-	open	north	The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794068151	cmd	Trentlin	20	30444	hyrule.are	standing	53	0	-	kill	bub	Nothing harms a bubble. Go round it.	-	-
+1794068153	cmd	Trentlin	20	30444	hyrule.are	standing	53	0	-	kill	kee	A keese parries your attack. // A keese parries your attack.	-	-
+1794068161	cmd	Trentlin	20	30444	hyrule.are	standing	53	0	-	open	north	Ok.	-	-
+1794068162	cmd	Trentlin	20	30449	hyrule.are	standing	53	0	-	north		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794068164	cmd	Trentlin	20	30449	hyrule.are	standing	53	2	-	consider	man	Manhandla is a little above your level. // Manhandla has many times your hit points. // Blow for blow, you would need about 48 rounds to bring Manhandla down; it would need about 4 rounds for you.	-	+
+1794068170	cmd	Trentlin	20	30444	hyrule.are	standing	53	0	-	south		Level 3: Chamber of Cold Flickers //   A creeping chill hangs in this small chamber, and pale blue flickers dance // at the edge of sight before winking out, like a flaming skull bouncing from	-	+
+1794068178	cmd	Trentlin	20	30443	hyrule.are	standing	53	0	-	west		Level 3: Eastern Slime Hall //   Glistening sludge coats the floor of this chamber in thick, drying layers, // and the smell of damp moss hangs heavy. A row of blocks lines the far wall.	-	+
+1794068179	cmd	Trentlin	20	30443	hyrule.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1794068179	cmd	Trentlin	20	30443	hyrule.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1794068180	cmd	Trentlin	20	30442	hyrule.are	standing	53	0	-	west		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794068181	cmd	Trentlin	20	30439	hyrule.are	standing	53	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794068181	cmd	Trentlin	20	30436	hyrule.are	standing	53	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794068181	cmd	Trentlin	20	30436	hyrule.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1794068181	cmd	Trentlin	20	30436	hyrule.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1794068182	cmd	Trentlin	20	30436	hyrule.are	standing	53	0	-	south		Alas, you cannot go that way.	-	-
+1794068183	cmd	Trentlin	20	30437	hyrule.are	standing	53	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794068185	cmd	Trentlin	20	30436	hyrule.are	standing	53	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794068185	cmd	Trentlin	20	30439	hyrule.are	standing	53	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794068185	cmd	Trentlin	20	30442	hyrule.are	standing	53	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794068186	cmd	Trentlin	20	30441	hyrule.are	standing	53	0	-	west		Level 3: Hall of Blades //   Smooth grooves cut along the walls of this chamber, worn deep by spiked // traps that rest in all four corners and slam toward anything crossing their	-	+
+1794068191	cmd	Trentlin	20	30441	hyrule.are	standing	53	0	-	open	west	It's locked.	-	-
+1794068191	cmd	Trentlin	20	30441	hyrule.are	standing	53	0	-	west		The locked is closed.	-	-
+1794068194	item	Trentlin	20	30441	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794068194	cmd	Trentlin	20	30441	hyrule.are	standing	56	1	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794068195	cmd	Trentlin	20	30441	hyrule.are	standing	56	0	-	open	west	Ok.	-	-
+1794068196	cmd	Trentlin	20	30440	hyrule.are	standing	56	0	-	west		Level 3: Armored Hall //   Deep blade scratches line the walls of this western hall, and the floor is // scuffed by heavy armoured steps that pace back and forth, always turning to	-	+
+1794068197	cmd	Trentlin	20	30440	hyrule.are	standing	56	0	-	consider	da	A red darknut is about your level. // A red darknut has about as many hit points as you. // Blow for blow, you would need about 6 rounds to bring a red darknut down; it would need about 15 rounds for you.	-	+
+1794068199	cmd	Trentlin	20	30440	hyrule.are	standing	56	0	-	levitate		You slowly rise up off the ground.	-	-
+1794068202	cmd	Trentlin	20	30440	hyrule.are	standing	56	0	-	kill	dark	Your punch wounds a red darknut. // Your punch wounds a red darknut.	-	-
+1794068210	cmd	Trentlin	20	30440	hyrule.are	fighting	52	0	fight	nerve		You missed the nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068215	cmd	Trentlin	20	30440	hyrule.are	fighting	52	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068219	cmd	Trentlin	20	30440	hyrule.are	fighting	52	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a red darknut.	-	-
+1794068222	cmd	Trentlin	20	30440	hyrule.are	fighting	52	0	fight	kick		Your kick misses a red darknut.	-	-
+1794068224	cmd	Trentlin	20	30440	hyrule.are	fighting	52	0	fight	kick		Your kick hits a red darknut.	-	-
+1794068227	cmd	Trentlin	20	30440	hyrule.are	fighting	52	0	fight	trip		You trip a red darknut and a red darknut goes down! // Your trip scratches a red darknut.	-	-
+1794068233	cmd	Trentlin	20	30440	hyrule.are	fighting	47	0	fight	kick		Your kick misses a red darknut.	-	-
+1794068236	cmd	Trentlin	20	30440	hyrule.are	fighting	47	0	fight	kick		Your kick scratches a red darknut.	-	-
+1794068242	cmd	Trentlin	20	30440	hyrule.are	standing	47	0	-	look	in co	Corpse of a red darknut contains: //      Nothing.	-	-
+1794068243	cmd	Trentlin	20	30440	hyrule.are	standing	47	0	-	sacrifice	co	The Gods give you 38 copper coins for your sacrifice.	-	-
+1794068243	cmd	Trentlin	20	30440	hyrule.are	standing	47	0	-	look		Level 3: Armored Hall //   Deep blade scratches line the walls of this western hall, and the floor is // scuffed by heavy armoured steps that pace back and forth, always turning to	-	+
+1794068245	cmd	Trentlin	20	30440	hyrule.are	standing	47	0	-	open	south	Ok.	-	-
+1794068245	cmd	Trentlin	20	30438	hyrule.are	standing	47	0	-	south		Level 3: Knight's Dead End //   Heavy boot prints and the long scrape of armoured feet mar the dust in this // far western chamber, and dents in the walls show where shields turned blows	-	+
+1794068255	cmd	Trentlin	20	30438	hyrule.are	standing	47	0	-	shove	stone	You must learn this skill to use it.	-	-
+1794068258	cmd	Trentlin	20	30438	hyrule.are	standing	47	0	-	push	block	You push a movable stone block. // A previously hidden door mysteriously opens. // You hear a strange noise off in the distance.	-	-
+1794068259	cmd	Trentlin	20	30438	hyrule.are	standing	47	0	-	look		Level 3: Knight's Dead End //   Heavy boot prints and the long scrape of armoured feet mar the dust in this // far western chamber, and dents in the walls show where shields turned blows	-	+
+1794068260	cmd	Trentlin	20	30454	hyrule.are	standing	47	0	-	down		Level 3: Pitch-Scented Cellar //   Cramped and cool, this brick basement is laid out in narrow ledges over // dark gaps, and it smells of wet timber and pitch. Water drips somewhere	-	+
+1794068261	cmd	Trentlin	20	30454	hyrule.are	standing	47	0	-	list		You can't do that here.	-	-
+1794068263	cmd	Trentlin	20	30454	hyrule.are	standing	47	0	-	inventory		You are carrying: //      a small key //      the Magical Boomerang	-	+
+1794068267	cmd	Trentlin	20	30438	hyrule.are	standing	50	0	-	up		Level 3: Knight's Dead End //   Heavy boot prints and the long scrape of armoured feet mar the dust in this // far western chamber, and dents in the walls show where shields turned blows	-	+
+1794068268	cmd	Trentlin	20	30438	hyrule.are	standing	50	0	-	kill	dark	Your punch devastates a red darknut! // Your punch MASSACRES a red darknut!	-	-
+1794068272	cmd	Trentlin	20	30438	hyrule.are	fighting	41	0	fight	trip		Your trip misses a red darknut.	-	-
+1794068276	cmd	Trentlin	20	30438	hyrule.are	fighting	41	0	fight	trip		Your trip misses a red darknut.	-	-
+1794068280	cmd	Trentlin	20	30438	hyrule.are	fighting	35	0	fight	trip		Your trip misses a red darknut.	-	-
+1794068283	cmd	Trentlin	20	30438	hyrule.are	fighting	35	0	fight	nerve		You missed the nerve. // Your nerve pinch hits a red darknut.	-	-
+1794068287	cmd	Trentlin	20	30438	hyrule.are	fighting	28	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a red darknut.	-	-
+1794068290	cmd	Trentlin	20	30438	hyrule.are	fighting	28	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a red darknut.	-	-
+1794068293	cmd	Trentlin	20	30438	hyrule.are	fighting	23	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a red darknut.	-	-
+1794068298	cmd	Trentlin	20	30438	hyrule.are	standing	23	0	-	look		Level 3: Knight's Dead End //   Heavy boot prints and the long scrape of armoured feet mar the dust in this // far western chamber, and dents in the walls show where shields turned blows	-	+
+1794068299	cmd	Trentlin	20	30440	hyrule.are	standing	23	0	-	north		Level 3: Armored Hall //   Deep blade scratches line the walls of this western hall, and the floor is // scuffed by heavy armoured steps that pace back and forth, always turning to	-	+
+1794068300	cmd	Trentlin	20	30441	hyrule.are	standing	23	0	-	east		Level 3: Hall of Blades //   Smooth grooves cut along the walls of this chamber, worn deep by spiked // traps that rest in all four corners and slam toward anything crossing their	-	+
+1794068301	cmd	Trentlin	20	30442	hyrule.are	standing	23	0	-	east		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794068301	cmd	Trentlin	20	30439	hyrule.are	standing	23	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794068302	cmd	Trentlin	20	30436	hyrule.are	standing	23	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794068302	cmd	Trentlin	20	30436	hyrule.are	standing	23	0	-	south		Alas, you cannot go that way.	-	-
+1794068302	cmd	Trentlin	20	30437	hyrule.are	standing	23	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794068304	cmd	Trentlin	20	30205	hyrule.are	standing	23	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794068304	cmd	Trentlin	20	4207	dresden.are	standing	23	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794068306	cmd	Trentlin	20	4205	dresden.are	standing	23	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794068306	cmd	Trentlin	20	4209	dresden.are	standing	23	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1794068306	cmd	Trentlin	20	4209	dresden.are	standing	23	0	-	south		Alas, you cannot go that way.	-	-
+1794068307	cmd	Trentlin	20	4209	dresden.are	standing	23	0	-	sleep		You go to sleep.	-	-
