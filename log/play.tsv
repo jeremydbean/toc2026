@@ -25691,3 +25691,167 @@
 1794054465	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
 1794054466	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	inventory		You are carrying: //      a big pot pie // ( 2) a potion of protection	-	+
 1794054471	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
+1794054496	cmd	Trentlin	18	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794054496	cmd	Trentlin	18	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794054496	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794054496	cmd	Trentlin	18	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794054497	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794054497	cmd	Trentlin	18	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794054497	cmd	Trentlin	18	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794054497	cmd	Trentlin	18	2485	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794054498	cmd	Trentlin	18	2486	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794054498	cmd	Trentlin	18	2487	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794054498	cmd	Trentlin	18	2484	dresden.are	standing	100	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794054498	cmd	Trentlin	18	2481	dresden.are	standing	100	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794054499	cmd	Trentlin	18	2514	dresden.are	standing	100	0	-	north		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1794054499	cmd	Trentlin	18	2505	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794054499	cmd	Trentlin	18	2506	dresden.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at	-	+
+1794054500	cmd	Trentlin	18	2506	dresden.are	standing	100	0	-	open	down	Ok.	-	-
+1794054500	cmd	Trentlin	18	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1794054502	cmd	Trentlin	18	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1794054502	cmd	Trentlin	18	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1794054503	cmd	Trentlin	18	7104	sewer.are	standing	100	4	-	west		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1794054503	cmd	Trentlin	18	7103	sewer.are	standing	100	0	-	north		A muddy bend in the sewer system //   You are standing in what looks like a bend in the pipe system of the // sewer. The 'floor' is covered completely by mud! This includes covering	-	+
+1794054503	cmd	Trentlin	18	7101	sewer.are	standing	100	0	-	west		Under the mudhole //   You stand in a small room with a great big opening in the ceiling. From this // opening there's mud dripping down in large lumps. >YUCK<. You can smell the 	-	+
+1794054503	cmd	Trentlin	18	7101	sewer.are	standing	100	0	-	down		Alas, you cannot go that way.	-	-
+1794054505	cmd	Trentlin	18	7103	sewer.are	standing	100	0	-	east		A muddy bend in the sewer system //   You are standing in what looks like a bend in the pipe system of the // sewer. The 'floor' is covered completely by mud! This includes covering	-	+
+1794054505	cmd	Trentlin	18	7104	sewer.are	standing	100	0	-	south		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1794054505	cmd	Trentlin	18	7112	sewer.are	standing	100	0	-	east		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1794054506	cmd	Trentlin	18	7111	sewer.are	standing	100	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 	-	+
+1794054506	cmd	Trentlin	18	7115	sewer.are	standing	100	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit	-	+
+1794054506	cmd	Trentlin	18	7129	sewer.are	standing	100	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.	-	+
+1794054506	cmd	Trentlin	18	7221	sewer.are	standing	100	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.	-	+
+1794054507	cmd	Trentlin	18	7220	sewer.are	standing	100	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]	-	-
+1794054507	cmd	Trentlin	18	7219	sewer.are	standing	100	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]	-	+
+1794054507	cmd	Trentlin	18	7217	sewer.are	standing	100	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west	-	+
+1794054507	cmd	Trentlin	18	7216	sewer.are	standing	100	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light	-	+
+1794054508	cmd	Trentlin	18	7215	sewer.are	standing	100	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.	-	+
+1794054508	cmd	Trentlin	18	7210	sewer.are	standing	100	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1794054508	cmd	Trentlin	18	7209	sewer.are	standing	100	0	-	west		The crawlway. //   You are in a narrow crawlway.  You don't notice anything interesting here. // [Exits: east west]	-	-
+1794054508	cmd	Trentlin	18	7208	sewer.are	standing	100	0	-	west		The lair entrance. //   You are in a dry part of the sewer. To the north is a wooden door, you  // can see some slime at the lower part of the door. You also see some skulls	-	+
+1794054509	cmd	Trentlin	18	7208	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794054509	cmd	Trentlin	18	7204	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794054511	cmd	Trentlin	18	7203	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794054512	cmd	Trentlin	18	7202	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce. To the north 	-	+
+1794054512	cmd	Trentlin	18	7202	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794054512	cmd	Trentlin	18	7201	sewer.are	standing	100	0	-	north		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.	-	+
+1794054516	refused	Trentlin	18	7201	sewer.are	fighting	100	0	fight	down		No way!  You are still fighting!	refusal:position	-
+1794054518	cmd	Trentlin	18	7201	sewer.are	fighting	100	0	fight	consider	m	The master mindflayer is a little below your level. // The master mindflayer has about half your hit points. // Blow for blow, you would need about 3 rounds to bring the master mindflayer down; it would need about 39 rounds for you.	-	+
+1794054520	cmd	Trentlin	18	7201	sewer.are	fighting	100	0	fight	open	down	There is no door below you, just open passage.	-	-
+1794054520	refused	Trentlin	18	7201	sewer.are	fighting	100	0	fight	down		No way!  You are still fighting!	refusal:position	-
+1794054522	cmd	Trentlin	18	7201	sewer.are	fighting	100	0	fight	nerve		You jab the master mindflayer with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates the master mindflayer! // You have become better at nerve damage!	-	-
+1794054528	cmd	Trentlin	18	7201	sewer.are	fighting	99	0	fight	nerve		You jab the master mindflayer with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the master mindflayer.	-	-
+1794054535	cmd	Trentlin	18	7201	sewer.are	standing	99	0	-	look	in cor	Corpse of the master mindflayer contains: //      the devil rod //      a purple cloak	-	+
+1794054537	cmd	Trentlin	18	7201	sewer.are	standing	99	0	-	levitate		You slowly rise up off the ground.	-	-
+1794054540	cmd	Trentlin	18	7201	sewer.are	standing	99	0	-	get	key co	You get a black key from corpse of the master mindflayer.	-	-
+1794054540	cmd	Trentlin	18	7201	sewer.are	standing	99	0	-	look		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.	-	+
+1794054542	cmd	Trentlin	18	7201	sewer.are	standing	99	0	-	unlock	west	*Click*	-	-
+1794054543	cmd	Trentlin	18	7201	sewer.are	standing	99	0	-	open	west	Ok.	-	-
+1794054545	cmd	Trentlin	18	7201	sewer.are	standing	99	0	-	drop	key	You drop a black key.	-	-
+1794054549	cmd	Trentlin	18	25171	underdrk.are	standing	99	0	-	down		The climb up. //   You can hear something above you talking to itself in the darkness.  The smell // coming from there reminds you of a SEWER.  The rocks in this climb were made	-	+
+1794054549	cmd	Trentlin	18	25170	underdrk.are	standing	99	0	-	down		The end of the sloping passage. //   The passage ends here and makes a straight vertical climb upwards into onyx // darkness.  You can also go to the down the slope to the east.	-	+
+1794054549	cmd	Trentlin	18	25169	underdrk.are	standing	99	0	-	east		The slope steepens. //   The slope starts to steepen here into a sharper angle. The roaring of the // waterfall now is so far in the distance that dripping water drowns out the	-	+
+1794054550	cmd	Trentlin	18	25168	underdrk.are	standing	99	0	-	east		The slope upwards. //   The passageway starts to slope upwards here.  The roaring of the waterfall is // more distant now and you can no longer feel the moisture on your face that	-	+
+1794054550	cmd	Trentlin	18	25167	underdrk.are	standing	99	0	-	east		The dark passage. //   It's dark here.  You feel moisture on your face and you can hear a roaring of // a waterfall in the distance.  The passage continues to the east and the west.	-	+
+1794054550	cmd	Trentlin	18	25166	underdrk.are	standing	99	0	-	east		The Intersection. //   The dark corridor turns west here and also continues to the south.  The roar // of the waterfall comes from the south and no sounds at all come from the	-	+
+1794054550	cmd	Trentlin	18	25172	underdrk.are	standing	99	0	-	south		The passageway. //   The roaring of the waterfall here is almost deafening.  The moisture is making // your armor and clothes damp.  The walls are dripping wet and there is mud on	-	+
+1794054551	cmd	Trentlin	18	6546	dwarves.are	standing	99	0	-	up		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1794054559	cmd	Trentlin	18	6546	dwarves.are	standing	99	0	-	open	south	It's locked.	-	-
+1794054559	cmd	Trentlin	18	6546	dwarves.are	standing	99	0	-	exits		Obvious exits: // East  - Maze inscription // South - Closed door	-	-
+1794054567	cmd	Trentlin	18	6547	dwarves.are	standing	99	0	-	east		Maze inscription //   You are inside the maze, but not far enough in that you could get lost. // [Exits: north west]	-	-
+1794054573	cmd	Trentlin	18	6546	dwarves.are	standing	99	0	-	west		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1794054574	refused	Trentlin	18	6546	dwarves.are	standing	99	0	-	(unknown)		Huh? Did you mean OPEN?	refusal:unknown-command	-
+1794054577	cmd	Trentlin	18	6546	dwarves.are	standing	99	0	-	look	inscription	You do not see that here.	-	-
+1794054578	cmd	Trentlin	18	6547	dwarves.are	standing	99	0	-	east		Maze inscription //   You are inside the maze, but not far enough in that you could get lost. // [Exits: north west]	-	-
+1794054579	cmd	Trentlin	18	6548	dwarves.are	standing	99	0	-	north		Maze //   You are in a maze. // [Exits: north south]	-	+
+1794054581	cmd	Trentlin	18	6548	dwarves.are	fighting	95	0	fight	consider	sna	The giant snake is a little below your level. // The giant snake has about half your hit points. // Blow for blow, you would need about 4 rounds to bring the giant snake down; it would need about 18 rounds for you.	-	+
+1794054584	cmd	Trentlin	18	6548	dwarves.are	fighting	95	0	fight	nerve		You jab the giant snake with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds the giant snake.	-	-
+1794054587	cmd	Trentlin	18	6548	dwarves.are	fighting	95	0	fight	nerve		You jab the giant snake with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates the giant snake!	-	-
+1794054593	cmd	Trentlin	18	6548	dwarves.are	fighting	91	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes the giant snake.	-	-
+1794054596	cmd	Trentlin	18	6548	dwarves.are	fighting	87	0	fight	kick		Your kick misses the giant snake.	-	-
+1794054600	cmd	Trentlin	18	6548	dwarves.are	standing	87	0	-	look		Maze //   You are in a maze. // [Exits: north south]	-	+
+1794054602	cmd	Trentlin	18	6548	dwarves.are	standing	91	0	-	look	in co	Corpse of the giant snake contains: //      Nothing.	-	-
+1794054602	cmd	Trentlin	18	6549	dwarves.are	standing	91	0	-	north		Maze //   You are in a maze. // [Exits: north west]	-	+
+1794054603	cmd	Trentlin	18	6548	dwarves.are	standing	91	0	-	west		Maze //   You are in a maze. // [Exits: north south]	-	+
+1794054606	cmd	Trentlin	18	6547	dwarves.are	standing	91	0	-	south		Maze inscription //   You are inside the maze, but not far enough in that you could get lost. // [Exits: north west]	-	-
+1794054607	cmd	Trentlin	18	6546	dwarves.are	standing	91	0	-	west		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1794054609	cmd	Trentlin	18	4207	dresden.are	standing	91	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054610	cmd	Trentlin	18	4208	dresden.are	standing	91	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794054612	cmd	Trentlin	18	4208	dresden.are	standing	91	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1794054615	cmd	Trentlin	18	4208	dresden.are	standing	91	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794054615	cmd	Trentlin	18	4208	dresden.are	standing	91	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794054615	cmd	Trentlin	18	4207	dresden.are	standing	91	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054616	cmd	Trentlin	18	3700	school.are	standing	91	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794054616	cmd	Trentlin	18	3772	school.are	standing	91	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794054616	cmd	Trentlin	18	3795	school.are	standing	91	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794054616	cmd	Trentlin	18	15000	campus.are	standing	91	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794054617	cmd	Trentlin	18	15001	campus.are	standing	91	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794054617	cmd	Trentlin	18	15002	campus.are	standing	91	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794054617	cmd	Trentlin	18	15003	campus.are	standing	91	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794054617	cmd	Trentlin	18	15004	campus.are	standing	91	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794054618	cmd	Trentlin	18	15010	campus.are	standing	91	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794054618	cmd	Trentlin	18	15011	campus.are	standing	91	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794054618	cmd	Trentlin	18	15012	campus.are	standing	91	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794054618	cmd	Trentlin	18	15013	campus.are	standing	91	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794054619	cmd	Trentlin	18	15038	campus.are	standing	91	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794054619	cmd	Trentlin	18	15068	campus.are	standing	91	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794054619	cmd	Trentlin	18	30200	hyrule.are	standing	91	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794054625	cmd	Trentlin	18	30271	hyrule.are	standing	91	0	-	play	recorder 1	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Eagle's Gate	-	+
+1794054631	cmd	Trentlin	18	30271	hyrule.are	standing	91	0	-	consider	oc	A red octorok is far below your level. // A red octorok has a fraction of your hit points. // A red octorok could barely scratch you; you would need a single round to bring it down.	-	+
+1794054633	cmd	Trentlin	18	30401	hyrule.are	standing	91	0	-	down		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794054635	cmd	Trentlin	18	30401	hyrule.are	standing	91	0	-	scan		a stalfos                          -to the East. // a keese                            -to the West. // a red octorok                      -right above you.	-	-
+1794054636	cmd	Trentlin	18	30402	hyrule.are	standing	91	0	-	east		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794054639	cmd	Trentlin	18	30402	hyrule.are	standing	91	0	-	consider	st	A stalfos is far below your level. // A stalfos has about a third of your hit points. // A stalfos could barely scratch you; you would need about 2 rounds to bring it down.	-	+
+1794054644	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	west		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794054645	cmd	Trentlin	18	30400	hyrule.are	standing	95	0	-	west		Level 1: West Guardroom //   A plain square chamber of teal flagstones, its corners furred with dust and // spattered with bat droppings. Something leathery has left fine scratches	-	+
+1794054646	cmd	Trentlin	18	30400	hyrule.are	standing	95	0	-	levitate		You slowly rise up off the ground.	-	-
+1794054651	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	east		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794054652	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	north		The locked is closed.	-	-
+1794054653	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	open	north	It's locked.	-	-
+1794054660	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	bomb	north	You find no cracked surface to bomb there.	-	-
+1794054661	cmd	Trentlin	18	30271	hyrule.are	standing	95	0	-	up		The Eagle's Gate //   On a spit of green land cut off by the river, a stone entrance stands in a // rocky outcrop, its lintel carved with the spread wings of an eagle and	-	+
+1794054663	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	down		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794054663	cmd	Trentlin	18	30402	hyrule.are	standing	95	0	-	east		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794054668	cmd	Trentlin	18	30402	hyrule.are	standing	95	0	-	kill	sta	Your punch MASSACRES a stalfos! // Your punch DISEMBOWELS a stalfos! // A stalfos is DEAD!!	-	+
+1794054673	cmd	Trentlin	18	30402	hyrule.are	standing	95	0	-	look	in cor	Corpse of a stalfos contains: //      Nothing.	-	-
+1794054674	cmd	Trentlin	18	30402	hyrule.are	standing	95	0	-	look		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794054676	cmd	Trentlin	18	30402	hyrule.are	standing	95	0	-	get	key	You get a small key.	-	-
+1794054676	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	west		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794054678	item	Trentlin	18	30401	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794054678	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794054679	cmd	Trentlin	18	30401	hyrule.are	standing	95	0	-	open	north	Ok.	-	-
+1794054680	cmd	Trentlin	18	30403	hyrule.are	standing	95	0	-	north		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794054683	cmd	Trentlin	18	30405	hyrule.are	standing	95	1	-	north		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794054687	cmd	Trentlin	18	30405	hyrule.are	standing	98	0	-	open	west	The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794054690	item	Trentlin	18	30405	hyrule.are	30695	four bombs	type=treasure level=1 worn=0 nested=0 timer=0 cond=100 inside=0	kill
+1794054690	cmd	Trentlin	18	30405	hyrule.are	standing	98	0	-	kill	sta	Your punch DISMEMBERS a stalfos! // Your punch *** DEVASTATES *** a stalfos! // A stalfos is DEAD!!	-	+
+1794054698	cmd	Trentlin	18	30405	hyrule.are	standing	98	0	-	open	west	Ok.	-	-
+1794054699	cmd	Trentlin	18	30404	hyrule.are	standing	98	0	-	west		Level 1: Shuttered West Room //   A low-ceilinged chamber of chill teal stone, where bat droppings crust the // tops of a few scattered blocks and a papery rustle drifts down from the	-	+
+1794054705	cmd	Trentlin	18	30404	hyrule.are	standing	98	0	-	kill	ke	Your punch grazes a keese. // Your punch DISEMBOWELS a keese! // A keese is DEAD!!	-	+
+1794054711	cmd	Trentlin	18	30404	hyrule.are	standing	98	0	-	open	north	It's locked.	-	-
+1794054712	cmd	Trentlin	18	30405	hyrule.are	standing	98	0	-	east		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794054715	cmd	Trentlin	18	30405	hyrule.are	standing	98	0	-	get	key	You get a small key.	-	-
+1794054715	cmd	Trentlin	18	30404	hyrule.are	standing	98	0	-	west		Level 1: Shuttered West Room //   A low-ceilinged chamber of chill teal stone, where bat droppings crust the // tops of a few scattered blocks and a papery rustle drifts down from the	-	+
+1794054718	item	Trentlin	18	30404	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794054718	cmd	Trentlin	18	30404	hyrule.are	standing	98	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794054719	cmd	Trentlin	18	30404	hyrule.are	standing	98	0	-	north		The locked is closed.	-	-
+1794054721	cmd	Trentlin	18	30404	hyrule.are	standing	98	0	-	open	north	Ok.	-	-
+1794054721	cmd	Trentlin	18	30408	hyrule.are	standing	98	0	-	north		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794054724	cmd	Trentlin	18	30408	hyrule.are	standing	98	0	-	open	west	The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794054726	item	Trentlin	18	30408	hyrule.are	30695	four bombs	type=treasure level=1 worn=0 nested=0 timer=0 cond=100 inside=0	kill
+1794054726	cmd	Trentlin	18	30408	hyrule.are	standing	100	0	-	kill	g	Your punch maims a gel! // A gel is DEAD!! // You receive 0 experience points.	-	+
+1794054732	cmd	Trentlin	18	30408	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794054733	cmd	Trentlin	18	30408	hyrule.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794054734	cmd	Trentlin	18	30407	hyrule.are	standing	100	0	-	west		Level 1: Eagle's Ember Alcove //   Teal flagstones run back to a squat pair of braziers whose flames burn low // and patient, the kind tended by someone who expects few visitors. Between	-	+
+1794054738	cmd	Trentlin	18	30407	hyrule.are	standing	100	0	-	list		You can't do that here.	-	-
+1794054740	cmd	Trentlin	18	30408	hyrule.are	standing	100	0	-	east		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794054741	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	east		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794054746	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	open	chest	It's already open.	-	-
+1794054747	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	look	in chest	The Eagle's equipment chest contains: //      a Moblin leather jerkin //      a Keese-wing cloak	-	+
+1794054752	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	get	all chest	You get a Moblin leather jerkin from the Eagle's equipment chest. // You get a Keese-wing cloak from the Eagle's equipment chest. // You get a Leever-shell belt from the Eagle's equipment chest.	-	+
+1794054755	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	compare	jerk	A) a Moblin leather jerkin (level 8) // B) a Roman-style breastplate (level 13), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794054760	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	drop	jerk	You drop a Moblin leather jerkin.	-	-
+1794054762	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	compare	cloa	A) a Keese-wing cloak (level 7) // B) nothing -- the slot is empty // Slot: about body.  Your damage comes from weapons.	-	+
+1794054767	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	wear	cloa	You wear a Keese-wing cloak about your body.	-	-
+1794054770	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	compare	belt	A) a Leever-shell belt (level 6) // B) a quick sheathe (level 9), worn // Slot: waist.  Your damage comes from weapons.	-	+
+1794054772	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	drop	belt	You drop a Leever-shell belt.	-	-
