@@ -28352,3 +28352,10 @@
 1794070678	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	north		Alas, you cannot go that way.	-	-
 1794070678	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	sleep		You go to sleep.	-	-
 1794070680	session	Trentlin	21	4210	dresden.are	quit	3925s	+1 levels	+2335 exp	-39249908 copper	38 kills	1 deaths	1 quests	1190 commands	31 refused	coin: loot 2p 38g 80s 12c, quests 12p 86g 20s 80c, spent 54p 50g	spent on: heal 53p 90g, buy 60g	exp: kills +2552, skilluse +20, flee -220, death -17
+1794071287	session	Trentlin	21	4210	dresden.are	shutdown	9s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	0 commands	0 refused	coin: none	spent on: none	exp: none
+1794071288	stall	-	0	0	-	587ms	slowest disaster_update 584ms	command - 0ms	0 players	0 more since
+1794071324	cmd	Trentlin	21	4210	dresden.are	sleeping	4	0	-	wake		You wake and stand up.	-	-
+1794071324	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794071326	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	where	hermie	You didn't find any hermie.	-	-
+1794071327	cmd	Trentlin	21	4210	dresden.are	standing	4	0	-	sleep		You go to sleep.	-	-
+1794071328	session	Trentlin	21	4210	dresden.are	quit	7s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	5 commands	0 refused	coin: none	spent on: none	exp: none

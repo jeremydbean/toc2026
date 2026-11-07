@@ -273137,3 +273137,38 @@ Sat Nov  7 16:58:00 2026 :: Log Trentlin [4210]: quit
 Sat Nov  7 16:58:00 2026 :: Trentlin has quit.
 Sat Nov  7 16:58:00 2026 :: [QUIT] Player rejoined the real world.
 Sat Nov  7 16:58:09 2026 :: Connection guard: 54.167.223.174 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 54.167.223.174 lifts it.
+Sat Nov  7 17:07:34 2026 :: Treasure goblin: vanished from room 17769 (Yellow Brick Road, landoz.are) (too long in one area).
+Sat Nov  7 17:07:54 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Nov  7 17:07:56 2026 :: Sock.sinaddr:  24.2.118.125
+Sat Nov  7 17:07:56 2026 :: Loading Trentlin's playerfile
+Sat Nov  7 17:07:58 2026 :: Loading Trentlin's playerfile
+Sat Nov  7 17:07:58 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sat Nov  7 17:07:58 2026 :: Log WebAdmin: fsave
+Sat Nov  7 17:07:58 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 0
+Sat Nov  7 17:08:04 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Nov  7 17:08:07 2026 :: Received signal 15; saving players and shutting down.
+Sat Nov  7 17:08:07 2026 :: Closing link to Trentlin.
+Sat Nov  7 17:08:07 2026 :: Normal termination of game.
+Sat Nov  7 17:08:08 2026 ::  INIT OK 
+Sat Nov  7 17:08:08 2026 :: walkto_load: 157 destinations.
+Sat Nov  7 17:08:08 2026 :: changes_load: 227 entries.
+Sat Nov  7 17:08:08 2026 :: Passwords: SHA-512 crypt self-test passed.
+Sat Nov  7 17:08:08 2026 :: Recovery ledger: 323 records (0 from before the check), 1 requests, 7 players.
+Sat Nov  7 17:08:08 2026 :: Corpse keeper: Trentlin's corpse c6aef57d8014fe2 made again in room 15009 with 0 objects.
+Sat Nov  7 17:08:08 2026 :: Corpse keeper: 1 corpse made again, 0 set aside.
+Sat Nov  7 17:08:08 2026 :: ROM is ready to rock on port 9000.
+Sat Nov  7 17:08:08 2026 :: Treasure goblin: appeared.
+Sat Nov  7 17:08:08 2026 :: Automated backup complete.
+Sat Nov  7 17:08:08 2026 :: Daily backup complete.
+Sat Nov  7 17:08:38 2026 :: Sock.sinaddr:  24.2.118.125
+Sat Nov  7 17:08:38 2026 :: Loading Trentlin's playerfile
+Sat Nov  7 17:08:40 2026 :: Loading Trentlin's playerfile
+Sat Nov  7 17:08:40 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sat Nov  7 17:08:41 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 0
+Sat Nov  7 17:08:44 2026 :: Log Trentlin [4210]: wake
+Sat Nov  7 17:08:44 2026 :: Log Trentlin [4210]: l
+Sat Nov  7 17:08:46 2026 :: Log Trentlin [4210]: where hermie
+Sat Nov  7 17:08:47 2026 :: Log Trentlin [4210]: sleep
+Sat Nov  7 17:08:48 2026 :: Log Trentlin [4210]: quit
+Sat Nov  7 17:08:48 2026 :: Trentlin has quit.
+Sat Nov  7 17:08:48 2026 :: [QUIT] Player rejoined the real world.
