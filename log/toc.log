@@ -270844,3 +270844,36 @@ Sat Nov  7 15:17:27 2026 :: Treasure goblin: vanished from room 1509 (A Small Gn
 Sat Nov  7 15:18:47 2026 :: Log Killuminati [2401]: quit
 Sat Nov  7 15:18:47 2026 :: Killuminati has quit.
 Sat Nov  7 15:18:47 2026 :: [QUIT] Player rejoined the real world.
+Sat Nov  7 15:21:59 2026 :: Black market: the dealer left the world from room 29454 (The thick forest, world.are).
+Sat Nov  7 15:23:23 2026 :: Connection guard: last hour 20 closed without a word, 0 refused, 0 new characters refused, 2 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Sat Nov  7 15:23:31 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Nov  7 15:23:31 2026 :: Loading Alaric's playerfile
+Sat Nov  7 15:23:32 2026 :: Loading Alaric's playerfile
+Sat Nov  7 15:23:32 2026 :: Passwords: Alaric's password moved to SHA-512.
+Sat Nov  7 15:23:32 2026 :: Alaric@208.126.22.104 has connected.
+Sat Nov  7 15:23:33 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sat Nov  7 15:23:34 2026 :: Log Alaric [2497]: who
+Sat Nov  7 15:23:36 2026 :: Log Alaric [2497]: wake
+Sat Nov  7 15:23:36 2026 :: Log Alaric [2497]: l
+Sat Nov  7 15:23:37 2026 :: Log Alaric [2497]: aq re
+Sat Nov  7 15:23:37 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in campus.are, 25 minutes, ordinary
+Sat Nov  7 15:23:42 2026 :: Log Alaric [2497]: enter door
+Sat Nov  7 15:23:42 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov  7 15:23:42 2026 :: Log Alaric [2401]: west
+Sat Nov  7 15:23:42 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Nov  7 15:23:42 2026 :: Log Alaric [2405]: west
+Sat Nov  7 15:23:42 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Nov  7 15:23:42 2026 :: Log Alaric [2433]: south
+Sat Nov  7 15:23:42 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 2433
+Sat Nov  7 15:23:43 2026 :: Log Alaric [4201]: west
+Sat Nov  7 15:23:43 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4201
+Sat Nov  7 15:23:43 2026 :: Log Alaric [4202]: west
+Sat Nov  7 15:23:43 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sat Nov  7 15:23:43 2026 :: Log Alaric [4207]: up
+Sat Nov  7 15:23:43 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sat Nov  7 15:23:43 2026 :: Log Alaric [3700]: up
+Sat Nov  7 15:23:43 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Sat Nov  7 15:23:44 2026 :: Log Alaric [3772]: up
+Sat Nov  7 15:23:44 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Sat Nov  7 15:23:44 2026 :: Log Alaric [3795]: enter portal
+Sat Nov  7 15:23:44 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
