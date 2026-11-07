@@ -25537,3 +25537,157 @@
 1794021506	session	Trentlin	18	4208	dresden.are	quit	1026s	+1 levels	+1166 exp	-19622463 copper	18 kills	0 deaths	1 quests	726 commands	0 refused	coin: loot 2p 8g 37s 85c, quests 1p 21g 47s 52c, spent 22p 92g 10s	spent on: heal 22p 90g, buy 2g 10s	exp: kills +1187, skilluse +4, recall -25
 1794026583	stall	-	0	0	-	558ms	slowest disaster_update 555ms	command - 0ms	0 players	0 more since
 1794029003	stall	-	0	0	-	561ms	slowest disaster_update 559ms	command - 0ms	0 players	0 more since
+1794054194	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054195	cmd	Trentlin	18	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794054195	cmd	Trentlin	18	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794054196	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794054197	cmd	Trentlin	18	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794054197	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794054199	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	where	hermie	You didn't find any hermie.	-	-
+1794054200	cmd	Trentlin	18	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794054200	cmd	Trentlin	18	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794054200	cmd	Trentlin	18	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794054201	cmd	Trentlin	18	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794054202	cmd	Trentlin	18	2497	dresden.are	standing	100	11	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Trentlin!' // Questor Thews tells you 'Bandits have made off with The Journal of Trinidad!'	-	+
+1794054206	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794054209	cmd	Trentlin	18	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794054210	cmd	Trentlin	18	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794054210	cmd	Trentlin	18	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794054210	cmd	Trentlin	18	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794054210	cmd	Trentlin	18	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794054211	cmd	Trentlin	18	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794054211	cmd	Trentlin	18	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794054211	cmd	Trentlin	18	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794054211	cmd	Trentlin	18	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794054213	cmd	Trentlin	18	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794054213	cmd	Trentlin	18	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794054213	cmd	Trentlin	18	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794054214	cmd	Trentlin	18	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794054214	cmd	Trentlin	18	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794054214	cmd	Trentlin	18	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794054214	cmd	Trentlin	18	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794054215	cmd	Trentlin	18	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1794054215	cmd	Trentlin	18	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1794054215	cmd	Trentlin	18	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794054215	cmd	Trentlin	18	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794054216	cmd	Trentlin	18	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794054216	cmd	Trentlin	18	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794054216	cmd	Trentlin	18	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.	-	+
+1794054216	cmd	Trentlin	18	6122	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.	-	+
+1794054217	cmd	Trentlin	18	6123	haon.are	standing	100	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows	-	+
+1794054217	cmd	Trentlin	18	9774	newthalo.are	standing	100	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.	-	+
+1794054217	cmd	Trentlin	18	9775	newthalo.are	standing	100	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]	-	-
+1794054217	cmd	Trentlin	18	15	connect.are	standing	100	0	-	southwest		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the	-	+
+1794054218	cmd	Trentlin	18	16	connect.are	standing	100	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank	-	+
+1794054218	cmd	Trentlin	18	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and	-	+
+1794054218	cmd	Trentlin	18	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054218	cmd	Trentlin	18	1307	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054220	cmd	Trentlin	18	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054221	cmd	Trentlin	18	1301	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054221	cmd	Trentlin	18	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054222	cmd	Trentlin	18	1303	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054222	cmd	Trentlin	18	1303	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054223	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054224	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054231	cmd	Trentlin	18	9301	galaxy.are	standing	100	0	-	south		Inside a Tavern //   You are inside a dimly-lit room.  The atmosphere makes you feel uncomfortable. // In front of you stands a mysterious gypsy.  She whispers 'Your fate and	-	+
+1794054234	cmd	Trentlin	18	9301	galaxy.are	standing	100	0	-	exits		Obvious exits: // West  - The Shadow Grove // Down  - Inside the Crystal Ball	-	-
+1794054236	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054237	cmd	Trentlin	18	1305	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054237	cmd	Trentlin	18	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054238	cmd	Trentlin	18	1304	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054238	cmd	Trentlin	18	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates	-	+
+1794054240	cmd	Trentlin	18	2201	draconia.are	standing	100	0	-	east		The Tower Gates //   You are at the entrance to a tall tower.  Lightning flashes periodically and // it is raining.  You think it might be a good idea to turn back into the grove.	-	+
+1794054241	cmd	Trentlin	18	1304	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054242	cmd	Trentlin	18	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates	-	+
+1794054243	cmd	Trentlin	18	1301	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054244	cmd	Trentlin	18	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054245	cmd	Trentlin	18	1303	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054245	cmd	Trentlin	18	1303	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054246	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054246	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054248	cmd	Trentlin	18	1309	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054248	cmd	Trentlin	18	1309	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054249	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054250	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054251	cmd	Trentlin	18	1305	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054252	cmd	Trentlin	18	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054255	cmd	Trentlin	18	1304	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054255	cmd	Trentlin	18	1301	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054279	cmd	Trentlin	18	1302	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054279	cmd	Trentlin	18	1303	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054281	cmd	Trentlin	18	1303	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054282	cmd	Trentlin	18	1309	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054283	cmd	Trentlin	18	1309	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054284	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054284	cmd	Trentlin	18	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054285	cmd	Trentlin	18	1305	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054286	cmd	Trentlin	18	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794054287	cmd	Trentlin	18	1302	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794054287	cmd	Trentlin	18	1302	htower.are	standing	100	0	-	exits		Obvious exits: // North - A small clearing // East  - The Shadow Grove	-	+
+1794054289	cmd	Trentlin	18	1311	htower.are	standing	100	0	-	north		A small clearing //   You are in a small clearing in the shadow grove. There is charred grass // underfoot, and the signs of fire here and there. It is almost as if the	-	+
+1794054293	cmd	Trentlin	18	7600	ultima.are	standing	100	0	-	enter	moon	You enter a red moongate // Your stomach flip flops. Everything goes black for a moment. // Entrance to Ultima	-	+
+1794054295	cmd	Trentlin	18	7601	ultima.are	standing	100	0	-	south		New Magincia Road //   This is the main road of New Magincia.  To the south the dirt // path continues to the south and a huge gate to the north.	-	+
+1794054299	cmd	Trentlin	18	7602	ultima.are	standing	100	0	-	south		New Magincia Road //   The path continues to the south and the north.  You see the // tracks of sheep here.	-	+
+1794054300	cmd	Trentlin	18	7602	ultima.are	standing	100	0	-	exits		Obvious exits: // North - New Magincia Road // South - The New Magincia Moongate	-	-
+1794054301	cmd	Trentlin	18	7603	ultima.are	standing	100	0	-	south		The New Magincia Moongate //   You see another moongate here, exactly between the crossing of // two paths.	-	+
+1794054301	cmd	Trentlin	18	7603	ultima.are	standing	100	0	-	exits		Obvious exits: // North - New Magincia Road // East  - Humility Lane	-	+
+1794054304	cmd	Trentlin	18	7613	ultima.are	standing	100	0	-	east		Humility Lane //   This is a very small path.  It ends here with a fence to the // east.  To the west is the Moongate, and to the north there is a	-	+
+1794054305	cmd	Trentlin	18	7603	ultima.are	standing	100	0	-	west		The New Magincia Moongate //   You see another moongate here, exactly between the crossing of // two paths.	-	+
+1794054305	cmd	Trentlin	18	7608	ultima.are	standing	100	0	-	west		Humility Lane //   This is an even smaller dirt path that crosses New Maginica Road.  // To your north there is a barn, and to the south you see a	-	+
+1794054308	cmd	Trentlin	18	7608	ultima.are	standing	100	0	-	get	all	You get The Journal of Trinidad.	-	-
+1794054309	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054310	cmd	Trentlin	18	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794054310	cmd	Trentlin	18	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794054310	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794054311	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794054311	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794054311	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794054311	cmd	Trentlin	18	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794054312	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794054312	cmd	Trentlin	18	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794054312	cmd	Trentlin	18	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794054312	cmd	Trentlin	18	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794054313	cmd	Trentlin	18	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794054314	item	Trentlin	18	2497	dresden.are	25038	The Journal of Trinidad	type=trash level=59 worn=0 nested=0 timer=118 cond=100 inside=0	aquest
+1794054314	outcome	Trentlin	18	2497	dresden.are	quest-complete	success	-	-	ordinary qp=769->769 offered=81 daily=18->18 coin=+1102464 kill=91872 streak=20 level=18 target=0
+1794054314	cmd	Trentlin	18	2497	dresden.are	standing	100	22	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Excellent work! The realm is in your debt!'	success:-	+
+1794054318	cmd	Trentlin	18	2497	dresden.are	standing	100	5	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 162 quest points! **	-	-
+1794054320	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794054322	cmd	Trentlin	18	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794054322	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794054323	cmd	Trentlin	18	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794054323	cmd	Trentlin	18	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794054323	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054325	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	heal	refresh	You can't do that here.	-	-
+1794054325	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794054327	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794054330	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794054330	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794054331	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a big pot pie // ( 2) (Magical) a potion of protection	-	+
+1794054340	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	wear	bra	You stop using an enchanted leather bracer. // You wear an onyx bracelet around your left wrist.	-	-
+1794054342	refused	Trentlin	18	4208	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794054345	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	wear	lea	You stop using an onyx bracelet. // You wear an enchanted leather bracer around your left wrist.	-	-
+1794054347	state	Trentlin	18	4208	dresden.are	lvl=18 hp=423/423 mana=770/770 mv=305/305 align=-496 exp=41504 coin=4501971766 bank=11060093999 qp=931 prac=10 train=0 stash=53/75 remorts=1
+1794054347	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      18 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794054347	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
+1794054349	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	wear	bra	You stop using an enchanted leather bracer. // You wear an onyx bracelet around your left wrist.	-	-
+1794054352	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	attribute		Str: 20(23)  Int: 16(20)  Wis: 18(22)  Dex: 16(17)  Con: 21(25)	-	-
+1794054356	state	Trentlin	18	4208	dresden.are	lvl=18 hp=423/423 mana=770/770 mv=305/305 align=-496 exp=41504 coin=4501971766 bank=11060093999 qp=931 prac=10 train=0 stash=53/75 remorts=1
+1794054356	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      18 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794054362	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	remove	lea	You stop using an enchanted leather bracer.	-	-
+1794054363	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	wear	ony	You wear an onyx bracelet around your right wrist.	-	-
+1794054366	cmd	Trentlin	18	4208	dresden.are	standing	100	6	-	stash	put leat	You put an enchanted leather bracer away for safe keeping.	-	-
+1794054367	cmd	Trentlin	18	4208	dresden.are	standing	100	4	-	stash	put leat	You put an enchanted leather bracer away for safe keeping.	-	-
+1794054368	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a big pot pie // ( 2) (Magical) a potion of protection	-	+
+1794054370	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	wear	ma	You must be level 27 to use this object.	-	-
+1794054373	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	wear	col	You must be level 24 to use this object.	-	-
+1794054443	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794054444	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794054448	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	drop	all	You drop a big pot pie. // You drop a potion of protection. // You drop a potion of protection.	-	+
+1794054454	cmd	Trentlin	18	4208	dresden.are	standing	100	11	-	stash	get gear	You take Trentlin's level 54 gear out of your stash.	-	-
+1794054458	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	get	recorder gear	You get the Recorder from Trentlin's level 54 gear.	-	-
+1794054462	cmd	Trentlin	18	4208	dresden.are	standing	100	6	-	stash	put gear	You put Trentlin's level 54 gear away for safe keeping.	-	-
+1794054464	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	get	all	You get two bombs. // You get a nightmare's hoof clipping. // You get an alfalfa sprout.	-	+
+1794054465	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054466	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	inventory		You are carrying: //      a big pot pie // ( 2) a potion of protection	-	+
+1794054471	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
