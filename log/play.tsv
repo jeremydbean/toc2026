@@ -27280,3 +27280,75 @@
 1794066944	cmd	Trentlin	20	4209	dresden.are	sleeping	82	0	-	help	hero	HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS' // Hero status is reached when a character attains level 51.  At that point // normal experience leveling stops; experience is accumulated for other uses.	-	+
 1794066946	cmd	Trentlin	20	4209	dresden.are	sleeping	82	0	-	help	remort	REMORT // Syntax: REMORT <password> <class> <guild> <race> // REMORT allows a character at their current maximum level to start over as a	-	+
 1794067041	cmd	Trentlin	20	4209	dresden.are	sleeping	92	0	-	group		Trentlin's group: // [20 Monk ] Trentlin          433/ 468 hp  189/ 868 mana  207/ 319 mv 46303 xp	-	-
+1794067388	cmd	Trentlin	20	4209	dresden.are	sleeping	100	0	-	group		Trentlin's group: // [20 Monk ] Trentlin          468/ 468 hp  723/ 868 mana  319/ 319 mv 46303 xp	-	-
+1794067389	cmd	Trentlin	20	4209	dresden.are	sleeping	100	0	-	wake		You wake and stand up.	-	-
+1794067390	cmd	Trentlin	20	4209	dresden.are	standing	100	0	-	look		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1794067391	cmd	Trentlin	20	4205	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794067391	cmd	Trentlin	20	4207	dresden.are	standing	100	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794067395	cmd	Trentlin	20	4207	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794067397	cmd	Trentlin	20	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794067397	cmd	Trentlin	20	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794067397	cmd	Trentlin	20	2433	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794067397	cmd	Trentlin	20	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794067398	cmd	Trentlin	20	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794067398	cmd	Trentlin	20	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794067398	cmd	Trentlin	20	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794067398	cmd	Trentlin	20	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794067399	cmd	Trentlin	20	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794067399	cmd	Trentlin	20	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794067399	cmd	Trentlin	20	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794067399	cmd	Trentlin	20	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794067400	cmd	Trentlin	20	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794067400	cmd	Trentlin	20	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794067400	cmd	Trentlin	20	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794067400	cmd	Trentlin	20	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794067401	cmd	Trentlin	20	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1794067401	cmd	Trentlin	20	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1794067401	cmd	Trentlin	20	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794067401	cmd	Trentlin	20	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794067402	cmd	Trentlin	20	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1794067402	cmd	Trentlin	20	6119	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.	-	+
+1794067402	cmd	Trentlin	20	6120	haon.are	standing	100	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom	-	+
+1794067402	cmd	Trentlin	20	6121	haon.are	standing	100	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To	-	+
+1794067403	cmd	Trentlin	20	58	connect.are	standing	100	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find	-	+
+1794067403	cmd	Trentlin	20	11057	ancala.are	standing	100	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross	-	+
+1794067404	cmd	Trentlin	20	11026	ancala.are	standing	100	0	-	run	w	A Wild Valley // [Exits: east west] // Before The Dragon	-	+
+1794067405	cmd	Trentlin	20	11026	ancala.are	resting	100	0	-	wake		You stand up.	-	-
+1794067405	cmd	Trentlin	20	11026	ancala.are	standing	100	0	-	look		The End Of The Stomach //   The wooden bridge ends here, on a large plateau above the cavern // floor. The plateau overlooks the entire forest of acid and stone	-	+
+1794067407	cmd	Trentlin	20	11026	ancala.are	standing	100	0	-	kill	wa	Your punch *** DEVASTATES *** the Petrified Warden! // Your punch MUTILATES the Petrified Warden!	-	-
+1794067412	cmd	Trentlin	20	11026	ancala.are	standing	100	0	-	get	key co	You get a granite key from corpse of the Petrified Warden.	-	-
+1794067412	cmd	Trentlin	20	11026	ancala.are	standing	100	0	-	unlock	west	*Click*	-	-
+1794067414	cmd	Trentlin	20	11026	ancala.are	standing	100	0	-	open	west	Ok.	-	-
+1794067415	cmd	Trentlin	20	11056	ancala.are	standing	100	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.	-	+
+1794067415	cmd	Trentlin	20	11028	ancala.are	standing	100	0	-	west		The Small Intestine //   You enter a featureless tunnel of what must be the beginning of the // dragon's small intestine.  Small piles of human bones and armor bits	-	+
+1794067415	cmd	Trentlin	20	11028	ancala.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794067416	cmd	Trentlin	20	11028	ancala.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794067417	cmd	Trentlin	20	11029	ancala.are	standing	100	0	-	north		The Small Intestine //   The tunnel twists to the south and to the east. // [Exits: east south]	-	+
+1794067419	cmd	Trentlin	20	11029	ancala.are	fighting	95	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the umber hulk.	-	-
+1794067423	cmd	Trentlin	20	11029	ancala.are	fighting	95	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the umber hulk.	-	-
+1794067426	cmd	Trentlin	20	11029	ancala.are	fighting	91	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the umber hulk.	-	-
+1794067431	cmd	Trentlin	20	11029	ancala.are	fighting	91	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds the umber hulk.	-	-
+1794067435	cmd	Trentlin	20	11029	ancala.are	fighting	91	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the umber hulk.	-	-
+1794067437	cmd	Trentlin	20	11029	ancala.are	fighting	91	0	fight	kick		Your kick scratches the umber hulk.	-	-
+1794067440	cmd	Trentlin	20	11029	ancala.are	fighting	91	0	fight	kick		Your kick scratches the umber hulk. // The umber hulk is DEAD!! // You receive 208 experience points (104 of them rested).	-	+
+1794067446	cmd	Trentlin	20	11029	ancala.are	standing	91	0	-	north		Alas, you cannot go that way.	-	-
+1794067452	cmd	Trentlin	20	11029	ancala.are	standing	91	0	-	look		The Small Intestine //   The tunnel twists to the south and to the east. // [Exits: east south]	-	+
+1794067454	cmd	Trentlin	20	11030	ancala.are	standing	91	0	-	east		The Small Intestine //   The smooth tunnel curves to the west and to the south. // [Exits: south west]	-	+
+1794067457	cmd	Trentlin	20	11030	ancala.are	fighting	91	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the ochre jello.	-	-
+1794067459	cmd	Trentlin	20	11030	ancala.are	fighting	91	0	fight	nerve		You jab the ochre jello with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the ochre jello.	-	-
+1794067462	cmd	Trentlin	20	11030	ancala.are	fighting	91	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the ochre jello.	-	-
+1794067465	cmd	Trentlin	20	11030	ancala.are	fighting	87	0	fight	kick		Your kick injures the ochre jello.	-	-
+1794067469	cmd	Trentlin	20	11030	ancala.are	standing	90	0	-	look		The Small Intestine //   The smooth tunnel curves to the west and to the south. // [Exits: south west]	-	+
+1794067471	cmd	Trentlin	20	11031	ancala.are	standing	90	0	-	south		The Small Intestine //   The blank walls of the tunnel run north and south. // [Exits: north south]	-	-
+1794067472	cmd	Trentlin	20	11032	ancala.are	standing	90	0	-	south		The Small Intestine //   The tunnel comes from the north and dips sharply downward here. // [Exits: north down]	-	-
+1794067473	cmd	Trentlin	20	11033	ancala.are	standing	90	0	-	down		The Small Intestine //   The featureless tunnel leads up and north.  Echo bounce off the // blank walls, whether from near or far, you cannot tell.	-	+
+1794067476	cmd	Trentlin	20	11033	ancala.are	fighting	87	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds the umber hulk.	-	-
+1794067479	cmd	Trentlin	20	11033	ancala.are	fighting	87	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the umber hulk.	-	-
+1794067482	cmd	Trentlin	20	11033	ancala.are	fighting	87	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls the umber hulk.	-	-
+1794067485	cmd	Trentlin	20	11033	ancala.are	fighting	87	0	fight	kick		Your kick injures the umber hulk.	-	-
+1794067490	cmd	Trentlin	20	11034	ancala.are	standing	87	0	-	north		The Small Intestine //   Bits of broken equipment from long dead adventurers have been // collected here.  The tunnel runs north and south.	-	+
+1794067493	cmd	Trentlin	20	11034	ancala.are	fighting	85	0	fight	kill	j	You do the best you can!	-	-
+1794067494	cmd	Trentlin	20	11034	ancala.are	fighting	82	0	fight	nerve		You jab the ochre jello with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls the ochre jello.	-	-
+1794067497	cmd	Trentlin	20	11034	ancala.are	fighting	79	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes the ochre jello.	-	-
+1794067499	cmd	Trentlin	20	11034	ancala.are	fighting	79	0	fight	kick		Your kick scratches the ochre jello.	-	-
+1794067502	cmd	Trentlin	20	11034	ancala.are	fighting	79	0	fight	kick		Your kick hits the ochre jello. // The ochre jello is DEAD!! // You receive 68 experience points.	-	+
