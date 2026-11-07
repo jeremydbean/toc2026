@@ -27352,3 +27352,135 @@
 1794067497	cmd	Trentlin	20	11034	ancala.are	fighting	79	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes the ochre jello.	-	-
 1794067499	cmd	Trentlin	20	11034	ancala.are	fighting	79	0	fight	kick		Your kick scratches the ochre jello.	-	-
 1794067502	cmd	Trentlin	20	11034	ancala.are	fighting	79	0	fight	kick		Your kick hits the ochre jello. // The ochre jello is DEAD!! // You receive 68 experience points.	-	+
+1794067506	cmd	Trentlin	20	11035	ancala.are	standing	79	0	-	north		The Small Intestine //   The tunnel bends from the south to the east.  You imagine the // remains of many a brave warrior who dared the dragon passed here,	-	+
+1794067507	cmd	Trentlin	20	11036	ancala.are	standing	79	0	-	east		The Small Intestine //   The blank walls of the tunnel lead west and south. // [Exits: south west]	-	-
+1794067508	cmd	Trentlin	20	11036	ancala.are	standing	79	0	-	down		Alas, you cannot go that way.	-	-
+1794067508	cmd	Trentlin	20	11037	ancala.are	standing	79	0	-	south		The Small Intestine //   The smooth tunnel contracts to the south of here into a new tunnel. // [Exits: north south]	-	+
+1794067511	cmd	Trentlin	20	11037	ancala.are	fighting	81	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes the umber hulk.	-	-
+1794067513	cmd	Trentlin	20	11037	ancala.are	fighting	81	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch hits the umber hulk.	-	-
+1794067516	cmd	Trentlin	20	11037	ancala.are	fighting	78	0	fight	nerve		You jab the umber hulk with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the umber hulk.	-	-
+1794067522	cmd	Trentlin	20	11037	ancala.are	fighting	78	0	fight	kick		Your kick grazes the umber hulk.	-	-
+1794067528	cmd	Trentlin	20	4207	dresden.are	standing	78	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794067531	cmd	Trentlin	20	4202	dresden.are	standing	78	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794067531	cmd	Trentlin	20	4203	dresden.are	standing	78	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794067532	cmd	Trentlin	20	4210	dresden.are	standing	78	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794067532	cmd	Trentlin	20	4210	dresden.are	standing	78	0	-	north		Alas, you cannot go that way.	-	-
+1794067532	cmd	Trentlin	20	4210	dresden.are	standing	78	0	-	sleep		You go to sleep.	-	-
+1794067564	cmd	Trentlin	20	4210	dresden.are	sleeping	78	0	-	group		Trentlin's group: // [20 Monk ] Trentlin          369/ 468 hp  532/ 868 mana  103/ 319 mv 47063 xp	-	-
+1794067567	cmd	Trentlin	20	4210	dresden.are	sleeping	78	0	-	wake		You wake and stand up.	-	-
+1794067567	cmd	Trentlin	20	4203	dresden.are	standing	78	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794067569	cmd	Trentlin	20	4203	dresden.are	standing	78	0	-	levitate		You slowly rise up off the ground.	-	-
+1794067572	cmd	Trentlin	20	4202	dresden.are	standing	78	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794067572	cmd	Trentlin	20	4207	dresden.are	standing	78	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794067572	cmd	Trentlin	20	3700	school.are	standing	78	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794067573	cmd	Trentlin	20	3772	school.are	standing	78	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794067573	cmd	Trentlin	20	3795	school.are	standing	78	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794067573	cmd	Trentlin	20	15000	campus.are	standing	78	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794067573	cmd	Trentlin	20	15001	campus.are	standing	78	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794067574	cmd	Trentlin	20	15002	campus.are	standing	78	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794067574	cmd	Trentlin	20	15003	campus.are	standing	78	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794067574	cmd	Trentlin	20	15004	campus.are	standing	78	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794067574	cmd	Trentlin	20	15010	campus.are	standing	82	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794067575	cmd	Trentlin	20	15011	campus.are	standing	82	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794067575	cmd	Trentlin	20	15012	campus.are	standing	82	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794067575	cmd	Trentlin	20	15013	campus.are	standing	82	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794067575	cmd	Trentlin	20	15038	campus.are	standing	82	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794067576	cmd	Trentlin	20	15068	campus.are	standing	82	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794067576	cmd	Trentlin	20	30200	hyrule.are	standing	82	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794067578	cmd	Trentlin	20	30200	hyrule.are	standing	82	0	-	where	tekite	You didn't find any tekite.	-	-
+1794067583	cmd	Trentlin	20	30276	hyrule.are	standing	82	0	-	play	recorder 2	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Moon Gate	-	+
+1794067588	cmd	Trentlin	20	30276	hyrule.are	standing	82	0	-	consider	oc	A blue octorok is far below your level. // A blue octorok has about a third of your hit points. // Blow for blow, you would need about 3 rounds to bring a blue octorok down; it would need about 85 rounds for you.	-	+
+1794067590	cmd	Trentlin	20	30418	hyrule.are	standing	82	0	-	down		Level 2: Crescent Gate //   Pale blue stone surrounds this entrance hall, its walls carved with // crescent moons worn soft by time and a pair of stone dragons crouched	-	+
+1794067593	cmd	Trentlin	20	30419	hyrule.are	standing	82	0	-	east		Level 2: Shed Skin Chamber //   Papery snake skins lie curled in the corners of this blue-walled chamber, // and thin sinuous tracks wind through the dust, running straight and fast	-	+
+1794067595	cmd	Trentlin	20	30419	hyrule.are	standing	82	0	-	consider	ro	A rope is far below your level. // A rope has about a third of your hit points. // Blow for blow, you would need about 2 rounds to bring a rope down; it would need over a hundred rounds for you.	-	+
+1794067599	cmd	Trentlin	20	30422	hyrule.are	standing	82	0	-	north		Level 2: Moonstone Crossroads //   Wide and echoing, this chamber sits where several halls meet, its tiles // worn into shallow paths by the passage of countless scaled bellies. A	-	+
+1794067602	cmd	Trentlin	20	30422	hyrule.are	standing	82	0	-	open	est	I see no est here.	-	-
+1794067604	cmd	Trentlin	20	30422	hyrule.are	standing	82	0	-	open	east	It's locked.	-	-
+1794067607	cmd	Trentlin	20	30422	hyrule.are	standing	82	0	-	unlock	east	You lack the key.	-	-
+1794067608	cmd	Trentlin	20	30422	hyrule.are	standing	82	0	-	kill	r	Your punch misses a rope. // Your punch DISEMBOWELS a rope!	-	-
+1794067613	cmd	Trentlin	20	30422	hyrule.are	fighting	82	0	fight	kick		Your kick scratches a rope.	-	-
+1794067616	cmd	Trentlin	20	30422	hyrule.are	fighting	82	0	fight	kick		Your kick grazes a rope.	-	-
+1794067622	state	Trentlin	20	30422	hyrule.are	lvl=20 hp=385/468 mana=534/868 mv=109/319 align=-282 exp=47066 coin=4413100074 bank=11060093999 qp=1115 prac=12 train=2 stash=55/75 remorts=1
+1794067622	cmd	Trentlin	20	30422	hyrule.are	standing	82	0	-	score		| Name:       Trentlin | Level:      20 | Class:        Monk | // | Played:     29 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794067623	cmd	Trentlin	20	30422	hyrule.are	standing	82	0	-	look	in cor	Corpse of a rope contains: //      Nothing.	-	-
+1794067624	cmd	Trentlin	20	30419	hyrule.are	standing	82	0	-	south		Level 2: Shed Skin Chamber //   Papery snake skins lie curled in the corners of this blue-walled chamber, // and thin sinuous tracks wind through the dust, running straight and fast	-	+
+1794067625	cmd	Trentlin	20	30419	hyrule.are	standing	82	0	-	kill	ro	Your punch mauls a rope. // Your punch devastates a rope!	-	-
+1794067628	cmd	Trentlin	20	30419	hyrule.are	fighting	82	0	fight	kick		Your kick scratches a rope.	-	-
+1794067633	cmd	Trentlin	20	30419	hyrule.are	standing	85	0	-	get	key	You get a small key.	-	-
+1794067633	cmd	Trentlin	20	30422	hyrule.are	standing	85	0	-	north		Level 2: Moonstone Crossroads //   Wide and echoing, this chamber sits where several halls meet, its tiles // worn into shallow paths by the passage of countless scaled bellies. A	-	+
+1794067634	item	Trentlin	20	30422	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794067634	cmd	Trentlin	20	30422	hyrule.are	standing	85	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794067636	cmd	Trentlin	20	30422	hyrule.are	standing	85	0	-	open	east	Ok.	-	-
+1794067636	cmd	Trentlin	20	30423	hyrule.are	standing	85	0	-	east		Level 2: Dripping Chamber //   Water beads on the ceiling of this eastern chamber and drips onto tiles // filmed with jelly-like slime, and the little blobs of it seem to hop and	-	+
+1794067642	cmd	Trentlin	20	30423	hyrule.are	standing	85	0	-	consider	g	A gel is far below your level. // A gel has a fraction of your hit points. // Blow for blow, you would need a single round to bring a gel down; it would need over a hundred rounds for you.	-	+
+1794067643	cmd	Trentlin	20	30423	hyrule.are	standing	85	0	-	kill	g	Your punch devastates a gel! // Your punch mauls a gel.	-	-
+1794067647	cmd	Trentlin	20	30423	hyrule.are	standing	85	0	-	kill	g	Your punch wounds a gel. // Your punch maims a gel!	-	-
+1794067647	item	Trentlin	20	30423	hyrule.are	30695	four bombs	type=treasure level=1 worn=0 nested=0 timer=0 cond=100 inside=0	violence_update
+1794067652	cmd	Trentlin	20	30423	hyrule.are	standing	85	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794067652	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	north		Level 2: Cracked Eastern Room //   A narrow eastern room whose walls are fractured top and bottom, the cracks // wide enough to let a cold draught whisper through, as though bombs have	-	+
+1794067657	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	look	in ches	The Moon's equipment chest contains: //      a Goriya crescent blade //      a Stalfos bone guard	-	+
+1794067661	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	get	all ches	You get a Goriya crescent blade from the Moon's equipment chest. // You get a Stalfos bone guard from the Moon's equipment chest. // You get a candlekeeper's mantle from the Moon's equipment chest.	-	+
+1794067663	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	drop	blade	You drop a Goriya crescent blade.	-	-
+1794067665	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	drop	sword	You drop a hero's practice sword.	-	-
+1794067666	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	sacrifice	bla	The Gods give you 28 copper coins for your sacrifice.	-	-
+1794067667	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	sacrifice	swo	The Gods give you 18 copper coins for your sacrifice.	-	-
+1794067672	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	compare	guar	A) a Stalfos bone guard (level 13) // B) some soldier arm plates (level 3), worn // Slot: arms.  Your damage comes from weapons.	-	+
+1794067675	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	drop	guar	You drop a Stalfos bone guard.	-	-
+1794067678	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	sacrifice	guar	The Gods give you 26 copper coins for your sacrifice.	-	-
+1794067678	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	inventory		You are carrying: //      an eagle-carved bracer //      a dungeon delver's cap	-	+
+1794067680	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	compare	brac	A) an eagle-carved bracer (level 10) // B) an onyx bracelet (level 18), worn // Slot: wrist.  Your damage comes from weapons.	-	+
+1794067682	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	compare	cap	A) a dungeon delver's cap (level 11) // B) a horn-crested helm (level 8), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794067683	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	drop	bra	You drop an eagle-carved bracer.	-	-
+1794067685	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	drop	cap	You drop a dungeon delver's cap.	-	-
+1794067686	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	sacrifice	bra	The Gods give you 20 copper coins for your sacrifice.	-	-
+1794067687	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	sacrifice	cap	The Gods give you 22 copper coins for your sacrifice.	-	-
+1794067687	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	inventory		You are carrying: //      a candlekeeper's mantle //      a granite key	-	+
+1794067689	cmd	Trentlin	20	30425	hyrule.are	standing	85	0	-	compare	man	A) a candlekeeper's mantle (level 12) // B) an Eagle-feather cloak (level 8), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794067694	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	drop	man	You drop a candlekeeper's mantle.	-	-
+1794067696	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	drop	key	You drop a granite key.	-	-
+1794067697	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	sacrifice	man	The Gods give you 24 copper coins for your sacrifice.	-	-
+1794067698	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	sacrifice	key	The Gods give you 20 copper coins for your sacrifice.	-	-
+1794067700	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	levitate		You slowly rise up off the ground.	-	-
+1794067700	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	look		Level 2: Cracked Eastern Room //   A narrow eastern room whose walls are fractured top and bottom, the cracks // wide enough to let a cold draught whisper through, as though bombs have	-	+
+1794067706	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	kill	g	Your punch MASSACRES a gel! // Your punch injures a gel.	-	-
+1794067707	item	Trentlin	20	30425	hyrule.are	30695	four bombs	type=treasure level=1 worn=0 nested=0 timer=0 cond=100 inside=0	violence_update
+1794067709	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	kill	g	Your punch wounds a gel. // Your punch decimates a gel!	-	-
+1794067710	item	Trentlin	20	30425	hyrule.are	30695	four bombs	type=treasure level=1 worn=0 nested=0 timer=0 cond=100 inside=0	violence_update
+1794067714	cmd	Trentlin	20	30425	hyrule.are	standing	89	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794067715	cmd	Trentlin	20	30427	hyrule.are	standing	89	0	-	north		Level 2: Eastern Hall of Cuts //   Deep, curving cuts score the walls of this room, sharper and longer than // any wooden boomerang could make, and a scatter of broken masonry lies near	-	+
+1794067718	cmd	Trentlin	20	30427	hyrule.are	standing	89	0	-	consider	go	A blue goriya is well below your level. // A blue goriya has about half your hit points. // Blow for blow, you would need about 4 rounds to bring a blue goriya down; it would need about 49 rounds for you.	-	+
+1794067721	cmd	Trentlin	20	30427	hyrule.are	standing	89	0	-	kill	go	Your punch misses a blue goriya. // Your punch DISMEMBERS a blue goriya!	-	-
+1794067724	cmd	Trentlin	20	30427	hyrule.are	fighting	89	0	fight	kick		Your kick grazes a blue goriya.	-	-
+1794067727	cmd	Trentlin	20	30427	hyrule.are	fighting	89	0	fight	kick		Your kick hits a blue goriya.	-	-
+1794067729	cmd	Trentlin	20	30427	hyrule.are	fighting	89	0	fight	kick		Your kick misses a blue goriya.	-	-
+1794067734	item	Trentlin	20	30427	hyrule.are	30695	four bombs	type=treasure level=1 worn=0 nested=0 timer=0 cond=100 inside=0	violence_update
+1794067737	cmd	Trentlin	20	30427	hyrule.are	standing	85	0	-	look	in cor	Corpse of a blue goriya contains: //      Nothing.	-	-
+1794067739	cmd	Trentlin	20	30427	hyrule.are	standing	85	0	-	inventory		You are carrying: //      (Glowing) (Humming) a small boomerang // ( 2) a potion of protection	-	+
+1794067740	cmd	Trentlin	20	30427	hyrule.are	standing	85	0	-	look		Level 2: Eastern Hall of Cuts //   Deep, curving cuts score the walls of this room, sharper and longer than // any wooden boomerang could make, and a scatter of broken masonry lies near	-	+
+1794067743	cmd	Trentlin	20	30427	hyrule.are	standing	85	0	-	get	boom	You get the Magical Boomerang.	-	-
+1794067746	cmd	Trentlin	20	30427	hyrule.are	standing	85	0	-	drop	small	You drop a small boomerang.	-	-
+1794067751	cmd	Trentlin	20	30427	hyrule.are	standing	85	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794067752	cmd	Trentlin	20	30429	hyrule.are	standing	85	0	-	north		Level 2: Trap-Grooved Room //   Polished grooves cut across the floor of this cramped eastern room, running // wall to wall where a spiked blade slides on its own the moment anything	-	+
+1794067757	cmd	Trentlin	20	30428	hyrule.are	standing	85	0	-	west		Level 2: Silent Chamber //   An empty, silent chamber of pale blue stone, its floor swept bare and its // corners deep in shadow. No track marks the dust here, and every footstep	-	+
+1794067759	cmd	Trentlin	20	30428	hyrule.are	standing	85	0	-	get	key	You get a small key.	-	-
+1794067760	cmd	Trentlin	20	30430	hyrule.are	standing	85	0	-	north		Level 2: Serpent Hall //   Coiled tracks and shed skins cover the floor of this long chamber, and the // air is warm and close with reptile musk. A double row of stone blocks runs	-	+
+1794067763	cmd	Trentlin	20	30430	hyrule.are	standing	85	0	-	open	eas	I see no eas here.	-	-
+1794067765	cmd	Trentlin	20	30430	hyrule.are	standing	85	0	-	open	east	It's locked.	-	-
+1794067768	item	Trentlin	20	30430	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794067768	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794067769	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	open	east	Ok.	-	-
+1794067769	cmd	Trentlin	20	30431	hyrule.are	standing	88	0	-	east		Level 2: Slime-Pooled Cell //   Glistening smears of slime trail across this small chamber, pooling in the // grout between the tiles and dripping from the lip of the blocks, where tiny	-	+
+1794067771	cmd	Trentlin	20	30433	hyrule.are	standing	88	0	-	north		Level 2: Moonlit Smoke Hollow //   Blue stone closes in on this northeast hollow, damp beading on every block, // but the far end is dry and warm where a pair of fires burns low. Their	-	+
+1794067774	cmd	Trentlin	20	30433	hyrule.are	standing	88	0	-	list		You can't do that here.	-	-
+1794067775	cmd	Trentlin	20	30431	hyrule.are	standing	88	0	-	south		Level 2: Slime-Pooled Cell //   Glistening smears of slime trail across this small chamber, pooling in the // grout between the tiles and dripping from the lip of the blocks, where tiny	-	+
+1794067776	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	west		Level 2: Serpent Hall //   Coiled tracks and shed skins cover the floor of this long chamber, and the // air is warm and close with reptile musk. A double row of stone blocks runs	-	+
+1794067778	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	open	north	The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794067779	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794067781	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	kill	ro	Your punch DISMEMBERS a rope! // Your punch MUTILATES a rope!	-	-
+1794067783	cmd	Trentlin	20	30430	hyrule.are	fighting	88	0	fight	kick		Your kick scratches a rope.	-	-
+1794067788	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	inventory		You are carrying: //      the Magical Boomerang // ( 2) a potion of protection	-	+
+1794067788	cmd	Trentlin	20	30430	hyrule.are	standing	88	0	-	quaff	gre	You quaff a grey potion. // Stone skin never takes on a monk or a necromancer. // Your spell mauls you.	-	+
+1794067790	cmd	Trentlin	20	30430	hyrule.are	standing	84	0	-	open	north	Ok.	-	-
+1794067791	cmd	Trentlin	20	30432	hyrule.are	standing	84	0	-	north		Level 2: Smoke-Stained Antechamber //   Gouged walls and scattered stone chips mark this chamber below the // dungeon's northern end. A low rumble comes from beyond the north wall, and	-	+
+1794067795	cmd	Trentlin	20	30432	hyrule.are	standing	84	0	-	consider	g	A red goriya is far below your level. // A red goriya has about half your hit points. // Blow for blow, you would need about 3 rounds to bring a red goriya down; it would need over a hundred rounds for you.	-	+
+1794067797	cmd	Trentlin	20	30432	hyrule.are	standing	84	0	-	kill	go	Your punch wounds a red goriya. // Your punch DISMEMBERS a red goriya!	-	-

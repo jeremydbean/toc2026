@@ -271482,3 +271482,218 @@ Sat Nov  7 16:05:02 2026 :: Log Trentlin [11034]: killed the ochre jello
 Sat Nov  7 16:05:02 2026 :: Log Trentlin [11034]: coin +11 silver
 Sat Nov  7 16:05:02 2026 :: Log Trentlin [11034]: coin +75 copper
 Sat Nov  7 16:05:02 2026 :: Log Trentlin [11034]: coin +1 gold
+Sat Nov  7 16:05:06 2026 :: Log Trentlin [11034]: n
+Sat Nov  7 16:05:06 2026 :: Log Trentlin [11035]: arrived (The Small Intestine) from 11034
+Sat Nov  7 16:05:07 2026 :: Log Trentlin [11035]: e
+Sat Nov  7 16:05:07 2026 :: Log Trentlin [11036]: arrived (The Small Intestine) from 11035
+Sat Nov  7 16:05:08 2026 :: Log Trentlin [11036]: d
+Sat Nov  7 16:05:08 2026 :: Log Trentlin [11036]: s
+Sat Nov  7 16:05:08 2026 :: Log Trentlin [11037]: arrived (The Small Intestine) from 11036
+Sat Nov  7 16:05:10 2026 :: Log Trentlin [11037]: affects off: levitate
+Sat Nov  7 16:05:11 2026 :: Log Trentlin [11037]: nerve
+Sat Nov  7 16:05:13 2026 :: Log Trentlin [11037]: nerve
+Sat Nov  7 16:05:16 2026 :: Log Trentlin [11037]: nerve
+Sat Nov  7 16:05:22 2026 :: Log Trentlin [11037]: kick
+Sat Nov  7 16:05:24 2026 :: Log Trentlin [11037]: killed the umber hulk
+Sat Nov  7 16:05:24 2026 :: Log Trentlin [11037]: coin +8 silver
+Sat Nov  7 16:05:24 2026 :: Log Trentlin [11037]: coin +52 copper
+Sat Nov  7 16:05:24 2026 :: Log Trentlin [11037]: coin +8 gold
+Sat Nov  7 16:05:28 2026 :: Log Trentlin [11037]: reca
+Sat Nov  7 16:05:28 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 11037
+Sat Nov  7 16:05:31 2026 :: Log Trentlin [4207]: e
+Sat Nov  7 16:05:31 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov  7 16:05:31 2026 :: Log Trentlin [4202]: n
+Sat Nov  7 16:05:31 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sat Nov  7 16:05:32 2026 :: Log Trentlin [4203]: n
+Sat Nov  7 16:05:32 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Nov  7 16:05:32 2026 :: Log Trentlin [4210]: n
+Sat Nov  7 16:05:32 2026 :: Log Trentlin [4210]: slee
+Sat Nov  7 16:06:04 2026 :: Log Trentlin [4210]: gr
+Sat Nov  7 16:06:07 2026 :: Log Trentlin [4210]: wake
+Sat Nov  7 16:06:07 2026 :: Log Trentlin [4210]: s
+Sat Nov  7 16:06:07 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sat Nov  7 16:06:09 2026 :: Log Trentlin [4203]: levitate
+Sat Nov  7 16:06:12 2026 :: Log Trentlin [4203]: south
+Sat Nov  7 16:06:12 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Sat Nov  7 16:06:12 2026 :: Log Trentlin [4202]: west
+Sat Nov  7 16:06:12 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Sat Nov  7 16:06:12 2026 :: Log Trentlin [4207]: up
+Sat Nov  7 16:06:12 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [3700]: up
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [3772]: up
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [3795]: enter portal
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [15000]: east
+Sat Nov  7 16:06:13 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15001]: east
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15002]: east
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15003]: east
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15004]: affects off: shield
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15004]: north
+Sat Nov  7 16:06:14 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15010]: north
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15011]: north
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15012]: north
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15013]: east
+Sat Nov  7 16:06:15 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Sat Nov  7 16:06:16 2026 :: Log Trentlin [15038]: east
+Sat Nov  7 16:06:16 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Sat Nov  7 16:06:16 2026 :: Log Trentlin [15068]: enter cabinet
+Sat Nov  7 16:06:16 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Sat Nov  7 16:06:18 2026 :: Log Trentlin [30200]: where tekite
+Sat Nov  7 16:06:23 2026 :: Log Trentlin [30200]: play recorder 2
+Sat Nov  7 16:06:23 2026 :: Log Trentlin [30276]: arrived (The Moon Gate) from 30200
+Sat Nov  7 16:06:28 2026 :: Log Trentlin [30276]: con oc
+Sat Nov  7 16:06:30 2026 :: Log Trentlin [30276]: d
+Sat Nov  7 16:06:30 2026 :: Log Trentlin [30418]: arrived (Level 2: Crescent Gate) from 30276
+Sat Nov  7 16:06:33 2026 :: Log Trentlin [30418]: e
+Sat Nov  7 16:06:33 2026 :: Log Trentlin [30419]: arrived (Level 2: Shed Skin Chamber) from 30418
+Sat Nov  7 16:06:35 2026 :: Log Trentlin [30419]: con ro
+Sat Nov  7 16:06:39 2026 :: Log Trentlin [30419]: n
+Sat Nov  7 16:06:39 2026 :: Log Trentlin [30422]: arrived (Level 2: Moonstone Crossroads) from 30419
+Sat Nov  7 16:06:42 2026 :: Log Trentlin [30422]: open est
+Sat Nov  7 16:06:44 2026 :: Log Trentlin [30422]: open east
+Sat Nov  7 16:06:47 2026 :: Log Trentlin [30422]: unlock east
+Sat Nov  7 16:06:48 2026 :: Log Trentlin [30422]: k r
+Sat Nov  7 16:06:53 2026 :: Log Trentlin [30422]: kick
+Sat Nov  7 16:06:56 2026 :: Log Trentlin [30422]: kick
+Sat Nov  7 16:06:57 2026 :: Log Trentlin [30422]: killed a rope
+Sat Nov  7 16:06:57 2026 :: Log Trentlin [30422]: coin +1 silver
+Sat Nov  7 16:06:57 2026 :: Log Trentlin [30422]: coin +29 copper
+Sat Nov  7 16:06:57 2026 :: Log Trentlin [30422]: coin +1 gold
+Sat Nov  7 16:07:02 2026 :: Log Trentlin [30422]: sco
+Sat Nov  7 16:07:03 2026 :: Log Trentlin [30422]: l in cor
+Sat Nov  7 16:07:04 2026 :: Log Trentlin [30422]: s
+Sat Nov  7 16:07:04 2026 :: Log Trentlin [30419]: arrived (Level 2: Shed Skin Chamber) from 30422
+Sat Nov  7 16:07:05 2026 :: Log Trentlin [30419]: k ro
+Sat Nov  7 16:07:08 2026 :: Log Trentlin [30419]: kick
+Sat Nov  7 16:07:09 2026 :: Log Trentlin [30419]: killed a rope
+Sat Nov  7 16:07:09 2026 :: Log Trentlin [30419]: coin +1 silver
+Sat Nov  7 16:07:09 2026 :: Log Trentlin [30419]: coin +29 copper
+Sat Nov  7 16:07:09 2026 :: Log Trentlin [30419]: coin +1 gold
+Sat Nov  7 16:07:13 2026 :: Log Trentlin [30419]: get key
+Sat Nov  7 16:07:13 2026 :: Log Trentlin [30419]: n
+Sat Nov  7 16:07:13 2026 :: Log Trentlin [30422]: arrived (Level 2: Moonstone Crossroads) from 30419
+Sat Nov  7 16:07:14 2026 :: Log Trentlin [30422]: unlock east
+Sat Nov  7 16:07:16 2026 :: Log Trentlin [30422]: open east
+Sat Nov  7 16:07:16 2026 :: Log Trentlin [30422]: e
+Sat Nov  7 16:07:16 2026 :: Log Trentlin [30423]: arrived (Level 2: Dripping Chamber) from 30422
+Sat Nov  7 16:07:22 2026 :: Log Trentlin [30423]: con g
+Sat Nov  7 16:07:23 2026 :: Log Trentlin [30423]: k g
+Sat Nov  7 16:07:24 2026 :: Log Trentlin [30423]: killed a gel
+Sat Nov  7 16:07:24 2026 :: Log Trentlin [30423]: coin +6 silver
+Sat Nov  7 16:07:24 2026 :: Log Trentlin [30423]: coin +23 copper
+Sat Nov  7 16:07:27 2026 :: Log Trentlin [30423]: k g
+Sat Nov  7 16:07:27 2026 :: Log Trentlin [30423]: killed a gel
+Sat Nov  7 16:07:27 2026 :: Log Trentlin [30423]: coin +6 silver
+Sat Nov  7 16:07:27 2026 :: Log Trentlin [30423]: coin +23 copper
+Sat Nov  7 16:07:32 2026 :: Log Trentlin [30423]: bomb north
+Sat Nov  7 16:07:32 2026 :: Log Trentlin [30423]: n
+Sat Nov  7 16:07:32 2026 :: Log Trentlin [30425]: arrived (Level 2: Cracked Eastern Room) from 30423
+Sat Nov  7 16:07:37 2026 :: Log Trentlin [30425]: l in ches
+Sat Nov  7 16:07:41 2026 :: Log Trentlin [30425]: get all ches
+Sat Nov  7 16:07:43 2026 :: Log Trentlin [30425]: drop blade
+Sat Nov  7 16:07:45 2026 :: Log Trentlin [30425]: drop sword
+Sat Nov  7 16:07:46 2026 :: Log Trentlin [30425]: sac bla
+Sat Nov  7 16:07:46 2026 :: Log Trentlin [30425]: coin +28 copper
+Sat Nov  7 16:07:47 2026 :: Log Trentlin [30425]: sac swo
+Sat Nov  7 16:07:47 2026 :: Log Trentlin [30425]: coin +18 copper
+Sat Nov  7 16:07:50 2026 :: Treasure goblin: vanished from room 6306 (On the Busy Path, arac.are) (too long in one area).
+Sat Nov  7 16:07:52 2026 :: Log Trentlin [30425]: comp guar
+Sat Nov  7 16:07:55 2026 :: Log Trentlin [30425]: drop guar
+Sat Nov  7 16:07:58 2026 :: Log Trentlin [30425]: sac guar
+Sat Nov  7 16:07:58 2026 :: Log Trentlin [30425]: coin +26 copper
+Sat Nov  7 16:07:58 2026 :: Log Trentlin [30425]: i
+Sat Nov  7 16:08:00 2026 :: Log Trentlin [30425]: comp brac
+Sat Nov  7 16:08:02 2026 :: Log Trentlin [30425]: comp cap
+Sat Nov  7 16:08:03 2026 :: Log Trentlin [30425]: drop bra
+Sat Nov  7 16:08:05 2026 :: Log Trentlin [30425]: drop cap
+Sat Nov  7 16:08:06 2026 :: Log Trentlin [30425]: sac bra
+Sat Nov  7 16:08:06 2026 :: Log Trentlin [30425]: coin +20 copper
+Sat Nov  7 16:08:07 2026 :: Log Trentlin [30425]: sac cap
+Sat Nov  7 16:08:07 2026 :: Log Trentlin [30425]: coin +22 copper
+Sat Nov  7 16:08:07 2026 :: Log Trentlin [30425]: i
+Sat Nov  7 16:08:09 2026 :: Log Trentlin [30425]: comp man
+Sat Nov  7 16:08:14 2026 :: Log Trentlin [30425]: affects off: levitate
+Sat Nov  7 16:08:14 2026 :: Log Trentlin [30425]: drop man
+Sat Nov  7 16:08:16 2026 :: Log Trentlin [30425]: drop key
+Sat Nov  7 16:08:17 2026 :: Log Trentlin [30425]: sac man
+Sat Nov  7 16:08:17 2026 :: Log Trentlin [30425]: coin +24 copper
+Sat Nov  7 16:08:18 2026 :: Log Trentlin [30425]: sac key
+Sat Nov  7 16:08:18 2026 :: Log Trentlin [30425]: coin +20 copper
+Sat Nov  7 16:08:20 2026 :: Log Trentlin [30425]: levitate
+Sat Nov  7 16:08:20 2026 :: Log Trentlin [30425]: l
+Sat Nov  7 16:08:26 2026 :: Log Trentlin [30425]: k g
+Sat Nov  7 16:08:27 2026 :: Log Trentlin [30425]: killed a gel
+Sat Nov  7 16:08:27 2026 :: Log Trentlin [30425]: coin +1 gold
+Sat Nov  7 16:08:27 2026 :: Log Trentlin [30425]: coin +6 silver
+Sat Nov  7 16:08:27 2026 :: Log Trentlin [30425]: coin +23 copper
+Sat Nov  7 16:08:29 2026 :: Log Trentlin [30425]: k g
+Sat Nov  7 16:08:30 2026 :: Log Trentlin [30425]: killed a gel
+Sat Nov  7 16:08:30 2026 :: Log Trentlin [30425]: coin +6 silver
+Sat Nov  7 16:08:30 2026 :: Log Trentlin [30425]: coin +23 copper
+Sat Nov  7 16:08:34 2026 :: Log Trentlin [30425]: bomb north
+Sat Nov  7 16:08:35 2026 :: Log Trentlin [30425]: n
+Sat Nov  7 16:08:35 2026 :: Log Trentlin [30427]: arrived (Level 2: Eastern Hall of Cuts) from 30425
+Sat Nov  7 16:08:38 2026 :: Log Trentlin [30427]: con go
+Sat Nov  7 16:08:41 2026 :: Log Trentlin [30427]: k go
+Sat Nov  7 16:08:44 2026 :: Log Trentlin [30427]: kick
+Sat Nov  7 16:08:47 2026 :: Log Trentlin [30427]: kick
+Sat Nov  7 16:08:49 2026 :: Log Trentlin [30427]: kick
+Sat Nov  7 16:08:54 2026 :: Log Trentlin [30427]: killed a blue goriya
+Sat Nov  7 16:08:54 2026 :: Log Trentlin [30427]: coin +21 silver
+Sat Nov  7 16:08:54 2026 :: Log Trentlin [30427]: coin +20 copper
+Sat Nov  7 16:08:54 2026 :: Log Trentlin [30427]: coin +4 gold
+Sat Nov  7 16:08:57 2026 :: Log Trentlin [30427]: l in cor
+Sat Nov  7 16:08:59 2026 :: Log Trentlin [30427]: i
+Sat Nov  7 16:09:00 2026 :: Log Trentlin [30427]: l
+Sat Nov  7 16:09:03 2026 :: Log Trentlin [30427]: get boom
+Sat Nov  7 16:09:06 2026 :: Log Trentlin [30427]: drop small
+Sat Nov  7 16:09:11 2026 :: Log Trentlin [30427]: bomb north
+Sat Nov  7 16:09:12 2026 :: Log Trentlin [30427]: n
+Sat Nov  7 16:09:12 2026 :: Log Trentlin [30429]: arrived (Level 2: Trap-Grooved Room) from 30427
+Sat Nov  7 16:09:17 2026 :: Log Trentlin [30429]: w
+Sat Nov  7 16:09:17 2026 :: Log Trentlin [30428]: arrived (Level 2: Silent Chamber) from 30429
+Sat Nov  7 16:09:19 2026 :: Log Trentlin [30428]: get key
+Sat Nov  7 16:09:20 2026 :: Log Trentlin [30428]: n
+Sat Nov  7 16:09:20 2026 :: Log Trentlin [30430]: arrived (Level 2: Serpent Hall) from 30428
+Sat Nov  7 16:09:23 2026 :: Log Trentlin [30430]: open eas
+Sat Nov  7 16:09:25 2026 :: Log Trentlin [30430]: open east
+Sat Nov  7 16:09:28 2026 :: Log Trentlin [30430]: unlock east
+Sat Nov  7 16:09:29 2026 :: Log Trentlin [30430]: open east
+Sat Nov  7 16:09:29 2026 :: Log Trentlin [30430]: e
+Sat Nov  7 16:09:29 2026 :: Log Trentlin [30431]: arrived (Level 2: Slime-Pooled Cell) from 30430
+Sat Nov  7 16:09:31 2026 :: Log Trentlin [30431]: n
+Sat Nov  7 16:09:31 2026 :: Log Trentlin [30433]: arrived (Level 2: Moonlit Smoke Hollow) from 30431
+Sat Nov  7 16:09:34 2026 :: Log Trentlin [30433]: list
+Sat Nov  7 16:09:35 2026 :: Log Trentlin [30433]: s
+Sat Nov  7 16:09:35 2026 :: Log Trentlin [30431]: arrived (Level 2: Slime-Pooled Cell) from 30433
+Sat Nov  7 16:09:36 2026 :: Log Trentlin [30431]: w
+Sat Nov  7 16:09:36 2026 :: Log Trentlin [30430]: arrived (Level 2: Serpent Hall) from 30431
+Sat Nov  7 16:09:38 2026 :: Log Trentlin [30430]: open north
+Sat Nov  7 16:09:39 2026 :: Log Trentlin [30430]: n
+Sat Nov  7 16:09:41 2026 :: Log Trentlin [30430]: k ro
+Sat Nov  7 16:09:43 2026 :: Log Trentlin [30430]: kick
+Sat Nov  7 16:09:45 2026 :: Log Trentlin [30430]: killed a rope
+Sat Nov  7 16:09:45 2026 :: Log Trentlin [30430]: coin +1 silver
+Sat Nov  7 16:09:45 2026 :: Log Trentlin [30430]: coin +29 copper
+Sat Nov  7 16:09:45 2026 :: Log Trentlin [30430]: coin +1 gold
+Sat Nov  7 16:09:48 2026 :: Log Trentlin [30430]: i
+Sat Nov  7 16:09:48 2026 :: Log Trentlin [30430]: quaff gre
+Sat Nov  7 16:09:50 2026 :: Log Trentlin [30430]: open north
+Sat Nov  7 16:09:51 2026 :: Log Trentlin [30430]: n
+Sat Nov  7 16:09:51 2026 :: Log Trentlin [30432]: arrived (Level 2: Smoke-Stained Antechamber) from 30430
+Sat Nov  7 16:09:55 2026 :: Log Trentlin [30432]: con g
+Sat Nov  7 16:09:57 2026 :: Log Trentlin [30432]: k go
+Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: killed a red goriya
+Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: coin +11 silver
+Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: coin +74 copper
+Sat Nov  7 16:10:03 2026 :: Log Trentlin [30432]: coin +5 gold
