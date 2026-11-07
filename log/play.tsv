@@ -27676,3 +27676,109 @@
 1794069321	cmd	Trentlin	20	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
 1794069321	cmd	Trentlin	20	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
 1794069321	cmd	Trentlin	20	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794069325	cmd	Trentlin	20	30205	hyrule.are	standing	100	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794069329	cmd	Trentlin	20	30437	hyrule.are	standing	100	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794069330	cmd	Trentlin	20	30436	hyrule.are	standing	100	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794069331	cmd	Trentlin	20	30439	hyrule.are	standing	100	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794069331	cmd	Trentlin	20	30442	hyrule.are	standing	100	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794069332	cmd	Trentlin	20	30439	hyrule.are	standing	100	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794069332	cmd	Trentlin	20	30436	hyrule.are	standing	100	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794069333	cmd	Trentlin	20	30436	hyrule.are	standing	100	0	-	get	ke	You get a small key.	-	-
+1794069333	cmd	Trentlin	20	30439	hyrule.are	standing	100	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794069334	cmd	Trentlin	20	30442	hyrule.are	standing	100	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794069334	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794069336	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	east		The locked is closed.	-	-
+1794069340	item	Trentlin	20	30447	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794069340	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794069342	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	open	esat	I see no esat here.	-	-
+1794069345	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	open	east	Ok.	-	-
+1794069345	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794069349	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	look	in ches	The Manji's equipment chest contains: //      a pair of Rope-hide boots //      the Heart Guard of the Eagle	-	+
+1794069352	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	get	all ches	You get a pair of Rope-hide boots from the Manji's equipment chest. // You get the Heart Guard of the Eagle from the Manji's equipment chest. // You get an Aquamentus-scale hauberk from the Manji's equipment chest.	-	+
+1794069354	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	compare	boot	A) a pair of trap-runner's boots (level 15) // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794069357	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	drop	boot	You drop a pair of trap-runner's boots.	-	-
+1794069358	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	compare	boot	A) a pair of Rope-hide boots (level 19) // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794069360	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	drop	boot	You drop a pair of Rope-hide boots.	-	-
+1794069362	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	sacrifice	boot	The Gods give you 38 copper coins for your sacrifice.	-	-
+1794069363	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	sacrifice	boot	The Gods give you 30 copper coins for your sacrifice.	-	-
+1794069363	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	inventory		You are carrying: //      a boomeranger's wristguard //      an Eagle archer's bow	-	+
+1794069365	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	compare	wris	A) a boomeranger's wristguard (level 16) // B) an onyx bracelet (level 18), worn // Slot: wrist.  Your damage comes from weapons.	-	+
+1794069367	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	drop	wris	You drop a boomeranger's wristguard.	-	-
+1794069369	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	sacrifice	wris	The Gods give you 32 copper coins for your sacrifice.	-	-
+1794069371	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	drop	bow	You drop an Eagle archer's bow.	-	-
+1794069372	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	compare	ha	A) an Aquamentus-scale hauberk (level 18) // B) a Roman-style breastplate (level 13), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794069376	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	drop	ha	You drop an Aquamentus-scale hauberk.	-	-
+1794069376	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	inventory		You are carrying: //      the Heart Guard of the Eagle //      a small key	-	+
+1794069380	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	compare	guard	A) the Heart Guard of the Eagle (level 8) // B) a Blue rimmed, white cloak (level 11), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794069388	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	drop	guard	You drop the Heart Guard of the Eagle.	-	-
+1794069389	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	look		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794069396	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794069399	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	open	north	It's locked.	-	-
+1794069399	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	north		The locked is closed.	-	-
+1794069403	item	Trentlin	20	30447	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794069403	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794069406	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794069406	cmd	Trentlin	20	30450	hyrule.are	standing	100	0	-	north		Level 3: Manji Hall of Grinding Grooves //   Twin grooves cut across this narrow chamber of green stone, and spiked // blades rest at their ends against the walls, poised to slide at the first	-	+
+1794069409	cmd	Trentlin	20	30450	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794069411	cmd	Trentlin	20	30453	hyrule.are	standing	100	0	-	north		Level 3: Manji Hearth Chamber //   Green stone gives way here to a floor of fitted slate, swept clean in a // wide square around two braziers set against the north wall. The fires	-	+
+1794069418	cmd	Trentlin	20	30453	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794069418	cmd	Trentlin	20	30452	hyrule.are	standing	100	0	-	west		Level 3: Northwest Roost //   Shadows crowd the high corners of this quiet chamber, and the musk of // roosting bats hangs thick in the air. Droppings stain the tiles in long	-	+
+1794069422	cmd	Trentlin	20	30452	hyrule.are	standing	100	0	-	get	all	You get a small key.	-	-
+1794069423	cmd	Trentlin	20	30453	hyrule.are	standing	100	0	-	east		Level 3: Manji Hearth Chamber //   Green stone gives way here to a floor of fitted slate, swept clean in a // wide square around two braziers set against the north wall. The fires	-	+
+1794069425	cmd	Trentlin	20	30450	hyrule.are	standing	100	0	-	south		Level 3: Manji Hall of Grinding Grooves //   Twin grooves cut across this narrow chamber of green stone, and spiked // blades rest at their ends against the walls, poised to slide at the first	-	+
+1794069426	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	south		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794069426	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794069431	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	bomb	east	You have no bombs. The arrow shops sell four for 20 gold.	-	-
+1794069431	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794069434	cmd	Trentlin	20	30448	hyrule.are	standing	100	0	-	kill	tra	Nothing harms a blade trap. Go round it.	-	-
+1794069437	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794069439	cmd	Trentlin	20	30447	hyrule.are	standing	100	0	-	kill	zo	A zol dodges your attack. // Your punch DISEMBOWELS a zol!	-	-
+1794069441	cmd	Trentlin	20	30447	hyrule.are	fighting	98	0	fight	kick		Your kick misses a zol.	-	-
+1794069444	cmd	Trentlin	20	30447	hyrule.are	fighting	99	0	fight	kick		Your kick scratches a zol.	-	-
+1794069447	cmd	Trentlin	20	30447	hyrule.are	fighting	99	0	fight	kick		Your kick scratches a zol.	-	-
+1794069450	cmd	Trentlin	20	30447	hyrule.are	fighting	97	0	fight	nerve		You jab a zol with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a zol.	-	-
+1794069453	cmd	Trentlin	20	30447	hyrule.are	fighting	97	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a zol.	-	-
+1794069457	cmd	Trentlin	20	30447	hyrule.are	standing	97	0	-	look	in cor	Corpse of a zol contains: //      Nothing.	-	-
+1794069458	cmd	Trentlin	20	30447	hyrule.are	standing	97	0	-	get	key	You get a small key.	-	-
+1794069458	cmd	Trentlin	20	30447	hyrule.are	standing	97	0	-	look		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794069459	cmd	Trentlin	20	30442	hyrule.are	standing	97	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794069461	cmd	Trentlin	20	30442	hyrule.are	standing	97	0	-	kill	dark	A red darknut dodges your attack. // Your punch DISEMBOWELS a red darknut!	-	-
+1794069463	cmd	Trentlin	20	30442	hyrule.are	fighting	97	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a red darknut.	-	-
+1794069471	cmd	Trentlin	20	30442	hyrule.are	fighting	97	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a red darknut.	-	-
+1794069474	cmd	Trentlin	20	30442	hyrule.are	fighting	97	0	fight	kick		Your kick scratches a red darknut.	-	-
+1794069477	cmd	Trentlin	20	30442	hyrule.are	fighting	94	0	fight	kick		Your kick hits a red darknut.	-	-
+1794069480	cmd	Trentlin	20	30442	hyrule.are	fighting	88	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a red darknut.	-	-
+1794069483	cmd	Trentlin	20	30442	hyrule.are	fighting	88	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a red darknut.	-	-
+1794069486	cmd	Trentlin	20	30442	hyrule.are	fighting	82	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a red darknut!	-	-
+1794069489	cmd	Trentlin	20	30442	hyrule.are	fighting	79	0	fight	nerve		You jab a red darknut with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a red darknut.	-	-
+1794069494	cmd	Trentlin	20	30442	hyrule.are	standing	79	0	-	look	in cir	You do not see that here.	-	-
+1794069496	cmd	Trentlin	20	30442	hyrule.are	standing	79	0	-	sacrifice	cor	The Gods give you 38 copper coins for your sacrifice.	-	-
+1794069497	cmd	Trentlin	20	30442	hyrule.are	standing	79	0	-	look		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794069499	cmd	Trentlin	20	30441	hyrule.are	standing	79	0	-	west		Level 3: Hall of Blades //   Smooth grooves cut along the walls of this chamber, worn deep by spiked // traps that rest in all four corners and slam toward anything crossing their	-	+
+1794069502	cmd	Trentlin	20	30441	hyrule.are	standing	79	0	-	kill	kee	A keese dodges your attack. // A keese parries your attack.	-	-
+1794069507	cmd	Trentlin	20	30441	hyrule.are	fighting	78	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a keese.	-	-
+1794069511	cmd	Trentlin	20	30441	hyrule.are	fighting	79	0	fight	nerve		Nothing harms a blade trap. Go round it.	-	-
+1794069516	cmd	Trentlin	20	30441	hyrule.are	fighting	76	0	fight	nerve		Nothing harms a blade trap. Go round it.	-	-
+1794069517	cmd	Trentlin	20	30441	hyrule.are	fighting	76	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794069518	cmd	Trentlin	20	30441	hyrule.are	fighting	76	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794069519	cmd	Trentlin	20	30446	hyrule.are	fighting	76	0	fight	flee		Level 3: Bat Gallery //   The ceiling of this chamber is pocked with crevices where bats roost, and // the floor beneath is stained with their droppings. Two blocks stand near	-	+
+1794069519	cmd	Trentlin	20	30446	hyrule.are	standing	76	0	-	flee		You aren't fighting anyone.	-	-
+1794069519	cmd	Trentlin	20	30446	hyrule.are	standing	76	0	-	flee		You aren't fighting anyone.	-	-
+1794069521	cmd	Trentlin	20	30446	hyrule.are	standing	76	0	-	kill	kee	Your punch mauls a keese. // Your punch MASSACRES a keese!	-	-
+1794069523	cmd	Trentlin	21	30446	hyrule.are	fighting	76	24	fight	nerve		You jab a keese with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES a keese! // A keese is DEAD!!	-	+
+1794069530	cmd	Trentlin	21	30441	hyrule.are	standing	74	0	-	south		Level 3: Hall of Blades //   Smooth grooves cut along the walls of this chamber, worn deep by spiked // traps that rest in all four corners and slam toward anything crossing their	-	+
+1794069530	cmd	Trentlin	21	30441	hyrule.are	standing	74	0	-	south		Alas, you cannot go that way.	-	-
+1794069541	cmd	Trentlin	21	30442	hyrule.are	standing	74	0	-	east		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794069542	cmd	Trentlin	21	30439	hyrule.are	standing	74	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794069542	cmd	Trentlin	21	30436	hyrule.are	standing	74	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794069543	cmd	Trentlin	21	30437	hyrule.are	standing	74	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794069544	cmd	Trentlin	21	30205	hyrule.are	standing	74	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794069546	cmd	Trentlin	21	4207	dresden.are	standing	74	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794069548	cmd	Trentlin	21	4207	dresden.are	standing	74	0	-	skills		Level  1: dagger              75%      hand to hand        82%       //           recall             100%       // Level  3: kick                79%      	-	+
+1794069550	cmd	Trentlin	21	4207	dresden.are	standing	74	0	-	practice		axe                  8%  dagger              75%  flail                6%   // mace                80%  spear               75%  sword                3%   // whip                15%  bash                 1%  dodge               76%  	-	+
+1794069554	state	Trentlin	21	4207	dresden.are	lvl=21 hp=413/555 mana=821/985 mv=98/326 align=-275 exp=48315 coin=4415118836 bank=11060093999 qp=1115 prac=16 train=3 stash=58/75 remorts=1
+1794069554	cmd	Trentlin	21	4207	dresden.are	standing	74	0	-	score		| Name:       Trentlin | Level:      21 | Class:        Monk | // | Played:     30 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794069558	cmd	Trentlin	21	4205	dresden.are	standing	74	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794069558	cmd	Trentlin	21	4209	dresden.are	standing	74	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1794069559	cmd	Trentlin	21	4209	dresden.are	standing	74	0	-	south		Alas, you cannot go that way.	-	-
+1794069564	cmd	Trentlin	21	4209	dresden.are	standing	74	0	-	sleep		You go to sleep.	-	-

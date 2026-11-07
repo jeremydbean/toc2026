@@ -271998,3 +271998,163 @@ Sat Nov  7 16:35:21 2026 :: Log Trentlin [15038]: east
 Sat Nov  7 16:35:21 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
 Sat Nov  7 16:35:21 2026 :: Log Trentlin [15068]: enter cabinet
 Sat Nov  7 16:35:21 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Sat Nov  7 16:35:25 2026 :: Log Trentlin [30200]: play recorder 3
+Sat Nov  7 16:35:25 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30200
+Sat Nov  7 16:35:29 2026 :: Log Trentlin [30205]: d
+Sat Nov  7 16:35:29 2026 :: Log Trentlin [30437]: arrived (Level 3: Manji Gate) from 30205
+Sat Nov  7 16:35:30 2026 :: Log Trentlin [30437]: w
+Sat Nov  7 16:35:30 2026 :: Log Trentlin [30436]: arrived (Level 3: Ooze Chamber) from 30437
+Sat Nov  7 16:35:31 2026 :: Log Trentlin [30436]: n
+Sat Nov  7 16:35:31 2026 :: Log Trentlin [30439]: arrived (Level 3: Streaked Hall) from 30436
+Sat Nov  7 16:35:31 2026 :: Log Trentlin [30439]: n
+Sat Nov  7 16:35:31 2026 :: Log Trentlin [30442]: arrived (Level 3: Manji Crossing) from 30439
+Sat Nov  7 16:35:32 2026 :: Log Trentlin [30442]: s
+Sat Nov  7 16:35:32 2026 :: Log Trentlin [30439]: arrived (Level 3: Streaked Hall) from 30442
+Sat Nov  7 16:35:32 2026 :: Log Trentlin [30439]: s
+Sat Nov  7 16:35:32 2026 :: Log Trentlin [30436]: arrived (Level 3: Ooze Chamber) from 30439
+Sat Nov  7 16:35:33 2026 :: Log Trentlin [30436]: get ke
+Sat Nov  7 16:35:33 2026 :: Log Trentlin [30436]: n
+Sat Nov  7 16:35:33 2026 :: Log Trentlin [30439]: arrived (Level 3: Streaked Hall) from 30436
+Sat Nov  7 16:35:34 2026 :: Log Trentlin [30439]: n
+Sat Nov  7 16:35:34 2026 :: Log Trentlin [30442]: arrived (Level 3: Manji Crossing) from 30439
+Sat Nov  7 16:35:34 2026 :: Log Trentlin [30442]: n
+Sat Nov  7 16:35:34 2026 :: Log Trentlin [30447]: arrived (Level 3: Hall of Three Locks) from 30442
+Sat Nov  7 16:35:36 2026 :: Log Trentlin [30447]: e
+Sat Nov  7 16:35:40 2026 :: Log Trentlin [30447]: unlock east
+Sat Nov  7 16:35:42 2026 :: Log Trentlin [30447]: open esat
+Sat Nov  7 16:35:45 2026 :: Log Trentlin [30447]: open east
+Sat Nov  7 16:35:45 2026 :: Log Trentlin [30447]: e
+Sat Nov  7 16:35:45 2026 :: Log Trentlin [30448]: arrived (Level 3: Room of Sliding Blades) from 30447
+Sat Nov  7 16:35:49 2026 :: Log Trentlin [30448]: l in ches
+Sat Nov  7 16:35:52 2026 :: Log Trentlin [30448]: get all ches
+Sat Nov  7 16:35:54 2026 :: Log Trentlin [30448]: comp boot
+Sat Nov  7 16:35:57 2026 :: Log Trentlin [30448]: drop boot
+Sat Nov  7 16:35:58 2026 :: Log Trentlin [30448]: comp boot
+Sat Nov  7 16:36:00 2026 :: Log Trentlin [30448]: drop boot
+Sat Nov  7 16:36:02 2026 :: Log Trentlin [30448]: sac boot
+Sat Nov  7 16:36:02 2026 :: Log Trentlin [30448]: coin +38 copper
+Sat Nov  7 16:36:03 2026 :: Log Trentlin [30448]: sac boot
+Sat Nov  7 16:36:03 2026 :: Log Trentlin [30448]: coin +30 copper
+Sat Nov  7 16:36:03 2026 :: Log Trentlin [30448]: i
+Sat Nov  7 16:36:05 2026 :: Log Trentlin [30448]: comp wris
+Sat Nov  7 16:36:07 2026 :: Log Trentlin [30448]: drop wris
+Sat Nov  7 16:36:09 2026 :: Log Trentlin [30448]: sac wris
+Sat Nov  7 16:36:09 2026 :: Log Trentlin [30448]: coin +32 copper
+Sat Nov  7 16:36:11 2026 :: Log Trentlin [30448]: drop bow
+Sat Nov  7 16:36:12 2026 :: Log Trentlin [30448]: comp ha
+Sat Nov  7 16:36:16 2026 :: Log Trentlin [30448]: drop ha
+Sat Nov  7 16:36:16 2026 :: Log Trentlin [30448]: i
+Sat Nov  7 16:36:20 2026 :: Log Trentlin [30448]: comp guard
+Sat Nov  7 16:36:28 2026 :: Log Trentlin [30448]: drop guard
+Sat Nov  7 16:36:29 2026 :: Log Trentlin [30448]: l
+Sat Nov  7 16:36:36 2026 :: Log Trentlin [30448]: w
+Sat Nov  7 16:36:36 2026 :: Log Trentlin [30447]: arrived (Level 3: Hall of Three Locks) from 30448
+Sat Nov  7 16:36:39 2026 :: Log Trentlin [30447]: open north
+Sat Nov  7 16:36:39 2026 :: Log Trentlin [30447]: n
+Sat Nov  7 16:36:43 2026 :: Log Trentlin [30447]: unlock north
+Sat Nov  7 16:36:46 2026 :: Log Trentlin [30447]: open north
+Sat Nov  7 16:36:46 2026 :: Log Trentlin [30447]: n
+Sat Nov  7 16:36:46 2026 :: Log Trentlin [30450]: arrived (Level 3: Manji Hall of Grinding Grooves) from 30447
+Sat Nov  7 16:36:49 2026 :: Log Trentlin [30450]: open north
+Sat Nov  7 16:36:51 2026 :: Log Trentlin [30450]: n
+Sat Nov  7 16:36:51 2026 :: Log Trentlin [30453]: arrived (Level 3: Manji Hearth Chamber) from 30450
+Sat Nov  7 16:36:58 2026 :: Log Trentlin [30453]: open west
+Sat Nov  7 16:36:58 2026 :: Log Trentlin [30453]: w
+Sat Nov  7 16:36:58 2026 :: Log Trentlin [30452]: arrived (Level 3: Northwest Roost) from 30453
+Sat Nov  7 16:37:02 2026 :: Log Trentlin [30452]: get all
+Sat Nov  7 16:37:03 2026 :: Log Trentlin [30452]: e
+Sat Nov  7 16:37:03 2026 :: Log Trentlin [30453]: arrived (Level 3: Manji Hearth Chamber) from 30452
+Sat Nov  7 16:37:05 2026 :: Log Trentlin [30453]: s
+Sat Nov  7 16:37:05 2026 :: Log Trentlin [30450]: arrived (Level 3: Manji Hall of Grinding Grooves) from 30453
+Sat Nov  7 16:37:06 2026 :: Log Trentlin [30450]: s
+Sat Nov  7 16:37:06 2026 :: Log Trentlin [30447]: arrived (Level 3: Hall of Three Locks) from 30450
+Sat Nov  7 16:37:06 2026 :: Log Trentlin [30447]: e
+Sat Nov  7 16:37:06 2026 :: Log Trentlin [30448]: arrived (Level 3: Room of Sliding Blades) from 30447
+Sat Nov  7 16:37:11 2026 :: Log Trentlin [30448]: bomb east
+Sat Nov  7 16:37:11 2026 :: Log Trentlin [30448]: e
+Sat Nov  7 16:37:14 2026 :: Log Trentlin [30448]: k tra
+Sat Nov  7 16:37:17 2026 :: Log Trentlin [30448]: w
+Sat Nov  7 16:37:17 2026 :: Log Trentlin [30447]: arrived (Level 3: Hall of Three Locks) from 30448
+Sat Nov  7 16:37:19 2026 :: Log Trentlin [30447]: k zo
+Sat Nov  7 16:37:21 2026 :: Log Trentlin [30447]: kick
+Sat Nov  7 16:37:24 2026 :: Log Trentlin [30447]: kick
+Sat Nov  7 16:37:27 2026 :: Log Trentlin [30447]: kick
+Sat Nov  7 16:37:30 2026 :: Log Trentlin [30447]: nerve
+Sat Nov  7 16:37:33 2026 :: Log Trentlin [30447]: nerve
+Sat Nov  7 16:37:35 2026 :: Log Trentlin [30447]: killed a zol
+Sat Nov  7 16:37:35 2026 :: Log Trentlin [30447]: coin +13 silver
+Sat Nov  7 16:37:35 2026 :: Log Trentlin [30447]: coin +55 copper
+Sat Nov  7 16:37:35 2026 :: Log Trentlin [30447]: coin +10 gold
+Sat Nov  7 16:37:37 2026 :: Log Trentlin [30447]: l in cor
+Sat Nov  7 16:37:38 2026 :: Log Trentlin [30447]: get key
+Sat Nov  7 16:37:38 2026 :: Log Trentlin [30447]: l
+Sat Nov  7 16:37:39 2026 :: Log Trentlin [30447]: s
+Sat Nov  7 16:37:39 2026 :: Log Trentlin [30442]: arrived (Level 3: Manji Crossing) from 30447
+Sat Nov  7 16:37:41 2026 :: Log Trentlin [30442]: k dark
+Sat Nov  7 16:37:43 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:37:51 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:37:54 2026 :: Log Trentlin [30442]: kick
+Sat Nov  7 16:37:57 2026 :: Log Trentlin [30442]: kick
+Sat Nov  7 16:38:00 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:38:03 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:38:04 2026 :: Treasure goblin: vanished from room 3752 (The West Wall of the Dungeon, school.are) (too long in one area).
+Sat Nov  7 16:38:06 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:38:09 2026 :: Log Trentlin [30442]: nerve
+Sat Nov  7 16:38:11 2026 :: Log Trentlin [30442]: killed a red darknut
+Sat Nov  7 16:38:11 2026 :: Log Trentlin [30442]: coin +5 silver
+Sat Nov  7 16:38:11 2026 :: Log Trentlin [30442]: coin +16 copper
+Sat Nov  7 16:38:11 2026 :: Log Trentlin [30442]: coin +19 gold
+Sat Nov  7 16:38:14 2026 :: Log Trentlin [30442]: l in cir
+Sat Nov  7 16:38:16 2026 :: Log Trentlin [30442]: sac cor
+Sat Nov  7 16:38:16 2026 :: Log Trentlin [30442]: coin +38 copper
+Sat Nov  7 16:38:17 2026 :: Log Trentlin [30442]: l
+Sat Nov  7 16:38:19 2026 :: Log Trentlin [30442]: w
+Sat Nov  7 16:38:19 2026 :: Log Trentlin [30441]: arrived (Level 3: Hall of Blades) from 30442
+Sat Nov  7 16:38:22 2026 :: Log Trentlin [30441]: k kee
+Sat Nov  7 16:38:27 2026 :: Log Trentlin [30441]: nerve
+Sat Nov  7 16:38:29 2026 :: Log Trentlin [30441]: killed a keese
+Sat Nov  7 16:38:29 2026 :: Log Trentlin [30441]: coin +2 gold
+Sat Nov  7 16:38:29 2026 :: Log Trentlin [30441]: coin +8 silver
+Sat Nov  7 16:38:29 2026 :: Log Trentlin [30441]: coin +46 copper
+Sat Nov  7 16:38:29 2026 :: Log Trentlin [30441]: coin +4 gold
+Sat Nov  7 16:38:31 2026 :: Log Trentlin [30441]: nerve
+Sat Nov  7 16:38:36 2026 :: Log Trentlin [30441]: nerve
+Sat Nov  7 16:38:37 2026 :: Log Trentlin [30441]: flee
+Sat Nov  7 16:38:38 2026 :: Log Trentlin [30441]: flee
+Sat Nov  7 16:38:39 2026 :: Log Trentlin [30441]: flee
+Sat Nov  7 16:38:39 2026 :: Log Trentlin [30446]: arrived (Level 3: Bat Gallery) from 30441
+Sat Nov  7 16:38:39 2026 :: Log Trentlin [30446]: flee
+Sat Nov  7 16:38:39 2026 :: Log Trentlin [30446]: flee
+Sat Nov  7 16:38:41 2026 :: Log Trentlin [30446]: k kee
+Sat Nov  7 16:38:43 2026 :: Log Trentlin [30446]: nerve
+Sat Nov  7 16:38:43 2026 :: Log Trentlin [30446]: level 20 -> 21 (earned)
+Sat Nov  7 16:38:43 2026 :: Trentlin has achieved level 21!
+Sat Nov  7 16:38:43 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261107_163843.level (PRESTORE Trentlin to see it).
+Sat Nov  7 16:38:43 2026 :: Log Trentlin [30446]: killed a keese
+Sat Nov  7 16:38:43 2026 :: Log Trentlin [30446]: coin +8 silver
+Sat Nov  7 16:38:43 2026 :: Log Trentlin [30446]: coin +46 copper
+Sat Nov  7 16:38:43 2026 :: Log Trentlin [30446]: coin +4 gold
+Sat Nov  7 16:38:50 2026 :: Log Trentlin [30446]: s
+Sat Nov  7 16:38:50 2026 :: Log Trentlin [30441]: arrived (Level 3: Hall of Blades) from 30446
+Sat Nov  7 16:38:50 2026 :: Log Trentlin [30441]: s
+Sat Nov  7 16:39:01 2026 :: Log Trentlin [30441]: e
+Sat Nov  7 16:39:01 2026 :: Log Trentlin [30442]: arrived (Level 3: Manji Crossing) from 30441
+Sat Nov  7 16:39:02 2026 :: Log Trentlin [30442]: s
+Sat Nov  7 16:39:02 2026 :: Log Trentlin [30439]: arrived (Level 3: Streaked Hall) from 30442
+Sat Nov  7 16:39:02 2026 :: Log Trentlin [30439]: s
+Sat Nov  7 16:39:02 2026 :: Log Trentlin [30436]: arrived (Level 3: Ooze Chamber) from 30439
+Sat Nov  7 16:39:03 2026 :: Log Trentlin [30436]: e
+Sat Nov  7 16:39:03 2026 :: Log Trentlin [30437]: arrived (Level 3: Manji Gate) from 30436
+Sat Nov  7 16:39:04 2026 :: Log Trentlin [30437]: u
+Sat Nov  7 16:39:04 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30437
+Sat Nov  7 16:39:06 2026 :: Log Trentlin [30205]: reca
+Sat Nov  7 16:39:06 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30205
+Sat Nov  7 16:39:08 2026 :: Log Trentlin [4207]: sk
+Sat Nov  7 16:39:10 2026 :: Log Trentlin [4207]: prac
+Sat Nov  7 16:39:14 2026 :: Log Trentlin [4207]: sco
+Sat Nov  7 16:39:18 2026 :: Log Trentlin [4207]: s
+Sat Nov  7 16:39:18 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4207
+Sat Nov  7 16:39:18 2026 :: Log Trentlin [4205]: s
+Sat Nov  7 16:39:18 2026 :: Log Trentlin [4209]: arrived (Private Prayer Room.) from 4205
+Sat Nov  7 16:39:19 2026 :: Log Trentlin [4209]: s
+Sat Nov  7 16:39:24 2026 :: Log Trentlin [4209]: sleep
