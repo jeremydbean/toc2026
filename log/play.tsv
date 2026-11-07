@@ -25089,3 +25089,229 @@
 1794020806	cmd	Trentlin	17	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
 1794020807	cmd	Trentlin	17	2404	dresden.are	standing	96	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
 1794020807	cmd	Trentlin	17	2401	dresden.are	standing	96	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794020851	cmd	Trentlin	17	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794020852	cmd	Trentlin	17	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794020852	cmd	Trentlin	17	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794020852	cmd	Trentlin	17	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794020852	cmd	Trentlin	17	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794020853	cmd	Trentlin	17	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794020853	cmd	Trentlin	17	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794020853	cmd	Trentlin	17	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794020853	cmd	Trentlin	17	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794020854	cmd	Trentlin	17	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794020854	cmd	Trentlin	17	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794020854	cmd	Trentlin	17	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794020854	cmd	Trentlin	17	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794020855	cmd	Trentlin	17	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794020855	cmd	Trentlin	17	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794020855	cmd	Trentlin	17	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794020855	cmd	Trentlin	17	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the	-	+
+1794020856	cmd	Trentlin	17	306	plains.are	standing	100	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful	-	+
+1794020856	cmd	Trentlin	17	326	plains.are	standing	100	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred	-	+
+1794020856	cmd	Trentlin	17	309	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path	-	+
+1794020856	cmd	Trentlin	17	310	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.	-	+
+1794020857	cmd	Trentlin	17	327	plains.are	standing	100	0	-	north		The foothills //   You are walking in some foothills. It is rather hard to move here. // Further to the north you can see the mountains towering over you.	-	+
+1794020857	cmd	Trentlin	17	313	plains.are	standing	100	0	-	east		Road to Ofcol //   You are walking on a wide road with trail marks on it.  To the north // you see the village of Ofcol and to the south there is the T intersection.	-	+
+1794020857	cmd	Trentlin	17	314	plains.are	standing	100	0	-	north		Road to Ofcol //   You are walking on a wide road with trail marks on it.  From the north // you hear the villagers of Ofcol go about their daily business. To the south	-	+
+1794020857	cmd	Trentlin	17	52	connect.are	standing	100	0	-	north		Outside Ofcol //   You are standing outside the village of Ofcol. // The village looks very small, but still a nice and safe place to stay.	-	+
+1794020858	cmd	Trentlin	17	5550	ofcol.are	standing	100	0	-	north		Village street //   You stand at the small village street in Ofcol. // From here you see small houses and only few people.	-	+
+1794020858	cmd	Trentlin	17	5551	ofcol.are	standing	100	0	-	north		Village street //   You are standing on the village street of Ofcol. // East from here is a small alley and north you enter the village	-	+
+1794020858	cmd	Trentlin	17	5553	ofcol.are	standing	100	0	-	east		The small alley //   You are in a small, quiet alley.  From here you see the village street // to the west and a small room lies to the south.	-	+
+1794020858	cmd	Trentlin	17	601	ofcol.are	standing	100	0	-	east		The Big Intersection //   You are in the big intersection between Raff Way and Impy Way.  Crowds  // of people walk past you as they go on their daily tasks.  Raff Way continues	-	+
+1794020859	cmd	Trentlin	17	666	ofcol.are	standing	100	0	-	east		Raff Way //   You are on Raff Way.  To the west, you can see a big intersection.  To  // the east, you see Raff Way continue toward the Golden Citadel.  There are 	-	+
+1794020859	cmd	Trentlin	17	667	ofcol.are	standing	100	0	-	east		Raff Way //   You are on Raff Way.  Raff Way continues west to the city of Ofcol.  To  // the east, you see Raff Way continue toward the Golden Citadel.  There are 	-	+
+1794020859	cmd	Trentlin	17	699	ofcol.are	standing	100	0	-	east		Outside the Entrance to the Golden Citadel //   You are outside the entrance to the Golden Citadel.  A great gate is to // to the east, marking the entranceway into the citadel.  The road also leads	-	+
+1794020859	cmd	Trentlin	17	698	ofcol.are	standing	100	0	-	east		Inside the Entrance to the Golden Citadel //   You are inside the entrance to the Golden Citadel.  Rich golden tapestries // line the walls, and golden tiles cover the floors.  The exit to this citadel is	-	+
+1794020860	cmd	Trentlin	17	679	ofcol.are	standing	100	0	-	east		A Hallway of the Golden Citadel //   You are in a hallway of the Golden Citadel.  Gold tiles cover the floors, // and rich golden tapestries drape the walls.  Servants in golden livery pass you	-	+
+1794020860	cmd	Trentlin	17	671	ofcol.are	standing	100	0	-	east		The Anteroom to the Temple of Ofcol //   You are in an anteroom to the Temple of Ofcol.  Gold tiles cover the // floor, and servants in golden livery pass you by peaceably.  The temple is to	-	+
+1794020860	cmd	Trentlin	17	669	ofcol.are	standing	100	0	-	east		The Temple of Ofcol //   You are in the Temple of Ofcol.  Golden tiles cover the floor, and solid // gold columns reach the twelve foot ceiling of this vast chamber.  Servants in	-	+
+1794020860	cmd	Trentlin	17	673	ofcol.are	standing	100	0	-	south		The Anteroom to the Temple of Ofcol //   You are in an anteroom to the Temple of Ofcol.  Gold tiles cover the // floor, and servants in golden livery pass you by peaceably.  The temple is to	-	+
+1794020861	cmd	Trentlin	17	690	ofcol.are	standing	100	0	-	up		An Upper Chamber of the Golden Citadel //   You are in one of the upper chambers of the Golden Citadel.  The decora- // tions of this place surpass even those of the first floor.  Gold tiles etched	-	+
+1794020861	cmd	Trentlin	17	695	ofcol.are	standing	100	0	-	up		A Top Chamber of the Golden Citadel //   You are in one of the top chambers of the Golden Citadel.  The decorations // of this room looks like a dragon's hoard.  The whole room is carved out of pure	-	+
+1794020861	cmd	Trentlin	17	7914	redfern.are	standing	100	0	-	up		On the Huge Chain //   This place has quite a good view over Dresden. Your possibilities of movement // seems to extend only to up and down. Unless you want to let go of the secure	-	+
+1794020861	cmd	Trentlin	17	7916	redfern.are	standing	100	0	-	up		On the Great Chain of Naris //   You are approximately on the middle of the treacherous Chain. One false step // and death will come and collect you quickly. The chain leads upwards and down.	-	+
+1794020862	cmd	Trentlin	17	7918	redfern.are	standing	100	0	-	up		The Mighty Chain of Naris //   This place offers a splendid view of the WHOLE COUNTRY SIDE!!! A magnificent // light shines upon you and the way up through the clouds is opened. Up there	-	+
+1794020862	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	up		Outside Redferne's residence //   A huge cloud forms the plateau on which you are now standing. The wind here // is absolutely quiet and the sun is shining warmly upon you. From under the	-	+
+1794020862	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	south		You can't fly.	-	-
+1794020865	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	get	all	You get a red dragon claw.	-	-
+1794020866	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	open	south	There is no door to the south, just open passage.	-	-
+1794020866	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	south		You can't fly.	-	-
+1794020869	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	put	claw pack	I see no pack here.	-	-
+1794020875	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	consider	kn	The Grand Knight of paladins is far above your level. // The Grand Knight of paladins has about twice your hit points. // Blow for blow, you would need about 12 rounds to bring the Grand Knight of paladins down; he would need about 8 round	-	+
+1794020880	cmd	Trentlin	17	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794020881	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794020886	cmd	Trentlin	17	4208	dresden.are	standing	100	12	-	stash	get pack	You take Trentlin's level 54 gear out of your stash.	-	-
+1794020888	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	put	claw pack	It won't fit.	-	-
+1794020890	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      Trentlin's level 54 gear //      a red dragon claw	-	+
+1794020895	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	look	in gear	Trentlin's level 54 gear contains: //      a quiver of arrows //      a pirate's ring	-	+
+1794020909	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	guan gear	Guano: you can't carry that many items.	-	-
+1794020909	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	guan gear	Guano: you can't carry that many items.	-	-
+1794020911	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      Trentlin's level 54 gear //      a red dragon claw	-	+
+1794020923	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	eat	pie	That's not edible.	-	-
+1794020926	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	look	pie	This is the eighth of the eight shards of Wisdom, from the Lion's chest. It // is one of nine Triforce pieces, one from each of Hyrule's dungeon // guardians: eight of Wisdom, and Ganon's Power. Carry it: Level 9's door	-	+
+1794020932	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	eat	big	You do not have that item.	-	-
+1794020936	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of protection.	-	-
+1794020937	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of protection.	-	-
+1794020938	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop an opaque potion.	-	-
+1794020938	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop an opaque potion.	-	-
+1794020938	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of true sight.	-	-
+1794020939	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of true sight.	-	-
+1794020939	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of true sight.	-	-
+1794020939	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of true sight.	-	-
+1794020940	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a grey potion.	-	-
+1794020940	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a grey potion.	-	-
+1794020940	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a grey potion.	-	-
+1794020941	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of true sight.	-	-
+1794020941	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of true sight.	-	-
+1794020941	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a potion of true sight.	-	-
+1794020942	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You drop a big pot pie.	-	-
+1794020942	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You do not have that item.	-	-
+1794020943	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You do not have that item.	-	-
+1794020943	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	drop	pot pie	You do not have that item.	-	-
+1794020946	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of true sight.	-	-
+1794020946	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of true sight.	-	-
+1794020946	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of true sight.	-	-
+1794020946	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a grey potion.	-	-
+1794020947	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	Grey: you can't carry that many items.	-	-
+1794020947	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	Grey: you can't carry that many items.	-	-
+1794020947	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	Grey: you can't carry that many items.	-	-
+1794020947	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	Grey: you can't carry that many items.	-	-
+1794020948	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	Grey: you can't carry that many items.	-	-
+1794020948	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	Grey: you can't carry that many items.	-	-
+1794020949	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a grey potion // ( 3) a potion of true sight	-	+
+1794020949	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
+1794020951	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794020961	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a grey potion // ( 3) a potion of true sight	-	+
+1794020962	state	Trentlin	17	4208	dresden.are	lvl=17 hp=412/412 mana=310/733 mv=137/298 align=-519 exp=40709 coin=4520708701 bank=11060093999 qp=769 prac=10 train=1 stash=51/75 remorts=1
+1794020962	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      17 | Class:        Monk | // | Played:     28 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794020968	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a grey potion // ( 3) a potion of true sight	-	+
+1794020973	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	wear	hau	You must be level 27 to use this object.	-	-
+1794020978	cmd	Trentlin	17	4208	dresden.are	standing	100	12	-	stash	put hau	You put a twin-dragon hauberk away for safe keeping.	-	-
+1794020980	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	pack hear	I see no hear here.	-	-
+1794020982	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	pack gear	I see nothing like that in the gear.	-	-
+1794020985	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	look	in gear	Trentlin's level 54 gear contains: //      a quiver of arrows //      a pirate's ring	-	+
+1794020988	cmd	Trentlin	17	4208	dresden.are	standing	100	4	-	stash	get pack	You take a metallic pack out of your stash.	-	-
+1794020992	cmd	Trentlin	17	4208	dresden.are	standing	100	6	-	stash	put gear	You put Trentlin's level 54 gear away for safe keeping.	-	-
+1794020995	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a metallic pack //      a grey potion	-	+
+1794020999	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	put	claw pack	You put a red dragon claw in a metallic pack.	-	-
+1794021000	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794021002	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a grey potion.	-	-
+1794021002	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a grey potion.	-	-
+1794021003	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of true sight.	-	-
+1794021003	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of true sight.	-	-
+1794021003	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of true sight.	-	-
+1794021003	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of true sight.	-	-
+1794021004	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get an opaque potion.	-	-
+1794021004	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get an opaque potion.	-	-
+1794021004	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of protection.	-	-
+1794021004	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	You get a potion of protection.	-	-
+1794021005	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	I see no potion here.	-	-
+1794021005	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	I see no potion here.	-	-
+1794021005	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	I see no potion here.	-	-
+1794021005	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	I see no potion here.	-	-
+1794021006	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	I see no potion here.	-	-
+1794021006	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	I see no potion here.	-	-
+1794021006	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	get	potion	I see no potion here.	-	-
+1794021008	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794021012	cmd	Trentlin	17	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794021012	cmd	Trentlin	17	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794021013	cmd	Trentlin	17	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794021013	cmd	Trentlin	17	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794021013	cmd	Trentlin	17	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794021013	cmd	Trentlin	17	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794021015	cmd	Trentlin	17	2427	dresden.are	standing	100	0	-	quaff	pot	This liquid is too powerful for you to drink.	-	-
+1794021017	cmd	Trentlin	17	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794021017	cmd	Trentlin	17	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794021019	cmd	Trentlin	17	2401	dresden.are	standing	100	0	-	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.	-	+
+1794021021	cmd	Trentlin	17	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794021021	cmd	Trentlin	17	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794021022	cmd	Trentlin	17	2470	dresden.are	standing	100	0	-	west		Wizards Way. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then. It also	-	+
+1794021022	cmd	Trentlin	17	2471	dresden.are	standing	100	0	-	west		Wizards Way. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then.  It also	-	+
+1794021023	cmd	Trentlin	17	4319	dresden.are	standing	100	2	-	north		Outside the doors to the University of Magic. //   You are standing in front of an open doorway that leads into the University. // As you move to go forward you get the feeling the doorway is not as unguarded	-	+
+1794021024	cmd	Trentlin	17	2471	dresden.are	standing	100	0	-	south		Wizards Way. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then.  It also	-	+
+1794021024	cmd	Trentlin	17	2500	dresden.are	standing	100	0	-	south		The Dancing Mage Inn. //   This Inn is unlike most of the others in the city.  It has carpeted floors and // many beautifully crafted tables with cushioned chairs around them.  This is	-	+
+1794021025	cmd	Trentlin	17	2500	dresden.are	standing	100	0	-	list		You can't do that here.	-	-
+1794021025	cmd	Trentlin	17	2471	dresden.are	standing	100	0	-	north		Wizards Way. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then.  It also	-	+
+1794021026	cmd	Trentlin	17	2472	dresden.are	standing	100	0	-	west		Corner of Wizards Way and Magic Street. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then. It also	-	+
+1794021027	cmd	Trentlin	17	2473	dresden.are	standing	100	0	-	north		Magic Street. //   You are on an extremely clean cobblestone street, but it does not look normal. // It seems there is a slight glow coming from beneath the stones of the street.	-	+
+1794021027	cmd	Trentlin	17	4321	dresden.are	standing	100	0	-	east		Outside the doors to the University of Magic. //   You are standing in front of an open doorway that leads into the University. // As you move to go forward you get the feeling the doorway is not as unguarded	-	+
+1794021028	cmd	Trentlin	17	4321	dresden.are	standing	100	0	-	list		You can't do that here.	-	-
+1794021028	cmd	Trentlin	17	2473	dresden.are	standing	100	0	-	west		Magic Street. //   You are on an extremely clean cobblestone street, but it does not look normal. // It seems there is a slight glow coming from beneath the stones of the street.	-	+
+1794021029	cmd	Trentlin	17	2474	dresden.are	standing	100	0	-	west		Bidom's Magic Shop. //   You enter what seems to be a small shop from the outside and are amazed to see // how large it really is.  Every wall has shelving to the ceiling filled with	-	+
+1794021029	cmd	Trentlin	17	2474	dresden.are	standing	100	0	-	list		[Lv Price] Item // [ 0     2g 10s] a potion of flying. // [ 0 3g 25s 50c] a potion of true sight.	-	+
+1794021033	cmd	Trentlin	17	2474	dresden.are	standing	100	0	-	buy	flying	You buy a potion of flying.	-	-
+1794021034	cmd	Trentlin	17	2473	dresden.are	standing	100	0	-	east		Magic Street. //   You are on an extremely clean cobblestone street, but it does not look normal. // It seems there is a slight glow coming from beneath the stones of the street.	-	+
+1794021034	cmd	Trentlin	17	2472	dresden.are	standing	100	0	-	south		Corner of Wizards Way and Magic Street. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then. It also	-	+
+1794021035	cmd	Trentlin	17	2472	dresden.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794021035	cmd	Trentlin	17	2471	dresden.are	standing	100	0	-	east		Wizards Way. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then.  It also	-	+
+1794021035	cmd	Trentlin	17	2470	dresden.are	standing	100	0	-	east		Wizards Way. //   You are on an extremely clean cobblestone street.  It does not have very much // traffic except for a robed person strolling past every now and then. It also	-	+
+1794021037	cmd	Trentlin	17	2470	dresden.are	standing	100	0	-	quaff	fly	You quaff a potion of flying. // Your feet rise off the ground.	-	-
+1794021038	cmd	Trentlin	17	1108	shire.are	standing	100	0	-	recall		Something is very wrong! // Kid'n Keep //   You are inside Kid'n Keep, the convenient one-stop nursery that maintains	-	+
+1794021038	cmd	Trentlin	17	1108	shire.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794021040	cmd	Trentlin	17	1108	shire.are	standing	100	0	-	heal	refhres	You can't do that here.	-	-
+1794021041	cmd	Trentlin	17	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794021042	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794021044	cmd	Trentlin	17	4208	dresden.are	standing	100	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794021050	cmd	Trentlin	17	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794021050	cmd	Trentlin	17	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794021050	cmd	Trentlin	17	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794021050	cmd	Trentlin	17	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794021051	cmd	Trentlin	17	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794021053	cmd	Trentlin	17	2404	dresden.are	standing	100	0	-	wear	gloves	You wear swordsman's gloves on your hands.	-	-
+1794021055	cmd	Trentlin	17	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794021055	cmd	Trentlin	17	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794021056	cmd	Trentlin	17	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794021056	cmd	Trentlin	17	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794021056	cmd	Trentlin	17	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794021056	cmd	Trentlin	17	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794021057	cmd	Trentlin	17	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794021057	cmd	Trentlin	17	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794021057	cmd	Trentlin	17	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794021057	cmd	Trentlin	17	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794021058	cmd	Trentlin	17	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794021058	cmd	Trentlin	17	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794021058	cmd	Trentlin	17	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794021058	cmd	Trentlin	17	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794021059	cmd	Trentlin	17	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794021059	cmd	Trentlin	17	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794021059	cmd	Trentlin	17	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794021059	cmd	Trentlin	17	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the	-	+
+1794021060	cmd	Trentlin	17	306	plains.are	standing	100	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful	-	+
+1794021060	cmd	Trentlin	17	326	plains.are	standing	100	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred	-	+
+1794021060	cmd	Trentlin	17	309	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path	-	+
+1794021060	cmd	Trentlin	17	310	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.	-	+
+1794021061	cmd	Trentlin	17	327	plains.are	standing	100	0	-	north		The foothills //   You are walking in some foothills. It is rather hard to move here. // Further to the north you can see the mountains towering over you.	-	+
+1794021061	cmd	Trentlin	17	313	plains.are	standing	100	0	-	east		Road to Ofcol //   You are walking on a wide road with trail marks on it.  To the north // you see the village of Ofcol and to the south there is the T intersection.	-	+
+1794021061	cmd	Trentlin	17	314	plains.are	standing	100	0	-	north		Road to Ofcol //   You are walking on a wide road with trail marks on it.  From the north // you hear the villagers of Ofcol go about their daily business. To the south	-	+
+1794021061	cmd	Trentlin	17	52	connect.are	standing	100	0	-	north		Outside Ofcol //   You are standing outside the village of Ofcol. // The village looks very small, but still a nice and safe place to stay.	-	+
+1794021062	cmd	Trentlin	17	5550	ofcol.are	standing	100	0	-	north		Village street //   You stand at the small village street in Ofcol. // From here you see small houses and only few people.	-	+
+1794021062	cmd	Trentlin	17	5551	ofcol.are	standing	100	0	-	north		Village street //   You are standing on the village street of Ofcol. // East from here is a small alley and north you enter the village	-	+
+1794021062	cmd	Trentlin	17	5553	ofcol.are	standing	100	0	-	east		The small alley //   You are in a small, quiet alley.  From here you see the village street // to the west and a small room lies to the south.	-	+
+1794021062	cmd	Trentlin	17	601	ofcol.are	standing	100	0	-	east		The Big Intersection //   You are in the big intersection between Raff Way and Impy Way.  Crowds  // of people walk past you as they go on their daily tasks.  Raff Way continues	-	+
+1794021063	cmd	Trentlin	17	666	ofcol.are	standing	100	0	-	east		Raff Way //   You are on Raff Way.  To the west, you can see a big intersection.  To  // the east, you see Raff Way continue toward the Golden Citadel.  There are 	-	+
+1794021063	cmd	Trentlin	17	667	ofcol.are	standing	100	0	-	east		Raff Way //   You are on Raff Way.  Raff Way continues west to the city of Ofcol.  To  // the east, you see Raff Way continue toward the Golden Citadel.  There are 	-	+
+1794021063	cmd	Trentlin	17	699	ofcol.are	standing	100	0	-	east		Outside the Entrance to the Golden Citadel //   You are outside the entrance to the Golden Citadel.  A great gate is to // to the east, marking the entranceway into the citadel.  The road also leads	-	+
+1794021063	cmd	Trentlin	17	698	ofcol.are	standing	100	0	-	east		Inside the Entrance to the Golden Citadel //   You are inside the entrance to the Golden Citadel.  Rich golden tapestries // line the walls, and golden tiles cover the floors.  The exit to this citadel is	-	+
+1794021064	cmd	Trentlin	17	679	ofcol.are	standing	100	0	-	east		A Hallway of the Golden Citadel //   You are in a hallway of the Golden Citadel.  Gold tiles cover the floors, // and rich golden tapestries drape the walls.  Servants in golden livery pass you	-	+
+1794021064	cmd	Trentlin	17	671	ofcol.are	standing	100	0	-	east		The Anteroom to the Temple of Ofcol //   You are in an anteroom to the Temple of Ofcol.  Gold tiles cover the // floor, and servants in golden livery pass you by peaceably.  The temple is to	-	+
+1794021064	cmd	Trentlin	17	669	ofcol.are	standing	100	0	-	east		The Temple of Ofcol //   You are in the Temple of Ofcol.  Golden tiles cover the floor, and solid // gold columns reach the twelve foot ceiling of this vast chamber.  Servants in	-	+
+1794021064	cmd	Trentlin	17	673	ofcol.are	standing	100	0	-	south		The Anteroom to the Temple of Ofcol //   You are in an anteroom to the Temple of Ofcol.  Gold tiles cover the // floor, and servants in golden livery pass you by peaceably.  The temple is to	-	+
+1794021065	cmd	Trentlin	17	690	ofcol.are	standing	100	0	-	up		An Upper Chamber of the Golden Citadel //   You are in one of the upper chambers of the Golden Citadel.  The decora- // tions of this place surpass even those of the first floor.  Gold tiles etched	-	+
+1794021065	cmd	Trentlin	17	695	ofcol.are	standing	100	0	-	up		A Top Chamber of the Golden Citadel //   You are in one of the top chambers of the Golden Citadel.  The decorations // of this room looks like a dragon's hoard.  The whole room is carved out of pure	-	+
+1794021065	cmd	Trentlin	17	7914	redfern.are	standing	100	0	-	up		On the Huge Chain //   This place has quite a good view over Dresden. Your possibilities of movement // seems to extend only to up and down. Unless you want to let go of the secure	-	+
+1794021065	cmd	Trentlin	17	7916	redfern.are	standing	100	0	-	up		On the Great Chain of Naris //   You are approximately on the middle of the treacherous Chain. One false step // and death will come and collect you quickly. The chain leads upwards and down.	-	+
+1794021066	cmd	Trentlin	17	7918	redfern.are	standing	100	0	-	up		The Mighty Chain of Naris //   This place offers a splendid view of the WHOLE COUNTRY SIDE!!! A magnificent // light shines upon you and the way up through the clouds is opened. Up there	-	+
+1794021066	cmd	Trentlin	17	7900	redfern.are	standing	100	0	-	up		Outside Redferne's residence //   A huge cloud forms the plateau on which you are now standing. The wind here // is absolutely quiet and the sun is shining warmly upon you. From under the	-	+
+1794021066	cmd	Trentlin	17	9101	dylan.are	standing	100	0	-	south		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794021069	cmd	Trentlin	17	9101	dylan.are	standing	100	0	-	scan		the Grand Knight of paladins          -to the North. // the screaming, filthy harpy          -right above you. // the screaming, filthy harpy          -right above you.	-	-
+1794021071	cmd	Trentlin	17	9102	dylan.are	standing	100	0	-	up		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794021077	cmd	Trentlin	17	9102	dylan.are	fighting	70	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes the screaming, filthy harpy.	-	-
+1794021083	cmd	Trentlin	17	9102	dylan.are	fighting	66	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls the screaming, filthy harpy.	-	-
+1794021090	cmd	Trentlin	17	9102	dylan.are	fighting	61	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls the screaming, filthy harpy.	-	-
+1794021095	cmd	Trentlin	17	9102	dylan.are	fighting	58	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls the screaming, filthy harpy.	-	-
+1794021101	cmd	Trentlin	17	9102	dylan.are	fighting	47	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the screaming, filthy harpy.	-	-
+1794021107	cmd	Trentlin	17	9102	dylan.are	fighting	49	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes the screaming, filthy harpy.	-	-
+1794021110	cmd	Trentlin	17	9102	dylan.are	fighting	45	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the screaming, filthy harpy.	-	-
+1794021113	cmd	Trentlin	17	9102	dylan.are	fighting	45	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794021116	cmd	Trentlin	17	9102	dylan.are	fighting	39	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794021122	cmd	Trentlin	17	9102	dylan.are	fighting	39	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds the screaming, filthy harpy.	-	-
