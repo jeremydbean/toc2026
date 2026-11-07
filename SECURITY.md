@@ -481,6 +481,20 @@ legacy compatibility when implemented carefully:
 1. Argon2id password hashes (SHA-512 crypt with login migration from DES is
    done, 2026-11-07).
 2. A TLS-capable player endpoint or a documented maintained TLS proxy path.
+   Planned and on hold (owner, 2026-11-07: "keep it on the table for a
+   future project"), so Mudlet's Secure box works: nginx's stream module
+   on the host terminating TLS on its own port (9443 proposed) with a
+   Let's Encrypt certificate for toc.jeremybean.com, forwarding to the
+   game on loopback with `proxy_protocol on` so the real address reaches
+   `d->addr` as the web bridge's does; MSSP advertising the port (`TLS`)
+   only once the terminator is up, so Mudlet can offer to switch; help and
+   the website naming it. Owner steps: open the port (and 80 for the
+   certificate, or use a DNS challenge) in the Oracle security list, and
+   run a one-time setup script over SSH. Known gap to close with it: a
+   proxied connection is exempt from the connection guard's strikes
+   (`guard_proxied`), so the terminator should connect from its own
+   loopback address (127.0.0.2) and only the web bridge keep that
+   exemption.
 3. Authentication and authorization for every dashboard route, especially the
    MUD WebSocket bridge and detailed world data.
 4. Per-operator accounts, roles, expiration, CSRF protection where applicable,
