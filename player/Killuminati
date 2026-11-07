@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1793803654
+LogO 1794064727
 Vers 4
 Desc You see something very special about him.
 ~
@@ -20,7 +20,7 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6543371
+Plyd 6543479
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -32,9 +32,9 @@ NewGold 62
 NewPlat 2503058
 NewCopp 57
 NewSilv 82
-BankCP 16760000555098
-IntTime 1793645458
-IntTotal 1701377953246
+BankCP 16927600560646
+IntTime 1793991058
+IntTotal 1868977958794
 Dcount 0
 SavedOnce 1
 Corpses	0
@@ -112,11 +112,11 @@ Achv weapons-5 1793019785
 Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
-LastOut  1793803654
+LastOut  1794064727
 Rested 0 1
 Daily 0 0 0 0 0
-SesLogin 1793803629
-SesDur   25
+SesLogin 1794064621
+SesDur   106
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -167,7 +167,7 @@ Dam   5
 ACs 83 83 83 86
 Attr 25 21 18 18 18
 AMod 0 0 0 0 2
-Pass Kilrpis9ggekI~
+Pass $6$.84gyipL9w77gDGf$DEqQt4LE1NZ1bxB.BUcoU53c2Q4352skTaQtLZacS4MXkMS0yBtKWurnVVFUTOxFtOMXdrlV8i7jR6hXDdD6Z.~
 Bin  Killuminati appears before you.~
 Bout Killuminati raises into the sky, and is gone.~
 Titl , the Don.~
@@ -632,10 +632,10 @@ Lev  59
 Cost 208860000
 Cond 100
 Repd 0
-Affect -1 59 -1 -4 20 0 0
-Affect -1 59 -1 14 14 0 0
-Affect -1 59 -1 4 21 0 0
 Affect -1 59 -1 -13 12 0 0
+Affect -1 59 -1 4 21 0 0
+Affect -1 59 -1 14 14 0 0
+Affect -1 59 -1 -4 20 0 0
 End
 
 #O

@@ -27008,3 +27008,5 @@
 1794057628	cmd	Trentlin	20	4210	dresden.are	standing	77	0	-	sleep		You go to sleep.	-	-
 1794057629	session	Trentlin	20	4210	dresden.are	quit	294s	+1 levels	+611 exp	-2960214 copper	6 kills	0 deaths	1 quests	204 commands	0 refused	coin: loot 26g 49s 6c, quests 3p 67g 48s 80c, spent 11p 90g	spent on: heal 11p 90g	exp: kills +611
 1794057861	stall	-	0	0	-	255ms	slowest update 254ms	command - 0ms	0 players	0 more since
+1794064643	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1	-	-
+1794064727	session	Killuminati	70	2401	dresden.are	quit	106s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	2 commands	0 refused	coin: none	spent on: none	exp: none
