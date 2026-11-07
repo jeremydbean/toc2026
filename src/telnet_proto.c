@@ -284,6 +284,16 @@ static void telnet_ask_ttype( DESCRIPTOR_DATA *d )
     telnet_send_raw( d, buf, sizeof(buf) );
 }
 
+/* Case-blind equality, here rather than the game's str_cmp so this file
+   stays buildable on its own (tests/test_mccp.c links it alone). */
+static bool ttype_same( const char *a, const char *b )
+{
+    for ( ; *a != '\0' && *b != '\0'; a++, b++ )
+        if ( LOWER( *a ) != LOWER( *b ) )
+            return false;
+    return *a == *b;
+}
+
 static void telnet_note_ttype( DESCRIPTOR_DATA *d )
 {
     char value[32];
@@ -298,7 +308,7 @@ static void telnet_note_ttype( DESCRIPTOR_DATA *d )
     if ( value[0] == '\0' )
         return;
 
-    if ( !str_prefix( "MTTS ", value ) )
+    if ( strncmp( value, "MTTS ", 5 ) == 0 || strncmp( value, "mtts ", 5 ) == 0 )
     {
         d->client_mtts = atoi( value + 5 );
         d->client_mtts_known = true;
@@ -309,16 +319,16 @@ static void telnet_note_ttype( DESCRIPTOR_DATA *d )
     {
         /* The client's name; Core.Hello, when it comes, says it better. */
         if ( d->client_name[0] == '\0' )
-            toc_strlcpy( d->client_name, value, sizeof(d->client_name) );
+            snprintf( d->client_name, sizeof(d->client_name), "%s", value );
     }
     else
     {
-        if ( !str_cmp( value, d->client_term ) || !str_cmp( value, d->client_name ) )
+        if ( ttype_same( value, d->client_term ) || ttype_same( value, d->client_name ) )
         {
             d->ttype_round = 4;             /* repeated: the list is done */
             return;
         }
-        toc_strlcpy( d->client_term, value, sizeof(d->client_term) );
+        snprintf( d->client_term, sizeof(d->client_term), "%s", value );
     }
     if ( d->ttype_round < 3 )
     {
