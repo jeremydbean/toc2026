@@ -25855,3 +25855,162 @@
 1794054767	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	wear	cloa	You wear a Keese-wing cloak about your body.	-	-
 1794054770	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	compare	belt	A) a Leever-shell belt (level 6) // B) a quick sheathe (level 9), worn // Slot: waist.  Your damage comes from weapons.	-	+
 1794054772	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	drop	belt	You drop a Leever-shell belt.	-	-
+1794054775	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	compare	wrist	A) an Octorok-hide wristguard (level 5) // B) an onyx bracelet (level 18), worn // Slot: wrist.  Your damage comes from weapons.	-	+
+1794054777	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	drop	wrist	You drop an Octorok-hide wristguard.	-	-
+1794054778	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	inventory		You are carrying: //      a wooden practice blade //      a big pot pie	-	+
+1794054780	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	look		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794054783	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	drop	prac	You drop a wooden practice blade.	-	-
+1794054784	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	open	est	I see no est here.	-	-
+1794054787	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	open	east	It's locked.	-	-
+1794054790	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	inventory		You are carrying: //      a big pot pie // ( 2) a potion of protection	-	+
+1794054792	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	unlock	east	You lack the key.	-	-
+1794054793	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	look		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794054795	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	kill	g	Your punch injures a gel. // Your punch devastates a gel! // A gel is DEAD!!	-	+
+1794054799	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	kill	g	Your punch wounds a gel. // Your punch MUTILATES a gel! // A gel is DEAD!!	-	+
+1794054805	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	look		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794054807	cmd	Trentlin	18	30412	hyrule.are	standing	100	0	-	north		Level 1: Ossuary Hall //   Old bones lie heaped in drifts against the walls of this dim chamber, and a // pair of stone blocks squats near its center beside a rusted sword stuck	-	+
+1794054810	cmd	Trentlin	18	30412	hyrule.are	standing	100	0	-	kill	sta	Your punch decimates a stalfos! // Your punch MASSACRES a stalfos!	-	-
+1794054816	cmd	Trentlin	18	30412	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794054816	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	south		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794054817	item	Trentlin	18	30409	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794054817	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794054818	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	east		The locked is closed.	-	-
+1794054820	cmd	Trentlin	18	30409	hyrule.are	standing	100	0	-	open	east	Ok.	-	-
+1794054821	cmd	Trentlin	18	30410	hyrule.are	standing	100	0	-	east		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794054823	cmd	Trentlin	18	30410	hyrule.are	standing	100	0	-	consider	g	A red goriya is far below your level. // A red goriya has a fraction of your hit points. // A red goriya could barely scratch you; you would need about 2 rounds to bring it down.	-	+
+1794054825	cmd	Trentlin	18	30410	hyrule.are	standing	100	0	-	kill	g	Your punch maims a red goriya! // Your punch mauls a red goriya.	-	-
+1794054829	cmd	Trentlin	18	30410	hyrule.are	standing	100	0	-	look	in co	Corpse of a red goriya contains: //      Nothing.	-	-
+1794054831	cmd	Trentlin	18	30410	hyrule.are	standing	100	0	-	get	boom	You get a small boomerang.	-	-
+1794054831	cmd	Trentlin	18	30410	hyrule.are	standing	100	0	-	look		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794054832	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	east		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794054834	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794054835	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	consider	wa	A wallmaster is far below your level. // A wallmaster has about a third of your hit points. // Blow for blow, you would need about 2 rounds to bring a wallmaster down; it would need over a hundred rounds for you.	-	+
+1794054836	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	kill	wa	Your punch DISEMBOWELS a wallmaster! // Your punch misses a wallmaster.	-	-
+1794054841	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	open	north	It's locked.	-	-
+1794054842	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	look		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794054844	item	Trentlin	18	30411	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794054844	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794054846	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794054846	cmd	Trentlin	18	30413	hyrule.are	standing	100	0	-	north		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794054848	cmd	Trentlin	18	30413	hyrule.are	standing	100	0	-	consider	a	Aquamentus is well below your level. // Aquamentus has several times your hit points. // Blow for blow, you would need about 41 rounds to bring Aquamentus down; it would need about 70 rounds for you.	-	+
+1794054850	cmd	Trentlin	18	30413	hyrule.are	standing	100	0	-	kill	a	Your punch grazes Aquamentus. // Your punch scratches Aquamentus.	-	-
+1794054853	cmd	Trentlin	18	30413	hyrule.are	fighting	95	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794054858	cmd	Trentlin	18	30413	hyrule.are	fighting	92	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794054863	cmd	Trentlin	18	30413	hyrule.are	fighting	92	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794054866	cmd	Trentlin	18	30413	hyrule.are	fighting	89	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Aquamentus.	-	-
+1794054872	cmd	Trentlin	18	30413	hyrule.are	fighting	82	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Aquamentus.	-	-
+1794054876	cmd	Trentlin	18	30413	hyrule.are	fighting	82	0	fight	trip		Aquamentus is already down.	-	-
+1794054879	cmd	Trentlin	18	30413	hyrule.are	fighting	80	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794054882	cmd	Trentlin	18	30413	hyrule.are	fighting	73	0	fight	kick		Your kick misses Aquamentus.	-	-
+1794054886	cmd	Trentlin	18	30413	hyrule.are	fighting	70	0	fight	kick		Your kick scratches Aquamentus.	-	-
+1794054890	cmd	Trentlin	18	30413	hyrule.are	fighting	68	0	fight	kick		Your kick scratches Aquamentus.	-	-
+1794054893	cmd	Trentlin	18	30413	hyrule.are	fighting	64	0	fight	kick		Your kick scratches Aquamentus.	-	-
+1794054897	cmd	Trentlin	18	30413	hyrule.are	fighting	60	0	fight	kick		Your kick grazes Aquamentus.	-	-
+1794054901	cmd	Trentlin	18	30413	hyrule.are	fighting	58	0	fight	kick		Your kick grazes Aquamentus.	-	-
+1794054905	cmd	Trentlin	18	30413	hyrule.are	fighting	55	0	fight	kick		Your kick misses Aquamentus.	-	-
+1794054908	cmd	Trentlin	18	30413	hyrule.are	fighting	51	0	fight	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794054909	cmd	Trentlin	18	30413	hyrule.are	fighting	51	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Aquamentus.	-	-
+1794054912	cmd	Trentlin	18	30413	hyrule.are	fighting	51	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794054917	cmd	Trentlin	18	30413	hyrule.are	fighting	45	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Aquamentus.	-	-
+1794054920	cmd	Trentlin	18	30413	hyrule.are	fighting	42	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Aquamentus.	-	-
+1794054924	cmd	Trentlin	18	30413	hyrule.are	fighting	42	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794054927	cmd	Trentlin	18	30413	hyrule.are	fighting	41	0	fight	kick		Your kick misses Aquamentus.	-	-
+1794054932	cmd	Trentlin	18	30413	hyrule.are	fighting	38	0	fight	kick		Your kick misses Aquamentus.	-	-
+1794054937	cmd	Trentlin	18	30413	hyrule.are	fighting	31	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Aquamentus.	-	-
+1794054942	cmd	Trentlin	18	30413	hyrule.are	fighting	27	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794054947	cmd	Trentlin	18	30413	hyrule.are	fighting	22	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794054950	cmd	Trentlin	18	30413	hyrule.are	fighting	18	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794054950	cmd	Trentlin	18	30413	hyrule.are	fighting	18	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794054950	cmd	Trentlin	18	30413	hyrule.are	fighting	18	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794054951	cmd	Trentlin	18	30411	hyrule.are	fighting	18	0	fight	flee		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794054951	cmd	Trentlin	18	30411	hyrule.are	standing	18	0	-	flee		You aren't fighting anyone.	-	-
+1794054953	cmd	Trentlin	18	30411	hyrule.are	standing	18	0	-	recall		The Gods have forsaken you.	-	-
+1794054954	cmd	Trentlin	18	30410	hyrule.are	standing	18	0	-	west		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794054956	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	west		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794054956	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054956	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054956	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054957	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054957	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054957	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054958	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054958	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054959	cmd	Trentlin	18	30408	hyrule.are	standing	18	0	-	west		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794054960	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	east		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794054962	cmd	Trentlin	18	30409	hyrule.are	standing	18	0	-	bomb	south	You set a bomb beside a cracked south wall and dive aside. The blast opens a passage!	-	-
+1794054963	cmd	Trentlin	18	30405	hyrule.are	standing	18	0	-	south		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794054963	cmd	Trentlin	18	30403	hyrule.are	standing	18	0	-	south		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794054963	cmd	Trentlin	18	30401	hyrule.are	standing	18	0	-	south		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794054964	cmd	Trentlin	18	30401	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054964	cmd	Trentlin	18	30401	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794054965	cmd	Trentlin	18	30271	hyrule.are	standing	18	0	-	up		The Eagle's Gate //   On a spit of green land cut off by the river, a stone entrance stands in a // rocky outcrop, its lintel carved with the spread wings of an eagle and	-	+
+1794054966	cmd	Trentlin	18	4207	dresden.are	standing	18	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054966	cmd	Trentlin	18	4208	dresden.are	standing	18	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794054968	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794054974	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1794054977	cmd	Trentlin	18	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794054977	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054977	cmd	Trentlin	18	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794054978	cmd	Trentlin	18	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794054978	cmd	Trentlin	18	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794054978	cmd	Trentlin	18	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794054978	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794054979	cmd	Trentlin	18	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794054979	cmd	Trentlin	18	2403	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794054989	cmd	Trentlin	18	2401	dresden.are	standing	100	0	-	west		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794054989	cmd	Trentlin	18	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794054989	cmd	Trentlin	18	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794054989	cmd	Trentlin	18	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794054990	cmd	Trentlin	18	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794054990	cmd	Trentlin	18	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794054990	cmd	Trentlin	18	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794054990	cmd	Trentlin	18	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794054991	cmd	Trentlin	18	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794054991	cmd	Trentlin	18	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794054991	cmd	Trentlin	18	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794054991	cmd	Trentlin	18	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794054992	cmd	Trentlin	18	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794054992	cmd	Trentlin	18	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794054992	cmd	Trentlin	18	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794054992	cmd	Trentlin	18	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794054993	cmd	Trentlin	18	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794054993	cmd	Trentlin	18	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794054993	cmd	Trentlin	18	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794054993	cmd	Trentlin	18	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794054994	cmd	Trentlin	18	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794054996	cmd	Trentlin	18	30271	hyrule.are	standing	100	0	-	play	recorder 1	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Eagle's Gate	-	+
+1794054999	cmd	Trentlin	18	30401	hyrule.are	standing	100	0	-	down		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794055001	cmd	Trentlin	18	30402	hyrule.are	standing	100	0	-	east		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794055003	cmd	Trentlin	18	30402	hyrule.are	standing	100	0	-	kill	st	Your punch devastates a stalfos! // Your punch MANGLES a stalfos! // A stalfos is DEAD!!	-	+
+1794055008	cmd	Trentlin	18	30402	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794055009	cmd	Trentlin	18	30401	hyrule.are	standing	100	0	-	west		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794055009	item	Trentlin	18	30401	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794055009	cmd	Trentlin	18	30401	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794055009	cmd	Trentlin	18	30401	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794055010	cmd	Trentlin	18	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794055011	cmd	Trentlin	18	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794055012	cmd	Trentlin	18	30405	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794055013	cmd	Trentlin	18	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794055021	cmd	Trentlin	18	30405	hyrule.are	standing	100	0	-	west		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794055021	cmd	Trentlin	18	30405	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794055022	cmd	Trentlin	18	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794055027	cmd	Trentlin	18	30406	hyrule.are	standing	100	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794055028	cmd	Trentlin	18	30410	hyrule.are	standing	100	0	-	north		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794055030	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	east		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794055032	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794055034	item	Trentlin	18	30411	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	unlock
+1794055034	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794055036	cmd	Trentlin	18	30411	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794055038	cmd	Trentlin	18	30413	hyrule.are	standing	100	0	-	north		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794055040	cmd	Trentlin	18	30413	hyrule.are	standing	100	0	-	kill	a	Your punch hits Aquamentus. // Your punch grazes Aquamentus.	-	-
+1794055042	cmd	Trentlin	18	30413	hyrule.are	fighting	95	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Aquamentus.	-	-
+1794055045	cmd	Trentlin	18	30413	hyrule.are	fighting	91	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794055049	cmd	Trentlin	18	30413	hyrule.are	fighting	87	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794055052	cmd	Trentlin	18	30413	hyrule.are	fighting	87	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Aquamentus.	-	-
+1794055055	cmd	Trentlin	18	30413	hyrule.are	fighting	81	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794055059	cmd	Trentlin	18	30413	hyrule.are	fighting	73	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794055062	cmd	Trentlin	18	30413	hyrule.are	fighting	69	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794055065	cmd	Trentlin	18	30413	hyrule.are	fighting	65	0	fight	trip		You trip Aquamentus and Aquamentus goes down! // Your trip scratches Aquamentus.	-	-
+1794055071	cmd	Trentlin	18	30413	hyrule.are	fighting	61	0	fight	trip		You trip Aquamentus and Aquamentus goes down! // Your trip scratches Aquamentus.	-	-
+1794055077	cmd	Trentlin	18	30413	hyrule.are	fighting	54	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus. // You have become better at nerve damage!	-	-
+1794055082	cmd	Trentlin	18	30413	hyrule.are	fighting	51	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
