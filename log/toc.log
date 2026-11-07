@@ -271292,3 +271292,54 @@ Sat Nov  7 15:54:46 2026 :: Log Trentlin [6155]: affects off: levitate
 Sat Nov  7 15:54:47 2026 :: Log Trentlin [6155]: open down
 Sat Nov  7 15:54:49 2026 :: Log Trentlin [6155]: levitate
 Sat Nov  7 15:54:50 2026 :: Log Trentlin [6155]: u
+Sat Nov  7 15:54:53 2026 :: Log Trentlin [6155]: n
+Sat Nov  7 15:54:53 2026 :: Log Trentlin [6154]: arrived (The underground hallway.) from 6155
+Sat Nov  7 15:54:55 2026 :: Log Trentlin [6154]: u
+Sat Nov  7 15:54:55 2026 :: Log Trentlin [6153]: arrived (Inside the great tree.) from 6154
+Sat Nov  7 15:54:56 2026 :: Log Trentlin [6153]: w
+Sat Nov  7 15:54:56 2026 :: Log Trentlin [6152]: arrived (The circle of trees.) from 6153
+Sat Nov  7 15:54:57 2026 :: Log Trentlin [6152]: w
+Sat Nov  7 15:54:57 2026 :: Log Trentlin [6151]: arrived (The narrow trail.) from 6152
+Sat Nov  7 15:54:58 2026 :: Log Trentlin [6151]: n
+Sat Nov  7 15:54:58 2026 :: Log Trentlin [17001]: arrived (The Gates) from 6151
+Sat Nov  7 15:54:59 2026 :: Log Trentlin [17001]: s
+Sat Nov  7 15:54:59 2026 :: Log Trentlin [6151]: arrived (The narrow trail.) from 17001
+Sat Nov  7 15:55:03 2026 :: Log Trentlin [6151]: w
+Sat Nov  7 15:55:03 2026 :: Log Trentlin [63]: arrived (Forest Junction) from 6151
+Sat Nov  7 15:55:04 2026 :: Log Trentlin [63]: w
+Sat Nov  7 15:55:04 2026 :: Log Trentlin [5622]: arrived (A bend in the dark forest) from 63
+Sat Nov  7 15:55:05 2026 :: Log Trentlin [5622]: sca
+Sat Nov  7 15:55:06 2026 :: Log Trentlin [5622]: w
+Sat Nov  7 15:55:06 2026 :: Log Trentlin [5688]: arrived (A path in a dark and dense forest) from 5622
+Sat Nov  7 15:55:07 2026 :: Log Trentlin [5688]: sca
+Sat Nov  7 15:55:09 2026 :: Log Trentlin [5688]: e
+Sat Nov  7 15:55:09 2026 :: Log Trentlin [5622]: arrived (A bend in the dark forest) from 5688
+Sat Nov  7 15:55:09 2026 :: Log Trentlin [5622]: s
+Sat Nov  7 15:55:09 2026 :: Log Trentlin [5689]: arrived (In the deeper forest) from 5622
+Sat Nov  7 15:55:10 2026 :: Log Trentlin [5689]: sca
+Sat Nov  7 15:55:11 2026 :: Log Trentlin [5689]: s
+Sat Nov  7 15:55:11 2026 :: Log Trentlin [70]: arrived (Darkened Path) from 5689
+Sat Nov  7 15:55:12 2026 :: Log Trentlin [70]: sca
+Sat Nov  7 15:55:13 2026 :: Log Trentlin [70]: s
+Sat Nov  7 15:55:13 2026 :: Log Trentlin [3601]: arrived (Entrance to the Dark Forest.) from 70
+Sat Nov  7 15:55:14 2026 :: Log Trentlin [3601]: sca
+Sat Nov  7 15:55:16 2026 :: Log Trentlin [3601]: l noti
+Sat Nov  7 15:55:23 2026 :: Log Trentlin [3601]: reca
+Sat Nov  7 15:55:23 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3601
+Sat Nov  7 15:55:30 2026 :: Log Trentlin [4207]: s
+Sat Nov  7 15:55:30 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4207
+Sat Nov  7 15:55:30 2026 :: Log Trentlin [4205]: s
+Sat Nov  7 15:55:30 2026 :: Log Trentlin [4209]: arrived (Private Prayer Room.) from 4205
+Sat Nov  7 15:55:30 2026 :: Log Trentlin [4209]: s
+Sat Nov  7 15:55:31 2026 :: Log Trentlin [4209]: sleep
+Sat Nov  7 15:55:32 2026 :: Log Trentlin [4209]: i
+Sat Nov  7 15:55:33 2026 :: Log Trentlin [4209]: who
+Sat Nov  7 15:55:36 2026 :: Log Trentlin [4209]: wake
+Sat Nov  7 15:55:39 2026 :: Log Trentlin [4209]: eat pot
+Sat Nov  7 15:55:41 2026 :: Log Trentlin [4209]: (refused) slep
+Sat Nov  7 15:55:42 2026 :: Log Trentlin [4209]: sleep
+Sat Nov  7 15:55:44 2026 :: Log Trentlin [4209]: help hero
+Sat Nov  7 15:55:46 2026 :: Log Trentlin [4209]: help remort
+Sat Nov  7 15:57:21 2026 :: Log Trentlin [4209]: gr
+Sat Nov  7 15:57:45 2026 :: Treasure goblin: vanished from room 13254 (Storage Building, solace.are) (too long in one area).
+Sat Nov  7 15:57:50 2026 :: Log Trentlin [4209]: affects off: levitate

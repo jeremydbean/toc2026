@@ -27247,3 +27247,36 @@
 1794066887	cmd	Trentlin	20	6155	haon.are	standing	72	0	-	open	down	I see no door down here.	-	-
 1794066889	cmd	Trentlin	20	6155	haon.are	standing	72	0	-	levitate		You slowly rise up off the ground.	-	-
 1794066890	cmd	Trentlin	20	6155	haon.are	standing	72	0	-	up		Alas, you cannot go that way.	-	-
+1794066893	cmd	Trentlin	20	6154	haon.are	standing	72	0	-	north		The underground hallway. //   This hallway is apparently one of the roots of the tree hollowed out.  The // hall leads south to a room where you hear strange noises or you can go up	-	+
+1794066895	cmd	Trentlin	20	6153	haon.are	standing	72	0	-	up		Inside the great tree. //   You have stepped inside of this hollowed tree.  From here steps lead down // into darkness or you can exit the tree by going west.	-	+
+1794066896	cmd	Trentlin	20	6152	haon.are	standing	72	0	-	west		The circle of trees. //   The trees here seem to form a circle around a HUGE tree that is in the center // of them.  You notice a wooden door carved into the huge tree to the east. The	-	+
+1794066897	cmd	Trentlin	20	6151	haon.are	standing	72	0	-	west		The narrow trail. //   This area of the trail is also very peculiar.  You can see no signs of animal // life what so ever.  The structure of the surrounding trees forces the path to	-	+
+1794066898	cmd	Trentlin	20	17001	ag.are	standing	72	0	-	north		The Gates //   Welcome to the assassin's guild of old Midgaard! Its has stood here since the // founding of this city, some two hundred years ago. Its decrepit structure	-	+
+1794066899	cmd	Trentlin	20	6151	haon.are	standing	72	0	-	south		The narrow trail. //   This area of the trail is also very peculiar.  You can see no signs of animal // life what so ever.  The structure of the surrounding trees forces the path to	-	+
+1794066903	cmd	Trentlin	20	63	connect.are	standing	72	0	-	west		Forest Junction //   You find yourself standing at a small junction where the path splits east // and west.	-	+
+1794066904	cmd	Trentlin	20	5622	tarin.are	standing	72	0	-	west		A bend in the dark forest //   You are standing at a bend in the very dark forest of Haon-door. To the // north lies an un-investigated part of the forest, and by the looks of it	-	+
+1794066905	cmd	Trentlin	20	5622	tarin.are	standing	72	0	-	scan		You don't see anything near you.	-	-
+1794066906	cmd	Trentlin	20	5688	tarin.are	standing	72	0	-	west		A path in a dark and dense forest //   You are walking on a small and narrow track in a huge dark forest // the trees seems to be less living here than the other parts of the forest.	-	+
+1794066907	cmd	Trentlin	20	5688	tarin.are	standing	72	0	-	scan		You don't see anything near you.	-	-
+1794066909	cmd	Trentlin	20	5622	tarin.are	standing	72	0	-	east		A bend in the dark forest //   You are standing at a bend in the very dark forest of Haon-door. To the // north lies an un-investigated part of the forest, and by the looks of it	-	+
+1794066909	cmd	Trentlin	20	5689	tarin.are	standing	72	0	-	south		In the deeper forest //   You are standing just north of a huge ancient tree, from here everything // seems beautiful but you get a strange feeling about the north forest, not	-	+
+1794066910	cmd	Trentlin	20	5689	tarin.are	standing	72	0	-	scan		You don't see anything near you.	-	-
+1794066911	cmd	Trentlin	20	70	connect.are	standing	72	0	-	south		Darkened Path //   You find yourself treading upon a dark and sinister path. You get a strong // sense of evil emanating from up ahead.	-	+
+1794066912	cmd	Trentlin	20	70	connect.are	standing	72	0	-	scan		You don't see anything near you.	-	-
+1794066913	cmd	Trentlin	20	3601	dkforest.are	standing	72	0	-	south		Entrance to the Dark Forest. //   The normal sounds of the forest die away as you walk down this path. Ahead // you can see the trees grow so dense that no light reaches the ground. There	-	+
+1794066914	cmd	Trentlin	20	3601	dkforest.are	standing	72	0	-	scan		You don't see anything near you.	-	-
+1794066916	cmd	Trentlin	20	3601	dkforest.are	standing	72	0	-	look	noti	A tattered and faded note was left here ages ago, what you can make of it // reads as follows: //    'I  you en er t  s for st,  now that my m n o s s a l s re y s a  you.	-	+
+1794066923	cmd	Trentlin	20	4207	dresden.are	standing	72	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794066930	cmd	Trentlin	20	4205	dresden.are	standing	72	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794066930	cmd	Trentlin	20	4209	dresden.are	standing	72	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1794066930	cmd	Trentlin	20	4209	dresden.are	standing	72	0	-	south		Alas, you cannot go that way.	-	-
+1794066931	cmd	Trentlin	20	4209	dresden.are	standing	72	0	-	sleep		You go to sleep.	-	-
+1794066932	cmd	Trentlin	20	4209	dresden.are	sleeping	72	0	-	inventory		You are carrying: //      (Glowing) (Humming) a small boomerang //      a big pot pie	-	+
+1794066933	cmd	Trentlin	20	4209	dresden.are	sleeping	82	0	-	who		[20 Dwarf   Monk  ] Trentlin the Monk // Players found: 1	-	-
+1794066936	cmd	Trentlin	20	4209	dresden.are	sleeping	82	0	-	wake		You wake and stand up.	-	-
+1794066939	cmd	Trentlin	20	4209	dresden.are	standing	82	0	-	eat	pot	You eat a big pot pie.	-	-
+1794066941	refused	Trentlin	20	4209	dresden.are	standing	82	0	-	(unknown)		Huh? Did you mean SLEEP?	refusal:unknown-command	-
+1794066942	cmd	Trentlin	20	4209	dresden.are	standing	82	0	-	sleep		You go to sleep.	-	-
+1794066944	cmd	Trentlin	20	4209	dresden.are	sleeping	82	0	-	help	hero	HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS' // Hero status is reached when a character attains level 51.  At that point // normal experience leveling stops; experience is accumulated for other uses.	-	+
+1794066946	cmd	Trentlin	20	4209	dresden.are	sleeping	82	0	-	help	remort	REMORT // Syntax: REMORT <password> <class> <guild> <race> // REMORT allows a character at their current maximum level to start over as a	-	+
+1794067041	cmd	Trentlin	20	4209	dresden.are	sleeping	92	0	-	group		Trentlin's group: // [20 Monk ] Trentlin          433/ 468 hp  189/ 868 mana  207/ 319 mv 46303 xp	-	-
