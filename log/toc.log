@@ -271961,3 +271961,40 @@ Sat Nov  7 16:18:27 2026 :: Log Trentlin [4209]: sleep
 Sat Nov  7 16:20:02 2026 :: Log Trentlin [4209]: affects off: levitate
 Sat Nov  7 16:23:23 2026 :: Connection guard: last hour 13 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov  7 16:27:59 2026 :: Treasure goblin: vanished from room 118 (Smurfberry Patch, smurf.are) (too long in one area).
+Sat Nov  7 16:30:31 2026 :: Sock.sinaddr:  195.178.110.247
+Sat Nov  7 16:30:31 2026 :: EOF encountered on read.
+Sat Nov  7 16:35:13 2026 :: Log Trentlin [4209]: l
+Sat Nov  7 16:35:17 2026 :: Log Trentlin [4209]: north
+Sat Nov  7 16:35:17 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4209
+Sat Nov  7 16:35:17 2026 :: Log Trentlin [4205]: north
+Sat Nov  7 16:35:17 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4205
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [4207]: up
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [3700]: up
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [3772]: up
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [3795]: enter portal
+Sat Nov  7 16:35:18 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15000]: east
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15001]: east
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15002]: east
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15003]: east
+Sat Nov  7 16:35:19 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15004]: north
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15010]: north
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15011]: north
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15012]: north
+Sat Nov  7 16:35:20 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Sat Nov  7 16:35:21 2026 :: Log Trentlin [15013]: east
+Sat Nov  7 16:35:21 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Sat Nov  7 16:35:21 2026 :: Log Trentlin [15038]: east
+Sat Nov  7 16:35:21 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Sat Nov  7 16:35:21 2026 :: Log Trentlin [15068]: enter cabinet
+Sat Nov  7 16:35:21 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
