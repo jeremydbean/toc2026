@@ -270820,3 +270820,4 @@ Sat Nov  7 14:28:14 2026 :: EOF encountered on read.
 Sat Nov  7 14:28:14 2026 :: Sock.sinaddr:  104.248.181.231
 Sat Nov  7 14:28:18 2026 :: EOF encountered on read.
 Sat Nov  7 14:28:18 2026 :: Connection guard: 104.248.181.231 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 104.248.181.231 lifts it.
+Sat Nov  7 14:37:08 2026 :: Treasure goblin: vanished from room 13452 (Stone Arch, hell.are) (too long in one area).
