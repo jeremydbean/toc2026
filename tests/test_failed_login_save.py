@@ -64,8 +64,12 @@ class FailedLoginSaveTests(unittest.TestCase):
         nanny = without_comments(
             self.comm[self.comm.index("void nanny("):])
         password = nanny.split("case CON_GET_OLD_PASSWORD:", 1)[1][:600]
-        self.assertIn("Wrong password", password)
+        # The words moved into loginlock.c's login_wrong_password, which
+        # counts the failure and warns of the lockout (2026-11-06).
+        self.assertIn("login_wrong_password( d, ch )", password)
         self.assertIn("close_socket( d )", password)
+        lock = (ROOT / "src" / "loginlock.c").read_text(encoding="latin-1")
+        self.assertIn("Wrong password.", lock)
 
 
 if __name__ == "__main__":
