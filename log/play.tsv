@@ -15192,3 +15192,56 @@
 1794109923	cmd	Trentlin	24	29060	korzath1.are	fighting	87	0	fight	trip		Your trip misses Security Chief.	-	-
 1794109927	cmd	Trentlin	24	29060	korzath1.are	fighting	87	0	fight	trip		You trip Security Chief and Security Chief goes down! // Your trip scratches Security Chief.	-	-
 1794109932	cmd	Trentlin	24	29060	korzath1.are	fighting	83	0	fight	trip		You trip Security Chief and Security Chief goes down! // Your trip grazes Security Chief.	-	-
+1794109941	cmd	Trentlin	24	29060	korzath1.are	standing	83	0	-	get	key co	You get a crystal key from corpse of Security Chief.	-	-
+1794109941	cmd	Trentlin	24	29060	korzath1.are	standing	83	0	-	unlock	east	*Click*	-	-
+1794109941	cmd	Trentlin	24	29060	korzath1.are	standing	83	0	-	open	east	Ok.	-	-
+1794109941	cmd	Trentlin	24	29060	korzath1.are	standing	83	0	-	drop	key	You drop a crystal key.	-	-
+1794109942	cmd	Trentlin	24	29061	korzath1.are	standing	83	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794109943	cmd	Trentlin	24	29061	korzath1.are	standing	83	0	-	levitate		You slowly rise up off the ground.	-	-
+1794109944	cmd	Trentlin	24	29061	korzath1.are	standing	83	0	-	iron		You lost your concentration.	-	-
+1794109945	cmd	Trentlin	24	29061	korzath1.are	standing	83	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794109953	cmd	Trentlin	24	29061	korzath1.are	standing	86	0	-	kill	g	Your punch scratches a security guard. // A security guard dodges your attack. // Your punch hits a security guard.	-	-
+1794109955	cmd	Trentlin	24	29061	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794109961	cmd	Trentlin	24	29061	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard.	-	-
+1794109972	cmd	Trentlin	24	29061	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794109981	cmd	Trentlin	24	29061	korzath1.are	fighting	86	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a security guard.	-	-
+1794109984	cmd	Trentlin	24	29061	korzath1.are	fighting	86	0	fight	trip		Your trip misses a security guard.	-	-
+1794109989	cmd	Trentlin	24	29061	korzath1.are	standing	86	0	-	kill	g	They aren't here.	-	-
+1794109990	cmd	Trentlin	24	29061	korzath1.are	standing	86	0	-	nerve		Who do you want to attack?	-	-
+1794109991	cmd	Trentlin	24	29062	korzath1.are	standing	86	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794109993	cmd	Trentlin	24	29062	korzath1.are	standing	86	0	-	kill	g	A security guard parries your attack. // A security guard parries your attack.	-	-
+1794109996	cmd	Trentlin	24	29062	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794110002	cmd	Trentlin	24	29062	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794110006	cmd	Trentlin	24	29062	korzath1.are	fighting	87	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard!	-	-
+1794110012	cmd	Trentlin	24	29062	korzath1.are	fighting	82	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794110018	cmd	Trentlin	24	29062	korzath1.are	fighting	77	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES a security guard!	-	-
+1794110024	cmd	Trentlin	24	29062	korzath1.are	fighting	77	0	fight	nerve		You missed the nerve. // Your nerve pinch hits a security guard.	-	-
+1794110026	cmd	Trentlin	24	29062	korzath1.are	fighting	77	0	fight	trip		Your trip misses a security guard.	-	-
+1794110030	cmd	Trentlin	24	29062	korzath1.are	fighting	67	0	fight	trip		Your trip misses a security guard.	-	-
+1794110035	cmd	Trentlin	24	29062	korzath1.are	fighting	62	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794110045	cmd	Trentlin	24	29062	korzath1.are	standing	62	0	-	iron		You lost your concentration.	-	-
+1794110046	cmd	Trentlin	24	29062	korzath1.are	standing	62	0	-	iron		Your skin hardens.	-	-
+1794110053	cmd	Trentlin	24	29062	korzath1.are	standing	62	0	-	kill	g	A security guard parries your attack. // Your punch *** DEVASTATES *** a security guard!	-	-
+1794110056	cmd	Trentlin	24	29062	korzath1.are	fighting	63	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794110059	cmd	Trentlin	24	29062	korzath1.are	fighting	63	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794110063	cmd	Trentlin	24	29062	korzath1.are	fighting	55	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794110071	cmd	Trentlin	24	29062	korzath1.are	fighting	49	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS a security guard!	-	-
+1794110073	cmd	Trentlin	24	29062	korzath1.are	fighting	46	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard.	-	-
+1794110078	cmd	Trentlin	24	29062	korzath1.are	fighting	42	0	fight	nerve		You missed the nerve. // Your nerve pinch hits a security guard.	-	-
+1794110081	cmd	Trentlin	25	29062	korzath1.are	standing	41	0	-	trip		But you aren't fighting anyone!	-	-
+1794110082	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794110084	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	inventory		You are carrying: //      an Eagle archer's bow //      a small key	-	+
+1794110085	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	compare	war	A) a great war helmet (level 25) // B) a Dodongo skull cap (level 14), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794110089	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	wear	war	You stop using a Dodongo skull cap. // You wear a great war helmet on your head.	-	-
+1794110092	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	drop	cap	You drop a Dodongo skull cap.	-	-
+1794110093	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	sacrifice	cap	The Gods give you 28 copper coins for your sacrifice.	-	-
+1794110094	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	inventory		You are carrying: //      an Eagle archer's bow //      a small key	-	+
+1794110101	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	compare	mant	A) a twin-headed mantle (level 27) -- can't use: needs level 27 // B) an Eagle-feather cloak (level 8), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794110105	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	compare	pac	A) a metallic pack (level 29) -- can't use: needs level 29 // B) an Eagle-feather cloak (level 8), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794110108	cmd	Trentlin	25	4202	dresden.are	standing	41	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794110108	cmd	Trentlin	25	4203	dresden.are	standing	41	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794110109	cmd	Trentlin	25	4210	dresden.are	standing	41	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794110109	cmd	Trentlin	25	4210	dresden.are	standing	41	0	-	north		Alas, you cannot go that way.	-	-
+1794110109	cmd	Trentlin	25	4210	dresden.are	standing	41	0	-	sleep		You go to sleep.	-	-
+1794110113	cmd	Trentlin	25	4210	dresden.are	sleeping	41	0	-	skills		Level  1: dagger              75%      hand to hand        85%       //           recall             100%       // Level  3: kick                79%      	-	+
+1794110114	session	Trentlin	25	4210	dresden.are	quit	239s	+1 levels	+1239 exp	+4142664 copper	4 kills	0 deaths	0 quests	113 commands	0 refused	coin: loot 4p 14g 26s 64c	spent on: none	exp: kills +1235, skilluse +4
