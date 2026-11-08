@@ -276543,3 +276543,11 @@ Sun Nov  8 06:43:16 2026 :: Sock.sinaddr:  45.150.109.153
 Sun Nov  8 06:43:16 2026 :: EOF encountered on read.
 Sun Nov  8 06:43:16 2026 :: Sock.sinaddr:  45.150.109.153
 Sun Nov  8 06:43:16 2026 :: EOF encountered on read.
+Sun Nov  8 06:44:22 2026 :: Treasure goblin: vanished from room 9370 (End of the Dipper, galaxy.are) (too long in one area).
+Sun Nov  8 06:47:56 2026 :: Sock.sinaddr:  45.150.109.153
+Sun Nov  8 06:47:56 2026 :: EOF encountered on read.
+Sun Nov  8 06:47:56 2026 :: Sock.sinaddr:  45.150.109.153
+Sun Nov  8 06:47:57 2026 :: EOF encountered on read.
+Sun Nov  8 06:47:57 2026 :: Sock.sinaddr:  45.150.109.153
+Sun Nov  8 06:47:57 2026 :: EOF encountered on read.
+Sun Nov  8 06:47:57 2026 :: Connection guard: 45.150.109.153 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 45.150.109.153 lifts it.
