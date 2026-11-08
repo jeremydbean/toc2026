@@ -15796,3 +15796,112 @@
 1794140848	cmd	Trentlin	25	4208	dresden.are	standing	91	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
 1794140851	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
 1794140858	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794140859	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794140860	cmd	Trentlin	25	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794140860	cmd	Trentlin	25	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794140860	cmd	Trentlin	25	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794140860	cmd	Trentlin	25	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794140861	cmd	Trentlin	25	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140861	cmd	Trentlin	25	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140861	cmd	Trentlin	25	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140861	cmd	Trentlin	25	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794140862	cmd	Trentlin	25	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794140862	cmd	Trentlin	25	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794140862	cmd	Trentlin	25	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794140862	cmd	Trentlin	25	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794140863	cmd	Trentlin	25	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794140863	cmd	Trentlin	25	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794140863	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794140899	cmd	Trentlin	25	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start //   A wall of brown rock rises along the north side of a grassy field, its face // scarred and cracked. One section looks weaker than the rest, a hollow knock	-	+
+1794140900	cmd	Trentlin	25	30222	hyrule.are	standing	100	0	-	west		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow	-	+
+1794140900	cmd	Trentlin	25	30221	hyrule.are	standing	100	0	-	west		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy	-	+
+1794140900	cmd	Trentlin	25	30220	hyrule.are	standing	100	0	-	west		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter	-	+
+1794140902	cmd	Trentlin	25	30220	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794140905	cmd	Trentlin	25	30219	hyrule.are	standing	100	0	-	west		Bramble Wood //   Thorny brambles crowd between the trunks, snagging cloth and skin alike, // and the trail weaves a careful line through them. A bush beside the path	-	+
+1794140907	cmd	Trentlin	25	30204	hyrule.are	standing	100	0	-	south		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes	-	+
+1794140908	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	east		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794140909	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	down		A seal shaped like the Triforce bars the way into the Manji. It opens // only for one who carries the second Triforce piece, from Level 2: The // Moon.  Hyrule's dungeons are done in order.	-	-
+1794140921	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	inventory		You are carrying: //      Nothing.	-	-
+1794140922	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	equipment		You are using: // Nothing.	-	-
+1794140942	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	look		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794140945	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794140947	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794140951	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	get	gear stash	That's not a container.	-	-
+1794140955	cmd	Trentlin	25	4208	dresden.are	standing	100	13	-	stash	get gear	You take Trentlin's level 54 gear out of your stash.	-	-
+1794140957	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	look	in gear	Trentlin's level 54 gear contains: //      a quiver of arrows //      a pirate's ring	-	+
+1794140983	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	put	gear stash	That's not a container.	-	-
+1794140988	cmd	Trentlin	25	4208	dresden.are	standing	100	7	-	stash	put gear	You put Trentlin's level 54 gear away for safe keeping.	-	-
+1794140992	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	stash		Your stash holds 55 of 75 things. //     1) Trentlin's level 54 gear //     2) a Blue rimmed, white cloak	-	+
+1794141001	cmd	Trentlin	25	4208	dresden.are	standing	100	8	-	stash	get cloa	You take a Blue rimmed, white cloak out of your stash.	-	-
+1794141002	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	wear	gloa	You do not have that item.	-	-
+1794141006	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	wear	cloa	You wear a Blue rimmed, white cloak around your neck.	-	-
+1794141009	cmd	Trentlin	25	4208	dresden.are	standing	100	6	-	stash	get leg	You take a pair of Roman-style leggings out of your stash.	-	-
+1794141011	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	wear	leg	You wear a pair of Roman-style leggings on your legs.	-	-
+1794141014	cmd	Trentlin	25	4208	dresden.are	standing	100	4	-	stash	get plate	You take a suit of demon-scale plate out of your stash.	-	-
+1794141019	cmd	Trentlin	25	4208	dresden.are	standing	100	9	-	stash	put plate	You put a suit of demon-scale plate away for safe keeping.	-	-
+1794141022	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794141023	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794141025	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1794141030	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794141031	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794141031	cmd	Trentlin	25	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794141031	cmd	Trentlin	25	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794141032	cmd	Trentlin	25	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794141032	cmd	Trentlin	25	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794141032	cmd	Trentlin	25	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141032	cmd	Trentlin	25	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141033	cmd	Trentlin	25	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141033	cmd	Trentlin	25	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794141033	cmd	Trentlin	25	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794141033	cmd	Trentlin	25	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794141034	cmd	Trentlin	25	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794141034	cmd	Trentlin	25	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794141034	cmd	Trentlin	25	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794141034	cmd	Trentlin	25	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794141035	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794141055	cmd	Trentlin	25	30208	hyrule.are	standing	100	0	-	east		Meadow East of the Cave //   Open grassland stretches east from the starting hills, dotted with small // boulders and clumps of green bushes. Round pebbles lie strewn across the	-	+
+1794141056	cmd	Trentlin	25	30224	hyrule.are	standing	100	0	-	north		Bush Row //   A tidy line of thick green bushes borders a sunny field, almost like a // hedge someone once planted and forgot. One of them stands out from its	-	+
+1794141056	cmd	Trentlin	25	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake //   Two worn dirt roads cross in the middle of open green country, rutted by // cart wheels and dotted with spat stones. To the north the ground slopes	-	+
+1794141056	cmd	Trentlin	25	30256	hyrule.are	standing	100	0	-	north		Lake Hylia Sand Bar //   A pale sand bar runs along the lake's edge, the sand rippled and pocked // with burrow holes from which a red spinning thing sometimes bores up. The	-	+
+1794141056	cmd	Trentlin	25	30272	hyrule.are	standing	100	0	-	north		The River Landing //   The river widens here, and a sturdy wooden dock juts out from the bank into // the current. Across the water to the west a green shore with a carved stone	-	+
+1794141057	cmd	Trentlin	25	30271	hyrule.are	standing	100	0	-	west		The Eagle's Gate //   On a spit of green land cut off by the river, a stone entrance stands in a // rocky outcrop, its lintel carved with the spread wings of an eagle and	-	+
+1794141058	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	down		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794141059	cmd	Trentlin	25	30402	hyrule.are	standing	100	0	-	east		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794141061	cmd	Trentlin	25	30402	hyrule.are	standing	100	0	-	kill	st	Your punch misses a stalfos. // Your punch *** DEMOLISHES *** a stalfos!	-	-
+1794141065	cmd	Trentlin	25	30402	hyrule.are	standing	100	0	-	get	key co	I see nothing like that in the co.	-	-
+1794141065	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	west		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794141066	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	unlock	north	You lack the key.	-	-
+1794141066	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	north		The locked is closed.	-	-
+1794141069	cmd	Trentlin	25	30402	hyrule.are	standing	100	0	-	east		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794141070	cmd	Trentlin	25	30402	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794141070	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	west		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794141073	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794141074	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794141074	cmd	Trentlin	25	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794141077	cmd	Trentlin	25	30403	hyrule.are	standing	100	0	-	kill	sta	Your punch devastates a stalfos! // Your punch MASSACRES a stalfos!	-	-
+1794141081	cmd	Trentlin	25	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794141083	cmd	Trentlin	25	30405	hyrule.are	standing	100	0	-	kill	sta	Your punch *** DEMOLISHES *** a stalfos! // Your punch *** DEVASTATES *** a stalfos! // A stalfos is DEAD!!	-	+
+1794141088	cmd	Trentlin	25	30405	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794141088	cmd	Trentlin	25	30403	hyrule.are	standing	100	0	-	south		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794141088	cmd	Trentlin	25	30403	hyrule.are	standing	100	0	-	get	key	I see no key here.	-	-
+1794141088	cmd	Trentlin	25	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794141091	cmd	Trentlin	25	30405	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794141094	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794141097	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	kill	kee	Your punch DISEMBOWELS a keese! // A keese is DEAD!! // You receive 0 experience points.	-	+
+1794141100	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	kill	kee	Your punch maims a keese! // A keese is DEAD!! // You receive 0 experience points.	-	+
+1794141105	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	kill	kee	Your punch MASSACRES a keese! // A keese is DEAD!! // You receive 0 experience points.	-	+
+1794141110	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	bomb	norrth	You find no cracked surface to bomb there.	-	-
+1794141111	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794141114	cmd	Trentlin	25	30406	hyrule.are	standing	100	1	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794141115	cmd	Trentlin	25	30410	hyrule.are	standing	100	0	-	north		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794141116	cmd	Trentlin	25	30411	hyrule.are	standing	100	0	-	east		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794141118	cmd	Trentlin	25	30411	hyrule.are	standing	100	0	-	get	kety	I see no kety here.	-	-
+1794141120	cmd	Trentlin	25	30411	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794141121	cmd	Trentlin	25	30411	hyrule.are	standing	100	0	-	open	north	It's locked.	-	-
+1794141122	cmd	Trentlin	25	30411	hyrule.are	standing	100	0	-	north		The locked is closed.	-	-
+1794141124	cmd	Trentlin	25	30411	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794141126	cmd	Trentlin	25	30411	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794141126	cmd	Trentlin	25	30413	hyrule.are	standing	100	0	-	north		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794141128	cmd	Trentlin	25	30413	hyrule.are	standing	100	0	-	consider	aq	Aquamentus is far below your level. // Aquamentus has several times your hit points. // Blow for blow, you would need about 33 rounds to bring Aquamentus down; it would need about 45 rounds for you.	-	+
+1794141132	cmd	Trentlin	25	30413	hyrule.are	standing	100	0	-	kill	aq	Your punch hits Aquamentus. // Your punch scratches Aquamentus.	-	-
+1794141141	cmd	Trentlin	25	30413	hyrule.are	fighting	92	0	fight	bomb	aq	You have no bombs. The arrow shops sell four for 20 gold.	-	-

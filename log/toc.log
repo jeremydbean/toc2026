@@ -277528,3 +277528,196 @@ Sun Nov  8 12:27:28 2026 :: Log Trentlin [4208]: gold -500
 Sun Nov  8 12:27:31 2026 :: Log Trentlin [4208]: heal heal
 Sun Nov  8 12:27:31 2026 :: Log Trentlin [4208]: gold -500
 Sun Nov  8 12:27:38 2026 :: Log Trentlin [4208]: levitate
+Sun Nov  8 12:27:39 2026 :: Log Trentlin [4208]: east
+Sun Nov  8 12:27:39 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [4207]: up
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [3700]: up
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [3772]: up
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [3795]: enter portal
+Sun Nov  8 12:27:40 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15000]: east
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15001]: east
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15002]: east
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15003]: east
+Sun Nov  8 12:27:41 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15004]: north
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15010]: north
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15011]: north
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15012]: north
+Sun Nov  8 12:27:42 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Sun Nov  8 12:27:43 2026 :: Log Trentlin [15013]: east
+Sun Nov  8 12:27:43 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Sun Nov  8 12:27:43 2026 :: Log Trentlin [15038]: east
+Sun Nov  8 12:27:43 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Sun Nov  8 12:27:43 2026 :: Log Trentlin [15068]: enter cabinet
+Sun Nov  8 12:27:43 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Sun Nov  8 12:28:19 2026 :: Log Trentlin [30200]: n
+Sun Nov  8 12:28:19 2026 :: Log Trentlin [30223]: arrived (Rock Wall Above the Start) from 30200
+Sun Nov  8 12:28:20 2026 :: Log Trentlin [30223]: w
+Sun Nov  8 12:28:20 2026 :: Log Trentlin [30222]: arrived (Candle Shop Knoll) from 30223
+Sun Nov  8 12:28:20 2026 :: Log Trentlin [30222]: w
+Sun Nov  8 12:28:20 2026 :: Log Trentlin [30221]: arrived (Forest Stream) from 30222
+Sun Nov  8 12:28:20 2026 :: Log Trentlin [30221]: w
+Sun Nov  8 12:28:20 2026 :: Log Trentlin [30220]: arrived (The Herb-Gatherers' Wood) from 30221
+Sun Nov  8 12:28:22 2026 :: Log Trentlin [30220]: s
+Sun Nov  8 12:28:25 2026 :: Log Trentlin [30220]: w
+Sun Nov  8 12:28:25 2026 :: Log Trentlin [30219]: arrived (Bramble Wood) from 30220
+Sun Nov  8 12:28:27 2026 :: Log Trentlin [30219]: s
+Sun Nov  8 12:28:27 2026 :: Log Trentlin [30204]: arrived (Path to the Manji) from 30219
+Sun Nov  8 12:28:28 2026 :: Log Trentlin [30204]: e
+Sun Nov  8 12:28:28 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30204
+Sun Nov  8 12:28:29 2026 :: Log Trentlin [30205]: d
+Sun Nov  8 12:28:41 2026 :: Log Trentlin [30205]: i
+Sun Nov  8 12:28:42 2026 :: Log Trentlin [30205]: eq
+Sun Nov  8 12:29:02 2026 :: Log Trentlin [30205]: l
+Sun Nov  8 12:29:05 2026 :: Log Trentlin [30205]: reca
+Sun Nov  8 12:29:05 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30205
+Sun Nov  8 12:29:07 2026 :: Log Trentlin [4207]: w
+Sun Nov  8 12:29:07 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Nov  8 12:29:11 2026 :: Log Trentlin [4208]: get gear stash
+Sun Nov  8 12:29:15 2026 :: Log Trentlin [4208]: stash get gear
+Sun Nov  8 12:29:15 2026 :: Log Trentlin [4208]: withdrew Trentlin's level 54 gear (vnum 3032) from the stash
+Sun Nov  8 12:29:17 2026 :: Log Trentlin [4208]: l in gear
+Sun Nov  8 12:29:43 2026 :: Log Trentlin [4208]: put gear stash
+Sun Nov  8 12:29:48 2026 :: Log Trentlin [4208]: stash put gear
+Sun Nov  8 12:29:48 2026 :: Log Trentlin [4208]: stashed Trentlin's level 54 gear (vnum 3032)
+Sun Nov  8 12:29:52 2026 :: Log Trentlin [4208]: stash
+Sun Nov  8 12:30:01 2026 :: Log Trentlin [4208]: stash get cloa
+Sun Nov  8 12:30:01 2026 :: Log Trentlin [4208]: withdrew a Blue rimmed, white cloak (vnum 10022) from the stash
+Sun Nov  8 12:30:02 2026 :: Log Trentlin [4208]: wear gloa
+Sun Nov  8 12:30:06 2026 :: Log Trentlin [4208]: wear cloa
+Sun Nov  8 12:30:09 2026 :: Log Trentlin [4208]: stash get leg
+Sun Nov  8 12:30:09 2026 :: Log Trentlin [4208]: withdrew a pair of Roman-style leggings (vnum 10028) from the stash
+Sun Nov  8 12:30:11 2026 :: Log Trentlin [4208]: wear leg
+Sun Nov  8 12:30:14 2026 :: Log Trentlin [4208]: stash get plate
+Sun Nov  8 12:30:14 2026 :: Log Trentlin [4208]: withdrew a suit of demon-scale plate (vnum 30680) from the stash
+Sun Nov  8 12:30:19 2026 :: Log Trentlin [4208]: stash put plate
+Sun Nov  8 12:30:19 2026 :: Log Trentlin [4208]: stashed a suit of demon-scale plate (vnum 30680)
+Sun Nov  8 12:30:21 2026 :: Log Trentlin [4208]: affects off: levitate
+Sun Nov  8 12:30:22 2026 :: Log Trentlin [4208]: e
+Sun Nov  8 12:30:22 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Nov  8 12:30:23 2026 :: Log Trentlin [4207]: w
+Sun Nov  8 12:30:23 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Nov  8 12:30:25 2026 :: Log Trentlin [4208]: heal refresh
+Sun Nov  8 12:30:25 2026 :: Log Trentlin [4208]: gold -30
+Sun Nov  8 12:30:30 2026 :: Log Trentlin [4208]: heal refresh
+Sun Nov  8 12:30:31 2026 :: Log Trentlin [4208]: east
+Sun Nov  8 12:30:31 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Nov  8 12:30:31 2026 :: Log Trentlin [4207]: up
+Sun Nov  8 12:30:31 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Sun Nov  8 12:30:31 2026 :: Log Trentlin [3700]: up
+Sun Nov  8 12:30:31 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [3772]: up
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [3795]: enter portal
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [15000]: east
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [15001]: east
+Sun Nov  8 12:30:32 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15002]: east
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15003]: east
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15004]: north
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15010]: north
+Sun Nov  8 12:30:33 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15011]: north
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15012]: north
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15013]: east
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15038]: east
+Sun Nov  8 12:30:34 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Sun Nov  8 12:30:35 2026 :: Log Trentlin [15068]: enter cabinet
+Sun Nov  8 12:30:35 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Sun Nov  8 12:30:41 2026 :: Treasure goblin: vanished from room 9407 (Entrance Hallway to Mob Factory, mobfact.are) (too long in one area).
+Sun Nov  8 12:30:55 2026 :: Log Trentlin [30200]: e
+Sun Nov  8 12:30:55 2026 :: Log Trentlin [30208]: arrived (Meadow East of the Cave) from 30200
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30208]: n
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30224]: arrived (Bush Row) from 30208
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30224]: n
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30240]: arrived (Crossroads South of the Lake) from 30224
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30240]: n
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30256]: arrived (Lake Hylia Sand Bar) from 30240
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30256]: n
+Sun Nov  8 12:30:56 2026 :: Log Trentlin [30272]: arrived (The River Landing) from 30256
+Sun Nov  8 12:30:57 2026 :: Log Trentlin [30272]: w
+Sun Nov  8 12:30:57 2026 :: Log Trentlin [30271]: arrived (The Eagle's Gate) from 30272
+Sun Nov  8 12:30:58 2026 :: Log Trentlin [30271]: d
+Sun Nov  8 12:30:58 2026 :: Log Trentlin [30401]: arrived (Level 1: Eagle Gate) from 30271
+Sun Nov  8 12:30:59 2026 :: Log Trentlin [30401]: e
+Sun Nov  8 12:30:59 2026 :: Log Trentlin [30402]: arrived (Level 1: East Bone Room) from 30401
+Sun Nov  8 12:31:01 2026 :: Log Trentlin [30402]: k st
+Sun Nov  8 12:31:02 2026 :: Log Trentlin [30402]: killed a stalfos
+Sun Nov  8 12:31:02 2026 :: Log Trentlin [30402]: coin +2 copper
+Sun Nov  8 12:31:05 2026 :: Log Trentlin [30402]: get key co
+Sun Nov  8 12:31:05 2026 :: Log Trentlin [30402]: w
+Sun Nov  8 12:31:05 2026 :: Log Trentlin [30401]: arrived (Level 1: Eagle Gate) from 30402
+Sun Nov  8 12:31:06 2026 :: Log Trentlin [30401]: unlock north
+Sun Nov  8 12:31:06 2026 :: Log Trentlin [30401]: n
+Sun Nov  8 12:31:09 2026 :: Log Trentlin [30401]: e
+Sun Nov  8 12:31:09 2026 :: Log Trentlin [30402]: arrived (Level 1: East Bone Room) from 30401
+Sun Nov  8 12:31:10 2026 :: Log Trentlin [30402]: get key
+Sun Nov  8 12:31:10 2026 :: Log Trentlin [30402]: w
+Sun Nov  8 12:31:10 2026 :: Log Trentlin [30401]: arrived (Level 1: Eagle Gate) from 30402
+Sun Nov  8 12:31:13 2026 :: Log Trentlin [30401]: unlock north
+Sun Nov  8 12:31:14 2026 :: Log Trentlin [30401]: open north
+Sun Nov  8 12:31:14 2026 :: Log Trentlin [30401]: n
+Sun Nov  8 12:31:14 2026 :: Log Trentlin [30403]: arrived (Level 1: Rattling Passage) from 30401
+Sun Nov  8 12:31:17 2026 :: Log Trentlin [30403]: k sta
+Sun Nov  8 12:31:17 2026 :: Log Trentlin [30403]: killed a stalfos
+Sun Nov  8 12:31:17 2026 :: Log Trentlin [30403]: coin +2 copper
+Sun Nov  8 12:31:21 2026 :: Log Trentlin [30403]: n
+Sun Nov  8 12:31:21 2026 :: Log Trentlin [30405]: arrived (Level 1: Diamond-Tiled Crossing) from 30403
+Sun Nov  8 12:31:23 2026 :: Log Trentlin [30405]: k sta
+Sun Nov  8 12:31:23 2026 :: Log Trentlin [30405]: killed a stalfos
+Sun Nov  8 12:31:23 2026 :: Log Trentlin [30405]: coin +2 copper
+Sun Nov  8 12:31:28 2026 :: Log Trentlin [30405]: n
+Sun Nov  8 12:31:28 2026 :: Log Trentlin [30405]: s
+Sun Nov  8 12:31:28 2026 :: Log Trentlin [30403]: arrived (Level 1: Rattling Passage) from 30405
+Sun Nov  8 12:31:28 2026 :: Log Trentlin [30403]: get key
+Sun Nov  8 12:31:28 2026 :: Log Trentlin [30403]: n
+Sun Nov  8 12:31:28 2026 :: Log Trentlin [30405]: arrived (Level 1: Diamond-Tiled Crossing) from 30403
+Sun Nov  8 12:31:31 2026 :: Log Trentlin [30405]: get key
+Sun Nov  8 12:31:34 2026 :: Log Trentlin [30405]: e
+Sun Nov  8 12:31:34 2026 :: Log Trentlin [30406]: arrived (Level 1: Keese-Fouled Gallery) from 30405
+Sun Nov  8 12:31:37 2026 :: Log Trentlin [30406]: k kee
+Sun Nov  8 12:31:37 2026 :: Log Trentlin [30406]: killed a keese
+Sun Nov  8 12:31:37 2026 :: Log Trentlin [30406]: coin +4 copper
+Sun Nov  8 12:31:40 2026 :: Log Trentlin [30406]: k kee
+Sun Nov  8 12:31:40 2026 :: Log Trentlin [30406]: killed a keese
+Sun Nov  8 12:31:40 2026 :: Log Trentlin [30406]: coin +1 gold
+Sun Nov  8 12:31:40 2026 :: Log Trentlin [30406]: coin +4 copper
+Sun Nov  8 12:31:45 2026 :: Log Trentlin [30406]: k kee
+Sun Nov  8 12:31:45 2026 :: Log Trentlin [30406]: killed a keese
+Sun Nov  8 12:31:45 2026 :: Log Trentlin [30406]: coin +4 copper
+Sun Nov  8 12:31:50 2026 :: Log Trentlin [30406]: bomb norrth
+Sun Nov  8 12:31:51 2026 :: Log Trentlin [30406]: n
+Sun Nov  8 12:31:54 2026 :: Log Trentlin [30406]: bomb north
+Sun Nov  8 12:31:55 2026 :: Log Trentlin [30406]: n
+Sun Nov  8 12:31:55 2026 :: Log Trentlin [30410]: arrived (Level 1: Scarred Hall) from 30406
+Sun Nov  8 12:31:56 2026 :: Log Trentlin [30410]: e
+Sun Nov  8 12:31:56 2026 :: Log Trentlin [30411]: arrived (Level 1: Hall of Grasping Walls) from 30410
+Sun Nov  8 12:31:58 2026 :: Log Trentlin [30411]: get kety
+Sun Nov  8 12:32:00 2026 :: Log Trentlin [30411]: get key
+Sun Nov  8 12:32:01 2026 :: Log Trentlin [30411]: open north
+Sun Nov  8 12:32:02 2026 :: Log Trentlin [30411]: n
+Sun Nov  8 12:32:04 2026 :: Log Trentlin [30411]: unlock north
+Sun Nov  8 12:32:06 2026 :: Log Trentlin [30411]: open north
+Sun Nov  8 12:32:06 2026 :: Log Trentlin [30411]: n
+Sun Nov  8 12:32:06 2026 :: Log Trentlin [30413]: arrived (Level 1: Hall of Threefold Scorches) from 30411
+Sun Nov  8 12:32:08 2026 :: Log Trentlin [30413]: con aq
+Sun Nov  8 12:32:12 2026 :: Log Trentlin [30413]: k aq
+Sun Nov  8 12:32:21 2026 :: Log Trentlin [30413]: bomb aq

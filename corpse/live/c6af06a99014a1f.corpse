@@ -5,9 +5,9 @@ Uid P6adca00b00079e30
 Owned 1
 Room 30443
 Level 25
-Timer 10080
+Timer 10077
 Died 1794140825
-Saved 1794140825
+Saved 1794140979
 Snapshot Trentlin.20261108_122705.death
 State live
 Why -
@@ -20,7 +20,7 @@ Vnum 30227
 Nest 0
 Wear -1
 Lev  1
-Time 77
+Time 74
 Cost 0
 Cond 100
 Repd 0
@@ -31,7 +31,7 @@ Vnum 30227
 Nest 0
 Wear -1
 Lev  1
-Time 46
+Time 43
 Cost 0
 Cond 100
 Repd 0
@@ -277,7 +277,7 @@ End
 Vnum 62
 Nest 1
 Wear -1
-Time 143
+Time 140
 Cost 0
 Cond 100
 Repd 0
