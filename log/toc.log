@@ -273402,3 +273402,159 @@ Sun Nov  8 00:51:27 2026 :: Treasure goblin: vanished from room 2124 (Old Abando
 Sun Nov  8 00:59:39 2026 :: Connection guard: last hour 14 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
 Sun Nov  8 00:59:53 2026 :: Automated backup complete.
 Sun Nov  8 01:01:32 2026 :: Treasure goblin: vanished from room 2399 (Belrak's Green Room, mahntor.are) (too long in one area).
+Sun Nov  8 01:07:11 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Nov  8 01:07:11 2026 :: Loading Trentlin's playerfile
+Sun Nov  8 01:07:12 2026 :: Loading Trentlin's playerfile
+Sun Nov  8 01:07:12 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sun Nov  8 01:07:13 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 0
+Sun Nov  8 01:07:14 2026 :: Log Trentlin [4210]: affects off: levitate
+Sun Nov  8 01:07:16 2026 :: Log Trentlin [4210]: wake
+Sun Nov  8 01:07:17 2026 :: Log Trentlin [4210]: l
+Sun Nov  8 01:07:18 2026 :: Log Trentlin [4210]: slee
+Sun Nov  8 01:07:19 2026 :: Log Trentlin [4210]: who
+Sun Nov  8 01:07:24 2026 :: Log Trentlin [4210]: sco
+Sun Nov  8 01:07:26 2026 :: Log Trentlin [4210]: wake
+Sun Nov  8 01:07:27 2026 :: Log Trentlin [4210]: where hermie
+Sun Nov  8 01:07:28 2026 :: Log Trentlin [4210]: s
+Sun Nov  8 01:07:28 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sun Nov  8 01:07:28 2026 :: Log Trentlin [4203]: s
+Sun Nov  8 01:07:28 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Sun Nov  8 01:07:29 2026 :: Log Trentlin [4202]: w
+Sun Nov  8 01:07:29 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Sun Nov  8 01:07:29 2026 :: Log Trentlin [4207]: w
+Sun Nov  8 01:07:29 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Nov  8 01:07:29 2026 :: Log Trentlin [4208]: w
+Sun Nov  8 01:07:30 2026 :: Log Trentlin [4208]: e
+Sun Nov  8 01:07:30 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Nov  8 01:07:30 2026 :: Log Trentlin [4207]: e
+Sun Nov  8 01:07:30 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov  8 01:07:30 2026 :: Log Trentlin [4202]: e
+Sun Nov  8 01:07:30 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov  8 01:07:31 2026 :: Log Trentlin [4201]: e
+Sun Nov  8 01:07:31 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sun Nov  8 01:07:31 2026 :: Log Trentlin [2427]: e
+Sun Nov  8 01:07:31 2026 :: Log Trentlin [2427]: n
+Sun Nov  8 01:07:31 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Nov  8 01:07:32 2026 :: Log Trentlin [2404]: n
+Sun Nov  8 01:07:32 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Nov  8 01:07:32 2026 :: Log Trentlin [2401]: u
+Sun Nov  8 01:07:32 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Nov  8 01:07:32 2026 :: Log Trentlin [2410]: u
+Sun Nov  8 01:07:32 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Nov  8 01:07:33 2026 :: Log Trentlin [2411]: u
+Sun Nov  8 01:07:33 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sun Nov  8 01:07:33 2026 :: Log Trentlin [2414]: u
+Sun Nov  8 01:07:33 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Nov  8 01:07:33 2026 :: Log Trentlin [2497]: u
+Sun Nov  8 01:07:35 2026 :: Log Trentlin [2497]: aquest request
+Sun Nov  8 01:07:35 2026 :: Log Trentlin [2497]: quest assigned: kill Pauline the tailor (mob 10028, level 20) in glitter.are, 10 minutes, ordinary
+Sun Nov  8 01:07:45 2026 :: Log Trentlin [2497]: enter door
+Sun Nov  8 01:07:45 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2401]: east
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2403]: east
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2420]: east
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2421]: east
+Sun Nov  8 01:07:47 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2422]: east
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2423]: east
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2424]: east
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2425]: east
+Sun Nov  8 01:07:48 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Nov  8 01:07:49 2026 :: Log Trentlin [2426]: open east
+Sun Nov  8 01:07:49 2026 :: Log Trentlin [2426]: east
+Sun Nov  8 01:07:49 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [2440]: east
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [3503]: east
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [3502]: north
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [3501]: arrived (The Lane) from 3502
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [3501]: north
+Sun Nov  8 01:07:51 2026 :: Log Trentlin [3500]: arrived (The Plains) from 3501
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [3500]: northwest
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [21]: arrived (A twisting path) from 3500
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [21]: west
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [22]: arrived (Before the great circle) from 21
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [22]: south
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [23]: arrived (The Great Portal) from 22
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [23]: enter portal
+Sun Nov  8 01:07:52 2026 :: Log Trentlin [10000]: arrived (Before the crystal bridge.) from 23
+Sun Nov  8 01:07:55 2026 :: Log Trentlin [10000]: n
+Sun Nov  8 01:07:55 2026 :: Log Trentlin [10001]: arrived (A crystal bridge.) from 10000
+Sun Nov  8 01:07:56 2026 :: Log Trentlin [10001]: n
+Sun Nov  8 01:07:56 2026 :: Log Trentlin [10002]: arrived (Royal Island.) from 10001
+Sun Nov  8 01:07:56 2026 :: Log Trentlin [10002]: n
+Sun Nov  8 01:07:58 2026 :: Log Trentlin [10002]: open north
+Sun Nov  8 01:07:59 2026 :: Log Trentlin [10002]: n
+Sun Nov  8 01:07:59 2026 :: Log Trentlin [10003]: arrived (The Glitter Palace's Grand Gate.) from 10002
+Sun Nov  8 01:07:59 2026 :: Log Trentlin [10003]: w
+Sun Nov  8 01:08:01 2026 :: Log Trentlin [10003]: open west
+Sun Nov  8 01:08:01 2026 :: Log Trentlin [10003]: w
+Sun Nov  8 01:08:01 2026 :: Log Trentlin [10005]: arrived (A large guard room.) from 10003
+Sun Nov  8 01:08:02 2026 :: Log Trentlin [10005]: e
+Sun Nov  8 01:08:02 2026 :: Log Trentlin [10003]: arrived (The Glitter Palace's Grand Gate.) from 10005
+Sun Nov  8 01:09:16 2026 :: Log Trentlin [10003]: open north
+Sun Nov  8 01:09:16 2026 :: Log Trentlin [10003]: n
+Sun Nov  8 01:09:16 2026 :: Log Trentlin [10004]: arrived (A large hall.) from 10003
+Sun Nov  8 01:09:17 2026 :: Log Trentlin [10004]: n
+Sun Nov  8 01:09:17 2026 :: Log Trentlin [10006]: arrived (A large hall.) from 10004
+Sun Nov  8 01:09:17 2026 :: Log Trentlin [10006]: n
+Sun Nov  8 01:09:17 2026 :: Log Trentlin [10007]: arrived (A large hall.) from 10006
+Sun Nov  8 01:09:18 2026 :: Log Trentlin [10007]: n
+Sun Nov  8 01:09:18 2026 :: Log Trentlin [10008]: arrived (A high domed intersection.) from 10007
+Sun Nov  8 01:09:18 2026 :: Log Trentlin [10008]: n
+Sun Nov  8 01:09:18 2026 :: Log Trentlin [10025]: arrived (The northern wing.) from 10008
+Sun Nov  8 01:09:19 2026 :: Log Trentlin [10025]: n
+Sun Nov  8 01:09:19 2026 :: Log Trentlin [10026]: arrived (The northern wing.) from 10025
+Sun Nov  8 01:09:20 2026 :: Log Trentlin [10026]: n
+Sun Nov  8 01:09:20 2026 :: Log Trentlin [10027]: arrived (The northern wing.) from 10026
+Sun Nov  8 01:09:31 2026 :: Log Trentlin [10027]: sca
+Sun Nov  8 01:09:32 2026 :: Log Trentlin [10027]: u
+Sun Nov  8 01:09:32 2026 :: Log Trentlin [10028]: arrived (The royal stairway.) from 10027
+Sun Nov  8 01:09:32 2026 :: Log Trentlin [10028]: sca
+Sun Nov  8 01:09:33 2026 :: Log Trentlin [10028]: u
+Sun Nov  8 01:09:33 2026 :: Log Trentlin [10029]: arrived (A grand hallway.) from 10028
+Sun Nov  8 01:09:34 2026 :: Log Trentlin [10029]: con co
+Sun Nov  8 01:09:35 2026 :: Log Trentlin [10029]: l co
+Sun Nov  8 01:09:37 2026 :: Log Trentlin [10029]: n
+Sun Nov  8 01:09:37 2026 :: Log Trentlin [10030]: arrived (A grand hallway.) from 10029
+Sun Nov  8 01:09:38 2026 :: Log Trentlin [10030]: n
+Sun Nov  8 01:09:38 2026 :: Log Trentlin [10031]: arrived (An intersection.) from 10030
+Sun Nov  8 01:09:38 2026 :: Log Trentlin [10031]: w
+Sun Nov  8 01:09:38 2026 :: Log Trentlin [10033]: arrived (A grand hallway.) from 10031
+Sun Nov  8 01:09:39 2026 :: Log Trentlin [10033]: w
+Sun Nov  8 01:09:39 2026 :: Log Trentlin [10034]: arrived (Intersection in the hall of commerce.) from 10033
+Sun Nov  8 01:09:40 2026 :: Log Trentlin [10034]: ex
+Sun Nov  8 01:09:41 2026 :: Log Trentlin [10034]: n
+Sun Nov  8 01:09:41 2026 :: Log Trentlin [10035]: arrived (The hall of commerce.) from 10034
+Sun Nov  8 01:09:46 2026 :: Log Trentlin [10035]: open west
+Sun Nov  8 01:09:46 2026 :: Log Trentlin [10035]: sca
+Sun Nov  8 01:09:47 2026 :: Log Trentlin [10035]: ex
+Sun Nov  8 01:09:48 2026 :: Log Trentlin [10035]: w
+Sun Nov  8 01:09:48 2026 :: Log Trentlin [10037]: arrived (Pauline's - Luxurious Outfitters.) from 10035
+Sun Nov  8 01:09:51 2026 :: Log Trentlin [10037]: con pa
+Sun Nov  8 01:09:54 2026 :: Log Trentlin [10037]: k pa
+Sun Nov  8 01:09:57 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:00 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:03 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:06 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:09 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:12 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:15 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:18 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:21 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:24 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:32 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:32 2026 :: Log Trentlin [10037]: killed Pauline the tailor
+Sun Nov  8 01:10:32 2026 :: Log Trentlin [10037]: coin +1 platinum
+Sun Nov  8 01:10:32 2026 :: Log Trentlin [10037]: coin +49 silver
+Sun Nov  8 01:10:32 2026 :: Log Trentlin [10037]: coin +60 copper
+Sun Nov  8 01:10:32 2026 :: Log Trentlin [10037]: coin +22 gold
+Sun Nov  8 01:10:35 2026 :: Log Trentlin [10037]: nerve
+Sun Nov  8 01:10:36 2026 :: Log Trentlin [10037]: l in co

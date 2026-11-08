@@ -28443,3 +28443,96 @@
 1794087416	cmd	Misery	54	17109	highland.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] [*Fors] (WIZI) Misery... the man, the myth, the legend.  // Players found: 1	-	-
 1794087417	session	Misery	54	17109	highland.are	quit	34s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	6 commands	0 refused	coin: none	spent on: none	exp: none
 1794099593	stall	-	0	0	-	250ms	slowest update 249ms	command - 0ms	0 players	0 more since
+1794100036	cmd	Trentlin	21	4210	dresden.are	sleeping	20	0	-	wake		You wake and stand up.	-	-
+1794100037	cmd	Trentlin	21	4210	dresden.are	standing	20	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794100038	cmd	Trentlin	21	4210	dresden.are	standing	20	0	-	sleep		You go to sleep.	-	-
+1794100039	cmd	Trentlin	21	4210	dresden.are	sleeping	20	0	-	who		[21 Dwarf   Monk  ] Trentlin the Monk of the Way // Players found: 1	-	-
+1794100044	state	Trentlin	21	4210	dresden.are	lvl=21 hp=115/555 mana=919/985 mv=197/326 align=-303 exp=48428 coin=4373491080 bank=11087744233 qp=1831 prac=16 train=3 stash=58/75 remorts=1
+1794100044	cmd	Trentlin	21	4210	dresden.are	sleeping	20	0	-	score		| Name:       Trentlin | Level:      21 | Class:        Monk | // | Played:     30 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794100046	cmd	Trentlin	21	4210	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794100047	cmd	Trentlin	21	4210	dresden.are	standing	100	0	-	where	hermie	You didn't find any hermie.	-	-
+1794100048	cmd	Trentlin	21	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794100048	cmd	Trentlin	21	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794100049	cmd	Trentlin	21	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794100049	cmd	Trentlin	21	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794100049	cmd	Trentlin	21	4208	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794100050	cmd	Trentlin	21	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794100050	cmd	Trentlin	21	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794100050	cmd	Trentlin	21	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794100051	cmd	Trentlin	21	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794100051	cmd	Trentlin	21	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794100051	cmd	Trentlin	21	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794100052	cmd	Trentlin	21	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794100052	cmd	Trentlin	21	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794100052	cmd	Trentlin	21	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794100053	cmd	Trentlin	21	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794100053	cmd	Trentlin	21	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794100053	cmd	Trentlin	21	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794100055	cmd	Trentlin	21	2497	dresden.are	standing	100	11	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Pauline the tailor threatens the peace of the realm!'	-	+
+1794100065	cmd	Trentlin	21	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794100067	cmd	Trentlin	21	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794100067	cmd	Trentlin	21	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794100067	cmd	Trentlin	21	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794100067	cmd	Trentlin	21	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794100068	cmd	Trentlin	21	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794100068	cmd	Trentlin	21	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794100068	cmd	Trentlin	21	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794100068	cmd	Trentlin	21	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794100069	cmd	Trentlin	21	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794100069	cmd	Trentlin	21	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794100071	cmd	Trentlin	21	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794100071	cmd	Trentlin	21	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794100071	cmd	Trentlin	21	3501	midennir.are	standing	100	0	-	north		The Lane //   You are strolling along a pleasant, shady lane. The road is lined on both // sides by tall, stately trees which lend the scene with a sense of quiet	-	+
+1794100071	cmd	Trentlin	21	3500	midennir.are	standing	100	0	-	north		The Plains //   You are standing on the plains. This is a vast desolate place where the // wind can howl undisturbed since nothing but you bars its way. However you	-	+
+1794100072	cmd	Trentlin	21	21	connect.are	standing	100	0	-	northwest		A twisting path //   A small twisting path leads off of the northeastern plains. Way to the // southwest you can make out the high walls of the city of dresden, and from	-	+
+1794100072	cmd	Trentlin	21	22	connect.are	standing	100	0	-	west		Before the great circle //   You stand here before a monument, that stands out of time and space.  // Impossibly large stones make up what looks like a ritual or meeting 	-	+
+1794100072	cmd	Trentlin	21	23	connect.are	standing	100	0	-	south		The Great Portal //   Here stands one of the last of the great portals. These magical gateways were // placed here in this land, by the elder race. Each was supposed to lead to	-	+
+1794100072	cmd	Trentlin	21	10000	glitter.are	standing	100	0	-	enter	portal	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Before the crystal bridge.	-	+
+1794100075	cmd	Trentlin	21	10001	glitter.are	standing	100	0	-	north		A crystal bridge. //   You are walking on a crystal bridge. In the far the Glittering Palace // towers above you ... you also seem to hear some noises now.	-	+
+1794100076	cmd	Trentlin	21	10002	glitter.are	standing	100	0	-	north		Royal Island. //   You step off the bridge and clearly hear sounds of a raging battle ... // OHHH MY GOD .... THE PALACE IS UNDER ATTACK !!! ....	-	+
+1794100076	cmd	Trentlin	21	10002	glitter.are	standing	100	0	-	north		The gate is closed.	-	-
+1794100078	cmd	Trentlin	21	10002	glitter.are	standing	100	0	-	open	north	Ok.	-	-
+1794100079	cmd	Trentlin	21	10003	glitter.are	standing	100	0	-	north		The Glitter Palace's Grand Gate. //   Once proud palace guards lie on the ground ... nothing much remains of // them but a bloody pulp, Jeeezzz you sure you wanna get caught up in the middle	-	+
+1794100079	cmd	Trentlin	21	10003	glitter.are	standing	100	0	-	west		The door is closed.	-	-
+1794100081	cmd	Trentlin	21	10003	glitter.are	standing	100	0	-	open	west	Ok.	-	-
+1794100081	cmd	Trentlin	21	10005	glitter.are	standing	100	0	-	west		A large guard room. //   As you enter the guard room a sickening smell enters your nose ... slain // guards lie everywhere ...	-	+
+1794100082	cmd	Trentlin	21	10003	glitter.are	standing	100	0	-	east		The Glitter Palace's Grand Gate. //   Once proud palace guards lie on the ground ... nothing much remains of // them but a bloody pulp, Jeeezzz you sure you wanna get caught up in the middle	-	+
+1794100156	cmd	Trentlin	21	10003	glitter.are	standing	100	0	-	open	north	Ok.	-	-
+1794100156	cmd	Trentlin	21	10004	glitter.are	standing	100	0	-	north		A large hall. //   The hall is really big. You notice its splendidly decorated too ... hmm, // those gold embroidered rugs would really liven up your place.	-	+
+1794100157	cmd	Trentlin	21	10006	glitter.are	standing	100	0	-	north		A large hall. //   Wow, this reception hall is really big and luxuriously decorated too !! // You can't help but wonder how much those antique chinese vases must have	-	+
+1794100157	cmd	Trentlin	21	10007	glitter.are	standing	100	0	-	north		A large hall. //   The hall is as nicely decorated as before ... still your attention is // now drawn towards the maimed bodies, strewn on the floor. Some of them were	-	+
+1794100158	cmd	Trentlin	21	10008	glitter.are	standing	100	0	-	north		A high domed intersection. //   You are in awe of the craftsmanship of the masons that build this dome ... // hallways extend to all directions.	-	+
+1794100158	cmd	Trentlin	21	10025	glitter.are	standing	100	0	-	north		The northern wing. //   Once beautiful vases and mirrors lie now shattered on the ground. // [Exits: north south]	-	-
+1794100159	cmd	Trentlin	21	10026	glitter.are	standing	100	0	-	north		The northern wing. //   The hall is empty. To the far north you can hear sounds of an on-going // battle.	-	+
+1794100160	cmd	Trentlin	21	10027	glitter.are	standing	100	0	-	north		The northern wing. //   A large stairway leads up to the second floor. // [Exits: south up]	-	-
+1794100171	cmd	Trentlin	21	10027	glitter.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794100172	cmd	Trentlin	21	10028	glitter.are	standing	100	0	-	up		The royal stairway. //   The royal stairway leads up to the second floor and down to the second. // [Exits: up down]	-	-
+1794100172	cmd	Trentlin	21	10028	glitter.are	standing	100	0	-	scan		the collaborator                   -right above you.	-	-
+1794100173	cmd	Trentlin	21	10029	glitter.are	standing	100	0	-	up		A grand hallway. //   The Palace Guards that defended the staircase lie dead at your feet. // [Exits: north down]	-	+
+1794100174	cmd	Trentlin	21	10029	glitter.are	standing	100	0	-	consider	co	The collaborator is well below your level. // The collaborator has about a third of your hit points. // Blow for blow, you would need about 2 rounds to bring the collaborator down; he would need about 48 rounds for you.	-	+
+1794100175	cmd	Trentlin	21	10029	glitter.are	standing	100	0	-	look	co	Blahh!! it takes all your will-power to look his way, you can't help but  // loathe him. // The collaborator is in excellent condition.	-	+
+1794100177	cmd	Trentlin	21	10030	glitter.are	standing	100	0	-	north		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...	-	+
+1794100178	cmd	Trentlin	21	10031	glitter.are	standing	100	0	-	north		An intersection. //   You get the awkward feeling again that somebody is looking at you ... // jeeeeez man !!!, pull yourself together, you're seeing ghosts.	-	+
+1794100178	cmd	Trentlin	21	10033	glitter.are	standing	100	0	-	west		A grand hallway. //   To the west is the business section of the palace. // [Exits: east west]	-	-
+1794100179	cmd	Trentlin	21	10034	glitter.are	standing	100	0	-	west		Intersection in the hall of commerce. //   The normally crowded hallway is now deserted. // [Exits: north east south]	-	-
+1794100180	cmd	Trentlin	21	10034	glitter.are	standing	100	0	-	exits		Obvious exits: // North - The hall of commerce. // East  - A grand hallway.	-	+
+1794100181	cmd	Trentlin	21	10035	glitter.are	standing	100	0	-	north		The hall of commerce. //   You see some shops to the east and west, their name-signs are hanging // above the doors.	-	+
+1794100186	cmd	Trentlin	21	10035	glitter.are	standing	100	0	-	open	west	Ok.	-	-
+1794100186	cmd	Trentlin	21	10035	glitter.are	standing	100	0	-	scan		the collaborator                   -to the North. // Pauline the tailor                 -to the West.	-	-
+1794100187	cmd	Trentlin	21	10035	glitter.are	standing	100	0	-	exits		Obvious exits: // North - North end of the hall of commerce. // East  - Closed door	-	+
+1794100188	cmd	Trentlin	21	10037	glitter.are	standing	100	0	-	west		Pauline's - Luxurious Outfitters. //   Garments of all sorts are stacked on several shelves or hanging in the // wardrobes. As you enter the shoppe a woman flings herself at you, your best	-	+
+1794100191	cmd	Trentlin	21	10037	glitter.are	standing	100	0	-	consider	pa	Pauline the tailor is about your level. // Pauline the tailor has about half your hit points. // Blow for blow, you would need about 8 rounds to bring Pauline the tailor down; she would need about 13 rounds for you.	-	+
+1794100194	cmd	Trentlin	21	10037	glitter.are	standing	100	0	-	kill	pa	Your punch scratches Pauline the tailor. // Your punch injures Pauline the tailor.	-	-
+1794100197	cmd	Trentlin	21	10037	glitter.are	fighting	95	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Pauline the tailor.	-	-
+1794100200	cmd	Trentlin	21	10037	glitter.are	fighting	95	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Pauline the tailor.	-	-
+1794100203	cmd	Trentlin	21	10037	glitter.are	fighting	95	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Pauline the tailor.	-	-
+1794100206	cmd	Trentlin	21	10037	glitter.are	fighting	95	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Pauline the tailor.	-	-
+1794100209	cmd	Trentlin	21	10037	glitter.are	fighting	95	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Pauline the tailor.	-	-
+1794100212	cmd	Trentlin	21	10037	glitter.are	fighting	95	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Pauline the tailor.	-	-
+1794100215	cmd	Trentlin	21	10037	glitter.are	fighting	97	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes Pauline the tailor.	-	-
+1794100218	cmd	Trentlin	21	10037	glitter.are	fighting	92	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Pauline the tailor.	-	-
+1794100221	cmd	Trentlin	21	10037	glitter.are	fighting	86	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Pauline the tailor.	-	-
+1794100224	cmd	Trentlin	21	10037	glitter.are	fighting	81	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Pauline the tailor.	-	-
+1794100232	cmd	Trentlin	21	10037	glitter.are	fighting	64	0	fight	nerve		You jab Pauline the tailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Pauline the tailor.	-	-
+1794100235	cmd	Trentlin	21	10037	glitter.are	standing	64	0	-	nerve		Who do you want to attack?	-	-
+1794100236	cmd	Trentlin	21	10037	glitter.are	standing	64	0	-	look	in co	Corpse of Pauline the tailor contains: //      (Glowing) an indigo blue livery //      a Standard military sword	-	-
