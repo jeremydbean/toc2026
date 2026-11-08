@@ -3214,9 +3214,15 @@ void make_corpse( CHAR_DATA *ch )
 	if (IS_SET(obj->extra_flags,ITEM_ROT_DEATH))
 	    obj->timer = (sh_int)(number_range(5,10));
 	/* A Hyrule guardian's key opens the treasure room and the chest
-	   behind it, so it does not crumble away like an ordinary key. */
+	   behind it, so it does not crumble away like an ordinary key; nor
+	   does a dungeon's small key, kept as on the NES and kept at quit
+	   (save.c) -- one won from a kill crumbled within the hour while its
+	   finder went to town to heal (play journal, 2026-11-08). */
 	if (obj->item_type == ITEM_KEY
-	&&  !IS_HYRULE_BOSS_KEY(obj->pIndexData->vnum))
+	&&  !IS_HYRULE_BOSS_KEY(obj->pIndexData->vnum)
+	&&  obj->pIndexData->vnum != HYRULE_SMALL_KEY
+	&&  obj->pIndexData->vnum != OBJ_VNUM_HYRULE_SHOP_KEY
+	&&  obj->pIndexData->vnum != OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP)
 	    obj->timer = (sh_int)(number_range(40,80));
 	REMOVE_BIT(obj->extra_flags,ITEM_VIS_DEATH);
 	REMOVE_BIT(obj->extra_flags,ITEM_ROT_DEATH);

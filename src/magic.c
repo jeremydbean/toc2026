@@ -3677,11 +3677,15 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
 }
 
 
-void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
+/*
+ * One casting of HEAL by this caster at this level, on this victim, with
+ * no message: the spell and the pit healer's HEAL HEAL (misc.c), which
+ * sells as many castings as a pool needs at once, share it.
+ */
+void heal_spell_apply( CHAR_DATA *ch, int level, CHAR_DATA *victim )
 {
-    UNUSED_PARAM(sn);
-    CHAR_DATA *victim = (CHAR_DATA *) vo;
     int heal;
+    int before = victim->hit;
 
     /* 100 at 25 and below, two more a level above it, stopping at 59:
        150 at 50, 168 at 59. A flat 100 fell from a third of a level 25's
@@ -3694,12 +3698,16 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=3;
     }
 
-    {
-	int before = victim->hit;
+    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+    achievement_record_heal( ch, victim, before );
+}
 
-	victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
-	achievement_record_heal( ch, victim, before );
-    }
+void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    UNUSED_PARAM(sn);
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+    heal_spell_apply( ch, level, victim );
     update_pos( victim );
     send_to_char( "A warm feeling fills your body.\n\r", victim );
     if ( ch != victim )

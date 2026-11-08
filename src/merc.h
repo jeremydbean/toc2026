@@ -1608,6 +1608,7 @@ const char *default_prompt_text args( ( void ) );
 #define OBJ_VNUM_HYRULE_LETTER            30500
 #define OBJ_VNUM_HYRULE_HEART_CONTAINER   30501
 #define OBJ_VNUM_HYRULE_ARROWS            30543
+#define HYRULE_SMALL_KEY                  30227
 #define OBJ_VNUM_HYRULE_SHOP_KEY          30545
 #define OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP    30550
 #define OBJ_VNUM_HYRULE_BLUE_POTION       30553
@@ -3440,6 +3441,7 @@ void    achievement_party_count ( CHAR_DATA *killer, ROOM_INDEX_DATA *room,
 void    achievement_party_event ( CHAR_DATA *killer, ROOM_INDEX_DATA *room,
                                   achievement_event_type event );
 void    achievement_record_heal ( CHAR_DATA *ch, CHAR_DATA *victim, int before );
+void    heal_spell_apply        ( CHAR_DATA *ch, int level, CHAR_DATA *victim );
 void    achievement_record_cure ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    achievement_record_psionic ( CHAR_DATA *ch, int sn );
 void    achievement_record_hyrule_chest ( CHAR_DATA *ch, int dungeon );

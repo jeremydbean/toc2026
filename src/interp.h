@@ -469,6 +469,7 @@ DECLARE_DO_FUN(	do_visible	);
 DECLARE_DO_FUN( do_vnum		);
 DECLARE_DO_FUN(	do_wake		);
 DECLARE_DO_FUN( do_walkto	);
+DECLARE_DO_FUN( do_stop		);
 DECLARE_DO_FUN( do_warn		);
 DECLARE_DO_FUN(	do_wear		);
 DECLARE_DO_FUN(	do_weather	);

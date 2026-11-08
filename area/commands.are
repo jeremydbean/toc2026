@@ -3889,6 +3889,18 @@ groups that you have gained).
 See also: GAIN, SKILLS, SPELLS
 ~
 
+0 STOP~
+Syntax: stop
+        stop walk
+
+Ends a walk WALKTO is making for you, as WALKTO STOP does.  A walk your
+client makes, typing the steps itself, is the client's to stop: the Times
+of Chaos Mudlet package stops its own walk on STOP, STOP WALK or WALK
+STOP.
+
+See also: WALKTO, MUDLET
+~
+
 0 HEAL~
 Syntax: heal
         heal <spell>
@@ -3900,9 +3912,11 @@ their wounds and ills on a fee for service basis.  The HEAL command without
 an argument shows a list of the healer's services.  To receive healing, be
 sure you have sufficient money and type heal <name of spell>.
 
-HEAL REFRESH buys as many castings as your legs need, at the price of one
-each, and says how many it took; if your purse runs short it buys what it
-can.  Hermie, when she is about, does all of this for nothing: HELP BUFF.
+HEAL HEAL, HEAL MANA and HEAL REFRESH buy as many castings as your hit
+points, mana or legs need, at the price of one each, for one round, and
+say how many it took; if your purse runs short they buy what it can, and
+a pool already full is sold nothing.  Hermie, when she is about, does all
+of this for nothing: HELP BUFF.
 
 For information on the heal spell used by those of the cleric class (and
 members of the cleric's guild), read help for HEALSPELL.

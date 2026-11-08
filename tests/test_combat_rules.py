@@ -121,7 +121,11 @@ class CombatRulesCallSiteTests(unittest.TestCase):
         self.assertIn("paf->duration >= 0", rule)
 
     def test_heal_asks_the_bounded_amount(self) -> None:
-        body = function_body(ROOT / "src" / "magic.c", "void spell_heal(")
+        # The amount lives in heal_spell_apply, which the spell and the pit
+        # healer's HEAL HEAL share (2026-11-08).
+        self.assertIn("heal_spell_apply( ch, level, victim );",
+                      function_body(ROOT / "src" / "magic.c", "void spell_heal("))
+        body = function_body(ROOT / "src" / "magic.c", "void heal_spell_apply(")
         self.assertIn("heal = heal_spell_amount( level );", body)
         self.assertNotIn("heal = 100;", body)
 

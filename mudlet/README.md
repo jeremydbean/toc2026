@@ -52,10 +52,15 @@ labels on the map, and walking to a named place.
   what it is for: `$` a shop, `?` a questmaster, `+` a healer, `P`
   practice, `T` training, `X` a death trap. The walker opens a door
   it knows is shut instead of bumping into it.
-- **`walk <name>`.** `walk routes` fetches the published route list,
+- **`walk <name>`.** `walk stop` (or `stop`) ends a walk. `walk routes` fetches the published route list,
   then `walk thalos` or `walk wyvern` walks there if it is on your
   map, or prints the published route from the Oak Tree Square if it
   is not.
+
+Package 1.5.11 stops a walk on `stop` or `stop walk` as well as `walk
+stop`: players typed both and were told "Huh?" while the walk went on.
+When the package is not walking, the line goes to the game, whose STOP
+ends a WALKTO.
 
 Package 1.5.10 makes the quest strip clickable again for players: it
 walks to the quest's area, as `walk quest` does. It had asked for the

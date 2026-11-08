@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261108a 2026-11-08
+HEAL HEAL and HEAL MANA now fill you up in one go, as HEAL REFRESH does:
+as many castings as it takes at the usual price each, as far as your
+purse goes. STOP (or STOP WALK) ends a walk; in the Mudlet package it
+stops the package's own walk too. A Hyrule small key taken from a kill
+no longer crumbles away while you are out of the dungeon.
+
 @ 20261107b 2026-11-07
 Mudlet players: the game now plays short sounds for a level, a finished
 quest, an achievement, a tell, a death and a Hyrule secret (SOUND OFF

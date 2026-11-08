@@ -1346,8 +1346,8 @@ void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
  * by a keyed quit, junked, eaten by a spell. The why is the holder's own
  * command, someone else's command, or the update phase running. Things
  * meant to be used up (food, potions, pills, scrolls, coin, herbs and
- * components, cakes, Hyrule's bombs, a key UNLOCK spends) are left out; a
- * container counts what went with it.
+ * components, cakes, Hyrule's bombs, a key UNLOCK spends, a quest's item
+ * AQUEST takes) are left out; a container counts what went with it.
  */
 void playlog_obj_gone( OBJ_DATA *obj )
 {
@@ -1374,6 +1374,10 @@ void playlog_obj_gone( OBJ_DATA *obj )
     if ( obj->pIndexData->vnum == OBJ_VNUM_HYRULE_BOMBS )
         return;
     if ( obj->item_type == ITEM_KEY && current_set && !str_cmp( current_cmd, "unlock" ) )
+        return;
+    /* A quest's item handed in to the Quest Master (play journal,
+       2026-11-08: three recover quests read as three things lost). */
+    if ( current_set && !str_cmp( current_cmd, "aquest" ) )
         return;
     for ( top = obj; top->in_obj != NULL; top = top->in_obj )
         ;

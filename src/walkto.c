@@ -928,7 +928,8 @@ void walkto_interrupt( CHAR_DATA *ch, const char *line )
         return;
 
     cmd = cmd_tab_sn_lookup( word, get_trust( ch ) );
-    if ( cmd >= 0 && cmd_table[cmd].do_fun == do_walkto )
+    if ( cmd >= 0 && ( cmd_table[cmd].do_fun == do_walkto
+                    || cmd_table[cmd].do_fun == do_stop ) )
         return;
 
     walkto_stop( ch, "You stop walking.\n\r" );
@@ -1352,6 +1353,28 @@ static int walkto_area_dest( AREA_DATA *area )
             return i;
     }
     return -1;
+}
+
+/*
+ * STOP, and STOP WALK: what a player types to end a walk (play journal,
+ * 2026-11-08: Trentlin typed both during a walk and was told Huh?).
+ * WALKTO's walk ends here; a walk a client makes, typing the steps
+ * itself, is the client's to stop, and the Times of Chaos Mudlet package
+ * answers STOP itself while it walks.
+ */
+void do_stop( CHAR_DATA *ch, char *argument )
+{
+    UNUSED_PARAM(argument);
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    if ( ch->pcdata->walkto_vnum != 0 )
+    {
+        walkto_stop( ch, "You stop walking.\n\r" );
+        return;
+    }
+    send_to_char( "You are not walking anywhere. A walk your client makes"
+                  " for you stops with the client's own command (WALK STOP"
+                  " in the Times of Chaos Mudlet package).\n\r", ch );
 }
 
 void do_walkto( CHAR_DATA *ch, char *argument )

@@ -26,6 +26,19 @@ end
    <packageName>TimesOfChaos</packageName>
    <regex>^walk(?:\s+(.+))?$</regex>
   </Alias>
+  <Alias isActive="yes" isFolder="no">
+   <name>Times of Chaos stop walking</name>
+   <script><![CDATA[
+if tocMudlet and tocMudlet.stopCommand then
+  tocMudlet.stopCommand(matches[1])
+else
+  send(matches[1])
+end
+]]></script>
+   <command></command>
+   <packageName>TimesOfChaos</packageName>
+   <regex>^stop(?:\s+walk(?:ing)?)?$</regex>
+  </Alias>
  </AliasPackage>
  <ActionPackage></ActionPackage>
  <ScriptPackage>
@@ -51,7 +64,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.10"
+tocMudlet.version = "1.5.11"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -572,6 +585,18 @@ local function findRoute(name)
     end
   end
   return best
+end
+
+-- STOP and STOP WALK are what players type to end a walk (play journal,
+-- 2026-11-08: both reached the game as "Huh?" and the walk went on).
+-- While this package walks they stop it here; otherwise the line goes to
+-- the game, whose STOP ends a WALKTO.
+function tocMudlet.stopCommand(line)
+  if tocMudlet.walk.active then
+    walkStop("stopped.")
+  else
+    send(line)
+  end
 end
 
 function tocMudlet.walkCommand(argument)

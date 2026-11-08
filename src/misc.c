@@ -30,6 +30,9 @@
 #include "interp.h"
 #include "magic.h"
 
+/* The most castings one HEAL HEAL or HEAL MANA sells at once. */
+#define HEALER_MAX_CASTINGS 100
+
 void do_heal(CHAR_DATA *ch, char *argument)
 {
     CHAR_DATA *mob;
@@ -77,13 +80,13 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	send_to_char("  light:   cure light wounds     50 gold\n\r",ch);
 	send_to_char("  serious: cure serious wounds  150 gold\n\r",ch);
 	send_to_char("  critic:  cure critical wounds 250 gold\n\r",ch);
-	send_to_char("  heal:    healing spell	      500 gold\n\r",ch);
+	send_to_char("  heal:    healing spell	      500 gold a casting, as many as it takes\n\r",ch);
 	send_to_char("  blind:   cure blindness       100 gold\n\r",ch);
 	send_to_char("  disease: cure disease         100 gold\n\r",ch);
 	send_to_char("  poison:  cure poison	       75 gold\n\r",ch); 
 	send_to_char("  uncurse: remove one curse     250 gold\n\r",ch);
 	send_to_char("  refresh: restore movement      10 gold a casting, as many as it takes\n\r",ch);
-	send_to_char("  mana:    restore mana	      100 gold\n\r",ch);
+	send_to_char("  mana:    restore mana	      100 gold a casting, as many as it takes\n\r",ch);
 	send_to_char(" Type heal <type> to be healed.\n\r",ch);
 	return;
     }
@@ -233,6 +236,62 @@ void do_heal(CHAR_DATA *ch, char *argument)
         return;
     }
 
+    /*
+     * HEAL and MANA fill the pool the same way: as many castings as it
+     * needs, at the price of each, as many as the purse covers, for one
+     * round of lag (play journal, 2026-11-08: HEAL HEAL typed five or six
+     * times running a dozen times in one session, and HEAL MANA six).
+     * Nothing is sold to a pool already full.
+     */
+    if ( spell == spell_heal || spell == NULL )
+    {
+        bool mana = ( spell == NULL );
+        int casts = 0;
+        char buf[MAX_STRING_LENGTH];
+
+        if ( mana ? ch->mana >= ch->max_mana : ch->hit >= ch->max_hit )
+        {
+            act( mana ? "$N says 'Your mind is as full as I can make it.'"
+                      : "$N says 'You are as whole as I can make you.'",
+                ch, NULL, mob, TO_CHAR );
+            return;
+        }
+        if ( !has_enough_gold( ch, cost ) )
+        {
+            act("$N says 'You do not have enough gold for my services.'",
+                ch,NULL,mob,TO_CHAR);
+            return;
+        }
+        WAIT_STATE(ch,PULSE_VIOLENCE);
+        act("$n utters the words '$T'.",mob,NULL,words,TO_ROOM);
+        while ( casts < HEALER_MAX_CASTINGS
+        &&      ( mana ? ch->mana < ch->max_mana : ch->hit < ch->max_hit )
+        &&      has_enough_gold( ch, cost ) )
+        {
+            add_money( ch, -1 * cost );
+            casts++;
+            if ( mana )
+                ch->mana = UMIN( ch->mana + dice(2,8) + mob->level / 4,
+                                 ch->max_mana );
+            else
+                heal_spell_apply( mob, mob->level, ch );
+        }
+        if ( !mana )
+            update_pos( ch );
+        if ( mana )
+            snprintf( buf, sizeof(buf), "%s (%d casting%s, %d gold.)\n\r",
+                ch->mana >= ch->max_mana ? "A warm glow passes through you, and your mind is full."
+                                         : "A warm glow passes through you; that is all you can pay for.",
+                casts, casts == 1 ? "" : "s", cost * casts );
+        else
+            snprintf( buf, sizeof(buf), "%s (%d casting%s, %d gold.)\n\r",
+                ch->hit >= ch->max_hit ? "A warm feeling fills your body, and you are whole."
+                                       : "A warm feeling fills your body; that is all you can pay for.",
+                casts, casts == 1 ? "" : "s", cost * casts );
+        send_to_char( buf, ch );
+        return;
+    }
+
     if (!has_enough_gold(ch, cost))
     {
         act("$N says 'You do not have enough gold for my services.'",
@@ -245,14 +304,6 @@ void do_heal(CHAR_DATA *ch, char *argument)
     add_money(ch,-1 * cost);
     act("$n utters the words '$T'.",mob,NULL,words,TO_ROOM);
   
-    if (spell == NULL)  /* restore mana trap...kinda hackish */
-    {
-	ch->mana += dice(2,8) + mob->level / 4;
-	ch->mana = UMIN(ch->mana,ch->max_mana);
-	send_to_char("A warm glow passes through you.\n\r",ch);
-	return;
-     }
-
      if (sn == -1)
 	return;
     
