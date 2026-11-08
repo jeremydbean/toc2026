@@ -273794,3 +273794,56 @@ Sun Nov  8 01:40:21 2026 :: Log Trentlin [29060]: nerve
 Sun Nov  8 01:40:27 2026 :: Log Trentlin [29060]: nerve
 Sun Nov  8 01:40:55 2026 :: Log Trentlin [29060]: nerve
 Sun Nov  8 01:40:57 2026 :: Log Trentlin [29060]: nerve
+Sun Nov  8 01:41:10 2026 :: Log Trentlin [29060]: killed Security Chief
+Sun Nov  8 01:41:10 2026 :: Log Trentlin [29060]: coin +1 platinum
+Sun Nov  8 01:41:10 2026 :: Log Trentlin [29060]: coin +5 silver
+Sun Nov  8 01:41:10 2026 :: Log Trentlin [29060]: coin +6 copper
+Sun Nov  8 01:41:10 2026 :: Log Trentlin [29060]: coin +2 gold
+Sun Nov  8 01:41:22 2026 :: Log Trentlin [29060]: get key co
+Sun Nov  8 01:41:24 2026 :: Log Trentlin [29060]: sco
+Sun Nov  8 01:41:26 2026 :: Log Trentlin [29060]: unlock
+Sun Nov  8 01:41:28 2026 :: Log Trentlin [29060]: l
+Sun Nov  8 01:41:30 2026 :: Log Trentlin [29060]: unlock east
+Sun Nov  8 01:41:30 2026 :: Log Trentlin [29060]: e
+Sun Nov  8 01:41:35 2026 :: Log Trentlin [29060]: open east
+Sun Nov  8 01:41:35 2026 :: Log Trentlin [29060]: e
+Sun Nov  8 01:41:35 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sun Nov  8 01:41:36 2026 :: Log Trentlin [29061]: con g
+Sun Nov  8 01:41:39 2026 :: Log Trentlin [29061]: k g
+Sun Nov  8 01:41:42 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:41:45 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:41:50 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:41:50 2026 :: Treasure goblin: vanished from room 19131 (Nero Drive, rome.are) (too long in one area).
+Sun Nov  8 01:41:59 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:42:08 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:42:16 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:42:20 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:42:26 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:42:29 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 01:42:31 2026 :: Log Trentlin [29061]: killed a security guard
+Sun Nov  8 01:42:31 2026 :: Log Trentlin [29061]: coin +1 platinum
+Sun Nov  8 01:42:31 2026 :: Log Trentlin [29061]: coin +7 silver
+Sun Nov  8 01:42:31 2026 :: Log Trentlin [29061]: coin +10 copper
+Sun Nov  8 01:42:31 2026 :: Log Trentlin [29061]: coin +4 gold
+Sun Nov  8 01:42:35 2026 :: Log Trentlin [29061]: l in co
+Sun Nov  8 01:42:39 2026 :: Log Trentlin [29061]: get ves co
+Sun Nov  8 01:42:41 2026 :: Log Trentlin [29061]: comp ves
+Sun Nov  8 01:42:44 2026 :: Log Trentlin [29061]: drop ves
+Sun Nov  8 01:42:46 2026 :: Log Trentlin [29061]: l
+Sun Nov  8 01:42:47 2026 :: Log Trentlin [29061]: sac co
+Sun Nov  8 01:42:47 2026 :: Log Trentlin [29061]: coin +54 copper
+Sun Nov  8 01:42:48 2026 :: Log Trentlin [29061]: sac bes
+Sun Nov  8 01:42:50 2026 :: Log Trentlin [29061]: sac ves
+Sun Nov  8 01:42:50 2026 :: Log Trentlin [29061]: coin +54 copper
+Sun Nov  8 01:42:52 2026 :: Log Trentlin [29061]: reca
+Sun Nov  8 01:42:52 2026 :: Log Trentlin [8792]: arrived (Kitchen) from 29061
+Sun Nov  8 01:42:55 2026 :: Log Trentlin [8792]: reca
+Sun Nov  8 01:42:55 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 8792
+Sun Nov  8 01:42:57 2026 :: Log Trentlin [4207]: e
+Sun Nov  8 01:42:57 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov  8 01:42:57 2026 :: Log Trentlin [4202]: n
+Sun Nov  8 01:42:57 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Nov  8 01:42:58 2026 :: Log Trentlin [4203]: n
+Sun Nov  8 01:42:58 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Nov  8 01:42:58 2026 :: Log Trentlin [4210]: n
+Sun Nov  8 01:42:59 2026 :: Log Trentlin [4210]: sleep
