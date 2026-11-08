@@ -15361,3 +15361,154 @@
 1794139943	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
 1794139944	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	scan		Manhandla                          -to the East. // a red darknut                      -to the South. // a zol                              -to the West.	-	-
 1794139947	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
+1794139950	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	inventory		You are carrying: //      an Eagle archer's bow //      a small key	-	+
+1794139961	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794139964	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	quaff	opaq	This liquid is too powerful for you to drink.	-	-
+1794139968	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	compare	mant	A) a twin-headed mantle (level 27) -- can't use: needs level 27 // B) an Eagle-feather cloak (level 8), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794139975	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	look		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794139979	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	look	trap	Someone keeps these Manji traps in good repair, for this one's spikes are // bright and newly filed, and the four-armed cross of the Manji is cut deep // into each face. It sits waiting in a corner until prey crosses its path,	-	+
+1794139997	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794139999	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	iron		Your skin hardens.	-	-
+1794140006	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	look		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794140007	cmd	Trentlin	25	30449	hyrule.are	standing	100	0	-	east		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794140011	cmd	Trentlin	25	30449	hyrule.are	fighting	100	0	fight	bomb	man	You light a bomb and toss it at Manhandla. It goes off with a roar! // You devastate Manhandla!	-	-
+1794140014	cmd	Trentlin	25	30449	hyrule.are	fighting	88	0	fight	bomb	man	You light a bomb and toss it at Manhandla. It goes off with a roar! // You graze Manhandla.	-	-
+1794140018	cmd	Trentlin	25	30449	hyrule.are	fighting	79	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Manhandla.	-	-
+1794140022	cmd	Trentlin	25	30449	hyrule.are	fighting	67	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Manhandla.	-	-
+1794140026	cmd	Trentlin	25	30449	hyrule.are	fighting	57	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes Manhandla.	-	-
+1794140030	cmd	Trentlin	25	30449	hyrule.are	fighting	28	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates Manhandla!	-	-
+1794140033	cmd	Trentlin	25	30449	hyrule.are	fighting	18	0	fight	flee		Manhandla is overcome with a feeling of despair and flees the battle.	-	-
+1794140033	cmd	Trentlin	25	30449	hyrule.are	fighting	18	0	fight	flee		Manhandla is overcome with a feeling of despair and flees the battle. // Manhandla ignores you completely as it heads west in search of a shrubbery. // Manhandla has fled!	-	-
+1794140033	cmd	Trentlin	25	30449	hyrule.are	standing	18	0	-	flee		You aren't fighting anyone.	-	-
+1794140034	cmd	Trentlin	25	30449	hyrule.are	standing	18	0	-	flee		You aren't fighting anyone.	-	-
+1794140034	cmd	Trentlin	25	30449	hyrule.are	standing	18	0	-	flee		You aren't fighting anyone.	-	-
+1794140034	cmd	Trentlin	25	30449	hyrule.are	standing	18	0	-	flee		You aren't fighting anyone.	-	-
+1794140036	cmd	Trentlin	25	30449	hyrule.are	standing	18	0	-	recall		The Gods have forsaken you.	-	-
+1794140037	cmd	Trentlin	25	30449	hyrule.are	standing	18	0	-	look		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794140039	cmd	Trentlin	25	30448	hyrule.are	standing	18	0	-	west		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794140039	cmd	Trentlin	25	30443	hyrule.are	standing	18	0	-	south		Level 3: Eastern Slime Hall //   Glistening sludge coats the floor of this chamber in thick, drying layers, // and the smell of damp moss hangs heavy. A row of blocks lines the far wall.	-	+
+1794140042	cmd	Trentlin	25	30448	hyrule.are	standing	18	1	-	north		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794140042	cmd	Trentlin	25	30447	hyrule.are	standing	18	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794140043	cmd	Trentlin	25	30442	hyrule.are	standing	18	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794140044	cmd	Trentlin	25	30439	hyrule.are	standing	18	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794140044	cmd	Trentlin	25	30436	hyrule.are	standing	18	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794140044	cmd	Trentlin	25	30436	hyrule.are	standing	18	0	-	south		Alas, you cannot go that way.	-	-
+1794140045	cmd	Trentlin	25	30437	hyrule.are	standing	18	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794140047	cmd	Trentlin	25	30205	hyrule.are	standing	20	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794140048	cmd	Trentlin	25	4207	dresden.are	standing	20	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794140049	cmd	Trentlin	25	4208	dresden.are	standing	20	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794140049	cmd	Trentlin	25	4208	dresden.are	standing	20	0	-	west		Alas, you cannot go that way.	-	-
+1794140051	cmd	Trentlin	25	4208	dresden.are	standing	20	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140054	cmd	Trentlin	25	4208	dresden.are	standing	39	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140057	cmd	Trentlin	25	4208	dresden.are	standing	57	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140060	cmd	Trentlin	25	4208	dresden.are	standing	76	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140063	cmd	Trentlin	25	4208	dresden.are	standing	94	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140066	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140069	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1794140073	cmd	Trentlin	25	4207	dresden.are	standing	100	1	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794140073	cmd	Trentlin	25	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794140073	cmd	Trentlin	25	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794140073	cmd	Trentlin	25	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794140074	cmd	Trentlin	25	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794140074	cmd	Trentlin	25	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140074	cmd	Trentlin	25	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140074	cmd	Trentlin	25	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140075	cmd	Trentlin	25	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794140075	cmd	Trentlin	25	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794140075	cmd	Trentlin	25	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794140075	cmd	Trentlin	25	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794140076	cmd	Trentlin	25	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794140076	cmd	Trentlin	25	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794140076	cmd	Trentlin	25	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794140076	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794140082	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794140087	cmd	Trentlin	25	30437	hyrule.are	standing	100	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794140088	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794140091	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	scan		a zol                              -to the North.	-	-
+1794140092	cmd	Trentlin	25	30439	hyrule.are	standing	100	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794140092	cmd	Trentlin	25	30439	hyrule.are	standing	100	0	-	scan		a red darknut                      -to the North. // a zol                              -to the South.	-	-
+1794140093	cmd	Trentlin	25	30442	hyrule.are	standing	100	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794140094	cmd	Trentlin	25	30442	hyrule.are	standing	100	0	-	scan		a zol                              -to the North. // a zol                              -to the South. // a blade trap                       -to the West.	-	+
+1794140095	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794140096	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	scan		a red darknut                      -to the South.	-	-
+1794140099	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	open	east	It's locked.	-	-
+1794140101	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794140103	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	open	east	Ok.	-	-
+1794140104	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	scan		Manhandla                          -to the East. // a blade trap                       -to the East. // a red darknut                      -to the South.	-	-
+1794140110	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	kill	zo	Your punch MASSACRES a zol! // A zol parries your attack. // Your punch *** DEVASTATES *** a zol!	-	-
+1794140114	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	iron		Your skin hardens.	-	-
+1794140122	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794140123	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794140123	cmd	Trentlin	25	30448	hyrule.are	fighting	100	0	fight	kill	man	You do the best you can!	-	-
+1794140127	cmd	Trentlin	25	30448	hyrule.are	fighting	88	0	fight	nerve		You missed the nerve. // Your nerve pinch hits Manhandla.	-	-
+1794140130	cmd	Trentlin	25	30448	hyrule.are	fighting	77	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Manhandla.	-	-
+1794140136	cmd	Trentlin	25	30448	hyrule.are	fighting	45	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS Manhandla!	-	-
+1794140141	cmd	Trentlin	25	30448	hyrule.are	fighting	6	0	fight	flee		Manhandla is overcome with a feeling of despair and flees the battle. // Manhandla ignores you completely as it heads west in search of a shrubbery. // Manhandla has fled!	-	-
+1794140142	cmd	Trentlin	25	30448	hyrule.are	standing	6	0	-	flee		You aren't fighting anyone.	-	-
+1794140142	cmd	Trentlin	25	30448	hyrule.are	standing	6	0	-	flee		You aren't fighting anyone.	-	-
+1794140142	cmd	Trentlin	25	30448	hyrule.are	standing	6	0	-	flee		You aren't fighting anyone.	-	-
+1794140144	cmd	Trentlin	25	30448	hyrule.are	fighting	6	0	fight	look		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794140145	cmd	Trentlin	25	30448	hyrule.are	fighting	6	0	fight	flee		A blade trap is overcome with a feeling of despair and flees the battle. // A blade trap leaves south // A blade trap has fled!	-	-
+1794140146	cmd	Trentlin	25	30448	hyrule.are	standing	6	0	-	flee		You aren't fighting anyone.	-	-
+1794140147	cmd	Trentlin	25	30447	hyrule.are	standing	6	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794140147	cmd	Trentlin	25	30442	hyrule.are	standing	6	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794140148	cmd	Trentlin	25	30439	hyrule.are	standing	6	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794140149	cmd	Trentlin	25	30436	hyrule.are	standing	6	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794140151	cmd	Trentlin	25	30439	hyrule.are	standing	6	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794140153	cmd	Trentlin	25	30439	hyrule.are	standing	6	0	-	get	key	You get a small key.	-	-
+1794140153	cmd	Trentlin	25	30436	hyrule.are	standing	9	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794140154	cmd	Trentlin	25	30436	hyrule.are	standing	9	0	-	get	key	You get a small key.	-	-
+1794140156	cmd	Trentlin	25	30437	hyrule.are	standing	9	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794140157	cmd	Trentlin	25	30205	hyrule.are	standing	9	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794140158	cmd	Trentlin	25	4207	dresden.are	standing	9	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794140159	cmd	Trentlin	25	4208	dresden.are	standing	9	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794140159	cmd	Trentlin	25	4208	dresden.are	standing	9	0	-	west		Alas, you cannot go that way.	-	-
+1794140159	cmd	Trentlin	25	4208	dresden.are	standing	9	0	-	west		Alas, you cannot go that way.	-	-
+1794140161	cmd	Trentlin	25	4208	dresden.are	standing	9	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1794140167	cmd	Trentlin	25	4208	dresden.are	standing	9	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140170	cmd	Trentlin	25	4208	dresden.are	standing	28	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140173	cmd	Trentlin	25	4208	dresden.are	standing	46	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140176	cmd	Trentlin	25	4208	dresden.are	standing	65	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140180	cmd	Trentlin	25	4208	dresden.are	standing	83	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794140184	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794140188	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794140188	cmd	Trentlin	25	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794140188	cmd	Trentlin	25	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794140188	cmd	Trentlin	25	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794140189	cmd	Trentlin	25	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794140189	cmd	Trentlin	25	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140189	cmd	Trentlin	25	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140189	cmd	Trentlin	25	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794140190	cmd	Trentlin	25	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794140190	cmd	Trentlin	25	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794140190	cmd	Trentlin	25	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794140190	cmd	Trentlin	25	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794140191	cmd	Trentlin	25	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794140191	cmd	Trentlin	25	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794140191	cmd	Trentlin	25	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794140191	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794140193	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794140197	cmd	Trentlin	25	30437	hyrule.are	standing	100	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794140198	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794140199	cmd	Trentlin	25	30439	hyrule.are	standing	100	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794140200	cmd	Trentlin	25	30439	hyrule.are	standing	100	0	-	scan		a red darknut                      -to the North. // a zol                              -to the South.	-	-
+1794140201	cmd	Trentlin	25	30442	hyrule.are	standing	100	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794140201	cmd	Trentlin	25	30442	hyrule.are	standing	100	0	-	scan		Manhandla                          -to the North. // a zol                              -to the South. // a blade trap                       -to the West.	-	+
+1794140203	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794140204	cmd	Trentlin	25	30447	hyrule.are	fighting	100	0	fight	kill	ma	You do the best you can!	-	-
+1794140207	cmd	Trentlin	25	30447	hyrule.are	fighting	76	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES Manhandla!	-	-
+1794140213	cmd	Trentlin	25	30447	hyrule.are	fighting	50	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS Manhandla!	-	-
+1794140218	cmd	Trentlin	25	30447	hyrule.are	fighting	34	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates Manhandla!	-	-
+1794140220	cmd	Trentlin	25	30447	hyrule.are	fighting	9	0	fight	flee		Manhandla is overcome with a feeling of despair and flees the battle.	-	-
+1794140221	cmd	Trentlin	25	30447	hyrule.are	fighting	9	0	fight	flee		Manhandla is overcome with a feeling of despair and flees the battle.	-	-
+1794140221	cmd	Trentlin	25	30447	hyrule.are	fighting	9	0	fight	flee		Manhandla is overcome with a feeling of despair and flees the battle. // Manhandla ignores you completely as it heads east in search of a shrubbery. // Manhandla has fled!	-	-
+1794140221	cmd	Trentlin	25	30447	hyrule.are	standing	9	0	-	flee		You aren't fighting anyone.	-	-
+1794140222	cmd	Trentlin	25	30447	hyrule.are	standing	9	0	-	flee		You aren't fighting anyone.	-	-
+1794140225	cmd	Trentlin	25	30442	hyrule.are	standing	9	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794140225	cmd	Trentlin	25	30439	hyrule.are	standing	9	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794140225	cmd	Trentlin	25	30436	hyrule.are	standing	9	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794140226	cmd	Trentlin	25	30436	hyrule.are	standing	9	0	-	south		Alas, you cannot go that way.	-	-
+1794140226	cmd	Trentlin	25	30437	hyrule.are	standing	9	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794140228	cmd	Trentlin	25	30205	hyrule.are	standing	9	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794140228	cmd	Trentlin	25	4207	dresden.are	standing	9	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794140230	cmd	Trentlin	25	4208	dresden.are	standing	9	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
