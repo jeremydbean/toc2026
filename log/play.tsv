@@ -15106,3 +15106,27 @@
 1794105375	cmd	Trentlin	24	29062	korzath1.are	fighting	90	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
 1794105390	cmd	Trentlin	24	29062	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
 1794105393	cmd	Trentlin	24	29062	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard.	-	-
+1794105399	cmd	Trentlin	24	29062	korzath1.are	fighting	81	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS a security guard!	-	-
+1794105402	cmd	Trentlin	24	29062	korzath1.are	fighting	78	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard.	-	-
+1794105408	cmd	Trentlin	24	29062	korzath1.are	fighting	73	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch maims a security guard!	-	-
+1794105415	cmd	Trentlin	24	29062	korzath1.are	standing	69	0	-	sacrifice	cor	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794105416	cmd	Trentlin	24	29062	korzath1.are	standing	69	0	-	look		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794105417	cmd	Trentlin	24	29061	korzath1.are	standing	69	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794105419	cmd	Trentlin	24	29061	korzath1.are	standing	69	0	-	kill	gua	A security guard dodges your attack. // A security guard dodges your attack. // Your punch wounds a security guard.	-	-
+1794105422	cmd	Trentlin	24	29061	korzath1.are	fighting	69	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a security guard.	-	-
+1794105426	cmd	Trentlin	24	29061	korzath1.are	fighting	61	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch maims a security guard!	-	-
+1794105437	cmd	Trentlin	24	29061	korzath1.are	fighting	50	0	fight	nerve		You can't focus enough energy.	-	-
+1794105440	cmd	Trentlin	24	29061	korzath1.are	fighting	45	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794105449	cmd	Trentlin	24	29061	korzath1.are	fighting	37	0	fight	trip		Your trip misses a security guard.	-	-
+1794105454	cmd	Trentlin	24	29061	korzath1.are	fighting	37	0	fight	trip		Your trip misses a security guard.	-	-
+1794105459	cmd	Trentlin	24	29061	korzath1.are	fighting	37	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794105464	cmd	Trentlin	24	29061	korzath1.are	fighting	33	0	fight	trip		Your trip misses a security guard.	-	-
+1794105468	cmd	Trentlin	24	29061	korzath1.are	fighting	28	0	fight	trip		Your trip misses a security guard.	-	-
+1794105476	cmd	Trentlin	24	29061	korzath1.are	fighting	27	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794105481	cmd	Trentlin	24	29061	korzath1.are	fighting	23	0	fight	kick		Your kick hits a security guard. // A security guard is DEAD!! // You receive 297 experience points.	-	+
+1794105487	cmd	Trentlin	24	4207	dresden.are	standing	23	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794105489	cmd	Trentlin	24	4202	dresden.are	standing	23	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794105490	cmd	Trentlin	24	4203	dresden.are	standing	23	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794105490	cmd	Trentlin	24	4210	dresden.are	standing	23	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794105490	cmd	Trentlin	24	4210	dresden.are	standing	23	0	-	north		Alas, you cannot go that way.	-	-
+1794105491	cmd	Trentlin	24	4210	dresden.are	standing	23	0	-	sleep		You go to sleep.	-	-
