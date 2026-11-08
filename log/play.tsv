@@ -15013,3 +15013,96 @@
 1794105083	cmd	Trentlin	23	29060	korzath1.are	standing	70	0	-	unlock	east	You lack the key.	-	-
 1794105087	cmd	Trentlin	23	29060	korzath1.are	standing	70	0	-	get	key co	You get a crystal key from corpse of Security Chief.	-	-
 1794105088	cmd	Trentlin	23	29060	korzath1.are	standing	70	0	-	unlock	east	*Click*	-	-
+1794105089	cmd	Trentlin	23	29060	korzath1.are	standing	70	0	-	open	east	Ok.	-	-
+1794105091	cmd	Trentlin	23	29060	korzath1.are	standing	70	0	-	sacrifice	co	The Gods give you 50 copper coins for your sacrifice.	-	-
+1794105091	cmd	Trentlin	23	29061	korzath1.are	standing	70	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794105093	cmd	Trentlin	23	29061	korzath1.are	standing	70	0	-	iron		Your skin hardens.	-	-
+1794105101	cmd	Trentlin	23	29061	korzath1.are	standing	70	0	-	kill	gua	A security guard parries your attack. // A security guard dodges your attack.	-	-
+1794105103	cmd	Trentlin	23	29061	korzath1.are	fighting	70	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS a security guard!	-	-
+1794105108	cmd	Trentlin	23	29061	korzath1.are	fighting	70	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794105113	cmd	Trentlin	23	29061	korzath1.are	fighting	65	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard.	-	-
+1794105116	cmd	Trentlin	23	29061	korzath1.are	fighting	65	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794105124	cmd	Trentlin	23	29061	korzath1.are	fighting	57	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard!	-	-
+1794105129	cmd	Trentlin	23	29061	korzath1.are	fighting	51	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794105132	cmd	Trentlin	23	29061	korzath1.are	fighting	45	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard.	-	-
+1794105140	cmd	Trentlin	24	29061	korzath1.are	standing	40	0	-	wear	colla	You wear a spiked collar around your neck.	-	-
+1794105142	cmd	Trentlin	24	29061	korzath1.are	standing	40	0	-	inventory		You are carrying: //      a crystal key //      (Magical) an Eagle archer's bow	-	+
+1794105152	cmd	Trentlin	24	4207	dresden.are	standing	42	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794105154	cmd	Trentlin	24	4202	dresden.are	standing	42	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794105156	cmd	Trentlin	24	4203	dresden.are	standing	42	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794105156	cmd	Trentlin	24	4210	dresden.are	standing	42	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794105156	cmd	Trentlin	24	4210	dresden.are	standing	42	0	-	north		Alas, you cannot go that way.	-	-
+1794105157	cmd	Trentlin	24	4210	dresden.are	standing	42	0	-	sleep		You go to sleep.	-	-
+1794105242	cmd	Trentlin	24	4210	dresden.are	standing	100	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794105244	cmd	Trentlin	24	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794105247	cmd	Trentlin	24	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794105247	cmd	Trentlin	24	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794105247	cmd	Trentlin	24	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794105248	cmd	Trentlin	24	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794105248	cmd	Trentlin	24	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794105249	cmd	Trentlin	24	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794105277	cmd	Trentlin	24	2401	dresden.are	standing	100	0	-	sacrifice	hear	The Gods give you 28 copper coins for your sacrifice.	-	-
+1794105285	cmd	Trentlin	24	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794105285	cmd	Trentlin	24	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794105286	cmd	Trentlin	24	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794105286	cmd	Trentlin	24	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794105286	cmd	Trentlin	24	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794105286	cmd	Trentlin	24	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794105287	cmd	Trentlin	24	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794105287	cmd	Trentlin	24	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794105287	cmd	Trentlin	24	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794105287	cmd	Trentlin	24	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794105289	cmd	Trentlin	24	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794105289	cmd	Trentlin	24	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794105289	cmd	Trentlin	24	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794105289	cmd	Trentlin	24	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794105290	cmd	Trentlin	24	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794105290	cmd	Trentlin	24	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794105290	cmd	Trentlin	24	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794105290	cmd	Trentlin	24	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794105291	cmd	Trentlin	24	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794105291	cmd	Trentlin	24	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794105291	cmd	Trentlin	24	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794105291	cmd	Trentlin	24	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794105292	cmd	Trentlin	24	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794105292	cmd	Trentlin	24	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794105292	cmd	Trentlin	24	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794105292	cmd	Trentlin	24	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794105293	cmd	Trentlin	24	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794105293	cmd	Trentlin	24	9514	newthalo.are	standing	100	0	-	north		The Northwestern Market Square //   This corner of the market contains some of the most civilized folk in // New Thalos. To the north lies the humble store of the merchant Ahkeem, his	-	+
+1794105293	cmd	Trentlin	24	9515	newthalo.are	standing	100	0	-	east		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794105293	cmd	Trentlin	24	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794105294	cmd	Trentlin	24	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794105294	cmd	Trentlin	24	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794105294	cmd	Trentlin	24	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794105294	cmd	Trentlin	24	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794105295	cmd	Trentlin	24	9522	newthalo.are	standing	100	0	-	open	north	Ok.	-	-
+1794105295	cmd	Trentlin	24	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1794105296	cmd	Trentlin	24	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1794105297	cmd	Trentlin	24	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1794105297	cmd	Trentlin	24	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1794105297	cmd	Trentlin	24	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1794105297	cmd	Trentlin	24	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1794105299	cmd	Trentlin	24	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1794105300	cmd	Trentlin	24	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794105301	cmd	Trentlin	24	29060	korzath1.are	standing	100	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794105304	cmd	Trentlin	24	29060	korzath1.are	standing	100	0	-	unlock	east	*Click*	-	-
+1794105306	cmd	Trentlin	24	29060	korzath1.are	standing	100	0	-	open	east	Ok.	-	-
+1794105306	cmd	Trentlin	24	29061	korzath1.are	standing	100	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794105309	cmd	Trentlin	24	29061	korzath1.are	standing	100	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794105310	cmd	Trentlin	24	29061	korzath1.are	standing	100	0	-	kill	gua	Your punch scratches a security guard. // Your punch grazes a security guard.	-	-
+1794105313	cmd	Trentlin	24	29061	korzath1.are	fighting	100	0	fight	smite		Better go practice the skill some more. 	-	-
+1794105316	cmd	Trentlin	24	29061	korzath1.are	fighting	95	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794105321	cmd	Trentlin	24	29061	korzath1.are	fighting	95	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794105329	cmd	Trentlin	24	29061	korzath1.are	fighting	91	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch maims a security guard!	-	-
+1794105339	cmd	Trentlin	24	29061	korzath1.are	fighting	87	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch maims a security guard!	-	-
+1794105343	cmd	Trentlin	24	29062	korzath1.are	standing	87	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794105344	cmd	Trentlin	24	29062	korzath1.are	standing	87	0	-	trip	guard	You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794105350	cmd	Trentlin	24	29062	korzath1.are	fighting	87	0	fight	trip	guard	You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794105359	cmd	Trentlin	24	29062	korzath1.are	standing	90	0	-	iron		Your skin hardens.	-	-
+1794105367	cmd	Trentlin	24	29062	korzath1.are	standing	90	0	-	kill	gua	Your punch devastates a security guard! // Your punch maims a security guard!	-	-
+1794105370	cmd	Trentlin	24	29062	korzath1.are	fighting	90	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a security guard.	-	-
+1794105371	cmd	Trentlin	24	29062	korzath1.are	fighting	90	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794105375	cmd	Trentlin	24	29062	korzath1.are	fighting	90	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794105390	cmd	Trentlin	24	29062	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794105393	cmd	Trentlin	24	29062	korzath1.are	fighting	86	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard.	-	-
