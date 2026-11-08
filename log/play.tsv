@@ -28442,3 +28442,4 @@
 1794087411	cmd	Misery	54	17109	highland.are	standing	100	0	-	note		(withheld)	-	-
 1794087416	cmd	Misery	54	17109	highland.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] [*Fors] (WIZI) Misery... the man, the myth, the legend.  // Players found: 1	-	-
 1794087417	session	Misery	54	17109	highland.are	quit	34s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	6 commands	0 refused	coin: none	spent on: none	exp: none
+1794099593	stall	-	0	0	-	250ms	slowest update 249ms	command - 0ms	0 players	0 more since
