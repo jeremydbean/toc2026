@@ -274614,3 +274614,75 @@ Sun Nov  8 02:00:56 2026 :: Log Trentlin [29060]: e
 Sun Nov  8 02:00:56 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
 Sun Nov  8 02:00:58 2026 :: Log Trentlin [29061]: iron
 Sun Nov  8 02:01:07 2026 :: Log Trentlin [29061]: k gua
+Sun Nov  8 02:01:10 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:01:19 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:01:22 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:01:31 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:01:34 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:01:41 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:01:45 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:01:55 2026 :: Log Trentlin [29061]: s
+Sun Nov  8 02:01:55 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sun Nov  8 02:01:55 2026 :: Log Trentlin [29062]: trip gua
+Sun Nov  8 02:01:57 2026 :: Log Trentlin [29062]: killed a security guard
+Sun Nov  8 02:01:57 2026 :: Log Trentlin [29062]: coin +1 platinum
+Sun Nov  8 02:01:57 2026 :: Log Trentlin [29062]: coin +7 silver
+Sun Nov  8 02:01:57 2026 :: Log Trentlin [29062]: coin +10 copper
+Sun Nov  8 02:01:57 2026 :: Log Trentlin [29062]: coin +4 gold
+Sun Nov  8 02:02:00 2026 :: Treasure goblin: vanished from room 1817 (The Furnace, haven.are) (too long in one area).
+Sun Nov  8 02:02:00 2026 :: Log Trentlin [29062]: affects off: iron skin
+Sun Nov  8 02:02:02 2026 :: Log Trentlin [29062]: sac co
+Sun Nov  8 02:02:02 2026 :: Log Trentlin [29062]: coin +54 copper
+Sun Nov  8 02:02:02 2026 :: Log Trentlin [29062]: n
+Sun Nov  8 02:02:02 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29062
+Sun Nov  8 02:02:02 2026 :: Log Trentlin [29061]: iron
+Sun Nov  8 02:02:09 2026 :: Log Trentlin [29061]: k g
+Sun Nov  8 02:02:12 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:02:16 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:02:19 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:02:25 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:02:31 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:02:37 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:02:40 2026 :: Log Trentlin [29061]: trip
+Sun Nov  8 02:02:50 2026 :: Log Trentlin [29061]: trip
+Sun Nov  8 02:02:55 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:02:58 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:03:01 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:03:04 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 02:03:08 2026 :: Log Trentlin [29061]: w
+Sun Nov  8 02:03:08 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29061
+Sun Nov  8 02:03:08 2026 :: Log Trentlin [29060]: trip guard
+Sun Nov  8 02:03:14 2026 :: Log Trentlin [29060]: trip guard
+Sun Nov  8 02:03:18 2026 :: Log Trentlin [29060]: trip guard
+Sun Nov  8 02:03:21 2026 :: Log Trentlin [29060]: killed a security guard
+Sun Nov  8 02:03:21 2026 :: Log Trentlin [29060]: coin +1 platinum
+Sun Nov  8 02:03:21 2026 :: Log Trentlin [29060]: coin +7 silver
+Sun Nov  8 02:03:21 2026 :: Log Trentlin [29060]: coin +10 copper
+Sun Nov  8 02:03:21 2026 :: Log Trentlin [29060]: coin +4 gold
+Sun Nov  8 02:03:26 2026 :: Log Trentlin [29060]: sac co
+Sun Nov  8 02:03:26 2026 :: Log Trentlin [29060]: coin +54 copper
+Sun Nov  8 02:03:28 2026 :: Log Trentlin [29060]: reca
+Sun Nov  8 02:03:28 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29060
+Sun Nov  8 02:03:30 2026 :: Log Trentlin [4207]: e
+Sun Nov  8 02:03:30 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov  8 02:03:30 2026 :: Log Trentlin [4202]: n
+Sun Nov  8 02:03:30 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Nov  8 02:03:31 2026 :: Log Trentlin [4203]: n
+Sun Nov  8 02:03:31 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Nov  8 02:03:31 2026 :: Log Trentlin [4210]: n
+Sun Nov  8 02:03:31 2026 :: Log Trentlin [4210]: sleep
+Sun Nov  8 02:03:42 2026 :: Log Trentlin [4210]: affects off: iron skin
+Sun Nov  8 02:04:06 2026 :: Log Trentlin [4210]: gr
+Sun Nov  8 02:06:10 2026 :: Log Trentlin [4210]: gr
+Sun Nov  8 02:06:11 2026 :: Log Trentlin [4210]: wake
+Sun Nov  8 02:06:12 2026 :: Log Trentlin [4210]: s
+Sun Nov  8 02:06:12 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sun Nov  8 02:06:12 2026 :: Log Trentlin [4203]: w
+Sun Nov  8 02:06:12 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4203
+Sun Nov  8 02:06:13 2026 :: Log Trentlin [4204]: s
+Sun Nov  8 02:06:13 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4204
+Sun Nov  8 02:06:13 2026 :: Log Trentlin [4207]: w
+Sun Nov  8 02:06:13 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Nov  8 02:06:14 2026 :: Log Trentlin [4208]: w
+Sun Nov  8 02:06:16 2026 :: Log Trentlin [4208]: heal heal
+Sun Nov  8 02:06:16 2026 :: Log Trentlin [4208]: gold -500
