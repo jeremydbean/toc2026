@@ -16817,3 +16817,88 @@
 1794142975	cmd	Trentlin	26	9102	dylan.are	standing	37	0	-	east		You can't fly.	-	-
 1794142977	cmd	Trentlin	26	9102	dylan.are	standing	37	0	-	levitate		You slowly rise up off the ground.	-	-
 1794142979	cmd	Trentlin	26	9102	dylan.are	standing	37	0	-	scan		You don't see anything near you.	-	-
+1794142979	cmd	Trentlin	26	9103	dylan.are	standing	37	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794142980	cmd	Trentlin	26	9103	dylan.are	standing	37	0	-	scan		You don't see anything near you.	-	-
+1794143012	cmd	Trentlin	26	9104	dylan.are	standing	100	0	-	south		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143014	cmd	Trentlin	26	9104	dylan.are	standing	100	0	-	scan		the screaming, filthy harpy          -to the East. // the screaming, filthy harpy          -to the East.	-	-
+1794143021	cmd	Trentlin	26	9105	dylan.are	standing	100	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143021	refused	Trentlin	26	9105	dylan.are	fighting	100	0	fight	east		No way!  You are still fighting!	refusal:position	-
+1794143024	cmd	Trentlin	26	9104	dylan.are	fighting	96	0	fight	flee		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143025	cmd	Trentlin	26	9105	dylan.are	standing	96	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143026	cmd	Trentlin	26	9106	dylan.are	standing	96	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143029	cmd	Trentlin	26	9106	dylan.are	standing	96	0	-	exits		Obvious exits: // North - A fluffy white cloud. // West  - A fluffy white cloud.	-	-
+1794143029	cmd	Trentlin	26	9106	dylan.are	standing	96	0	-	scan		the screaming, filthy harpy          -to the West. // the screaming, filthy harpy          -to the West.	-	-
+1794143030	cmd	Trentlin	26	9107	dylan.are	standing	96	0	-	north		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143044	cmd	Trentlin	26	9107	dylan.are	standing	96	0	-	scan		the screaming, filthy harpy          -to the East. // the screaming, filthy harpy          -to the East. // the screaming, filthy harpy          -to the East.	-	-
+1794143048	cmd	Trentlin	26	9107	dylan.are	standing	96	0	-	exits		Obvious exits: // East  - A fluffy white cloud. // South - A fluffy white cloud.	-	+
+1794143049	cmd	Trentlin	26	9126	dylan.are	standing	96	0	-	down		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143050	cmd	Trentlin	26	9126	dylan.are	standing	96	0	-	scan		the screaming, filthy harpy          -to the North. // the screaming, filthy harpy          -to the West. // the screaming, filthy harpy          -to the West.	-	+
+1794143050	cmd	Trentlin	26	9126	dylan.are	standing	96	0	-	exits		Obvious exits: // North - Happy little cloud. // West  - A fluffy white cloud.	-	+
+1794143068	cmd	Trentlin	26	9125	dylan.are	standing	98	0	-	down		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143070	cmd	Trentlin	26	9125	dylan.are	standing	98	0	-	scan		You don't see anything near you.	-	-
+1794143071	cmd	Trentlin	26	9110	dylan.are	standing	98	0	-	east		An ominous storm cloud. //   You find yourself in a storm.  Lightning flashes and thunder // crashes, making you wish you were dry and warm.	-	+
+1794143071	cmd	Trentlin	26	9110	dylan.are	standing	98	0	-	scan		You don't see anything near you.	-	-
+1794143072	cmd	Trentlin	26	9110	dylan.are	standing	98	0	-	exits		Obvious exits: // East  - High and perilous cliff // West  - A fluffy white cloud.	-	+
+1794143081	cmd	Trentlin	26	9111	dylan.are	standing	98	0	-	east		High and perilous cliff //   You are on a high and rocky cliff.  To the west you see a huge // ominous storm cloud moving this way.  You might want to take cover	-	+
+1794143082	cmd	Trentlin	26	9111	dylan.are	standing	98	0	-	exits		Obvious exits: // South - Narrow rocky trail. // West  - An ominous storm cloud.	-	-
+1794143083	cmd	Trentlin	26	9111	dylan.are	standing	98	0	-	scan		the screaming, filthy harpy          -to the South. // the screaming, filthy harpy          -to the South.	-	-
+1794143086	cmd	Trentlin	26	9111	dylan.are	standing	98	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794143093	cmd	Trentlin	26	9112	dylan.are	standing	98	0	-	south		Narrow rocky trail. //   A narrow trail leads down towards the mountain and north toward the // cliff.  It seems to fade in and out as it winds up the hill.	-	+
+1794143096	cmd	Trentlin	26	9112	dylan.are	fighting	94	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates the screaming, filthy harpy!	-	-
+1794143099	cmd	Trentlin	26	9112	dylan.are	fighting	86	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes the screaming, filthy harpy.	-	-
+1794143105	cmd	Trentlin	26	9112	dylan.are	fighting	82	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS the screaming, filthy harpy!	-	-
+1794143111	cmd	Trentlin	26	9112	dylan.are	fighting	82	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch hits the screaming, filthy harpy.	-	-
+1794143119	cmd	Trentlin	26	9112	dylan.are	fighting	80	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794143126	cmd	Trentlin	26	9112	dylan.are	standing	80	0	-	look		Narrow rocky trail. //   A narrow trail leads down towards the mountain and north toward the // cliff.  It seems to fade in and out as it winds up the hill.	-	+
+1794143127	cmd	Trentlin	26	9113	dylan.are	standing	80	0	-	down		Small valley. //   You are in a lush valley full of trees and other vegetation, along with // an odd carcass or two.  The trail leads south and it leads up.	-	+
+1794143128	cmd	Trentlin	26	9114	dylan.are	standing	80	0	-	south		Small valley. //   You are in a lush valley full of trees and other vegetation, along with // an odd carcass or three.  The trail leads north and it leads down into	-	+
+1794143130	cmd	Trentlin	26	9115	dylan.are	standing	80	0	-	down		Deep, slippery crevice. //   The crevice is deep and a little dim and it is hard to make your // way around.  A mist makes everything a little damp and slippery.	-	+
+1794143131	cmd	Trentlin	26	9115	dylan.are	standing	80	0	-	exits		Obvious exits: // South - Steep mountainside. // West  - Incredibly slippery crevice.	-	+
+1794143147	cmd	Trentlin	26	9115	dylan.are	standing	83	0	-	levitate		You slowly rise up off the ground.	-	-
+1794143148	cmd	Trentlin	26	9117	dylan.are	standing	83	0	-	south		Steep mountainside. //   From here, you can see forever.  Clouds, birds, the forest. // Dresden is far, far away.  What a postcard perfect view!	-	+
+1794143151	cmd	Trentlin	26	9118	dylan.are	standing	83	0	-	up		Steep mountainside. //   From here, you can see forever.  Clouds, birds, the forest. // Dresden is far, far away.  What a postcard perfect view!	-	+
+1794143153	refused	Trentlin	26	9118	dylan.are	fighting	80	0	fight	east		No way!  You are still fighting!	refusal:position	-
+1794143154	cmd	Trentlin	26	9118	dylan.are	fighting	80	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes the screaming, filthy harpy.	-	-
+1794143157	cmd	Trentlin	26	9118	dylan.are	fighting	78	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates the screaming, filthy harpy!	-	-
+1794143162	cmd	Trentlin	26	9118	dylan.are	fighting	78	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES the screaming, filthy harpy!	-	-
+1794143169	cmd	Trentlin	26	9118	dylan.are	fighting	75	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794143172	refused	Trentlin	26	9118	dylan.are	fighting	75	0	fight	east		No way!  You are still fighting!	refusal:position	-
+1794143174	cmd	Trentlin	26	9118	dylan.are	fighting	71	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds the screaming, filthy harpy.	-	-
+1794143177	cmd	Trentlin	26	9118	dylan.are	fighting	68	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794143183	cmd	Trentlin	26	9118	dylan.are	fighting	68	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls the screaming, filthy harpy.	-	-
+1794143186	cmd	Trentlin	26	9118	dylan.are	fighting	65	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794143190	cmd	Trentlin	26	9119	dylan.are	standing	65	0	-	east		Treacherous Cliff. //   The cliff is rocky and difficult to negotiate.  One wrong slip and // you could fall and break a leg or impale yourself or something else	-	+
+1794143192	cmd	Trentlin	26	9119	dylan.are	standing	65	0	-	exits		Obvious exits: // West  - Steep mountainside. // Up    - Cliff Face.	-	-
+1794143194	cmd	Trentlin	26	9120	dylan.are	standing	65	0	-	up		Cliff Face. //   You are more than a little nervous climbing on this almost vertical // cliff face.  You miraculously find places to grab onto and little	-	+
+1794143196	cmd	Trentlin	26	9120	dylan.are	fighting	62	0	fight	exits		Obvious exits: // East  - Dank, dark, smelly hole. // Up    - Large, sturdy ledge.	-	+
+1794143199	cmd	Trentlin	26	9120	dylan.are	fighting	60	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the screaming, filthy harpy.	-	-
+1794143202	cmd	Trentlin	26	9120	dylan.are	fighting	59	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794143205	cmd	Trentlin	26	9120	dylan.are	fighting	56	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch maims the screaming, filthy harpy!	-	-
+1794143210	cmd	Trentlin	26	9122	dylan.are	standing	56	0	-	up		Large, sturdy ledge. //   You are on a ledge above a steep cliff face.  You can climb down // if you want, but be careful!  After viewing the scenery, you notice	-	+
+1794143212	cmd	Trentlin	26	9122	dylan.are	fighting	50	0	fight	get	all	You get The Heart of Tifarah.	-	-
+1794143214	cmd	Trentlin	26	9122	dylan.are	fighting	50	0	fight	nerve		You missed the nerve. // Your nerve pinch hits the screaming, filthy harpy.	-	-
+1794143222	cmd	Trentlin	26	9122	dylan.are	fighting	37	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the screaming, filthy harpy.	-	-
+1794143228	cmd	Trentlin	26	9122	dylan.are	fighting	34	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls the screaming, filthy harpy.	-	-
+1794143231	cmd	Trentlin	26	9122	dylan.are	fighting	34	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches the screaming, filthy harpy.	-	-
+1794143234	cmd	Trentlin	26	9122	dylan.are	fighting	34	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch hits the screaming, filthy harpy.	-	-
+1794143238	cmd	Trentlin	26	4207	dresden.are	standing	34	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794143240	cmd	Trentlin	26	4202	dresden.are	standing	34	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794143240	cmd	Trentlin	26	4201	dresden.are	standing	34	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794143240	cmd	Trentlin	26	2427	dresden.are	standing	34	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794143240	cmd	Trentlin	26	2427	dresden.are	standing	34	0	-	east		Alas, you cannot go that way.	-	-
+1794143241	cmd	Trentlin	26	2404	dresden.are	standing	34	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794143241	cmd	Trentlin	26	2401	dresden.are	standing	34	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794143241	cmd	Trentlin	26	2410	dresden.are	standing	34	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794143241	cmd	Trentlin	26	2411	dresden.are	standing	34	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794143242	cmd	Trentlin	26	2414	dresden.are	standing	34	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794143242	cmd	Trentlin	26	2497	dresden.are	standing	34	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794143244	item	Trentlin	26	2497	dresden.are	25042	The Heart of Tifarah	type=trash level=59 worn=0 nested=0 timer=114 cond=100 inside=0	aquest
+1794143244	outcome	Trentlin	26	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2025->2025 offered=69 daily=18->18 coin=+2388672 kill=265408 streak=28 level=26 target=0
+1794143244	cmd	Trentlin	26	2497	dresden.are	standing	34	25	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1794143248	cmd	Trentlin	26	2497	dresden.are	standing	34	4	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 138 quest points! **	-	-
+1794143249	cmd	Trentlin	26	4207	dresden.are	standing	34	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794143250	cmd	Trentlin	26	4208	dresden.are	standing	34	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794143252	cmd	Trentlin	26	4208	dresden.are	standing	34	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794143255	cmd	Trentlin	26	4208	dresden.are	standing	52	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794143258	cmd	Trentlin	26	4208	dresden.are	standing	70	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794143265	cmd	Trentlin	26	4208	dresden.are	standing	87	0	-	heal	refrehs	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
