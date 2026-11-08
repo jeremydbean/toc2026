@@ -15905,3 +15905,154 @@
 1794141128	cmd	Trentlin	25	30413	hyrule.are	standing	100	0	-	consider	aq	Aquamentus is far below your level. // Aquamentus has several times your hit points. // Blow for blow, you would need about 33 rounds to bring Aquamentus down; it would need about 45 rounds for you.	-	+
 1794141132	cmd	Trentlin	25	30413	hyrule.are	standing	100	0	-	kill	aq	Your punch hits Aquamentus. // Your punch scratches Aquamentus.	-	-
 1794141141	cmd	Trentlin	25	30413	hyrule.are	fighting	92	0	fight	bomb	aq	You have no bombs. The arrow shops sell four for 20 gold.	-	-
+1794141162	cmd	Trentlin	25	30413	hyrule.are	fighting	71	0	fight	flee		Aquamentus is overcome with a feeling of despair and flees the battle. // Aquamentus flies off to the south leaving you choking in the dust. // Aquamentus has fled!	-	-
+1794141162	cmd	Trentlin	25	30413	hyrule.are	standing	71	0	-	flee		You aren't fighting anyone.	-	-
+1794141163	cmd	Trentlin	25	30411	hyrule.are	standing	71	0	-	south		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794141164	cmd	Trentlin	25	30410	hyrule.are	standing	71	0	-	west		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794141166	cmd	Trentlin	25	30410	hyrule.are	standing	74	0	-	kill	go	Your punch MUTILATES a red goriya! // Your punch devastates a red goriya!	-	-
+1794141172	cmd	Trentlin	25	30410	hyrule.are	standing	74	0	-	get	boom	You get a small boomerang.	-	-
+1794141173	cmd	Trentlin	25	30410	hyrule.are	standing	74	0	-	wear	boom	You wield a small boomerang. // You are skilled with a small boomerang.	-	-
+1794141177	cmd	Trentlin	25	30406	hyrule.are	standing	74	0	-	south		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794141177	cmd	Trentlin	25	30406	hyrule.are	standing	74	0	-	scan		You don't see anything near you.	-	-
+1794141178	cmd	Trentlin	25	30405	hyrule.are	standing	74	0	-	west		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794141179	cmd	Trentlin	25	30404	hyrule.are	standing	74	0	-	west		The shutter opens now that the chamber is clear. // Level 1: Shuttered West Room //   A low-ceilinged chamber of chill teal stone, where bat droppings crust the	-	+
+1794141181	cmd	Trentlin	25	30404	hyrule.are	standing	74	0	-	kill	kee	You graze a keese. // You scratch a keese.	-	-
+1794141186	cmd	Trentlin	25	30404	hyrule.are	standing	74	0	-	north		The locked is closed.	-	-
+1794141188	cmd	Trentlin	25	30404	hyrule.are	standing	74	0	-	look		Level 1: Shuttered West Room //   A low-ceilinged chamber of chill teal stone, where bat droppings crust the // tops of a few scattered blocks and a papery rustle drifts down from the	-	+
+1794141190	cmd	Trentlin	25	30404	hyrule.are	standing	74	0	-	unlock	noirth	I see no noirth here.	-	-
+1794141192	cmd	Trentlin	25	30404	hyrule.are	standing	74	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794141194	cmd	Trentlin	25	30404	hyrule.are	standing	74	0	-	open	north	Ok.	-	-
+1794141194	cmd	Trentlin	25	30408	hyrule.are	standing	74	0	-	north		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794141196	cmd	Trentlin	25	30408	hyrule.are	standing	74	0	-	kill	g	You scratch a gel. // You graze a gel.	-	-
+1794141202	cmd	Trentlin	25	30408	hyrule.are	fighting	74	0	fight	remove	boom	You stop using a small boomerang.	-	-
+1794141206	cmd	Trentlin	25	30408	hyrule.are	standing	74	0	-	look		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794141207	cmd	Trentlin	25	30407	hyrule.are	standing	74	0	-	west		The shutter opens now that the chamber is clear. // Level 1: Eagle's Ember Alcove //   Teal flagstones run back to a squat pair of braziers whose flames burn low	-	+
+1794141209	cmd	Trentlin	25	30407	hyrule.are	standing	74	0	-	list		You can't do that here.	-	-
+1794141210	cmd	Trentlin	25	30408	hyrule.are	standing	74	0	-	east		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794141210	cmd	Trentlin	25	30409	hyrule.are	standing	74	0	-	east		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794141213	cmd	Trentlin	25	30409	hyrule.are	standing	74	0	-	kill	g	Your punch maims a gel! // A gel is DEAD!! // You receive 0 experience points.	-	+
+1794141217	cmd	Trentlin	25	30409	hyrule.are	standing	74	0	-	kill	g	Your punch DISMEMBERS a gel! // A gel is DEAD!! // You receive 0 experience points.	-	+
+1794141221	cmd	Trentlin	25	30412	hyrule.are	standing	74	0	-	north		Level 1: Ossuary Hall //   Old bones lie heaped in drifts against the walls of this dim chamber, and a // pair of stone blocks squats near its center beside a rusted sword stuck	-	+
+1794141223	cmd	Trentlin	25	30412	hyrule.are	standing	74	0	-	kill	sta	Your punch *** DEVASTATES *** a stalfos! // Your punch *** DEVASTATES *** a stalfos! // A stalfos is DEAD!!	-	+
+1794141228	cmd	Trentlin	25	30412	hyrule.are	standing	74	0	-	get	key	You get a small key.	-	-
+1794141228	cmd	Trentlin	25	30412	hyrule.are	standing	74	0	-	north		The locked is closed.	-	-
+1794141231	cmd	Trentlin	25	30412	hyrule.are	standing	74	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794141233	cmd	Trentlin	25	30412	hyrule.are	standing	74	0	-	open	north	Ok.	-	-
+1794141233	cmd	Trentlin	25	30416	hyrule.are	standing	74	0	-	north		Level 1: Northern Guardroom //   Curved scuff marks and dents pock the walls of this high northern chamber, // and the floor is littered with chips of broken stone and the splinters of a	-	+
+1794141235	cmd	Trentlin	25	30416	hyrule.are	standing	74	0	-	kill	g	Your punch injures a red goriya. // Your punch MASSACRES a red goriya!	-	-
+1794141240	cmd	Trentlin	25	30416	hyrule.are	standing	77	0	-	west		The locked is closed.	-	-
+1794141243	cmd	Trentlin	25	30416	hyrule.are	standing	77	0	-	get	key	You get a small key.	-	-
+1794141244	cmd	Trentlin	25	30416	hyrule.are	standing	77	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794141246	cmd	Trentlin	25	30416	hyrule.are	standing	77	0	-	open	west	Ok.	-	-
+1794141246	cmd	Trentlin	25	30415	hyrule.are	standing	77	0	-	west		Level 1: Chamber of Blade Traps //   Deep grooves run across the floor of this chamber from its corners, // polished smooth by spiked blades that rest against the walls and shoot	-	+
+1794141251	cmd	Trentlin	25	30415	hyrule.are	standing	77	0	-	push	statue	I see no statue here.	-	-
+1794141254	cmd	Trentlin	25	30415	hyrule.are	standing	77	0	-	push	block	You push a movable stone block. // A previously hidden door mysteriously opens. // You hear a strange noise off in the distance.	-	-
+1794141254	cmd	Trentlin	25	30417	hyrule.are	standing	77	0	-	down		Level 1: Undercroft of Brick Ledges //   A narrow ladder drops into a long basement of brick ledges and black gaps, // the kind of place one crosses sideways, a ledge at a time. The air smells	-	+
+1794141257	cmd	Trentlin	25	30415	hyrule.are	standing	77	0	-	up		Level 1: Chamber of Blade Traps //   Deep grooves run across the floor of this chamber from its corners, // polished smooth by spiked blades that rest against the walls and shoot	-	+
+1794141257	cmd	Trentlin	25	30416	hyrule.are	standing	77	0	-	east		Level 1: Northern Guardroom //   Curved scuff marks and dents pock the walls of this high northern chamber, // and the floor is littered with chips of broken stone and the splinters of a	-	+
+1794141258	cmd	Trentlin	25	30412	hyrule.are	standing	77	0	-	south		Level 1: Ossuary Hall //   Old bones lie heaped in drifts against the walls of this dim chamber, and a // pair of stone blocks squats near its center beside a rusted sword stuck	-	+
+1794141258	cmd	Trentlin	25	30412	hyrule.are	standing	77	0	-	east		Alas, you cannot go that way.	-	-
+1794141259	cmd	Trentlin	25	30409	hyrule.are	standing	77	0	-	south		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794141259	cmd	Trentlin	25	30409	hyrule.are	standing	77	0	-	east		The locked is closed.	-	-
+1794141262	cmd	Trentlin	25	30409	hyrule.are	standing	77	0	-	unlock	east	You lack the key.	-	-
+1794141263	cmd	Trentlin	25	30409	hyrule.are	standing	77	0	-	east		The locked is closed.	-	-
+1794141265	cmd	Trentlin	25	30409	hyrule.are	standing	77	0	-	open	east	It's locked.	-	-
+1794141268	cmd	Trentlin	25	30409	hyrule.are	standing	77	0	-	south		Alas, you cannot go that way.	-	-
+1794141268	cmd	Trentlin	25	30409	hyrule.are	standing	77	0	-	east		The locked is closed.	-	-
+1794141270	cmd	Trentlin	25	30408	hyrule.are	standing	77	0	-	west		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794141271	cmd	Trentlin	25	30404	hyrule.are	standing	77	0	-	south		Level 1: Shuttered West Room //   A low-ceilinged chamber of chill teal stone, where bat droppings crust the // tops of a few scattered blocks and a papery rustle drifts down from the	-	+
+1794141271	cmd	Trentlin	25	30405	hyrule.are	standing	77	0	-	east		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794141272	cmd	Trentlin	25	30406	hyrule.are	standing	77	0	-	east		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794141272	cmd	Trentlin	25	30406	hyrule.are	standing	77	0	-	east		Alas, you cannot go that way.	-	-
+1794141273	cmd	Trentlin	25	30410	hyrule.are	standing	77	0	-	north		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794141275	cmd	Trentlin	25	30411	hyrule.are	standing	77	0	-	east		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794141275	cmd	Trentlin	25	30411	hyrule.are	fighting	77	0	fight	kill	a	You do the best you can!	-	-
+1794141278	cmd	Trentlin	25	30411	hyrule.are	fighting	73	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141282	cmd	Trentlin	25	30411	hyrule.are	fighting	67	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Aquamentus.	-	-
+1794141286	cmd	Trentlin	25	30411	hyrule.are	fighting	67	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates Aquamentus!	-	-
+1794141290	cmd	Trentlin	25	30411	hyrule.are	fighting	60	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141295	cmd	Trentlin	25	30411	hyrule.are	fighting	56	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141299	cmd	Trentlin	25	30411	hyrule.are	fighting	52	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Aquamentus.	-	-
+1794141303	cmd	Trentlin	25	30411	hyrule.are	fighting	50	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141304	cmd	Trentlin	25	30411	hyrule.are	fighting	50	0	fight	flee		Aquamentus is overcome with a feeling of despair and flees the battle.	-	-
+1794141304	cmd	Trentlin	25	30411	hyrule.are	fighting	50	0	fight	flee		Aquamentus is overcome with a feeling of despair and flees the battle. // Aquamentus flies off to the west leaving you choking in the dust. // Aquamentus has fled!	-	-
+1794141305	cmd	Trentlin	25	30411	hyrule.are	standing	50	0	-	flee		You aren't fighting anyone.	-	-
+1794141309	cmd	Trentlin	25	30411	hyrule.are	standing	50	0	-	iron		You lost your concentration.	-	-
+1794141309	cmd	Trentlin	25	30411	hyrule.are	standing	50	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794141318	cmd	Trentlin	25	30410	hyrule.are	standing	53	0	-	west		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794141318	cmd	Trentlin	25	30410	hyrule.are	standing	53	0	-	kill	a	Your punch grazes Aquamentus. // Your punch injures Aquamentus.	-	-
+1794141321	cmd	Trentlin	25	30410	hyrule.are	fighting	53	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141324	cmd	Trentlin	25	30410	hyrule.are	fighting	49	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141330	cmd	Trentlin	25	30410	hyrule.are	fighting	42	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141333	cmd	Trentlin	25	30410	hyrule.are	fighting	40	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141336	cmd	Trentlin	25	30410	hyrule.are	fighting	32	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141339	cmd	Trentlin	25	30410	hyrule.are	fighting	28	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141343	cmd	Trentlin	25	30410	hyrule.are	fighting	25	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Aquamentus.	-	-
+1794141347	cmd	Trentlin	25	30406	hyrule.are	fighting	21	0	fight	flee		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794141347	cmd	Trentlin	25	30406	hyrule.are	standing	21	0	-	flee		You aren't fighting anyone.	-	-
+1794141348	cmd	Trentlin	25	30406	hyrule.are	standing	21	1	-	flee		You aren't fighting anyone.	-	-
+1794141349	cmd	Trentlin	25	30405	hyrule.are	standing	21	0	-	west		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794141349	cmd	Trentlin	25	30403	hyrule.are	standing	21	0	-	south		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794141350	cmd	Trentlin	25	30401	hyrule.are	standing	21	0	-	south		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794141352	cmd	Trentlin	25	30271	hyrule.are	standing	21	0	-	up		The Eagle's Gate //   On a spit of green land cut off by the river, a stone entrance stands in a // rocky outcrop, its lintel carved with the spread wings of an eagle and	-	+
+1794141353	cmd	Trentlin	25	4207	dresden.are	standing	21	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794141353	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794141357	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
+1794141364	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794141367	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794141367	cmd	Trentlin	25	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794141368	cmd	Trentlin	25	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794141368	cmd	Trentlin	25	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794141368	cmd	Trentlin	25	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794141368	cmd	Trentlin	25	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141369	cmd	Trentlin	25	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141369	cmd	Trentlin	25	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141369	cmd	Trentlin	25	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794141369	cmd	Trentlin	25	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794141370	cmd	Trentlin	25	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794141370	cmd	Trentlin	25	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794141370	cmd	Trentlin	25	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794141370	cmd	Trentlin	25	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794141371	cmd	Trentlin	25	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794141371	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794141378	cmd	Trentlin	25	30208	hyrule.are	standing	100	1	-	east		Meadow East of the Cave //   Open grassland stretches east from the starting hills, dotted with small // boulders and clumps of green bushes. Round pebbles lie strewn across the	-	+
+1794141379	cmd	Trentlin	25	30224	hyrule.are	standing	100	0	-	north		Bush Row //   A tidy line of thick green bushes borders a sunny field, almost like a // hedge someone once planted and forgot. One of them stands out from its	-	+
+1794141379	cmd	Trentlin	25	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake //   Two worn dirt roads cross in the middle of open green country, rutted by // cart wheels and dotted with spat stones. To the north the ground slopes	-	+
+1794141379	cmd	Trentlin	25	30256	hyrule.are	standing	100	0	-	north		Lake Hylia Sand Bar //   A pale sand bar runs along the lake's edge, the sand rippled and pocked // with burrow holes from which a red spinning thing sometimes bores up. The	-	+
+1794141380	cmd	Trentlin	25	30272	hyrule.are	standing	100	0	-	north		The River Landing //   The river widens here, and a sturdy wooden dock juts out from the bank into // the current. Across the water to the west a green shore with a carved stone	-	+
+1794141381	cmd	Trentlin	25	30271	hyrule.are	standing	100	0	-	west		The Eagle's Gate //   On a spit of green land cut off by the river, a stone entrance stands in a // rocky outcrop, its lintel carved with the spread wings of an eagle and	-	+
+1794141382	cmd	Trentlin	25	30401	hyrule.are	standing	100	0	-	down		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794141384	cmd	Trentlin	25	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794141384	cmd	Trentlin	25	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794141387	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794141389	cmd	Trentlin	25	30406	hyrule.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794141396	cmd	Trentlin	25	30410	hyrule.are	standing	100	0	-	north		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794141398	cmd	Trentlin	25	30410	hyrule.are	fighting	100	0	fight	kill	a	You do the best you can!	-	-
+1794141400	cmd	Trentlin	25	30410	hyrule.are	fighting	100	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794141403	cmd	Trentlin	25	30410	hyrule.are	fighting	96	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds Aquamentus. // You have become better at nerve damage!	-	-
+1794141405	cmd	Trentlin	25	30410	hyrule.are	fighting	93	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls Aquamentus.	-	-
+1794141409	cmd	Trentlin	25	30410	hyrule.are	fighting	93	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141411	cmd	Trentlin	25	30410	hyrule.are	fighting	89	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates Aquamentus!	-	-
+1794141414	cmd	Trentlin	25	30410	hyrule.are	fighting	86	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus. // You learn from your mistakes, and your nerve damage skill improves.	-	-
+1794141417	cmd	Trentlin	25	30410	hyrule.are	fighting	86	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls Aquamentus.	-	-
+1794141421	cmd	Trentlin	25	30410	hyrule.are	fighting	81	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794141423	cmd	Trentlin	25	30410	hyrule.are	fighting	75	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794141426	cmd	Trentlin	25	30410	hyrule.are	fighting	71	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141429	cmd	Trentlin	25	30410	hyrule.are	fighting	71	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches Aquamentus.	-	-
+1794141432	cmd	Trentlin	25	30410	hyrule.are	fighting	68	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls Aquamentus.	-	-
+1794141435	cmd	Trentlin	25	30410	hyrule.are	fighting	65	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Aquamentus.	-	-
+1794141438	cmd	Trentlin	25	30410	hyrule.are	fighting	62	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch hits Aquamentus.	-	-
+1794141441	cmd	Trentlin	25	30410	hyrule.are	fighting	60	0	fight	nerve		You jab Aquamentus with wedged fingers, paralyzing a nerve. // Your nerve pinch injures Aquamentus.	-	-
+1794141444	cmd	Trentlin	25	30410	hyrule.are	standing	56	0	-	nerve		Who do you want to attack?	-	-
+1794141446	cmd	Trentlin	25	30410	hyrule.are	standing	56	0	-	get	key co	You get the Eagle's key from corpse of Aquamentus.	-	-
+1794141446	cmd	Trentlin	25	30410	hyrule.are	standing	56	0	-	look		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794141448	cmd	Trentlin	25	30411	hyrule.are	standing	56	0	-	east		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794141449	cmd	Trentlin	25	30413	hyrule.are	standing	56	0	-	north		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794141451	cmd	Trentlin	25	30413	hyrule.are	standing	56	0	-	unlock	east	There is a flash of light as you unlock the eagle.	-	-
+1794141452	cmd	Trentlin	25	30413	hyrule.are	standing	56	0	-	open	east	Ok.	-	-
+1794141453	cmd	Trentlin	25	30414	hyrule.are	standing	56	0	-	east		Level 1: Eagle's Golden Sanctum //   Smooth teal stone encloses this small, hushed sanctum, its walls inlaid // with a triangle within a triangle. A soft golden glow hangs in the air	-	+
+1794141454	cmd	Trentlin	25	30414	hyrule.are	standing	56	0	-	unlock	chest	*Click*	-	-
+1794141456	cmd	Trentlin	25	30414	hyrule.are	standing	56	0	-	open	chest	Ok.	-	-
+1794141457	cmd	Trentlin	25	30414	hyrule.are	standing	56	0	-	get	tri chest	You get the first Triforce shard from the Eagle's treasure chest.	-	-
+1794141458	cmd	Trentlin	25	30271	hyrule.are	standing	56	0	-	enter	light	You enter the Eagle's returning light // Your stomach flip flops. Everything goes black for a moment. // The Eagle's Gate	-	+
+1794141463	cmd	Trentlin	25	4207	dresden.are	standing	56	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
