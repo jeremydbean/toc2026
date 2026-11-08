@@ -17077,3 +17077,4 @@
 1794143658	state	Trentlin	26	4207	dresden.are	lvl=26 hp=629/629 mana=418/1189 mv=81/311 align=-187 exp=61710 coin=30615585 bank=15087744233 qp=2163 prac=6 train=1 stash=54/75 remorts=1
 1794143658	cmd	Trentlin	26	4207	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      26 | Class:        Monk | // | Played:     32 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
 1794143666	session	Trentlin	26	4207	dresden.are	quit	4039s	+1 levels	+4089 exp	-280390020 copper	69 kills	1 deaths	1 quests	1810 commands	11 refused	coin: loot 40p 32g 13s 8c, quests 2p 38g 86s 72c, spent 343p 60g	spent on: heal 343p 60g	exp: kills +4071, skilluse +114, flee -60, death -36
+1794157250	stall	-	0	0	-	260ms	slowest disaster_update 259ms	command - 0ms	0 players	0 more since
