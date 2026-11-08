@@ -15258,3 +15258,106 @@
 1794139642	cmd	Trentlin	25	4208	dresden.are	standing	60	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
 1794139645	cmd	Trentlin	25	4208	dresden.are	standing	78	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
 1794139648	cmd	Trentlin	25	4208	dresden.are	standing	97	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794139651	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794139654	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	help	fast healing	The fast healing skill improves wound healing rates, whether walking, resting, // or sleeping. It represents knowledge of healing herbs or just general // toughness and stamina.  Fast healing is checked every tick, and it is	-	+
+1794139671	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794139679	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	walkto	rakar	You set off for Rakar the weaponsmaster (City of Dresden), about 5 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794139683	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	practice	despair	But there is no one here to teach you!	-	-
+1794139684	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	practice	despair	But there is no one here to teach you!	-	-
+1794139685	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	practice		axe                  8%  dagger              75%  flail                6%   // mace                80%  polearm              3%  spear               75%   // sword                3%  whip                15%  bash                 1%  	-	+
+1794139692	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	look		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794139693	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	scan		the beastly fido                   -to the North. // Seraloi, the lost.                 -to the North. // the missionary of Devota           -to the West.	-	-
+1794139698	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	walkto	rakar	You are already at Rakar the weaponsmaster (City of Dresden).	-	-
+1794139700	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	look		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794139702	cmd	Trentlin	25	2405	dresden.are	standing	100	0	-	where	rakar	Rakar the weaponsmaster      Market Plaza.	-	-
+1794139704	cmd	Trentlin	25	2401	dresden.are	standing	100	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794139705	cmd	Trentlin	25	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794139706	cmd	Trentlin	25	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794139706	cmd	Trentlin	25	2485	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794139708	cmd	Trentlin	25	2485	dresden.are	standing	100	0	-	practice		axe                  8%  dagger              75%  flail                6%   // mace                80%  polearm              3%  spear               75%   // sword                3%  whip                15%  despair              1%  	-	+
+1794139710	cmd	Trentlin	25	2485	dresden.are	standing	100	0	-	practice	despair	You practice despair.	-	-
+1794139710	cmd	Trentlin	25	2485	dresden.are	standing	100	0	-	practice	despair	You are now learned at despair.	-	-
+1794139717	cmd	Trentlin	25	2485	dresden.are	standing	100	0	-	walkto	silent master	You set off for Silent Master (Palm of the Creator), about 22 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794139728	cmd	Trentlin	25	4803	dresden.are	standing	100	0	-	skills		Level  1: dagger              75%      hand to hand        85%       //           recall             100%       // Level  3: kick                79%      	-	+
+1794139733	state	Trentlin	25	4803	dresden.are	lvl=25 hp=606/606 mana=709/1076 mv=265/304 align=-332 exp=57621 coin=311005605 bank=15087744233 qp=2025 prac=21 train=4 stash=55/75 remorts=1
+1794139733	cmd	Trentlin	25	4803	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      25 | Class:        Monk | // | Played:     31 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794139736	cmd	Trentlin	25	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1794139737	cmd	Trentlin	25	4807	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     fists of fury      4     	-	+
+1794139740	cmd	Trentlin	25	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794139741	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1794139743	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1794139747	state	Trentlin	25	4806	dresden.are	lvl=25 hp=606/606 mana=721/1076 mv=278/304 align=-332 exp=57621 coin=311005605 bank=15087744233 qp=2025 prac=21 train=4 stash=55/75 remorts=1
+1794139747	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      25 | Class:        Monk | // | Played:     31 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794139751	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	gain	convert	The Silent Master helps you apply your practice to training	-	-
+1794139754	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	gain	enhanced	The Silent Master trains you in the art of enhanced damage.	-	-
+1794139758	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139759	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139759	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139760	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139760	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139761	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139761	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139762	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You practice enhanced damage.	-	-
+1794139762	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice	enhanced	You are now learned at enhanced damage.	-	-
+1794139764	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	practice		nerve damage        78%  hand to hand        85%  kick                79%   // dodge               77%  parry               78%  trip                77%   // enhanced damage     75%  	-	+
+1794139768	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1794139773	cmd	Trentlin	25	4806	dresden.are	standing	100	0	-	help	steel fist	'STEEL FIST' STEEL STEELFIST // Syntax: steel // By altering their body's chemistry, monks have the option of increasing the	-	+
+1794139783	cmd	Trentlin	25	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794139785	cmd	Trentlin	25	4805	dresden.are	standing	100	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1794139787	refused	Trentlin	25	4805	dresden.are	standing	100	0	-	(unknown)		Huh? Did you mean GAIN?	refusal:unknown-command	-
+1794139789	refused	Trentlin	25	4805	dresden.are	standing	100	0	-	(unknown)		Huh? Did you mean TRIP or TRAIN?	refusal:unknown-command	-
+1794139794	cmd	Trentlin	25	4805	dresden.are	standing	100	0	-	gain		You can't do that here.	-	-
+1794139795	cmd	Trentlin	25	4804	dresden.are	standing	100	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794139796	cmd	Trentlin	25	4808	dresden.are	standing	100	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1794139797	cmd	Trentlin	25	4804	dresden.are	standing	100	0	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794139798	cmd	Trentlin	25	4804	dresden.are	standing	100	0	-	sw		Alas, you cannot go that way.	-	-
+1794139800	cmd	Trentlin	25	4809	dresden.are	standing	100	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in	-	+
+1794139838	cmd	Trentlin	25	4801	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794139841	cmd	Trentlin	25	4800	dresden.are	standing	100	0	-	north		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1794139841	cmd	Trentlin	25	2437	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794139842	cmd	Trentlin	25	2436	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794139842	cmd	Trentlin	25	2435	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794139842	cmd	Trentlin	25	2434	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794139842	cmd	Trentlin	25	2433	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794139843	cmd	Trentlin	25	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794139843	cmd	Trentlin	25	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794139843	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794139843	cmd	Trentlin	25	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794139844	cmd	Trentlin	25	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794139844	cmd	Trentlin	25	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794139844	cmd	Trentlin	25	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794139844	cmd	Trentlin	25	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794139845	cmd	Trentlin	25	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794139845	cmd	Trentlin	25	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794139845	cmd	Trentlin	25	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794139845	cmd	Trentlin	25	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794139846	cmd	Trentlin	25	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794139846	cmd	Trentlin	25	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794139846	cmd	Trentlin	25	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794139846	cmd	Trentlin	25	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794139847	cmd	Trentlin	25	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794139847	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794139852	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	where	tektite	a red tektite                Grove of the Manji	-	-
+1794139860	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794139865	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	kill	red	Your punch MANGLES a red tektite! // Your punch misses a red tektite. // Your punch maims a red tektite!	-	-
+1794139877	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	inventory		You are carrying: //      an Eagle archer's bow //      a small key	-	+
+1794139880	cmd	Trentlin	25	30437	hyrule.are	standing	100	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794139882	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794139883	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794139890	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	get	ke	You get a small key.	-	-
+1794139891	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	kill	zo	Your punch maims a zol! // Your punch *** DEMOLISHES *** a zol! // A zol parries your attack.	-	-
+1794139895	cmd	Trentlin	25	30439	hyrule.are	standing	100	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794139897	cmd	Trentlin	25	30439	hyrule.are	standing	100	0	-	kill	z	Your punch DISEMBOWELS a zol! // A zol parries your attack.	-	-
+1794139904	cmd	Trentlin	25	30442	hyrule.are	standing	100	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794139907	cmd	Trentlin	25	30442	hyrule.are	standing	100	0	-	kill	dar	Your punch DISMEMBERS a red darknut! // You have become better at hand to hand! // Your punch *** DEVASTATES *** a red darknut!	-	-
+1794139922	cmd	Trentlin	25	30442	hyrule.are	standing	99	0	-	look		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794139924	cmd	Trentlin	25	30447	hyrule.are	standing	99	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794139929	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	open	east	It's locked.	-	-
+1794139932	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794139932	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794139934	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	open	east	Ok.	-	-
+1794139935	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	scan		a blade trap                       -to the East.	-	-
+1794139936	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794139943	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794139944	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	scan		Manhandla                          -to the East. // a red darknut                      -to the South. // a zol                              -to the West.	-	-
+1794139947	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
