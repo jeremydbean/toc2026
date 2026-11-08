@@ -29569,3 +29569,143 @@
 1794104168	cmd	Trentlin	23	30253	hyrule.are	standing	97	0	-	consider	pea	A peahat is about your level. // A peahat has about as many hit points as you. // Blow for blow, you would need about 4 rounds to bring a peahat down; it would need about 18 rounds for you.	-	+
 1794104171	cmd	Trentlin	23	30253	hyrule.are	standing	97	0	-	kill	pea	Your punch wounds a peahat. // Your punch MASSACRES a peahat!	-	-
 1794104177	cmd	Trentlin	23	30253	hyrule.are	fighting	92	0	fight	kick		Your kick scratches a peahat.	-	-
+1794104180	cmd	Trentlin	23	30253	hyrule.are	fighting	92	0	fight	kick		Your kick grazes a peahat.	-	-
+1794104183	cmd	Trentlin	23	30253	hyrule.are	fighting	86	0	fight	kick		Your kick grazes a peahat.	-	-
+1794104186	cmd	Trentlin	23	30253	hyrule.are	fighting	86	0	fight	kick		Your kick injures a peahat.	-	-
+1794104189	cmd	Trentlin	23	30253	hyrule.are	fighting	86	0	fight	kick		Your kick grazes a peahat.	-	-
+1794104191	cmd	Trentlin	23	30253	hyrule.are	fighting	87	0	fight	kick		Your kick scratches a peahat.	-	-
+1794104194	cmd	Trentlin	23	30253	hyrule.are	fighting	87	0	fight	kick		Your kick hits a peahat.	-	-
+1794104197	cmd	Trentlin	23	30253	hyrule.are	fighting	87	0	fight	kick		Your kick misses a peahat.	-	-
+1794104204	cmd	Trentlin	23	30253	hyrule.are	standing	87	0	-	look	in co	Corpse of a peahat contains: //      Nothing.	-	-
+1794104204	cmd	Trentlin	23	30253	hyrule.are	standing	87	0	-	sacrifice	co	The Gods give you 46 copper coins for your sacrifice.	-	-
+1794104206	cmd	Trentlin	23	30253	hyrule.are	standing	87	0	-	iron		You lost your concentration.	-	-
+1794104206	cmd	Trentlin	23	30253	hyrule.are	standing	87	0	-	scan		a Zola                             -to the South. // a red octorok                      -to the South.	-	-
+1794104208	cmd	Trentlin	23	30253	hyrule.are	standing	87	0	-	iron		You lost your concentration.	-	-
+1794104209	cmd	Trentlin	23	30253	hyrule.are	standing	87	0	-	iron		You lost your concentration.	-	-
+1794104210	cmd	Trentlin	23	30253	hyrule.are	standing	87	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794104217	cmd	Trentlin	23	30237	hyrule.are	standing	89	0	-	south		Shore Below the Snake //   The forest gives way to the western waters of Lake Hylia, glittering under // an open sky. A small island rises a short distance to the north, and a dark	-	+
+1794104217	cmd	Trentlin	23	30237	hyrule.are	standing	89	0	-	consider	zo	A Zola is about your level. // A Zola has about as many hit points as you. // Blow for blow, you would need about 4 rounds to bring a Zola down; it would need about 13 rounds for you.	-	+
+1794104218	cmd	Trentlin	23	30237	hyrule.are	standing	89	0	-	levitate		You slowly rise up off the ground.	-	-
+1794104221	cmd	Trentlin	23	30237	hyrule.are	standing	89	0	-	kill	zola	Your punch wounds a Zola. // A Zola dodges your attack. // A Zola dodges your attack.	-	-
+1794104225	cmd	Trentlin	23	30237	hyrule.are	fighting	89	0	fight	kick		Your kick wounds a Zola.	-	-
+1794104229	cmd	Trentlin	23	30237	hyrule.are	fighting	88	0	fight	kick		Your kick injures a Zola.	-	-
+1794104234	cmd	Trentlin	23	30237	hyrule.are	fighting	83	0	fight	kick		Your kick wounds a Zola.	-	-
+1794104237	cmd	Trentlin	23	30237	hyrule.are	fighting	80	0	fight	kick		Your kick hits a Zola.	-	-
+1794104240	cmd	Trentlin	23	30237	hyrule.are	fighting	80	0	fight	kick		Your kick scratches a Zola. // Suddenly startled, a Zola disappears south. // A Zola has fled!	-	-
+1794104244	cmd	Trentlin	23	30221	hyrule.are	standing	80	1	-	south		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy	-	+
+1794104244	cmd	Trentlin	23	30221	hyrule.are	standing	80	0	-	kill	zola	Your punch devastates a Zola! // Your punch MASSACRES a Zola!	-	-
+1794104254	cmd	Trentlin	23	30221	hyrule.are	standing	77	0	-	scan		a red octorok                      -to the North. // a red octorok                      -to the East. // a red octorok                      -to the East.	-	+
+1794104255	cmd	Trentlin	23	30221	hyrule.are	standing	77	0	-	look		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy	-	+
+1794104257	cmd	Trentlin	23	30221	hyrule.are	standing	77	0	-	look	zo	Reed fronds and river weed hang from the gill frills of this zora, and its // scales have a muddy brown cast from the streams and backwaters it favours. // It surfaces among the cattails without a sound, spits a ball of fire at the	-	+
+1794104260	cmd	Trentlin	23	30221	hyrule.are	standing	77	0	-	kill	zola	Your punch maims a Zola! // Your punch mauls a Zola.	-	-
+1794104263	cmd	Trentlin	23	30221	hyrule.are	fighting	77	0	fight	trip		Your trip misses a Zola.	-	-
+1794104271	cmd	Trentlin	23	30221	hyrule.are	fighting	78	0	fight	trip		Your trip misses a Zola.	-	-
+1794104276	cmd	Trentlin	23	30221	hyrule.are	standing	78	0	-	look		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy	-	+
+1794104278	cmd	Trentlin	23	30221	hyrule.are	standing	78	0	-	consider	oc	A red octorok is well below your level. // A red octorok has about a third of your hit points. // Blow for blow, you would need about 2 rounds to bring a red octorok down; it would need about 55 rounds for you.	-	+
+1794104280	cmd	Trentlin	23	30220	hyrule.are	standing	78	0	-	west		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter	-	+
+1794104281	cmd	Trentlin	23	30236	hyrule.are	standing	78	0	-	north		Forest River Ford //   A swift river splashes over a stony ford in the middle of the woods, cold // and clear. The banks are slick with mud and covered in wet prints, and a	-	+
+1794104282	cmd	Trentlin	23	30220	hyrule.are	standing	78	0	-	south		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter	-	+
+1794104283	cmd	Trentlin	23	30694	hyrule.are	standing	78	0	-	up		Simmering Herb Cellar //   Mist from the woods creeps down the steps and mingles with the steam of // simmering herbs, so that the cave seems full of a sour green fog. A pair of	-	+
+1794104283	cmd	Trentlin	23	30694	hyrule.are	standing	78	0	-	list		An old woman smelling of herbs looks you over for a royal seal. "Show me the Princess's letter first."	-	-
+1794104284	cmd	Trentlin	23	30220	hyrule.are	standing	78	0	-	down		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter	-	+
+1794104285	cmd	Trentlin	23	30236	hyrule.are	standing	78	0	-	north		Forest River Ford //   A swift river splashes over a stony ford in the middle of the woods, cold // and clear. The banks are slick with mud and covered in wet prints, and a	-	+
+1794104287	cmd	Trentlin	23	30236	hyrule.are	standing	78	0	-	consider	zo	A Zola is far above your level. // A Zola has several times your hit points. // Blow for blow, you would need about 13 rounds to bring a Zola down; it would need about 4 rounds for you.	-	+
+1794104294	cmd	Trentlin	23	30252	hyrule.are	standing	78	0	-	north		Riverside Cave //   A swift green river cuts through the woods here, its banks lined with reeds // and smooth grey stones. Across a stretch of grass a low cave mouth is set	-	+
+1794104295	cmd	Trentlin	23	30252	hyrule.are	standing	78	0	-	scan		an Armos knight                    -to the North. // a blue leever                      -to the North. // a Zola                             -to the South.	-	+
+1794104296	cmd	Trentlin	23	30252	hyrule.are	standing	78	0	-	consider	zo	A Zola is far above your level. // A Zola has several times your hit points. // Blow for blow, you would need about 13 rounds to bring a Zola down; it would need about 4 rounds for you.	-	+
+1794104299	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	down		The Riverbank Powder Store //   River damp creeps in at the mouth of this cave, so the goods are kept on // raised boards well away from the walls. A pair of fires burn at a careful	-	+
+1794104300	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	list		[Lv Price] Item // [ 8        80g] a quiver of arrows. // [ 1        20g] four bombs.	-	+
+1794104302	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	get	bomb	I see no bomb here.	-	-
+1794104302	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	get	bomb	I see no bomb here.	-	-
+1794104305	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	buy	bomb	You buy four bombs.	-	-
+1794104305	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	buy	bomb	You buy four bombs.	-	-
+1794104305	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	buy	bomb	Your bomb bag will not take four more: it holds 12, and you carry 10.	-	-
+1794104306	cmd	Trentlin	23	30680	hyrule.are	standing	78	0	-	buy	bomb	Your bomb bag will not take four more: it holds 12, and you carry 10.	-	-
+1794104307	cmd	Trentlin	23	30252	hyrule.are	standing	78	0	-	up		Riverside Cave //   A swift green river cuts through the woods here, its banks lined with reeds // and smooth grey stones. Across a stretch of grass a low cave mouth is set	-	+
+1794104311	cmd	Trentlin	23	30205	hyrule.are	standing	78	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794104315	cmd	Trentlin	23	30437	hyrule.are	standing	78	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794104315	cmd	Trentlin	23	30437	hyrule.are	standing	78	0	-	north		Alas, you cannot go that way.	-	-
+1794104315	cmd	Trentlin	23	30437	hyrule.are	standing	78	0	-	north		Alas, you cannot go that way.	-	-
+1794104317	cmd	Trentlin	23	30436	hyrule.are	standing	81	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794104317	cmd	Trentlin	23	30439	hyrule.are	standing	81	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794104318	cmd	Trentlin	23	30442	hyrule.are	standing	81	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794104318	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104319	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	north		The locked is closed.	-	-
+1794104319	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	north		The locked is closed.	-	-
+1794104323	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794104325	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	open	north	Ok.	-	-
+1794104326	cmd	Trentlin	23	30450	hyrule.are	standing	81	0	-	north		Level 3: Manji Hall of Grinding Grooves //   Twin grooves cut across this narrow chamber of green stone, and spiked // blades rest at their ends against the walls, poised to slide at the first	-	+
+1794104328	cmd	Trentlin	23	30450	hyrule.are	standing	81	0	-	open	north	Ok.	-	-
+1794104328	cmd	Trentlin	23	30453	hyrule.are	standing	81	0	-	north		Level 3: Manji Hearth Chamber //   Green stone gives way here to a floor of fitted slate, swept clean in a // wide square around two braziers set against the north wall. The fires	-	+
+1794104331	cmd	Trentlin	23	30453	hyrule.are	standing	81	0	-	open	west	Ok.	-	-
+1794104331	cmd	Trentlin	23	30452	hyrule.are	standing	81	0	-	west		Level 3: Northwest Roost //   Shadows crowd the high corners of this quiet chamber, and the musk of // roosting bats hangs thick in the air. Droppings stain the tiles in long	-	+
+1794104337	cmd	Trentlin	23	30452	hyrule.are	standing	81	0	-	get	ke	You get a small key.	-	-
+1794104338	cmd	Trentlin	23	30453	hyrule.are	standing	81	0	-	east		Level 3: Manji Hearth Chamber //   Green stone gives way here to a floor of fitted slate, swept clean in a // wide square around two braziers set against the north wall. The fires	-	+
+1794104339	cmd	Trentlin	23	30450	hyrule.are	standing	81	0	-	south		Level 3: Manji Hall of Grinding Grooves //   Twin grooves cut across this narrow chamber of green stone, and spiked // blades rest at their ends against the walls, poised to slide at the first	-	+
+1794104340	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	south		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104340	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	east		The locked is closed.	-	-
+1794104344	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794104346	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	open	east	Ok.	-	-
+1794104346	cmd	Trentlin	23	30448	hyrule.are	standing	81	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794104355	cmd	Trentlin	23	30448	hyrule.are	standing	81	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794104355	cmd	Trentlin	23	30448	hyrule.are	standing	81	0	-	east		A chasm far too wide for a thrown stick lies before Manhandla's door, // and its lever is on the far side.  Only the Magical Boomerang, which // Level 2's goriyas carry, flies far enough to trip it.	-	-
+1794104362	cmd	Trentlin	23	30448	hyrule.are	standing	81	0	-	inventory		You are carrying: //      (Humming) a great war helmet //      a crystal key	-	+
+1794104369	cmd	Trentlin	23	30447	hyrule.are	standing	81	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104370	cmd	Trentlin	23	30442	hyrule.are	standing	81	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794104370	cmd	Trentlin	23	30439	hyrule.are	standing	81	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794104371	cmd	Trentlin	23	30436	hyrule.are	standing	81	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794104371	cmd	Trentlin	23	30436	hyrule.are	standing	81	0	-	south		Alas, you cannot go that way.	-	-
+1794104371	cmd	Trentlin	23	30436	hyrule.are	standing	81	0	-	south		Alas, you cannot go that way.	-	-
+1794104372	cmd	Trentlin	23	30437	hyrule.are	standing	81	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794104373	cmd	Trentlin	23	30205	hyrule.are	standing	81	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794104377	cmd	Trentlin	23	30276	hyrule.are	standing	81	0	-	play	recorder 2	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Moon Gate	-	+
+1794104381	cmd	Trentlin	23	30418	hyrule.are	standing	84	0	-	down		Level 2: Crescent Gate //   Pale blue stone surrounds this entrance hall, its walls carved with // crescent moons worn soft by time and a pair of stone dragons crouched	-	+
+1794104382	cmd	Trentlin	23	30418	hyrule.are	standing	84	0	-	levitate		You slowly rise up off the ground.	-	-
+1794104383	cmd	Trentlin	23	30421	hyrule.are	standing	84	0	-	north		Level 2: Blue Antechamber //   Stone blocks stand in two short rows across this chamber, and the blue // walls sweat a faint chill. Shed scales gleam between the floor tiles like	-	+
+1794104384	cmd	Trentlin	23	30421	hyrule.are	standing	84	0	-	north		Alas, you cannot go that way.	-	-
+1794104385	cmd	Trentlin	23	30422	hyrule.are	standing	84	0	-	east		Level 2: Moonstone Crossroads //   Wide and echoing, this chamber sits where several halls meet, its tiles // worn into shallow paths by the passage of countless scaled bellies. A	-	+
+1794104386	cmd	Trentlin	23	30422	hyrule.are	standing	84	0	-	east		The locked is closed.	-	-
+1794104387	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	north		Level 2: Gouged Hall //   Curving gouges mark the walls of this chamber, and the floor is littered // with chips of blue stone knocked loose by boomerangs hurled hard and often	-	+
+1794104390	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	iron		Your skin hardens.	-	-
+1794104398	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	kill	go	Your punch MANGLES a red goriya! // Your punch devastates a red goriya! // Your punch mauls a red goriya.	-	-
+1794104401	cmd	Trentlin	23	30424	hyrule.are	fighting	84	0	fight	trip		You trip a red goriya and a red goriya goes down! // Your trip scratches a red goriya.	-	-
+1794104409	cmd	Trentlin	23	30424	hyrule.are	standing	84	3	-	look	in co	Corpse of a red goriya contains: //      Nothing.	-	-
+1794104410	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	look		Level 2: Gouged Hall //   Curving gouges mark the walls of this chamber, and the floor is littered // with chips of blue stone knocked loose by boomerangs hurled hard and often	-	+
+1794104412	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	open	east	It's locked.	-	-
+1794104413	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	east		The locked is closed.	-	-
+1794104415	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	unlock	east	You lack the key.	-	-
+1794104420	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	open	north	Ok.	-	-
+1794104420	cmd	Trentlin	23	30426	hyrule.are	standing	84	0	-	north		Level 2: Long Hall of the Moon //   This chamber is part of the long north-south spine of the dungeon, its blue // walls rising unbroken to a shadowed vault carved with the phases of the	-	+
+1794104422	cmd	Trentlin	23	30427	hyrule.are	standing	84	0	-	east		Level 2: Eastern Hall of Cuts //   Deep, curving cuts score the walls of this room, sharper and longer than // any wooden boomerang could make, and a scatter of broken masonry lies near	-	+
+1794104423	cmd	Trentlin	23	30427	hyrule.are	standing	84	0	-	kill	g	Your punch decimates a blue goriya! // Your punch MUTILATES a blue goriya!	-	-
+1794104429	cmd	Trentlin	23	30427	hyrule.are	fighting	84	0	fight	trip		You trip a blue goriya and a blue goriya goes down! // Your trip scratches a blue goriya.	-	-
+1794104434	cmd	Trentlin	23	30427	hyrule.are	standing	84	0	-	trip		But you aren't fighting anyone!	-	-
+1794104436	cmd	Trentlin	23	30427	hyrule.are	standing	84	0	-	look	in cor	Corpse of a blue goriya contains: //      Nothing.	-	-
+1794104437	cmd	Trentlin	23	30427	hyrule.are	standing	84	0	-	get	boom	You get the Magical Boomerang.	-	-
+1794104438	cmd	Trentlin	23	30426	hyrule.are	standing	84	0	-	west		Level 2: Long Hall of the Moon //   This chamber is part of the long north-south spine of the dungeon, its blue // walls rising unbroken to a shadowed vault carved with the phases of the	-	+
+1794104438	cmd	Trentlin	23	30424	hyrule.are	standing	84	0	-	south		Level 2: Gouged Hall //   Curving gouges mark the walls of this chamber, and the floor is littered // with chips of blue stone knocked loose by boomerangs hurled hard and often	-	+
+1794104438	cmd	Trentlin	23	30422	hyrule.are	standing	84	0	-	south		Level 2: Moonstone Crossroads //   Wide and echoing, this chamber sits where several halls meet, its tiles // worn into shallow paths by the passage of countless scaled bellies. A	-	+
+1794104438	cmd	Trentlin	23	30419	hyrule.are	standing	84	0	-	south		Level 2: Shed Skin Chamber //   Papery snake skins lie curled in the corners of this blue-walled chamber, // and thin sinuous tracks wind through the dust, running straight and fast	-	+
+1794104440	cmd	Trentlin	23	30418	hyrule.are	standing	84	1	-	west		Level 2: Crescent Gate //   Pale blue stone surrounds this entrance hall, its walls carved with // crescent moons worn soft by time and a pair of stone dragons crouched	-	+
+1794104440	cmd	Trentlin	23	30276	hyrule.are	standing	84	0	-	up		The Moon Gate //   A stone entrance stands near the water's edge, its doorway crowned with a // carved crescent moon and its steps worn smooth by the lake's damp. Air	-	+
+1794104444	cmd	Trentlin	23	30205	hyrule.are	standing	84	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794104447	cmd	Trentlin	23	30437	hyrule.are	standing	84	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794104448	cmd	Trentlin	23	30437	hyrule.are	standing	84	0	-	north		Alas, you cannot go that way.	-	-
+1794104449	cmd	Trentlin	23	30436	hyrule.are	standing	84	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794104449	cmd	Trentlin	23	30439	hyrule.are	standing	84	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794104449	cmd	Trentlin	23	30442	hyrule.are	standing	84	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794104450	cmd	Trentlin	23	30447	hyrule.are	standing	84	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104450	cmd	Trentlin	23	30450	hyrule.are	standing	84	0	-	north		Level 3: Manji Hall of Grinding Grooves //   Twin grooves cut across this narrow chamber of green stone, and spiked // blades rest at their ends against the walls, poised to slide at the first	-	+
+1794104451	cmd	Trentlin	23	30450	hyrule.are	standing	84	0	-	east		Alas, you cannot go that way.	-	-
+1794104451	cmd	Trentlin	23	30447	hyrule.are	standing	84	0	-	south		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104452	cmd	Trentlin	23	30448	hyrule.are	standing	84	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794104452	cmd	Trentlin	23	30449	hyrule.are	standing	84	0	-	east		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794104455	cmd	Trentlin	23	30449	hyrule.are	standing	84	0	-	consider	man	Manhandla is about your level. // Manhandla has many times your hit points. // Blow for blow, you would need about 35 rounds to bring Manhandla down; it would need about 7 rounds for you.	-	+
+1794104457	cmd	Trentlin	23	30449	hyrule.are	standing	84	0	-	bomb	man	You light a bomb and toss it at Manhandla. It goes off with a roar! // You devastate Manhandla!	-	-
+1794104460	cmd	Trentlin	23	30449	hyrule.are	fighting	75	0	fight	bomb	man	You light a bomb and toss it at Manhandla. It goes off with a roar! // You maim Manhandla!	-	-
+1794104463	cmd	Trentlin	23	30448	hyrule.are	fighting	52	0	fight	flee		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794104464	cmd	Trentlin	23	30448	hyrule.are	standing	52	0	-	flee		You aren't fighting anyone.	-	-
+1794104464	cmd	Trentlin	23	30448	hyrule.are	standing	52	0	-	flee		You aren't fighting anyone.	-	-
+1794104472	cmd	Trentlin	23	30448	hyrule.are	standing	52	0	-	sleep		You go to sleep.	-	-
+1794104473	cmd	Trentlin	23	30448	hyrule.are	sleeping	52	0	-	group		Trentlin's group: // [23 Monk ] Trentlin          303/ 579 hp   68/1019 mana  195/ 290 mv 54872 xp	-	-
+1794104475	cmd	Trentlin	23	30448	hyrule.are	sleeping	52	0	-	inventory		You are carrying: //      the Magical Boomerang //      (Humming) a great war helmet	-	+
