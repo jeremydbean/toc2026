@@ -279434,3 +279434,291 @@ Sun Nov  8 13:07:38 2026 :: Log Trentlin [4208]: gold -500
 Sun Nov  8 13:07:45 2026 :: Log Trentlin [4208]: heal refrehs
 Sun Nov  8 13:07:45 2026 :: Log Trentlin [4208]: gold -50
 Sun Nov  8 13:07:52 2026 :: Log Trentlin [4208]: affects off: iron skin
+Sun Nov  8 13:08:03 2026 :: Log Trentlin [4208]: iron
+Sun Nov  8 13:08:03 2026 :: Treasure goblin: vanished from room 8317 (Beach, marsh.are) (drifting).
+Sun Nov  8 13:08:17 2026 :: Log Trentlin [4208]: stash get might
+Sun Nov  8 13:08:17 2026 :: Log Trentlin [4208]: withdrew the Sceptre of Might (vnum 9321) from the stash
+Sun Nov  8 13:08:19 2026 :: Log Trentlin [4208]: comp scep
+Sun Nov  8 13:08:21 2026 :: Log Trentlin [4208]: wear scep
+Sun Nov  8 13:08:24 2026 :: Log Trentlin [4208]: stash put ball
+Sun Nov  8 13:08:24 2026 :: Log Trentlin [4208]: stashed a *twinkling* ball of light (vnum 24002)
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [4208]: east
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [4207]: east
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [4202]: east
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [4201]: north
+Sun Nov  8 13:08:27 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Sun Nov  8 13:08:28 2026 :: Log Trentlin [2433]: west
+Sun Nov  8 13:08:28 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov  8 13:08:28 2026 :: Log Trentlin [2434]: west
+Sun Nov  8 13:08:28 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov  8 13:08:28 2026 :: Log Trentlin [2435]: west
+Sun Nov  8 13:08:28 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov  8 13:08:28 2026 :: Log Trentlin [2436]: (refused) stop
+Sun Nov  8 13:08:29 2026 :: Log Trentlin [2436]: west
+Sun Nov  8 13:08:29 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov  8 13:08:29 2026 :: Log Trentlin [2437]: west
+Sun Nov  8 13:08:29 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov  8 13:08:29 2026 :: Log Trentlin [2438]: open west
+Sun Nov  8 13:08:29 2026 :: Log Trentlin [2438]: west
+Sun Nov  8 13:08:29 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov  8 13:08:30 2026 :: Log Trentlin [2439]: (refused) stop walk
+Sun Nov  8 13:08:36 2026 :: Log Trentlin [2439]: north
+Sun Nov  8 13:08:36 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Sun Nov  8 13:08:36 2026 :: Log Trentlin [3900]: north
+Sun Nov  8 13:08:36 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Sun Nov  8 13:08:36 2026 :: Log Trentlin [3901]: north
+Sun Nov  8 13:08:36 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [3902]: east
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [3903]: east
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [3904]: north
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [300]: north
+Sun Nov  8 13:08:37 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [315]: north
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [320]: east
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [305]: arrived (Path in the plains) from 320
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [305]: north
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [306]: arrived (Path in the foothills) from 305
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [306]: north
+Sun Nov  8 13:08:38 2026 :: Log Trentlin [326]: arrived (The pool in the foothills) from 306
+Sun Nov  8 13:08:39 2026 :: Log Trentlin [326]: east
+Sun Nov  8 13:08:39 2026 :: Log Trentlin [309]: arrived (Path in the foothills) from 326
+Sun Nov  8 13:08:39 2026 :: Log Trentlin [309]: east
+Sun Nov  8 13:08:39 2026 :: Log Trentlin [310]: arrived (Path in the foothills) from 309
+Sun Nov  8 13:08:39 2026 :: Log Trentlin [310]: (refused) stop walk
+Sun Nov  8 13:08:39 2026 :: Log Trentlin [310]: north
+Sun Nov  8 13:08:39 2026 :: Log Trentlin [327]: arrived (The foothills) from 310
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [327]: east
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [313]: arrived (Road to Ofcol) from 327
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [313]: north
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [314]: arrived (Road to Ofcol) from 313
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [314]: north
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [52]: arrived (Outside Ofcol) from 314
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [52]: north
+Sun Nov  8 13:08:40 2026 :: Log Trentlin [5550]: arrived (Village street) from 52
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [5550]: north
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [5551]: arrived (Village street) from 5550
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [5551]: east
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [5553]: arrived (The small alley) from 5551
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [5553]: east
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [601]: arrived (The Big Intersection) from 5553
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [601]: east
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [666]: arrived (Raff Way) from 601
+Sun Nov  8 13:08:41 2026 :: Log Trentlin [666]: affects off: levitate
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [666]: east
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [667]: arrived (Raff Way) from 666
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [667]: east
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [699]: arrived (Outside the Entrance to the Golden Citadel) from 667
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [699]: east
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [698]: arrived (Inside the Entrance to the Golden Citadel) from 699
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [698]: east
+Sun Nov  8 13:08:42 2026 :: Log Trentlin [679]: arrived (A Hallway of the Golden Citadel) from 698
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [679]: east
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [671]: arrived (The Anteroom to the Temple of Ofcol) from 679
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [671]: east
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [669]: arrived (The Temple of Ofcol) from 671
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [669]: south
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [673]: arrived (The Anteroom to the Temple of Ofcol) from 669
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [673]: up
+Sun Nov  8 13:08:43 2026 :: Log Trentlin [690]: arrived (An Upper Chamber of the Golden Citadel) from 673
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [690]: up
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [695]: arrived (A Top Chamber of the Golden Citadel) from 690
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [695]: up
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [7914]: arrived (On the Huge Chain) from 695
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [7914]: up
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [7916]: arrived (On the Great Chain of Naris) from 7914
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [7916]: up
+Sun Nov  8 13:08:44 2026 :: Log Trentlin [7918]: arrived (The Mighty Chain of Naris) from 7916
+Sun Nov  8 13:08:45 2026 :: Log Trentlin [7918]: up
+Sun Nov  8 13:08:45 2026 :: Log Trentlin [7900]: arrived (Outside Redferne's residence) from 7918
+Sun Nov  8 13:08:45 2026 :: Log Trentlin [7900]: south
+Sun Nov  8 13:08:47 2026 :: Log Trentlin [7900]: levitate
+Sun Nov  8 13:08:49 2026 :: Log Trentlin [7900]: open south
+Sun Nov  8 13:08:49 2026 :: Log Trentlin [7900]: south
+Sun Nov  8 13:08:49 2026 :: Log Trentlin [9101]: arrived (A fluffy white cloud.) from 7900
+Sun Nov  8 13:08:51 2026 :: Log Trentlin [9101]: u
+Sun Nov  8 13:08:51 2026 :: Log Trentlin [9102]: arrived (A fluffy white cloud.) from 9101
+Sun Nov  8 13:08:53 2026 :: Log Trentlin [9102]: sco
+Sun Nov  8 13:08:55 2026 :: Log Trentlin [9102]: nerve
+Sun Nov  8 13:09:00 2026 :: Log Trentlin [9102]: nerve
+Sun Nov  8 13:09:04 2026 :: Log Trentlin [9102]: killed the screaming, filthy harpy
+Sun Nov  8 13:09:04 2026 :: Log Trentlin [9102]: coin +1 platinum
+Sun Nov  8 13:09:04 2026 :: Log Trentlin [9102]: coin +7 silver
+Sun Nov  8 13:09:04 2026 :: Log Trentlin [9102]: coin +10 copper
+Sun Nov  8 13:09:04 2026 :: Log Trentlin [9102]: coin +4 gold
+Sun Nov  8 13:09:08 2026 :: Log Trentlin [9102]: nerve
+Sun Nov  8 13:09:12 2026 :: Log Trentlin [9102]: nerve
+Sun Nov  8 13:09:15 2026 :: Log Trentlin [9102]: nerve
+Sun Nov  8 13:09:16 2026 :: Log Trentlin [9102]: killed the screaming, filthy harpy
+Sun Nov  8 13:09:16 2026 :: Log Trentlin [9102]: coin +1 platinum
+Sun Nov  8 13:09:16 2026 :: Log Trentlin [9102]: coin +7 silver
+Sun Nov  8 13:09:16 2026 :: Log Trentlin [9102]: coin +10 copper
+Sun Nov  8 13:09:16 2026 :: Log Trentlin [9102]: coin +4 gold
+Sun Nov  8 13:09:19 2026 :: Log Trentlin [9102]: sca
+Sun Nov  8 13:09:21 2026 :: Log Trentlin [9102]: l
+Sun Nov  8 13:09:22 2026 :: Log Trentlin [9102]: e
+Sun Nov  8 13:09:22 2026 :: Log Trentlin [9103]: arrived (A fluffy white cloud.) from 9102
+Sun Nov  8 13:09:22 2026 :: Log Trentlin [9103]: sca
+Sun Nov  8 13:09:23 2026 :: Log Trentlin [9103]: n
+Sun Nov  8 13:09:23 2026 :: Log Trentlin [9128]: arrived (A fluffy white cloud.) from 9103
+Sun Nov  8 13:09:24 2026 :: Log Trentlin [9128]: sca
+Sun Nov  8 13:09:25 2026 :: Log Trentlin [9128]: d
+Sun Nov  8 13:09:25 2026 :: Log Trentlin [9127]: arrived (A fluffy white cloud.) from 9128
+Sun Nov  8 13:09:28 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:32 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:36 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:39 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:40 2026 :: Log Trentlin [9127]: killed the screaming, filthy harpy
+Sun Nov  8 13:09:40 2026 :: Log Trentlin [9127]: coin +1 platinum
+Sun Nov  8 13:09:40 2026 :: Log Trentlin [9127]: coin +7 silver
+Sun Nov  8 13:09:40 2026 :: Log Trentlin [9127]: coin +10 copper
+Sun Nov  8 13:09:40 2026 :: Log Trentlin [9127]: coin +4 gold
+Sun Nov  8 13:09:42 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:45 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:47 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:51 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:54 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:55 2026 :: Log Trentlin [9127]: killed the screaming, filthy harpy
+Sun Nov  8 13:09:55 2026 :: Log Trentlin [9127]: coin +1 platinum
+Sun Nov  8 13:09:55 2026 :: Log Trentlin [9127]: coin +7 silver
+Sun Nov  8 13:09:55 2026 :: Log Trentlin [9127]: coin +10 copper
+Sun Nov  8 13:09:55 2026 :: Log Trentlin [9127]: coin +4 gold
+Sun Nov  8 13:09:56 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:09:59 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:10:02 2026 :: Log Trentlin [9127]: nerve
+Sun Nov  8 13:10:05 2026 :: Log Trentlin [9127]: kick
+Sun Nov  8 13:10:08 2026 :: Log Trentlin [9127]: kick
+Sun Nov  8 13:10:08 2026 :: Log Trentlin [9127]: affects off: iron skin
+Sun Nov  8 13:10:10 2026 :: Log Trentlin [9127]: killed the screaming, filthy harpy
+Sun Nov  8 13:10:10 2026 :: Log Trentlin [9127]: coin +1 platinum
+Sun Nov  8 13:10:10 2026 :: Log Trentlin [9127]: coin +7 silver
+Sun Nov  8 13:10:10 2026 :: Log Trentlin [9127]: coin +10 copper
+Sun Nov  8 13:10:10 2026 :: Log Trentlin [9127]: coin +4 gold
+Sun Nov  8 13:10:13 2026 :: Log Trentlin [9127]: sca
+Sun Nov  8 13:10:14 2026 :: Log Trentlin [9127]: iron
+Sun Nov  8 13:10:15 2026 :: Log Trentlin [9127]: iron
+Sun Nov  8 13:10:16 2026 :: Log Trentlin [9127]: iron
+Sun Nov  8 13:10:23 2026 :: Log Trentlin [9127]: l
+Sun Nov  8 13:10:24 2026 :: Log Trentlin [9127]: e
+Sun Nov  8 13:10:24 2026 :: Log Trentlin [9126]: arrived (A fluffy white cloud.) from 9127
+Sun Nov  8 13:10:24 2026 :: Log Trentlin [9126]: sca
+Sun Nov  8 13:10:25 2026 :: Log Trentlin [9126]: n
+Sun Nov  8 13:10:25 2026 :: Log Trentlin [9131]: arrived (Happy little cloud.) from 9126
+Sun Nov  8 13:10:27 2026 :: Log Trentlin [9131]: k h
+Sun Nov  8 13:10:29 2026 :: Log Trentlin [9131]: nerve
+Sun Nov  8 13:10:33 2026 :: Log Trentlin [9131]: nerve
+Sun Nov  8 13:10:34 2026 :: Log Trentlin [9131]: killed the screaming, filthy harpy
+Sun Nov  8 13:10:34 2026 :: Log Trentlin [9131]: coin +1 platinum
+Sun Nov  8 13:10:34 2026 :: Log Trentlin [9131]: coin +7 silver
+Sun Nov  8 13:10:34 2026 :: Log Trentlin [9131]: coin +10 copper
+Sun Nov  8 13:10:34 2026 :: Log Trentlin [9131]: coin +4 gold
+Sun Nov  8 13:10:36 2026 :: Log Trentlin [9131]: sca
+Sun Nov  8 13:10:38 2026 :: Log Trentlin [9131]: sco
+Sun Nov  8 13:10:39 2026 :: Log Trentlin [9131]: l
+Sun Nov  8 13:10:40 2026 :: Log Trentlin [9131]: n
+Sun Nov  8 13:10:40 2026 :: Log Trentlin [9136]: arrived (Snowy, white cloud.) from 9131
+Sun Nov  8 13:10:41 2026 :: Log Trentlin [9136]: sca
+Sun Nov  8 13:10:42 2026 :: Log Trentlin [9136]: n
+Sun Nov  8 13:10:42 2026 :: Log Trentlin [9135]: arrived (Doc-like little cloud.) from 9136
+Sun Nov  8 13:10:43 2026 :: Log Trentlin [9135]: k h
+Sun Nov  8 13:10:44 2026 :: Log Trentlin [9135]: kick
+Sun Nov  8 13:10:47 2026 :: Log Trentlin [9135]: kick
+Sun Nov  8 13:10:50 2026 :: Log Trentlin [9135]: kick
+Sun Nov  8 13:10:55 2026 :: Log Trentlin [9135]: killed the screaming, filthy harpy
+Sun Nov  8 13:10:55 2026 :: Log Trentlin [9135]: coin +1 platinum
+Sun Nov  8 13:10:55 2026 :: Log Trentlin [9135]: coin +7 silver
+Sun Nov  8 13:10:55 2026 :: Log Trentlin [9135]: coin +10 copper
+Sun Nov  8 13:10:55 2026 :: Log Trentlin [9135]: coin +4 gold
+Sun Nov  8 13:10:56 2026 :: Log Trentlin [9135]: w
+Sun Nov  8 13:10:56 2026 :: Log Trentlin [9134]: arrived (Dopey little cloud.) from 9135
+Sun Nov  8 13:10:57 2026 :: Log Trentlin [9134]: w
+Sun Nov  8 13:10:57 2026 :: Log Trentlin [9133]: arrived (Sneezing little cloud.) from 9134
+Sun Nov  8 13:11:01 2026 :: Log Trentlin [9133]: kick
+Sun Nov  8 13:11:03 2026 :: Log Trentlin [9133]: affects off: levitate
+Sun Nov  8 13:11:05 2026 :: Log Trentlin [9133]: kick
+Sun Nov  8 13:11:11 2026 :: Log Trentlin [9133]: killed the screaming, filthy harpy
+Sun Nov  8 13:11:11 2026 :: Log Trentlin [9133]: coin +1 platinum
+Sun Nov  8 13:11:11 2026 :: Log Trentlin [9133]: coin +7 silver
+Sun Nov  8 13:11:11 2026 :: Log Trentlin [9133]: coin +10 copper
+Sun Nov  8 13:11:11 2026 :: Log Trentlin [9133]: coin +4 gold
+Sun Nov  8 13:11:13 2026 :: Log Trentlin [9133]: levitate
+Sun Nov  8 13:11:15 2026 :: Log Trentlin [9133]: sca
+Sun Nov  8 13:11:16 2026 :: Log Trentlin [9133]: n
+Sun Nov  8 13:11:16 2026 :: Log Trentlin [9145]: arrived (Raging hurricane.) from 9133
+Sun Nov  8 13:11:17 2026 :: Log Trentlin [9145]: k h
+Sun Nov  8 13:11:19 2026 :: Log Trentlin [9145]: kick
+Sun Nov  8 13:11:23 2026 :: Log Trentlin [9145]: killed the screaming, filthy harpy
+Sun Nov  8 13:11:23 2026 :: Log Trentlin [9145]: coin +1 platinum
+Sun Nov  8 13:11:23 2026 :: Log Trentlin [9145]: coin +7 silver
+Sun Nov  8 13:11:23 2026 :: Log Trentlin [9145]: coin +10 copper
+Sun Nov  8 13:11:23 2026 :: Log Trentlin [9145]: coin +4 gold
+Sun Nov  8 13:11:24 2026 :: Log Trentlin [9145]: sca
+Sun Nov  8 13:11:25 2026 :: Log Trentlin [9145]: n
+Sun Nov  8 13:11:25 2026 :: Log Trentlin [9150]: arrived (Raging hurricane.) from 9145
+Sun Nov  8 13:11:26 2026 :: Log Trentlin [9150]: n
+Sun Nov  8 13:11:27 2026 :: Log Trentlin [9150]: kick
+Sun Nov  8 13:11:36 2026 :: Log Trentlin [9150]: kick
+Sun Nov  8 13:11:39 2026 :: Log Trentlin [9150]: kick
+Sun Nov  8 13:11:41 2026 :: Log Trentlin [9150]: killed the screaming, filthy harpy
+Sun Nov  8 13:11:41 2026 :: Log Trentlin [9150]: coin +1 platinum
+Sun Nov  8 13:11:41 2026 :: Log Trentlin [9150]: coin +7 silver
+Sun Nov  8 13:11:41 2026 :: Log Trentlin [9150]: coin +10 copper
+Sun Nov  8 13:11:41 2026 :: Log Trentlin [9150]: coin +4 gold
+Sun Nov  8 13:11:43 2026 :: Log Trentlin [9150]: sca
+Sun Nov  8 13:11:44 2026 :: Log Trentlin [9150]: d
+Sun Nov  8 13:11:44 2026 :: Log Trentlin [9149]: arrived (Raging hurricane.) from 9150
+Sun Nov  8 13:11:46 2026 :: Log Trentlin [9149]: kick
+Sun Nov  8 13:11:51 2026 :: Log Trentlin [9149]: kick
+Sun Nov  8 13:11:55 2026 :: Log Trentlin [9149]: kick
+Sun Nov  8 13:12:00 2026 :: Log Trentlin [9149]: affects off: iron skin
+Sun Nov  8 13:12:02 2026 :: Log Trentlin [9149]: killed the screaming, filthy harpy
+Sun Nov  8 13:12:02 2026 :: Log Trentlin [9149]: coin +1 platinum
+Sun Nov  8 13:12:02 2026 :: Log Trentlin [9149]: coin +7 silver
+Sun Nov  8 13:12:02 2026 :: Log Trentlin [9149]: coin +10 copper
+Sun Nov  8 13:12:02 2026 :: Log Trentlin [9149]: coin +4 gold
+Sun Nov  8 13:12:02 2026 :: Log Trentlin [9149]: kick
+Sun Nov  8 13:12:04 2026 :: Log Trentlin [9149]: iron
+Sun Nov  8 13:12:11 2026 :: Log Trentlin [9149]: sca
+Sun Nov  8 13:12:12 2026 :: Log Trentlin [9149]: s
+Sun Nov  8 13:12:12 2026 :: Log Trentlin [9152]: arrived (Raging hurricane.) from 9149
+Sun Nov  8 13:12:14 2026 :: Log Trentlin [9152]: kick
+Sun Nov  8 13:12:21 2026 :: Log Trentlin [9152]: kick
+Sun Nov  8 13:12:26 2026 :: Log Trentlin [9152]: kick
+Sun Nov  8 13:12:29 2026 :: Log Trentlin [9152]: killed the screaming, filthy harpy
+Sun Nov  8 13:12:29 2026 :: Log Trentlin [9152]: coin +1 platinum
+Sun Nov  8 13:12:29 2026 :: Log Trentlin [9152]: coin +7 silver
+Sun Nov  8 13:12:29 2026 :: Log Trentlin [9152]: coin +10 copper
+Sun Nov  8 13:12:29 2026 :: Log Trentlin [9152]: coin +4 gold
+Sun Nov  8 13:12:30 2026 :: Log Trentlin [9152]: e
+Sun Nov  8 13:12:30 2026 :: Log Trentlin [9151]: arrived (Raging hurricane.) from 9152
+Sun Nov  8 13:12:33 2026 :: Log Trentlin [9151]: k h
+Sun Nov  8 13:12:36 2026 :: Log Trentlin [9151]: kick
+Sun Nov  8 13:12:41 2026 :: Log Trentlin [9151]: killed the screaming, filthy harpy
+Sun Nov  8 13:12:41 2026 :: Log Trentlin [9151]: coin +1 platinum
+Sun Nov  8 13:12:41 2026 :: Log Trentlin [9151]: coin +7 silver
+Sun Nov  8 13:12:41 2026 :: Log Trentlin [9151]: coin +10 copper
+Sun Nov  8 13:12:41 2026 :: Log Trentlin [9151]: coin +4 gold
+Sun Nov  8 13:12:42 2026 :: Log Trentlin [9151]: u
+Sun Nov  8 13:12:42 2026 :: Log Trentlin [9150]: arrived (Raging hurricane.) from 9151
+Sun Nov  8 13:12:44 2026 :: Log Trentlin [9150]: w
+Sun Nov  8 13:12:44 2026 :: Log Trentlin [9145]: arrived (Raging hurricane.) from 9150
+Sun Nov  8 13:12:45 2026 :: Log Trentlin [9145]: s
+Sun Nov  8 13:12:45 2026 :: Log Trentlin [9133]: arrived (Sneezing little cloud.) from 9145
+Sun Nov  8 13:12:46 2026 :: Log Trentlin [9133]: w
+Sun Nov  8 13:12:46 2026 :: Log Trentlin [9143]: arrived (Cirrus maximus cloud.) from 9133
+Sun Nov  8 13:12:47 2026 :: Log Trentlin [9143]: s
+Sun Nov  8 13:12:47 2026 :: Log Trentlin [9142]: arrived (Suspicious little raincloud.) from 9143
+Sun Nov  8 13:12:48 2026 :: Log Trentlin [9142]: e
+Sun Nov  8 13:12:48 2026 :: Log Trentlin [9132]: arrived (Bashful little cloud.) from 9142
+Sun Nov  8 13:12:49 2026 :: Log Trentlin [9132]: s
+Sun Nov  8 13:12:49 2026 :: Log Trentlin [9129]: arrived (Sleepy little cloud.) from 9132
+Sun Nov  8 13:12:51 2026 :: Log Trentlin [9129]: k h
+Sun Nov  8 13:12:52 2026 :: Log Trentlin [9129]: kick
+Sun Nov  8 13:12:56 2026 :: Log Trentlin [9129]: kick
+Sun Nov  8 13:13:02 2026 :: Log Trentlin [9129]: kick
