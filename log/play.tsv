@@ -29709,3 +29709,104 @@
 1794104472	cmd	Trentlin	23	30448	hyrule.are	standing	52	0	-	sleep		You go to sleep.	-	-
 1794104473	cmd	Trentlin	23	30448	hyrule.are	sleeping	52	0	-	group		Trentlin's group: // [23 Monk ] Trentlin          303/ 579 hp   68/1019 mana  195/ 290 mv 54872 xp	-	-
 1794104475	cmd	Trentlin	23	30448	hyrule.are	sleeping	52	0	-	inventory		You are carrying: //      the Magical Boomerang //      (Humming) a great war helmet	-	+
+1794104495	cmd	Trentlin	23	30448	hyrule.are	sleeping	52	0	-	group		Trentlin's group: // [23 Monk ] Trentlin          303/ 579 hp   68/1019 mana  195/ 290 mv 54872 xp	-	-
+1794104505	cmd	Trentlin	23	30448	hyrule.are	sleeping	52	0	-	wake		You wake and stand up.	-	-
+1794104505	cmd	Trentlin	23	30448	hyrule.are	standing	52	0	-	look		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794104507	cmd	Trentlin	23	30447	hyrule.are	standing	52	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104509	cmd	Trentlin	23	30447	hyrule.are	standing	52	0	-	kill	zo	Your punch MASSACRES a zol! // Your punch DISMEMBERS a zol!	-	-
+1794104512	cmd	Trentlin	23	30447	hyrule.are	fighting	52	0	fight	trip		You trip a zol and a zol goes down! // Your trip scratches a zol.	-	-
+1794104521	cmd	Trentlin	23	30447	hyrule.are	standing	52	0	-	get	ke	You get a small key.	-	-
+1794104522	cmd	Trentlin	23	30450	hyrule.are	standing	52	0	-	north		Level 3: Manji Hall of Grinding Grooves //   Twin grooves cut across this narrow chamber of green stone, and spiked // blades rest at their ends against the walls, poised to slide at the first	-	+
+1794104523	cmd	Trentlin	23	30453	hyrule.are	standing	52	0	-	north		Level 3: Manji Hearth Chamber //   Green stone gives way here to a floor of fitted slate, swept clean in a // wide square around two braziers set against the north wall. The fires	-	+
+1794104526	cmd	Trentlin	23	30450	hyrule.are	standing	52	0	-	south		Level 3: Manji Hall of Grinding Grooves //   Twin grooves cut across this narrow chamber of green stone, and spiked // blades rest at their ends against the walls, poised to slide at the first	-	+
+1794104526	cmd	Trentlin	23	30447	hyrule.are	standing	52	0	-	south		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104527	cmd	Trentlin	23	30448	hyrule.are	standing	55	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794104530	cmd	Trentlin	23	30448	hyrule.are	standing	55	0	-	sleep		You go to sleep.	-	-
+1794104531	cmd	Trentlin	23	30448	hyrule.are	sleeping	55	0	-	wake		You wake and stand up.	-	-
+1794104533	cmd	Trentlin	23	30448	hyrule.are	standing	55	0	-	look	in ches	The Manji's equipment chest contains: //      a pair of Rope-hide boots //      the Heart Guard of the Eagle	-	+
+1794104534	cmd	Trentlin	23	30448	hyrule.are	standing	55	0	-	sleep		You go to sleep.	-	-
+1794104538	cmd	Trentlin	23	30448	hyrule.are	sleeping	55	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
+1794104544	cmd	Trentlin	23	30448	hyrule.are	sleeping	55	0	-	wake		You wake and stand up.	-	-
+1794104547	cmd	Trentlin	23	30448	hyrule.are	standing	55	0	-	get	bow ches	You get an Eagle archer's bow from the Manji's equipment chest.	-	-
+1794104548	cmd	Trentlin	23	30448	hyrule.are	standing	55	0	-	sleep		You go to sleep.	-	-
+1794104596	cmd	Trentlin	23	30448	hyrule.are	sleeping	55	0	-	group		Trentlin's group: // [23 Monk ] Trentlin          321/ 579 hp   82/1019 mana  214/ 290 mv 54900 xp	-	-
+1794104600	cmd	Trentlin	23	30448	hyrule.are	sleeping	63	0	-	wake		You wake and stand up.	-	-
+1794104601	cmd	Trentlin	23	30448	hyrule.are	standing	63	0	-	iron		You lost your concentration.	-	-
+1794104602	cmd	Trentlin	23	30448	hyrule.are	standing	63	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794104612	cmd	Trentlin	23	30448	hyrule.are	standing	63	0	-	levitate		You slowly rise up off the ground.	-	-
+1794104622	cmd	Trentlin	23	30448	hyrule.are	standing	63	0	-	look		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794104623	cmd	Trentlin	23	30448	hyrule.are	standing	63	1	-	scan		Manhandla                          -to the East. // a red darknut                      -to the South.	-	-
+1794104625	cmd	Trentlin	23	30449	hyrule.are	standing	63	0	-	east		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794104626	cmd	Trentlin	23	30449	hyrule.are	standing	63	0	-	kill	m	Your punch hits Manhandla. // Manhandla dodges your attack. // Your punch *** DEMOLISHES *** Manhandla!	-	-
+1794104629	cmd	Trentlin	23	30449	hyrule.are	fighting	64	0	fight	bomb		Bomb what?	-	-
+1794104634	cmd	Trentlin	23	30448	hyrule.are	fighting	39	0	fight	flee		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794104634	cmd	Trentlin	23	30448	hyrule.are	standing	39	0	-	flee		You aren't fighting anyone.	-	-
+1794104635	cmd	Trentlin	23	30447	hyrule.are	standing	39	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794104636	cmd	Trentlin	23	30442	hyrule.are	standing	39	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794104636	cmd	Trentlin	23	30439	hyrule.are	standing	39	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794104636	cmd	Trentlin	23	30436	hyrule.are	standing	39	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794104637	cmd	Trentlin	23	30436	hyrule.are	standing	39	0	-	south		Alas, you cannot go that way.	-	-
+1794104637	cmd	Trentlin	23	30436	hyrule.are	standing	39	0	-	south		Alas, you cannot go that way.	-	-
+1794104637	cmd	Trentlin	23	30436	hyrule.are	standing	39	0	-	south		Alas, you cannot go that way.	-	-
+1794104637	cmd	Trentlin	23	30436	hyrule.are	standing	39	0	-	south		Alas, you cannot go that way.	-	-
+1794104638	cmd	Trentlin	23	30437	hyrule.are	standing	39	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794104640	cmd	Trentlin	23	30205	hyrule.are	standing	39	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794104642	cmd	Trentlin	23	30205	hyrule.are	standing	39	0	-	consider	te	A red tektite is well below your level. // A red tektite has about a third of your hit points. // Blow for blow, you would need about 2 rounds to bring a red tektite down; it would need about 20 rounds for you.	-	+
+1794104644	cmd	Trentlin	23	30205	hyrule.are	standing	39	0	-	kill	te	Your punch decimates a red tektite! // Your punch DISMEMBERS a red tektite!	-	-
+1794104648	cmd	Trentlin	23	30204	hyrule.are	standing	39	0	-	west		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes	-	+
+1794104652	cmd	Trentlin	23	30204	hyrule.are	standing	39	0	-	consider	mo	A blue moblin is well below your level. // A blue moblin has about half your hit points. // Blow for blow, you would need about 4 rounds to bring a blue moblin down; it would need about 12 rounds for you.	-	+
+1794104654	cmd	Trentlin	23	30204	hyrule.are	standing	39	0	-	kill	mo	A blue moblin parries your attack. // A blue moblin dodges your attack. // Your punch MANGLES a blue moblin!	-	-
+1794104666	cmd	Trentlin	23	30204	hyrule.are	fighting	34	0	fight	kill	mo	You do the best you can!	-	-
+1794104670	cmd	Trentlin	23	30204	hyrule.are	fighting	34	0	fight	trip		You trip a blue moblin and a blue moblin goes down! // Your trip scratches a blue moblin.	-	-
+1794104679	cmd	Trentlin	23	4207	dresden.are	standing	34	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104680	cmd	Trentlin	23	4208	dresden.are	standing	34	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794104681	cmd	Trentlin	23	4208	dresden.are	standing	34	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794104684	cmd	Trentlin	23	4208	dresden.are	standing	54	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794104687	cmd	Trentlin	23	4208	dresden.are	standing	73	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794104690	cmd	Trentlin	23	4208	dresden.are	standing	92	0	-	inventory		You are carrying: //      an Eagle archer's bow //      a small key	-	+
+1794104699	cmd	Trentlin	23	4208	dresden.are	standing	92	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794104700	cmd	Trentlin	23	4207	dresden.are	standing	92	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104702	cmd	Trentlin	23	4202	dresden.are	standing	92	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794104703	cmd	Trentlin	23	4207	dresden.are	standing	92	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104703	cmd	Trentlin	23	4205	dresden.are	standing	92	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794104704	cmd	Trentlin	23	4209	dresden.are	standing	92	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1794104704	cmd	Trentlin	23	4209	dresden.are	standing	92	0	-	south		Alas, you cannot go that way.	-	-
+1794104704	cmd	Trentlin	23	4209	dresden.are	standing	92	0	-	sleep		You go to sleep.	-	-
+1794104706	cmd	Trentlin	23	4209	dresden.are	sleeping	92	0	-	areas		[25+]   Soul.   Temple Despair         [20 30] Doctor  Galaxy                  // [  0  0] Built-In  Seasonal Items      [ 5 15] PinkF   Mob Factory             // [  0  0] Built-In  Holiday Fairs       [ ALL ] Drakk   City of Dresden     	-	+
+1794104711	item	Trentlin	23	4209	dresden.are	29002	a crystal key	type=key level=20 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
+1794104751	cmd	Trentlin	23	4209	dresden.are	sleeping	100	0	-	group		Trentlin's group: // [23 Monk ] Trentlin          579/ 579 hp  169/1019 mana  176/ 290 mv 54948 xp	-	-
+1794104752	cmd	Trentlin	23	4209	dresden.are	sleeping	100	0	-	wake		You wake and stand up.	-	-
+1794104753	cmd	Trentlin	23	4205	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794104754	cmd	Trentlin	23	4207	dresden.are	standing	100	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104755	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794104755	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794104756	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you.	-	-
+1794104759	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you.	-	-
+1794104762	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you.	-	-
+1794104765	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you.	-	-
+1794104768	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you.	-	-
+1794104771	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you.	-	-
+1794104774	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (2 castings, 20 gold.)	-	-
+1794104777	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.	-	+
+1794104777	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794104779	cmd	Trentlin	23	4208	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794104780	cmd	Trentlin	23	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104781	cmd	Trentlin	23	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794104781	cmd	Trentlin	23	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794104781	cmd	Trentlin	23	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794104781	cmd	Trentlin	23	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794104782	cmd	Trentlin	23	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794104782	cmd	Trentlin	23	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794104783	cmd	Trentlin	23	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794104783	cmd	Trentlin	23	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794104783	cmd	Trentlin	23	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104784	cmd	Trentlin	23	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104784	cmd	Trentlin	23	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104784	cmd	Trentlin	23	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104785	cmd	Trentlin	23	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794104786	cmd	Trentlin	23	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794104788	cmd	Trentlin	23	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794104788	cmd	Trentlin	23	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794104788	cmd	Trentlin	23	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794104789	cmd	Trentlin	23	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794104789	cmd	Trentlin	23	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
