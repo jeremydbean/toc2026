@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261108b 2026-11-08
+The game no longer pauses for a moment every four hours, and for longer
+just after a restart, while it backs up the player files.
+
 @ 20261108a 2026-11-08
 HEAL HEAL and HEAL MANA now fill you up in one go, as HEAL REFRESH does:
 as many castings as it takes at the usual price each, as far as your

@@ -7,6 +7,11 @@
  **************************************************************************/
 
 
+/* fork, execl, waitpid and sysconf for the backups, which run beside the
+   game; both builds see them only with these, defined before any header. */
+#define _DEFAULT_SOURCE
+#define _POSIX_C_SOURCE 200809L
+
 #if defined(macintosh)
 #include <types.h>
 #else
@@ -19,6 +24,8 @@
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <time.h>
+#include <unistd.h>
+#include <sys/wait.h>
 #include "merc.h"
 #include "interp.h"
 #pragma GCC diagnostic ignored "-Wmissing-braces"
@@ -198,72 +205,84 @@ static bool backup_ensure_dir( const char *path )
 }
 
 
-/* Pfile backup command fixed on 12/17/97 - Ricochet */
-void do_backup( void )
+/*
+ * The player backups run beside the game, never inside it (2026-11-08).
+ * They were system() calls on the game loop: tar and gzip of all of
+ * player/ every four hours, and both backups at once at every boot, held
+ * every connection still for a quarter second and then 0.6 seconds, and
+ * the play journal's stall rows blamed whatever phase had last begun
+ * (disaster_update, room_update). The archive is now made by a detached
+ * shell, twice forked so it is never the game's to reap, every descriptor
+ * past stderr closed so no client socket or listener outlives its close
+ * in a tar, and niced. The shell writes "complete" or the failure to
+ * toc.log in its format; GNU tar's 1 (a file changed while it was read --
+ * the game saved somebody) still made the archive.
+ */
+static void backup_launch( const char *archive, const char *done, const char *who )
 {
-    extern long backup;
-    char buf[MAX_STRING_LENGTH];
-
-    backup = current_time + (60*60*4);
+    char script[MAX_STRING_LENGTH];
+    pid_t pid;
+    int status = 0;
 
     if ( !backup_ensure_dir( BACKUP_DIR ) )
     {
-        bug("do_backup: could not create backup directory.", 0);
+        bug( "backup: could not create the backup directory.", 0 );
         return;
     }
 
-    snprintf( buf, sizeof(buf),
-              "tar cfz %s`date +%%b.%%d.%%Y-%%H.%%M.%%S`.tar.gz ../player",
-              BACKUP_DIR );
-    if (system(buf) != 0)
+    snprintf( script, sizeof(script),
+        "nice -n 10 tar cfz %s%s.tar.gz ../player 2>/dev/null; rc=$?;"
+        " stamp=$(date '+%%a %%b %%e %%T %%Y');"
+        " if [ $rc -le 1 ]; then"
+        " find %s -name '*.tar.gz' -mtime +30 -delete 2>/dev/null;"
+        " echo \"$stamp :: %s\" >> ../log/toc.log;"
+        " else echo \"$stamp :: [*****] BUG: %s: archive creation failed.\" >> ../log/toc.log;"
+        " fi",
+        BACKUP_DIR, archive, BACKUP_DIR, done, who );
+
+    pid = fork();
+    if ( pid < 0 )
     {
-        bug("do_backup: archive creation failed.", 0);
+        bug( "backup: could not start the archive.", 0 );
         return;
     }
+    if ( pid == 0 )
+    {
+        /* Only async-signal-safe calls from here: the game has threads. */
+        long max = sysconf( _SC_OPEN_MAX );
+        int fd;
+        pid_t worker = fork();
 
-    /* Prune backups older than 30 days */
-    snprintf( buf, sizeof(buf), "find %s -name '*.tar.gz' -mtime +30 -delete",
-              BACKUP_DIR );
-    if (system(buf) != 0)
-        bug("do_backup: backup pruning failed.", 0);
+        if ( worker != 0 )
+            _exit( worker < 0 ? 1 : 0 );
+        if ( max < 0 || max > 65536 )
+            max = 65536;
+        for ( fd = 3; fd < (int) max; fd++ )
+            close( fd );
+        execl( "/bin/sh", "sh", "-c", script, (char *) NULL );
+        _exit( 127 );
+    }
+    if ( waitpid( pid, &status, 0 ) < 0
+      || !WIFEXITED( status ) || WEXITSTATUS( status ) != 0 )
+        bug( "backup: could not start the archive.", 0 );
+}
 
-    wizinfo("Automated backup complete.",62);
-    log_string("Automated backup complete.");
-    return;
+void do_backup( void )
+{
+    extern long backup;
 
+    backup = current_time + (60*60*4);
+    backup_launch( "$(date +%b.%d.%Y-%H.%M.%S)", "Automated backup complete.",
+                   "do_backup" );
+    log_string( "Automated backup started." );
 }
 
 /* Pfile backup command fixed on 12/17/97 - Ricochet */
 void do_dailybackup( void )
 {
-    char buf[MAX_STRING_LENGTH];
-
     dailybackup = current_time + (60*60*24);
-
-    if ( !backup_ensure_dir( BACKUP_DIR ) )
-    {
-        bug("do_dailybackup: could not create backup directory.", 0);
-        return;
-    }
-
-    snprintf( buf, sizeof(buf), "tar cfz %s`date +%%b.%%d`.tar.gz ../player",
-              BACKUP_DIR );
-    if (system(buf) != 0)
-    {
-        bug("do_dailybackup: archive creation failed.", 0);
-        return;
-    }
-
-    /* Prune backups older than 30 days */
-    snprintf( buf, sizeof(buf), "find %s -name '*.tar.gz' -mtime +30 -delete",
-              BACKUP_DIR );
-    if (system(buf) != 0)
-        bug("do_dailybackup: backup pruning failed.", 0);
-
-    wizinfo("Daily backup complete.",62);
-    log_string("Daily backup complete.");
-    return;
-
+    backup_launch( "$(date +%b.%d)", "Daily backup complete.", "do_dailybackup" );
+    log_string( "Daily backup started." );
 }
 
 void show_backup( CHAR_DATA *ch, char *argument )
@@ -3112,6 +3131,7 @@ void update_handler( void )
     if ( --pulse_point    <= 0 )
     {
 	pulse_point     = number_range( 2*PULSE_TICK/3, 4*PULSE_TICK/3 );
+	playlog_phase_enter( "weather_update" );
 	weather_update	( );
 	playlog_phase_enter( "char_update" );
 	char_update	( );

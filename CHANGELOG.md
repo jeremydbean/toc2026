@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The player backups run beside the game** (2026-11-08). The four-hourly
+  and daily tar of `player/` were `system()` calls on the game loop: a
+  quarter-second stall every four hours and 0.6 seconds at boot, which the
+  play journal blamed on `disaster_update` because the weather step that
+  holds them had no phase label. `backup_launch` in `update.c` forks a
+  detached, niced shell (descriptors closed) that writes "complete" or the
+  failure to `toc.log`; the weather step is timed as `weather_update`.
+  `tests/test_backup_detached.py`.
 - **The play journal's frictions, 2026-11-08.** HEAL HEAL and HEAL MANA
   buy as many castings as the pool needs, at the price of one each, for
   one round of lag, as HEAL REFRESH did (`heal_spell_apply` in `magic.c`
