@@ -28891,3 +28891,162 @@
 1794102656	cmd	Trentlin	22	29061	korzath1.are	standing	73	0	-	nerve		Who do you want to attack?	-	-
 1794102658	cmd	Trentlin	22	29062	korzath1.are	standing	73	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
 1794102660	cmd	Trentlin	22	29062	korzath1.are	standing	73	0	-	trip	guard	You trip a security guard and a security guard goes down! // Your trip grazes a security guard.	-	-
+1794102666	cmd	Trentlin	22	29062	korzath1.are	fighting	68	0	fight	kick		Your kick misses a security guard.	-	-
+1794102669	cmd	Trentlin	22	29062	korzath1.are	fighting	68	0	fight	kick		Your kick misses a security guard.	-	-
+1794102671	cmd	Trentlin	22	29062	korzath1.are	fighting	68	0	fight	kick		Your kick scratches a security guard. // A security guard is DEAD!! // You receive 333 experience points.	-	+
+1794102675	cmd	Trentlin	22	29062	korzath1.are	standing	68	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794102675	cmd	Trentlin	22	29061	korzath1.are	standing	68	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794102723	cmd	Trentlin	22	29061	korzath1.are	standing	71	0	-	iron		You lost your concentration.	-	-
+1794102724	cmd	Trentlin	22	29061	korzath1.are	standing	71	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794102732	cmd	Trentlin	22	29061	korzath1.are	standing	71	0	-	kill	gua	Your punch DISMEMBERS a security guard! // A security guard parries your attack.	-	-
+1794102735	cmd	Trentlin	22	29061	korzath1.are	fighting	71	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a security guard.	-	-
+1794102738	cmd	Trentlin	22	29061	korzath1.are	fighting	65	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794102742	cmd	Trentlin	22	29061	korzath1.are	fighting	61	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a security guard.	-	-
+1794102744	cmd	Trentlin	22	29061	korzath1.are	fighting	61	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard.	-	-
+1794102747	cmd	Trentlin	22	29061	korzath1.are	fighting	61	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794102750	cmd	Trentlin	22	29061	korzath1.are	fighting	61	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794102753	cmd	Trentlin	22	29061	korzath1.are	fighting	61	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard.	-	-
+1794102756	cmd	Trentlin	22	29061	korzath1.are	fighting	63	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard.	-	-
+1794102759	cmd	Trentlin	22	29061	korzath1.are	fighting	57	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard!	-	-
+1794102767	cmd	Trentlin	22	29061	korzath1.are	fighting	51	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard! // A security guard is DEAD!!	-	+
+1794102772	cmd	Trentlin	22	29061	korzath1.are	standing	51	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794102773	cmd	Trentlin	22	29061	korzath1.are	standing	51	0	-	look		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794102774	cmd	Trentlin	22	29062	korzath1.are	standing	51	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794102775	cmd	Trentlin	22	29062	korzath1.are	standing	51	0	-	kill	g	Your punch injures a security guard. // Your punch wounds a security guard.	-	-
+1794102778	cmd	Trentlin	22	29062	korzath1.are	fighting	51	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794102782	cmd	Trentlin	22	29062	korzath1.are	fighting	51	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794102786	cmd	Trentlin	22	29062	korzath1.are	fighting	44	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794102789	cmd	Trentlin	22	29062	korzath1.are	fighting	44	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard.	-	-
+1794102792	cmd	Trentlin	22	29062	korzath1.are	fighting	44	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794102800	cmd	Trentlin	22	29062	korzath1.are	fighting	39	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794102804	cmd	Trentlin	22	29062	korzath1.are	fighting	39	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794102808	cmd	Trentlin	22	29062	korzath1.are	fighting	39	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794102811	cmd	Trentlin	22	29062	korzath1.are	fighting	39	0	fight	trip		Your trip misses a security guard.	-	-
+1794102814	cmd	Trentlin	22	29062	korzath1.are	fighting	34	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794102817	cmd	Trentlin	22	29062	korzath1.are	fighting	30	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794102822	cmd	Trentlin	22	29062	korzath1.are	fighting	20	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard.	-	-
+1794102826	cmd	Trentlin	22	29062	korzath1.are	standing	20	0	-	trip		But you aren't fighting anyone!	-	-
+1794102826	cmd	Trentlin	22	29061	korzath1.are	standing	20	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794102828	cmd	Trentlin	22	29061	korzath1.are	standing	20	0	-	trip	gua	You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794102834	cmd	Trentlin	22	29061	korzath1.are	standing	20	0	-	trip	gua	They aren't here.	-	-
+1794102836	cmd	Trentlin	22	4207	dresden.are	standing	20	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794102840	cmd	Trentlin	22	4202	dresden.are	standing	20	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794102841	cmd	Trentlin	22	4203	dresden.are	standing	20	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794102841	cmd	Trentlin	22	4210	dresden.are	standing	20	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794102841	cmd	Trentlin	22	4210	dresden.are	standing	20	0	-	north		Alas, you cannot go that way.	-	-
+1794102842	cmd	Trentlin	22	4210	dresden.are	standing	20	0	-	sleep		You go to sleep.	-	-
+1794102843	state	Trentlin	22	4210	dresden.are	lvl=22 hp=119/568 mana=491/1022 mv=84/333 align=-332 exp=51732 coin=372292524 bank=15087744233 qp=1874 prac=11 train=1 stash=59/75 remorts=1
+1794102843	cmd	Trentlin	22	4210	dresden.are	sleeping	20	0	-	score		| Name:       Trentlin | Level:      22 | Class:        Monk | // | Played:     30 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794102844	cmd	Trentlin	22	4210	dresden.are	sleeping	20	0	-	skills		Level  1: dagger              75%      hand to hand        82%       //           recall             100%       // Level  3: kick                79%      	-	+
+1794102848	cmd	Trentlin	22	4210	dresden.are	sleeping	20	0	-	gainlist		Abilities for a level 22 monk of the monk guild: 21 learned, 13 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1794102863	cmd	Trentlin	22	4210	dresden.are	sleeping	20	0	-	skills		Level  1: dagger              75%      hand to hand        82%       //           recall             100%       // Level  3: kick                79%      	-	+
+1794102872	cmd	Trentlin	22	4210	dresden.are	sleeping	20	0	-	help	fists of furt	No help on 'fists of furt'; here is fists: // 'FISTS OF FURY' FISTS // Syntax: fists <victim>	-	+
+1794102874	cmd	Trentlin	22	4210	dresden.are	sleeping	38	0	-	help	fists of fury	'FISTS OF FURY' FISTS // Syntax: fists <victim> // Fists of Fury is a more aggressive version of Blinding Fists, focused on	-	+
+1794102881	cmd	Trentlin	22	4210	dresden.are	sleeping	38	0	-	group		Trentlin's group: // [22 Monk ] Trentlin          217/ 568 hp  550/1022 mana  129/ 333 mv 51732 xp	-	-
+1794102882	cmd	Trentlin	22	4210	dresden.are	sleeping	38	0	-	wake		You wake and stand up.	-	-
+1794102883	cmd	Trentlin	22	4210	dresden.are	standing	38	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794102884	cmd	Trentlin	22	4203	dresden.are	standing	38	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794102884	cmd	Trentlin	22	4204	dresden.are	standing	38	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794102885	cmd	Trentlin	22	4207	dresden.are	standing	38	0	-	south		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794102885	cmd	Trentlin	22	4208	dresden.are	standing	38	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794102888	cmd	Trentlin	22	4208	dresden.are	standing	38	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794102891	cmd	Trentlin	22	4208	dresden.are	standing	57	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794102894	cmd	Trentlin	22	4208	dresden.are	standing	77	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794102897	cmd	Trentlin	22	4208	dresden.are	standing	97	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
+1794102901	cmd	Trentlin	22	4207	dresden.are	standing	97	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794102901	cmd	Trentlin	22	4202	dresden.are	standing	97	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794102901	cmd	Trentlin	22	4201	dresden.are	standing	97	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794102902	cmd	Trentlin	22	2427	dresden.are	standing	97	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794102902	cmd	Trentlin	22	2427	dresden.are	standing	97	0	-	east		Alas, you cannot go that way.	-	-
+1794102902	cmd	Trentlin	22	2404	dresden.are	standing	97	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794102902	cmd	Trentlin	22	2401	dresden.are	standing	97	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794102903	cmd	Trentlin	22	2410	dresden.are	standing	97	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794102903	cmd	Trentlin	22	2411	dresden.are	standing	97	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794102903	cmd	Trentlin	22	2414	dresden.are	standing	97	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794102903	cmd	Trentlin	22	2497	dresden.are	standing	97	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794102904	cmd	Trentlin	22	2497	dresden.are	standing	97	0	-	up		Alas, you cannot go that way.	-	-
+1794102906	cmd	Trentlin	22	2497	dresden.are	standing	97	0	-	aquest	requestr	.-[ AQUEST Commands ]-----------------------------------------. // |  INFO      View quest status or summary // |  POINTS    Check your quest point balance	-	+
+1794102908	cmd	Trentlin	22	2497	dresden.are	standing	97	14	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'A prized artifact - The Crown of Eclipse - has gone missing!'	-	+
+1794102911	cmd	Trentlin	22	2401	dresden.are	standing	97	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794102914	cmd	Trentlin	22	2405	dresden.are	standing	97	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794102915	cmd	Trentlin	22	2433	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794102915	cmd	Trentlin	22	2434	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794102915	cmd	Trentlin	22	2435	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794102915	cmd	Trentlin	22	2436	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794102916	cmd	Trentlin	22	2437	dresden.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794102916	cmd	Trentlin	22	2438	dresden.are	standing	97	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794102916	cmd	Trentlin	22	2438	dresden.are	standing	97	0	-	open	west	Ok.	-	-
+1794102916	cmd	Trentlin	22	2439	dresden.are	standing	97	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794102918	cmd	Trentlin	22	6000	haon.are	standing	97	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794102918	cmd	Trentlin	22	6001	haon.are	standing	97	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794102918	cmd	Trentlin	22	6002	haon.are	standing	97	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794102919	cmd	Trentlin	22	6011	haon.are	standing	97	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.	-	+
+1794102919	cmd	Trentlin	22	6008	haon.are	standing	97	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile	-	+
+1794102919	cmd	Trentlin	22	6009	haon.are	standing	97	0	-	east		Outside a small cabin in the forest //   You are outside a small cabin built entirely from heavy logs.  There is a // wooden door to the north and small paths lead west and south through the	-	+
+1794102919	cmd	Trentlin	22	6014	haon.are	standing	97	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest. The forest // gradually lightens to the north.  Paths lead north, east and west.	-	+
+1794102920	cmd	Trentlin	22	6015	haon.are	standing	97	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of // the old trees leave the forest in a surreal twilight illumination.	-	+
+1794102920	cmd	Trentlin	22	6016	haon.are	standing	97	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  To the west	-	+
+1794102920	cmd	Trentlin	22	6017	haon.are	standing	97	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest // seems to become lighter to the west. The path continues north and west.	-	+
+1794102920	cmd	Trentlin	22	6018	haon.are	standing	97	0	-	west		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.	-	+
+1794102921	cmd	Trentlin	22	51	connect.are	standing	97	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so	-	+
+1794102921	cmd	Trentlin	22	13001	lakes.are	standing	97	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen	-	+
+1794102921	cmd	Trentlin	22	13002	lakes.are	standing	97	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises	-	+
+1794102921	cmd	Trentlin	22	13003	lakes.are	standing	97	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.	-	+
+1794102922	cmd	Trentlin	22	13201	solace.are	standing	97	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir	-	+
+1794102923	cmd	Trentlin	22	13202	solace.are	standing	97	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794102924	cmd	Trentlin	22	13203	solace.are	standing	97	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794102925	cmd	Trentlin	22	13204	solace.are	standing	97	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794102925	cmd	Trentlin	22	13205	solace.are	standing	100	0	-	north		Intersection at Main Road. //   Here there is an intersection at the main road. // You see to the east and west, smaller houses and some more shops.	-	+
+1794102927	cmd	Trentlin	22	13205	solace.are	standing	100	0	-	exits		Obvious exits: // North - Main Road // East  - East Gullen Way	-	+
+1794102929	cmd	Trentlin	22	13228	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794102929	cmd	Trentlin	22	13229	solace.are	standing	100	0	-	north		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.	-	+
+1794102930	cmd	Trentlin	22	13229	solace.are	standing	100	0	-	exits		Obvious exits: // North - Cobblestone Path // East  - Dusty road.	-	+
+1794102934	cmd	Trentlin	22	13230	solace.are	standing	100	0	-	west		Marketplace. //   This is the Marketplace of Solace. Where the farmers come to sell their // crops. The smell of vegetables and fruit fill the air. There are a couple	-	+
+1794102935	cmd	Trentlin	22	13231	solace.are	standing	100	0	-	west		Marketplace. //   This is the Marketplace of Solace. Where the farmers come to sell their // crops. The smell of vegetables and fruit fill the air. There are a couple	-	+
+1794102936	cmd	Trentlin	22	13232	solace.are	standing	100	0	-	west		Marketplace. //   This is the Marketplace of Solace. Where the farmers come to sell their // crops. The smell of vegetables and fruit fill the air. There are a couple	-	+
+1794102936	cmd	Trentlin	22	13233	solace.are	standing	100	0	-	west		Marketplace. //   This is the Marketplace of Solace. Where the farmers come to sell their // crops. The smell of vegetables and fruit fill the air. There are a couple	-	+
+1794102938	cmd	Trentlin	22	13233	solace.are	standing	100	0	-	exits		Obvious exits: // North - Molin's Mulburry Extracts. // East  - Marketplace.	-	+
+1794102941	cmd	Trentlin	22	13232	solace.are	standing	100	0	-	east		Marketplace. //   This is the Marketplace of Solace. Where the farmers come to sell their // crops. The smell of vegetables and fruit fill the air. There are a couple	-	+
+1794102941	cmd	Trentlin	22	13231	solace.are	standing	100	0	-	east		Marketplace. //   This is the Marketplace of Solace. Where the farmers come to sell their // crops. The smell of vegetables and fruit fill the air. There are a couple	-	+
+1794102941	cmd	Trentlin	22	13230	solace.are	standing	100	0	-	east		Marketplace. //   This is the Marketplace of Solace. Where the farmers come to sell their // crops. The smell of vegetables and fruit fill the air. There are a couple	-	+
+1794102942	cmd	Trentlin	22	13229	solace.are	standing	100	0	-	east		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.	-	+
+1794102942	cmd	Trentlin	22	13262	solace.are	standing	100	0	-	east		Dusty road. //   This dusty road looks well traveled. To the East you see the Townguard // Administration Building.	-	+
+1794102943	cmd	Trentlin	22	13263	solace.are	standing	100	0	-	east		Townguard Administration Building. //   Before you stands the Townguard Administration Building. This is a large // building with various statues and other artwork decorating the building.	-	+
+1794102943	cmd	Trentlin	22	13263	solace.are	standing	100	0	-	east		The door is closed.	-	-
+1794102944	cmd	Trentlin	22	13262	solace.are	standing	100	0	-	west		Dusty road. //   This dusty road looks well traveled. To the East you see the Townguard // Administration Building.	-	+
+1794102944	cmd	Trentlin	22	13229	solace.are	standing	100	0	-	west		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.	-	+
+1794102945	cmd	Trentlin	22	13228	solace.are	standing	100	0	-	south		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794102946	cmd	Trentlin	22	13205	solace.are	standing	100	0	-	south		Intersection at Main Road. //   Here there is an intersection at the main road. // You see to the east and west, smaller houses and some more shops.	-	+
+1794102947	cmd	Trentlin	22	13206	solace.are	standing	100	0	-	east		East Gullen Way //   This is the road called East Gullen Way. It is lined with small houses and // shops.	-	+
+1794102947	cmd	Trentlin	22	13207	solace.are	standing	100	0	-	east		East Gullen Way //   This is the road called East Gullen Way. It is lined with small houses and // shops.	-	+
+1794102948	cmd	Trentlin	22	13208	solace.are	standing	100	0	-	east		East Gullen Way //   This is the road called East Gullen Way. It is lined with small houses and // shops.	-	+
+1794102948	cmd	Trentlin	22	13209	solace.are	standing	100	0	-	east		Corner of East Gullen and Ketra Road. //   This is the Corner of East Gullen Way and Ketra Road. // Everything is amazingly clean here.	-	+
+1794102950	cmd	Trentlin	22	13210	solace.are	standing	100	0	-	south		Ketra Road. //   It is one of the sidestreets of Solace. But even here there are shops. // Most of it is run down houses and shacks.	-	+
+1794102951	cmd	Trentlin	22	13211	solace.are	standing	100	0	-	south		Ketra Road. //   It is one of the sidestreets of Solace. But even here there are shops. // Most of it is run down houses and shacks.	-	+
+1794102952	cmd	Trentlin	22	13212	solace.are	standing	100	0	-	south		Ketra Road. //   It is one of the sidestreets of Solace. But even here there are shops. // Most of it is run down houses and shacks.	-	+
+1794102953	cmd	Trentlin	22	13213	solace.are	standing	100	0	-	south		Southeast Guardpost and Watchtower. //   This is the Southeast guardpost and guardpost of Solace. // It is used as a watch station and coffee break area for the town guards.	-	+
+1794102954	cmd	Trentlin	22	13214	solace.are	standing	100	0	-	west		Small Alleyway. //   You are walking down a small alleyway along the north wall of the town. // [Exits: east west]	-	-
+1794102954	cmd	Trentlin	22	13215	solace.are	standing	100	0	-	west		Small Alleyway. //   You are walking down a small alleyway along the north wall of the town. // [Exits: (north) east west]	-	-
+1794102955	cmd	Trentlin	22	13216	solace.are	standing	100	0	-	west		Small Alleyway. //   You are walking down a small alleyway along the north wall of the town. // [Exits: east west]	-	-
+1794102955	cmd	Trentlin	22	13201	solace.are	standing	100	0	-	west		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir	-	+
+1794102955	cmd	Trentlin	22	13217	solace.are	standing	100	0	-	west		Small Alleyway. //   You are walking down a small alleyway along the north wall of the town. // [Exits: east west]	-	-
+1794102956	cmd	Trentlin	22	13218	solace.are	standing	100	0	-	west		Small Alleyway. //   You are walking down a small alleyway along the north wall of the town. // [Exits: (north) east west]	-	-
+1794102958	cmd	Trentlin	22	13219	solace.are	standing	100	0	-	west		Small Alleyway. //   You are walking down a small alleyway along the north wall of the town. // [Exits: east west]	-	-
+1794102959	cmd	Trentlin	22	13220	solace.are	standing	100	0	-	west		Southwest Guardpost and Watchtower. //   This is the Southwest guardpost and guardpost of Solace. // It is used as a watch station and coffee break area for the town guards.	-	+
+1794102960	cmd	Trentlin	22	13221	solace.are	standing	100	0	-	north		Harvest Road. //   You are walking down Harvest Road. // It is quiet and peaceful here. The smell of baked goods and other foods	-	+
+1794102961	cmd	Trentlin	22	13222	solace.are	standing	100	0	-	north		Harvest Road. //   You are walking down Harvest Road. // It is quiet and peaceful here. The smell of baked goods and other foods	-	+
+1794102963	cmd	Trentlin	22	13222	solace.are	standing	100	0	-	get	all	You get The Crown of Eclipse.	-	-
+1794102964	cmd	Trentlin	22	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794102965	cmd	Trentlin	22	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794102965	cmd	Trentlin	22	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794102965	cmd	Trentlin	22	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794102965	cmd	Trentlin	22	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794102966	cmd	Trentlin	22	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794102966	cmd	Trentlin	22	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794102966	cmd	Trentlin	22	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794102966	cmd	Trentlin	22	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794102967	cmd	Trentlin	22	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794102967	cmd	Trentlin	22	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794102967	cmd	Trentlin	22	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794102968	cmd	Trentlin	22	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794102968	cmd	Trentlin	22	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
