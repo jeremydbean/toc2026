@@ -29393,3 +29393,179 @@
 1794103866	cmd	Trentlin	23	29062	korzath1.are	fighting	85	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
 1794103869	cmd	Trentlin	23	29062	korzath1.are	fighting	85	0	fight	trip		Your trip misses a security guard.	-	-
 1794103874	cmd	Trentlin	23	29062	korzath1.are	fighting	85	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794103880	cmd	Trentlin	23	29062	korzath1.are	fighting	85	0	fight	trip		Your trip misses a security guard.	-	-
+1794103887	cmd	Trentlin	23	29062	korzath1.are	fighting	85	0	fight	trip		Your trip misses a security guard.	-	-
+1794103892	cmd	Trentlin	23	29062	korzath1.are	standing	88	0	-	look		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794103894	cmd	Trentlin	23	29062	korzath1.are	standing	88	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794103895	cmd	Trentlin	23	29062	korzath1.are	standing	88	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794103895	cmd	Trentlin	23	29061	korzath1.are	standing	88	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794103896	cmd	Trentlin	23	29062	korzath1.are	standing	88	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794103896	cmd	Trentlin	23	29063	korzath1.are	standing	88	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside	-	+
+1794103898	cmd	Trentlin	23	29065	korzath1.are	standing	88	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794103900	cmd	Trentlin	23	29065	korzath1.are	standing	88	0	-	kill	gua	Your punch wounds a security guard. // A security guard dodges your attack. // Your punch mauls a security guard.	-	-
+1794103902	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard!	-	-
+1794103914	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794103917	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	kick		Your kick misses a security guard.	-	-
+1794103924	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	kick		Your kick misses a security guard.	-	-
+1794103927	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	kick		Your kick scratches a security guard.	-	-
+1794103930	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	kick		Your kick injures a security guard.	-	-
+1794103933	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	kick		Your kick hits a security guard.	-	-
+1794103936	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	kick		Your kick misses a security guard.	-	-
+1794103939	cmd	Trentlin	23	29065	korzath1.are	fighting	88	0	fight	kick		Your kick grazes a security guard.	-	-
+1794103945	cmd	Trentlin	23	29065	korzath1.are	standing	88	0	-	look		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794103947	cmd	Trentlin	23	29065	korzath1.are	standing	88	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794103947	cmd	Trentlin	23	29066	korzath1.are	standing	88	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.	-	+
+1794103949	cmd	Trentlin	23	29066	korzath1.are	standing	88	0	-	kill	g	Your punch MANGLES a security guard! // A security guard dodges your attack.	-	-
+1794103951	cmd	Trentlin	23	29066	korzath1.are	fighting	88	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794103954	cmd	Trentlin	23	29066	korzath1.are	fighting	88	0	fight	trip		Your trip misses a security guard.	-	-
+1794103958	cmd	Trentlin	23	29066	korzath1.are	fighting	88	0	fight	kick		Your kick hits a security guard.	-	-
+1794103963	cmd	Trentlin	23	29066	korzath1.are	fighting	88	0	fight	kick		Your kick misses a security guard.	-	-
+1794103971	cmd	Trentlin	23	29066	korzath1.are	fighting	89	0	fight	kick		Your kick scratches a security guard.	-	-
+1794103974	cmd	Trentlin	23	29066	korzath1.are	fighting	89	0	fight	kick		Your kick scratches a security guard.	-	-
+1794103980	cmd	Trentlin	23	29066	korzath1.are	fighting	89	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794103986	cmd	Trentlin	23	29066	korzath1.are	fighting	89	0	fight	trip		Your trip misses a security guard.	-	-
+1794103990	cmd	Trentlin	23	29066	korzath1.are	fighting	89	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794103997	cmd	Trentlin	23	29066	korzath1.are	fighting	89	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794104002	cmd	Trentlin	23	29066	korzath1.are	fighting	89	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794104011	cmd	Trentlin	23	29066	korzath1.are	standing	89	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794104011	cmd	Trentlin	23	29066	korzath1.are	standing	89	0	-	sacrifice	co	You can't find it.	-	-
+1794104013	cmd	Trentlin	23	4207	dresden.are	standing	89	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104014	cmd	Trentlin	23	4208	dresden.are	standing	89	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794104016	cmd	Trentlin	23	4208	dresden.are	standing	89	1	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794104020	cmd	Trentlin	23	4207	dresden.are	standing	89	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104020	cmd	Trentlin	23	4202	dresden.are	standing	89	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794104020	cmd	Trentlin	23	4201	dresden.are	standing	89	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794104021	cmd	Trentlin	23	2427	dresden.are	standing	89	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794104021	cmd	Trentlin	23	2427	dresden.are	standing	89	0	-	east		Alas, you cannot go that way.	-	-
+1794104021	cmd	Trentlin	23	2427	dresden.are	standing	89	0	-	east		Alas, you cannot go that way.	-	-
+1794104021	cmd	Trentlin	23	2404	dresden.are	standing	89	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794104022	cmd	Trentlin	23	2401	dresden.are	standing	89	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794104022	cmd	Trentlin	23	2410	dresden.are	standing	89	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794104022	cmd	Trentlin	23	2411	dresden.are	standing	89	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794104022	cmd	Trentlin	23	2414	dresden.are	standing	89	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794104023	cmd	Trentlin	23	2497	dresden.are	standing	89	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794104023	cmd	Trentlin	23	2497	dresden.are	standing	89	16	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'A prized artifact - The Amulet of Soulcrusher - has gone missing!'	-	+
+1794104028	cmd	Trentlin	23	2401	dresden.are	standing	89	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794104030	cmd	Trentlin	23	2405	dresden.are	standing	89	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794104030	cmd	Trentlin	23	2433	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794104030	cmd	Trentlin	23	2434	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104031	cmd	Trentlin	23	2435	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104031	cmd	Trentlin	23	2436	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104031	cmd	Trentlin	23	2437	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794104031	cmd	Trentlin	23	2438	dresden.are	standing	89	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794104032	cmd	Trentlin	23	2438	dresden.are	standing	89	0	-	open	west	Ok.	-	-
+1794104032	cmd	Trentlin	23	2439	dresden.are	standing	89	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794104033	cmd	Trentlin	23	6000	haon.are	standing	89	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794104034	cmd	Trentlin	23	6001	haon.are	standing	89	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794104034	cmd	Trentlin	23	6002	haon.are	standing	89	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794104034	cmd	Trentlin	23	6003	haon.are	standing	89	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794104034	cmd	Trentlin	23	6004	haon.are	standing	89	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794104035	cmd	Trentlin	23	6100	haon.are	standing	89	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794104035	cmd	Trentlin	23	6101	haon.are	standing	89	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794104035	cmd	Trentlin	23	6104	haon.are	standing	89	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1794104035	cmd	Trentlin	23	6105	haon.are	standing	89	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1794104036	cmd	Trentlin	23	6106	haon.are	standing	89	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794104036	cmd	Trentlin	23	6117	haon.are	standing	89	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794104036	cmd	Trentlin	23	6116	haon.are	standing	89	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794104036	cmd	Trentlin	23	6115	haon.are	standing	89	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794104037	cmd	Trentlin	23	6114	haon.are	standing	89	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.	-	+
+1794104037	cmd	Trentlin	23	6122	haon.are	standing	89	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.	-	+
+1794104037	cmd	Trentlin	23	6123	haon.are	standing	89	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows	-	+
+1794104037	cmd	Trentlin	23	6123	haon.are	standing	89	0	-	south		You need a boat to go there.	-	-
+1794104041	cmd	Trentlin	23	6123	haon.are	standing	92	0	-	levitate		You slowly rise up off the ground.	-	-
+1794104041	cmd	Trentlin	23	6123	haon.are	standing	92	0	-	open	south	There is no door to the south, just open passage.	-	-
+1794104042	cmd	Trentlin	23	9774	newthalo.are	standing	92	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.	-	+
+1794104042	cmd	Trentlin	23	9775	newthalo.are	standing	92	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]	-	-
+1794104042	cmd	Trentlin	23	15	connect.are	standing	92	0	-	southwest		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the	-	+
+1794104042	cmd	Trentlin	23	16	connect.are	standing	92	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank	-	+
+1794104043	cmd	Trentlin	23	1300	htower.are	standing	92	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and	-	+
+1794104043	cmd	Trentlin	23	1308	htower.are	standing	92	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104043	cmd	Trentlin	23	1307	htower.are	standing	92	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104045	cmd	Trentlin	23	1309	htower.are	standing	92	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104045	cmd	Trentlin	23	1309	htower.are	standing	92	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794104046	cmd	Trentlin	23	1307	htower.are	standing	92	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104047	cmd	Trentlin	23	1307	htower.are	standing	92	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794104047	cmd	Trentlin	23	1309	htower.are	standing	92	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104048	cmd	Trentlin	23	1309	htower.are	standing	92	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794104049	cmd	Trentlin	23	1308	htower.are	standing	92	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104049	cmd	Trentlin	23	1308	htower.are	standing	92	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794104050	cmd	Trentlin	23	1309	htower.are	standing	92	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104051	cmd	Trentlin	23	1309	htower.are	standing	92	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794104052	cmd	Trentlin	23	1307	htower.are	standing	92	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104052	cmd	Trentlin	23	1307	htower.are	standing	92	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794104053	cmd	Trentlin	23	1309	htower.are	standing	92	1	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104053	cmd	Trentlin	23	1309	htower.are	standing	92	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794104054	cmd	Trentlin	23	1306	htower.are	standing	92	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794104055	cmd	Trentlin	23	1306	htower.are	standing	92	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove	-	+
+1794104057	cmd	Trentlin	23	9301	galaxy.are	standing	92	0	-	north		Inside a Tavern //   You are inside a dimly-lit room.  The atmosphere makes you feel uncomfortable. // In front of you stands a mysterious gypsy.  She whispers 'Your fate and	-	+
+1794104058	cmd	Trentlin	23	9302	galaxy.are	standing	92	0	-	down		Inside the Crystal Ball //   You have touched the crystal ball and find that you have gone inside it: // a world of stars and wonders!  As you look back you figure out there is no	-	+
+1794104060	cmd	Trentlin	23	9303	galaxy.are	standing	92	0	-	north		Inside the Galaxy //   You are now inside the galaxy, around you, you see stars and nebulae smiling // at your presence, and comets and meteors wandering around you.  You realize	-	+
+1794104062	cmd	Trentlin	23	9303	galaxy.are	standing	92	0	-	exits		Obvious exits: // North - On an InterGalactic Walkway // East  - On the Bridge of Stars	-	+
+1794104071	cmd	Trentlin	23	9321	galaxy.are	standing	92	0	-	west		The Star Cluster //   You are inside the home of the stars.  All you can see around you are stars // and nothing else.  You eyes become pretty hurt as you look at them.	-	+
+1794104071	cmd	Trentlin	23	9322	galaxy.are	standing	92	0	-	north		Another Edge of the Galaxy //   This is another uninhabited place.  Exits lie north, east and south. // [Exits: north east south]	-	+
+1794104073	cmd	Trentlin	23	9322	galaxy.are	standing	92	0	-	get	all	You get The Amulet of Soulcrusher.	-	-
+1794104075	cmd	Trentlin	23	9322	galaxy.are	standing	92	0	-	consider	com	A speedy comet is far below your level. // A speedy comet has about a third of your hit points. // Blow for blow, you would need about 2 rounds to bring a speedy comet down; he would need about 85 rounds for you.	-	+
+1794104075	cmd	Trentlin	23	4207	dresden.are	standing	92	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104077	cmd	Trentlin	23	4202	dresden.are	standing	92	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794104077	cmd	Trentlin	23	4201	dresden.are	standing	92	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794104078	cmd	Trentlin	23	2427	dresden.are	standing	92	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794104079	cmd	Trentlin	23	2404	dresden.are	standing	92	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794104079	cmd	Trentlin	23	2401	dresden.are	standing	92	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794104079	cmd	Trentlin	23	2410	dresden.are	standing	92	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794104080	cmd	Trentlin	23	2411	dresden.are	standing	92	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794104080	cmd	Trentlin	23	2414	dresden.are	standing	92	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794104080	cmd	Trentlin	23	2497	dresden.are	standing	92	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794104080	cmd	Trentlin	23	2497	dresden.are	standing	92	0	-	up		Alas, you cannot go that way.	-	-
+1794104082	item	Trentlin	23	2497	dresden.are	25039	The Amulet of Soulcrusher	type=trash level=59 worn=0 nested=0 timer=119 cond=100 inside=0	aquest
+1794104082	outcome	Trentlin	23	2497	dresden.are	quest-complete	success	-	-	ordinary qp=1931->1931 offered=51 daily=18->18 coin=+2817408 kill=234784 streak=26 level=23 target=0
+1794104082	cmd	Trentlin	23	2497	dresden.are	standing	92	17	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Amulet of Soulcrusher to Questor Thews. // Questor Thews says 'Excellent work! The realm is in your debt!'	success:-	+
+1794104085	cmd	Trentlin	23	2497	dresden.are	standing	92	5	-	aquest	gamble yes	The dice BETRAY you! Your 51 quest points are lost.	-	-
+1794104086	cmd	Trentlin	23	2401	dresden.are	standing	92	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794104087	state	Trentlin	23	2401	dresden.are	lvl=23 hp=535/579 mana=112/1059 mv=97/290 align=-332 exp=54453 coin=342741082 bank=15087744233 qp=1931 prac=15 train=2 stash=54/75 remorts=1
+1794104087	cmd	Trentlin	23	2401	dresden.are	standing	92	0	-	score		| Name:       Trentlin | Level:      23 | Class:        Monk | // | Played:     31 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794104089	cmd	Trentlin	23	2401	dresden.are	standing	92	0	-	compare	gaunt	A) gauntlets of ogre power (level 23) // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794104100	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	drop	gaunt	You drop gauntlets of ogre power.	-	-
+1794104101	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	sacrifice	gaunt	The Gods give you 46 copper coins for your sacrifice.	-	-
+1794104102	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	inventory		You are carrying: //      (Humming) a great war helmet // ( 2) a spiked collar	-	+
+1794104107	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	compare	colla	A) a spiked collar (level 23) // B) the Heart Guard of the Moon (level 14), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794104117	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	remove	heart	You stop using the Heart Guard of the Moon.	-	-
+1794104119	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	drop	heart	You drop the Heart Guard of the Moon.	-	-
+1794104120	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	remove	cloa	You stop using an Eagle-feather cloak.	-	-
+1794104124	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	remove	cloa	You stop using a Blue rimmed, white cloak.	-	-
+1794104125	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	wear	ea	You wear an Eagle-feather cloak about your body.	-	-
+1794104128	cmd	Trentlin	23	2401	dresden.are	standing	95	6	-	stash	put cloa	You put a Blue rimmed, white cloak away for safe keeping.	-	-
+1794104130	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	wear	coll	You wear a spiked collar around your neck.	-	-
+1794104130	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	wear	coll	You must be level 24 to use this object.	-	-
+1794104132	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	inventory		You are carrying: //      (Humming) a great war helmet //      a crystal key	-	+
+1794104137	cmd	Trentlin	23	2401	dresden.are	standing	95	0	-	wear	spike	You must be level 24 to use this object.	-	-
+1794104146	cmd	Trentlin	23	2401	dresden.are	standing	97	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794104150	cmd	Trentlin	23	2401	dresden.are	standing	97	0	-	levitate		You are already airborne.	-	-
+1794104155	cmd	Trentlin	23	2404	dresden.are	standing	97	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794104156	cmd	Trentlin	23	2427	dresden.are	standing	97	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794104156	cmd	Trentlin	23	4201	dresden.are	standing	97	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794104156	cmd	Trentlin	23	4202	dresden.are	standing	97	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794104156	cmd	Trentlin	23	4207	dresden.are	standing	97	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794104157	cmd	Trentlin	23	3700	school.are	standing	97	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794104157	cmd	Trentlin	23	3772	school.are	standing	97	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794104157	cmd	Trentlin	23	3795	school.are	standing	97	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794104157	cmd	Trentlin	23	15000	campus.are	standing	97	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794104158	cmd	Trentlin	23	15001	campus.are	standing	97	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794104158	cmd	Trentlin	23	15002	campus.are	standing	97	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794104158	cmd	Trentlin	23	15003	campus.are	standing	97	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794104158	cmd	Trentlin	23	15004	campus.are	standing	97	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794104159	cmd	Trentlin	23	15010	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794104159	cmd	Trentlin	23	15011	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794104159	cmd	Trentlin	23	15012	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794104159	cmd	Trentlin	23	15013	campus.are	standing	97	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794104160	cmd	Trentlin	23	15038	campus.are	standing	97	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794104160	cmd	Trentlin	23	15068	campus.are	standing	97	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794104160	cmd	Trentlin	23	30200	hyrule.are	standing	97	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794104162	cmd	Trentlin	23	30223	hyrule.are	standing	97	0	-	north		Rock Wall Above the Start //   A wall of brown rock rises along the north side of a grassy field, its face // scarred and cracked. One section looks weaker than the rest, a hollow knock	-	+
+1794104162	cmd	Trentlin	23	30223	hyrule.are	standing	97	0	-	north		Alas, you cannot go that way.	-	-
+1794104163	cmd	Trentlin	23	30222	hyrule.are	standing	97	0	-	west		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow	-	+
+1794104164	cmd	Trentlin	23	30221	hyrule.are	standing	97	0	-	west		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy	-	+
+1794104165	cmd	Trentlin	23	30237	hyrule.are	standing	97	0	-	north		Shore Below the Snake //   The forest gives way to the western waters of Lake Hylia, glittering under // an open sky. A small island rises a short distance to the north, and a dark	-	+
+1794104166	cmd	Trentlin	23	30253	hyrule.are	standing	97	0	-	north		Isle of the Snake //   A small green island rises out of the lake, ringed on every side by cold, // lapping water. At its heart a dark stone entrance is carved in the coiled	-	+
+1794104168	cmd	Trentlin	23	30253	hyrule.are	standing	97	0	-	consider	pea	A peahat is about your level. // A peahat has about as many hit points as you. // Blow for blow, you would need about 4 rounds to bring a peahat down; it would need about 18 rounds for you.	-	+
+1794104171	cmd	Trentlin	23	30253	hyrule.are	standing	97	0	-	kill	pea	Your punch wounds a peahat. // Your punch MASSACRES a peahat!	-	-
+1794104177	cmd	Trentlin	23	30253	hyrule.are	fighting	92	0	fight	kick		Your kick scratches a peahat.	-	-
