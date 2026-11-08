@@ -15245,3 +15245,4 @@
 1794110109	cmd	Trentlin	25	4210	dresden.are	standing	41	0	-	sleep		You go to sleep.	-	-
 1794110113	cmd	Trentlin	25	4210	dresden.are	sleeping	41	0	-	skills		Level  1: dagger              75%      hand to hand        85%       //           recall             100%       // Level  3: kick                79%      	-	+
 1794110114	session	Trentlin	25	4210	dresden.are	quit	239s	+1 levels	+1239 exp	+4142664 copper	4 kills	0 deaths	0 quests	113 commands	0 refused	coin: loot 4p 14g 26s 64c	spent on: none	exp: kills +1235, skilluse +4
+1794114001	stall	-	0	0	-	255ms	slowest room_update 254ms	command - 0ms	0 players	0 more since
