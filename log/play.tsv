@@ -17338,3 +17338,6 @@
 1794169208	cmd	Trentlin	27	4210	dresden.are	standing	78	0	-	north		Alas, you cannot go that way.	-	-
 1794169208	cmd	Trentlin	27	4210	dresden.are	standing	78	0	-	sleep		You go to sleep.	-	-
 1794169210	session	Trentlin	27	4210	dresden.are	quit	429s	+1 levels	+1694 exp	+7868242 copper	5 kills	0 deaths	1 quests	258 commands	4 refused	coin: loot 5p 18g 33s 46c, quests 3p 18g 48s 96c, spent 50g	spent on: heal 50g	exp: kills +1670, skilluse +24
+1794177915	refused	Killuminati	70	2401	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794177916	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1	-	-
+1794177924	session	Killuminati	70	2401	dresden.are	quit	9s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	3 commands	1 refused	coin: none	spent on: none	exp: none
