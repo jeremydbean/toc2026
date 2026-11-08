@@ -259,8 +259,19 @@ class MountedTrapTests(unittest.TestCase):
                     standing after the move stood during it (nothing raises
                     one in between); one gone afterwards makes the try say
                     nothing, so the mover goes back and tries again under a
-                    fresh cloud."""
-                    for _ in range(6):
+                    fresh cloud.
+
+                    A tick that falls in the move's own pulse gasses the
+                    room in the same burst of output -- the input pass runs
+                    the move and char_update runs before the prompt is
+                    written -- and counts twice (nightly CI, 2026-11-08:
+                    2 != 1). So a move whose burst does not hold exactly
+                    one fire is made again; a rider struck twice by the
+                    trap itself would be struck twice on every try, and
+                    the last try's burst is what the assertions read."""
+                    said = ""
+                    stood = 0
+                    for _ in range(10):
                         if not cloud_stands():
                             maker.sync(f"goto {gassed}")
                             self.assertIn("noxious fumes",
@@ -268,9 +279,13 @@ class MountedTrapTests(unittest.TestCase):
                             maker.sync(f"goto {start}")
                         said = client.sync(direction, timeout=60)
                         if cloud_stands():
-                            return said
+                            stood += 1
+                            if gas_in_move(said, arrival) == 1 or stood >= 4:
+                                return said
                         client.sync(back, timeout=60)
-                    self.fail(f"no cloud stood through a {direction} move in six tries")
+                    if stood:
+                        return said
+                    self.fail(f"no cloud stood through a {direction} move in ten tries")
 
                 walked_in = through_cloud(walker, "east", "west", "The East Paddock")
                 # RIDE and the bucks before it lag the rider; sync waits that out.
