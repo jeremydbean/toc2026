@@ -276600,3 +276600,27 @@ Sun Nov  8 11:40:18 2026 :: Treasure goblin: vanished from room 786 (The Rocky C
 Sun Nov  8 11:50:22 2026 :: Treasure goblin: vanished from room 10011 (The officer's mess., glitter.are) (too long in one area).
 Sun Nov  8 11:59:39 2026 :: Connection guard: last hour 16 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
 Sun Nov  8 12:00:27 2026 :: Treasure goblin: vanished from room 4072 (The tunnel, moria.are) (too long in one area).
+Sun Nov  8 12:07:05 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Nov  8 12:07:05 2026 :: Loading Trentlin's playerfile
+Sun Nov  8 12:07:06 2026 :: Loading Trentlin's playerfile
+Sun Nov  8 12:07:06 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sun Nov  8 12:07:07 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 0
+Sun Nov  8 12:07:12 2026 :: Log Trentlin [4210]: wake
+Sun Nov  8 12:07:13 2026 :: Log Trentlin [4210]: l
+Sun Nov  8 12:07:15 2026 :: Log Trentlin [4210]: s
+Sun Nov  8 12:07:15 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sun Nov  8 12:07:16 2026 :: Log Trentlin [4203]: s
+Sun Nov  8 12:07:16 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Sun Nov  8 12:07:16 2026 :: Log Trentlin [4202]: w
+Sun Nov  8 12:07:16 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Sun Nov  8 12:07:16 2026 :: Log Trentlin [4207]: w
+Sun Nov  8 12:07:16 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Nov  8 12:07:16 2026 :: Log Trentlin [4208]: w
+Sun Nov  8 12:07:19 2026 :: Log Trentlin [4208]: heal heal
+Sun Nov  8 12:07:19 2026 :: Log Trentlin [4208]: gold -500
+Sun Nov  8 12:07:22 2026 :: Log Trentlin [4208]: heal heal
+Sun Nov  8 12:07:22 2026 :: Log Trentlin [4208]: gold -500
+Sun Nov  8 12:07:25 2026 :: Log Trentlin [4208]: heal heal
+Sun Nov  8 12:07:25 2026 :: Log Trentlin [4208]: gold -500
+Sun Nov  8 12:07:28 2026 :: Log Trentlin [4208]: heal heal
+Sun Nov  8 12:07:28 2026 :: Log Trentlin [4208]: gold -500

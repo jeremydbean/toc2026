@@ -15247,3 +15247,14 @@
 1794110114	session	Trentlin	25	4210	dresden.are	quit	239s	+1 levels	+1239 exp	+4142664 copper	4 kills	0 deaths	0 quests	113 commands	0 refused	coin: loot 4p 14g 26s 64c	spent on: none	exp: kills +1235, skilluse +4
 1794114001	stall	-	0	0	-	255ms	slowest room_update 254ms	command - 0ms	0 players	0 more since
 1794128414	stall	-	0	0	-	256ms	slowest room_update 255ms	command - 0ms	0 players	0 more since
+1794139632	cmd	Trentlin	25	4210	dresden.are	sleeping	41	0	-	wake		You wake and stand up.	-	-
+1794139633	cmd	Trentlin	25	4210	dresden.are	standing	41	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794139635	cmd	Trentlin	25	4203	dresden.are	standing	41	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794139636	cmd	Trentlin	25	4202	dresden.are	standing	41	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794139636	cmd	Trentlin	25	4207	dresden.are	standing	41	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794139636	cmd	Trentlin	25	4208	dresden.are	standing	41	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794139636	cmd	Trentlin	25	4208	dresden.are	standing	41	0	-	west		Alas, you cannot go that way.	-	-
+1794139639	cmd	Trentlin	25	4208	dresden.are	standing	41	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794139642	cmd	Trentlin	25	4208	dresden.are	standing	60	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794139645	cmd	Trentlin	25	4208	dresden.are	standing	78	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794139648	cmd	Trentlin	25	4208	dresden.are	standing	97	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
