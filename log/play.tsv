@@ -17053,3 +17053,27 @@
 1794143572	cmd	Trentlin	26	9129	dylan.are	fighting	100	0	fight	kick		Your kick wounds the screaming, filthy harpy.	-	-
 1794143576	cmd	Trentlin	26	9129	dylan.are	fighting	100	0	fight	kick		Your kick scratches the screaming, filthy harpy.	-	-
 1794143582	cmd	Trentlin	26	9129	dylan.are	fighting	100	0	fight	kick		Your kick misses the screaming, filthy harpy.	-	-
+1794143586	cmd	Trentlin	26	9129	dylan.are	fighting	100	0	fight	kick		Your kick mauls the screaming, filthy harpy.	-	-
+1794143590	cmd	Trentlin	26	9130	dylan.are	standing	100	0	-	east		Grumpy little cloud. //   This cloud mutters and grumbles at you.  You have to jump quickly // to avoid a lightning bolt that passes by your toe.  Your aren't	-	+
+1794143591	cmd	Trentlin	26	9127	dylan.are	standing	100	0	-	south		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143592	cmd	Trentlin	26	9126	dylan.are	standing	100	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143593	cmd	Trentlin	26	9131	dylan.are	standing	100	0	-	north		Happy little cloud. //   You hear the cloud humming a little song to itself, but you can't // figure out what tune it is.	-	+
+1794143594	cmd	Trentlin	26	9126	dylan.are	standing	100	0	-	south		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143595	cmd	Trentlin	26	9126	dylan.are	standing	100	0	-	exits		Obvious exits: // North - Happy little cloud. // West  - A fluffy white cloud.	-	+
+1794143596	cmd	Trentlin	26	9126	dylan.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794143597	cmd	Trentlin	26	9107	dylan.are	standing	100	0	-	up		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143598	cmd	Trentlin	26	9108	dylan.are	standing	100	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794143600	cmd	Trentlin	26	9108	dylan.are	fighting	100	0	fight	kick		Your kick grazes the screaming, filthy harpy.	-	-
+1794143603	cmd	Trentlin	26	9108	dylan.are	fighting	100	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS the screaming, filthy harpy!	-	-
+1794143606	cmd	Trentlin	26	9108	dylan.are	fighting	100	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS the screaming, filthy harpy!	-	-
+1794143616	cmd	Trentlin	26	9108	dylan.are	fighting	100	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch injures the screaming, filthy harpy.	-	-
+1794143618	cmd	Trentlin	26	9108	dylan.are	fighting	100	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates the screaming, filthy harpy!	-	-
+1794143622	cmd	Trentlin	26	9108	dylan.are	fighting	100	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch maims the screaming, filthy harpy!	-	-
+1794143625	cmd	Trentlin	26	9108	dylan.are	fighting	100	0	fight	nerve		You jab the screaming, filthy harpy with wedged fingers, paralyzing a nerve. // Your nerve pinch maims the screaming, filthy harpy!	-	-
+1794143631	cmd	Trentlin	26	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794143635	state	Trentlin	26	4207	dresden.are	lvl=26 hp=629/629 mana=418/1189 mv=81/311 align=-187 exp=61710 coin=30615585 bank=15087744233 qp=2163 prac=6 train=1 stash=54/75 remorts=1
+1794143635	cmd	Trentlin	26	4207	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      26 | Class:        Monk | // | Played:     32 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794143637	cmd	Trentlin	26	4207	dresden.are	standing	100	0	-	skills		Level  1: dagger              75%      hand to hand        93%       //           recall             100%       // Level  3: kick                80%      	-	+
+1794143658	state	Trentlin	26	4207	dresden.are	lvl=26 hp=629/629 mana=418/1189 mv=81/311 align=-187 exp=61710 coin=30615585 bank=15087744233 qp=2163 prac=6 train=1 stash=54/75 remorts=1
+1794143658	cmd	Trentlin	26	4207	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      26 | Class:        Monk | // | Played:     32 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794143666	session	Trentlin	26	4207	dresden.are	quit	4039s	+1 levels	+4089 exp	-280390020 copper	69 kills	1 deaths	1 quests	1810 commands	11 refused	coin: loot 40p 32g 13s 8c, quests 2p 38g 86s 72c, spent 343p 60g	spent on: heal 343p 60g	exp: kills +4071, skilluse +114, flee -60, death -36
