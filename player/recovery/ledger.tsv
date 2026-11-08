@@ -331,3 +331,8 @@
 331	1794104975	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261108_022935.quest fnv a6107723 23614 bytes	f8709b81
 332	1794105134	snapshot	committed	P6adca00b00079e30	Trentlin	-	level	-	Trentlin.20261108_023214.level fnv 8c33316a 23549 bytes	6563da59
 333	1794110080	snapshot	committed	P6adca00b00079e30	Trentlin	-	level	-	Trentlin.20261108_035440.level fnv d116a904 23368 bytes	08c5d977
+334	1794140825	snapshot	committed	P6adca00b00079e30	Trentlin	-	prepenalty	-	Trentlin.20261108_122705.prepenalty fnv e1f81688 23492 bytes	31581014
+335	1794140825	snapshot	committed	P6adca00b00079e30	Trentlin	-	death	-	Trentlin.20261108_122705.death fnv 07a5d1f8 23492 bytes	6f108482
+336	1794140825	request	pending	P6adca00b00079e30	Trentlin	death:c6af06a99014a1f	death	(violence_update)	corpse c6af06a99014a1f in room 30443	889a9032
+337	1794140825	corpse	created	P6adca00b00079e30	Trentlin	c6af06a99014a1f	death	-	made in room 30443 holding 42 objects; death snapshot Trentlin.20261108_122705.death	7232e8a7
+338	1794140825	request	committed	P6adca00b00079e30	Trentlin	death:c6af06a99014a1f	death	-	their save reached the disk	bf15e91f
