@@ -15130,3 +15130,5 @@
 1794105490	cmd	Trentlin	24	4210	dresden.are	standing	23	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
 1794105490	cmd	Trentlin	24	4210	dresden.are	standing	23	0	-	north		Alas, you cannot go that way.	-	-
 1794105491	cmd	Trentlin	24	4210	dresden.are	standing	23	0	-	sleep		You go to sleep.	-	-
+1794105950	cmd	Trentlin	24	4210	dresden.are	standing	100	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794105953	session	Trentlin	24	4210	dresden.are	quit	4029s	+3 levels	+7590 exp	-44525515 copper	27 kills	0 deaths	3 quests	1532 commands	0 refused	coin: loot 20p 7g 24s 41c, quests 7p 88g 5s 76c, spent 77p 47g 85s 32c	spent on: heal 75p 40g, buy 40g, repair 1p 67g 85s 32c	exp: kills +7629, skilluse +26, flee -40, recall -25
