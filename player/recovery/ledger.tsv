@@ -336,3 +336,4 @@
 336	1794140825	request	pending	P6adca00b00079e30	Trentlin	death:c6af06a99014a1f	death	(violence_update)	corpse c6af06a99014a1f in room 30443	889a9032
 337	1794140825	corpse	created	P6adca00b00079e30	Trentlin	c6af06a99014a1f	death	-	made in room 30443 holding 42 objects; death snapshot Trentlin.20261108_122705.death	7232e8a7
 338	1794140825	request	committed	P6adca00b00079e30	Trentlin	death:c6af06a99014a1f	death	-	their save reached the disk	bf15e91f
+339	1794142221	snapshot	committed	P6adca00b00079e30	Trentlin	-	level	-	Trentlin.20261108_125021.level fnv 2049a217 23612 bytes	e2e42f98

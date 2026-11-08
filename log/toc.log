@@ -278564,3 +278564,110 @@ Sun Nov  8 12:47:37 2026 :: Log Trentlin [29003]: ne
 Sun Nov  8 12:47:37 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29003
 Sun Nov  8 12:47:39 2026 :: Log Trentlin [29060]: k ch
 Sun Nov  8 12:47:44 2026 :: Log Trentlin [29060]: nerve
+Sun Nov  8 12:47:54 2026 :: Log Trentlin [29060]: killed Security Chief
+Sun Nov  8 12:47:54 2026 :: Log Trentlin [29060]: coin +1 platinum
+Sun Nov  8 12:47:54 2026 :: Log Trentlin [29060]: coin +5 silver
+Sun Nov  8 12:47:54 2026 :: Log Trentlin [29060]: coin +6 copper
+Sun Nov  8 12:47:54 2026 :: Log Trentlin [29060]: coin +2 gold
+Sun Nov  8 12:47:55 2026 :: Log Trentlin [29060]: get key co
+Sun Nov  8 12:47:57 2026 :: Log Trentlin [29060]: unlock east
+Sun Nov  8 12:47:58 2026 :: Log Trentlin [29060]: open east
+Sun Nov  8 12:48:00 2026 :: Log Trentlin [29060]: drop key
+Sun Nov  8 12:48:00 2026 :: Log Trentlin [29060]: e
+Sun Nov  8 12:48:00 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sun Nov  8 12:48:01 2026 :: Log Trentlin [29061]: iron
+Sun Nov  8 12:48:09 2026 :: Log Trentlin [29061]: k gua
+Sun Nov  8 12:48:12 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:48:16 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:48:19 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:48:30 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:48:33 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:48:37 2026 :: Log Trentlin [29061]: s
+Sun Nov  8 12:48:37 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sun Nov  8 12:48:37 2026 :: Log Trentlin [29062]: trip guard
+Sun Nov  8 12:48:45 2026 :: Log Trentlin [29062]: killed a security guard
+Sun Nov  8 12:48:45 2026 :: Log Trentlin [29062]: coin +1 platinum
+Sun Nov  8 12:48:45 2026 :: Log Trentlin [29062]: coin +7 silver
+Sun Nov  8 12:48:45 2026 :: Log Trentlin [29062]: coin +10 copper
+Sun Nov  8 12:48:45 2026 :: Log Trentlin [29062]: coin +4 gold
+Sun Nov  8 12:48:48 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:48:49 2026 :: Log Trentlin [29062]: k gua
+Sun Nov  8 12:48:52 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:48:56 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:49:01 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:49:07 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:49:10 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:49:13 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:49:16 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:49:20 2026 :: Log Trentlin [29062]: nerve
+Sun Nov  8 12:49:21 2026 :: Log Trentlin [29062]: killed a security guard
+Sun Nov  8 12:49:21 2026 :: Log Trentlin [29062]: coin +1 platinum
+Sun Nov  8 12:49:21 2026 :: Log Trentlin [29062]: coin +7 silver
+Sun Nov  8 12:49:21 2026 :: Log Trentlin [29062]: coin +10 copper
+Sun Nov  8 12:49:21 2026 :: Log Trentlin [29062]: coin +4 gold
+Sun Nov  8 12:49:24 2026 :: Log Trentlin [29062]: sac co
+Sun Nov  8 12:49:24 2026 :: Log Trentlin [29062]: coin +54 copper
+Sun Nov  8 12:49:24 2026 :: Log Trentlin [29062]: sac co
+Sun Nov  8 12:49:24 2026 :: Log Trentlin [29062]: coin +54 copper
+Sun Nov  8 12:49:25 2026 :: Log Trentlin [29062]: l
+Sun Nov  8 12:49:25 2026 :: Log Trentlin [29062]: n
+Sun Nov  8 12:49:25 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29062
+Sun Nov  8 12:49:31 2026 :: Log Trentlin [29061]: aff
+Sun Nov  8 12:49:33 2026 :: Log Trentlin [29061]: w
+Sun Nov  8 12:49:33 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29061
+Sun Nov  8 12:49:34 2026 :: Log Trentlin [29060]: affects off: iron skin
+Sun Nov  8 12:49:34 2026 :: Log Trentlin [29060]: sleep
+Sun Nov  8 12:49:36 2026 :: Log Trentlin [29060]: wake
+Sun Nov  8 12:49:36 2026 :: Log Trentlin [29060]: e
+Sun Nov  8 12:49:36 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sun Nov  8 12:49:37 2026 :: Log Trentlin [29061]: iron
+Sun Nov  8 12:49:44 2026 :: Log Trentlin [29061]: k g
+Sun Nov  8 12:49:47 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:49:54 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:49:57 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:50:12 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:50:15 2026 :: Log Trentlin [29061]: nerve
+Sun Nov  8 12:50:17 2026 :: Log Trentlin [29061]: kick
+Sun Nov  8 12:50:20 2026 :: Log Trentlin [29061]: kick
+Sun Nov  8 12:50:21 2026 :: Log Trentlin [29061]: level 25 -> 26 (earned)
+Sun Nov  8 12:50:21 2026 :: Trentlin has achieved level 26!
+Sun Nov  8 12:50:21 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261108_125021.level (PRESTORE Trentlin to see it).
+Sun Nov  8 12:50:21 2026 :: Log Trentlin [29061]: killed a security guard
+Sun Nov  8 12:50:21 2026 :: Log Trentlin [29061]: coin +1 platinum
+Sun Nov  8 12:50:21 2026 :: Log Trentlin [29061]: coin +7 silver
+Sun Nov  8 12:50:21 2026 :: Log Trentlin [29061]: coin +10 copper
+Sun Nov  8 12:50:21 2026 :: Log Trentlin [29061]: coin +4 gold
+Sun Nov  8 12:50:26 2026 :: Log Trentlin [29061]: sac co
+Sun Nov  8 12:50:26 2026 :: Log Trentlin [29061]: coin +54 copper
+Sun Nov  8 12:50:28 2026 :: Log Trentlin [29061]: s
+Sun Nov  8 12:50:28 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sun Nov  8 12:50:29 2026 :: Log Trentlin [29062]: s
+Sun Nov  8 12:50:29 2026 :: Log Trentlin [29063]: arrived (Corridor) from 29062
+Sun Nov  8 12:50:29 2026 :: Log Trentlin [29063]: s
+Sun Nov  8 12:50:29 2026 :: Log Trentlin [29065]: arrived (Service Hallway) from 29063
+Sun Nov  8 12:50:30 2026 :: Log Trentlin [29065]: s
+Sun Nov  8 12:50:31 2026 :: Log Trentlin [29065]: e
+Sun Nov  8 12:50:31 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29065
+Sun Nov  8 12:50:32 2026 :: Log Trentlin [29066]: k g
+Sun Nov  8 12:50:35 2026 :: Log Trentlin [29066]: nerve
+Sun Nov  8 12:50:38 2026 :: Log Trentlin [29066]: nerve
+Sun Nov  8 12:50:43 2026 :: Log Trentlin [29066]: nerve
+Sun Nov  8 12:50:47 2026 :: Log Trentlin [29066]: nerve
+Sun Nov  8 12:50:52 2026 :: Log Trentlin [29066]: trip
+Sun Nov  8 12:50:54 2026 :: Log Trentlin [29066]: killed a security guard
+Sun Nov  8 12:50:54 2026 :: Log Trentlin [29066]: coin +1 platinum
+Sun Nov  8 12:50:54 2026 :: Log Trentlin [29066]: coin +7 silver
+Sun Nov  8 12:50:54 2026 :: Log Trentlin [29066]: coin +10 copper
+Sun Nov  8 12:50:54 2026 :: Log Trentlin [29066]: coin +4 gold
+Sun Nov  8 12:50:58 2026 :: Log Trentlin [29066]: reca
+Sun Nov  8 12:50:58 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29066
+Sun Nov  8 12:50:59 2026 :: Log Trentlin [4207]: e
+Sun Nov  8 12:50:59 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov  8 12:51:00 2026 :: Log Trentlin [4202]: n
+Sun Nov  8 12:51:00 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Nov  8 12:51:00 2026 :: Log Trentlin [4203]: n
+Sun Nov  8 12:51:00 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Nov  8 12:51:01 2026 :: Log Trentlin [4210]: n
+Sun Nov  8 12:51:01 2026 :: Log Trentlin [4210]: sleep
+Sun Nov  8 12:51:57 2026 :: Log Trentlin [4210]: eq
+Sun Nov  8 12:52:26 2026 :: Log Trentlin [4210]: affects off: iron skin

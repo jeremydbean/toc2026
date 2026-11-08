@@ -16406,3 +16406,64 @@
 1794142057	cmd	Trentlin	25	29060	korzath1.are	standing	91	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
 1794142059	cmd	Trentlin	25	29060	korzath1.are	standing	91	0	-	kill	ch	Your punch MASSACRES Security Chief! // Security Chief parries your attack.	-	-
 1794142064	cmd	Trentlin	25	29060	korzath1.are	fighting	94	0	fight	nerve		You jab Security Chief with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES Security Chief!	-	-
+1794142075	cmd	Trentlin	25	29060	korzath1.are	standing	86	0	-	get	key co	You get a crystal key from corpse of Security Chief.	-	-
+1794142077	cmd	Trentlin	25	29060	korzath1.are	standing	86	0	-	unlock	east	*Click*	-	-
+1794142078	cmd	Trentlin	25	29060	korzath1.are	standing	86	0	-	open	east	Ok.	-	-
+1794142080	cmd	Trentlin	25	29060	korzath1.are	standing	86	0	-	drop	key	You drop a crystal key.	-	-
+1794142080	cmd	Trentlin	25	29061	korzath1.are	standing	86	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794142081	cmd	Trentlin	25	29061	korzath1.are	standing	86	0	-	iron		Your skin hardens.	-	-
+1794142089	cmd	Trentlin	25	29061	korzath1.are	standing	86	0	-	kill	gua	Your punch decimates a security guard! // Your punch decimates a security guard! // A security guard parries your attack.	-	-
+1794142092	cmd	Trentlin	25	29061	korzath1.are	fighting	82	4	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794142096	cmd	Trentlin	25	29061	korzath1.are	fighting	82	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a security guard.	-	-
+1794142099	cmd	Trentlin	25	29061	korzath1.are	fighting	82	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794142110	cmd	Trentlin	25	29061	korzath1.are	fighting	83	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794142113	cmd	Trentlin	25	29061	korzath1.are	fighting	83	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794142117	cmd	Trentlin	25	29062	korzath1.are	standing	83	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794142117	cmd	Trentlin	25	29062	korzath1.are	standing	83	0	-	trip	guard	You trip a security guard and a security guard goes down! // Your trip grazes a security guard.	-	-
+1794142128	cmd	Trentlin	25	29062	korzath1.are	standing	78	0	-	nerve		Who do you want to attack?	-	-
+1794142129	cmd	Trentlin	25	29062	korzath1.are	standing	78	0	-	kill	gua	Your punch mauls a security guard. // Your punch *** DEMOLISHES *** a security guard! // A security guard parries your attack.	-	-
+1794142132	cmd	Trentlin	25	29062	korzath1.are	fighting	78	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS a security guard!	-	-
+1794142136	cmd	Trentlin	25	29062	korzath1.are	fighting	78	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch maims a security guard!	-	-
+1794142141	cmd	Trentlin	25	29062	korzath1.are	fighting	78	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794142147	cmd	Trentlin	25	29062	korzath1.are	fighting	74	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a security guard.	-	-
+1794142150	cmd	Trentlin	25	29062	korzath1.are	fighting	70	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard!	-	-
+1794142153	cmd	Trentlin	25	29062	korzath1.are	fighting	67	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794142156	cmd	Trentlin	25	29062	korzath1.are	fighting	62	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794142160	cmd	Trentlin	25	29062	korzath1.are	fighting	62	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a security guard.	-	-
+1794142164	cmd	Trentlin	25	29062	korzath1.are	standing	62	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794142164	cmd	Trentlin	25	29062	korzath1.are	standing	62	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794142165	cmd	Trentlin	25	29062	korzath1.are	standing	62	0	-	look		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794142165	cmd	Trentlin	25	29061	korzath1.are	standing	62	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794142171	cmd	Trentlin	25	29061	korzath1.are	standing	62	0	-	affect		You are affected by: // Skill: 'iron skin' modifies armor class by -20 for 0 hours.	-	-
+1794142173	cmd	Trentlin	25	29060	korzath1.are	standing	62	0	-	west		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794142174	cmd	Trentlin	25	29060	korzath1.are	standing	65	0	-	sleep		You go to sleep.	-	-
+1794142176	cmd	Trentlin	25	29060	korzath1.are	sleeping	65	0	-	wake		You wake and stand up.	-	-
+1794142176	cmd	Trentlin	25	29061	korzath1.are	standing	65	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794142177	cmd	Trentlin	25	29061	korzath1.are	standing	65	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794142184	cmd	Trentlin	25	29061	korzath1.are	standing	65	0	-	kill	g	Your punch MANGLES a security guard! // A security guard dodges your attack. // A security guard parries your attack.	-	-
+1794142187	cmd	Trentlin	25	29061	korzath1.are	fighting	60	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794142194	cmd	Trentlin	25	29061	korzath1.are	fighting	59	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794142197	cmd	Trentlin	25	29061	korzath1.are	fighting	55	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard.	-	-
+1794142212	cmd	Trentlin	25	29061	korzath1.are	fighting	53	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard.	-	-
+1794142215	cmd	Trentlin	25	29061	korzath1.are	fighting	47	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard!	-	-
+1794142217	cmd	Trentlin	25	29061	korzath1.are	fighting	44	0	fight	kick		Your kick injures a security guard.	-	-
+1794142220	cmd	Trentlin	25	29061	korzath1.are	fighting	44	0	fight	kick		Your kick misses a security guard.	-	-
+1794142226	cmd	Trentlin	26	29061	korzath1.are	standing	43	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794142228	cmd	Trentlin	26	29062	korzath1.are	standing	43	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794142229	cmd	Trentlin	26	29063	korzath1.are	standing	43	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside	-	+
+1794142229	cmd	Trentlin	26	29065	korzath1.are	standing	43	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794142230	cmd	Trentlin	26	29065	korzath1.are	standing	43	0	-	south		Alas, you cannot go that way.	-	-
+1794142231	cmd	Trentlin	26	29066	korzath1.are	standing	43	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.	-	+
+1794142232	cmd	Trentlin	26	29066	korzath1.are	standing	43	0	-	kill	g	A security guard dodges your attack. // Your punch *** DEVASTATES *** a security guard! // A security guard parries your attack.	-	-
+1794142235	cmd	Trentlin	26	29066	korzath1.are	fighting	45	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a security guard.	-	-
+1794142238	cmd	Trentlin	26	29066	korzath1.are	fighting	42	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard.	-	-
+1794142243	cmd	Trentlin	26	29066	korzath1.are	fighting	32	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794142247	cmd	Trentlin	26	29066	korzath1.are	fighting	28	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS a security guard!	-	-
+1794142252	cmd	Trentlin	26	29066	korzath1.are	fighting	19	0	fight	trip		Your trip misses a security guard.	-	-
+1794142258	cmd	Trentlin	26	4207	dresden.are	standing	19	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794142259	cmd	Trentlin	26	4202	dresden.are	standing	19	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794142260	cmd	Trentlin	26	4203	dresden.are	standing	19	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794142260	cmd	Trentlin	26	4210	dresden.are	standing	19	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794142261	cmd	Trentlin	26	4210	dresden.are	standing	19	0	-	north		Alas, you cannot go that way.	-	-
+1794142261	cmd	Trentlin	26	4210	dresden.are	standing	19	0	-	sleep		You go to sleep.	-	-
+1794142317	cmd	Trentlin	26	4210	dresden.are	sleeping	35	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a ring of braided thorn	-	+
