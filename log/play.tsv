@@ -16210,3 +16210,199 @@
 1794141761	cmd	Trentlin	25	30443	hyrule.are	standing	83	0	-	inventory		You are carrying: // ( 3) a small key //      the Magical Boomerang	-	+
 1794141764	cmd	Trentlin	25	30443	hyrule.are	standing	83	0	-	look	ma	A giant carnivorous plant with a thick central bulb and four snapping // flower heads, one on each side. Manhandla glides about the room // spitting fireballs from every mouth, and each head can be cut away on	-	+
 1794141767	cmd	Trentlin	25	30443	hyrule.are	standing	83	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794141774	cmd	Trentlin	25	30443	hyrule.are	standing	83	0	-	kill	ma	Your slash misses Manhandla. // Manhandla parries your attack.	-	-
+1794141777	cmd	Trentlin	25	30443	hyrule.are	fighting	83	0	fight	nerve		You cannot hold a weapon and do this.	-	-
+1794141781	cmd	Trentlin	25	30443	hyrule.are	fighting	68	0	fight	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn on finger>    a pink ice ring	-	+
+1794141784	cmd	Trentlin	25	30443	hyrule.are	fighting	51	0	fight	remove	biow	You do not have that item.	-	-
+1794141786	cmd	Trentlin	25	30443	hyrule.are	fighting	36	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141786	cmd	Trentlin	25	30443	hyrule.are	fighting	36	0	fight	flee		Manhandla is overcome with a feeling of despair and flees the battle.	-	-
+1794141787	cmd	Trentlin	25	30443	hyrule.are	fighting	36	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141787	cmd	Trentlin	25	30443	hyrule.are	fighting	36	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141787	cmd	Trentlin	25	30443	hyrule.are	fighting	36	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141789	cmd	Trentlin	25	30443	hyrule.are	fighting	36	0	fight	remove	bow	You stop using an Eagle archer's bow.	-	-
+1794141792	cmd	Trentlin	25	30443	hyrule.are	fighting	19	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141792	cmd	Trentlin	25	30443	hyrule.are	fighting	19	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141793	cmd	Trentlin	25	30443	hyrule.are	fighting	19	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141793	cmd	Trentlin	25	30448	hyrule.are	fighting	19	0	fight	flee		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794141793	cmd	Trentlin	25	30448	hyrule.are	standing	19	0	-	flee		You aren't fighting anyone.	-	-
+1794141793	cmd	Trentlin	25	30448	hyrule.are	standing	19	0	-	flee		You aren't fighting anyone.	-	-
+1794141794	cmd	Trentlin	25	30448	hyrule.are	standing	19	0	-	flee		You aren't fighting anyone.	-	-
+1794141794	cmd	Trentlin	25	30448	hyrule.are	standing	19	0	-	flee		You aren't fighting anyone.	-	-
+1794141794	cmd	Trentlin	25	30447	hyrule.are	standing	19	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794141795	cmd	Trentlin	25	30442	hyrule.are	standing	19	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794141795	cmd	Trentlin	25	30439	hyrule.are	standing	19	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794141796	cmd	Trentlin	25	30436	hyrule.are	standing	19	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794141796	cmd	Trentlin	25	30436	hyrule.are	standing	19	0	-	south		Alas, you cannot go that way.	-	-
+1794141796	cmd	Trentlin	25	30436	hyrule.are	standing	19	0	-	south		Alas, you cannot go that way.	-	-
+1794141796	cmd	Trentlin	25	30436	hyrule.are	standing	19	0	-	south		Alas, you cannot go that way.	-	-
+1794141797	cmd	Trentlin	25	30437	hyrule.are	standing	19	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794141798	cmd	Trentlin	25	30205	hyrule.are	standing	19	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794141799	cmd	Trentlin	25	4207	dresden.are	standing	19	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794141800	cmd	Trentlin	25	4208	dresden.are	standing	19	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794141801	cmd	Trentlin	25	4208	dresden.are	standing	19	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794141804	cmd	Trentlin	25	4208	dresden.are	standing	38	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794141807	cmd	Trentlin	25	4208	dresden.are	standing	56	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794141810	cmd	Trentlin	25	4208	dresden.are	standing	75	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794141813	cmd	Trentlin	25	4208	dresden.are	standing	93	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794141816	cmd	Trentlin	25	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (3 castings, 30 gold.)	-	-
+1794141820	cmd	Trentlin	25	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794141820	cmd	Trentlin	25	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794141820	cmd	Trentlin	25	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794141820	cmd	Trentlin	25	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794141821	cmd	Trentlin	25	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794141821	cmd	Trentlin	25	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141821	cmd	Trentlin	25	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141821	cmd	Trentlin	25	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794141822	cmd	Trentlin	25	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794141822	cmd	Trentlin	25	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794141822	cmd	Trentlin	25	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794141822	cmd	Trentlin	25	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794141823	cmd	Trentlin	25	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794141823	cmd	Trentlin	25	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794141823	cmd	Trentlin	25	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794141823	cmd	Trentlin	25	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794141827	cmd	Trentlin	25	30205	hyrule.are	standing	100	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794141830	cmd	Trentlin	25	30437	hyrule.are	standing	100	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794141831	cmd	Trentlin	25	30436	hyrule.are	standing	100	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794141832	cmd	Trentlin	25	30439	hyrule.are	standing	100	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794141832	cmd	Trentlin	25	30442	hyrule.are	standing	100	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794141833	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794141834	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	east		The locked is closed.	-	-
+1794141836	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794141837	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	east		The locked is closed.	-	-
+1794141839	cmd	Trentlin	25	30447	hyrule.are	standing	100	0	-	open	east	Ok.	-	-
+1794141839	cmd	Trentlin	25	30448	hyrule.are	standing	100	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794141840	cmd	Trentlin	25	30443	hyrule.are	standing	100	0	-	south		Level 3: Eastern Slime Hall //   Glistening sludge coats the floor of this chamber in thick, drying layers, // and the smell of damp moss hangs heavy. A row of blocks lines the far wall.	-	+
+1794141843	cmd	Trentlin	25	30443	hyrule.are	fighting	85	0	fight	nerve		You jab Manhandla with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES Manhandla!	-	-
+1794141848	cmd	Trentlin	25	30443	hyrule.are	fighting	65	0	fight	get	all cor	You get a ring of braided thorn from corpse of Manhandla. // You get a pair of rootstep boots from corpse of Manhandla. // You get a pair of four-bloom gauntlets from corpse of Manhandla.	-	+
+1794141849	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		A blade trap is overcome with a feeling of despair and flees the battle.	-	-
+1794141849	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141850	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141850	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141850	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		A blade trap is overcome with a feeling of despair and flees the battle.	-	-
+1794141851	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141851	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		A blade trap is overcome with a feeling of despair and flees the battle.	-	-
+1794141851	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141852	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141852	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141853	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794141854	cmd	Trentlin	25	30443	hyrule.are	fighting	64	0	fight	flee		A blade trap is overcome with a feeling of despair and flees the battle. // A blade trap leaves north // A blade trap has fled!	-	-
+1794141854	cmd	Trentlin	25	30443	hyrule.are	standing	64	0	-	flee		You aren't fighting anyone.	-	-
+1794141854	cmd	Trentlin	25	30443	hyrule.are	standing	64	0	-	flee		You aren't fighting anyone.	-	-
+1794141854	cmd	Trentlin	25	30443	hyrule.are	standing	64	0	-	flee		You aren't fighting anyone.	-	-
+1794141856	cmd	Trentlin	25	30448	hyrule.are	standing	64	0	-	north		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794141862	cmd	Trentlin	25	30448	hyrule.are	standing	66	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794141863	cmd	Trentlin	25	30449	hyrule.are	standing	66	0	-	east		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794141866	cmd	Trentlin	25	30449	hyrule.are	standing	66	0	-	open	north	It's locked.	-	-
+1794141868	cmd	Trentlin	25	30449	hyrule.are	standing	66	0	-	unlock	north	There is a flash of light as you unlock the manji.	-	-
+1794141869	cmd	Trentlin	25	30449	hyrule.are	standing	66	0	-	open	north	Ok.	-	-
+1794141870	cmd	Trentlin	25	30451	hyrule.are	standing	66	0	-	north		Level 3: Sanctum of the Golden Cross //   A turning cross inlaid in gold marks the centre of this quiet chamber above // the lair, and warm golden light hangs in the air around it. The green stone	-	+
+1794141872	cmd	Trentlin	25	30451	hyrule.are	standing	66	0	-	unlock	chest	*Click*	-	-
+1794141873	cmd	Trentlin	25	30451	hyrule.are	standing	66	0	-	open	chest	Ok. //                     ACHIEVEMENT EARNED // Spoils of the Manji  +16 points	-	+
+1794141875	cmd	Trentlin	25	30451	hyrule.are	standing	66	0	-	get	all chest	You already hold the third Triforce shard; one is all the Triforce needs.	-	-
+1794141882	cmd	Trentlin	25	30205	hyrule.are	standing	66	0	-	enter	light	You enter the Manji's returning light // Your stomach flip flops. Everything goes black for a moment. // Grove of the Manji	-	+
+1794141883	cmd	Trentlin	25	30205	hyrule.are	standing	66	0	-	look		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794141886	cmd	Trentlin	25	4207	dresden.are	standing	66	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794141887	cmd	Trentlin	25	4207	dresden.are	standing	66	0	-	inventory		You are carrying: //      (Glowing) the Manji's key //      (Glowing) the Manji's Heart Container	-	+
+1794141893	cmd	Trentlin	25	4207	dresden.are	standing	66	0	-	drop	key	You drop the Manji's key.	-	-
+1794141896	cmd	Trentlin	25	4207	dresden.are	standing	66	0	-	drop	moon	You drop the Moon's key.	-	-
+1794141899	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	sacrifice	key	The Gods give you 0 copper coins for your sacrifice.	-	-
+1794141899	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	sacrifice	key	The Gods give you 0 copper coins for your sacrifice.	-	-
+1794141900	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	inventory		You are carrying: //      (Glowing) the Manji's Heart Container //      (Glowing) the Manhandla bloom-whip	-	+
+1794141902	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	compare	heart	A) the Manji's Heart Container (level 20) // B) a mud school diploma (level 0), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794141908	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	drop	heart	You drop the Manji's Heart Container.	-	-
+1794141911	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	drop	whip	You drop the Manhandla bloom-whip.	-	-
+1794141912	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	sacrifice	heart	The Gods give you 40 copper coins for your sacrifice.	-	-
+1794141914	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	sacrifice	whip	The Gods give you 40 copper coins for your sacrifice.	-	-
+1794141915	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	inventory		You are carrying: //      the Heart Guard of the Manji //      a pair of four-bloom gauntlets	-	+
+1794141917	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	compare	hear	A) the Heart Guard of the Manji (level 20) // B) a spiked collar (level 24), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794141926	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	wear	hear	You stop using a spiked collar. // You wear the Heart Guard of the Manji around your neck.	-	-
+1794141934	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	drop	colla	You drop a spiked collar.	-	-
+1794141935	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	sacrifice	colla	The Gods give you 48 copper coins for your sacrifice.	-	-
+1794141938	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	inventory		You are carrying: //      a pair of four-bloom gauntlets //      a pair of rootstep boots	-	+
+1794141941	cmd	Trentlin	25	4207	dresden.are	standing	69	0	-	compare	gaunt	A) a pair of four-bloom gauntlets (level 20) // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794141950	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	drop	gaunt	You drop a pair of four-bloom gauntlets.	-	-
+1794141952	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	sacrifice	gaunt	The Gods give you 40 copper coins for your sacrifice.	-	-
+1794141953	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	inventory		You are carrying: //      a pair of rootstep boots //      a ring of braided thorn	-	+
+1794141954	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	compare	boot	A) a pair of rootstep boots (level 20) // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794141958	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	drop	boot	You drop a pair of rootstep boots.	-	-
+1794141960	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	sacrifice	boot	The Gods give you 40 copper coins for your sacrifice.	-	-
+1794141961	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	inventory		You are carrying: //      a ring of braided thorn // ( 2) a small key	-	+
+1794141963	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	compare	ring	A) a ring of braided thorn (level 20) // B) a pink ice ring (level 3), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1794141968	cmd	Trentlin	25	4207	dresden.are	standing	72	0	-	wear	ring	You stop using a pink ice ring. // You wear a ring of braided thorn on your left finger.	-	-
+1794141971	cmd	Trentlin	25	4207	dresden.are	standing	71	1	-	drop	ice	You drop a pink ice ring.	-	-
+1794141973	cmd	Trentlin	25	4207	dresden.are	standing	71	0	-	sacrifice	ice	The Gods give you 6 copper coins for your sacrifice.	-	-
+1794141974	cmd	Trentlin	25	4207	dresden.are	standing	71	0	-	inventory		You are carrying: // ( 2) a small key //      an Eagle archer's bow	-	+
+1794141981	cmd	Trentlin	25	4207	dresden.are	standing	71	0	-	drop	small	You drop a small key.	-	-
+1794141984	cmd	Trentlin	25	4207	dresden.are	standing	71	0	-	get	small	You get a small key.	-	-
+1794141986	cmd	Trentlin	25	4207	dresden.are	standing	71	0	-	drop	2.boom	You drop a small boomerang.	-	-
+1794141989	cmd	Trentlin	25	4207	dresden.are	standing	71	0	-	sacrifice	boom	The Gods give you 0 copper coins for your sacrifice.	-	-
+1794141989	cmd	Trentlin	25	4208	dresden.are	standing	71	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794141992	cmd	Trentlin	25	4208	dresden.are	standing	73	0	-	look	in co	That is not a container.	-	-
+1794141993	cmd	Trentlin	25	4208	dresden.are	standing	73	0	-	stash		Your stash holds 55 of 75 things. //     1) a Blue rimmed, white cloak //     2) a pair of Roman-style leggings	-	+
+1794142007	cmd	Trentlin	25	4208	dresden.are	standing	73	9	-	stash	get gaunt	You take a pair of pincer gauntlets out of your stash.	-	-
+1794142008	cmd	Trentlin	25	4208	dresden.are	standing	73	0	-	wear	ga	You must be level 40 to use this object.	-	-
+1794142013	cmd	Trentlin	25	4208	dresden.are	standing	73	6	-	stash	get vam	You take black steel vambraces out of your stash.	-	-
+1794142015	cmd	Trentlin	25	4208	dresden.are	standing	73	0	-	wear	vam	You must be level 30 to use this object.	-	-
+1794142017	cmd	Trentlin	25	4208	dresden.are	standing	73	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794142021	cmd	Trentlin	25	4208	dresden.are	standing	73	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body.	-	-
+1794142026	cmd	Trentlin	25	4208	dresden.are	standing	91	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (2 castings, 20 gold.)	-	-
+1794142032	cmd	Trentlin	25	4207	dresden.are	standing	91	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794142032	cmd	Trentlin	25	4202	dresden.are	standing	91	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794142032	cmd	Trentlin	25	4201	dresden.are	standing	91	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794142032	cmd	Trentlin	25	2427	dresden.are	standing	91	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794142033	cmd	Trentlin	25	2427	dresden.are	standing	91	0	-	east		Alas, you cannot go that way.	-	-
+1794142033	state	Trentlin	25	2427	dresden.are	lvl=25 hp=566/616 mana=811/1150 mv=299/304 align=-328 exp=58375 coin=46990067 bank=15087744233 qp=2025 prac=2 train=0 stash=53/75 remorts=1
+1794142033	cmd	Trentlin	25	2427	dresden.are	standing	91	0	-	score		| Name:       Trentlin | Level:      25 | Class:        Monk | // | Played:     32 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794142035	cmd	Trentlin	25	2404	dresden.are	standing	91	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794142035	cmd	Trentlin	25	2401	dresden.are	standing	91	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794142036	cmd	Trentlin	25	2403	dresden.are	standing	91	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794142037	cmd	Trentlin	25	2420	dresden.are	standing	91	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794142037	cmd	Trentlin	25	2421	dresden.are	standing	91	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794142037	cmd	Trentlin	25	2422	dresden.are	standing	91	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794142037	cmd	Trentlin	25	2423	dresden.are	standing	91	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794142038	cmd	Trentlin	25	2424	dresden.are	standing	91	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794142038	cmd	Trentlin	25	2425	dresden.are	standing	91	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794142038	cmd	Trentlin	25	2426	dresden.are	standing	91	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794142038	cmd	Trentlin	25	2426	dresden.are	standing	91	0	-	east		The gate is closed.	-	-
+1794142039	cmd	Trentlin	25	2426	dresden.are	standing	91	0	-	east		The gate is closed.	-	-
+1794142040	cmd	Trentlin	25	2426	dresden.are	standing	91	0	-	open	east	Ok.	-	-
+1794142041	cmd	Trentlin	25	2440	dresden.are	standing	91	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794142041	cmd	Trentlin	25	3503	midennir.are	standing	91	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794142041	cmd	Trentlin	25	3502	midennir.are	standing	91	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794142041	cmd	Trentlin	25	3525	midennir.are	standing	91	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794142042	cmd	Trentlin	25	3526	midennir.are	standing	91	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794142042	cmd	Trentlin	25	3527	midennir.are	standing	91	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794142042	cmd	Trentlin	25	3528	midennir.are	standing	91	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794142042	cmd	Trentlin	25	3529	midennir.are	standing	91	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794142043	cmd	Trentlin	25	3530	midennir.are	standing	91	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794142043	cmd	Trentlin	25	3531	midennir.are	standing	91	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794142044	cmd	Trentlin	25	3532	midennir.are	standing	91	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794142044	cmd	Trentlin	25	42	connect.are	standing	91	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794142044	cmd	Trentlin	25	9669	newthalo.are	standing	91	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794142044	cmd	Trentlin	25	9523	newthalo.are	standing	91	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794142045	cmd	Trentlin	25	9524	newthalo.are	standing	91	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794142045	cmd	Trentlin	25	9525	newthalo.are	standing	91	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794142046	cmd	Trentlin	25	9526	newthalo.are	standing	91	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794142048	cmd	Trentlin	25	9509	newthalo.are	standing	91	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794142049	cmd	Trentlin	25	9506	newthalo.are	standing	91	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794142050	cmd	Trentlin	25	9515	newthalo.are	standing	91	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794142050	cmd	Trentlin	25	9518	newthalo.are	standing	91	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794142050	cmd	Trentlin	25	9519	newthalo.are	standing	91	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794142050	cmd	Trentlin	25	9520	newthalo.are	standing	91	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794142051	cmd	Trentlin	25	9521	newthalo.are	standing	91	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794142051	cmd	Trentlin	25	9522	newthalo.are	standing	91	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794142051	cmd	Trentlin	25	9522	newthalo.are	standing	91	0	-	north		The gate is closed.	-	-
+1794142051	cmd	Trentlin	25	9522	newthalo.are	standing	91	0	-	north		The gate is closed.	-	-
+1794142053	cmd	Trentlin	25	9522	newthalo.are	standing	91	0	-	open	north	Ok.	-	-
+1794142053	cmd	Trentlin	25	9667	newthalo.are	standing	91	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1794142054	cmd	Trentlin	25	9781	newthalo.are	standing	91	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1794142054	cmd	Trentlin	25	9782	newthalo.are	standing	91	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1794142054	cmd	Trentlin	25	9783	newthalo.are	standing	91	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1794142054	cmd	Trentlin	25	64	connect.are	standing	91	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1794142055	cmd	Trentlin	25	29001	korzath1.are	standing	91	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1794142055	cmd	Trentlin	25	29002	korzath1.are	standing	91	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1794142056	cmd	Trentlin	25	29003	korzath1.are	standing	91	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794142057	cmd	Trentlin	25	29060	korzath1.are	standing	91	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794142059	cmd	Trentlin	25	29060	korzath1.are	standing	91	0	-	kill	ch	Your punch MASSACRES Security Chief! // Security Chief parries your attack.	-	-
+1794142064	cmd	Trentlin	25	29060	korzath1.are	fighting	94	0	fight	nerve		You jab Security Chief with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES Security Chief!	-	-
