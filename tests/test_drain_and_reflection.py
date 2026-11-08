@@ -80,21 +80,36 @@ class DrainSourceTests(unittest.TestCase):
 
 
 PROMPT = re.compile(r"<(-?\d+)hp")
+# A combat round's lines: the caster's own blows and guards, and a blow
+# that reaches the caster. The touch's lines, a death and its experience
+# are none of these.
+ROUND = re.compile(r"(?m)^(You (block|parry|dodge|evade)\b|Your (?!touch\b)\w+ "
+                   r"|.+ is unaffected by your (?!touch\b)\w+|.+'s \w+ .*\byou\b)")
 
 
 def touch(caster, target: str) -> tuple:
-    """Whether the touch landed, and what it gave the caster: the prompt
-    just before "You touch" against the one just after it. Combat rounds
-    and ticks fall outside that window; the touch's own lines are all
-    that lie inside it."""
+    """Whether the touch landed cleanly, and what it gave the caster: the
+    prompt just before "You touch" against the one just after it.
+
+    The window is clean only when no combat round lies in it. A round
+    can land in the same burst of output -- the input pass runs the cast
+    and violence_update runs in the same pulse,
+    before the prompt is written -- and its blows and parries then move
+    the caster's hit points inside the window: [4, 3, -16] against the
+    invulnerable ward failed CI on 2026-11-08, about one window in seven
+    on a loaded machine. Such a window proves nothing and is not counted;
+    the callers cast again."""
     said = caster.sync(f"cast 'vampiric touch' {target}", timeout=60)
     at = said.find("You touch")
     if at < 0:
         return False, 0, said
-    before = PROMPT.findall(said[:at])
+    before = list(PROMPT.finditer(said, 0, at))
     after = PROMPT.search(said, at)
     assert before and after, said
-    return True, int(after.group(1)) - int(before[-1]), said
+    start = said.find("\n", before[-1].end())
+    if ROUND.search(said[start:after.start()]):
+        return False, 0, said
+    return True, int(after.group(1)) - int(before[-1].group(1)), said
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -144,7 +159,7 @@ class DrainLiveTests(unittest.TestCase):
 
                 # One hit point to give: half of it rounds to nothing.
                 fed = []
-                for _ in range(8):
+                for _ in range(15):
                     god.must(f"load mob {GREMLIN}", "")
                     god.must("set char gremlin hp 1", "")
                     god.must("restore gremlin", "")
