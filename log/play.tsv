@@ -17426,3 +17426,6 @@
 1794192634	cmd	Trentlin	27	4210	dresden.are	standing	55	0	-	north		Alas, you cannot go that way.	-	-
 1794192636	cmd	Trentlin	27	4210	dresden.are	standing	55	0	-	sleep		You go to sleep.	-	-
 1794192637	session	Trentlin	27	4210	dresden.are	quit	122s	+0 levels	+822 exp	+3101926 copper	3 kills	0 deaths	0 quests	85 commands	0 refused	coin: loot 3p 10g 19s 26c	spent on: none	exp: kills +822
+1794224516	cmd	Trentlin	27	4210	dresden.are	sleeping	55	0	-	wake		You wake and stand up.	-	-
+1794224518	cmd	Trentlin	27	4210	dresden.are	standing	55	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794224519	cmd	Trentlin	27	4210	dresden.are	standing	55	0	-	sleep		You go to sleep.	-	-
