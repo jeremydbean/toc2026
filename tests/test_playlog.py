@@ -66,6 +66,19 @@ class PlaylogSourceTests(unittest.TestCase):
         self.assertIn('secret ? "(withheld)" : reply', playlog)
         self.assertIn("room_hides_from_log( ch->in_room )", playlog)
 
+    def test_wizinvis_staff_are_never_written(self) -> None:
+        code = source("playlog.c")
+        write = code[code.index("static void journal_write("):]
+        write = write[:write.index("\n}\n")]
+        self.assertIn("play_hidden( ch )", write)
+        self.assertNotIn("PLR_WIZINVIS ) ? NULL", code, "no anonymous rows: none at all")
+        prog = code[code.index("static void progress_write("):]
+        prog = prog[:prog.index("\n}\n")]
+        self.assertIn("play_hidden( ch )", prog)
+        ctx = code[code.index("void playlog_bug_context("):]
+        ctx = ctx[:ctx.index("\n}\n")]
+        self.assertIn("current_hidden", ctx)
+
     def test_bug_lines_say_what_was_running(self) -> None:
         db = source("db.c")
         bug = db[db.index("void bug( const char *str, int param )"):]
@@ -305,6 +318,50 @@ class PlaylogLiveTests(unittest.TestCase):
         self.assertNotIn("zflaggedsubject", journal)
         self.assertNotIn("zflaggedbody", journal)
         self.assertNotIn("posted a note to killuminati: zflaggedsubject", toc)
+
+    def test_wizinvis_staff_leave_no_row(self) -> None:
+        """Owner, 2026-11-09: wizinvis staff do not appear in the journal.
+        A wizinvis immortal's commands, SCORE's state row, an outcome and
+        their session leave no row, named or not, and no progress line; a
+        visible immortal doing the same is journalled as before."""
+        with LiveMud() as mud:
+            for name in ("Zwizard", "Zseenstaff"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.drain(1.0)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=70, Room=TEMPLE)
+            with mud.connect(timeout=120) as hidden, mud.connect(timeout=120) as seen:
+                login(hidden, "Zwizard", PASSWORD)
+                login(seen, "Zseenstaff", PASSWORD)
+                hidden.must("wizinvis 70", "vanish into thin air")
+                marker_rows = len(rows(mud))
+                for client in (hidden, seen):
+                    client.sync("look")
+                    client.sync("score")
+                    client.sync("frobnicate zmarkerword")
+                    client.sync("repair quote")
+                hidden.send("quit")
+                self.assertTrue(hidden.wait_closed())
+                seen.send("quit")
+                self.assertTrue(seen.wait_closed())
+            journal = rows(mud)
+            after = journal[marker_rows:]
+            self.assertFalse([r for r in after if len(r) > 2 and r[2] == "Zwizard"], after)
+            seen_rows = [r for r in after if len(r) > 2 and r[2] == "Zseenstaff"]
+            kinds = {r[1] for r in seen_rows}
+            self.assertTrue({"cmd", "refused", "state", "session"} <= kinds, kinds)
+            # Nothing anonymous stands in for the hidden one either: every
+            # state, refused and session row after going wizinvis is the
+            # visible immortal's.
+            for kind in ("state", "refused", "session"):
+                anyone = [r for r in after if r[1] == kind]
+                self.assertTrue(anyone)
+                self.assertTrue(all(r[2] == "Zseenstaff" for r in anyone), anyone)
+            progress = mud.root / "log" / "progress.tsv"
+            self.assertNotIn("Zwizard", progress.read_text(encoding="latin-1")
+                             if progress.exists() else "")
 
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
                      "a sanitizer build reports crashes itself")

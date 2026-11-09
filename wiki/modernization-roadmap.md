@@ -46,6 +46,7 @@ rollback, and measurable acceptance criteria.
 | A3 | 59957e8f | Cookie-authenticated requests that change something must come from the dashboard's own origin (`Sec-Fetch-Site`/`Origin`) | A per-session CSRF token (A2's sessions) |
 | A4 (part) | 59957e8f | `toc-deploy` hands the token to curl on stdin, never argv | The rotation script; `toc.sh backup` still archives the token |
 | D5 | 59957e8f | Every workflow action pinned to a commit; Dependabot for actions, pip and Docker | -- |
+| I0 | the wizinvis journal commit, 2026-11-09 | Wizinvis staff leave no row in `play.tsv` or `progress.tsv`, and no name in a BUG line's context or the crash ring | -- |
 | (backups) | the review fixes of 2026-11-09 | The in-game archives are made under an `flock`, never a lock a job can judge stale and delete | -- |
 
 The ranked table below is left as it was assessed, so its reasoning can
@@ -215,9 +216,10 @@ squeezed into a small batch.
 
 ## Decisions for the owner (no code without a yes)
 
-- **I0:** journal rows for wizinvis actors. Hide the name in every row,
-  as `outcome`/`state`/`craft`/`item` already do, or keep naming them,
-  since the watch log names them anyway?
+- **I0:** journal rows for wizinvis actors. **Decided** (owner,
+  2026-11-09): wizinvis staff do not appear in the journal at all -- no
+  row, named or not, and no name in a BUG line's context or the crash
+  ring. Shipped with it.
 - **R7:** the queue's `shutdown` action bypasses the creator-only SHUTDOWN
   command; keep, restrict, or remove it? And does `/api/command` (free
   command strings) stay enabled once typed operations exist?

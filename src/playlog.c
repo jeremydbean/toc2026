@@ -70,6 +70,7 @@ static bool journal_busy;           /* a bug() while writing must not recurse */
 
 /* The command running now, for bug()'s context. */
 static char current_name[32];
+static bool current_hidden;            /* the running command's player is wizinvis */
 static char current_room[16];
 static char current_line[100];
 static char current_cmd[32];        /* the command's own name, for coin */
@@ -230,12 +231,27 @@ static void journal_trim( void )
         journal_lines = PLAY_JOURNAL_KEEP;
 }
 
+/*
+ * Wizinvis staff leave no trace in the journal (owner, 2026-11-09): no
+ * row about them -- their commands, outcomes, state, crafts, items,
+ * deaths, sessions, reports or kills in progress.tsv -- and no name or
+ * room where a row is about something else (a BUG line's context, the
+ * crash ring). The journal is published; their presence is not. The
+ * rows outcome/state/craft/item used to write with the name left out
+ * are now not written. The watch log in toc.log is a staff tool and
+ * keeps its own rules.
+ */
+static bool play_hidden( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && IS_SET( ch->act, PLR_WIZINVIS );
+}
+
 /* One record: the common columns, then `fields` (already tab-joined). */
 static void journal_write( const char *kind, CHAR_DATA *ch, const char *fields )
 {
     char room[16], area[64], name[32];
 
-    if ( journal_busy )
+    if ( journal_busy || play_hidden( ch ) )
         return;
     journal_busy = true;
     if ( journal_lines < 0 || journal_lines >= PLAY_JOURNAL_MAX )
@@ -492,6 +508,7 @@ void playlog_begin( CHAR_DATA *ch, const char *cmd_name, const char *shown )
     if ( ch == NULL || IS_NPC(ch) )
         return;
     play_clean( current_name, sizeof(current_name), ch->name );
+    current_hidden = play_hidden( ch );
     play_clean( current_cmd, sizeof(current_cmd), cmd_name != NULL ? cmd_name : "" );
     if ( ch->in_room == NULL )
         snprintf( current_room, sizeof(current_room), "0" );
@@ -505,7 +522,8 @@ void playlog_begin( CHAR_DATA *ch, const char *cmd_name, const char *shown )
     playlog_phase = "a command";
 
     snprintf( line, sizeof(line), "%ld %s [%s] %s", (long) current_time,
-              current_name, current_room, current_line );
+              current_hidden ? "-" : current_name,
+              current_hidden ? "-" : current_room, current_line );
     toc_strlcpy( crash_ring[crash_next], line, CRASH_LINE );
     crash_next = ( crash_next + 1 ) % CRASH_RING;
 
@@ -537,7 +555,7 @@ void playlog_end( CHAR_DATA *ch, const char *cmd_name, const char *shown,
 
     current_set = false;
     playlog_phase = "game loop";
-    playlog_pulse_command( refused ? "(refused)" : cmd_name, ms );
+    playlog_pulse_command( play_hidden( ch ) ? "-" : refused ? "(refused)" : cmd_name, ms );
     if ( ch == NULL || IS_NPC(ch) )
         return;
     if ( refused && ch->pcdata != NULL )
@@ -611,7 +629,7 @@ void playlog_outcome( CHAR_DATA *ch, const char *op, const char *result,
     play_clean( c_detail, sizeof(c_detail), detail != NULL ? detail : "" );
     snprintf( fields, sizeof(fields), "%s\t%s\t%s\t%s\t%s", c_op, c_res, c_reason,
               c_id, c_detail );
-    journal_write( "outcome", IS_SET( ch->act, PLR_WIZINVIS ) ? NULL : ch, fields );
+    journal_write( "outcome", ch, fields );
 }
 
 /*
@@ -635,7 +653,7 @@ void playlog_state( CHAR_DATA *ch )
               coins_to_copper( ch ), ch->pcdata->bank, ch->questpoints,
               ch->practice, ch->train, stash_count( ch ), ch->pcdata->stash_max,
               ch->pcdata->num_remorts );
-    journal_write( "state", IS_SET( ch->act, PLR_WIZINVIS ) ? NULL : ch, fields );
+    journal_write( "state", ch, fields );
 }
 
 /* For bug(): " (during Name's 'look' in room 4207)", or "". */
@@ -644,6 +662,11 @@ void playlog_bug_context( char *buf, size_t size )
     if ( !current_set )
     {
         snprintf( buf, size, " (during %s)", playlog_phase );
+        return;
+    }
+    if ( current_hidden )
+    {
+        snprintf( buf, size, " (during a command)" );
         return;
     }
     snprintf( buf, size, " (during %s's '%s' in room %s)",
@@ -658,7 +681,7 @@ void playlog_bug( const char *message )
 
     play_clean( text, sizeof(text), message );
     snprintf( fields, sizeof(fields), "%s\t%s", text,
-              current_set ? current_line : playlog_phase );
+              !current_set ? playlog_phase : current_hidden ? "-" : current_line );
     journal_write( "bug", NULL, fields );
 }
 
@@ -694,13 +717,12 @@ void playlog_report( CHAR_DATA *ch, const char *kind, const char *text )
 }
 
 /* Every real BREW, CONCOCT and SCRIBE attempt (magic2.c craft_audit). A
-   wizinvis crafter's line names nobody and no room: the journal is public,
-   and their presence is not. */
+   wizinvis crafter's is not written (play_hidden). */
 void playlog_craft( CHAR_DATA *ch, const char *fields )
 {
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return;
-    journal_write( "craft", IS_SET( ch->act, PLR_WIZINVIS ) ? NULL : ch, fields );
+    journal_write( "craft", ch, fields );
 }
 
 /* ------------------------------------------------------- the anomalies */
@@ -715,7 +737,8 @@ static void anomaly( CHAR_DATA *ch, int kind, const char *what, const char *deta
     char fields[PLAY_LINE];
     char buf[PLAY_LINE];
 
-    if ( ch->pcdata->play_anom_last[kind] + ANOMALY_QUIET > current_time )
+    if ( play_hidden( ch )
+    ||   ch->pcdata->play_anom_last[kind] + ANOMALY_QUIET > current_time )
         return;
     ch->pcdata->play_anom_last[kind] = current_time;
     snprintf( fields, sizeof(fields), "%s\t%s", what, detail );
@@ -1065,7 +1088,7 @@ static void progress_write( const char *kind, CHAR_DATA *ch, CHAR_DATA *foe, con
     int hp_pct, mana_pct;
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || foe == NULL || !IS_NPC(foe)
-    ||   foe->pIndexData == NULL || is_unfindable_mob( foe ) )
+    ||   foe->pIndexData == NULL || is_unfindable_mob( foe ) || play_hidden( ch ) )
         return;
     if ( progress_lines < 0 || progress_lines >= PROGRESS_MAX )
         progress_trim();
@@ -1398,5 +1421,5 @@ void playlog_obj_gone( OBJ_DATA *obj )
               obj->pIndexData->vnum, shortd, item_type_name( obj ), obj->level,
               obj->wear_loc != WEAR_NONE ? 1 : 0, obj != top ? 1 : 0,
               obj->timer, obj->condition, inside, why );
-    journal_write( "item", IS_SET( holder->act, PLR_WIZINVIS ) ? NULL : holder, fields );
+    journal_write( "item", holder, fields );
 }

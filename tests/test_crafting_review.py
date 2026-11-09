@@ -500,9 +500,9 @@ class CraftingLiveTests(unittest.TestCase):
         self.assertNotIn("has scribed", heard_low)
         self.assertNotIn("Zhidscribe", heard_low)
         self.assertIn("Zhidscribe has scribed a blank scroll", heard_high)
-        # The public journal names nobody hidden.
-        self.assertTrue(rows)
-        self.assertTrue(all(r[2] == "-" for r in rows), rows)
+        # The public journal holds nothing of a wizinvis crafter (owner,
+        # 2026-11-09: wizinvis staff leave no row at all).
+        self.assertEqual(rows, [])
 
 
 if __name__ == "__main__":

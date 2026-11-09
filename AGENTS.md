@@ -1240,7 +1240,7 @@ blast, so a fatal one leaves them in no corpse, and an undone one does
 not burn. Every attempt writes a `craft` row to `log/play.tsv`
 (`craft_audit`: attempt id, method, signature, colour, input and output
 vnums, spells, cast level, skill, chance, outcome, burn, saved,
-unconfirmed or undone; a wizinvis crafter's name is `-`). `PREVIEW` as
+unconfirmed or undone; a wizinvis crafter's attempt is not written). `PREVIEW` as
 the first word asks the same matcher and makes nothing. A recipe names
 spells by exact name (`craft_spell` has no prefix fallback), a quaffed
 product carries no object or offensive spell, a scroll with an object
@@ -2813,9 +2813,18 @@ log says what a player typed; the journal says what happened, in columns
   gamble, the coin, one `kill` at the questor's level, the streak, level
   and target vnum, so a quest's pay reads in kills); a frozen-trade refusal sets
   `refusal:frozen` or `refusal:other-frozen`. SCORE writes a `state` row
-  of the sheet's numbers (`playlog_state`). A wizinvis actor's outcome
-  and state rows name nobody, as craft rows do. Never put private words,
+  of the sheet's numbers (`playlog_state`). Never put private words,
   addresses or a hidden room in a detail.
+- **Wizinvis staff leave no trace in the journal** (owner, 2026-11-09).
+  `play_hidden()` -- a player with `PLR_WIZINVIS` -- makes
+  `journal_write` and `progress_write` write nothing: no command, state,
+  outcome, craft, item, death, session, report or anomaly row and no
+  progress line, named or anonymous. Where a row is about something else
+  the name and room go too: a BUG line's context says "during a
+  command", the crash ring writes `-` for both, and a stall row's slowest
+  command is not theirs. A new journal writer passes the actor to
+  `journal_write` and never `NULL` for a hidden one. The watch log in
+  `toc.log` keeps its own rules (`tests/test_playlog.py`).
 
 - **Deep bug rows** (2026-11-05: what players report and nothing wrote
   down). `stall`: a pulse past `STALL_MS` (250, one pulse) -- the total,

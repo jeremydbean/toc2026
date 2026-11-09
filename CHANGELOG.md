@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Wizinvis staff leave no trace in the play journal** (owner,
+  2026-11-09). A wizinvis character's commands, SCORE state, outcomes,
+  crafts, lost items, death, session, reports, anomalies and kills write
+  no row to `log/play.tsv` or `log/progress.tsv` -- not even the
+  nameless rows outcome, state, craft and item used to write -- and a
+  BUG line's context, the crash ring and a stall's slowest command no
+  longer name them. The dashboard's uvicorn minimum rises to 0.54.0
+  (Dependabot #85, which conflicted after #84). `tests/test_playlog.py`.
 - **Review of fb766e2d and 2528120e** (2026-11-09). A player file that is
   there but cannot be opened is refused, never taken for a free name: the
   name prompt, the final check before a new character enters and RENAME
