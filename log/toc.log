@@ -280402,3 +280402,5 @@ Mon Nov  9 01:44:07 2026 :: Treasure goblin: vanished from room 16054 (Below Dec
 Mon Nov  9 01:48:04 2026 :: Connection guard: last hour 13 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
 Mon Nov  9 01:48:36 2026 :: Automated backup started.
 Mon Nov  9 01:48:37 2026 :: Automated backup complete.
+Mon Nov  9 01:53:15 2026 :: Connection guard: 34.198.201.66 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 34.198.201.66 lifts it.
+Mon Nov  9 01:54:12 2026 :: Treasure goblin: vanished from room 24513 (The Other Side, abyss.are) (too long in one area).
