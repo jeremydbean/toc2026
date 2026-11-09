@@ -814,20 +814,57 @@ API tokens, DNS-01 becomes the better choice.
   after setup and after any change. Lifetimes are set to shorten, so
   thresholds below are fractions of the lifetime, not fixed day counts.
 - **Deploy hook** (`/etc/letsencrypt/renewal-hooks/deploy/toc-tls`), run
-  only after a successful renewal:
-  1. copy `fullchain.pem` and `privkey.pem` from `$RENEWED_LINEAGE` into
-     `/etc/nginx/toc-tls/new/` (dir 0700, files 0600, root);
-  2. move `current/` to `previous/` and `new/` to `current/`;
-  3. `nginx -t`; on failure put `previous/` back and stop with an alert --
-     nginx keeps serving the last certificate it loaded;
-  4. `systemctl reload nginx`;
-  5. verify the served certificate is the new one: the SHA-256 fingerprint
-     from `openssl s_client -connect 127.0.0.1:9443 -servername toc.jeremybean.com -verify_hostname toc.jeremybean.com -verify_return_error`
-     must equal `openssl x509 -in current/fullchain.pem -noout -fingerprint -sha256`,
-     and `notAfter` must have moved; on mismatch, put `previous/` back,
-     reload, alert.
-  nginx reads `current/`, never certbot's `live/` directly, which is what
-  keeps the last working pair in place when anything above fails.
+  only after a successful renewal. Certificates are published the way
+  `toc-deploy` publishes code: built aside, proven, then switched by one
+  rename, so a reader never sees half of a pair and an interrupted run
+  never leaves nginx without one.
+  - **Layout.** `/etc/nginx/toc-tls/` (0700, root) holds numbered
+    releases `r<UTC stamp>-<n>/` (each `fullchain.pem` and `privkey.pem`,
+    0600) and two symlinks, `current` and `previous`. nginx names
+    `current/fullchain.pem` and `current/privkey.pem`, never certbot's
+    `live/`.
+  - **Exclusion.** The whole hook runs under `flock -w 600
+    /run/toc-tls.lock`, so certbot's timer, a manual `certbot renew` and
+    a re-run of the hook never interleave; a second run that cannot take
+    the lock in ten minutes alerts and exits, changing nothing.
+  - **Steps.**
+    1. Copy the pair from `$RENEWED_LINEAGE` into a fresh
+       `r<stamp>-<n>.partial/`, `fsync` both files, check that the key
+       matches the certificate (`openssl x509 -noout -pubkey` against
+       `openssl pkey -pubout`) and that the hostname and `notAfter` are
+       right, then rename the directory to `r<stamp>-<n>/`.
+    2. Read the release `current` names now, then switch both links,
+       each by making a temporary link and renaming it over the old one:
+       `ln -sfn <old target> previous.tmp && mv -T previous.tmp previous`,
+       then `ln -sfn r<stamp>-<n> current.tmp && mv -T current.tmp current`.
+       Each `mv -T` is one atomic `rename(2)` of a symlink.
+    3. `nginx -t`; on failure point `current` back at the `previous`
+       target the same way, alert, and stop -- nginx keeps serving the
+       last certificate it loaded.
+    4. `systemctl reload nginx`.
+    5. Verify the served certificate is the new one: the SHA-256
+       fingerprint from `openssl s_client -connect 127.0.0.1:9443 -servername toc.jeremybean.com -verify_hostname toc.jeremybean.com -verify_return_error`
+       must equal `openssl x509 -in current/fullchain.pem -noout -fingerprint -sha256`,
+       and `notAfter` must have moved; on mismatch, point `current` back,
+       reload, alert.
+    6. Keep the three newest releases and whatever `current` and
+       `previous` name; delete older ones only after step 5 passed.
+  - **Interruption.** A run that dies anywhere leaves either the old
+    `current` (steps 1-2) or a complete new one (after 2). The next run
+    starts by removing `*.partial/` directories and `*.tmp` links, which
+    nothing reads, and by checking that `current` and `previous` resolve
+    to whole releases; if `current` does not, it points it at `previous`
+    and alerts before doing anything else.
+  - **Rollback** by hand is the same switch: point `current` at the
+    `previous` target, `nginx -t`, reload.
+  - **Tests** (stubbed `openssl`, `nginx` and `systemctl`, as
+    `tests/test_deploy_install.py` stubs its tools): three successive
+    renewals each leave `current` on the newest release and `previous` on
+    the one before, with retention holding three; a failed `nginx -t`, a
+    fingerprint mismatch and a kill at each step leave `current` on a
+    whole release that serves; two hooks started together run one after
+    the other; a leftover `.partial` and `.tmp` link are cleared by the
+    next run.
 - **Expiry monitoring**: `toc-tls-check` (a script beside
   `toc-state-sync-check`, on its own systemd timer, daily) reads the served
   certificate's `notAfter` and hostname over 127.0.0.1:9443, and the last
@@ -1017,16 +1054,20 @@ Each phase ships on its own and can be rolled back alone.
    may refresh `toc-tls-check` only when `/etc/toc/tls.enabled` exists.
    Tests run them against stubs, as `tests/test_deploy_install.py` does.
    Rollback: revert.
-3. **Bring-up on the host with a staging certificate** [host]: owner runs
-   the setup over SSH, sets `TOC_TLS_BACKEND_PORT` in
-   `/etc/toc/game.env`, restarts on the next deploy window, checks
-   127.0.0.1:9443 locally. Port 9443 stays closed in both firewalls.
-   Rollback: remove the include line and `toc-stream.d/`, reload nginx,
-   unset the variable.
+3. **Bring-up on the host with a staging certificate** [host]: open port
+   80 first, in both the Oracle security list and the host firewall --
+   Let's Encrypt's HTTP-01 check reaches the webroot over it, staging
+   included, and the plain-HTTP server block answers nothing else. Then
+   the owner runs the setup over SSH, issues the staging certificate,
+   sets `TOC_TLS_BACKEND_PORT` in `/etc/toc/game.env`, restarts on the
+   next deploy window, and checks 127.0.0.1:9443 locally. Port 9443 stays
+   closed in both firewalls. Rollback: remove the include line and
+   `toc-stream.d/`, reload nginx, unset the variable, close 80.
 4. **Real certificate, port opened, unadvertised soak** [host] [mudlet]:
-   open 80 and 9443, issue the production certificate, run the acceptance
-   list from outside, run `certbot renew --dry-run` and a forced renewal,
-   soak a week with staff only. Rollback: close 9443 in both firewalls.
+   open 9443 (80 is already open from step 3), issue the production
+   certificate, run the acceptance list from outside, run
+   `certbot renew --dry-run` and a forced renewal, soak a week with staff
+   only. Rollback: close 9443 in both firewalls.
 5. **Advertise**: set `TOC_MSSP_TLS_PORT`, ship the documentation list
    above. Rollback: as under "Advertisement".
 6. **Optional, owner decisions**: refuse `Char.Login` on plaintext; IPv6;
@@ -1178,8 +1219,13 @@ legacy compatibility when implemented carefully:
    plan is "Planned: A TLS Player Port For Mudlet's Secure Box" above.
 3. Authentication and authorization for every dashboard route, especially the
    MUD WebSocket bridge and detailed world data.
-4. Per-operator accounts, roles, expiration, CSRF protection where applicable,
-   and an immutable audit trail for dashboard actions.
+4. CSRF protection where applicable (done for cookie-authenticated
+   dashboard requests, 2026-11-09) and an immutable audit trail for
+   dashboard actions. The dashboard keeps one shared administrative
+   credential by the owner's decision (2026-11-09): no per-operator
+   accounts, roles or MFA. What remains is protecting that credential --
+   rotation, never on a command line or in a URL, loopback-only binding --
+   and recording each action with its source.
 5. Rate limiting and login abuse controls.
 6. Replace shell-based archive creation/pruning with argument-safe process or
    library APIs and explicit path validation.

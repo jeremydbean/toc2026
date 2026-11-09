@@ -26,6 +26,8 @@
 #include <time.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/file.h>
+#include <fcntl.h>
 #include "merc.h"
 #include "interp.h"
 #pragma GCC diagnostic ignored "-Wmissing-braces"
@@ -221,41 +223,54 @@ static bool backup_ensure_dir( const char *path )
  * tar wrote the day's name in place, so a tar that failed part way had
  * already destroyed that morning's archive, and two jobs could write one
  * name at once). Each job:
- *   - takes BACKUP_DIR/.backup.lock (a directory: mkdir is atomic
- *     everywhere) and waits its turn -- boot starts both jobs at once --
- *     taking over a lock whose holder is dead;
- *   - removes temporary archives a dead job left, since nobody else can
- *     be writing one while it holds the lock;
+ *   - holds an flock(2) on BACKUP_DIR/.backup.flock, taken by the forked
+ *     worker before it runs the shell and kept by the shell and everything
+ *     it starts. Boot starts both jobs at once, so the second waits its
+ *     turn. The kernel lets go when the job ends, however it ends, so
+ *     there is no stale lock to judge and nothing for one job to delete
+ *     of another's (review, 2026-11-09: the directory lock it replaces
+ *     was taken over by two jobs that both saw the same dead owner, and
+ *     the second deleted the first's live lock);
+ *   - removes only temporary archives whose writer is gone, read from the
+ *     pid in their name, and a directory lock an older build left whose
+ *     owner is gone;
  *   - writes .<name>.tar.gz.tmp.<pid>, accepts it only when tar ended 0
  *     or 1 (GNU tar's "a file changed as we read it": the game saved
  *     somebody, and the archive is still whole), it is not empty, gzip -t
  *     passes and tar can list every member, and then renames it over the
  *     name -- the old archive stands until the new one is proven;
- *   - on any failure, a signal included, removes its temporary file and
- *     the lock and says the previous archive was kept.
- * The script is fixed text; its date format, message and caller come in
- * as $1..$3, so nothing in it is built by snprintf.
+ *   - on any failure, a signal included, removes its own temporary file
+ *     and says the previous archive was kept.
+ * The script is fixed text; its date format, message, caller and lock
+ * state come in as $1..$4, so nothing in it is built by snprintf.
  */
+#define BACKUP_LOCK_FILE BACKUP_DIR ".backup.flock"
+#define BACKUP_LOCK_WAIT 3600     /* seconds a job waits for its turn */
+
 static const char backup_script[] =
     "dir=" BACKUP_DIR "\n"
     "name=$(date \"+$1\")\n"
     "final=\"$dir$name.tar.gz\"\n"
-    "lock=\"${dir}.backup.lock\"\n"
     "say() { printf '%s :: %s\\n' \"$(date '+%a %b %e %T %Y')\" \"$1\" >> ../log/toc.log; }\n"
-    "waited=0\n"
-    "until mkdir \"$lock\" 2>/dev/null; do\n"
-    "  owner=$(cat \"$lock/pid\" 2>/dev/null)\n"
-    "  if [ -n \"$owner\" ] && ! kill -0 \"$owner\" 2>/dev/null; then rm -rf \"$lock\"; continue; fi\n"
-    "  if [ -z \"$owner\" ] && [ -n \"$(find \"$lock\" -maxdepth 0 -mmin +2 2>/dev/null)\" ]; then rm -rf \"$lock\"; continue; fi\n"
-    "  waited=$((waited + 1))\n"
-    "  if [ \"$waited\" -ge 3600 ]; then say \"[*****] BUG: $3: another backup held the lock for an hour; this one was not made.\"; exit 1; fi\n"
-    "  sleep 1\n"
-    "done\n"
-    "echo $$ > \"$lock/pid\"\n"
+    "case \"$4\" in\n"
+    "held) ;;\n"
+    "busy) say \"[*****] BUG: $3: another backup held the lock for an hour; this one was not made.\"; exit 1 ;;\n"
+    "*) say \"[*****] BUG: $3: the backup lock could not be taken; this one was not made.\"; exit 1 ;;\n"
+    "esac\n"
     "tmp=\"${dir}.$name.tar.gz.tmp.$$\"\n"
-    "trap 'rm -f \"$tmp\"; rm -rf \"$lock\"' EXIT\n"
+    "trap 'rm -f \"$tmp\"' EXIT\n"
     "trap 'say \"[*****] BUG: $3: interrupted; the previous archive is kept.\"; exit 1' HUP INT TERM\n"
-    "rm -f \"$dir\".*.tar.gz.tmp.* 2>/dev/null\n"
+    "for f in \"$dir\".*.tar.gz.tmp.*; do\n"
+    "  [ -f \"$f\" ] || continue\n"
+    "  owner=${f##*.}\n"
+    "  case \"$owner\" in ''|*[!0-9]*) continue ;; esac\n"
+    "  kill -0 \"$owner\" 2>/dev/null || rm -f \"$f\"\n"
+    "done\n"
+    "legacy=\"${dir}.backup.lock\"\n"
+    "if [ -d \"$legacy\" ]; then\n"
+    "  owner=$(cat \"$legacy/pid\" 2>/dev/null)\n"
+    "  case \"$owner\" in ''|*[!0-9]*) ;; *) kill -0 \"$owner\" 2>/dev/null || { rm -f \"$legacy/pid\"; rmdir \"$legacy\" 2>/dev/null; } ;; esac\n"
+    "fi\n"
     "nice -n 10 tar cfz \"$tmp\" ../player 2>/dev/null; rc=$?\n"
     "if [ \"$rc\" -le 1 ] && [ -s \"$tmp\" ] && gzip -t \"$tmp\" 2>/dev/null"
     " && tar tzf \"$tmp\" >/dev/null 2>&1 && mv -f \"$tmp\" \"$final\"; then\n"
@@ -284,9 +299,12 @@ static void backup_launch( const char *date_format, const char *done, const char
     }
     if ( pid == 0 )
     {
-        /* Only async-signal-safe calls from here: the game has threads. */
+        /* Only async-signal-safe calls from here, and the system calls
+           beside them: the game has threads. */
         long max = sysconf( _SC_OPEN_MAX );
         int fd;
+        int waited;
+        const char *lock_state = "nolock";
         pid_t worker = fork();
 
         if ( worker != 0 )
@@ -295,8 +313,31 @@ static void backup_launch( const char *date_format, const char *done, const char
             max = 65536;
         for ( fd = 3; fd < (int) max; fd++ )
             close( fd );
+        /* The lock: this descriptor stays open in the shell and in every
+           command it runs, and the kernel drops the lock with the last of
+           them. It is waited for here, in the detached worker, never on
+           the game loop. */
+        fd = open( BACKUP_LOCK_FILE, O_RDWR | O_CREAT, 0644 );
+        if ( fd >= 0 )
+        {
+            lock_state = "busy";
+            for ( waited = 0; waited < BACKUP_LOCK_WAIT; waited++ )
+            {
+                if ( flock( fd, LOCK_EX | LOCK_NB ) == 0 )
+                {
+                    lock_state = "held";
+                    break;
+                }
+                if ( errno != EWOULDBLOCK && errno != EINTR )
+                {
+                    lock_state = "nolock";
+                    break;
+                }
+                sleep( 1 );
+            }
+        }
         execl( "/bin/sh", "sh", "-c", backup_script, "toc-backup",
-               date_format, done, who, (char *) NULL );
+               date_format, done, who, lock_state, (char *) NULL );
         _exit( 127 );
     }
     if ( waitpid( pid, &status, 0 ) < 0

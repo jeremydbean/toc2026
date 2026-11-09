@@ -1795,6 +1795,25 @@ leaves it to `free_char`; and a pet whose mobile and stand-in
 `create_mobile(NULL)`, which exited. `tests/test_player_file_refusal.py`
 (also under the sanitizers).
 
+**Only proven absence is a new character, and only a whole file is the
+character** (review, 2026-11-09). A failed `fopen` was taken for "no such
+player": a mode-000 file let the name be created again and the save
+replaced a level 20 with a level 1. `player_file_presence()` in `save.c`
+answers `PLAYER_FILE_ABSENT` only for `stat`'s ENOENT on the file and its
+`.gz`; anything else is `PRESENT` or `UNKNOWN`, and the name prompt,
+`new_name_still_free` and RENAME treat both as taken. A file that is
+there and does not open, a section marker the loader does not know, a
+line that is not a record, a file that ends before `#END`, a read error
+(`ferror`) and a failed `fclose` all refuse the character exactly as a
+malformed value does -- they used to load what came before and let the
+next save write the shorter character over the file. A `.gz` copy is
+decompressed only where no plain file exists. An object part way through
+its record when reading stops is released (`fread_obj_unfinished`):
+`create_object` had registered it, and every refused attempt left one
+more object owned by nobody in the world. An object affect is linked as
+soon as it is allocated. Fault points `player-open-<Name>` and
+`player-read-<Name>` (`TOC_FAULT`) fail the open or the read.
+
 **`load_char_obj` fills a found character's gaps, never a new one's.**
 `apply_class_and_guild_skills()` runs at the end of the loader so a
 character short of something their class, guild or race owes them gets
@@ -2036,14 +2055,20 @@ parent); STASH TAKE's
   every four hours, `backups/<Mon.DD>.tar.gz` daily; `backup_launch` in
   `update.c`) are made by a detached shell, never on the game loop
   (2026-11-08), and **a failed one never costs the last good one**
-  (review, 2026-11-09: tar wrote the day's name in place). Each job takes
-  `backups/.backup.lock` (a directory; a dead holder's is taken over) and
-  waits its turn -- boot starts both -- clears temporaries a dead job left,
-  writes `.<name>.tar.gz.tmp.<pid>`, accepts it only on tar 0 or 1, non-empty,
-  `gzip -t` and a full `tar t` listing, and renames it over the name; any
-  failure or signal removes the temporary and the lock and logs that the
-  previous archive is kept. `tests/test_backup_detached.py` plays failure,
-  interruption, a stale lock, overlap and replacement with a stand-in tar.
+  (review, 2026-11-09: tar wrote the day's name in place). Each job holds
+  an `flock` on `backups/.backup.flock`, taken by the forked worker before
+  the shell runs and kept by the shell and everything it starts, and waits
+  its turn -- boot starts both. **Never a lock a job can judge stale**
+  (review, 2026-11-09): the directory lock it replaced was reaped by two
+  jobs that both saw one dead owner, the second deleting the lock the
+  first had just taken, and both wrote. A job removes only temporaries
+  whose writer's pid (in the name) is gone and an old directory lock whose
+  owner is gone; it writes `.<name>.tar.gz.tmp.<pid>`, accepts it only on
+  tar 0 or 1, non-empty, `gzip -t` and a full `tar t` listing, and renames
+  it over the name; any failure or signal removes its own temporary and
+  logs that the previous archive is kept. `tests/test_backup_detached.py`
+  plays failure, interruption, a held lock, live and dead owners, overlap
+  and replacement with a stand-in tar.
 
 ## Travel Spells Keep Room Rules
 

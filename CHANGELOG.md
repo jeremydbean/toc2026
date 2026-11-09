@@ -8,6 +8,22 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Review of fb766e2d and 2528120e** (2026-11-09). A player file that is
+  there but cannot be opened is refused, never taken for a free name: the
+  name prompt, the final check before a new character enters and RENAME
+  ask `player_file_presence`, where only ENOENT is absence (a mode-000
+  file let the name be created again over a level 20). A damaged section
+  marker, a stray line, a file that ends before `#END`, a read error and
+  a failed close refuse the character instead of loading what came before
+  it. An object part way through its record is released when a load is
+  refused, instead of staying in the world owned by nobody. The player
+  backups lock with `flock`, so no job can delete a lock another holds,
+  and remove only temporaries whose writer is gone. SECURITY.md's TLS
+  plan (still on hold) opens port 80 before the staging certificate and
+  publishes certificates by atomic symlink switch under a lock; the
+  shared-admin decision replaces its per-operator recommendation; the
+  roadmap names the revision it reviewed and what has shipped.
+  `tests/test_player_file_refusal.py`, `tests/test_backup_detached.py`.
 - **Roadmap batch: admin and CI hygiene** (2026-11-09). The dashboard
   refuses a cookie-authenticated request that changes something unless
   the browser says it came from the dashboard itself (Sec-Fetch-Site or

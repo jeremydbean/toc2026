@@ -9,6 +9,7 @@ They are made by a detached shell now; it writes "complete" to toc.log.
 
 from __future__ import annotations
 
+import fcntl
 import os
 import re
 import shutil
@@ -34,6 +35,12 @@ class BackupSourceTests(unittest.TestCase):
         self.assertIn("execl( \"/bin/sh\"", body)
         self.assertIn("close( fd );", body, "no client socket outlives its close in a tar")
         self.assertIn("waitpid( pid, &status, 0 )", body, "the intermediate child is reaped")
+        # Review, 2026-11-09: the lock is the kernel's. No job decides a
+        # lock is stale and deletes it, so none can delete another's.
+        self.assertIn("flock( fd, LOCK_EX | LOCK_NB )", body)
+        script = code[code.index("static const char backup_script[]"):start]
+        self.assertNotIn("rm -rf", script)
+        self.assertNotIn("mkdir", script)
         # The weather step, which runs the backups, is timed as itself.
         self.assertRegex(code, r'playlog_phase_enter\( "weather_update" \);\s*weather_update\s*\(')
 
@@ -119,7 +126,8 @@ class BackupFailureTests(unittest.TestCase):
                                                   text=True).stdout.strip() + ".tar.gz")
 
                 def leftovers() -> list[str]:
-                    return sorted(p.name for p in backups.iterdir() if p.name.startswith("."))
+                    return sorted(p.name for p in backups.iterdir()
+                                  if p.name.startswith(".") and p.name != ".backup.flock")
 
                 # A good boot: both archives, nothing left behind.
                 self.wait_for(log, "Daily backup complete.", 1)
@@ -146,8 +154,9 @@ class BackupFailureTests(unittest.TestCase):
                 self.assertEqual(daily.read_bytes(), good)
                 self.assertEqual(leftovers(), [])
 
-                # A job that died hard left its lock and a temporary archive:
-                # the next job takes the lock over and clears the temporary.
+                # A job of an older build that died hard left its directory
+                # lock and a temporary archive: the next job clears both,
+                # since their owners are gone.
                 # Both boot jobs run, one after the other, and the day's
                 # archive is replaced by a proven new one.
                 lock = backups / ".backup.lock"
@@ -170,6 +179,68 @@ class BackupFailureTests(unittest.TestCase):
                 ends = sorted(float(r[2]) for r in rows if r[0] == "end")
                 self.assertEqual(len(starts), 2, rows)
                 self.assertLessEqual(ends[0], starts[1], f"the two jobs overlapped: {rows}")
+
+
+    def test_a_held_lock_and_live_owners_are_never_taken(self) -> None:
+        """Review, 2026-11-09: two jobs that both saw a dead owner both
+        reaped the lock, the second deleting the lock the first had just
+        taken, and both wrote at once. The lock is an flock now: while
+        anybody holds it no job starts, a temporary archive or an old
+        directory lock whose owner is alive is left alone, and the jobs
+        boot starts run one after the other."""
+        real = shutil.which("tar")
+        self.assertIsNotNone(real)
+        with tempfile.TemporaryDirectory(prefix="toc-faketar-") as tmp:
+            bindir = Path(tmp) / "bin"
+            bindir.mkdir()
+            mode, spans = Path(tmp) / "mode", Path(tmp) / "spans"
+            mode.write_text("slow")
+            fake = bindir / "tar"
+            fake.write_text(FAKE_TAR % {"mode": mode, "spans": spans, "real": real})
+            fake.chmod(0o755)
+            env = {"PATH": f"{bindir}:{os.environ.get('PATH', '/usr/bin:/bin')}"}
+            with LiveMud(extra_env=env) as mud:
+                log = mud.root / "log" / "toc.log"
+                backups = mud.root / "backups"
+                self.wait_for(log, "Daily backup complete.", 1)
+                self.wait_for(log, "Automated backup complete.", 1)
+                spans.write_text("")
+
+                # Somebody else's: a live writer's temporary archive and a
+                # directory lock whose owner lives (this test).
+                live = backups / f".Zlive.tar.gz.tmp.{os.getpid()}"
+                live.write_bytes(b"in progress")
+                legacy = backups / ".backup.lock"
+                legacy.mkdir()
+                (legacy / "pid").write_text(f"{os.getpid()}\n")
+                dead = backups / ".Zdead.tar.gz.tmp.999999"
+                dead.write_bytes(b"partial")
+
+                lockfile = backups / ".backup.flock"
+                done_before = log.read_text(encoding="latin-1").count("backup complete.")
+                with open(lockfile, "a+") as held:
+                    fcntl.flock(held, fcntl.LOCK_EX)
+                    mud.restart()
+                    self.wait_for(log, "Daily backup started.", 2)
+                    time.sleep(4)
+                    # Nothing ran while the lock was held elsewhere.
+                    self.assertEqual(spans.read_text(), "")
+                    self.assertEqual(log.read_text(encoding="latin-1").count("backup complete."),
+                                     done_before)
+                    self.assertTrue(dead.exists(), "nothing is cleaned without the lock")
+                self.wait_for(log, "Daily backup complete.", 2)
+                self.wait_for(log, "Automated backup complete.", 2)
+                rows = [line.split() for line in spans.read_text().splitlines()]
+                starts = sorted(float(r[2]) for r in rows if r[0] == "start")
+                ends = sorted(float(r[2]) for r in rows if r[0] == "end")
+                self.assertEqual(len(starts), 2, rows)
+                self.assertLessEqual(ends[0], starts[1], f"the two jobs overlapped: {rows}")
+                self.assertTrue(live.exists(), "a live writer's temporary was deleted")
+                self.assertTrue((legacy / "pid").exists(), "a live owner's lock was deleted")
+                self.assertFalse(dead.exists(), "a dead writer's temporary was kept")
+                live.unlink()
+                (legacy / "pid").unlink()
+                legacy.rmdir()
 
 
 if __name__ == "__main__":

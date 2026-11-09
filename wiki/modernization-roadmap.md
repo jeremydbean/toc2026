@@ -1,7 +1,10 @@
 # Modernization Roadmap (assessment, 2026-11-09)
 
-**Status: an assessment and plan. Nothing in it is implemented.** It reviews
-current `main` against nine areas the owner asked about, beyond the
+**Status: an assessment and plan, reviewed against `main` at 36a36c42
+(2026-11-09).** When it was written nothing in it was implemented; the
+items marked **shipped** below have landed since, and the rest is still a
+plan. It reviews `main` as it stood then against nine areas the owner
+asked about, beyond the
 SHA-512 password migration (done, 2026-11-07) and the TLS player port
 (planned and on hold, `SECURITY.md`). Each recommendation says what
 already exists first, and favours small changes that can be reviewed and
@@ -33,6 +36,20 @@ Effort is **S** (a day or less, one commit), **M** (a few days, a few
 commits) or **L**. Every item in the appendices lists what exists, the
 gap, the affected files, its dependencies, compatibility risks, a
 rollback, and measurable acceptance criteria.
+
+## Shipped since the assessment
+
+| Item | Commit | What landed | Still open |
+| --- | --- | --- | --- |
+| P8.3 | 2528120e, and the review fixes of 2026-11-09 after it | A malformed number in a player file refuses that character instead of exiting the game. Then: only proven absence is a new character (an unopenable file is refused, never replaced); a damaged section, a missing `#END`, a read or close error refuse the character; an object part way through its record is released, not left in the world | P8.4's compatibility corpus of old-layout files |
+| P7.3 | 2528120e | Loop pacing, the watchdog ping and measured durations on `CLOCK_MONOTONIC` | The C test of pacing across a clock step |
+| A3 | 59957e8f | Cookie-authenticated requests that change something must come from the dashboard's own origin (`Sec-Fetch-Site`/`Origin`) | A per-session CSRF token (A2's sessions) |
+| A4 (part) | 59957e8f | `toc-deploy` hands the token to curl on stdin, never argv | The rotation script; `toc.sh backup` still archives the token |
+| D5 | 59957e8f | Every workflow action pinned to a commit; Dependabot for actions, pip and Docker | -- |
+| (backups) | the review fixes of 2026-11-09 | The in-game archives are made under an `flock`, never a lock a job can judge stale and delete | -- |
+
+The ranked table below is left as it was assessed, so its reasoning can
+be read against the code it was written about.
 
 ## Verified findings that set the order
 
