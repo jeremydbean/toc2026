@@ -17572,3 +17572,71 @@
 1794224791	cmd	Trentlin	28	29061	korzath1.are	fighting	81	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard. // A security guard walks off to the south.	-	+
 1794224795	cmd	Trentlin	28	29062	korzath1.are	standing	81	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
 1794224795	cmd	Trentlin	28	29062	korzath1.are	standing	81	0	-	trip	guard	You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794224867	cmd	Trentlin	28	29062	korzath1.are	standing	84	0	-	look		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794224869	cmd	Trentlin	28	29062	korzath1.are	standing	84	0	-	kill	g	Your punch wounds a security guard. // A security guard parries your attack. // A security guard parries your attack.	-	-
+1794224872	cmd	Trentlin	28	29062	korzath1.are	fighting	84	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch maims a security guard!	-	-
+1794224877	cmd	Trentlin	28	29062	korzath1.are	fighting	84	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794224879	cmd	Trentlin	28	29062	korzath1.are	fighting	79	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794224927	cmd	Trentlin	28	29061	korzath1.are	standing	66	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794224928	cmd	Trentlin	28	29061	korzath1.are	standing	66	0	-	kill	g	A security guard dodges your attack. // A security guard parries your attack.	-	-
+1794224931	cmd	Trentlin	28	29061	korzath1.are	fighting	66	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard! // A security guard walks off to the west.	-	+
+1794224935	cmd	Trentlin	28	29060	korzath1.are	standing	66	0	-	west		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794224935	cmd	Trentlin	28	29060	korzath1.are	standing	66	0	-	kill	gua	Your punch *** DEVASTATES *** a security guard! // Your punch MANGLES a security guard! // A security guard is DEAD!!	-	+
+1794224940	cmd	Trentlin	28	29061	korzath1.are	standing	69	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794224941	cmd	Trentlin	28	29061	korzath1.are	standing	69	0	-	iron		You lost your concentration.	-	-
+1794224942	cmd	Trentlin	28	29061	korzath1.are	standing	69	0	-	iron		Your skin hardens.	-	-
+1794224949	cmd	Trentlin	28	29061	korzath1.are	standing	69	0	-	kill	g	Your punch DISEMBOWELS a security guard! // Your punch MUTILATES a security guard!	-	-
+1794224958	cmd	Trentlin	28	29061	korzath1.are	fighting	64	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch MASSACRES a security guard!	-	-
+1794224962	cmd	Trentlin	28	29061	korzath1.are	fighting	60	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS a security guard!	-	-
+1794224969	cmd	Trentlin	28	29061	korzath1.are	standing	60	0	-	sacrifice	cor	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794224969	cmd	Trentlin	28	29061	korzath1.are	standing	60	0	-	sacrifice	cor	You can't find it.	-	-
+1794224970	cmd	Trentlin	28	29061	korzath1.are	standing	60	0	-	look		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794224970	cmd	Trentlin	28	29062	korzath1.are	standing	60	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794224972	cmd	Trentlin	28	29062	korzath1.are	standing	60	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794224972	cmd	Trentlin	28	29062	korzath1.are	standing	60	0	-	sacrifice	co	You can't find it.	-	-
+1794224972	cmd	Trentlin	28	29063	korzath1.are	standing	60	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside	-	+
+1794224973	cmd	Trentlin	28	29065	korzath1.are	standing	60	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794224977	cmd	Trentlin	28	29065	korzath1.are	standing	60	0	-	kill	gua	Your punch hits a security guard. // A security guard parries your attack.	-	-
+1794224980	cmd	Trentlin	28	29065	korzath1.are	fighting	60	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794224986	cmd	Trentlin	28	29065	korzath1.are	fighting	52	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch *** DEMOLISHES *** a security guard!	-	-
+1794224995	cmd	Trentlin	28	29065	korzath1.are	fighting	52	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a security guard.	-	-
+1794224998	cmd	Trentlin	28	29065	korzath1.are	fighting	52	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch maims a security guard!	-	-
+1794225002	cmd	Trentlin	28	29065	korzath1.are	fighting	52	0	fight	trip		Your trip misses a security guard.	-	-
+1794225007	cmd	Trentlin	28	29065	korzath1.are	fighting	52	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794225015	cmd	Trentlin	28	29065	korzath1.are	standing	53	0	-	sacrifice	co	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794225017	cmd	Trentlin	28	29065	korzath1.are	standing	53	0	-	kill	g	Your punch *** DEVASTATES *** a security guard! // A security guard parries your attack. // A security guard parries your attack.	-	-
+1794225020	cmd	Trentlin	28	29065	korzath1.are	fighting	53	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES a security guard!	-	-
+1794225025	cmd	Trentlin	28	29065	korzath1.are	fighting	49	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a security guard.	-	-
+1794225028	cmd	Trentlin	28	29065	korzath1.are	fighting	45	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard!	-	-
+1794225034	cmd	Trentlin	28	29065	korzath1.are	fighting	45	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794225040	cmd	Trentlin	28	29065	korzath1.are	fighting	41	0	fight	trip		You trip a security guard and a security guard goes down! // Your trip scratches a security guard.	-	-
+1794225045	cmd	Trentlin	28	29065	korzath1.are	standing	41	0	-	trip		But you aren't fighting anyone!	-	-
+1794225048	state	Trentlin	28	29065	korzath1.are	lvl=28 hp=273/656 mana=922/1265 mv=168/325 align=-162 exp=65934 coin=10517364 bank=15125463593 qp=2339 prac=14 train=3 stash=54/75 remorts=1
+1794225048	cmd	Trentlin	28	29065	korzath1.are	standing	41	0	-	score		| Name:       Trentlin | Level:      28 | Class:        Monk | // | Played:     33 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794225050	cmd	Trentlin	28	29065	korzath1.are	standing	41	0	-	look		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794225051	cmd	Trentlin	28	29066	korzath1.are	standing	41	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.	-	+
+1794225052	cmd	Trentlin	28	29067	korzath1.are	standing	41	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.	-	+
+1794225053	cmd	Trentlin	28	29070	korzath1.are	standing	41	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've	-	+
+1794225054	cmd	Trentlin	28	29071	korzath1.are	standing	41	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.	-	+
+1794225054	cmd	Trentlin	28	29071	korzath1.are	standing	41	0	-	scan		a Supervisor                       -to the East.	-	-
+1794225061	cmd	Trentlin	28	29071	korzath1.are	standing	41	0	-	sleep		You go to sleep.	-	-
+1794225061	cmd	Trentlin	28	29071	korzath1.are	sleeping	41	0	-	group		Trentlin's group: // [28 Monk ] Trentlin          273/ 656 hp  922/1265 mana  152/ 325 mv 65934 xp	-	-
+1794225062	cmd	Trentlin	28	29071	korzath1.are	sleeping	41	0	-	affect		You are affected by: // Skill: 'iron skin' modifies armor class by -20 for 0 hours.	-	-
+1794225067	cmd	Trentlin	28	29071	korzath1.are	sleeping	49	0	-	wake		You wake and stand up.	-	-
+1794225068	cmd	Trentlin	28	29071	korzath1.are	standing	49	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794225076	cmd	Trentlin	28	29080	korzath1.are	standing	49	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.	-	+
+1794225076	cmd	Trentlin	28	29082	korzath1.are	standing	49	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the	-	+
+1794225078	cmd	Trentlin	28	29082	korzath1.are	standing	49	0	-	consider	en	An engineer is well above your level. // An engineer has about as many hit points as you. // Blow for blow, you would need about 5 rounds to bring an engineer down; he would need about 4 rounds for you.	-	+
+1794225081	cmd	Trentlin	28	29082	korzath1.are	standing	49	0	-	kill	en	Your punch *** DEVASTATES *** an engineer! // An engineer parries your attack.	-	-
+1794225088	cmd	Trentlin	28	29082	korzath1.are	fighting	49	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches an engineer.	-	-
+1794225091	cmd	Trentlin	28	29082	korzath1.are	fighting	49	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches an engineer.	-	-
+1794225103	cmd	Trentlin	28	29082	korzath1.are	fighting	49	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an engineer.	-	-
+1794225106	cmd	Trentlin	28	29082	korzath1.are	fighting	49	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an engineer.	-	-
+1794225113	cmd	Trentlin	28	29082	korzath1.are	fighting	49	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS an engineer! // An engineer is DEAD!!	-	+
+1794225120	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	get	all co	You get engineer boots from a stinking corpse. // You get engineer gloves from a stinking corpse.	-	-
+1794225120	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	sacrifice	co	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794225122	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	compare	boot	A) engineer boots (level 32) -- can't use: needs level 32 // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794225126	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	drop	boot	You drop engineer boots.	-	-
+1794225128	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	compare	glo	A) engineer gloves (level 32) -- can't use: needs level 32 // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794225132	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	drop	glo	You drop engineer gloves.	-	-
+1794225133	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	look		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the	-	+
