@@ -281521,3 +281521,26 @@ Mon Nov  9 20:48:30 2026 :: Treasure goblin: vanished from room 9550 (The Casbah
 Mon Nov  9 20:58:35 2026 :: Treasure goblin: vanished from room 29092 (Metalworks, korzath1.are) (too long in one area).
 Mon Nov  9 21:22:12 2026 :: Treasure goblin: vanished from room 19168 (Though the Weeds, rome.are) (drifting).
 Mon Nov  9 21:32:17 2026 :: Treasure goblin: vanished from room 7873 (The Small Valley, valley.are) (too long in one area).
+Mon Nov  9 21:37:14 2026 :: Sock.sinaddr:  40.119.27.33
+Mon Nov  9 21:37:14 2026 :: EOF encountered on read.
+Mon Nov  9 21:37:15 2026 :: Sock.sinaddr:  40.119.27.33
+Mon Nov  9 21:38:18 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Mon Nov  9 21:38:22 2026 :: Log WebAdmin: fsave
+Mon Nov  9 21:38:25 2026 :: Connection guard: last hour 14 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
+Mon Nov  9 21:38:28 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Mon Nov  9 21:38:31 2026 :: Received signal 15; saving players and shutting down.
+Mon Nov  9 21:38:31 2026 :: Normal termination of game.
+Mon Nov  9 21:38:32 2026 ::  INIT OK 
+Mon Nov  9 21:38:32 2026 :: walkto_load: 157 destinations.
+Mon Nov  9 21:38:32 2026 :: changes_load: 231 entries.
+Mon Nov  9 21:38:32 2026 :: Passwords: SHA-512 crypt self-test passed.
+Mon Nov  9 21:38:32 2026 :: Recovery ledger: 345 records (0 from before the check), 2 requests, 8 players.
+Mon Nov  9 21:38:32 2026 :: Corpse keeper: Trentlin's corpse c6aef57d8014fe2 made again in room 15009 with 0 objects.
+Mon Nov  9 21:38:32 2026 :: Corpse keeper: Trentlin's corpse c6af06a99014a1f made again in room 30443 with 2 objects.
+Mon Nov  9 21:38:32 2026 :: Corpse keeper: 2 corpses made again, 0 set aside.
+Mon Nov  9 21:38:32 2026 :: ROM is ready to rock on port 9000.
+Mon Nov  9 21:38:32 2026 :: Treasure goblin: appeared.
+Mon Nov  9 21:38:32 2026 :: Automated backup started.
+Mon Nov  9 21:38:32 2026 :: Daily backup started.
+Mon Nov  9 21:38:32 2026 :: Automated backup complete.
+Mon Nov  9 21:38:33 2026 :: Daily backup complete.
