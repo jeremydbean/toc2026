@@ -570,7 +570,22 @@ void recovery_boot( void )
     {
         char *col[10];
         long seq;
-        int kind = ledger_split( line, col );
+        int kind;
+        size_t got = strlen( line );
+
+        /* Longer than any record: the rest of it is drained here, never
+           read as a record of its own (a legacy row needs no checksum, so
+           a line's tail could have passed for one; roadmap, 2026-11-09). */
+        if ( got == sizeof(line) - 1 && line[got - 1] != '\n' )
+        {
+            int c;
+
+            while ( ( c = getc( fp ) ) != EOF && c != '\n' )
+                ;
+            bad++;
+            continue;
+        }
+        kind = ledger_split( line, col );
 
         if ( kind == LEDGER_ROW_SKIP )
             continue;

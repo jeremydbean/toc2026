@@ -294,6 +294,16 @@ void login_lock_boot( void )
         long until, count, last;
         int n;
 
+        if ( len == sizeof(line) - 1 && line[len - 1] != '\n' )
+        {
+            int c;
+
+            /* Longer than any record: drain the rest, which must not be
+               read as a record of its own. */
+            while ( ( c = getc( fp ) ) != EOF && c != '\n' )
+                ;
+            continue;
+        }
         if ( line[0] == '#' || len == 0 || line[len - 1] != '\n' )
             continue;                   /* a comment, or an unfinished line */
         line[--len] = '\0';

@@ -1028,6 +1028,13 @@ bool save_char_obj( CHAR_DATA *ch )
     save_last_status = DURABLE_FAILED;
     if ( IS_NPC(ch) )
 	return false;
+    /* A copy from a file that could not be read is never written: the
+       file on the disk is the only whole record of the character. */
+    if ( ch->pcdata != NULL && ch->pcdata->load_failed )
+    {
+        bug( "Save_char_obj: refused, the character's file could not be read.", 0 );
+        return false;
+    }
     {
         /* "save" fails anybody's next save; "save-<Name>" only that
            character's, which a test with an autosave running can aim. */
@@ -1891,6 +1898,7 @@ CHAR_DATA *offline_player_load( DESCRIPTOR_DATA *d, const char *name,
     char proper[MAX_INPUT_LENGTH];
     CHAR_DATA *ch;
     size_t i, len;
+    bool found;
 
     if ( why != NULL )
         *why = "No such character is saved.\n\r";
@@ -1912,7 +1920,16 @@ CHAR_DATA *offline_player_load( DESCRIPTOR_DATA *d, const char *name,
     }
 
     memset( d, 0, sizeof(*d) );
-    if ( !load_char_obj( d, proper ) )
+    found = load_char_obj( d, proper );
+    if ( found && player_file_unreadable( d->character ) )
+    {
+        if ( why != NULL )
+            *why = "Their file could not be read; it is left as it is.\n\r";
+        free_char( d->character );
+        d->character = NULL;
+        return NULL;
+    }
+    if ( !found )
     {
         if ( d->character != NULL )
         {
@@ -2147,6 +2164,13 @@ static void unwear_illegal_at_load( CHAR_DATA *ch )
     reapply_innate_affects( ch );
 }
 
+/* A copy whose file could not be read (load_char_obj's trap): every
+   caller refuses it, and it is never saved. */
+bool player_file_unreadable( const CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->load_failed;
+}
+
 bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 {
     static PC_DATA pcdata_zero;
@@ -2155,6 +2179,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     CHAR_DATA *ch;
     FILE *fp;
     bool found;
+    volatile bool unreadable = false;
     int stat;
     int i;
 
@@ -2326,12 +2351,21 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ( fp = fopen( strsave, "r" ) ) != NULL )
     {
 	int iNest;
+	jmp_buf trap;
 
 	for ( iNest = 0; iNest < MAX_NEST; iNest++ )
 	    rgObjNest[iNest] = NULL;
 	fread_to_stash = false;
 
 	found = true;
+	/* A malformed number abandons this file, not the game (db.c,
+	   fread_malformed): the reader jumps back here. */
+	if ( setjmp( trap ) != 0 )
+	{
+	    unreadable = true;
+	    goto read_done;
+	}
+	fread_player_trap = &trap;
 	for ( ; ; )
 	{
 	    char letter;
@@ -2363,10 +2397,27 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 		break;
 	    }
 	}
+read_done:
+	fread_player_trap = NULL;
 	fclose( fp );
     }
 
     fpReserve = fopen( NULL_FILE, "r" );
+
+    /* Unreadable: whatever was read stays with the copy for free_char to
+       release, nothing below runs on it, and every caller refuses it
+       (player_file_unreadable); save_char_obj never writes it. */
+    if ( unreadable )
+    {
+        ch->pcdata->load_failed = true;
+        fread_to_stash = false;
+        snprintf( buf, sizeof(buf),
+                  "Load_char_obj: %s's file has a malformed value; it is left as it"
+                  " is and the character refused.", name );
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+        return true;
+    }
 
 
     /* initialize race */
@@ -4041,6 +4092,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 {
     char *word;
     CHAR_DATA *pet;
+    MOB_INDEX_DATA *index;
     bool fMatch;
 
     /* first entry had BETTER be the vnum or we barf */
@@ -4050,19 +4102,38 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	int vnum;
 
     	vnum = fread_number(fp);
-    	if (get_mob_index(vnum) == NULL)
+	if ( ( index = get_mob_index(vnum) ) == NULL )
 	{
-    	    bug("Fread_pet: bad vnum %d.",vnum);
-	    pet = create_mobile(get_mob_index(MOB_VNUM_FIDO));
+	    bug("Fread_pet: bad vnum %d.",vnum);
+	    index = get_mob_index(MOB_VNUM_FIDO);
 	}
-    	else
-    	    pet = create_mobile(get_mob_index(vnum));
     }
     else
     {
         bug("Fread_pet: no vnum in file.",0);
-        pet = create_mobile(get_mob_index(MOB_VNUM_FIDO));
+        index = get_mob_index(MOB_VNUM_FIDO);
     }
+    /* No such mobile and no stand-in for it either (the world has no
+       MOB_VNUM_FIDO): create_mobile(NULL) exited the game. The pet is
+       left out and the rest of the file read; the next save drops it. */
+    if ( index == NULL )
+    {
+        bug( "Fread_pet: no mobile to stand for the pet; it is left out.", 0 );
+        for ( ; ; )
+        {
+            word = feof(fp) ? "END" : fread_word(fp);
+            if ( !str_cmp( word, "End" ) )
+                return;
+            fread_to_eol( fp );
+        }
+    }
+    pet = create_mobile( index );
+    /* Theirs from the start, so a file abandoned part way through the pet
+       (load_char_obj's trap) leaves it to free_char, not loose with no
+       room in the character list. */
+    pet->leader = ch;
+    pet->master = ch;
+    ch->pet = pet;
 
     for ( ; ; )
     {

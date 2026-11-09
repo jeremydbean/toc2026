@@ -24,6 +24,7 @@
  **************************************************************************/
 
 /* Simplified for modern ANSI C */
+#include <setjmp.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -1116,6 +1117,7 @@ void  playlog_outcome        args( ( CHAR_DATA *ch, const char *op, const char *
                                      const char *reason, const char *op_id, const char *detail ) );
 void  playlog_state          args( ( CHAR_DATA *ch ) );
 long  playlog_now_ms         args( ( void ) );
+long  monotonic_ms           args( ( void ) );
 void  progress_kill          args( ( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp,
                                      int rested_xp, long accepted_xp, int members,
                                      long victim_coin ) );
@@ -2375,6 +2377,7 @@ struct  pc_data
     int                 id;
     char * pwd;
     bool                pwd_upgraded;   /* moved to SHA-512 this login: tell them (memory) */
+    bool                load_failed;    /* the file could not be read: never entered, never saved */
     char * bamfin;
     char * bamfout;
     char * trans;
@@ -3590,6 +3593,10 @@ MID * get_mob_index   ( int vnum );
 OID * get_obj_index   ( int vnum );
 RID * get_room_index  ( int vnum );
 char    fread_letter    ( FILE *fp );
+/* Armed by load_char_obj while it reads a player file: a malformed number
+   there abandons that file instead of exiting the game (db.c). */
+extern jmp_buf *fread_player_trap;
+bool    player_file_unreadable( const CHAR_DATA *ch );
 int     fread_number    ( FILE *fp );
 long    fread_long      ( FILE *fp );
 int     fireball_damage_roll ( int level );

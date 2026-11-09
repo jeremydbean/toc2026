@@ -347,6 +347,25 @@ class LockFileTests(unittest.TestCase):
                 self.assertIn("was read only in part (1 address)", log)
                 self.assertIn("Login lockout: not written", log)
 
+    def test_an_overlong_line_is_never_half_read(self) -> None:
+        with LiveMud(extra_env=self.ENV) as mud:
+            make(mud, "Zlockstaf", "Zstaffpw11", Levl=70)
+            path = mud.root / "log" / "login_lockouts.tsv"
+            now = int(time.time())
+            tail = LOCK_RECORD.replace("203.0.113.7", "203.0.113.99").format(
+                until=now + 3600, last=now)
+            # A comment that fills the reader's 256-byte buffer exactly,
+            # then what looks like a whole record on the same line: the
+            # tail used to be read as a line of its own.
+            path.write_text(self.record() + "#" + "x" * 254 + tail)
+            mud.restart()
+            with mud.connect() as staff:
+                login(staff, "Zlockstaf", "Zstaffpw11")
+                listing = staff.must("dns guard", "Login lockouts")
+                self.assertIn("203.0.113.7", listing)
+                self.assertNotIn("203.0.113.99", listing, "a line's tail was read as a record")
+                quit_out(staff)
+
     def test_a_readable_file_is_kept_and_extended(self) -> None:
         with LiveMud(extra_env=self.ENV) as mud:
             make(mud, "Zlockgood", "Zlockpass1")

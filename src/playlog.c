@@ -1016,12 +1016,12 @@ void playlog_session( CHAR_DATA *ch, const char *how )
 
 static long progress_lines = -1;
 
+/* Durations only -- a pulse, a fight, a command -- so on the monotonic
+   clock (comm.c, monotonic_ms): a wall-clock step no longer reads as a
+   stall or a negative fight. */
 long playlog_now_ms( void )
 {
-    struct timeval now;
-
-    gettimeofday( &now, NULL );
-    return (long) now.tv_sec * 1000L + (long) ( now.tv_usec / 1000 );
+    return monotonic_ms();
 }
 
 static void progress_trim( void )

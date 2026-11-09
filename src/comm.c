@@ -959,12 +959,44 @@ static void login_idle_sweep( void )
     }
 }
 
+/*
+ * The loop's own clock: monotonic, never the wall clock (roadmap P7.3,
+ * 2026-11-09). The pulse's sleep and the systemd watchdog's ping were both
+ * measured on the wall clock, so a clock stepped back an hour -- NTP after
+ * a long suspend, a mistaken date -- slept the game for that hour and
+ * starved the watchdog until systemd killed it. Persisted times, the play
+ * journal's epoch column and the holiday calendar keep current_time.
+ */
+static void loop_clock( struct timeval *tv )
+{
+#if defined(CLOCK_MONOTONIC)
+    struct timespec ts;
+
+    if ( clock_gettime( CLOCK_MONOTONIC, &ts ) == 0 )
+    {
+        tv->tv_sec  = ts.tv_sec;
+        tv->tv_usec = (suseconds_t) ( ts.tv_nsec / 1000 );
+        return;
+    }
+#endif
+    gettimeofday( tv, NULL );
+}
+
+/* Milliseconds on that clock, for durations only (playlog_now_ms). */
+long monotonic_ms( void )
+{
+    struct timeval tv;
+
+    loop_clock( &tv );
+    return (long) tv.tv_sec * 1000L + (long) ( tv.tv_usec / 1000 );
+}
+
 void game_loop_unix( int control )
 {
     static struct timeval null_time;
     struct timeval last_time;
     struct sigaction shutdown_action;
-    time_t last_watchdog_time;
+    long last_watchdog_ms;
 
     signal( SIGPIPE, SIG_IGN );
     memset( &shutdown_action, 0, sizeof(shutdown_action) );
@@ -972,9 +1004,9 @@ void game_loop_unix( int control )
     sigemptyset( &shutdown_action.sa_mask );
     sigaction( SIGTERM, &shutdown_action, NULL );
     sigaction( SIGINT, &shutdown_action, NULL );
-    gettimeofday( &last_time, NULL );
+    loop_clock( &last_time );
     time( &current_time );
-    last_watchdog_time = current_time;
+    last_watchdog_ms = monotonic_ms();
 
     /* Main loop */
     while ( !merc_down )
@@ -997,10 +1029,10 @@ void game_loop_unix( int control )
         login_idle_sweep( );
         conn_guard_tick( );
 
-        if ( current_time - last_watchdog_time >= 10 )
+        if ( monotonic_ms() - last_watchdog_ms >= 10000L )
         {
             notify_systemd( "WATCHDOG=1" );
-            last_watchdog_time = current_time;
+            last_watchdog_ms = monotonic_ms();
         }
 
 #if defined(MALLOC_DEBUG)
@@ -1224,7 +1256,7 @@ void game_loop_unix( int control )
             struct timeval            now_time;
             long                      elapsed;
 
-            gettimeofday( &now_time, NULL );
+            loop_clock( &now_time );
             elapsed  = (long)( now_time.tv_sec - loop_start.tv_sec ) * 1000000L;
             elapsed += (long)( now_time.tv_usec - loop_start.tv_usec );
             if ( elapsed < 0 )
@@ -1291,7 +1323,7 @@ void game_loop_unix( int control )
                 next_time.tv_sec  += 1;
             }
 
-            gettimeofday( &now_time, NULL );
+            loop_clock( &now_time );
             stall_time.tv_sec  = next_time.tv_sec  - now_time.tv_sec;
             stall_time.tv_usec = next_time.tv_usec - now_time.tv_usec;
 
@@ -1311,7 +1343,7 @@ void game_loop_unix( int control )
             }
         }
 
-        gettimeofday( &last_time, NULL );
+        loop_clock( &last_time );
         time( &current_time );
     }
 
@@ -3180,6 +3212,15 @@ static bool login_reload_character( DESCRIPTOR_DATA *d, const char *password )
     found = load_char_obj( d, name );
     ch    = d->character;
 
+    if ( found && player_file_unreadable( ch ) )
+    {
+        write_to_buffer( d,
+            "That character's file could not be read. It has been left as it is,\n\r"
+            "and the staff have been told; please let them know too.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+
     if ( !found )
     {
         write_to_buffer( d,
@@ -3477,6 +3518,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
 	fOld = load_char_obj( d, argument );
 	ch   = d->character;
+
+	/* The file is there and could not be read: refused, and never
+	   taken for a new name -- making one would save over the file. */
+	if ( fOld && player_file_unreadable( ch ) )
+	{
+	    write_to_buffer( d,
+	        "That character's file could not be read. It has been left as it is,\n\r"
+	        "and the staff have been told; please let them know too.\n\r", 0 );
+	    close_socket( d );
+	    return;
+	}
 
         if ( IS_SET(ch->act, PLR_DENY) )
         {

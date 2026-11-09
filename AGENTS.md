@@ -1779,6 +1779,22 @@ keeps an unplaced pet, `nuke_pets` gives one a room before extracting
 it, and `free_char` clears the stash and an unplaced pet of a copy that
 never entered -- a wrong password, a reconnect.
 
+**A player file with a malformed number refuses that character, never
+the game** (roadmap, 2026-11-09). `fread_number`/`fread_long`/
+`fread_string_eol` went to `exit(1)`, so one damaged file stopped the game
+at that player's name prompt, and every reconnect again. While
+`load_char_obj` reads a player file it arms `fread_player_trap` (a
+`jmp_buf`); `fread_malformed` in `db.c` jumps back there, the copy gets
+`pcdata->load_failed`, and the name prompt, `login_reload_character` and
+`offline_player_load` refuse it (`player_file_unreadable`) -- never taking
+it for a new name, which would save over the file. `save_char_obj`
+refuses such a copy. Area files still fail fast at boot. A pet record is
+the character's from `create_mobile` on, so a file abandoned mid-pet
+leaves it to `free_char`; and a pet whose mobile and stand-in
+(`MOB_VNUM_FIDO`) are both missing is left out instead of reaching
+`create_mobile(NULL)`, which exited. `tests/test_player_file_refusal.py`
+(also under the sanitizers).
+
 **`load_char_obj` fills a found character's gaps, never a new one's.**
 `apply_class_and_guild_skills()` runs at the end of the loader so a
 character short of something their class, guild or race owes them gets
@@ -2009,6 +2025,13 @@ parent); STASH TAKE's
   only, and is not installed by `toc-deploy`.
   `tests/test_recovery_ledger.py`, `tests/test_corpse_keep.py`,
   `tests/test_player_backups.py`.
+- **The game loop's pacing, its systemd watchdog ping and every measured
+  duration use the monotonic clock** (`loop_clock`/`monotonic_ms` in
+  `comm.c`; `playlog_now_ms` is it): a wall clock stepped back no longer
+  sleeps the loop or starves `WatchdogSec`. `current_time` stays the wall
+  clock for everything persisted and for the calendar. The ledger and
+  lockout readers drain a line longer than their buffer instead of
+  reading its tail as a record.
 - **The in-game archives of `player/`** (`backups/<Mon.DD.YYYY-HH.MM.SS>.tar.gz`
   every four hours, `backups/<Mon.DD>.tar.gz` daily; `backup_launch` in
   `update.c`) are made by a detached shell, never on the game loop

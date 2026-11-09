@@ -4901,6 +4901,25 @@ char fread_letter( FILE *fp )
 /*
  * Read a number from a file.
  */
+/*
+ * A number that is not one. In an area file at boot that is fatal, as it
+ * always was: the world must load whole or not at all. While a player file
+ * is read (load_char_obj arms fread_player_trap) it abandons that one file
+ * instead -- one malformed number in one character's file used to exit the
+ * game at that player's name prompt, and every reconnect retried it
+ * (modernization review, 2026-11-09). The login is refused and the file is
+ * never written over (pcdata->load_failed).
+ */
+jmp_buf *fread_player_trap = NULL;
+
+static void fread_malformed( const char *what )
+{
+    bug( what, 0 );
+    if ( fread_player_trap != NULL )
+        longjmp( *fread_player_trap, 1 );
+    exit( 1 );
+}
+
 int fread_number( FILE *fp )
 {
     int number;
@@ -4927,10 +4946,7 @@ int fread_number( FILE *fp )
     }
  
     if ( !isdigit(c) )
-    {
-        bug( "Fread_number: bad format.", 0 );
-	exit( 1 );
-    }
+        fread_malformed( "Fread_number: bad format." );
  
     while ( isdigit(c) )
     {
@@ -4978,10 +4994,7 @@ long fread_long( FILE *fp )
     }
  
     if ( !isdigit(c) )
-    {
-        bug( "Fread_number: bad format.", 0 );
-	exit( 1 );
-    }
+        fread_malformed( "Fread_number: bad format." );
  
     while ( isdigit(c) )
     {
@@ -5211,10 +5224,7 @@ char *fread_string_eol( FILE *fp )
     {
         c = getc(fp);
         if (c == EOF)
-        {
-            bug( "Fread_string_eol  EOF", 0 );
-            exit( 1 );
-        }
+            fread_malformed( "Fread_string_eol  EOF" );
 
         *plast++ = (char) c;
         if ( !char_special[ c - EOF ] )
