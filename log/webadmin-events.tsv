@@ -4615,3 +4615,7 @@
 1794182977	wizinfo	60	Black market: the dealer appeared in room 6302 (Webby Passage, arac.are) with 5 items (stock 1794182977), for 27 minutes.
 1794189195	wizinfo	60	Connection guard: 34.198.201.66 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 34.198.201.66 lifts it.
 1794189802	wizinfo	60	Connection guard: 3.12.251.153 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 3.12.251.153 lifts it.
+1794192484	wizinfo	60	Connection guard: last hour 14 closed without a word, 0 refused, 0 new characters refused, 2 newly paused; 6 addresses paused and 0 refused now, 14 active player addresses.
+1794192515	wizinfo	60	Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+1794192515	wizinfo	27	Trentlin has entered the game.
+1794192637	wizinfo	27	Trentlin has left the game (2m).
