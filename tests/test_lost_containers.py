@@ -42,7 +42,13 @@ class LoaderSourceTests(unittest.TestCase):
         body = body[:body.index("\n}\n")]
         incomplete = body[body.index('bug( "Fread_obj: incomplete object."'):]
         incomplete = incomplete[:incomplete.index("return;")]
-        self.assertIn("rgObjNest[iSlot] = NULL", incomplete)
+        # The placeholder is released through the one path that frees an
+        # unfinished object (review, 2026-11-09), and that path clears its
+        # nesting slot.
+        self.assertIn("fread_obj_release_unfinished();", incomplete)
+        release = source[source.index("static void fread_obj_release_unfinished( void )"):]
+        release = release[:release.index("\n}\n")]
+        self.assertIn("rgObjNest[iSlot] = NULL", release)
         self.assertIn("rgObjNest[iNest-1] == NULL", body)
 
 

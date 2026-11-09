@@ -1653,6 +1653,10 @@ static void show_obj( CHAR_DATA *ch, OBJ_INDEX_DATA *o )
     toc_strlcat( out, buf, size );
     toc_strlcat( out, "(Objects already made keep their old values; LOAD one to "
                       "see a change.)\n\r", size );
+    /* How many the world holds (create_object counts them): a count that
+       drifts is how a leaked or lost object shows (review, 2026-11-09). */
+    snprintf( buf, sizeof(buf), "In the world now: %d.\n\r", o->count );
+    toc_strlcat( out, buf, size );
     page_to_char( out, ch );
 }
 

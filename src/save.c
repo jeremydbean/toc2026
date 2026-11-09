@@ -2230,6 +2230,34 @@ static void player_file_decompress( const char *name )
  */
 static OBJ_DATA *fread_obj_unfinished = NULL;
 static bool fread_obj_unfinished_registered = false;
+/* The prototype whose count create_object raised for it, kept apart from
+   obj->pIndexData: a second Vnum key in the record rewrote that field, so
+   the release decremented the wrong prototype, or read a NULL one and
+   took the game down (review, 2026-11-09). */
+static OBJ_INDEX_DATA *fread_obj_unfinished_index = NULL;
+
+/* Why a player file was refused from inside fread_obj (load_char_obj's
+   trap, jumped to with 2). */
+static const char *fread_obj_refused_why = NULL;
+
+/*
+ * A record of a known object that cannot be the object it says: an End
+ * with no Nest, a second Vnum. While load_char_obj reads a player file
+ * the whole character is refused, as for a malformed value -- dropping
+ * the object let the next save write the character without it (review,
+ * 2026-11-09). Other readers (a snapshot read aside, a corpse) have no
+ * trap; for them the answer is false and the caller keeps its old
+ * behaviour.
+ */
+static bool fread_obj_refuse( const char *why )
+{
+    if ( fread_player_trap == NULL )
+        return false;
+    bug( "Fread_obj: a damaged object record; the player file is refused.", 0 );
+    fread_obj_refused_why = why;
+    longjmp( *fread_player_trap, 2 );
+    return true;   /* not reached */
+}
 
 static void fread_obj_release_unfinished( void )
 {
@@ -2269,8 +2297,11 @@ static void fread_obj_release_unfinished( void )
     if ( fread_obj_unfinished_registered )
     {
         unregister_object( obj );
-        --obj->pIndexData->count;
+        if ( fread_obj_unfinished_index != NULL )
+            --fread_obj_unfinished_index->count;
     }
+    fread_obj_unfinished_registered = false;
+    fread_obj_unfinished_index = NULL;
     for ( paf = obj->affected; paf != NULL; paf = paf_next )
     {
         paf_next  = paf->next;
@@ -2525,10 +2556,12 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	found = true;
 	/* A malformed number abandons this file, not the game (db.c,
 	   fread_malformed): the reader jumps back here. */
+	fread_obj_refused_why = NULL;
 	if ( setjmp( trap ) != 0 )
 	{
 	    unreadable = true;
-	    why = "has a malformed value";
+	    why = fread_obj_refused_why != NULL ? fread_obj_refused_why
+	                                        : "has a malformed value";
 	    goto read_done;
 	}
 	fread_player_trap = &trap;
@@ -4546,7 +4579,6 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
     OBJ_DATA *obj;
     char *word;
     int iNest;
-    int iSlot;
     bool fMatch;
     bool fNest;
     bool fVnum;
@@ -4554,6 +4586,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
     bool new_format;  /* to prevent errors */
     bool make_new;    /* update object */
     bool swapped;     /* a retired vnum, loaded as its replacement */
+    bool vnum_seen;   /* a Vnum key has been read for this record */
 
     fVnum = false;
     obj = NULL;
@@ -4614,6 +4647,8 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
        jumping out of the record leaves it for load_char_obj to release. */
     fread_obj_unfinished            = obj;
     fread_obj_unfinished_registered = new_format;
+    fread_obj_unfinished_index      = new_format ? obj->pIndexData : NULL;
+    vnum_seen                       = !first;   /* the leading Vnum */
 
     fNest		= false;
     fVnum		= true;
@@ -4770,27 +4805,29 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 
 	    if ( !str_cmp( word, "End" ) )
 	    {
-		fread_obj_unfinished = NULL;
 		if ( !fNest || !fVnum || obj->pIndexData == NULL)
 		{
+		    /* A known object whose record is not whole -- no Nest
+		       -- refuses the character: dropping it let the next
+		       save write them without it (review, 2026-11-09). A
+		       vanished prototype is the old, kept case: the object
+		       goes and what was inside it falls back loose. */
+		    if ( obj->pIndexData != NULL )
+			fread_obj_refuse( "has an incomplete object record" );
 		    bug( "Fread_obj: incomplete object.", 0 );
 		    /* The Nest key pointed its slot at this placeholder.
 		       Left there, everything saved inside the vanished
 		       container was linked into freed memory and lost at
 		       login (2026-10-14); cleared, its contents fall back
-		       to the character below. */
-		    for ( iSlot = 0; iSlot < MAX_NEST; iSlot++ )
-			if ( rgObjNest[iSlot] == obj )
-			    rgObjNest[iSlot] = NULL;
-		    free_string( obj->name        );
-		    free_string( obj->description );
-		    free_string( obj->short_descr );
-		    obj->next_free   = obj_free;
-		    obj_free  = obj;
+		       to the character below. The release does that, and
+		       takes back what create_object registered -- returning
+		       it to the pool alone left it in the object list. */
+		    fread_obj_release_unfinished();
 		    return;
 		}
 		else
 		{
+		    fread_obj_unfinished = NULL;
 		    if (!new_format)
 		    {
                         register_object( obj );
@@ -5020,6 +5057,17 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		int vnum;
 
 		vnum = fread_number( fp );
+		/* One identity a record: a second Vnum is a damaged record,
+		   and rewriting the first made the object another one (or
+		   none) under the count create_object had raised. */
+		if ( vnum_seen )
+		{
+		    fread_obj_refuse( "has an object record with two vnums" );
+		    bug( "Fread_obj: a second vnum %d ignored.", vnum );
+		    fMatch = true;
+		    break;
+		}
+		vnum_seen = true;
 		if ( get_obj_index( vnum ) == NULL
 		&&   retired_object_replacement( vnum ) != 0 )
 		{

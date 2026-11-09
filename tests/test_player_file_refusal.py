@@ -259,7 +259,7 @@ class DamagedStructureTests(unittest.TestCase):
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
             self.assertIn("Zsection's file has an unknown section", log)
             self.assertIn("Zcutend's file ends before its #END", log)
-            self.assertIn("Zcutobj's file ends before its #END", log)
+            self.assertIn("Zcutobj's file has an incomplete object record", log)
             self.assertIn("Zcutstash's file ends before its #END", log)
             self.assertIn("Zstraynote's file has a record that does not begin with #", log)
             self.assertNotIn("Zwholeone's file", log)
@@ -299,6 +299,76 @@ class UnfinishedObjectTests(unittest.TestCase):
                                  baseline.count("["), "copies of the prototype grew")
                 quit_out(staff)
             self.assertEqual(identity(mud, "Zorphan"), before)
+            self.assertIsNone(mud.proc.poll())
+
+
+def vnums(mud: LiveMud, name: str) -> list[int]:
+    text = (mud.player_dir / name).read_text(encoding="latin-1")
+    return list(dict.fromkeys(int(v) for v in re.findall(r"(?m)^#O\nVnum (\d+)$", text)))
+
+
+def in_world(client, vnum: int) -> int:
+    said = client.must(f"oshow {vnum}", "In the world now:")
+    return int(re.search(r"In the world now: (\d+)", said).group(1))
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class DamagedObjectRecordTests(unittest.TestCase):
+    """Review, 2026-11-09: a second Vnum in an object record rewrote the
+    object's prototype, so releasing it read a NULL one and took the game
+    down (or decremented the wrong one); and a known object whose record
+    had no Nest was dropped with a "incomplete object" line, the login
+    went ahead, and the next save wrote the character without it -- the
+    object returned to the pool still in the object list. Each refuses
+    the character now, the file stays as it is, and the counts do not
+    move. A vanished prototype is still the old, kept case."""
+
+    def test_identity_and_whole_records(self) -> None:
+        with LiveMud() as mud:
+            names = ["Zdupevnum", "Zdupevalid", "Znonest"]
+            for name in names + ["Zvanished", "Zafterone"]:
+                make(mud, name, "Zobjpass11")
+            make(mud, "Zcountstaff", "Zstaffpw11", Levl=70)
+            first, second = vnums(mud, "Zdupevnum")[:2]
+            self.assertNotEqual(first, second)
+
+            def add(name: str, record: str) -> None:
+                path = mud.player_dir / name
+                text = path.read_text(encoding="latin-1")
+                path.write_text(text.replace("#END", record + "#END", 1),
+                                encoding="latin-1", newline="")
+
+            add("Zdupevnum", f"#O\nVnum {first}\nVnum 9999999\nNest q\nEnd\n\n")
+            add("Zdupevalid", f"#O\nVnum {first}\nVnum {second}\nNest 0\nEnd\n\n")
+            path = mud.player_dir / "Znonest"
+            text = path.read_text(encoding="latin-1")
+            self.assertIn("\nNest 0\n", text)
+            path.write_text(text.replace("\nNest 0\n", "\n", 1), encoding="latin-1", newline="")
+            # A prototype that is gone: dropped, and the character plays on.
+            add("Zvanished", "#O\nVnum 9999999\nNest 0\nEnd\n\n")
+
+            before = {name: identity(mud, name) for name in names}
+            with mud.connect() as staff:
+                login(staff, "Zcountstaff", "Zstaffpw11")
+                counts = (in_world(staff, first), in_world(staff, second))
+                for _ in range(2):
+                    for name in names:
+                        refused_at_login(mud, name)
+                self.assertIsNone(mud.proc.poll(), "the game exited")
+                self.assertEqual((in_world(staff, first), in_world(staff, second)), counts)
+                quit_out(staff)
+            for name in names:
+                self.assertEqual(identity(mud, name), before[name], name)
+
+            for name in ("Zvanished", "Zafterone"):
+                with mud.connect() as client:
+                    login(client, name, "Zobjpass11")
+                    quit_out(client)
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+            self.assertIn("Zdupevnum's file has an object record with two vnums", log)
+            self.assertIn("Zdupevalid's file has an object record with two vnums", log)
+            self.assertIn("Znonest's file has an incomplete object record", log)
+            self.assertNotIn("Zvanished's file", log)
             self.assertIsNone(mud.proc.poll())
 
 
