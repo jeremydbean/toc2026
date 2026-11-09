@@ -17640,3 +17640,57 @@
 1794225128	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	compare	glo	A) engineer gloves (level 32) -- can't use: needs level 32 // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
 1794225132	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	drop	glo	You drop engineer gloves.	-	-
 1794225133	cmd	Trentlin	28	29082	korzath1.are	standing	51	0	-	look		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the	-	+
+1794225134	cmd	Trentlin	28	29081	korzath1.are	standing	51	0	-	west		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.	-	+
+1794225136	cmd	Trentlin	28	29084	korzath1.are	standing	51	0	-	north		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.  Papers lie all over the engineers desks here.	-	+
+1794225137	cmd	Trentlin	28	29084	korzath1.are	standing	51	0	-	kill	en	An engineer parries your attack. // Your punch mauls an engineer. // Your punch injures an engineer.	-	-
+1794225140	cmd	Trentlin	28	29084	korzath1.are	fighting	51	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes an engineer.	-	-
+1794225148	cmd	Trentlin	28	29084	korzath1.are	fighting	51	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls an engineer.	-	-
+1794225154	cmd	Trentlin	28	29084	korzath1.are	fighting	51	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch MANGLES an engineer!	-	-
+1794225159	cmd	Trentlin	28	29084	korzath1.are	fighting	51	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an engineer.	-	-
+1794225163	cmd	Trentlin	28	29084	korzath1.are	fighting	51	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates an engineer!	-	-
+1794225166	cmd	Trentlin	28	29084	korzath1.are	fighting	51	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls an engineer.	-	-
+1794225169	cmd	Trentlin	28	29084	korzath1.are	fighting	51	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls an engineer.	-	-
+1794225173	cmd	Trentlin	29	29084	korzath1.are	standing	50	0	-	scan		an engineer                        -to the East.	-	-
+1794225174	cmd	Trentlin	29	29085	korzath1.are	standing	50	0	-	east		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare	-	+
+1794225175	cmd	Trentlin	29	29085	korzath1.are	standing	50	0	-	kill	en	Your punch MUTILATES an engineer! // An engineer dodges your attack. // An engineer parries your attack.	-	-
+1794225178	cmd	Trentlin	29	29085	korzath1.are	fighting	50	0	fight	nerve		You missed the nerve. // Your nerve pinch hits an engineer.	-	-
+1794225180	cmd	Trentlin	29	29085	korzath1.are	fighting	50	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes an engineer.	-	-
+1794225184	cmd	Trentlin	29	29085	korzath1.are	fighting	50	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates an engineer!	-	-
+1794225193	cmd	Trentlin	29	29085	korzath1.are	fighting	50	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes an engineer.	-	-
+1794225200	cmd	Trentlin	29	29085	korzath1.are	fighting	50	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds an engineer.	-	-
+1794225210	cmd	Trentlin	29	29085	korzath1.are	fighting	50	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates an engineer!	-	-
+1794225216	cmd	Trentlin	29	29085	korzath1.are	fighting	50	0	fight	nerve		You jab an engineer with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an engineer. // An engineer is DEAD!!	-	+
+1794225220	cmd	Trentlin	29	4207	dresden.are	standing	50	1	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794225225	cmd	Trentlin	29	4207	dresden.are	standing	50	0	-	walkto	silent master	You set off for Silent Master (Palm of the Creator), about 20 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794225235	cmd	Trentlin	29	4803	dresden.are	standing	50	0	-	inventory		You are carrying: //      a crystal key //      (Glowing) black steel vambraces	-	+
+1794225237	cmd	Trentlin	29	4803	dresden.are	standing	50	0	-	compare	vam	A) black steel vambraces (level 30) -- can't use: needs level 30 // B) some platinum arm bands (level 22), worn // Slot: arms.  Your damage comes from weapons.	-	+
+1794225241	cmd	Trentlin	29	4804	dresden.are	standing	50	0	-	compare	gaunt	A) a pair of pincer gauntlets (level 40) -- can't use: needs level 40 // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794225243	cmd	Trentlin	29	4804	dresden.are	standing	50	0	-	inventory		You are carrying: //      a crystal key //      (Glowing) black steel vambraces	-	+
+1794225253	cmd	Trentlin	29	4804	dresden.are	standing	50	0	-	scan		The Grand Monk                     -to the North. // The Silent Master                  -to the East. // The Master of Movement             -to the West.	-	-
+1794225254	cmd	Trentlin	29	4807	dresden.are	standing	52	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1794225255	cmd	Trentlin	29	4807	dresden.are	standing	52	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     fists of fury      4     	-	+
+1794225259	cmd	Trentlin	29	4804	dresden.are	standing	52	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794225260	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1794225261	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1794225265	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	help	steel fist	'STEEL FIST' STEEL STEELFIST // Syntax: steel // By altering their body's chemistry, monks have the option of increasing the	-	+
+1794225272	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	gain	steel	The Silent Master trains you in the art of steel fist.	-	-
+1794225277	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	practice	steel	You practice steel fist.	-	-
+1794225277	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	practice	steel	You practice steel fist.	-	-
+1794225278	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	practice	steel	You practice steel fist.	-	-
+1794225278	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	practice	steel	You practice steel fist.	-	-
+1794225279	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	practice	steel	You are now learned at steel fist.	-	-
+1794225283	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	affect		You are not affected by any spells.	-	-
+1794225285	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	steel		You lost your concentration.	-	-
+1794225287	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794225293	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 10 for 7 hours.	-	-
+1794225296	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	skills		Level  1: dagger              75%      hand to hand        94%       //           recall             100%       // Level  3: kick                80%      	-	+
+1794225300	state	Trentlin	29	4806	dresden.are	lvl=29 hp=354/672 mana=698/1302 mv=23/332 align=-162 exp=67486 coin=13639560 bank=15125463593 qp=2339 prac=13 train=1 stash=54/75 remorts=1
+1794225300	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	score		| Name:       Trentlin | Level:      29 | Class:        Monk | // | Played:     33 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794225303	cmd	Trentlin	29	4806	dresden.are	standing	52	0	-	gain	convert	The Silent Master helps you apply your practice to training	-	-
+1794225306	cmd	Trentlin	29	4207	dresden.are	standing	52	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794225309	cmd	Trentlin	29	4202	dresden.are	standing	55	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794225309	cmd	Trentlin	29	4203	dresden.are	standing	55	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794225309	cmd	Trentlin	29	4210	dresden.are	standing	55	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794225309	cmd	Trentlin	29	4210	dresden.are	standing	55	0	-	north		Alas, you cannot go that way.	-	-
+1794225310	cmd	Trentlin	29	4210	dresden.are	standing	55	0	-	sleep		You go to sleep.	-	-
+1794225311	session	Trentlin	29	4210	dresden.are	quit	797s	+2 levels	+3260 exp	-27946193 copper	10 kills	0 deaths	1 quests	263 commands	0 refused	coin: loot 9p 34g 64s 15c, quests 3p 30g 73s 92c, spent 40p 60g	spent on: heal 40p 60g	exp: kills +3256, skilluse +4
