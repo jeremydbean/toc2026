@@ -365,6 +365,45 @@ class PlaylogLiveTests(unittest.TestCase):
 
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
                      "a sanitizer build reports crashes itself")
+    def test_hidden_commands_are_kept_nowhere_published_later(self) -> None:
+        """Review, 2026-11-09: a wizinvis command's words were kept in the
+        crash ring (with a blank name) and in the recent commands a
+        report carries, so a LOOK typed hidden reached crash.log, and the
+        BUG report made after going visible again. Neither keeps it now;
+        visible commands are kept as before."""
+        with LiveMud(expect_crash=True) as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zhistory", PASSWORD)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zhistory", Levl=70, Room=TEMPLE)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zhistory", PASSWORD)
+                client.must("wizinvis 70", "vanish into thin air")
+                # Plain sends, no barriers: the report keeps only the last
+                # few commands, and the hidden LOOK must be among them.
+                for line in ("look zhiddenmarker", "wizinvis", "look zvisiblemarker",
+                             "bug zreviewreport"):
+                    client.send(line)
+                    client.drain(1.0)
+                self.assertIn("slowly fade back", client.transcript)
+                mud.proc.send_signal(signal.SIGSEGV)
+                deadline = time.time() + 15
+                while mud.proc.poll() is None and time.time() < deadline:
+                    time.sleep(0.2)
+            crash = (mud.root / "log" / "crash.log").read_text(encoding="latin-1")
+            journal = rows(mud)
+        report = [r for r in journal if r[1] == "report" and "zreviewreport" in "\t".join(r)]
+        self.assertEqual(len(report), 1, journal[-10:])
+        self.assertIn("zvisiblemarker", "\t".join(report[0]))
+        self.assertNotIn("zhiddenmarker", "\t".join(report[0]))
+        self.assertIn("look zvisiblemarker", crash)
+        self.assertNotIn("zhiddenmarker", crash)
+        self.assertNotIn("zhiddenmarker", "\n".join("\t".join(r) for r in journal))
+
+    @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
+                     "a sanitizer build reports crashes itself")
     def test_a_crash_leaves_the_last_commands(self) -> None:
         # The crash is the point: no sanitizer-report failure for it.
         with LiveMud(expect_crash=True) as mud:

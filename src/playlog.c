@@ -521,9 +521,16 @@ void playlog_begin( CHAR_DATA *ch, const char *cmd_name, const char *shown )
     current_set = true;
     playlog_phase = "a command";
 
+    /* A wizinvis command is kept nowhere that is published later: not in
+       the crash ring, nor in the recent commands a BUG/TYPO/IDEA report
+       carries once they are visible again. A blank name and room were
+       not enough -- the words themselves can name somebody or a room
+       (review, 2026-11-09). */
+    if ( current_hidden )
+        return;
+
     snprintf( line, sizeof(line), "%ld %s [%s] %s", (long) current_time,
-              current_hidden ? "-" : current_name,
-              current_hidden ? "-" : current_room, current_line );
+              current_name, current_room, current_line );
     toc_strlcpy( crash_ring[crash_next], line, CRASH_LINE );
     crash_next = ( crash_next + 1 ) % CRASH_RING;
 
@@ -558,7 +565,7 @@ void playlog_end( CHAR_DATA *ch, const char *cmd_name, const char *shown,
     playlog_pulse_command( play_hidden( ch ) ? "-" : refused ? "(refused)" : cmd_name, ms );
     if ( ch == NULL || IS_NPC(ch) )
         return;
-    if ( refused && ch->pcdata != NULL )
+    if ( refused && ch->pcdata != NULL && !play_hidden( ch ) )
         ch->pcdata->play_refused++;
 
     /* The line as it may be shown, less the command word. */

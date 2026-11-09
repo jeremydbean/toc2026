@@ -1813,6 +1813,19 @@ its record when reading stops is released (`fread_obj_unfinished`):
 more object owned by nobody in the world. An object affect is linked as
 soon as it is allocated. Fault points `player-open-<Name>` and
 `player-read-<Name>` (`TOC_FAULT`) fail the open or the read.
+**The release trusts nothing the record wrote** (review, 2026-11-09): the
+prototype whose count `create_object` raised is kept apart
+(`fread_obj_unfinished_index`), because a second `Vnum` key rewrote
+`obj->pIndexData` -- to NULL, and the release took the game down, or to
+another prototype, whose count it then lowered. A record with two Vnums
+and a known object's record with no `Nest` refuse the character
+(`fread_obj_refuse`, which jumps to the trap with 2 and a reason): the
+dropped object let the next save write the character without it, and
+went back to the pool still in the object list. A vanished prototype is
+the old, kept case -- dropped, its contents loose. Readers with no trap
+(a snapshot read aside, a corpse) keep their old behaviour, now through
+the same release. OSHOW ends with how many of the prototype the world
+holds, so a drifting count can be seen.
 
 **`load_char_obj` fills a found character's gaps, never a new one's.**
 `apply_class_and_guild_skills()` runs at the end of the loader so a
@@ -2821,8 +2834,11 @@ log says what a player typed; the journal says what happened, in columns
   outcome, craft, item, death, session, report or anomaly row and no
   progress line, named or anonymous. Where a row is about something else
   the name and room go too: a BUG line's context says "during a
-  command", the crash ring writes `-` for both, and a stall row's slowest
-  command is not theirs. A new journal writer passes the actor to
+  command", and a stall row's slowest command is not theirs. **Their
+  commands are not kept at all** for later (review, 2026-11-09): not in
+  the crash ring, nor in the recent commands a BUG/TYPO/IDEA report
+  carries once they are visible again -- a blank name left the words,
+  which can name somebody or a room. A new journal writer passes the actor to
   `journal_write` and never `NULL` for a hidden one. The watch log in
   `toc.log` keeps its own rules (`tests/test_playlog.py`).
 

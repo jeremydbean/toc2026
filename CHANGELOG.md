@@ -8,6 +8,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Review of 8965ace9** (2026-11-09). An object record with a second
+  Vnum crashed the game when its refused load was cleaned up (the
+  cleanup read the prototype the second Vnum had set, NULL); the cleanup
+  now keeps the prototype `create_object` counted apart, and a record
+  with two Vnums refuses the character. A known object whose record has
+  no Nest refuses the character instead of being dropped (the next save
+  wrote the character without it, and the dropped object stayed in the
+  object list). Vanished prototypes are still dropped with their
+  contents kept loose. A wizinvis command is kept nowhere published
+  later: not in the crash ring, not in the recent commands a report
+  carries. OSHOW says how many of a prototype the world holds.
+  `tests/test_player_file_refusal.py`, `tests/test_playlog.py`.
 - **Wizinvis staff leave no trace in the play journal** (owner,
   2026-11-09). A wizinvis character's commands, SCORE state, outcomes,
   crafts, lost items, death, session, reports, anomalies and kills write
