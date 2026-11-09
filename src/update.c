@@ -215,12 +215,58 @@ static bool backup_ensure_dir( const char *path )
  * shell, twice forked so it is never the game's to reap, every descriptor
  * past stderr closed so no client socket or listener outlives its close
  * in a tar, and niced. The shell writes "complete" or the failure to
- * toc.log in its format; GNU tar's 1 (a file changed while it was read --
- * the game saved somebody) still made the archive.
+ * toc.log in its format.
+ *
+ * And a failed archive never costs the last good one (review, 2026-11-09:
+ * tar wrote the day's name in place, so a tar that failed part way had
+ * already destroyed that morning's archive, and two jobs could write one
+ * name at once). Each job:
+ *   - takes BACKUP_DIR/.backup.lock (a directory: mkdir is atomic
+ *     everywhere) and waits its turn -- boot starts both jobs at once --
+ *     taking over a lock whose holder is dead;
+ *   - removes temporary archives a dead job left, since nobody else can
+ *     be writing one while it holds the lock;
+ *   - writes .<name>.tar.gz.tmp.<pid>, accepts it only when tar ended 0
+ *     or 1 (GNU tar's "a file changed as we read it": the game saved
+ *     somebody, and the archive is still whole), it is not empty, gzip -t
+ *     passes and tar can list every member, and then renames it over the
+ *     name -- the old archive stands until the new one is proven;
+ *   - on any failure, a signal included, removes its temporary file and
+ *     the lock and says the previous archive was kept.
+ * The script is fixed text; its date format, message and caller come in
+ * as $1..$3, so nothing in it is built by snprintf.
  */
-static void backup_launch( const char *archive, const char *done, const char *who )
+static const char backup_script[] =
+    "dir=" BACKUP_DIR "\n"
+    "name=$(date \"+$1\")\n"
+    "final=\"$dir$name.tar.gz\"\n"
+    "lock=\"${dir}.backup.lock\"\n"
+    "say() { printf '%s :: %s\\n' \"$(date '+%a %b %e %T %Y')\" \"$1\" >> ../log/toc.log; }\n"
+    "waited=0\n"
+    "until mkdir \"$lock\" 2>/dev/null; do\n"
+    "  owner=$(cat \"$lock/pid\" 2>/dev/null)\n"
+    "  if [ -n \"$owner\" ] && ! kill -0 \"$owner\" 2>/dev/null; then rm -rf \"$lock\"; continue; fi\n"
+    "  if [ -z \"$owner\" ] && [ -n \"$(find \"$lock\" -maxdepth 0 -mmin +2 2>/dev/null)\" ]; then rm -rf \"$lock\"; continue; fi\n"
+    "  waited=$((waited + 1))\n"
+    "  if [ \"$waited\" -ge 3600 ]; then say \"[*****] BUG: $3: another backup held the lock for an hour; this one was not made.\"; exit 1; fi\n"
+    "  sleep 1\n"
+    "done\n"
+    "echo $$ > \"$lock/pid\"\n"
+    "tmp=\"${dir}.$name.tar.gz.tmp.$$\"\n"
+    "trap 'rm -f \"$tmp\"; rm -rf \"$lock\"' EXIT\n"
+    "trap 'say \"[*****] BUG: $3: interrupted; the previous archive is kept.\"; exit 1' HUP INT TERM\n"
+    "rm -f \"$dir\".*.tar.gz.tmp.* 2>/dev/null\n"
+    "nice -n 10 tar cfz \"$tmp\" ../player 2>/dev/null; rc=$?\n"
+    "if [ \"$rc\" -le 1 ] && [ -s \"$tmp\" ] && gzip -t \"$tmp\" 2>/dev/null"
+    " && tar tzf \"$tmp\" >/dev/null 2>&1 && mv -f \"$tmp\" \"$final\"; then\n"
+    "  find \"$dir\" -name '*.tar.gz' -mtime +30 -delete 2>/dev/null\n"
+    "  say \"$2\"\n"
+    "else\n"
+    "  say \"[*****] BUG: $3: archive creation failed (tar $rc); the previous archive is kept.\"\n"
+    "fi\n";
+
+static void backup_launch( const char *date_format, const char *done, const char *who )
 {
-    char script[MAX_STRING_LENGTH];
     pid_t pid;
     int status = 0;
 
@@ -229,16 +275,6 @@ static void backup_launch( const char *archive, const char *done, const char *wh
         bug( "backup: could not create the backup directory.", 0 );
         return;
     }
-
-    snprintf( script, sizeof(script),
-        "nice -n 10 tar cfz %s%s.tar.gz ../player 2>/dev/null; rc=$?;"
-        " stamp=$(date '+%%a %%b %%e %%T %%Y');"
-        " if [ $rc -le 1 ]; then"
-        " find %s -name '*.tar.gz' -mtime +30 -delete 2>/dev/null;"
-        " echo \"$stamp :: %s\" >> ../log/toc.log;"
-        " else echo \"$stamp :: [*****] BUG: %s: archive creation failed.\" >> ../log/toc.log;"
-        " fi",
-        BACKUP_DIR, archive, BACKUP_DIR, done, who );
 
     pid = fork();
     if ( pid < 0 )
@@ -259,7 +295,8 @@ static void backup_launch( const char *archive, const char *done, const char *wh
             max = 65536;
         for ( fd = 3; fd < (int) max; fd++ )
             close( fd );
-        execl( "/bin/sh", "sh", "-c", script, (char *) NULL );
+        execl( "/bin/sh", "sh", "-c", backup_script, "toc-backup",
+               date_format, done, who, (char *) NULL );
         _exit( 127 );
     }
     if ( waitpid( pid, &status, 0 ) < 0
@@ -272,8 +309,7 @@ void do_backup( void )
     extern long backup;
 
     backup = current_time + (60*60*4);
-    backup_launch( "$(date +%b.%d.%Y-%H.%M.%S)", "Automated backup complete.",
-                   "do_backup" );
+    backup_launch( "%b.%d.%Y-%H.%M.%S", "Automated backup complete.", "do_backup" );
     log_string( "Automated backup started." );
 }
 
@@ -281,7 +317,7 @@ void do_backup( void )
 void do_dailybackup( void )
 {
     dailybackup = current_time + (60*60*24);
-    backup_launch( "$(date +%b.%d)", "Daily backup complete.", "do_dailybackup" );
+    backup_launch( "%b.%d", "Daily backup complete.", "do_dailybackup" );
     log_string( "Daily backup started." );
 }
 

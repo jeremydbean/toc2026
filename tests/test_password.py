@@ -30,6 +30,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -42,11 +43,30 @@ SKIP = skip_reason()
 
 
 def _libcrypt():
-    name = ctypes.util.find_library("crypt") or "libcrypt.so.1"
+    """The system's crypt(), wherever this platform keeps it: libxcrypt on
+    Linux, libSystem on macOS (review, 2026-11-09: libcrypt.so.1 was
+    assumed, and every password test failed on a Mac the game builds on)."""
+    name = ctypes.util.find_library("crypt")
+    if name is None:
+        name = "/usr/lib/libSystem.B.dylib" if sys.platform == "darwin" else "libcrypt.so.1"
     lib = ctypes.CDLL(name)
     lib.crypt.restype = ctypes.c_char_p
     lib.crypt.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
     return lib
+
+
+def system_reads_sha512() -> bool:
+    """Whether the system's crypt() reads SHA-512 crypt. libxcrypt does;
+    macOS's reads DES alone."""
+    out = _libcrypt().crypt(b"Zprobe", b"$6$saltsaltsalt")
+    return out is not None and out.startswith(b"$6$saltsaltsalt$")
+
+
+def crypt_link_flags() -> list[str]:
+    """What the C harness links to reach crypt(): -lcrypt where libxcrypt
+    is a library of its own, nothing on macOS (it is in libSystem), as the
+    Makefile does."""
+    return [] if sys.platform == "darwin" else ["-lcrypt"]
 
 
 def des_hash(password: str, salt: str) -> str:
@@ -79,7 +99,7 @@ class PasswordHarnessTests(unittest.TestCase):
             build = subprocess.run(
                 [CC, "-O2", "-std=gnu89", "-Wall", "-Werror", "-I", str(ROOT / "src"),
                  "-o", str(binary), str(ROOT / "tests" / "test_password.c"),
-                 str(ROOT / "src" / "password.c"), "-lcrypt"],
+                 str(ROOT / "src" / "password.c"), *crypt_link_flags()],
                 capture_output=True, text=True)
             self.assertEqual(build.returncode, 0, build.stderr)
             run = subprocess.run([str(binary)], capture_output=True, text=True, timeout=300)
@@ -198,9 +218,12 @@ class PasswordLiveTests(unittest.TestCase):
             self.assertIn("stronger encryption", self._login(mud, "Zpwshort", "Zsh0rt"))
             moved = stored_pass(mud, "Zpwshort")
             # The system's own crypt reads it: code from before this change,
-            # put back by a rollback, still lets them in.
-            self.assertEqual(
-                _libcrypt().crypt(b"Zsh0rt", moved.encode()).decode(), moved)
+            # put back by a rollback, still lets them in. (Where the system
+            # reads SHA-512 at all: libxcrypt on Linux, which is where the
+            # game is deployed; macOS's reads DES alone.)
+            if sys.platform.startswith("linux") or system_reads_sha512():
+                self.assertEqual(
+                    _libcrypt().crypt(b"Zsh0rt", moved.encode()).decode(), moved)
             mud.restart()
             self.assertNotIn("stronger encryption", self._login(mud, "Zpwshort", "Zsh0rt"))
             self.assertTrue(self._refused(mud, "Zpwshort", "Zsh0rx"))

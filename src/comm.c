@@ -2124,10 +2124,27 @@ static bool split_typed_commands( DESCRIPTOR_DATA *d )
 /*
  * Transfer one line from input buffer to input line.
  */
+/*
+ * A line typed at one of these prompts is a password, whole and exactly as
+ * typed: '!' at its start is a letter of it, not "repeat the last command",
+ * and it is never kept as the last command or counted against repeats
+ * (review, 2026-11-09: PASSWORD accepted !Znewpass1, which login then
+ * replaced with the line typed before it, and the password itself waited
+ * in d->inlast for the first '!' typed in the game). GMCP-assisted logins
+ * type at the same prompts, so they are covered alike.
+ */
+static bool descriptor_reads_password( const DESCRIPTOR_DATA *d )
+{
+    return d->connected == CON_GET_OLD_PASSWORD
+        || d->connected == CON_GET_NEW_PASSWORD
+        || d->connected == CON_CONFIRM_NEW_PASSWORD;
+}
+
 bool read_from_buffer( DESCRIPTOR_DATA *d )
 {
     int i, j, k;
     bool from_alias;
+    bool secret;
 
     /*
      * Hold horses if pending command already.
@@ -2150,6 +2167,7 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
     if ( from_alias )
         d->alias_queued--;
     d->incomm_from_alias = from_alias;
+    secret = descriptor_reads_password( d );
 
     /*
      * Canonical input processing.
@@ -2206,7 +2224,7 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
      * costing them the quest and the streak. A step is one command a
      * pulse like any other, and costs movement, so it floods nothing.
      */
-    if ( !from_alias && ( k > 1 || d->incomm[0] == '!' )
+    if ( !from_alias && !secret && ( k > 1 || d->incomm[0] == '!' )
       && door_direction_word( d->incomm ) < 0 )
     {
     	if ( d->incomm[0] != '!' && strcmp( d->incomm, d->inlast ) )
@@ -2247,9 +2265,10 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 
     /*
      * Do '!' substitution. An alias's own commands are left out of it,
-     * so '!' repeats the alias the player typed, not its last command.
+     * so '!' repeats the alias the player typed, not its last command;
+     * so is a password (descriptor_reads_password).
      */
-    if ( !from_alias )
+    if ( !from_alias && !secret )
     {
         if ( d->incomm[0] == '!' )
             safe_strcpy( d->incomm, sizeof(d->incomm), d->inlast );
@@ -3231,6 +3250,124 @@ static bool login_password_current( const char *name, const char *password )
 }
 
 /*
+ * A fingerprint of a stored password hash (FNV-1a): what a login was let
+ * in against, kept on the descriptor in place of anything a password
+ * could be recovered from. It changes whenever the stored hash does -- a
+ * new password, RESETPWD, a DES hash moved to SHA-512.
+ */
+static unsigned long credential_fingerprint( const char *hash )
+{
+    unsigned long h = 2166136261UL;
+    const unsigned char *p;
+
+    if ( hash == NULL )
+        return 0;
+    for ( p = (const unsigned char *) hash; *p != '\0'; p++ )
+    {
+        h ^= *p;
+        h *= 16777619UL;
+    }
+    return h != 0 ? h : 1;
+}
+
+/*
+ * The character "connect anyway" would take, as the game holds it now:
+ * in the game -- playing, link-dead, or the body a switched immortal left
+ * -- or another login of it already past its password (at the MOTD).
+ * NULL when nobody holds it.
+ */
+static CHAR_DATA *connect_anyway_holder( DESCRIPTOR_DATA *d, const char *name )
+{
+    CHAR_DATA *live;
+    DESCRIPTOR_DATA *other;
+    LIST_ITERATOR iter;
+
+    FOR_EACH_CHARACTER( iter, live )
+    {
+        if ( IS_NPC(live) || live->pcdata == NULL || str_cmp( live->name, name ) )
+            continue;
+        if ( live->desc == NULL || live->desc->connected == CON_PLAYING )
+            return live;
+    }
+    for ( other = descriptor_list; other != NULL; other = other->next )
+    {
+        CHAR_DATA *who = other->original != NULL ? other->original : other->character;
+
+        if ( other == d || who == NULL || IS_NPC(who) || who->pcdata == NULL )
+            continue;
+        if ( other->connected == CON_GET_NAME || other->connected == CON_GET_OLD_PASSWORD
+          || other->connected == CON_BREAK_CONNECT )
+            continue;
+        if ( !str_cmp( who->name, name ) )
+            return who;
+    }
+    return NULL;
+}
+
+/*
+ * "Connect anyway?" answered yes: whether the password given before the
+ * question still lets this connection in, asked before any session is
+ * disturbed (review, 2026-11-09: the holder changed their password while
+ * the question waited, and the yes took the character anyway). The
+ * credential is the one the game holds now; when it has changed, the
+ * connection is asked for the password again and nobody is disconnected.
+ * Then what the login would ask now: deny, ban, wizlock and a lockout of
+ * this address. FALSE: the connection was asked again or closed.
+ */
+static bool connect_anyway_still_allowed( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
+{
+    CHAR_DATA *holder = connect_anyway_holder( d, ch->name );
+    CHAR_DATA *who = holder != NULL ? holder : ch;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( holder != NULL
+      && credential_fingerprint( holder->pcdata->pwd ) != d->auth_fp )
+    {
+        free_string( ch->pcdata->pwd );
+        ch->pcdata->pwd = str_dup( holder->pcdata->pwd );
+        d->auth_fp = 0;
+        write_to_buffer( d,
+            "That character's password has changed since you gave it.\n\r"
+            "Password: ", 0 );
+        write_to_buffer( d, echo_off_str, 0 );
+        d->connected = CON_GET_OLD_PASSWORD;
+        return FALSE;
+    }
+    if ( IS_SET( who->act, PLR_DENY ) )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Denying access to %s@%s.",
+                  who->name, d->host );
+        log_string( log_buf );
+        write_to_buffer( d, "You are denied access.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+    if ( check_ban( d, BAN_ALL ) )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Banning access to %s@%s.",
+                  who->name, d->host );
+        log_string( log_buf );
+        write_to_buffer( d, "Access denied.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+    if ( wizlock && !IS_HERO(who) )
+    {
+        write_to_buffer( d, "The game is wizlocked.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+    if ( login_lock_remaining( d ) > 0 )
+    {
+        login_lock_refusal( d, buf, sizeof(buf) );
+        write_to_buffer( d, buf, 0 );
+        close_socket( d );
+        return FALSE;
+    }
+    return TRUE;
+}
+
+/*
  * Deal with sockets that haven't logged in yet.
  */
 void nanny( DESCRIPTOR_DATA *d, char *argument )
@@ -3473,6 +3610,18 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	}
 
+	/* What the password was accepted against: the character in the
+	   game's hash while they are in it, else the copy's. "Connect
+	   anyway?" asks again if it has changed by the time it is answered. */
+	{
+	    CHAR_DATA *holder = connect_anyway_holder( d, ch->name );
+
+	    d->auth_fp = credential_fingerprint(
+	        holder != NULL && holder->desc != d && holder->pcdata != NULL
+	        && ( holder->desc == NULL || holder->desc->connected == CON_PLAYING )
+	            ? holder->pcdata->pwd : ch->pcdata->pwd );
+	}
+
 	/* An old DES password moves to SHA-512 now, while it is in hand:
 	   the new hash accepts exactly what the old one did. Applied only
 	   once the login is one, and only to a character still holding the
@@ -3531,6 +3680,8 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	switch( *argument )
 	{
         case 'y' : case 'Y':
+            if ( !connect_anyway_still_allowed( d, ch ) )
+                return;
             for ( d_old = descriptor_list; d_old != NULL; d_old = d_next_local )
             {
                 d_next_local = d_old->next;

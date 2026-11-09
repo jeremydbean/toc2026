@@ -30,8 +30,10 @@
 #include "interp.h"
 #include "magic.h"
 
-/* The most castings one HEAL HEAL or HEAL MANA sells at once. */
-#define HEALER_MAX_CASTINGS 100
+/* The most castings one HEAL HEAL or HEAL MANA sells at once: enough to
+   fill any pool a character carries (a casting of mana is a dozen or two
+   points, and staff set pools to tens of thousands), and still a bound. */
+#define HEALER_MAX_CASTINGS 5000
 
 void do_heal(CHAR_DATA *ch, char *argument)
 {
@@ -278,16 +280,20 @@ void do_heal(CHAR_DATA *ch, char *argument)
         }
         if ( !mana )
             update_pos( ch );
-        if ( mana )
-            snprintf( buf, sizeof(buf), "%s (%d casting%s, %d gold.)\n\r",
-                ch->mana >= ch->max_mana ? "A warm glow passes through you, and your mind is full."
-                                         : "A warm glow passes through you; that is all you can pay for.",
-                casts, casts == 1 ? "" : "s", cost * casts );
-        else
-            snprintf( buf, sizeof(buf), "%s (%d casting%s, %d gold.)\n\r",
-                ch->hit >= ch->max_hit ? "A warm feeling fills your body, and you are whole."
-                                       : "A warm feeling fills your body; that is all you can pay for.",
-                casts, casts == 1 ? "" : "s", cost * casts );
+        {
+            /* Why it stopped, in those words (review, 2026-11-09: the cap
+               on castings was reported as an empty purse). */
+            bool full = mana ? ch->mana >= ch->max_mana : ch->hit >= ch->max_hit;
+            const char *felt = mana ? "A warm glow passes through you"
+                                    : "A warm feeling fills your body";
+            const char *why = full ? ( mana ? ", and your mind is full."
+                                            : ", and you are whole." )
+                            : !has_enough_gold( ch, cost ) ? "; that is all you can pay for."
+                            : "; that is as many castings as I give at once -- ask again for more.";
+
+            snprintf( buf, sizeof(buf), "%s%s (%d casting%s, %ld gold.)\n\r",
+                felt, why, casts, casts == 1 ? "" : "s", (long) cost * casts );
+        }
         send_to_char( buf, ch );
         return;
     }

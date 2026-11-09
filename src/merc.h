@@ -755,6 +755,11 @@ struct  descriptor_data
        a character still holding the first (login_password_upgrade). */
     char                pwd_upgrade_from[PASSWORD_HASH_MAX];
     char                pwd_upgrade_to[PASSWORD_HASH_MAX];
+    /* The stored hash this login's password was accepted against, as a
+       fingerprint -- never the password -- so "connect anyway?" can see
+       that the credential it was given still stands before it takes the
+       character from anyone (credential_fingerprint in comm.c). */
+    unsigned long       auth_fp;
     /* Who is on the other end (2026-11-07): the client's own name and
        version from GMCP Core.Hello or telnet TTYPE, its terminal type, and
        its MTTS capability bits (client_mtts_known when it sent them). */

@@ -88,6 +88,7 @@ set(SRC_FILES
     src/connguard.c
     src/netaddr.c
     src/guardstore.c
+    src/lockwindow.c
     src/loginlock.c
     src/password.c
 )

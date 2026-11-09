@@ -8,6 +8,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Independent review of f1388da0..ed292882** (2026-11-09).
+  "Connect anyway?" checks at the yes that the credential it was given
+  still stands -- a fingerprint of the stored hash, never the password --
+  against the character as the game holds it (playing, link-dead,
+  switched, at its MOTD), asks for the password again on a change without
+  disturbing anybody, and asks deny, ban, wizlock and the lockout again.
+  Password prompts take their line whole, so a password starting with '!'
+  logs in (it was replaced by command history) and no password is kept as
+  the last command. The lockout window is a true rolling fifteen minutes
+  (`src/lockwindow.c`, C harness), and a lockout file that cannot be read
+  whole is never written over. The archives of `player/` are written to a
+  temporary file, checked and renamed into place under a lock, so a failed
+  or interrupted backup keeps the previous archive. The healer tells its
+  cap on castings (now 5,000, enough for any pool) from an empty purse. The
+  password tests find crypt() per platform (libSystem on macOS).
+  `tests/test_review_nov09.py`, `tests/test_lock_window.c`,
+  `tests/test_backup_detached.py`.
 - **The player backups run beside the game** (2026-11-08). The four-hourly
   and daily tar of `player/` were `system()` calls on the game loop: a
   quarter-second stall every four hours and 0.6 seconds at boot, which the

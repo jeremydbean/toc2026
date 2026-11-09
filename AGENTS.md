@@ -2009,6 +2009,18 @@ parent); STASH TAKE's
   only, and is not installed by `toc-deploy`.
   `tests/test_recovery_ledger.py`, `tests/test_corpse_keep.py`,
   `tests/test_player_backups.py`.
+- **The in-game archives of `player/`** (`backups/<Mon.DD.YYYY-HH.MM.SS>.tar.gz`
+  every four hours, `backups/<Mon.DD>.tar.gz` daily; `backup_launch` in
+  `update.c`) are made by a detached shell, never on the game loop
+  (2026-11-08), and **a failed one never costs the last good one**
+  (review, 2026-11-09: tar wrote the day's name in place). Each job takes
+  `backups/.backup.lock` (a directory; a dead holder's is taken over) and
+  waits its turn -- boot starts both -- clears temporaries a dead job left,
+  writes `.<name>.tar.gz.tmp.<pid>`, accepts it only on tar 0 or 1, non-empty,
+  `gzip -t` and a full `tar t` listing, and renames it over the name; any
+  failure or signal removes the temporary and the lock and logs that the
+  previous archive is kept. `tests/test_backup_detached.py` plays failure,
+  interruption, a stale lock, overlap and replacement with a stand-in tar.
 
 ## Travel Spells Keep Room Rules
 
@@ -2124,7 +2136,26 @@ is still WAKE.
   nothing. A test fixture that plants a DES hash computes it through
   libcrypt by ctypes (Python 3.13 has no `crypt`), and must quit and wait
   for the close: a character left link-dead keeps its old password, and
-  the next login is checked against that.
+  the next login is checked against that. The tests find crypt() per
+  platform (`_libcrypt`, `crypt_link_flags`: libxcrypt and -lcrypt on
+  Linux, libSystem on macOS) and compare with the system's SHA-512 only
+  where it reads SHA-512 -- required on Linux, left out on macOS.
+- **"Connect anyway?" is checked again at the yes** (review, 2026-11-09:
+  the holder changed their password while the question waited, and the
+  yes took the character). `d->auth_fp` is a fingerprint
+  (`credential_fingerprint`, FNV-1a) of the stored hash the password was
+  accepted against -- never the password; `connect_anyway_still_allowed`
+  compares it with the hash of the character as the game holds it now
+  (`connect_anyway_holder`: playing, link-dead, the body a switched
+  immortal left, or a login at its MOTD) before any session is closed,
+  and on a change asks for the password again and disturbs nobody; then
+  deny, ban, wizlock and a lockout of the address, as a login would.
+- **A password prompt takes its line whole** (`descriptor_reads_password`
+  in `read_from_buffer`): '!' there is part of the password, not command
+  history, and the line is never kept in `d->inlast` or counted as a
+  repeat. PASSWORD accepted `!Znewpass1` and login then replaced it with
+  the line before (review, 2026-11-09). Gameplay '!' is unchanged.
+  `tests/test_review_nov09.py`.
 - Player files and backups must be treated as exposed credentials if stolen.
 - The dashboard should be loopback/private even with a token.
 - Do not provide offensive password-cracking automation from repository data.
@@ -4305,14 +4336,26 @@ name prompt's copy, the live-password check and `login_reload_character`
 -- which counts it, writes "Wrong password." and what comes next, and
 leaves the close to the caller; `login_lock_remaining`/`login_lock_refusal`
 refuse a locked-out address before the greeting and again after a PROXY
-header. `LOCK_THRESHOLD` (5) in `LOCK_WINDOW` (15 min) locks out for the
+header. `LOCK_THRESHOLD` (5) in any `LOCK_WINDOW_SECS` (15 min) -- a
+rolling window, `src/lockwindow.c` (no `merc.h`; each failure leaves it,
+with the name it carried, fifteen minutes after it was made, and
+`tests/test_lock_window.c` holds it to a synthetic clock; it used to be
+cleared only by a fifteen-minute gap, so five failures fourteen minutes
+apart locked an address out; review, 2026-11-09) -- locks out for the
 next rung of `lock_ladder` (15 min, 1 h, 6 h, 1 d, 7 d) by lockouts within
 `LOCK_MEMORY` (a week); a guard-trusted address is capped at
 `LOCK_TRUSTED_MAX` (an hour) -- exempt from the scanner guard, never from
 password limits. Lockouts are kept in `log/login_lockouts.tsv` (written
 aside and renamed; read at boot by `login_lock_boot`, whole lines only).
-`login_lock_success`, from `login_note_success`, clears the count only when
-every counted failure named the character that logged in, and tells them
+**A lockout file that is there and cannot be read whole is never written
+over** (review, 2026-11-09: it was taken for an absent one, and the next
+lockout replaced it): only ENOENT is absence; an open that fails otherwise,
+a read error or a failed close sets `lock_read_only`, logs it, keeps
+lockouts in memory, writes nothing until a boot reads the file, and DNS
+GUARD says NOT KEPT (fault point `lockfile-read`).
+`login_lock_success`, from `login_note_success`, forgives the window's
+failures that named the character that logged in and keeps every failure
+at anybody else (`lock_window_forget_name`), and tells them
 of attempts on them (`lock_names`: per character, across addresses;
 WIZINFO at their `staff_notice_level` at `LOCK_ACCOUNT_ALERT` (10) in an
 hour). Its words never say "wrong password": a client -- and

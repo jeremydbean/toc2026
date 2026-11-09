@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261109a 2026-11-09
+A password that starts with ! now works: the game used to read the ! as
+"repeat my last command" at the login prompt. The fifteen-minute limit on
+wrong passwords now counts any fifteen minutes, not the time between
+them. HEAL MANA fills even a very large pool in one go.
+
 @ 20261108b 2026-11-08
 The game no longer pauses for a moment every four hours, and for longer
 just after a restart, while it backs up the player files.

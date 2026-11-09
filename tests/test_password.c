@@ -18,13 +18,23 @@
  *     before this change, put back by a rollback, still lets them in.
  */
 #define _DEFAULT_SOURCE
-#include <crypt.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>                 /* crypt() on macOS and the BSDs */
+#if !defined(__APPLE__)
+#include <crypt.h>                  /* libxcrypt, as src/password.c includes it */
+#endif
 #include "password.h"
 
 static int failures;
+
+/* Whether the system's crypt() reads SHA-512 at all. Linux's libxcrypt
+   does, and must (a FAIL if not); macOS's libSystem reads DES alone, so
+   there the comparisons with it are left out and everything else -- the
+   specification's vectors, DES equivalence, refusals -- still runs
+   (review, 2026-11-09: the harness assumed crypt.h and -lcrypt). */
+static int sys_sha512;
 
 #define CHECK(cond, ...) do { if ( !(cond) ) { failures++; printf( "FAIL " __VA_ARGS__ ); printf( "\n" ); } } while ( 0 )
 
@@ -135,7 +145,7 @@ static void test_new_hashes( void )
         CHECK( strchr( out, '~' ) == NULL, "no tilde" );
         CHECK( !password_is_legacy( out ), "a new hash is not DES" );
         CHECK( password_matches( pw, out ), "a new hash accepts its password" );
-        CHECK( sys_matches( pw, out ), "the system's crypt reads our hash" );
+        CHECK( !sys_sha512 || sys_matches( pw, out ), "the system's crypt reads our hash" );
         snprintf( longer, sizeof(longer), "%sx", pw );
         CHECK( !password_matches( longer, out ), "one more character is refused" );
         pw[len - 1] = '\0';
@@ -225,7 +235,7 @@ static void test_moved_hashes( void )
         compare( "", des, moved, "nothing" );
 
         /* Code from before this change reads it for eight or fewer. */
-        if ( len <= 8 )
+        if ( len <= 8 && sys_sha512 )
             CHECK( sys_matches( pw, moved ), "the system's crypt reads a moved hash of %d characters", len );
 
         /* Only with its own password. */
@@ -263,8 +273,19 @@ static void test_refusals( void )
 
 int main( void )
 {
+    const char *probe = crypt( "Zprobe", "$6$saltsaltsalt" );
+
+    sys_sha512 = probe != NULL && strncmp( probe, "$6$saltsaltsalt$", 16 ) == 0;
+#if defined(__linux__)
+    CHECK( sys_sha512, "the system's crypt reads SHA-512 (libxcrypt)" );
+#else
+    if ( !sys_sha512 )
+        fprintf( stderr, "note: the system's crypt() does not read SHA-512 here;"
+                         " the comparisons with it are left out.\n" );
+#endif
     test_vectors();
-    test_against_libxcrypt();
+    if ( sys_sha512 )
+        test_against_libxcrypt();
     test_new_hashes();
     test_moved_hashes();
     test_refusals();

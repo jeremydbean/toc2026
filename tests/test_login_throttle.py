@@ -222,7 +222,9 @@ class LoginLockSourceTests(unittest.TestCase):
         self.assertEqual(comm.count("login_wrong_password( d, ch )"), 3)
         self.assertNotIn("login_note_failure", comm)
         self.assertNotIn('"Wrong password.\\n\\r"', comm)
-        self.assertEqual(comm.count("login_lock_refusal( "), 2)
+        # Before the greeting, after a PROXY header, and before "connect
+        # anyway" takes a character (review, 2026-11-09).
+        self.assertEqual(comm.count("login_lock_refusal( "), 3)
         lock = (ROOT / "src" / "loginlock.c").read_text(encoding="latin-1")
         self.assertIn("{ 900, 3600, 6 * 3600, 86400, 7 * 86400 }", lock)
         self.assertIn("#define LOCK_TRUSTED_MAX    3600", lock)
