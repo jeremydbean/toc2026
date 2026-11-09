@@ -3156,26 +3156,26 @@ static bool name_held_elsewhere( DESCRIPTOR_DATA *d, const char *name )
  */
 static bool new_name_still_free( DESCRIPTOR_DATA *d )
 {
-    char path[MAX_INPUT_LENGTH];
     CHAR_DATA *ch = d->character;
-    FILE *fp;
     bool taken;
+    int presence = PLAYER_FILE_ABSENT;
 
+    /* A file that is there but cannot be opened is taken, not free: only
+       proven absence lets a new character save under the name (review,
+       2026-11-09: a mode-000 file was replaced by a level 1). */
     taken = name_held_elsewhere( d, ch->name );
     if ( !taken )
     {
-        snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
-        if ( ( fp = fopen( path, "r" ) ) != NULL )
-        {
-            fclose( fp );
-            taken = TRUE;
-        }
+        presence = player_file_presence( ch->name );
+        taken = presence != PLAYER_FILE_ABSENT;
     }
     if ( !taken )
         return TRUE;
 
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
-              "New character %s@%s refused: the name was taken meanwhile.",
+              presence == PLAYER_FILE_UNKNOWN
+                ? "New character %s@%s refused: the name's file could not be checked."
+                : "New character %s@%s refused: the name was taken meanwhile.",
               ch->name, d->host );
     log_string( log_buf );
     write_to_buffer( d,

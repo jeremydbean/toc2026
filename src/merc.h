@@ -3597,6 +3597,11 @@ char    fread_letter    ( FILE *fp );
    there abandons that file instead of exiting the game (db.c). */
 extern jmp_buf *fread_player_trap;
 bool    player_file_unreadable( const CHAR_DATA *ch );
+/* player_file_presence(): only ABSENT is a free name. */
+#define PLAYER_FILE_ABSENT   0
+#define PLAYER_FILE_PRESENT  1
+#define PLAYER_FILE_UNKNOWN  2
+int     player_file_presence( const char *name );
 int     fread_number    ( FILE *fp );
 long    fread_long      ( FILE *fp );
 int     fireball_damage_roll ( int level );

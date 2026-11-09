@@ -9851,17 +9851,12 @@ void do_rename( CHAR_DATA *ch, char *argument )
         }
     }
 
-    /* Check: new name must not have an existing player file on disk */
+    /* Check: new name must not have an existing player file on disk --
+       one that cannot be opened counts (player_file_presence). */
+    if ( player_file_presence( arg2 ) != PLAYER_FILE_ABSENT )
     {
-        FILE *fp;
-        char check_file[MAX_STRING_LENGTH];
-        snprintf( check_file, sizeof(check_file), "%s%s", PLAYER_DIR, capitalize(arg2) );
-        if ( ( fp = fopen( check_file, "r" ) ) != NULL )
-        {
-            fclose( fp );
-            send_to_char( "A player with that name already exists.\n\r", ch );
-            return;
-        }
+        send_to_char( "A player with that name already exists.\n\r", ch );
+        return;
     }
 
     /* Record old save path before changing the name */

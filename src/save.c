@@ -2171,6 +2171,132 @@ bool player_file_unreadable( const CHAR_DATA *ch )
     return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->load_failed;
 }
 
+/*
+ * Whether a character's file is there (review, 2026-11-09). A failed
+ * open is not absence: a file that could not be read -- its permissions,
+ * an I/O error, a symlink loop -- was taken for a new name, and creating
+ * that character saved over it. Only stat's ENOENT, for the file and
+ * for a compressed copy beside it, is absence; anything else stat cannot
+ * answer is PLAYER_FILE_UNKNOWN, which every caller treats as taken.
+ */
+int player_file_presence( const char *name )
+{
+    static const char *const suffix[2] = { "", ".gz" };
+    char path[MAX_INPUT_LENGTH];
+    struct stat st;
+    int result = PLAYER_FILE_ABSENT;
+    int i;
+
+    if ( name == NULL || name[0] == '\0' )
+        return PLAYER_FILE_UNKNOWN;
+    for ( i = 0; i < 2; i++ )
+    {
+        snprintf( path, sizeof(path), "%s%s%s", PLAYER_DIR, capitalize( name ), suffix[i] );
+        if ( stat( path, &st ) == 0 )
+            return PLAYER_FILE_PRESENT;
+        if ( errno != ENOENT )
+            result = PLAYER_FILE_UNKNOWN;
+    }
+    return result;
+}
+
+#if defined(unix)
+/* A compressed copy is opened only where there is no plain file: gzip -f
+   used to put an older .gz over the file the game saves. One that does
+   not decompress leaves the name refused, never new. */
+static void player_file_decompress( const char *name )
+{
+    char plain[MAX_INPUT_LENGTH];
+    char gz[MAX_INPUT_LENGTH];
+    char cmd[MAX_INPUT_LENGTH * 2];
+    struct stat st;
+
+    snprintf( plain, sizeof(plain), "%s%s", PLAYER_DIR, capitalize( name ) );
+    snprintf( gz, sizeof(gz), "%s%s.gz", PLAYER_DIR, capitalize( name ) );
+    if ( stat( plain, &st ) == 0 || errno != ENOENT || stat( gz, &st ) != 0 )
+        return;
+    snprintf( cmd, sizeof(cmd), "gzip -dq %s", gz );
+    if ( system( cmd ) != 0 )
+        bug( "load_char_obj: a compressed player file did not decompress.", 0 );
+}
+#endif
+
+/*
+ * The object fread_obj is part way through. create_object registers it in
+ * the world before its record is read, and a malformed value jumps out of
+ * the record (fread_malformed) past the end that would have given it to
+ * the character -- so it stayed in the object list, owned by nobody, at
+ * every refused attempt (review, 2026-11-09). load_char_obj releases it.
+ */
+static OBJ_DATA *fread_obj_unfinished = NULL;
+static bool fread_obj_unfinished_registered = false;
+
+static void fread_obj_release_unfinished( void )
+{
+    OBJ_DATA *obj = fread_obj_unfinished;
+    AFFECT_DATA *paf;
+    AFFECT_DATA *paf_next;
+    EXTRA_DESCR_DATA *ed;
+    EXTRA_DESCR_DATA *ed_next;
+    int iSlot;
+
+    fread_obj_unfinished = NULL;
+    if ( obj == NULL )
+        return;
+    for ( iSlot = 0; iSlot < MAX_NEST; iSlot++ )
+        if ( rgObjNest[iSlot] == obj )
+            rgObjNest[iSlot] = NULL;
+
+    /* A trap's mobile, loaded into it by the Trap key. */
+    if ( obj->trapped != NULL )
+    {
+        CHAR_DATA *mob = obj->trapped;
+        ROOM_INDEX_DATA *limbo = get_room_index( ROOM_VNUM_LIMBO );
+
+        obj->trapped = NULL;
+        mob->in_object = NULL;
+        if ( limbo != NULL )
+        {
+            char_to_room( mob, limbo );
+            extract_char( mob, true );
+        }
+    }
+
+    /* Nothing was put inside it, nor was it given to anybody: only its
+       own allocations and, for one create_object made, its place in the
+       world and its prototype's count. No max-load count moved, and a
+       relic is not respawned -- the file still holds it. */
+    if ( fread_obj_unfinished_registered )
+    {
+        unregister_object( obj );
+        --obj->pIndexData->count;
+    }
+    for ( paf = obj->affected; paf != NULL; paf = paf_next )
+    {
+        paf_next  = paf->next;
+        paf->next = NULL;
+        free_affect( paf );
+    }
+    obj->affected = NULL;
+    for ( ed = obj->extra_descr; ed != NULL; ed = ed_next )
+    {
+        ed_next = ed->next;
+        free_string( ed->description );
+        free_string( ed->keyword );
+        ed->next = extra_descr_free;
+        extra_descr_free = ed;
+    }
+    obj->extra_descr = NULL;
+    free_string( obj->name );
+    free_string( obj->description );
+    free_string( obj->short_descr );
+    free_string( obj->owner );
+    free_string( obj->action_to_char );
+    free_string( obj->action_to_room );
+    obj->next_free = obj_free;
+    obj_free = obj;
+}
+
 bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 {
     static PC_DATA pcdata_zero;
@@ -2180,6 +2306,9 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     FILE *fp;
     bool found;
     volatile bool unreadable = false;
+    volatile bool completed = false;
+    const char *volatile why = NULL;
+    int presence;
     int stat;
     int i;
 
@@ -2335,27 +2464,63 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     found = false;
     reserve_release();
 
-    #if defined(unix)
-    /* decompress if .gz file exists */
-    snprintf(strsave, sizeof(strsave), "%s%s%s", PLAYER_DIR, capitalize(name), ".gz");
-    if ( ( fp = fopen( strsave, "r" ) ) != NULL )
+    /* Only proven absence is a new character (review, 2026-11-09): a file
+       that is there and cannot be opened, or one whose presence cannot be
+       checked, is refused like one that cannot be parsed, and left as it
+       is -- never taken for a free name and saved over. */
+    presence = player_file_presence( name );
+    if ( presence == PLAYER_FILE_UNKNOWN )
     {
-	fclose(fp);
-        snprintf(buf, sizeof(buf), "gzip -dfq %s", strsave);
-        if (system(buf) == -1)
-            bug("load_char_obj: mail restore failed.", 0);
+        found = true;
+        unreadable = true;
+        why = "could not be checked";
     }
+
+    #if defined(unix)
+    /* A compressed copy is opened only where there is no plain file: gzip
+       -f used to put an older .gz over the file the game saves. One that
+       does not decompress leaves the name refused below, never new. */
+    if ( presence == PLAYER_FILE_PRESENT )
+        player_file_decompress( name );
     #endif
 
     snprintf(strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( name ) );
-    if ( ( fp = fopen( strsave, "r" ) ) != NULL )
+    fp = NULL;
+    if ( !unreadable )
+    {
+        char fault[MAX_INPUT_LENGTH];
+        int open_errno;
+
+        snprintf( fault, sizeof(fault), "player-open-%s", capitalize( name ) );
+        if ( presence == PLAYER_FILE_PRESENT && recovery_fault( fault ) )
+        {
+            fp = NULL;
+            open_errno = EACCES;
+        }
+        else
+        {
+            fp = fopen( strsave, "r" );
+            open_errno = errno;
+        }
+        if ( fp == NULL
+        &&   !( open_errno == ENOENT && player_file_presence( name ) == PLAYER_FILE_ABSENT ) )
+        {
+            found = true;
+            unreadable = true;
+            why = "could not be opened";
+        }
+    }
+
+    if ( fp != NULL )
     {
 	int iNest;
 	jmp_buf trap;
+	char fault[MAX_INPUT_LENGTH];
 
 	for ( iNest = 0; iNest < MAX_NEST; iNest++ )
 	    rgObjNest[iNest] = NULL;
 	fread_to_stash = false;
+	fread_obj_unfinished = NULL;
 
 	found = true;
 	/* A malformed number abandons this file, not the game (db.c,
@@ -2363,6 +2528,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	if ( setjmp( trap ) != 0 )
 	{
 	    unreadable = true;
+	    why = "has a malformed value";
 	    goto read_done;
 	}
 	fread_player_trap = &trap;
@@ -2378,9 +2544,15 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 		continue;
 	    }
 
+	    /* The file is the character only when it is all there: every
+	       record begins with a marker the loader knows, and it ends
+	       with #END, which every save writes last. A file cut short or
+	       damaged was taken whole as far as it went, and the next save
+	       wrote the shorter character over it (review, 2026-11-09). */
 	    if ( letter != '#' )
 	    {
 		bug( "Load_char_obj: # not found.", 0 );
+		why = feof( fp ) ? "ends before its #END" : "has a record that does not begin with #";
 		break;
 	    }
 
@@ -2390,16 +2562,33 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	    else if ( !str_cmp( word, "O"      ) ) fread_obj  ( ch, fp );
 	    else if ( !str_cmp( word, "PET"    ) ) fread_pet  ( ch, fp );
 	    else if ( !str_cmp( word, "STASH"  ) ) fread_to_stash = true;
-	    else if ( !str_cmp( word, "END"    ) ) break;
+	    else if ( !str_cmp( word, "END"    ) ) { completed = true; break; }
 	    else
 	    {
 		bug( "Load_char_obj: bad section.", 0 );
+		why = "has an unknown section";
 		break;
 	    }
 	}
 read_done:
 	fread_player_trap = NULL;
-	fclose( fp );
+	/* An object part way through its record when reading stopped. */
+	fread_obj_release_unfinished();
+	if ( !unreadable )
+	{
+	    snprintf( fault, sizeof(fault), "player-read-%s", capitalize( name ) );
+	    if ( ferror( fp ) || recovery_fault( fault ) )
+		why = "could not be read to the end";
+	    else if ( why == NULL && !completed )
+		why = "ends before its #END";
+	    if ( why != NULL )
+		unreadable = true;
+	}
+	if ( fclose( fp ) != 0 && !unreadable )
+	{
+	    unreadable = true;
+	    why = "could not be closed";
+	}
     }
 
     fpReserve = fopen( NULL_FILE, "r" );
@@ -2412,8 +2601,8 @@ read_done:
         ch->pcdata->load_failed = true;
         fread_to_stash = false;
         snprintf( buf, sizeof(buf),
-                  "Load_char_obj: %s's file has a malformed value; it is left as it"
-                  " is and the character refused.", name );
+                  "Load_char_obj: %s's file %s; it is left as it"
+                  " is and the character refused.", name, why != NULL ? why : "could not be read" );
         log_string( buf );
         wizinfo( buf, LEVEL_IMMORTAL );
         return true;
@@ -4421,6 +4610,10 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	obj->short_descr	= str_dup( "" );
 	obj->description	= str_dup( "" );
     }
+    /* Until its End, the object belongs to nobody: a malformed value
+       jumping out of the record leaves it for load_char_obj to release. */
+    fread_obj_unfinished            = obj;
+    fread_obj_unfinished_registered = new_format;
 
     fNest		= false;
     fVnum		= true;
@@ -4468,6 +4661,10 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    {
 		AFFECT_DATA *paf;
                 paf = new_affect();
+		/* Linked at once, so a malformed value below cannot leave it
+		   belonging to nothing. */
+		paf->next	= obj->affected;
+		obj->affected	= paf;
 /* BB
 		if ( affect_free == NULL )
 		{
@@ -4493,6 +4690,9 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
                           fread_number(fp);
                           fread_number(fp);
                           fread_number(fp);
+                          obj->affected = paf->next;
+                          paf->next = NULL;
+                          free_affect( paf );
                           break;
                         }
                         else
@@ -4509,8 +4709,6 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		paf->location	= (sh_int)(fread_number( fp ));
 		paf->bitvector	= fread_number( fp );
 		paf->bitvector2 = fread_number( fp );
-		paf->next	= obj->affected;
-		obj->affected	= paf;
 		fMatch		= true;
 		break;
 	    }
@@ -4572,6 +4770,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 
 	    if ( !str_cmp( word, "End" ) )
 	    {
+		fread_obj_unfinished = NULL;
 		if ( !fNest || !fVnum || obj->pIndexData == NULL)
 		{
 		    bug( "Fread_obj: incomplete object.", 0 );

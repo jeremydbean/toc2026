@@ -11,11 +11,12 @@ saved. Area files still fail fast at boot.
 
 from __future__ import annotations
 
+import os
 import re
 import unittest
 from pathlib import Path
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import CREATION_STEPS, LiveMud, create_character, login, patch_player_file, skip_reason
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = skip_reason()
@@ -42,6 +43,26 @@ def refused_at_login(mud: LiveMud, name: str) -> str:
         client.expect("could not be read", timeout=30)
         assert client.wait_closed(30), "the refused connection stayed open"
         return client.transcript
+
+
+def identity(mud: LiveMud, name: str) -> tuple[bytes | None, list[str], list[str]]:
+    """What must never change under a refused login: the file, the
+    character's rows in the recovery ledger, and its snapshots."""
+    path = mud.player_dir / name
+    data = path.read_bytes() if path.is_file() else None
+    ledger = mud.player_dir / "recovery" / "ledger.tsv"
+    rows = [line for line in ledger.read_text(encoding="latin-1").splitlines()
+            if name.lower() in line.lower()] if ledger.exists() else []
+    versions = mud.player_dir / "versions" / name
+    copies = sorted(p.name for p in versions.iterdir()) if versions.is_dir() else []
+    return data, rows, copies
+
+
+def first_vnum(mud: LiveMud, name: str) -> int:
+    match = re.search(r"(?m)^#O\nVnum (\d+)$",
+                      (mud.player_dir / name).read_text(encoding="latin-1"))
+    assert match, "the fixture carries nothing"
+    return int(match.group(1))
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -106,6 +127,181 @@ class PlayerFileRefusalTests(unittest.TestCase):
             self.assertIsNone(mud.proc.poll())
 
 
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class UnreadableNameTests(unittest.TestCase):
+    """Review, 2026-11-09: a file that is there and cannot be opened was
+    taken for a free name, and creating the character saved a level 1
+    over it. Only proven absence is a new character."""
+
+    def test_an_unopenable_file_is_refused_never_replaced(self) -> None:
+        # player-open fails the open as a permission error would, so the
+        # test runs as root too; player-read fails the read part way.
+        env = {"TOC_FAULT": "player-open-Zpermheld player-read-Zreadfail"}
+        with LiveMud(extra_env=env) as mud:
+            make(mud, "Zpermheld", "Zpermpass1", Levl=20)
+            make(mud, "Zreadfail", "Zreadpass1")
+            held = identity(mud, "Zpermheld")
+            readfail = identity(mud, "Zreadfail")
+            self.assertIsNotNone(held[0])
+            self.assertTrue(held[1], "the character has a recovery identity")
+
+            for _ in range(2):
+                said = refused_at_login(mud, "Zpermheld")
+                self.assertNotIn("did i get that right", said.lower())
+            refused_at_login(mud, "Zreadfail")
+            self.assertEqual(identity(mud, "Zpermheld"), held)
+            self.assertEqual(identity(mud, "Zreadfail"), readfail)
+
+            # A file whose presence cannot be checked (a symlink loop:
+            # stat says ELOOP, for root too) is not a free name either.
+            loop = mud.player_dir / "Zloopname"
+            os.symlink("Zloopname", loop)
+            refused_at_login(mud, "Zloopname")
+            self.assertEqual(os.readlink(loop), "Zloopname")
+
+            # A name that became unreadable while somebody was creating it.
+            with mud.connect() as client:
+                client.expect("by what name", "name:")
+                client.send("Zracer")
+                client.expect("did i get that right")
+                race = mud.player_dir / "Zracer"
+                os.symlink("Zracer", race)
+                client.send("Y")
+                said = ""
+                for _ in range(40):
+                    client.drain(0.5)
+                    said = client.buffer.lower()
+                    if "taken by someone else" in said:
+                        break
+                    for needle, reply in CREATION_STEPS:
+                        if needle in said and needle != "did i get that right":
+                            client.buffer = ""
+                            client.send("Zracepass1" if reply is None else reply)
+                            break
+                    else:
+                        client.buffer = ""
+                        client.send("")
+                self.assertIn("taken by someone else", client.transcript.lower())
+            self.assertEqual(os.readlink(race), "Zracer")
+            self.assertFalse((mud.player_dir / "versions" / "Zracer").exists())
+
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+            self.assertIn("Zpermheld's file could not be opened; it is left as it is", log)
+            self.assertIn("Zreadfail's file could not be read to the end", log)
+            self.assertIn("Zloopname's file could not be checked", log)
+            self.assertIn("New character Zracer@", log)
+            self.assertIsNone(mud.proc.poll())
+
+    @unittest.skipIf(os.geteuid() == 0, "root opens a mode-000 file; CI's runner is not root")
+    def test_a_mode_000_file_is_refused_never_replaced(self) -> None:
+        with LiveMud() as mud:
+            make(mud, "Zpermheld", "Zpermpass1", Levl=20)
+            path = mud.player_dir / "Zpermheld"
+            held = identity(mud, "Zpermheld")
+            path.chmod(0)
+            try:
+                with mud.connect() as client:
+                    client.expect("by what name", "name:")
+                    client.send("Zpermheld")
+                    client.expect("could not be read", timeout=30)
+                    self.assertNotIn("did i get that right", client.transcript.lower())
+            finally:
+                path.chmod(0o644)
+            self.assertEqual(identity(mud, "Zpermheld"), held)
+            with mud.connect() as client:
+                login(client, "Zpermheld", "Zpermpass1")
+                self.assertRegex(client.must("score", "Level:"), r"Level:\s+20\b")
+                quit_out(client)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class DamagedStructureTests(unittest.TestCase):
+    """Review, 2026-11-09: a damaged section marker or a file cut short
+    was loaded as far as it went, and the next save wrote the shorter
+    character over the file. A player file is the character only when it
+    is all there: known sections, and #END."""
+
+    def test_damaged_files_are_refused_whole_ones_load(self) -> None:
+        with LiveMud() as mud:
+            names = ["Zsection", "Zcutend", "Zcutobj", "Zcutstash", "Zstraynote", "Zwholeone"]
+            for name in names:
+                make(mud, name, "Zdamaged11")
+            vnum = first_vnum(mud, "Zwholeone")
+
+            def damage(name: str, change) -> None:
+                path = mud.player_dir / name
+                text = path.read_text(encoding="latin-1")
+                new = change(text)
+                self.assertNotEqual(new, text, name)
+                path.write_text(new, encoding="latin-1", newline="")
+
+            damage("Zsection", lambda t: t.replace("#O\n", "#ZBROKEN\n", 1))
+            damage("Zcutend", lambda t: t[:t.rindex("#END")])
+            # Cut after an object's first whole line: the record never ends.
+            damage("Zcutobj", lambda t: t[:re.search(r"(?m)^#O\nVnum \d+\n", t).end()])
+            damage("Zcutstash", lambda t: t[:t.rindex("#END")]
+                   + f"#STASH\n#O\nVnum {vnum}\nNest 0\n")
+            damage("Zstraynote", lambda t: t.replace("#O\n", "stray words\n#O\n", 1))
+            # A whole file with its stash still loads, as every save does.
+            damage("Zwholeone", lambda t: t[:t.rindex("#END")]
+                   + f"#STASH\n#O\nVnum {vnum}\nNest 0\nEnd\n\n#END\n")
+
+            before = {name: identity(mud, name) for name in names}
+            for name in names[:-1]:
+                refused_at_login(mud, name)
+                self.assertEqual(identity(mud, name), before[name], name)
+
+            with mud.connect() as client:
+                login(client, "Zwholeone", "Zdamaged11")
+                quit_out(client)
+
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+            self.assertIn("Zsection's file has an unknown section", log)
+            self.assertIn("Zcutend's file ends before its #END", log)
+            self.assertIn("Zcutobj's file ends before its #END", log)
+            self.assertIn("Zcutstash's file ends before its #END", log)
+            self.assertIn("Zstraynote's file has a record that does not begin with #", log)
+            self.assertNotIn("Zwholeone's file", log)
+            self.assertIsNone(mud.proc.poll())
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class UnfinishedObjectTests(unittest.TestCase):
+    """Review, 2026-11-09: create_object puts an object in the world
+    before its record is read, and a malformed value jumped out past the
+    end that would have handed it to the character -- so every refused
+    attempt left one more object in the world, owned by nobody."""
+
+    def test_refused_loads_leave_nothing_in_the_world(self) -> None:
+        with LiveMud() as mud:
+            make(mud, "Zorphan", "Zorphpass1")
+            make(mud, "Zorphstaff", "Zstaffpw11", Levl=70)
+            vnum = first_vnum(mud, "Zorphan")
+            path = mud.player_dir / "Zorphan"
+            text = path.read_text(encoding="latin-1")
+            record = (f"#O\nVnum {vnum}\nName Zorphanartifact~\n"
+                      "ExDe zorphnote~\na note~\n"
+                      "Affect 0 10 5 -5 17 0 0\n"
+                      "Affect 0 10 5 q 17 0 0\nNest 0\nEnd\n\n")
+            path.write_text(text.replace("#END", record + "#END", 1),
+                            encoding="latin-1", newline="")
+            before = identity(mud, "Zorphan")
+
+            with mud.connect() as staff:
+                login(staff, "Zorphstaff", "Zstaffpw11")
+                baseline = staff.sync(f"owhere {vnum}")
+                for _ in range(3):
+                    refused_at_login(mud, "Zorphan")
+                said = staff.sync("owhere zorphanartifact")
+                self.assertIn("Nothing like that", said)
+                self.assertEqual(staff.sync(f"owhere {vnum}").count("["),
+                                 baseline.count("["), "copies of the prototype grew")
+                quit_out(staff)
+            self.assertEqual(identity(mud, "Zorphan"), before)
+            self.assertIsNone(mud.proc.poll())
+
+
 class PlayerFileRefusalSourceTests(unittest.TestCase):
     def test_the_trap_is_armed_only_for_player_files(self) -> None:
         db = (ROOT / "src" / "db.c").read_text(encoding="latin-1")
@@ -126,6 +322,27 @@ class PlayerFileRefusalSourceTests(unittest.TestCase):
         comm = (ROOT / "src" / "comm.c").read_text(encoding="latin-1")
         self.assertEqual(comm.count("player_file_unreadable( ch )"), 2)
         self.assertIn("player_file_unreadable( d->character )", save)
+
+    def test_absence_is_proven_and_a_file_must_be_whole(self) -> None:
+        save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
+        comm = (ROOT / "src" / "comm.c").read_text(encoding="latin-1")
+        wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="latin-1")
+        presence = save[save.index("int player_file_presence( const char *name )"):]
+        presence = presence[:presence.index("\n}\n")]
+        self.assertIn("errno != ENOENT", presence)
+        free = comm[comm.index("static bool new_name_still_free("):]
+        free = free[:free.index("\n}\n")]
+        self.assertIn("player_file_presence(", free)
+        self.assertNotIn("fopen", free, "a failed open is not absence")
+        self.assertIn("player_file_presence( arg2 ) != PLAYER_FILE_ABSENT", wiz)
+        load = save[save.index("bool load_char_obj( DESCRIPTOR_DATA *d, char *name )"):]
+        load = load[:load.index("\n}\n")]
+        self.assertIn("completed = true", load)
+        self.assertIn("ferror( fp )", load)
+        self.assertIn("fclose( fp ) != 0", load)
+        self.assertLess(load.index("read_done:"), load.index("fread_obj_release_unfinished()"))
+        obj = save[save.index("void fread_obj( CHAR_DATA *ch, FILE *fp )\n{"):]
+        self.assertIn("fread_obj_unfinished            = obj;", obj)
 
 
 if __name__ == "__main__":
