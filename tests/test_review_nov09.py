@@ -17,7 +17,7 @@
 6. The healer called its cap on castings an empty purse.
 
 Synthetic Z fixtures in throwaway worlds; Killuminati is the synthetic
-creator a test world needs for creator-only commands (AGENTS.md).
+creator a test world needs for creator-only commands.
 """
 
 from __future__ import annotations
