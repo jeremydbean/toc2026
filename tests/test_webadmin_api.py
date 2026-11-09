@@ -534,6 +534,22 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(client.get("/api/auth/check").status_code, 200)
             self.assertEqual(client.get("/api/players").json(), ["MiXeD"])
 
+            # A state-changing request on the cookie alone must come from
+            # the dashboard's own pages (roadmap A3): a cross-site form is
+            # refused before anything runs; the header token never asks.
+            cross = client.post("/api/command", json={"command": "fsave"},
+                                headers={"origin": "https://untrusted.example"})
+            self.assertEqual(cross.status_code, 403)
+            self.assertIn("Cross-site", cross.json()["detail"])
+            fetched = client.post("/api/command", json={"command": "fsave"},
+                                  headers={"sec-fetch-site": "cross-site"})
+            self.assertEqual(fetched.status_code, 403)
+            bare = client.post("/api/command", json={"command": "fsave"})
+            self.assertEqual(bare.status_code, 403, "a cookie POST that says nothing")
+            same = client.post("/api/command", json={"command": "fsave"},
+                               headers={"sec-fetch-site": "same-origin"})
+            self.assertNotEqual(same.status_code, 403, same.text)
+
             session_cookie = client.cookies.get("toc_admin_session")
             with client.websocket_connect(
                 "ws://127.0.0.1:9001/ws/logs",

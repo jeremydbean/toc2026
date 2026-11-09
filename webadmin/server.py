@@ -108,6 +108,28 @@ def local_admin_websocket_authenticated(websocket: WebSocket) -> bool:
     return bool(supplied and expected and secrets.compare_digest(supplied, expected))
 
 
+SAFE_METHODS = frozenset({"GET", "HEAD", "OPTIONS"})
+
+
+def same_origin_request(request: Request) -> bool:
+    """Whether a browser sent this request from the dashboard's own pages.
+
+    A cookie rides along with any request the browser makes, a cross-site
+    form's included, and SameSite treats every localhost port as one site;
+    so a state-changing request authenticated by the local session cookie
+    must also say where it came from (roadmap A3, 2026-11-09). Fetch
+    Metadata first, then Origin; a request that says neither is refused.
+    The X-Admin-Token header is never sent by a browser on its own, so a
+    request carrying it is not asked.
+    """
+    site = request.headers.get("sec-fetch-site", "").strip().lower()
+    if site:
+        return site in {"same-origin", "none"}
+    origin = request.headers.get("origin", "").strip().rstrip("/")
+    host = request.headers.get("host", "").strip()
+    return bool(origin and host) and origin == f"{request.url.scheme}://{host}"
+
+
 async def verify_token(request: Request, x_admin_token: str = Header(default="")) -> None:
     """Require the shared token or a valid loopback-only browser session."""
     if not _WEB_ADMIN_TOKEN:
@@ -121,6 +143,8 @@ async def verify_token(request: Request, x_admin_token: str = Header(default="")
         supplied = request.cookies.get(LOCAL_ADMIN_COOKIE, "")
         expected = local_admin_session_value()
         if supplied and expected and secrets.compare_digest(supplied, expected):
+            if request.method.upper() not in SAFE_METHODS and not same_origin_request(request):
+                raise HTTPException(status_code=403, detail="Cross-site request refused")
             return
     raise HTTPException(status_code=403, detail="Forbidden")
 
@@ -168,6 +192,10 @@ STATIC_PATH = Path(__file__).resolve().parent / "static"
 REPOSITORY_ROOT = Path(
     os.getenv("TOC_REPOSITORY_ROOT", str(Path(__file__).resolve().parents[1]))
 ).resolve()
+# What is live: toc-deploy writes it beside the game's log (log/deployed-
+# commit). The default was the retired Raspberry Pi's path, so the Oracle
+# host's dashboard never showed the deployed revision; main() points it
+# beside --log-file unless TOC_DEPLOYED_COMMIT_FILE says otherwise.
 DEPLOYED_COMMIT_FILE = Path(
     os.getenv("TOC_DEPLOYED_COMMIT_FILE", "/var/lib/toc2026/deployed-commit")
 )
@@ -4935,6 +4963,8 @@ if __name__ == "__main__":
     # Update globals
     QUEUE_PATH = args.queue
     DEFAULT_LOG = args.log_file
+    if not os.getenv("TOC_DEPLOYED_COMMIT_FILE"):
+        DEPLOYED_COMMIT_FILE = Path(args.log_file).parent / "deployed-commit"
     EVENT_LOG = args.event_log_file
     AREA_PATH = args.area_path
     BACKUP_PATH = args.backup_path

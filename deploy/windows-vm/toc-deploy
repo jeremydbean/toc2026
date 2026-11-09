@@ -380,8 +380,12 @@ fi
 say "who is online"
 token=$(grep -m1 '^WEB_ADMIN_TOKEN=' /etc/toc/web.env 2>/dev/null | cut -d= -f2- || true)
 if [ -n "$token" ]; then
-    curl -s --max-time 5 http://127.0.0.1:9001/api/admin/status \
-        -H "X-Admin-Token: $token" | grep -o '"count":[0-9]*' | head -1 || true
+    # The header goes to curl on stdin (-H @-), never in its arguments,
+    # which any local user can read in /proc/<pid>/cmdline while it runs.
+    # printf is the shell's own builtin, so it has no command line either.
+    printf 'X-Admin-Token: %s\n' "$token" |
+        curl -s --max-time 5 -H @- http://127.0.0.1:9001/api/admin/status |
+        grep -o '"count":[0-9]*' | head -1 || true
 fi
 # Somebody being connected is not a reason to hold. The update is
 # already built and validated by this point, and holding a validated

@@ -8,6 +8,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Roadmap batch: admin and CI hygiene** (2026-11-09). The dashboard
+  refuses a cookie-authenticated request that changes something unless
+  the browser says it came from the dashboard itself (Sec-Fetch-Site or
+  Origin); the `X-Admin-Token` header is unaffected. The dashboard finds
+  `deployed-commit` beside the log it was given. `toc-deploy` passes the
+  admin token to curl on stdin, never on its command line. Every
+  workflow action is pinned to a commit, and Dependabot proposes
+  updates for actions, the dashboard's Python and the image.
+  `tests/test_ci_pinning.py`, `tests/test_webadmin_api.py`.
+- **Roadmap batch: game robustness** (2026-11-09). A malformed number in
+  a player file refuses that character -- the file left untouched, staff
+  told, offline tools refusing it, the copy never saved -- instead of
+  exiting the game (`fread_player_trap`); a pet whose mobile is gone with
+  no stand-in is left out instead of exiting. The loop's pacing, the
+  systemd watchdog and measured durations use the monotonic clock. The
+  ledger and lockout readers drain over-long lines.
+  `tests/test_player_file_refusal.py`, `tests/test_review_nov09.py`.
 - **Independent review of f1388da0..ed292882** (2026-11-09).
   "Connect anyway?" checks at the yes that the credential it was given
   still stands -- a fingerprint of the stored hash, never the password --

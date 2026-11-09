@@ -1,0 +1,20 @@
+# Proposed updates arrive as pull requests; nothing merges itself. Each
+# goes through CI like any change, and an Action is updated by its pinned
+# commit (roadmap D5, 2026-11-09).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: pip
+    directory: /webadmin
+    schedule:
+      interval: weekly
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
