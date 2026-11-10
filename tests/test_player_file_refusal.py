@@ -372,6 +372,54 @@ class DamagedObjectRecordTests(unittest.TestCase):
             self.assertIsNone(mud.proc.poll())
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class RepeatedNestTests(unittest.TestCase):
+    """Review, 2026-11-10: an object record with two Nest keys pointed
+    both slots at the same unfinished object, which then became its own
+    container, and the carry-weight walk up its in_obj chain never ended
+    -- the process lived and answered nobody. The record is refused before
+    a slot moves, the character with it, in the pack and in the stash; the
+    file and the counts stay as they were, and the game goes on answering
+    another player throughout."""
+
+    def test_two_nests_refuse_the_character_and_the_game_answers(self) -> None:
+        with LiveMud() as mud:
+            names = ["Ztwonest", "Ztwostash"]
+            for name in names:
+                make(mud, name, "Zobjpass11")
+            make(mud, "Zcountstaff", "Zstaffpw11", Levl=70)
+            first = vnums(mud, "Ztwonest")[0]
+
+            def add(name: str, record: str) -> None:
+                path = mud.player_dir / name
+                text = path.read_text(encoding="latin-1")
+                path.write_text(text.replace("#END", record + "#END", 1),
+                                encoding="latin-1", newline="")
+
+            add("Ztwonest", f"#O\nVnum {first}\nNest 0\nNest 1\nEnd\n\n")
+            add("Ztwostash", f"#STASH\n#O\nVnum {first}\nNest 0\nNest 1\nEnd\n\n")
+            before = {name: identity(mud, name) for name in names}
+            with mud.connect() as staff:
+                login(staff, "Zcountstaff", "Zstaffpw11")
+                count = in_world(staff, first)
+                for name in names:
+                    said = refused_at_login(mud, name)
+                    self.assertIn("could not be read", said)
+                    # Another player is answered at once, and a new
+                    # connection is greeted: the game did not hang.
+                    staff.must("inventory", "You are carrying", timeout=20)
+                    with mud.connect() as other:
+                        other.expect("by what name", "name:", timeout=20)
+                self.assertIsNone(mud.proc.poll(), "the game exited")
+                self.assertEqual(in_world(staff, first), count)
+                quit_out(staff)
+            for name in names:
+                self.assertEqual(identity(mud, name), before[name], name)
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+            for name in names:
+                self.assertIn(f"{name}'s file has an object record with two nests", log)
+
+
 class PlayerFileRefusalSourceTests(unittest.TestCase):
     def test_the_trap_is_armed_only_for_player_files(self) -> None:
         db = (ROOT / "src" / "db.c").read_text(encoding="latin-1")

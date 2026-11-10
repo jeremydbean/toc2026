@@ -2259,6 +2259,19 @@ static bool fread_obj_refuse( const char *why )
     return true;   /* not reached */
 }
 
+/* Whether putting obj into parent would make obj hold itself: parent is
+   obj, or obj is somewhere above parent. The walk is bounded, so a chain
+   already looped (which this is here to prevent) is a cycle too. */
+static bool fread_obj_nest_cycles( const OBJ_DATA *obj, const OBJ_DATA *parent )
+{
+    int depth = 0;
+
+    for ( ; parent != NULL; parent = parent->in_obj )
+        if ( parent == obj || ++depth > MAX_NEST )
+            return true;
+    return false;
+}
+
 static void fread_obj_release_unfinished( void )
 {
     OBJ_DATA *obj = fread_obj_unfinished;
@@ -4827,6 +4840,17 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		}
 		else
 		{
+		    /* Its container must be another object, and one not
+		       inside this one: nothing may hold itself, at any depth
+		       (review, 2026-11-10). Asked while the object is still
+		       unfinished, so a refusal releases it whole; a reader
+		       with no trap keeps it loose. */
+		    if ( iNest > 0 && fread_obj_nest_cycles( obj, rgObjNest[iNest-1] ) )
+		    {
+			fread_obj_refuse( "has an object nested inside itself" );
+			bug( "Fread_obj: an object nested inside itself; kept loose.", 0 );
+			rgObjNest[iNest-1] = NULL;
+		    }
 		    fread_obj_unfinished = NULL;
 		    if (!new_format)
 		    {
@@ -4949,13 +4973,26 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 
 	    if ( !str_cmp( word, "Nest" ) )
 	    {
-		iNest = fread_number( fp );
-		if ( iNest < 0 || iNest >= MAX_NEST )
+		int nest = fread_number( fp );
+
+		/* One Nest a record. A second pointed another slot at this
+		   same unfinished object, so it became its own container and
+		   the carry-weight walk up its in_obj chain never ended: one
+		   damaged file hung the game at that player's name (review,
+		   2026-11-10). Refused before any slot moves; a reader with
+		   no trap keeps the first. */
+		if ( fNest )
 		{
-		    bug( "Fread_obj: bad nest %d.", iNest );
+		    fread_obj_refuse( "has an object record with two nests" );
+		    bug( "Fread_obj: a second Nest %d ignored.", nest );
+		}
+		else if ( nest < 0 || nest >= MAX_NEST )
+		{
+		    bug( "Fread_obj: bad nest %d.", nest );
 		}
 		else
 		{
+		    iNest = nest;
 		    rgObjNest[iNest] = obj;
 		    fNest = true;
 		}

@@ -2237,6 +2237,21 @@ static bool room_has_player( ROOM_INDEX_DATA *room )
     return false;
 }
 
+/* Whether a player's corpse is in its owner's keeping: carried by them,
+   or inside something that is, however deep. */
+static bool corpse_rots_with_owner( OBJ_DATA *corpse )
+{
+    OBJ_DATA *top = corpse;
+    int depth = 0;
+
+    if ( corpse->owner == NULL || corpse->owner[0] == '\0' )
+        return false;
+    while ( top->in_obj != NULL && ++depth <= 100 )     /* save.c's MAX_NEST */
+        top = top->in_obj;
+    return top->carried_by != NULL && !IS_NPC(top->carried_by)
+        && !str_cmp( top->carried_by->name, corpse->owner );
+}
+
 void obj_update( void )
 {
     OBJ_DATA *obj;
@@ -2643,9 +2658,11 @@ free_string(obj->description);
 
 		/* Nothing bound in Hyrule spills for somebody else to take:
 		   it goes with the corpse, in its history, unless the corpse
-		   rots in its owner's own hands (audit, 2026-11-10). */
-		if ( !( obj->carried_by != NULL && obj->owner != NULL
-		       && !str_cmp( obj->carried_by->name, obj->owner ) ) )
+		   rots in its owner's own keeping (audit, 2026-11-10) --
+		   carried, or in a bag they carry, at any depth: the
+		   corpse's own carried_by is NULL inside a bag (review,
+		   2026-11-10). */
+		if ( !corpse_rots_with_owner( obj ) )
 		{
 		    if ( hyrule_bound_object( t_obj ) )
 		    {

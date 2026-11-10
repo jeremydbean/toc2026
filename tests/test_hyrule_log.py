@@ -87,6 +87,16 @@ class HyruleLogSourceTests(unittest.TestCase):
 class HyruleReportTests(unittest.TestCase):
     """tools/log_report.py's Hyrule section reads what the game writes."""
 
+    def test_the_median_is_the_true_median(self) -> None:
+        """Review, 2026-11-10: [10, 90] read 90, the upper of the two."""
+        sys.path.insert(0, str(ROOT / "tools"))
+        import log_report
+        self.assertIsNone(log_report._median([]))
+        self.assertEqual(log_report._median([7]), 7)
+        self.assertEqual(log_report._median([30, 10, 20]), 20)
+        self.assertEqual(log_report._median([10, 90]), 50)
+        self.assertEqual(log_report._median([1, 2]), 1.5)
+
     def test_the_summary_counts_a_guardian_fight(self) -> None:
         sys.path.insert(0, str(ROOT / "tools"))
         import log_report

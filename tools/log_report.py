@@ -43,6 +43,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import statistics
 import subprocess
 import sys
 from collections import Counter, defaultdict
@@ -736,8 +737,10 @@ def hyrule_rows(text: str, since: datetime) -> list:
 
 
 def _median(values):
-    values = sorted(values)
-    return values[len(values) // 2] if values else None
+    """The median, or None for no samples: the mean of the middle two for
+    an even count (review, 2026-11-10: [10, 90] read 90, the upper one)."""
+    values = list(values)
+    return statistics.median(values) if values else None
 
 
 def _num(row, key, default=None):
@@ -838,7 +841,7 @@ def hyrule_report(args, since) -> None:
     print("  guardians (engaged, slain, fled, deaths; median fight s, party, levels;"
           " guardian hp% left at flee / death):")
     for (vnum, name), g in sorted(s["guardians"].items(), key=lambda kv: kv[0][0]):
-        med = lambda v: "-" if _median(v) is None else str(_median(v))
+        med = lambda v: "-" if _median(v) is None else f"{_median(v):g}"
         print(f"    {vnum:>6} {name[:20]:<20} {g['engage']:>3} {g['down']:>3} {g['flee']:>3}"
               f" {g['death']:>3}   {med(g['kill_secs']):>5}s party {med(g['party']):>2}"
               f" lvl {med(g['levels']):>3}   flee {med(g['flee_hp']):>3}% death"
