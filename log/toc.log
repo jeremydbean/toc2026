@@ -287126,3 +287126,23 @@ Tue Nov 10 22:16:35 2026 :: Trentlin has quit.
 Tue Nov 10 22:16:35 2026 :: [QUIT] Player rejoined the real world.
 Tue Nov 10 22:21:37 2026 :: Treasure goblin: vanished from room 9357 (Path of the Draco, galaxy.are) (too long in one area).
 Tue Nov 10 22:31:42 2026 :: Treasure goblin: vanished from room 7402 (Cave room, sewer.are) (too long in one area).
+Tue Nov 10 22:40:11 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Nov 10 22:40:15 2026 :: Log WebAdmin: fsave
+Tue Nov 10 22:40:21 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Nov 10 22:40:25 2026 :: Received signal 15; saving players and shutting down.
+Tue Nov 10 22:40:25 2026 :: Normal termination of game.
+Tue Nov 10 22:40:25 2026 ::  INIT OK 
+Tue Nov 10 22:40:25 2026 :: walkto_load: 157 destinations.
+Tue Nov 10 22:40:25 2026 :: changes_load: 245 entries.
+Tue Nov 10 22:40:25 2026 :: Hermie: no record of who was playing before this boot; she stays away.
+Tue Nov 10 22:40:25 2026 :: Passwords: SHA-512 crypt self-test passed.
+Tue Nov 10 22:40:25 2026 :: Recovery ledger: 359 records (0 from before the check), 2 requests, 8 players.
+Tue Nov 10 22:40:25 2026 :: Corpse keeper: Trentlin's corpse c6aef57d8014fe2 made again in room 15009 with 0 objects.
+Tue Nov 10 22:40:25 2026 :: Corpse keeper: Trentlin's corpse c6af06a99014a1f made again in room 30443 with 2 objects.
+Tue Nov 10 22:40:25 2026 :: Corpse keeper: 2 corpses made again, 0 set aside.
+Tue Nov 10 22:40:25 2026 :: ROM is ready to rock on port 9000.
+Tue Nov 10 22:40:25 2026 :: Treasure goblin: appeared.
+Tue Nov 10 22:40:25 2026 :: Automated backup started.
+Tue Nov 10 22:40:25 2026 :: Daily backup started.
+Tue Nov 10 22:40:26 2026 :: Automated backup complete.
+Tue Nov 10 22:40:27 2026 :: Daily backup complete.
