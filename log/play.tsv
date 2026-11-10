@@ -19234,3 +19234,44 @@
 1794279444	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
 1794279444	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 94 platinum, 43 gold, 87 silver, 38 copper // and 252749 experience (39551 exp to level).	-	-
 1794279447	session	Alaric	57	2497	dresden.are	quit	6294s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	17 commands	0 refused	coin: none	spent on: none	exp: none
+1794341152	refused	Miseri	14	4210	dresden.are	sleeping	100	0	-	look		In your dreams, or what?	refusal:position	-
+1794341153	cmd	Miseri	14	4210	dresden.are	sleeping	100	0	-	wake		You wake and stand up.	-	-
+1794341154	cmd	Miseri	14	4210	dresden.are	standing	100	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794341155	cmd	Miseri	14	4210	dresden.are	standing	100	0	-	restore	self	Miseri restored.	-	-
+1794341155	cmd	Miseri	14	4210	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a war banner // <worn on finger>    (Glowing) An etched signet ring	-	+
+1794341156	cmd	Miseri	14	4210	dresden.are	standing	100	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794341163	cmd	Miseri	14	4210	dresden.are	standing	100	0	-	walkto	hyrule	You set off for Hyrule (Killum), about 18 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794341179	cmd	Miseri	14	30200	hyrule.are	standing	100	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794341180	cmd	Miseri	14	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start //   A wall of brown rock rises along the north side of a grassy field, its face // scarred and cracked. One section looks weaker than the rest, a hollow knock	-	+
+1794341182	cmd	Miseri	14	30223	hyrule.are	standing	100	0	-	kill	oc	Your punch *** DEMOLISHES *** a red octorok! // Your punch DISMEMBERS a red octorok! // Your punch DISEMBOWELS a red octorok!	-	-
+1794341188	cmd	Miseri	14	30223	hyrule.are	standing	100	0	-	kill	oc	Your punch *** DEVASTATES *** a red octorok! // Your punch *** DEVASTATES *** a red octorok! // Your punch *** DEVASTATES *** a red octorok!	-	-
+1794341191	cmd	Miseri	14	30223	hyrule.are	standing	100	0	-	look		Rock Wall Above the Start //   A wall of brown rock rises along the north side of a grassy field, its face // scarred and cracked. One section looks weaker than the rest, a hollow knock	-	+
+1794341193	cmd	Miseri	14	30224	hyrule.are	standing	100	0	-	east		Bush Row //   A tidy line of thick green bushes borders a sunny field, almost like a // hedge someone once planted and forgot. One of them stands out from its	-	+
+1794341194	cmd	Miseri	14	30224	hyrule.are	standing	100	0	-	kill	oc	Your punch DISMEMBERS a red octorok! // A red octorok is DEAD!! // You receive 2 experience points (1 of them rested).	-	+
+1794341198	cmd	Miseri	14	30224	hyrule.are	standing	100	0	-	kill	oc	Your punch MANGLES a red octorok! // A red octorok is DEAD!! // You receive 2 experience points (1 of them rested).	-	+
+1794341203	cmd	Miseri	14	30224	hyrule.are	standing	100	0	-	look		Bush Row //   A tidy line of thick green bushes borders a sunny field, almost like a // hedge someone once planted and forgot. One of them stands out from its	-	+
+1794341204	cmd	Miseri	14	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake //   Two worn dirt roads cross in the middle of open green country, rutted by // cart wheels and dotted with spat stones. To the north the ground slopes	-	+
+1794341205	cmd	Miseri	14	30256	hyrule.are	standing	100	0	-	north		Lake Hylia Sand Bar //   A pale sand bar runs along the lake's edge, the sand rippled and pocked // with burrow holes from which a red spinning thing sometimes bores up. The	-	+
+1794341206	cmd	Miseri	14	30255	hyrule.are	standing	100	0	-	west		Lake Hylia, South Shore //   Broad blue water stretches north as far as the eye can see, sparkling under // an open sky, its far shore lost in haze. Ripples spread from somewhere out	-	+
+1794341207	cmd	Miseri	14	30255	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794341207	cmd	Miseri	14	30254	hyrule.are	standing	100	0	-	west		Lake Hylia, Western Reeds //   Tall reeds rustle along the western edge of Lake Hylia, and the water slaps // gently against a muddy bank. A finned head sometimes rises out of the reeds	-	+
+1794341208	cmd	Miseri	14	30254	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794341209	cmd	Miseri	14	30255	hyrule.are	standing	100	0	-	east		Lake Hylia, South Shore //   Broad blue water stretches north as far as the eye can see, sparkling under // an open sky, its far shore lost in haze. Ripples spread from somewhere out	-	+
+1794341210	cmd	Miseri	14	30256	hyrule.are	standing	100	0	-	east		Lake Hylia Sand Bar //   A pale sand bar runs along the lake's edge, the sand rippled and pocked // with burrow holes from which a red spinning thing sometimes bores up. The	-	+
+1794341210	cmd	Miseri	14	30256	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794341212	cmd	Miseri	14	30272	hyrule.are	standing	100	0	-	north		The River Landing //   The river widens here, and a sturdy wooden dock juts out from the bank into // the current. Across the water to the west a green shore with a carved stone	-	+
+1794341213	cmd	Miseri	14	30288	hyrule.are	standing	100	0	-	north		The Withered Thicket //   Open grassland is broken here by clusters of dry, scrubby bushes. One bush // stands alone, its branches brittle and dead, and it looks as if a single	-	+
+1794341214	cmd	Miseri	14	30289	hyrule.are	standing	100	0	-	east		The Sandy Flats //   The grass gives way to a stretch of pale, shifting sand, warm underfoot and // strangely restless. Small mounds rise and sink across it, and every so	-	+
+1794341215	cmd	Miseri	14	30290	hyrule.are	standing	100	0	-	east		The Dune Strip //   A long strip of dunes runs between the green fields and the mountains, the // sand rippled into fine waves by the wind. Spiral burrow marks appear and	-	+
+1794341216	cmd	Miseri	14	30289	hyrule.are	standing	100	0	-	west		The Sandy Flats //   The grass gives way to a stretch of pale, shifting sand, warm underfoot and // strangely restless. Small mounds rise and sink across it, and every so	-	+
+1794341216	cmd	Miseri	14	30288	hyrule.are	standing	100	0	-	west		The Withered Thicket //   Open grassland is broken here by clusters of dry, scrubby bushes. One bush // stands alone, its branches brittle and dead, and it looks as if a single	-	+
+1794341216	cmd	Miseri	14	30287	hyrule.are	standing	100	0	-	west		Foot of Death Mountain //   Here the green fields meet the brown flanks of Death Mountain, and a path // climbs northward into the boulders toward peaks that smoke against the sky.	-	+
+1794341217	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	west		The Meadow Bluff //   A grassy meadow runs up against a weathered bluff, bright with wildflowers // that sway and whirl in the breeze. Part of the bluff's face is fractured	-	+
+1794341217	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794341218	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794341219	cmd	Miseri	14	30270	hyrule.are	standing	100	0	-	south		The Sheltered Hollow //   A hollow is tucked between low hills, sheltered from the wind and quiet. // Green grass grows thick and undisturbed, and a few old trees stand at its	-	+
+1794341220	cmd	Miseri	14	30269	hyrule.are	standing	100	0	-	west		The Quiet Glade //   Tall trees ring a peaceful glade of soft grass, and the light falls in // gentle patches through their leaves. Birdsong drifts from the branches, and	-	+
+1794341222	cmd	Miseri	14	30269	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794341224	cmd	Miseri	14	30270	hyrule.are	standing	100	0	-	east		The Sheltered Hollow //   A hollow is tucked between low hills, sheltered from the wind and quiet. // Green grass grows thick and undisturbed, and a few old trees stand at its	-	+
+1794341224	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	north		The Meadow Bluff //   A grassy meadow runs up against a weathered bluff, bright with wildflowers // that sway and whirl in the breeze. Part of the bluff's face is fractured	-	+
+1794341227	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	kill	pea	A peahat parries your attack. // A peahat dodges your attack. // A peahat dodges your attack.	-	-
