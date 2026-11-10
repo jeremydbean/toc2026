@@ -282781,3 +282781,257 @@ Tue Nov 10 01:20:45 2026 :: Log Trentlin [30484]: s
 Tue Nov 10 01:20:45 2026 :: Log Trentlin [30484]: s
 Tue Nov 10 01:20:45 2026 :: Log Trentlin [30484]: w
 Tue Nov 10 01:20:45 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30484
+Tue Nov 10 01:20:48 2026 :: Log Trentlin [30483]: w
+Tue Nov 10 01:20:48 2026 :: Log Trentlin [30482]: arrived (Level 5: Slime-Glazed Vault) from 30483
+Tue Nov 10 01:20:48 2026 :: Log Trentlin [30482]: s
+Tue Nov 10 01:20:48 2026 :: Log Trentlin [30479]: arrived (Level 5: Hall of Linen Biers) from 30482
+Tue Nov 10 01:20:48 2026 :: Log Trentlin [30479]: affects off: steel fist
+Tue Nov 10 01:20:49 2026 :: Log Trentlin [30479]: s
+Tue Nov 10 01:20:49 2026 :: Log Trentlin [30479]: e
+Tue Nov 10 01:20:49 2026 :: Log Trentlin [30480]: arrived (Level 5: Embalmers' Hall) from 30479
+Tue Nov 10 01:20:50 2026 :: Log Trentlin [30480]: s
+Tue Nov 10 01:20:50 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30480
+Tue Nov 10 01:20:51 2026 :: Log Trentlin [30476]: s
+Tue Nov 10 01:20:51 2026 :: Log Trentlin [30476]: s
+Tue Nov 10 01:20:52 2026 :: Log Trentlin [30476]: u
+Tue Nov 10 01:20:52 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30476
+Tue Nov 10 01:20:53 2026 :: Log Trentlin [30323]: reca
+Tue Nov 10 01:20:53 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30323
+Tue Nov 10 01:20:54 2026 :: Log Trentlin [4207]: w
+Tue Nov 10 01:20:54 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov 10 01:20:59 2026 :: Log Trentlin [4208]: get gear stash
+Tue Nov 10 01:21:03 2026 :: Log Trentlin [4208]: stash get gear
+Tue Nov 10 01:21:03 2026 :: Log Trentlin [4208]: withdrew Trentlin's level 54 gear (vnum 3032) from the stash
+Tue Nov 10 01:21:05 2026 :: Log Trentlin [4208]: l in gear
+Tue Nov 10 01:21:12 2026 :: Log Trentlin [4208]: get comp gear
+Tue Nov 10 01:21:12 2026 :: Log Trentlin [4208]: get comp gear
+Tue Nov 10 01:21:14 2026 :: Log Trentlin [4208]: drop comp
+Tue Nov 10 01:21:15 2026 :: Log Trentlin [4208]: drop comp
+Tue Nov 10 01:21:16 2026 :: Log Trentlin [4208]: sac comp
+Tue Nov 10 01:21:16 2026 :: Log Trentlin [4208]: sac comp
+Tue Nov 10 01:21:18 2026 :: Log Trentlin [4208]: l in gear
+Tue Nov 10 01:21:22 2026 :: Log Trentlin [4208]: get raft gear
+Tue Nov 10 01:21:25 2026 :: Log Trentlin [4208]: get step gear
+Tue Nov 10 01:21:31 2026 :: Log Trentlin [4208]: get guiv gear
+Tue Nov 10 01:21:35 2026 :: Log Trentlin [4208]: get fair gear
+Tue Nov 10 01:21:35 2026 :: Log Trentlin [4208]: get fair gear
+Tue Nov 10 01:21:39 2026 :: Log Trentlin [4208]: get arrows gear
+Tue Nov 10 01:21:43 2026 :: Treasure goblin: vanished from room 8003 (Intersection of Junket Way and Megway, mega1.are) (too long in one area).
+Tue Nov 10 01:21:51 2026 :: Log Trentlin [4208]: get guan gear
+Tue Nov 10 01:21:51 2026 :: Log Trentlin [4208]: get guan gear
+Tue Nov 10 01:21:51 2026 :: Log Trentlin [4208]: get guan gear
+Tue Nov 10 01:21:56 2026 :: Log Trentlin [4208]: stash put gear
+Tue Nov 10 01:21:56 2026 :: Log Trentlin [4208]: stashed Trentlin's level 54 gear (vnum 3032)
+Tue Nov 10 01:21:58 2026 :: Log Trentlin [4208]: i
+Tue Nov 10 01:22:02 2026 :: Log Trentlin [4208]: l
+Tue Nov 10 01:22:08 2026 :: Log Trentlin [4208]: heal heal
+Tue Nov 10 01:22:10 2026 :: Log Trentlin [4208]: wo
+Tue Nov 10 01:22:12 2026 :: Log Trentlin [4208]: heal reres
+Tue Nov 10 01:22:12 2026 :: Log Trentlin [4208]: gold -30
+Tue Nov 10 01:22:21 2026 :: Log Trentlin [4208]: eat fair
+Tue Nov 10 01:22:24 2026 :: Log Trentlin [4208]: quaff fair
+Tue Nov 10 01:22:27 2026 :: Log Trentlin [4208]: i
+Tue Nov 10 01:22:30 2026 :: Log Trentlin [4208]: quaff opa
+Tue Nov 10 01:22:34 2026 :: Log Trentlin [4208]: drop blue
+Tue Nov 10 01:22:35 2026 :: Log Trentlin [4208]: sac blue
+Tue Nov 10 01:22:35 2026 :: Log Trentlin [4208]: coin +10 copper
+Tue Nov 10 01:22:39 2026 :: Log Trentlin [4208]: stash get gear
+Tue Nov 10 01:22:39 2026 :: Log Trentlin [4208]: withdrew Trentlin's level 54 gear (vnum 3032) from the stash
+Tue Nov 10 01:22:41 2026 :: Log Trentlin [4208]: get candle gear
+Tue Nov 10 01:22:44 2026 :: Log Trentlin [4208]: get red gear
+Tue Nov 10 01:22:47 2026 :: Log Trentlin [4208]: l in gear
+Tue Nov 10 01:22:50 2026 :: Log Trentlin [4208]: put gear stash
+Tue Nov 10 01:22:53 2026 :: Log Trentlin [4208]: stash put gear
+Tue Nov 10 01:22:53 2026 :: Log Trentlin [4208]: stashed Trentlin's level 54 gear (vnum 3032)
+Tue Nov 10 01:22:54 2026 :: Log Trentlin [4208]: stash
+Tue Nov 10 01:24:18 2026 :: Log Trentlin [4208]: stash get candle
+Tue Nov 10 01:24:18 2026 :: Log Trentlin [4208]: withdrew the Red Candle (vnum 30414) from the stash
+Tue Nov 10 01:24:20 2026 :: Log Trentlin [4208]: l
+Tue Nov 10 01:24:21 2026 :: Log Trentlin [4208]: e
+Tue Nov 10 01:24:21 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov 10 01:24:23 2026 :: Log Trentlin [4207]: e
+Tue Nov 10 01:24:23 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 10 01:24:24 2026 :: Log Trentlin [4202]: e
+Tue Nov 10 01:24:24 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 10 01:24:24 2026 :: Log Trentlin [4201]: e
+Tue Nov 10 01:24:24 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov 10 01:24:24 2026 :: Log Trentlin [2427]: e
+Tue Nov 10 01:24:24 2026 :: Log Trentlin [2427]: e
+Tue Nov 10 01:24:25 2026 :: Log Trentlin [2427]: e
+Tue Nov 10 01:24:25 2026 :: Log Trentlin [2427]: n
+Tue Nov 10 01:24:25 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov 10 01:24:25 2026 :: Log Trentlin [2404]: n
+Tue Nov 10 01:24:25 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov 10 01:24:28 2026 :: Log Trentlin [2401]: u
+Tue Nov 10 01:24:28 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov 10 01:24:28 2026 :: Log Trentlin [2410]: u
+Tue Nov 10 01:24:28 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov 10 01:24:28 2026 :: Log Trentlin [2411]: u
+Tue Nov 10 01:24:28 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov 10 01:24:29 2026 :: Log Trentlin [2414]: u
+Tue Nov 10 01:24:29 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Nov 10 01:24:29 2026 :: Log Trentlin [2497]: u
+Tue Nov 10 01:24:31 2026 :: Log Trentlin [2497]: (social) wave
+Tue Nov 10 01:24:33 2026 :: Log Trentlin [2497]: aquest request
+Tue Nov 10 01:24:33 2026 :: Log Trentlin [2497]: quest assigned: kill the froshie (mob 15014, level 10) in campus.are, 7 minutes, rush
+Tue Nov 10 01:24:38 2026 :: Log Trentlin [2497]: enter door
+Tue Nov 10 01:24:38 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 10 01:24:39 2026 :: Log Trentlin [2401]: west
+Tue Nov 10 01:24:39 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Nov 10 01:24:39 2026 :: Log Trentlin [2405]: west
+Tue Nov 10 01:24:39 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Tue Nov 10 01:24:39 2026 :: Log Trentlin [2433]: south
+Tue Nov 10 01:24:39 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2433
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [4201]: west
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [4202]: west
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [4207]: up
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [3700]: up
+Tue Nov 10 01:24:40 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Tue Nov 10 01:24:41 2026 :: Log Trentlin [3772]: up
+Tue Nov 10 01:24:41 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Tue Nov 10 01:24:41 2026 :: Log Trentlin [3795]: enter portal
+Tue Nov 10 01:24:41 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Tue Nov 10 01:24:43 2026 :: Log Trentlin [15000]: e
+Tue Nov 10 01:24:43 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Tue Nov 10 01:24:43 2026 :: Log Trentlin [15001]: e
+Tue Nov 10 01:24:43 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Tue Nov 10 01:24:44 2026 :: Log Trentlin [15002]: e
+Tue Nov 10 01:24:44 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Tue Nov 10 01:24:48 2026 :: Log Trentlin [15003]: k fro
+Tue Nov 10 01:24:48 2026 :: Log Trentlin [15003]: killed the froshie
+Tue Nov 10 01:24:52 2026 :: Log Trentlin [15003]: w
+Tue Nov 10 01:24:52 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15003
+Tue Nov 10 01:24:52 2026 :: Log Trentlin [15002]: w
+Tue Nov 10 01:24:52 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15002
+Tue Nov 10 01:24:52 2026 :: Log Trentlin [15001]: w
+Tue Nov 10 01:24:52 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 15001
+Tue Nov 10 01:24:53 2026 :: Log Trentlin [15000]: w
+Tue Nov 10 01:24:53 2026 :: Log Trentlin [15000]: enter portal
+Tue Nov 10 01:24:53 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 15000
+Tue Nov 10 01:24:56 2026 :: Log Trentlin [3795]: down
+Tue Nov 10 01:24:56 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3795
+Tue Nov 10 01:24:56 2026 :: Log Trentlin [3772]: down
+Tue Nov 10 01:24:56 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 3772
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [3700]: down
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 3700
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [4207]: east
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [4202]: east
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [4201]: north
+Tue Nov 10 01:24:57 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Tue Nov 10 01:24:58 2026 :: Log Trentlin [2433]: east
+Tue Nov 10 01:24:58 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Tue Nov 10 01:24:58 2026 :: Log Trentlin [2405]: north
+Tue Nov 10 01:24:58 2026 :: Log Trentlin [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Tue Nov 10 01:24:58 2026 :: Log Trentlin [2406]: east
+Tue Nov 10 01:24:58 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2406
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2402]: north
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2402
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2415]: north
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2496]: arrived (Main Processional.) from 2415
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2496]: north
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2416]: arrived (Main Processional.) from 2496
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2416]: west
+Tue Nov 10 01:24:59 2026 :: Log Trentlin [2478]: arrived (Fireball Lane.) from 2416
+Tue Nov 10 01:25:00 2026 :: Log Trentlin [2478]: west
+Tue Nov 10 01:25:00 2026 :: Log Trentlin [2476]: arrived (Fireball Lane.) from 2478
+Tue Nov 10 01:25:00 2026 :: Log Trentlin [2476]: north
+Tue Nov 10 01:25:00 2026 :: Log Trentlin [2477]: arrived (Maliki's Wands and Things.) from 2476
+Tue Nov 10 01:25:01 2026 :: Log Trentlin [2477]: s
+Tue Nov 10 01:25:01 2026 :: Log Trentlin [2476]: arrived (Fireball Lane.) from 2477
+Tue Nov 10 01:25:01 2026 :: Log Trentlin [2476]: e
+Tue Nov 10 01:25:01 2026 :: Log Trentlin [2478]: arrived (Fireball Lane.) from 2476
+Tue Nov 10 01:25:02 2026 :: Log Trentlin [2478]: e
+Tue Nov 10 01:25:02 2026 :: Log Trentlin [2416]: arrived (Main Processional.) from 2478
+Tue Nov 10 01:25:02 2026 :: Log Trentlin [2416]: e
+Tue Nov 10 01:25:02 2026 :: Log Trentlin [2479]: arrived (Market Plaza.) from 2416
+Tue Nov 10 01:25:03 2026 :: Log Trentlin [2479]: s
+Tue Nov 10 01:25:03 2026 :: Log Trentlin [2482]: arrived (Nomads Tent.) from 2479
+Tue Nov 10 01:25:03 2026 :: Log Trentlin [2482]: s
+Tue Nov 10 01:25:03 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2482
+Tue Nov 10 01:25:04 2026 :: Log Trentlin [2485]: s
+Tue Nov 10 01:25:04 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Tue Nov 10 01:25:04 2026 :: Log Trentlin [2494]: s
+Tue Nov 10 01:25:05 2026 :: Log Trentlin [2494]: n
+Tue Nov 10 01:25:05 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2494
+Tue Nov 10 01:25:06 2026 :: Log Trentlin [2485]: w
+Tue Nov 10 01:25:06 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2485
+Tue Nov 10 01:25:06 2026 :: Log Trentlin [2415]: s
+Tue Nov 10 01:25:06 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Tue Nov 10 01:25:07 2026 :: Log Trentlin [2402]: s
+Tue Nov 10 01:25:07 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2402
+Tue Nov 10 01:25:07 2026 :: Log Trentlin [2401]: s
+Tue Nov 10 01:25:07 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Nov 10 01:25:08 2026 :: Log Trentlin [2404]: n
+Tue Nov 10 01:25:08 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov 10 01:25:09 2026 :: Log Trentlin [2401]: u
+Tue Nov 10 01:25:09 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov 10 01:25:09 2026 :: Log Trentlin [2410]: u
+Tue Nov 10 01:25:09 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov 10 01:25:09 2026 :: Log Trentlin [2411]: u
+Tue Nov 10 01:25:09 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov 10 01:25:11 2026 :: Log Trentlin [2414]: aquest complete
+Tue Nov 10 01:25:12 2026 :: Log Trentlin [2414]: u
+Tue Nov 10 01:25:12 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Nov 10 01:25:12 2026 :: Log Trentlin [2497]: u
+Tue Nov 10 01:25:14 2026 :: Log Trentlin [2497]: aquest complete
+Tue Nov 10 01:25:14 2026 :: Log Trentlin [2497]: copper +5693832
+Tue Nov 10 01:25:14 2026 :: Log Trentlin [2497]: quest complete: 5p 69g 38s 32c, 195 quest points, rush (streak bonus 151%)
+Tue Nov 10 01:25:14 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261110_012514.quest (PRESTORE Trentlin to see it).
+Tue Nov 10 01:25:18 2026 :: Log Trentlin [2497]: aquest gamble yes
+Tue Nov 10 01:25:20 2026 :: Log Trentlin [2497]: enter door
+Tue Nov 10 01:25:20 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 10 01:25:22 2026 :: Log Trentlin [2401]: s
+Tue Nov 10 01:25:22 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Nov 10 01:25:22 2026 :: Log Trentlin [2404]: s
+Tue Nov 10 01:25:22 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Tue Nov 10 01:25:22 2026 :: Log Trentlin [2427]: w
+Tue Nov 10 01:25:22 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Tue Nov 10 01:25:23 2026 :: Log Trentlin [4201]: w
+Tue Nov 10 01:25:23 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Tue Nov 10 01:25:23 2026 :: Log Trentlin [4202]: w
+Tue Nov 10 01:25:23 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Tue Nov 10 01:25:23 2026 :: Log Trentlin [4207]: w
+Tue Nov 10 01:25:23 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov 10 01:25:23 2026 :: Log Trentlin [4208]: w
+Tue Nov 10 01:25:24 2026 :: Log Trentlin [4208]: heal heal
+Tue Nov 10 01:25:24 2026 :: Log Trentlin [4208]: gold -500
+Tue Nov 10 01:25:33 2026 :: Log Trentlin [4208]: levitate
+Tue Nov 10 01:25:37 2026 :: Log Trentlin [4208]: east
+Tue Nov 10 01:25:37 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov 10 01:25:37 2026 :: Log Trentlin [4207]: up
+Tue Nov 10 01:25:37 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov 10 01:25:37 2026 :: Log Trentlin [3700]: up
+Tue Nov 10 01:25:37 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [3772]: up
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [3795]: enter portal
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [15000]: east
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [15001]: east
+Tue Nov 10 01:25:38 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15002]: east
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15003]: east
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15004]: north
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15010]: north
+Tue Nov 10 01:25:39 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15011]: north
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15012]: north
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15013]: east
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15038]: east
+Tue Nov 10 01:25:40 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Tue Nov 10 01:25:41 2026 :: Log Trentlin [15068]: enter cabinet
+Tue Nov 10 01:25:41 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Tue Nov 10 01:25:45 2026 :: Log Trentlin [30200]: play recorder 4
+Tue Nov 10 01:25:45 2026 :: Log Trentlin [30253]: arrived (Isle of the Snake) from 30200
