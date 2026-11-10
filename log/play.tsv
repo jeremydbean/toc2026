@@ -19231,3 +19231,6 @@
 1794275348	session	Trentlin	32	4210	dresden.are	quit	2433s	+1 levels	+2642 exp	+6433559 copper	16 kills	0 deaths	2 quests	905 commands	2 refused	coin: loot 8p 14g 18s 7c, quests 10p 59g 17s 52c, spent 12p 30g	spent on: heal 12p 30g	exp: skilluse +24, kills +2663, flee -20, recall -25
 1794276385	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
 1794276385	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 94 platinum, 43 gold, 87 silver, 38 copper // and 252749 experience (39551 exp to level).	-	-
+1794279444	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794279444	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 94 platinum, 43 gold, 87 silver, 38 copper // and 252749 experience (39551 exp to level).	-	-
+1794279447	session	Alaric	57	2497	dresden.are	quit	6294s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	17 commands	0 refused	coin: none	spent on: none	exp: none
