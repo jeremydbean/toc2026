@@ -5895,6 +5895,7 @@ static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
             REMOVE_BIT( reverse->exit_info, EX_SECRET );
         }
         changed = true;
+        hylog_seal( ch, obj );          /* log/hyrule.tsv */
     }
 
     if ( obj->value[4] == 1 )

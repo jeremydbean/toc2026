@@ -2472,6 +2472,11 @@ struct  pc_data
     unsigned long       hyrule_secrets;
     /* Hyrule enemies killed in a row without a wound; not saved. */
     int                 hyrule_streak;
+    /* Where in Hyrule log/hyrule.tsv last saw them (hyrulelog.c: 0
+       outside, 1 the overworld, 2-10 dungeons 1-9) and since when. Not
+       saved: a login starts outside. */
+    int                 hylog_zone;
+    time_t              hylog_since;
     /* The room the Blue Candle last flamed in; it flares once a room, and
        leaving clears it (char_from_room). Not saved. */
     int                 hyrule_candle_room;
@@ -3828,6 +3833,20 @@ const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate ( int level );
 bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
 bool    is_hyrule_bystander ( CHAR_DATA *victim );
 bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
+
+/* hyrulelog.c: log/hyrule.tsv, Hyrule play for balance and trends */
+void    hylog_moved         ( CHAR_DATA *ch );
+void    hylog_session_end   ( CHAR_DATA *ch, const char *how );
+void    hylog_gate          ( CHAR_DATA *ch, int level, const char *which, int need );
+void    hylog_seal          ( CHAR_DATA *ch, OBJ_DATA *obj );
+void    hylog_got           ( CHAR_DATA *ch, OBJ_DATA *obj );
+void    hylog_claim         ( CHAR_DATA *ch, const char *what, int detail );
+void    hylog_engage        ( CHAR_DATA *guardian, CHAR_DATA *ch );
+void    hylog_guardian_down ( CHAR_DATA *ch, CHAR_DATA *guardian );
+void    hylog_flee          ( CHAR_DATA *ch, CHAR_DATA *foe );
+void    hylog_death         ( CHAR_DATA *killer, CHAR_DATA *victim );
+void    hylog_room_cleared  ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool foe_died );
+const char *playlog_how     ( CHAR_DATA *ch );
 
 /* hyrule.c */
 bool    hyrule_is_dungeon_tool ( const OBJ_DATA *obj );

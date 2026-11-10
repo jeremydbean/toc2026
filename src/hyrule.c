@@ -607,6 +607,15 @@ static void secret_set( CHAR_DATA *ch, int bit )
     ch->pcdata->hyrule_secrets |= 1UL << bit;
     ch->pcdata->hyrule_secrets &= SECRET_MASK;
     gmcp_play_sound( ch, "secret" );
+    /* log/hyrule.tsv: which claim, numbered within its kind. */
+    if ( bit < SECRET_HEART_FIRST )
+        hylog_claim( ch, "money-cave", bit );
+    else if ( bit < SECRET_CHOICE_FIRST )
+        hylog_claim( ch, "heart-container", bit - SECRET_HEART_FIRST );
+    else if ( bit < SECRET_BOMB_BAG_FIRST )
+        hylog_claim( ch, "take-any-choice", bit - SECRET_CHOICE_FIRST );
+    else
+        hylog_claim( ch, "bomb-bag", bit - SECRET_BOMB_BAG_FIRST );
 }
 
 /*

@@ -436,6 +436,7 @@ def main() -> int:
 
     journal_report(args, since, buffs)
     progress_report(args, since)
+    hyrule_report(args, since)
 
     print("\n== public chat")
     rows = []
@@ -709,6 +710,164 @@ def progress_report(args, since) -> None:
     print("  area                 kills  flees deaths chars")
     for area, here in sorted(summary["by_area"].items(), key=lambda kv: -kv[1]["kills"])[:25]:
         print(f"  {area[:20]:<20} {here['kills']:>5} {here['flee']:>6} {here['death']:>6} {len(here['who']):>5}")
+
+
+# log/hyrule.tsv (src/hyrulelog.c): epoch, kind, name, level, remorts,
+# class, room, zone, then key=value words.
+ZONE_ORDER = ["over"] + [f"L{n}" for n in range(1, 10)]
+
+
+def hyrule_rows(text: str, since: datetime) -> list:
+    out = []
+    for raw in text.splitlines():
+        f = raw.split("\t")
+        if len(f) < 8 or not f[0].isdigit():
+            continue
+        when = datetime.fromtimestamp(int(f[0]), timezone.utc)
+        if when < since:
+            continue
+        row = {"when": when, "kind": f[1], "name": f[2], "lvl": f[3], "remorts": f[4],
+               "cls": f[5], "room": f[6], "zone": f[7]}
+        for word in " ".join(f[8:]).split():
+            key, _, value = word.partition("=")
+            row.setdefault(key, value)
+        out.append(row)
+    return out
+
+
+def _median(values):
+    values = sorted(values)
+    return values[len(values) // 2] if values else None
+
+
+def _num(row, key, default=None):
+    value = row.get(key, "")
+    return int(value) if value.lstrip("-").isdigit() else default
+
+
+def hyrule_summary(rows) -> dict:
+    zones: dict = {}
+    furthest: dict = {}
+    guardians: dict = {}
+    gates: Counter = Counter()
+    got: Counter = Counter()
+    got_how: dict = {}
+    claims: Counter = Counter()
+    seals: Counter = Counter()
+    cleared: Counter = Counter()
+    deaths: Counter = Counter()
+    for r in rows:
+        kind, zone, who = r["kind"], r["zone"], r["name"]
+        if kind == "enter" and zone in ZONE_ORDER:
+            z = zones.setdefault(zone, {"visits": 0, "secs": [], "who": set()})
+            z["visits"] += 1
+            z["who"].add(who)
+            if ZONE_ORDER.index(zone) > ZONE_ORDER.index(furthest.get(who, "over")):
+                furthest[who] = zone
+            else:
+                furthest.setdefault(who, zone)
+        elif kind == "leave" and zone in ZONE_ORDER:
+            secs = _num(r, "secs")
+            if secs is not None:
+                zones.setdefault(zone, {"visits": 0, "secs": [], "who": set()})["secs"].append(secs)
+        elif kind == "gate":
+            gates[(r.get("dungeon", "?"), r.get("gate", "?"), r.get("need_name", "?"))] += 1
+        elif kind == "got":
+            key = (r.get("obj", "?"), r.get("obj_name", "?"))
+            got[key] += 1
+            got_how.setdefault(key, Counter())[r.get("how", "?")] += 1
+        elif kind == "claim":
+            claims[r.get("what", "?")] += 1
+        elif kind == "seal":
+            seals[(zone, r.get("obj_name", "?"))] += 1
+        elif kind == "cleared":
+            cleared[zone] += 1
+        elif kind == "death":
+            deaths[(zone, r.get("foe_name", "-"), r.get("guardian", "0"))] += 1
+        if kind in ("engage", "guardian-down") or (kind in ("flee", "death")
+                                                     and r.get("guardian") == "1"):
+            foe = (r.get("foe", "?"), r.get("foe_name", "?"))
+            g = guardians.setdefault(foe, {"engage": 0, "down": 0, "flee": 0, "death": 0,
+                                           "who": set(), "kill_secs": [], "party": [],
+                                           "levels": [], "flee_hp": [], "death_hp": [],
+                                           "start_hp": []})
+            g["who"].add(who)
+            if kind == "engage":
+                g["engage"] += 1
+                if _num(r, "foe_hp") is not None:
+                    g["start_hp"].append(_num(r, "foe_hp"))
+            elif kind == "guardian-down":
+                g["down"] += 1
+                if _num(r, "secs", -1) >= 0:
+                    g["kill_secs"].append(_num(r, "secs"))
+                if _num(r, "party") is not None:
+                    g["party"].append(_num(r, "party"))
+                g["levels"] += [int(x) for x in r.get("levels", "").split(",") if x.isdigit()]
+            elif kind == "flee":
+                g["flee"] += 1
+                if _num(r, "foe_hp") is not None:
+                    g["flee_hp"].append(_num(r, "foe_hp"))
+            else:
+                g["death"] += 1
+                if _num(r, "foe_hp", -1) >= 0:
+                    g["death_hp"].append(_num(r, "foe_hp"))
+    return {"zones": zones, "furthest": furthest, "guardians": guardians, "gates": gates,
+            "got": got, "got_how": got_how, "claims": claims, "seals": seals,
+            "cleared": cleared, "deaths": deaths,
+            "characters": len({r["name"] for r in rows})}
+
+
+def hyrule_report(args, since) -> None:
+    rows = hyrule_rows(git_show(args.ref, "log/hyrule.tsv"), since)
+    s = hyrule_summary(rows)
+    print(f"\n== hyrule ({s['characters']} characters, {len(rows)} records; log/hyrule.tsv)")
+    if not rows:
+        print("  (no log/hyrule.tsv records in the window)")
+        return
+    print("  where they went (visits, characters, minutes in all, median minutes a visit):")
+    for zone in ZONE_ORDER:
+        z = s["zones"].get(zone)
+        if not z:
+            continue
+        med = _median(z["secs"])
+        print(f"    {zone:<5} {z['visits']:>5} visits {len(z['who']):>3} chars"
+              f" {sum(z['secs']) / 60:>8.0f} min  median {med / 60 if med is not None else 0:>5.1f}")
+    print("  furthest reached:", ", ".join(f"{who} {zone}" for who, zone in
+                                         sorted(s["furthest"].items(), key=lambda kv:
+                                                -ZONE_ORDER.index(kv[1]))) or "(none)")
+    print("  guardians (engaged, slain, fled, deaths; median fight s, party, levels;"
+          " guardian hp% left at flee / death):")
+    for (vnum, name), g in sorted(s["guardians"].items(), key=lambda kv: kv[0][0]):
+        med = lambda v: "-" if _median(v) is None else str(_median(v))
+        print(f"    {vnum:>6} {name[:20]:<20} {g['engage']:>3} {g['down']:>3} {g['flee']:>3}"
+              f" {g['death']:>3}   {med(g['kill_secs']):>5}s party {med(g['party']):>2}"
+              f" lvl {med(g['levels']):>3}   flee {med(g['flee_hp']):>3}% death"
+              f" {med(g['death_hp']):>3}%  ({len(g['who'])} chars)")
+    if not s["guardians"]:
+        print("    (none)")
+    print("  gates that turned somebody back (dungeon, gate, what it wanted):")
+    for (dungeon, gate, need), n in s["gates"].most_common(15):
+        print(f"    x{n:<4} L{dungeon} {gate:<8} {need.replace('_', ' ')}")
+    if not s["gates"]:
+        print("    (none)")
+    print("  deaths in Hyrule (zone, foe):")
+    for (zone, foe, guardian), n in s["deaths"].most_common(15):
+        print(f"    x{n:<4} {zone:<5} {foe.replace('_', ' ')}{' (guardian)' if guardian == '1' else ''}")
+    if not s["deaths"]:
+        print("    (none)")
+    print("  what they came away with (object, times, how):")
+    for (vnum, name), n in s["got"].most_common(25):
+        hows = ", ".join(f"{how} {c}" for how, c in s["got_how"][(vnum, name)].most_common(3))
+        print(f"    x{n:<4} {vnum:>6} {name.replace('_', ' ')[:32]:<32} {hows}")
+    if not s["got"]:
+        print("    (none)")
+    print("  claims:", ", ".join(f"{what} {n}" for what, n in s["claims"].most_common()) or "(none)")
+    print("  seals opened:", ", ".join(f"{zone} {name.replace('_', ' ')} {n}" for (zone, name), n
+                                     in s["seals"].most_common(12)) or "(none)")
+    print("  rooms cleared:", ", ".join(f"{zone} {n}" for zone, n in
+                                      sorted(s["cleared"].items(), key=lambda kv:
+                                             ZONE_ORDER.index(kv[0]) if kv[0] in ZONE_ORDER else 99))
+          or "(none)")
 
 
 if __name__ == "__main__":

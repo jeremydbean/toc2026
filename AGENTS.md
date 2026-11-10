@@ -2891,6 +2891,24 @@ log says what a player typed; the journal says what happened, in columns
   kill, flees, deaths, distinct characters -- and prints no ids
   (`tests/test_progress_log.py`).
 
+- **`log/hyrule.tsv`** (`src/hyrulelog.c`, owner 2026-11-10: Hyrule
+  logged heavily for balance and trends). Columns: epoch, kind, name,
+  level, remorts, class, room, zone (`over`, `L1`-`L9`, `out`), then
+  key=value words -- add a field at the end, never rename one. Kinds:
+  `enter`/`leave` (from `char_to_room`, `hylog_moved`; a leave carries the
+  seconds spent; a session's end closes the zone), `gate` (a refusal said
+  aloud, not one met mid-flight), `seal` (`trigger_puzzle_manipulation`),
+  `got` (any Hyrule object reaching a playing mortal, from `obj_to_char`,
+  with the command that brought it), `claim` (`secret_set`), `engage` (a
+  guardian entering a fight, from `set_fighting`, with every mortal in
+  the room: levels, classes, hit points, buffs), `guardian-down`, `flee`
+  and `death` (the foe's health left -- the number that sizes a
+  guardian), `cleared`. Mortals only: staff and wizinvis are never
+  written. A field holding a name is `obj_name`/`foe_name`, never `name`,
+  and no field is `level`: the reader keys words beside the columns.
+  `how` comes from `playlog_how()`. `tests/test_hyrule_log.py`; the
+  report's `== hyrule` section reads it.
+
 `tools/log_report.py` prints the slowest commands, what the game said no
 with (grouped by command and answer -- the cheapest way to find a command
 that confuses players), **help that did not help** (HELP X, then X refused

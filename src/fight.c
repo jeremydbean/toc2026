@@ -2987,7 +2987,10 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
        the mobile into the fight at all. Never cleared: damage() stops a
        dead victim's fight before group_gain reads this. */
     if ( IS_NPC(ch) )
+    {
 	ch->fight_began_ms = playlog_now_ms();
+	hylog_engage( ch, victim );     /* a guardian's fight: log/hyrule.tsv */
+    }
     else if ( victim != NULL && IS_NPC(victim) && victim->fighting == NULL )
 	victim->fight_began_ms = playlog_now_ms();
 
@@ -3476,6 +3479,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         if ( ch != NULL && ch != victim && IS_NPC(ch) )
             progress_event( victim, "death", ch );  /* log/progress.tsv */
         playlog_death( ch, victim );                /* log/play.tsv */
+        hylog_death( ch, victim );                  /* log/hyrule.tsv */
         gmcp_play_sound( victim, "death" );         /* Client.Media */
     }
 
@@ -3563,6 +3567,8 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
       /* A four-leaf clover's pot of gold, into the purse the corpse
          takes its coin from. */
       holiday_kill( ch, victim );
+      if ( IS_NPC(victim) )
+        hylog_guardian_down( ch, victim );          /* log/hyrule.tsv */
       make_corpse( victim );
       if ( IS_NPC(victim) )
       {
@@ -3601,6 +3607,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 
 	  extract_char( victim, true );
 	  hyrule_room_cleared( death_room, foe_died );
+	  hylog_room_cleared( ch, death_room, foe_died );
 	}
 	return;
     }
@@ -5386,6 +5393,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	    playlog_exp_as( "flee" );
 	    gain_exp( ch, -10 );
 	    progress_event( ch, "flee", victim );   /* log/progress.tsv */
+	    hylog_flee( ch, victim );               /* log/hyrule.tsv */
 	}
 
 	stop_fighting( ch, true );

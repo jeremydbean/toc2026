@@ -496,6 +496,25 @@ const char *playlog_cause( void )
     return cause;
 }
 
+/* How something happened to ch, as one word: their own command running
+   ("north", "recall", "play"), "<other>'s" for somebody else's command, or
+   the update phase in brackets ("(violence_update)"). For log/hyrule.tsv
+   (hyrulelog.c). A hidden command is "-". */
+const char *playlog_how( CHAR_DATA *ch )
+{
+    static char how[64];
+
+    if ( !current_set )
+        snprintf( how, sizeof(how), "(%s)", playlog_phase );
+    else if ( current_hidden )
+        snprintf( how, sizeof(how), "-" );
+    else if ( ch != NULL && ch->name != NULL && !str_cmp( ch->name, current_name ) )
+        snprintf( how, sizeof(how), "%s", current_cmd[0] != '\0' ? current_cmd : "-" );
+    else
+        snprintf( how, sizeof(how), "%s(another's)", current_cmd[0] != '\0' ? current_cmd : "-" );
+    return how;
+}
+
 /*
  * interpret() calls begin before the command and end after it, at its
  * outermost level only. `shown` is the line as it may be written down
@@ -999,6 +1018,7 @@ void playlog_session( CHAR_DATA *ch, const char *how )
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
     ||   ch->pcdata->session_logon <= 0 )
         return;
+    hylog_session_end( ch, how );       /* log/hyrule.tsv */
     coin_summary( ch, coin, sizeof(coin) );
     tally_summary( ch->pcdata->play_spent_on, ch->pcdata->play_spent, true,
                    spent, sizeof(spent) );

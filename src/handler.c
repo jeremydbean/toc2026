@@ -1783,6 +1783,10 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
             : pRoomIndex->name != NULL ? pRoomIndex->name : "?", from );
     }
 
+    /* Crossing into, out of or within Hyrule (log/hyrule.tsv). */
+    if ( !IS_NPC(ch) )
+        hylog_moved( ch );
+
     if ( !IS_NPC(ch) )
     {
 	if (ch->in_room->area->empty)
@@ -1898,6 +1902,9 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
         achievement_record_object(ch, obj->pIndexData->vnum,
             ch->desc != NULL && ch->desc->connected == CON_PLAYING);
 
+    /* A Hyrule object reaching a playing mortal (log/hyrule.tsv). */
+    if (!IS_NPC(ch))
+        hylog_got(ch, obj);
 }
 
 

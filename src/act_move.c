@@ -333,7 +333,10 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
     &&   gate->entry_need != 0 && !hyrule_carries( subject, gate->entry_need ) )
     {
         if ( speak )
+        {
             send_to_char( gate->entry_refusal, ch );
+            hylog_gate( ch, gate->level, "entry", gate->entry_need );
+        }
         return true;
     }
 
@@ -343,7 +346,10 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
     &&   ( gate->boss_also == 0 || !hyrule_carries( subject, gate->boss_also ) ) )
     {
         if ( speak )
+        {
             send_to_char( gate->boss_refusal, ch );
+            hylog_gate( ch, gate->level, "guardian", gate->boss_need );
+        }
         return true;
     }
 

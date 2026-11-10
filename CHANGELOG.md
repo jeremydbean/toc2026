@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule play is logged for balance and trends** (owner, 2026-11-10).
+  `log/hyrule.tsv` (`src/hyrulelog.c`) writes a row for every crossing
+  between outside, the overworld and each dungeon (with the time spent),
+  every gate that turned a player back and what it wanted, every seal
+  opened, every Hyrule object a player came away with and how, every
+  one-time claim, every room cleared, and every guardian fight -- who was
+  there at what level, health and buffs, how long it lasted, and the
+  guardian's health when somebody fled or died. Mortals only.
+  `tools/log_report.py` gains a `== hyrule` section.
+  `tests/test_hyrule_log.py`.
 - **Despair holds no Hyrule guardian** (play journal, 2026-11-10). A
   player's FLEE with despair made the opponent flee instead, and a
   guardian walked out of its chamber -- Digdogger out of its den, past the
