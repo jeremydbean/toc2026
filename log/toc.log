@@ -283035,3 +283035,115 @@ Tue Nov 10 01:25:41 2026 :: Log Trentlin [15068]: enter cabinet
 Tue Nov 10 01:25:41 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
 Tue Nov 10 01:25:45 2026 :: Log Trentlin [30200]: play recorder 4
 Tue Nov 10 01:25:45 2026 :: Log Trentlin [30253]: arrived (Isle of the Snake) from 30200
+Tue Nov 10 01:25:52 2026 :: Log Trentlin [30253]: play recorder
+Tue Nov 10 01:25:52 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30253
+Tue Nov 10 01:25:55 2026 :: Log Trentlin [30323]: d
+Tue Nov 10 01:25:55 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30323
+Tue Nov 10 01:25:55 2026 :: Log Trentlin [30476]: d
+Tue Nov 10 01:25:56 2026 :: Log Trentlin [30476]: n
+Tue Nov 10 01:25:56 2026 :: Log Trentlin [30480]: arrived (Level 5: Embalmers' Hall) from 30476
+Tue Nov 10 01:25:56 2026 :: Log Trentlin [30480]: n
+Tue Nov 10 01:25:56 2026 :: Log Trentlin [30480]: n
+Tue Nov 10 01:25:56 2026 :: Log Trentlin [30480]: n
+Tue Nov 10 01:25:57 2026 :: Log Trentlin [30480]: n
+Tue Nov 10 01:26:01 2026 :: Log Trentlin [30480]: iron
+Tue Nov 10 01:26:09 2026 :: Log Trentlin [30480]: steel
+Tue Nov 10 01:26:15 2026 :: Log Trentlin [30480]: k gib
+Tue Nov 10 01:26:24 2026 :: Log Trentlin [30480]: kick
+Tue Nov 10 01:26:31 2026 :: Log Trentlin [30480]: kick
+Tue Nov 10 01:26:32 2026 :: Log Trentlin [30480]: killed a gibdo
+Tue Nov 10 01:26:32 2026 :: Log Trentlin [30480]: coin +125 silver
+Tue Nov 10 01:26:32 2026 :: Log Trentlin [30480]: coin +76 copper
+Tue Nov 10 01:26:32 2026 :: Log Trentlin [30480]: coin +65 gold
+Tue Nov 10 01:26:35 2026 :: Log Trentlin [30480]: l in co
+Tue Nov 10 01:26:35 2026 :: Log Trentlin [30480]: get key
+Tue Nov 10 01:26:39 2026 :: Log Trentlin [30480]: get heart co
+Tue Nov 10 01:26:40 2026 :: Log Trentlin [30480]: sac co
+Tue Nov 10 01:26:40 2026 :: Log Trentlin [30480]: coin +62 copper
+Tue Nov 10 01:26:42 2026 :: Log Trentlin [30480]: quaff hear
+Tue Nov 10 01:26:44 2026 :: Log Trentlin [30480]: l
+Tue Nov 10 01:26:46 2026 :: Log Trentlin [30480]: open north
+Tue Nov 10 01:26:46 2026 :: Log Trentlin [30480]: n
+Tue Nov 10 01:26:46 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30480
+Tue Nov 10 01:26:47 2026 :: Log Trentlin [30483]: n
+Tue Nov 10 01:26:49 2026 :: Log Trentlin [30483]: open north
+Tue Nov 10 01:26:53 2026 :: Log Trentlin [30483]: unlock north
+Tue Nov 10 01:26:55 2026 :: Log Trentlin [30483]: open north
+Tue Nov 10 01:26:55 2026 :: Log Trentlin [30483]: n
+Tue Nov 10 01:26:55 2026 :: Log Trentlin [30485]: arrived (Level 5: Hushed Archive) from 30483
+Tue Nov 10 01:27:00 2026 :: Log Trentlin [30485]: e
+Tue Nov 10 01:27:00 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30485
+Tue Nov 10 01:27:01 2026 :: Log Trentlin [30486]: n
+Tue Nov 10 01:27:01 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30486
+Tue Nov 10 01:27:02 2026 :: Log Trentlin [30488]: n
+Tue Nov 10 01:27:02 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30488
+Tue Nov 10 01:27:03 2026 :: Log Trentlin [30492]: w
+Tue Nov 10 01:27:04 2026 :: Log Trentlin [30492]: get key
+Tue Nov 10 01:27:06 2026 :: Log Trentlin [30492]: unlock west
+Tue Nov 10 01:27:08 2026 :: Log Trentlin [30492]: open west
+Tue Nov 10 01:27:08 2026 :: Log Trentlin [30492]: w
+Tue Nov 10 01:27:08 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30492
+Tue Nov 10 01:27:09 2026 :: Log Trentlin [30491]: w
+Tue Nov 10 01:27:09 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30491
+Tue Nov 10 01:27:10 2026 :: Log Trentlin [30490]: w
+Tue Nov 10 01:27:11 2026 :: Log Trentlin [30490]: open west
+Tue Nov 10 01:27:13 2026 :: Log Trentlin [30490]: unlock west
+Tue Nov 10 01:27:14 2026 :: Log Trentlin [30490]: open west
+Tue Nov 10 01:27:14 2026 :: Log Trentlin [30490]: w
+Tue Nov 10 01:27:14 2026 :: Log Trentlin [30489]: arrived (Level 5: Digdogger's Den) from 30490
+Tue Nov 10 01:27:17 2026 :: Log Trentlin [30489]: con d
+Tue Nov 10 01:28:41 2026 :: Log Trentlin [30489]: e
+Tue Nov 10 01:28:41 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30489
+Tue Nov 10 01:28:42 2026 :: Log Trentlin [30490]: e
+Tue Nov 10 01:28:42 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30490
+Tue Nov 10 01:28:42 2026 :: Log Trentlin [30491]: e
+Tue Nov 10 01:28:42 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30491
+Tue Nov 10 01:28:43 2026 :: Log Trentlin [30492]: s
+Tue Nov 10 01:28:43 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30492
+Tue Nov 10 01:28:43 2026 :: Log Trentlin [30488]: s
+Tue Nov 10 01:28:43 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30488
+Tue Nov 10 01:28:43 2026 :: Log Trentlin [30486]: s
+Tue Nov 10 01:28:43 2026 :: Log Trentlin [30484]: arrived (Level 5: Gray Junction) from 30486
+Tue Nov 10 01:28:44 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:28:44 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:28:44 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:28:44 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:28:45 2026 :: Log Trentlin [30484]: w
+Tue Nov 10 01:28:45 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30484
+Tue Nov 10 01:28:45 2026 :: Log Trentlin [30483]: s
+Tue Nov 10 01:28:45 2026 :: Log Trentlin [30480]: arrived (Level 5: Embalmers' Hall) from 30483
+Tue Nov 10 01:28:45 2026 :: Log Trentlin [30480]: s
+Tue Nov 10 01:28:45 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30480
+Tue Nov 10 01:28:46 2026 :: Log Trentlin [30476]: s
+Tue Nov 10 01:28:46 2026 :: Log Trentlin [30476]: s
+Tue Nov 10 01:28:47 2026 :: Log Trentlin [30476]: u
+Tue Nov 10 01:28:47 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30476
+Tue Nov 10 01:28:49 2026 :: Log Trentlin [30323]: d
+Tue Nov 10 01:28:49 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30323
+Tue Nov 10 01:28:49 2026 :: Log Trentlin [30476]: affects off: iron skin, levitate
+Tue Nov 10 01:29:41 2026 :: Log Trentlin [30476]: n
+Tue Nov 10 01:29:41 2026 :: Log Trentlin [30480]: arrived (Level 5: Embalmers' Hall) from 30476
+Tue Nov 10 01:29:41 2026 :: Log Trentlin [30480]: n
+Tue Nov 10 01:29:41 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30480
+Tue Nov 10 01:29:43 2026 :: Log Trentlin [30483]: n
+Tue Nov 10 01:29:43 2026 :: Log Trentlin [30485]: arrived (Level 5: Hushed Archive) from 30483
+Tue Nov 10 01:29:47 2026 :: Log Trentlin [30485]: levitate
+Tue Nov 10 01:30:07 2026 :: Log Trentlin [30485]: s
+Tue Nov 10 01:30:07 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30485
+Tue Nov 10 01:30:08 2026 :: Log Trentlin [30483]: w
+Tue Nov 10 01:30:11 2026 :: Log Trentlin [30483]: k dod
+Tue Nov 10 01:30:13 2026 :: Log Trentlin [30483]: bomb dod
+Tue Nov 10 01:30:26 2026 :: Log Trentlin [30483]: kick
+Tue Nov 10 01:30:29 2026 :: Log Trentlin [30483]: kick
+Tue Nov 10 01:30:35 2026 :: Log Trentlin [30483]: killed a dodongo
+Tue Nov 10 01:30:35 2026 :: Log Trentlin [30483]: coin +25 gold
+Tue Nov 10 01:30:35 2026 :: Log Trentlin [30483]: coin +94 silver
+Tue Nov 10 01:30:35 2026 :: Log Trentlin [30483]: coin +175 copper
+Tue Nov 10 01:30:35 2026 :: Log Trentlin [30483]: coin +57 gold
+Tue Nov 10 01:30:38 2026 :: Log Trentlin [30483]: l in cor
+Tue Nov 10 01:30:39 2026 :: Log Trentlin [30483]: sac cor
+Tue Nov 10 01:30:39 2026 :: Log Trentlin [30483]: coin +66 copper
+Tue Nov 10 01:30:40 2026 :: Log Trentlin [30483]: l
+Tue Nov 10 01:30:40 2026 :: Log Trentlin [30483]: l
+Tue Nov 10 01:30:41 2026 :: Log Trentlin [30483]: w
+Tue Nov 10 01:30:41 2026 :: Log Trentlin [30482]: arrived (Level 5: Slime-Glazed Vault) from 30483

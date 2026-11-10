@@ -18646,3 +18646,76 @@
 1794273940	cmd	Trentlin	31	15068	campus.are	standing	75	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
 1794273941	cmd	Trentlin	31	30200	hyrule.are	standing	75	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
 1794273945	cmd	Trentlin	31	30253	hyrule.are	standing	75	0	-	play	recorder 4	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Isle of the Snake	-	+
+1794273952	cmd	Trentlin	31	30323	hyrule.are	standing	75	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794273955	cmd	Trentlin	31	30476	hyrule.are	standing	75	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794273955	cmd	Trentlin	31	30476	hyrule.are	standing	75	0	-	down		Alas, you cannot go that way.	-	-
+1794273956	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794273956	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794273956	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794273956	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794273957	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794273961	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	iron		Your skin hardens.	-	-
+1794273969	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794273975	cmd	Trentlin	31	30480	hyrule.are	standing	77	0	-	kill	gib	A gibdo parries your attack. // A gibdo dodges your attack. // Your punch ^^^ DESTROYS ^^^ a gibdo!	-	-
+1794273984	cmd	Trentlin	31	30480	hyrule.are	fighting	77	0	fight	kick		Your kick scratches a gibdo.	-	-
+1794273991	cmd	Trentlin	31	30480	hyrule.are	fighting	70	0	fight	kick		Your kick injures a gibdo.	-	-
+1794273995	cmd	Trentlin	31	30480	hyrule.are	standing	62	0	-	look	in co	Corpse of a gibdo contains: //      (Glowing) a recovery heart	-	-
+1794273995	cmd	Trentlin	31	30480	hyrule.are	standing	62	0	-	get	key	You get a small key.	-	-
+1794273999	cmd	Trentlin	31	30480	hyrule.are	standing	62	0	-	get	heart co	You get a recovery heart from corpse of a gibdo.	-	-
+1794274000	cmd	Trentlin	31	30480	hyrule.are	standing	62	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794274002	cmd	Trentlin	31	30480	hyrule.are	standing	62	0	-	quaff	hear	You quaff a recovery heart. // You feel better!	-	-
+1794274004	cmd	Trentlin	31	30480	hyrule.are	standing	68	0	-	look		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794274006	cmd	Trentlin	31	30480	hyrule.are	standing	68	0	-	open	north	Ok.	-	-
+1794274006	cmd	Trentlin	31	30483	hyrule.are	standing	68	0	-	north		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274007	cmd	Trentlin	31	30483	hyrule.are	standing	68	0	-	north		The locked is closed.	-	-
+1794274009	cmd	Trentlin	31	30483	hyrule.are	standing	68	0	-	open	north	It's locked.	-	-
+1794274013	cmd	Trentlin	31	30483	hyrule.are	standing	68	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794274015	cmd	Trentlin	31	30483	hyrule.are	standing	68	0	-	open	north	Ok.	-	-
+1794274015	cmd	Trentlin	31	30485	hyrule.are	standing	68	0	-	north		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794274020	cmd	Trentlin	31	30486	hyrule.are	standing	68	0	-	east		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794274021	cmd	Trentlin	31	30488	hyrule.are	standing	68	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794274022	cmd	Trentlin	31	30492	hyrule.are	standing	68	0	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794274023	cmd	Trentlin	31	30492	hyrule.are	standing	68	0	-	west		The locked is closed.	-	-
+1794274024	cmd	Trentlin	31	30492	hyrule.are	standing	68	0	-	get	key	You get a small key.	-	-
+1794274026	cmd	Trentlin	31	30492	hyrule.are	standing	68	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794274028	cmd	Trentlin	31	30492	hyrule.are	standing	68	0	-	open	west	Ok.	-	-
+1794274028	cmd	Trentlin	31	30491	hyrule.are	standing	68	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794274029	cmd	Trentlin	31	30490	hyrule.are	standing	68	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794274030	cmd	Trentlin	31	30490	hyrule.are	standing	68	0	-	west		The locked is closed.	-	-
+1794274031	cmd	Trentlin	31	30490	hyrule.are	standing	68	0	-	open	west	It's locked.	-	-
+1794274033	cmd	Trentlin	31	30490	hyrule.are	standing	68	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794274034	cmd	Trentlin	31	30490	hyrule.are	standing	68	0	-	open	west	Ok.	-	-
+1794274034	cmd	Trentlin	31	30489	hyrule.are	standing	68	0	-	west		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794274037	cmd	Trentlin	31	30489	hyrule.are	standing	68	0	-	consider	d	Digdogger is well above your level. // Digdogger has many times your hit points. // Blow for blow, you would need about 31 rounds to bring Digdogger down; it would need about 3 rounds for you.	-	+
+1794274121	cmd	Trentlin	31	30490	hyrule.are	standing	70	0	-	east		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794274122	cmd	Trentlin	31	30491	hyrule.are	standing	70	0	-	east		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794274122	cmd	Trentlin	31	30492	hyrule.are	standing	70	0	-	east		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794274123	cmd	Trentlin	31	30488	hyrule.are	standing	70	0	-	south		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794274123	cmd	Trentlin	31	30486	hyrule.are	standing	70	0	-	south		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794274123	cmd	Trentlin	31	30484	hyrule.are	standing	70	0	-	south		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794274124	cmd	Trentlin	31	30484	hyrule.are	standing	70	0	-	south		Alas, you cannot go that way.	-	-
+1794274124	cmd	Trentlin	31	30484	hyrule.are	standing	70	0	-	south		Alas, you cannot go that way.	-	-
+1794274124	cmd	Trentlin	31	30484	hyrule.are	standing	70	0	-	south		Alas, you cannot go that way.	-	-
+1794274124	cmd	Trentlin	31	30484	hyrule.are	standing	70	0	-	south		Alas, you cannot go that way.	-	-
+1794274125	cmd	Trentlin	31	30483	hyrule.are	standing	70	0	-	west		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274125	cmd	Trentlin	31	30480	hyrule.are	standing	70	0	-	south		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794274125	cmd	Trentlin	31	30476	hyrule.are	standing	70	0	-	south		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794274126	cmd	Trentlin	31	30476	hyrule.are	standing	70	0	-	south		Alas, you cannot go that way.	-	-
+1794274126	cmd	Trentlin	31	30476	hyrule.are	standing	70	0	-	south		Alas, you cannot go that way.	-	-
+1794274127	cmd	Trentlin	31	30323	hyrule.are	standing	70	0	-	up		The Lizard's Gate //   Beyond the confusing folds of the Lost Hills to the south the ground levels // into a hidden basin of reddish sand. At its heart a squat entrance is cut	-	+
+1794274129	cmd	Trentlin	31	30476	hyrule.are	standing	70	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794274181	cmd	Trentlin	31	30480	hyrule.are	standing	75	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794274181	cmd	Trentlin	31	30483	hyrule.are	standing	75	0	-	north		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274183	cmd	Trentlin	31	30485	hyrule.are	standing	75	0	-	north		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794274187	cmd	Trentlin	31	30485	hyrule.are	standing	75	0	-	levitate		You slowly rise up off the ground.	-	-
+1794274207	cmd	Trentlin	31	30483	hyrule.are	standing	75	0	-	south		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274208	cmd	Trentlin	31	30483	hyrule.are	standing	75	0	-	west		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794274211	cmd	Trentlin	31	30483	hyrule.are	standing	75	0	-	kill	dod	Your punch ^^^ DESTROYS ^^^ a dodongo! // A dodongo parries your attack. // A dodongo dodges your attack.	-	-
+1794274213	cmd	Trentlin	31	30483	hyrule.are	fighting	75	0	fight	bomb	dod	You roll a bomb beneath a dodongo. It swallows it -- and the blast tears through its hide! // You do UNSPEAKABLE things to a dodongo!	-	-
+1794274226	cmd	Trentlin	31	30483	hyrule.are	fighting	42	0	fight	kick		Your kick grazes a dodongo.	-	-
+1794274229	cmd	Trentlin	31	30483	hyrule.are	fighting	42	0	fight	kick		Your kick hits a dodongo.	-	-
+1794274238	cmd	Trentlin	31	30483	hyrule.are	standing	32	0	-	look	in cor	Corpse of a dodongo contains: //      Nothing.	-	-
+1794274239	cmd	Trentlin	31	30483	hyrule.are	standing	32	0	-	sacrifice	cor	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794274240	cmd	Trentlin	31	30483	hyrule.are	standing	32	0	-	look		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274240	cmd	Trentlin	31	30483	hyrule.are	standing	32	0	-	look		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274241	cmd	Trentlin	31	30482	hyrule.are	standing	32	1	-	west		The shutter opens now that the chamber is clear. // Level 5: Slime-Glazed Vault //   The floor of this chamber gleams with a thin glaze of green slime that	-	+
