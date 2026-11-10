@@ -284480,3 +284480,36 @@ Tue Nov 10 19:31:58 2026 :: Log Killuminati [30545]: arrived (Level 7: Stairwell
 Tue Nov 10 19:31:58 2026 :: Log Killuminati [30545]: w
 Tue Nov 10 19:31:59 2026 :: Log Killuminati [30545]: d
 Tue Nov 10 19:31:59 2026 :: Log Killuminati [30558]: arrived (Level 7: Grasping Wall Chamber) from 30545
+Tue Nov 10 19:32:15 2026 :: Log Killuminati [30558]: bomb west
+Tue Nov 10 19:32:17 2026 :: Log Killuminati [30558]: w
+Tue Nov 10 19:32:17 2026 :: Log Killuminati [30557]: arrived (Level 7: Smoke-Stained Den) from 30558
+Tue Nov 10 19:32:22 2026 :: Log Killuminati [30557]: bomb dod
+Tue Nov 10 19:32:26 2026 :: Log Killuminati [30557]: bomb dod
+Tue Nov 10 19:32:26 2026 :: Log Killuminati [30557]: killed a dodongo
+Tue Nov 10 19:32:26 2026 :: Log Killuminati [30557]: coin +193 silver
+Tue Nov 10 19:32:26 2026 :: Log Killuminati [30557]: coin +19 copper
+Tue Nov 10 19:32:26 2026 :: Log Killuminati [30557]: coin +62 gold
+Tue Nov 10 19:32:45 2026 :: Log Killuminati [30557]: lo
+Tue Nov 10 19:32:47 2026 :: Log Killuminati [30557]: op south
+Tue Nov 10 19:32:47 2026 :: Log Killuminati [30557]: s
+Tue Nov 10 19:32:47 2026 :: Log Killuminati [30552]: arrived (Level 7: Spined Sand Pit) from 30557
+Tue Nov 10 19:32:50 2026 :: Log Killuminati [30552]: bomb dig
+Tue Nov 10 19:33:02 2026 :: Log Killuminati [30552]: peace
+Tue Nov 10 19:33:06 2026 :: Log Killuminati [30552]: vnum reco
+Tue Nov 10 19:33:09 2026 :: Log Killuminati [30552]: load obj 30413
+Tue Nov 10 19:33:11 2026 :: Log Killuminati [30552]: blow rec
+Tue Nov 10 19:33:15 2026 :: Log Killuminati [30552]: kill dig
+Tue Nov 10 19:33:16 2026 :: Log Killuminati [30552]: killed a digdogger
+Tue Nov 10 19:33:16 2026 :: Log Killuminati [30552]: coin +76 silver
+Tue Nov 10 19:33:16 2026 :: Log Killuminati [30552]: coin +118 copper
+Tue Nov 10 19:33:16 2026 :: Log Killuminati [30552]: coin +58 gold
+Tue Nov 10 19:34:29 2026 :: Log Killuminati [30552]: lo
+Tue Nov 10 19:34:32 2026 :: Log Killuminati [30552]: op west
+Tue Nov 10 19:34:33 2026 :: Log Killuminati [30552]: w
+Tue Nov 10 19:34:35 2026 :: Log Killuminati [30552]: unl wes
+Tue Nov 10 19:34:37 2026 :: Log Killuminati [30552]: pick west
+Tue Nov 10 19:34:40 2026 :: Log Killuminati [30552]: open west
+Tue Nov 10 19:34:40 2026 :: Log Killuminati [30552]: e
+Tue Nov 10 19:34:41 2026 :: Log Killuminati [30552]: w
+Tue Nov 10 19:34:41 2026 :: Log Killuminati [30551]: arrived (Level 7: Hall of Keyholes) from 30552
+Tue Nov 10 19:35:23 2026 :: Log Killuminati [30551]: look gor
