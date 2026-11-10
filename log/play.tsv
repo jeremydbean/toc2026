@@ -18965,3 +18965,133 @@
 1794274840	cmd	Trentlin	32	702	camelot.are	standing	70	0	-	north		The Crossroads of Arden //   You stand at the crossroads of two dusty paths. Dappled sunlight lights  // the intersection and you notice horsesign in the dirt. The path continues 	-	+
 1794274848	cmd	Trentlin	32	702	camelot.are	fighting	60	0	fight	scan		A serf                             -to the North. // King Pellinore                     -to the West.	-	-
 1794274848	cmd	Trentlin	32	702	camelot.are	fighting	51	0	fight	consider	kn	The black knight is a little above your level. // The black knight has about twice your hit points. // Blow for blow, you would need about 11 rounds to bring the black knight down; he would need about 4 rounds for you.	-	+
+1794274849	cmd	Trentlin	32	702	camelot.are	fighting	51	0	fight	flee		The black knight is overcome with a feeling of despair and flees the battle. // The black knight walks off to the north. // The black knight has fled!	-	-
+1794274849	cmd	Trentlin	32	702	camelot.are	standing	51	0	-	flee		You aren't fighting anyone.	-	-
+1794274852	cmd	Trentlin	32	702	camelot.are	standing	51	0	-	look		The Crossroads of Arden //   You stand at the crossroads of two dusty paths. Dappled sunlight lights  // the intersection and you notice horsesign in the dirt. The path continues 	-	+
+1794274853	cmd	Trentlin	32	702	camelot.are	standing	51	0	-	scan		the black knight                   -to the North. // A serf                             -to the North. // King Pellinore                     -to the West.	-	-
+1794274854	cmd	Trentlin	32	702	camelot.are	standing	51	0	-	exits		Obvious exits: // North - A Hut in Forest Arden // East  - A Fork in the Dirty Trail	-	+
+1794274858	cmd	Trentlin	32	703	camelot.are	standing	51	0	-	west		The Forest Arden //   You are on a path in the great forest Arden. Boy you wish there wern't  // so many of those pesky knats. The trail leads south and east.	-	+
+1794274859	cmd	Trentlin	32	703	camelot.are	standing	51	0	-	scan		You don't see anything near you.	-	-
+1794274861	cmd	Trentlin	32	703	camelot.are	standing	51	0	-	consider	pe	King Pellinore is a little below your level. // King Pellinore has about as many hit points as you. // Blow for blow, you would need about 4 rounds to bring King Pellinore down; he would need about 6 rounds for you.	-	+
+1794274862	cmd	Trentlin	32	703	camelot.are	standing	51	0	-	look	pe	King Pellinore tells you that his family has been searching for the Questing // Beast for generations and asks if you have seen it. Pelinore is just past  // middle age, though he is still a stout fighter.	-	+
+1794274866	cmd	Trentlin	32	704	camelot.are	standing	51	0	-	south		Trail of Bones //   The trail narrows and darkens and you notice a crunching sound. You look  // down-BONES! The trail darkens to the west and lightens to the north.	-	+
+1794274867	cmd	Trentlin	32	707	camelot.are	standing	51	0	-	west		Lair of the Questing Beast //   You have found the lair of the questing beast! Bones are strewn everywhere. // The only exit is to the east.	-	+
+1794274868	cmd	Trentlin	32	704	camelot.are	standing	51	0	-	east		Trail of Bones //   The trail narrows and darkens and you notice a crunching sound. You look  // down-BONES! The trail darkens to the west and lightens to the north.	-	+
+1794274868	cmd	Trentlin	32	703	camelot.are	standing	51	0	-	north		The Forest Arden //   You are on a path in the great forest Arden. Boy you wish there wern't  // so many of those pesky knats. The trail leads south and east.	-	+
+1794274869	cmd	Trentlin	32	702	camelot.are	standing	51	0	-	east		The Crossroads of Arden //   You stand at the crossroads of two dusty paths. Dappled sunlight lights  // the intersection and you notice horsesign in the dirt. The path continues 	-	+
+1794274870	cmd	Trentlin	32	702	camelot.are	standing	51	0	-	scan		the black knight                   -to the North. // A serf                             -to the North. // King Pellinore                     -to the West.	-	-
+1794274873	cmd	Trentlin	32	702	camelot.are	standing	54	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794274889	cmd	Trentlin	32	706	camelot.are	standing	54	0	-	east		A Fork in the Dirty Trail //   You are at a fork in the dirty trail in Forest Arden. There is horsesign  // in the dirt, and the trail goes north, east, and west from here.	-	+
+1794274890	cmd	Trentlin	32	709	camelot.are	standing	54	0	-	north		Mists of Arden //   You have steadily travelled downhill into a misty forested area. The tall  // black silhoettes of the towering oaks crowd your limited vision. You squint 	-	+
+1794274891	cmd	Trentlin	32	713	camelot.are	standing	54	0	-	north		The Forest Arden //   You have entered a bright and cheerful section of the Forest Arden.  // Squirrels chase one and another around the ancient oaks, and butterfiles 	-	+
+1794274892	cmd	Trentlin	32	713	camelot.are	standing	54	0	-	scan		a squire                           -to the North. // the knight of quality              -to the North. // The nasty, old troll               -to the East.	-	-
+1794274895	cmd	Trentlin	32	714	camelot.are	standing	54	0	-	north		A Creek in the Forest Arden //   You have stopped for water at a little creek which cuts across the trail.  // To the south the forest brightens. To the west the forest darkens. The 	-	+
+1794274896	cmd	Trentlin	32	714	camelot.are	standing	54	0	-	scan		The Lady of the Lake               -to the East. // Knight of Quality                  -to the West. // Knight of Reknown                  -to the West.	-	+
+1794274897	cmd	Trentlin	32	715	camelot.are	standing	54	0	-	west		Battleplain of Arden //   Before you stretches the grizzly battleplain of Arden. Countless centuries  // of war have littered the plain with bones and broken weapons of its 	-	+
+1794274898	cmd	Trentlin	32	715	camelot.are	standing	54	0	-	consider	t	Turquine is about your level. // Turquine has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring Turquine down; he would need about 3 rounds for you.	-	+
+1794274905	cmd	Trentlin	32	715	camelot.are	standing	54	0	-	kill	t	Turquine parries your attack. // Turquine dodges your attack.	-	-
+1794274909	cmd	Trentlin	32	715	camelot.are	fighting	38	0	fight	flee		Turquine is overcome with a feeling of despair and flees the battle. // Turquine has fled!	-	-
+1794274910	cmd	Trentlin	32	715	camelot.are	standing	38	0	-	flee		You aren't fighting anyone.	-	-
+1794274910	cmd	Trentlin	32	715	camelot.are	standing	38	0	-	flee		You aren't fighting anyone.	-	-
+1794274910	cmd	Trentlin	32	715	camelot.are	standing	38	0	-	flee		You aren't fighting anyone.	-	-
+1794274910	cmd	Trentlin	32	715	camelot.are	standing	38	0	-	flee		You aren't fighting anyone.	-	-
+1794274912	cmd	Trentlin	32	716	camelot.are	fighting	30	0	fight	flee		Before Blackmoor //   You stand before Blackmoor the keep of the evil Mordred. The curtain wall  // is some 25 feet high and towers flank the gate and corners. The breeze 	-	+
+1794274912	cmd	Trentlin	32	716	camelot.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794274912	cmd	Trentlin	32	716	camelot.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794274912	cmd	Trentlin	32	716	camelot.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794274913	cmd	Trentlin	32	716	camelot.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794274913	cmd	Trentlin	32	716	camelot.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794274915	cmd	Trentlin	32	716	camelot.are	standing	30	0	-	scan		Knight of Quality                  -to the South. // Knight of Reknown                  -to the South. // Prince Valiant                     -to the South.	-	+
+1794274917	cmd	Trentlin	32	715	camelot.are	standing	30	0	-	south		Battleplain of Arden //   Before you stretches the grizzly battleplain of Arden. Countless centuries  // of war have littered the plain with bones and broken weapons of its 	-	+
+1794274917	cmd	Trentlin	32	714	camelot.are	standing	30	0	-	east		A Creek in the Forest Arden //   You have stopped for water at a little creek which cuts across the trail.  // To the south the forest brightens. To the west the forest darkens. The 	-	+
+1794274920	refused	Trentlin	32	714	camelot.are	standing	30	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794274932	cmd	Trentlin	32	714	camelot.are	standing	33	0	-	kill	t	Your punch injures Turquine. // Your punch *** DEVASTATES *** Turquine! // Your punch *** DEMOLISHES *** Turquine!	-	-
+1794274952	cmd	Trentlin	32	714	camelot.are	fighting	33	0	fight	nerve		You jab Turquine with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls Turquine. // Turquine has fled!	-	-
+1794274957	cmd	Trentlin	32	714	camelot.are	standing	33	0	-	scan		The Lady of the Lake               -to the East. // Turquine                           -to the West. // Knight of Quality                  -to the West.	-	+
+1794274963	cmd	Trentlin	32	715	camelot.are	standing	100	0	-	west		Battleplain of Arden //   Before you stretches the grizzly battleplain of Arden. Countless centuries  // of war have littered the plain with bones and broken weapons of its 	-	+
+1794274963	cmd	Trentlin	32	715	camelot.are	standing	100	13	-	kill	tur	Your punch ^^^ DESTROYS ^^^ Turquine! // Turquine is DEAD!! // You have almost finished your QUEST!	-	+
+1794274969	cmd	Trentlin	32	715	camelot.are	standing	100	0	-	get	all co	You get a wolf's head mace from corpse of Turquine. // You get a wolf helm from corpse of Turquine.	-	-
+1794274969	cmd	Trentlin	32	714	camelot.are	standing	100	0	-	east		A Creek in the Forest Arden //   You have stopped for water at a little creek which cuts across the trail.  // To the south the forest brightens. To the west the forest darkens. The 	-	+
+1794274972	cmd	Trentlin	32	714	camelot.are	standing	100	0	-	compare	wolf	A) a wolf helm (level 32) // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794274975	cmd	Trentlin	32	714	camelot.are	standing	100	0	-	drop	wolf	You drop a wolf helm.	-	-
+1794274975	cmd	Trentlin	32	714	camelot.are	standing	100	0	-	drop	wolf	You drop a wolf's head mace.	-	-
+1794274976	cmd	Trentlin	32	714	camelot.are	standing	100	0	-	sacrifice	wolf	The Gods give you 64 copper coins for your sacrifice.	-	-
+1794274976	cmd	Trentlin	32	714	camelot.are	standing	100	0	-	sacrifice	wolf	The Gods give you 64 copper coins for your sacrifice.	-	-
+1794274977	cmd	Trentlin	32	8756	kerofk.are	standing	100	0	-	recall		Something is very wrong! // Outer Office //   This is a nice-looking office, with a big receiving desk in the	-	+
+1794274981	cmd	Trentlin	32	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794274982	cmd	Trentlin	32	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794274982	cmd	Trentlin	32	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794274982	cmd	Trentlin	32	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794274983	cmd	Trentlin	32	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794274983	cmd	Trentlin	32	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794274983	cmd	Trentlin	32	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794274983	cmd	Trentlin	32	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794274984	cmd	Trentlin	32	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794274984	cmd	Trentlin	32	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794274984	cmd	Trentlin	32	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794274984	cmd	Trentlin	32	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794274986	outcome	Trentlin	32	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2605->2605 offered=35 daily=18->18 coin=+4897920 kill=489792 streak=34 level=32 target=-1
+1794274986	cmd	Trentlin	32	2497	dresden.are	standing	100	20	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 35 in a row! A +153% bonus has been added!'	success:-	+
+1794274989	cmd	Trentlin	32	2497	dresden.are	standing	100	4	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 70 quest points! **	-	-
+1794274991	cmd	Trentlin	32	2497	dresden.are	standing	100	0	-	look	ala	You see nothing special about him. // Alaric is in excellent condition. // Alaric is using:	-	+
+1794274994	cmd	Trentlin	32	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [32 Dwarf   Monk  ] Trentlin the Master of Winter // Players found: 2	-	-
+1794274998	cmd	Trentlin	32	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794274999	cmd	Trentlin	32	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794275002	cmd	Trentlin	32	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)	-	-
+1794275096	cmd	Trentlin	32	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794275096	cmd	Trentlin	32	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794275096	cmd	Trentlin	32	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794275097	cmd	Trentlin	32	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794275097	cmd	Trentlin	32	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794275097	cmd	Trentlin	32	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794275097	cmd	Trentlin	32	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794275098	cmd	Trentlin	32	2401	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794275099	cmd	Trentlin	32	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794275099	cmd	Trentlin	32	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794275099	cmd	Trentlin	32	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794275099	cmd	Trentlin	32	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794275100	cmd	Trentlin	32	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794275100	cmd	Trentlin	32	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794275100	cmd	Trentlin	32	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794275100	cmd	Trentlin	32	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794275101	cmd	Trentlin	32	2426	dresden.are	standing	100	0	-	east		The gate is closed.	-	-
+1794275101	cmd	Trentlin	32	2426	dresden.are	standing	100	0	-	east		The gate is closed.	-	-
+1794275101	cmd	Trentlin	32	2426	dresden.are	standing	100	0	-	east		The gate is closed.	-	-
+1794275102	cmd	Trentlin	32	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794275103	cmd	Trentlin	32	2426	dresden.are	standing	100	0	-	where	hermie	You didn't find any hermie.	-	-
+1794275105	cmd	Trentlin	32	9517	newthalo.are	standing	100	0	-	run	e 20	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance	-	+
+1794275106	cmd	Trentlin	32	9517	newthalo.are	standing	100	0	-	wake		You are already standing.	-	-
+1794275106	cmd	Trentlin	32	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794275107	cmd	Trentlin	32	9528	newthalo.are	standing	100	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794275107	cmd	Trentlin	32	9529	newthalo.are	standing	100	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794275107	cmd	Trentlin	32	9530	newthalo.are	standing	100	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794275107	cmd	Trentlin	32	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794275108	cmd	Trentlin	32	9531	newthalo.are	standing	100	0	-	east		The gate is closed.	-	-
+1794275108	cmd	Trentlin	32	9531	newthalo.are	standing	100	0	-	east		The gate is closed.	-	-
+1794275108	cmd	Trentlin	32	9531	newthalo.are	standing	100	0	-	east		The gate is closed.	-	-
+1794275112	cmd	Trentlin	32	9531	newthalo.are	standing	100	0	-	open	east	Ok.	-	-
+1794275112	cmd	Trentlin	32	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794275112	cmd	Trentlin	32	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794275112	cmd	Trentlin	32	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794275113	cmd	Trentlin	32	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794275113	cmd	Trentlin	32	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794275113	cmd	Trentlin	32	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794275114	cmd	Trentlin	32	9795	newthalo.are	standing	100	0	-	east		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time	-	+
+1794275115	cmd	Trentlin	32	9794	newthalo.are	standing	100	0	-	west		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794275117	cmd	Trentlin	32	9794	newthalo.are	standing	100	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794275126	cmd	Trentlin	32	9794	newthalo.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794275131	cmd	Trentlin	32	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794275131	cmd	Trentlin	32	41	connect.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794275132	cmd	Trentlin	32	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794275133	cmd	Trentlin	32	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794275134	cmd	Trentlin	32	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794275134	cmd	Trentlin	32	16002	pirate.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794275135	cmd	Trentlin	32	16002	pirate.are	standing	100	0	-	scan		The sailor                         -to the North. // The sailor                         -to the South.	-	-
+1794275136	cmd	Trentlin	32	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794275136	cmd	Trentlin	32	16003	pirate.are	standing	100	1	-	scan		The sailor                         -to the North. // The drunk pirate                   -to the North.	-	-
+1794275137	cmd	Trentlin	32	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.	-	+
+1794275138	cmd	Trentlin	32	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like	-	+
+1794275139	cmd	Trentlin	32	16005	pirate.are	standing	100	0	-	scan		The sailor                         -to the West. // The drunk pirate                   -to the West. // The midshipman                     -right above you.	-	+
+1794275142	cmd	Trentlin	32	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794275144	cmd	Trentlin	32	16021	pirate.are	standing	100	0	-	kill	mid	Your punch DISMEMBERS The midshipman! // Your punch *** DEVASTATES *** The midshipman!	-	-
+1794275146	cmd	Trentlin	32	16021	pirate.are	fighting	94	0	fight	nerve		You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch MASSACRES The midshipman!	-	-
