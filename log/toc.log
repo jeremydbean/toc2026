@@ -284197,3 +284197,24 @@ Tue Nov 10 16:10:15 2026 :: Treasure goblin: vanished from room 6504 (Narrow Pat
 Tue Nov 10 16:20:19 2026 :: Treasure goblin: vanished from room 16009 (Aft Deck South, pirate.are) (too long in one area).
 Tue Nov 10 16:30:24 2026 :: Treasure goblin: vanished from room 29048 (Hallway to Guest Quarters, korzath1.are) (too long in one area).
 Tue Nov 10 16:40:29 2026 :: Treasure goblin: vanished from room 7711 (Residence, ultima.are) (too long in one area).
+Tue Nov 10 16:47:53 2026 :: Sock.sinaddr:  93.174.95.106
+Tue Nov 10 16:47:59 2026 :: EOF encountered on read.
+Tue Nov 10 16:49:42 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Nov 10 16:49:46 2026 :: Log WebAdmin: fsave
+Tue Nov 10 16:49:52 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Nov 10 16:49:55 2026 :: Received signal 15; saving players and shutting down.
+Tue Nov 10 16:49:55 2026 :: Normal termination of game.
+Tue Nov 10 16:49:56 2026 ::  INIT OK 
+Tue Nov 10 16:49:56 2026 :: walkto_load: 157 destinations.
+Tue Nov 10 16:49:56 2026 :: changes_load: 235 entries.
+Tue Nov 10 16:49:56 2026 :: Passwords: SHA-512 crypt self-test passed.
+Tue Nov 10 16:49:56 2026 :: Recovery ledger: 352 records (0 from before the check), 2 requests, 8 players.
+Tue Nov 10 16:49:56 2026 :: Corpse keeper: Trentlin's corpse c6aef57d8014fe2 made again in room 15009 with 0 objects.
+Tue Nov 10 16:49:56 2026 :: Corpse keeper: Trentlin's corpse c6af06a99014a1f made again in room 30443 with 2 objects.
+Tue Nov 10 16:49:56 2026 :: Corpse keeper: 2 corpses made again, 0 set aside.
+Tue Nov 10 16:49:56 2026 :: ROM is ready to rock on port 9000.
+Tue Nov 10 16:49:56 2026 :: Treasure goblin: appeared.
+Tue Nov 10 16:49:56 2026 :: Automated backup started.
+Tue Nov 10 16:49:56 2026 :: Daily backup started.
+Tue Nov 10 16:49:56 2026 :: Automated backup complete.
+Tue Nov 10 16:49:57 2026 :: Daily backup complete.
