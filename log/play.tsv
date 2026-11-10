@@ -19943,3 +19943,88 @@
 1794345948	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	areas		[25+]   Soul.   Temple Despair         [20 30] Doctor  Galaxy                  // [  0  0] Built-In  Seasonal Items      [ 5 15] PinkF   Mob Factory             // [  0  0] Built-In  Holiday Fairs       [ ALL ] Drakk   City of Dresden     	-	+
 1794346020	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
 1794346023	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	walkto	hyrule	You set off for Hyrule (Killum), about 16 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794346041	cmd	Trentlin	34	30253	hyrule.are	standing	100	0	-	play	recorder 4	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Isle of the Snake	-	+
+1794346047	cmd	Trentlin	34	30323	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794346050	cmd	Trentlin	34	30476	hyrule.are	standing	100	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794346050	cmd	Trentlin	34	30476	hyrule.are	standing	100	0	-	consider	lee	They're not here.	-	-
+1794346051	cmd	Trentlin	34	30480	hyrule.are	standing	100	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794346053	cmd	Trentlin	34	30480	hyrule.are	standing	100	0	-	consider	g	A gibdo is a little below your level. // A gibdo has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring a gibdo down; it would need about 12 rounds for you.	-	+
+1794346056	state	Trentlin	34	30480	hyrule.are	lvl=34 hp=738/738 mana=1212/1474 mv=308/386 align=-66 exp=78340 coin=5991238 bank=15201185444 qp=2999 prac=1 train=1 stash=50/75 remorts=1
+1794346056	cmd	Trentlin	34	30480	hyrule.are	standing	100	0	-	score		| Name:       Trentlin | Level:      34 | Class:        Monk | // | Played:     34 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794346058	cmd	Trentlin	34	30480	hyrule.are	standing	100	0	-	kill	gi	Your punch ^^^ DESTROYS ^^^ a gibdo! // Your punch === OBLITERATES === a gibdo! // Your punch === OBLITERATES === a gibdo!	-	-
+1794346064	cmd	Trentlin	34	30480	hyrule.are	fighting	91	0	fight	kick		Your kick scratches a gibdo.	-	-
+1794346067	cmd	Trentlin	34	30480	hyrule.are	fighting	91	0	fight	kick		Your kick misses a gibdo.	-	-
+1794346073	cmd	Trentlin	34	30480	hyrule.are	standing	91	0	-	get	key	You get a small key.	-	-
+1794346073	cmd	Trentlin	34	30480	hyrule.are	standing	91	0	-	look		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794346081	cmd	Trentlin	34	30480	hyrule.are	standing	91	0	-	unlock	north	You lack the key.	-	-
+1794346083	cmd	Trentlin	34	30483	hyrule.are	standing	91	3	-	north		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
+1794346086	cmd	Trentlin	34	30483	hyrule.are	standing	91	0	-	consider	dod	A dodongo is about your level. // A dodongo has about twice your hit points. // Blow for blow, you would need about 8 rounds to bring a dodongo down; it would need about 9 rounds for you.	-	+
+1794346088	cmd	Trentlin	34	30483	hyrule.are	standing	91	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794346088	cmd	Trentlin	34	30483	hyrule.are	standing	91	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794346089	cmd	Trentlin	34	30483	hyrule.are	standing	91	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794346092	cmd	Trentlin	34	30483	hyrule.are	standing	91	0	-	inventory		You are carrying: // ( 3) a small key //      the Red Candle	-	+
+1794346102	cmd	Trentlin	34	30483	hyrule.are	standing	91	0	-	look		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794346104	cmd	Trentlin	34	30484	hyrule.are	standing	91	0	-	east		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794346107	cmd	Trentlin	34	30484	hyrule.are	standing	93	0	-	kill	zo	A zol parries your attack. // Your punch decimates a zol!	-	-
+1794346132	cmd	Trentlin	34	30484	hyrule.are	standing	82	0	-	look	in co	Corpse of a zol contains: //      Nothing.	-	-
+1794346134	cmd	Trentlin	34	30484	hyrule.are	standing	82	0	-	sacrifice	co	The Gods give you 58 copper coins for your sacrifice.	-	-
+1794346134	cmd	Trentlin	34	30484	hyrule.are	standing	82	0	-	look		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794346135	cmd	Trentlin	34	30486	hyrule.are	standing	82	0	-	north		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794346137	cmd	Trentlin	34	30486	hyrule.are	standing	82	0	-	kill	g	A gibdo dodges your attack. // A gibdo dodges your attack.	-	-
+1794346150	cmd	Trentlin	34	30486	hyrule.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** a gibdo! // Your fists of fury DISEMBOWELS a gibdo!	-	+
+1794346162	cmd	Trentlin	34	30486	hyrule.are	fighting	47	0	fight	trip		You trip a gibdo and a gibdo goes down! // Your trip scratches a gibdo.	-	-
+1794346172	cmd	Trentlin	34	30486	hyrule.are	standing	47	0	-	get	key	You get a small key.	-	-
+1794346172	cmd	Trentlin	34	30486	hyrule.are	standing	47	0	-	look	in co	Corpse of a gibdo contains: //      Nothing.	-	-
+1794346173	cmd	Trentlin	34	30486	hyrule.are	standing	47	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794346174	cmd	Trentlin	34	30484	hyrule.are	standing	47	0	-	south		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794346175	cmd	Trentlin	34	30483	hyrule.are	standing	47	0	-	west		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794346175	cmd	Trentlin	34	30480	hyrule.are	standing	47	0	-	south		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794346175	cmd	Trentlin	34	30476	hyrule.are	standing	47	0	-	south		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794346175	cmd	Trentlin	34	30476	hyrule.are	standing	47	0	-	south		Alas, you cannot go that way.	-	-
+1794346177	cmd	Trentlin	34	30323	hyrule.are	standing	47	0	-	up		The Lizard's Gate //   Beyond the confusing folds of the Lost Hills to the south the ground levels // into a hidden basin of reddish sand. At its heart a squat entrance is cut	-	+
+1794346177	cmd	Trentlin	34	4207	dresden.are	standing	47	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794346178	cmd	Trentlin	34	4208	dresden.are	standing	47	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794346180	cmd	Trentlin	34	4208	dresden.are	standing	47	3	-	heal	poison	The healer utters the words 'judicandus sausabru'. // You feel less sick. // A warm feeling runs through your body.	-	-
+1794346186	cmd	Trentlin	34	4208	dresden.are	standing	47	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body; that is all you can pay for. (1 casting, 500 gold.)	-	-
+1794346192	cmd	Trentlin	34	4208	dresden.are	standing	63	0	-	worth		You have 1 platinum, 92 gold, 31 silver, 95 copper // and 78858 experience (1642 exp to level).	-	-
+1794346197	cmd	Trentlin	34	4207	dresden.are	standing	63	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794346201	cmd	Trentlin	34	4202	dresden.are	standing	63	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794346201	cmd	Trentlin	34	4203	dresden.are	standing	63	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794346201	cmd	Trentlin	34	4210	dresden.are	standing	63	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794346202	cmd	Trentlin	34	4210	dresden.are	standing	63	0	-	north		Alas, you cannot go that way.	-	-
+1794346202	cmd	Trentlin	34	4210	dresden.are	standing	63	0	-	north		Alas, you cannot go that way.	-	-
+1794346203	cmd	Trentlin	34	4210	dresden.are	standing	63	0	-	sleep		You go to sleep.	-	-
+1794346249	cmd	Trentlin	34	4210	dresden.are	sleeping	78	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          576/ 738 hp 1272/1474 mana  216/ 386 mv 78858 xp	-	-
+1794346249	cmd	Trentlin	34	4210	dresden.are	sleeping	78	0	-	wake		You wake and stand up.	-	-
+1794346249	cmd	Trentlin	34	4203	dresden.are	standing	78	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794346250	cmd	Trentlin	34	4202	dresden.are	standing	78	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794346250	cmd	Trentlin	34	4201	dresden.are	standing	78	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794346251	cmd	Trentlin	34	2427	dresden.are	standing	78	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794346252	cmd	Trentlin	34	2427	dresden.are	standing	78	0	-	levitate		You slowly rise up off the ground.	-	-
+1794346255	cmd	Trentlin	34	2427	dresden.are	standing	78	0	-	walkto	hyrule	You set off for Hyrule (Killum), about 18 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794346270	cmd	Trentlin	34	30208	hyrule.are	standing	80	0	-	east		Meadow East of the Cave //   Open grassland stretches east from the starting hills, dotted with small // boulders and clumps of green bushes. Round pebbles lie strewn across the	-	+
+1794346271	cmd	Trentlin	34	30209	hyrule.are	standing	80	0	-	east		Stone Field //   A field of jumbled grey and brown boulders sprawls along the southern edge // of the land, grass growing in tufts between them. One great stone sits	-	+
+1794346271	cmd	Trentlin	34	30210	hyrule.are	standing	80	0	-	east		Rocky Southern Ridge //   A rocky ridge runs along the southern edge of the land, brown stone // breaking through thin, wind-flattened grass. The ground is scuffed with odd	-	+
+1794346272	cmd	Trentlin	34	30211	hyrule.are	standing	80	0	-	east		Southern Sands //   Sandy ground stretches along the southern edge of the land, rippled by the // wind and pocked with burrow holes that open and close like breathing. Now	-	+
+1794346273	cmd	Trentlin	34	30212	hyrule.are	standing	80	0	-	east		Leever Dunes //   Low dunes of pale sand roll along the southern edge of the land, shifting // and hissing whenever the wind picks up. Little whorls in the sand mark	-	+
+1794346274	cmd	Trentlin	34	30213	hyrule.are	standing	80	0	-	east		Southern Shore Path //   A grassy path runs along the southern edge of the land, the low boom of the // sea drifting in from the east. Beside it rises a wall of brown rock, and	-	+
+1794346275	cmd	Trentlin	34	30213	hyrule.are	standing	80	0	-	north		Alas, you cannot go that way.	-	-
+1794346276	cmd	Trentlin	34	30212	hyrule.are	standing	80	0	-	west		Leever Dunes //   Low dunes of pale sand roll along the southern edge of the land, shifting // and hissing whenever the wind picks up. Little whorls in the sand mark	-	+
+1794346276	cmd	Trentlin	34	30211	hyrule.are	standing	80	0	-	west		Southern Sands //   Sandy ground stretches along the southern edge of the land, rippled by the // wind and pocked with burrow holes that open and close like breathing. Now	-	+
+1794346277	cmd	Trentlin	34	30227	hyrule.are	standing	80	0	-	north		Shaded Grove //   Tall elms cast deep, cool shade over a quiet grove carpeted in soft moss, // and the birdsong falls silent more often than it should. Near the path one	-	+
+1794346279	cmd	Trentlin	34	30211	hyrule.are	standing	80	0	-	south		Southern Sands //   Sandy ground stretches along the southern edge of the land, rippled by the // wind and pocked with burrow holes that open and close like breathing. Now	-	+
+1794346296	cmd	Trentlin	34	30212	hyrule.are	standing	80	0	-	east		Leever Dunes //   Low dunes of pale sand roll along the southern edge of the land, shifting // and hissing whenever the wind picks up. Little whorls in the sand mark	-	+
+1794346297	cmd	Trentlin	34	30213	hyrule.are	standing	80	0	-	east		Southern Shore Path //   A grassy path runs along the southern edge of the land, the low boom of the // sea drifting in from the east. Beside it rises a wall of brown rock, and	-	+
+1794346297	cmd	Trentlin	34	30214	hyrule.are	standing	80	0	-	east		Southeast Grassland //   Wide grassland sweeps toward the southeastern coast, the long grass bent // flat by a constant wind that carries salt from the sea. Small round stones	-	+
+1794346298	cmd	Trentlin	34	30215	hyrule.are	standing	80	0	-	east		Southeast Coast //   The land ends at a rocky shore in the far southeastern corner of Hyrule, // where grey waves crash and white spray drifts on the wind. Tide pools	-	+
+1794346299	cmd	Trentlin	34	30231	hyrule.are	standing	80	0	-	north		Coastal Shop Cave //   Grassy bluffs overlook the eastern sea, where long grey waves break white // on the rocks below. In a rocky bank set back from the cliff edge a cave	-	+
+1794346300	cmd	Trentlin	34	30686	hyrule.are	standing	80	1	-	down		The Salt-Air Arsenal //   Sea air has followed the cave mouth inward, leaving a crust of salt on the // stone and a tang mixed with lamp oil and black powder. Driftwood shelves	-	+
+1794346301	cmd	Trentlin	34	30686	hyrule.are	standing	80	0	-	list		[Lv Price] Item // [ 8        80g] a quiver of arrows. // [ 1        20g] four bombs.	-	+
+1794346302	cmd	Trentlin	34	30686	hyrule.are	standing	80	0	-	buy	bomb	You buy four bombs.	-	-
+1794346303	cmd	Trentlin	34	30686	hyrule.are	standing	80	0	-	buy	bomb	You buy four bombs.	-	-
+1794346303	cmd	Trentlin	34	30686	hyrule.are	standing	80	0	-	buy	bomb	You buy four bombs.	-	-
+1794346304	cmd	Trentlin	34	30686	hyrule.are	standing	80	0	-	buy	bomb	Your bomb bag will not take four more: it holds 12, and you carry 12.	-	-
+1794346307	cmd	Trentlin	34	30231	hyrule.are	standing	80	0	-	up		Coastal Shop Cave //   Grassy bluffs overlook the eastern sea, where long grey waves break white // on the rocks below. In a rocky bank set back from the cliff edge a cave	-	+
+1794346312	cmd	Trentlin	34	30253	hyrule.are	standing	80	0	-	play	recorder 4	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Isle of the Snake	-	+
+1794346317	cmd	Trentlin	34	30323	hyrule.are	standing	80	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794346320	cmd	Trentlin	34	30476	hyrule.are	standing	80	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+

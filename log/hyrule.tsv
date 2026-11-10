@@ -1,1 +1,17 @@
 1794346035	enter	Trentlin	34	1	Monk 	30200	over	from=out how=(walkto_update) hp=100
+1794346050	leave	Trentlin	34	1	Monk 	30323	over	to=L5 how=down secs=15 hp=100
+1794346050	enter	Trentlin	34	1	Monk 	30476	L5	from=over how=down hp=100
+1794346067	cleared	Trentlin	34	1	Monk 	30480	L5	foes=0
+1794346073	got	Trentlin	34	1	Monk 	30480	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794346127	cleared	Trentlin	34	1	Monk 	30484	L5	foes=0
+1794346163	cleared	Trentlin	34	1	Monk 	30486	L5	foes=0
+1794346172	got	Trentlin	34	1	Monk 	30486	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794346177	leave	Trentlin	34	1	Monk 	30476	L5	to=over how=up secs=127 hp=47
+1794346177	enter	Trentlin	34	1	Monk 	30323	over	from=L5 how=up hp=47
+1794346177	leave	Trentlin	34	1	Monk 	30323	over	to=out how=recall secs=0 hp=47
+1794346268	enter	Trentlin	34	1	Monk 	30200	over	from=out how=(walkto_update) hp=78
+1794346302	got	Trentlin	34	1	Monk 	30686	over	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=buy
+1794346303	got	Trentlin	34	1	Monk 	30686	over	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=buy
+1794346303	got	Trentlin	34	1	Monk 	30686	over	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=buy
+1794346320	leave	Trentlin	34	1	Monk 	30323	over	to=L5 how=down secs=52 hp=80
+1794346320	enter	Trentlin	34	1	Monk 	30476	L5	from=over how=down hp=80
