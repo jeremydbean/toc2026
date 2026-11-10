@@ -5677,15 +5677,22 @@ Cannot be used on players of equal or higher level.  Cannot target mobs.
 See also: RESTORE, EMPOWER
 ~
 
-66 SPELLUP SPELLPURGE HERMIE~
-Syntax: spellup [minutes]
+66 HERMIE SPELLUP SPELLPURGE~
+Syntax: hermie [minutes]
 Syntax: spellpurge
 
-Spellup places Hermie the Angel -- Herbie's girlfriend -- in your current
-room.  With no number she stays there, taking requests, until somebody
-removes her.  With a number of minutes (1 to 1440) she leaves on her own
-when they run out; SPELLUP <minutes> where she already stands sets how
-much longer she stays.
+HERMIE places Hermie the Angel -- Herbie's girlfriend -- in your current
+room (SPELLUP is the old name and still works).  With no number she stays
+there, taking requests, until somebody removes her.  With a number of
+minutes (1 to 1440) she leaves on her own when they run out; HERMIE
+<minutes> where she already stands sets how much longer she stays.
+
+After a restart that put mortals off -- a deploy, a reboot, a crash with
+players on -- she comes by herself, as an apology: for four hours from the
+boot she stands in the Oak Tree Square whenever a mortal is playing, and
+steps away while none is.  A restart with only staff, or nobody, on brings
+no Hermie.  SPELLPURGE ends the four hours early.  Every arrival and
+departure is in the log and on WIZINFO.
 
 Players talk to her with SAY.  Saying her name, or 'menu', 'list', 'hello'
 or 'help', makes her read out her list; after that they say either the

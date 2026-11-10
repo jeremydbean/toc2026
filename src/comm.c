@@ -563,6 +563,7 @@ int main( int argc, char **argv )
     control = init_socket( port );
     boot_db( );
     playlog_boot( );        /* the crash recorder, once the world is up */
+    spellup_boot_check( );  /* Hermie, if the restart put mortals off */
     conn_guard_boot( );     /* players' addresses, read before the loop */
     login_lock_boot( );     /* lockouts a reboot must not forget */
     /* Passwords: our SHA-512 crypt against its specification's vectors.

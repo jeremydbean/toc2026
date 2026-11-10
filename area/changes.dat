@@ -5,6 +5,17 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261110hermie 2026-11-10
+When a restart puts players off, Hermie the Angel comes to the Oak Tree
+Square to apologise: for four hours after the game is back she stands there
+whenever anybody is playing, and buffs whoever says her name, free.
+
+@ 20261110hermiecmd 2026-11-10 staff
+HERMIE is the command that places Hermie now; SPELLUP still works and no
+longer shows in WIZHELP. After a restart that put mortals off she keeps the
+Oak Tree Square by herself for four hours while any mortal plays; it is
+logged and on WIZINFO, and SPELLPURGE ends it.
+
 @ 20261110latekey 2026-11-10
 A Hyrule guardian's key now also goes to anybody in the room who fought it,
 grouped with the killer or not, however late they joined the fight.

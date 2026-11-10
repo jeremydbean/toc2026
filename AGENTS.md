@@ -3217,12 +3217,23 @@ tops up, at login, a character with two or more remorts holding fewer
 than their due. The long awakening message is for new powers only
 (`added` in `grant_psionics`).
 
-**Hermie appears only when staff place her** (owner, 2026-10-27). From
-2026-10-04 she stood at the altar for six hours after every boot
-(`spellup_boot_place`); that is gone, with its `TOC_NO_BOOT_HERMIE`
-switch. A test or tool that needs her has a staff fixture type SPELLUP
-(`at 4208 spellup` puts her at the altar), as
-`tests/test_journal_frictions_oct22.py` and `tools/class_bench.py` do.
+**Hermie appears when staff place her, and after a restart that put
+mortals off** (owner, 2026-10-27; 2026-11-10: "a play reward for players
+who get kicked off due to a restart"). HERMIE is the staff command
+(SPELLUP still works and is hidden from WIZHELP). `spellup_boot_update`
+(every mobile pulse) writes `log/online.txt` -- the time and how many
+mortals are playing -- when the count changes and once a minute, never
+once the game is going down; `spellup_boot_check` reads it at boot, and a
+count above zero written within half an hour opens a four-hour window
+(`TOC_HERMIE_BOOT_SECONDS` shortens it for tests) in which she stands in
+the Oak Tree Square while any mortal plays and steps away while none
+does. A restart with only staff or nobody on brings none; a crash with
+players on counts. SPELLPURGE ends the window; a Hermie staff placed
+there is never removed by it. Logged and on WIZINFO
+(`tests/test_hermie_restart.py`). A test or tool that needs her has a
+staff fixture type HERMIE (`at 4208 hermie` puts her at the altar), as
+`tests/test_journal_frictions_oct22.py` and `tools/class_bench.py` do
+with SPELLUP. Test worlds start with no `log/online.txt`, so no Hermie.
 
 **A staff GRANTPSI is a promise; a remort's owing is a chance.** The
 dice decide *when* a granted character awakens, but if they miss at 18,

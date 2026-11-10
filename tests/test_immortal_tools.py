@@ -72,8 +72,11 @@ class WizhelpTests(unittest.TestCase):
 
             # The ones that prompted this: all present before, but
             # buried in the hoisted block at the top of the table.
-            for command in ("smash", "iportal", "spellup", "spellpurge"):
+            for command in ("smash", "iportal", "hermie", "spellpurge"):
                 self.assertIn(command, listed)
+            # HERMIE is the name (owner, 2026-11-10); SPELLUP still works
+            # and is not listed twice.
+            self.assertNotIn("spellup", listed)
 
             # ...and one command per name, with no handler listed twice.
             self.assertEqual(len(listed), len(set(listed)))

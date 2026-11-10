@@ -3892,6 +3892,8 @@ bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
 bool    is_hyrule_bystander ( CHAR_DATA *victim );
 bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
 void    hyrule_note_striker ( CHAR_DATA *ch, CHAR_DATA *guardian ); /* hyrule.c */
+void    spellup_boot_check  ( void );       /* act_wiz.c: Hermie after a restart */
+void    spellup_boot_update ( void );
 bool    hyrule_holds_bound ( const OBJ_DATA *obj );       /* hyrule.c */
 int     hyrule_guardian_key ( int level );
 void    hyrule_guardian_slain ( CHAR_DATA *killer, CHAR_DATA *guardian );

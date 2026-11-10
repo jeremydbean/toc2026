@@ -13,13 +13,19 @@ from __future__ import annotations
 import sys
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (SPARRING_GUARD, LiveMud, create_character, login, patch_player_file,
+                      skip_reason)
 
 SKIP = skip_reason()
 PW = "Zprogress1"
 HALLS = 4202            # not safe
-SMURF = 104             # a handy smurf, level 3
-WORKER = 13428          # a construction worker, 3,400 hit points: one to flee from
+# The foes are the fixture world's sparring guard, which never moves: a
+# handy smurf (104) and a construction worker (13428) were the foes until
+# 2026-11-10, and either walked off between LOAD and KILL often enough to
+# fail the module ("They aren't here"). One set to level 3 and one hit
+# point stands for the smurf; one left as it is, for the worker.
+SMURF = SPARRING_GUARD
+WORKER = SPARRING_GUARD
 
 
 def run(client, command: str, settle: float = 1.2) -> str:
@@ -33,7 +39,7 @@ def run(client, command: str, settle: float = 1.2) -> str:
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ProgressLogTests(unittest.TestCase):
     def test_a_kill_and_a_flee_are_recorded_without_a_name(self) -> None:
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             # Level 5 against a level 3 smurf earns experience; a level 20
             # earns none (xp_compute's range is 3 - 20 + 3), which is the
             # second kill: a kill that pays nothing is logged too.
@@ -48,31 +54,32 @@ class ProgressLogTests(unittest.TestCase):
                 login(hunter, "Zhunter", PW)
                 login(setter, "Zsetter", PW)
                 setter.must("set char zhunter hitroll 40", "")
-                run(setter, f"load mob {SMURF}")
-                # One hit point: the first blow that lands kills, before a
-                # wimpy smurf can run.
+                setter.must(f"load mob {SMURF}", "You create")
+                setter.must("set char guard level 3", "")
+                # One hit point: the first blow that lands kills.
                 # SET sets the maximum; RESTORE brings it down to it.
-                setter.must("set char smurf hp 1", "")
-                setter.must("restore smurf", "")
+                setter.must("set char guard hp 1", "")
+                setter.must("restore guard", "")
                 # Coin it carries when it falls: the last column (2026-11-05).
-                setter.must("set char smurf gold 3", "Gold amount")
+                setter.must("set char guard gold 3", "Gold amount")
                 hunter.buffer = ""
-                run(hunter, "kill smurf", 1.0)
+                run(hunter, "kill guard", 1.0)
                 hunter.expect("is DEAD", timeout=60)
                 hunter.drain(1.0)
 
                 run(setter, "advance zhunter 20", 1.5)
-                run(setter, f"load mob {SMURF}")
+                setter.must(f"load mob {SMURF}", "You create")
+                setter.must("set char guard level 3", "")
                 # SET sets the maximum; RESTORE brings it down to it.
-                setter.must("set char smurf hp 1", "")
-                setter.must("restore smurf", "")
+                setter.must("set char guard hp 1", "")
+                setter.must("restore guard", "")
                 hunter.buffer = ""
-                run(hunter, "kill smurf", 1.0)
+                run(hunter, "kill guard", 1.0)
                 hunter.expect("is DEAD", timeout=60)
                 hunter.drain(1.0)
 
-                run(setter, f"load mob {WORKER}")
-                run(hunter, "kill worker", 1.0)
+                setter.must(f"load mob {WORKER}", "You create")
+                run(hunter, "kill guard", 1.0)
                 # Watch everything since the first FLEE: a success that
                 # arrives late lands in the next command's leading drain,
                 # and a slice per command missed it and fled on and on.
@@ -154,7 +161,7 @@ class ProgressLogTests(unittest.TestCase):
         heal with no heal cast (review, 2026-10-27). Losses outside damage()
         are counted where they happen now, and healing is only ever seen to
         rise."""
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             for name, level in (("Zburner", 20), ("Zsetter", 70)):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PW)
@@ -166,27 +173,27 @@ class ProgressLogTests(unittest.TestCase):
                 login(hunter, "Zburner", PW)
                 login(setter, "Zsetter", PW)
                 setter.must("set char zburner hitroll 40", "")
-                run(setter, f"load mob {SMURF}")
+                setter.must(f"load mob {SMURF}", "You create")
                 # Too many hit points to reach its wimpy point: it stands
                 # and burns the hunter until staff end it at one hit point.
-                setter.must("set char smurf hp 30000", "")
-                setter.must("restore smurf", "")
-                setter.must("empower smurf perm", "mpower")      # fire shield among them
+                setter.must("set char guard hp 30000", "")
+                setter.must("restore guard", "")
+                setter.must("empower guard perm", "mpower")      # fire shield among them
                 # EMPOWER brings divine protection: the first death is
                 # spared and credits nobody, and the next fight starts a
                 # new ledger (set_fighting) -- so each fight is fought until
                 # the aura has burned the hunter before it is ended.
                 mark = len(hunter.transcript)
                 for _ in range(2):
-                    setter.must("set char smurf hp 30000", "")
-                    setter.must("restore smurf", "")
+                    setter.must("set char guard hp 30000", "")
+                    setter.must("restore guard", "")
                     burn = len(hunter.transcript)
                     hunter.buffer = ""              # expect() must see this fight's lines
-                    hunter.send("kill smurf")
+                    hunter.send("kill guard")
                     hunter.expect("Flaming Aura", timeout=60)
                     self.assertIn("Flaming Aura", hunter.transcript[burn:])
-                    setter.must("set char smurf hp 1", "")
-                    setter.must("restore smurf", "")
+                    setter.must("set char guard hp 1", "")
+                    setter.must("restore guard", "")
                     hunter.expect("is DEAD", timeout=120)
                     hunter.drain(2.0)
                     if "experience points" in hunter.transcript[mark:]:

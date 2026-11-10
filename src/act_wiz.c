@@ -13685,6 +13685,172 @@ void do_spellpurge( CHAR_DATA *ch, char *argument )
 
 
 /*
+ * Hermie after a restart (owner, 2026-11-10: "a play reward for players
+ * who get kicked off due to a restart"). Every pulse the game knows how
+ * many mortals are playing, and writes it to HERMIE_ONLINE_FILE when it
+ * changes and at least once a minute -- never while going down, since the
+ * shutdown closes every connection without another pulse. At boot that
+ * file says whether the restart put mortals off: if it did, and it was
+ * written within HERMIE_ONLINE_FRESH of the boot, Hermie keeps the Oak
+ * Tree Square for HERMIE_BOOT_SECONDS (four hours), standing there while
+ * any mortal is playing and stepping away while none is. A restart with
+ * only staff, or nobody, on gives no Hermie. A crash with players on
+ * counts as a restart: the file is the last minute's. Staff SPELLPURGE
+ * ends the window; a Hermie staff placed there is never taken away by
+ * this. Every step is logged and told to staff.
+ */
+#define HERMIE_ONLINE_FILE   "../log/online.txt"
+#define HERMIE_BOOT_SECONDS  ( 4 * 60 * 60 )
+#define HERMIE_ONLINE_FRESH  ( 30 * 60 )
+#define ROOM_VNUM_SQUARE     2401            /* the Oak Tree Square */
+
+static time_t hermie_boot_until;        /* the window's end; 0 for none */
+static bool   hermie_boot_ours;         /* she stands there by this */
+static int    hermie_online_written = -1;
+static time_t hermie_online_at;
+
+static int mortals_playing( void )
+{
+    DESCRIPTOR_DATA *d;
+    int n = 0;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+        if ( d->connected == CON_PLAYING && d->character != NULL
+        &&   !IS_NPC(d->character) && !IS_TRUSTED(d->character, LEVEL_IMMORTAL) )
+            n++;
+    return n;
+}
+
+static void hermie_say( const char *text )
+{
+    log_string( text );
+    wizinfo( (char *) text, LEVEL_IMMORTAL );
+}
+
+static int hermie_window_seconds( void )
+{
+    const char *env = getenv( "TOC_HERMIE_BOOT_SECONDS" );   /* tests only */
+    int s = env != NULL ? atoi( env ) : 0;
+
+    return s > 0 ? s : HERMIE_BOOT_SECONDS;
+}
+
+void spellup_boot_check( void )
+{
+    char buf[MAX_STRING_LENGTH];
+    FILE *fp;
+    long when = 0;
+    int count = 0;
+
+    hermie_boot_until = 0;
+    if ( ( fp = fopen( HERMIE_ONLINE_FILE, "r" ) ) == NULL )
+    {
+        hermie_say( "Hermie: no record of who was playing before this boot; she stays away." );
+        return;
+    }
+    if ( fscanf( fp, "%ld %d", &when, &count ) != 2 )
+        count = 0;
+    fclose( fp );
+    if ( count <= 0 || when <= 0 || (long) current_time - when > HERMIE_ONLINE_FRESH )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Hermie: the restart put no mortal off (%d playing, recorded %ld seconds "
+                  "before the boot); she stays away.",
+                  UMAX( 0, count ), when > 0 ? (long) current_time - when : -1L );
+        hermie_say( buf );
+        return;
+    }
+    hermie_boot_until = current_time + hermie_window_seconds();
+    snprintf( buf, sizeof(buf),
+              "Hermie: the restart put %d mortal%s off; she keeps the Oak Tree Square (%d) "
+              "for %d minutes, while any mortal plays.",
+              count, count == 1 ? "" : "s", ROOM_VNUM_SQUARE, hermie_window_seconds() / 60 );
+    hermie_say( buf );
+}
+
+static void hermie_note_online( int mortals )
+{
+    FILE *fp;
+
+    if ( merc_down )
+        return;
+    if ( mortals == hermie_online_written && current_time - hermie_online_at < 60 )
+        return;
+    if ( ( fp = fopen( HERMIE_ONLINE_FILE ".tmp", "w" ) ) == NULL )
+        return;
+    fprintf( fp, "%ld %d\n", (long) current_time, mortals );
+    if ( temp_file_commit( fp, HERMIE_ONLINE_FILE ".tmp", HERMIE_ONLINE_FILE ) )
+    {
+        hermie_online_written = mortals;
+        hermie_online_at = current_time;
+    }
+}
+
+/* Every pulse (update_handler). */
+void spellup_boot_update( void )
+{
+    char buf[MAX_STRING_LENGTH];
+    ROOM_INDEX_DATA *square;
+    MOB_INDEX_DATA *idx;
+    CHAR_DATA *mob;
+    int mortals = mortals_playing();
+
+    hermie_note_online( mortals );
+    if ( hermie_boot_until == 0 || ( square = get_room_index( ROOM_VNUM_SQUARE ) ) == NULL )
+        return;
+    mob = spellup_mob_in_room( square );
+
+    /* Ours was taken away -- a SPELLPURGE: the window is over. */
+    if ( hermie_boot_ours && mob == NULL )
+    {
+        hermie_boot_ours = false;
+        hermie_boot_until = 0;
+        hermie_say( "Hermie: removed from the Oak Tree Square by staff; the restart's window is over." );
+        return;
+    }
+
+    if ( current_time >= hermie_boot_until )
+    {
+        hermie_boot_until = 0;
+        if ( hermie_boot_ours && mob != NULL )
+        {
+            act( "$n closes her notebook, blows a kiss to the square, and is gone.",
+                 mob, NULL, NULL, TO_ROOM );
+            extract_char( mob, TRUE );
+        }
+        hermie_boot_ours = false;
+        hermie_say( "Hermie: the restart's four hours are over; she leaves the Oak Tree Square." );
+        return;
+    }
+
+    if ( mortals > 0 && mob == NULL && !hermie_boot_ours
+    &&   ( idx = get_mob_index( MOB_VNUM_SPELLUP ) ) != NULL )
+    {
+        mob = create_mobile( idx );
+        char_to_room( mob, square );
+        hermie_boot_ours = true;
+        act( "The air warms, and $n steps out of it with a notebook under $s arm.",
+             mob, NULL, NULL, TO_ROOM );
+        act( "$n says 'Sorry about the restart, darlings. Say my name and I will read "
+             "you the list -- free, for a while.'", mob, NULL, NULL, TO_ROOM );
+        snprintf( buf, sizeof(buf),
+                  "Hermie: at the Oak Tree Square (%d) for the restart, %d mortal%s playing; "
+                  "%ld minutes of the window left.", ROOM_VNUM_SQUARE, mortals,
+                  mortals == 1 ? "" : "s", (long) ( hermie_boot_until - current_time ) / 60 );
+        hermie_say( buf );
+    }
+    else if ( mortals == 0 && hermie_boot_ours && mob != NULL )
+    {
+        act( "$n tucks her notebook away and steps out of sight.", mob, NULL, NULL, TO_ROOM );
+        extract_char( mob, TRUE );
+        hermie_boot_ours = false;
+        hermie_say( "Hermie: no mortal playing; she steps away from the Oak Tree Square "
+                    "until one is." );
+    }
+}
+
+
+/*
  * summonevent -- immortal command to manually spawn or despawn the seasonal
  *               event boss.  Works regardless of active season (for testing).
  *
