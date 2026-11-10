@@ -18377,3 +18377,122 @@
 1794273345	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	look	in co	Corpse of a gibdo contains: //      Nothing.	-	-
 1794273345	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	get	key	You get a small key.	-	-
 1794273345	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794273350	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	look		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794273355	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	bomb	west	You set a bomb beside a cracked west wall and dive aside. The blast opens a passage!	-	-
+1794273355	cmd	Trentlin	31	30479	hyrule.are	standing	50	0	-	west		Level 5: Hall of Linen Biers //   Stone biers line the walls of this chamber, every one empty, and scraps of // yellowed linen lie trampled across the floor in slow, shuffling paths. The	-	+
+1794273357	cmd	Trentlin	31	30479	hyrule.are	standing	50	0	-	consider	g	A gibdo is about your level. // A gibdo has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring a gibdo down; it would need about 6 rounds for you.	-	+
+1794273360	cmd	Trentlin	31	30479	hyrule.are	standing	53	0	-	kill	g	A gibdo dodges your attack. // Your punch === OBLITERATES === a gibdo! // Your punch ^^^ DESTROYS ^^^ a gibdo!	-	-
+1794273363	cmd	Trentlin	31	30479	hyrule.are	fighting	36	0	fight	flee		A gibdo is overcome with a feeling of despair and flees the battle. // A gibdo dissapears to the east. // A gibdo has fled!	-	-
+1794273363	cmd	Trentlin	31	30479	hyrule.are	standing	36	0	-	flee		You aren't fighting anyone.	-	-
+1794273366	cmd	Trentlin	31	30479	hyrule.are	standing	36	0	-	iron		You lost your concentration.	-	-
+1794273367	cmd	Trentlin	31	30479	hyrule.are	standing	36	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794273374	cmd	Trentlin	31	30480	hyrule.are	standing	36	0	-	east		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794273374	cmd	Trentlin	31	30480	hyrule.are	standing	36	0	-	kill	g	A gibdo parries your attack. // Your punch ^^^ DESTROYS ^^^ a gibdo!	-	-
+1794273377	cmd	Trentlin	31	30480	hyrule.are	fighting	36	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a gibdo! // Your fists of fury hits a gibdo.	-	+
+1794273386	cmd	Trentlin	31	30480	hyrule.are	standing	36	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794273386	cmd	Trentlin	31	30479	hyrule.are	standing	36	0	-	west		Level 5: Hall of Linen Biers //   Stone biers line the walls of this chamber, every one empty, and scraps of // yellowed linen lie trampled across the floor in slow, shuffling paths. The	-	+
+1794273388	cmd	Trentlin	31	30479	hyrule.are	standing	36	0	-	open	north	Ok.	-	-
+1794273388	cmd	Trentlin	31	30482	hyrule.are	standing	36	0	-	north		Level 5: Slime-Glazed Vault //   The floor of this chamber gleams with a thin glaze of green slime that // pools around the blocks set in its corners, and some of the pools are thick	-	+
+1794273392	cmd	Trentlin	31	30482	hyrule.are	standing	36	0	-	consider	z	A zol is a little below your level. // A zol has about as many hit points as you. // Blow for blow, you would need about 3 rounds to bring a zol down; it would need about 6 rounds for you.	-	+
+1794273398	cmd	Trentlin	31	30482	hyrule.are	standing	36	0	-	open	east	The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794273400	cmd	Trentlin	31	30482	hyrule.are	standing	36	0	-	kill	z	A zol parries your attack. // Your punch misses a zol.	-	-
+1794273408	cmd	Trentlin	31	30482	hyrule.are	fighting	34	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a zol! // Your fists of fury DISMEMBERS a zol!	-	+
+1794273417	cmd	Trentlin	31	30482	hyrule.are	fighting	34	0	fight	kick		Your kick misses a zol.	-	-
+1794273419	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [31 Dwarf   Monk  ] Trentlin the Master of Summer // Players found: 2	-	-
+1794273420	cmd	Trentlin	31	30482	hyrule.are	fighting	34	0	fight	kick		Your kick scratches a zol.	-	-
+1794273420	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794273421	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794273421	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=983/983 align=897 exp=252749 coin=94438738 bank=24577365005 qp=1835 prac=36 train=76 stash=95/350 remorts=3
+1794273421	cmd	Alaric	57	2497	dresden.are	standing	100	1	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    289 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794273422	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) British's amulet //      (Glowing) an aura of power	-	+
+1794273425	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794273426	cmd	Trentlin	31	30482	hyrule.are	standing	37	0	-	sacrifice	co	The Gods give you 58 copper coins for your sacrifice.	-	-
+1794273426	cmd	Trentlin	31	30482	hyrule.are	standing	37	0	-	get	key	You get a small key.	-	-
+1794273426	cmd	Trentlin	31	30483	hyrule.are	standing	37	0	-	east		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
+1794273429	cmd	Trentlin	31	30483	hyrule.are	standing	37	0	-	consider	dod	A dodongo is a little above your level. // A dodongo has about twice your hit points. // Blow for blow, you would need about 7 rounds to bring a dodongo down; it would need about 4 rounds for you.	-	+
+1794273435	cmd	Trentlin	31	30483	hyrule.are	standing	37	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794273438	cmd	Trentlin	31	30483	hyrule.are	standing	37	0	-	look		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794273443	cmd	Trentlin	31	30483	hyrule.are	standing	37	0	-	play	recorder dod	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794273453	cmd	Trentlin	31	30484	hyrule.are	standing	37	0	-	east		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794273456	cmd	Trentlin	31	30484	hyrule.are	standing	37	0	-	scan		a gibdo                            -to the North. // a dodongo                          -to the West.	-	-
+1794273462	cmd	Trentlin	31	30484	hyrule.are	standing	37	0	-	exits		Obvious exits: // North - Level 5: Shuffling Passage // West  - Level 5: Hall of Heavy Tracks	-	-
+1794273465	cmd	Trentlin	31	30484	hyrule.are	standing	37	0	-	push	lizard	I see no lizard here.	-	-
+1794273467	cmd	Trentlin	31	30484	hyrule.are	standing	37	0	-	push	stone	I see no stone here.	-	-
+1794273470	cmd	Trentlin	31	30486	hyrule.are	standing	37	0	-	north		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794273472	cmd	Trentlin	31	30486	hyrule.are	standing	37	0	-	scan		a red darknut                      -to the North. // a zol                              -to the South.	-	-
+1794273473	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	west		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794273476	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	look	in chest	The Lizard's equipment chest contains: //      a raftmaster's cutlass //      a red Darknut shield	-	+
+1794273480	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	get	all chest	You get a raftmaster's cutlass from the Lizard's equipment chest. // You get a red Darknut shield from the Lizard's equipment chest. // You get a pair of red Darknut gauntlets from the Lizard's equipment chest.	-	+
+1794273484	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	drop	cutlass	You drop a raftmaster's cutlass.	-	-
+1794273485	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	drop	swo	You drop a Dodongo-fang sword.	-	-
+1794273487	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	inventory		You are carrying: //      the Heart Guard of the Moon //      a pair of Zol-slick boots	-	+
+1794273490	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	compare	guard	A) the Heart Guard of the Moon (level 14) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794273497	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	remove	cloak	You stop using an Eagle-feather cloak.	-	-
+1794273498	cmd	Trentlin	31	30485	hyrule.are	standing	37	0	-	remove	cloak	You do not have that item.	-	-
+1794273501	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	eag	You can't wield a weapon right now.	-	-
+1794273501	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794273505	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	cloa	You wear an Eagle-feather cloak about your body.	-	-
+1794273507	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	remove	colla	You stop using a spiked collar.	-	-
+1794273510	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	colla	You wear a spiked collar around your neck.	-	-
+1794273512	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	compare	guard	A) the Heart Guard of the Moon (level 14) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794273521	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	remove	guard	You stop using the Heart Guard of the Manji.	-	-
+1794273524	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	remove	colla	You stop using a spiked collar.	-	-
+1794273527	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	colla	You wear a spiked collar around your neck.	-	-
+1794273528	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	gua	You wear the Heart Guard of the Moon around your neck.	-	-
+1794273532	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	manji	You stop using a spiked collar. // You wear the Heart Guard of the Manji around your neck.	-	-
+1794273536	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	colla	You stop using the Heart Guard of the Manji. // You wear a spiked collar around your neck.	-	-
+1794273537	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	remove	gaurd	You do not have that item.	-	-
+1794273539	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	remove	guard	You stop using the Heart Guard of the Moon.	-	-
+1794273541	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	wear	manji	You wear the Heart Guard of the Manji around your neck.	-	-
+1794273544	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	compare	guar	A) the Heart Guard of the Moon (level 14) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794273548	cmd	Trentlin	31	30485	hyrule.are	standing	39	0	-	drop	guard	You drop the Heart Guard of the Moon.	-	-
+1794273550	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	sacrifice	guard	The Gods give you 28 copper coins for your sacrifice.	-	-
+1794273552	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	inventory		You are carrying: //      a pair of Zol-slick boots //      a Bubble ward pendant	-	+
+1794273554	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	compare	boot	A) a pair of Zol-slick boots (level 29) // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794273556	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	drop	boot	You drop a pair of Zol-slick boots.	-	-
+1794273559	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	sacrifice	boot	The Gods give you 58 copper coins for your sacrifice.	-	-
+1794273559	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	inventory		You are carrying: //      a Bubble ward pendant //      a pair of red Darknut gauntlets	-	+
+1794273561	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	compare	pen	A) a Bubble ward pendant (level 30) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794273571	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	drop	bub	You drop a Bubble ward pendant.	-	-
+1794273572	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	sacrifice	bub	The Gods give you 60 copper coins for your sacrifice.	-	-
+1794273573	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	inventory		You are carrying: //      a pair of red Darknut gauntlets //      a red Darknut shield	-	+
+1794273575	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	compare	gaunt	A) a pair of red Darknut gauntlets (level 31) // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794273577	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	drop	gaunt	You drop a pair of red Darknut gauntlets.	-	-
+1794273579	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	sacrifice	gaunt	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794273579	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	inventory		You are carrying: //      a red Darknut shield // ( 4) a small key	-	+
+1794273581	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	compare	sh	A) a red Darknut shield (level 32) -- can't use: needs level 32 // B) a small round shield (level 25), worn // Slot: off hand.  Your damage comes from weapons.	-	+
+1794273588	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	drop	sh	You drop a red Darknut shield.	-	-
+1794273589	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	sacrifice	sh	The Gods give you 64 copper coins for your sacrifice.	-	-
+1794273590	cmd	Trentlin	31	30485	hyrule.are	standing	42	0	-	look		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794273592	cmd	Trentlin	31	30485	hyrule.are	standing	44	0	-	scan		a gibdo                            -to the East.	-	-
+1794273593	cmd	Trentlin	31	30485	hyrule.are	standing	44	0	-	sacrifice	swo	The Gods give you 56 copper coins for your sacrifice.	-	-
+1794273594	cmd	Trentlin	31	30485	hyrule.are	standing	44	0	-	sacrifice	cut	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794273603	cmd	Trentlin	31	30486	hyrule.are	standing	44	0	-	east		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794273604	cmd	Trentlin	31	30488	hyrule.are	standing	44	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794273606	cmd	Trentlin	31	30488	hyrule.are	standing	44	0	-	scan		a gibdo                            -to the North. // a keese                            -to the North. // a gibdo                            -to the South.	-	-
+1794273607	cmd	Trentlin	31	30492	hyrule.are	standing	44	0	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794273616	cmd	Trentlin	31	30492	hyrule.are	standing	44	0	-	get	key	You get a small key.	-	-
+1794273618	cmd	Trentlin	31	30492	hyrule.are	standing	44	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794273619	cmd	Trentlin	31	30492	hyrule.are	standing	44	0	-	open	west	Ok.	-	-
+1794273619	cmd	Trentlin	31	30491	hyrule.are	standing	44	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794273621	cmd	Trentlin	31	30491	hyrule.are	standing	44	0	-	scan		a gibdo                            -to the East. // a keese                            -to the East. // a pols voice                       -to the West.	-	-
+1794273624	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794273627	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	open	west	It's locked.	-	-
+1794273629	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794273630	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	open	west	Ok.	-	-
+1794273631	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	west		A one-square moat cuts across Digdogger's doorway, too wide to jump. // The stepladder from Level 4's cellar would bridge it.	-	-
+1794273637	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794273637	cmd	Trentlin	31	30494	hyrule.are	standing	44	0	-	north		Level 5: Nook Behind the False Wall //   This narrow room was walled off long ago, and the air still tastes of old // dust and lamp smoke. Twin fires burn in shallow stone bowls, and between	-	+
+1794273640	cmd	Trentlin	31	30494	hyrule.are	standing	44	0	-	list		You can't do that here.	-	-
+1794273641	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	south		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794273642	cmd	Trentlin	31	30490	hyrule.are	standing	44	0	-	recall		The Gods have forsaken you.	-	-
+1794273643	cmd	Trentlin	31	30491	hyrule.are	standing	44	0	-	east		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794273643	cmd	Trentlin	31	30491	hyrule.are	standing	44	0	-	south		Alas, you cannot go that way.	-	-
+1794273643	cmd	Trentlin	31	30491	hyrule.are	standing	44	0	-	south		Alas, you cannot go that way.	-	-
+1794273644	cmd	Trentlin	31	30492	hyrule.are	standing	44	0	-	east		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794273644	cmd	Trentlin	31	30488	hyrule.are	standing	44	0	-	south		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794273644	cmd	Trentlin	31	30486	hyrule.are	standing	44	0	-	south		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794273644	cmd	Trentlin	31	30484	hyrule.are	standing	44	0	-	south		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794273645	cmd	Trentlin	31	30484	hyrule.are	standing	44	0	-	south		Alas, you cannot go that way.	-	-
+1794273645	cmd	Trentlin	31	30484	hyrule.are	standing	44	0	-	south		Alas, you cannot go that way.	-	-
+1794273645	cmd	Trentlin	31	30483	hyrule.are	standing	44	0	-	west		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
