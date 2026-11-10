@@ -1,1 +1,1 @@
-2026-11-10T15:28:52Z waiting for CI on 9af710db (in_progress) before deploying af93653a
+2026-11-10T15:38:52Z not deploying 29e558ff: CI on 9af710db says failure; push a fix
