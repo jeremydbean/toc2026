@@ -5285,6 +5285,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
     int attempt, chance;
     int fled_on;
     static bool despair_answering = false;
+    bool despair_held = false;
 
     if ( ( victim = ch->fighting ) == NULL )
     {
@@ -5325,6 +5326,19 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	if( !despair_answering
 	&&  (chance = get_skill(ch,gsn_despair) ) > 1 && number_percent () < chance)
 	{
+	  /* A Hyrule guardian is not driven from its chamber (play journal,
+	     2026-11-10: Digdogger fled its den into the next room, out from
+	     behind the gate that asks for the recorder). The flight is the
+	     fleer's own instead, said once however many tries it takes. */
+	  if ( is_hyrule_guardian( victim ) )
+	  {
+	    if ( !despair_held )
+	      act("$N is too set on holding $S lair to be driven from it.",
+		ch, NULL, victim, TO_CHAR);
+	    despair_held = true;
+	  }
+	  else
+	  {
 	  act("$N is overcome with a feeling of despair and flees the battle.",ch,
 	    NULL,victim,TO_NOTVICT);
 	  act("You are overcome with a feeling of despair and flee the battle.",ch,
@@ -5336,6 +5350,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	  do_flee(victim, "");
 	  despair_answering = false;
 	  return;
+	  }
 	}
 
 	{

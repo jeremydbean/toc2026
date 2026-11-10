@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261110a 2026-11-10
+DESPAIR no longer drives a Hyrule guardian out of its chamber. Against a
+guardian it does not take, you are told so, and FLEE carries you off as
+it would anyone.
+
 @ 20261109a 2026-11-09
 A password that starts with ! now works: the game used to read the ! as
 "repeat my last command" at the login prompt. The fifteen-minute limit on

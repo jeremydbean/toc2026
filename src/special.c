@@ -565,6 +565,18 @@ static CHAR_DATA *ganon_pick_target( CHAR_DATA *mob )
     return NULL;
 }
 
+/* One of Hyrule's nine guardians, by the special that fights for it
+   (BOSS_MOBS in the generator gives Levels 1-8 spec_hyrule_guardian and
+   Ganon spec_ganon). A guardian holds its chamber: the chamber's entry
+   asks for the tool its fight needs, and its shutters stay shut while it
+   lives, so nothing but its death may take it out of the room. */
+bool is_hyrule_guardian( const CHAR_DATA *mob )
+{
+    return mob != NULL && IS_NPC(mob)
+        && ( mob->spec_fun == spec_hyrule_guardian
+          || mob->spec_fun == spec_ganon );
+}
+
 bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
     CHAR_DATA *victim;

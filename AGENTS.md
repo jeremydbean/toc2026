@@ -997,6 +997,13 @@ wearer -- is what sight compares against a wizinvis or cloak level. Add a
 new holylight check and it needs both; `tests/test_hyrule_progression.py`
 fails on a `PLR_HOLYLIGHT` sight test that does not also ask the Triforce.
 
+**A guardian is never driven from its chamber** (play journal,
+2026-11-10: DESPAIR made Digdogger flee its den, past the gate that asks
+for the recorder). `is_hyrule_guardian()` in `special.c` -- the
+`spec_hyrule_guardian` or `spec_ganon` special -- is what do_flee asks
+before despair answers a flee with the opponent's flight; a new way of
+moving a mobile out of a fight asks it too (`tests/test_guardian_despair.py`).
+
 **The last two guardians are group fights, by balance, not by rule**
 (owner, 2026-10-28: the ashen Gleeok needs two average high-level
 players, Ganon three, and "one person CAN try" -- a party rule that

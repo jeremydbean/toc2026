@@ -3827,6 +3827,7 @@ bool    hyrule_gate_refuses ( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
 const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate ( int level );
 bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
 bool    is_hyrule_bystander ( CHAR_DATA *victim );
+bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
 
 /* hyrule.c */
 bool    hyrule_is_dungeon_tool ( const OBJ_DATA *obj );

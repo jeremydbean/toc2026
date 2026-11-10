@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Despair holds no Hyrule guardian** (play journal, 2026-11-10). A
+  player's FLEE with despair made the opponent flee instead, and a
+  guardian walked out of its chamber -- Digdogger out of its den, past the
+  gate that asks for the recorder, its shutters reading the room as clear.
+  Against a guardian (`is_hyrule_guardian` in `special.c`: the
+  `spec_hyrule_guardian` or `spec_ganon` special) despair does not take,
+  the player is told once, and their own flight runs.
+  `tests/test_guardian_despair.py`.
 - **Review of 8965ace9** (2026-11-09). An object record with a second
   Vnum crashed the game when its refused load was cleaned up (the
   cleanup read the prototype the second Vnum had set, NULL); the cleanup
