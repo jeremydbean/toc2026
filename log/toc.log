@@ -283147,3 +283147,161 @@ Tue Nov 10 01:30:40 2026 :: Log Trentlin [30483]: l
 Tue Nov 10 01:30:40 2026 :: Log Trentlin [30483]: l
 Tue Nov 10 01:30:41 2026 :: Log Trentlin [30483]: w
 Tue Nov 10 01:30:41 2026 :: Log Trentlin [30482]: arrived (Level 5: Slime-Glazed Vault) from 30483
+Tue Nov 10 01:30:58 2026 :: Log Trentlin [30482]: s
+Tue Nov 10 01:31:03 2026 :: Log Trentlin [30482]: con z
+Tue Nov 10 01:31:06 2026 :: Log Trentlin [30482]: k z
+Tue Nov 10 01:31:23 2026 :: Log Trentlin [30482]: killed a zol
+Tue Nov 10 01:31:23 2026 :: Log Trentlin [30482]: coin +32 silver
+Tue Nov 10 01:31:23 2026 :: Log Trentlin [30482]: coin +45 copper
+Tue Nov 10 01:31:23 2026 :: Log Trentlin [30482]: coin +3 gold
+Tue Nov 10 01:31:28 2026 :: Log Trentlin [30482]: get key
+Tue Nov 10 01:31:29 2026 :: Log Trentlin [30482]: s
+Tue Nov 10 01:31:29 2026 :: Log Trentlin [30479]: arrived (Level 5: Hall of Linen Biers) from 30482
+Tue Nov 10 01:31:47 2026 :: Treasure goblin: vanished from room 7006 (The muddy sewer, sewer.are) (too long in one area).
+Tue Nov 10 01:31:54 2026 :: Log Trentlin [30479]: l
+Tue Nov 10 01:31:55 2026 :: Log Trentlin [30479]: bomb west
+Tue Nov 10 01:31:56 2026 :: Log Trentlin [30479]: w
+Tue Nov 10 01:31:56 2026 :: Log Trentlin [30478]: arrived (Level 5: Western Stairwell) from 30479
+Tue Nov 10 01:31:57 2026 :: Log Trentlin [30478]: d
+Tue Nov 10 01:31:57 2026 :: Log Trentlin [30498]: arrived (Level 5: Stair Landing) from 30478
+Tue Nov 10 01:32:17 2026 :: Log Trentlin [30498]: unlock west
+Tue Nov 10 01:32:19 2026 :: Log Trentlin [30498]: open west
+Tue Nov 10 01:32:20 2026 :: Log Trentlin [30498]: w
+Tue Nov 10 01:32:20 2026 :: Log Trentlin [30497]: arrived (Level 5: Room of the Scraped Block) from 30498
+Tue Nov 10 01:32:29 2026 :: Log Trentlin [30497]: push block
+Tue Nov 10 01:32:30 2026 :: Log Trentlin [30497]: l
+Tue Nov 10 01:32:31 2026 :: Log Trentlin [30497]: d
+Tue Nov 10 01:32:31 2026 :: Log Trentlin [30499]: arrived (Level 5: Whistling Brick Cellar) from 30497
+Tue Nov 10 01:32:37 2026 :: Log Trentlin [30499]: get recor
+Tue Nov 10 01:32:38 2026 :: Log Trentlin [30499]: i
+Tue Nov 10 01:32:40 2026 :: Log Trentlin [30499]: drop recor
+Tue Nov 10 01:32:59 2026 :: Log Trentlin [30499]: l
+Tue Nov 10 01:33:01 2026 :: Log Trentlin [30499]: u
+Tue Nov 10 01:33:01 2026 :: Log Trentlin [30497]: arrived (Level 5: Room of the Scraped Block) from 30499
+Tue Nov 10 01:33:02 2026 :: Log Trentlin [30497]: e
+Tue Nov 10 01:33:02 2026 :: Log Trentlin [30498]: arrived (Level 5: Stair Landing) from 30497
+Tue Nov 10 01:33:02 2026 :: Log Trentlin [30498]: s
+Tue Nov 10 01:33:05 2026 :: Log Trentlin [30498]: unlock south
+Tue Nov 10 01:33:07 2026 :: Log Trentlin [30498]: open south
+Tue Nov 10 01:33:07 2026 :: Log Trentlin [30498]: s
+Tue Nov 10 01:33:07 2026 :: Log Trentlin [30495]: arrived (Level 5: Rafter Hall) from 30498
+Tue Nov 10 01:33:09 2026 :: Log Trentlin [30495]: get key
+Tue Nov 10 01:33:10 2026 :: Log Trentlin [30495]: n
+Tue Nov 10 01:33:10 2026 :: Log Trentlin [30498]: arrived (Level 5: Stair Landing) from 30495
+Tue Nov 10 01:33:10 2026 :: Log Trentlin [30498]: u
+Tue Nov 10 01:33:10 2026 :: Log Trentlin [30478]: arrived (Level 5: Western Stairwell) from 30498
+Tue Nov 10 01:33:11 2026 :: Log Trentlin [30478]: e
+Tue Nov 10 01:33:11 2026 :: Log Trentlin [30479]: arrived (Level 5: Hall of Linen Biers) from 30478
+Tue Nov 10 01:33:17 2026 :: Log Trentlin [30479]: affects off: levitate, steel fist
+Tue Nov 10 01:33:28 2026 :: Log Trentlin [30479]: bomb east
+Tue Nov 10 01:33:29 2026 :: Log Trentlin [30479]: e
+Tue Nov 10 01:33:31 2026 :: Log Trentlin [30479]: k gi
+Tue Nov 10 01:33:36 2026 :: Log Trentlin [30479]: fists
+Tue Nov 10 01:33:42 2026 :: Log Trentlin [30479]: fists
+Tue Nov 10 01:33:44 2026 :: Log Trentlin [30479]: killed a gibdo
+Tue Nov 10 01:33:44 2026 :: Log Trentlin [30479]: coin +5 gold
+Tue Nov 10 01:33:44 2026 :: Log Trentlin [30479]: coin +125 silver
+Tue Nov 10 01:33:44 2026 :: Log Trentlin [30479]: coin +76 copper
+Tue Nov 10 01:33:44 2026 :: Log Trentlin [30479]: coin +65 gold
+Tue Nov 10 01:33:51 2026 :: Log Trentlin [30479]: l in co
+Tue Nov 10 01:33:51 2026 :: Log Trentlin [30479]: sac co
+Tue Nov 10 01:33:51 2026 :: Log Trentlin [30479]: coin +62 copper
+Tue Nov 10 01:33:52 2026 :: Log Trentlin [30479]: l
+Tue Nov 10 01:33:53 2026 :: Log Trentlin [30479]: n
+Tue Nov 10 01:33:53 2026 :: Log Trentlin [30482]: arrived (Level 5: Slime-Glazed Vault) from 30479
+Tue Nov 10 01:33:54 2026 :: Log Trentlin [30482]: e
+Tue Nov 10 01:33:54 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30482
+Tue Nov 10 01:33:54 2026 :: Log Trentlin [30483]: n
+Tue Nov 10 01:33:54 2026 :: Log Trentlin [30485]: arrived (Level 5: Hushed Archive) from 30483
+Tue Nov 10 01:33:55 2026 :: Log Trentlin [30485]: n
+Tue Nov 10 01:33:56 2026 :: Log Trentlin [30485]: e
+Tue Nov 10 01:33:56 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30485
+Tue Nov 10 01:33:56 2026 :: Log Trentlin [30486]: n
+Tue Nov 10 01:33:56 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30486
+Tue Nov 10 01:33:57 2026 :: Log Trentlin [30488]: n
+Tue Nov 10 01:33:57 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30488
+Tue Nov 10 01:33:58 2026 :: Log Trentlin [30492]: w
+Tue Nov 10 01:33:58 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30492
+Tue Nov 10 01:33:58 2026 :: Log Trentlin [30491]: w
+Tue Nov 10 01:33:58 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30491
+Tue Nov 10 01:33:59 2026 :: Log Trentlin [30490]: w
+Tue Nov 10 01:33:59 2026 :: Log Trentlin [30489]: arrived (Level 5: Digdogger's Den) from 30490
+Tue Nov 10 01:33:59 2026 :: Log Trentlin [30489]: w
+Tue Nov 10 01:34:27 2026 :: Log Trentlin [30489]: play recorder
+Tue Nov 10 01:34:28 2026 :: Log Trentlin [30489]: l
+Tue Nov 10 01:34:30 2026 :: Log Trentlin [30489]: con d
+Tue Nov 10 01:34:33 2026 :: Log Trentlin [30489]: play recorder
+Tue Nov 10 01:34:37 2026 :: Log Trentlin [30489]: play recorder
+Tue Nov 10 01:34:37 2026 :: Log Trentlin [30489]: con dig
+Tue Nov 10 01:34:39 2026 :: Log Trentlin [30489]: l
+Tue Nov 10 01:34:42 2026 :: Log Trentlin [30489]: bomb dig
+Tue Nov 10 01:34:44 2026 :: Log Trentlin [30489]: k dig
+Tue Nov 10 01:34:48 2026 :: Log Trentlin [30489]: flee
+Tue Nov 10 01:34:49 2026 :: Log Trentlin [30489]: flee
+Tue Nov 10 01:34:49 2026 :: Log Trentlin [30489]: flee
+Tue Nov 10 01:34:49 2026 :: Log Trentlin [30489]: flee
+Tue Nov 10 01:34:49 2026 :: Log Trentlin [30489]: flee
+Tue Nov 10 01:34:50 2026 :: Log Trentlin [30489]: flee
+Tue Nov 10 01:34:50 2026 :: Log Trentlin [30489]: flee
+Tue Nov 10 01:34:50 2026 :: Log Trentlin [30489]: reca
+Tue Nov 10 01:34:51 2026 :: Log Trentlin [30489]: sca
+Tue Nov 10 01:34:53 2026 :: Log Trentlin [30489]: i
+Tue Nov 10 01:34:58 2026 :: Log Trentlin [30489]: quaff port
+Tue Nov 10 01:35:02 2026 :: Log Trentlin [30489]: quaff prot
+Tue Nov 10 01:35:05 2026 :: Log Trentlin [30489]: quaff opa
+Tue Nov 10 01:35:08 2026 :: Log Trentlin [30489]: l
+Tue Nov 10 01:35:09 2026 :: Log Trentlin [30489]: sca
+Tue Nov 10 01:35:25 2026 :: Log Trentlin [30489]: e
+Tue Nov 10 01:35:25 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30489
+Tue Nov 10 01:35:25 2026 :: Log Trentlin [30490]: e
+Tue Nov 10 01:35:25 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30490
+Tue Nov 10 01:35:28 2026 :: Log Trentlin [30491]: e
+Tue Nov 10 01:35:28 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30491
+Tue Nov 10 01:35:29 2026 :: Log Trentlin [30492]: s
+Tue Nov 10 01:35:29 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30492
+Tue Nov 10 01:35:29 2026 :: Log Trentlin [30488]: s
+Tue Nov 10 01:35:29 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30488
+Tue Nov 10 01:35:29 2026 :: Log Trentlin [30486]: s
+Tue Nov 10 01:35:29 2026 :: Log Trentlin [30484]: arrived (Level 5: Gray Junction) from 30486
+Tue Nov 10 01:35:30 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:35:30 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:35:30 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:35:30 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:35:31 2026 :: Log Trentlin [30484]: s
+Tue Nov 10 01:35:31 2026 :: Log Trentlin [30484]: w
+Tue Nov 10 01:35:31 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30484
+Tue Nov 10 01:35:31 2026 :: Log Trentlin [30483]: s
+Tue Nov 10 01:35:31 2026 :: Log Trentlin [30480]: arrived (Level 5: Embalmers' Hall) from 30483
+Tue Nov 10 01:35:31 2026 :: Log Trentlin [30480]: s
+Tue Nov 10 01:35:31 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30480
+Tue Nov 10 01:35:32 2026 :: Log Trentlin [30476]: s
+Tue Nov 10 01:35:33 2026 :: Log Trentlin [30476]: u
+Tue Nov 10 01:35:33 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30476
+Tue Nov 10 01:35:33 2026 :: Log Trentlin [30323]: reca
+Tue Nov 10 01:35:33 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30323
+Tue Nov 10 01:35:34 2026 :: Log Trentlin [4207]: w
+Tue Nov 10 01:35:34 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Nov 10 01:35:36 2026 :: Log Trentlin [4208]: where hermie
+Tue Nov 10 01:35:37 2026 :: Log Trentlin [4208]: e
+Tue Nov 10 01:35:37 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov 10 01:35:39 2026 :: Log Trentlin [4207]: wo
+Tue Nov 10 01:35:41 2026 :: Log Trentlin [4207]: n
+Tue Nov 10 01:35:41 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4207
+Tue Nov 10 01:35:41 2026 :: Log Trentlin [4204]: n
+Tue Nov 10 01:35:41 2026 :: Log Trentlin [4211]: arrived (Entrance to the inner Sanctum.) from 4204
+Tue Nov 10 01:35:41 2026 :: Log Trentlin [4211]: n
+Tue Nov 10 01:35:43 2026 :: Log Trentlin [4211]: s
+Tue Nov 10 01:35:43 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4211
+Tue Nov 10 01:35:44 2026 :: Log Trentlin [4204]: e
+Tue Nov 10 01:35:44 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4204
+Tue Nov 10 01:35:44 2026 :: Log Trentlin [4203]: (refused) nb
+Tue Nov 10 01:35:45 2026 :: Log Trentlin [4203]: w
+Tue Nov 10 01:35:45 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4203
+Tue Nov 10 01:35:46 2026 :: Log Trentlin [4204]: w
+Tue Nov 10 01:35:46 2026 :: Log Trentlin [4204]: n
+Tue Nov 10 01:35:46 2026 :: Log Trentlin [4211]: arrived (Entrance to the inner Sanctum.) from 4204
+Tue Nov 10 01:35:46 2026 :: Log Trentlin [4211]: n
+Tue Nov 10 01:35:47 2026 :: Log Trentlin [4211]: reca
+Tue Nov 10 01:35:47 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4211
+Tue Nov 10 01:35:48 2026 :: Log Trentlin [4207]: e
+Tue Nov 10 01:35:48 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207

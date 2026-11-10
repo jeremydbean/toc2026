@@ -18719,3 +18719,108 @@
 1794274240	cmd	Trentlin	31	30483	hyrule.are	standing	32	0	-	look		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
 1794274240	cmd	Trentlin	31	30483	hyrule.are	standing	32	0	-	look		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
 1794274241	cmd	Trentlin	31	30482	hyrule.are	standing	32	1	-	west		The shutter opens now that the chamber is clear. // Level 5: Slime-Glazed Vault //   The floor of this chamber gleams with a thin glaze of green slime that	-	+
+1794274258	cmd	Trentlin	31	30482	hyrule.are	standing	32	0	-	south		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794274263	cmd	Trentlin	31	30482	hyrule.are	standing	32	0	-	consider	z	A zol is a little below your level. // A zol has about as many hit points as you. // Blow for blow, you would need about 3 rounds to bring a zol down; it would need about 5 rounds for you.	-	+
+1794274266	cmd	Trentlin	31	30482	hyrule.are	standing	32	0	-	kill	z	Your punch ^^^ DESTROYS ^^^ a zol! // Your punch *** DEVASTATES *** a zol! // A zol dodges your attack.	-	-
+1794274288	cmd	Trentlin	31	30482	hyrule.are	standing	21	0	-	get	key	You get a small key.	-	-
+1794274289	cmd	Trentlin	31	30479	hyrule.are	standing	21	0	-	south		The shutter opens now that the chamber is clear. // Level 5: Hall of Linen Biers //   Stone biers line the walls of this chamber, every one empty, and scraps of	-	+
+1794274314	cmd	Trentlin	31	30479	hyrule.are	standing	100	0	-	look		Level 5: Hall of Linen Biers //   Stone biers line the walls of this chamber, every one empty, and scraps of // yellowed linen lie trampled across the floor in slow, shuffling paths. The	-	+
+1794274315	cmd	Trentlin	31	30479	hyrule.are	standing	100	0	-	bomb	west	You set a bomb beside a cracked west wall and dive aside. The blast opens a passage!	-	-
+1794274316	cmd	Trentlin	31	30478	hyrule.are	standing	100	0	-	west		Level 5: Western Stairwell //   A dim, close room at the western edge of the labyrinth, its floor glazed // with dried trails of slime that split and wander. In one corner a narrow	-	+
+1794274317	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	down		Level 5: Stair Landing //   A bare stone landing where a narrow stair drops into the floor, running far // to the southwest beneath the halls. Locked doors stand in the south and	-	+
+1794274337	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794274339	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794274340	cmd	Trentlin	31	30497	hyrule.are	standing	100	0	-	west		Level 5: Room of the Scraped Block //   A grid of stone blocks fills this cramped northwestern chamber, and one // block near the middle shows fresh scrape marks at its base where it has	-	+
+1794274349	cmd	Trentlin	31	30497	hyrule.are	standing	100	0	-	push	block	You push a movable stone block. // A previously hidden door mysteriously opens. // You hear a strange noise off in the distance.	-	-
+1794274350	cmd	Trentlin	31	30497	hyrule.are	standing	100	0	-	look		Level 5: Room of the Scraped Block //   A grid of stone blocks fills this cramped northwestern chamber, and one // block near the middle shows fresh scrape marks at its base where it has	-	+
+1794274351	cmd	Trentlin	31	30499	hyrule.are	standing	100	0	-	down		Level 5: Whistling Brick Cellar //   Dry air whistles faintly through this narrow brick basement, a thin note // like wind across a reed, from somewhere beneath the scraped block above.	-	+
+1794274357	cmd	Trentlin	31	30499	hyrule.are	standing	100	0	-	get	recor	You get the Recorder.	-	-
+1794274358	cmd	Trentlin	31	30499	hyrule.are	standing	100	0	-	inventory		You are carrying: // ( 2) the Recorder //      the Red Candle	-	+
+1794274360	cmd	Trentlin	31	30499	hyrule.are	standing	100	0	-	drop	recor	You drop the Recorder.	-	-
+1794274379	cmd	Trentlin	31	30499	hyrule.are	standing	100	0	-	look		Level 5: Whistling Brick Cellar //   Dry air whistles faintly through this narrow brick basement, a thin note // like wind across a reed, from somewhere beneath the scraped block above.	-	+
+1794274381	cmd	Trentlin	31	30497	hyrule.are	standing	100	0	-	up		Level 5: Room of the Scraped Block //   A grid of stone blocks fills this cramped northwestern chamber, and one // block near the middle shows fresh scrape marks at its base where it has	-	+
+1794274382	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	east		Level 5: Stair Landing //   A bare stone landing where a narrow stair drops into the floor, running far // to the southwest beneath the halls. Locked doors stand in the south and	-	+
+1794274382	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	south		The locked is closed.	-	-
+1794274385	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	unlock	south	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794274387	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	open	south	Ok.	-	-
+1794274387	cmd	Trentlin	31	30495	hyrule.are	standing	100	0	-	south		Level 5: Rafter Hall //   Rotting beams cross the ceiling of this hall, white with the droppings of // the bats that roost there and dart down in jittering flights. The east wall	-	+
+1794274389	cmd	Trentlin	31	30495	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794274390	cmd	Trentlin	31	30498	hyrule.are	standing	100	0	-	north		Level 5: Stair Landing //   A bare stone landing where a narrow stair drops into the floor, running far // to the southwest beneath the halls. Locked doors stand in the south and	-	+
+1794274390	cmd	Trentlin	31	30478	hyrule.are	standing	100	0	-	up		Level 5: Western Stairwell //   A dim, close room at the western edge of the labyrinth, its floor glazed // with dried trails of slime that split and wander. In one corner a narrow	-	+
+1794274391	cmd	Trentlin	31	30479	hyrule.are	standing	100	0	-	east		Level 5: Hall of Linen Biers //   Stone biers line the walls of this chamber, every one empty, and scraps of // yellowed linen lie trampled across the floor in slow, shuffling paths. The	-	+
+1794274408	cmd	Trentlin	31	30479	hyrule.are	standing	100	0	-	bomb	east	You have no bombs. The arrow shops sell four for 20 gold.	-	-
+1794274409	cmd	Trentlin	31	30479	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794274411	cmd	Trentlin	31	30479	hyrule.are	standing	100	0	-	kill	gi	Your punch *** DEVASTATES *** a gibdo! // A gibdo dodges your attack. // Your punch === OBLITERATES === a gibdo!	-	-
+1794274416	cmd	Trentlin	31	30479	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a gibdo! // Your fists of fury grazes a gibdo.	-	+
+1794274422	cmd	Trentlin	31	30479	hyrule.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a gibdo! // Your fists of fury injures a gibdo.	-	+
+1794274431	cmd	Trentlin	31	30479	hyrule.are	standing	81	0	-	look	in co	Corpse of a gibdo contains: //      Nothing.	-	-
+1794274431	cmd	Trentlin	31	30479	hyrule.are	standing	81	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794274432	cmd	Trentlin	31	30479	hyrule.are	standing	81	0	-	look		Level 5: Hall of Linen Biers //   Stone biers line the walls of this chamber, every one empty, and scraps of // yellowed linen lie trampled across the floor in slow, shuffling paths. The	-	+
+1794274433	cmd	Trentlin	31	30482	hyrule.are	standing	81	0	-	north		Level 5: Slime-Glazed Vault //   The floor of this chamber gleams with a thin glaze of green slime that // pools around the blocks set in its corners, and some of the pools are thick	-	+
+1794274434	cmd	Trentlin	31	30483	hyrule.are	standing	81	0	-	east		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274434	cmd	Trentlin	31	30485	hyrule.are	standing	81	0	-	north		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794274435	cmd	Trentlin	31	30485	hyrule.are	standing	81	0	-	north		Alas, you cannot go that way.	-	-
+1794274436	cmd	Trentlin	31	30486	hyrule.are	standing	81	0	-	east		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794274436	cmd	Trentlin	31	30488	hyrule.are	standing	81	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794274437	cmd	Trentlin	31	30492	hyrule.are	standing	81	0	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794274438	cmd	Trentlin	31	30491	hyrule.are	standing	81	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794274438	cmd	Trentlin	31	30490	hyrule.are	standing	81	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794274439	cmd	Trentlin	31	30489	hyrule.are	standing	81	0	-	west		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794274439	cmd	Trentlin	31	30489	hyrule.are	standing	81	0	-	west		Alas, you cannot go that way.	-	-
+1794274467	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Digdogger shudders as the sound tears through its defenses!	-	-
+1794274468	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	look		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794274470	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	consider	d	Digdogger is well above your level. // Digdogger has many times your hit points. // Blow for blow, you would need about 12 rounds to bring Digdogger down; it would need about 4 rounds for you.	-	+
+1794274473	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Digdogger shudders at the melody and shrinks to a third of its size -- now a blade can bite!	-	-
+1794274477	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794274477	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	consider	dig	Digdogger is well above your level. // Digdogger has many times your hit points. // Blow for blow, you would need about 12 rounds to bring Digdogger down; it would need about 4 rounds for you.	-	+
+1794274479	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	look		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794274482	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	bomb	dig	You have no bombs. The arrow shops sell four for 20 gold.	-	-
+1794274484	cmd	Trentlin	31	30489	hyrule.are	standing	84	0	-	kill	dig	Your punch MUTILATES Digdogger! // Your punch *** DEVASTATES *** Digdogger!	-	-
+1794274488	cmd	Trentlin	31	30489	hyrule.are	fighting	13	0	fight	flee		Digdogger is overcome with a feeling of despair and flees the battle. // Digdogger walks off to the east. // Digdogger has fled!	-	-
+1794274489	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	flee		You aren't fighting anyone.	-	-
+1794274489	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	flee		You aren't fighting anyone.	-	-
+1794274489	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	flee		You aren't fighting anyone.	-	-
+1794274489	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	flee		You aren't fighting anyone.	-	-
+1794274490	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	flee		You aren't fighting anyone.	-	-
+1794274490	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	flee		You aren't fighting anyone.	-	-
+1794274490	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	recall		The Gods have forsaken you.	-	-
+1794274491	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	scan		Digdogger                          -to the East. // a pols voice                       -to the East.	-	-
+1794274493	cmd	Trentlin	31	30489	hyrule.are	standing	13	0	-	inventory		You are carrying: // ( 2) a small key //      the Red Candle	-	+
+1794274498	cmd	Trentlin	31	30489	hyrule.are	standing	15	0	-	quaff	port	You do not have that potion.	-	-
+1794274502	cmd	Trentlin	31	30489	hyrule.are	standing	15	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794274505	cmd	Trentlin	31	30489	hyrule.are	standing	15	0	-	quaff	opa	This liquid is too powerful for you to drink.	-	-
+1794274508	cmd	Trentlin	31	30489	hyrule.are	standing	15	0	-	look		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794274509	cmd	Trentlin	31	30489	hyrule.are	standing	15	0	-	scan		Digdogger                          -to the East. // a pols voice                       -to the East.	-	-
+1794274525	cmd	Trentlin	31	30490	hyrule.are	standing	15	0	-	east		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794274525	cmd	Trentlin	31	30491	hyrule.are	standing	15	0	-	east		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794274528	cmd	Trentlin	31	30492	hyrule.are	standing	15	0	-	east		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794274529	cmd	Trentlin	31	30488	hyrule.are	standing	15	0	-	south		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794274529	cmd	Trentlin	31	30486	hyrule.are	standing	15	0	-	south		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794274529	cmd	Trentlin	31	30484	hyrule.are	standing	15	0	-	south		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794274530	cmd	Trentlin	31	30484	hyrule.are	standing	15	0	-	south		Alas, you cannot go that way.	-	-
+1794274530	cmd	Trentlin	31	30484	hyrule.are	standing	15	0	-	south		Alas, you cannot go that way.	-	-
+1794274530	cmd	Trentlin	31	30484	hyrule.are	standing	15	0	-	south		Alas, you cannot go that way.	-	-
+1794274530	cmd	Trentlin	31	30484	hyrule.are	standing	15	0	-	south		Alas, you cannot go that way.	-	-
+1794274531	cmd	Trentlin	31	30484	hyrule.are	standing	15	0	-	south		Alas, you cannot go that way.	-	-
+1794274531	cmd	Trentlin	31	30483	hyrule.are	standing	15	0	-	west		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794274531	cmd	Trentlin	31	30480	hyrule.are	standing	15	0	-	south		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794274531	cmd	Trentlin	31	30476	hyrule.are	standing	15	0	-	south		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794274532	cmd	Trentlin	31	30476	hyrule.are	standing	15	0	-	south		Alas, you cannot go that way.	-	-
+1794274533	cmd	Trentlin	31	30323	hyrule.are	standing	15	0	-	up		The Lizard's Gate //   Beyond the confusing folds of the Lost Hills to the south the ground levels // into a hidden basin of reddish sand. At its heart a squat entrance is cut	-	+
+1794274533	cmd	Trentlin	31	4207	dresden.are	standing	15	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794274534	cmd	Trentlin	31	4208	dresden.are	standing	15	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794274536	cmd	Trentlin	31	4208	dresden.are	standing	15	0	-	where	hermie	You didn't find any hermie.	-	-
+1794274537	cmd	Trentlin	31	4207	dresden.are	standing	15	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794274539	cmd	Trentlin	31	4207	dresden.are	standing	15	0	-	worth		You have 2 platinum, 279 gold, 382 silver, 642 copper // and 73219 experience (381 exp to level).	-	-
+1794274541	cmd	Trentlin	31	4204	dresden.are	standing	15	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794274541	cmd	Trentlin	31	4211	dresden.are	standing	15	0	-	north		Entrance to the inner Sanctum. //   This door is guarded by a very large warrior dressed in white robes and // wielding a two-handed sword.	-	+
+1794274541	cmd	Trentlin	31	4211	dresden.are	standing	15	0	-	north		The Templar of Devota stands immovable before you blocking your way.	-	-
+1794274543	cmd	Trentlin	31	4204	dresden.are	standing	15	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794274544	cmd	Trentlin	31	4203	dresden.are	standing	15	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794274544	refused	Trentlin	31	4203	dresden.are	standing	15	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794274545	cmd	Trentlin	31	4204	dresden.are	standing	15	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794274546	cmd	Trentlin	31	4204	dresden.are	standing	15	0	-	west		Alas, you cannot go that way.	-	-
+1794274546	cmd	Trentlin	31	4211	dresden.are	standing	15	0	-	north		Entrance to the inner Sanctum. //   This door is guarded by a very large warrior dressed in white robes and // wielding a two-handed sword.	-	+
+1794274546	cmd	Trentlin	31	4211	dresden.are	standing	15	0	-	north		The Templar of Devota stands immovable before you blocking your way.	-	-
+1794274547	cmd	Trentlin	31	4207	dresden.are	standing	15	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794274548	cmd	Trentlin	31	4202	dresden.are	standing	15	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
