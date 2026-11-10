@@ -19280,3 +19280,11 @@
 1794341240	cmd	Miseri	14	30286	hyrule.are	fighting	100	0	fight	peace		All is peaceful.	-	-
 1794341243	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	restore	self	Miseri restored.	-	-
 1794341246	session	Miseri	14	30286	hyrule.are	quit	98s	+0 levels	+672 exp	+0 copper	4 kills	0 deaths	0 quests	46 commands	1 refused	coin: loot 26g 33s 70c	spent on: none	exp: kills +672
+1794342082	cmd	Trentlin	32	4210	dresden.are	sleeping	22	0	-	wake		You wake and stand up.	-	-
+1794342083	cmd	Trentlin	32	4210	dresden.are	standing	22	0	-	where	hermie	You didn't find any hermie.	-	-
+1794342084	cmd	Trentlin	32	4210	dresden.are	standing	22	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794342085	cmd	Trentlin	32	4210	dresden.are	standing	22	0	-	sleep		You go to sleep.	-	-
+1794342087	cmd	Trentlin	32	4210	dresden.are	sleeping	22	0	-	worth		You have 13 platinum, 28 gold, 101 silver, 129 copper // and 74366 experience (1534 exp to level).	-	-
+1794342129	cmd	Trentlin	32	4210	dresden.are	sleeping	37	0	-	group		Trentlin's group: // [32 Monk ] Trentlin          268/ 708 hp 1302/1399 mana  129/ 372 mv 74366 xp	-	-
+1794342131	state	Trentlin	32	4210	dresden.are	lvl=32 hp=268/708 mana=1302/1399 mv=129/372 align=-107 exp=74366 coin=13290229 bank=15201185444 qp=2675 prac=8 train=1 stash=50/75 remorts=1
+1794342131	cmd	Trentlin	32	4210	dresden.are	sleeping	37	0	-	score		| Name:       Trentlin | Level:      32 | Class:        Monk | // | Played:     34 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
