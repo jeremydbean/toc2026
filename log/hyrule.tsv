@@ -27,3 +27,6 @@
 1794346731	cleared	Trentlin	34	1	Monk 	30480	L5	foes=0
 1794346734	got	Trentlin	34	1	Monk 	30480	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
 1794346745	got	Trentlin	34	1	Monk 	30492	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794346994	leave	Trentlin	34	1	Monk 	30476	L5	to=over how=up secs=278 hp=58
+1794346994	enter	Trentlin	34	1	Monk 	30323	over	from=L5 how=up hp=58
+1794346994	leave	Trentlin	34	1	Monk 	30323	over	to=out how=recall secs=0 hp=58
