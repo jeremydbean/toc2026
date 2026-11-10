@@ -145,6 +145,8 @@ bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
 }
 
 
+static long coin_copper_value(int type);
+
 void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 {
     CHAR_DATA *gch;
@@ -236,8 +238,21 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 
 	while ( top->in_obj != NULL )
 	    top = top->in_obj;
-	if ( top->item_type == ITEM_CORPSE_PC
-	&&   ( IS_NPC(ch) || top->owner == NULL || str_cmp( top->owner, ch->name ) ) )
+	/* Nor does a creature take one anywhere -- the chest, the floor, a
+	   bag -- nor anybody out of a creature's corpse (review, 2026-11-10:
+	   a bottled ordinary mobile, charmed, was ORDERed to GET a shard
+	   from an opened chest with no key, killed, and its corpse carried
+	   out through a portal for anybody to loot). make_corpse destroys
+	   what a mobile dies holding; this refuses one already lying in
+	   such a corpse. */
+	if ( IS_NPC(ch) )
+	{
+	    act( "$p will not come to a creature's hand.", ch, obj, NULL, TO_CHAR );
+	    return;
+	}
+	if ( top->item_type == ITEM_CORPSE_NPC
+	||   ( top->item_type == ITEM_CORPSE_PC
+	    && ( top->owner == NULL || str_cmp( top->owner, ch->name ) ) ) )
 	{
 	    act( "$p is bound to the one who fell; it will not come to you.",
 		 ch, obj, NULL, TO_CHAR );
@@ -261,13 +276,16 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
         return;
     }
 
+    /* Where it came from, for the got and coin rows (log/play.tsv). */
+    playlog_from( container != NULL ? container->short_descr : "the floor" );
+
     /* A progression tool lying in Hyrule: a copy for each player, bound
        (hyrule.c). */
     if ( hyrule_tool_claim( ch, obj, container ) )
 	return;
 
     chance = get_skill(ch,gsn_sleight_of_hand);
-    if(number_percent () < chance - 5 || IS_IMMORTAL(ch) ) {
+    if( skill_roll_landed( ch, number_percent () < chance - 5 ) || IS_IMMORTAL(ch) ) {
       check_improve( ch, gsn_sleight_of_hand, true, 8 );
       hidden = true;
     }
@@ -302,6 +320,24 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	act( "You get $p from $P.", ch, obj, container, TO_CHAR );
 	if(!hidden)
 	  act( "$n gets $p from $P.", ch, obj, container, TO_ROOM );
+	/* What a kill really paid, for the balance feed (log/progress.tsv):
+	   anything taken out of a mobile's corpse, at any depth. */
+	{
+	    OBJ_DATA *top = container;
+	    long copper = 0;
+
+	    while ( top->in_obj != NULL )
+		top = top->in_obj;
+	    if ( obj->item_type == ITEM_MONEY && obj->value[0] > 0 )
+	    {
+		long unit = coin_copper_value( obj->value[1] );
+
+		copper = unit > 0 && obj->value[0] <= LONG_MAX / unit
+		       ? (long) obj->value[0] * unit : 0;
+	    }
+	    if ( top->item_type == ITEM_CORPSE_NPC )
+		progress_loot( ch, top, obj, copper );
+	}
 	obj_from_obj( obj );
     } else {
 	act( "You get $p.", ch, obj, container, TO_CHAR );
@@ -2073,7 +2109,7 @@ void do_put( CHAR_DATA *ch, char *argument )
 	}
 
 	chance = get_skill(ch,gsn_sleight_of_hand);
-	if(number_percent () < chance - 5 || IS_IMMORTAL (ch) )
+	if( skill_roll_landed( ch, number_percent () < chance - 5 ) || IS_IMMORTAL (ch) )
         {
 	   hidden = true;
           check_improve(ch,gsn_sleight_of_hand,true,8);
@@ -2114,7 +2150,7 @@ void do_put( CHAR_DATA *ch, char *argument )
 		found = true;
 		hidden = false;
 		chance = get_skill(ch,gsn_sleight_of_hand);
-		if(number_percent () < chance - 5 || IS_IMMORTAL (ch) )
+		if( skill_roll_landed( ch, number_percent () < chance - 5 ) || IS_IMMORTAL (ch) )
 		{
 		  hidden = true;
 		  check_improve(ch,gsn_sleight_of_hand,true,8);
@@ -2616,6 +2652,10 @@ void do_give( CHAR_DATA *ch, char *argument )
     }
 
     obj_from_char( obj );
+    /* Given by whom, for the recipient's got row (log/play.tsv); never
+       a wizinvis giver's name. */
+    playlog_from( IS_NPC(ch) ? ch->short_descr
+                  : IS_SET(ch->act, PLR_WIZINVIS) ? "someone" : ch->name );
     obj_to_char( obj, victim );
     watch_log( ch, "gave %s (vnum %d) to %s", obj->short_descr,
         obj->pIndexData->vnum, IS_NPC(victim) ? victim->short_descr : victim->name );
@@ -4556,7 +4596,8 @@ void do_recite( CHAR_DATA *ch, char *argument )
        fast as it could be typed (Damage Costs Lag, AGENTS.md). */
     WAIT_STATE( ch, 2 * PULSE_VIOLENCE );
 
-    if (number_percent() >= 20 + get_skill(ch,gsn_scrolls) * 4/5)
+    if ( skill_roll_missed( ch,
+             number_percent() >= 20 + get_skill(ch,gsn_scrolls) * 4/5 ) )
     {
 	send_to_char("You mispronounce a syllable.\n\r",ch);
 	check_improve(ch,gsn_scrolls,false,2);
@@ -4678,7 +4719,7 @@ void do_brandish( CHAR_DATA *ch, char *argument )
 	/* number_percent() is 1..100: a miss is a roll above the chance, or
 	   the 100 granted to staff 4513 fails one brandish in a hundred. */
 	if ( ch->level < staff->level
-	||   number_percent() > chance)
+	||   skill_roll_missed( ch, number_percent() > chance ) )
  	{
 	    act ("You fail to invoke $p.",ch,staff,NULL,TO_CHAR);
 	    act ("...and nothing happens.",ch,NULL,NULL,TO_ROOM);
@@ -4802,7 +4843,8 @@ void do_zap( CHAR_DATA *ch, char *argument )
 	}
 
  	if (ch->level < wand->level
-	||  number_percent() >= 20 + get_skill(ch,gsn_wands) * 4/5)
+	||  skill_roll_missed( ch,
+	        number_percent() >= 20 + get_skill(ch,gsn_wands) * 4/5 ) )
 	{
 	    act( "Your efforts with $p produce only smoke and sparks.",
 		 ch,wand,NULL,TO_CHAR);
@@ -4910,7 +4952,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
     if ( ch->level + 5 < victim->level
     ||   victim->position == POS_FIGHTING
-    || ( !IS_NPC(ch) && percent > chance ) )
+    || ( !IS_NPC(ch) && skill_roll_missed( ch, percent > chance ) ) )
     {
 	/* A victim too far above you is never a matter of luck: say so,
 	   rather than a fumble that invites another try. The attempt still
@@ -5281,6 +5323,9 @@ void do_buy( CHAR_DATA *ch, char *argument )
 
     if(!(keeper = find_keeper(ch)))
 	return;
+
+    /* Bought of whom, for the got and coin rows (log/play.tsv). */
+    playlog_from( keeper->short_descr );
 
     while ( bought < count && buy_one( ch, keeper, argument ) )
 	bought++;

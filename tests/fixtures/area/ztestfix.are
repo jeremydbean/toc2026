@@ -21,6 +21,26 @@ AB 0 0 S
 
 #0
 
+#OBJECTS
+#32709
+key fixture lock~
+a lock room key~
+A key to the lock room's door lies here.~
+iron~
+18 0 A
+0 0 0 0 0
+0 1 0 P
+#32710
+sack fixture~
+a fixture sack~
+A closed fixture sack lies here.~
+cloth~
+15 0 A
+100 5 0 50 100
+0 5 0 P
+
+#0
+
 #ROOMS
 #32700
 The Sparring Floor~
@@ -120,6 +140,35 @@ The bout ring.
 0 -1 32707
 S
 
+#32709
+The Lock Room~
+A bare test room joined to nothing but the room beyond its south door,
+which a reset closes and locks.  The door picks; it is not pickproof.
+~
+0 D 0
+D2
+A plain wooden door.
+~
+door~
+1 32709 32710
+S
+#32710
+Beyond The Lock~
+A bare test room north of the lock room's door.
+~
+0 D 0
+D0
+A plain wooden door.
+~
+door~
+1 32709 32709
+S
+
 #0
+
+#RESETS
+D 0 32709 2 2
+D 0 32710 0 2
+S
 
 #$

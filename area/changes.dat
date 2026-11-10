@@ -5,6 +5,47 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261110latekey 2026-11-10
+A Hyrule guardian's key now also goes to anybody in the room who fought it,
+grouped with the killer or not, however late they joined the fight.
+Whoever left the room before it fell gets none.
+
+@ 20261110bounce 2026-11-10
+Striking a digdogger before it is shrunk now says so once a round, with
+the hint about the tune at most once a minute, instead of every blow; and
+a sharp or vorpal weapon no longer claims to bite deep into a foe nothing
+can hurt.
+
+@ 20261110level 2026-11-10
+The website's leveling guide now ranks by what players' own fights took:
+a mobile enough players near your level have killed shows how long it
+really took, how often it sent them running, and on how many kills that
+rests. The rest are still estimates, and say so. Hyrule's guardians are no
+longer suggested as ordinary prey, and a dungeon's mobiles say what the
+way in needs.
+
+@ 20261110gear 2026-11-10
+COMPARE UPGRADES now counts what a Hyrule guardian drops: its pieces of
+armour, three of which fall each kill, and Ganon's relics. The source line
+says who drops it, where, and how often -- "about 3 kills in 11". The
+website's Gear Finder lists them too, with what the way to each guardian
+needs.
+
+@ 20261110dirs 2026-11-10
+A direction can be shortened to any start of its name wherever a command
+takes one: OP WES opens the west door, and CLOSE, LOCK, UNLOCK, PICK,
+DOORBASH, LOOK, RUN, SHOVE, LISTEN and PROJECT read it the same way. NO is
+north and SO is south; NE, NW, SE and SW still name the diagonals. A
+direction with a door is that door, even when something you carry begins
+with the same letters.
+
+@ 20261110staffroll 2026-11-10 staff
+Staff never miss a skill's roll: picking a lock, stealing, hiding,
+sneaking, tracking, bash, trip, kick, the psionics, casting, crafting and
+the rest always come off. What refused before still refuses, and a
+fatality, other instant kills and a victim's saving throw are left to the
+dice.
+
 @ 20261110e 2026-11-10
 A Hyrule guardian now hands its key to everyone who beat it together --
 the one who struck it down and their group in the room -- and each key is

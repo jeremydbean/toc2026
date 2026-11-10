@@ -1122,6 +1122,17 @@ void  progress_kill          args( ( CHAR_DATA *gch, CHAR_DATA *victim, int base
                                      int rested_xp, long accepted_xp, int members,
                                      long victim_coin ) );
 void  progress_event         args( ( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe ) );
+void  progress_drop          args( ( CHAR_DATA *killer, CHAR_DATA *victim, OBJ_DATA *corpse ) );
+void  progress_engage        args( ( CHAR_DATA *mob, CHAR_DATA *opponent ) );
+void  progress_slain         args( ( CHAR_DATA *killer, CHAR_DATA *victim, int players, int pets ) );
+void  progress_loot          args( ( CHAR_DATA *ch, OBJ_DATA *corpse, OBJ_DATA *obj, long copper ) );
+long  progress_encounter_id  args( ( CHAR_DATA *mob ) );
+const char *consider_predict args( ( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
+                                     double *theirs, double *your_rounds,
+                                     double *their_rounds, bool *caster ) );
+void  progress_consider      args( ( CHAR_DATA *ch, CHAR_DATA *victim, double yours,
+                                     double theirs, double your_rounds, double their_rounds,
+                                     const char *verdict, bool caster ) );
 /* alignment.c -- tiers, what moves alignment and what it gives */
 #define ALIGN_DEED_SHIFT       100          /* one DEVOTE */
 #define ALIGN_DEED_COOLDOWN    ( 30 * 60 )  /* seconds between DEVOTEs */
@@ -2233,6 +2244,8 @@ struct guildmaster_type
 };
 
 /* One character (PC or NPC). */
+#define HYRULE_STRUCK_MAX   24      /* a guardian's fighters remembered */
+
 struct  char_data
 {
     CHAR_DATA * next_free;
@@ -2241,6 +2254,26 @@ struct  char_data
     CHAR_DATA * leader;
     CHAR_DATA * fighting;
     long                fight_began_ms; /* a mobile's encounter start, for log/progress.tsv */
+    long                bounce_said_ms; /* a refused Hyrule blow last told (hyrule.c) */
+    long                bounce_hint_ms; /* ... and its full hint */
+    /* A mobile's side of an encounter, for log/progress.tsv: its id (the
+       engage, flee, death, slain and loot rows share it), the hit points
+       that came off it (never the overkill) and how many of them a pet
+       or servant took, and what it took off players. Memory only. */
+    long                encounter_seq;
+    long                enc_taken;
+    long                enc_by_pets;
+    long                enc_dealt;
+    int                 enc_rounds;     /* its rounds in this encounter */
+    /* A Hyrule guardian's fighters, by player file id, the latest
+       HYRULE_STRUCK_MAX of its life (a lull in the fight forgets nobody):
+       each one in the room at its death gets a key, grouped or not, late
+       or not (owner, 2026-11-10). Memory only. */
+    int                 hyrule_struck[HYRULE_STRUCK_MAX];
+    int                 hyrule_struck_n;
+    int                 enc_swings;     /* players' melee swings at it */
+    int                 enc_landed;     /* ... that took hit points */
+    long                enc_by_skills;  /* hit points off it by spells and skills */
     CHAR_DATA * hunting;
     CHAR_DATA * reply;
     CHAR_DATA * pet;
@@ -2519,6 +2552,12 @@ struct  pc_data
     bool                play_baseline;        /* the tick's checks have a start */
     long                play_last_exp;
     long                play_last_wealth;
+    /* For log/play.tsv's area and level rows (memory only): the area the
+       character was last written down in, since when, and when they last
+       gained a level. */
+    AREA_DATA *         play_area;
+    time_t              play_area_since;
+    time_t              play_level_at;
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;
@@ -2572,6 +2611,7 @@ struct  pc_data
     int                 fight_hp_seen;  /* hit points when last looked at */
     int                 fight_hp_start;
     int                 fight_mana_start;
+    long                fight_stopped_ms;   /* when the last fight ended */
     int                 dummy_hits;
     int                 dummy_misses;
     int                 dummy_swings;
@@ -2728,6 +2768,13 @@ struct  obj_data
     OBJ_INDEX_DATA * pIndexData;
     ROOM_INDEX_DATA * in_room;
     bool                enchanted;
+    /* A corpse's kill (log/progress.tsv's loot rows join it to the slain
+       row), and where a corpse's object came from (make_corpse). Memory
+       only; drop_source is a static string. */
+    long                kill_seq;
+    int                 kill_vnum;
+    int                 kill_level;
+    const char *        drop_source;
     char * owner;
     char * name;
     char * short_descr;
@@ -3689,6 +3736,9 @@ int     castle_lookup   ( const char *name);
 char* get_castlename  ( const int guild );
 bool    is_old_mob      (CHAR_DATA *ch);
 int     get_skill       ( const CHAR_DATA *ch, int sn );
+bool    skill_roll_sure ( CHAR_DATA *ch );
+bool    skill_roll_landed ( CHAR_DATA *ch, bool landed );
+bool    skill_roll_missed ( CHAR_DATA *ch, bool missed );
 int     get_weapon_sn   ( CHAR_DATA *ch );
 int     get_weapon_skill ( CHAR_DATA *ch, int sn );
 int     get_age         ( CHAR_DATA *ch );
@@ -3841,6 +3891,7 @@ const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate ( int level );
 bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
 bool    is_hyrule_bystander ( CHAR_DATA *victim );
 bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
+void    hyrule_note_striker ( CHAR_DATA *ch, CHAR_DATA *guardian ); /* hyrule.c */
 bool    hyrule_holds_bound ( const OBJ_DATA *obj );       /* hyrule.c */
 int     hyrule_guardian_key ( int level );
 void    hyrule_guardian_slain ( CHAR_DATA *killer, CHAR_DATA *guardian );
@@ -3863,6 +3914,16 @@ void    hylog_flee          ( CHAR_DATA *ch, CHAR_DATA *foe );
 void    hylog_death         ( CHAR_DATA *killer, CHAR_DATA *victim );
 void    hylog_room_cleared  ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool foe_died );
 const char *playlog_how     ( CHAR_DATA *ch );
+void    playlog_from        ( const char *where );
+void    playlog_got         ( CHAR_DATA *ch, OBJ_DATA *obj );
+void    playlog_bank        ( CHAR_DATA *ch, long copper, const char *why );
+void    playlog_level       ( CHAR_DATA *ch, int from, bool is_advance );
+void    playlog_moved       ( CHAR_DATA *ch );
+void    playlog_achieved    ( CHAR_DATA *ch, const char *key, int points, int total );
+void    playlog_skill       ( CHAR_DATA *ch, int sn, int before, bool from_success );
+void    playlog_quest       ( CHAR_DATA *ch, const char *kind, const char *target,
+                              int vnum, const char *name, int level,
+                              const char *area, int minutes );
 
 /* hyrule.c */
 bool    hyrule_is_dungeon_tool ( const OBJ_DATA *obj );
@@ -3907,6 +3968,10 @@ void    hyrule_after_zap       ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *wan
 bool    hyrule_paid_to_talk    ( CHAR_DATA *ch, CHAR_DATA *victim, int amount );
 bool    hyrule_keeper_refuses  ( CHAR_DATA *keeper, CHAR_DATA *ch );
 void    hyrule_boss_drops      ( CHAR_DATA *boss, OBJ_DATA *corpse );
+int     hyrule_guardian_vnum   ( int level );
+int     hyrule_boss_drop_count ( int level );
+int     hyrule_boss_drop_vnum  ( int level, int n );
+int     hyrule_ganon_loot_vnum ( int n );
 void    hyrule_note_kill       ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    hyrule_note_wound      ( CHAR_DATA *victim );
 bool    hyrule_fairy_restores  ( CHAR_DATA *fairy );

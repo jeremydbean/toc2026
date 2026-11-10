@@ -95,11 +95,19 @@ class ProgressLogTests(unittest.TestCase):
                              if line.startswith("Id "))
 
         rows = [line.split("\t") for line in text.splitlines()]
-        kills = [r for r in rows if r[1] == "kill"]
+        # One reward row per player paid, one slain row per mobile death
+        # (2026-11-10: a group kill read as one kill per member), joined
+        # by the encounter id.
+        kills = [r for r in rows if r[1] == "reward"]
+        slain = [r for r in rows if r[1] == "slain"]
         flees = [r for r in rows if r[1] == "flee"]
         self.assertEqual(len(kills), 2, text)
+        self.assertEqual(len(slain), 2, text)
         kill, unpaid = kills
-        self.assertEqual(len(kill), 24, kill)
+        self.assertEqual(len(kill), 32, kill)
+        self.assertEqual([r[11] for r in slain], [kill[25], unpaid[25]], text)
+        self.assertRegex(kill[25], r"^\d+-\d+$")
+        self.assertEqual(kill[26], "1", "one foe at the kill")
         self.assertEqual(kill[2], hunter_id)                  # the Id, not a name
         self.assertEqual((kill[3], kill[8], kill[9]), ("5", str(SMURF), "3"))
         self.assertTrue(kill[10].endswith(".are"), kill)       # an area file, never a room
@@ -118,11 +126,17 @@ class ProgressLogTests(unittest.TestCase):
         # Three gold set on the smurf, in copper, and whatever it rolled.
         self.assertGreaterEqual(int(kill[23]), 3 * 100 * 100, kill)
         self.assertRegex(unpaid[23], r"^\d+$", unpaid)
+        # And the foe's maximum hit points (2026-11-10, balance).
+        self.assertGreater(int(kill[24]), 0, kill)
         # Fifteen levels over the smurf: nothing earned, still recorded.
         self.assertEqual((unpaid[3], unpaid[8]), ("20", str(SMURF)), unpaid)
         self.assertEqual(int(unpaid[14]), 0, unpaid)
         self.assertEqual(len(flees), 1, text)
         self.assertEqual(flees[0][8], str(WORKER))
+        # How much of the foe was left, its maximum, and what it cost.
+        self.assertEqual(len(flees[0]), 15, flees[0])
+        engaged = {r[11] for r in rows if r[1] == "engage"}
+        self.assertIn(flees[0][14], engaged, "the flee names its encounter")
         self.assertNotIn("Zhunter", text)
         self.assertNotIn(str(HALLS), text)
         # The session says where the experience came from and went
@@ -183,10 +197,10 @@ class ProgressLogTests(unittest.TestCase):
                     client.wait_closed()
             text = (mud.root / "log" / "progress.tsv").read_text(encoding="latin-1")
 
-        kills = [r for r in (line.split("\t") for line in text.splitlines()) if r[1] == "kill"]
+        kills = [r for r in (line.split("\t") for line in text.splitlines()) if r[1] == "reward"]
         self.assertEqual(len(kills), 1, text)
         kill = kills[0]
-        self.assertEqual(len(kill), 24, kill)
+        self.assertEqual(len(kill), 32, kill)
         taken, healed, direct = int(kill[19]), int(kill[20]), int(kill[22])
         self.assertGreater(direct, 0, f"the shield's burns are direct losses: {kill}")
         self.assertGreaterEqual(taken, direct, kill)

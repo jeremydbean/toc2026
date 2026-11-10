@@ -618,6 +618,8 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
 void advance_level( CHAR_DATA *ch, bool is_advance )
 {
     advance_level_body( ch, is_advance );
+    if ( !IS_NPC(ch) )
+        playlog_level( ch, ch->level - 1, is_advance );     /* log/play.tsv */
     if ( !is_advance && !IS_NPC(ch) )
         player_snapshot_milestone( ch, "level", true );
 }
@@ -1476,6 +1478,7 @@ static void bank_interest( CHAR_DATA *ch )
     }
 
     ch->pcdata->bank += gain;
+    playlog_bank( ch, gain, "interest" );           /* log/play.tsv */
     if ( gain <= LONG_MAX - ch->pcdata->bank_interest_total )
         ch->pcdata->bank_interest_total += gain;
     format_coins( gain, coins_buf, sizeof(coins_buf) );

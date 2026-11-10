@@ -2080,6 +2080,9 @@ static void quest_log_assigned( CHAR_DATA *ch )
         watch_log( ch, "quest assigned: kill %s (mob %d, level %d) in %s, %d minutes, %s",
                    mob != NULL ? mob->short_descr : "?", ch->questmob,
                    mob != NULL ? mob->level : 0, area, ch->countdown, kind );
+        playlog_quest( ch, kind, "kill", ch->questmob,
+                       mob != NULL ? mob->short_descr : "?",
+                       mob != NULL ? mob->level : 0, area, ch->countdown );
     }
     else if ( ch->questobj > 0 )
     {
@@ -2088,6 +2091,9 @@ static void quest_log_assigned( CHAR_DATA *ch )
         watch_log( ch, "quest assigned: recover %s (obj %d) in %s, %d minutes, %s",
                    obj != NULL ? obj->short_descr : "?", ch->questobj,
                    area, ch->countdown, kind );
+        playlog_quest( ch, kind, "recover", ch->questobj,
+                       obj != NULL ? obj->short_descr : "?",
+                       obj != NULL ? obj->level : 0, area, ch->countdown );
     }
 }
 

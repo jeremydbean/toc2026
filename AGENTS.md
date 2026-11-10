@@ -1055,6 +1055,19 @@ A bottle filled with a Hyrule creature before that releases nothing when
 opened (`hyrule_native_vnum`): it let a guardian loose anywhere, and after
 the next reset there were two.
 
+**No creature holds a bound object, and no NPC corpse gives one** (review
+of c3923e53, P1: a bottled ordinary mobile, charmed, was ORDERed to GET
+the shard from an opened chest with no key, killed, and its corpse carried
+out through a portal). `get_obj` refuses any NPC a bound Hyrule object
+anywhere, and anybody one in an NPC corpse; `make_corpse` destroys what a
+mobile dies holding and logs it. The chest claim is the dungeon's own chest
+(`OBJ_VNUM_HYRULE_CHEST_FIRST + level - 1`) only, so an owner's corpse in
+Hyrule gives back their piece and Master Sword
+(`tests/test_hyrule_guardian_keys.py`: `CreatureLaunderingTests`,
+`CorpseRecoveryTests`). Tools stay untradeable: the owner's instruction
+later the same day ("anything that's required for progression should be
+unable to trade") supersedes the review's note that they may be lent.
+
 **Random arrivals ask of the one moved** (review, 2026-11-10). TELEPORT's
 candidate loop and `get_random_room` (recall misfires, FLING) ask
 `travel_spell_refuses` of the character carried -- TELEPORT asked the
@@ -1131,9 +1144,12 @@ bystander looted a chest another opened, a key kept over a reset opened
 the refilled chest). A guardian carries no key (the generator writes no
 `G` for it). Its death, in `raw_kill_internal` before the corpse, calls
 `hyrule_guardian_slain`: every player the kill credits -- the killer, a
-pet's or servant's master, and the mortals of their group in the room,
-the boss achievements' rule (`achievement_party_member`), never staff --
-is handed a NODROP key of their own (`hyrule_guardian_key`: 30630-30637,
+pet's or servant's master, the mortals of their group in the room (the
+boss achievements' rule, `achievement_party_member`), and any mortal in
+the room who struck it, grouped or not, however late they joined
+(`hyrule_note_striker` from `damage()`: the latest `HYRULE_STRUCK_MAX`
+fighters of its life, by file id; owner, 2026-11-10: "joined late yes,
+left room no"), never staff -- is handed a NODROP key of their own (`hyrule_guardian_key`: 30630-30637,
 Ganon's Golden Key). A chest's prize -- the piece, and Ganon's Master
 Sword -- is claimed by `hyrule_chest_claim` from `get_obj`: only with the
 dungeon's key carried, as a copy, the chest keeping its own for the rest
@@ -2983,23 +2999,68 @@ log says what a player typed; the journal says what happened, in columns
   holds (`alive=0` is a quest nobody could finish), its area and whether
   the questor was in it, and the streak. `tests/test_playlog_deep.py`.
 
-- **`log/progress.tsv`** (2026-10-22, the progression pass): a line per
-  credited kill (`progress_kill`, from `group_gain` after `gain_exp`) and
-  per player flee or death by a mobile (`progress_event`). Columns:
-  epoch, kind, the character's file **Id, never a name**, level, class,
-  remorts, hp%, mana%, foe vnum and level, **area file, never a room**;
-  a kill adds encounter ms, base, rested and accepted XP (what `gain_exp`
-  took, so the level 50 stop shows) and group size, then the fight's
-  ledger, then (2026-11-05) the coin the foe carried, in copper, read in
-  `group_gain` before the corpse is made. The encounter starts
-  at `fight_began_ms`, stamped in `set_fighting` when a mobile enters a
-  fight or a player strikes one that is in none, and never cleared --
-  `damage()` stops a dead victim's fight before `group_gain` reads it.
-  The dealer and the goblin are never written. Trimmed past
-  `PROGRESS_MAX` to `PROGRESS_KEEP`. `tools/log_report.py` aggregates it
-  by foe and area -- XP per combat minute, median encounter, coin per
-  kill, flees, deaths, distinct characters -- and prints no ids
-  (`tests/test_progress_log.py`).
+- **`log/progress.tsv` is the balance feed** (2026-10-22; rebuilt
+  2026-11-10, owner: "log everything in a way that'll allow you to balance
+  the game learning from players who play"). Numbers and vnums only: the
+  character's file **Id, never a name**, the **area file, never a room**,
+  nothing typed or said; staff (`IS_TRUSTED(LEVEL_IMMORTAL)`), wizinvis
+  players, the dealer and the goblin write nothing. The common columns
+  are epoch, kind, Id, level, class, remorts, hp%, mana%, foe vnum and
+  level, area file; the layouts are in `progress_write_raw`'s comment in
+  `src/playlog.c` and `webadmin/balance.py`'s docstring. Kinds:
+  `engage` (a mobile entering a fight with a player, from `set_fighting`:
+  the encounter id `<boot>-<n>`, both sides' hit points and mana, the
+  group and pets in the room, a coarse gear tier, buffs -- **and what
+  CONSIDER would have said, unasked** (`consider_predict` in
+  `act_info.c`, the same function CONSIDER speaks from; owner: every
+  fight held to it, whether or not the player asked)); `slain` (**one
+  per mobile death** that credits anybody, from `group_gain` before the
+  rewards -- the review of c7101e78 found a group kill counted once per
+  member -- with the encounter's ms, blow or instant, player or pet,
+  players and pets, and the mobile's own ledger, kept on the mobile in
+  `damage()` so a melee of several foes is never one total: hit points
+  that came off it, of them by pets and by spells or skills, what it took
+  off players, the rounds it fought, players' melee swings and those that
+  took hit points); `reward` (one per player paid: the old kill row's
+  columns, then the kill id, foes on them at the kill -- the player's own
+  ledger is the whole melee's when that is more than one -- gear tier and
+  hp/mana at the fight's start; a member who never struck writes a zero
+  ledger); `flee`/`death` (how much of the foe was left, its max hp, the
+  fight's cost, the encounter id); `drop` (what `make_corpse` put in the
+  corpse, `vnum:source` -- carried, guardian, ganon, enemy, holiday,
+  event -- through `corpse_tag_source`); `loot` (anything a player takes
+  out of a mobile's corpse, at any depth, from `get_obj`, joined by the
+  corpse's `kill_seq`: coin gross, before an autosplit, which is a
+  transfer); `consider` (a typed CONSIDER's prediction). Rows before
+  2026-11-10 are legacy `kill` rows, one per member: readers count each as
+  1/members of a kill and say so. `webadmin/balance.py` joins them into
+  per-kill records and per-mobile figures (kill-time quantiles, xp per
+  combat minute offered and accepted, xp an hour with the time between
+  kills, coin and gear generated against looted, hit point cost from the
+  mobile's ledger, flee and death rate, hit rate, spell share, farming),
+  sliced by player level band, solo/group, class and gear tier, and
+  compared within five-level bands: generous, poor, risky, rich, farmed
+  and **gaps** (fewer than three comparable, reachable choices).
+  `tools/balance_report.py` prints it with manual proposals (nothing is
+  edited); `tools/consider_audit.py` holds CONSIDER to the fights;
+  `/api/leveling`, the website's leveling guide and the Oracle use the
+  measured figures from players within five levels when `balance.near`
+  trusts them (`MIN_KILLS` by `MIN_CHARACTERS`), and the model, calibrated
+  by them, as a labelled fallback; the guide leaves out Hyrule's
+  guardians and areas no route reaches and names a Hyrule dungeon's
+  prerequisites. The Gear Finder carries `seen_drops`. Trimmed past
+  `PROGRESS_MAX` to `PROGRESS_KEEP`. `tests/test_progress_log.py`,
+  `tests/test_balance_log.py`.
+
+- **More journal rows** (2026-11-10, owner: log everything so a lump of
+  coin can be traced in minutes): `coin` (every purse change: amount,
+  source, command, from where, wealth after; bank interest), `got` (every
+  object reaching a player: vnum, name, type, level, cost, command, from
+  where -- `playlog_from` names the giver, the shop or the container, and
+  a wizinvis giver is "someone"), `level`, `area` (with the time spent in
+  the last), `achieved`, `skill` and `quest` rows in `log/play.tsv`;
+  `tools/log_report.py`'s activity section reads them
+  (`tests/test_playlog_activity.py`).
 
 - **`log/hyrule.tsv`** (`src/hyrulelog.c`, owner 2026-11-10: Hyrule
   logged heavily for balance and trends). Columns: epoch, kind, name,
@@ -3699,7 +3760,27 @@ you hit harder -- and must keep agreeing on what counts as gear:
   past newbie level. A level -1 prototype comes out at the carrier's level
   less two (a shopkeeper's by item type), capped at 52, with
   `dice_thrown`/`dice_size` dice -- the dashboard keeps its own copy of
-  those tables.
+  those tables. A chest's P reset counts when its key can be had.
+- **Or a death makes it** (review, 2026-11-10: the Aquamentus coat and helm,
+  30650/30651, were missing from a level 25 warrior's list). No reset shows
+  what is made at a death, so `webadmin/gear_drops.py` mirrors the C that
+  makes it, each piece with its source, where, the chance a kill, what the
+  way there needs and the holiday if it has one (`drop_sources` on a Gear
+  Finder entry; the Oracle's gear and "where does X drop" lines say the
+  same): a Hyrule guardian's drop table (three of its 10 or 11 pieces a
+  kill, `hyrule_boss_drops`), Ganon's relic (one of three), the two
+  boomerangs a cleared room lays (`hyrule_clear_rewards`), the holiday
+  bosses' drops (`event_boss_drops`) and Midsummer's firework
+  (`holiday_corpse_drop`) -- **a holiday's items only while it is on** --
+  and the black market's rarities, which a treasure goblin's sack and the
+  black dragon's hoard also roll (`black_market_rarity`). Their other gear,
+  `black_market_gear_for_level`, is a reset item already and is not added
+  twice. `tests/test_gear_drop_sources.py` holds every mirrored number to
+  the C, merc.h and the generator: change a drop table there and change it
+  here. COMPARE UPGRADES lists the guardians' tables and Ganon's relics too
+  (`gear_find_guardian_drops`, "dropped by ... about 3 kills in 11"), but
+  not the boomerangs, the holiday items or the rarities, and names no
+  prerequisite.
 - **COMPARE UPGRADES never calls `create_object`.** It builds a stack
   `OBJ_DATA` from the prototype, because a real object joins `object_list`,
   counts against limits and advances max-load state, all for a figure.

@@ -3292,6 +3292,13 @@ accept either a direction (to act on that exit's door) or an object name
 than one door, name the door and its direction together -- OPEN DOOR EAST
 -- or just the direction.
 
+A direction may be shortened to any start of its name, as the movement
+commands take one: OP WES opens the west door, OPEN SO the south one.
+Where a start fits more than one direction the plain one wins (NO is
+north, SO is south); a diagonal is NE, NW, SE or SW, or long enough to
+tell apart (NORTHE).  A direction with a door is that door, even when
+something you carry also begins with the same letters.
+
 See also: LOCK, UNLOCK, PICK, DOORBASH
 ~
 
@@ -3302,6 +3309,7 @@ Syntax: unlock <object|direction>
 LOCK secures a closed door or container.  UNLOCK removes the lock.  Both
 require the appropriate key in your inventory.  Without a key, characters
 with the PICK LOCK skill can bypass the lock with the PICK command.
+A direction may be shortened as for OPEN: UNLOCK WE is the west door.
 
 See also: OPEN, CLOSE, PICK, DOORBASH
 ~
@@ -3462,7 +3470,8 @@ COMPARE tells you which gear makes you hit harder.
   compare <item> <item>   two items against each other
   compare upgrades        the best piece for every slot that you could
                           wear today, from gear a mob in the world carries
-                          or sells
+                          or sells, a chest holds, or a Hyrule guardian
+                          drops (with how often it falls)
   compare upgrades <slot> the top five for one slot, and where to get them
   compare profile         how your damage is made: swings, hit chance,
                           damage a hit, and mana for casters
@@ -4806,7 +4815,11 @@ Syntax: sw
 
 Use these commands to walk in a particular direction.  The ordinary directions
 are usually abbreviated as N, S, E, W, U and D.   The diagonal directions
-may be abbreviated as NE, NW, SE and SW.  If you are using a mud client to
+may be abbreviated as NE, NW, SE and SW.  Any start of a direction's name
+works too -- NO, NOR, WES, SOU -- and where it fits more than one direction
+the plain one wins: NO is north, SO is south, and NORTHE is northeast.
+OPEN, CLOSE, LOCK, UNLOCK, PICK, LOOK, RUN, SHOVE and the other commands
+that take a direction read it the same way.  If you are using a mud client to
 access the game, you may need to alter some of the files to allow for the
 abbreviated directions.
 

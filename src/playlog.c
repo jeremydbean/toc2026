@@ -50,8 +50,11 @@
 
 #define PLAY_JOURNAL_FILE   "../log/play.tsv"
 #define CRASH_LOG_FILE      "../log/crash.log"
-#define PLAY_JOURNAL_MAX    30000
-#define PLAY_JOURNAL_KEEP   15000
+/* Doubled when every coin, object, level, area, achievement and skill gain
+   joined the journal (owner, 2026-11-10: log everything players do, so a
+   bug is found by reading, not by digging). */
+#define PLAY_JOURNAL_MAX    60000
+#define PLAY_JOURNAL_KEEP   30000
 #define PLAY_LINE           640
 #define PLAY_REPLY          240     /* the answer kept for a command */
 #define PLAY_REPLY_LINES    3       /* ... its first lines, joined with " // " */
@@ -85,6 +88,7 @@ enum { COIN_LOOT, COIN_QUEST, COIN_DAILY, COIN_SOLD, COIN_GAMBLING,
 static const char *const coin_source_names[PLAY_COIN_KINDS] =
     { "loot", "quests", "dailies", "sales", "gambling", "other", "spent" };
 static const char *coin_override;   /* playlog_coin_as() */
+static char play_from[80];          /* playlog_from(): where a thing came from */
 static const char *exp_override;    /* playlog_exp_as() */
 static void playlog_pulse_command( const char *name, long ms );
 
@@ -580,6 +584,7 @@ void playlog_end( CHAR_DATA *ch, const char *cmd_name, const char *shown,
     bool cut = false;
 
     current_set = false;
+    play_from[0] = '\0';
     playlog_phase = "game loop";
     playlog_pulse_command( play_hidden( ch ) ? "-" : refused ? "(refused)" : cmd_name, ms );
     if ( ch == NULL || IS_NPC(ch) )
@@ -927,6 +932,159 @@ void playlog_coin( CHAR_DATA *ch, long amount, long unit, bool pile )
         ch->pcdata->play_coin[kind] = LONG_MAX;
     else
         ch->pcdata->play_coin[kind] += copper;
+
+    /* Every change of purse, one row: how much, which tally it went to,
+       the command, where it came from (the corpse or box, the keeper),
+       and what the character is worth after it, purse and bank -- so a
+       jump in wealth is read, not reconstructed (owner, 2026-11-10). */
+    {
+        char fields[PLAY_LINE];
+        char from[80];
+
+        play_clean( from, sizeof(from), play_from[0] != '\0' ? play_from : "-" );
+        snprintf( fields, sizeof(fields), "%s%ld\t%s\t%s\t%s\t%ld",
+                  amount < 0 ? "-" : "+", copper,
+                  kind == COIN_SPENT ? "spent" : coin_source_names[kind],
+                  playlog_how( ch ), from, play_wealth( ch ) );
+        journal_write( "coin", ch, fields );
+    }
+}
+
+/* Where the thing a command moves came from -- the container GET takes it
+   from, the keeper BUY buys from -- for the coin and got rows this command
+   writes. Cleared when the command ends. */
+void playlog_from( const char *where )
+{
+    if ( where == NULL )
+        play_from[0] = '\0';
+    else
+        play_clean( play_from, sizeof(play_from), where );
+}
+
+/* The bank's own changes, which no purse function sees: interest. */
+void playlog_bank( CHAR_DATA *ch, long copper, const char *why )
+{
+    char fields[PLAY_LINE];
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || copper == 0 )
+        return;
+    snprintf( fields, sizeof(fields), "%s%ld\t%s\t%s\t%s\t%ld",
+              copper < 0 ? "-" : "+", copper < 0 ? -copper : copper,
+              "bank", why != NULL ? why : "-", "bank", play_wealth( ch ) );
+    journal_write( "coin", ch, fields );
+}
+
+/* Every object reaching a playing character (obj_to_char), with how and
+   from where: looted, bought, given, made, restored. Coin piles are the
+   coin rows'. */
+void playlog_got( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    char fields[PLAY_LINE];
+    char name[80], from[80];
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || obj == NULL
+    ||   obj->pIndexData == NULL || obj->item_type == ITEM_MONEY
+    ||   ch->desc == NULL || ch->desc->connected != CON_PLAYING )
+        return;
+    play_clean( name, sizeof(name), obj->short_descr );
+    play_clean( from, sizeof(from), play_from[0] != '\0' ? play_from : "-" );
+    snprintf( fields, sizeof(fields), "%d\t%s\t%s\t%d\t%ld\t%s\t%s",
+              obj->pIndexData->vnum, name, item_type_name( obj ), obj->level,
+              (long) obj->cost, playlog_how( ch ), from );
+    journal_write( "got", ch, fields );
+}
+
+/* A level gained (advance_level): from, to, how long the last one took. */
+void playlog_level( CHAR_DATA *ch, int from, bool is_advance )
+{
+    char fields[PLAY_LINE];
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    snprintf( fields, sizeof(fields), "%d\t%d\t%s\t%d\t%ld\t%ld\t%s",
+              from, ch->level,
+              ch->class >= 0 && ch->class < MAX_CLASS ? class_table[ch->class].who_name : "?",
+              ch->pcdata->num_remorts, ch->exp,
+              ch->pcdata->play_level_at > 0
+                  ? (long) ( current_time - ch->pcdata->play_level_at ) : -1L,
+              is_advance ? "advance" : playlog_how( ch ) );
+    ch->pcdata->play_level_at = current_time;
+    journal_write( "level", ch, fields );
+}
+
+/* From char_to_room: a player crossing into another area, with the time
+   spent in the one left and how they went (a command, a recall, death). */
+void playlog_moved( CHAR_DATA *ch )
+{
+    char fields[PLAY_LINE];
+    char was[64], now[64];
+    AREA_DATA *area;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || ch->in_room == NULL
+    ||   ch->desc == NULL || ch->desc->connected != CON_PLAYING )
+        return;
+    area = ch->in_room->area;
+    if ( area == ch->pcdata->play_area )
+        return;
+    play_clean( was, sizeof(was), ch->pcdata->play_area != NULL
+                                  ? ch->pcdata->play_area->file_name : "-" );
+    play_clean( now, sizeof(now), area != NULL ? area->file_name : "-" );
+    snprintf( fields, sizeof(fields), "%s\t%s\t%ld\t%s", was, now,
+              ch->pcdata->play_area != NULL && ch->pcdata->play_area_since > 0
+                  ? (long) ( current_time - ch->pcdata->play_area_since ) : -1L,
+              playlog_how( ch ) );
+    ch->pcdata->play_area = area;
+    ch->pcdata->play_area_since = current_time;
+    /* Never into or out of a room the dealer or goblin hides in: the
+       journal names the area, not the room, but journal_write's common
+       columns would name the room, and room_hides_from_log blanks it. */
+    journal_write( "area", ch, fields );
+}
+
+void playlog_achieved( CHAR_DATA *ch, const char *key, int points, int total )
+{
+    char fields[PLAY_LINE];
+    char what[80];
+
+    if ( ch == NULL || IS_NPC(ch) )
+        return;
+    play_clean( what, sizeof(what), key );
+    snprintf( fields, sizeof(fields), "%s\t%d\t%d\t%s", what, points, total,
+              playlog_how( ch ) );
+    journal_write( "achieved", ch, fields );
+}
+
+/* check_improve's gain: the skill, before and after, and whether it came
+   from a success or from learning from a mistake. */
+void playlog_skill( CHAR_DATA *ch, int sn, int before, bool from_success )
+{
+    char fields[PLAY_LINE];
+    char name[64];
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || sn < 0 || sn >= MAX_SKILL )
+        return;
+    play_clean( name, sizeof(name), skill_table[sn].name );
+    snprintf( fields, sizeof(fields), "%s\t%d\t%d\t%s\t%s", name, before,
+              ch->pcdata->learned[sn], from_success ? "success" : "mistake",
+              playlog_how( ch ) );
+    journal_write( "skill", ch, fields );
+}
+
+/* A quest handed out: its kind, what to do, the target, its level and
+   area file (never the room), and the minutes given. */
+void playlog_quest( CHAR_DATA *ch, const char *kind, const char *target, int vnum,
+                    const char *name, int level, const char *area, int minutes )
+{
+    char fields[PLAY_LINE];
+    char what[80], where[64];
+
+    if ( ch == NULL || IS_NPC(ch) )
+        return;
+    play_clean( what, sizeof(what), name );
+    play_clean( where, sizeof(where), area );
+    snprintf( fields, sizeof(fields), "%s\t%s\t%d\t%s\t%d\t%s\t%d",
+              kind, target, vnum, what, level, where, minutes );
+    journal_write( "quest", ch, fields );
 }
 
 /*
@@ -1108,83 +1266,423 @@ static void progress_trim( void )
         progress_lines = PROGRESS_KEEP;
 }
 
-static void progress_write( const char *kind, CHAR_DATA *ch, CHAR_DATA *foe, const char *tail )
+/*
+ * The balance feed (owner, 2026-11-10: "log everything in a way that'll
+ * allow you to balance the game learning from players who play"). Every
+ * row is numbers and vnums: a character's file Id, never a name, an area
+ * file, never a room, and nothing typed or said. Staff write none -- what
+ * an immortal's kills take is no measure of anything -- and nor does a
+ * wizinvis player. The rows, after the eleven columns every row has
+ * (epoch, kind, Id, level, class, remorts, hp%, mana%, foe vnum, foe
+ * level, area file):
+ *
+ *   engage  a mobile entering a fight with a player: the encounter id,
+ *           the foe's max hp, the player's hp, max hp, mana, max mana,
+ *           players and pets of their group in the room, gear tier, buffs,
+ *           then what CONSIDER would have said, unasked: the player's and
+ *           the foe's damage a round, the rounds each would need, the
+ *           verdict (scratch easily win narrow even lose die), caster
+ *   slain   one per mobile death that credits anybody: the encounter id
+ *           (the kill id), encounter ms, how (blow or instant), by whom
+ *           (player or pet), players credited, pets of the group there,
+ *           the foe's max hp, the hit points that came off it, of them by
+ *           pets, what it took off players, the coin it carried (copper),
+ *           the rounds it fought, players' melee swings at it, the swings
+ *           that took hit points, and the hit points spells and skills
+ *           took (CONSIDER counts weapon blows only, every one landing)
+ *   reward  one per player the kill pays (a kill's old row, the column
+ *           layout kept): encounter ms, base, rested and accepted xp,
+ *           group members, guild, buffs, the player's own fight ledger
+ *           (dealt, lost, healed, mana, lost outside blows), coin, foe max
+ *           hp; then the kill id, foes fighting them at the kill (the
+ *           ledger is the whole melee's when that is more than one), gear
+ *           tier, hp and mana at the fight's start and their maxima
+ *   flee, death  how much of the foe was left (hp%), its max hp, the hit
+ *           points the fight cost, the encounter id
+ *   drop    what the corpse was made with: the kill id, objects, worth
+ *           (copper), highest level, then vnum:source for the first few
+ *   consider  a CONSIDER typed: the player's and the foe's damage a
+ *           round, the rounds each would need, the verdict, hp each, caster
+ *   loot    an object or a coin pile taken out of a corpse by a player:
+ *           the kill id, coin or obj, vnum, worth (copper), level,
+ *           source, the command, players of the group in the room
+ *
+ * Before 2026-11-10 a kill wrote one "kill" row per player it paid, so a
+ * group kill read as several: tools read those as legacy rows and say so.
+ */
+
+/* An encounter id: this boot's start and a count, so ids never repeat
+   across restarts and need no state on the disk. */
+static long progress_boot_epoch;
+static long progress_counter;
+
+long progress_encounter_id( CHAR_DATA *mob )
+{
+    if ( mob == NULL )
+        return 0;
+    if ( mob->encounter_seq <= 0 )
+    {
+        if ( progress_boot_epoch == 0 )
+            progress_boot_epoch = (long) current_time;
+        mob->encounter_seq = ++progress_counter;
+        mob->enc_taken = mob->enc_by_pets = mob->enc_dealt = 0;
+        mob->enc_rounds = 0;
+        mob->enc_swings = mob->enc_landed = 0;
+        mob->enc_by_skills = 0;
+    }
+    return mob->encounter_seq;
+}
+
+static const char *encounter_text( long seq, char *buf, size_t size )
+{
+    if ( seq <= 0 )
+        return "-";
+    if ( progress_boot_epoch == 0 )
+        progress_boot_epoch = (long) current_time;
+    snprintf( buf, size, "%ld-%ld", progress_boot_epoch, seq );
+    return buf;
+}
+
+/* The player a mobile's fight or kill belongs to: the player, or the
+   master of a pet or servant. NULL for anything else. */
+static CHAR_DATA *progress_player( CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+        return NULL;
+    if ( IS_NPC(ch) && ch->master != NULL && !IS_NPC(ch->master)
+    &&   IS_AFFECTED(ch, AFF_CHARM) )
+        ch = ch->master;
+    return IS_NPC(ch) || ch->pcdata == NULL ? NULL : ch;
+}
+
+/* A coarse gear tier: the average level of what is worn, or -1. */
+static int progress_gear_tier( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj;
+    long sum = 0;
+    int n = 0;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->wear_loc != WEAR_NONE )
+        {
+            sum += obj->level;
+            n++;
+        }
+    return n > 0 ? (int) ( sum / n ) : -1;
+}
+
+static void progress_buffs( CHAR_DATA *ch, char *buffs )
+{
+    int n = 0;
+
+    if ( is_affected( ch, gsn_titanic ) ) buffs[n++] = 'T';
+    if ( is_affected( ch, gsn_empower ) ) buffs[n++] = 'E';
+    if ( IS_AFFECTED( ch, AFF_SANCTUARY ) ) buffs[n++] = 'S';
+    if ( IS_AFFECTED( ch, AFF_HASTE ) ) buffs[n++] = 'H';
+    if ( n == 0 )
+        buffs[n++] = '-';
+    buffs[n] = '\0';
+}
+
+/* Players and pets of ch's group standing with them. */
+static void progress_party( CHAR_DATA *ch, int *players, int *pets )
+{
+    CHAR_DATA *gch;
+
+    *players = *pets = 0;
+    if ( ch == NULL || ch->in_room == NULL )
+        return;
+    for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
+        if ( is_same_group( gch, ch ) )
+        {
+            if ( IS_NPC(gch) )
+                (*pets)++;
+            else
+                (*players)++;
+        }
+}
+
+static void progress_write_raw( const char *kind, CHAR_DATA *ch, int vnum, int level,
+                                const char *area, const char *tail )
 {
     FILE *fp;
-    const char *area = "-";
     int hp_pct, mana_pct;
 
-    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || foe == NULL || !IS_NPC(foe)
-    ||   foe->pIndexData == NULL || is_unfindable_mob( foe ) || play_hidden( ch ) )
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || play_hidden( ch )
+    ||   IS_TRUSTED(ch, LEVEL_IMMORTAL) )
         return;
     if ( progress_lines < 0 || progress_lines >= PROGRESS_MAX )
         progress_trim();
-    if ( foe->in_room != NULL && foe->in_room->area != NULL
-    &&   foe->in_room->area->file_name != NULL )
-        area = foe->in_room->area->file_name;
     hp_pct = ch->max_hit > 0 ? (int) ( 100L * ch->hit / ch->max_hit ) : 0;
     mana_pct = ch->max_mana > 0 ? (int) ( 100L * ch->mana / ch->max_mana ) : 0;
     if ( ( fp = fopen( PROGRESS_FILE, "a" ) ) == NULL )
         return;
     fprintf( fp, "%ld\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s%s%s\n",
              (long) current_time, kind, ch->pcdata->id, ch->level, ch->class,
-             ch->pcdata->num_remorts, hp_pct, mana_pct,
-             foe->pIndexData->vnum, foe->level, area,
+             ch->pcdata->num_remorts, hp_pct, mana_pct, vnum, level,
+             area != NULL && area[0] != '\0' ? area : "-",
              tail[0] != '\0' ? "\t" : "", tail );
     fclose( fp );
     progress_lines++;
 }
 
+static void progress_write( const char *kind, CHAR_DATA *ch, CHAR_DATA *foe, const char *tail )
+{
+    const char *area = "-";
+
+    if ( foe == NULL || !IS_NPC(foe) || foe->pIndexData == NULL || is_unfindable_mob( foe ) )
+        return;
+    if ( foe->in_room != NULL && foe->in_room->area != NULL
+    &&   foe->in_room->area->file_name != NULL )
+        area = foe->in_room->area->file_name;
+    progress_write_raw( kind, ch, foe->pIndexData->vnum, foe->level, area, tail );
+}
+
+/* A mobile entering a fight (set_fighting): the encounter begins. */
+void progress_engage( CHAR_DATA *mob, CHAR_DATA *opponent )
+{
+    CHAR_DATA *pc = progress_player( opponent );
+    char tail[384], id[48], buffs[8];
+    double yours = 0, theirs = 0, your_rounds = 0, their_rounds = 0;
+    const char *verdict = "-";
+    bool caster = false;
+    int players, pets;
+
+    if ( mob == NULL || !IS_NPC(mob) )
+        return;
+    mob->encounter_seq = 0;
+    progress_encounter_id( mob );
+    if ( pc == NULL || pc->in_room == NULL || pc->in_room != mob->in_room
+    ||   IS_TRUSTED(pc, LEVEL_IMMORTAL) || play_hidden( pc ) || is_unfindable_mob( mob ) )
+        return;
+    progress_party( pc, &players, &pets );
+    progress_buffs( pc, buffs );
+    /* What CONSIDER would have told them, said to nobody (owner,
+       2026-11-10: every fight held to it, whether or not the player
+       asked): each side's damage a round, the rounds each would need,
+       the verdict. The slain row's rounds and the mobile's ledger are
+       what it came to. */
+    verdict = consider_predict( pc, mob, &yours, &theirs, &your_rounds, &their_rounds, &caster );
+    snprintf( tail, sizeof(tail),
+              "%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s\t%.1f\t%.1f\t%.1f\t%.1f\t%s\t%d",
+              encounter_text( mob->encounter_seq, id, sizeof(id) ), mob->max_hit,
+              pc->hit, pc->max_hit, pc->mana, pc->max_mana, players, pets,
+              progress_gear_tier( pc ), buffs, yours, theirs, your_rounds, their_rounds,
+              verdict, caster ? 1 : 0 );
+    progress_write( "engage", pc, mob, tail );
+}
+
+/* One row per mobile death that credits anybody (group_gain). */
+void progress_slain( CHAR_DATA *killer, CHAR_DATA *victim, int players, int pets )
+{
+    CHAR_DATA *pc = progress_player( killer );
+    char tail[320], id[48];
+    long encounter;
+
+    if ( victim == NULL || !IS_NPC(victim) || pc == NULL )
+        return;
+    progress_encounter_id( victim );
+    encounter = victim->fight_began_ms > 0 ? playlog_now_ms() - victim->fight_began_ms : -1;
+    snprintf( tail, sizeof(tail), "%s\t%ld\t%s\t%s\t%d\t%d\t%d\t%ld\t%ld\t%ld\t%ld\t%d\t%d\t%d\t%ld",
+              encounter_text( victim->encounter_seq, id, sizeof(id) ), encounter,
+              victim->hit > 0 ? "instant" : "blow",
+              IS_NPC(killer) ? "pet" : "player", players, pets, victim->max_hit,
+              victim->enc_taken, victim->enc_by_pets, victim->enc_dealt,
+              coins_to_copper( victim ), victim->enc_rounds, victim->enc_swings,
+              victim->enc_landed, victim->enc_by_skills );
+    progress_write( "slain", pc, victim, tail );
+}
+
 void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_xp,
                     long accepted_xp, int members, long victim_coin )
 {
-    char tail[256];
+    char tail[512], id[48], buffs[8];
     long encounter = victim != NULL && victim->fight_began_ms > 0
                    ? playlog_now_ms() - victim->fight_began_ms : -1;
-
-    char buffs[8];
     PC_DATA *pc = gch != NULL && !IS_NPC(gch) ? gch->pcdata : NULL;
-    int n = 0;
+    CHAR_DATA *rch;
+    int foes = 1;
+    bool fought;
 
     /* The fight in aggregate, for balance (class review, 2026-10-26):
        the guild, the buffs worn (T titanic, E empower, S sanctuary,
        H haste), and from the fight's ledger -- everything since this
        character's own fight began (set_fighting), which is the kill's
        encounter for a fight with one foe and the whole melee for one with
-       several -- the damage dealt; the hit points lost, every way; the
-       hit points seen to rise (healing, regeneration, drains: never
-       negative); the mana spent; and of the losses, those outside
-       damage() (reflection, traps). Numbers only -- nothing typed, said
-       or named. */
-    if ( pc != NULL )
+       several, so the foes column says which -- the damage dealt; the hit
+       points lost, every way; the hit points seen to rise (healing,
+       regeneration, drains: never negative); the mana spent; and of the
+       losses, those outside damage() (reflection, traps). Numbers only --
+       nothing typed, said or named. */
+    if ( pc == NULL || victim == NULL )
+        return;
+    /* A member of the group who never struck has no fight of their own:
+       their ledger is an old fight's, or nothing, so it is written as
+       zeros and foes as 0 (review, 2026-11-10: a bystander's read as
+       five thousand hit points healed). A fight that ended with this kill
+       ended a moment ago. */
+    fought = pc->meter_active
+          || ( pc->fight_stopped_ms > 0 && playlog_now_ms() - pc->fight_stopped_ms < 5000 );
+    progress_buffs( gch, buffs );
+    if ( !fought )
     {
-        fight_ledger_observe( gch );
-        if ( is_affected( gch, gsn_titanic ) ) buffs[n++] = 'T';
-        if ( is_affected( gch, gsn_empower ) ) buffs[n++] = 'E';
-        if ( IS_AFFECTED( gch, AFF_SANCTUARY ) ) buffs[n++] = 'S';
-        if ( IS_AFFECTED( gch, AFF_HASTE ) ) buffs[n++] = 'H';
+        snprintf( tail, sizeof(tail),
+                  "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t0\t0\t0\t0\t0\t%ld\t%d"
+                  "\t%s\t0\t%d\t%d\t%d\t%d\t%d",
+                  encounter, base_xp, rested_xp, accepted_xp, members, pc->guild, buffs,
+                  victim_coin, victim->max_hit,
+                  encounter_text( victim->encounter_seq, id, sizeof(id) ),
+                  progress_gear_tier( gch ), gch->hit, gch->max_hit, gch->mana, gch->max_mana );
+        progress_write( "reward", gch, victim, tail );
+        return;
     }
-    if ( n == 0 )
-        buffs[n++] = '-';
-    buffs[n] = '\0';
-    /* Last, the coin the foe carried when it fell (2026-11-05), copper:
-       what its corpse holds before any holiday treat, so loot per kill
-       can be held against the level roll (mob_index_set_wealth). */
-    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t%ld\t%ld\t%ld\t%d\t%ld\t%ld",
+    fight_ledger_observe( gch );
+    if ( gch->in_room != NULL )
+        for ( rch = gch->in_room->people; rch != NULL; rch = rch->next_in_room )
+            if ( rch != victim && IS_NPC(rch) && rch->fighting == gch )
+                foes++;
+    snprintf( tail, sizeof(tail),
+              "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t%ld\t%ld\t%ld\t%d\t%ld\t%ld\t%d"
+              "\t%s\t%d\t%d\t%d\t%d\t%d\t%d",
               encounter, base_xp, rested_xp, accepted_xp, members,
-              pc != NULL ? pc->guild : -1, buffs,
-              pc != NULL ? pc->meter_damage : 0L,
-              pc != NULL ? pc->fight_taken + pc->fight_direct : 0L,
-              pc != NULL ? pc->fight_healed : 0L,
-              pc != NULL ? pc->fight_mana_start - gch->mana : 0,
-              pc != NULL ? pc->fight_direct : 0L, victim_coin );
-    progress_write( "kill", gch, victim, tail );
+              pc->guild, buffs, pc->meter_damage,
+              pc->fight_taken + pc->fight_direct, pc->fight_healed,
+              pc->fight_mana_start - gch->mana, pc->fight_direct, victim_coin,
+              victim->max_hit,
+              encounter_text( victim->encounter_seq, id, sizeof(id) ), foes,
+              progress_gear_tier( gch ), pc->fight_hp_start, gch->max_hit,
+              pc->fight_mana_start, gch->max_mana );
+    progress_write( "reward", gch, victim, tail );
 }
 
-/* kind is "flee" or "death"; foe is the mobile it was against. */
+/* kind is "flee" or "death"; foe is the mobile it was against. The tail
+   is how much of the foe was left -- its hit points as a percentage of
+   its maximum, and that maximum -- what the fight had cost the character
+   (the hit points lost every way), and the encounter. A flee at a foe's
+   90% is a foe out of its depth; at 10%, a close call. */
 void progress_event( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe )
 {
-    progress_write( kind, ch, foe, "" );
+    char tail[128], id[48];
+    PC_DATA *pc = ch != NULL && !IS_NPC(ch) ? ch->pcdata : NULL;
+
+    if ( foe == NULL )
+        return;
+    snprintf( tail, sizeof(tail), "%d\t%d\t%ld\t%s",
+              foe->max_hit > 0 ? (int) ( 100L * UMAX( 0, foe->hit ) / foe->max_hit ) : 0,
+              foe->max_hit,
+              pc != NULL ? pc->fight_taken + pc->fight_direct : 0L,
+              encounter_text( foe->encounter_seq, id, sizeof(id) ) );
+    progress_write( kind, ch, foe, tail );
+}
+
+/* What a kill left to take (owner: "how much gold/experience/gear is
+   given"): every object in the corpse at any depth but coin, which the
+   slain row counts -- how many, their worth in copper together, the
+   highest level among them, and vnum:source for the first few, the
+   source being what make_corpse put it there for (carried, guardian,
+   ganon, enemy, holiday, event). A corpse with nothing in it writes
+   "0 0 0 -", which is the answer too. */
+static void drop_walk( OBJ_DATA *list, int *count, long *worth, int *top,
+                       char *items, size_t size, int *named, int depth )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = list; obj != NULL && depth < 8; obj = obj->next_content )
+    {
+        if ( obj->item_type != ITEM_MONEY )
+        {
+            (*count)++;
+            if ( obj->cost > 0 && *worth < LONG_MAX - obj->cost )
+                *worth += obj->cost;
+            if ( obj->level > *top )
+                *top = obj->level;
+            if ( *named < 8 && obj->pIndexData != NULL )
+            {
+                char one[48];
+
+                snprintf( one, sizeof(one), "%s%d:%s", *named > 0 ? "," : "",
+                          obj->pIndexData->vnum,
+                          obj->drop_source != NULL ? obj->drop_source : "carried" );
+                toc_strlcat( items, one, size );
+                (*named)++;
+            }
+        }
+        if ( obj->contains != NULL )
+            drop_walk( obj->contains, count, worth, top, items, size, named, depth + 1 );
+    }
+}
+
+void progress_drop( CHAR_DATA *killer, CHAR_DATA *victim, OBJ_DATA *corpse )
+{
+    CHAR_DATA *who = progress_player( killer );
+    char items[320], tail[448], id[48];
+    int count = 0, top = 0, named = 0;
+    long worth = 0;
+
+    if ( victim == NULL || !IS_NPC(victim) || corpse == NULL )
+        return;
+    /* The corpse carries the kill, so what is taken out of it later is
+       joined to this row and the slain one. */
+    corpse->kill_seq = progress_encounter_id( victim );
+    corpse->kill_vnum = victim->pIndexData != NULL ? victim->pIndexData->vnum : 0;
+    corpse->kill_level = victim->level;
+    if ( who == NULL )
+        return;
+    items[0] = '\0';
+    drop_walk( corpse->contains, &count, &worth, &top, items, sizeof(items), &named, 0 );
+    snprintf( tail, sizeof(tail), "%s\t%d\t%ld\t%d\t%s",
+              encounter_text( victim->encounter_seq, id, sizeof(id) ),
+              count, worth, top, items[0] != '\0' ? items : "-" );
+    progress_write( "drop", who, victim, tail );
+}
+
+/* What CONSIDER predicted (consider_fight): each side's damage a round,
+   the rounds each would need, and the verdict's key -- so the fight that
+   follows, by the same Id against the same foe, can be held to it
+   (tools/consider_audit.py; owner, 2026-11-10: "i feel like the
+   consider command isn't that accurate"). */
+void progress_consider( CHAR_DATA *ch, CHAR_DATA *victim, double yours, double theirs,
+                        double your_rounds, double their_rounds, const char *verdict,
+                        bool caster )
+{
+    char tail[192];
+
+    if ( ch == NULL || victim == NULL || !IS_NPC(victim) )
+        return;
+    snprintf( tail, sizeof(tail), "%.1f\t%.1f\t%.1f\t%.1f\t%s\t%d\t%d\t%d",
+              yours, theirs, your_rounds, their_rounds, verdict, ch->hit, victim->hit,
+              caster ? 1 : 0 );
+    progress_write( "consider", ch, victim, tail );
+}
+
+/* Something taken out of a mobile's corpse (get_obj, before it moves):
+   what a kill actually paid, beside what it was made with. Coin is
+   counted gross, before any autosplit -- the split is a transfer between
+   players, which log/play.tsv's coin rows show -- and the group in the
+   room says how many it may be split among. */
+void progress_loot( CHAR_DATA *ch, OBJ_DATA *corpse, OBJ_DATA *obj, long copper )
+{
+    char tail[256], id[48];
+    const char *area = "-";
+    int players, pets;
+
+    if ( ch == NULL || IS_NPC(ch) || corpse == NULL || obj == NULL
+    ||   corpse->item_type != ITEM_CORPSE_NPC || corpse->kill_seq <= 0 )
+        return;
+    if ( corpse->in_room != NULL && corpse->in_room->area != NULL
+    &&   corpse->in_room->area->file_name != NULL )
+        area = corpse->in_room->area->file_name;
+    progress_party( ch, &players, &pets );
+    snprintf( tail, sizeof(tail), "%s\t%s\t%d\t%ld\t%d\t%s\t%s\t%d",
+              encounter_text( corpse->kill_seq, id, sizeof(id) ),
+              obj->item_type == ITEM_MONEY ? "coin" : "obj",
+              obj->pIndexData != NULL ? obj->pIndexData->vnum : 0,
+              obj->item_type == ITEM_MONEY ? copper : UMAX( 0L, obj->cost ),
+              obj->level,
+              obj->item_type == ITEM_MONEY ? "coin"
+                  : obj->drop_source != NULL ? obj->drop_source : "carried",
+              playlog_how( ch ), players );
+    progress_write_raw( "loot", ch, corpse->kill_vnum, corpse->kill_level, area, tail );
 }
 
 

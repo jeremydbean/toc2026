@@ -93,7 +93,7 @@ class AuditSourceTests(unittest.TestCase):
         fists = fight.split("You attack in an all consuming fury", 1)[1].split("\n}", 1)[0]
         flee_at = fists.index("do_flee(victim")
         self.assertIn("hyrule_native( victim )", fists[:flee_at])
-        self.assertIn("!hyrule_native( victim ) && number_percent( ) > chance",
+        self.assertIn("!hyrule_native( victim ) && skill_roll_missed( ch, number_percent( ) > chance )",
                       fists[:flee_at], "a creature of Hyrule never reaches the flight")
         flee = fight.split("void do_flee(", 1)[1].split("\nvoid ", 1)[0]
         self.assertLess(flee.index("hyrule_native( victim )"), flee.index("do_flee(victim"))

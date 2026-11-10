@@ -41,11 +41,24 @@ class LevelingTests(unittest.TestCase):
         self.assertEqual(server.xp_for_kill(30, 27), 100)
         self.assertEqual(server.xp_for_kill(30, 10), 0)
 
-    def find(self, *mobs, level=30):
+    def find(self, *mobs, level=30, routed=("Test",)):
         from webadmin import server
-        fake = SimpleNamespace(mobiles={m.vnum: m for m in mobs})
-        with patch.object(server, "parser", fake):
+        fake = SimpleNamespace(mobiles={m.vnum: m for m in mobs}, rooms={}, objects={})
+        routes = {"routes": [{"area": a, "commands": "n", "rooms_away": 1} for a in routed]}
+        with patch.object(server, "parser", fake), \
+                patch.object(server, "load_directions", lambda: routes), \
+                patch.object(server, "PROGRESS_LOG", Path("/nonexistent/progress.tsv")):
             return asyncio.run(server.get_leveling(level=level, limit=50))
+
+    def test_no_route_or_a_guardian_is_no_ordinary_prey(self):
+        """Review of c7101e78: never recommend what a player cannot reach,
+        nor a Hyrule guardian, as ordinary leveling prey."""
+        from webadmin import gear_drops
+        guardian = gear_drops.GUARDIAN_VNUMS[0]
+        data = self.find(mob(1, 32, rooms=(1, 2, 3)), mob(guardian, 32, rooms=(1, 2)))
+        self.assertEqual({m["vnum"] for m in data["mobs"]}, {1})
+        self.assertEqual(self.find(mob(1, 32), routed=())["mobs"], [])
+        self.assertEqual(data["mobs"][0]["basis"], "modelled", "no kills logged: the model")
 
     def test_it_skips_unobtainable_and_service_and_out_of_band(self):
         data = self.find(

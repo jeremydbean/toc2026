@@ -49,22 +49,28 @@ class PickSourceTests(unittest.TestCase):
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class PickLiveTests(unittest.TestCase):
     def test_pickproof_says_so_and_a_real_lock_opens(self) -> None:
-        """A mortal (so the pickproof checks apply) with staff trust, at
-        100% so the only thing that can stop a pick is the lock itself."""
+        """A mortal picks (so the pickproof checks apply, and a missed roll
+        is a miss: staff never miss one since 2026-11-10); staff set the
+        skill and clear the room. At 100% the only thing that can stop a
+        pick is the lock itself."""
         with LiveMud() as mud:
-            with mud.connect(timeout=120) as client:
-                create_character(client, "Zpicker", PASSWORD)
-                client.drain(1.0)
-                client.send("quit")
-                self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zpicker", Levl=40, Tru=70, Room=TEMPLE)
+            for name in ("Zpicker", "Zpickstaff"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.drain(1.0)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zpicker", Levl=40, Room=TEMPLE)
+            patch_player_file(mud, "Zpickstaff", Levl=70, Room=TEMPLE)
 
-            with mud.connect(timeout=120) as client:
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as client:
+                login(staff, "Zpickstaff", PASSWORD)
                 login(client, "Zpicker", PASSWORD)
-                run(client, "set skill zpicker 'pick lock' 100", 1.6)
+                staff.must("set skill zpicker 'pick lock' 100", "set to")
 
-                run(client, "goto %d" % CHAINS, 1.8)
-                run(client, "purge", 1.6)             # nobody standing too close
+                staff.sync("goto %d" % CHAINS)
+                staff.sync("purge")                   # nobody standing too close
+                staff.must("transfer zpicker", "Ok.")
                 for _ in range(2):
                     reply = run(client, "pick up", LAG)
                     self.assertIn(CANNOT, reply)
@@ -72,18 +78,18 @@ class PickLiveTests(unittest.TestCase):
                     self.assertFalse(any(f in reply for f in FUMBLES), reply)
 
                 # A lock that can open: at 0% every roll misses and is a fumble...
-                run(client, "goto %d" % STOMACH, 1.8)
-                run(client, "purge", 1.6)
-                run(client, "set skill zpicker 'pick lock' 0", 1.6)
+                staff.sync("goto %d" % STOMACH)
+                staff.sync("purge")
+                staff.must("transfer zpicker", "Ok.")
+                staff.must("set skill zpicker 'pick lock' 0", "set to")
                 reply = run(client, "pick west", LAG)
                 self.assertTrue(any(f in reply for f in FUMBLES), reply)
                 self.assertNotIn(CANNOT, reply)
                 self.assertNotIn("*Click*", reply)
                 # ...and at 100% it opens.
-                run(client, "set skill zpicker 'pick lock' 100", 1.6)
+                staff.must("set skill zpicker 'pick lock' 100", "set to")
                 reply = run(client, "pick west", LAG)
                 self.assertIn("*Click*", reply)
-
 
 if __name__ == "__main__":
     unittest.main()

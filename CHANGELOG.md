@@ -8,6 +8,28 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The balance feed** (owner and review of c7101e78, 2026-11-10).
+  `log/progress.tsv` writes an encounter id at a fight's start, one slain
+  row per mobile death (a group kill was counted once per member) with the
+  mobile's own ledger, a reward row per player paid, what each corpse was
+  made with and what players looted from it, and -- on every engagement --
+  what CONSIDER would have predicted, unasked. `webadmin/balance.py`,
+  `tools/balance_report.py` (band comparisons, gaps, manual proposals) and
+  `tools/consider_audit.py`; the leveling guide, the Oracle and the Gear
+  Finder use measured figures with the model as a labelled fallback, and
+  leave Hyrule's guardians and unreachable areas out. Legacy rows are read
+  as 1/members of a kill and marked. `tests/test_balance_log.py`.
+- **No creature carries a Hyrule prize out** (review of c3923e53, P1/P2).
+  A charmed mobile could take a chest's shard keylessly and its NPC corpse
+  be looted anywhere; and the chest claim fired on an owner's own corpse.
+  `tests/test_hyrule_guardian_keys.py`.
+- **Activity rows in the play journal**: coin with its source and wealth
+  after, objects gained and from where, levels, area moves, achievements,
+  skill gains and quests. `tests/test_playlog_activity.py`.
+- **A refused blow on an unshrunk Digdogger is said once a round**, with
+  its hint at most once a minute, and a sharp or vorpal weapon no longer
+  boasts of biting into a foe nothing can hurt.
+
 - **Hyrule's lesser holes** (audit follow-ups, 2026-11-10). A shutter into
   a guardian's chamber no longer opens for a player its tool gate turns
   away; SHOOT through a doorway is refused at Hyrule's creatures; a fire

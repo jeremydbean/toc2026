@@ -438,6 +438,7 @@ def main() -> int:
     journal_report(args, since, buffs)
     progress_report(args, since)
     hyrule_report(args, since)
+    activity_report(args, since)
 
     print("\n== public chat")
     rows = []
@@ -652,6 +653,8 @@ def progress_summary(text: str, since: datetime) -> dict:
     by_foe: dict = {}
     by_area: dict = {}
     characters: set = set()
+    kills_seen: set = set()
+    legacy = 0
     for raw in text.splitlines():
         f = raw.split("\t")
         if len(f) < 11 or not f[0].isdigit():
@@ -665,15 +668,27 @@ def progress_summary(text: str, since: datetime) -> dict:
         if kind in ("flee", "death"):
             here[kind] += 1
             continue
-        if kind != "kill" or len(f) < 16:
+        # A reward row (2026-11-10) is one player's pay for a kill shared by
+        # the kill id; a legacy kill row was the same, with no id, so a
+        # group kill counted once per member -- it is still counted that
+        # way, and the header says how many such rows there were.
+        if kind not in ("kill", "reward") or len(f) < 16:
             continue
-        here["kills"] += 1
+        first = True
+        if kind == "reward" and len(f) > 25:
+            first = f[25] not in kills_seen
+            kills_seen.add(f[25])
+        else:
+            legacy += 1
+        if first:
+            here["kills"] += 1
         foe = by_foe.setdefault((area, f[8], f[9]), {"kills": 0, "xp": 0, "ms": 0, "timed": 0,
                                                      "timed_xp": 0, "untimed": 0,
                                                      "times": [], "who": set(),
                                                      "coin": 0, "coined": 0})
-        foe["kills"] += 1
-        if len(f) > 23 and f[23].isdigit():
+        if first:
+            foe["kills"] += 1
+        if first and len(f) > 23 and f[23].isdigit():
             foe["coin"] += int(f[23])
             foe["coined"] += 1
         foe["who"].add(who)
@@ -689,13 +704,16 @@ def progress_summary(text: str, since: datetime) -> dict:
             foe["times"].append(int(f[11]))
         else:
             foe["untimed"] += 1
-    return {"by_foe": by_foe, "by_area": by_area, "characters": len(characters)}
+    return {"by_foe": by_foe, "by_area": by_area, "characters": len(characters),
+            "legacy": legacy}
 
 
 def progress_report(args, since) -> None:
     summary = progress_summary(git_show(args.ref, "log/progress.tsv"), since)
     by_foe = summary["by_foe"]
-    print(f"\n== progression ({summary['characters']} distinct characters; aggregates only)")
+    print(f"\n== progression ({summary['characters']} distinct characters; aggregates only;"
+          f" {summary.get('legacy', 0)} legacy rows count a group kill once per member;"
+          " tools/balance_report.py has the full balance view)")
     if not by_foe and not summary["by_area"]:
         print("  (no log/progress.tsv records in the window)")
         return
@@ -871,6 +889,105 @@ def hyrule_report(args, since) -> None:
                                       sorted(s["cleared"].items(), key=lambda kv:
                                              ZONE_ORDER.index(kv[0]) if kv[0] in ZONE_ORDER else 99))
           or "(none)")
+
+
+# The play journal's activity rows (src/playlog.c, 2026-11-10): coin, got,
+# level, area, achieved, skill, quest. Columns after the common six:
+#   coin      delta(+/-copper)  source  how  from  wealth_after
+#   got       vnum  name  type  level  cost  how  from
+#   level     from  to  class  remorts  exp  secs_since_last  how
+#   area      from_area  to_area  secs_in_from  how
+#   achieved  key  points  total  how
+#   skill     skill  before  after  success|mistake  how
+#   quest     kind  kill|recover  vnum  name  level  area  minutes
+def activity_rows(text: str, since: datetime) -> list:
+    out = []
+    for raw in text.splitlines():
+        f = raw.split("\t")
+        if len(f) < 7 or not f[0].isdigit():
+            continue
+        if f[1] not in ("coin", "got", "level", "area", "achieved", "skill", "quest"):
+            continue
+        when = datetime.fromtimestamp(int(f[0]), timezone.utc)
+        if when >= since:
+            out.append((when, f))
+    return out
+
+
+def activity_summary(rows) -> dict:
+    coin_moves = []
+    coin_by_source: Counter = Counter()
+    got: Counter = Counter()
+    got_how: dict = {}
+    levels: dict = {}
+    area_secs: Counter = Counter()
+    area_visits: Counter = Counter()
+    achieved: Counter = Counter()
+    skills: Counter = Counter()
+    quests: Counter = Counter()
+    for when, f in rows:
+        kind, who = f[1], f[2]
+        if kind == "coin" and len(f) >= 11:
+            amount = int(f[6]) if f[6].lstrip("+-").isdigit() else 0
+            coin_moves.append((abs(amount), amount, when, who, f[3], f[7], f[8], f[9],
+                               int(f[10]) if f[10].lstrip("-").isdigit() else 0))
+            coin_by_source[f[7]] += amount
+        elif kind == "got" and len(f) >= 13:
+            key = (f[6], f[7])
+            got[key] += 1
+            got_how.setdefault(key, Counter())[f[11]] += 1
+        elif kind == "level" and len(f) >= 13:
+            secs = int(f[11]) if f[11].lstrip("-").isdigit() else -1
+            levels.setdefault(who, []).append((when, f[6], f[7], secs))
+        elif kind == "area" and len(f) >= 10:
+            secs = int(f[8]) if f[8].isdigit() else 0
+            area_secs[f[6]] += secs
+            area_visits[f[7]] += 1
+        elif kind == "achieved" and len(f) >= 7:
+            achieved[f[6]] += 1
+        elif kind == "skill" and len(f) >= 10:
+            skills[f[6]] += 1
+        elif kind == "quest" and len(f) >= 13:
+            quests[(f[6], f[7])] += 1
+    coin_moves.sort(reverse=True)
+    return {"coin_moves": coin_moves, "coin_by_source": coin_by_source, "got": got,
+            "got_how": got_how, "levels": levels, "area_secs": area_secs,
+            "area_visits": area_visits, "achieved": achieved, "skills": skills,
+            "quests": quests}
+
+
+def activity_report(args, since) -> None:
+    rows = activity_rows(git_show(args.ref, "log/play.tsv"), since)
+    s = activity_summary(rows)
+    print(f"\n== activity ({len(rows)} coin/item/level/area/achievement/skill/quest rows)")
+    if not rows:
+        print("  (none in the window)")
+        return
+    print("  biggest coin moves (amount, source, command, from, wealth after):")
+    for _, amount, when, who, lvl, source, how, src, wealth in s["coin_moves"][:12]:
+        print(f"    {when:%m-%d %H:%M} {who:<12} L{lvl:<3} {format_copper(abs(amount)):>16}"
+              f" {'+' if amount > 0 else '-'} {source:<9} {how:<16} {src[:28]:<28}"
+              f" now {format_copper(wealth)}")
+    print("  coin by source:", ", ".join(
+        f"{src} {'+' if v >= 0 else '-'}{format_copper(abs(v))}"
+        for src, v in s["coin_by_source"].most_common()) or "(none)")
+    print("  objects gained (vnum, times, how):")
+    for (vnum, name), n in s["got"].most_common(15):
+        hows = ", ".join(f"{h} {c}" for h, c in s["got_how"][(vnum, name)].most_common(3))
+        print(f"    x{n:<4} {vnum:>6} {name.replace('_', ' ')[:30]:<30} {hows}")
+    print("  levels gained (character: from->to, minutes the level took):")
+    for who, gains in sorted(s["levels"].items()):
+        steps = ", ".join(f"{a}->{b}" + (f" {secs // 60}m" if secs >= 0 else "")
+                          for _, a, b, secs in gains[-8:])
+        print(f"    {who:<12} {steps}")
+    print("  hours spent by area:", ", ".join(
+        f"{a} {secs / 3600:.1f}" for a, secs in s["area_secs"].most_common(10)) or "(none)")
+    print("  achievements earned:", ", ".join(
+        f"{k} {n}" for k, n in s["achieved"].most_common(10)) or "(none)")
+    print("  skill gains:", ", ".join(
+        f"{k} {n}" for k, n in s["skills"].most_common(10)) or "(none)")
+    print("  quests assigned:", ", ".join(
+        f"{k}/{t} {n}" for (k, t), n in s["quests"].most_common()) or "(none)")
 
 
 if __name__ == "__main__":

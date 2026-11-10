@@ -45,6 +45,27 @@ class CompareLive(unittest.TestCase):
                 self.assertIn("needs level", out, out)
                 self.assertNotIn("you can use neither", out.lower(), out)
 
+    def test_upgrades_count_a_guardians_drop_table(self):
+        """No reset places a Hyrule guardian's drops: three pieces of its
+        table fall at its death (hyrule_boss_drops). The search used to
+        read resets alone, so the best armour of every band was missing
+        (review, 2026-11-10); it names the guardian and the odds now."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zcmpdrops", PW)
+                client.send("quit")
+                client.wait_closed()
+            patch_player_file(mud, "Zcmpdrops", Levl=8, Cla=3, Room=4207)
+            with mud.connect(timeout=120) as me:
+                login(me, "Zcmpdrops", PW)
+                out = me.must("compare upgrades body", "a coat of Aquamentus scale")
+                self.assertRegex(
+                    out, r"a coat of Aquamentus scale \(L8\)[^\n]*\n\s+dropped by "
+                         r"Aquamentus in Level 1: Hall of Threefold Scorches, [^\n]*: "
+                         r"about 3 kills in 11")
+                me.send("quit")
+                self.assertTrue(me.wait_closed())
+
     def test_compare_ranks_damage_first_for_a_kitted_warrior(self):
         with LiveMud() as mud:
             for name in (ME, IMM):

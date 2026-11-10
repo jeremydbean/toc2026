@@ -1600,7 +1600,7 @@ class HyruleProgressionTests(unittest.TestCase):
         )
         self.assertIn(30579, self.parser.rooms[red_ring_cellar["vnum"]].objects)
         corpse_source = fight_source.split(
-            "void make_corpse( char_data *ch )", 1
+            "obj_data *make_corpse( char_data *ch )", 1
         )[1].split("void death_cry", 1)[0]
         self.assertIn("if ( is_hyrule_ganon(ch) )", corpse_source)
         self.assertIn("loot_index = number_range", corpse_source)

@@ -1779,7 +1779,22 @@
             { label: "HP", key: "hp" },
             { label: "XP/kill", key: "xp_per_kill" },
             { label: "~XP/hour", value: (m) => formatNumber(m.xp_per_hour) },
-            { label: "Danger", value: (m) => m.aggressive ? "aggro" : "" },
+            // Measured from players' own kills near this level, or the
+            // model (a fallback for mobiles too seldom killed to measure),
+            // with the evidence the figure rests on.
+            { label: "Basis", value: (m) => {
+                const o = m.observed;
+                if (m.basis === "measured" && o) return `measured (${o.kills} kills, ${o.characters} players)`;
+                if (o) return `model; seen ${o.kills} kills at other levels`;
+                return "model";
+            } },
+            { label: "Danger", value: (m) => {
+                const parts = [];
+                if (m.aggressive) parts.push("aggro");
+                if (m.observed && m.observed.risk) parts.push(`${Math.round(m.observed.risk * 100)}% fled/died`);
+                return parts.join(", ");
+            } },
+            { label: "Needs", value: (m) => (m.needs || []).join(", ") },
             { label: "Area", value: (m) => stripMudColor(m.area) },
             { label: "Getting there (from Oak Tree Square)", value: (m) =>
                 m.directions

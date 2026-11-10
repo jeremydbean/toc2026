@@ -48,7 +48,7 @@ def corpse_lines(text: str) -> list[str]:
 class CorpseKeeperSourceTests(unittest.TestCase):
     def test_a_player_corpse_lasts_a_week_and_every_change_is_written(self) -> None:
         fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
-        corpse = fight[fight.index("void make_corpse( CHAR_DATA *ch )"):]
+        corpse = fight[fight.index("OBJ_DATA *make_corpse( CHAR_DATA *ch )"):]
         corpse = corpse[:corpse.index("\n}\n")]
         self.assertIn("corpse->timer   = (sh_int) PC_CORPSE_TICKS;", corpse)
         self.assertIn("corpse_registry_died( ch, corpse, player_snapshot_last_milestone() );", corpse)

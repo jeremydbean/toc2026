@@ -1578,8 +1578,10 @@ typedef struct gear_upgrade
     OBJ_INDEX_DATA *pObj;
     MOB_INDEX_DATA *pMob;           /* who carries it, or NULL for a chest */
     OBJ_INDEX_DATA *pContainer;     /* the chest it sits in */
-    ROOM_INDEX_DATA *pRoom;         /* where the chest is */
+    ROOM_INDEX_DATA *pRoom;         /* where the chest is, or the guardian */
     AREA_DATA *area;
+    int drop_kills;                 /* a guardian's drop: it falls in   */
+    int drop_of;                    /* drop_kills kills of drop_of, or 0 */
     int level;
     int slot;
     double score;
@@ -1898,6 +1900,86 @@ static void gear_consider( CHAR_DATA *ch, const GEAR_PROFILE *profile,
 }
 
 /*
+ * What a Hyrule guardian's corpse holds that no reset places: three pieces
+ * of its drop table each kill (hyrule_boss_drops) and, for Ganon, one of
+ * his three relics (make_corpse). The dashboard's Gear Finder lists the
+ * same (webadmin/gear_drops.py); before 2026-11-10 neither did, and the
+ * best armour of every band was missing from both.
+ */
+static void gear_find_guardian_drops( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                                      int only_group, bool defense,
+                                      GEAR_SLOT_STATE states[][2],
+                                      GEAR_UPGRADE best[][GEAR_UPGRADE_TOP],
+                                      int found[] )
+{
+    const HYRULE_DUNGEON_GATE *gate;
+    MOB_INDEX_DATA *pMob;
+    ROOM_INDEX_DATA *pRoom;
+    OBJ_INDEX_DATA *pObj;
+    OBJ_DATA candidate;
+    GEAR_UPGRADE source;
+    int vnums[HYRULE_BOSS_DROPS_PER_GUARDIAN + HYRULE_BOSS_EXTRA_STRIDE + 8];
+    int kills[HYRULE_BOSS_DROPS_PER_GUARDIAN + HYRULE_BOSS_EXTRA_STRIDE + 8];
+    int of[HYRULE_BOSS_DROPS_PER_GUARDIAN + HYRULE_BOSS_EXTRA_STRIDE + 8];
+    int max = (int)( sizeof( vnums ) / sizeof( vnums[0] ) );
+    int level;
+    int total;
+    int relics;
+    int count;
+    int i;
+
+    for ( level = 1; hyrule_guardian_vnum( level ) != 0; level++ )
+    {
+        if ( ( pMob = get_mob_index( hyrule_guardian_vnum( level ) ) ) == NULL )
+            continue;
+        gate = hyrule_dungeon_gate( level );
+        pRoom = gate != NULL ? get_room_index( gate->boss_room ) : NULL;
+
+        /* Its table, three pieces a kill; Ganon's relics, one a kill. */
+        count = 0;
+        total = hyrule_boss_drop_count( level );
+        for ( i = 0; i < total && count < max; i++, count++ )
+        {
+            vnums[count] = hyrule_boss_drop_vnum( level, i );
+            kills[count] = UMIN( HYRULE_BOSS_DROPS_PER_KILL, total );
+            of[count] = total;
+        }
+        relics = 0;
+        if ( pMob->vnum == HYRULE_GANON_VNUM )
+            while ( hyrule_ganon_loot_vnum( relics ) != 0 )
+                relics++;
+        for ( i = 0; i < relics && count < max; i++, count++ )
+        {
+            vnums[count] = hyrule_ganon_loot_vnum( i );
+            kills[count] = 1;
+            of[count] = relics;
+        }
+
+        for ( i = 0; i < count; i++ )
+        {
+            pObj = get_obj_index( vnums[i] );
+            if ( pObj == NULL || pObj->level == -1
+                || IS_SET( pObj->extra_flags, ITEM_ROT_DEATH )
+                || (pObj->item_type != ITEM_LIGHT
+                    && gear_natural_wear_flag( pObj->wear_flags ) == 0) )
+                continue;
+            gear_object_from_index( &candidate, pObj, NULL );
+            if ( candidate.level > ch->level )
+                continue;
+            memset( &source, 0, sizeof( source ) );
+            source.pObj = pObj;
+            source.pMob = pMob;
+            source.pRoom = pRoom;
+            source.area = pRoom != NULL ? pRoom->area : NULL;
+            source.drop_kills = kills[i];
+            source.drop_of = of[i];
+            gear_consider( ch, profile, only_group, defense, states,
+                           &candidate, &source, best, found );
+        }
+    }
+}
+
+/*
  * Every piece of gear a mobile carries, wears or sells, and every piece put
  * in a chest that sits in a room -- Ganon's great chest holds the Master
  * Sword -- through the same measurement as COMPARE, in place of what this
@@ -1998,6 +2080,9 @@ static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
                            &candidate, &source, best, found );
         }
     }
+
+    gear_find_guardian_drops( ch, profile, only_group, defense, states,
+                              best, found );
 }
 
 static void gear_upgrade_source( const GEAR_UPGRADE *u, char *out,
@@ -2005,8 +2090,13 @@ static void gear_upgrade_source( const GEAR_UPGRADE *u, char *out,
 {
     char area[128];
 
-    quest_area_name( u->area->name, area, sizeof( area ) );
-    if ( u->pMob == NULL )
+    quest_area_name( u->area != NULL ? u->area->name : "", area, sizeof( area ) );
+    if ( u->drop_of > 0 )
+        snprintf( out, size, "dropped by %s in %s, %s: about %d kill%s in %d",
+                  u->pMob->short_descr,
+                  u->pRoom != NULL ? u->pRoom->name : "its chamber", area,
+                  u->drop_kills, u->drop_kills == 1 ? "" : "s", u->drop_of );
+    else if ( u->pMob == NULL )
         snprintf( out, size, "in %s in %s, %s",
                   u->pContainer != NULL ? u->pContainer->short_descr : "a chest",
                   u->pRoom != NULL ? u->pRoom->name : "somewhere", area );

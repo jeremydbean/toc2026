@@ -688,6 +688,38 @@ static void do_mob_action(CHAR_DATA *mobile, CHAR_DATA *vict)
     }
 }
 
+/* 'look direction': what lies that way, and its door. */
+static void look_at_exit( CHAR_DATA *ch, int door )
+{
+    EXIT_DATA *pexit;
+
+    if ( ( pexit = ch->in_room->exit[door] ) == NULL )
+    {
+        send_to_char( "Nothing special there.\n\r", ch );
+        return;
+    }
+
+    if ( pexit->description != NULL && pexit->description[0] != '\0' )
+        send_to_char( pexit->description, ch );
+    else
+        send_to_char( "Nothing special there.\n\r", ch );
+
+    if ( pexit->keyword    != NULL
+    &&   pexit->keyword[0] != '\0'
+    &&   pexit->keyword[0] != ' '
+    &&   !IS_SET(pexit->exit_info, EX_SECRET) )
+    {
+        if ( IS_SET(pexit->exit_info, EX_CLOSED) )
+        {
+            act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
+        }
+        else if ( IS_SET(pexit->exit_info, EX_ISDOOR) )
+        {
+            act( "The $d is open.",   ch, NULL, pexit->keyword, TO_CHAR );
+        }
+    }
+}
+
 void do_look( CHAR_DATA *ch, char *argument )
 {
     char buf  [MAX_STRING_LENGTH];
@@ -892,6 +924,22 @@ void do_look( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* A direction with a way out is that way, before anybody or anything
+       whose name the word also begins (owner, 2026-11-10: directions are
+       prioritized): LOOK S is south, not the sword in your pack. A
+       secret exit is not given away by it, LOOK 2.S is a thing, and a
+       room's own detail by that word still answers first -- eleven rooms
+       describe a wall or a shutter as "north" or "west wall". */
+    if ( number == 1
+    &&   ( door = door_direction_word( arg1 ) ) >= 0
+    &&   ( pexit = ch->in_room->exit[door] ) != NULL
+    &&   !IS_SET(pexit->exit_info, EX_SECRET)
+    &&   get_extra_descr( arg1, ch->in_room->extra_descr ) == NULL )
+    {
+        look_at_exit( ch, door );
+        return;
+    }
+
     if ( ( victim = get_char_room( ch, arg1 ) ) != NULL )
     {
         show_char_to_char_1( victim, ch );
@@ -1037,50 +1085,15 @@ void do_look( CHAR_DATA *ch, char *argument )
         send_to_char( pdesc, ch );
         return;
     }
-         if ( !str_cmp( arg1, "n" ) || !str_cmp( arg1, "north" ) ) door = 0;
-    else if ( !str_cmp( arg1, "e" ) || !str_cmp( arg1, "east"  ) ) door = 1;
-    else if ( !str_cmp( arg1, "s" ) || !str_cmp( arg1, "south" ) ) door = 2;
-    else if ( !str_cmp( arg1, "w" ) || !str_cmp( arg1, "west"  ) ) door = 3;
-    else if ( !str_cmp( arg1, "u" ) || !str_cmp( arg1, "up"    ) ) door = 4;
-    else if ( !str_cmp( arg1, "d" ) || !str_cmp( arg1, "down"  ) ) door = 5;
-    else if ( !str_cmp( arg1, "ne" ) || !str_cmp( arg1, "northeast"  ) ) door = 6;
-    else if ( !str_cmp( arg1, "nw" ) || !str_cmp( arg1, "northwest"  ) ) door = 7;
-    else if ( !str_cmp( arg1, "se" ) || !str_cmp( arg1, "southeast"  ) ) door = 8;
-    else if ( !str_cmp( arg1, "sw" ) || !str_cmp( arg1, "southwest"  ) ) door = 9;
-    else
+    /* Any start of a direction's name (door_direction_word). */
+    door = door_direction_word( arg1 );
+    if ( door < 0 )
     {
         send_to_char( "You do not see that here.\n\r", ch );
         return;
     }
 
-    /* 'look direction' */
-    if ( ( pexit = ch->in_room->exit[door] ) == NULL )
-    {
-        send_to_char( "Nothing special there.\n\r", ch );
-        return;
-    }
-
-    if ( pexit->description != NULL && pexit->description[0] != '\0' )
-        send_to_char( pexit->description, ch );
-    else
-        send_to_char( "Nothing special there.\n\r", ch );
-
-    if ( pexit->keyword    != NULL
-    &&   pexit->keyword[0] != '\0'
-    &&   pexit->keyword[0] != ' '
-    &&   !IS_SET(pexit->exit_info, EX_SECRET) )
-    {
-        if ( IS_SET(pexit->exit_info, EX_CLOSED) )
-        {
-            act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
-        }
-        else if ( IS_SET(pexit->exit_info, EX_ISDOOR) )
-        {
-            act( "The $d is open.",   ch, NULL, pexit->keyword, TO_CHAR );
-        }
-    }
-
-    return;
+    look_at_exit( ch, door );
 }
 
 
@@ -1787,17 +1800,9 @@ void do_run( CHAR_DATA *ch, char *argument )
     }
 
 
-	    if ( !str_cmp( arg, "n" ) || !str_cmp( arg, "north" ) ) door = 0;
-    else if ( !str_cmp( arg, "e" ) || !str_cmp( arg, "east"  ) ) door = 1;
-    else if ( !str_cmp( arg, "s" ) || !str_cmp( arg, "south" ) ) door = 2;
-    else if ( !str_cmp( arg, "w" ) || !str_cmp( arg, "west"  ) ) door = 3;
-    else if ( !str_cmp( arg, "u" ) || !str_cmp( arg, "up"    ) ) door = 4;
-    else if ( !str_cmp( arg, "d" ) || !str_cmp( arg, "down"  ) ) door = 5;
-    else if ( !str_cmp( arg, "ne" ) || !str_cmp( arg, "northeast"  ) ) door = 6;
-    else if ( !str_cmp( arg, "nw" ) || !str_cmp( arg, "northwest"  ) ) door = 7;
-    else if ( !str_cmp( arg, "se" ) || !str_cmp( arg, "southeast"  ) ) door = 8;
-    else if ( !str_cmp( arg, "sw" ) || !str_cmp( arg, "southwest"  ) ) door = 9;
-    else
+    /* Any start of a direction's name (door_direction_word). */
+    door = door_direction_word( arg );
+    if ( door < 0 )
     {
 	/* door starts at 0, so anything unrecognised used to run north. */
 	send_to_char( "Run in which direction?\n\r", ch );
@@ -1993,20 +1998,47 @@ void do_speedwalk( CHAR_DATA *ch, char *argument )
 }
 
 
-/* The direction a whole word names, n to sw, or -1. */
+/*
+ * The direction a word names, or -1: ne, nw, se and sw, or any start of
+ * a direction's name, the way the movement commands take one (owner,
+ * 2026-11-10: "op wes doesn't work for open west"). dir_name lists the
+ * plain directions before the diagonals, as the command table does, so
+ * a start two of them share is the plain one -- "no" and "nor" are
+ * north, "so" south -- and a diagonal by name needs the letter that
+ * parts it ("northe", "southw") or its two-letter form. Every command
+ * that reads a direction a player typed asks this.
+ */
 int door_direction_word( const char *arg )
 {
-	 if ( !str_cmp( arg, "n" ) || !str_cmp( arg, "north" ) ) return 0;
-    else if ( !str_cmp( arg, "e" ) || !str_cmp( arg, "east"  ) ) return 1;
-    else if ( !str_cmp( arg, "s" ) || !str_cmp( arg, "south" ) ) return 2;
-    else if ( !str_cmp( arg, "w" ) || !str_cmp( arg, "west"  ) ) return 3;
-    else if ( !str_cmp( arg, "u" ) || !str_cmp( arg, "up"    ) ) return 4;
-    else if ( !str_cmp( arg, "d" ) || !str_cmp( arg, "down"  ) ) return 5;
-    else if ( !str_cmp( arg, "ne" ) || !str_cmp( arg, "northeast"  ) ) return 6;
-    else if ( !str_cmp( arg, "nw" ) || !str_cmp( arg, "northwest"  ) ) return 7;
-    else if ( !str_cmp( arg, "se" ) || !str_cmp( arg, "southeast"  ) ) return 8;
-    else if ( !str_cmp( arg, "sw" ) || !str_cmp( arg, "southwest"  ) ) return 9;
+    static const char *const shorts[] = { "ne", "nw", "se", "sw" };
+    int door;
+
+    if ( arg == NULL || arg[0] == '\0' )
+	return -1;
+    for ( door = 0; door < 4; door++ )
+	if ( !str_cmp( arg, shorts[door] ) )
+	    return DIR_NORTHEAST + door;
+    for ( door = 0; door <= DIR_SOUTHWEST; door++ )
+	if ( !str_prefix( arg, dir_name[door] ) )
+	    return door;
     return -1;
+}
+
+/* Whether `word` names a direction with a door the character can see:
+   then it is that door, before any object it might also begin the name
+   of ("open s" with a sack in the pack, a south door in the room).
+   A secret door is never named by its direction. */
+static bool door_word_names_door( CHAR_DATA *ch, const char *word )
+{
+    EXIT_DATA *pexit;
+    int door;
+
+    if ( ch->in_room == NULL || ( door = door_direction_word( word ) ) < 0 )
+	return false;
+    pexit = ch->in_room->exit[door];
+    return pexit != NULL
+        && IS_SET(pexit->exit_info, EX_ISDOOR)
+        && !IS_SET(pexit->exit_info, EX_SECRET);
 }
 
 /*
@@ -2099,7 +2131,8 @@ void do_open( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( obj = get_obj_here( ch, arg ) ) != NULL )
+    if ( !door_word_names_door( ch, arg )
+    &&   ( obj = get_obj_here( ch, arg ) ) != NULL )
     {
 	/* 'open object' */
 
@@ -2308,7 +2341,8 @@ void do_close( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( obj = get_obj_here( ch, arg ) ) != NULL )
+    if ( !door_word_names_door( ch, arg )
+    &&   ( obj = get_obj_here( ch, arg ) ) != NULL )
     {
 	/* 'close object' */
 	if ( obj->item_type != ITEM_CONTAINER )
@@ -2451,7 +2485,8 @@ void do_lock( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( obj = get_obj_here( ch, arg ) ) != NULL )
+    if ( !door_word_names_door( ch, arg )
+    &&   ( obj = get_obj_here( ch, arg ) ) != NULL )
     {
 	/* 'lock object' */
 	if ( obj->item_type != ITEM_CONTAINER )
@@ -2551,7 +2586,7 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
             { send_to_char( "Old magic binds this door; it wants its key, not your shoulder.\n\r", ch ); return; }
 
         WAIT_STATE( ch, skill_table[gsn_doorbash].beats );
-        if ( number_percent( ) > ch->pcdata->learned[gsn_doorbash] )
+        if ( skill_roll_missed( ch, number_percent( ) > ch->pcdata->learned[gsn_doorbash] ) )
         {
             send_to_char( "You slam into the door but it refuses to budge.\n\r", ch);
             act( "$n slams into a door but nothing happens.", ch, NULL, NULL, TO_ROOM );
@@ -2604,7 +2639,8 @@ void do_unlock( CHAR_DATA *ch, char *argument )
       return;
     }
 
-    if ( ( obj = get_obj_here( ch, arg ) ) != NULL )
+    if ( !door_word_names_door( ch, arg )
+    &&   ( obj = get_obj_here( ch, arg ) ) != NULL )
     {
 	/* 'unlock object' */
 	if ( obj->trapped != NULL )
@@ -2717,7 +2753,7 @@ static bool pick_lock_roll_fails( CHAR_DATA *ch )
 
     if ( IS_NPC(ch) )
 	return false;
-    if ( number_percent( ) > ch->pcdata->learned[gsn_pick_lock] )
+    if ( skill_roll_missed( ch, number_percent( ) > ch->pcdata->learned[gsn_pick_lock] ) )
     {
 	send_to_char( fumble[number_range( 0, 4 )], ch );
 	send_to_char( "\n\r", ch );
@@ -2784,7 +2820,8 @@ void do_pick( CHAR_DATA *ch, char *argument )
        missed roll, and a thief at 75% spent 150 attempts on three such
        doors before filing a bug (Alaric, 2026-10-11). Most locked doors
        in the world are pickproof, so the difference matters. */
-    if ( ( obj = get_obj_here( ch, arg ) ) != NULL )
+    if ( !door_word_names_door( ch, arg )
+    &&   ( obj = get_obj_here( ch, arg ) ) != NULL )
     {
 	/* 'pick object' */
 	if ( obj->item_type != ITEM_CONTAINER )
@@ -3044,7 +3081,8 @@ void do_sleep( CHAR_DATA *ch, char *argument )
     if( IS_AFFECTED2( ch, AFF2_STEALTH) )
        affect_strip(ch, gsn_stealth);
 
-    if( ( chance = get_skill(ch,gsn_phase) ) > 1 && number_percent() < chance)
+    if( ( chance = get_skill(ch,gsn_phase) ) > 1
+    &&  skill_roll_landed( ch, number_percent() < chance ) )
     {
    	SET_BIT(ch->affected_by2, AFF2_STEALTH);
 	check_improve( ch, gsn_phase,true,1);
@@ -3126,7 +3164,7 @@ void do_sneak( CHAR_DATA *ch, char *argument )
 
     affect_strip( ch, gsn_sneak );
 
-    if ( IS_NPC(ch) || number_percent( ) < chance )
+    if ( IS_NPC(ch) || skill_roll_landed( ch, number_percent( ) < chance ) )
     {
 	check_improve(ch,gsn_sneak,true,3);
 	af.type      = gsn_sneak;
@@ -3150,7 +3188,10 @@ void recheck_sneak( CHAR_DATA *ch)
 
     affect_strip( ch, gsn_sneak );
 
-    if ( IS_NPC(ch) || number_percent( ) < (ch->pcdata->learned[gsn_sneak]/3) )
+    /* Staff keep what they hold; a skill they lack is not theirs to keep. */
+    if ( IS_NPC(ch)
+    ||   ( ch->pcdata->learned[gsn_sneak] > 0
+        && skill_roll_landed( ch, number_percent( ) < (ch->pcdata->learned[gsn_sneak]/3) ) ) )
     {
 	af.type      = gsn_sneak;
 	af.level     = ch->level;
@@ -3165,7 +3206,9 @@ void recheck_sneak( CHAR_DATA *ch)
     affect_strip( ch, gsn_stealth );
 
     if ( ch->battleticks <= 0
-    &&   ( IS_NPC(ch) || number_percent( ) < (ch->pcdata->learned[gsn_stealth]/3) ) )
+    &&   ( IS_NPC(ch)
+        || ( ch->pcdata->learned[gsn_stealth] > 0
+          && skill_roll_landed( ch, number_percent( ) < (ch->pcdata->learned[gsn_stealth]/3) ) ) ) )
     {
 	af.type      = gsn_stealth;
 	af.level     = ch->level;
@@ -3258,7 +3301,7 @@ void do_shadowmeld( CHAR_DATA *ch, char *argument )
     /* number_percent() is 1..100, so a miss is a roll above the skill:
        ">=" made a skill of 100 fail one time in a hundred, which is also
        why the shadowmeld tests went red now and then. */
-    if ( number_percent( ) > chance )
+    if ( skill_roll_missed( ch, number_percent( ) > chance ) )
     {
         send_to_char( "The shadows slip away from you.\n\r", ch );
         check_improve( ch, gsn_shadowmeld, false, 3 );
@@ -3291,7 +3334,8 @@ void do_hide( CHAR_DATA *ch, char *argument )
     /* Say whether it worked. "You attempt to hide." for both outcomes
        left a thief at 1% typing HIDE thirteen times running, hidden in
        none of them (October 2026). AFFECTS shows it either way. */
-    if ( IS_NPC(ch) || number_percent( ) < ch->pcdata->learned[gsn_hide] )
+    if ( IS_NPC(ch)
+    ||   skill_roll_landed( ch, number_percent( ) < ch->pcdata->learned[gsn_hide] ) )
     {
 	SET_BIT(ch->affected_by, AFF_HIDE);
 	send_to_char( "You slip into the shadows, hidden.\n\r", ch );
@@ -3580,6 +3624,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
     char buf[MAX_STRING_LENGTH];
     ROOM_INDEX_DATA *location;
     int lose, skill, chance;
+    bool sure;
 
     if (IS_NPC(ch))
     {
@@ -3662,8 +3707,11 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
       skill = ch->pcdata->learned[gsn_recall];
 
     /* From REMORTS_FOR_SURE_RECALL (the third remort): recall always succeeds
-       (no chance check, no random room). */
-    if ( !IS_NPC(ch) && ch->pcdata->num_remorts >= REMORTS_FOR_SURE_RECALL )
+       (no chance check, no random room). Staff never miss either
+       (skill_roll_sure, owner 2026-11-10). */
+    sure = skill_roll_sure( ch )
+        || ( !IS_NPC(ch) && ch->pcdata->num_remorts >= REMORTS_FOR_SURE_RECALL );
+    if ( sure )
         skill = 101;
 
     chance = number_percent();
@@ -3677,8 +3725,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
           if ( own_prayer && !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0
           &&   ch->hit * 20 <= ch->max_hit )
              achievement_record_event( ch, ACHIEVEMENT_EVENT_RECALL_LOW_HP, true );
-          if (chance < 5 && (IS_NPC(ch)
-           || ch->pcdata->num_remorts < REMORTS_FOR_SURE_RECALL))
+          if (chance < 5 && !sure)
           {
              location = get_random_room(ch);
              send_to_char("Something is very wrong!\n\r",ch);
@@ -3729,8 +3776,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
 
    if (chance < skill)
    {
-      if (chance < 5 && (IS_NPC(ch)
-           || ch->pcdata->num_remorts < REMORTS_FOR_SURE_RECALL))
+      if (chance < 5 && !sure)
       {
          location = get_random_room(ch);
          send_to_char("Something is very wrong!\n\r",ch);
@@ -4108,25 +4154,11 @@ do_shove( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-	    if ( !str_cmp( arg1, "n" ) ) door = 0;
-    else if ( !str_cmp( arg1, "e" ) ) door = 1;
-    else if ( !str_cmp( arg1, "s" ) ) door = 2;
-    else if ( !str_cmp( arg1, "w" ) ) door = 3;
-    else if ( !str_cmp( arg1, "u" ) ) door = 4;
-    else if ( !str_cmp( arg1, "d" ) ) door = 5;
-    else if ( !str_cmp( arg1, "ne" ) ) door = 6;
-    else if ( !str_cmp( arg1, "nw" ) ) door = 7;
-    else if ( !str_cmp( arg1, "se" ) ) door = 8;
-    else if ( !str_cmp( arg1, "sw" ) ) door = 9;
-    else
-    {
-      /* Any start of a direction's name, as the movement commands take:
-         "shove goriya so" was refused (Trentlin, 2026-10-25). The plain
-         directions come first in dir_name, so "no" is north. */
-      for ( door = 0; door <= DIR_SOUTHWEST; door++ )
-        if ( !str_prefix( arg1, dir_name[door] ) )
-          break;
-    }
+    /* Any start of a direction's name, as the movement commands take:
+       "shove goriya so" was refused (Trentlin, 2026-10-25). The plain
+       directions come first in dir_name, so "no" is north
+       (door_direction_word). */
+    door = door_direction_word( arg1 );
     if ( door < 0 || door > DIR_SOUTHWEST )
     {
 	 send_to_char("That isn't a valid Direction!\n\r",ch);
@@ -4264,7 +4296,7 @@ do_shove( CHAR_DATA *ch, char *argument )
        good in a second or two. Refusals above cost nothing. */
     WAIT_STATE( ch, skill_table[gsn_shove].beats );
 
-	if(number_percent () < chance)
+	if( skill_roll_landed( ch, number_percent () < chance ) )
 	{
 	   act( "You shove $N out of the room!", ch, NULL, victim, TO_CHAR );
 	   /*
@@ -4853,7 +4885,8 @@ void do_search( CHAR_DATA *ch, char *argument)
     if( chance > 90)
        chance = 90;
 
-    if ( ( obj = get_obj_here( ch, arg ) ) != NULL )
+    if ( !door_word_names_door( ch, arg )
+    &&   ( obj = get_obj_here( ch, arg ) ) != NULL )
     {
 	/* 'check object' */
 	if ( obj->item_type != ITEM_CONTAINER )
@@ -4867,7 +4900,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 
 	if ( IS_SET(obj->value[1], CONT_TRAPPED) )
 	{
-	  if( !IS_NPC(ch) && number_percent( ) > chance)
+	  if( !IS_NPC(ch) && skill_roll_missed( ch, number_percent( ) > chance ) )
 	  {
 	    if(number_percent () > 50)
 	      send_to_char( "Well, it might be trapped, but you're not sure.\n\r", ch);
@@ -4880,7 +4913,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 	}
 	else
 	{
-	  if(!IS_NPC(ch) && number_percent () > chance)
+	  if(!IS_NPC(ch) && skill_roll_missed( ch, number_percent () > chance ) )
 	    send_to_char("Well, it might be trapped, but you're not sure.\n\r",ch);
 	  else
 	    send_to_char("After examining the object, you find no traps.\n\r",ch);
@@ -4916,7 +4949,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 
 	if ( IS_SET(pexit->exit_info, EX_TRAPPED) )
 	{
-	  if( !IS_NPC(ch) && number_percent( ) > chance)
+	  if( !IS_NPC(ch) && skill_roll_missed( ch, number_percent( ) > chance ) )
 	  {
 	    if(number_percent () > 50)
 	      send_to_char( "Well, it might be trapped, but you're not sure.\n\r", ch);
@@ -4929,7 +4962,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 	}
 	else
 	{
-	  if(!IS_NPC(ch) && number_percent () > chance)
+	  if(!IS_NPC(ch) && skill_roll_missed( ch, number_percent () > chance ) )
 	    send_to_char("Well, it might be trapped, but you're not sure.\n\r",ch);
 	  else
 	    send_to_char("Your search for traps reveals none.\n\r",ch);
@@ -5060,7 +5093,7 @@ void do_ride( CHAR_DATA *ch, char *argument)
     if(IS_IMMORTAL(ch) )
       chance = 100;
 
-    if(number_percent () > chance)
+    if( skill_roll_missed( ch, number_percent () > chance ) )
     {
       act( "$N bucks as $n tries to ride $m.", ch, NULL, victim, TO_ROOM );
       act( "OOOF! $N bucked and nailed you good!", ch, NULL, victim, TO_CHAR );
@@ -5369,7 +5402,7 @@ void do_stealth( CHAR_DATA *ch, char *argument )
 
     affect_strip( ch, gsn_stealth );
 
-    if ( IS_NPC(ch) || number_percent( ) < chance )
+    if ( IS_NPC(ch) || skill_roll_landed( ch, number_percent( ) < chance ) )
     {
 	check_improve(ch,gsn_stealth,true,4);
 	af.type      = gsn_stealth;

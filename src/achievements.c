@@ -1369,6 +1369,8 @@ static bool achievement_unlock(CHAR_DATA *ch, int index, bool announce)
         earned = 1;
     ch->pcdata->achievement_earned[index] = earned;
     definition = &achievement_table[index];
+    playlog_achieved(ch, definition->key, definition->points,
+                     achievement_points(ch));               /* log/play.tsv */
 
     if (achievement_can_announce(ch, announce))
     {

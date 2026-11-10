@@ -152,7 +152,8 @@ class PsionicsSystemTests(unittest.TestCase):
 
         self.assertNotIn("chance / 2", telekinesis)
         self.assertNotIn("chance/2", telekinesis)
-        self.assertIn("number_percent() > chance && !IS_IMMORTAL(ch)", telekinesis)
+        self.assertIn("skill_roll_missed( ch, number_percent() > chance ) && !IS_IMMORTAL(ch)",
+                      telekinesis)
 
     def test_telekinesis_charges_full_cost_only_when_it_retrieves(self) -> None:
         telekinesis = strip_comments(

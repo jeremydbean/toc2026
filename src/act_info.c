@@ -502,7 +502,8 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 
     if ( victim != ch
     &&   !IS_NPC(ch)
-    &&   number_percent( ) < ch->pcdata->learned[gsn_peek] )
+    &&   ch->pcdata->learned[gsn_peek] > 0
+    &&   skill_roll_landed( ch, number_percent( ) < ch->pcdata->learned[gsn_peek] ) )
     {
 	send_to_char( "\n\rYou peek at the inventory:\n\r", ch );
 	check_improve(ch,gsn_peek,true,4);
@@ -3304,6 +3305,37 @@ static void consider_rounds( double rounds, char *out, size_t size )
 }
 
 /*
+ * CONSIDER's prediction without a word said: each side's damage a round
+ * (gear_consider_fight), the rounds each would need, and the verdict's
+ * key -- scratch, easily, win, narrow, even, lose, die. consider_fight
+ * says it; the balance feed makes it at the start of every encounter, so
+ * every fight can be held to what CONSIDER would have told the player
+ * (owner, 2026-11-10).
+ */
+const char *consider_predict( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
+                              double *theirs, double *your_rounds, double *their_rounds,
+                              bool *caster )
+{
+    double edge;
+
+    gear_consider_fight( ch, victim, yours, theirs, caster );
+    *your_rounds = UMAX( 1, victim->hit ) / UMAX( 0.1, *yours );
+    if ( *theirs < 0.5 )
+    {
+        *their_rounds = 0;
+        return "scratch";
+    }
+    *their_rounds = UMAX( 1, ch->hit ) / *theirs;
+    edge = *their_rounds / *your_rounds;
+    if ( edge >= 4.0  ) return "easily";
+    if ( edge >= 1.5  ) return "win";
+    if ( edge >= 1.0  ) return "narrow";
+    if ( edge >= 0.67 ) return "even";
+    if ( edge >= 0.25 ) return "lose";
+    return "die";
+}
+
+/*
  * What CONSIDER says beyond the level: how the hit points compare, the
  * fight as gear_consider_fight estimates it, one verdict, and what about
  * the foe changes a fight. It replaced a hit point scale in absolute
@@ -3324,8 +3356,8 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     double theirs;
     double your_rounds;
     double their_rounds;
-    double edge;
     bool caster;
+    const char *verdict;
 
     ratio = (double) UMAX( 1, victim->max_hit ) / UMAX( 1, ch->max_hit );
          if ( ratio < 0.2  ) msg = "$N has a fraction of your hit points.";
@@ -3346,9 +3378,9 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
         return;
     }
 
-    gear_consider_fight( ch, victim, &yours, &theirs, &caster );
-    your_rounds = UMAX( 1, victim->hit ) / UMAX( 0.1, yours );
-    if ( theirs < 0.5 )
+    verdict = consider_predict( ch, victim, &yours, &theirs, &your_rounds, &their_rounds,
+                                &caster );
+    if ( !strcmp( verdict, "scratch" ) )
     {
         consider_rounds( your_rounds, yours_text, sizeof(yours_text) );
         snprintf( buf, sizeof(buf),
@@ -3359,23 +3391,22 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     }
     else
     {
-        their_rounds = UMAX( 1, ch->hit ) / theirs;
         consider_rounds( your_rounds, yours_text, sizeof(yours_text) );
         consider_rounds( their_rounds, theirs_text, sizeof(theirs_text) );
         snprintf( buf, sizeof(buf),
             "Blow for blow, you would need %s to bring $N down; $E would need %s for you.",
             yours_text, theirs_text );
         act( buf, ch, NULL, victim, TO_CHAR );
-
-        edge = their_rounds / your_rounds;
-             if ( edge >= 4.0  ) msg = "You should win easily.";
-        else if ( edge >= 1.5  ) msg = "You should win.";
-        else if ( edge >= 1.0  ) msg = "You should win, but not by much.";
-        else if ( edge >= 0.67 ) msg = "It could go either way.";
-        else if ( edge >= 0.25 ) msg = "You would probably lose.";
-        else                     msg = "You would almost certainly die.";
+             if ( !strcmp( verdict, "easily" ) ) msg = "You should win easily.";
+        else if ( !strcmp( verdict, "win" ) )    msg = "You should win.";
+        else if ( !strcmp( verdict, "narrow" ) ) msg = "You should win, but not by much.";
+        else if ( !strcmp( verdict, "even" ) )   msg = "It could go either way.";
+        else if ( !strcmp( verdict, "lose" ) )   msg = "You would probably lose.";
+        else                                     msg = "You would almost certainly die.";
     }
     act( msg, ch, NULL, victim, TO_CHAR );
+    /* The prediction, for holding it to the fight that follows. */
+    progress_consider( ch, victim, yours, theirs, your_rounds, their_rounds, verdict, caster );
     if ( caster )
         send_to_char( "(That counts your weapons only; your spells are not in it.)\n\r", ch );
 
@@ -5233,17 +5264,9 @@ void do_listen( CHAR_DATA *ch, char *argument )
      return;
    }
 
-	if ( !str_cmp( arg, "n" ) || !str_cmp( arg, "north" ) ) door = 0;
-    else if ( !str_cmp( arg, "e" ) || !str_cmp( arg, "east"  ) ) door = 1;
-    else if ( !str_cmp( arg, "s" ) || !str_cmp( arg, "south" ) ) door = 2;
-    else if ( !str_cmp( arg, "w" ) || !str_cmp( arg, "west"  ) ) door = 3;
-    else if ( !str_cmp( arg, "u" ) || !str_cmp( arg, "up"    ) ) door = 4;
-    else if ( !str_cmp( arg, "d" ) || !str_cmp( arg, "down"  ) ) door = 5;
-    else if ( !str_cmp( arg, "ne" ) || !str_cmp( arg, "northeast"  ) ) door = 6;
-    else if ( !str_cmp( arg, "nw" ) || !str_cmp( arg, "northwest"  ) ) door = 7;
-    else if ( !str_cmp( arg, "se" ) || !str_cmp( arg, "southeast"  ) ) door = 8;
-    else if ( !str_cmp( arg, "sw" ) || !str_cmp( arg, "southwest"  ) ) door = 9;
-    else
+    /* Any start of a direction's name (door_direction_word). */
+    door = door_direction_word( arg );
+    if ( door < 0 )
     {
      send_to_char("That's not a valid direction.\n\r",ch);
      return;
@@ -5257,7 +5280,7 @@ void do_listen( CHAR_DATA *ch, char *argument )
     {
       if(to_room->people != NULL)
       {
-	if(number_percent () < chance)
+	if( skill_roll_landed( ch, number_percent () < chance ) )
 	  send_to_char("You hear someone, or something, moving around on the other side.\n\r",ch);
 	else
 	  send_to_char("You don't hear anything out of the ordinary.\n\r",ch);

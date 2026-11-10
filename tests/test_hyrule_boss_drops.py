@@ -15,10 +15,12 @@ quietly making a guardian's drops second best.
 from __future__ import annotations
 
 import asyncio
+import datetime
 import json
 import re
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts.build_hyrule_area import (
     BOSS_DROP_FIRST,
@@ -89,7 +91,7 @@ class DropTableSourceTests(unittest.TestCase):
         self.assertEqual([int(v) for v in re.findall(r"\d+", extra)],
                          [len(BOSS_EXTRA_DROPS[level]) for level in range(1, 10)])
         fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
-        corpse = fight.split("void make_corpse(", 1)[1].split("\n}\n", 1)[0]
+        corpse = fight.split("OBJ_DATA *make_corpse(", 1)[1].split("\n}\n", 1)[0]
         self.assertIn("hyrule_boss_drops( ch, corpse )", corpse)
 
     def test_every_piece_sits_at_the_top_of_its_band(self) -> None:
@@ -113,6 +115,10 @@ class DropTableStrengthTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.parser = server.load_area_parser(server.AREA_PATH)
         server.parser = cls.parser
+        # Outside every holiday, so a holiday boss's drops (offered only in
+        # season) never move the measure from one month to the next.
+        cls.today = patch.object(server, "_gear_today", lambda: datetime.date(2026, 8, 15))
+        cls.today.start()
         cls.weights = server.CLASS_WEIGHTS["warrior"]
         cls.mage_weights = server.CLASS_WEIGHTS["mage"]
         cls.labels = {}
@@ -120,10 +126,23 @@ class DropTableStrengthTests(unittest.TestCase):
             cls.labels.setdefault(key, label)
         cls.best: dict[int, dict] = {}
 
+    @classmethod
+    def tearDownClass(cls) -> None:
+        cls.today.stop()
+
     def best_at(self, level: int, class_name: str = "warrior") -> dict:
+        """The best of each slot from anywhere but a guardian's drop table:
+        the finder lists the tables themselves since 2026-11-10
+        (webadmin/gear_drops.py), and a piece is measured against the rest
+        of the world, not against itself or another guardian's table."""
         if (level, class_name) not in self.best:
-            self.best[(level, class_name)] = asyncio.run(server.get_best_gear(
-                class_name=class_name, race_name="human", level=level, limit=1))
+            found = asyncio.run(server.get_best_gear(
+                class_name=class_name, race_name="human", level=level, limit=50))
+            self.best[(level, class_name)] = {
+                label: [item for item in items
+                        if not any(source["kind"] == "hyrule_guardian"
+                                   for source in item.get("drop_sources", []))][:1]
+                for label, items in found.items()}
         return self.best[(level, class_name)]
 
     def test_each_piece_beats_the_best_of_its_slot_by_a_little(self) -> None:

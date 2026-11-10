@@ -898,6 +898,7 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
                     skill_table[sn].name);
 	    send_to_char(buf,ch);
 	    ch->pcdata->learned[sn]++;
+	    playlog_skill( ch, sn, ch->pcdata->learned[sn] - 1, true );
 	    playlog_exp_as( "skill use" );
 	    gain_exp(ch,2 * skill_table[sn].rating[ch->class]);
 	    if ( ch->pcdata->learned[sn] >= 100 )
@@ -914,8 +915,13 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
                 "You learn from your mistakes, and your %s skill improves.\n\r",
                 skill_table[sn].name);
 	    send_to_char(buf,ch);
-	    ch->pcdata->learned[sn] += number_range(1,3);
-	    ch->pcdata->learned[sn] = UMIN(ch->pcdata->learned[sn],100);
+	    {
+		int before = ch->pcdata->learned[sn];
+
+		ch->pcdata->learned[sn] += number_range(1,3);
+		ch->pcdata->learned[sn] = UMIN(ch->pcdata->learned[sn],100);
+		playlog_skill( ch, sn, before, false );
+	    }
 	    playlog_exp_as( "skill use" );
 	    gain_exp(ch,2 * skill_table[sn].rating[ch->class]);
 	    if ( ch->pcdata->learned[sn] >= 100 )

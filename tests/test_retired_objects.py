@@ -67,7 +67,7 @@ class BoughtItemTests(unittest.TestCase):
         took it back. Only a mobile's corpse stamps potions, scrolls and
         scuba gear now, and loading clears the old stamp from a player's."""
         fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1").replace("\r\n", "\n")
-        corpse = fight.split("void make_corpse( CHAR_DATA *ch )", 1)[1].split("\n}\n", 1)[0]
+        corpse = fight.split("OBJ_DATA *make_corpse( CHAR_DATA *ch )", 1)[1].split("\n}\n", 1)[0]
         guard = corpse.index("if ( IS_NPC(ch) )\n\t{")
         self.assertLess(guard, corpse.index("obj->timer = (sh_int)(number_range(200,500));"))
         save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")

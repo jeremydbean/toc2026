@@ -56,6 +56,20 @@ class FollowupSourceTests(unittest.TestCase):
         self.assertIn("if ( !hyrule_shrugs_off( ch ) )\n\t\tdamage( ch, ch, dam, gsn_plague,DAM_DISEASE);", update)
         self.assertIn("if ( !hyrule_shrugs_off( ch ) )\n\t            damage( ch, ch, dice(2,4), gsn_poison, DAM_POISON );", update)
 
+    def test_a_digdogger_bounce_is_said_once_a_round(self) -> None:
+        """Owner, 2026-11-10: a hasted Master Sword said the bounce and its
+        hint nine times a round, with "bites deep" between."""
+        hyrule = source("hyrule.c")
+        turned = hyrule.split("bool hyrule_blow_turned_aside( CHAR_DATA *ch, CHAR_DATA *victim )", 1)[1]
+        turned = turned.split("\n}\n", 1)[0]
+        self.assertIn("now - ch->bounce_said_ms < HYRULE_BOUNCE_QUIET_MS", turned)
+        self.assertIn("now - ch->bounce_hint_ms >= HYRULE_BOUNCE_HINT_MS", turned)
+        self.assertIn("#define HYRULE_BOUNCE_QUIET_MS  2500L", hyrule)
+        fight = source("fight.c")
+        for stat in ("WEAPON_SHARP", "WEAPON_VORPAL"):
+            block = fight.split(f"if ( IS_WEAPON_STAT(wield,{stat})", 1)[1][:120]
+            self.assertIn("!hyrule_shrugs_off( victim )", block, stat)
+
     def test_hyrule_doors_are_never_trapped_at_random(self) -> None:
         db = source("db.c")
         traps = db.split("/* set some random traps */", 1)[1][:900]

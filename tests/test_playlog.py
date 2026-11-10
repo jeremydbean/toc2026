@@ -72,7 +72,8 @@ class PlaylogSourceTests(unittest.TestCase):
         write = write[:write.index("\n}\n")]
         self.assertIn("play_hidden( ch )", write)
         self.assertNotIn("PLR_WIZINVIS ) ? NULL", code, "no anonymous rows: none at all")
-        prog = code[code.index("static void progress_write("):]
+        # Every progress row goes through progress_write_raw (2026-11-10).
+        prog = code[code.index("static void progress_write_raw("):]
         prog = prog[:prog.index("\n}\n")]
         self.assertIn("play_hidden( ch )", prog)
         ctx = code[code.index("void playlog_bug_context("):]

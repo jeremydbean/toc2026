@@ -908,31 +908,17 @@ void do_cast( CHAR_DATA *ch, char *argument )
 	 vo = (void *) 10;
        else
        {
-	  if ( !str_cmp( arg2, "north" ) )
-	    vo = (void *) 0;
-	  else if ( !str_cmp( arg2, "south" ) )
-	    vo = (void *) 1;
-	  else if ( !str_cmp( arg2, "east" ) )
-	    vo = (void *) 2;
-	  else if ( !str_cmp( arg2, "west" ) )
-	    vo = (void *) 3;
-	  else if ( !str_cmp( arg2, "up" ) )
-	    vo = (void *) 4;
-	  else if ( !str_cmp( arg2, "down" ) )
-	    vo = (void *) 5;
-	  else if ( !str_cmp( arg2, "northeast" ) )
-	    vo = (void *) 6;
-	  else if ( !str_cmp( arg2, "northwest" ) )
-	    vo = (void *) 7;
-	  else if ( !str_cmp( arg2, "southeast" ) )
-	    vo = (void *) 8;
-	  else if ( !str_cmp( arg2, "southwest" ) )
-	    vo = (void *) 9;
-	  else
+	  /* Any start of a direction's name, or ne/nw/se/sw, as the
+	     movement commands take one (door_direction_word). No TAR_EXIT
+	     spell reads vo yet; it carries the direction's index. */
+	  int exit_dir = door_direction_word( arg2 );
+
+	  if ( exit_dir < 0 )
 	  {
 	    send_to_char("That's not a valid direction.\n\r",ch);
 	    return;
 	  }
+	  vo = (void *) (intptr_t) exit_dir;
        }
        break;
 
@@ -977,7 +963,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
     if(!IS_IMMORTAL(ch) )
       WAIT_STATE( ch, skill_table[sn].beats );
 
-    if ( !IS_NPC(ch) && number_percent( ) > ch->pcdata->learned[sn] )
+    if ( !IS_NPC(ch)
+    &&   skill_roll_missed( ch, number_percent( ) > ch->pcdata->learned[sn] ) )
     {
 	send_to_char( "You lost your concentration.\n\r", ch );
 	check_improve(ch,sn,false,1);

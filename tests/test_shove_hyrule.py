@@ -35,7 +35,7 @@ class ShoveSourceTests(unittest.TestCase):
         self.assertLess(body.index("hyrule_foe( victim )"), body.index("number_percent"))
         self.assertIn("WAIT_STATE( ch, skill_table[gsn_shove].beats );", body)
         self.assertLess(body.index("WAIT_STATE( ch, skill_table[gsn_shove].beats );"),
-                        body.index("if(number_percent () < chance)"))
+                        body.index("if( skill_roll_landed( ch, number_percent () < chance ) )"))
         # The shutters and SHOVE ask the same question.
         guard = src[src.index("static bool hyrule_room_has_guardian"):]
         guard = guard[:guard.index("\n}\n")]

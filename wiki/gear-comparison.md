@@ -83,10 +83,20 @@ counts:
 - Not listed: rot-death gear, which crumbles after the kill; inventory-flagged
   gear on anyone but a shopkeeper, which goes with the corpse; anything in a
   gods-only or implementor-only room; and Mud School past newbie level.
+- A Hyrule guardian's drop table and Ganon's relics are listed too, though no
+  reset places them: three pieces of a guardian's table fall each kill, and
+  one of Ganon's three relics. The source line says so: "dropped by
+  Aquamentus in Level 1: Hall of Threefold Scorches, Hyrule: about 3 kills in
+  11".
 
 The website's Gear Finder applies the same obtainability rules and the same
-damage-first order with fixed weights per class and level. `compare upgrades`
-is the version that knows the character: skills, stats and current kit.
+damage-first order with fixed weights per class and level, and lists a little
+more of what a death makes: each guardian drop says what the way to the
+guardian needs (the previous Triforce piece, the tool for its chamber, the
+Silver Arrow for Ganon), the boomerangs a cleared Hyrule room lays out, the
+holiday bosses' drops while their holiday is on, and the black market's
+rarities with their odds. `compare upgrades` is the version that knows the
+character: skills, stats and current kit.
 
 ## Limits
 

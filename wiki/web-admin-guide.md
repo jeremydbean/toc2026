@@ -158,6 +158,14 @@ uses class-specific stat weights, object affects, race restrictions, wear
 locations, and average weapon damage. Expand **Score details** to see the
 calculation used for an item.
 
+It lists what a player can get: gear a mobile carries, wears or sells, gear in
+a chest that can be opened, and gear the game makes at a death, which no area
+file shows -- a Hyrule guardian's drop table, Ganon's relics, a cleared
+room's boomerang, a holiday boss's drops (only during its holiday) and the
+black market's rarities. For those the source line gives who drops it, where,
+the chance a kill and what the way there needs, and the API entry carries the
+same as `drop_sources` (`webadmin/gear_drops.py`).
+
 The result is an analysis aid, not an exact combat simulator. It does not model
 every proc, spell interaction, resistance matchup, temporary affect, dual-wield
 rule, or player preference.

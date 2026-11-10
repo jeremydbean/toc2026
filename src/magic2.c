@@ -292,7 +292,7 @@ void do_lore( CHAR_DATA *ch, char *argument )
         for ( i = 1; i <= 3; i++ )
         {
           if ( obj->value[i] >= 0 && obj->value[i] < MAX_SKILL
-          &&   number_percent() <= chance )
+          &&   skill_roll_landed( ch, number_percent() <= chance ) )
           {
             send_to_char( " '", ch );
             send_to_char( skill_table[obj->value[i]].name, ch );
@@ -315,7 +315,7 @@ void do_lore( CHAR_DATA *ch, char *argument )
             lore_estimate(obj->value[0]) );
 	send_to_char( buf, ch );
 
-	if( number_percent () < chance )
+	if( skill_roll_landed( ch, number_percent () < chance ) )
 	{
 	  if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
 	  {
@@ -347,7 +347,7 @@ void do_lore( CHAR_DATA *ch, char *argument )
 	    default		: send_to_char("unknown.\n\r",ch);	break;
 	}
 
-	if( number_percent () < chance )
+	if( skill_roll_landed( ch, number_percent () < chance ) )
 	{
 	    stat1 = number_range(obj->value[1]/2, obj->value[1] + 5);
 	    stat2 = number_range(obj->value[2]/2, obj->value[2] + 5);
@@ -433,17 +433,9 @@ void do_project( CHAR_DATA *ch, char *argument )
 	 send_to_char( "Specify a direction.\n\r", ch);
 	 return;
     }
-	    if ( !str_cmp( arg, "n" ) || !str_cmp( arg, "north" ) ) door = 0;
-    else if ( !str_cmp( arg, "e" ) || !str_cmp( arg, "east"  ) ) door = 1;
-    else if ( !str_cmp( arg, "s" ) || !str_cmp( arg, "south" ) ) door = 2;
-    else if ( !str_cmp( arg, "w" ) || !str_cmp( arg, "west"  ) ) door = 3;
-    else if ( !str_cmp( arg, "u" ) || !str_cmp( arg, "up"    ) ) door = 4;
-    else if ( !str_cmp( arg, "d" ) || !str_cmp( arg, "down"  ) ) door = 5;
-    else if ( !str_cmp( arg, "ne" ) || !str_cmp( arg, "northeast"  ) ) door = 6;
-    else if ( !str_cmp( arg, "nw" ) || !str_cmp( arg, "northwest"  ) ) door = 7;
-    else if ( !str_cmp( arg, "se" ) || !str_cmp( arg, "southeast"  ) ) door = 8;
-    else if ( !str_cmp( arg, "sw" ) || !str_cmp( arg, "southwest"  ) ) door = 9;
-    else
+    /* Any start of a direction's name (door_direction_word). */
+    door = door_direction_word( arg );
+    if ( door < 0 )
     {
 	send_to_char("That's not a direction.\n\r",ch);
 	return;
@@ -469,7 +461,7 @@ void do_project( CHAR_DATA *ch, char *argument )
 	 return;
     }
 
-    if ( number_percent() > chance )
+    if ( skill_roll_missed( ch, number_percent() > chance ) )
     {
         send_to_char( "You lost your concentration.\n\r", ch );
         ch->mana -= 5;
@@ -604,7 +596,7 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= (dice(1,5) + 3);
@@ -758,7 +750,7 @@ void do_enervate( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= (dice(1,5) + 3);
@@ -898,7 +890,7 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if( number_percent( ) > chance )
+	 if( skill_roll_missed( ch, number_percent( ) > chance ) )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= 5;
@@ -1028,7 +1020,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
              return;
          }
 
-	 if( number_percent( ) > chance )
+	 if( skill_roll_missed( ch, number_percent( ) > chance ) )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= 5;
@@ -1196,7 +1188,7 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= 5;
@@ -1413,7 +1405,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
      * learned percentage like every other power. A miss costs the effort,
      * not the full casting.
      */
-    if ( number_percent() > chance && !IS_IMMORTAL(ch) )
+    if ( skill_roll_missed( ch, number_percent() > chance ) && !IS_IMMORTAL(ch) )
     {
         send_to_char( "You reach for it and lose your concentration.\n\r", ch );
         ch->mana -= (dice(1,5) + 3);
@@ -1526,7 +1518,7 @@ void do_confuse( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= (dice(1,5) + 3);
@@ -1632,7 +1624,7 @@ void do_clairvoyance( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if ( number_percent( ) > chance )
+	 if ( skill_roll_missed( ch, number_percent( ) > chance ) )
 	 {
 	   send_to_char("All you can see is a fuzzy image.\n\r",ch);
 	   check_improve(ch,gsn_clairvoyance,false,4);
@@ -1754,7 +1746,7 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
          * the next keystroke -- which is what made pyrotechnics feel
          * faster than the fireball it is priced against.
          */
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char("You lost your concentration.\n\r", ch);
             check_improve(ch, gsn_pyrotechnics, false, 4);
@@ -1881,7 +1873,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
     }
 
 
-	 if ( number_percent( ) > chance )
+	 if ( skill_roll_missed( ch, number_percent( ) > chance ) )
 	 {
 	  send_to_char("You lost your concentration.\n\r",ch);
 	  ch->mana -= (dice(1,5) + 3);
@@ -2017,7 +2009,7 @@ void do_psionic_armor( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= (dice(1,5) + 3);
@@ -2087,7 +2079,7 @@ void do_psychic_shield( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= (dice(1,5) + 3);
@@ -2162,7 +2154,7 @@ void do_mindbar( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= (dice(1,5) + 3);
@@ -2253,7 +2245,7 @@ void do_torment( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if ( number_percent( ) > chance )
+	 if ( skill_roll_missed( ch, number_percent( ) > chance ) )
 	 {
 	  send_to_char("You lost your concentration.\n\r",ch);
 	  ch->mana -= (dice(1,5) + 3);
@@ -2373,7 +2365,7 @@ void do_transfusion( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( number_percent() > chance )
+        if ( skill_roll_missed( ch, number_percent() > chance ) )
         {
             send_to_char( "You lost your concentration.\n\r", ch );
             ch->mana -= (dice(1,5) + 3);
@@ -2450,7 +2442,7 @@ void do_shift( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( number_percent() > chance )
+    if ( skill_roll_missed( ch, number_percent() > chance ) )
     {
         send_to_char( "You lost your concentration.\n\r", ch );
         ch->mana -= (dice(1,5) + 3);
@@ -3505,7 +3497,7 @@ void do_brew( CHAR_DATA *ch, char *argument )
     act( "As the brew cools down, $n spoons out a small amount.", ch,
          NULL, NULL, TO_ROOM );
 
-    if ( number_percent() > skill )
+    if ( skill_roll_missed( ch, number_percent() > skill ) )
     {
         check_improve( ch, gsn_brew, false, 3 );
         status = craft_commit( ch, parts, 1, NULL );
@@ -3579,7 +3571,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
     act( "$n then says a few arcane words over it as the contents begin to "
          "froth and smoke.", ch, NULL, NULL, TO_ROOM );
 
-    if ( number_percent() > skill / 2 + 45 )
+    if ( skill_roll_missed( ch, number_percent() > skill / 2 + 45 ) )
     {
         int burn = dice( 2, 10 );
 
@@ -3651,7 +3643,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
     act( "A brief flash of light follows the addition of the final ingredient.", ch,
          NULL, NULL, TO_ROOM );
 
-    if ( number_percent() > skill / 2 + 45 )
+    if ( skill_roll_missed( ch, number_percent() > skill / 2 + 45 ) )
     {
         check_improve( ch, gsn_scribe, false, 5 );
         status = craft_commit( ch, parts, 3, NULL );

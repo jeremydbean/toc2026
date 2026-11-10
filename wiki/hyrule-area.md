@@ -123,8 +123,10 @@ one before it gives. Every dungeon works the same way:
 2. **Inside**, the way into the guardian's chamber needs the previous
    dungeon's treasure.
 3. **The guardian** hands its dungeon's key to every player its death
-   credits -- the killer and their group in the room -- each a key of their
-   own that cannot be given away. The key opens the locked door into the
+   credits -- the killer, their group in the room, and anybody else in the
+   room who fought it, however late they joined -- each a key of their own
+   that cannot be given away. Whoever left the room before it fell has
+   none. The key opens the locked door into the
    room behind the guardian, and the locked chest in that room.
 4. **The chest** holds this dungeon's Triforce piece and its treasure: the
    piece opens the next dungeon, and the treasure gets you through it. Only

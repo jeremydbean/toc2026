@@ -112,7 +112,7 @@ class RareEventAndSkillTests(unittest.TestCase):
         self.assertIn("status = save_char_obj_status();", commit)
 
     def test_event_loot_is_autolootable_and_never_empty(self) -> None:
-        corpse = function_body(self.fight, "void make_corpse", "void death_cry")
+        corpse = function_body(self.fight, "OBJ_DATA *make_corpse", "void death_cry")
 
         self.assertIn("obj_to_obj( drop, corpse )", self.fight)
         # The drop table lives in season.c now; a boss whose rolls left

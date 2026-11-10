@@ -8987,13 +8987,8 @@ void do_gkick( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( !str_cmp( arg2, "n") || !str_cmp( arg2, "north" ) ) door = 0;
-    else if ( !str_cmp( arg2, "e") || !str_cmp( arg2, "east" ) )  door = 1;
-    else if ( !str_cmp( arg2, "s") || !str_cmp( arg2, "south" ) ) door = 2;
-    else if ( !str_cmp( arg2, "w") || !str_cmp( arg2, "west" ) )  door = 3;
-    else if ( !str_cmp( arg2, "u") || !str_cmp( arg2, "up" ) )    door = 4;
-    else if ( !str_cmp( arg2, "d") || !str_cmp( arg2, "down" ) )  door = 5;
-    else
+    /* Any of the ten, by any start of its name (door_direction_word). */
+    if ( ( door = door_direction_word( arg2 ) ) < 0 )
     {
 	send_to_char( "That's not a valid direction!\n\r", ch );
 	return;

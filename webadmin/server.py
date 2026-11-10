@@ -12,6 +12,7 @@ import re
 import secrets
 import shutil
 import socket
+import statistics
 import subprocess
 import threading
 import time
@@ -157,6 +158,8 @@ try:
     from webadmin import oracle
     from webadmin import hyrule_oracle
     from webadmin import help_index
+    from webadmin import balance
+    from webadmin import gear_drops
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
@@ -166,6 +169,8 @@ except ImportError:
     import oracle
     import hyrule_oracle
     import help_index
+    import balance
+    import gear_drops
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -183,6 +188,10 @@ LOGIN_JOURNAL: Path = Path(os.getenv("LOGIN_JOURNAL", "log/logins.tsv"))
 CHANNEL_JOURNAL: Path = Path(
     os.getenv("CHANNEL_JOURNAL", "log/channels.tsv")
 )
+# What players' kills paid (src/playlog.c): the leveling guide, the Oracle
+# and the Gear Finder read it through balance.py. main() puts it beside
+# --log-file unless PROGRESS_LOG says otherwise.
+PROGRESS_LOG: Path = Path(os.getenv("PROGRESS_LOG", "log/progress.tsv"))
 UPDATE_REQUEST_PATH: Optional[Path] = (
     Path(update_request_path)
     if (update_request_path := os.getenv("TOC_UPDATE_REQUEST_PATH", "").strip())
@@ -417,6 +426,20 @@ _ORACLE_PERSONAL_HINTS = (
 )
 
 
+def _copper_words(copper) -> str:
+    """A sum as the game writes one: 1p 4g, 52g 3s, 7c."""
+    try:
+        n = max(0, int(round(float(copper))))
+    except (TypeError, ValueError):
+        return "0c"
+    parts = []
+    for unit, letter in ((1_000_000, "p"), (10_000, "g"), (100, "s"), (1, "c")):
+        if n >= unit:
+            parts.append("%d%s" % (n // unit, letter))
+            n %= unit
+    return " ".join(parts[:2]) if parts else "0c"
+
+
 def _oracle_live_keyword(question: str) -> str:
     """The item or mob a "where is / who has" question is about, as up to four
     content words for the game's own keyword match -- or "" if the question is
@@ -550,6 +573,14 @@ def _oracle_drop_lines(question: str, objs: dict, mobs: dict, rooms: dict) -> li
     for rv, room in rooms.items():
         for ov in getattr(room, "objects", []) or []:
             in_rooms.setdefault(ov, []).append(room)
+    # What a death makes, which no reset shows (gear_drops): every source,
+    # a holiday's out of season too, marked with its dates.
+    try:
+        from types import SimpleNamespace
+        made = gear_drops.dynamic_sources(
+            SimpleNamespace(objects=objs, mobiles=mobs, rooms=rooms), _gear_today())
+    except Exception:
+        made = {}
 
     def sources(obj) -> list:
         out = []
@@ -567,13 +598,16 @@ def _oracle_drop_lines(question: str, objs: dict, mobs: dict, rooms: dict) -> li
             if box is not None:
                 out.append("inside %s in %s" % (getattr(box, "short_desc", "?"),
                                                 getattr(box, "area_name", "?")))
+        for made_by in made.get(getattr(obj, "vnum", None), [])[:4]:
+            out.append(gear_drops.describe(made_by))
         return out
 
     matches.sort(key=lambda o: (-len(sources(o)), getattr(o, "vnum", 0)))
     lines = []
     for obj in matches[:3]:
         src = sources(obj)
-        lines.append("Where %s (lvl %s) comes from, per the area files -- %s." % (
+        lines.append("Where %s (lvl %s) comes from, per the area files and the "
+                     "game's drop tables -- %s." % (
             getattr(obj, "short_desc", "?"), getattr(obj, "level", "?"),
             "; ".join(src) if src else "nothing in the world loads it"))
     return lines
@@ -853,13 +887,20 @@ def _oracle_live_lookup(reqs, timeout: float = 2.5, asker: str = "") -> list:
     return [got.get(r, "") if r else "" for r in ids]
 
 
-def _oracle_gear_where(item: Dict[str, Any], objs, mobs) -> str:
+def _oracle_gear_where(item: Dict[str, Any], objs, mobs, brief: bool = False) -> str:
     """'from the pirate in Pirate Ship': the finder's own source when it gave
     one -- it has already ruled out carriers a player cannot loot -- else the
-    first carrier on file."""
+    first carrier on file. Gear a death makes says who drops it, where, the
+    chance a kill and what the way there needs -- in a few words when
+    brief, for the list of every slot."""
     # "The Shire (Poohb)", not the raw "Poohb   The Shire" of the file.
     area = format_area_name(item.get("area", "") or "") or "?"
     source = item.get("source")
+    if item.get("drop_sources"):
+        # Made at a death (gear_drops): the object's own area (a holiday
+        # piece's is "Seasonal Items") is not where it is found.
+        return (gear_drops.brief(item["drop_sources"]) if brief
+                else source or gear_drops.source_label(item["drop_sources"]))
     if source:
         return "%s in %s" % (source, area)
     carriers = getattr(objs.get(item.get("vnum")), "carried_by", None) or []
@@ -1180,16 +1221,24 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
         except Exception:
             best = {}
         bis = []
+        chance_drops = False
         for slot, items in best.items():
             if not items:
                 continue
             top = items[0]
-            bis.append("%s: %s (lvl %s), %s" % (
+            chance_drops = chance_drops or bool(top.get("drop_sources"))
+            bis.append("%s: %s (lvl %s), %s%s" % (
                 slot, top.get("name", "?"), top.get("level", "?"),
-                _oracle_gear_where(top, objs, mobs)))
+                _oracle_gear_where(top, objs, mobs, brief=True),
+                (" (players' kills have dropped it %d times)" % top["seen_drops"])
+                if top.get("seen_drops") else ""))
         if bis:
             lines.append("Obtainable best-in-slot for this class and level -- "
                          + "; ".join(bis) + ".")
+            if chance_drops:
+                lines.append("A piece 'dropped by' somebody falls by chance, not "
+                             "every kill: say the chance, and what the way to it "
+                             "needs, when you name one.")
         # A slot named outright gets its answer outright, as a weapon does.
         for slot in slots_named[:2]:
             items = best.get(slot) or []
@@ -1287,13 +1336,32 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
             lv = {}
         picks = []
         for m in (lv.get("mobs") or [])[:5]:
-            picks.append("%s (lvl %s) in %s: %s xp/kill, ~%s xp/hr, %s around%s%s" % (
+            o = m.get("observed") or {}
+            told = ""
+            if o:
+                # What players found: a measured mobile says how long it
+                # took them, what it paid, how often it sent them running,
+                # and on how many kills that rests, so she can warn as well
+                # as recommend, and say how sure the figure is.
+                told = ("; players: %s kills by %s characters, ~%ss a kill, %s coin a kill, "
+                        "%d%% fled or died%s"
+                        % (o.get("kills"), o.get("characters"),
+                           int(o.get("median_seconds") or 0),
+                           _copper_words(o.get("coin_per_kill") or 0),
+                           round(100 * float(o.get("risk") or 0)),
+                           (", gear in %d%% of corpses" % round(100 * o["drop_rate"]))
+                           if o.get("drop_rate") else ""))
+            needs = ("; needs " + " and ".join(m["needs"])) if m.get("needs") else ""
+            picks.append("%s (lvl %s) in %s: %s xp/kill, ~%s xp/hr (%s)%s, %s around%s%s%s" % (
                 m.get("name"), m.get("level"), m.get("area"), m.get("xp_per_kill"),
-                m.get("xp_per_hour"), m.get("count"),
-                ", aggressive" if m.get("aggressive") else "",
+                m.get("xp_per_hour"), m.get("basis", "modelled"), told, m.get("count"),
+                ", aggressive" if m.get("aggressive") else "", needs,
                 ("; route: " + m["directions"]) if m.get("directions") else ""))
         if picks:
-            lines.append("Best leveling for level %d (the site's leveling guide) -- %s."
+            lines.append("Best leveling for level %d (the site's leveling guide; "
+                         "measured means timed from players' own kills near this "
+                         "level, modelled is an estimate for a mobile too seldom "
+                         "killed to measure -- say which) -- %s."
                          % (lvl, " | ".join(picks)))
 
     hyrule: list = []
@@ -4333,6 +4401,13 @@ def _gear_two_handed(values) -> bool:
         return False
 
 
+def _gear_today():
+    """The date the holidays are judged by: the host's, as the game's
+    calendar (holiday.c) reads the host's local clock. Tests patch it."""
+    import datetime
+    return datetime.date.today()
+
+
 def _gear_natural_slot(obj, item_type: int) -> Optional[str]:
     """The one slot WEAR would put this in, or None."""
     if item_type == ITEM_TYPE_LIGHT:
@@ -4542,11 +4617,21 @@ async def get_best_gear(
     # entry for each even when nothing fits -- so a blank slot reads as
     # "nothing at this level" rather than as a slot the finder forgot.
     best_items: dict[str, list] = {key: [] for key, _label in GEAR_FINDER_SLOTS}
+    try:
+        seen_counts = balance.seen_drops(PROGRESS_LOG)
+    except Exception:
+        seen_counts = {}
+    # What the game makes when something dies, which no reset shows: a
+    # Hyrule guardian's drop table, a holiday boss in its season, ...
+    drops = gear_drops.dynamic_sources(parser, _gear_today())
 
     for vnum, obj in parser.objects.items():
         # Obtainable only: something a mobile carries or wears (G and E
-        # resets) that a player can actually take and keep.
-        if not (getattr(obj, "carried_by", None) or getattr(obj, "contained_by", None)):
+        # resets) that a player can actually take and keep, or that a
+        # death makes (gear_drops).
+        dropped = drops.get(vnum) if gear_drops.offered(drops.get(vnum)) else None
+        if not (getattr(obj, "carried_by", None) or getattr(obj, "contained_by", None)
+                or dropped):
             continue
         if not _gear_race_ok(obj, race_flag):
             continue
@@ -4572,6 +4657,10 @@ async def get_best_gear(
             if source is None or item_level > source[1] or (
                     item_level == source[1] and rank < source[3]):
                 source = (label, item_level, values, rank)
+        if source is not None:
+            dropped = None          # a reset is the surer way to it
+        elif dropped and 0 <= int(obj.level) <= level:
+            source = (gear_drops.source_label(dropped), int(obj.level), list(obj.values), 0)
         if source is None:
             continue
         source_label, item_level, values, _rank = source
@@ -4587,7 +4676,15 @@ async def get_best_gear(
             "affects": affects_decoded,
             "area": obj.area_name,
             "source": source_label,
+            # How often players' kills have dropped it (balance.py): the
+            # finder ranks by what an item does, and this says whether
+            # anybody actually gets it.
+            "seen_drops": int(seen_counts.get(int(obj.vnum), 0)),
         }
+        if dropped:
+            # Each way it is made: who, where, the chance a kill, what the
+            # way there asks for, and the holiday if it has one.
+            entry["drop_sources"] = dropped
         best_items[slot].append(entry)
 
         # A class that dual wields holds its second weapon in the shield
@@ -4757,10 +4854,14 @@ async def get_leveling(
         raise HTTPException(status_code=400, detail="Level must be between 1 and 70")
     limit = max(1, min(limit, 50))
 
-    # DPS a player of this level is assumed to do. It is a modelled
-    # estimate -- the game logs no combat damage and the dummy benchmark
-    # board is the real source once it has runs -- and, being constant for
-    # a fixed level, it only scales the xp/hour figure, never the order.
+    # DPS a player of this level is assumed to do: the fallback model for
+    # a mobile players have not killed enough to measure. Combat damage IS
+    # logged (log/progress.tsv's reward and slain rows, read by
+    # balance.py), and a measured mobile's kill time comes from there. The
+    # assumed DPS does change the order: it sets the modelled kill time,
+    # which is weighed against the world's supply (a mobile placed once
+    # refills only so fast), so a slower model makes thin supply matter
+    # less. It is calibrated against the measured mobiles below.
     player_dps = max(1.0, level * 3.0)
     player_hp = max(20.0, level * 20.0)
 
@@ -4781,6 +4882,36 @@ async def get_leveling(
             if key:
                 routes_by_area.setdefault(_area_key(key), route)
 
+    # What players' kills of each mobile actually took and cost
+    # (balance.py, from log/progress.tsv). Where players within five
+    # levels of this one have killed it enough, their median kill time
+    # and their flee and death rate replace the model's; xp per kill
+    # stays fight.c's, for this level. The rest rank by the model,
+    # calibrated by the measured ones (below). `seen` is the all-levels
+    # figure the row reports as "observed".
+    try:
+        seen = balance.load(PROGRESS_LOG)["mobs"]
+    except Exception:
+        seen = {}
+
+    # Who is ordinary prey. A Hyrule guardian never is: its chamber asks
+    # for a tool from an earlier dungeon and the dungeon for the piece
+    # before it, and the late ones are fights for a group. Nor is a mobile
+    # in an area nothing leads to (routes are walked from the Oak Tree
+    # Square, which is in Dresden, so Dresden alone has none and is open).
+    guardians = set(gear_drops.GUARDIAN_VNUMS)
+    rooms = getattr(parser, "rooms", {}) or {}
+    start = rooms.get(2401)
+    start_area = _area_key(getattr(start, "area_name", "")) if start else ""
+
+    def dungeon_level(mob) -> int:
+        """The Hyrule dungeon (1-9) a mobile is placed in, or 0."""
+        for rv in getattr(mob, "spawn_rooms", []) or []:
+            found = re.match(r"Level (\d)", str(getattr(rooms.get(rv), "name", "")))
+            if found:
+                return int(found.group(1))
+        return 0
+
     rows = []
     for vnum, mob in parser.mobiles.items():
         mob_level = int(mob.level or 0)
@@ -4798,19 +4929,38 @@ async def get_leveling(
             continue
         if _LEVELING_SKIP_ACT & set(decode_flags(mob.act_flags, ACT_FLAGS)):
             continue
+        if int(mob.vnum) in guardians:
+            continue
+        route = routes_by_area.get(_area_key(mob.area_name))
+        if route is None and _area_key(mob.area_name) != start_area:
+            continue
+        dungeon = dungeon_level(mob)
+        needs = gear_drops.hyrule_needs(dungeon, getattr(parser, "objects", {}) or {}) \
+            if dungeon else []
 
         hp = _dice_avg(mob.hitp_dice) or (mob_level * 10.0)
         dmg = _dice_avg(mob.dam_dice)
         kill_time = max(1.0, hp / player_dps)                 # seconds
-        solo_rate = 3600.0 / kill_time                        # kills/hour if always one up
-        supply_rate = population * _RESETS_PER_HOUR           # kills/hour the world can refill
-        kills_hr = min(solo_rate, supply_rate)
         # Brutal mobs for their level rank lower -- dying is the slowest
         # way to level.
         safety = 1.0 / (1.0 + dmg / (player_hp / 4.0))
-        xp_hr = xp * kills_hr * safety
+        obs = seen.get(int(mob.vnum))
+        # Measured only from players near this level: a level 1 and a
+        # level 20 do not take the same time over a goblin.
+        try:
+            close = balance.near(PROGRESS_LOG, int(mob.vnum), level)
+        except Exception:
+            close = None
+        modelled_time = kill_time
+        loop = None
+        if close:
+            kill_time = max(1.0, float(close["median_seconds"]))
+            safety = max(0.05, 1.0 - float(close["risk"]))
+            # The kill and the time to the next one -- resting, walking,
+            # finding it -- as those players measured it.
+            loop = max(kill_time, float(close.get("cycle_seconds") or 0.0))
 
-        route = routes_by_area.get(_area_key(mob.area_name))
+        xp_hr = 0.0     # set below, once the model is calibrated
         rows.append({
             "vnum": mob.vnum,
             "name": mob.short_desc,
@@ -4826,14 +4976,76 @@ async def get_leveling(
                           or "aggressive" in decode_flags(mob.act_flags, ACT_FLAGS),
             "directions": route["commands"] if route else "",
             "rooms_away": route.get("rooms_away") if route else None,
+            "basis": "measured" if close else "modelled",
+            "needs": needs,
+            "_modelled_time": modelled_time,
+            "_loop": loop,
+            "_safety": safety,
+            "_supply": population * _RESETS_PER_HOUR,
+            # Every level's evidence, with its sample, for the page and the
+            # Oracle to show; "measured" above is only players near this one.
+            "observed": ({
+                "kills": obs["kills"],
+                "characters": obs["characters"],
+                "legacy_rows": obs["legacy"],
+                "median_seconds": obs["median_seconds"],
+                "p25_seconds": obs["p25_seconds"],
+                "p75_seconds": obs["p75_seconds"],
+                "cycle_seconds": obs["cycle_seconds"],
+                "risk": round(obs["risk"], 3),
+                "coin_per_kill": round(obs["coin_generated_per_kill"]),
+                "coin_looted_per_kill": (None if obs["coin_looted_per_kill"] is None
+                                         else round(obs["coin_looted_per_kill"])),
+                "drop_rate": obs["drop_rate"],
+                "gear_worth_per_kill": (None if obs["gear_looted_per_kill"] is None
+                                        else round(obs["gear_looted_per_kill"])),
+                "hp_lost_per_kill": round(obs["hp_lost_per_kill"]),
+                "group_share": round(obs["group_share"], 2),
+                "flags": obs.get("flags", []),
+            } if obs and obs.get("trusted") else None),
         })
+
+    # The model's kill times are calibrated by the measured ones: the
+    # median ratio of measured to modelled among mobiles players near this
+    # level have timed scales every modelled time, so a measured mobile
+    # is not ranked below an untried one only because the model is
+    # optimistic.
+    # Downtime too: a measured mobile's hour is its kill plus the time to
+    # the next (the loop), and the same median ratio of measured loop to
+    # modelled kill time stretches every modelled one.
+    ratios = [r["kill_seconds"] / r["_modelled_time"] for r in rows
+              if r["basis"] == "measured" and r["_modelled_time"] > 0]
+    loops = [r["_loop"] / r["_modelled_time"] for r in rows
+             if r["basis"] == "measured" and r["_loop"] and r["_modelled_time"] > 0]
+    calibration = statistics.median(ratios) if len(ratios) >= 3 else 1.0
+    loop_calibration = statistics.median(loops) if len(loops) >= 3 else calibration
+    for r in rows:
+        if r["basis"] == "modelled":
+            r["kill_seconds"] = round(max(1.0, r["_modelled_time"] * calibration), 1)
+            loop = max(r["kill_seconds"], r["_modelled_time"] * loop_calibration)
+        else:
+            loop = r["_loop"] or r["kill_seconds"]
+        kills_hr = min(3600.0 / max(1.0, loop), r["_supply"])
+        r["xp_per_hour"] = round(r["xp_per_kill"] * kills_hr * r["_safety"])
+        for k in ("_modelled_time", "_loop", "_safety", "_supply"):
+            r.pop(k, None)
 
     rows.sort(key=lambda r: r["xp_per_hour"], reverse=True)
     return {
         "level": level,
+        "calibration": round(calibration, 2),
+        "loop_calibration": round(loop_calibration, 2),
+        "measured_mobs": len(ratios),
         "player_dps_estimate": round(player_dps),
-        "note": "xp/hour is an estimate (modelled DPS); the ranking does "
-                "not depend on it. xp/kill and the band come from fight.c.",
+        "note": "xp/hour includes the time between kills. A mobile marked "
+                "measured is timed from players within five levels of this "
+                "one (median kill time, time to the next kill, flee and death "
+                "rate; observed shows its sample); the rest are a model -- an "
+                "assumed DPS against its hit points -- scaled by the measured "
+                "ones, and are a fallback for mobiles too new or too seldom "
+                "killed to measure. xp/kill and the band come from fight.c. "
+                "Hyrule's guardians and areas nothing leads to are left out; "
+                "a Hyrule dungeon's mobiles say what the way in needs.",
         "mobs": rows[:limit],
     }
 
@@ -4970,6 +5182,8 @@ if __name__ == "__main__":
     DEFAULT_LOG = args.log_file
     if not os.getenv("TOC_DEPLOYED_COMMIT_FILE"):
         DEPLOYED_COMMIT_FILE = Path(args.log_file).parent / "deployed-commit"
+    if not os.getenv("PROGRESS_LOG"):
+        PROGRESS_LOG = Path(args.log_file).parent / "progress.tsv"
     EVENT_LOG = args.event_log_file
     AREA_PATH = args.area_path
     BACKUP_PATH = args.backup_path

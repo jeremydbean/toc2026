@@ -1353,6 +1353,11 @@ bool hyrule_shrugs_off( CHAR_DATA *victim )
  * the Recorder has not shrunk is far too big to hurt (Z_04.asm:5166). Each
  * says so, so nobody keeps swinging without knowing why.
  */
+/* A refused blow on an unshrunk digdogger is told once in this long --
+   under a round (PULSE_VIOLENCE, 3 s) -- and its hint once in this. */
+#define HYRULE_BOUNCE_QUIET_MS  2500L
+#define HYRULE_BOUNCE_HINT_MS   60000L
+
 bool hyrule_blow_turned_aside( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     char buf[MAX_STRING_LENGTH];
@@ -1391,10 +1396,26 @@ bool hyrule_blow_turned_aside( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( hyrule_is_digdogger( victim )
     &&   victim->hyrule_state != HYRULE_DIGDOGGER_SHRUNK )
     {
-        act( "Your blow bounces off $N's great rolling bulk: it is far too big to hurt. "
-             "Something must make it smaller -- a tune, the old men say.",
-             ch, NULL, victim, TO_CHAR );
-        act( "$n's blow bounces off $N's great rolling bulk.", ch, NULL, victim, TO_NOTVICT );
+        long now = playlog_now_ms();
+
+        /* Once a round, not once a blow (owner, 2026-11-10: a hasted
+           Master Sword said it nine times a round), and the hint at most
+           once a minute: a round's blows all bounce alike. */
+        if ( ch->bounce_said_ms > 0 && now - ch->bounce_said_ms < HYRULE_BOUNCE_QUIET_MS
+        &&   now >= ch->bounce_said_ms )
+            return true;
+        ch->bounce_said_ms = now;
+        if ( ch->bounce_hint_ms <= 0 || now - ch->bounce_hint_ms >= HYRULE_BOUNCE_HINT_MS
+        ||   now < ch->bounce_hint_ms )
+        {
+            ch->bounce_hint_ms = now;
+            act( "Your blows bounce off $N's great rolling bulk: it is far too big to hurt. "
+                 "Something must make it smaller -- a tune, the old men say.",
+                 ch, NULL, victim, TO_CHAR );
+        }
+        else
+            act( "Your blows bounce off $N's great rolling bulk.", ch, NULL, victim, TO_CHAR );
+        act( "$n's blows bounce off $N's great rolling bulk.", ch, NULL, victim, TO_NOTVICT );
         return true;
     }
     return false;
@@ -2079,6 +2100,33 @@ static const int hyrule_boss_extra_drops[9] =
     6, 6, 6, 6, 6, 6, 6, 6, 5
 };
 
+/* The guardian of a dungeon (1 to 9), or 0: for COMPARE UPGRADES, which
+   lists the drop tables beside what resets place (gear_compare.c). */
+int hyrule_guardian_vnum( int level )
+{
+    return level >= 1 && level <= 9 ? hyrule_guardian_vnums[level - 1] : 0;
+}
+
+/* How many pieces a guardian's drop table holds; three of them fall. */
+int hyrule_boss_drop_count( int level )
+{
+    return level >= 1 && level <= 9
+        ? HYRULE_BOSS_DROPS_PER_GUARDIAN + hyrule_boss_extra_drops[level - 1] : 0;
+}
+
+/* The nth piece of a guardian's drop table: the first five, then the rest. */
+int hyrule_boss_drop_vnum( int level, int n )
+{
+    if ( n < 0 || n >= hyrule_boss_drop_count( level ) )
+        return 0;
+    return n < HYRULE_BOSS_DROPS_PER_GUARDIAN
+        ? OBJ_VNUM_HYRULE_BOSS_DROP_FIRST
+          + ( level - 1 ) * HYRULE_BOSS_DROPS_PER_GUARDIAN + n
+        : OBJ_VNUM_HYRULE_BOSS_EXTRA_FIRST
+          + ( level - 1 ) * HYRULE_BOSS_EXTRA_STRIDE
+          + n - HYRULE_BOSS_DROPS_PER_GUARDIAN;
+}
+
 void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
 {
     OBJ_INDEX_DATA *index;
@@ -2096,7 +2144,7 @@ void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
     if ( level == 0 )
         return;
 
-    total = HYRULE_BOSS_DROPS_PER_GUARDIAN + hyrule_boss_extra_drops[level - 1];
+    total = hyrule_boss_drop_count( level );
     while ( count < HYRULE_BOSS_DROPS_PER_KILL && count < total )
     {
         int n = number_range( 0, total - 1 );
@@ -2108,12 +2156,7 @@ void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
         if ( seen )
             continue;
         picked[count++] = n;
-        index = get_obj_index( n < HYRULE_BOSS_DROPS_PER_GUARDIAN
-            ? OBJ_VNUM_HYRULE_BOSS_DROP_FIRST
-              + ( level - 1 ) * HYRULE_BOSS_DROPS_PER_GUARDIAN + n
-            : OBJ_VNUM_HYRULE_BOSS_EXTRA_FIRST
-              + ( level - 1 ) * HYRULE_BOSS_EXTRA_STRIDE
-              + n - HYRULE_BOSS_DROPS_PER_GUARDIAN );
+        index = get_obj_index( hyrule_boss_drop_vnum( level, n ) );
         if ( index == NULL )
         {
             bug( "hyrule_boss_drops: missing drop for Level %d.", level );
@@ -2176,6 +2219,45 @@ static OBJ_DATA *carried_top( CHAR_DATA *ch, int vnum )
 }
 
 /* raw_kill, before the corpse is made: a key for each player credited. */
+/* A player, or a pet's or servant's master, struck a guardian: they
+   fought it, and are owed its key if they are in the room when it dies,
+   whether they joined the killer's group or the fight late (owner,
+   2026-11-10: "joined late yes, left room no"). Staff never. */
+void hyrule_note_striker( CHAR_DATA *ch, CHAR_DATA *guardian )
+{
+    int i;
+
+    if ( ch == NULL || guardian == NULL || !IS_NPC(guardian) || !is_hyrule_guardian( guardian ) )
+        return;
+    if ( IS_NPC(ch) && ch->master != NULL && !IS_NPC(ch->master) && IS_AFFECTED(ch, AFF_CHARM) )
+        ch = ch->master;
+    if ( IS_NPC(ch) || ch->pcdata == NULL || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+        return;
+    for ( i = 0; i < guardian->hyrule_struck_n; i++ )
+        if ( guardian->hyrule_struck[i] == ch->pcdata->id )
+            return;
+    if ( guardian->hyrule_struck_n >= HYRULE_STRUCK_MAX )
+    {
+        /* Full: the oldest goes, so a fighter now is never refused. */
+        memmove( guardian->hyrule_struck, guardian->hyrule_struck + 1,
+                 sizeof(guardian->hyrule_struck[0]) * ( HYRULE_STRUCK_MAX - 1 ) );
+        guardian->hyrule_struck_n = HYRULE_STRUCK_MAX - 1;
+    }
+    guardian->hyrule_struck[guardian->hyrule_struck_n++] = ch->pcdata->id;
+}
+
+static bool hyrule_struck_by( const CHAR_DATA *guardian, const CHAR_DATA *ch )
+{
+    int i;
+
+    if ( ch->pcdata == NULL )
+        return false;
+    for ( i = 0; i < guardian->hyrule_struck_n; i++ )
+        if ( guardian->hyrule_struck[i] == ch->pcdata->id )
+            return true;
+    return false;
+}
+
 void hyrule_guardian_slain( CHAR_DATA *killer, CHAR_DATA *guardian )
 {
     OBJ_INDEX_DATA *index;
@@ -2204,13 +2286,19 @@ void hyrule_guardian_slain( CHAR_DATA *killer, CHAR_DATA *guardian )
     if ( credit != NULL && IS_NPC(credit) && credit->master != NULL
     &&   !IS_NPC(credit->master) )
         credit = credit->master;
-    if ( credit == NULL || IS_NPC(credit) || IS_TRUSTED(credit, LEVEL_IMMORTAL)
-    ||   ( index = get_obj_index( key ) ) == NULL )
+    if ( credit != NULL && ( IS_NPC(credit) || IS_TRUSTED(credit, LEVEL_IMMORTAL) ) )
+        credit = NULL;
+    if ( ( index = get_obj_index( key ) ) == NULL )
         return;
+    /* Everybody in the room at its death who fought it -- the one who
+       struck it down, their group, and anybody who joined the fight late,
+       grouped or not. Anybody who left the room before it fell has none. */
     for ( rch = guardian->in_room->people; rch != NULL; rch = rch->next_in_room )
     {
-        if ( IS_NPC(rch) || IS_TRUSTED(rch, LEVEL_IMMORTAL)
-        ||   ( rch != credit && !is_same_group( rch, credit ) ) )
+        if ( IS_NPC(rch) || IS_TRUSTED(rch, LEVEL_IMMORTAL) )
+            continue;
+        if ( rch != credit && ( credit == NULL || !is_same_group( rch, credit ) )
+        &&   !hyrule_struck_by( guardian, rch ) )
             continue;
         if ( carried_top( rch, key ) != NULL )
             continue;           /* one at a time: the last is unspent */
@@ -2254,15 +2342,13 @@ bool hyrule_tool_claim( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     ||   IS_TRUSTED(ch, LEVEL_IMMORTAL)
     ||   !hyrule_progression_tool( obj->pIndexData->vnum ) )
         return false;
+    /* Lying on the floor, where the dungeon lays them, and nowhere else:
+       from a corpse, a bag or any box, the object itself is taken by the
+       ordinary rules (review, 2026-11-10: the chest claim's twin mistake
+       took any container in Hyrule for the authored one). */
     if ( container != NULL )
-    {
-        if ( container->item_type == ITEM_CORPSE_PC
-        ||   container->item_type == ITEM_CORPSE_NPC )
-            return false;
-        where = container->in_room;
-    }
-    else
-        where = obj->in_room;
+        return false;
+    where = obj->in_room;
     if ( where == NULL || !IS_HYRULE_ROOM_VNUM( where->vnum ) )
         return false;
 
@@ -2326,7 +2412,15 @@ bool hyrule_chest_claim( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     int level = prize_level( obj );
     int key = hyrule_guardian_key( level );
 
+    /* The dungeon's own chest, lying where it stands, and nothing else: a
+       claim on any container in Hyrule took a player's own corpse for a
+       chest, and refused its owner the piece and the Master Sword they
+       had died holding, their keys long spent (review, 2026-11-10). A
+       corpse, a bag or anything else gives up the very object it holds,
+       by the ordinary rules (the bound-item guard in get_obj). */
     if ( level == 0 || container == NULL || container->in_room == NULL
+    ||   container->pIndexData == NULL
+    ||   container->pIndexData->vnum != OBJ_VNUM_HYRULE_CHEST_FIRST + level - 1
     ||   !IS_HYRULE_ROOM_VNUM( container->in_room->vnum )
     ||   IS_NPC(ch) || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
         return false;

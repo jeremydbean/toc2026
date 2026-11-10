@@ -1194,7 +1194,8 @@ Some locks refuse before any roll and say why: a lock beyond any pick, a
 magical lock, one with no key, or something not closed or not locked.  A
 fumble -- the pick slipping, the tumblers dropping back -- is a missed roll
 on a lock that can open, and is worth trying again.  A trapped lock goes
-off when you get it right, and stays locked; SEARCH first.
+off when you get it right, and stays locked; SEARCH first.  A direction
+may be shortened (PICK WES); see HELP OPEN.
 
 Usable from level: Mage 23, Cleric 23, Thief 7, Warrior 25; never Monk,
 Necromancer.  Thieves get it free.  Trainers: Picky the locksmith; Tia and

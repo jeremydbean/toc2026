@@ -68,6 +68,14 @@ static const int hyrule_ganon_loot_vnums[] =
     OBJ_VNUM_HYRULE_PEGASUS_BOOTS
 };
 
+/* The nth of them, or 0 past the last: COMPARE UPGRADES lists them. */
+int hyrule_ganon_loot_vnum( int n )
+{
+    return n >= 0 && n < (int)( sizeof(hyrule_ganon_loot_vnums)
+                                / sizeof(hyrule_ganon_loot_vnums[0]) )
+        ? hyrule_ganon_loot_vnums[n] : 0;
+}
+
 /*
  * A Hyrule enemy's rupee drop by band, in rupees -- gold coins. The NES
  * drops a single rupee or a blue five; these start there and climb with
@@ -136,7 +144,7 @@ void    group_gain      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 int     xp_compute      args( ( CHAR_DATA *gch, CHAR_DATA *victim,
 			    int total_levels, int total_in_group ) );
 bool    is_safe         args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
-void    make_corpse     args( ( CHAR_DATA *ch ) );
+OBJ_DATA *make_corpse   args( ( CHAR_DATA *ch ) );
 void    mob_hit         args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt ) );
 void    set_fighting    args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    disarm          args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
@@ -602,6 +610,10 @@ void violence_update( void )
 
 	if ( IS_AWAKE(ch) && ch->in_room == victim->in_room )
 	{
+	    /* A mobile's rounds in its encounter (log/progress.tsv), to hold
+	       a prediction in rounds to the fight it was about. */
+	    if ( IS_NPC(ch) && ch->encounter_seq > 0 )
+		ch->enc_rounds++;
 	    /* One of these is a round to the fight meter, as it is to the
 	       training dummy's report, so the two figures agree. */
 	    if ( !IS_NPC(ch) && ch->pcdata != NULL
@@ -1460,8 +1472,12 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	    vampiric_blow = true;
 	}
 
-	/* Sharp: frequent, modest.  Vorpal: rare, spiky. */
+	/* Sharp: frequent, modest.  Vorpal: rare, spiky. Neither boasts of
+	   biting into a foe nothing can hurt -- an unshrunk digdogger, a
+	   patra in its ring of eyes (owner, 2026-11-10: "bites deep" between
+	   bounces off a digdogger read as damage done). */
 	if ( IS_WEAPON_STAT(wield,WEAPON_SHARP)
+	&&   !hyrule_shrugs_off( victim )
 	&&   number_percent() <= skill/8 )
 	{
 	    dam += dam;
@@ -1471,6 +1487,7 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	}
 
 	if ( IS_WEAPON_STAT(wield,WEAPON_VORPAL)
+	&&   !hyrule_shrugs_off( victim )
 	&&   number_percent() <= skill/20 )
 	{
 	    dam += 2 * dam;
@@ -1549,6 +1566,16 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
     if ( victim->position == POS_DEAD )
 	return false;
+
+    /* A player's melee swing at a mobile in an encounter, landed or not
+       (a miss comes here with nothing), for log/progress.tsv: CONSIDER
+       assumes every blow lands, and this is how many did. */
+    if ( ch != victim && !IS_NPC(ch) && IS_NPC(victim) && victim->encounter_seq > 0
+    &&   dt >= TYPE_HIT )
+	victim->enc_swings++;
+    /* Who fought a Hyrule guardian, for its keys (hyrule.c). */
+    if ( ch != victim )
+	hyrule_note_striker( ch, victim );
 
     /* The dragon remembers whether the one it carried off fought it. */
     if ( is_disaster_dragon( victim ) )
@@ -1856,6 +1883,29 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     &&   !is_invulnerable( victim ) )
     {
 	victim->hit -= dam;
+	/* Each side of a mobile's encounter (log/progress.tsv): the hit
+	   points that came off it -- never the overkill -- and of them a
+	   pet's or servant's, and what it took off a player. Kept on the
+	   mobile, so a melee of several foes is never one ledger for all. */
+	if ( dam > 0 && victim != ch )
+	{
+	    int taken = victim->hit < 0 ? dam + victim->hit : dam;
+
+	    if ( taken > 0 && IS_NPC(victim) )
+	    {
+		victim->enc_taken += taken;
+		if ( IS_NPC(ch) )
+		    victim->enc_by_pets += taken;
+		/* A player's swing that took hit points; or a spell's or a
+		   skill's -- which CONSIDER does not count. */
+		else if ( dt >= TYPE_HIT )
+		    victim->enc_landed++;
+		else
+		    victim->enc_by_skills += taken;
+	    }
+	    if ( taken > 0 && IS_NPC(ch) && !IS_NPC(victim) )
+		ch->enc_dealt += taken;
+	}
 	/* The last and the biggest blow a player took, for the play
 	   journal's death row (playlog_blow, which adds the blow back for
 	   the hit points before it). */
@@ -3002,10 +3052,16 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( IS_NPC(ch) )
     {
 	ch->fight_began_ms = playlog_now_ms();
+	ch->encounter_seq = 0;          /* a new encounter: log/progress.tsv */
+	progress_engage( ch, victim );
 	hylog_engage( ch, victim );     /* a guardian's fight: log/hyrule.tsv */
     }
     else if ( victim != NULL && IS_NPC(victim) && victim->fighting == NULL )
+    {
 	victim->fight_began_ms = playlog_now_ms();
+	victim->encounter_seq = 0;
+	progress_engage( victim, ch );
+    }
 
     /* A new fight starts the meter from nothing. The last fight's
        numbers are kept right up to this moment, so the client can show
@@ -3058,7 +3114,10 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
         {
 	    /* The fight is over; its numbers stay as "the last fight". */
 	    if ( !IS_NPC(fch) && fch->pcdata != NULL )
+	    {
 		fch->pcdata->meter_active = false;
+		fch->pcdata->fight_stopped_ms = playlog_now_ms();
+	    }
 	    fch->fighting       = NULL;
 	    fch->position = IS_NPC(fch) ? fch->default_pos : POS_STANDING;
 	    update_pos( fch );
@@ -3139,7 +3198,19 @@ static void hyrule_enemy_drop( OBJ_DATA *corpse, int vnum )
         add_loot_to_corpse( corpse, OBJ_VNUM_HYRULE_CLOCK_FIRST + band - 1 );
 }
 
-void make_corpse( CHAR_DATA *ch )
+/* Marks what make_corpse's last producer put in the corpse, for the
+   balance feed's drop and loot rows: anything at the top level not yet
+   marked. Coin is left unmarked; nothing counts it as gear. */
+static void corpse_tag_source( OBJ_DATA *corpse, const char *source )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = corpse->contains; obj != NULL; obj = obj->next_content )
+        if ( obj->drop_source == NULL && obj->item_type != ITEM_MONEY )
+            obj->drop_source = source;
+}
+
+OBJ_DATA *make_corpse( CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
@@ -3246,7 +3317,24 @@ void make_corpse( CHAR_DATA *ch )
 	if ( IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
 	    extract_obj( obj );
 	else
+	{
+	    obj->drop_source = "carried";
 	    obj_to_obj( obj, corpse );
+	}
+    }
+
+    /* A mobile is never the keeper of a bound Hyrule prize or tool --
+       nothing places one on a mobile, and a creature may not take one
+       (get_obj) -- so one it dies holding came by a hole, and goes with
+       it rather than lie in a corpse anybody may loot (review,
+       2026-11-10). Logged, since it means a way in was found. */
+    if ( IS_NPC(ch) && hyrule_holds_bound( corpse ) )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Hyrule: mob %d died holding a bound object; destroyed.",
+                  ch->pIndexData != NULL ? ch->pIndexData->vnum : 0 );
+        log_string( buf );
+        hyrule_destroy_bound_within( corpse );
     }
 
     corpse_registry_making( true );
@@ -3269,18 +3357,28 @@ void make_corpse( CHAR_DATA *ch )
         if ( !add_loot_to_corpse(corpse, loot_vnum) )
             bug( "Make_corpse: missing Hyrule Ganon loot vnum %d.",
                  loot_vnum );
+        corpse_tag_source( corpse, "ganon" );
     }
 
     if ( IS_NPC(ch) && ch->pIndexData != NULL )
+    {
         hyrule_enemy_drop( corpse, ch->pIndexData->vnum );
+        corpse_tag_source( corpse, "enemy" );
+    }
 
     /* A Hyrule guardian leaves two pieces of its drop table (hyrule.c). */
     if ( IS_NPC(ch) )
+    {
         hyrule_boss_drops( ch, corpse );
+        corpse_tag_source( corpse, "guardian" );
+    }
 
     /* The holiday's treat, now and then (holiday.c's table). */
     if ( IS_NPC(ch) )
+    {
         holiday_corpse_drop( corpse, ch );
+        corpse_tag_source( corpse, "holiday" );
+    }
 
     /* Event boss drops: the table in season.c, which LOOK shows players,
        so what they were told and what falls cannot differ. */
@@ -3307,13 +3405,14 @@ void make_corpse( CHAR_DATA *ch )
             /* A two-day event boss never leaves an empty rare table. */
             if ( !fell && fallback != 0 )
                 add_loot_to_corpse( corpse, fallback );
+            corpse_tag_source( corpse, "event" );
 
             record_event_boss_defeat( ch );
         }
     }
 
     /* corpse_back( ch, corpse ); */
-    return;
+    return corpse;
 }
 
 
@@ -3586,12 +3685,17 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         /* A guardian's key for each player the kill credits (hyrule.c). */
         hyrule_guardian_slain( ch, victim );
       }
-      make_corpse( victim );
-      if ( IS_NPC(victim) )
       {
-        reward_hyrule_hero_tunic( ch, victim );
-        /* "10th enemy has the bomb" (hyrule.c). */
-        hyrule_note_kill( ch, victim );
+        OBJ_DATA *corpse = make_corpse( victim );
+
+        if ( IS_NPC(victim) )
+        {
+          reward_hyrule_hero_tunic( ch, victim );
+          /* "10th enemy has the bomb" (hyrule.c). */
+          hyrule_note_kill( ch, victim );
+          /* What the kill left to take, for balance (log/progress.tsv). */
+          progress_drop( ch, victim, corpse );
+        }
       }
     }
 
@@ -3787,6 +3891,22 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 	bug( "Group_gain: members.", members );
 	members = 1;
 	group_levels = ch->level ;
+    }
+
+    /* The mobile's death, once, before what it pays each player
+       (log/progress.tsv: one slain row, a reward row per player). */
+    {
+	int players = 0, pets = 0;
+
+	for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
+	    if ( is_same_group( gch, ch ) )
+	    {
+		if ( IS_NPC(gch) )
+		    pets++;
+		else
+		    players++;
+	    }
+	progress_slain( ch, victim, players, pets );
     }
 
   /*  lch = (ch->leader != NULL) ? ch->leader : ch;*/
@@ -4291,7 +4411,7 @@ void do_berserk( CHAR_DATA *ch, char *argument)
     hp_percent = 100 * ch->hit/ch->max_hit;
     chance += 25 - hp_percent/2;
 
-    if (number_percent() < chance)
+    if ( skill_roll_landed( ch, number_percent() < chance ) )
     {
 	AFFECT_DATA af;
 
@@ -4447,7 +4567,7 @@ void do_bash( CHAR_DATA *ch, char *argument )
     chance += (ch->level - victim->level) * 10;
 
     /* now the attack */
-    if (number_percent() < chance)
+    if ( skill_roll_landed( ch, number_percent() < chance ) )
     {
 
 	act("$n sends you sprawling with a powerful BASH!",
@@ -4600,7 +4720,7 @@ void do_dirt( CHAR_DATA *ch, char *argument )
     }
 
     /* now the attack */
-    if (number_percent() < chance)
+    if ( skill_roll_landed( ch, number_percent() < chance ) )
     {
 	AFFECT_DATA af;
 	ROOM_INDEX_DATA *kicked_in = victim->in_room;
@@ -4742,7 +4862,7 @@ void do_trip( CHAR_DATA *ch, char *argument )
     chance -= f_chance;
 
     /* now the attack */
-    if (number_percent() < chance)
+    if ( skill_roll_landed( ch, number_percent() < chance ) )
     {
 	act("$n trips you and you go down!",ch,NULL,victim,TO_VICT);
 	act("You trip $N and $N goes down!",ch,NULL,victim,TO_CHAR);
@@ -5084,7 +5204,7 @@ void do_smite( CHAR_DATA *ch, char *argument )
     WAIT_STATE( ch, skill_table[gsn_smite].beats );
 
     if ( !IS_AWAKE(victim)
-    ||   number_percent( ) < chance )
+    ||   skill_roll_landed( ch, number_percent( ) < chance ) )
     {
         check_improve(ch,gsn_smite,true,1);
         multi_hit( ch, victim, gsn_smite );
@@ -5284,7 +5404,7 @@ void do_backstab( CHAR_DATA *ch, char *argument )
     WAIT_STATE( ch, skill_table[gsn_backstab].beats );
     if ( !IS_AWAKE(victim)
     ||   IS_NPC(ch)
-    ||   number_percent( ) < ch->pcdata->learned[gsn_backstab] )
+    ||   skill_roll_landed( ch, number_percent( ) < ch->pcdata->learned[gsn_backstab] ) )
     {
 	check_improve(ch,gsn_backstab,true,1);
 	multi_hit( ch, victim, gsn_backstab );
@@ -5348,7 +5468,8 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	   own: two fighters who both had it fled into each other, one
 	   do_flee inside the next, for as long as the rolls held. */
 	if( !despair_answering
-	&&  (chance = get_skill(ch,gsn_despair) ) > 1 && number_percent () < chance)
+	&&  (chance = get_skill(ch,gsn_despair) ) > 1
+	&&  skill_roll_landed( ch, number_percent () < chance ) )
 	{
 	  /* Nothing of Hyrule's is driven off (play journal, 2026-11-10:
 	     Digdogger fled its den into the next room, out from behind the
@@ -5488,7 +5609,8 @@ void do_rescue( CHAR_DATA *ch, char *argument )
     }
 
     WAIT_STATE( ch, skill_table[gsn_rescue].beats );
-    if ( !IS_NPC(ch) && number_percent( ) > ch->pcdata->learned[gsn_rescue] )
+    if ( !IS_NPC(ch)
+    &&   skill_roll_missed( ch, number_percent( ) > ch->pcdata->learned[gsn_rescue] ) )
     {
 	send_to_char( "You fail the rescue.\n\r", ch );
 	check_improve(ch,gsn_rescue,false,1);
@@ -5551,7 +5673,8 @@ void do_kick( CHAR_DATA *ch, char *argument )
     }
 
     WAIT_STATE( ch, skill_table[gsn_kick].beats );
-    if ( IS_NPC(ch) || number_percent( ) < ch->pcdata->learned[gsn_kick] )
+    if ( IS_NPC(ch)
+    ||   skill_roll_landed( ch, number_percent( ) < ch->pcdata->learned[gsn_kick] ) )
     {
 	damage( ch, victim, number_range( 1, ch->level ), gsn_kick,DAM_NONE );
 	check_improve(ch,gsn_kick,true,1);
@@ -5639,7 +5762,7 @@ void do_disarm( CHAR_DATA *ch, char *argument )
     chance += (ch->level - victim->level) * 2;
 
     /* and now the attack */
-    if (number_percent() < chance)
+    if ( skill_roll_landed( ch, number_percent() < chance ) )
     {
 	WAIT_STATE( ch, skill_table[gsn_disarm].beats );
 	disarm( ch, victim );
@@ -6372,7 +6495,7 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
     act( "$n lets fly an arrow to the $T.",ch,NULL,dir_name[door1],TO_ROOM);
 
-    if(number_percent () < chance)
+    if( skill_roll_landed( ch, number_percent () < chance ) )
     {
       ROOM_INDEX_DATA *target_room = victim->in_room;
 
@@ -6489,7 +6612,7 @@ void do_steel_fist( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-	if( number_percent( ) > chance )
+	if( skill_roll_missed( ch, number_percent( ) > chance ) )
 	{
 		send_to_char("You lost your concentration.\n\r",ch);
 		ch->mana -= (dice(1,6) + 2);
@@ -6595,7 +6718,7 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
         if( vch->in_room == NULL )
                 continue;
 
-	if( number_percent () > get_skill(ch, gsn_crane_dance) - 1 )
+	if( skill_roll_missed( ch, number_percent () > get_skill(ch, gsn_crane_dance) - 1 ) )
 	  continue;
 
 	if( vch->in_room == ch->in_room )
@@ -6737,7 +6860,7 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
 
     if ( !IS_NPC(ch) )
     {
-	if( number_percent( ) > chance )
+	if( skill_roll_missed( ch, number_percent( ) > chance ) )
 	{
 	   send_to_char("You missed the nerve.\n\r",ch);
 	   damage( ch, victim, dice(4,4) , gsn_nerve_damage, DAM_PIERCE );
@@ -6873,7 +6996,7 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
 
     for(hit = 4 + (ch->level >= 30) + (ch->level >= 40); hit > 0; hit-- )
     {
-      if( number_percent( ) > chance )
+      if( skill_roll_missed( ch, number_percent( ) > chance ) )
       {
 	act("Amazingly, $N avoids your blow.",ch,NULL,victim,TO_ROOM);
 	check_improve(ch,gsn_blinding_fists,false,6);
@@ -7020,13 +7143,13 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 	 its chamber, or an enemy out of a shuttered room, opened the
 	 shutters with nothing killed (audit, 2026-11-10). The blow still
 	 misses and ends the fury. */
-      if( number_percent( ) > chance && hyrule_native( victim ) )
+      if( skill_roll_missed( ch, number_percent( ) > chance ) && hyrule_native( victim ) )
       {
 	act("$N will not be driven from $S ground.",ch,NULL,victim,TO_CHAR);
 	check_improve(ch,gsn_fists_of_fury,false,6);
 	break;
       }
-      else if( !hyrule_native( victim ) && number_percent( ) > chance )
+      else if( !hyrule_native( victim ) && skill_roll_missed( ch, number_percent( ) > chance ) )
       {
 	act("$N tries to flee from your onslaught.",ch,NULL,victim,TO_CHAR);
 	act("You try and escape from $N's onslaught.",ch,NULL,victim,TO_VICT);
@@ -7158,7 +7281,8 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
 	ch->move -= 5;
     }
 
-    if(number_percent () < 1 + (chance / 2) + ch->level - victim->level)
+    if( skill_roll_landed( ch,
+          number_percent () < 1 + (chance / 2) + ch->level - victim->level ) )
     {
       act("You strike a stunning blow to $N.",ch,NULL,victim,TO_CHAR);
       act("$N strikes you with a stunning blow!",ch,NULL,victim,TO_VICT);
@@ -7254,7 +7378,7 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-	if( number_percent( ) > chance )
+	if( skill_roll_missed( ch, number_percent( ) > chance ) )
 	{
 		send_to_char("You lost your concentration.\n\r",ch);
 		ch->mana -= (dice(1,6) + 2);

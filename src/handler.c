@@ -354,6 +354,43 @@ int get_skill(const CHAR_DATA *ch, int sn)
     return URANGE(0,skill,100);
 }
 
+/*
+ * Staff never miss a chance-based skill (owner, 2026-11-10: "immortals
+ * should never fail picking a lock or stealing or any skills that are
+ * chance (except things like fatality)"). Trust, not level, as every
+ * staff test is (AGENTS.md, Permission Helpers); a mobile counts only
+ * while a staff member is switched into it, since get_trust() reads the
+ * original then and an ordinary mobile's trust is its own level.
+ *
+ * The roll is still made where it always was and passed in, so each
+ * site keeps its own arithmetic (some read "<", some "<=" or ">") and
+ * nothing changes for anybody else. Only the skill's own success roll
+ * goes through these: refusals ("this lock cannot be picked") come
+ * before it and still refuse, and an instant kill (fatality, a death
+ * roll), a victim's saving throw and combat's hit, parry and dodge
+ * rolls never do.
+ */
+bool skill_roll_sure( CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+	return false;
+    if ( IS_NPC(ch) && ( ch->desc == NULL || ch->desc->original == NULL ) )
+	return false;
+    return IS_TRUSTED( ch, LEVEL_IMMORTAL );
+}
+
+/* A skill roll that landed -- or would have, for staff. */
+bool skill_roll_landed( CHAR_DATA *ch, bool landed )
+{
+    return landed || skill_roll_sure( ch );
+}
+
+/* A skill roll that missed -- never, for staff. */
+bool skill_roll_missed( CHAR_DATA *ch, bool missed )
+{
+    return missed && !skill_roll_sure( ch );
+}
+
 /* for returning weapon information */
 int get_weapon_sn(CHAR_DATA *ch)
 {
@@ -1785,7 +1822,10 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 
     /* Crossing into, out of or within Hyrule (log/hyrule.tsv). */
     if ( !IS_NPC(ch) )
+    {
         hylog_moved( ch );
+        playlog_moved( ch );    /* log/play.tsv: another area */
+    }
 
     if ( !IS_NPC(ch) )
     {
@@ -1902,9 +1942,13 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
         achievement_record_object(ch, obj->pIndexData->vnum,
             ch->desc != NULL && ch->desc->connected == CON_PLAYING);
 
-    /* A Hyrule object reaching a playing mortal (log/hyrule.tsv). */
+    /* A Hyrule object reaching a playing mortal (log/hyrule.tsv), and
+       any object reaching any player (log/play.tsv). */
     if (!IS_NPC(ch))
+    {
         hylog_got(ch, obj);
+        playlog_got(ch, obj);
+    }
 }
 
 

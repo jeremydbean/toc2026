@@ -429,7 +429,8 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
      return;
    }
 
-    if ( ch->position == POS_SLEEPING && (number_percent() > chance/2 ) )
+    if ( ch->position == POS_SLEEPING
+    &&   skill_roll_missed( ch, number_percent() > chance/2 ) )
     {
         send_to_char( "You sleep on, unconcerned about danger.\n\r", ch );
         WAIT_STATE( ch, skill_table[gsn_backstab].beats );
@@ -439,7 +440,7 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
     count = 0;
     count2 = 0;
 
-    if ( number_percent() < chance)
+    if ( skill_roll_landed( ch, number_percent() < chance ) )
     {
         for ( d = descriptor_list; d != NULL; d = d->next )
         {
@@ -603,8 +604,8 @@ void do_track( CHAR_DATA *ch, char *argument )
 	     * a lie: it says so.
 	     */
 	    if (( IS_NPC (ch) && number_percent () > 75)        /* NPC @ 25% */
-	        ||  (!IS_NPC (ch) && number_percent () >            /* PC @ norm */
-		     ch->pcdata->learned[gsn_tracking]))
+	        ||  (!IS_NPC (ch) && skill_roll_missed( ch,         /* PC @ norm */
+		     number_percent () > ch->pcdata->learned[gsn_tracking] ) ))
 	    {
 		static const char * const lost[] =
 		{

@@ -83,25 +83,30 @@ class FrictionLiveTests(unittest.TestCase):
 
     def test_track_hide_refresh_and_practice(self) -> None:
         with LiveMud(fixtures=True) as mud:
-            for name in ("Zfriction", "Zquarry"):
+            for name in ("Zfriction", "Zquarry", "Zfrstaff"):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PASSWORD)
                     client.drain(1.0)
                     client.send("quit")
                     self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zfriction", Levl=30, Tru=70, Room=TEMPLE)
+            # A mortal, because staff never miss a skill's roll (owner,
+            # 2026-11-10); the staff character sets things up.
+            patch_player_file(mud, "Zfriction", Levl=30, Room=TEMPLE)
             patch_player_file(mud, "Zquarry", Levl=30, Room=2401)
+            patch_player_file(mud, "Zfrstaff", Levl=70, Room=TEMPLE)
 
-            with mud.connect(timeout=120) as quarry, mud.connect(timeout=120) as client:
+            with mud.connect(timeout=120) as quarry, mud.connect(timeout=120) as client, \
+                    mud.connect(timeout=120) as staff:
                 login(quarry, "Zquarry", PASSWORD)
                 login(client, "Zfriction", PASSWORD)
+                login(staff, "Zfrstaff", PASSWORD)
                 self.run_cmd(client, "scroll 0", 1.0)
 
                 # TRACK at 1%: a missed roll loses the trail and names no
                 # direction. 1% is the lowest the skill goes and still finds
                 # the trail one time in a hundred (CI, 2026-10-26), so look
                 # at the first miss of up to five tries.
-                self.run_cmd(client, "set skill zfriction track 1", 1.2)
+                self.run_cmd(staff, "set skill zfriction track 1", 1.2)
                 miss = re.compile(r"lose|nothing you trust|cannot pick out")
                 for _ in range(5):
                     reply = self.run_cmd(client, "track zquarry", 2.0)
@@ -110,17 +115,17 @@ class FrictionLiveTests(unittest.TestCase):
                 self.assertTrue(miss.search(reply), reply)
                 self.assertNotIn("You find a trail", reply)
                 # ...and at 100% the way, and how far.
-                self.run_cmd(client, "set skill zfriction track 100", 1.2)
+                self.run_cmd(staff, "set skill zfriction track 100", 1.2)
                 reply = self.run_cmd(client, "track zquarry", 2.0)
                 self.assertRegex(reply, r"You find a trail \w+ from here for Zquarry, "
                                         r"(just beyond|not far off|some way off|a long way off)\.")
 
                 # HIDE says whether it worked.
-                self.run_cmd(client, "set skill zfriction hide 1", 1.2)
+                self.run_cmd(staff, "set skill zfriction hide 1", 1.2)
                 self.assertIn("find nowhere that would cover you", self.run_cmd(client, "hide", 1.6))
                 # At 100% HIDE still misses one roll in a hundred
                 # (number_percent() < 100), so look for the first success.
-                self.run_cmd(client, "set skill zfriction hide 100", 1.2)
+                self.run_cmd(staff, "set skill zfriction hide 100", 1.2)
                 for _ in range(5):
                     reply = self.run_cmd(client, "hide", 1.6)
                     if "You slip into the shadows" in reply:
@@ -129,9 +134,9 @@ class FrictionLiveTests(unittest.TestCase):
                 self.run_cmd(client, "visible", 1.2)
 
                 # The healer's REFRESH fills the pool in one go, priced by the slice.
-                self.run_cmd(client, "goto %d" % ALTAR, 1.6)
-                self.run_cmd(client, "set char zfriction move 1", 1.2)
-                self.run_cmd(client, "set char zfriction gold 1000", 1.2)
+                self.run_cmd(staff, "transfer zfriction %d" % ALTAR, 1.6)
+                self.run_cmd(staff, "set char zfriction move 1", 1.2)
+                self.run_cmd(staff, "set char zfriction gold 1000", 1.2)
                 reply = self.run_cmd(client, "heal refresh", 4.0)
                 self.assertIn("You feel fully refreshed!", reply)
                 self.assertRegex(reply, r"\((\d+) castings, (\d+) gold\.\)")
@@ -143,10 +148,11 @@ class FrictionLiveTests(unittest.TestCase):
                 # any class, any guild). He is no sentinel and walked out of
                 # the Temple between two commands in CI (2026-10-27), so he
                 # is brought to the fixture arena, which has no exits.
-                self.run_cmd(client, "goto %d" % MIND_ARENA, 1.6)
-                self.run_cmd(client, "load mob 10", 1.6)
-                self.run_cmd(client, "set skill zfriction sword 1", 1.2)
-                self.run_cmd(client, "set char zfriction prac 40", 1.2)
+                self.run_cmd(staff, "goto %d" % MIND_ARENA, 1.6)
+                self.run_cmd(staff, "transfer zfriction", 1.6)
+                self.run_cmd(staff, "load mob 10", 1.6)
+                self.run_cmd(staff, "set skill zfriction sword 1", 1.2)
+                self.run_cmd(staff, "set char zfriction prac 40", 1.2)
                 reply = self.run_cmd(client, "practice sword 3", 2.0)
                 self.assertRegex(reply, r"You practice sword 3 times, to \d+%\.")
                 self.assertIn("Practice how many times?", self.run_cmd(client, "practice sword 0", 1.6))
