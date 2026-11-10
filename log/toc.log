@@ -284374,3 +284374,109 @@ Tue Nov 10 19:26:56 2026 :: Log Killuminati [30200]: arrived (The First Quest Be
 Tue Nov 10 19:27:01 2026 :: Log Killuminati [30200]: lo
 Tue Nov 10 19:27:08 2026 :: Log Killuminati [30200]: d
 Tue Nov 10 19:27:08 2026 :: Log Killuminati [30650]: arrived (The Old Man's Cave) from 30200
+Tue Nov 10 19:27:14 2026 :: Log Killuminati [30650]: look in arm
+Tue Nov 10 19:27:16 2026 :: Log Killuminati [30650]: lo
+Tue Nov 10 19:27:23 2026 :: Log Killuminati [30650]: n
+Tue Nov 10 19:27:25 2026 :: Log Killuminati [30650]: u
+Tue Nov 10 19:27:25 2026 :: Log Killuminati [30200]: arrived (The First Quest Begins) from 30650
+Tue Nov 10 19:27:26 2026 :: Log Killuminati [30200]: n
+Tue Nov 10 19:27:26 2026 :: Log Killuminati [30223]: arrived (Rock Wall Above the Start) from 30200
+Tue Nov 10 19:27:27 2026 :: Log Killuminati [30223]: e
+Tue Nov 10 19:27:27 2026 :: Log Killuminati [30224]: arrived (Bush Row) from 30223
+Tue Nov 10 19:27:28 2026 :: Log Killuminati [30224]: e
+Tue Nov 10 19:27:28 2026 :: Log Killuminati [30225]: arrived (River Bend) from 30224
+Tue Nov 10 19:27:29 2026 :: Log Killuminati [30225]: n
+Tue Nov 10 19:27:29 2026 :: Log Killuminati [30241]: arrived (Flower Field) from 30225
+Tue Nov 10 19:27:30 2026 :: Log Killuminati [30241]: n
+Tue Nov 10 19:27:30 2026 :: Log Killuminati [30257]: arrived (Boulder Meadow) from 30241
+Tue Nov 10 19:27:31 2026 :: Log Killuminati [30257]: n
+Tue Nov 10 19:27:31 2026 :: Log Killuminati [30273]: arrived (The Fairy Fountain, North) from 30257
+Tue Nov 10 19:27:39 2026 :: Log Killuminati [30273]: s
+Tue Nov 10 19:27:39 2026 :: Log Killuminati [30257]: arrived (Boulder Meadow) from 30273
+Tue Nov 10 19:27:42 2026 :: Log Killuminati [30257]: s
+Tue Nov 10 19:27:42 2026 :: Log Killuminati [30241]: arrived (Flower Field) from 30257
+Tue Nov 10 19:27:42 2026 :: Log Killuminati [30241]: w
+Tue Nov 10 19:27:42 2026 :: Log Killuminati [30240]: arrived (Crossroads South of the Lake) from 30241
+Tue Nov 10 19:27:51 2026 :: Sock.sinaddr:  20.65.170.203
+Tue Nov 10 19:27:52 2026 :: EOF encountered on read.
+Tue Nov 10 19:27:52 2026 :: Sock.sinaddr:  20.65.170.203
+Tue Nov 10 19:28:01 2026 :: Log Killuminati [30240]: n
+Tue Nov 10 19:28:01 2026 :: Log Killuminati [30256]: arrived (Lake Hylia Sand Bar) from 30240
+Tue Nov 10 19:28:04 2026 :: Log Killuminati [30256]: w
+Tue Nov 10 19:28:04 2026 :: Log Killuminati [30255]: arrived (Lake Hylia, South Shore) from 30256
+Tue Nov 10 19:28:06 2026 :: Log Killuminati [30255]: w
+Tue Nov 10 19:28:06 2026 :: Log Killuminati [30254]: arrived (Lake Hylia, Western Reeds) from 30255
+Tue Nov 10 19:28:08 2026 :: Log Killuminati [30254]: s
+Tue Nov 10 19:28:08 2026 :: Log Killuminati [30238]: arrived (Lake Hylia, Southwest Bank) from 30254
+Tue Nov 10 19:28:12 2026 :: Log Killuminati [30238]: ]
+Tue Nov 10 19:28:12 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 30238
+Tue Nov 10 19:29:13 2026 :: Log Killuminati [2401]: w
+Tue Nov 10 19:29:13 2026 :: Log Killuminati [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Nov 10 19:29:15 2026 :: Log Killuminati [2405]: e
+Tue Nov 10 19:29:15 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2405
+Tue Nov 10 19:29:19 2026 :: Log Killuminati [2401]: rwhere dungeon
+Tue Nov 10 19:29:25 2026 :: Log Killuminati [2401]: /
+Tue Nov 10 19:29:29 2026 :: Log Killuminati [2401]: goto aquam
+Tue Nov 10 19:29:29 2026 :: Log Killuminati [30546]: arrived (Level 7: Hall of the Horned Ledge) from 2401
+Tue Nov 10 19:29:33 2026 :: Log Killuminati [30546]: op eas
+Tue Nov 10 19:29:35 2026 :: Log Killuminati [30546]: op easy
+Tue Nov 10 19:29:36 2026 :: Log Killuminati [30546]: op east
+Tue Nov 10 19:29:41 2026 :: Log Killuminati [30546]: stat room
+Tue Nov 10 19:29:43 2026 :: Log Killuminati [30546]: op door
+Tue Nov 10 19:29:46 2026 :: Log Killuminati [30546]: open all
+Tue Nov 10 19:29:48 2026 :: Log Killuminati [30546]: open wall
+Tue Nov 10 19:29:51 2026 :: Log Killuminati [30546]: vnum bomb
+Tue Nov 10 19:30:00 2026 :: Log Killuminati [30546]: load obj 30259
+Tue Nov 10 19:30:04 2026 :: Log Killuminati [30546]: bomb
+Tue Nov 10 19:30:05 2026 :: Log Killuminati [30546]: lo
+Tue Nov 10 19:30:07 2026 :: Log Killuminati [30546]: bomb west
+Tue Nov 10 19:30:12 2026 :: Log Killuminati [30546]: vnum bomb
+Tue Nov 10 19:30:16 2026 :: Log Killuminati [30546]: load obj 30695
+Tue Nov 10 19:30:18 2026 :: Treasure goblin: vanished from room 1822 (The Vat Room, haven.are) (too long in one area).
+Tue Nov 10 19:30:18 2026 :: Log Killuminati [30546]: vnum bomb
+Tue Nov 10 19:30:20 2026 :: Log Killuminati [30546]: bomb west
+Tue Nov 10 19:30:22 2026 :: Log Killuminati [30546]: lo
+Tue Nov 10 19:30:23 2026 :: Log Killuminati [30546]: w
+Tue Nov 10 19:30:23 2026 :: Log Killuminati [30545]: arrived (Level 7: Stairwell of the Demon) from 30546
+Tue Nov 10 19:30:25 2026 :: Log Killuminati [30545]: d
+Tue Nov 10 19:30:25 2026 :: Log Killuminati [30558]: arrived (Level 7: Grasping Wall Chamber) from 30545
+Tue Nov 10 19:30:28 2026 :: Log Killuminati [30558]: u
+Tue Nov 10 19:30:28 2026 :: Log Killuminati [30545]: arrived (Level 7: Stairwell of the Demon) from 30558
+Tue Nov 10 19:30:30 2026 :: Log Killuminati [30545]: e
+Tue Nov 10 19:30:30 2026 :: Log Killuminati [30546]: arrived (Level 7: Hall of the Horned Ledge) from 30545
+Tue Nov 10 19:30:33 2026 :: Log Killuminati [30546]: w
+Tue Nov 10 19:30:33 2026 :: Log Killuminati [30545]: arrived (Level 7: Stairwell of the Demon) from 30546
+Tue Nov 10 19:30:40 2026 :: Log Killuminati [30545]: kil gor
+Tue Nov 10 19:30:46 2026 :: Log Killuminati [30545]: con gor
+Tue Nov 10 19:30:58 2026 :: Log Killuminati [30545]: killed a blue goriya
+Tue Nov 10 19:30:58 2026 :: Log Killuminati [30545]: coin +257 silver
+Tue Nov 10 19:30:58 2026 :: Log Killuminati [30545]: coin +464 copper
+Tue Nov 10 19:30:58 2026 :: Log Killuminati [30545]: coin +53 gold
+Tue Nov 10 19:31:16 2026 :: Log Killuminati [30545]: (refused) trap
+Tue Nov 10 19:31:18 2026 :: Log Killuminati [30545]: help trap
+Tue Nov 10 19:31:19 2026 :: Log Killuminati [30545]: cast trap
+Tue Nov 10 19:31:25 2026 :: Log Killuminati [30545]: vnum container
+Tue Nov 10 19:31:29 2026 :: Log Killuminati [30545]: load 91
+Tue Nov 10 19:31:31 2026 :: Log Killuminati [30545]: load obj 91
+Tue Nov 10 19:31:31 2026 :: Log Killuminati [30545]: load obj 91
+Tue Nov 10 19:31:32 2026 :: Log Killuminati [30545]: load obj 91
+Tue Nov 10 19:31:32 2026 :: Log Killuminati [30545]: lo
+Tue Nov 10 19:31:40 2026 :: Log Killuminati [30545]: c trap gor
+Tue Nov 10 19:31:44 2026 :: Log Killuminati [30545]: w
+Tue Nov 10 19:31:45 2026 :: Log Killuminati [30545]: e
+Tue Nov 10 19:31:45 2026 :: Log Killuminati [30546]: arrived (Level 7: Hall of the Horned Ledge) from 30545
+Tue Nov 10 19:31:47 2026 :: Log Killuminati [30546]: ]
+Tue Nov 10 19:31:51 2026 :: Log Killuminati [30546]: w
+Tue Nov 10 19:31:51 2026 :: Log Killuminati [30545]: arrived (Level 7: Stairwell of the Demon) from 30546
+Tue Nov 10 19:31:53 2026 :: Log Killuminati [30545]: s
+Tue Nov 10 19:31:54 2026 :: Log Killuminati [30545]: w
+Tue Nov 10 19:31:55 2026 :: Log Killuminati [30545]: s
+Tue Nov 10 19:31:56 2026 :: Log Killuminati [30545]: e
+Tue Nov 10 19:31:56 2026 :: Log Killuminati [30546]: arrived (Level 7: Hall of the Horned Ledge) from 30545
+Tue Nov 10 19:31:57 2026 :: Log Killuminati [30546]: s
+Tue Nov 10 19:31:57 2026 :: Log Killuminati [30546]: s
+Tue Nov 10 19:31:58 2026 :: Log Killuminati [30546]: w
+Tue Nov 10 19:31:58 2026 :: Log Killuminati [30545]: arrived (Level 7: Stairwell of the Demon) from 30546
+Tue Nov 10 19:31:58 2026 :: Log Killuminati [30545]: w
+Tue Nov 10 19:31:59 2026 :: Log Killuminati [30545]: d
+Tue Nov 10 19:31:59 2026 :: Log Killuminati [30558]: arrived (Level 7: Grasping Wall Chamber) from 30545
