@@ -183,21 +183,22 @@ class ClassSkillCoverageLiveTests(unittest.TestCase):
             # Rakar is not sentinel (AGJKTV): he wanders Dresden, and when
             # he had wandered out of 2405 the GAIN found nobody -- CI,
             # 2026-10-25. Staff bring him back first.
+            # He wanders: staff fetch him again before each GAIN, and each
+            # GAIN is synced before its quit (CI, 2026-11-10: the second
+            # learner found him gone and saved without despair).
             self.make(mud, "Zgainstaff", Levl=70, Room=2405)
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zgainstaff", PW)
-                staff.send("transfer rakar")
-                staff.drain(1.5)
+                for name, command in (("Zarcane", "gain arcane studies"),
+                                      ("Zdespair", "gain despair")):
+                    staff.sync("transfer rakar")
+                    with mud.connect(timeout=120) as client:
+                        login(client, name, PW)
+                        client.sync(command, timeout=60)
+                        client.send("quit")
+                        self.assertTrue(client.wait_closed())
                 staff.send("quit")
                 self.assertTrue(staff.wait_closed())
-            for name, command in (("Zarcane", "gain arcane studies"),
-                                  ("Zdespair", "gain despair")):
-                with mud.connect(timeout=120) as client:
-                    login(client, name, PW)
-                    client.send(command)
-                    client.drain(2)
-                    client.send("quit")
-                    self.assertTrue(client.wait_closed())
             with mud.connect(timeout=120) as client:
                 login(client, "Zglobe", PW)
                 client.send("cast armor")

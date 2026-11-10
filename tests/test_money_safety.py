@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def function_body(source: str, name: str) -> str:
     match = re.search(
-        rf"(?:static\s+)?(?:bool|void|long|int)\s+{name}\s*\([^)]*\)\s*\{{",
+        rf"(?:static\s+)?(?:bool|void|long|int|OBJ_DATA\s*\*)\s*{name}\s*\([^)]*\)\s*\{{",
         source,
     )
     if match is None:

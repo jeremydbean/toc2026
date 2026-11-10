@@ -222,8 +222,10 @@ class BlackMarketLiveTests(unittest.TestCase):
 
                 # Restock after restock: five at most, nothing of Hyrule's.
                 for _ in range(12):
-                    run(fixer, "blackmarket restock", 0.5)
-                    sample = run(fixer, "blackmarket", 0.8)
+                    # Synced: fixed windows read the restock's own reply as
+                    # the listing on a slow runner (CI, 2026-11-10).
+                    fixer.must("blackmarket restock", "New stock laid out")
+                    sample = fixer.sync("blackmarket", timeout=60)
                     vnums = [int(v) for v in re.findall(r"\((\d+)\)\s*$", sample, re.M)]
                     self.assertTrue(0 < len(vnums) <= 5, sample)
                     self.assertEqual([], [v for v in vnums if 30200 <= v <= 30999], sample)

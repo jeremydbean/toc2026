@@ -350,10 +350,15 @@ class CraftingTableTests(unittest.TestCase):
 class LiveTests(unittest.TestCase):
     def test_old_saves_metas_marks_paging_and_persistence(self) -> None:
         with LiveMud() as mud:
-            make(mud, "Zoldhand", Levl=54, Room=TEMPLE, Cla=0, Attr="25 25 25 25 25")
+            # Hit points to spare: a concoction at 100% still botches one
+            # time in twenty (skill / 2 + 45), and the 2d10 burn could leave
+            # a 20 hit point fixture incapacitated before its next try (CI,
+            # 2026-11-10). Four pairs of ingredients, for four tries.
+            make(mud, "Zoldhand", Levl=54, Room=TEMPLE, Cla=0, Attr="25 25 25 25 25",
+                 HMV="3000 3000 100 100 100 100", HMVP="3000 100 100")
             # An old file: five of the new bosses already earned, and an
             # old achievement whose date must survive untouched.
-            add_lines(mud, "Zoldhand", [obj(54), obj(70), obj(63), obj(70), obj(63)], [
+            add_lines(mud, "Zoldhand", [obj(54)] + [obj(70), obj(63)] * 4, [
                 "Achv first-kill 1600000000",
                 "Achv boss-blaine 1700000000",
                 "Achv boss-roland 1700000000",
@@ -384,7 +389,7 @@ class LiveTests(unittest.TestCase):
                 self.assertIn("won't do anything", refused)
                 self.assertIn("eye of newt", run(client, "inventory", 1.2))
                 made = ""
-                for _ in range(2):
+                for _ in range(4):
                     made = run(client, "concoct feather tooth", 4.5)
                     if "feathered gold" in made:
                         break
