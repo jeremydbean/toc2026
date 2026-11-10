@@ -222,6 +222,27 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	return;
     }
 
+    /* What binds to a character in Hyrule -- a Triforce piece, the
+       Master Sword, a gift -- is the dead character's alone: nobody else
+       takes it from their corpse, or the corpse holding it, or a bag in
+       the corpse that holds it, whatever can_loot allows (audit,
+       2026-11-10: a level 20 looted a quit player's second shard and the
+       Master Sword, and their achievements with them). */
+    if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL) && hyrule_holds_bound( obj ) )
+    {
+	OBJ_DATA *top = container != NULL ? container : obj;
+
+	while ( top->in_obj != NULL )
+	    top = top->in_obj;
+	if ( top->item_type == ITEM_CORPSE_PC
+	&&   ( top->owner == NULL || str_cmp( top->owner, ch->name ) ) )
+	{
+	    act( "$p is bound to the one who fell; it will not come to you.",
+		 ch, obj, NULL, TO_CHAR );
+	    return;
+	}
+    }
+
     if ( obj->item_type == ITEM_MONEY
     &&   query_carry_coins( ch, obj->value[0] ) > can_carry_w( ch ) )
     {
@@ -4845,6 +4866,16 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
     if (is_safe(ch,victim))
 	return;
+
+    /* Hyrule's keys and treasure are won, not lifted: a guardian's key
+       stolen opened its treasure door and chest with the guardian alive
+       (audit, 2026-11-10). A refusal, before the roll, costing nothing. */
+    if ( hyrule_native( victim ) && !IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    {
+	act( "$N holds what $E carries too close to lift: in Hyrule, you win it.",
+	     ch, NULL, victim, TO_CHAR );
+	return;
+    }
 
     if (victim->position == POS_FIGHTING)
     {

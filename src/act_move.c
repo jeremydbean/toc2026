@@ -273,6 +273,29 @@ bool hyrule_gate_would_refuse( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
  * School's rooms, and the room flags. Owner, 2026-10-04: these spells do
  * not skip room rules.
  */
+/* A Hyrule room every way out of which is a closed secret exit -- a
+   cave behind a wall still to be bombed, a bush still to be burned: it
+   is reached only by opening its seal (audit, 2026-11-10: ASTRAL WALK
+   to the old woman stood a level 20 in a sealed Heart Container cave). */
+static bool hyrule_room_sealed( ROOM_INDEX_DATA *room )
+{
+    int door, exits = 0;
+
+    if ( room == NULL || !IS_HYRULE_ROOM_VNUM( room->vnum ) )
+        return false;
+    for ( door = 0; door <= DIR_SOUTHWEST; door++ )
+    {
+        EXIT_DATA *pexit = room->exit[door];
+
+        if ( pexit == NULL || pexit->u1.to_room == NULL )
+            continue;
+        exits++;
+        if ( !IS_SET(pexit->exit_info, EX_CLOSED) || !IS_SET(pexit->exit_info, EX_SECRET) )
+            return false;
+    }
+    return exits > 0;
+}
+
 bool travel_spell_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
 {
     ROOM_INDEX_DATA *closed[512];
@@ -297,6 +320,8 @@ bool travel_spell_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
         if ( closed[i] == to )
             return true;
 
+    if ( hyrule_room_sealed( to ) )
+        return true;
     return hyrule_gate_check( ch, ch->in_room, to, false );
 }
 
@@ -311,9 +336,14 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
     if ( ch == NULL || from == NULL || to == NULL )
         return false;
 
+    /* Any room of a dungeon, not only its entrance and its guardian's
+       chamber: a resurrection at a corpse somebody else carried in put a
+       character with no pieces in Gohma's nest (audit, 2026-11-10). */
     for ( i = 0; i < sizeof(hyrule_progress_gate) / sizeof(hyrule_progress_gate[0]); i++ )
         if ( to->vnum == hyrule_progress_gate[i].entrance
-        ||   to->vnum == hyrule_progress_gate[i].boss_room )
+        ||   to->vnum == hyrule_progress_gate[i].boss_room
+        ||   ( to->vnum >= hyrule_progress_gate[i].first_room
+            && to->vnum <= hyrule_progress_gate[i].last_room ) )
         {
             gate = &hyrule_progress_gate[i];
             break;
@@ -329,7 +359,8 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
 
     from_inside = from->vnum >= gate->first_room && from->vnum <= gate->last_room;
 
-    if ( to->vnum == gate->entrance && !from_inside
+    /* Coming in from outside, by the entrance or any other way. */
+    if ( !from_inside
     &&   gate->entry_need != 0 && !hyrule_carries( subject, gate->entry_need ) )
     {
         if ( speak )
@@ -340,7 +371,9 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
         return true;
     }
 
-    if ( to->vnum == gate->boss_room && from_inside
+    /* The guardian's chamber, from wherever: only its own treasure room
+       behind it comes back in free. */
+    if ( to->vnum == gate->boss_room
     &&   from->vnum != gate->goal_room && gate->boss_need != 0
     &&   !hyrule_carries( subject, gate->boss_need )
     &&   ( gate->boss_also == 0 || !hyrule_carries( subject, gate->boss_also ) ) )
@@ -446,6 +479,21 @@ bool hyrule_foe( CHAR_DATA *victim )
     vnum = victim->pIndexData->vnum;
     return ( vnum >= 30200 && vnum <= 30799 )
         || ( vnum >= HYRULE_TIER_FIRST_VNUM && vnum <= HYRULE_TIER_LAST_VNUM );
+}
+
+/* Any of Hyrule's own mobiles -- enemy, guardian, person -- charmed or
+   not. What a spell or skill may not do to them (charm, steal from) is
+   asked of this, since hyrule_foe stops counting a charmed one. */
+bool hyrule_native( CHAR_DATA *victim )
+{
+    int vnum;
+
+    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
+        return false;
+    vnum = victim->pIndexData->vnum;
+    return ( vnum >= 30200 && vnum <= 30799 )
+        || ( vnum >= HYRULE_TIER_FIRST_VNUM && vnum <= HYRULE_TIER_LAST_VNUM )
+        || is_hyrule_bystander( victim );
 }
 
 static bool hyrule_room_has_guardian( ROOM_INDEX_DATA *room )
@@ -1210,6 +1258,17 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
         /* Not even a ghost slips a shutter while the room's enemies live. */
         if ( hyrule_seal_refuses( ch, in_room, pexit ) )
             return;
+        /* Nor a locked door: its small key is the way through (audit,
+           2026-11-10: PASS DOOR and ghost form walked through them). */
+        if ( IS_SET(pexit->exit_info, EX_CLOSED)
+        &&   IS_SET(pexit->exit_info, EX_LOCKED)
+        &&   !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+        &&   ( IS_AFFECTED(ch, AFF_PASS_DOOR) || IS_AFFECTED2(ch, AFF2_GHOST) ) )
+        {
+            act( "The $d is bound shut by an old magic: only its key will open it.",
+                 ch, NULL, pexit->keyword, TO_CHAR );
+            return;
+        }
     }
 
     if ( IS_SET(pexit->exit_info, EX_CLOSED)
@@ -2424,6 +2483,11 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
             { send_to_char( "It's not closed.\n\r", ch ); return; }
         if ( IS_SET(pexit->exit_info, EX_WIZLOCKED) )
             { send_to_char( "This lock is magical. You can't bash it open.\n\r", ch); return; }
+        /* Hyrule's locked doors take their small key, and a bashed one
+           stood open for everybody until the next reset (audit,
+           2026-11-10). A refusal, before the lag. */
+        if ( is_hyrule_room( ch->in_room ) && IS_SET(pexit->exit_info, EX_LOCKED) )
+            { send_to_char( "Old magic binds this door; it wants its key, not your shoulder.\n\r", ch ); return; }
 
         WAIT_STATE( ch, skill_table[gsn_doorbash].beats );
         if ( number_percent( ) > ch->pcdata->learned[gsn_doorbash] )

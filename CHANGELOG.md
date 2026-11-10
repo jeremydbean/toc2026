@@ -8,6 +8,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule's order, held against the audit of 2026-11-10.** Three
+  investigations found ways round it, five proven live. The Triforce
+  (30286) is NODROP like its pieces (generator, regenerated). Nobody but
+  the owner takes a bound Hyrule object from a player's corpse, the corpse
+  holding one, or a bag in it (`get_obj`, `hyrule_holds_bound`), and a
+  rotting corpse destroys them rather than spill them
+  (`hyrule_destroy_bound_within`); TELEKINESIS lifts nothing lying in
+  Hyrule, nor a corpse holding a bound object. STEAL and CHARM PERSON
+  refuse every Hyrule mobile (`hyrule_native`, act_move.c), and neither
+  FISTS OF FURY nor DESPAIR drives one off. `hyrule_gate_check` now asks
+  for a dungeon's entry piece on any arrival into its rooms from outside
+  (a resurrection at a corpse carried into Gohma's nest) and for the
+  guardian's tool on any arrival into its chamber; `travel_spell_refuses`
+  refuses a Hyrule room all of whose exits are closed secret exits (ASTRAL
+  WALK into a cave still bombed shut). PASS DOOR, ghost form and DOOR BASH
+  stop at Hyrule's locked doors. Level 7's guardian joins Levels 8 and 9 in
+  defying instant death (owner). Lending dungeon tools is unchanged, and
+  PORTAL and ASTRAL WALK may still leave a dungeon (owner).
+  `tests/test_hyrule_audit_nov10.py`.
 - **Hyrule play is logged for balance and trends** (owner, 2026-11-10).
   `log/hyrule.tsv` (`src/hyrulelog.c`) writes a row for every crossing
   between outside, the overworld and each dungeon (with the time spent),

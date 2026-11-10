@@ -1339,8 +1339,15 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
             continue;
 
         /* Named and lying somewhere, but of a kind TK never moves. */
+        /* Nothing lying in Hyrule: a cave's gift is given as a copy, once
+           a character (hyrule_claim), and TK lifted the cave's own Heart
+           Container out from anywhere in the world (audit, 2026-11-10).
+           Nor a player's corpse holding something bound there. */
         if ( IS_OBJ_STAT(obj, ITEM_NOLOCATE)
-        ||   IS_SET(obj->extra_flags2, ITEM2_NO_TPORT) )
+        ||   IS_SET(obj->extra_flags2, ITEM2_NO_TPORT)
+        ||   IS_HYRULE_ROOM_VNUM( obj->in_room->vnum )
+        ||   ( obj->item_type == ITEM_CORPSE_PC && hyrule_holds_bound( obj )
+            && ( obj->owner == NULL || str_cmp( obj->owner, ch->name ) ) ) )
         {
             unreachable = true;
             continue;

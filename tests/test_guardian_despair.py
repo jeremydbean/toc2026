@@ -25,7 +25,7 @@ from build_hyrule_area import BOSS_MOBS  # noqa: E402
 
 SKIP = skip_reason()
 PW = "Zdesppass1"
-HELD = r"too set on holding (its|his|her) lair to be driven from it"
+HELD = r"will not be driven from (its|his|her) ground"
 
 
 def make(mud: LiveMud, name: str, **fields) -> None:
@@ -41,7 +41,7 @@ class GuardianDespairSourceTests(unittest.TestCase):
     def test_despair_asks_whether_the_opponent_is_a_guardian(self) -> None:
         fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
         flee = fight.split("void do_flee(", 1)[1].split("\nvoid ", 1)[0]
-        guard = flee.index("is_hyrule_guardian( victim )")
+        guard = flee.index("hyrule_native( victim )")
         self.assertLess(guard, flee.index("do_flee(victim"),
                         "the guardian test comes before the opponent's flight")
         special = (ROOT / "src" / "special.c").read_text(encoding="latin-1")

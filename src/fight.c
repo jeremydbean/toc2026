@@ -24,6 +24,9 @@
 /* Level 8's guardian, a fight for two: an instant kill takes a tenth of
    its health, as Ganon's (owner, 2026-10-28). */
 #define HYRULE_ASHEN_GLEEOK_VNUM 30316
+/* Level 7's: no instant kill on the last three dungeons' guardians
+   either (owner, 2026-11-10). */
+#define HYRULE_ANCIENT_AQUAMENTUS_VNUM 30314
 #define HYRULE_BOW_VNUM         30222
 #define HYRULE_SILVER_ARROW_GANON_SKILL 100
 #define HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR 10
@@ -406,6 +409,7 @@ bool hyrule_defies_instant_death( CHAR_DATA *victim )
     return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
         && ( is_hyrule_ganon(victim)
           || victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
+          || victim->pIndexData->vnum == HYRULE_ANCIENT_AQUAMENTUS_VNUM
           || victim->pIndexData->vnum == HYRULE_ASHEN_GLEEOK_VNUM );
 }
 
@@ -435,8 +439,11 @@ static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( victim->pIndexData->vnum == HYRULE_GOHMA_VNUM )
         act( "$n reels, and $s armored eye snaps shut: only an arrow can finish $m.",
              victim, NULL, NULL, TO_ROOM );
-    else
+    else if ( victim->pIndexData->vnum == HYRULE_ASHEN_GLEEOK_VNUM )
         act( "$n reels from the blow, but its heads hold it to life: it must be worn down.",
+             victim, NULL, NULL, TO_ROOM );
+    else
+        act( "$n reels from the blow, but will not fall to it: $e must be worn down.",
              victim, NULL, NULL, TO_ROOM );
     return true;
 }
@@ -5333,14 +5340,16 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	if( !despair_answering
 	&&  (chance = get_skill(ch,gsn_despair) ) > 1 && number_percent () < chance)
 	{
-	  /* A Hyrule guardian is not driven from its chamber (play journal,
-	     2026-11-10: Digdogger fled its den into the next room, out from
-	     behind the gate that asks for the recorder). The flight is the
-	     fleer's own instead, said once however many tries it takes. */
-	  if ( is_hyrule_guardian( victim ) )
+	  /* Nothing of Hyrule's is driven off (play journal, 2026-11-10:
+	     Digdogger fled its den into the next room, out from behind the
+	     gate that asks for the recorder; and an ordinary enemy driven out
+	     of a shuttered room opened the shutters with nothing killed). The
+	     flight is the fleer's own instead, said once however many tries
+	     it takes. */
+	  if ( hyrule_native( victim ) )
 	  {
 	    if ( !despair_held )
-	      act("$N is too set on holding $S lair to be driven from it.",
+	      act("$N will not be driven from $S ground.",
 		ch, NULL, victim, TO_CHAR);
 	    despair_held = true;
 	  }
@@ -6986,7 +6995,17 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
          no blow at all (Alaric, 48 times on 2026-10-25). */
       if ( struck && ch->fighting != victim )
           break;  /* victim fled or fight state changed; stop iterating */
-      if( number_percent( ) > chance )
+      /* Hyrule's creatures hold their ground: a guardian driven out of
+	 its chamber, or an enemy out of a shuttered room, opened the
+	 shutters with nothing killed (audit, 2026-11-10). The blow still
+	 misses and ends the fury. */
+      if( number_percent( ) > chance && hyrule_native( victim ) )
+      {
+	act("$N will not be driven from $S ground.",ch,NULL,victim,TO_CHAR);
+	check_improve(ch,gsn_fists_of_fury,false,6);
+	break;
+      }
+      else if( !hyrule_native( victim ) && number_percent( ) > chance )
       {
 	act("$N tries to flee from your onslaught.",ch,NULL,victim,TO_CHAR);
 	act("You try and escape from $N's onslaught.",ch,NULL,victim,TO_VICT);

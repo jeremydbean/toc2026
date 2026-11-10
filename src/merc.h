@@ -3833,6 +3833,8 @@ const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate ( int level );
 bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
 bool    is_hyrule_bystander ( CHAR_DATA *victim );
 bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
+bool    hyrule_holds_bound ( const OBJ_DATA *obj );       /* hyrule.c */
+void    hyrule_destroy_bound_within ( OBJ_DATA *obj );
 
 /* hyrulelog.c: log/hyrule.tsv, Hyrule play for balance and trends */
 void    hylog_moved         ( CHAR_DATA *ch );
@@ -3870,6 +3872,7 @@ bool    hyrule_blow_turned_aside ( CHAR_DATA *ch, CHAR_DATA *victim );
 int     hyrule_patra_eyes_left ( CHAR_DATA *mob );
 bool    hyrule_enemy_is_invincible ( CHAR_DATA *victim );
 bool    hyrule_foe             ( CHAR_DATA *victim );
+bool    hyrule_native          ( CHAR_DATA *victim );
 void    hyrule_room_cleared    ( ROOM_INDEX_DATA *room, bool foe_died );
 void    hyrule_room_populated  ( ROOM_INDEX_DATA *room, CHAR_DATA *mob );
 bool    hyrule_set_bait        ( CHAR_DATA *ch, OBJ_DATA *bait );

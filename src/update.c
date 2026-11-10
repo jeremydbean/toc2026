@@ -2641,6 +2641,20 @@ free_string(obj->description);
 		next_obj = t_obj->next_content;
 		obj_from_obj(t_obj);
 
+		/* Nothing bound in Hyrule spills for somebody else to take:
+		   it goes with the corpse, in its history, unless the corpse
+		   rots in its owner's own hands (audit, 2026-11-10). */
+		if ( !( obj->carried_by != NULL && obj->owner != NULL
+		       && !str_cmp( obj->carried_by->name, obj->owner ) ) )
+		{
+		    if ( hyrule_bound_object( t_obj ) )
+		    {
+			extract_obj( t_obj );
+			continue;
+		    }
+		    hyrule_destroy_bound_within( t_obj );
+		}
+
 		/* One of these, as stock ROM chains them. Without the elses a
 		   corpse rotting in someone's hands or inside a container gave
 		   its contents to the carrier and then, finding no room,

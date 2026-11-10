@@ -1979,7 +1979,10 @@ Wear it as a light and you see what is hidden, invisible or in the dark.
         "The Triforce",
         "The Triforce floats here, radiant with golden power.",
         "gold",
-        "1 ABGIV A",
+        # NODROP (H) like its pieces: it opens every dungeon gate, and a
+        # Triforce handed over carried a friend through them all (audit,
+        # 2026-11-10).
+        "1 ABGHIV A",
         "0 0 999 0 0",
         58,
         1,

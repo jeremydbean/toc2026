@@ -1761,6 +1761,16 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
 */
 
+    /* Nothing of Hyrule's is charmed: a charmed guardian handed over its
+       key, opened its shutters and walked out of its chamber (audit,
+       2026-11-10). Said, not failed. */
+    if ( hyrule_native( victim ) )
+    {
+	act( "$N's will belongs to Hyrule; your charm finds no hold on it.",
+	     ch, NULL, victim, TO_CHAR );
+	return;
+    }
+
     if ( IS_AFFECTED(victim, AFF_CHARM)
     ||   IS_AFFECTED(ch, AFF_CHARM)
     ||   ch->level < victim->level

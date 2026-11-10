@@ -1003,6 +1003,25 @@ for the recorder). `is_hyrule_guardian()` in `special.c` -- the
 `spec_hyrule_guardian` or `spec_ganon` special -- is what do_flee asks
 before despair answers a flee with the opponent's flight; a new way of
 moving a mobile out of a fight asks it too (`tests/test_guardian_despair.py`).
+Since the audit of 2026-11-10 the test is `hyrule_native()` in
+`act_move.c` -- any of Hyrule's own mobiles, charmed or not -- and it is
+asked by DESPAIR, FISTS OF FURY, STEAL and CHARM PERSON. Ask it, not
+`hyrule_foe()`, which stops counting a charmed mobile. Instant death is
+defied by the guardians of Levels 6 to 9 (`hyrule_defies_instant_death`;
+owner: none on the last three dungeons).
+
+**Hyrule's order holds however a character arrives** (audit,
+2026-11-10). `hyrule_gate_check` asks for a dungeon's entry piece on any
+arrival into its room range from outside it, and for the guardian's tool
+on any arrival into the chamber but from its own treasure room;
+`travel_spell_refuses` also refuses a Hyrule room whose every exit is a
+closed secret exit (`hyrule_room_sealed`). A bound Hyrule object
+(`hyrule_bound_object`) in a player's corpse is the owner's alone: GET
+refuses anybody else, TELEKINESIS will not fetch the corpse, and a corpse
+that rots destroys it rather than spill it. PASS DOOR, ghost form and
+DOOR BASH stop at a locked Hyrule door. Lending a dungeon tool and leaving
+a dungeon by PORTAL or ASTRAL WALK are allowed (owner, 2026-11-10).
+`tests/test_hyrule_audit_nov10.py`.
 
 **The last two guardians are group fights, by balance, not by rule**
 (owner, 2026-10-28: the ashen Gleeok needs two average high-level

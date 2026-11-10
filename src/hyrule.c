@@ -632,6 +632,41 @@ bool hyrule_bound_object( const OBJ_DATA *obj )
         && IS_SET( obj->extra_flags, ITEM_NODROP );
 }
 
+/* obj, or anything inside it at any depth, is bound (above). */
+bool hyrule_holds_bound( const OBJ_DATA *obj )
+{
+    const OBJ_DATA *in;
+
+    if ( obj == NULL )
+        return false;
+    if ( hyrule_bound_object( obj ) )
+        return true;
+    for ( in = obj->contains; in != NULL; in = in->next_content )
+        if ( hyrule_holds_bound( in ) )
+            return true;
+    return false;
+}
+
+/* Takes every bound object out of obj's contents, at any depth, and
+   destroys it: a rotting corpse spills what it held for anybody, and a
+   piece is the dead character's alone (audit, 2026-11-10). They are in
+   the corpse's history, and the chests and gifts give them again. */
+void hyrule_destroy_bound_within( OBJ_DATA *obj )
+{
+    OBJ_DATA *in, *next;
+
+    if ( obj == NULL )
+        return;
+    for ( in = obj->contains; in != NULL; in = next )
+    {
+        next = in->next_content;
+        if ( hyrule_bound_object( in ) )
+            extract_obj( in );
+        else
+            hyrule_destroy_bound_within( in );
+    }
+}
+
 static bool is_hyrule_vnum( int vnum )
 {
     return IS_HYRULE_ROOM_VNUM( vnum );
