@@ -19589,3 +19589,77 @@
 1794342691	cmd	Trentlin	33	4210	dresden.are	standing	28	0	-	north		Alas, you cannot go that way.	-	-
 1794342692	cmd	Trentlin	33	4210	dresden.are	standing	28	0	-	sleep		You go to sleep.	-	-
 1794342694	cmd	Trentlin	33	4210	dresden.are	sleeping	28	0	-	inventory		You are carrying: // ( 2) a small key //      the Red Candle	-	+
+1794342864	cmd	Trentlin	33	4210	dresden.are	sleeping	73	0	-	group		Trentlin's group: // [33 Monk ] Trentlin          529/ 722 hp 1332/1437 mana  276/ 379 mv 76790 xp	-	-
+1794342865	cmd	Trentlin	33	4210	dresden.are	sleeping	73	0	-	wake		You wake and stand up.	-	-
+1794342865	cmd	Trentlin	33	4210	dresden.are	standing	73	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794342866	cmd	Trentlin	33	4203	dresden.are	standing	73	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794342866	cmd	Trentlin	33	4202	dresden.are	standing	73	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794342867	cmd	Trentlin	33	4207	dresden.are	standing	73	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794342867	cmd	Trentlin	33	4208	dresden.are	standing	73	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794342870	cmd	Trentlin	33	4208	dresden.are	standing	73	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (2 castings, 1000 gold.)	-	-
+1794342874	cmd	Trentlin	33	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (2 castings, 20 gold.)	-	-
+1794342878	cmd	Trentlin	33	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794342878	cmd	Trentlin	33	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794342878	cmd	Trentlin	33	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794342879	cmd	Trentlin	33	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794342879	cmd	Trentlin	33	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794342880	cmd	Trentlin	33	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794342880	cmd	Trentlin	33	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794342880	cmd	Trentlin	33	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794342881	cmd	Trentlin	33	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794342881	cmd	Trentlin	33	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794342885	cmd	Trentlin	33	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794342885	cmd	Trentlin	33	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794342885	cmd	Trentlin	33	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794342886	cmd	Trentlin	33	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794342919	cmd	Trentlin	33	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794342920	cmd	Trentlin	33	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794342921	cmd	Trentlin	33	2439	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794342922	cmd	Trentlin	33	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794342922	cmd	Trentlin	33	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794342923	cmd	Trentlin	33	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794342923	cmd	Trentlin	33	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794342923	cmd	Trentlin	33	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794342923	cmd	Trentlin	33	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794342924	cmd	Trentlin	33	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794342925	cmd	Trentlin	33	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794342925	cmd	Trentlin	33	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794342925	cmd	Trentlin	33	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794342926	cmd	Trentlin	33	322	plains.are	standing	100	0	-	north		Grassy foothills //   You walk in the grassy foothills north of the plains. The wind is rough. // To the north you can see foothills and just behind them mountain peaks	-	+
+1794342926	cmd	Trentlin	33	324	plains.are	standing	100	0	-	north		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // To the north you can see the mountains towering over you.  Pine trees	-	+
+1794342927	cmd	Trentlin	33	45	connect.are	standing	100	0	-	north		Base of Mount Ulmo //   Before you is a mountainous path, which leads upward into the clouds // overhead!	-	+
+1794342927	cmd	Trentlin	33	1000	uargo.are	standing	100	0	-	north		A mountain path //   A fresh mountain breeze blows in your face. You walk on a small path,  // which winds its way up the Mount Ulmo. The grassy fields along the dusty 	-	+
+1794342928	cmd	Trentlin	33	1001	uargo.are	standing	100	0	-	north		A mountain path //   A steep climb lies ahead and your surroundings are filled with debris, // a few small boulders and various small stones, that have been chipped off	-	+
+1794342929	cmd	Trentlin	33	1002	uargo.are	standing	100	0	-	up		A mountain path //   After climbing up the steep path you are now able to see the Mt. Ulmo  // pass right ahead of you. From afar the pass looks more like a small crack	-	+
+1794342929	cmd	Trentlin	33	1003	uargo.are	standing	100	0	-	north		Mt. Ulmo Pass //   You walk through the pass over Mount Ulmo. Steep rock surfaces rise up // high to either side of you. From here the mountain path will take you down-	-	+
+1794342930	cmd	Trentlin	33	1004	uargo.are	standing	100	0	-	down		A sloping path down the hill //   With little difficulty you work your way down Mt. Ulmo into the Upper Argo. // The land certainly looks more friendly than the grey scenery of Mt. Ulmo.	-	+
+1794342931	cmd	Trentlin	33	1005	uargo.are	standing	100	0	-	north		A sloping path down the hill //   The path gets less steep as you get nearer to the Upper Argo. You begin // to see more of the low bushes, scattered over the still rocky underground.	-	+
+1794342931	cmd	Trentlin	33	1006	uargo.are	standing	100	0	-	north		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
+1794342932	cmd	Trentlin	33	1007	uargo.are	standing	100	0	-	north		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794342932	cmd	Trentlin	33	1007	uargo.are	standing	100	0	-	scan		an Orgeem Imp                      -to the West.	-	-
+1794342933	cmd	Trentlin	33	1006	uargo.are	standing	100	0	-	south		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
+1794342935	cmd	Trentlin	33	1006	uargo.are	standing	100	0	-	steel		You lost your concentration.	-	-
+1794342936	cmd	Trentlin	33	1006	uargo.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794342941	cmd	Trentlin	33	1006	uargo.are	standing	100	0	-	iron		Your skin hardens.	-	-
+1794342950	cmd	Trentlin	33	1007	uargo.are	standing	100	0	-	north		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794342950	cmd	Trentlin	33	1007	uargo.are	standing	100	0	-	kill	im	An Orgeem Imp parries your attack. // Your punch *** DEVASTATES *** an Orgeem Imp! // An Orgeem Imp dodges your attack.	-	-
+1794342953	cmd	Trentlin	33	1007	uargo.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Orgeem Imp. // Your fists of fury mauls an Orgeem Imp.	-	-
+1794342959	cmd	Trentlin	33	1007	uargo.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches an Orgeem Imp. // Your fists of fury mauls an Orgeem Imp.	-	-
+1794342966	cmd	Trentlin	33	1007	uargo.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls an Orgeem Imp. // Your fists of fury injures an Orgeem Imp.	-	+
+1794342972	cmd	Trentlin	33	1007	uargo.are	fighting	78	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an Orgeem Imp.	-	-
+1794342976	cmd	Trentlin	33	1007	uargo.are	fighting	72	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates an Orgeem Imp!	-	-
+1794342980	cmd	Trentlin	33	1007	uargo.are	fighting	72	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS an Orgeem Imp!	-	-
+1794342984	cmd	Trentlin	33	1007	uargo.are	fighting	69	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches an Orgeem Imp.	-	-
+1794342987	cmd	Trentlin	33	1007	uargo.are	fighting	69	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an Orgeem Imp.	-	-
+1794342991	cmd	Trentlin	33	1007	uargo.are	fighting	69	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes an Orgeem Imp.	-	-
+1794342994	cmd	Trentlin	33	1007	uargo.are	fighting	69	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch *** DEMOLISHES *** an Orgeem Imp!	-	-
+1794343000	cmd	Trentlin	33	1007	uargo.are	standing	63	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794343001	cmd	Trentlin	33	1007	uargo.are	standing	63	0	-	scan		an Orgeem Imp                      -to the West.	-	-
+1794343003	cmd	Trentlin	33	1008	uargo.are	standing	63	0	-	west		A clearing //   You are standing in the open. Here and there are a few low scrubs, to  // the south the rock face of Mt. Ulmo rises up high and in the far west you 	-	+
+1794343003	cmd	Trentlin	33	1008	uargo.are	standing	63	0	-	kill	im	An Orgeem Imp parries your attack. // An Orgeem Imp dodges your attack. // Your punch misses an Orgeem Imp.	-	-
+1794343006	cmd	Trentlin	33	1008	uargo.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls an Orgeem Imp. // Your fists of fury grazes an Orgeem Imp.	-	-
+1794343011	cmd	Trentlin	33	1008	uargo.are	fighting	62	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Orgeem Imp! // Your fists of fury hits an Orgeem Imp.	-	+
+1794343020	cmd	Trentlin	33	1008	uargo.are	fighting	62	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an Orgeem Imp. // Your fists of fury injures an Orgeem Imp.	-	+
+1794343026	cmd	Trentlin	33	1008	uargo.are	fighting	54	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls an Orgeem Imp. // Your fists of fury hits an Orgeem Imp.	-	-
+1794343034	cmd	Trentlin	33	1008	uargo.are	standing	52	0	-	sacrifice	cor	The Gods give you 60 copper coins for your sacrifice.	-	-
+1794343035	cmd	Trentlin	33	1008	uargo.are	standing	52	0	-	scan		You don't see anything near you.	-	-
