@@ -284513,3 +284513,25 @@ Tue Nov 10 19:34:40 2026 :: Log Killuminati [30552]: e
 Tue Nov 10 19:34:41 2026 :: Log Killuminati [30552]: w
 Tue Nov 10 19:34:41 2026 :: Log Killuminati [30551]: arrived (Level 7: Hall of Keyholes) from 30552
 Tue Nov 10 19:35:23 2026 :: Log Killuminati [30551]: look gor
+Tue Nov 10 19:38:27 2026 :: Log Killuminati [30551]: /
+Tue Nov 10 19:38:28 2026 :: Log Killuminati [30551]: lo
+Tue Nov 10 19:38:31 2026 :: Log Killuminati [30551]: op north
+Tue Nov 10 19:38:31 2026 :: Log Killuminati [30551]: n
+Tue Nov 10 19:38:33 2026 :: Log Killuminati [30551]: pick north
+Tue Nov 10 19:38:35 2026 :: Log Killuminati [30551]: op north
+Tue Nov 10 19:38:35 2026 :: Log Killuminati [30551]: n
+Tue Nov 10 19:38:35 2026 :: Log Killuminati [30556]: arrived (Level 7: Vault of the Sleeping Face) from 30551
+Tue Nov 10 19:38:43 2026 :: Log Killuminati [30556]: s
+Tue Nov 10 19:38:43 2026 :: Log Killuminati [30551]: arrived (Level 7: Hall of Keyholes) from 30556
+Tue Nov 10 19:38:45 2026 :: Log Killuminati [30551]: e
+Tue Nov 10 19:38:45 2026 :: Log Killuminati [30552]: arrived (Level 7: Spined Sand Pit) from 30551
+Tue Nov 10 19:38:49 2026 :: Log Killuminati [30552]: goto 1
+Tue Nov 10 19:38:49 2026 :: Log Killuminati [1]: arrived (The Void) from 30552
+Tue Nov 10 19:38:54 2026 :: Log Killuminati [1]: goto 30552
+Tue Nov 10 19:38:54 2026 :: Log Killuminati [30552]: arrived (Level 7: Spined Sand Pit) from 1
+Tue Nov 10 19:38:59 2026 :: Log Killuminati [30552]: c portal city
+Tue Nov 10 19:39:01 2026 :: Log Killuminati [30552]: en port
+Tue Nov 10 19:39:01 2026 :: Log Killuminati [2433]: arrived (Temple Boulevard.) from 30552
+Tue Nov 10 19:39:02 2026 :: Log Killuminati [2433]: ]
+Tue Nov 10 19:39:02 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2433
+Tue Nov 10 19:40:22 2026 :: Treasure goblin: vanished from room 5968 (Outside the North Gate of Midgaard, mid_ruin.are) (too long in one area).
