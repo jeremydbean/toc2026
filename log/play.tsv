@@ -20507,3 +20507,5 @@
 1794347611	cmd	Trentlin	34	4210	dresden.are	standing	22	0	-	help	haste	HASTE // Syntax: cast haste <character> // This spell causes the target character to move more quickly.  However, it	-	+
 1794347620	cmd	Trentlin	34	4210	dresden.are	standing	22	0	-	sleep		You go to sleep.	-	-
 1794347621	session	Trentlin	34	4210	dresden.are	quit	2054s	+1 levels	+1845 exp	-13419383 copper	16 kills	0 deaths	2 quests	735 commands	5 refused	coin: loot 4p 89g 60s 1c, quests 9p 73g 46s 16c, spent 28p 55g	spent on: heal 27p 95g, buy 60g	exp: kills +1860, skilluse +20, flee -10, recall -25
+1794348684	cmd	Trentlin	34	4210	dresden.are	sleeping	22	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          163/ 738 hp  895/1474 mana  161/ 386 mv 79577 xp	-	-
+1794348706	cmd	Trentlin	34	4210	dresden.are	sleeping	22	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          163/ 738 hp  895/1474 mana  161/ 386 mv 79577 xp	-	-
