@@ -1,1 +1,1 @@
-2026-11-10T21:39:21Z waiting for CI on 74e25587 (in_progress) before deploying 9aa7cdc0
+2026-11-10T21:49:23Z not deploying c59d1242: CI on 74e25587 says failure; push a fix
