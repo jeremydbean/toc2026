@@ -18304,3 +18304,14 @@
 1794272515	state	Trentlin	31	4209	dresden.are	lvl=31 hp=483/693 mana=70/1362 mv=16/365 align=-152 exp=71724 coin=6856670 bank=15163277251 qp=2605 prac=4 train=0 stash=51/75 remorts=1
 1794272515	cmd	Trentlin	31	4209	dresden.are	sleeping	69	0	-	score		| Name:       Trentlin | Level:      31 | Class:        Monk | // | Played:     33 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
 1794272521	session	Trentlin	31	4209	dresden.are	quit	1016s	+2 levels	+3350 exp	+1655894 copper	12 kills	0 deaths	2 quests	505 commands	2 refused	coin: loot 10p 40g 76s 22c, quests 7p 34g 82s 72c, spent 16p 10g	spent on: heal 16p 10g	exp: skilluse +36, kills +3314
+1794272916	cmd	Trentlin	31	4209	dresden.are	sleeping	69	0	-	group		Trentlin's group: // [31 Monk ] Trentlin          483/ 693 hp   70/1362 mana   16/ 365 mv 71724 xp	-	-
+1794272918	cmd	Trentlin	31	4209	dresden.are	sleeping	69	0	-	who		[31 Dwarf   Monk  ] Trentlin the Master of Summer // Players found: 1	-	-
+1794272967	cmd	Trentlin	31	4209	dresden.are	sleeping	77	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794273011	cmd	Trentlin	31	4209	dresden.are	sleeping	84	0	-	wake		You wake and stand up.	-	-
+1794273011	cmd	Trentlin	31	4205	dresden.are	standing	84	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794273011	cmd	Trentlin	31	4207	dresden.are	standing	84	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794273012	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794273012	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	west		Alas, you cannot go that way.	-	-
+1794273014	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	stash		Your stash holds 51 of 75 things. //     1) (Glowing) the Lion's four-crowned axe //     2) (Glowing) an indigo blue livery	-	+
+1794273026	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	levitate		You slowly rise up off the ground.	-	-
+1794273027	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
