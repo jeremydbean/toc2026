@@ -357,10 +357,11 @@ int get_skill(const CHAR_DATA *ch, int sn)
 /*
  * Staff never miss a chance-based skill (owner, 2026-11-10: "immortals
  * should never fail picking a lock or stealing or any skills that are
- * chance (except things like fatality)"). Trust, not level, as every
- * staff test is (AGENTS.md, Permission Helpers); a mobile counts only
- * while a staff member is switched into it, since get_trust() reads the
- * original then and an ordinary mobile's trust is its own level.
+ * chance (except things like fatality)"). Level, not trust (owner,
+ * 2026-11-10: a character trusted with staff commands below an
+ * immortal's level rolls like anyone) -- the one rule here that does
+ * not follow AGENTS.md's Permission Helpers; a mobile counts only while
+ * an immortal is switched into it, judged by their own character.
  *
  * The roll is still made where it always was and passed in, so each
  * site keeps its own arithmetic (some read "<", some "<=" or ">") and
@@ -372,11 +373,20 @@ int get_skill(const CHAR_DATA *ch, int sn)
  */
 bool skill_roll_sure( CHAR_DATA *ch )
 {
+    CHAR_DATA *who = ch;
+
     if ( ch == NULL )
 	return false;
-    if ( IS_NPC(ch) && ( ch->desc == NULL || ch->desc->original == NULL ) )
-	return false;
-    return IS_TRUSTED( ch, LEVEL_IMMORTAL );
+    /* A switched immortal is judged by their own character. */
+    if ( IS_NPC(ch) )
+    {
+	if ( ch->desc == NULL || ch->desc->original == NULL )
+	    return false;
+	who = ch->desc->original;
+    }
+    /* By level, not trust (owner, 2026-11-10): a character trusted with
+       staff commands below an immortal's level rolls like anyone. */
+    return !IS_NPC(who) && who->level >= LEVEL_IMMORTAL;
 }
 
 /* A skill roll that landed -- or would have, for staff. */

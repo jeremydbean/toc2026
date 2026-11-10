@@ -280,7 +280,7 @@ class CraftingLiveTests(unittest.TestCase):
                 # PREVIEW costs nothing: no lag, nothing used.
                 preview = client.must("scribe preview tarrasque cube ooze", "PREVIEW")
                 for words in ("ironbound scroll", "giant strength", "bless", "major globe",
-                              "Your chance to make it: 95%", "RECITE works"):
+                              "Your chance to make it: 99%", "RECITE works"):
                     self.assertIn(words, preview)
                 self.assertNotIn("stone skin", preview)
                 self.assertEqual(client.sync("inventory").count("tarrasque"), 1,
@@ -324,7 +324,7 @@ class CraftingLiveTests(unittest.TestCase):
         self.assertEqual(sorted(row[10].split(",")), sorted(str(v) for v in (TARRASQUE, CUBE, OOZE)))
         self.assertEqual((row[11], row[12], row[13]),
                          ("90", "giant strength,bless,major globe", "30"))
-        self.assertEqual((row[15], row[18]), ("95", "saved"))
+        self.assertEqual((row[15], row[18]), ("99", "saved"))
         self.assertNotIn(str(TEMPLE), "\t".join(row[6:]))
         # The scroll was read; each attempt spent a set, the rest are carried.
         self.assertEqual(text.count("Vnum %d\n" % TARRASQUE), SETS - len(rows))
@@ -382,7 +382,7 @@ class CraftingLiveTests(unittest.TestCase):
                 mark = len(client.transcript)
                 kept = until(client, "concoct feather tooth", "pour off")
                 self.assertIn("feathered gold", kept)
-                # The roll is 95%: the unconfirmed save may be a spent
+                # The roll is 99%: the unconfirmed save may be a spent
                 # attempt's before the potion's, so read the whole stretch.
                 self.assertIn("has not confirmed it yet", client.transcript[mark:])
             crash(mud)

@@ -11,6 +11,7 @@ never a name, and the finest place written is the area file.
 from __future__ import annotations
 
 import sys
+import time
 import unittest
 
 from live_mud import (SPARRING_GUARD, LiveMud, create_character, login, patch_player_file,
@@ -26,6 +27,16 @@ HALLS = 4202            # not safe
 # point stands for the smurf; one left as it is, for the worker.
 SMURF = SPARRING_GUARD
 WORKER = SPARRING_GUARD
+
+
+def seen(client, since: int, text: str, timeout: float) -> bool:
+    """Drain until text is in the transcript after `since`."""
+    deadline = time.monotonic() + timeout
+    while text not in client.transcript[since:]:
+        if time.monotonic() > deadline:
+            return False
+        client.drain(0.5)
+    return True
 
 
 def run(client, command: str, settle: float = 1.2) -> str:
@@ -55,31 +66,31 @@ class ProgressLogTests(unittest.TestCase):
                 login(setter, "Zsetter", PW)
                 setter.must("set char zhunter hitroll 40", "")
                 setter.must(f"load mob {SMURF}", "You create")
-                setter.must("set char guard level 3", "")
+                setter.must("set char sparring level 3", "")
                 # One hit point: the first blow that lands kills.
                 # SET sets the maximum; RESTORE brings it down to it.
-                setter.must("set char guard hp 1", "")
-                setter.must("restore guard", "")
+                setter.must("set char sparring hp 1", "")
+                setter.must("restore sparring", "")
                 # Coin it carries when it falls: the last column (2026-11-05).
-                setter.must("set char guard gold 3", "Gold amount")
+                setter.must("set char sparring gold 3", "Gold amount")
                 hunter.buffer = ""
-                run(hunter, "kill guard", 1.0)
+                run(hunter, "kill sparring", 1.0)
                 hunter.expect("is DEAD", timeout=60)
                 hunter.drain(1.0)
 
                 run(setter, "advance zhunter 20", 1.5)
                 setter.must(f"load mob {SMURF}", "You create")
-                setter.must("set char guard level 3", "")
+                setter.must("set char sparring level 3", "")
                 # SET sets the maximum; RESTORE brings it down to it.
-                setter.must("set char guard hp 1", "")
-                setter.must("restore guard", "")
+                setter.must("set char sparring hp 1", "")
+                setter.must("restore sparring", "")
                 hunter.buffer = ""
-                run(hunter, "kill guard", 1.0)
+                run(hunter, "kill sparring", 1.0)
                 hunter.expect("is DEAD", timeout=60)
                 hunter.drain(1.0)
 
                 setter.must(f"load mob {WORKER}", "You create")
-                run(hunter, "kill guard", 1.0)
+                run(hunter, "kill sparring", 1.0)
                 # Watch everything since the first FLEE: a success that
                 # arrives late lands in the next command's leading drain,
                 # and a slice per command missed it and fled on and on.
@@ -173,28 +184,37 @@ class ProgressLogTests(unittest.TestCase):
                 login(hunter, "Zburner", PW)
                 login(setter, "Zsetter", PW)
                 setter.must("set char zburner hitroll 40", "")
-                setter.must(f"load mob {SMURF}", "You create")
-                # Too many hit points to reach its wimpy point: it stands
-                # and burns the hunter until staff end it at one hit point.
-                setter.must("set char guard hp 30000", "")
-                setter.must("restore guard", "")
-                setter.must("empower guard perm", "mpower")      # fire shield among them
+                def burning_guard() -> None:
+                    """A guard with a fire shield (EMPOWER), loaded again if
+                    the last fight killed it outright."""
+                    if "Vnum:" not in setter.sync("stat mob sparring", timeout=60):
+                        setter.must(f"load mob {SMURF}", "You create")
+                        setter.must("empower sparring perm", "mpower")   # fire shield among them
+
+                # Too many hit points to die by blows: it stands and burns
+                # the hunter until staff end it at one hit point.
+                burning_guard()
                 # EMPOWER brings divine protection: the first death is
                 # spared and credits nobody, and the next fight starts a
                 # new ledger (set_fighting) -- so each fight is fought until
                 # the aura has burned the hunter before it is ended.
                 mark = len(hunter.transcript)
-                for _ in range(2):
-                    setter.must("set char guard hp 30000", "")
-                    setter.must("restore guard", "")
+                for _ in range(3):
+                    burning_guard()
+                    setter.must("set char sparring hp 30000", "")
+                    setter.must("restore sparring", "")
                     burn = len(hunter.transcript)
-                    hunter.buffer = ""              # expect() must see this fight's lines
-                    hunter.send("kill guard")
-                    hunter.expect("Flaming Aura", timeout=60)
-                    self.assertIn("Flaming Aura", hunter.transcript[burn:])
-                    setter.must("set char guard hp 1", "")
-                    setter.must("restore guard", "")
-                    hunter.expect("is DEAD", timeout=120)
+                    hunter.send("kill sparring")
+                    # Waited for by the transcript since this fight began, not
+                    # expect(): the death can come in the same burst as the
+                    # aura, and expect() would have used it up (CI,
+                    # 2026-11-10).
+                    self.assertTrue(seen(hunter, burn, "Flaming Aura", 60),
+                                    hunter.transcript[-1500:])
+                    setter.must("set char sparring hp 1", "")
+                    setter.must("restore sparring", "")
+                    self.assertTrue(seen(hunter, burn, "is DEAD", 120),
+                                    hunter.transcript[-1500:])
                     hunter.drain(2.0)
                     if "experience points" in hunter.transcript[mark:]:
                         break

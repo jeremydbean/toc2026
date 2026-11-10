@@ -97,8 +97,12 @@ class RareEventAndSkillTests(unittest.TestCase):
         scribe = function_body(self.magic2, "void do_scribe", "void spell_vengence")
 
         for body, name in ((concoct, "potion"), (scribe, "scroll")):
-            self.assertLess(body.index("number_percent() > skill / 2 + 45"),
+            self.assertLess(body.index("number_percent() > craft_mix_chance( skill )"),
                             body.index("%s = craft_product(" % name))
+        # A master fails one try in a hundred (owner, 2026-11-10): 45% to 99%.
+        helper = self.magic2[self.magic2.index("static int craft_mix_chance("):]
+        helper = helper[:helper.index("\n}\n")]
+        self.assertIn("URANGE( 0, 45 + URANGE( 0, skill, 100 ) * 54 / 100, 99 )", helper)
         self.assertRegex(
             scribe,
             r"won't make a usable ink\.\\n\\r\", ch \);\s*return;",

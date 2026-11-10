@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261110craft 2026-11-10
+A master's concoction or scroll now fails about one try in a hundred, not
+one in twenty: CONCOCT and SCRIBE run from 45% untrained to 99% at full
+skill.
+
 @ 20261110hermie 2026-11-10
 When a restart puts players off, Hermie the Angel comes to the Oak Tree
 Square to apologise: for four hours after the game is back she stands there
@@ -51,7 +56,8 @@ direction with a door is that door, even when something you carry begins
 with the same letters.
 
 @ 20261110staffroll 2026-11-10 staff
-Staff never miss a skill's roll: picking a lock, stealing, hiding,
+Immortals -- by level; a trusted builder below it rolls like anyone --
+never miss a skill's roll: picking a lock, stealing, hiding,
 sneaking, tracking, bash, trip, kick, the psionics, casting, crafting and
 the rest always come off. What refused before still refuses, and a
 fatality, other instant kills and a victim's saving throw are left to the

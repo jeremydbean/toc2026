@@ -351,9 +351,10 @@ class LiveTests(unittest.TestCase):
     def test_old_saves_metas_marks_paging_and_persistence(self) -> None:
         with LiveMud() as mud:
             # Hit points to spare: a concoction at 100% still botches one
-            # time in twenty (skill / 2 + 45), and the 2d10 burn could leave
-            # a 20 hit point fixture incapacitated before its next try (CI,
-            # 2026-11-10). Four pairs of ingredients, for four tries.
+            # time in a hundred (craft_mix_chance; one in twenty until
+            # 2026-11-10), and the 2d10 burn could leave a 20 hit point
+            # fixture incapacitated before its next try (CI, 2026-11-10).
+            # Four pairs of ingredients, for four tries.
             make(mud, "Zoldhand", Levl=54, Room=TEMPLE, Cla=0, Attr="25 25 25 25 25",
                  HMV="3000 3000 100 100 100 100", HMVP="3000 100 100")
             # An old file: five of the new bosses already earned, and an

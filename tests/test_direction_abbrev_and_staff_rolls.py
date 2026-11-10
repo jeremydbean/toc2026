@@ -13,8 +13,9 @@
 
 2. "immortals should never fail picking a lock or stealing or any skills
    that are chance (except things like fatality)." skill_roll_sure() in
-   handler.c -- staff by trust, a mobile only while staff are switched
-   into it -- and its two wrappers, skill_roll_landed() and
+   handler.c -- staff by level, never by trust (owner, 2026-11-10: a
+   trusted character below an immortal's level rolls like anyone), a
+   mobile only while staff are switched into it -- and its two wrappers, skill_roll_landed() and
    skill_roll_missed(), carry each skill command's own roll; refusals,
    fatality and other instant kills, victims' saving throws and combat's
    hit/parry/dodge rolls never go through them.
@@ -107,10 +108,10 @@ class DirectionSourceTests(unittest.TestCase):
 
 
 class StaffRollSourceTests(unittest.TestCase):
-    def test_the_helper_asks_trust_and_lets_no_mobile_through(self) -> None:
+    def test_the_helper_asks_level_and_lets_no_mobile_through(self) -> None:
         sure = function_body(source("handler.c"), "bool skill_roll_sure(")
-        self.assertIn("IS_TRUSTED( ch, LEVEL_IMMORTAL )", sure)
-        self.assertNotIn("IS_IMMORTAL", sure)
+        self.assertIn("who->level >= LEVEL_IMMORTAL", sure)
+        self.assertNotIn("IS_TRUSTED", sure)
         self.assertIn("ch->desc->original == NULL", sure)
 
     def test_every_skill_roll_goes_through_it(self) -> None:
@@ -178,8 +179,8 @@ class LiveTests(unittest.TestCase):
     def test_shortened_directions_and_rolls_staff_never_miss(self) -> None:
         with LiveMud(fixtures=True) as mud:
             make(mud, "Zdirstaff", Levl=70, Room=LOCK_ROOM)
-            # A builder trusted to staff rank at a mortal level: trust, not
-            # level, is what never misses.
+            # A builder trusted to staff rank at a mortal level rolls like
+            # anyone (owner, 2026-11-10): level, not trust, never misses.
             make(mud, "Zdirbuild", Levl=30, Tru=65, Room=LOCK_ROOM)
             make(mud, "Zdirthief", Levl=30, Cla=2, Room=LOCK_ROOM)
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as build, \
@@ -221,11 +222,10 @@ class LiveTests(unittest.TestCase):
                     self.assertIn("*Click*", picked, (attempt, picked))
                     self.assertFalse(any(f in picked for f in PICK_FUMBLES), picked)
                     staff.must("lock s", "*Click*", "already locked")
-                # ...and so does a trusted builder, by trust at level 30.
-                for attempt in range(2):
-                    picked = build.sync("pick sout", timeout=60)
-                    self.assertIn("*Click*", picked, (attempt, picked))
-                    staff.must("lock sou", "*Click*", "already locked")
+                # ...but a trusted builder at level 30 fumbles like a mortal.
+                picked = build.sync("pick sout", timeout=60)
+                self.assertTrue(any(f in picked for f in PICK_FUMBLES), picked)
+                self.assertNotIn("*Click*", picked)
 
                 # A direction with a door is the door, before the sack in the
                 # pack whose name it also begins.

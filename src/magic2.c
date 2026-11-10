@@ -3209,6 +3209,17 @@ static const char *craft_target_words( int sn )
     }
 }
 
+/* A concoction's or a scroll's chance at a skill (owner, 2026-11-10: at
+   100% they should fail about one time in a hundred): 45% untrained, as
+   it always was, rising evenly to 99% at 100. It was skill / 2 + 45,
+   which left a master failing one try in twenty. BREW is the skill
+   itself. */
+static int craft_mix_chance( int skill )
+{
+    return URANGE( 0, 45 + URANGE( 0, skill, 100 ) * 54 / 100, 99 );
+}
+
+
 static void craft_preview( CHAR_DATA *ch, int method, int sn, char *argument )
 {
     static const char *const verbs[] = { "", "BREW", "CONCOCT", "SCRIBE" };
@@ -3229,7 +3240,7 @@ static void craft_preview( CHAR_DATA *ch, int method, int sn, char *argument )
         return;
     }
     skill = get_skill( ch, sn );
-    chance = method == CRAFT_BREW ? URANGE( 0, skill, 100 ) : UMIN( 100, skill / 2 + 45 );
+    chance = method == CRAFT_BREW ? URANGE( 0, skill, 100 ) : craft_mix_chance( skill );
     beats = skill_table[sn].beats;
     cast_level = IS_SET( recipe->flags, CRAFT_HALF_LEVEL ) ? 1 + ch->level / 2 : ch->level;
 
@@ -3556,7 +3567,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
     craft_inputs( parts, 2, inputs, sizeof(inputs) );
 
     skill = get_skill( ch, gsn_concoct );
-    chance = UMIN( 100, skill / 2 + 45 );
+    chance = craft_mix_chance( skill );
     /* The lag comes first: a failure burns the brewer, and a command that
        deals damage pays for it before the blow (test_damage_lag.py). */
     WAIT_STATE( ch, skill_table[gsn_concoct].beats );
@@ -3571,7 +3582,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
     act( "$n then says a few arcane words over it as the contents begin to "
          "froth and smoke.", ch, NULL, NULL, TO_ROOM );
 
-    if ( skill_roll_missed( ch, number_percent() > skill / 2 + 45 ) )
+    if ( skill_roll_missed( ch, number_percent() > craft_mix_chance( skill ) ) )
     {
         int burn = dice( 2, 10 );
 
@@ -3632,7 +3643,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
     craft_inputs( parts, 3, inputs, sizeof(inputs) );
 
     skill = get_skill( ch, gsn_scribe );
-    chance = UMIN( 100, skill / 2 + 45 );
+    chance = craft_mix_chance( skill );
     WAIT_STATE( ch, skill_table[gsn_scribe].beats );
     send_to_char( "You pull out your equipment and start work on the ink.\n\r", ch );
     act( "$n pulls out $p and pours it into a bowl.", ch, parts[0], NULL, TO_ROOM );
@@ -3643,7 +3654,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
     act( "A brief flash of light follows the addition of the final ingredient.", ch,
          NULL, NULL, TO_ROOM );
 
-    if ( skill_roll_missed( ch, number_percent() > skill / 2 + 45 ) )
+    if ( skill_roll_missed( ch, number_percent() > craft_mix_chance( skill ) ) )
     {
         check_improve( ch, gsn_scribe, false, 5 );
         status = craft_commit( ch, parts, 3, NULL );
