@@ -20028,3 +20028,71 @@
 1794346312	cmd	Trentlin	34	30253	hyrule.are	standing	80	0	-	play	recorder 4	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Isle of the Snake	-	+
 1794346317	cmd	Trentlin	34	30323	hyrule.are	standing	80	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
 1794346320	cmd	Trentlin	34	30476	hyrule.are	standing	80	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794346358	cmd	Trentlin	34	30480	hyrule.are	standing	82	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794346358	cmd	Trentlin	34	30480	hyrule.are	standing	82	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794346359	cmd	Trentlin	34	30480	hyrule.are	standing	82	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794346359	cmd	Trentlin	34	30480	hyrule.are	standing	82	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794346359	cmd	Trentlin	34	30480	hyrule.are	standing	82	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794346361	cmd	Trentlin	34	30480	hyrule.are	standing	82	0	-	kill	gi	A gibdo dodges your attack. // A gibdo parries your attack. // Your punch === OBLITERATES === a gibdo!	-	-
+1794346364	cmd	Trentlin	34	30480	hyrule.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a gibdo! // Your fists of fury MUTILATES a gibdo!	-	-
+1794346369	cmd	Trentlin	34	30480	hyrule.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a gibdo. // Your fists of fury MASSACRES a gibdo!	-	-
+1794346375	cmd	Trentlin	34	30480	hyrule.are	fighting	68	0	fight	kick		Your kick decimates a gibdo!	-	-
+1794346378	cmd	Trentlin	34	30480	hyrule.are	fighting	68	0	fight	nerve		You jab a gibdo with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a gibdo.	-	-
+1794346381	cmd	Trentlin	34	30480	hyrule.are	fighting	68	0	fight	nerve		You jab a gibdo with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a gibdo!	-	-
+1794346386	cmd	Trentlin	34	30480	hyrule.are	standing	60	0	-	steel		You lost your concentration.	-	-
+1794346387	cmd	Trentlin	34	30480	hyrule.are	standing	60	0	-	iron		Your skin hardens.	-	-
+1794346394	cmd	Trentlin	34	30480	hyrule.are	standing	60	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794346397	cmd	Trentlin	34	30480	hyrule.are	standing	60	0	-	get	key	You get a small key.	-	-
+1794346398	cmd	Trentlin	34	30483	hyrule.are	standing	60	0	-	north		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
+1794346453	cmd	Trentlin	34	30480	hyrule.are	standing	62	0	-	south		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794346453	cmd	Trentlin	34	30476	hyrule.are	standing	62	0	-	south		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794346453	cmd	Trentlin	34	30476	hyrule.are	standing	62	0	-	south		Alas, you cannot go that way.	-	-
+1794346454	cmd	Trentlin	34	30323	hyrule.are	standing	62	0	-	up		The Lizard's Gate //   Beyond the confusing folds of the Lost Hills to the south the ground levels // into a hidden basin of reddish sand. At its heart a squat entrance is cut	-	+
+1794346454	cmd	Trentlin	34	30323	hyrule.are	standing	62	0	-	up		Alas, you cannot go that way.	-	-
+1794346455	cmd	Trentlin	34	4207	dresden.are	standing	62	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794346455	cmd	Trentlin	34	4208	dresden.are	standing	62	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794346457	cmd	Trentlin	34	4208	dresden.are	standing	62	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794346462	cmd	Trentlin	34	4208	dresden.are	standing	62	0	-	walkto	hyrule	You set off for Hyrule (Killum), about 16 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794346484	cmd	Trentlin	34	30208	hyrule.are	standing	64	0	-	east		Meadow East of the Cave //   Open grassland stretches east from the starting hills, dotted with small // boulders and clumps of green bushes. Round pebbles lie strewn across the	-	+
+1794346484	cmd	Trentlin	34	30209	hyrule.are	standing	64	0	-	east		Stone Field //   A field of jumbled grey and brown boulders sprawls along the southern edge // of the land, grass growing in tufts between them. One great stone sits	-	+
+1794346484	cmd	Trentlin	34	30210	hyrule.are	standing	64	0	-	east		Rocky Southern Ridge //   A rocky ridge runs along the southern edge of the land, brown stone // breaking through thin, wind-flattened grass. The ground is scuffed with odd	-	+
+1794346485	cmd	Trentlin	34	30211	hyrule.are	standing	64	0	-	east		Southern Sands //   Sandy ground stretches along the southern edge of the land, rippled by the // wind and pocked with burrow holes that open and close like breathing. Now	-	+
+1794346485	cmd	Trentlin	34	30211	hyrule.are	standing	64	0	-	levitate		You slowly rise up off the ground.	-	-
+1794346486	cmd	Trentlin	34	30212	hyrule.are	standing	64	0	-	east		Leever Dunes //   Low dunes of pale sand roll along the southern edge of the land, shifting // and hissing whenever the wind picks up. Little whorls in the sand mark	-	+
+1794346486	cmd	Trentlin	34	30213	hyrule.are	standing	64	0	-	east		Southern Shore Path //   A grassy path runs along the southern edge of the land, the low boom of the // sea drifting in from the east. Beside it rises a wall of brown rock, and	-	+
+1794346487	cmd	Trentlin	34	30214	hyrule.are	standing	64	0	-	east		Southeast Grassland //   Wide grassland sweeps toward the southeastern coast, the long grass bent // flat by a constant wind that carries salt from the sea. Small round stones	-	+
+1794346487	cmd	Trentlin	34	30215	hyrule.are	standing	64	0	-	east		Southeast Coast //   The land ends at a rocky shore in the far southeastern corner of Hyrule, // where grey waves crash and white spray drifts on the wind. Tide pools	-	+
+1794346488	cmd	Trentlin	34	30231	hyrule.are	standing	64	0	-	north		Coastal Shop Cave //   Grassy bluffs overlook the eastern sea, where long grey waves break white // on the rocks below. In a rocky bank set back from the cliff edge a cave	-	+
+1794346488	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	north		The Coast's Lonely Ledge //   Rough grass runs down to the eastern shore, where the sea washes against // tumbled rocks. Just offshore a small flat ledge of stone sits alone above	-	+
+1794346493	refused	Trentlin	34	30247	hyrule.are	standing	64	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794346496	refused	Trentlin	34	30247	hyrule.are	standing	64	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794346503	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	east		Alas, you cannot go that way.	-	-
+1794346513	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	inventory		You are carrying: // ( 5) a small key //      12 bombs	-	+
+1794346518	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	east		Alas, you cannot go that way.	-	-
+1794346519	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	west		Alas, you cannot go that way.	-	-
+1794346519	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	down		Alas, you cannot go that way.	-	-
+1794346522	refused	Trentlin	34	30247	hyrule.are	standing	64	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794346524	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	jump	gap	I see no gap here.	-	-
+1794346526	cmd	Trentlin	34	30247	hyrule.are	standing	64	0	-	use	ladder	You stop using a pair of Dodongo stompers. // You wear the stepladder on your feet.	-	-
+1794346529	cmd	Trentlin	34	30247	hyrule.are	standing	67	0	-	look		The Coast's Lonely Ledge //   Rough grass runs down to the eastern shore, where the sea washes against // tumbled rocks. Just offshore a small flat ledge of stone sits alone above	-	+
+1794346530	cmd	Trentlin	34	30247	hyrule.are	standing	67	0	-	east		Alas, you cannot go that way.	-	-
+1794346532	cmd	Trentlin	34	30247	hyrule.are	standing	67	0	-	wear	dod	You stop using the stepladder. // You wear a pair of Dodongo stompers on your feet.	-	-
+1794346544	cmd	Trentlin	34	30263	hyrule.are	standing	67	0	-	north		Eastern Cliffs //   The land ends abruptly at a line of rocky cliffs above the sea, and salt // spray drifts up on a cool wind. Gulls wheel and cry overhead while waves	-	+
+1794346544	cmd	Trentlin	34	30279	hyrule.are	standing	67	0	-	north		Lake Hylia, Eastern Dock //   A wooden dock reaches out into Lake Hylia from the eastern shore, and // across the water to the north a small green island sits alone. The water is	-	+
+1794346545	cmd	Trentlin	34	30278	hyrule.are	standing	67	0	-	west		The Octorok Banks //   The grassy bank slopes gently to the water's edge, scattered with spat // stones of red and blue and the round, stubby prints of things that scuttle	-	+
+1794346545	cmd	Trentlin	34	30294	hyrule.are	standing	67	0	-	north		Lake Hylia, Northeast Shore //   The shore curves here around a broad sweep of Lake Hylia, the water deep // and dark close to the bank. Bubbles rise now and then from beneath the	-	+
+1794346552	cmd	Trentlin	34	30293	hyrule.are	standing	67	0	-	west		Lake Hylia, North Shore //   Green grass runs down to the lake's northern shore, where small waves lap // at a strip of pebbles. Spat stones lie scattered on the turf. A low rock	-	+
+1794346555	cmd	Trentlin	34	30293	hyrule.are	standing	67	0	-	push	statue	I see no statue here.	-	-
+1794346565	cmd	Trentlin	34	30293	hyrule.are	standing	67	0	-	push	rock	I see no rock here.	-	-
+1794346570	cmd	Trentlin	34	30293	hyrule.are	standing	67	0	-	push	stone	I see no stone here.	-	-
+1794346573	cmd	Trentlin	34	30293	hyrule.are	standing	67	0	-	open	secret	I see no secret here.	-	-
+1794346588	cmd	Trentlin	34	30309	hyrule.are	standing	67	0	-	north		The Heavy Boulder //   A small high meadow is ringed by boulders, and one of them sits a little // apart from the rest, squarer and heavier, with a scraped track in the earth	-	+
+1794346588	cmd	Trentlin	34	30308	hyrule.are	standing	67	0	-	west		Lone Armos Ridge //   A single weathered stone soldier stands guard on this narrow ridge, its // carved face worn smooth by the wind and its spear chipped at the point.	-	+
+1794346593	cmd	Trentlin	34	30308	hyrule.are	standing	67	0	-	push	statue	You push a sleeping Armos statue. // A previously hidden door mysteriously opens. // You hear a strange noise off in the distance.	-	-
+1794346594	cmd	Trentlin	34	30308	hyrule.are	standing	67	0	-	look		Lone Armos Ridge //   A single weathered stone soldier stands guard on this narrow ridge, its // carved face worn smooth by the wind and its spear chipped at the point.	-	+
+1794346595	cmd	Trentlin	34	30333	hyrule.are	standing	67	0	-	down		The Statue's Undercroft //   Grit and broken stone from the Armos base sprinkle the steep stair down // into this narrow chamber, and the scrape of the statue sliding aside still	-	+
+1794346597	cmd	Trentlin	34	30333	hyrule.are	standing	67	0	-	list		You can't do that here.	-	-
+1794346626	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	up		Lone Armos Ridge //   A single weathered stone soldier stands guard on this narrow ridge, its // carved face worn smooth by the wind and its spear chipped at the point.	-	+
+1794346628	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	consider	sta	An Armos knight is a little below your level. // An Armos knight has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring an Armos knight down; it would need about 7 rounds for you.	-	+
+1794346629	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	consider	kn	An Armos knight is a little below your level. // An Armos knight has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring an Armos knight down; it would need about 7 rounds for you.	-	+
+1794346635	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-

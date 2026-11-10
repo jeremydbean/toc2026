@@ -15,3 +15,9 @@
 1794346303	got	Trentlin	34	1	Monk 	30686	over	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=buy
 1794346320	leave	Trentlin	34	1	Monk 	30323	over	to=L5 how=down secs=52 hp=80
 1794346320	enter	Trentlin	34	1	Monk 	30476	L5	from=over how=down hp=80
+1794346383	cleared	Trentlin	34	1	Monk 	30480	L5	foes=0
+1794346397	got	Trentlin	34	1	Monk 	30480	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794346454	leave	Trentlin	34	1	Monk 	30476	L5	to=over how=up secs=134 hp=62
+1794346454	enter	Trentlin	34	1	Monk 	30323	over	from=L5 how=up hp=62
+1794346455	leave	Trentlin	34	1	Monk 	30323	over	to=out how=recall secs=1 hp=62
+1794346474	enter	Trentlin	34	1	Monk 	30200	over	from=out how=(walkto_update) hp=62
