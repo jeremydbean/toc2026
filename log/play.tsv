@@ -20490,3 +20490,20 @@
 1794347528	cmd	Trentlin	34	4208	dresden.are	standing	19	0	-	look	in pit	The donation pit contains: //      Nothing.	-	-
 1794347531	cmd	Trentlin	34	4208	dresden.are	standing	19	0	-	where	hermie	You didn't find any hermie.	-	-
 1794347533	cmd	Trentlin	34	4208	dresden.are	standing	19	0	-	help	hermie	BUFF HERMIE // Syntax: heal //         heal <spell>	-	+
+1794347565	cmd	Trentlin	34	4208	dresden.are	standing	19	0	-	help	spellup	No help on that word.  Did you mean: SPELLS?	-	-
+1794347573	cmd	Trentlin	34	4208	dresden.are	standing	19	0	-	help	herbie	Herbie, the wonder angel, will at odd times come to your aid and cure you of // all your wounds. He's not something to be relied on though. // See also: HEAL, GODS	-	-
+1794347579	cmd	Trentlin	34	4208	dresden.are	standing	19	0	-	help	gods	GOD GODS IMMORTAL IMMORTALS STAFF WIZLIST // The immortals are the people who run Times of Chaos.  WIZLIST names them. // They may be in the game unseen, so WHO does not always show them.	-	+
+1794347590	cmd	Trentlin	34	4208	dresden.are	standing	22	0	-	wizlist		No immortals listed at this time.	-	-
+1794347594	cmd	Trentlin	34	4208	dresden.are	standing	22	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794347596	cmd	Trentlin	34	4207	dresden.are	standing	22	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794347598	cmd	Trentlin	34	4204	dresden.are	standing	22	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794347598	cmd	Trentlin	34	4211	dresden.are	standing	22	0	-	north		Entrance to the inner Sanctum. //   This door is guarded by a very large warrior dressed in white robes and // wielding a two-handed sword.	-	+
+1794347599	cmd	Trentlin	34	4211	dresden.are	standing	22	0	-	north		The Templar of Devota stands immovable before you blocking your way.	-	-
+1794347602	cmd	Trentlin	34	4211	dresden.are	standing	22	0	-	consider	tem	Templar of Devota is well above your level. // Templar of Devota has several times your hit points. // Blow for blow, you would need about 12 rounds to bring Templar of Devota down; he would need about 2 rounds for you.	-	+
+1794347607	cmd	Trentlin	34	4204	dresden.are	standing	22	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794347608	cmd	Trentlin	34	4203	dresden.are	standing	22	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794347609	cmd	Trentlin	34	4210	dresden.are	standing	22	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794347609	cmd	Trentlin	34	4210	dresden.are	standing	22	0	-	north		Alas, you cannot go that way.	-	-
+1794347611	cmd	Trentlin	34	4210	dresden.are	standing	22	0	-	help	haste	HASTE // Syntax: cast haste <character> // This spell causes the target character to move more quickly.  However, it	-	+
+1794347620	cmd	Trentlin	34	4210	dresden.are	standing	22	0	-	sleep		You go to sleep.	-	-
+1794347621	session	Trentlin	34	4210	dresden.are	quit	2054s	+1 levels	+1845 exp	-13419383 copper	16 kills	0 deaths	2 quests	735 commands	5 refused	coin: loot 4p 89g 60s 1c, quests 9p 73g 46s 16c, spent 28p 55g	spent on: heal 27p 95g, buy 60g	exp: kills +1860, skilluse +20, flee -10, recall -25
