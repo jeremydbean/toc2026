@@ -282413,3 +282413,80 @@ Tue Nov 10 01:00:41 2026 :: Log Trentlin [2043]: w
 Tue Nov 10 01:00:41 2026 :: Log Trentlin [2042]: arrived (Mist cavern) from 2043
 Tue Nov 10 01:00:43 2026 :: Log Trentlin [2042]: sca
 Tue Nov 10 01:00:44 2026 :: Log Trentlin [2042]: ex
+Tue Nov 10 01:00:46 2026 :: Log Trentlin [2042]: w
+Tue Nov 10 01:00:46 2026 :: Log Trentlin [2041]: arrived (Misty cavern) from 2042
+Tue Nov 10 01:00:46 2026 :: Log Trentlin [2041]: ex
+Tue Nov 10 01:00:47 2026 :: Log Trentlin [2041]: w
+Tue Nov 10 01:00:47 2026 :: Log Trentlin [2040]: arrived (Misty cavern) from 2041
+Tue Nov 10 01:00:47 2026 :: Log Trentlin [2040]: ex
+Tue Nov 10 01:00:49 2026 :: Log Trentlin [2040]: s
+Tue Nov 10 01:00:49 2026 :: Log Trentlin [2048]: arrived (Twisty cavern) from 2040
+Tue Nov 10 01:00:50 2026 :: Log Trentlin [2048]: ex
+Tue Nov 10 01:01:11 2026 :: Log Trentlin [2048]: east
+Tue Nov 10 01:01:11 2026 :: Log Trentlin [2049]: arrived (Striped tunnel) from 2048
+Tue Nov 10 01:01:11 2026 :: Log Trentlin [2049]: east
+Tue Nov 10 01:01:11 2026 :: Log Trentlin [2050]: arrived (Prism cave) from 2049
+Tue Nov 10 01:01:11 2026 :: Log Trentlin [2050]: north
+Tue Nov 10 01:01:11 2026 :: Log Trentlin [2044]: arrived (Huge multicolored tunnel) from 2050
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2044]: north
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2034]: arrived (Intersection of caverns) from 2044
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2034]: east
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2035]: arrived (Entrance to the burial grounds) from 2034
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2035]: east
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2036]: arrived (The burial grounds) from 2035
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2036]: east
+Tue Nov 10 01:01:12 2026 :: Log Trentlin [2037]: arrived (The burial grounds) from 2036
+Tue Nov 10 01:01:13 2026 :: Log Trentlin [2037]: east
+Tue Nov 10 01:01:13 2026 :: Log Trentlin [2038]: arrived (The burial grounds) from 2037
+Tue Nov 10 01:01:14 2026 :: Log Trentlin [2038]: w
+Tue Nov 10 01:01:14 2026 :: Log Trentlin [2037]: arrived (The burial grounds) from 2038
+Tue Nov 10 01:01:15 2026 :: Log Trentlin [2037]: get all
+Tue Nov 10 01:01:16 2026 :: Log Trentlin [2037]: reca
+Tue Nov 10 01:01:16 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2037
+Tue Nov 10 01:01:17 2026 :: Log Trentlin [4207]: e
+Tue Nov 10 01:01:17 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 10 01:01:17 2026 :: Log Trentlin [4202]: e
+Tue Nov 10 01:01:17 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 10 01:01:17 2026 :: Log Trentlin [4201]: e
+Tue Nov 10 01:01:17 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov 10 01:01:17 2026 :: Log Trentlin [2427]: e
+Tue Nov 10 01:01:18 2026 :: Log Trentlin [2427]: e
+Tue Nov 10 01:01:18 2026 :: Log Trentlin [2427]: n
+Tue Nov 10 01:01:18 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov 10 01:01:18 2026 :: Log Trentlin [2404]: n
+Tue Nov 10 01:01:18 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov 10 01:01:19 2026 :: Log Trentlin [2401]: u
+Tue Nov 10 01:01:19 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov 10 01:01:19 2026 :: Log Trentlin [2410]: u
+Tue Nov 10 01:01:19 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov 10 01:01:19 2026 :: Log Trentlin [2411]: u
+Tue Nov 10 01:01:19 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov 10 01:01:20 2026 :: Log Trentlin [2414]: u
+Tue Nov 10 01:01:20 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Nov 10 01:01:20 2026 :: Log Trentlin [2497]: u
+Tue Nov 10 01:01:23 2026 :: Log Trentlin [2497]: aquest complete
+Tue Nov 10 01:01:23 2026 :: Log Trentlin [2497]: copper +3795888
+Tue Nov 10 01:01:23 2026 :: Log Trentlin [2497]: quest complete: 3p 79g 58s 88c, 47 quest points (streak bonus 149%)
+Tue Nov 10 01:01:23 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261110_010123.quest (PRESTORE Trentlin to see it).
+Tue Nov 10 01:01:26 2026 :: Log Trentlin [2497]: aquest gamble yes
+Tue Nov 10 01:01:27 2026 :: Log Trentlin [2497]: reca
+Tue Nov 10 01:01:27 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2497
+Tue Nov 10 01:01:28 2026 :: Log Trentlin [4207]: e
+Tue Nov 10 01:01:28 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 10 01:01:30 2026 :: Log Trentlin [4202]: w
+Tue Nov 10 01:01:30 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Tue Nov 10 01:01:30 2026 :: Log Trentlin [4207]: s
+Tue Nov 10 01:01:30 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4207
+Tue Nov 10 01:01:31 2026 :: Log Trentlin [4205]: s
+Tue Nov 10 01:01:31 2026 :: Log Trentlin [4209]: arrived (Private Prayer Room.) from 4205
+Tue Nov 10 01:01:31 2026 :: Log Trentlin [4209]: s
+Tue Nov 10 01:01:31 2026 :: Log Trentlin [4209]: s
+Tue Nov 10 01:01:32 2026 :: Log Trentlin [4209]: sleep
+Tue Nov 10 01:01:33 2026 :: Treasure goblin: vanished from room 9557 (Underground, newthalo.are) (too long in one area).
+Tue Nov 10 01:01:35 2026 :: Log Trentlin [4209]: sk
+Tue Nov 10 01:01:42 2026 :: Log Trentlin [4209]: gain list
+Tue Nov 10 01:01:44 2026 :: Log Trentlin [4209]: gainlist
+Tue Nov 10 01:01:55 2026 :: Log Trentlin [4209]: sco
+Tue Nov 10 01:02:01 2026 :: Log Trentlin [4209]: quit
+Tue Nov 10 01:02:01 2026 :: Trentlin has quit.
+Tue Nov 10 01:02:01 2026 :: [QUIT] Player rejoined the real world.
