@@ -20096,3 +20096,68 @@
 1794346628	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	consider	sta	An Armos knight is a little below your level. // An Armos knight has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring an Armos knight down; it would need about 7 rounds for you.	-	+
 1794346629	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	consider	kn	An Armos knight is a little below your level. // An Armos knight has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring an Armos knight down; it would need about 7 rounds for you.	-	+
 1794346635	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794346643	cmd	Trentlin	34	30308	hyrule.are	standing	69	0	-	kill	kn	Your punch ^^^ DESTROYS ^^^ an Armos knight! // Your punch MUTILATES an Armos knight!	-	-
+1794346649	cmd	Trentlin	34	30308	hyrule.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Armos knight! // Your fists of fury grazes an Armos knight.	-	+
+1794346657	cmd	Trentlin	34	30308	hyrule.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches an Armos knight. // Your fists of fury injures an Armos knight.	-	+
+1794346663	cmd	Trentlin	34	30308	hyrule.are	fighting	60	0	fight	nerve		You missed the nerve. // Your nerve pinch hits an Armos knight.	-	-
+1794346666	cmd	Trentlin	34	30308	hyrule.are	fighting	60	0	fight	nerve		You jab an Armos knight with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates an Armos knight!	-	-
+1794346672	cmd	Trentlin	34	30308	hyrule.are	fighting	60	0	fight	nerve		You jab an Armos knight with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates an Armos knight!	-	-
+1794346675	cmd	Trentlin	34	30308	hyrule.are	fighting	53	0	fight	nerve		You jab an Armos knight with wedged fingers, paralyzing a nerve. // Your nerve pinch maims an Armos knight!	-	-
+1794346680	cmd	Trentlin	34	30308	hyrule.are	standing	55	0	-	look	in cor	Corpse of an Armos knight contains: //      Nothing.	-	-
+1794346682	cmd	Trentlin	34	30308	hyrule.are	standing	55	0	-	sacrifice	co	The Gods give you 64 copper coins for your sacrifice.	-	-
+1794346682	cmd	Trentlin	34	30308	hyrule.are	standing	55	0	-	look		Lone Armos Ridge //   A single weathered stone soldier stands guard on this narrow ridge, its // carved face worn smooth by the wind and its spear chipped at the point.	-	+
+1794346684	cmd	Trentlin	34	30324	hyrule.are	standing	55	0	-	north		The Candle Merchant's Hollow //   A dip among the high boulders shelters a cave mouth from the worst of the // wind. A whiff of tallow and lamp smoke hangs at the entrance, where candles	-	+
+1794346685	cmd	Trentlin	34	30684	hyrule.are	standing	55	0	-	down		The Lampsmoke Cave //   Soot from years of lamp smoke has blackened the ceiling of this cave so // thoroughly that it looks like night overhead. Dust from the hollow is	-	+
+1794346687	cmd	Trentlin	34	30684	hyrule.are	standing	55	0	-	list		[Lv Price] Item // [ 5        60g] a Blue Candle. // [ 1         1p] a small key.	-	+
+1794346691	cmd	Trentlin	34	30324	hyrule.are	standing	55	0	-	up		The Candle Merchant's Hollow //   A dip among the high boulders shelters a cave mouth from the worst of the // wind. A whiff of tallow and lamp smoke hangs at the entrance, where candles	-	+
+1794346693	cmd	Trentlin	34	30308	hyrule.are	standing	55	0	-	south		Lone Armos Ridge //   A single weathered stone soldier stands guard on this narrow ridge, its // carved face worn smooth by the wind and its spear chipped at the point.	-	+
+1794346694	cmd	Trentlin	34	30307	hyrule.are	standing	55	0	-	west		The Lost Hills //   Brown hills rise and fall in every direction here, each fold of ground so // like the last that the eye loses its place among them. The wind moans	-	+
+1794346695	cmd	Trentlin	34	30306	hyrule.are	standing	55	0	-	west		The Springing Hills //   Rolling brown hills begin here, each one shaped so much like the last that // the eye loses its place among them, the ground dented with paired springing	-	+
+1794346697	cmd	Trentlin	34	30331	hyrule.are	standing	55	0	-	down		The Cave Behind the Falls //   The roar of the waterfall fills this cave, muffled only a little by the // curtain of water across its mouth, and spray mists the first few yards of	-	+
+1794346698	cmd	Trentlin	34	30331	hyrule.are	standing	55	0	-	list		You can't do that here.	-	-
+1794346702	cmd	Trentlin	34	30306	hyrule.are	standing	55	0	-	up		The Springing Hills //   Rolling brown hills begin here, each one shaped so much like the last that // the eye loses its place among them, the ground dented with paired springing	-	+
+1794346705	cmd	Trentlin	34	30253	hyrule.are	standing	55	0	-	play	recorder 4	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Isle of the Snake	-	+
+1794346710	cmd	Trentlin	34	30323	hyrule.are	standing	55	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794346713	cmd	Trentlin	34	30323	hyrule.are	standing	55	0	-	consider	pea	They're not here.	-	-
+1794346716	cmd	Trentlin	34	30476	hyrule.are	standing	55	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794346717	cmd	Trentlin	34	30480	hyrule.are	standing	55	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794346717	cmd	Trentlin	34	30480	hyrule.are	standing	55	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794346718	cmd	Trentlin	34	30480	hyrule.are	standing	55	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794346718	cmd	Trentlin	34	30480	hyrule.are	standing	55	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794346720	cmd	Trentlin	34	30480	hyrule.are	standing	55	0	-	kill	gib	A gibdo parries your attack. // Your punch <<< ERADICATES >>> a gibdo!	-	-
+1794346726	cmd	Trentlin	34	30480	hyrule.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a gibdo. // Your fists of fury injures a gibdo.	-	+
+1794346732	cmd	Trentlin	34	30480	hyrule.are	standing	33	0	-	fists		Who do you want to attack?	-	-
+1794346734	cmd	Trentlin	34	30480	hyrule.are	standing	33	0	-	get	key	You get a small key.	-	-
+1794346735	cmd	Trentlin	34	30483	hyrule.are	standing	33	0	-	north		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
+1794346736	cmd	Trentlin	34	30483	hyrule.are	standing	33	0	-	north		The locked is closed.	-	-
+1794346737	cmd	Trentlin	34	30484	hyrule.are	standing	33	0	-	east		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794346739	cmd	Trentlin	34	30486	hyrule.are	standing	33	0	-	north		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794346740	cmd	Trentlin	34	30488	hyrule.are	standing	33	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794346740	cmd	Trentlin	34	30492	hyrule.are	standing	33	1	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794346741	cmd	Trentlin	34	30492	hyrule.are	standing	33	0	-	north		Alas, you cannot go that way.	-	-
+1794346742	cmd	Trentlin	34	30492	hyrule.are	standing	33	0	-	west		The locked is closed.	-	-
+1794346743	cmd	Trentlin	34	30492	hyrule.are	standing	33	0	-	open	west	It's locked.	-	-
+1794346745	cmd	Trentlin	34	30492	hyrule.are	standing	33	0	-	get	key	You get a small key.	-	-
+1794346747	cmd	Trentlin	34	30492	hyrule.are	standing	33	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794346748	cmd	Trentlin	34	30492	hyrule.are	standing	33	0	-	open	west	Ok.	-	-
+1794346748	cmd	Trentlin	34	30492	hyrule.are	standing	33	0	-	scan		a red darknut                      -to the South. // a gibdo                            -to the West.	-	-
+1794346750	cmd	Trentlin	34	30491	hyrule.are	standing	33	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794346751	cmd	Trentlin	34	30491	hyrule.are	standing	33	0	-	scan		a gibdo                            -to the East. // a keese                            -to the East. // a pols voice                       -to the West.	-	-
+1794346753	cmd	Trentlin	34	30490	hyrule.are	standing	33	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794346754	cmd	Trentlin	34	30490	hyrule.are	standing	33	0	-	scan		a gibdo                            -to the East.	-	-
+1794346758	cmd	Trentlin	34	30490	hyrule.are	standing	33	0	-	open	west	It's locked.	-	-
+1794346759	cmd	Trentlin	34	30490	hyrule.are	standing	33	0	-	consider	po	A pols voice is a little below your level. // A pols voice has about as many hit points as you. // Blow for blow, you would need about 4 rounds to bring a pols voice down; it would need about 4 rounds for you.	-	+
+1794346766	cmd	Trentlin	34	30490	hyrule.are	standing	33	0	-	sleep		You go to sleep.	-	-
+1794346767	cmd	Trentlin	34	30490	hyrule.are	sleeping	33	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          248/ 738 hp 1037/1474 mana  335/ 386 mv 79218 xp	-	-
+1794346794	cmd	Trentlin	34	30490	hyrule.are	sleeping	33	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          248/ 738 hp 1037/1474 mana  335/ 386 mv 79218 xp	-	-
+1794346796	cmd	Trentlin	34	30490	hyrule.are	sleeping	41	0	-	who		[34 Dwarf   Monk  ] Trentlin the Master of Autumn // Players found: 1	-	-
+1794346800	cmd	Trentlin	34	30490	hyrule.are	sleeping	41	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794346810	cmd	Trentlin	34	30490	hyrule.are	sleeping	41	0	-	inventory		You are carrying: // ( 6) a small key //      12 bombs	-	+
+1794346822	cmd	Trentlin	34	30490	hyrule.are	sleeping	41	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          303/ 738 hp 1102/1474 mana  386/ 386 mv 79218 xp	-	-
+1794346825	cmd	Trentlin	34	30490	hyrule.are	sleeping	41	0	-	worth		You have 1 platinum, 101 gold, 159 silver, 558 copper // and 79218 experience (1282 exp to level).	-	-
+1794346895	cmd	Trentlin	34	30490	hyrule.are	sleeping	48	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          358/ 738 hp 1147/1474 mana  386/ 386 mv 79218 xp	-	-
+1794346897	cmd	Trentlin	34	30490	hyrule.are	sleeping	48	0	-	wake		You wake and stand up.	-	-
+1794346897	cmd	Trentlin	34	30490	hyrule.are	standing	48	0	-	look		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794346899	cmd	Trentlin	34	30490	hyrule.are	standing	48	0	-	steel		You lost your concentration.	-	-
+1794346902	cmd	Trentlin	34	30490	hyrule.are	standing	48	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794346907	cmd	Trentlin	34	30490	hyrule.are	standing	48	0	-	sleep		You go to sleep.	-	-
