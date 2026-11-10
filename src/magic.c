@@ -938,6 +938,27 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
     }
 
+    /* What Hyrule's creatures refuse -- a charm, a bottle -- is refused
+       here, before the mana and before the creature is provoked: the
+       spells themselves refuse too (for scrolls and wands), but a refused
+       offensive cast still turned the guardian on the caster (review,
+       2026-11-10). */
+    if ( victim != NULL && victim != ch && IS_NPC(victim) && hyrule_native( victim ) )
+    {
+	if ( skill_table[sn].spell_fun == spell_charm_person )
+	{
+	    act( "$N's will belongs to Hyrule; your charm finds no hold on it.",
+		 ch, NULL, victim, TO_CHAR );
+	    return;
+	}
+	if ( skill_table[sn].spell_fun == spell_trap_the_soul_fixed )
+	{
+	    act( "$N's soul is bound to Hyrule; no bottle will hold it.",
+		 ch, NULL, victim, TO_CHAR );
+	    return;
+	}
+    }
+
     if ( !IS_NPC(ch) && ch->mana < mana )
     {
 	send_to_char( "You don't have enough mana.\n\r", ch );

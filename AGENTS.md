@@ -1034,6 +1034,18 @@ DOOR BASH stop at a locked Hyrule door. Lending a dungeon tool and leaving
 a dungeon by PORTAL or ASTRAL WALK are allowed (owner, 2026-11-10).
 `tests/test_hyrule_audit_nov10.py`.
 
+**A mobile is never a corpse's owner, and nothing of Hyrule's is bottled**
+(review, 2026-11-10). `get_obj`'s bound-item guard asks every actor but
+staff, a mobile included: a charmed follower ORDERed to GET took a piece
+from an offline player's corpse, and its own NPC corpse -- which the
+guard does not look at -- then held it for anybody. A corpse rotting in
+its owner's keeping is found through its containers
+(`corpse_rots_with_owner` in `update.c`), so one in its owner's pack
+keeps their bound things. TRAP THE SOUL refuses `hyrule_native` victims,
+and CAST refuses it and CHARM PERSON on them before the mana and before
+the provocation that follows any offensive cast (`do_cast`).
+`tests/test_hyrule_review_nov10b.py`, `tests/test_corpse_bound_decay.py`.
+
 **The last two guardians are group fights, by balance, not by rule**
 (owner, 2026-10-28: the ashen Gleeok needs two average high-level
 players, Ganon three, and "one person CAN try" -- a party rule that
@@ -1830,7 +1842,13 @@ the character's from `create_mobile` on, so a file abandoned mid-pet
 leaves it to `free_char`; and a pet whose mobile and stand-in
 (`MOB_VNUM_FIDO`) are both missing is left out instead of reaching
 `create_mobile(NULL)`, which exited. `tests/test_player_file_refusal.py`
-(also under the sanitizers).
+(also under the sanitizers). **One Nest a record, and nothing nested in
+itself** (review, 2026-11-10): a second Nest pointed two slots at the
+unfinished object, which became its own container, and the carry-weight
+walk up its `in_obj` chain hung the game at that player's name. A
+repeated Nest refuses the character before any slot moves, and
+`fread_obj_nest_cycles` refuses a container chain that reaches the object
+(readers with no trap keep the first Nest and the object loose).
 
 **Only proven absence is a new character, and only a whole file is the
 character** (review, 2026-11-09). A failed `fopen` was taken for "no such

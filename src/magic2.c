@@ -4888,6 +4888,17 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
   bool found=false;
   char buf[MAX_STRING_LENGTH];
 
+      /* Nothing of Hyrule's is bottled (review, 2026-11-10): a guardian
+         went with its key, its shutters read the room as clear, no
+         clear-room reward came, and the bottle let a copy loose anywhere.
+         Said before the roll, as charm says it. */
+      if ( IS_NPC(victim) && hyrule_native( victim ) )
+      {
+        act( "$N's soul is bound to Hyrule; no bottle will hold it.",
+             ch, NULL, victim, TO_CHAR );
+        return;
+      }
+
       /* is_protected_npc too: the training dummy stands in an arena, which
          is_safe_spell waves through, and bottling it carried it out of the
          yard; a quest master or a no-kill mobile bottled is gone, and a

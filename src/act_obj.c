@@ -227,15 +227,17 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
        takes it from their corpse, or the corpse holding it, or a bag in
        the corpse that holds it, whatever can_loot allows (audit,
        2026-11-10: a level 20 looted a quit player's second shard and the
-       Master Sword, and their achievements with them). */
-    if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL) && hyrule_holds_bound( obj ) )
+       Master Sword, and their achievements with them). A mobile is never
+       the owner: a charmed follower ORDERed to GET took it, and its own
+       corpse, an NPC's, then held it for anybody (review, 2026-11-10). */
+    if ( !IS_TRUSTED(ch, LEVEL_IMMORTAL) && hyrule_holds_bound( obj ) )
     {
 	OBJ_DATA *top = container != NULL ? container : obj;
 
 	while ( top->in_obj != NULL )
 	    top = top->in_obj;
 	if ( top->item_type == ITEM_CORPSE_PC
-	&&   ( top->owner == NULL || str_cmp( top->owner, ch->name ) ) )
+	&&   ( IS_NPC(ch) || top->owner == NULL || str_cmp( top->owner, ch->name ) ) )
 	{
 	    act( "$p is bound to the one who fell; it will not come to you.",
 		 ch, obj, NULL, TO_CHAR );

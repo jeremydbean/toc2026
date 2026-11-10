@@ -8,6 +8,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Reviews of 9af710db and 29e558ff** (2026-11-10). An object record
+  with two Nest keys made the object its own container and hung the game
+  at that player's name; it refuses the character now, before any slot
+  moves, and no object may be nested inside itself
+  (`tests/test_player_file_refusal.py`). A corpse rotting in its owner's
+  pack keeps their bound Hyrule things -- the owner check now follows the
+  corpse's containers (`tests/test_corpse_bound_decay.py`). A charmed
+  follower can no longer take a bound Hyrule object from a player's corpse
+  for its master, and TRAP THE SOUL and CHARM PERSON are refused on
+  Hyrule's creatures before costing anything or provoking them
+  (`tests/test_hyrule_review_nov10b.py`). The Hyrule report's medians are
+  true medians (`tools/log_report.py`). `test_travel_targets` reads the
+  room arrived in through staff instead of the traveller's first line,
+  which a fight at Cepheus's had filled (CI, 2026-11-10).
 - **Hyrule is dark only where it fits the room** (owner, 2026-11-10).
   All 246 dungeon rooms and 66 caves were generated ROOM_DARK whatever
   their prose said. Darkness is now `"dark": true` in

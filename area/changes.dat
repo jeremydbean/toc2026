@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261110d 2026-11-10
+Hyrule's creatures cannot be bottled with TRAP THE SOUL, and asking costs
+no mana and starts no fight. A pet or charmed follower cannot fetch a
+fallen player's Triforce piece or other bound gear for you. A corpse you
+carry in your own pack keeps your bound gear when it rots.
+
 @ 20261110c 2026-11-10
 Hyrule's dungeons and caves are no longer pitch dark throughout. A room is
 dark only where it fits: the Seeping Gallery, the way to the Lion's
