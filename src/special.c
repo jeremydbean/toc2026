@@ -517,7 +517,9 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  *   - Out of a fight he heals a tenth of his health each pulse, so the
  *     Silver Arrow's tenths cannot be banked by running out to rest and
  *     coming back. Not once he has collapsed: a stunned Ganon (one hit
- *     point and AFF2_NO_RECOVER) stays down for the finishing shot.
+ *     point and HYRULE_GANON_STUNNED in his hyrule_state -- never a bare
+ *     AFF2_NO_RECOVER, which NERVE DAMAGE and NIGHTMARE lay too) stays down
+ *     for the finishing shot.
  *
  * The numbers must match scripts/build_hyrule_area.py's BOSS_VOLLEYS.
  * They were 1,400-1,900, which nobody met until his hit points stopped
@@ -592,7 +594,7 @@ bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     /* Stunned at one hit point he stays there: a heal or cure cast on him
        lifted him above it with the stun's mark still on him, so he could
        be neither shot nor wounded back down -- and never regenerated. */
-    if ( IS_AFFECTED2(mob, AFF2_NO_RECOVER) && mob->hit > 1 )
+    if ( mob->hyrule_state == HYRULE_GANON_STUNNED && mob->hit > 1 )
     {
 	mob->hit = 1;
 	stop_fighting( mob, true );
@@ -602,6 +604,7 @@ bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     if ( mob->fighting == NULL || mob->position != POS_FIGHTING )
     {
 	if ( mob->position > POS_STUNNED
+	&&   mob->hyrule_state != HYRULE_GANON_STUNNED
 	&&   !IS_AFFECTED2(mob, AFF2_NO_RECOVER)
 	&&   mob->hit < mob->max_hit )
 	{

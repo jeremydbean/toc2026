@@ -701,8 +701,17 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("hastens you", lore)
 
     def test_every_dungeon_runs_key_door_chest(self) -> None:
-        """Kill the guardian, take its key, unlock the door behind it,
-        unlock the chest there: the piece and the treasure are inside."""
+        """Kill the guardian and its key is handed to each player the kill
+        credits, bound (owner, 2026-11-10: a guardian carried one key, which
+        could be lent past a living guardian); it unlocks the door behind
+        it and the chest there, whose piece and treasure it claims."""
+        hyrule_c = Path("src/hyrule.c").read_text(encoding="latin-1")
+        keys_c = hyrule_c.split("int hyrule_guardian_key( int level )", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("return 30629 + level;", keys_c)
+        self.assertEqual({level: 30629 + level for level in range(1, 9)},
+                         {level: BOSS_KEYS[level] for level in range(1, 9)})
+        self.assertIn("OBJ_VNUM_HYRULE_GOLDEN_KEY", keys_c)
+        self.assertEqual(BOSS_KEYS[9], 30243)
         fight = Path("src/fight.c").read_text(encoding="latin-1")
         self.assertIn("!IS_HYRULE_BOSS_KEY(obj->pIndexData->vnum)", fight,
                       "a guardian's key must not crumble in the corpse")
@@ -718,8 +727,9 @@ class HyruleProgressionTests(unittest.TestCase):
             goal = self.parser.rooms[dungeon["goal_vnum"]]
             chest = self.parser.objects[chest_vnum]
             with self.subTest(level=level):
-                self.assertIn(key, boss.drops)
+                self.assertNotIn(key, boss.drops, "no key to loot or lend")
                 self.assertEqual(self.parser.objects[key].item_type, "18")
+                self.assertIn("H", self.parser.objects[key].extra_flags, "bound: NODROP")
                 for flag in "NPR":   # inventory, rot-death, meltdrop
                     self.assertNotIn(flag, self.parser.objects[key].extra_flags)
                 # The door between the lair and the treasure room, both ways.
@@ -1017,7 +1027,7 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn('{ "spec_ganon",             spec_ganon              }', special)
         spec = special.split("bool spec_ganon(", 1)[1].split("\nbool ", 1)[0]
         self.assertIn("DAM_FIRE", spec)
-        self.assertIn("AFF2_NO_RECOVER", spec, "a collapsed Ganon must not heal")
+        self.assertIn("HYRULE_GANON_STUNNED", spec, "a collapsed Ganon must not heal")
         self.assertIn("can_see( mob, victim )", special.split("static bool ganon_may_target", 1)[1],
                       "a melded character is never a target")
 
@@ -1490,7 +1500,8 @@ class HyruleProgressionTests(unittest.TestCase):
         level_nine = self.dungeons[9]
         ganon = self.parser.mobiles[30225]
         self.assertIn(level_nine["boss_vnum"], ganon.spawn_rooms)
-        self.assertIn(30243, ganon.drops)
+        # Handed to each player the kill credits, not carried (2026-11-10).
+        self.assertNotIn(30243, ganon.drops)
         boss_room = self.parser.rooms[level_nine["boss_vnum"]]
         golden_exit = next(
             exit_data for exit_data in boss_room.exits if exit_data.to_room == level_nine["goal_vnum"]

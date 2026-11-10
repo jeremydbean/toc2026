@@ -320,7 +320,22 @@ class HyruleMechanicsSourceTests(unittest.TestCase):
         """A heal lifted him above one hit point with the stun's mark kept:
         neither shootable nor regenerating, for good."""
         ganon = c_function(SPECIAL_C, "bool spec_ganon(")
-        self.assertIn("IS_AFFECTED2(mob, AFF2_NO_RECOVER) && mob->hit > 1", ganon)
+        # The phase is his own marker, which only reform_hyrule_ganon sets:
+        # a bare AFF2_NO_RECOVER is also NERVE DAMAGE's and NIGHTMARE's,
+        # and read as the phase it put him at full health into the
+        # Silver Arrow's finish (review, 2026-11-10).
+        self.assertIn("mob->hyrule_state == HYRULE_GANON_STUNNED && mob->hit > 1", ganon)
+        self.assertNotIn("IS_AFFECTED2(mob, AFF2_NO_RECOVER) && mob->hit > 1", ganon)
+        # Sliced, not brace-counted: his lines carry colour codes ({0C).
+        reform = FIGHT_C.split("static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )\n{",
+                               1)[1].split("\n}\n", 1)[0]
+        self.assertIn("victim->hyrule_state = HYRULE_GANON_STUNNED", reform)
+        stunned = FIGHT_C.split("static bool is_stunned_hyrule_ganon( CHAR_DATA *victim )\n{",
+                                1)[1].split("\n}\n", 1)[0]
+        self.assertIn("victim->hyrule_state == HYRULE_GANON_STUNNED", stunned)
+        self.assertNotIn("AFF2_NO_RECOVER", stunned)
+        self.assertEqual(sum(src.count("hyrule_state = HYRULE_GANON_STUNNED")
+                             for src in (FIGHT_C, SPECIAL_C)), 1, "set in one place")
 
     def test_manhandlas_heads_change_the_fight(self) -> None:
         """The heads left decide how many blows and how hard

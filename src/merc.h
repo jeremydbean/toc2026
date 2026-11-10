@@ -1577,6 +1577,14 @@ const char *default_prompt_text args( ( void ) );
 #define HYRULE_NPC_LAST            30449
 #define HYRULE_ZELDA_VNUM          30338
 #define HYRULE_PIECE_VNUM(level)   ( 30399 + (level) )
+/* Ganon's finishing phase, in his hyrule_state: set by reform_hyrule_ganon
+   alone. It was AFF2_NO_RECOVER, which NERVE DAMAGE and NIGHTMARE also
+   lay, so either put him at full health straight into the phase the
+   Silver Arrow finishes (review, 2026-11-10: confirmed live). */
+#define HYRULE_GANON_STUNNED       1
+#ifndef HYRULE_GANON_VNUM
+#define HYRULE_GANON_VNUM       30225
+#endif
 #define HYRULE_PIECE_FIRST_VNUM    30400
 #define HYRULE_PIECE_LAST_VNUM     30408
 /* Enemies are generated once per kind per band at TIER + kind * 10 +
@@ -3834,6 +3842,11 @@ bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
 bool    is_hyrule_bystander ( CHAR_DATA *victim );
 bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
 bool    hyrule_holds_bound ( const OBJ_DATA *obj );       /* hyrule.c */
+int     hyrule_guardian_key ( int level );
+void    hyrule_guardian_slain ( CHAR_DATA *killer, CHAR_DATA *guardian );
+bool    hyrule_chest_claim ( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container );
+bool    hyrule_progression_tool ( int vnum );
+bool    hyrule_tool_claim  ( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container );
 void    hyrule_destroy_bound_within ( OBJ_DATA *obj );
 
 /* hyrulelog.c: log/hyrule.tsv, Hyrule play for balance and trends */
@@ -3873,6 +3886,8 @@ int     hyrule_patra_eyes_left ( CHAR_DATA *mob );
 bool    hyrule_enemy_is_invincible ( CHAR_DATA *victim );
 bool    hyrule_foe             ( CHAR_DATA *victim );
 bool    hyrule_native          ( CHAR_DATA *victim );
+bool    hyrule_native_vnum     ( int vnum );
+ROOM_INDEX_DATA *random_room_candidate ( int attempt );
 void    hyrule_room_cleared    ( ROOM_INDEX_DATA *room, bool foe_died );
 void    hyrule_room_populated  ( ROOM_INDEX_DATA *room, CHAR_DATA *mob );
 bool    hyrule_set_bait        ( CHAR_DATA *ch, OBJ_DATA *bait );

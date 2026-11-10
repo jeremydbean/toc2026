@@ -360,7 +360,7 @@ static bool is_silver_arrow_finishing_hit( CHAR_DATA *ch, int dt )
 static bool is_stunned_hyrule_ganon( CHAR_DATA *victim )
 {
     return is_hyrule_ganon(victim) && victim->hit == 1
-        && IS_AFFECTED2(victim, AFF2_NO_RECOVER);
+        && victim->hyrule_state == HYRULE_GANON_STUNNED;
 }
 
 static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
@@ -370,6 +370,9 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
     already_stunned = is_stunned_hyrule_ganon( victim )
         && victim->position == POS_STUNNED;
     victim->hit = 1;
+    /* The phase is this marker, which nothing else sets; the bit keeps the
+       tick from healing him meanwhile, as it always did. */
+    victim->hyrule_state = HYRULE_GANON_STUNNED;
     SET_BIT( victim->affected_by2, AFF2_NO_RECOVER );
     victim->position = POS_STUNNED;
 
@@ -3575,7 +3578,11 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
          takes its coin from. */
       holiday_kill( ch, victim );
       if ( IS_NPC(victim) )
+      {
         hylog_guardian_down( ch, victim );          /* log/hyrule.tsv */
+        /* A guardian's key for each player the kill credits (hyrule.c). */
+        hyrule_guardian_slain( ch, victim );
+      }
       make_corpse( victim );
       if ( IS_NPC(victim) )
       {

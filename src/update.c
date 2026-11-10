@@ -731,6 +731,15 @@ int hit_gain( CHAR_DATA *ch )
     int gain;
     int number;
 
+    /* Ganon collapsed stays at his one hit point for the Silver Arrow:
+       his phase is his own marker, and an ordinary NO_RECOVER affect
+       wearing off (NERVE DAMAGE, NIGHTMARE) took the bit he also carries,
+       so the tick healed him out of it (review, 2026-11-10). */
+    if ( IS_NPC(ch) && ch->pIndexData != NULL
+    &&   ch->pIndexData->vnum == HYRULE_GANON_VNUM
+    &&   ch->hyrule_state == HYRULE_GANON_STUNNED )
+	return 0;
+
     if ( IS_NPC(ch) )
     {
 	gain =  5 + ch->level;

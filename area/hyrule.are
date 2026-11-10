@@ -4506,7 +4506,7 @@ silver arrow~
 a silver arrow~
 A single silver arrow lies here.~
 silver~
-5 ABGUV AN
+5 ABGHUV AN
 0 4 14 2 0
 54 1 50000000 P
 E
@@ -4551,7 +4551,7 @@ short bow~
 a short bow~
 A small bow lies here.~
 unknown~
-5 BV AN
+5 BHV AN
 9 2 5 6 0
 6 3 25000000 P
 #30223
@@ -4633,7 +4633,7 @@ small boomerang~
 a small boomerang~
 A small boomerang lies here.~
 unknown~
-5 AB AN
+5 ABH AN
 0 2 5 0 0
 4 2 0 P
 #30233
@@ -5936,7 +5936,7 @@ magical boomerang hyrule gear~
 the Magical Boomerang~
 The magical boomerang rests here, ready for another hero.~
 steel~
-5 G AN
+5 GH AN
 1 3 5 3 0
 12 9 36450000 P
 
@@ -5945,7 +5945,7 @@ raft wooden dungeon~
 the dungeon raft~
 A sturdy wooden raft waits to carry a hero over deep water.~
 wood~
-22 G A
+22 GH A
 0 0 0 0 0
 16 5 61250000 P
 
@@ -5954,7 +5954,7 @@ stepladder ladder dungeon~
 the stepladder~
 A compact stepladder bridges gaps no stride could cross.~
 wood~
-9 G AG
+9 GH AG
 6 6 6 4 0
 22 5 101250000 P
 
@@ -5963,7 +5963,7 @@ recorder whistle instrument~
 the Recorder~
 A little Recorder hums with a melody that moves water and monsters.~
 wood~
-9 G AO
+9 GH AO
 8 8 8 5 0
 30 5 145800000 P
 
@@ -5972,7 +5972,7 @@ red candle flame dungeon~
 the Red Candle~
 The Red Candle burns with a steady, reusable flame.~
 wax~
-1 G AO
+1 GH AO
 0 0 999 0 0
 42 2 120000000 P
 
@@ -5990,7 +5990,7 @@ magical key lion~
 the Magical Key~
 The Magical Key glows with the memory of every lock it has opened.~
 gold~
-8 G AO
+8 GH AO
 0 0 0 0 0
 48 1 66000000 P
 
@@ -10181,14 +10181,14 @@ key eagle guardian treasure~
 the Eagle's key~
 A heavy key with the mark of the Eagle on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 2 1 0 P
 E
 key eagle~
-The key the Eagle's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Eagle's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30641
 chest treasure moon~
@@ -10203,14 +10203,14 @@ key moon guardian treasure~
 the Moon's key~
 A heavy key with the mark of the Moon on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 8 1 0 P
 E
 key moon~
-The key the Moon's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Moon's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30642
 chest treasure manji~
@@ -10225,14 +10225,14 @@ key manji guardian treasure~
 the Manji's key~
 A heavy key with the mark of the Manji on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 14 1 0 P
 E
 key manji~
-The key the Manji's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Manji's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30643
 chest treasure snake~
@@ -10247,14 +10247,14 @@ key snake guardian treasure~
 the Snake's key~
 A heavy key with the mark of the Snake on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 20 1 0 P
 E
 key snake~
-The key the Snake's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Snake's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30644
 chest treasure lizard~
@@ -10269,14 +10269,14 @@ key lizard guardian treasure~
 the Lizard's key~
 A heavy key with the mark of the Lizard on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 27 1 0 P
 E
 key lizard~
-The key the Lizard's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Lizard's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30645
 chest treasure dragon~
@@ -10291,14 +10291,14 @@ key dragon guardian treasure~
 the Dragon's key~
 A heavy key with the mark of the Dragon on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 33 1 0 P
 E
 key dragon~
-The key the Dragon's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Dragon's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30646
 chest treasure demon~
@@ -10313,14 +10313,14 @@ key demon guardian treasure~
 the Demon's key~
 A heavy key with the mark of the Demon on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 40 1 0 P
 E
 key demon~
-The key the Demon's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Demon's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30647
 chest treasure lion~
@@ -10335,14 +10335,14 @@ key lion guardian treasure~
 the Lion's key~
 A heavy key with the mark of the Lion on its bow lies here.~
 iron~
-18 AG AO
+18 AGH AO
 0 0 0 0 0
 46 1 0 P
 E
 key lion~
-The key the Lion's guardian carried. It opens the locked door into
-the room behind the guardian's chamber, and the chest standing in
-that room.
+The key the Lion's guardian yields to each who defeats it. It opens
+the locked door into the room behind the guardian's chamber, and the
+chest standing in that room, whose treasure it claims once.
 ~
 #30648
 chest great ganon golden~
@@ -19583,7 +19583,6 @@ M 0 30222 1 30413
 G 1 30339 100
 G 1 30582 100
 G 1 30591 100
-G 1 30630 100
 D 0 30413 1 3
 D 0 30413 2 2
 O 0 30640 0 30414
@@ -19660,7 +19659,6 @@ M 0 30218 1 30435
 G 1 30349 100
 G 1 30583 100
 G 1 30592 100
-G 1 30631 100
 D 0 30435 2 1
 D 0 30435 3 3
 M 0 31132 3 30436
@@ -19710,7 +19708,6 @@ M 0 30305 1 30449
 G 1 30359 100
 G 1 30584 100
 G 1 30593 100
-G 1 30632 100
 D 0 30449 0 3
 D 0 30449 2 1
 D 0 30449 3 4
@@ -19785,7 +19782,6 @@ M 0 30307 1 30470
 G 1 30369 100
 G 1 30585 100
 G 1 30594 100
-G 1 30633 100
 D 0 30470 0 3
 D 0 30470 3 1
 M 0 30349 1 30471
@@ -19843,7 +19839,6 @@ M 0 30309 1 30489
 G 1 30374 100
 G 1 30586 100
 G 1 30595 100
-G 1 30634 100
 O 0 30430 0 30489
 D 0 30489 0 3
 D 0 30489 1 2
@@ -19947,7 +19942,6 @@ M 0 30223 1 30519
 G 1 30378 100
 G 1 30587 100
 G 1 30596 100
-G 1 30635 100
 D 0 30519 0 3
 D 0 30519 2 2
 M 0 31155 3 30520
@@ -20039,7 +20033,6 @@ M 0 30314 1 30546
 G 1 30382 100
 G 1 30588 100
 G 1 30597 100
-G 1 30636 100
 D 0 30546 1 3
 D 0 30546 3 4
 O 0 30505 0 30546
@@ -20154,7 +20147,6 @@ M 0 30316 1 30574
 G 1 30385 100
 G 1 30589 100
 G 1 30598 100
-G 1 30637 100
 D 0 30574 0 3
 D 0 30574 2 4
 O 0 30504 0 30574
@@ -20281,7 +20273,6 @@ D 0 30606 2 1
 M 0 30225 1 30607
 G 1 30388 100
 G 1 30590 100
-G 1 30243 100
 D 0 30607 0 3
 D 0 30607 2 1
 M 0 30360 1 30608

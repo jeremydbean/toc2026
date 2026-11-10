@@ -5082,9 +5082,13 @@ void spell_teleport( int sn, int level, CHAR_DATA *ch, void *vo )
 	pRoomIndex = NULL;
 	for ( attempts = 0; attempts < 200; attempts++ )
 	{
-	    candidate = get_room_index( number_range( 0, 65535 ) );
+	    /* The one carried is the one asked: the caster's sight and
+	       rules were asked instead, and nothing kept the victim out of
+	       a sealed Hyrule cave (review, 2026-11-10). */
+	    candidate = random_room_candidate( attempts );
 	    if ( candidate != NULL
-	    &&   can_see_room(ch,candidate)
+	    &&   can_see_room(victim,candidate)
+	    &&   !travel_spell_refuses(victim,candidate)
 	    &&   !IS_SET(candidate->room_flags, ROOM_PRIVATE)
 	    &&   !IS_SET(candidate->room_flags, ROOM_NO_RECALL)
 	    &&   !IS_SET(candidate->room_flags, ROOM_JAIL)

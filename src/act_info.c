@@ -40,7 +40,7 @@ static bool is_red_hyrule_ganon( CHAR_DATA *victim )
     return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
         && victim->pIndexData->vnum == HYRULE_GANON_VNUM
         && victim->hit == 1
-        && IS_AFFECTED2(victim, AFF2_NO_RECOVER);
+        && victim->hyrule_state == HYRULE_GANON_STUNNED;
 }
 
 

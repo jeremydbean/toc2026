@@ -82,11 +82,14 @@ class DungeonChainTests(unittest.TestCase):
                 slain = run(god, "slay aquamentus", settle=2.0)
                 self.assertIn("aquamentus", slain.lower(), slain)
                 run(god, f"transfer zchainhero {lair}", settle=2.0)
+                # A staff kill credits nobody (tests/test_hyrule_guardian_keys
+                # plays a real one): staff hand over the guardian's key.
+                give(god, "zchainhero", 30630, "key")
 
                 locked = run(hero, "east", settle=2.0)
                 self.assertNotIn(TREASURE_ROOM_NAME, locked,
                                  f"the treasure room starts locked:\n{locked}")
-                looted = run(hero, "get key corpse", settle=2.0)
+                looted = run(hero, "inventory", settle=1.5)
                 self.assertIn("eagle's key", looted.lower(), looted)
                 opened = run(hero, "unlock east", settle=1.5) + run(hero, "open east", settle=1.5)
                 self.assertNotIn("lack the key", opened, opened)

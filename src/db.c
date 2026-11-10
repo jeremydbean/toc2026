@@ -2218,6 +2218,19 @@ void area_update( void )
 /*
  * Reset one area.
  */
+/* Whether a player stands in room. */
+static bool room_holds_player( ROOM_INDEX_DATA *room )
+{
+    CHAR_DATA *rch;
+
+    if ( room == NULL )
+        return false;
+    for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+        if ( !IS_NPC(rch) )
+            return true;
+    return false;
+}
+
 void reset_area( AREA_DATA *pArea )
 {
     RESET_DATA *pReset;
@@ -2539,6 +2552,18 @@ void reset_area( AREA_DATA *pArea )
              */
             if ( pReset->arg3 == 4 && pArea->nplayer > 0
             &&   IS_HYRULE_ROOM_VNUM(pRoomIndex->vnum) )
+                break;
+
+            /*
+             * Nor is a treasure door locked again on somebody standing at
+             * it, on either side, as a chest is not: claiming the chest's
+             * prize spends the guardian's key (hyrule_chest_claim), and a
+             * player in the treasure room when it relocked had no way out
+             * of a no-recall dungeon (review, 2026-11-10).
+             */
+            if ( pReset->arg3 == 3 && IS_HYRULE_ROOM_VNUM(pRoomIndex->vnum)
+            &&   ( room_holds_player( pRoomIndex )
+                || room_holds_player( pexit->u1.to_room ) ) )
                 break;
 
             switch ( pReset->arg3 )

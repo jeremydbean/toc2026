@@ -122,10 +122,15 @@ one before it gives. Every dungeon works the same way:
 1. **Entering** it from outside needs the previous dungeon's Triforce piece.
 2. **Inside**, the way into the guardian's chamber needs the previous
    dungeon's treasure.
-3. **The guardian** drops its dungeon's key. The key opens the locked door
-   into the room behind the guardian, and the locked chest in that room.
+3. **The guardian** hands its dungeon's key to every player its death
+   credits -- the killer and their group in the room -- each a key of their
+   own that cannot be given away. The key opens the locked door into the
+   room behind the guardian, and the locked chest in that room.
 4. **The chest** holds this dungeon's Triforce piece and its treasure: the
-   piece opens the next dungeon, and the treasure gets you through it.
+   piece opens the next dungeon, and the treasure gets you through it. Only
+   a key holder can take the piece (Ganon's chest: the piece and the Master
+   Sword); each takes a copy, the chest keeps its own for the rest of the
+   party, and the claim spends the key.
 
 Both gates are asked of the character moving, never of a door, so nobody can
 hold the way open for anybody else. They are `hyrule_progress_gate` in
@@ -236,15 +241,17 @@ trap gets round it. Small-key doors are type 2 with state 2. Neither may be
 type 5, which `load_resets` resets as a trapped door; until 2026-10 every keyed
 door in Hyrule was one.
 
-**Pieces are NODROP; treasures are not.** A piece is the proof of having
-done a dungeon, so it cannot be given, dropped, put in a container or sold:
-otherwise one character could carry another through. A treasure only gets
-you past an obstacle inside a dungeon you already earned your way into, so
-trading one skips nothing, and a lost one comes back from the chest. Keys,
-pieces and treasures carry no rot-death, inventory or meltdrop flag, and a
-guardian's key does not crumble in the corpse the way an ordinary key does.
-A key is not saved when you quit, like every key in the game; the guardian
-has another after the next reset.
+**Pieces, keys and progression tools are NODROP** (owner, 2026-11-10:
+nothing required for progression may be traded). A piece is the proof of
+having done a dungeon; a key is the proof of having beaten its guardian;
+and the tools -- the boomerangs, raft, stepladder, bow, recorder, red
+candle, Magical Key and Silver Arrow -- are what the gates ask for. None
+can be given, dropped, put in a container, sold or looted from somebody
+else's corpse, or one character could carry another through. A tool lying
+in Hyrule gives each player who picks it up a copy of their own, so a whole
+party equips without waiting on a reset. Bombs, the shop's candle and small
+keys can still be traded. A key is not saved when you quit, like every key
+in the game: beat the guardian again for another.
 
 **Entry levels.** There is no minimum level at any door. The gates already
 make the order strict, and each dungeon's band is a warning in its own

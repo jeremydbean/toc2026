@@ -191,8 +191,13 @@ Current October 2026 Python baseline:
 2,508 mobiles
 3,760 objects
 7,786 rooms
-0 critical, 12 warning, 1,698 information findings
+0 critical, 12 warning, 1,707 information findings
 ```
+
+The guardians' keys (2026-11-10) added exactly nine information findings:
+each is `object-has-no-source` now, made by `hyrule_guardian_slain` at the
+guardian's death for every player it credits, not by a reset. The count
+read 1,698 before them.
 
 The holiday fairs (`area/holidays.are`, 2026-11-02) added the entry, ten
 mobiles (the vendors), thirty-nine objects and exactly fifty information
@@ -1030,8 +1035,9 @@ closed secret exit (`hyrule_room_sealed`). A bound Hyrule object
 (`hyrule_bound_object`) in a player's corpse is the owner's alone: GET
 refuses anybody else, TELEKINESIS will not fetch the corpse, and a corpse
 that rots destroys it rather than spill it. PASS DOOR, ghost form and
-DOOR BASH stop at a locked Hyrule door. Lending a dungeon tool and leaving
-a dungeon by PORTAL or ASTRAL WALK are allowed (owner, 2026-11-10).
+DOOR BASH stop at a locked Hyrule door. Leaving a dungeon by PORTAL or
+ASTRAL WALK is allowed (owner, 2026-11-10); lending a dungeon tool is not
+-- see the keys, below.
 `tests/test_hyrule_audit_nov10.py`.
 
 **A mobile is never a corpse's owner, and nothing of Hyrule's is bottled**
@@ -1045,6 +1051,18 @@ keeps their bound things. TRAP THE SOUL refuses `hyrule_native` victims,
 and CAST refuses it and CHARM PERSON on them before the mana and before
 the provocation that follows any offensive cast (`do_cast`).
 `tests/test_hyrule_review_nov10b.py`, `tests/test_corpse_bound_decay.py`.
+A bottle filled with a Hyrule creature before that releases nothing when
+opened (`hyrule_native_vnum`): it let a guardian loose anywhere, and after
+the next reset there were two.
+
+**Random arrivals ask of the one moved** (review, 2026-11-10). TELEPORT's
+candidate loop and `get_random_room` (recall misfires, FLING) ask
+`travel_spell_refuses` of the character carried -- TELEPORT asked the
+caster's sight and rules -- and `travel_spell_refuses` refuses a sealed
+Hyrule room (`hyrule_room_sealed`) to a mobile too. The pools are
+otherwise as they were: `get_random_room` still refuses safe rooms and
+TELEPORT does not. `TOC_RANDOM_ROOM` (tests only) makes the first guess
+of both that room (`random_room_candidate`); `tests/test_random_arrival.py`.
 
 **The last two guardians are group fights, by balance, not by rule**
 (owner, 2026-10-28: the ashen Gleeok needs two average high-level
@@ -1105,7 +1123,39 @@ that C table, and the plan table in `wiki/hyrule-area.md` must say the same
 thing; `tests/test_hyrule_progression.py` checks them against each other and
 the area file. Pieces are treasure, not keys,
 because `save.c` drops keys at quit; they are NODROP so one character cannot
-carry another through. `reset_area` refills and relocks Hyrule's chests
+carry another through.
+
+**Keys, prizes and tools are each player's own** (owner and review,
+2026-11-10: a borrowed key took every piece past living guardians, a
+bystander looted a chest another opened, a key kept over a reset opened
+the refilled chest). A guardian carries no key (the generator writes no
+`G` for it). Its death, in `raw_kill_internal` before the corpse, calls
+`hyrule_guardian_slain`: every player the kill credits -- the killer, a
+pet's or servant's master, and the mortals of their group in the room,
+the boss achievements' rule (`achievement_party_member`), never staff --
+is handed a NODROP key of their own (`hyrule_guardian_key`: 30630-30637,
+Ganon's Golden Key). A chest's prize -- the piece, and Ganon's Master
+Sword -- is claimed by `hyrule_chest_claim` from `get_obj`: only with the
+dungeon's key carried, as a copy, the chest keeping its own for the rest
+of the party; the claim spends the key, Ganon's once both his prizes are
+held, in either order or by GET ALL. Everything else the progression asks
+for (`PROGRESSION_TOOLS` in the generator, `hyrule_progression_tools[]`
+in hyrule.c: the boomerangs, raft, stepladder, bow, recorder, red candle,
+Magical Key, Silver Arrow) is NODROP, and GET of one lying in Hyrule hands
+each player a copy (`hyrule_tool_claim`), one each. Bombs, the shop's
+candle and small keys stay tradeable: bought or spent, they carry nobody
+past a gate. A key goes at a quit like every key, and the guardian must be
+beaten again. `tests/test_hyrule_guardian_keys.py`.
+
+**Ganon's finishing phase is his own marker** (review, 2026-11-10,
+confirmed live). It was `AFF2_NO_RECOVER`, which NERVE DAMAGE and
+NIGHTMARE also lay, so either put him at full health into the phase the
+Silver Arrow finishes. `HYRULE_GANON_STUNNED` in his `hyrule_state` is
+set by `reform_hyrule_ganon` alone and read by `is_stunned_hyrule_ganon`,
+`spec_ganon`'s repair and regeneration, LOOK's red flash and `hit_gain`
+(the tick no longer heals him out of it when an ordinary NO_RECOVER
+affect wears off). `hyrule_state` is shared with Digdogger and Patra, so
+every reading also asks that it is Ganon. `reset_area` refills and relocks Hyrule's chests
 even with players about, since Hyrule is one area -- but never one a player
 is standing at. `COMBINE TRIFORCE` is the only way to The Triforce.
 

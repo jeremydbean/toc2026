@@ -708,6 +708,19 @@ def set_item_line(body: str, vnum: int, item_line: str) -> str:
     return body[:record.start(1)] + item_line + body[record.end(1):]
 
 
+def bind_object(body: str, vnum: int) -> str:
+    """Add NODROP (H) to an object's extra flags, the second word of its
+    item line."""
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n(?:[^\n]*\n){{4}}([^\n]*)\n").search(body)
+    if not record:
+        raise ValueError(f"missing object record {vnum}")
+    words = record.group(1).split()
+    if "H" not in words[1]:
+        flags = "".join(sorted(set(words[1].replace("0", "") + "H")))
+        words[1] = flags
+    return body[:record.start(1)] + " ".join(words) + body[record.end(1):]
+
+
 def rename_object(body: str, vnum: int, keywords: str, short: str) -> str:
     """Rewrite a retained object's keywords and short description, the
     first two strings of its record."""
@@ -2123,6 +2136,19 @@ CHESTS = {level: 30639 + level for level in range(1, 10)}          # 30640-30648
 HYRULE_BOOMERANG, HYRULE_MAGICAL_BOOMERANG = 30232, 30410
 HYRULE_RAFT, HYRULE_STEPLADDER, HYRULE_BOW = 30411, 30412, 30222
 HYRULE_RECORDER, HYRULE_RED_CANDLE, HYRULE_MAGICAL_KEY = 30413, 30414, 30416
+HYRULE_SILVER_ARROW = 30218
+# What the progression asks for, bound to whoever finds it (owner,
+# 2026-11-10: nothing required for progression may be traded): NODROP, and
+# GET in Hyrule hands each player a copy of their own (hyrule_tool_claim in
+# src/hyrule.c, whose hyrule_progression_tools[] must match). The
+# guardians' chambers' tools, the raft and stepladder the overworld asks
+# for, and the Silver Arrow that finishes Ganon. Bought and spent things --
+# bombs, the shop's candle, small keys -- stay tradeable.
+PROGRESSION_TOOLS = (
+    HYRULE_BOOMERANG, HYRULE_MAGICAL_BOOMERANG, HYRULE_RAFT, HYRULE_STEPLADDER,
+    HYRULE_BOW, HYRULE_RECORDER, HYRULE_RED_CANDLE, HYRULE_MAGICAL_KEY,
+    HYRULE_SILVER_ARROW,
+)
 # Where each tool a gate asks for is found: (dungeon, where), as on the NES.
 # The cellar ones are placed by the manifest (MAJOR_ITEMS), the boomerangs
 # by DIRECT_DUNGEON_ITEMS; tests/test_hyrule_progression.py holds this to
@@ -2227,10 +2253,13 @@ def boss_key_record(level: int, band: tuple[int, int], title: str) -> str:
     return object_record(
         BOSS_KEYS[level], f"key {plain} guardian treasure", f"the {title}'s key",
         f"A heavy key with the mark of the {title} on its bow lies here.",
-        "iron", "18 AG AO", "0 0 0 0 0", band[0], 1, 0,
-        f"E\nkey {plain}~\nThe key the {title}'s guardian carried. It opens the locked door into\n"
-        "the room behind the guardian's chamber, and the chest standing in\n"
-        "that room.\n~",
+        # NODROP (H): each player the kill credits is handed one of their
+        # own (hyrule_guardian_slain), and it stays theirs (owner,
+        # 2026-11-10).
+        "iron", "18 AGH AO", "0 0 0 0 0", band[0], 1, 0,
+        f"E\nkey {plain}~\nThe key the {title}'s guardian yields to each who defeats it. It opens\n"
+        "the locked door into the room behind the guardian's chamber, and the\n"
+        "chest standing in that room, whose treasure it claims once.\n~",
     )
 
 
@@ -2987,8 +3016,8 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                     lines.append(f"G 1 {BOSS_WEAPONS[level].vnum} 100")
                     if level <= 8:
                         lines.append(f"G 1 {BOSS_HEART_CONTAINER_FIRST + level - 1} 100")
-                    # The dungeon's key: Ganon's is the Golden Key.
-                    lines.append(f"G 1 {BOSS_KEYS[level]} 100")
+                    # No key: the guardian's death hands each player it
+                    # credits a key of their own (hyrule_guardian_slain).
         for object_vnum in room.objects:
             lines.append(f"O 0 {object_vnum} 0 {room.vnum}")
         for puzzle_vnum in room.puzzles:
@@ -3194,6 +3223,8 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))
     object_body = relevel_catalog_items(object_body, manifest)
+    for vnum in PROGRESSION_TOOLS:
+        object_body = bind_object(object_body, vnum)
     for level, applies in HEART_GUARD_APPLIES.items():
         object_body = add_object_applies(object_body, BOSS_GEAR[level], applies)
 

@@ -8,6 +8,29 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Guardian keys, chest prizes and progression tools are each player's
+  own; Ganon's finish is his own phase** (review of 57cc3568 and owner,
+  2026-11-10). A guardian carried one key, lootable and tradeable: a
+  borrowed key took all eight pieces past living guardians, a bystander
+  took the piece from a chest another player had opened, and a key kept
+  over a reset opened the refilled chest. Now the guardian's death hands a
+  bound key to every player the kill credits (the killer, a pet's master,
+  their group in the room), a chest gives its prize only to a key holder,
+  as a copy, and spends the key (Ganon's once the ninth piece and the
+  Master Sword are both held), and the tools the progression asks for are
+  bound, a copy each from where they lie. NERVE DAMAGE and NIGHTMARE laid
+  the AFF2_NO_RECOVER that marked Ganon's collapse and put him at full
+  health into the Silver Arrow's finish (live); the phase is
+  `HYRULE_GANON_STUNNED` in his `hyrule_state`, set by reform alone, and
+  the tick no longer heals him out of it.
+  `tests/test_hyrule_guardian_keys.py`.
+- **Random arrivals keep room rules** (review of b10f3d66, 2026-11-10).
+  TELEPORT and `get_random_room` (recall misfires, FLING) ask
+  `travel_spell_refuses` of the character moved, so neither lands anybody
+  in a Hyrule cave still sealed (Heartglow Hollow); TELEPORT asked the
+  caster's sight instead of the victim's. A bottle holding a Hyrule
+  creature from before TRAP THE SOUL refused them releases nothing.
+  `tests/test_random_arrival.py`, `tests/test_hyrule_review_nov10b.py`.
 - **Reviews of 9af710db and 29e558ff** (2026-11-10). An object record
   with two Nest keys made the object its own container and hung the game
   at that player's name; it refuses the character now, before any slot

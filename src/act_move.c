@@ -303,7 +303,13 @@ bool travel_spell_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
 
     if ( to == NULL )
         return true;
-    if ( IS_NPC(ch) || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+        return false;
+    /* A sealed Hyrule room takes nobody by magic, a mobile sent there
+       included (review, 2026-11-10: TELEPORT cast at a mobile). */
+    if ( hyrule_room_sealed( to ) )
+        return true;
+    if ( IS_NPC(ch) )
         return false;
 
     for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
@@ -320,8 +326,6 @@ bool travel_spell_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
         if ( closed[i] == to )
             return true;
 
-    if ( hyrule_room_sealed( to ) )
-        return true;
     return hyrule_gate_check( ch, ch->in_room, to, false );
 }
 
@@ -484,15 +488,18 @@ bool hyrule_foe( CHAR_DATA *victim )
 /* Any of Hyrule's own mobiles -- enemy, guardian, person -- charmed or
    not. What a spell or skill may not do to them (charm, steal from) is
    asked of this, since hyrule_foe stops counting a charmed one. */
-bool hyrule_native( CHAR_DATA *victim )
+bool hyrule_native_vnum( int vnum )
 {
-    int vnum;
-
-    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
-        return false;
-    vnum = victim->pIndexData->vnum;
     return ( vnum >= 30200 && vnum <= 30799 )
         || ( vnum >= HYRULE_TIER_FIRST_VNUM && vnum <= HYRULE_TIER_LAST_VNUM )
+        || ( vnum >= HYRULE_NPC_FIRST && vnum <= HYRULE_NPC_LAST );
+}
+
+bool hyrule_native( CHAR_DATA *victim )
+{
+    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
+        return false;
+    return hyrule_native_vnum( victim->pIndexData->vnum )
         || is_hyrule_bystander( victim );
 }
 
@@ -603,6 +610,34 @@ ROOM_INDEX_DATA *random_travel_room( CHAR_DATA *ch, bool allow_safe )
     return get_room_index( ROOM_VNUM_TEMPLE );
 }
 
+/*
+ * One guess for a selector that picks rooms by vnum at random (TELEPORT,
+ * get_random_room). TOC_RANDOM_ROOM, for tests only, makes the first
+ * guess that room, so a test can ask whether a given room would be taken
+ * without retrying a random draw.
+ */
+ROOM_INDEX_DATA *random_room_candidate( int attempt )
+{
+    static int forced = -1;
+
+    if ( forced < 0 )
+    {
+        const char *env = getenv( "TOC_RANDOM_ROOM" );
+
+        forced = env != NULL && is_number( (char *) env ) ? atoi( env ) : 0;
+    }
+    if ( attempt == 0 && forced > 0 )
+        return get_room_index( forced );
+    return get_room_index( number_range( 0, 65535 ) );
+}
+
+/*
+ * Where a recall misfire (and FLING) throws a character: the old pool --
+ * no private, solitary, jail, safe or no-recall room, nor one they cannot
+ * see -- and now nothing travel_spell_refuses for them (review,
+ * 2026-11-10): another class's guild, a hall its guard would turn them
+ * from, a sealed Hyrule cave, a dungeon not yet theirs.
+ */
 ROOM_INDEX_DATA *get_random_room(CHAR_DATA *ch)
 {
     ROOM_INDEX_DATA *room;
@@ -613,9 +648,10 @@ ROOM_INDEX_DATA *get_random_room(CHAR_DATA *ch)
 	int attempts;
 	for ( attempts = 0; attempts < 200; attempts++ )
 	{
-	    candidate = get_room_index( number_range(0, 65535) );
+	    candidate = random_room_candidate( attempts );
 	    if ( candidate != NULL
 	    &&   can_see_room(ch, candidate)
+	    &&   !travel_spell_refuses(ch, candidate)
 	    &&   !IS_SET(candidate->room_flags, ROOM_PRIVATE )
 	    &&   !IS_SET(candidate->room_flags, ROOM_SOLITARY )
 	    &&   !IS_SET(candidate->room_flags, ROOM_JAIL )
@@ -2095,6 +2131,20 @@ void do_open( CHAR_DATA *ch, char *argument )
               wizinfo(buf,LEVEL_IMMORTAL);
               log_string(buf);
               return;
+            }
+
+            /* A bottle filled before Hyrule refused the spell (review,
+               2026-11-10) let a guardian loose anywhere, and after the
+               next reset there were two. Hyrule takes its own back. */
+            if ( hyrule_native_vnum( pMobIndex->vnum ) )
+            {
+                act( "The essence in $p slips free and is gone, back to Hyrule.",
+                     ch, obj, NULL, TO_CHAR );
+                act( "Something slips out of $p and is gone.", ch, obj, NULL, TO_ROOM );
+                extract_obj( obj );
+                if ( !IS_NPC(ch) )
+                    save_char_obj( ch );
+                return;
             }
 
             temp_ch = create_mobile( pMobIndex );

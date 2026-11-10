@@ -261,6 +261,11 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
         return;
     }
 
+    /* A progression tool lying in Hyrule: a copy for each player, bound
+       (hyrule.c). */
+    if ( hyrule_tool_claim( ch, obj, container ) )
+	return;
+
     chance = get_skill(ch,gsn_sleight_of_hand);
     if(number_percent () < chance - 5 || IS_IMMORTAL(ch) ) {
       check_improve( ch, gsn_sleight_of_hand, true, 8 );
@@ -287,6 +292,12 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	if (container->item_type == ITEM_CORPSE_NPC
 	&&  (obj->item_type == ITEM_POTION || obj->item_type == ITEM_SCROLL))
 	    obj->timer = 0;
+
+	/* A dungeon's prize is claimed with its guardian's key, the
+	   claimant's own, and the chest keeps a copy for the rest of the
+	   party (hyrule.c). */
+	if ( hyrule_chest_claim( ch, obj, container ) )
+	    return;
 
 	act( "You get $p from $P.", ch, obj, container, TO_CHAR );
 	if(!hidden)

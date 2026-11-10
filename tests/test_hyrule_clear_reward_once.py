@@ -10,6 +10,7 @@ that fills the room with goriyas again owes it again.
 """
 from __future__ import annotations
 
+import re
 import unittest
 
 from live_mud import (
@@ -54,6 +55,14 @@ def kill_all(test: unittest.TestCase, hero, keyword: str) -> str:
     raise AssertionError(f"the {keyword}s did not die: {hero.sync('look')}")
 
 
+def lying(god) -> int:
+    """How many boomerangs lie in the room."""
+    seen = god.sync(f"at {EAGLE_D4} look", timeout=60).lower()
+    # Its own room line, not the room's prose, which names one too.
+    counted = re.findall(r"(?:\(\s*(\d+)\)\s*)?a small boomerang lies here", seen)
+    return sum(int(n or 1) for n in counted)
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ClearRewardOnceTests(unittest.TestCase):
     def test_the_boomerang_is_given_once_per_reset(self) -> None:
@@ -61,21 +70,29 @@ class ClearRewardOnceTests(unittest.TestCase):
             make(mud, "Zclearhero", Levl=58, Room=TEMPLE,
                  HMV="20000 20000 1000 1000 1000 1000", HMVP="20000 1000 1000")
             make(mud, "Zcleargod", Levl=70, Room=TEMPLE)
-            with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as god:
+            make(mud, "Zclearnew", Levl=30, Room=TEMPLE)
+            with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as god, \
+                    mud.connect(timeout=120) as newcomer:
                 login(hero, "Zclearhero", PW)
                 login(god, "Zcleargod", PW)
+                login(newcomer, "Zclearnew", PW)
                 god.must(f"transfer zclearhero {EAGLE_D4}", "")
                 self.assertEqual(EAGLE_D4, room_of(god, "zclearhero"))
                 god.must("set char zclearhero hitroll 300", "")
                 god.must("set char zclearhero damroll 300", "")
 
-                # The goriyas fall, the last one lays the boomerang; taken.
+                # The goriyas fall, the last one lays the boomerang; the
+                # hero takes their own, and the room keeps it for the rest
+                # of a party (owner, 2026-11-10: progression tools are
+                # bound, a copy each).
                 said = kill_all(self, hero, "goriya")
                 self.assertIn(CHIME, said)
                 self.assertIn("boomerang", hero.sync("get boomerang").lower())
                 inv = hero.sync("inventory").lower()
                 self.assertEqual(1, inv.count("boomerang"), inv)
                 self.assertNotRegex(inv, r"\(\s*\d+\)[^\n]*boomerang", inv)
+                self.assertIn("already carry", hero.sync("get boomerang").lower())
+                self.assertEqual(1, lying(god), "the room keeps one")
 
                 # Something that is no Hyrule foe dies in the cleared room.
                 place_sparring_guard(god, "zcleargod", EAGLE_D4)
@@ -83,16 +100,18 @@ class ClearRewardOnceTests(unittest.TestCase):
                 god.must("restore sparring", "")
                 said = kill_all(self, hero, "sparring")
                 self.assertNotIn(CHIME, said, "an unrelated death laid the item again")
-                self.assertIn("see no", hero.sync("get boomerang").lower())
+                self.assertEqual(1, lying(god), "and laid no second one")
 
-                # A reset fills the room with goriyas: the item is owed again.
+                # A reset fills the room with goriyas: the boomerang is theirs
+                # again until they fall -- for a newcomer too.
                 god.must("repop", "repopulated")
                 self.assertNotIn("not here", hero.sync("consider goriya").lower())
-                said = kill_all(self, hero, "goriya")
-                self.assertIn(CHIME, said, "a reset's goriyas owe the item again")
-                self.assertIn("boomerang", hero.sync("get boomerang").lower())
-                inv = hero.sync("inventory").lower()
-                self.assertRegex(inv, r"\(\s*2\)[^\n]*boomerang", inv)
+                god.must(f"transfer zclearnew {EAGLE_D4}", "")
+                guarded = newcomer.sync("get boomerang").lower()
+                self.assertIn("clear the room first", guarded, guarded)
+                kill_all(self, hero, "goriya")
+                self.assertEqual(1, lying(god), "still one, never two")
+                self.assertIn("you get", newcomer.sync("get boomerang").lower())
 
 
 if __name__ == "__main__":

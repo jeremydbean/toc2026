@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261110e 2026-11-10
+A Hyrule guardian now hands its key to everyone who beat it together --
+the one who struck it down and their group in the room -- and each key is
+yours alone. A chest's Triforce piece (and Ganon's Master Sword) goes only
+to a key holder, who takes their own and leaves the chest's for the rest
+of the party; taking it uses up the key. The tools Hyrule's gates ask for
+cannot be traded, and each player picks up their own. Ganon can no longer
+be laid low by a single nerve pinch or nightmare.
+
 @ 20261110d 2026-11-10
 Hyrule's creatures cannot be bottled with TRAP THE SOUL, and asking costs
 no mana and starts no fight. A pet or charmed follower cannot fetch a

@@ -2107,6 +2107,245 @@ void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
 }
 
 /* --------------------------------------------------------------------
+ * The guardians' keys, each its winner's own (owner, 2026-11-10).
+ *
+ * A guardian used to carry its dungeon's key by a G reset, so one key fell
+ * into the corpse for whoever looted it, and it could be given, lent and
+ * kept: one player handed all eight keys to a friend who took every piece
+ * past living guardians, a bystander took the piece from a chest somebody
+ * else had opened, and a key kept over a reset opened the refilled chest
+ * with the guardian standing there again. Now:
+ *
+ * - the guardian carries no key; at its death every player the kill
+ *   credits -- the killer (a pet's or servant's master) and the mortals
+ *   of their group standing in the room, the boss achievements' own rule
+ *   -- is handed a key of their own, NODROP and so bound (it goes nowhere
+ *   but its holder's hands, their own corpse and the floor at a quit);
+ * - a dungeon's chest gives its prize only to somebody carrying that
+ *   dungeon's key, as a copy, leaving the chest's for the next of the
+ *   party; and the claim spends the key -- for Ganon's chest once both
+ *   the ninth piece and the Master Sword are held.
+ * ------------------------------------------------------------------ */
+
+/* The key of dungeon `level`, BOSS_KEYS in scripts/build_hyrule_area.py:
+   30630-30637, and Ganon's Golden Key. */
+int hyrule_guardian_key( int level )
+{
+    if ( level >= 1 && level <= 8 )
+        return 30629 + level;
+    return level == 9 ? OBJ_VNUM_HYRULE_GOLDEN_KEY : 0;
+}
+
+static int guardian_level( const CHAR_DATA *mob )
+{
+    int i;
+
+    if ( mob == NULL || !IS_NPC(mob) || mob->pIndexData == NULL )
+        return 0;
+    for ( i = 0; i < 9; i++ )
+        if ( hyrule_guardian_vnums[i] == mob->pIndexData->vnum )
+            return i + 1;
+    return 0;
+}
+
+static OBJ_DATA *carried_top( CHAR_DATA *ch, int vnum )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == vnum )
+            return obj;
+    return NULL;
+}
+
+/* raw_kill, before the corpse is made: a key for each player credited. */
+void hyrule_guardian_slain( CHAR_DATA *killer, CHAR_DATA *guardian )
+{
+    OBJ_INDEX_DATA *index;
+    CHAR_DATA *credit = killer;
+    CHAR_DATA *rch;
+    OBJ_DATA *obj, *obj_next;
+    int level = guardian_level( guardian );
+    int key = hyrule_guardian_key( level );
+    int i;
+
+    if ( level == 0 || guardian->in_room == NULL )
+        return;
+    /* A key it still holds -- given by an older reset -- goes with it. */
+    for ( obj = guardian->carrying; obj != NULL; obj = obj_next )
+    {
+        obj_next = obj->next_content;
+        for ( i = 1; i <= 9; i++ )
+            if ( obj->pIndexData != NULL
+            &&   obj->pIndexData->vnum == hyrule_guardian_key( i ) )
+            {
+                extract_obj( obj );
+                break;
+            }
+    }
+
+    if ( credit != NULL && IS_NPC(credit) && credit->master != NULL
+    &&   !IS_NPC(credit->master) )
+        credit = credit->master;
+    if ( credit == NULL || IS_NPC(credit) || IS_TRUSTED(credit, LEVEL_IMMORTAL)
+    ||   ( index = get_obj_index( key ) ) == NULL )
+        return;
+    for ( rch = guardian->in_room->people; rch != NULL; rch = rch->next_in_room )
+    {
+        if ( IS_NPC(rch) || IS_TRUSTED(rch, LEVEL_IMMORTAL)
+        ||   ( rch != credit && !is_same_group( rch, credit ) ) )
+            continue;
+        if ( carried_top( rch, key ) != NULL )
+            continue;           /* one at a time: the last is unspent */
+        obj = create_object( index, index->level );
+        obj_to_char( obj, rch );
+        act( "$p comes to your hand as $N falls: it is yours alone.",
+             rch, obj, guardian, TO_CHAR );
+    }
+}
+
+/* What the progression asks for, bound to its finder: PROGRESSION_TOOLS in
+   scripts/build_hyrule_area.py, which makes each NODROP. */
+static const int hyrule_progression_tools[] =
+{
+    30232, 30410, 30411, 30412, 30222, 30413, 30414, 30416, 30218
+};
+
+bool hyrule_progression_tool( int vnum )
+{
+    size_t i;
+
+    for ( i = 0; i < sizeof(hyrule_progression_tools) / sizeof(hyrule_progression_tools[0]); i++ )
+        if ( hyrule_progression_tools[i] == vnum )
+            return true;
+    return false;
+}
+
+/*
+ * GET of a progression tool lying in Hyrule, on the floor or in a box
+ * there (get_obj, after every check that could refuse it): each player is
+ * handed a copy of their own and the original stays for the next, so a
+ * party equips without waiting on a reset -- a bound tool cannot be passed
+ * along (owner, 2026-11-10). One each.
+ */
+bool hyrule_tool_claim( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
+{
+    ROOM_INDEX_DATA *where;
+    OBJ_DATA *copy;
+
+    if ( obj == NULL || obj->pIndexData == NULL || IS_NPC(ch)
+    ||   IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    ||   !hyrule_progression_tool( obj->pIndexData->vnum ) )
+        return false;
+    if ( container != NULL )
+    {
+        if ( container->item_type == ITEM_CORPSE_PC
+        ||   container->item_type == ITEM_CORPSE_NPC )
+            return false;
+        where = container->in_room;
+    }
+    else
+        where = obj->in_room;
+    if ( where == NULL || !IS_HYRULE_ROOM_VNUM( where->vnum ) )
+        return false;
+
+    if ( hyrule_carries( ch, obj->pIndexData->vnum ) )
+    {
+        act( "You already carry $p; this one is for somebody else.", ch, obj, NULL, TO_CHAR );
+        return true;
+    }
+    /* A room's reward stays where it appeared for the rest of the party,
+       so it is earned again after a reset fills the room: while the
+       room's foes stand, it is theirs. */
+    {
+        CHAR_DATA *rch;
+
+        for ( rch = where->people; rch != NULL; rch = rch->next_in_room )
+            if ( hyrule_foe( rch ) )
+            {
+                act( "$N stands between you and $p; clear the room first.",
+                     ch, obj, rch, TO_CHAR );
+                return true;
+            }
+    }
+    copy = create_object( obj->pIndexData, obj->level );
+    obj_to_char( copy, ch );
+    if ( container != NULL )
+    {
+        act( "You get $p from $P.", ch, copy, container, TO_CHAR );
+        act( "$n gets $p from $P.", ch, copy, container, TO_ROOM );
+    }
+    else
+    {
+        act( "You get $p.", ch, copy, NULL, TO_CHAR );
+        act( "$n gets $p.", ch, copy, NULL, TO_ROOM );
+    }
+    return true;
+}
+
+/* The dungeon a prize belongs to: its Triforce piece, or Ganon's Master
+   Sword. 0 for anything else. */
+static int prize_level( const OBJ_DATA *obj )
+{
+    int vnum;
+
+    if ( obj == NULL || obj->pIndexData == NULL )
+        return 0;
+    vnum = obj->pIndexData->vnum;
+    if ( vnum >= HYRULE_PIECE_FIRST_VNUM && vnum <= HYRULE_PIECE_LAST_VNUM )
+        return vnum - HYRULE_PIECE_FIRST_VNUM + 1;
+    return vnum == OBJ_VNUM_HYRULE_MASTER_SWORD ? 9 : 0;
+}
+
+/*
+ * GET of a prize from a container lying in Hyrule (get_obj, after every
+ * check that could refuse it). True when this handled it: refused for
+ * want of the key, or given. The chest keeps its own copy for the rest of
+ * the party, as a cave keeps its gift (hyrule_claim).
+ */
+bool hyrule_chest_claim( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
+{
+    OBJ_DATA *copy, *key_obj;
+    int level = prize_level( obj );
+    int key = hyrule_guardian_key( level );
+
+    if ( level == 0 || container == NULL || container->in_room == NULL
+    ||   !IS_HYRULE_ROOM_VNUM( container->in_room->vnum )
+    ||   IS_NPC(ch) || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+        return false;
+
+    if ( ( key_obj = carried_top( ch, key ) ) == NULL )
+    {
+        act( "$p is for those who defeated this dungeon's guardian, each with its key; "
+             "you carry none.", ch, obj, NULL, TO_CHAR );
+        return true;
+    }
+    if ( obj->pIndexData->vnum == OBJ_VNUM_HYRULE_MASTER_SWORD
+    &&   hyrule_carries( ch, OBJ_VNUM_HYRULE_MASTER_SWORD ) )
+    {
+        act( "You already hold $p.", ch, obj, NULL, TO_CHAR );
+        return true;
+    }
+
+    copy = create_object( obj->pIndexData, obj->level );
+    obj_to_char( copy, ch );
+    act( "You get $p from $P.", ch, copy, container, TO_CHAR );
+    act( "$n gets $p from $P.", ch, copy, container, TO_ROOM );
+
+    /* The claim is made: the key is spent -- for Ganon's chest once both
+       of its prizes are held, whichever was taken first. */
+    if ( level < 9
+    ||   ( hyrule_carries( ch, HYRULE_PIECE_LAST_VNUM )
+        && hyrule_carries( ch, OBJ_VNUM_HYRULE_MASTER_SWORD ) ) )
+    {
+        act( "$p crumbles away in your hand, its work done.", ch, key_obj, NULL, TO_CHAR );
+        extract_obj( key_obj );
+    }
+    save_char_obj( ch );
+    return true;
+}
+
+/* --------------------------------------------------------------------
  * The tenth enemy has the bomb: ten Hyrule enemies killed in a row
  * without a wound, and the tenth leaves you a bomb (Level 8's old man).
  * ------------------------------------------------------------------ */
