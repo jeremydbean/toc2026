@@ -19275,3 +19275,8 @@
 1794341224	cmd	Miseri	14	30270	hyrule.are	standing	100	0	-	east		The Sheltered Hollow //   A hollow is tucked between low hills, sheltered from the wind and quiet. // Green grass grows thick and undisturbed, and a few old trees stand at its	-	+
 1794341224	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	north		The Meadow Bluff //   A grassy meadow runs up against a weathered bluff, bright with wildflowers // that sway and whirl in the breeze. Part of the bluff's face is fractured	-	+
 1794341227	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	kill	pea	A peahat parries your attack. // A peahat dodges your attack. // A peahat dodges your attack.	-	-
+1794341235	cmd	Miseri	14	30286	hyrule.are	fighting	100	0	fight	consider	pra	They're not here.	-	-
+1794341237	cmd	Miseri	14	30286	hyrule.are	fighting	100	0	fight	consider	pea	A peahat is far above your level. // A peahat has many times your hit points. // Blow for blow, you would need about 13 rounds to bring a peahat down; it would need about 6 rounds for you.	-	+
+1794341240	cmd	Miseri	14	30286	hyrule.are	fighting	100	0	fight	peace		All is peaceful.	-	-
+1794341243	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	restore	self	Miseri restored.	-	-
+1794341246	session	Miseri	14	30286	hyrule.are	quit	98s	+0 levels	+672 exp	+0 copper	4 kills	0 deaths	0 quests	46 commands	1 refused	coin: loot 26g 33s 70c	spent on: none	exp: kills +672
