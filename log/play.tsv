@@ -19229,3 +19229,5 @@
 1794275347	cmd	Trentlin	32	4210	dresden.are	standing	22	0	-	north		Alas, you cannot go that way.	-	-
 1794275348	cmd	Trentlin	32	4210	dresden.are	standing	22	0	-	sleep		You go to sleep.	-	-
 1794275348	session	Trentlin	32	4210	dresden.are	quit	2433s	+1 levels	+2642 exp	+6433559 copper	16 kills	0 deaths	2 quests	905 commands	2 refused	coin: loot 8p 14g 18s 7c, quests 10p 59g 17s 52c, spent 12p 30g	spent on: heal 12p 30g	exp: skilluse +24, kills +2663, flee -20, recall -25
+1794276385	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794276385	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 94 platinum, 43 gold, 87 silver, 38 copper // and 252749 experience (39551 exp to level).	-	-
