@@ -19894,3 +19894,52 @@
 1794345721	cmd	Trentlin	33	1008	uargo.are	standing	82	0	-	kill	im	An Orgeem Imp parries your attack. // Your punch MASSACRES an Orgeem Imp!	-	-
 1794345724	cmd	Trentlin	33	1008	uargo.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an Orgeem Imp! // Your fists of fury wounds an Orgeem Imp.	-	-
 1794345732	cmd	Trentlin	33	1008	uargo.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES an Orgeem Imp! // Your fists of fury grazes an Orgeem Imp.	-	+
+1794345739	cmd	Trentlin	33	1008	uargo.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS an Orgeem Imp! // Your fists of fury wounds an Orgeem Imp.	-	+
+1794345745	cmd	Trentlin	33	1008	uargo.are	fighting	74	0	fight	trip		You trip an Orgeem Imp and an Orgeem Imp goes down! // Your trip scratches an Orgeem Imp.	-	-
+1794345752	cmd	Trentlin	33	1007	uargo.are	standing	74	0	-	east		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794345752	cmd	Trentlin	33	1010	uargo.are	standing	74	0	-	east		A bushy clearing //   You see a forest to the east. Mt. Ulmo blocks your way south, your // attempt to scale the rock face, ends in a small rock slide and many cuts	-	+
+1794345753	cmd	Trentlin	33	1010	uargo.are	standing	74	0	-	kill	im	An Orgeem Imp parries your attack. // An Orgeem Imp parries your attack.	-	-
+1794345756	refused	Trentlin	33	1010	uargo.are	fighting	73	0	fight	(unknown)		Huh? Did you mean NERVE?	refusal:unknown-command	-
+1794345757	cmd	Trentlin	33	1010	uargo.are	fighting	75	0	fight	nerve		You missed the nerve. // Your nerve pinch hits an Orgeem Imp.	-	-
+1794345759	cmd	Trentlin	33	1010	uargo.are	fighting	75	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an Orgeem Imp.	-	-
+1794345768	cmd	Trentlin	33	1010	uargo.are	fighting	75	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches an Orgeem Imp.	-	-
+1794345773	cmd	Trentlin	33	1010	uargo.are	fighting	66	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS an Orgeem Imp!	-	-
+1794345781	cmd	Trentlin	33	1010	uargo.are	fighting	66	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an Orgeem Imp.	-	-
+1794345785	cmd	Trentlin	33	1010	uargo.are	fighting	59	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates an Orgeem Imp! // Your fists of fury mauls an Orgeem Imp.	-	+
+1794345792	cmd	Trentlin	33	1010	uargo.are	fighting	53	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches an Orgeem Imp. // Your fists of fury mauls an Orgeem Imp.	-	-
+1794345800	cmd	Trentlin	34	4207	dresden.are	standing	54	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794345801	cmd	Trentlin	34	4208	dresden.are	standing	54	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794345803	cmd	Trentlin	34	4208	dresden.are	standing	54	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)	-	-
+1794345828	cmd	Trentlin	34	4208	dresden.are	standing	54	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794345834	cmd	Trentlin	34	4208	dresden.are	standing	54	0	-	walkto	silent master	You set off for Silent Master (Palm of the Creator), about 21 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
+1794345853	cmd	Trentlin	34	4806	dresden.are	standing	54	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // stunning blow      3     fast healing       4     dirt kicking       4     	-	-
+1794345856	state	Trentlin	34	4806	dresden.are	lvl=34 hp=405/738 mana=1132/1474 mv=356/386 align=-66 exp=78340 coin=20991238 bank=15201185444 qp=2999 prac=16 train=3 stash=50/75 remorts=1
+1794345856	cmd	Trentlin	34	4806	dresden.are	standing	54	0	-	score		| Name:       Trentlin | Level:      34 | Class:        Monk | // | Played:     34 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794345859	cmd	Trentlin	34	4804	dresden.are	standing	54	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794345859	cmd	Trentlin	34	4807	dresden.are	standing	54	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1794345859	cmd	Trentlin	34	4807	dresden.are	standing	54	0	-	west		Alas, you cannot go that way.	-	-
+1794345861	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     herbal brewing     3     	-	+
+1794345865	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	gain	herbal brewing	The Master of Movement trains you in the art of herbal brewing.	-	-
+1794345867	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	practice	herb	You practice herbal brewing.	-	-
+1794345867	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	practice	herb	You practice herbal brewing.	-	-
+1794345867	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	practice	herb	You practice herbal brewing.	-	-
+1794345867	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	practice	herb	You practice herbal brewing.	-	-
+1794345868	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	practice	herb	You are now learned at herbal brewing.	-	-
+1794345868	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	practice	herb	You are already learned at herbal brewing.	-	-
+1794345871	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	help	herbal brewing	BREW CONCOCT 'HERBAL BREWING' // Syntax: brew <herb> // Syntax: concoct <component> <component>	-	+
+1794345875	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	inventory		You are carrying: // ( 2) a small key //      the Red Candle	-	+
+1794345877	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	look	in pack	A metallic pack contains: // ( 2) a red dragon claw	-	-
+1794345883	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	practice		fists of fury       76%  herbal brewing      75%  iron skin           76%   // levitate            75%  meditation          75%  second attack       78%   // bash                 1%  	-	+
+1794345884	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	skills		Level  1: dagger              75%      hand to hand        96%       //           recall             100%       // Level  3: kick                80%      	-	+
+1794345886	cmd	Trentlin	34	4807	dresden.are	standing	57	0	-	gain	convert	The Master of Movement helps you apply your practice to training	-	-
+1794345891	cmd	Trentlin	34	4804	dresden.are	standing	57	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794345891	cmd	Trentlin	34	4207	dresden.are	standing	57	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794345894	cmd	Trentlin	34	4207	dresden.are	standing	57	0	-	worth		You have 20 platinum, 99 gold, 12 silver, 38 copper // and 78340 experience (2160 exp to level).	-	-
+1794345896	cmd	Trentlin	34	4208	dresden.are	standing	57	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794345898	cmd	Trentlin	34	4208	dresden.are	standing	57	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (3 castings, 1500 gold.)	-	-
+1794345944	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	where	hermie	You didn't find any hermie.	-	-
+1794345944	state	Trentlin	34	4208	dresden.are	lvl=34 hp=738/738 mana=1172/1474 mv=222/386 align=-66 exp=78340 coin=5991238 bank=15201185444 qp=2999 prac=1 train=1 stash=50/75 remorts=1
+1794345944	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      34 | Class:        Monk | // | Played:     34 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794345948	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	areas		[25+]   Soul.   Temple Despair         [20 30] Doctor  Galaxy                  // [  0  0] Built-In  Seasonal Items      [ 5 15] PinkF   Mob Factory             // [  0  0] Built-In  Holiday Fairs       [ ALL ] Drakk   City of Dresden     	-	+
+1794346020	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794346023	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	walkto	hyrule	You set off for Hyrule (Killum), about 16 rooms away. // WALKTO STOP, or any other command, stops you.	-	-
