@@ -55,20 +55,31 @@ class LiveTests(unittest.TestCase):
             patch_player_file(mud, "Zearther", Levl=28, Room=4207, Cla=5, Gui=5,
                               HMV="500 500 5000 5000 500 500", HMVP="500 5000 500",
                               Sk="100 'earth travel'")
-            results = {}
             with mud.connect(timeout=120) as c:
+                create_character(c, "Zearthgod", PW)
+                c.send("quit")
+                self.assertTrue(c.wait_closed())
+            patch_player_file(mud, "Zearthgod", Levl=70, Room=4207)
+            results = {}
+            with mud.connect(timeout=120) as c, mud.connect(timeout=120) as god:
                 login(c, "Zearther", PW)
+                login(god, "Zearthgod", PW)
                 for target in ("kitten", "cepheus", "sammy"):
-                    c.send("recall")
-                    c.drain(4)
-                    mark = len(c.transcript)
-                    c.send(f"cast 'earth travel' {target}")
-                    c.drain(4)
-                    results[target] = first_line_after(c.transcript[mark:])
-                # Teardown, not the test: a target's room can hold something
-                # that attacks the arrival, and QUIT is refused mid-fight
-                # (CI, 2026-10-25: "False is not true" from this line). The
-                # server is stopped with the world either way.
+                    # A target's room can hold something that attacks the
+                    # arrival (CI, 2026-11-10: a Minotaur Warrior at
+                    # Cepheus's, and the next RECALL was refused mid-fight,
+                    # so the next cast went out from the fight). Staff end
+                    # any fight and set the traveller back in the Temple,
+                    # and read the room arrived in themselves: the
+                    # traveller's own first line may be a round of combat.
+                    god.sync("at zearther peace")
+                    god.must("transfer zearther 4207", "")
+                    god.sync("restore zearther")
+                    c.sync(f"cast 'earth travel' {target}", timeout=60)
+                    seen = god.sync("at zearther look", timeout=60)
+                    results[target] = first_line_after(seen)
+                    god.sync("at zearther peace")
+                # Teardown, not the test: QUIT is refused mid-fight.
                 c.send("quit")
                 c.wait_closed(5)
             # The High Tower's level 1 kitten, not Sammy the level 45 one.
