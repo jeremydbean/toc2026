@@ -18315,3 +18315,65 @@
 1794273014	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	stash		Your stash holds 51 of 75 things. //     1) (Glowing) the Lion's four-crowned axe //     2) (Glowing) an indigo blue livery	-	+
 1794273026	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	levitate		You slowly rise up off the ground.	-	-
 1794273027	cmd	Trentlin	31	4208	dresden.are	standing	84	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794273080	cmd	Trentlin	31	4208	dresden.are	standing	87	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794273082	cmd	Trentlin	31	4208	dresden.are	standing	87	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794273085	cmd	Trentlin	31	4208	dresden.are	standing	87	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you; that is all you can pay for. (6 castings, 600 gold.)	-	-
+1794273090	cmd	Trentlin	31	4208	dresden.are	standing	87	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
+1794273097	cmd	Trentlin	31	4207	dresden.are	standing	87	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794273098	cmd	Trentlin	31	3700	school.are	standing	87	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794273098	cmd	Trentlin	31	3772	school.are	standing	87	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794273098	cmd	Trentlin	31	3795	school.are	standing	87	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794273098	cmd	Trentlin	31	15000	campus.are	standing	87	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794273099	cmd	Trentlin	31	15001	campus.are	standing	87	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794273099	cmd	Trentlin	31	15002	campus.are	standing	87	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794273099	cmd	Trentlin	31	15003	campus.are	standing	87	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794273099	cmd	Trentlin	31	15004	campus.are	standing	87	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794273100	cmd	Trentlin	31	15010	campus.are	standing	87	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794273100	cmd	Trentlin	31	15011	campus.are	standing	87	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794273100	cmd	Trentlin	31	15012	campus.are	standing	87	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794273100	cmd	Trentlin	31	15013	campus.are	standing	87	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794273101	cmd	Trentlin	31	15038	campus.are	standing	87	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794273101	cmd	Trentlin	31	15068	campus.are	standing	87	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794273101	cmd	Trentlin	31	30200	hyrule.are	standing	87	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794273154	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [31 Dwarf   Monk  ] Trentlin the Master of Summer // Players found: 2	-	-
+1794273155	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794273155	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794273159	cmd	Alaric	57	2497	dresden.are	standing	100	21	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A prized artifact - The Amulet of Soulcrusher - has gone missing!'	-	+
+1794273165	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=obj:25039 level=59 alive=1 area=azeroth.are there=0 streak=5
+1794273165	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 5 in a row - all gone now!'	failure:abandoned	+
+1794273166	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794273218	cmd	Trentlin	31	30253	hyrule.are	standing	92	0	-	play	recorder 4	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Isle of the Snake	-	+
+1794273225	cmd	Trentlin	31	30323	hyrule.are	standing	92	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794273230	cmd	Trentlin	31	30323	hyrule.are	standing	92	0	-	levitate		You are already airborne.	-	-
+1794273230	cmd	Trentlin	31	30476	hyrule.are	standing	92	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794273233	cmd	Trentlin	31	30477	hyrule.are	standing	92	0	-	east		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794273236	cmd	Trentlin	31	30477	hyrule.are	standing	92	0	-	consider	pol	A pols voice is about your level. // A pols voice has about as many hit points as you. // Blow for blow, you would need about 4 rounds to bring a pols voice down; it would need about 11 rounds for you.	-	+
+1794273241	cmd	Trentlin	31	30477	hyrule.are	standing	92	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794273250	cmd	Trentlin	31	30477	hyrule.are	standing	94	0	-	steel		You lost your concentration.	-	-
+1794273251	cmd	Trentlin	31	30477	hyrule.are	standing	94	0	-	steel		You lost your concentration.	-	-
+1794273252	cmd	Trentlin	31	30477	hyrule.are	standing	94	0	-	steel		You lost your concentration.	-	-
+1794273253	cmd	Trentlin	31	30477	hyrule.are	standing	94	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794273258	cmd	Trentlin	31	30477	hyrule.are	standing	94	0	-	skills		Level  1: dagger              75%      hand to hand        95%       //           recall             100%       // Level  3: kick                80%      	-	+
+1794273260	cmd	Trentlin	31	30477	hyrule.are	standing	94	0	-	kill	pols	A pols voice dodges your attack. // A pols voice parries your attack.	-	-
+1794273263	cmd	Trentlin	31	30477	hyrule.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a pols voice. // Your fists of fury injures a pols voice.	-	+
+1794273269	cmd	Trentlin	31	30477	hyrule.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a pols voice. // Your fists of fury mauls a pols voice.	-	+
+1794273275	cmd	Trentlin	31	30477	hyrule.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a pols voice. // Your fists of fury wounds a pols voice.	-	+
+1794273280	cmd	Trentlin	31	30477	hyrule.are	fighting	79	0	fight	kick		Your kick grazes a pols voice.	-	-
+1794273286	cmd	Trentlin	31	30477	hyrule.are	fighting	79	0	fight	kick		Your kick scratches a pols voice.	-	-
+1794273292	cmd	Trentlin	31	30477	hyrule.are	standing	74	0	-	get	key	You get a small key.	-	-
+1794273292	cmd	Trentlin	31	30477	hyrule.are	standing	74	0	-	look		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794273297	cmd	Trentlin	31	30477	hyrule.are	standing	76	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794273299	cmd	Trentlin	31	30477	hyrule.are	standing	76	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794273299	cmd	Trentlin	31	30481	hyrule.are	standing	76	0	-	north		Level 5: Grey Brick Fireside //   Grey brick walls curve gently inward here, and every sound rings back a // moment late, as if the room were listening. Two small fires flicker beside	-	+
+1794273307	cmd	Trentlin	31	30481	hyrule.are	standing	76	0	-	open	west	It's locked.	-	-
+1794273308	cmd	Trentlin	31	30477	hyrule.are	standing	76	0	-	south		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794273309	cmd	Trentlin	31	30476	hyrule.are	standing	76	0	-	west		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794273309	cmd	Trentlin	31	30480	hyrule.are	standing	76	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794273313	cmd	Trentlin	31	30480	hyrule.are	standing	76	0	-	consider	g	A gibdo is about your level. // A gibdo has about twice your hit points. // Blow for blow, you would need about 5 rounds to bring a gibdo down; it would need about 9 rounds for you.	-	+
+1794273315	cmd	Trentlin	31	30480	hyrule.are	standing	76	0	-	kill	g	Your punch === OBLITERATES === a gibdo! // A gibdo parries your attack. // A gibdo parries your attack.	-	-
+1794273321	cmd	Trentlin	31	30480	hyrule.are	fighting	58	0	fight	nerve		You jab a gibdo with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a gibdo.	-	-
+1794273330	cmd	Trentlin	31	30480	hyrule.are	fighting	58	0	fight	kick		Your kick hits a gibdo.	-	-
+1794273336	cmd	Trentlin	31	30480	hyrule.are	fighting	50	0	fight	trip		You trip a gibdo and a gibdo goes down! // Your trip scratches a gibdo.	-	-
+1794273345	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	look	in co	Corpse of a gibdo contains: //      Nothing.	-	-
+1794273345	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	get	key	You get a small key.	-	-
+1794273345	cmd	Trentlin	31	30480	hyrule.are	standing	50	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-

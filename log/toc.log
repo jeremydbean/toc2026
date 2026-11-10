@@ -282510,3 +282510,115 @@ Tue Nov 10 01:10:12 2026 :: Log Trentlin [4208]: w
 Tue Nov 10 01:10:14 2026 :: Log Trentlin [4208]: stash
 Tue Nov 10 01:10:26 2026 :: Log Trentlin [4208]: levitate
 Tue Nov 10 01:10:27 2026 :: Log Trentlin [4208]: eq
+Tue Nov 10 01:11:20 2026 :: Log Trentlin [4208]: eq
+Tue Nov 10 01:11:22 2026 :: Log Trentlin [4208]: l
+Tue Nov 10 01:11:25 2026 :: Log Trentlin [4208]: heal mana
+Tue Nov 10 01:11:25 2026 :: Log Trentlin [4208]: gold -100
+Tue Nov 10 01:11:25 2026 :: Log Trentlin [4208]: gold -100
+Tue Nov 10 01:11:25 2026 :: Log Trentlin [4208]: gold -100
+Tue Nov 10 01:11:25 2026 :: Log Trentlin [4208]: gold -100
+Tue Nov 10 01:11:25 2026 :: Log Trentlin [4208]: gold -100
+Tue Nov 10 01:11:25 2026 :: Log Trentlin [4208]: gold -100
+Tue Nov 10 01:11:30 2026 :: Log Trentlin [4208]: heal refresh
+Tue Nov 10 01:11:30 2026 :: Log Trentlin [4208]: gold -40
+Tue Nov 10 01:11:37 2026 :: Log Trentlin [4208]: east
+Tue Nov 10 01:11:37 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [4207]: up
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [3700]: up
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Tue Nov 10 01:11:38 2026 :: Treasure goblin: vanished from room 15044 (The Kitchen, campus.are) (too long in one area).
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [3772]: up
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [3795]: enter portal
+Tue Nov 10 01:11:38 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15000]: east
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15001]: east
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15002]: east
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15003]: east
+Tue Nov 10 01:11:39 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15004]: north
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15010]: north
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15011]: north
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15012]: north
+Tue Nov 10 01:11:40 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Tue Nov 10 01:11:41 2026 :: Log Trentlin [15013]: east
+Tue Nov 10 01:11:41 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Tue Nov 10 01:11:41 2026 :: Log Trentlin [15038]: east
+Tue Nov 10 01:11:41 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Tue Nov 10 01:11:41 2026 :: Log Trentlin [15068]: enter cabinet
+Tue Nov 10 01:11:41 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Tue Nov 10 01:12:30 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Nov 10 01:12:30 2026 :: Loading Alaric's playerfile
+Tue Nov 10 01:12:32 2026 :: Loading Alaric's playerfile
+Tue Nov 10 01:12:32 2026 :: Alaric@208.126.22.104 has connected.
+Tue Nov 10 01:12:33 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Tue Nov 10 01:12:34 2026 :: Log Alaric [2497]: who
+Tue Nov 10 01:12:35 2026 :: Log Alaric [2497]: wake
+Tue Nov 10 01:12:35 2026 :: Log Alaric [2497]: l
+Tue Nov 10 01:12:39 2026 :: Log Alaric [2497]: aq re
+Tue Nov 10 01:12:39 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in azeroth.are, 26 minutes, ordinary
+Tue Nov 10 01:12:45 2026 :: Log Alaric [2497]: aq ab
+Tue Nov 10 01:12:46 2026 :: Log Alaric [2497]: l
+Tue Nov 10 01:13:38 2026 :: Log Trentlin [30200]: play recorder 4
+Tue Nov 10 01:13:38 2026 :: Log Trentlin [30253]: arrived (Isle of the Snake) from 30200
+Tue Nov 10 01:13:45 2026 :: Log Trentlin [30253]: play recorder
+Tue Nov 10 01:13:45 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30253
+Tue Nov 10 01:13:50 2026 :: Log Trentlin [30323]: levitate
+Tue Nov 10 01:13:50 2026 :: Log Trentlin [30323]: d
+Tue Nov 10 01:13:50 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30323
+Tue Nov 10 01:13:53 2026 :: Log Trentlin [30476]: e
+Tue Nov 10 01:13:53 2026 :: Log Trentlin [30477]: arrived (Level 5: Echoing Chamber) from 30476
+Tue Nov 10 01:13:56 2026 :: Log Trentlin [30477]: con pol
+Tue Nov 10 01:14:01 2026 :: Log Trentlin [30477]: iron
+Tue Nov 10 01:14:03 2026 :: Log Trentlin [30477]: affects off: levitate
+Tue Nov 10 01:14:10 2026 :: Log Trentlin [30477]: steel
+Tue Nov 10 01:14:11 2026 :: Log Trentlin [30477]: steel
+Tue Nov 10 01:14:12 2026 :: Log Trentlin [30477]: steel
+Tue Nov 10 01:14:13 2026 :: Log Trentlin [30477]: steel
+Tue Nov 10 01:14:18 2026 :: Log Trentlin [30477]: sk
+Tue Nov 10 01:14:20 2026 :: Log Trentlin [30477]: k pols
+Tue Nov 10 01:14:23 2026 :: Log Trentlin [30477]: fists
+Tue Nov 10 01:14:29 2026 :: Log Trentlin [30477]: fists
+Tue Nov 10 01:14:35 2026 :: Log Trentlin [30477]: fists
+Tue Nov 10 01:14:40 2026 :: Log Trentlin [30477]: kick
+Tue Nov 10 01:14:46 2026 :: Log Trentlin [30477]: kick
+Tue Nov 10 01:14:49 2026 :: Log Trentlin [30477]: killed a pols voice
+Tue Nov 10 01:14:49 2026 :: Log Trentlin [30477]: coin +5 gold
+Tue Nov 10 01:14:49 2026 :: Log Trentlin [30477]: coin +111 silver
+Tue Nov 10 01:14:49 2026 :: Log Trentlin [30477]: coin +33 copper
+Tue Nov 10 01:14:49 2026 :: Log Trentlin [30477]: coin +22 gold
+Tue Nov 10 01:14:52 2026 :: Log Trentlin [30477]: get key
+Tue Nov 10 01:14:52 2026 :: Log Trentlin [30477]: l
+Tue Nov 10 01:14:57 2026 :: Log Trentlin [30477]: bomb north
+Tue Nov 10 01:14:59 2026 :: Log Trentlin [30477]: sac co
+Tue Nov 10 01:14:59 2026 :: Log Trentlin [30477]: coin +62 copper
+Tue Nov 10 01:14:59 2026 :: Log Trentlin [30477]: n
+Tue Nov 10 01:14:59 2026 :: Log Trentlin [30481]: arrived (Level 5: Grey Brick Fireside) from 30477
+Tue Nov 10 01:15:07 2026 :: Log Trentlin [30481]: open west
+Tue Nov 10 01:15:08 2026 :: Log Trentlin [30481]: s
+Tue Nov 10 01:15:08 2026 :: Log Trentlin [30477]: arrived (Level 5: Echoing Chamber) from 30481
+Tue Nov 10 01:15:09 2026 :: Log Trentlin [30477]: w
+Tue Nov 10 01:15:09 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30477
+Tue Nov 10 01:15:09 2026 :: Log Trentlin [30476]: n
+Tue Nov 10 01:15:09 2026 :: Log Trentlin [30480]: arrived (Level 5: Embalmers' Hall) from 30476
+Tue Nov 10 01:15:13 2026 :: Log Trentlin [30480]: con g
+Tue Nov 10 01:15:15 2026 :: Log Trentlin [30480]: k g
+Tue Nov 10 01:15:21 2026 :: Log Trentlin [30480]: nerve
+Tue Nov 10 01:15:30 2026 :: Log Trentlin [30480]: kick
+Tue Nov 10 01:15:36 2026 :: Log Trentlin [30480]: trip
+Tue Nov 10 01:15:37 2026 :: Log Trentlin [30480]: killed a gibdo
+Tue Nov 10 01:15:37 2026 :: Log Trentlin [30480]: coin +5 gold
+Tue Nov 10 01:15:37 2026 :: Log Trentlin [30480]: coin +125 silver
+Tue Nov 10 01:15:37 2026 :: Log Trentlin [30480]: coin +76 copper
+Tue Nov 10 01:15:37 2026 :: Log Trentlin [30480]: coin +65 gold
+Tue Nov 10 01:15:45 2026 :: Log Trentlin [30480]: l in co
+Tue Nov 10 01:15:45 2026 :: Log Trentlin [30480]: get key
+Tue Nov 10 01:15:45 2026 :: Log Trentlin [30480]: sac co
+Tue Nov 10 01:15:45 2026 :: Log Trentlin [30480]: coin +62 copper
