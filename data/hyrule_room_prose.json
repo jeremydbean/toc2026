@@ -765,7 +765,8 @@
     },
     "L4:B3": {
       "name": "Seeping Gallery",
-      "description": "Water oozes from the mortar in long green stains and gathers in shallow hollows across the floor, black in the unlit gloom. Fluttering echoes and a litter of droppings betray a roost in the dark vault above, where wings dart and pause. The way out lies south, with a second opening to the west."
+      "description": "Water oozes from the mortar in long green stains and gathers in shallow hollows across the floor, black in the unlit gloom. Fluttering echoes and a litter of droppings betray a roost in the dark vault above, where wings dart and pause. The way out lies south, with a second opening to the west.",
+      "dark": true
     },
     "L4:A4": {
       "name": "Still Corridor",
@@ -1261,7 +1262,8 @@
     },
     "L8:B5": {
       "name": "Hall of Four Gouges",
-      "description": "Four deep troughs are gouged into the north wall where four long dragon necks thrashed against the stone, and the floor below is blackened and pocked with bite marks from severed heads that kept on flying. The air tastes of ash. Cracked walls lead south and west, and the door north is locked, a lion's head around its keyhole."
+      "description": "Four deep troughs are gouged into the north wall where four long dragon necks thrashed against the stone, and the floor below is blackened and pocked with bite marks from severed heads that kept on flying. The air tastes of ash. Cracked walls lead south and west, and the door north is locked, a lion's head around its keyhole.",
+      "dark": true
     },
     "L8:C5": {
       "name": "Ash-Grey Watch Chamber",
@@ -1393,7 +1395,8 @@
     },
     "L9:C4": {
       "name": "Ganon's Dark Chamber",
-      "description": "Darkness fills this vast hall so completely that no lamp pushes it back. The air is hot and foul with the reek of a great boar, and fireballs have left scorch marks in rings around a lord who cannot be seen until struck. Claw marks appear where nothing stands, and heaps of ash wait to take a fallen shape. Shutters stand south, and on the north wall a golden door gleams, sealed with a heavy lock."
+      "description": "Darkness fills this vast hall so completely that no lamp pushes it back. The air is hot and foul with the reek of a great boar, and fireballs have left scorch marks in rings around a lord who cannot be seen until struck. Claw marks appear where nothing stands, and heaps of ash wait to take a fallen shape. Shutters stand south, and on the north wall a golden door gleams, sealed with a heavy lock.",
+      "dark": true
     },
     "L9:D4": {
       "name": "Sealed Alcove of Embers",

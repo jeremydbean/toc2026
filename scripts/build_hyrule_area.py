@@ -1621,6 +1621,7 @@ class ExitSpec:
 # mountain and desert. Hyrule's overworld is all five, and standing in a
 # field at night unable to see is not what the area is for.
 ALWAYS_LIT_SECTORS = frozenset((2, 3, 4, 5, 10))
+SECT_UNDERGROUND = 11
 
 
 @dataclass
@@ -1637,6 +1638,7 @@ class RoomSpec:
     entities: dict[str, int] = field(default_factory=dict)
     boss_level: int | None = None
     extras: list[tuple[str, str]] = field(default_factory=list)
+    dark: bool = False
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -2599,6 +2601,12 @@ class Prose:
     def description(self, group: str, key: str) -> str:
         return wrap_description(self.entry(group, key)["description"])
 
+    def dark(self, group: str, key: str) -> bool:
+        """Whether the room is dark by its own description -- "dark": true
+        in the prose. Nothing else is: a dungeon is not dark for being a
+        dungeon (owner, 2026-11-10: no darkness unless it fits the room)."""
+        return bool(self.entry(group, key).get("dark", False))
+
     def extras(self, group: str, key: str) -> list[tuple[str, str]]:
         """A room's LOOK details: what its description names, so LOOK CISTERN
         answers in the room that calls itself a cistern."""
@@ -2656,11 +2664,12 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
             spec = RoomSpec(
                 room["vnum"], f"Level {level}: {prose.name('dungeons', key)}",
                 prose.description("dungeons", key),
-                "ADN", 11, dungeon=True,
+                "DN", 11, dungeon=True,
                 objects=objects,
                 entities={str(vnum): count for vnum, count in dungeon_spawns(level, room).items()},
                 boss_level=level if room["role"] == "boss" else None,
                 extras=prose.extras("dungeons", key),
+                dark=prose.dark("dungeons", key),
             )
             for direction, exit_data in room["exits"].items():
                 door_type = exit_data["type"]
@@ -2679,8 +2688,9 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
             rooms[cellar["vnum"]] = RoomSpec(
                 cellar["vnum"], f"Level {level}: {prose.name('dungeons', key)}",
                 prose.description("dungeons", key),
-                "ADN", 11, dungeon=True, objects=[cellar["item_vnum"]],
+                "DN", 11, dungeon=True, objects=[cellar["item_vnum"]],
                 extras=prose.extras("dungeons", key),
+                dark=prose.dark("dungeons", key),
             )
             add_two_way_exit(
                 rooms, cellar["source_vnum"], "down", cellar["vnum"],
@@ -2730,9 +2740,10 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
              people: list[str]) -> RoomSpec:
         rooms[vnum] = RoomSpec(
             vnum, prose.name(group, prose_key), prose.description(group, prose_key),
-            "ADN", 11, objects=objects,
+            "DN", 11, objects=objects,
             entities={str(npc_vnum(key)): 1 for key in people},
             extras=prose.extras(group, prose_key),
+            dark=prose.dark(group, prose_key),
         )
         return rooms[vnum]
 
@@ -2893,7 +2904,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
         rooms[goal_vnum].objects.append(30217 if level == 9 else 30529 + level)
 
     level_nine = manifest["dungeons"][8]
-    rooms[level_nine["goal_vnum"]].flags = "ADKN"
+    rooms[level_nine["goal_vnum"]].flags = "DKN"
 
     # Gear is deliberately available throughout each band, not only as a final reward.
     rooms[30650].objects.append(GEAR_STAGES[0][0])
@@ -2918,12 +2929,18 @@ def room_flag_word(room: RoomSpec) -> str:
     This lived only in the generated area file for a while, hand-applied,
     which meant the next regeneration would have quietly undone it and
     taken tests/test_hyrule_progression.py down with it.
-    """
-    if room.dungeon:
-        return room.flags
 
-    flags = room.flags.replace("N", "")
-    if room.sector in ALWAYS_LIT_SECTORS:
+    Light is settled here too (owner, 2026-11-10): a room is dark only when
+    its prose says so ("dark": true -- Ganon's Dark Chamber, the Seeping
+    Gallery, and the Lion's guardian's hall, whose gate asks the Red Candle
+    to light it), not for being a dungeon or a cave. Every other room whose
+    sector would go dark at sunset -- the overworld's open ground, and the
+    underground sector of the dungeons and caves -- is always lit.
+    """
+    flags = room.flags if room.dungeon else room.flags.replace("N", "")
+    if room.dark:
+        return "A" + flags
+    if room.sector in ALWAYS_LIT_SECTORS or room.sector == SECT_UNDERGROUND:
         return f"{flags}Z B"
     return flags or "0"
 

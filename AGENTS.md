@@ -855,6 +855,17 @@ carries `ROOM2_ALWAYS_LIT` (flags2 `B`, formerly `ROOM2_B_UNUSED`) because
 field, forest, hills, mountain and desert are sectors `room_is_dark` blacks out
 at sunset.
 
+**A Hyrule room is dark only when it fits the room** (owner, 2026-11-10).
+Every dungeon room and cave was generated ROOM_DARK -- Heartglow Hollow,
+with two fires on its wall, among them. Darkness is now `"dark": true` on
+the room's entry in `data/hyrule_room_prose.json` (`Prose.dark`,
+`RoomSpec.dark`), set on three rooms: the Seeping Gallery ("the unlit
+gloom"), the Lion's guardian's hall (its gate asks the Red Candle to light
+it) and Ganon's Dark Chamber. Every other room in a sector that darkens at
+night -- open ground and the dungeons' underground sector -- carries
+`ROOM2_ALWAYS_LIT` (`room_flag_word`). Mark a room dark in the prose, never
+in the area file; `tests/test_hyrule_progression.py` holds the list.
+
 ## Area Work
 
 The authoritative reference is `wiki/area-building-guide.md`.

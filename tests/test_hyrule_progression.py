@@ -305,6 +305,32 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertEqual([], unlit,
                          "these overworld rooms go dark at sunset")
 
+    def test_only_rooms_that_say_they_are_dark_are_dark(self) -> None:
+        """Owner, 2026-11-10: no room in Hyrule is dark unless its own
+        description makes it so. Every dungeon room and cave used to be
+        ROOM_DARK -- Heartglow Hollow with two fires on its wall among them.
+        Now darkness is "dark": true in data/hyrule_room_prose.json, and
+        every other room whose sector would go dark at night -- open ground
+        and the underground sector -- is always lit."""
+        prose = json.loads(Path("data/hyrule_room_prose.json").read_text(encoding="utf-8"))
+        marked = {entry["name"] for group in ("overworld", "dungeons", "special")
+                  for entry in prose[group].values()
+                  if isinstance(entry, dict) and entry.get("dark")}
+        # The Lion's guardian's hall is the room its gate calls "utterly,
+        # unnaturally dark" and asks the Red Candle to light.
+        self.assertEqual(marked, {"Seeping Gallery", "Hall of Four Gouges",
+                                  "Ganon's Dark Chamber"})
+        dark = {room.name.split(": ", 1)[-1] for room in self.hyrule_rooms.values()
+                if "dark" in decode_flags(room.room_flags, ROOM_FLAGS)}
+        self.assertEqual(dark, marked)
+        nightfall = {2, 3, 4, 5, 10, 11}   # open ground and underground
+        unlit = sorted(
+            vnum for vnum, room in self.hyrule_rooms.items()
+            if room.name.split(": ", 1)[-1] not in marked
+            and int(room.sector_type) in nightfall
+            and "always_lit" not in decode_flags(room.room_flags2, ROOM_FLAGS2))
+        self.assertEqual([], unlit, "these rooms go dark at sunset")
+
     def test_overworld_and_dungeon_reset_counts_match_the_manifest(self) -> None:
         bands = manifest_bands(self.manifest)
         expected: Counter[tuple[int, int]] = Counter()

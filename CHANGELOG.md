@@ -8,6 +8,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule is dark only where it fits the room** (owner, 2026-11-10).
+  All 246 dungeon rooms and 66 caves were generated ROOM_DARK whatever
+  their prose said. Darkness is now `"dark": true` in
+  `data/hyrule_room_prose.json`, on three rooms (the Seeping Gallery, the
+  Lion's guardian's hall, Ganon's Dark Chamber); every other room is
+  always lit, day and night. `tests/test_hyrule_progression.py`.
 - **Hyrule's order, held against the audit of 2026-11-10.** Three
   investigations found ways round it, five proven live. The Triforce
   (30286) is NODROP like its pieces (generator, regenerated). Nobody but
