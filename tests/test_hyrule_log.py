@@ -56,7 +56,8 @@ def make(mud: LiveMud, name: str, level: int) -> None:
         if not client.wait_closed():
             raise AssertionError(f"{name} did not leave the world")
     patch_player_file(mud, name, Levl=level, Room=TEMPLE, Attr="25 25 25 25 25",
-                      HMV="20000 20000 1000 1000 1000 1000", HMVP="20000 1000 1000")
+                      HMV="20000 20000 1000 1000 1000 1000", HMVP="20000 1000 1000",
+                      AfBy=512)     # infravision: a dungeon room may be dark
 
 
 class HyruleLogSourceTests(unittest.TestCase):

@@ -58,7 +58,9 @@ class GuardianDespairLiveTests(unittest.TestCase):
             make(mud, "Zdespstaff", Levl=70, Room=WEST_PADDOCK)
             make(mud, "Zdespmonk", Levl=30, Room=WEST_PADDOCK,
                  HMV="30000 30000 1000 1000 1000 1000",
-                 HMVP="30000 1000 1000", Sk="100 'despair'")
+                 HMVP="30000 1000 1000", Sk="100 'despair'",
+                 AfBy=512)      # infravision: the paddock is dark at night
+
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as monk:
                 login(staff, "Zdespstaff", PW)
                 login(monk, "Zdespmonk", PW)
@@ -71,8 +73,7 @@ class GuardianDespairLiveTests(unittest.TestCase):
                 # Out of the fight's way; STAT still finds it from the Temple.
                 staff.must("goto 4207", "")
 
-                monk.sync("kill digdogger", timeout=60)
-                replies = []
+                replies = [monk.sync("kill digdogger", timeout=60)]
                 # Ten directions are drawn and only east leads out, so a
                 # FLEE panics about two times in five; try until one goes.
                 for _ in range(20):
@@ -81,9 +82,18 @@ class GuardianDespairLiveTests(unittest.TestCase):
                     if "You flee from combat" in said:
                         break
                     if "aren't fighting" in said:
-                        break
+                        # Out of the fight with nobody fleeing: a guardian
+                        # despair drove off has left the paddock (the old
+                        # bug), and one still standing there is fought
+                        # again (CI, 2026-11-10: the first FLEE found the
+                        # monk already out of the fight).
+                        stat = staff.must("stat mob digdogger", "Room:")
+                        if not re.search(r"Room: %d\b" % WEST_PADDOCK, stat):
+                            break
+                        replies.append(monk.sync("kill digdogger", timeout=60))
+                        continue
                     if "PANIC" not in said:
-                        monk.sync("kill digdogger", timeout=60)
+                        replies.append(monk.sync("kill digdogger", timeout=60))
                 transcript = "\n".join(replies)
 
                 where = re.search(r"Room: (-?\d+)",
