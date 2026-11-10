@@ -2002,6 +2002,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
       }
 
       dam1 = apply_hyrule_relic_damage_reduction( ch, dam1, dam_type1 );
+      /* Nor a Hyrule creature that nothing can hurt yet (hyrule.c). */
+      if ( hyrule_shrugs_off( ch ) )
+	dam1 = 0;
 
       /* Staff invulnerability holds against a shield's reflection as it
          does against a blow (review, 2026-11-04: the reflection took hit
@@ -6331,6 +6334,17 @@ void do_shoot( CHAR_DATA *ch, char *argument )
     if ( !IS_NPC(victim) )
     {
 	send_to_char( "You cannot shoot at players from another room.\n\r", ch );
+	return;
+    }
+
+    /* Hyrule's creatures are faced in their own rooms: a shot through a
+       doorway wounded a guardian from outside the chamber its tool gate
+       keeps, and broke the fight off so it never answered (audit,
+       2026-11-10). Said before the lag. */
+    if ( hyrule_native( victim ) && !IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    {
+	act( "$N is beyond a clear shot; in Hyrule you must face it in its own room.",
+	     ch, NULL, victim, TO_CHAR );
 	return;
     }
 

@@ -2610,6 +2610,10 @@ void reset_area( AREA_DATA *pArea )
              &&  IS_SET(pexit->exit_info, EX_LOCKED)
              && !IS_SET(pexit->exit_info, EX_WIZLOCKED)
              && !IS_SET(pRoomIndex->room_flags, ROOM_NEWBIES_ONLY)
+             /* Not Hyrule's: a trap takes PICKPROOF off a small-key door,
+                and a teleport trap carried a player out of a no-recall
+                dungeon (audit, 2026-11-10). Its doors are its puzzle. */
+             && !IS_HYRULE_ROOM_VNUM(pRoomIndex->vnum)
              && number_percent () <= 1
              && number_range(1,200) <= 1)
             {

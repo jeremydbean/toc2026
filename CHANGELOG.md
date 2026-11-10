@@ -8,6 +8,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule's lesser holes** (audit follow-ups, 2026-11-10). A shutter into
+  a guardian's chamber no longer opens for a player its tool gate turns
+  away; SHOOT through a doorway is refused at Hyrule's creatures; a fire
+  or frost shield's reflection and poison and plague ticks no longer hurt
+  a creature nothing can hurt yet (an unshrunk Digdogger); and resets no
+  longer trap Hyrule's doors at random. `tests/test_hyrule_followups_nov10.py`.
 - **Guardian keys, chest prizes and progression tools are each player's
   own; Ganon's finish is his own phase** (review of 57cc3568 and owner,
   2026-11-10). A guardian carried one key, lootable and tradeable: a

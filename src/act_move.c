@@ -1281,6 +1281,17 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     {
         if ( hyrule_tool_refuses( ch, in_room, pexit ) )
             return;
+        /* Asked of the gate first, and the gate says why: a player the
+           guardian's chamber turned away left its shutter standing open
+           behind them (audit, 2026-11-10). */
+        if ( IS_SET(pexit->exit_info, EX_CLOSED)
+        &&   is_name( "shutter", pexit->keyword )
+        &&   !hyrule_room_has_guardian(in_room)
+        &&   hyrule_gate_refuses( ch, in_room, pexit->u1.to_room ) )
+        {
+            runner = 2;
+            return;
+        }
         if ( IS_SET(pexit->exit_info, EX_CLOSED)
         &&   is_name( "shutter", pexit->keyword )
         &&   !hyrule_room_has_guardian(in_room) )

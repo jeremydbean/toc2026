@@ -3846,6 +3846,7 @@ int     hyrule_guardian_key ( int level );
 void    hyrule_guardian_slain ( CHAR_DATA *killer, CHAR_DATA *guardian );
 bool    hyrule_chest_claim ( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container );
 bool    hyrule_progression_tool ( int vnum );
+bool    hyrule_shrugs_off  ( CHAR_DATA *victim );
 bool    hyrule_tool_claim  ( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container );
 void    hyrule_destroy_bound_within ( OBJ_DATA *obj );
 

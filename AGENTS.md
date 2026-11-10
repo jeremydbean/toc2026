@@ -1155,7 +1155,19 @@ set by `reform_hyrule_ganon` alone and read by `is_stunned_hyrule_ganon`,
 `spec_ganon`'s repair and regeneration, LOOK's red flash and `hit_gain`
 (the tick no longer heals him out of it when an ordinary NO_RECOVER
 affect wears off). `hyrule_state` is shared with Digdogger and Patra, so
-every reading also asks that it is Ganon. `reset_area` refills and relocks Hyrule's chests
+every reading also asks that it is Ganon.
+
+**The audits' lesser holes** (2026-11-10;
+`tests/test_hyrule_followups_nov10.py`). A shutter into a guardian's
+chamber asks the chamber's gate before it opens, and the gate says why
+(it opened, then refused, and stood open behind the player). SHOOT
+through a doorway refuses any `hyrule_native` target: Hyrule's creatures
+are faced in their own rooms. Hit points that come off outside a blow --
+a fire or frost shield's reflection, the poison and plague ticks -- ask
+`hyrule_shrugs_off` (a bubble or blade trap, a ringed patra, an unshrunk
+digdogger), or the shield and a poison tick finished Digdogger with no
+Recorder. A reset never traps a Hyrule door at random: a trap took
+PICKPROOF off a small-key door, and its teleport left a no-recall dungeon. `reset_area` refills and relocks Hyrule's chests
 even with players about, since Hyrule is one area -- but never one a player
 is standing at. `COMBINE TRIFORCE` is the only way to The Triforce.
 

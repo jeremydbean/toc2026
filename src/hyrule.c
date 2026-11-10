@@ -1328,6 +1328,23 @@ int hyrule_patra_eyes_left( CHAR_DATA *mob )
 }
 
 /*
+ * Whether a Hyrule creature can be harmed at all just now -- a bubble or
+ * blade trap, a patra inside its ring of eyes, a digdogger the Recorder has
+ * not shrunk -- asked in silence where hit points come off outside a blow:
+ * a fire or frost shield's reflection, and the poison and plague ticks. A
+ * reflection brought an unshrunk Digdogger to one hit point and a poison
+ * tick finished it, with no Recorder (audit, 2026-11-10).
+ */
+bool hyrule_shrugs_off( CHAR_DATA *victim )
+{
+    return victim != NULL && IS_NPC(victim)
+        && ( hyrule_enemy_is_invincible( victim )
+          || hyrule_patra_eyes_left( victim ) > 0
+          || ( hyrule_is_digdogger( victim )
+            && victim->hyrule_state != HYRULE_DIGDOGGER_SHRUNK ) );
+}
+
+/*
  * damage()'s question, before a landed blow comes off: does something
  * turn it aside? A bubble or a blade trap cannot be harmed at all, and the
  * fight with it is over at once. A patra's great eye cannot be reached while its ring of

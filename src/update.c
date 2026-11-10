@@ -2096,7 +2096,9 @@ void char_update( void )
 	    dam = UMIN(ch->level,5);
 	    ch->mana -= dam;
 	    ch->move -= dam;
-	    damage( ch, ch, dam, gsn_plague,DAM_DISEASE);
+	    /* Nothing harms a Hyrule creature that cannot be hurt yet. */
+	    if ( !hyrule_shrugs_off( ch ) )
+		damage( ch, ch, dam, gsn_plague,DAM_DISEASE);
 	}
 	else if ( ch != NULL && IS_AFFECTED(ch, AFF_POISON) )
 	{
@@ -2105,7 +2107,8 @@ void char_update( void )
 	    {
 	        ROOM_INDEX_DATA *poisoned_in = ch->in_room;
 
-	        damage( ch, ch, dice(2,4), gsn_poison, DAM_POISON );
+	        if ( !hyrule_shrugs_off( ch ) )
+	            damage( ch, ch, dice(2,4), gsn_poison, DAM_POISON );
 	        if ( gone_after_blow( ch, poisoned_in ) )
 	            continue;  /* killed: an extracted mobile must not be touched */
 	    }
