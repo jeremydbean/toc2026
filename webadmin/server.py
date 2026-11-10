@@ -4409,6 +4409,11 @@ def _gear_obtainable_key(key_vnum: int, level: int, depth: int = 0) -> bool:
         return False
     if key.carried_by:
         return True
+    # A Hyrule guardian's key is handed out at the guardian's death to each
+    # player the kill credits (hyrule_guardian_slain), and no reset places
+    # it since 2026-11-10: IS_HYRULE_BOSS_KEY in src/merc.h.
+    if 30630 <= key_vnum <= 30637 or key_vnum == 30243:
+        return True
     for room in getattr(parser, "rooms", {}).values():
         if key_vnum in getattr(room, "objects", []) and _gear_room_open(room, level):
             return True

@@ -1800,6 +1800,11 @@ static bool gear_key_obtainable( int key_vnum )
 
     if ( key_vnum <= 0 )
         return true;
+    /* A Hyrule guardian's key is handed out at the guardian's death, to
+       each player the kill credits (hyrule_guardian_slain): no reset
+       places it since 2026-11-10. */
+    if ( IS_HYRULE_BOSS_KEY( key_vnum ) )
+        return true;
     for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
         for ( pReset = pArea->reset_first; pReset != NULL;
               pReset = pReset->next )
