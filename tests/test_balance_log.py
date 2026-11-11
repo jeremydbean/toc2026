@@ -357,7 +357,11 @@ class BalanceLiveTests(unittest.TestCase):
         self.assertGreater(float(engaged[group_kill][23]), 0, "predicted rounds")
         self.assertRegex(slain[0][22], r"^\d+$", "the rounds it fought")
         self.assertEqual(len(slain[0]), 26, slain[0])
-        self.assertGreaterEqual(int(slain[0][23]), int(slain[0][24]), "landed of swung")
+        # Every kill's landed swings are among its swings: the first blow's
+        # swing was lost before the encounter had its id (live, 2026-11-11).
+        for row in slain:
+            self.assertGreaterEqual(int(row[23]), int(row[24]), ("landed of swung", row))
+        self.assertGreaterEqual(int(slain[0][23]), 1, "the killing swing counts")
         self.assertGreater(int(slain[1][25]), 0, "the magic missile's hit points")
         audit = consider_audit_pairs(text)
         self.assertGreaterEqual(len(audit), 4, "every fight held to its prediction")

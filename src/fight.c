@@ -1552,6 +1552,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 {
     CHAR_DATA *vch;
     bool immune;
+    bool count_swing;
     bool hyrule_silver_arrow_hit;
     int shield = 0;
     LIST_ITERATOR iter;
@@ -1567,12 +1568,12 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( victim->position == POS_DEAD )
 	return false;
 
-    /* A player's melee swing at a mobile in an encounter, landed or not
-       (a miss comes here with nothing), for log/progress.tsv: CONSIDER
-       assumes every blow lands, and this is how many did. */
-    if ( ch != victim && !IS_NPC(ch) && IS_NPC(victim) && victim->encounter_seq > 0
-    &&   dt >= TYPE_HIT )
-	victim->enc_swings++;
+    /* A player's melee swing at a mobile, landed or not (a miss comes here
+       with nothing), for log/progress.tsv: CONSIDER assumes every blow
+       lands, and this is how many did. Counted below, once set_fighting
+       has given the encounter its id -- the first blow's swing was lost
+       when it was counted here (live, 2026-11-11: one landed of none). */
+    count_swing = ch != victim && !IS_NPC(ch) && IS_NPC(victim) && dt >= TYPE_HIT;
     /* Who fought a Hyrule guardian, for its keys (hyrule.c). */
     if ( ch != victim )
 	hyrule_note_striker( ch, victim );
@@ -1668,6 +1669,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 		return false;
 	    }
 	}
+
+	if ( count_swing && victim->encounter_seq > 0 )
+	    victim->enc_swings++;
 
 	/*
 	 * More charm stuff.

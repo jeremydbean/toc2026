@@ -184,20 +184,32 @@ class ProgressLogTests(unittest.TestCase):
                 login(hunter, "Zburner", PW)
                 login(setter, "Zsetter", PW)
                 setter.must("set char zburner hitroll 40", "")
+                # A fire shield on its own, cast by staff: EMPOWER also gave
+                # the guard divine protection, whose spared death began the
+                # next fight before the test did, sometimes with no shield
+                # (CI and local, 2026-11-11).
+                setter.must("set skill zsetter 'fire shield' 100", "")
+
                 def burning_guard() -> None:
-                    """A guard with a fire shield (EMPOWER), loaded again if
-                    the last fight killed it outright."""
+                    """A guard with a fire shield, loaded again if the last
+                    fight killed it."""
                     if "Vnum:" not in setter.sync("stat mob sparring", timeout=60):
                         setter.must(f"load mob {SMURF}", "You create")
-                        setter.must("empower sparring perm", "mpower")   # fire shield among them
+                        # Low enough that the level 20 hunter's blows land
+                        # (CI: a level 27 guard dodged and parried a minute
+                        # of them), high enough to pay experience.
+                        setter.must("set char sparring level 15", "")
+                    if "Flaming Aura" not in setter.sync("stat mob sparring", timeout=60):
+                        setter.sync("cast 'fire shield' sparring", timeout=60)
+                    stat = setter.sync("stat mob sparring", timeout=60)
+                    self.assertIn("fire shield", stat.lower(), stat)
 
                 # Too many hit points to die by blows: it stands and burns
                 # the hunter until staff end it at one hit point.
                 burning_guard()
-                # EMPOWER brings divine protection: the first death is
-                # spared and credits nobody, and the next fight starts a
-                # new ledger (set_fighting) -- so each fight is fought until
-                # the aura has burned the hunter before it is ended.
+                # Each fight is fought until the aura has burned the hunter
+                # before staff end it; the next fight starts a new ledger
+                # (set_fighting).
                 mark = len(hunter.transcript)
                 for _ in range(3):
                     burning_guard()
@@ -209,7 +221,7 @@ class ProgressLogTests(unittest.TestCase):
                     # expect(): the death can come in the same burst as the
                     # aura, and expect() would have used it up (CI,
                     # 2026-11-10).
-                    self.assertTrue(seen(hunter, burn, "Flaming Aura", 60),
+                    self.assertTrue(seen(hunter, burn, "Flaming Aura", 180),
                                     hunter.transcript[-1500:])
                     setter.must("set char sparring hp 1", "")
                     setter.must("restore sparring", "")
