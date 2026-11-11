@@ -20675,3 +20675,4 @@
 1794358363	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
 1794358364	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
 1794358364	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794358710	coin	Alaric	57	2497	dresden.are	+61443412	bank	interest	bank	24902789209
