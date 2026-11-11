@@ -2110,7 +2110,7 @@ static bool obj_affect_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
         top_affect++;
     }
     paf->level    = o->level;
-    paf->modifier = (sh_int) mod;
+    paf->modifier = mod;
     return true;
 }
 

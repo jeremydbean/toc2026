@@ -1078,7 +1078,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
     af.level     = (sh_int)(level);
     af.duration  = (sh_int)(level/3);
     af.location  = APPLY_MANA;
-    af.modifier  = (sh_int)(-1 * (dream));
+    af.modifier  = (-1 * (dream));
     af.bitvector = 0;
     af.bitvector2= AFF2_NO_RECOVER;
     affect_to_char( victim, &af );
@@ -1086,7 +1086,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
     if(!IS_NPC(ch) && IS_NPC(victim) )
     {
 	af.location = APPLY_AC;
-	af.modifier = (sh_int)(dice(level/2,3));
+	af.modifier = (dice(level/2,3));
 	affect_to_char( victim, &af);
     }
 
@@ -3781,9 +3781,9 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
 	ch->max_hit = (int)UMAX(1, ch->max_hit - penalty);
 	ch->max_mana = (int)UMAX(1, ch->max_mana - penalty);
 	ch->max_move = (int)UMAX(1, ch->max_move - penalty);
-	ch->pcdata->perm_hit = (sh_int)UMAX(1, ch->pcdata->perm_hit - penalty);
-	ch->pcdata->perm_mana = (sh_int)UMAX(1, ch->pcdata->perm_mana - penalty);
-	ch->pcdata->perm_move = (sh_int)UMAX(1, ch->pcdata->perm_move - penalty);
+	ch->pcdata->perm_hit = UMAX(1, ch->pcdata->perm_hit - penalty);
+	ch->pcdata->perm_mana = UMAX(1, ch->pcdata->perm_mana - penalty);
+	ch->pcdata->perm_move = UMAX(1, ch->pcdata->perm_move - penalty);
 
 	nuke = number_range(0, MAX_STATS - 1);
 	ch->perm_stat[nuke] = (sh_int)UMAX(3, ch->perm_stat[nuke] - 3);

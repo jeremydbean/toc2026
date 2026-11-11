@@ -6556,7 +6556,7 @@ void do_steel_fist( CHAR_DATA *ch, char *argument )
 	af.level        = (sh_int)(level);
 	af.duration     = (sh_int)(dice(3,2) + 2);
 	af.location     = APPLY_DAMROLL;
-	af.modifier     = (sh_int)(dice(3,3) + level/6);
+	af.modifier     = (dice(3,3) + level/6);
 	af.bitvector    = 0;
 	af.bitvector2   = 0;
 	affect_to_char( ch, &af );
@@ -7343,7 +7343,7 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
             imm_af.level     = (sh_int)level;
             imm_af.duration  = af.duration;
             imm_af.location  = APPLY_IMMUNITY;
-            imm_af.modifier  = (sh_int)imm_flag;
+            imm_af.modifier  = imm_flag;
             imm_af.bitvector  = 0;
             imm_af.bitvector2 = 0;
             affect_to_char( ch, &imm_af );

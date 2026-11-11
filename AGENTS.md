@@ -2036,6 +2036,18 @@ tests). Nothing is deleted, and the state sync carries both folders. Rules:
 - Python tools and the dashboard list `player/` only, so archived
   characters are not in their lists. `tests/test_player_archive.py`.
 
+## Pools Are Not 16-Bit
+
+Owner, 2026-11-11. Hit points, mana and endurance -- the live pools, the
+permanent ones (`pcdata->perm_hit/mana/move`) and every affect's
+`modifier` -- are `int`, held to `POOL_MAX` (a billion, in `merc.h`) so a
+pool plus its bonuses never overflows. SET HP/MANA/END/MOVE/MAXMOVE,
+TITANIC's five-fold boost and the black dragon's size stop there, not at
+the 30,000 the old 16-bit fields forced. Never cast a pool or a modifier
+through `(sh_int)` or `clamp_sh_int` again (`tests/test_pool_cap.py`).
+Player files need nothing: `HMVP` and the affect lines were always plain
+numbers.
+
 ## Fixing Characters At Their Next Login
 
 **A bug that left characters wrong is corrected by a login fix, never by

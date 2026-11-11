@@ -923,7 +923,7 @@ struct  affect_data
     sh_int              level;
     sh_int              duration;
     sh_int              location;
-    sh_int              modifier;
+    int                 modifier;   /* int, not sh_int: a pool bonus past 32,767 */
     int                 bitvector;
     int                 bitvector2;
 };
@@ -2363,9 +2363,9 @@ struct  pc_data
     int                 num_remorts;
     sh_int              guild;
     sh_int              castle;
-    sh_int              perm_hit;
-    sh_int              perm_mana;
-    sh_int              perm_move;
+    int                 perm_hit;
+    int                 perm_mana;
+    int                 perm_move;
     sh_int              true_sex;
     int                 last_level;
     sh_int              psionic;
@@ -3141,6 +3141,11 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 #if     defined(NOCRYPT)
 #define crypt(s1, s2)   (s1)
 #endif
+
+/* The most a hit point, mana or endurance pool may hold (owner, 2026-11-11:
+   the 16-bit fields that held them at 32,767 are gone). Far from INT_MAX,
+   so a pool plus its bonuses never overflows. */
+#define POOL_MAX        1000000000
 
 /* Data files used by the server. */
 #define PLAYER_DIR      "../player/"

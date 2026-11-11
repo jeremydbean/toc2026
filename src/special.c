@@ -3384,7 +3384,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	 }
 	 else
 	 {
-	   ch->pcdata->perm_hit = (sh_int)UMAX(1,
+	   ch->pcdata->perm_hit = UMAX(1,
 	       ch->pcdata->perm_hit - 20);
 	   ch->max_hit = (int)UMAX(1, ch->max_hit - 20);
 	   ch->hit = (int)URANGE(1, ch->hit - 20, ch->max_hit);

@@ -1330,7 +1330,7 @@ void load_objects( FILE *fp )
                 paf->level              = pObjIndex->level;
                 paf->duration           = -1;
                 paf->location           = (sh_int)(fread_number( fp ));
-                paf->modifier           = (sh_int)(fread_number( fp ));
+                paf->modifier           = (fread_number( fp ));
                 paf->bitvector          = 0;
                 paf->bitvector2         = 0;
                 paf->next               = pObjIndex->affected;
@@ -1365,7 +1365,7 @@ void load_objects( FILE *fp )
                 paf->level              = pObjIndex->level;
                 paf->duration           = -1;
                 paf->location           = (sh_int)(fread_number( fp ));
-                paf->modifier           = (sh_int)(fread_number( fp ));
+                paf->modifier           = (fread_number( fp ));
                 bits                    = fread_flag( fp );
                 paf->bitvector          = 0;
                 paf->bitvector2         = 0;
@@ -4459,7 +4459,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
           paf->level              = obj->level;
           paf->duration           = -1;
           paf->location           = (sh_int)(obj_apply);
-          paf->modifier           = (sh_int)(obj_modifier);
+          paf->modifier           = (obj_modifier);
           paf->bitvector          = 0;
           paf->bitvector2         = 0;
           paf->next               = obj->affected;
@@ -4475,7 +4475,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
           paf->level              = obj->level;
           paf->duration           = -1;
           paf->location           = (sh_int)(obj_apply);
-          paf->modifier           = (sh_int)(obj_modifier);
+          paf->modifier           = (obj_modifier);
           paf->bitvector          = 0;
           paf->bitvector2         = 0;
           paf->next               = obj->affected;
@@ -4490,7 +4490,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
           paf->level              = obj->level;
           paf->duration           = -1;
           paf->location           = (sh_int)(obj_apply);
-          paf->modifier           = (sh_int)(obj_modifier);
+          paf->modifier           = (obj_modifier);
           paf->bitvector          = 0;
           paf->bitvector2         = 0;
           paf->next               = obj->affected;
@@ -4504,7 +4504,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
         paf->level              = obj->level;
         paf->duration           = -1;
         paf->location           = (sh_int)(obj_apply);
-        paf->modifier           = (sh_int)(obj_modifier);
+        paf->modifier           = (obj_modifier);
         paf->bitvector          = 0;
         paf->bitvector2         = 0;
         paf->next               = obj->affected;

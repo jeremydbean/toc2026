@@ -3950,7 +3950,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		else
 		  paf->level	= (sh_int)(fread_number( fp ));
 		paf->duration	= (sh_int)(fread_number( fp ));
-		paf->modifier	= (sh_int)(fread_number( fp ));
+		paf->modifier	= (fread_number( fp ));
 		paf->location	= (sh_int)(fread_number( fp ));
 		paf->bitvector	= fread_number( fp );
 		paf->bitvector2 = fread_number( fp );
@@ -4180,9 +4180,9 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	    if ( !str_cmp( word, "HpManaMovePerm" ) || !str_cmp(word,"HMVP"))
 	    {
-		ch->pcdata->perm_hit	= (sh_int)(fread_number( fp ));
-		ch->pcdata->perm_mana   = (sh_int)(fread_number( fp ));
-		ch->pcdata->perm_move   = (sh_int)(fread_number( fp ));
+		ch->pcdata->perm_hit	= (fread_number( fp ));
+		ch->pcdata->perm_mana   = (fread_number( fp ));
+		ch->pcdata->perm_move   = (fread_number( fp ));
 		fMatch = true;
 		break;
 	    }
@@ -4575,7 +4575,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 
     	     	paf->level	= (sh_int)(fread_number(fp));
     	     	paf->duration	= (sh_int)(fread_number(fp));
-    	     	paf->modifier	= (sh_int)(fread_number(fp));
+    	     	paf->modifier	= (fread_number(fp));
     	     	paf->location	= (sh_int)(fread_number(fp));
 		paf->bitvector	= fread_number(fp);
 		paf->bitvector2 = fread_number(fp);
@@ -4886,7 +4886,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		else
 		  paf->level	= (sh_int)(fread_number( fp ));
 		paf->duration	= (sh_int)(fread_number( fp ));
-		paf->modifier	= (sh_int)(fread_number( fp ));
+		paf->modifier	= (fread_number( fp ));
 		paf->location	= (sh_int)(fread_number( fp ));
 		paf->bitvector	= fread_number( fp );
 		paf->bitvector2 = fread_number( fp );

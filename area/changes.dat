@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111pools 2026-11-11
+Hit points, mana and endurance are no longer stuck under about 32,000:
+TITANIC now gives its full five-fold boost however big you are, and gear
+and spells can lift your pools as high as they go.
+
 @ 20261111numbers 2026-11-11
 A number you type must be a whole number now. ROLL 2d6+3, WIMPY 5abc
 or a number too large to count used to be read as something else -- 2d6,

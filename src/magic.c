@@ -1152,15 +1152,15 @@ void spell_aid(int sn, int level, CHAR_DATA *ch, void *vo)
     af.duration	 = (sh_int)(7 + level/4);
     af.bitvector = 0;
     af.bitvector2 = 0;
-    af.modifier  = (sh_int)(level/10);
+    af.modifier  = (level/10);
     af.location  = APPLY_HITROLL;
     affect_to_char(victim,&af);
 
     /* reduce chance of killing newbies & low level PCs */
     if(hitpts >= victim->max_hit)
-	 af.modifier = (sh_int)(5 + dice(1,10));
+	 af.modifier = (5 + dice(1,10));
     else
-    af.modifier = (sh_int)(hitpts);
+    af.modifier = (hitpts);
     af.location  = APPLY_HIT;
     affect_to_char(victim,&af);
 
@@ -1225,13 +1225,13 @@ void spell_bless( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level	 = (sh_int)(level);
     af.duration  = (sh_int)(6+level);
     af.location  = APPLY_HITROLL;
-    af.modifier  = (sh_int)(level / 8);
+    af.modifier  = (level / 8);
     af.bitvector = 0;
     af.bitvector2= 0;
     affect_to_char( victim, &af );
 
     af.location  = APPLY_SAVING_SPELL;
-    af.modifier  = (sh_int)(0 - level / 8);
+    af.modifier  = (0 - level / 8);
     affect_to_char( victim, &af );
     send_to_char( "You feel righteous.\n\r", victim );
     if ( ch != victim )
@@ -1740,7 +1740,7 @@ void spell_change_sex( int sn, int level, CHAR_DATA *ch, void *vo )
     af.location  = APPLY_SEX;
     do
     {
-	af.modifier  = (sh_int)(number_range( 0, 2 ) - victim->sex);
+	af.modifier  = (number_range( 0, 2 ) - victim->sex);
     }
     while ( af.modifier == 0 );
     af.bitvector = 0;
@@ -2184,13 +2184,13 @@ void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level     = (sh_int)(level);
     af.duration  = (sh_int)(2*level);
     af.location  = APPLY_HITROLL;
-    af.modifier  = (sh_int)(-1 * (level / 8));
+    af.modifier  = (-1 * (level / 8));
     af.bitvector = AFF_CURSE;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
 
     af.location  = APPLY_SAVING_SPELL;
-    af.modifier  = (sh_int)(level / 8);
+    af.modifier  = (level / 8);
     affect_to_char( victim, &af );
 
     send_to_char( "You feel unclean.\n\r", victim );
@@ -2759,7 +2759,7 @@ void spell_enchant_item( int sn, int level, CHAR_DATA *ch, void *vo )
       paf->level      = (sh_int)(level);
       paf->duration   = -1;
       paf->location   = (sh_int)(obj_apply);
-      paf->modifier   = (sh_int)(obj_modifier);
+      paf->modifier   = (obj_modifier);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next       = obj->affected;
@@ -2917,7 +2917,7 @@ void spell_enchant_armor( int sn, int level, CHAR_DATA *ch, void *vo )
       paf->level      = (sh_int)(level);
       paf->duration   = -1;
       paf->location   = APPLY_AC;
-      paf->modifier   = (sh_int)(added);
+      paf->modifier   = (added);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next       = obj->affected;
@@ -3054,7 +3054,7 @@ void spell_enchant_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
       paf->level      = (sh_int)(level);
       paf->duration   = -1;
       paf->location   = APPLY_DAMROLL;
-      paf->modifier   =  (sh_int)(added);
+      paf->modifier   =  (added);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next	      = obj->affected;
@@ -3074,7 +3074,7 @@ void spell_enchant_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
       paf->level      = (sh_int)(level);
       paf->duration   = -1;
       paf->location   = APPLY_HITROLL;
-      paf->modifier   =  (sh_int)(added);
+      paf->modifier   =  (added);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next       = obj->affected;
@@ -3213,7 +3213,7 @@ void spell_faerie_fire( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level	 = (sh_int)(level);
     af.duration  = (sh_int)(3 + level/8);
     af.location  = APPLY_AC;
-    af.modifier  = (sh_int)(10 + level);
+    af.modifier  = (10 + level);
     af.bitvector = AFF_FAERIE_FIRE;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
@@ -3327,7 +3327,7 @@ if(!IS_IMMORTAL(ch) )
     af.duration  = ch->level;
     else
     af.duration	 = (sh_int)(level / 3);
-    af.modifier  = (sh_int)(level / 6);
+    af.modifier  = (level / 6);
     af.bitvector = 0;
     af.bitvector2 = 0;
 
@@ -3337,7 +3337,7 @@ if(!IS_IMMORTAL(ch) )
     af.location  = APPLY_DAMROLL;
     affect_to_char(victim,&af);
 
-    af.modifier  = (sh_int)(10 * (level / 6));
+    af.modifier  = (10 * (level / 6));
     af.location  = APPLY_AC;
     affect_to_char(victim,&af);
 
@@ -4471,9 +4471,9 @@ void spell_power_gloves( int sn, int level, CHAR_DATA *ch, void *vo)
     af.duration  = 12;
     af.location  = APPLY_DAMROLL;
     if(IS_IMMORTAL(ch) )
-    af.modifier  = (sh_int)(level/2);
+    af.modifier  = (level/2);
     else
-    af.modifier  = (sh_int)(dice(1,6) * level/10);
+    af.modifier  = (dice(1,6) * level/10);
     af.bitvector = 0;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
@@ -5134,7 +5134,7 @@ void spell_weaken( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level     = (sh_int)(level);
     af.duration  = (sh_int)(level / 2);
     af.location  = APPLY_STR;
-    af.modifier  = (sh_int)(-1 * (level / 5));
+    af.modifier  = (-1 * (level / 5));
     af.bitvector = AFF_WEAKEN;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
@@ -5175,7 +5175,7 @@ void spell_baura( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level		= (sh_int)(level);
     af.duration		= (sh_int)(dice(1,2));
     af.location		= APPLY_IMMUNITY;
-    af.modifier		= (sh_int)(IMM_MAGIC);
+    af.modifier		= (IMM_MAGIC);
     af.bitvector	= 0;
     af.bitvector2	= 0;
     affect_to_char( victim, &af );
@@ -5198,12 +5198,12 @@ void spell_dshield( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level		= (sh_int)(level);
     af.duration		= 1;
     af.location		= APPLY_IMMUNITY;
-    af.modifier		= (sh_int)(IMM_WEAPON);
+    af.modifier		= (IMM_WEAPON);
     af.bitvector	= 0;
     af.bitvector2	= 0;
     affect_to_char( victim, &af );
 
-    af.modifier		= (sh_int)(IMM_MAGIC);
+    af.modifier		= (IMM_MAGIC);
     affect_to_char( victim, &af );
 
     send_to_char( "A dominion shield seals you away from the world.\n\r",

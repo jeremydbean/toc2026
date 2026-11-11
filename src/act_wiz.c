@@ -4977,55 +4977,55 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "hp" ) )
     {
-	if ( value < -10 || value > 30000 )
+	if ( value < -10 || value > POOL_MAX )
 	{
-	    send_to_char( "Hp range is -10 to 30,000 hit points.\n\r", ch );
+	    send_to_char( "Hp range is -10 to 1,000,000,000 hit points.\n\r", ch );
 	    return;
 	}
-        victim->max_hit = clamp_sh_int( value );
+        victim->max_hit = value;
 	if(victim != ch)
 	  snprintf(buf, sizeof(buf),"Hit Points on %s now set to %d.\n\r",IS_NPC(victim) ? victim->short_descr : victim->name,value);
 	else
 	  snprintf(buf, sizeof(buf),"You now have %d Hit Points.\n\r",value);
 	send_to_char(buf,ch);
 	if (!IS_NPC(victim))
-            victim->pcdata->perm_hit = clamp_sh_int( value );
+            victim->pcdata->perm_hit = value;
 	return;
     }
 
     if ( !str_prefix( arg2, "mana" ) )
     {
-	if ( value < 0 || value > 30000 )
+	if ( value < 0 || value > POOL_MAX )
 	{
-	    send_to_char( "Mana range is 0 to 30,000 mana points.\n\r", ch );
+	    send_to_char( "Mana range is 0 to 1,000,000,000 mana points.\n\r", ch );
 	    return;
 	}
-        victim->max_mana = clamp_sh_int( value );
+        victim->max_mana = value;
 	if(victim != ch)
 	  snprintf(buf, sizeof(buf),"Mana value on %s now set to %d.\n\r",IS_NPC(victim) ? victim->short_descr : victim->name,value);
 	else
 	  snprintf(buf, sizeof(buf),"You now have %d Mana.\n\r",value);
 	send_to_char(buf,ch);
 	if (!IS_NPC(victim))
-            victim->pcdata->perm_mana = clamp_sh_int( value );
+            victim->pcdata->perm_mana = value;
 	return;
     }
 
     if ( !str_prefix( arg2, "end" ) )
     {
-	if ( value < 0 || value > 30000 )
+	if ( value < 0 || value > POOL_MAX )
 	{
-	    send_to_char( "Endurance range is 0 to 30,000 points.\n\r", ch );
+	    send_to_char( "Endurance range is 0 to 1,000,000,000 points.\n\r", ch );
 	    return;
 	}
-        victim->max_move = clamp_sh_int( value );
+        victim->max_move = value;
 	if(victim != ch)
 	  snprintf(buf, sizeof(buf),"Endurance value on %s now set to %d.\n\r",IS_NPC(victim) ? victim->short_descr : victim->name,value);
 	else
 	  snprintf(buf, sizeof(buf),"You now have %d Endurance.\n\r",value);
 	send_to_char(buf,ch);
 	if (!IS_NPC(victim))
-            victim->pcdata->perm_move = clamp_sh_int( value );
+            victim->pcdata->perm_move = value;
 	return;
     }
 
@@ -5555,12 +5555,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "move" ) )
     {
-	if ( value < 0 || value > 30000 )
+	if ( value < 0 || value > POOL_MAX )
 	{
-	    send_to_char( "Move range is 0 to 30000.\n\r", ch );
+	    send_to_char( "Move range is 0 to 1,000,000,000.\n\r", ch );
 	    return;
 	}
-	victim->move = clamp_sh_int( value );
+	victim->move = value;
 	snprintf(buf, sizeof(buf), "%s movement set to %d.\n\r", victim->name, value);
 	send_to_char(buf, ch);
 	return;
@@ -5568,12 +5568,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "maxmove" ) )
     {
-	if ( value < 1 || value > 30000 )
+	if ( value < 1 || value > POOL_MAX )
 	{
-	    send_to_char( "Maximum move range is 1 to 30000.\n\r", ch );
+	    send_to_char( "Maximum move range is 1 to 1,000,000,000.\n\r", ch );
 	    return;
 	}
-	victim->max_move = clamp_sh_int( value );
+	victim->max_move = value;
 	if ( victim->move > victim->max_move )
 	    victim->move = victim->max_move;
 	snprintf(buf, sizeof(buf), "%s maximum movement set to %d.\n\r",
@@ -12351,7 +12351,7 @@ static void empower_add_spell( CHAR_DATA *victim, AFFECT_DATA *af,
     if ( sn < 0 ) sn = 0;   /* fallback: won't display prettily but won't crash */
     af->type      = sn;
     af->location  = (sh_int)location;
-    af->modifier  = (sh_int)modifier;
+    af->modifier  = modifier;
     af->bitvector  = bitvector;
     af->bitvector2 = bitvector2;
     affect_to_char( victim, af );
@@ -12417,7 +12417,7 @@ static void empower_apply( CHAR_DATA *victim, int level, int duration )
 }
 
 /* TITANIC's effects, without a word said: five times each pool, capped
-   so a maximum stays inside a short, and every pool filled. Shared like
+   at POOL_MAX, and every pool filled. Shared like
    empower_apply. The boosts given come back through the pointers. */
 static void titanic_apply( CHAR_DATA *victim, int level, int duration,
                            int *hp_out, int *mana_out, int *move_out )
@@ -12425,16 +12425,14 @@ static void titanic_apply( CHAR_DATA *victim, int level, int duration,
     AFFECT_DATA af;
     int hp_boost, mana_boost, move_boost;
 
-    /* 500% bonus: add 5x current max, but cap so that max + boost stays
-       within sh_int range (32767).  We use 30000 as the safe ceiling so
-       there is still head-room for other modifiers.                      */
-    hp_boost   = UMIN( 30000, (int)victim->max_hit  * 5 );
-    mana_boost = UMIN( 30000, (int)victim->max_mana * 5 );
-    move_boost = UMIN( 30000, (int)victim->max_move * 5 );
-    /* Secondary clamp: total must not exceed 30000 after addition */
-    if ( (int)victim->max_hit  + hp_boost   > 30000 ) hp_boost   = 30000 - (int)victim->max_hit;
-    if ( (int)victim->max_mana + mana_boost > 30000 ) mana_boost = 30000 - (int)victim->max_mana;
-    if ( (int)victim->max_move + move_boost > 30000 ) move_boost = 30000 - (int)victim->max_move;
+    /* 500% bonus: five times the current maximum, held so the pool plus
+       its boost stays within POOL_MAX (it was 30,000, for 16-bit fields). */
+    hp_boost   = (int)UMIN( (long)POOL_MAX, 5L * victim->max_hit  );
+    mana_boost = (int)UMIN( (long)POOL_MAX, 5L * victim->max_mana );
+    move_boost = (int)UMIN( (long)POOL_MAX, 5L * victim->max_move );
+    if ( (long)victim->max_hit  + hp_boost   > POOL_MAX ) hp_boost   = POOL_MAX - victim->max_hit;
+    if ( (long)victim->max_mana + mana_boost > POOL_MAX ) mana_boost = POOL_MAX - victim->max_mana;
+    if ( (long)victim->max_move + move_boost > POOL_MAX ) move_boost = POOL_MAX - victim->max_move;
     if ( hp_boost   < 0 ) hp_boost   = 0;
     if ( mana_boost < 0 ) mana_boost = 0;
     if ( move_boost < 0 ) move_boost = 0;
@@ -12445,13 +12443,13 @@ static void titanic_apply( CHAR_DATA *victim, int level, int duration,
     af.bitvector  = 0;
     af.bitvector2 = 0;
 
-    af.location = APPLY_HIT;  af.modifier = (sh_int)hp_boost;
+    af.location = APPLY_HIT;  af.modifier = hp_boost;
     affect_to_char( victim, &af );
 
-    af.location = APPLY_MANA; af.modifier = (sh_int)mana_boost;
+    af.location = APPLY_MANA; af.modifier = mana_boost;
     affect_to_char( victim, &af );
 
-    af.location = APPLY_MOVE; af.modifier = (sh_int)move_boost;
+    af.location = APPLY_MOVE; af.modifier = move_boost;
     affect_to_char( victim, &af );
 
     af.location = APPLY_EXP;  af.modifier = 50;
