@@ -1103,9 +1103,9 @@ void do_holidays( CHAR_DATA *ch, char *argument )
     }
     if ( is_number( arg ) )
     {
-        int asked = atoi( arg );
+        int asked;
 
-        if ( asked < 1900 || asked > 9999 )
+        if ( !parse_int( arg, 1900, 9999, &asked ) )
         {
             send_to_char( "Name a year from 1900 to 9999.\n\r", ch );
             return;

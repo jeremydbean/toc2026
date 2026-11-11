@@ -1055,13 +1055,23 @@ void do_history( CHAR_DATA *ch, char *argument )
     /* HISTORY <number>: that many, across everything. */
     if ( arg[0] != '\0' && is_number( arg ) )
     {
-        wanted = URANGE( 1, atoi( arg ), HISTORY_MAX_LINES );
+        if ( !parse_int( arg, INT_MIN, INT_MAX, &wanted ) )
+        {
+            send_to_char( "That is not a valid number.\n\r", ch );
+            return;
+        }
+        wanted = URANGE( 1, wanted, HISTORY_MAX_LINES );
         arg[0] = '\0';
     }
     else if ( rest[0] != '\0' && is_number( rest ) )
     {
         /* HISTORY <channel> <number> */
-        wanted = URANGE( 1, atoi( rest ), HISTORY_MAX_LINES );
+        if ( !parse_int( rest, INT_MIN, INT_MAX, &wanted ) )
+        {
+            send_to_char( "That is not a valid number.\n\r", ch );
+            return;
+        }
+        wanted = URANGE( 1, wanted, HISTORY_MAX_LINES );
     }
 
     /* HISTORY TELL: the character's own, and nobody else's. */
@@ -1805,8 +1815,13 @@ void do_roll( CHAR_DATA *ch, char *argument )
     }
 
     *sides++ = '\0';
-    number = atoi( arg );
-    faces  = atoi( sides );
+    /* Whole numbers either side of the d: "2d6+3" was rolled as 2d6. */
+    if ( !parse_int( arg, INT_MIN, INT_MAX, &number )
+      || !parse_int( sides, INT_MIN, INT_MAX, &faces ) )
+    {
+        send_to_char( "Rolls look like 2d6.\n\r", ch );
+        return;
+    }
 
     if ( number < 1 || number > 20 || faces < 2 || faces > 1000 )
     {
@@ -2346,7 +2361,7 @@ void do_note( CHAR_DATA *ch, char *argument )
 
         argument = one_argument( argument, arg2 );
 
-        if ( !is_number( arg2 ) )
+        if ( !parse_int( arg2, INT_MIN, INT_MAX, &number ) )
         {
             send_to_char( forwarding
                 ? "Syntax: note forward <number> <player>\n\r"
@@ -2354,7 +2369,7 @@ void do_note( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( ( source = note_by_number( ch, atoi( arg2 ) ) ) == NULL )
+        if ( ( source = note_by_number( ch, number ) ) == NULL )
         {
             send_to_char( "There is no note by that number.\n\r", ch );
             return;
@@ -2450,13 +2465,12 @@ void do_note( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( !is_number( argument ) )
+        if ( !parse_int( argument, INT_MIN, INT_MAX, &number ) )
         {
             send_to_char( "Read which note? Use its number from 'note list'.\n\r", ch );
             return;
         }
 
-        number = atoi( argument );
         count  = 0;
 
         for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
@@ -2679,13 +2693,12 @@ void do_note( CHAR_DATA *ch, char *argument )
     {
         NOTE_DATA *prev = NULL;
 
-        if ( !is_number( argument ) )
+        if ( !parse_int( argument, INT_MIN, INT_MAX, &number ) )
         {
             send_to_char( "Remove which note? Use its number from 'note list'.\n\r", ch );
             return;
         }
 
-        number = atoi( argument );
         count  = 0;
 
         for ( pnote = note_list; pnote != NULL; prev = pnote, pnote = pnote->next )
@@ -3763,7 +3776,7 @@ void do_reports( CHAR_DATA *ch, char *argument )
     }
 
     {
-	int want = is_number( arg2 ) ? atoi( arg2 ) : 20;
+	int want = 20;
 	int have = report_line_count( kind );
 	int shown = 0;
 	int line = 0;
@@ -3771,6 +3784,11 @@ void do_reports( CHAR_DATA *ch, char *argument )
 	char record[MAX_INPUT_LENGTH];
 	char output[MAX_STRING_LENGTH];
 
+	if ( is_number( arg2 ) && !parse_int( arg2, INT_MIN, INT_MAX, &want ) )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
 	if ( want < 1 )
 	    want = 1;
 	/* One page of output is one buffer here: this fork has no

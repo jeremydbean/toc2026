@@ -54,6 +54,7 @@ set(SRC_FILES
     src/magic.c
     src/magic2.c
     src/misc.c
+    src/numparse.c
     src/oracle.c
     src/pkill.c
     src/quest.c

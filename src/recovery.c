@@ -112,7 +112,10 @@ bool recovery_fault( const char *point )
         /* "<point>" fails the next one; "<point> <n>" the n-th from now. */
         {
             char *space = strchr( want, ' ' );
-            int n = space != NULL ? atoi( space + 1 ) : 1;
+            int n = 1;
+
+            if ( space != NULL && !parse_int( space + 1, INT_MIN, INT_MAX, &n ) )
+                n = 1;
 
             if ( space != NULL )
                 *space = '\0';

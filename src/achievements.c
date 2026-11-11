@@ -2398,8 +2398,7 @@ static int achievement_take_part(char *text)
     last = strrchr(text, ' ');
     if (last == NULL || !is_number(last + 1))
         return 1;
-    part = atoi(last + 1);
-    if (part < 1 || part > 99)
+    if (!parse_int(last + 1, 1, 99, &part))
         return 1;
     *last = '\0';
     return part;

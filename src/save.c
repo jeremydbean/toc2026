@@ -3277,8 +3277,15 @@ int snapshot_read_stash( CHAR_DATA *ch, const char *path,
            the live character's version, not the snapshot's, so note the
            snapshot's own and read with that. */
         if ( snapshot_version < 0 && !strncmp( line, "Vers", 4 )
-        &&   ( line[4] == ' ' || !strncmp( line + 4, "ion ", 4 ) ) )
-            snapshot_version = atoi( strchr( line, ' ' ) );
+        &&   ( line[4] == ' ' || !strncmp( line + 4, "ion ", 4 ) )
+        &&   !parse_int( strchr( line, ' ' ), 0, INT_MAX, &snapshot_version ) )
+        {
+            /* atoi read a damaged version as 0 or a prefix of it, and the
+               objects after it were then laid out by the wrong one. */
+            fclose( fp );
+            snprintf( why, why_size, "its version line is malformed" );
+            return -1;
+        }
         if ( !strncmp( line, "#STASH", 6 )
         &&   ( line[6] == '\n' || line[6] == '\r' || line[6] == '\0' ) )
         {
@@ -3597,8 +3604,15 @@ int snapshot_read_gear( CHAR_DATA *ch, const char *path,
         if ( fgets( line, (int) sizeof(line), fp ) == NULL )
             break;
         if ( snapshot_version < 0 && !strncmp( line, "Vers", 4 )
-        &&   ( line[4] == ' ' || !strncmp( line + 4, "ion ", 4 ) ) )
-            snapshot_version = atoi( strchr( line, ' ' ) );
+        &&   ( line[4] == ' ' || !strncmp( line + 4, "ion ", 4 ) )
+        &&   !parse_int( strchr( line, ' ' ), 0, INT_MAX, &snapshot_version ) )
+        {
+            /* atoi read a damaged version as 0 or a prefix of it, and the
+               objects after it were then laid out by the wrong one. */
+            fclose( fp );
+            snprintf( why, why_size, "its version line is malformed" );
+            return -1;
+        }
         if ( !strncmp( line, "#O", 2 )
         &&   ( line[2] == '\n' || line[2] == '\r' || line[2] == '\0'
             || !strncmp( line + 2, "BJECT", 5 ) ) )
@@ -3721,7 +3735,8 @@ static FILE *corpse_file_open( const char *path, CORPSE_RECORD *rec, int *versio
 {
     FILE *fp;
     char line[MAX_STRING_LENGTH];
-    bool header = false, ended = false;
+    bool header = false, ended = false, malformed = false;
+    int owned = 0;
 
     memset( rec, 0, sizeof(*rec) );
     *version = 4;
@@ -3750,19 +3765,26 @@ static FILE *corpse_file_open( const char *path, CORPSE_RECORD *rec, int *versio
         if      ( !strcmp( line, "Id" ) )       toc_strlcpy( rec->id, value, sizeof(rec->id) );
         else if ( !strcmp( line, "Owner" ) )    toc_strlcpy( rec->owner, value, sizeof(rec->owner) );
         else if ( !strcmp( line, "Uid" ) )      toc_strlcpy( rec->uid, strcmp( value, "-" ) ? value : "", sizeof(rec->uid) );
-        else if ( !strcmp( line, "Owned" ) )    rec->owned = atoi( value ) != 0;
-        else if ( !strcmp( line, "Room" ) )     rec->room = atoi( value );
-        else if ( !strcmp( line, "Level" ) )    rec->level = atoi( value );
-        else if ( !strcmp( line, "Timer" ) )    rec->timer = atoi( value );
-        else if ( !strcmp( line, "Died" ) )     rec->died = atol( value );
-        else if ( !strcmp( line, "Saved" ) )    rec->saved = atol( value );
+        /* A number the game wrote is whole; one that is not makes the
+           record not whole, which keeps the file (renamed .unreadable)
+           rather than laying a corpse by a misread room or count. */
+        else if ( !strcmp( line, "Owned" ) )
+        {
+            malformed |= !parse_int( value, INT_MIN, INT_MAX, &owned );
+            rec->owned = !malformed && owned != 0;
+        }
+        else if ( !strcmp( line, "Room" ) )     malformed |= !parse_int( value, INT_MIN, INT_MAX, &rec->room );
+        else if ( !strcmp( line, "Level" ) )    malformed |= !parse_int( value, INT_MIN, INT_MAX, &rec->level );
+        else if ( !strcmp( line, "Timer" ) )    malformed |= !parse_int( value, INT_MIN, INT_MAX, &rec->timer );
+        else if ( !strcmp( line, "Died" ) )     malformed |= !parse_long( value, LONG_MIN, LONG_MAX, &rec->died );
+        else if ( !strcmp( line, "Saved" ) )    malformed |= !parse_long( value, LONG_MIN, LONG_MAX, &rec->saved );
         else if ( !strcmp( line, "Snapshot" ) ) toc_strlcpy( rec->snapshot, strcmp( value, "-" ) ? value : "", sizeof(rec->snapshot) );
         else if ( !strcmp( line, "State" ) )    toc_strlcpy( rec->state, value, sizeof(rec->state) );
         else if ( !strcmp( line, "Why" ) )      toc_strlcpy( rec->why, strcmp( value, "-" ) ? value : "", sizeof(rec->why) );
-        else if ( !strcmp( line, "Objects" ) )  rec->objects = atoi( value );
-        else if ( !strcmp( line, "Vers" ) )     *version = atoi( value );
+        else if ( !strcmp( line, "Objects" ) )  malformed |= !parse_int( value, INT_MIN, INT_MAX, &rec->objects );
+        else if ( !strcmp( line, "Vers" ) )     malformed |= !parse_int( value, INT_MIN, INT_MAX, version );
     }
-    if ( !ended || rec->id[0] == '\0' || rec->owner[0] == '\0' )
+    if ( !ended || malformed || rec->id[0] == '\0' || rec->owner[0] == '\0' )
     {
         fclose( fp );
         return NULL;

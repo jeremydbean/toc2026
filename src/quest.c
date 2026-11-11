@@ -531,7 +531,7 @@ static void quest_daily_buy( CHAR_DATA *ch, char *argument )
     if ( count[0] != '\0' )
     {
         if ( !is_number( count ) || strlen( count ) > 4
-        ||   ( n = atoi( count ) ) < 1 || n > 100 )
+        ||   !parse_int( count, 1, 100, &n ) )
         {
             send_to_char("Buy how many? From 1 to 100.\n\r", ch);
             return;

@@ -167,8 +167,8 @@ void walkto_load( void )
         p = walkto_field( p, d->keywords, sizeof(d->keywords) );
         walkto_field( p, d->who, sizeof(d->who) );
 
-        if ( !is_number( vnum ) || ( d->vnum = atoi( vnum ) ) <= 0
-        ||   d->vnum >= WALK_SLOTS || d->name[0] == '\0' )
+        if ( !parse_int( vnum, 1, WALK_SLOTS - 1, &d->vnum )
+        ||   d->name[0] == '\0' )
             continue;
         walkto_count++;
     }
@@ -1447,11 +1447,14 @@ void do_walkto( CHAR_DATA *ch, char *argument )
 
     if ( is_number( argument ) && IS_TRUSTED(ch, LEVEL_IMMORTAL) )
     {
+        int vnum;
+
         /* Staff may name a room by number; nobody else, since a vnum is
            no name a player is ever shown. */
         found = -1;
         also = 0;
-        if ( ( target = get_room_index( atoi( argument ) ) ) == NULL )
+        if ( !parse_int( argument, INT_MIN, INT_MAX, &vnum )
+          || ( target = get_room_index( vnum ) ) == NULL )
         {
             send_to_char( "No room has that number.\n\r", ch );
             return;

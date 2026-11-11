@@ -130,12 +130,12 @@ void do_wizlost(CHAR_DATA *ch, char *argument)
     {
 	if ( !str_prefix( arg1, "add" ) )
 	{
-            if ( !is_number( arg2 ) || ( arg3[0] == '\0' ) )
+            /* The level is kept as a short. */
+            if ( !parse_int( arg2, SHRT_MIN, SHRT_MAX, &level ) || ( arg3[0] == '\0' ) )
 	    {
 		send_to_char( "Syntax: wizlist add <level> <name>\n\r", ch );
 		return;
 	    }
-            level = atoi(arg2);
 	    
 	    if ( level < MAX_LEVEL - 10)
 	    {

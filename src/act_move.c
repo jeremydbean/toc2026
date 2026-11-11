@@ -624,7 +624,8 @@ ROOM_INDEX_DATA *random_room_candidate( int attempt )
     {
         const char *env = getenv( "TOC_RANDOM_ROOM" );
 
-        forced = env != NULL && is_number( (char *) env ) ? atoi( env ) : 0;
+        if ( env == NULL || !parse_int( env, INT_MIN, INT_MAX, &forced ) )
+            forced = 0;
     }
     if ( attempt == 0 && forced > 0 )
         return get_room_index( forced );
@@ -1813,9 +1814,13 @@ void do_run( CHAR_DATA *ch, char *argument )
   if( arg1[0] == '\0')
 	distance = 30;
   else if( is_number(arg1) )
-	/* Long enough to overflow atoi is capped, or refused if negative. */
-	distance = strlen( arg1 ) > 4 ? ( arg1[0] == '-' ? -1 : 30 )
-	                              : atoi( arg1 );
+    {
+	/* Long enough to overflow is capped, or refused if negative. */
+	if ( strlen( arg1 ) > 4 )
+	    distance = arg1[0] == '-' ? -1 : 30;
+	else if ( !parse_int( arg1, INT_MIN, INT_MAX, &distance ) )
+	    distance = -1;
+    }
   else
     {
 	 send_to_char("Distance must be a number from 1 to 30.\n\r",ch);
@@ -4054,7 +4059,7 @@ void do_train( CHAR_DATA *ch, char *argument )
     if ( num[0] != '\0' )
     {
 	/* Bound before converting: is_number takes any run of digits. */
-	if ( !is_number( num ) || strlen( num ) > 3 || ( count = atoi( num ) ) < 1 )
+	if ( !is_number( num ) || strlen( num ) > 3 || !parse_int( num, 1, 999, &count ) )
 	{
 	    send_to_char( "Train how many?\n\r", ch );
 	    return;

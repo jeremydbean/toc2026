@@ -1187,7 +1187,10 @@ void do_stash( CHAR_DATA *ch, char *argument )
         if ( is_number( argument ) && argument[0] != '-' && argument[0] != '+' )
         {
             /* Six digits is past any stash; longer is never a place in it. */
-            int want = strlen( argument ) <= 6 ? atoi( argument ) : -1, seen = 0;
+            int want = -1, seen = 0;
+
+            if ( strlen( argument ) > 6 || !parse_int( argument, INT_MIN, INT_MAX, &want ) )
+                want = -1;
 
             for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
             {
@@ -5265,7 +5268,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
     if ( is_number( arg ) && rest[0] != '\0' )
     {
 	/* Bound before converting: is_number takes any run of digits. */
-	if ( strlen( arg ) > 3 || ( count = atoi( arg ) ) < 1 )
+	if ( strlen( arg ) > 3 || !parse_int( arg, 1, 999, &count ) )
 	{
 	    send_to_char( "Buy how many?\n\r", ch );
 	    return;
