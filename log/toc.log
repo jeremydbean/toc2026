@@ -289936,3 +289936,107 @@ Wed Nov 11 22:54:06 2026 :: Log Trentlin [1001]: n
 Wed Nov 11 22:54:07 2026 :: Log Trentlin [1001]: n
 Wed Nov 11 22:54:07 2026 :: Log Trentlin [1001]: d
 Wed Nov 11 22:54:09 2026 :: Log Trentlin [1001]: iron
+Wed Nov 11 22:54:16 2026 :: Log Trentlin [1001]: u
+Wed Nov 11 22:54:16 2026 :: Log Trentlin [1002]: arrived (A mountain path) from 1001
+Wed Nov 11 22:54:16 2026 :: Log Trentlin [1002]: n
+Wed Nov 11 22:54:16 2026 :: Log Trentlin [1003]: arrived (Mt. Ulmo Pass) from 1002
+Wed Nov 11 22:54:17 2026 :: Log Trentlin [1003]: n
+Wed Nov 11 22:54:17 2026 :: Log Trentlin [1003]: d
+Wed Nov 11 22:54:17 2026 :: Log Trentlin [1004]: arrived (A sloping path down the hill) from 1003
+Wed Nov 11 22:54:17 2026 :: Log Trentlin [1004]: n
+Wed Nov 11 22:54:17 2026 :: Log Trentlin [1005]: arrived (A sloping path down the hill) from 1004
+Wed Nov 11 22:54:18 2026 :: Log Trentlin [1005]: n
+Wed Nov 11 22:54:18 2026 :: Log Trentlin [1006]: arrived (The Upper Argo) from 1005
+Wed Nov 11 22:54:18 2026 :: Log Trentlin [1006]: n
+Wed Nov 11 22:54:18 2026 :: Log Trentlin [1007]: arrived (A clearing) from 1006
+Wed Nov 11 22:54:19 2026 :: Log Trentlin [1007]: sca
+Wed Nov 11 22:54:21 2026 :: Log Trentlin [1007]: n
+Wed Nov 11 22:54:21 2026 :: Log Trentlin [1015]: arrived (A clearing) from 1007
+Wed Nov 11 22:54:21 2026 :: Log Trentlin [1015]: n
+Wed Nov 11 22:54:21 2026 :: Log Trentlin [1020]: arrived (A clearing) from 1015
+Wed Nov 11 22:54:22 2026 :: Log Trentlin [1020]: sca
+Wed Nov 11 22:54:24 2026 :: Log Trentlin [1020]: e
+Wed Nov 11 22:54:24 2026 :: Log Trentlin [1021]: arrived (A bushy clearing) from 1020
+Wed Nov 11 22:54:24 2026 :: Log Trentlin [1021]: sca
+Wed Nov 11 22:54:26 2026 :: Log Trentlin [1021]: n
+Wed Nov 11 22:54:26 2026 :: Log Trentlin [1025]: arrived (A scrub grown clearing) from 1021
+Wed Nov 11 22:54:28 2026 :: Log Trentlin [1025]: k im
+Wed Nov 11 22:54:31 2026 :: Log Trentlin [1025]: fists
+Wed Nov 11 22:54:35 2026 :: Log Trentlin [1025]: affects off: steel fist
+Wed Nov 11 22:54:37 2026 :: Log Trentlin [1025]: fists
+Wed Nov 11 22:54:43 2026 :: Log Trentlin [1025]: fists
+Wed Nov 11 22:54:48 2026 :: Log Trentlin [1025]: killed an Orgeem Imp
+Wed Nov 11 22:54:48 2026 :: Log Trentlin [1025]: coin +2 silver
+Wed Nov 11 22:54:48 2026 :: Log Trentlin [1025]: coin +3 copper
+Wed Nov 11 22:54:48 2026 :: Log Trentlin [1025]: coin +1 gold
+Wed Nov 11 22:54:52 2026 :: Log Trentlin [1025]: steel
+Wed Nov 11 22:54:56 2026 :: Log Trentlin [1025]: sca
+Wed Nov 11 22:54:57 2026 :: Log Trentlin [1025]: e
+Wed Nov 11 22:54:58 2026 :: Log Trentlin [1025]: sca
+Wed Nov 11 22:54:59 2026 :: Log Trentlin [1025]: n
+Wed Nov 11 22:54:59 2026 :: Log Trentlin [1032]: arrived (A bushy clearing) from 1025
+Wed Nov 11 22:54:59 2026 :: Log Trentlin [1032]: sca
+Wed Nov 11 22:55:02 2026 :: Log Trentlin [1032]: e
+Wed Nov 11 22:55:02 2026 :: Log Trentlin [1033]: arrived (A bushy clearing) from 1032
+Wed Nov 11 22:55:02 2026 :: Log Trentlin [1033]: k tr
+Wed Nov 11 22:55:05 2026 :: Log Trentlin [1033]: fists
+Wed Nov 11 22:55:11 2026 :: Log Trentlin [1033]: fists
+Wed Nov 11 22:55:18 2026 :: Log Trentlin [1033]: fists
+Wed Nov 11 22:55:25 2026 :: Log Trentlin [1033]: fists
+Wed Nov 11 22:55:32 2026 :: Log Trentlin [1033]: fists
+Wed Nov 11 22:55:32 2026 :: Log Trentlin [1033]: level 36 -> 37 (earned)
+Wed Nov 11 22:55:32 2026 :: Trentlin has achieved level 37!
+Wed Nov 11 22:55:32 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261111_225532.level (PRESTORE Trentlin to see it).
+Wed Nov 11 22:55:32 2026 :: Log Trentlin [1033]: killed a Black Troll
+Wed Nov 11 22:55:32 2026 :: Log Trentlin [1033]: coin +1 platinum
+Wed Nov 11 22:55:32 2026 :: Log Trentlin [1033]: coin +5 silver
+Wed Nov 11 22:55:32 2026 :: Log Trentlin [1033]: coin +6 copper
+Wed Nov 11 22:55:32 2026 :: Log Trentlin [1033]: coin +2 gold
+Wed Nov 11 22:55:36 2026 :: Treasure goblin: vanished from room 8850 (Graveyard, kerofk.are) (too long in one area).
+Wed Nov 11 22:55:37 2026 :: Log Trentlin [1033]: affects off: iron skin
+Wed Nov 11 22:55:41 2026 :: Log Trentlin [1033]: reca
+Wed Nov 11 22:55:41 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 1033
+Wed Nov 11 22:55:42 2026 :: Log Trentlin [4207]: sco
+Wed Nov 11 22:55:45 2026 :: Log Trentlin [4207]: gain list
+Wed Nov 11 22:55:48 2026 :: Log Trentlin [4207]: gainlist
+Wed Nov 11 22:55:57 2026 :: Log Trentlin [4207]: help crane dance
+Wed Nov 11 22:56:24 2026 :: Log Trentlin [4207]: walkto silent master
+Wed Nov 11 22:56:24 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 11 22:56:25 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov 11 22:56:26 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Wed Nov 11 22:56:27 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov 11 22:56:27 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov 11 22:56:28 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov 11 22:56:29 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov 11 22:56:30 2026 :: Log Trentlin [4800]: arrived (Another Dimension) from 2437
+Wed Nov 11 22:56:30 2026 :: Log Trentlin [4801]: arrived (The passage way) from 4800
+Wed Nov 11 22:56:31 2026 :: Log Trentlin [4802]: arrived (The narrow entrance) from 4801
+Wed Nov 11 22:56:32 2026 :: Log Trentlin [4803]: arrived (The Palm of the Creator) from 4802
+Wed Nov 11 22:56:40 2026 :: Log Trentlin [4804]: arrived (The Quiet Place) from 4803
+Wed Nov 11 22:56:40 2026 :: Log Trentlin [4806]: arrived (A Small Clearing) from 4804
+Wed Nov 11 22:56:42 2026 :: Log Trentlin [4806]: gain
+Wed Nov 11 22:56:45 2026 :: Log Trentlin [4806]: gain fast healing
+Wed Nov 11 22:56:46 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:46 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:47 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:47 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:47 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:47 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:48 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:48 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:48 2026 :: Log Trentlin [4806]: prac fast
+Wed Nov 11 22:56:50 2026 :: Log Trentlin [4806]: reca
+Wed Nov 11 22:56:50 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4806
+Wed Nov 11 22:56:51 2026 :: Log Trentlin [4207]: e
+Wed Nov 11 22:56:51 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 11 22:56:51 2026 :: Log Trentlin [4202]: n
+Wed Nov 11 22:56:51 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Wed Nov 11 22:56:51 2026 :: Log Trentlin [4203]: n
+Wed Nov 11 22:56:51 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Wed Nov 11 22:56:52 2026 :: Log Trentlin [4210]: n
+Wed Nov 11 22:56:52 2026 :: Log Trentlin [4210]: n
+Wed Nov 11 22:56:52 2026 :: Log Trentlin [4210]: sco
+Wed Nov 11 22:56:53 2026 :: Log Trentlin [4210]: sleep
+Wed Nov 11 22:56:54 2026 :: Log Trentlin [4210]: quit
+Wed Nov 11 22:56:54 2026 :: Trentlin has quit.
+Wed Nov 11 22:56:54 2026 :: [QUIT] Player rejoined the real world.
