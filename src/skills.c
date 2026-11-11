@@ -568,41 +568,6 @@ static void list_group_chosen(CHAR_DATA *ch)
     send_to_char(buf,ch);
     return;
 }
-/*
-int exp_per_level(CHAR_DATA *ch, int points)
-{
-    UNUSED_PARAM(points);
-    int inc;
-
-    if (IS_NPC(ch))
-	return 1000;
-
-    expl = 2000;
-    inc = 500;
-
-    if (points < 40)
-	return 2000 * pc_race_table[ch->race].class_mult[ch->class]/100;
-
-
-    points -= 40;
-
-    while (points > 9)
-    {
-	expl += inc;
-	points -= 10;
-	if (points > 9)
-	{
-	    expl += inc;
-	    inc *= 2;
-	    points -= 10;
-	}
-    }
-
-    expl += points * inc / 10;
-
-    return expl * pc_race_table[ch->race].class_mult[ch->class]/100;
-}
-*/
 int exp_per_level(CHAR_DATA *ch, int points)
 {
     UNUSED_PARAM(points);

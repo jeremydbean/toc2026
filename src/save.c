@@ -1709,10 +1709,6 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
 
     fprintf( fp, "#O\n" );
     fprintf( fp, "Vnum %d\n",   obj->pIndexData->vnum        );
-/*
-    if (!obj->pIndexData->new_format)
-	fprintf( fp, "Oldstyle\n");
-*/
     if (obj->enchanted)
 	fprintf( fp,"Enchanted\n");
     fprintf( fp, "Nest %d\n",	iNest	  	     );
@@ -3773,17 +3769,6 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    {
 		AFFECT_DATA *paf;
                 paf = new_affect();
-/* BB
-		if ( affect_free == NULL )
-		{
-		    paf		= alloc_perm( sizeof(*paf) );
-		}
-		else
-		{
-		    paf		= affect_free;
-		    affect_free	= affect_free->next;
-		}
-*/
 		if (!str_cmp(word,"AffD"))
 		{
 		    int sn;
@@ -4417,15 +4402,6 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 
     	        paf = new_affect();
 
-/* BB
-    	    	if (affect_free == NULL)
-    	    	    paf = alloc_perm(sizeof(*paf));
-    	    	else
-    	    	{
-    	    	    paf = affect_free;
-		    affect_free = affect_free->next;
-    	    	}
-*/
     	    	sn = skill_lookup(fread_word(fp));
     	     	if (sn < 0)
     	     	    bug("Fread_char: unknown skill.",0);
@@ -4725,17 +4701,6 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		   belonging to nothing. */
 		paf->next	= obj->affected;
 		obj->affected	= paf;
-/* BB
-		if ( affect_free == NULL )
-		{
-		    paf		= alloc_perm( sizeof(*paf) );
-		}
-		else
-		{
-		    paf		= affect_free;
-		    affect_free	= affect_free->next;
-		}
-*/
 		if (!str_cmp(word, "AffD"))
 		{
 		    int sn;

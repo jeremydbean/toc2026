@@ -44,7 +44,7 @@ class MccpTests(unittest.TestCase):
         cls.tmp = tempfile.TemporaryDirectory()
         binary = Path(cls.tmp.name) / "test_mccp"
         build = subprocess.run(
-            [CC, "-std=gnu89", "-fcommon", "-DROM", "-I", str(ROOT / "src"),
+            [CC, "-std=gnu89", "-DROM", "-I", str(ROOT / "src"),
              "-o", str(binary), str(ROOT / "tests" / "test_mccp.c"),
              str(ROOT / "src" / "telnet_proto.c"), "-lz"],
             capture_output=True, text=True)

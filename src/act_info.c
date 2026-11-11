@@ -334,9 +334,6 @@ if(!scan)
       toc_strlcat( buf, "{0C", sizeof(buf) );
   toc_strlcat( buf, PERS( victim, ch ), sizeof(buf) );
 
-/*   if(IS_NPC(victim)&&ch->questmob > 0 && victim->pIndexData->vnum == ch->questmob)
-	toc_strlcat( buf,"[*TARGET*]", sizeof(buf) );
-*/
 
   if ( (!IS_NPC(victim) && !IS_SET(ch->comm, COMM_BRIEF) ) )
   {
@@ -5086,67 +5083,6 @@ void do_listen( CHAR_DATA *ch, char *argument )
     return;
 }
 
-/*
-void do_pkill( CHAR_DATA *ch, char *argument )
-{
-    char buf[MAX_STRING_LENGTH];
-
-    if(IS_NPC(ch))
-  	return;
-
-    if(ch->pcdata->confirm_pkill)
-    {
-	if(argument[0] != '\0')
-	{
-	    send_to_char("Pkill status removed.\n\r",ch);
-	    ch->pcdata->confirm_pkill = false;
-	    return;
-	}
-	else
-	{
-	    send_to_char("You are now a PKILLER!\n\r",ch);
-	    snprintf(buf, sizeof(buf),"%s is now a Pkiller!",ch->name);
-	    wizinfo(buf,LEVEL_IMMORTAL);
-            log_string(buf);
-	    ch->pcdata->pk_state = 1;
-	    return;
-	}
-    }
-
-    if(ch->pcdata->pk_state == 1)
-    {
-	send_to_char("You are already a pkiller!\n\r",ch);
-	return;
-    }
-
-    if(ch->level < 15)
-    {
-	send_to_char("You can only use this command after you have reached\n\r",ch);
-	send_to_char("level 15. Please consult the help for further info.\n\r",ch);
-	return;
-    }
-
-    if( ch->level > 30 )
-    {
-	send_to_char("Your time to choose to be a pkiller has come and gone.\n\r",ch);
-	send_to_char("You should have read the help.\n\r",ch);
-	return;
-    }
-
-    if( argument[0] != '\0' )
-    {
-	send_to_char("Just type pkill, no argument\n\r",ch);
-	return;
-    }
-
-    send_to_char("Type pkill again to confirm this command.\n\r",ch);
-    send_to_char("WARNING: This command is irreversable.\n\r",ch);
-    send_to_char("Please make sure you have read the helps about pkilling\n\r",ch);
-    send_to_char("on this mud before you make your final decision.\n\r",ch);
-    send_to_char("typing pkill with an argument will undo the status.\n\r",ch);
-    ch->pcdata->confirm_pkill = true;
-}
-*/
 
 /* Pkill command recoded on 11/12/97 to require a password - Ricochet*/
 
@@ -5758,10 +5694,6 @@ void do_remort( CHAR_DATA *ch, char *arg)
              "your stash.", ch, bag, NULL, TO_CHAR);
       }
    }
-   /*
-   ch->pcdata->bank = 0;
-   ch->new_silver = 50;
-   */
 
    /* A new life starts dressed, as a new character does: outfit fills
       only the slots left empty (light, body, shield, weapon -- a kept

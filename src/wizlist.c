@@ -30,13 +30,6 @@ void  	 	 free_wiz         args( (WIZ_DATA *ban) );
 WIZ_DATA         *new_wiz         args( (void) );
 /* WIZ_DATA *wiz_list -- duplicate removed; already declared above */
 
-/*
-void             load_offense     args( ( void ) );
-void             save_offense     args( ( void ) );
-void             check_offense    args( ( CHAR_DATA *ch ) );
-void             clean_offense    args( ( void ) );
-bool             remove_offense   args( ( int id ) );
-*/
 void change_wizlist(CHAR_DATA *ch, bool add, int level, char *argument);
 
 
@@ -477,13 +470,6 @@ void free_wiz(WIZ_DATA *wiz)
 
 
 
-/*
-void    load_offense     args( ( void ) );
-void    save_offense     args( ( void ) );
-void    check_offense   args( ( CHAR_DATA *ch ) );
-void    clean_offense   args( ( void ) );
-bool    remove_offense  args( ( int id ) );
-*/
 /**************************
  * Code for Offense list  *
  * By Ungrim, 27th May 99 *

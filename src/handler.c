@@ -1155,21 +1155,6 @@ int can_carry_w( CHAR_DATA *ch )
 /*
  * See if a string is one of the names of an object.
  */
-/*
-bool is_name( const char *str, char *namelist )
-{
-    char name[MAX_INPUT_LENGTH];
-
-    for ( ; ; )
-    {
-	namelist = one_argument( namelist, name );
-	if ( name[0] == '\0' )
-	    return false;
-	if ( !str_prefix( str, name ) )
-	    return true;
-    }
-}
-*/
 
 bool is_name ( const char *str, const char *namelist )
 {
@@ -1428,17 +1413,6 @@ void affect_to_char( CHAR_DATA *ch, AFFECT_DATA *paf )
     AFFECT_DATA *paf_new;
     char buf[1000];
 
-/* Blackbird
-    if ( affect_free == NULL )
-    {
-	paf_new         = alloc_perm( sizeof(*paf_new) );
-    }
-    else
-    {
-	paf_new         = affect_free;
-	affect_free     = affect_free->next;
-    }
-*/
 
     paf_new             = new_affect();
     paf_new->location       =  paf->location;
@@ -1470,17 +1444,6 @@ void affect_to_obj(OBJ_DATA *obj, AFFECT_DATA *paf)
     AFFECT_DATA *paf_new;
     char buf[1000];
 
-/*
-    if (affect_free == NULL)
-	paf_new = alloc_perm(sizeof(*paf_new));
-    else
-    {
-	paf_new         = affect_free;
-	affect_free     = affect_free->next;
-    }
-
-    *paf_new            = *paf;
-*/
 
     paf_new             = new_affect();
     paf_new->location       =  paf->location;
@@ -1560,12 +1523,6 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
     restore_character_affect_bits( ch, removed_primary, removed_secondary );
     return;
 
-/* Blackbird
-    paf->next   = affect_free;
-    affect_free = paf->next;
-    affect_free = paf;
-    return;
-*/
 }
 
 void affect_remove_obj( OBJ_DATA *obj, AFFECT_DATA *paf)
@@ -1612,12 +1569,6 @@ void affect_remove_obj( OBJ_DATA *obj, AFFECT_DATA *paf)
                                        removed_secondary );
     return;
 
-/* Blackbird
-    paf->next   = affect_free;
-    affect_free = paf->next;
-    affect_free = paf;
-    return;
-*/
 }
 
 
@@ -4556,9 +4507,6 @@ void do_pull( CHAR_DATA *ch, char *argument )
    if( obj->item_type != ITEM_MANIPULATION )
    { act("You can't do that to the $T.",ch, NULL, arg, TO_CHAR); return;}
 
-/*   if(obj->value[0] == 10)
-   { do_manipulate(ch,obj->name); return; };
-*/
    if(obj->value[0] == 10)
    { do_manipulate(ch,arg); return; };
 

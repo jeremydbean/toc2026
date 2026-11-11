@@ -133,7 +133,7 @@ make clean
 make
 ```
 
-Default compile definitions/options include `-std=gnu89`, `-O2`, `-fcommon`,
+Default compile definitions/options include `-std=gnu89`, `-O2`,
 `-DROM`, `-Dunix`, `-Wall`, and `-Wextra`. Linux links `libcrypt`, `libm`, and
 `libz`; macOS links `libm` and `libz` and expects `crypt` from the platform C
 library. `libz` backs MCCP2 output compression in `src/telnet_proto.c`.

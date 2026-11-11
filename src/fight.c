@@ -1075,13 +1075,6 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 	return;
 
     number = number_range(0,2);
-/*
-    if (number == 1 && IS_SET(ch->act,ACT_MAGE))
-	  { mob_cast_mage(ch,victim); return; }  ;
-
-    if (number == 2 && IS_SET(ch->act,ACT_CLERIC))
-	 { mob_cast_cleric(ch,victim); return; }  ;
-*/
     /* now for the skills */
 
     number = number_range(0,8);
@@ -1603,33 +1596,12 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     }
 
 /* Remove Bugged Weapon */
-/*  if ( dam > 1000 )
-    {
-       dam = 1000;
-       if ( !IS_IMMORTAL(ch) )
-       {
-           OBJ_DATA *obj;
-           bug( "Damage: %d: more than 1000 points!", dam );
-	   obj = get_eq_char( ch, WEAR_WIELD );
-           if( obj != NULL )
-           {
-             send_to_char("You really shouldn't cheat.\n\r",ch);
-             extract_obj(obj);
-           }
-       }
-
-    }
-*/
 
     /*
      * Stop up any residual loopholes.
      */
     /* damage reduction */
 
-/*
-    if (!IS_NPC(ch) && (dam > 40))
-	dam = (dam - 40)/4 + 40;
-*/
 
     if ( victim != ch )
     {
@@ -2437,8 +2409,6 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
 
      else /* Not NPC */
      {
-/*      if (IS_IMMORTAL(ch))
-	    return false; */
 
 	if (!IS_NPC(ch) && IS_SET(ch->in_room->room_flags, ROOM_ARENA) )
 	    return false;
@@ -3919,20 +3889,6 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 	if ( !is_same_group( gch, ch ) || IS_NPC(gch))
 	    continue;
 
-/*
-	if ( gch->level - lch->level >= 9 )
-	{
-	    send_to_char( "You are too high for this group.\n\r", gch );
-	    continue;
-	}
-
-	if ( gch->level - lch->level <= -9 )
-	{
-	    send_to_char( "You are too low for this group.\n\r", gch );
-	    continue;
-	}
-
-*/
 	xp = xp_compute( gch, victim, group_levels, members );
 	{
 	    /* Rested: as much again from the pool while it lasts. */
@@ -3985,23 +3941,6 @@ int xp_compute( CHAR_DATA *gch, CHAR_DATA *victim, int total_levels,
     /* compute the base exp */
     switch (level_range)
     {
-/*                                         EC
-	default :       base_exp =   0;         break;
-	case -9 :       base_exp =   1;         break;
-	case -8 :       base_exp =   2;         break;
-	case -7 :       base_exp =   5;         break;
-	case -6 :       base_exp =   9;         break;
-	case -5 :       base_exp =  11;         break;
-	case -4 :       base_exp =  22;         break;
-	case -3 :       base_exp =  33;         break;
-	case -2 :       base_exp =  50;         break;
-	case -1 :       base_exp =  66;         break;
-	case  0 :       base_exp =  83;         break;
-	case  1 :       base_exp =  99;         break;
-	case  2 :       base_exp = 121;         break;
-	case  3 :       base_exp = 143;         break;
-	case  4 :       base_exp = 165;         break;
-*/
 
 default :       base_exp =   0;         break;
 case -9 :       base_exp =   1;         break;
@@ -4026,13 +3965,6 @@ base_exp = 200 + 50 * (level_range - 4);
     /* Group bonus */
     switch (number_in_group)
     {
-/*                                       EC
-	default :       group_bonus = 1;        break;
-	case  2 :       group_bonus = 1.1;      break;
-	case  3 :       group_bonus = 1.2;      break;
-	case  4 :       group_bonus = 1.3;      break;
-	case  5 :       group_bonus = 1.15;     break;
-*/
 	default :       group_bonus = 1;        break;
 	case  2 :       group_bonus = (float)(1.15);     break;
 	case  3 :       group_bonus = 1.25;     break;
@@ -4085,9 +4017,6 @@ base_exp = 200 + 50 * (level_range - 4);
 	if (gch->level == 58)
 	  xp +=  (int)(1.5 * xp);
 
-/*if( IS_AFFECTED2( gch, AFF2_DIVINE_PROT )
-	  xp +=  2 * xp;
-*/
 
   /* TOok out the time exp shit GR */
 
@@ -5050,13 +4979,6 @@ void do_murder( CHAR_DATA *ch, char *argument )
         return;
     }
 
-/*
-    if ( victim->fighting != NULL && !is_same_group(ch,victim->fighting))
-    {
-	send_to_char("Kill stealing is not permitted.\n\r",ch);
-	return;
-    }
-*/
     if ( IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim )
     {
 	act( "$N is your beloved master.", ch, NULL, victim, TO_CHAR );
@@ -5397,12 +5319,6 @@ void do_backstab( CHAR_DATA *ch, char *argument )
 /*  Old fatality equation replaced by Ricochet on 10/3/97 */
 
 
-/*    if( ( (chance = ch->pcdata->learned[gsn_fatality]/10 - victim->level/7) > 0)
-	&& number_percent () - get_curr_stat(ch,STAT_DEX)/5 < chance)
-    {
-      fatality(ch,victim);
-      return;
-    }*/
 
     WAIT_STATE( ch, skill_table[gsn_backstab].beats );
     if ( !IS_AWAKE(victim)
@@ -5444,12 +5360,6 @@ void do_flee( CHAR_DATA *ch, char *argument )
     }
     /* The hit points fled on, before the way out can change them. */
     fled_on = ch->hit;
-/*
-    if (!IS_NPC(ch) && ch->battleticks > 0) {
-       send_to_char("Not while you are in battle mode.\n\r",ch);
-       return;
-    }
-*/
     was_in = ch->in_room;
     /* Eight tries at a random one of ten directions: about the odds the
        old six tries at eight gave, now that SE and SW can be drawn. */

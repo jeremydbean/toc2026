@@ -499,12 +499,6 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
 				    class_table[ch->class].hp_max ) * 0.5 +
 		      number_range( class_table[guild].hp_min,
 				    class_table[guild].hp_max ) * 0.5) ));
-/*
-    add_mana 	= number_range(2,(2*get_level_stat(ch,STAT_INT)
-EC				  + get_level_stat(ch,STAT_WIS))/5);
-    if (!class_table[ch->class].fMana && !class_table[guild].fMana)
-	add_mana /= 2;
-*/
   if( ch->class < CLASS_MONK)
   {
     if (!class_table[ch->class].fMana && !class_table[guild].fMana)
@@ -750,12 +744,6 @@ int hit_gain( CHAR_DATA *ch )
 
 	switch(ch->position)
 	{
-/*                                                 EC
-	    default : 		gain /= 2;			break;
-	    case POS_SLEEPING: 	gain = 3 * gain/2;		break;
-	    case POS_RESTING:  					break;
-	    case POS_FIGHTING:	gain /= 3;		 	break;
-*/
 	    default:            gain = (int)(gain * 0.75);              break;
 	    case POS_SLEEPING:  gain = 4 * gain / 2;            break;
 	    case POS_RESTING:   gain = gain/3;                  break;
@@ -780,12 +768,6 @@ int hit_gain( CHAR_DATA *ch )
 
 	switch ( ch->position )
 	{
-/*                                              EC
-	    default:	   	gain /= 4;			break;
-	    case POS_SLEEPING: 					break;
-	    case POS_RESTING:  	gain /= 2;			break;
-	    case POS_FIGHTING: 	gain /= 6;			break;
-*/
 	    default:            gain /= 3;                      break;
 	    case POS_SLEEPING:                                  break;
 	    case POS_RESTING:   gain = (int)(gain * 0.75);                    break;
@@ -1107,32 +1089,6 @@ void mobile_update( void )
 	    move_char( ch, door, false );
 	}
 
-/*	 Flee
-	if ( ch->hit < ch->max_hit / 2
-	&& ( door = number_bits( 3 ) ) <= 5
-	&& ( pexit = ch->in_room->exit[door] ) != NULL
-	&&   pexit->u1.to_room != NULL
-	&&   !IS_SET(pexit->exit_info, EX_CLOSED)
-	&&   !IS_SET(pexit->u1.to_room->room_flags, ROOM_NO_MOB) )
-	{
-	    CHAR_DATA *rch;
-	    bool found;
-
-	    found = false;
-	    for ( rch  = pexit->u1.to_room->people;
-		  rch != NULL;
-		  rch  = rch->next_in_room )
-	    {
-		if ( !IS_NPC(rch) )
-		{
-		    found = true;
-		    break;
-		}
-	    }
-	    if ( !found )
-		move_char( ch, door, false );
-	}
-*/
 
     }
 
@@ -1224,8 +1180,6 @@ void weather_update( void )
 	break;
     }
 
-/*    if( time_info.hour == 11 || time_info.hour == 23)
-       component_update(); */
 
     if (current_time > backup)
         do_backup();
@@ -1961,17 +1915,6 @@ void char_update( void )
 			ch->timer = 150;
 		    }
 		}
-/*
-		if(is_affected(ch, skill_lookup("iron skin") ) )
-		{
-		  if(IS_SET(ch->imm_flags, IMM_BASH) )
-		    REMOVE_BIT(ch->imm_flags, IMM_BASH);
-		  else if( IS_SET(ch->imm_flags, IMM_PIERCE) )
-		    REMOVE_BIT(ch->imm_flags, IMM_PIERCE);
-		  else if( IS_SET(ch->imm_flags, IMM_SLASH) )
-		    REMOVE_BIT(ch->imm_flags, IMM_SLASH);
-		}
-*/
 		/* The dominion shield and the bloody aura used to be swept
 		   up here, and wrongly: the test was "still affected", not
 		   "no longer affected", so it stripped the immunity while

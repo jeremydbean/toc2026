@@ -1765,9 +1765,6 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-/*    if(!IS_NPC(victim) )
-	return;
-*/
 
     /* Nothing of Hyrule's is charmed: a charmed guardian handed over its
        key, opened its shutters and walked out of its chamber (audit,
@@ -1791,12 +1788,6 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-/*    if (IS_SET(victim->act,ACT_AGGRESSIVE))
-    {
-        send_to_char("Spell failed.\n\r",ch);
-        return;
-    }
-*/
 
     if (IS_SET(victim->in_room->room_flags,ROOM_LAW))
     {
@@ -1805,11 +1796,6 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-/*    if( IS_SET(victim->act, ACT_AGGRESSIVE) )
-    {
-	REMOVE_BIT(victim->act, ACT_AGGRESSIVE);
-    }
-*/
     if ( victim->master )
   	stop_follower( victim );
     add_follower( victim, ch );
@@ -5026,14 +5012,6 @@ void spell_summon( int sn, int level, CHAR_DATA *ch, void *vo )
     send_to_char("A swirling portal of colors appears before you.\n\r",victim);
     send_to_char("Your target is aware of the summons.\n\r",ch);
 
-/*
-    act( "$n disappears suddenly.", victim, NULL, NULL, TO_ROOM );
-    char_from_room( victim );
-    char_to_room( victim, ch->in_room );
-    act( "$n arrives suddenly.", victim, NULL, NULL, TO_ROOM );
-    act( "$n has summoned you!", ch, NULL, victim,   TO_VICT );
-    do_look( victim, "auto" );
-*/
     snprintf(buf, sizeof(buf), "%s has tried to summon %s. [Room %d]",
 	 (ch->short_descr == NULL ? ch->name : ch->short_descr),
 	 (victim->short_descr == NULL ? victim->name : victim->short_descr),

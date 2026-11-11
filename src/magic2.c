@@ -4970,58 +4970,6 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
 }
 
 
-/*(void spell_trap_the_soul( int sn, int level, CHAR_DATA *ch, void *vo )
-{
-  CHAR_DATA *victim = (CHAR_DATA *) vo;
-  OBJ_DATA *obj;
-  bool found = false;
-  char buf[MAX_STRING_LENGTH];
-
-    if(!IS_IMMORTAL(ch) )
-    {
-      if(!IS_NPC(victim) || is_safe_spell(ch,victim,false) ||
-       saves_spell(level,victim) || IS_SET(victim->act, ACT_AGGRESSIVE) ||
-       victim->fighting != NULL)
-      {
-	send_to_char("Spell failed.\n\r",ch);
-	return;
-      }
-    }
-    else if( !IS_NPC(victim) )
-      return;
-
-    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
-    {
-	if ( obj->wear_loc == WEAR_NONE
-	&&   can_see_obj( ch, obj )
-	&&   obj->item_type == ITEM_SOUL_CONTAINER
-	&&   obj->trapped == NULL )
-	{
-	  found = true;
-	  break;
-	}
-    }
-
-    if(found)
-    {
-      act("$N screams as $e is sucked into $p!",ch,obj,victim,TO_NOTVICT);
-      act("$N screams as $e is sucked into $p!",ch,obj,victim,TO_CHAR);
-      act("You scream as you are sucked into $p!",ch,obj,victim,TO_VICT);
-      if(!IS_NPC(victim) )
-	obj->timer = 1;
-      char_to_obj(victim,obj);
-      free_string(obj->short_descr);
-      snprintf(buf, sizeof buf,"a bottle containing essence of %s",victim->name);
-      obj->short_descr = str_dup(buf);
-      free_string(obj->description);
-      snprintf(buf, sizeof buf,"A bottle containing essence of %s is here.",victim->name);
-      obj->description = str_dup(buf);
-    }
-    else
-      send_to_char("Nothing happens.\n\r",ch);
-   return;
-
-}*/
 
 void spell_fire_shield( int sn, int level, CHAR_DATA *ch, void *vo )
 {

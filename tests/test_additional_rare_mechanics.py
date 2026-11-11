@@ -82,7 +82,7 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         trap = function_body(
             self.magic2,
             "void spell_trap_the_soul_fixed",
-            "/*(void spell_trap_the_soul",
+            "void spell_fire_shield(",
         )
         open_command = function_body(self.act_move, "void do_open", "void do_close")
 

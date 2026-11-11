@@ -8519,12 +8519,6 @@ void do_restorechar( CHAR_DATA *ch, char *argument )
 
     /* keep what we got in case we need it */
  /*   already_there = 1;*/
-/*    if ( ( tempfile = fopen( name, "r" ) ) == NULL )
-    {
-	send_to_char("Current player file not found.\n\r", ch);
-	already_there = 0;
-    }
-    fclose(tempfile);*/
 
     already_there = 0;
 

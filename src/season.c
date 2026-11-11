@@ -186,7 +186,7 @@ static void boss_global_shout( const char *msg )
     DESCRIPTOR_DATA *d;
     char buf[MAX_STRING_LENGTH];
 
-    snprintf( buf, sizeof(buf), "{%02X[Event] %s{00\n\r", COL_SHOUTS, msg );
+    snprintf( buf, sizeof(buf), "{%02X[Event] %.4000s{00\n\r", COL_SHOUTS, msg );
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {

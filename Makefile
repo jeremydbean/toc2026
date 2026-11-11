@@ -6,7 +6,7 @@ PYTHON   ?= python3
 
 # Default flags favor stability while still surfacing helpful warnings. Use
 # `make CFLAGS="..."` to override for local builds.
-CFLAGS   ?= -std=gnu89 -O2 -fcommon -DROM -Dunix
+CFLAGS   ?= -std=gnu89 -O2 -DROM -Dunix
 WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
 
 # Emit a .d per object listing the headers it read. Without this a header
@@ -25,7 +25,7 @@ endif
 SRC_DIR  := src
 AREA_DIR := area
 SRCS     := $(wildcard $(SRC_DIR)/*.c) $(wildcard $(AREA_DIR)/*.c)
-OBJS := $(filter-out $(SRC_DIR)/nicedb.o $(AREA_DIR)/resolve.o $(SRC_DIR)/webserver.o, $(SRCS:.c=.o))
+OBJS := $(SRCS:.c=.o)
 DEPS     := $(OBJS:.o=.d)
 TARGET   := merc
 

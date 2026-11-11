@@ -5136,15 +5136,6 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
     if ( hyrule_keeper_refuses( keeper, ch ) )
         return NULL;
 
-/*  Undesirables.
-    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_WANTED) )
-    {
-	do_say( keeper, "Wanted ones are not welcome!" );
-        snprintf( buf, sizeof(buf), "%s is over here!\n\r", ch->name );
-	do_yell( keeper, buf );
-	return NULL;
-    }
-*/
 
     /*
      * Shop hours.
@@ -8398,113 +8389,5 @@ void do_poker( CHAR_DATA *ch, char *argument )
 }
 
 
-/*    if ( is_number( arg ) )
-    {
-	int amount;
-
-	amount   = atoi(arg);
-
-	argument = one_argument( argument, arg );
-	if ( amount <= 0
-	|| ( str_cmp( arg, "coins" ) && str_cmp( arg, "coin" ) &&
-	     str_cmp( arg, "gold"  ) ) )
-	{
-	    send_to_char( "Sorry, you can't do that.\n\r", ch );
-	    return;
-	}
-
-	if ( ch->gold < amount )
-	{
-	    send_to_char( "You haven't got that many coins.\n\r", ch );
-	    return;
-	}
-
-	ch->gold -= amount;
-
-	for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )
-	{
-	    obj_next = obj->next_content;
-
-	    switch ( obj->pIndexData->vnum )
-	    {
-	    case OBJ_VNUM_MONEY_ONE:
-		amount += 1;
-		extract_obj( obj );
-		break;
-
-	    case OBJ_VNUM_MONEY_SOME:
-		amount += obj->value[0];
-		extract_obj( obj );
-		break;
-	    }
-	}
-
-	obj_to_room( create_money( amount ), ch->in_room );
-	act( "$n drops some gold.", ch, NULL, NULL, TO_ROOM );
-	if(amount >= 5000)
-          {
-            snprintf( buf, sizeof(buf), "%s dropped %d gold. [Room: %d]", ch->name, amount,
-                      ch->in_room->vnum);
-
-	  if(IS_SET(ch->act, PLR_WIZINVIS) )
-	    wizinfo(buf, ch->invis_level);
-	  else
-	    wizinfo(buf,LEVEL_IMMORTAL);
-	}
-	send_to_char( "OK.\n\r", ch );
-	return;
-    }
-*/
 
 /* Old money code, left here just in case. Ungrim. | do_give*/
-/*    if ( is_number( arg1 ) )
-    {
-	int amount;
-
-	amount   = atoi(arg1);
-	if ( amount <= 0
-	|| ( str_cmp( arg2, "coins" ) && str_cmp( arg2, "coin" ) &&
-	     str_cmp( arg2, "gold"  ) ) )
-	{
-	    send_to_char( "Sorry, you can't do that.\n\r", ch );
-	    return;
-	}
-	else
-	argument = one_argument( argument, arg2 );
-	if ( arg2[0] == '\0' )
-	{
-	    send_to_char( "Give what to whom?\n\r", ch );
-	    return;
-	}
-
-	if ( ( victim = get_char_room( ch, arg2 ) ) == NULL )
-	{
-	    send_to_char( "They aren't here.\n\r", ch );
-	    return;
-	}
-
-	if ( ch->gold < amount )
-	{
-	    send_to_char( "You haven't got that much gold.\n\r", ch );
-	    return;
-	}
-
-	ch->gold     -= amount;
-	victim->gold += amount;
-        snprintf(buf, sizeof(buf), "$n gives you %d gold.", amount);
-        act( buf, ch, NULL, victim, TO_VICT    );
-        act( "$n gives $N some gold.",  ch, NULL, victim, TO_NOTVICT );
-        snprintf(buf, sizeof(buf), "You give $N %d gold.", amount);
-        act( buf, ch, NULL, victim, TO_CHAR    );
-        if(amount >= 10000)
-        {
-          snprintf(buf, sizeof(buf), "%s gave %s %d gold", ch->name, victim->name, amount);
-
-	  if( IS_SET(ch->act, PLR_WIZINVIS) )
-	    wizinfo(buf, ch->invis_level);
-	 else
-	    wizinfo(buf, LEVEL_IMMORTAL);
-	}
-	return;
-    }
-*/

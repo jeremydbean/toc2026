@@ -269,11 +269,6 @@ char *  const   room_aff_type   []              =
  * Increase MAX_STRING if you have too.
  * Tune the others only if you understand what you're doing.
  */
-/*
-#define                 MAX_STRING      1150976
-#define                 MAX_PERM_BLOCK  131072
-#define                 MAX_MEM_LIST    11
-*/
 
 #define                 MAX_STRING      5000000
 /*#define                 MAX_PERM_BLOCK  262144*/
@@ -4319,12 +4314,6 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
     else
         obj->level      = pObjIndex->level;
  
-/*
-      if (pObjIndex->new_format)              EC
-         obj->level = pObjIndex->level;
-      else
-        obj->level              = UMAX(0,level);
-*/
     obj->wear_loc       = -1;
  
     obj->name           = pObjIndex->name;

@@ -1953,8 +1953,6 @@ char buf[1000];
  /* log_string(" INIT OK ");*/
 /* Loop through the cmd_table and build the index */
   for ( i = 0; cmd_table[i].name[0] != '\0'; i++ ) {
-/*    sprintf(buf, "For i: %d, handling command: %s", i, cmd_table[i].name);
-    log_string(buf);*/
 
     index_char = LOWER(cmd_table[i].name[0]);
     if (isalpha(index_char)) {
@@ -2127,17 +2125,6 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
 
     found  = false;
 
-/* We now have indexed social tables (Blackbird)
-    for ( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
-    {
-	if ( command[0] == social_table[cmd].name[0]
-	&&   !str_prefix( command, social_table[cmd].name ) )
-	{
-	    found = true;
-	    break;
-	}
-    }
-*/
 
     if (command[0] == '\0') return false;
     if (!(((command[0] >= 'a') && (command[0] <= 'z')) ||

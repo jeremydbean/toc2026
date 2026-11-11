@@ -2865,7 +2865,7 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 
     if ( prefix_len > 0 )
     {
-        strncpy( d->outbuf + d->outtop, prefix, (size_t)prefix_len );
+        memcpy( d->outbuf + d->outtop, prefix, (size_t)prefix_len );
         d->outtop += prefix_len;
         d->outbuf[d->outtop] = '\0';
     }
@@ -2873,7 +2873,7 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
     /*
      * Copy.
      */
-    strncpy( d->outbuf + d->outtop, txt, (size_t)length );
+    memcpy( d->outbuf + d->outtop, txt, (size_t)length );
     d->outtop += length;
     d->outbuf[d->outtop] = '\0';
     return;

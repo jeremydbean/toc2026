@@ -82,7 +82,7 @@ cd area
 ../merc 9000
 ```
 
-The Make build uses GNU89 compatibility, `-fcommon`, ROM definitions, and
+The Make build uses GNU89 compatibility, ROM definitions, and
 `libcrypt`/`libm` where applicable.
 
 **Build both trees before believing a change works.** They disagree on more
