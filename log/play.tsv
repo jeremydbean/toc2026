@@ -21484,3 +21484,125 @@
 1794430022	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	north		Alas, you cannot go that way.	-	-
 1794430023	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	sleep		You go to sleep.	-	-
 1794430024	cmd	Trentlin	35	4210	dresden.are	sleeping	22	0	-	equipment		You are using: // <used as light>     (Invis) (Magical) (Glowing) the Sceptre of Might // <worn on finger>    (Magical) a ring of braided thorn	-	+
+1794430245	cmd	Trentlin	35	4210	dresden.are	standing	100	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794430246	cmd	Trentlin	35	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794430247	cmd	Trentlin	35	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794430247	cmd	Trentlin	35	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794430248	cmd	Trentlin	35	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794430248	cmd	Trentlin	35	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794430248	cmd	Trentlin	35	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794430248	cmd	Trentlin	35	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794430250	cmd	Trentlin	35	2401	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794430251	cmd	Trentlin	35	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794430251	cmd	Trentlin	35	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794430251	cmd	Trentlin	35	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794430252	cmd	Trentlin	35	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794430252	cmd	Trentlin	35	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794430254	cmd	Trentlin	35	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794430254	cmd	Trentlin	35	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794430254	cmd	Trentlin	35	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794430255	cmd	Trentlin	35	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794430256	cmd	Trentlin	35	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794430257	cmd	Trentlin	35	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794430257	cmd	Trentlin	35	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794430257	cmd	Trentlin	35	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794430258	cmd	Trentlin	35	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794430258	cmd	Trentlin	35	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794430258	cmd	Trentlin	35	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794430259	cmd	Trentlin	35	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794430260	area	Trentlin	35	300	plains.are	dresden.are	plains.are	305	north
+1794430260	cmd	Trentlin	35	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794430260	cmd	Trentlin	35	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794430260	cmd	Trentlin	35	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794430260	cmd	Trentlin	35	322	plains.are	standing	100	0	-	north		Grassy foothills //   You walk in the grassy foothills north of the plains. The wind is rough. // To the north you can see foothills and just behind them mountain peaks	-	+
+1794430261	cmd	Trentlin	35	324	plains.are	standing	100	0	-	north		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // To the north you can see the mountains towering over you.  Pine trees	-	+
+1794430261	area	Trentlin	35	45	connect.are	plains.are	connect.are	1	north
+1794430261	cmd	Trentlin	35	45	connect.are	standing	100	0	-	north		Base of Mount Ulmo //   Before you is a mountainous path, which leads upward into the clouds // overhead!	-	+
+1794430261	area	Trentlin	35	1000	uargo.are	connect.are	uargo.are	0	north
+1794430261	cmd	Trentlin	35	1000	uargo.are	standing	100	0	-	north		A mountain path //   A fresh mountain breeze blows in your face. You walk on a small path,  // which winds its way up the Mount Ulmo. The grassy fields along the dusty 	-	+
+1794430261	cmd	Trentlin	35	1001	uargo.are	standing	100	0	-	north		A mountain path //   A steep climb lies ahead and your surroundings are filled with debris, // a few small boulders and various small stones, that have been chipped off	-	+
+1794430262	cmd	Trentlin	35	1001	uargo.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794430262	cmd	Trentlin	35	1001	uargo.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794430263	cmd	Trentlin	35	1002	uargo.are	standing	100	0	-	up		A mountain path //   After climbing up the steep path you are now able to see the Mt. Ulmo  // pass right ahead of you. From afar the pass looks more like a small crack	-	+
+1794430264	cmd	Trentlin	35	1002	uargo.are	standing	100	0	-	rested		You are rested: your kills earn double experience until 1103 more is spent (47% of a level). // Quitting here would not let you rest -- try a healing room, the Temple, the altar or your recall point. // Each hour away banks 5% of a level, 	-	+
+1794430266	cmd	Trentlin	35	1003	uargo.are	standing	100	0	-	north		Mt. Ulmo Pass //   You walk through the pass over Mount Ulmo. Steep rock surfaces rise up // high to either side of you. From here the mountain path will take you down-	-	+
+1794430267	cmd	Trentlin	35	1004	uargo.are	standing	100	0	-	down		A sloping path down the hill //   With little difficulty you work your way down Mt. Ulmo into the Upper Argo. // The land certainly looks more friendly than the grey scenery of Mt. Ulmo.	-	+
+1794430268	cmd	Trentlin	35	1005	uargo.are	standing	100	0	-	north		A sloping path down the hill //   The path gets less steep as you get nearer to the Upper Argo. You begin // to see more of the low bushes, scattered over the still rocky underground.	-	+
+1794430271	cmd	Trentlin	35	1005	uargo.are	standing	100	0	-	iron		You lost your concentration.	-	-
+1794430272	cmd	Trentlin	35	1005	uargo.are	standing	100	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794430279	cmd	Trentlin	35	1006	uargo.are	standing	100	0	-	north		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
+1794430279	cmd	Trentlin	35	1006	uargo.are	standing	100	0	-	scan		an Orgeem Imp                      -to the North.	-	-
+1794430280	cmd	Trentlin	35	1007	uargo.are	standing	100	0	-	north		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794430281	cmd	Trentlin	35	1007	uargo.are	standing	100	0	-	kill	im	Your punch *** DEVASTATES *** an Orgeem Imp! // An Orgeem Imp dodges your attack.	-	-
+1794430285	skill	Trentlin	35	1007	uargo.are	fists of fury	76	77	success	fists
+1794430285	cmd	Trentlin	35	1007	uargo.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Orgeem Imp. // Your fists of fury scratches an Orgeem Imp.	-	+
+1794430292	cmd	Trentlin	35	1007	uargo.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS an Orgeem Imp! // Your fists of fury MUTILATES an Orgeem Imp!	-	+
+1794430298	cmd	Trentlin	35	1007	uargo.are	fighting	81	0	fight	kick		Your kick misses an Orgeem Imp.	-	-
+1794430300	cmd	Trentlin	35	1007	uargo.are	fighting	79	0	fight	kick		Your kick misses an Orgeem Imp.	-	-
+1794430306	coin	Trentlin	35	1007	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15255569724
+1794430306	coin	Trentlin	35	1007	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15255569727
+1794430306	coin	Trentlin	35	1007	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15255579727
+1794430307	cmd	Trentlin	35	1007	uargo.are	fighting	79	0	fight	steel		You cannot do this during battle.	-	-
+1794430310	cmd	Trentlin	35	1007	uargo.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Orgeem Imp. // Your fists of fury scratches an Orgeem Imp.	-	+
+1794430316	cmd	Trentlin	35	1007	uargo.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Orgeem Imp! // Your fists of fury DISEMBOWELS an Orgeem Imp!	-	+
+1794430322	cmd	Trentlin	35	1007	uargo.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Orgeem Imp! // Your fists of fury DISMEMBERS an Orgeem Imp!	-	+
+1794430328	cmd	Trentlin	35	1007	uargo.are	fighting	76	0	fight	trip		You trip an Orgeem Imp and an Orgeem Imp goes down! // Your trip scratches an Orgeem Imp.	-	-
+1794430330	level	Trentlin	36	1007	uargo.are	35	36	Monk 	1	82801	-1	(violence_update)
+1794430330	coin	Trentlin	36	1007	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15255579927
+1794430330	coin	Trentlin	36	1007	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15255579930
+1794430330	coin	Trentlin	36	1007	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15255589930
+1794430336	coin	Trentlin	36	1007	uargo.are	+60	loot	sacrifice	corpse of an Orgeem Imp	15255589990
+1794430336	cmd	Trentlin	36	1007	uargo.are	standing	75	0	-	sacrifice	co	The Gods give you 60 copper coins for your sacrifice.	-	-
+1794430336	coin	Trentlin	36	1007	uargo.are	+62	loot	sacrifice	-	15255590052
+1794430336	cmd	Trentlin	36	1007	uargo.are	standing	75	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794430337	state	Trentlin	36	1007	uargo.are	lvl=36 hp=577/769 mana=1320/1549 mv=337/400 align=-64 exp=82801 coin=16401645 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
+1794430337	cmd	Trentlin	36	1007	uargo.are	standing	75	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794430338	cmd	Trentlin	36	1007	uargo.are	standing	75	0	-	scan		You don't see anything near you.	-	-
+1794430341	cmd	Trentlin	36	1006	uargo.are	standing	75	0	-	south		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
+1794430341	cmd	Trentlin	36	1005	uargo.are	standing	75	0	-	south		A sloping path down the hill //   The path gets less steep as you get nearer to the Upper Argo. You begin // to see more of the low bushes, scattered over the still rocky underground.	-	+
+1794430341	cmd	Trentlin	36	1004	uargo.are	standing	75	0	-	south		A sloping path down the hill //   With little difficulty you work your way down Mt. Ulmo into the Upper Argo. // The land certainly looks more friendly than the grey scenery of Mt. Ulmo.	-	+
+1794430341	cmd	Trentlin	36	1004	uargo.are	standing	75	0	-	south		Alas, you cannot go that way.	-	-
+1794430342	cmd	Trentlin	36	1004	uargo.are	standing	75	0	-	south		Alas, you cannot go that way.	-	-
+1794430342	area	Trentlin	36	24105	coven.are	uargo.are	coven.are	81	recall
+1794430342	cmd	Trentlin	36	24105	coven.are	standing	75	0	-	recall		Something is very wrong! // On a Road in the Forest Murkmire //   You are on a broad road in the forest Murkmire. Here the road ends at 	-	+
+1794430346	cmd	Trentlin	36	24105	coven.are	standing	75	0	-	scan		The woodsman guard                 -to the South. // The woodsman guard                 -to the South.	-	-
+1794430347	cmd	Trentlin	36	24104	coven.are	standing	75	0	-	south		At an Intersection in the Forest Murkmire //   You have arrived at an intersection in the forest Murkmire. Here the  // forest has been ruthlessly beaten back by loggers and you can once 	-	+
+1794430348	cmd	Trentlin	36	24104	coven.are	standing	75	0	-	consider	g	The woodsman guard is well below your level. // The woodsman guard has about as many hit points as you. // Blow for blow, you would need about 10 rounds to bring The woodsman guard down; he would need about 32 rounds for you.	-	+
+1794430350	cmd	Trentlin	36	24104	coven.are	standing	75	0	-	scan		The lumberjack                     -to the West.	-	-
+1794430353	cmd	Trentlin	36	24104	coven.are	standing	77	0	-	east		Alas, you cannot go that way.	-	-
+1794430356	cmd	Trentlin	36	24105	coven.are	standing	77	0	-	north		On a Road in the Forest Murkmire //   You are on a broad road in the forest Murkmire. Here the road ends at  // an eastern and western going logging trail. There is a huge rack of 	-	+
+1794430356	cmd	Trentlin	36	24106	coven.are	standing	77	0	-	east		On a Logging Trail in the Forest Murkmire //   You are mired in mud on an old unused logging trail. You take some  // comfort in the fact that others before you were also so mired, as 	-	+
+1794430357	cmd	Trentlin	36	24107	coven.are	standing	77	0	-	south		On a Logging Trail in the Forest Murkmire //   You stand on hard, dry ground in the looming darkness of the Murkmire.  // Around you are old rotted stumps and an impenetrable wall of 	-	+
+1794430358	cmd	Trentlin	36	24108	coven.are	standing	77	0	-	east		At an Ancient Clearing in Forest Murkmire //   You have wandered into an ancient clearing in the forest. Here, the  // birds have ceased their chatter, and here, the heat lies again in a 	-	+
+1794430359	cmd	Trentlin	36	24108	coven.are	standing	77	0	-	scan		The ravening beast                 -to the East.	-	-
+1794430360	cmd	Trentlin	36	24109	coven.are	standing	77	0	-	east		At an Ancient Clearing in Forest Murkmire //   You have wandered into an ancient clearing in the forest. Here, the  // birds have ceased their chatter, and here, the heat lies again in a 	-	+
+1794430361	cmd	Trentlin	36	24109	coven.are	standing	77	0	-	consider	bea	The ravening beast is well below your level. // The ravening beast has about as many hit points as you. // The ravening beast could barely scratch you; you would need about 10 rounds to bring him down.	-	+
+1794430364	cmd	Trentlin	36	24110	coven.are	standing	77	0	-	north		At an Ancient Clearing in Forest Murkmire //   You have wandered into an ancient clearing in the forest. Here, the  // birds have ceased their chatter, and here, the heat lies again in a 	-	+
+1794430365	cmd	Trentlin	36	24110	coven.are	standing	77	0	-	scan		You don't see anything near you.	-	-
+1794430366	cmd	Trentlin	36	24111	coven.are	standing	77	0	-	west		At an Ancient Clearing in Forest Murkmire //   You have wandered into an ancient clearing in the forest. Here, the  // birds have ceased their chatter, and here, the heat lies again in a 	-	+
+1794430367	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	north		On a Logging Trail in the Forest Murkmire //   You are mired in mud on an old unused logging trail. You take some  // comfort in the fact that others before you were also so mired, as 	-	+
+1794430367	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	scan		You don't see anything near you.	-	-
+1794430370	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	open	east	Ok.	-	-
+1794430370	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	scan		The witch                          -to the East.	-	-
+1794430373	cmd	Trentlin	36	24143	coven.are	standing	77	0	-	east		The Outer Circle of Coven //   You stand in a circular clearing, bounded by brush on the outside, and  // with trees in the center. The twisted trees of the center grow 	-	+
+1794430374	cmd	Trentlin	36	24143	coven.are	standing	77	0	-	consider	w	The witch is a little below your level. // The witch has about twice your hit points. // Blow for blow, you would need about 14 rounds to bring The witch down; she would need about 79 rounds for you.	-	+
+1794430377	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	west		On a Logging Trail in the Forest Murkmire //   You are mired in mud on an old unused logging trail. You take some  // comfort in the fact that others before you were also so mired, as 	-	+
+1794430379	state	Trentlin	36	24112	coven.are	lvl=36 hp=595/769 mana=1337/1549 mv=192/400 align=-64 exp=82801 coin=16401645 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
+1794430379	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794430381	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	affect		You are affected by: // Skill: 'iron skin' grants immunity to piercing for 0 hours. // Skill: 'iron skin' modifies armor class by -22 for 0 hours.	-	+
+1794430382	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794430390	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	inventory		You are carrying: // ( 2) (Magical) (Glowing) (Humming) a white bracer //      (Magical) (Flaming) the Crystalline Dagger of Wonders	-	+
+1794430392	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	quaff	opa	This liquid is too powerful for you to drink.	-	-
+1794430395	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794430401	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	look	in pack	A metallic pack contains: // ( 2) (Magical) a red dragon claw	-	-
+1794430406	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 9 for 7 hours. // Skill: 'iron skin' grants immunity to piercing for 0 hours.	-	+
+1794430408	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	who		[36 Dwarf   Monk  ] Trentlin the Grand Master of Flowers // Players found: 1	-	-
+1794430413	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	wizlist		No immortals listed at this time.	-	-
+1794430421	cmd	Trentlin	36	24112	coven.are	standing	77	1	-	look		On a Logging Trail in the Forest Murkmire //   You are mired in mud on an old unused logging trail. You take some  // comfort in the fact that others before you were also so mired, as 	-	+
+1794430425	cmd	Trentlin	36	24112	coven.are	standing	77	0	-	look	raven	You scowl at the raven, but it still sits there laughing at you.	-	-
+1794430433	cmd	Trentlin	36	24112	coven.are	standing	79	0	-	levitate		You slowly rise up off the ground.	-	-
+1794430434	cmd	Trentlin	36	24112	coven.are	standing	79	0	-	iron		You lost your concentration.	-	-
+1794430435	cmd	Trentlin	36	24112	coven.are	standing	79	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794430443	cmd	Trentlin	36	24143	coven.are	standing	79	0	-	east		The Outer Circle of Coven //   You stand in a circular clearing, bounded by brush on the outside, and  // with trees in the center. The twisted trees of the center grow 	-	+
+1794430444	state	Trentlin	36	24143	coven.are	lvl=36 hp=613/769 mana=1286/1549 mv=227/400 align=-64 exp=82801 coin=16401645 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
+1794430444	cmd	Trentlin	36	24143	coven.are	standing	79	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+

@@ -4770,3 +4770,5 @@
 1794429472	wizinfo	35	Trentlin has entered the game.
 1794429837	wizinfo	60	Connection guard: 71.6.242.152 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 71.6.242.152 lifts it.
 1794430107	wizinfo	65	Trentlin has been touched by an angel.
+1794430330	info	0	Trentlin has achieved level 36!
+1794430330	wizinfo	60	Trentlin has achieved level 36!
