@@ -20672,3 +20672,6 @@
 1794356040	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
 1794356040	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=616/983 align=897 exp=252749 coin=263980792 bank=24577365005 qp=1835 prac=36 train=76 stash=95/350 remorts=3
 1794356040	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    291 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794358363	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794358364	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794358364	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
