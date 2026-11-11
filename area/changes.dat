@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111consider 2026-11-11
+CONSIDER now weighs what is on both of you, not only your weapons: a
+foe's sanctuary, protection or divine protection, its fire or frost
+shield burning you back, your haste or its own, how well each of you
+dodges, parries and blocks, and each side's armour. Its guess at the
+rounds a fight takes should be much closer to what the fight really takes.
+
 @ 20261110craft 2026-11-10
 A master's concoction or scroll now fails about one try in a hundred, not
 one in twenty: CONCOCT and SCRIBE run from 45% untrained to 99% at full
