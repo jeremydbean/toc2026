@@ -5742,5 +5742,6 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
 
    achievement_check_state(ch, true);
+   hero_record_write( ch, true );      /* on the remort tablet at once */
    save_char_obj(ch);
 }

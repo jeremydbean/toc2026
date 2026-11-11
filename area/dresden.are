@@ -10148,7 +10148,8 @@ relax in comfort and safety; and practice and improve new and wondrous
 skills that they have learned from all their great travels.
     There is a large plaque on the western wall with the names of all who
 have reached the pinnacle of mortal power.  Each time someone in the realms
-reaches this plateau, their name magically appears on it.
+reaches this plateau, their name magically appears on it.  Beside it hangs
+a tablet of black stone that names those who gave it up to be reborn.
     To the south a low archway opens onto a training yard, where a dummy
 that cannot be killed waits for one fighter at a time.  HELP DUMMY
 explains it.
@@ -10167,6 +10168,11 @@ D4
 ~
 ~
 0 -1 2401
+E
+tablet stone reborn remorts~
+A tablet of black stone, its surface smooth as water.  The names of those
+who have been reborn rise up in it.
+~
 E
 plaque~
 .                        *********************

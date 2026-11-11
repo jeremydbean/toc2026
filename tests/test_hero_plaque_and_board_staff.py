@@ -36,9 +36,10 @@ def read(*parts: str) -> str:
 
 class PlaqueSourceTests(unittest.TestCase):
     def test_the_plaque_does_not_filter_on_a_character_file(self) -> None:
-        body = read("src", "save.c").split("bool show_hero_plaque(", 1)[1]
+        body = read("src", "heroes.c").split("bool show_hero_plaque(", 1)[1]
         body = body.split("\n}\n", 1)[0]
-        self.assertIn("opendir( HERO_DIR )", body)
+        self.assertIn("hero_load_all()", body)
+        self.assertIn("opendir( HERO_DIR )", read("src", "heroes.c"))
         self.assertNotIn("PLAYER_DIR", body,
                          "filtering on a character file drops 83 heroes")
 
@@ -47,7 +48,7 @@ class PlaqueSourceTests(unittest.TestCase):
         sorts used it as a qsort comparator and came out in no order --
         the plaque's live test caught it, and the online roster had the
         same mistake."""
-        for source in ("save.c", "gmcp.c", "act_comm.c", "interp.c"):
+        for source in ("heroes.c", "gmcp.c", "act_comm.c", "interp.c"):
             text = read("src", source)
             for comparator in re.findall(
                     r"static int \w+\( const void \*\w+, const void \*\w+ \)\n\{.*?\n\}",
@@ -96,7 +97,7 @@ class PlaqueAndBoardLiveTests(unittest.TestCase):
                 (heroes / "Bad1name").write_text("not a hero")
 
                 plaque = clean(mrt.command("look plaque", 2.5))
-                self.assertIn("Every one of the 3 who have reached", plaque)
+                self.assertIn("3 have reached the pinnacle", plaque)
                 order = [n for n in re.findall(r"[A-Z][a-z]+", plaque)
                          if n in ("Zeta", "Acidtrip", "Moonbeam")]
                 self.assertEqual(order, ["Acidtrip", "Moonbeam", "Zeta"])

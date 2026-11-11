@@ -614,6 +614,8 @@ void advance_level( CHAR_DATA *ch, bool is_advance )
     advance_level_body( ch, is_advance );
     if ( !IS_NPC(ch) )
         playlog_level( ch, ch->level - 1, is_advance );     /* log/play.tsv */
+    if ( !IS_NPC(ch) && IS_HERO(ch) )
+        hero_record_write( ch, false );     /* on the plaque at once */
     if ( !is_advance && !IS_NPC(ch) )
         player_snapshot_milestone( ch, "level", true );
 }

@@ -561,6 +561,7 @@ int main( int argc, char **argv )
     playlog_boot( );        /* the crash recorder, once the world is up */
     spellup_boot_check( );  /* Hermie, if the restart put mortals off */
     player_archive_dormant( );   /* characters not seen in two years */
+    hero_records_backfill( );    /* the plaque's and tablet's fields */
     conn_guard_boot( );     /* players' addresses, read before the loop */
     login_lock_boot( );     /* lockouts a reboot must not forget */
     /* Passwords: our SHA-512 crypt against its specification's vectors.

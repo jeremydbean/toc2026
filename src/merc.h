@@ -4053,7 +4053,10 @@ const char *color_code      ( const CHAR_DATA *ch, int color_slot );
 const char *color_name      ( const CHAR_DATA *ch, int color_slot );
 int     channel_color_category ( const char *channel );
 void    quest_area_name ( const char *raw, char *out, size_t size );
-bool    show_hero_plaque ( CHAR_DATA *ch );
+bool    show_hero_plaque ( CHAR_DATA *ch );          /* heroes.c */
+bool    show_remort_tablet ( CHAR_DATA *ch );
+void    hero_record_write ( CHAR_DATA *ch, bool reborn );
+void    hero_records_backfill ( void );
 bool    color_is_enabled    ( const CHAR_DATA *ch );
 bool    color_parse_slot    ( const char *str, unsigned char *slot_out );
 bool    color_token_prefix  ( char ch );

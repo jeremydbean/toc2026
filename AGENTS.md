@@ -2017,6 +2017,21 @@ the character's intelligence now, which errs the player's way since some
 came from use. Staff are left alone. It logs and WIZINFOs what it took,
 and does nothing once the groups are gone.
 
+## The Hall Of Heroes' Rolls
+
+`src/heroes.c` (owner, 2026-11-11). `heroes/<Name>` keeps one record per
+character who has reached hero level or been reborn: the old first line
+(`Lev N Trust N  Name title`), then `Since` (first became a hero; 0 for
+records from before), `Remorts`, `Reborn` (last remort), `Class`, `Race`.
+`hero_record_write(ch, reborn)` writes it from `advance_level` the moment a
+character reaches hero level, from `do_remort`, and at every save; staff
+(trust `LEVEL_IMMORTAL` and up) are on neither roll. `hero_records_backfill`
+fills older records once at boot from the player files, active or archived.
+In the Hall of Heroes (4649), LOOK PLAQUE shows the newest heroes and the
+whole roll; LOOK TABLET (stone, reborn, remorts) the reborn, most lives
+first. Records are never removed: the plaque keeps heroes whose characters
+are gone (`tests/test_hero_rolls.py`).
+
 ## The Player Archive
 
 Owner, 2026-11-11: archive old players for backup, and bring one back by

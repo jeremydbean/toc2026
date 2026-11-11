@@ -1079,6 +1079,10 @@ void do_look( CHAR_DATA *ch, char *argument )
     if ( ch->in_room->vnum == ROOM_VNUM_HERO_HALL
     &&   is_name( arg1, "plaque" ) && show_hero_plaque( ch ) )
         return;
+    /* Beside it, the reborn (heroes.c). */
+    if ( ch->in_room->vnum == ROOM_VNUM_HERO_HALL
+    &&   is_name( arg1, "tablet stone reborn remorts" ) && show_remort_tablet( ch ) )
+        return;
 
     pdesc = get_extra_descr( arg1, ch->in_room->extra_descr );
     if ( pdesc != NULL )

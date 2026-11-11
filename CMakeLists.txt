@@ -79,6 +79,7 @@ set(SRC_FILES
     src/rested.c
     src/recovery.c
     src/recycle.c
+    src/heroes.c
     src/restores.c
     src/alignment.c
     src/playlog.c

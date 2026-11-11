@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111rolls 2026-11-11
+The Hall of Heroes, down from the Oak Tree Square, honours you the moment
+you earn it: your name is on the plaque the instant you reach hero, with
+the newest heroes and when they rose listed first, and a new black stone
+tablet beside it names everyone who has been reborn, most lives first.
+LOOK PLAQUE and LOOK TABLET there.
+
 @ 20261111pools 2026-11-11
 Hit points, mana and endurance are no longer stuck under about 32,000:
 TITANIC now gives its full five-fold boost however big you are, and gear
