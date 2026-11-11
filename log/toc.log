@@ -287443,3 +287443,5 @@ Wed Nov 11 01:31:22 2026 :: Log Alaric [2497]: quest complete: 107p 89g 3s 98c, 
 Wed Nov 11 01:31:22 2026 :: Snapshot of Alaric taken before quest: Alaric.20261111_013122.quest (PRESTORE Alaric to see it).
 Wed Nov 11 01:31:23 2026 :: Log Alaric [2497]: aq ga no
 Wed Nov 11 01:31:24 2026 :: Log Alaric [2497]: score
+Wed Nov 11 01:40:25 2026 :: Connection guard: last hour 18 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
+Wed Nov 11 01:40:33 2026 :: Treasure goblin: vanished from room 17779 (The Emerald City, landoz.are) (too long in one area).
