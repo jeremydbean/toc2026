@@ -310,7 +310,9 @@ static void telnet_note_ttype( DESCRIPTOR_DATA *d )
 
     if ( strncmp( value, "MTTS ", 5 ) == 0 || strncmp( value, "mtts ", 5 ) == 0 )
     {
-        d->client_mtts = atoi( value + 5 );
+        /* The client's own bitfield; anything else claims nothing. */
+        if ( !parse_int( value + 5, 0, INT_MAX, &d->client_mtts ) )
+            d->client_mtts = 0;
         d->client_mtts_known = true;
         d->ttype_round = 4;                 /* the last answer there is */
         return;

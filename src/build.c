@@ -39,6 +39,15 @@ struct build_flag
     long        bit;
 };
 
+/* A typed vnum, or -1 -- which no index holds -- when it is not a whole
+   number in int's range. */
+static int typed_vnum( const char *s )
+{
+    int vnum;
+
+    return parse_int( s, INT_MIN, INT_MAX, &vnum ) ? vnum : -1;
+}
+
 /* Shops (at the end of the file, after the object tables they name). */
 static void shop_words( SHOP_DATA *s, char *out, size_t size );
 static bool mob_shop_edit( CHAR_DATA *ch, MOB_INDEX_DATA *m, char *value );
@@ -632,7 +641,7 @@ static MOB_INDEX_DATA *editable_mob( CHAR_DATA *ch, const char *arg )
     int vnum;
 
     if ( !is_number( (char *) arg ) || strlen( arg ) > 5
-      || ( vnum = atoi( arg ) ) <= 0
+      || ( vnum = typed_vnum( arg ) ) <= 0
       || ( m = get_mob_index( vnum ) ) == NULL )
     {
         snprintf( buf, sizeof(buf), "There is no mobile %s.  MCREATE makes one.\n\r",
@@ -783,7 +792,7 @@ void do_mshow( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
     if ( arg[0] == '\0' || !is_number( arg ) || strlen( arg ) > 5
-      || ( m = get_mob_index( atoi( arg ) ) ) == NULL )
+      || ( m = get_mob_index( typed_vnum( arg ) ) ) == NULL )
     {
         send_to_char( "Syntax: mshow <mobile vnum>\n\r", ch );
         return;
@@ -961,9 +970,9 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
     /* ---- numbers ---- */
     else if ( !str_prefix( field, "level" ) )
     {
-        int level = atoi( value );
+        int level;
 
-        if ( !is_number( value ) || level < 1 || level > 200 )
+        if ( !parse_int( value, 1, 200, &level ) )
         {
             send_to_char( "Level is a number from 1 to 200.\n\r", ch );
             return false;
@@ -980,9 +989,7 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
         if ( !str_cmp( value, "good" ) )           align = 1000;
         else if ( !str_cmp( value, "neutral" ) )   align = 0;
         else if ( !str_cmp( value, "evil" ) )      align = -1000;
-        else if ( is_number( value ) || ( value[0] == '-' && is_number( value + 1 ) ) )
-            align = atoi( value );
-        else
+        else if ( !parse_int( value, INT_MIN, INT_MAX, &align ) )
             align = 99999;
         if ( align < -1000 || align > 1000 )
         {
@@ -994,12 +1001,15 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
     }
     else if ( !str_prefix( field, "hitroll" ) && str_cmp( field, "hit" ) )
     {
-        if ( !is_number( value ) || strlen( value ) > 4 )
+        int hitroll;
+
+        if ( !is_number( value ) || strlen( value ) > 4
+          || !parse_int( value, INT_MIN, INT_MAX, &hitroll ) )
         {
             send_to_char( "Hitroll is a number.\n\r", ch );
             return false;
         }
-        m->hitroll = (sh_int) atoi( value );
+        m->hitroll = (sh_int) hitroll;
         apply_level_clamps( ch, m );
     }
     else if ( !str_cmp( field, "hp" ) || !str_prefix( field, "hitpoints" )
@@ -1064,14 +1074,13 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
 
         while ( isspace( (unsigned char) *rest ) )
             rest++;
-        if ( !( is_number( rest ) || ( rest[0] == '-' && is_number( rest + 1 ) ) )
-          || strlen( rest ) > 6 )
+        if ( strlen( rest ) > 6 || !parse_int( rest, INT_MIN, INT_MAX, &ac ) )
         {
             send_to_char( "Armour is a number, lower is better: ac -20, or ac "
                           "slash -40.\n\r", ch );
             return false;
         }
-        ac = URANGE( -10000, atoi( rest ), 10000 );
+        ac = URANGE( -10000, ac, 10000 );
         for ( i = 0; i < 4; i++ )
             if ( which < 0 || which == i )
                 m->ac[i] = (sh_int) ac;
@@ -1079,13 +1088,16 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
     }
     else if ( !str_prefix( field, "wealth" ) )
     {
-        if ( !is_number( value ) || strlen( value ) > 8 )
+        long wealth;
+
+        if ( !is_number( value ) || strlen( value ) > 8
+          || !parse_long( value, LONG_MIN, LONG_MAX, &wealth ) )
         {
             send_to_char( "Wealth is a number (0 means what a mobile of its level "
                           "usually carries).\n\r", ch );
             return false;
         }
-        mob_index_set_wealth( m, atol( value ) );
+        mob_index_set_wealth( m, wealth );
     }
     else if ( !str_prefix( field, "position" ) || !str_prefix( field, "start" )
            || !str_prefix( field, "default" ) )
@@ -1362,10 +1374,9 @@ static long plain_number( const char *s, long hi )
     long n;
 
     if ( s[0] == '\0' || !isdigit( (unsigned char) s[0] ) || !is_number( (char *) s )
-      || strlen( s ) > 12 )
+      || strlen( s ) > 12 || !parse_long( s, 0, hi, &n ) )
         return -1;
-    n = atol( s );
-    return n <= hi ? n : -1;
+    return n;
 }
 
 
@@ -1463,7 +1474,7 @@ static OBJ_INDEX_DATA *editable_obj( CHAR_DATA *ch, const char *arg )
     int vnum;
 
     if ( !is_number( (char *) arg ) || strlen( arg ) > 5
-      || ( vnum = atoi( arg ) ) <= 0
+      || ( vnum = typed_vnum( arg ) ) <= 0
       || ( o = get_obj_index( vnum ) ) == NULL )
     {
         snprintf( buf, sizeof(buf), "There is no object %s.  OCREATE makes one.\n\r",
@@ -1669,7 +1680,7 @@ void do_oshow( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
     if ( arg[0] == '\0' || !is_number( arg ) || strlen( arg ) > 5
-      || ( o = get_obj_index( atoi( arg ) ) ) == NULL )
+      || ( o = get_obj_index( typed_vnum( arg ) ) ) == NULL )
     {
         send_to_char( "Syntax: oshow <object vnum>\n\r", ch );
         return;
@@ -2079,7 +2090,7 @@ static bool obj_affect_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
         return true;
     }
 
-    if ( !is_number( amount ) || ( mod = atoi( amount ) ) == 0 || mod < -1000 || mod > 1000 )
+    if ( !is_number( amount ) || !parse_int( amount, -1000, 1000, &mod ) || mod == 0 )
     {
         send_to_char( "Give an amount from -1000 to 1000: affect +hitroll 2, affect "
                       "ac -10.\n\r", ch );
@@ -2854,7 +2865,7 @@ void do_place( CHAR_DATA *ch, char *argument )
         long count = 1;
         int i;
 
-        if ( !is_number( arg ) || ( m = get_mob_index( atoi( arg ) ) ) == NULL )
+        if ( !is_number( arg ) || ( m = get_mob_index( typed_vnum( arg ) ) ) == NULL )
         {
             snprintf( buf, sizeof(buf), "There is no mobile %s.\n\r", arg );
             send_to_char( buf, ch );
@@ -2890,7 +2901,7 @@ void do_place( CHAR_DATA *ch, char *argument )
         OBJ_INDEX_DATA *o;
         RESET_DATA *r;
 
-        if ( !is_number( arg ) || ( o = get_obj_index( atoi( arg ) ) ) == NULL )
+        if ( !is_number( arg ) || ( o = get_obj_index( typed_vnum( arg ) ) ) == NULL )
         {
             snprintf( buf, sizeof(buf), "There is no object %s.\n\r", arg );
             send_to_char( buf, ch );
@@ -2921,7 +2932,7 @@ void do_place( CHAR_DATA *ch, char *argument )
             RESET_DATA *tail;
             OBJ_DATA *box_here;
 
-            if ( !is_number( target ) || ( box = get_obj_index( atoi( target ) ) ) == NULL
+            if ( !is_number( target ) || ( box = get_obj_index( typed_vnum( target ) ) ) == NULL
               || obj_reset_in_room( pArea, room, box->vnum, &tail ) == NULL )
             {
                 send_to_char( "Name a container placed in this room: PLACE OBJ <its vnum> "
@@ -2950,7 +2961,7 @@ void do_place( CHAR_DATA *ch, char *argument )
             bool worn = str_cmp( how, "on" ) != 0;
             int slot = 0;
 
-            if ( !is_number( target ) || ( m = get_mob_index( atoi( target ) ) ) == NULL
+            if ( !is_number( target ) || ( m = get_mob_index( typed_vnum( target ) ) ) == NULL
               || ( mreset = mob_reset_in_room( pArea, room, m->vnum, &tail ) ) == NULL )
             {
                 send_to_char( "Name a mobile placed in this room: PLACE MOB <its vnum> "
@@ -3177,7 +3188,7 @@ void do_unplace( CHAR_DATA *ch, char *argument )
     int n = 0, want, removed = 0, mob_vnum = 0;
 
     one_argument( argument, arg );
-    if ( !is_number( arg ) || ( want = atoi( arg ) ) < 1 )
+    if ( !parse_int( arg, 1, INT_MAX, &want ) )
     {
         send_to_char( "Syntax: unplace <number>   (the number RESETS shows)\n\r", ch );
         return;
@@ -3863,7 +3874,7 @@ void build_wizard_input( CHAR_DATA *ch, const char *line )
                 send_to_char( "A vnum is a number.\n\r", ch );
                 return;
             }
-            vnum = atoi( answer );
+            vnum = typed_vnum( answer );
         }
         taken = ch->pcdata->wizard_kind == WIZ_MOB ? get_mob_index( vnum ) != NULL
                                                    : get_obj_index( vnum ) != NULL;
@@ -4340,7 +4351,10 @@ bool build_set_room( CHAR_DATA *ch, ROOM_INDEX_DATA *room, const char *field,
         int sector;
 
         if ( is_number( value ) )
-            sector = atoi( value );
+        {
+            if ( !parse_int( value, INT_MIN, INT_MAX, &sector ) )
+                sector = -1;
+        }
         else if ( ( f = flag_find( sector_names, value ) ) != NULL )
             sector = (int) f->bit;
         else
@@ -4431,7 +4445,7 @@ void do_rshow( CHAR_DATA *ch, char *argument )
     if ( argument[0] != '\0' )
     {
         if ( !is_number( argument ) || strlen( argument ) > 5
-          || ( room = get_room_index( atoi( argument ) ) ) == NULL )
+          || ( room = get_room_index( typed_vnum( argument ) ) ) == NULL )
         {
             send_to_char( "Syntax: rshow [room vnum]\n\r", ch );
             return;

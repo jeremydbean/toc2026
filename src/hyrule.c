@@ -1752,7 +1752,7 @@ bool hyrule_play_recorder( CHAR_DATA *ch, const char *argument )
     if ( argument != NULL && argument[0] != '\0' )
     {
         if ( !is_number( (char *) argument )
-        ||   ( want = atoi( argument ) ) < 1 || want > 9 )
+        ||   !parse_int( argument, 1, 9, &want ) )
         {
             snprintf( buf, sizeof(buf),
                       "Name a dungeon by its level: PLAY RECORDER <1-9>. "

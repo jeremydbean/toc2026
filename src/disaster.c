@@ -418,7 +418,10 @@ void disaster_dragon_forget( CHAR_DATA *ch )
 static int dragon_wait( void )
 {
     const char *env = getenv( "TOC_DRAGON_WAIT" );
-    int seconds = env != NULL ? atoi( env ) : 0;
+    int seconds = 0;
+
+    if ( env == NULL || !parse_int( env, 1, INT_MAX, &seconds ) )
+        seconds = 0;
 
     return seconds > 0 ? seconds : DRAGON_WAIT;
 }

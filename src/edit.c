@@ -50,14 +50,14 @@ void do_areasave( CHAR_DATA *ch, char *argument )
     argument = one_argument (argument, arg1);
     argument = one_argument (argument, arg2);
 
-    if (!is_number(arg1) || !is_number(arg2) || argument[0] != '\0')
+    /* The room loop counts up to end inclusive, so end stops one short
+       of INT_MAX. */
+    if (!parse_int(arg1, INT_MIN, INT_MAX - 1, &start)
+     || !parse_int(arg2, INT_MIN, INT_MAX - 1, &end) || argument[0] != '\0')
     {
         send_to_char( "Usage: areasave <first room> <last room>\n\r", ch);
         return;
     }
-
-    start = atoi(arg1);
-    end   = atoi(arg2);
 
     snprintf(strsave, sizeof(strsave), "%s%s.are", AREA_DIR, ch->name);
     if ((fp = fopen(strsave,"w")) == NULL)
@@ -215,7 +215,9 @@ void edit_exit( CHAR_DATA *ch, char *argument )
     else if (!str_prefix(arg1, "west")) door = 3;
     else if (!str_prefix(arg1, "up"))   door = 4;
     else if (!str_prefix(arg1, "down")) door = 5;
-    else if (is_number(arg1))           door = atoi(arg1);
+    /* A number indexes exit[] directly: 0 to 9 only. */
+    else if (parse_int(arg1, 0, 9, &door))
+        ;   /* door set */
     else
     {
         send_to_char("Unknown direction.\n\r", ch);
@@ -244,7 +246,8 @@ void edit_exit( CHAR_DATA *ch, char *argument )
         else if (!str_prefix(arg1,"wizlocked")) type = 3;
         else if (!str_prefix(arg1,"secret"))    type = 4;
         else if (!str_prefix(arg1,"trapped"))   type = 5;
-        else if (is_number(arg1))               type = atoi(arg1);
+        else if (parse_int(arg1, SHRT_MIN, SHRT_MAX, &type))
+            ;   /* type set */
         else
         {
             send_to_char("Unknown door type.\n\r", ch);
@@ -264,12 +267,11 @@ void edit_exit( CHAR_DATA *ch, char *argument )
     if (argument[0] != '\0')
     {
         argument = one_argument (argument, arg1 );
-        if (!is_number(arg1))
+        if (!parse_int(arg1, SHRT_MIN, SHRT_MAX, &key))
         {
             send_to_char("Key must be a vnum of an object.\n\r", ch);
             return;
         }
-        key = atoi(arg1);
     }
 
     if (ch->in_room->exit[door] == NULL )

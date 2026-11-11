@@ -2280,7 +2280,10 @@ int number_argument( char *argument, char *arg )
 	if ( *pdot == '.' )
 	{
 	    *pdot = '\0';
-	    number = atoi( argument );
+	    /* A count that is not a whole number finds nothing, as atoi's
+	       0 did; "5abc.sword" is no longer the fifth sword. */
+	    if ( !parse_int( argument, INT_MIN, INT_MAX, &number ) )
+	        number = 0;
 	    *pdot = '.';
               toc_strlcpy( arg, pdot+1, MAX_INPUT_LENGTH );
               return number;

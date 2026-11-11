@@ -529,9 +529,9 @@ int main( int argc, char **argv )
 	    fprintf( stderr, "Usage: %s [port #|--check-area|--validate]\n", argv[0] );
 	    exit( 1 );
 	}
-	else if ( ( port = atoi( argv[1] ) ) <= 1024 )
+	else if ( !parse_int( argv[1], 1025, 65535, &port ) )
 	{
-	    fprintf( stderr, "Port number must be above 1024.\n" );
+	    fprintf( stderr, "Port number must be from 1025 to 65535.\n" );
 	    exit( 1 );
 	}
     }

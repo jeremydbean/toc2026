@@ -131,7 +131,19 @@ static int seen_count( CHAR_DATA *ch, const char *id )
         while ( *p == ' ' )
             p++;
         if ( !strncmp( p, id, len ) && p[len] == ':' )
-            return atoi( p + len + 1 );
+        {
+            /* "<id>:<count>", then a space or the end; a count that is
+               not a whole number is no count, as atoi made it. */
+            char count[16];
+            size_t n = strcspn( p + len + 1, " " );
+            int seen;
+
+            if ( n >= sizeof(count) )
+                return 0;
+            memcpy( count, p + len + 1, n );
+            count[n] = '\0';
+            return parse_int( count, INT_MIN, INT_MAX, &seen ) ? seen : 0;
+        }
         while ( *p != '\0' && *p != ' ' )
             p++;
     }

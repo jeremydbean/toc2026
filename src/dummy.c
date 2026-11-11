@@ -2052,8 +2052,7 @@ static void dummy_command( CHAR_DATA *ch, char *argument )
                               "the bell away.\n\r", ch );
                 return;
             }
-            rounds = atoi( arg2 );
-            if ( rounds < 1 || rounds > 1000 )
+            if ( !parse_int( arg2, 1, 1000, &rounds ) )
             {
                 send_to_char( "Pick a number of rounds between 1 and "
                               "1000.\n\r", ch );
@@ -2160,9 +2159,9 @@ static void dummy_command( CHAR_DATA *ch, char *argument )
 
     if ( is_number( arg1 ) )
     {
-        int level = atoi( arg1 );
+        int level;
 
-        if ( level < 1 || level > MAX_LEVEL )
+        if ( !parse_int( arg1, 1, MAX_LEVEL, &level ) )
         {
             snprintf( buf, sizeof(buf),
                       "Pick a level between 1 and %d.\n\r", MAX_LEVEL );

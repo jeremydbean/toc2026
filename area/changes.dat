@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111numbers 2026-11-11
+A number you type must be a whole number now. ROLL 2d6+3, WIMPY 5abc
+or a number too large to count used to be read as something else -- 2d6,
+5, or a stray value -- and acted on; they are refused with a word on
+what was wanted instead.
+
 @ 20261111cleanup 2026-11-11 staff
 Cleanup: NEWCORPSE and MAXLOADS are gone -- the old corpse history and the
 item caps they read no longer exist. Use CORPSE and PRESTORE to put back

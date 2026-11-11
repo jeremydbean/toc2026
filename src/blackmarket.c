@@ -1114,6 +1114,7 @@ static bool bm_already_bought( CHAR_DATA *ch, int vnum )
 {
     char word[MAX_INPUT_LENGTH];
     const char *p;
+    int bought;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL
     ||   ch->pcdata->black_market_stock != bm_stock_id
@@ -1122,7 +1123,7 @@ static bool bm_already_bought( CHAR_DATA *ch, int vnum )
     for ( p = ch->pcdata->black_market_bought; *p != '\0'; )
     {
         p = one_argument( (char *) p, word );
-        if ( word[0] != '\0' && atoi( word ) == vnum )
+        if ( parse_int( word, INT_MIN, INT_MAX, &bought ) && bought == vnum )
             return true;
     }
     return false;

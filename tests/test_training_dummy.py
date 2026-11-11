@@ -469,7 +469,8 @@ class TrainingDummyTests(unittest.TestCase):
 
     def test_the_round_count_is_bounded(self) -> None:
         body = self.dummy.split('!str_prefix( arg1, "bench" )', 1)[1][:1500]
-        self.assertIn("rounds < 1 || rounds > 1000", body)
+        # Checked parsing since 2026-11-11: a whole number from 1 to 1000.
+        self.assertIn("parse_int( arg2, 1, 1000, &rounds )", body)
 
     # --------------------------------------------- the rules of the yard
     def test_you_leave_as_you_came_in(self) -> None:

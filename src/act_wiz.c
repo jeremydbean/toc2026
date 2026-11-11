@@ -592,6 +592,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     ROOM_INDEX_DATA *jail;
     ROOM_INDEX_DATA *temple;
+    int days;
 
 /*    one_argument( argument, arg );*/
 
@@ -607,7 +608,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( arg[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 ) )
+    if ( arg[0] == '\0' || !parse_int( arg2, 0, INT_MAX, &days ) )
     {
         send_to_char( "Syntax: jail <player> <# of days>.\n\r", ch );
         send_to_char( "To release someone, days=0\n\r",ch);
@@ -620,7 +621,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (atoi(arg2) > 30)
+    if (days > 30)
     {
         send_to_char("Maximum days is 30.\n\r",ch);
         return;
@@ -639,7 +640,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( IS_SET(victim->act, PLR_JAILED ) && atoi(arg2) == 0)
+    if ( IS_SET(victim->act, PLR_JAILED ) && days == 0)
     {
         REMOVE_BIT(victim->act, PLR_JAILED );
         REMOVE_BIT(victim->comm, COMM_NOCHANNELS );
@@ -657,7 +658,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( !IS_SET(victim->act, PLR_JAILED ) && atoi(arg2) == 0)
+    if ( !IS_SET(victim->act, PLR_JAILED ) && days == 0)
     {
         send_to_char("That player isn't in jail!\n\r",ch);
         return;
@@ -676,7 +677,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         send_to_char( buf,ch);
         char_from_room( victim );
         char_to_room( victim, jail );
-        victim->pcdata->jw_timer = current_time + (atoi(arg2)*24*60*60);
+        victim->pcdata->jw_timer = current_time + (days*24*60*60);
         snprintf( buf, sizeof(buf), "%s has been jailed for breaking the rules!", victim->name );
         send_info(buf);
         return;
@@ -1139,7 +1140,12 @@ ROOM_INDEX_DATA *find_location( CHAR_DATA *ch, char *arg )
     OBJ_DATA *obj;
 
     if ( is_number(arg) )
-	return get_room_index( atoi( arg ) );
+    {
+	int vnum;
+
+	/* A number past int's range names no room. */
+	return parse_int( arg, INT_MIN, INT_MAX, &vnum ) ? get_room_index( vnum ) : NULL;
+    }
 
     if ( ( victim = get_char_world( ch, arg ) ) != NULL )
 	return victim->in_room;
@@ -1161,6 +1167,7 @@ void do_transfer( CHAR_DATA *ch, char *argument )
     DESCRIPTOR_DATA *d;
     CHAR_DATA *victim;
     bool trans_pet = false;
+    int room_vnum;
 
     argument = one_argument( argument, arg1 );
 
@@ -1200,7 +1207,7 @@ void do_transfer( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, arg2 );
 
     /* Crash bug fix - Rico 8/6/98 */
-    if (atoi(arg2) < 1 && is_number(arg2))
+    if (is_number(arg2) && !parse_int(arg2, 1, INT_MAX, &room_vnum))
     {
             send_to_char("Invalid room number.\n\r",ch);
             return;
@@ -1349,6 +1356,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
     char message[MAX_STRING_LENGTH];
     bool found = false;
     bool by_vnum;
+    int vnum;
     OBJ_DATA *obj;
     OBJ_INDEX_DATA *search = NULL;
     OBJ_DATA *search1 = NULL;
@@ -1409,7 +1417,8 @@ void do_gather( CHAR_DATA *ch, char *argument )
     by_vnum = is_number( arg );
     if(by_vnum)
     {
-      if( ( search = get_obj_index( atoi( arg ) ) ) == NULL)
+      if( !parse_int( arg, INT_MIN, INT_MAX, &vnum )
+       || ( search = get_obj_index( vnum ) ) == NULL)
       {
 	send_to_char("There is no object with that vnum.\n\r",ch);
 	return;
@@ -1485,6 +1494,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *location;
     CHAR_DATA *rch;
     bool trans_pet = false;
+    int vnum_asked = 0;
 
     if ( argument[0] == '\0' )
     {
@@ -1493,7 +1503,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
     }
 
     /* Crash bug fix - Rico 8/6/98 */
-    if (atoi(argument) < 1 && is_number(argument))
+    if (is_number(argument) && !parse_int(argument, 1, INT_MAX, &vnum_asked))
     {
         send_to_char("Invalid room number.\n\r",ch);
         return;
@@ -1503,7 +1513,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
     {
 	if ( is_number(argument) )
 	{
-	    int vnum = atoi( argument );
+	    int vnum = vnum_asked;
 
 	    if (vnum <= WORLD_SIZE)
 	    {
@@ -1784,8 +1794,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         send_to_char("We only have about 32000 objects.\n\r",ch);
         return;
       }
-      vnum = atoi(argument);
-      if (vnum <= 0) {
+      if (!parse_int(argument, 1, INT_MAX, &vnum)) {
         send_to_char("Please enter an positive number.\n\r",ch);
         return;
       }
@@ -2682,7 +2691,10 @@ void do_owhere( CHAR_DATA *ch, char *argument )
     } else {
 	if(is_number(arg)) {
 	    bvnum = true;
-	    vnum = atoi(arg);
+	    if ( !parse_int( arg, INT_MIN, INT_MAX, &vnum ) ) {
+		send_to_char( "That is not a valid vnum.\n\r", ch );
+		return;
+	    }
 	}
 
         buffer[0] = '\0';
@@ -3232,6 +3244,7 @@ void do_mload( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     MOB_INDEX_DATA *pMobIndex;
     CHAR_DATA *victim;
+    int vnum;
 
     one_argument( argument, arg );
 
@@ -3242,13 +3255,13 @@ void do_mload( CHAR_DATA *ch, char *argument )
     }
 
     /* Crash bug fix - Rico 8/6/98 */
-    if (is_number(arg) && atoi(arg) < 1)
+    if (!parse_int(arg, 1, INT_MAX, &vnum))
     {
         send_to_char("Invalid mob number.\n\r",ch);
         return;
     }
 
-    if ( ( pMobIndex = get_mob_index( atoi( arg ) ) ) == NULL )
+    if ( ( pMobIndex = get_mob_index( vnum ) ) == NULL )
     {
 	send_to_char( "No mob has that vnum.\n\r", ch );
 	return;
@@ -3268,7 +3281,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
     char arg1[MAX_INPUT_LENGTH] ,arg2[MAX_INPUT_LENGTH];
     OBJ_INDEX_DATA *pObjIndex;
     OBJ_DATA *obj = NULL;
-    int level;
+    int level, vnum;
 
     argument = one_argument( argument, arg1 );
     one_argument( argument, arg2 );
@@ -3280,7 +3293,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
     }
 
     /* Crash bug fix - Rico 8/6/98 */
-    if (is_number(arg1) && atoi(arg1) < 1)
+    if (!parse_int(arg1, 1, INT_MAX, &vnum))
     {
         send_to_char("Invalid object number.\n\r",ch);
         return;
@@ -3297,15 +3310,14 @@ void do_oload( CHAR_DATA *ch, char *argument )
 	  send_to_char( "Syntax: oload <vnum> <level>.\n\r", ch );
 	  return;
 	}
-	level = atoi(arg2);
-	if (level < 0 || level > UMIN( get_trust(ch), MAX_LEVEL ))
+	if (!parse_int(arg2, 0, UMIN( get_trust(ch), MAX_LEVEL ), &level))
 	{
 	  send_to_char( "Level must be be between 0 and your level.\n\r",ch);
 	  return;
 	}
     }
 
-    if ( ( pObjIndex = get_obj_index( atoi( arg1 ) ) ) == NULL )
+    if ( ( pObjIndex = get_obj_index( vnum ) ) == NULL )
     {
 	send_to_char( "No object has that vnum.\n\r", ch );
 	return;
@@ -3496,7 +3508,7 @@ void do_advance( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( level = atoi( arg2 ) ) < 1 || level > 70 )
+    if ( !parse_int( arg2, 1, 70, &level ) )
     {
 	send_to_char( "Level must be 1 to 70.\n\r", ch );
 	return;
@@ -3610,7 +3622,7 @@ void do_trust( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( level = atoi( arg2 ) ) < 0 || level > LEVEL_TRUST_MAX )
+    if ( !parse_int( arg2, 0, LEVEL_TRUST_MAX, &level ) )
     {
 	snprintf( buf, sizeof(buf),
 	    "Level must be 0 (reset) or 1 to %d.\n\r", LEVEL_TRUST_MAX );
@@ -4574,8 +4586,7 @@ void do_sset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    value = atoi( arg3 );
-    if ( value < 0 || value > 100 )
+    if ( !parse_int( arg3, 0, 100, &value ) )
     {
 	send_to_char( "Value range is 0 to 100.\n\r", ch );
 	return;
@@ -4676,7 +4687,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
     /*
      * Snarf the value (which need not be numeric).
      */
-    value = is_number( arg3 ) ? atoi( arg3 ) : -1;
+    if ( !parse_int( arg3, INT_MIN, INT_MAX, &value ) )
+	value = -1;
 
     /*
 	* Set something.
@@ -5926,6 +5938,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
     char arg3 [MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     int value;
+    bool value_ok;
 
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
@@ -5959,15 +5972,24 @@ void do_oset( CHAR_DATA *ch, char *argument )
     }
 
     /*
-     * Snarf the value (which need not be numeric).
+     * Snarf the value (which need not be numeric: the text and flag fields
+     * read arg3 themselves). A numeric field refuses anything that is not
+     * a whole number in int's range.
      */
-    value = atoi( arg3 );
+    value_ok = parse_int( arg3, INT_MIN, INT_MAX, &value );
+    if ( !value_ok )
+	value = 0;
 
     /*
      * Set something.
      */
     if ( !str_cmp( arg2, "value0" ) || !str_cmp( arg2, "v0" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
 	obj->value[0] = UMIN(50,value);
 	snprintf(buf, sizeof(buf),"V0 on %s set to %d.\n\r",obj->short_descr,value);
 	send_to_char(buf, ch);
@@ -5976,6 +5998,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "value1" ) || !str_cmp( arg2, "v1" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
        if(obj->item_type == ITEM_WEAPON && value > 75 )
        {
 	 send_to_char("You don't need weapon that powerful. 75 is Max.\n\r",ch);
@@ -5990,6 +6017,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "value2" ) || !str_cmp( arg2, "v2" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
        if(obj->item_type == ITEM_WEAPON && value > 75 )
        {
 	 send_to_char("You don't need a weapon that powerful. 75 is Max.\n\r",ch);
@@ -6004,6 +6036,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "value3" ) || !str_cmp( arg2, "v3" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
 	obj->value[3] = value;
 	snprintf(buf, sizeof(buf),"V3 on %s set to %d.\n\r",obj->short_descr,value);
 	send_to_char(buf, ch);
@@ -6012,6 +6049,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "value4" ) || !str_cmp( arg2, "v4" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
 	obj->value[4] = value;
 	snprintf(buf, sizeof(buf),"V4 on %s set to %d.\n\r",obj->short_descr,value);
 	send_to_char(buf, ch);
@@ -6059,6 +6101,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "level" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
    obj->level = clamp_sh_int( value );
 	snprintf(buf, sizeof(buf),"Level on %s set to %d.\n\r",obj->short_descr,value);
 	send_to_char(buf, ch);
@@ -6067,6 +6114,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "weight" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
    obj->weight = clamp_sh_int( value );
 	snprintf(buf, sizeof(buf),"Weight on %s set to %d.\n\r",obj->short_descr,value);
 	send_to_char(buf, ch);
@@ -6075,6 +6127,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "cost" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
 	obj->cost = value;
 	snprintf(buf, sizeof(buf),"Cost on %s set to %d.\n\r",obj->short_descr,value);
 	send_to_char(buf, ch);
@@ -6083,6 +6140,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "timer" ) )
     {
+	if ( !value_ok )
+	{
+	    send_to_char( "That is not a valid number.\n\r", ch );
+	    return;
+	}
    obj->timer = clamp_sh_int( value );
 	snprintf(buf, sizeof(buf),"Timer on %s set to %d.\n\r",obj->short_descr,value);
 	send_to_char(buf, ch);
@@ -6097,6 +6159,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
 	return;
       }
 
+      if ( !value_ok )
+      {
+	send_to_char( "That is not a valid number.\n\r", ch );
+	return;
+      }
       obj->item_type = clamp_sh_int( value );
       snprintf(buf, sizeof(buf),"Type on %s set to %d.\n\r",obj->short_descr,value);
       send_to_char(buf,ch);
@@ -6132,7 +6199,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "condition" ) )
     {
-	if ( !is_number( arg3 ) || value < 0 || value > 100 )
+	if ( !value_ok || value < 0 || value > 100 )
 	{
 	    send_to_char( "Condition range is 0 to 100.\n\r", ch );
 	    return;
@@ -6288,10 +6355,8 @@ void do_anew( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    lo = atoi( arg1 );
-    hi = atoi( arg2 );
-
-    if ( lo < 1 || hi > WORLD_SIZE || lo > hi )
+    if ( !parse_int( arg1, 1, WORLD_SIZE, &lo )
+      || !parse_int( arg2, 1, WORLD_SIZE, &hi ) || lo > hi )
     {
         snprintf( buf, sizeof(buf),
                   "Vnums run from 1 to %d, low first.\n\r", WORLD_SIZE );
@@ -6686,9 +6751,12 @@ static AREA_DATA *build_area_for_new( CHAR_DATA *ch, int vnum, const char *what 
 /* The vnum argument of MCREATE/OCREATE, or -1. */
 static int build_vnum_arg( const char *arg )
 {
-    if ( arg[0] == '\0' || !is_number( (char *) arg ) || strlen( arg ) > 5 )
+    int vnum;
+
+    if ( arg[0] == '\0' || !is_number( (char *) arg ) || strlen( arg ) > 5
+      || !parse_int( arg, INT_MIN, INT_MAX, &vnum ) )
         return -1;
-    return atoi( arg );
+    return vnum;
 }
 
 
@@ -6968,13 +7036,15 @@ void do_rlink( CHAR_DATA *ch, char *argument )
         }
         else if ( !str_cmp( arg2, "key" ) )
         {
-            if ( !is_number( argument ) )
+            int key;
+
+            if ( !parse_int( argument, -1, SHRT_MAX, &key ) )
             {
                 send_to_char( "Which object vnum is the key?\n\r", ch );
                 return;
             }
 
-            pexit->key = atoi( argument );
+            pexit->key = (sh_int) key;
             snprintf( buf, sizeof(buf), "Object %d unlocks the way %s.\n\r",
                       (int) pexit->key, dir_name[door] );
         }
@@ -7074,9 +7144,9 @@ void do_rlink( CHAR_DATA *ch, char *argument )
 
     /* Digging. */
     {
-        int vnum = atoi( arg2 );
+        int vnum;
 
-        if ( vnum < 1 || vnum > WORLD_SIZE )
+        if ( !parse_int( arg2, 1, WORLD_SIZE, &vnum ) )
         {
             snprintf( buf, sizeof(buf), "Room numbers run from 1 to %d.\n\r",
                       WORLD_SIZE );
@@ -7345,12 +7415,12 @@ void do_tset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( !is_number( arg2 ) )
+    /* INT_MIN would overflow the day's "value - 1". */
+    if ( !parse_int( arg2, INT_MIN + 1, INT_MAX, &value ) )
     {
 	send_to_char( "Value must be numeric.\n\r", ch );
 	return;
     }
-    value = atoi( arg2 );
 
     if ( !str_prefix( arg1, "day") )
     {
@@ -8031,7 +8101,11 @@ void do_lastlog( CHAR_DATA *ch, char *argument )
     limit = 20;
     if ( arg1[0] != '\0' && is_number( arg1 ) )
     {
-        limit = atoi( arg1 );
+        if ( !parse_int( arg1, INT_MIN, INT_MAX, &limit ) )
+        {
+            send_to_char( "That is not a valid number.\n\r", ch );
+            return;
+        }
         toc_strlcpy( arg1, arg2, sizeof(arg1) );
     }
     limit = URANGE( 1, limit, LOGIN_JOURNAL_KEEP );
@@ -8290,7 +8364,8 @@ void do_invis( CHAR_DATA *ch, char *argument )
     else
     /* do the level thing */
     {
-      level = atoi(arg);
+      if ( !parse_int( arg, INT_MIN, INT_MAX, &level ) )
+          level = -1;     /* not a level: refused below */
       if ( level == 0 && is_number( arg ) )
       {
           if ( IS_SET(ch->act, PLR_WIZINVIS) )
@@ -8358,8 +8433,7 @@ void do_cloak( CHAR_DATA *ch, char *argument )
     }
     else
     {
-	level = atoi(arg);
-	if ( level < 2 || level > get_trust(ch) )
+	if ( !parse_int( arg, 2, get_trust(ch), &level ) )
 	{
 	    send_to_char("Cloak settings are between 2 and your trust level.\n\r",ch);
 	    return;
@@ -9188,12 +9262,11 @@ void do_ksock( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if(!is_number(arg) )
+    if(!parse_int(arg, 0, INT_MAX, &sock) )
     {
       send_to_char("You have to specify a numerical socket.\n\r",ch);
       return;
     }
-    sock = atoi(arg);
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
@@ -9228,6 +9301,7 @@ void do_itrans( CHAR_DATA *ch, char *argument )
     DESCRIPTOR_DATA *d;
     CHAR_DATA *victim;
     bool trans_pet = false;
+    int room_vnum;
 
     argument = one_argument( argument, arg1 );
 
@@ -9244,7 +9318,7 @@ void do_itrans( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, arg2 );
 
     /* Crash bug fix - Rico 8/6/98 */
-    if (atoi(arg2) < 1 && is_number(arg2))
+    if (is_number(arg2) && !parse_int(arg2, 1, INT_MAX, &room_vnum))
     {
             send_to_char("Invalid room number.\n\r",ch);
             return;
@@ -9385,7 +9459,10 @@ void do_iportal( CHAR_DATA *ch, char *argument )
     /* Find target room */
     if ( is_number( arg1 ) )
     {
-        if ( ( to_room = get_room_index( atoi( arg1 ) ) ) == NULL )
+        int vnum;
+
+        if ( !parse_int( arg1, INT_MIN, INT_MAX, &vnum )
+          || ( to_room = get_room_index( vnum ) ) == NULL )
         {
             send_to_char( "No such room.\n\r", ch );
             return;
@@ -9410,9 +9487,7 @@ void do_iportal( CHAR_DATA *ch, char *argument )
     /* Parse timer */
     if ( arg2[0] == '\0' )
         timer = 0;
-    else if ( is_number( arg2 ) )
-        timer = atoi( arg2 );
-    else
+    else if ( !parse_int( arg2, SHRT_MIN, SHRT_MAX, &timer ) )
     {
         send_to_char( "Timer must be a number.\n\r", ch );
         return;
@@ -11419,8 +11494,9 @@ static bool prestore_snapshot_identity( const char *path, char *name, size_t siz
 {
     FILE *fp = fopen( path, "rb" );
     char line[MAX_STRING_LENGTH];
-    int level = 0, tru = 0;
+    int level = 0, tru = 0, flag = 0;
     bool creator = false;
+    bool malformed = false;
 
     name[0] = '\0';
     *trust = 0;
@@ -11435,14 +11511,21 @@ static bool prestore_snapshot_identity( const char *path, char *name, size_t siz
             toc_strlcpy( name, line + 5, size );
             name[strcspn( name, "~\r\n" )] = '\0';
         }
+        /* A rank read from a damaged line is no rank: refuse the copy,
+           as the loader would, rather than rank-check against garbage. */
         else if ( !strncmp( line, "Levl ", 5 ) )
-            level = atoi( line + 5 );
+            malformed |= !parse_int( line + 5, INT_MIN, INT_MAX, &level );
         else if ( !strncmp( line, "Tru ", 4 ) )
-            tru = atoi( line + 4 );
+            malformed |= !parse_int( line + 4, INT_MIN, INT_MAX, &tru );
         else if ( !strncmp( line, "Creator ", 8 ) )
-            creator = atoi( line + 8 ) != 0;
+        {
+            malformed |= !parse_int( line + 8, INT_MIN, INT_MAX, &flag );
+            creator = flag != 0;
+        }
     }
     fclose( fp );
+    if ( malformed )
+        return false;
     if ( creator || !str_cmp( name, "Killuminati" ) )
         *trust = LEVEL_CREATOR;
     else if ( tru != 0 )
@@ -11560,7 +11643,14 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
     {
         arg2[0] = '\0';
         if ( is_number( arg3 ) )
-            page = UMAX( 1, atoi( arg3 ) );
+        {
+            if ( !parse_int( arg3, INT_MIN, INT_MAX, &page ) )
+            {
+                send_to_char( "That is not a valid page number.\n\r", ch );
+                return;
+            }
+            page = UMAX( 1, page );
+        }
     }
 
     if ( arg2[0] == '\0' || !str_cmp( arg2, "list" ) )
@@ -11724,8 +11814,8 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                 return;
             }
         }
-        else if ( is_number( arg2 ) )
-            n = atoi( arg2 );
+        else if ( is_number( arg2 ) && !parse_int( arg2, 1, INT_MAX, &n ) )
+            n = 0;      /* refused just below */
         if ( n < 1 || n > count )
         {
             snprintf( buf, sizeof(buf),
@@ -12279,7 +12369,12 @@ void do_petrify( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    duration = ( arg2[0] != '\0' ) ? atoi( arg2 ) : 50;
+    duration = 50;
+    if ( arg2[0] != '\0' && !parse_int( arg2, INT_MIN, SHRT_MAX, &duration ) )
+    {
+        send_to_char( "Duration must be a number of ticks up to 32767.\n\r", ch );
+        return;
+    }
     if ( duration < 1 ) duration = 50;
 
     af.type      = gsn_petrify;
@@ -12480,11 +12575,13 @@ void do_empower( CHAR_DATA *ch, char *argument )
     if ( arg2[0] == '\0' || !str_prefix( arg2, "toggle" )
     ||   !str_prefix( arg2, "perm" ) )
         duration = -1;
-    else
+    else if ( !parse_int( arg2, INT_MIN, SHRT_MAX, &duration ) )
     {
-        duration = atoi( arg2 );
-        if ( duration < 1 ) duration = 100;
+        send_to_char( "Duration must be a number of ticks up to 32767, or perm.\n\r", ch );
+        return;
     }
+    else if ( duration < 1 )
+        duration = 100;
 
     empower_apply( victim, ch->level, duration );
 
@@ -12555,11 +12652,13 @@ void do_titanic( CHAR_DATA *ch, char *argument )
     if ( arg2[0] == '\0' || !str_prefix( arg2, "toggle" )
     ||   !str_prefix( arg2, "perm" ) )
         duration = -1;
-    else
+    else if ( !parse_int( arg2, INT_MIN, SHRT_MAX, &duration ) )
     {
-        duration = atoi( arg2 );
-        if ( duration < 1 ) duration = 100;
+        send_to_char( "Duration must be a number of ticks up to 32767, or perm.\n\r", ch );
+        return;
     }
+    else if ( duration < 1 )
+        duration = 100;
 
     titanic_apply( victim, ch->level, duration,
                    &hp_boost, &mana_boost, &move_boost );
@@ -13131,8 +13230,9 @@ static const struct spellup_entry *spellup_match( const char *said )
 
     if ( is_number( (char *) said ) )
     {
-        int choice = atoi( said );
-        if ( choice >= 1 && choice <= total )
+        int choice;
+
+        if ( parse_int( said, 1, total, &choice ) )
             return &spellup_table[choice - 1];
         return NULL;
     }
@@ -13391,7 +13491,7 @@ void do_spellup( CHAR_DATA *ch, char *argument )
     if ( arg[0] != '\0' )
     {
         if ( !is_number( arg ) || strlen( arg ) > 5
-            || ( minutes = atoi( arg ) ) < 1 || minutes > SPELLUP_MAX_MINUTES )
+            || !parse_int( arg, 1, SPELLUP_MAX_MINUTES, &minutes ) )
         {
             snprintf( buf, sizeof(buf),
                 "Syntax: spellup [minutes]   (1 to %d; leave it off and she stays until purged)\n\r",
@@ -13561,7 +13661,10 @@ static void hermie_say( const char *text )
 static int hermie_window_seconds( void )
 {
     const char *env = getenv( "TOC_HERMIE_BOOT_SECONDS" );   /* tests only */
-    int s = env != NULL ? atoi( env ) : 0;
+    int s = 0;
+
+    if ( env == NULL || !parse_int( env, 1, INT_MAX, &s ) )
+        s = 0;
 
     return s > 0 ? s : HERMIE_BOOT_SECONDS;
 }

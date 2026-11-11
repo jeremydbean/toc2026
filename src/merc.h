@@ -4193,3 +4193,6 @@ extern CHAR_DATA *event_vendor;
 
 /* Combat arithmetic with no game state (combat_rules.c). */
 #include "combat_rules.h"
+
+/* Checked number parsing (numparse.c): use it, never atoi(). */
+#include "numparse.h"

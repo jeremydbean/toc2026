@@ -600,13 +600,11 @@ void do_scroll(CHAR_DATA *ch, char *argument)
 	return;
     }
 
-    if (!is_number(arg))
+    if (!parse_int(arg, INT_MIN, INT_MAX, &lines))
     {
 	send_to_char("You must provide a number.\n\r",ch);
 	return;
     }
-
-    lines = atoi(arg);
 
     if (lines == 0)
     {
@@ -2823,10 +2821,17 @@ void do_who( CHAR_DATA *ch, char *argument )
 
 	if ( is_number( arg ) )
 	{
+	    int level;
+
+	    if ( !parse_int( arg, INT_MIN, INT_MAX, &level ) )
+	    {
+		send_to_char( "That is not a valid level.\n\r", ch );
+		return;
+	    }
 	    switch ( ++nNumber )
 	    {
-	    case 1: iLevelLower = atoi( arg ); break;
-	    case 2: iLevelUpper = atoi( arg ); break;
+	    case 1: iLevelLower = level; break;
+	    case 2: iLevelUpper = level; break;
 	    default:
 		send_to_char( "Only two level numbers allowed.\n\r", ch );
 		return;
@@ -4206,7 +4211,7 @@ void do_practice(CHAR_DATA *ch, char *argument)
             }
             else if ( is_number( last + 1 ) )
             {
-                if ( strlen( last + 1 ) > 3 || ( count = atoi( last + 1 ) ) < 1 )
+                if ( strlen( last + 1 ) > 3 || !parse_int( last + 1, 1, 999, &count ) )
                 {
                     send_to_char( "Practice how many times?\n\r", ch );
                     return;
@@ -4349,8 +4354,11 @@ void do_wimpy( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
 	wimpy = ch->max_hit / 5;
-    else
-	wimpy = atoi( arg );
+    else if ( !parse_int( arg, INT_MIN, INT_MAX, &wimpy ) )
+    {
+	send_to_char( "Wimpy is a number of hit points: 'wimpy 50'.\n\r", ch );
+	return;
+    }
 
     if ( wimpy < 0 )
     {
@@ -5357,7 +5365,10 @@ void do_remort( CHAR_DATA *ch, char *arg)
          int past_class;
 
          to_strip = one_argument(to_strip,get_class);
-         past_class = atoi(get_class);
+         /* A token that is not a number names no class, as one out of
+            range never did. */
+         if (!parse_int(get_class, INT_MIN, INT_MAX, &past_class))
+            past_class = -1;
          if (past_class >= 0 && past_class < MAX_CLASS)
             had_class[past_class] = true;
 
