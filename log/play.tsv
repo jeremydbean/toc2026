@@ -20676,3 +20676,43 @@
 1794358364	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
 1794358364	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
 1794358710	coin	Alaric	57	2497	dresden.are	+61443412	bank	interest	bank	24902789209
+1794359161	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794359162	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	aquest	re	Resolve your pending AQUEST GAMBLE offer before requesting another quest.	-	-
+1794359163	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794359165	cmd	Alaric	57	2497	dresden.are	standing	100	12	-	aquest	ga no	Wise choice. You safely collect 17 quest points.	-	-
+1794359167	quest	Alaric	57	2497	dresden.are	rush	kill	1502	a gnome man	6	gnome.are	6
+1794359167	cmd	Alaric	57	2497	dresden.are	standing	100	10	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'The criminal known as a gnome man has escaped from prison!'	-	+
+1794359170	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794359170	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794359170	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794359170	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794359171	cmd	Alaric	57	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794359171	cmd	Alaric	57	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794359171	cmd	Alaric	57	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794359171	cmd	Alaric	57	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794359172	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794359172	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794359172	cmd	Alaric	57	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794359175	area	Alaric	57	3503	midennir.are	dresden.are	midennir.are	3275	east
+1794359175	cmd	Alaric	57	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794359175	cmd	Alaric	57	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794359175	cmd	Alaric	57	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794359176	cmd	Alaric	57	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794359176	area	Alaric	57	55	connect.are	midennir.are	connect.are	1	south
+1794359176	cmd	Alaric	57	55	connect.are	standing	100	0	-	south		Dusty Path //   You are on a dusty path that leads north to the eastern road and west // towards the Gnome Village.  Ahead you can hear the sounds of happy little	-	+
+1794359176	area	Alaric	57	1501	gnome.are	connect.are	gnome.are	0	east
+1794359176	cmd	Alaric	57	1501	gnome.are	standing	100	0	-	east		Entrance to Gnome Village //   You stand on a dusty path that leads north and east.  To the east you hear // the sounds of a small village.	-	+
+1794359178	cmd	Alaric	57	1502	gnome.are	standing	100	0	-	east		A Dusty Path //   This is a path leading into the village.  It continues east and west and // there is a small house to the north.	-	+
+1794359179	cmd	Alaric	57	1502	gnome.are	standing	100	0	-	scan		a gnome woman                      -to the North. // a gnome child                      -to the North. // a gnome man                        -to the East.	-	-
+1794359185	cmd	Alaric	57	1503	gnome.are	standing	100	0	-	east		A Road in the Village //   This road runs north and south through the center of the village.  There // are a few people moving around, but not many.	-	+
+1794359187	coin	Alaric	57	1503	gnome.are	+1	loot	kill	corpse of a gnome man	24902789210
+1794359187	cmd	Alaric	57	1503	gnome.are	standing	100	8	-	kill	man	Your punch === OBLITERATES === a gnome man! [-129] // A gnome man is DEAD!! // You have almost finished your QUEST!	-	+
+1794359190	area	Alaric	57	2497	dresden.are	gnome.are	dresden.are	14	recall
+1794359190	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794359191	coin	Alaric	57	2497	dresden.are	+308258280	quests	aquest	-	25211047490
+1794359191	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	rush qp=1852->1852 offered=44 daily=4->4 coin=+308258280 kill=15412914 streak=1 level=57 target=-1
+1794359191	cmd	Alaric	57	2497	dresden.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
+1794359191	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 44 quest points.	-	-
+1794359200	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794359201	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=479/983 align=872 exp=252749 coin=572239073 bank=24638808417 qp=1896 prac=36 train=76 stash=95/350 remorts=3
+1794359201	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    291 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+

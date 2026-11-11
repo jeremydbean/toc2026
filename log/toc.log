@@ -287276,3 +287276,59 @@ Wed Nov 11 00:52:43 2026 :: Log Alaric [2497]: who
 Wed Nov 11 00:52:44 2026 :: Log Alaric [2497]: wake
 Wed Nov 11 00:52:44 2026 :: Log Alaric [2497]: l
 Wed Nov 11 01:00:14 2026 :: Treasure goblin: vanished from room 15192 (A Completely Empty Hallway, campus.are) (too long in one area).
+Wed Nov 11 01:06:01 2026 :: Log Alaric [2497]: wake
+Wed Nov 11 01:06:02 2026 :: Log Alaric [2497]: aq re
+Wed Nov 11 01:06:03 2026 :: Log Alaric [2497]: l
+Wed Nov 11 01:06:05 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov 11 01:06:07 2026 :: Log Alaric [2497]: aq re
+Wed Nov 11 01:06:07 2026 :: Log Alaric [2497]: quest assigned: kill a gnome man (mob 1502, level 6) in gnome.are, 6 minutes, rush
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2497]: enter door
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2401]: east
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2403]: east
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2420]: east
+Wed Nov 11 01:06:10 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2421]: east
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2422]: east
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2423]: east
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2424]: east
+Wed Nov 11 01:06:11 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Nov 11 01:06:12 2026 :: Log Alaric [2425]: east
+Wed Nov 11 01:06:12 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Nov 11 01:06:12 2026 :: Log Alaric [2426]: open east
+Wed Nov 11 01:06:12 2026 :: Log Alaric [2426]: east
+Wed Nov 11 01:06:12 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Nov 11 01:06:15 2026 :: Log Alaric [2440]: east
+Wed Nov 11 01:06:15 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Wed Nov 11 01:06:15 2026 :: Log Alaric [3503]: east
+Wed Nov 11 01:06:15 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Wed Nov 11 01:06:15 2026 :: Log Alaric [3502]: east
+Wed Nov 11 01:06:15 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Wed Nov 11 01:06:16 2026 :: Log Alaric [3525]: east
+Wed Nov 11 01:06:16 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Wed Nov 11 01:06:16 2026 :: Log Alaric [3526]: south
+Wed Nov 11 01:06:16 2026 :: Log Alaric [55]: arrived (Dusty Path) from 3526
+Wed Nov 11 01:06:16 2026 :: Log Alaric [55]: east
+Wed Nov 11 01:06:16 2026 :: Log Alaric [1501]: arrived (Entrance to Gnome Village) from 55
+Wed Nov 11 01:06:18 2026 :: Log Alaric [1501]: e
+Wed Nov 11 01:06:18 2026 :: Log Alaric [1502]: arrived (A Dusty Path) from 1501
+Wed Nov 11 01:06:19 2026 :: Log Alaric [1502]: scan
+Wed Nov 11 01:06:25 2026 :: Log Alaric [1502]: e
+Wed Nov 11 01:06:25 2026 :: Log Alaric [1503]: arrived (A Road in the Village) from 1502
+Wed Nov 11 01:06:27 2026 :: Log Alaric [1503]: kill man
+Wed Nov 11 01:06:27 2026 :: Log Alaric [1503]: killed a gnome man
+Wed Nov 11 01:06:27 2026 :: Log Alaric [1503]: coin +1 copper
+Wed Nov 11 01:06:30 2026 :: Log Alaric [1503]: recal
+Wed Nov 11 01:06:30 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1503
+Wed Nov 11 01:06:31 2026 :: Log Alaric [2497]: aq co
+Wed Nov 11 01:06:31 2026 :: Log Alaric [2497]: copper +308258280
+Wed Nov 11 01:06:31 2026 :: Log Alaric [2497]: quest complete: 308p 25g 82s 80c, 44 quest points, rush (streak bonus 10%)
+Wed Nov 11 01:06:31 2026 :: Snapshot of Alaric taken before quest: Alaric.20261111_010631.quest (PRESTORE Alaric to see it).
+Wed Nov 11 01:06:31 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov 11 01:06:40 2026 :: Log Alaric [2497]: who
+Wed Nov 11 01:06:41 2026 :: Log Alaric [2497]: sc
