@@ -136,6 +136,11 @@ All `.are` files use **Latin-1 (ISO-8859-1)** encoding. Do not save as UTF-8.
 Each area is assigned a **two-letter prefix** (e.g., `QQ`, `AC`, `DR`). Vnums within an area follow the convention:
 - `QQ00`–`QQ99` or `QQ00`–`QQ999` depending on area size.
 - Rooms, mobs, and objects share the same vnum namespace within their respective sections.
+- A vnum is a whole number from 1 to 1,000,000 (`MAX_VNUM` in `src/merc.h`).
+  Vnums were 16-bit until 2026-11-11 and stopped at 32,767; an area may now
+  use any number up to the ceiling. A record whose vnum lies outside it stops
+  the boot with `Load_rooms: vnum N is outside 1 to 1000000.` (or
+  `Load_mobiles`/`Load_objects`). `0` still ends a section.
 - Keep mobs, objects, and rooms in logically grouped vnum blocks (e.g., QQ00–QQ19 rooms, QQ20–QQ39 mobs, QQ40–QQ79 objects).
 
 ---

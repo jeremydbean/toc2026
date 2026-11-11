@@ -267,7 +267,7 @@ void edit_exit( CHAR_DATA *ch, char *argument )
     if (argument[0] != '\0')
     {
         argument = one_argument (argument, arg1 );
-        if (!parse_int(arg1, SHRT_MIN, SHRT_MAX, &key))
+        if (!parse_int(arg1, -1, MAX_VNUM, &key))
         {
             send_to_char("Key must be a vnum of an object.\n\r", ch);
             return;
@@ -286,7 +286,7 @@ void edit_exit( CHAR_DATA *ch, char *argument )
     pexit->keyword          = str_dup(argument);
     pexit->exit_info        = exit_info;
     pexit->lock             = (sh_int)(type);
-    pexit->key              = (sh_int)(key);
+    pexit->key              = key;
     pexit->u1.to_room       = location;
     if ( !str_prefix("secret", pexit->keyword) )
         pexit->lock = 4; /* Make it a secret exit */

@@ -2601,8 +2601,8 @@ instead of building loose in the shared workshop (custom.are).
 
 The range must be empty -- no room, mobile or object may already use a
 vnum in it -- and must not overlap another area.  Pick a free block with
-RLIST, VNUM, or ALIST.  Keep an area under 5000 vnums; rooms themselves
-run from 1 to WORLD_SIZE.
+RLIST, VNUM, or ALIST.  Keep an area under 5000 vnums; vnums themselves
+run from 1 to 1000000.
 
 ANEW writes a stub file, area/built/<name>.are, carrying an #AREADATA
 header with the range and your name as its builder, and lists it in

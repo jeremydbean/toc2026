@@ -95,7 +95,7 @@ static bool bm_sold_out = false;
 #define BM_PER_SLOT        3
 #define BM_POOL_MAX        ( BM_BANDS * BM_SLOTS * BM_PER_SLOT )
 #define BM_STOCK_MAX       5
-#define BM_VNUM_MAX        65536
+#define BM_VNUM_MAX        ( MAX_VNUM + 1 )
 
 static const int bm_slot_flags[BM_SLOTS] =
 {
@@ -158,8 +158,9 @@ static const char * const bm_skip_areas[] =
 };
 
 
-/* Vnums are short on some fields and int on others; one range test,
-   through a long, serves both without the compiler calling it moot. */
+/* One range test for any vnum, the tables above indexed by it: through a
+   long, so a value from an object's int values or a reset is tested the
+   same way. */
 static bool bm_vnum_ok( long vnum )
 {
     return vnum > 0 && vnum < BM_VNUM_MAX;

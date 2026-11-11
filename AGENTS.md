@@ -2093,6 +2093,35 @@ SET CHAR refuses a numeric field whose value does not parse
 Player files need nothing: `HMVP` and the affect lines were always plain
 numbers.
 
+## Vnums Are Not 16-Bit
+
+Owner, 2026-11-11. A room's, mobile's and object's vnum, and everything
+that carries one -- an exit's destination and key, a reset's arguments, a
+shop's keeper, an area's declared range, a teleport room's destination,
+the class table's guild rooms and first weapon, a guildmaster's vnum, a
+quest's target -- is `int`, held to `MAX_VNUM` (1,000,000, in `merc.h`).
+The ceiling bounds the tables indexed by vnum (WALKTO's search slots, the
+black market's placed and key tables, the free-block finder's map), which
+are touched only where vnums are in use, and stays far from `INT_MAX`.
+`WORLD_SIZE` (30,000) is gone: ANEW, DIG and GOTO take `MAX_VNUM`, and
+the room saver walks to `top_vnum_room` -- it stopped at 30,000 and left
+every room above it out of RSAVE's file. `top_vnum_room`, `top_vnum_mob`
+and `top_vnum_obj` (db.c, kept wherever a prototype enters a hash) are
+how far a walk over vnums or a random guess (`random_room_candidate`,
+TELEPORT, the old `number_range( 0, 65535 )`) goes; ALIST and the
+free-block finder walk the hashes instead. The area loaders read a
+record's vnum with `fread_record_vnum`, which stops the boot on one
+outside 1..`MAX_VNUM` (it used to wrap: #40000 hashed to a negative
+bucket and the boot crashed), and `load_areadata` refuses a built area's
+`VNUMs` range that leaves 1..`MAX_VNUM`, since the range bounds every walk
+over its prototypes and a short used to cap it. Vnums typed by staff are
+parsed whole (`parse_int`), never cut at five digits -- MSHOW, OSHOW, SET MOB/OBJ,
+MCREATE, OCREATE, RSHOW and BUILD all had `strlen( arg ) > 5`. Area files
+and player files always wrote vnums as plain decimal numbers, so nothing
+on disk changed and no migration exists. Never store a vnum in `sh_int`
+again (`tests/test_wide_vnums.py`, which also boots an area numbered from
+40,000 to 900,000 and plays it).
+
 ## Fixing Characters At Their Next Login
 
 **A bug that left characters wrong is corrected by a login fix, never by

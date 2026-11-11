@@ -2353,7 +2353,7 @@ void obj_update( void )
 		int attempts;
 		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		    to_room = get_room_index( number_range( 0, 65535 ) );
+		    to_room = get_room_index( number_range( 0, top_vnum_room ) );
 		    if (  to_room != NULL
 		    &&   !IS_SET(to_room->room_flags, ROOM_GODS_ONLY)
 		    &&   !IS_SET(to_room->room_flags, ROOM_IMP_ONLY)

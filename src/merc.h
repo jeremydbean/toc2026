@@ -258,7 +258,19 @@ typedef enum
 #define MAX_PKILL_LIST           20
 
 /* Game parameters. */
-#define WORLD_SIZE              30000
+/*
+ * The highest vnum a room, mobile or object may have (owner, 2026-11-11).
+ * Vnums were sh_int and stopped at 32,767 -- and WORLD_SIZE, 30,000, was
+ * the ceiling ANEW, DIG and the room saver used, below vnums the world
+ * already held. Every vnum is an int now. A million is far past anything
+ * an area uses, small enough that nothing which walks a vnum range (the
+ * free-block finder's table, a full rescan) costs more than a few
+ * milliseconds, and far enough from INT_MAX that vnum arithmetic -- a
+ * range's top plus its size -- cannot overflow. The hash is vnum %
+ * MAX_KEY_HASH, which is right for any vnum from 0 up. Files already held
+ * vnums as plain decimal numbers; nothing on disk changed.
+ */
+#define MAX_VNUM               1000000
 #define MAX_SOCIALS             512
 #define MAX_SKILL               233
 #define TRAIL_LEN               10
@@ -790,7 +802,7 @@ struct  help_data
 struct  shop_data
 {
     SHOP_DATA * next;                   /* Next shop in list            */
-    sh_int      keeper;                 /* Vnum of shop keeper mob      */
+    int         keeper;                 /* Vnum of shop keeper mob      */
     sh_int      buy_type [MAX_TRADE];   /* Item types shop will buy     */
     sh_int      profit_buy;             /* Cost multiplier for buying   */
     sh_int      profit_sell;            /* Cost multiplier for selling  */
@@ -845,8 +857,8 @@ struct  class_type
     char * name;                   /* the full name of the class */
     char        who_name        [7];    /* Three-letter name for 'who'  */
     sh_int      attr_prime;             /* Prime attribute              */
-    sh_int      weapon;                 /* First weapon                 */
-    sh_int      guild[MAX_GUILD];       /* Vnum of guild rooms          */
+    int         weapon;                 /* First weapon (an object vnum) */
+    int         guild[MAX_GUILD];       /* Vnum of guild rooms          */
     sh_int      skill_adept;            /* Maximum skill level          */
     sh_int      thac0_00;               /* Thac0 for level  0           */
     sh_int      thac0_32;               /* Thac0 for level 32           */
@@ -2121,7 +2133,7 @@ struct  mob_index_data
     SPEC_FUN * spec_fun;
     SHOP_DATA * pShop;
     MOB_ACTION_DATA * action;
-    sh_int              vnum;
+    int                 vnum;
     bool                new_format;
     sh_int              count;
     sh_int              killed;
@@ -2172,7 +2184,7 @@ struct  mob_index_data
 #define MAX_GAIN        10
 struct guildmaster_type
 {
-    sh_int              vnum;
+    int                 vnum;
     sh_int              class;
     sh_int              guild;
     char * can_teach[MAX_TEACH];
@@ -2305,8 +2317,8 @@ struct  char_data
     int                 questpoints;
     sh_int              nextquest;
     sh_int              countdown;
-    sh_int              questobj;
-    sh_int              questmob;
+    int                 questobj;       /* vnums: see MAX_VNUM */
+    int                 questmob;
     /* Where the target was when the quest was handed out, for the
        client's quest strip. Not saved: a quest does not survive a
        logout. */
@@ -2672,7 +2684,7 @@ struct  obj_index_data
     char * name;
     char * short_descr;
     char * description;
-    sh_int              vnum;
+    int                 vnum;
     sh_int              reset_num;
     sh_int              material;
     sh_int              item_type;
@@ -2753,10 +2765,10 @@ struct  exit_data
     union
     {
         ROOM_INDEX_DATA * to_room;
-        sh_int                  vnum;
+        int                     vnum;
     } u1;
     sh_int              exit_info;
-    sh_int              key;
+    int                 key;            /* an object vnum */
     sh_int              lock;
     sh_int              trap;
     char * keyword;
@@ -2768,9 +2780,11 @@ struct  reset_data
 {
     RESET_DATA * next;
     char                command;
-    sh_int              arg1;
-    sh_int              arg2;
-    sh_int              arg3;
+    /* int: arg1 and arg3 are vnums for most commands, and arg2 for none
+       today, but all three are written and read as plain numbers. */
+    int                 arg1;
+    int                 arg2;
+    int                 arg3;
     /*
      * 'M' resets only: how many copies of arg1 this area actually asks for in
      * room arg3.  arg2 is ROM's world-wide cap on the mob vnum, which says
@@ -2795,8 +2809,8 @@ struct  area_data
        that shipped with the game and declared no range -- read-mostly,
        editable only by an implementor. `builders' is who may build in
        it, a space-separated name list, or NULL/"All" for any immortal. */
-    sh_int              min_vnum;
-    sh_int              max_vnum;
+    int                 min_vnum;
+    int                 max_vnum;
     char *              builders;
     sh_int              age;
     sh_int              nplayer;
@@ -2818,8 +2832,8 @@ struct  room_index_data
     EXIT_DATA * exit    [10];
     char * name;
     char * description;
-    sh_int              vnum;
-    sh_int              number;
+    int                 vnum;
+    int                 number;
     int                 room_flags;
     int                 room_flags2;
     sh_int              light;
@@ -2849,7 +2863,7 @@ struct teleport_room_data
     TELEPORT_ROOM_DATA * next;
     ROOM_INDEX_DATA * room;
     sh_int               speed;
-    sh_int               to_room;
+    int                  to_room;
     sh_int               timer;
     bool                 visible;
 };
@@ -3127,6 +3141,11 @@ extern          int                     top_area;
 extern          int                     top_mob_index;
 extern          int                     top_obj_index;
 extern          int                     top_room;
+/* The highest vnum in use of each kind (vnum_in_use), so a walk over
+   every vnum stops where the world does, not at MAX_VNUM. */
+extern          int                     top_vnum_room;
+extern          int                     top_vnum_mob;
+extern          int                     top_vnum_obj;
 extern          int                     mobile_count;
 
 extern          OBJ_DATA* RELIC_1;

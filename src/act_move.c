@@ -629,7 +629,7 @@ ROOM_INDEX_DATA *random_room_candidate( int attempt )
     }
     if ( attempt == 0 && forced > 0 )
         return get_room_index( forced );
-    return get_room_index( number_range( 0, 65535 ) );
+    return get_room_index( number_range( 0, top_vnum_room ) );
 }
 
 /*
