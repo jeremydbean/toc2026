@@ -35,7 +35,7 @@ MORTAL_TOPICS = ["stone skin", "major globe", "colour spray", "color spray",
                  "zwrap phrase", "zwrapfirst", "divine inter", "div int", "stone sk",
                  "ego wh", "transportation", "zwrap phr"]
 STAFF_TOPICS = ["farslay", "goblin", "invis", "teleport", "teleportspell",
-                "empower", "empower spell", "sla", "newcorpse", "oracleadmin",
+                "empower", "empower spell", "sla", "oracleadmin",
                 "diagnostics", "wizinfo", "wizinvis"]
 
 

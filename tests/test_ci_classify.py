@@ -50,7 +50,7 @@ def plan(paths, base="b" * 40, head="h" * 40, **kw):
 class PathClassTests(unittest.TestCase):
     def test_each_class(self) -> None:
         cases = {
-            "player/Alaric": "state", "log/toc.log": "state", "area/maxload.txt": "state",
+            "player/Alaric": "state", "log/toc.log": "state", "area/offense.txt": "state",
             "area/built/x.are": "state",
             "wiki/building-guide.md": "docs", "notes/memory_leak_audit.md": "docs",
             "CHANGELOG.md": "docs",

@@ -102,45 +102,6 @@ bool dstring_append_char( DString *str, char c )
     return true;
 }
 
-int dstring_printf( DString *str, const char *fmt, ... )
-{
-    va_list ap;
-    int needed;
-    int written;
-
-    if (fmt == NULL)
-    {
-        dstring_clear( str );
-        return 0;
-    }
-
-    va_start( ap, fmt );
-    needed = vsnprintf( NULL, 0, fmt, ap );
-    va_end( ap );
-
-    if (needed < 0)
-    {
-        dstring_clear( str );
-        return needed;
-    }
-
-    if (!dstring_reserve( str, (size_t)needed + 1 ))
-    {
-        dstring_clear( str );
-        return -1;
-    }
-
-    va_start( ap, fmt );
-    written = vsnprintf( str->data, (size_t)needed + 1, fmt, ap );
-    va_end( ap );
-
-    if (written >= 0)
-        str->length = (size_t)written;
-    else
-        dstring_clear( str );
-
-    return written;
-}
 
 const char *dstring_cstr( const DString *str )
 {

@@ -98,7 +98,7 @@ class RollbackStateSafetyTests(unittest.TestCase):
         state_before = {"player/Zed": "Name Zed~ level 10", "gods/Zed": "god",
                         "corpse/live/1.corpse": "corpse 1", "log/toc.log": "log 1",
                         "area/notes.txt": "note 1", "area/ban.txt": "ban 1",
-                        "area/maxload.txt": "max 1", "area/custom.are": "workshop 1",
+                        "area/offense.txt": "offense 1", "area/custom.are": "workshop 1",
                         "area/built/keep.are": "built 1", "area/bugs.txt.20261001": "old report",
                         "area/webadmin.queue": ""}
         self.write(current, {**old_code, **state_before})
@@ -128,7 +128,7 @@ class RollbackStateSafetyTests(unittest.TestCase):
         state_after = {"player/Zed": "Name Zed~ level 11", "player/Newbie": "made today",
                        "corpse/live/2.corpse": "corpse 2", "log/toc.log": "log 2",
                        "area/notes.txt": "note 2", "area/ban.txt": "ban 2",
-                       "area/maxload.txt": "max 2", "area/custom.are": "workshop 2",
+                       "area/offense.txt": "offense 2", "area/custom.are": "workshop 2",
                        "area/built/new.are": "built 2", "area/bugs.txt.20261025": "new report"}
         self.write(current, state_after)
 

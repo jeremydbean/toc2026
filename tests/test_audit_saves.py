@@ -9,14 +9,9 @@ without a word. The STASH form is now refused for an incomplete
 snapshot, the section is dry-run before anything is read, and the
 objects join the stash only if every one of them came back.
 
-Finding 25 -- restored stash objects were never counted in the limited
-item totals (maxload.txt). They are counted once, as a deposit is.
-
 Finding 5 -- every writer that writes a temp file and renames it ignored
 fclose's answer, so on a full disk an empty file replaced the good one:
-maxload.txt (and the next boot then hung in read_maxload_file, which
-looped on the empty word fread_word gives at end of file), the pkill
-standings, the benchmark board, an area file under RSAVE (which said
+the pkill standings, the benchmark board, an area file under RSAVE (which said
 "Wrote N rooms") and the built-area list.
 
 Finding 6 -- RESETPWD did the same to a player file.
@@ -65,7 +60,7 @@ SKIP = skip_reason()
 PASSWORD = "Zaudsave1"
 TEMPLE = 4207
 YARD = 2419
-LIMITED = 911          # limited in area/maxload.txt
+LIMITED = 911          # a sapphire ring, once a limited item
 PLAIN = 3020           # a dagger, not limited
 GONE = 99999           # no such object, and no retired_objects row
 BLUE_RING = 30551      # the Blue Ring of Hyrule, level 45, one may be worn
@@ -98,13 +93,6 @@ def stash_vnums(mud: LiveMud, name: str) -> list[str]:
     if "#STASH" not in text:
         return []
     return sorted(re.findall(r"(?m)^Vnum (\d+)$", text.split("#STASH", 1)[1]))
-
-
-def maxload_count(mud: LiveMud, vnum: int) -> int:
-    text = (mud.root / "area" / "maxload.txt").read_text(encoding="latin-1")
-    match = re.search(r"(?m)^ML %d (\d+) \d+$" % vnum, text)
-    assert match is not None, text
-    return int(match.group(1))
 
 
 def write_snapshots(mud: LiveMud, name: str, stashes: dict[str, str]) -> None:
@@ -213,7 +201,6 @@ class StashRestoreTests(unittest.TestCase):
         bad = obj(PLAIN) + "#GARBAGE\n" + obj(LIMITED) + "#END\n"
         with LiveMud() as mud:
             self._world(mud, {"20260105_000000": bad})
-            count = maxload_count(mud, LIMITED)
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zarchon", PASSWORD)
                 run(staff, "scroll 0", 1.0)
@@ -221,28 +208,17 @@ class StashRestoreTests(unittest.TestCase):
                     reply = run(staff, "prestore zvictim 20260105_000000 stash", 2.5)
                     self.assertIn("Nothing was restored", reply, reply)
                     self.assertEqual(stash_vnums(mud, "Zvictim"), [], f"attempt {attempt}")
-            self.assertEqual(maxload_count(mud, LIMITED), count)
 
-    def test_a_whole_stash_is_restored_and_its_limited_items_counted(self) -> None:
+    def test_a_whole_stash_is_restored(self) -> None:
         good = obj(LIMITED) + obj(PLAIN) + "#END\n"
         with LiveMud() as mud:
             self._world(mud, {"20260106_000000": good})
-            count = maxload_count(mud, LIMITED)
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zarchon", PASSWORD)
                 run(staff, "scroll 0", 1.0)
                 reply = run(staff, "prestore zvictim 20260106_000000 stash", 2.5)
                 self.assertIn("Restored 2 objects", reply, reply)
             self.assertEqual(stash_vnums(mud, "Zvictim"), sorted([str(LIMITED), str(PLAIN)]))
-            # Counted once for the restore: owned now, as a deposit is.
-            self.assertEqual(maxload_count(mud, LIMITED), count + 1)
-
-            # And the count is still right after the owner logs in and out.
-            with mud.connect(timeout=120) as owner:
-                login(owner, "Zvictim", PASSWORD)
-                owner.send("quit")
-                self.assertTrue(owner.wait_closed())
-            self.assertEqual(maxload_count(mud, LIMITED), count + 1)
 
 
 # ---------------------------------------------------------------------------
@@ -311,25 +287,18 @@ class WornAtLoginTests(unittest.TestCase):
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class FailedWriteTests(unittest.TestCase):
-    def test_maxload_rsave_and_resetpwd_keep_the_old_file(self) -> None:
+    def test_rsave_and_resetpwd_keep_the_old_file(self) -> None:
         with LiveMud() as mud:
             make(mud, "Zimp", "Zvictim")
             patch_player_file(mud, "Zimp", Levl=70, Room=YARD)
             patch_player_file(mud, "Zvictim", Levl=30, Room=TEMPLE)
             area = mud.root / "area"
-            maxload = area / "maxload.txt"
             dummy = area / "dummy.are"
             victim = mud.player_dir / "Zvictim"
 
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zimp", PASSWORD)
                 run(staff, "scroll 0", 1.0)
-
-                before = maxload.read_bytes()
-                to_dev_full(area / "maxload.txt.tmp")
-                run(staff, f"maxloads set {LIMITED} 2101")
-                assert_untouched(self, maxload, before)
-                self.assertFalse((area / "maxload.txt.tmp").is_symlink())
 
                 before = dummy.read_bytes()
                 to_dev_full(area / "dummy.are.tmp")
@@ -418,33 +387,6 @@ class FailedWriteTests(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# Finding 5: maxload.txt that a failed write left behind
-# ---------------------------------------------------------------------------
-
-@unittest.skipIf(SKIP is not None, SKIP or "")
-class MaxloadReaderTests(unittest.TestCase):
-    def test_a_blank_or_cut_maxload_file_still_boots(self) -> None:
-        with tempfile.TemporaryDirectory(prefix="toc-maxload-") as tmp:
-            root = Path(tmp)
-            shutil.copytree(ROOT / "area", root / "area",
-                            ignore=shutil.ignore_patterns(
-                                "notes.txt", "bugs.txt", "typos.txt", "ideas.txt",
-                                "bugs.txt.*", "typos.txt.*", "ideas.txt.*",
-                                "dpsboard.txt"))
-            for name in ("player", "gods", "heroes", "corpse", "backups", "log"):
-                (root / name).mkdir()
-            maxload = root / "area" / "maxload.txt"
-            for label, text in (("empty", ""),
-                                ("no terminator", "ML 911 3 2100\n"),
-                                ("cut inside a line", "ML 911 3 2100\nML 912 2\n$\n")):
-                maxload.write_text(text, encoding="latin-1")
-                result = check_area(root / "area")
-                self.assertEqual(result.returncode, 0,
-                                 f"{label}: " + (result.stdout + result.stderr)[-800:])
-                self.assertIn("Validation OK", result.stdout + result.stderr, label)
-
-
-# ---------------------------------------------------------------------------
 # Finding 5 and 6 on a real full disk, where the machine allows a mount
 # ---------------------------------------------------------------------------
 
@@ -487,8 +429,7 @@ def _disk_full_child(out_path: str) -> None:
         patch_player_file(mud, "Zimp", Levl=70, Room=YARD)
         patch_player_file(mud, "Zvictim", Levl=30, Room=TEMPLE)
         area = mud.root / "area"
-        files = {"maxload": area / "maxload.txt", "dummy": area / "dummy.are",
-                 "victim": mud.player_dir / "Zvictim"}
+        files = {"dummy": area / "dummy.are", "victim": mud.player_dir / "Zvictim"}
         before = {key: path.read_bytes() for key, path in files.items()}
         with mud.connect(timeout=120) as staff:
             login(staff, "Zimp", PASSWORD)
@@ -496,7 +437,6 @@ def _disk_full_child(out_path: str) -> None:
             filler = mud.root / "filler"
             subprocess.run(["dd", "if=/dev/zero", f"of={filler}", "bs=64k"],
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            results["maxload_reply"] = run(staff, f"maxloads set {LIMITED} 2101")
             results["rsave_reply"] = run(staff, "rsave confirm dummy.are", 3.0)
             results["resetpwd_reply"] = run(staff, "resetpwd zvictim Newpass99", 2.0)
             filler.unlink()
@@ -539,7 +479,7 @@ class DiskFullTests(unittest.TestCase):
                              (child.stdout + child.stderr)[-3000:])
             results = json.loads(out.read_text(encoding="utf-8"))
         self.assertEqual(results["unchanged"],
-                         {"maxload": True, "dummy": True, "victim": True}, results)
+                         {"dummy": True, "victim": True}, results)
         self.assertIn("Nothing was written", results["rsave_reply"])
         self.assertIn("password was not changed", results["resetpwd_reply"])
         self.assertEqual(results["check_area_rc"], 0, results)

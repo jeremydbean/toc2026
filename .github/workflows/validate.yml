@@ -55,7 +55,6 @@ on:
       - 'area/typos.txt.*'
       - 'area/pkilldata.txt'
       - 'area/wizlist.txt'
-      - 'area/maxload.txt'
       - 'area/offense.txt'
       - 'area/relics.txt'
       - 'area/not.txt'

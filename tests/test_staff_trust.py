@@ -116,7 +116,6 @@ class StaffTrustSourceTests(unittest.TestCase):
             ("act_wiz.c", "do_finger"),
             ("act_wiz.c", "do_switch"),
             ("act_comm.c", "is_note_to"),
-            ("maxload.c", "do_lst_maxload"),
         ):
             with self.subTest(function=function):
                 self.assertNotIn("IS_IMMORTAL", self.body(filename, function))

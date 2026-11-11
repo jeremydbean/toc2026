@@ -149,7 +149,7 @@ class RareEventAndSkillTests(unittest.TestCase):
 
     def test_hero_quest_progress_and_cleanup_are_persistent(self) -> None:
         quest_master = function_body(
-            self.special, "bool spec_quest_master", "bool spec_kidnapper"
+            self.special, "bool spec_quest_master", "bool spec_monk"
         )
 
         self.assertIn("hero_quest_table_count() - 1", quest_master)

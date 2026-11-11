@@ -451,7 +451,7 @@ field that an operator fills in is allowed, but it is labelled as typed by the o
 #### 0.5 What AI-assisted investigation already has
 
 - Tools that read synced files, read-only: `tools/log_report.py`,
-  `audit_players.py`, `audit_maxload.py` and `player_history.py`. They
+  `audit_players.py` and `player_history.py`. They
   strip addresses from what they print (AGENTS "Mining The Watch Log").
 - A fixed, read-only live query that cannot run commands: the Oracle's
   `oracle.query`/`oracle.queryresult` (`src/oracle.c` l.780-789: "never interpret(), never a command").
@@ -1224,7 +1224,6 @@ and Z-named; worlds are disposable (`LiveMud`, temp dirs). "Both builds" means `
 | lockout file | `loginlock.c:login_lock_boot` (needs `lock_table`, `current_time`) | move the per-line parse into `lockwindow.c` (already pure, in the tree uncommitted): `int lock_record_parse(char *line, long now, long ladder_max, long memory, LOCK_RECORD *out)`; boot keeps claiming slots | fields exactly 4; `count` 1..1000; `until`/`last` digits only; nothing past `now + ladder_max`; **then fix A6**: drain an over-long line and skip it as guardstore does (separate commit, its own test) |
 | recovery ledger | `recovery.c:ledger_split`, `ledger_check` (static) | `src/ledgerrow.c`/`.h` pure: split + FNV check; `recovery.c` calls it | 10/11 tabs only; FNV must match for 11; CR stripping; `col[0]` digit; a remainder of an over-long line (A6) is never accepted as an 11-column record without its check; seeds: legacy row, checked row, torn row, 9,216-byte line |
 | AchSet token | `achievements.c:achievement_set_token` (uses static `achievement_set_max_id`) | `src/achset.c`: `ach_set_token(const char *, long max, long *first, long *last)`; achievements.c passes the max | digits only, no sign, `first <= last <= max`, no ERANGE; the load loop's budget is tested in the existing `test_achievement_set_load` (already sanitized) |
-| corpse history | `save.c:corpse_history_read(FILE*)` | WAIT: nothing writes these files (`corpse_back` call is commented out, AGENTS) | if revived: `fmemopen` target; `count+1 <= CORPSE_VALUES-2` already holds |
 | corpse record header | `save.c` around line 3295 (`#CORPSE`, `Id`, `Owner`, `Uid`...) | WAIT until corpse files move to a pure reader; covered today by `test_corpse_keep` | -- |
 
 - Each row: Effort S, files as listed, compat risk = boot reading of live files (every change is
@@ -1537,7 +1536,7 @@ a command row (3% of the 640-byte line cap). Trim limits unchanged.
 | In-game archive | local backup | `backup_launch` (`src/update.c:268`): `tar` of `../player` only, 30 days | **no** | yes (30 d) | `gzip -t`, `tar tzf` only |
 | `toc-player-backup` | encrypted off-host copy | `deploy/sync-player-backup.sh` (age, private repo) | yes | **no** (force-pushed latest) | listing count only |
 | `toc-daily-backup` | unknown | host only (A9) | ? | ? | ? |
-| `tools/audit_players.py`, `audit_maxload.py`, `player_history.py` | semantic checks / history | `tools/` | -- | -- | read git state; not wired to a drill |
+| `tools/audit_players.py`, `player_history.py` | semantic checks / history | `tools/` | -- | -- | read git state; not wired to a drill |
 
 #### V1. A read-only character verification mode in the server -- M
 
@@ -1588,8 +1587,6 @@ a command row (3% of the 640-byte line cap). Trim limits unchanged.
     uid now, `ending`/`stale`/`unreadable` counted;
   - pending operations: receipts `pending`/`retry` with age, and players whose file holds a
     `restore:` mark without a committed receipt;
-  - uniqueness: `tools/audit_maxload.py` (limited items vs `maxload.txt`) and a scan for the same
-    limited vnum held twice across files/stashes/ corpses where the cap is 1;
   - `tools/audit_players.py` findings by kind;
   - coverage: which state directories the source lacked (`heroes/`, `backups/`, `gods/`, area
     runtime files), and anything the restore layout expects that was absent.

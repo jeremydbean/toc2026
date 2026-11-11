@@ -3802,8 +3802,8 @@ you hit harder -- and must keep agreeing on what counts as gear:
   not the boomerangs, the holiday items or the rarities, and names no
   prerequisite.
 - **COMPARE UPGRADES never calls `create_object`.** It builds a stack
-  `OBJ_DATA` from the prototype, because a real object joins `object_list`,
-  counts against limits and advances max-load state, all for a figure.
+  `OBJ_DATA` from the prototype, because a real object joins `object_list`
+  and raises its prototype's count, all for a figure.
 
 ## Quest Contracts
 
@@ -4031,18 +4031,6 @@ root, both stripping addresses from what they print:
   character the mage's groups would have shown here weeks before a
   player asked about it in chat. Only files named 2-12 letters are
   characters; `Kyrus.Bu` and the like are hand-kept copies.
-- `python3 tools/audit_maxload.py` -- each limited object's player-owned
-  count in `area/maxload.txt` against the copies the player files hold
-  at every depth, stash included. Read-only; it exits 1 when any count
-  differs. On 2026-10-21 all twelve differed slightly (the shallow
-  counting fixed that day), every one far below its cap; correcting the
-  totals is the owner's decision and would have to be done on the host,
-  since the state sync carries maxload.txt host to git. **Nothing is
-  capped now** (owner, 2026-11-11: "no need to cap anything. remove the
-  caps"): `do_maxload_item` always allows the load
-  (`tests/test_maxload_uncapped.py`); the counts are still kept and shown
-  by MAXLOADS, and the black market still passes over an item
-  `maxload.txt` names.
 
 A routine runs both each morning in a fresh cloud session and reports
 without changing anything. `tests/test_ops_tools.py` holds the table
@@ -4147,12 +4135,10 @@ slot from 29, and below that only what is otherwise rare or
 unobtainable), the three highest scorers (`BM_PER_SLOT`): damroll,
 hitroll and stats first, then hit points, armour and a weapon's average
 blow -- up to 294 pieces; BLACKMARKET reports how many the world fills.
-The rarities below come at any level. Load-limited,
-no-drop, no-remove, rot-death and quest-token items are never sold. **He
+The rarities below come at any level. No-drop, no-remove, rot-death and
+quest-token items are never sold. **He
 carries `BM_STOCK_MAX` (five) things at most**: a holiday boss's drop at
-40%, a training cake at 30% (the two holiday cakes; Valhalla's wedding
-cake, 9955, was taken off the list because `maxload.txt` limits it to one,
-and `bm_stock_one` now refuses anything load-limited) and a lucky clover
+40%, a training cake at 30% (the two holiday cakes) and a lucky clover
 at 30% (Valhalla's 9943 and 9944) are
 rolled first, and the rest is drawn from the pool, each made with
 `create_object` at a negative level so nothing is randomised.
@@ -4430,7 +4416,7 @@ cycle (`DISASTER_CHANCE`). The rules:
   `travel_spell_refuses`, no other player) and lands beside them,
   `dragon_scale`d to two levels above them with three times
   `dummy_typical_hp` at that level. It is not aggressive and has no spec
-  fun; `spec_kidnapper` is inert, kept so the area file loads. It leaves
+  fun (the old `spec_kidnapper` was removed, 2026-11-11). It leaves
   `DRAGON_WAIT` (180) seconds after landing, or `DRAGON_PREY_GONE` (15)
   after its prey leaves, never during a fight. Killed, its hoard goes
   into its purse before `make_corpse` (`disaster_dragon_slain`, from
@@ -4892,16 +4878,14 @@ comparison:
     branch below is the werewolf shapeshift -- so a trusted builder who
     switched was moved to room 9 with a `were_shape` copied onto the
     mobile.
-  - `do_ksock`, `do_forcesave`, `do_hpardon`, `do_lst_maxload`,
+  - `do_ksock`, `do_forcesave`, `do_hpardon`,
     `do_finger`, and `is_note_to` for staff mail.
 
   Three look like the same bug and are not: `do_force` already asks
   `get_trust` for permission and reads `vch->level` only to pick which
   victims a sweep covers, `do_forcesave` keeps a `vch->level < 3` floor,
-  and `do_remort` assigns `ch->level`. `do_immort` in `act_comm.c` is
-  declared, defined, and **never registered in the command table** --
-  an orphaned duplicate of immtalk with its own `IS_IMMORTAL(victim)`
-  loop. `tests/test_staff_trust.py` keeps the sweep.
+  and `do_remort` assigns `ch->level`. `tests/test_staff_trust.py` keeps
+  the sweep.
 - `rank_protects(ch, victim)` -- whether rank stops `ch` acting on `victim`.
   Implementors are exempt, because `get_trust(victim) >= get_trust(ch)` reads
   `70 >= 70` at MAX_LEVEL and locked implementors out of twenty-two commands
@@ -5115,12 +5099,6 @@ test that fails on the old code. Keep them.
   `tests/test_mccp.py` decodes it with zlib.
 - **HISTORY TELL is tells only** (`HISTORY_NO_CHANNELS`,
   `tests/test_channel_history.py`).
-- **Corpse histories end `-1 -1`.** `99 99` also began a 99-item record;
-  `corpse_history_read` (`save.c`) takes `99` as the old end marker only
-  when nothing follows it, bounds every count, never exits on a short
-  file, and returns how many records it found -- NEWCORPSE checks a slot
-  against that (`tests/test_corpse_history.py`). Nothing writes these at
-  present: `corpse_back`'s call in `fight.c` is commented out.
 - **The Oracle's answer cache keys on everything per-player that changes
   the answer**: the guild in `_oracle_cache_key`, and a digest of the
   asker's ABILITIES in `oracle.poll_once`, the one place that has them
@@ -5136,12 +5114,6 @@ test that fails on the old code. Keep them.
   form's milestone -- each rotate the directory, and at the limit the
   oldest copy, the one being restored, was deleted before it was opened.
   `do_prestore` is a wrapper that unpins on every way out.
-- **Limited items are counted by whole subtree at every change of
-  hands** (`maxload_subtree` in `handler.c`, used by the four transfer
-  functions and the stash). The shallow counts undercounted a bag packed
-  into another carried bag and overcounted at a quit two deep
-  (`tests/test_maxload_nesting.py`). Totals already wrong in
-  `maxload.txt` are not reconciled by this; that is a separate decision.
 - **Cross-room SHOOT goes through `damage()`** and undoes the fight it
   starts between rooms (`tests/test_ranged_shot.py`).
 - **Leaving password mode clears the field** in both browser consoles
@@ -5210,13 +5182,12 @@ the old code. The rules they leave:
 - **A file written to a temp name is renamed over the real one only if
   the write finished** (`file_write_finished`, `temp_file_commit` in
   `save.c`; `replace_area_file` for areas): a full disk once left a 0-byte
-  `maxload.txt` that hung boot, a 0-byte area and a 0-byte player file
-  from RESETPWD. `read_maxload_file` stops at end of file. Tests inject the
+  area file and a 0-byte player file from RESETPWD. Tests inject the
   failure with a `/dev/full` symlink, which needs no root.
 - **PRESTORE STASH is all-or-nothing**: the snapshot's `#END` is checked
   first, the `#STASH` section is validated without reading anything into
   the game (no `fread_number` exit), objects are read aside and spliced in
-  only if all came back, and each is counted with `maxload_subtree`.
+  only if all came back.
 - **Worn gear is checked at load** (`unwear_illegal_at_load`, end of
   `load_char_obj`, before `reset_char`): a slot the object cannot take, a
   second object in a slot, a second unique ring, or (mortals) an object

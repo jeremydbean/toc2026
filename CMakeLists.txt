@@ -53,14 +53,12 @@ set(SRC_FILES
     src/list.c
     src/magic.c
     src/magic2.c
-    src/maxload.c
     src/misc.c
     src/oracle.c
     src/pkill.c
     src/quest.c
     src/save.c
     src/skills.c
-    src/script_event.c
     src/season.c
     src/holiday.c
     src/holiday_rules.c

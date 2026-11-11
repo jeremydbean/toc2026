@@ -265,7 +265,6 @@ int     write           ( int fd, char *buf, int nbyte );
 #endif
 
 
-
 /*
  * Global variables.
  */
@@ -328,7 +327,6 @@ static volatile sig_atomic_t shutdown_signal_received = 0;
  */
 static bool shutting_down = FALSE;
 #endif
-
 
 
 /*
@@ -476,7 +474,6 @@ static void process_shutdown_signal( void )
 #endif
 
 
-
 int main( int argc, char **argv )
 {
     time_t now_time;
@@ -582,7 +579,6 @@ int main( int argc, char **argv )
     log_string( log_buf );
     if ( notify_systemd( "READY=1\nSTATUS=Accepting MUD connections" ) < 0 )
         perror( "systemd ready notification" );
-    /* init_web( port + 1 );  REMOVED: Legacy C webserver conflicts with Python server */
     game_loop_unix( control );
     notify_systemd( "STOPPING=1\nSTATUS=Saving players and shutting down" );
     /* Every player's corpse as it lies, for the next boot. */
@@ -597,7 +593,6 @@ int main( int argc, char **argv )
     exit( 0 );
     return 0;
 }
-
 
 
 #if defined(unix)
@@ -691,7 +686,6 @@ int init_socket( int port )
     return fd;
 }
 #endif
-
 
 
 #if defined(macintosh) || defined(MSDOS)
@@ -793,7 +787,6 @@ void game_loop_mac_msdos( void )
     return;
 }
 #endif
-
 
 
 #if defined(unix)
@@ -1017,7 +1010,6 @@ void game_loop_unix( int control )
         fd_set exc_set;
         DESCRIPTOR_DATA *d;
         int maxdesc;
-        struct timeval loop_start = last_time;
 
         process_shutdown_signal();
         if ( merc_down )
@@ -1054,12 +1046,6 @@ void game_loop_unix( int control )
         process_web_admin_queue();
         oracle_process_queries();
 
-        {
-            script_loop_prepoll_payload poll_payload;
-
-            poll_payload.last_tick_time = &last_time;
-            script_event_emit( SCRIPT_EVENT_PRE_POLL, &poll_payload );
-        }
 
         /*
          * Poll all active descriptors.
@@ -1125,15 +1111,6 @@ void game_loop_unix( int control )
                     close_socket( d );
                     continue;
                 }
-                else
-                {
-                    script_input_event_payload input_payload;
-
-                    input_payload.descriptor = d;
-                    input_payload.buffer     = d->inbuf;
-                    input_payload.length     = strlen( d->inbuf );
-                    script_event_emit( SCRIPT_EVENT_INPUT_RECEIVED, &input_payload );
-                }
             }
 
             if (d->character != NULL && d->character->pcdata != NULL
@@ -1143,8 +1120,6 @@ void game_loop_unix( int control )
                 close_socket(d);
             }
         }
-
-        handle_web();
 
         /*
          * Process pending input lines.
@@ -1252,22 +1227,6 @@ void game_loop_unix( int control )
             d->incomm_from_alias = FALSE;
         }
 
-        {
-            script_timer_tick_payload tick_payload;
-            struct timeval            now_time;
-            long                      elapsed;
-
-            loop_clock( &now_time );
-            elapsed  = (long)( now_time.tv_sec - loop_start.tv_sec ) * 1000000L;
-            elapsed += (long)( now_time.tv_usec - loop_start.tv_usec );
-            if ( elapsed < 0 )
-                elapsed = 0;
-
-            tick_payload.delta_usec    = elapsed;
-            tick_payload.delta_seconds = (double)elapsed / 1000000.0;
-            script_event_emit( SCRIPT_EVENT_TIMER_TICK, &tick_payload );
-        }
-
         /*
          * Autonomous game motion.
          */
@@ -1351,7 +1310,6 @@ void game_loop_unix( int control )
     return;
 }
 #endif
-
 
 
 /*
@@ -1937,7 +1895,6 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 }
 
 
-
 bool read_from_descriptor( DESCRIPTOR_DATA *d )
 {
     int iStart;
@@ -2025,7 +1982,6 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
     d->inbuf[iStart] = '\0';
     return TRUE;
 }
-
 
 
 /*
@@ -2372,7 +2328,6 @@ bool queue_alias_input( DESCRIPTOR_DATA *d,
 }
 
 
-
 /*
  * Low level output function.
  */
@@ -2646,6 +2601,7 @@ static int strlen_to_int( const char *text )
     length = strlen( text );
     return clamp_size_to_int( length );
 }
+
 
 static void safe_strcpy( char *dest, size_t dest_size, const char *src )
 {
@@ -4158,7 +4114,6 @@ case CON_DEFAULT_CHOICE:
 
 	{
 	    bool is_new_character = ( ch->level == 0 );
-	    bool is_reconnect     = ( !is_new_character && ch->was_in_room != NULL );
 
 	    if ( is_new_character )
 	    {
@@ -4257,15 +4212,6 @@ case CON_DEFAULT_CHOICE:
             wizinfo( buf, staff_notice_level( ch, ch->level ) );
 
 	    {
-	        script_char_login_payload login_payload;
-
-	        login_payload.ch                = ch;
-	        login_payload.is_new_character = is_new_character;
-	        login_payload.is_reconnect     = is_reconnect;
-	        script_event_emit( SCRIPT_EVENT_CHAR_LOGIN, &login_payload );
-	    }
-
-	    {
 		int earned_before = achievement_earned_count(ch);
 		int points_before = achievement_points(ch);
 		int earned_after;
@@ -4298,7 +4244,6 @@ case CON_DEFAULT_CHOICE:
 
     return;
 }
-
 
 
 /*
@@ -4374,7 +4319,6 @@ bool check_parse_name( char *name )
 
     return TRUE;
 }
-
 
 
 /*
@@ -4498,7 +4442,6 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 }
 
 
-
 /*
  * Check if already playing.
  */
@@ -4526,7 +4469,6 @@ bool check_playing( DESCRIPTOR_DATA *d, char *name )
 }
 
 
-
 void stop_idling( CHAR_DATA *ch )
 {
     if ( ch == NULL
@@ -4544,7 +4486,6 @@ void stop_idling( CHAR_DATA *ch )
     act( "$n has returned from the void.", ch, NULL, NULL, TO_ROOM );
     return;
 }
-
 
 
 /*

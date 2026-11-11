@@ -120,40 +120,6 @@ void list_flush_pending( LIST *list )
     list->pending = NULL;
 }
 
-void *list_find_first( const LIST *list, bool (*predicate)( const void *data, void *ctx ), void *ctx )
-{
-    LIST_NODE *current;
-
-    if ( list == NULL || predicate == NULL )
-    {
-        return NULL;
-    }
-
-    for ( current = list->head; current != NULL; current = current->next )
-    {
-        if ( predicate( current->data, ctx ) )
-        {
-            return current->data;
-        }
-    }
-
-    return NULL;
-}
-
-void list_foreach( const LIST *list, void (*callback)( void *data, void *ctx ), void *ctx )
-{
-    LIST_NODE *current;
-
-    if ( list == NULL || callback == NULL )
-    {
-        return;
-    }
-
-    for ( current = list->head; current != NULL; current = current->next )
-    {
-        callback( current->data, ctx );
-    }
-}
 
 void list_iterator_start( LIST_ITERATOR *iter, LIST *list )
 {

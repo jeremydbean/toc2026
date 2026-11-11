@@ -442,11 +442,6 @@ void boot_db( void )
         }
     }
 
-    /*
-     * Read maxload file. (Blackbird)
-     */
-    read_maxload_file( );
-
  
     /*
      * Read in all the area files.
@@ -2237,7 +2232,6 @@ void reset_area( AREA_DATA *pArea )
     CHAR_DATA *mob;
     bool last;
     int level;
-    char buf[1000];
  
     mob         = NULL;
     last        = true;
@@ -2345,20 +2339,6 @@ void reset_area( AREA_DATA *pArea )
                 last = false;
                 break;
             }
-/* Blackbird: Check for max_load
-*/
-           if ( get_maxload_index( pReset->arg1 ) != NULL )
-            {
-              if (!do_maxload_item( pReset->arg1 ) ) {
-                snprintf(buf, sizeof(buf), "MAXLOAD: vnum %d maxed out.",
-                         pReset->arg1);
-                log_string(buf);
-                break;
-              }
-              else {
-                add_maxload_index( pReset->arg1, +1, 1);
-              }
-            }
  
             obj       = create_object( pObjIndex, number_fuzzy(level) );
             obj->cost = 0;
@@ -2430,20 +2410,6 @@ void reset_area( AREA_DATA *pArea )
                 break;
             }
  
-/* Blackbird: Check for maxload
-*/
-           if ( get_maxload_index( pReset->arg1 ) != NULL )
-            {
-              if (!do_maxload_item( pReset->arg1 ) ) {
-                snprintf(buf, sizeof(buf), "MAXLOAD: vnum %d maxed out.",
-                         pReset->arg1);
-                log_string(buf);
-                break;
-              }
-              else {
-                add_maxload_index( pReset->arg1, +1, 1);
-              }
-            }
  
             obj = create_object( pObjIndex, number_fuzzy(obj_to->level) );
             obj_to_obj( obj, obj_to );
@@ -2499,23 +2465,8 @@ void reset_area( AREA_DATA *pArea )
                     limit = 999;
                 else
                     limit = pReset->arg2;
-/* Blackbird: Check for maxload
-*/
-                if (pObjIndex->count < limit || number_range(0,4) == 0) {
-                  if ( get_maxload_index( pReset->arg1 ) != NULL )
-                  {
-                    if (!do_maxload_item( pReset->arg1 ) ) {
-                      snprintf(buf, sizeof(buf), "MAXLOAD: vnum %d maxed out.",
-                               pReset->arg1);
-                      log_string(buf);
-                      break;
-                    }
-                    else {
-                      add_maxload_index( pReset->arg1, +1, 1);
-                    }
-                  }
+                if (pObjIndex->count < limit || number_range(0,4) == 0)
                   obj=create_object(pObjIndex,number_fuzzy(level) );
-                }
                 else
                     break;
  
@@ -4657,7 +4608,6 @@ void clone_object(OBJ_DATA *parent, OBJ_DATA *clone)
 }
 
 
-
 /*
  * Clear a new character.
  */
@@ -4697,7 +4647,6 @@ void clear_char( CHAR_DATA *ch )
 }
 
 
-
 /*
  * Free a character.
  */
@@ -4727,7 +4676,7 @@ void free_char( CHAR_DATA *ch )
     for ( obj = ch->carrying; obj != NULL; obj = obj_next )
     {
         obj_next = obj->next_content;
-/* For maxload: Make difference between player & game */
+/* A player's things leave quietly at a quit (extract_obj_player). */
         if (IS_NPC(ch))
           extract_obj( obj );
         else
@@ -5585,7 +5534,6 @@ char *str_perm( const char *str )
 }
 
 
-
 /*
  * Free a string.
  * Null is legal here to simplify callers.
@@ -5675,619 +5623,8 @@ void do_memory( CHAR_DATA *ch, char *argument )
     return;
 }
  
-static char* identify_obj(OBJ_DATA *obj)
-{
-    static char bigbuf[MAX_STRING_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    AFFECT_DATA *paf;
-
-    snprintf(bigbuf, sizeof(bigbuf),
-        "Vnum: %d   Keywords: '%s'   Type: %s   Style: %s   Resets: %d\n",
-        obj->pIndexData->vnum,
-        obj->name,
-        item_type_name( obj ), obj->pIndexData->new_format ? "new" : "old",
-        obj->pIndexData->reset_num
-        );
-
-    snprintf(buf, sizeof(buf),
-        "Short description: %s\nLong description: %s\n"
-        "Wear flags: %s\nExtra flags: %s\n",
-        obj->short_descr, obj->description,
-        wear_bit_name( obj->wear_flags ),
-        extra_bit_name( obj->extra_flags )
-        );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-
-    snprintf( buf, sizeof(buf), "Number: %d   Weight: %d/%d\n",
-        get_obj_number( obj ),
-        obj->weight, get_obj_weight( obj )
-    );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-
-    snprintf( buf, sizeof(buf), "Level: %d  Value: %ld  Condition: %d  Timer: %d\n",
-        obj->level, obj->cost, obj->condition, obj->timer );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-
-    snprintf( buf, sizeof(buf),
-        "In room: %d  In object: %s  Carried by: %s  Wear_loc: %d\n",
-        obj->in_room    == NULL    ?        0 : obj->in_room->vnum,
-        obj->in_obj     == NULL    ? "(none)" : obj->in_obj->short_descr,
-        obj->carried_by == NULL    ? "(none)" :
-        obj->carried_by->name,
-        obj->wear_loc );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    switch ( obj->item_type )
-    {
-    case ITEM_SCROLL:
-    case ITEM_POTION:
-    case ITEM_SCUBA_GEAR:
-    case ITEM_PORTAL:
-    case ITEM_PILL:
-        snprintf( buf, sizeof(buf), "Level %d spells of:", obj->value[0] );
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-
-        if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )
-        {
-            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
-            toc_strlcat(bigbuf, skill_table[obj->value[1]].name, sizeof(bigbuf));
-            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
-        }
-
-        if ( obj->value[2] >= 0 && obj->value[2] < MAX_SKILL )
-        {
-            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
-            toc_strlcat(bigbuf, skill_table[obj->value[2]].name, sizeof(bigbuf));
-            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
-        }
-
-        if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
-        {
-            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
-            toc_strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
-            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
-        }
-
-        toc_strlcat(bigbuf, ".\n", sizeof(bigbuf));
-        break;
-
-    case ITEM_WAND:
-    case ITEM_STAFF:
-        snprintf( buf, sizeof(buf), "Has %d(%d) charges of level %d",
-            obj->value[1], obj->value[2], obj->value[0] );
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-
-        if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
-        {
-            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
-            toc_strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
-            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
-        }
-
-        toc_strlcat(bigbuf, ".\n", sizeof(bigbuf));
-        break;
-
-    case ITEM_WEAPON:
-        toc_strlcat(bigbuf,"Weapon type is ", sizeof(bigbuf));
-        switch (obj->value[0])
-        {
-            case(WEAPON_EXOTIC) : toc_strlcat(bigbuf,"exotic.\n", sizeof(bigbuf));       break;
-            case(WEAPON_SWORD)  : toc_strlcat(bigbuf,"sword.\n", sizeof(bigbuf));        break;
-            case(WEAPON_DAGGER) : toc_strlcat(bigbuf,"dagger.\n", sizeof(bigbuf));       break;
-            case(WEAPON_SPEAR)  : toc_strlcat(bigbuf,"spear/staff.\n", sizeof(bigbuf));  break;
-            case(WEAPON_MACE)   : toc_strlcat(bigbuf,"mace/club.\n", sizeof(bigbuf));    break;
-            case(WEAPON_AXE)    : toc_strlcat(bigbuf,"axe.\n", sizeof(bigbuf));          break;
-            case(WEAPON_FLAIL)  : toc_strlcat(bigbuf,"flail.\n", sizeof(bigbuf));        break;
-            case(WEAPON_WHIP)   : toc_strlcat(bigbuf,"whip.\n", sizeof(bigbuf));         break;
-            case(WEAPON_POLEARM): toc_strlcat(bigbuf,"polearm.\n", sizeof(bigbuf));      break;
-            case(WEAPON_BOW)    : toc_strlcat(bigbuf,"bow.\n", sizeof(bigbuf));          break;
-            default             : toc_strlcat(bigbuf,"unknown.\n", sizeof(bigbuf));      break;
-        }
-        if (obj->pIndexData->new_format)
-            snprintf(buf, sizeof(buf), "Damage is %dd%d (average %d).\n",
-                obj->value[1],obj->value[2],
-                (1 + obj->value[2]) * obj->value[1] / 2);
-        else
-            snprintf( buf, sizeof(buf), "Damage is %d to %d (average %d).\n",
-                obj->value[1], obj->value[2],
-                ( obj->value[1] + obj->value[2] ) / 2 );
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-        break;
-
-    case ITEM_ARMOR:
-        snprintf( buf, sizeof(buf),
-        "Armor class is %d pierce, %d bash, %d slash, and %d vs. magic.\n",
-            obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-        break;
-    }
-/* BB
-    if (!obj->enchanted)
-*/
-    for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
-    {
-        if ( paf->location != APPLY_NONE && paf->modifier != 0 )
-        {
-            snprintf( buf, sizeof(buf), "Affects %s by %d.\n",
-                affect_loc_name( paf->location ), paf->modifier );
-            toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-        }
-    }
-
-    for ( paf = obj->affected; paf != NULL; paf = paf->next )
-    {
-        if ( paf->location != APPLY_NONE && paf->modifier != 0 )
-        {
-            snprintf( buf, sizeof(buf), "Affects %s by %d.\n",
-                affect_loc_name( paf->location ), paf->modifier );
-            toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-        }
-    }
-
-    if ( obj->extra_descr != NULL || obj->pIndexData->extra_descr != NULL )
-    {
-        EXTRA_DESCR_DATA *ed;
-
-        toc_strlcat(bigbuf, "Extra description keywords: '", sizeof(bigbuf));
-
-        for ( ed = obj->extra_descr; ed != NULL; ed = ed->next )
-        {
-            toc_strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
-            if ( ed->next != NULL )
-                toc_strlcat(bigbuf, " ", sizeof(bigbuf));
-        }
-
-        for ( ed = obj->pIndexData->extra_descr; ed != NULL; ed = ed->next )
-        {
-            toc_strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
-            if ( ed->next != NULL )
-                toc_strlcat(bigbuf, " ", sizeof(bigbuf));
-        }
-
-        toc_strlcat(bigbuf, "'\n", sizeof(bigbuf));
-    }
-
-    toc_strlcat(bigbuf, "\n", sizeof(bigbuf));
-    return bigbuf;
-}
- 
-static char* stat_mob(CHAR_DATA *victim)
-{
-    static char bigbuf[MAX_STRING_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    AFFECT_DATA *paf;
- 
-    snprintf(bigbuf, sizeof(bigbuf), "Name: %s.\n",
-        victim->name );
- 
-    snprintf(buf, sizeof(buf), "Short description: %s\nLong  description: %s",
-        victim->short_descr,
-        victim->long_descr[0] != '\0' ? victim->long_descr : "(none)\n" );
-    buf[strlen(buf)]='\0';   /* get rid of the \r */
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    snprintf(buf, sizeof(buf), "Vnum: %d  Format: %s  Race: %s  Sex: %s  Room: %d\n",
-        IS_NPC(victim) ? victim->pIndexData->vnum : 0,
-	IS_NPC(victim) ? victim->pIndexData->new_format ? "new" : "old" : "pc",
-        race_table[victim->race].name,
-        victim->sex == SEX_MALE    ? "male"   :
-        victim->sex == SEX_FEMALE  ? "female" : "neutral",
-        victim->in_room == NULL    ?        0 : victim->in_room->vnum
-        );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    if (IS_NPC(victim))
-    {
-        snprintf(buf, sizeof(buf),"Count: %d  Killed: %d\n",
-            victim->pIndexData->count,victim->pIndexData->killed);
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    snprintf(buf, sizeof(buf),
-        "Str: %d(%d)  Int: %d(%d)  Wis: %d(%d)  Dex: %d(%d)  Con: %d(%d)\n",
-        victim->perm_stat[STAT_STR],
-        get_curr_stat(victim,STAT_STR),
-        victim->perm_stat[STAT_INT],
-	get_curr_stat(victim,STAT_INT),
-        victim->perm_stat[STAT_WIS],
-        get_curr_stat(victim,STAT_WIS),
-        victim->perm_stat[STAT_DEX],
-        get_curr_stat(victim,STAT_DEX),
-        victim->perm_stat[STAT_CON],
-        get_curr_stat(victim,STAT_CON) );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    snprintf(buf, sizeof(buf), "Hp: %d/%d  Mana: %d/%d  Move: %d/%d  Practices: %d\n",
-        victim->hit,         victim->max_hit,
-        victim->mana,        victim->max_mana,
-        victim->move,        victim->max_move,
-        IS_NPC(victim) ? 0 : victim->practice );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    snprintf(buf, sizeof(buf),
-        "Lv: %d  Class: %s  Guild: %s  Align: %d  Exp: %ld\n",
-        victim->level,
-        IS_NPC(victim) ? "mobile" : class_table[victim->class].name,
-	IS_NPC(victim) ? "none" : get_guildname(victim->pcdata->guild),
-        victim->alignment,
-        victim->exp );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-
-    snprintf(buf, sizeof(buf),"Money: Platinum: %ld , Gold: %ld, Silver: %ld, Copper: %ld\n",
-            victim->new_platinum, victim->new_gold, victim->new_silver, victim->new_copper);
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    
-    snprintf(buf, sizeof(buf),"Armor: pierce: %d  bash: %d  slash: %d  magic: %d\n",
-            GET_AC(victim,AC_PIERCE), GET_AC(victim,AC_BASH),
-            GET_AC(victim,AC_SLASH),  GET_AC(victim,AC_EXOTIC));
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    snprintf(buf, sizeof(buf), "Hit: %d  Dam: %d  Saves: %d  Position: %d  Wimpy: %d\n",
-        GET_HITROLL(victim), GET_DAMROLL(victim), victim->saving_throw,
-        victim->position,    victim->wimpy );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    if (IS_NPC(victim) && victim->pIndexData->new_format)
-    {
-        snprintf(buf, sizeof(buf), "Damage: %dd%d  Message:  %s\n",
-            victim->damage[DICE_NUMBER],victim->damage[DICE_TYPE],
-            attack_table[victim->dam_type].name);
-	toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
-    snprintf(buf, sizeof(buf), "Fighting: %s\n",
-        victim->fighting ? victim->fighting->name : "(none)" );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    if ( !IS_NPC(victim) )
-    {
-        snprintf(buf, sizeof(buf),
-            "Thirst: %d  Full: %d  Drunk: %d\n",
-            victim->pcdata->condition[COND_THIRST],
-            victim->pcdata->condition[COND_FULL],
-            victim->pcdata->condition[COND_DRUNK] );
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    snprintf(buf, sizeof(buf), "Carry number: %d  Carry weight: %d\n",
-        victim->carry_number, query_carry_weight(victim) );
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-
-    if (!IS_NPC(victim))
-    {
-        snprintf(buf, sizeof(buf),
-            "Age: %d  Played: %d  Last Level: %d  Timer: %d\n",
-            get_age(victim),
-            (int) (victim->played + current_time - victim->logon) / 3600,
-            victim->pcdata->last_level,
-            victim->timer );
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    snprintf(buf, sizeof(buf), "Act: %s\n",act_bit_name(victim->act));
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    if (victim->comm)
-    {
-        snprintf(buf, sizeof(buf),"Comm: %s\n",comm_bit_name(victim->comm));
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
-
-    if (IS_NPC(victim) && victim->off_flags)
-    {
-        snprintf(buf, sizeof(buf), "Offense: %s\n",off_bit_name(victim->off_flags));
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    if (victim->imm_flags)
-    {
-        snprintf(buf, sizeof(buf), "Immune: %s\n",imm_bit_name(victim->imm_flags));
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    if (victim->res_flags)
-    {
-        snprintf(buf, sizeof(buf), "Resist: %s\n", imm_bit_name(victim->res_flags));
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    if (victim->vuln_flags)
-    {
-        snprintf(buf, sizeof(buf), "Vulnerable: %s\n", imm_bit_name(victim->vuln_flags));
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    snprintf(buf, sizeof(buf), "Form: %s\nParts: %s\n",
-        form_bit_name(victim->form), part_bit_name(victim->parts));
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    if (victim->affected_by)
-    {
-        snprintf(buf, sizeof(buf), "Affected by %s\n",
-            affect_bit_name(victim->affected_by));
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
- 
-    snprintf(buf, sizeof(buf), "Master: %s  Leader: %s  Pet: %s\n",
-        victim->master      ? victim->master->name   : "(none)",
-        victim->leader      ? victim->leader->name   : "(none)",
-        victim->pet         ? victim->pet->name      : "(none)");
-    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
- 
-    if ( IS_NPC(victim) && victim->spec_fun != 0 )
-        toc_strlcat(bigbuf, "Mobile has special procedure.\n" , sizeof(bigbuf));
- 
-    for ( paf = victim->affected; paf != NULL; paf = paf->next )
-    {
-        snprintf(buf, sizeof(buf),
-            "Spell: '%s' modifies %s by %d for %d hours with bits %s, level %d.\n\r",
-            skill_table[(int) paf->type].name,
-            affect_loc_name( paf->location ),
-            paf->modifier,
-            paf->duration,
-            paf->bitvector != 0 ? affect_bit_name( paf->bitvector ) :
-            affect2_bit_name(paf->bitvector2),
-            paf->level
-            );
-        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
-    }
-    toc_strlcat(bigbuf, "\n", sizeof(bigbuf));
-
-    return bigbuf;
-}
- 
-void do_dump( CHAR_DATA *ch, char *argument )
-{
-    int count,count2,num_pcs,aff_count;
-    CHAR_DATA *fch;
-    MOB_INDEX_DATA *pMobIndex;
-    PC_DATA *pc;
-    OBJ_DATA *obj;
-    OBJ_INDEX_DATA *pObjIndex;
-    ROOM_INDEX_DATA *room;
-    EXIT_DATA *exit;
-    DESCRIPTOR_DATA *d;
-    AFFECT_DATA *af;
-    FILE *fp;
-    int vnum,objnum,nMatch = 0;
-    int start=0, finish=65536;
-    int firstone;
-    char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
-    LIST_ITERATOR iter;
-    LIST_ITERATOR obj_iter;
- 
-    if (argument[0] != '\0')
-    {
-        char buf[MAX_STRING_LENGTH];
-        argument = one_argument(argument, arg1);
-        argument = one_argument(argument, arg2);
-        if ( ( arg1[0] == '\0' ) || ( arg2[0] == '\0' )
-        || ( argument[0] != '\0' ) || !is_number(arg1) || !is_number(arg2) )
-        {
-            send_to_char("Usage: dump <start_vnum end_vnum>\n\r", ch);
-            return;
-        }
-        start = atoi(arg1);
-        finish = atoi(arg2);
-        snprintf(buf, sizeof(buf), "Dumping mobs and objs from vnums %d to %d.\n\r", 
-                start, finish);
-        send_to_char(buf, ch);
-    }
- 
-    /* open file */
-    reserve_release();
-    fp = fopen("mem.dmp","w");
-    if (fp == NULL) { fpReserve = fopen(NULL_FILE, "r"); send_to_char("Could not open mem.dmp for writing.\n\r", ch); return; }
- 
-    /* report use of data structures */
-    
-    num_pcs = 0;
-    aff_count = 0;
- 
-    /* mobile prototypes */
-    fprintf(fp,"MobProt %4d (%8ld bytes)\n",
-        top_mob_index, (unsigned long)((unsigned long) top_mob_index * (sizeof(*pMobIndex)))); 
- 
-    /* mobs */
-    count = 0;  count2 = 0;
-    FOR_EACH_CHARACTER( iter, fch )
-    {
-        count++;
-        if (fch->pcdata != NULL)
-            num_pcs++;
-        for (af = fch->affected; af != NULL; af = af->next)
-            aff_count++;
-    }
-    for (fch = char_free; fch != NULL; fch = fch->next_free)
-        count2++;
- 
-    fprintf(fp,"Mobs    %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        count, (unsigned long)((unsigned long) count * (sizeof(*fch))), count2, 
-        (unsigned long)((unsigned long) count2 * (sizeof(*fch))));
- 
-    /* pcdata */
-    count = 0;
-    for (pc = pcdata_free; pc != NULL; pc = pc->next)
-        count++; 
- 
-    fprintf(fp,"Pcdata  %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        num_pcs, (unsigned long)((unsigned long) num_pcs * (sizeof(*pc))), count, 
-        (unsigned long)((unsigned long) count * (sizeof(*pc))));
- 
-    /* descriptors */
-    count = 0; count2 = 0;
-    for (d = descriptor_list; d != NULL; d = d->next)
-        count++;
-    for (d= descriptor_free; d != NULL; d = d->next)
-        count2++;
- 
-    fprintf(fp, "Descs  %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        count, (unsigned long)((unsigned long) count * (sizeof(*d))), 
-        count2, (unsigned long)((unsigned long) count2 * (sizeof(*d))));
- 
-    /* object prototypes */
-    for ( vnum = 0; nMatch < top_obj_index; vnum++ )
-        if ( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
-        {
-            for (af = pObjIndex->affected; af != NULL; af = af->next)
-                aff_count++;
-            nMatch++;
-        }
- 
-    fprintf(fp,"ObjProt %4d (%8ld bytes)\n",
-	top_obj_index, (unsigned long)((unsigned long) top_obj_index * (sizeof(*pObjIndex))));
  
  
-    /* objects */
-    count = 0;  count2 = 0;
-    FOR_EACH_OBJECT( obj_iter, obj )
-    {
-        count++;
-        for (af = obj->affected; af != NULL; af = af->next)
-            aff_count++;
-    }
-    for (obj = obj_free; obj != NULL; obj = obj->next_free)
-        count2++;
- 
-    fprintf(fp,"Objs    %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        count, (unsigned long)((unsigned long) count * (sizeof(*obj))), 
-        count2, (unsigned long)((unsigned long) count2 * (sizeof(*obj))));
- 
-    /* affects */
-    count = 0;
-    for (af = affect_free; af != NULL; af = af->next)
-        count++;
- 
-    fprintf(fp,"Affects %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        aff_count, (unsigned long)((unsigned long) aff_count * (sizeof(*af))), 
-        count, (unsigned long)((unsigned long) count * (sizeof(*af))));
- 
-    /* rooms */
-    fprintf(fp,"Rooms   %4d (%8ld bytes)\n",
-        top_room, (unsigned long)((unsigned long) top_room * (sizeof(*room))));
- 
-     /* exits */
-    fprintf(fp,"Exits   %4d (%8ld bytes)\n",
-        top_exit, (unsigned long)((unsigned long) top_exit * (sizeof(*exit))));
- 
-    fclose(fp);
- 
-    /* start printing out mobile data */
-    fp = fopen("mob.dmp","w");
-    if (fp == NULL) { send_to_char("Could not open mob.dmp for writing.\n\r", ch); fpReserve = fopen(NULL_FILE, "r"); return; }
- 
-    fprintf(fp,"\nMobile Analysis\n");
-    fprintf(fp,  "---------------\n");
-    nMatch = 0;
-    for (vnum = 0; nMatch < top_mob_index; vnum++)
-        if ((pMobIndex = get_mob_index(vnum)) != NULL)
-        {
-            nMatch++;
-            fprintf(fp,"#%-4d %3d active %3d killed     %s\n",
-                pMobIndex->vnum,pMobIndex->count,
-                pMobIndex->killed,pMobIndex->short_descr);
-        }
-    fclose(fp);
- 
-    /* start printing out mobile data */
-    fp = fopen("mobstat.dmp","w");
-    if (fp == NULL)
-    {
-        fpReserve = fopen( NULL_FILE, "r" );
-        send_to_char( "Could not open mobstat.dmp for writing.\n\r", ch );
-        return;
-    }
- 
-    fprintf(fp,"\nMobile Stats\n");
-    fprintf(fp,  "------------\n");
-    nMatch = 0;
-    for (vnum = start; vnum < finish; vnum++)
-	if ((pMobIndex = get_mob_index(vnum)) != NULL)
-        {
-            CHAR_DATA *mob;
-            char *buf;
-            int found = 0;
-            FOR_EACH_CHARACTER( iter, mob )
-            {
-                if ( !IS_NPC(mob))
-                    continue;
-                if ( mob->pIndexData->vnum != vnum )
-                    continue;
-                found = 1;
-                break;
-            }
-            if (!found)
-            {
-                mob = create_mobile( pMobIndex ); 
-                char_to_room( mob, ch->in_room );
-            }
-            buf = stat_mob(mob);
-	    fputs( buf, fp );   /* a % in a description is not a format */
-            if (!found)
-                extract_char(mob, true);
-        }
-    fclose(fp);
- 
-    /* start printing out object data */
-    fp = fopen("obj.dmp","w");
-    if (fp == NULL) { send_to_char("Could not open obj.dmp for writing.\n\r", ch); fpReserve = fopen(NULL_FILE, "r"); return; }
- 
-    fprintf(fp,"\nObject Analysis\n");
-    fprintf(fp,  "---------------\n");
-    nMatch = 0;
-    for (vnum = 0; nMatch < top_obj_index; vnum++)
-        if ((pObjIndex = get_obj_index(vnum)) != NULL)
-        {
-            nMatch++;
-            fprintf(fp,"#%-4d %3d active %3d reset      %s\n",
-                pObjIndex->vnum,pObjIndex->count,
-                pObjIndex->reset_num,pObjIndex->short_descr);
-        }
-    /* close file */
-    fclose(fp);
- 
-    /* start printing out object stats */
-    for (objnum=0; objnum<27;  objnum++)
-    {
-        char filename[20];
- 
-        firstone = 1;
-        for (vnum = start; vnum < finish; vnum++)
-            if (((pObjIndex = get_obj_index(vnum)) != NULL)
-            && (pObjIndex->item_type == objnum))
-            {
-                char *buf;
-                int found = 0;
-                FOR_EACH_OBJECT( obj_iter, obj )
-                {
-                    if (  obj->pIndexData->vnum != vnum )
-                        continue;
-                    found = 1;
-		    break;
-                }
-                if (firstone)
-                {
-                    firstone = 0;
-                    snprintf(filename, sizeof(filename),"objdmp.%d", objnum);
-                    fp = fopen(filename,"w");
-                    if (fp == NULL) break;  /* skip this type if file can't be opened */
-                    fprintf(fp,"\n%d Object Stats\n", objnum);
-                    fprintf(fp,  "---------------\n");
-                }
-                if (!found)
-                    obj = create_object(pObjIndex, 60);
-                buf = identify_obj(obj);
-                if (!found)
-                    extract_obj(obj);
-                fputs( buf, fp );   /* a % in a description is not a format */
-            }
-        /* close file */
-        if (!firstone)
-	    fclose(fp);
-    }
- 
-    fpReserve = fopen( NULL_FILE, "r" );
-}
  
  
  
@@ -6726,7 +6063,6 @@ void bug( const char *str, int param )
 }
 
 
-
 /*
  * Writes a string to the log.
  */
@@ -6793,7 +6129,6 @@ AFFECT_DATA *new_affect( void )
     pAf->bitvector2 =   0;
     return pAf;
 }
-
 
 
 void free_affect( AFFECT_DATA* pAf )

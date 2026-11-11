@@ -1430,7 +1430,6 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 }
 
 
-
 /*  psi  */
 void do_confuse( CHAR_DATA *ch, char *argument )
 {
@@ -2615,10 +2614,6 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
 */
 
 /*
-void do_mind_drain( CHAR_DATA *ch, char *argument )
-{
-
-}
 */
 
 void spell_skeletal_hands( int sn, int level, CHAR_DATA *ch, void *vo )
@@ -5870,10 +5865,6 @@ void spell_cause_madness( int sn, int level, CHAR_DATA *ch, void *vo )
 
 /*
 
-void spell_flash( int sn, int level, CHAR_DATA *ch, void *vo )
-{
-
-}
 */
 
 

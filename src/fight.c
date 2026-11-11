@@ -3415,7 +3415,6 @@ OBJ_DATA *make_corpse( CHAR_DATA *ch )
         }
     }
 
-    /* corpse_back( ch, corpse ); */
     return corpse;
 }
 

@@ -95,15 +95,6 @@ static bool psionic_spec_contains( const char *spec, const char *name )
     return false;
 }
 
-void init_web( int port )
-{
-    UNUSED_PARAM(port);
-}
-
-void handle_web( void )
-{
-}
-
 void send_info( char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -866,10 +857,6 @@ void psionic_sync_known( CHAR_DATA *ch )
     }
 }
 
-void list_group_known( CHAR_DATA *ch )
-{
-    UNUSED_PARAM(ch);
-}
 
 static void stub_notify( CHAR_DATA *ch )
 {
@@ -878,23 +865,11 @@ static void stub_notify( CHAR_DATA *ch )
 }
 
 
-
-
 void do_ignore( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
     stub_notify( ch );
 }
-
-
-
-
-
-
-
-
-
-
 
 
 void do_wizinfo( CHAR_DATA *ch, char *argument )

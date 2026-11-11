@@ -201,7 +201,6 @@ const	struct	cmd_type	cmd_table	[] =
     { "description",	do_description,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "delet",		do_delet,	POS_DEAD,	 0,  LOG_NEVER,  0 },
     { "delete",		do_delete,	POS_DEAD,	 0,  LOG_NEVER, 1 },
-    { "maxloads",       do_lst_maxload, POS_DEAD,       L2,  LOG_NORMAL, 1 },
     { "nofollow",	do_nofollow,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "noloot",		do_noloot,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "nosummon",	do_nosummon,	POS_DEAD,        0,  LOG_NORMAL, 1 },
@@ -445,7 +444,6 @@ const	struct	cmd_type	cmd_table	[] =
     { "ostat",          do_ostat,       POS_DEAD,       L7,  LOG_NORMAL, 1 },
     { "rstat",          do_rstat,       POS_DEAD,       L7,  LOG_NORMAL, 1 },
     { "pwhere",         do_pwhere,      POS_DEAD,       L8,  LOG_NORMAL, 1 },
-    { "newcorpse",      do_newcorpse,   POS_DEAD,       L3,  LOG_ALWAYS, 1 },
     { "newlock",        do_newlock,     POS_DEAD,       CR,  LOG_ALWAYS, 1 },
     { "nochannels",     do_nochannels,  POS_DEAD,       L7,  LOG_ALWAYS, 1 },
     { "noemote",        do_noemote,     POS_DEAD,       L6,  LOG_ALWAYS, 1 },
@@ -1511,20 +1509,6 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
                 }
         }
 
-    {
-        script_command_payload preprocess_payload;
-
-        preprocess_payload.ch                = ch;
-        preprocess_payload.command           = command;
-        preprocess_payload.command_capacity  = sizeof( command );
-        preprocess_payload.argument          = argument;
-        preprocess_payload.handled           = false;
-        script_event_emit( SCRIPT_EVENT_COMMAND_PREPARSE, &preprocess_payload );
-        if ( preprocess_payload.handled )
-            return;
-        argument = preprocess_payload.argument;
-    }
-
     /*
      * Look for command in command table.
      */
@@ -1673,17 +1657,6 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     }
     if ( !found )
     {
-        script_command_payload not_found_payload;
-
-        not_found_payload.ch               = ch;
-        not_found_payload.command          = command;
-        not_found_payload.command_capacity = sizeof( command );
-        not_found_payload.argument         = argument;
-        not_found_payload.handled          = false;
-        script_event_emit( SCRIPT_EVENT_COMMAND_NOT_FOUND, &not_found_payload );
-        if ( not_found_payload.handled )
-            return;
-
         /*
          * Look for command in socials table.
          *
@@ -1778,37 +1751,12 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     if (check_specials(ch, cmd_table[cmd].do_fun, argument))
 	return;
 
-    {
-        script_command_payload before_payload;
-
-        before_payload.ch               = ch;
-        before_payload.command          = command;
-        before_payload.command_capacity = sizeof( command );
-        before_payload.argument         = argument;
-        before_payload.handled          = false;
-        script_event_emit( SCRIPT_EVENT_BEFORE_COMMAND, &before_payload );
-        if ( before_payload.handled )
-            return;
-        argument = before_payload.argument;
-    }
-
     /*
      * Dispatch the command, past the rest of its own name if typed.
      */
     if ( !full_name )
         argument = skip_full_name_rest( cmd_table[cmd].name, argument );
     (*cmd_table[cmd].do_fun) ( ch, argument );
-
-    {
-        script_command_payload after_payload;
-
-        after_payload.ch               = ch;
-        after_payload.command          = command;
-        after_payload.command_capacity = sizeof( command );
-        after_payload.argument         = argument;
-        after_payload.handled          = true;
-        script_event_emit( SCRIPT_EVENT_AFTER_COMMAND, &after_payload );
-    }
 
 /*    }  */
     tail_chain( );
