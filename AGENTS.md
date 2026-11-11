@@ -3221,10 +3221,14 @@ than their due. The long awakening message is for new powers only
 mortals off** (owner, 2026-10-27; 2026-11-10: "a play reward for players
 who get kicked off due to a restart"). HERMIE is the staff command
 (SPELLUP still works and is hidden from WIZHELP). `spellup_boot_update`
-(every mobile pulse) writes `log/online.txt` -- the time and how many
-mortals are playing -- when the count changes and once a minute, never
-once the game is going down; `spellup_boot_check` reads it at boot, and a
-count above zero written within half an hour opens a four-hour window
+(every mobile pulse) writes `log/online.txt` -- the time, how many
+mortals are playing, when a mortal last played and how many did then --
+when the count changes and once a minute, never once the game is going
+down; `spellup_boot_check` reads it at boot, and a count above zero
+written within half an hour, **or a mortal who played within
+`HERMIE_RECENT` (ten minutes) of the boot**, opens a four-hour window
+(owner, 2026-11-11: a level 34 quit at the deploy's warning, 34 seconds
+before the boot, and the file read 0)
 (`TOC_HERMIE_BOOT_SECONDS` shortens it for tests) in which she stands in
 the Oak Tree Square while any mortal plays and steps away while none
 does. A restart with only staff or nobody on brings none; a crash with

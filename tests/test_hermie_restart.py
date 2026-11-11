@@ -34,6 +34,18 @@ def online(mud) -> str:
     return path.read_text().strip() if path.exists() else ""
 
 
+def playing(mud) -> int:
+    """The mortals playing now: the file's second field."""
+    fields = online(mud).split()
+    return int(fields[1]) if len(fields) > 1 else -1
+
+
+def last_played(mud) -> int:
+    """How many mortals were playing when one last was: the fourth field."""
+    fields = online(mud).split()
+    return int(fields[3]) if len(fields) > 3 else -1
+
+
 def wait_for(check, timeout=40.0) -> bool:
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
@@ -57,7 +69,7 @@ class HermieRestartTests(unittest.TestCase):
             # A restart with only staff on: no Hermie.
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zhermstaff", PW)
-                self.assertTrue(wait_for(lambda: online(mud).endswith(" 0")), online(mud))
+                self.assertTrue(wait_for(lambda: playing(mud) == 0), online(mud))
                 mud.restart()
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as player:
                 login(staff, "Zhermstaff", PW)
@@ -65,7 +77,7 @@ class HermieRestartTests(unittest.TestCase):
                 time.sleep(9)               # two mobile pulses
                 self.assertFalse(hermie_at_square(staff), "no mortal was put off")
                 # The mortal is on when the next restart comes.
-                self.assertTrue(wait_for(lambda: online(mud).endswith(" 1")), online(mud))
+                self.assertTrue(wait_for(lambda: playing(mud) == 1), online(mud))
                 mud.restart()
 
             with mud.connect(timeout=120) as staff:
@@ -103,6 +115,30 @@ class HermieRestartTests(unittest.TestCase):
         self.assertIn("already standing right here", again, again)
         self.assertNotIn("Zhermplay", log.split("Hermie:", 1)[1].split("\n", 1)[0])
         del said
+
+    def test_a_mortal_who_quit_at_the_warning_still_counts(self) -> None:
+        """Owner, 2026-11-11: a deploy warns players a minute ahead, and a
+        level 34 quit 34 seconds before the boot -- the file read 0 and she
+        stayed away. A mortal who played within ten minutes counts."""
+        with LiveMud(extra_env={"TOC_HERMIE_BOOT_SECONDS": "300"}) as mud:
+            make(mud, "Zhermstaff", 70)
+            make(mud, "Zhermquit", 10)
+            with mud.connect(timeout=120) as player:
+                login(player, "Zhermquit", PW)
+                self.assertTrue(wait_for(lambda: playing(mud) == 1), online(mud))
+                player.send("quit")
+                player.wait_closed()
+            self.assertTrue(wait_for(lambda: playing(mud) == 0 and last_played(mud) == 1),
+                            online(mud))
+            mud.restart()
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as player:
+                login(staff, "Zhermstaff", PW)
+                login(player, "Zhermquit", PW)
+                self.assertTrue(wait_for(lambda: hermie_at_square(staff)), "she came")
+                for client in (player, staff):
+                    client.send("quit")
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        self.assertIn("put 1 mortal off (gone within ten minutes of the boot)", log)
 
 
 if __name__ == "__main__":

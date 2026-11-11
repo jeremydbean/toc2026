@@ -13693,7 +13693,12 @@ void do_spellpurge( CHAR_DATA *ch, char *argument )
  * file says whether the restart put mortals off: if it did, and it was
  * written within HERMIE_ONLINE_FRESH of the boot, Hermie keeps the Oak
  * Tree Square for HERMIE_BOOT_SECONDS (four hours), standing there while
- * any mortal is playing and stepping away while none is. A restart with
+ * any mortal is playing and stepping away while none is. A mortal who
+ * played within HERMIE_RECENT (ten minutes) of the boot counts too (owner,
+ * 2026-11-11): a deploy warns players first, and one who quits at the
+ * warning was put off by the restart as surely as one it disconnected, so
+ * the file also keeps when a mortal last played and how many did then
+ * (`<when> <count> <last played> <how many>`). A restart with
  * only staff, or nobody, on gives no Hermie. A crash with players on
  * counts as a restart: the file is the last minute's. Staff SPELLPURGE
  * ends the window; a Hermie staff placed there is never taken away by
@@ -13702,12 +13707,15 @@ void do_spellpurge( CHAR_DATA *ch, char *argument )
 #define HERMIE_ONLINE_FILE   "../log/online.txt"
 #define HERMIE_BOOT_SECONDS  ( 4 * 60 * 60 )
 #define HERMIE_ONLINE_FRESH  ( 30 * 60 )
+#define HERMIE_RECENT        ( 10 * 60 )
 #define ROOM_VNUM_SQUARE     2401            /* the Oak Tree Square */
 
 static time_t hermie_boot_until;        /* the window's end; 0 for none */
 static bool   hermie_boot_ours;         /* she stands there by this */
 static int    hermie_online_written = -1;
 static time_t hermie_online_at;
+static time_t hermie_last_mortal_at;    /* when a mortal last played */
+static int    hermie_last_mortals;      /* how many did then */
 
 static int mortals_playing( void )
 {
@@ -13739,8 +13747,9 @@ void spellup_boot_check( void )
 {
     char buf[MAX_STRING_LENGTH];
     FILE *fp;
-    long when = 0;
-    int count = 0;
+    long when = 0, last_at = 0;
+    int count = 0, last_count = 0, put_off = 0, fields;
+    bool recent = false;
 
     hermie_boot_until = 0;
     if ( ( fp = fopen( HERMIE_ONLINE_FILE, "r" ) ) == NULL )
@@ -13748,23 +13757,40 @@ void spellup_boot_check( void )
         hermie_say( "Hermie: no record of who was playing before this boot; she stays away." );
         return;
     }
-    if ( fscanf( fp, "%ld %d", &when, &count ) != 2 )
-        count = 0;
+    fields = fscanf( fp, "%ld %d %ld %d", &when, &count, &last_at, &last_count );
     fclose( fp );
-    if ( count <= 0 || when <= 0 || (long) current_time - when > HERMIE_ONLINE_FRESH )
+    if ( fields < 2 )
+        when = count = 0;
+    if ( fields < 4 || last_at <= 0 || last_count <= 0 || last_at > (long) current_time )
+        last_at = last_count = 0;
+    /* Carried over, so a second restart soon after the first still knows. */
+    hermie_last_mortal_at = (time_t) last_at;
+    hermie_last_mortals = last_count;
+
+    if ( count > 0 && when > 0 && (long) current_time - when <= HERMIE_ONLINE_FRESH )
+        put_off = count;
+    else if ( last_count > 0 && (long) current_time - last_at <= HERMIE_RECENT )
+    {
+        put_off = last_count;
+        recent = true;
+    }
+    if ( put_off <= 0 )
     {
         snprintf( buf, sizeof(buf),
                   "Hermie: the restart put no mortal off (%d playing, recorded %ld seconds "
-                  "before the boot); she stays away.",
-                  UMAX( 0, count ), when > 0 ? (long) current_time - when : -1L );
+                  "before the boot; a mortal last played %s); she stays away.",
+                  UMAX( 0, count ), when > 0 ? (long) current_time - when : -1L,
+                  last_at > 0 ? "over ten minutes before it" : "at no time on record" );
         hermie_say( buf );
         return;
     }
     hermie_boot_until = current_time + hermie_window_seconds();
     snprintf( buf, sizeof(buf),
-              "Hermie: the restart put %d mortal%s off; she keeps the Oak Tree Square (%d) "
+              "Hermie: the restart put %d mortal%s off%s; she keeps the Oak Tree Square (%d) "
               "for %d minutes, while any mortal plays.",
-              count, count == 1 ? "" : "s", ROOM_VNUM_SQUARE, hermie_window_seconds() / 60 );
+              put_off, put_off == 1 ? "" : "s",
+              recent ? " (gone within ten minutes of the boot)" : "",
+              ROOM_VNUM_SQUARE, hermie_window_seconds() / 60 );
     hermie_say( buf );
 }
 
@@ -13774,11 +13800,17 @@ static void hermie_note_online( int mortals )
 
     if ( merc_down )
         return;
+    if ( mortals > 0 )
+    {
+        hermie_last_mortal_at = current_time;
+        hermie_last_mortals = mortals;
+    }
     if ( mortals == hermie_online_written && current_time - hermie_online_at < 60 )
         return;
     if ( ( fp = fopen( HERMIE_ONLINE_FILE ".tmp", "w" ) ) == NULL )
         return;
-    fprintf( fp, "%ld %d\n", (long) current_time, mortals );
+    fprintf( fp, "%ld %d %ld %d\n", (long) current_time, mortals,
+             (long) hermie_last_mortal_at, hermie_last_mortals );
     if ( temp_file_commit( fp, HERMIE_ONLINE_FILE ".tmp", HERMIE_ONLINE_FILE ) )
     {
         hermie_online_written = mortals;
