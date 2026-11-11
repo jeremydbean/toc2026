@@ -20668,3 +20668,7 @@
 1794355900	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
 1794355902	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=445/983 align=897 exp=252749 coin=263980792 bank=24577365005 qp=1835 prac=36 train=76 stash=95/350 remorts=3
 1794355902	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    290 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794355966	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	changes		What is new, newest first: // 2026-11-10 //   A master's concoction or scroll now fails about one try in a hundred, not	-	+
+1794356040	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794356040	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=616/983 align=897 exp=252749 coin=263980792 bank=24577365005 qp=1835 prac=36 train=76 stash=95/350 remorts=3
+1794356040	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    291 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
