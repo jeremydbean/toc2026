@@ -58,9 +58,11 @@ says "ALL" and whose mobiles run to level 60 while its leather worker
 stocks nothing above level 10.
 
 The object section is read as the game reads it -- a stream of tokens,
-not lines -- and only the cost token is rewritten, in place, by byte
-offset. See `tools/costs_to_copper.py`, which this borrows its reader
-from and which explains the four shapes a line-based parser gets wrong.
+not lines, by `webadmin/area_reader.py`, the reader every area tool
+shares -- and only the cost token is rewritten, in place, by byte offset;
+every other byte of the file, line endings included, is left as it was.
+`tools/costs_to_copper.py` explains the four shapes a line-based parser
+gets wrong.
 
     python3 tools/reprice_by_level.py             # report
     python3 tools/reprice_by_level.py --verbose   # every change
@@ -70,14 +72,14 @@ from __future__ import annotations
 
 import collections
 import pathlib
-import re
 import statistics
 import sys
 
-AREA = pathlib.Path("area")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "webadmin"))
+from area_reader import (  # noqa: E402
+    AreaFile, listed_area_files, parse_area_text, read_text, write_text)
 
-ITEM_FLAGS2 = 1 << 25          # (Z), the second extra-flag word's marker
-MAX_TRADE = 5                  # buy_type slots in a #SHOPS record
+AREA = pathlib.Path("area")
 
 # How many levelled things a shop must stock before its own shelf is
 # taken as evidence of who shops there.
@@ -152,213 +154,35 @@ def tidy(copper: float) -> int:
 
 
 # --------------------------------------------------------------- reading
+#
+# The files are read by webadmin/area_reader.py, the reader every area
+# tool shares, token for token as load_objects(), load_shops() and
+# load_resets() read them -- affects, extra descriptions and object
+# actions included. Skipping ahead to the next "\n#" after an object
+# instead is what stopped tools/costs_to_copper.py eighty-five objects
+# early: Hyrule's dungeon maps carry an ASCII floor plan in an extra
+# description, and several of its rows begin with a hash.
 
-class Stream:
-    """Just enough of the game's readers to walk a record."""
-
-    def __init__(self, text: str, pos: int = 0):
-        self.text = text
-        self.pos = pos
-
-    def skip_space(self) -> None:
-        while self.pos < len(self.text) and self.text[self.pos].isspace():
-            self.pos += 1
-
-    def eol(self) -> None:
-        end = self.text.find("\n", self.pos)
-        self.pos = len(self.text) if end < 0 else end + 1
-
-    def string(self) -> str:
-        self.skip_space()
-        end = self.text.find("~", self.pos)
-        if end < 0:
-            raise ValueError("unterminated string")
-        out = self.text[self.pos:end]
-        self.pos = end + 1
-        return out
-
-    def token(self) -> tuple[str, int, int]:
-        self.skip_space()
-        start = self.pos
-        while self.pos < len(self.text) and not self.text[self.pos].isspace():
-            self.pos += 1
-        if start == self.pos:
-            raise ValueError("expected a token")
-        return self.text[start:self.pos], start, self.pos
-
-    def number(self) -> int:
-        """fread_number: a signed run of digits, and nothing after it."""
-        self.skip_space()
-        sign = 1
-        if self.pos < len(self.text) and self.text[self.pos] in "+-":
-            sign = -1 if self.text[self.pos] == "-" else 1
-            self.pos += 1
-        start = self.pos
-        while self.pos < len(self.text) and self.text[self.pos].isdigit():
-            self.pos += 1
-        if start == self.pos:
-            raise ValueError("expected a number")
-        return sign * int(self.text[start:self.pos])
-
-    def letter(self) -> str:
-        self.skip_space()
-        if self.pos >= len(self.text):
-            raise ValueError("expected a letter")
-        ch = self.text[self.pos]
-        self.pos += 1
-        return ch
-
-    def flag(self) -> tuple[str, int, int]:
-        """A flag, including the way fread_flag mishandles a minus sign."""
-        self.skip_space()
-        if self.pos < len(self.text) and self.text[self.pos] == "-":
-            return "0", self.pos, self.pos      # consumed nothing
-        return self.token()
+def _area(source: str | AreaFile) -> AreaFile:
+    return source if isinstance(source, AreaFile) else parse_area_text(source)
 
 
-def flag_value(token: str) -> int:
-    if re.fullmatch(r"-?\d+", token):
-        return int(token)
-    total = 0
-    for ch in token:
-        if "A" <= ch <= "Z":
-            total |= 1 << (ord(ch) - ord("A"))
-        elif "a" <= ch <= "z":
-            total |= 1 << (26 + ord(ch) - ord("a"))
-    return total
-
-
-def section(text: str, name: str) -> tuple[int, int] | None:
-    m = re.search(r"^#%s\s*$" % name, text, re.M)
-    if not m:
-        return None
-    nxt = re.compile(r"^#[A-Z$]", re.M).search(text, m.end())
-    return m.end(), (nxt.start() if nxt else len(text))
-
-
-def read_objects(text: str) -> list[dict]:
+def read_objects(source: str | AreaFile) -> list[dict]:
     """Every object's vnum, type, level and the span its cost token fills."""
-    bounds = section(text, "OBJECTS")
-    if bounds is None:
-        return []
-    start, limit = bounds
-
-    stream = Stream(text, start)
-    out: list[dict] = []
-    while True:
-        stream.skip_space()
-        if stream.pos >= limit or text[stream.pos] != "#":
-            break
-        stream.pos += 1
-        vnum_token, _, _ = stream.token()
-        if not re.fullmatch(r"-?\d+", vnum_token) or int(vnum_token) == 0:
-            break
-
-        try:
-            for _ in range(4):                  # name, short, long, material
-                stream.string()
-            item_type, _, _ = stream.token()
-            extra, _, _ = stream.flag()
-            if flag_value(extra) & ITEM_FLAGS2:
-                stream.flag()
-            stream.flag()                       # wear flags
-            for _ in range(5):                  # value[0..4]
-                stream.flag()
-            level_token, _, _ = stream.token()
-            stream.token()                      # weight
-            cost, cost_start, cost_end = stream.token()
-            stream.token()                      # condition
-        except ValueError:
-            break
-
-        if re.fullmatch(r"-?\d+", cost) and re.fullmatch(r"-?\d+", level_token):
-            out.append(dict(
-                vnum=int(vnum_token),
-                item_type=flag_value(item_type),
-                level=int(level_token),
-                cost=int(cost),
-                span=(cost_start, cost_end),
-            ))
-
-        # Affects, extra descriptions and object actions, read the way
-        # load_objects() reads them. Skipping ahead to the next "\n#"
-        # instead is what stopped tools/costs_to_copper.py eighty-five
-        # objects early: Hyrule's dungeon maps carry an ASCII floor plan
-        # in an extra description, and several of its rows begin with a
-        # hash.
-        try:
-            while True:
-                mark = stream.pos
-                letter = stream.letter()
-                if letter == "A":
-                    stream.number()
-                    stream.number()
-                elif letter == "F":           # where, location, modifier, bits
-                    stream.letter()
-                    stream.number()
-                    stream.number()
-                    stream.token()
-                elif letter in ("E", "T"):
-                    stream.string()
-                    stream.string()
-                else:
-                    stream.pos = mark
-                    break
-        except ValueError:
-            break
-
-    return out
+    return [dict(vnum=o.vnum, item_type=o.item_type.value,
+                 level=o.level.value, cost=o.cost.value,
+                 span=(o.cost.start, o.cost.end))
+            for o in _area(source).objects]
 
 
-def read_shops(text: str) -> dict[int, int]:
-    """keeper vnum -> profit_buy, read the way load_shops() reads it."""
-    bounds = section(text, "SHOPS")
-    if bounds is None:
-        return {}
-    stream = Stream(text, bounds[0])
-    shops: dict[int, int] = {}
-    try:
-        while True:
-            keeper = stream.number()
-            if keeper == 0:
-                break
-            for _ in range(MAX_TRADE):
-                stream.number()
-            profit_buy = stream.number()
-            stream.number()                     # profit_sell
-            stream.number()                     # open_hour
-            stream.number()                     # close_hour
-            stream.eol()
-            shops[keeper] = profit_buy
-    except ValueError:
-        pass
-    return shops
+def read_shops(source: str | AreaFile) -> dict[int, int]:
+    """keeper vnum -> profit_buy."""
+    return {s.keeper: s.profit_buy for s in _area(source).shops}
 
 
-def read_resets(text: str) -> list[tuple[str, int, int]]:
-    """(command, arg1, arg3) per reset, the way load_resets() reads it."""
-    bounds = section(text, "RESETS")
-    if bounds is None:
-        return []
-    stream = Stream(text, bounds[0])
-    out: list[tuple[str, int, int]] = []
-    try:
-        while True:
-            letter = stream.letter()
-            if letter == "S":
-                break
-            if letter == "*":
-                stream.eol()
-                continue
-            stream.number()                     # if_flag
-            arg1 = stream.number()
-            stream.number()                     # arg2
-            arg3 = 0 if letter in ("G", "R") else stream.number()
-            stream.eol()
-            out.append((letter, arg1, arg3))
-    except ValueError:
-        pass
-    return out
+def read_resets(source: str | AreaFile) -> list[tuple[str, int, int]]:
+    """(command, arg1, arg3) per reset."""
+    return [(r.command, r.arg1, r.arg3) for r in _area(source).resets]
 
 
 # Generated output. Writing into it would be undone by the next
@@ -369,9 +193,9 @@ GENERATED = frozenset(("hyrule.are",))
 
 
 def listed_areas() -> list[pathlib.Path]:
-    lines = (AREA / "area.lst").read_text("latin-1").splitlines()
-    names = [l.strip() for l in lines if l.strip() and not l.strip().startswith("$")]
-    return [AREA / n for n in names
+    """What area.lst boots, less the generated files. Never area/built/:
+    a built area is state, made and changed in game."""
+    return [AREA / n for n in listed_area_files(AREA, built=False)
             if n not in GENERATED and (AREA / n).is_file()]
 
 
@@ -385,20 +209,21 @@ def build_world() -> dict:
     stock: dict[int, list[int]] = collections.defaultdict(list)
 
     for path in listed_areas():
-        text = path.read_text("latin-1")
-        found = read_objects(text)
+        # Bytes as stored, so the spans are offsets into the file itself.
+        area = parse_area_text(read_text(path), path.name)
+        found = read_objects(area)
         per_file[path] = found
         for o in found:
             o["file"] = path
             objects.setdefault(o["vnum"], o)
 
-        here = read_shops(text)
+        here = read_shops(area)
         for keeper, profit in here.items():
             shops[keeper] = profit
             keeper_file[keeper] = path
 
         holder = None
-        for command, arg1, _ in read_resets(text):
+        for command, arg1, _ in read_resets(area):
             if command == "M":
                 holder = arg1
             elif command in ("G", "E") and holder is not None:
@@ -407,6 +232,7 @@ def build_world() -> dict:
 
     return dict(objects=objects, per_file=per_file, shops=shops,
                 keeper_file=keeper_file, stock=stock)
+
 
 
 def shop_levels(world: dict) -> dict[int, int]:
@@ -545,7 +371,7 @@ def main() -> int:
                          o["cost"], new))
 
         if apply:
-            text = path.read_text("latin-1")
+            text = read_text(path)
             out = []
             last = 0
             for o, new in sorted(edits, key=lambda e: e[0]["span"][0]):
@@ -554,7 +380,7 @@ def main() -> int:
                 out.append(str(new))
                 last = end
             out.append(text[last:])
-            path.write_text("".join(out), encoding="latin-1", newline="\n")
+            write_text(path, "".join(out))
 
     print()
     print("%d prices %s" % (changed, "rewritten" if apply else "would change"))

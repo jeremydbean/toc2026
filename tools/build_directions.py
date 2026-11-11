@@ -32,6 +32,7 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "webadmin"))
 from area_parser import (  # noqa: E402
     AreaParser, flag_bit, format_area_name, parse_flag_value, split_area_name)
+from area_reader import flag_value, read_world  # noqa: E402
 
 AREA = pathlib.Path("area")
 START = 2401
@@ -50,17 +51,14 @@ def flag_letters(word):
     """A flag word as its letters. fread_flag takes a decimal number too
     (A is 1, B 2, ... Z 2^25, then aa, bb ...), which this used to read as
     no flags at all -- a death trap written in decimal was walkable."""
-    if word.startswith("-"):
-        return set()        # fread_flag reads no sign: -1 is no flags
-    if word.isdigit():
-        value = int(word)
-        letters = set()
-        for bit in range(32):
-            if value & (1 << bit):
-                letters.add(chr(ord("A") + bit) if bit < 26
-                            else chr(ord("a") + bit - 26) * 2)
-        return letters
-    return set(word)
+    # fread_flag reads no sign: -1 is no flags.
+    value = flag_value(word)
+    letters = set()
+    for bit in range(32):
+        if value & (1 << bit):
+            letters.add(chr(ord("A") + bit) if bit < 26
+                        else chr(ord("a") + bit - 26) * 2)
+    return letters
 
 
 # Where the game puts you when you recall or die. A room that teleports
@@ -115,42 +113,45 @@ def seal_for(from_vnum, lock, keyword):
     return HYRULE_SEALS.get(keyword.split()[0].lower())
 
 
-def load_portals():
+def world_files():
+    """The files the game boots from area.lst, read token for token by
+    webadmin/area_reader.py -- the reader every area tool shares.
+
+    Only what area.lst lists: not the archived copies lying beside them
+    (korzath2old.are), not the seasonal variants (the season swaps them in
+    at boot, in place of their base), and never area/built/, which changes
+    with every state sync and would leave the committed outputs stale.
+    """
+    return read_world(AREA, built=False)
+
+
+def load_portals(areas=None):
     """Ways through: room -> [(verb, keyword, destination, cost, label)].
 
     Both kinds of door-that-is-an-object live here -- ITEM_PORTAL, which
     you enter, and ITEM_MANIPULATION, which you climb, jump, crawl, push,
     pull, turn, burn, bomb, play to or feed.
     """
+    areas = world_files() if areas is None else areas
     portals = {}      # object vnum -> edge
     placed = {}       # room vnum -> list of edges
 
-    for path in sorted(AREA.glob("*.are")):
-        text = path.read_text("latin-1")
-        m = re.search(r"^#OBJECTS\s*$(.*?)^#0\s*$", text, re.S | re.M)
-        if not m:
-            continue
-        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
-            h = re.match(r"#(\d+)[ \t]*(.*?)~\s*\n(.*?)~", blk, re.S)
-            if not h:
+    for area in areas:
+        for obj in area.objects:
+            item_type = obj.item_type.value
+            if item_type not in (30, 31):
                 continue
-            v = re.search(r"\n(\d+)\s+\S+\s+\S+[ \t]*\n"
-                          r"\s*(-?\d+)\s+(-?\d+)\s+(-?\d+)\s+(-?\d+)\s+(-?\d+)",
-                          blk)
-            if v is None or v.group(1) not in ("30", "31"):
-                continue
+            kind, dest, need = (obj.values[0].value, obj.values[1].value,
+                                obj.values[4].value)
+            keyword = (obj.keywords.split() or [""])[0]
+            label = obj.short_desc.strip()
 
-            kind = int(v.group(2))
-            dest = int(v.group(3))
-            need = int(v.group(6))
-            keyword = h.group(2).strip().split()[0]
-
-            if v.group(1) == "31":
+            if item_type == 31:
                 if dest <= 0 or need == PUZZLE_CURRENT_ROOM:
                     continue
-                portals[int(h.group(1))] = (
+                portals[obj.vnum] = (
                     MANIP_VERB.get(kind, "manipulate"), keyword, dest,
-                    MANIP_TOOL.get(kind, ""), h.group(3).strip())
+                    MANIP_TOOL.get(kind, ""), label)
                 continue
 
             if kind == 4 or dest <= 0:   # a crystal ball leads nowhere
@@ -162,179 +163,104 @@ def load_portals():
             elif kind == 6 and need > 0:
                 cost = f"needs {NEEDED_OBJECTS.get(need, f'object {need}')}"
 
-            portals[int(h.group(1))] = ("enter", keyword, dest, cost,
-                                        h.group(3).strip())
+            portals[obj.vnum] = ("enter", keyword, dest, cost, label)
 
-    for path in sorted(AREA.glob("*.are")):
-        text = path.read_text("latin-1")
-        m = re.search(r"^#RESETS\s*$(.*?)^S\s*$", text, re.S | re.M)
-        if not m:
-            continue
-        for line in m.group(1).splitlines():
-            o = re.match(r"^O\s+-?\d+\s+(\d+)\s+-?\d+\s+(\d+)", line.strip())
-            if o and int(o.group(1)) in portals:
-                placed.setdefault(int(o.group(2)), []).append(
-                    portals[int(o.group(1))])
+    for area in areas:
+        for reset in area.resets:
+            if reset.command == "O" and reset.arg1 in portals:
+                placed.setdefault(reset.arg3, []).append(portals[reset.arg1])
 
     return placed
 
 
-def load_ejectors():
+def _carries(room):
+    """(destination, speed) for a room that moves you, or None.
+
+    ROOM_RIVER or ROOM_TELEPORT in the flags, and load_rooms reads the
+    three numbers after the sector -- after the second flag word, when
+    the first carries ROOM_FLAGS2."""
+    if room.travel is None:
+        return None
+    return room.travel[0], room.travel[1]
+
+
+def load_ejectors(areas=None):
     """Rooms that teleport whoever stands in them back to the Temple.
 
     They are traps and exits, not passages: the House of Pancakes tells
     you the ceiling crushed you and then puts you on the altar. Walking a
     player into one is never directions.
     """
+    areas = world_files() if areas is None else areas
     out = set()
-    listed = [l.strip() for l in (AREA / "area.lst").read_text("latin-1").splitlines()
-              if l.strip() and not l.strip().startswith("$")]
-
-    for fname in listed:
-        path = AREA / fname
-        if not path.is_file():
-            continue
-        m = re.search(r"^#ROOMS\s*$(.*?)^#0\s*$",
-                      path.read_text("latin-1"), re.S | re.M)
-        if not m:
-            continue
-        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
-            h = re.match(r"#(\d+)[ \t]*(.*?)~", blk, re.S)
-            fl = re.search(r"\n~\n(.*)", blk, re.S)
-            if not h or not fl:
-                continue
-            tok = fl.group(1).split()
-            if len(tok) < 3 or not (set("EF") & set(tok[1])):
-                continue
-            rest = tok[4:] if "Z" in tok[1] else tok[3:]
-            if rest and rest[0].lstrip("-").isdigit() \
-               and int(rest[0]) in EJECT_ROOMS:
-                out.add(int(h.group(1)))
+    for area in areas:
+        for room in area.rooms:
+            moves = _carries(room)
+            if moves and moves[0] in EJECT_ROOMS:
+                out.add(room.vnum)
     return out
 
 
-def load_teleports():
-    """Rooms that move you: room -> [(verb, keyword, dest, cost, label)].
-
-    The three numbers sit after the sector, and a Z in the room flags
-    (ROOM_FLAGS2) pushes everything along by one token.
-    """
+def load_teleports(areas=None):
+    """Rooms that move you: room -> [(verb, keyword, dest, cost, label)]."""
+    areas = world_files() if areas is None else areas
     carried = {}
-    listed = [l.strip() for l in (AREA / "area.lst").read_text("latin-1").splitlines()
-              if l.strip() and not l.strip().startswith("$")]
-
-    for fname in listed:
-        path = AREA / fname
-        if not path.is_file():
-            continue
-        text = path.read_text("latin-1")
-        m = re.search(r"^#ROOMS\s*$(.*?)^#0\s*$", text, re.S | re.M)
-        if not m:
-            continue
-
-        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
-            h = re.match(r"#(\d+)[ \t]*(.*?)~", blk, re.S)
-            if not h:
+    for area in areas:
+        for room in area.rooms:
+            moves = _carries(room)
+            if not moves:
                 continue
-            # area, flags, [flags2], sector, then the teleport triple.
-            # The builder may break that line anywhere, so read the
-            # whole tail as tokens rather than one line.
-            fl = re.search(r"\n~\n(.*)", blk, re.S)
-            if not fl:
-                continue
-
-            tok = fl.group(1).split()
-            if len(tok) < 3:
-                continue
-            flags = tok[1]
-            if not (set("EF") & set(flags)):
-                continue
-
-            rest = tok[4:] if "Z" in flags else tok[3:]
-            if not rest:
-                continue
-            try:
-                dest, speed = int(rest[0]), int(rest[1]) if len(rest) > 1 else 0
-            except ValueError:
-                continue
+            dest, speed = moves
             if dest <= 0 or dest in EJECT_ROOMS:
                 continue
-
-            name = h.group(2).strip().replace("\n", " ")
-            carried.setdefault(int(h.group(1)), []).append(
+            carried.setdefault(room.vnum, []).append(
                 ("wait", "", dest,
                  f"the room moves you every {speed} ticks" if speed else
                  "the room moves you",
-                 name))
-
+                 room_name(room)))
     return carried
 
 
-def load_world():
+def room_name(room):
+    """A room's name on one line."""
+    return room.name.strip().replace("\n", " ")
+
+
+def area_label(area):
+    """An area's name as the routes carry it: the #AREA line (or an ANEW
+    area's Name) with its braces taken out and its spacing closed up."""
+    if area.area_name is None:
+        return area.name
+    label = re.sub(r"\{.*?\}", "", area.area_name).strip()
+    return re.sub(r"\s+", " ", label)
+
+
+def load_world(areas=None):
     """vnum -> {name, area, flags, exits{door: (to, lock, keyword)}}"""
+    areas = world_files() if areas is None else areas
     rooms = {}
-    listed = [l.strip() for l in (AREA / "area.lst").read_text("latin-1").splitlines()
-              if l.strip() and not l.strip().startswith("$")]
-
-    for fname in listed:
-        path = AREA / fname
-        if not path.is_file():
-            continue
-        text = path.read_text("latin-1")
-        # An area built in game (ANEW) is headed #AREADATA, Name <text>~.
-        dm = re.search(r"^#AREADATA\b.*?^\s*Name\s+(.*?)~", text, re.S | re.M)
-        am = dm or re.search(r"#AREA\s+(.*?)~", text, re.S)
-        aname = re.sub(r"\{.*?\}", "", am.group(1)).strip() if am else fname
-        aname = re.sub(r"\s+", " ", aname)
-
-        m = re.search(r"^#ROOMS\s*$(.*?)^#0\s*$", text, re.S | re.M)
-        if not m:
-            continue
-
-        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
-            h = re.match(r"#(\d+)[ \t]*(.*?)~", blk, re.S)
-            if not h:
-                continue
-            vnum = int(h.group(1))
-
-            # Any whitespace between the tokens: "95  9 0" (two spaces)
-            # missed a single-space pattern, which then matched an exit's
-            # "0 -1 9588" line and read -1 as the room's flags.
-            fl = re.search(r"\n~\n\s*(\S+)\s+(\S+)\s", blk)
-            flags = flag_letters(fl.group(2)) if fl else set()
-
+    for area in areas:
+        aname = area_label(area)
+        for room in area.rooms:
             exits = {}
             keys = {}
-            # "D 0" is as common as "D0": fread_letter takes the D and
-            # fread_number skips space before the digit, so the game
-            # reads both and the router has to as well.
-            # "D 0", "D0", and a description that starts on the same
-            # line as the number are all the same token stream to
-            # fread_letter/fread_number/fread_string.
-            for d in re.finditer(r"^D\s*(\d)\s*(.*?)~\s*\n(.*?)~\s*\n"
-                                 r"\s*(-?\d+)\s+(-?\d+)\s+(-?\d+)",
-                                 blk, re.S | re.M):
-                to = int(d.group(6))
-                if to > 0:
-                    exits[int(d.group(1))] = (to, int(d.group(4)),
-                                              d.group(3).strip())
-                    keys[int(d.group(1))] = int(d.group(5))
+            for door in room.exits:
+                if door.to_room > 0:
+                    exits[door.door] = (door.to_room, door.lock,
+                                        door.keyword.strip())
+                    keys[door.door] = door.key
 
-            rooms[vnum] = {"name": h.group(2).strip().replace("\n", " "),
-                           "area": aname, "flags": flags, "exits": exits,
-                           "keys": keys, "resets": {}}
+            rooms[room.vnum] = {"name": room_name(room), "area": aname,
+                                "flags": flag_letters(room.flags.text),
+                                "exits": exits, "keys": keys, "resets": {}}
 
         # How each door stands after a reset: the 'D' resets, which are
         # what a player finds, not the exit's prototype (reset_area in
         # db.c: 1 closed, 2 locked, 3 locked and wizlocked, 4 secret and
         # locked when it has a key, 5 locked and trapped).
-        rm = re.search(r"^#RESETS\s*$(.*?)^S\s*$", text, re.S | re.M)
-        if rm:
-            for r in re.finditer(r"^\s*D\s+-?\d+\s+(\d+)\s+(\d+)\s+(\d+)",
-                                 rm.group(1), re.M):
-                room, door, state = (int(x) for x in r.groups())
-                if room in rooms:
-                    rooms[room]["resets"][door] = state
+        for reset in area.resets:
+            if reset.command == "D" and reset.arg1 in rooms:
+                rooms[reset.arg1]["resets"][reset.arg2] = reset.arg3
     return rooms
 
 
@@ -642,41 +568,24 @@ def match_area(name, areas):
     return best
 
 
-def load_landmarks():
+def load_landmarks(areas=None):
     """Where each named mob and object is reset: name -> [room vnum].
 
     Reset lines carry the vnum; the names come from the #MOBILES and
     #OBJECTS records they point at.
     """
+    areas = world_files() if areas is None else areas
     names = {}          # ("M"|"O", vnum) -> short description
     placed = {}         # ("M"|"O", vnum) -> [room vnum]
 
-    listed = [l.strip() for l in (AREA / "area.lst").read_text("latin-1").splitlines()
-              if l.strip() and not l.strip().startswith("$")]
-
-    for fname in listed:
-        path = AREA / fname
-        if not path.is_file():
-            continue
-        text = path.read_text("latin-1")
-
-        for kind, section in (("M", "MOBILES"), ("O", "OBJECTS")):
-            m = re.search(rf"^#{section}\s*$(.*?)^#0\s*$", text, re.S | re.M)
-            if not m:
-                continue
-            for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
-                h = re.match(r"#(\d+)[ \t]*(.*?)~\s*\n(.*?)~", blk, re.S)
-                if h:
-                    names[(kind, int(h.group(1)))] = h.group(3).strip()
-
-        m = re.search(r"^#RESETS\s*$(.*?)^S\s*$", text, re.S | re.M)
-        if not m:
-            continue
-        for line in m.group(1).splitlines():
-            r = re.match(r"^([MO])\s+-?\d+\s+(\d+)\s+-?\d+\s+(\d+)", line.strip())
-            if r:
-                placed.setdefault((r.group(1), int(r.group(2))), []).append(
-                    int(r.group(3)))
+    for area in areas:
+        for kind, records in (("M", area.mobiles), ("O", area.objects)):
+            for record in records:
+                names[(kind, record.vnum)] = record.short_desc.strip()
+        for reset in area.resets:
+            if reset.command in ("M", "O"):
+                placed.setdefault((reset.command, reset.arg1), []).append(
+                    reset.arg3)
 
     landmarks = {}
     for key, where in placed.items():
@@ -1039,7 +948,7 @@ def _words(text):
     return " ".join(out)
 
 
-def build_trainers(rooms, reach, carried=None):
+def build_trainers(rooms, reach, carried=None, areas=None):
     """Every guild hall, the guild clerk, and every trainer, routed.
 
     A trainer is a guildmaster_table entry whose mobile can practise
@@ -1054,7 +963,7 @@ def build_trainers(rooms, reach, carried=None):
                for room in halls[guild]["rooms"]}
 
     parser = AreaParser(AREA)
-    parser.parse_all()
+    parser.parse_files(world_files() if areas is None else areas)
     mobiles = parser.mobiles
     masters = {g["mob"]: g for g in load_guildmasters()}
 
@@ -1243,20 +1152,21 @@ def write_walkto_data(payload, out=pathlib.Path("area/walkto.dat")):
 
 
 def main():
-    rooms = load_world()
-    portals = load_portals()
+    areas = world_files()
+    rooms = load_world(areas)
+    portals = load_portals(areas)
 
     # Kept before the teleports are merged in: a teleport carries you
     # on a timer with no command to send, so it is a way through for
     # routing but not something a client can be told to walk.
     object_links = {room: list(edges) for room, edges in portals.items()}
 
-    for room, edges in load_teleports().items():
+    for room, edges in load_teleports(areas).items():
         portals.setdefault(room, []).extend(edges)
 
     # A room that throws you back to the Temple is a trap, not a way
     # anywhere, and must not be walked into or counted as an entrance.
-    for vnum in load_ejectors():
+    for vnum in load_ejectors(areas):
         rooms.pop(vnum, None)
 
     reach = shortest_paths(rooms, START, portals)
@@ -1288,7 +1198,7 @@ def main():
     by_area = {r["area"]: r for r in routes}
     legacy_path = pathlib.Path("tools/legacy_routes.json")
     legacy = []
-    landmarks = load_landmarks()
+    landmarks = load_landmarks(areas)
 
     if legacy_path.is_file():
         for name, script in sorted(
@@ -1351,7 +1261,7 @@ def main():
     # named places that are neither: the destinations WALKTO knows
     # besides the areas, and what the Oracle answers "where do I
     # practise" from.
-    trainers = build_trainers(rooms, reach, portals)
+    trainers = build_trainers(rooms, reach, portals, areas)
     places = build_places(rooms, reach)
 
     payload = {

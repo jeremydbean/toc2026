@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111areareader 2026-11-11
+The website reads the world the way the game does now. Its routes to The
+Abyss, Valhalla and Descent to Hell go by the pool at the golden fountain
+in Dylan's Area instead of a door that needs a key, and the Gear Finder
+knows the stats of
+some forty pieces it used to show bare -- Troll Den's opal ring among them.
+
 @ 20261111cleanup 2026-11-11 staff
 Cleanup: NEWCORPSE and MAXLOADS are gone -- the old corpse history and the
 item caps they read no longer exist. Use CORPSE and PRESTORE to put back
