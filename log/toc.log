@@ -290045,3 +290045,25 @@ Wed Nov 11 23:07:40 2026 :: Sock.sinaddr:  213.232.114.153
 Wed Nov 11 23:07:40 2026 :: EOF encountered on read.
 Wed Nov 11 23:07:40 2026 :: Sock.sinaddr:  213.232.114.153
 Wed Nov 11 23:07:41 2026 :: EOF encountered on read.
+Wed Nov 11 23:12:03 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Wed Nov 11 23:12:07 2026 :: Log WebAdmin: fsave
+Wed Nov 11 23:12:13 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Wed Nov 11 23:12:16 2026 :: Received signal 15; saving players and shutting down.
+Wed Nov 11 23:12:16 2026 :: Normal termination of game.
+Wed Nov 11 23:12:16 2026 ::  INIT OK 
+Wed Nov 11 23:12:16 2026 :: walkto_load: 157 destinations.
+Wed Nov 11 23:12:16 2026 :: changes_load: 256 entries.
+Wed Nov 11 23:12:16 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 19 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Wed Nov 11 23:12:16 2026 :: Archive: 935 characters not seen in 730 days moved to player/archive/.
+Wed Nov 11 23:12:16 2026 :: Heroes: 127 records filled in from the player files.
+Wed Nov 11 23:12:16 2026 :: Passwords: SHA-512 crypt self-test passed.
+Wed Nov 11 23:12:16 2026 :: Recovery ledger: 371 records (0 from before the check), 2 requests, 8 players.
+Wed Nov 11 23:12:16 2026 :: Corpse keeper: Trentlin's corpse c6aef57d8014fe2 made again in room 15009 with 0 objects.
+Wed Nov 11 23:12:16 2026 :: Corpse keeper: Trentlin's corpse c6af06a99014a1f made again in room 30443 with 2 objects.
+Wed Nov 11 23:12:16 2026 :: Corpse keeper: 2 corpses made again, 0 set aside.
+Wed Nov 11 23:12:16 2026 :: ROM is ready to rock on port 9000.
+Wed Nov 11 23:12:17 2026 :: Treasure goblin: appeared.
+Wed Nov 11 23:12:17 2026 :: Automated backup started.
+Wed Nov 11 23:12:17 2026 :: Daily backup started.
+Wed Nov 11 23:12:17 2026 :: Automated backup complete.
+Wed Nov 11 23:12:18 2026 :: Daily backup complete.
