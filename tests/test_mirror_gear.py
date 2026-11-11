@@ -250,7 +250,7 @@ class MirrorSourceTests(unittest.TestCase):
 
     def test_it_reads_the_player_file_when_nobody_is_online(self) -> None:
         body = self.body()
-        self.assertIn("PLAYER_DIR", body)
+        self.assertIn("player_file_read_path(", body)   # the file, archived or not
         self.assertIn('"#O"', body)
         self.assertIn('"Wear"', body)
         # Nest zero is worn rather than packed inside something.

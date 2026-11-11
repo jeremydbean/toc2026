@@ -46,7 +46,7 @@ class MccpTests(unittest.TestCase):
         build = subprocess.run(
             [CC, "-std=c17", "-DROM", "-I", str(ROOT / "src"),
              "-o", str(binary), str(ROOT / "tests" / "test_mccp.c"),
-             str(ROOT / "src" / "telnet_proto.c"), "-lz"],
+             str(ROOT / "src" / "telnet_proto.c"), str(ROOT / "src" / "numparse.c"), "-lz"],
             capture_output=True, text=True)
         if build.returncode != 0:
             raise AssertionError("harness did not build:\n" + build.stderr)
