@@ -23,8 +23,9 @@ enough.
 and every kind of object has a **vnum** -- a number that names it for good.
 Room 4207 is the Temple; mobile 2400 is the training dummy; object 30222 is
 the bow. Vnums are how everything refers to everything else: an exit points
-at a room vnum, a reset says "put mobile 2400 in room 2419." Rooms run from
-1 to 30000 (WORLD_SIZE). Pick a vnum nobody uses and it is yours.
+at a room vnum, a reset says "put mobile 2400 in room 2419." Vnums run from
+1 to 1,000,000 (`MAX_VNUM`) for rooms, mobiles and objects alike. Pick a
+vnum nobody uses and it is yours.
 
 **An area is a block of vnums with a name.** `area/hyrule.are` owns its
 rooms and monsters; `area/midgaard.are` owns Midgaard. An area is just a

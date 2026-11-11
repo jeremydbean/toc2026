@@ -5073,7 +5073,7 @@ void run_web_command(char *argument) {
         /* If no mobs exist yet, we can't safely run commands that need a body */
         /* Try to find any valid mob index */
         int vnum;
-        for (vnum = 0; vnum < 32768; vnum++) {
+        for (vnum = 0; vnum <= top_vnum_mob; vnum++) {
              if ((pMobIndex = get_mob_index(vnum)) != NULL) break;
         }
         if (!pMobIndex) return;

@@ -53,8 +53,10 @@ bool has_key( CHAR_DATA *ch, int key );
 #define WALK_COST_FARE         40
 #define WALK_FARE_GOLD         500
 
-/* A room vnum is an sh_int, so this covers every room there can be. */
-#define WALK_SLOTS             32768
+/* A slot for every room vnum there can be (MAX_VNUM). The arrays below
+   are stamped by generation and never cleared in the ordinary way, so
+   only the pages holding vnums in use are ever touched. */
+#define WALK_SLOTS             ( MAX_VNUM + 1 )
 #define WALK_MAX_MOVES         48
 #define WALK_MAX_CLOSED        512
 
@@ -188,8 +190,8 @@ void walkto_load( void )
  * Finding the way.
  * ------------------------------------------------------------------- */
 
-/* A vnum the scratch arrays have a slot for. Rooms hold an sh_int, so
-   that is every room; asked anyway, in case the type ever grows. */
+/* A vnum the scratch arrays have a slot for: every room the loader
+   accepts (1..MAX_VNUM); asked anyway, in case the ceiling ever grows. */
 static bool walk_slot( int vnum )
 {
     return vnum > 0 && vnum < WALK_SLOTS;

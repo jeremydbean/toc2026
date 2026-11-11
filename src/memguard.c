@@ -632,7 +632,7 @@ static void memcheck_selftest( CHAR_DATA *ch )
         return;
     }
     /* Any ordinary mobile: the first prototype with no special. */
-    for ( vnum = 1; vnum < 65536 && pMob == NULL; vnum++ )
+    for ( vnum = 1; vnum <= top_vnum_mob && pMob == NULL; vnum++ )
         if ( ( pMob = get_mob_index( vnum ) ) != NULL && pMob->spec_fun != NULL )
             pMob = NULL;
     if ( pMob == NULL )

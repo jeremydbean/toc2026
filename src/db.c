@@ -55,6 +55,29 @@ static int16_t fread_sh_int( FILE *fp )
     return clamp_sh_int_from_long( fread_number( fp ) );
 }
 
+/*
+ * A record's own vnum: 0 ends the section, anything else must lie in
+ * 1..MAX_VNUM. It used to be squeezed into an sh_int, so 40000 read as
+ * -25536 and hashed to a negative bucket; an area file that names a vnum
+ * the game cannot hold stops the boot, as every other malformed record
+ * does.
+ */
+static int fread_record_vnum( FILE *fp, const char *section )
+{
+    int vnum = fread_number( fp );
+
+    if ( vnum != 0 && ( vnum < 0 || vnum > MAX_VNUM ) )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "%s: vnum %%d is outside 1 to %d.",
+                  section, MAX_VNUM );
+        bug( buf, vnum );
+        exit( 1 );
+    }
+    return vnum;
+}
+
 /* One read, then the bound: URANGE is a macro and would read the file
    up to three times. */
 static int fread_hit_die( FILE *fp, int lo, int hi )
@@ -233,6 +256,9 @@ int                     top_mob_index;
 int                     top_obj_index;
 int                     top_reset;
 int                     top_room;
+int                     top_vnum_room;
+int                     top_vnum_mob;
+int                     top_vnum_obj;
 int                     top_shop;
 int                     mobile_count = 0;
 int                     newmobs = 0;
@@ -684,8 +710,21 @@ void load_areadata( FILE *fp )
         }
         else if ( !str_cmp( word, "VNUMs" ) )
         {
-            pArea->min_vnum = (sh_int)(fread_number( fp ));
-            pArea->max_vnum = (sh_int)(fread_number( fp ));
+            pArea->min_vnum = fread_number( fp );
+            pArea->max_vnum = fread_number( fp );
+            /* The range bounds every walk over this area's prototypes
+               (ASAVE, ALIST, the free-vnum finder); a short held it under
+               32,767, so it is held to MAX_VNUM here instead. */
+            if ( pArea->min_vnum < 0 || pArea->max_vnum > MAX_VNUM
+              || pArea->min_vnum > pArea->max_vnum )
+            {
+                char buf[MAX_STRING_LENGTH];
+
+                snprintf( buf, sizeof(buf), "Load_areadata: VNUMs %d %d is not a range in 1 to %d.",
+                          pArea->min_vnum, pArea->max_vnum, MAX_VNUM );
+                bug( buf, 0 );
+                exit( 1 );
+            }
         }
         else
         {
@@ -1085,7 +1124,7 @@ void load_mobiles( FILE *fp )
  
     for ( ; ; )
     {
-        int16_t vnum;
+        int vnum;
         char letter,temp;
         int iHash,total;
  
@@ -1096,7 +1135,7 @@ void load_mobiles( FILE *fp )
             exit( 1 );
         }
  
-        vnum                            = (sh_int)(fread_number( fp ));
+        vnum                            = fread_record_vnum( fp, "Load_mobiles" );
         if ( vnum == 0 )
             break;
  
@@ -1236,6 +1275,7 @@ void load_mobiles( FILE *fp )
         pMobIndex->next         = mob_index_hash[iHash];
         mob_index_hash[iHash]   = pMobIndex;
         top_mob_index++;
+        top_vnum_mob = UMAX( top_vnum_mob, vnum );
         kill_table[URANGE(0, pMobIndex->level, MAX_LEVEL-1)].number++;
     }
  
@@ -1252,7 +1292,7 @@ void load_objects( FILE *fp )
  
     for ( ; ; )
     {
-        int16_t vnum;
+        int vnum;
         char letter;
         int iHash;
  
@@ -1263,7 +1303,7 @@ void load_objects( FILE *fp )
             exit( 1 );
         }
  
-        vnum                            = (sh_int)(fread_number( fp ));
+        vnum                            = fread_record_vnum( fp, "Load_objects" );
         if ( vnum == 0 )
             break;
  
@@ -1434,6 +1474,7 @@ void load_objects( FILE *fp )
         pObjIndex->next         = obj_index_hash[iHash];
         obj_index_hash[iHash]   = pObjIndex;
         top_obj_index++;
+        top_vnum_obj = UMAX( top_vnum_obj, vnum );
     }
  
     return;
@@ -1471,10 +1512,10 @@ void load_resets( FILE *fp )
         pReset          = alloc_perm( sizeof(*pReset) );
         pReset->command = letter;
         /* if_flag */     fread_number( fp );
-        pReset->arg1    = (sh_int)(fread_number( fp ));
-        pReset->arg2    = (sh_int)(fread_number( fp ));
+        pReset->arg1    = fread_number( fp );
+        pReset->arg2    = fread_number( fp );
         pReset->arg3    = (letter == 'G' || letter == 'R')
-                            ? 0 : (sh_int)(fread_number( fp ));
+                            ? 0 : fread_number( fp );
                           fread_to_eol( fp );
  
         /*
@@ -1583,7 +1624,7 @@ void load_rooms( FILE *fp )
     ROOM_INDEX_DATA    *pRoomIndex;
     TELEPORT_ROOM_DATA *pTeleportRoom = NULL;
     ROOM_AFF_DATA      *pRoomAff = NULL;
-    int16_t vnum;
+    int vnum;
     char letter;
     int door;
     int iHash;
@@ -1607,7 +1648,7 @@ void load_rooms( FILE *fp )
             exit( 1 );
         }
  
-        vnum                            = (sh_int)(fread_number( fp ));
+        vnum                            = fread_record_vnum( fp, "Load_rooms" );
         if ( vnum == 0 )
             break;
  
@@ -1697,7 +1738,7 @@ void load_rooms( FILE *fp )
         pRoomIndex->vnum                = vnum;
         pRoomIndex->name                = fread_string( fp );
         pRoomIndex->description         = fread_string( fp );
-        pRoomIndex->number              = (sh_int)(fread_number( fp ));
+        pRoomIndex->number              = fread_number( fp );
         pRoomIndex->room_flags          = (int)(fread_flag( fp ));
         if(IS_SET(pRoomIndex->room_flags,ROOM_FLAGS2) )
           pRoomIndex->room_flags2       = (int)(fread_flag( fp ));
@@ -1712,7 +1753,7 @@ void load_rooms( FILE *fp )
             if (pTeleportRoom == NULL)
                 pTeleportRoom           = alloc_perm( sizeof(*pTeleportRoom) );
             pTeleportRoom->room         = pRoomIndex;
-            pTeleportRoom->to_room      = (sh_int)(fread_number( fp ));
+            pTeleportRoom->to_room      = fread_number( fp );
             pTeleportRoom->speed        = (sh_int)(fread_number( fp ));
             pTeleportRoom->timer        = pTeleportRoom->speed;
             pTeleportRoom->visible      = fread_number( fp );
@@ -1781,8 +1822,8 @@ void load_rooms( FILE *fp )
                 pexit->exit_info        = 0;
                 pexit->trap             = 0;
                 pexit->lock             = (sh_int)(fread_number( fp ));
-                pexit->key              = (sh_int)(fread_number( fp ));
-                pexit->u1.vnum          = (sh_int)(fread_number( fp ));
+                pexit->key              = fread_number( fp );
+                pexit->u1.vnum          = fread_number( fp );
                 if ( !str_prefix("secret", pexit->keyword) )
                     pexit->lock = 4; /* Make it a secret exit */
  
@@ -1822,6 +1863,7 @@ void load_rooms( FILE *fp )
         pRoomIndex->next        = room_index_hash[iHash];
         room_index_hash[iHash]  = pRoomIndex;
         top_room++;
+        top_vnum_room = UMAX( top_vnum_room, vnum );
     }
  
     return;
@@ -1842,7 +1884,7 @@ void load_shops( FILE *fp )
         int iTrade;
  
         pShop                   = alloc_perm( sizeof(*pShop) );
-        pShop->keeper           = (sh_int)(fread_number( fp ));
+        pShop->keeper           = fread_number( fp );
         if ( pShop->keeper == 0 )
             break;
         for ( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
@@ -2639,7 +2681,7 @@ void create_room( int vnum )
         AREA_DATA *owner = area_for_vnum( vnum );
         pRoomIndex->area            = owner != NULL ? owner : new_area;
     }
-    pRoomIndex->vnum            = (sh_int)(vnum);
+    pRoomIndex->vnum            = vnum;
     pRoomIndex->name            = alloc_mem( (int)(strlen(defaultRoomName) + 1) );
     pRoomIndex->description     = alloc_mem( (int)(strlen(defaultRoomDesc) + 1) );
     toc_strlcpy(pRoomIndex->name, defaultRoomName, strlen(defaultRoomName) + 1);
@@ -2656,6 +2698,7 @@ void create_room( int vnum )
     pRoomIndex->next            = room_index_hash[iHash];
     room_index_hash[iHash]      = pRoomIndex;
     top_room++;
+    top_vnum_room = UMAX( top_vnum_room, vnum );
 }
  
 /*
@@ -2797,8 +2840,10 @@ static void write_area_rooms( FILE *fp, AREA_DATA *pArea )
     fprintf( fp, "#ROOMS\n" );
 
     /* In vnum order rather than hash order, so a saved file stays readable
-       and does not reshuffle itself on every write. */
-    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+       and does not reshuffle itself on every write. Up to the highest room
+       vnum in use: this stopped at 30,000 (WORLD_SIZE), and dropped every
+       room above it from the file. */
+    for ( vnum = 0; vnum <= top_vnum_room; vnum++ )
     {
         ROOM_INDEX_DATA *room = get_room_index( vnum );
 
@@ -2883,7 +2928,7 @@ bool save_area_rooms( AREA_DATA *pArea, char *why, size_t why_size )
 
     /* Check every room before touching the disk, so a refusal leaves the
        file exactly as it was. */
-    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+    for ( vnum = 0; vnum <= top_vnum_room; vnum++ )
     {
         ROOM_INDEX_DATA *room = get_room_index( vnum );
 
@@ -3454,7 +3499,7 @@ bool save_area_full( AREA_DATA *pArea, char *why, size_t why_size )
 
     /* Refuse before touching the disk, so a refusal leaves the file as it
        was. */
-    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+    for ( vnum = 0; vnum <= top_vnum_room; vnum++ )
     {
         ROOM_INDEX_DATA *room = get_room_index( vnum );
 
@@ -3575,7 +3620,7 @@ MOB_INDEX_DATA *new_mob_index( int vnum, MOB_INDEX_DATA *copy_from )
             SHOP_DATA *s = alloc_perm( sizeof(*s) );
 
             *s        = *copy_from->pShop;
-            s->keeper = (sh_int) vnum;
+            s->keeper = vnum;
             s->next   = NULL;
             if ( shop_first == NULL )
                 shop_first = s;
@@ -3625,7 +3670,7 @@ MOB_INDEX_DATA *new_mob_index( int vnum, MOB_INDEX_DATA *copy_from )
         mob_index_set_wealth( m, 0 );
     }
 
-    m->vnum       = (sh_int) vnum;
+    m->vnum       = vnum;
     m->new_format = true;
     m->count      = 0;
     m->killed     = 0;
@@ -3634,6 +3679,7 @@ MOB_INDEX_DATA *new_mob_index( int vnum, MOB_INDEX_DATA *copy_from )
     m->next        = mob_index_hash[iHash];
     mob_index_hash[iHash] = m;
     top_mob_index++;
+    top_vnum_mob = UMAX( top_vnum_mob, vnum );
     newmobs++;
     kill_table[URANGE(0, m->level, MAX_LEVEL-1)].number++;
     return m;
@@ -3728,7 +3774,7 @@ OBJ_INDEX_DATA *new_obj_index( int vnum, OBJ_INDEX_DATA *copy_from )
         o->condition   = 100;
     }
 
-    o->vnum       = (sh_int) vnum;
+    o->vnum       = vnum;
     o->new_format = true;
     o->reset_num  = 0;
     o->count      = 0;
@@ -3737,6 +3783,7 @@ OBJ_INDEX_DATA *new_obj_index( int vnum, OBJ_INDEX_DATA *copy_from )
     o->next        = obj_index_hash[iHash];
     obj_index_hash[iHash] = o;
     top_obj_index++;
+    top_vnum_obj = UMAX( top_vnum_obj, vnum );
     newobjs++;
     return o;
 }
@@ -4351,7 +4398,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
             int attempts;
             for ( attempts = 0; attempts < 200; attempts++ )
             {
-                to_room = get_room_index( number_range( 0, 65535 ) );
+                to_room = get_room_index( number_range( 0, top_vnum_room ) );
                 if (  to_room != NULL
                 &&   !IS_SET(to_room->room_flags, ROOM_GODS_ONLY)
                 &&   !IS_SET(to_room->room_flags, ROOM_NO_RECALL)
@@ -6205,7 +6252,7 @@ void do_dump_exits( CHAR_DATA *ch , char *argument )
     fp = fopen("exits.dmp","w");
     if (fp == NULL) { fpReserve = fopen(NULL_FILE, "r"); send_to_char("Could not open exits.dmp for writing.\n\r", ch); return; }
 
-    for(i=0;i < 32768;i++) {
+    for(i=0;i <= top_vnum_room;i++) {
         if(!((in_room = get_room_index(i))))
           continue;
 

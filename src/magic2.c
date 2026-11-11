@@ -5251,7 +5251,7 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
          return;
       }
     }
-    pRoomIndex->vnum            = (sh_int)(vnum);
+    pRoomIndex->vnum            = vnum;
     name_len                    = strlen(defaultRoomName) + 1;
     pRoomIndex->name            = alloc_mem( (int)name_len );
     toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);
@@ -5373,7 +5373,7 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
             return;
         }
     }
-    pRoomIndex->vnum            = (sh_int)(vnum);
+    pRoomIndex->vnum            = vnum;
     name_len                    = strlen(defaultRoomName) + 1;
     pRoomIndex->name            = alloc_mem( (int)name_len );
     toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);

@@ -27,6 +27,7 @@
 
 #include "merc.h"
 #include "interp.h"
+#include "db.h"
 
 /* db.c's counts of what has been allocated, kept honest for MEMORY. */
 extern int top_affect;
@@ -640,7 +641,7 @@ static MOB_INDEX_DATA *editable_mob( CHAR_DATA *ch, const char *arg )
     AREA_DATA *pArea;
     int vnum;
 
-    if ( !is_number( (char *) arg ) || strlen( arg ) > 5
+    if ( !is_number( (char *) arg )
       || ( vnum = typed_vnum( arg ) ) <= 0
       || ( m = get_mob_index( vnum ) ) == NULL )
     {
@@ -791,7 +792,7 @@ void do_mshow( CHAR_DATA *ch, char *argument )
     MOB_INDEX_DATA *m;
 
     one_argument( argument, arg );
-    if ( arg[0] == '\0' || !is_number( arg ) || strlen( arg ) > 5
+    if ( arg[0] == '\0' || !is_number( arg )
       || ( m = get_mob_index( typed_vnum( arg ) ) ) == NULL )
     {
         send_to_char( "Syntax: mshow <mobile vnum>\n\r", ch );
@@ -1473,7 +1474,7 @@ static OBJ_INDEX_DATA *editable_obj( CHAR_DATA *ch, const char *arg )
     AREA_DATA *pArea;
     int vnum;
 
-    if ( !is_number( (char *) arg ) || strlen( arg ) > 5
+    if ( !is_number( (char *) arg )
       || ( vnum = typed_vnum( arg ) ) <= 0
       || ( o = get_obj_index( vnum ) ) == NULL )
     {
@@ -1679,7 +1680,7 @@ void do_oshow( CHAR_DATA *ch, char *argument )
     OBJ_INDEX_DATA *o;
 
     one_argument( argument, arg );
-    if ( arg[0] == '\0' || !is_number( arg ) || strlen( arg ) > 5
+    if ( arg[0] == '\0' || !is_number( arg )
       || ( o = get_obj_index( typed_vnum( arg ) ) ) == NULL )
     {
         send_to_char( "Syntax: oshow <object vnum>\n\r", ch );
@@ -1850,7 +1851,7 @@ static int set_obj_value_field( CHAR_DATA *ch, OBJ_INDEX_DATA *o,
 
     if ( ( t == ITEM_CONTAINER || t == ITEM_PORTAL ) && !str_cmp( field, "key" ) )
     {
-        if ( ( n = plain_number( value, 32767 ) ) < 0
+        if ( ( n = plain_number( value, MAX_VNUM ) ) < 0
           || ( n != 0 && get_obj_index( (int) n ) == NULL ) )
         {
             send_to_char( "Key is the vnum of an object that exists, or 0 for "
@@ -2014,7 +2015,7 @@ static int set_obj_value_field( CHAR_DATA *ch, OBJ_INDEX_DATA *o,
         }
         if ( !str_prefix( field, "destination" ) || !str_cmp( field, "to" ) )
         {
-            if ( ( n = plain_number( value, WORLD_SIZE ) ) < 0
+            if ( ( n = plain_number( value, MAX_VNUM ) ) < 0
               || get_room_index( (int) n ) == NULL )
             {
                 send_to_char( "Destination is the vnum of a room that exists.\n\r", ch );
@@ -2583,9 +2584,9 @@ static RESET_DATA *new_reset( char command, int arg1, int arg2, int arg3 )
     RESET_DATA *r = alloc_perm( sizeof(*r) );
 
     r->command  = command;
-    r->arg1     = (sh_int) arg1;
-    r->arg2     = (sh_int) arg2;
-    r->arg3     = (sh_int) arg3;
+    r->arg1     = arg1;
+    r->arg2     = arg2;
+    r->arg3     = arg3;
     r->room_max = 0;
     r->next     = NULL;
     top_reset++;
@@ -2637,7 +2638,7 @@ static void set_door_reset( AREA_DATA *pArea, int room_vnum, int door, int state
     {
         if ( r->command == 'D' && r->arg1 == room_vnum && r->arg2 == door )
         {
-            r->arg3 = (sh_int) state;
+            r->arg3 = state;
             return;
         }
     }
@@ -2681,7 +2682,7 @@ static void recount_mob_resets( AREA_DATA *pArea, int vnum )
         for ( o = pArea->reset_first; o != NULL; o = o->next )
             if ( o->command == 'M' && o->arg1 == vnum && o->arg3 == r->arg3 )
                 in_room++;
-        r->arg2     = (sh_int) UMAX( r->arg2, in_world );
+        r->arg2     = UMAX( r->arg2, in_world );
         r->room_max = (sh_int) in_room;
     }
 }
@@ -3547,7 +3548,7 @@ static int wiz_dig_vnum( ROOM_INDEX_DATA *here )
 
     if ( area_is_built( here->area ) )
         return wiz_free_vnum( here->area, WIZ_ROOM );
-    for ( vnum = here->vnum + 1; vnum <= WORLD_SIZE; vnum++ )
+    for ( vnum = here->vnum + 1; vnum <= MAX_VNUM; vnum++ )
         if ( get_room_index( vnum ) == NULL && area_for_vnum( vnum ) == NULL )
             return vnum;
     return 0;
@@ -3562,41 +3563,56 @@ static int wiz_dig_vnum( ROOM_INDEX_DATA *here )
  */
 static int wiz_free_block( int size )
 {
-    static bool used[WORLD_SIZE + 1];
+    /* A flag a vnum: a megabyte, kept static rather than on the stack. */
+    static bool used[MAX_VNUM + 1];
     AREA_DATA *pArea;
-    int vnum, run = 0;
+    int vnum, run = 0, bucket;
 
     memset( used, 0, sizeof(used) );
-    for ( vnum = 1; vnum <= WORLD_SIZE; vnum++ )
-        if ( get_room_index( vnum ) != NULL || get_mob_index( vnum ) != NULL
-          || get_obj_index( vnum ) != NULL )
-            used[vnum] = true;
+    /* By the hashes, not by asking every vnum up to MAX_VNUM. */
+    for ( bucket = 0; bucket < MAX_KEY_HASH; bucket++ )
+    {
+        ROOM_INDEX_DATA *room;
+        MOB_INDEX_DATA *mob;
+        OBJ_INDEX_DATA *obj;
+
+        for ( room = room_index_hash[bucket]; room != NULL; room = room->next )
+            if ( room->vnum > 0 && room->vnum <= MAX_VNUM )
+                used[room->vnum] = true;
+        for ( mob = mob_index_hash[bucket]; mob != NULL; mob = mob->next )
+            if ( mob->vnum > 0 && mob->vnum <= MAX_VNUM )
+                used[mob->vnum] = true;
+        for ( obj = obj_index_hash[bucket]; obj != NULL; obj = obj->next )
+            if ( obj->vnum > 0 && obj->vnum <= MAX_VNUM )
+                used[obj->vnum] = true;
+    }
 
     for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
     {
-        int lo = WORLD_SIZE + 1, hi = 0, v;
+        int lo = MAX_VNUM + 1, hi = 0, v;
 
         if ( pArea->min_vnum > 0 )
         {
             lo = pArea->min_vnum;
-            hi = UMIN( pArea->max_vnum, WORLD_SIZE );
+            hi = UMIN( pArea->max_vnum, MAX_VNUM );
         }
-        for ( v = 1; v <= WORLD_SIZE; v++ )
+        for ( bucket = 0; bucket < MAX_KEY_HASH; bucket++ )
         {
-            ROOM_INDEX_DATA *room = get_room_index( v );
+            ROOM_INDEX_DATA *room;
 
-            if ( room != NULL && room->area == pArea )
-            {
-                lo = UMIN( lo, v );
-                hi = UMAX( hi, v );
-            }
+            for ( room = room_index_hash[bucket]; room != NULL; room = room->next )
+                if ( room->area == pArea && room->vnum > 0 && room->vnum <= MAX_VNUM )
+                {
+                    lo = UMIN( lo, room->vnum );
+                    hi = UMAX( hi, room->vnum );
+                }
         }
         for ( v = lo; v <= hi; v++ )
             used[v] = true;
     }
 
     /* From 1000 up: the low numbers are the old world's. */
-    for ( vnum = 1000; vnum <= WORLD_SIZE; vnum++ )
+    for ( vnum = 1000; vnum <= MAX_VNUM; vnum++ )
     {
         run = used[vnum] ? 0 : run + 1;
         if ( run == size )
@@ -3869,7 +3885,7 @@ void build_wizard_input( CHAR_DATA *ch, const char *line )
 
         if ( answer[0] != '\0' )
         {
-            if ( !is_number( answer ) || strlen( answer ) > 5 )
+            if ( !is_number( answer ) )
             {
                 send_to_char( "A vnum is a number.\n\r", ch );
                 return;
@@ -4444,7 +4460,7 @@ void do_rshow( CHAR_DATA *ch, char *argument )
 
     if ( argument[0] != '\0' )
     {
-        if ( !is_number( argument ) || strlen( argument ) > 5
+        if ( !is_number( argument )
           || ( room = get_room_index( typed_vnum( argument ) ) ) == NULL )
         {
             send_to_char( "Syntax: rshow [room vnum]\n\r", ch );

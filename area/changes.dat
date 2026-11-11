@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111vnums 2026-11-11 staff
+Vnums are no longer held under 32,767: rooms, mobiles and objects may be
+numbered up to 1,000,000. ANEW, DIG and GOTO take the whole range, MSHOW,
+OSHOW, MCREATE and OCREATE take a vnum of any length, and RSAVE no longer
+leaves out rooms numbered above 30,000. Area and player files need no
+change; they always held plain numbers.
+
 @ 20261111purge 2026-11-11 staff
 PURGE <name> now looks nearest first -- somebody in this room, then an object
 here, then somebody elsewhere -- so PURGE CORPSE takes the corpse at your

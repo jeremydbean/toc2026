@@ -41,6 +41,7 @@
 #include "merc.h"
 #include "interp.h"
 #include "dnsasync.h"
+#include "db.h"
 
 /* macOS hides NI_MAXHOST under _POSIX_C_SOURCE; comm.c does the same. */
 #ifndef NI_MAXHOST
@@ -156,7 +157,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 	    int wiz_attempts;
 	    for ( wiz_attempts = 0; wiz_attempts < 200 && !found; wiz_attempts++ )
 	    {
-	        pMobIndex = get_mob_index( number_range( 0, 65535 ) );
+	        pMobIndex = get_mob_index( number_range( 0, top_vnum_mob ) );
 	        if ( pMobIndex != NULL )
 	        {
 	            FOR_EACH_CHARACTER( iter, victim )
@@ -186,7 +187,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 		int attempts;
 		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		    pRoomIndex = get_room_index( number_range( 0, 65535 ) );
+		    pRoomIndex = get_room_index( number_range( 0, top_vnum_room ) );
 		    if ( pRoomIndex != NULL )
 			break;
 		}
@@ -222,7 +223,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 		int attempts;
 		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		    pRoomIndex = get_room_index( number_range( 0, 65535 ) );
+		    pRoomIndex = get_room_index( number_range( 0, top_vnum_room ) );
 		    if ( pRoomIndex != NULL )
 		    {
 			char_from_room(rch);
@@ -1474,7 +1475,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
 	{
 	    int vnum = vnum_asked;
 
-	    if (vnum <= WORLD_SIZE)
+	    if (vnum <= MAX_VNUM)
 	    {
 		send_to_char( "You form order from nothingness.\n\r", ch );
 		create_room( vnum );
@@ -1749,10 +1750,6 @@ void do_ostat( CHAR_DATA *ch, char *argument )
     loaded_object = 0;
 
     if (is_number(argument)) {
-      if (strlen(argument) > 6) {
-        send_to_char("We only have about 32000 objects.\n\r",ch);
-        return;
-      }
       if (!parse_int(argument, 1, INT_MAX, &vnum)) {
         send_to_char("Please enter an positive number.\n\r",ch);
         return;
@@ -2436,7 +2433,7 @@ void do_rwhere( CHAR_DATA *ch, char *argument )
 
     count = 0;
 
-    for ( i = 1; i < 32768; i++ )
+    for ( i = 1; i <= top_vnum_room; i++ )
     {
 
         location = get_room_index(i);
@@ -6357,11 +6354,11 @@ void do_anew( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( !parse_int( arg1, 1, WORLD_SIZE, &lo )
-      || !parse_int( arg2, 1, WORLD_SIZE, &hi ) || lo > hi )
+    if ( !parse_int( arg1, 1, MAX_VNUM, &lo )
+      || !parse_int( arg2, 1, MAX_VNUM, &hi ) || lo > hi )
     {
         snprintf( buf, sizeof(buf),
-                  "Vnums run from 1 to %d, low first.\n\r", WORLD_SIZE );
+                  "Vnums run from 1 to %d, low first.\n\r", MAX_VNUM );
         send_to_char( buf, ch );
         return;
     }
@@ -6468,8 +6465,8 @@ void do_anew( CHAR_DATA *ch, char *argument )
     pArea->reset_last    = NULL;
     pArea->name          = str_dup( argument );
     pArea->file_name     = str_dup( slug );
-    pArea->min_vnum      = (sh_int) lo;
-    pArea->max_vnum      = (sh_int) hi;
+    pArea->min_vnum      = lo;
+    pArea->max_vnum      = hi;
     pArea->builders      = str_dup( ch->name != NULL ? ch->name : "All" );
     pArea->age           = 15;
     pArea->nplayer       = 0;
@@ -6499,14 +6496,21 @@ void do_anew( CHAR_DATA *ch, char *argument )
 /* Rooms, mobiles and objects an area holds, counted for ALIST/ASTAT. */
 static void area_counts( AREA_DATA *pArea, int *rooms, int *mobs, int *objs )
 {
-    int vnum;
+    int vnum, bucket;
 
     *rooms = *mobs = *objs = 0;
 
-    /* Rooms carry an area pointer; count those. */
-    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
-        if ( get_room_index( vnum ) != NULL && get_room_index( vnum )->area == pArea )
-            (*rooms)++;
+    /* Rooms carry an area pointer; count those. By the hash, not by
+       every vnum: ALIST asks this of each area, and vnums run to
+       MAX_VNUM. */
+    for ( bucket = 0; bucket < MAX_KEY_HASH; bucket++ )
+    {
+        ROOM_INDEX_DATA *room;
+
+        for ( room = room_index_hash[bucket]; room != NULL; room = room->next )
+            if ( room->area == pArea )
+                (*rooms)++;
+    }
 
     /* Mobs and objects have no area pointer, so a buildable area counts
        them by its declared range. A shipped area reports 0 here. */
@@ -6755,7 +6759,7 @@ static int build_vnum_arg( const char *arg )
 {
     int vnum;
 
-    if ( arg[0] == '\0' || !is_number( (char *) arg ) || strlen( arg ) > 5
+    if ( arg[0] == '\0' || !is_number( (char *) arg )
       || !parse_int( arg, INT_MIN, INT_MAX, &vnum ) )
         return -1;
     return vnum;
@@ -7040,13 +7044,13 @@ void do_rlink( CHAR_DATA *ch, char *argument )
         {
             int key;
 
-            if ( !parse_int( argument, -1, SHRT_MAX, &key ) )
+            if ( !parse_int( argument, -1, MAX_VNUM, &key ) )
             {
                 send_to_char( "Which object vnum is the key?\n\r", ch );
                 return;
             }
 
-            pexit->key = (sh_int) key;
+            pexit->key = key;
             snprintf( buf, sizeof(buf), "Object %d unlocks the way %s.\n\r",
                       (int) pexit->key, dir_name[door] );
         }
@@ -7148,10 +7152,10 @@ void do_rlink( CHAR_DATA *ch, char *argument )
     {
         int vnum;
 
-        if ( !parse_int( arg2, 1, WORLD_SIZE, &vnum ) )
+        if ( !parse_int( arg2, 1, MAX_VNUM, &vnum ) )
         {
             snprintf( buf, sizeof(buf), "Room numbers run from 1 to %d.\n\r",
-                      WORLD_SIZE );
+                      MAX_VNUM );
             send_to_char( buf, ch );
             return;
         }
@@ -7269,7 +7273,7 @@ void do_rsave( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+    for ( vnum = 0; vnum <= top_vnum_room; vnum++ )
     {
         ROOM_INDEX_DATA *room = get_room_index( vnum );
 
