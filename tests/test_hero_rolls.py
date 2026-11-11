@@ -24,6 +24,13 @@ PW = "Zrollpass11"
 HALL = 4649
 
 
+def boot_finished(mud: LiveMud) -> None:
+    """The port opens before boot fills the records in; the name prompt is
+    sent only by the running game loop, after it has."""
+    with mud.connect(timeout=180) as client:
+        client.expect("by what name", "name:", "what is your name")
+
+
 class HeroRollSourceTests(unittest.TestCase):
     def test_written_when_it_happens(self) -> None:
         update = (ROOT / "src" / "update.c").read_text(encoding="latin-1")
@@ -55,6 +62,7 @@ class HeroRollLiveTests(unittest.TestCase):
             for stale in ("Zrollhero", "Zrollreborn"):
                 (heroes / stale).unlink(missing_ok=True)
             mud.restart()           # the boot fills the records in
+            boot_finished(mud)
 
             old = (heroes / "Zrollold").read_text()
             self.assertIn("Lev 52 Trust 52  Zrollold the Old", old, "first line kept")
@@ -114,11 +122,13 @@ class HeroRollStaffTests(unittest.TestCase):
             (heroes / "Zmangled").write_text(
                 "Lev 5x Trust 51  Zmangled\nSince 12abc\nRemorts 99999999999999\nReborn -\n")
             mud.restart()
+            boot_finished(mud)
             # Zrollfile has a mortal record from the boot; make them staff
             # in the file and boot again: the record is rewritten with the rank.
             self.assertIn("Remorts 1", (heroes / "Zrollfile").read_text())
             patch_player_file(mud, "Zrollfile", Levl=70)
             mud.restart()
+            boot_finished(mud)
             self.assertIn("Lev 70", (heroes / "Zrollfile").read_text())
 
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as promo:
