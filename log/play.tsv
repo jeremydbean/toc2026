@@ -21200,3 +21200,69 @@
 1794401228	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	north		Alas, you cannot go that way.	-	-
 1794401229	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	sleep		You go to sleep.	-	-
 1794401230	session	Trentlin	35	4210	dresden.are	quit	326s	+1 levels	+1348 exp	+5255055 copper	6 kills	0 deaths	1 quests	180 commands	0 refused	coin: loot 5g 10s 15c, quests 5p 20g 40s 40c, spent 25p 30g	spent on: heal 25p 30g	exp: kills +1342, skilluse +6
+1794429472	area	Trentlin	35	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794429474	cmd	Trentlin	35	4210	dresden.are	sleeping	74	0	-	wake		You wake and stand up.	-	-
+1794429474	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794429478	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	worth		You have 5 platinum, 35 gold, 33 silver, 98 copper // and 80925 experience (1875 exp to level).	-	-
+1794429479	cmd	Trentlin	35	4203	dresden.are	standing	74	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794429480	cmd	Trentlin	35	4204	dresden.are	standing	74	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794429480	cmd	Trentlin	35	4207	dresden.are	standing	74	0	-	south		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794429481	cmd	Trentlin	35	4208	dresden.are	standing	74	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794429481	cmd	Trentlin	35	4208	dresden.are	standing	74	0	-	west		Alas, you cannot go that way.	-	-
+1794429483	coin	Trentlin	35	4208	dresden.are	-700000	spent	heal	-	15205838842
+1794429483	cmd	Trentlin	35	4208	dresden.are	standing	74	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (7 castings, 70 gold.)	-	-
+1794429488	cmd	Trentlin	35	4207	dresden.are	standing	74	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794429488	cmd	Trentlin	35	4202	dresden.are	standing	74	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794429489	cmd	Trentlin	35	4201	dresden.are	standing	74	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794429489	cmd	Trentlin	35	2427	dresden.are	standing	74	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794429489	cmd	Trentlin	35	2427	dresden.are	standing	74	0	-	east		Alas, you cannot go that way.	-	-
+1794429489	cmd	Trentlin	35	2427	dresden.are	standing	74	0	-	east		Alas, you cannot go that way.	-	-
+1794429490	cmd	Trentlin	35	2404	dresden.are	standing	74	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794429490	cmd	Trentlin	35	2401	dresden.are	standing	74	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794429490	cmd	Trentlin	35	2410	dresden.are	standing	74	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794429490	cmd	Trentlin	35	2411	dresden.are	standing	74	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794429491	cmd	Trentlin	35	2414	dresden.are	standing	74	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794429491	cmd	Trentlin	35	2497	dresden.are	standing	74	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794429491	cmd	Trentlin	35	2497	dresden.are	standing	74	0	-	aquest	requests	.-[ AQUEST Commands ]-----------------------------------------. // |  INFO      View quest status or summary // |  POINTS    Check your quest point balance	-	+
+1794429492	quest	Trentlin	35	2497	dresden.are	ordinary	kill	28008	A sandman	14	pyramid.are	14
+1794429492	cmd	Trentlin	35	2497	dresden.are	standing	74	21	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'A sandman threatens the peace of the realm!'	-	+
+1794429498	cmd	Trentlin	35	2401	dresden.are	standing	74	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794429499	cmd	Trentlin	35	2403	dresden.are	standing	74	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794429500	cmd	Trentlin	35	2420	dresden.are	standing	74	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794429500	cmd	Trentlin	35	2421	dresden.are	standing	74	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794429500	cmd	Trentlin	35	2441	dresden.are	standing	74	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794429500	cmd	Trentlin	35	2442	dresden.are	standing	74	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794429501	cmd	Trentlin	35	2443	dresden.are	standing	74	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794429501	cmd	Trentlin	35	2444	dresden.are	standing	74	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794429501	cmd	Trentlin	35	2445	dresden.are	standing	74	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794429501	cmd	Trentlin	35	2446	dresden.are	standing	74	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794429502	cmd	Trentlin	35	2448	dresden.are	standing	74	0	-	south		First Pier. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794429502	cmd	Trentlin	35	2518	dresden.are	standing	74	0	-	south		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the	-	+
+1794429502	cmd	Trentlin	35	2517	dresden.are	standing	74	0	-	east		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the	-	+
+1794429502	cmd	Trentlin	35	2516	dresden.are	standing	74	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794429503	cmd	Trentlin	35	2515	dresden.are	standing	74	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794429503	area	Trentlin	35	5000	eastern.are	dresden.are	eastern.are	31	east
+1794429503	cmd	Trentlin	35	5000	eastern.are	standing	74	0	-	east		A long tunnel //   You encounter some rapids as you enter this tunnel cut out of // the mountains by the river.	-	+
+1794429503	cmd	Trentlin	35	5001	eastern.are	standing	74	0	-	east		A long, branched tunnel //   The tunnel continues east and it also branches to the southeast. // [Exits: east west southeast]	-	-
+1794429503	cmd	Trentlin	35	5002	eastern.are	standing	74	0	-	east		A long tunnel //   The tunnel branches off north. // [Exits: north east west]	-	-
+1794429504	cmd	Trentlin	35	5003	eastern.are	standing	74	0	-	east		A long tunnel //   The tunnel branches off south. // [Exits: east south west]	-	-
+1794429504	cmd	Trentlin	35	5004	eastern.are	standing	74	0	-	east		A long tunnel //   The tunnel branches off to the south. // [Exits: east south west]	-	-
+1794429504	cmd	Trentlin	35	5005	eastern.are	standing	74	0	-	east		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river	-	+
+1794429504	cmd	Trentlin	35	5006	eastern.are	standing	74	0	-	east		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]	-	-
+1794429505	cmd	Trentlin	35	5007	eastern.are	standing	74	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.	-	+
+1794429505	cmd	Trentlin	35	5027	eastern.are	standing	74	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.	-	+
+1794429505	cmd	Trentlin	35	5028	eastern.are	standing	74	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.	-	+
+1794429505	cmd	Trentlin	35	5027	eastern.are	standing	74	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.	-	+
+1794429510	cmd	Trentlin	35	5028	eastern.are	standing	74	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.	-	+
+1794429510	cmd	Trentlin	35	5029	eastern.are	standing	74	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.	-	+
+1794429510	coin	Trentlin	35	5029	eastern.are	+38002963	bank	interest	bank	15243841805
+1794429510	cmd	Trentlin	35	5026	eastern.are	standing	77	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.	-	+
+1794429512	cmd	Trentlin	35	5029	eastern.are	standing	77	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.	-	+
+1794429512	cmd	Trentlin	35	5062	eastern.are	standing	77	0	-	south		Strange Glowing Sand //   A vast desert stretches for miles, the sand constantly shifting around // you.  But this patch of desert looks different...the sand glows.  LOOK! To	-	+
+1794429514	area	Trentlin	35	54	connect.are	eastern.are	connect.are	11	south
+1794429514	cmd	Trentlin	35	54	connect.are	standing	77	0	-	south		Sand //   As you wander around aimlessly in the desert, you begin to appreciate the // beauty of sand... But then you come to your senses.	-	+
+1794429516	refused	Trentlin	35	54	connect.are	standing	77	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794429517	cmd	Trentlin	35	54	connect.are	standing	77	0	-	exits		Obvious exits: // North - Strange Glowing Sand // South - The Great Eastern Desert	-	-
+1794429518	area	Trentlin	35	28000	pyramid.are	connect.are	pyramid.are	4	south
+1794429518	cmd	Trentlin	35	28000	pyramid.are	standing	77	0	-	south		The Great Eastern Desert //   A vast desert stretches for miles, the sands constantly shifting around you. // Rising out of the sand to the east you see a mighty pyramid.	-	+
+1794429518	cmd	Trentlin	35	28000	pyramid.are	standing	77	0	-	exits		Obvious exits: // North - Sand // East  - At the Base of the Pyramid	-	+

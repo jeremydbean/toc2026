@@ -288407,3 +288407,117 @@ Wed Nov 11 20:27:11 2026 :: Sock.sinaddr:  79.124.58.218
 Wed Nov 11 20:27:17 2026 :: EOF encountered on read.
 Wed Nov 11 20:30:42 2026 :: Treasure goblin: vanished from room 9308 (On the Bridge of Stars, galaxy.are) (too long in one area).
 Wed Nov 11 20:31:54 2026 :: Connection guard: last hour 13 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
+Wed Nov 11 20:37:49 2026 :: Sock.sinaddr:  24.2.118.125
+Wed Nov 11 20:37:49 2026 :: Loading Trentlin's playerfile
+Wed Nov 11 20:37:51 2026 :: Loading Trentlin's playerfile
+Wed Nov 11 20:37:51 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Wed Nov 11 20:37:52 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 0
+Wed Nov 11 20:37:54 2026 :: Log Trentlin [4210]: wake
+Wed Nov 11 20:37:54 2026 :: Log Trentlin [4210]: l
+Wed Nov 11 20:37:58 2026 :: Log Trentlin [4210]: wo
+Wed Nov 11 20:37:59 2026 :: Log Trentlin [4210]: s
+Wed Nov 11 20:37:59 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Wed Nov 11 20:38:00 2026 :: Log Trentlin [4203]: w
+Wed Nov 11 20:38:00 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4203
+Wed Nov 11 20:38:00 2026 :: Log Trentlin [4204]: s
+Wed Nov 11 20:38:00 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4204
+Wed Nov 11 20:38:01 2026 :: Log Trentlin [4207]: w
+Wed Nov 11 20:38:01 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Nov 11 20:38:01 2026 :: Log Trentlin [4208]: w
+Wed Nov 11 20:38:03 2026 :: Log Trentlin [4208]: heal refres
+Wed Nov 11 20:38:03 2026 :: Log Trentlin [4208]: gold -70
+Wed Nov 11 20:38:08 2026 :: Log Trentlin [4208]: e
+Wed Nov 11 20:38:08 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Wed Nov 11 20:38:08 2026 :: Log Trentlin [4207]: e
+Wed Nov 11 20:38:08 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 11 20:38:09 2026 :: Log Trentlin [4202]: e
+Wed Nov 11 20:38:09 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov 11 20:38:09 2026 :: Log Trentlin [4201]: e
+Wed Nov 11 20:38:09 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Wed Nov 11 20:38:09 2026 :: Log Trentlin [2427]: e
+Wed Nov 11 20:38:09 2026 :: Log Trentlin [2427]: e
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2427]: n
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2404]: n
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2401]: u
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2410]: u
+Wed Nov 11 20:38:10 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Nov 11 20:38:11 2026 :: Log Trentlin [2411]: u
+Wed Nov 11 20:38:11 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Nov 11 20:38:11 2026 :: Log Trentlin [2414]: u
+Wed Nov 11 20:38:11 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Nov 11 20:38:11 2026 :: Log Trentlin [2497]: aquest requests
+Wed Nov 11 20:38:12 2026 :: Log Trentlin [2497]: aquest request
+Wed Nov 11 20:38:12 2026 :: Log Trentlin [2497]: quest assigned: kill A sandman (mob 28008, level 14) in pyramid.are, 14 minutes, ordinary
+Wed Nov 11 20:38:18 2026 :: Log Trentlin [2497]: enter door
+Wed Nov 11 20:38:18 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov 11 20:38:19 2026 :: Log Trentlin [2401]: east
+Wed Nov 11 20:38:19 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2403]: east
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2420]: east
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2421]: south
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2441]: arrived (River Road.) from 2421
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2441]: east
+Wed Nov 11 20:38:20 2026 :: Log Trentlin [2442]: arrived (River Road.) from 2441
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2442]: south
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2443]: arrived (River Road.) from 2442
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2443]: east
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2444]: arrived (River Road.) from 2443
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2444]: east
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2445]: arrived (End of River Road.) from 2444
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2445]: south
+Wed Nov 11 20:38:21 2026 :: Log Trentlin [2446]: arrived (Docks of Dresden.) from 2445
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2446]: south
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2448]: arrived (First Pier.) from 2446
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2448]: south
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2518]: arrived (River of Wonders.) from 2448
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2518]: east
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2517]: arrived (River of Wonders.) from 2518
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2517]: east
+Wed Nov 11 20:38:22 2026 :: Log Trentlin [2516]: arrived (Tunnel on the River of Wonders.) from 2517
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [2516]: east
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [2515]: arrived (Tunnel on the River of Wonders.) from 2516
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [2515]: east
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [5000]: arrived (A long tunnel) from 2515
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [5000]: east
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [5001]: arrived (A long, branched tunnel) from 5000
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [5001]: east
+Wed Nov 11 20:38:23 2026 :: Log Trentlin [5002]: arrived (A long tunnel) from 5001
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5002]: east
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5003]: arrived (A long tunnel) from 5002
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5003]: east
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5004]: arrived (A long tunnel) from 5003
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5004]: east
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5005]: arrived (An underground lake) from 5004
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5005]: east
+Wed Nov 11 20:38:24 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5005
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5006]: east
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5006
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5007]: east
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5027]: west
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5028]: arrived (The Sands of Sorrow) from 5027
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5028]: north
+Wed Nov 11 20:38:25 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5028
+Wed Nov 11 20:38:30 2026 :: Log Trentlin [5027]: west
+Wed Nov 11 20:38:30 2026 :: Log Trentlin [5028]: arrived (The Sands of Sorrow) from 5027
+Wed Nov 11 20:38:30 2026 :: Log Trentlin [5028]: west
+Wed Nov 11 20:38:30 2026 :: Log Trentlin [5029]: arrived (The Sands of Sorrow) from 5028
+Wed Nov 11 20:38:30 2026 :: Log Trentlin [5029]: affects off: iron skin
+Wed Nov 11 20:38:30 2026 :: Log Trentlin [5029]: north
+Wed Nov 11 20:38:30 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5029
+Wed Nov 11 20:38:32 2026 :: Log Trentlin [5026]: north
+Wed Nov 11 20:38:32 2026 :: Log Trentlin [5029]: arrived (The Sands of Sorrow) from 5026
+Wed Nov 11 20:38:32 2026 :: Log Trentlin [5029]: south
+Wed Nov 11 20:38:32 2026 :: Log Trentlin [5062]: arrived (Strange Glowing Sand) from 5029
+Wed Nov 11 20:38:34 2026 :: Log Trentlin [5062]: s
+Wed Nov 11 20:38:34 2026 :: Log Trentlin [54]: arrived (Sand) from 5062
+Wed Nov 11 20:38:36 2026 :: Log Trentlin [54]: (refused) ec
+Wed Nov 11 20:38:37 2026 :: Log Trentlin [54]: ex
+Wed Nov 11 20:38:38 2026 :: Log Trentlin [54]: s
+Wed Nov 11 20:38:38 2026 :: Log Trentlin [28000]: arrived (The Great Eastern Desert) from 54
+Wed Nov 11 20:38:38 2026 :: Log Trentlin [28000]: ex
