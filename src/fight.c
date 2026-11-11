@@ -2102,10 +2102,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	 wizinfo(log_buf, LEVEL_IMMORTAL);
 
 	 if(ch->hunting && ch->hunting == victim)
-	    do_stop_hunting(ch, ch->hunting->name);
+	    do_stop_hunting(ch, "the prey is slain");
 
 	 if(victim->hunting)
-	    do_stop_hunting(victim, victim->hunting->name);
+	    do_stop_hunting(victim, "the hunter is slain");
 
 	 act( "$N vanishes in a puff of purple smoke.", ch, NULL, victim, TO_CHAR    );
 	 send_to_char("!<POOF>!\n\r",victim);
@@ -2169,10 +2169,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
 
 		    if(ch->hunting && ch->hunting == victim)
-			do_stop_hunting(ch, ch->hunting->name);
+			do_stop_hunting(ch, "the prey is slain");
 
 		    if(victim->hunting)
-			do_stop_hunting(victim, victim->hunting->name);
+			do_stop_hunting(victim, "the hunter is slain");
 
 
 
@@ -2198,10 +2198,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	    remove_hate( ch, victim );
 
 	    if(ch->hunting && ch->hunting == victim)
-		do_stop_hunting(ch, ch->hunting->name);
+		do_stop_hunting(ch, "the prey is slain");
 
 	    if(victim->hunting)
-		do_stop_hunting(victim, victim->hunting->name);
+		do_stop_hunting(victim, "the hunter is slain");
 
 
 
@@ -5972,7 +5972,7 @@ void remove_hate (CHAR_DATA *ch, CHAR_DATA *vict)
     if(IS_SET(ch->off_flags2, OFF2_HUNTER) )
     {
        if(ch->hunting != NULL)
-	 do_stop_hunting(ch, ch->hunting->name);
+	 do_stop_hunting(ch, "the prey is slain");
     }
 
     return;

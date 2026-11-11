@@ -1665,7 +1665,18 @@ void char_from_obj( OBJ_DATA *obj )
      char_to_room(obj->trapped,obj->in_obj->carried_by->in_room);
     else
     {
-	bug( "Char_from_obj: NULL.", 0 );
+	/* Nowhere to let it out (a stash, an object leaving the game):
+	   it goes with the bottle, never left pointing at freed memory
+	   or set loose to be made again at the next login. */
+	CHAR_DATA *mob = obj->trapped;
+
+	obj->trapped = NULL;
+	mob->in_object = NULL;
+	if ( IS_NPC(mob) && get_room_index( ROOM_VNUM_LIMBO ) != NULL )
+	{
+	    char_to_room( mob, get_room_index( ROOM_VNUM_LIMBO ) );
+	    extract_char( mob, true );
+	}
 	return;
     }
 
@@ -2549,6 +2560,12 @@ void extract_obj_player( OBJ_DATA *obj )
     /* Freed at the top of the next pass (recycle.c). */
     obj_data_release( obj );
 
+    /* The relic globals never name a freed object (stale-pointer audit,
+       2026-11-11): respawn_relic returns early when another copy exists. */
+    if ( obj == RELIC_1 ) RELIC_1 = NULL;
+    if ( obj == RELIC_2 ) RELIC_2 = NULL;
+    if ( obj == RELIC_3 ) RELIC_3 = NULL;
+    if ( obj == RELIC_4 ) RELIC_4 = NULL;
     if(i!=0)
 	respawn_relic(i);
 
@@ -2640,6 +2657,12 @@ void extract_obj( OBJ_DATA *obj )
     /* Freed at the top of the next pass (recycle.c). */
     obj_data_release( obj );
 
+    /* The relic globals never name a freed object (stale-pointer audit,
+       2026-11-11): respawn_relic returns early when another copy exists. */
+    if ( obj == RELIC_1 ) RELIC_1 = NULL;
+    if ( obj == RELIC_2 ) RELIC_2 = NULL;
+    if ( obj == RELIC_3 ) RELIC_3 = NULL;
+    if ( obj == RELIC_4 ) RELIC_4 = NULL;
     if(i!=0)
 	respawn_relic(i);
 
@@ -2671,7 +2694,12 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 	extract_obj(ch->in_object);
       }
       else
+      {
+	/* Out of the bottle for good: nothing may point either way. */
+	ch->in_object->trapped = NULL;
+	ch->in_object = NULL;
 	char_to_room(ch,get_room_index(1));
+      }
     }
 
     if ( ch->in_room == NULL )
@@ -2728,6 +2756,24 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     {
         if ( wch->reply == ch )
             wch->reply = NULL;
+        /* A hunter or a tracker keeps no pointer to somebody gone: it
+           was read a second later by hunting_update and TRACK (stale-
+           pointer audit, 2026-11-11). */
+        if ( wch->hunting == ch )
+            do_stop_hunting( wch, "the prey is gone" );
+    }
+    /* Nor a switched immortal's descriptor to a body that is gone. */
+    {
+        DESCRIPTOR_DATA *d;
+
+        for ( d = descriptor_list; d != NULL; d = d->next )
+            if ( d->original == ch )
+            {
+                d->original = NULL;
+                if ( d->character != NULL )
+                    send_to_char( "Your own body is gone; you are left where you are.\n\r",
+                                  d->character );
+            }
     }
 
     unregister_character( ch );

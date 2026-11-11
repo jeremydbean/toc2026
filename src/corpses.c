@@ -113,7 +113,9 @@ static int track_find( const OBJ_DATA *corpse )
 {
     int i;
 
-    if ( corpse == NULL || corpse->item_type != ITEM_CORPSE_PC )
+    /* By pointer alone: a corpse whose type staff changed is still the
+       track's, and its extraction must end the track. */
+    if ( corpse == NULL )
         return -1;
     for ( i = 0; i < track_count; i++ )
         if ( tracks[i].corpse == corpse )

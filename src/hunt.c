@@ -376,13 +376,18 @@ void do_stop_hunting( CHAR_DATA *ch, char *arg)
     if (ch->hunting)
     {
         status = get_hunting_status(ch);
-        if (status<0) /* hunter not in list; not supposed to happen */
+        if (status<0) /* not in the list: a player's TRACK, or a stray */
         {
-            snprintf(buf, sizeof(buf),
-                     "BUG!!!! [Room: %s] %s is active but not in hunting list",
-                     ch->in_room ? "known" : "NULL",
-                     IS_NPC(ch) ? ch->short_descr : ch->name);
-            wizinfo(buf,LEVEL_IMMORTAL);
+            if (IS_NPC(ch))
+            {
+                snprintf(buf, sizeof(buf),
+                         "BUG!!!! [Room: %s] %s is active but not in hunting list",
+                         ch->in_room ? "known" : "NULL", ch->short_descr);
+                wizinfo(buf,LEVEL_IMMORTAL);
+            }
+            /* Never left pointing at somebody: the target may be extracted
+               and freed (memory is the system allocator's, 2026-11-11). */
+            ch->hunting = NULL;
             return;
         }
         snprintf(buf, sizeof(buf), "[Room: %d] %s stops %s %s because %s.",

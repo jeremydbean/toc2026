@@ -1453,6 +1453,19 @@ static void bank_interest( CHAR_DATA *ch )
 /*
  * Update all chars, including mobs.
 */
+/* A body whose player is switched into a mobile has no descriptor of its
+   own, but it is not idle: purging it freed the body under the switched
+   descriptor's `original` (stale-pointer audit, 2026-11-11). */
+static bool body_is_switched_from( CHAR_DATA *ch )
+{
+    DESCRIPTOR_DATA *d;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+        if ( d->original == ch )
+            return true;
+    return false;
+}
+
 void char_update( void )
 {
     CHAR_DATA *ch;
@@ -1846,7 +1859,8 @@ void char_update( void )
 
                 if ( ch->level < LEVEL_IMMORTAL
                 &&   ch->timer >= idle_purge_ticks( ch )
-                &&   ch_quit == NULL )
+                &&   ch_quit == NULL
+                &&   !body_is_switched_from( ch ) )
                 {
                     ch_quit = ch;
                 }

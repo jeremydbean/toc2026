@@ -2036,6 +2036,22 @@ tests). Nothing is deleted, and the state sync carries both folders. Rules:
 - Python tools and the dashboard list `player/` only, so archived
   characters are not in their lists. `tests/test_player_archive.py`.
 
+## No Pointer Outlives Its Target
+
+Since the pools went (2026-11-11), a pointer to a character, object or
+descriptor that survives into a later pass reads freed memory. An audit
+found five and each is fixed and pinned (`tests/test_stale_pointers.py`):
+`extract_char` stops every hunt or TRACK aimed at the one leaving and
+clears any switched descriptor's `original` that names it; the idle purge
+skips a body whose player is switched (`body_is_switched_from`);
+`do_stop_hunting` clears a pointer the hunter list does not hold (a
+player's TRACK); a bottled mobile and its bottle are unlinked both ways,
+and a bottle leaving with nowhere to open takes its mobile with it
+(`char_from_obj`); corpse tracks match by pointer alone; the relic globals
+are cleared when their object goes. A new field or global that points at a
+character or object is cleared in `extract_char`/`extract_obj` or a
+`*_forget` hook, or looked up by id.
+
 ## Pools Are Not 16-Bit
 
 Owner, 2026-11-11. Hit points, mana and endurance -- the live pools, the
