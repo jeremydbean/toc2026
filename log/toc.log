@@ -287334,3 +287334,112 @@ Wed Nov 11 01:06:40 2026 :: Log Alaric [2497]: who
 Wed Nov 11 01:06:41 2026 :: Log Alaric [2497]: sc
 Wed Nov 11 01:10:19 2026 :: Treasure goblin: vanished from room 1571 (Guarded Room, gnome.are) (too long in one area).
 Wed Nov 11 01:20:24 2026 :: Treasure goblin: vanished from room 7001 (The muddy sewer, sewer.are) (too long in one area).
+Wed Nov 11 01:29:31 2026 :: Log Alaric [2497]: aq re
+Wed Nov 11 01:29:31 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in kerofk.are, 13 minutes, ordinary
+Wed Nov 11 01:29:34 2026 :: Log Alaric [2497]: enter door
+Wed Nov 11 01:29:34 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2401]: west
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2405]: west
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2433]: west
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2434]: west
+Wed Nov 11 01:29:35 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Nov 11 01:29:36 2026 :: Log Alaric [2435]: west
+Wed Nov 11 01:29:36 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Nov 11 01:29:36 2026 :: Log Alaric [2436]: west
+Wed Nov 11 01:29:36 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Nov 11 01:29:36 2026 :: Log Alaric [2437]: west
+Wed Nov 11 01:29:36 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Nov 11 01:29:36 2026 :: Log Alaric [2438]: open west
+Wed Nov 11 01:29:37 2026 :: Log Alaric [2438]: west
+Wed Nov 11 01:29:37 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Nov 11 01:29:38 2026 :: Log Alaric [2439]: north
+Wed Nov 11 01:29:38 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Wed Nov 11 01:29:38 2026 :: Log Alaric [3900]: north
+Wed Nov 11 01:29:38 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Wed Nov 11 01:29:38 2026 :: Log Alaric [3901]: north
+Wed Nov 11 01:29:38 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Wed Nov 11 01:29:38 2026 :: Log Alaric [3902]: east
+Wed Nov 11 01:29:38 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Wed Nov 11 01:29:39 2026 :: Log Alaric [3903]: east
+Wed Nov 11 01:29:39 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Wed Nov 11 01:29:39 2026 :: Log Alaric [3904]: north
+Wed Nov 11 01:29:39 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Wed Nov 11 01:29:39 2026 :: Log Alaric [300]: west
+Wed Nov 11 01:29:39 2026 :: Log Alaric [316]: arrived (Grassy plains) from 300
+Wed Nov 11 01:29:39 2026 :: Log Alaric [316]: north
+Wed Nov 11 01:29:39 2026 :: Log Alaric [318]: arrived (Grassy plains) from 316
+Wed Nov 11 01:29:40 2026 :: Log Alaric [318]: north
+Wed Nov 11 01:29:40 2026 :: Log Alaric [319]: arrived (Grassy plains) from 318
+Wed Nov 11 01:29:40 2026 :: Log Alaric [319]: north
+Wed Nov 11 01:29:40 2026 :: Log Alaric [330]: arrived (In front of hut in foothills) from 319
+Wed Nov 11 01:29:40 2026 :: Log Alaric [330]: north
+Wed Nov 11 01:29:40 2026 :: Log Alaric [323]: arrived (The steep foothills) from 330
+Wed Nov 11 01:29:40 2026 :: Log Alaric [323]: west
+Wed Nov 11 01:29:40 2026 :: Log Alaric [24]: arrived (Crossing the Foothills) from 323
+Wed Nov 11 01:29:41 2026 :: Log Alaric [24]: north
+Wed Nov 11 01:29:41 2026 :: Log Alaric [29]: arrived (Steepened Path) from 24
+Wed Nov 11 01:29:41 2026 :: Log Alaric [29]: north
+Wed Nov 11 01:29:41 2026 :: Log Alaric [8846]: arrived (Mountain Pass) from 29
+Wed Nov 11 01:30:28 2026 :: Treasure goblin: vanished from room 28159 (A well Used Path, azeroth.are) (too long in one area).
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8846]: north
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8845]: arrived (Mountain Pass) from 8846
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8845]: east
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8844]: arrived (Mountain Pass) from 8845
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8844]: south
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8843]: arrived (Dirt Road) from 8844
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8843]: east
+Wed Nov 11 01:31:12 2026 :: Log Alaric [8842]: arrived (Dirt Road) from 8843
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8842]: east
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8841]: arrived (Dirt Road) from 8842
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8841]: east
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8834]: arrived (View of a City) from 8841
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8834]: east
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8835]: arrived (Near the City) from 8834
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8835]: east
+Wed Nov 11 01:31:13 2026 :: Log Alaric [8777]: arrived (Moon Gate) from 8835
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8777]: east
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8732]: arrived (Intersection) from 8777
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8732]: north
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8733]: arrived (Wall Side Road, South) from 8732
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8733]: north
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8734]: arrived (Intersection) from 8733
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8734]: east
+Wed Nov 11 01:31:14 2026 :: Log Alaric [8738]: arrived (Center Road, West) from 8734
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8738]: east
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8724]: arrived (Intersection) from 8738
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8724]: east
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8725]: arrived (Center Road, West) from 8724
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8725]: east
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8702]: arrived (Plaza of Kerofk) from 8725
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8702]: east
+Wed Nov 11 01:31:15 2026 :: Log Alaric [8704]: arrived (Center Road, East) from 8702
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8704]: east
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8705]: arrived (Intersection) from 8704
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8705]: north
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8718]: arrived (Citizen's Road, North) from 8705
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8718]: west
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8778]: arrived (Front Yard) from 8718
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8778]: west
+Wed Nov 11 01:31:16 2026 :: Log Alaric [8779]: arrived (Foyer) from 8778
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8779]: west
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8780]: arrived (Main Hall) from 8779
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8780]: west
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8781]: arrived (Back Yard) from 8780
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8781]: west
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8782]: arrived (Entrance to the Garden) from 8781
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8782]: west
+Wed Nov 11 01:31:17 2026 :: Log Alaric [8785]: arrived (In the Garden) from 8782
+Wed Nov 11 01:31:18 2026 :: Log Alaric [8785]: north
+Wed Nov 11 01:31:18 2026 :: Log Alaric [8784]: arrived (In the Garden) from 8785
+Wed Nov 11 01:31:20 2026 :: Log Alaric [8784]: get all
+Wed Nov 11 01:31:21 2026 :: Log Alaric [8784]: recal
+Wed Nov 11 01:31:21 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 8784
+Wed Nov 11 01:31:22 2026 :: Log Alaric [2497]: aq co
+Wed Nov 11 01:31:22 2026 :: Log Alaric [2497]: copper +107890398
+Wed Nov 11 01:31:22 2026 :: Log Alaric [2497]: quest complete: 107p 89g 3s 98c, 27 quest points (streak bonus 20%)
+Wed Nov 11 01:31:22 2026 :: Snapshot of Alaric taken before quest: Alaric.20261111_013122.quest (PRESTORE Alaric to see it).
+Wed Nov 11 01:31:23 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov 11 01:31:24 2026 :: Log Alaric [2497]: score
