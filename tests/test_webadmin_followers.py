@@ -66,7 +66,6 @@ def server_module():
             "WEB_ADMIN_BIND": "127.0.0.1",
             "WEB_ADMIN_LOCAL_UNLOCK": "0",
             "WEB_ADMIN_HOST_STATUS": "0",
-            "TOC_UPDATE_REQUEST_PATH": "",
         }
         with patch.dict(os.environ, env, clear=False):
             sys.modules.pop("webadmin.server", None)
@@ -185,7 +184,7 @@ class PublicHostTests(unittest.TestCase):
             "mud_endpoint", "mud_endpoint_host", "client_path",
             "game_websocket_auth", "player_data_protected",
             "log_websocket_auth", "event_websocket_auth",
-            "update_available", "host_status_available",
+            "host_status_available",
         })
 
 

@@ -469,7 +469,6 @@ class BridgeHeaderTests(unittest.TestCase):
                     "QUEUE_PATH": str(Path(tmp) / "webadmin.queue"),
                     "MUD_HOST": "127.0.0.1",
                     "MUD_PORT": str(mud.port),
-                    "TOC_UPDATE_REQUEST_PATH": "",
                 }
                 with patch.dict(os.environ, env, clear=False):
                     sys.modules.pop("webadmin.server", None)

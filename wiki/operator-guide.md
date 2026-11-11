@@ -63,30 +63,21 @@ mobiles, and 3,721 objects. Native and Python area totals differ because seven
 listed help/social files have no `#AREA` record: the native validator reports
 95 areas, including the `custom.are` builder workshop. Investigate unexpected deltas, not the known counting model.
 
-### Raspberry Pi Appliance Quick Check
+### Live Host Quick Check
 
-> **Self-host option.** This describes the Raspberry Pi appliance for running
-> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
-> see [disaster-recovery.md](disaster-recovery.md).
-
+The live server is on Oracle Cloud; [disaster-recovery.md](disaster-recovery.md)
+is the full runbook.
 
 ```bash
-ssh toc
-systemctl status toc2026-game toc2026-web
-systemctl status toc2026-player-backup.timer toc2026-update.timer
-systemctl status toc2026-healthcheck.timer toc2026-maintenance.timer
-systemctl status toc2026-recovery toc2026-stable toc2026-healthcheck toc2026-led
-curl -fsS http://127.0.0.1:9001/api/health
-systemctl list-timers toc2026-player-backup.timer toc2026-update.timer \
-  toc2026-healthcheck.timer toc2026-maintenance.timer
+ssh toc-oracle 'systemctl is-active toc-game toc-web'
+ssh toc-oracle 'systemctl list-timers toc-state-sync.timer toc-state-sync-check.timer toc-game-recovery.timer toc-auto-deploy.timer'
+ssh toc-oracle 'curl -fsS http://127.0.0.1:9001/api/health'
 ```
 
-The normal state is active game/web services and active timers. The dashboard
-is available on the trusted LAN at `http://toc.local:9001/`; browser play is
-`http://toc.local:9001/client`. Use the Pi's current address when mDNS fails,
-but retain port `9001`. After authenticating, **Host status** presents this
-service/timer state plus root-disk use, boot/shutdown history, deployment state,
-and bounded ToC journals without granting shell access.
+The normal state is active game/web services and active timers. After
+authenticating, the dashboard's **Host status** presents this service/timer
+state plus root-disk use, boot/shutdown history, deployment state, and bounded
+ToC journals without granting shell access.
 
 ## Start, Stop, And Reboot
 
@@ -112,24 +103,20 @@ whole container even after a clean in-game shutdown. To keep it stopped, run:
 ./toc.sh stop        # or: docker compose stop
 ```
 
-On the native Pi appliance, use systemd instead:
+On the live host, use systemd instead:
 
 ```bash
-sudo systemctl stop toc2026-healthcheck.timer toc2026-game toc2026-web
-sudo systemctl start toc2026-game toc2026-web toc2026-healthcheck.timer
-sudo systemctl restart toc2026-game toc2026-web
+sudo systemctl stop toc-game-recovery.timer toc-game toc-web
+sudo systemctl start toc-game toc-web toc-game-recovery.timer
+sudo systemctl restart toc-game toc-web
 ```
 
-Stopping `toc2026-game` sends SIGTERM. The game saves connected players, closes
-descriptors, and exits; systemd then starts it at boot or after a crash. A
-45-second main-loop watchdog also restarts a frozen process. Three failed
-end-to-end probes trigger local service repair before persistent game or web
-failure enters the capped reboot/forced-update recovery sequence; inspect it
-with `journalctl -u toc2026-healthcheck -u toc2026-recovery -u toc2026-update`.
-The rapid ACT LED blink means that escalation is active or in its six-hour
-safety cooldown. A manual power cycle permits one new bounded recovery cycle;
-the health timer deliberately repairs a stopped service, so stop that timer
-first when an intentional maintenance outage must remain offline.
+Stopping `toc-game` sends SIGTERM. The game saves connected players, closes
+descriptors, and exits; systemd then starts it at boot or after a crash, and
+the main-loop watchdog restarts a frozen process. `toc-game-recovery` is the
+backstop for a game that crash-loops past systemd's start limit; stop its
+timer first when an intentional outage must remain offline. See
+[disaster-recovery.md](disaster-recovery.md).
 
 ### Planned Reboot Checklist
 
@@ -184,13 +171,14 @@ Verify success in three places: the in-game/log completion message, a new
 nonempty file in `backups/`, and an off-host copy when the operation protects a
 major change.
 
-The Pi adds a six-hour off-host layer through
-`toc2026-player-backup.timer`. It age-encrypts `player/` before Git transport;
-the recovery private key must remain off-device. Check it with:
+A six-hour off-host layer, `toc-player-backup.timer`
+(`deploy/sync-player-backup.sh`), age-encrypts `player/` before Git
+transport; the recovery private key must remain off the host. Where it is
+installed, check it with:
 
 ```bash
-systemctl list-timers toc2026-player-backup.timer
-sudo journalctl -u toc2026-player-backup -n 100 --no-pager
+systemctl list-timers toc-player-backup.timer
+sudo journalctl -u toc-player-backup -n 100 --no-pager
 ```
 
 Periodically decrypt and list the archive with the recovery key. A successful
@@ -337,7 +325,6 @@ POST /api/backup
 GET  /api/backups
 POST /api/shutdown
 POST /api/reload
-POST /api/update
 ```
 
 Important distinctions:
@@ -350,9 +337,9 @@ Important distinctions:
 - The operational snapshot also reports game reachability, latest backup age,
   recent player-save timestamps, and log/event file activity. Use it to notice
   stale protection or a stuck queue, then verify with the underlying service.
-- `/api/host/status` is an opt-in, read-only snapshot. On the Pi it covers a
-  fixed list of ToC services/timers, including health repair and weekly OS
-  maintenance, root filesystem capacity, memory/load/
+- `/api/host/status` is an opt-in, read-only snapshot. It covers a fixed list
+  of ToC services/timers (`TOC_HOST_SERVICE_UNITS` and friends), root
+  filesystem capacity, memory/load/
   temperature, recent journal boots, deployed Git metadata, and bounded ToC
   operational journals. It accepts no arbitrary command, unit, or path and is
   not SSH. An authenticated request receives 503 when
@@ -374,14 +361,6 @@ Important distinctions:
   if critical area-health findings exist. It does not reload the live game.
 - `/api/shutdown` queues an in-game shutdown request. Compose restart policy may
   still restart the container.
-- `/api/update` requests the host-managed updater when
-  `TOC_UPDATE_REQUEST_PATH` is configured. On the Raspberry Pi appliance the
-  systemd job checks `origin/main`, rebuilds only for a new or not-yet-deployed
-  commit, then restarts and health-checks the game and dashboard. It first
-  requires an encrypted player backup and refuses non-fast-forward or dirty
-  source updates. Watch `sudo journalctl -u toc2026-update -f` for completion.
-  Persistent game-start recovery can force the same guarded workflow at the
-  current commit to repair a missing or damaged build.
 - The token is a shared secret without individual operator identity. Rotate it
   when staff access changes and keep separate host-level audit records.
 - World browsing and the browser game bridge are not token-protected.
@@ -391,14 +370,10 @@ Never place the admin token in a screenshot, command history shared with
 others, issue report, or URL. The log WebSocket sends it in the first JSON
 message rather than the URL.
 
-The Pi token in `/home/toc/toc2026/.env` is intentionally persistent across
-reboots and updates. Direct LAN access requires manual entry because
-`WEB_ADMIN_LOCAL_UNLOCK=0`; **Remember on this browser** retains it only in that
-browser profile. On a trusted Mac, copy it without echoing it:
-
-```bash
-ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
-```
+The live host's token in `/etc/toc/web.env` is persistent across deploys.
+The dashboard there requires manual entry because `WEB_ADMIN_LOCAL_UNLOCK=0`;
+**Remember on this browser** retains it only in that browser profile. Read it
+on the host with `sudo` and never print it anywhere shared.
 
 ## Travel Directions
 

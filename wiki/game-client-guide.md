@@ -203,8 +203,7 @@ session and browser token storage. Reloading a loopback page can establish a
 new local session while local auto-unlock remains enabled.
 
 Use **Dashboard** inside the admin panel for full world search, area maps,
-health findings, gear analysis, and the complete operations interface,
-including **Update ToC** on configured appliances.
+health findings, gear analysis, and the complete operations interface.
 
 ## Client Security
 
@@ -246,16 +245,10 @@ an incorrect token is rejected. For local automatic access, also confirm
 `WEB_ADMIN_LOCAL_UNLOCK=1`, `WEB_ADMIN_BIND=127.0.0.1`, and that the page was
 opened with a loopback hostname rather than a LAN address.
 
-The Raspberry Pi LAN profile deliberately sets `WEB_ADMIN_LOCAL_UNLOCK=0`, so
-manual token entry is expected. The token survives reboot and automatic update
-because `/home/toc/toc2026/.env` is preserved. On macOS, copy it without
-printing it to the terminal:
-
-```bash
-ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
-```
-
-Paste it into the authentication dialog. **Remember on this browser** keeps it
+The live host deliberately sets `WEB_ADMIN_LOCAL_UNLOCK=0`, so manual token
+entry is expected there; its token lives in `/etc/toc/web.env` and survives
+deploys. Read it with `sudo` on the host without printing it anywhere shared,
+and paste it into the authentication dialog. **Remember on this browser** keeps it
 in that browser profile until **Lock**, browser-data clearing, or token rotation.
 
 ### The Address Refuses The Browser
@@ -265,11 +258,11 @@ Use `http://toc.jeremybean.com:9001/` for the dashboard or
 service and listener on the host:
 
 ```bash
-systemctl status toc2026-web
+systemctl status toc-web
 ss -ltn 'sport = :9001'
 ```
 
-The LAN profile should show `0.0.0.0:9001`. The generic Docker/default profile
+The live host should show `0.0.0.0:9001`. The generic Docker/default profile
 shows `127.0.0.1:9001` and requires a local browser or SSH tunnel.
 
 ### Colors Look Wrong

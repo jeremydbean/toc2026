@@ -220,24 +220,12 @@ Treat the token as an immortal credential. Generate at least 32 random bytes,
 store it outside Git, limit who can read it, and rotate it when staff access
 changes or exposure is suspected.
 
-> **Self-host option.** This describes the Raspberry Pi appliance for running
-> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
-> see [disaster-recovery.md](wiki/disaster-recovery.md).
-
-The Raspberry Pi LAN appliance uses manual token entry because its dashboard
-bind is not loopback. Its private `.env` is preserved across reboots, rebuilds,
-and guarded Git updates, so the token remains stable until an operator rotates
-it or replaces the file. **Remember on this browser** stores the supplied token
-in that browser profile's local storage; **Lock**, clearing site data, or token
-rotation removes or invalidates that convenience. Never include the token in a
-URL, screenshot, repository file, issue, or chat transcript.
-
-The Pi's Namecheap Dynamic DNS password is a separate domain-level credential.
-Store it only in `/etc/toc2026/namecheap-ddns.env` with mode `0600`; never place
-it in `.env`, a command-line URL, logs, screenshots, or Git. It is not the
-Namecheap account password. Rotate it in Namecheap and on the Pi if exposure is
-suspected. Publishing the game hostname does not make the dashboard safe for
-the public internet: forward only TCP 9000, never TCP 9001.
+A dashboard whose bind is not loopback -- the live Oracle host's, for one
+(see [disaster-recovery.md](wiki/disaster-recovery.md)) -- uses manual token
+entry. **Remember on this browser** stores the supplied token in that browser
+profile's local storage; **Lock**, clearing site data, or token rotation
+removes or invalidates that convenience. Never include the token in a URL,
+screenshot, repository file, issue, or chat transcript.
 
 ### Read-Only Host Telemetry
 
@@ -251,10 +239,14 @@ scope, or repository selector from the browser. Output is bounded and limited
 to resource totals and rates, ToC unit/timer state, recent boot ranges, revision
 metadata, and allowlisted operational journals.
 
-The Raspberry Pi web service remains the unprivileged `toc` account. Its
-supplementary `systemd-journal` membership permits read-only journal access but
-does not grant sudo, arbitrary root-file access, or a shell. Keep this endpoint
-behind the same private-network boundary as every other protected dashboard
+The unit names come from `TOC_HOST_SERVICE_UNITS`, `TOC_HOST_TIMER_UNITS` and
+`TOC_HOST_JOURNAL_UNITS` in the dashboard's environment (`deploy/toc-restore`
+writes the Oracle host's), defaulting to the `toc-*` units in
+`deploy/windows-vm/`. The live host's web service runs as the unprivileged
+`toc` account; reading the journal needs `systemd-journal` group membership,
+which grants read-only journal access but not sudo, arbitrary root-file access,
+or a shell, and without it the journal panels report themselves unavailable.
+Keep this endpoint behind the same boundary as every other protected dashboard
 route; system journals can still reveal operational timing and failure detail.
 
 ### Local Command Queue
@@ -288,11 +280,12 @@ toc-backups/        what ./toc.sh backup writes: .env and state/ together
 Do not commit real character data, attach it to public issues, or use it as a
 test fixture. Encrypt off-host backups and restrict backup restore access.
 
-The native Pi appliance implements this by encrypting the complete `player/`
-snapshot with an age public recipient before pushing it to its dedicated
-backup repository. The private recovery key stays off the Pi and outside Git.
-The six-hour timer, successful remote push, and a periodic decrypt/list test
-should all be checked; a ciphertext file alone is not proof of restorable data.
+`deploy/sync-player-backup.sh` (the `toc-player-backup` timer) implements
+this by encrypting the complete `player/` snapshot with an age public
+recipient before pushing it to a dedicated private backup repository. The
+private recovery key stays off the host and outside Git. The six-hour timer,
+successful remote push, and a periodic decrypt/list test should all be
+checked; a ciphertext file alone is not proof of restorable data.
 
 This repository currently tracks a large legacy set of player, god, and hero
 files, and the Dockerfile copies those tracked files into the runtime image.
@@ -315,22 +308,11 @@ Players/staff ----- VPN/SSH/HTTPS ----> 127.0.0.1:9001 web client/dashboard
                                            +--> local queue/log/data
 ```
 
-The dashboard should not be directly reachable from the public Internet.
-
-A dedicated appliance on a trusted, non-guest home LAN may instead use this
-private-network layout:
-
-```text
-Trusted LAN browsers ---- TCP 9001 ----> Pi web client/dashboard
-                                            |
-                                            +--> 127.0.0.1:9000 bridge
-Internet/router ---------- no forward ----X
-```
-
-This deliberately exposes the public world-read APIs and game bridge to every
-device on that LAN. Keep `WEB_ADMIN_LOCAL_UNLOCK=0`, require the admin token for
-operations, do not forward port 9001 on the router, and do not use this profile
-on guest, campus, hotel, or other untrusted networks.
+The dashboard should not be directly reachable from the public Internet. A
+LAN-only dashboard exposes the public world-read APIs and game bridge to every
+device on that LAN: keep `WEB_ADMIN_LOCAL_UNLOCK=0`, require the admin token
+for operations, do not forward port 9001 on the router, and do not use it on
+guest, campus, hotel, or other untrusted networks.
 
 ### Compose Binding
 
@@ -347,9 +329,7 @@ WEB_ADMIN_PORT=9001
 
 Running `.\install.ps1 -Network Public` or `./install.sh --public` applies this
 game-only exposure. Do not set `WEB_ADMIN_BIND=0.0.0.0` on an Internet-facing
-or untrusted host. The checked-in `deploy/pi.env.example` is a narrow exception
-for a dedicated trusted-LAN appliance; it still requires a strong token,
-disables local auto-unlock, and assumes the router does not forward port 9001.
+or untrusted host.
 
 `.dockerignore` excludes `.env`, `state/`, player, god, hero, corpse, log, and
 backup data, and the runtime files the game writes into `area/` (reports,
@@ -380,13 +360,13 @@ sudo ufw enable
 Do not allow port 9001 globally. Scope any direct rule to a trusted source
 network.
 
-For a private appliance whose trusted LAN is `192.168.1.0/24`, a scoped rule is:
+For a private host whose trusted LAN is `192.168.1.0/24`, a scoped rule is:
 
 ```bash
 sudo ufw allow from 192.168.1.0/24 to any port 9001 proto tcp
 ```
 
-Use the appliance's real LAN prefix; do not copy that example onto a different
+Use the host's real LAN prefix; do not copy that example onto a different
 network without checking it.
 
 ## Admin Token Generation
@@ -411,25 +391,8 @@ Set-Content -LiteralPath .env -Value "WEB_ADMIN_TOKEN=$token" -Encoding ascii
 The automatic installers perform this generation without displaying the token
 and preserve an existing nonempty value.
 
-The native Pi updater likewise never replaces `.env`, so automatic updates do
-not rotate the token. On a trusted Mac used to administer that Pi, the operator
-can transfer it straight to the clipboard without echoing it:
-
-```bash
-ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
-```
-
-This still places the credential in the macOS clipboard; paste it promptly and
-do not run the command on an untrusted workstation.
-
-The dedicated Pi profile installs distribution updates through a weekly
-`toc2026-maintenance` systemd job rather than permitting Debian's generic daily
-timer to install packages or reboot independently. It uses the distribution's
-configured unattended-upgrade origins, requests a fresh encrypted player
-snapshot before any required reboot, and relies on bounded systemd retry limits.
-Review changes on `main`: validated updates may refresh the root-owned,
-fixed-scope ToC unit files and recovery commands so resilience fixes do not
-require a later SSH session.
+On the live host the token lives in `/etc/toc/web.env` (mode 600, root);
+`toc-deploy` never replaces it. Read it there with `sudo` and never print it.
 
 Do not use an example value from documentation. Recreate the dashboard/container
 after changing the environment.

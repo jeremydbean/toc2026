@@ -265,9 +265,6 @@ other settings.
   as background processes, so after a reboot run `./toc.sh start`.
 - **Raspberry Pi.** Use 64-bit Raspberry Pi OS on a Pi 4 or 5. Docker
   works (the image is published for arm64); native mode uses less memory.
-  For a Pi that does nothing but host the game, the
-  [Pi appliance](../deploy/README.md) adds self-healing and scheduled
-  updates.
 - **A VPS.** Any 1 GB Linux server will do; use `--public` and open port
   9000 in its firewall.
 

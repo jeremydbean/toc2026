@@ -113,7 +113,6 @@ def server_with(port: int):
             "QUEUE_PATH": str(root / "webadmin.queue"),
             "MUD_HOST": "127.0.0.1",
             "MUD_PORT": str(port),
-            "TOC_UPDATE_REQUEST_PATH": "",
         }
         with patch.dict(os.environ, env, clear=False):
             sys.modules.pop("webadmin.server", None)

@@ -1,6 +1,6 @@
 [Unit]
 Description=Push live player state to GitHub
-Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/windows-production-hosting.md
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
 After=network-online.target
 Wants=network-online.target
 

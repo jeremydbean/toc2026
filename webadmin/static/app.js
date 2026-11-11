@@ -789,13 +789,6 @@
                 const port = String(state.config.mud_endpoint || "").split(":").pop();
                 mudletAddress.textContent = `${state.config.mud_endpoint_host} ${port || "9000"}`;
             }
-            const updateButton = document.querySelector('[data-operation="update"]');
-            if (updateButton) {
-                updateButton.disabled = !state.config.update_available;
-                updateButton.title = state.config.update_available
-                    ? "Check for and deploy updates"
-                    : "Host updates are not configured";
-            }
             const hostNavigation = document.querySelector('[data-view="host"]');
             if (hostNavigation) hostNavigation.hidden = !state.config.host_status_available;
             if (!state.authenticated) {
@@ -1041,9 +1034,26 @@
 
     function hostUnitLabel(unit) {
         return String(unit || "-")
-            .replace(/^toc2026-/, "")
+            .replace(/^toc-/, "")
             .replace(/\.(service|timer)$/, "")
             .replaceAll("-", " ");
+    }
+
+    // The sources are whatever units this host's journal holds
+    // (TOC_HOST_JOURNAL_UNITS), so the filter is built from the records
+    // rather than from a list of unit names that can go stale.
+    function renderHostJournalSources() {
+        const select = byId("host-journal-source");
+        const chosen = select.value;
+        const sources = [...new Set((state.host.status?.journal || [])
+            .map((entry) => entry.source).filter(Boolean))].sort();
+        const options = [node("option", { text: "All operational sources", attrs: { value: "all" } })];
+        sources.forEach((source) => options.push(node("option", {
+            text: source === "systemd-shutdown" ? "Shutdowns" : hostUnitLabel(source),
+            attrs: { value: source },
+        })));
+        select.replaceChildren(...options);
+        select.value = sources.includes(chosen) ? chosen : "all";
     }
 
     function renderHostJournal() {
@@ -1120,6 +1130,7 @@
             tableCell(boot.range),
         ])) : [node("tr", {}, [node("td", { className: "empty-state", text: "Boot history unavailable.", attrs: { colspan: 3 } })])];
         bootBody.replaceChildren(...bootRows);
+        renderHostJournalSources();
         renderHostJournal();
     }
 
@@ -2042,7 +2053,6 @@
         const descriptions = {
             backup: { title: "Create backup", message: "Queue a new server backup?", danger: false },
             reload: { title: "Refresh dashboard data", message: "Reparse area files for the dashboard? The running game is not reloaded.", danger: false },
-            update: { title: "Update ToC", message: "Check origin/main and, if it changed, back up players, rebuild, validate, and restart ToC?", phrase: "UPDATE", danger: true },
             shutdown: { title: "Shut down game", message: "This queues an immediate game-server shutdown.", phrase: "SHUTDOWN", danger: true },
         };
         if (!await confirmAction(descriptions[type])) return;
@@ -2051,8 +2061,6 @@
             let label = `${type[0].toUpperCase()}${type.slice(1)} queued.`;
             if (type === "reload" && result && typeof result === "object") {
                 label = `Dashboard refreshed: ${formatNumber(result.rooms)} rooms.`;
-            } else if (type === "update") {
-                label = "Update check queued. The dashboard will briefly disconnect only if changes are applied.";
             }
             toast(label, "success");
             if (type === "reload") {

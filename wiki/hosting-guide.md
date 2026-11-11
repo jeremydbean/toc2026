@@ -4,18 +4,13 @@
 > `toc.jeremybean.com` host is deployed, backed up and recovered, see
 > [disaster-recovery.md](disaster-recovery.md) -- that is the current,
 > authoritative page. This guide is a general reference for installing
-> and running your own copy (Docker or native), and the Raspberry Pi
-> appliance and Hyper-V sections in it describe retired setups, kept
-> because their scripts are still in `deploy/`.
+> and running your own copy (Docker or native).
 
 This guide covers installation, configuration, service management,
 persistence, backup, upgrades, monitoring, the web dashboard, and production
 hardening. Docker Compose is the recommended deployment. Native Linux is useful
 for development and controlled hosts; Windows should use Docker Desktop or WSL
 2 rather than a direct Win32 build.
-
-The exception is the checked-in native Raspberry Pi appliance profile, which
-is preferred over Docker on a dedicated memory-constrained Pi.
 
 ## Deployment Model
 
@@ -124,23 +119,11 @@ ssh -L 9001:127.0.0.1:9001 user@mud-host
 
 Open `http://127.0.0.1:9001` locally while the tunnel is active.
 
-The dedicated Raspberry Pi appliance has an explicit trusted-LAN profile in
-`deploy/pi.env.example`:
-
-```dotenv
-MUD_BIND=0.0.0.0
-MUD_PORT=9000
-MUD_HOST=127.0.0.1
-WEB_ADMIN_BIND=0.0.0.0
-WEB_ADMIN_PORT=9001
-WEB_ADMIN_LOCAL_UNLOCK=0
-```
-
-Use that profile only on a private LAN where every device is trusted, keep the
-admin token enabled, and do not forward port 9001 from the router. Browser play
-is then `http://toc.local:9001/client` and administration is
-`http://toc.local:9001/`. An IP address may replace `toc.local`; `:9001` cannot
-be omitted because ToC does not listen on port 80.
+Binding the dashboard to a LAN (`WEB_ADMIN_BIND=0.0.0.0`,
+`WEB_ADMIN_LOCAL_UNLOCK=0`) is only for a private network where every device
+is trusted: keep the admin token enabled and do not forward port 9001 from the
+router. `:9001` cannot be omitted from the URL because ToC does not listen on
+port 80.
 
 To disable the dashboard process, set `WEB_ADMIN_ENABLED=0`. Remove or comment
 its published port as defense in depth when maintaining a custom Compose file.
@@ -264,9 +247,9 @@ consistent.
 | `WEB_ADMIN_TOKEN` | unset | Dashboard | Shared secret; protected routes return 503 when unset |
 | `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Dashboard | Issues a local browser session only when the configured bind and page host are loopback |
 | `WEB_ADMIN_HOST_STATUS` | `0` | Dashboard | Enables authenticated, read-only host resources, fixed-unit systemd status, boot history, repository metadata, and bounded operational journals |
-| `TOC_UPDATE_REQUEST_PATH` | unset | Dashboard | Volatile host request file used by a configured systemd updater; unset disables `POST /api/update` |
 | `TOC_REPOSITORY_ROOT` | repository root | Dashboard | Fixed checkout inspected by host status; not controllable through the API |
-| `TOC_DEPLOYED_COMMIT_FILE` | `/var/lib/toc2026/deployed-commit` | Dashboard | Fixed deployment marker read by host status |
+| `TOC_DEPLOYED_COMMIT_FILE` | `deployed-commit` beside `--log-file` | Dashboard | Fixed deployment marker read by host status (`toc-deploy` writes `log/deployed-commit`) |
+| `TOC_HOST_SERVICE_UNITS`, `TOC_HOST_TIMER_UNITS`, `TOC_HOST_JOURNAL_UNITS` | the `toc-*` units in `deploy/windows-vm/` | Dashboard | Space- or comma-separated systemd units host status reports on |
 | `WEB_ALLOWED_ORIGINS` | unset | Dashboard | Additional comma-separated origins allowed to open browser WebSockets |
 | `TOC_UID` | host user/`1000` | Docker entrypoint | Runtime UID for writable bind mounts |
 | `TOC_GID` | host group/`1000` | Docker entrypoint | Runtime GID for writable bind mounts |
@@ -460,8 +443,7 @@ definitions.
 Other retired root names are now safe compatibility helpers: `install`
 delegates to cross-platform `install.sh`, `cleanup` only runs `make clean`, and
 `refresh` performs a clean build plus native area validation without killing or
-restarting any process. Files under `zStartup/` are archived history and must
-not be used on a current host.
+restarting any process.
 
 ### systemd Example
 
@@ -550,10 +532,9 @@ connection and require this JSON authentication message within five seconds:
 
 The token is never placed in the WebSocket URL or reverse-proxy access log.
 
-The Pi LAN appliance requires manual token entry. Its private `.env` survives
-reboots and automatic updates, so the token stays valid until deliberately
-rotated. **Remember on this browser** stores it in that browser profile; it is
-not a server-side token rotation.
+A dashboard not bound to loopback requires manual token entry. **Remember on
+this browser** stores it in that browser profile; it is not a server-side
+token rotation.
 
 Example:
 
@@ -635,26 +616,19 @@ intentionally available to players.
 | `GET /api/backups` | List up to 100 backup archives |
 | `POST /api/shutdown` | Queue an intentional shutdown |
 | `POST /api/reload` | Reparse dashboard area data after validation |
-| `POST /api/update` | Request the configured host-managed update job |
 
 `POST /api/reload` swaps the dashboard parser only after the new parse has no
 critical area-health findings. It does **not** reload the live C server's world.
 World changes require the appropriate game reboot/restart procedure.
-
-`POST /api/update` is disabled with HTTP 503 unless
-`TOC_UPDATE_REQUEST_PATH` is configured. The Raspberry Pi appliance units set
-it to a volatile file watched by systemd. The dashboard can request an update,
-but the root-owned updater performs the backup, Git fast-forward, build,
-validation, restart, and health check.
 
 `GET /api/host/status` and `GET /api/host/resources` are disabled with HTTP 503
 unless `WEB_ADMIN_HOST_STATUS=1`. Neither accepts a browser-selected command,
 unit, file, or journal scope. The resource endpoint avoids systemd, Git, and
 journal subprocesses so the visible Host Status page can poll it every five
 seconds; the browser holds only the latest 60 samples and writes no history to
-disk. The Pi profile grants the unprivileged web service read-only
-`systemd-journal` group membership for the full snapshot; it does not grant
-sudo, root file access, or arbitrary shell execution.
+disk. The full snapshot's journal panes need the web service to hold
+read-only `systemd-journal` group membership; that does not grant sudo, root
+file access, or arbitrary shell execution.
 
 `POST /api/command` is equivalent to a high-impact administrative console.
 Protect the token as an immortal credential and do not expose the route through
@@ -757,158 +731,16 @@ WebSocket upgrades and applies suitable access controls. If a specific
 administration network must reach it directly, scope the allow rule to that
 source and still use TLS.
 
-## Raspberry Pi And ARM
+## ARM
 
-Docker remains supported on larger ARM systems, but the maintained dedicated
-appliance path is native systemd. It avoids the Docker daemon on memory-limited
-boards such as the Raspberry Pi Zero 2 W and assumes:
-
-- a 64-bit Debian/Raspberry Pi OS host
-- service account `toc`
-- checkout `/home/toc/toc2026`
-- game TCP 9000 and dashboard TCP 9001
-- the Pi is dedicated to ToC and may boot to `multi-user.target`
-
-The reproducible assets are under `deploy/`:
-
-| Asset | Purpose |
-|---|---|
-| `pi.env.example` | Private-LAN game/dashboard settings without a real token |
-| `install-pi.sh` | Installs units, tmpfiles, journald limits, and boot enablement |
-| `systemd/toc2026-game.service` | Runs `merc`, saves on SIGTERM, and restarts crashes |
-| `systemd/toc2026-web.service` | Runs one Uvicorn worker and restarts crashes |
-| `systemd/toc2026-healthcheck.*` | Probes both services every two minutes and performs bounded local repair |
-| `systemd/toc2026-recovery.service` | Escalates persistent failures through capped reboot and forced-update stages |
-| `systemd/toc2026-stable.service` | Clears persistent recovery state after ten healthy minutes |
-| `systemd/toc2026-player-backup.*` | Six-hour encrypted player snapshot timer/service |
-| `systemd/toc2026-update.*` | Weekly update timer and admin-request path/service |
-| `toc2026-update` | Root-owned guarded fetch/build/validate/restart implementation |
-| `systemd/toc2026-maintenance.*` | Weekly unattended OS update and required-reboot window |
-| `toc2026-maintenance` | Serializes OS maintenance, snapshots players, and requests a clean required reboot |
-| `systemd/99-toc2026-watchdog.conf` | Enables userspace and shutdown hardware-watchdog coverage |
-| `systemd/toc2026-local-discovery.service` | Publishes `toc` through DHCP and keeps `toc.local` available through Avahi |
-| `toc2026-local-discovery` | Persists the appliance hostname on every NetworkManager LAN profile |
-| `systemd/toc2026-namecheap-ddns.*` | Ten-minute public IPv4 refresh for the Namecheap host record |
-| `toc2026-namecheap-ddns` | Validates and submits the detected public IPv4 without a resident daemon |
-| `namecheap-ddns.env.example` | Non-secret template for the private DDNS configuration |
-| `systemd/toc2026-led.service` | Binds the onboard ACT LED indicator to the game service lifecycle |
-| `toc2026-led` | Selects the healthy or failure blink pattern, or turns the indicator off |
-| `toc2026-recover` | Persists and caps recovery attempts across reboots |
-| `toc2026-stable` | Clears the recovery counter only after a stable run |
-
-Build with one compiler process and use binary Python packages to control peak
-memory:
-
-```bash
-cd /home/toc/toc2026
-make -j1
-python3 -m venv .venv
-.venv/bin/python -m pip install --only-binary=:all: \
-  -r webadmin/requirements.txt
-sudo ./deploy/install-pi.sh
-```
-
-Create the private `.env` from `deploy/pi.env.example`, replace its token
-placeholder with a random value, and set mode `0600` before installation. The
-installer does not replace `.env`. The checked-in units cap game, dashboard,
-backup, and update memory; compile updates use `make -j1`; journald is limited
-to 32 MiB and seven days.
-
-The Pi environment also enables the dashboard's read-only **Host status** view.
-It shows the root filesystem's capacity, memory/load/temperature, fixed ToC
-service and timer state, recent boot/shutdown ranges, deployed Git metadata,
-and a bounded journal limited to ToC operational units. The route remains token
-protected and is intentionally not an SSH terminal or filesystem browser.
-
-At boot, systemd starts game and web services without waiting for external
-network readiness, plus health, backup, weekly update, weekly OS maintenance,
-DDNS, and admin-request timers/watchers. The scheduled source check runs on
-Sunday at about 4:00 AM in the Pi's local time, randomized by up to 30 minutes.
-Because the timer is persistent, a check missed while the Pi was off runs after
-the next boot. The updater fetches `origin/main` but does nothing when both Git
-HEAD and the deployed marker are current. For a new or previously failed commit
-it requires a successful encrypted player backup, refuses non-runtime dirty
-files or non-fast-forward history, builds and validates while the existing
-services remain available, runs focused dashboard/deployment tests, refreshes
-the checked-in root-owned units and recovery commands, then gracefully restarts
-and health-checks both. Fetch and unit failures use bounded delayed retries. A
-failed build leaves the old processes running and the deployed marker unchanged.
-
-The game unit uses `Type=notify` and a 45-second systemd watchdog. The MUD sends
-`READY=1` only after the listening socket and world database are ready, then
-sends watchdog heartbeats from the main game loop. A crash or missed heartbeat
-is killed and restarted after ten seconds. A separate two-minute end-to-end
-probe requires three consecutive failures before it repairs a service; it can
-recover a hung dashboard as well as an unavailable game. Persistent failure of
-either service triggers a root-owned recovery unit: the first stage reboots,
-the second forces the same backup/fetch/build/validate/deploy workflow even when
-the commit is unchanged, and the third enters a six-hour cooldown so a bad
-source revision or hardware fault cannot create an infinite boot loop. The
-cooldown later permits one fresh bounded cycle, and an unplanned/manual power
-cycle does the same while planned recovery reboots remain counted. The systemd
-manager also pets `/dev/watchdog`; a one-minute userspace stall causes a hardware
-reset, while a two-minute reboot watchdog bounds stuck shutdowns. A healthy
-ten-minute stability check clears the persisted recovery state.
-
-The weekly OS-maintenance timer runs Sunday at about 5:30 AM, after the source
-update window. It invokes Debian's `unattended-upgrade`, suppresses independent
-daily package-install/reboot behavior, takes an encrypted player snapshot when a
-reboot is required, and then requests a clean systemd reboot. Install the
-`unattended-upgrades` package once; `install-pi.sh --refresh` enables the timer
-when the command is present.
-
-The dashboard **Update ToC** action writes only a volatile request file. The
-root-owned systemd unit performs the update after the web request returns, so
-the task survives the dashboard restart. Follow it with:
-
-```bash
-sudo journalctl -u toc2026-update -f
-```
-
-The player-backup timer encrypts `player/` with an age recipient before pushing
-the latest ciphertext to its dedicated Git remote. Keep the private recovery
-key off the Pi, use a write-limited deploy key, and periodically prove restore
-with `age --decrypt ... | tar -tzf -` without printing player contents.
-
-The Pi publishes the stable appliance hostname `toc` through two independent
-LAN discovery paths. NetworkManager sends it to the DHCP server on every wired
-and wireless profile, allowing compatible gateways to register `toc` in their
-local DNS domain. Avahi publishes `toc.local` over mDNS regardless of the
-current DHCP address. `toc2026-local-discovery.service` reapplies the persistent
-profile settings at boot without cycling an active network connection.
-
-For the public game hostname, enable Namecheap Dynamic DNS on the domain and
-configure `toc` as an **A + Dynamic DNS Record**. Store the domain-specific
-Dynamic DNS password, not the Namecheap account password, in
-`/etc/toc2026/namecheap-ddns.env` with mode `0600`. The lightweight timer checks
-shortly after boot and about every ten minutes. Its transient, sandboxed service
-detects the Pi's public IPv4 through Namecheap and rejects an update unless the
-API returns a successful response and confirms the same address. The secret is
-never committed or printed. See `deploy/README.md` for setup and status commands.
-
-DDNS does not configure the router. Public Telnet access separately requires a
-TCP 9000 port-forward to the Pi and a usable public IPv4 address. Do not forward
-the dashboard's TCP 9001 port; use a VPN or an authenticated HTTPS reverse proxy
-if remote browser administration is required.
-
-On Raspberry Pi boards that expose `/sys/class/leds/ACT`, the appliance also
-binds `toc2026-led.service` to `toc2026-game.service`. Three seconds on followed
-by one second off means the MUD is healthy. A rapid 100 ms on/off blink means
-escalated recovery is active or exhausted; the LED goes dark during an ordinary
-stop and returns after systemd restarts the game. This deliberately replaces
-the normal `actpwr` LED trigger. Disabling the indicator service and writing
-`actpwr` back to `/sys/class/leds/ACT/trigger` restores the board default.
-
-Removing a desktop environment is optional, but a dedicated headless appliance
-should use `multi-user.target` to reclaim RAM. Never change networking or SSH
-while removing desktop packages, and keep `openssh-server`, the active network
-manager, Avahi if `toc.local` is desired, the compiler, Git, Python/venv, age,
-and required C libraries. The complete operator commands and direct browser
-URLs are in [`deploy/README.md`](../deploy/README.md).
-
-The historical wiki filename for Raspberry Pi/Ubuntu/WSL is retained for old
-links, but its obsolete Ubuntu 18.04 instructions have been replaced by a
-current installer overview and a pointer to this appliance workflow.
+The published image is built for amd64 and arm64, and a native install builds
+on any 64-bit ARM Linux (`./install.sh --native` uses less memory than Docker
+on a small board). On a memory-limited machine build with one compiler process
+(`make -j1`) and install binary Python wheels
+(`pip install --only-binary=:all: -r webadmin/requirements.txt`). The live
+server itself is an Oracle Cloud ARM instance: see
+[oracle-arm-hosting.md](oracle-arm-hosting.md) and
+[disaster-recovery.md](disaster-recovery.md).
 
 ## Troubleshooting
 
