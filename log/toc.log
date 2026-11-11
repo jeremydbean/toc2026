@@ -287450,3 +287450,123 @@ Wed Nov 11 01:51:42 2026 :: Black market: stock 1794361902: (Dark) platinum legg
 Wed Nov 11 01:51:42 2026 :: Black market: the dealer appeared with 5 items (stock 1794361902), for 22 minutes.
 Wed Nov 11 02:00:42 2026 :: Treasure goblin: vanished from room 732 (Inside the Curtain Wall, camelot.are) (too long in one area).
 Wed Nov 11 02:01:46 2026 :: Black market: the dealer vanished from room 106 (Smurfy Road, smurf.are) (too long in one area).
+Wed Nov 11 02:06:14 2026 :: Log Alaric [2497]: who
+Wed Nov 11 02:06:15 2026 :: Log Alaric [2497]: wake
+Wed Nov 11 02:06:16 2026 :: Log Alaric [2497]: aq re
+Wed Nov 11 02:06:16 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in valley.are, 19 minutes, ordinary
+Wed Nov 11 02:06:19 2026 :: Log Alaric [2497]: enter door
+Wed Nov 11 02:06:19 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov 11 02:06:19 2026 :: Log Alaric [2401]: east
+Wed Nov 11 02:06:19 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2403]: east
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2420]: east
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2421]: east
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2422]: east
+Wed Nov 11 02:06:20 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Nov 11 02:06:21 2026 :: Log Alaric [2423]: east
+Wed Nov 11 02:06:21 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Nov 11 02:06:21 2026 :: Log Alaric [2424]: east
+Wed Nov 11 02:06:21 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Nov 11 02:06:21 2026 :: Log Alaric [2425]: east
+Wed Nov 11 02:06:21 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Nov 11 02:06:21 2026 :: Log Alaric [2426]: open east
+Wed Nov 11 02:06:22 2026 :: Log Alaric [2426]: east
+Wed Nov 11 02:06:22 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Nov 11 02:06:23 2026 :: Log Alaric [2440]: east
+Wed Nov 11 02:06:23 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Wed Nov 11 02:06:23 2026 :: Log Alaric [3503]: east
+Wed Nov 11 02:06:23 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Wed Nov 11 02:06:24 2026 :: Log Alaric [3502]: east
+Wed Nov 11 02:06:24 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Wed Nov 11 02:06:24 2026 :: Log Alaric [3525]: east
+Wed Nov 11 02:06:24 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Wed Nov 11 02:06:24 2026 :: Log Alaric [3526]: north
+Wed Nov 11 02:06:24 2026 :: Log Alaric [38]: arrived (Well Kept Path) from 3526
+Wed Nov 11 02:06:24 2026 :: Log Alaric [38]: north
+Wed Nov 11 02:06:24 2026 :: Log Alaric [1100]: arrived (A well kept path) from 38
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1100]: north
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1101]: arrived (A well kept path) from 1100
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1101]: north
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1102]: arrived (A well kept path) from 1101
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1102]: north
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1103]: arrived (Entrance to the Shire) from 1102
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1103]: west
+Wed Nov 11 02:06:25 2026 :: Log Alaric [1118]: arrived (Bywater Road) from 1103
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1118]: west
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1120]: arrived (Bywater Road) from 1118
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1120]: west
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1122]: arrived (Bywater Road) from 1120
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1122]: west
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1126]: arrived (Took Hill) from 1122
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1126]: west
+Wed Nov 11 02:06:26 2026 :: Log Alaric [1128]: arrived (A grassy field) from 1126
+Wed Nov 11 02:06:27 2026 :: Log Alaric [1128]: west
+Wed Nov 11 02:06:27 2026 :: Log Alaric [1130]: arrived (Western end of grassy field) from 1128
+Wed Nov 11 02:06:27 2026 :: Log Alaric [1130]: north
+Wed Nov 11 02:06:27 2026 :: Log Alaric [1127]: arrived (Northern end of grassy field) from 1130
+Wed Nov 11 02:06:27 2026 :: Log Alaric [1127]: north
+Wed Nov 11 02:06:27 2026 :: Log Alaric [7800]: arrived (A Path through the Fields) from 1127
+Wed Nov 11 02:06:30 2026 :: Log Alaric [7800]: n
+Wed Nov 11 02:06:30 2026 :: Log Alaric [7801]: arrived (Along the Path) from 7800
+Wed Nov 11 02:06:32 2026 :: Log Alaric [7801]: n
+Wed Nov 11 02:06:32 2026 :: Log Alaric [7804]: arrived (The Overlook) from 7801
+Wed Nov 11 02:06:33 2026 :: Log Alaric [7804]: d
+Wed Nov 11 02:06:33 2026 :: Log Alaric [7805]: arrived (The Entrance to the Valley of the Elves) from 7804
+Wed Nov 11 02:06:34 2026 :: Log Alaric [7805]: w
+Wed Nov 11 02:06:34 2026 :: Log Alaric [7806]: arrived (The Edge of the Valley) from 7805
+Wed Nov 11 02:06:35 2026 :: Log Alaric [7806]: e
+Wed Nov 11 02:06:35 2026 :: Log Alaric [7805]: arrived (The Entrance to the Valley of the Elves) from 7806
+Wed Nov 11 02:06:36 2026 :: Log Alaric [7805]: e
+Wed Nov 11 02:06:36 2026 :: Log Alaric [7807]: arrived (The Edge of the Valley) from 7805
+Wed Nov 11 02:06:36 2026 :: Log Alaric [7807]: n
+Wed Nov 11 02:06:36 2026 :: Log Alaric [7811]: arrived (The Valley of the Elves) from 7807
+Wed Nov 11 02:06:37 2026 :: Log Alaric [7811]: e
+Wed Nov 11 02:06:37 2026 :: Log Alaric [7812]: arrived (The Edge of the Valley) from 7811
+Wed Nov 11 02:06:38 2026 :: Log Alaric [7812]: w
+Wed Nov 11 02:06:38 2026 :: Log Alaric [7811]: arrived (The Valley of the Elves) from 7812
+Wed Nov 11 02:06:38 2026 :: Log Alaric [7811]: w
+Wed Nov 11 02:06:38 2026 :: Log Alaric [7810]: arrived (The Valley of the Elves) from 7811
+Wed Nov 11 02:06:39 2026 :: Log Alaric [7810]: w
+Wed Nov 11 02:06:39 2026 :: Log Alaric [7809]: arrived (The Valley of the Elves) from 7810
+Wed Nov 11 02:06:40 2026 :: Log Alaric [7809]: w
+Wed Nov 11 02:06:40 2026 :: Log Alaric [7808]: arrived (The Edge of the Valley) from 7809
+Wed Nov 11 02:06:42 2026 :: Log Alaric [7808]: n
+Wed Nov 11 02:06:42 2026 :: Log Alaric [7813]: arrived (The Edge of the Valley) from 7808
+Wed Nov 11 02:06:43 2026 :: Log Alaric [7813]: e
+Wed Nov 11 02:06:43 2026 :: Log Alaric [7814]: arrived (The Valley of the Elves) from 7813
+Wed Nov 11 02:06:43 2026 :: Log Alaric [7814]: e
+Wed Nov 11 02:06:43 2026 :: Log Alaric [7815]: arrived (The Valley of the Elves) from 7814
+Wed Nov 11 02:06:44 2026 :: Log Alaric [7815]: e
+Wed Nov 11 02:06:44 2026 :: Log Alaric [7816]: arrived (The Valley of the Elves) from 7815
+Wed Nov 11 02:06:44 2026 :: Log Alaric [7816]: e
+Wed Nov 11 02:06:44 2026 :: Log Alaric [7817]: arrived (The Edge of the Valley) from 7816
+Wed Nov 11 02:06:45 2026 :: Log Alaric [7817]: e
+Wed Nov 11 02:06:46 2026 :: Log Alaric [7817]: n
+Wed Nov 11 02:06:46 2026 :: Log Alaric [7822]: arrived (The Edge of the Valley) from 7817
+Wed Nov 11 02:06:47 2026 :: Log Alaric [7822]: w
+Wed Nov 11 02:06:47 2026 :: Log Alaric [7821]: arrived (The Valley of the Elves) from 7822
+Wed Nov 11 02:06:47 2026 :: Log Alaric [7821]: w
+Wed Nov 11 02:06:47 2026 :: Log Alaric [7820]: arrived (The Valley of the Elves) from 7821
+Wed Nov 11 02:06:48 2026 :: Log Alaric [7820]: w
+Wed Nov 11 02:06:48 2026 :: Log Alaric [7819]: arrived (The Valley of the Elves) from 7820
+Wed Nov 11 02:06:48 2026 :: Log Alaric [7819]: e
+Wed Nov 11 02:06:48 2026 :: Log Alaric [7820]: arrived (The Valley of the Elves) from 7819
+Wed Nov 11 02:06:49 2026 :: Log Alaric [7820]: get all
+Wed Nov 11 02:06:50 2026 :: Log Alaric [7820]: recal
+Wed Nov 11 02:06:50 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7820
+Wed Nov 11 02:06:51 2026 :: Log Alaric [2497]: aq co
+Wed Nov 11 02:06:51 2026 :: Log Alaric [2497]: copper +154129140
+Wed Nov 11 02:06:51 2026 :: Log Alaric [2497]: quest complete: 154p 12g 91s 40c, 35 quest points (streak bonus 30%)
+Wed Nov 11 02:06:51 2026 :: Snapshot of Alaric taken before quest: Alaric.20261111_020651.quest (PRESTORE Alaric to see it).
+Wed Nov 11 02:06:52 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov 11 02:06:53 2026 :: Log Alaric [2497]: score
+Wed Nov 11 02:06:56 2026 :: Log Alaric [2497]: score
+Wed Nov 11 02:06:56 2026 :: Log Alaric [2497]: who
+Wed Nov 11 02:06:58 2026 :: Log Alaric [2497]: who
+Wed Nov 11 02:06:59 2026 :: Log Alaric [2497]: quit
+Wed Nov 11 02:06:59 2026 :: Alaric has quit.
+Wed Nov 11 02:06:59 2026 :: [QUIT] Player rejoined the real world.
+Wed Nov 11 02:07:03 2026 :: Black market: the dealer vanished from room 24203 (An Alcove, crypt.are) (wandering).
