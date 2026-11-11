@@ -115,7 +115,9 @@ class CombatRulesCallSiteTests(unittest.TestCase):
 
     def test_servants_take_the_casters_lasting_maximum(self) -> None:
         body = function_body(self.magic2, "static CHAR_DATA *raise_undead(")
-        self.assertIn("lasting_max_hit( ch ) * grade / 400", body)
+        # Worked in long long since 2026-11-11 (test_pool_arithmetic).
+        self.assertIn("(long long) lasting_max_hit( ch ) * grade", body)
+        self.assertIn("1, 400, POOL_MAX", body)
         self.assertNotIn("ch->max_hit * grade", body)
         rule = function_body(self.magic2, "static int lasting_max_hit(")
         self.assertIn("paf->duration >= 0", rule)
