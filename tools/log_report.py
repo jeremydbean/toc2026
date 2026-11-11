@@ -30,6 +30,9 @@ minutes. This reads them from a git ref (origin/main by default, after
   deep        pulses past their budget and what took the time, deaths
               with the killing blow (one-blow deaths apart), things gone
               from players and why, quests lost and their targets
+  memory      MEMORY lines (stale pointers memguard.c caught and repaired)
+              by field, the newest five, and the backtraces of the latest
+              crashes in log/crash.log
   chat        public channel lines (never tells; they are not logged)
 
 Addresses and hostnames are stripped from everything printed. Run from
@@ -342,8 +345,13 @@ def main() -> int:
     coin = defaultdict(Counter)
     last_lines = []
 
+    memory_lines = []                   # (when, "MEMORY: ...") for the memory section
+
     for when, text in lines:
         last_lines = (last_lines + [(when, text)])[-6:]
+        if text.startswith("MEMORY:"):
+            memory_lines.append((when, text))
+            continue
         if "[*****] BUG:" in text:
             bugs[text.split("BUG:", 1)[1].strip()].append((when, [clean(t) for _, t in last_lines[:-1]]))
             continue
@@ -435,6 +443,7 @@ def main() -> int:
     for player, kinds in sorted(coin.items(), key=lambda kv: -kv[1]["platinum"])[:15]:
         print(f"  {player:<14} {kinds['platinum']}p {kinds['gold']}g")
 
+    memory_report(memory_lines, git_show(args.ref, "log/crash.log"))
     journal_report(args, since, buffs)
     progress_report(args, since)
     hyrule_report(args, since)
@@ -632,13 +641,78 @@ def journal_report(args, since, buffs=None) -> None:
         print("    (none recorded)")
 
     crash = git_show(args.ref, "log/crash.log")
-    blocks = [b for b in crash.split("=== crash:")[1:]]
+    blocks = crash_blocks(crash)
     print(f"\n== crashes ({len(blocks)} on record)")
     for block in blocks[-3:]:
-        lines = block.strip().splitlines()
-        print(f"  signal{clean(lines[0])[:120]}")
-        for line in lines[1:-1][-8:]:
+        print(f"  signal{clean(block['head'])[:120]}")
+        for line in block["commands"][-8:]:
             print(f"    {clean(line)[:140]}")
+
+
+# log/toc.log's MEMORY lines (src/memguard.c): "MEMORY: stale <field> on
+# <who> -> dead <kind> (<what it was>)", or "MEMORY: N more stale <field>
+# not logged in the last minute" past the per-field burst.
+MEMORY_STALE = re.compile(r"^MEMORY: stale (.+?) on (.+?) -> dead (\w+) \((.*)\)$")
+MEMORY_MORE = re.compile(r"^MEMORY: (\d+) more stale (.+?) not logged")
+
+
+def crash_blocks(text: str) -> list:
+    """crash.log's entries: the head line, the commands, the build and the
+    backtrace (src/playlog.c's crash_handler; older entries have none)."""
+    blocks = []
+    for raw in text.split("=== crash:")[1:]:
+        lines = [line for line in raw.strip().splitlines() if line != "=== end ==="]
+        if not lines:
+            continue
+        block = {"head": lines[0], "commands": [], "build": "", "backtrace": []}
+        in_trace = False
+        for line in lines[1:]:
+            if line.startswith("--- backtrace"):
+                in_trace = True
+            elif in_trace:
+                block["backtrace"].append(line)
+            elif line.startswith("build "):
+                block["build"] = line[len("build "):].strip()
+            else:
+                block["commands"].append(line)
+        blocks.append(block)
+    return blocks
+
+
+def memory_summary(lines) -> dict:
+    """MEMORY lines counted by field, with the newest kept whole."""
+    by_field = Counter()
+    newest = []
+    for when, text in lines:
+        m = MEMORY_STALE.match(text)
+        if m:
+            by_field[m.group(1)] += 1
+            newest.append((when, text))
+            continue
+        m = MEMORY_MORE.match(text)
+        if m:
+            by_field[m.group(2)] += int(m.group(1))
+    return {"by_field": by_field, "newest": newest[-5:]}
+
+
+def memory_report(lines, crash_text: str) -> None:
+    s = memory_summary(lines)
+    blocks = crash_blocks(crash_text)
+    total = sum(s["by_field"].values())
+    print(f"\n== memory ({total} stale pointers caught; {len(blocks)} crashes on record)")
+    if total:
+        print("  by field: " + ", ".join(f"{f} x{n}" for f, n in s["by_field"].most_common()))
+        for when, text in s["newest"]:
+            print(f"  {when:%m-%d %H:%M}  {clean(text)[:150]}")
+    else:
+        print("  (no MEMORY lines in the window)")
+    for block in blocks[-2:]:
+        build = f" build {block['build']}" if block["build"] else ""
+        print(f"  crash: signal{clean(block['head'])[:100]}{build}")
+        for line in block["backtrace"][:16]:
+            print(f"    {clean(line)[:140]}")
+        if not block["backtrace"]:
+            print("    (no backtrace recorded)")
 
 
 # log/progress.tsv (src/playlog.c): epoch, kind (kill, flee, death), the

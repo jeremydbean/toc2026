@@ -31,6 +31,15 @@
  * PLAY_JOURNAL_KEEP.
  */
 
+/* execinfo's backtrace() for crash.log is a GNU interface: asked for
+   before any header, as POSIX is in comm.c. */
+#ifndef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE
+#endif
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif
+
 #if defined(macintosh)
 #include <types.h>
 #else
@@ -46,6 +55,12 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+/* __GLIBC__ comes from the libc headers above; macOS and musl go without. */
+#if defined(__GLIBC__)
+#include <execinfo.h>
+#define CRASH_BACKTRACE     1
+#define CRASH_FRAMES        64
+#endif
 #include "merc.h"
 
 #define PLAY_JOURNAL_FILE   "../log/play.tsv"
@@ -68,6 +83,7 @@ const char *playlog_phase = "boot";
 static char crash_ring[CRASH_RING][CRASH_LINE];
 static int  crash_next;
 static int  crash_fd = -1;
+static char crash_build[48];    /* the commit running, read at boot */
 static long journal_lines = -1;     /* -1: not counted yet */
 static bool journal_busy;           /* a bug() while writing must not recurse */
 
@@ -453,10 +469,62 @@ static void crash_handler( int sig )
                 crash_write( crash_fd, "\n" );
             }
         }
+        if ( crash_build[0] != '\0' )
+        {
+            crash_write( crash_fd, "build " );
+            crash_write( crash_fd, crash_build );
+            crash_write( crash_fd, "\n" );
+        }
+#if defined(CRASH_BACKTRACE)
+        /* backtrace() was called once at boot, so libgcc is loaded and it
+           allocates nothing here; backtrace_symbols_fd writes straight to
+           the descriptor. */
+        {
+            void *frames[CRASH_FRAMES];
+            int depth = backtrace( frames, CRASH_FRAMES );
+
+            crash_write( crash_fd, "--- backtrace ---\n" );
+            backtrace_symbols_fd( frames, depth, crash_fd );
+        }
+#endif
         crash_write( crash_fd, "=== end ===\n" );
     }
     signal( sig, SIG_DFL );
     raise( sig );
+}
+
+/*
+ * The code running, for crash.log: the deploy writes the live tree's
+ * .code-revision ("<commit> <merc sha256>") and log/deployed-commit; the
+ * first word of whichever is there. Read at boot, never in the handler.
+ */
+static void crash_read_build( void )
+{
+    static const char *const sources[] = { "../.code-revision", "../log/deployed-commit" };
+    size_t i;
+
+    crash_build[0] = '\0';
+    for ( i = 0; i < sizeof(sources) / sizeof(sources[0]); i++ )
+    {
+        FILE *fp = fopen( sources[i], "r" );
+        char word[64];
+
+        if ( fp == NULL )
+            continue;
+        if ( fscanf( fp, "%63s", word ) == 1 )
+        {
+            size_t n;
+
+            for ( n = 0; word[n] != '\0'; n++ )
+                if ( !isxdigit( (unsigned char) word[n] ) )
+                    break;
+            if ( word[n] == '\0' && n >= 7 )
+                toc_strlcpy( crash_build, word, sizeof(crash_build) );
+        }
+        fclose( fp );
+        if ( crash_build[0] != '\0' )
+            return;
+    }
 }
 
 /*
@@ -477,6 +545,16 @@ void playlog_boot( void )
     crash_fd = open( CRASH_LOG_FILE, O_WRONLY | O_CREAT | O_APPEND, 0644 );
     if ( crash_fd < 0 )
         return;
+    crash_read_build( );
+#if defined(CRASH_BACKTRACE)
+    /* The first backtrace() loads libgcc's unwinder, which allocates: done
+       here, so the handler's call does not. */
+    {
+        void *warm[2];
+
+        (void) backtrace( warm, 2 );
+    }
+#endif
     signal( SIGSEGV, crash_handler );
     signal( SIGBUS,  crash_handler );
     signal( SIGFPE,  crash_handler );

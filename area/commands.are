@@ -5861,7 +5861,31 @@ a maximum limit, which is also shown.
 The 'Perms' line shows permanently allocated memory blocks.  There is no limit
 on the number and size of these blocks.
 
-See also: SOCKETS, STAT
+See also: SOCKETS, STAT, MEMCHECK
+~
+
+60 MEMCHECK~
+Syntax: memcheck
+
+Memcheck reports the game's memory safeguards.  A character, object or
+connection that leaves the game is kept, whole and marked dead, for a
+minute before its memory is given back (the quarantine).  Once a second the
+game checks every stored pointer -- who is fighting, following, hunting or
+replying to whom, what carries or holds what, which connection plays which
+character -- and any that still points at something dead is written to the
+log as a MEMORY line, announced on WIZINFO, and cleared so the game goes
+on.
+
+  Quarantine   blocks held, the oldest one's age, the window and the cap
+  Live         characters, players, objects and connections seen last check
+  Sweep        how many checks, and what the last, slowest and average cost
+  Stale        pointers caught since boot, by field
+  Last events  the newest MEMORY lines
+
+Any MEMORY line is a bug to report: it names the field, who held it, and
+what it pointed at.  MEMCHECK SELFTEST exists only in a test world.
+
+See also: MEMORY, WIZINFO
 ~
 
 65 VNUM~

@@ -669,6 +669,8 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 
     if ( ch == NULL ) return;
     if ( ch->hunting == NULL) return;
+    /* Prey already freed: caught, logged and forgotten (memguard.c). */
+    if ( !memguard_hunting_ok( ch ) ) return;
 
     if (IS_SET(ch->act, ACT_SENTINEL) )
     {

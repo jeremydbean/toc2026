@@ -4260,6 +4260,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
  
     obj                 = obj_data_new( );
     *obj                = obj_zero;
+    obj->mem_magic      = MEM_ALIVE_OBJ;    /* recycle.c */
     obj->pIndexData     = pObjIndex;
     obj->in_room        = NULL;
     obj->enchanted      = false;
@@ -4571,6 +4572,7 @@ void clear_char( CHAR_DATA *ch )
     int i;
 
     *ch                         = ch_zero;
+    ch->mem_magic               = MEM_ALIVE_CHAR;   /* recycle.c */
     ch->name                    = &str_empty[0];
     ch->short_descr             = &str_empty[0];
     ch->long_descr              = &str_empty[0];
@@ -4649,6 +4651,9 @@ void free_char( CHAR_DATA *ch )
         affect_remove( ch, paf );
     }
  
+    /* Named for the quarantine while the name is still readable: a stale
+       pointer found later is reported by this label (recycle.c). */
+    recycle_label_char( ch );
     free_string( ch->name               );
     free_string( ch->short_descr        );
     free_string( ch->long_descr         );

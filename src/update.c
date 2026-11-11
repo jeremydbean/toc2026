@@ -3139,8 +3139,10 @@ void hunting_update( void )
 {
     int i;
 
+    /* A slot naming a hunter already freed is emptied, never followed
+       (memguard.c). */
     for ( i=0; i<MAX_HUNTERS; i++ )
-        if (hunter_list[i].ch)
+        if (hunter_list[i].ch && memguard_hunter_slot_ok( i ))
             hunt_victim(hunter_list[i].ch,hunter_list[i].status);
 
     return;
@@ -3167,8 +3169,17 @@ void update_handler( void )
     static  int     pulse_hunting=0;
     static  int	    pulse_dtrap=0;
     static  int     pulse_event=0;
+    static  int     pulse_memory=0;
 
     playlog_phase_enter( "update" );
+    /* Once a second, before anything else follows a stored pointer: the
+       stale-pointer sweep (memguard.c). */
+    if ( --pulse_memory <= 0 )
+    {
+	pulse_memory	= PULSE_PER_SECOND;
+	playlog_phase_enter( "memguard_sweep" );
+	memguard_sweep	( );
+    }
     if ( --pulse_area     <= 0 )
     {
 	pulse_area	= number_range( PULSE_AREA / 2, 3 * PULSE_AREA / 2 );

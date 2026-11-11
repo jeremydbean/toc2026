@@ -3059,6 +3059,9 @@ void do_reply( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* A reply aimed at somebody already freed is caught, logged and
+       cleared, never followed (memguard.c). */
+    memguard_reply_ok( ch );
     if ( ( victim = ch->reply ) == NULL )
     {
 	send_to_char( "They aren't here.\n\r", ch );

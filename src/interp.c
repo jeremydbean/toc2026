@@ -439,6 +439,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "mirror",         do_mirror,      POS_STANDING,   L5,  LOG_ALWAYS, 1 },
     { "log",            do_log,         POS_DEAD,       CR,  LOG_ALWAYS, 1 },
     { "memory",         do_memory,      POS_DEAD,       L5,  LOG_NORMAL, 1 },
+    { "memcheck",       do_memcheck,    POS_DEAD,       IM,  LOG_NORMAL, 1 },
     { "mwhere",         do_mwhere,      POS_DEAD,       L8,  LOG_NORMAL, 1 },
     { "mstat",          do_mstat,       POS_DEAD,       L7,  LOG_NORMAL, 1 },
     { "ostat",          do_ostat,       POS_DEAD,       L7,  LOG_NORMAL, 1 },

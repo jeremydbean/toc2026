@@ -552,6 +552,9 @@ extern const struct col_disp_table_type col_disp_table[];
 struct  descriptor_data
 {
     DESCRIPTOR_DATA * next;
+    /* MEM_ALIVE_DESC from descriptor_data_new, MEM_DEAD_DESC once handed
+       to recycle.c (desc_is_live; Memory Safeguards in AGENTS.md). */
+    unsigned int        mem_magic;
     DESCRIPTOR_DATA * snoop_by;
     CHAR_DATA * character;
     CHAR_DATA * original;
@@ -2182,6 +2185,9 @@ struct guildmaster_type
 struct  char_data
 {
     CHAR_DATA * next_free;
+    /* MEM_ALIVE_CHAR from clear_char, MEM_DEAD_CHAR once handed to
+       recycle.c (char_is_live). */
+    unsigned int        mem_magic;
     CHAR_DATA * next_in_room;
     CHAR_DATA * master;
     CHAR_DATA * leader;
@@ -2690,6 +2696,9 @@ struct  obj_index_data
 struct  obj_data
 {
     OBJ_DATA * next_free;
+    /* MEM_ALIVE_OBJ when made, MEM_DEAD_OBJ once handed to recycle.c
+       (obj_is_live). */
+    unsigned int        mem_magic;
     OBJ_DATA * next_content;
     OBJ_DATA * contains;
     OBJ_DATA * in_obj;
@@ -3628,6 +3637,37 @@ void    descriptor_data_release ( DESCRIPTOR_DATA *d );
 EXTRA_DESCR_DATA *extra_descr_new ( void );
 void    extra_descr_release ( EXTRA_DESCR_DATA *ed );
 void    recycle_flush       ( void );
+/*
+ * Liveness tags (recycle.c). A character, object or descriptor carries
+ * MEM_ALIVE_* from the moment it is made and MEM_DEAD_* from the moment it
+ * is handed to recycle.c, which keeps the block whole in quarantine for
+ * MEM_QUARANTINE_SECS before freeing it. *_is_live() is true for NULL and
+ * for anything not tagged dead -- a stand-in on the stack or a static has
+ * no ALIVE tag and is not stale -- and is only meaningful for a pointer
+ * whose target is at most a quarantine window old.
+ */
+#define MEM_ALIVE_CHAR          0x43484152u     /* "CHAR" */
+#define MEM_DEAD_CHAR           0xDEADC4A2u
+#define MEM_ALIVE_OBJ           0x4F424A21u     /* "OBJ!" */
+#define MEM_DEAD_OBJ            0xDEAD0B1Au
+#define MEM_ALIVE_DESC          0x44455343u     /* "DESC" */
+#define MEM_DEAD_DESC           0xDEADDE5Cu
+#define MEM_QUARANTINE_SECS     60      /* TOC_MEM_QUARANTINE_SECS overrides */
+#define MEM_QUARANTINE_MAX      8192    /* past it the oldest is freed */
+bool    char_is_live        ( const CHAR_DATA *ch );
+bool    obj_is_live         ( const OBJ_DATA *obj );
+bool    desc_is_live        ( const DESCRIPTOR_DATA *d );
+void    recycle_label_char  ( const CHAR_DATA *ch );
+bool    recycle_dead_label  ( const void *ptr, char *out, size_t size );
+void    recycle_stats       ( int *held, long *oldest_secs, long *freed,
+                              int *window_secs, int *cap );
+/* memguard.c: the once-a-second pointer sweep and its hot-spot guards. */
+void    memguard_sweep      ( void );
+bool    memguard_fighting_ok ( CHAR_DATA *ch );
+bool    memguard_hunting_ok ( CHAR_DATA *ch );
+bool    memguard_hunter_slot_ok ( int slot );
+bool    memguard_reply_ok   ( CHAR_DATA *ch );
+bool    memguard_descriptor_ok ( DESCRIPTOR_DATA *d );
 int     number_fuzzy    ( int number );
 int     number_range    ( int from, int to );
 int     number_percent  ( void );
