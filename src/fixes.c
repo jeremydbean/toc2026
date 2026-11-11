@@ -431,7 +431,7 @@ int player_file_fix_has( const char *name, const char *id )
     int found = 0;
     bool ended = false;
 
-    snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, capitalize( name ) );
+    player_file_read_path( name, path, sizeof(path) );
     if ( ( fp = fopen( path, "r" ) ) == NULL )
         return -1;
     while ( ( line = read_whole_line( fp ) ) != NULL )

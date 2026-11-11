@@ -590,8 +590,7 @@ static void stash_links_on_file( const char *name, char *out, size_t size )
     if ( name == NULL || name[0] == '\0' )
         return;
 
-    snprintf( filename, sizeof(filename), "%s%s", PLAYER_DIR,
-        capitalize( (char *) name ) );
+    player_file_read_path( name, filename, sizeof(filename) );
 
     reserve_release();
     if ( ( fp = fopen( filename, "r" ) ) != NULL )

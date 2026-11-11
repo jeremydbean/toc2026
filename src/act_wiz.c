@@ -251,47 +251,6 @@ void do_explode( CHAR_DATA *ch, char *argument)
 }
 
 
-#if 0
-void do_finger( CHAR_DATA *ch, char *argument )
-{
-   char arg[MAX_INPUT_LENGTH];
-   FILE *fp;
-   time_t logon;
-
-   one_argument(argument,arg);
-
-   if ( arg[0]=='\0' )
-   {
-    send_to_char("Finger whom?\n\r",ch);
-    return;
-   }
-
-
-   snprintf( arg, sizeof(arg), "%s%s", PLAYER_DIR, capitalize( arg ) );
-
-   if (( fp = fopen( arg, "r" ) ) == NULL )
-   {
-     send_to_char("He or she has never been on.\n\r",ch);
-     return;
-   }
-   else
-   if(IS_TRUSTED(ch, LEVEL_IMMORTAL))
-   {
-     fgets(arg,sizeof(arg),fp);
-     fgets(arg,sizeof(arg),fp);
-     fgets(arg,sizeof(arg),fp);
-     fscanf(fp,"%s",arg);
-     logon=fread_number(fp);
-     snprintf(arg, sizeof(arg), "%s was last on at %s\n\r", capitalize( argument ),
-ctime(&logon ) );
-     send_to_char(arg,ch);
-     return;
-   }
-
-   send_to_char("Sorry only immortals may use this function.\n\r", ch);
-   return;
-}
-#endif
 
 /* equips a character */
 /*
@@ -10330,7 +10289,7 @@ void do_mirror( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg ) );
+    player_file_read_path( arg, fname, sizeof(fname) );
 
     if ( ( fp = fopen( fname, "r" ) ) == NULL )
     {
@@ -10474,7 +10433,7 @@ void do_finger( CHAR_DATA *ch, char *argument )
     }
 
     /* Offline player -- scan save file */
-    snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg ) );
+    player_file_read_path( arg, fname, sizeof(fname) );
 
     if ( ( fp = fopen( fname, "r" ) ) == NULL )
     {
@@ -10672,7 +10631,7 @@ void do_activity( CHAR_DATA *ch, char *argument )
     }
 
     /* Offline player -- scan save file for last-session snapshot */
-    snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg ) );
+    player_file_read_path( arg, fname, sizeof(fname) );
 
     if ( ( fp = fopen( fname, "r" ) ) == NULL )
     {
@@ -11509,6 +11468,7 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         return;
     }
     toc_strlcpy( capname, capitalize( arg1 ), sizeof(capname) );
+    player_unarchive( capname );       /* a restore rewrites the file */
     snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capname );
 
     /* Corpses are kept apart from the snapshots (corpses.c). */
@@ -13908,7 +13868,9 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
         }
     }
 
-    /* Open the player save file */
+    /* Open the player save file, archived or not: a new password is a
+       rewrite, so an archived character comes back first. */
+    player_unarchive( arg_name );
     snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg_name ) );
 
     if ( ( fpin = fopen( fname, "r" ) ) == NULL )

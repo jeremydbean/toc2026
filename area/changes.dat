@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111archive 2026-11-11 staff
+Characters not seen for two years are moved to player/archive/ at each
+boot, and moved back automatically the moment their player logs in (or a
+staff command needs them). Their names stay taken. FINGER still finds them.
+
 @ 20261111cleanup 2026-11-11 staff
 Cleanup: NEWCORPSE and MAXLOADS are gone -- the old corpse history and the
 item caps they read no longer exist. Use CORPSE and PRESTORE to put back

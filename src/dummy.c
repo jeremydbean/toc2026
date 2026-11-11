@@ -1259,7 +1259,7 @@ static int dps_board_guild_from_file( const char *name )
     FILE *fp;
     int guild = -1;
 
-    snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, name );
+    player_file_read_path( name, path, sizeof(path) );
     if ( ( fp = fopen( path, "r" ) ) == NULL )
         return -1;
     while ( fgets( line, sizeof(line), fp ) != NULL )

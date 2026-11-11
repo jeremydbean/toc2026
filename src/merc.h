@@ -3154,6 +3154,10 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 
 /* Data files used by the server. */
 #define PLAYER_DIR      "../player/"
+/* Characters not seen for PLAYER_ARCHIVE_DAYS are moved here at boot and
+   brought back the moment anything needs them (save.c, owner 2026-11-11). */
+#define PLAYER_ARCHIVE_DIR  "../player/archive/"
+#define PLAYER_ARCHIVE_DAYS 730
 #define BACKUP_DIR      "../backups/"
 #define PLAYER_TEMP     "../player/temp"
 #define PLAYER_VER_DIR  "../player/versions/"  /* per-player versioned snapshots */
@@ -3594,6 +3598,9 @@ bool    player_file_unreadable( const CHAR_DATA *ch );
 #define PLAYER_FILE_PRESENT  1
 #define PLAYER_FILE_UNKNOWN  2
 int     player_file_presence( const char *name );
+bool    player_unarchive( const char *name );
+const char *player_file_read_path( const char *name, char *out, size_t size );
+void    player_archive_dormant( void );
 int     fread_number    ( FILE *fp );
 long    fread_long      ( FILE *fp );
 int     fireball_damage_roll ( int level );

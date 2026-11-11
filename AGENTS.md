@@ -1986,6 +1986,25 @@ the character's intelligence now, which errs the player's way since some
 came from use. Staff are left alone. It logs and WIZINFOs what it took,
 and does nothing once the groups are gone.
 
+## The Player Archive
+
+Owner, 2026-11-11: archive old players for backup, and bring one back by
+itself when its player returns. At a serving boot (never `--check-area`)
+`player_archive_dormant()` in `save.c` moves every character whose file was
+last saved (`LogO`, or `LastOut` if newer) more than `PLAYER_ARCHIVE_DAYS`
+(730) ago from `player/` to `player/archive/` (`TOC_ARCHIVE_DAYS` for
+tests). Nothing is deleted, and the state sync carries both folders. Rules:
+
+- **An archived name is taken**: `player_file_presence` looks in the archive.
+- **Anything that loads or rewrites a character brings it back first**:
+  `player_unarchive()`, from `load_char_obj` (login, `offline_player_load`),
+  PRESTORE and RESETPWD. A new command that rewrites an offline file calls it.
+- **Views that only read it read it where it lies**:
+  `player_file_read_path()` (FINGER, MIRROR, ACTIVITY, the benchmark board,
+  stash links, `player_file_fix_has`). Snapshots in `player/versions/` stay put.
+- Python tools and the dashboard list `player/` only, so archived
+  characters are not in their lists. `tests/test_player_archive.py`.
+
 ## Fixing Characters At Their Next Login
 
 **A bug that left characters wrong is corrected by a login fix, never by

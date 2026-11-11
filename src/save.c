@@ -2166,6 +2166,159 @@ bool player_file_unreadable( const CHAR_DATA *ch )
 }
 
 /*
+ * The player archive (owner, 2026-11-11: "archive old players for backup
+ * purposes, but if a player tries to log in as one, still move it into
+ * the active players automatically"). At boot, a character whose file
+ * says it was last saved more than PLAYER_ARCHIVE_DAYS ago is moved from
+ * player/ to player/archive/; nothing is deleted, and the state sync keeps
+ * both folders. Its name stays taken (player_file_presence looks there
+ * too). Logging in as it, or anything that loads or rewrites it, moves it
+ * back first (player_unarchive, from load_char_obj and the staff commands
+ * that write a file); views that only read it read it where it lies
+ * (player_file_read_path). TOC_ARCHIVE_DAYS overrides the age for tests.
+ */
+static bool player_archive_name_ok( const char *name )
+{
+    size_t i, len;
+
+    if ( name == NULL || ( len = strlen( name ) ) < 2 || len > 12 )
+        return false;
+    for ( i = 0; i < len; i++ )
+        if ( !isalpha( (unsigned char) name[i] ) )
+            return false;
+    return true;
+}
+
+bool player_unarchive( const char *name )
+{
+    char active[MAX_INPUT_LENGTH];
+    char archived[MAX_INPUT_LENGTH];
+    char gz[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    struct stat st;
+
+    if ( !player_archive_name_ok( name ) )
+        return false;
+    snprintf( active, sizeof(active), "%s%s", PLAYER_DIR, capitalize( name ) );
+    snprintf( gz, sizeof(gz), "%s%s.gz", PLAYER_DIR, capitalize( name ) );
+    snprintf( archived, sizeof(archived), "%s%s", PLAYER_ARCHIVE_DIR, capitalize( name ) );
+    if ( stat( active, &st ) == 0 || errno != ENOENT )
+        return false;
+    if ( stat( gz, &st ) == 0 || errno != ENOENT )
+        return false;
+    if ( stat( archived, &st ) != 0 || !S_ISREG( st.st_mode ) )
+        return false;
+    if ( rename( archived, active ) != 0 )
+    {
+        snprintf( buf, sizeof(buf), "Archive: could not bring %s back to the active players: %s",
+                  capitalize( name ), strerror( errno ) );
+        log_string( buf );
+        return false;
+    }
+    durable_dir_sync( active );
+    durable_dir_sync( archived );
+    snprintf( buf, sizeof(buf), "Archive: %s brought back to the active players.",
+              capitalize( name ) );
+    log_string( buf );
+    return true;
+}
+
+/* Where a character's file lies, for reading only: the active copy, or
+   the archived one if that is all there is. */
+const char *player_file_read_path( const char *name, char *out, size_t size )
+{
+    char archived[MAX_INPUT_LENGTH];
+    struct stat st;
+
+    snprintf( out, size, "%s%s", PLAYER_DIR, capitalize( name ) );
+    if ( stat( out, &st ) == 0 || !player_archive_name_ok( name ) )
+        return out;
+    snprintf( archived, sizeof(archived), "%s%s", PLAYER_ARCHIVE_DIR, capitalize( name ) );
+    if ( stat( archived, &st ) == 0 )
+        snprintf( out, size, "%s", archived );
+    return out;
+}
+
+/* The newest of the file's LogO (save time) and LastOut, or 0. */
+static long player_file_last_seen( const char *path )
+{
+    FILE *fp;
+    char line[512];
+    long seen = 0, value;
+    int lines = 0;
+
+    if ( ( fp = fopen( path, "r" ) ) == NULL )
+        return 0;
+    while ( lines++ < 400 && fgets( line, sizeof(line), fp ) != NULL )
+    {
+        if ( !strncmp( line, "#O", 2 ) || !strncmp( line, "End", 3 ) )
+            break;
+        if ( ( !strncmp( line, "LogO ", 5 ) || !strncmp( line, "LastOut ", 8 ) )
+        &&   sscanf( strchr( line, ' ' ), " %ld", &value ) == 1 && value > seen )
+            seen = value;
+    }
+    fclose( fp );
+    return seen;
+}
+
+void player_archive_dormant( void )
+{
+    DIR *dir;
+    struct dirent *ent;
+    const char *env = getenv( "TOC_ARCHIVE_DAYS" );    /* tests only */
+    long days = env != NULL && atol( env ) > 0 ? atol( env ) : PLAYER_ARCHIVE_DAYS;
+    long cutoff = (long) current_time - days * 86400L;
+    char path[MAX_INPUT_LENGTH];
+    char dest[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    struct stat st;
+    int moved = 0, failed = 0;
+
+    if ( ( dir = opendir( PLAYER_DIR ) ) == NULL )
+        return;
+    while ( ( ent = readdir( dir ) ) != NULL )
+    {
+        long seen;
+
+        if ( !player_archive_name_ok( ent->d_name )
+        ||   !isupper( (unsigned char) ent->d_name[0] ) )
+            continue;
+        snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, ent->d_name );
+        if ( stat( path, &st ) != 0 || !S_ISREG( st.st_mode ) )
+            continue;
+        if ( ( seen = player_file_last_seen( path ) ) <= 0 || seen >= cutoff )
+            continue;
+        if ( moved + failed == 0 && !recovery_ensure_dir( PLAYER_ARCHIVE_DIR ) )
+        {
+            log_string( "Archive: player/archive/ could not be made; nobody archived." );
+            break;
+        }
+        snprintf( dest, sizeof(dest), "%s%s", PLAYER_ARCHIVE_DIR, ent->d_name );
+        if ( stat( dest, &st ) == 0 || rename( path, dest ) != 0 )
+        {
+            failed++;
+            continue;
+        }
+        moved++;
+    }
+    closedir( dir );
+    if ( moved > 0 )
+    {
+        durable_dir_sync( PLAYER_DIR );
+        durable_dir_sync( PLAYER_ARCHIVE_DIR );
+    }
+    if ( moved + failed > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Archive: %d character%s not seen in %ld days moved to player/archive/%s.",
+                  moved, moved == 1 ? "" : "s", days,
+                  failed > 0 ? " (some could not be moved and stay active)" : "" );
+        log_string( buf );
+    }
+}
+
+
+/*
  * Whether a character's file is there (review, 2026-11-09). A failed
  * open is not absence: a file that could not be read -- its permissions,
  * an I/O error, a symlink loop -- was taken for a new name, and creating
@@ -2186,6 +2339,15 @@ int player_file_presence( const char *name )
     for ( i = 0; i < 2; i++ )
     {
         snprintf( path, sizeof(path), "%s%s%s", PLAYER_DIR, capitalize( name ), suffix[i] );
+        if ( stat( path, &st ) == 0 )
+            return PLAYER_FILE_PRESENT;
+        if ( errno != ENOENT )
+            result = PLAYER_FILE_UNKNOWN;
+    }
+    /* An archived character's name is taken too. */
+    if ( result == PLAYER_FILE_ABSENT && player_archive_name_ok( name ) )
+    {
+        snprintf( path, sizeof(path), "%s%s", PLAYER_ARCHIVE_DIR, capitalize( name ) );
         if ( stat( path, &st ) == 0 )
             return PLAYER_FILE_PRESENT;
         if ( errno != ENOENT )
@@ -2506,6 +2668,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
        that is there and cannot be opened, or one whose presence cannot be
        checked, is refused like one that cannot be parsed, and left as it
        is -- never taken for a free name and saved over. */
+    player_unarchive( name );          /* a returning player is active again */
     presence = player_file_presence( name );
     if ( presence == PLAYER_FILE_UNKNOWN )
     {

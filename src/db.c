@@ -1802,16 +1802,6 @@ void load_rooms( FILE *fp )
                 pRoomIndex->exit[door]  = pexit;
                 top_exit++;
  
-#if 0
-                /* hack code to make door resets in .are files easier */
-                if ((pexit->lock != 0)
-                && (((pRoomIndex->vnum >= 2400) && (pRoomIndex->vnum < 2500))
-                ||  ((pRoomIndex->vnum >= 4200) && (pRoomIndex->vnum < 4700))))
-                {
-                    fprintf(stderr, "D 0 %d %d %d\t\t# %s\n",
-                         pRoomIndex->vnum, door, pexit->lock, pRoomIndex->name);
-                }
-#endif
             }
             else if ( letter == 'E' )
             {
