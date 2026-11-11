@@ -3477,10 +3477,11 @@ of 12 rounds; differences under about a third are noise. It uses the
 repository's `merc` unless given `--binary`; never rebuild that while a
 bench runs.
 
-**Two progression rules look like bugs and are left alone pending the
-owner's call.** `advance_level_body` reads `get_curr_stat`, so INT, WIS
-and CON lent by spells and gear at the moment of a level count toward
-the permanent gain. And every mana range there is
+**Two progression rules look like bugs and are not** (owner, 2026-11-11:
+"leveling gear was a designed feature"; the mana step left as it is,
+since fixing it is a cut). `advance_level_body` reads `get_curr_stat`,
+so INT, WIS and CON lent by spells and gear at the moment of a level
+count toward the permanent gain -- levelling in gear is meant to pay. And every mana range there is
 `number_range(int_app[INT].mana_gain, (INT+WIS)/k)` with the lower end
 above the upper (40 against 12 at INT 18), so `number_range` returns the
 lower end and mana a level is a step function of INT alone, before the
@@ -3488,9 +3489,9 @@ class and guild factors (x1 pure casters, x3/4 hybrids and monks, x1/2
 warrior and thief in their own guilds). Together: a pure caster levelling
 under EMPOWER (INT 18 to 25) gains about 81 mana a level instead of 41,
 for good; CON adds only about 3 hit points. Swapping the endpoints would
-cut every future level's mana by about a third. Either change is a
-policy decision with lasting effects on characters, not a local fix --
-and never fix it by changing `number_range`.
+cut every future level's mana by about a third, against the owner's rule
+of raising classes rather than cutting them. Leave both, and never
+change `number_range` to touch either.
 
 ## Damage Costs Lag
 
@@ -4032,7 +4033,11 @@ root, both stripping addresses from what they print:
   differs. On 2026-10-21 all twelve differed slightly (the shallow
   counting fixed that day), every one far below its cap; correcting the
   totals is the owner's decision and would have to be done on the host,
-  since the state sync carries maxload.txt host to git.
+  since the state sync carries maxload.txt host to git. Left as they are
+  (2026-11-11, at the owner's word to fix what should be): every count
+  but the Mud School diploma's (338 recorded, 234 held) sat within ten of
+  the files, and all at about a tenth of their caps or less, so no drop
+  was being refused.
 
 A routine runs both each morning in a fresh cloud session and reports
 without changing anything. `tests/test_ops_tools.py` holds the table
