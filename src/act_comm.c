@@ -38,32 +38,8 @@
 #include "interp.h"
 #include "db.h" // For resolving declarations
 
-static void safe_strcpy( char *dest, size_t dest_size, const char *src );
 static void safe_strcat( char *dest, size_t dest_size, const char *src );
 
-static void safe_strcpy( char *dest, size_t dest_size, const char *src )
-{
-    size_t copy_len;
-
-    if ( dest == NULL || dest_size == 0 )
-        return;
-
-    if ( src == NULL )
-    {
-        dest[0] = '\0';
-        return;
-    }
-
-    if ( dest_size == 1 )
-    {
-        dest[0] = '\0';
-        return;
-    }
-
-    copy_len = toc_strnlen( src, dest_size - 1 );
-    strncpy( dest, src, copy_len );
-    dest[copy_len] = '\0';
-}
 
 static void safe_strcat( char *dest, size_t dest_size, const char *src )
 {
@@ -1130,11 +1106,6 @@ void do_history( CHAR_DATA *ch, char *argument )
                    channel_meta_table[index].name );
 }
 
-void do_auction( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    send_to_char("The auction channel is currently unavailable.\n\r", ch);
-}
 
 /*
  * ------------------------------------------------------------------------
@@ -1622,17 +1593,6 @@ void do_gossip( CHAR_DATA *ch, char *argument )
     }
 }
 
-void do_grats( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    send_to_char("The grats channel is currently unavailable.\n\r", ch);
-}
-
-void do_quote( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    send_to_char("The quote channel is currently unavailable.\n\r", ch);
-}
 
 void do_question( CHAR_DATA *ch, char *argument )
 {
@@ -1696,69 +1656,6 @@ void do_question( CHAR_DATA *ch, char *argument )
     }
 }
 
-/* RT answer command is same as question */
-
-void do_answer( CHAR_DATA *ch, char *argument )
-{
-    char buf[MAX_STRING_LENGTH];
-    DESCRIPTOR_DATA *d;
- 
-    if (argument[0] == '\0' )
-    {
-      if (IS_SET(ch->comm,COMM_NOQUESTION))
-      {
-        send_to_char("Q/A channel is now ON.\n\r",ch);
-        REMOVE_BIT(ch->comm,COMM_NOQUESTION);
-      }
-      else
-      {
-        send_to_char("Q/A channel is now OFF.\n\r",ch);
-        SET_BIT(ch->comm,COMM_NOQUESTION);
-      }
-    }
-    else  /* answer message sent, turn answer on if it is off */
-    {
-        if (IS_SET(ch->comm,COMM_QUIET))
-        {
-          send_to_char("You must turn off quiet mode first.\n\r",ch);
-          return;
-        }
- 
-        if (IS_SET(ch->comm,COMM_NOCHANNELS))
-        {
-          send_to_char("The gods have revoked your channel priviliges.\n\r",ch);
-          return;
- 
-        }
- 
-      REMOVE_BIT(ch->comm,COMM_NOQUESTION);
- 
-      channel_history_add( "answer", ch, argument );
-
-
-      snprintf( buf, sizeof(buf), "{%02XYou answer '%s'{00\n\r",
-          COL_QUESTION, argument );
-      send_to_char( buf, ch );
-      gmcp_send_channel( ch->desc, "answer", channel_speaker( ch ), argument );
-      for ( d = descriptor_list; d != NULL; d = d->next )
-      {
-        CHAR_DATA *victim;
- 
-        victim = d->original ? d->original : d->character;
- 
-        if ( d->connected == CON_PLAYING &&
-             d->character != ch &&
-             !IS_SET(victim->comm,COMM_NOQUESTION) &&
-             !IS_SET(victim->comm,COMM_QUIET) )
-        {
-            snprintf( buf, sizeof(buf), "{%02X$n answers '$t'{00", COL_QUESTION );
-            act_new_cstr( buf,
-                     ch,argument, d->character, TO_VICT,POS_SLEEPING );
-                     gmcp_send_channel( d, "answer", channel_speaker( ch ), argument );
-        }
-      }
-    }
-}
 
 void do_music( CHAR_DATA *ch, char *argument )
 {
@@ -1822,69 +1719,6 @@ void do_music( CHAR_DATA *ch, char *argument )
     }
 }
 
-void do_clan( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    send_to_char("Clan chat is currently unavailable.\n\r", ch);
-}
-
-void do_immort( CHAR_DATA *ch, char *argument )
-{
-    char buf[MAX_STRING_LENGTH];
-    DESCRIPTOR_DATA *d;
- 
-    if (argument[0] == '\0' )
-    {
-      if (IS_SET(ch->comm,COMM_NOWIZ))
-      {
-        send_to_char("Immortal channel is now ON.\n\r",ch);
-        REMOVE_BIT(ch->comm,COMM_NOWIZ);
-      }
-      else
-      {
-        send_to_char("Immortal channel is now OFF.\n\r",ch);
-        SET_BIT(ch->comm,COMM_NOWIZ);
-      }
-    }
-    else  /* immort message sent, turn immort on if it is off */
-    {
-        if (IS_SET(ch->comm,COMM_QUIET))
-        {
-          send_to_char("You must turn off quiet mode first.\n\r",ch);
-          return;
-        }
- 
-        if (IS_SET(ch->comm,COMM_NOCHANNELS))
-        {
-          send_to_char("The gods have revoked your channel priviliges.\n\r",ch);
-          return;
- 
-        }
- 
-      REMOVE_BIT(ch->comm,COMM_NOWIZ);
- 
-      snprintf( buf, sizeof(buf), "{%02XYou immort '%s'{00\n\r",
-          COL_IMMTALK, argument );
-      send_to_char( buf, ch );
-      for ( d = descriptor_list; d != NULL; d = d->next )
-      {
-        CHAR_DATA *victim;
- 
-        victim = d->original ? d->original : d->character;
- 
-        if ( d->connected == CON_PLAYING &&
-             d->character != ch &&
-             IS_IMMORTAL(victim) &&
-             !IS_SET(victim->comm,COMM_NOWIZ) &&
-             !IS_SET(victim->comm,COMM_QUIET) )
-        {
-            snprintf( buf, sizeof(buf), "{%02X$n immorts '$t'{00", COL_IMMTALK );
-            act_new_cstr( buf,
-                     ch,argument, d->character, TO_VICT,POS_DEAD );
-        }
-      }
-    }
-}
 
 /*
  * ------------------------------------------------------------------------
@@ -2753,7 +2587,6 @@ void do_shout( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_tell( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -2874,7 +2707,6 @@ void do_tell( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_reply( CHAR_DATA *ch, char *argument )
 {
     CHAR_DATA *victim;
@@ -2976,7 +2808,6 @@ void do_reply( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_yell( CHAR_DATA *ch, char *argument )
 {
     DESCRIPTOR_DATA *d;
@@ -3061,91 +2892,6 @@ void do_emote( CHAR_DATA *ch, char *argument )
 
     act( buf, ch, NULL, NULL, TO_ROOM );
     act( buf, ch, NULL, NULL, TO_CHAR );
-    return;
-}
-
-
-void do_pmote( CHAR_DATA *ch, char *argument )
-{
-    CHAR_DATA *vch;
-    char *letter,*name;
-    char last[MAX_INPUT_LENGTH], temp[MAX_STRING_LENGTH];
-    size_t matches = 0;
-
-    if ( !IS_NPC(ch) && IS_SET(ch->comm, COMM_NOEMOTE) )
-    {
-        send_to_char( "You can't show your emotions.\n\r", ch );
-        return;
-    }
-
-    if ( argument[0] == '\0' )
-    {
-        send_to_char( "Emote what?\n\r", ch );
-        return;
-    }
-
-    act( "$n $t", ch, argument, NULL, TO_CHAR );
-
-    for (vch = ch->in_room->people; vch != NULL; vch = vch->next_in_room)
-    {
-	if (vch->desc == NULL || vch == ch)
-	    continue;
-
-	if ((letter = strstr(argument,vch->name)) == NULL)
-	{
-	    act("$n $t",ch,argument,vch,TO_VICT);
-	    continue;
-	}
-
-        safe_strcpy(temp, sizeof(temp), argument);
-	temp[strlen(argument) - strlen(letter)] = '\0';
-	last[0] = '\0';
-	name = vch->name;
-	
-	for (; *letter != '\0'; letter++)
-	{ 
-	    if (*letter == '\'' && matches == strlen(vch->name))
-	    {
-                safe_strcat(temp,sizeof(temp),"r");
-		continue;
-	    }
-
-	    if (*letter == 's' && matches == strlen(vch->name))
-	    {
-		matches = 0;
-		continue;
-	    }
-	    
- 	    if (matches == strlen(vch->name))
-	    {
-		matches = 0;
-	    }
-
-	    if (*letter == *name)
-	    {
-		matches++;
-		name++;
-		if (matches == strlen(vch->name))
-		{
-                    safe_strcat(temp,sizeof(temp),"you");
-		    last[0] = '\0';
-		    name = vch->name;
-		    continue;
-		}
-		strncat(last,letter,1);
-		continue;
-	    }
-
-	    matches = 0;
-            safe_strcat(temp,sizeof(temp),last);
-	    strncat(temp,letter,1);
-	    last[0] = '\0';
-	    name = vch->name;
-	}
-
-	act("$n $t",ch,temp,vch,TO_VICT);
-    }
-	
     return;
 }
 
@@ -3395,7 +3141,6 @@ void do_pose( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 /*
@@ -4148,7 +3893,6 @@ void do_quit( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_save( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
@@ -4161,7 +3905,6 @@ void do_save( CHAR_DATA *ch, char *argument )
     WAIT_STATE(ch, 2 * PULSE_VIOLENCE); // Safety: prevent save spamming
     return;
 }
-
 
 
 void do_follow( CHAR_DATA *ch, char *argument )
@@ -4246,7 +3989,6 @@ void add_follower( CHAR_DATA *ch, CHAR_DATA *master )
 }
 
 
-
 void stop_follower( CHAR_DATA *ch )
 {
     if ( ch->master == NULL )
@@ -4295,7 +4037,6 @@ void nuke_pets( CHAR_DATA *ch )
 
     return;
 }
-
 
 
 void do_order( CHAR_DATA *ch, char *argument )
@@ -4375,7 +4116,6 @@ void do_order( CHAR_DATA *ch, char *argument )
         send_to_char( "You have no followers here.\n\r", ch );
     return;
 }
-
 
 
 /*
@@ -4487,7 +4227,6 @@ void do_group( CHAR_DATA *ch, char *argument )
     act( "$N joins your group.", ch, NULL, victim, TO_CHAR    );
     return;
 }
-
 
 
 /*
@@ -4674,7 +4413,6 @@ void do_split( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_gtell( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -4710,7 +4448,6 @@ void do_gtell( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 /*

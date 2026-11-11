@@ -49,7 +49,7 @@ export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostK
 # with a blank plaque.
 STATE_DIRS="player gods heroes log"
 STATE_FILES="area/notes.txt area/bugs.txt area/ideas.txt area/typos.txt
-             area/pkilldata.txt area/wizlist.txt area/maxload.txt
+             area/pkilldata.txt area/wizlist.txt
              area/offense.txt area/relics.txt area/not.txt area/ban.txt
              area/dpsboard.txt area/custom.are"
 # The player report files. REPORTS CLEAR renames one aside as

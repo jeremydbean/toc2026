@@ -14,7 +14,6 @@
    any use of this code must include this header */
 
 
-
 #if defined(macintosh)
 #include <types.h>
 #include <time.h>
@@ -316,44 +315,5 @@ void do_heal(CHAR_DATA *ch, char *argument)
      spell(sn,mob->level,mob,ch);
 }
 
-
-char *first_arg( char *argument, char *arg_first, bool fCase )
-{
-    char cEnd;
-
-    while ( *argument == ' ' )
-	argument++;
-
-    cEnd = ' ';
-    if ( *argument == '\'' || *argument == '"'
-      || *argument == '%'  || *argument == '(' )
-    {
-        if ( *argument == '(' )
-        {
-            cEnd = ')';
-            argument++;
-        }
-        else cEnd = *argument++;
-    }
-
-    while ( *argument != '\0' )
-    {
-	if ( *argument == cEnd )
-	{
-	    argument++;
-	    break;
-	}
-    if ( fCase ) *arg_first = LOWER(*argument);
-            else *arg_first = *argument;
-	arg_first++;
-	argument++;
-    }
-    *arg_first = '\0';
-
-    while ( *argument == ' ' )
-	argument++;
-
-    return argument;
-}
 
  

@@ -73,7 +73,6 @@ DECLARE_SPELL_FUN(	spell_faerie_fog	);
 DECLARE_SPELL_FUN(	spell_fireball		);
 DECLARE_SPELL_FUN(      spell_fire_shield       );
 DECLARE_SPELL_FUN(	spell_flamestrike	);
-DECLARE_SPELL_FUN(	spell_flash     	);
 DECLARE_SPELL_FUN(	spell_fly		);
 DECLARE_SPELL_FUN(	spell_force_sword	);
 DECLARE_SPELL_FUN(      spell_frenzy		);

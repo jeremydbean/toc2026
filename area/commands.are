@@ -5306,27 +5306,6 @@ This is typically used for 'force all save'.
 See also: TRANSFER, AT, SOCKETS
 ~
 
-68 MAXLOAD~
-Syntax: maxload set <vnum> <amount>
-        maxload list
-        maxload pla <vnum>
-
-MAXLOAD sets, lists the amount of objects the game should load depending on
-vnum. Maxload set & Maxload pla are level 70 commands, while Maxload list
-can be done at 68.
-
-In case of maxload set you have options for amount:
--1        -> remove the maxload
-0..number -> add the maxload
-
-Remember to check, because if the maxload is lower as the sum of in_game
-and with the players, the item will not load anymore, until enough items
-got extracted so that the sum of the items with the players and in the game
-is LESS as the maxload value specified. Which can take a while....
-
-See also: MEMORY, VNUM
-~
-
 63 LASTLOG~
 Syntax: lastlog
         lastlog <count>
@@ -6743,37 +6722,6 @@ KSOCK forcibly closes a network connection by descriptor number.
 Use SOCKETS to view current descriptor numbers.
 
 See also: SOCKETS, DUMP
-~
-
-68 MAXLOADS~
-Syntax: maxloads list
-        maxloads set <vnum> <count>
-        maxloads pla <vnum>
-
-MAXLOADS manages per-object maximum load counts.  'list' shows all
-configured limits.  'set' assigns a max count for an object vnum.
-'pla' shows current player-carried counts for a vnum.
-
-See also: LOAD
-~
-
-67 NEWCORPSE~
-Syntax: newcorpse <player>
-        newcorpse <player> <1-5>
-
-Legacy corpse rebuilding.  With a player's name it lists the corpse records
-in their old corpse/<Name>.cps file, each marked valid or damaged; with a
-number it builds that corpse in your room from fresh copies of the recorded
-objects at their recorded levels -- enchantments and anything else done to
-them are lost -- never rotting.  The player must be online.
-
-The game no longer writes those records (deaths are kept another way), so
-it only has anything to work from for characters who died before that
-change.  To put back what a player lost, use the corpse registry and the
-snapshots instead: PRESTORE <player> CORPSE, PRESTORE <player> <stamp> GEAR
-and STASH, and CORPSE GEAR.
-
-See also: PRESTORE, CORPSE
 ~
 
 63 NOCHANNELS~

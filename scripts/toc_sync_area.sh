@@ -41,7 +41,7 @@ rsync -a --checksum --delete \
   --exclude '/oracle.ask' --exclude '/oracle.answer' \
   --exclude '/oracle.query' --exclude '/oracle.queryresult' \
   --exclude '/*.txt' \
-  --exclude '/pkilldata' --exclude '/wizlist' --exclude '/maxload' \
+  --exclude '/pkilldata' --exclude '/wizlist' \
   --exclude '/offense' --exclude '/relics' --exclude '/not' \
   --exclude '/ban' \
   --exclude '/*.are.*.bak' --exclude '/*.are.*.tmp' \
@@ -60,7 +60,7 @@ if [ -d "$src/built" ]; then
 fi
 
 runtime_txt="shutdown.txt ban.txt bugs.txt ideas.txt typos.txt notes.txt
-             maxload.txt wizlist.txt offense.txt relics.txt not.txt
+             wizlist.txt offense.txt relics.txt not.txt
              pkilldata.txt dpsboard.txt"
 for f in "$src"/*.txt; do
     [ -f "$f" ] || continue

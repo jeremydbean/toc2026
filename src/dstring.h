@@ -16,7 +16,6 @@ void    dstring_free( DString *str );
 void    dstring_clear( DString *str );
 bool    dstring_append_cstr( DString *str, const char *text );
 bool    dstring_append_char( DString *str, char c );
-int     dstring_printf( DString *str, const char *fmt, ... );
 const char *dstring_cstr( const DString *str );
 size_t  dstring_length( const DString *str );
 

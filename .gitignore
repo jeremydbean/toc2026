@@ -71,3 +71,11 @@ area/ideas.txt.*
 # the checkout is left out by toc_code_changes instead.
 /state.before-restore-*/
 /.restore.*/
+
+# Stray local output at the root (removed 2026-11-11)
+/build.log
+/build_local.log
+/merc.log
+/webadmin.log
+/output.json
+/parser_output.txt

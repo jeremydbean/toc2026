@@ -70,7 +70,7 @@ STATE_GLOBS = [
     "player/**", "gods/**", "log/**", "heroes/**", "corpse/**", "area/built/**",
     "area/notes.txt", "area/bugs.txt", "area/ideas.txt", "area/typos.txt",
     "area/bugs.txt.*", "area/ideas.txt.*", "area/typos.txt.*",
-    "area/pkilldata.txt", "area/wizlist.txt", "area/maxload.txt", "area/offense.txt",
+    "area/pkilldata.txt", "area/wizlist.txt", "area/offense.txt",
     "area/relics.txt", "area/not.txt", "area/ban.txt", "area/dpsboard.txt",
 ]
 
@@ -111,7 +111,7 @@ DEPLOY_EXCLUDES = [
     "player/**", "gods/**", "heroes/**", "log/**", "corpse/**", "notes/**", "wiki/**",
     "tests/**", ".github/**", "**/*.md", "*.md", "area/notes.txt", "area/bugs.txt*",
     "area/ideas.txt*", "area/typos.txt*", "area/pkilldata.txt", "area/wizlist.txt",
-    "area/maxload.txt", "area/offense.txt", "area/relics.txt", "area/not.txt",
+    "area/offense.txt", "area/relics.txt", "area/not.txt",
     "area/ban.txt", "area/dpsboard.txt", "area/built/**",
 ]
 

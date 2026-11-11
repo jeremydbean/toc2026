@@ -167,7 +167,7 @@ deployable() {
         ':(exclude,glob)area/notes.txt' ':(exclude,glob)area/bugs.txt*' \
         ':(exclude,glob)area/ideas.txt*' ':(exclude,glob)area/typos.txt*' \
         ':(exclude)area/pkilldata.txt' ':(exclude)area/wizlist.txt' \
-        ':(exclude)area/maxload.txt' ':(exclude)area/offense.txt' \
+        ':(exclude)area/offense.txt' \
         ':(exclude)area/relics.txt' ':(exclude)area/not.txt' \
         ':(exclude)area/ban.txt' ':(exclude)area/dpsboard.txt' \
         ':(exclude)area/built'

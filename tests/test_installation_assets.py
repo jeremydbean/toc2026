@@ -127,7 +127,7 @@ class InstallationAssetsTests(unittest.TestCase):
         dockerignore = set(read(".dockerignore").splitlines())
         for entry in (".env", "backups", "corpse", "gods", "heroes", "log", "player",
                       "state", "area/bugs.txt*", "area/notes.txt", "area/ban.txt",
-                      "area/maxload.txt", "area/shutdown.txt"):
+                      "area/shutdown.txt"):
             with self.subTest(entry=entry):
                 self.assertIn(entry, dockerignore)
 

@@ -80,7 +80,7 @@ class PsionicsSystemTests(unittest.TestCase):
             "bool normalize_psionic_arguments",
             "int grant_psionics",
         )
-        grant = function_body(self.stubs, "int grant_psionics", "void list_group_known")
+        grant = function_body(self.stubs, "int grant_psionics", "void do_wizinfo")
 
         self.assertIn("canonical_psionic_selection", normalizer)
         self.assertIn("<empty selection>", normalizer)

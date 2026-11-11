@@ -570,7 +570,7 @@ static bool dragon_snatch( AREA_DATA *area, CHAR_DATA *named, CHAR_DATA *staff )
     do_look( prey, "auto" );
 
     dragon = create_mobile( pDragon );
-    dragon->spec_fun = NULL;            /* spec_kidnapper is retired */
+    dragon->spec_fun = NULL;
     REMOVE_BIT( dragon->act, ACT_AGGRESSIVE );
     SET_BIT( dragon->act, ACT_SENTINEL );
     dragon_scale( dragon, prey->level );

@@ -116,9 +116,7 @@ static const int bm_boss_drops[] =
     OBJ_VNUM_WINTER_HAMMER,   OBJ_VNUM_WINTER_MANTLE,
     OBJ_VNUM_PUMPKIN_CHARM,   OBJ_VNUM_SNOWFLAKE_PEND
 };
-/* Training cakes: the holidays' two. Valhalla's wedding cake (9955) was
-   here until 2026-10-20, but maxload.txt limits it to one in the world,
-   and a dealer selling one per visit made it unlimited. */
+/* Training cakes: the holidays' two. */
 static const int bm_cakes[] =
 {
     OBJ_VNUM_HORSEMAN_CAKE, OBJ_VNUM_WINTER_CAKE
@@ -152,10 +150,10 @@ static bool bm_is_key[BM_VNUM_MAX];
 
 /* Areas whose gear is not the dealer's to sell, and where he never goes:
    Hyrule is a progression of its own, the yard and the seasonal file are
-   not places, and nothing in the world leads to the last two. */
+   not places, and quest1.are holds only the quest master's rewards. */
 static const char * const bm_skip_areas[] =
 {
-    "hyrule.are", "dummy.are", "seasonal.are", "quest1.are", "tdespair.are",
+    "hyrule.are", "dummy.are", "seasonal.are", "quest1.are",
     NULL
 };
 
@@ -391,10 +389,6 @@ static bool bm_sellable( OBJ_INDEX_DATA *pObj )
     /* LIST hides it from anyone without detect invisible: a wasted slot. */
     ||   IS_SET( pObj->extra_flags, ITEM_INVIS ) )
         return false;
-    /* A load-limited item is unique by design; infinite copies of it
-       would break that. */
-    if ( get_maxload_index( pObj->vnum ) != NULL )
-        return false;
     if ( bm_progression( pObj ) )
         return false;
     if ( pObj->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
@@ -538,9 +532,7 @@ static bool bm_stock_one( CHAR_DATA *dealer, int vnum )
     if ( bm_stock_count( dealer ) >= BM_STOCK_MAX )
         return false;
     if ( ( pObj = get_obj_index( vnum ) ) == NULL || pObj->level < 0
-    ||   bm_progression( pObj )
-    /* A load-limited item is unique by design, whatever list named it. */
-    ||   get_maxload_index( pObj->vnum ) != NULL )
+    ||   bm_progression( pObj ) )
         return false;
     for ( obj = dealer->carrying; obj != NULL; obj = obj->next_content )
         if ( obj->pIndexData == pObj )

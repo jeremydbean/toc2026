@@ -121,11 +121,8 @@ class BlackMarketSourceTests(unittest.TestCase):
         self.assertIn("price *= BM_RARE_MARKUP", price)
         for vnum in ("9943", "9944"):      # the lucky clovers
             self.assertIn(vnum, source)
-        # The wedding cake is load-limited to one: never stocked, and the
-        # stocking itself refuses anything maxload.txt limits.
+        # The wedding cake is not a cake he carries.
         self.assertNotIn("9955", body("src/blackmarket.c", "static const int bm_cakes[]"))
-        self.assertIn("get_maxload_index( pObj->vnum ) != NULL",
-                      body("src/blackmarket.c", "static bool bm_stock_one("))
 
     def test_rare_and_small_stock_from_a_big_pool(self) -> None:
         """Owner, 2026-10-20: hundreds of possible items, five at a time,

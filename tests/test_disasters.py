@@ -81,12 +81,11 @@ class DisasterSourceTests(unittest.TestCase):
         # The test switch stops the random strikes and nothing else.
         self.assertIn("random_off || number_range( 1, 10000 ) > DISASTER_CHANCE", update)
 
-    def test_the_old_kidnapper_is_retired(self) -> None:
+    def test_the_old_kidnapper_is_gone(self) -> None:
         special = (ROOT / "src" / "special.c").read_text(encoding="latin-1")
-        kidnapper = special[special.index("bool spec_kidnapper("):]
-        kidnapper = kidnapper[:kidnapper.index("\n}\n")]
-        self.assertIn("return false;", kidnapper)
-        self.assertNotIn("affect_to_char", kidnapper)
+        self.assertNotIn("spec_kidnapper", special)
+        limbo = (ROOT / "area" / "limbo.are").read_text(encoding="latin-1")
+        self.assertNotIn("spec_kidnapper", limbo)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

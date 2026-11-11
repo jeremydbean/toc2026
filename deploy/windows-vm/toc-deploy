@@ -80,7 +80,7 @@ healthy() {
 # from starting at all. Every runtime .txt belongs to the running game
 # and none of them may be restored from a checkout or a snapshot.
 runtime_txt="shutdown.txt ban.txt bugs.txt ideas.txt typos.txt notes.txt
-             maxload.txt wizlist.txt offense.txt relics.txt not.txt
+             wizlist.txt offense.txt relics.txt not.txt
              pkilldata.txt dpsboard.txt"
 
 # Copy the code in one tree over another, and nothing the running game
@@ -110,7 +110,7 @@ sync_code() {
       --exclude 'area/oracle.ask' --exclude 'area/oracle.answer' \
       --exclude 'area/oracle.query' --exclude 'area/oracle.queryresult' \
       --exclude 'area/*.txt' \
-      --exclude 'area/pkilldata' --exclude 'area/wizlist' --exclude 'area/maxload' \
+      --exclude 'area/pkilldata' --exclude 'area/wizlist' \
       --exclude 'area/offense' --exclude 'area/relics' --exclude 'area/not' \
       --exclude 'area/ban' \
       --exclude 'area/*.are.*.bak' --exclude 'area/*.are.*.tmp' \

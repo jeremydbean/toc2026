@@ -756,16 +756,6 @@ static int achievement_set_search(const CHAR_DATA *ch, int set, long id,
     return low;
 }
 
-bool achievement_set_has(const CHAR_DATA *ch, achievement_set set, long id)
-{
-    bool found;
-
-    if (!achievement_is_player(ch) || (int)set < 0 || set >= ACH_SET_COUNT
-        || ch->pcdata->achievement_set[set] == NULL)
-        return false;
-    achievement_set_search(ch, (int)set, id, &found);
-    return found;
-}
 
 /* Adds id to the set; true if it was new. Never announces. */
 static bool achievement_set_insert(CHAR_DATA *ch, int set, long id)
@@ -1776,8 +1766,7 @@ bool achievement_note(CHAR_DATA *ch, achievement_set set, long id)
 }
 
 /* Rooms and areas count toward exploration only where anybody can go:
-   the shipped world, not built areas, staff rooms, the unreachable
-   Quest Zone and Temple Despair, Limbo or a jail cell. */
+   the shipped world, not built areas, staff rooms, Limbo or a jail cell. */
 static bool achievement_room_is_public(const ROOM_INDEX_DATA *room)
 {
     const char *file;
@@ -1787,9 +1776,6 @@ static bool achievement_room_is_public(const ROOM_INDEX_DATA *room)
     file = room->area->file_name;
     if (file == NULL || !str_prefix("built/", file)
         || !str_cmp(file, "limbo.are") || !str_cmp(file, BUILDER_AREA_FILE))
-        return false;
-    if ((room->vnum >= 20301 && room->vnum <= 20313)
-        || (room->vnum >= 26000 && room->vnum <= 26006))
         return false;
     if (IS_SET(room->room_flags, ROOM_IMP_ONLY)
         || IS_SET(room->room_flags, ROOM_GODS_ONLY)

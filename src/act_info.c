@@ -71,7 +71,6 @@ char *	const	where_name	[] =
 int max_on = 0;
 
 
-
 /*
  * Local functions.
  */
@@ -88,7 +87,6 @@ void	show_char_to_char	args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 bool	check_blind		args( ( CHAR_DATA *ch ) );
 bool    we_want_this_obj        args( ( OBJ_DATA *list, char *key_type,
                                     char *key_word ) );
-
 
 
 char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
@@ -130,7 +128,6 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
     return buf;
 }
-
 
 
 /*
@@ -244,7 +241,6 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
 
     return;
 }
-
 
 
 void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
@@ -404,7 +400,6 @@ if(!scan)
 }
 
 
-
 void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
@@ -514,7 +509,6 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 }
 
 
-
 void show_char_to_char( CHAR_DATA *list, CHAR_DATA *ch )
 {
     CHAR_DATA *rch;
@@ -540,7 +534,6 @@ void show_char_to_char( CHAR_DATA *list, CHAR_DATA *ch )
 
     return;
 }
-
 
 
 bool check_blind( CHAR_DATA *ch )
@@ -661,7 +654,6 @@ void do_socials(CHAR_DATA *ch, char *argument)
 }
 
 
-
 /* RT Commands to replace news, motd, imotd, etc from ROM */
 
 void do_news(CHAR_DATA *ch, char *argument)
@@ -699,12 +691,6 @@ void do_story(CHAR_DATA *ch, char *argument)
     do_help(ch,"story");
 }
 
-void do_wizlist(CHAR_DATA *ch, char *argument)
-{
-    UNUSED_PARAM(argument);
-
-    do_help(ch,"wizlist");
-}
 
 /* RT this following section holds all the auto commands from ROM, as well as
    replacements for config */
@@ -1461,7 +1447,6 @@ void do_examine( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 /*
@@ -2231,7 +2216,6 @@ void do_time( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_weather( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
@@ -2261,7 +2245,6 @@ void do_weather( CHAR_DATA *ch, char *argument )
     send_to_char( buf, ch );
     return;
 }
-
 
 
 /*
@@ -3056,7 +3039,6 @@ void do_inventory( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_equipment( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
@@ -3098,7 +3080,6 @@ void do_equipment( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 void do_credits( CHAR_DATA *ch, char *argument )
@@ -3488,7 +3469,6 @@ void do_consider( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void set_title( CHAR_DATA *ch, char *title )
 {
     char buf[MAX_STRING_LENGTH];
@@ -3544,7 +3524,6 @@ void set_class_title( CHAR_DATA *ch, bool force )
 }
 
 
-
 void do_title( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -3595,7 +3574,6 @@ void do_title( CHAR_DATA *ch, char *argument )
     ch->pcdata->title_custom = true;
     send_to_char( "Ok.\n\r", ch );
 }
-
 
 
 void do_description( CHAR_DATA *ch, char *argument )
@@ -3703,8 +3681,6 @@ and either a $t or a $T where you want the direction placed.\n\r", ch );
 }
 
 
-
-
 void do_depart( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -3767,9 +3743,6 @@ and either a $t or a $T where you want the direction placed.\n\r", ch );
     }
     return;
 }
-
-
-
 
 
 void do_report( CHAR_DATA *ch, char *argument )
@@ -4366,9 +4339,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
 }
 
 
-
-
-
 /*
  * 'Wimpy' originally by Dionysos.
  */
@@ -4402,7 +4372,6 @@ void do_wimpy( CHAR_DATA *ch, char *argument )
     send_to_char( buf, ch );
     return;
 }
-
 
 
 void do_password( CHAR_DATA *ch, char *argument )
@@ -5060,183 +5029,6 @@ void do_listclue( CHAR_DATA *ch, char *argument )
    and is now found in the hunt.c file */
 
 /*
-void do_danger( CHAR_DATA *ch, char *argument )
-{
-    ROOM_INDEX_DATA *was_in_room, *scan_room;
-    CHAR_DATA *rch;
-    CHAR_DATA *list;
-    int door, loop = 0, chance;
-    bool danger = false, found = false;
-
-    if(IS_NPC(ch) )
-       return;
-
-    if ( ch->position < POS_SLEEPING )
-    {
-	send_to_char( "Your down for the count!\n\r", ch );
-	return;
-    }
-
-   if( (chance = ch->pcdata->learned[gsn_danger_sense]) < 1)
-   {
-     send_to_char("Huh?\n\r",ch);
-     return;
-   }
-
-    if ( ch->position == POS_SLEEPING
-     && number_percent() + 25 > chance  )
-    {
-	send_to_char( "You sleep on, unconcerned about danger.\n\r", ch );
-	return;
-    }
-    else if( number_percent () > chance)
-    {
-      send_to_char("You sense no danger.\n\r",ch);
-      return;
-    }
-
-    was_in_room = ch->in_room;
-    scan_room   = ch->in_room;
-
-	for ( door = 0; door <= 9; door++ )
-	{
-	  EXIT_DATA *pexit;
-	  int counter = 0;
-
-	  if(ch->level >= LEVEL_HERO)
-	     loop = 3;
-	  else
-	    loop = 2;
-
-	  while( loop != 0 )
-	  {
-	    found = false;
-	    counter += 1;
-	    loop -= 1;
-
-	    if ( ( pexit = scan_room->exit[door] ) != NULL
-	    &&   !IS_SET(pexit->exit_info, EX_SECRET)
-	    &&   pexit->u1.to_room != NULL
-	    &&   pexit->u1.to_room != was_in_room )
-	    {
-		ch->in_room = pexit->u1.to_room;
-		scan_room = ch->in_room;
-		list = ch->in_room->people;
-
-		for ( rch = list; rch != NULL; rch = rch->next_in_room )
-		{
-		  if ( rch == ch )
-		      continue;
-
-		  if( IS_NPC(rch) && rch->level >= ch->level - 7
-		      && IS_SET(rch->act, ACT_AGGRESSIVE) )
-		  {
-		    danger = true;
-		    found = true;
-		    break;
-		  }
-		}
-
-	       if(danger)
-		  switch ( door )
-		  {
-		     case 0:
-			if( counter == 1)
-			  send_to_char ("You sense danger directly North of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the North.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far off to the North.\n\r", ch );
-		       break;
-		     case 1:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly East of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the East.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far off to the East.\n\r", ch );
-		       break;
-		     case 2:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly South of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the South.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far off to the South.\n\r", ch );
-		       break;
-		     case 3:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly West of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the West.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far off to the West.\n\r", ch );
-		       break;
-		     case 4:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly Above you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger Above you.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far Above you.\n\r", ch );
-		       break;
-		     case 5:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly Below you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger Below you.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far Below you.\n\r", ch );
-		       break;
-		     case 6:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly Northeast of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the Northeast.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far off to the Northeast.\n\r", ch );
-		       break;
-		     case 7:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly Northwest of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the Northwest.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far of to the Northwest.\n\r", ch );
-		       break;
-		     case 8:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly Southeast of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the Southeast.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far off to the Southeast.\n\r", ch );
-		       break;
-		     case 9:
-			if(counter == 1)
-			  send_to_char ("You sense danger directly Southwest of you.\n\r", ch );
-			else if( counter == 2)
-			  send_to_char ("You sense danger to the Southwest.\n\r", ch );
-			else
-			  send_to_char ("You sense danger far off to the Southwest.\n\r", ch );
-		       break;
-		  }
-	    }
-	    else
-	      loop = 0;
-	  }
-	  scan_room = was_in_room;
-	}
-
-    if(!found)
-      send_to_char("You sense no danger.\n\r",ch);
-    else
-      check_improve(ch,gsn_danger_sense,true,5);
-
-    ch->in_room = was_in_room;
-
-    return;
-}
 */
 
 
@@ -5715,7 +5507,6 @@ void do_remort( CHAR_DATA *ch, char *arg)
            ? class_table[ch->pcdata->guild].name : "none",
        class_table[requested_class].name, pc_race_table[requested_race].name,
        requested_guild >= 0 ? class_table[requested_guild].name : "none" );
-
 
 
    send_to_char( "   ** You have remorted to level 3. **\n\r", ch );

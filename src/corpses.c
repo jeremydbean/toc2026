@@ -659,16 +659,6 @@ void corpse_registry_forget_player( const char *name )
                            "come back after a restart" );
 }
 
-/* Whether a player has a corpse being kept -- in the world this boot. */
-bool corpse_registry_has( const char *name )
-{
-    int i;
-
-    for ( i = 0; i < track_count; i++ )
-        if ( !str_cmp( tracks[i].rec.owner, name ) )
-            return true;
-    return false;
-}
 
 /*
  * Resurrection gives a corpse's contents to its owner (resurrect.c), and

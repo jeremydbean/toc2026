@@ -723,22 +723,8 @@ int stash_count( CHAR_DATA *ch )
     return count;
 }
 
-/*
- * A limited item in the stash is still its owner's, and the max-load
- * counts must say so. Putting it away used to count it as back in the
- * world (obj_from_char), and logging out then took it out of the world
- * too: a stashed limited item stopped counting at all, and resets loaded
- * another. +1 marks an item (and what is directly in it, as obj_to_char
- * counts) as owned; -1 undoes that before obj_to_char counts it again.
- */
-static void stash_maxload( OBJ_DATA *obj, int signval )
-{
-    maxload_subtree( obj, signval, true );
-}
-
 void stash_receive( CHAR_DATA *ch, OBJ_DATA *obj )
 {
-    stash_maxload( obj, +1 );
     obj->next_content = ch->pcdata->stash;
     ch->pcdata->stash = obj;
     obj->carried_by   = NULL;
@@ -762,12 +748,6 @@ void stash_extract( CHAR_DATA *ch )
     {
         next = obj->next_content;
         obj->next_content = NULL;
-        /* Leaving with its owner, as what they carry does: still owned.
-           extract_obj counted it as gone from the world; extract_obj_player
-           counts nothing for an item that sits nowhere, but adds one for
-           each item it takes out of a bag, at any depth -- so take those
-           off first. */
-        maxload_subtree( obj, -1, false );
         extract_obj_player( obj );
     }
 
@@ -864,10 +844,9 @@ static void stash_show( CHAR_DATA *ch )
 }
 
 /* Put an object taken out of a stash back where it was, after `prev`
-   (NULL: at the front), counted as owned again. */
+   (NULL: at the front). */
 static void stash_reinsert( CHAR_DATA *owner, OBJ_DATA *obj, OBJ_DATA *prev )
 {
-    stash_maxload( obj, +1 );
     obj->carried_by = NULL;
     obj->in_room    = NULL;
     obj->in_obj     = NULL;
@@ -946,7 +925,6 @@ static void stash_take_commit( CHAR_DATA *ch, CHAR_DATA *owner, OBJ_DATA *obj,
     else
         prev->next_content = obj->next_content;
     obj->next_content = NULL;
-    stash_maxload( obj, -1 );
     obj_to_char( obj, ch );
 
     /* 3: the owner's file without it. */
@@ -1005,7 +983,6 @@ static void stash_take_commit( CHAR_DATA *ch, CHAR_DATA *owner, OBJ_DATA *obj,
                 else
                     before->next_content = obj->next_content;
                 obj->next_content = NULL;
-                stash_maxload( obj, -1 );
                 obj_to_char( obj, ch );
             }
         }
@@ -1259,7 +1236,6 @@ void do_stash( CHAR_DATA *ch, char *argument )
             prev->next_content = obj->next_content;
         obj->next_content = NULL;
 
-        stash_maxload( obj, -1 );
         obj_to_char( obj, ch );
         watch_log( ch, "withdrew %s (vnum %d) from the stash",
             obj->short_descr, obj->pIndexData->vnum );
@@ -2012,7 +1988,6 @@ void do_get( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_put( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -2178,7 +2153,6 @@ void do_put( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 static bool room_coin_merge_total(ROOM_INDEX_DATA *room, int amount,
@@ -3317,7 +3291,6 @@ void do_fill( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_drink( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -3445,7 +3418,6 @@ void do_drink( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 void do_eat( CHAR_DATA *ch, char *argument )
@@ -3589,7 +3561,6 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	save_char_obj( ch );
     return;
 }
-
 
 
 /*
@@ -4402,7 +4373,6 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_quaff( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -4458,7 +4428,6 @@ void do_quaff( CHAR_DATA *ch, char *argument )
     }
     return;
 }
-
 
 
 /* Whether `obj` is still something `ch` carries: walked, not trusted --
@@ -4674,7 +4643,6 @@ void do_recite( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_brandish( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
@@ -4777,7 +4745,6 @@ void do_brandish( CHAR_DATA *ch, char *argument )
 }
 
 
-
 void do_zap( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -4876,7 +4843,6 @@ void do_zap( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 void do_steal( CHAR_DATA *ch, char *argument )
@@ -5130,7 +5096,6 @@ void do_steal( CHAR_DATA *ch, char *argument )
 }
 
 
-
 /*
  * Shopping commands.
  */
@@ -5228,7 +5193,6 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
 }
 
 
-
 long get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
 {
     SHOP_DATA *pShop;
@@ -5279,7 +5243,6 @@ long get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
 
     return cost;
 }
-
 
 
 /*
@@ -5457,7 +5420,6 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
 }
 
 
-
 void do_list( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -5514,7 +5476,6 @@ void do_list( CHAR_DATA *ch, char *argument )
 	return;
     }
 }
-
 
 
 void do_sell( CHAR_DATA *ch, char *argument )
@@ -5658,7 +5619,6 @@ void do_sell( CHAR_DATA *ch, char *argument )
 
     return;
 }
-
 
 
 void do_value( CHAR_DATA *ch, char *argument )
@@ -7528,25 +7488,6 @@ void add_money(CHAR_DATA *ch, long amount)
   achievement_check_economy(ch, true);
 }
 
-void add_gold(CHAR_DATA *ch, long amount)
-{
-  adjust_coin_balance(ch, amount, TYPE_GOLD);
-}
-
-void add_copper(CHAR_DATA *ch, long amount)
-{
-  adjust_coin_balance(ch, amount, TYPE_COPPER);
-}
-
-void add_silver(CHAR_DATA *ch, long amount)
-{
-  adjust_coin_balance(ch, amount, TYPE_SILVER);
-}
-
-void add_platinum(CHAR_DATA *ch, long amount)
-{
-  adjust_coin_balance(ch, amount, TYPE_PLATINUM);
-}
 
 /* ============================================================
  * Casino commands:  SLOTS  and  BET

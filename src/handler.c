@@ -253,16 +253,6 @@ int check_immune(CHAR_DATA *ch, int dam_type)
 }
 
 
-/* checks mob format */
-bool is_old_mob(CHAR_DATA *ch)
-{
-    if (ch->pIndexData == NULL)
-	return false;
-    else if (ch->pIndexData->new_format)
-	return false;
-    return true;
-}
-
 /* for returning skill information */
 int get_skill(const CHAR_DATA *ch, int sn)
 {
@@ -1162,7 +1152,6 @@ int can_carry_w( CHAR_DATA *ch )
 }
 
 
-
 /*
  * See if a string is one of the names of an object.
  */
@@ -1252,8 +1241,6 @@ bool is_full_name ( char *str, char *namelist )
 	}
     }
 }
-
-
 
 
 static void restore_character_affect_bits( CHAR_DATA *ch,
@@ -1433,7 +1420,6 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
 }
 
 
-
 /*
  * Give an affect to a char.
  */
@@ -1517,7 +1503,6 @@ void affect_to_obj(OBJ_DATA *obj, AFFECT_DATA *paf)
     return;
 
 }
-
 
 
 /*
@@ -1636,7 +1621,6 @@ void affect_remove_obj( OBJ_DATA *obj, AFFECT_DATA *paf)
 }
 
 
-
 /*
  * Strip all affects of a given sn.
  */
@@ -1656,7 +1640,6 @@ void affect_strip( CHAR_DATA *ch, int sn )
 }
 
 
-
 /*
  * Return true if a char is affected by a spell.
  */
@@ -1672,7 +1655,6 @@ bool is_affected( CHAR_DATA *ch, int sn )
 
     return false;
 }
-
 
 
 /*
@@ -1829,7 +1811,6 @@ void char_from_room( CHAR_DATA *ch )
 }
 
 
-
 /*
  * Move a char into a room.
  */
@@ -1948,7 +1929,6 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 }
 
 
-
 /*
  * Give an obj to a char.
  */
@@ -1980,10 +1960,6 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
     obj->in_obj          = NULL;
     ch->carry_number    += get_obj_number( obj );
     ch->carry_weight    += get_obj_weight( obj );
-/* Blackbird:  update maxloadfile in case of player */
-    if (!IS_NPC(ch))
-        maxload_subtree( obj, +1, true );
-
     if (!IS_NPC(ch) && obj->pIndexData != NULL)
         achievement_record_object(ch, obj->pIndexData->vnum,
             ch->desc != NULL && ch->desc->connected == CON_PLAYING);
@@ -1996,7 +1972,6 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
         playlog_got(ch, obj);
     }
 }
-
 
 
 /*
@@ -2041,12 +2016,8 @@ void obj_from_char( OBJ_DATA *obj )
     obj->next_content    = NULL;
     ch->carry_number    -= get_obj_number( obj );
     ch->carry_weight    -= get_obj_weight( obj );
-/* Update max_load_file (Blackbird) */
-    if (!IS_NPC(ch))
-        maxload_subtree( obj, -1, true );
     return;
 }
-
 
 
 /*
@@ -2110,7 +2081,6 @@ int apply_ac( OBJ_DATA *obj, int iWear, int type )
 
     return 0;
 }
-
 
 
 /*
@@ -2302,7 +2272,6 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 }
 
 
-
 /*
  * Unequip a char with an obj.
  */
@@ -2388,7 +2357,6 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 }
 
 
-
 /*
  * Count occurrences of an obj in a list.
  */
@@ -2410,7 +2378,6 @@ int count_obj_list( OBJ_INDEX_DATA *pObjIndex, OBJ_DATA *list )
 
     return nMatch;
 }
-
 
 
 /*
@@ -2456,7 +2423,6 @@ void obj_from_room( OBJ_DATA *obj )
 }
 
 
-
 /*
  * Move an obj into a room.
  */
@@ -2471,27 +2437,6 @@ void obj_to_room( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex )
     return;
 }
 
-
-
-/*
- * Count a whole object tree into (+1) or out of (-1) what players own,
- * for every limited item in it (maxload.c). Every change of hands takes
- * the whole tree: the four transfer functions counted an object and at
- * most its immediate contents, so a bag holding a limited item, put into
- * another carried bag, left the item counted as back in the world --
- * maxload.txt then undercounted it, and after a reboot a reset loaded
- * another (audit, 2026-10-21). `self` false counts the contents only.
- */
-void maxload_subtree( OBJ_DATA *obj, int signval, bool self )
-{
-    OBJ_DATA *inner;
-
-    if ( self && obj->pIndexData != NULL
-    &&   get_maxload_index( obj->pIndexData->vnum ) != NULL )
-        add_maxload_index( obj->pIndexData->vnum, signval, 0 );
-    for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
-        maxload_subtree( inner, signval, true );
-}
 
 /*
  * Move an object into an object.
@@ -2512,9 +2457,6 @@ void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
     {
 	if ( obj_to->carried_by != NULL )
 	{
-/* Blackbird: Update maxloadfile */
-            if ( !IS_NPC(obj_to->carried_by) )
-                maxload_subtree( obj, +1, true );
 	    obj_to->carried_by->carry_number += get_obj_number( obj );
 	    obj_to->carried_by->carry_weight += get_obj_weight( obj );
 	}
@@ -2522,7 +2464,6 @@ void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
 
     return;
 }
-
 
 
 /*
@@ -2571,9 +2512,6 @@ void obj_from_obj( OBJ_DATA *obj )
     {
 	if ( obj_from->carried_by != NULL )
 	{
-/* Blackbird: Update maxloadfile */
-            if ( !IS_NPC(obj_from->carried_by) )
-                maxload_subtree( obj, -1, true );
 	    obj_from->carried_by->carry_number -= get_obj_number( obj );
 	    obj_from->carried_by->carry_weight -= get_obj_weight( obj );
 	}
@@ -2583,9 +2521,8 @@ void obj_from_obj( OBJ_DATA *obj )
 }
 
 /*
- * Extract an obj from the world.
- * Variant made by blackbird. We must not updat player in case player leaves
- * the game.
+ * Extract a player's object as they leave the game: unlike extract_obj
+ * it writes no play-journal "item" row, since nothing was lost.
  */
 void extract_obj_player( OBJ_DATA *obj )
 {
@@ -2605,16 +2542,10 @@ void extract_obj_player( OBJ_DATA *obj )
 
     if ( obj->in_room != NULL )
         obj_from_room( obj );
-    else if ( obj->carried_by != NULL ) {
+    else if ( obj->carried_by != NULL )
         obj_from_char( obj );
-        if (get_maxload_index(vnum) != NULL)
-           add_maxload_index(vnum, +1, 0);
-    }
-    else if ( obj->in_obj != NULL ) {
+    else if ( obj->in_obj != NULL )
         obj_from_obj( obj );
-        if (get_maxload_index(vnum) != NULL)
-           add_maxload_index(vnum, +1, 0);
-    }
 
     for ( obj_content = obj->contains; obj_content; obj_content = obj_next )
     {
@@ -2675,7 +2606,6 @@ void extract_obj_player( OBJ_DATA *obj )
 }
 
 
-
 void extract_obj( OBJ_DATA *obj )
 {
     OBJ_DATA *obj_content;
@@ -2693,11 +2623,6 @@ void extract_obj( OBJ_DATA *obj )
     else if(vnum == 6)	i=3;
     else if(vnum == 7)	i=4;
 
-/* Blackbird: Update maxloadfile */
-    if ((obj->pIndexData != NULL) &&
-        (get_maxload_index(obj->pIndexData->vnum) != NULL)) {
-       add_maxload_index(obj->pIndexData->vnum, -1, 1);
-    }
     if(obj->trapped != NULL)
       char_from_obj(obj);
 
@@ -2767,7 +2692,6 @@ void extract_obj( OBJ_DATA *obj )
 }
 
 
-
 /*
  * Extract a char from the world.
  */
@@ -2814,7 +2738,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     for ( obj = ch->carrying; obj != NULL; obj = obj_next )
     {
 	obj_next = obj->next_content;
-/* Blackbird: Take care that maxload does not get updated in case player leaves */
+/* A player's things leave quietly at a quit (extract_obj_player). */
         if (IS_NPC(ch))
 	  extract_obj( obj );
         else
@@ -2860,7 +2784,6 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 }
 
 
-
 /*
  * Find a char in the room.
  */
@@ -2901,8 +2824,6 @@ CHAR_DATA *get_char_room( CHAR_DATA *ch, char *argument )
 }
 
 
-
-
 /*
  * Find a char in the world.
  */
@@ -2930,7 +2851,6 @@ CHAR_DATA *get_char_world( CHAR_DATA *ch, char *argument )
 
     return NULL;
 }
-
 
 
 /*
@@ -2977,7 +2897,6 @@ OBJ_DATA *get_obj_list( CHAR_DATA *ch, char *argument, OBJ_DATA *list )
 }
 
 
-
 /*
  * Find an obj in player's inventory.
  */
@@ -3003,7 +2922,6 @@ OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
 
     return NULL;
 }
-
 
 
 /*
@@ -3033,7 +2951,6 @@ OBJ_DATA *get_obj_wear( CHAR_DATA *ch, char *argument )
 }
 
 
-
 /*
  * Find an obj in the room or in inventory.
  */
@@ -3056,7 +2973,6 @@ OBJ_DATA *get_obj_here( CHAR_DATA *ch, char *argument )
 
     return NULL;
 }
-
 
 
 /*
@@ -3159,7 +3075,6 @@ OBJ_DATA *create_money( int amount, int type )
 }
 
 
-
 /*
  * Return # of objects which an object counts as.
  * Thanks to Tony Chamberlain for the correct recursive code here.
@@ -3196,7 +3111,6 @@ int get_obj_weight( OBJ_DATA *obj )
 }
 
 
-
 /*
  * True if room is dark.
  */
@@ -3225,7 +3139,6 @@ bool room_is_dark( ROOM_INDEX_DATA *pRoomIndex )
 
     return false;
 }
-
 
 
 /*
@@ -3325,7 +3238,6 @@ bool can_see_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 
     return true;
 }
-
 
 
 /*
@@ -3735,7 +3647,6 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 }
 
 
-
 /*
  * True if char can see obj.
  */
@@ -3778,7 +3689,6 @@ bool can_see_obj( CHAR_DATA *ch, const OBJ_DATA *obj )
 }
 
 
-
 /*
  * True if char can drop obj.
  */
@@ -3792,7 +3702,6 @@ bool can_drop_obj( CHAR_DATA *ch, OBJ_DATA *obj )
 
     return false;
 }
-
 
 
 /*
@@ -3840,7 +3749,6 @@ char *item_type_name( OBJ_DATA *obj )
 }
 
 
-
 /*
  * Return ascii name of an affect location.
  */
@@ -3879,7 +3787,6 @@ char *affect_loc_name( int location )
     bug( "Affect_location_name: unknown location %d.", location );
     return "(unknown)";
 }
-
 
 
 /*

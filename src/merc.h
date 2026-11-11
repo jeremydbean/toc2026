@@ -95,10 +95,6 @@ typedef struct  weather_data            WEATHER_DATA;
 typedef struct  room_aff_data           ROOM_AFF_DATA;
 typedef struct  were_form               WERE_FORM;
 typedef struct  pkill_list_data         PKILL_LIST_DATA;
-#ifndef ITEM_MAX_LOAD_TYPEDEF
-#define ITEM_MAX_LOAD_TYPEDEF
-typedef struct  item_max_load           ITEM_MAX_LOAD;
-#endif
 typedef struct  wiz_data                WIZ_DATA;
 typedef struct  offense_data            OFFENSE_DATA;
 
@@ -110,23 +106,6 @@ typedef void SPELL_FUN  ( int sn, int level, CHAR_DATA *ch, void *vo );
 #define DECLARE_DO_FUN( fun )      void fun( CHAR_DATA *ch, char *argument )
 #define DECLARE_SPEC_FUN( fun )    SPEC_FUN fun
 #define DECLARE_SPELL_FUN( fun )   void fun( int sn, int level, CHAR_DATA *ch, void *vo )
-
-/*
- * Script integration scaffolding. These types model the event hooks exposed to
- * a future embedded Lua runtime so that game code can emit high-level events
- * without knowing whether a scripting VM is active.
- */
-typedef enum
-{
-    SCRIPT_EVENT_PRE_POLL = 0,
-    SCRIPT_EVENT_CHAR_LOGIN,
-    SCRIPT_EVENT_TIMER_TICK,
-    SCRIPT_EVENT_INPUT_RECEIVED,
-    SCRIPT_EVENT_COMMAND_PREPARSE,
-    SCRIPT_EVENT_COMMAND_NOT_FOUND,
-    SCRIPT_EVENT_BEFORE_COMMAND,
-    SCRIPT_EVENT_AFTER_COMMAND
-} script_event_type;
 
 typedef enum
 {
@@ -248,42 +227,6 @@ typedef enum
     ACH_SET_PSI_DISCIPLINES,    /* psionic disciplines used successfully */
     ACH_SET_COUNT
 } achievement_set;
-
-typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
-
-typedef struct script_timer_tick_payload
-{
-    long   delta_usec;
-    double delta_seconds;
-} script_timer_tick_payload;
-
-typedef struct script_input_event_payload
-{
-    DESCRIPTOR_DATA *descriptor;
-    const char      *buffer;
-    size_t           length;
-} script_input_event_payload;
-
-typedef struct script_char_login_payload
-{
-    CHAR_DATA *ch;
-    bool       is_new_character;
-    bool       is_reconnect;
-} script_char_login_payload;
-
-typedef struct script_command_payload
-{
-    CHAR_DATA *ch;
-    char      *command;
-    size_t     command_capacity;
-    char      *argument;
-    bool       handled;
-} script_command_payload;
-
-typedef struct script_loop_prepoll_payload
-{
-    const struct timeval *last_tick_time;
-} script_loop_prepoll_payload;
 
 /* String and memory management parameters. */
 #define MAX_KEY_HASH             2048
@@ -494,16 +437,6 @@ struct pkill_list_data
    char            *name;
    long             pkills_given;
    long             pkills_received;
-};
-
-/* Maxload structure. */
-struct item_max_load
-{
-   ITEM_MAX_LOAD  * next;
-   int              vnum;
-   int              item_game_load;
-   int              item_curr_load;
-   int              item_max_load;
 };
 
 /* Time and weather stuff. */
@@ -2470,7 +2403,6 @@ struct  pc_data
     bool                color;
     long                bank;
     long                dcount;
-    int                 corpses;
     char * ignore;
     char * afk_msg;             /* optional message shown to tellers while AFK */
     long                pkills_given;
@@ -3374,7 +3306,6 @@ void    corpse_registry_login       ( CHAR_DATA *ch );
 void    corpse_registry_moved         ( OBJ_DATA *corpse );
 void    corpse_registry_making        ( bool making );
 void    corpse_registry_forget_player ( const char *name );
-bool    corpse_registry_has           ( const char *name );
 void    corpse_registry_boot          ( void );
 void    corpse_registry_update        ( void );
 const char *playlog_cause            ( void );
@@ -3502,7 +3433,6 @@ int     achievement_points ( const CHAR_DATA *ch );
 void    achievement_count ( CHAR_DATA *ch, achievement_counter counter,
                             long amount );
 bool    achievement_note ( CHAR_DATA *ch, achievement_set set, long id );
-bool    achievement_set_has ( const CHAR_DATA *ch, achievement_set set, long id );
 void    achievement_record_room_visit ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
 void    achievement_party_count ( CHAR_DATA *killer, ROOM_INDEX_DATA *room,
                                   achievement_counter counter );
@@ -3562,10 +3492,6 @@ void    format_price    (long copper_amount, char *buf, size_t buf_size);
 void    format_coins       (long copper_amount, char *buf, size_t buf_size);
 int     query_carry_weight ( CHAR_DATA *ch);
 int     query_carry_coins  ( CHAR_DATA *ch, long amount);
-void    add_gold           (CHAR_DATA *ch, long amount);
-void    add_copper         (CHAR_DATA *ch, long amount);
-void    add_silver         (CHAR_DATA *ch, long amount);
-void    add_platinum       (CHAR_DATA *ch, long amount);
 
 /* comm.c */
 void    show_string     ( struct descriptor_data *d, char *input);
@@ -3734,7 +3660,6 @@ int     guild_lookup    ( const char *name);
 char* get_guildname   ( const int guild );
 int     castle_lookup   ( const char *name);
 char* get_castlename  ( const int guild );
-bool    is_old_mob      (CHAR_DATA *ch);
 int     get_skill       ( const CHAR_DATA *ch, int sn );
 bool    skill_roll_sure ( CHAR_DATA *ch );
 bool    skill_roll_landed ( CHAR_DATA *ch, bool landed );
@@ -3847,7 +3772,6 @@ int     count_obj_list  ( OBJ_INDEX_DATA *obj, OBJ_DATA *list );
 void    obj_from_room   ( OBJ_DATA *obj );
 void    obj_to_room     ( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex );
 void    obj_to_obj      ( OBJ_DATA *obj, OBJ_DATA *obj_to );
-void    maxload_subtree ( OBJ_DATA *obj, int signval, bool self );
 bool    wear_requirements_quiet ( CHAR_DATA *ch, OBJ_DATA *obj );
 bool    shield_hand_free ( CHAR_DATA *ch );
 const char *secondary_weapon_refusal ( CHAR_DATA *ch, OBJ_DATA *obj );
@@ -3865,8 +3789,6 @@ bool    write_to_descriptor ( DESCRIPTOR_DATA *d, const char *txt, int length );
 bool    write_raw_to_descriptor ( DESCRIPTOR_DATA *d, const char *txt, int length );
 CD * get_char_room   ( CHAR_DATA *ch, char *argument );
 CD * get_char_world  ( CHAR_DATA *ch, char *argument );
-CHAR_DATA * find_char_by_name( const char *name );
-OBJ_DATA * find_object_by_name( const char *name );
 
 #define FOR_EACH_CHARACTER(iter, ch) \
     for ( list_iterator_start( &(iter), &character_list ); \
@@ -4046,17 +3968,6 @@ void    remove_room_affect ( ROOM_INDEX_DATA *pRoom, ROOM_AFF_DATA *raf );
 void    room_affect     (CHAR_DATA *ch, ROOM_INDEX_DATA *pRoom, int door);
 void    extract_room    ( ROOM_INDEX_DATA *pRoom );
 
-/* webserver.c */
-void            init_web(int port);
-void            handle_web(void);
-void            shutdown_web(void);
-
-/* script_event.c */
-void script_event_subscribe( script_event_type type,
-                             script_event_callback callback,
-                             void *context );
-void script_event_unsubscribe( script_event_callback callback, void *context );
-void script_event_emit( script_event_type type, void *payload );
 
 /* interp.c */
 extern  bool    interp_from_alias;
@@ -4085,15 +3996,8 @@ int     slot_lookup     ( int slot );
 bool    saves_spell     ( int level, CHAR_DATA *victim );
 void    obj_cast_spell  ( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj );
 
-/* maxload.c */
-ITEM_MAX_LOAD * get_maxload_index   (int vnum);
-void            add_maxload_index   (int vnum, int signval, int game_load);
-int             do_maxload_item     (int vnum);
-void            write_maxload_file  (void);
-void            read_maxload_file   (void);
 
 /* misc.c */
-char * first_arg        ( char *argument, char *arg_first, bool fCase );
 
 /* pkill.c */
 void update_pkills      ( CHAR_DATA *ch );
@@ -4108,15 +4012,6 @@ void save_wizlist      ( void );
 bool    save_char_obj   ( CHAR_DATA *ch );
 int     save_char_obj_status ( void );
 bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
-void    corpse_back     ( CHAR_DATA *ch, OBJ_DATA *corpse );
-/* A corpse history (corpse/<name>.cps) holds the last CORPSE_HISTORY_ROWS
-   corpses, newest first. Row r: [0] the count, [1..count] the items,
-   [count+1] the checksum; vnums in one array, levels in the other. */
-#define CORPSE_HISTORY_ROWS 5
-#define CORPSE_VALUES       1024
-#define CORPSE_MAX_ITEMS    ( CORPSE_VALUES - 3 )
-int     corpse_history_read( FILE *fp, int (*cont)[CORPSE_VALUES],
-                             int (*level)[CORPSE_VALUES], int rows );
 void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
 void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */
 void    player_snapshot_pin ( const char *file ); /* rotation skips it; NULL unpins */
@@ -4126,7 +4021,6 @@ bool    player_milestone_required ( CHAR_DATA *asker, CHAR_DATA *ch, const char 
 /* skills.c */
 bool    parse_gen_groups ( CHAR_DATA *ch,char *argument );
 void    list_group_costs ( CHAR_DATA *ch );
-void    list_group_known ( CHAR_DATA *ch );
 int     exp_per_level   ( CHAR_DATA *ch, int points );
 int     color_display_count ( void );
 const char *color_reset_code( void );

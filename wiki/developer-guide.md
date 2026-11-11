@@ -116,7 +116,6 @@ The parsers have different purposes and both must pass.
 | `save.c` | Player serialization, loading, and version snapshots |
 | `quest.c`, `pkill.c` | Automated quest and player-killing systems |
 | `special.c` | Mobile special functions |
-| `script_event.c` | Scripted event support |
 | `season.c` | Seasonal world behavior |
 | `string_safe.c` | Bounded string compatibility helpers |
 | `const.c` | Class, race, skill, group, title, and constant tables |

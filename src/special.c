@@ -71,7 +71,6 @@ DECLARE_SPEC_FUN(       spec_club_bartender     );
 DECLARE_SPEC_FUN(       spec_club_dj            );
 DECLARE_SPEC_FUN(       spec_paramedic          );
 DECLARE_SPEC_FUN(       spec_quest_master       );
-DECLARE_SPEC_FUN(       spec_kidnapper          );
 DECLARE_SPEC_FUN(       spec_monk               );
 DECLARE_SPEC_FUN(       spec_oracle             );
 DECLARE_SPEC_FUN(       spec_banker             );
@@ -266,7 +265,6 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_club_dj",           spec_club_dj            },
     { "spec_paramedic",         spec_paramedic          },
     { "spec_quest_master",      spec_quest_master       },
-    { "spec_kidnapper",         spec_kidnapper          },
     { "spec_monk",              spec_monk               },
     { "spec_oracle",            spec_oracle             },
     { "spec_banker",            spec_banker             },
@@ -3415,23 +3413,6 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
    }
 
    return false;
-}
- 
-/*
- * The black dragon (mob 4474) used to snatch a player of a random level
- * anywhere in the world, every few pulses, and leave them cursed with half
- * their hit points and one move, the dragon itself nowhere to be fought.
- * The dragon is a disaster now (disaster.c): it carries one character off
- * and lands beside them, to be fought or left. This stays in the table so
- * the area file still loads, and does nothing.
- */
-bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument )
-{
-    UNUSED_PARAM(mob);
-    UNUSED_PARAM(ch);
-    UNUSED_PARAM(cmd);
-    UNUSED_PARAM(argument);
-    return false;
 }
  
 bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
