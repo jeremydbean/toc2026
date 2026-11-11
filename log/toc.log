@@ -289198,3 +289198,110 @@ Wed Nov 11 21:33:47 2026 :: Log Alaric [5364]: west
 Wed Nov 11 21:33:47 2026 :: Log Alaric [5385]: arrived (Outside the East Gate of Midgaard) from 5364
 Wed Nov 11 21:33:47 2026 :: Log Alaric [5385]: west
 Wed Nov 11 21:33:47 2026 :: Log Alaric [5384]: arrived (Inside the East Gate of Midgaard) from 5385
+Wed Nov 11 21:34:34 2026 :: Log Alaric [5384]: east
+Wed Nov 11 21:34:34 2026 :: Log Alaric [5385]: arrived (Outside the East Gate of Midgaard) from 5384
+Wed Nov 11 21:34:34 2026 :: Log Alaric [5385]: east
+Wed Nov 11 21:34:34 2026 :: Log Alaric [5364]: arrived (City Entrance) from 5385
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5364]: east
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5362]: arrived (The Cross Roads) from 5364
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5362]: south
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5361]: arrived (The dwarf forest) from 5362
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5361]: south
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5360]: arrived (The dwarf forest) from 5361
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5360]: south
+Wed Nov 11 21:34:35 2026 :: Log Alaric [5359]: arrived (The dwarf forest) from 5360
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5359]: south
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5358]: arrived (The dwarf forest) from 5359
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5358]: west
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5357]: arrived (A trail at the end of the dwarf forest) from 5358
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5357]: west
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5356]: arrived (A trail at the end of the dwarf forest) from 5357
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5356]: west
+Wed Nov 11 21:34:36 2026 :: Log Alaric [5300]: arrived (The Grand Gate of Thalos) from 5356
+Wed Nov 11 21:34:39 2026 :: Log Alaric [5300]: recal
+Wed Nov 11 21:34:39 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 5300
+Wed Nov 11 21:34:48 2026 :: Log Alaric [2497]: recal
+Wed Nov 11 21:34:49 2026 :: Log Alaric [2497]: enter door
+Wed Nov 11 21:34:49 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov 11 21:34:49 2026 :: Log Alaric [2401]: enter door
+Wed Nov 11 21:34:49 2026 :: Log Alaric [2401]: east
+Wed Nov 11 21:34:49 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov 11 21:34:49 2026 :: Log Alaric [2403]: east
+Wed Nov 11 21:34:49 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2420]: east
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2421]: east
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2422]: east
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2423]: east
+Wed Nov 11 21:34:50 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Nov 11 21:34:51 2026 :: Log Alaric [2424]: east
+Wed Nov 11 21:34:51 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Nov 11 21:34:51 2026 :: Log Alaric [2425]: east
+Wed Nov 11 21:34:51 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Nov 11 21:34:51 2026 :: Log Alaric [2426]: east
+Wed Nov 11 21:34:51 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Nov 11 21:34:51 2026 :: Log Alaric [2440]: north
+Wed Nov 11 21:34:51 2026 :: Log Alaric [3908]: arrived (East trail around Dresden) from 2440
+Wed Nov 11 21:34:52 2026 :: Log Alaric [3908]: north
+Wed Nov 11 21:34:52 2026 :: Log Alaric [3907]: arrived (East trail around Dresden) from 3908
+Wed Nov 11 21:34:52 2026 :: Log Alaric [3907]: north
+Wed Nov 11 21:34:52 2026 :: Log Alaric [3906]: arrived (Northeast corner of dusty trail.) from 3907
+Wed Nov 11 21:34:52 2026 :: Log Alaric [3906]: east
+Wed Nov 11 21:34:52 2026 :: Log Alaric [56]: arrived (Peaceful Path) from 3906
+Wed Nov 11 21:34:52 2026 :: Log Alaric [56]: east
+Wed Nov 11 21:34:52 2026 :: Log Alaric [8950]: arrived (At the edge of the grove) from 56
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8950]: east
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8951]: arrived (Inside the grove) from 8950
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8951]: east
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8904]: arrived (The holy grove) from 8951
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8904]: north
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8901]: arrived (The holy grove) from 8904
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8901]: east
+Wed Nov 11 21:34:53 2026 :: Log Alaric [8902]: arrived (The holy grove) from 8901
+Wed Nov 11 21:34:54 2026 :: Log Alaric [8902]: east
+Wed Nov 11 21:34:54 2026 :: Log Alaric [8903]: arrived (A clearing in the woods) from 8902
+Wed Nov 11 21:34:54 2026 :: Log Alaric [8903]: north
+Wed Nov 11 21:34:54 2026 :: Log Alaric [5378]: arrived (The Void) from 8903
+Wed Nov 11 21:34:59 2026 :: Log Alaric [5378]: north
+Wed Nov 11 21:34:59 2026 :: Log Alaric [5375]: arrived (The Void) from 5378
+Wed Nov 11 21:34:59 2026 :: Log Alaric [5375]: west
+Wed Nov 11 21:34:59 2026 :: Log Alaric [5368]: arrived (A clearing in the woods) from 5375
+Wed Nov 11 21:34:59 2026 :: Log Alaric [5368]: west
+Wed Nov 11 21:34:59 2026 :: Log Alaric [5367]: arrived (The holy grove) from 5368
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5367]: west
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5366]: arrived (The holy grove) from 5367
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5366]: south
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5369]: arrived (The holy grove) from 5366
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5369]: west
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5362]: arrived (The Cross Roads) from 5369
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5362]: south
+Wed Nov 11 21:35:00 2026 :: Log Alaric [5361]: arrived (The dwarf forest) from 5362
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5361]: south
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5360]: arrived (The dwarf forest) from 5361
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5360]: south
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5359]: arrived (The dwarf forest) from 5360
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5359]: south
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5358]: arrived (The dwarf forest) from 5359
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5358]: west
+Wed Nov 11 21:35:01 2026 :: Log Alaric [5357]: arrived (A trail at the end of the dwarf forest) from 5358
+Wed Nov 11 21:35:02 2026 :: Log Alaric [5357]: west
+Wed Nov 11 21:35:02 2026 :: Log Alaric [5356]: arrived (A trail at the end of the dwarf forest) from 5357
+Wed Nov 11 21:35:02 2026 :: Log Alaric [5356]: west
+Wed Nov 11 21:35:02 2026 :: Log Alaric [5300]: arrived (The Grand Gate of Thalos) from 5356
+Wed Nov 11 21:35:03 2026 :: Log Alaric [5300]: get all
+Wed Nov 11 21:35:04 2026 :: Log Alaric [5300]: recal
+Wed Nov 11 21:35:04 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 5300
+Wed Nov 11 21:35:04 2026 :: Log Alaric [2497]: aq co
+Wed Nov 11 21:35:04 2026 :: Log Alaric [2497]: copper +246606624
+Wed Nov 11 21:35:04 2026 :: Log Alaric [2497]: quest complete: 246p 60g 66s 24c, 64 quest points, rush (streak bonus 40%)
+Wed Nov 11 21:35:04 2026 :: Snapshot of Alaric taken before quest: Alaric.20261111_213504.quest (PRESTORE Alaric to see it).
+Wed Nov 11 21:35:07 2026 :: Log Alaric [2497]: aq ga no
+Wed Nov 11 21:35:08 2026 :: Log Alaric [2497]: who
+Wed Nov 11 21:35:09 2026 :: Log Alaric [2497]: score
+Wed Nov 11 21:35:11 2026 :: Log Alaric [2497]: score
+Wed Nov 11 21:35:12 2026 :: Log Alaric [2497]: who
+Wed Nov 11 21:35:13 2026 :: Log Alaric [2497]: i
+Wed Nov 11 21:35:15 2026 :: Log Alaric [2497]: eq
+Wed Nov 11 21:35:15 2026 :: Log Alaric [2497]: score
