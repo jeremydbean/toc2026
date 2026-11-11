@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111levelstats 2026-11-11
+What you gain at a level -- hit points, mana, moves and practices -- is
+now worked out from your own stats and your gear, not your spells. Level
+in your best gear; a buff or a potion no longer adds anything.
+
 @ 20261111consider 2026-11-11
 CONSIDER now weighs what is on both of you, not only your weapons: a
 foe's sanctuary, protection or divine protection, its fire or frost

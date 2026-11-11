@@ -1018,27 +1018,58 @@ int get_age( CHAR_DATA *ch )
 }
 
 /* command for retrieving stats */
-int get_curr_stat( CHAR_DATA *ch, int stat )
+static int stat_ceiling( CHAR_DATA *ch, int stat )
 {
     int max;
 
     if (IS_NPC(ch) || ch->level > LEVEL_IMMORTAL)
-	max = MAX_STAT;
+	return MAX_STAT;
 
-    else
+    max = pc_race_table[ch->race].max_stats[stat] + 4;
+
+    if (class_table[ch->class].attr_prime == stat)
+	max += 2;
+
+    if ( ch->race == race_lookup("human"))
+	max += 1;
+
+    return UMIN(max,MAX_STAT);
+}
+
+int get_curr_stat( CHAR_DATA *ch, int stat )
+{
+    return URANGE(3,ch->perm_stat[stat] + ch->mod_stat[stat], stat_ceiling( ch, stat ));
+}
+
+/*
+ * The stat a level is rolled against (owner, 2026-11-11: "buffs shouldn't
+ * affect leveling, but gear should"): the permanent stat and what worn
+ * gear lends it -- each piece's prototype affects and its own, exactly
+ * as equip_char and reset_char apply them -- and nothing a spell, potion
+ * or EMPOWER lends, under the same ceiling get_curr_stat keeps.
+ */
+int get_level_stat( CHAR_DATA *ch, int stat )
+{
+    static const int loc_of[MAX_STATS] =
+	{ APPLY_STR, APPLY_INT, APPLY_WIS, APPLY_DEX, APPLY_CON };
+    OBJ_DATA *obj;
+    AFFECT_DATA *paf;
+    int gear = 0;
+
+    if ( stat < 0 || stat >= MAX_STATS )
+	return 3;
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
-	max = pc_race_table[ch->race].max_stats[stat] + 4;
-
-	if (class_table[ch->class].attr_prime == stat)
-	    max += 2;
-
-	if ( ch->race == race_lookup("human"))
-	    max += 1;
-
-	max = UMIN(max,MAX_STAT);
+	if ( obj->wear_loc == WEAR_NONE )
+	    continue;
+	for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
+	    if ( paf->location == loc_of[stat] )
+		gear += paf->modifier;
+	for ( paf = obj->affected; paf != NULL; paf = paf->next )
+	    if ( paf->location == loc_of[stat] )
+		gear += paf->modifier;
     }
-
-    return URANGE(3,ch->perm_stat[stat] + ch->mod_stat[stat], max);
+    return URANGE(3, ch->perm_stat[stat] + gear, stat_ceiling( ch, stat ));
 }
 
 /* command for returning max training score */

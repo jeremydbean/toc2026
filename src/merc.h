@@ -3818,6 +3818,7 @@ void  conn_guard_report       args( ( CHAR_DATA *ch ) );
 bool  conn_guard_allow        args( ( const char *text ) );
 extern bool hyrule_exact_blow;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );
+int     get_level_stat  ( CHAR_DATA *ch, int stat );  /* gear, not spells: a level's roll */
 int     get_max_train   ( CHAR_DATA *ch, int stat );
 int     can_carry_n     ( CHAR_DATA *ch );
 int     can_carry_w     ( CHAR_DATA *ch );

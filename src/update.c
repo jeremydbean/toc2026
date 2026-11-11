@@ -493,15 +493,15 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
     if (guild < 0 || guild >= MAX_CLASS)    /* GUILD_NONE, GUILD_ANY */
 	guild = ch->class;
 
-      add_hp	= (sh_int)(con_app[get_curr_stat(ch,STAT_CON)].hitp +
+      add_hp	= (sh_int)(con_app[get_level_stat(ch,STAT_CON)].hitp +
 		 UMAX(class_table[ch->class].hp_min,
 		    ( number_range( class_table[ch->class].hp_min,
 				    class_table[ch->class].hp_max ) * 0.5 +
 		      number_range( class_table[guild].hp_min,
 				    class_table[guild].hp_max ) * 0.5) ));
 /*
-    add_mana 	= number_range(2,(2*get_curr_stat(ch,STAT_INT)
-EC				  + get_curr_stat(ch,STAT_WIS))/5);
+    add_mana 	= number_range(2,(2*get_level_stat(ch,STAT_INT)
+EC				  + get_level_stat(ch,STAT_WIS))/5);
     if (!class_table[ch->class].fMana && !class_table[guild].fMana)
 	add_mana /= 2;
 */
@@ -510,39 +510,39 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
     if (!class_table[ch->class].fMana && !class_table[guild].fMana)
     {
       add_mana =
-	number_range(int_app[get_curr_stat(ch,STAT_INT)].mana_gain,
-	( (get_curr_stat(ch,STAT_INT) + get_curr_stat(ch,STAT_WIS) )/5 ) );
+	number_range(int_app[get_level_stat(ch,STAT_INT)].mana_gain,
+	( (get_level_stat(ch,STAT_INT) + get_level_stat(ch,STAT_WIS) )/5 ) );
       add_mana /= 2;
     }
     else if ((!class_table[ch->class].fMana && class_table[guild].fMana)
 	 ||  (class_table[ch->class].fMana && !class_table[guild].fMana))
     {
       add_mana =
-	number_range(int_app[get_curr_stat(ch,STAT_INT)].mana_gain,
-	((get_curr_stat(ch,STAT_INT) + get_curr_stat(ch,STAT_WIS))/4));
+	number_range(int_app[get_level_stat(ch,STAT_INT)].mana_gain,
+	((get_level_stat(ch,STAT_INT) + get_level_stat(ch,STAT_WIS))/4));
       add_mana = (add_mana * ( 100 * 3/4) ) / 100;
     }
     else
       add_mana =
-	number_range(int_app[get_curr_stat(ch,STAT_INT)].mana_gain,
-	( (get_curr_stat(ch,STAT_INT) + get_curr_stat(ch,STAT_WIS) )/3 ) );
+	number_range(int_app[get_level_stat(ch,STAT_INT)].mana_gain,
+	( (get_level_stat(ch,STAT_INT) + get_level_stat(ch,STAT_WIS) )/3 ) );
   }
   else
   {
     if(ch->class == CLASS_MONK)
     {  add_mana =
-	number_range(int_app[get_curr_stat(ch,STAT_INT)].mana_gain,
-	((get_curr_stat(ch,STAT_INT) + get_curr_stat(ch,STAT_WIS))/2));
+	number_range(int_app[get_level_stat(ch,STAT_INT)].mana_gain,
+	((get_level_stat(ch,STAT_INT) + get_level_stat(ch,STAT_WIS))/2));
       add_mana = (add_mana * ( 100 * 3/4) ) / 100;
     }
     else
       add_mana =
-	number_range(int_app[get_curr_stat(ch,STAT_INT)].mana_gain,
-	( (get_curr_stat(ch,STAT_INT) + get_curr_stat(ch,STAT_WIS) )/3 ) );
+	number_range(int_app[get_level_stat(ch,STAT_INT)].mana_gain,
+	( (get_level_stat(ch,STAT_INT) + get_level_stat(ch,STAT_WIS) )/3 ) );
   }
-    add_move	= number_range( 1, (get_curr_stat(ch,STAT_CON)
-				  + get_curr_stat(ch,STAT_DEX))/6 );
-    add_prac	= wis_app[get_curr_stat(ch,STAT_WIS)].practice;
+    add_move	= number_range( 1, (get_level_stat(ch,STAT_CON)
+				  + get_level_stat(ch,STAT_DEX))/6 );
+    add_prac	= wis_app[get_level_stat(ch,STAT_WIS)].practice;
 
     if(ch->level < 20 && number_percent () > 85 + ch->level/5)
        add_prac += 1;
@@ -559,7 +559,7 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
     if( ch->level < 20 && number_percent () > 85 + ch->level/5 )
       add_train += 1;
 
-    if( (get_curr_stat(ch,STAT_INT) >= 17 ) ) {
+    if( (get_level_stat(ch,STAT_INT) >= 17 ) ) {
 	add_mana = add_mana + number_range(4,6);
     }
 
