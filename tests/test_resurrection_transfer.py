@@ -98,10 +98,18 @@ def resurrected_history(mud: LiveMud) -> str:
     return found[0].read_text(encoding="latin-1")
 
 
+def boot_finished(mud: LiveMud) -> None:
+    """The port opens before boot settles corpses and receipts; the name
+    prompt comes only from the running game loop, after it has."""
+    with mud.connect(timeout=180) as client:
+        client.expect("by what name", "name:", "what is your name")
+
+
 def crash(mud: LiveMud) -> None:
     os.kill(mud.proc.pid, signal.SIGKILL)
     mud.proc.wait(timeout=15)
     mud.restart()
+    boot_finished(mud)
 
 
 def what_they_hold(mud: LiveMud) -> tuple:
@@ -209,11 +217,13 @@ class ResurrectionTransferTests(unittest.TestCase):
                 self.assertTrue(fallen.wait_closed(), "the game should have stopped")
             mud.proc.wait(timeout=15)
             mud.restart()
-            live = live_corpses(mud)
-            history = resurrected_history(mud)
+            # The port opens before boot settles the corpse; a login means
+            # the game loop is running, so boot is done.
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zrtstaff", PW)
                 here = staff.sync("look")
+            live = live_corpses(mud)
+            history = resurrected_history(mud)
             inv, bag, gold = what_they_hold(mud)
             states = ledger_states(mud)
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
@@ -310,6 +320,7 @@ class ResurrectionTransferTests(unittest.TestCase):
                 self.assertTrue(fallen.wait_closed(), "the game should have stopped")
             mud.proc.wait(timeout=15)
             mud.restart()
+            boot_finished(mud)
             live = live_corpses(mud)
             inv, bag, _ = what_they_hold(mud)
             states = ledger_states(mud)
