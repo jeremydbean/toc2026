@@ -542,12 +542,10 @@ same private web service as the administration dashboard.
 On a local installation use:
   http://127.0.0.1:9001/client
 
-On the dedicated Raspberry Pi's private LAN use:
-  http://toc.local:9001/client
+On the hosted game use:
+  http://toc.jeremybean.com:9001/client
 
-The :9001 port is required.  The hosted public game does not expose its admin
-service merely because the game is reachable on port 9000.  Ask the operator
-for a secure browser-client address when playing remotely.  The browser client
+The :9001 port is required.  The browser client
 does not currently include Mudlet's automatic mapper.
 
 See also: WEB, MUDLET, MAP, ALIAS

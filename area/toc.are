@@ -585,10 +585,8 @@ Connect with any MUD client, or via telnet:
   telnet toc.jeremybean.com 9000
 
 The first-party browser client is served separately on port 9001.  Local
-installations use http://127.0.0.1:9001/client.  The Raspberry Pi appliance
-uses http://toc.local:9001/client on its private LAN.  A public game listener
-on port 9000 does not make the private administration service public; remote
-players should ask the operator for a secure browser-client address.
+installations use http://127.0.0.1:9001/client; the hosted game's is
+http://toc.jeremybean.com:9001/client.
 
 For the desktop client with automatic mapping, see help MUDLET.
 

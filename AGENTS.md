@@ -27,7 +27,6 @@ Maintained documentation:
   backups, promote, uninstall -- for anyone running their own copy
 - `wiki/hosting-guide.md`: deployment/configuration/persistence
 - `wiki/disaster-recovery.md`: current Oracle Cloud hosting, deploy and recovery
-- `wiki/windows-production-hosting.md`: retired Hyper-V VM operations (history)
 - `mudlet/listing-submission.md`: Mudlet listing readiness and review handoff
 - `wiki/operator-guide.md`: immortal and incident procedures
 - `wiki/developer-guide.md`: architecture and development workflow
@@ -2285,6 +2284,9 @@ is still WAKE.
 ## Dashboard Work
 
 - The C server is authoritative. Dashboard parser reload is dashboard-only.
+- Host status (`WEB_ADMIN_HOST_STATUS=1`, set by `toc-restore`) defaults to
+  the `toc-*` units in `deploy/windows-vm/`; there is no `POST /api/update`
+  or `TOC_UPDATE_REQUEST_PATH` any more (the Pi's updater, 2026-11-11).
 - Protected routes use `WEB_ADMIN_TOKEN` in `X-Admin-Token`; an unset token
   disables them with 503.
 - Protected WebSockets use an authenticated local cookie or a first JSON auth
@@ -2776,11 +2778,11 @@ being reclaimed. A reclamation would lose nothing anyway: the state sync
 Linode, anything Debian-family -- in minutes, so a host loss here is an
 outage, not a data loss. That is the whole point of the backup design.
 
-**The old deploy appliances are dead history.** The scripts under
-`deploy/` that name the Pi -- `install-pi.sh`, `toc2026-update`,
-`pi.env.example` and the `toc2026-*` systemd units -- ran only on the
-Pi, which advanced its checkout with `git merge --ff-only` (a tracked
-file the game rewrites would block that merge). Neither the VM nor
+**The old deploy appliances are gone** (removed 2026-11-11, with
+`zStartup/`, `archive/`, the Pi and Hyper-V wiki pages and the dashboard's
+"Update ToC" button). The Pi advanced its checkout with
+`git merge --ff-only` (a tracked file the game rewrites would block that
+merge). Neither the VM nor
 Oracle works that way: `toc-deploy` resets the build tree and rsyncs it
 over `current/`, and live state travels through the GitHub sync above.
 Do not resurrect the Pi updater, `toc.local` or
