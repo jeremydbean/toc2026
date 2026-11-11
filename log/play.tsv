@@ -21606,3 +21606,65 @@
 1794430443	cmd	Trentlin	36	24143	coven.are	standing	79	0	-	east		The Outer Circle of Coven //   You stand in a circular clearing, bounded by brush on the outside, and  // with trees in the center. The twisted trees of the center grow 	-	+
 1794430444	state	Trentlin	36	24143	coven.are	lvl=36 hp=613/769 mana=1286/1549 mv=227/400 align=-64 exp=82801 coin=16401645 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
 1794430444	cmd	Trentlin	36	24143	coven.are	standing	79	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794430447	cmd	Trentlin	36	24143	coven.are	standing	79	0	-	kill	wi	The witch dodges your attack. // Your punch maims The witch! // Your punch mauls The witch.	-	-
+1794430450	cmd	Trentlin	36	24143	coven.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The witch. // Your fists of fury mauls The witch.	-	+
+1794430455	cmd	Trentlin	36	24143	coven.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The witch! // Your fists of fury maims The witch!	-	+
+1794430463	cmd	Trentlin	36	24143	coven.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The witch! // Your fists of fury MANGLES The witch!	-	+
+1794430472	cmd	Trentlin	36	24143	coven.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The witch. // Your fists of fury hits The witch.	-	+
+1794430477	coin	Trentlin	36	24143	coven.are	+2000000	loot	fists	corpse of The witch	15257590052
+1794430477	coin	Trentlin	36	24143	coven.are	+8700	loot	fists	corpse of The witch	15257598752
+1794430477	coin	Trentlin	36	24143	coven.are	+52	loot	fists	corpse of The witch	15257598804
+1794430477	coin	Trentlin	36	24143	coven.are	+930000	loot	fists	corpse of The witch	15258528804
+1794430477	cmd	Trentlin	36	24143	coven.are	fighting	69	1	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The witch! // Your fists of fury MASSACRES The witch!	-	+
+1794430485	state	Trentlin	36	24143	coven.are	lvl=36 hp=554/769 mana=1150/1549 mv=188/400 align=-57 exp=83039 coin=19340397 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
+1794430485	cmd	Trentlin	36	24143	coven.are	standing	72	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794430486	cmd	Trentlin	36	24143	coven.are	standing	72	0	-	look	in co	Corpse of The witch contains: //      an ink black robe	-	-
+1794430487	coin	Trentlin	36	24143	coven.are	+64	loot	sacrifice	-	15258528868
+1794430487	cmd	Trentlin	36	24143	coven.are	standing	72	0	-	sacrifice	co	The Gods give you 64 copper coins for your sacrifice.	-	-
+1794430488	cmd	Trentlin	36	24143	coven.are	standing	72	0	-	scan		You don't see anything near you.	-	-
+1794430489	cmd	Trentlin	36	24159	coven.are	standing	72	0	-	south		The Outer Circle of Coven //   You stand in a circular clearing, bounded by brush on the outside, and  // with trees in the center. The twisted trees of the center grow 	-	+
+1794430489	cmd	Trentlin	36	24159	coven.are	standing	72	0	-	scan		You don't see anything near you.	-	-
+1794430490	cmd	Trentlin	36	24153	coven.are	standing	72	0	-	east		The Outer Circle of Coven //   You stand in a circular clearing, bounded by brush on the outside, and  // with trees in the center. The twisted trees of the center grow 	-	+
+1794430490	cmd	Trentlin	36	24153	coven.are	standing	72	0	-	scan		The witch                          -to the East.	-	-
+1794430491	cmd	Trentlin	36	24154	coven.are	standing	72	0	-	east		The Outer Circle of Coven //   You stand in a circular clearing, bounded by brush on the outside, and  // with trees in the center. The twisted trees of the center grow 	-	+
+1794430493	cmd	Trentlin	36	24154	coven.are	standing	72	0	-	kill	wit	The witch dodges your attack. // Your punch maims The witch!	-	-
+1794430496	cmd	Trentlin	36	24154	coven.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The witch. // Your fists of fury *** DEVASTATES *** The witch!	-	+
+1794430502	cmd	Trentlin	36	24154	coven.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The witch! // Your fists of fury MUTILATES The witch!	-	+
+1794430511	coin	Trentlin	36	24154	coven.are	+2000000	loot	fists	corpse of The witch	15260528868
+1794430511	coin	Trentlin	36	24154	coven.are	+8700	loot	fists	corpse of The witch	15260537568
+1794430511	coin	Trentlin	36	24154	coven.are	+52	loot	fists	corpse of The witch	15260537620
+1794430511	coin	Trentlin	36	24154	coven.are	+930000	loot	fists	corpse of The witch	15261467620
+1794430511	cmd	Trentlin	36	24154	coven.are	fighting	67	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** The witch! // Your fists of fury wounds The witch.	-	+
+1794430519	coin	Trentlin	36	24154	coven.are	+64	loot	sacrifice	-	15261467684
+1794430519	cmd	Trentlin	36	24154	coven.are	standing	67	0	-	sacrifice	co	The Gods give you 64 copper coins for your sacrifice.	-	-
+1794430519	cmd	Trentlin	36	24154	coven.are	standing	67	0	-	scan		The coven leader                   -to the North.	-	-
+1794430521	cmd	Trentlin	36	24158	coven.are	standing	67	0	-	east		The Outer Circle of Coven //   You stand in a circular clearing, bounded by brush on the outside, and  // with trees in the center. The twisted trees of the center grow 	-	+
+1794430522	cmd	Trentlin	36	24158	coven.are	standing	67	0	-	scan		a gang member                      -to the West.	-	-
+1794430523	area	Trentlin	36	2154	hood.are	coven.are	hood.are	181	west
+1794430523	cmd	Trentlin	36	2154	hood.are	standing	67	0	-	west		Ajax street at Weaponshop (or whats left of it) //   The street goes north and south.  The stables used to be to the // east, but I bet all the horses are dead or gone.	-	+
+1794430529	cmd	Trentlin	36	2154	hood.are	standing	67	0	-	east		Alas, you cannot go that way.	-	-
+1794430530	cmd	Trentlin	36	2154	hood.are	standing	67	0	-	scan		a doll                             -to the North. // a gang member                      -to the South. // a gang member                      -to the West.	-	-
+1794430530	cmd	Trentlin	36	2149	hood.are	standing	67	0	-	north		Ajax Avenue at chapel //   The temple to honor the minor gods is through a rusty metal door // to the west.  The street continues north and south.  You hear the	-	+
+1794430531	cmd	Trentlin	36	2149	hood.are	standing	67	0	-	scan		a gang member                      -to the North. // a gang member                      -to the South.	-	-
+1794430533	cmd	Trentlin	36	2154	hood.are	standing	67	0	-	south		Ajax street at Weaponshop (or whats left of it) //   The street goes north and south.  The stables used to be to the // east, but I bet all the horses are dead or gone.	-	+
+1794430535	cmd	Trentlin	36	2154	hood.are	standing	67	0	-	open	west	There is no door to the west, just open passage.	-	-
+1794430535	cmd	Trentlin	36	2153	hood.are	standing	67	0	-	west		What is left of the weaponshop //   It doesn't even look like those punks gave the weaponsmith a // proper burial.  But what a going away present he seems to have	-	+
+1794430536	cmd	Trentlin	36	2154	hood.are	standing	67	0	-	east		Ajax street at Weaponshop (or whats left of it) //   The street goes north and south.  The stables used to be to the // east, but I bet all the horses are dead or gone.	-	+
+1794430537	cmd	Trentlin	36	2159	hood.are	standing	67	0	-	south		Curve in the road //   The street goes north or west from here.  A narrow street once // headed southeast from here.	-	+
+1794430538	cmd	Trentlin	36	2158	hood.are	standing	67	0	-	west		Ajax street //   A once prideful guildhouse was on the northeast corner of // this intersection.  Most of the walls and ceiling have long since	-	+
+1794430538	cmd	Trentlin	36	2165	hood.are	standing	67	1	-	south		The inn/pub //   The inn actually looks fairly functional despite its lack // of repair.  The boys come here to hoot it up and drink themselves	-	+
+1794430540	cmd	Trentlin	36	2170	hood.are	standing	67	0	-	south		Hallway //   The hallway heads back north to the main part of the inn/pub. // The stairs leading up to the guest rooms here do not seem	-	+
+1794430542	cmd	Trentlin	36	2169	hood.are	standing	67	0	-	west		Intersection of Ajax and Solomon //   The two roads meet at a corner here.  Ajax runs north and // Solomon heads west.  An inn/pub is through a back doorway	-	+
+1794430544	area	Trentlin	36	4207	dresden.are	hood.are	dresden.are	21	recall
+1794430544	cmd	Trentlin	36	4207	dresden.are	standing	67	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794430545	cmd	Trentlin	36	4208	dresden.are	standing	67	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794430548	coin	Trentlin	36	4208	dresden.are	-600000	spent	heal	-	15260867684
+1794430548	cmd	Trentlin	36	4208	dresden.are	standing	67	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)	-	-
+1794430555	cmd	Trentlin	36	4207	dresden.are	standing	69	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794430555	state	Trentlin	36	4207	dresden.are	lvl=36 hp=535/769 mana=1074/1549 mv=399/400 align=-50 exp=83207 coin=21679277 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
+1794430555	cmd	Trentlin	36	4207	dresden.are	standing	69	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794430567	cmd	Trentlin	36	4207	dresden.are	standing	69	0	-	equipment		You are using: // <used as light>     (Invis) (Magical) (Glowing) the Sceptre of Might // <worn on finger>    (Magical) a ring of braided thorn	-	+
+1794430571	cmd	Trentlin	36	4207	dresden.are	standing	69	0	-	look	quick	There is a nice-looking break-away sheathe discarded here. // The a quick sheathe is in great condition.	-	-
+1794430574	cmd	Trentlin	36	4207	dresden.are	standing	69	0	-	look	dip	This document shows that you have graduated from Mud School. // It also has magical effects on your abilities if you hold it! // Merc Industries	-	-
+1794430584	cmd	Trentlin	36	4207	dresden.are	standing	69	0	-	look	haub	Mail of overlapping dragon scales, two necks worked in silver across the // chest. It fell from Gleeok, guardian of the Snake.	-	-
+1794430587	session	Trentlin	36	4207	dresden.are	quit	1115s	+1 levels	+2282 exp	+17025879 copper	8 kills	0 deaths	1 quests	396 commands	1 refused	coin: loot 14p 27g 59s 9c, quests 3p 74g 99s 70c, spent 1p 70g	spent on: heal 1p 70g	exp: kills +2274, skilluse +8
