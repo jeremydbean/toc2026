@@ -20981,3 +20981,146 @@
 1794364868	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	north		Alas, you cannot go that way.	-	-
 1794364869	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	sleep		You go to sleep.	-	-
 1794364870	session	Trentlin	34	4210	dresden.are	quit	131s	+0 levels	+0 exp	+5724444 copper	0 kills	0 deaths	1 quests	116 commands	0 refused	coin: quests 5p 72g 44s 44c, spent 60g	spent on: heal 60g	exp: none
+1794400904	area	Trentlin	34	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794400905	cmd	Trentlin	34	4210	dresden.are	sleeping	33	0	-	who		[34 Dwarf   Monk  ] Trentlin the Master of Autumn // Players found: 1	-	-
+1794400907	cmd	Trentlin	34	4210	dresden.are	sleeping	33	0	-	wake		You wake and stand up.	-	-
+1794400907	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794400908	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	worth		You have 25 platinum, 39 gold, 83 silver, 43 copper // and 79577 experience (923 exp to level).	-	-
+1794400910	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	where	hermie	You didn't find any hermie.	-	-
+1794400910	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	sleep		You go to sleep.	-	-
+1794400913	cmd	Trentlin	34	4210	dresden.are	sleeping	33	0	-	wake		You wake and stand up.	-	-
+1794400913	cmd	Trentlin	34	4203	dresden.are	standing	33	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794400913	cmd	Trentlin	34	4202	dresden.are	standing	33	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794400913	cmd	Trentlin	34	4207	dresden.are	standing	33	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794400914	cmd	Trentlin	34	4208	dresden.are	standing	33	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794400914	cmd	Trentlin	34	4208	dresden.are	standing	33	0	-	west		Alas, you cannot go that way.	-	-
+1794400915	coin	Trentlin	34	4208	dresden.are	-5000000	spent	heal	-	15221583787
+1794400915	coin	Trentlin	34	4208	dresden.are	-5000000	spent	heal	-	15216583787
+1794400915	coin	Trentlin	34	4208	dresden.are	-5000000	spent	heal	-	15211583787
+1794400915	coin	Trentlin	34	4208	dresden.are	-5000000	spent	heal	-	15206583787
+1794400915	coin	Trentlin	34	4208	dresden.are	-5000000	spent	heal	-	15201583787
+1794400915	cmd	Trentlin	34	4208	dresden.are	standing	33	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (5 castings, 2500 gold.)	-	-
+1794400920	coin	Trentlin	34	4208	dresden.are	-300000	spent	heal	-	15201283787
+1794400920	cmd	Trentlin	34	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel less tired; that is all you can pay for. (3 castings, 30 gold.)	-	-
+1794400925	cmd	Trentlin	34	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794400926	cmd	Trentlin	34	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794400926	cmd	Trentlin	34	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794400926	cmd	Trentlin	34	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794400928	cmd	Trentlin	34	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794400928	cmd	Trentlin	34	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794400928	cmd	Trentlin	34	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794400928	cmd	Trentlin	34	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794400929	cmd	Trentlin	34	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794400929	cmd	Trentlin	34	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794400931	quest	Trentlin	34	2497	dresden.are	ordinary	kill	14016	a chef	12	whouse.are	18
+1794400931	cmd	Trentlin	34	2497	dresden.are	standing	100	18	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'The criminal known as a chef has escaped from prison!'	-	+
+1794400933	cmd	Trentlin	34	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794400933	cmd	Trentlin	34	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794400934	cmd	Trentlin	34	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794400934	cmd	Trentlin	34	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400934	cmd	Trentlin	34	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400936	cmd	Trentlin	34	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400936	cmd	Trentlin	34	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400937	cmd	Trentlin	34	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794400937	cmd	Trentlin	34	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794400937	cmd	Trentlin	34	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794400939	cmd	Trentlin	34	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794400939	cmd	Trentlin	34	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794400940	area	Trentlin	34	6000	haon.are	dresden.are	haon.are	36	west
+1794400940	cmd	Trentlin	34	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794400940	cmd	Trentlin	34	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794400941	area	Trentlin	34	40	connect.are	haon.are	connect.are	1	south
+1794400941	cmd	Trentlin	34	40	connect.are	standing	100	0	-	south		Path to the Wayhouse //   You see a short, but well kept path that is leading up to a very nice  // building here in the forest. A small sign stands near the head of the 	-	+
+1794400941	area	Trentlin	34	14000	whouse.are	connect.are	whouse.are	0	south
+1794400941	cmd	Trentlin	34	14000	whouse.are	standing	100	0	-	south		Outside the Wayhouse //   You are outside a large, two-story building which proports // to be 'Werith's Wayhouse' on a brightly lettered sign out 	-	+
+1794400941	cmd	Trentlin	34	14000	whouse.are	standing	100	0	-	south		The door is closed.	-	-
+1794400944	cmd	Trentlin	34	14000	whouse.are	standing	100	0	-	open	south	Ok.	-	-
+1794400944	cmd	Trentlin	34	14015	whouse.are	standing	100	0	-	south		Main Room //   You stand just inside the Main Room of Werith's Wayhouse.  // The whole place stretches out all around you, a 	-	+
+1794400944	cmd	Trentlin	34	14016	whouse.are	standing	100	0	-	east		Main Room //   The giant fireplace here sends a great amount of heat  // throughout the room.  The sheer massiveness of the stone 	-	+
+1794400945	cmd	Trentlin	34	14017	whouse.are	standing	100	0	-	south		Main Room //   Several dart boards line the wall to the south, and darts  // are scattered all about on the tables and stuck in the wall. 	-	+
+1794400946	cmd	Trentlin	34	14029	whouse.are	standing	100	0	-	east		Stairwell //   Some sturdy wooden stairs lead up to the second floor of  // the wayhouse, where there are a few rooms for rent.  A lonely	-	+
+1794400948	cmd	Trentlin	34	14017	whouse.are	standing	100	0	-	west		Main Room //   Several dart boards line the wall to the south, and darts  // are scattered all about on the tables and stuck in the wall. 	-	+
+1794400949	cmd	Trentlin	34	14018	whouse.are	standing	100	0	-	west		Main Room //   The tables seem to thin out around here, to give room for  // the traffic going in and out of the kitchen through the 	-	+
+1794400949	cmd	Trentlin	34	14015	whouse.are	standing	100	0	-	north		Main Room //   You stand just inside the Main Room of Werith's Wayhouse.  // The whole place stretches out all around you, a 	-	+
+1794400950	cmd	Trentlin	34	14014	whouse.are	standing	100	0	-	west		Main Room //   A window here offers a view outside, where it doesn't seem // near as social as it is inside.   Tables filled with laughing	-	+
+1794400950	cmd	Trentlin	34	14013	whouse.are	standing	100	0	-	west		Main Room //   The bar runs south here all along the western wall.   A  // few smaller tables here are set up with various board games, 	-	+
+1794400952	cmd	Trentlin	34	14020	whouse.are	standing	100	0	-	south		Main Room //   The wooden bar runs along the length of the western wall,  // just in front of the many shelves of different colored 	-	+
+1794400954	cmd	Trentlin	34	14021	whouse.are	standing	100	0	-	south		Main Room //   The bar continues along the length of the western wall.   // An empty bottle with some spare coppers in it lies on top of 	-	+
+1794400955	cmd	Trentlin	34	14028	whouse.are	standing	100	0	-	south		Main Room //   The bar runs along the length of the west wall here,  // dispensing drinks to all customers with impunity.  A few 	-	+
+1794400956	cmd	Trentlin	34	14027	whouse.are	standing	100	0	-	east		Main Room //   This is a quiet, darkened corner -- it appears someone  // has put out the lantern here on purpose.  You feel a chill, 	-	+
+1794400958	cmd	Trentlin	34	14022	whouse.are	standing	100	0	-	north		Main Room //   In the clutter of the main room of the Wayhouse, is a path // leading out from the kitchen to the east.  A wide archway	-	+
+1794400959	cmd	Trentlin	34	14023	whouse.are	standing	100	0	-	east		Kitchen //   This is the main entranceway of the kitchen.  Two archways // serve as an entry and exit point from the main room of the 	-	+
+1794400960	cmd	Trentlin	34	14026	whouse.are	standing	100	0	-	south		Kitchen //   This is the back entranceway to the kitchen, where the  // door is kept seasonally open to allow the hot air to escape. 	-	+
+1794400961	cmd	Trentlin	34	14026	whouse.are	standing	100	8	-	kill	c	Your punch ^^^ DESTROYS ^^^ a chef! // Your punch ^^^ DESTROYS ^^^ a chef! // A chef is DEAD!!	-	+
+1794400966	cmd	Trentlin	34	14023	whouse.are	standing	100	0	-	north		Kitchen //   This is the main entranceway of the kitchen.  Two archways // serve as an entry and exit point from the main room of the 	-	+
+1794400966	cmd	Trentlin	34	14018	whouse.are	standing	100	0	-	north		Main Room //   The tables seem to thin out around here, to give room for  // the traffic going in and out of the kitchen through the 	-	+
+1794400967	cmd	Trentlin	34	14015	whouse.are	standing	100	0	-	north		Main Room //   You stand just inside the Main Room of Werith's Wayhouse.  // The whole place stretches out all around you, a 	-	+
+1794400968	cmd	Trentlin	34	14000	whouse.are	standing	100	0	-	north		Outside the Wayhouse //   You are outside a large, two-story building which proports // to be 'Werith's Wayhouse' on a brightly lettered sign out 	-	+
+1794400968	area	Trentlin	34	40	connect.are	whouse.are	connect.are	27	north
+1794400968	cmd	Trentlin	34	40	connect.are	standing	100	0	-	north		Path to the Wayhouse //   You see a short, but well kept path that is leading up to a very nice  // building here in the forest. A small sign stands near the head of the 	-	+
+1794400969	area	Trentlin	34	6001	haon.are	connect.are	haon.are	1	north
+1794400969	cmd	Trentlin	34	6001	haon.are	standing	100	0	-	north		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794400969	cmd	Trentlin	34	6001	haon.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794400970	cmd	Trentlin	34	6000	haon.are	standing	100	0	-	east		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794400970	area	Trentlin	34	2439	dresden.are	haon.are	dresden.are	1	east
+1794400970	cmd	Trentlin	34	2439	dresden.are	standing	100	0	-	east		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794400970	cmd	Trentlin	34	2438	dresden.are	standing	100	0	-	east		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794400971	cmd	Trentlin	34	2437	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400971	cmd	Trentlin	34	2436	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400971	cmd	Trentlin	34	2435	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400972	cmd	Trentlin	34	2434	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400972	cmd	Trentlin	34	2433	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794400973	cmd	Trentlin	34	2405	dresden.are	standing	100	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794400973	cmd	Trentlin	34	2401	dresden.are	standing	100	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794400974	cmd	Trentlin	34	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794400975	cmd	Trentlin	34	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794400975	cmd	Trentlin	34	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794400975	cmd	Trentlin	34	2497	dresden.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794400977	coin	Trentlin	34	2497	dresden.are	+5204040	quests	aquest	-	15206487827
+1794400977	outcome	Trentlin	34	2497	dresden.are	quest-complete	success	-	-	ordinary qp=3462->3462 offered=98 daily=18->18 coin=+5204040 kill=520404 streak=41 level=34 target=-1
+1794400977	cmd	Trentlin	34	2497	dresden.are	standing	100	18	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 42 in a row! A +167% bonus has been added!'	success:-	+
+1794400979	cmd	Trentlin	34	2497	dresden.are	standing	100	4	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 196 quest points! **	-	-
+1794400981	cmd	Trentlin	34	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794400985	cmd	Trentlin	34	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794400985	cmd	Trentlin	34	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794400985	cmd	Trentlin	34	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400986	cmd	Trentlin	34	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400986	cmd	Trentlin	34	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400987	cmd	Trentlin	34	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794400987	cmd	Trentlin	34	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794400987	cmd	Trentlin	34	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794400987	area	Trentlin	34	6000	haon.are	dresden.are	haon.are	17	west
+1794400987	cmd	Trentlin	34	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794400988	cmd	Trentlin	34	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794400990	cmd	Trentlin	34	6000	haon.are	standing	100	0	-	east		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794400990	area	Trentlin	34	2439	dresden.are	haon.are	dresden.are	3	east
+1794400990	cmd	Trentlin	34	2439	dresden.are	standing	100	0	-	east		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794400990	cmd	Trentlin	34	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794400991	cmd	Trentlin	34	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794400991	cmd	Trentlin	34	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794400991	cmd	Trentlin	34	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794400991	cmd	Trentlin	34	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794400992	cmd	Trentlin	34	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794400992	cmd	Trentlin	34	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794400992	cmd	Trentlin	34	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794400993	area	Trentlin	34	300	plains.are	dresden.are	plains.are	3	north
+1794400993	cmd	Trentlin	34	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794400993	cmd	Trentlin	34	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794400993	cmd	Trentlin	34	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794400993	cmd	Trentlin	34	322	plains.are	standing	100	0	-	north		Grassy foothills //   You walk in the grassy foothills north of the plains. The wind is rough. // To the north you can see foothills and just behind them mountain peaks	-	+
+1794400994	cmd	Trentlin	34	324	plains.are	standing	100	0	-	north		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // To the north you can see the mountains towering over you.  Pine trees	-	+
+1794400994	area	Trentlin	34	45	connect.are	plains.are	connect.are	1	north
+1794400994	cmd	Trentlin	34	45	connect.are	standing	100	0	-	north		Base of Mount Ulmo //   Before you is a mountainous path, which leads upward into the clouds // overhead!	-	+
+1794400994	area	Trentlin	34	1000	uargo.are	connect.are	uargo.are	0	north
+1794400994	cmd	Trentlin	34	1000	uargo.are	standing	100	0	-	north		A mountain path //   A fresh mountain breeze blows in your face. You walk on a small path,  // which winds its way up the Mount Ulmo. The grassy fields along the dusty 	-	+
+1794400995	cmd	Trentlin	34	1001	uargo.are	standing	100	0	-	north		A mountain path //   A steep climb lies ahead and your surroundings are filled with debris, // a few small boulders and various small stones, that have been chipped off	-	+
+1794400995	cmd	Trentlin	34	1001	uargo.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794400995	cmd	Trentlin	34	1001	uargo.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794400996	cmd	Trentlin	34	1002	uargo.are	standing	100	0	-	up		A mountain path //   After climbing up the steep path you are now able to see the Mt. Ulmo  // pass right ahead of you. From afar the pass looks more like a small crack	-	+
+1794400997	cmd	Trentlin	34	1002	uargo.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794400997	cmd	Trentlin	34	1003	uargo.are	standing	100	0	-	north		Mt. Ulmo Pass //   You walk through the pass over Mount Ulmo. Steep rock surfaces rise up // high to either side of you. From here the mountain path will take you down-	-	+
+1794400997	cmd	Trentlin	34	1003	uargo.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794400998	cmd	Trentlin	34	1004	uargo.are	standing	100	0	-	down		A sloping path down the hill //   With little difficulty you work your way down Mt. Ulmo into the Upper Argo. // The land certainly looks more friendly than the grey scenery of Mt. Ulmo.	-	+
+1794400998	cmd	Trentlin	34	1005	uargo.are	standing	100	0	-	north		A sloping path down the hill //   The path gets less steep as you get nearer to the Upper Argo. You begin // to see more of the low bushes, scattered over the still rocky underground.	-	+
+1794400999	cmd	Trentlin	34	1006	uargo.are	standing	100	0	-	north		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
+1794401000	cmd	Trentlin	34	1006	uargo.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
