@@ -4755,3 +4755,5 @@
 1794401184	wizinfo	60	Trentlin has achieved level 35!
 1794401184	wizinfo	60	[Room: 1031] an Orgeem Imp stops hunting Trentlin because hunter is dead.
 1794401230	wizinfo	35	Trentlin has left the game (5m).
+1794403566	wizinfo	60	New Object Trap: A Adamantite Chest [Vnum: 25019]
+1794403585	wizinfo	60	Connection guard: 178.156.184.20 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 178.156.184.20 lifts it.
