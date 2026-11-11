@@ -1607,7 +1607,7 @@ void achievement_record_kill(CHAR_DATA *killer, CHAR_DATA *victim)
     if (!ACH_STAFF(credit) && achievement_worthy_victim(victim)
         && credit->in_room != NULL && credit->in_room == victim->in_room
         && credit->max_hit > 0 && credit->hit > 0
-        && (long)credit->hit * 20L <= (long)credit->max_hit
+        && pool_at_most( credit->hit, credit->max_hit, 1, 20 )
         && victim->level >= credit->level - 5)
         achievement_count(credit, ACH_CTR_NARROW_WINS, 1);
 

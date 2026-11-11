@@ -434,7 +434,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
     event_boss_show_drops( victim, ch );
 
     if ( victim->max_hit > 0 )
-	percent = ( 100 * victim->hit ) / victim->max_hit;
+	percent = pool_percent( victim->hit, victim->max_hit );
     else
 	percent = -1;
 

@@ -3732,7 +3732,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
           /* A close call: out of a fight on a twentieth of their hit
              points or less, by their own prayer (achievements.c). */
           if ( own_prayer && !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0
-          &&   ch->hit * 20 <= ch->max_hit )
+          &&   pool_at_most( ch->hit, ch->max_hit, 1, 20 ) )
              achievement_record_event( ch, ACHIEVEMENT_EVENT_RECALL_LOW_HP, true );
           if (chance < 5 && !sure)
           {
@@ -4766,7 +4766,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	      }
 	      else
 	      {
-	          guardian->max_hit = ch->max_hit * 3;
+	          guardian->max_hit = pool_scale( ch->max_hit, 3, 1, POOL_MAX );
 	          guardian->hit = guardian->max_hit;
 	      }
 	      guardian->timer = 350;

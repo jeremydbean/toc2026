@@ -2030,7 +2030,11 @@ fills older records once at boot from the player files, active or archived.
 In the Hall of Heroes (4649), LOOK PLAQUE shows the newest heroes and the
 whole roll; LOOK TABLET (stone, reborn, remorts) the reborn, most lives
 first. Records are never removed: the plaque keeps heroes whose characters
-are gone (`tests/test_hero_rolls.py`).
+are gone (`tests/test_hero_rolls.py`). A record whose first line
+names staff rank is on neither roll; a mortal later promoted has the rank
+written into their record at their next save, or at boot from their file,
+and keeps it (hidden) for a demotion. Its numbers are read with the checked
+parsers: a malformed one is 0, never atoi's guess.
 
 ## The Player Archive
 
@@ -2076,6 +2080,14 @@ pool plus its bonuses never overflows. SET HP/MANA/END/MOVE/MAXMOVE,
 TITANIC's five-fold boost and the black dragon's size stop there, not at
 the 30,000 the old 16-bit fields forced. Never cast a pool or a modifier
 through `(sh_int)` or `clamp_sh_int` again (`tests/test_pool_cap.py`).
+**Arithmetic on a pool is wide too** (review, 2026-11-11: 100 * hit
+overflowed at 21 million, so LOOK called a character at 30 million of 30
+million dying, and divine protection's max * 3 / 4 wrapped negative at a
+billion). Multiply a pool only through `pool_percent`, `pool_scale` and
+`pool_at_most` in `combat_rules.c`, which work in long long and bring the
+answer back into range (`tests/test_pool_arithmetic.py`, also under UBSan).
+SET CHAR refuses a numeric field whose value does not parse
+(`mset_field_is_numeric`) before the snapshot; it used to read as -1.
 Player files need nothing: `HMVP` and the affect lines were always plain
 numbers.
 

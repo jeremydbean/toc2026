@@ -1,6 +1,7 @@
 /*
  * Combat arithmetic with no game state behind it (see combat_rules.h).
  */
+#include <limits.h>
 #include "combat_rules.h"
 
 /*
@@ -148,4 +149,39 @@ int lightning_bolt_dice( int level, int own_class )
     if ( level > MASTERY_TOP_LEVEL )
         level = MASTERY_TOP_LEVEL;
     return own_class ? level : ( level + 1 ) / 2;
+}
+
+int pool_percent( long long current, long long maximum )
+{
+    long long percent;
+
+    if ( maximum <= 0 )
+        return 0;
+    percent = current * 100 / maximum;
+    if ( percent > INT_MAX )
+        return INT_MAX;
+    if ( percent < INT_MIN )
+        return INT_MIN;
+    return (int) percent;
+}
+
+int pool_scale( long long value, long long num, long long den, int ceiling )
+{
+    long long result;
+
+    if ( den <= 0 )
+        return 0;
+    if ( ceiling < 0 )
+        ceiling = 0;
+    result = value * num / den;
+    if ( result > ceiling )
+        return ceiling;
+    if ( result < -(long long) ceiling )
+        return -ceiling;
+    return (int) result;
+}
+
+int pool_at_most( long long current, long long maximum, long long num, long long den )
+{
+    return current * den <= maximum * num;
 }

@@ -4584,6 +4584,46 @@ void do_sset( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/*
+ * Which SET CHAR field arg2 names, read in do_mset's own order (an exact
+ * name or a prefix, as each branch tests it), and whether that field takes
+ * a number. A numeric field given text that is not a whole number in
+ * range is refused before anything changes: the failed parse used to read
+ * as -1, which several fields accepted (review, 2026-11-11: an overlong
+ * HP set the maximum to -1).
+ */
+static bool mset_field_is_numeric( const char *field )
+{
+    static const struct { const char *name; bool prefix; bool numeric; } fields[] =
+    {
+	{ "str", false, true }, { "int", false, true }, { "wis", false, true },
+	{ "dex", false, true }, { "con", false, true }, { "sex", true, true },
+	{ "class", true, false }, { "guild", true, false },
+	{ "castle", true, false }, { "castlehead", true, false },
+	{ "level", true, true }, { "copper", true, true }, { "silver", true, true },
+	{ "platinum", true, true }, { "gold", true, true }, { "hp", true, true },
+	{ "mana", true, true }, { "end", true, true }, { "practice", true, true },
+	{ "stash", true, true }, { "train", true, true }, { "align", true, true },
+	{ "thirst", true, true }, { "drunk", true, true }, { "qp", true, true },
+	{ "hunger", true, true }, { "timer", true, true }, { "race", true, false },
+	{ "hunt", true, false }, { "annoy", true, false },
+	{ "mountable", true, false }, { "were", true, true },
+	{ "pkiller", true, false }, { "excon", true, false },
+	{ "wanted", true, false }, { "freeze", true, false },
+	{ "deny", true, false }, { "bank", true, true }, { "dcount", true, true },
+	{ "pkills", true, true }, { "move", false, true }, { "maxmove", false, true },
+	{ "exp", false, true }, { "hitroll", false, true }, { "damroll", false, true },
+	{ "armor", false, true }, { "ac", false, true }, { "wimpy", false, true },
+    };
+    size_t i;
+
+    for ( i = 0; i < sizeof(fields) / sizeof(fields[0]); i++ )
+	if ( fields[i].prefix ? !str_prefix( field, fields[i].name )
+			      : !str_cmp( field, fields[i].name ) )
+	    return fields[i].numeric;
+    return false;
+}
+
 void do_mset( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -4629,15 +4669,24 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /*
+     * Snarf the value (which need not be numeric: the text fields read arg3
+     * themselves). A field that takes a number refuses anything else here,
+     * before the snapshot, so a refusal changes nothing.
+     */
+    if ( !parse_int( arg3, INT_MIN, INT_MAX, &value ) )
+    {
+	if ( mset_field_is_numeric( arg2 ) )
+	{
+	    send_to_char( "That field takes a whole number, and that is not one in range.\n\r", ch );
+	    return;
+	}
+	value = -1;
+    }
+
     /* A staff SET on a player can change anything; keep them as they were. */
     if ( !IS_NPC(victim) && !player_milestone_required( ch, victim, "staffset" ) )
 	return;
-
-    /*
-     * Snarf the value (which need not be numeric).
-     */
-    if ( !parse_int( arg3, INT_MIN, INT_MAX, &value ) )
-	value = -1;
 
     /*
 	* Set something.
@@ -12427,9 +12476,9 @@ static void titanic_apply( CHAR_DATA *victim, int level, int duration,
 
     /* 500% bonus: five times the current maximum, held so the pool plus
        its boost stays within POOL_MAX (it was 30,000, for 16-bit fields). */
-    hp_boost   = (int)UMIN( (long)POOL_MAX, 5L * victim->max_hit  );
-    mana_boost = (int)UMIN( (long)POOL_MAX, 5L * victim->max_mana );
-    move_boost = (int)UMIN( (long)POOL_MAX, 5L * victim->max_move );
+    hp_boost   = pool_scale( victim->max_hit, 5, 1, POOL_MAX );
+    mana_boost = pool_scale( victim->max_mana, 5, 1, POOL_MAX );
+    move_boost = pool_scale( victim->max_move, 5, 1, POOL_MAX );
     if ( (long)victim->max_hit  + hp_boost   > POOL_MAX ) hp_boost   = POOL_MAX - victim->max_hit;
     if ( (long)victim->max_mana + mana_boost > POOL_MAX ) mana_boost = POOL_MAX - victim->max_mana;
     if ( (long)victim->max_move + move_boost > POOL_MAX ) move_boost = POOL_MAX - victim->max_move;

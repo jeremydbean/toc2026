@@ -501,7 +501,7 @@ static void dragon_scale( CHAR_DATA *drake, int level )
 
     level = URANGE( DISASTER_MIN_LEVEL, level + 2, MAX_LEVEL - 10 );
     drake->level = (sh_int)level;
-    drake->max_hit = (int)UMIN( (long)POOL_MAX, dummy_typical_hp( level ) * 3 );
+    drake->max_hit = pool_scale( dummy_typical_hp( level ), 3, 1, POOL_MAX );
     drake->hit = drake->max_hit;
     drake->hitroll = (sh_int)( level / 3 + 2 );
     drake->damroll = (sh_int)( level / 5 + 1 );

@@ -27,6 +27,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "numparse.h"
 
 #define HERO_RECORD_MAX 2048
 
@@ -35,6 +36,7 @@ typedef struct
     char name[16];
     char first[160];        /* the old first line, as it was */
     int  level;
+    int  trust;             /* from the first line; staff are on neither roll */
     long since;
     int  remorts;
     long reborn;
@@ -63,6 +65,36 @@ static void strip_eol( char *s )
         s[--len] = '\0';
 }
 
+/* The first line's "Lev N Trust N", read with the checked parsers. A
+   line that does not say both leaves them 0 (a mortal's record). */
+static void hero_first_line( const char *line, int *level, int *trust )
+{
+    char copy[160];
+    char lev_word[MAX_INPUT_LENGTH], lev[MAX_INPUT_LENGTH];
+    char tru_word[MAX_INPUT_LENGTH], tru[MAX_INPUT_LENGTH];
+    char *rest;
+
+    toc_strlcpy( copy, line, sizeof(copy) );
+    rest = one_argument( copy, lev_word );
+    rest = one_argument( rest, lev );
+    rest = one_argument( rest, tru_word );
+    one_argument( rest, tru );
+    if ( str_cmp( lev_word, "Lev" ) || str_cmp( tru_word, "Trust" ) )
+        return;
+    if ( !parse_int( lev, 0, INT_MAX, level ) )
+        *level = 0;
+    if ( !parse_int( tru, 0, INT_MAX, trust ) )
+        *trust = 0;
+}
+
+/* A record that names somebody of staff rank, by its first line. A mortal
+   later made staff is rewritten with their rank at their next save
+   (hero_record_write) or at boot from their file (backfill_dir). */
+static bool hero_record_is_staff( const HERO_RECORD *rec )
+{
+    return rec->level >= LEVEL_IMMORTAL || rec->trust >= LEVEL_IMMORTAL;
+}
+
 /* Read heroes/<Name>; false if there is none. */
 static bool hero_record_read( const char *name, HERO_RECORD *rec )
 {
@@ -85,25 +117,31 @@ static bool hero_record_read( const char *name, HERO_RECORD *rec )
         strip_eol( line );
         if ( lineno++ == 0 )
         {
-            int lev, tru;
-
             toc_strlcpy( rec->first, line, sizeof(rec->first) );
-            if ( sscanf( line, "Lev %d Trust %d", &lev, &tru ) == 2 )
-                rec->level = lev;
+            hero_first_line( line, &rec->level, &rec->trust );
             continue;
         }
         value[0] = '\0';
         if ( sscanf( line, "%31s %159[^\n]", key, value ) < 1 )
             continue;
+        /* A malformed number is read as unknown (0), never as whatever
+           atoi made of it. */
         if ( !strcmp( key, "Since" ) )
-            rec->since = atol( value );
+        {
+            if ( !parse_long( value, 0, LONG_MAX, &rec->since ) )
+                rec->since = 0;
+        }
         else if ( !strcmp( key, "Remorts" ) )
         {
-            rec->remorts = atoi( value );
+            if ( !parse_int( value, 0, INT_MAX, &rec->remorts ) )
+                rec->remorts = 0;
             rec->has_remorts = true;
         }
         else if ( !strcmp( key, "Reborn" ) )
-            rec->reborn = atol( value );
+        {
+            if ( !parse_long( value, 0, LONG_MAX, &rec->reborn ) )
+                rec->reborn = 0;
+        }
         else if ( !strcmp( key, "Class" ) )
             toc_strlcpy( rec->cls, value, sizeof(rec->cls) );
         else if ( !strcmp( key, "Race" ) )
@@ -149,9 +187,22 @@ void hero_record_write( CHAR_DATA *ch, bool reborn )
     HERO_RECORD rec;
     bool existed;
 
-    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
-    ||   get_trust( ch ) >= LEVEL_IMMORTAL
-    ||   ( !IS_HERO(ch) && ch->pcdata->num_remorts <= 0 ) )
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    if ( get_trust( ch ) >= LEVEL_IMMORTAL )
+    {
+        /* Staff are on neither roll. One promoted from mortal keeps the
+           record, rewritten with the rank so the rolls leave it out (and a
+           demotion's next save puts them back). */
+        if ( hero_record_read( ch->name, &rec ) && !hero_record_is_staff( &rec ) )
+        {
+            snprintf( rec.first, sizeof(rec.first), "Lev %2d Trust %2d  %s",
+                      ch->level, get_trust( ch ), ch->name );
+            hero_record_store( &rec );
+        }
+        return;
+    }
+    if ( !IS_HERO(ch) && ch->pcdata->num_remorts <= 0 )
         return;
 
     existed = hero_record_read( ch->name, &rec );
@@ -187,14 +238,29 @@ static bool hero_fields_from_file( const char *path, int *level, int *trust,
         if ( !strncmp( line, "#O", 2 ) || !strncmp( line, "End", 3 )
         ||   !strncmp( line, "#PET", 4 ) )
             break;
+        strip_eol( line );
+        /* A malformed field is read as unknown; the rolls never act on a
+           number atoi guessed at. */
         if ( !strncmp( line, "Levl ", 5 ) )
-            *level = atoi( line + 5 );
+        {
+            if ( !parse_int( line + 5, 0, INT_MAX, level ) )
+                *level = 0;
+        }
         else if ( !strncmp( line, "Tru ", 4 ) )
-            *trust = atoi( line + 4 );
+        {
+            if ( !parse_int( line + 4, 0, INT_MAX, trust ) )
+                *trust = 0;
+        }
         else if ( !strncmp( line, "NumRemorts ", 11 ) )
-            *remorts = atoi( line + 11 );
+        {
+            if ( !parse_int( line + 11, 0, INT_MAX, remorts ) )
+                *remorts = 0;
+        }
         else if ( !strncmp( line, "Cla ", 4 ) )
-            *cls = atoi( line + 4 );
+        {
+            if ( !parse_int( line + 4, 0, MAX_CLASS - 1, cls ) )
+                *cls = -1;
+        }
         else if ( !strncmp( line, "Race ", 5 ) )
         {
             char *tilde;
@@ -231,8 +297,20 @@ static int backfill_dir( const char *dirpath )
         if ( !hero_fields_from_file( path, &level, &trust, &remorts, &cls,
                                      race, sizeof(race) ) )
             continue;
-        if ( level >= LEVEL_IMMORTAL || trust >= LEVEL_IMMORTAL
-        ||   ( level < LEVEL_HERO && remorts <= 0 ) )
+        if ( level >= LEVEL_IMMORTAL || trust >= LEVEL_IMMORTAL )
+        {
+            /* Promoted since their record was written: write the rank in,
+               so the rolls leave them out. */
+            if ( hero_record_read( ent->d_name, &rec ) && !hero_record_is_staff( &rec ) )
+            {
+                snprintf( rec.first, sizeof(rec.first), "Lev %2d Trust %2d  %s",
+                          level, trust > level ? trust : level, rec.name );
+                hero_record_store( &rec );
+                filled++;
+            }
+            continue;
+        }
+        if ( level < LEVEL_HERO && remorts <= 0 )
             continue;
         existed = hero_record_read( ent->d_name, &rec );
         if ( existed && rec.has_remorts )
@@ -279,7 +357,8 @@ static int hero_load_all( void )
     if ( ( dp = opendir( HERO_DIR ) ) == NULL )
         return 0;
     while ( ( ent = readdir( dp ) ) != NULL && count < HERO_RECORD_MAX )
-        if ( hero_name_ok( ent->d_name ) && hero_record_read( ent->d_name, &hero_all[count] ) )
+        if ( hero_name_ok( ent->d_name ) && hero_record_read( ent->d_name, &hero_all[count] )
+        &&   !hero_record_is_staff( &hero_all[count] ) )
             count++;
     closedir( dp );
     return count;

@@ -1186,7 +1186,7 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
 
     if ( taken > 0 && ch->max_hit > 0 )
     {
-        long survive = ( (long)ch->max_hit * seconds ) / UMAX( 1, taken );
+        long survive = pool_scale( ch->max_hit, seconds, UMAX( 1, taken ), INT_MAX );
 
         snprintf( buf, sizeof(buf),
             "{0C|{00   it would take you from full in {0F%ld{00 second%s\n\r",

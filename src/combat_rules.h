@@ -76,4 +76,21 @@ int swing_chance_percent( int chance );
 int expected_swings_x100( int second_skill, int third_skill,
                           int dual_skill, int dual_weapon_skill );
 
+/* Pool arithmetic in a wide type (review, 2026-11-11). Hit points, mana and
+   endurance reach POOL_MAX (a billion) now, so 100 * hit overflowed an int
+   at 21 million: a character at 30 million of 30 million read as dying.
+   Every multiply on a pool goes through these, worked in long long and
+   brought back into an int's range. */
+
+/* current as a percentage of maximum, 0 when maximum is not above 0,
+   held to [INT_MIN, INT_MAX]. */
+int pool_percent( long long current, long long maximum );
+
+/* value * num / den, truncated toward zero as C's own division is, held to
+   [-ceiling, ceiling]; den <= 0 gives 0. */
+int pool_scale( long long value, long long num, long long den, int ceiling );
+
+/* current is at most num/den of maximum: current * den <= maximum * num. */
+int pool_at_most( long long current, long long maximum, long long num, long long den );
+
 #endif

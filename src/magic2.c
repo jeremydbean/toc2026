@@ -4394,10 +4394,11 @@ static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
 
     victim->level = (sh_int) URANGE( 1, level, ch->level );
 
-    victim->max_hit = (int)( dice( hp_dice, 8 )
-                              + lasting_max_hit( ch ) * grade / 400 );
+    victim->max_hit = pool_scale( (long long) dice( hp_dice, 8 ) * 400
+                                  + (long long) lasting_max_hit( ch ) * grade,
+                                  1, 400, POOL_MAX );
     if ( corpse != NULL )
-        victim->max_hit = (int)( victim->max_hit * 3 / 2 );
+        victim->max_hit = pool_scale( victim->max_hit, 3, 2, POOL_MAX );
     victim->hit = victim->max_hit;
 
     victim->armor[AC_PIERCE] = (sh_int)( 100 - victim->level * 2 );

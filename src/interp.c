@@ -1338,7 +1338,7 @@ void interpret( CHAR_DATA *ch, char *argument )
     if ( d != NULL )
         out_before = d->outtop;
     pos = ch->position;
-    hp_pct = ch->max_hit > 0 ? ch->hit * 100 / ch->max_hit : 0;
+    hp_pct = pool_percent( ch->hit, ch->max_hit );
     fighting = ch->fighting != NULL;
     play_begun = false;
     gettimeofday( &t0, NULL );

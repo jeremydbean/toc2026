@@ -2425,7 +2425,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
             int blen;
 
             if (victim->max_hit > 0)
-                percent = victim->hit * 100 / victim->max_hit;
+                percent = pool_percent( victim->hit, victim->max_hit );
             else
                 percent = -1;
 
@@ -2443,7 +2443,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 
             /* attacker (ch) condition */
             if (ch->max_hit > 0)
-                percent = ch->hit * 100 / ch->max_hit;
+                percent = pool_percent( ch->hit, ch->max_hit );
             else
                 percent = -1;
 

@@ -474,7 +474,7 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	return false;
 
     if ( mob->level >= 60
-    &&   mob->hit * 2 < mob->max_hit
+    &&   (long long) mob->hit * 2 < mob->max_hit
     &&   number_bits( 4 ) == 0
     &&   ( sn = skill_lookup( "dshield" ) ) >= 0
     &&   !is_affected( mob, sn ) )
@@ -776,7 +776,7 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	   heads left spit that many times, each harder -- half again for
 	   every head gone -- and the last one whirls twice as often. It
 	   used to say how many heads were left and spit four times anyway. */
-	int heads = URANGE( 1, ( 4 * mob->hit + mob->max_hit - 1 ) / UMAX( 1, mob->max_hit ), 4 );
+	int heads = URANGE( 1, pool_scale( 4LL * mob->hit + mob->max_hit - 1, 1, UMAX( 1, mob->max_hit ), 4 ), 4 );
 
 	count = heads == 1 ? 2 : heads;
 	dam_min = dam_min * ( 6 - heads ) / 2;
@@ -789,10 +789,10 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	act( buf, mob, NULL, NULL, TO_ROOM );
     }
     else if ( ( mob->pIndexData->vnum == 30307 || mob->pIndexData->vnum == 30316 )
-    &&        mob->hit * 2 < mob->max_hit )
+    &&        (long long) mob->hit * 2 < mob->max_hit )
 	act( "Severed Gleeok heads fly loose about the chamber, still spitting fire!",
 	     mob, NULL, NULL, TO_ROOM );
-    else if ( mob->pIndexData->vnum == 30309 && mob->hit * 2 < mob->max_hit )
+    else if ( mob->pIndexData->vnum == 30309 && (long long) mob->hit * 2 < mob->max_hit )
     {
 	/* Digdogger has split: two smaller urchins, each half the weight. */
 	act( "Digdogger has split in two, and both smaller urchins roll at you!",
@@ -3105,7 +3105,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      ||   vch->max_hit <= 0 )
        continue;
 
-     health_percent = 100 * UMAX(0, vch->hit) / vch->max_hit;
+     health_percent = pool_percent( UMAX(0, vch->hit), vch->max_hit );
      if ( health_percent >= 50 )
        continue;
 

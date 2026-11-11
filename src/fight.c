@@ -1173,12 +1173,12 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 	    help->level = victim->level - 5;
 	    if(victim->level < 51 )
 	     {
-	       help->max_hit = (int)(victim->max_hit * 3 / 2);
+	       help->max_hit = pool_scale( victim->max_hit, 3, 2, POOL_MAX );
 	       help->hit = help->max_hit;
 	     }
 	    else
 	     {
-	       help->max_hit = victim->max_hit * 3;
+	       help->max_hit = pool_scale( victim->max_hit, 3, 1, POOL_MAX );
 	       help->hit = help->max_hit;
 	     }
 	     help->timer = 350;
@@ -2148,9 +2148,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 				 victim->position = POS_STANDING;
 
 
-				victim->hit    = (int)(victim->max_hit * 3 / 4);
-				victim->mana   = (int)(victim->max_mana * 3 / 4);
-				victim->move   = (int)(victim->max_move * 3 / 4);
+				victim->hit    = pool_scale( victim->max_hit, 3, 4, INT_MAX );
+				victim->mana   = pool_scale( victim->max_mana, 3, 4, INT_MAX );
+				victim->move   = pool_scale( victim->max_move, 3, 4, INT_MAX );
 
 				REMOVE_BIT(victim->affected_by2, AFF2_DIVINE_PROT);
 				affect_strip(victim,skill_lookup("divine protection") );
@@ -3846,7 +3846,7 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 
     /* A close call: the killing blow struck on a twentieth of your hit
        points or less (achievements.c). */
-    if ( !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0 && ch->hit * 20 <= ch->max_hit )
+    if ( !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0 && pool_at_most( ch->hit, ch->max_hit, 1, 20 ) )
 	achievement_record_event( ch, ACHIEVEMENT_EVENT_KILL_LOW_HP, true );
 
     members = 0;
@@ -4341,7 +4341,7 @@ void do_berserk( CHAR_DATA *ch, char *argument)
 	chance += 10;
 
     /* damage -- below 50% of hp helps, above hurts */
-    hp_percent = 100 * ch->hit/ch->max_hit;
+    hp_percent = pool_percent( ch->hit, ch->max_hit );
     chance += 25 - hp_percent/2;
 
     if ( skill_roll_landed( ch, number_percent() < chance ) )
@@ -5458,7 +5458,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	{
 	    if ( fled_on == 1 )
 		achievement_record_event( ch, ACHIEVEMENT_EVENT_FLEE_ONE_HP, true );
-	    if ( ch->max_hit > 0 && fled_on * 20 <= ch->max_hit )
+	    if ( ch->max_hit > 0 && pool_at_most( fled_on, ch->max_hit, 1, 20 ) )
 		achievement_record_event( ch, ACHIEVEMENT_EVENT_FLEE_LOW_HP, true );
 	}
 	return;
