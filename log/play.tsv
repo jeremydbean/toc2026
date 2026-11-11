@@ -20854,3 +20854,130 @@
 1794362816	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
 1794362818	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
 1794362819	session	Alaric	57	2497	dresden.are	quit	6980s	+0 levels	+0 exp	+631721231 copper	1 kills	0 deaths	4 quests	206 commands	0 refused	coin: loot 1c, quests 739p 81g 98s 72c	spent on: none	exp: none
+1794364739	area	Trentlin	34	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794364742	cmd	Trentlin	34	4210	dresden.are	sleeping	71	0	-	group		Trentlin's group: // [34 Monk ] Trentlin          529/ 738 hp 1080/1474 mana   69/ 386 mv 79577 xp	-	-
+1794364744	cmd	Trentlin	34	4210	dresden.are	sleeping	71	0	-	wake		You wake and stand up.	-	-
+1794364745	cmd	Trentlin	34	4210	dresden.are	standing	71	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794364746	cmd	Trentlin	34	4203	dresden.are	standing	71	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794364746	cmd	Trentlin	34	4202	dresden.are	standing	71	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794364746	cmd	Trentlin	34	4207	dresden.are	standing	71	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794364746	cmd	Trentlin	34	4208	dresden.are	standing	71	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794364749	coin	Trentlin	34	4208	dresden.are	-600000	spent	heal	-	15220859343
+1794364749	cmd	Trentlin	34	4208	dresden.are	standing	71	0	-	heal	refre	The healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)	-	-
+1794364753	cmd	Trentlin	34	4207	dresden.are	standing	71	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794364753	cmd	Trentlin	34	4202	dresden.are	standing	71	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794364753	cmd	Trentlin	34	4201	dresden.are	standing	71	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794364754	cmd	Trentlin	34	2427	dresden.are	standing	71	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794364754	cmd	Trentlin	34	2427	dresden.are	standing	71	0	-	east		Alas, you cannot go that way.	-	-
+1794364754	cmd	Trentlin	34	2404	dresden.are	standing	71	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794364754	cmd	Trentlin	34	2401	dresden.are	standing	71	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794364755	cmd	Trentlin	34	2410	dresden.are	standing	71	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794364755	cmd	Trentlin	34	2411	dresden.are	standing	71	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794364755	cmd	Trentlin	34	2414	dresden.are	standing	71	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794364755	cmd	Trentlin	34	2497	dresden.are	standing	71	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794364756	cmd	Trentlin	34	2497	dresden.are	standing	71	0	-	up		Alas, you cannot go that way.	-	-
+1794364756	quest	Trentlin	34	2497	dresden.are	ordinary	recover	25041	The Sceptre of Gravestone	59	tritia.are	21
+1794364756	cmd	Trentlin	34	2497	dresden.are	standing	71	17	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Bandits have made off with The Sceptre of Gravestone!'	-	+
+1794364761	cmd	Trentlin	34	2401	dresden.are	standing	71	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794364763	cmd	Trentlin	34	2405	dresden.are	standing	71	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794364763	cmd	Trentlin	34	2433	dresden.are	standing	71	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794364763	cmd	Trentlin	34	2434	dresden.are	standing	71	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794364763	cmd	Trentlin	34	2435	dresden.are	standing	71	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794364764	cmd	Trentlin	34	2436	dresden.are	standing	71	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794364764	cmd	Trentlin	34	2437	dresden.are	standing	71	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794364764	cmd	Trentlin	34	2438	dresden.are	standing	71	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794364764	cmd	Trentlin	34	2438	dresden.are	standing	71	0	-	open	west	Ok.	-	-
+1794364765	cmd	Trentlin	34	2439	dresden.are	standing	71	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794364766	area	Trentlin	34	6000	haon.are	dresden.are	haon.are	27	west
+1794364766	cmd	Trentlin	34	6000	haon.are	standing	71	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794364766	cmd	Trentlin	34	6001	haon.are	standing	71	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794364767	cmd	Trentlin	34	6002	haon.are	standing	71	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794364767	cmd	Trentlin	34	6003	haon.are	standing	71	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794364767	cmd	Trentlin	34	6004	haon.are	standing	71	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794364767	cmd	Trentlin	34	6100	haon.are	standing	71	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794364768	cmd	Trentlin	34	6101	haon.are	standing	71	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794364768	cmd	Trentlin	34	6104	haon.are	standing	71	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1794364768	cmd	Trentlin	34	6105	haon.are	standing	71	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1794364768	cmd	Trentlin	34	6106	haon.are	standing	71	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794364769	cmd	Trentlin	34	6117	haon.are	standing	71	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794364769	cmd	Trentlin	34	6116	haon.are	standing	71	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794364769	cmd	Trentlin	34	6115	haon.are	standing	71	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794364769	cmd	Trentlin	34	6114	haon.are	standing	71	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.	-	+
+1794364770	cmd	Trentlin	34	6122	haon.are	standing	71	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.	-	+
+1794364770	cmd	Trentlin	34	6123	haon.are	standing	71	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows	-	+
+1794364770	area	Trentlin	34	9774	newthalo.are	haon.are	newthalo.are	4	south
+1794364770	cmd	Trentlin	34	9774	newthalo.are	standing	71	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.	-	+
+1794364770	cmd	Trentlin	34	9775	newthalo.are	standing	71	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]	-	-
+1794364771	area	Trentlin	34	5979	mid_ruin.are	newthalo.are	mid_ruin.are	1	west
+1794364771	cmd	Trentlin	34	5979	mid_ruin.are	standing	71	0	-	west		On the River //   The river enters from a hole in the eastern city wall.  The hole has been // blocked by several vertically positioned iron bars set into the wall.	-	+
+1794364771	cmd	Trentlin	34	5978	mid_ruin.are	standing	71	0	-	west		On the River //   You see the warehouse on the northern riverbank.  East of here the river // passes under the eastern bridge and through the city wall. The banks of the	-	+
+1794364771	cmd	Trentlin	34	5977	mid_ruin.are	standing	71	0	-	west		On the River //   The levee is directly north of here.  The river flows in an east west direction. // [Exits: north east west]	-	-
+1794364771	cmd	Trentlin	34	5749	mid_ruin.are	standing	71	0	-	north		Levee //   You are at the levee.  South of here you see the river gently flowing west // now littered with refuse.  The river bank is very low making it possible to	-	+
+1794364772	cmd	Trentlin	34	5745	mid_ruin.are	standing	71	0	-	north		Alley at Levee //   You are standing in the alley which continues east and west.  South of here // you see the levee.  North is the Pet Shop.	-	+
+1794364772	cmd	Trentlin	34	5726	mid_ruin.are	standing	71	0	-	west		The Dark Alley //   You smell a musty smell in the air as you enter.  You notice the remains of // comman square to ther west, while a building now in ruins is to the south.	-	+
+1794364772	cmd	Trentlin	34	5725	mid_ruin.are	standing	71	0	-	west		The Common Square //   You see the remains of the common square.  Rubble lays scattered around // here with vines and moss growing over it.  To the west is the poor alley	-	+
+1794364772	cmd	Trentlin	34	5730	mid_ruin.are	standing	71	0	-	south		The Dump //   This was the dump, where the people from the city drop their garbage. // Skeletons now lie pilled in heaps here.  Through the garbage you can see a	-	+
+1794364773	cmd	Trentlin	34	5954	mid_ruin.are	standing	71	0	-	south		The South Bridge //   You are standing on a small, rickety bridge leading from the Midgaard City // Dump to the much more attractive promenade of the southern parts of	-	+
+1794364773	cmd	Trentlin	34	5802	mid_ruin.are	standing	71	0	-	south		Promenade //   The river gently flows west just north of here.  The promenade continues // both east and west.  A rickety bridge covered in vines, crosses the river	-	+
+1794364773	cmd	Trentlin	34	5801	mid_ruin.are	standing	71	0	-	west		Promenade //   The river gently flows west just north of here.  You notice that the river // has a pungent smell and it has a blood red tinge to it.  The promenade	-	+
+1794364773	cmd	Trentlin	34	5800	mid_ruin.are	standing	71	0	-	west		Northwest end of Concourse //   You are at the concourse, the city wall is just west.  Looking at the wall // you see that there are lots of holes in the wall.  Also moss and vines seem	-	+
+1794364774	area	Trentlin	34	10200	tritia.are	mid_ruin.are	tritia.are	3	west
+1794364774	cmd	Trentlin	34	10200	tritia.are	standing	71	0	-	west		The beach //   Some crabs are searching for some food on the warm pink sand. // If you extend your sight to the sea, you can see a ship	-	+
+1794364789	cmd	Trentlin	34	10201	tritia.are	standing	74	0	-	south		The beach //   Some crabs are searching for some food on the warm pink sand. // The beach extends to the north and south. The sea is to the east.	-	+
+1794364792	cmd	Trentlin	34	10201	tritia.are	standing	74	0	-	exits		Obvious exits: // North - The beach // South - The beach	-	-
+1794364793	cmd	Trentlin	34	10202	tritia.are	standing	74	0	-	south		The beach //   Some crabs are searching for some food on the warm pink sand. // The beach extends to the north and south. The sea is to the east.	-	+
+1794364794	cmd	Trentlin	34	10203	tritia.are	standing	74	0	-	south		The beach //   Some crabs are searching for some food on the warm pink sand. // To the east you see a small house with a sign on it.	-	+
+1794364795	cmd	Trentlin	34	10206	tritia.are	standing	74	0	-	east		Tritia diving company shop //   Welcome in the Tritia diving company shop. // We offer you a complete set of diving equipment for	-	+
+1794364797	cmd	Trentlin	34	10206	tritia.are	standing	74	0	-	list		The shopkeeper says 'Sorry, I am closed. Come back tomorrow.'	-	-
+1794364801	cmd	Trentlin	34	10210	tritia.are	standing	74	0	-	south		The pier //   You are on a high pier. This pier has been made out of wooden // boards. You can see the water through the slits in the boards.	-	+
+1794364803	cmd	Trentlin	34	10210	tritia.are	standing	74	0	-	exits		Obvious exits: // North - Tritia diving company shop // Down  - The stairs	-	-
+1794364804	cmd	Trentlin	34	10210	tritia.are	standing	74	0	-	exits		Obvious exits: // North - Tritia diving company shop // Down  - The stairs	-	-
+1794364805	cmd	Trentlin	34	10211	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see it is // very light above you. Some fish are a bit surprised to see you.	-	+
+1794364812	cmd	Trentlin	34	10211	tritia.are	standing	74	0	-	exits		Obvious exits: // Up    - The pier // Down  - The stairs	-	-
+1794364812	cmd	Trentlin	34	10211	tritia.are	standing	74	0	-	exits		Obvious exits: // Up    - The pier // Down  - The stairs	-	-
+1794364814	cmd	Trentlin	34	10212	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see it // is light above you. You notice that the ladder has been	-	+
+1794364814	cmd	Trentlin	34	10212	tritia.are	standing	74	0	-	exits		Obvious exits: // Up    - The stairs // Down  - The stairs	-	-
+1794364816	cmd	Trentlin	34	10212	tritia.are	standing	74	0	-	exits		Obvious exits: // Up    - The stairs // Down  - The stairs	-	-
+1794364817	cmd	Trentlin	34	10213	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see // because of some flickering stones. You notice that the	-	+
+1794364818	cmd	Trentlin	34	10214	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see it // is light above you. You notice that the ladder now has been	-	+
+1794364819	cmd	Trentlin	34	10215	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see because // of some flickering stones in the wall. You notice that the ladder	-	+
+1794364820	cmd	Trentlin	34	10215	tritia.are	standing	74	0	-	exits		Obvious exits: // West  - The yellow cave // Up    - The stairs	-	+
+1794364832	cmd	Trentlin	34	10230	tritia.are	standing	74	0	-	west		The yellow cave //   You are in a large yellow cave in the rock wall. // You see that the cave extends to the west and north.	-	+
+1794364833	cmd	Trentlin	34	10215	tritia.are	standing	74	0	-	east		The stairs //   You see the ladder, which goes up and down. You can see because // of some flickering stones in the wall. You notice that the ladder	-	+
+1794364834	cmd	Trentlin	34	10215	tritia.are	standing	74	0	-	exits		Obvious exits: // West  - The yellow cave // Up    - The stairs	-	+
+1794364834	cmd	Trentlin	34	10216	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see because // of the flickering stones in the wall. You notice that the ladder	-	+
+1794364835	cmd	Trentlin	34	10216	tritia.are	standing	74	0	-	exits		Obvious exits: // Up    - The stairs // Down  - The stairs	-	-
+1794364835	cmd	Trentlin	34	10217	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see because // of the flickering stones in the wall. You notice that the ladder	-	+
+1794364836	cmd	Trentlin	34	10217	tritia.are	standing	74	0	-	exits		Obvious exits: // Up    - The stairs // Down  - The stairs	-	-
+1794364837	cmd	Trentlin	34	10218	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see because // of the flickering stones in the wall. You notice that the ladder	-	+
+1794364838	cmd	Trentlin	34	10218	tritia.are	standing	74	0	-	exits		Obvious exits: // Up    - The stairs // Down  - The stairs	-	-
+1794364840	cmd	Trentlin	34	10219	tritia.are	standing	74	0	-	down		The stairs //   You see the ladder, which goes up and down. You can see because // of the flickering stones in the wall. You notice that the ladder	-	+
+1794364845	cmd	Trentlin	34	10240	tritia.are	standing	74	0	-	east		The red cave //   You are in a red cave. The walls are reflecting the light. // You noticed that you have found a tadhemoth lair.	-	+
+1794364846	cmd	Trentlin	34	10244	tritia.are	standing	74	0	-	east		The red cave //   You are in a red cave. The walls are reflecting the light. // You notice that you are in a tadhemoth lair.	-	+
+1794364848	got	Trentlin	34	10244	tritia.are	25041	The Sceptre of Gravestone	trash	59	0	get	the floor
+1794364848	cmd	Trentlin	34	10244	tritia.are	standing	33	0	-	get	all	You get The Sceptre of Gravestone.	-	-
+1794364848	area	Trentlin	34	4207	dresden.are	tritia.are	dresden.are	74	recall
+1794364848	cmd	Trentlin	34	4207	dresden.are	standing	33	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794364849	cmd	Trentlin	34	4207	dresden.are	standing	33	0	-	recall		You are already standing at your recall point, Before the Altar.	-	-
+1794364854	cmd	Trentlin	34	4202	dresden.are	standing	33	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794364854	cmd	Trentlin	34	4201	dresden.are	standing	33	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794364854	cmd	Trentlin	34	2427	dresden.are	standing	33	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794364854	cmd	Trentlin	34	2427	dresden.are	standing	33	0	-	east		Alas, you cannot go that way.	-	-
+1794364855	cmd	Trentlin	34	2427	dresden.are	standing	33	0	-	east		Alas, you cannot go that way.	-	-
+1794364856	cmd	Trentlin	34	2404	dresden.are	standing	33	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794364857	cmd	Trentlin	34	2401	dresden.are	standing	33	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794364857	cmd	Trentlin	34	2410	dresden.are	standing	33	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794364857	cmd	Trentlin	34	2411	dresden.are	standing	33	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794364857	cmd	Trentlin	34	2414	dresden.are	standing	33	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794364858	cmd	Trentlin	34	2497	dresden.are	standing	33	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794364859	coin	Trentlin	34	2497	dresden.are	+5724444	quests	aquest	-	15226583787
+1794364859	outcome	Trentlin	34	2497	dresden.are	quest-complete	success	-	-	ordinary qp=3388->3388 offered=37 daily=18->18 coin=+5724444 kill=520404 streak=40 level=34 target=0
+1794364859	cmd	Trentlin	34	2497	dresden.are	standing	33	25	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Sceptre of Gravestone to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1794364865	cmd	Trentlin	34	2497	dresden.are	standing	33	9	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 74 quest points! **	-	-
+1794364866	cmd	Trentlin	34	4207	dresden.are	standing	33	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794364867	cmd	Trentlin	34	4202	dresden.are	standing	33	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794364868	cmd	Trentlin	34	4203	dresden.are	standing	33	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794364868	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794364868	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	north		Alas, you cannot go that way.	-	-
+1794364869	cmd	Trentlin	34	4210	dresden.are	standing	33	0	-	sleep		You go to sleep.	-	-
+1794364870	session	Trentlin	34	4210	dresden.are	quit	131s	+0 levels	+0 exp	+5724444 copper	0 kills	0 deaths	1 quests	116 commands	0 refused	coin: quests 5p 72g 44s 44c, spent 60g	spent on: heal 60g	exp: none
