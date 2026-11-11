@@ -21867,3 +21867,235 @@
 1794437051	coin	Trentlin	36	1010	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15260878147
 1794437051	coin	Trentlin	36	1010	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15260878150
 1794437051	coin	Trentlin	36	1010	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15260888150
+1794437057	coin	Trentlin	36	1010	uargo.are	+66	loot	sacrifice	corpse of an Orgeem Imp	15260888216
+1794437057	cmd	Trentlin	36	1010	uargo.are	standing	36	0	-	sacrifice	co	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794437058	cmd	Trentlin	36	1010	uargo.are	standing	36	0	-	scan		You don't see anything near you.	-	-
+1794437058	area	Trentlin	36	4207	dresden.are	uargo.are	dresden.are	81	recall
+1794437058	cmd	Trentlin	36	4207	dresden.are	standing	36	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794437059	cmd	Trentlin	36	4208	dresden.are	standing	36	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794437061	coin	Trentlin	36	4208	dresden.are	-5000000	spent	heal	-	15255888216
+1794437061	coin	Trentlin	36	4208	dresden.are	-5000000	spent	heal	-	15250888216
+1794437061	coin	Trentlin	36	4208	dresden.are	-5000000	spent	heal	-	15245888216
+1794437061	coin	Trentlin	36	4208	dresden.are	-5000000	spent	heal	-	15240888216
+1794437061	cmd	Trentlin	36	4208	dresden.are	standing	38	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body; that is all you can pay for. (4 castings, 2000 gold.)	-	-
+1794437066	coin	Trentlin	36	4208	dresden.are	-400000	spent	heal	-	15240488216
+1794437066	cmd	Trentlin	36	4208	dresden.are	standing	96	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
+1794437069	cmd	Trentlin	36	4207	dresden.are	standing	96	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794437069	cmd	Trentlin	36	4202	dresden.are	standing	96	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794437069	cmd	Trentlin	36	4201	dresden.are	standing	96	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794437070	cmd	Trentlin	36	2427	dresden.are	standing	96	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794437070	cmd	Trentlin	36	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
+1794437070	cmd	Trentlin	36	2427	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
+1794437070	cmd	Trentlin	36	2404	dresden.are	standing	96	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794437071	cmd	Trentlin	36	2401	dresden.are	standing	96	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794437071	cmd	Trentlin	36	2410	dresden.are	standing	96	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794437071	cmd	Trentlin	36	2411	dresden.are	standing	96	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794437071	cmd	Trentlin	36	2414	dresden.are	standing	96	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794437072	cmd	Trentlin	36	2497	dresden.are	standing	96	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794437072	quest	Trentlin	36	2497	dresden.are	ordinary	kill	9545	the old man	4	newthalo.are	17
+1794437072	cmd	Trentlin	36	2497	dresden.are	standing	96	26	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'A bounty has been posted on the old man.'	-	+
+1794437075	cmd	Trentlin	36	2401	dresden.are	standing	96	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794437078	cmd	Trentlin	36	2403	dresden.are	standing	96	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794437079	cmd	Trentlin	36	2420	dresden.are	standing	96	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794437079	cmd	Trentlin	36	2421	dresden.are	standing	96	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794437079	cmd	Trentlin	36	2422	dresden.are	standing	96	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794437079	cmd	Trentlin	36	2423	dresden.are	standing	96	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794437080	cmd	Trentlin	36	2424	dresden.are	standing	96	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794437080	cmd	Trentlin	36	2425	dresden.are	standing	96	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794437080	cmd	Trentlin	36	2426	dresden.are	standing	96	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794437080	cmd	Trentlin	36	2426	dresden.are	standing	96	0	-	open	east	Ok.	-	-
+1794437081	cmd	Trentlin	36	2440	dresden.are	standing	96	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794437082	area	Trentlin	36	3503	midennir.are	dresden.are	midennir.are	24	east
+1794437082	cmd	Trentlin	36	3503	midennir.are	standing	96	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794437082	cmd	Trentlin	36	3502	midennir.are	standing	96	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794437082	cmd	Trentlin	36	3525	midennir.are	standing	96	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794437083	cmd	Trentlin	36	3526	midennir.are	standing	96	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794437083	cmd	Trentlin	36	3527	midennir.are	standing	96	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794437083	cmd	Trentlin	36	3528	midennir.are	standing	96	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794437083	cmd	Trentlin	36	3529	midennir.are	standing	96	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794437084	cmd	Trentlin	36	3530	midennir.are	standing	96	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794437084	cmd	Trentlin	36	3531	midennir.are	standing	96	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794437084	cmd	Trentlin	36	3532	midennir.are	standing	96	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794437084	area	Trentlin	36	42	connect.are	midennir.are	connect.are	2	east
+1794437084	cmd	Trentlin	36	42	connect.are	standing	96	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794437085	area	Trentlin	36	9669	newthalo.are	connect.are	newthalo.are	1	east
+1794437085	cmd	Trentlin	36	9669	newthalo.are	standing	96	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794437086	cmd	Trentlin	36	9523	newthalo.are	standing	96	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794437087	cmd	Trentlin	36	9523	newthalo.are	standing	96	0	-	scan		the wandering prophet              -to the East. // the guildguard                     -to the South. // A nomad merchant                   -to the South.	-	-
+1794437088	cmd	Trentlin	36	9524	newthalo.are	standing	96	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794437089	cmd	Trentlin	36	9524	newthalo.are	standing	96	0	-	scan		the foreman                        -to the East. // a construction worker              -to the East. // a construction worker              -to the East.	-	+
+1794437090	cmd	Trentlin	36	9525	newthalo.are	standing	96	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794437090	cmd	Trentlin	36	9525	newthalo.are	standing	96	0	-	scan		the wandering prophet              -to the West.	-	-
+1794437091	cmd	Trentlin	36	9526	newthalo.are	standing	96	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794437092	cmd	Trentlin	36	9526	newthalo.are	standing	96	0	-	scan		A nomad merchant                   -to the East. // the bodyguard                      -to the East. // the bodyguard                      -to the East.	-	+
+1794437093	cmd	Trentlin	36	9525	newthalo.are	standing	96	0	-	west		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794437093	cmd	Trentlin	36	9525	newthalo.are	standing	96	0	-	exits		Obvious exits: // North - Alley // East  - West Main Street	-	+
+1794437133	cmd	Trentlin	36	9526	newthalo.are	standing	96	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794437133	cmd	Trentlin	36	9526	newthalo.are	standing	96	0	-	open	east	There is no door to the east, just open passage.	-	-
+1794437134	cmd	Trentlin	36	9509	newthalo.are	standing	96	1	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794437134	cmd	Trentlin	36	9509	newthalo.are	standing	96	0	-	look		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794437134	cmd	Trentlin	36	9509	newthalo.are	standing	96	0	-	where	old	the old man                  Kali Row	-	-
+1794437139	cmd	Trentlin	36	9506	newthalo.are	standing	99	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794437141	cmd	Trentlin	36	9515	newthalo.are	standing	99	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794437142	cmd	Trentlin	36	9518	newthalo.are	standing	99	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794437142	cmd	Trentlin	36	9518	newthalo.are	standing	99	0	-	exits		Obvious exits: // North - Sultan's Walk // South - The Northern Market Square	-	-
+1794437143	cmd	Trentlin	36	9519	newthalo.are	standing	99	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794437143	cmd	Trentlin	36	9519	newthalo.are	standing	99	0	-	exits		Obvious exits: // North - Sultan's Walk // South - Sultan's Walk	-	-
+1794437144	cmd	Trentlin	36	9520	newthalo.are	standing	99	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794437144	cmd	Trentlin	36	9520	newthalo.are	standing	99	0	-	exits		Obvious exits: // North - Sultan's Walk // East  - The Entrance to the Dancing Daemon Inn	-	+
+1794437147	cmd	Trentlin	36	9521	newthalo.are	standing	99	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794437148	cmd	Trentlin	36	9521	newthalo.are	standing	99	0	-	exits		Obvious exits: // North - Inside the Northern Gate of New Thalos // South - Sultan's Walk	-	-
+1794437148	cmd	Trentlin	36	9522	newthalo.are	standing	99	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794437149	cmd	Trentlin	36	9522	newthalo.are	standing	99	0	-	exits		Obvious exits: // North - Closed gate // East  - The Casbah	-	+
+1794437150	cmd	Trentlin	36	9549	newthalo.are	standing	99	0	-	east		The Casbah //   The activity here is only slightly less than chaotic. Young boys run to // and fro with stern intent, and older gentleman swagger down the street	-	+
+1794437150	cmd	Trentlin	36	9549	newthalo.are	standing	99	0	-	exits		Obvious exits: // East  - The Casbah // West  - Inside the Northern Gate of New Thalos	-	-
+1794437151	cmd	Trentlin	36	9550	newthalo.are	standing	99	0	-	east		The Casbah //   Walking along the cobblestone path you feel secure with the walls of the // city towering over you. You hear the scraping sounds of metal on stone	-	+
+1794437151	cmd	Trentlin	36	9550	newthalo.are	standing	99	0	-	exits		Obvious exits: // East  - The Casbah // West  - The Casbah	-	-
+1794437152	cmd	Trentlin	36	9551	newthalo.are	standing	99	0	-	east		The Casbah //   The din of the guilds assaults your senses as you reach this intersection; // the sound of hammering, the smell of tanned leather, and the smoke rising	-	+
+1794437152	cmd	Trentlin	36	9551	newthalo.are	standing	99	0	-	exits		Obvious exits: // East  - The Casbah // South - Guildsman's Row	-	+
+1794437155	cmd	Trentlin	36	9552	newthalo.are	standing	99	0	-	east		The Casbah //   You walk between the solid stone wall of the city and that of the Mason's // guild. Young children and their nannies walk around enjoying the safety	-	+
+1794437155	cmd	Trentlin	36	9553	newthalo.are	standing	99	0	-	east		The Casbah //   You have almost reached the end of the avenue in this direction. Walking // towards the north-east corner of the city you notice the population density	-	+
+1794437156	cmd	Trentlin	36	9553	newthalo.are	standing	99	0	-	exits		Obvious exits: // East  - The Casbah // West  - The Casbah	-	-
+1794437157	cmd	Trentlin	36	9554	newthalo.are	standing	99	0	-	east		The Casbah //   The avenue ends here, turning south to become Kali Row. Traveling in that // direction will take you to the library and the grand dance hall of the city.	-	+
+1794437157	cmd	Trentlin	36	9554	newthalo.are	standing	99	0	-	exits		Obvious exits: // South - Kali Row // West  - The Casbah	-	+
+1794437159	cmd	Trentlin	36	9555	newthalo.are	standing	99	0	-	south		Kali Row //   This is a small, newly added section of the town. The city's library // can be entered through the door to the west and The Casbah	-	+
+1794437162	state	Trentlin	36	9555	newthalo.are	lvl=36 hp=763/769 mana=896/1549 mv=384/400 align=-40 exp=83571 coin=1299809 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
+1794437162	cmd	Trentlin	36	9555	newthalo.are	standing	99	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794437163	cmd	Trentlin	36	9555	newthalo.are	standing	99	13	-	kill	old	Your punch ^^^ DESTROYS ^^^ the old man! // The old man is DEAD!! // You have almost finished your QUEST!	-	+
+1794437167	state	Trentlin	36	9555	newthalo.are	lvl=36 hp=763/769 mana=896/1549 mv=384/400 align=-40 exp=83571 coin=1299809 bank=15239188407 qp=3716 prac=9 train=3 stash=47/75 remorts=1
+1794437167	cmd	Trentlin	36	9555	newthalo.are	standing	99	0	-	score		| Name:       Trentlin | Level:      36 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794437169	cmd	Trentlin	36	9556	newthalo.are	standing	99	0	-	south		Kali Row //   The short row ends abruptly here at the entrance to the dance hall of // New Thalos. The entrance to the hall is to the west and the row continues	-	+
+1794437169	cmd	Trentlin	36	9556	newthalo.are	standing	99	0	-	south		Alas, you cannot go that way.	-	-
+1794437172	cmd	Trentlin	36	9652	newthalo.are	standing	99	0	-	west		The Dance Hall //   You seem to have missed a huge party.  The janitors are here cleaning up // the confetti and cigarette butts.  Hundreds of empty beer mugs on the	-	+
+1794437173	cmd	Trentlin	36	9556	newthalo.are	standing	99	0	-	east		Kali Row //   The short row ends abruptly here at the entrance to the dance hall of // New Thalos. The entrance to the hall is to the west and the row continues	-	+
+1794437174	cmd	Trentlin	36	9555	newthalo.are	standing	99	0	-	north		Kali Row //   This is a small, newly added section of the town. The city's library // can be entered through the door to the west and The Casbah	-	+
+1794437174	cmd	Trentlin	36	9554	newthalo.are	standing	99	0	-	north		The Casbah //   The avenue ends here, turning south to become Kali Row. Traveling in that // direction will take you to the library and the grand dance hall of the city.	-	+
+1794437174	cmd	Trentlin	36	9553	newthalo.are	standing	99	0	-	west		The Casbah //   You have almost reached the end of the avenue in this direction. Walking // towards the north-east corner of the city you notice the population density	-	+
+1794437175	cmd	Trentlin	36	9552	newthalo.are	standing	99	0	-	west		The Casbah //   You walk between the solid stone wall of the city and that of the Mason's // guild. Young children and their nannies walk around enjoying the safety	-	+
+1794437175	cmd	Trentlin	36	9551	newthalo.are	standing	99	0	-	west		The Casbah //   The din of the guilds assaults your senses as you reach this intersection; // the sound of hammering, the smell of tanned leather, and the smoke rising	-	+
+1794437176	cmd	Trentlin	36	9550	newthalo.are	standing	99	0	-	west		The Casbah //   Walking along the cobblestone path you feel secure with the walls of the // city towering over you. You hear the scraping sounds of metal on stone	-	+
+1794437176	cmd	Trentlin	36	9549	newthalo.are	standing	99	0	-	west		The Casbah //   The activity here is only slightly less than chaotic. Young boys run to // and fro with stern intent, and older gentleman swagger down the street	-	+
+1794437177	cmd	Trentlin	36	9522	newthalo.are	standing	99	0	-	west		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794437177	cmd	Trentlin	36	9521	newthalo.are	standing	99	0	-	south		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794437178	cmd	Trentlin	36	9520	newthalo.are	standing	99	0	-	south		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794437178	cmd	Trentlin	36	9519	newthalo.are	standing	99	0	-	south		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794437178	cmd	Trentlin	36	9518	newthalo.are	standing	99	0	-	south		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794437179	cmd	Trentlin	36	9515	newthalo.are	standing	99	0	-	south		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794437179	cmd	Trentlin	36	9506	newthalo.are	standing	99	0	-	south		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794437180	cmd	Trentlin	36	9523	newthalo.are	standing	99	0	-	run	w	The Western Market Square // [Exits: north east south west] // West Main Street	-	+
+1794437181	cmd	Trentlin	36	9523	newthalo.are	resting	99	0	-	wake		You stand up.	-	-
+1794437183	cmd	Trentlin	36	9523	newthalo.are	standing	99	0	-	open	west	Ok.	-	-
+1794437183	area	Trentlin	36	42	connect.are	newthalo.are	connect.are	98	run
+1794437183	area	Trentlin	36	3532	midennir.are	connect.are	midennir.are	0	run
+1794437183	area	Trentlin	36	2440	dresden.are	midennir.are	dresden.are	0	run
+1794437183	cmd	Trentlin	36	2438	dresden.are	standing	99	0	-	run	w	Outside the West Gate of New Thalos // [Exits: east west] // On the Outskirts of New Thalos	-	+
+1794437184	cmd	Trentlin	36	2438	dresden.are	resting	99	0	-	wake		You stand up.	-	-
+1794437184	cmd	Trentlin	36	2437	dresden.are	standing	99	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437185	cmd	Trentlin	36	2436	dresden.are	standing	99	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437186	cmd	Trentlin	36	2435	dresden.are	standing	99	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437186	cmd	Trentlin	36	2434	dresden.are	standing	99	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437186	cmd	Trentlin	36	2433	dresden.are	standing	99	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794437187	cmd	Trentlin	36	2405	dresden.are	standing	99	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794437187	cmd	Trentlin	36	2401	dresden.are	standing	99	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794437188	cmd	Trentlin	36	2410	dresden.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794437188	cmd	Trentlin	36	2411	dresden.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794437189	cmd	Trentlin	36	2414	dresden.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794437189	cmd	Trentlin	36	2497	dresden.are	standing	99	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794437189	cmd	Trentlin	36	2497	dresden.are	standing	99	0	-	up		Alas, you cannot go that way.	-	-
+1794437191	coin	Trentlin	36	2497	dresden.are	+4959144	quests	aquest	-	15245447360
+1794437191	outcome	Trentlin	36	2497	dresden.are	quest-complete	success	-	-	ordinary qp=3716->3716 offered=78 daily=18->18 coin=+4959144 kill=551016 streak=43 level=36 target=-1
+1794437191	cmd	Trentlin	36	2497	dresden.are	standing	99	17	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 44 in a row! A +171% bonus has been added!'	success:-	+
+1794437195	cmd	Trentlin	36	2497	dresden.are	standing	99	5	-	aquest	gamble yes	The dice BETRAY you! Your 78 quest points are lost.	-	-
+1794437197	refused	Trentlin	36	2497	dresden.are	standing	99	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794437197	cmd	Trentlin	36	2497	dresden.are	standing	99	0	-	west		Alas, you cannot go that way.	-	-
+1794437199	cmd	Trentlin	36	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794437199	cmd	Trentlin	36	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794437200	cmd	Trentlin	36	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794437200	cmd	Trentlin	36	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437200	cmd	Trentlin	36	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437201	cmd	Trentlin	36	2435	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794437202	cmd	Trentlin	36	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437202	cmd	Trentlin	36	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794437202	cmd	Trentlin	36	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794437203	cmd	Trentlin	36	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794437203	cmd	Trentlin	36	2438	dresden.are	standing	100	0	-	west		The gate is closed.	-	-
+1794437204	cmd	Trentlin	36	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794437205	cmd	Trentlin	36	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794437205	cmd	Trentlin	36	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794437205	cmd	Trentlin	36	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794437206	cmd	Trentlin	36	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794437206	cmd	Trentlin	36	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794437206	cmd	Trentlin	36	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794437206	cmd	Trentlin	36	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794437207	cmd	Trentlin	36	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794437207	cmd	Trentlin	36	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794437208	area	Trentlin	36	300	plains.are	dresden.are	plains.are	25	north
+1794437208	cmd	Trentlin	36	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794437208	cmd	Trentlin	36	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794437209	cmd	Trentlin	36	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794437209	cmd	Trentlin	36	322	plains.are	standing	100	0	-	north		Grassy foothills //   You walk in the grassy foothills north of the plains. The wind is rough. // To the north you can see foothills and just behind them mountain peaks	-	+
+1794437209	cmd	Trentlin	36	324	plains.are	standing	100	0	-	north		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // To the north you can see the mountains towering over you.  Pine trees	-	+
+1794437209	area	Trentlin	36	45	connect.are	plains.are	connect.are	1	north
+1794437209	cmd	Trentlin	36	45	connect.are	standing	100	0	-	north		Base of Mount Ulmo //   Before you is a mountainous path, which leads upward into the clouds // overhead!	-	+
+1794437210	cmd	Trentlin	36	45	connect.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794437211	area	Trentlin	36	1000	uargo.are	connect.are	uargo.are	2	north
+1794437211	cmd	Trentlin	36	1000	uargo.are	standing	100	0	-	north		A mountain path //   A fresh mountain breeze blows in your face. You walk on a small path,  // which winds its way up the Mount Ulmo. The grassy fields along the dusty 	-	+
+1794437212	cmd	Trentlin	36	1001	uargo.are	standing	100	0	-	north		A mountain path //   A steep climb lies ahead and your surroundings are filled with debris, // a few small boulders and various small stones, that have been chipped off	-	+
+1794437213	cmd	Trentlin	36	1002	uargo.are	standing	100	0	-	up		A mountain path //   After climbing up the steep path you are now able to see the Mt. Ulmo  // pass right ahead of you. From afar the pass looks more like a small crack	-	+
+1794437213	cmd	Trentlin	36	1003	uargo.are	standing	100	0	-	north		Mt. Ulmo Pass //   You walk through the pass over Mount Ulmo. Steep rock surfaces rise up // high to either side of you. From here the mountain path will take you down-	-	+
+1794437215	cmd	Trentlin	36	1004	uargo.are	standing	100	0	-	down		A sloping path down the hill //   With little difficulty you work your way down Mt. Ulmo into the Upper Argo. // The land certainly looks more friendly than the grey scenery of Mt. Ulmo.	-	+
+1794437215	cmd	Trentlin	36	1005	uargo.are	standing	100	0	-	north		A sloping path down the hill //   The path gets less steep as you get nearer to the Upper Argo. You begin // to see more of the low bushes, scattered over the still rocky underground.	-	+
+1794437215	cmd	Trentlin	36	1006	uargo.are	standing	100	0	-	north		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
+1794437216	cmd	Trentlin	36	1006	uargo.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794437218	cmd	Trentlin	36	1006	uargo.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794437222	cmd	Trentlin	36	1006	uargo.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794437229	cmd	Trentlin	36	1007	uargo.are	standing	100	0	-	north		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794437230	cmd	Trentlin	36	1007	uargo.are	standing	100	0	-	scan		an Orgeem Imp                      -to the West.	-	-
+1794437231	cmd	Trentlin	36	1008	uargo.are	standing	100	0	-	west		A clearing //   You are standing in the open. Here and there are a few low scrubs, to  // the south the rock face of Mt. Ulmo rises up high and in the far west you 	-	+
+1794437232	cmd	Trentlin	36	1008	uargo.are	standing	100	0	-	kill	im	Your punch misses an Orgeem Imp. // An Orgeem Imp dodges your attack.	-	-
+1794437235	cmd	Trentlin	36	1008	uargo.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Orgeem Imp! // Your fists of fury DISMEMBERS an Orgeem Imp!	-	+
+1794437241	cmd	Trentlin	36	1008	uargo.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES an Orgeem Imp! // Your fists of fury *** DEVASTATES *** an Orgeem Imp!	-	+
+1794437247	cmd	Trentlin	36	1008	uargo.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures an Orgeem Imp. // Your fists of fury mauls an Orgeem Imp.	-	+
+1794437253	cmd	Trentlin	36	1008	uargo.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures an Orgeem Imp. // Your fists of fury MANGLES an Orgeem Imp!	-	+
+1794437258	coin	Trentlin	36	1008	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15245447560
+1794437258	coin	Trentlin	36	1008	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15245447563
+1794437258	coin	Trentlin	36	1008	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15245457563
+1794437263	coin	Trentlin	36	1008	uargo.are	+60	loot	sacrifice	corpse of an Orgeem Imp	15245457623
+1794437263	cmd	Trentlin	36	1008	uargo.are	standing	74	0	-	sacrifice	co	The Gods give you 60 copper coins for your sacrifice.	-	-
+1794437263	cmd	Trentlin	36	1007	uargo.are	standing	74	0	-	east		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794437263	cmd	Trentlin	36	1010	uargo.are	standing	74	0	-	east		A bushy clearing //   You see a forest to the east. Mt. Ulmo blocks your way south, your // attempt to scale the rock face, ends in a small rock slide and many cuts	-	+
+1794437263	cmd	Trentlin	36	1010	uargo.are	standing	74	0	-	scan		a Black Troll                      -to the East. // an Orgeem Imp                      -to the East.	-	-
+1794437265	cmd	Trentlin	36	1007	uargo.are	standing	74	0	-	west		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794437266	cmd	Trentlin	36	1015	uargo.are	standing	74	0	-	north		A clearing //   You are standing in the open. To the north and south lie vast grassy // fields. To the east a small group of broadleaf trees blocks your way. Here 	-	+
+1794437266	cmd	Trentlin	36	1015	uargo.are	standing	74	0	-	scan		You don't see anything near you.	-	-
+1794437267	cmd	Trentlin	36	1020	uargo.are	standing	74	0	-	north		A clearing //   You are in a relatively open grassy field. You can see, that some of  // the grass has been trampled. The field continues north and south, to the	-	+
+1794437268	cmd	Trentlin	36	1020	uargo.are	standing	74	0	-	scan		an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the East.	-	+
+1794437269	cmd	Trentlin	36	1021	uargo.are	standing	74	0	-	east		A bushy clearing //   You are standing in the middle of some thron bushes. Some broadleaf  // trees block your way south. The bushy clearing continues east, to the west 	-	+
+1794437270	cmd	Trentlin	36	1021	uargo.are	standing	74	0	-	kill	im	Your punch ^^^ DESTROYS ^^^ an Orgeem Imp! // An Orgeem Imp dodges your attack.	-	-
+1794437273	skill	Trentlin	36	1021	uargo.are	hand to hand	96	97	success	(violence_update)
+1794437275	cmd	Trentlin	36	1021	uargo.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an Orgeem Imp! // Your fists of fury decimates an Orgeem Imp!	-	+
+1794437283	cmd	Trentlin	36	1021	uargo.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS an Orgeem Imp! // Your fists of fury decimates an Orgeem Imp!	-	+
+1794437292	cmd	Trentlin	36	1021	uargo.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an Orgeem Imp! // Your fists of fury grazes an Orgeem Imp.	-	+
+1794437299	cmd	Trentlin	36	1021	uargo.are	fighting	71	0	fight	trip		You trip an Orgeem Imp and an Orgeem Imp goes down! // Your trip scratches an Orgeem Imp.	-	-
+1794437306	cmd	Trentlin	36	1021	uargo.are	fighting	71	0	fight	trip		Your trip misses an Orgeem Imp.	-	-
+1794437306	coin	Trentlin	36	1021	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15245457823
+1794437306	coin	Trentlin	36	1021	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15245457826
+1794437306	coin	Trentlin	36	1021	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15245467826
+1794437312	cmd	Trentlin	36	1021	uargo.are	standing	71	0	-	help	vorpal	No help on that word.  Did you mean: PORTAL?	-	-
+1794437313	coin	Trentlin	36	1021	uargo.are	+70	loot	sacrifice	-	15245467896
+1794437313	cmd	Trentlin	36	1021	uargo.are	standing	71	0	-	sacrifice	cor	The Gods give you 70 copper coins for your sacrifice.	-	-
+1794437314	cmd	Trentlin	36	1021	uargo.are	standing	71	0	-	scan		an Orgeem Imp                      -to the North. // a Black Troll                      -to the East. // an Orgeem Imp                      -to the East.	-	-
+1794437315	skill	Trentlin	36	1021	uargo.are	meditation	75	76	success	(char_update)
+1794437316	cmd	Trentlin	36	1025	uargo.are	standing	73	0	-	north		A scrub grown clearing //   You have arrived at a scrub overgrown clearing, here and there also // grows an occasional, small thorn bush. Some isolated pine trees block your 	-	+
+1794437317	cmd	Trentlin	36	1025	uargo.are	standing	73	0	-	kill	im	An Orgeem Imp parries your attack. // Your punch ^^^ DESTROYS ^^^ an Orgeem Imp! // An Orgeem Imp parries your attack.	-	-
+1794437319	cmd	Trentlin	36	1025	uargo.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an Orgeem Imp. // Your fists of fury scratches an Orgeem Imp.	-	+
+1794437326	cmd	Trentlin	36	1025	uargo.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES an Orgeem Imp! // Your fists of fury scratches an Orgeem Imp.	-	+
+1794437335	cmd	Trentlin	36	1025	uargo.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Orgeem Imp! // Your fists of fury MANGLES an Orgeem Imp!	-	+
+1794437342	cmd	Trentlin	36	1025	uargo.are	fighting	69	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls an Orgeem Imp.	-	-
+1794437346	cmd	Trentlin	36	1025	uargo.are	fighting	69	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches an Orgeem Imp.	-	-
+1794437348	coin	Trentlin	36	1025	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15245468096
+1794437348	coin	Trentlin	36	1025	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15245468099
+1794437348	coin	Trentlin	36	1025	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15245478099
+1794437350	coin	Trentlin	36	1025	uargo.are	+66	loot	sacrifice	corpse of an Orgeem Imp	15245478165
+1794437350	cmd	Trentlin	36	1025	uargo.are	standing	69	0	-	sacrifice	co	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794437351	cmd	Trentlin	36	1025	uargo.are	standing	69	0	-	scan		an Orgeem Imp                      -to the West. // an Orgeem Imp                      -to the West. // an Orgeem Imp                      -to the West.	-	-
