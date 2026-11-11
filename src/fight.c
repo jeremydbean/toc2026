@@ -2515,8 +2515,9 @@ void spill_corpse( OBJ_DATA *corpse )
  * the rest of their tick (2026-10-04).
  *
  * A character killed has left the room it was struck in: a mobile is
- * extracted, which clears in_room -- characters are pooled, never freed,
- * so reading one afterwards is safe -- and a player is carried to the
+ * extracted, which clears in_room -- an extracted character is freed only
+ * at the top of the next pass of the game loop (recycle.c), so reading one
+ * afterwards in the same pass is safe -- and a player is carried to the
  * death room. Note the room before the blow and ask this after it.
  */
 /*

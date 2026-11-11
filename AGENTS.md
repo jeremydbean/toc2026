@@ -1538,8 +1538,8 @@ decoration. Rules the code depends on:
   never double it. **The vendor and the event boss are cleared at
   extraction** (`holiday_forget`, `event_boss_forget`, from
   `extract_char` beside `black_market_forget`), never found again by
-  scanning the character list for their address: the pool hands a freed
-  CHAR_DATA to the next mobile created, so PURGE ROSALIND then LOAD MOB
+  scanning the character list for their address: the allocator may hand
+  a freed CHAR_DATA's address to the next mobile created, so PURGE ROSALIND then LOAD MOB
   made the loaded mobile "the vendor" (review, 2026-11-02). A boss slain
   is announced by `record_event_boss_defeat`; any other way out (PURGE,
   SUMMONEVENT, the timer) is logged "left the world without being slain"
@@ -3380,8 +3380,9 @@ every multi-hit spell, trap and flood stop at its first landed blow and
 skipped whatever followed a hit: the blindness, the stun, the lag, the
 healing, the ingredients. Note the room before the blow and ask
 `gone_after_blow(victim, room)` after it -- a killed mobile is extracted
-(characters are pooled, so reading one is safe) and a killed player is in
-the death room. `tests/test_damage_result.py` fails on any `if (damage(`.
+(and freed only at the top of the next pass, so reading one in the same
+pass is safe; see "Memory Is The System Allocator's") and a killed player
+is in the death room. `tests/test_damage_result.py` fails on any `if (damage(`.
 
 `die_follower()` is stock ROM's again after a year as an empty stub, and
 it is what keeps a follower from pointing at a character who has quit.
@@ -5068,6 +5069,35 @@ The quest master excludes the yard by file name beside Hyrule
 (`QUEST_EXCLUDED_YARD`): the dummy cannot die, so a quest to kill it
 could never finish.
 
+## Memory Is The System Allocator's
+
+Owner, 2026-11-11 (modernization project 4). ROM's pools -- alloc_mem's
+size-class free lists and a free list per type (characters, pcdata,
+objects, descriptors, affects, extra descriptions, notes, bans, wizlist
+entries) -- handed a freed block to the next thing created, so ASan never
+saw a use after free or a double free in any of them. They are gone:
+
+- **`alloc_mem` is `calloc`, `free_mem` is `free`.** The size classes
+  stay: a request past 32,704 bytes still aborts, and an ordinary build
+  still allocates the class's size, so slack is as it was. Under ASan
+  (`__SANITIZE_ADDRESS__`) a request is allocated at its exact size.
+- **Permanent memory is never freed.** `alloc_perm` registers its blocks
+  and `free_mem` leaves a pointer into one alone (`is_perm_memory`), as
+  `free_string` leaves the boot string space and `str_empty` alone. That
+  is what keeps an instance's prototype strings (shared by pointer, see
+  `str_perm`) and a prototype's affects safe from extraction. Instance
+  data that is freed later -- `create_object`'s random affects, notes,
+  bans, an object's own extra descriptions -- comes from `alloc_mem`.
+- **Characters (with their pcdata), objects and descriptors are released
+  to `src/recycle.c`** (`char_data_release`, `obj_data_release`,
+  `descriptor_data_release`) and freed by `recycle_flush()` at the top of
+  the game loop, beside `flush_container_lists()`: the game reads one it
+  has just extracted or closed in the same pass, and that read stays
+  valid. A read in a later pass is a real use after free, and ASan says
+  so. A second release, `free_char` or `extract_obj` of the same thing is
+  refused with a bug line (`next_free` is non-NULL only while released).
+- `tests/test_memory_pools.py` fails on any free list coming back.
+
 ## Contracts From The October 2026 Audit
 
 An outside audit (2026-10-21) found these; each is fixed, and each has a
@@ -5077,7 +5107,8 @@ test that fails on the old code. Keep them.
   freed `stash_links` and then read it to build the new list; the pool
   reuses a freed block's first bytes, so a second LINK wrote allocator
   bytes before the first partner's name and locked them out
-  (`tests/test_stash_link.py`). ASan cannot see this through the pool.
+  (`tests/test_stash_link.py`). ASan could not see this through the
+  pool; since 2026-11-11 there is no pool, and it would.
 - **Changing a worn piece's armour values: `+= apply_ac` at the old
   values, change them, `-= apply_ac` at the new** -- `unequip_char` adds
   and `equip_char` subtracts. Heat metal and acid breath had the signs the

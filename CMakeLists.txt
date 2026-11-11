@@ -77,6 +77,7 @@ set(SRC_FILES
     src/goblin.c
     src/rested.c
     src/recovery.c
+    src/recycle.c
     src/restores.c
     src/alignment.c
     src/playlog.c

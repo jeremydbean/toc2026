@@ -75,12 +75,6 @@ HELP_DATA *             help_last;
 SHOP_DATA *             shop_first;
 SHOP_DATA *             shop_last;
  
-CHAR_DATA *             char_free;
-EXTRA_DESCR_DATA *      extra_descr_free;
-NOTE_DATA *             note_free;
-OBJ_DATA *              obj_free;
-PC_DATA *               pcdata_free;
- 
 AREA_DATA *             new_area;
  
 char                    bug_buf         [2*MAX_INPUT_LENGTH];
@@ -275,8 +269,11 @@ char *  const   room_aff_type   []              =
 #define                 MAX_PERM_BLOCK  524288
 
 #define                 MAX_MEM_LIST    12
- 
-void *                  rgFreeList      [MAX_MEM_LIST];
+
+/* alloc_mem's size classes. Nothing is kept on a list by class any more
+   (alloc_mem is calloc); they still set the largest block alloc_mem gives,
+   which the pager and the output buffer are held to, and how much an
+   ordinary build allocates for a request. */
 const int               rgSizeList      [MAX_MEM_LIST]  =
 {
     16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768-64
@@ -1960,7 +1957,7 @@ void load_notes( void )
         while ( isspace(letter) );
         ungetc( letter, fp );
  
-        pnote           = alloc_perm( sizeof(*pnote) );
+        pnote           = alloc_mem( sizeof(*pnote) );
  
         if ( str_cmp( fread_word( fp ), "sender" ) )
             break;
@@ -2030,13 +2027,7 @@ void load_ban( void )
 	while( isspace( letter ) ) ;
 	ungetc( letter, fp );
 
-	if( ban_free == NULL ) {
-	    pban = alloc_perm( sizeof( *pban ) );
-	}
-   	else {
-	    pban = ban_free;
-	    ban_free = ban_free->next;
-	}
+	pban = alloc_mem( sizeof( *pban ) );
 
 	pban->name	= fread_string( fp );
 	pban->next	= ban_list;
@@ -3899,16 +3890,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
         exit( 1 );
     }
  
-    if ( char_free == NULL )
-    {
-        mob             = alloc_perm( sizeof(*mob) );
-    }
-    else
-    {
-        mob             = char_free;
-        char_free       = char_free->next_free;
-    }
- 
+    mob = char_data_new( );
     clear_char( mob );
     mob->pIndexData     = pMobIndex;
  
@@ -4286,16 +4268,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
         exit( 1 );
     }
  
-    if ( obj_free == NULL )
-    {
-        obj             = alloc_perm( sizeof(*obj) );
-    }
-    else
-    {
-        obj             = obj_free;
-        obj_free        = obj_free->next_free;
-    }
- 
+    obj                 = obj_data_new( );
     *obj                = obj_zero;
     obj->pIndexData     = pObjIndex;
     obj->in_room        = NULL;
@@ -4491,7 +4464,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
         if (result > 98) {
           obj_apply = calc_apply_stats();
           obj_modifier = calc_modifier(obj_apply, obj->item_type, 0);
-          paf                     = alloc_perm( sizeof(*paf) );
+          paf                     = new_affect( );
           paf->type               = -1;
           paf->level              = obj->level;
           paf->duration           = -1;
@@ -4507,7 +4480,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
         if (result > 95) {
           obj_apply = calc_apply_stats();
           obj_modifier = calc_modifier(obj_apply, obj->item_type, 0);
-          paf                     = alloc_perm( sizeof(*paf) );
+          paf                     = new_affect( );
           paf->type               = -1;
           paf->level              = obj->level;
           paf->duration           = -1;
@@ -4522,7 +4495,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
         if (result > 85) {
           obj_apply = calc_apply_stats();
           obj_modifier = calc_modifier(obj_apply, obj->item_type, 0);
-          paf                     = alloc_perm( sizeof(*paf) );
+          paf                     = new_affect( );
           paf->type               = -1;
           paf->level              = obj->level;
           paf->duration           = -1;
@@ -4536,7 +4509,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
 
         obj_apply = calc_apply_stats();
         obj_modifier = calc_modifier(obj_apply, obj->item_type, 0);
-        paf                     = alloc_perm( sizeof(*paf) );
+        paf                     = new_affect( );
         paf->type               = -1;
         paf->level              = obj->level;
         paf->duration           = -1;
@@ -4579,10 +4552,12 @@ void clone_object(OBJ_DATA *parent, OBJ_DATA *clone)
     clone->condition    = parent->condition;
     clone->material     = parent->material;
     clone->timer        = parent->timer;
+    /* Copies, never the parent's own: extracting the two freed one
+       string twice (OSET ACTION gives an object a string of its own). */
     if (parent->action_to_room != NULL)
-    clone->action_to_room = parent->action_to_room;
+    clone->action_to_room = str_dup(parent->action_to_room);
     if (parent->action_to_char != NULL)
-    clone->action_to_char = parent->action_to_char;
+    clone->action_to_char = str_dup(parent->action_to_char);
     for (i = 0;  i < 5; i ++)
 	clone->value[i] = parent->value[i];
     for (i = 0;  i < 4; i ++)
@@ -4646,7 +4621,13 @@ void free_char( CHAR_DATA *ch )
     AFFECT_DATA *paf;
     AFFECT_DATA *paf_next;
     int i;
-    
+
+    if ( char_data_released( ch ) )
+    {
+        bug( "Free_char: freed twice.", 0 );
+        return;
+    }
+
     if (IS_NPC(ch))
         mobile_count--;
 
@@ -4720,14 +4701,12 @@ void free_char( CHAR_DATA *ch )
             free_string( ch->pcdata->alias[i].first  );
             free_string( ch->pcdata->alias[i].second );
         }
-        ch->pcdata->next = pcdata_free;
-        pcdata_free      = ch->pcdata;
     }
 
     free_string(ch->prompt);
- 
-    ch->next_free    = char_free;
-    char_free        = ch;
+
+    /* Freed, with its pcdata, at the top of the next pass (recycle.c). */
+    char_data_release( ch );
     return;
 }
  
@@ -5348,20 +5327,36 @@ char *fread_word( FILE *fp )
 
  
 /*
+ * AddressSanitizer gets every request at its exact size, so a write past
+ * the end of one is reported; an ordinary build keeps the size class's
+ * slack, exactly as the pool always gave it.
+ */
+#if defined(__SANITIZE_ADDRESS__)
+#define TOC_EXACT_ALLOC 1
+#elif defined(__has_feature)
+#if __has_feature(address_sanitizer)
+#define TOC_EXACT_ALLOC 1
+#endif
+#endif
+
+/*
  * Allocate some ordinary memory,
  *   with the expectation of freeing it someday.
+ * Zeroed, from the system allocator: the pool that handed a freed block to
+ * the next caller hid every use after free and double free from ASan.
  */
 void *alloc_mem( int sMem )
 {
     void *pMem;
+    size_t size;
     int iList;
- 
+
     for ( iList = 0; iList < MAX_MEM_LIST; iList++ )
     {
         if ( sMem <= rgSizeList[iList] )
             break;
     }
- 
+
     if ( iList == MAX_MEM_LIST )
     {
         bug( "Alloc_mem: size %d too large.", sMem );
@@ -5369,46 +5364,103 @@ void *alloc_mem( int sMem )
 /*	exit( 1 );*/
         abort();
     }
- 
-    if ( rgFreeList[iList] == NULL )
+
+#if defined(TOC_EXACT_ALLOC)
+    size = sMem > 0 ? (size_t) sMem : 1;
+#else
+    size = (size_t) rgSizeList[iList];
+#endif
+    if ( ( pMem = calloc( 1, size ) ) == NULL )
     {
-        pMem              = alloc_perm( rgSizeList[iList] );
+        perror( "Alloc_mem" );
+        exit( 1 );
     }
-    else
-    {
-        pMem              = rgFreeList[iList];
-        rgFreeList[iList] = * ((void **) rgFreeList[iList]);
-    }
- 
+
     return pMem;
 }
- 
- 
- 
+
+
+
 /*
  * Free some memory.
- * Recycle it back onto the free list for blocks of that size.
+ * Permanent memory is never freed: a block alloc_perm gave out -- a
+ * prototype's affect, an exit read at boot -- is left where it is.
  */
 void free_mem( void *pMem, int sMem )
 {
     int iList;
- 
+
     for ( iList = 0; iList < MAX_MEM_LIST; iList++ )
     {
         if ( sMem <= rgSizeList[iList] )
             break;
     }
- 
+
     if ( iList == MAX_MEM_LIST )
     {
         bug( "Free_mem: size %d too large.", sMem );
         exit( 1 );
     }
- 
-    * ((void **) pMem) = rgFreeList[iList];
-    rgFreeList[iList]  = pMem;
 
+    if ( pMem == NULL || is_perm_memory( pMem ) )
+        return;
+
+    free( pMem );
     return;
+}
+
+
+
+/*
+ * The blocks alloc_perm has carved, in address order, so free_mem can tell
+ * permanent memory from the system allocator's. A few hundred at most.
+ */
+static char **          perm_blocks;
+static int              perm_block_count;
+static int              perm_block_size;
+
+static void perm_block_note( char *block )
+{
+    int i;
+
+    if ( perm_block_count == perm_block_size )
+    {
+        int size = perm_block_size > 0 ? 2 * perm_block_size : 64;
+        char **grown = realloc( perm_blocks, (size_t) size * sizeof(*grown) );
+
+        if ( grown == NULL )
+        {
+            perror( "Alloc_perm" );
+            exit( 1 );
+        }
+        perm_blocks     = grown;
+        perm_block_size = size;
+    }
+
+    for ( i = perm_block_count; i > 0 && perm_blocks[i - 1] > block; i-- )
+        perm_blocks[i] = perm_blocks[i - 1];
+    perm_blocks[i] = block;
+    perm_block_count++;
+}
+
+bool is_perm_memory( const void *pMem )
+{
+    const char *p = (const char *) pMem;
+    int lo = 0;
+    int hi = perm_block_count - 1;
+
+    while ( lo <= hi )
+    {
+        int mid = lo + ( hi - lo ) / 2;
+
+        if ( p < perm_blocks[mid] )
+            hi = mid - 1;
+        else if ( p >= perm_blocks[mid] + MAX_PERM_BLOCK )
+            lo = mid + 1;
+        else
+            return true;
+    }
+    return false;
 }
  
  
@@ -5446,8 +5498,9 @@ void *alloc_perm( int sMem )
             perror( "Alloc_perm" );
             exit( 1 );
         }
+        perm_block_note( pMemPerm );
     }
- 
+
     pMem        = pMemPerm + iMemPerm;
     iMemPerm   += sMem;
     nAllocPerm += 1;
@@ -6094,42 +6147,19 @@ void log_string( const char *str )
     return;
 }
 
+/* An affect of its own, zeroed: alloc_mem is the system allocator. */
 AFFECT_DATA *new_affect( void )
 {
-    AFFECT_DATA *pAf;
-
-    if ( affect_free == NULL)
-    {
-        pAf             =   alloc_perm( sizeof(*pAf) );
-        top_affect++;
-    }
-    else
-    {
-        pAf             =   affect_free;
-        affect_free     =   affect_free->next;
-    }
-
-    pAf->next       =   NULL;
-    pAf->location   =   0;
-    pAf->modifier   =   0;
-    pAf->type       =   0;
-    pAf->duration   =   0;
-    pAf->bitvector  =   0;
-    pAf->bitvector2 =   0;
-    return pAf;
+    return alloc_mem( sizeof(AFFECT_DATA) );
 }
 
 
+/* A prototype's affects are permanent memory, which free_mem leaves. */
 void free_affect( AFFECT_DATA* pAf )
 {
-    pAf->next           = affect_free;
-    affect_free         = pAf;
-    affect_free->location   = 0;
-    affect_free->modifier   = 0;
-    affect_free->type       = 0;
-    affect_free->duration   = 0;
-    affect_free->bitvector  = 0;
-    affect_free->bitvector2 = 0;
+    if ( pAf == NULL )
+        return;
+    free_mem( pAf, sizeof(*pAf) );
     return;
 }
 

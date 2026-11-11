@@ -3076,16 +3076,6 @@ extern          DESCRIPTOR_DATA   * descriptor_list;
 extern          NOTE_DATA         * note_list;
 extern          TELEPORT_ROOM_DATA* teleport_room_list;
 extern          ROOM_AFF_DATA     * room_aff_list;
-extern          ROOM_AFF_DATA     * room_aff_free;
-extern          ROOM_INDEX_DATA   * room_index_free;
-extern          AFFECT_DATA       * affect_free;
-extern          BAN_DATA          * ban_free;
-extern          CHAR_DATA         * char_free;
-extern          DESCRIPTOR_DATA   * descriptor_free;
-extern          EXTRA_DESCR_DATA  * extra_descr_free;
-extern          NOTE_DATA         * note_free;
-extern          OBJ_DATA          * obj_free;
-extern          PC_DATA           * pcdata_free;
 extern          HUNTER_DATA             hunter_list     [];
 
 extern          char                    bug_buf         [];
@@ -3612,6 +3602,20 @@ char *  str_perm        ( const char *str );
 void    free_string     ( char *pstr );
 AFFECT_DATA    *new_affect          ( void );
 void           free_affect          ( AFFECT_DATA* pAf );
+bool    is_perm_memory  ( const void *pMem );
+/* recycle.c: the system allocator, with characters, objects and
+   descriptors released at the top of the next pass of the game loop. */
+CHAR_DATA *char_data_new    ( void );
+void    char_data_release   ( CHAR_DATA *ch );
+bool    char_data_released  ( const CHAR_DATA *ch );
+OBJ_DATA *obj_data_new      ( void );
+void    obj_data_release    ( OBJ_DATA *obj );
+bool    obj_data_released   ( const OBJ_DATA *obj );
+DESCRIPTOR_DATA *descriptor_data_new ( void );
+void    descriptor_data_release ( DESCRIPTOR_DATA *d );
+EXTRA_DESCR_DATA *extra_descr_new ( void );
+void    extra_descr_release ( EXTRA_DESCR_DATA *ed );
+void    recycle_flush       ( void );
 int     number_fuzzy    ( int number );
 int     number_range    ( int from, int to );
 int     number_percent  ( void );

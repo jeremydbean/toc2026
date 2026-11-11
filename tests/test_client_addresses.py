@@ -83,7 +83,7 @@ class AddressSourceTests(unittest.TestCase):
         self.assertIn("net_addr_equal( &od->addr, &d->addr )", same)
         self.assertNotIn("od->host", same)
         accept = comm.split("DESCRIPTOR_DATA *new_descriptor(int control) {", 1)[1].split("\n}\n", 1)[0]
-        self.assertLess(accept.index("desc >= FD_SETSIZE"), accept.index("alloc_perm"),
+        self.assertLess(accept.index("desc >= FD_SETSIZE"), accept.index("descriptor_data_new"),
                         "a descriptor select() cannot hold is refused before it is one")
 
     def test_staff_listings_share_one_visibility_rule(self) -> None:

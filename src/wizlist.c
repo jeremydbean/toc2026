@@ -22,7 +22,6 @@
 /*
  * GLOBAL VARIABLES
  */
-WIZ_DATA         *wiz_free;
 WIZ_DATA         *wiz_list;
 OFFENSE_DATA     *offense_first;
 
@@ -438,13 +437,7 @@ WIZ_DATA *new_wiz(void)
 {
     WIZ_DATA *wiz;
 
-    if (wiz_free == NULL) 
-        wiz = alloc_perm(sizeof(*wiz));
-    else
-    {
-        wiz = wiz_free;
-        wiz_free = wiz_free->next;
-    }
+    wiz = alloc_mem(sizeof(*wiz));
     wiz->valid = true;
     wiz->name = NULL;
     wiz->next = NULL;
@@ -464,8 +457,7 @@ void free_wiz(WIZ_DATA *wiz)
     free_string(wiz->name);
 
     wiz->valid = false;
-    wiz->next = wiz_free;
-    wiz_free = wiz;
+    free_mem(wiz, sizeof(*wiz));
 }
 
 

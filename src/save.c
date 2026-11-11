@@ -2319,10 +2319,7 @@ static void fread_obj_release_unfinished( void )
     for ( ed = obj->extra_descr; ed != NULL; ed = ed_next )
     {
         ed_next = ed->next;
-        free_string( ed->description );
-        free_string( ed->keyword );
-        ed->next = extra_descr_free;
-        extra_descr_free = ed;
+        extra_descr_release( ed );
     }
     obj->extra_descr = NULL;
     free_string( obj->name );
@@ -2331,8 +2328,7 @@ static void fread_obj_release_unfinished( void )
     free_string( obj->owner );
     free_string( obj->action_to_char );
     free_string( obj->action_to_room );
-    obj->next_free = obj_free;
-    obj_free = obj;
+    obj_data_release( obj );
 }
 
 bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
@@ -2353,26 +2349,10 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     snprintf(buf, sizeof(buf), "Loading %s's playerfile", name);
     log_string(buf);
 
-    if ( char_free == NULL )
-    {
-	ch				= alloc_perm( sizeof(*ch) );
-    }
-    else
-    {
-	ch				= char_free;
-	char_free			= char_free->next_free;
-    }
+    ch				= char_data_new( );
     clear_char( ch );
 
-    if ( pcdata_free == NULL )
-    {
-	ch->pcdata			= alloc_perm( sizeof(*ch->pcdata) );
-    }
-    else
-    {
-	ch->pcdata			= pcdata_free;
-	pcdata_free			= pcdata_free->next;
-    }
+    ch->pcdata			= alloc_mem( sizeof(*ch->pcdata) );
     *ch->pcdata				= pcdata_zero;
 
     d->character			= ch;
@@ -4629,16 +4609,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 
     if (obj == NULL)  /* either not found or old style */
     {
-	if ( obj_free == NULL )
-	{
-	    obj		= alloc_perm( sizeof(*obj) );
-	}
-	else
-	{
-	    obj		= obj_free;
-	    obj_free	= obj_free->next_free;
-	}
-
+	obj		= obj_data_new( );
 	*obj		= obj_zero;
 	obj->name		= str_dup( "" );
 	obj->short_descr	= str_dup( "" );
@@ -4776,15 +4747,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    {
 		EXTRA_DESCR_DATA *ed;
 
-		if ( extra_descr_free == NULL )
-		{
-		    ed			= alloc_perm( sizeof(*ed) );
-		}
-		else
-		{
-		    ed			= extra_descr_free;
-		    extra_descr_free	= extra_descr_free->next;
-		}
+		ed			= extra_descr_new( );
 
 		ed->keyword		= fread_string( fp );
 		ed->description		= fread_string( fp );
