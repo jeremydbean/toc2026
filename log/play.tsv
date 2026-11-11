@@ -21124,3 +21124,79 @@
 1794400998	cmd	Trentlin	34	1005	uargo.are	standing	100	0	-	north		A sloping path down the hill //   The path gets less steep as you get nearer to the Upper Argo. You begin // to see more of the low bushes, scattered over the still rocky underground.	-	+
 1794400999	cmd	Trentlin	34	1006	uargo.are	standing	100	0	-	north		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
 1794401000	cmd	Trentlin	34	1006	uargo.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794401009	cmd	Trentlin	34	1006	uargo.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794401013	cmd	Trentlin	34	1007	uargo.are	standing	100	0	-	north		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794401015	cmd	Trentlin	34	1007	uargo.are	standing	100	0	-	kill	im	An Orgeem Imp parries your attack. // An Orgeem Imp dodges your attack.	-	-
+1794401023	cmd	Trentlin	34	1007	uargo.are	fighting	100	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches an Orgeem Imp.	-	-
+1794401026	cmd	Trentlin	34	1007	uargo.are	fighting	100	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches an Orgeem Imp.	-	-
+1794401030	cmd	Trentlin	34	1007	uargo.are	fighting	94	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS an Orgeem Imp!	-	-
+1794401033	cmd	Trentlin	34	1007	uargo.are	fighting	94	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes an Orgeem Imp.	-	-
+1794401035	cmd	Trentlin	34	1007	uargo.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates an Orgeem Imp! // Your fists of fury DISMEMBERS an Orgeem Imp!	-	+
+1794401048	cmd	Trentlin	34	1007	uargo.are	fighting	94	0	fight	kick		Your kick scratches an Orgeem Imp.	-	-
+1794401051	cmd	Trentlin	34	1007	uargo.are	fighting	94	0	fight	kick		Your kick grazes an Orgeem Imp.	-	-
+1794401053	cmd	Trentlin	34	1007	uargo.are	fighting	94	0	fight	kick		Your kick misses an Orgeem Imp.	-	-
+1794401055	coin	Trentlin	34	1007	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15206488027
+1794401055	coin	Trentlin	34	1007	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15206488030
+1794401055	coin	Trentlin	34	1007	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15206498030
+1794401057	cmd	Trentlin	34	1007	uargo.are	standing	94	0	-	scan		an Orgeem Imp                      -to the West.	-	-
+1794401059	cmd	Trentlin	34	1008	uargo.are	standing	94	0	-	west		A clearing //   You are standing in the open. Here and there are a few low scrubs, to  // the south the rock face of Mt. Ulmo rises up high and in the far west you 	-	+
+1794401060	cmd	Trentlin	34	1008	uargo.are	standing	94	0	-	kill	im	Your punch ^^^ DESTROYS ^^^ an Orgeem Imp! // An Orgeem Imp dodges your attack.	-	-
+1794401065	cmd	Trentlin	34	1008	uargo.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an Orgeem Imp. // Your fists of fury hits an Orgeem Imp.	-	+
+1794401070	cmd	Trentlin	34	1008	uargo.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS an Orgeem Imp! // Your fists of fury devastates an Orgeem Imp!	-	-
+1794401079	cmd	Trentlin	34	1008	uargo.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES an Orgeem Imp! // Your fists of fury devastates an Orgeem Imp!	-	-
+1794401082	coin	Trentlin	34	1008	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15206498230
+1794401082	coin	Trentlin	34	1008	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15206498233
+1794401082	coin	Trentlin	34	1008	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15206508233
+1794401086	cmd	Trentlin	34	1008	uargo.are	standing	80	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794401093	cmd	Trentlin	34	1008	uargo.are	standing	80	0	-	scan		You don't see anything near you.	-	-
+1794401094	cmd	Trentlin	34	1016	uargo.are	standing	80	0	-	north		A bushy clearing //   You are standing between some bushes. You are plagued by little bugs,  // swarming from out of the thorn bush to your left. The bushy clearing con-	-	+
+1794401095	cmd	Trentlin	34	1016	uargo.are	standing	80	0	-	scan		Dragoneer Heltifer                 -to the North.	-	-
+1794401096	cmd	Trentlin	34	1015	uargo.are	standing	80	0	-	east		A clearing //   You are standing in the open. To the north and south lie vast grassy // fields. To the east a small group of broadleaf trees blocks your way. Here 	-	+
+1794401097	cmd	Trentlin	34	1015	uargo.are	standing	80	0	-	scan		You don't see anything near you.	-	-
+1794401097	cmd	Trentlin	34	1020	uargo.are	standing	80	0	-	north		A clearing //   You are in a relatively open grassy field. You can see, that some of  // the grass has been trampled. The field continues north and south, to the	-	+
+1794401098	cmd	Trentlin	34	1020	uargo.are	standing	80	0	-	scan		an Orgeem Imp                      -to the East. // Dragoneer Heltifer                 -to the West.	-	-
+1794401099	cmd	Trentlin	34	1021	uargo.are	standing	80	0	-	east		A bushy clearing //   You are standing in the middle of some thron bushes. Some broadleaf  // trees block your way south. The bushy clearing continues east, to the west 	-	+
+1794401100	cmd	Trentlin	34	1021	uargo.are	standing	80	0	-	kill	im	Your punch *** DEVASTATES *** an Orgeem Imp! // Your punch ^^^ DESTROYS ^^^ an Orgeem Imp!	-	-
+1794401104	cmd	Trentlin	34	1021	uargo.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Orgeem Imp! // Your fists of fury mauls an Orgeem Imp.	-	-
+1794401136	coin	Trentlin	34	1021	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15206508433
+1794401136	coin	Trentlin	34	1021	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15206508436
+1794401136	coin	Trentlin	34	1021	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15206518436
+1794401137	cmd	Trentlin	34	1021	uargo.are	standing	81	0	-	scan		an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the North.	-	+
+1794401140	cmd	Trentlin	34	1021	uargo.are	standing	81	0	-	south		Alas, you cannot go that way.	-	-
+1794401140	cmd	Trentlin	34	1021	uargo.are	standing	81	0	-	scan		an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the North.	-	+
+1794401142	cmd	Trentlin	34	1020	uargo.are	standing	81	0	-	west		A clearing //   You are in a relatively open grassy field. You can see, that some of  // the grass has been trampled. The field continues north and south, to the	-	+
+1794401142	cmd	Trentlin	34	1020	uargo.are	standing	81	0	-	scan		Dragoneer Heltifer                 -to the West.	-	-
+1794401143	cmd	Trentlin	34	1026	uargo.are	standing	81	0	-	north		A clearing //   A vast grassy field expands itself before you. The grassy field  // continues north and south. To the west you see a bushy clearing, to the	-	+
+1794401144	cmd	Trentlin	34	1026	uargo.are	standing	81	0	-	scan		an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the East. // an Orgeem Imp                      -to the East.	-	+
+1794401145	cmd	Trentlin	34	1031	uargo.are	standing	81	0	-	north		A clearing //   You walk through a large grassy field, there are many footsteps in the // grass already however. In the far you hear the sinister sound of war drums. 	-	+
+1794401146	cmd	Trentlin	34	1031	uargo.are	standing	81	0	-	kill	im	An Orgeem Imp dodges your attack. // Your punch *** DEVASTATES *** an Orgeem Imp! // Your punch ^^^ DESTROYS ^^^ an Orgeem Imp!	-	-
+1794401151	skill	Trentlin	34	1031	uargo.are	parry	81	82	success	(violence_update)
+1794401153	cmd	Trentlin	34	1031	uargo.are	fighting	81	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls an Orgeem Imp.	-	-
+1794401156	cmd	Trentlin	34	1031	uargo.are	fighting	81	0	fight	nerve		You missed the nerve. // Your nerve pinch hits an Orgeem Imp.	-	-
+1794401184	level	Trentlin	35	1031	uargo.are	34	35	Monk 	1	80677	-1	(violence_update)
+1794401184	coin	Trentlin	35	1031	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15206518636
+1794401184	coin	Trentlin	35	1031	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15206518639
+1794401184	coin	Trentlin	35	1031	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15206528639
+1794401186	cmd	Trentlin	35	1031	uargo.are	standing	79	0	-	scan		an Orgeem Imp                      -to the North. // Dragoneer Tetzarch                 -to the West.	-	-
+1794401187	cmd	Trentlin	35	1037	uargo.are	standing	79	0	-	north		A clearing //   You are standing in the open, the prairie grass reaches to your knees. // The vast grass lands continue north and south, bushy clearings are to the	-	+
+1794401188	cmd	Trentlin	35	1037	uargo.are	standing	79	0	-	kill	im	An Orgeem Imp dodges your attack. // An Orgeem Imp parries your attack.	-	-
+1794401191	cmd	Trentlin	35	1037	uargo.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches an Orgeem Imp. // Your fists of fury mauls an Orgeem Imp.	-	+
+1794401197	cmd	Trentlin	35	1037	uargo.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Orgeem Imp! // Your fists of fury MUTILATES an Orgeem Imp!	-	+
+1794401204	cmd	Trentlin	35	1037	uargo.are	fighting	80	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch MANGLES an Orgeem Imp!	-	-
+1794401207	cmd	Trentlin	35	1037	uargo.are	fighting	74	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an Orgeem Imp.	-	-
+1794401210	cmd	Trentlin	35	1037	uargo.are	fighting	74	0	fight	nerve		You jab an Orgeem Imp with wedged fingers, paralyzing a nerve. // Your nerve pinch injures an Orgeem Imp.	-	-
+1794401215	cmd	Trentlin	35	1037	uargo.are	fighting	74	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes an Orgeem Imp.	-	-
+1794401217	coin	Trentlin	35	1037	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15206528839
+1794401217	coin	Trentlin	35	1037	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15206528842
+1794401217	coin	Trentlin	35	1037	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15206538842
+1794401217	cmd	Trentlin	35	1037	uargo.are	standing	74	0	-	trip		But you aren't fighting anyone!	-	-
+1794401219	area	Trentlin	35	4207	dresden.are	uargo.are	dresden.are	225	recall
+1794401219	cmd	Trentlin	35	4207	dresden.are	standing	74	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794401222	cmd	Trentlin	35	4207	dresden.are	standing	74	0	-	skills		Level  1: dagger              75%      hand to hand        96%       //           recall             100%       // Level  3: kick                80%      	-	+
+1794401226	cmd	Trentlin	35	4202	dresden.are	standing	74	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794401227	cmd	Trentlin	35	4203	dresden.are	standing	74	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794401228	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794401228	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	north		Alas, you cannot go that way.	-	-
+1794401228	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	north		Alas, you cannot go that way.	-	-
+1794401229	cmd	Trentlin	35	4210	dresden.are	standing	74	0	-	sleep		You go to sleep.	-	-
+1794401230	session	Trentlin	35	4210	dresden.are	quit	326s	+1 levels	+1348 exp	+5255055 copper	6 kills	0 deaths	1 quests	180 commands	0 refused	coin: loot 5g 10s 15c, quests 5p 20g 40s 40c, spent 25p 30g	spent on: heal 25p 30g	exp: kills +1342, skilluse +6
