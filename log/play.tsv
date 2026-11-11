@@ -21404,3 +21404,83 @@
 1794429838	cmd	Trentlin	35	29080	korzath1.are	standing	87	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.	-	+
 1794429838	cmd	Trentlin	35	29082	korzath1.are	standing	87	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the	-	+
 1794429839	cmd	Trentlin	35	29082	korzath1.are	standing	87	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794429848	cmd	Trentlin	35	29082	korzath1.are	standing	87	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794429851	cmd	Trentlin	35	29082	korzath1.are	standing	87	0	-	help	affect	AFFECT AFFECTS // Syntax: affect // Shows all magical and psionic effects currently active on your character.	-	+
+1794429866	cmd	Trentlin	35	29085	korzath1.are	standing	89	0	-	north		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare	-	+
+1794429867	cmd	Trentlin	35	29089	korzath1.are	standing	89	0	-	north		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel	-	+
+1794429868	cmd	Trentlin	35	29089	korzath1.are	standing	89	0	-	scan		an engineer                        -to the South.	-	-
+1794429868	cmd	Trentlin	35	29090	korzath1.are	standing	89	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794429869	cmd	Trentlin	35	29090	korzath1.are	standing	89	0	-	scan		You don't see anything near you.	-	-
+1794429872	cmd	Trentlin	35	29090	korzath1.are	standing	89	0	-	open	east	Ok.	-	-
+1794429872	cmd	Trentlin	35	29090	korzath1.are	standing	89	0	-	scan		You don't see anything near you.	-	-
+1794429873	cmd	Trentlin	35	29093	korzath1.are	standing	89	0	-	east		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794429873	cmd	Trentlin	35	29093	korzath1.are	standing	89	0	-	scan		a blacksmith                       -to the North. // a blacksmith                       -to the East. // a blacksmith                       -to the South.	-	-
+1794429875	cmd	Trentlin	35	29095	korzath1.are	standing	89	0	-	south		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794429880	cmd	Trentlin	35	29095	korzath1.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a blacksmith. // Your fists of fury decimates a blacksmith!	-	+
+1794429886	cmd	Trentlin	35	29095	korzath1.are	fighting	84	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a blacksmith! // Your fists of fury *** DEVASTATES *** a blacksmith!	-	+
+1794429893	cmd	Trentlin	35	29095	korzath1.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a blacksmith. // Your fists of fury MASSACRES a blacksmith!	-	+
+1794429899	state	Trentlin	35	29095	korzath1.are	lvl=35 hp=505/754 mana=646/1511 mv=340/393 align=-74 exp=80931 coin=9034077 bank=15239188407 qp=3716 prac=5 train=2 stash=50/75 remorts=1
+1794429899	cmd	Trentlin	35	29095	korzath1.are	fighting	66	0	fight	score		| Name:       Trentlin | Level:      35 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794429902	cmd	Trentlin	35	29095	korzath1.are	fighting	61	0	fight	kick		Your kick grazes a blacksmith.	-	-
+1794429903	coin	Trentlin	35	29095	korzath1.are	+3000000	loot	(violence_update)	corpse of a blacksmith	15251222484
+1794429903	coin	Trentlin	35	29095	korzath1.are	+3400	loot	(violence_update)	corpse of a blacksmith	15251225884
+1794429903	coin	Trentlin	35	29095	korzath1.are	+40	loot	(violence_update)	corpse of a blacksmith	15251225924
+1794429903	coin	Trentlin	35	29095	korzath1.are	+670000	loot	(violence_update)	corpse of a blacksmith	15251895924
+1794429907	state	Trentlin	35	29095	korzath1.are	lvl=35 hp=464/754 mana=646/1511 mv=340/393 align=-74 exp=81715 coin=12707517 bank=15239188407 qp=3716 prac=5 train=2 stash=50/75 remorts=1
+1794429907	cmd	Trentlin	35	29095	korzath1.are	standing	61	0	-	score		| Name:       Trentlin | Level:      35 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794429909	cmd	Trentlin	35	29095	korzath1.are	standing	63	0	-	look	in co	Corpse of a blacksmith contains: //      dented hammer //      titanium arm plates	-	-
+1794429911	cmd	Trentlin	35	29095	korzath1.are	fighting	63	0	fight	sacrifice	coi	You can't find it.	-	-
+1794429913	coin	Trentlin	35	29095	korzath1.are	+80	loot	sacrifice	-	15251896004
+1794429913	cmd	Trentlin	35	29095	korzath1.are	fighting	58	0	fight	sacrifice	co	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794429915	cmd	Trentlin	35	29095	korzath1.are	fighting	58	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a blacksmith. // Your fists of fury maims a blacksmith!	-	+
+1794429920	cmd	Trentlin	35	29095	korzath1.are	fighting	49	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a blacksmith! // Your fists of fury hits a blacksmith.	-	+
+1794429926	cmd	Trentlin	35	29095	korzath1.are	fighting	43	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a blacksmith. // Your fists of fury MASSACRES a blacksmith!	-	+
+1794429936	cmd	Trentlin	35	29095	korzath1.are	fighting	27	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a blacksmith. // Your fists of fury *** DEVASTATES *** a blacksmith!	-	+
+1794429942	coin	Trentlin	35	29095	korzath1.are	+3000000	loot	fists	corpse of a blacksmith	15254896004
+1794429942	coin	Trentlin	35	29095	korzath1.are	+3400	loot	fists	corpse of a blacksmith	15254899404
+1794429942	coin	Trentlin	35	29095	korzath1.are	+40	loot	fists	corpse of a blacksmith	15254899444
+1794429942	coin	Trentlin	35	29095	korzath1.are	+670000	loot	fists	corpse of a blacksmith	15255569444
+1794429942	cmd	Trentlin	35	29095	korzath1.are	fighting	7	1	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a blacksmith! // A blacksmith is DEAD!!	-	+
+1794429950	coin	Trentlin	35	29095	korzath1.are	+80	loot	sacrifice	-	15255569524
+1794429950	cmd	Trentlin	35	29095	korzath1.are	standing	7	0	-	sacrifice	co	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794429950	cmd	Trentlin	35	29095	korzath1.are	standing	7	0	-	recall		The Gods have forsaken you.	-	-
+1794429952	cmd	Trentlin	35	29095	korzath1.are	standing	7	0	-	look		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794429953	cmd	Trentlin	35	29093	korzath1.are	standing	7	0	-	north		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794429954	cmd	Trentlin	35	29090	korzath1.are	standing	7	0	-	west		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794429955	cmd	Trentlin	35	29089	korzath1.are	standing	7	0	-	south		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel	-	+
+1794429955	area	Trentlin	35	4207	dresden.are	korzath1.are	dresden.are	142	recall
+1794429955	cmd	Trentlin	35	4207	dresden.are	standing	7	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794429959	cmd	Trentlin	35	4207	dresden.are	standing	7	0	-	worth		You have 15 platinum, 137 gold, 108 silver, 317 copper // and 82545 experience (255 exp to level).	-	-
+1794429962	cmd	Trentlin	35	4202	dresden.are	standing	7	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794429963	cmd	Trentlin	35	4203	dresden.are	standing	7	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794429963	cmd	Trentlin	35	4210	dresden.are	standing	7	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794429963	cmd	Trentlin	35	4210	dresden.are	standing	7	0	-	north		Alas, you cannot go that way.	-	-
+1794429964	cmd	Trentlin	35	4210	dresden.are	standing	7	0	-	sleep		You go to sleep.	-	-
+1794429964	cmd	Trentlin	35	4210	dresden.are	sleeping	7	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794429968	cmd	Trentlin	35	4210	dresden.are	sleeping	7	0	-	inventory		You are carrying: // ( 6) a small key //      12 bombs	-	+
+1794429974	cmd	Trentlin	35	4210	dresden.are	sleeping	22	0	-	wake		You wake and stand up.	-	-
+1794429976	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	compare	gaun	A) a pair of pincer gauntlets (level 40) -- can't use: needs level 40 // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794429982	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.	-	+
+1794429984	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794429984	cmd	Trentlin	35	4203	dresden.are	standing	22	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794429985	cmd	Trentlin	35	4202	dresden.are	standing	22	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794429985	cmd	Trentlin	35	4207	dresden.are	standing	22	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794429985	cmd	Trentlin	35	4208	dresden.are	standing	22	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794429985	cmd	Trentlin	35	4208	dresden.are	standing	22	0	-	west		Alas, you cannot go that way.	-	-
+1794429986	cmd	Trentlin	35	4208	dresden.are	standing	22	0	-	west		Alas, you cannot go that way.	-	-
+1794429986	cmd	Trentlin	35	4208	dresden.are	standing	22	0	-	stash		Your stash holds 50 of 75 things. //     1) Trentlin's level 54 gear //     2) (Magical) (Glowing) the Lion's four-crowned axe	-	+
+1794430010	got	Trentlin	35	4208	dresden.are	10006	(Flaming) the Crystalline Dagger of Wonders	weapon	49	40000000	stash	-
+1794430010	cmd	Trentlin	35	4208	dresden.are	standing	22	4	-	stash	get white	You take (Flaming) the Crystalline Dagger of Wonders out of your stash.	-	-
+1794430011	got	Trentlin	35	4208	dresden.are	717	a white bracer	armor	40	4500000	stash	-
+1794430011	cmd	Trentlin	35	4208	dresden.are	standing	22	5	-	stash	get white	You take a white bracer out of your stash.	-	-
+1794430012	cmd	Trentlin	35	4208	dresden.are	standing	22	0	-	compare	white	A) a white bracer (level 40) -- can't use: needs level 40 // B) an onyx bracelet (level 18), worn // Slot: wrist.  Your damage comes from weapons.	-	+
+1794430014	got	Trentlin	35	4208	dresden.are	717	a white bracer	armor	40	4500000	stash	-
+1794430014	cmd	Trentlin	35	4208	dresden.are	standing	22	6	-	stash	get white	You take a white bracer out of your stash.	-	-
+1794430019	cmd	Trentlin	35	4208	dresden.are	standing	22	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794430020	cmd	Trentlin	35	4207	dresden.are	standing	22	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794430021	cmd	Trentlin	35	4202	dresden.are	standing	22	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794430021	cmd	Trentlin	35	4203	dresden.are	standing	22	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794430022	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794430022	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	north		Alas, you cannot go that way.	-	-
+1794430023	cmd	Trentlin	35	4210	dresden.are	standing	22	0	-	sleep		You go to sleep.	-	-
+1794430024	cmd	Trentlin	35	4210	dresden.are	sleeping	22	0	-	equipment		You are using: // <used as light>     (Invis) (Magical) (Glowing) the Sceptre of Might // <worn on finger>    (Magical) a ring of braided thorn	-	+
