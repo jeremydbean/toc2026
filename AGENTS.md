@@ -136,8 +136,7 @@ Supported long-running native wrapper:
 ```
 
 The root compatibility file named `startup` and `area/startup.sh` delegate to
-the maintained root `startup.sh`. Files under `zStartup/` are archived history
-and must not be used as current launchers.
+the maintained root `startup.sh`.
 
 Installed copies (Docker by default, `--native` without it):
 
@@ -187,12 +186,16 @@ git diff --check
 Current October 2026 Python baseline:
 
 ```text
-103 listed area entries
-2,508 mobiles
+102 listed area entries
+2,507 mobiles
 3,760 objects
-7,786 rooms
-0 critical, 12 warning, 1,707 information findings
+7,766 rooms
+0 critical, 12 warning, 1,689 information findings
 ```
+
+The cleanup of 2026-11-11 took the Quest Zone's 13 rooms and its one
+mobile, Temple Despair (the list entry and its 7 rooms) and 18 information
+findings with them; the count read 1,707 before it.
 
 The guardians' keys (2026-11-10) added exactly nine information findings:
 each is `object-has-no-source` now, made by `hyrule_guardian_slain` at the
@@ -257,7 +260,7 @@ parsing mistake behind the claim.
 
 Seven list entries are help/social files without `#AREA` (`commands`,
 `routelist`, `skills`, `spells`, `masters`, `toc`, `social`), so the native
-validator reports 96 areas against the Python tools' 103 entries. Online
+validator reports 95 areas against the Python tools' 102 entries. Online
 building saves into `custom.are` (`BUILDER_AREA_FILE`); because `area.lst`
 lists it, boot creates no extra area. Do not force native and Python area
 totals to match by removing valid files or hiding the builder area.
@@ -1796,11 +1799,11 @@ Three rules keep the output honest, all learned the hard way:
   "open door;e" at the Crystalmir farmhouse door (13039 east, reset
   locked) until 2026-10-21 and stopped at "It's locked".
 
-90 of the 93 areas holding rooms have a route. Dresden has none because it
-contains the start room. The Quest Zone (20301-20313) and Temple Despair
-(26000-26006) have none because nothing in the world links to them -- the
-first is finished content with no entrance, the second an empty shell with no
-mobs or objects. Do not invent entrances for them; ask.
+90 of the 91 areas holding rooms have a route. Dresden has none because it
+contains the start room. The Quest Zone's rooms and Temple Despair, which
+nothing linked to, were removed on 2026-11-11 (owner: "remove any old unused
+data"); `quest1.are` keeps only the objects the quest master and the newbie
+kit hand out.
 
 **Trainers and guild halls are in the JSON too**, as a `trainers` list
 beside `routes` (and a short `places` list: the square, the Temple and its
@@ -4049,8 +4052,7 @@ seconds -- a step through an exit, or one move in eight a vanishing to a
 random room -- never into a room `bm_room_ok()` refuses: guild halls
 (`guild_hall_rooms()` in `special.c`, `guild_closed_rooms`' walk with
 nobody admitted), staff, newbie, hero, private, no-mob, death-trap and
-exitless rooms, and Hyrule, the yard, `seasonal.are`, the Quest Zone and
-Temple Despair.
+exitless rooms, and Hyrule, the yard, `seasonal.are` and `quest1.are`.
 
 **One find, one customer** (owner, 2026-10-20: so several people cannot
 buy from him in one place, but whoever finds him has time to buy one of
@@ -4805,7 +4807,7 @@ server could recover the lines.
   silent hole; `tests/test_channel_history.py` counts the call sites so
   one cannot be added or dropped unnoticed. The four channels that go
   through `channel_say()` are covered by the single call inside it; the
-  six that walk the descriptor list themselves each record their own.
+  five that walk the descriptor list themselves each record their own.
 - **Reading a channel back needs the rank that hearing it needs.**
   `history_may_read()` compares `get_trust()` against the same
   `hear_level` the live channel uses, and a channel the character
@@ -4830,6 +4832,21 @@ drop.
 character may read and sorts it by the clock, so the tell history needs
 its own `tell_history_when` -- a formatted line with the time baked in
 cannot be sorted against the channels.
+
+## IGNORE
+
+`do_ignore` in `src/act_comm.c` (owner, 2026-11-11: "fix ignore command";
+it had been a stub). `pcdata->ignore` holds capitalised names one space
+apart, at most `IGNORE_MAX` (20), saved as `Ignore <names>~` under **case
+'I'** only when not empty; the old `Ignoring` key every file carried is read
+into the same list and cleaned, so lists players set years ago apply again.
+`is_ignoring(listener, speaker)` is the one test, and a staff speaker is never
+ignored. It is asked by TELL/REPLY (the sender is told), GTELL, every channel
+loop beside its GMCP emit, HISTORY, `is_note_to` (so an ignored player's
+notes leave the board and the numbering stays whole), and by `act_new` for
+messages sent through `act_speech()` -- SAY, EMOTE and POSE -- and nothing
+else: blows, spells and socials still land. A new way of speaking to other
+players asks it too (`tests/test_ignore.py`).
 
 ## One-Person Rooms
 

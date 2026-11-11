@@ -262,9 +262,8 @@ class RouteHelpTests(unittest.TestCase):
             self.assertIn(name, self.text, name)
 
     def test_it_names_nothing_that_is_not_a_route(self) -> None:
-        """Dresden holds the start room; two areas have no way in."""
-        for absent in ("Quest Zone", "Temple Despair"):
-            self.assertNotIn(absent + " (", self.text, absent)
+        """Dresden holds the start room, so it has no route."""
+        self.assertNotIn("Dresden (", self.text)
 
     def test_the_generator_reproduces_it(self) -> None:
         """A file that regenerates differently has been hand-edited."""

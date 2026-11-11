@@ -168,17 +168,17 @@ class HistorySourceTests(unittest.TestCase):
 
     def test_every_live_channel_records(self) -> None:
         """A channel that sends but does not record is a silent hole."""
-        for channel in ("gossip", "shout", "yell", "question", "answer",
+        for channel in ("gossip", "shout", "yell", "question",
                         "music", "immtalk", "godtalk", "hero", "leveling"):
             self.assertIn(
                 '"%s"' % channel, self.comm,
                 "%s is not named in the history wiring" % channel,
             )
-        # The definition, the six channels that walk the descriptor list
+        # The definition, the five channels that walk the descriptor list
         # themselves, and the one call inside channel_say that covers the
         # other four. The prototype lives in merc.h.
         self.assertEqual(
-            self.comm.count("channel_history_add("), 1 + 6 + 1,
+            self.comm.count("channel_history_add("), 1 + 5 + 1,
             "a channel was added or dropped without its recording",
         )
         merc = (ROOT / "src" / "merc.h").read_text(encoding="latin-1")

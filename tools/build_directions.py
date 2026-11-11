@@ -799,8 +799,7 @@ def write_route_help(routes):
     lines += [
         "",
         "Dresden is not listed because it holds the Oak Tree Square, which",
-        "is where every route begins.  The Quest Zone and Temple Despair",
-        "are not listed because nothing in the world links to them.",
+        "is where every route begins.",
         "",
         "See also: ROUTES, WALK, MAP, MUDLET, AREAS, GUILDS, TEACHLIST",
         "~",

@@ -175,7 +175,7 @@ class GmcpPayloadTests(unittest.TestCase):
         recordings = len(re.findall(r"^\s*channel_history_add\( ", self.comm,
                                     re.MULTILINE))
         emits = self.comm.count("gmcp_send_channel(")
-        self.assertEqual(recordings, 7, "channel count moved")
+        self.assertEqual(recordings, 6, "channel count moved")
         self.assertEqual(
             emits, recordings * 2 + 2,
             "every channel needs a speaker emit and a listener emit; "
@@ -210,7 +210,7 @@ class GmcpPayloadTests(unittest.TestCase):
                 self.comm):
             self.assertIn("gmcp_send_channel( d,", block)
         self.assertGreaterEqual(
-            len(re.findall(r"gmcp_send_channel\( d,", self.comm)), 7)
+            len(re.findall(r"gmcp_send_channel\( d,", self.comm)), 6)
 
     def test_tells_are_per_recipient_and_never_broadcast(self) -> None:
         body = function_body(self.comm, "void tell_history_add(")

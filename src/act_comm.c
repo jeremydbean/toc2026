@@ -557,7 +557,6 @@ static const CHANNEL_META channel_meta_table[] =
     { "shout",     "shouts",        COL_SHOUTS,    0 },
     { "yell",      "yells",         COL_SHOUTS,    0 },
     { "question",  "questions",     COL_QUESTION,  0 },
-    { "answer",    "answers",       COL_QUESTION,  0 },
     { "music",     "MUSIC:",        COL_SOCIALS,   0 },
     { "hero",      "heroes",        COL_HERO,      LEVEL_HERO },
     { "leveling",  "congratulates", COL_HIGHLIGHT, 0 },

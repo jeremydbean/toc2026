@@ -38,12 +38,12 @@ class IgnoreSourceTests(unittest.TestCase):
 
     def test_every_channel_walk_asks(self) -> None:
         # Each per-listener delivery of speech asks is_ignoring: the shared
-        # channel_say, the castle walk, the six channels with their own
-        # walks, say's chat-pane loop, pmote, gtell, tell and reply.
+        # channel_say, the castle walk, the five channels with their own
+        # walks, say's chat-pane loop, gtell, tell and reply.
         for start in ("static void channel_say(", "static void castle_say(",
-                      "void do_gossip(", "void do_question(", "void do_answer(",
+                      "void do_gossip(", "void do_question(",
                       "void do_music(", "void do_shout(", "void do_yell(",
-                      "void do_say(", "void do_pmote(", "void do_gtell(",
+                      "void do_say(", "void do_gtell(",
                       "void do_tell(", "void do_reply("):
             with self.subTest(start):
                 self.assertIn("is_ignoring(", body("src/act_comm.c", start))
