@@ -4702,6 +4702,13 @@ static void act_log_missing_arg( const char *code_desc, char code_char,
     log_string( logbuf );
 }
 
+/*
+ * Set while act_speech() is delivering something a character said or
+ * emoted, so act_new() can leave out whoever IGNOREs the speaker. Only
+ * speech: a blow, an arrival or a spell still reaches everybody.
+ */
+static bool act_is_speech = false;
+
 void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
               const void *arg2, int type, int min_pos )
 {
@@ -4776,6 +4783,9 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
         /* ...nor as the one acted on: "the goblin's slash hits someone"
            tells the room somebody is standing there. */
         if ( type == TO_NOTVICT && vch != NULL && wizinvis_hides( vch, to ) )
+            continue;
+        /* SAY, EMOTE and POSE: not to anyone who IGNOREs the speaker. */
+        if ( act_is_speech && to != ch && is_ignoring( to, ch ) )
             continue;
  
         dstring_clear( &buf );
@@ -5012,6 +5022,17 @@ void act_new_cstr( const char *format, CHAR_DATA *ch, const void *arg1,
     dstring_init_copy( &dformat, format );
     act_new( &dformat, ch, arg1, arg2, type, min_pos );
     dstring_free( &dformat );
+}
+
+/* act_new_cstr for speech: whoever IGNOREs the speaker is left out. */
+void act_speech( const char *format, CHAR_DATA *ch, const void *arg1,
+                 const void *arg2, int type, int min_pos )
+{
+    bool was = act_is_speech;
+
+    act_is_speech = true;
+    act_new_cstr( format, ch, arg1, arg2, type, min_pos );
+    act_is_speech = was;
 }
 
 void act( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type )

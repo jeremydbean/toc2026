@@ -858,19 +858,6 @@ void psionic_sync_known( CHAR_DATA *ch )
 }
 
 
-static void stub_notify( CHAR_DATA *ch )
-{
-    if ( ch != NULL )
-        send_to_char( "That command is not available.\n\r", ch );
-}
-
-
-void do_ignore( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
 
 void do_wizinfo( CHAR_DATA *ch, char *argument )
 {

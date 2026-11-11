@@ -2403,7 +2403,7 @@ struct  pc_data
     bool                color;
     long                bank;
     long                dcount;
-    char * ignore;
+    char * ignore;              /* IGNORE: capitalised names, one space apart */
     char * afk_msg;             /* optional message shown to tellers while AFK */
     long                pkills_given;
     long                pkills_received;
@@ -3539,6 +3539,11 @@ const char *client_describe( const DESCRIPTOR_DATA *d, char *buf, size_t size );
 void    channel_history_add ( const char *channel, CHAR_DATA *ch,
                               const char *text );
 void    tell_history_add ( CHAR_DATA *ch, const char *line );
+/* IGNORE (act_comm.c): who a player will not hear. */
+#define IGNORE_MAX 20
+bool    is_ignoring      ( CHAR_DATA *listener, CHAR_DATA *speaker );
+bool    ignore_has_name  ( CHAR_DATA *listener, const char *name );
+void    ignore_load      ( CHAR_DATA *ch, const char *text );
 void    psionic_sync_known ( CHAR_DATA *ch );
 bool    normalize_psionic_arguments ( const char *argument, char *output, size_t length, char *invalid );
 /* Dynamic-string aware output helpers. */
@@ -3550,6 +3555,7 @@ void    page_to_char    ( const char *txt, CHAR_DATA *ch );
 void    act             ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type );
 void    act_new         ( const DString *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
 void    act_new_cstr    ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
+void    act_speech      ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos );
 char * speak_filter    (CHAR_DATA *ch, const char *str);
 char * drunk_speak     (const char *str);
 void    make_descriptor ( DESCRIPTOR_DATA *dnew, int desc );
