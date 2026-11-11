@@ -579,6 +579,10 @@ void violence_update( void )
     {
         /*ch_next = ch->next;*/
 
+	/* An opponent already freed is caught, logged and let go, never
+	   swung at (memguard.c). */
+	if ( !memguard_fighting_ok( ch ) )
+	    continue;
 	if ( ( victim = ch->fighting ) == NULL || ch->in_room == NULL )
 	    continue;
 

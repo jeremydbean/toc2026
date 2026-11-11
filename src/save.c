@@ -4769,6 +4769,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
     {
 	obj		= obj_data_new( );
 	*obj		= obj_zero;
+	obj->mem_magic		= MEM_ALIVE_OBJ;	/* recycle.c */
 	obj->name		= str_dup( "" );
 	obj->short_descr	= str_dup( "" );
 	obj->description	= str_dup( "" );

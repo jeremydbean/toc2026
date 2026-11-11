@@ -120,6 +120,32 @@ class LogReportTests(unittest.TestCase):
             "quest assigned: recover a gem (obj 3715) in haon.are, 30 minutes, daily")
         self.assertEqual(found.group(2, 4), ("haon.are", "daily"))
 
+    def test_memory_lines_and_crash_backtraces(self) -> None:
+        # The memory section (memguard.c's MEMORY lines, playlog.c's
+        # crash.log backtrace), 2026-11-11.
+        from datetime import datetime, timezone
+        when = datetime(2026, 11, 11, tzinfo=timezone.utc)
+        s = self.report.memory_summary([
+            (when, "MEMORY: stale reply on Zed -> dead character (mob 3090 the fido)"),
+            (when, "MEMORY: stale reply on Bob -> dead character (player Ann)"),
+            (when, "MEMORY: stale carried_by on obj 3009 a pie -> dead character (?)"),
+            (when, "MEMORY: 7 more stale reply not logged in the last minute"),
+        ])
+        self.assertEqual(s["by_field"]["reply"], 9)
+        self.assertEqual(s["by_field"]["carried_by"], 1)
+        self.assertEqual(len(s["newest"]), 3)
+        crash = ("=== crash: signal 11 at 1 during update; the last commands, oldest first:\n"
+                 "Zed [4207] look\nbuild 0123456789abcdef\n--- backtrace ---\n"
+                 "./merc(crash_handler+0x2a)[0x5555]\n./merc(main+0x10)[0x5556]\n=== end ===\n"
+                 "=== crash: signal 6 at 2 during output; the last commands, oldest first:\n"
+                 "Bob [3001] say hi\n=== end ===\n")
+        blocks = self.report.crash_blocks(crash)
+        self.assertEqual(len(blocks), 2)
+        self.assertEqual(blocks[0]["commands"], ["Zed [4207] look"])
+        self.assertEqual(blocks[0]["build"], "0123456789abcdef")
+        self.assertEqual(len(blocks[0]["backtrace"]), 2)
+        self.assertEqual(blocks[1]["backtrace"], [])
+
     def test_coin_reads_as_the_game_writes_it(self) -> None:
         self.assertEqual(self.report.format_copper(148721100), "148p 72g 11s")
         self.assertEqual(self.report.format_copper(-420 * 10_000), "-4p 20g")

@@ -79,6 +79,7 @@ set(SRC_FILES
     src/rested.c
     src/recovery.c
     src/recycle.c
+    src/memguard.c
     src/heroes.c
     src/restores.c
     src/alignment.c
@@ -97,6 +98,10 @@ set(SRC_FILES
 
 add_executable(${TARGET_NAME})
 target_sources(${TARGET_NAME} PRIVATE ${SRC_FILES})
+
+# -rdynamic on Linux, as the Makefile: crash.log's backtrace (playlog.c)
+# then names the game's functions rather than bare addresses.
+set_target_properties(${TARGET_NAME} PROPERTIES ENABLE_EXPORTS ON)
 
 target_include_directories(${TARGET_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/src")
 

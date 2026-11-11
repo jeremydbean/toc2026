@@ -1242,6 +1242,12 @@ void game_loop_unix( int control )
 	{
 	    d_next = d->next;
 
+	    /* A character, body or snooper already freed is caught, logged
+	       and let go before anything follows it; a connection left with
+	       no character is marked write_failed and closed just below
+	       (memguard.c). */
+	    memguard_descriptor_ok( d );
+
 	    /* A write failed somewhere this pulse (write_to_buffer's
 	       overflow flush, a telnet reply): close it here, where
 	       nothing is holding it. */
@@ -1711,6 +1717,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
      */
     dnew = descriptor_data_new();
     *dnew = d_zero;
+    dnew->mem_magic = MEM_ALIVE_DESC;   /* recycle.c */
     dnew->descriptor = desc;
     dnew->connected = CON_GET_NAME;
     dnew->showstr_head = NULL;

@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111memguard 2026-11-11 staff
+Memory safeguards: anything that leaves the game is kept for a minute before
+its memory is freed, and once a second every stored pointer is checked. One
+left pointing at something gone is logged as a MEMORY line, announced on
+WIZINFO and cleared, so the game carries on. MEMCHECK shows the counts and
+the latest events; a crash now leaves a backtrace in log/crash.log.
+
 @ 20261111rolls 2026-11-11
 The Hall of Heroes, down from the Oak Tree Square, honours you the moment
 you earn it: your name is on the plaque the instant you reach hero, with

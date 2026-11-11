@@ -590,6 +590,8 @@ Live-test gotchas that look like product bugs and are not:
 - `src/color.c`: canonical game-color parsing and terminal color conversion
 - `src/telnet_proto.c`, `src/gmcp.c`: Telnet negotiation and Mudlet protocol data
 - `src/achievements.c`: achievement catalog, progress, display, and persistence helpers
+- `src/recycle.c`, `src/memguard.c`: allocation, liveness tags, the
+  quarantine, the stale-pointer sweep and MEMCHECK
 - `src/db.c`: world boot and native area parser
 - `src/interp.c`: command registration/order/trust/logging
 - `src/act_move.c`: movement, exits, traps, recall, run/speedwalk
@@ -5195,12 +5197,94 @@ saw a use after free or a double free in any of them. They are gone:
 - **Characters (with their pcdata), objects and descriptors are released
   to `src/recycle.c`** (`char_data_release`, `obj_data_release`,
   `descriptor_data_release`) and freed by `recycle_flush()` at the top of
-  the game loop, beside `flush_container_lists()`: the game reads one it
+  the game loop, beside `flush_container_lists()`, once their quarantine
+  is over (see Memory Safeguards; at once under ASan): the game reads one it
   has just extracted or closed in the same pass, and that read stays
   valid. A read in a later pass is a real use after free, and ASan says
   so. A second release, `free_char` or `extract_obj` of the same thing is
   refused with a bug line (`next_free` is non-NULL only while released).
 - `tests/test_memory_pools.py` fails on any free list coming back.
+
+## Memory Safeguards
+
+Owner, 2026-11-11: with the pools gone, a stale pointer that survives
+into a later pass reads freed memory, so any left in live play must be
+**seen at once and survived**, to be fixed at the next check-in.
+`src/recycle.c` and `src/memguard.c`; `tests/test_memory_guard.py`.
+
+- **Liveness tags.** CHAR_DATA, OBJ_DATA and DESCRIPTOR_DATA carry
+  `mem_magic`: `MEM_ALIVE_*` when made (`char_data_new`/`clear_char`,
+  `obj_data_new` and both `obj_zero` copies, `new_descriptor`),
+  `MEM_DEAD_*` when handed to recycle.c. `char_is_live`, `obj_is_live`
+  and `desc_is_live` are true for NULL and for anything **not tagged
+  dead** -- stack stand-ins (`offline_desc`, gear_compare's candidate,
+  save.c's vessel) carry no ALIVE tag and are not stale. A tag is only
+  meaningful within the quarantine window; a block freed after it reads
+  as whatever the allocator put there. A second release is refused by the
+  tag, as before.
+- **Quarantine.** A released block is kept whole (never poisoned, so a
+  stale read behaves as the old pool did) for `MEM_QUARANTINE_SECS` (60;
+  `TOC_MEM_QUARANTINE_SECS` overrides, 0 to 3600) and at most
+  `MEM_QUARANTINE_MAX` (8192) blocks, then freed oldest first by
+  `recycle_flush` at the top of the game loop -- never mid-pass, so the
+  cap may be passed until the next flush. **Under ASan the window is 0**
+  unless the environment sets one, so the sanitizer still reports a use
+  after free itself; a test that needs the sweep to see a tag sets the
+  window (`test_memory_guard` uses 30). Each entry keeps a label written
+  at release from what is still safe to read: a player's name
+  (`recycle_label_char`, called by `free_char` before the strings go), a
+  mobile's or object's prototype, a descriptor's socket number -- never
+  an address. Never read a dead block's strings: they are freed.
+- **The sweep** (`memguard_sweep`, first thing in `update_handler`, once
+  a second) walks the character list, the object list, every room's
+  people and contents, the descriptor list and the hunter list, and
+  checks fighting, master, leader, pet, hunting, reply, questgiver, desc,
+  in_object, carrying, the stash, resurrect_corpse; trapped, contains,
+  carried_by, in_obj; the room lists; a descriptor's character, original,
+  snoop_by and gmcp_last_character. A dead target writes
+  `MEMORY: stale <field> on <who> -> dead <kind> (<label>)` to toc.log
+  (ten a field a minute, then a count), a **nameless** BUG row to the play
+  journal, and a WIZINFO once a field a minute at the holder's
+  `staff_notice_level`. Measured at about 2 ms a run on a full test
+  world (5,556 characters, 6,013 objects, 85,000 pointers).
+- **Repairs**, each the least that leaves the game consistent:
+  fighting is cleared *then* `stop_fighting(ch, FALSE)` resets the
+  position (stop_fighting would write the dead opponent's battle ticks);
+  hunting leaves the hunter list by `delete_from_hunter_list`, never
+  `do_stop_hunting`, whose notice reads the prey's freed name; a dead
+  hunter-list slot is emptied; a dead master also lifts charm and
+  `ridden`; a dead pet unmounts; a dead desc leaves the character
+  link-dead; a list link to a dead object or character is unlinked
+  through the dead block's own link; an object whose holder or container
+  is dead goes to the floor of Limbo (room 2) rather than being
+  extracted, since it may be a player's -- the log line names its vnum;
+  a character in a dead bottle is let out as `char_from_obj` would (a
+  mobile extracted, a player to the altar). A descriptor whose character
+  is dead goes back to its `original` if that lives, else is marked
+  `write_failed` and the output loop closes it. resurrect_corpse and
+  gmcp_last_character are compared by pointer only and go stale by
+  design: they are cleared and counted quietly, not reported.
+- **Hot spots ask first**: `violence_update` (`memguard_fighting_ok`),
+  `hunt_victim` (`memguard_hunting_ok`), `hunting_update`
+  (`memguard_hunter_slot_ok`), the output loop
+  (`memguard_descriptor_ok`, before the `write_failed` check) and
+  `do_reply` (`memguard_reply_ok`). A new timer that follows a stored
+  pointer asks too; a new pointer field goes into the sweep.
+- **MEMCHECK** (IM, after MEMORY so MEM is still MEMORY): quarantine,
+  live counts, sweep cost, catches by field, the last five events.
+  `MEMCHECK SELFTEST` works only with `TOC_MEMCHECK_SELFTEST=1`: it
+  retires a mobile straight through `char_data_release` behind the
+  caller's REPLY, for the next sweep to catch.
+- **crash.log has a backtrace**: the handler writes the build (first word
+  of `../.code-revision` or `../log/deployed-commit`, read at boot) and
+  `backtrace()`/`backtrace_symbols_fd()` under `__GLIBC__` (warmed once
+  in `playlog_boot` so libgcc is loaded). Both builds link `-rdynamic`
+  (Makefile LDFLAGS on Linux, CMake `ENABLE_EXPORTS`) so frames are named.
+- `tools/log_report.py`'s `== memory` section counts MEMORY lines by
+  field, prints the newest, and shows crash.log's backtraces; the morning
+  check-in reads it. Any MEMORY line is a bug: find who leaves that field
+  pointing at something extracted and clear it in `extract_char`,
+  `extract_obj` or a `*_forget` hook.
 
 ## Contracts From The October 2026 Audit
 

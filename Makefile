@@ -19,7 +19,9 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 	LDFLAGS := -lm -lz -pthread
 else
-	LDFLAGS := -lcrypt -lm -lz -pthread
+	# -rdynamic: crash.log's backtrace (playlog.c) names functions, not
+	# bare addresses.
+	LDFLAGS := -lcrypt -lm -lz -pthread -rdynamic
 endif
 
 SRC_DIR  := src
