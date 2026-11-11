@@ -579,15 +579,28 @@ See also: CHANNELS, CGOS, CC
 
 0 IGNORE~
 Syntax: ignore
+Syntax: ignore <player>
+Syntax: ignore clear
 
-IGNORE is not available on Times of Chaos: the command answers "That
-command is not available."  To stop hearing someone, use what the game
-does have: DEAF stops all tells, QUIET leaves you hearing only SAY and
-EMOTE, and typing a channel's name on its own (GOSSIP, AUCTION ...) turns
-that channel off.  CHANNELS shows which are on.  Harassment breaks the
-RULES; tell the immortals with a NOTE.
+IGNORE stops you hearing one player.  IGNORE <player> adds them to your
+list, and the same again takes them off; IGNORE alone shows the list, and
+IGNORE CLEAR empties it.  They need not be in the game, and the list is
+kept when you quit.  You may ignore up to 20 players.
 
-See also: DEAF, QUIET, CHANNELS, RULES
+What an ignored player says, emotes or poses beside you, their tells and
+replies, their group tells and everything they put on a channel (gossip,
+question, answer, music, shout, yell, castle, hero ...) no longer reach
+you, and their lines drop out of your HISTORY.  Their notes leave your
+board too, so NOTE LIST numbers only the notes you can read.  Their
+tells and replies are answered "<your name> is ignoring you."; nothing
+else tells them.
+
+It does not stop what they do: their blows, spells, socials and arrivals
+still reach you.  The staff cannot be ignored.  To stop hearing a whole
+channel, type its name on its own (GOSSIP ...); DEAF stops every tell.
+Harassment breaks the RULES; tell the immortals with a NOTE.
+
+See also: DEAF, QUIET, CHANNELS, HISTORY, RULES
 ~
 
 0 LISTEN~

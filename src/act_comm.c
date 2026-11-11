@@ -916,6 +916,8 @@ static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
                 continue;
             if ( since != 0 && line->when <= since )
                 continue;
+            if ( line->name != NULL && ignore_has_name( ch, line->name ) )
+                continue;
 
             out[count].when = line->when;
             out[count].meta = &channel_meta_table[index];
@@ -1242,7 +1244,8 @@ static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
             continue;
 
         if ( IS_SET( victim->comm, flag )
-          || IS_SET( victim->comm, COMM_QUIET ) )
+          || IS_SET( victim->comm, COMM_QUIET )
+          || is_ignoring( victim, ch ) )
             continue;
 
         snprintf( buf, sizeof(buf), "{%02X$n %s '$t'{00", colour, other_verb );
@@ -1360,7 +1363,8 @@ static void castle_say( CHAR_DATA *ch, char *argument, int flag,
             continue;
 
         if ( IS_SET( victim->comm, flag )
-          || IS_SET( victim->comm, COMM_QUIET ) )
+          || IS_SET( victim->comm, COMM_QUIET )
+          || is_ignoring( victim, ch ) )
             continue;
 
         snprintf( buf, sizeof(buf), "{%02X$n %s '$t'{00",
@@ -1506,6 +1510,297 @@ void do_notell( CHAR_DATA *ch, char *argument )
 
 
 /*
+ * IGNORE: who a player will not hear.
+ *
+ * The list is pcdata->ignore, capitalised player names one space apart,
+ * saved as `Ignore <names>~' (fread_char, case 'I'). Files from the old
+ * game carry an `Ignoring' line in the same shape, and it is read into the
+ * same list, tidied by ignore_load(). What an ignored player says, emotes,
+ * tells, group-tells and puts on a channel does not reach the one ignoring
+ * them, and their notes and HISTORY lines drop out of that player's view;
+ * staff are never ignored. Nothing else is touched: a blow, a social, a
+ * spell or an arrival still lands.
+ */
+
+/* The next word of a list, or false at its end. */
+static bool ignore_next_word( const char **list, char *word, size_t size )
+{
+    const char *p = *list;
+    size_t len = 0;
+
+    while ( *p == ' ' )
+        p++;
+    if ( *p == '\0' )
+    {
+        *list = p;
+        return false;
+    }
+    while ( *p != '\0' && *p != ' ' )
+    {
+        if ( len + 1 < size )
+            word[len++] = *p;
+        p++;
+    }
+    word[len] = '\0';
+    *list = p;
+    return true;
+}
+
+
+/* A player name: two to twelve letters, nothing else. */
+static bool ignore_name_ok( const char *name )
+{
+    size_t len = 0;
+
+    if ( name == NULL )
+        return false;
+    for ( ; name[len] != '\0'; len++ )
+        if ( !isalpha( (unsigned char) name[len] ) )
+            return false;
+    return len >= 2 && len <= 12;
+}
+
+
+static int ignore_count( const char *list )
+{
+    char word[MAX_INPUT_LENGTH];
+    int count = 0;
+
+    if ( list == NULL )
+        return 0;
+    while ( ignore_next_word( &list, word, sizeof(word) ) )
+        count++;
+    return count;
+}
+
+
+bool ignore_has_name( CHAR_DATA *listener, const char *name )
+{
+    char word[MAX_INPUT_LENGTH];
+    const char *list;
+
+    if ( listener == NULL || IS_NPC(listener) || listener->pcdata == NULL
+      || name == NULL || name[0] == '\0' )
+        return false;
+
+    list = listener->pcdata->ignore;
+    if ( list == NULL )
+        return false;
+    while ( ignore_next_word( &list, word, sizeof(word) ) )
+        if ( !str_cmp( word, name ) )
+            return true;
+    return false;
+}
+
+
+/* The list as the file gave it, tidied: valid names, capitalised, each
+   once, at most IGNORE_MAX -- the old game's lines held repeats. Called
+   by the loader, so it says nothing. */
+void ignore_load( CHAR_DATA *ch, const char *text )
+{
+    char word[MAX_INPUT_LENGTH];
+    char list[MAX_STRING_LENGTH];
+    const char *p = text;
+    int count = 0;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    list[0] = '\0';
+    while ( p != NULL && count < IGNORE_MAX
+         && ignore_next_word( &p, word, sizeof(word) ) )
+    {
+        char have[MAX_INPUT_LENGTH];
+        const char *q = list;
+        bool repeat = false;
+
+        if ( !ignore_name_ok( word ) )
+            continue;
+        while ( ignore_next_word( &q, have, sizeof(have) ) )
+            if ( !str_cmp( have, word ) )
+                repeat = true;
+        if ( repeat )
+            continue;
+
+        if ( list[0] != '\0' )
+            toc_strlcat( list, " ", sizeof(list) );
+        toc_strlcat( list, capitalize( word ), sizeof(list) );
+        count++;
+    }
+
+    free_string( ch->pcdata->ignore );
+    ch->pcdata->ignore = str_dup( list );
+}
+
+
+/* The player behind a character: a switched immortal's own body. */
+static CHAR_DATA *ignore_person( CHAR_DATA *ch )
+{
+    if ( ch != NULL && IS_NPC(ch) && ch->desc != NULL
+      && ch->desc->original != NULL )
+        return ch->desc->original;
+    return ch;
+}
+
+
+bool is_ignoring( CHAR_DATA *listener, CHAR_DATA *speaker )
+{
+    listener = ignore_person( listener );
+    speaker  = ignore_person( speaker );
+
+    if ( listener == NULL || speaker == NULL || listener == speaker
+      || IS_NPC(listener) || listener->pcdata == NULL
+      || listener->pcdata->ignore == NULL
+      || listener->pcdata->ignore[0] == '\0'
+      || IS_NPC(speaker) )
+        return false;
+
+    /* Staff are always heard: a warning or an answer from them is the
+       one thing nobody may shut out. */
+    if ( IS_TRUSTED( speaker, LEVEL_IMMORTAL ) )
+        return false;
+
+    return ignore_has_name( listener, speaker->name );
+}
+
+
+/* A player in the game by that exact name whom ch can see, or NULL. */
+static CHAR_DATA *ignore_find_online( CHAR_DATA *ch, const char *name )
+{
+    DESCRIPTOR_DATA *d;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *wch = d->original != NULL ? d->original : d->character;
+
+        if ( d->connected != CON_PLAYING || wch == NULL || IS_NPC(wch) )
+            continue;
+        if ( !str_cmp( wch->name, name ) && can_see( ch, wch ) )
+            return wch;
+    }
+    return NULL;
+}
+
+
+void do_ignore( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *rch = ignore_person( ch );
+    CHAR_DATA *victim;
+    char *list;
+
+    if ( rch == NULL || IS_NPC(rch) || rch->pcdata == NULL )
+    {
+        send_to_char( "Only players can ignore anybody.\n\r", ch );
+        return;
+    }
+
+    one_argument( argument, arg );
+    list = rch->pcdata->ignore;
+
+    if ( arg[0] == '\0' )
+    {
+        if ( list == NULL || list[0] == '\0' )
+        {
+            send_to_char( "You are ignoring nobody.\n\r", ch );
+            send_to_char( "IGNORE <name> stops you hearing a player; "
+                          "HELP IGNORE says what it covers.\n\r", ch );
+            return;
+        }
+        snprintf( buf, sizeof(buf), "You are ignoring (%d of %d): %s\n\r",
+                  ignore_count( list ), IGNORE_MAX, list );
+        send_to_char( buf, ch );
+        send_to_char( "IGNORE <name> again stops ignoring them; "
+                      "IGNORE CLEAR stops ignoring everybody.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "clear" ) )
+    {
+        if ( list == NULL || list[0] == '\0' )
+        {
+            send_to_char( "You are ignoring nobody already.\n\r", ch );
+            return;
+        }
+        free_string( rch->pcdata->ignore );
+        rch->pcdata->ignore = str_dup( "" );
+        send_to_char( "You stop ignoring everybody.\n\r", ch );
+        return;
+    }
+
+    if ( !ignore_name_ok( arg ) )
+    {
+        send_to_char( "A player's name is two to twelve letters.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, rch->name ) )
+    {
+        send_to_char( "You cannot ignore yourself.\n\r", ch );
+        return;
+    }
+
+    if ( ignore_has_name( rch, arg ) )
+    {
+        char kept[MAX_STRING_LENGTH];
+        char word[MAX_INPUT_LENGTH];
+        const char *p = list;
+
+        /* Built before the old list is let go: it is read here. */
+        kept[0] = '\0';
+        while ( ignore_next_word( &p, word, sizeof(word) ) )
+        {
+            if ( !str_cmp( word, arg ) )
+                continue;
+            if ( kept[0] != '\0' )
+                toc_strlcat( kept, " ", sizeof(kept) );
+            toc_strlcat( kept, word, sizeof(kept) );
+        }
+        free_string( rch->pcdata->ignore );
+        rch->pcdata->ignore = str_dup( kept );
+        snprintf( buf, sizeof(buf), "You stop ignoring %s.\n\r",
+                  capitalize( arg ) );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( ignore_count( list ) >= IGNORE_MAX )
+    {
+        snprintf( buf, sizeof(buf),
+                  "You are ignoring %d players already, the most there "
+                  "can be. Stop ignoring one first.\n\r", IGNORE_MAX );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( ( victim = ignore_find_online( rch, arg ) ) != NULL
+      && IS_TRUSTED( victim, LEVEL_IMMORTAL ) )
+    {
+        send_to_char( "The staff cannot be ignored. If one of them is "
+                      "troubling you, tell another.\n\r", ch );
+        return;
+    }
+
+    {
+        char grown[MAX_STRING_LENGTH];
+
+        toc_strlcpy( grown, list != NULL ? list : "", sizeof(grown) );
+        if ( grown[0] != '\0' )
+            toc_strlcat( grown, " ", sizeof(grown) );
+        toc_strlcat( grown, capitalize( arg ), sizeof(grown) );
+        free_string( rch->pcdata->ignore );
+        rch->pcdata->ignore = str_dup( grown );
+    }
+
+    snprintf( buf, sizeof(buf),
+              "You are ignoring %s now: you will not hear what they say, "
+              "emote, tell or put on a channel.\n\r", capitalize( arg ) );
+    send_to_char( buf, ch );
+}
+
+
+/*
  * "qui" is one keystroke from "quit" and used to be neither.
  */
 void do_qui( CHAR_DATA *ch, char *argument )
@@ -1611,7 +1906,8 @@ void do_gossip( CHAR_DATA *ch, char *argument )
         if ( d->connected == CON_PLAYING &&
              d->character != ch &&
              !IS_SET(victim->comm,COMM_NOGOSSIP) &&
-             !IS_SET(victim->comm,COMM_QUIET) )
+             !IS_SET(victim->comm,COMM_QUIET) &&
+             !is_ignoring( victim, ch ) )
         {
             snprintf( buf, sizeof(buf), "{%02X$n gossips '$t'{00", COL_GOSSIP );
             act_new_cstr( buf,
@@ -1685,7 +1981,8 @@ void do_question( CHAR_DATA *ch, char *argument )
         if ( d->connected == CON_PLAYING &&
              d->character != ch &&
              !IS_SET(victim->comm,COMM_NOQUESTION) &&
-             !IS_SET(victim->comm,COMM_QUIET) )
+             !IS_SET(victim->comm,COMM_QUIET) &&
+             !is_ignoring( victim, ch ) )
         {
             snprintf( buf, sizeof(buf), "{%02X$n questions '$t'{00", COL_QUESTION );
             act_new_cstr( buf,
@@ -1749,7 +2046,8 @@ void do_answer( CHAR_DATA *ch, char *argument )
         if ( d->connected == CON_PLAYING &&
              d->character != ch &&
              !IS_SET(victim->comm,COMM_NOQUESTION) &&
-             !IS_SET(victim->comm,COMM_QUIET) )
+             !IS_SET(victim->comm,COMM_QUIET) &&
+             !is_ignoring( victim, ch ) )
         {
             snprintf( buf, sizeof(buf), "{%02X$n answers '$t'{00", COL_QUESTION );
             act_new_cstr( buf,
@@ -1811,7 +2109,8 @@ void do_music( CHAR_DATA *ch, char *argument )
         if ( d->connected == CON_PLAYING &&
              d->character != ch &&
              !IS_SET(victim->comm,COMM_NOMUSIC) &&
-             !IS_SET(victim->comm,COMM_QUIET) )
+             !IS_SET(victim->comm,COMM_QUIET) &&
+             !is_ignoring( victim, ch ) )
         {
             snprintf( buf, sizeof(buf), "{%02X$n MUSIC: '$t'{00", COL_SOCIALS );
             act_new_cstr( buf,
@@ -1909,6 +2208,11 @@ bool is_note_to( CHAR_DATA *ch, NOTE_DATA *pnote )
 
     if ( pnote->sender != NULL && !str_cmp( ch->name, pnote->sender ) )
         return TRUE;
+
+    /* IGNORE: an ignored player's notes leave this board altogether, so
+       the numbers LIST prints and READ takes still agree. */
+    if ( pnote->sender != NULL && ignore_has_name( ch, pnote->sender ) )
+        return FALSE;
 
     if ( is_name( "all", pnote->to_list ) )
         return TRUE;
@@ -2637,7 +2941,7 @@ void do_say( CHAR_DATA *ch, char *argument )
     act( buf, ch, argument, NULL, TO_CHAR );
 
     snprintf( buf, sizeof(buf), "{%02X$n says '$t'{00", COL_SAYS );
-    act_new_cstr( buf, ch, argument, NULL, TO_ROOM, POS_RESTING );
+    act_speech( buf, ch, argument, NULL, TO_ROOM, POS_RESTING );
 
     /*
      * A say is room-local, and that decides how it is recorded.
@@ -2672,6 +2976,8 @@ void do_say( CHAR_DATA *ch, char *argument )
                 unheard = true;
                 continue;
             }
+            if ( is_ignoring( rch, ch ) )
+                continue;
             gmcp_send_channel( rch->desc, "say", channel_speaker( ch ), argument );
         }
     }
@@ -2741,7 +3047,8 @@ void do_shout( CHAR_DATA *ch, char *argument )
 	if ( d->connected == CON_PLAYING &&
 	     d->character != ch &&
              !IS_SET(victim->comm, COMM_NOSHOUT) &&
-	     !IS_SET(victim->comm, COMM_QUIET) ) 
+	     !IS_SET(victim->comm, COMM_QUIET) &&
+	     !is_ignoring( victim, ch ) )
 	{
             snprintf( buf, sizeof(buf), "{%02X$n shouts '$t'{00", COL_SHOUTS );
             act_new_cstr(buf,ch,argument,d->character,TO_VICT,POS_SLEEPING);
@@ -2808,6 +3115,12 @@ void do_tell( CHAR_DATA *ch, char *argument )
     {
 	send_to_char( "They aren't here.\n\r", ch );
 	return;
+    }
+
+    if ( is_ignoring( victim, ch ) )
+    {
+        act( "$N is ignoring you.", ch, NULL, victim, TO_CHAR );
+        return;
     }
 
     if ( !(IS_IMMORTAL(ch) && ch->level > LEVEL_IMMORTAL) && !IS_AWAKE(victim) )
@@ -2917,6 +3230,12 @@ void do_reply( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( is_ignoring( victim, ch ) )
+    {
+        act( "$N is ignoring you.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
     if ( !IS_IMMORTAL(ch) && !IS_AWAKE(victim) )
     {
         act( "$E can't hear you.", ch, 0, victim, TO_CHAR );
@@ -3009,7 +3328,8 @@ void do_yell( CHAR_DATA *ch, char *argument )
 	&&   d->character->in_room != NULL
 	&&   ch->in_room != NULL
 	&&   d->character->in_room->area == ch->in_room->area 
-        &&   !IS_SET(d->character->comm,COMM_QUIET) )
+        &&   !IS_SET(d->character->comm,COMM_QUIET)
+        &&   !is_ignoring( d->character, ch ) )
 	{
             snprintf( buf, sizeof(buf), "{%02X$n yells '$t'{00", COL_SHOUTS );
             act_new_cstr(buf,ch,argument,d->character,TO_VICT,POS_SLEEPING);
@@ -3059,7 +3379,7 @@ void do_emote( CHAR_DATA *ch, char *argument )
             safe_strcat( buf, sizeof(buf), "." );
     }
 
-    act( buf, ch, NULL, NULL, TO_ROOM );
+    act_speech( buf, ch, NULL, NULL, TO_ROOM, POS_RESTING );
     act( buf, ch, NULL, NULL, TO_CHAR );
     return;
 }
@@ -3088,7 +3408,7 @@ void do_pmote( CHAR_DATA *ch, char *argument )
 
     for (vch = ch->in_room->people; vch != NULL; vch = vch->next_in_room)
     {
-	if (vch->desc == NULL || vch == ch)
+	if (vch->desc == NULL || vch == ch || is_ignoring( vch, ch ))
 	    continue;
 
 	if ((letter = strstr(argument,vch->name)) == NULL)
@@ -3391,7 +3711,8 @@ void do_pose( CHAR_DATA *ch, char *argument )
     pose  = number_range(0, level);
 
     act( pose_table[pose].message[2*ch->class+0], ch, NULL, NULL, TO_CHAR );
-    act( pose_table[pose].message[2*ch->class+1], ch, NULL, NULL, TO_ROOM );
+    act_speech( pose_table[pose].message[2*ch->class+1], ch, NULL, NULL,
+                TO_ROOM, POS_RESTING );
 
     return;
 }
@@ -4699,7 +5020,8 @@ void do_gtell( CHAR_DATA *ch, char *argument )
 
     FOR_EACH_CHARACTER( iter, gch )
     {
-        if ( is_same_group( gch, ch ) && ch != gch )
+        if ( is_same_group( gch, ch ) && ch != gch
+          && !is_ignoring( gch, ch ) )
         {
             /* Code Safety: snprintf */
 	    snprintf( buf, sizeof(buf), "%s tells the group '%s'\n\r", pers_acting_on(ch, gch), argument );

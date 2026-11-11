@@ -207,7 +207,7 @@ class CorrectionsHold(unittest.TestCase):
         self.says("qui", "QUI is QUIET")
         self.says("sla", "If you want to SLAY, spell it out.", trust=66)
         self.says("wizinfo", "does not send anything", trust=60)
-        self.says("ignore", "is not available")
+        self.says("ignore", "IGNORE CLEAR empties it", "staff cannot be ignored")
         self.says("newcorpse", "no longer writes those records", "PRESTORE", trust=67)
         for disabled in ("restorechar", "edit"):
             self.assertIsNone(help_index.lookup(self.entries, disabled, 72), disabled)

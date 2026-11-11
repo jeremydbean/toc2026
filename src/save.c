@@ -1049,9 +1049,6 @@ bool save_char_obj( CHAR_DATA *ch )
         }
     }
 
-    if (ch->pcdata->ignore == NULL)
-    ch->pcdata->ignore = str_dup(" ");
-
     if ( ch->desc != NULL && ch->desc->original != NULL )
         ch = ch->desc->original;
 
@@ -1270,7 +1267,9 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     if (ch->description[0] != '\0')
 	fprintf( fp, "Desc %s~\n",	ch->description	);
     if(ch->prompt)     fprintf( fp, "Prom %s~\n",      ch->prompt      );
-    fprintf( fp, "Ignoring %s~\n",  ch->pcdata->ignore);
+    /* IGNORE's list (act_comm.c), read under 'I'; none, no line. */
+    if ( ch->pcdata->ignore != NULL && ch->pcdata->ignore[0] != '\0' )
+	fprintf( fp, "Ignore %s~\n", ch->pcdata->ignore );
     fprintf( fp, "Race %s~\n", pc_race_table[ch->race].name );
     fprintf( fp, "Sex  %d\n",	ch->sex			);
     fprintf( fp, "Cla  %d\n",	ch->class		);
@@ -2473,6 +2472,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->stash_max               = STASH_SLOTS_START;
     ch->pcdata->no_oracle               = 0;
     ch->pcdata->stash_links             = str_dup( "" );
+    ch->pcdata->ignore                  = str_dup( "" );
     ch->pcdata->stash_offers            = str_dup( "" );
     ch->pcdata->stash_blocks            = str_dup( "" );
     {
@@ -4038,7 +4038,17 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'I':
-            KEY( "Ignoring",    ch->pcdata->ignore,     fread_string(fp));
+	    /* IGNORE's list, and the old game's `Ignoring' line before
+	       it, tidied into one list by ignore_load. */
+	    if ( !str_cmp( word, "Ignore" ) || !str_cmp( word, "Ignoring" ) )
+	    {
+		char *names = fread_string( fp );
+
+		ignore_load( ch, names );
+		free_string( names );
+		fMatch = true;
+		break;
+	    }
 	    KEY( "Id",		ch->pcdata->id,		fread_number( fp ) );
 	    KEY( "IntTime",	ch->pcdata->bank_interest_time,	fread_long( fp ) );
 	    KEY( "IntTotal",	ch->pcdata->bank_interest_total,	fread_long( fp ) );
