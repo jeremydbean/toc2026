@@ -6,7 +6,7 @@ name: Validate
 #   plan            which tests this change needs (scripts/ci/classify.py)
 #                   against the last commit CI vouched for         ~20 s
 #   quick           source and generated-asset checks, no compiler  ~1 min
-#   build           GNU89 Make build (strict warnings) + strict C17
+#   build           C17 Make build (strict warnings) + strict C17
 #                   CMake build; the world loads; recovery and list
 #                   iterator checks; the Make binary is handed on    ~1.5 min
 #   build-sanitize  ASan/UBSan CMake build; the world loads and the
@@ -206,7 +206,7 @@ jobs:
           key: ccache-build-${{ github.sha }}
           restore-keys: ccache-build-
 
-      - name: GNU89 build (strict warnings), world load, recovery and iterator checks
+      - name: C17 Make build (strict warnings), world load, recovery and iterator checks
         env:
           # validate.sh does `make clean` first, on purpose -- this
           # codebase has been bitten by stale objects before -- so the
@@ -214,9 +214,8 @@ jobs:
           CC: ccache gcc
         run: bash scripts/validate.sh build
 
-      # The Makefile is gnu89; CMake is strict C17 with extensions off.
-      # Functions visible under one are hidden under the other, so both
-      # builds have to compile on every change (see AGENTS.md).
+      # Both trees are C17; they differ in warning flags and definitions,
+      # so both builds have to compile on every change (see AGENTS.md).
       - name: Strict C17 CMake build and world load
         run: |
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache

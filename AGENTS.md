@@ -82,19 +82,19 @@ cd area
 ../merc 9000
 ```
 
-The Make build uses GNU89 compatibility, ROM definitions, and
-`libcrypt`/`libm` where applicable.
+The Make build is `-std=c17` (it was `-std=gnu89` until 2026-11-11), with
+ROM definitions and `libcrypt`/`libm` where applicable.
 
 **Build both trees before believing a change works.** They disagree on more
 than warnings:
 
-- The Makefile is `-std=gnu89`; CMake is strict `-std=c17` with
-  `CMAKE_C_EXTENSIONS OFF`. POSIX functions visible under one are hidden
-  under the other. `inet_aton` and `gethostbyname` compile under Make and
-  fail the CMake build outright; `getaddrinfo`, `getnameinfo`, `inet_pton`
-  and `inet_ntop` work in both, and are what new code should use. A file
-  needing them must define `_DEFAULT_SOURCE` and `_POSIX_C_SOURCE` **before
-  any header**, as `src/comm.c` and `src/act_wiz.c` do.
+- Both are strict C17 now (owner, 2026-11-11: the Makefile was
+  `-std=gnu89`, and POSIX functions visible under one were hidden under the
+  other). A file needing POSIX -- `getaddrinfo`, `fileno`, `ftruncate`,
+  `fsync` -- must define `_DEFAULT_SOURCE` and `_POSIX_C_SOURCE` **before
+  any header**, as `src/comm.c` and `src/act_wiz.c` do; `inet_aton` and
+  `gethostbyname` fail both builds. They still differ in warning flags and
+  in how `unix` is defined, so build both.
 - `merc.h` defines `unix` as a fallback from its own include point, so a
   `#if defined(unix)` above that `#include` behaves differently in each
   build.
@@ -319,7 +319,7 @@ allows:
 | --- | --- | --- |
 | `plan` | `classify.py`: what this change needs, against the trusted base | 20 s |
 | `quick` | `validate.sh quick`: py_compile, the Mudlet map and seasonal areas `--check`, the area validators, whitespace. Every test job waits for it: a failed preflight launches no matrix (a manual "diagnostic" run overrides that, and the gate still fails) | 12 s |
-| `build` | `validate.sh build`: GNU89 Make with strict warnings, world load, recovery scenarios, list iterator, smoke; then strict C17 CMake and its world load. Hands `merc` on. | 1 min |
+| `build` | `validate.sh build`: C17 Make with strict warnings, world load, recovery scenarios, list iterator, smoke; then strict C17 CMake and its world load. Hands `merc` on. | 1 min |
 | `build-sanitize` | ASan/UBSan CMake build, world load and a 45 s idle under them. Hands `bin/rom` on. | 1.5 min |
 | `tests` (x8 at most) | the planned modules but the serial ones, in duration-balanced shards (a partial plan uses as few as fit it), four at a time, against `build`'s binary | 6-8 min |
 | `tests-serial` | `test_login_throttle`, alone, beside the shards | 1 min |
@@ -668,8 +668,7 @@ Commands added or revived in September 2026, and where they live:
 
 ## C Change Rules
 
-- Match surrounding GNU89-compatible style even though CMake also compiles as
-  C17.
+- Match the surrounding style; both builds compile as C17.
 - Add new source files to `CMakeLists.txt`; Make globs `src/*.c`, CMake does not.
 - Add declarations in the established header and avoid implicit declarations.
 - Use `snprintf`, `toc_strlcpy`, and `toc_strlcat` with the true destination

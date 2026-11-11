@@ -5,6 +5,10 @@
  * as its only argument. Prints "ok" and exits 0, or a FAIL line for each
  * check that does not hold.
  */
+/* fileno and ftruncate are POSIX: visible under -std=c17 only with these,
+   before any header, as the game's own files do. */
+#define _DEFAULT_SOURCE
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

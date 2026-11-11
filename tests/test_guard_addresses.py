@@ -41,7 +41,7 @@ class GuardAddressHarnessTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             binary = Path(tmp) / "test_guard_addresses"
             build = subprocess.run(
-                [CC, "-std=gnu89", "-Wall", "-Werror", "-I", str(ROOT / "src"),
+                [CC, "-std=c17", "-Wall", "-Werror", "-I", str(ROOT / "src"),
                  "-DGUARD_STORE_FFLUSH=test_fflush",
                  "-o", str(binary), str(ROOT / "tests" / "test_guard_addresses.c"),
                  str(ROOT / "src" / "netaddr.c"), str(ROOT / "src" / "guardstore.c")],

@@ -97,7 +97,7 @@ class PasswordHarnessTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             binary = Path(tmp) / "test_password"
             build = subprocess.run(
-                [CC, "-O2", "-std=gnu89", "-Wall", "-Werror", "-I", str(ROOT / "src"),
+                [CC, "-O2", "-std=c17", "-Wall", "-Werror", "-I", str(ROOT / "src"),
                  "-o", str(binary), str(ROOT / "tests" / "test_password.c"),
                  str(ROOT / "src" / "password.c"), *crypt_link_flags()],
                 capture_output=True, text=True)

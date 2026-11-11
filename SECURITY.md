@@ -1071,7 +1071,7 @@ Each phase ships on its own and can be rolled back alone.
 
 Game-side tests follow AGENTS.md: synthetic `Z`-named fixtures in
 disposable worlds (`tests/live_mud.py`'s `LiveMud`, settings through
-`extra_env`), never a real player file; build both trees (Make, GNU89,
+`extra_env`), never a real player file; build both trees (Make, C17,
 and CMake, C17) and run the focused modules with
 `scripts/test-parallel.sh <modules>`; the parser's C harness and the new
 live module go in `SANITIZE_MODULES`. A test that needs nginx or

@@ -51,7 +51,7 @@ class CombatRulesHarnessTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             binary = Path(tmp) / "test_combat_rules"
             build = subprocess.run(
-                [CC, "-std=gnu89", "-Wall", "-Werror", "-I", str(ROOT / "src"),
+                [CC, "-std=c17", "-Wall", "-Werror", "-I", str(ROOT / "src"),
                  "-o", str(binary), str(ROOT / "tests" / "test_combat_rules.c"),
                  str(ROOT / "src" / "combat_rules.c")],
                 capture_output=True, text=True)

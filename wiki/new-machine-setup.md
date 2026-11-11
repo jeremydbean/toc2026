@@ -73,7 +73,7 @@ print or paste.
 - **Linux / macOS / WSL:** build natively.
 
   ```bash
-  make                                               # gnu89
+  make                                               # c17
   cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build   # strict c17
   cd area && ../merc --check-area && cd ..
   JOBS=1 scripts/test-parallel.sh <module>           # the one relevant test

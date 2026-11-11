@@ -30,7 +30,7 @@ class HolidayRulesHarnessTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             binary = Path(tmp) / "test_holiday_rules"
             build = subprocess.run(
-                [CC, "-std=gnu89", "-Wall", "-Werror", "-I", str(ROOT / "src"),
+                [CC, "-std=c17", "-Wall", "-Werror", "-I", str(ROOT / "src"),
                  "-o", str(binary), str(ROOT / "tests" / "test_holiday_rules.c"),
                  str(ROOT / "src" / "holiday_rules.c")],
                 capture_output=True, text=True)

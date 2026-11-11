@@ -126,14 +126,14 @@ modern interface.
 
 ### Make Build
 
-The primary Make build uses GCC with GNU89 compatibility:
+The primary Make build uses GCC in C17 mode:
 
 ```bash
 make clean
 make
 ```
 
-Default compile definitions/options include `-std=gnu89`, `-O2`,
+Default compile definitions/options include `-std=c17`, `-O2`,
 `-DROM`, `-Dunix`, `-Wall`, and `-Wextra`. Linux links `libcrypt`, `libm`, and
 `libz`; macOS links `libm` and `libz` and expects `crypt` from the platform C
 library. `libz` backs MCCP2 output compression in `src/telnet_proto.c`.
@@ -559,8 +559,7 @@ name, or failing that by the room, mob or object the route is named after.
 
 ## C Coding Guidance
 
-- Match the surrounding GNU89 style in Make-built source, even though CMake
-  validates under C17.
+- Match the surrounding style; Make and CMake both compile as C17.
 - Keep declarations compatible with both build systems.
 - Use `snprintf`, `toc_strlcpy`, and `toc_strlcat` with the actual destination
   size. Avoid new `sprintf`, `strcpy`, or unbounded `strcat` calls.

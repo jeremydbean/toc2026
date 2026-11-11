@@ -6,7 +6,7 @@ PYTHON   ?= python3
 
 # Default flags favor stability while still surfacing helpful warnings. Use
 # `make CFLAGS="..."` to override for local builds.
-CFLAGS   ?= -std=gnu89 -O2 -DROM -Dunix
+CFLAGS   ?= -std=c17 -O2 -DROM -Dunix
 WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
 
 # Emit a .d per object listing the headers it read. Without this a header

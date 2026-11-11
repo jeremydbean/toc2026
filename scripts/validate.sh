@@ -7,7 +7,7 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # push. CI runs the same checks split across jobs so that a cheap failure
 # shows in a minute instead of after the suite:
 #   quick   source and generated-asset checks, no compiler (CI: quick)
-#   build   the strict GNU89 build and the checks that need its binary (CI: build)
+#   build   the strict C17 Make build and the checks that need its binary (CI: build)
 #   all     both, then the whole test suite (the default)
 mode="${1:-all}"
 case "$mode" in

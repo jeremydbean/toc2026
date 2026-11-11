@@ -23,7 +23,7 @@ CC = os.environ.get("CC", "cc").split()[-1]
 def build(out: Path, sanitize: bool) -> subprocess.CompletedProcess:
     flags = ["-fsanitize=address,undefined", "-fno-omit-frame-pointer", "-g"] if sanitize else []
     return subprocess.run(
-        [CC, "-std=gnu89", "-Wall", "-Werror", *flags, "-I", str(ROOT / "src"),
+        [CC, "-std=c17", "-Wall", "-Werror", *flags, "-I", str(ROOT / "src"),
          "-o", str(out), str(ROOT / "tests" / "test_text_fold.c"),
          str(ROOT / "src" / "text_fold.c")],
         capture_output=True, text=True)
