@@ -223,7 +223,6 @@ Useful related endpoints:
 |----------|----------------|---------|
 | `GET /api/area_health` | No | Area-health summary and issues |
 | `POST /api/reload` | Yes | Reparse dashboard area data |
-| `POST /api/update` | Yes | Request a configured host-managed update job |
 | `GET /api/host/status` | Yes | Read opt-in, fixed-scope host and ToC service telemetry |
 | `GET /api/host/resources` | Yes | Read an opt-in lightweight live host resource sample |
 | `GET /api/backups` | Yes | List recent `*.tar.gz` backup archives |
@@ -236,27 +235,9 @@ Operational endpoints are disabled with HTTP 503 until `WEB_ADMIN_TOKEN` is conf
 X-Admin-Token: your-token
 ```
 
-> **Self-host option.** This describes the Raspberry Pi appliance for running
-> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
-> see [disaster-recovery.md](disaster-recovery.md).
-
-`POST /api/update` validates only that authentication succeeds and the
-configured request file can be touched. On the Pi, verify the separate host
-contract after deployment:
-
-```bash
-sudo systemd-analyze verify \
-  /etc/systemd/system/toc2026-update.service \
-  /etc/systemd/system/toc2026-update.timer \
-  /etc/systemd/system/toc2026-update.path
-systemctl is-active toc2026-update.timer toc2026-update.path
-sudo systemctl start toc2026-update.service
-sudo journalctl -u toc2026-update -n 100 --no-pager
-```
-
-An already-current run must exit successfully without changing game or web
-PIDs. A real update must show the encrypted backup, fast-forward, `make -j1`,
-native area validation, graceful restart, and successful `/api/health` check.
+The dashboard does not deploy; the live Oracle host is deployed by
+`toc-deploy` and `toc-auto-deploy` (see
+[disaster-recovery.md](disaster-recovery.md)).
 
 ## Backups And Diagnostics
 
@@ -264,8 +245,9 @@ The maintained deployment has three backup layers:
 
 - Scheduled/admin archives: `backup` and web-admin backup actions create `backups/*.tar.gz` archives from `player/`, then prune archives older than 30 days.
 - Per-player snapshots: successful saves write snapshots under `player/versions/<Name>/`, throttled by `PLAYER_SNAPSHOT_MIN_INTERVAL` and capped by `PLAYER_VER_MAX`. `prestore` bypasses throttling for its pre-change safety snapshot and atomically replaces the live file.
-- Pi off-host snapshots: `toc2026-player-backup.timer` age-encrypts the complete
-  player directory before updating its dedicated Git remote. Validate both the
+- Off-host snapshots: `toc-player-backup.timer` (`deploy/sync-player-backup.sh`)
+  age-encrypts the complete player directory before updating its dedicated
+  Git remote. Validate both the
   timer/push and an actual decrypt/list operation with the off-device recovery
   key; never print player archive contents during the check.
 

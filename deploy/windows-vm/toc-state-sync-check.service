@@ -1,6 +1,6 @@
 [Unit]
 Description=Check that the player-state backup is still reaching GitHub
-Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/windows-production-hosting.md
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
 
 [Service]
 Type=oneshot

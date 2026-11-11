@@ -21,20 +21,15 @@ local machine by default:
 http://127.0.0.1:9001
 ```
 
-> **Self-host option.** This describes the Raspberry Pi appliance for running
-> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
-> see [disaster-recovery.md](disaster-recovery.md).
-
-The native Raspberry Pi appliance starts it during boot and publishes it only
-to the trusted LAN profile:
+The live server, on Oracle Cloud (see
+[disaster-recovery.md](disaster-recovery.md)), serves it at:
 
 ```text
-http://toc.local:9001/
-http://PI_ADDRESS:9001/
+http://toc.jeremybean.com:9001/
 ```
 
 The first-party client is the same service at `/client`. Port `9001` must be
-present in the URL; the appliance does not listen on HTTP port 80.
+present in the URL; the host does not listen on HTTP port 80.
 
 Start a native development instance from the repository root with:
 
@@ -69,7 +64,6 @@ readable without an admin token. These capabilities require
   state, and bounded operational journals
 - backup archive listing and backup requests
 - dashboard area-data refreshes
-- configured host update requests
 - WizInfo broadcasts
 - immortal commands
 - game shutdown
@@ -84,18 +78,10 @@ token, and select **Unlock**. The token is kept in session storage by default
 and disappears when that browser session ends. **Remember on this browser**
 stores it in local storage until it is replaced or browser storage is cleared.
 
-On the Raspberry Pi LAN profile, `WEB_ADMIN_LOCAL_UNLOCK=0` and manual entry is
-intentional. The server token remains stable across reboots, rebuilds, and
-automatic updates because the updater preserves the private `.env`. On macOS,
-copy it directly to the clipboard without displaying it:
-
-```bash
-ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
-```
-
-Paste with Command-V and enable **Remember on this browser**. Selecting
-**Lock**, clearing site storage, rotating the token, or replacing `.env`
-requires authentication again.
+On the live host, `WEB_ADMIN_LOCAL_UNLOCK=0` and manual entry is intentional.
+The token lives in `/etc/toc/web.env` and survives deploys; read it there with
+`sudo` and never print it anywhere shared. Selecting **Lock**, clearing site
+storage or rotating the token requires authentication again.
 
 An unset server-side token disables protected routes with HTTP `503`. An
 incorrect token returns HTTP `403`.
@@ -202,11 +188,12 @@ come directly from the game process rather than relying on terminal-log text.
 
 ### Host Status
 
-Host Status is an authenticated, read-only appliance view enabled with
-`WEB_ADMIN_HOST_STATUS=1`. The Raspberry Pi profile enables it; other installs
-leave it off by default. It reports uptime, CPU load, memory, the actual root
-filesystem's use, board temperature when available, the deployed and checked
-out revisions, and tracked-change count.
+Host Status is an authenticated, read-only host view enabled with
+`WEB_ADMIN_HOST_STATUS=1`. The live host enables it (`deploy/toc-restore`
+writes it to `/etc/toc/web.env`); other installs leave it off by default. It
+reports uptime, CPU load, memory, the actual root filesystem's use, board
+temperature when available, the deployed and checked out revisions, and
+tracked-change count.
 
 While this view is open in a visible, authenticated browser tab, its resource
 monitor samples CPU utilization, physical memory and swap use, and aggregate
@@ -216,18 +203,20 @@ to disk. Uptime, load, root-disk use, and board temperature update with the same
 lightweight poll. Polling stops when the view is left, the session is locked, or
 the tab is hidden.
 
-Fixed allowlists expose only the ToC game, dashboard, health repair, recovery,
-stability, source update, OS maintenance, player-backup, Dynamic DNS, and LED
-systemd units plus their timers. Recent boot ranges make clean shutdowns and
-unexpected reboot windows visible. The journal pane is bounded, filterable in
-the browser, and limited to those operational units and `systemd-shutdown`
-records.
+Fixed allowlists expose only the ToC systemd units and timers named in
+`TOC_HOST_SERVICE_UNITS`, `TOC_HOST_TIMER_UNITS` and `TOC_HOST_JOURNAL_UNITS`
+(by default the `toc-*` units in `deploy/windows-vm/`: the game, dashboard,
+state sync and its check, and game recovery). Recent boot ranges make clean
+shutdowns and unexpected reboot windows visible. The journal pane is bounded,
+filterable in the browser by the sources it holds, and limited to those
+operational units and `systemd-shutdown` records.
 
 This view is not SSH and cannot run a command, select an arbitrary unit, browse
 the filesystem, or read a caller-supplied path. It does not return environment
 files, tokens, SSH material, player files, or general root logs. On systemd
-hosts, the dashboard service needs read-only journal membership; the checked-in
-Pi unit supplies `SupplementaryGroups=systemd-journal`.
+hosts, the dashboard service needs read-only journal membership
+(`SupplementaryGroups=systemd-journal`); without it the journal panes say the
+history is unavailable.
 
 ### Operations
 
@@ -237,7 +226,6 @@ Operations contains protected administrative controls:
 |---|---|
 | Create backup | Queues `backup`; the game creates and prunes archives |
 | Refresh dashboard data | Reparses area files and swaps in a validated snapshot |
-| Update ToC | Requests the configured host updater; requires typing `UPDATE` |
 | Shut down game | Queues `shutdown`; requires typing `SHUTDOWN` |
 | WizInfo broadcast | Queues a staff message with a minimum level |
 | Immortal command | Runs one command through the game's WebAdmin actor |
@@ -246,15 +234,9 @@ Operations contains protected administrative controls:
 only the dashboard parser after rejecting snapshots with critical area-health
 issues. Reboot or use the appropriate in-game workflow for live world changes.
 
-**Update ToC** is available only when `TOC_UPDATE_REQUEST_PATH` is configured.
-On the Pi appliance it creates a volatile request consumed by a systemd path
-unit. The root-owned job fetches `origin/main`; if the deployed commit is
-already current, it exits without interrupting either service. Otherwise it
-requires a successful encrypted player backup, fast-forwards only, builds with
-one compiler process, validates all area data, refreshes binary Python
-dependencies, gracefully restarts both services, and waits for dashboard/game
-health. The browser can disconnect during the successful restart while the
-systemd job continues independently.
+The dashboard does not deploy. The live host ships `main` through
+`toc-auto-deploy` once CI passes, or `toc-deploy` by hand; see
+[disaster-recovery.md](disaster-recovery.md).
 
 Immortal commands have maximum trust and can alter live state. Queue payloads
 reject newlines, control characters, and the `|` protocol delimiter, but the
@@ -366,11 +348,10 @@ docker compose up -d --force-recreate
 
 `GET /api/config` reports `admin_token_configured` but never returns the token.
 
-For the Pi LAN profile, confirm `WEB_ADMIN_LOCAL_UNLOCK=0`; seeing the token
-dialog is expected. The saved browser token must match the persistent value in
-`/home/toc/toc2026/.env`. The server technically accepts any nonempty value,
-including `x`; such a value is a weak shared secret and should be used only on
-the intentionally trusted LAN.
+On the live host, `WEB_ADMIN_LOCAL_UNLOCK=0`; seeing the token dialog is
+expected. The saved browser token must match the value in `/etc/toc/web.env`.
+The server technically accepts any nonempty value, including `x`; such a value
+is a weak shared secret.
 
 ### Game shows offline
 

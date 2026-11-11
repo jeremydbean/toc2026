@@ -115,7 +115,6 @@ class WebAdminApiTests(unittest.TestCase):
                 "WEB_ADMIN_BIND": web_bind,
                 "WEB_ADMIN_LOCAL_UNLOCK": "1" if local_unlock else "0",
                 "WEB_ADMIN_HOST_STATUS": "1" if host_status else "0",
-                "TOC_UPDATE_REQUEST_PATH": "",
             }
             with patch.dict(os.environ, env, clear=False):
                 sys.modules.pop("webadmin.server", None)
@@ -157,9 +156,12 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertNotIn("innerHTML", console_output.text)
             self.assertIn('type: "auth", token: state.token', script.text)
             self.assertIn('/api/auth/local', script.text)
-            self.assertIn('data-operation="update"', page.text)
+            # The Raspberry Pi's "Update ToC" request is gone: the live
+            # host deploys through toc-auto-deploy, never the dashboard.
+            self.assertNotIn('data-operation="update"', page.text)
             self.assertIn('data-view="host"', page.text)
-            self.assertIn("Read-only appliance telemetry", page.text)
+            self.assertIn("Read-only host telemetry", page.text)
+            self.assertNotIn("toc2026-", page.text + script.text)
             self.assertIn("Resource monitor", page.text)
             self.assertIn('/api/host/resources', script.text)
             # The dashboard console sends a typed line whole and lets the
@@ -225,7 +227,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(config.json()["game_websocket_auth"], "same-origin")
             self.assertEqual(config.json()["log_websocket_auth"], "cookie-or-first-message")
             self.assertEqual(config.json()["event_websocket_auth"], "cookie-or-first-message")
-            self.assertFalse(config.json()["update_available"])
+            self.assertNotIn("update_available", config.json())
             self.assertFalse(config.json()["host_status_available"])
 
             health = client.get("/api/health")
@@ -462,7 +464,7 @@ class WebAdminApiTests(unittest.TestCase):
                 "matches_known_origin": True,
             },
             "services": [{
-                "unit": "toc2026-game.service", "description": "Times of Chaos",
+                "unit": "toc-game.service", "description": "Times of Chaos",
                 "load_state": "loaded", "active_state": "active", "sub_state": "running",
                 "result": "success", "pid": 123, "restarts": 1,
                 "since": "Tue 2026-09-15 12:00:00 EDT", "exit_status": "0",
@@ -470,8 +472,8 @@ class WebAdminApiTests(unittest.TestCase):
             "timers": [],
             "boots": [{"index": "0", "boot_id": "123456789abc", "range": "Tue 2026-09-15 - Tue 2026-09-15"}],
             "journal": [{
-                "timestamp": 1788000000, "source": "toc2026-update.service",
-                "priority": "6", "message": "ToC update complete.", "boot_id": "123456789abc",
+                "timestamp": 1788000000, "source": "toc-auto-deploy.service",
+                "priority": "6", "message": "deployed abc123", "boot_id": "123456789abc",
             }],
             "errors": [],
         }
@@ -479,10 +481,13 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertTrue(client.get("/api/config").json()["host_status_available"])
             self.assertEqual(client.get("/api/host/status").status_code, 403)
             self.assertEqual(client.get("/api/host/resources").status_code, 403)
-            self.assertIn("toc2026-healthcheck.service", server.HOST_SERVICE_UNITS)
-            self.assertIn("toc2026-maintenance.service", server.HOST_SERVICE_UNITS)
-            self.assertIn("toc2026-healthcheck.timer", server.HOST_TIMER_UNITS)
-            self.assertIn("toc2026-maintenance.timer", server.HOST_TIMER_UNITS)
+            # Unset, the units are the live host's: every one is a unit
+            # deploy/windows-vm/ installs.
+            self.assertIn("toc-game.service", server.HOST_SERVICE_UNITS)
+            self.assertIn("toc-state-sync.timer", server.HOST_TIMER_UNITS)
+            units_dir = Path(__file__).resolve().parents[1] / "deploy" / "windows-vm"
+            for unit in server.HOST_SERVICE_UNITS + server.HOST_TIMER_UNITS + server.HOST_JOURNAL_UNITS:
+                self.assertTrue((units_dir / unit).is_file(), unit)
             self.assertIsNone(server.run_host_command(("sh", "-c", "id")))
             self.assertEqual(
                 server.parse_cpu_counters("cpu 10 2 3 80 5 0 0 0\ncpu0 1 1 1 1"),
@@ -505,7 +510,7 @@ class WebAdminApiTests(unittest.TestCase):
                 response = client.get("/api/host/status", headers=headers)
             self.assertEqual(response.status_code, 200)
             self.assertTrue(response.json()["read_only"])
-            self.assertEqual(response.json()["services"][0]["unit"], "toc2026-game.service")
+            self.assertEqual(response.json()["services"][0]["unit"], "toc-game.service")
             self.assertNotIn("command", response.json())
             resource_payload = {
                 "generated": payload["generated"],
@@ -854,14 +859,8 @@ class WebAdminApiTests(unittest.TestCase):
                 disabled = client.post("/api/backup", headers=headers)
             self.assertEqual(disabled.status_code, 503)
 
-            self.assertEqual(client.post("/api/update", headers=headers).status_code, 503)
-            update_request = temp_root / "update.request"
-            with patch.object(server, "UPDATE_REQUEST_PATH", update_request):
-                self.assertEqual(client.post("/api/update").status_code, 403)
-                accepted_update = client.post("/api/update", headers=headers)
-            self.assertEqual(accepted_update.status_code, 200)
-            self.assertEqual(accepted_update.json(), {"status": "queued"})
-            self.assertTrue(update_request.is_file())
+            # The Pi's update request route is gone with the Pi.
+            self.assertIn(client.post("/api/update", headers=headers).status_code, (404, 405))
 
             original_parser = server.parser
             original_health = server.AREA_HEALTH_CACHE

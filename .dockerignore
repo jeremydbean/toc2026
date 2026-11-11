@@ -50,8 +50,6 @@ area/nohup.out
 build
 build-*
 bin
-archive
-zStartup
 tests
 wiki
 notes

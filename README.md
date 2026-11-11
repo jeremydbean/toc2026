@@ -14,11 +14,9 @@ and a large collection of hand-built areas.
 
 > **Where the live game runs:** the public server is an Oracle Cloud
 > instance (Always Free ARM, Ubuntu 24.04) that `toc.jeremybean.com`
-> resolves to. It moved there on 2026-10-01; the earlier Raspberry Pi
-> (died 2026-09-29) and Hyper-V VM (powered off) are gone. Operators and
-> automated sessions should read [Disaster Recovery](wiki/disaster-recovery.md)
-> for the deploy command, backups, and rebuild procedure. The Pi and
-> Windows material below is kept only as a generic self-hosting reference.
+> resolves to. Operators and automated sessions should read
+> [Disaster Recovery](wiki/disaster-recovery.md) for the deploy command,
+> backups, and rebuild procedure.
 
 > **Before hosting or playing:** ToC uses plain Telnet and legacy DES `crypt(3)`
 > password hashes. Traffic is not encrypted, and only the first eight password
@@ -38,7 +36,6 @@ and a large collection of hand-built areas.
 | Server host | [Hosting Guide](wiki/hosting-guide.md) |
 | Live production host, deploys, or something broken | [Disaster Recovery](wiki/disaster-recovery.md) (Oracle Cloud) |
 | Working from a new/other machine | [New Machine Setup](wiki/new-machine-setup.md) |
-| Retired Windows VM host (history) | [Windows Production Runbook](wiki/windows-production-hosting.md) |
 | Mudlet listing submission | [Listing Handoff](mudlet/listing-submission.md) |
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |
 | Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
@@ -76,12 +73,6 @@ documentation.
   area validation, Python reference checks, area-health linting, and unit tests.
 - Docker, Docker Compose, Make, CMake, Windows/WSL validation, and GitHub Actions
   workflows.
-- A low-memory native Raspberry Pi appliance profile with headless systemd
-  startup, process and hardware watchdogs, end-to-end health repair, bounded
-  reboot/rebuild recovery, encrypted off-host player snapshots, guarded Git and
-  operating-system updates in a weekly maintenance window, automatic Namecheap
-  Dynamic DNS, an onboard ACT LED status signal, and direct private-LAN browser
-  play and administration.
 
 ## Easy Install
 
@@ -136,12 +127,6 @@ To reach the live public server instead of a local copy, use
 `http://toc.jeremybean.com:9001/` for the dashboard. Keep the `:9001`
 port -- a bare URL targets port 80, where ToC does not listen. The game
 itself is `toc.jeremybean.com` port `9000` for any MUD client.
-
-For a dedicated headless Raspberry Pi that runs only ToC, the native systemd
-appliance adds watchdogs, bounded recovery, off-device player backups,
-validated `main` updates and a weekly OS maintenance window. See the
-[Raspberry Pi appliance runbook](deploy/README.md) and
-[`deploy/pi.env.example`](deploy/pi.env.example).
 
 ### Mudlet (Recommended Desktop Client)
 
@@ -285,9 +270,8 @@ administer. The game itself should still run in Docker or WSL.
 | `WEB_ADMIN_TOKEN` | unset | Shared secret for operational API routes; unset disables them |
 | `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Auto-unlock local browser sessions only while `WEB_ADMIN_BIND` and the page host are loopback |
 | `WEB_ADMIN_HOST_STATUS` | `0` | Enables the protected read-only host service, timer, boot, live resource, repository, and bounded journal view |
-| `TOC_UPDATE_REQUEST_PATH` | unset | Host-managed request file for the protected update action; unset disables it |
 | `TOC_REPOSITORY_ROOT` | repository root | Checkout inspected by host status; never accepts a browser-supplied path |
-| `TOC_DEPLOYED_COMMIT_FILE` | `/var/lib/toc2026/deployed-commit` | Deployment marker read by host status |
+| `TOC_DEPLOYED_COMMIT_FILE` | `deployed-commit` beside the log file | Deployment marker read by host status (`toc-deploy` writes `log/deployed-commit`) |
 | `WEB_ALLOWED_ORIGINS` | unset | Additional comma-separated origins allowed to open game/log WebSockets |
 | `TOC_UID` | host user/`1000` | Numeric user ID used for writable container state |
 | `TOC_GID` | host group/`1000` | Numeric group ID used for writable container state |
@@ -302,11 +286,6 @@ Compose always runs the game and dashboard internally on ports 9000 and 9001;
 `MUD_PORT` and `WEB_ADMIN_PORT` change only the host-facing ports. The Hosting
 Guide documents direct-image entrypoint modes, bind mounts, firewalls, reverse
 proxies, service management, upgrades, and rollback procedures.
-
-The Raspberry Pi appliance is deliberately different from the Compose default:
-it runs natively under systemd and uses the private-LAN values in
-`deploy/pi.env.example`. Its admin token survives reboots and automatic updates
-because the private `.env` is not replaced.
 
 ## Persistent Data
 

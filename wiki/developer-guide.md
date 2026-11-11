@@ -11,7 +11,7 @@ Run `node --test tests/test_console_output.js` for the admin console's streaming
 decoder; its Python wrapper skips this check when Node is unavailable.
 
 Production updates must preserve saves and signal/watchdog behavior; see the
-[Windows runbook](windows-production-hosting.md). Never copy tracked legacy
+[disaster recovery guide](disaster-recovery.md). Never copy tracked legacy
 characters or private working-tree state into a deployment or a publication.
 
 This guide explains the repository architecture, development environment,
@@ -65,7 +65,6 @@ area/*.are + area/area.lst -----> merc boot -----> live game state
 player/* -------------->+--> dashboard +-- area/webadmin.queue
 log/toc.log ------------>+
 backups/*.tar.gz -------->+
-/run/toc2026/update.request --> systemd updater --> Git/build/restart
 /proc + fixed systemd/Git queries --> protected read-only host status
 fixed /proc/thermal/disk reads ----> protected live resource sample
 ```
@@ -82,11 +81,10 @@ The parsers have different purposes and both must pass.
 | `webadmin/` | FastAPI app, area parser, and health engine |
 | `tests/` | Python unit/API/progression tests |
 | `scripts/` | Validation, setup, Hyrule generation, and utilities |
-| `deploy/` | Native Raspberry Pi systemd, update, backup, and runbook assets |
+| `deploy/` | Live host deploy, state sync, recovery and restore scripts and units (`deploy/windows-vm/`, a historical name) |
 | `data/` | Structured source manifests |
 | `wiki/` | Maintained user and technical documentation |
 | `notes/` | Design records and audits, not the primary user docs |
-| `archive/` | Retired source kept for reference, not linked into runtime |
 | `player/` | Mutable character files; sensitive and normally off-limits |
 | `gods/`, `heroes/` | Mutable staff/hero data; sensitive |
 | `backups/`, `log/` | Runtime output |
@@ -197,8 +195,7 @@ repository root. A server started from the wrong directory may fail to find
 Compatibility entrypoints are intentionally conservative: root `startup` and
 `area/startup.sh` delegate to `startup.sh`; root `install` delegates to the
 Linux setup helper; `cleanup` only removes build output; and `refresh` builds
-and validates without killing or restarting a process. `zStartup/` is archived
-machine-specific history and is not executable guidance.
+and validates without killing or restarting a process.
 
 ## Python Environment
 
@@ -512,20 +509,9 @@ is never touched. Both interfaces share the same APIs and bridges.
 `scripts/web_server.py` is only a compatibility launcher; do not add a second
 server implementation there.
 
-> **Self-host option.** This describes the Raspberry Pi appliance for running
-> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
-> see [disaster-recovery.md](disaster-recovery.md).
-
-The Pi update contract spans `POST /api/update`,
-`TOC_UPDATE_REQUEST_PATH`, `deploy/systemd/toc2026-update.path`, the root-owned
-installed copy of `deploy/toc2026-update`, and its service/timer units. Changes
-must preserve no-op behavior when the deployed marker equals `origin/main`,
-fast-forward-only Git updates, pre-update encrypted backup, single-job builds,
-native area validation, focused dashboard/deployment tests, atomic updater
-replacement, checked-in unit refresh, service health checks, and bounded retry
-after a failed fetch or build. The separate healthcheck contract requires three
-consecutive end-to-end failures before it restarts services and must escalate
-through `toc2026-recovery.service` only after local repair fails.
+The dashboard does not deploy. The live host ships `main` through
+`deploy/windows-vm/toc-auto-deploy` and `toc-deploy`; their contracts are in
+AGENTS.md and [disaster-recovery.md](disaster-recovery.md).
 
 ## Travel Directions
 
