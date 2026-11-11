@@ -30,10 +30,6 @@ int crash_prot = 0;
 
 extern ROOM_INDEX_DATA *	room_index_hash		[MAX_KEY_HASH];
 
-AFFECT_DATA *           affect_free;
-ROOM_AFF_DATA *         room_aff_free;
-ROOM_INDEX_DATA *       room_index_free;
-
 /*
  * Local functions.
  */
@@ -2481,6 +2477,12 @@ void extract_obj_player( OBJ_DATA *obj )
     OBJ_DATA *obj_next;
     int vnum,i=0;
 
+    if ( obj_data_released( obj ) )
+    {
+        bug( "Extract_obj_player: object already extracted.", 0 );
+        return;
+    }
+
     vnum = obj ->pIndexData -> vnum;
 
     if(vnum == 4)	i=1;
@@ -2531,12 +2533,9 @@ void extract_obj_player( OBJ_DATA *obj )
         for ( ed = obj->extra_descr; ed != NULL; ed = ed_next )
         {
             ed_next             = ed->next;
-            free_string( ed->description );
-            free_string( ed->keyword     );
-/* Next line added bye Eclipse to get rid of mem leak noted in merc mail */
-            ed->next = extra_descr_free;
-            extra_descr_free    = ed;
+            extra_descr_release( ed );
         }
+        obj->extra_descr = NULL;
     }
 
     free_string( obj->name        );
@@ -2547,8 +2546,8 @@ void extract_obj_player( OBJ_DATA *obj )
     free_string( obj->action_to_room );
 
     --obj->pIndexData->count;
-    obj->next_free   = obj_free;
-    obj_free    = obj;
+    /* Freed at the top of the next pass (recycle.c). */
+    obj_data_release( obj );
 
     if(i!=0)
 	respawn_relic(i);
@@ -2562,6 +2561,14 @@ void extract_obj( OBJ_DATA *obj )
     OBJ_DATA *obj_content;
     OBJ_DATA *obj_next;
     int vnum,i=0;
+
+    /* Twice -- a rot-death item inside a corpse that went first, once --
+       would free its strings twice. */
+    if ( obj_data_released( obj ) )
+    {
+        bug( "Extract_obj: object already extracted.", 0 );
+        return;
+    }
 
     corpse_registry_touched( obj, "it is gone" );
     /* Gone from a player's hands for good: the play journal says what
@@ -2617,12 +2624,9 @@ void extract_obj( OBJ_DATA *obj )
 	for ( ed = obj->extra_descr; ed != NULL; ed = ed_next )
 	{
 	    ed_next             = ed->next;
-	    free_string( ed->description );
-	    free_string( ed->keyword     );
-/* Next line added bye Eclipse to get rid of mem leak noted in merc mail */
-	    ed->next = extra_descr_free;
-	    extra_descr_free    = ed;
+	    extra_descr_release( ed );
 	}
+	obj->extra_descr = NULL;
     }
 
     free_string( obj->name        );
@@ -2633,8 +2637,8 @@ void extract_obj( OBJ_DATA *obj )
     free_string( obj->action_to_room );
 
     --obj->pIndexData->count;
-    obj->next_free   = obj_free;
-    obj_free    = obj;
+    /* Freed at the top of the next pass (recycle.c). */
+    obj_data_release( obj );
 
     if(i!=0)
 	respawn_relic(i);

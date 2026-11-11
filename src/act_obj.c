@@ -4433,7 +4433,7 @@ void do_quaff( CHAR_DATA *ch, char *argument )
 
 
 /* Whether `obj` is still something `ch` carries: walked, not trusted --
-   an extracted object's memory goes back to the pool. */
+   an extracted object's memory is freed at the next pass (recycle.c). */
 static bool recite_still_carried( CHAR_DATA *ch, OBJ_DATA *obj )
 {
     OBJ_DATA *o;

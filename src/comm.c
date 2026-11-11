@@ -269,7 +269,6 @@ int     write           ( int fd, char *buf, int nbyte );
  * Global variables.
  */
 DESCRIPTOR_DATA * descriptor_list;
-DESCRIPTOR_DATA * descriptor_free;
 DESCRIPTOR_DATA * d_next;
 FILE * fpReserve;
 
@@ -1040,6 +1039,7 @@ void game_loop_unix( int control )
          * walk spans a pass of this loop.
          */
         flush_container_lists();
+        recycle_flush();
 
         /*
          * Process any queued web-admin actions before polling descriptors.
@@ -1708,13 +1708,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     /*
      * Cons a new descriptor.
      */
-    if (descriptor_free == NULL) {
-        dnew = alloc_perm(sizeof(*dnew));
-    } else {
-        dnew = descriptor_free;
-        descriptor_free = descriptor_free->next;
-    }
-
+    dnew = descriptor_data_new();
     *dnew = d_zero;
     dnew->descriptor = desc;
     dnew->connected = CON_GET_NAME;
@@ -1878,9 +1872,9 @@ void close_socket( DESCRIPTOR_DATA *dclose )
     }
     close( dclose->descriptor );
     free_string( dclose->host );
-    /* The pool keeps the descriptor, not its buffers: new_descriptor
-       allocates a fresh outbuf, so these leaked on every connection --
-       the healthcheck alone opens one every two minutes. */
+    /* The descriptor's buffers go now; new_descriptor allocates fresh
+       ones, and these once leaked on every connection -- the healthcheck
+       alone opens one every two minutes. */
     if ( dclose->outbuf != NULL )
         free_mem( dclose->outbuf, dclose->outsize );
     dclose->outbuf      = NULL;
@@ -1890,8 +1884,9 @@ void close_socket( DESCRIPTOR_DATA *dclose )
             clamp_size_to_int( strlen(dclose->showstr_head) + 1u ) );
     dclose->showstr_head  = NULL;
     dclose->showstr_point = NULL;
-    dclose->next        = descriptor_free;
-    descriptor_free     = dclose;
+    /* The descriptor itself is freed at the top of the next pass
+       (recycle.c): the loop that closed it may still be holding it. */
+    descriptor_data_release( dclose );
     return;
 }
 
@@ -5111,9 +5106,9 @@ void run_web_command(char *argument) {
     
     /* Clean up -- extract_char calls char_from_room internally. Only if
        the command left the stand-in alive: one that extracted it (PURGE
-       SELF did) has already put it back in the pool, and extracting it
-       twice logged two "Extract_char: NULL" bugs and would free whatever
-       the pool had handed that memory to since. */
+       SELF did) has already released it (recycle.c frees it at the next
+       pass), and extracting it twice logged two "Extract_char: NULL"
+       bugs. */
     if (character_is_listed(ch))
         extract_char(ch, TRUE);
 }

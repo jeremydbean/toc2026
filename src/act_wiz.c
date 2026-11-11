@@ -4226,7 +4226,6 @@ void do_peace( CHAR_DATA *ch, char *argument )
 
 
 
-BAN_DATA *              ban_free;
 BAN_DATA *              ban_list;
 
 /* Two ban entries name the same thing: the same address by family and
@@ -4278,15 +4277,7 @@ void do_ban( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    if ( ban_free == NULL )
-    {
-	pban            = alloc_perm( sizeof(*pban) );
-    }
-    else
-    {
-	pban            = ban_free;
-	ban_free        = ban_free->next;
-    }
+    pban            = alloc_mem( sizeof(*pban) );
 
     pban->name  = str_dup( arg );
     pban->next  = ban_list;
@@ -4332,8 +4323,7 @@ void do_allow( CHAR_DATA *ch, char *argument )
 	    snprintf(buf, sizeof(buf),"%s is no longer banned.\n\r", curr->name);
 	    send_to_char( buf, ch );
 	    free_string( curr->name );
-	    curr->next  = ban_free;
-	    ban_free    = curr;
+	    free_mem( curr, sizeof(*curr) );
 	    ban_update( );
 	    return;
 	}
@@ -5862,15 +5852,7 @@ void do_string( CHAR_DATA *ch, char *argument )
 
             toc_strlcat(argument,"\n\r", sizeof(argument));
 
-	    if ( extra_descr_free == NULL )
-	    {
-		ed                      = alloc_perm( sizeof(*ed) );
-	    }
-	    else
-	    {
-		ed                      = extra_descr_free;
-		extra_descr_free        = ed->next;
-	    }
+	    ed                      = extra_descr_new( );
 
 	    ed->keyword         = str_dup( arg3     );
 	    ed->description     = str_dup( argument );

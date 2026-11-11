@@ -2116,13 +2116,7 @@ static void note_start( CHAR_DATA *ch )
     if ( ch->pnote != NULL )
         return;
 
-    if ( note_free != NULL )
-    {
-        pnote     = note_free;
-        note_free = pnote->next;
-    }
-    else
-        pnote = alloc_perm( sizeof(*pnote) );
+    pnote = alloc_mem( sizeof(*pnote) );
 
     pnote->next       = NULL;
     pnote->sender     = str_dup( ch->name );
@@ -2153,8 +2147,7 @@ static void note_discard( CHAR_DATA *ch )
     pnote->text = pnote->subject = pnote->to_list = NULL;
     pnote->date = pnote->sender = NULL;
 
-    pnote->next = note_free;
-    note_free   = pnote;
+    free_mem( pnote, sizeof(*pnote) );
     ch->pnote   = NULL;
 }
 
@@ -2732,8 +2725,7 @@ void do_note( CHAR_DATA *ch, char *argument )
             free_string( pnote->sender );
             pnote->text = pnote->subject = pnote->to_list = NULL;
             pnote->date = pnote->sender = NULL;
-            pnote->next = note_free;
-            note_free   = pnote;
+            free_mem( pnote, sizeof(*pnote) );
 
             save_notes( );
             send_to_char( "Note removed.\n\r", ch );
