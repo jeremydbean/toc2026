@@ -64,7 +64,9 @@ class BackupSourceTests(unittest.TestCase):
     def test_levels_and_quests_are_milestones(self) -> None:
         update = (ROOT / "src" / "update.c").read_text(encoding="latin-1")
         level = update[update.index("void advance_level( CHAR_DATA *ch, bool is_advance )\n{"):]
-        self.assertIn('player_snapshot_milestone( ch, "level", true );', level[:400])
+        # The whole wrapper (it also writes the journal and the hero record).
+        level = level[:level.index("\n}\n")]
+        self.assertIn('player_snapshot_milestone( ch, "level", true );', level)
         quest = (ROOT / "src" / "quest.c").read_text(encoding="latin-1")
         wrapper = quest[quest.index("static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,"):]
         # The whole wrapper, to its closing brace: since 2026-11-03 it also
