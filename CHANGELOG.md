@@ -8,6 +8,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **One reader for area files** (modernization project 3, 2026-11-11).
+  `webadmin/area_reader.py` reads `.are` files token for token as
+  `src/db.c` does, with offsets, and the dashboard parser, the area lint,
+  the directions router, the Mudlet map builder, the seasonal builder,
+  both price tools and `check_exits/resets/shops.py` all use it; their own
+  regex and line readers are gone. What the old readers got wrong, now
+  read as the game reads it: 38 objects' affects and 130 extra
+  descriptions in double-spaced files (the Gear Finder now sees Troll
+  Den's opal ring's +2 damroll), the FLAGS2 words of mobiles 1015, 1020,
+  2424 and others, room 17022's `D3 too dark to tell` exit (a false
+  one-way-exit finding goes, 1,689 -> 1,688), rooms 9945 and 25123's
+  names and sectors (the Mudlet map), the portal pool in 9163 and
+  teleport room 24254 (the routes to The Abyss, Valhalla and Descent to
+  Hell no longer need key 13006), and 17 duplicate route links the router
+  took from `korzath2old.are` and the seasonal copies, which the game
+  does not load. The price tools now keep a file's line endings.
+  `tests/test_directions_router.py`, `tests/test_shop_prices.py`,
+  `tests/test_area_health.py`.
 - **The balance feed** (owner and review of c7101e78, 2026-11-10).
   `log/progress.tsv` writes an encounter id at a fight's start, one slain
   row per mobile death (a group kill was counted once per member) with the

@@ -22571,7 +22571,7 @@
    <exit direction="west" target="9938" />
    <exit direction="down" target="4208" />
   </room>
-  <room id="9945" area="86" title="This room is full of water. There must be some kind of force field" environment="1">
+  <room id="9945" area="86" title="This room is full of water. There must be some kind of force field here keeping it from leaking out the entrances." environment="9">
    <coord x="-1" y="11" z="3" />
    <exit direction="east" target="9947" />
   </room>
@@ -28455,81 +28455,82 @@
    <coord x="-1" y="2" z="1" />
    <exit direction="east" target="17023" />
    <exit direction="south" target="17021" />
+   <exit direction="west" target="17024" />
   </room>
   <room id="17023" area="3" title="Bedroom" environment="1">
    <coord x="1" y="2" z="1" />
    <exit direction="west" target="17022" />
   </room>
   <room id="17024" area="3" title="Musty corner" environment="1">
-   <coord x="19" y="0" z="0" />
+   <coord x="-2" y="2" z="1" />
    <exit direction="east" target="17022" />
    <exit direction="south" target="17025" />
   </room>
   <room id="17025" area="3" title="Transportation room" environment="1">
-   <coord x="19" y="-1" z="0" />
+   <coord x="-2" y="1" z="1" />
   </room>
   <room id="17026" area="3" title="Treasure!" environment="1">
    <coord x="-2" y="3" z="1" />
   </room>
   <room id="17027" area="3" title="Entry hall" environment="1">
-   <coord x="27" y="0" z="0" />
+   <coord x="19" y="0" z="0" />
    <exit direction="north" target="17029" />
   </room>
   <room id="17028" area="3" title="Trap!" environment="1">
-   <coord x="38" y="0" z="0" />
+   <coord x="30" y="0" z="0" />
   </room>
   <room id="17029" area="3" title="Plush Hallway" environment="1">
-   <coord x="27" y="1" z="0" />
+   <coord x="19" y="1" z="0" />
    <exit direction="north" target="17030" />
    <exit direction="south" target="17027" />
   </room>
   <room id="17030" area="3" title="Ambush" environment="1">
-   <coord x="27" y="2" z="0" />
+   <coord x="19" y="2" z="0" />
    <exit direction="east" target="17031" />
    <exit direction="south" target="17029" />
   </room>
   <room id="17031" area="3" title="A turn in the hall" environment="1">
-   <coord x="28" y="2" z="0" />
+   <coord x="20" y="2" z="0" />
    <exit direction="south" target="17032" />
    <exit direction="west" target="17030" />
   </room>
   <room id="17032" area="3" title="Triple Junction" environment="1">
-   <coord x="28" y="1" z="0" />
+   <coord x="20" y="1" z="0" />
    <exit direction="north" target="17031" />
    <exit direction="south" target="17034" />
    <exit direction="west" target="17033" />
   </room>
   <room id="17033" area="3" title="Master's office" environment="1">
-   <coord x="26" y="1" z="0" />
+   <coord x="18" y="1" z="0" />
    <exit direction="east" target="17032" />
   </room>
   <room id="17034" area="3" title="Passage up" environment="1">
-   <coord x="28" y="0" z="0" />
+   <coord x="20" y="0" z="0" />
    <exit direction="north" target="17032" />
    <exit direction="up" target="17035" />
   </room>
   <room id="17035" area="3" title="hallway" environment="1">
-   <coord x="28" y="0" z="1" />
+   <coord x="20" y="0" z="1" />
    <exit direction="east" target="17036" />
    <exit direction="down" target="17034" />
   </room>
   <room id="17036" area="3" title="A triple junction" environment="1">
-   <coord x="29" y="0" z="1" />
+   <coord x="21" y="0" z="1" />
    <exit direction="north" target="17037" />
    <exit direction="east" target="17039" />
    <exit direction="south" target="17038" />
    <exit direction="west" target="17035" />
   </room>
   <room id="17037" area="3" title="Ye old Shoppe" environment="1">
-   <coord x="29" y="1" z="1" />
+   <coord x="21" y="1" z="1" />
    <exit direction="south" target="17036" />
   </room>
   <room id="17038" area="3" title="Byrne's office" environment="1">
-   <coord x="29" y="-1" z="1" />
+   <coord x="21" y="-1" z="1" />
    <exit direction="north" target="17036" />
   </room>
   <room id="17039" area="3" title="The masters chambers" environment="1">
-   <coord x="30" y="0" z="1" />
+   <coord x="22" y="0" z="1" />
    <exit direction="west" target="17036" />
   </room>
   <room id="17100" area="42" title="Entrance to a Valley in the Highlands" environment="5">
@@ -34593,7 +34594,7 @@
    <exit direction="north" target="25127" />
    <exit direction="west" target="25121" />
   </room>
-  <room id="25123" area="85" title="Past the hole in the ground." environment="1">
+  <room id="25123" area="85" title="Past the hole in the ground." environment="12">
    <coord x="0" y="1" z="-1" />
    <exit direction="north" target="25121" />
    <exit direction="south" target="25124" />

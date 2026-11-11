@@ -6,8 +6,10 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 try:
     from webadmin.area_parser import AreaParser, flag_bit, listed_area_files, parse_flag_value
+    from webadmin.area_reader import AreaFile, AreaFormatError, read_area_file
 except ImportError:  # pragma: no cover - supports direct script execution
     from area_parser import AreaParser, flag_bit, listed_area_files, parse_flag_value
+    from area_reader import AreaFile, AreaFormatError, read_area_file
 
 
 REVERSE_DIRECTIONS = {0: 2, 1: 3, 2: 0, 3: 1, 4: 5, 5: 4}
@@ -61,28 +63,30 @@ def _listed_area_files(area_directory: Path) -> Tuple[List[str], List[str]]:
     return listed, missing
 
 
-def _raw_vnum_locations(area_directory: Path, filenames: Iterable[str]) -> Dict[Tuple[str, int], List[str]]:
-    locations: Dict[Tuple[str, int], List[str]] = defaultdict(list)
-
+def _read_listed(area_directory: Path, filenames: Iterable[str]) -> Dict[str, Optional[AreaFile]]:
+    """Each listed file read whole by area_reader, or None where it is
+    missing or does not read (the parser's error already says so)."""
+    read: Dict[str, Optional[AreaFile]] = {}
     for filename in filenames:
-        section = ""
         path = area_directory / filename
-        if not path.exists():
+        try:
+            read[filename] = read_area_file(path, filename) if path.exists() else None
+        except (AreaFormatError, OSError):
+            read[filename] = None
+    return read
+
+
+def _raw_vnum_locations(read: Dict[str, Optional[AreaFile]]) -> Dict[Tuple[str, int], List[str]]:
+    """Every record's vnum and each file it is written in, duplicates
+    kept: the parser keeps one record per vnum, so this is what finds two."""
+    locations: Dict[Tuple[str, int], List[str]] = defaultdict(list)
+    for filename, area_file in read.items():
+        if area_file is None:
             continue
-
-        for line in path.read_text(encoding="latin-1", errors="ignore").splitlines():
-            stripped = line.strip()
-            if stripped in ("#MOBILES", "#OBJECTS", "#ROOMS"):
-                section = stripped[1:].lower()
-                continue
-            if stripped.startswith("#") and not stripped[1:2].isdigit():
-                section = ""
-                continue
-            if section and stripped.startswith("#") and stripped[1:].isdigit():
-                vnum = int(stripped[1:])
-                if vnum > 0:
-                    locations[(section, vnum)].append(filename)
-
+        for section in ("mobiles", "objects", "rooms"):
+            for record in getattr(area_file, section):
+                if record.vnum > 0:
+                    locations[(section, record.vnum)].append(filename)
     return locations
 
 
@@ -95,17 +99,11 @@ def _count_by_severity(issues: Iterable[Dict[str, Any]]) -> Dict[str, int]:
     }
 
 
-def _declares_area(area_directory: Path, filename: str) -> bool:
-    path = area_directory / filename
-    if not path.exists():
-        return False
+def _declares_area(area_file: Optional[AreaFile]) -> bool:
+    """An #AREA header, or the #AREADATA one an area built in game (ANEW)
+    carries -- not a help or social file."""
+    return area_file is not None and area_file.header is not None
 
-    for raw_line in path.read_text(encoding="latin-1", errors="ignore").splitlines():
-        fields = raw_line.strip().split(maxsplit=1)
-        # #AREADATA is the header an area built in game (ANEW) carries.
-        if fields and fields[0] in ("#AREA", "#AREADATA"):
-            return True
-    return False
 
 
 def _world_room_components(parser: AreaParser) -> Dict[int, int]:
@@ -235,7 +233,8 @@ def build_area_health(parser: AreaParser, area_directory: Optional[Path] = None)
             )
         )
 
-    raw_locations = _raw_vnum_locations(area_directory, listed_files)
+    read = _read_listed(area_directory, listed_files)
+    raw_locations = _raw_vnum_locations(read)
     for (section, vnum), files in sorted(raw_locations.items()):
         unique_files = sorted(set(files))
         if len(files) > 1:
@@ -270,7 +269,7 @@ def build_area_health(parser: AreaParser, area_directory: Optional[Path] = None)
 
         # area.lst also contains help and social-table files. They are loader
         # inputs, but they are not world areas and should not look empty here.
-        if not _declares_area(area_directory, area.filename):
+        if not _declares_area(read.get(area.filename)):
             continue
 
         if room_count == 0 and mob_count == 0 and object_count == 0:

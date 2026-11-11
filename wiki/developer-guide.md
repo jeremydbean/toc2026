@@ -43,7 +43,9 @@ player and deserve broader testing.
 `webadmin/server.py` runs FastAPI/Uvicorn and owns no authoritative game state.
 It:
 
-- parses area files independently through `webadmin/area_parser.py`
+- parses area files through `webadmin/area_parser.py`, which reads them with
+  `webadmin/area_reader.py` -- the token-faithful reader every area tool
+  shares
 - computes findings through `webadmin/area_health.py`
 - parses player files for browsing
 - reads logs and backup metadata
@@ -548,8 +550,10 @@ Two properties matter more than they look:
 
 `load_world()` stays faithful to every room the files contain, including
 ejectors, because `tests/test_directions_router.py` checks it against the
-dashboard's independent parser and that parity is what catches parsing
-regressions. Exclusions belong to the routing step.
+dashboard parser and that parity is what catches regressions. Both read
+through `webadmin/area_reader.py` now, and only the files `area.lst` lists
+(never `area/built/`, the seasonal copies or the archived ones). Exclusions
+belong to the routing step.
 
 Handed-down routes live in `tools/legacy_routes.json`. Each is walked; ones
 that still arrive are published verbatim, because that string is what players

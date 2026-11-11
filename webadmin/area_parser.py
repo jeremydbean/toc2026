@@ -1,5 +1,9 @@
 """
-Parse ROM 2.4 area files and build searchable database
+Parse ROM 2.4 area files and build searchable database.
+
+The files are read by area_reader, token for token as src/db.c reads
+them; this module turns those records into the dashboard's dataclasses
+and names what their numbers mean.
 """
 from __future__ import annotations
 
@@ -7,6 +11,19 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Any
+
+# BUILT_AREA_LIST and listed_area_files lived here before area_reader and
+# are still imported from here.
+try:
+    from .area_reader import (
+        BUILT_AREA_LIST, AreaFile, MobRecord, ObjRecord, ResetRecord,
+        RoomRecord, listed_area_files, parse_area_text, parse_section_text,
+        read_area_file)
+except ImportError:         # imported as a top-level module (webadmin on sys.path)
+    from area_reader import (  # type: ignore[no-redef]
+        BUILT_AREA_LIST, AreaFile, MobRecord, ObjRecord, ResetRecord,
+        RoomRecord, listed_area_files, parse_area_text, parse_section_text,
+        read_area_file)
 
 
 # Apply location mappings (for object affects)
@@ -414,27 +431,6 @@ SPELL_NAMES = {
     595: "wormhole",
     600: "enchant item",
 }
-
-BUILT_AREA_LIST = "built/built.lst"
-
-
-def listed_area_files(area_directory: Path) -> List[str]:
-    """Every file the game loads, in its order: area.lst's entries, then
-    the areas built in game with ANEW, from built/built.lst (db.c's boot
-    reads them after area.lst). The built list is missing until somebody
-    builds an area."""
-    names: List[str] = []
-    for list_name in ("area.lst", BUILT_AREA_LIST):
-        path = Path(area_directory) / list_name
-        if not path.exists():
-            continue
-        for raw in path.read_text(encoding="latin-1", errors="ignore").splitlines():
-            line = raw.strip()
-            if not line or line.startswith("$"):
-                continue
-            names.append(line)
-    return names
-
 
 def split_area_name(raw: str) -> tuple:
     """Separate an area's builder handle from the zone's own name.
@@ -1149,12 +1145,39 @@ class AreaParser:
         self.shopkeepers: set = set()
         self.errors: List[Dict[str, str]] = []
         
-    def parse_all(self) -> None:
-        """Parse all .are files in the directory"""
+    def parse_all(self, built: bool = True) -> None:
+        """Parse every file the game loads, in its order. ``built=False``
+        leaves out the areas built in game (area/built/), which a
+        committed, generated file must never depend on."""
         area_list_file = self.area_directory / "area.lst"
         if not area_list_file.exists():
             raise FileNotFoundError(f"area.lst not found in {self.area_directory}")
 
+        self._clear()
+        for line in listed_area_files(self.area_directory, built):
+            if not line.endswith('.are'):
+                continue
+            area_file = self.area_directory / line
+            if area_file.exists():
+                try:
+                    self.parse_area_file(area_file)
+                except Exception as e:
+                    self.errors.append({"file": line, "error": str(e)})
+                    print(f"Error parsing {line}: {e}")
+
+        # Build cross-references
+        self._build_cross_references()
+
+    def parse_files(self, area_files: List[AreaFile]) -> None:
+        """Take in files area_reader has already read, in load order --
+        for a tool that reads the world once and needs both the records
+        and this parser's cross-references."""
+        self._clear()
+        for area_file in area_files:
+            self.add_area_file(area_file)
+        self._build_cross_references()
+
+    def _clear(self) -> None:
         # Re-parsing the same instance must not retain deleted records, stale
         # cross-references, or errors from an earlier scan.
         self.mobiles.clear()
@@ -1165,20 +1188,6 @@ class AreaParser:
         self.mob_specials.clear()
         self.shopkeepers.clear()
         self.errors.clear()
-
-        for line in listed_area_files(self.area_directory):
-            if not line.endswith('.are'):
-                continue
-            area_file = self.area_directory / line
-            if area_file.exists():
-                try:
-                    self.parse_area_file(area_file)
-                except Exception as e:
-                    self.errors.append({"file": line, "error": str(e)})
-                    print(f"Error parsing {line}: {e}")
-        
-        # Build cross-references
-        self._build_cross_references()
     
     def _build_cross_references(self) -> None:
         """Build relationships between mobs, objects, and rooms based on resets"""
@@ -1227,19 +1236,21 @@ class AreaParser:
                             self.objects[obj_vnum].contained_by.append(container_vnum)
     
     def parse_area_file(self, filepath: Path) -> None:
-        """Parse a single .are file"""
-        with open(filepath, 'r', encoding='latin-1', errors='ignore') as f:
-            content = f.read()
-        
-        area_info = self._extract_area_info(content)
-        area_name = area_info["name"]
-
+        """Parse a single .are file, token for token (area_reader)."""
+        filepath = Path(filepath)
         # Named as the area list names it: the bare file name for the
         # shipped world, built/<name>.are for an area made in game.
         try:
             list_name = filepath.relative_to(self.area_directory).as_posix()
         except ValueError:
             list_name = filepath.name
+        self.add_area_file(read_area_file(filepath, list_name))
+
+    def add_area_file(self, area_file: AreaFile) -> None:
+        """Take in one file area_reader has read."""
+        list_name = area_file.name
+        area_info = self._area_info(area_file)
+        area_name = area_info["name"]
 
         area = Area(
             filename=list_name,
@@ -1248,69 +1259,51 @@ class AreaParser:
         )
         self.areas[list_name] = area
 
-        # Parse each section
-        self._parse_mobiles(content, list_name, area_name)
-        self._parse_objects(content, list_name, area_name)
-        self._parse_rooms(content, list_name, area_name)
-        self._parse_resets(content, list_name)
-        self._parse_specials(content)
-        self._parse_shops(content)
-        
-        # Calculate vnum range for this area
-        vnums = []
-        for vnum, mob in self.mobiles.items():
-            if mob.area_file == list_name:
-                vnums.append(vnum)
-        for vnum, obj in self.objects.items():
-            if obj.area_file == list_name:
-                vnums.append(vnum)
-        for vnum, room in self.rooms.items():
-            if room.area_file == list_name:
-                vnums.append(vnum)
-                
+        self._add_mobiles(area_file.mobiles, list_name, area_name)
+        self._add_objects(area_file.objects, list_name, area_name)
+        self._add_rooms(area_file.rooms, list_name, area_name)
+        if area_file.section("RESETS") is not None:
+            self.resets[list_name] = [self._reset(r) for r in area_file.resets]
+        for special in area_file.specials:
+            self.mob_specials[special.vnum] = special.spec
+        for shop in area_file.shops:
+            self.shopkeepers.add(shop.keeper)
+
         declared = area_info.get("vnum_range")
         if declared:
             # An ANEW area says what it owns, built on or not.
             area.vnums = f"{declared[0]} - {declared[1]}"
-        elif vnums:
-            area.vnums = f"{min(vnums)} - {max(vnums)}"
-            # Also try to extract builder from credits if possible, or leave empty
-            # Usually builder is part of the name or credits in some formats, but here it's mixed.
-            # We'll leave builders empty for now unless we find a #BUILDERS section.
+        else:
+            vnums = ([m.vnum for m in area_file.mobiles]
+                     + [o.vnum for o in area_file.objects]
+                     + [r.vnum for r in area_file.rooms])
+            if vnums:
+                area.vnums = f"{min(vnums)} - {max(vnums)}"
 
-    
-    def _extract_area_info(self, content: str) -> Dict[str, Any]:
-        """Extract area info from #AREA section"""
-        # An area built in game (ANEW) opens with #AREADATA instead:
-        # keyword lines -- Name <text>~, Builders <names>~, VNUMs <lo> <hi>
-        # -- up to End, which load_areadata in db.c reads.
-        # ROM OLC writes the same header -- sinistra.are shipped in it --
-        # with the credits braces in its Name, so that is read like an
-        # #AREA line.
-        data = re.search(r'^#AREADATA\b(.*?)^End\b', content, re.M | re.S)
-        if data:
-            block = data.group(1)
-            name_m = re.search(r'^\s*Name\s+(.*?)~', block, re.M | re.S)
-            vnums_m = re.search(r'^\s*VNUMs\s+(-?\d+)\s+(-?\d+)', block, re.M)
-            raw_line = name_m.group(1).strip() if name_m else "Unnamed Area"
-            info = self._area_info_from_line(raw_line)
-            info["vnum_range"] = ((int(vnums_m.group(1)), int(vnums_m.group(2)))
-                                  if vnums_m else None)
+    def _area_info(self, area_file: AreaFile) -> Dict[str, Any]:
+        """The #AREA line's name and credits, or an #AREADATA header's.
+
+        An area built in game (ANEW) opens with #AREADATA instead: keyword
+        lines -- Name <text>~, Builders <names>~, VNUMs <lo> <hi> -- up to
+        End, which load_areadata in db.c reads. ROM OLC writes the same
+        header -- sinistra.are shipped in it -- with the credits braces in
+        its Name, so that is read like an #AREA line."""
+        if area_file.header == "AREADATA":
+            info = self._area_info_from_line(
+                (area_file.area_name or "Unnamed Area").strip())
+            info["vnum_range"] = area_file.vnum_range
             return info
-
-        match = re.search(r'#AREA\s+([^\n]+?)~', content, re.MULTILINE)
-        if match:
-            return self._area_info_from_line(match.group(1).strip())
-
-        # Check for HELPS
-        if re.search(r'#HELPS', content):
-             return {"name": "Help File", "credits": ""}
-
-        # Check for SOCIALS
-        if re.search(r'#SOCIALS', content):
-             return {"name": "Socials File", "credits": ""}
-
+        if area_file.header == "AREA":
+            return self._area_info_from_line(area_file.area_name.strip())
+        if area_file.has_helps:
+            return {"name": "Help File", "credits": ""}
+        if area_file.has_socials:
+            return {"name": "Socials File", "credits": ""}
         return {"name": "Unknown Area", "credits": ""}
+
+    def _extract_area_info(self, content: str) -> Dict[str, Any]:
+        """Area info from a whole file's text."""
+        return self._area_info(parse_area_text(content))
 
     def _area_info_from_line(self, raw_line: str) -> Dict[str, Any]:
         """The name, credits, builder and zone in an #AREA line's text."""
@@ -1340,628 +1333,143 @@ class AreaParser:
             "display_name": format_area_name(raw_line),
         }
 
-    def _read_to_tilde(self, lines: List[str], index: int) -> tuple[str, int]:
-        """Read lines until hitting a tilde, return combined text and new index"""
-        text_parts = []
-        while index < len(lines):
-            line = lines[index]
-            if line.rstrip().endswith('~'):
-                text_parts.append(line.rstrip()[:-1])
-                return '\n'.join(text_parts), index + 1
-            text_parts.append(line.rstrip())
-            index += 1
-        return '\n'.join(text_parts), index
-    
+    # The sections, one at a time. Each takes text holding a #<SECTION>
+    # header (a whole file or a fragment of one); parse_all goes through
+    # add_area_file instead.
+
     def _parse_mobiles(self, content: str, area_file: str, area_name: str) -> None:
-        """Parse #MOBILES section"""
-        mob_match = re.search(r'#MOBILES\s*\n(.*?)(?=^#[A-Z])', content, re.MULTILINE | re.DOTALL)
-        if not mob_match:
-            return
-        
-        mob_section = mob_match.group(1)
-        lines = [line.rstrip() for line in mob_section.split('\n')]
-        
-        i = 0
-        while i < len(lines):
-            line = lines[i].strip()
-            
-            # Skip blank lines
-            if not line:
-                i += 1
-                continue
-            
-            # Check for vnum
-            if line.startswith('#'):
-                if line == '#0':
-                    break
-                    
-                # Handle "#VNUM Keywords~" format
-                vnum_match = re.match(r'^#(\d+)\s*(.*)$', line)
-                if not vnum_match:
-                    i += 1
-                    continue
-                    
-                vnum = int(vnum_match.group(1))
-                rest_of_line = vnum_match.group(2).strip()
-                
-                if rest_of_line:
-                    keywords = rest_of_line.rstrip('~')
-                else:
-                    try:
-                        i += 1
-                        while i < len(lines) and not lines[i].strip(): i += 1
-                        if i >= len(lines): break
-                        keywords = lines[i].rstrip('~')
-                    except IndexError:
-                        break
-                
-                # Read mobile data
-                try:
-                    i += 1
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    
-                    short_desc = lines[i].rstrip('~')
-                    i += 1
-                    
-                    long_desc, i = self._read_to_tilde(lines, i)
-                    description, i = self._read_to_tilde(lines, i)
-                    
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    race = lines[i].rstrip('~')
-                    i += 1
-                    
-                    # Parse act/affected flags line
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    act_line = lines[i].split()
-                    act_flags = act_line[0] if len(act_line) > 0 else ""
-                    affected_by = act_line[1] if len(act_line) > 1 else ""
-                    
-                    # Handle optional 3rd flag set (some areas have 3 flag sets before alignment)
-                    # We look for the alignment (which should be a number, usually 0 or negative)
-                    # If the 3rd token is not a number, we assume it's another flag set
-                    idx = 2
-                    if len(act_line) > 3 and not act_line[2].lstrip('-').isdigit():
-                        affected_by += " " + act_line[2]
-                        idx += 1
-                    
-                    alignment = act_line[idx] if len(act_line) > idx else "0"
-                    i += 1
-                    
-                    # Parse level/hitroll line
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    level_line = lines[i].split()
-                    
-                    # Fix split dice strings (e.g. "1d1 +200")
-                    j = 0
-                    while j < len(level_line) - 1:
-                        # Only merge if the previous token looks like a dice roll (contains 'd')
-                        # This prevents merging "30 +10" where 30 is level and +10 is hitroll
-                        if level_line[j+1].startswith('+') and 'd' in level_line[j].lower():
-                            level_line[j] += level_line[j+1]
-                            level_line.pop(j+1)
-                        else:
-                            j += 1
-                            
-                    level = int(level_line[0]) if len(level_line) > 0 else 1
-                    hitroll = int(level_line[1]) if len(level_line) > 1 else 0
-                    hitp_dice = level_line[2] if len(level_line) > 2 else "1d1+0"
-                    mana_dice = level_line[3] if len(level_line) > 3 else "1d1+0"
-                    dam_dice = level_line[4] if len(level_line) > 4 else "1d1+0"
-                    dam_type = int(level_line[5].replace('d', '').replace('D', '').split('+')[0]) if len(level_line) > 5 else 0
-                    i += 1
-                    
-                    # Parse AC line
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    ac_line = lines[i].split()
-                    ac = [int(ac_line[j]) if j < len(ac_line) else 0 for j in range(4)]
-                    i += 1
-                    
-                    # Parse off/imm/res/vuln flags
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    flags_line = lines[i].split()
-                    off_flags = flags_line[0] if len(flags_line) > 0 else ""
-                    imm_flags = flags_line[1] if len(flags_line) > 1 else ""
-                    res_flags = flags_line[2] if len(flags_line) > 2 else ""
-                    vuln_flags = flags_line[3] if len(flags_line) > 3 else ""
-                    i += 1
-                    
-                    # Parse position line
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    pos_line = lines[i].split()
-                    start_pos = pos_line[0] if len(pos_line) > 0 else "standing"
-                    default_pos = pos_line[1] if len(pos_line) > 1 else "standing"
-                    sex = pos_line[2] if len(pos_line) > 2 else "0"
-                    wealth = int(pos_line[3]) if len(pos_line) > 3 else 0
-                    i += 1
-                    
-                    # Parse form/parts line
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    form_line = lines[i].split()
-                    form = form_line[0] if len(form_line) > 0 else ""
-                    parts = form_line[1] if len(form_line) > 1 else ""
-                    size = form_line[2] if len(form_line) > 2 else "medium"
-                    material = form_line[3] if len(form_line) > 3 else "flesh"
-                    i += 1
-                    
-                    mob = Mobile(
-                        vnum=vnum,
-                        keywords=keywords,
-                        short_desc=short_desc,
-                        long_desc=long_desc,
-                        description=description,
-                        race=race,
-                        act_flags=act_flags,
-                        affected_by=affected_by,
-                        alignment=alignment,
-                        level=level,
-                        hitroll=hitroll,
-                        ac=ac,
-                        hitp_dice=hitp_dice,
-                        mana_dice=mana_dice,
-                        dam_dice=dam_dice,
-                        dam_type=dam_type,
-                        off_flags=off_flags,
-                        imm_flags=imm_flags,
-                        res_flags=res_flags,
-                        vuln_flags=vuln_flags,
-                        start_pos=start_pos,
-                        default_pos=default_pos,
-                        sex=sex,
-                        wealth=wealth,
-                        form=form,
-                        parts=parts,
-                        size=size,
-                        material=material,
-                        area_file=area_file,
-                        area_name=area_name
-                    )
-                    
-                    self.mobiles[vnum] = mob
-                except Exception as e:
-                    print(f"Error parsing mobile {vnum} in {area_file}: {e}")
-                    raise e
-            else:
-                i += 1
-    
+        self._add_mobiles(parse_section_text(content, "MOBILES", area_file).mobiles,
+                          area_file, area_name)
+
     def _parse_objects(self, content: str, area_file: str, area_name: str) -> None:
-        """Parse #OBJECTS section"""
-        obj_match = re.search(r'#OBJECTS\s*\n(.*?)(?=^#[A-Z])', content, re.MULTILINE | re.DOTALL)
-        if not obj_match:
-            return
-        
-        obj_section = obj_match.group(1)
-        lines = [line.rstrip() for line in obj_section.split('\n')]
-        
-        i = 0
-        while i < len(lines):
-            line = lines[i].strip()
-            
-            # Skip blank lines
-            if not line:
-                i += 1
-                continue
-            
-            if line.startswith('#'):
-                if line == '#0':
-                    break
-                
-                # Handle "#VNUM Keywords~" format
-                vnum_match = re.match(r'^#(\d+)\s*(.*)$', line)
-                if not vnum_match:
-                    i += 1
-                    continue
-                    
-                vnum = int(vnum_match.group(1))
-                rest_of_line = vnum_match.group(2).strip()
-                
-                if rest_of_line:
-                    keywords = rest_of_line.rstrip('~')
-                else:
-                    try:
-                        i += 1
-                        if i >= len(lines):
-                            break
-                        keywords = lines[i].rstrip('~')
-                    except IndexError:
-                        break
-                
-                try:
-                    i += 1
-                    
-                    short_desc = lines[i].rstrip('~')
-                    i += 1
-                    
-                    long_desc, i = self._read_to_tilde(lines, i)
-                    
-                    # Scan for material and type_line
-                    # We skip lines until we find a line starting with a digit (type_line)
-                    # If we find a line ending with ~, we assume it's material
-                    material = "unknown"
-                    while i < len(lines):
-                        line = lines[i].strip()
-                        if not line:
-                            i += 1
-                            continue
-                            
-                        # Check if this is the type_line (starts with digit)
-                        if line[0].isdigit():
-                            break
-                        
-                        # If it ends with ~, it's likely material
-                        if line.endswith('~'):
-                            material = line.rstrip('~')
-                        
-                        i += 1
-                    
-                    # Parse type/flags line
-                    if i >= len(lines):
-                        continue
-                    type_line = lines[i].split()
-                    item_type_num = int(type_line[0])
-                    extra_flags = type_line[1] if len(type_line) > 1 else "0"
+        self._add_objects(parse_section_text(content, "OBJECTS", area_file).objects,
+                          area_file, area_name)
 
-                    # load_objects reads extra2 *before* the wear flags, and
-                    # only when the extra flags carry ITEM_FLAGS2 (Z):
-                    # "type extra [extra2] wear".  This used to read the
-                    # fourth token as extra2 instead, which swapped the two
-                    # on all 55 such objects -- a dwarf-only light read as
-                    # human-only and worn on the neck, so the gear finder
-                    # hid Starlight from the dwarves it was made for.
-                    has_flags2 = bool(parse_flag_value(extra_flags) & flag_bit('Z'))
-                    flag_tokens = 3 if has_flags2 else 2
-                    extra_flags2 = type_line[2] if has_flags2 and len(type_line) > 2 else "0"
-                    wear_flags = (type_line[flag_tokens]
-                                  if len(type_line) > flag_tokens else "0")
-
-                    # Check for merged values line (e.g. school.are #3745:
-                    # "17 0 A 1 1 1 0 0") -- the five values ride on the
-                    # flags line instead of their own.
-                    values = []
-                    if len(type_line) >= flag_tokens + 1 + 5:
-                        values = type_line[flag_tokens + 1:]
-                        i += 1
-                    else:
-                        i += 1
-                        # Parse values line
-                        while i < len(lines) and not lines[i].strip(): i += 1
-                        values_line = lines[i].split()
-                        values = values_line
-                        i += 1
-                    
-                    # Parse level/weight/cost line
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    level_line = lines[i].split()
-                    level = int(level_line[0])
-                    weight = int(level_line[1]) if len(level_line) > 1 else 0
-                    cost = int(level_line[2]) if len(level_line) > 2 else 0
-                    condition = level_line[3] if len(level_line) > 3 else "P"
-                    i += 1
-                    
-                    # Parse extra descriptions and affects
-                    extra_descr = []
-                    affects = []
-                    affect_bits = []
-                    
-                    while i < len(lines):
-                        line = lines[i].strip()
-                        if not line:
-                            i += 1
-                            continue
-                            
-                        if line == 'E':
-                            i += 1
-                            keyword = lines[i].rstrip('~')
-                            i += 1
-                            description, i = self._read_to_tilde(lines, i)
-                            extra_descr.append({"keyword": keyword, "description": description})
-                        elif line == 'A':
-                            i += 1
-                            affect_line = lines[i].split()
-                            if len(affect_line) >= 2:
-                                try:
-                                    location = int(affect_line[0])
-                                    modifier = int(affect_line[1])
-                                    affects.append({"location": location, "modifier": modifier})
-                                except ValueError:
-                                    pass
-                            i += 1
-                        elif line == 'F':
-                            # load_objects: F, then "<where> <location>
-                            # <modifier> <bits>" as four tokens.
-                            i += 1
-                            bit_line = lines[i].split()
-                            if len(bit_line) >= 4:
-                                try:
-                                    affect_bits.append({
-                                        "where": bit_line[0],
-                                        "location": int(bit_line[1]),
-                                        "modifier": int(bit_line[2]),
-                                        "bits": bit_line[3],
-                                    })
-                                except ValueError:
-                                    pass
-                            i += 1
-                        else:
-                            break
-                    
-                    # Interpret values based on item type
-                    interpreted_values = interpret_values(item_type_num, values, level)
-                    
-                    obj = Object(
-                        vnum=vnum,
-                        keywords=keywords,
-                        short_desc=short_desc,
-                        long_desc=long_desc,
-                        material=material,
-                        item_type=str(item_type_num), # Store as string or int? Dataclass says str.
-                        extra_flags=extra_flags,
-                        extra_flags2=extra_flags2,
-                        wear_flags=wear_flags,
-                        values=values,
-                        level=level,
-                        weight=weight,
-                        cost=cost,
-                        condition=condition,
-                        extra_descr=extra_descr,
-                        affects=affects,
-                        affect_bits=affect_bits,
-                        area_file=area_file,
-                        area_name=area_name
-                    )
-                    # Merge interpreted values
-                    for k, v in interpreted_values.items():
-                        setattr(obj, k, v) if hasattr(obj, k) else None
-                        # We can't easily add dynamic attributes to dataclass, 
-                        # but we can store them in a dict if we change Object definition.
-                        # For now, let's just rely on the values list or add specific fields to Object.
-                        # The Object dataclass doesn't have fields for interpreted values like 'capacity'.
-                        # I should update Object dataclass or just store interpreted_values dict.
-                        # But for now, let's just proceed.
-                    
-                    self.objects[vnum] = obj
-                except Exception as e:
-                    print(f"Error parsing object {vnum} in {area_file}: {e}")
-                    raise e
-            else:
-                i += 1
-    
     def _parse_rooms(self, content: str, area_file: str, area_name: str) -> None:
-        """Parse #ROOMS section"""
-        room_match = re.search(r'#ROOMS\s*\n(.*?)(?=^#[A-Z])', content, re.MULTILINE | re.DOTALL)
-        if not room_match:
-            return
-        
-        room_section = room_match.group(1)
-        lines = [line.rstrip() for line in room_section.split('\n')]
-        
-        i = 0
-        while i < len(lines):
-            line = lines[i].strip()
-            
-            # Skip blank lines
-            if not line:
-                i += 1
-                continue
-            
-            if line.startswith('#'):
-                if line == '#0':
-                    break
-                
-                # Handle "#VNUM Name~" format
-                vnum_match = re.match(r'^#(\d+)\s*(.*)$', line)
-                if not vnum_match:
-                    i += 1
-                    continue
-                    
-                vnum = int(vnum_match.group(1))
-                rest_of_line = vnum_match.group(2).strip()
-                
-                if rest_of_line:
-                    # Name is on the same line
-                    name = rest_of_line.rstrip('~')
-                else:
-                    # Name is on the next line. Skip blank lines first: seven
-                    # shipped area files (hood, haven, wyvern, arena, firenewt,
-                    # valley, trollden) are written with a blank line between
-                    # every record line. The C loader skips whitespace between
-                    # tokens and reads them fine; taking the blank as the name
-                    # shifted this parser by one line for ~300 rooms, which
-                    # then read the first line of the description as the
-                    # area/flags/sector line and stored a word from the prose
-                    # as the sector type.
-                    try:
-                        i += 1
-                        while i < len(lines) and not lines[i].strip():
-                            i += 1
-                        if i >= len(lines):
-                            break
-                        name = lines[i].rstrip('~')
-                    except IndexError:
-                        break
-                
-                try:
-                    i += 1
-                    
-                    description, i = self._read_to_tilde(lines, i)
-                    
-                    # Parse area/flags/sector line
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    if i >= len(lines):
-                        continue
-                    afs_line = lines[i].split()
-                    area_prefix = afs_line[0] if len(afs_line) > 0 else ""
-                    room_flags = afs_line[1] if len(afs_line) > 1 else "0"
-                    room_flag_value = parse_flag_value(room_flags)
-                    has_flags2 = bool(room_flag_value & flag_bit('Z'))
-                    room_flags2 = afs_line[2] if has_flags2 and len(afs_line) > 2 else "0"
-                    sector_index = 3 if has_flags2 else 2
-                    sector_type = afs_line[sector_index] if len(afs_line) > sector_index else "0"
-                    i += 1
+        self._add_rooms(parse_section_text(content, "ROOMS", area_file).rooms,
+                        area_file, area_name)
 
-                    teleport_to_room = None
-                    river_direction = None
-                    if room_flag_value & (flag_bit('E') | flag_bit('F')):
-                        while i < len(lines) and not lines[i].strip():
-                            i += 1
-                        if i >= len(lines):
-                            raise ValueError(f"Room {vnum} is missing river/teleport data")
-                        travel_fields = lines[i].split()
-                        if len(travel_fields) < 3:
-                            raise ValueError(f"Room {vnum} has invalid river/teleport data")
-                        if room_flag_value & flag_bit('F'):
-                            teleport_to_room = int(travel_fields[0])
-                        else:
-                            river_direction = int(travel_fields[0])
-                        i += 1
-
-                    if room_flag_value & flag_bit('H'):
-                        while i < len(lines) and not lines[i].strip():
-                            i += 1
-                        if i >= len(lines):
-                            raise ValueError(f"Room {vnum} is missing room-affect data")
-                        i += 1
-
-                    exits = []
-                    extra_descr = []
-                    
-                    # Parse exits and extra descriptions
-                    while i < len(lines) and not lines[i].startswith('#'):
-                        line = lines[i].strip()
-                        if not line:
-                            i += 1
-                            continue
-
-                        direction_match = re.fullmatch(r'D\s*(\d+)', line)
-                        if direction_match:
-                            direction = int(direction_match.group(1))
-                            if direction > 9:
-                                raise ValueError(f"Room {vnum} has invalid exit direction {direction}")
-                                
-                            i += 1
-                            # print(f"DEBUG: Room {vnum} Exit D{direction} parsing...")
-                            exit_desc, i = self._read_to_tilde(lines, i)
-                            # print(f"DEBUG: exit_desc='{exit_desc}'")
-                            keyword, i = self._read_to_tilde(lines, i)
-                            # print(f"DEBUG: keyword='{keyword}'")
-                            
-                            # Skip blank lines before lock_line
-                            while i < len(lines) and not lines[i].strip(): i += 1
-                            
-                            if i >= len(lines):
-                                break
-                            # print(f"DEBUG: lock_line='{lines[i]}'")
-                            lock_line = lines[i].split()
-                            locks = int(lock_line[0]) if len(lock_line) > 0 else 0
-                            key_vnum = int(lock_line[1]) if len(lock_line) > 1 else -1
-                            to_room = int(lock_line[2]) if len(lock_line) > 2 else 0
-                            i += 1
-                            exits.append(Exit(direction, exit_desc, keyword, locks, key_vnum, to_room))
-                        elif line == 'E':
-                            i += 1
-                            keywords_ed = lines[i].rstrip('~')
-                            i += 1
-                            desc_ed, i = self._read_to_tilde(lines, i)
-                            extra_descr.append({'keywords': keywords_ed, 'description': desc_ed})
-                        elif line == 'S':
-                            i += 1
-                            break
-                        else:
-                            # Unknown line in room, skip
-                            i += 1
-                    
-                    room = Room(
-                        vnum=vnum,
-                        name=name,
-                        description=description,
-                        area_prefix=area_prefix,
-                        room_flags=room_flags,
-                        sector_type=sector_type,
-                        room_flags2=room_flags2,
-                        exits=exits,
-                        extra_descr=extra_descr,
-                        teleport_to_room=teleport_to_room,
-                        river_direction=river_direction,
-                        area_file=area_file,
-                        area_name=area_name
-                    )
-                    
-                    self.rooms[vnum] = room
-                except Exception as e:
-                    print(f"Error parsing room {vnum} in {area_file}: {e}")
-                    raise e
-            else:
-                i += 1
-    
     def _parse_resets(self, content: str, area_file: str) -> None:
-        """Parse #RESETS section"""
-        reset_match = re.search(r'#RESETS\s*$(.*?)^S', content, re.MULTILINE | re.DOTALL)
-        if not reset_match:
-            return
-        
-        reset_section = reset_match.group(1)
-        resets = []
-        
-        for line in reset_section.split('\n'):
-            line = line.strip()
-            if not line or line.startswith('*'):
-                continue
-            
-            parts = line.split()
-            if len(parts) >= 4:
-                try:
-                    cmd = parts[0]
-                    
-                    def safe_int(s: str) -> int:
-                        try:
-                            return int(s)
-                        except ValueError:
-                            return 0
-
-                    arg1 = safe_int(parts[2]) if len(parts) > 2 else 0
-                    arg2 = safe_int(parts[3]) if len(parts) > 3 else 0
-                    arg3 = safe_int(parts[4]) if len(parts) > 4 else 0
-                    arg4 = safe_int(parts[5]) if len(parts) > 5 else 0
-                    
-                    resets.append(Reset(cmd, arg1, arg2, arg3, arg4))
-                except Exception as e:
-                    print(f"Error parsing reset line '{line}' in {area_file}: {e}")
-                    # Don't raise, just skip bad reset lines
-                    continue
-        
-        self.resets[area_file] = resets
+        read = parse_section_text(content, "RESETS", area_file)
+        if read.sections:
+            self.resets[area_file] = [self._reset(r) for r in read.resets]
 
     def _parse_shops(self, content: str) -> None:
-        """Record #SHOPS keepers: one line per shop, the keeper's vnum
-        first, ended by a 0."""
-        m = re.search(r"^#SHOPS\s*$(.*?)^0\s*$", content, re.M | re.S)
-        if not m:
-            return
-        for line in m.group(1).splitlines():
-            first = line.split("*", 1)[0].split()
-            if first and first[0].isdigit() and int(first[0]) > 0:
-                self.shopkeepers.add(int(first[0]))
+        """Record #SHOPS keepers: what they carry is for sale."""
+        for shop in parse_section_text(content, "SHOPS").shops:
+            self.shopkeepers.add(shop.keeper)
 
     def _parse_specials(self, content: str) -> None:
         """Parse mobile special-function assignments."""
-        specials_match = re.search(
-            r'^#SPECIALS\s*$(.*?)(?=^S\s*$)',
-            content,
-            re.MULTILINE | re.DOTALL,
-        )
-        if not specials_match:
-            return
+        for special in parse_section_text(content, "SPECIALS").specials:
+            self.mob_specials[special.vnum] = special.spec
 
-        for raw_line in specials_match.group(1).splitlines():
-            line = raw_line.strip()
-            if not line or line.startswith('*'):
-                continue
-            fields = line.split()
-            if len(fields) < 3 or fields[0] != 'M':
-                continue
-            try:
-                self.mob_specials[int(fields[1])] = fields[2]
-            except ValueError:
-                continue
+    def _add_mobiles(self, records: List[MobRecord], area_file: str, area_name: str) -> None:
+        for m in records:
+            affected_by = m.affected.text or "0"
+            if m.affected2 is not None:
+                affected_by += " " + m.affected2.text
+            self.mobiles[m.vnum] = Mobile(
+                vnum=m.vnum,
+                keywords=m.keywords,
+                short_desc=m.short_desc,
+                long_desc=m.long_desc,
+                description=m.description,
+                race=m.race,
+                act_flags=m.act.text or "0",
+                affected_by=affected_by,
+                alignment=m.alignment.text,
+                level=m.level,
+                hitroll=m.hitroll,
+                ac=list(m.ac),
+                hitp_dice=m.hit_text,
+                mana_dice=m.mana_text,
+                dam_dice=m.damage_text,
+                dam_type=m.dam_type,
+                off_flags=m.off.text or "0",
+                imm_flags=m.imm.text or "0",
+                res_flags=m.res.text or "0",
+                vuln_flags=m.vuln.text or "0",
+                start_pos=m.start_pos.text,
+                default_pos=m.default_pos.text,
+                sex=m.sex.text,
+                wealth=m.wealth,
+                form=m.form.text or "0",
+                parts=m.parts.text or "0",
+                size=m.size,
+                material=m.material,
+                area_file=area_file,
+                area_name=area_name,
+            )
+
+    def _add_objects(self, records: List[ObjRecord], area_file: str, area_name: str) -> None:
+        for o in records:
+            self.objects[o.vnum] = Object(
+                vnum=o.vnum,
+                keywords=o.keywords,
+                short_desc=o.short_desc,
+                long_desc=o.long_desc,
+                material=o.material,
+                item_type=str(o.item_type.value),
+                extra_flags=o.extra.text,
+                # load_objects reads extra2 *before* the wear flags, and
+                # only when the extra flags carry ITEM_FLAGS2 (Z). Reading
+                # the fourth token as extra2 instead once swapped the two
+                # on all 55 such objects -- a dwarf-only light read as
+                # human-only and worn on the neck.
+                extra_flags2=o.extra2.text if o.extra2 is not None else "0",
+                wear_flags=o.wear.text or "0",
+                # fread_flag takes nothing from a "-1" and reads 0.
+                values=[t.text or "0" for t in o.values],
+                level=o.level.value,
+                weight=o.weight.value,
+                cost=o.cost.value,
+                condition=o.condition,
+                extra_descr=[{"keyword": k, "description": d}
+                             for k, d in o.extra_descr],
+                affects=[{"location": loc, "modifier": mod}
+                         for loc, mod in o.affects],
+                affect_bits=[{"where": where, "location": loc,
+                              "modifier": mod, "bits": bits.text}
+                             for where, loc, mod, bits in o.affect_bits],
+                area_file=area_file,
+                area_name=area_name,
+            )
+
+    def _add_rooms(self, records: List[RoomRecord], area_file: str, area_name: str) -> None:
+        for r in records:
+            teleport_to_room = river_direction = None
+            if r.travel is not None:
+                if r.flags.value & flag_bit('F'):
+                    teleport_to_room = r.travel[0]
+                else:
+                    river_direction = r.travel[0]
+            self.rooms[r.vnum] = Room(
+                vnum=r.vnum,
+                name=r.name,
+                description=r.description,
+                area_prefix=r.number.text,
+                room_flags=r.flags.text or "0",
+                sector_type=r.sector.text,
+                room_flags2=r.flags2.text if r.flags2 is not None else "0",
+                exits=[Exit(e.door, e.description, e.keyword, e.lock, e.key, e.to_room)
+                       for e in r.exits],
+                extra_descr=[{"keywords": k, "description": d}
+                             for k, d in r.extra_descr],
+                teleport_to_room=teleport_to_room,
+                river_direction=river_direction,
+                area_file=area_file,
+                area_name=area_name,
+            )
+
+    @staticmethod
+    def _reset(r: ResetRecord) -> Reset:
+        # arg4 is not the game's: load_resets reads to the end of the line
+        # after arg3. It is the next number written there, if any.
+        rest = r.rest.split()
+        arg4 = int(rest[0]) if rest and rest[0].lstrip("-").isdigit() else 0
+        return Reset(r.command, r.arg1, r.arg2, r.arg3, arg4)
+
 
 def interpret_mob_values(mob: Mobile) -> Dict[str, Any]:
     """Interpret mobile flags and values."""

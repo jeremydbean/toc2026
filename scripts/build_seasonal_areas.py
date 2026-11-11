@@ -34,12 +34,18 @@ own lines and never reformats one.
 from __future__ import annotations
 
 import argparse
+import bisect
 import json
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "webadmin"))
+from area_reader import (  # noqa: E402
+    AreaFormatError, TokenReader, load_rooms, parse_area_text,
+    parse_section_text, read_world)
+
 AREA = ROOT / "area"
 DATA = ROOT / "data" / "seasonal"
 
@@ -47,28 +53,60 @@ VARIANTS = [("dresden", "halloween"), ("dresden", "xmas"),
             ("limbo", "halloween"), ("limbo", "xmas"),
             ("midennir", "halloween"), ("midennir", "xmas")]
 
-SECTION = re.compile(r"^#(AREA|AREADATA|HELPS|MOBILES|OBJECTS|ROOMS|RESETS|SHOPS|SPECIALS|\$)\b")
-RECORD = re.compile(r"^#(\d+)\s*$")
+RECORD_KINDS = ("MOBILES", "OBJECTS", "ROOMS")
 
 
 # ----------------------------------------------------------------- parsing
+#
+# Where a section, a record or a record's text ends is decided by
+# webadmin/area_reader.py, the reader every area tool shares, token for
+# token as the game reads the file. This script then cuts the file's own
+# lines at those places, so it can never split a record somewhere the game
+# would not -- and where a record is not laid out one field to a line the
+# way the cutting needs (a name on the "#vnum" line, a tilde with more
+# after it), it says so instead of guessing.
 
 def read(path: Path) -> list[str]:
     return path.read_text(encoding="latin-1").split("\n")
 
 
+def _line_starts(lines: list[str]) -> list[int]:
+    starts, pos = [], 0
+    for line in lines:
+        starts.append(pos)
+        pos += len(line) + 1
+    return starts
+
+
+def _line_at(starts: list[int], pos: int, what: str, whole: bool = True) -> int:
+    """The line holding offset pos; with whole, pos must start it."""
+    i = bisect.bisect_right(starts, pos) - 1
+    if whole and starts[i] != pos:
+        raise AreaFormatError(f"{what} does not start a line", pos=pos)
+    return i
+
+
+def sections_closed(lines: list[str]) -> list[tuple[str, list[str], int | None]]:
+    """[(name, lines-including-header, terminator line or None), ...] in
+    file order; anything before the first section is a section named ""."""
+    starts = _line_starts(lines)
+    area = parse_area_text("\n".join(lines))
+    cuts = [(_line_at(starts, sec.start, "#" + sec.name), sec) for sec in area.sections]
+    out: list[tuple[str, list[str], int | None]] = []
+    if not cuts or cuts[0][0] > 0:
+        out.append(("", lines[:cuts[0][0] if cuts else len(lines)], None))
+    for i, (first, sec) in enumerate(cuts):
+        last = cuts[i + 1][0] if i + 1 < len(cuts) else len(lines)
+        close = None
+        if sec.close is not None:
+            close = _line_at(starts, sec.close, sec.name + "'s terminator") - first
+        out.append((sec.name, lines[first:last], close))
+    return out
+
+
 def sections(lines: list[str]) -> list[tuple[str, list[str]]]:
     """[(name, lines-including-header), ...] in file order."""
-    out: list[tuple[str, list[str]]] = []
-    for line in lines:
-        m = SECTION.match(line)
-        if m:
-            out.append((m.group(1), [line]))
-        elif out:
-            out[-1][1].append(line)
-        else:
-            out.append(("", [line]))   # anything before the first section
-    return out
+    return [(name, body) for name, body, _ in sections_closed(lines)]
 
 
 def records(body: list[str]) -> tuple[list[str], dict[int, list[str]], list[str]]:
@@ -76,44 +114,40 @@ def records(body: list[str]) -> tuple[list[str], dict[int, list[str]], list[str]
 
     head is the section header line (and any lines before the first
     record), tail is the '#0' terminator and whatever follows it. Records
-    keep their '#vnum' line.
+    keep their '#vnum' line, and whatever lies between their last token
+    and the next record.
     """
-    head: list[str] = []
-    recs: dict[int, list[str]] = {}
-    order: list[int] = []
-    tail: list[str] = []
-    current: list[str] | None = None
-    for line in body:
-        m = RECORD.match(line)
-        if m and tail == []:
-            vnum = int(m.group(1))
-            if vnum == 0:
-                tail.append(line)
-                current = None
-                continue
-            current = [line]
-            recs[vnum] = current
-            order.append(vnum)
-        elif tail:
-            tail.append(line)
-        elif current is not None:
-            current.append(line)
-        else:
-            head.append(line)
-    recs = {v: recs[v] for v in order}
-    return head, recs, tail
+    name = body[0].split()[0][1:].upper()
+    read_ = parse_section_text("\n".join(body), name)
+    starts = _line_starts(body)
+    found = getattr(read_, name.lower())
+    cuts = [_line_at(starts, rec.start, f"#{rec.vnum}") for rec in found]
+    end = _line_at(starts, read_.sections[0].close, "#0")
+    head = body[:cuts[0] if cuts else end]
+    recs = {rec.vnum: body[cut:(cuts[i + 1] if i + 1 < len(cuts) else end)]
+            for i, (rec, cut) in enumerate(zip(found, cuts))}
+    return head, recs, body[end:]
 
 
 def text_fields(lines: list[str], count: int) -> int:
-    """Index just past the first `count` tilde-terminated fields, counting
-    from line 1 (line 0 is the '#vnum' header)."""
-    seen = 0
-    for i in range(1, len(lines)):
-        if lines[i].rstrip().endswith("~"):
-            seen += 1
-            if seen == count:
-                return i + 1
-    raise ValueError("record %s has fewer than %d text fields" % (lines[0], count))
+    """Index just past the line holding the tilde of the record's
+    `count`-th string, counting from line 1 (line 0 is the '#vnum'
+    header, and must hold nothing else)."""
+    text = "\n".join(lines)
+    starts = _line_starts(lines)
+    reader = TokenReader(text)
+    if reader.letter() != "#":
+        raise AreaFormatError("a record starts with '#'", text, 0)
+    reader.number()
+    if lines[0][reader.pos:].strip():
+        raise AreaFormatError(f"record {lines[0].split()[0]} has text on its #vnum line",
+                              text, reader.pos)
+    for _ in range(count):
+        tilde = reader.string_token().end - 1
+    i = _line_at(starts, tilde, "", whole=False)
+    if lines[i][tilde - starts[i] + 1:].strip():
+        raise AreaFormatError(f"record {lines[0]} has more after a tilde", text, tilde)
+    return i + 1
 
 
 TEXT_FIELDS = {"MOBILES": 4, "ROOMS": 2}   # keywords/short/long/desc; name/desc
@@ -141,7 +175,9 @@ def with_extras(rec: list[str], extras: list[dict]) -> list[str]:
     closing S, so a seasonal room can answer LOOK <pumpkins>."""
     if not extras:
         return rec
-    end = len(rec) - 1 - rec[::-1].index("S")
+    rooms: list = []
+    load_rooms(TokenReader("\n".join(rec) + "\n#0\n"), rooms)
+    end = _line_at(_line_starts(rec), rooms[0].close, "a room's closing S")
     return rec[:end] + extra_lines(extras) + rec[end:]
 
 
@@ -166,11 +202,11 @@ def vnums_in(line: str) -> set[int]:
 def build(base_lines: list[str], overlay: dict) -> list[str]:
     out: list[str] = []
     extra = overlay.get("records", {})
-    for name, body in sections(base_lines):
+    for name, body, close in sections_closed(base_lines):
         if name == "AREA" and overlay.get("area"):
             out.extend(overlay["area"])
             continue
-        if name in ("MOBILES", "OBJECTS", "ROOMS"):
+        if name in RECORD_KINDS:
             head, recs, tail = records(body)
             out.extend(head)
             texts = overlay.get("text", {}).get(name, {})
@@ -187,14 +223,11 @@ def build(base_lines: list[str], overlay: dict) -> list[str]:
             out.extend(tail)
             continue
         if name in ("RESETS", "SHOPS", "SPECIALS") and overlay.get(name.lower()):
-            # The section ends with its terminator ('S' or '0'); the seasonal
-            # lines go just before it.
-            end = len(body)
-            while end > 1 and body[end - 1].strip() == "":
-                end -= 1
-            out.extend(body[:end - 1])
+            # The seasonal lines go just before the section's terminator
+            # ('S' or '0').
+            out.extend(body[:close])
             out.extend(overlay[name.lower()])
-            out.extend(body[end - 1:])
+            out.extend(body[close:])
             continue
         out.extend(body)
     return out
@@ -204,15 +237,8 @@ def build(base_lines: list[str], overlay: dict) -> list[str]:
 
 def world_vnums(name: str) -> set[int]:
     """Every vnum of one record kind across the areas area.lst loads."""
-    out: set[int] = set()
-    for entry in (AREA / "area.lst").read_text(encoding="latin-1").split("\n"):
-        entry = entry.strip()
-        if not entry or entry.startswith(("#", "$")) or not (AREA / entry).is_file():
-            continue
-        for sname, body in sections(read(AREA / entry)):
-            if sname == name:
-                out |= set(records(body)[1])
-    return out
+    return {rec.vnum for area in read_world(AREA, built=False)
+            for rec in getattr(area, name.lower())}
 
 
 def extract(base_lines: list[str], seasonal_lines: list[str],

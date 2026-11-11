@@ -196,6 +196,11 @@ The cleanup of 2026-11-11 took the Quest Zone's 13 rooms and its one
 mobile, Temple Despair (the list entry and its 7 rooms) and 18 information
 findings with them; the count read 1,707 before it.
 
+The shared area reader (2026-11-11) took one information finding off: room
+17024's `one-way-exit` was false, because the dashboard parser had missed
+17022's `D3 too dark to tell` back to it. Recounted then: 102 areas, 2,507
+mobiles, 3,760 objects, 7,766 rooms, 0 critical, 12 warning, 1,688 info.
+
 The guardians' keys (2026-11-10) added exactly nine information findings:
 each is `object-has-no-source` now, made by `hyrule_guardian_slain` at the
 guardian's death for every player it credits, not by a reset. The count
@@ -607,7 +612,10 @@ Live-test gotchas that look like product bugs and are not:
 - `webadmin/server.py`: dashboard UI/API/queue/WebSockets
 - `webadmin/static/client.*`, `command-sequence.js`: play-first browser
   terminal, client controls, and shared bounded command chaining
-- `webadmin/area_parser.py`: independent Python area parser
+- `webadmin/area_reader.py`: the one Python reader of `.are` files, token
+  for token as `src/db.c` reads them, with offsets; every tool goes through it
+- `webadmin/area_parser.py`: the dashboard's dataclasses and flag tables,
+  built from `area_reader`'s records
 - `webadmin/static/console-output.js`: streaming ANSI/Telnet console decoder
 - `webadmin/area_health.py`: shared lint engine
 - `tools/build_directions.py`: builds `webadmin/directions.json`, the travel
@@ -900,6 +908,29 @@ against `../merc --check-area` and `check_exits.py` before deleting anything.
 Before restoring a reset that was commented out, read what it does. One of
 those 176 was a button whose `value[4] == 3` kills everyone in the room except
 whoever pushes it; arming that is a gameplay decision, not a repair.
+
+**Every Python tool reads area files through `webadmin/area_reader.py`**
+(modernization project 3, 2026-11-11). Its `TokenReader` is `fread_letter`,
+`fread_number` (with `|`), `fread_long`, `fread_flag` (no sign),
+`fread_string` and `fread_word`, and its loaders are `load_mobiles` through
+`load_specials` in the same order, so every shape above reads as the game
+reads it; every token keeps its offset, and files are read and written as
+bytes, so an in-place writer changes one token and nothing else, CRLF
+included. `AreaParser`, the area lint, the directions router, the Mudlet
+map, the seasonal builder, both price tools and the root `check_*.py` all
+use it; `listed_area_files(dir, built=False)` is the list for anything
+committed. Do not write another reader -- add what a tool needs to this one.
+Help keeps its own reader (`webadmin/help_index.py`), and the Hyrule
+generator edits its own output as text. Moving the tools onto it fixed what
+the old readers disagreed on (CHANGELOG, 2026-11-11): the dashboard parser
+had lost 38 objects' affects and 130 extra descriptions in double-spaced
+files, three mobiles' FLAGS2 words, room 17022's `D3 too dark to tell`
+exit and two rooms with a name over two lines; the router read archived
+and seasonal copies (`korzath2old.are`, `dresden_halloween.are`) for its
+portals, and missed a portal written with a second flag word (9163) and a
+teleport room (24254). One thing the game reads is likely a builder's
+slip: wyvern.are's `R 0 1644 0 4` is read as "randomize no exits" -- R
+takes two arguments -- so that maze room never scrambles.
 
 - **A record ends where the game says it ends, not at the next `#`.** An
   object's affects, extra descriptions and actions follow its condition

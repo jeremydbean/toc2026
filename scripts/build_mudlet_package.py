@@ -99,14 +99,22 @@ def load_world_rooms():
     return rooms, areas
 
 
+def room_title(room) -> str:
+    """A room's name on one line. fread_string keeps a name's line breaks:
+    valhalla.are 9945 writes its name across two lines, and underdrk.are
+    25123 puts the tilde on the line after it."""
+    return room.name.rstrip("\n").replace("\n", " ")
+
+
 def sector_index(room) -> int:
     """Best-effort sector number for a room.
 
-    Four rooms in the shipped world do not yield a plain integer: mountain.are
-    25022 uses ROM's bitwise `0|11` notation, valhalla.are 9945 and
-    underdrk.are 25123 have records the C loader tolerates but that leave a
-    word of prose here, and one room carries -1. None of that should stop the
-    map being built, so fall back to Inside and keep the value in range.
+    Two rooms in the shipped world do not yield a plain integer in range:
+    mountain.are 25022 uses ROM's `0|11` notation, which fread_number adds
+    up, and one room carries -1. Neither should stop the map being built, so
+    fall back to Inside and keep the value in range. (valhalla.are 9945 and
+    underdrk.are 25123 used to leave a word of prose here too: the old line
+    reader took the first line of a two-line name for all of it.)
     """
     raw = str(getattr(room, "sector_type", "0") or "0").strip()
     value = None
@@ -201,7 +209,7 @@ def build_map_bytes() -> bytes:
         x, y, z = coordinates[vnum]
         lines.append(
             f"  <room id={quoteattr(str(vnum))} area=\"{area_of[vnum]}\" "
-            f"title={quoteattr(room.name)} environment={quoteattr(str(sector + 1))}>"
+            f"title={quoteattr(room_title(room))} environment={quoteattr(str(sector + 1))}>"
         )
         lines.append(f'   <coord x="{x}" y="{y}" z="{z}" />')
         for room_exit in sorted(room.exits, key=lambda item: item.direction):

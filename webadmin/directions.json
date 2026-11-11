@@ -10,7 +10,7 @@
   "legacy_ok": 71,
   "legacy_drifted": 10,
   "legacy_repaired": 9,
-  "links": 130,
+  "links": 113,
   "trainers": 64,
   "places": 3
  },
@@ -207,32 +207,39 @@
   },
   {
    "name": "The Abyss (Anon)",
-   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;unlock door;open door;e;u;e;open door;s;open book;s;w;d;w;d",
+   "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 2;r e 2;n;e;r n 4;r e 5;open east;r e 4;s;r u 6;s;u;e;n;d;n;w;r n 3;r w 2;d;s;climb rope;r s 2;enter pool;w;d;w;d",
    "steps": [
     "west x7",
     "open gate",
-    "west x4",
-    "south x2",
-    "east",
-    "south",
-    "east",
-    "south x2",
     "west",
-    "south",
-    "down x2",
-    "west x2",
+    "north x3",
+    "east x2",
     "north x3",
     "east",
-    "south",
-    "unlock door (it is locked: key 13006)",
-    "open door",
+    "north x2",
+    "east x2",
+    "north",
     "east",
+    "north x4",
+    "east x5",
+    "open east",
+    "east x4",
+    "south",
+    "up x6",
+    "south",
     "up",
     "east",
-    "open door",
+    "north",
+    "down",
+    "north",
+    "west",
+    "north x3",
+    "west x2",
+    "down",
     "south",
-    "open book",
-    "south",
+    "climb a rope ladder",
+    "south x2",
+    "enter a pool",
     "west",
     "down",
     "west",
@@ -242,11 +249,8 @@
    "vnum": 24501,
    "area": "Anon The Abyss",
    "area_display": "The Abyss (Anon)",
-   "rooms_away": 38,
-   "status": "computed",
-   "needs": [
-    "key 13006"
-   ]
+   "rooms_away": 65,
+   "status": "computed"
   },
   {
    "name": "The Chessboard (Aten)",
@@ -777,32 +781,39 @@
   },
   {
    "name": "Valhalla (Elrond)",
-   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;unlock door;open door;e;u;e;open door;s;open book;s;w;d;w;open gates;r w 5;r d 2;e;s;r e 2;n;r e 2;s;r e 2;n;e;r d 2;s;w;n;r w 2;s;r w 4;n;r w 2;r d 2;r e 2;s;open door;e;n;e;open freezer;r e 2;s;e;n;e;open door;e;r s 2;r d 4;open CLOSED;r u 2",
+   "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 2;r e 2;n;e;r n 4;r e 5;open east;r e 4;s;r u 6;s;u;e;n;d;n;w;r n 3;r w 2;d;s;climb rope;r s 2;enter pool;w;d;w;open gates;r w 5;r d 2;e;s;r e 2;n;r e 2;s;r e 2;n;e;r d 2;s;w;n;r w 2;s;r w 4;n;r w 2;r d 2;r e 2;s;open door;e;n;e;open freezer;r e 2;s;e;n;e;open door;e;r s 2;r d 4;open CLOSED;r u 2",
    "steps": [
     "west x7",
     "open gate",
-    "west x4",
-    "south x2",
-    "east",
-    "south",
-    "east",
-    "south x2",
     "west",
-    "south",
-    "down x2",
-    "west x2",
+    "north x3",
+    "east x2",
     "north x3",
     "east",
-    "south",
-    "unlock door (it is locked: key 13006)",
-    "open door",
+    "north x2",
+    "east x2",
+    "north",
     "east",
+    "north x4",
+    "east x5",
+    "open east",
+    "east x4",
+    "south",
+    "up x6",
+    "south",
     "up",
     "east",
-    "open door",
+    "north",
+    "down",
+    "north",
+    "west",
+    "north x3",
+    "west x2",
+    "down",
     "south",
-    "open book",
-    "south",
+    "climb a rope ladder",
+    "south x2",
+    "enter a pool",
     "west",
     "down",
     "west",
@@ -851,11 +862,8 @@
    "vnum": 9900,
    "area": "Elrond Valhalla",
    "area_display": "Valhalla (Elrond)",
-   "rooms_away": 94,
-   "status": "computed",
-   "needs": [
-    "key 13006"
-   ]
+   "rooms_away": 121,
+   "status": "computed"
   },
   {
    "name": "The Emerald Forest (FeaR)",
@@ -1830,42 +1838,46 @@
   },
   {
    "name": "Descent to Hell (Strahd)",
-   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;unlock door;open door;e;u;e;open door;s;open book;s",
+   "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 2;r e 2;n;e;r n 4;r e 5;open east;r e 4;s;r u 6;s;u;e;n;d;n;w;r n 3;r w 2;d;s;climb rope;r s 2;enter pool",
    "steps": [
     "west x7",
     "open gate",
-    "west x4",
-    "south x2",
-    "east",
-    "south",
-    "east",
-    "south x2",
     "west",
-    "south",
-    "down x2",
-    "west x2",
+    "north x3",
+    "east x2",
     "north x3",
     "east",
-    "south",
-    "unlock door (it is locked: key 13006)",
-    "open door",
+    "north x2",
+    "east x2",
+    "north",
     "east",
+    "north x4",
+    "east x5",
+    "open east",
+    "east x4",
+    "south",
+    "up x6",
+    "south",
     "up",
     "east",
-    "open door",
+    "north",
+    "down",
+    "north",
+    "west",
+    "north x3",
+    "west x2",
+    "down",
     "south",
-    "open book",
-    "south"
+    "climb a rope ladder",
+    "south x2",
+    "enter a pool"
    ],
    "room": "Stone Archway",
    "vnum": 13401,
    "area": "Strahd Descent to Hell",
    "area_display": "Descent to Hell (Strahd)",
-   "rooms_away": 34,
-   "status": "computed",
-   "needs": [
-    "key 13006"
-   ]
+   "rooms_away": 61,
+   "status": "computed"
   },
   {
    "name": "Town Of Solace (Strahd)",
@@ -4119,16 +4131,6 @@
    "to": 2401
   },
   {
-   "from": 2497,
-   "command": "enter door",
-   "to": 2401
-  },
-  {
-   "from": 2497,
-   "command": "enter door",
-   "to": 2401
-  },
-  {
    "from": 3216,
    "command": "push book",
    "to": 3216
@@ -4187,6 +4189,11 @@
    "from": 9160,
    "command": "climb rope",
    "to": 9159
+  },
+  {
+   "from": 9163,
+   "command": "enter pool",
+   "to": 13401
   },
   {
    "from": 9941,
@@ -4469,67 +4476,7 @@
    "to": 29233
   },
   {
-   "from": 29217,
-   "command": "pull one",
-   "to": 29217
-  },
-  {
-   "from": 29217,
-   "command": "pull two",
-   "to": 29234
-  },
-  {
-   "from": 29217,
-   "command": "pull three",
-   "to": 29217
-  },
-  {
-   "from": 29217,
-   "command": "pull four",
-   "to": 29217
-  },
-  {
-   "from": 29217,
-   "command": "pull five",
-   "to": 29233
-  },
-  {
-   "from": 29217,
-   "command": "pull six",
-   "to": 29234
-  },
-  {
-   "from": 29217,
-   "command": "pull seven",
-   "to": 29217
-  },
-  {
-   "from": 29217,
-   "command": "pull eight",
-   "to": 29217
-  },
-  {
-   "from": 29217,
-   "command": "pull nine",
-   "to": 29234
-  },
-  {
-   "from": 29217,
-   "command": "pull ten",
-   "to": 29233
-  },
-  {
    "from": 29244,
-   "command": "pull lever",
-   "to": 29269
-  },
-  {
-   "from": 29244,
-   "command": "pull lever",
-   "to": 29269
-  },
-  {
-   "from": 29248,
    "command": "pull lever",
    "to": 29269
   },
@@ -4544,29 +4491,9 @@
    "to": 29270
   },
   {
-   "from": 29289,
-   "command": "pull lever",
-   "to": 29270
-  },
-  {
    "from": 29293,
    "command": "pull lever",
    "to": 29269
-  },
-  {
-   "from": 29293,
-   "command": "pull lever",
-   "to": 29269
-  },
-  {
-   "from": 29302,
-   "command": "pull arm",
-   "to": 29302
-  },
-  {
-   "from": 29302,
-   "command": "pull arm",
-   "to": 29302
   },
   {
    "from": 29302,

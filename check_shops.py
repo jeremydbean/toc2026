@@ -1,63 +1,34 @@
-import os, re
+"""Check every shop keeper and special-function mobile in loaded areas is
+defined.
 
-AREA_DIR = "area"
-with open(f"{AREA_DIR}/area.lst") as f:
-    LOADED = {l.strip() for l in f if l.strip() and l.strip() != '$'}
+The world is read by webadmin/area_reader.py, token for token as
+load_shops() and load_specials() read it.
+"""
+import sys
+from pathlib import Path
 
-SECTION_RE = re.compile(r'^#(MOBILES|SHOPS|SPECIALS)\b', re.MULTILINE)
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
 
-mob_vnums = set()
+from webadmin.area_reader import read_world  # noqa: E402
 
-# First pass: collect all mob vnums from loaded areas
-for fname in sorted(LOADED):
-    path = os.path.join(AREA_DIR, fname)
-    if not os.path.exists(path): continue
-    with open(path, encoding="latin-1") as f:
-        content = f.read()
-    sp = [(m.start(), m.group(1)) for m in SECTION_RE.finditer(content)]
-    for idx, (pos, stype) in enumerate(sp):
-        if stype != 'MOBILES': continue
-        end = sp[idx+1][0] if idx+1 < len(sp) else len(content)
-        chunk = content[pos:end]
-        for v in re.findall(r'^#(\d+)', chunk, re.MULTILINE):
-            if int(v) > 0: mob_vnums.add(int(v))
+AREA_DIR = Path("area")
 
-# Second pass: check shops and specials
+areas = read_world(AREA_DIR)
+mob_vnums = {m.vnum for area in areas for m in area.mobiles}
+
 issues = []
-for fname in sorted(LOADED):
-    path = os.path.join(AREA_DIR, fname)
-    if not os.path.exists(path): continue
-    with open(path, encoding="latin-1") as f:
-        content = f.read()
-    sp = [(m.start(), m.group(1)) for m in SECTION_RE.finditer(content)]
-    secs = {}
-    for idx, (pos, stype) in enumerate(sp):
-        end = sp[idx+1][0] if idx+1 < len(sp) else len(content)
-        secs[stype] = content[pos:end]
-
-    if 'SHOPS' in secs:
-        for line in secs['SHOPS'].splitlines():
-            line = line.strip()
-            if not line or line.startswith('*') or line.startswith('#'): continue
-            parts = line.split()
-            if parts and parts[0].isdigit():
-                mob_v = int(parts[0])
-                if mob_v > 0 and mob_v not in mob_vnums:
-                    issues.append(f"{fname}: SHOPS keeper {mob_v} not defined")
-
-    if 'SPECIALS' in secs:
-        for line in secs['SPECIALS'].splitlines():
-            line = line.strip()
-            if not line or line.startswith('*') or line.startswith('#'): continue
-            parts = line.split()
-            if len(parts) >= 2 and parts[0] == 'M' and parts[1].isdigit():
-                mob_v = int(parts[1])
-                spec = parts[2] if len(parts) > 2 else '?'
-                if mob_v > 0 and mob_v not in mob_vnums:
-                    issues.append(f"{fname}: SPECIALS mob {mob_v} ({spec}) not defined")
+for area in sorted(areas, key=lambda a: a.name):
+    for shop in area.shops:
+        if shop.keeper > 0 and shop.keeper not in mob_vnums:
+            issues.append(f"{area.name}: SHOPS keeper {shop.keeper} not defined")
+    for special in area.specials:
+        if special.vnum > 0 and special.vnum not in mob_vnums:
+            issues.append(f"{area.name}: SPECIALS mob {special.vnum} ({special.spec}) not defined")
 
 if issues:
     print(f"ISSUES ({len(issues)}):")
-    for i in issues: print(f"  {i}")
+    for i in issues:
+        print(f"  {i}")
 else:
     print("All shop keepers and special mobs are defined.")
