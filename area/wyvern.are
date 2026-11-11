@@ -3620,7 +3620,7 @@ D 0 1612 5 2          ; close and lock lich door
 
 D 0 1619 4 2         
 
-R 0 1644 0 4            ;Maze the dark room
+R 0 1644 4              ;Maze the dark room (it read 0 doors)
 
 O 0 1652 2 1608         ;Put barrel in storeroom
 

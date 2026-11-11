@@ -871,7 +871,11 @@ bool flags_from_argument( const char *argument, int current, int *result )
         return false;
 
     if ( is_number( (char *) p ) )
-        parsed = atol( p );
+    {
+        /* Checked: "5abc" or a number past a long is refused, not misread. */
+        if ( !parse_long( p, LONG_MIN, LONG_MAX, &parsed ) )
+            return false;
+    }
     else
     {
         for ( ; *p != '\0'; p++ )

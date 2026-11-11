@@ -1,13 +1,13 @@
 #!/bin/sh
 set -eu
 
-TOC_ROOT="${TOC_ROOT:-/home/toc/toc2026}"
+TOC_ROOT="${TOC_ROOT:-/srv/toc/current}"
 BACKUP_REMOTE="${BACKUP_REMOTE:?BACKUP_REMOTE is required}"
 BACKUP_BRANCH="${BACKUP_BRANCH:-snapshots}"
-AGE_RECIPIENT_FILE="${AGE_RECIPIENT_FILE:-/etc/toc2026/player-backup-recipient.txt}"
-GIT_SSH_KEY="${GIT_SSH_KEY:-/home/toc/.ssh/id_ed25519_github_toc_backup}"
+AGE_RECIPIENT_FILE="${AGE_RECIPIENT_FILE:-/etc/toc/player-backup-recipient.txt}"
+GIT_SSH_KEY="${GIT_SSH_KEY:-/srv/toc/.ssh/id_ed25519_github_toc_backup}"
 PLAYER_DIR="$TOC_ROOT/player"
-LOCK_FILE="${XDG_RUNTIME_DIR:-/tmp}/toc2026-player-backup.lock"
+LOCK_FILE="${XDG_RUNTIME_DIR:-/tmp}/toc-player-backup.lock"
 
 if [ ! -d "$PLAYER_DIR" ]; then
     echo "Player directory not found: $PLAYER_DIR" >&2
