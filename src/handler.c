@@ -2562,6 +2562,7 @@ void extract_obj_player( OBJ_DATA *obj )
 
     --obj->pIndexData->count;
     /* Freed at the top of the next pass (recycle.c). */
+    resurrect_forget_corpse( obj );     /* no offer outlives its corpse */
     obj_data_release( obj );
 
     /* The relic globals never name a freed object (stale-pointer audit,
@@ -2659,6 +2660,7 @@ void extract_obj( OBJ_DATA *obj )
 
     --obj->pIndexData->count;
     /* Freed at the top of the next pass (recycle.c). */
+    resurrect_forget_corpse( obj );     /* no offer outlives its corpse */
     obj_data_release( obj );
 
     /* The relic globals never name a freed object (stale-pointer audit,
@@ -2771,6 +2773,9 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         DESCRIPTOR_DATA *d;
 
         for ( d = descriptor_list; d != NULL; d = d->next )
+        {
+            if ( d->gmcp_last_character == ch )
+                d->gmcp_last_character = NULL;  /* compared by address; never kept past it */
             if ( d->original == ch )
             {
                 d->original = NULL;
@@ -2778,6 +2783,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                     send_to_char( "Your own body is gone; you are left where you are.\n\r",
                                   d->character );
             }
+        }
     }
 
     unregister_character( ch );

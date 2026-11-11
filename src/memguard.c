@@ -71,7 +71,7 @@ static const struct
     { "in_object",          FALSE },
     { "carrying",           FALSE },
     { "stash",              FALSE },
-    { "resurrect_corpse",   TRUE  },
+    { "resurrect_corpse",   FALSE },   /* cleared at extraction since 2026-11-11 */
     { "character_list",     FALSE },
     { "object_list",        FALSE },
     { "carried_by",         FALSE },
@@ -83,7 +83,7 @@ static const struct
     { "d character",        FALSE },
     { "d original",         FALSE },
     { "d snoop_by",         FALSE },
-    { "d gmcp_last_character", TRUE },
+    { "d gmcp_last_character", FALSE },
     { "descriptor_list",    FALSE },
     { "hunter_list",        FALSE },
 };
@@ -96,6 +96,7 @@ static time_t   mg_log_minute[MG_FIELDS];
 static int      mg_log_count[MG_FIELDS];
 static long     mg_log_suppressed[MG_FIELDS];
 static char     mg_events[MG_EVENTS][MG_EVENT_LEN];
+static int      mg_event_level[MG_EVENTS];  /* who may read it: every name in it */
 static int      mg_event_next;
 
 static long     mg_runs;
@@ -169,17 +170,22 @@ static void mg_report( const char *field, const char *who, int level,
     char label[80];
     char line[MAX_STRING_LENGTH];
     int f = mg_field( field );
+    int target_level;
 
     mg_caught[f]++;
     if ( mg_fields[f].quiet )
         return;
     mg_total++;
 
-    recycle_dead_label( target, label, sizeof(label) );
+    /* The event names the holder and the dead target: it is for staff who
+       could see both (a wizinvis name is for its own level and up). */
+    recycle_dead_label( target, label, sizeof(label), &target_level );
+    level = UMAX( level, target_level );
     snprintf( line, sizeof(line), "MEMORY: stale %s on %s -> dead %s (%s)",
               field, who, kind, label );
     snprintf( mg_events[mg_event_next], MG_EVENT_LEN, "%.24s %.170s",
               ctime( &current_time ), line );
+    mg_event_level[mg_event_next] = level;
     mg_event_next = ( mg_event_next + 1 ) % MG_EVENTS;
 
     if ( current_time - mg_log_minute[f] >= 60 )
@@ -697,9 +703,11 @@ void do_memcheck( CHAR_DATA *ch, char *argument )
     send_to_char( "  Last events:\n\r", ch );
     for ( i = 0, shown = 0; i < MG_EVENTS; i++ )
     {
-        const char *event = mg_events[( mg_event_next + MG_EVENTS - 1 - i ) % MG_EVENTS];
+        int slot = ( mg_event_next + MG_EVENTS - 1 - i ) % MG_EVENTS;
+        const char *event = mg_events[slot];
 
-        if ( event[0] == '\0' )
+        /* Never a name the viewer could not see (review, 2026-11-11). */
+        if ( event[0] == '\0' || get_trust( ch ) < mg_event_level[slot] )
             continue;
         snprintf( buf, sizeof(buf), "    %s\n\r", event );
         send_to_char( buf, ch );

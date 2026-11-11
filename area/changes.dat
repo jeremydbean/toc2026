@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261111purge 2026-11-11 staff
+PURGE <name> now looks nearest first -- somebody in this room, then an object
+here, then somebody elsewhere -- so PURGE CORPSE takes the corpse at your
+feet, not a mobile across the world. It says what it removed, its vnum and,
+for a mobile elsewhere, its room. MEMCHECK no longer shows events naming
+staff whose wizinvis level is above yours.
+
 @ 20261111memguard 2026-11-11 staff
 Memory safeguards: anything that leaves the game is kept for a minute before
 its memory is freed, and once a second every stored pointer is checked. One

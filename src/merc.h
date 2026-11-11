@@ -3298,6 +3298,7 @@ int     corpse_give_to_owner    ( CHAR_DATA *owner, OBJ_DATA *corpse, const char
                                   OBJ_DATA **moved, int max_moved, int *given,
                                   char *op, size_t opsize, char *why, size_t whysize );
 void    resurrect_corpse_owner  ( OBJ_DATA *corpse, char *out, size_t size );
+void    resurrect_forget_corpse ( OBJ_DATA *obj );
 CHAR_DATA *resurrect_find_owner ( const char *name );
 bool    corpse_registry_hold    ( OBJ_DATA *corpse, char *id, size_t size );
 void    corpse_registry_unhold  ( OBJ_DATA *corpse );
@@ -3658,7 +3659,7 @@ bool    char_is_live        ( const CHAR_DATA *ch );
 bool    obj_is_live         ( const OBJ_DATA *obj );
 bool    desc_is_live        ( const DESCRIPTOR_DATA *d );
 void    recycle_label_char  ( const CHAR_DATA *ch );
-bool    recycle_dead_label  ( const void *ptr, char *out, size_t size );
+bool    recycle_dead_label  ( const void *ptr, char *out, size_t size, int *level );
 void    recycle_stats       ( int *held, long *oldest_secs, long *freed,
                               int *window_secs, int *cap );
 /* memguard.c: the once-a-second pointer sweep and its hot-spot guards. */

@@ -3304,7 +3304,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
 void do_purge( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
-    char buf[100];
+    char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
     OBJ_DATA *obj;
     DESCRIPTOR_DATA *d;
@@ -3349,29 +3349,35 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    /*
+     * What the word names, nearest first (review, 2026-11-11: `purge corpse'
+     * took a mobile somewhere in the world before the corpse at the staff
+     * member's feet): somebody in this room, then an object here (in the
+     * room or carried), and only then somebody elsewhere in the world. A
+     * single target named is removed even if NOPURGE, which only shields
+     * things from a room-wide PURGE; the answer says what went, and where.
+     */
+    if ( ( victim = get_char_room( ch, arg ) ) == NULL )
     {
-	/* Not a character.  Try an object before giving up -- without this,
-	   `purge portal' and every other object answered "They aren't here."
-	   and there was no way to remove one thing from a room short of
-	   emptying the whole room. */
 	OBJ_DATA *target;
 
-	if ( ( target = get_obj_here( ch, arg ) ) == NULL )
+	if ( ( target = get_obj_here( ch, arg ) ) != NULL )
 	{
-	    send_to_char( "They aren't here.\n\r", ch );
+	    act( "$n disintegrates $p.", ch, target, NULL, TO_ROOM );
+	    snprintf( buf, sizeof(buf), "%s (object %d) purged%s%s.\n\r",
+		      target->short_descr,
+		      target->pIndexData != NULL ? target->pIndexData->vnum : 0,
+		      target->carried_by == ch ? " from your inventory" : " from this room",
+		      IS_OBJ_STAT(target, ITEM_NOPURGE) ? " (it was flagged nopurge)" : "" );
+	    send_to_char( buf, ch );
+	    extract_obj( target );
 	    return;
 	}
-
-	act( "$n disintegrates $p.", ch, target, NULL, TO_ROOM );
-	if ( IS_OBJ_STAT(target, ITEM_NOPURGE) )
-	    snprintf( buf, sizeof(buf), "%s purged (it was flagged nopurge).\n\r",
-		      target->short_descr );
-	else
-	    snprintf( buf, sizeof(buf), "%s purged.\n\r", target->short_descr );
-	send_to_char( buf, ch );
-	extract_obj( target );
-	return;
+	if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+	{
+	    send_to_char( "Nothing here or in the world answers to that.\n\r", ch );
+	    return;
+	}
     }
 
     if ( !IS_NPC(victim) )
@@ -3423,8 +3429,14 @@ void do_purge( CHAR_DATA *ch, char *argument )
     }
 
     act( "$n purged $N.", ch, NULL, victim, TO_NOTVICT );
-        victim->position = POS_STANDING;
-      extract_char( victim, true );
+    snprintf( buf, sizeof(buf), "%s (mobile %d) purged %s %d.\n\r",
+	      victim->short_descr,
+	      victim->pIndexData != NULL ? victim->pIndexData->vnum : 0,
+	      victim->in_room == ch->in_room ? "from this room," : "from elsewhere: room",
+	      victim->in_room != NULL ? victim->in_room->vnum : 0 );
+    send_to_char( buf, ch );
+    victim->position = POS_STANDING;
+    extract_char( victim, true );
     return;
 }
 

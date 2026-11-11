@@ -5620,15 +5620,17 @@ See also: SET, FREEZE, DENY
 
 66 PURGE~
 Syntax: purge
-        purge <character>
+        purge <name>
 
 Purge is used to clean up the world.  Purge with no arguments removes all the
-NPC's and objects in the current room.  Purge with an argument purges one
-character from anywhere in the world.
+NPC's and objects in the current room, except those with a NOPURGE flag (the
+pit, the fountain, shopkeepers).
 
-Purge will not get rid of PC's, or objects or mobiles with a NOPURGE flag
-set (i.e. the pit, the fountain, shopkeepers).  Mobiles may be
-purged if they are called directly by name.
+Purge with a name looks nearest first: somebody in this room, then an object
+here (in the room or carried), and only then somebody elsewhere in the world.
+It says what it removed, its vnum and, for a mobile elsewhere, its room.  A
+thing named directly is removed even if it is flagged NOPURGE.  A player is
+never destroyed: purging one severs their link and leaves them link-dead.
 
 See also: SLAY, RESTORE, LOAD
 ~

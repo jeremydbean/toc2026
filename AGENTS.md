@@ -5262,8 +5262,18 @@ into a later pass reads freed memory, so any left in live play must be
   mobile extracted, a player to the altar). A descriptor whose character
   is dead goes back to its `original` if that lives, else is marked
   `write_failed` and the output loop closes it. resurrect_corpse and
-  gmcp_last_character are compared by pointer only and go stale by
-  design: they are cleared and counted quietly, not reported.
+  gmcp_last_character are compared by pointer only, and are cleared
+  where their target goes -- `resurrect_forget_corpse` from both
+  extract_obj paths, the descriptor walks in `extract_char` and
+  `free_char` -- so a catch of either is a real bug and is reported
+  (review, 2026-11-11: they were left to go stale "by design", and the
+  sweep itself then read the purged corpse once the quarantine had freed
+  it -- an ASan heap-use-after-free in `obj_is_live` with no quarantine,
+  whenever the sweep ran a pass after the purge;
+  `tests/test_memcheck_purge.py`). **The sweep reads a pointer to learn
+  whether it is dead, so it is only safe inside the quarantine window:**
+  a field that is meant to outlive its target must be cleared at the
+  target's extraction, never left for the sweep.
 - **Hot spots ask first**: `violence_update` (`memguard_fighting_ok`),
   `hunt_victim` (`memguard_hunting_ok`), `hunting_update`
   (`memguard_hunter_slot_ok`), the output loop
@@ -5271,7 +5281,12 @@ into a later pass reads freed memory, so any left in live play must be
   `do_reply` (`memguard_reply_ok`). A new timer that follows a stored
   pointer asks too; a new pointer field goes into the sweep.
 - **MEMCHECK** (IM, after MEMORY so MEM is still MEMORY): quarantine,
-  live counts, sweep cost, catches by field, the last five events.
+  live counts, sweep cost, catches by field, the last five events. Each
+  event keeps the trust that may read it -- the higher of the holder's
+  and the dead target's `staff_notice_level`, the target's taken at its
+  release (`recycle_label_char`) -- and MEMCHECK shows a viewer only the
+  events at or below their trust (review, 2026-11-11: a level 60 read a
+  wizinvis 70's name). Counts are not names and are shown to all.
   `MEMCHECK SELFTEST` works only with `TOC_MEMCHECK_SELFTEST=1`: it
   retires a mobile straight through `char_data_release` behind the
   caller's REPLY, for the next sweep to catch.

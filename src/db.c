@@ -4623,6 +4623,17 @@ void free_char( CHAR_DATA *ch )
     if (IS_NPC(ch))
         mobile_count--;
 
+    /* A descriptor's last-sent character is compared by address only, but
+       is never left pointing at freed memory: a character can be freed
+       without extract_char (a copy loaded at the name prompt). */
+    {
+        DESCRIPTOR_DATA *d;
+
+        for ( d = descriptor_list; d != NULL; d = d->next )
+            if ( d->gmcp_last_character == ch )
+                d->gmcp_last_character = NULL;
+    }
+
     /* A character loaded and never entered -- a wrong password, a dropped
        connection at the prompt, the copy a link-dead reconnect replaces --
        still holds the stash and the pet its file gave it. Both were left

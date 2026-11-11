@@ -55,6 +55,7 @@ typedef struct quarantine_entry
     time_t      when;
     int         kind;
     char        label[Q_LABEL];
+    int         level;      /* the trust that may read the label (a wizinvis name) */
 } QUARANTINE_ENTRY;
 
 static QUARANTINE_ENTRY *quarantine;
@@ -67,6 +68,7 @@ static int              q_window = -1;   /* read from the environment once */
 /* The label free_char hands over before it frees the strings. */
 static const CHAR_DATA *pending_label_ch;
 static char             pending_label[Q_LABEL];
+static int              pending_label_level;
 
 
 static int quarantine_window( void )
@@ -128,7 +130,7 @@ static void quarantine_free_block( QUARANTINE_ENTRY *e )
  * Kept even past the cap: a block released in this pass may still be read
  * in this pass, so only recycle_flush ever frees, and it trims to the cap.
  */
-static void quarantine_push( void *ptr, int kind, const char *label )
+static void quarantine_push( void *ptr, int kind, const char *label, int level )
 {
     QUARANTINE_ENTRY *e;
 
@@ -156,6 +158,7 @@ static void quarantine_push( void *ptr, int kind, const char *label )
     e->when = current_time;
     e->kind = kind;
     toc_strlcpy( e->label, label != NULL ? label : "?", sizeof(e->label) );
+    e->level = level;
     q_count++;
 }
 
@@ -188,8 +191,12 @@ bool char_is_live( const CHAR_DATA *ch )
 void recycle_label_char( const CHAR_DATA *ch )
 {
     pending_label_ch = ch;
+    pending_label_level = LEVEL_IMMORTAL;
     if ( ch == NULL )
         return;
+    /* A wizinvis player's name is for those who could see them. */
+    if ( ch->pcdata != NULL )
+        pending_label_level = staff_notice_level( ch, LEVEL_IMMORTAL );
     if ( ch->pcdata == NULL && ch->pIndexData != NULL )
         snprintf( pending_label, sizeof(pending_label), "mob %d %s",
                   ch->pIndexData->vnum,
@@ -220,8 +227,9 @@ void char_data_release( CHAR_DATA *ch )
                       ch->pIndexData->vnum );
         else
             toc_strlcpy( pending_label, "character", sizeof(pending_label) );
+        pending_label_level = LEVEL_IMMORTAL;
     }
-    quarantine_push( ch, Q_CHAR, pending_label );
+    quarantine_push( ch, Q_CHAR, pending_label, pending_label_level );
     pending_label_ch = NULL;
 }
 
@@ -265,7 +273,7 @@ void obj_data_release( OBJ_DATA *obj )
                       ? obj->pIndexData->short_descr : "?" );
     else
         toc_strlcpy( label, "object", sizeof(label) );
-    quarantine_push( obj, Q_OBJ, label );
+    quarantine_push( obj, Q_OBJ, label, LEVEL_IMMORTAL );
 }
 
 
@@ -297,7 +305,7 @@ void descriptor_data_release( DESCRIPTOR_DATA *d )
     d->mem_magic = MEM_DEAD_DESC;
     /* The socket number only: never an address. */
     snprintf( label, sizeof(label), "descriptor %d", d->descriptor );
-    quarantine_push( d, Q_DESC, label );
+    quarantine_push( d, Q_DESC, label, LEVEL_IMMORTAL );
 }
 
 
@@ -306,7 +314,7 @@ void descriptor_data_release( DESCRIPTOR_DATA *d )
  * label written at its release, when `ptr' is in quarantine. Linear, and
  * only asked when a stale pointer has been found.
  */
-bool recycle_dead_label( const void *ptr, char *out, size_t size )
+bool recycle_dead_label( const void *ptr, char *out, size_t size, int *level )
 {
     int i;
 
@@ -317,10 +325,14 @@ bool recycle_dead_label( const void *ptr, char *out, size_t size )
         if ( e->ptr == ptr )
         {
             toc_strlcpy( out, e->label, size );
+            if ( level != NULL )
+                *level = e->level;
             return TRUE;
         }
     }
     toc_strlcpy( out, "?", size );
+    if ( level != NULL )
+        *level = LEVEL_IMMORTAL;
     return FALSE;
 }
 

@@ -90,6 +90,23 @@ static OBJ_DATA *resurrect_corpse_still( CHAR_DATA *ch )
     return NULL;
 }
 
+/* An object leaving the game: any offer that names it is forgotten, so no
+   pointer to the corpse outlives it (review, 2026-11-11: the memory
+   sweep read the purged corpse through the offer). Corpses only, so the
+   walk over the characters is rare. */
+void resurrect_forget_corpse( OBJ_DATA *obj )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *ch;
+
+    if ( obj == NULL || ( obj->item_type != ITEM_CORPSE_PC
+                       && obj->item_type != ITEM_CORPSE_NPC ) )
+        return;
+    FOR_EACH_CHARACTER( iter, ch )
+        if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->resurrect_corpse == obj )
+            ch->pcdata->resurrect_corpse = NULL;
+}
+
 static void resurrect_clear( CHAR_DATA *ch )
 {
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
