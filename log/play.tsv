@@ -21783,3 +21783,4 @@
 1794432915	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
 1794432915	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=73/983 align=872 exp=252749 coin=1080865235 bank=24638808417 qp=2022 prac=36 train=76 stash=95/350 remorts=3
 1794432915	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    292 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794433476	session	Alaric	57	2497	dresden.are	quit	690s	+0 levels	+0 exp	+246606624 copper	0 kills	0 deaths	1 quests	100 commands	2 refused	coin: quests 246p 60g 66s 24c	spent on: none	exp: none
