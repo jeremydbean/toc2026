@@ -3477,13 +3477,16 @@ of 12 rounds; differences under about a third are noise. It uses the
 repository's `merc` unless given `--binary`; never rebuild that while a
 bench runs.
 
-**A level is rolled against gear, never spells** (owner, 2026-11-11:
-"buffs shouldn't affect leveling, but gear should"). `advance_level_body`
-reads `get_level_stat` in `handler.c` -- the permanent stat plus what worn
-gear lends it, prototype and own affects as `equip_char` applies them,
-under `get_curr_stat`'s ceiling -- never `get_curr_stat`, which counts
-spells, potions and EMPOWER too (`tests/test_level_stats.py`). Levelling
-in gear is meant to pay. The mana step below is left as it is, since
+**A level is rolled against gear and EMPOWER, never other spells**
+(owner, 2026-11-11: "buffs shouldn't affect leveling, but gear should",
+then "i do want empower to boost XP and leveling that was the design").
+`advance_level_body` reads `get_level_stat` in `handler.c` -- the
+permanent stat, what worn gear lends it (prototype and own affects as
+`equip_char` applies them) and EMPOWER's own stat affects (`gsn_empower`,
+staff's or crafted), under `get_curr_stat`'s ceiling -- never
+`get_curr_stat`, which counts every spell and potion
+(`tests/test_level_stats.py`). Levelling in gear, empowered, is meant to
+pay. The mana step below is left as it is, since
 fixing it is a cut. And every mana range there is
 `number_range(int_app[INT].mana_gain, (INT+WIS)/k)` with the lower end
 above the upper (40 against 12 at INT 18), so `number_range` returns the
@@ -4034,11 +4037,12 @@ root, both stripping addresses from what they print:
   differs. On 2026-10-21 all twelve differed slightly (the shallow
   counting fixed that day), every one far below its cap; correcting the
   totals is the owner's decision and would have to be done on the host,
-  since the state sync carries maxload.txt host to git. Left as they are
-  (2026-11-11, at the owner's word to fix what should be): every count
-  but the Mud School diploma's (338 recorded, 234 held) sat within ten of
-  the files, and all at about a tenth of their caps or less, so no drop
-  was being refused.
+  since the state sync carries maxload.txt host to git. **Nothing is
+  capped now** (owner, 2026-11-11: "no need to cap anything. remove the
+  caps"): `do_maxload_item` always allows the load
+  (`tests/test_maxload_uncapped.py`); the counts are still kept and shown
+  by MAXLOADS, and the black market still passes over an item
+  `maxload.txt` names.
 
 A routine runs both each morning in a fresh cloud session and reports
 without changing anything. `tests/test_ops_tools.py` holds the table

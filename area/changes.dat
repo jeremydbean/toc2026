@@ -7,8 +7,13 @@
 
 @ 20261111levelstats 2026-11-11
 What you gain at a level -- hit points, mana, moves and practices -- is
-now worked out from your own stats and your gear, not your spells. Level
-in your best gear; a buff or a potion no longer adds anything.
+now worked out from your own stats, your gear and EMPOWER, and no other
+spell. Level in your best gear, empowered; any other buff or potion no
+longer adds anything.
+
+@ 20261111nocaps 2026-11-11
+No item is limited any more: the old caps on how many of an item may be
+about are gone, so every reset hands out what it always meant to.
 
 @ 20261111consider 2026-11-11
 CONSIDER now weighs what is on both of you, not only your weapons: a

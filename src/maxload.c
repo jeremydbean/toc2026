@@ -577,28 +577,13 @@ void do_lst_maxload(CHAR_DATA *ch, char *argument)
 }
 
 /*
- * Determine whether an item can be loaded based on existing counts.
- * Returns 1 when loading is allowed, 0 when the max has been reached.
+ * Whether a reset may load an item. Always (owner, 2026-11-11: "no need to
+ * cap anything. remove the caps"): the counts are still kept, so MAXLOADS
+ * shows how many of each are about, but no limit ever refuses a load.
  */
 int do_maxload_item(int vnum)
 {
-    ITEM_MAX_LOAD *pLoad;
-
-    for (pLoad = maxload_index_hash[vnum % MAXLOAD_KEY_HASH]; pLoad != NULL;
-         pLoad = pLoad->next)
-    {
-        if (pLoad->vnum == vnum)
-        {
-            if (pLoad->item_curr_load + pLoad->item_game_load < pLoad->item_max_load)
-            {
-                return 1;
-            }
-
-            return 0;
-        }
-    }
-
-    /* If no entry exists, default to allowing the load. */
+    UNUSED_PARAM(vnum);
     return 1;
 }
 

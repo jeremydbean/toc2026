@@ -1,14 +1,16 @@
-"""A level is rolled against gear, never against spells (owner, 2026-11-11:
-"buffs shouldn't affect leveling, but gear should").
+"""A level is rolled against gear and EMPOWER, never other spells (owner,
+2026-11-11: "buffs shouldn't affect leveling, but gear should", then "i do
+want empower to boost XP and leveling that was the design so keep it").
 
-advance_level_body read get_curr_stat, which counts every affect, so a
-character levelling under EMPOWER (WIS +15) kept the practices, mana and
-hit points of a much wiser, tougher character for good. It now reads
-get_level_stat: the permanent stat plus what worn gear lends it.
+advance_level_body read get_curr_stat, which counts every affect. It now
+reads get_level_stat: the permanent stat, what worn gear lends it, and
+EMPOWER's own stat affects (type gsn_empower); nothing else in
+ch->affected. No other spell in the game raises WIS, INT or CON, so the
+source test pins that only EMPOWER's affects are read.
 
 The practices a level gives are wis_app[WIS].practice -- deterministic at
 level 20 and above -- so they show which WIS the roll saw: 10 gives 1,
-16 gives 2, and EMPOWER's 25 would give 5.
+16 gives 2, and EMPOWER's +15 three or more.
 """
 
 from __future__ import annotations
@@ -44,11 +46,12 @@ class LevelStatSourceTests(unittest.TestCase):
                      "obj->affected", "stat_ceiling( ch, stat )"):
             self.assertIn(part, helper, part)
         self.assertNotIn("mod_stat", helper)
+        self.assertIn("paf->type == gsn_empower", helper)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class LevelStatLiveTests(unittest.TestCase):
-    def test_a_buff_is_left_out_and_gear_is_counted(self) -> None:
+    def test_empower_and_gear_are_counted(self) -> None:
         with LiveMud(fixtures=True) as mud:
             for name, level, extra in (("Zlvlstaff", 70, {}),
                                        ("Zlvlwise", 30, {"Attr": "13 13 10 13 13"})):
@@ -67,26 +70,27 @@ class LevelStatLiveTests(unittest.TestCase):
                 staff.must("advance zlvlwise 31", "31")
                 plain = practices(player) - before
 
-                staff.sync("empower zlvlwise", timeout=60)
-                self.assertIn("empower", player.sync("affects").lower())
-                before = practices(player)
-                staff.must("advance zlvlwise 32", "32")
-                buffed = practices(player) - before
-
                 staff.must(f"load obj {WIS_AMULET}", "You create", "amulet")
                 staff.must("give fixture zlvlwise", "give")
                 player.must("wear fixture", "amulet")
                 before = practices(player)
-                staff.must("advance zlvlwise 33", "33")
+                staff.must("advance zlvlwise 32", "32")
                 geared = practices(player) - before
+
+                player.must("remove fixture", "stop using", "amulet")
+                staff.sync("empower zlvlwise", timeout=60)
+                self.assertIn("empower", player.sync("affects").lower())
+                before = practices(player)
+                staff.must("advance zlvlwise 33", "33")
+                buffed = practices(player) - before
 
                 for client in (player, staff):
                     client.send("quit")
                     client.wait_closed()
 
         self.assertEqual(plain, 1, "WIS 10 gives one practice a level")
-        self.assertEqual(buffed, plain, "EMPOWER's wisdom is not counted")
         self.assertEqual(geared, 2, "the amulet's +6 (WIS 16) is counted")
+        self.assertGreaterEqual(buffed, 3, "EMPOWER's +15 wisdom is counted")
 
 
 if __name__ == "__main__":

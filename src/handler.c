@@ -1043,10 +1043,12 @@ int get_curr_stat( CHAR_DATA *ch, int stat )
 
 /*
  * The stat a level is rolled against (owner, 2026-11-11: "buffs shouldn't
- * affect leveling, but gear should"): the permanent stat and what worn
- * gear lends it -- each piece's prototype affects and its own, exactly
- * as equip_char and reset_char apply them -- and nothing a spell, potion
- * or EMPOWER lends, under the same ceiling get_curr_stat keeps.
+ * affect leveling, but gear should" -- and "i do want empower to boost XP
+ * and leveling that was the design"): the permanent stat, what worn gear
+ * lends it -- each piece's prototype affects and its own, exactly as
+ * equip_char and reset_char apply them -- and what EMPOWER lends, staff's
+ * or crafted. Nothing any other spell or potion lends, under the same
+ * ceiling get_curr_stat keeps.
  */
 int get_level_stat( CHAR_DATA *ch, int stat )
 {
@@ -1069,6 +1071,9 @@ int get_level_stat( CHAR_DATA *ch, int stat )
 	    if ( paf->location == loc_of[stat] )
 		gear += paf->modifier;
     }
+    for ( paf = ch->affected; paf != NULL; paf = paf->next )
+	if ( paf->type == gsn_empower && paf->location == loc_of[stat] )
+	    gear += paf->modifier;
     return URANGE(3, ch->perm_stat[stat] + gear, stat_ceiling( ch, stat ));
 }
 
