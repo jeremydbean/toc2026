@@ -5369,6 +5369,27 @@ with no daze** (owner, 2026-10-27): `oracle_come_back(ch, prayed_from)`
 is given the room prayed in -- the altar (4208) is safe, the Temple floor
 (4207) is not.
 
+**The game never waits on an Oracle spool, and loses nothing to one**
+(review, 2026-11-12: `F_SETLKW` on `oracle.ask` and `oracle.queryresult`
+held the whole game while the web process kept the lock, and
+`oracle.query` was emptied before its results file was opened). Every
+spool lock in `oracle.c` is `oracle_try_lock` (`F_SETLK`). A question or
+control record is built at once and held in memory (`oracle_held`, at
+most `ORACLE_HELD_MAX`; past that the supplicant is told the mists are
+closed), and `oracle_spool_flush` -- at the ask and every pulse, from
+`oracle_process_queries` -- writes all held records or none, cutting a
+failed write back to the spool's size. Lookups take both locks without
+waiting, write their findings with `write()`, and empty `oracle.query`
+only after; a failure cuts the results back and keeps the requests, so
+each is answered once. A spool that stays shut logs one line a minute,
+counts only (a lock, only once held past `ORACLE_BUSY_QUIET`, 5 s: the
+poller takes it for a moment every few seconds). **A question goes only after its save landed**: the poller
+reads the asker's gear from their file, so `DURABLE_FAILED`
+(`oracle-save` for tests) refuses it -- measured at 1-3 ms a question
+with 1,700 objects carried, so the save stays.
+`tests/test_oracle_spool_live.py` holds each lock from Python, makes the
+files directories and `/dev/full`, and counts the records.
+
 ## Disasters And The Black Dragon
 
 `src/disaster.c` (owner, 2026-10-23: fix them, rework them, and let the

@@ -132,6 +132,7 @@
   "test_oracle": 1.0,
   "test_oracle_bridge_live": 24.0,
   "test_oracle_sanctum_live": 132.0,
+  "test_oracle_spool_live": 59.0,
   "test_peer_rank": 118.0,
   "test_pick_lock": 48.0,
   "test_pkill_persistence": 0.0,

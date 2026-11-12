@@ -605,29 +605,188 @@ static void oracle_state( CHAR_DATA *ch, char *out, size_t size )
     }
 }
 
-/* Spool one record for the out-of-process poller: a question, or -- when it
-   begins with ORACLE_CONTROL -- a message from the game itself. */
-static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
+/* ------------------------------------------------------------ spool locks
+ * The web process (webadmin/oracle.py, server.py) takes the same fcntl
+ * lock on each spool while it reads, truncates or appends.  The game never
+ * waits for it (review, 2026-11-12: F_SETLKW here held the whole game for
+ * as long as the web process kept the lock).  Every lock the game takes is
+ * F_SETLK: a busy spool is tried again on a later pulse, and whatever the
+ * game had to write -- a question, a lookup's findings -- is kept until
+ * then, in memory or in the file it came from.
+ */
+
+/* Take the whole-file write lock without waiting.  TRUE when held (or on a
+   system with no fcntl locks, where there was never one to take). */
+static bool oracle_try_lock( int fd )
 {
-    FILE *fp;
 #if defined(unix) || defined(__unix__) || defined(__APPLE__)
     struct flock lock;
-#endif
 
-    fp = fopen( ORACLE_ASK_FILE, "a" );
-    if ( fp == NULL )
-        return FALSE;
-
-#if defined(unix) || defined(__unix__) || defined(__APPLE__)
     memset( &lock, 0, sizeof(lock) );
     lock.l_type = F_WRLCK;
     lock.l_whence = SEEK_SET;
-    if ( fcntl( fileno(fp), F_SETLKW, &lock ) == -1 )
+    return fcntl( fd, F_SETLK, &lock ) != -1;
+#else
+    UNUSED_PARAM(fd);
+    return TRUE;
+#endif
+}
+
+/* All of len bytes, or FALSE.  O_APPEND puts each at the end. */
+static bool oracle_write_all( int fd, const char *buf, size_t len )
+{
+    while ( len > 0 )
     {
-        fclose( fp );
+        ssize_t n = write( fd, buf, len );
+
+        if ( n < 0 )
+        {
+            if ( errno == EINTR )
+                continue;
+            return FALSE;
+        }
+        if ( n == 0 )
+            return FALSE;
+        buf += n;
+        len -= (size_t) n;
+    }
+    return TRUE;
+}
+
+/* One line in toc.log a minute at most about a spool the game cannot use
+   -- what and how many, never what anybody asked. */
+static void oracle_spool_trouble( time_t *last, const char *what, int held )
+{
+    time_t now = current_time > 0 ? current_time : time(NULL);
+    char buf[MAX_STRING_LENGTH];
+
+    if ( *last != 0 && now - *last < 60 )
+        return;
+    *last = now;
+    if ( held >= 0 )
+        snprintf( buf, sizeof(buf), "Oracle: %s; %d record%s held, tried "
+                  "again each pulse.", what, held, held == 1 ? "" : "s" );
+    else
+        snprintf( buf, sizeof(buf), "Oracle: %s; the requests are kept and "
+                  "tried again each pulse.", what );
+    log_string( buf );
+}
+
+
+/* Questions and control records not yet in the ask spool, oldest first.
+   Written whole and in order by oracle_spool_flush; held in memory only, so
+   a reboot forgets them, as it forgets the audience they belong to. */
+#define ORACLE_HELD_MAX      32
+
+static char  *oracle_held[ORACLE_HELD_MAX];
+static int    oracle_held_count = 0;
+static time_t oracle_held_logged = 0;
+static time_t oracle_held_busy_since = 0;
+
+#define ORACLE_BUSY_QUIET    5       /* seconds of a held lock before a line */
+
+/*
+ * Write every held record to the ask spool, all of them or none: the lock is
+ * taken without waiting, the spool's size noted, and a write that fails part
+ * way is cut back to that size, so the poller never reads half a batch and a
+ * retry never writes a record twice.  TRUE when nothing is left held.
+ */
+static bool oracle_spool_flush( void )
+{
+    struct stat fst;
+    int fd;
+    int i;
+    int held = oracle_held_count;
+    bool ok = TRUE;
+
+    if ( held == 0 )
+        return TRUE;
+
+    fd = open( ORACLE_ASK_FILE, O_WRONLY | O_APPEND | O_CREAT, 0666 );
+    if ( fd < 0 )
+    {
+        oracle_spool_trouble( &oracle_held_logged,
+                              "the ask spool cannot be opened", held );
         return FALSE;
     }
-#endif
+    if ( !oracle_try_lock( fd ) )
+    {
+        /* The poller has it; quietly, next pulse.  It holds the lock for a
+           moment every few seconds, so only a lock held past
+           ORACLE_BUSY_QUIET is worth a line. */
+        time_t now = current_time > 0 ? current_time : time(NULL);
+
+        close( fd );
+        if ( oracle_held_busy_since == 0 )
+            oracle_held_busy_since = now;
+        else if ( now - oracle_held_busy_since >= ORACLE_BUSY_QUIET )
+            oracle_spool_trouble( &oracle_held_logged,
+                                  "the ask spool is locked by the poller", held );
+        return FALSE;
+    }
+    oracle_held_busy_since = 0;
+    if ( fstat( fd, &fst ) != 0 )
+    {
+        close( fd );
+        oracle_spool_trouble( &oracle_held_logged,
+                              "the ask spool cannot be read", held );
+        return FALSE;
+    }
+
+    for ( i = 0; i < held && ok; i++ )
+        ok = oracle_write_all( fd, oracle_held[i], strlen( oracle_held[i] ) );
+
+    if ( !ok )
+    {
+        /* Take back what did land, so the next try is the only copy. */
+        if ( ftruncate( fd, fst.st_size ) != 0 )
+            bug( "Oracle: an ask spool write failed and could not be undone.", 0 );
+        close( fd );
+        oracle_spool_trouble( &oracle_held_logged,
+                              "the ask spool could not be written", held );
+        return FALSE;
+    }
+
+    close( fd );   /* releases the lock; the bytes are already the file's */
+
+    for ( i = 0; i < held; i++ )
+    {
+        free( oracle_held[i] );
+        oracle_held[i] = NULL;
+    }
+    oracle_held_count = 0;
+
+    if ( oracle_held_logged != 0 )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf),
+                  "Oracle: the ask spool took %d held record%s.",
+                  held, held == 1 ? "" : "s" );
+        log_string( buf );
+        oracle_held_logged = 0;
+    }
+    return TRUE;
+}
+
+/* Spool one record for the out-of-process poller: a question, or -- when it
+   begins with ORACLE_CONTROL -- a message from the game itself.  The record
+   is made now, from the asker as they stand, and written now if the spool is
+   free, or on a later pulse if not.  FALSE only when it cannot be kept at
+   all (ORACLE_HELD_MAX records already waiting). */
+static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
+{
+    static char record[6 * MAX_STRING_LENGTH];
+    char *kept;
+    size_t len;
+
+    if ( oracle_held_count >= ORACLE_HELD_MAX )
+    {
+        /* Try once to make room before saying no. */
+        oracle_spool_flush();
+        if ( oracle_held_count >= ORACLE_HELD_MAX )
+            return FALSE;
+    }
 
     /* A real question carries the asker's abilities and where they stand
        as two last fields, so "what am I missing" and "how do I get there
@@ -643,16 +802,32 @@ static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
         oracle_sanitize( clean, sizeof(clean), summary );
         oracle_state( ch, state, sizeof(state) );
         oracle_sanitize( state_clean, sizeof(state_clean), state );
-        fprintf( fp, "%ld\t%s\t%s\tABILITIES:%s\tSTATE:%s\n",
-                 (long) ( current_time > 0 ? current_time : time(NULL) ),
-                 ch->name, question, clean, state_clean );
+        snprintf( record, sizeof(record), "%ld\t%s\t%s\tABILITIES:%s\tSTATE:%s\n",
+                  (long) ( current_time > 0 ? current_time : time(NULL) ),
+                  ch->name, question, clean, state_clean );
     }
     else
-        fprintf( fp, "%ld\t%s\t%s\n",
-                 (long) ( current_time > 0 ? current_time : time(NULL) ),
-                 ch->name, question );
+        snprintf( record, sizeof(record), "%ld\t%s\t%s\n",
+                  (long) ( current_time > 0 ? current_time : time(NULL) ),
+                  ch->name, question );
 
-    fclose( fp );   /* closing releases the advisory lock */
+    /* The fields are bounded well inside the buffer; should that ever
+       change, a record cut short still ends its line. */
+    len = strlen( record );
+    if ( len == 0 || record[len - 1] != '\n' )
+    {
+        if ( len + 1 >= sizeof(record) )
+            len = sizeof(record) - 2;
+        record[len++] = '\n';
+        record[len] = '\0';
+    }
+
+    if ( ( kept = malloc( len + 1 ) ) == NULL )
+        return FALSE;
+    memcpy( kept, record, len + 1 );
+    oracle_held[oracle_held_count++] = kept;
+
+    oracle_spool_flush();
     return TRUE;
 }
 
@@ -753,6 +928,32 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
         return;
     }
 
+    /* The poller reads the asker's level, class, guild and worn gear from
+       their saved file, so the file is brought up to this moment first --
+       and only a save that landed lets the question go: one that failed
+       left the old file, and she would answer for gear they no longer wear
+       (review, 2026-11-12: the result was ignored).  A save in place but not
+       confirmed on the disk is the new file all the same.  Measured at two
+       to three milliseconds with 1,700 objects carried, so it stays.
+       "oracle-save" fails it for the tests. */
+    {
+        int status;
+
+        if ( recovery_fault( "oracle-save" ) )
+            status = DURABLE_FAILED;
+        else
+        {
+            save_char_obj( ch );
+            status = save_char_obj_status();
+        }
+        if ( status == DURABLE_FAILED )
+        {
+            act( "$n murmurs, 'The mists are closed to me just now.  Ask "
+                "again in a moment.'", mob, NULL, ch, TO_VICT );
+            return;
+        }
+    }
+
     if ( !oracle_spool_question( ch, question ) )
     {
         act( "$n murmurs, 'The mists are closed to me just now.'",
@@ -764,10 +965,6 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
     toc_strlcpy( oracle_last_question, question, sizeof(oracle_last_question) );
     oracle_journal( "Q", ch->name,
                     ch->in_room != NULL ? ch->in_room->vnum : 0, question );
-
-    /* Flush the character to disk so the out-of-process poller reads the gear
-       and level they have this moment, not whatever the last autosave caught. */
-    save_char_obj( ch );
 
     act( "$n gazes at you, then closes $s eyes, considering your question.",
         mob, NULL, ch, TO_VICT );
@@ -1167,18 +1364,32 @@ static void oracle_lookup_who( CHAR_DATA *asker, char *out, size_t size )
 }
 
 
-/* Drain the poller's live-lookup requests on the game pulse and answer them,
-   read-only. */
+/*
+ * The Oracle's work on every pulse: write any questions a busy spool held
+ * back, then drain the poller's live-lookup requests and answer them,
+ * read-only.
+ *
+ * A request leaves oracle.query only once its finding is in
+ * oracle.queryresult (review, 2026-11-12: the request file was emptied
+ * before the result file was even opened, so a result file that would not
+ * open or lock lost the batch).  Both locks are taken without waiting, the
+ * result file first; the findings are written with write(), and a write that
+ * fails part way is cut back to the size the file had, the requests kept,
+ * and the whole batch answered again on a later pulse -- so each is answered
+ * once.  The requests are emptied only after the findings are written, and
+ * if that fails the findings are taken back too.
+ */
 void oracle_process_queries( void )
 {
+    static time_t logged = 0;
     FILE *fp;
-    FILE *pending;
-    FILE *out;
+    int out;
     char buf[MAX_STRING_LENGTH];
     struct stat fst;
-#if defined(unix) || defined(__unix__) || defined(__APPLE__)
-    struct flock lock;
-#endif
+    off_t start;
+    bool ok = TRUE;
+
+    oracle_spool_flush();
 
     if ( stat( ORACLE_QUERY_FILE, &fst ) == -1 || fst.st_size == 0 )
         return;
@@ -1186,77 +1397,32 @@ void oracle_process_queries( void )
     fp = fopen( ORACLE_QUERY_FILE, "r+" );
     if ( fp == NULL )
         return;
-
-#if defined(unix) || defined(__unix__) || defined(__APPLE__)
-    memset( &lock, 0, sizeof(lock) );
-    lock.l_type = F_WRLCK;
-    lock.l_whence = SEEK_SET;
-    if ( fcntl( fileno(fp), F_SETLK, &lock ) == -1 )
+    if ( !oracle_try_lock( fileno(fp) ) )
     {
-        fclose( fp );
-        return;
-    }
-#endif
-
-    pending = tmpfile();
-    if ( pending == NULL )
-    {
-        fclose( fp );
+        fclose( fp );   /* the poller is writing; next pulse */
         return;
     }
 
-    while ( fgets( buf, sizeof(buf), fp ) != NULL )
+    out = open( ORACLE_QRESULT_FILE, O_WRONLY | O_APPEND | O_CREAT, 0666 );
+    if ( out < 0 )
     {
-        if ( fputs( buf, pending ) == EOF )
-            break;
-    }
-    if ( ferror(fp) || ferror(pending) || fflush(pending) != 0 )
-    {
-        fclose( pending );
         fclose( fp );
+        oracle_spool_trouble( &logged, "the lookup results cannot be opened",
+                              -1 );
         return;
     }
-
-#if defined(unix) || defined(__unix__) || defined(__APPLE__)
-    if ( ftruncate( fileno(fp), 0 ) != 0 )
+    if ( !oracle_try_lock( out ) || fstat( out, &fst ) != 0 )
     {
-        fclose( pending );
+        close( out );
         fclose( fp );
-        return;
+        return;         /* the poller is clearing them; next pulse */
     }
-    fclose( fp );
-#else
-    {
-        FILE *clear = freopen( ORACLE_QUERY_FILE, "w", fp );
-        if ( clear == NULL )
-        {
-            fclose( pending );
-            return;
-        }
-        fclose( clear );
-    }
-#endif
+    start = fst.st_size;
 
-    rewind( pending );
-
-    out = fopen( ORACLE_QRESULT_FILE, "a" );
-#if defined(unix) || defined(__unix__) || defined(__APPLE__)
-    if ( out != NULL )
-    {
-        memset( &lock, 0, sizeof(lock) );
-        lock.l_type = F_WRLCK;
-        lock.l_whence = SEEK_SET;
-        if ( fcntl( fileno(out), F_SETLKW, &lock ) == -1 )
-        {
-            fclose( out );
-            out = NULL;
-        }
-    }
-#endif
-
-    while ( fgets( buf, sizeof(buf), pending ) != NULL )
+    while ( ok && fgets( buf, sizeof(buf), fp ) != NULL )
     {
         char ans[MAX_STRING_LENGTH];
+        char line[MAX_STRING_LENGTH + 128];
         char *reqid;
         char *kind;
         char *asker_name;
@@ -1293,13 +1459,28 @@ void oracle_process_queries( void )
         else
             continue;
 
-        if ( out != NULL && ans[0] != '\0' )
-            fprintf( out, "%s\t%s\n", reqid, ans );
+        if ( ans[0] == '\0' )
+            continue;
+        snprintf( line, sizeof(line), "%s\t%s\n", reqid, ans );
+        ok = oracle_write_all( out, line, strlen( line ) );
     }
+    if ( ferror(fp) )
+        ok = FALSE;
 
-    if ( out != NULL )
-        fclose( out );
-    fclose( pending );
+    if ( ok && ftruncate( fileno(fp), 0 ) != 0 )
+        ok = FALSE;
+
+    if ( !ok )
+    {
+        /* Nothing of this batch stays answered: the requests are still in
+           oracle.query, and a later pulse answers all of them again. */
+        if ( ftruncate( out, start ) != 0 )
+            bug( "Oracle: lookup results could not be taken back.", 0 );
+        oracle_spool_trouble( &logged, "the lookup results could not be "
+                              "written", -1 );
+    }
+    close( out );
+    fclose( fp );
 }
 
 
