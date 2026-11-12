@@ -1,888 +1,256 @@
 #HELPS
 
-
-
 -1 MUDSCHOOL ADEPT "SCHOOL TRAINER" "RACIAL TRAINER" MASTER~
+Mud School is up from the Temple (where RECALL lands).  From its
+entrance go north, then:
 
+  west   Eclipse's Training Room: TRAIN your stats, any class or level
+  east   Soulcrusher's Guild Room: the adept PRACTICES the basic skills
+         and spells with anyone
 
+When you need more than the adept knows, see your class guildmaster or
+your guild hall (GUILDS).  Trainers in Dresden open to everybody:
 
-The MudSchool Trainer is located, from recall, up - north - west.  He 
+  Rakar the Weaponsmaster   weapon skills; sells archery, shove, despair
+  Jazair the merchant       sells shove; practises bash (dwarves)
+  Fingers the shopkeeper    practises hide and sneak (hobbits, elves)
+  Seraloi the lost          sells ride
+  Salir, Astral Plane       practises psionic powers, for those who hold
+                            them (WALKTO SALIR)
 
-will help you improve your abilities regardless of class or level.  
+Anybody may read every one of these pages; whether a trainer will teach
+you depends on your class, guild and powers.
 
-
-
-The Newbie Practicer is located, from recall, up - north - east, and
-
-will help you practice your basic skills.  He is available to all, regardless
-
-of class or level. If you need to learn more than he knows, you will need to
-
-find the appropriate trainer for your class or seek out the many guildmasters 
-
-located throughout the game and enjoy exploring all the possibilities.  
-
-
-
-Racial skills for elves, hobbits and dwarves are taught by Jazair the Nomad
-
-Merchant and Fingers the hobbit shopkeeper.  Jazair the Nomad, Rakar the
-
-Weaponsmaster and Seraloi the Lost also teach skills of potential interest 
-
-to all adventurers.  Some fortunate few may acquire the mental discipline
-
-to be accepted as disciples of Salir.
-
-
-
-You will not be able to read the help on Salir until you are of sufficiently
-
-high level for him to consider you as a potential student.
-
-See also: TRAIN, PRACTICE, GUILDS, JAZAIR, RAKAR, SERALOI, SALIR, BEGINNERS,
-GAIN
-
+See also: TRAIN, PRACTICE, GAINLIST, GUILDS, SALIR, BEGINNERS
 ~
-
-
 
 -1 JAZAIR~
+Jazair the nomad merchant keeps a small trading post in Dresden (WALKTO
+JAZAIR).  He sells SHOVE to anybody and practises BASH, which dwarves are
+born holding.
 
-The Nomad keeps a small trading post in town. He is quick to go berserk 
-
-when he knows a foe is close to him.  He is also skilled at shoving 
-
-potential shoplifters out of his store.  Maybe you can learn a few of his
-
-tricks if you approach him nicely.
-
-See also: SHOVE, ARCHERY, SKILLS
-
+See also: SHOVE, BASH, MUDSCHOOL
 ~
-
-
 
 -1 FINGERS~
+Fingers is a hobbit shopkeeper in Dresden (WALKTO FINGERS) who hides and
+sneaks better than anyone.  He practises HIDE and SNEAK -- the hobbits'
+and elves' birthright -- with anybody who holds them.
 
-Fingers is a hobbit shopkeeper in Dresden and he hides and 
-
-sneaks better than anyone!  If you can find him, ask him his 
-
-secret.  If he's in a good mood, he just may share it with you.
-
-See also: RECALL, SKILLS
-
+See also: HIDE, SNEAK, MUDSCHOOL
 ~
-
-
 
 0 SALIR "PSIONIST TRAINER"~
+Salir the Monk lives in a temple past the maze of the Astral Plane
+(WALKTO SALIR).  He practises every psionic power, but only with those
+who already hold it; he sells none.  Powers come from remorting or from
+the gods (see PSIONICS), and each can be practised only from its own
+level.
 
-Travelling the astral plane is a challenge for everyone.  But 
-
-with determination and a keen eye for observation you can make 
-
-it past the maze and into the temple.  There you will find a 
-
-wise old man who will help you train your mind in all the skills 
-
-of psionics, but only if you have been fortunate enough to have been
-
-granted the mental ability to learn these challenging arts that are a
-
-rare gift from the gods.
-
-See also: PSIONICS, GAIN
-
+See also: PSIONICS, PRACTICE, REMORT
 ~
-
-
 
 -1 "TEMPLE OF BREAS" BREAS~
-
-The Cleric's guild is located in the Temple of Breas on Temple Boulevard 
-
-in the western part of Dresden.  Here those who dedicate themselves to 
-
-healing and protection can go to receive training and to learn and
-
-practice new skills.
-
-
-
-The guildmasters you will find there are:
-
-
-
-Dominic Master of Ceremonies (C/C) - Well versed in attack, healing and 
-
-protective magic, Dominic restricts his students to those who are full 
-
-clerics.
-
-
-
-Eriak the Crypt Thing (C/C) - This creature lives in the cellars beneath the 
-
-temple.  It is rumored to be an expert in harmful and maladictive magic,
-
-and some people are sure it has been seen transporting itself around the
-
-world.  If it is approached peacefully by full clerics, it may be willing
-
-to share some of its knowledge.
-
-
-
-Fredar Hero of Breas (?/C)- This mighty warrior has dedicated himself to 
-
-serving the Temple of Breas, guarding it from enemies.  He has knowledge of 
-
-skills and spells that are useful to attack enemies.  If you are one of 
-
-another class who has chosen to follow the way of the cleric and he believes 
-
-you to be sufficiently pious and qualified, he will teach you some of these.
-
-He also offers instruction in transportation spells.
-
-
-
-Grill the Missionary of Breas (?/C) - This missionary has traveled throughout
-
-the land seeking converts and accepts converts to the clerics' path
-
-as his students.  He welcomes the faithful to sit at his feet and learn
-
-of benedictions, maladictions, and healing magic. 
-
-
-
-Lunk the Gardener (?/C) - This quiet man wanders the gardens of the Temple 
-
-of Breas, caring for his plants.  This  has made him an expert in the ways
-
-of the elements and in protective magic.  Weeds and garden pests fear his
-
-knowledge of harmful spells, as well.  
-
-
-
-Qualo Healer (?/C) - The healer of Breas can be found in the temple proper.  
-
-She has a wide knowledge of medical lore and is willing to teach it to those 
-
-in need of such arts.  She is also experienced in the art of dodging 
-
-enemies.
-
-
-
-Silius the Magician Convert (?/C) - This mage has become a follower of Breas 
-
-and now spends his days teaching the arts of magic to those who would like 
-
-to learn of them.  He can show the untutored teach them spells to detect the 
-
-unknown and invisible in their environment.  He also knows how to 
-
-manipulate the weather.  Some say that he does not just find the excellent 
-
-food and drink that he serves his students but can actually create them 
-
-himself.  He also offers instruction in the use of magical items, such as
-
-wands  and staves, and in ways of increasing one's concentration.  
-
-
-
-Tempora the High Priestess (C/C)  - The High Priestess leads the Temple of 
-
-Breas.  Her purity is such that she will accept only full clerics as her
-
-followers.  To aid them, she has a wide knowledge of blessings and
-
-benedictions.  Recognizing that the religious need defense, she is also
-
-skilled at teaching elemental magics.
-
-See also: GUILDS, GAIN, BENEDICTIONS
-
+The clerics' guild hall, on Temple Boulevard in western Dresden (WALKTO
+BREAS).  Only members may enter.
+
+  Dominic    full clerics: attack, healing, cleric protective
+  Eriak      full clerics: harmful, cleric maladictions, cleric
+             transportation (in the cellars)
+  Tempora    full clerics: benedictions, cleric elemental, concoct
+  Fredar     other classes: guild attack, guild transportation, second
+             attack, shield block
+  Grill      other classes: guild healing, guild benedictions, guild
+             maladictions
+  Lunk       other classes: guild elemental, guild harmful, guild
+             protective
+  Silius     any member: detection, creation, weather, meditation, wands,
+             staves
+  Qualo      any member: curative, dodge; practises resurrection
+
+GAINLIST is always the current word on what you can buy and from whom.
+
+See also: GUILDS, GAINLIST, SPELLGROUP, CLERICS
 ~
-
-
 
 -1 CLERICS DAVID~
+Clerics are healers and protectors first, with weaker attack spells than
+mages.  They start with maces, staves, scrolls and basic detection,
+curing, cause, blessing and protective spells; flamestrike grows with
+their level.
 
+Anybody who joins the clerics' guild gets a similar free set, with
+RESURRECTION.  Clerics in another guild learn their class's spells from
+David, the missionary of Devota, who wanders Dresden (WALKTO DAVID).
+Full clerics train at the TEMPLE OF BREAS.
 
-
-Clerics are the most defensively orientated of all the classes.  Most of their
-
-spells focus on healing or defending the faithful, with their few combat spells
-
-being far less powerful than those of mages. However, clerics are the best
-
-class by far at healing magics, and they possess an impressive area of
-
-protective magics, as well as fair combat prowess.
-
-
-
-The default skills for clerics (C/?) include staves, scrolls and an 
-
-assortment of elementary detection, curative, harmful, protective, attack 
-
-and benedictive spells, as well as weapon skills.  Those of any class who 
-
-join the cleric guild receive scrolls, staves and a slightly different
-assortment of spells.
-
-
-
-Clerics who join the cleric guild study and learn new skills at the Temple
-
-of Breas.  For those clerics who choose to join other guilds, David 
-
-the Missionary of Devota wanders Dresden.  He can teach a number of useful 
-
-cleric spells to aid them on their adventures.
-
-See also: GUILDS, GAIN, SPELLS
-
+See also: GUILDS, TEMPLE OF BREAS, SPELLGROUP
 ~
-
-
 
 -1 "CITADEL OF WAR" CITADEL~
+The warriors' guild hall, off Battle Road in eastern Dresden (WALKTO
+CITADEL).  Only members may enter.
 
-Dedicated to the arts of inflicting excessive bodily harm upon enemies, 
+  Vladamir   full warriors: destruction, third attack, door bash, smite
+  Geko       any member: bash, berserk, dirt kicking, dodge, shield block
+  Dolonar    any member: disarm, dodge, enhanced damage, rescue, parry
+  Breark     any member: hand to hand, kick, second attack, fast
+             healing, danger sense
 
-members of the Warrior's guild disdain the arts of magic but are 
+Vladamir, Dolonar and Breark also practise HEROIC GRIP.  GAINLIST is
+always the current word on what you can buy and from whom.
 
-quite willing to use it to aid them in inflicting that excessive bodily 
-
-harm.  They train and practice in the Citadel of War, located off Battle 
-
-Road in east Dresden.
-
-
-
-The guildmasters found there are:
-
-
-
-Breark the Troll Warrior (?/W) - This Troll doesn't say much and has no 
-
-knowledge of the use of weaponry. But with his incredible healing rate and 
-
-his powerful knowledge of hand-to-hand (and foot-to-head) fighting, he 
-
-doesn't really need any.  He is fast enough to get in more than one attack
-
-and has often benefited from his ability to sense what dangers may be
-
-lurking nearby.
-
-
-
-Dolonar Master Armorer (?/W)  - The armorer relies on strength, stamina and 
-
-defensive skills to allow him to ward off the blows of his enemies and then 
-
-smash them to the ground.  Being able to rid his enemies of those weapons
-
-altogether has also proved useful.
-
-
-
-Geko the Gladiator (?/W) - Trained to bash his enemies to the ground, 
-
-while evading their blows, the gladiator can be a useful source of 
-
-training.  He knows tricks to blind his opponents and his rage can be 
-
-terrifying.
-
-
-
-Vladamir the Veteran of the Dragon Wars (W/W) - During the dragon wars, 
-
-Vladamir learned that the more blows you can get in against a tough enemy, 
-
-the better your chance of survival is.  He also became skilled in destroying
-
-their weaponry ... at least until a dragon breathed on his arm, leaving him
-
-unable to fight, but willing to take on advanced students of the arts of
-
-war.  Because he has no patience with novices, only full warriors may
-
-become his students.
-
-See also: GUILDS, GAIN, SKILLS
-
+See also: GUILDS, GAINLIST, WARRIOR
 ~
-
-
 
 -1 "RAKAR THE WEAPONSMASTER" RAKAR~
+Rakar the Weaponsmaster wanders Dresden (WALKTO RAKAR).  He practises
+every weapon skill with anybody, and sells ARCHERY, SHOVE and DESPAIR to
+any class.
 
-
-
-Rakar the Weaponsmaster is skilled at almost any type of weapon. He will 
-
-train any adventurer who asks in the weapons they already know and may 
-
-even help them gain a knowledge of weaponry and fighting techniques
-
-they do not yet know.  His motto can be summed up as "Divide and Conquer...
-
-and Conquer and Conquer and Conquer."
-
-See also: ARCHERY, SHOVE, SKILLS
-
+See also: WEAPON, ARCHERY, SHOVE, DESPAIR
 ~
-
-
 
 -1 WARRIOR KALAK BLACKSMITH~
+Warriors are the best fighters and use no magic of their own.  They
+start with swords, shield block, parry, kick, rescue and disarm, and
+their weapon blows grow every level (WEAPON MASTERY), most in the
+warriors' guild.
 
-Warriors live for combat and the thrill of battle. They are the best fighters
+Anybody who joins the warriors' guild gets SECOND ATTACK free.  Warriors
+in another guild learn their class's skills from Kalak, the dwarven
+blacksmith off Market Square (WALKTO KALAK).  Full warriors train at the
+CITADEL OF WAR.
 
-of all the classes, but lack the subtle skills of thieves and the magical
-
-talents of mages and priests.  Warriors are best for those who don't mind
-
-taking the direct approach, even when another method might be called for.
-
-
-
-A warrior's weapon blows grow stronger with every level (weapon mastery),
-
-most of all for a warrior in the warriors' guild.
-
-
-
-The default skill selection for warriors consists of shield block, parry,
-
-kick, rescue and disarm, as well as weapon skills.  Those of any class who 
-
-join the warriors' guild receive instruction in second attack.
-
-
-
-Warriors who join the warriors' guild practice in the Citadel of War.
-
-For those warriors who choose not to join the warrior's guild, Kalak the 
-
-Master Smith is a former warrior who now runs a shop off Market Square.  He 
-
-is more than willing to share his knowledge with those of any guild who 
-
-want it.  He can teach many of the basic fighting skills that will help an 
-
-adventurer survive.
-
-See also: GUILDS, GAIN, SKILLS
-
+See also: GUILDS, CITADEL OF WAR, WEAPON MASTERY
 ~
-
-
 
 -1 "HOUSE OF THIEVES" HOUSE~
+The thieves' guild hall, off River Road in Dresden (WALKTO THIEVES).
+Only members may enter.
 
-The House of Thieves is located off of river road in Dresden and
+  Mizry         full thieves: fatality, stealth, dual wield, track
+  Ni Hi         any member: backstab, dirt kicking, second attack, trip
+  Quickfingers  any member: steal, peek, search, aggrostab
+  Picky         any member: pick lock
+  Stout         any member: parry, lore
+  Suma          any member: haggle, sleight of hand, dodge
+  Warder        any member: hide, sneak, listen at door
 
-is the place where those of the thieves' guild go to study their
+GAINLIST is always the current word on what you can buy and from whom.
 
-arts and gain new skills.
-
-
-
-The guildmasters there are:
-
-
-
-Mizry the Assassin (T/T) - Like most assassins, Mizry is not interested in a 
-
-fair fight, just in winning.  He is so skilled at backstab that he sometimes
-
-kills with a single fatal blow.  Or so he claims - he is so stealthy, 
-
-nobody has ever seen him.  He is ambidextrous and is especially valued as
-
-an assassin for his ability to track down his enemies.   He is too suspicious 
-
-of outsiders to take on any but full thieves as his students.
-
-
-
-Ni Hi the Ninja Master (?/T) - The Ninja Master will teach you ways to attack 
-
-more than once or to send him flying from your trip! Rumor has it he even 
-
-knows how to kick dirt in his opponent's face.  He loves to initiate
-
-those without a thief background into the basic skills of sneaking up on
-
-their enemies and stabbing them in the back.
-
-
-
-Quickfingers The Pickpocket (?/T) - The thief's thief, Quickfingers can see 
-
-what treasures you carry, and can make them his without you even knowing he's 
-
-interested.  Listen well, but check your inventory when you leave!  
-
-His recent studies have made him even harder than ever to trap.  Even 
-
-aggressive monsters cannot get the better of him.
-
-
-
-Picky the Locksmith (?/T) - The old Locksmith can unlock anything.  You will 
-
-be able to, also, if you want to find your way out of his room! 
-
-
-
-Stout the Fence (?/T) - The fence sells basic supplies to those of the guild.
-
-He is adept at parrying the attacks of others and is learned in the lore
-
-of the kingdom.
-
-
-
-Suma the Master Chef (?/T) - The wonderful aromas wafting in from the Thieves' 
-
-Guild kitchen tempt you to go visit.  How does she afford all this fine 
-
-food?  She must be very good at haggling for a good price in the market.
-
-Or maybe she acquires it by sleight of hand?  She must also dodge the 
-
-blows angry shopkeepers who follow her from their stores.
-
-
-
-Warder the Night Master (?/T) - The Night Master is skilled in being 
-
-undetected as he passes through the night.  His acute senses also enable 
-
-him to detect what is on the other side of closed doors.  
-
-See also: GUILDS, GAIN, STEALTH
-
+See also: GUILDS, GAINLIST, THIEF
 ~
-
-
 
 -1 THIEF TIA~
+Thieves work by stealth: sneaking, hiding, picking locks and striking
+from behind.  They start with daggers, sneak, pick lock, steal, search,
+backstab, hide and dodge, and their weapon blows grow every level
+(WEAPON MASTERY), most in the thieves' guild.
 
-Thieves are specialists at roguery and covert actions, being capable of 
+Anybody who joins the thieves' guild gets TRIP free.  Thieves in another
+guild learn their class's skills from Tia, the ninja master, who hides
+near River Road (WALKTO TIA).  Full thieves train at the HOUSE OF THIEVES.
 
-entering areas undetected where more powerful adventurers would fear to 
-
-tread.  They are not as powerful with weapons as warriors, but have some
-
-specialized knowledge of ways to inflict considerable damage.
-
-
-
-A thief's weapon blows grow stronger with every level (weapon mastery),
-
-most of all for a thief in the thieves' guild; a backstab has its own.
-
-
-
-Thieves start out with skill in sneak, pick lock, steal, search, backstab
-
-and hide, as well as weapon skills.  Those of any class who join the 
-
-thieves' guild receive free training in trip.
-
-
-
-Those thieves who join the thieves' guild train and practice in the House
-
-of Thieves.  Tia the Ninja Master understands that many persons born to a 
-
-thief's life have chosen to join other guilds.  He wanders the town seeking 
-
-out those with natural ability and teaching them the thieving skills that
-
-their other guildmasters may not understand.  Tia is not that easy to
-
-find since he is often hiding.  Look near River Road, as that is his
-
-favorite hangout.
-
-See also: GUILDS, GAIN, STEALTH
-
+See also: GUILDS, HOUSE OF THIEVES, BACKSTAB
 ~
-
-
 
 -1 "UNIVERSITY OF MAGIC" UNIVERSITY~
-
-The University of Magic is located in the northwest area of Dresden and
-
-is the place where those of the mages' guild go to study their
-
-arts and gain new skills.
-
-
-
-Among the guildmasters to be found there are:
-
-
-
-Chamis the Master Charmer (?/M) - This good-natured Mage has taken under
-
-his wing those of other classes who have joined the mages' guild.  He 
-
-instructs them in basic self-protection and how to get about in the world.
-
-
-
-Creole the Gnome Magician (?/M) - This wandering gnome beguiles all who
-
-encounter him.  Seek him out for assistance in learning how to enhance
-
-your natural abilities.
-
-
-
-Danko the Mystic Knight (M/M) - This ethereal knight doesn't need any
-
-armor - his spells are just as good!  He can also alter ordinary armor
-
-and weaponry to improve its utility.  But he often prefers to use his
-
-beguiling personality to avoid fighting altogether.
-
-
-
-Dawn the Wand Maker (?/?) - The gal in the Wand Shop in the guild is very 
-
-secretive and quiet.  But she knows all about staves and scrolls and wands, 
-
-and may help you to practice your skills with them too.
-
-
-
-Diemos the Librarian (?/M) - The Librarian is a peaceful mage, dedicated to 
-
-learning and lore.  He is skilled in locating and detecting things in our 
-
-world and quietly meditates upstairs in the stacks, waiting for you to seek 
-
-him out.  He prefers to evade the attacks of enemies, instead of fighting,
-
-though he is skilled with magic objects like staves and wands.  His powers
-
-of concentration enable him to influence the world by changing the weather.
-
-He recently acquired a tome about the distilling of potions and is
-
-willing to show that knowledge to talented students.
-
-
-
-Drixt the Dragon (M/M) - Locked in the dungeon is an old dragon.  He used 
-
-to be a gallant war dragon in the old wars.  Now, in retirement, if you 
-
-ask nicely, he may whisper the secrets of powerful draconian magic to you.
-
-He is also skillful at manipulating the elements and his time in prison
-
-has been spent experminting with the production of various inks in hopes
-
-of producing a scroll of jailbreak.
-
-
-
-Flame the Fire Mage (M/M) - The Fire Mage is an expert in combat.  Enemies 
-
-quake at the thought of his powerful combat spells.  He also offers 
-
-instruction in slower, subtler ways to cause evil to befall enemies, 
-
-including poisoning, blinding and weakening them.
-
-
-
-Kilar the Mad Magician (?/M) - The Mad Magician hides in his basement 
-
-laboratory, devising all sorts of maladictive spells.  Be careful not to 
-
-anger him or you may end up drained of all energy, weakened and blinded!
-
-He has, however, found that his students often are not interested in such
-
-subtleties and will instruct them in combative and elemental magic aimed
-
-at killing more quickly.
-
-
-
-Tranis the Master Summoner (M/M) - The Summoner sits in his upstairs office 
-
-practicing and teaching all the arts of transportation.  All of that
-
-flitting around the world can be exhausting, so he offers his student
-
-lessons in the art of enhancing their abilities so they may better withstand
-
-the rigors of adventure.
-
-See also: GUILDS, GAIN, SPELLS
-
+The mages' guild hall, in north-west Dresden (WALKTO UNIVERSITY).  Only
+members may enter.
+
+  Danko     full mages: mage protective, enchantment, beguiling
+  Drixt     full mages: draconian, mage elemental, scribe (dungeon)
+  Flame     full mages: combat, mage maladictions, concoct, second attack
+  Tranis    full mages: mage transportation, enhancement
+  Chamis    other classes: guild protective, guild transportation
+  Creole    other classes: guild beguiling, guild enhancement
+  Kilar     other classes: guild combat, guild elemental, guild
+            maladictions
+  Diemos    any member: detection, weather, meditation, staves, wands,
+            dodge, second attack
+  Dawn      any guild: arcane studies, scribe; practises wands, staves
+            and scrolls
+
+GAINLIST is always the current word on what you can buy and from whom.
+
+See also: GUILDS, GAINLIST, SPELLGROUP, MAGE
 ~
-
-
 
 -1 MAGE "MAGIC USER" GIOLI~
+Mages have the strongest attack magic and the weakest bodies.  They
+start with daggers, wands, scrolls, magic missile and other basic
+attack, protective and detection spells, and fly; lightning bolt grows
+with their level.  Only full mages buy the draconian and enchantment
+groups.
 
-Mages specialize in the casting of spells, offensive ones in particular.
+Anybody who joins the mages' guild gets a similar free set of spells,
+with wands and scrolls.  Mages in another guild learn their class's
+spells from Gioli, the gnome magician, who wanders Dresden (WALKTO
+GIOLI).  Full mages train at the UNIVERSITY OF MAGIC.
 
-Mages have the highest-powered magic of any class, and are the only classes
-
-able to use the draconian and enchanting spell groups.  They are also very
-
-skilled at the use of magical items, though their combat skills are the
-
-weakest of any class.
-
-
-
-Mages begin with skill in wands and scrolls, as well as weapons.  They also
-
-have some of the more basic combat, protective, enhancement and detection
-
-skills and the ability to fly.  Those of any class who join the mages'
-
-guild receive instruction in wands and scrolls and a slightly different
-
-assortment of magic spells.
-
-
-
-Mages who join the mages' guild matriculate at the University of 
-
-Magic.  Gioli wanders around town seeking out natural born mages, who
-
-have chosen other guilds.  He will help you learn those magical 
-
-skills that your guildmasters may not know.
-
-See also: GUILDS, GAIN, SPELLS
-
+See also: GUILDS, UNIVERSITY OF MAGIC, SPELLGROUP
 ~
-
-
 
 -1 SERALOI "LOST MAGE"~
+Seraloi the lost has come to Dresden looking for his long-lost brother,
+Gioli.  While he searches he sells RIDE to anybody (WALKTO SERALOI).
 
-Seraloi the Lost
-
-
-
-Seraloi has come to Dresden searching for his long-lost brother, Gioli.
-
-While he wanders the town, he fills in time by giving riding lessons.
-
-See also: RIDE, SKILLS
-
+See also: RIDE, MUDSCHOOL
 ~
-
-
 
 -1 "PALMS OF THE CREATOR" PALMS~
+The monks' guild hall, reached by a path south of Temple Road near
+Dresden's west gate (WALKTO PALM).  Only monks may enter.
 
-Monks study and train in the Palms of the Creator, which may be entered from
+  The Silent Master       nerve damage, steel fist, stunning blow, fast
+                          healing, hand to hand, kick, dodge, parry, dirt
+                          kicking, enhanced damage
+  The Master of Movement  blinding fists, crane dance, fists of fury,
+                          iron skin, levitate, herbal brewing, disarm,
+                          meditation, second attack, bash
 
-a path south of Temple Road, near the west gate of Dresden.  Among the 
+GAINLIST is always the current word on what you can buy and from whom.
 
-masters to be found there are:
-
-
-
-The Silent Master - When you are as strong and skilled at hand to hand (and
-
-foot to hand) combat as this monk, you don't need to say much!  He teaches
-
-largely by demonstration, showing his students how to evade and parry
-
-attacks, enhance their ability to fight and even alter the composition of
-
-their fists.  Some of his students resort to kicking dirt in the faces of
-
-their enemies, but he prefers to teach them the martial arts methods of
-
-stunning and pinching enemies in just the right place.
-
-
-
-The Master of Movement - This strong and fluid monk attracts students with
-
-the delicious teas he serves them.  He is skilled in a wide assortment 
-
-of martial arts moves, particularly those relying on blinding speed, 
-
-furious energy and birdlike grace.  He is also an expert at meditation and
-
-can concentrate so hard that he is impervious to enemy attacks.  To round
-
-out his fighting skills, he has learned more traditional warrior arts that
-
-allow him to attack twice as often as his foes, free them of their puny
-
-weapons and beat them to the ground.
-
-See also: GUILDS, GAIN, SKILLS
-
+See also: MONK, GUILDS, GAINLIST
 ~
-
-
 
 -1 MONK~
+Monks fight with their bare hands and a trained mind.  They start with
+hand to hand, dodge, meditation, kick, trip and nerve damage, and learn
+their martial arts at the PALMS OF THE CREATOR.  Monks must be human or
+dwarf, belong to their own guild, and cannot join another; nobody else
+may join theirs.
 
-Monks wander the world, seeking enlightenment.  It's a hard life, requiring
-
-massive concentration and superb fighting skills to survive.  Martial
-
-arts talent helps - and the guildmasters at the Palms of the Creator are
-
-willing to instruct the few, talented adventurers who wish to pursue this
-
-path.
-
-
-
-The starting skills for monks are hand to hand, dodge, meditation, kick, 
-
-trip and nerve damage.  Monks may not multiclass and members of other 
-
-classes may not join the monks' guild.
-
-See also: GUILDS, GAIN, PSIONICS
-
+See also: PALMS OF THE CREATOR, GUILDS, NERVE DAMAGE
 ~
-
-
 
 -1 "MORGUE OF DRESDEN" MORGUE~
+The necromancers' guild hall, just inside Dresden's southern wall (WALKTO
+MORGUE).  Only necromancers may enter.
 
-Located just inside the southern walls of Dresden, the long abandoned 
+  The Necro Guild Master    necromancy, necro maladictions (beware the
+                            sacrificial pit)
+  The Soul Trapper          life & undeath, necro protective, wands
+  The Undead Spirit         necro transportation, scrolls, scribe
+  Marilith                  necro elemental, necro enhancement, concoct
+  The Necromantic Warrior   dodge, meditation, staves
 
-morgue has been taken over for use by necromancers as a place of training
+GAINLIST is always the current word on what you can buy and from whom.
 
-and practice.
-
-
-
-The trainers there are:
-
-
-
-Soul Trapper - Among the greatest soul thieves in creation, he is skilled
-
-at the art of turning the undead to his service.  He also instructs 
-
-his students in self-protection and the use of magic wands.
-
-
-
-Necro Guild Master - The foremost authority on the art of necromancy
-
-accepts only the most talented students in the black arts.  Seek him out
-
-in his chambers but be careful not to fall into the sacrificial pit.
-
-
-
-Necromantic Warrior - This powerful warrior is the Right Arm of the Master
-
-... literally.  The one-armed master cannot dodge or use staves anymore,
-
-but this knight remains skilled in those arts and offers instruction to
-
-worthy students.  He is also surprisingly skilled at meditation.  Must be
-
-something like when your foot falls asleep?
-
-
-
-Undead Spirit - This spirit is being punished for his offenses against the
-
-master by being forced to wander between the worlds of the living and the
-
-world of the dead.  He spends as much time as he can, though, in his tomb,
-
-reading scrolls in hopes of finding a magical solution to his punishment.
-
-
-
-Marilith - The master's concubine  is part women, part serpent.  Naturally
-
-this makes her a fearsome opponent, a true expert at elemental magic.
-
-She can also instruct the ardent student in means of enhancing abilities
-
-and is said to mix a pretty mean potion for the master's before dinner
-
-pleasure.
-
-See also: GUILDS, GAIN, LIFE-UNDEATH
-
+See also: NECROMANCER, GUILDS, LIFE-UNDEATH
 ~
-
-
 
 -1 NECROMANCER~
+Necromancers work the black arts: undead servants, curses and the
+energies of the dead.  They start with daggers, wands, scrolls and the
+NECROMANCY group, and train at the MORGUE OF DRESDEN.  Necromancers must
+be human or elf, belong to their own guild, and cannot join another;
+nobody else may join theirs.
 
-
-
-Necromancers are specialized magicians, with an emphasis on the black 
-
-arts and spells that manipulate the dead, turning spirits to their will.
-
-There's lots of raw material in the abandoned Morgue of Dresden and 
-
-that's where the necro guildmasters offer instruction in magical skills 
-
-and spells. 
-
-
-
-Necromancers start out with skills in wands and scrolls and the 
-
-necromancy spellgroup, which includes an assortment of magic spells that
-
-can protect them and that can manipulate the dead to assist them in their
-
-fights.  Necromancers may not multiclass and members of other classes
-
-may not join the necromancers' guild.
-
-See also: GUILDS, GAIN, LIFE-UNDEATH
-
+See also: MORGUE OF DRESDEN, LIFE-UNDEATH, CREATE SKELETON
 ~
-
-
-
-
 
 0 $~
 
-
-
 #$
-
-
-

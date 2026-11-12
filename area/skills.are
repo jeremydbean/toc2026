@@ -1,23 +1,22 @@
 #HELPS
 
 0 PSIONICS~
-Psionics are mental powers, given by remorting and now and then by the
-immortals.  They come in four disciplines:
+Psionics are mental powers.  Each is its own command, practised with
+Salir in the Astral Plane (WALKTO SALIR); nobody sells them.
 
   Assault   ego whip, torment, nightmare, mindblast
   Astral    astral walk, shift, project, telekinesis
   Defense   mindbar, psionic armor, psychic shield, transfusion
   Control   clairvoyance, confuse, mind leech, enervate, pyrotechnics
 
-The 2nd remort gives one power from each discipline, chosen at random, the
-3rd a second from each and the 4th a third: 4, then 8, then 12.  They stack.
-The 5th and final remort gives all 17 psionic skills.  A remort wipes your
-skills, but the powers you were given come back each life at 1%, and a
-remorted character holding fewer than their due is topped up at login.  A
-power the immortals grant arrives with the next level you gain.
+How you get them:
+  - 2nd remort: one power from each discipline; 3rd: two each; 4th:
+    three each; the 5th and final remort: all 17 psionic skills.
+    Powers stack and return after each remort.
+  - An immortal may grant powers, at once or with a later level.
 
-Each power opens at its own level, and below it you hold the power but can
-neither use nor train it:
+A new or returned power starts at 1%.  Each opens at its own level and
+below it can be neither used nor practised:
 
   17 psionic armor            21 confuse, enervate, nightmare, telekinesis
   18 clairvoyance, torment    22 mindbar, mind leech
@@ -25,43 +24,31 @@ neither use nor train it:
      psychic shield           25 astral walk, shift
   20 pyrotechnics             28 transfusion
 
-Every power starts at 1% and is practised with Salir in the Astral Plane
-(WALKTO SALIR); he sells none of them.  Each one is its own command, and
-a missed roll costs a little mana and no lag (pyrotechnics alone lags on a
-miss).  Two take a short command word: ASTRAL <target> for astral walk,
-EGO <target> for ego whip.
+Type a power by its whole name or its short word: ASTRAL WALK or ASTRAL,
+EGO WHIP or EGO, PSIONIC ARMOR or PSIONIC, MIND LEECH or MINDLEECH.  A
+missed roll costs a little mana and no lag.
 
 See also: REMORT, SALIR, PRACTICE
 ~
 
 0 'ASTRAL WALK' ASTRAL~
-Syntax: astral <character>
+Syntax: astral walk <character>
+        astral <character>
 
 Carries you, and your pet if it stands with you, to another character
-anywhere in the world.  Type ASTRAL, not ASTRAL WALK: the word after it is
-the target, and ASTRAL WALK BOB looks for somebody called "walk".  2.BOB
-picks the second Bob you can see.
+anywhere in the world.  2.BOB picks the second Bob you can see.
 
-The target must be somebody you can see, and never an immortal or a player
-who has set NOSUMMON.  Their room must be one you may enter and travel
-magic may reach: not no-recall, safe, private, solitary, jail, death trap,
-gods-only, no-teleport, or a newbie room once you are past level 10; not
-another class's guild hall or a room its guards would turn you from; and
-not past one of Hyrule's gates you have not earned.  Your own room must not
-be a jail.  Astral walk may take you out of a no-recall room, though never
-into one.  It can be used in a fight.
+  - Costs 70 mana, spent before the roll; finding no path costs nothing.
+  - The target must be visible to you, not an immortal, not on NOSUMMON.
+  - Their room must be one travel magic reaches: not no-recall, safe,
+    private, jail, death trap, no-teleport, another class's guild hall,
+    a newbie room past level 10, or past a Hyrule gate you have not
+    earned.  It may take you out of a no-recall room, never into one.
+  - A mind immune to mental attack cannot be reached; a resistant one
+    may refuse you, and the mana is gone.
+  - You arrive stunned until the next tick, unable to act.
 
-Finding no path costs nothing.  Otherwise it costs 70 mana before the
-roll, and against a mobile whose mind is immune to mental attack it fails,
-or against a resistant one may fail, with the mana gone.  A missed roll
-costs a little mana.
-
-The crossing leaves you stunned until the next tick, so you arrive unable
-to act: arriving beside something hostile is dangerous.
-
-Level 25.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+Level 25 psionic power.
 
 See also: PSIONICS, SHIFT, GATE, NOSUMMON
 ~
@@ -69,19 +56,15 @@ See also: PSIONICS, SHIFT, GATE, NOSUMMON
 0 CLAIRVOYANCE~
 Syntax: clairvoyance <character>
 
-Shows you the room another character is standing in, anywhere in the
-world, as LOOK would: its description, what lies there and who is there.
-You do not move.  The target must be somebody you can see; immortals
-cannot be scried, and a room that is private, a jail, a death trap,
-gods-only, a newbie room or closed to teleports shows you nothing ("They
-aren't here.").  A failed attempt shows only a fuzzy image.
+Shows you the room another character is in, anywhere in the world, as
+LOOK would.  You do not move.
 
-It costs 25 mana and can be used in a fight.  Half the time the target
-feels that somebody is watching them.
+  - Costs 25 mana; usable in a fight.
+  - Immortals cannot be scried.  A private, jail, death trap, gods-only,
+    newbie or no-teleport room shows nothing ("They aren't here.").
+  - Half the time the target feels watched.
 
-Level 18.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+Level 18 psionic power.
 
 See also: PSIONICS, PROJECT, SCAN
 ~
@@ -89,83 +72,83 @@ See also: PSIONICS, PROJECT, SCAN
 0 CONFUSE~
 Syntax: confuse [victim]
 
-Throws a victim's mind into confusion; in a fight it defaults to your foe.
-Each round a confused victim loses its turn wandering in a daze until it
-shakes the confusion off -- a little over one round in ten -- and attacks
-again.  It lasts four ticks, five from level 30 and six from level 40.
+Confuses a victim (your foe if you name nobody).  Each round a confused
+victim may wander in a daze instead of fighting until it shakes the
+confusion off.
 
-It costs your level plus 50 mana.  A mind immune to mental damage can never
-be confused, and a mentally resistant one may throw it off; somebody already
-confused is refused, and so is the treasure goblin, before anything is spent.
+  - Costs your level plus 50 mana.
+  - Lasts 4 ticks; 5 from level 30, 6 from level 40.
+  - A mind immune to mental damage can never be confused, and a
+    mentally resistant one may throw it off.
+  - Somebody already confused, and the treasure goblin, are refused
+    before anything is spent.
 
-Level 21.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+Level 21 psionic power.
 
 See also: PSIONICS, NIGHTMARE, EGO WHIP
 ~
 
 0 'EGO WHIP' EGOWHIP~
-Syntax: ego [victim]
+Syntax: ego whip [victim]
+        ego [victim]
 
-Lashes a victim's ego for mental damage: half your level in four-sided
-dice, plus half your level, halved by a saving throw.  Type EGO, not EGO
-WHIP.  In a fight it defaults to your foe.
+Lashes a victim's ego for mental damage that grows with your level,
+halved by a saving throw.  In a fight it defaults to your foe.
 
-A victim who fails the save and is not already whipped also loses STR,
-INT, WIS or DEX, chosen at random, for 4d5 ticks: 2 points, and one more
-each at levels 15, 25 and 35.  It costs 20 mana.
+  - Costs 20 mana.
+  - A victim who fails the save also loses 2 STR, INT, WIS or DEX
+    (chosen at random) for 4d5 ticks; one more point each at levels 15,
+    25 and 35.  It does not stack.
 
-Level 19.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+Level 19 psionic power.
 
 See also: PSIONICS, TORMENT, MINDBLAST
 ~
 
 0 MINDBAR~
 Syntax: mindbar
+        mind bar
 
 Walls your own mind: mental damage and mental drains against you are
-halved.  It works on you alone and takes no target.  It costs 50 mana,
-lasts about a sixth of your level in ticks, and cannot be combined with
-psionic armor or psychic shield.
+halved.  It takes no target.
 
-Level 22.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 50 mana; lasts about a sixth of your level in ticks.
+  - Cannot be combined with psionic armor or psychic shield.
+
+Level 22 psionic power.
 
 See also: PSIONICS, PSIONIC ARMOR, PSYCHIC SHIELD
 ~
 
 0 MINDBLAST 'MIND BLAST'~
 Syntax: mindblast
+        mind blast
 
 Strikes the mind of everybody in the room you could attack -- not your
 group, pets, charmed followers, shopkeepers or immortals -- for mental
 damage that grows with your level to level 50, halved by a saving throw.
-Everybody else in the area feels a wave of vertigo and takes nothing.  It
-takes no target and costs 50 mana even when nobody is hit.
+The rest of the area feels only vertigo.
 
-Level 23.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 50 mana even when nobody is hit.
+
+Level 23 psionic power.
 
 See also: PSIONICS, EGO WHIP, TORMENT
 ~
 
 0 'MIND LEECH' MINDLEECH~
-Syntax: mindleech <victim>
+Syntax: mind leech [victim]
+        mindleech [victim]
 
-Mind Leech drains mental energy from a victim and restores half of the mana
-actually taken to the user.  If the victim has no mana, the probe deals mental
-damage instead.
+Drains two to three times your level in mana from a victim (your foe if
+you name nobody) and gives you half of what was taken.  A victim with no
+mana takes mental damage instead.
 
-A mind immune to mental attack gives up nothing at all, and a mentally
-resistant mind may surrender only half.  Psionic defenses such as Mindbar
-reduce whatever is left.  An ordinary mind cannot resist the drain.
+  - Costs 30 mana.
+  - A mind immune to mental attack gives nothing; a resistant one gives
+    half.  Mindbar and other psionic defences reduce what is left.
 
-Minimum level: 22
+Level 22 psionic power.
 
 See also: PSIONICS, ENERVATE, MINDBAR
 ~
@@ -173,16 +156,15 @@ See also: PSIONICS, ENERVATE, MINDBAR
 0 ENERVATE~
 Syntax: enervate [victim]
 
-Tears away a victim's movement and then their health, each from your level
-to twice your level, and returns half of what it actually took to you.  A
-mind immune to mental attack gives up nothing, a resistant one may lose
-only half, and psionic defences such as mindbar reduce what is left;
-damage that was resisted cannot become healing.  It costs 35 mana.  In a
+Tears away a victim's movement and then their health, each from your
+level to twice your level, and gives you half of what it took.  In a
 fight it defaults to your foe.
 
-Level 21.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 35 mana.
+  - A mind immune to mental attack gives nothing, a resistant one may
+    lose only half, and psionic defences reduce the rest.
+
+Level 21 psionic power.
 
 See also: PSIONICS, MIND LEECH, TORMENT
 ~
@@ -190,16 +172,15 @@ See also: PSIONICS, MIND LEECH, TORMENT
 0 NIGHTMARE~
 Syntax: nightmare [victim]
 
-Fills a victim's mind with horrors for a third of your level in ticks.
-While it lasts they regain no hit points, mana or movement, lose some mana
-at once, and a mobile's armour is worse.  A victim who saves is unharmed,
-and the attempt still costs the mana and the wait and starts a fight;
-somebody already in a nightmare is refused.  It costs 20 mana.  In a fight
-it defaults to your foe.
+Fills a victim's mind with horrors for a third of your level in ticks:
+they regain no hit points, mana or movement, lose some mana at once, and
+a mobile's armour worsens.  In a fight it defaults to your foe.
 
-Level 21.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 20 mana.  A victim who saves is unharmed, but the attempt still
+    costs the mana and the wait and starts a fight.
+  - Somebody already in a nightmare is refused.
+
+Level 21 psionic power.
 
 See also: PSIONICS, CURE NIGHTMARE, CONFUSE
 ~
@@ -207,129 +188,117 @@ See also: PSIONICS, CURE NIGHTMARE, CONFUSE
 0 PROJECT~
 Syntax: project <direction>
 
-Sends your spirit out in a straight line in one of the ten directions while
-your body stays where it is.  You need type nothing more: the spirit moves
-on by itself, showing you each room it passes as LOOK would, for your level
-divided by four, plus one, rooms, then returns to your body within the same
-command.  It passes closed doors, and stops early at a missing, secret or
-wizlocked exit or a room it may not enter.
+Sends your spirit in a straight line in any of the ten directions while
+your body stays put.  The spirit moves on by itself, showing each room
+as LOOK would, for your level / 4 + 1 rooms, then returns.
 
-Others may see the glow rise out of you, and a ghostly figure passing
-through their room.  It costs 25 mana.
+  - Costs 25 mana.
+  - It passes closed doors, and stops at a missing, secret or wizlocked
+    exit or a room it may not enter.
+  - Others may see a ghostly figure pass through.
 
-Level 19.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+Level 19 psionic power.
 
 See also: PSIONICS, CLAIRVOYANCE, SCAN
 ~
 
 0 'PSIONIC ARMOR' PSIONIC~
-Syntax: psionic [character]
+Syntax: psionic armor [character]
+        psionic [character]
 
 Armours a mind against mental attack, cutting mental damage by a quarter
-for half your level in ticks.  Type PSIONIC alone for yourself, or PSIONIC
-<name> for somebody in the room: PSIONIC ARMOR looks for a character
-called "armor".  It costs 20 mana and cannot be combined with mindbar or
-psychic shield.
+for half your level in ticks.  With no name it armours you; otherwise
+somebody in the room.
 
-Level 17.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 20 mana.
+  - Cannot be combined with mindbar or psychic shield.
+
+Level 17 psionic power.
 
 See also: PSIONICS, MINDBAR, PSYCHIC SHIELD
 ~
 
 0 'PSYCHIC SHIELD' PSYCHIC~
-Syntax: psychic
+Syntax: psychic shield
+        psychic
 
 Shields every member of your group in the room who has no mental defence
-yet, cutting mental damage by a quarter for half your level in ticks.  It
-takes no target, must be used standing, and costs 50 mana.  It does not
-replace mindbar, psionic armor or another psychic shield.
+yet, cutting mental damage by a quarter for half your level in ticks.
 
-Level 19.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 50 mana; must be used standing.
+  - Does not replace mindbar, psionic armor or another psychic shield.
+
+Level 19 psionic power.
 
 See also: PSIONICS, PSIONIC ARMOR, MINDBAR
 ~
 
 0 PYROTECHNICS~
-Syntax: pyrotechnics <victim>
+Syntax: pyrotechnics [victim]
 
-This psionic skill ignites the air around a victim.  It deals the same
-damage as a fireball cast at your level, halved by a saving throw, and may
-heat a piece of the victim's equipment until it temporarily cannot be worn -
-which is what it offers over a fireball, and what its extra mana pays for.
-A failed attempt costs its wait, just as a failed cast does.  It does not
-consume a light source.
+Ignites the air around a victim (your foe if you name nobody) for the
+damage of a fireball cast at your level, halved by a saving throw.  It
+may also heat a piece of the victim's equipment until it cannot be worn
+for a while.
 
-Minimum level: 20
+  - Costs 20 mana.  Unlike the other powers, a missed roll costs its
+    wait as well as a little mana.  It does not consume a light source.
 
-See also: PSIONICS, FIRE SPELLS, HARMFUL
+Level 20 psionic power.
+
+See also: PSIONICS, FIRE SPELLS, HEAT METAL
 ~
 
 0 SHIFT~
 Syntax: shift <character>
 
-Pulls another character to you through a spatial rift.  It does not move
-you: the target arrives in your room.
+Pulls another character to your room through a rift.  It does not move
+you.
 
-It is refused, with nothing spent, when the target is you, an immortal or
-already beside you; when either of you is fighting; for an aggressive
-mobile, a mobile immune to summoning or a player with NOSUMMON; when your
-room is no-recall, a teleport, river or arena room, or one you may not
-use magic from; and when the target stands in a safe, no-recall, newbie or
-otherwise protected room, or one travel magic may not reach.
+  - Costs 70 mana.  A mobile may resist, and the mana and wait are spent.
+  - Refused, with nothing spent, for yourself, an immortal, somebody
+    already here, an aggressive or summon-proof mobile, a player on
+    NOSUMMON, or when either of you is fighting.
+  - Your room must not be no-recall, teleport, river or arena, nor one
+    you may not use magic from; theirs must be one travel magic reaches.
+  - You are stunned until the next tick, so you cannot pull a victim in
+    and strike first.
 
-Otherwise it costs 70 mana.  A mobile may resist the pull, with the mana
-and the wait spent.  Opening the rift leaves you stunned until the next
-tick, so it cannot be used to pull a victim in and strike first.
-
-Level 25.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+Level 25 psionic power.
 
 See also: PSIONICS, ASTRAL WALK, SUMMON, NOSUMMON
 ~
 
 0 TELEKINESIS TK~
-Syntax: telekinesis <object name>
-Syntax: tk <object name>
+Syntax: telekinesis <object>
+        tk <object>
 
-Telekinesis allows the user to translocate a visible, takeable ground item
-from elsewhere in the world.  It respects carry limits, ownership, quest-item
-binding, and protected or no-teleport rooms.  Money, treasure, hidden
-containers, carried items, and NOLOCATE items cannot be retrieved this way.
-It takes the first item by that name it finds, which need not be yours.
+Fetches a visible, takeable object lying on the ground anywhere in the
+world.  It takes the first by that name it can reach, which need not be
+yours.
 
-It looks before it reaches.  If nothing by that name lies anywhere it can
-reach, or the only match is an item telekinesis can never fetch, you are
-told so and it costs nothing.  Otherwise your skill decides whether you
-hold concentration: a miss costs a little mana, a success the full 50.
-Like every psionic power it starts at 1% until practised; practise it
-with Salir.
+  - Costs 50 mana on success, a little on a miss.  If nothing it could
+    fetch matches, you are told and it costs nothing.
+  - It cannot fetch money, treasure, hidden containers, carried items,
+    NOLOCATE items, or from protected or no-teleport rooms, and respects
+    carry limits, ownership and quest binding.
+  - A corpse comes whole, gear and all.
 
-A corpse can be fetched whole, gear and all, even when the gear inside it
-is NOLOCATE.  Once a corpse rots, NOLOCATE gear that fell out of it has to
-be fetched on foot.
+Level 21 psionic power.
 
-Minimum level: 21
-
-See also: PSIONICS, DISARM, STEAL
+See also: PSIONICS, LOCATE OBJECT
 ~
 
 0 TORMENT~
 Syntax: torment [victim]
 
 Makes a victim relive old pain: mental damage from half your level to
-three times your level, halved by a saving throw.  It costs 20 mana.  In a
-fight it defaults to your foe.
+three times your level, halved by a saving throw.  In a fight it
+defaults to your foe.
 
-Level 18.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 20 mana.
+
+Level 18 psionic power.
 
 See also: PSIONICS, EGO WHIP, MINDBLAST
 ~
@@ -338,90 +307,66 @@ See also: PSIONICS, EGO WHIP, MINDBLAST
 Syntax: transfusion <character>
 
 Gives 50 of your own hit points to another character in the room, up to
-their maximum.  You lose exactly 50 whatever they gain.  It costs 20 mana,
-and cannot be used when doing so would reduce you to zero hit points: you
-need more than 50.  It refuses yourself and anyone already at full health.
-It can be used in a fight, and on anybody in the
-room -- it does not ask whose side they are on.
+their maximum.  You lose exactly 50 whatever they gain.
 
-Level 28.  Like every psionic power it starts at 1% until practised with
-Salir, and cannot be used below its level.  A missed roll costs a little
-mana and no lag.
+  - Costs 20 mana.  It cannot be used when doing so would reduce you
+    to zero hit points.
+  - Refuses yourself and anybody at full health.
+  - Works in a fight, on anybody in the room.
 
-See also: PSIONICS, AID, HEAL
+Level 28 psionic power.
+
+See also: PSIONICS, AID, HEALSPELL
 ~
 
 -1 EXOTIC WEAPONS WEAPON WEAPONSMASTER AXE DAGGER FLAIL MACE POLEARM SPEAR SWORD
  WHIP~
-Each weapon skill applies to a specific group of armaments, and determines how
-well a character fights with a particular weapon.  The skills provide
-talent in all weapons (except exotics), from chair legs to halberds.
-If the character has the parry skill as well, he can parry incoming attacks.
-The chance of parrying is best if the character in question is skilled at
-both his weapon and his opponent's.
+Each weapon type has its own skill, and it decides how well you fight
+with that weapon.  Any class may use any weapon.
 
-The weapon skills consist of the following:
+  axe       axes, hand to great (not halberds)
+  dagger    knives, daggers and other stabbing weapons
+  flail     ball-and-chain weapons
+  mace      clubs, hammers and maces
+  polearm   pole weapons (not spears), halberds included
+  spear     spears and staves
+  sword     rapier to claymore
+  whip      whips and chains
+  exotic    strange magical weapons: cannot be bought, and is three
+            times your level, up to 100%
+  bow       see ARCHERY
 
-axe             the use of axes, ranging from hand to great (but not halberds)
-dagger          the use of knives and daggers, and other stabbing weapons
-flail           skill in ball-and-chain type weapons
-mace            this skill includes clubs and hammers as well as maces
-polearm         the use of pole weapons (except spears), including halberds
-spear           this skill covers both spears and staves, but not polearms
-sword           the warrior's standby, from rapier to claymore
-whip            the use of whips, chains, and bullwhips
-exotic          the use of strange magical weapons
-bow             the use of weapons that can shoot to another room
+Your class sets which weapon you start with and how well.  Rakar the
+Weaponsmaster (WALKTO RAKAR) practises every weapon skill with anyone.
+Knowing both your weapon and your foe's helps you PARRY.
 
-The exotic skill cannot be purchased, and is dependent solely upon level.
-
-Note that all characters may use all weapons, but that the minimum level
-they need to be for a given class of weapons and the starting percentage of
-skill at each weapon type is dependent on their primary class.
-
-Trainer: Rakar (all)
-
-See also helps on ARCHERY, PARRY and WEAPON MASTERY.
+See also: ARCHERY, PARRY, WEAPON MASTERY
 ~
 
 0 'WEAPON MASTERY' MASTERY WEAPONSMASTERY~
-Weapon mastery is a warrior's and a thief's own.  It cannot be learned or
-practised: it grows by itself with every level, up to level 59.
+Weapon mastery belongs to warriors and thieves.  It cannot be learned or
+practised: it grows by itself every level, to level 59.
 
-Each blow with a wielded weapon gains a share of the weapon's own damage:
+Each blow with a wielded weapon adds a share of the weapon's own damage:
 
-  - 4% a level in your own class's guild (a warrior in the warriors'
-    guild, a thief in the thieves' guild), 236% at level 59;
-  - 3% a level in any other guild, or none, 177% at level 59.
+  - 4% a level in your own class's guild (236% at level 59);
+  - 3% a level in any other guild or none (177% at level 59).
 
-It is added before damroll, so gear does not multiply it, and a backstab,
-which has its own multiplier, does not take it.  Other classes, and blows
-with no weapon, have none.
+It is added before damroll.  A backstab, which has its own multiplier,
+does not take it, and other classes and bare hands have none.
 
 See also: WARRIOR, THIEF, GUILDS, WEAPONS
 ~
 
 -1 AGGROSTAB~
+Passive.  When an aggressive monster is about to attack you, you may get
+the first strike instead.  A thief by class who knows BACKSTAB may open
+with a backstab.
 
-This skill gives you a chance of attacking aggressive monsters before they
-attack you. Thieves get the benefit of having a chance to do backstab
-damage, provided they are learned in backstab. This skill is available only
-to members of the thieves' guild.  Only players with a Thief background get
-the backstab benefit attached to this skill.
+  - Sold by the thieves' guild only.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:30  Cleric:30  Thief:15  Warrior:24  Monk:N/A  Necromancer:N/A
-
-The number of trains needed to gain this skill depends on your primary
-class and is:
-
-Mage:7  Cleric:7  Thief:4  Warrior:6
-
-Trainer: Quickfingers (?/T)
-
-Monks and necromancers cannot learn aggrostab, since they cannot join the
-thieves' guild.
 
 See also: BACKSTAB, HIDE, STEALTH
 ~
@@ -430,21 +375,18 @@ See also: BACKSTAB, HIDE, STEALTH
 Syntax: backstab <victim>
         bs <victim>
 
-Opens a fight with a blow from behind: your round's first two hits (three
-if you are hasted) land with the backstab's multiplier, which grows with
-your level and is greater with a dagger than any other weapon.  A victim
-who is not awake takes double and is always hit.
+Opens a fight with a blow from behind: your first two hits (three if
+hasted) land with the backstab multiplier, which grows with your level
+and is greater with a dagger.  A victim who is not awake takes double
+and is always hit.
 
-You need a weapon wielded, any kind.  You cannot backstab while you are
-fighting anybody, and a victim hurt below a third of their health is too
-suspicious to approach ("hurt and suspicious") -- that refusal still costs
-the six seconds the stab would.  A practised backstabber sometimes lands a
-FATALITY instead.  Hit or miss, it costs six seconds of lag and starts the
-fight.
+  - Needs a wielded weapon of any kind; not usable while fighting.
+  - A victim below a third of their health is "hurt and suspicious".
+  - Hit, miss or refusal: six seconds of lag.  It starts the fight.
+  - A practised backstabber sometimes lands a FATALITY.
 
-Usable from level: Mage 20, Cleric 24, Thief 3, Warrior 14; never Monk,
-Necromancer.  Trainers: Ni Hi the ninja master; Tia and the Mud School adept
-practise it only.  GAINLIST shows who sells it to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:20  Cleric:24  Thief:3  Warrior:14  Monk:N/A  Necromancer:N/A
 
 See also: FATALITY, HIDE, SNEAK, STEALTH
 ~
@@ -452,23 +394,20 @@ See also: FATALITY, HIDE, SNEAK, STEALTH
 0 BASH~
 Syntax: bash [victim]
 
-Throws your whole weight into a foe to knock them down; with no name it
-bashes the foe you are fighting.  The chance is your skill, raised by the
-weight you carry and lowered by theirs (gear and coin count), by being the
-smaller of the two, by their dexterity against your strength, and by
-level: ten points a level of difference.  Riders and steeds cannot be
-bashed, nor somebody already down.
+Throws your weight into a foe to knock them down (your current foe if
+you name nobody).  Weight carried, size, their dexterity against your
+strength, and ten points a level of difference decide it.
 
-A bash that lands deals a little damage and costs the victim two rounds of
-lag -- it delays what they type and a mobile's special attacks, not their
-ordinary blows -- and you six seconds.  A bash that misses puts you on the
-ground, resting, with nine seconds of lag, and resting you take more damage
-until you are struck back to your feet.
+  - A hit deals a little damage, costs the victim two rounds of lag
+    (typed commands and special attacks, not ordinary blows), and you
+    six seconds.
+  - A miss puts you on the ground, resting, for nine seconds; you take
+    more damage until you are struck back to your feet.
+  - Riders, steeds and anybody already down cannot be bashed.
+  - Dwarves are born holding bash at 1%.
 
-Usable from level: Mage 20, Cleric 5, Thief 15, Warrior 3, Monk 12; never
-Necromancer.  Dwarves are born holding bash at 1%, whatever their class.
-Trainers: Geko the gladiator, the Master of Movement; Jazair practises it
-only.  GAINLIST shows who sells it to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:20  Cleric:5  Thief:15  Warrior:3  Monk:12  Necromancer:N/A
 
 See also: TRIP, KICK, SHOVE, DIRT
 ~
@@ -476,129 +415,113 @@ See also: TRIP, KICK, SHOVE, DIRT
 0 BERSERK~
 Syntax: berserk
 
-A battle rage: you heal twice your level in hit points and gain hit and
-damage of a fifth of your level, but your armour class worsens by ten
-points for every five levels, and every skill you use is weaker by half
-your level while it lasts.  It lasts about an eighth of your level in
-ticks; it is not ended by the end of a fight.
+A battle rage: you heal twice your level in hit points and gain a fifth
+of your level in hitroll and damroll, but lose ten points of armour for
+every five levels and use every other skill at half your level less.
+Lasts about an eighth of your level in ticks.
 
-It needs 50 mana and costs 50, and halves your movement.  A failed attempt
-costs 25 mana, half your movement and nine seconds of lag; a success three
-seconds.  It is easier when you are hurt or already fighting.  It is
-refused while you are calmed, berserk or frenzied.
+  - Needs and costs 50 mana, and halves your movement; 3 seconds of lag.
+  - A failure costs 25 mana, half your movement and 9 seconds of lag.
+  - Easier when hurt or fighting.  Refused while calmed, berserk or
+    frenzied.
 
-Usable from level: Mage 30, Cleric 29, Thief 35, Warrior 18; never Monk,
-Necromancer.  Trainer: Geko the gladiator, to members of the warrior guild.
-GAINLIST shows who sells it to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:30  Cleric:29  Thief:35  Warrior:18  Monk:N/A  Necromancer:N/A
 
 See also: FRENZY, ENHANCED DAMAGE, BASH
 ~
 
 0 'BLINDING FISTS'~
-Syntax: blind <victim>
+Syntax: blinding fists [victim]
+        blinding [victim]
 
-This is an assortment of various punches aimed at a foe, delivering
-multiple blows. Only monks of level 20 or above have the quick reflexes
-and amazing agility to use this martial art.
+A monk's flurry of unarmed blows: four strikes, five from level 30 and
+six from level 40, each landing for your level to three times your
+level.  In a fight it defaults to your foe.  It does not blind.
 
-Number of trains: 3
-Trainer: Master of Movement (Monk)
+  - Needs empty hands, 20 mana and 20 movement; costs 20 mana and 10
+    movement.
+  - Each blow that lands adds its own lag.
 
-See also: FISTS OF FURY, CRANE DANCE, IRON SKIN
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:20  Necromancer:N/A
+
+See also: FISTS OF FURY, CRANE DANCE, NERVE DAMAGE
 ~
 
 0 'CRANE DANCE' CRANE~
-Syntax: crane
+Syntax: crane dance
+        crane
 
-The adept martial artist has many specialized movements in his repertoire
-of hand-to-hand combat. The crane dance is one of the most lethal,
-launching the adept into the air towards his opponents, striking
-everything in a series of lightning-quick jabs.
+A monk's opening leap that strikes everybody in the room you could
+attack.  Each foe loses about a quarter of its health if weak, a smaller
+share the stronger it is, never more than 25 hit points per level of
+yours.
 
-It is an opening: it cannot be started once a fight is under way.  Each
-foe it strikes loses about a quarter of its health if it is weak, a
-smaller share the stronger it is, and never more than 25 hit points for
-each of your levels.  It costs 30 mana, and half your movement when it
-lands (a quarter when it misses everyone).
+  - Cannot be started once you are fighting; needs empty hands.
+  - Needs 30 mana and a quarter of your maximum movement.  Costs 30 mana
+    and half your movement (a quarter if it hits nobody).
 
-This skill is exclusively for the use of monks of level 35 and up.
-
-Number of trains: 5
-Trainer: Master of Movement (Monk)
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:35  Necromancer:N/A
 
 See also: BLINDING FISTS, FISTS OF FURY, IRON SKIN
-
 ~
 
 0 'DANGER SENSE'~
-Syntax: danger
+Syntax: danger sense
+        danger
 
-This skill tells you where the other players around the area are and how far
-away from you, in very general terms.  It also reveals how many stealthed
-players are in the area.  It is available only to members of the warrior
-guild.
+Names the other players in your area you can see, and whether each is
+nearby (five rooms or fewer), a little way off (twelve) or far away.  It
+also counts players hidden by STEALTH or SHADOWMELD there.
 
-The minimum level to use this skill depends on your primary class and is:
+  - Six seconds of lag.  Usable asleep at half your skill.
+  - A missed roll and an empty area both say "You sense no danger".
+  - Sold by the warriors' guild only.
 
+Minimum level by class (GAINLIST shows who sells it):
 Mage:36  Cleric:36  Thief:31  Warrior:13  Monk:N/A  Necromancer:N/A
 
-The number of trains needed to gain this skill depends on your primary
-class and is:
-
-Mage:1  Cleric:1  Thief:2  Warrior:2
-
-Monks and necromancers may not gain this skill, since they may not join
-the warrior guild.
-
-Trainer: Breark (?/W)
-
-See also: DODGE, PARRY, FAST HEALING
+See also: TRACK, WHERE, SCAN
 ~
 
 0 DESPAIR~
-Despair is a passive combat skill available at level 25.  When a character
-with this skill tries to FLEE, there is a chance that instead the opponent
-is overcome by a wave of hopelessness and flees the battle, leaving the
-character where they stand.  The chance is the skill's percentage.
+Passive.  Despair: when you try to FLEE, there is a chance (your skill
+percentage) that your opponent loses heart and flees instead, leaving you
+where you stand.  Hyrule's creatures are never driven off this way.
 
-Nothing of Hyrule's -- an enemy, a guardian -- is driven off this way:
-against one, despair does not take and you flee as anyone would.
+  - Every class, from level 25.  Rakar the Weaponsmaster sells it.
 
-This skill cannot be activated manually; it fires when you flee.
-
-Trainer: Rakar the weaponsmaster, in Dresden (any class, any guild).
-
-Number of trains: 1  (available to all classes at level 25)
-
-See also: BERSERK, FATALITY, SECOND ATTACK
+See also: FLEE, WIMPY, BERSERK
 ~
 
 -1 DESTRUCTION~
-This skill is gainable only by full warriors (W/W). Gaining this skill
-gives the user the chance to destroy his or her opponent's weapon.  The
-chances are very slim, but they still exist.  It may not be used before
-level 25.
+Passive.  Your blows sometimes shatter your opponent's weapon.  The
+chance is small.
 
-Number of trains needed: 4
-Trainer: Vladamir (W/W)
+  - Full warriors (warrior class in the warriors' guild) only.
 
-See also: BASH, SMITE, DISARM
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:26  Monk:N/A  Necromancer:N/A
+
+See also: DISARM, SMITE, BASH
 ~
 
 0 DIRT 'DIRT KICKING' DIRT-KICK~
-Syntax: dirt [victim]
+Syntax: dirt kicking [victim]
+        dirt [victim]
 
-Kicks dirt in a foe's eyes; with no name, the foe you are fighting.  A kick
-that lands deals a little damage and blinds them, -4 to hit, until the next
-tick.  Your dexterity against twice theirs, speed and level decide it, and
-the ground matters: easier in a desert or field, harder indoors, in a city
-or on a mountain, and impossible on water or in the air ("There isn't any
-dirt to kick").  Somebody already blind is refused.  Hit or miss, six
-seconds of lag.
+Kicks dirt in a foe's eyes (your current foe if you name nobody).  A hit
+deals a little damage and blinds them, -4 to hit, until the next tick.
 
-Usable from level: Mage 15, Cleric 15, Thief 6, Warrior 8, Monk 20; never
-Necromancer.  Trainers: Geko the gladiator, Ni Hi the ninja master, the
-Silent Master.  GAINLIST shows who sells it to your class and guild.
+  - Your dexterity against twice theirs, speed and level decide it.
+  - Easier in a desert or field, harder indoors, in a city or on a
+    mountain, impossible on water or in the air.
+  - Somebody already blind is refused.  Six seconds of lag either way.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:15  Cleric:15  Thief:6  Warrior:8  Monk:20  Necromancer:N/A
 
 See also: BLINDNESS, BASH, TRIP
 ~
@@ -606,156 +529,112 @@ See also: BLINDNESS, BASH, TRIP
 0 DISARM~
 Syntax: disarm
 
-Tries to strike the weapon from the hand of the foe you are fighting; it
-takes no name.  You need a weapon of your own, or hand to hand.  Your
-skill with your weapon and with theirs, your dexterity against their
-strength, and level decide it.  Hit or miss, six seconds of lag.
+Tries to knock the weapon from your current foe's hand; it takes no
+name.  Your skill with both weapons, your dexterity against their
+strength, and level decide it.
 
-A disarmed weapon falls to the floor, where a mobile that sees it may pick
-it up again; one that cannot be dropped goes into its owner's pack.  A
-weapon under BEWITCH WEAPON will not budge, and a warrior of the warriors'
-guild may hold on with HEROIC GRIP.
+  - Needs a weapon or hand to hand.  Six seconds of lag either way.
+  - A disarmed weapon falls to the floor, or into its owner's pack if it
+    cannot be dropped.  BEWITCH WEAPON and HEROIC GRIP resist it.
 
-Usable from level: Mage 18, Cleric 17, Thief 16, Warrior 12, Monk 16; never
-Necromancer.  Trainers: Dolonar the blacksmith, the Master of Movement; the
-dwarven blacksmith practises it only.  GAINLIST shows who sells it to your
-class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:18  Cleric:17  Thief:16  Warrior:12  Monk:16  Necromancer:N/A
 
 See also: HEROIC GRIP, BEWITCH WEAPON, BASH
 ~
 
 -1 DODGE~
-In the words of one wise warrior, 'the best way to block a blow is to not
-be where it lands'.  The dodge skill honors this tradition, by improving the
-character's natural agility to the point where many blows will miss the
-target. The chance of dodging is also affected by the dexterity of the
-attacker and the target.
+Passive.  A chance to step aside from a blow so it misses entirely.  Your
+dexterity and the attacker's count.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:19  Cleric:22  Thief:5  Warrior:13  Monk:5  Necromancer:23
-
-The number of trains needed to gain this skill depends on your primary
-class and is:
-
-Mage:5  Cleric:5  Thief:3  Warrior:4  Monk:3  Necro:5
-
-Trainer: Geko (?/W), Dolonar (?/W), Suma (?/T), Qualo (?/C), Diemos (?/M),
-          mud school adept (practice only, no gain), Silent Master (monk)
-          Necromantic Knight (necro),
 
 See also: PARRY, SHIELD BLOCK
 ~
 
 -1 'ENHANCED DAMAGE'~
-Monks and members of the warriors guild can become skilled enough in
-combat that they are able to inflict more damage than other classes.  Enhanced
-damage is checked for with each hit, although with a low skill, the chance
-of receiving a bonus is very low indeed.
+Passive.  A chance on each hit to deal extra damage; the better your
+skill, the more often.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:31  Cleric:31  Thief:30  Warrior:16  Monk:14  Necromancer:N/A
 
-The number of trains needed to gain this skill depends on your primary
-class and is:
-
-Mage:7  Cleric:7  Thief:6  Warrior:3  Monk:5
-
-Necromancers may not learn enhanced damage.
-
-Trainer:  Dolonar (?/W), Silent Master (monk)
-
-See also: SECOND ATTACK, THIRD ATTACK, FATALITY
+See also: SECOND ATTACK, THIRD ATTACK, BERSERK
 ~
 
 -1 FATALITY~
-This skill gives the user a chance to kill his or her victim in a single
-blow.  It is not a command but, rather, each backstab carries a small chance
-of causing a fatality.  Only pure thieves (T/T) of level 26 or above
-have the knowledge of anatomy and the dexterity to cause fatality.
+Passive.  Each BACKSTAB has a small chance to kill outright.  Full
+thieves (thief class in the thieves' guild) only.
 
-The chance, in percent, for each backstab: one for every 20% you know the
-skill (5 at 100%), one more for dexterity above 22 and another above 24,
-and three more against a monster at least ten levels below you.  It is
-halved against a player and doubled against a sleeping victim.  At 100%
-that is 5 to 10 percent, or up to 20 against a sleeping monster.
+  - One percent for every 20% of skill, one more for dexterity above 22
+    and another above 24, and three more against a monster ten or more
+    levels below you.  Halved against a player, doubled against a
+    sleeper: 5 to 10 percent at 100%.
+  - Never against a higher-level victim, the training dummy, the
+    treasure goblin, Ganon or Gohma.
 
-There is no chance at all against a victim of a higher level than yours,
-and none against a few creatures that cannot be finished that way: the
-training dummy, the treasure goblin, Ganon and Gohma.  A victim already
-below a third of its health cannot be backstabbed in the first place.
-
-Number of trains: 5
-Trainer: Mizry (T/T)
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:26  Warrior:N/A  Monk:N/A  Necromancer:N/A
 
 See also: BACKSTAB, DESTRUCTION
 ~
 
 0 'FISTS OF FURY' FISTS~
-Syntax: fists <victim>
+Syntax: fists of fury [victim]
+        fists [victim]
 
-Fists of Fury is a more aggressive version of Blinding Fists, focused on
-using strengthened blows as well as increased speed.  It requires the
-mental discipline that is found only in monks of level 30 and above.
+A monk's fury of unarmed blows: two to five strikes, one more from level
+35 and another from 45, each for your level to twice your level.  A
+missed strike ends the fury and makes the victim try to flee.  In a
+fight it defaults to your foe.
 
-Number of trains: 4
-Trainer: Master of Movement (Monk)
+  - Needs empty hands; needs and costs 30 mana and 15 movement.
+  - Hyrule's creatures will not be driven off; a miss just ends it.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:30  Necromancer:N/A
 
 See also: BLINDING FISTS, CRANE DANCE, STUNNING BLOW
 ~
 
 -1 'HAND TO HAND'~
-Learning the rare hand to hand style of fighting gives the player a weapon
-even when disarmed -- bare hands.  Trained hand to hand experts are far more
-effective than many swordsmen, and those of the monk class are even more
-effective with it.
+Passive.  Your fists are your weapon when you wield none, and hand to
+hand lets you PARRY without a weapon (a parried blow is reduced rather
+than stopped).  Monks are best at it.
 
-The minimum level to use this skill depends on your primary class and is:
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:15  Warrior:6  Monk:1  Necromancer:N/A
 
-Thief:15  Warrior:6  Monk:1
-
-Number of trains required depends on your primary class and is:
-
-Thief:4  Warrior:4 Monk:free
-
-Magic using classes have notoriously delicate hands, preventing them from
-learning hand to hand combat.
-
-Trainer: Breark (W/W, T/W), Silent Master (monk), mud school adept (practice
-         only, no gain)
-
-See also: DUAL WIELD, SECOND ATTACK, BASH
+See also: DISARM, SECOND ATTACK, PARRY
 ~
 
 0 'IRON SKIN' IRON~
-Syntax: iron
+Syntax: iron skin
+        iron
 
-Through a lifetime of meditation and study, monks possess the unique
-ability to alter the texture of their skin for short periods of time. The
-skin retains the flexibility of normal skin, but is as hard as the coldest
-steel.  Monks must reach level 22 in order to use iron skin.
+A monk hardens their own skin: armour class improves by 15 plus a fifth
+of your level for one or two ticks.  Three times in four you are also
+immune to one kind of weapon -- blunt, piercing or slashing -- and told
+which; AFFECTS shows it.
 
-Three times in four it also makes you immune to one kind of weapon --
-blunt, piercing or slashing, chosen when your skin hardens. You are told
-which, and AFFECTS shows it for as long as it lasts.
+  - Not in a fight; yourself only.
+  - Costs 45 mana; a failure costs a few.
 
-Number of trains: 2
-Trainer: Master of Movement (monk)
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:22  Necromancer:N/A
 
-See also: BLINDING FISTS, FISTS OF FURY, CRANE DANCE
+See also: STEEL FIST, CRANE DANCE, BLINDING FISTS
 ~
 
 0 KICK~
 Syntax: kick
 
-Kicks the foe you are fighting for one to your level in damage; it takes
-no name and needs a fight.  Hit or miss, three seconds of lag.
+Kicks your current foe for one to your level in damage.  It takes no
+name and needs a fight.  Three seconds of lag either way.
 
-Usable from level: Mage 16, Cleric 12, Thief 14, Warrior 4, Monk 3; never
-Necromancer.  Trainers: Breark the troll, the Silent Master; the dwarven
-blacksmith and the Mud School adept practise it only.  GAINLIST shows who
-sells it to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:16  Cleric:12  Thief:14  Warrior:4  Monk:3  Necromancer:N/A
 
 See also: BASH, TRIP, DIRT
 ~
@@ -763,112 +642,94 @@ See also: BASH, TRIP, DIRT
 0 LEVITATE~
 Syntax: levitate
 
-A monk's float: you are flying for a tenth of your level in ticks.  It
-always works, costs 10 mana and no lag, and is refused if you are already
-airborne or have under 10 mana.  Flying carries you over water and through
-the air like the FLY spell.
+A monk's float: you fly for a tenth of your level in ticks, over water
+and through the air like the FLY spell.
 
-Usable from level: Monk 13; never Mage, Cleric, Thief, Warrior, Necromancer.
-Trainer: the Master of Movement.  GAINLIST shows who sells it to your class
-and guild.
+  - It always works, costs 10 mana and no lag.
+  - Refused if you are already airborne.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:13  Necromancer:N/A
 
 See also: FLY, PSIONICS
 ~
 
 0 'NERVE DAMAGE'~
-Syntax: nerve <victim>
+Syntax: nerve damage [victim]
+        nerve [victim]
 
-Intimate knowledge of anatomy has enabled the studious monks to
-concentrate on certain nerve centers in the bodies of their opponents when
-forced into battle.  Striking these vulnerable areas causes great pain and
-damage.  Monks receive this skill for free but must study until level 15
-before they can use it.
+A monk's jab at a nerve: (your level / 3) d10 damage, and for 3d3+3
+ticks the victim loses 3 DEX and regains no hit points, mana or movement.
+In a fight it defaults to your foe.  Monks start with it.
 
-Trainer: Silent Master (Monk)
+  - Needs empty hands, 20 mana and 10 movement.
+  - A hit costs 15 mana and 10 movement, with lag.
+  - A miss still deals 4d4 damage for 10 mana and 5 movement, no lag.
+  - Hitting an already-affected victim does not renew the effect.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:15  Necromancer:N/A
 
 See also: STUNNING BLOW, BLINDING FISTS
 ~
 
 -1 PARRY~
-If at first you fail to dodge, block it.  Parry is useful for deflecting
-attacks, and is successful more often than dodge.  Parry requires a weapon for
-full success.  The hand-to-hand skill may also be used, but results in reduced
-damage instead of no damage.  The best chance of parrying occurs when the
-defender is skilled in both his and his opponent's weapon type.
+Passive.  A chance to turn a blow aside with your weapon.  Without a
+weapon, hand to hand parries too, but only reduces the blow.  Knowing
+both your weapon and your attacker's improves the chance.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:22  Cleric:20  Thief:13  Warrior:8  Monk:9  Necromancer:N/A
 
-Number of trains required depends on your primary class and is:
-
-Mage:6 Cleric:6  Thief:5  Warrior:free  Monk:3
-
-Necromancers cannot learn to parry.
-
-Trainer: Dolonar (?/W), Stout(?/T), Kalak (W/?), Silent Master (Monk),
-         mud school adept (practice only, no gain)
-
-See also: DODGE, SHIELD BLOCK
+See also: DODGE, SHIELD BLOCK, HAND TO HAND
 ~
 
 0 RESCUE~
 Syntax: rescue <character>
 
-Steps between a member of your group and whatever is fighting them, so it
-fights you instead.  The one you rescue must be a player in your group who
-is fighting; pets and other mobiles do not need your help, and somebody you
-are already fighting is "too late".  Your skill alone decides it.  Hit or
-miss, three seconds of lag.
+Steps between a group member and whatever is fighting them, so it fights
+you instead.
 
-Usable from level: Mage 26, Cleric 20, Thief 18, Warrior 7; never Monk,
-Necromancer.  Trainers: Dolonar the blacksmith; the dwarven blacksmith and
-the Mud School adept practise it only.  GAINLIST shows who sells it to your
-class and guild.
+  - Only a player in your group who is fighting; pets and mobiles do not
+    need it, and somebody you are fighting is "too late".
+  - Your skill alone decides it.  Three seconds of lag either way.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:26  Cleric:20  Thief:18  Warrior:7  Monk:N/A  Necromancer:N/A
 
 See also: GROUP, FLEE, BASH
 ~
 
 -1 'SLEIGHT OF HAND'~
-Those learned in the arts of thievery, have such heightened reflexes and
-senses that they can pick up items or get items from objects in broad
-daylight unbeknownst to the acute observer.
+Passive.  When you pick something up or take it from a container, a
+chance that nobody in the room notices.  Sold by the thieves' guild.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:10  Cleric:18  Thief:6  Warrior:15  Monk:20  Necromancer:N/A
-
-Number of trains required depends on your primary class and is:
-
-Mage:3  Cleric:3  Thief:1  Warrior:3
-
-Monks and necromancers cannot learn this skill, as they cannot join the
-thief guild.
-
-Trainer: Suma (?/T)
 
 See also: STEAL, PEEK, PICK LOCK
 ~
+
 0 STEAL~
 Syntax: steal <object> <character>
         steal platinum|gold|silver|copper <character>
 
-Takes something from another's pack, or a tenth or less of one pile of
-their coin.  Worn things cannot be stolen, nor anything that cannot be
-dropped or is above your level, nor anything you could not carry.  The
-victim must not be fighting; a sleeping one is far easier.  Your chance is
-capped at 85%, and anybody more than five levels above you is always too
-wary.  Hit or miss, six seconds of lag.
+Takes something from another's pack, or up to a tenth of one pile of
+their coin.
 
-Fail and the victim cries out: a mobile attacks you, and stealing from a
-player makes you WANTED.  You cannot steal while in STEALTH.
+  - Not worn things, nor anything that cannot be dropped, is above your
+    level, or that you could not carry.
+  - The victim must not be fighting; a sleeper is far easier.  Anybody
+    more than five levels above you is too wary.  Your chance tops out
+    at 85%.
+  - Six seconds of lag either way.  Not usable in STEALTH.
+  - Fail and the victim cries out: a mobile attacks, and a player makes
+    you WANTED.
 
-Usable from level: Mage 11, Cleric 11, Thief 8, Warrior 10; never Monk,
-Necromancer.  Thieves get it free.  Trainers: Quickfingers the pickpocket;
-Tia and the Mud School adept practise it only.  GAINLIST shows who sells it
-to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:11  Cleric:11  Thief:8  Warrior:10  Monk:N/A  Necromancer:N/A
 
-See also: PEEK, WANTED, HIDE
+See also: PEEK, HIDE, PKILL
 ~
 
 0 STEALTH~
@@ -876,43 +737,51 @@ Syntax: stealth
 
 A full thief's art: nobody without holylight or the Triforce can see you
 at all -- not in the room, not by DETECT HIDDEN, not by WHERE -- for 12
-ticks.  A success halves your current movement points; a failure costs
-nothing.  Metal armour cuts the chance to a third.
+ticks.
 
-It is refused while you are sneaking or hiding, and for two ticks after a
-fight with another player.  Striking anybody ends it, and so does VISIBLE.
-You cannot STEAL while in stealth.
+  - A success halves your current movement points; a failure costs
+    nothing.  Metal armour cuts the chance to a third.
+  - Refused while you are sneaking or hiding, and for two ticks after a
+    fight with a player.  Striking anybody, or VISIBLE, ends it.
+  - You cannot STEAL in stealth.
 
-Usable from level: Thief 18; never Mage, Cleric, Warrior, Monk, Necromancer.
-Trainer: Mizry the assassin, to thieves of the thieves' guild.  GAINLIST
-shows who sells it to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:18  Warrior:N/A  Monk:N/A  Necromancer:N/A
 
 See also: HIDE, SNEAK, SHADOWMELD, VISIBLE
 ~
 
 0 'STEEL FIST' STEEL STEELFIST~
-Syntax: steel
+Syntax: steel fist
+        steel
 
-By altering their body's chemistry, monks have the option of increasing the
-density of molecules surrounding their hands. This has the effect of
-increasing their damage roll and may be used starting at level 25.
+A monk hardens their hands: damroll rises by 3d3 plus a sixth of your
+level for 5 to 8 ticks.
 
-Number of trains: 3
-Trainer: Silent Master (Monk)
+  - Not in a fight; empty hands; yourself only.
+  - Costs 15 mana; a failure costs a few.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:25  Necromancer:N/A
 
 See also: BLINDING FISTS, FISTS OF FURY, IRON SKIN
 ~
 
 0 'STUNNING BLOW'~
-Syntax: stun <victim>
+Syntax: stunning blow [victim]
+        stunning [victim]
 
-This skill allows the martial artist to strike at an exposed part of his
-or her opponent, stunning the victim for a brief period of time.  The
-accuracy required by this skill limits its use to monks of level 21 or
-above.
+A monk's precise strike.  Your skill, your level against theirs, and
+luck decide whether it stuns.  In a fight it defaults to your foe.
 
-Number of trains: 3
-Trainer: Silent Master (Monk)
+  - Needs empty hands; needs and costs 15 mana and 5 movement.
+  - Stunned: the victim takes your level to twice your level, and on its
+    next round of blows may lose the round while it recovers.
+  - Missed: it still deals half your level to three times your level.
+  - Either way the victim loses a round of command lag, and you lag too.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:21  Necromancer:N/A
 
 See also: NERVE DAMAGE, BASH, KICK
 ~
@@ -920,64 +789,46 @@ See also: NERVE DAMAGE, BASH, KICK
 0 TRIP~
 Syntax: trip [victim]
 
-Takes a foe's feet from under them; with no name, the foe you are
-fighting.  Being smaller than them, their dexterity, their speed and level
-count against you, and every attempt has a little bad luck in it.  Flying
-victims, riders and steeds, and somebody already down cannot be tripped.
+Takes a foe's feet from under them (your current foe if you name
+nobody).  Size, their dexterity and speed, level and a little bad luck
+count against you.
 
-A trip that lands deals a little damage and costs the victim a round of
-lag (their typed commands and a mobile's special attacks, not their
-ordinary blows) and you six seconds; a miss costs you four.  Tripping
-yourself puts you flat on your face for twelve.
+  - A hit deals a little damage, costs the victim a round of lag (typed
+    commands and special attacks, not ordinary blows), and you six
+    seconds; a miss costs you four.  Tripping yourself costs twelve.
+  - Flying victims, riders, steeds and anybody already down cannot be
+    tripped.
 
-Usable from level: Mage 21, Cleric 19, Thief 1, Warrior 15, Monk 10; never
-Necromancer.  The thieves' guild and monks get it free.  Trainers: Ni Hi the
-ninja master; the Silent Master and the Mud School adept practise it only.
-GAINLIST shows who sells it to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:21  Cleric:19  Thief:1  Warrior:15  Monk:10  Necromancer:N/A
 
 See also: BASH, KICK, DIRT
 ~
 
 -1 'SECOND ATTACK'~
-Training in second attack allows the character a chance at additional strikes
-in combat. A 100% second attack does NOT guarantee 2 attacks every
-round.
+Passive.  A chance at an extra blow each round.  Even at 100% it does
+not guarantee one.  The warriors' guild gives it free.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:24  Cleric:22  Thief:12  Warrior:5  Monk:8  Necromancer:N/A
-
-Number of trains required depends on your primary class and is:
-
-Mage:5 Cleric:4  Thief:3  Warrior:2  Monk:3
-
-Members of the warrior guild receive this skill for free.
-
-Necromancers cannot learn second attack.
-
-Trainer: Breark (?/W), Ni Hi (?/T), Dominic (C/C), Fredar (?/C),
-         Kilar (?/M), Master of Movement (Monk), Flame the fire
-         Mage (M/M)
 
 See also: THIRD ATTACK, DUAL WIELD
 ~
 
 0 'FOURTH ATTACK'~
-There is no fourth attack.  Third attack is the last of the extra strikes a
-character can train, and haste, dual wield and your weapon's own speed are
-where the rest of a round's blows come from.
+There is no fourth attack.  THIRD ATTACK is the last extra strike a
+character can train; haste, dual wield and your weapon's speed supply
+the rest of a round's blows.
 
 See also: THIRD ATTACK, DUAL WIELD, HASTE
 ~
 
 -1 'THIRD ATTACK'~
-Training in third attack allows the character a chance at an additional strike
-in a combat, and increases the chance of a second attack as well.  Perfect
-third attack does NOT assure three attacks per round.  Only full warriors
-(W/W) may gain third attack and they may use it at level 15 and above.
+Passive.  A chance at a third blow each round, and a better chance at a
+second.  Full warriors (warrior class in the warriors' guild) only.
 
-Number of trains: 4
-Trainer: Vladamir (W/W)
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:15  Monk:N/A  Necromancer:N/A
 
 See also: SECOND ATTACK, DUAL WIELD
 ~
@@ -985,84 +836,55 @@ See also: SECOND ATTACK, DUAL WIELD
 0 TRACK~
 Syntax: track <character>
 
-Tells you which way to go to reach somebody: "You find a trail <direction>
-from here", and whether they are just beyond (a room), not far off (five
-rooms or fewer), some way off (fifteen or fewer) or a long way off.  It
-does not move you; follow it and track again.  A missed roll says the
-trail was lost and never points a wrong way.
+Tells you which way to go to reach somebody you can see anywhere in the
+world, and whether they are just beyond, not far (five rooms or fewer),
+some way off (fifteen or fewer) or a long way off.  It does not move you;
+follow it and track again.  A missed roll says the trail was lost.
 
-The target must be somebody you can see, anywhere in the world.  The trail
-follows the six ordinary directions only -- not diagonals, portals or
-other ways through -- and does not cross the sky or deep water unless you
-are flying.  Each attempt costs 3 movement points, path or no path, and a
-moment's lag; with 2 or fewer you are too tired to track.
+  - Follows the six ordinary directions only -- no diagonals or portals
+    -- and not through the sky or deep water unless you fly.
+  - Costs 3 movement points and a moment's lag; refused at 2 or fewer.
 
-Usable from level: Thief 25; never Mage, Cleric, Warrior, Monk, Necromancer.
-Trainer: Mizry the assassin.  GAINLIST shows who sells it to your class and
-guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:25  Warrior:N/A  Monk:N/A  Necromancer:N/A
 
 See also: SCAN, WHERE, DANGER SENSE
 ~
 
 -1 'FAST HEALING'~
-The fast healing skill improves wound healing rates, whether walking, resting,
-or sleeping. It represents knowledge of healing herbs or just general
-toughness and stamina.  Fast healing is checked every tick, and it is
-possible for it to fail.
+Passive.  Improves how fast you regain hit points each tick, walking,
+resting or sleeping.  It can fail on any tick.
 
-The minimum level to use this skill depends on your primary class and is:
+Minimum level by class (GAINLIST shows who sells it):
+Mage:15  Cleric:14  Thief:16  Warrior:11  Monk:18  Necromancer:N/A
 
-Mage:15  Thief:16  Warrior:11  Monk:18
-
-Number of trains required depends on your primary class and is:
-
-Mage:6  Thief:4  Warrior:3  Monk:4
-
-Necromancers and Clerics cannot learn fast healing.
-
-Trainer: Breark (?/W), Silent Master (Monk)
-
-See also: MEDITATION
+See also: MEDITATION, TICK
 ~
 
 -1 HAGGLE HAGGLING~
+Passive.  A chance to buy for less and sell for more in shops.  A
+haggled sale never pays above what an item is worth.
 
-Haggling is an indispensable skill to the trader.  It allows a character to
-match wits with a merchant, seeking to get a better price for merchandise,
-or to buy at the lowest possible cost.  Unfortunately, most merchants are
-already very skilled at haggling, so the untrained adventurer had best
-guard his treasure closely.
-
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:7  Cleric:18  Thief:1  Warrior:14  Monk:N/A  Necromancer:N/A
 
-Number of trains required depends on your primary class and is:
-
-Mage:5  Cleric:5  Thief:3  Warrior:5
-
-Monks and Necromancers cannot learn haggle, since they cannot join the
-thief guild.
-
-Trainer: Suma (?/T)
-
-See also: SLEIGHT OF HAND, SKILLS
+See also: SLEIGHT OF HAND, BUY, SELL
 ~
 
 0 HIDE~
 Syntax: hide
 
-Slips you into the shadows of the room, out of the room's list for anybody
-without DETECT HIDDEN, holylight or the Triforce.  It takes no time and
-costs nothing, and tells you whether it worked.  You cannot hide in a
-fight, a fighter can always be seen, and any command you type brings you
-out again: hiding is for waiting, not for walking.  For moving unseen see
-SNEAK and STEALTH.
+Slips you into the shadows: you vanish from the room's list for anybody
+without DETECT HIDDEN, holylight or the Triforce.  It says whether it
+worked.
 
-Usable from level: Mage 10, Cleric 16, Thief 2, Warrior 12; never Monk,
-Necromancer.  Hobbits are born holding it; thieves get it free.  Trainers:
-Warder the nightmaster; Tia and Fingers practise it only.  GAINLIST shows
-who sells it to your class and guild.
+  - Takes no time and costs nothing.  Not in a fight.
+  - Any command you type brings you out again; hiding is for waiting.
+    To move unseen, see SNEAK and STEALTH.
+  - Hobbits are born holding it.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:10  Cleric:16  Thief:2  Warrior:12  Monk:N/A  Necromancer:N/A
 
 See also: SNEAK, STEALTH, DETECT HIDDEN, BACKSTAB
 ~
@@ -1070,16 +892,16 @@ See also: SNEAK, STEALTH, DETECT HIDDEN, BACKSTAB
 0 SNEAK~
 Syntax: sneak
 
-Moves you quietly: while it lasts, rooms you enter and leave are not told.
-It takes no time, costs nothing and does not say whether it worked -- a
-success lasts your level in ticks.  Any metal armour you wear cuts the
-chance to a third ("that noisy armor"), and putting metal on while sneaking
-rolls it again at that third.  It cannot be used while you are in STEALTH.
+Moves you quietly: while it lasts, rooms you enter and leave are not
+told.  A success lasts your level in ticks.
 
-Usable from level: Mage 8, Cleric 12, Thief 4, Warrior 10, Necromancer 7;
-never Monk.  Elves are born holding it; thieves get it free.  Trainers:
-Warder the nightmaster; Tia, Fingers and the Mud School adept practise it
-only.  GAINLIST shows who sells it to your class and guild.
+  - Takes no time, costs nothing, and does not say whether it worked.
+  - Wearing metal armour cuts the chance to a third; putting it on while
+    sneaking rolls again at that third.  Not usable in STEALTH.
+  - Elves are born holding it.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:8  Cleric:12  Thief:4  Warrior:10  Monk:N/A  Necromancer:7
 
 See also: HIDE, STEALTH, BACKSTAB
 ~
@@ -1087,122 +909,86 @@ See also: HIDE, STEALTH, BACKSTAB
 0 'LISTEN AT DOOR'~
 Syntax: listen <direction>
 
-This skill is used at a door to determine if there are any mobs on the
-other side of the door.  It is only available to members of the thieves'
-guild.
+Listens through a closed door for anybody moving on the other side.  Any
+of the ten directions, shortened or whole.
 
-The minimum level to use this skill depends on your primary class and is:
+  - The exit must be a closed door you can see (not a secret one).
+  - "You hear someone, or something" means somebody is there.  "Nothing
+    out of the ordinary" means nobody, or a missed roll.
+  - No cost and no lag.  Sold by the thieves' guild only.
 
+Minimum level by class (GAINLIST shows who sells it):
 Mage:35  Cleric:35  Thief:17  Warrior:27  Monk:N/A  Necromancer:N/A
 
-The number of trains needed to gain this skill depends on your primary
-class and is:
-
-Mage:1  Cleric:1  Thief:1  Warrior:1
-
-Monks and necromancers may not gain this skill, as they cannot join the
-thief guild.
-
-Trainer: Warder (?/T)
-
-See also: PEEK, SEARCH, STEALTH
+See also: PEEK, SEARCH, PICK LOCK
 ~
 
 0 LORE~
 Syntax: lore <object>
 
-Researches something you carry: its type, weight and worth, its armour or
-weapon dice, its affects, and for potions, scrolls, pills, wands and
-staves the spells in it, each named only as often as your skill.  Every
-number is an estimate, anything from half to double the truth.  It takes
-nine seconds, and costs gold: twenty times the object's level, less twice
-your skill and half your level, possibly to zero for simple items.  An
-object that cannot be identified says only that it is magical.
+Researches something you carry: type, weight, worth, armour or weapon
+dice, affects, and the spells in potions, scrolls, pills, wands and
+staves.  Every number is an estimate, half to double the truth.
 
-Usable from level: Mage 5, Cleric 6, Thief 12, Warrior 20, Monk 25; never
-Necromancer.  Trainer: Stout the fence.  GAINLIST shows who sells it to your
-class and guild.
+  - Nine seconds of lag.
+  - Costs gold: twenty times the object's level, less twice your skill
+    and half your level, possibly to zero for simple items.
+  - An object that cannot be identified says only that it is magical.
+
+Minimum level by class (GAINLIST shows who sells it):
+Mage:5  Cleric:6  Thief:12  Warrior:20  Monk:25  Necromancer:N/A
 
 See also: IDENTIFY, COMPARE, LOCATE OBJECT
 ~
 
 -1 MEDITATION~
-This skill is similar to fast healing, but relies on concentration and
-mantras to increase mana recovery when the character is sleeping or resting.
-Having the skill is all that is required to make it work; you will
-automatically try to meditate when you are healing.
+Passive.  Improves how fast you regain mana while resting or sleeping.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:6  Cleric:6  Thief:15  Warrior:15  Monk:9  Necromancer:8
 
-Number of trains required depends on your primary class and is:
-
-Mage:4  Cleric:4  Thief:5  Warrior:6  Monk:free  Necro:4
-
-Trainer: Silius (?/C), Diemos (?/M), Necromantic Knight (necro),
-         Master of Movement (Monk)
-
-See also: FAST HEALING
+See also: FAST HEALING, TICK
 ~
 
 -1 PEEK~
-The peek skill is useful for seeing what a player or monster is carrying,
-the better to use the steal command with.  More intelligent characters are
-harder to peek at.  Peek is used automatically when looking at a character.
-This skill is for members of the thieves' guild only.
+Passive.  When you LOOK at somebody, a chance to see what they carry as
+well.  Sold by the thieves' guild.
 
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:21  Cleric:21  Thief:10  Warrior:14  Monk:N/A  Necromancer:N/A
 
-Number of trains required depends on your primary class and is:
-
-Mage:5  Cleric:5  Thief:3  Warrior:5
-
-Monks and necromancers cannot learn to peek, since they cannot join the
-thieves' guild.
-
-Trainer: Quickfingers (?/T)
-
-See also: STEAL, HIDE SNEAK, SEARCH
+See also: STEAL, HIDE, SEARCH
 ~
 
 0 PHASE~
-Phase is a passive skill available at level 25.  When a character with
-the phase skill goes to SLEEP, there is a chance they phase out of sight
-as they drift off, as though they had used STEALTH.  The chance is the
-skill's percentage.
+Passive.  When you go to SLEEP, a chance (your skill percentage) that
+you slip out of sight as though you had used STEALTH.
 
-This skill triggers automatically when you sleep; no command is required.
+  - Every class, from level 25.  No trainer sells it.
 
-Number of trains: 1  (available to all classes at level 25)
-
-See also: STEALTH, SNEAK, HIDE
+See also: STEALTH, SHADOWMELD, SLEEP
 ~
 
 0 PICK 'PICK LOCK'~
-Syntax: pick <container>
+Syntax: pick lock <container>
+        pick <container>
         pick <direction>
 
-Picks a lock without its key.  It costs three seconds before anything
-else, so every refusal costs that too.  You cannot pick in a fight, and an
-awake mobile more than five levels above you standing in the room is too
-close to the lock.
+Opens a lock without its key.  A direction may be shortened (PICK WES).
 
-Some locks refuse before any roll and say why: a lock beyond any pick, a
-magical lock, one with no key, or something not closed or not locked.  A
-fumble -- the pick slipping, the tumblers dropping back -- is a missed roll
-on a lock that can open, and is worth trying again.  A trapped lock goes
-off when you get it right, and stays locked; SEARCH first.  A direction
-may be shortened (PICK WES); see HELP OPEN.
+  - Three seconds of lag before anything else, refusals included.
+  - Not in a fight, nor with an awake mobile more than five levels above
+    you in the room.
+  - A lock beyond any pick, a magical lock, a keyless one, or something
+    not closed or not locked is refused with the reason.  A fumble is a
+    missed roll on a lock that can open: try again.
+  - A trapped lock goes off when you succeed and stays locked; SEARCH
+    first.
 
-Usable from level: Mage 23, Cleric 23, Thief 7, Warrior 25; never Monk,
-Necromancer.  Thieves get it free.  Trainers: Picky the locksmith; Tia and
-the Mud School adept practise it only.  GAINLIST shows who sells it to your
-class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:23  Cleric:23  Thief:7  Warrior:25  Monk:N/A  Necromancer:N/A
 
-See also: SEARCH, UNLOCK, DOORBASH, KNOCK
+See also: SEARCH, UNLOCK, DOORBASH, OPEN
 ~
 
 0 RIDE RIDING MOUNT DISMOUNT~
@@ -1210,151 +996,93 @@ Syntax: ride <creature>
         mount <creature>
         dismount
 
-Rides a mountable creature, which then pays the movement points.  You need
-a saddle, carried or already on the creature, which goes on it as you
-mount.  The creature must be free: not fighting, not anybody's follower,
-not ridden; and you may not keep a pet and a mount at once.  A failed
-attempt throws you for 25 hit points; your chance is capped at 90%.
+Rides a mountable creature, which then pays the movement.
 
-A mount cannot go indoors, into a law room, through a closed or secret
-exit, or into another class's guild; the sky needs one that flies, deep
-water one that flies or swims.  Riders and steeds cannot be bashed or
-tripped.  DISMOUNT gets down.
+  - You need a saddle, carried or already on the creature.
+  - The creature must not be fighting, following anyone or ridden, and
+    you cannot keep a pet and a mount at once.
+  - A failure throws you for 25 hit points; the chance tops out at 90%.
+  - A mount cannot go indoors, into a law room, through a closed or
+    secret exit, or into another class's guild.  The sky needs a flyer;
+    deep water a flyer or swimmer.
 
-Usable from level: Mage 6, Cleric 6, Thief 5, Warrior 4, Monk 5, Necromancer
-6.  Trainer: Seraloi the lost.  GAINLIST shows who sells it to your class
-and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:6  Cleric:6  Thief:5  Warrior:4  Monk:5  Necromancer:6
 
-See also: PET, FLY, MOVEMENT
+See also: FLY, BASH, FOLLOW
 ~
 
 0 SEARCH~
 Syntax: search <container>
         search <direction>
 
-Looks for a trap on a closed, locked container or door, and disarms one
-it finds.  It costs six seconds whatever happens, refusals included.  An
-awake mobile more than five levels above you in the room notices you
-snooping and stops you.
+Looks for a trap on a closed, locked container or door, and disarms it.
 
-A successful search on a trapped lock removes the trap (a door's from both
-sides) and says so; on an untrapped one it says there is none.  A missed
-roll says only that it might be trapped, whether or not it is -- and half
-the time a missed roll on a trapped lock sets the trap off.  Traps burn,
-gas, poison, blind, stun, teleport, summon a guardian or worse.
+  - Costs six seconds of lag whatever happens.
+  - An awake mobile more than five levels above you stops you.
+  - Success removes the trap (from both sides of a door) or says there
+    is none.  A missed roll says only that it might be trapped -- and
+    half the time sets the trap off if there is one.
+  - Something not a closed, locked container or door is refused.
 
-Something that is not a container, not closed, not locked, or cannot be
-trapped is refused.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:9  Cleric:11  Thief:7  Warrior:11  Monk:N/A  Necromancer:N/A
 
-Usable from level: Mage 9, Cleric 11, Thief 7, Warrior 11; never Monk,
-Necromancer.  Trainers: Quickfingers the pickpocket; Tia and the Mud School
-adept practise it only.  Thieves get it free.  GAINLIST shows who sells it
-to your class and guild.
-
-See also: PICK, TRAPS, PEEK
+See also: PICK LOCK, DETECT TRAPS, PEEK
 ~
 
 0 SMITE~
 Syntax: smite <victim>
 
-A warrior's crushing round: every hit in it carries extra damage from the
-weapon's own dice, scaled by your skill -- once, twice above level 30 and
-three times above level 50.  A sword does it best; an axe, flail or mace a
-little less; any other weapon gets no bonus.  In a fight it always strikes
-the foe you are fighting.  You need a weapon wielded.  Hit or miss, six
-seconds of lag.
+A warrior's crushing round: every hit adds damage from the weapon's own
+dice, scaled by your skill -- once, twice above level 30, three times
+above level 50.  Best with a sword; an axe, flail or mace a little less;
+other weapons get no bonus.  In a fight it strikes your current foe.
 
-The force strains your weapon: now and then a smite wears it down, and you
-are told when it groans.  A weapon worn to nothing breaks and falls into
-your pack -- keep it repaired and it never will.
+  - Needs a wielded weapon.  Six seconds of lag either way.
+  - Now and then it wears your weapon down; a weapon worn to nothing
+    breaks.  REPAIR it and it never will.
+  - Full warriors (warrior class in the warriors' guild) only.
 
-Usable from level: Warrior 10; never Mage, Cleric, Thief, Monk, Necromancer.
-Trainer: Vladamir the veteran, to warriors of the warriors' guild.  GAINLIST
-shows who sells it to your class and guild.
+Minimum level by class (GAINLIST shows who sells it):
+Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:10  Monk:N/A  Necromancer:N/A
 
 See also: BASH, REPAIR, DESTRUCTION
 ~
 
-
 -1 WANDS STAVES SCROLLS~
-Magical items require training to use properly.  If your character lacks the
-necessary skill to use an item, he or she will fail, possibly destroying it.  The
-item skills are as follows:
+Skills for using magical items.  Without them you fail, and may destroy
+the item.
 
-scrolls         The reading of magical scrolls and books (see 'help recite')
-staves          The use of staves and similar devices (see 'help brandish')
-wands           The use of wands and similar items (see 'help zap')
+  scrolls   reading scrolls (RECITE)
+  staves    using staves (BRANDISH)
+  wands     using wands (ZAP)
 
-The minimum level to use these skills depends on your primary class.
-GAINLIST shows whether your class and guild can buy them.
+The mage guild gets wands and scrolls free, the cleric guild staves and
+scrolls.  GAINLIST shows whether you can buy them.
 
-Minimum levels for the use of scrolls are:
-
+For scrolls, minimum level by class:
 Mage:3  Cleric:4  Thief:5  Warrior:9  Monk:15  Necromancer:3
 
-Number of trains required depends on your primary class and is:
-
-Mage:free  Cleric:free  Thief:3  Warrior:3  Necromancer:free
-
-Members of the mage and cleric guilds receive this skill for free.
-
-Trainer: David (C/?), Gioli (M/?), Undead Spirit (necro), Dawn (?/M),
-         mud school adept (practice only, no gain)
-
-
-Minimum levels for the use of staves are:
-
+For staves, minimum level by class:
 Mage:5  Cleric:2  Thief:9  Warrior:9  Monk:34  Necromancer:7
 
-Number of trains required depends on your primary class and is:
-
-Mage: 2 Cleric:free  Thief:3  Warrior:3  Necromancer:2
-
-Members of the cleric guild receive this skill for free.
-
-Trainer: Silius (?/C), Dawn (?/M - practice only, no gain), Diemos (?/M),
-         David (C/?), Necromantic Knight (necro), mud school adept
-         (practice only, no gain)
-
-
-Minimum levels for the use of wands are:
-
+For wands, minimum level by class:
 Mage:2  Cleric:5  Thief:9  Warrior:9  Monk:33  Necromancer:6
 
-Number of trains required depends on your primary class and is:
-
-Mage:free  Cleric:2  Thief:3  Warrior:3  Necromancer:free
-
-Members of the mage guild receive this skill for free.
-
-Trainer: Dawn (?/M - practice only, no gain), Diemos (?/M), Gioli (M/?),
-         Silius (?/C), Soul Trapper (necro), mud school adept (practice
-         only, no gain)
-
-See also: LORE, BREW, CONCOCT
+See also: RECITE, BRANDISH, ZAP, LORE
 ~
 
 -1 'SHIELD BLOCK' SHIELDBLOCK BLOCK~
+Passive.  Parrying with a shield: a chance to stop a blow with the
+shield you wear.  Without the skill a shield defends you poorly.  Flails
+ignore shield blocks and whips get round them more easily.
 
-Shield block is a rather fancy name for the art of parrying with a shield.
-Characters with no shield block skill will not be able to defend themselves
-well with a shield.  Beware, flails ignore shield blocking attempts, and
-whips have an easier time getting around them.  Axes may split shields in two.
-
-The minimum level to use this skill depends on your primary class and is:
-
+Minimum level by class (GAINLIST shows who sells it):
 Mage:17  Cleric:17  Thief:16  Warrior:2  Monk:15  Necromancer:20
-
-The number of trains needed to gain this skill depends on your primary
-class and is:
-
-Mage:5  Cleric:3  Thief:5  Warrior:free
-
-Trainer: Kalak (W/?), Geko (?/W), mud school adept (practice only, no gain)
 
 See also: PARRY, DODGE
 ~
-
 
 0 $~
 

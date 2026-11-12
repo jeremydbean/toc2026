@@ -5,51 +5,36 @@
 #HELPS
 
 -1 arena pkilling pstealing flag~
+THE ARENA
+In the Arena of ole Midgaard (WALKTO ARENA) any player may fight any
+other.  Inside it nobody needs PKILL, level limits do not apply, and an
+attack does not make you WANTED.  A player killed there by another player
+is not really killed: they vanish to the Temple altar at one hit point,
+spells gone, with everything they carried -- no corpse and no lost
+experience.
 
-The arena was designed so any player may duel with any other player and not 
-
-acquire a killer or traitor flag.  The entire arena (with the exception of one 
-
-no-kill room) is fair game, no rules, anything goes.  So remember this before
-
-you enter.
-
-
-
-PKILLING
-
-This is the act of one player attacking another player.  This is only allowed
-
-for those who are members of a castle.  And they will also receive a KILLER
-
-or TRAITOR flag.  This flag will be with them till the die.  A TRAITOR flag is
-
-given to those who attack players in their own CASTLE.
-
-
-
-PSTEALING
-
-This is the act of a player thief stealing items or coins off of another
-
-player.  Any thief caught in this act is given a THIEF flag.  This is only
-
-allowed among players who join a CASTLE.
-
-
+PLAYER KILLING
+Outside the arena you may attack, or STEAL from, another player only
+when:
+  - both of you have PKILL on (from level 15; it is permanent);
+  - you are within five levels of each other, unless they are WANTED;
+  - neither of you is in the Temple, at its altar or in a safe room.
+Attack a player with MURDER; KILL works only on a WANTED one.
 
 FLAGS
+  WANTED   Attacking a player outside the arena, or failing to steal from
+           one, makes you WANTED (unless you or they already are).  City
+           guards attack you, anybody may loot your corpse, and the
+           five-level limit no longer protects you.  It ends when a player
+           who is not WANTED kills you, when you remort, or by staff
+           PARDON.
+  TRAITOR  Set by the staff.  Guards attack you and trainers will not
+           teach you.
+  EXCON    Marks a player released from jail.
 
-If you have a KILLER, TRAITOR, or THIEF flag many of the guards of the
+The rules about PK conduct are in RULES.
 
-different cities will attack you on sight, as well as Sarmini.  Shops will not
-
-sell to you either.  Soon there will be a place where killers and thieves can
-
-buy/sell stuff.
-
-See also: PKILL, GUILDS
-
+See also: PKILL, MURDER, TRAITOR, RULES
 ~
 
 
