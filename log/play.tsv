@@ -23268,3 +23268,51 @@
 1794517249	coin	Miseri	15	30426	hyrule.are	+60	loot	(violence_update)	corpse of a rope	103143687
 1794517249	coin	Miseri	15	30426	hyrule.are	+30000	loot	(violence_update)	corpse of a rope	103173687
 1794517249	coin	Miseri	15	30426	hyrule.are	+20	loot	(violence_update)	corpse of a rope	103173707
+1794517700	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	invuln		Invulnerability off. You can be hurt again.	-	-
+1794517704	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	restore	self	Miseri restored.	-	-
+1794517705	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	look		Level 2: Long Hall of the Moon //   This chamber is part of the long north-south spine of the dungeon, its blue // walls rising unbroken to a shadowed vault carved with the phases of the	-	+
+1794517710	got	Miseri	15	30426	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794517710	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794517712	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	kill	rop	A rope dodges your attack. // Your punch misses a rope. // Your punch wounds a rope.	-	-
+1794517717	got	Miseri	15	30426	hyrule.are	30695	four bombs	treasure	1	0	(violence_update)	-
+1794517717	got	Miseri	15	30426	hyrule.are	30621	a clock-flask	potion	8	160000	(violence_update)	corpse of a rope
+1794517717	coin	Miseri	15	30426	hyrule.are	+1800	loot	(violence_update)	corpse of a rope	103175507
+1794517717	coin	Miseri	15	30426	hyrule.are	+60	loot	(violence_update)	corpse of a rope	103175567
+1794517717	coin	Miseri	15	30426	hyrule.are	+30000	loot	(violence_update)	corpse of a rope	103205567
+1794517717	coin	Miseri	15	30426	hyrule.are	+20	loot	(violence_update)	corpse of a rope	103205587
+1794517722	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	look		Level 2: Long Hall of the Moon //   This chamber is part of the long north-south spine of the dungeon, its blue // walls rising unbroken to a shadowed vault carved with the phases of the	-	+
+1794517727	cmd	Miseri	15	30428	hyrule.are	standing	100	0	-	north		Level 2: Silent Chamber //   An empty, silent chamber of pale blue stone, its floor swept bare and its // corners deep in shadow. No track marks the dust here, and every footstep	-	+
+1794517729	got	Miseri	15	30428	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794517729	cmd	Miseri	15	30428	hyrule.are	standing	100	0	-	get	all	You get a small key.	-	-
+1794517729	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	south		Level 2: Long Hall of the Moon //   This chamber is part of the long north-south spine of the dungeon, its blue // walls rising unbroken to a shadowed vault carved with the phases of the	-	+
+1794517731	got	Miseri	15	30426	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794517731	cmd	Miseri	15	30426	hyrule.are	standing	100	0	-	get	all	You get a small key.	-	-
+1794517731	cmd	Miseri	15	30428	hyrule.are	standing	100	0	-	north		Level 2: Silent Chamber //   An empty, silent chamber of pale blue stone, its floor swept bare and its // corners deep in shadow. No track marks the dust here, and every footstep	-	+
+1794517732	cmd	Miseri	15	30430	hyrule.are	standing	100	0	-	north		Level 2: Serpent Hall //   Coiled tracks and shed skins cover the floor of this long chamber, and the // air is warm and close with reptile musk. A double row of stone blocks runs	-	+
+1794517734	cmd	Miseri	15	30430	hyrule.are	standing	100	0	-	unlock	north	You lack the key.	-	-
+1794517735	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	north		Level 2: Smoke-Stained Antechamber //   Gouged walls and scattered stone chips mark this chamber below the // dungeon's northern end. A low rumble comes from beyond the north wall, and	-	+
+1794517739	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	kill	gor	Your punch decimates a red goriya! // Your punch DISEMBOWELS a red goriya! // Your punch wounds a red goriya.	-	-
+1794517744	coin	Miseri	15	30432	hyrule.are	+100	loot	(violence_update)	corpse of a red goriya	103205687
+1794517744	coin	Miseri	15	30432	hyrule.are	+74	loot	(violence_update)	corpse of a red goriya	103205761
+1794517744	coin	Miseri	15	30432	hyrule.are	+60000	loot	(violence_update)	corpse of a red goriya	103265761
+1794517744	coin	Miseri	15	30432	hyrule.are	+20	loot	(violence_update)	corpse of a red goriya	103265781
+1794517746	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	look		Level 2: Smoke-Stained Antechamber //   Gouged walls and scattered stone chips mark this chamber below the // dungeon's northern end. A low rumble comes from beyond the north wall, and	-	+
+1794517753	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	unlock	north	You lack the key.	-	-
+1794517757	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	unlock	south	You lack the key.	-	-
+1794517759	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	look		Level 2: Smoke-Stained Antechamber //   Gouged walls and scattered stone chips mark this chamber below the // dungeon's northern end. A low rumble comes from beyond the north wall, and	-	+
+1794517813	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794517815	cmd	Miseri	15	30432	hyrule.are	standing	100	0	-	open	south	Ok.	-	-
+1794517815	cmd	Miseri	15	30435	hyrule.are	standing	100	0	-	north		Level 2: Dodongo's Lair //   A broad, low chamber that stinks of smoke and scorched rock, its floor // pitted with blast craters and pressed by huge three-toed footprints of a	-	+
+1794517819	cmd	Miseri	15	30435	hyrule.are	standing	100	0	-	bomb	do	You roll a bomb beneath The Dodongo. It swallows it -- and the blast tears through its hide! // You do UNSPEAKABLE things to The Dodongo!	-	-
+1794517822	achieved	Miseri	15	30435	hyrule.are	hyrule-moon	15	140	bomb
+1794517822	got	Miseri	15	30435	hyrule.are	30655	a Dodongo-hide jerkin	armor	14	9800000	bomb	corpse of The Dodongo
+1794517822	got	Miseri	15	30435	hyrule.are	30711	a moonlit cloak	armor	14	9800000	bomb	corpse of The Dodongo
+1794517822	got	Miseri	15	30435	hyrule.are	30709	a pair of crescent armbands	armor	14	9800000	bomb	corpse of The Dodongo
+1794517822	got	Miseri	15	30435	hyrule.are	30349	the Heart Guard of the Moon	armor	14	9800000	bomb	corpse of The Dodongo
+1794517822	got	Miseri	15	30435	hyrule.are	30583	a Dodongo tail-club	weapon	14	11760000	bomb	corpse of The Dodongo
+1794517822	got	Miseri	15	30435	hyrule.are	30592	the Moon's Heart Container	armor	14	9800000	bomb	corpse of The Dodongo
+1794517822	coin	Miseri	15	30435	hyrule.are	+2200	loot	bomb	corpse of The Dodongo	103267981
+1794517822	coin	Miseri	15	30435	hyrule.are	+92	loot	bomb	corpse of The Dodongo	103268073
+1794517822	coin	Miseri	15	30435	hyrule.are	+50000	loot	bomb	corpse of The Dodongo	103318073
+1794517822	coin	Miseri	15	30435	hyrule.are	+32	loot	bomb	corpse of The Dodongo	103318105
+1794517822	cmd	Miseri	15	30435	hyrule.are	fighting	100	2	fight	bomb	do	You roll a bomb beneath The Dodongo. It swallows it -- and the blast tears through its hide! // You do UNSPEAKABLE things to The Dodongo! // The Dodongo is DEAD!!	-	+
