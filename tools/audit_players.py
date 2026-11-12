@@ -150,9 +150,10 @@ def audit_one(name: str, text: str, t: dict, vnums: set | None) -> list[dict]:
 
     player = text.split("\n#O", 1)[0]
     level = int(field(player, "Levl") or 0)
-    trust = int(field(player, "Tru") or 0)
-    if level >= LEVEL_IMMORTAL or trust >= LEVEL_IMMORTAL:
-        return found                     # staff, and staff-trusted, hold what they like
+    if level >= LEVEL_IMMORTAL or field(player, "Creator") == "1":
+        return found                     # staff hold what they like; staff are
+                                         # immortals by level, never a mortal
+                                         # given trust (owner, 2026-11-12)
     cls = int(field(player, "Cla") or 0)
     guild = int(field(player, "Gui") or 11)
     race = (field(player, "Race") or "").rstrip("~")

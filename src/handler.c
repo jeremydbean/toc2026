@@ -1008,6 +1008,53 @@ int get_trust( const CHAR_DATA *ch )
 
 
 /*
+ * Whether somebody is staff -- an immortal by LEVEL (owner, 2026-11-12:
+ * "staff-only should ONLY apply to actual immortals level 60+", "let
+ * trusted players act as mortals across the board"). Trust decides which
+ * commands interpret() lets a character type, and the rank comparisons
+ * of who may act on whom (rank_protects, TRUST, SNOOP); nothing else. A
+ * mortal given trust is a mortal everywhere else: hurt, logged, quested,
+ * paid achievements, deaf to the staff channels and blind to wizinvis.
+ *
+ * Read as the old trust test at LEVEL_IMMORTAL was, but by level: a switched
+ * immortal is asked about their own character, a mobile on its own is
+ * never staff (IS_IMMORTAL would call a level 60 mobile one), and the
+ * creator keeps the rank whatever their level.
+ */
+bool is_staff( const CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+        return false;
+    if ( ch->desc != NULL && ch->desc->original != NULL )
+        ch = ch->desc->original;
+    if ( IS_NPC(ch) )
+        return false;
+    return ch->level >= LEVEL_IMMORTAL || is_creator( ch );
+}
+
+/*
+ * The rank a staff-only view, channel or notice compares against: staff
+ * keep their trust (get_trust), anybody else counts at their level, so a
+ * trusted mortal hears, reads and sees what a mortal of that level does.
+ * A mobile is answered as get_trust always answered it.
+ */
+int staff_trust( const CHAR_DATA *ch )
+{
+    const CHAR_DATA *who;
+
+    if ( ch == NULL )
+        return 0;
+    if ( is_staff( ch ) )
+        return get_trust( ch );
+    who = ( ch->desc != NULL && ch->desc->original != NULL )
+        ? ch->desc->original : ch;
+    if ( IS_NPC(who) )
+        return get_trust( ch );
+    return UMIN( who->level, LEVEL_IMMORTAL - 1 );
+}
+
+
+/*
  * Retrieve a character's age.
  */
 int get_age( CHAR_DATA *ch )
@@ -3360,9 +3407,10 @@ bool room_is_private( ROOM_INDEX_DATA *pRoomIndex )
 	 * and one who had wandered off shut questing down for the whole
 	 * mud. The flag exists to stop players walking in on each other,
 	 * not to let a mobile or a staff character close a room by
-	 * standing in it.
+	 * standing in it. Staff by level (is_staff): a mortal given trust
+	 * takes a place like any player (owner, 2026-11-12).
 	 */
-	if ( IS_NPC(rch) || IS_TRUSTED(rch, LEVEL_IMMORTAL) )
+	if ( IS_NPC(rch) || is_staff( rch ) )
 	    continue;
 
 	if(rch->battleticks == 0)
@@ -3384,15 +3432,15 @@ bool room_is_private( ROOM_INDEX_DATA *pRoomIndex )
 /*
  * Whether ch may walk into a room room_is_private() has closed.
  *
- * An occupancy limit is aimed at players, so staff override it -- and
- * they had to, because every caller asked for level 69 rather than
- * immortal rank, and asked it of ch->level rather than get_trust(), so
- * an ordinary immortal was turned away from a room they were meant to
- * be able to reach and a trusted builder was turned away from all of
- * them.
+ * An occupancy limit is aimed at players, so staff override it --
+ * immortals by level (is_staff), never a mortal given trust (owner,
+ * 2026-11-12: "let trusted players act as mortals across the board").
+ * Every caller once asked for level 69 rather than immortal rank, so an
+ * ordinary immortal was turned away from a room they were meant to be
+ * able to reach.
  *
- * ROOM_IMP_ONLY is not an occupancy limit. It keeps the bar it always
- * had.
+ * ROOM_IMP_ONLY is not an occupancy limit. It keeps its GOD bar, asked
+ * of staff_trust: an immortal's trust, a mortal's level.
  */
 bool can_enter_private_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 {
@@ -3400,9 +3448,9 @@ bool can_enter_private_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 	return true;
 
     if ( IS_SET(pRoomIndex->room_flags, ROOM_IMP_ONLY) )
-	return get_trust( ch ) >= GOD;
+	return staff_trust( ch ) >= GOD;
 
-    return IS_TRUSTED( ch, LEVEL_IMMORTAL );
+    return is_staff( ch );
 }
 
 /* visibility on a room -- for entering and exits */
@@ -3412,7 +3460,7 @@ bool can_see_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
         return false;
 
     if (IS_SET(pRoomIndex->room_flags, ROOM_IMP_ONLY)
-    &&  get_trust(ch) < MAX_LEVEL)
+    &&  staff_trust(ch) < MAX_LEVEL)
 	return false;
 
     if (IS_SET(pRoomIndex->room_flags, ROOM_GODS_ONLY)
@@ -3435,7 +3483,7 @@ bool can_see_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 
 /*
  * Whether a ROOM_NEWBIES_ONLY room turns this character away: anyone past
- * LEVEL_NEWBIE but staff (by trust). The one test (review, 2026-11-12):
+ * LEVEL_NEWBIE but staff (by level, is_staff). The one test (review, 2026-11-12):
  * can_see_room said past level 5 while walking, ENTER, the manipulation
  * objects, the travel spells, random arrivals and WALKTO said past level
  * 10, so a level 6 to 10 was routed to Mud School and refused at its door,
@@ -3449,7 +3497,7 @@ bool newbie_room_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
     return ch != NULL && room != NULL
         && IS_SET(room->room_flags, ROOM_NEWBIES_ONLY)
         && ch->level > LEVEL_NEWBIE
-        && !IS_TRUSTED(ch, LEVEL_IMMORTAL);
+        && !is_staff( ch );
 }
 
 
@@ -3478,13 +3526,15 @@ bool triforce_sight( const CHAR_DATA *ch )
 }
 
 /*
- * The trust a character's eyes count at: their own, raised to
- * TRIFORCE_SIGHT_LEVEL while they wear the Triforce. Only sight uses
- * this -- commands and permissions still ask get_trust().
+ * The trust a character's eyes count at: staff_trust -- an immortal's
+ * trust, anybody else's level, so a mortal given trust sees no wizinvis
+ * immortal (owner, 2026-11-12) -- raised to TRIFORCE_SIGHT_LEVEL while
+ * they wear the Triforce. Only sight uses this -- commands and
+ * permissions still ask get_trust().
  */
 int sight_trust( const CHAR_DATA *ch )
 {
-    int trust = get_trust( ch );
+    int trust = staff_trust( ch );
 
     if ( triforce_sight( ch ) )
 	trust = UMAX( trust, TRIFORCE_SIGHT_LEVEL );
@@ -3752,7 +3802,7 @@ const char *area_shown_name( const char *name )
 const char *pers_acting_on( CHAR_DATA *ch, CHAR_DATA *looker )
 {
     if ( !can_see( looker, ch )
-      && !IS_NPC(ch) && get_trust( ch ) >= LEVEL_IMMORTAL )
+      && !IS_NPC(ch) && is_staff( ch ) )
         return "an immortal";
     return PERS( ch, looker );
 }

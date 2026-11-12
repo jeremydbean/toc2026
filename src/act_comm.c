@@ -841,7 +841,9 @@ struct history_entry
 
 static bool history_may_read( CHAR_DATA *ch, int index )
 {
-    return get_trust( ch ) >= channel_meta_table[index].hear_level;
+    /* Read back at the rank hearing it live needs: staff by level, so a
+       trusted mortal reads no staff channel (owner, 2026-11-12). */
+    return staff_trust( ch ) >= channel_meta_table[index].hear_level;
 }
 
 /* Oldest first: the tail of the sort is the most recent. */
@@ -1223,12 +1225,12 @@ static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
           || victim == NULL )
             continue;
 
-        /* Trust, not level. The command table lets somebody speak on
-           a channel when get_trust() clears its rank, so asking the
-           level here meant a builder trusted to immortal could talk on
-           immtalk and never hear a word of the reply. Same for godtalk
-           and hero. */
-        if ( get_trust( victim ) < hear_level )
+        /* Staff hear the staff channels; a mortal given trust does not
+           (owner, 2026-11-12: "let trusted players act as mortals across
+           the board"). The command table still lets their trust speak on
+           one; hearing is staff_trust's -- their trust when staff by
+           level, their level otherwise. */
+        if ( staff_trust( victim ) < hear_level )
             continue;
 
         if ( IS_SET( victim->comm, flag )
@@ -1645,7 +1647,7 @@ bool is_ignoring( CHAR_DATA *listener, CHAR_DATA *speaker )
 
     /* Staff are always heard: a warning or an answer from them is the
        one thing nobody may shut out. */
-    if ( IS_TRUSTED( speaker, LEVEL_IMMORTAL ) )
+    if ( is_staff( speaker ) )
         return false;
 
     return ignore_has_name( listener, speaker->name );
@@ -1763,7 +1765,7 @@ void do_ignore( CHAR_DATA *ch, char *argument )
     }
 
     if ( ( victim = ignore_find_online( rch, arg ) ) != NULL
-      && IS_TRUSTED( victim, LEVEL_IMMORTAL ) )
+      && is_staff( victim ) )
     {
         send_to_char( "The staff cannot be ignored. If one of them is "
                       "troubling you, tell another.\n\r", ch );
@@ -2072,11 +2074,10 @@ bool is_note_to( CHAR_DATA *ch, NOTE_DATA *pnote )
     if ( is_name( "all", pnote->to_list ) )
         return TRUE;
 
-    /* Trust, not level. Everything else that decides whether somebody
-       counts as staff asks get_trust(), so a builder trusted to
-       immortal rank who could run staff commands still never saw the
-       mail addressed to the people running them. */
-    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    /* Staff by level (owner, 2026-11-12: "staff-only should ONLY apply
+       to actual immortals level 60+"): a mortal given trust to run some
+       staff commands is not addressed by mail to the immortals. */
+    if ( is_staff( ch )
     &&   is_name( "immortal", pnote->to_list ) )
         return TRUE;
 
@@ -2718,7 +2719,7 @@ void do_note( CHAR_DATA *ch, char *argument )
             /* Your own note, one addressed to you by name, or staff
                clearing the board. A note to all is not yours to delete
                just because you can read it. */
-            if ( !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+            if ( !is_staff( ch )
               && str_cmp( ch->name, pnote->sender )
               && !is_name( ch->name, pnote->to_list ) )
             {
@@ -3621,7 +3622,7 @@ void report_login_notice( CHAR_DATA *ch )
     stash_offer_notice( ch );
 
     /* The report files are staff business. */
-    if ( !IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( !is_staff( ch ) )
 	return;
 
     for ( kind = 0; kind < REPORT_KINDS; kind++ )

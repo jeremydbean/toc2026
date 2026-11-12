@@ -36,6 +36,16 @@ Normal players advance through level 59 after remorts. Levels 60-70 are
 immortal/staff trust levels. A command's minimum trust is defined in
 `src/interp.c`; do not assume every immortal can perform every operation.
 
+**Staff are immortals by level; trust only opens commands** (owner,
+2026-11-12: "let trusted players act as mortals across the board",
+"staff-only should ONLY apply to actual immortals level 60+"). TRUST on a
+mortal lets them type the commands it reaches -- GOTO, STAT, LOAD and the
+rest -- and counts in who may act on whom, and nothing else: they are hurt
+(INVULN is refused), logged, quested, paid achievements, counted in private
+rooms, kept out of staff rooms, deaf to IMMTALK, GODTALK and WIZINFO, shown
+no staff-only CHANGES, REPORTS banner or mail to `immortal`, and blind to
+wizinvis staff. To make somebody staff, make them an immortal by level.
+
 ```text
 wizhelp
 help <immortal-command>

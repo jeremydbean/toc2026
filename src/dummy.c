@@ -1892,7 +1892,7 @@ static void dummy_command( CHAR_DATA *ch, char *argument )
     &&   ( !str_prefix( arg1, "board" ) || !str_prefix( arg1, "leaderboard" )
         || !str_prefix( arg1, "top" ) ) )
     {
-        if ( arg2[0] != '\0' && IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        if ( arg2[0] != '\0' && is_staff( ch ) )
         {
             char arg3[MAX_INPUT_LENGTH];
 

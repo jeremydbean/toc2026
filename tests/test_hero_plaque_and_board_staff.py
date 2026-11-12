@@ -66,7 +66,8 @@ class PlaqueSourceTests(unittest.TestCase):
         staff = dummy.split("static void dps_board_staff(", 1)[1].split("\n}\n", 1)[0]
         self.assertEqual(2, staff.count("log_string( buf )"))
         self.assertIn('str_cmp( who, "confirm" )', staff)
-        self.assertIn("IS_TRUSTED( ch, LEVEL_IMMORTAL )",
+        # Staff by level (owner, 2026-11-12: trusted mortals act as mortals).
+        self.assertIn("is_staff( ch )",
                       dummy.split("dps_board_staff( ch, arg2, arg3 )", 1)[0][-400:])
 
 

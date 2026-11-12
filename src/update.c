@@ -1025,8 +1025,8 @@ static void condition_change( CHAR_DATA *ch, int iCond, int value, bool speak )
  * Starving and parched (owner, 2026-11-12: hunger and thirst "should
  * damage you somewhat as they get extreme, and maybe prevent you from
  * sleeping"). Whom hunger and thirst reach at all: a mortal player below
- * hero level who has not had the first remort's gift. Staff by trust, as
- * every other staff test asks; gain_condition already holds a hero's at a
+ * hero level who has not had the first remort's gift. Staff by level
+ * (is_staff), as every other staff test asks; gain_condition already holds a hero's at a
  * middling value and a remort's at -1, so neither ever reads 0 -- they are
  * named here so SLEEP and the tick agree whatever SET did meanwhile.
  */
@@ -1034,7 +1034,7 @@ bool hunger_thirst_applies( CHAR_DATA *ch )
 {
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
 	return false;
-    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( is_staff( ch ) )
 	return false;
     if ( ch->level >= LEVEL_HERO || ch->pcdata->num_remorts >= 1 )
 	return false;

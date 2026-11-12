@@ -139,8 +139,15 @@ class HeroRollStaffTests(unittest.TestCase):
                 promo.sync("save")
                 plaque = staff.sync("look plaque", timeout=60)
                 self.assertIn("Zrollpromo", plaque, "a new hero is on the plaque")
-                # Promoted to staff: off the roll at their next save.
-                staff.sync("trust zrollpromo 70")
+                # Trusted, still a mortal (owner, 2026-11-12: staff are
+                # immortals by level): still on the plaque.
+                staff.must("trust zrollpromo 70", "trusted at level 70")
+                promo.sync("save")
+                self.assertIn("Zrollpromo", staff.sync("look plaque", timeout=60),
+                              "a mortal given trust stays on the roll")
+                staff.must("trust zrollpromo 0", "trusted at level 0")
+                # Promoted to staff, by level: off the roll at their next save.
+                staff.must("advance zrollpromo 60", "60")
                 promo.sync("save")
                 plaque = staff.sync("look plaque", timeout=60)
                 tablet = staff.sync("look tablet", timeout=60)

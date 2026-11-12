@@ -493,7 +493,7 @@ void jail_login_place( CHAR_DATA *ch )
     ROOM_INDEX_DATA *temple;
 
     if ( ch == NULL || IS_NPC(ch) || is_jailed( ch ) || ch->in_room == NULL
-    ||   ch->in_room->vnum != ROOM_VNUM_JAIL || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    ||   ch->in_room->vnum != ROOM_VNUM_JAIL || is_staff( ch ) )
         return;
     if ( ( temple = get_room_index( ROOM_VNUM_TEMPLE ) ) != NULL )
         ch->in_room = temple;

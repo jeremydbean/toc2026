@@ -56,11 +56,36 @@ class ReportsTests(unittest.TestCase):
             client.drain(1.0)
             client.send("quit")
             self.assertTrue(client.wait_closed())
-        # Mortal level, immortal trust: REPORTS is gated on trust, the
-        # way interp.c gates every command.
-        patch_player_file(mud, "Zstaffer", Levl=45, Tru=65)
+        # An immortal by level (REPORTS is L8, 62): the login banner is a
+        # staff view, and staff are immortals by level (owner, 2026-11-12).
+        patch_player_file(mud, "Zstaffer", Levl=65)
 
         return mud
+
+    def test_a_trusted_mortal_may_type_reports_but_is_not_told(self) -> None:
+        """Trust is command authority: REPORTS works for a level 45 trusted
+        to 65. The login banner is staff's, by level (owner, 2026-11-12:
+        "staff-only should ONLY apply to actual immortals level 60+")."""
+        mud = self.staffed()
+        with mud.connect(timeout=120) as client:
+            create_character(client, "Ztrustrep", PASSWORD)
+            client.drain(1.0)
+            client.send("quit")
+            self.assertTrue(client.wait_closed())
+        patch_player_file(mud, "Ztrustrep", Levl=45, Tru=65)
+
+        with mud.connect(timeout=120) as client:
+            login(client, "Zstaffer", PASSWORD)
+            run(client, "bug the trusted mortal hears nothing", 1.5)
+            client.drain(1.0)
+            client.send("quit")
+            self.assertTrue(client.wait_closed())
+
+        with mud.connect(timeout=120) as client:
+            greeting = greet(client, "Ztrustrep")
+            self.assertNotIn("NEW PLAYER REPORTS", greeting, greeting[-600:])
+            listing = run(client, "reports bugs", 2.0)
+            self.assertIn("trusted mortal hears nothing", listing, listing)
 
     def test_a_filed_bug_is_announced_at_the_next_login(self) -> None:
         mud = self.staffed()
@@ -189,14 +214,18 @@ class ReportSourceTests(unittest.TestCase):
         self.assertNotIn("unlink(", body)
         self.assertNotIn("remove(", body)
 
-    def test_it_is_gated_on_trust_like_the_command_table(self) -> None:
+    def test_the_notice_is_for_staff_by_level(self) -> None:
+        """REPORTS is typed by trust, like any command; the login notice
+        is a staff view, and staff are immortals by level (owner,
+        2026-11-12: "staff-only should ONLY apply to actual immortals
+        level 60+")."""
         row = [line for line in self.interp.splitlines()
                if '"reports"' in line]
         self.assertEqual(len(row), 1, row)
         notice = self.comm.split("void report_login_notice(", 1)[1]
         notice = notice.split("\n}", 1)[0]
-        self.assertIn("IS_TRUSTED(ch, LEVEL_IMMORTAL)", notice)
-        self.assertNotIn("IS_IMMORTAL", notice)
+        self.assertIn("if ( !is_staff( ch ) )", notice)
+        self.assertNotIn("IS_TRUSTED", notice)
 
     def test_everyone_is_told_about_their_own_notes(self) -> None:
         """The note count is above the staff-only return, so it reaches
@@ -204,7 +233,7 @@ class ReportSourceTests(unittest.TestCase):
         notice = self.comm.split("void report_login_notice(", 1)[1]
         notice = notice.split("\n}", 1)[0]
         self.assertLess(notice.index("unread_note_count"),
-                        notice.index("IS_TRUSTED"))
+                        notice.index("is_staff"))
 
 
 if __name__ == "__main__":

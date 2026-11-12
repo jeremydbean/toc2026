@@ -141,11 +141,12 @@ class InvulnTests(unittest.TestCase):
             self.assertIn("powerless against you", fight, fight[-600:])
             self.assertEqual(hitpoints(client), before)
 
-    def test_it_protects_a_trusted_mortal(self) -> None:
-        """The case that was broken. interp.c gates every command on
-        get_trust(), so a builder trusted to immortal rank could run
-        INVULN and was told it was on -- but the effect asked
-        IS_IMMORTAL(), which reads the level, so the blows landed."""
+    def test_it_does_not_protect_a_trusted_mortal(self) -> None:
+        """Staff are immortals by level (owner, 2026-11-12: "let trusted
+        players act as mortals across the board"). Trust still lets a
+        mortal type INVULN -- interp.c gates commands on get_trust() --
+        but the command says it is an immortal's, sets nothing, and the
+        blows land."""
         with self.mud.connect(timeout=120) as client:
             create_character(client, "Ztrusted", PASSWORD)
             client.drain(1.0)
@@ -168,9 +169,12 @@ class InvulnTests(unittest.TestCase):
 
         with self.mud.connect(timeout=120) as client:
             login(client, "Ztrusted", PASSWORD)
-            self.assertIn("read normally", run(client, "invuln damage", 1.5))
+            refused = run(client, "invuln damage", 1.5)
+            self.assertIn("an immortal's", refused)
+            self.assertNotIn("Invulnerability on", refused)
 
-            # goto is LEVEL_IMMORTAL, which trust 65 clears.
+            # goto is LEVEL_IMMORTAL, which trust 65 clears: the command
+            # authority trust keeps.
             run(client, "goto %d" % BATTLEGROUND_ROOM, 2.0)
             before = hitpoints(client)
             self.assertGreater(before, 0)
@@ -179,10 +183,11 @@ class InvulnTests(unittest.TestCase):
             fight = ""
             for _ in range(10):
                 fight += run(client, "", 2.5)
+                if 0 < hitpoints(client) < before:
+                    break
 
-            self.assertRegex(fight, r"(?i)(hits|slash|pound|crush|maul|pierce)")
-            self.assertEqual(hitpoints(client), before,
-                             "a trusted mortal lost hit points")
+            self.assertLess(hitpoints(client), before,
+                            "a trusted mortal took no damage: " + fight[-400:])
 
     def test_the_flag_is_not_shown_to_anyone(self) -> None:
         """Deliberately unlike WIZINVIS and CLOAK: nothing advertises it."""
@@ -195,15 +200,20 @@ class InvulnTests(unittest.TestCase):
 
 
 class InvulnSourceTests(unittest.TestCase):
-    def test_it_asks_trust_and_not_level(self) -> None:
-        """Whatever gates the command has to be what gates the effect,
-        and interp.c gates on get_trust()."""
+    def test_it_asks_level_and_not_trust(self) -> None:
+        """Staff are immortals by level (is_staff; owner, 2026-11-12).
+        Trust lets a mortal type INVULN; the effect is an immortal's."""
         wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="utf-8")
         body = wiz.split("bool is_invulnerable(", 1)[1]
         body = body.split(chr(10) + "}", 1)[0]
         tight = "".join(body.split())
-        self.assertIn("IS_TRUSTED(ch,LEVEL_IMMORTAL)", tight)
-        self.assertNotIn("IS_IMMORTAL", tight)
+        self.assertIn("is_staff(ch)", tight)
+        self.assertNotIn("IS_TRUSTED", tight)
+        self.assertNotIn("get_trust", tight)
+        command = wiz.split("void do_invuln(", 1)[1].split(chr(10) + "}", 1)[0]
+        self.assertLess(command.index("is_staff( ch )"),
+                        command.index("SET_BIT(ch->act, PLR_INVULN)"),
+                        "INVULN must refuse a mortal before setting the bit")
         # The NPC guard is load bearing: PLR_INVULN shares a bitfield
         # with ACT_*, so a mobile would answer with an unrelated bit.
         self.assertIn("!IS_NPC(ch)", tight)

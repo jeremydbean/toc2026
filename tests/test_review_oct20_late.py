@@ -106,7 +106,7 @@ class RestAndDailies(unittest.TestCase):
 
     def test_the_quest_room_is_for_staff_only_over_gmcp(self) -> None:
         gmcp = body("src/gmcp.c", "void gmcp_send_quest(")
-        self.assertLess(gmcp.index("IS_TRUSTED( ch, LEVEL_IMMORTAL )"), gmcp.index('\\"num\\"'))
+        self.assertLess(gmcp.index("is_staff( ch )"), gmcp.index('\\"num\\"'))
 
 
 class ThisMorningsChanges(unittest.TestCase):

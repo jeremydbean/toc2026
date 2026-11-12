@@ -108,12 +108,14 @@ class OnlineRosterTests(unittest.TestCase):
                      "AFF2_STEALTH", "AFF2_SHADOWMELD", "AFF_HIDE",
                      "AFF_INVISIBLE", "AFF_DETECT_HIDDEN", "AFF_DETECT_INVIS"):
             self.assertIn(term, self.rule, term)
-        # Trust, the way wizi is decided everywhere else -- read through
-        # sight_trust(), which is get_trust() raised to level 59 only for
+        # The way wizi is decided everywhere else -- read through
+        # sight_trust(), which is staff_trust() (an immortal's trust, a
+        # mortal's level: owner, 2026-11-12) raised to level 59 only for
         # a wearer of the Triforce, exactly as can_see() reads it.
         self.assertIn("sight_trust( ch ) < wch->invis_level", self.rule)
         sight = body(self.handler, "int sight_trust(")
-        self.assertIn("get_trust(", sight)
+        self.assertIn("staff_trust(", sight)
+        self.assertNotIn("get_trust(", sight)
 
     def test_holylight_sees_through_concealment_but_not_wizi(self) -> None:
         holy = self.rule.index("PLR_HOLYLIGHT")
@@ -129,7 +131,7 @@ class OnlineRosterTests(unittest.TestCase):
         self.assertNotIn("can_see(", send)
         self.assertIn("d->gmcp_online_valid && d->gmcp_last_online_hash == hash",
                       send)
-        self.assertIn("od->original != NULL && get_trust( ch ) < 67", send)
+        self.assertIn("od->original != NULL && staff_trust( ch ) < 67", send)
         self.assertIn("d->gmcp_online_valid = false;", self.gmcp)
         self.assertIn("gmcp_send_online( d );", read("src", "comm.c"))
 

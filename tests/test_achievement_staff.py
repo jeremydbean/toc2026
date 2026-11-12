@@ -4,9 +4,13 @@ The gameplay hooks each asked ACH_STAFF, but the login catch-up and the
 state checks did not: a level 20 builder trusted to 60, with sword and
 dagger at 100%, logged in and out and was saved holding Weapons Scholar I
 and Practice Makes Permanent I (review, 2026-10-26). achievement_unlock is
-where every award passes, and it now refuses an expansion row to anybody
-whose trust is staff's. Rows from before the expansion keep their rule, and
-nothing already earned is taken away.
+where every award passes, and it now refuses an expansion row to staff.
+Rows from before the expansion keep their rule, and nothing already earned
+is taken away.
+
+Staff are immortals by level (owner, 2026-11-12: "let trusted players act
+as mortals across the board"): that builder trusted to 60 at level 20 is a
+mortal now and is caught up like one; a level 60 immortal earns none.
 """
 from __future__ import annotations
 
@@ -47,28 +51,32 @@ def earned_after_a_visit(mud: LiveMud, name: str) -> set:
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class StaffAchievementTests(unittest.TestCase):
-    def test_staff_by_trust_earn_no_new_feat_and_keep_the_old(self) -> None:
+    def test_staff_by_level_earn_no_new_feat_and_trusted_mortals_do(self) -> None:
         with LiveMud() as mud:
-            make(mud, "Zachstaff", Levl=20, Tru=60, Room=TEMPLE)
+            make(mud, "Zachstaff", Levl=60, Room=TEMPLE)
+            make(mud, "Zachtrust", Levl=20, Tru=60, Room=TEMPLE)
             make(mud, "Zachmortal", Levl=20, Room=TEMPLE)
 
             staff = earned_after_a_visit(mud, "Zachstaff")
+            trusted = earned_after_a_visit(mud, "Zachtrust")
             mortal = earned_after_a_visit(mud, "Zachmortal")
 
-            # The ordinary mortal is caught up on both.
+            # The ordinary mortal is caught up on both...
             self.assertTrue({"weapons-1", "mastered-1"} <= mortal, mortal)
-            # The trusted builder gets neither, by trust and not by level...
+            # ...and so is the mortal given trust: a mortal, by level.
+            self.assertTrue({"weapons-1", "mastered-1"} <= trusted, trusted)
+            # The immortal gets neither, by level...
             self.assertFalse({"weapons-1", "mastered-1"} & staff, staff)
             # ...and still the achievements from before the expansion.
             self.assertIn("level-20", staff)
 
-            # Trust taken away: the next login catches the character up.
-            patch_player_file(mud, "Zachstaff", Tru=0)
+            # Made mortal again: the next login catches the character up.
+            patch_player_file(mud, "Zachstaff", Levl=20)
             demoted = earned_after_a_visit(mud, "Zachstaff")
             self.assertTrue({"weapons-1", "mastered-1"} <= demoted, demoted)
 
-            # Trust given back: nothing already earned is taken away.
-            patch_player_file(mud, "Zachstaff", Tru=60)
+            # Immortal again: nothing already earned is taken away.
+            patch_player_file(mud, "Zachstaff", Levl=60)
             again = earned_after_a_visit(mud, "Zachstaff")
             self.assertTrue(demoted <= again, demoted - again)
 

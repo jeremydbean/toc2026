@@ -129,7 +129,7 @@ static bool gob_has_company( CHAR_DATA *gob )
     if ( gob->in_room == NULL )
         return false;
     for ( rch = gob->in_room->people; rch != NULL; rch = rch->next_in_room )
-        if ( !IS_NPC(rch) && !IS_TRUSTED( rch, LEVEL_IMMORTAL ) )
+        if ( !IS_NPC(rch) && !is_staff( rch ) )
             return true;
     return false;
 }
@@ -431,7 +431,7 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
             act( "The half-open portal collapses as $n yelps in pain!",
                  gob, NULL, NULL, TO_ROOM );
             /* Portal Denied: a player's own blow, not a pet's. */
-            if ( ch != NULL && !IS_NPC(ch) && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+            if ( ch != NULL && !IS_NPC(ch) && !is_staff( ch ) )
                 achievement_record_event( ch, ACHIEVEMENT_EVENT_GOBLIN_PORTAL_DENIED, true );
         }
     }
@@ -480,7 +480,7 @@ bool treasure_goblin_cheats_death( CHAR_DATA *killer, CHAR_DATA *gob )
 {
     if ( !is_treasure_goblin( gob ) || gob->position == POS_DEAD )
         return false;
-    if ( killer != NULL && !IS_NPC(killer) && IS_TRUSTED( killer, LEVEL_IMMORTAL ) )
+    if ( killer != NULL && !IS_NPC(killer) && is_staff( killer ) )
         return false;
     /* What the instant kill did to his hit points first (a farslayer
        sets them to 1) is not the blow; the blow is the share below. */

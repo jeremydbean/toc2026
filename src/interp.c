@@ -1294,7 +1294,7 @@ static bool command_usable( CHAR_DATA *ch, int cmd )
 {
     int sn;
 
-    if ( IS_NPC(ch) || IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( IS_NPC(ch) || is_staff( ch ) )
         return TRUE;
     if ( ( sn = command_skill( cmd ) ) < 0 )
         return TRUE;

@@ -699,7 +699,7 @@ void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
     {
         achievement_party_count( who, drake->in_room, ACH_CTR_DRAGON_KILLS );
         if ( dragon_prey != NULL && dragon_prey_struck
-          && dragon_prey->in_room == drake->in_room && !IS_TRUSTED( dragon_prey, LEVEL_IMMORTAL )
+          && dragon_prey->in_room == drake->in_room && !is_staff( dragon_prey )
           && ( dragon_prey == who || is_same_group( dragon_prey, who ) ) )
             achievement_record_event( dragon_prey, ACHIEVEMENT_EVENT_DRAGON_PASSENGER, true );
     }

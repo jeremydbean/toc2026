@@ -1074,7 +1074,7 @@ bool save_char_obj( CHAR_DATA *ch )
 
 #if defined(unix)
     /* create god log */
-    if (get_trust(ch) > 59 || IS_IMMORTAL(ch))
+    if ( is_staff( ch ) )   /* by level (owner, 2026-11-12) */
     {
         if (fpReserve != NULL)
             reserve_release();

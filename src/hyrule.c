@@ -2688,7 +2688,7 @@ bool hyrule_fairy_restores( CHAR_DATA *fairy )
  * is why no player has it. Hearts and where they came from, the caves
  * paid out, the bomb bag, and dungeon by dungeon what each gate asks for
  * and whether this character carries it now (hyrule_carries, the gates'
- * own test; staff pass the real gates by trust, which this ignores).
+ * own test; staff pass the real gates by level, which this ignores).
  */
 void do_hyrulestatus( CHAR_DATA *ch, char *argument )
 {

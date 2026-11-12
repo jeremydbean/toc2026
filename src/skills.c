@@ -1008,7 +1008,7 @@ bool rescind_stray_mage_groups( CHAR_DATA *ch )
     bool any = false;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL || ch->class == CLASS_MAGE
-    ||   IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    ||   is_staff( ch ) )
         return false;
     for ( i = 0; i < 2; i++ )
         if ( ( gn = group_lookup( stray[i] ) ) != -1 && ch->pcdata->group_known[gn] )

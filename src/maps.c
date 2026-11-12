@@ -463,7 +463,7 @@ void map_login( CHAR_DATA *ch )
     int i;
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
-    ||   IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    ||   is_staff( ch ) )
         return;
     map_info_build( );
     for ( i = 0; i < map_info_count; i++ )
@@ -1256,7 +1256,7 @@ static bool cart_has_company( CHAR_DATA *cart )
     if ( cart->in_room == NULL )
         return false;
     for ( rch = cart->in_room->people; rch != NULL; rch = rch->next_in_room )
-        if ( !IS_NPC(rch) && !IS_TRUSTED( rch, LEVEL_IMMORTAL ) )
+        if ( !IS_NPC(rch) && !is_staff( rch ) )
             return true;
     return false;
 }

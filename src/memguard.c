@@ -1147,7 +1147,7 @@ void do_memcheck( CHAR_DATA *ch, char *argument )
         const char *event = mg_events[slot];
 
         /* Never a name the viewer could not see (review, 2026-11-11). */
-        if ( event[0] == '\0' || get_trust( ch ) < mg_event_level[slot] )
+        if ( event[0] == '\0' || staff_trust( ch ) < mg_event_level[slot] )
             continue;
         snprintf( buf, sizeof(buf), "    %s\n\r", event );
         send_to_char( buf, ch );

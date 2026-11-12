@@ -1184,8 +1184,9 @@ written 999 (`create_object` makes it -1).
 
 **The Triforce is holy sight, capped at 59.** `triforce_sight()` in
 `handler.c` is asked wherever `PLR_HOLYLIGHT` grants sight, and
-`sight_trust()` -- `get_trust` raised to `TRIFORCE_SIGHT_LEVEL` for the
-wearer -- is what sight compares against a wizinvis or cloak level. Add a
+`sight_trust()` -- `staff_trust` (an immortal's trust, a mortal's level)
+raised to `TRIFORCE_SIGHT_LEVEL` for the wearer -- is what sight compares
+against a wizinvis or cloak level. Add a
 new holylight check and it needs both; `tests/test_hyrule_progression.py`
 fails on a `PLR_HOLYLIGHT` sight test that does not also ask the Triforce.
 
@@ -1533,7 +1534,8 @@ Rules the code depends on:
   below `LONG_MAX`. `tests/test_achievement_set_load.py`, also in
   `SANITIZE_MODULES`.
 - **Award at the success, never at the command**, and staff earn none of
-  the new feats: `ACH_STAFF` is `IS_TRUSTED(ch, LEVEL_IMMORTAL)`, and
+  the new feats: `ACH_STAFF` is `is_staff(ch)` -- by level, so a mortal
+  given trust earns them (owner, 2026-11-12) -- and
   `achievement_unlock` refuses an expansion row (from `goblin-kills-1`
   on) to staff, because the login catch-up and the state checks never
   asked (review, 2026-10-26; `tests/test_achievement_staff.py`). Rows
@@ -1711,7 +1713,8 @@ sits below them (`tests/test_stash_shared_transfer.py`,
 `loot_refusal(ch, obj)` in `act_obj.c` is the one rule (owner, 2026-11-12:
 a quit player's corpse was anybody's, and after a restart every corpse in
 the world was, for the week a corpse lasts); `can_loot` is it as a bool.
-The owner and staff (`IS_TRUSTED(LEVEL_IMMORTAL)`, never a mobile's level)
+The owner and staff (`is_staff`: an immortal by level, never a mortal's
+trust and never a mobile's level)
 always may; **no mobile ever may** -- a charmed follower ORDERed, a
 janitor, a scavenger -- not even from a WANTED player's ownerless corpse;
 while the owner is **in the game** (a playing descriptor whose `CH(d)` is
@@ -2415,7 +2418,10 @@ character who has reached hero level or been reborn: the old first line
 records from before), `Remorts`, `Reborn` (last remort), `Class`, `Race`.
 `hero_record_write(ch, reborn)` writes it from `advance_level` the moment a
 character reaches hero level, from `do_remort`, and at every save; staff
-(trust `LEVEL_IMMORTAL` and up) are on neither roll. `hero_records_backfill`
+(`is_staff`: immortals by level, and the creator; owner, 2026-11-12) are
+on neither roll, and a record reads as staff by `hero_rank_is_staff` --
+level 60 or more, or the creator's trust of 72 -- so a mortal given trust
+is on the rolls. `hero_records_backfill`
 fills older records once at boot from the player files, active or archived.
 In the Hall of Heroes (4649), LOOK PLAQUE shows the newest heroes and the
 whole roll; LOOK TABLET (stone, reborn, remorts) the reborn, most lives
@@ -3741,7 +3747,7 @@ with their coin by source and crashes. The morning routine runs it.
 `src/diary.c` (owner, 2026-11-12: "a diary feature that uses the player
 logging system to allow players to see their daily progress and what they
 did each day"). DIARY is today, DIARY YESTERDAY, DIARY <yyyy-mm-dd>, DIARY
-LIST (a line a day, newest first); staff (trust `LEVEL_IMMORTAL`) add a
+LIST (a line a day, newest first); staff (`is_staff`, by level) add a
 name, `DIARY <player> [list|yesterday|date]`, refused by rank as
 `rank_protects` asks (from the file's `Levl`/`Tru`/`Creator` when the
 player is not in the game). `tests/test_diary.py`.
@@ -3890,7 +3896,7 @@ kill, drain or fight), and never below one: hunger kills
 nobody, a jailed prisoner included. One line a tick says why, in words
 that grow (the tick's own "You are hungry." is silenced for that
 character: `condition_change(..., speak)`). Who: `hunger_thirst_applies`
--- a mortal player under `LEVEL_HERO` with no remort, not staff by trust;
+-- a mortal player under `LEVEL_HERO` with no remort, not staff by level;
 `hunger_thirst_hurts_here` also spares the link-dead, the idle in the void
 (`was_in_room`), Limbo and the Oracle's sanctum, whose ticks neither count
 nor reset the run. SLEEP asks `hunger_refuses_sleep` before anything
@@ -4494,10 +4500,12 @@ where `toc-restore` would have laid the cleared reports back down. The
 old hosts' backlog, worked through in October 2026, is
 `area/bugs.txt.20260929-151146` and `area/typos.txt.20260929-151146`.
 
-The staff half is gated with `IS_TRUSTED(ch, LEVEL_IMMORTAL)`, not
-`IS_IMMORTAL`. `is_note_to()` asks the same, so a builder trusted to
-immortal rank receives notes addressed to `immortal` (the staff-trust
-sweep; confirmed with the owner, 2026-10-05).
+REPORTS itself is typed by trust, like any command. The login banner and
+the mail addressed to `immortal` are staff's, by level: `report_login_notice`
+and `is_note_to()` ask `is_staff()`, so a mortal given trust may read
+REPORTS but is not told of new ones and receives no staff mail (owner,
+2026-11-12, reversing the staff-trust sweep of 2026-10-05; see Permission
+Helpers).
 
 Other deploy facts:
 
@@ -5667,13 +5675,14 @@ ALLOW lifts one. `tests/test_login_throttle.py` (a serial module).
 
 ## Staff Invulnerability
 
-`is_invulnerable(ch)` is the one test, and it asks
-`IS_TRUSTED(ch, LEVEL_IMMORTAL)` -- **trust, not level.** `interp.c`
-gates every command on `get_trust()`, so gating the effect on
-`IS_IMMORTAL()` meant a builder trusted to immortal rank could run
-INVULN, was told it was on, and took damage anyway. The protection still
-lapses on its own, because `get_trust()` falls back to the level when no
-trust is assigned. A switched immortal is not protected: `PLR_INVULN`
+`is_invulnerable(ch)` is the one test, and it asks `is_staff(ch)` --
+**level, not trust** (owner, 2026-11-12: "let trusted players act as
+mortals across the board"). A mortal whose trust reaches INVULN may type
+it and is told it is an immortal's; nothing is set, and a bit left from
+before is read as nothing, so they are hurt like anyone
+(`tests/test_wards_and_invuln.py`, `tests/test_trusted_mortal.py`). Until
+then it asked trust, so a builder trusted to immortal rank was invulnerable
+at a mortal level. A switched immortal is not protected: `PLR_INVULN`
 shares a bitfield with the `ACT_*` flags, so the `!IS_NPC` guard is load
 bearing and a mobile's own bit must never be read as this one. `damage()` honours it in three places: an
 early return for `PLR_INVULN_ABSORB`, the `damage_eq` call, and the
@@ -5807,7 +5816,7 @@ server could recover the lines.
   through `channel_say()` are covered by the single call inside it; the
   five that walk the descriptor list themselves each record their own.
 - **Reading a channel back needs the rank that hearing it needs.**
-  `history_may_read()` compares `get_trust()` against the same
+  `history_may_read()` compares `staff_trust()` against the same
   `hear_level` the live channel uses, and a channel the character
   cannot read is never gathered and never listed.
 - **Tells are never in the shared rings.** Each character keeps their
@@ -5853,7 +5862,8 @@ Two rules, both learned from one incident where an idle immortal in the
 quest room shut questing down for the whole mud:
 
 - **Only mortal players count towards the occupancy.**
-  `room_is_private()` skips NPCs and anyone at immortal trust. A mobile
+  `room_is_private()` skips NPCs and staff (`is_staff`: immortals by
+  level; a mortal given trust counts like any player). A mobile
   that lives in the room filled a slot for good -- the quest giver's
   room is `ROOM_PRIVATE`, so the questmaster plus one player was already
   two, and a solitary room with a resident mobile admitted nobody at
@@ -5861,46 +5871,69 @@ quest room shut questing down for the whole mud:
   let a mobile or a staff character close a room by standing in it.
 - **`can_enter_private_room(ch, room)` is the one place that decides
   who may walk in anyway.** Every caller used to ask
-  `ch->level < 69` -- the raw level, and a number rather than a rank --
-  so an ordinary immortal was refused and a builder trusted to immortal
-  rank was refused everywhere. `ROOM_IMP_ONLY` is not an occupancy
-  limit and keeps its own `GOD` bar inside that helper.
+  `ch->level < 69` -- a number rather than a rank -- so an ordinary
+  immortal was refused. It lets staff in by `is_staff` (level), never a
+  mortal's trust. `ROOM_IMP_ONLY` is not an occupancy limit and keeps its
+  own `GOD` bar inside that helper, asked of `staff_trust`.
 
 `tests/test_private_rooms.py` pins both, including that no caller reads
 a raw level again.
 
 ## Permission Helpers
 
-Two helpers exist so a rule is stated once. Prefer them to open-coding a
-comparison:
+**Staff are immortals by level; trust is command authority** (owner,
+2026-11-12: "i think trusted characters should actually be logged also.
+just not immortals", "no let trusted players act as mortals across the
+board", "staff-only should ONLY apply to actual immortals level 60+"). It
+reverses the 2026-09 staff-trust sweep, which made every staff test ask
+`get_trust` so a builder trusted to immortal rank counted as staff
+everywhere. The helpers:
 
-- `get_trust(ch)` -- **never read `ch->trust` directly**, and never
-  read `ch->level` or `IS_IMMORTAL()` to decide whether somebody counts
-  as staff. The field is 0 unless somebody explicitly assigned a trust,
-  which is the normal state, so a raw comparison refuses everybody
-  including implementors. Nine gates had that bug.
+- `is_staff(ch)` (handler.c) -- **the one test for "is this person
+  staff"**: an immortal by level (`LEVEL_IMMORTAL`, 60, and up), asked of
+  the original character behind a switched mobile, never a mobile on its
+  own (`IS_IMMORTAL` would call a level 60 mobile staff), and always the
+  creator. Every gameplay exemption or perk (invulnerability, private and
+  newbie rooms, travel rules, hunger, loot, eating anything, the
+  repeat-command kick, the black market and the goblin, Hyrule's order --
+  `hyrule.c` asks `IS_IMMORTAL` -- jail placement, the Oracle's sanctum,
+  login fixes) and every exclusion from play's bookkeeping (achievements'
+  `ACH_STAFF`, quests, dailies, the diary, the journals, the hero rolls,
+  the audit tool) asks it. Never `IS_TRUSTED(x, LEVEL_IMMORTAL)` or
+  `get_trust(x) >= LEVEL_IMMORTAL` for that question;
+  `tests/test_staff_trust.py` sweeps for both.
+- `staff_trust(ch)` -- **the rank a staff-only view, channel or notice
+  compares**: `get_trust` for staff, the level for anybody else. WIZINFO's
+  listeners (`>= UMAX(level, LEVEL_IMMORTAL)`, so no mortal hears it at
+  all), the staff channels and HISTORY of them (`channel_say`,
+  `history_may_read`), `sight_trust` (wizinvis and cloak: a trusted mortal
+  sees no wizinvis immortal), WHO's switched rows, ECHO's and PECHO's
+  prefix, GOTO's bamfs, MEMCHECK's event names, the IMP_ONLY rooms. A
+  staff-only answer inside a command anybody may type (CHANGES' staff
+  entries, DIARY of another, HOLIDAYS' staff lines, WALKTO <vnum> and
+  WALKTO QUEST's room, the GMCP quest room, the dummy board's removals)
+  asks `is_staff`.
+- `get_trust(ch)` -- **command authority and rank, and nothing else.**
+  `interpret()` gates every command on it, so a mortal given trust may
+  type the commands it reaches (GOTO, STAT, IMMTALK...) -- and inside them
+  a staff-only effect is by level: INVULN is refused, IMMTALK may be
+  spoken but not heard. Rank comparisons of who may act on whom stay
+  trust's: `rank_protects`, TRUST's own limits, SNOOP's recheck, LOAD's
+  and CLONE's tiers, a command's own `get_trust(ch) < MAX_LEVEL` that
+  mirrors the command table, help pages' levels (`do_help`), the creator's
+  72. Never read `ch->trust` directly: it is 0 unless explicitly set.
+  One `IS_TRUSTED(ch, LEVEL_IMMORTAL)` survives on purpose: `do_switch`
+  picks SWITCH's message over the werewolf shapeshift below it, so anybody
+  the table let type SWITCH must take that arm.
+- A command a trusted mortal can start and that then refuses them a
+  staff-only effect by level is expected, not a bug. Holy light is the one
+  exception kept: HOLYLIGHT's sight (not of wizinvis, which is
+  `sight_trust`'s) works for whoever has the bit, because the Farslay
+  scroll lends it to mortals for a moment.
 
-  `interpret()` gates every command on `get_trust(ch)`, so anything
-  asking the level instead disagrees with it for exactly one kind of
-  character -- a builder given immortal trust without an immortal level.
-  They can start the command and then be refused by it. Eight more were
-  found in 2026-09 by sweeping the 111 commands WIZHELP lists:
-
-  - `channel_say()` tested `victim->level`, so **all three staff
-    channels were half-broken**: immtalk, godtalk and hero let a
-    trusted builder speak and never let them hear.
-  - `do_switch` used `IS_IMMORTAL(ch)` to pick a *message*, and the
-    branch below is the werewolf shapeshift -- so a trusted builder who
-    switched was moved to room 9 with a `were_shape` copied onto the
-    mobile.
-  - `do_ksock`, `do_forcesave`, `do_hpardon`,
-    `do_finger`, and `is_note_to` for staff mail.
-
-  Three look like the same bug and are not: `do_force` already asks
-  `get_trust` for permission and reads `vch->level` only to pick which
-  victims a sweep covers, `do_forcesave` keeps a `vch->level < 3` floor,
-  and `do_remort` assigns `ch->level`. `tests/test_staff_trust.py` keeps
-  the sweep.
+`tests/test_trusted_mortal.py` plays a level 20 trusted to 65 against a
+level 65 immortal: GOTO and STAT work; INVULN, IMMTALK, WIZINFO, staff
+CHANGES and wizinvis sight do not; achievements are paid.
 - `rank_protects(ch, victim)` -- whether rank stops `ch` acting on `victim`.
   Implementors are exempt, because `get_trust(victim) >= get_trust(ch)` reads
   `70 >= 70` at MAX_LEVEL and locked implementors out of twenty-two commands
@@ -5952,7 +5985,8 @@ Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
   notice. Arrival, departure,
   lost-link, reconnect, shared-address and TRUST notices go out at
   `staff_notice_level(ch, level)` -- no lower than the subject's WIZINVIS
-  level -- and `wizinfo` picks listeners by `get_trust`. Every one is
+  level -- and `wizinfo` picks listeners by `staff_trust`, staff only.
+  Every one is
   still written to `log/toc.log`, which is published.
 - **Never test trust for exactly 70.** Write `get_trust(ch) < MAX_LEVEL`
   or `>= MAX_LEVEL`; `== 70` locks out 71 and 72. Object levels stop at

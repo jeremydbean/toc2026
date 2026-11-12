@@ -481,7 +481,7 @@ bool oracle_refuses_sleep( CHAR_DATA *ch )
 
     if ( ch == NULL || IS_NPC(ch) || ch->in_room == NULL
       || ch->in_room->vnum != ROOM_VNUM_ORACLE
-      || IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+      || is_staff( ch ) )
         return FALSE;
 
     send_to_char( "The Oracle's eyes snap open.  'My sanctum is no inn, child.  Out.'\n\r", ch );
@@ -796,7 +796,7 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
  * and never more.  Every lookup below is answered from the asker's point of
  * view, by these rules:
  *
- *   - Staff are never there.  An immortal -- by trust, wizinvis or not,
+ *   - Staff are never there.  An immortal -- by level, wizinvis or not,
  *     switched into a mobile or not -- is not reported online, not described,
  *     and nothing they hold is found.
  *   - Stealth and shadowmeld always hide.  can_see() rolls dice for both,
@@ -837,9 +837,8 @@ static bool oracle_is_staff( CHAR_DATA *vch )
 {
     if ( vch == NULL )
         return FALSE;
-    if ( IS_NPC(vch) && vch->desc != NULL && vch->desc->original != NULL )
-        vch = vch->desc->original;   /* an immortal wearing a mobile */
-    return !IS_NPC(vch) && get_trust( vch ) >= LEVEL_IMMORTAL;
+    /* By level, the original behind a switched mobile (is_staff). */
+    return is_staff( vch );
 }
 
 

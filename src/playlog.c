@@ -911,7 +911,7 @@ void playlog_tick( CHAR_DATA *ch )
         anomaly( ch, 3, "fighting across rooms", ch->fighting->name != NULL
                  ? ch->fighting->name : "?" );
 
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !is_staff( ch ) )
     {
         if ( ch->level > 54 + ch->pcdata->num_remorts && ch->level < LEVEL_IMMORTAL )
         {

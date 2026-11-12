@@ -35,7 +35,9 @@ class NewCharacterSourceTests(unittest.TestCase):
         fn = skills[skills.index("bool rescind_stray_mage_groups("):]
         fn = fn[:fn.index("\n}\n")]
         self.assertIn("ch->class == CLASS_MAGE", fn)
-        self.assertIn("IS_TRUSTED( ch, LEVEL_IMMORTAL )", fn)
+        # Staff (by level, owner 2026-11-12) are left alone.
+        self.assertIn("is_staff( ch )", fn)
+        self.assertNotIn("IS_TRUSTED", fn)
 
 
     def test_the_loader_fills_gaps_only_for_a_character_it_found(self) -> None:

@@ -3012,7 +3012,7 @@ static void craft_succeeded( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, OBJ_DATA
     achievement_record_event( ch, event, true );
     if ( IS_SET( recipe->flags, CRAFT_FARSLAY ) )
         achievement_record_event( ch, ACHIEVEMENT_EVENT_FARSLAY_SCROLL, true );
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !is_staff( ch ) )
     {
         achievement_count( ch, counter, 1 );
         if ( signature > 0 )
@@ -3923,7 +3923,7 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
     resurrect_corpse_owner( corpse, name, sizeof(name) );
     victim = name[0] != '\0' ? resurrect_find_owner( name ) : NULL;
     if ( victim == NULL || wizinvis_hides( victim, ch )
-    ||   ( victim != ch && IS_TRUSTED( victim, LEVEL_IMMORTAL ) && rank_protects( ch, victim ) ) )
+    ||   ( victim != ch && is_staff( victim ) && rank_protects( ch, victim ) ) )
     {
       send_to_char("Their spirit is adrift on another plane right now.\n\r",ch);
       return;

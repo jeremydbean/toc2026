@@ -147,7 +147,7 @@ static const char *resurrect_refusal( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
     ||   IS_SET( to->room_flags, ROOM_JAIL ) )
         return "No god's call reaches past those bars.";
     if ( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
-    &&   !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    &&   !is_staff( ch ) )
         return "Something here holds you; the call cannot pull you out.";
     if ( travel_spell_refuses( ch, to ) )
         return "Your body lies somewhere you may not go.";
@@ -169,7 +169,7 @@ void spell_resurrection( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL || ch->in_room == NULL )
         return;
-    if ( ch->pcdata->guild != GUILD_CLERIC && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( ch->pcdata->guild != GUILD_CLERIC && !is_staff( ch ) )
     {
         send_to_char( "Only those sworn to the cleric guild may call a soul back.\n\r", ch );
         return;

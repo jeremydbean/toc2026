@@ -184,7 +184,7 @@ bool black_market_sees( const CHAR_DATA *looker, const CHAR_DATA *dealer )
 
     if ( looker == NULL || dealer == NULL )
         return false;
-    if ( !IS_NPC(looker) && IS_TRUSTED( looker, LEVEL_IMMORTAL ) )
+    if ( !IS_NPC(looker) && is_staff( looker ) )
         return true;
     if ( IS_NPC(looker) && looker->pIndexData != NULL
     &&   looker->pIndexData->vnum == MOB_VNUM_PSIONIC_PROJECTION )
@@ -827,7 +827,7 @@ static bool bm_has_customer( CHAR_DATA *dealer )
     if ( dealer->in_room == NULL )
         return false;
     for ( rch = dealer->in_room->people; rch != NULL; rch = rch->next_in_room )
-        if ( !IS_NPC(rch) && !IS_TRUSTED( rch, LEVEL_IMMORTAL ) )
+        if ( !IS_NPC(rch) && !is_staff( rch ) )
             return true;
     return false;
 }
@@ -976,7 +976,7 @@ bool black_market_cheats_death( CHAR_DATA *killer, CHAR_DATA *dealer )
         }
         return false;
     }
-    if ( killer != NULL && !IS_NPC(killer) && IS_TRUSTED( killer, LEVEL_IMMORTAL ) )
+    if ( killer != NULL && !IS_NPC(killer) && is_staff( killer ) )
     {
         black_market_depart();
         return true;
@@ -1186,7 +1186,7 @@ void black_market_record( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
     {
         /* Under the Counter: the first purchase from a new stock is a
            new visit. Counted before the save below writes it down. */
-        if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        if ( !is_staff( ch ) )
             achievement_count( ch, ACH_CTR_VESH_VISITS, 1 );
         free_string( ch->pcdata->black_market_bought );
         ch->pcdata->black_market_bought = str_dup( "" );
@@ -1197,7 +1197,7 @@ void black_market_record( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
               obj->pIndexData->vnum );
     free_string( ch->pcdata->black_market_bought );
     ch->pcdata->black_market_bought = str_dup( buf );
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !is_staff( ch ) )
     {
         /* Unusual Inventory counts kinds of item, and Sold Out wants the
            whole of a full stock -- a smaller one does not qualify. */

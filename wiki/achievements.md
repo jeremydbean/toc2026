@@ -125,9 +125,10 @@ Every purchase is written to `log/toc.log` (`Redeem: <name> spent <n> marks`).
   after the refusals and the roll: the blow that collapsed the portal, the
   disarm that took the weapon, the heal that restored hit points, the
   craft that produced the potion.
-- **Staff earn none of them.** `ACH_STAFF` is `IS_TRUSTED(ch, LEVEL_IMMORTAL)`,
-  the rule every command gate uses: a staff kill, purchase or walk is not
-  play. A staff-started disaster or dragon, and HERBIE summoned by staff,
+- **Staff earn none of them.** `ACH_STAFF` is `is_staff(ch)`: an immortal
+  by level (60 and up) or the creator, never a mortal given trust, who
+  earns them like any player (owner, 2026-11-12). A staff kill, purchase
+  or walk is not play. A staff-started disaster or dragon, and HERBIE summoned by staff,
   award nothing.
 - **Deduplicated by real identity.** Rooms by vnum, areas by a hash of the
   area file name (`achievement_area_id`), Vesh stock visits by the stock's
