@@ -292011,3 +292011,47 @@ Thu Nov 12 20:20:51 2026 :: Log Miseri [30409]: arrived (Level 1: Chamber of Pil
 Thu Nov 12 20:20:55 2026 :: Log Miseri [30409]: get map
 Thu Nov 12 20:24:29 2026 :: Log Miseri [30409]: affects off: shroud, power gloves, detect evil, detect good, detect magic, detect hidden, detect invis, infravision, frenzy, shield, bless, armor
 Thu Nov 12 20:25:35 2026 :: Treasure goblin: vanished from room 6321 (Above the Ravine, arac.are) (too long in one area).
+Thu Nov 12 20:27:58 2026 :: Log Miseri [30409]: lo
+Thu Nov 12 20:28:04 2026 :: Log Miseri [30409]: look in chest
+Thu Nov 12 20:28:14 2026 :: Log Miseri [30409]: e
+Thu Nov 12 20:28:14 2026 :: Log Miseri [30410]: arrived (Level 1: Scarred Hall) from 30409
+Thu Nov 12 20:28:20 2026 :: Log Miseri [30410]: kil gor
+Thu Nov 12 20:28:23 2026 :: Log Miseri [30410]: killed a red goriya
+Thu Nov 12 20:28:23 2026 :: Log Miseri [30410]: coin +4 copper
+Thu Nov 12 20:28:23 2026 :: Log Miseri [30410]: coin +8 copper
+Thu Nov 12 20:28:28 2026 :: Log Miseri [30410]: get boom
+Thu Nov 12 20:28:30 2026 :: Log Miseri [30410]: stat boom
+Thu Nov 12 20:28:37 2026 :: Log Miseri [30410]: lo
+Thu Nov 12 20:28:38 2026 :: Log Miseri [30410]: op west
+Thu Nov 12 20:28:41 2026 :: Log Miseri [30410]: unl wes
+Thu Nov 12 20:28:42 2026 :: Log Miseri [30410]: op west
+Thu Nov 12 20:28:42 2026 :: Log Miseri [30410]: w
+Thu Nov 12 20:28:42 2026 :: Log Miseri [30409]: arrived (Level 1: Chamber of Pillars) from 30410
+Thu Nov 12 20:28:47 2026 :: Log Miseri [30409]: look in chest
+Thu Nov 12 20:28:49 2026 :: Log Miseri [30409]: e
+Thu Nov 12 20:28:49 2026 :: Log Miseri [30410]: arrived (Level 1: Scarred Hall) from 30409
+Thu Nov 12 20:28:50 2026 :: Log Miseri [30410]: w
+Thu Nov 12 20:28:50 2026 :: Log Miseri [30409]: arrived (Level 1: Chamber of Pillars) from 30410
+Thu Nov 12 20:28:51 2026 :: Log Miseri [30409]: w
+Thu Nov 12 20:28:51 2026 :: Log Miseri [30408]: arrived (Level 1: Slime-Slick Hall) from 30409
+Thu Nov 12 20:28:52 2026 :: Log Miseri [30408]: w
+Thu Nov 12 20:28:52 2026 :: Log Miseri [30407]: arrived (Level 1: Eagle's Ember Alcove) from 30408
+Thu Nov 12 20:28:53 2026 :: Log Miseri [30407]: e
+Thu Nov 12 20:28:53 2026 :: Log Miseri [30408]: arrived (Level 1: Slime-Slick Hall) from 30407
+Thu Nov 12 20:28:53 2026 :: Log Miseri [30408]: e
+Thu Nov 12 20:28:53 2026 :: Log Miseri [30409]: arrived (Level 1: Chamber of Pillars) from 30408
+Thu Nov 12 20:28:53 2026 :: Log Miseri [30409]: e
+Thu Nov 12 20:28:53 2026 :: Log Miseri [30410]: arrived (Level 1: Scarred Hall) from 30409
+Thu Nov 12 20:28:54 2026 :: Log Miseri [30410]: e
+Thu Nov 12 20:28:54 2026 :: Log Miseri [30411]: arrived (Level 1: Hall of Grasping Walls) from 30410
+Thu Nov 12 20:28:56 2026 :: Log Miseri [30411]: get key
+Thu Nov 12 20:28:58 2026 :: Log Miseri [30411]: unl north
+Thu Nov 12 20:28:59 2026 :: Log Miseri [30411]: op north
+Thu Nov 12 20:29:00 2026 :: Log Miseri [30411]: n
+Thu Nov 12 20:29:00 2026 :: Log Miseri [30413]: arrived (Level 1: Hall of Threefold Scorches) from 30411
+Thu Nov 12 20:29:02 2026 :: Log Miseri [30413]: con aqu
+Thu Nov 12 20:29:06 2026 :: Log Miseri [30413]: kill aqu
+Thu Nov 12 20:31:20 2026 :: Log Miseri [30413]: killed Aquamentus
+Thu Nov 12 20:31:20 2026 :: Log Miseri [30413]: coin +3 silver
+Thu Nov 12 20:31:20 2026 :: Log Miseri [30413]: coin +26 copper
+Thu Nov 12 20:31:20 2026 :: Log Miseri [30413]: coin +9 gold

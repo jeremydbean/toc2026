@@ -23159,3 +23159,39 @@
 1794514851	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	east		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
 1794514855	got	Miseri	14	30409	hyrule.are	30480	the Eagle dungeon map	map	2	0	get	the floor
 1794514855	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	get	map	You get the Eagle dungeon map.	-	-
+1794515278	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	look		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794515284	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	look	in chest	The Eagle's equipment chest contains: //      a Moblin leather jerkin //      a Keese-wing cloak	-	+
+1794515294	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	east		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794515300	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	kill	gor	Your punch mauls a red goriya. // Your punch hits a red goriya. // Your punch maims a red goriya!	-	-
+1794515303	coin	Miseri	14	30410	hyrule.are	+4	loot	(violence_update)	corpse of a red goriya	102900953
+1794515303	coin	Miseri	14	30410	hyrule.are	+8	loot	(violence_update)	corpse of a red goriya	102900961
+1794515308	got	Miseri	14	30410	hyrule.are	30232	a small boomerang	weapon	4	0	get	the floor
+1794515308	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	get	boom	You get a small boomerang.	-	-
+1794515310	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	stat	boom	Name(s): small boomerang // Vnum: 30232  Format: new  Type: weapon  Resets: 0 // Short description: a small boomerang	-	+
+1794515317	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	look		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794515318	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	open	west	It's locked.	-	-
+1794515321	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	unlock	wes	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794515322	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794515322	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	west		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794515327	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	look	in chest	The Eagle's equipment chest contains: //      a Moblin leather jerkin //      a Keese-wing cloak	-	+
+1794515329	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	east		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794515330	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	west		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794515331	cmd	Miseri	14	30408	hyrule.are	standing	100	0	-	west		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794515332	cmd	Miseri	14	30407	hyrule.are	standing	100	0	-	west		Level 1: Eagle's Ember Alcove //   Teal flagstones run back to a squat pair of braziers whose flames burn low // and patient, the kind tended by someone who expects few visitors. Between	-	+
+1794515333	cmd	Miseri	14	30408	hyrule.are	standing	100	0	-	east		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794515333	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	east		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794515333	cmd	Miseri	14	30410	hyrule.are	standing	100	0	-	east		Level 1: Scarred Hall //   Curved gouges and scuff marks score the walls at shoulder height, as if // something has been flung against them again and again and caught on the way	-	+
+1794515334	cmd	Miseri	14	30411	hyrule.are	standing	100	0	-	east		Level 1: Hall of Grasping Walls //   The walls of this chamber seem to press closer than they should, and dark // handprints smudge the stone high up near the ceiling, as if great hands	-	+
+1794515336	got	Miseri	14	30411	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794515336	cmd	Miseri	14	30411	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794515338	cmd	Miseri	14	30411	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794515339	cmd	Miseri	14	30411	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794515340	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	north		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794515342	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	consider	aqu	Aquamentus is a little below your level. // Aquamentus has several times your hit points. // Aquamentus could barely scratch you; you would need about 49 rounds to bring it down.	-	+
+1794515346	skill	Miseri	14	30413	hyrule.are	hand to hand	76	77	success	kill
+1794515346	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	kill	aqu	You have become better at hand to hand! // Your punch wounds Aquamentus. // Your punch injures Aquamentus.	-	+
+1794515390	skill	Miseri	14	30413	hyrule.are	enhanced damage	75	76	success	(violence_update)
+1794515480	achieved	Miseri	14	30413	hyrule.are	hyrule-eagle	15	110	(violence_update)
+1794515480	coin	Miseri	14	30413	hyrule.are	+300	loot	(violence_update)	corpse of Aquamentus	102901261
+1794515480	coin	Miseri	14	30413	hyrule.are	+26	loot	(violence_update)	corpse of Aquamentus	102901287
+1794515480	coin	Miseri	14	30413	hyrule.are	+90000	loot	(violence_update)	corpse of Aquamentus	102991287
