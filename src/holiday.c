@@ -634,7 +634,7 @@ bool holiday_given( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj )
     holiday_cast( "bless", 20, ch, ch );
     if ( ch->in_room != NULL && victim->in_room != NULL )
         holiday_cast( "bless", 20, victim, victim );
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !is_staff( ch ) )
         achievement_record_event( ch, ACHIEVEMENT_EVENT_HOLIDAY_ROSE, true );
     return true;
 }
@@ -685,7 +685,7 @@ bool holiday_dropped( CHAR_DATA *ch, OBJ_DATA *obj )
     act( "$p fizzes, whistles straight up into the sky and bursts!", ch, obj, NULL, TO_CHAR );
     act( "$p fizzes, whistles straight up into the sky and bursts!", ch, obj, NULL, TO_ROOM );
     extract_obj( obj );
-    if ( !IS_NPC(ch) && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !IS_NPC(ch) && !is_staff( ch ) )
         achievement_record_event( ch, ACHIEVEMENT_EVENT_HOLIDAY_FIREWORK, true );
 
     area = ch->in_room->area;
@@ -723,7 +723,7 @@ void holiday_kill( CHAR_DATA *ch, CHAR_DATA *victim )
     act( "{0ELuck is with you: a pot of gold tumbles out of $N's things!{00",
          ch, NULL, victim, TO_CHAR );
     act( "A pot of gold tumbles out of $N's things!", ch, NULL, victim, TO_ROOM );
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !is_staff( ch ) )
         achievement_record_event( ch, ACHIEVEMENT_EVENT_HOLIDAY_GOLD, true );
 }
 
@@ -1071,13 +1071,13 @@ void do_holidays( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, arg );
     holiday_date( &y, &m, &d );
 
-    if ( !str_cmp( arg, "refresh" ) && IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !str_cmp( arg, "refresh" ) && is_staff( ch ) )
     {
         holiday_tick();
         send_to_char( "The fair in the Oak Tree Square is up to date.\n\r", ch );
         return;
     }
-    if ( !str_cmp( arg, "restart" ) && IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !str_cmp( arg, "restart" ) && is_staff( ch ) )
     {
         season_restart_command( ch, argument );
         return;
@@ -1142,6 +1142,6 @@ void do_holidays( CHAR_DATA *ch, char *argument )
     }
     send_to_char( "\n\rHELP HOLIDAYS says what each one brings.\n\r", ch );
 
-    if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( is_staff( ch ) )
         holiday_staff_lines( ch, now );
 }

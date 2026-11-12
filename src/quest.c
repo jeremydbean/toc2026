@@ -434,7 +434,7 @@ static void quest_note_area( CHAR_DATA *ch )
 {
     ROOM_INDEX_DATA *room;
 
-    if ( IS_NPC(ch) || IS_TRUSTED( ch, LEVEL_IMMORTAL ) || ch->questroom <= 0
+    if ( IS_NPC(ch) || is_staff( ch ) || ch->questroom <= 0
     ||   ( room = get_room_index( ch->questroom ) ) == NULL )
         return;
     achievement_note( ch, ACH_SET_QUEST_AREAS, achievement_area_id( room->area ) );
@@ -490,7 +490,7 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     quest_note_area( ch );
     achievement_record_quest(ch);
     achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_QUEST, true);
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !is_staff( ch ) )
     {
         achievement_count( ch, ACH_CTR_DAILY_QUESTS, 1 );
         achievement_note( ch, ACH_SET_DAILY_KINDS, kind );
@@ -829,7 +829,7 @@ static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_RUSH, true);
     if ( completed_emergency )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_EMERGENCY, true);
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( !is_staff( ch ) )
     {
         if ( completed_rush )
             achievement_count( ch, ACH_CTR_RUSH_QUESTS, 1 );

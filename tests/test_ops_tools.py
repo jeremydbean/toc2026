@@ -60,10 +60,16 @@ class AuditTests(unittest.TestCase):
         self.assertIn("class-group", kinds)
         self.assertIn("fix-pending", kinds)
 
-    def test_staff_and_the_staff_trusted_are_left_alone(self) -> None:
-        for change in (("Levl 44", "Levl 60"), ("Levl 44", "Levl 44\nTru  70")):
+    def test_staff_are_left_alone_and_the_trusted_are_not(self) -> None:
+        """Staff are immortals by level (owner, 2026-11-12: "let trusted
+        players act as mortals across the board"): a mortal given trust is
+        audited like any mortal."""
+        for change in (("Levl 44", "Levl 60"), ("Levl 44", "Levl 44\nCreator 1")):
             text = PLAYER.replace(*change)
             self.assertEqual(self.audit.audit_one("Ztest", text, self.tables, None), [])
+        trusted = PLAYER.replace("Levl 44", "Levl 44\nTru  70")
+        kinds = {f["kind"] for f in self.audit.audit_one("Ztest", trusted, self.tables, None)}
+        self.assertIn("class-group", kinds)
 
     def test_out_of_range_values(self) -> None:
         text = PLAYER.replace("Alig  -1000", "Alig  1005").replace("Prac 8", "Prac -3")

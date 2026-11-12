@@ -1472,7 +1472,7 @@ void do_walkto( CHAR_DATA *ch, char *argument )
     if ( ch->pcdata->walkto_vnum != 0 )
         walkto_clear( ch );
 
-    if ( is_number( argument ) && IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( is_number( argument ) && is_staff( ch ) )
     {
         int vnum;
 
@@ -1509,7 +1509,7 @@ void do_walkto( CHAR_DATA *ch, char *argument )
         }
         name = target->name;
         who = "";
-        if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        if ( !is_staff( ch ) )
         {
             if ( ch->in_room != NULL && ch->in_room->area == target->area )
             {

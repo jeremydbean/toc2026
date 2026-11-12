@@ -8,6 +8,28 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Staff are immortals by level; trust is command authority** (owner,
+  2026-11-12: "no let trusted players act as mortals across the board",
+  "staff-only should ONLY apply to actual immortals level 60+"). It
+  reverses the 2026-09 staff-trust sweep. `is_staff()` (an immortal by
+  level, the original behind a switched mobile, never a mobile alone, and
+  the creator) replaces every `IS_TRUSTED(x, LEVEL_IMMORTAL)` staff test --
+  62 of them: invulnerability, private, newbie and IMP rooms, travel and
+  portal rules, hunger, loot, eating anything, the repeat-command kick,
+  achievements' `ACH_STAFF`, quests, dailies, the diary, the hero rolls,
+  login fixes, the black market, the goblin, the dragon, jail placement,
+  the Oracle, IGNORE, staff mail, the REPORTS banner, CHANGES' staff
+  entries, IMOTD, HOLIDAYS' and WALKTO's staff answers, the GMCP quest room
+  and the god log. `staff_trust()` (an immortal's trust, anybody else's
+  level) is what the staff channels, their HISTORY, WIZINFO's listeners
+  (staff only now: a mortal heard a lower player's quit), wizinvis and
+  cloak sight, WHO's switched rows, ECHO, GOTO's bamfs and MEMCHECK's
+  events compare. Trust keeps the command table, rank comparisons
+  (`rank_protects`, TRUST, SNOOP, LOAD/CLONE tiers) and SWITCH's message.
+  INVULN tells a mortal it is an immortal's. `tools/audit_players.py`
+  audits trusted mortals. `tests/test_trusted_mortal.py`,
+  `tests/test_staff_trust.py`.
+
 - **Telemetry rows are written whole or reported lost; the trims are
   cheaper** (2026-11-12). `log/play.tsv`, `log/progress.tsv` and
   `log/hyrule.tsv` go through one writer, `telemetry_append` in
@@ -39,6 +61,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   build`. `startup.sh`, the installers and the launchers stay at the root,
   where the guides tell people to run them; `area/startup.sh` still
   delegates to `startup.sh`.
+
 
 - **The Mudlet map reads cleanly** (2026-11-12; owner: "the way the layers
   look on the map in mudlet is disorienting ... dresden is a mess").

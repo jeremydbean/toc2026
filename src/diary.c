@@ -1284,7 +1284,7 @@ void do_diary( CHAR_DATA *ch, char *argument )
         send_to_char( "Only players keep diaries.\n\r", ch );
         return;
     }
-    staff = IS_TRUSTED( ch, LEVEL_IMMORTAL );
+    staff = is_staff( ch );
     argument = one_argument( argument, arg );
 
     if ( arg[0] != '\0' && str_cmp( arg, "list" ) && !diary_is_day_word( arg, today, &key ) )

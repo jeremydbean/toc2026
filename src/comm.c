@@ -2317,8 +2317,7 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
                  * happens in the middle of the work.
                  */
                 actor = ( d->original != NULL ) ? d->original : d->character;
-                if ( actor != NULL && !IS_NPC(actor)
-                  && get_trust( actor ) >= LEVEL_IMMORTAL )
+                if ( actor != NULL && !IS_NPC(actor) && is_staff( actor ) )
                 {
                     d->repeat = 0;
                 }
@@ -3752,10 +3751,10 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
         wizinfo( log_buf, staff_notice_level( ch, LEVEL_IMMORTAL ) );
         wizinfo_same_host( d, ch );
 
-	/* Staff only, by trust. This was IS_HERO -- level 51 -- while every
+	/* Staff only, by level (is_staff). This was IS_HERO -- level 51 -- while every
 	   IMOTD topic is level 60 or more, so each hero logging in was told
 	   "No help on that word." before the MOTD. */
-	if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+	if ( is_staff( ch ) )
 	{
 	    do_help( ch, "imotd" );
 	    d->connected = CON_READ_IMOTD;
@@ -5809,7 +5808,7 @@ void wizinfo(const char *info, int level)
     {
         if ( d->connected == CON_PLAYING
         &&   d->character != NULL
-        &&   get_trust( d->character ) >= level
+        &&   staff_trust( d->character ) >= UMAX( level, LEVEL_IMMORTAL )
         &&   !IS_SET(d->character->comm, COMM_NOWIZINFO) )
         {
             send_to_char( buf, d->character );

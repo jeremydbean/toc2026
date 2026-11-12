@@ -167,16 +167,16 @@ class NoteMailTests(unittest.TestCase):
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ImmortalMailTests(unittest.TestCase):
-    def test_a_trusted_builder_receives_mail_to_the_immortals(self) -> None:
-        """Trust is what lets somebody run staff commands, so it should
-        be what lets them read the mail addressed to the people running
-        them. A level 45 character with trust 65 is exactly the case
-        that used to be missed."""
+    def test_mail_to_the_immortals_reaches_immortals_by_level(self) -> None:
+        """Staff are immortals by level (owner, 2026-11-12: "staff-only
+        should ONLY apply to actual immortals level 60+"). A level 60
+        receives mail to the immortals; a level 45 with trust 65 -- who
+        may run staff commands -- does not, any more than a mortal."""
         mud = LiveMud()
         mud.__enter__()
         self.addCleanup(mud.__exit__, None, None, None)
 
-        for name in ("Zwriter", "Zbuilder", "Zmortal"):
+        for name in ("Zwriter", "Zimmortal", "Zbuilder", "Zmortal"):
             with mud.connect(timeout=120) as client:
                 create_character(client, name, PASSWORD)
                 client.drain(1.0)
@@ -184,6 +184,7 @@ class ImmortalMailTests(unittest.TestCase):
                 self.assertTrue(client.wait_closed())
 
         patch_player_file(mud, "Zwriter", Levl=70, Tru=70, Room=TEMPLE)
+        patch_player_file(mud, "Zimmortal", Levl=60, Room=TEMPLE)
         # Mortal level, immortal trust: the disagreement is the point.
         patch_player_file(mud, "Zbuilder", Levl=45, Tru=65, Room=TEMPLE)
         patch_player_file(mud, "Zmortal", Levl=45, Room=TEMPLE)
@@ -196,10 +197,15 @@ class ImmortalMailTests(unittest.TestCase):
             self.assertTrue(client.wait_closed())
 
         with mud.connect(timeout=120) as client:
-            login(client, "Zbuilder", PASSWORD)
+            login(client, "Zimmortal", PASSWORD)
             self.assertIn("staff only", run(client, "note list", 2.0))
 
-        # And an ordinary player still does not see it.
+        # A mortal given trust does not see it...
+        with mud.connect(timeout=120) as client:
+            login(client, "Zbuilder", PASSWORD)
+            self.assertNotIn("staff only", run(client, "note list", 2.0))
+
+        # ...and an ordinary player still does not.
         with mud.connect(timeout=120) as client:
             login(client, "Zmortal", PASSWORD)
             self.assertNotIn("staff only", run(client, "note list", 2.0))
@@ -220,13 +226,17 @@ class NoteSourceTests(unittest.TestCase):
         # Counted before the filter drops anything.
         self.assertLess(body.index("number++"), body.index("filter =="))
 
-    def test_the_note_system_asks_trust_not_level(self) -> None:
+    def test_the_note_system_asks_staff_by_level(self) -> None:
         """Both gates: who receives staff mail, and who may remove a
-        note that is not their own."""
-        self.assertNotIn("IS_IMMORTAL(ch) && is_name( \"immortal\"", self.comm)
+        note that is not their own -- staff by level, through is_staff
+        (owner, 2026-11-12: "staff-only should ONLY apply to actual
+        immortals level 60+"), never a mortal's trust."""
         body = self.comm.split("bool is_note_to(", 1)[1].split(chr(10) + "}", 1)[0]
-        self.assertIn("IS_TRUSTED(ch, LEVEL_IMMORTAL)", body)
-        self.assertNotIn("IS_IMMORTAL", body)
+        self.assertIn("is_staff( ch )", body)
+        self.assertNotIn("IS_TRUSTED", body)
+        self.assertNotIn("get_trust", body)
+        remove = self.comm.split("Your own note, one addressed to you by name", 1)[1][:300]
+        self.assertIn("!is_staff( ch )", remove)
 
     def test_search_is_not_quadratic(self) -> None:
         body = self.comm.split("static bool note_contains(", 1)[1]

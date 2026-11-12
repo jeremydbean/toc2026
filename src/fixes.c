@@ -543,7 +543,7 @@ void player_fixes_login( CHAR_DATA *ch, bool new_character )
         /* Staff are left alone and left unmarked, so a builder whose
            trust is taken away gets the fix at the next login. */
         if ( !player_fixes[i].staff_too && !new_character
-        &&   IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        &&   is_staff( ch ) )
             continue;
         /* Never run a fix whose id could not then be kept: it would run
            again at every login. */

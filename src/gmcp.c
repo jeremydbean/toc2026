@@ -979,7 +979,7 @@ void gmcp_send_quest( DESCRIPTOR_DATA *d )
                there: the map keys rooms by vnum, so WALK QUEST is just
                gotoRoom(num). Staff only, as WALKTO QUEST is (owner,
                2026-10-20): a mortal's client falls back to the area. */
-            if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+            if ( is_staff( ch ) )
             {
                 toc_strlcat( json, ",\"num\":", sizeof(json) );
                 snprintf( number, sizeof(number), "%d", ch->questroom );
@@ -1150,7 +1150,7 @@ void gmcp_send_online( DESCRIPTOR_DATA *d )
 
         /* WHO's own rule: a switched immortal stays out of sight of
            anybody below it. */
-        if ( od->original != NULL && get_trust( ch ) < 67 )
+        if ( od->original != NULL && staff_trust( ch ) < 67 )
             continue;
         if ( !online_can_list( ch, wch ) )
             continue;

@@ -19,8 +19,10 @@ nothing, so nothing wanders in), four ticks:
   takes 5% again, less its regeneration -- the count started over.
 - Zfrail, two hit points of a hundred, starving and parched: held at one,
   never killed. Its line each tick is the test's clock.
-- Zhero (level 51), Zbuilder (level 20 trusted to 60) and Zlinkdead (who
-  lost the link) take nothing.
+- Zhero (level 51) and Zlinkdead (who lost the link) take nothing.
+- Zbuilder (level 20 trusted to 60) starves like any mortal: staff are
+  immortals by level (owner, 2026-11-12: "let trusted players act as
+  mortals across the board").
 """
 from __future__ import annotations
 
@@ -156,11 +158,15 @@ class HungerAndThirstTests(unittest.TestCase):
                 # Awake: asleep, SLEEP would answer "already sleeping".
                 self.assertIn("too hungry to sleep", starve.sync("sleep"))
 
-                # --- Exempt: a hero, a trusted builder, the link-dead. ---
-                for client, name in ((hero, "zhero"), (builder, "zbuilder")):
-                    client.drain(0.5)
-                    self.assertEqual([], HURT_LINE.findall(client.transcript), name)
-                    self.assertEqual((10000, 10000), hit_points(warden, name), name)
+                # --- Exempt: a hero and the link-dead. ---
+                hero.drain(0.5)
+                self.assertEqual([], HURT_LINE.findall(hero.transcript), "zhero")
+                self.assertEqual((10000, 10000), hit_points(warden, "zhero"))
+                # --- Not exempt: a mortal given trust is a mortal. ---
+                builder.drain(0.5)
+                self.assertTrue(HURT_LINE.findall(builder.transcript),
+                                builder.transcript[-600:])
+                self.assertLess(hit_points(warden, "zbuilder")[0], 10000)
                 self.assertEqual((10000, 10000), hit_points(warden, "zlinkdead"))
                 self.assertNotIn("KILLED", frail.transcript)
 

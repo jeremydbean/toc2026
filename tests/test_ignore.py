@@ -57,7 +57,9 @@ class IgnoreSourceTests(unittest.TestCase):
 
     def test_staff_are_never_ignored(self) -> None:
         helper = body("src/act_comm.c", "bool is_ignoring(")
-        self.assertIn("IS_TRUSTED( speaker, LEVEL_IMMORTAL )", helper)
+        # Staff by level: a trusted mortal can be ignored (owner, 2026-11-12).
+        self.assertIn("is_staff( speaker )", helper)
+        self.assertNotIn("IS_TRUSTED", helper)
 
     def test_the_list_is_read_under_I(self) -> None:
         save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")

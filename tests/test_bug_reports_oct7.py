@@ -61,7 +61,7 @@ class LiveTests(unittest.TestCase):
                     client.send("quit")
                     self.assertTrue(client.wait_closed())
             patch_player_file(mud, "Zreporter", Levl=20, Room=QUEST_ROOM)
-            patch_player_file(mud, "Zwalker", Levl=20, Tru=70, Room=QUEST_ROOM)
+            patch_player_file(mud, "Zwalker", Levl=60, Room=QUEST_ROOM)
 
             with mud.connect(timeout=120) as player:
                 login(player, "Zreporter", PASSWORD)
@@ -93,7 +93,8 @@ class LiveTests(unittest.TestCase):
                 player.send("quit")
                 player.wait_closed()
 
-            # An immortal, by trust, still walks to the quest.
+            # An immortal, by level, still walks to the quest (staff are
+            # immortals by level: owner, 2026-11-12).
             with mud.connect(timeout=120) as player:
                 login(player, "Zwalker", PASSWORD)
                 run(player, "scroll 0")

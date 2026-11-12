@@ -4403,7 +4403,7 @@ void disarm( CHAR_DATA *ch, CHAR_DATA *victim )
     obj_from_char( obj );
     /* Empty Hands: a monster's weapon really left its hand. */
     if ( IS_NPC(victim) && !IS_NPC(ch) && !is_training_dummy( victim )
-    &&   !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    &&   !is_staff( ch ) )
 	achievement_count( ch, ACH_CTR_DISARMS, 1 );
     if ( IS_OBJ_STAT(obj,ITEM_NODROP) || IS_OBJ_STAT(obj,ITEM_INVENTORY) )
 	obj_to_char( obj, victim );
@@ -5657,7 +5657,7 @@ void do_rescue( CHAR_DATA *ch, char *argument )
     act( "$n rescues $N!",  ch, NULL, victim, TO_NOTVICT );
     check_improve(ch,gsn_rescue,true,1);
     /* Not Today: a groupmate pulled out from under a real monster. */
-    if ( IS_NPC(fch) && !is_training_dummy( fch ) && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( IS_NPC(fch) && !is_training_dummy( fch ) && !is_staff( ch ) )
 	achievement_count( ch, ACH_CTR_RESCUES, 1 );
 
     stop_fighting( fch, false );

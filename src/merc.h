@@ -4010,6 +4010,8 @@ void    pool_max_adjust ( CHAR_DATA *ch, int location, long long mod );
 void    pool_carry_clear( CHAR_DATA *ch );
 void    pool_set_base   ( CHAR_DATA *ch, int location, int value );
 int     get_trust       ( const CHAR_DATA *ch );
+bool    is_staff        ( const CHAR_DATA *ch );
+int     staff_trust     ( const CHAR_DATA *ch );
 bool    rank_protects   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    flags_from_argument ( const char *argument, int current, int *result );
 

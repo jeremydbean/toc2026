@@ -207,7 +207,7 @@ void do_changes( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
     all = arg[0] != '\0' && !str_prefix( arg, "all" );
-    staff = IS_TRUSTED( ch, LEVEL_IMMORTAL );
+    staff = is_staff( ch );
     if ( changes_count == 0 )
     {
         send_to_char( "There is no list of changes right now.\n\r", ch );

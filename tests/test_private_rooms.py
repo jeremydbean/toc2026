@@ -7,14 +7,18 @@ down for every player on the mud. The flag exists to stop players
 walking in on each other, not to let staff close a room by standing in
 it.
 
-The other half: every caller asked `ch->level < 69` rather than
-`get_trust(ch)`, and 69 rather than immortal rank, so an ordinary
-immortal was turned away from a private room and a builder trusted to
-immortal rank was turned away from all of them -- the same class of bug
-as the INVULN one. `can_enter_private_room()` is the one place that
-decides it now.
+The other half: every caller asked `ch->level < 69` rather than immortal
+rank, so an ordinary immortal was turned away from a private room.
+`can_enter_private_room()` is the one place that decides it now.
 
-ROOM_IMP_ONLY is not an occupancy limit and keeps the bar it had.
+Staff are immortals by level (`is_staff`; owner, 2026-11-12: "let
+trusted players act as mortals across the board", "staff-only should
+ONLY apply to actual immortals level 60+"). A mortal given trust counts
+towards the limit and is refused like any player; trust still decides
+which commands they may type.
+
+ROOM_IMP_ONLY is not an occupancy limit and keeps its GOD bar, asked of
+`staff_trust` -- an immortal's trust, a mortal's level.
 
 These are source tests. Reaching the live path needs two characters, a
 solitary room and the geography to walk into it; the logic is one
@@ -42,16 +46,18 @@ class PrivateRooms(unittest.TestCase):
 
     def test_staff_do_not_count_towards_the_limit(self) -> None:
         body = self.body(self.handler, "bool room_is_private(")
-        self.assertIn("IS_TRUSTED(rch, LEVEL_IMMORTAL)", body)
+        self.assertIn("is_staff( rch )", body)
+        self.assertNotIn("IS_TRUSTED", body)
         self.assertLess(
-            body.index("IS_TRUSTED(rch, LEVEL_IMMORTAL)"),
+            body.index("is_staff( rch )"),
             body.index("count++"),
             "the skip has to come before the increment",
         )
 
     def test_one_helper_decides_who_may_walk_in(self) -> None:
         body = self.body(self.handler, "bool can_enter_private_room(")
-        self.assertIn("IS_TRUSTED( ch, LEVEL_IMMORTAL )", body)
+        self.assertIn("return is_staff( ch );", body)
+        self.assertNotIn("IS_TRUSTED", body)
         self.assertIn(
             "bool    can_enter_private_room ( CHAR_DATA *ch, "
             "ROOM_INDEX_DATA *pRoomIndex );",
@@ -63,15 +69,15 @@ class PrivateRooms(unittest.TestCase):
         """It is not an occupancy limit, so the override must miss it."""
         body = self.body(self.handler, "bool can_enter_private_room(")
         self.assertIn("ROOM_IMP_ONLY", body)
-        self.assertIn("get_trust( ch ) >= GOD", body)
+        self.assertIn("staff_trust( ch ) >= GOD", body)
         self.assertLess(
             body.index("ROOM_IMP_ONLY"),
-            body.index("IS_TRUSTED( ch, LEVEL_IMMORTAL )"),
+            body.index("return is_staff( ch );"),
             "the implementor test has to be reached first",
         )
 
     def test_no_caller_reads_a_raw_level_any_more(self) -> None:
-        """get_trust(), not ch->level, and rank rather than the number 69."""
+        """The helper, not ch->level, and rank rather than the number 69."""
         offenders = []
         for name, text in (("act_move.c", self.move), ("act_wiz.c", self.wiz)):
             for m in re.finditer(r"room_is_private\s*\([^)]*\)[^;{]*", text):

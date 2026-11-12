@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112staffbylevel 2026-11-12 staff
+Staff are immortals by level now, never by trust. Trust still decides
+which commands a character may type (TRUST, and who may act on whom), but
+a mortal given trust is a mortal everywhere else: hurt (INVULN is refused),
+logged, quested, paid achievements, counted in private rooms, kept out of
+staff rooms, deaf to IMMTALK, GODTALK and WIZINFO, shown no staff-only
+CHANGES, REPORTS banner or mail to immortal, and blind to wizinvis staff.
+Immortals of level 60 and up keep all of it, and the creator is unchanged.
+
 @ 20261112aliaslist 2026-11-12
 ALIAS with nothing after it now lists every alias you have. A long list
 used to stop part way through.

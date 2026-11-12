@@ -76,7 +76,9 @@ class DrainSourceTests(unittest.TestCase):
         wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="latin-1")
         pred = wiz.split("bool is_invulnerable( CHAR_DATA *ch )", 1)[1].split("}", 1)[0]
         self.assertIn("!IS_NPC(ch)", pred, "a switched mobile is never protected")
-        self.assertIn("IS_TRUSTED(ch, LEVEL_IMMORTAL)", pred, "trust, not level")
+        # Staff by level (owner, 2026-11-12: trusted mortals act as mortals).
+        self.assertIn("is_staff( ch )", pred, "level, not trust")
+        self.assertNotIn("IS_TRUSTED", pred)
 
 
 PROMPT = re.compile(r"<(-?\d+)hp")
@@ -130,11 +132,13 @@ class DrainLiveTests(unittest.TestCase):
         with LiveMud(fixtures=True) as mud:
             make(mud, "Zdraingod", Levl=70, Room=MIND_ARENA,
                  HMV="20000 20000 1000 1000 1000 1000")
-            make(mud, "Zdraincast", Levl=40, Room=MIND_ARENA, Cla=0,
-                 HMV="200 30000 30000 30000 1000 1000", HMVP="30000 30000 1000")
-            # Invulnerable by trust at a low level: an immortal's level
-            # saves against nearly every touch.
-            make(mud, "Zdrainward", Levl=5, Room=MIND_ARENA,
+            # The caster outranks the ward by eight levels, so the ward
+            # saves against one touch in twenty (saves_spell's floor).
+            make(mud, "Zdraincast", Levl=70, Room=MIND_ARENA, Cla=0,
+                 HMV="5000 30000 30000 30000 1000 1000", HMVP="30000 30000 1000")
+            # Invulnerable is an immortal's, by level (owner, 2026-11-12:
+            # trusted mortals act as mortals); 62 is INVULN's own level.
+            make(mud, "Zdrainward", Levl=62, Room=MIND_ARENA,
                  HMV="500 500 100 100 100 100")
             with mud.connect(timeout=120) as god, mud.connect(timeout=120) as caster, \
                     mud.connect(timeout=120) as ward:
@@ -144,7 +148,6 @@ class DrainLiveTests(unittest.TestCase):
                 for client in (god, caster, ward):
                     client.sync("scroll 0")
                 god.must("set skill zdraincast 'vampiric touch' 100", "")
-                god.must("trust zdrainward 62", "")
 
                 # An invulnerable target loses nothing, so feeds nothing.
                 ward.must("invuln absorb", "no effect")
@@ -179,7 +182,8 @@ class DrainLiveTests(unittest.TestCase):
                 god.must("restore sparring", "")
                 gains = [g for g, _ in self.landed(god, caster, "sparring", 3)]
                 self.assertTrue(any(g > 0 for g in gains), gains)
-                self.assertTrue(all(0 <= g <= 5 * 13 // 2 for g in gains), gains)
+                # Half of at most dice(5, level / 3), the caster at 70.
+                self.assertTrue(all(0 <= g <= 5 * (70 // 3) // 2 for g in gains), gains)
 
                 # The training dummy absorbs every blow, so it feeds nobody.
                 god.sync("purge sparring")
@@ -240,13 +244,13 @@ class ReflectionLiveTests(unittest.TestCase):
                         self.assertEqual(after, before, f"{shield} {mode}: {said}")
                     god.must("invuln off", "off")
 
-                    # Trust, not level: a level 30 trusted to immortal rank.
-                    low.must("invuln absorb", "Invulnerability on")
-                    before, after, said = self.missile(god, low, "zreftrust")
-                    self.assertEqual(after, before, f"{shield} trusted: {said}")
-                    low.must("invuln off", "off")
+                    # Level, not trust (owner, 2026-11-12: trusted mortals
+                    # act as mortals): a level 30 trusted to immortal rank
+                    # may type INVULN, is told it is an immortal's, and the
+                    # shield burns them like anyone.
+                    low.must("invuln absorb", "an immortal's")
 
-                    # Without it, the shield burns: the check is live.
+                    # Unprotected, the shield burns: the check is live.
                     burned = False
                     for _ in range(3):
                         before, after, said = self.missile(god, low, "zreftrust")

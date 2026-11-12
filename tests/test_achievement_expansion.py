@@ -237,7 +237,8 @@ class CatalogTests(unittest.TestCase):
             self.assertIn(event_range, self.everything + self.ach)
 
     def test_staff_actions_earn_nothing_new(self) -> None:
-        self.assertIn("#define ACH_STAFF(ch) IS_TRUSTED((ch), LEVEL_IMMORTAL)", self.ach)
+        # Staff by level (owner, 2026-11-12): a trusted mortal earns them.
+        self.assertIn("#define ACH_STAFF(ch) is_staff((ch))", self.ach)
         party = self.ach[self.ach.index("static bool achievement_party_member("):]
         self.assertIn("!ACH_STAFF(member)", party[:300])
         special = source("special.c")

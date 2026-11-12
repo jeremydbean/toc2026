@@ -157,7 +157,7 @@ const char *loot_refusal( CHAR_DATA *ch, OBJ_DATA *obj )
     LIST_ITERATOR iter;
     bool corpse;
 
-    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( is_staff( ch ) )
 	return NULL;
 
     corpse = obj->item_type == ITEM_CORPSE_PC;
@@ -289,7 +289,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
        holds this Triforce shard, or the Triforce it went into, leaves the
        copy for somebody who needs it (Trentlin took a second first shard
        replaying Level 1, 2026-10-21). */
-    if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    if ( !IS_NPC(ch) && !is_staff( ch )
     &&   obj->pIndexData != NULL
     &&   obj->pIndexData->vnum >= HYRULE_PIECE_FIRST_VNUM
     &&   obj->pIndexData->vnum <= HYRULE_PIECE_LAST_VNUM
@@ -308,7 +308,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
        Master Sword, and their achievements with them). A mobile is never
        the owner: a charmed follower ORDERed to GET took it, and its own
        corpse, an NPC's, then held it for anybody (review, 2026-11-10). */
-    if ( !IS_TRUSTED(ch, LEVEL_IMMORTAL) && hyrule_holds_bound( obj ) )
+    if ( !is_staff( ch ) && hyrule_holds_bound( obj ) )
     {
 	OBJ_DATA *top = container != NULL ? container : obj;
 
@@ -369,7 +369,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     if(container) {
 	if (container->pIndexData != NULL
 	&&  container->pIndexData->vnum == OBJ_VNUM_PIT
-	&&  get_trust(ch) < obj->level) {
+	&&  staff_trust(ch) < obj->level) {
 	    send_to_char("You are not powerful enough to use it.\n\r",ch);
 	    return;
 	}
@@ -3553,9 +3553,9 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	return;
 
     /* Staff can eat anything, which is how an item is destroyed on the
-       spot. By trust, as every staff gate is: by level it refused a
-       builder trusted to immortal rank, who was told it was not edible. */
-    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+       spot. Staff by level (is_staff): a mortal given trust eats what
+       anybody may (owner, 2026-11-12). */
+    if ( !is_staff( ch ) )
     {
 	if ( obj->item_type != ITEM_FOOD && obj->item_type != ITEM_PILL &&
 		obj->item_type != ITEM_CAKE )
@@ -3652,7 +3652,7 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	ch->train = (sh_int)(ch->train + 1);
 	save_reward = true;
 	/* Seasoned Appetite, and A Slice of Progress for Valhalla's cake. */
-	if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+	if ( !is_staff( ch ) )
 	{
 	    achievement_count( ch, ACH_CTR_TRAINING_FOODS, 1 );
 	    if ( obj->pIndexData != NULL && obj->pIndexData->vnum == 9955 )
@@ -5014,7 +5014,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
     /* Hyrule's keys and treasure are won, not lifted: a guardian's key
        stolen opened its treasure door and chest with the guardian alive
        (audit, 2026-11-10). A refusal, before the roll, costing nothing. */
-    if ( hyrule_native( victim ) && !IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( hyrule_native( victim ) && !is_staff( ch ) )
     {
 	act( "$N holds what $E carries too close to lift: in Hyrule, you win it.",
 	     ch, NULL, victim, TO_CHAR );
@@ -6510,7 +6510,7 @@ static bool manipulate_move_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *dest )
     if ( hyrule_gate_refuses( ch, ch->in_room, dest ) )
 	return true;
 
-    if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    if ( !IS_NPC(ch) && !is_staff( ch )
     &&   ( !can_see_room( ch, dest ) || travel_spell_refuses( ch, dest )
 	 || newbie_room_refuses( ch, dest ) ) )
     {
@@ -7106,7 +7106,7 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
     {
 	/* Good as New: a paid repair of something that needed it (both
 	   callers ask repair_needed first). */
-	if ( spend_copper( ch, cost ) && cost > 0 && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+	if ( spend_copper( ch, cost ) && cost > 0 && !is_staff( ch ) )
 	    achievement_count( ch, ACH_CTR_REPAIRS, 1 );
         obj->condition = 100;
 

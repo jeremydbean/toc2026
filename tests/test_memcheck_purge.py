@@ -50,7 +50,9 @@ def make(mud: LiveMud, name: str, **fields: object) -> None:
 class SourceTests(unittest.TestCase):
     def test_events_keep_the_level_that_may_read_them(self) -> None:
         guard = (ROOT / "src" / "memguard.c").read_text(encoding="latin-1")
-        self.assertIn("get_trust( ch ) < mg_event_level[slot]", guard)
+        # staff_trust: an immortal's trust, a trusted mortal's level --
+        # a mortal whose trust lets them type MEMCHECK reads no names.
+        self.assertIn("staff_trust( ch ) < mg_event_level[slot]", guard)
         self.assertIn("level = UMAX( level, target_level );", guard)
         recycle = (ROOT / "src" / "recycle.c").read_text(encoding="latin-1")
         self.assertIn("pending_label_level = staff_notice_level( ch, LEVEL_IMMORTAL );", recycle)

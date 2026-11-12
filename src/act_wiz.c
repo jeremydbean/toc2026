@@ -955,7 +955,7 @@ void do_echo( CHAR_DATA *ch, char *argument )
     {
 	if ( d->connected == CON_PLAYING )
 	{
-	    if (get_trust(d->character) >= get_trust(ch))
+	    if (staff_trust(d->character) >= get_trust(ch))
 		send_to_char( "global> ",d->character);
 	    send_to_char( argument, d->character );
 	    send_to_char( "\n\r",   d->character );
@@ -1010,7 +1010,7 @@ void do_pecho( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (get_trust(victim) >= get_trust(ch) && get_trust(ch) < MAX_LEVEL)
+    if (staff_trust(victim) >= get_trust(ch) && get_trust(ch) < MAX_LEVEL)
 	send_to_char( "personal> ",victim);
 
     send_to_char(argument,victim);
@@ -1435,7 +1435,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
 
     for (rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room)
     {
-	if (get_trust(rch) >= ch->invis_level)
+	if (staff_trust(rch) >= ch->invis_level)
 	{
 	    if (ch->pcdata != NULL && ch->pcdata->bamfout[0] != '\0')
 		act("$t",ch,ch->pcdata->bamfout,rch,TO_VICT);
@@ -1458,7 +1458,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
 
     for (rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room)
     {
-	if (get_trust(rch) >= ch->invis_level)
+	if (staff_trust(rch) >= ch->invis_level)
 	{
 	    if (ch->pcdata != NULL && ch->pcdata->bamfin[0] != '\0')
 		act("$t",ch,ch->pcdata->bamfin,rch,TO_VICT);
@@ -2933,6 +2933,9 @@ void do_switch( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Trust, deliberately: this picks SWITCH's own message over the
+       werewolf shapeshift below, so anybody the command table let type
+       SWITCH must take this branch (command authority, not staff-ness). */
     if( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
     {
 	snprintf(buf, sizeof(buf),"%s is now Possessed by you.\n\r",victim->name);
@@ -8471,15 +8474,10 @@ void do_cloak( CHAR_DATA *ch, char *argument )
 /*
  * Whether a character is currently proof against everything.
  *
- * Trust, not level, because trust is what let them run the command in
- * the first place: interp.c gates every command on get_trust(), so a
- * builder trusted to immortal rank was told "Invulnerability on" and
- * then took damage anyway. Asking the same question in both places is
- * the whole fix.
- *
- * It still lapses on its own. get_trust() falls back to the level when
- * no trust is assigned, so revoking trust from a mortal takes the
- * protection away without anyone having to remember to unset the bit.
+ * Immortals by level only (is_staff; owner, 2026-11-12: "let trusted
+ * players act as mortals across the board"). A mortal whose trust lets
+ * them type INVULN is told it is an immortal's and is hurt like anyone,
+ * and a bit left over from before is read as nothing.
  *
  * NPCs are refused outright rather than consulted: PLR_INVULN and the
  * ACT_* flags share a bitfield, so a mobile would answer this question
@@ -8490,7 +8488,7 @@ void do_cloak( CHAR_DATA *ch, char *argument )
 bool is_invulnerable( CHAR_DATA *ch )
 {
     return ch != NULL && !IS_NPC(ch)
-        && IS_TRUSTED(ch, LEVEL_IMMORTAL)
+        && is_staff( ch )
         && IS_SET(ch->act, PLR_INVULN);
 }
 
@@ -8500,6 +8498,14 @@ void do_invuln( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) )
 	return;
+
+    if ( !is_staff( ch ) )
+    {
+	REMOVE_BIT(ch->act, PLR_INVULN);
+	send_to_char( "Invulnerability is an immortal's.  A mortal, trusted"
+	    " or not, is hurt like anyone.\n\r", ch );
+	return;
+    }
 
     one_argument( argument, arg );
 
@@ -13680,7 +13686,7 @@ static int mortals_playing( void )
 
     for ( d = descriptor_list; d != NULL; d = d->next )
         if ( d->connected == CON_PLAYING && d->character != NULL
-        &&   !IS_NPC(d->character) && !IS_TRUSTED(d->character, LEVEL_IMMORTAL) )
+        &&   !IS_NPC(d->character) && !is_staff( d->character ) )
             n++;
     return n;
 }

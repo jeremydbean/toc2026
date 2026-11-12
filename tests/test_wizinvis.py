@@ -52,7 +52,8 @@ class WizinvisSourceTests(unittest.TestCase):
     def test_only_what_is_aimed_at_you_says_an_immortal(self) -> None:
         helper = body("src/handler.c", "const char *pers_acting_on(")
         self.assertIn('"an immortal"', helper)
-        self.assertIn("LEVEL_IMMORTAL", helper)
+        # Staff by level (is_staff; owner, 2026-11-12).
+        self.assertIn("is_staff( ch )", helper)
         act = body("src/comm.c", "void act_new(")
         self.assertIn("type == TO_VICT ? pers_acting_on( ch, to )", act)
         comm = (ROOT / "src" / "act_comm.c").read_text(encoding="latin-1")

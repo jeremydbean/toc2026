@@ -2661,7 +2661,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 
 	wch = ( d->original != NULL ) ? d->original : d->character;
 
-	if(d->original != NULL && get_trust(ch) < 67)
+	if(d->original != NULL && staff_trust(ch) < 67)
 	  continue;
 
  	if (!can_see(ch,wch))
@@ -2903,7 +2903,7 @@ void do_who( CHAR_DATA *ch, char *argument )
 
 	wch   = ( d->original != NULL ) ? d->original : d->character;
 
-	if(d->original != NULL && get_trust(ch) < 67)
+	if(d->original != NULL && staff_trust(ch) < 67)
 	  continue;
 
 	/* A switched character is listed by the original's name, so the
@@ -4575,9 +4575,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 		    if ( rch == ch )
 			 continue;
 
-		    if ( !IS_NPC(rch)
-			 &&   IS_SET(rch->act, PLR_WIZINVIS)
-			 &&   get_trust( ch ) < get_trust( rch ) )
+		    if ( wizinvis_hides( rch, ch ) )
 			   continue;
 
 		    /* The black market dealer and the treasure goblin are

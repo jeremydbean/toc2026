@@ -11,9 +11,10 @@
 #include "magic.h"
 
 #define HYRULE_DUNGEON_MASK 0x1FFUL
-/* Staff by trust, as every command gate decides it: a staff kill, buy or
-   walk is not play, so it earns none of the 2026-10-25 feats. */
-#define ACH_STAFF(ch) IS_TRUSTED((ch), LEVEL_IMMORTAL)
+/* Staff by level (is_staff; owner, 2026-11-12: trusted mortals act as
+   mortals): a staff kill, buy or walk is not play, so it earns none of the
+   2026-10-25 feats, and a mortal given trust earns them as anyone does. */
+#define ACH_STAFF(ch) is_staff((ch))
 #define HYRULE_SHARD_MASK   0x0FFUL
 
 typedef enum
@@ -1438,7 +1439,7 @@ static bool achievement_unlock(CHAR_DATA *ch, int index, bool announce)
         || ch->pcdata->achievement_earned[index] != 0)
         return false;
 
-    /* Every award passes here, so the staff rule is kept here, by trust:
+    /* Every award passes here, so the staff rule is kept here, by level:
        what a character already earned is never taken away. */
     if (ACH_STAFF(ch) && achievement_is_expansion(index))
         return false;

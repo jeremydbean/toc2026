@@ -71,7 +71,10 @@ class SpareShardSourceTests(unittest.TestCase):
         get = get[:get.index("\n}\n")]
         self.assertIn("hyrule_carries( ch, obj->pIndexData->vnum )", get)
         self.assertIn("HYRULE_PIECE_FIRST_VNUM", get)
-        self.assertIn("IS_TRUSTED(ch, LEVEL_IMMORTAL)", get, "staff may test freely")
+        # Staff by level may test freely; a trusted mortal plays Hyrule
+        # as a player does (owner, 2026-11-12).
+        self.assertIn("!is_staff( ch )", get, "staff may test freely")
+        self.assertNotIn("IS_TRUSTED", get)
 
     def test_the_fix_is_listed_once_for_mortals(self) -> None:
         fixes = source("fixes.c")

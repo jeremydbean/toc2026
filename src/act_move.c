@@ -128,7 +128,7 @@ static bool is_hyrule_room( ROOM_INDEX_DATA *room )
  * tests/test_hyrule_progression.py holds this table to both.
  *
  * Carrying means in the inventory, worn, or one bag down -- never the
- * stash, which is not on the character. Staff pass by trust, and a pet or
+ * stash, which is not on the character. Staff pass by level, and a pet or
  * a charmed follower is asked about its master. The piece vnums are
  * HYRULE_PIECE_FIRST_VNUM to HYRULE_PIECE_LAST_VNUM in merc.h.
  */
@@ -306,7 +306,7 @@ bool travel_spell_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
     /* A prisoner goes nowhere by magic, rank or not (jail.c). */
     if ( is_jailed( ch ) && to->vnum != ROOM_VNUM_JAIL )
         return true;
-    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( is_staff( ch ) )
         return false;
     /* A sealed Hyrule room takes nobody by magic, a mobile sent there
        included (review, 2026-11-10: TELEPORT cast at a mobile). */
@@ -1376,7 +1376,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
            2026-11-10: PASS DOOR and ghost form walked through them). */
         if ( IS_SET(pexit->exit_info, EX_CLOSED)
         &&   IS_SET(pexit->exit_info, EX_LOCKED)
-        &&   !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+        &&   !is_staff( ch )
         &&   ( IS_AFFECTED(ch, AFF_PASS_DOOR) || IS_AFFECTED2(ch, AFF2_GHOST) ) )
         {
             act( "The $d is bound shut by an old magic: only its key will open it.",
@@ -4473,7 +4473,7 @@ void do_enter( CHAR_DATA *ch, char *argument )
    /* And what walking in asks: another class's guild rooms, a guard who
       would turn you away, staff rooms, Mud School past its level. A
       summon portal carried anyone into its caster's guild hall. */
-   if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+   if ( !IS_NPC(ch) && !is_staff( ch )
    &&   ( !can_see_room( ch, to_room ) || travel_spell_refuses( ch, to_room )
        || newbie_room_refuses( ch, to_room ) ) )
    {

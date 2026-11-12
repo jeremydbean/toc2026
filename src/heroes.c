@@ -17,7 +17,8 @@
  * at every save after, so a name is on the plaque (LOOK PLAQUE) and on the
  * tablet (LOOK TABLET) at once. Records from before this carry only the
  * first line; hero_records_backfill() fills them from the player files at
- * boot, once. Staff (trust LEVEL_IMMORTAL and up) are on neither.
+ * boot, once. Staff (immortals by level, and the creator) are on neither;
+ * a mortal given trust is on them as any mortal is (owner, 2026-11-12).
  */
 
 #include <ctype.h>
@@ -87,12 +88,22 @@ static void hero_first_line( const char *line, int *level, int *trust )
         *trust = 0;
 }
 
+/* Staff by a record's numbers: an immortal's level, or the creator's trust
+   (get_trust writes LEVEL_CREATOR for a creator of any level). A trust of
+   60 to 71 on a mortal's level is a trusted mortal, who is on the rolls
+   (owner, 2026-11-12: "let trusted players act as mortals across the
+   board"). */
+static bool hero_rank_is_staff( int level, int trust )
+{
+    return level >= LEVEL_IMMORTAL || trust >= LEVEL_CREATOR;
+}
+
 /* A record that names somebody of staff rank, by its first line. A mortal
    later made staff is rewritten with their rank at their next save
    (hero_record_write) or at boot from their file (backfill_dir). */
 static bool hero_record_is_staff( const HERO_RECORD *rec )
 {
-    return rec->level >= LEVEL_IMMORTAL || rec->trust >= LEVEL_IMMORTAL;
+    return hero_rank_is_staff( rec->level, rec->trust );
 }
 
 /* Read heroes/<Name>; false if there is none. */
@@ -189,7 +200,7 @@ void hero_record_write( CHAR_DATA *ch, bool reborn )
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return;
-    if ( get_trust( ch ) >= LEVEL_IMMORTAL )
+    if ( is_staff( ch ) )
     {
         /* Staff are on neither roll. One promoted from mortal keeps the
            record, rewritten with the rank so the rolls leave it out (and a
@@ -299,7 +310,7 @@ static int backfill_dir( const char *dirpath )
         if ( !hero_fields_from_file( path, &level, &trust, &remorts, &cls,
                                      race, sizeof(race) ) )
             continue;
-        if ( level >= LEVEL_IMMORTAL || trust >= LEVEL_IMMORTAL )
+        if ( hero_rank_is_staff( level, trust ) )
         {
             /* Promoted since their record was written: write the rank in,
                so the rolls leave them out. */
