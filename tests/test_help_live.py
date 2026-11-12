@@ -85,8 +85,10 @@ class HelpParityTests(unittest.TestCase):
                 group = mortal.sync("help group weather")
                 self.assertIn("Weather is a group of abilities:", group, group)
                 self.assertIn("lightning bolt", group, group)
-                # QUI is QUIET, as HELP QUIT now says; QUIT is typed in full.
-                self.assertIn("only hear says and emotes", mortal.sync("qui"))
+                # QUI is QUIT's reminder, as HELP QUIT says, and changes
+                # nothing; QUIE is the shortest QUIET.
+                self.assertIn("you have to spell it out", mortal.sync("qui"))
+                self.assertIn("only hear says and emotes", mortal.sync("quie"))
                 self.assertIn("Quiet mode removed", mortal.sync("quiet"))
                 # A staff page is never shown below its level.
                 self.assertNotIn("oracle ban", mortal.sync("help oracleadmin"))

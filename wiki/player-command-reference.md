@@ -255,7 +255,7 @@ download, but does not currently include Mudlet's automatic mapper. See the
 |---|---|
 | `save` | Save now (the game also saves about every five minutes); keys other than Hyrule's small keys, blank maps and quest recovery items are never saved |
 | `quit` | Leave the game normally |
-| `qui` | Runs `quiet`, not `quit`: `quit` must be typed in full |
+| `qui` | Only a reminder: `quit` must be typed in full (`quie` is `quiet`) |
 | `password` | Change the character password |
 | `delete` | Begin permanent character deletion; read every confirmation |
 

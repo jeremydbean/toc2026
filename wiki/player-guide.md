@@ -756,7 +756,8 @@ normal hazard.
 
 Use `save` after leveling, changing equipment, training, receiving important
 items, or completing a difficult objective. Use the full `quit` command when
-leaving; `qui` runs `quiet`, not `quit`.
+leaving; `qui` only reminds you to spell `quit` out, and `quie` is the
+shortest way to type `quiet`.
 
 Change a password with the documented `password` command, using a unique value.
 A new password counts every character. A password carried over from the old DES

@@ -235,6 +235,9 @@ const	struct	cmd_type	cmd_table	[] =
     { "note",		do_note,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { "pose",		do_pose,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "question",	do_question,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
+    /* QUI is one keystroke from QUIT, so it says to spell QUIT out; it
+       sits before QUIET, which it used to run (QUIE is still QUIET). */
+    { "qui",		do_qui,		POS_DEAD,	 0,  LOG_NORMAL, 0 },
     { "quiet",		do_quiet,	POS_SLEEPING, 	 0,  LOG_NORMAL, 1 },
     { "reply",		do_reply,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { "replay",		do_replay,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
@@ -361,7 +364,6 @@ const	struct	cmd_type	cmd_table	[] =
     { "psionic",    	do_psionic_armor,POS_FIGHTING,  15,  LOG_NORMAL, 0 },
     { "psychic",    	do_psychic_shield,POS_STANDING, 15,  LOG_NORMAL, 0 },
     { "shove",       	do_shove,       POS_STANDING,    3,  LOG_NORMAL, 1 },
-    { "qui",		do_qui,		POS_DEAD,	 0,  LOG_NORMAL, 0 },
     { "quit",		do_quit,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "recall",		do_recall,	POS_FIGHTING,	 0,  LOG_NORMAL, 1 },
     { "redeem",		do_redeem,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
