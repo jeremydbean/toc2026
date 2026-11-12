@@ -994,13 +994,13 @@ static void holiday_span_words( const HOLIDAY *h, int y, char *buf, size_t size 
 
 /* What a staff HOLIDAYS adds: where the date came from, what is on and
    why, which seasonal areas boot loaded (they change only at a reboot,
-   so they can disagree with the calendar), and the fair as it stands. */
+   so they can disagree with the calendar until the automatic restart at
+   3am New York), and the fair as it stands. */
 static void holiday_staff_lines( CHAR_DATA *ch, const HOLIDAY *now )
 {
     ROOM_INDEX_DATA *square = get_room_index( VENDOR_SPAWN_ROOM );
     const char *forced = getenv( "TOC_SEASON" );
     const char *file = getenv( "TOC_DATE_FILE" );
-    const char *loaded = season_loaded_name();
     const char *source;
     char buf[MAX_STRING_LENGTH];
     char decor[MAX_INPUT_LENGTH];
@@ -1027,14 +1027,9 @@ static void holiday_staff_lines( CHAR_DATA *ch, const HOLIDAY *now )
                   now != NULL ? now->name : "none" );
     send_to_char( buf, ch );
 
-    snprintf( buf, sizeof(buf),
-              "[staff] seasonal areas loaded at boot: %s%s\n\r",
-              loaded != NULL ? loaded : "the ordinary ones",
-              ( loaded == NULL ) != ( get_season_name() == NULL )
-              || ( loaded != NULL && get_season_name() != NULL
-                   && strcmp( loaded, get_season_name() ) )
-                  ? " -- not the season now; they change only at a reboot." : "." );
-    send_to_char( buf, ch );
+    /* Which areas booted, and when the automatic restart that swaps
+       them is (season.c). */
+    season_restart_staff_lines( ch );
 
     if ( now == NULL || now->decor_vnum == 0 )
         toc_strlcpy( decor, "none", sizeof(decor) );
@@ -1056,13 +1051,15 @@ static void holiday_staff_lines( CHAR_DATA *ch, const HOLIDAY *now )
                   decor, square != NULL ? eggs_lying( square->area ) : 0, EGG_CEILING,
                   eggs_lying( NULL ) );
     send_to_char( buf, ch );
-    send_to_char( "[staff] HOLIDAYS REFRESH puts the fair up now.\n\r", ch );
+    send_to_char( "[staff] HOLIDAYS REFRESH puts the fair up now; HOLIDAYS RESTART "
+                  "[NOW|CANCEL] is the seasonal restart.\n\r", ch );
 }
 
 /* HOLIDAYS: what is on, and the year's calendar. HOLIDAYS <year> shows
    another year's dates and HOLIDAYS ON <yyyy-mm-dd> what any one day
    would be, from the same code as today. Staff: HOLIDAYS REFRESH puts up
-   the fair now instead of at the next tick. */
+   the fair now instead of at the next tick, and HOLIDAYS RESTART shows,
+   starts or calls off the seasonal restart (season.c). */
 void do_holidays( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -1078,6 +1075,11 @@ void do_holidays( CHAR_DATA *ch, char *argument )
     {
         holiday_tick();
         send_to_char( "The fair in the Oak Tree Square is up to date.\n\r", ch );
+        return;
+    }
+    if ( !str_cmp( arg, "restart" ) && IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    {
+        season_restart_command( ch, argument );
         return;
     }
     if ( !str_cmp( arg, "on" ) )

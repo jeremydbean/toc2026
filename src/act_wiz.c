@@ -2675,12 +2675,48 @@ static bool staff_wizinvis( CHAR_DATA *ch )
     return !IS_NPC(actor) && IS_SET(actor->act, PLR_WIZINVIS);
 }
 
+/*
+ * REBOOT's ending: the loop let go and every connection closed, with no
+ * area/shutdown.txt, so startup.sh, the container's entrypoint and
+ * toc-game.service (Restart=always) start the game again. The automatic
+ * seasonal restart (season.c) ends the same way.
+ */
+void game_reboot_close( void )
+{
+    extern bool merc_down;
+    DESCRIPTOR_DATA *d,*d_next;
+
+    merc_down = true;
+    for ( d = descriptor_list; d != NULL; d = d_next )
+    {
+	d_next = d->next;
+	close_socket(d);
+    }
+}
+
+/*
+ * A reboot nobody typed (season.c): every player saved -- link-dead and
+ * switched ones too, as the SIGTERM path saves them, since there is no
+ * caller whose trust FSAVE's sweep could be measured against -- then
+ * REBOOT's ending.
+ */
+void game_reboot_unattended( void )
+{
+    CHAR_DATA *vch;
+    LIST_ITERATOR iter;
+
+    FOR_EACH_CHARACTER( iter, vch )
+    {
+	if ( !IS_NPC(vch) && vch->level >= 1 )
+	    save_char_obj( vch );
+    }
+    game_reboot_close();
+}
+
 void do_reboot( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
     char buf[MAX_STRING_LENGTH];
-    extern bool merc_down;
-    DESCRIPTOR_DATA *d,*d_next;
 
     if ( !staff_wizinvis( ch ) )
     {
@@ -2690,13 +2726,7 @@ void do_reboot( CHAR_DATA *ch, char *argument )
 /*    do_force ( ch, "all save");*/
     do_forcesave(ch,"");
     do_save (ch, "");
-    merc_down = true;
-    for ( d = descriptor_list; d != NULL; d = d_next )
-    {
-	d_next = d->next;
-	close_socket(d);
-    }
-
+    game_reboot_close();
     return;
 }
 

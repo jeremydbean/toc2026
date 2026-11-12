@@ -96,6 +96,56 @@ int holiday_thanksgiving( int y )
     return first + 21;
 }
 
+/* Floor division, so an epoch before 1970 still lands on its own day. */
+static long long floor_div( long long a, long long b )
+{
+    long long q = a / b;
+
+    return ( a % b != 0 && ( ( a < 0 ) != ( b < 0 ) ) ) ? q - 1 : q;
+}
+
+/* The day of the month of the n-th Sunday (n from 1) of y-m. 1970-01-01
+   was a Thursday, so ( days + 4 ) % 7 is 0 on a Sunday. */
+static int nth_sunday( int y, int m, int n )
+{
+    long first = holiday_days_from_civil( y, m, 1 );
+    int  wday  = (int)( ( ( first % 7 ) + 7 + 4 ) % 7 );
+
+    return 1 + ( 7 - wday ) % 7 + 7 * ( n - 1 );
+}
+
+long holiday_new_york_offset( long long utc )
+{
+    long long day = floor_div( utc, 86400 );
+    long long start, end;
+    int y, m, d;
+
+    /* The UTC year: it differs from New York's only in the first hours
+       of January 1, which are winter either way. */
+    holiday_civil_from_days( (long) day, &y, &m, &d );
+    start = (long long) holiday_days_from_civil( y, 3, nth_sunday( y, 3, 2 ) ) * 86400
+          + 7 * 3600;
+    end   = (long long) holiday_days_from_civil( y, 11, nth_sunday( y, 11, 1 ) ) * 86400
+          + 6 * 3600;
+    return utc >= start && utc < end ? -4L * 3600 : -5L * 3600;
+}
+
+void holiday_new_york_time( long long utc, int *y, int *m, int *d,
+                            int *hour, int *minute )
+{
+    long long local = utc + holiday_new_york_offset( utc );
+    long long day = floor_div( local, 86400 );
+    long long secs = local - day * 86400;
+    int yy, mm, dd;
+
+    holiday_civil_from_days( (long) day, &yy, &mm, &dd );
+    if ( y != NULL )      *y = yy;
+    if ( m != NULL )      *m = mm;
+    if ( d != NULL )      *d = dd;
+    if ( hour != NULL )   *hour = (int)( secs / 3600 );
+    if ( minute != NULL ) *minute = (int)( ( secs % 3600 ) / 60 );
+}
+
 int holiday_cooldown_ready( HOLIDAY_COOLDOWN *slots, int count,
                             const void *key, long now, long gap )
 {

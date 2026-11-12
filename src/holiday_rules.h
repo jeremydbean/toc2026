@@ -24,6 +24,17 @@ int  holiday_parse_date( const char *text, int *y, int *m, int *d );
 void holiday_easter( int y, int *mon, int *day );
 int  holiday_thanksgiving( int y );
 
+/* New York's wall clock for a UTC epoch, whatever TZ the host runs
+   under (the automatic seasonal restart is at 3am New York; owner,
+   2026-11-12). The US rule since 2007: EDT, UTC-4, from 2:00 local on
+   the second Sunday of March (07:00 UTC) to 2:00 local on the first
+   Sunday of November (06:00 UTC); EST, UTC-5, the rest of the year.
+   The offset is in seconds (-14400 or -18000); the time is filled in
+   when the pointers are not NULL. */
+long holiday_new_york_offset( long long utc );
+void holiday_new_york_time( long long utc, int *y, int *m, int *d,
+                            int *hour, int *minute );
+
 /* One cooldown per key: true, and the key's clock started, when `now` is
    at least `gap` seconds after the key last fired (or it never has).
    Keys are compared as pointers and never dereferenced. A full table

@@ -5,6 +5,21 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112seasontowns 2026-11-12
+The decorated towns of Hallows End and Winter Veil now arrive on time: the
+world restarts itself for them between 3 and 4 in the morning New York
+time, on the first day of each and the day after each ends. Everyone is
+warned five minutes and one minute before, and saved. See HELP HOLIDAYS.
+
+@ 20261112seasonrestart 2026-11-12 staff
+The game now restarts itself for Hallows End and Winter Veil, whose
+decorated towns load only at boot: when the towns loaded disagree with the
+calendar, between 3 and 4am New York time, with warnings five minutes and
+one minute ahead, everyone saved, and a reboot (no shutdown.txt). A game
+up less than an hour waits. HOLIDAYS shows when; HOLIDAYS RESTART CANCEL
+(implementor) skips that night and HOLIDAYS RESTART NOW (REBOOT's rank)
+starts the warning at once. Logged and on WIZINFO.
+
 @ 20261112mountsaved 2026-11-12
 Your saddled mount is no longer lost when you quit. A horse you are riding
 is saved with you, saddle and all, and comes back at your side when you

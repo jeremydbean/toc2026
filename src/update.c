@@ -3421,6 +3421,10 @@ void update_handler( void )
 	/* A jail term that has run out ends with nobody typing (jail.c). */
 	playlog_phase_enter( "jail_update" );
 	jail_update	( );
+	/* The seasonal areas held to the calendar: a restart at 3am New
+	   York when they differ (season.c). */
+	playlog_phase_enter( "season_restart" );
+	season_restart_update( );
     }
     if ( --pulse_area     <= 0 )
     {

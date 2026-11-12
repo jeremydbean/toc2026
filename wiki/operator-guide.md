@@ -111,6 +111,38 @@ wizlock
 - `newlock` controls new-character creation.
 - `wizlock` restricts login according to the command's live help.
 
+### The Automatic Seasonal Restart
+
+Hallows End (Oct 18 - Nov 1) and Winter Veil (Dec 16 - Jan 6) load
+decorated copies of `dresden`, `limbo` and `midennir`, and only at boot
+(`src/season.c`). So the game restarts itself for them (owner,
+2026-11-12): once a second it holds the season the areas were booted with
+to the calendar's, and when they differ, it is 3:00 to 3:59 in New York
+(computed from UTC by the US daylight-saving rule in
+`src/holiday_rules.c`, never the host's TZ) and the game has been up an
+hour, it announces "The world changes for Hallows End: a short restart in
+5 minutes." (and "... is over and the world changes back" at the end),
+again a minute ahead, saves every player, and restarts the way `reboot`
+does: no `shutdown.txt`, so `toc-game.service` (`Restart=always`),
+`startup.sh` and the container start it again, and the boot loads the
+right areas. In practice that is 3am New York on Oct 18, Nov 2, Dec 16 and
+Jan 7. Players online are restarted anyway (owner's choice; the hour is
+chosen to be quiet), and the Hermie restart window may then open for them.
+The hour of uptime is the guard against a loop: a boot that still
+disagrees is not an hour old before the window closes. No other holiday
+restarts anything -- the fair follows the calendar on the tick.
+
+Staff `holidays` shows "seasonal areas loaded at boot: X; the calendar
+wants Y; an automatic restart is due at 3am New York." and why it is
+waiting, or how long is left. `holidays restart` shows the same;
+`holidays restart cancel` (trust 70) calls it off -- players who were
+warned are told -- and skips that night's window; `holidays restart now`
+(trust 72, REBOOT's rank) starts the five-minute warning at once, at any
+hour. Each step goes to `log/toc.log` (`Seasonal restart: ...`) and
+WIZINFO. Tests only: `TOC_SEASON_REBOOT_ANYHOUR=1`,
+`TOC_SEASON_REBOOT_WARN_SECS` and `TOC_SEASON_REBOOT_MIN_UPTIME`
+(`tests/test_season_restart.py`); never set them on a host.
+
 The Docker Compose service uses `restart: unless-stopped`, which can restart the
 whole container even after a clean in-game shutdown. To keep it stopped, run:
 

@@ -7,8 +7,9 @@
  * boot: a world booted before Hallows End or Winter Veil keeps the
  * ordinary areas until its next reboot, and one booted in season keeps
  * the decorated copies after it ends (season_loaded_name() says which a
- * running world has). The fair in the square -- holiday.c -- follows the
- * calendar without a reboot.
+ * running world has) -- so the game restarts itself for them at 3am New
+ * York (season_restart_update, below). The fair in the square --
+ * holiday.c -- follows the calendar without a reboot.
  *
  * The dates are holiday.c's calendar (holiday_key), which has every
  * holiday; two of them swap areas here:
@@ -22,6 +23,7 @@
 #include <stdlib.h>
 #include "merc.h"
 #include "list.h"
+#include "holiday_rules.h"
 
 /* Internal season identifier. */
 typedef enum
@@ -119,6 +121,339 @@ const char *get_seasonal_area( const char *area_file )
     if ( variant != area_file )
         season_loaded = season;
     return variant;
+}
+
+/* =========================================================
+ * The automatic seasonal restart (owner, 2026-11-12: "on the date
+ * holidays are to start, in the middle of the night the game will
+ * automatically reboot itself to the new holiday. maybe 3-4am EST.")
+ *
+ * Only Hallows End and Winter Veil swap areas, and only at boot, so a
+ * world booted before one starts keeps the ordinary areas until the next
+ * reboot, and one booted in season keeps the decorated copies after it
+ * ends. Once a second (update_handler) the season the areas were booted
+ * with is held to the calendar's; when they differ, it is 3:00 to 3:59
+ * in New York (by the US daylight-saving rule, holiday_rules.c: never
+ * the host's TZ, which is UTC on the live host), the game has been up an
+ * hour and staff did not call tonight's off, players are warned five
+ * minutes and one minute ahead, every player is saved and the game
+ * restarts the way REBOOT does -- no shutdown.txt, so whatever runs it
+ * starts it again, and the boot loads the right areas. The hour of
+ * uptime is what keeps a boot that somehow still disagrees from
+ * restarting again that night: it boots after 3:00, so it is not an hour
+ * old before the window closes. Every other holiday follows the calendar
+ * by itself (holiday_tick) and never restarts anything.
+ *
+ * For tests only, never set on a host: TOC_SEASON_REBOOT_ANYHOUR=1 makes
+ * every hour 3am, TOC_SEASON_REBOOT_WARN_SECS shortens the warning and
+ * TOC_SEASON_REBOOT_MIN_UPTIME the hour of uptime.
+ * ========================================================= */
+
+#define SEASON_RESTART_HOUR        3      /* 3:00 to 3:59, New York */
+#define SEASON_RESTART_WARN        300    /* the first warning, seconds ahead */
+#define SEASON_RESTART_LAST_WARN   60     /* and the last */
+#define SEASON_RESTART_MIN_UPTIME  3600
+
+extern time_t boot_time_stamp;
+
+static time_t      restart_at;            /* when it goes; 0 = nothing scheduled */
+static bool        restart_last_warned;
+static SEASON_TYPE restart_target;
+static long        restart_cancelled_day = -1;   /* New York day staff skipped */
+
+static const char *season_words( SEASON_TYPE season )
+{
+    switch ( season )
+    {
+        case SEASON_HALLOWEEN: return "Hallows End";
+        case SEASON_CHRISTMAS: return "Winter Veil";
+        default:               return "the ordinary ones";
+    }
+}
+
+static bool restart_any_hour( void )
+{
+    const char *text = getenv( "TOC_SEASON_REBOOT_ANYHOUR" );
+
+    return text != NULL && text[0] != '\0' && strcmp( text, "0" );
+}
+
+static int restart_env_secs( const char *name, int fallback )
+{
+    const char *text = getenv( name );
+    int value;
+
+    if ( text == NULL || text[0] == '\0' || !parse_int( text, 0, 86400, &value ) )
+        return fallback;
+    return value;
+}
+
+static int restart_warn_secs( void )
+{
+    return restart_env_secs( "TOC_SEASON_REBOOT_WARN_SECS", SEASON_RESTART_WARN );
+}
+
+/* The last warning: a minute ahead, or halfway through a shorter one. */
+static int restart_last_warn_secs( void )
+{
+    return UMIN( SEASON_RESTART_LAST_WARN, restart_warn_secs() / 2 );
+}
+
+/* New York's day number and hour now. */
+static long new_york_day( time_t now, int *hour, int *minute )
+{
+    int y, m, d;
+
+    holiday_new_york_time( (long long) now, &y, &m, &d, hour, minute );
+    return holiday_days_from_civil( y, m, d );
+}
+
+/* The New York day whose 3am is the next window (today's until it ends;
+   with ANYHOUR every hour is the window, so always today). */
+static long restart_window_day( time_t now )
+{
+    int hour, minute;
+    long day = new_york_day( now, &hour, &minute );
+
+    if ( restart_any_hour() || hour <= SEASON_RESTART_HOUR )
+        return day;
+    return day + 1;
+}
+
+/* Why no restart is scheduled although the areas disagree with the
+   calendar, or NULL when it is due. */
+static const char *restart_wait_reason( time_t now, char *buf, size_t size )
+{
+    int hour, minute;
+    int uptime = restart_env_secs( "TOC_SEASON_REBOOT_MIN_UPTIME",
+                                   SEASON_RESTART_MIN_UPTIME );
+
+    new_york_day( now, &hour, &minute );
+    if ( !restart_any_hour() && hour != SEASON_RESTART_HOUR )
+        snprintf( buf, size, "it is %02d:%02d in New York, not 3am", hour, minute );
+    else if ( restart_window_day( now ) == restart_cancelled_day )
+        snprintf( buf, size, "staff called tonight's restart off" );
+    else if ( (long) ( now - boot_time_stamp ) < uptime )
+        snprintf( buf, size, "the game has been up less than %d minute%s",
+                  uptime / 60, uptime / 60 == 1 ? "" : "s" );
+    else
+        return NULL;
+    return buf;
+}
+
+static void restart_in_words( long secs, char *buf, size_t size )
+{
+    if ( secs >= 120 )
+        snprintf( buf, size, "%ld minutes", ( secs + 30 ) / 60 );
+    else if ( secs >= 60 )
+        snprintf( buf, size, "1 minute" );
+    else
+        snprintf( buf, size, "%ld second%s", UMAX( secs, 1 ), secs > 1 ? "s" : "" );
+}
+
+/* To every player, through ANNOUNCE's frame. */
+static void restart_announce( long left )
+{
+    char when[64];
+    char msg[MAX_STRING_LENGTH];
+
+    restart_in_words( left, when, sizeof(when) );
+    if ( restart_target != SEASON_NORMAL )
+        snprintf( msg, sizeof(msg), "The world changes for %s: a short restart in %s.",
+                  season_words( restart_target ), when );
+    else
+        snprintf( msg, sizeof(msg), "%s is over and the world changes back: a short "
+                  "restart in %s.", season_words( season_loaded ), when );
+    announce_to_world( "the calendar", msg );
+}
+
+static void restart_note( const char *text, int level )
+{
+    log_string( text );
+    wizinfo( text, level );
+}
+
+static void restart_schedule( time_t now, const char *who, int level )
+{
+    char buf[MAX_STRING_LENGTH];
+    int warn = restart_warn_secs();
+
+    restart_target = get_current_season();
+    restart_at = now + warn;
+    restart_last_warned = false;
+    snprintf( buf, sizeof(buf), "Seasonal restart: the areas are %s, the calendar wants "
+              "%s; restarting in %d seconds (%.200s).", season_words( season_loaded ),
+              season_words( restart_target ), warn, who );
+    restart_note( buf, level );
+    restart_announce( warn );
+}
+
+/* Called off: players who were warned are told. */
+static void restart_stop( const char *why, int level )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    restart_at = 0;
+    restart_last_warned = false;
+    snprintf( buf, sizeof(buf), "Seasonal restart called off: %.200s.", why );
+    restart_note( buf, level );
+    announce_to_world( "the calendar", "The restart is called off; play on." );
+}
+
+static void restart_go( void )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    snprintf( buf, sizeof(buf), "Seasonal restart: saving every player and restarting "
+              "for %s (a reboot: no shutdown.txt).", season_words( restart_target ) );
+    restart_note( buf, LEVEL_IMMORTAL );
+    restart_at = 0;
+    game_reboot_unattended();
+}
+
+/* Once a second, from update_handler. */
+void season_restart_update( void )
+{
+    SEASON_TYPE want;
+    char why[MAX_INPUT_LENGTH];
+    time_t now = current_time;
+
+    want = get_current_season();
+    if ( restart_at != 0 )
+    {
+        long left = (long) ( restart_at - now );
+
+        if ( want == season_loaded )
+        {
+            restart_stop( "the areas match the calendar again", LEVEL_IMMORTAL );
+            return;
+        }
+        if ( want != restart_target )
+            restart_target = want;
+        if ( left <= 0 )
+        {
+            restart_go();
+            return;
+        }
+        if ( !restart_last_warned && left <= restart_last_warn_secs() )
+        {
+            restart_last_warned = true;
+            restart_announce( left );
+        }
+        return;
+    }
+    if ( want == season_loaded || restart_wait_reason( now, why, sizeof(why) ) != NULL )
+        return;
+    restart_schedule( now, "3am in New York", LEVEL_IMMORTAL );
+}
+
+/* Staff HOLIDAYS: which areas booted, and when the next restart is. */
+void season_restart_staff_lines( CHAR_DATA *ch )
+{
+    SEASON_TYPE want = get_current_season();
+    char buf[MAX_STRING_LENGTH];
+    char why[MAX_INPUT_LENGTH];
+    char when[64];
+    int hour, minute;
+
+    if ( want == season_loaded )
+    {
+        snprintf( buf, sizeof(buf), "[staff] seasonal areas loaded at boot: %s.\n\r",
+                  season_words( season_loaded ) );
+        send_to_char( buf, ch );
+        return;
+    }
+    snprintf( buf, sizeof(buf), "[staff] seasonal areas loaded at boot: %s; the calendar "
+              "wants %s; an automatic restart is due at 3am New York.\n\r",
+              season_words( season_loaded ), season_words( want ) );
+    send_to_char( buf, ch );
+    new_york_day( current_time, &hour, &minute );
+    if ( restart_at != 0 )
+    {
+        restart_in_words( (long) ( restart_at - current_time ), when, sizeof(when) );
+        snprintf( buf, sizeof(buf), "[staff] the restart is under way: in %s. "
+                  "HOLIDAYS RESTART CANCEL stops it.\n\r", when );
+    }
+    else
+        snprintf( buf, sizeof(buf), "[staff] not yet: %s (%02d:%02d in New York). "
+                  "HOLIDAYS RESTART NOW starts the warning at once.\n\r",
+                  restart_wait_reason( current_time, why, sizeof(why) ) != NULL
+                      ? why : "due at the next second", hour, minute );
+    send_to_char( buf, ch );
+}
+
+/* HOLIDAYS RESTART [NOW|CANCEL], staff. CANCEL is an implementor's and
+   skips tonight's window; NOW is REBOOT's rank (the creator's) and starts
+   the warning at once, whatever the hour. */
+void season_restart_command( CHAR_DATA *ch, char *argument )
+{
+    CHAR_DATA *actor = ( ch->desc != NULL && ch->desc->original != NULL )
+                       ? ch->desc->original : ch;
+    int level = staff_notice_level( actor, LEVEL_IMMORTAL );
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+
+    one_argument( argument, arg );
+    if ( !str_cmp( arg, "cancel" ) )
+    {
+        if ( !IS_TRUSTED( ch, MAX_LEVEL ) )
+        {
+            send_to_char( "Only an implementor may call off the seasonal restart.\n\r", ch );
+            return;
+        }
+        if ( get_current_season() == season_loaded && restart_at == 0 )
+        {
+            send_to_char( "Nothing to call off: the seasonal areas match the calendar.\n\r", ch );
+            return;
+        }
+        restart_cancelled_day = restart_window_day( current_time );
+        if ( restart_at != 0 )
+        {
+            snprintf( buf, sizeof(buf), "%s, by HOLIDAYS RESTART CANCEL", actor->name );
+            restart_stop( buf, level );
+            send_to_char( "The seasonal restart is called off, and tonight's window is "
+                          "skipped. HOLIDAYS RESTART NOW starts it again.\n\r", ch );
+        }
+        else
+        {
+            snprintf( buf, sizeof(buf), "Seasonal restart: %s skipped the next 3am window.",
+                      actor->name );
+            restart_note( buf, level );
+            send_to_char( "Nothing was under way; the next 3am window is skipped.\n\r", ch );
+        }
+        return;
+    }
+    if ( !str_cmp( arg, "now" ) )
+    {
+        if ( !IS_TRUSTED( ch, LEVEL_CREATOR ) )
+        {
+            send_to_char( "Only REBOOT's rank may start the seasonal restart.\n\r", ch );
+            return;
+        }
+        if ( get_current_season() == season_loaded )
+        {
+            send_to_char( "The seasonal areas already match the calendar; REBOOT "
+                          "restarts the game anyway.\n\r", ch );
+            return;
+        }
+        if ( restart_at != 0 )
+        {
+            send_to_char( "The seasonal restart is already under way.\n\r", ch );
+            return;
+        }
+        restart_cancelled_day = -1;
+        snprintf( buf, sizeof(buf), "%s, by HOLIDAYS RESTART NOW", actor->name );
+        restart_schedule( current_time, buf, level );
+        send_to_char( "The seasonal restart is under way.\n\r", ch );
+        return;
+    }
+    if ( arg[0] != '\0' )
+    {
+        send_to_char( "HOLIDAYS RESTART, HOLIDAYS RESTART NOW or HOLIDAYS RESTART "
+                      "CANCEL.\n\r", ch );
+        return;
+    }
+    season_restart_staff_lines( ch );
 }
 
 /* =========================================================
