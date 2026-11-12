@@ -242,6 +242,20 @@ class WalktoLiveTests(unittest.TestCase):
                 self.assertIn("Guild halls:", listing, listing)
                 self.assertIn("University of Magic", listing)
 
+                # The two long lists are built in a DString now (growable
+                # output buffers): whole, closing line included, unpaged here.
+                run(client, "scroll 0", 0.6)
+                trainers = run(client, "walkto trainers")
+                self.assertIn("Guildmasters and trainers, by where they are:",
+                              trainers, trainers)
+                self.assertIn("TEACHLIST and GAINLIST say which of them will teach you.",
+                              trainers, trainers)
+                self.assertNotIn("more than one list holds", trainers)
+                areas = run(client, "walkto areas")
+                self.assertIn("Areas you can walk to", areas, areas)
+                self.assertIn("Moria", areas, areas)
+                self.assertNotIn("more areas than one list holds", areas)
+
                 unknown = run(client, "walkto zzqxj")
                 self.assertIn("nowhere called", unknown, unknown)
 

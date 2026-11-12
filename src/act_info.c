@@ -3949,6 +3949,8 @@ void gainlist_by_trainer(CHAR_DATA *ch, char *argument)
 
    MOB_INDEX_DATA *pMobIndex;
    char buf[MAX_STRING_LENGTH];
+   DString out;
+   bool cut = false;
    bool isgroup;
    struct guildmaster_type gmdata;
    int gn = 0;
@@ -3962,6 +3964,9 @@ void gainlist_by_trainer(CHAR_DATA *ch, char *argument)
    {  send_to_char("You have no need to practice anything.\n\r", ch);
       return;
    }
+   /* Built in a bounded DString and paged: a list asked for by name,
+      and one line of it is still a fixed buf (growable output buffers). */
+   dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
    for (counter=0; guildmaster_table[counter].vnum != 0; counter++)
    {
        gmdata = guildmaster_table[counter];
@@ -3982,9 +3987,16 @@ void gainlist_by_trainer(CHAR_DATA *ch, char *argument)
            continue;
         if (gmdata.can_gain[0] == NULL)
            continue;
+        /* Whole trainers only: one that would pass the limit is left
+           off with the rest, and the list says so. */
+        if ( !dstring_fits( &out, 4 * MAX_STRING_LENGTH ) )
+        {
+            cut = true;
+            break;
+        }
         snprintf(buf, sizeof(buf), "At guildmaster %s:\n\r",
                      pMobIndex->short_descr);
-        send_to_char(buf,ch);
+        dstring_append_cstr( &out, buf );
 
         for (i = 0; i < MAX_GAIN; i++)
         {
@@ -4031,18 +4043,23 @@ void gainlist_by_trainer(CHAR_DATA *ch, char *argument)
                     snprintf(buf, sizeof(buf), "%-20s %-7s ", name, "n/a");
                 else
                     snprintf(buf, sizeof(buf), "%-20s %-7d ", name, cost);
-                send_to_char(buf,ch);
+                dstring_append_cstr( &out, buf );
             }
             if (++col % 3 == 0)
-                send_to_char("\n\r",ch);
+                dstring_append_cstr( &out, "\n\r" );
         }
         if (col % 3 != 0)
-            send_to_char("\n\r",ch);
+            dstring_append_cstr( &out, "\n\r" );
 
-        send_to_char("\n\r",ch);
+        dstring_append_cstr( &out, "\n\r" );
 
         col = 0;
    }
+   if ( cut || out.truncated )  /* the room kept above holds this line */
+       dstring_append_cstr( &out, "... and more trainers than one list holds.\n\r" );
+   if ( dstring_length( &out ) > 0 )
+       page_to_char( dstring_cstr( &out ), ch );
+   dstring_free( &out );
 }
 
 

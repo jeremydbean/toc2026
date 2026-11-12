@@ -5,6 +5,18 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112mudletatlas 2026-11-12
+The Mudlet starter map no longer draws secret exits. It showed 302 of
+them, every hidden door in the world among them; you find a secret way
+by searching for it, and the mapper adds it once you have walked it.
+
+@ 20261112shockerrooms 2026-11-12 staff
+A room affect of type 4 (shocker, the metal rod and lightning) loads and
+shows in STAT ROOM as "shocker". The name table stopped at volcanic, so
+such a room was refused at boot. Kill counts in MSTAT and a character's
+idle timer no longer wrap past 32,767, and stacked experience bonuses
+add up whole.
+
 @ 20261112longlists 2026-11-12
 Long lists are shown whole. STASH used to stop near the 185th piece with
 "... and more than will fit on one screen", HISTORY 100 lost its newest

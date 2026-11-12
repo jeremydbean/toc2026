@@ -1466,7 +1466,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_GOLD:                                            break;
     case APPLY_EXP:
         if ( !IS_NPC(ch) )
-            ch->pcdata->exp_bonus += (sh_int)mod;
+            ch->pcdata->exp_bonus += mod;
         break;
     case APPLY_AC:
 	for (i = 0; i < 4; i ++)
