@@ -1,10 +1,10 @@
 #PLAYER
 Name Miseri~
 Id   10516
-LogO 1794341246
+Serial 16626392
+LogO 1794514870
 Vers 4
 Prom ~
-Ignoring ~
 Race human~
 Sex  1
 Cla  4
@@ -14,35 +14,34 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown mindblast,project,mindbar,pyrotechnics~
 ChangesSeen ~
-Fixes 20261021-mage-groups 20261021-mage-weapons~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261112-quest-serial~
 Cast none
 Levl 14
 Tru  70
-Plyd 2466
+Plyd 2696
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 Scro 22
-Room 30286
-HMV  348 348 1409 1409 469 469
-NewGold 378
+Room 30409
+HMV  348 348 1409 1409 467 469
+NewGold 383
 NewPlat 99
-NewCopp 4012
+NewCopp 4049
 NewSilv 669
 BankCP 0
-IntTime 1794320974
+IntTime 1794493774
 IntTotal 0
 Dcount 0
 SavedOnce 1
-Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 36
+AchKills 40
 AchQuests 0
 AchDeaths 0
-AchExplore 0
-AchMaps 0
-AchCompass 0
+AchExplore 1
+AchMaps 1
+AchCompass 1
 AchTriforce 0
 Achv level-5 1793111917
 Achv level-10 1793139666
@@ -57,8 +56,8 @@ Achv four-denominations 1793111917
 Achv carry-ten-platinum 1793111546
 AchSet areas 840101374 1103516333 ~
 AchSet rooms 3700 3744 3757 3759 4207 ~
-LastOut  1794341246
-Rested 2874 0
+LastOut  1794514870
+Rested 2861 0
 Daily 0 0 0 0 0
 SesLogin 1794341148
 SesDur   98
@@ -68,7 +67,7 @@ SesKill  4
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  31824
+Exp  31850
 Act  76012
 AfBy 3678908
 AfBy2 4106
@@ -112,7 +111,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 188 765 179
-Cond 0 100 100
+Cond 0 45 45
 Alias / who~
 Alias ] recall~
 Sk 1 'mindbar'
@@ -155,41 +154,41 @@ Sk 50 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'titanic'   0  -1 325  14          0          0
-AffD 'titanic'   0  -1 620  12          0          0
-AffD 'titanic'   0  -1 150  13          0          0
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'shroud'   0   3 -35  17          0          0
+AffD 'power gloves'   0   3  28  19          0          0
+AffD 'detect evil'   0   3   0   0          4          0
+AffD 'detect good'   0   3   0   0          0          2
+AffD 'detect magic'   0   3   0   0         16          0
+AffD 'detect hidden'   0   3   0   0         32          0
+AffD 'detect invis'   0   3   0   0          8          0
+AffD 'infravision'   0   3   0   0        512          0
+AffD 'frenzy'   0   3 110  17          0          0
+AffD 'frenzy'   0   3  11  19          0          0
+AffD 'frenzy'   0   3  11  18          0          0
+AffD 'shield'   0   3 -20  17          0          0
+AffD 'bless'   0   3  -8  24          0          0
+AffD 'bless'   0   3   8  18          0          0
+AffD 'armor'   0   3 -20  17          0          0
 AffD 'empower'   0  -1   0   0          0          0
-AffD 'armor'   0   7 -20  17          0          0
-AffD 'bless'   0   7   8  18          0          0
-AffD 'bless'   0   7  -8  24          0          0
-AffD 'shield'   0   7 -20  17          0          0
-AffD 'frenzy'   0   7  11  18          0          0
-AffD 'frenzy'   0   7  11  19          0          0
-AffD 'frenzy'   0   7 110  17          0          0
-AffD 'infravision'   0   7   0   0        512          0
-AffD 'detect invis'   0   7   0   0          8          0
-AffD 'detect hidden'   0   7   0   0         32          0
-AffD 'detect magic'   0   7   0   0         16          0
-AffD 'detect good'   0   7   0   0          0          2
-AffD 'detect evil'   0   7   0   0          4          0
-AffD 'power gloves'   0   7  28  19          0          0
-AffD 'shroud'   0   7 -35  17          0          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1 -100  17          0          0
+AffD 'titanic'   0  -1 150  13          0          0
+AffD 'titanic'   0  -1 620  12          0          0
+AffD 'titanic'   0  -1 325  14          0          0
+AffD 'titanic'   0  -1  50  16          0          0
 End
 
 #O
@@ -199,7 +198,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 161 0 0
+Val  0 0 157 0 0
 End
 
 #O
@@ -779,6 +778,60 @@ Cost 5000000
 Cond 100
 Repd 0
 Val  1 4 5 3 0
+End
+
+#O
+Vnum 13
+Nest 0
+ShD  the heart of a keese~
+Desc The torn-out heart of a keese is lying here.~
+Wear -1
+Time 5
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 15
+Nest 0
+ShD  the leg of a stalfos~
+Desc The sliced-off leg of a stalfos is lying here.~
+Wear -1
+Time 6
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 30489
+Nest 0
+Wear -1
+Lev  2
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30480
+Nest 0
+Wear -1
+Lev  2
+Cost 0
+Cond 100
+Repd 0
 End
 
 #END

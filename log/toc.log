@@ -291877,3 +291877,135 @@ Thu Nov 12 20:15:31 2026 :: Automated backup started.
 Thu Nov 12 20:15:31 2026 :: Daily backup started.
 Thu Nov 12 20:15:31 2026 :: Automated backup complete.
 Thu Nov 12 20:15:32 2026 :: Daily backup complete.
+Thu Nov 12 20:17:19 2026 :: Sock.sinaddr:  99.62.115.159
+Thu Nov 12 20:17:19 2026 :: Loading Miseri's playerfile
+Thu Nov 12 20:17:20 2026 :: Loading Miseri's playerfile
+Thu Nov 12 20:17:20 2026 :: Miseri@99.62.115.159 has connected.
+Thu Nov 12 20:17:21 2026 :: Log Miseri [30286]: arrived (The Meadow Bluff) from 0
+Thu Nov 12 20:17:23 2026 :: Log Miseri [30286]: lo
+Thu Nov 12 20:17:25 2026 :: Log Miseri [30286]: eq
+Thu Nov 12 20:17:28 2026 :: Log Miseri [30286]: .
+Thu Nov 12 20:17:29 2026 :: Log Miseri [30286]: .
+Thu Nov 12 20:17:30 2026 :: Log Miseri [30286]: /
+Thu Nov 12 20:17:32 2026 :: Log Miseri [30286]: lo
+Thu Nov 12 20:17:34 2026 :: Log Miseri [30286]: con pea
+Thu Nov 12 20:17:39 2026 :: Log Miseri [30286]: s
+Thu Nov 12 20:17:39 2026 :: Log Miseri [30270]: arrived (The Sheltered Hollow) from 30286
+Thu Nov 12 20:17:40 2026 :: Log Miseri [30270]: w
+Thu Nov 12 20:17:40 2026 :: Log Miseri [30269]: arrived (The Quiet Glade) from 30270
+Thu Nov 12 20:17:41 2026 :: Log Miseri [30269]: w
+Thu Nov 12 20:17:42 2026 :: Log Miseri [30269]: n
+Thu Nov 12 20:17:42 2026 :: Log Miseri [30285]: arrived (The Bomb Merchant's Cave) from 30269
+Thu Nov 12 20:17:44 2026 :: Log Miseri [30285]: n
+Thu Nov 12 20:17:44 2026 :: Log Miseri [30301]: arrived (Highland Overlook) from 30285
+Thu Nov 12 20:17:47 2026 :: Log Miseri [30301]: con ly
+Thu Nov 12 20:17:50 2026 :: Log Miseri [30301]: e
+Thu Nov 12 20:17:50 2026 :: Log Miseri [30302]: arrived (The Rumbling Gully) from 30301
+Thu Nov 12 20:17:53 2026 :: Log Miseri [30302]: con bou
+Thu Nov 12 20:17:54 2026 :: Log Miseri [30302]: e
+Thu Nov 12 20:17:54 2026 :: Log Miseri [30303]: arrived (The Mountain Stair) from 30302
+Thu Nov 12 20:17:55 2026 :: Log Miseri [30303]: e
+Thu Nov 12 20:17:55 2026 :: Log Miseri [30304]: arrived (The Boulder Run) from 30303
+Thu Nov 12 20:17:57 2026 :: Log Miseri [30304]: w
+Thu Nov 12 20:17:57 2026 :: Log Miseri [30303]: arrived (The Mountain Stair) from 30304
+Thu Nov 12 20:17:58 2026 :: Log Miseri [30303]: w
+Thu Nov 12 20:17:58 2026 :: Log Miseri [30302]: arrived (The Rumbling Gully) from 30303
+Thu Nov 12 20:17:58 2026 :: Log Miseri [30302]: w
+Thu Nov 12 20:17:58 2026 :: Log Miseri [30301]: arrived (Highland Overlook) from 30302
+Thu Nov 12 20:18:02 2026 :: Log Miseri [30301]: ]
+Thu Nov 12 20:18:05 2026 :: Log Miseri [30301]: lo
+Thu Nov 12 20:18:09 2026 :: Log Miseri [30301]: goto aquamen
+Thu Nov 12 20:18:09 2026 :: Log Miseri [30546]: arrived (Level 7: Hall of the Horned Ledge) from 30301
+Thu Nov 12 20:18:11 2026 :: Log Miseri [30546]: con aqu
+Thu Nov 12 20:18:17 2026 :: Log Miseri [30546]: kill aug
+Thu Nov 12 20:18:19 2026 :: Log Miseri [30546]: kill aqu
+Thu Nov 12 20:18:22 2026 :: Log Miseri [30546]: peace
+Thu Nov 12 20:18:26 2026 :: Log Miseri [30546]: /
+Thu Nov 12 20:18:33 2026 :: Log Miseri [30546]: mwhere aqua
+Thu Nov 12 20:18:42 2026 :: Log Miseri [30546]: rwhere level 1
+Thu Nov 12 20:18:50 2026 :: Log Miseri [30546]: goto 30400
+Thu Nov 12 20:18:50 2026 :: Log Miseri [30400]: arrived (Level 1: West Guardroom) from 30546
+Thu Nov 12 20:18:52 2026 :: Log Miseri [30400]: e
+Thu Nov 12 20:18:52 2026 :: Log Miseri [30401]: arrived (Level 1: Eagle Gate) from 30400
+Thu Nov 12 20:19:00 2026 :: Log Miseri [30401]: w
+Thu Nov 12 20:19:00 2026 :: Log Miseri [30400]: arrived (Level 1: West Guardroom) from 30401
+Thu Nov 12 20:19:01 2026 :: Log Miseri [30400]: con kee
+Thu Nov 12 20:19:03 2026 :: Log Miseri [30400]: kill kee
+Thu Nov 12 20:19:03 2026 :: Log Miseri [30400]: killed a keese
+Thu Nov 12 20:19:03 2026 :: Log Miseri [30400]: coin +5 gold
+Thu Nov 12 20:19:03 2026 :: Log Miseri [30400]: coin +4 copper
+Thu Nov 12 20:19:03 2026 :: Log Miseri [30400]: coin +4 copper
+Thu Nov 12 20:19:09 2026 :: Log Miseri [30400]: get all cor
+Thu Nov 12 20:19:10 2026 :: Log Miseri [30400]: get all
+Thu Nov 12 20:19:11 2026 :: Log Miseri [30400]: e
+Thu Nov 12 20:19:11 2026 :: Log Miseri [30401]: arrived (Level 1: Eagle Gate) from 30400
+Thu Nov 12 20:19:13 2026 :: Log Miseri [30401]: open north
+Thu Nov 12 20:19:15 2026 :: Log Miseri [30401]: unl north
+Thu Nov 12 20:19:17 2026 :: Log Miseri [30401]: op north
+Thu Nov 12 20:19:18 2026 :: Log Miseri [30401]: n
+Thu Nov 12 20:19:18 2026 :: Log Miseri [30403]: arrived (Level 1: Rattling Passage) from 30401
+Thu Nov 12 20:19:21 2026 :: Log Miseri [30403]: kil sta
+Thu Nov 12 20:19:21 2026 :: Log Miseri [30403]: killed a stalfos
+Thu Nov 12 20:19:21 2026 :: Log Miseri [30403]: coin +7 copper
+Thu Nov 12 20:19:26 2026 :: Log Miseri [30403]: n
+Thu Nov 12 20:19:26 2026 :: Log Miseri [30405]: arrived (Level 1: Diamond-Tiled Crossing) from 30403
+Thu Nov 12 20:19:28 2026 :: Log Miseri [30405]: kill st
+Thu Nov 12 20:19:28 2026 :: Log Miseri [30405]: killed a stalfos
+Thu Nov 12 20:19:28 2026 :: Log Miseri [30405]: coin +7 copper
+Thu Nov 12 20:19:35 2026 :: Log Miseri [30405]: op west
+Thu Nov 12 20:19:36 2026 :: Log Miseri [30405]: s
+Thu Nov 12 20:19:36 2026 :: Log Miseri [30403]: arrived (Level 1: Rattling Passage) from 30405
+Thu Nov 12 20:19:37 2026 :: Log Miseri [30403]: s
+Thu Nov 12 20:19:37 2026 :: Log Miseri [30401]: arrived (Level 1: Eagle Gate) from 30403
+Thu Nov 12 20:19:40 2026 :: Log Miseri [30401]: e
+Thu Nov 12 20:19:40 2026 :: Log Miseri [30402]: arrived (Level 1: East Bone Room) from 30401
+Thu Nov 12 20:19:40 2026 :: Log Miseri [30402]: w
+Thu Nov 12 20:19:40 2026 :: Log Miseri [30401]: arrived (Level 1: Eagle Gate) from 30402
+Thu Nov 12 20:19:41 2026 :: Log Miseri [30401]: e
+Thu Nov 12 20:19:41 2026 :: Log Miseri [30402]: arrived (Level 1: East Bone Room) from 30401
+Thu Nov 12 20:19:42 2026 :: Log Miseri [30402]: con sta
+Thu Nov 12 20:19:44 2026 :: Log Miseri [30402]: kil st
+Thu Nov 12 20:19:44 2026 :: Log Miseri [30402]: killed a stalfos
+Thu Nov 12 20:19:44 2026 :: Log Miseri [30402]: coin +7 copper
+Thu Nov 12 20:19:44 2026 :: Log Miseri [30402]: coin +8 copper
+Thu Nov 12 20:19:50 2026 :: Log Miseri [30402]: get all
+Thu Nov 12 20:19:50 2026 :: Log Miseri [30402]: e
+Thu Nov 12 20:19:56 2026 :: Log Miseri [30402]: lo
+Thu Nov 12 20:20:04 2026 :: Log Miseri [30402]: lo
+Thu Nov 12 20:20:06 2026 :: Log Miseri [30402]: w
+Thu Nov 12 20:20:06 2026 :: Log Miseri [30401]: arrived (Level 1: Eagle Gate) from 30402
+Thu Nov 12 20:20:06 2026 :: Log Miseri [30401]: w
+Thu Nov 12 20:20:06 2026 :: Log Miseri [30400]: arrived (Level 1: West Guardroom) from 30401
+Thu Nov 12 20:20:07 2026 :: Log Miseri [30400]: e
+Thu Nov 12 20:20:07 2026 :: Log Miseri [30401]: arrived (Level 1: Eagle Gate) from 30400
+Thu Nov 12 20:20:07 2026 :: Log Miseri [30401]: n
+Thu Nov 12 20:20:07 2026 :: Log Miseri [30403]: arrived (Level 1: Rattling Passage) from 30401
+Thu Nov 12 20:20:08 2026 :: Log Miseri [30403]: n
+Thu Nov 12 20:20:08 2026 :: Log Miseri [30405]: arrived (Level 1: Diamond-Tiled Crossing) from 30403
+Thu Nov 12 20:20:10 2026 :: Log Miseri [30405]: e
+Thu Nov 12 20:20:10 2026 :: Log Miseri [30406]: arrived (Level 1: Keese-Fouled Gallery) from 30405
+Thu Nov 12 20:20:12 2026 :: Log Miseri [30406]: get com
+Thu Nov 12 20:20:15 2026 :: Log Miseri [30406]: look com
+Thu Nov 12 20:20:23 2026 :: Log Miseri [30406]: lo
+Thu Nov 12 20:20:26 2026 :: Log Miseri [30406]: w
+Thu Nov 12 20:20:26 2026 :: Log Miseri [30405]: arrived (Level 1: Diamond-Tiled Crossing) from 30406
+Thu Nov 12 20:20:27 2026 :: Log Miseri [30405]: w
+Thu Nov 12 20:20:27 2026 :: Log Miseri [30404]: arrived (Level 1: Shuttered West Room) from 30405
+Thu Nov 12 20:20:30 2026 :: Log Miseri [30404]: unl north
+Thu Nov 12 20:20:32 2026 :: Log Miseri [30404]: op north
+Thu Nov 12 20:20:34 2026 :: Log Miseri [30404]: e
+Thu Nov 12 20:20:34 2026 :: Log Miseri [30405]: arrived (Level 1: Diamond-Tiled Crossing) from 30404
+Thu Nov 12 20:20:35 2026 :: Log Miseri [30405]: get ke
+Thu Nov 12 20:20:35 2026 :: Log Miseri [30405]: w
+Thu Nov 12 20:20:35 2026 :: Log Miseri [30404]: arrived (Level 1: Shuttered West Room) from 30405
+Thu Nov 12 20:20:36 2026 :: Log Miseri [30404]: n
+Thu Nov 12 20:20:36 2026 :: Log Miseri [30408]: arrived (Level 1: Slime-Slick Hall) from 30404
+Thu Nov 12 20:20:45 2026 :: Log Miseri [30408]: op wesg
+Thu Nov 12 20:20:47 2026 :: Log Miseri [30408]: op west
+Thu Nov 12 20:20:47 2026 :: Log Miseri [30408]: w
+Thu Nov 12 20:20:47 2026 :: Log Miseri [30407]: arrived (Level 1: Eagle's Ember Alcove) from 30408
+Thu Nov 12 20:20:50 2026 :: Log Miseri [30407]: e
+Thu Nov 12 20:20:50 2026 :: Log Miseri [30408]: arrived (Level 1: Slime-Slick Hall) from 30407
+Thu Nov 12 20:20:51 2026 :: Log Miseri [30408]: e
+Thu Nov 12 20:20:51 2026 :: Log Miseri [30409]: arrived (Level 1: Chamber of Pillars) from 30408
+Thu Nov 12 20:20:55 2026 :: Log Miseri [30409]: get map

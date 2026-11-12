@@ -23064,3 +23064,98 @@
 1794513680	cmd	Trentlin	39	4210	dresden.are	standing	52	0	-	north		Alas, you cannot go that way.	-	-
 1794513681	cmd	Trentlin	39	4210	dresden.are	standing	52	0	-	sleep		You go to sleep.	-	-
 1794513683	session	Trentlin	39	4210	dresden.are	quit	1466s	+2 levels	+4215 exp	-1732643 copper	7 kills	0 deaths	0 quests	517 commands	2 refused	coin: loot 8p 86g 73s 57c, spent 10p 60g	spent on: heal 10p 60g	exp: kills +4256, skilluse +34, recall -75
+1794514641	area	Miseri	14	30286	hyrule.are	-	hyrule.are	-1	(game loop)
+1794514643	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	look		The Meadow Bluff //   A grassy meadow runs up against a weathered bluff, bright with wildflowers // that sway and whirl in the breeze. Part of the bluff's face is fractured	-	+
+1794514645	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a war banner // <worn on finger>    (Glowing) An etched signet ring	-	+
+1794514648	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	.		Gossip channel is now OFF.	-	-
+1794514649	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	.		Gossip channel is now ON.	-	-
+1794514650	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	who		[14 Human   Monk  ] Miseri the Novice of Fire // Players found: 1	-	-
+1794514652	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	look		The Meadow Bluff //   A grassy meadow runs up against a weathered bluff, bright with wildflowers // that sway and whirl in the breeze. Part of the bluff's face is fractured	-	+
+1794514654	cmd	Miseri	14	30286	hyrule.are	standing	100	0	-	consider	pea	A peahat is far above your level. // A peahat has many times your hit points. // Blow for blow, you would need about 80 rounds to bring a peahat down; it would need about 8 rounds for you.	-	+
+1794514659	cmd	Miseri	14	30270	hyrule.are	standing	100	0	-	south		The Sheltered Hollow //   A hollow is tucked between low hills, sheltered from the wind and quiet. // Green grass grows thick and undisturbed, and a few old trees stand at its	-	+
+1794514660	cmd	Miseri	14	30269	hyrule.are	standing	100	0	-	west		The Quiet Glade //   Tall trees ring a peaceful glade of soft grass, and the light falls in // gentle patches through their leaves. Birdsong drifts from the branches, and	-	+
+1794514661	cmd	Miseri	14	30269	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794514662	cmd	Miseri	14	30285	hyrule.are	standing	100	0	-	north		The Bomb Merchant's Cave //   Flowers carpet this open field, some of them spinning on their stalks, and // a cave mouth yawns in a low rock face at its western side. A smell of black	-	+
+1794514664	cmd	Miseri	14	30301	hyrule.are	standing	100	0	-	north		Highland Overlook //   The mountain pauses here in a high meadow of thin grass and wildflowers, // ringed by brown boulders. From its edge the whole of the western highlands	-	+
+1794514667	cmd	Miseri	14	30301	hyrule.are	standing	100	0	-	consider	ly	A blue lynel is far above your level. // A blue lynel has many times your hit points. // Blow for blow, you would need over a hundred rounds to bring a blue lynel down; it would need about 5 rounds for you.	-	+
+1794514670	cmd	Miseri	14	30302	hyrule.are	standing	100	0	-	east		The Rumbling Gully //   A gully runs east and west beneath an unstable cliff, and every few moments // a rock tumbles from above and bounds across it, bouncing high before it	-	+
+1794514673	cmd	Miseri	14	30302	hyrule.are	standing	100	0	-	consider	bou	A tumbling boulder is far above your level. // A tumbling boulder has many times your hit points. // Blow for blow, you would need about 81 rounds to bring a tumbling boulder down; it would need about 6 rounds for you.	-	+
+1794514674	cmd	Miseri	14	30303	hyrule.are	standing	100	0	-	east		The Mountain Stair //   Brown hills rise steeply here toward the high peaks, and a flight of rough // stone steps, worn into the slope by countless feet, climbs north between	-	+
+1794514675	cmd	Miseri	14	30304	hyrule.are	standing	100	0	-	east		The Boulder Run //   Loose rocks careen down the mountainside and across this stretch of trail, // bouncing in long arcs and leaving the path littered with splinters of	-	+
+1794514677	cmd	Miseri	14	30303	hyrule.are	standing	100	0	-	west		The Mountain Stair //   Brown hills rise steeply here toward the high peaks, and a flight of rough // stone steps, worn into the slope by countless feet, climbs north between	-	+
+1794514678	cmd	Miseri	14	30302	hyrule.are	standing	100	0	-	west		The Rumbling Gully //   A gully runs east and west beneath an unstable cliff, and every few moments // a rock tumbles from above and bounds across it, bouncing high before it	-	+
+1794514678	cmd	Miseri	14	30301	hyrule.are	standing	100	0	-	west		Highland Overlook //   The mountain pauses here in a high meadow of thin grass and wildflowers, // ringed by brown boulders. From its edge the whole of the western highlands	-	+
+1794514682	cmd	Miseri	14	30301	hyrule.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.	-	-
+1794514685	cmd	Miseri	14	30301	hyrule.are	standing	100	0	-	look		Highland Overlook //   The mountain pauses here in a high meadow of thin grass and wildflowers, // ringed by brown boulders. From its edge the whole of the western highlands	-	+
+1794514689	cmd	Miseri	14	30546	hyrule.are	standing	100	0	-	goto	aquamen	Level 7: Hall of the Horned Ledge //   A long hall of scorched brick ends at a raised ledge where something huge // and horned has worn the stone smooth. The walls are pocked with blackened	-	+
+1794514691	cmd	Miseri	14	30546	hyrule.are	standing	100	0	-	consider	aqu	Ancient Aquamentus is far above your level. // Ancient Aquamentus has many times your hit points. // Blow for blow, you would need over a hundred rounds to bring ancient Aquamentus down; it would need about 8 rounds for you.	-	+
+1794514697	cmd	Miseri	14	30546	hyrule.are	standing	100	0	-	kill	aug	They aren't here.	-	-
+1794514699	cmd	Miseri	14	30546	hyrule.are	standing	100	0	-	kill	aqu	Ancient Aquamentus parries your attack. // Ancient Aquamentus dodges your attack. // Your punch misses ancient Aquamentus.	-	+
+1794514702	cmd	Miseri	14	30546	hyrule.are	fighting	100	0	fight	peace		All is peaceful.	-	-
+1794514706	cmd	Miseri	14	30546	hyrule.are	standing	100	0	-	who		[14 Human   Monk  ] Miseri the Novice of Fire // Players found: 1	-	-
+1794514713	cmd	Miseri	14	30546	hyrule.are	standing	100	2	-	mwhere	aqua	[30314] ancient Aquamentus           [30546] Level 7: Hall of the Horned Ledge // [30222] Aquamentus                   [30413] Level 1: Hall of Threefold Scorches // [ 9326] Aquarius                     [ 9352] Inside a Waterfall	-	-
+1794514722	cmd	Miseri	14	30546	hyrule.are	standing	100	1	-	rwhere	level 1	Level 1: West Guardroom                  [30400] // Level 1: Eagle Gate                      [30401] // Level 1: East Bone Room                  [30402]	-	+
+1794514730	cmd	Miseri	14	30400	hyrule.are	standing	100	0	-	goto	30400	Level 1: West Guardroom //   A plain square chamber of teal flagstones, its corners furred with dust and // spattered with bat droppings. Something leathery has left fine scratches	-	+
+1794514732	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	east		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794514740	cmd	Miseri	14	30400	hyrule.are	standing	100	0	-	west		Level 1: West Guardroom //   A plain square chamber of teal flagstones, its corners furred with dust and // spattered with bat droppings. Something leathery has left fine scratches	-	+
+1794514741	cmd	Miseri	14	30400	hyrule.are	standing	100	0	-	consider	kee	A keese is far below your level. // A keese has a fraction of your hit points. // A keese could barely scratch you; you would need a single round to bring it down.	-	+
+1794514743	coin	Miseri	14	30400	hyrule.are	+50000	loot	kill	corpse of a keese	102900912
+1794514743	coin	Miseri	14	30400	hyrule.are	+4	loot	kill	corpse of a keese	102900916
+1794514743	coin	Miseri	14	30400	hyrule.are	+4	loot	kill	corpse of a keese	102900920
+1794514743	cmd	Miseri	14	30400	hyrule.are	standing	100	1	-	kill	kee	Your punch MASSACRES a keese! // A keese is DEAD!! // You receive 0 experience points.	-	+
+1794514749	cmd	Miseri	14	30400	hyrule.are	standing	100	0	-	get	all cor	That's not a container.	-	-
+1794514750	got	Miseri	14	30400	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794514750	got	Miseri	14	30400	hyrule.are	13	the heart of a keese	food	0	0	get	the floor
+1794514750	cmd	Miseri	14	30400	hyrule.are	standing	100	0	-	get	all	You get a small key. // You get the heart of a keese.	-	-
+1794514751	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	east		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794514753	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	open	north	It's locked.	-	-
+1794514755	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794514757	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794514758	cmd	Miseri	14	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794514761	coin	Miseri	14	30403	hyrule.are	+7	loot	kill	corpse of a stalfos	102900927
+1794514761	cmd	Miseri	14	30403	hyrule.are	standing	100	1	-	kill	sta	Your punch *** DEVASTATES *** a stalfos! // Your punch ^^^ DESTROYS ^^^ a stalfos! // A stalfos is DEAD!!	-	+
+1794514766	cmd	Miseri	14	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794514768	coin	Miseri	14	30405	hyrule.are	+7	loot	kill	corpse of a stalfos	102900934
+1794514768	cmd	Miseri	14	30405	hyrule.are	standing	100	1	-	kill	st	Your punch ^^^ DESTROYS ^^^ a stalfos! // A stalfos is DEAD!! // You receive 6 experience points (3 of them rested).	-	+
+1794514775	cmd	Miseri	14	30405	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794514776	cmd	Miseri	14	30403	hyrule.are	standing	100	0	-	south		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794514777	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	south		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794514780	cmd	Miseri	14	30402	hyrule.are	standing	100	0	-	east		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794514780	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	west		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794514781	cmd	Miseri	14	30402	hyrule.are	standing	100	0	-	east		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794514782	cmd	Miseri	14	30402	hyrule.are	standing	100	0	-	consider	sta	A stalfos is far below your level. // A stalfos has about a third of your hit points. // A stalfos could barely scratch you; you would need a single round to bring it down.	-	+
+1794514784	coin	Miseri	14	30402	hyrule.are	+7	loot	kill	corpse of a stalfos	102900941
+1794514784	coin	Miseri	14	30402	hyrule.are	+8	loot	kill	corpse of a stalfos	102900949
+1794514784	cmd	Miseri	14	30402	hyrule.are	standing	100	1	-	kill	st	Your punch ^^^ DESTROYS ^^^ a stalfos! // A stalfos is DEAD!! // You receive 10 experience points (5 of them rested).	-	+
+1794514790	got	Miseri	14	30402	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794514790	got	Miseri	14	30402	hyrule.are	15	the leg of a stalfos	food	0	0	get	the floor
+1794514790	cmd	Miseri	14	30402	hyrule.are	standing	100	0	-	get	all	You get a small key. // You get the leg of a stalfos.	-	-
+1794514790	cmd	Miseri	14	30402	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794514796	cmd	Miseri	14	30402	hyrule.are	standing	100	0	-	look		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794514804	cmd	Miseri	14	30402	hyrule.are	standing	100	0	-	look		Level 1: East Bone Room //   Bleached bone fragments lie scattered across the tiled floor of this // chamber, and the air carries the dry, chalky smell of old marrow. Two squat	-	+
+1794514806	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	west		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794514806	cmd	Miseri	14	30400	hyrule.are	standing	100	0	-	west		Level 1: West Guardroom //   A plain square chamber of teal flagstones, its corners furred with dust and // spattered with bat droppings. Something leathery has left fine scratches	-	+
+1794514807	cmd	Miseri	14	30401	hyrule.are	standing	100	0	-	east		Level 1: Eagle Gate //   Cold teal stone rises on every side of this first chamber, the walls carved // with rows of grim, staring faces and a great eagle spreading its wings	-	+
+1794514807	cmd	Miseri	14	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage //   A row of squat stone blocks runs across the middle of this chamber, // dividing it into two narrow lanes. Bones have been kicked into the corners	-	+
+1794514808	cmd	Miseri	14	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794514810	cmd	Miseri	14	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794514812	got	Miseri	14	30406	hyrule.are	30489	the Eagle dungeon compass	map	2	0	get	the floor
+1794514812	cmd	Miseri	14	30406	hyrule.are	standing	100	0	-	get	com	You get the Eagle dungeon compass.	-	-
+1794514815	cmd	Miseri	14	30406	hyrule.are	standing	100	0	-	look	com	The needle points north -- at the bare wall, as though the way lay through the stone. // The Triforce chest lies 4 rooms away, behind the guardian's chamber, which is 3 rooms away.	-	-
+1794514823	cmd	Miseri	14	30406	hyrule.are	standing	100	0	-	look		Level 1: Keese-Fouled Gallery //   The vaulted ceiling of this gallery vanishes into darkness, and the stale // air is thick with the musk of roosting bats. Droppings crust the floor	-	+
+1794514826	cmd	Miseri	14	30405	hyrule.are	standing	100	0	-	west		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794514827	cmd	Miseri	14	30404	hyrule.are	standing	100	0	-	west		Level 1: Shuttered West Room //   A low-ceilinged chamber of chill teal stone, where bat droppings crust the // tops of a few scattered blocks and a papery rustle drifts down from the	-	+
+1794514830	cmd	Miseri	14	30404	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794514832	cmd	Miseri	14	30404	hyrule.are	standing	100	0	-	open	north	Ok.	-	-
+1794514834	cmd	Miseri	14	30405	hyrule.are	standing	100	0	-	east		Level 1: Diamond-Tiled Crossing //   Four ways meet in this broad chamber, its floor laid in worn diamond- // patterned tiles around a square of raised blocks. Bones and a broken shield	-	+
+1794514835	got	Miseri	14	30405	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794514835	cmd	Miseri	14	30405	hyrule.are	standing	100	0	-	get	ke	You get a small key.	-	-
+1794514835	cmd	Miseri	14	30404	hyrule.are	standing	100	0	-	west		Level 1: Shuttered West Room //   A low-ceilinged chamber of chill teal stone, where bat droppings crust the // tops of a few scattered blocks and a papery rustle drifts down from the	-	+
+1794514836	cmd	Miseri	14	30408	hyrule.are	standing	100	0	-	north		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794514845	cmd	Miseri	14	30408	hyrule.are	standing	100	0	-	open	wesg	I see no wesg here.	-	-
+1794514847	cmd	Miseri	14	30408	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794514847	cmd	Miseri	14	30407	hyrule.are	standing	100	0	-	west		Level 1: Eagle's Ember Alcove //   Teal flagstones run back to a squat pair of braziers whose flames burn low // and patient, the kind tended by someone who expects few visitors. Between	-	+
+1794514850	cmd	Miseri	14	30408	hyrule.are	standing	100	0	-	east		Level 1: Slime-Slick Hall //   The flagstones here are tacky with a glistening film, and small wet smears // wander across them where little blobs of jelly creep and hop. The smell is	-	+
+1794514851	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	east		Level 1: Chamber of Pillars //   Square stone blocks march across this large chamber in a rigid grid, // leaving narrow lanes between them, and gelatinous smears gleam on the tiles	-	+
+1794514855	got	Miseri	14	30409	hyrule.are	30480	the Eagle dungeon map	map	2	0	get	the floor
+1794514855	cmd	Miseri	14	30409	hyrule.are	standing	100	0	-	get	map	You get the Eagle dungeon map.	-	-
