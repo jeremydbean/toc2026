@@ -24,7 +24,10 @@ Same-room data changes are also sent without requiring the character to move.
 The map deliberately does not reveal secret exits or rooms the character
 cannot see. Portals, `enter` routes, teleports, and scripted movement may not
 draw normal directional links. Deleted rooms that cannot be revisited may stay
-in the local map. The game text, `exits`, and `search` remain authoritative.
+in the local map. The game text and `exits` remain authoritative: a secret way
+is found by reading the room and acting on what it names (OPEN the thing it
+describes, CLIMB, PUSH and the like), not by `search`, which only checks a
+container or door for traps.
 Map data is saved in the Mudlet profile rather than the character file.
 
 Mudlet provides these local aliases:

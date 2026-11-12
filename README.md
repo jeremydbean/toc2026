@@ -6,8 +6,10 @@ the complete world database, a FastAPI operations dashboard, Docker packaging,
 validation tools, tests, and the source data used to generate Hyrule: First
 Quest.
 
-The current checked-in world parses as **102 listed area files, 7,787 rooms,
-2,494 mobiles, and 3,721 objects**. Player progression spans six classes, five
+Recounted on 2026-11-12, the checked-in world parses as **102 listed area
+files, 7,766 rooms, 2,507 mobiles, and 3,760 objects** (`../merc
+--check-area` from `area/` and `scripts/area_lint.py` give the current
+figures; recount rather than copy). Player progression spans six classes, five
 playable races, four optional cross-class guilds, five remorts, questing, group
 play, player killing, permanent achievements, advanced equipment comparison,
 and a large collection of hand-built areas.
@@ -18,12 +20,14 @@ and a large collection of hand-built areas.
 > [Disaster Recovery](wiki/disaster-recovery.md) for the deploy command,
 > backups, and rebuild procedure.
 
-> **Before hosting or playing:** ToC uses plain Telnet and legacy DES `crypt(3)`
-> password hashes. Traffic is not encrypted, and only the first eight password
-> bytes affect a traditional DES hash. Never reuse a real-world password. Hosts
-> should read [SECURITY.md](SECURITY.md) before exposing either port. The public
-> repository also contains legacy character hashes; they must be considered
-> exposed credentials.
+> **Before hosting or playing:** ToC uses plain Telnet: traffic, passwords
+> included, is not encrypted. Passwords are stored as SHA-512 crypt hashes
+> (hashing, not encryption), and a new or reset password counts every byte; a
+> character whose old DES password was carried over keeps DES's eight-byte
+> limit until the player sets a new one. Never reuse a real-world password.
+> Hosts should read [SECURITY.md](SECURITY.md) before exposing either port. The
+> public repository's history also contains legacy DES character hashes; they
+> must be considered exposed credentials.
 
 ## Start Here
 
@@ -53,7 +57,7 @@ documentation.
 - A native C server with the traditional ROM command loop, combat, magic,
   skills, quests, guilds, remorts, economy, banks, gambling, mounts, ranged
   combat, traps, scripts, seasons, and immortal tools.
-- A world loaded from `area/area.lst`, including the generated 447-room Hyrule
+- A world loaded from `area/area.lst`, including the generated Hyrule
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.

@@ -34,13 +34,13 @@ the area, then find the Study of the Sage.
 | Ego Whip (`ego`) | 19 | 20 mana | Deals mental damage and may temporarily reduce one physical or mental stat. |
 | Project | 19 | 25 mana | Sends an astral scout through several rooms in one direction. |
 | Psychic Shield (`psychic`) | 19 | 50 mana | Gives eligible group members in the room 25% mental-damage reduction. |
-| Pyrotechnics | 20 | 20 mana | Deals vitality-scaled fire damage and may temporarily heat worn gear. |
-| Confuse | 21 | level + 50 mana | Makes a target intermittently lose combat actions. Lands whenever the caster keeps concentration, unless the target is immune or resistant to mental damage. |
+| Pyrotechnics | 20 | 20 mana | Deals fireball's damage at the caster's level (`fireball_damage_roll`), halved on a save, as fire, and may temporarily heat worn gear. |
+| Confuse | 21 | level + 50 mana | The target loses its turn every combat round until it shakes the confusion off (a little over one round in ten), then fights again; it lasts at most four ticks, five from level 30 and six from 40. Never lands on a mind immune to mental damage; a resistant mind gets one resist roll (see below). |
 | Nightmare | 21 | 20 mana | Reduces maximum mana and prevents normal recovery until cured or expired. |
-| Enervate | 21 | 35 mana | Drains health and movement and returns part of the actual drain to the user. Blocked by mental immunity, halved by mental resistance. |
+| Enervate | 21 | 35 mana | Drains health and movement and returns part of the actual drain to the user. Blocked by mental immunity; a resistant mind gets one resist roll, which halves the drain (see below). |
 | Telekinesis (`tk`) | 21 | 50 mana | Retrieves an eligible ground item from elsewhere in the world. Gated on full skill; the full cost is charged only on a successful retrieval. |
 | Mindbar | 22 | 50 mana | Gives the user 50% mental-damage reduction. |
-| Mind Leech (`mindleech`) | 22 | 30 mana | Drains mana and restores half; deals mental damage to a target with no mana. Blocked by mental immunity, halved by mental resistance. |
+| Mind Leech (`mindleech`) | 22 | 30 mana | Drains mana and restores half; deals mental damage to a target with no mana. Blocked by mental immunity; a resistant mind gets one resist roll, which halves the drain (see below). |
 | Mindblast | 23 | 50 mana | Deals mental damage to every attackable target in the room. |
 | Astral Walk (`astral`) | 25 | 70 mana | Moves the user and a present pet to another character. Blocked by a target's mental immunity; leaves the caster stunned on arrival. |
 | Shift | 25 | 70 mana | Pulls a non-fighting character to the user. Leaves the caster stunned. |

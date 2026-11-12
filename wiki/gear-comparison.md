@@ -69,9 +69,9 @@ off).
 ## Upgrades
 
 `compare upgrades` walks every reset in the world for gear a mobile carries,
-wears or sells, puts each piece through the same measurement in place of what
-you wear, and keeps the ones that win. Only what you could put on today
-counts:
+wears or sells, or a chest holds, puts each piece through the same
+measurement in place of what you wear, and keeps the ones that win. Only
+what you could put on today counts:
 
 - Your level, race (the race flags name everyone an item suits, as WEAR reads
   them), alignment, strength for a weapon, and the off-hand rules.
@@ -80,6 +80,10 @@ counts:
 - A level -1 prototype comes out at its carrier's level less two (a
   shopkeeper's by item type), capped at 52, with weapon dice and armour to
   match, exactly as `reset_area` and `create_object` make it.
+- A `P` reset counts too: an object put into a chest that lies in a room
+  you may enter, when the chest is unlocked or its key can itself be had.
+  A level -1 object in a chest is left out, since its level comes from
+  whatever loads the chest.
 - Not listed: rot-death gear, which crumbles after the kill; inventory-flagged
   gear on anyone but a shopkeeper, which goes with the corpse; anything in a
   gods-only or implementor-only room; and Mud School past newbie level.
@@ -87,16 +91,21 @@ counts:
   reset places them: three pieces of a guardian's table fall each kill, and
   one of Ganon's three relics. The source line says so: "dropped by
   Aquamentus in Level 1: Hall of Threefold Scorches, Hyrule: about 3 kills in
-  11".
+  11". COMPARE does not say what the way to the guardian needs.
 
-The website's Gear Finder applies the same obtainability rules and the same
-damage-first order with fixed weights per class and level, and lists a little
-more of what a death makes: each guardian drop says what the way to the
-guardian needs (the previous Triforce piece, the tool for its chamber, the
-Silver Arrow for Ganon), the boomerangs a cleared Hyrule room lays out, the
-holiday bosses' drops while their holiday is on, and the black market's
-rarities with their odds. `compare upgrades` is the version that knows the
-character: skills, stats and current kit.
+The website's Gear Finder (`get_best_gear` in `webadmin/server.py`) applies
+the same rules to the parsed world -- carriers, shopkeepers and chests whose
+key can be had -- and also counts a chest a mobile carries, and leaves out a
+locked, keyless, pickproof chest nobody can open. It lists more of what a
+death makes, from `webadmin/gear_drops.py`, which mirrors the C that makes
+it (held to it by `tests/test_gear_drop_sources.py`): each guardian drop
+with what the way to the guardian needs (the previous Triforce piece, the
+tool for its chamber, the Silver Arrow for Ganon), the boomerangs a cleared
+Hyrule room lays out, the holiday bosses' drops and Midsummer's firework
+while their holiday is on, and the black market's rarities with their odds.
+It weighs gear with fixed weights per class and level, where `compare
+upgrades` knows the character -- skills, stats and current kit -- so the
+two agree on what counts as gear, not always on which piece is best.
 
 ## Limits
 

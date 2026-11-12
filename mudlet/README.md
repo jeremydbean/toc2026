@@ -1,12 +1,15 @@
 # Times of Chaos for Mudlet
 
-Times of Chaos automatically offers this package and the Mud School starter
-map to GMCP-capable Mudlet clients. The package provides:
+Times of Chaos automatically offers this package and its world atlas to
+GMCP-capable Mudlet clients: `Client.GUI` names the package and `Client.Map`
+names `mudlet/toc-world-map.xml` on GitHub. The package provides:
 
 - health, mana, movement, and experience gauges;
 - an embedded mapper centered by `Room.Info` GMCP messages;
-- the mapped Mud School path from character creation through graduation;
-- automatic mapping of newly visited rooms beyond the starter area;
+- the world atlas: every room of the shipped world except the ones listed
+  below, laid out one Mudlet area per area file, with Mud School kept as
+  area 1 so an older profile's map is not reshuffled;
+- automatic mapping of rooms the atlas leaves out, as they are visited;
 - refresh of visited room names, areas, terrain, and visible exits after world
   updates, including removal or retargeting of stale exits; and
 - automatic updates through `Client.GUI` version negotiation.
@@ -96,13 +99,45 @@ atlas import, and `tocgui on`. If the gauges work but the map pane is blank,
 `tocgui on` repairs the display without replacing your map. `tocgui off`
 remains respected by delayed refreshes and window resizing.
 
-The map is intentionally exploration-based. `Room.Info` never reveals secret
-exits or rooms the character cannot see. Portals, `enter` routes, teleports,
-and scripted movement may not produce ordinary directional map links. A room
-that has been deleted and can no longer be revisited can remain in the local
-Mudlet map; use Mudlet's mapper tools to remove it or re-download the starter
-map when a clean profile is preferable. Map data belongs to the Mudlet profile,
-not to a ToC character file.
+### What the atlas holds
+
+`scripts/build_mudlet_package.py` builds the atlas from the area files
+through `webadmin/area_parser.py`. It holds every room the base world lists
+(7,515 of 7,766 on 2026-11-12; recount with the script) except:
+
+- **death traps** (`ROOM_DT`), and every exit into one, so the atlas does not
+  give them away -- GMCP still sends the room when a character walks in, and
+  the mapper learns it then;
+- **Hyrule's nine dungeons** (their vnum runs from
+  `data/hyrule_first_quest.json`). A dungeon is drawn dynamically: when the
+  character holds that dungeon's map, the game sends its plan room by room
+  as `Hyrule.MapRoom` and then `Hyrule.MapDone`, and the package places it
+  on a z-level of its own below the overworld; otherwise it is mapped room
+  by room as it is walked. Hyrule's overworld is on the atlas from the start;
+- the seasonal copies (`*_halloween.are`, `*_xmas.are`), which are not in
+  `area.lst`: the atlas is the base world.
+
+The script reads the area lists with `AreaParser.parse_all()`'s default,
+which includes areas built in game (`area/built/`) when that directory holds
+any at build time; the committed atlas is built from a checkout, where it
+holds none.
+
+It draws the directional exits between rooms it holds, cross-area exits
+included. It takes them from the area files, so it does not know which are
+secret in game: an exit that is secret there is drawn like any other. Live
+mapping is different -- `Room.Info` never sends a secret exit or a room the
+character cannot see. Portals, `enter` routes, teleports, and scripted
+movement are not directional exits and are not drawn as links; the walker
+reads them from the published routes (`webadmin/directions.json`) instead.
+
+Mudlet only installs a server's map into a profile that has none, so a
+profile that was mapping before the atlas existed keeps its own map.
+`tocgui atlas` downloads the current atlas on demand and **replaces** the
+profile's saved map with it -- deliberately never automatic. Use it, or
+Mudlet's mapper tools, to clear a room that was deleted and can no longer
+be revisited. Map data belongs to the Mudlet profile, not to a ToC character
+file. Release notes above this section are a dated history of the package,
+not a description of the current one.
 
 For local development, connect to `localhost` port `9000`. To build or verify
 the committed assets:

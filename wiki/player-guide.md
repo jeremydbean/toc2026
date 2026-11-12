@@ -9,14 +9,17 @@ exact syntax and `commands`, `skills`, `spells`, `groups`, `gainlist`, and
 ## Before You Connect
 
 ToC uses plain Telnet. Your login name, password, commands, and game output are
-not encrypted between your client and the server. The server also uses
-traditional DES password hashes, for which only the first eight password bytes
-are significant.
+not encrypted between your client and the server. The server stores passwords
+as SHA-512 crypt hashes, and a password you set now counts every character. A
+character made before November 2026 whose password has not been changed since
+still has the old DES limit -- only the first eight characters count -- until
+you choose a new one with `password`.
 
 - Use a unique password that you have never used for email, banking, work, or
   another game.
-- Treat the first eight characters as the effective password. Use a random mix
-  rather than a word or reused phrase.
+- If your character is older than November 2026 and you have not changed its
+  password since, set a new one with `password`: only then does every
+  character of it count. Use a random mix rather than a word or reused phrase.
 - Do not enter a sensitive password into aliases, triggers, logs, screenshots,
   or support messages.
 - Ask the host whether they provide a TLS-wrapped connection, VPN, or secure web
@@ -130,7 +133,7 @@ Core observation commands:
 | `consider <target>` | Estimate how dangerous an opponent is |
 | `lore <object>` | Use lore knowledge to inspect equipment |
 | `read <thing>` | Read notes, signs, boards, and readable objects |
-| `search` | Search the current room for supported hidden features |
+| `search <container\|direction>` | Check a closed, locked container or door for a trap and disarm it (the search skill); a fumble can spring it. It does not find hidden exits |
 
 Descriptions matter. A room can support `climb`, `crawl`, `jump`, `enter`,
 `push`, `pull`, `move`, `turn`, `flip`, `burn`, or another contextual action
@@ -752,8 +755,9 @@ items, or completing a difficult objective. Use the full `quit` command when
 leaving; the abbreviated `qui` exists to prevent accidental quits.
 
 Change a password with the documented `password` command, using a unique value.
-Traditional DES ignores bytes after the eighth, so changing only later
-characters does not change the effective credential. Do not share character
+A new password counts every character. A password carried over from the old DES
+format counts only its first eight until you change it, so changing only later
+characters of such a password does not change it. Do not share character
 files: they contain the password hash and persistent game state.
 
 ## Troubleshooting
@@ -773,8 +777,10 @@ the browser client; there is no listener on browser port 80.
 ### My Password Is Rejected
 
 Check capitalization and character name first. Ask an operator for account
-recovery; do not send the password or player file in a public channel. Remember
-that only the first eight password bytes affect the legacy hash.
+recovery; do not send the password or player file in a public channel. A
+password set since November 2026 counts every character, so a typo anywhere in
+it is a different password; one carried over from the old DES format still
+counts only its first eight until you change it.
 
 ### A Command Is Missing
 

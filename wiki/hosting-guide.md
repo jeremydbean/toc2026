@@ -37,7 +37,9 @@ Read [SECURITY.md](../SECURITY.md) before opening firewall ports. At minimum:
 - Bind the dashboard to `127.0.0.1` or restrict port 9001 by firewall/VPN.
 - Do not assume the admin token protects every dashboard route. World browsing
   and the browser game bridge remain public to clients that can reach the port.
-- Remember that game login uses unencrypted Telnet and legacy DES hashes.
+- Remember that game login uses unencrypted Telnet. Passwords are hashed with
+  SHA-512 crypt (`src/password.c`); old DES hashes remain in files not yet
+  logged into and in git history (see [SECURITY.md](../SECURITY.md)).
 - Protect `player/`, `gods/`, `backups/`, and logs as sensitive data.
 - Keep encrypted off-host backups and test restoration.
 
@@ -413,7 +415,7 @@ The manual steps below remain for development and hand-built hosts.
 
 ```bash
 sudo apt update
-sudo apt install build-essential libcrypt-dev python3 python3-venv
+sudo apt install build-essential libcrypt-dev zlib1g-dev python3 python3-venv
 git clone https://github.com/jeremydbean/toc2026.git
 cd toc2026
 make clean

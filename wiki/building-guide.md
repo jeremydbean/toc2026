@@ -28,7 +28,7 @@ at a room vnum, a reset says "put mobile 2400 in room 2419." Vnums run from
 vnum nobody uses and it is yours.
 
 **An area is a block of vnums with a name.** `area/hyrule.are` owns its
-rooms and monsters; `area/midgaard.are` owns Midgaard. An area is just a
+rooms and monsters; `area/dresden.are` owns the City of Dresden. An area is just a
 file plus the range of vnums it covers. When you build, you build *into* an
 area, and saving writes that area's file.
 
