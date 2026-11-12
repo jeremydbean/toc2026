@@ -1107,6 +1107,31 @@ void  playlog_outcome        args( ( CHAR_DATA *ch, const char *op, const char *
 void  playlog_state          args( ( CHAR_DATA *ch ) );
 long  playlog_now_ms         args( ( void ) );
 long  monotonic_ms           args( ( void ) );
+/*
+ * A tab-separated telemetry log (log/play.tsv, log/progress.tsv,
+ * log/hyrule.tsv): a row is appended whole or not at all, and past `max`
+ * rows the file is cut to its newest `keep` (playlog.c). `rows` counts
+ * only rows that reached the file; a row that did not is counted in
+ * `lost` and said in toc.log at most once a TELEMETRY_REPORT_SECS.
+ * Initialise as TELEMETRY_LOG_INIT( path, max, keep, hold_open ).
+ */
+typedef struct telemetry_log
+{
+    const char *path;       /* "../log/progress.tsv" */
+    long        max;
+    long        keep;
+    bool        hold_open;  /* keep the descriptor between rows (the journal) */
+    int         fd;         /* -1: not open */
+    long        rows;       /* rows the file holds, by count; -1: not counted */
+    long        lost;       /* rows not written since the last report */
+    time_t      reported;   /* when toc.log last heard of a loss */
+    time_t      trim_after; /* no trim before this, after one failed */
+    char        why[80];    /* the last failure, for the report */
+} TELEMETRY_LOG;
+#define TELEMETRY_LOG_INIT( path, max, keep, hold ) \
+    { (path), (max), (keep), (hold), -1, -1, 0, 0, 0, "" }
+bool  telemetry_append       args( ( TELEMETRY_LOG *log, const char *row, int formatted,
+                                     size_t size ) );
 void  progress_kill          args( ( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp,
                                      int rested_xp, long accepted_xp, int members,
                                      long victim_coin ) );
@@ -3137,6 +3162,14 @@ static inline sh_int sh_int_clamp( long long value )
     return (sh_int) value;
 }
 
+/* True when an snprintf into `size` bytes returned `n`, so kept all of its
+   text (format-truncation review, 2026-11-12). A path, a key or anything
+   read back later is refused when this is false, never used cut short. */
+static inline bool snprintf_fits( int n, size_t size )
+{
+    return n >= 0 && (size_t) n < size;
+}
+
 /* Utility macros. */
 #define UMIN(a, b)              ((a) < (b) ? (a) : (b))
 #define UMAX(a, b)              ((a) > (b) ? (a) : (b))
@@ -3293,6 +3326,12 @@ extern          ROOM_INDEX_DATA* RELIC_ROOM_4;
 size_t toc_strnlen(const char *src, size_t maxlen);
 size_t toc_strlcpy(char *dst, const char *src, size_t siz);
 size_t toc_strlcat(char *dst, const char *src, size_t siz);
+/* One decimal place, held to +/-limit: at most 19 bytes and the nul for any
+   limit (FORMAT_TENTHS_MAX). */
+#define FORMAT_TENTHS_MAX       20
+const char *format_tenths(char *buf, size_t size, double value, double limit);
+bool toc_path_join(char *dst, size_t size, const char *dir, const char *sep,
+                   const char *name);
 
 /*
  * The crypt(3) function is not available on some operating systems.

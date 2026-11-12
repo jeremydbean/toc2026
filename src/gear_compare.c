@@ -1237,20 +1237,24 @@ static void gear_send_row( CHAR_DATA *ch, const char *label,
                            double value1, double value2, bool whole )
 {
     char buf[MAX_STRING_LENGTH];
-    char edge[32];
+    char edge[32], pct[FORMAT_TENTHS_MAX];
     double percent;
 
+    /* The edge is shown to 999.9% at most (format_tenths: "%.1f" of a
+       double could be 312 bytes into these 32). */
     if ( fabs( value1 - value2 ) <= UMAX( 0.01, fabs( value2 ) * GEAR_EVEN ) )
         toc_strlcpy( edge, "even", sizeof( edge ) );
     else if ( value1 > value2 )
     {
         percent = (value1 / UMAX( 0.1, value2 ) - 1.0) * 100.0;
-        snprintf( edge, sizeof( edge ), "A +%.1f%%", UMIN( 999.9, percent ) );
+        snprintf( edge, sizeof( edge ), "A +%s%%",
+                  format_tenths( pct, sizeof(pct), percent, 999.9 ) );
     }
     else
     {
         percent = (value2 / UMAX( 0.1, value1 ) - 1.0) * 100.0;
-        snprintf( edge, sizeof( edge ), "B +%.1f%%", UMIN( 999.9, percent ) );
+        snprintf( edge, sizeof( edge ), "B +%s%%",
+                  format_tenths( pct, sizeof(pct), percent, 999.9 ) );
     }
     if ( whole )
         snprintf( buf, sizeof( buf ), "  %-16s %9.0f %9.0f   %s\n\r",
@@ -1433,19 +1437,21 @@ static void gear_describe_gain( const GEAR_PROFILE *profile,
     double tough = gear_tough_change( win, lose ) * 100.0;
     bool damage_moves = fabs( damage ) >= GEAR_EVEN * 100.0;
     bool tough_moves = fabs( tough ) >= GEAR_EVEN * 100.0;
+    /* Percentages are shown to 999.9 at most, so each fits its buffer
+       (format_tenths; "%.1f" of a double could be 312 bytes). */
+    char dpct[FORMAT_TENTHS_MAX], tpct[FORMAT_TENTHS_MAX];
 
+    format_tenths( dpct, sizeof(dpct), fabs( damage ), 999.9 );
+    format_tenths( tpct, sizeof(tpct), fabs( tough ), 999.9 );
     if ( damage_moves && tough_moves )
-        snprintf( out, size, "%.1f%% %s damage, %.1f%% %s",
-                  UMIN( 999.9, fabs( damage ) ), damage > 0 ? "more" : "less",
-                  UMIN( 999.9, fabs( tough ) ),
-                  tough > 0 ? "tougher" : "less tough" );
+        snprintf( out, size, "%s%% %s damage, %s%% %s",
+                  dpct, damage > 0 ? "more" : "less",
+                  tpct, tough > 0 ? "tougher" : "less tough" );
     else if ( damage_moves )
-        snprintf( out, size, "%.1f%% %s damage",
-                  UMIN( 999.9, fabs( damage ) ), damage > 0 ? "more" : "less" );
+        snprintf( out, size, "%s%% %s damage", dpct, damage > 0 ? "more" : "less" );
     else if ( tough_moves )
-        snprintf( out, size, "same damage, %.1f%% %s",
-                  UMIN( 999.9, fabs( tough ) ),
-                  tough > 0 ? "tougher" : "less tough" );
+        snprintf( out, size, "same damage, %s%% %s",
+                  tpct, tough > 0 ? "tougher" : "less tough" );
     else
         toc_strlcpy( out, "no real difference", size );
 }

@@ -37,6 +37,7 @@
 #include "merc.h"
 #include "interp.h"
 #include "db.h" // For resolving declarations
+#include "dstring.h"
 
 static void safe_strcat( char *dest, size_t dest_size, const char *src );
 
@@ -372,11 +373,13 @@ void do_color( CHAR_DATA *ch, char *argument )
             const char *sample = col_disp_table[idx].ansi_str;
             const char *name = col_disp_table[idx].type;
             bool coloured = color_is_enabled( ch ) && sample != NULL && *sample != '\0';
-            int pad = 17 - (int)strlen( name );
+            /* One to seventeen spaces: the column is 17 wide (a precision
+               on a string of 17, so the compiler sees the bound too). */
+            int pad = URANGE( 1, 17 - (int)strlen( name ), 17 );
 
-            snprintf( buf, sizeof(buf), "  %s%s%s%*s",
+            snprintf( buf, sizeof(buf), "  %s%s%s%.*s",
                 coloured ? sample : "", name,
-                coloured ? color_reset_code() : "", pad > 0 ? pad : 1, "" );
+                coloured ? color_reset_code() : "", pad, "                 " );
             toc_strlcat( line, buf, sizeof(line) );
             if ( ++col == 3 || idx == color_display_count() - 1 )
             {
@@ -816,7 +819,8 @@ static void history_stamp( time_t when, char *dest, size_t size )
         return;
     }
 
-    snprintf( dest, size, "%02d:%02d", broken->tm_hour, broken->tm_min );
+    snprintf( dest, size, "%02d:%02d", URANGE( 0, broken->tm_hour, 23 ),
+              URANGE( 0, broken->tm_min, 59 ) );
 }
 
 /*
@@ -3598,7 +3602,10 @@ void report_login_notice( CHAR_DATA *ch )
     if ( notes > 0 )
     {
 	/* The box is 52 wide inside. Pad by what is shown -- the colour
-	   codes take no room -- counting the digits of the number. */
+	   codes take no room; the pad is a precision on 52 spaces, so it can
+	   never run past the box -- counting the digits of the number. */
+	static const char box_pad[] =
+	    "                                                    ";
 	char digits[16];
 	int shown1, shown2;
 
@@ -3607,13 +3614,13 @@ void report_login_notice( CHAR_DATA *ch )
 	shown2 = 26 + ( notes == 1 ? 2 : 4 );
 	snprintf( buf, sizeof(buf),
 	    "\n\r{0E+----------------------------------------------------+{00\n\r"
-	    "{0E|{00  You have {0F%d{00 unread note%s waiting.%*s{0E|{00\n\r"
-	    "{0E|{00  Type {0FNOTE READ{00 to read %s.%*s{0E|{00\n\r"
+	    "{0E|{00  You have {0F%d{00 unread note%s waiting.%.*s{0E|{00\n\r"
+	    "{0E|{00  Type {0FNOTE READ{00 to read %s.%.*s{0E|{00\n\r"
 	    "{0E+----------------------------------------------------+{00\n\r",
 	    notes, notes == 1 ? "" : "s",
-	    UMAX( 0, 52 - shown1 ), "",
+	    URANGE( 0, 52 - shown1, 52 ), box_pad,
 	    notes == 1 ? "it" : "them",
-	    UMAX( 0, 52 - shown2 ), "" );
+	    URANGE( 0, 52 - shown2, 52 ), box_pad );
 	send_to_char( buf, ch );
     }
 
@@ -3915,7 +3922,6 @@ void do_alias( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     int slot;
     int free_slot;
-    size_t length;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
@@ -3924,30 +3930,30 @@ void do_alias( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
+        /* Twenty aliases of up to an input line each pass 4K, which a
+           fixed buffer cut short: a bounded DString, as every listing is. */
+        DString out;
         int shown = 0;
 
-        buf[0] = '\0';
+        dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+        dstring_append_cstr( &out, "Your aliases:\n\r" );
         for ( slot = 0; slot < MAX_ALIASES; slot++ )
         {
             if ( ch->pcdata->alias[slot].first == NULL
               || ch->pcdata->alias[slot].second == NULL )
                 continue;
 
-            length = strlen( buf );
-            snprintf( buf + length, sizeof(buf) - length, "    %-12s %s\n\r",
+            dstring_printf( &out, "    %-12s %s\n\r",
                 ch->pcdata->alias[slot].first,
                 ch->pcdata->alias[slot].second );
             shown++;
         }
 
         if ( shown == 0 )
-        {
             send_to_char( "You have no aliases defined.\n\r", ch );
-            return;
-        }
-
-        send_to_char( "Your aliases:\n\r", ch );
-        send_to_char( buf, ch );
+        else
+            send_to_char( dstring_cstr( &out ), ch );
+        dstring_free( &out );
         return;
     }
 

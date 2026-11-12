@@ -52,7 +52,9 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #include <time.h>
 #include <unistd.h>
 /* __GLIBC__ comes from the libc headers above; macOS and musl go without. */
@@ -62,6 +64,7 @@
 #define CRASH_FRAMES        64
 #endif
 #include "merc.h"
+#include "numparse.h"
 
 #define PLAY_JOURNAL_FILE   "../log/play.tsv"
 #define CRASH_LOG_FILE      "../log/crash.log"
@@ -84,7 +87,6 @@ static char crash_ring[CRASH_RING][CRASH_LINE];
 static int  crash_next;
 static int  crash_fd = -1;
 static char crash_build[48];    /* the commit running, read at boot */
-static long journal_lines = -1;     /* -1: not counted yet */
 static bool journal_busy;           /* a bug() while writing must not recurse */
 
 /* The command running now, for bug()'s context. */
@@ -203,53 +205,353 @@ static void play_room( CHAR_DATA *ch, char *room, size_t rsize,
     }
 }
 
-/* Held open, like log_string's: a command a line, and an open and close
-   for each is a filesystem round trip in the middle of the game loop. */
-static FILE *journal_fp;
+/* -------------------------------------------------- the telemetry files
+ *
+ * play.tsv, progress.tsv and hyrule.tsv are written the same way
+ * (review, 2026-11-12: a row that did not reach the disk was counted as
+ * written and nobody was told, and a trim read the file a line at a time
+ * on the game loop -- and, when it could not cut, read it again for every
+ * row after).
+ *
+ * A row is formatted whole and handed to write() once; a short or failed
+ * write is cut back off the file (ftruncate to the size before it), so the
+ * next row never lands on the tail of a torn one. Only a row that reached
+ * the file is counted in `rows`. One that did not is counted in `lost`,
+ * and toc.log hears of it at most once a TELEMETRY_REPORT_SECS -- how many
+ * since the last report, why, and the count the file stands at; never the
+ * row. The first loss is reported at once, and so is the recovery once a
+ * report is due.
+ *
+ * Past `max` rows the file is cut to its newest `keep`, written aside and
+ * renamed (temp_file_commit), in one sequential pass of 64K blocks (memchr,
+ * not a line at a time), and the file is counted first only when its count
+ * is not known (the first row after a boot). Medians on synthetic files,
+ * warm / cold page cache: 40,001 progress rows (6.5 MB) went from about
+ * 11 / 14 ms to 5 / 8 ms (5 / 9 counted first); 60,001 journal rows
+ * (12.6 MB) from 16 / 23 ms to 8 / 15 ms (10 / 17). Not enough to move off
+ * the game loop (a pulse is 250 ms). Each trim says what it took in
+ * toc.log. A trim that fails is not tried again for
+ * TELEMETRY_RETRY_SECS, where it used to rescan the whole file every row.
+ * Rows cut from the file are not lost to analysis: the state sync commits
+ * log/ every five minutes, and a trim comes every `max - keep` rows.
+ * ------------------------------------------------------------------ */
+
+#define TELEMETRY_REPORT_SECS   60
+#define TELEMETRY_RETRY_SECS    60
+#define TELEMETRY_BLOCK         65536
+
+#ifndef O_CLOEXEC
+#define O_CLOEXEC 0
+#endif
+
+static char telemetry_block[TELEMETRY_BLOCK];
+
+/* How often toc.log may hear of lost rows: TOC_TELEMETRY_REPORT_SECS
+   (0 to 3600) for tests, else a minute. */
+static long telemetry_report_secs( void )
+{
+    static long secs = -1;
+    const char *env;
+    long value;
+
+    if ( secs < 0 )
+    {
+        secs = TELEMETRY_REPORT_SECS;
+        if ( ( env = getenv( "TOC_TELEMETRY_REPORT_SECS" ) ) != NULL
+        &&   parse_long( env, 0, 3600, &value ) )
+            secs = value;
+    }
+    return secs;
+}
+
+/* "log/progress.tsv": the path as staff know it. */
+static const char *telemetry_name( const TELEMETRY_LOG *log )
+{
+    return !strncmp( log->path, "../", 3 ) ? log->path + 3 : log->path;
+}
+
+static void telemetry_count_text( const TELEMETRY_LOG *log, char *buf, size_t size )
+{
+    if ( log->rows < 0 )
+        snprintf( buf, size, "not counted yet" );
+    else
+        snprintf( buf, size, "%ld row%s counted in the file", log->rows,
+                  log->rows == 1 ? "" : "s" );
+}
+
+/* A row that did not reach the file. */
+static void telemetry_lost( TELEMETRY_LOG *log, const char *what, int err )
+{
+    char buf[MAX_STRING_LENGTH], count[64];
+
+    if ( err != 0 )
+        snprintf( log->why, sizeof(log->why), "%s: %s", what, strerror( err ) );
+    else
+        toc_strlcpy( log->why, what, sizeof(log->why) );
+    if ( log->lost < LONG_MAX )
+        log->lost++;
+    if ( log->reported != 0 && current_time - log->reported < telemetry_report_secs() )
+        return;
+    telemetry_count_text( log, count, sizeof(count) );
+    snprintf( buf, sizeof(buf),
+              "Telemetry: %s: %ld row%s not written since the last report (%s); %s.",
+              telemetry_name( log ), log->lost, log->lost == 1 ? "" : "s",
+              log->why, count );
+    log_string( buf );
+    log->reported = current_time;
+    log->lost = 0;
+}
+
+/* A row that did: if rows were lost and a report is due, say it is over. */
+static void telemetry_wrote( TELEMETRY_LOG *log )
+{
+    char buf[MAX_STRING_LENGTH], count[64];
+
+    if ( log->rows >= 0 && log->rows < LONG_MAX )
+        log->rows++;
+    if ( log->lost == 0
+    ||   ( log->reported != 0 && current_time - log->reported < telemetry_report_secs() ) )
+        return;
+    telemetry_count_text( log, count, sizeof(count) );
+    snprintf( buf, sizeof(buf),
+              "Telemetry: %s: writing again; %ld row%s not written before it did (%s); %s.",
+              telemetry_name( log ), log->lost, log->lost == 1 ? "" : "s",
+              log->why, count );
+    log_string( buf );
+    log->reported = current_time;
+    log->lost = 0;
+}
+
+static void telemetry_close( TELEMETRY_LOG *log )
+{
+    if ( log->fd >= 0 )
+    {
+        close( log->fd );
+        log->fd = -1;
+    }
+}
+
+static void telemetry_trim_failed( TELEMETRY_LOG *log, const char *what, int err )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    log->trim_after = current_time + TELEMETRY_RETRY_SECS;
+    snprintf( buf, sizeof(buf), "Telemetry: %s could not be trimmed (%s%s%s); "
+              "it is kept whole and tried again in %d seconds.",
+              telemetry_name( log ), what, err != 0 ? ": " : "",
+              err != 0 ? strerror( err ) : "", TELEMETRY_RETRY_SECS );
+    log_string( buf );
+}
+
+/* Newlines in a block. */
+static long telemetry_newlines( const char *p, size_t n )
+{
+    const char *end = p + n;
+    long count = 0;
+
+    while ( p < end && ( p = memchr( p, '\n', (size_t) ( end - p ) ) ) != NULL )
+    {
+        count++;
+        p++;
+    }
+    return count;
+}
 
 /*
- * Past PLAY_JOURNAL_MAX lines, keep the newest PLAY_JOURNAL_KEEP: copy them
- * to a temporary file and rename it over the journal, a line at a time,
- * so no buffer the size of the file is ever held.
+ * Past `max` rows, keep the newest `keep`, in one pass from the start: the
+ * rows before the cut are counted through, the rest copied aside a block
+ * at a time. The whole file is read once, in order -- a cold cache's
+ * readahead wants that, and reading back from the end was slower cold.
+ * The count is taken first only when it is not known (the first row after
+ * a boot); the rows copied are counted, so a count that had drifted is put
+ * right by the trim.
  */
-static void journal_trim( void )
+static void telemetry_trim( TELEMETRY_LOG *log )
 {
-    char line[PLAY_LINE];
+    char temp[256], buf[MAX_STRING_LENGTH];
+    struct stat st;
     FILE *in, *out;
-    long total = 0, skip, seen = 0;
+    long start = playlog_now_ms(), before, skip, seen = 0, kept = 0;
+    size_t n;
+    bool cutting = true;
+    int err;
 
-    if ( journal_fp != NULL )
+    telemetry_close( log );
+    if ( !toc_path_join( temp, sizeof(temp), log->path, "", ".tmp" ) )
     {
-        fclose( journal_fp );
-        journal_fp = NULL;
-    }
-    if ( ( in = fopen( PLAY_JOURNAL_FILE, "r" ) ) == NULL )
+        telemetry_trim_failed( log, "path too long", 0 );
         return;
-    while ( fgets( line, sizeof(line), in ) != NULL )
-        if ( strchr( line, '\n' ) != NULL )
-            total++;
-    journal_lines = total;
-    if ( total <= PLAY_JOURNAL_MAX
-    ||   ( out = fopen( PLAY_JOURNAL_FILE ".tmp", "w" ) ) == NULL )
+    }
+    if ( ( in = fopen( log->path, "rb" ) ) == NULL )
+    {
+        if ( errno == ENOENT )
+            log->rows = 0;
+        else
+            telemetry_trim_failed( log, "open", errno );
+        return;
+    }
+    /* A directory or a device (/dev/full reads zeros for ever) is no log. */
+    if ( fstat( fileno( in ), &st ) != 0 || !S_ISREG( st.st_mode ) )
     {
         fclose( in );
+        telemetry_trim_failed( log, "not a regular file", 0 );
         return;
     }
-    skip = total - PLAY_JOURNAL_KEEP;
-    rewind( in );
-    while ( fgets( line, sizeof(line), in ) != NULL )
+    if ( log->rows < 0 )
     {
-        if ( seen >= skip )
-            fputs( line, out );
-        if ( strchr( line, '\n' ) != NULL )
-            seen++;
+        long total = 0;
+
+        while ( ( n = fread( telemetry_block, 1, sizeof(telemetry_block), in ) ) > 0 )
+            total += telemetry_newlines( telemetry_block, n );
+        if ( ferror( in ) )
+        {
+            err = errno;
+            fclose( in );
+            telemetry_trim_failed( log, "read", err );
+            return;
+        }
+        log->rows = total;
+        if ( total < log->max )
+        {
+            fclose( in );
+            return;
+        }
+        rewind( in );
+    }
+    before = log->rows;
+    skip = log->rows - log->keep;
+    cutting = skip > 0;
+    if ( ( out = fopen( temp, "wb" ) ) == NULL )
+    {
+        err = errno;
+        fclose( in );
+        telemetry_trim_failed( log, "write aside", err );
+        return;
+    }
+    /* Rows before the cut are passed over; a last row with no newline
+       (none should be: a torn row is cut back) is kept with the rest. */
+    while ( ( n = fread( telemetry_block, 1, sizeof(telemetry_block), in ) ) > 0 )
+    {
+        const char *from = telemetry_block, *end = telemetry_block + n;
+
+        while ( cutting && from < end )
+        {
+            const char *nl = memchr( from, '\n', (size_t) ( end - from ) );
+
+            if ( nl == NULL )
+            {
+                from = end;
+                break;
+            }
+            from = nl + 1;
+            if ( ++seen >= skip )
+                cutting = false;
+        }
+        if ( cutting || from >= end )
+            continue;
+        kept += telemetry_newlines( from, (size_t) ( end - from ) );
+        if ( fwrite( from, 1, (size_t) ( end - from ), out ) != (size_t) ( end - from ) )
+            break;
+    }
+    if ( ferror( in ) )
+    {
+        err = errno;
+        fclose( in );
+        fclose( out );
+        remove( temp );
+        telemetry_trim_failed( log, "read", err );
+        return;
     }
     fclose( in );
+    if ( cutting )
+    {
+        /* The file held fewer rows than counted (cut short by hand?): it
+           is left as it is, never replaced by nothing, and recounted. */
+        fclose( out );
+        remove( temp );
+        log->rows = seen;
+        return;
+    }
     /* temp_file_commit checks the write as well as the close: a full disk
        renamed a short journal over the whole one. */
-    if ( temp_file_commit( out, PLAY_JOURNAL_FILE ".tmp", PLAY_JOURNAL_FILE ) )
-        journal_lines = PLAY_JOURNAL_KEEP;
+    if ( !temp_file_commit( out, temp, log->path ) )
+    {
+        telemetry_trim_failed( log, "replace", 0 );
+        return;
+    }
+    log->rows = kept;
+    snprintf( buf, sizeof(buf), "Telemetry: %s trimmed from %ld to %ld rows in %ld ms.",
+              telemetry_name( log ), before, kept, playlog_now_ms() - start );
+    log_string( buf );
 }
+
+/*
+ * Append one row, formatted by the caller: `formatted` is what snprintf
+ * returned for a buffer of `size`, so a row it had to cut is refused (and
+ * counted lost) rather than written without its end. True when the whole
+ * row reached the file.
+ */
+bool telemetry_append( TELEMETRY_LOG *log, const char *row, int formatted, size_t size )
+{
+    size_t len, done = 0;
+    off_t before;
+    int err = 0;
+
+    if ( !snprintf_fits( formatted, size ) )
+    {
+        telemetry_lost( log, "a row longer than its buffer", 0 );
+        return false;
+    }
+    len = (size_t) formatted;
+    if ( ( log->rows < 0 || log->rows >= log->max ) && current_time >= log->trim_after )
+        telemetry_trim( log );
+    if ( log->fd < 0
+    &&   ( log->fd = open( log->path, O_WRONLY | O_APPEND | O_CREAT | O_CLOEXEC, 0666 ) ) < 0 )
+    {
+        telemetry_lost( log, "open", errno );
+        return false;
+    }
+    before = lseek( log->fd, 0, SEEK_END );
+    while ( done < len )
+    {
+        ssize_t w = write( log->fd, row + done, len - done );
+
+        if ( w < 0 && errno == EINTR )
+            continue;
+        if ( w <= 0 )
+        {
+            err = w < 0 ? errno : EIO;
+            break;
+        }
+        done += (size_t) w;
+    }
+    if ( done < len )
+    {
+        /* Cut a torn row back off, so the next one starts a line. */
+        if ( done > 0 && before >= 0 && ftruncate( log->fd, before ) != 0 )
+            err = err != 0 ? err : errno;
+        telemetry_close( log );
+        telemetry_lost( log, "write", err );
+        return false;
+    }
+    if ( !log->hold_open )
+    {
+        err = close( log->fd ) != 0 ? errno : 0;
+        log->fd = -1;
+        if ( err != 0 )
+        {
+            telemetry_lost( log, "close", err );
+            return false;
+        }
+    }
+    telemetry_wrote( log );
+    return true;
+}
+
+/* Held open, like log_string's: a command a line, and an open and close
+   for each is a filesystem round trip in the middle of the game loop. */
+static TELEMETRY_LOG journal_log =
+    TELEMETRY_LOG_INIT( PLAY_JOURNAL_FILE, PLAY_JOURNAL_MAX, PLAY_JOURNAL_KEEP, true );
 
 /*
  * Wizinvis staff leave no trace in the journal (owner, 2026-11-09): no
@@ -269,24 +571,21 @@ static bool play_hidden( CHAR_DATA *ch )
 /* One record: the common columns, then `fields` (already tab-joined). */
 static void journal_write( const char *kind, CHAR_DATA *ch, const char *fields )
 {
-    char room[16], area[64], name[32];
+    /* The common columns are at most about 170 bytes and every writer's
+       fields fit PLAY_LINE; a row that would not fit is refused whole by
+       telemetry_append, never written without its end. */
+    char row[PLAY_LINE + 256], room[16], area[64], name[32];
+    int n;
 
     if ( journal_busy || play_hidden( ch ) )
         return;
     journal_busy = true;
-    if ( journal_lines < 0 || journal_lines >= PLAY_JOURNAL_MAX )
-        journal_trim();
-    if ( journal_fp == NULL )
-        journal_fp = fopen( PLAY_JOURNAL_FILE, "a" );
-    if ( journal_fp != NULL )
-    {
-        play_room( ch, room, sizeof(room), area, sizeof(area) );
-        play_clean( name, sizeof(name), ch != NULL ? ch->name : "-" );
-        fprintf( journal_fp, "%ld\t%s\t%s\t%d\t%s\t%s\t%s\n", (long) current_time,
-                 kind, name, ch != NULL ? ch->level : 0, room, area, fields );
-        fflush( journal_fp );   /* the state sync reads it every five minutes */
-        journal_lines++;
-    }
+    play_room( ch, room, sizeof(room), area, sizeof(area) );
+    play_clean( name, sizeof(name), ch != NULL ? ch->name : "-" );
+    n = snprintf( row, sizeof(row), "%ld\t%s\t%s\t%d\t%s\t%s\t%s\n", (long) current_time,
+                  kind, name, ch != NULL ? ch->level : 0, room, area, fields );
+    /* A write a row: the state sync reads the file every five minutes. */
+    telemetry_append( &journal_log, row, n, sizeof(row) );
     journal_busy = false;
 }
 
@@ -1314,7 +1613,8 @@ void playlog_session( CHAR_DATA *ch, const char *how )
 #define PROGRESS_MAX    40000
 #define PROGRESS_KEEP   20000
 
-static long progress_lines = -1;
+static TELEMETRY_LOG progress_log =
+    TELEMETRY_LOG_INIT( PROGRESS_FILE, PROGRESS_MAX, PROGRESS_KEEP, false );
 
 /* Durations only -- a pulse, a fight, a command -- so on the monotonic
    clock (comm.c, monotonic_ms): a wall-clock step no longer reads as a
@@ -1322,40 +1622,6 @@ static long progress_lines = -1;
 long playlog_now_ms( void )
 {
     return monotonic_ms();
-}
-
-static void progress_trim( void )
-{
-    char line[PLAY_LINE];
-    FILE *in, *out;
-    long total = 0, seen = 0, skip;
-
-    if ( ( in = fopen( PROGRESS_FILE, "r" ) ) == NULL )
-    {
-        progress_lines = 0;
-        return;
-    }
-    while ( fgets( line, sizeof(line), in ) != NULL )
-        if ( strchr( line, '\n' ) != NULL )
-            total++;
-    progress_lines = total;
-    if ( total <= PROGRESS_MAX || ( out = fopen( PROGRESS_FILE ".tmp", "w" ) ) == NULL )
-    {
-        fclose( in );
-        return;
-    }
-    skip = total - PROGRESS_KEEP;
-    rewind( in );
-    while ( fgets( line, sizeof(line), in ) != NULL )
-    {
-        if ( seen >= skip )
-            fputs( line, out );
-        if ( strchr( line, '\n' ) != NULL )
-            seen++;
-    }
-    fclose( in );
-    if ( temp_file_commit( out, PROGRESS_FILE ".tmp", PROGRESS_FILE ) )
-        progress_lines = PROGRESS_KEEP;
 }
 
 /*
@@ -1499,27 +1765,24 @@ static void progress_party( CHAR_DATA *ch, int *players, int *pets )
 static void progress_write_raw( const char *kind, CHAR_DATA *ch, int vnum, int level,
                                 const char *area, const char *tail )
 {
-    FILE *fp;
-    int hp_pct, mana_pct;
+    /* Eleven numeric columns and an area file name, then a tail of at
+       most 511 bytes (the writers' buffers): 1024 holds any of them. */
+    char row[1024];
+    int hp_pct, mana_pct, n;
 
     /* Immortals by level write nothing; a mortal trusted with staff
        commands is a player and is counted (owner, 2026-11-12). */
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || play_hidden( ch )
     ||   IS_IMMORTAL( ch ) )
         return;
-    if ( progress_lines < 0 || progress_lines >= PROGRESS_MAX )
-        progress_trim();
     hp_pct = ch->max_hit > 0 ? (int) ( 100L * ch->hit / ch->max_hit ) : 0;
     mana_pct = ch->max_mana > 0 ? (int) ( 100L * ch->mana / ch->max_mana ) : 0;
-    if ( ( fp = fopen( PROGRESS_FILE, "a" ) ) == NULL )
-        return;
-    fprintf( fp, "%ld\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s%s%s\n",
-             (long) current_time, kind, player_serial( ch ), ch->level, ch->class,
-             ch->pcdata->num_remorts, hp_pct, mana_pct, vnum, level,
-             area != NULL && area[0] != '\0' ? area : "-",
-             tail[0] != '\0' ? "\t" : "", tail );
-    fclose( fp );
-    progress_lines++;
+    n = snprintf( row, sizeof(row), "%ld\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s%s%s\n",
+                  (long) current_time, kind, player_serial( ch ), ch->level, ch->class,
+                  ch->pcdata->num_remorts, hp_pct, mana_pct, vnum, level,
+                  area != NULL && area[0] != '\0' ? area : "-",
+                  tail[0] != '\0' ? "\t" : "", tail );
+    telemetry_append( &progress_log, row, n, sizeof(row) );
 }
 
 static void progress_write( const char *kind, CHAR_DATA *ch, CHAR_DATA *foe, const char *tail )
@@ -1741,13 +2004,22 @@ void progress_consider( CHAR_DATA *ch, CHAR_DATA *victim, double yours, double t
                         double your_rounds, double their_rounds, const char *verdict,
                         bool caster )
 {
-    char tail[192];
+    /* "%.1f" of a double is up to 312 bytes, and a cut row is a row with
+       columns missing: the numbers go through format_tenths, held to a
+       bound no prediction reaches (rounds are at most hit points over a
+       tenth of a blow: ten times POOL_MAX). The verdict is a word. */
+    char tail[192], a[FORMAT_TENTHS_MAX], b[FORMAT_TENTHS_MAX], c[FORMAT_TENTHS_MAX],
+         d[FORMAT_TENTHS_MAX], word[32];
 
     if ( ch == NULL || victim == NULL || !IS_NPC(victim) )
         return;
-    snprintf( tail, sizeof(tail), "%.1f\t%.1f\t%.1f\t%.1f\t%s\t%d\t%d\t%d",
-              yours, theirs, your_rounds, their_rounds, verdict, ch->hit, victim->hit,
-              caster ? 1 : 0 );
+    play_clean( word, sizeof(word), verdict != NULL ? verdict : "-" );
+    snprintf( tail, sizeof(tail), "%s\t%s\t%s\t%s\t%s\t%d\t%d\t%d",
+              format_tenths( a, sizeof(a), yours, 1e12 ),
+              format_tenths( b, sizeof(b), theirs, 1e12 ),
+              format_tenths( c, sizeof(c), your_rounds, 1e12 ),
+              format_tenths( d, sizeof(d), their_rounds, 1e12 ),
+              word, ch->hit, victim->hit, caster ? 1 : 0 );
     progress_write( "consider", ch, victim, tail );
 }
 

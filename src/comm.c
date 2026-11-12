@@ -1482,7 +1482,11 @@ static void password_notice_row( char *out, size_t size, const char *text )
         }
         shown++;
     }
-    snprintf( row, sizeof(row), "{0E|{00 %s%*s{0E|{00\n\r", text, UMAX( 0, 59 - shown ), "" );
+    /* The pad is 0 to 59 spaces, a precision on 59 of them, so the
+       compiler sees the bound the box has. */
+    snprintf( row, sizeof(row), "{0E|{00 %s%.*s{0E|{00\n\r", text,
+              URANGE( 0, 59 - shown, 59 ),
+              "                                                           " );
     toc_strlcat( out, row, size );
 }
 

@@ -132,6 +132,9 @@ static void jail_span( long secs, char *buf, size_t size )
         snprintf( buf, size, "now" );
         return;
     }
+    /* A sentence is at most JAIL_MAX_SECONDS; a deadline read from a file
+       is shown to a century at most, so the text has a known length. */
+    secs  = UMIN( secs, 100L * 365 * 24 * 60 * 60 );
     mins  = ( secs + 59 ) / 60;
     days  = mins / ( 24 * 60 );
     mins -= days * 24 * 60;

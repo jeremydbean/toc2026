@@ -26,6 +26,7 @@
 #include <string.h>
 
 #include "merc.h"
+#include "dstring.h"
 #include "interp.h"
 #include "db.h"
 
@@ -3140,7 +3141,10 @@ static void reset_words( RESET_DATA *r, char *out, size_t size )
 /* RESETS -- what comes back in this room, numbered for UNPLACE. */
 void do_resets( CHAR_DATA *ch, char *argument )
 {
-    char buf[MAX_STRING_LENGTH];
+    /* A bounded DString, as every listing is (format-truncation review,
+       2026-11-12): the fixed 4K buffer stopped at "...and more" while
+       UNPLACE still took the numbers it had left off. */
+    DString out;
     char line[512];
     ROOM_INDEX_DATA *room = ch->in_room;
     ROOM_INDEX_DATA *context = NULL;
@@ -3151,7 +3155,7 @@ void do_resets( CHAR_DATA *ch, char *argument )
     if ( room == NULL || room->area == NULL )
         return;
 
-    buf[0] = '\0';
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
     for ( r = room->area->reset_first; r != NULL; r = r->next )
     {
         ROOM_INDEX_DATA *where = reset_room( r, context );
@@ -3161,21 +3165,20 @@ void do_resets( CHAR_DATA *ch, char *argument )
         if ( where != room )
             continue;
         reset_words( r, line, sizeof(line) );
-        snprintf( buf + strlen( buf ), sizeof(buf) - strlen( buf ), "%3d. %s\n\r",
-                  ++n, line );
-        if ( strlen( buf ) > sizeof(buf) - 200 )
+        n++;
+        if ( !dstring_fits( &out, sizeof(line) + 64 )
+        ||   !dstring_printf( &out, "%3d. %s\n\r", n, line ) )
         {
-            toc_strlcat( buf, "  ...and more.\n\r", sizeof(buf) );
+            dstring_append_cstr( &out, "  ...and more.\n\r" );
             break;
         }
     }
 
     if ( n == 0 )
-    {
         send_to_char( "Nothing is placed in this room.  PLACE puts something here.\n\r", ch );
-        return;
-    }
-    page_to_char( buf, ch );
+    else
+        page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 

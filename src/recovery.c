@@ -697,6 +697,7 @@ bool recovery_record( const char *event, const char *state, const char *player,
     char line[MAX_STRING_LENGTH];
     const char *uid;
     size_t len;
+    int n;
 
     if ( !ledger_loaded )
         recovery_boot();
@@ -711,11 +712,21 @@ bool recovery_record( const char *event, const char *state, const char *player,
     ledger_field( f_kind, sizeof(f_kind), kind );
     ledger_field( f_actor, sizeof(f_actor), actor );
     ledger_field( f_detail, sizeof(f_detail), detail );
-    snprintf( line, sizeof(line), "%ld\t%ld\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
-              ledger_seq + 1, (long) ( current_time > 0 ? current_time : time( NULL ) ),
-              event, state, uid[0] != '\0' ? uid : "-", f_player, f_request,
-              f_kind, f_actor, f_detail );
+    n = snprintf( line, sizeof(line), "%ld\t%ld\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
+                  ledger_seq + 1, (long) ( current_time > 0 ? current_time : time( NULL ) ),
+                  event, state, uid[0] != '\0' ? uid : "-", f_player, f_request,
+                  f_kind, f_actor, f_detail );
     len = strlen( line );
+    /* A record is whole only with its check and its newline: one that
+       would not fit them is refused, never written cut short (it would
+       read as a torn tail, and be cut off at the next boot). The check is
+       at most sixteen hex places, so the tab, it, the newline and the nul
+       need twenty bytes. */
+    if ( !snprintf_fits( n, sizeof(line) ) || len > sizeof(line) - 20 )
+    {
+        bug( "recovery_record: the ledger record is too long to keep", 0 );
+        return false;
+    }
     snprintf( line + len, sizeof(line) - len, "\t%08lx\n", ledger_check( line, len ) );
     if ( !ledger_append( line ) )
     {

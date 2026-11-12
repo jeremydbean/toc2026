@@ -301,11 +301,20 @@ const char *client_describe( const DESCRIPTOR_DATA *d, char *buf, size_t size )
     buf[0] = '\0';
     if ( d == NULL )
         return buf;
+    /* Display only, into the caller's buffer: copied, not printed, so a
+       short buffer cuts the text cleanly (the compiler could not bound
+       an snprintf into a size it cannot see). */
     if ( d->client_name[0] != '\0' )
-        snprintf( buf, size, "%s%s%s", d->client_name,
-                  d->client_version[0] != '\0' ? " " : "", d->client_version );
+    {
+        toc_strlcpy( buf, d->client_name, size );
+        if ( d->client_version[0] != '\0' )
+        {
+            toc_strlcat( buf, " ", size );
+            toc_strlcat( buf, d->client_version, size );
+        }
+    }
     else if ( d->client_term[0] != '\0' )
-        snprintf( buf, size, "%s", d->client_term );
+        toc_strlcpy( buf, d->client_term, size );
     if ( d->client_mtts_known )
     {
         if ( d->client_mtts & 256 )

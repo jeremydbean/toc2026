@@ -40,9 +40,11 @@
 #define HYLOG_FILE      "../log/hyrule.tsv"
 #define HYLOG_MAX       40000
 #define HYLOG_KEEP      20000
-#define HYLOG_LINE      1024
 
-static long hylog_lines = -1;
+/* Appended a whole row at a time and trimmed as the play journal is
+   (telemetry_append, playlog.c). */
+static TELEMETRY_LOG hylog_log =
+    TELEMETRY_LOG_INIT( HYLOG_FILE, HYLOG_MAX, HYLOG_KEEP, false );
 static bool hylog_busy;
 
 /* 0 outside Hyrule, 1 the overworld, 2-10 the dungeons 1-9, by the room
@@ -113,68 +115,30 @@ static void hylog_clean( char *dest, size_t size, const char *src )
     dest[n] = '\0';
 }
 
-static void hylog_trim( void )
-{
-    char line[HYLOG_LINE];
-    FILE *in, *out;
-    long total = 0, seen = 0, skip;
-
-    if ( ( in = fopen( HYLOG_FILE, "r" ) ) == NULL )
-    {
-        hylog_lines = 0;
-        return;
-    }
-    while ( fgets( line, sizeof(line), in ) != NULL )
-        if ( strchr( line, '\n' ) != NULL )
-            total++;
-    hylog_lines = total;
-    if ( total <= HYLOG_MAX || ( out = fopen( HYLOG_FILE ".tmp", "w" ) ) == NULL )
-    {
-        fclose( in );
-        return;
-    }
-    skip = total - HYLOG_KEEP;
-    rewind( in );
-    while ( fgets( line, sizeof(line), in ) != NULL )
-    {
-        if ( seen >= skip )
-            fputs( line, out );
-        if ( strchr( line, '\n' ) != NULL )
-            seen++;
-    }
-    fclose( in );
-    if ( temp_file_commit( out, HYLOG_FILE ".tmp", HYLOG_FILE ) )
-        hylog_lines = HYLOG_KEEP;
-}
-
 static void hylog_write( const char *kind, CHAR_DATA *ch, ROOM_INDEX_DATA *room,
                          const char *fields )
 {
-    char name[32];
-    FILE *fp;
-    int zone;
+    /* The fields are at most HYLOG_GUARDIAN_FIELDS (672) bytes (the
+       writers' buffers) and the common columns under 150: a row that
+       would not fit is refused whole. */
+    char row[1024], name[32];
+    int zone, n;
 
     if ( hylog_busy || !hylog_counts( ch ) )
         return;
     hylog_busy = true;
     if ( room == NULL )
         room = ch->in_room;
-    if ( hylog_lines < 0 || hylog_lines >= HYLOG_MAX )
-        hylog_trim();
     zone = hylog_zone_of( room );
     hylog_clean( name, sizeof(name), ch->name );
-    if ( ( fp = fopen( HYLOG_FILE, "a" ) ) != NULL )
-    {
-        fprintf( fp, "%ld\t%s\t%s\t%d\t%d\t%s\t%d\t%s\t%s\n",
-                 (long) current_time, kind, name, ch->level,
-                 ch->pcdata->num_remorts,
-                 ch->class >= 0 && ch->class < MAX_CLASS
-                     ? class_table[ch->class].who_name : "?",
-                 room != NULL && !room_hides_from_log( room ) ? room->vnum : 0,
-                 zone_name( zone ), fields );
-        fclose( fp );
-        hylog_lines++;
-    }
+    n = snprintf( row, sizeof(row), "%ld\t%s\t%s\t%d\t%d\t%s\t%d\t%s\t%s\n",
+                  (long) current_time, kind, name, ch->level,
+                  ch->pcdata->num_remorts,
+                  ch->class >= 0 && ch->class < MAX_CLASS
+                      ? class_table[ch->class].who_name : "?",
+                  room != NULL && !room_hides_from_log( room ) ? room->vnum : 0,
+                  zone_name( zone ), fields );
+    telemetry_append( &hylog_log, row, n, sizeof(row) );
     hylog_busy = false;
 }
 
@@ -344,10 +308,16 @@ void hylog_claim( CHAR_DATA *ch, const char *what, int detail )
     hylog_write( "claim", ch, NULL, fields );
 }
 
+/* The fields of a guardian's row: the guardian's words (under 100
+   bytes), its cleaned name and the party, so a full party is never cut
+   off the end of a row the reports read word by word. */
+#define HYLOG_PARTY             480
+#define HYLOG_GUARDIAN_FIELDS   ( 128 + 64 + HYLOG_PARTY )
+
 /* A guardian entering a fight with a mortal (set_fighting). */
 void hylog_engage( CHAR_DATA *guardian, CHAR_DATA *ch )
 {
-    char fields[600], party[480], name[64];
+    char fields[HYLOG_GUARDIAN_FIELDS], party[HYLOG_PARTY], name[64];
 
     ch = hylog_actor( ch );
     if ( !is_hyrule_guardian( guardian ) || !hylog_counts( ch ) )
@@ -364,7 +334,7 @@ void hylog_engage( CHAR_DATA *guardian, CHAR_DATA *ch )
    everybody who was there, as they stood at the end. */
 void hylog_guardian_down( CHAR_DATA *ch, CHAR_DATA *guardian )
 {
-    char fields[600], party[480], name[64];
+    char fields[HYLOG_GUARDIAN_FIELDS], party[HYLOG_PARTY], name[64];
 
     ch = hylog_actor( ch );
     if ( !is_hyrule_guardian( guardian ) || !hylog_counts( ch ) )

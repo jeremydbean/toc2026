@@ -22,10 +22,13 @@ CONVERSION_WARNINGS := -Wshadow -Wsign-compare -Wconversion -Wsign-conversion
 # takes it.
 # -Wstrict-prototypes and -Wold-style-definition (an empty or K&R
 # parameter list) joined them on 2026-11-12, and gcc's -Wformat-overflow=2
-# (a sprintf-family call whose output may not fit; clang reads no level).
+# (a sprintf-family call whose output may not fit; clang reads no level)
+# and -Wformat-truncation=2 (an snprintf that may cut its text short, its
+# result checked or not: clean under gcc 13 and 14 since the same day).
 ARITH_CONVERSION_WARNING := $(shell $(CC) -Werror -Warith-conversion -x c -fsyntax-only /dev/null >/dev/null 2>&1 && echo -Warith-conversion)
 FORMAT_OVERFLOW_WARNING := $(shell $(CC) -Werror -Wformat-overflow=2 -x c -fsyntax-only /dev/null >/dev/null 2>&1 && echo -Wformat-overflow=2)
-QUALITY_WARNINGS := -Wcast-qual -Wmissing-prototypes -Wunused-parameter -Wstrict-prototypes -Wold-style-definition $(ARITH_CONVERSION_WARNING) $(FORMAT_OVERFLOW_WARNING)
+FORMAT_TRUNCATION_WARNING := $(shell $(CC) -Werror -Wformat-truncation=2 -x c -fsyntax-only /dev/null >/dev/null 2>&1 && echo -Wformat-truncation=2)
+QUALITY_WARNINGS := -Wcast-qual -Wmissing-prototypes -Wunused-parameter -Wstrict-prototypes -Wold-style-definition $(ARITH_CONVERSION_WARNING) $(FORMAT_OVERFLOW_WARNING) $(FORMAT_TRUNCATION_WARNING)
 WARNFLAGS?= -Wall -Wextra -Wno-missing-field-initializers $(CONVERSION_WARNINGS) $(QUALITY_WARNINGS)
 
 # Emit a .d per object listing the headers it read. Without this a header

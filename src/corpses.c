@@ -372,7 +372,10 @@ static void corpse_retry_endings( void )
 
         if ( len < 15 || strcmp( de->d_name + len - 14, ".ending.corpse" ) != 0 )
             continue;
-        snprintf( from, sizeof(from), "%s%s", CORPSE_LIVE_DIR, de->d_name );
+        /* A name too long for the path is no record of ours: skipped,
+           never opened under a cut-short name. */
+        if ( !toc_path_join( from, sizeof(from), CORPSE_LIVE_DIR, "", de->d_name ) )
+            continue;
         if ( corpse_file_header( from, &rec ) < 0 )
             continue;
         if ( !corpse_dirs( rec.owner, hdir, sizeof(hdir) ) )
@@ -1411,7 +1414,13 @@ void corpse_registry_boot( void )
                     corpse_pending_endings++;
                 continue;
             }
-            snprintf( path, sizeof(path), "%s%s", CORPSE_LIVE_DIR, de->d_name );
+            /* A name too long for the path is no corpse of ours. */
+            if ( !toc_path_join( path, sizeof(path), CORPSE_LIVE_DIR, "", de->d_name ) )
+            {
+                log_string( "Corpses: a file in corpse/live/ has a name too long to "
+                            "read; it is left where it is." );
+                continue;
+            }
 
             /* A resurrection the last run left pending: the owner's file
                says whether the gift reached it. If it did, the corpse is
@@ -1628,7 +1637,8 @@ void corpse_registry_list( CHAR_DATA *ch, const char *name )
             if ( strstr( de->d_name, ".ending.corpse" ) == NULL
             &&   strstr( de->d_name, ".stale.corpse" ) == NULL )
                 continue;
-            snprintf( path, sizeof(path), "%s%s", CORPSE_LIVE_DIR, de->d_name );
+            if ( !toc_path_join( path, sizeof(path), CORPSE_LIVE_DIR, "", de->d_name ) )
+                continue;
             if ( corpse_file_header( path, &rec ) < 0 || str_cmp( rec.owner, name ) )
                 continue;
             snprintf( buf, sizeof(buf), "  %s  ended %s: %s; %d object%s in it then "
@@ -1654,7 +1664,8 @@ void corpse_registry_list( CHAR_DATA *ch, const char *name )
             if ( len < 8 || strcmp( de->d_name + len - 7, ".corpse" ) != 0
             ||   strstr( de->d_name, ".death" ) != NULL )
                 continue;
-            snprintf( path, sizeof(path), "%s/%s", hdir, de->d_name );
+            if ( !toc_path_join( path, sizeof(path), hdir, "/", de->d_name ) )
+                continue;
             if ( corpse_file_header( path, &rec ) < 0 )
                 continue;
             died = (time_t) rec.died;

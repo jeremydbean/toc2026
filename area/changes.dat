@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112aliaslist 2026-11-12
+ALIAS with nothing after it now lists every alias you have. A long list
+used to stop part way through.
+
 @ 20261112hyrulecrumble 2026-11-12
 A Hyrule dungeon's own things no longer clutter your pack after a run:
 its map, its compass and the small keys found in it crumble to dust when
@@ -33,6 +37,7 @@ Each Hyrule dungeon is a map of its own, laid out like its dungeon map,
 instead of sitting under the overworld. The world map is redrawn so streets
 and corridors run straight: type TOCGUI ATLAS in Mudlet to load it. Update
 the Mudlet package (it offers itself). See HELP MUDLET.
+
 
 @ 20261112triforcelight 2026-11-12
 The Triforce is now the best light in the world as well as holy sight:
