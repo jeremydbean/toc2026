@@ -1,6 +1,6 @@
 #DIARY 1
 Day 2026-11-12
-Played 3075
+Played 3401
 Level 37 40 3
 Exp 6646 136
 Kills 15
@@ -15,7 +15,7 @@ List skill 86 90 enhanced damage
 List skill 79 81 fists of fury
 List skill 97 98 hand to hand
 List skill 82 83 parry
-List area 1681 0 City of Dresden
+List area 1948 0 City of Dresden
 List area 227 0 Sewer
 List area 3 0 Plains of the North
 List area 6 0 Continental Drift
@@ -26,13 +26,14 @@ List area 525 0 Pirate Ship
 List area 107 0 Korzath's Fortress
 List area 4 0 Haon Dor
 List area 25 0 Arachnos
-List area 1 0 Mud School
-More area 8
+List area 5 0 Mud School
+More area 12
 List item 1 0 a crystal key
 List item 2 0 a small key
+List item 1 0 a long, curved knife
 List earn 38097971 0 interest
 List earn 17073800 0 loot
 List earn 5372406 0 quests
-List spend 16200000 0 heal
+List spend 26200000 0 heal
 End
 #END

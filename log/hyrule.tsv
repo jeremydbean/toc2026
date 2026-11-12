@@ -41,3 +41,5 @@
 1794525523	engage	Trentlin	40	1	Monk 	30489	L5	foe=30309 foe_name=Digdogger foe_hp=33 foe_max=7494 party=1 levels=40 classes=Monk  hps=82 buffs=-
 1794525531	death	Trentlin	40	1	Monk 	30489	L5	foe=30309 foe_name=Digdogger guardian=1 foe_hp=28 secs=7 how=mob
 1794525531	leave	Trentlin	40	1	Monk 	30489	L5	to=out how=(mobile_update) secs=164 hp=-7
+1794525855	enter	Trentlin	40	1	Monk 	30200	over	from=out how=enter hp=100
+1794525864	enter	Alaric	57	3	Monk 	30200	over	from=out how=enter hp=76

@@ -24225,3 +24225,138 @@
 1794525703	area	Alaric	57	2497	dresden.are	hell.are	dresden.are	247	recall
 1794525703	cmd	Alaric	57	2497	dresden.are	standing	69	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
 1794525704	cmd	Trentlin	40	4210	dresden.are	sleeping	73	0	-	equipment		You are using: // Nothing.	-	-
+1794525704	refused	Trentlin	40	4210	dresden.are	sleeping	73	0	-	look		In your dreams, or what?	refusal:position	-
+1794525705	cmd	Alaric	57	2401	dresden.are	standing	69	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794525706	cmd	Trentlin	40	4210	dresden.are	sleeping	73	0	-	wake		You wake and stand up.	-	-
+1794525706	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	3	jump
+1794525706	cmd	Alaric	57	1607	wyvern.are	standing	69	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1794525706	cmd	Trentlin	40	4203	dresden.are	standing	73	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525706	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	0	(room_update)
+1794525707	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525707	cmd	Trentlin	40	4202	dresden.are	standing	73	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525707	cmd	Trentlin	40	4207	dresden.are	standing	73	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794525707	cmd	Trentlin	40	4208	dresden.are	standing	73	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525708	cmd	Trentlin	40	4208	dresden.are	standing	73	0	-	west		Alas, you cannot go that way.	-	-
+1794525711	cmd	Alaric	57	4208	dresden.are	standing	69	1	-	tk	trentlin	Your mind slides off the trentlin: that is a thing TK cannot fetch.  You will have to go and get it.	-	-
+1794525714	coin	Trentlin	40	4208	dresden.are	-5000000	spent	heal	-	15282754982
+1794525714	coin	Trentlin	40	4208	dresden.are	-5000000	spent	heal	-	15277754982
+1794525714	cmd	Trentlin	40	4208	dresden.are	standing	73	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (2 castings, 1000 gold.)	-	-
+1794525719	got	Alaric	57	4208	dresden.are	24201	a fresh corpse	container	0	0	tk	-
+1794525719	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	tk	corpse	You concentrate and a fresh corpse flies to your hand.	-	-
+1794525723	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // Nothing.	-	-
+1794525723	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525724	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	drop	cor	You drop a fresh corpse.	-	-
+1794525724	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	look	i cor	A fresh corpse contains: //      a long, curved knife	-	-
+1794525727	got	Trentlin	40	4208	dresden.are	24202	a long, curved knife	weapon	19	350000	get	a fresh corpse
+1794525727	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	get	all cor	You get a long, curved knife from a fresh corpse.	-	-
+1794525727	got	Alaric	57	4208	dresden.are	2800	the cadaver-toy	container	4	0	tk	-
+1794525727	cmd	Alaric	57	4208	dresden.are	standing	69	1	-	tk	corpse	You concentrate and the cadaver-toy flies to your hand.	-	-
+1794525730	cmd	Alaric	57	4208	dresden.are	standing	69	1	-	tk	corpse	Your mind slides off the corpse: that is a thing TK cannot fetch.  You will have to go and get it.	-	-
+1794525733	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	drop	knife	You drop a long, curved knife.	-	-
+1794525734	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525740	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	say	Your mind slides off the corpse: that is a thing TK cannot fetch.  You will have to go and get it.	You say 'Your mind slides off the corpse: that is a thing TK cannot fetch.  You will have to go and get it.'	-	-
+1794525740	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // Nothing.	-	-
+1794525745	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	say	Well, that's something	You say 'Well, that's something'	-	-
+1794525747	state	Alaric	57	4208	dresden.are	lvl=57 hp=1075/1544 mana=2696/2875 mv=481/983 align=897 exp=252749 coin=1187692809 bank=24700405438 qp=2053 prac=36 train=76 stash=95/350 remorts=3
+1794525747	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794525749	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // Nothing.	-	-
+1794525751	state	Trentlin	40	4208	dresden.are	lvl=40 hp=725/725 mana=1508/1601 mv=455/459 align=33 exp=92169 coin=468604 bank=15277286378 qp=3782 prac=18 train=3 stash=50/75 remorts=1
+1794525751	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      40 | Class:        Monk | // | Played:     36 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794525760	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525764	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	hmmm	You say 'hmmm'	-	-
+1794525764	cmd	Alaric	57	4208	dresden.are	standing	69	0	-	look	i pit	The donation pit contains: //      Nothing.	-	-
+1794525767	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	that sucks	You say 'that sucks'	-	-
+1794525772	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	noloot		Your corpse is now safe from thieves.	-	-
+1794525773	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	noloot		Your corpse may now be looted.	-	-
+1794525778	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // Nothing.	-	-
+1794525782	cmd	Alaric	57	4208	dresden.are	standing	71	0	-	say	How bad is it to walk there? I don't have the flute and rafts, etc.	You say 'How bad is it to walk there? I don't have the flute and rafts, etc.'	-	-
+1794525784	state	Alaric	57	4208	dresden.are	lvl=57 hp=1101/1544 mana=2711/2875 mv=538/983 align=897 exp=252749 coin=1187692809 bank=24700405438 qp=2053 prac=36 train=76 stash=95/350 remorts=3
+1794525784	cmd	Alaric	57	4208	dresden.are	standing	71	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794525784	cmd	Alaric	57	4208	dresden.are	standing	71	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525791	cmd	Alaric	57	4208	dresden.are	standing	71	0	-	inventory		You are carrying: //      the cadaver-toy //      house key	-	+
+1794525805	cmd	Alaric	57	4208	dresden.are	standing	71	0	-	rest		You rest.	-	-
+1794525815	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	ehh itd be just as much of a pain i think, youd have to go through all the previous dungeons to get them	You say 'ehh itd be just as much of a pain i think, youd have to go through all the previous dungeons to get them'	-	-
+1794525825	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	ill just re requip, but thats a problem for tomorrow	You say 'ill just re requip, but thats a problem for tomorrow'	-	-
+1794525827	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525829	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	stash		Your stash holds 50 of 75 things. //     1) (Flaming) the Crystalline Dagger of Wonders //     2) an Eagle-feather cloak	-	+
+1794525830	cmd	Alaric	57	4208	dresden.are	resting	71	0	-	say	heh	You say 'heh'	-	-
+1794525835	cmd	Alaric	57	4208	dresden.are	resting	76	0	-	say	Wonder if I was in Hyrule it would let me	You say 'Wonder if I was in Hyrule it would let me'	-	-
+1794525837	refused	Alaric	57	4208	dresden.are	resting	76	0	-	(unknown)		Huh? Did you mean WAKE?	refusal:unknown-command	-
+1794525839	cmd	Alaric	57	4208	dresden.are	resting	76	0	-	wake		You stand up.	-	-
+1794525843	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	follow	ala	You now follow Alaric.	-	-
+1794525845	cmd	Alaric	57	4207	dresden.are	standing	76	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794525846	cmd	Trentlin	40	4207	dresden.are	standing	100	0	-	noloot		Your corpse is now safe from thieves.	-	-
+1794525846	area	Alaric	57	3700	school.are	dresden.are	school.are	140	up
+1794525846	area	Trentlin	40	3700	school.are	dresden.are	school.are	315	up(another's)
+1794525846	cmd	Alaric	57	3700	school.are	standing	76	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794525847	cmd	Alaric	57	3772	school.are	standing	76	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794525847	cmd	Alaric	57	3795	school.are	standing	76	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794525847	cmd	Trentlin	40	3795	school.are	standing	100	0	-	noloot		Your corpse may now be looted.	-	-
+1794525848	area	Alaric	57	15000	campus.are	school.are	campus.are	2	enter
+1794525848	cmd	Alaric	57	15000	campus.are	standing	76	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794525849	cmd	Alaric	57	15001	campus.are	standing	76	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525849	cmd	Alaric	57	15002	campus.are	standing	76	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525850	cmd	Alaric	57	15003	campus.are	standing	76	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525850	area	Trentlin	40	15000	campus.are	school.are	campus.are	4	enter
+1794525850	cmd	Trentlin	40	15000	campus.are	standing	100	0	-	enter	por	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794525850	cmd	Alaric	57	15004	campus.are	standing	76	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794525851	cmd	Alaric	57	15010	campus.are	standing	76	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794525851	cmd	Alaric	57	15011	campus.are	standing	76	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794525851	cmd	Alaric	57	15012	campus.are	standing	76	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794525853	cmd	Trentlin	40	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525853	cmd	Alaric	57	15012	campus.are	standing	76	0	-	exits		Obvious exits: // North - University Avenue // East  - Union Street	-	+
+1794525853	cmd	Trentlin	40	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525853	cmd	Trentlin	40	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525853	cmd	Trentlin	40	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794525854	cmd	Trentlin	40	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794525854	cmd	Trentlin	40	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794525854	cmd	Alaric	57	15013	campus.are	standing	76	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794525854	cmd	Trentlin	40	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794525854	cmd	Trentlin	40	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794525855	cmd	Alaric	57	15013	campus.are	standing	76	0	-	exits		Obvious exits: // North - The Ghetto // East  - The Back Hall	-	+
+1794525855	cmd	Trentlin	40	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794525855	cmd	Trentlin	40	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794525855	area	Trentlin	40	30200	hyrule.are	campus.are	hyrule.are	5	enter
+1794525855	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794525856	cmd	Alaric	57	15038	campus.are	standing	76	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794525857	cmd	Alaric	57	15068	campus.are	standing	76	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794525858	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525861	cmd	Alaric	57	15068	campus.are	standing	76	0	-	look		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794525861	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	nofollow		You no longer accept followers. // You stop following Alaric.	-	-
+1794525861	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	nofollow		You now accept followers.	-	-
+1794525863	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525864	area	Alaric	57	30200	hyrule.are	campus.are	hyrule.are	16	enter
+1794525864	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	enter	cab	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794525864	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	where		Players near you: // Alaric                       The First Quest Begins	-	-
+1794525870	cmd	Alaric	57	30200	hyrule.are	standing	76	1	-	tk	trentlin	Your mind slides off the trentlin: that is a thing TK cannot fetch.  You will have to go and get it.	-	-
+1794525876	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	say	Still gives the message	You say 'Still gives the message'	-	-
+1794525878	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	inventory		You are carrying: //      the cadaver-toy //      house key	-	+
+1794525879	state	Alaric	57	30200	hyrule.are	lvl=57 hp=1180/1544 mana=2771/2875 mv=583/983 align=897 exp=252749 coin=1187692809 bank=24700405438 qp=2053 prac=36 train=76 stash=95/350 remorts=3
+1794525879	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794525880	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	help	telekenesis	No help on that word.  Did you mean: TELEKINESIS?	-	-
+1794525881	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525883	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	look	tr	You see nothing special about him. // Trentlin is in excellent condition.	-	-
+1794525887	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	help	telekinesis	TELEKINESIS TK // Syntax: telekinesis <object> //         tk <object>	-	+
+1794525888	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794525890	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	wake		You are already standing.	-	-
+1794525890	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525891	state	Alaric	57	30200	hyrule.are	lvl=57 hp=1180/1544 mana=2771/2875 mv=583/983 align=897 exp=252749 coin=1187692809 bank=24700405438 qp=2053 prac=36 train=76 stash=95/350 remorts=3
+1794525891	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794525904	cmd	Alaric	57	30200	hyrule.are	standing	76	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525908	cmd	Alaric	57	30200	hyrule.are	standing	77	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794525913	cmd	Alaric	57	30200	hyrule.are	standing	77	0	-	levitate		You slowly rise up off the ground.	-	-
+1794525914	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	say	hmm wonder if the room is "protected"	You say 'hmm wonder if the room is "protected"'	-	-
+1794525919	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	say	prob, the dungeons are norecall	You say 'prob, the dungeons are norecall'	-	-
+1794525927	cmd	Alaric	57	30200	hyrule.are	standing	77	0	-	say	Hyrule doesn't seem to follow the rules of the standard areas	You say 'Hyrule doesn't seem to follow the rules of the standard areas'	-	-
+1794525930	state	Alaric	57	30200	hyrule.are	lvl=57 hp=1202/1544 mana=2770/2875 mv=640/983 align=897 exp=252749 coin=1187692809 bank=24700405438 qp=2053 prac=36 train=76 stash=95/350 remorts=3
+1794525930	cmd	Alaric	57	30200	hyrule.are	standing	77	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794525930	cmd	Alaric	57	30200	hyrule.are	standing	77	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525936	cmd	Alaric	57	30200	hyrule.are	standing	77	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794525937	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525939	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	(social)		You shrug.	-	-
+1794525965	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	say	ill just regear tomorrow, thanks though	You say 'ill just regear tomorrow, thanks though'	-	-
+1794525966	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	look		The First Quest Begins //   A small green field lies at the foot of rocky brown hills, quiet and sunny, // the grass trampled into a faint path. In the cliff to the north a dark cave	-	+
+1794525968	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	look	ala	You see nothing special about him. // Alaric is injured. // Alaric is using:	-	+
+1794525972	cmd	Alaric	57	30200	hyrule.are	standing	79	0	-	say	Supposed to be viable all through leveling, but I've been chasing the remorts hoping to do the end game stuff after lev	You say 'Supposed to be viable all through leveling, but I've been chasing the remorts hoping to do the end game stuff after leveling up'	-	-
+1794525982	cmd	Alaric	57	30200	hyrule.are	standing	79	0	-	say	I can grab quite a bit of that gear, too	You say 'I can grab quite a bit of that gear, too'	-	-
+1794525984	cmd	Alaric	57	30200	hyrule.are	standing	79	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-

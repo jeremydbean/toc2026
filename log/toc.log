@@ -293663,3 +293663,162 @@ Thu Nov 12 23:21:43 2026 :: Log Alaric [13486]: arrived (Penguin Room) from 1347
 Thu Nov 12 23:21:43 2026 :: Log Alaric [13486]: recal
 Thu Nov 12 23:21:43 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 13486
 Thu Nov 12 23:21:44 2026 :: Log Trentlin [4210]: eq
+Thu Nov 12 23:21:44 2026 :: Log Trentlin [4210]: l
+Thu Nov 12 23:21:45 2026 :: Log Alaric [2497]: en do
+Thu Nov 12 23:21:45 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 12 23:21:46 2026 :: Log Trentlin [4210]: wake
+Thu Nov 12 23:21:46 2026 :: Log Alaric [2401]: jump rock
+Thu Nov 12 23:21:46 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Thu Nov 12 23:21:46 2026 :: Log Trentlin [4210]: s
+Thu Nov 12 23:21:46 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Thu Nov 12 23:21:46 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Thu Nov 12 23:21:47 2026 :: Log Alaric [4208]: l
+Thu Nov 12 23:21:47 2026 :: Log Trentlin [4203]: s
+Thu Nov 12 23:21:47 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Thu Nov 12 23:21:47 2026 :: Log Trentlin [4202]: w
+Thu Nov 12 23:21:47 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Thu Nov 12 23:21:47 2026 :: Log Trentlin [4207]: w
+Thu Nov 12 23:21:47 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Thu Nov 12 23:21:48 2026 :: Log Trentlin [4208]: w
+Thu Nov 12 23:21:51 2026 :: Log Alaric [4208]: tk trentlin
+Thu Nov 12 23:21:54 2026 :: Log Trentlin [4208]: heal heal
+Thu Nov 12 23:21:54 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 12 23:21:54 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 12 23:21:59 2026 :: Log Alaric [4208]: tk corpse
+Thu Nov 12 23:22:03 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:22:03 2026 :: Log Trentlin [4208]: l
+Thu Nov 12 23:22:04 2026 :: Log Alaric [4208]: drop cor
+Thu Nov 12 23:22:04 2026 :: Log Alaric [4208]: l i cor
+Thu Nov 12 23:22:07 2026 :: Log Trentlin [4208]: get all cor
+Thu Nov 12 23:22:07 2026 :: Log Alaric [4208]: tk corpse
+Thu Nov 12 23:22:10 2026 :: Log Alaric [4208]: tk corpse
+Thu Nov 12 23:22:13 2026 :: Log Trentlin [4208]: drop knife
+Thu Nov 12 23:22:14 2026 :: Log Trentlin [4208]: l
+Thu Nov 12 23:22:20 2026 :: Log Alaric [4208]: say Your mind slides off the corpse: that is a thing TK cannot fetch.  You will have to go and get it.
+Thu Nov 12 23:22:20 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:22:25 2026 :: Log Alaric [4208]: say Well, that's something
+Thu Nov 12 23:22:27 2026 :: Log Alaric [4208]: score
+Thu Nov 12 23:22:29 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:22:31 2026 :: Log Trentlin [4208]: sco
+Thu Nov 12 23:22:40 2026 :: Log Alaric [4208]: l
+Thu Nov 12 23:22:44 2026 :: Log Trentlin [4208]: say hmmm
+Thu Nov 12 23:22:44 2026 :: Log Alaric [4208]: l i pit
+Thu Nov 12 23:22:47 2026 :: Log Trentlin [4208]: say that sucks
+Thu Nov 12 23:22:52 2026 :: Log Trentlin [4208]: noloot
+Thu Nov 12 23:22:52 2026 :: Log Alaric [4208]: affects off: levitate
+Thu Nov 12 23:22:53 2026 :: Log Trentlin [4208]: noloot
+Thu Nov 12 23:22:58 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:23:02 2026 :: Log Alaric [4208]: say How bad is it to walk there? I don't have the flute and rafts, etc.
+Thu Nov 12 23:23:04 2026 :: Log Alaric [4208]: score
+Thu Nov 12 23:23:04 2026 :: Log Alaric [4208]: l
+Thu Nov 12 23:23:11 2026 :: Log Alaric [4208]: i
+Thu Nov 12 23:23:25 2026 :: Log Alaric [4208]: rest
+Thu Nov 12 23:23:35 2026 :: Log Trentlin [4208]: say ehh itd be just as much of a pain i think, youd have to go through all the previous dungeons to get them
+Thu Nov 12 23:23:45 2026 :: Log Trentlin [4208]: say ill just re requip, but thats a problem for tomorrow
+Thu Nov 12 23:23:47 2026 :: Log Trentlin [4208]: l
+Thu Nov 12 23:23:49 2026 :: Log Trentlin [4208]: stash
+Thu Nov 12 23:23:50 2026 :: Log Alaric [4208]: say heh
+Thu Nov 12 23:23:55 2026 :: Log Alaric [4208]: say Wonder if I was in Hyrule it would let me
+Thu Nov 12 23:23:57 2026 :: Log Alaric [4208]: (refused) walke hyrule
+Thu Nov 12 23:23:59 2026 :: Log Alaric [4208]: wake
+Thu Nov 12 23:24:03 2026 :: Log Trentlin [4208]: fol ala
+Thu Nov 12 23:24:05 2026 :: Log Alaric [4208]: e
+Thu Nov 12 23:24:05 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:24:05 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:24:06 2026 :: Log Trentlin [4207]: noloot
+Thu Nov 12 23:24:06 2026 :: Log Alaric [4207]: u
+Thu Nov 12 23:24:06 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Thu Nov 12 23:24:06 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Thu Nov 12 23:24:07 2026 :: Log Alaric [3700]: u
+Thu Nov 12 23:24:07 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Thu Nov 12 23:24:07 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Thu Nov 12 23:24:07 2026 :: Log Alaric [3772]: u
+Thu Nov 12 23:24:07 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Thu Nov 12 23:24:07 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Thu Nov 12 23:24:07 2026 :: Log Trentlin [3795]: noloot
+Thu Nov 12 23:24:08 2026 :: Log Alaric [3795]: en po
+Thu Nov 12 23:24:08 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Thu Nov 12 23:24:09 2026 :: Log Alaric [15000]: e
+Thu Nov 12 23:24:09 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Thu Nov 12 23:24:09 2026 :: Log Alaric [15001]: e
+Thu Nov 12 23:24:09 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Thu Nov 12 23:24:10 2026 :: Log Alaric [15002]: e
+Thu Nov 12 23:24:10 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Thu Nov 12 23:24:10 2026 :: Log Trentlin [3795]: enter por
+Thu Nov 12 23:24:10 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Thu Nov 12 23:24:10 2026 :: Log Alaric [15003]: e
+Thu Nov 12 23:24:10 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Thu Nov 12 23:24:11 2026 :: Log Alaric [15004]: n
+Thu Nov 12 23:24:11 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15004
+Thu Nov 12 23:24:11 2026 :: Log Alaric [15010]: n
+Thu Nov 12 23:24:11 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15010
+Thu Nov 12 23:24:11 2026 :: Log Alaric [15011]: n
+Thu Nov 12 23:24:11 2026 :: Log Alaric [15012]: arrived (University Avenue) from 15011
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15000]: east
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Thu Nov 12 23:24:13 2026 :: Log Alaric [15012]: ex
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15001]: east
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15002]: east
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15003]: east
+Thu Nov 12 23:24:13 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15004]: north
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15010]: north
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Thu Nov 12 23:24:14 2026 :: Log Alaric [15012]: n
+Thu Nov 12 23:24:14 2026 :: Log Alaric [15013]: arrived (University Avenue) from 15012
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15011]: north
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15012]: north
+Thu Nov 12 23:24:14 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Thu Nov 12 23:24:15 2026 :: Log Alaric [15013]: ex
+Thu Nov 12 23:24:15 2026 :: Log Trentlin [15013]: east
+Thu Nov 12 23:24:15 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Thu Nov 12 23:24:15 2026 :: Log Trentlin [15038]: east
+Thu Nov 12 23:24:15 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Thu Nov 12 23:24:15 2026 :: Log Trentlin [15068]: enter cabinet
+Thu Nov 12 23:24:15 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Thu Nov 12 23:24:16 2026 :: Log Alaric [15013]: e
+Thu Nov 12 23:24:16 2026 :: Log Alaric [15038]: arrived (The Back Hall) from 15013
+Thu Nov 12 23:24:17 2026 :: Log Alaric [15038]: e
+Thu Nov 12 23:24:17 2026 :: Log Alaric [15068]: arrived (The Games Room) from 15038
+Thu Nov 12 23:24:18 2026 :: Log Trentlin [30200]: l
+Thu Nov 12 23:24:21 2026 :: Log Alaric [15068]: l
+Thu Nov 12 23:24:21 2026 :: Log Trentlin [30200]: nofol
+Thu Nov 12 23:24:21 2026 :: Log Trentlin [30200]: nofol
+Thu Nov 12 23:24:23 2026 :: Log Trentlin [30200]: l
+Thu Nov 12 23:24:24 2026 :: Log Alaric [15068]: en cab
+Thu Nov 12 23:24:24 2026 :: Log Alaric [30200]: arrived (The First Quest Begins) from 15068
+Thu Nov 12 23:24:24 2026 :: Log Trentlin [30200]: where
+Thu Nov 12 23:24:30 2026 :: Log Alaric [30200]: tk trentlin
+Thu Nov 12 23:24:36 2026 :: Log Alaric [30200]: say Still gives the message
+Thu Nov 12 23:24:38 2026 :: Log Alaric [30200]: i
+Thu Nov 12 23:24:39 2026 :: Log Alaric [30200]: score
+Thu Nov 12 23:24:40 2026 :: Log Trentlin [30200]: help telekenesis
+Thu Nov 12 23:24:41 2026 :: Log Alaric [30200]: l
+Thu Nov 12 23:24:43 2026 :: Log Alaric [30200]: look tr
+Thu Nov 12 23:24:47 2026 :: Log Trentlin [30200]: help telekinesis
+Thu Nov 12 23:24:48 2026 :: Log Alaric [30200]: who
+Thu Nov 12 23:24:50 2026 :: Log Alaric [30200]: wake
+Thu Nov 12 23:24:50 2026 :: Log Alaric [30200]: l
+Thu Nov 12 23:24:51 2026 :: Log Alaric [30200]: score
+Thu Nov 12 23:25:04 2026 :: Log Alaric [30200]: l
+Thu Nov 12 23:25:05 2026 :: Log Alaric [30200]: affects off: steel fist
+Thu Nov 12 23:25:08 2026 :: Log Alaric [30200]: steel
+Thu Nov 12 23:25:13 2026 :: Log Alaric [30200]: levi
+Thu Nov 12 23:25:14 2026 :: Log Trentlin [30200]: say hmm wonder if the room is "protected"
+Thu Nov 12 23:25:19 2026 :: Log Trentlin [30200]: say prob, the dungeons are norecall
+Thu Nov 12 23:25:27 2026 :: Log Alaric [30200]: say Hyrule doesn't seem to follow the rules of the standard areas
+Thu Nov 12 23:25:30 2026 :: Log Alaric [30200]: score
+Thu Nov 12 23:25:30 2026 :: Log Alaric [30200]: l
+Thu Nov 12 23:25:36 2026 :: Log Alaric [30200]: who
+Thu Nov 12 23:25:37 2026 :: Log Trentlin [30200]: l
+Thu Nov 12 23:25:39 2026 :: Log Trentlin [30200]: (social) shrug
+Thu Nov 12 23:26:05 2026 :: Log Trentlin [30200]: say ill just regear tomorrow, thanks though
+Thu Nov 12 23:26:06 2026 :: Log Trentlin [30200]: l
+Thu Nov 12 23:26:08 2026 :: Log Trentlin [30200]: l ala
+Thu Nov 12 23:26:12 2026 :: Log Alaric [30200]: say Supposed to be viable all through leveling, but I've been chasing the remorts hoping to do the end game stuff after leveling up
+Thu Nov 12 23:26:22 2026 :: Log Alaric [30200]: say I can grab quite a bit of that gear, too
+Thu Nov 12 23:26:24 2026 :: Log Alaric [30200]: who
