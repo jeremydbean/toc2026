@@ -1,8 +1,8 @@
 #DIARY 1
 Day 2026-11-12
-Played 1544
+Played 1817
 Level 37 39 2
-Exp 4290 75
+Exp 4308 100
 Kills 8
 Deaths 0
 Close 0
@@ -10,16 +10,16 @@ Quests 1 66
 Dailies 0 0
 List achv 10 0 A Map of One's Own
 List skill 80 81 kick
-List skill 86 88 enhanced damage
-List skill 79 80 fists of fury
-List area 753 0 City of Dresden
+List skill 86 89 enhanced damage
+List skill 79 81 fists of fury
+List area 943 0 City of Dresden
 List area 227 0 Sewer
 List area 3 0 Plains of the North
-List area 3 0 Continental Drift
+List area 4 0 Continental Drift
 List area 152 0 the Upper Argo
-List area 3 0 Miden'nir
-List area 55 0 New Thalos
-List area 212 0 Pirate Ship
+List area 5 0 Miden'nir
+List area 69 0 New Thalos
+List area 278 0 Pirate Ship
 List area 107 0 Korzath's Fortress
 List area 4 0 Haon Dor
 List area 25 0 Arachnos
@@ -27,6 +27,6 @@ List item 1 0 a crystal key
 List earn 38097971 0 interest
 List earn 9418589 0 loot
 List earn 5372406 0 quests
-List spend 10600000 0 heal
+List spend 16200000 0 heal
 End
 #END
