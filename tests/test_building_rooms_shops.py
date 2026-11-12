@@ -136,6 +136,14 @@ class RoomShopTests(unittest.TestCase):
                 # WALKTO knows the built area by name. From the Temple there
                 # is no way in (nothing in the world links to it yet), and it
                 # says so by name; from its own back room it walks.
+                # The only links the world makes at run time are the four
+                # random portals in Dresden (object 32, "a mirror", rooms 4656-4659),
+                # which reopen on a random room every game hour -- the new
+                # market among them. One opening onto it made the next
+                # WALKTO find a way in (CI, 2026-11-12, under the slow
+                # sanitizer build). Take them out of this test world first.
+                for portal_room in (4656, 4657, 4658, 4659):
+                    self.assertIn("purged", run(imm, f"at {portal_room} purge mirror", 1.0))
                 run(imm, "goto 4207", 1.5)
                 self.assertIn("no way to Zed Market", run(imm, "walkto zed market", 1.5))
                 run(imm, f"goto {NORTH}", 1.5)
