@@ -6405,7 +6405,7 @@ static bool manipulate_move_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *dest )
 
     if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
     &&   ( !can_see_room( ch, dest ) || travel_spell_refuses( ch, dest )
-	 || ( ch->level > 10 && IS_SET(dest->room_flags, ROOM_NEWBIES_ONLY) ) ) )
+	 || newbie_room_refuses( ch, dest ) ) )
     {
 	send_to_char( "Something on the far side turns you back.\n\r", ch );
 	return true;

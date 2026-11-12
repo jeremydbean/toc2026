@@ -441,7 +441,7 @@ level.  In a fight it defaults to your foe.  It does not blind.
 
   - Needs empty hands, 20 mana and 20 movement; costs 20 mana and 10
     movement.
-  - Each blow that lands adds its own lag.
+  - Six seconds of lag, whether or not a blow lands.
 
 Minimum level by class (GAINLIST shows who sells it):
 Mage:N/A  Cleric:N/A  Thief:N/A  Warrior:N/A  Monk:20  Necromancer:N/A
@@ -477,7 +477,8 @@ nearby (five rooms or fewer), a little way off (twelve) or far away.  It
 also counts players hidden by STEALTH or SHADOWMELD there.
 
   - Six seconds of lag.  Usable asleep at half your skill.
-  - A missed roll and an empty area both say "You sense no danger".
+  - "You sense no danger" means nobody you can sense is about; a missed
+    roll says you cannot tell what lies about you.
   - Sold by the warriors' guild only.
 
 Minimum level by class (GAINLIST shows who sells it):
@@ -590,6 +591,7 @@ missed strike ends the fury and makes the victim try to flee.  In a
 fight it defaults to your foe.
 
   - Needs empty hands; needs and costs 30 mana and 15 movement.
+  - Six seconds of lag, whether or not a blow lands.
   - Hyrule's creatures will not be driven off; a miss just ends it.
 
 Minimum level by class (GAINLIST shows who sells it):
@@ -775,9 +777,10 @@ A monk's precise strike.  Your skill, your level against theirs, and
 luck decide whether it stuns.  In a fight it defaults to your foe.
 
   - Needs empty hands; needs and costs 15 mana and 5 movement.
-  - Stunned: the victim takes your level to twice your level, and on its
-    next round of blows may lose the round while it recovers.
-  - Missed: it still deals half your level to three times your level.
+  - Stunned: the victim takes your level to three times your level, and
+    on its next round of blows may lose the round while it recovers.
+  - Missed: a glancing blow, half your level to your level -- never more
+    than the weakest stunning one.
   - Either way the victim loses a round of command lag, and you lag too.
 
 Minimum level by class (GAINLIST shows who sells it):
@@ -913,8 +916,9 @@ Listens through a closed door for anybody moving on the other side.  Any
 of the ten directions, shortened or whole.
 
   - The exit must be a closed door you can see (not a secret one).
-  - "You hear someone, or something" means somebody is there.  "Nothing
-    out of the ordinary" means nobody, or a missed roll.
+  - "You hear someone, or something" means somebody is there.  "Hear
+    nothing on the other side" means nobody.  A missed roll says you
+    cannot make anything out, and tells you nothing either way.
   - No cost and no lag.  Sold by the thieves' guild only.
 
 Minimum level by class (GAINLIST shows who sells it):
@@ -1018,7 +1022,8 @@ Syntax: search <container>
 
 Looks for a trap on a closed, locked container or door, and disarms it.
 
-  - Costs six seconds of lag whatever happens.
+  - Costs six seconds of lag whatever happens, once you know the skill
+    above 1%; below that it is refused, with no lag.
   - An awake mobile more than five levels above you stops you.
   - Success removes the trap (from both sides of a door) or says there
     is none.  A missed roll says only that it might be trapped -- and

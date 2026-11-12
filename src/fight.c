@@ -7015,11 +7015,22 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
     act("$n blurs into motion.",ch,NULL,victim,TO_ROOM);
     send_to_char("You become a blur of motion.\n\r",ch);
 
+    /* The flurry takes its time whether or not a blow lands, so it is paid
+       for before the first roll, as KICK and SMITE are. Paid only after a
+       landed blow, a flurry that missed every time cost no lag at all, and
+       a monk could fire one a pulse until one connected (review,
+       2026-11-12). */
+    WAIT_STATE( ch, skill_table[gsn_blinding_fists].beats);
+
     for(hit = 4 + (ch->level >= 30) + (ch->level >= 40); hit > 0; hit-- )
     {
       if( skill_roll_missed( ch, number_percent( ) > chance ) )
       {
-	act("Amazingly, $N avoids your blow.",ch,NULL,victim,TO_ROOM);
+	/* The room's line, and one for the striker: TO_ROOM never reached
+	   them, so a whiffed blow told the monk nothing. */
+	act("$N avoids your blow.",ch,NULL,victim,TO_CHAR);
+	act("Amazingly, $N avoids $n's blow.",ch,NULL,victim,TO_NOTVICT);
+	act("You avoid $n's blow.",ch,NULL,victim,TO_VICT);
 	check_improve(ch,gsn_blinding_fists,false,6);
       }
       else
@@ -7033,13 +7044,9 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
 		gsn_blinding_fists, hit );
 	  if ( gone_after_blow( victim, struck_in )
 	  ||   gone_after_blow( ch, struck_in ) )
-	  {
-	    WAIT_STATE( ch, skill_table[gsn_blinding_fists].beats);
 	    break;  /* victim was killed; stop iterating */
-	  }
 	}
 	check_improve(ch,gsn_blinding_fists,true,6);
-	WAIT_STATE( ch, skill_table[gsn_blinding_fists].beats);
       }
       if ( ch->fighting != victim )
           break;  /* victim fled or fight state changed */
@@ -7152,6 +7159,11 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 
     chance += 60;
 
+    /* Paid before the first roll, as BLINDING FISTS is: a fury whose first
+       blow missed sent the victim running and cost no lag (review,
+       2026-11-12). */
+    WAIT_STATE( ch, skill_table[gsn_fists_of_fury].beats);
+
     for(hit = number_bits(2) + 2 + (ch->level >= 35) + (ch->level >= 45); hit > 0; hit--)
     {
       /* The first blow is what starts a fight, so this asks only after
@@ -7190,13 +7202,9 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 	  struck = true;
 	  if ( gone_after_blow( victim, struck_in )
 	  ||   gone_after_blow( ch, struck_in ) )
-	  {
-	    WAIT_STATE( ch, skill_table[gsn_fists_of_fury].beats);
 	    break;  /* victim was killed; stop iterating */
-	  }
 	}
 	check_improve(ch,gsn_fists_of_fury,true,6);
-	WAIT_STATE( ch, skill_table[gsn_fists_of_fury].beats);
       }
     }
     return;
@@ -7305,13 +7313,16 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
     if( skill_roll_landed( ch,
           number_percent () < 1 + (chance / 2) + ch->level - victim->level ) )
     {
+      int low, high;
+
       act("You strike a stunning blow to $N.",ch,NULL,victim,TO_CHAR);
-      act("$N strikes you with a stunning blow!",ch,NULL,victim,TO_VICT);
+      act("$n strikes you with a stunning blow!",ch,NULL,victim,TO_VICT);
+      stunning_blow_range( ch->level, 1, &low, &high );
       {
         ROOM_INDEX_DATA *struck_in = ch->in_room;
 
         /* Read as "killed", a landed blow returned here: no stun, no lag. */
-        damage( ch, victim, number_range(ch->level,ch->level*2),
+        damage( ch, victim, number_range(low,high),
 		gsn_stunning_blow, hit );
         if ( gone_after_blow( victim, struck_in )
         ||   gone_after_blow( ch, struck_in ) )
@@ -7338,10 +7349,18 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
     }
     else
     {
+      int low, high;
+
+      /* A glancing blow: never more than the weakest that lands
+	 (stunning_blow_range). It used to roll up to half again the best
+	 landed blow, and said nothing of the miss. */
+      act("Your blow glances off $N without stunning $M.",ch,NULL,victim,TO_CHAR);
+      act("$n's blow glances off you.",ch,NULL,victim,TO_VICT);
+      stunning_blow_range( ch->level, 0, &low, &high );
       {
         ROOM_INDEX_DATA *struck_in = ch->in_room;
 
-        damage( ch, victim, number_range(ch->level/2,ch->level*3),
+        damage( ch, victim, number_range(low,high),
 		gsn_stunning_blow, hit );
         if ( gone_after_blow( victim, struck_in )
         ||   gone_after_blow( ch, struck_in ) )

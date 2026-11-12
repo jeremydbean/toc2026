@@ -3527,9 +3527,11 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define STARTING_WEAPON_SKILL   40
 #define STARTING_RECALL_SKILL   50
 
-/* Where this game already draws the newbie line: rooms flagged
-   ROOM_NEWBIES_ONLY turn away anyone above it. */
-#define LEVEL_NEWBIE             5
+/* Where this game draws the newbie line: rooms flagged ROOM_NEWBIES_ONLY
+   turn away anyone above it (newbie_room_refuses in handler.c, the one
+   test). It was 5 in can_see_room and 10 everywhere else until
+   2026-11-12; 10 is the line Mud School's own refusal names. */
+#define LEVEL_NEWBIE             10
 
 #define GAME_LOG_FILE           "../log/toc.log"
 
@@ -4200,6 +4202,7 @@ int     staff_notice_level_pair ( const CHAR_DATA *a, const CHAR_DATA *b,
 bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );
 bool    can_see_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex);
+bool    newbie_room_refuses ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
 bool    can_drop_obj    ( CHAR_DATA *ch, OBJ_DATA *obj );
 char * item_type_name  ( OBJ_DATA *obj );
 char * affect_loc_name ( int location );

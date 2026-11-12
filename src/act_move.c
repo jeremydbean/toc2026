@@ -604,8 +604,7 @@ ROOM_INDEX_DATA *random_travel_room( CHAR_DATA *ch, bool allow_safe )
 	if ( !can_see_room( ch, room )
 	||   IS_SET(room->room_flags, ROOM_NO_RECALL)
 	||   ( !allow_safe && IS_SET(room->room_flags, ROOM_SAFE) )
-	||   ( !IS_NPC(ch) && ch->level > 10
-	       && IS_SET(room->room_flags, ROOM_NEWBIES_ONLY) )
+	||   ( !IS_NPC(ch) && newbie_room_refuses( ch, room ) )
 	||   travel_spell_refuses( ch, room ) )
 	    continue;
 	return room;
@@ -1244,6 +1243,22 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	return;
     }
 
+    /* Mud School says why it turns a player away, before can_see_room
+       hides the way in: asked after can_see_room, as it was, the refusal
+       below could never be reached and a level 11 was told only "Alas"
+       (review, 2026-11-12). The flag, not a vnum range: school.are spans
+       3200-3795 but midennir.are and dkforest.are are interleaved inside
+       it, and its Arena is deliberately not flagged. */
+    if ( !IS_NPC(ch)
+    &&   ( pexit = in_room->exit[door] ) != NULL
+    &&   ( to_room = pexit->u1.to_room ) != NULL
+    &&   !IS_SET(pexit->exit_info, EX_SECRET)
+    &&   newbie_room_refuses( ch, to_room ) )
+    {
+	send_to_char( "The entrance shimmers and repels you -- Mud School is for newbies only.\n\r", ch );
+	runner = 2;
+	return;
+    }
 
     if ( (( pexit   = in_room->exit[door] ) == NULL)
     ||   (( to_room = pexit->u1.to_room   ) == NULL)
@@ -1435,21 +1450,6 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 		  }
 	    }
 	}
-    }
-
-    /* The flag, not a vnum range. This used to test 3200-3795, which
-       school.are does span but does not own: midennir.are (3500-3585) and
-       dkforest.are (3601-3649) are interleaved inside it, so 102 rooms of
-       two unrelated areas were closed to anyone past level 10. It also shut
-       level 11+ out of the Arena, which lives in school.are and is
-       deliberately not flagged. */
-    if ( !IS_NPC(ch) && !IS_IMMORTAL(ch)
-    &&   ch->level > 10
-    &&   IS_SET(to_room->room_flags, ROOM_NEWBIES_ONLY) )
-    {
-	send_to_char( "The entrance shimmers and repels you -- Mud School is for newbies only.\n\r", ch );
-	runner = 2;
-	return;
     }
 
     if ( in_room->sector_type == SECT_AIR
@@ -4448,7 +4448,7 @@ void do_enter( CHAR_DATA *ch, char *argument )
       summon portal carried anyone into its caster's guild hall. */
    if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
    &&   ( !can_see_room( ch, to_room ) || travel_spell_refuses( ch, to_room )
-       || ( ch->level > 10 && IS_SET(to_room->room_flags, ROOM_NEWBIES_ONLY) ) ) )
+       || newbie_room_refuses( ch, to_room ) ) )
    {
      send_to_char( "Something on the far side turns you back.\n\r", ch );
      return;
@@ -4915,6 +4915,21 @@ void do_search( CHAR_DATA *ch, char *argument)
 	return;
     }
 
+    /* A refusal, before the lag and the roll (review, 2026-11-12): at 1%
+       or less this used to take the lag and return without a word. */
+    chance = ch->pcdata->learned[gsn_search];
+    if ( chance < 1 )
+    {
+	send_to_char( "You don't know how to search for traps.\n\r", ch );
+	return;
+    }
+    if ( chance <= 1 )
+    {
+	send_to_char( "You know too little of searching for traps to try; "
+		      "practise SEARCH first.\n\r", ch );
+	return;
+    }
+
     WAIT_STATE( ch, skill_table[gsn_search].beats );
 
     /* look for guards */
@@ -4929,9 +4944,6 @@ void do_search( CHAR_DATA *ch, char *argument)
     }
 
 
-    chance = ch->pcdata->learned[gsn_search];
-    if( chance <= 1)
-      return;
     if( chance > 90)
        chance = 90;
 

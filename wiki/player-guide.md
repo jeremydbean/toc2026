@@ -312,8 +312,8 @@ Necromancer use their class-specific path and do not select one of those four
 guilds.
 
 The game warns at level 5. If the character still has no guild upon reaching
-level 6, the game assigns the guild matching the primary class and may take up
-to 50 gold. Use `join`, `gainlist`, `teachlist`, and the relevant in-game guild
+level 6, the game assigns the guild matching the primary class, free, with
+that guild's starting group. Use `join`, `gainlist`, `teachlist`, and the relevant in-game guild
 help before that point.
 
 ### Heroes, Remorts, And The Mortal Cap

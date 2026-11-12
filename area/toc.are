@@ -1035,7 +1035,7 @@ the mages' guild) get each class's best.
     clerk (WALKTO MELANCHOLY; JOIN <guild>, 1 gold).  Joining gives the
     guild's free starting group.
   - Anybody still without a guild on reaching level 6 is put in their
-    class's guild and loses up to 50 gold.
+    class's guild, free, with that guild's starting group.
   - Monks and necromancers belong to their own guild and cannot join
     another.
   - Each guild has a hall only members may enter.

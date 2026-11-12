@@ -1380,17 +1380,29 @@ void spell_calm( int sn, int level, CHAR_DATA *ch, void *vo )
     if (IS_IMMORTAL(ch)) /* always works */
       mlevel = 0;
 
-    if (number_range(0, chance) >= mlevel)  /* hard to stop large fights */
+    if (number_range(0, chance) < mlevel)  /* hard to stop large fights */
     {
+	send_to_char("The fighting is too fierce for your calm to take hold.\n\r",ch);
+	return;
+    }
+
+    {
+	int calmed = 0;
+	bool caster_calmed = false;
+
+	/* Each one the wave cannot reach is passed over, never the end of the
+	   wave: these were returns, so one undead or magic-immune mobile, or
+	   one character already calm (the caster, cast twice), stopped the
+	   spell for everyone after it in the room (review, 2026-11-12). */
 	for (vch = ch->in_room->people; vch != NULL; vch = vch->next_in_room)
    	{
 	    if (IS_NPC(vch) && (IS_SET(vch->imm_flags,IMM_MAGIC) ||
 				IS_SET(vch->act,ACT_UNDEAD)))
-	      return;
+	      continue;
 
 	    if (IS_AFFECTED(vch,AFF_CALM) || IS_AFFECTED(vch,AFF_BERSERK)
 	    ||  is_affected(vch,skill_lookup("frenzy")))
-	      return;
+	      continue;
 
 	    send_to_char("A wave of calm passes over you.\n\r",vch);
 
@@ -1414,7 +1426,17 @@ void spell_calm( int sn, int level, CHAR_DATA *ch, void *vo )
 
 	    af.location = APPLY_DAMROLL;
 	    affect_to_char(vch,&af);
+
+	    calmed++;
+	    if (vch == ch)
+		caster_calmed = true;
 	}
+
+	/* A caster the wave passed over (already calm) still hears what
+	   their spell did. */
+	if (!caster_calmed)
+	    send_to_char(calmed > 0 ? "A wave of calm passes over the room.\n\r"
+				    : "Nobody here is open to your calm.\n\r", ch);
     }
 }
 
@@ -3406,8 +3428,7 @@ CHAR_DATA *travel_target( CHAR_DATA *ch, char *argument, int level, int mode )
 	||   IS_SET(room->room_flags, ROOM_DT)
 	||   !can_see_room( ch, room )
 	||   !can_enter_private_room( ch, room )
-	||   ( !IS_NPC(ch) && !IS_IMMORTAL(ch) && ch->level > 10
-	       && IS_SET(room->room_flags, ROOM_NEWBIES_ONLY) )
+	||   ( !IS_NPC(ch) && newbie_room_refuses( ch, room ) )
 	||   travel_spell_refuses( ch, room )
 	||   ( !IS_NPC(wch) && IS_SET(wch->act, PLR_NOSUMMON) ) )
 	    continue;
