@@ -4,8 +4,10 @@ Owner, 2026-10-04: the starter map shows the overworld, not the nine
 dungeons; picking up a dungeon's map item fills that dungeon in. The game
 sends the floor plan room by room as Hyrule.MapRoom (a whole dungeon does
 not fit one GMCP message) and closes it with Hyrule.MapDone; the package
-places each room at its plan position on a z-level of its own and links
-the exits when the batch is done.
+places each room at its plan position, in a map area of the dungeon's own
+(owner, 2026-11-12: they shared the overworld's and stacked under it), and
+links the exits when the batch is done. Room.Info gives a room walked into
+the same square ("map").
 """
 from __future__ import annotations
 
@@ -71,15 +73,37 @@ class LiveTests(unittest.TestCase):
                 client.drain(2.0)
                 before = len(client.subnegotiations(TELOPT_GMCP))
                 got = client.command("get map", settle=2.5)
-                blocks = [b.decode("latin-1") for b in client.subnegotiations(TELOPT_GMCP)[before:]]
+                every = [b.decode("latin-1") for b in client.subnegotiations(TELOPT_GMCP)]
+                blocks = every[before:]
                 client.send("quit")
             rooms = [b for b in blocks if b.startswith("Hyrule.MapRoom ")]
             done = [b for b in blocks if b.startswith("Hyrule.MapDone ")]
             self.assertTrue(rooms, got)
             self.assertEqual(len(done), 1, blocks)
-            sent = {json.loads(b.split(" ", 1)[1])["num"] for b in rooms}
+            plan = {}
+            for b in rooms:
+                data = json.loads(b.split(" ", 1)[1])
+                plan[data["num"]] = data
+            sent = set(plan)
             self.assertIn(dungeon["entrance_vnum"], sent)
             self.assertIn(map_room, sent)
+            # Owner, 2026-11-12: the dungeon is a map area of its own, every
+            # room on its own square of it, and the room the player stands in
+            # is placed by Room.Info on the very square the plan gives it.
+            areas = {data["area"] for data in plan.values()}
+            self.assertEqual(areas, {"Hyrule: Level 1 (The Eagle)"})
+            squares = [(d["x"], d["y"], d["z"]) for d in plan.values()]
+            self.assertEqual(len(squares), len(set(squares)), "two plan rooms share a square")
+            cellar = dungeon["cellars"][0]["vnum"]
+            self.assertEqual(plan[cellar]["z"], -1)
+            infos = [json.loads(b.split(" ", 1)[1]) for b in every
+                     if b.startswith("Room.Info ")]
+            here = [info for info in infos if info.get("num") == map_room]
+            self.assertTrue(here, "no Room.Info for the room stood in")
+            self.assertEqual(here[-1]["map"], {"area": "Hyrule: Level 1 (The Eagle)",
+                                               "x": plan[map_room]["x"],
+                                               "y": plan[map_room]["y"], "z": 0})
+            self.assertNotIn("Level", here[-1]["area"], "Room.Info's area stays the game's")
             self.assertEqual(json.loads(done[0].split(" ", 1)[1])["rooms"], len(rooms))
             # The map is learned for good (maps.c): the fog's Map.Known that
             # follows names the whole dungeon as known.

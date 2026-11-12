@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.13"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.14"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -1560,9 +1560,12 @@ void gmcp_send_map_room( DESCRIPTOR_DATA *d, ROOM_INDEX_DATA *room, int level,
 
     snprintf( json, sizeof(json), "{\"level\":%d,\"num\":%d,\"name\":", level, room->vnum );
     gmcp_json_append_quoted( json, sizeof(json), room->name );
+    /* The dungeon's own map area (hyrule_map_area_name), the one Room.Info
+       names for it too, never the overworld's. */
     toc_strlcat( json, ",\"area\":", sizeof(json) );
     gmcp_json_append_quoted( json, sizeof(json),
-        room->area != NULL ? gmcp_area_name(room->area->name) : "Unknown Area" );
+        hyrule_map_area_name( level ) != NULL ? hyrule_map_area_name( level )
+        : room->area != NULL ? gmcp_area_name(room->area->name) : "Unknown Area" );
     toc_strlcat( json, ",\"environment\":", sizeof(json) );
     gmcp_json_append_quoted( json, sizeof(json),
         room->sector_type >= 0 && room->sector_type < SECT_MAX
@@ -1749,6 +1752,27 @@ void gmcp_send_room( DESCRIPTOR_DATA *d )
     toc_strlcat( json,
         IS_SET(room->room_flags, ROOM_INDOORS) ? "true" : "false",
         sizeof(json) );
+
+    /*
+     * Where the map draws a room the atlas does not hold: a Hyrule dungeon's
+     * room, in that dungeon's own area at its square of the floor plan
+     * (hyrule_map_place), the same square Hyrule.MapRoom gives it. "area"
+     * above stays the game's area name; this is only the map's.
+     */
+    {
+        int level;
+        int x;
+        int y;
+        int z;
+
+        if ( hyrule_map_place( room, &level, &x, &y, &z ) )
+        {
+            toc_strlcat( json, ",\"map\":{\"area\":", sizeof(json) );
+            gmcp_json_append_quoted( json, sizeof(json), hyrule_map_area_name( level ) );
+            snprintf( number, sizeof(number), ",\"x\":%d,\"y\":%d,\"z\":%d}", x, y, z );
+            toc_strlcat( json, number, sizeof(json) );
+        }
+    }
     toc_strlcat( json, "}", sizeof(json) );
 
     room_hash = gmcp_room_hash( json );

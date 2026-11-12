@@ -97,9 +97,15 @@ static bool plan_number( const char **cursor, int *value )
     return true;
 }
 
+static bool read_plan_text( const char *text, HYRULE_PLAN *plan );
+
 static bool read_plan( const OBJ_DATA *obj, HYRULE_PLAN *plan )
 {
-    const char *text = plan_text( obj );
+    return read_plan_text( plan_text( obj ), plan );
+}
+
+static bool read_plan_text( const char *text, HYRULE_PLAN *plan )
+{
     const char *cursor;
     int row;
     int col;
@@ -137,6 +143,101 @@ static bool plan_find( const HYRULE_PLAN *plan, int vnum, int *row, int *col )
                 return true;
             }
     return false;
+}
+
+/*
+ * Where a dungeon room sits on a client's map (owner, 2026-11-12: "the way
+ * the layers look on the map in mudlet is disorienting"). Every dungeon is
+ * a Mudlet area of its own, named here, laid out on its floor plan --
+ * column x, row -y, z 0 -- with each cellar a level below the room it opens
+ * from. Room.Info carries it for a dungeon room (gmcp_send_room) and
+ * Hyrule.MapRoom for the whole plan (hyrule_send_map), so a room walked
+ * into and the same room drawn from the map land on one square. Before, a
+ * room walked into was put in the overworld's area one step from the room
+ * walked from, and a plan ten levels below it: every dungeon stacked under
+ * the overworld and each other.
+ */
+static const char *const hyrule_map_area_names[10] =
+{
+    "",
+    "Hyrule: Level 1 (The Eagle)",
+    "Hyrule: Level 2 (The Moon)",
+    "Hyrule: Level 3 (The Manji)",
+    "Hyrule: Level 4 (The Snake)",
+    "Hyrule: Level 5 (The Lizard)",
+    "Hyrule: Level 6 (The Dragon)",
+    "Hyrule: Level 7 (The Demon)",
+    "Hyrule: Level 8 (The Lion)",
+    "Hyrule: Level 9 (Death Mountain)"
+};
+
+const char *hyrule_map_area_name( int level )
+{
+    return level >= 1 && level <= 9 ? hyrule_map_area_names[level] : NULL;
+}
+
+/* A dungeon's floor plan as its map's prototype carries it, read once. */
+static const HYRULE_PLAN *dungeon_plan( int level )
+{
+    static HYRULE_PLAN plans[10];
+    static signed char state[10];       /* 0 unread, 1 read, -1 none */
+    int vnum;
+
+    if ( level < 1 || level > 9 )
+        return NULL;
+    if ( state[level] == 0 )
+    {
+        state[level] = -1;
+        for ( vnum = HYRULE_OBJ_FIRST; vnum <= HYRULE_OBJ_LAST; vnum++ )
+        {
+            OBJ_INDEX_DATA *proto = get_obj_index( vnum );
+
+            if ( proto != NULL && proto->item_type == ITEM_MAP
+            &&   proto->value[0] == HYRULE_DUNGEON_MAP && proto->value[4] == level
+            &&   read_plan_text( get_extra_descr( HYRULE_PLAN_KEYWORD, proto->extra_descr ),
+                                 &plans[level] ) )
+            {
+                state[level] = 1;
+                break;
+            }
+        }
+    }
+    return state[level] == 1 ? &plans[level] : NULL;
+}
+
+bool hyrule_map_place( const ROOM_INDEX_DATA *room, int *level, int *x, int *y, int *z )
+{
+    const HYRULE_DUNGEON_GATE *gate = NULL;
+    const HYRULE_PLAN *plan;
+    int dungeon;
+    int row;
+    int col;
+    int i;
+
+    if ( room == NULL )
+        return false;
+    for ( dungeon = 1; dungeon <= 9; dungeon++ )
+        if ( ( gate = hyrule_dungeon_gate( dungeon ) ) != NULL
+        &&   room->vnum >= gate->first_room && room->vnum <= gate->last_room )
+            break;
+    if ( dungeon > 9 || ( plan = dungeon_plan( dungeon ) ) == NULL )
+        return false;
+    if ( plan_find( plan, room->vnum, &row, &col ) )
+        *z = 0;
+    else
+    {
+        for ( i = 0; i < plan->cellars; i++ )
+            if ( plan->cellar[i] == room->vnum
+            &&   plan_find( plan, plan->cellar_above[i], &row, &col ) )
+                break;
+        if ( i >= plan->cellars )
+            return false;
+        *z = -1;
+    }
+    *level = dungeon;
+    *x = col;
+    *y = -row;
+    return true;
 }
 
 /* What joins two neighbouring rooms on the map: ' ' nothing the player can

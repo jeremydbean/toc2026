@@ -13,7 +13,7 @@ end
 ]]></script>
    <command></command>
    <packageName>TimesOfChaos</packageName>
-   <regex>^tocgui(?:\s+(on|off|status|atlas))?$</regex>
+   <regex>^tocgui(?:\s+(on|off|status|atlas|levels))?$</regex>
   </Alias>
   <Alias isActive="yes" isFolder="no">
    <name>Times of Chaos walking</name>
@@ -64,7 +64,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.13"
+tocMudlet.version = "1.5.14"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -244,17 +244,43 @@ local function placeNearPrevious(roomId, areaId)
   if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
 end
 
+-- The area a room is drawn in now, or -1.
+local function roomAreaId(roomId)
+  if not getRoomArea then return -1 end
+  local ok, areaId = pcall(getRoomArea, roomId)
+  if ok and tonumber(areaId) then return tonumber(areaId) end
+  return -1
+end
+
+-- Where a room goes on the map (owner, 2026-11-12: the layers were
+-- disorienting). A room the atlas laid out keeps its area and square:
+-- Room.Info's area is the game's name for it, and moving rooms into it
+-- would undo any area the atlas splits. A room Room.Info places itself --
+-- a Hyrule dungeon's, as info.map {area, x, y, z}, in that dungeon's own
+-- area on its floor plan -- goes exactly there, every time, so a dungeon
+-- walked before this version drew it under the overworld is put right on
+-- the next step into each room. Anything else new is placed one step from
+-- the room walked from, in the game's area.
 local function ensureRoom(roomId, info)
   local created = false
-  local areaId = ensureArea(info.area)
+  local place = type(info.map) == "table" and info.map.area and info.map or nil
+  local areaId = ensureArea(place and place.area or info.area)
   if not roomExistsSafe(roomId) and addRoom then
     local ok, result = pcall(addRoom, roomId)
     created = ok and result ~= false
   end
   if not roomExistsSafe(roomId) then return false end
 
-  if created then placeNearPrevious(roomId, areaId) end
-  if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
+  if place then
+    if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
+    if setRoomCoordinates then
+      pcall(setRoomCoordinates, roomId, number(place.x), number(place.y), number(place.z))
+    end
+  elseif created then
+    placeNearPrevious(roomId, areaId)
+  elseif areaId > 0 and roomAreaId(roomId) <= 0 and setRoomArea then
+    pcall(setRoomArea, roomId, areaId)
+  end
   if setRoomName then pcall(setRoomName, roomId, tostring(info.name or roomId)) end
   if setRoomEnv then
     pcall(setRoomEnv, roomId, ENVIRONMENT[tostring(info.environment)] or 201)
@@ -718,6 +744,13 @@ function tocMudlet.onRoomInfo()
   if type(info) ~= "table" then return end
   local roomId = tonumber(info.num or info.id)
   if not roomId then return end
+  -- Later, not now: a new profile's first Room.Info comes while Mudlet is
+  -- still fetching the atlas Client.Map named, which marks the layout.
+  if not tocMudlet.atlasLayoutTimer and tempTimer then
+    tocMudlet.atlasLayoutTimer = tempTimer(20, function()
+      if tocMudlet.noteAtlasLayout then pcall(tocMudlet.noteAtlasLayout) end
+    end)
+  end
 
   -- Standing in it is knowing it: out of the fog, where the atlas put it.
   tocMudlet.walked[roomId] = true
@@ -1750,6 +1783,8 @@ function tocMudlet.command(action)
     cecho("\n<yellow>Times of Chaos GUI hidden. Type <white>tocgui on<yellow> to restore it.<reset>\n")
   elseif action == "atlas" then
     tocMudlet.loadAtlas()
+  elseif action == "levels" then
+    tocMudlet.toggleLevels()
   elseif action == "on" then
     if not tocMudlet.enabled or not tocMudlet.ui.mapper then
       tocMudlet.enabled = true
@@ -1800,6 +1835,8 @@ end
 function tocMudlet.install()
   pcall(setupEnvironmentColours)
   pcall(tocMudlet.loadFog)
+  pcall(tocMudlet.loadSettings)
+  pcall(tocMudlet.applyLevels)
   pcall(tocMudlet.buildUI)
   register("gmcp.Char.Vitals", function() tocMudlet.onVitals() end)
   register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
@@ -1854,8 +1891,12 @@ end
 -- dungeon map is found (owner, 2026-10-04). The game sends the plan room
 -- by room as Hyrule.MapRoom -- one message cannot carry a whole dungeon --
 -- and Hyrule.MapDone at the end, when every room exists and the exits can
--- be linked. Each dungeon gets a z-level of its own, ten per level below
--- the overworld, so its rooms never land on top of the surface's.
+-- be linked. Each dungeon is a map area of its own ("Hyrule: Level 1 (The
+-- Eagle)"), its floor on z 0 and its cellars on z -1, at the squares
+-- Room.Info's map gives a room walked into (1.5.14; owner, 2026-11-12:
+-- they used to share the overworld's area, ten levels apart, and walked
+-- rooms landed under the surface). A server from before sends the
+-- overworld's area name, and gets the old ten-levels-per-dungeon offset.
 tocMudlet.mapBatch = {}
 
 function tocMudlet.onMapRoom()
@@ -1869,8 +1910,11 @@ function tocMudlet.onMapRoom()
   if not roomExistsSafe(roomId) then return end
   if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
   if setRoomCoordinates then
-    pcall(setRoomCoordinates, roomId, number(r.x), number(r.y),
-      number(r.z) - 10 * number(r.level))
+    local z = number(r.z)
+    if not tostring(r.area or ""):match("^Hyrule: Level ") then
+      z = z - 10 * number(r.level)
+    end
+    pcall(setRoomCoordinates, roomId, number(r.x), number(r.y), z)
   end
   if setRoomName then pcall(setRoomName, roomId, tostring(r.name or roomId)) end
   if setRoomEnv then
@@ -2161,6 +2205,86 @@ function tocMudlet.onMapReplaced()
   tocMudlet.fog = {}
   tocMudlet.applyFog()
   tocMudlet.saveFogSoon()
+  -- This profile now holds the atlas as this package's generator lays it
+  -- out; noteAtlasLayout() says nothing more about it.
+  if setMapUserData then
+    pcall(setMapUserData, "tocAtlasLayout", tocMudlet.ATLAS_LAYOUT)
+  end
+end
+
+-- The atlas was laid out afresh in 1.5.14 (owner, 2026-11-12: "it's the
+-- map everywhere. dresden is a mess"). Loading a map replaces the
+-- profile's, so it is never done for the player; a profile holding an
+-- older layout is told once a session how to get the new one.
+tocMudlet.ATLAS_LAYOUT = "2"
+
+function tocMudlet.noteAtlasLayout()
+  if tocMudlet.atlasLayoutNoted or not getMapUserData then return end
+  tocMudlet.atlasLayoutNoted = true
+  local ok, layout = pcall(getMapUserData, "tocAtlasLayout")
+  if ok and layout == tocMudlet.ATLAS_LAYOUT then return end
+  cecho("\n<cyan>[map]<reset> The world map has been redrawn so streets run " ..
+    "straight and every area and Hyrule dungeon sits on its own grid. Type " ..
+    "<white>tocgui atlas<reset> to load it (it replaces this profile's map).\n")
+end
+
+-- Mudlet 5 draws, faintly, the rooms of the level above (outlined) and the
+-- level below (filled grey) the one it shows, in the same area: TMapPainter
+-- with mudlet::mDrawUpperLowerLevels, on by default. Over a city with a
+-- sewer under it and towers over it that is a second and third map laid
+-- across the first (owner, 2026-11-12: "is there a way to not show above or
+-- below unless you are there?"). setConfig("showUpperLowerLevels", ...) is
+-- that setting (Mudlet 5.0 on; 4.x has neither the drawing nor the key).
+-- It is Mudlet's, not the profile's, so it reaches every profile; the
+-- package turns it off at each start unless this profile asked for it
+-- back with TOCGUI LEVELS, kept in toc-settings.lua beside the fog.
+tocMudlet.settings = tocMudlet.settings or {}
+
+function tocMudlet.settingsPath()
+  return getMudletHomeDir() .. "/toc-settings.lua"
+end
+
+function tocMudlet.loadSettings()
+  if not (table.load and getMudletHomeDir) then return end
+  local ok, path = pcall(tocMudlet.settingsPath)
+  if not ok or type(path) ~= "string" then return end
+  local handle = io.open(path, "r")
+  if not handle then return end
+  handle:close()
+  local loaded = {}
+  if pcall(table.load, path, loaded) and type(loaded) == "table" then
+    tocMudlet.settings = loaded
+  end
+end
+
+function tocMudlet.saveSettings()
+  if not (table.save and getMudletHomeDir) then return end
+  pcall(table.save, tocMudlet.settingsPath(), tocMudlet.settings)
+end
+
+-- True when Mudlet took the setting.
+function tocMudlet.applyLevels()
+  if not setConfig then return false end
+  local ok, result = pcall(setConfig, "showUpperLowerLevels",
+    tocMudlet.settings.showLevels == true)
+  return ok and result ~= nil and result ~= false
+end
+
+function tocMudlet.toggleLevels()
+  tocMudlet.settings.showLevels = not (tocMudlet.settings.showLevels == true)
+  tocMudlet.saveSettings()
+  if not tocMudlet.applyLevels() then
+    cecho("\n<yellow>[map]<reset> This Mudlet has no setting for it: only Mudlet 5 " ..
+      "draws the levels above and below, and it can be changed there in " ..
+      "Preferences, Mapper.\n")
+  elseif tocMudlet.settings.showLevels then
+    cecho("\n<cyan>[map]<reset> The map now also shows, faintly, the rooms of the " ..
+      "levels above and below yours. <white>tocgui levels<reset> hides them again.\n")
+  else
+    cecho("\n<cyan>[map]<reset> The map shows only the level you are on. " ..
+      "<white>tocgui levels<reset> shows the levels above and below again.\n")
+  end
+  if updateMap then pcall(updateMap) end
 end
 
 function tocMudlet.teardown()

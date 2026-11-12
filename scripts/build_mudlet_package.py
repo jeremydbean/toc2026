@@ -5,11 +5,11 @@ from __future__ import annotations
 
 import argparse
 import dataclasses
+import heapq
 import io
 import json
 import sys
 import zipfile
-from collections import deque
 from pathlib import Path
 from xml.etree import ElementTree
 from xml.sax.saxutils import quoteattr
@@ -169,52 +169,280 @@ def sector_index(room) -> int:
     return value
 
 
-def next_free_coordinate(desired, occupied):
-    if desired not in occupied:
-        return desired
-    x, y, z = desired
-    for radius in range(1, 100):
-        candidates = (
-            (x + radius, y, z), (x - radius, y, z),
-            (x, y + radius, z), (x, y - radius, z),
-        )
-        for candidate in candidates:
-            if candidate not in occupied:
-                return candidate
-    raise RuntimeError("Could not find a free Mud School map coordinate")
+REVERSE_DIRECTION = {0: 2, 1: 3, 2: 0, 3: 1, 4: 5, 5: 4, 6: 9, 7: 8, 8: 7, 9: 6}
+UP_DOWN = (4, 5)
 
 
-def assign_coordinates(rooms):
-    coordinates = {}
-    occupied = set()
-    component_x = 0
+def exit_drawn_straight(source, target, direction) -> bool:
+    """Whether Mudlet draws this exit as a line in its own direction.
 
-    for root_vnum in sorted(rooms):
-        if root_vnum in coordinates:
+    Mudlet's 2D map draws a planar exit as a straight line from the room to
+    wherever the target sits in the same area, ignoring z; up and down are a
+    triangle inside the room and no line at all. So an up/down exit reads
+    right whenever the target is on the level above or below, and a planar
+    exit whenever the target lies along the exit's own ray on the same level
+    -- one square away or ten. Anything else is a line at a wrong angle, or
+    one to a room on another level that is not drawn, which is what made the
+    old layout a tangle.
+    """
+    delta = DIRECTION_OFFSET[direction]
+    dx, dy, dz = (target[i] - source[i] for i in range(3))
+    if direction in UP_DOWN:
+        return dz == delta[2]
+    steps = max(abs(dx), abs(dy))
+    return dz == 0 and steps > 0 and (dx, dy) == (delta[0] * steps, delta[1] * steps)
+
+
+def _links(rooms):
+    """Each room's ways to its neighbours in the area, both ends of every
+    exit: {vnum: [(cost, offset to the neighbour, neighbour)]}.
+
+    An exit that comes back the way it went is the surest guide to where a
+    room lies (cost 0); a one-way or mismatched exit less so (4), and the
+    far end of an exit, read backwards, least (6). Up and down cost one
+    more, so a level is laid out before the next is started.
+    """
+    links = {vnum: [] for vnum in rooms}
+    for vnum, room in rooms.items():
+        for room_exit in room.exits:
+            target = room_exit.to_room
+            if target not in rooms or target == vnum:
+                continue
+            delta = DIRECTION_OFFSET[room_exit.direction]
+            vertical = 1 if room_exit.direction in UP_DOWN else 0
+            back = any(e.direction == REVERSE_DIRECTION[room_exit.direction]
+                       and e.to_room == vnum for e in rooms[target].exits)
+            links[vnum].append(((0 if back else 4) + vertical, delta, target))
+            if not back:
+                links[target].append((6 + vertical, (-delta[0], -delta[1], -delta[2]), vnum))
+    return links
+
+
+def _components(rooms, links):
+    """The area's connected parts, largest first, each as a sorted list."""
+    seen = set()
+    parts = []
+    for start in sorted(rooms):
+        if start in seen:
             continue
-        root_coordinate = next_free_coordinate((component_x, 0, 0), occupied)
-        coordinates[root_vnum] = root_coordinate
-        occupied.add(root_coordinate)
-        queue = deque([root_vnum])
+        seen.add(start)
+        part, pending = [], [start]
+        while pending:
+            vnum = pending.pop()
+            part.append(vnum)
+            for _cost, _delta, other in links[vnum]:
+                if other not in seen:
+                    seen.add(other)
+                    pending.append(other)
+        parts.append(sorted(part))
+    parts.sort(key=lambda part: (-len(part), part[0]))
+    return parts
 
-        while queue:
-            source_vnum = queue.popleft()
-            source = rooms[source_vnum]
-            source_coordinate = coordinates[source_vnum]
-            for room_exit in source.exits:
-                target_vnum = room_exit.to_room
-                if target_vnum not in rooms or target_vnum in coordinates:
+
+def _place_by_insertion(part, links):
+    """First pass: grow one connected part from its best-connected room.
+
+    The surest links are followed first (_links). A room whose square is
+    taken is not squeezed in beside it, which bent every exit around it:
+    the level is opened instead -- every room on it at or past that square
+    moves one step on in the exit's direction -- so the exit keeps its
+    direction and the exits the cut crosses are only stretched, still
+    straight. Opening a half-plane moves everything in it alike, so it can
+    never put two rooms on one square. A room up or down whose square is
+    taken goes a level further.
+    """
+    coordinates = {}
+    occupied = {}
+    sequence = 0
+    root = min(part, key=lambda vnum: (-len(links[vnum]), vnum))
+    coordinates[root] = (0, 0, 0)
+    occupied[(0, 0, 0)] = root
+    frontier = []
+
+    def push(source):
+        nonlocal sequence
+        for cost, delta, target in links[source]:
+            if target not in coordinates:
+                sequence += 1
+                heapq.heappush(frontier, (cost, sequence, source, delta, target))
+
+    push(root)
+    while frontier:
+        _cost, _seq, source, delta, target = heapq.heappop(frontier)
+        if target in coordinates:
+            continue
+        base = coordinates[source]
+        want = (base[0] + delta[0], base[1] + delta[1], base[2] + delta[2])
+        if want in occupied and delta[2]:
+            z = want[2]
+            while (want[0], want[1], z) in occupied:
+                z += delta[2]
+            want = (want[0], want[1], z)
+        elif want in occupied:
+            level = want[2]
+            moved = {}
+            for vnum, (x, y, z) in coordinates.items():
+                if z != level:
                     continue
-                delta = DIRECTION_OFFSET[room_exit.direction]
-                desired = tuple(source_coordinate[i] + delta[i] for i in range(3))
-                target_coordinate = next_free_coordinate(desired, occupied)
-                coordinates[target_vnum] = target_coordinate
-                occupied.add(target_coordinate)
-                queue.append(target_vnum)
-
-        component_x = max(x for x, _, _ in occupied) + 8
-
+                nx, ny = x, y
+                if delta[0] > 0 and x >= want[0]:
+                    nx += 1
+                elif delta[0] < 0 and x <= want[0]:
+                    nx -= 1
+                if delta[1] > 0 and y >= want[1]:
+                    ny += 1
+                elif delta[1] < 0 and y <= want[1]:
+                    ny -= 1
+                if (nx, ny) != (x, y):
+                    moved[vnum] = (nx, ny, z)
+            for vnum in moved:
+                del occupied[coordinates[vnum]]
+            for vnum, coordinate in moved.items():
+                coordinates[vnum] = coordinate
+                occupied[coordinate] = vnum
+        coordinates[target] = want
+        occupied[want] = target
+        push(target)
     return coordinates
+
+
+def _pack(blocks):
+    """Lay the parts of an area out side by side in rows, largest first.
+
+    Each block is {vnum: (x, y, z)}; its footprint is taken over every
+    level, so no two parts share a square on any of them. A row is as wide
+    as the largest part, or forty squares, so a long tail of one-room parts
+    (Hyrule's caves, the rooms only a portal reaches) wraps under the main
+    map instead of running off to the right.
+    """
+    gap = 3
+    shelf_width = 40
+    placed = {}
+    x_cursor = y_cursor = 0
+    shelf_height = 0
+    for index, block in enumerate(blocks):
+        # The level holding most of a part's rooms is its ground floor, z 0
+        # (ties to the lower level), whichever room the layout grew it from.
+        levels = {}
+        for _x, _y, z in block.values():
+            levels[z] = levels.get(z, 0) + 1
+        ground = min(levels, key=lambda z: (-levels[z], z))
+        block = {vnum: (x, y, z - ground) for vnum, (x, y, z) in block.items()}
+        xs = [c[0] for c in block.values()]
+        ys = [c[1] for c in block.values()]
+        width, height = max(xs) - min(xs) + 1, max(ys) - min(ys) + 1
+        if index == 0:
+            shelf_width = max(shelf_width, width)
+        elif x_cursor > 0 and x_cursor + width > shelf_width:
+            y_cursor -= shelf_height + gap
+            x_cursor = shelf_height = 0
+        # top-left of the block at (x_cursor, y_cursor); y grows north
+        dx, dy = x_cursor - min(xs), y_cursor - max(ys)
+        for vnum, (x, y, z) in block.items():
+            placed[vnum] = (x + dx, y + dy, z)
+        x_cursor += width + gap
+        shelf_height = max(shelf_height, height)
+    return placed
+
+
+def _settle(rooms, coordinates, radius=3, passes=6):
+    """Second pass: move or swap single rooms while that straightens exits.
+
+    What the world's geometry cannot agree with (a loop whose sides differ,
+    an exit that does not come back the way it went) still bends somewhere;
+    this pulls each such room to the free square, or swaps it with the
+    room on the square, that its exits agree with best. Deterministic: rooms
+    and squares are visited in sorted order and only a strict gain moves.
+    """
+    coordinates = dict(coordinates)
+    occupied = {c: v for v, c in coordinates.items()}
+    neighbours = {vnum: [] for vnum in rooms}
+    for vnum, room in rooms.items():
+        for room_exit in room.exits:
+            if room_exit.to_room in rooms and room_exit.to_room != vnum:
+                delta = DIRECTION_OFFSET[room_exit.direction]
+                neighbours[vnum].append((room_exit.to_room, delta))
+                neighbours[room_exit.to_room].append(
+                    (vnum, (-delta[0], -delta[1], -delta[2])))
+
+    def exit_cost(a, b, delta):
+        dx, dy, dz = b[0] - a[0], b[1] - a[1], b[2] - a[2]
+        if delta[2]:
+            return 0.0 if dz == delta[2] else 3.0
+        if (dx, dy, dz) == delta:
+            return 0.0
+        steps = max(abs(dx), abs(dy))
+        if dz == 0 and steps and (dx, dy) == (delta[0] * steps, delta[1] * steps):
+            return 0.05 * (steps - 1)
+        off = abs(dx - delta[0]) + abs(dy - delta[1])
+        return (6.0 + off) if dz else (1.0 + 0.3 * off)
+
+    def room_cost(vnum, at):
+        return sum(exit_cost(at, coordinates[other], delta)
+                   for other, delta in neighbours[vnum])
+
+    for _ in range(passes):
+        moved = 0
+        for vnum in sorted(rooms):
+            here = coordinates[vnum]
+            cost = room_cost(vnum, here)
+            if cost == 0:
+                continue
+            candidates = {(coordinates[o][0] - d[0], coordinates[o][1] - d[1],
+                           coordinates[o][2] - d[2]) for o, d in neighbours[vnum]}
+            candidates.update((here[0] + dx, here[1] + dy, here[2])
+                              for dx in range(-radius, radius + 1)
+                              for dy in range(-radius, radius + 1))
+            best, best_gain = None, 1e-9
+            for spot in sorted(candidates):
+                if spot == here:
+                    continue
+                other = occupied.get(spot)
+                if other is None:
+                    gain = cost - room_cost(vnum, spot)
+                else:
+                    before = cost + room_cost(other, spot)
+                    coordinates[vnum], coordinates[other] = spot, here
+                    after = room_cost(vnum, spot) + room_cost(other, here)
+                    coordinates[vnum], coordinates[other] = here, spot
+                    gain = before - after
+                if gain > best_gain:
+                    best, best_gain = (spot, other), gain
+            if best is None:
+                continue
+            spot, other = best
+            if other is None:
+                del occupied[here]
+            else:
+                occupied[here] = other
+                coordinates[other] = here
+            occupied[spot] = vnum
+            coordinates[vnum] = spot
+            moved += 1
+        if not moved:
+            break
+    return coordinates
+
+
+def layout_area(rooms):
+    """Coordinates for one Mudlet area's rooms: {vnum: (x, y, z)}.
+
+    No two rooms share a square (checked again in build_map_bytes), and as
+    many exits as the world's geometry allows are drawn straight in their
+    own direction (exit_drawn_straight). The old breadth-first layout put a
+    room whose square was taken on the nearest free one, which bent every
+    exit around it and stacked the city into a block where neighbouring
+    squares were not neighbouring rooms -- 1,700 of the world's planar exits
+    drawn at a wrong angle, against about 640 now. Each connected part is
+    laid out on its own and the parts packed in rows (_pack), so opening a
+    level for one part never stretches another.
+    """
+    links = _links(rooms)
+    blocks = []
+    for part in _components(rooms, links):
+        subset = {vnum: rooms[vnum] for vnum in part}
+        blocks.append(_settle(subset, _place_by_insertion(part, links)))
+    return _pack(blocks)
 
 
 def build_map_bytes() -> bytes:
@@ -225,9 +453,18 @@ def build_map_bytes() -> bytes:
     # squares from the origin for no benefit.
     coordinates = {}
     area_of = {}
-    for area_id, _title, members in areas:
+    for area_id, title, members in areas:
         subset = {vnum: rooms[vnum] for vnum in members}
-        coordinates.update(assign_coordinates(subset))
+        laid = layout_area(subset)
+        # Two rooms on one square of one area is the stacking the owner saw
+        # (2026-11-12): never ship it, whatever the layout does.
+        squares = {}
+        for vnum in members:
+            other = squares.setdefault(laid[vnum], vnum)
+            if other != vnum:
+                raise RuntimeError(
+                    f"{title}: rooms {other} and {vnum} share {laid[vnum]}")
+        coordinates.update(laid)
         for vnum in members:
             area_of[vnum] = area_id
 

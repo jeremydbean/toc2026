@@ -188,7 +188,22 @@ gmcp = { Char = {}, Room = {} }
 yajl = { to_value = function(value) return value end }
 tocMudlet = { handlers = {}, ui = {} }
 
+-- Mudlet 5's setConfig: "showUpperLowerLevels" takes a boolean
+-- (TLuaInterpreter::setConfig, development and Mudlet-5.1.1).
+local config = {}
+function setConfig(key, value)
+  if key ~= "showUpperLowerLevels" or type(value) ~= "boolean" then
+    return nil, "not a valid configuration option"
+  end
+  config[key] = value
+  return true
+end
+local userData = {}
+function setMapUserData(key, value) userData[key] = value return true end
+function getMapUserData(key) return userData[key] end
+
 pcall(assert(loadfile(target)))
+local levelsAtInstall = config.showUpperLowerLevels
 
 local failures = 0
 local function check(name, ok, detail)
@@ -351,6 +366,73 @@ tocMudlet.knownPending = nil
 gmcp.Map = { Known = { part = 2, parts = 2, all = false, rooms = { {1, 1} } } }
 tocMudlet.onMapKnown()
 check("a stray last part does nothing", present(1, 2, 3, 4, 5, 6, 10))
+
+-- Owner, 2026-11-12: "the way the layers look on the map in mudlet is
+-- disorienting". A room the atlas laid out stays in its area, whatever
+-- name Room.Info gives the game's area (a seasonal copy renames it).
+atlas()
+known({ { all = true } })
+gmcp.Room = { Info = { num = 4, name = "Room 4", area = "Area A (Halloween)",
+  environment = "field", exits = { w = 3, e = 5 } } }
+tocMudlet.onRoomInfo()
+check("an atlas room keeps its area", rooms[4].area == areas["Area A"],
+  tostring(rooms[4].area))
+check("and its square", rooms[4].x == 1 and rooms[4].y == 2 and rooms[4].z == 0)
+
+-- A Hyrule dungeon room walked into goes to its dungeon's own area, on
+-- its floor plan square -- and one an older package drew under the
+-- overworld is moved there on the next step into it.
+local eagle = "Hyrule: Level 1 (The Eagle)"
+gmcp.Room = { Info = { num = 30401, name = "Level 1: Eagle Gate", area = "Area A",
+  environment = "underground", exits = { u = 6 },
+  map = { area = eagle, x = 2, y = 0, z = 0 } } }
+tocMudlet.lastRoom, tocMudlet.lastExits = 6, { exits = { d = 30401 } }
+tocMudlet.onRoomInfo()
+check("a dungeon room has its own area", rooms[30401] and rooms[30401].area == areas[eagle]
+  and rooms[30401].area ~= areas["Area A"])
+check("at its plan square", rooms[30401].x == 2 and rooms[30401].y == 0 and rooms[30401].z == 0,
+  rooms[30401].x .. "," .. rooms[30401].y .. "," .. rooms[30401].z)
+setRoomArea(30401, areas["Area A"]) setRoomCoordinates(30401, 3, 2, -1)
+tocMudlet.onRoomInfo()
+check("a dungeon room drawn under the overworld is put right",
+  rooms[30401].area == areas[eagle] and rooms[30401].x == 2 and rooms[30401].z == 0)
+
+-- Its map's plan lands on the same squares: the floor on z 0, a cellar on
+-- z -1, in the same area -- no ten-levels-down offset any more.
+gmcp.Hyrule = { MapRoom = { num = 30417, level = 1, name = "Level 1: Undercroft",
+  area = eagle, environment = "underground", x = 1, y = -5, z = -1, exits = {} } }
+tocMudlet.onMapRoom()
+check("a cellar is a level below its floor, in the dungeon's area",
+  rooms[30417] and rooms[30417].area == areas[eagle] and rooms[30417].z == -1)
+gmcp.Hyrule = { MapRoom = { num = 30402, level = 1, name = "Level 1: Room",
+  area = "Killum Hyrule", environment = "underground", x = 3, y = 0, z = 0, exits = {} } }
+tocMudlet.onMapRoom()
+check("an older server's plan keeps the old offset", rooms[30402] and rooms[30402].z == -10)
+
+-- The levels above and below are not drawn unless the player asks.
+check("install turns Mudlet's upper/lower levels off", levelsAtInstall == false,
+  tostring(levelsAtInstall))
+tocMudlet.toggleLevels()
+check("tocgui levels turns them on", config.showUpperLowerLevels == true)
+check("and the choice is kept", saved["/nonexistent-toc-fog-spec/toc-settings.lua"]
+  and saved["/nonexistent-toc-fog-spec/toc-settings.lua"].showLevels == true)
+tocMudlet.toggleLevels()
+check("and off again", config.showUpperLowerLevels == false)
+
+-- A profile holding the old layout is told once; one that loaded the new
+-- atlas is not.
+tocMudlet.atlasLayoutNoted = nil
+userData = {}
+local told = 0
+cecho = function(text) if text:find("tocgui atlas", 1, true) then told = told + 1 end end
+tocMudlet.noteAtlasLayout() tocMudlet.noteAtlasLayout()
+check("an old layout is noted once a session", told == 1, told)
+tocMudlet.atlasLayoutNoted = nil
+told = 0
+tocMudlet.onMapReplaced()
+tocMudlet.noteAtlasLayout()
+check("the new atlas is not", told == 0 and userData.tocAtlasLayout == tocMudlet.ATLAS_LAYOUT)
+cecho = function() end
 
 if failures > 0 then
   print(failures .. " FAILED")

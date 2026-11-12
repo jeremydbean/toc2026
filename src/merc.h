@@ -4181,6 +4181,9 @@ void    hyrule_owl_advice      ( CHAR_DATA *ch );
 void    hyrule_owl_after_portal( CHAR_DATA *ch, ROOM_INDEX_DATA *from );
 void    hyrule_send_map        ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    hyrule_map_on_arrival  ( CHAR_DATA *ch );
+const char *hyrule_map_area_name( int level );
+bool    hyrule_map_place       ( const ROOM_INDEX_DATA *room, int *level,
+                                 int *x, int *y, int *z );
 void    gmcp_send_map_room     ( DESCRIPTOR_DATA *d, ROOM_INDEX_DATA *room, int level,
                                  int x, int y, int z );
 void    gmcp_send_map_done     ( DESCRIPTOR_DATA *d, int level, int rooms );
