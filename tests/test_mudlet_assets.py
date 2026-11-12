@@ -271,7 +271,24 @@ assert(#calls == 0, "teardown must be safe")
         alias = (ROOT / "mudlet" / "package" / "TimesOfChaos.xml").read_text(
             encoding="utf-8"
         )
-        self.assertIn("(on|off|status|atlas|levels)", alias)
+        self.assertIn("(on|off|status|atlas|levels|mapcheck)(?:\\s+(\\w+))?", alias)
+        self.assertIn("tocMudlet.command(matches[2], matches[3])", alias)
+
+    def test_the_atlas_is_never_loaded_on_one_word(self) -> None:
+        """Owner, 2026-11-12: TOCGUI ATLAS replaces the profile's map, so it
+        says so and offers a backup; only CONFIRM (after a backup that
+        landed) or FORCE loads it. tests/mudlet_fog_spec.lua plays it."""
+        script = self.package_script()
+        command = script.split("function tocMudlet.atlasCommand(arg)")[1].split("\nend\n")[0]
+        confirm = command.split('arg == "confirm"')[1].split("elseif")[0]
+        self.assertLess(confirm.index("tocMudlet.backupMap()"),
+                        confirm.index("tocMudlet.loadAtlas()"))
+        self.assertIn("if not path then", confirm)
+        default = command.rsplit("else", 1)[1]
+        self.assertNotIn("loadAtlas", default)
+        backup = script.split("function tocMudlet.backupMap()")[1].split("\nend\n")[0]
+        self.assertIn("pcall(saveMap, path)", backup)
+        self.assertIn("getMudletHomeDir()", backup)
 
     def test_world_map_covers_every_room_without_overlaps(self) -> None:
         """The shipped atlas is what makes the Mudlet map look deliberate.

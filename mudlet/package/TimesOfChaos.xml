@@ -8,12 +8,12 @@
    <name>Times of Chaos GUI controls</name>
    <script><![CDATA[
 if tocMudlet and tocMudlet.command then
-  tocMudlet.command(matches[2])
+  tocMudlet.command(matches[2], matches[3])
 end
 ]]></script>
    <command></command>
    <packageName>TimesOfChaos</packageName>
-   <regex>^tocgui(?:\s+(on|off|status|atlas|levels))?$</regex>
+   <regex>^tocgui(?:\s+(on|off|status|atlas|levels|mapcheck)(?:\s+(\w+))?)?$</regex>
   </Alias>
   <Alias isActive="yes" isFolder="no">
    <name>Times of Chaos walking</name>
@@ -64,7 +64,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.14"
+tocMudlet.version = "1.5.15"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -410,6 +410,34 @@ walkStop = function(message)
   if message then cecho("\n<gold>[walk]<reset> " .. message .. "\n") end
 end
 
+-- One step, the same way whoever asked for it: auto-walk and the exit
+-- buttons both come through here, so a click on a shut door opens it
+-- exactly as a walk does. Room.Info names the doors of the room you
+-- stand in (tocMudlet.lastExits.doors, keyed "n" ... "sw", "u", "d"), so
+-- a door known to be shut is opened before the step rather than found on
+-- the watchdog four seconds later. A locked one is opened anyway -- the
+-- game says "It's locked." -- and the package says what to do about it:
+-- guessing at keys is not this script's business. forceOpen is the
+-- watchdog's retry, which tries the door whatever Room.Info said. Only a
+-- compass direction has a door; a special exit ("enter portal") is sent
+-- as it stands. Answers the door's state as Room.Info gave it, or nil.
+function tocMudlet.move(raw, forceOpen)
+  local dir = walkCommandFor(raw)
+  if dir == nil then return nil end
+  local short = SHORT_DIRECTION[dir]
+  local doors = tocMudlet.lastExits and tocMudlet.lastExits.doors
+  local state = short and type(doors) == "table" and doors[short] or nil
+  if state == "locked" then
+    cecho(string.format("\n<gold>[walk]<reset> The door %s is locked: " ..
+      "<white>unlock %s<reset> with its key, then go on.\n", dir, dir))
+  end
+  if short and (forceOpen or state == "closed" or state == "locked") then
+    send("open " .. dir)
+  end
+  send(dir)
+  return state
+end
+
 walkArm = function()
   local w = tocMudlet.walk
   if w.timer and killTimer then pcall(killTimer, w.timer) end
@@ -417,15 +445,22 @@ walkArm = function()
   w.timer = tempTimer(WALK_TIMEOUT, function()
     local pending = tocMudlet.walk
     if not pending.active then return end
-    local dir = walkCommandFor(pending.dirs[pending.step])
+    -- Already where this step leads: a step back into the room it left
+    -- (an exit that loops) sends no new Room.Info, so nothing else would
+    -- ever call it an arrival.
+    local expected = tonumber(pending.rooms[pending.step])
+    if expected ~= nil and expected == tocMudlet.lastRoom then
+      walkSend()
+      return
+    end
     -- A shut door is much the commonest reason a step does not land,
     -- and opening the one in front of you is what a player would do.
     -- Once, then give up: hammering it is how a script picks a fight
     -- with a guard.
-    if dir and not pending.retried then
+    local raw = pending.dirs[pending.step]
+    if walkCommandFor(raw) and not pending.retried then
       pending.retried = true
-      send("open " .. dir)
-      send(dir)
+      tocMudlet.move(raw, true)
       walkArm()
       return
     end
@@ -439,28 +474,21 @@ walkSend = function()
   w.step = w.step + 1
   w.retried = false
   local raw = w.dirs[w.step]
-  local dir = walkCommandFor(raw)
-  if dir == nil then
+  if walkCommandFor(raw) == nil then
     walkStop(nil)
     cecho("\n<gold>[walk]<reset> Arrived.\n")
     return
   end
-  -- Room.Info told us the door was shut before we walked into it, so
-  -- open it now rather than discovering it on the watchdog four
-  -- seconds later. A locked one is opened anyway: the game will say
-  -- so, and guessing at keys is not this script\'s business.
-  local short = SHORT_DIRECTION[dir] or (type(raw) == "string" and raw:lower())
-  local doors = tocMudlet.lastExits and tocMudlet.lastExits.doors
-  if short and type(doors) == "table"
-    and (doors[short] == "closed" or doors[short] == "locked") then
-    send("open " .. dir)
-  end
-
-  send(dir)
+  tocMudlet.move(raw)
   walkArm()
 end
 
--- Called from onRoomInfo, which is the only thing that knows we moved.
+-- Called from onRoomInfo when the room changed, which is the only thing
+-- that knows we moved. A Room.Info for the room you are already in -- the
+-- door just opened ahead of the step, someone came or went, a service
+-- changed -- is not an arrival: it updates the map and the buttons and
+-- leaves the walk alone, or opening a door on the route would read as
+-- arriving in the wrong room and stop the walk.
 function tocMudlet.onWalkArrival(roomId)
   local w = tocMudlet.walk
   if not w.active then return end
@@ -756,11 +784,18 @@ function tocMudlet.onRoomInfo()
   tocMudlet.walked[roomId] = true
   tocMudlet.unfog(roomId)
 
+  -- The game sends Room.Info again for the room you stand in whenever
+  -- what it says changes: a door opened, a service came. Only a new
+  -- room is an arrival.
+  local moved = roomId ~= tocMudlet.lastRoom
+
   if ensureRoom(roomId, info) then
     linkKnownExits(roomId, info.exits)
     markDoors(roomId, info.doors)
     markRoom(roomId, info)
-    if tocMudlet.lastRoom and roomExistsSafe(tocMudlet.lastRoom) then
+    -- The room just left, from what it said last; never this room from
+    -- its own older message, which would undo the update just drawn.
+    if moved and tocMudlet.lastRoom and roomExistsSafe(tocMudlet.lastRoom) then
       linkKnownExits(tocMudlet.lastRoom,
         type(tocMudlet.lastExits) == "table" and tocMudlet.lastExits.exits or nil)
     end
@@ -769,8 +804,9 @@ function tocMudlet.onRoomInfo()
 
   tocMudlet.lastRoom = roomId
   tocMudlet.lastExits = info
-  tocMudlet.showExits(info.exits)
-  tocMudlet.onWalkArrival(roomId)
+  tocMudlet.showExits(info.exits, info.doors)
+  pcall(tocMudlet.showFloor, roomId)
+  if moved then tocMudlet.onWalkArrival(roomId) end
   if tocMudlet.ui.location then
     tocMudlet.ui.location:echo(string.format(
       [[<span style="color:%s"><b>%s</b></span>  <span style="color:%s">%s · #%d</span>]],
@@ -1314,16 +1350,33 @@ function tocMudlet.onItems()
       rgbOf(P.muted), WEAR_SLOT[tonumber(item.slot) or -1] or "worn",
       rgbOf(P.text), tostring(item.name or "?"):gsub("<", "(")))
   end
+  local wornMissing = math.max(0, tonumber(payload.equipment_truncated) or 0)
+  if wornMissing > 0 then
+    tocMudlet.ui.items:decho(string.format(
+      "<%s>  ... and %d more worn, not shown; <%s>equipment<%s> lists them\n",
+      rgbOf(P.warn), wornMissing, rgbOf(P.text), rgbOf(P.warn)))
+  end
 
-  tocMudlet.ui.items:decho(string.format("\n<%s>CARRIED\n",
-    rgbOf(P.muted)))
-  if #carried == 0 then
+  -- The game sends at most so much (Char.Items' inventory_total and
+  -- truncated, from 1.5.15): a list cut short says so and how many
+  -- there are in all, rather than passing for the whole pack. An older
+  -- server sends neither, and its list is read as complete.
+  local total = tonumber(payload.inventory_total) or #carried
+  local missing = math.max(0, tonumber(payload.truncated) or 0)
+  tocMudlet.ui.items:decho(string.format("\n<%s>CARRIED%s\n",
+    rgbOf(P.muted), total > 0 and string.format(" (%d)", total) or ""))
+  if #carried == 0 and missing == 0 then
     tocMudlet.ui.items:decho(string.format("<%s>  nothing\n",
       rgbOf(P.border)))
   end
   for _, item in ipairs(carried) do
     tocMudlet.ui.items:decho(string.format("<%s>  %s\n",
       rgbOf(P.text), tostring(item.name or "?"):gsub("<", "(")))
+  end
+  if missing > 0 then
+    tocMudlet.ui.items:decho(string.format(
+      "<%s>  ... and %d more not shown here; <%s>inventory<%s> lists them all\n",
+      rgbOf(P.warn), missing, rgbOf(P.text), rgbOf(P.warn)))
   end
 end
 
@@ -1352,7 +1405,14 @@ end
 
 -- Clickable exits. The room panel already knows them; making them
 -- clickable is the difference between reading the map and using it.
-function tocMudlet.showExits(exits)
+-- A click is a step through tocMudlet.move, the walker's own, so a shut
+-- door is opened first and a locked one says so; the door's state is
+-- read when the button is pressed, not when it was drawn, since a
+-- Room.Info for this room may have changed it since. A closed door's
+-- button is amber and a locked one's red, with a mark after the letter.
+local EXIT_DOOR_MARK = { closed = "+", locked = "#" }
+
+function tocMudlet.showExits(exits, doors)
   local order = { "n", "e", "s", "w", "u", "d", "ne", "nw", "se", "sw" }
   local index = 0
 
@@ -1362,10 +1422,18 @@ function tocMudlet.showExits(exits)
       local button = tocMudlet.exitButtons[index]
       if button then
         local long = LONG_DIRECTION[short] or short
+        local state = type(doors) == "table" and doors[short] or nil
+        local colour = state == "locked" and P.bad
+          or state == "closed" and P.warn or P.text
         button:echo(string.format(
-          [[<center><span style="color:%s">%s</span></center>]],
-          P.text, short:upper()))
-        button:setClickCallback(function() send(long) end)
+          [[<center><span style="color:%s">%s%s</span></center>]],
+          colour, short:upper(), EXIT_DOOR_MARK[state] or ""))
+        button:setClickCallback(function()
+          -- A step taken by hand ends a walk in progress: the walk would
+          -- stop anyway, a room off its route, and say less about why.
+          if tocMudlet.walk.active then walkStop("stopped: you took a step yourself.") end
+          tocMudlet.move(long)
+        end)
         button:show()
       end
     end
@@ -1541,10 +1609,25 @@ function tocMudlet.buildUI()
     [[<span style="color:%s">Online: waiting for the game</span>]], P.muted))
   end)
 
+  -- Which map and which floor of it the mapper below is showing: with
+  -- the levels above and below hidden, a staircase changes the whole
+  -- picture, and this says it was the floor that changed.
+  guard("floor label", function()
+  tocMudlet.ui.floor = Geyser.Label:new({
+    name = "tocMudlet.floor", x = -350, y = 207,
+    width = 340, height = 19,
+  })
+  tocMudlet.ui.floor:setStyleSheet(string.format([[
+    background:%s;color:%s;border:1px solid %s;border-radius:4px;
+    padding:0px 8px;font-size:8pt;qproperty-alignment:'AlignVCenter';]],
+    P.background, P.muted, P.border))
+  tocMudlet.ui.floor:echo("Map: waiting for the game")
+  end)
+
   guard("map", function()
   tocMudlet.ui.mapper = Geyser.Mapper:new({
-    name = "tocMudlet.mapper", x = -350, y = 208,
-    width = 340, height = "66%-208px",
+    name = "tocMudlet.mapper", x = -350, y = 228,
+    width = 340, height = "66%-228px",
   })
   end)
 
@@ -1775,16 +1858,78 @@ function tocMudlet.onDownloadError(file)
     "Check the connection and try <white>tocgui atlas<reset> again.\n")
 end
 
-function tocMudlet.command(action)
+-- TOCGUI ATLAS replaces the profile's whole map, so it is never done on
+-- one word (owner, 2026-11-12): the bare command says what will happen
+-- and what is lost, BACKUP saves the map as it is now (Mudlet's saveMap,
+-- into the profile's folder), CONFIRM saves that backup and only then
+-- loads the atlas -- and loads nothing when the backup could not be made
+-- -- and FORCE loads it without one, for a Mudlet that cannot save.
+function tocMudlet.backupMap()
+  if not (saveMap and getMudletHomeDir) then
+    return nil, "this Mudlet cannot save its map from a script"
+  end
+  local path = getMudletHomeDir() .. "/toc-map-backup-" ..
+    os.date("%Y%m%d-%H%M%S") .. ".dat"
+  local ok, result = pcall(saveMap, path)
+  if not ok then return nil, tostring(result) end
+  if result ~= true then return nil, "Mudlet did not save it" end
+  tocMudlet.settings.lastMapBackup = path
+  tocMudlet.saveSettings()
+  return path
+end
+
+local function sayBackup(path)
+  cecho(string.format("\n<cyan>[map]<reset> This profile's map is saved as " ..
+    "<white>%s<reset>. To go back to it later: " ..
+    "<white>lua loadMap(\"%s\")<reset>\n", path, path))
+end
+
+function tocMudlet.atlasCommand(arg)
+  arg = (arg or ""):lower()
+  if arg == "backup" then
+    local path, why = tocMudlet.backupMap()
+    if path then sayBackup(path) else
+      cecho("\n<red>[map]<reset> The map was not saved: " .. tostring(why) .. ".\n")
+    end
+  elseif arg == "confirm" then
+    local path, why = tocMudlet.backupMap()
+    if not path then
+      cecho("\n<red>[map]<reset> The map was not saved (" .. tostring(why) ..
+        "), so the world map was not loaded over it. <white>tocgui atlas force<reset> " ..
+        "loads it anyway, without a backup.\n")
+      return
+    end
+    sayBackup(path)
+    tocMudlet.loadAtlas()
+  elseif arg == "force" then
+    tocMudlet.loadAtlas()
+  else
+    cecho("\n<cyan>[map]<reset> <white>tocgui atlas<reset> replaces this profile's whole " ..
+      "map with the Times of Chaos world map. Anything on the map now goes with it: " ..
+      "rooms you mapped yourself, your own marks, labels, colours and notes. The fog " ..
+      "then starts again from what the game says this character knows.\n" ..
+      "  <white>tocgui atlas backup<reset>   save the map as it is now, and change nothing\n" ..
+      "  <white>tocgui atlas confirm<reset>  save it, then load the world map\n" ..
+      "  <white>tocgui atlas force<reset>    load the world map without saving first\n" ..
+      (tocMudlet.settings.lastMapBackup and
+        ("  Last backup: <white>" .. tostring(tocMudlet.settings.lastMapBackup) .. "<reset>\n")
+        or ""))
+  end
+end
+
+function tocMudlet.command(action, arg)
   action = action or "status"
+  if arg == "" then arg = nil end
   if action == "off" then
     tocMudlet.enabled = false
     tocMudlet.teardownUI()
     cecho("\n<yellow>Times of Chaos GUI hidden. Type <white>tocgui on<yellow> to restore it.<reset>\n")
   elseif action == "atlas" then
-    tocMudlet.loadAtlas()
+    tocMudlet.atlasCommand(arg)
   elseif action == "levels" then
-    tocMudlet.toggleLevels()
+    tocMudlet.levelsCommand(arg)
+  elseif action == "mapcheck" then
+    tocMudlet.mapCheck()
   elseif action == "on" then
     if not tocMudlet.enabled or not tocMudlet.ui.mapper then
       tocMudlet.enabled = true
@@ -1797,6 +1942,11 @@ function tocMudlet.command(action)
     cecho(string.format("\n<cyan>Times of Chaos Mudlet package %s: GUI %s, GMCP %s.<reset>\n",
       tocMudlet.version, tocMudlet.enabled and "on" or "off",
       (gmcp and gmcp.Char) and "active" or "waiting"))
+    cecho("  <white>tocgui on<reset>|<white>off<reset>  show or hide the interface\n" ..
+      "  <white>tocgui levels on<reset>|<white>off<reset>|<white>toggle<reset>  " ..
+      "draw the floors above and below yours\n" ..
+      "  <white>tocgui mapcheck<reset>  what the map is showing here, and anything wrong with it\n" ..
+      "  <white>tocgui atlas<reset>  about loading the world map (it replaces this profile's map)\n")
   end
 end
 
@@ -1884,7 +2034,8 @@ function tocMudlet.install()
     tempTimer(2, function() tocMudlet.fetchRoutes(true) end)
   end
   cecho("\n<cyan>Times of Chaos Mudlet interface ready.<reset> " ..
-    "Type <white>tocgui<reset> for status, <white>tocgui atlas<reset> for the world map, or <white>tocgui off<reset> to hide it.\n")
+    "Type <white>tocgui<reset> for status and commands, <white>tocgui mapcheck<reset> about the map, " ..
+    "or <white>tocgui off<reset> to hide it.\n")
 end
 
 -- Hyrule's dungeons are not on the starter map: each is drawn when its
@@ -2225,7 +2376,8 @@ function tocMudlet.noteAtlasLayout()
   if ok and layout == tocMudlet.ATLAS_LAYOUT then return end
   cecho("\n<cyan>[map]<reset> The world map has been redrawn so streets run " ..
     "straight and every area and Hyrule dungeon sits on its own grid. Type " ..
-    "<white>tocgui atlas<reset> to load it (it replaces this profile's map).\n")
+    "<white>tocgui atlas<reset> to see how to load it (it replaces this profile's map; " ..
+    "you can save the old one first).\n")
 end
 
 -- Mudlet 5 draws, faintly, the rooms of the level above (outlined) and the
@@ -2234,10 +2386,20 @@ end
 -- sewer under it and towers over it that is a second and third map laid
 -- across the first (owner, 2026-11-12: "is there a way to not show above or
 -- below unless you are there?"). setConfig("showUpperLowerLevels", ...) is
--- that setting (Mudlet 5.0 on; 4.x has neither the drawing nor the key).
--- It is Mudlet's, not the profile's, so it reaches every profile; the
--- package turns it off at each start unless this profile asked for it
--- back with TOCGUI LEVELS, kept in toc-settings.lua beside the fog.
+-- that setting (Mudlet 5.0 on; 4.x has neither the drawing nor the key),
+-- and getConfig reads it back.
+--
+-- It is Mudlet's preference, not the profile's, so it reaches every
+-- profile, and the package never changes it silently (owner, 2026-11-12):
+-- the owner's default -- floors above and below hidden -- is applied once
+-- per profile, with a line saying what it was, what it is now and how to
+-- change it, and the value it had before is remembered. Once the player
+-- says TOCGUI LEVELS ON, OFF or TOGGLE, that is their choice and the
+-- package never touches the setting again, at start or anywhere else.
+-- When Mudlet's value cannot be read, the package says so; it never
+-- guesses what it was. Kept in toc-settings.lua beside the fog:
+-- levelsChoice (the player's), levelsDefaultApplied, levelsOriginal (what
+-- it was before the default), levelsSet (what the package last set).
 tocMudlet.settings = tocMudlet.settings or {}
 
 function tocMudlet.settingsPath()
@@ -2262,29 +2424,312 @@ function tocMudlet.saveSettings()
   pcall(table.save, tocMudlet.settingsPath(), tocMudlet.settings)
 end
 
--- True when Mudlet took the setting.
-function tocMudlet.applyLevels()
-  if not setConfig then return false end
-  local ok, result = pcall(setConfig, "showUpperLowerLevels",
-    tocMudlet.settings.showLevels == true)
-  return ok and result ~= nil and result ~= false
+-- Mudlet's own value, true or false, or nil and why it could not be read.
+function tocMudlet.readLevels()
+  if type(getConfig) ~= "function" then
+    return nil, "this Mudlet cannot report its settings to a script"
+  end
+  local ok, value, err = pcall(getConfig, "showUpperLowerLevels")
+  if not ok then return nil, tostring(value) end
+  if type(value) ~= "boolean" then
+    return nil, tostring(err or "this Mudlet has no such setting")
+  end
+  return value
 end
 
-function tocMudlet.toggleLevels()
-  tocMudlet.settings.showLevels = not (tocMudlet.settings.showLevels == true)
+-- True when Mudlet took the value.
+local function setLevels(value)
+  if type(setConfig) ~= "function" then return false end
+  local ok, result = pcall(setConfig, "showUpperLowerLevels", value == true)
+  if ok and result ~= nil and result ~= false then
+    tocMudlet.settings.levelsSet = value == true
+    return true
+  end
+  return false
+end
+
+local function onOff(value) return value and "on" or "off" end
+
+-- At every start; changes something at most once per profile.
+function tocMudlet.applyLevels()
+  local s = tocMudlet.settings
+  -- 1.5.13 and 1.5.14 kept TOCGUI LEVELS as showLevels, which only the
+  -- player's own command ever set: their choice, carried over.
+  if s.showLevels ~= nil then
+    if s.levelsChoice == nil then s.levelsChoice = s.showLevels == true end
+    s.showLevels = nil
+    s.levelsDefaultApplied = true
+    tocMudlet.saveSettings()
+  end
+  if s.levelsChoice ~= nil or s.levelsDefaultApplied then return false end
+  -- Mudlet 4 draws only the floor shown: nothing to change, nothing to say.
+  if type(setConfig) ~= "function" then return false end
+
+  local before, why = tocMudlet.readLevels()
+  s.levelsOriginal = before
+  local changed = before ~= false and setLevels(false)
+  s.levelsDefaultApplied = true
   tocMudlet.saveSettings()
-  if not tocMudlet.applyLevels() then
+  local how = "<white>tocgui levels on<reset> draws them again, <white>tocgui levels off<reset> " ..
+    "hides them; once you choose, the package leaves the setting alone for good."
+  if before == nil then
+    cecho("\n<cyan>[map]<reset> This package hides the floors above and below yours " ..
+      "on the map, but could not read Mudlet's \"Draw rooms on upper and lower levels\" " ..
+      "setting (" .. tostring(why) .. "), so what it was before is unknown. " ..
+      (changed and "It is now off. " or "It was not changed. ") .. how ..
+      " The setting is Mudlet's, so it applies to all your profiles.\n")
+  elseif changed then
+    cecho("\n<cyan>[map]<reset> Mudlet's \"Draw rooms on upper and lower levels\" was on; " ..
+      "this package turned it off, so the map shows only the floor you stand on. " ..
+      "The setting is Mudlet's and applies to all your profiles. " .. how .. "\n")
+  else
+    cecho("\n<cyan>[map]<reset> The map shows only the floor you stand on: Mudlet's " ..
+      "\"Draw rooms on upper and lower levels\" is off (it applies to all your " ..
+      "profiles). " .. how .. "\n")
+  end
+  return changed
+end
+
+-- TOCGUI LEVELS [ON|OFF|TOGGLE|ORIGINAL|STATUS]; alone, a toggle.
+function tocMudlet.levelsCommand(arg)
+  arg = (arg or "toggle"):lower()
+  local s = tocMudlet.settings
+  local now, why = tocMudlet.readLevels()
+  if arg == "status" then
+    cecho(string.format("\n<cyan>[map]<reset> Floors above and below: %s. %s%s\n",
+      now == nil and ("cannot tell (" .. tostring(why) .. ")") or (now and "drawn" or "hidden"),
+      s.levelsChoice ~= nil and ("Your choice: " .. onOff(s.levelsChoice) .. ".")
+        or "You have not chosen; <white>tocgui levels on<reset> or <white>off<reset>.",
+      s.levelsOriginal ~= nil and (" Before this package: " .. onOff(s.levelsOriginal) .. ".") or ""))
+    return
+  end
+  local want
+  if arg == "on" then want = true
+  elseif arg == "off" then want = false
+  elseif arg == "original" then
+    if s.levelsOriginal == nil then
+      cecho("\n<yellow>[map]<reset> What the setting was before this package is not " ..
+        "known. <white>tocgui levels on<reset> or <white>off<reset> sets it.\n")
+      return
+    end
+    want = s.levelsOriginal
+  elseif arg == "toggle" then
+    local current = now
+    if current == nil then current = s.levelsSet end
+    if current == nil then
+      cecho("\n<yellow>[map]<reset> Mudlet's setting cannot be read here (" ..
+        tostring(why) .. "), so there is nothing to toggle from: " ..
+        "<white>tocgui levels on<reset> or <white>tocgui levels off<reset>.\n")
+      return
+    end
+    want = not current
+  else
+    cecho("\n<yellow>[map]<reset> <white>tocgui levels on<reset>, <white>off<reset>, " ..
+      "<white>toggle<reset>, <white>original<reset> or <white>status<reset>.\n")
+    return
+  end
+  s.levelsChoice = want
+  s.levelsDefaultApplied = true
+  if not setLevels(want) then
+    tocMudlet.saveSettings()
     cecho("\n<yellow>[map]<reset> This Mudlet has no setting for it: only Mudlet 5 " ..
       "draws the levels above and below, and it can be changed there in " ..
       "Preferences, Mapper.\n")
-  elseif tocMudlet.settings.showLevels then
+    return
+  end
+  tocMudlet.saveSettings()
+  if want then
     cecho("\n<cyan>[map]<reset> The map now also shows, faintly, the rooms of the " ..
-      "levels above and below yours. <white>tocgui levels<reset> hides them again.\n")
+      "floors above and below yours (a Mudlet setting: every profile). " ..
+      "<white>tocgui levels off<reset> hides them; the package will not change it again.\n")
   else
-    cecho("\n<cyan>[map]<reset> The map shows only the level you are on. " ..
-      "<white>tocgui levels<reset> shows the levels above and below again.\n")
+    cecho("\n<cyan>[map]<reset> The map shows only the floor you are on (a Mudlet " ..
+      "setting: every profile). <white>tocgui levels on<reset> shows the floors above " ..
+      "and below; the package will not change it again.\n")
   end
   if updateMap then pcall(updateMap) end
+  if tocMudlet.lastRoom then pcall(tocMudlet.showFloor, tocMudlet.lastRoom) end
+end
+
+-- The old name, kept for anything that called it.
+function tocMudlet.toggleLevels() tocMudlet.levelsCommand("toggle") end
+
+-- Where a room is drawn: its map area's id and name and its square.
+local function mapPlace(roomId)
+  local place = { id = roomId, areaId = roomAreaId(roomId) }
+  if place.areaId > 0 and getRoomAreaName then
+    local ok, name = pcall(getRoomAreaName, place.areaId)
+    if ok and type(name) == "string" then place.area = name end
+  end
+  if getRoomCoordinates then
+    local ok, x, y, z = pcall(getRoomCoordinates, roomId)
+    if ok and x ~= nil then place.x, place.y, place.z = number(x), number(y), number(z) end
+  end
+  return place
+end
+
+local function floorName(z)
+  if z == nil then return "floor ?" end
+  if z == 0 then return "floor 0" end
+  return string.format("floor %+d", z)
+end
+
+-- The strip over the mapper: which map, which floor.
+function tocMudlet.showFloor(roomId)
+  local label = tocMudlet.ui and tocMudlet.ui.floor
+  if not label or not roomId then return end
+  local place = mapPlace(roomId)
+  local shown = tocMudlet.readLevels()
+  label:echo(string.format(
+    [[<span style="color:%s">%s</span><span style="color:%s"> &middot; %s%s</span>]],
+    P.text, html(place.area or "not on the map yet"), P.muted, floorName(place.z),
+    shown == true and " &middot; with floors &plusmn;1" or ""))
+end
+
+-- TOCGUI MAPCHECK: what the map shows here and what is wrong with it,
+-- bounded whatever the map holds -- the area scanned to MAPCHECK_AREA
+-- rooms, the neighbourhood to MAPCHECK_NEAR rooms within MAPCHECK_STEPS
+-- steps, and MAPCHECK_SHOW examples of each kind of fault.
+local MAPCHECK_AREA, MAPCHECK_NEAR, MAPCHECK_STEPS, MAPCHECK_SHOW = 5000, 80, 4, 5
+local MAPCHECK_LONG = 3
+
+local function coordinatesOf(roomId, cache)
+  if cache[roomId] == nil then
+    cache[roomId] = false
+    if getRoomCoordinates then
+      local ok, x, y, z = pcall(getRoomCoordinates, roomId)
+      if ok and x ~= nil then cache[roomId] = { number(x), number(y), number(z) } end
+    end
+  end
+  return cache[roomId] or nil
+end
+
+-- What is wrong with an exit as Mudlet draws it, or nil: a planar exit is
+-- a line to wherever its room sits, so it reads right only along its own
+-- direction on the same floor; up and down are a mark in the room and
+-- read right when the room is a floor above or below.
+local function exitFault(from, to, short)
+  local offset = DIR_OFFSET[short]
+  local dx, dy, dz = to[1] - from[1], to[2] - from[2], to[3] - from[3]
+  if offset[3] ~= 0 then
+    if dz == offset[3] then return nil end
+    return "bent", string.format("leads to %s", floorName(to[3]))
+  end
+  local steps = math.max(math.abs(dx), math.abs(dy))
+  if dz == 0 and steps > 0 and dx == offset[1] * steps and dy == offset[2] * steps then
+    if steps > MAPCHECK_LONG then
+      return "stretched", string.format("%d squares long", steps)
+    end
+    return nil
+  end
+  if dz ~= 0 then return "bent", string.format("drawn to %s", floorName(to[3])) end
+  return "bent", string.format("drawn %d,%d away", dx, dy)
+end
+
+function tocMudlet.mapCheck()
+  local out = {}
+  local function add(text) out[#out + 1] = text end
+  local function clean(text) return (tostring(text):gsub("<", "(")) end
+  add(string.format("<cyan>[mapcheck]<reset> Times of Chaos package %s", tocMudlet.version))
+
+  local s = tocMudlet.settings
+  local shown, why = tocMudlet.readLevels()
+  add(string.format("  Floors above and below: %s; %s%s.",
+    shown == nil and ("cannot tell (" .. clean(why) .. ")") or (shown and "drawn" or "hidden"),
+    s.levelsChoice ~= nil and ("your choice is " .. onOff(s.levelsChoice))
+      or "you have not chosen (tocgui levels on|off)",
+    s.levelsOriginal ~= nil and ("; before this package: " .. onOff(s.levelsOriginal)) or ""))
+
+  local layout = nil
+  if getMapUserData then
+    local ok, value = pcall(getMapUserData, "tocAtlasLayout")
+    if ok and type(value) == "string" and value ~= "" then layout = value end
+  end
+  add(string.format("  Atlas layout: the package draws layout %s; this profile's map is %s.",
+    tocMudlet.ATLAS_LAYOUT, layout and ("layout " .. clean(layout)) or
+      "not one it loaded (tocgui atlas)"))
+
+  local roomId = tocMudlet.lastRoom
+  if not roomId or not roomExistsSafe(roomId) then
+    add("  You are not in a room on this map yet: move, or <white>look<reset>.")
+    cecho("\n" .. table.concat(out, "\n") .. "\n")
+    return
+  end
+  local place = mapPlace(roomId)
+  add(string.format("  You are in room %d, map area %s (%d), at %s,%s on %s.",
+    roomId, clean(place.area or "?"), place.areaId, tostring(place.x),
+    tostring(place.y), floorName(place.z)))
+
+  local cache = {}
+  -- Two rooms of one area on one square: Mudlet draws one over the other.
+  if place.areaId > 0 and getAreaRooms then
+    local ok, list = pcall(getAreaRooms, place.areaId)
+    if ok and type(list) == "table" then
+      local squares, scanned, stacked, examples = {}, 0, 0, {}
+      for _, id in pairs(list) do
+        id = tonumber(id)
+        if id then
+          if scanned >= MAPCHECK_AREA then break end
+          scanned = scanned + 1
+          local at = coordinatesOf(id, cache)
+          if at then
+            local key = at[1] .. "," .. at[2] .. "," .. at[3]
+            if squares[key] then
+              stacked = stacked + 1
+              if #examples < MAPCHECK_SHOW then
+                examples[#examples + 1] = string.format("    rooms %d and %d share %s",
+                  squares[key], id, key)
+              end
+            else
+              squares[key] = id
+            end
+          end
+        end
+      end
+      add(string.format("  Rooms sharing a square in this area: %d (%d rooms checked%s).",
+        stacked, scanned, scanned >= MAPCHECK_AREA and ", the most it looks at" or ""))
+      for _, line in ipairs(examples) do add(line) end
+    end
+  end
+
+  -- Exits near you drawn at a wrong angle, to another floor, or long.
+  local seen, queue, head = { [roomId] = 0 }, { roomId }, 1
+  local bent, stretched, examples, checked = 0, 0, {}, 0
+  while head <= #queue and checked < MAPCHECK_NEAR do
+    local id = queue[head]
+    head = head + 1
+    checked = checked + 1
+    local from = coordinatesOf(id, cache)
+    local ok, exits = false, nil
+    if getRoomExits then ok, exits = pcall(getRoomExits, id) end
+    if from and ok and type(exits) == "table" then
+      for direction, target in pairs(exits) do
+        local short = SHORT_DIRECTION[direction] or (DIR_OFFSET[direction] and direction)
+        target = tonumber(target)
+        if short and target and roomAreaId(target) == place.areaId then
+          local to = coordinatesOf(target, cache)
+          if to then
+            local kind, detail = exitFault(from, to, short)
+            if kind == "bent" then bent = bent + 1 end
+            if kind == "stretched" then stretched = stretched + 1 end
+            if kind and #examples < MAPCHECK_SHOW then
+              examples[#examples + 1] = string.format("    %d %s to %d: %s, %s",
+                id, LONG_DIRECTION[short] or short, target, kind, detail)
+            end
+          end
+          if seen[target] == nil and seen[id] < MAPCHECK_STEPS then
+            seen[target] = seen[id] + 1
+            queue[#queue + 1] = target
+          end
+        end
+      end
+    end
+  end
+  add(string.format("  Within %d steps (%d rooms): %d exits drawn at a wrong angle or to " ..
+    "another floor, %d stretched past %d squares.", MAPCHECK_STEPS, checked, bent,
+    stretched, MAPCHECK_LONG))
+  for _, line in ipairs(examples) do add(line) end
+  cecho("\n" .. table.concat(out, "\n") .. "\n")
 end
 
 function tocMudlet.teardown()

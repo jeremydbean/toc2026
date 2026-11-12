@@ -5,6 +5,18 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112mudletdoors 2026-11-12
+The Mudlet interface (package 1.5.15): a walk no longer stops at a closed
+door on its route, and the exit buttons open a closed door before stepping
+through, marking closed doors amber and locked ones red. Hiding the floors
+above and below on the map is now said aloud, once, with what the setting
+was before: TOCGUI LEVELS ON, OFF or TOGGLE is your choice and is never
+changed again. A strip over the map names the map and floor you are on,
+and TOCGUI MAPCHECK reports what the map shows here. TOCGUI ATLAS now only
+explains itself: TOCGUI ATLAS BACKUP saves your map, and TOCGUI ATLAS
+CONFIRM saves it and then loads the world map. The Items tab shows a long
+pack whole, or says how many it left out. See HELP MUDLET.
+
 @ 20261112staffbylevel 2026-11-12 staff
 Staff are immortals by level now, never by trust. Trust still decides
 which commands a character may type (TRUST, and who may act on whom), but
@@ -32,6 +44,7 @@ Hyrule's shutters have no lock. UNLOCK, PICK and DOORBASH on one now say
 so instead of "You lack the key": once a room's enemies are beaten, just
 walk through the shutter (or OPEN it). A shutter into a guardian's chamber
 may still want a tool, and says which.
+
 
 @ 20261112dodongobombs 2026-11-12
 Dodongo is harder to blow up: each bomb he swallows takes a quarter of his

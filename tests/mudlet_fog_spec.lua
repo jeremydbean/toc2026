@@ -409,15 +409,202 @@ gmcp.Hyrule = { MapRoom = { num = 30402, level = 1, name = "Level 1: Room",
 tocMudlet.onMapRoom()
 check("an older server's plan keeps the old offset", rooms[30402] and rooms[30402].z == -10)
 
--- The levels above and below are not drawn unless the player asks.
+-- The levels above and below are not drawn unless the player asks, and
+-- the package never changes Mudlet's setting silently (owner, 2026-11-12):
+-- once per profile, said aloud, the old value remembered; never again
+-- once the player has chosen. At install here getConfig is a stub that
+-- answers nothing, so the install could not read the setting.
 check("install turns Mudlet's upper/lower levels off", levelsAtInstall == false,
   tostring(levelsAtInstall))
-tocMudlet.toggleLevels()
-check("tocgui levels turns them on", config.showUpperLowerLevels == true)
-check("and the choice is kept", saved["/nonexistent-toc-fog-spec/toc-settings.lua"]
-  and saved["/nonexistent-toc-fog-spec/toc-settings.lua"].showLevels == true)
-tocMudlet.toggleLevels()
-check("and off again", config.showUpperLowerLevels == false)
+local SETTINGS = "/nonexistent-toc-fog-spec/toc-settings.lua"
+local said = {}
+cecho = function(text) said[#said + 1] = text end
+local function told(fragment)
+  for _, text in ipairs(said) do
+    if text:find(fragment, 1, true) then return true end
+  end
+  return false
+end
+local function readable() getConfig = function(key)
+  if key ~= "showUpperLowerLevels" then return nil, "not a valid configuration option" end
+  return config[key]
+end end
+
+-- Readable and on: turned off, told, the old value kept.
+readable()
+config.showUpperLowerLevels = true
+tocMudlet.settings, said = {}, {}
+tocMudlet.applyLevels()
+check("a readable 'on' is turned off", config.showUpperLowerLevels == false)
+check("and the player is told what changed", told("was on") and told("tocgui levels on"),
+  said[1])
+check("that it is Mudlet's, for every profile", told("all your profiles"), said[1])
+check("the value before is remembered", saved[SETTINGS] and saved[SETTINGS].levelsOriginal == true)
+-- Next start: the player turned it back on in Mudlet's preferences.
+config.showUpperLowerLevels = true
+said = {}
+tocMudlet.applyLevels()
+check("the default is never applied twice", config.showUpperLowerLevels == true and #said == 0,
+  said[1])
+
+-- Readable and already off: nothing changed, but said once.
+tocMudlet.settings, said = {}, {}
+config.showUpperLowerLevels = false
+tocMudlet.applyLevels()
+check("a readable 'off' is left off and said once",
+  config.showUpperLowerLevels == false and #said == 1 and told("is off"), said[1])
+check("remembered as off", tocMudlet.settings.levelsOriginal == false)
+
+-- Unreadable: says so, never guesses the old value.
+getConfig = nil
+config.showUpperLowerLevels = true
+tocMudlet.settings, said = {}, {}
+tocMudlet.applyLevels()
+check("an unreadable setting is said to be unreadable",
+  told("could not read") and told("unknown"), said[1])
+check("and nothing is remembered as its old value", tocMudlet.settings.levelsOriginal == nil)
+said = {}
+tocMudlet.settings.levelsSet = nil
+tocMudlet.levelsCommand("toggle")
+check("toggle with nothing to read from asks for on or off",
+  told("on<reset> or") and tocMudlet.settings.levelsChoice == nil, said[1])
+
+-- The player's choice is theirs.
+readable()
+tocMudlet.settings = { levelsDefaultApplied = true, levelsOriginal = true }
+config.showUpperLowerLevels = false
+tocMudlet.levelsCommand("on")
+check("tocgui levels on turns them on", config.showUpperLowerLevels == true)
+check("and the choice is kept", saved[SETTINGS] and saved[SETTINGS].levelsChoice == true)
+tocMudlet.levelsCommand("toggle")
+check("toggle reads Mudlet's value and turns it off", config.showUpperLowerLevels == false
+  and tocMudlet.settings.levelsChoice == false)
+tocMudlet.levelsCommand("off")
+check("off is off", config.showUpperLowerLevels == false)
+tocMudlet.levelsCommand("original")
+check("original puts back the value from before", config.showUpperLowerLevels == true)
+tocMudlet.levelsCommand()
+check("alone, it toggles", config.showUpperLowerLevels == false)
+config.showUpperLowerLevels = true          -- changed in Mudlet's preferences
+said = {}
+tocMudlet.applyLevels()
+check("a chosen setting is never overridden at start",
+  config.showUpperLowerLevels == true and #said == 0)
+said = {}
+tocMudlet.levelsCommand("status")
+check("status says what Mudlet shows and the choice",
+  told("drawn") and told("Your choice: off") and told("Before this package: on"), said[1])
+said = {}
+tocMudlet.levelsCommand("sideways")
+check("a word it does not know changes nothing", told("toggle") and config.showUpperLowerLevels == true)
+
+-- 1.5.14 kept a toggle as showLevels: that was the player's choice.
+tocMudlet.settings = { showLevels = true }
+config.showUpperLowerLevels = false
+said = {}
+tocMudlet.applyLevels()
+check("an old toggle is carried over as the choice",
+  tocMudlet.settings.levelsChoice == true and tocMudlet.settings.showLevels == nil)
+check("and not overridden", config.showUpperLowerLevels == false and #said == 0)
+cecho = function() end
+
+-- The strip over the map says which map and which floor.
+do
+  atlas()
+  known({ { all = true } })
+  local lines = {}
+  tocMudlet.ui.floor = { echo = function(_, text) lines[#lines + 1] = text end }
+  setRoomCoordinates(10, 5, 5, 1)
+  config.showUpperLowerLevels = false
+  tocMudlet.lastRoom = nil
+  gmcp.Room = { Info = { num = 10, name = "Tower", area = "Area B", environment = "inside",
+    exits = { d = 3 } } }
+  tocMudlet.onRoomInfo()
+  check("the floor strip names the map area", (lines[#lines] or ""):find("Area B") ~= nil,
+    lines[#lines])
+  check("and the floor", (lines[#lines] or ""):find("floor %+1") ~= nil, lines[#lines])
+  check("and not the other floors when they are hidden",
+    (lines[#lines] or ""):find("with floors") == nil, lines[#lines])
+  config.showUpperLowerLevels = true
+  tocMudlet.onRoomInfo()
+  check("and says when they are drawn", (lines[#lines] or ""):find("with floors") ~= nil,
+    lines[#lines])
+  config.showUpperLowerLevels = false
+  tocMudlet.ui.floor = nil
+end
+
+-- TOCGUI MAPCHECK: bounded, and it finds a stacked square, a stretched
+-- exit and a bent one near the player.
+function getAreaRooms(area)
+  local list, n = {}, 0
+  for id, room in pairs(rooms) do
+    if room.area == area then list[n] = id n = n + 1 end    -- 0-based, as Mudlet's
+  end
+  return list
+end
+do
+  atlas()
+  known({ { all = true } })
+  setRoomCoordinates(6, 9, 2, 0)         -- 5 east to 6: seven squares long
+  setRoomCoordinates(3, 0, 2, 1)         -- 2 north to 3: drawn to another floor
+  addRoom(7) setRoomArea(7, areas["Area A"]) setRoomCoordinates(7, 0, 0, 0)  -- on 1's square
+  userData.tocAtlasLayout = tocMudlet.ATLAS_LAYOUT
+  tocMudlet.settings = { levelsChoice = false, levelsOriginal = true }
+  tocMudlet.lastRoom = 4
+  local out = {}
+  cecho = function(text) out[#out + 1] = text end
+  tocMudlet.mapCheck()
+  local report = table.concat(out)
+  cecho = function() end
+  local lineCount = select(2, report:gsub("\n", ""))
+  check("mapcheck names the room, area and floor",
+    report:find("room 4, map area Area A") ~= nil and report:find("floor 0") ~= nil, report)
+  check("and the levels setting and choice",
+    report:find("hidden; your choice is off; before this package: on") ~= nil, report)
+  check("and the atlas layout", report:find("layout " .. tocMudlet.ATLAS_LAYOUT, 1, true) ~= nil,
+    report)
+  check("it finds two rooms on one square", report:find("sharing a square in this area: 1") ~= nil
+    and (report:find("rooms 1 and 7 share 0,0,0") or report:find("rooms 7 and 1 share 0,0,0")),
+    report)
+  check("a stretched exit", report:find("5 east to 6: stretched, 7 squares long") ~= nil, report)
+  check("a bent one", report:find("bent, drawn to floor") ~= nil, report)
+  check("and counts both kinds", report:find("4 exits drawn at a wrong angle or to another " ..
+    "floor, 2 stretched past 3 squares") ~= nil, report)
+  check("and stays short", lineCount <= 20, lineCount)
+end
+
+-- TOCGUI ATLAS never replaces the map on one word.
+do
+  local downloads, savedMaps, mapSaves = 0, {}, true
+  downloadFile = function() downloads = downloads + 1 end
+  saveMap = function(path) if mapSaves then savedMaps[#savedMaps + 1] = path end return mapSaves end
+  tocMudlet.enabled, tocMudlet.ui.mapper = true, {}
+  local out = {}
+  cecho = function(text) out[#out + 1] = text end
+  tocMudlet.command("atlas")
+  check("tocgui atlas alone loads nothing", downloads == 0 and #savedMaps == 0)
+  check("and says what would be lost and how to go on",
+    (out[1] or ""):find("replaces this profile's whole", 1, true) ~= nil
+      and (out[1] or ""):find("tocgui atlas confirm", 1, true) ~= nil
+      and (out[1] or ""):find("tocgui atlas backup", 1, true) ~= nil, out[1])
+  out = {}
+  tocMudlet.command("atlas", "backup")
+  check("backup saves the map and loads nothing", #savedMaps == 1 and downloads == 0)
+  check("into the profile's folder", savedMaps[1]:find("^/nonexistent%-toc%-fog%-spec/toc%-map%-backup%-") ~= nil,
+    savedMaps[1])
+  check("and says how to go back", (out[1] or ""):find("loadMap", 1, true) ~= nil, out[1])
+  tocMudlet.command("atlas", "confirm")
+  check("confirm saves a backup, then loads", #savedMaps == 2 and downloads == 1)
+  mapSaves = false
+  out = {}
+  tocMudlet.command("atlas", "confirm")
+  check("no backup, no load", downloads == 1)
+  check("and it says so", (out[1] or ""):find("was not saved", 1, true) ~= nil, out[1])
+  tocMudlet.command("atlas", "force")
+  check("force loads without a backup", downloads == 2)
+  cecho = function() end
+  tocMudlet.atlasPending = nil
+end
 
 -- A profile holding the old layout is told once; one that loaded the new
 -- atlas is not.
