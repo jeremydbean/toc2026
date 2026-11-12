@@ -25,14 +25,23 @@
  * sees the dead tag, logs it and repairs the pointer. Under               *
  * AddressSanitizer the window is 0 unless the environment asks for one,   *
  * so ASan still reports a use after free itself.                         *
+ *                                                                         *
+ * Liveness by address (2026-11-12). Whether a pointer names something    *
+ * live is answered by memtrack.c's address set -- registered here at     *
+ * every allocation, marked dead at release, forgotten at the free --      *
+ * never by reading the block: once the window is over or the cap passed, *
+ * the block is freed and reading its tag was itself a use after free.    *
  ***************************************************************************/
 
 #include "merc.h"
+#include "memtrack.h"
 
 /*
  * A released character or object keeps `next_free' non-NULL (the
- * sentinel), and every released block carries its MEM_DEAD_* tag, so a
- * second release is refused with a bug line instead of being freed twice.
+ * sentinel), and every released block carries its MEM_DEAD_* tag, for a
+ * debugger. Whether a block was released is the address set's answer, so a
+ * second release -- or a release of something never allocated here, a
+ * stand-in on the stack -- is refused with a bug line without reading it.
  */
 static CHAR_DATA        char_released_end;
 static OBJ_DATA         obj_released_end;
@@ -109,6 +118,30 @@ static void *recycle_calloc( size_t size, const char *what )
     return mem;
 }
 
+/* Registered live from the moment it exists; a block the set cannot hold
+   would read as freed, so running out here is fatal like the calloc. */
+static void recycle_track( void *mem, int kind, const char *what )
+{
+    if ( !memtrack_alive( mem, kind ) )
+    {
+        perror( what );
+        exit( 1 );
+    }
+}
+
+/* MEM_STATE_*: what memtrack says of `p' as a `kind', without reading it. */
+static int recycle_liveness( const void *p, int kind )
+{
+    if ( p == NULL )
+        return MEM_STATE_LIVE;
+    switch ( memtrack_state( p, kind ) )
+    {
+    case MEMTRACK_LIVE: return MEM_STATE_LIVE;
+    case MEMTRACK_DEAD: return MEM_STATE_DEAD;
+    default:            return MEM_STATE_FREED;
+    }
+}
+
 
 static void quarantine_free_block( QUARANTINE_ENTRY *e )
 {
@@ -119,6 +152,8 @@ static void quarantine_free_block( QUARANTINE_ENTRY *e )
         if ( ch->pcdata != NULL && !is_perm_memory( ch->pcdata ) )
             free( ch->pcdata );
     }
+    /* Forgotten before the free: from here a pointer to it reads as freed. */
+    memtrack_forget( e->ptr );
     if ( !is_perm_memory( e->ptr ) )
         free( e->ptr );
     e->ptr = NULL;
@@ -167,20 +202,30 @@ CHAR_DATA *char_data_new( void )
 {
     CHAR_DATA *ch = recycle_calloc( sizeof(CHAR_DATA), "char_data_new" );
 
+    recycle_track( ch, Q_CHAR, "char_data_new" );
     ch->mem_magic = MEM_ALIVE_CHAR;
     return ch;
 }
 
+/* Anything but a character char_data_new made and nobody has released. */
 bool char_data_released( const CHAR_DATA *ch )
 {
-    return ch != NULL
-        && ( ch->next_free != NULL || ch->mem_magic == MEM_DEAD_CHAR );
+    return ch != NULL && memtrack_state( ch, Q_CHAR ) != MEMTRACK_LIVE;
 }
 
-/* NULL and untagged stand-ins count as live: only a dead tag is stale. */
+/*
+ * Live: NULL, or made by char_data_new and not released. Dead: released
+ * and still in quarantine, whole. Freed: anything else -- the block is
+ * gone, or the address was never one of ours -- and must not be read.
+ */
+int char_liveness( const CHAR_DATA *ch )
+{
+    return recycle_liveness( ch, Q_CHAR );
+}
+
 bool char_is_live( const CHAR_DATA *ch )
 {
-    return ch == NULL || ch->mem_magic != MEM_DEAD_CHAR;
+    return char_liveness( ch ) == MEM_STATE_LIVE;
 }
 
 /*
@@ -214,9 +259,10 @@ void char_data_release( CHAR_DATA *ch )
         return;
     if ( char_data_released( ch ) )
     {
-        bug( "Char_data_release: released twice.", 0 );
+        bug( "Char_data_release: released twice, or never made here.", 0 );
         return;
     }
+    memtrack_dead( ch );
     ch->next_free = &char_released_end;
     ch->mem_magic = MEM_DEAD_CHAR;
     if ( pending_label_ch != ch )
@@ -238,19 +284,24 @@ OBJ_DATA *obj_data_new( void )
 {
     OBJ_DATA *obj = recycle_calloc( sizeof(OBJ_DATA), "obj_data_new" );
 
+    recycle_track( obj, Q_OBJ, "obj_data_new" );
     obj->mem_magic = MEM_ALIVE_OBJ;
     return obj;
 }
 
 bool obj_data_released( const OBJ_DATA *obj )
 {
-    return obj != NULL
-        && ( obj->next_free != NULL || obj->mem_magic == MEM_DEAD_OBJ );
+    return obj != NULL && memtrack_state( obj, Q_OBJ ) != MEMTRACK_LIVE;
+}
+
+int obj_liveness( const OBJ_DATA *obj )
+{
+    return recycle_liveness( obj, Q_OBJ );
 }
 
 bool obj_is_live( const OBJ_DATA *obj )
 {
-    return obj == NULL || obj->mem_magic != MEM_DEAD_OBJ;
+    return obj_liveness( obj ) == MEM_STATE_LIVE;
 }
 
 void obj_data_release( OBJ_DATA *obj )
@@ -261,9 +312,10 @@ void obj_data_release( OBJ_DATA *obj )
         return;
     if ( obj_data_released( obj ) )
     {
-        bug( "Obj_data_release: released twice.", 0 );
+        bug( "Obj_data_release: released twice, or never made here.", 0 );
         return;
     }
+    memtrack_dead( obj );
     obj->next_free = &obj_released_end;
     obj->mem_magic = MEM_DEAD_OBJ;
     /* The prototype is permanent; the object's own strings are freed. */
@@ -282,13 +334,19 @@ DESCRIPTOR_DATA *descriptor_data_new( void )
     DESCRIPTOR_DATA *d = recycle_calloc( sizeof(DESCRIPTOR_DATA),
                                          "descriptor_data_new" );
 
+    recycle_track( d, Q_DESC, "descriptor_data_new" );
     d->mem_magic = MEM_ALIVE_DESC;
     return d;
 }
 
+int desc_liveness( const DESCRIPTOR_DATA *d )
+{
+    return recycle_liveness( d, Q_DESC );
+}
+
 bool desc_is_live( const DESCRIPTOR_DATA *d )
 {
-    return d == NULL || d->mem_magic != MEM_DEAD_DESC;
+    return desc_liveness( d ) == MEM_STATE_LIVE;
 }
 
 void descriptor_data_release( DESCRIPTOR_DATA *d )
@@ -297,11 +355,12 @@ void descriptor_data_release( DESCRIPTOR_DATA *d )
 
     if ( d == NULL )
         return;
-    if ( d->mem_magic == MEM_DEAD_DESC )
+    if ( memtrack_state( d, Q_DESC ) != MEMTRACK_LIVE )
     {
-        bug( "Descriptor_data_release: released twice.", 0 );
+        bug( "Descriptor_data_release: released twice, or never made here.", 0 );
         return;
     }
+    memtrack_dead( d );
     d->mem_magic = MEM_DEAD_DESC;
     /* The socket number only: never an address. */
     snprintf( label, sizeof(label), "descriptor %d", d->descriptor );
@@ -345,6 +404,16 @@ void recycle_stats( int *held, long *oldest_secs, long *freed,
     *freed       = q_freed;
     *window_secs = quarantine_window( );
     *cap         = MEM_QUARANTINE_MAX;
+}
+
+/* The address set's counts: live blocks and released ones not yet freed. */
+void recycle_tracked( long *live, long *dead )
+{
+    size_t l, d, capacity;
+
+    memtrack_counts( &l, &d, &capacity );
+    *live = (long) l;
+    *dead = (long) d;
 }
 
 

@@ -22,10 +22,17 @@
  *     first, so a stale pointer between sweeps is never followed.
  *   - MEMCHECK shows it all to staff.
  *
- * Reading a dead block's own fields (a list link) is safe only because
- * the block is still in quarantine. Nothing here reads a dead block's
- * strings: free_char and extract_obj have freed them. What a dead block
- * was comes from the label recycle.c wrote at its release.
+ * Whether a target is live, dead or freed is memtrack.c's answer by
+ * address (char_liveness and its kin): nothing here reads a pointer to
+ * learn whether it may be read. A dead block -- released, still in
+ * quarantine -- is whole, and its own list link is read to unlink it. A
+ * freed one (its window over, the quarantine past its cap, or an address
+ * that was never ours) is never read: it is logged "-> freed", a list is
+ * cut at it, and what followed the cut is found again from the other side
+ * -- an object's carried_by, in_obj or in_room, a character's in_room or
+ * desc -- by mg_relink. Nothing here reads a dead block's strings:
+ * free_char and extract_obj have freed them. What a dead block was comes
+ * from the label recycle.c wrote at its release.
  */
 
 #ifndef _DEFAULT_SOURCE
@@ -91,6 +98,29 @@ static const struct
 
 static long     mg_caught[MG_FIELDS];
 static long     mg_total;
+static long     mg_freed_total;     /* of mg_total, found already freed */
+static long     mg_relinked;        /* found again after a list was cut */
+
+static void     mg_selftest_retire  ( void );
+
+/*
+ * Lists cut at a freed block this sweep, so mg_relink can put back what
+ * followed. Past MG_CUTS every holder is checked.
+ */
+#define MG_CUTS             32
+#define MG_CUT_CARRYING     1
+#define MG_CUT_CONTAINS     2
+#define MG_CUT_CONTENTS     3
+#define MG_CUT_PEOPLE       4
+#define MG_CUT_STASH        5
+static struct
+{
+    int         type;
+    const void *holder;
+} mg_cuts[MG_CUTS];
+static int      mg_cut_count;
+static bool     mg_cut_overflow;
+static bool     mg_desc_cut;
 static time_t   mg_wizinfo_at[MG_FIELDS];
 static time_t   mg_log_minute[MG_FIELDS];
 static int      mg_log_count[MG_FIELDS];
@@ -158,11 +188,22 @@ static int mg_notice_level( const CHAR_DATA *holder )
     return LEVEL_IMMORTAL;
 }
 
+/* What memtrack says of a target, by the kind the field holds. */
+static int mg_liveness( const void *target, const char *kind )
+{
+    if ( !strcmp( kind, "object" ) )
+        return obj_liveness( target );
+    if ( !strcmp( kind, "descriptor" ) )
+        return desc_liveness( target );
+    return char_liveness( target );
+}
+
 /*
  * One stale pointer: counted always; logged (MG_LOG_BURST a field a
  * minute, the rest counted and said with the next line); a nameless BUG
  * row in the play journal; a WIZINFO once a field a minute; and kept for
- * MEMCHECK. The caller repairs.
+ * MEMCHECK. "dead" when the target is still in quarantine and its label
+ * names it; "freed" when it is not, and was not read. The caller repairs.
  */
 static void mg_report( const char *field, const char *who, int level,
                        const void *target, const char *kind )
@@ -171,18 +212,29 @@ static void mg_report( const char *field, const char *who, int level,
     char line[MAX_STRING_LENGTH];
     int f = mg_field( field );
     int target_level;
+    bool freed = mg_liveness( target, kind ) == MEM_STATE_FREED;
+    const char *state = freed ? "freed" : "dead";
 
     mg_caught[f]++;
     if ( mg_fields[f].quiet )
         return;
     mg_total++;
+    if ( freed )
+        mg_freed_total++;
 
     /* The event names the holder and the dead target: it is for staff who
        could see both (a wizinvis name is for its own level and up). */
     recycle_dead_label( target, label, sizeof(label), &target_level );
     level = UMAX( level, target_level );
-    snprintf( line, sizeof(line), "MEMORY: stale %s on %s -> dead %s (%s)",
-              field, who, kind, label );
+    if ( freed )
+        /* Out of quarantine, or never ours: nothing is known of it, and it
+           was not read to find out. */
+        snprintf( line, sizeof(line),
+                  "MEMORY: stale %s on %s -> freed %s (gone from quarantine; not read)",
+                  field, who, kind );
+    else
+        snprintf( line, sizeof(line), "MEMORY: stale %s on %s -> dead %s (%s)",
+                  field, who, kind, label );
     snprintf( mg_events[mg_event_next], MG_EVENT_LEN, "%.24s %.170s",
               ctime( &current_time ), line );
     mg_event_level[mg_event_next] = level;
@@ -211,7 +263,7 @@ static void mg_report( const char *field, const char *who, int level,
         log_string( line );
         /* The journal is published and keeps the wizinvis out: no names. */
         snprintf( journal, sizeof(journal),
-                  "MEMORY: stale %s -> dead %s, repaired", field, kind );
+                  "MEMORY: stale %s -> %s %s, repaired", field, state, kind );
         playlog_bug( journal );
     }
     else
@@ -223,8 +275,8 @@ static void mg_report( const char *field, const char *who, int level,
 
         mg_wizinfo_at[f] = current_time;
         snprintf( notice, sizeof(notice),
-                  "MEMORY: stale %s on %s -> dead %s; repaired (MEMCHECK, log/toc.log)",
-                  field, who, kind );
+                  "MEMORY: stale %s on %s -> %s %s; repaired (MEMCHECK, log/toc.log)",
+                  field, who, state, kind );
         wizinfo( notice, level );
     }
 }
@@ -371,11 +423,42 @@ static void mg_rehome_obj( OBJ_DATA *obj )
         obj_to_room( obj, limbo );
 }
 
-/* Unlink dead objects from a next_content list (reading the dead block's
-   own link, which quarantine keeps whole). */
-static void mg_obj_list( OBJ_DATA **head, const char *field,
-                         CHAR_DATA *char_holder, OBJ_DATA *obj_holder,
-                         const char *room_holder )
+/* A list cut at a freed block: remembered so mg_relink can look for what
+   followed the cut. */
+static void mg_note_cut( int type, const void *holder )
+{
+    if ( mg_cut_count < MG_CUTS )
+    {
+        mg_cuts[mg_cut_count].type   = type;
+        mg_cuts[mg_cut_count].holder = holder;
+        mg_cut_count++;
+    }
+    else
+        mg_cut_overflow = TRUE;
+}
+
+static bool mg_was_cut( int type, const void *holder )
+{
+    int i;
+
+    if ( holder == NULL )
+        return FALSE;
+    if ( mg_cut_overflow )
+        return TRUE;
+    for ( i = 0; i < mg_cut_count; i++ )
+        if ( mg_cuts[i].type == type && mg_cuts[i].holder == holder )
+            return TRUE;
+    return FALSE;
+}
+
+/*
+ * Unlink dead objects from a next_content list, reading the dead block's
+ * own link, which quarantine keeps whole. A freed block's link cannot be
+ * read: the list is cut there, and mg_relink puts back what followed.
+ */
+static void mg_obj_list( OBJ_DATA **head, const char *field, int cut_type,
+                         const void *holder, CHAR_DATA *char_holder,
+                         OBJ_DATA *obj_holder, const char *room_holder )
 {
     OBJ_DATA **link = head;
     long steps = 0;
@@ -383,9 +466,10 @@ static void mg_obj_list( OBJ_DATA **head, const char *field,
     while ( *link != NULL && steps++ < MG_LIST_STEPS )
     {
         OBJ_DATA *obj = *link;
+        int state = obj_liveness( obj );
 
         mg_seen_ptrs++;
-        if ( obj_is_live( obj ) )
+        if ( state == MEM_STATE_LIVE )
         {
             link = &obj->next_content;
             continue;
@@ -396,7 +480,13 @@ static void mg_obj_list( OBJ_DATA **head, const char *field,
             mg_report_obj( field, obj_holder, obj, "object" );
         else
             mg_report( field, room_holder, LEVEL_IMMORTAL, obj, "object" );
-        *link = obj->next_content;
+        if ( state == MEM_STATE_DEAD )
+            *link = obj->next_content;
+        else
+        {
+            *link = NULL;
+            mg_note_cut( cut_type, holder );
+        }
     }
 }
 
@@ -409,16 +499,134 @@ static void mg_char_room_list( ROOM_INDEX_DATA *room )
     while ( *link != NULL && steps++ < MG_LIST_STEPS )
     {
         CHAR_DATA *rch = *link;
+        int state = char_liveness( rch );
 
         mg_seen_ptrs++;
-        if ( char_is_live( rch ) )
+        if ( state == MEM_STATE_LIVE )
         {
             link = &rch->next_in_room;
             continue;
         }
         snprintf( who, sizeof(who), "room %d", room->vnum );
         mg_report( "room people", who, LEVEL_IMMORTAL, rch, "character" );
-        *link = rch->next_in_room;
+        if ( state == MEM_STATE_DEAD )
+            *link = rch->next_in_room;
+        else
+        {
+            *link = NULL;
+            mg_note_cut( MG_CUT_PEOPLE, room );
+        }
+    }
+}
+
+static bool mg_obj_listed( const OBJ_DATA *list, const OBJ_DATA *obj )
+{
+    long steps = 0;
+
+    for ( ; list != NULL && steps++ < MG_LIST_STEPS; list = list->next_content )
+        if ( list == obj )
+            return TRUE;
+    return FALSE;
+}
+
+/*
+ * After a list was cut at a freed block, whatever followed the cut is
+ * found again from its own side: a live object's carried_by, in_obj or
+ * in_room names the list it belongs in, a live character's in_room its
+ * room's people, a live character's desc the descriptor list. Each is put
+ * back at the front of its list if it is missing. A stash keeps no owner
+ * on its objects, so what followed a cut there is not found: the line says
+ * so, and PRESTORE STASH is the way back.
+ */
+static void mg_relink( void )
+{
+    LIST_ITERATOR iter;
+    OBJ_DATA *obj;
+    CHAR_DATA *ch;
+    long objs = 0;
+    long chars = 0;
+    long descs = 0;
+    bool stash_cut = FALSE;
+    int i;
+
+    for ( i = 0; i < mg_cut_count; i++ )
+        if ( mg_cuts[i].type == MG_CUT_STASH )
+            stash_cut = TRUE;
+
+    FOR_EACH_OBJECT( iter, obj )
+    {
+        OBJ_DATA **head = NULL;
+
+        if ( !obj_is_live( obj ) )
+            continue;
+        if ( obj->carried_by != NULL )
+        {
+            if ( mg_was_cut( MG_CUT_CARRYING, obj->carried_by )
+            &&   char_is_live( obj->carried_by ) )
+                head = &obj->carried_by->carrying;
+        }
+        else if ( obj->in_obj != NULL )
+        {
+            if ( mg_was_cut( MG_CUT_CONTAINS, obj->in_obj ) && obj_is_live( obj->in_obj ) )
+                head = &obj->in_obj->contains;
+        }
+        else if ( obj->in_room != NULL && mg_was_cut( MG_CUT_CONTENTS, obj->in_room ) )
+            head = &obj->in_room->contents;
+        if ( head == NULL || mg_obj_listed( *head, obj ) )
+            continue;
+        obj->next_content = *head;
+        *head = obj;
+        objs++;
+    }
+
+    FOR_EACH_CHARACTER( iter, ch )
+    {
+        if ( !char_is_live( ch ) )
+            continue;
+        if ( ch->in_room != NULL && mg_was_cut( MG_CUT_PEOPLE, ch->in_room ) )
+        {
+            CHAR_DATA *rch;
+            long steps = 0;
+
+            for ( rch = ch->in_room->people; rch != NULL && rch != ch
+                  && steps++ < MG_LIST_STEPS; rch = rch->next_in_room )
+                ;
+            if ( rch != ch )
+            {
+                ch->next_in_room   = ch->in_room->people;
+                ch->in_room->people = ch;
+                chars++;
+            }
+        }
+        if ( mg_desc_cut && ch->desc != NULL && desc_is_live( ch->desc ) )
+        {
+            DESCRIPTOR_DATA *d;
+            long steps = 0;
+
+            for ( d = descriptor_list; d != NULL && d != ch->desc
+                  && steps++ < MG_LIST_STEPS; d = d->next )
+                ;
+            if ( d != ch->desc )
+            {
+                ch->desc->next  = descriptor_list;
+                descriptor_list = ch->desc;
+                descs++;
+            }
+        }
+    }
+
+    mg_relinked += objs + chars + descs;
+    {
+        char line[MAX_STRING_LENGTH];
+
+        snprintf( line, sizeof(line),
+                  "MEMORY: a list was cut at a freed block; found again %ld object%s, "
+                  "%ld character%s, %ld descriptor%s%s",
+                  objs, objs == 1 ? "" : "s", chars, chars == 1 ? "" : "s",
+                  descs, descs == 1 ? "" : "s",
+                  stash_cut ? "; a stash's objects past the cut are lost to it (PRESTORE STASH)"
+                            : "" );
+        log_string( line );
     }
 }
 
@@ -466,10 +674,10 @@ static void mg_check_char( CHAR_DATA *ch )
         ch->desc = NULL;
     }
 
-    mg_obj_list( &ch->carrying, "carrying", ch, NULL, NULL );
+    mg_obj_list( &ch->carrying, "carrying", MG_CUT_CARRYING, ch, ch, NULL, NULL );
     if ( !IS_NPC(ch) && ch->pcdata != NULL )
     {
-        mg_obj_list( &ch->pcdata->stash, "stash", ch, NULL, NULL );
+        mg_obj_list( &ch->pcdata->stash, "stash", MG_CUT_STASH, ch, ch, NULL, NULL );
         if ( !obj_is_live( ch->pcdata->resurrect_corpse ) )
         {
             mg_report_char( "resurrect_corpse", ch,
@@ -506,7 +714,7 @@ static void mg_check_obj( OBJ_DATA *obj )
         mg_report_obj( "trapped", obj, obj->trapped, "character" );
         obj->trapped = NULL;
     }
-    mg_obj_list( &obj->contains, "contains", NULL, obj, NULL );
+    mg_obj_list( &obj->contains, "contains", MG_CUT_CONTAINS, obj, NULL, obj, NULL );
     if ( !char_is_live( obj->carried_by ) )
     {
         mg_report_obj( "carried_by", obj, obj->carried_by, "character" );
@@ -535,6 +743,9 @@ void memguard_sweep( void )
 
     mg_seen_chars = mg_seen_players = mg_seen_objs = mg_seen_descs = 0;
     mg_seen_ptrs  = 0;
+    mg_cut_count    = 0;
+    mg_cut_overflow = FALSE;
+    mg_desc_cut     = FALSE;
 
     FOR_EACH_CHARACTER( iter, ch )
     {
@@ -576,7 +787,8 @@ void memguard_sweep( void )
             if ( room->contents != NULL )
             {
                 snprintf( who, sizeof(who), "room %d", room->vnum );
-                mg_obj_list( &room->contents, "room contents", NULL, NULL, who );
+                mg_obj_list( &room->contents, "room contents", MG_CUT_CONTENTS,
+                             room, NULL, NULL, who );
             }
         }
     }
@@ -584,12 +796,20 @@ void memguard_sweep( void )
     for ( dlink = &descriptor_list; *dlink != NULL; )
     {
         DESCRIPTOR_DATA *d = *dlink;
+        int state = desc_liveness( d );
 
-        if ( !desc_is_live( d ) )
+        if ( state != MEM_STATE_LIVE )
         {
             mg_report( "descriptor_list", "the descriptor list", LEVEL_IMMORTAL,
                        d, "descriptor" );
-            *dlink = d->next;
+            if ( state == MEM_STATE_DEAD )
+                *dlink = d->next;
+            else
+            {
+                /* Cut: mg_relink finds the rest through their characters. */
+                *dlink = NULL;
+                mg_desc_cut = TRUE;
+            }
             continue;
         }
         mg_seen_descs++;
@@ -601,6 +821,10 @@ void memguard_sweep( void )
     for ( i = 0; i < MAX_HUNTERS; i++ )
         if ( hunter_list[i].ch != NULL )
             memguard_hunter_slot_ok( i );
+
+    if ( mg_cut_count > 0 || mg_cut_overflow || mg_desc_cut )
+        mg_relink( );
+    mg_selftest_retire( );
 
     took = mg_now_ms( ) - started;
     mg_runs++;
@@ -616,8 +840,24 @@ void memguard_sweep( void )
  * The self-test (TOC_MEMCHECK_SELFTEST=1 only): a mobile made and retired
  * straight through recycle.c, as a bug would leave it -- no extract_char,
  * so nothing clears the pointer -- with the caller's reply aimed at it.
- * The next sweep must catch and repair it.
+ * It is retired at the end of the next sweep (mg_selftest_retire), so the
+ * sweep after that is the first to see it, and always across at least one
+ * recycle_flush: inside the quarantine window the catch reads "dead", with
+ * no window (TOC_MEM_QUARANTINE_SECS=0) "freed", never read.
  */
+static CHAR_DATA *mg_selftest_mob;
+
+static void mg_selftest_retire( void )
+{
+    CHAR_DATA *mob = mg_selftest_mob;
+
+    if ( mob == NULL )
+        return;
+    mg_selftest_mob = NULL;
+    recycle_label_char( mob );
+    char_data_release( mob );
+}
+
 static void memcheck_selftest( CHAR_DATA *ch )
 {
     const char *env = getenv( "TOC_MEMCHECK_SELFTEST" );
@@ -640,16 +880,21 @@ static void memcheck_selftest( CHAR_DATA *ch )
         send_to_char( "The self-test found no mobile to retire.\n\r", ch );
         return;
     }
+    if ( mg_selftest_mob != NULL )
+    {
+        send_to_char( "A self-test is already waiting for the sweep.\n\r", ch );
+        return;
+    }
+    /* Out of every list, in no room: only the caller's reply names it. */
     mob = create_mobile( pMob );
     unregister_character( mob );
     --pMob->count;
     mobile_count--;
-    recycle_label_char( mob );
-    char_data_release( mob );
+    mg_selftest_mob = mob;
     ch->reply = mob;
     snprintf( buf, sizeof(buf),
-              "Self-test: your reply now points at a retired mobile (vnum %d); "
-              "the next sweep must catch it.\n\r", pMob->vnum );
+              "Self-test: your reply now points at a mobile (vnum %d) the next sweep "
+              "retires; the sweep after must catch it.\n\r", pMob->vnum );
     send_to_char( buf, ch );
 }
 
@@ -658,7 +903,7 @@ void do_memcheck( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     int held, window, cap, i, shown;
-    long oldest, freed;
+    long oldest, freed, tracked_live, tracked_dead;
 
     one_argument( argument, arg );
     if ( !str_cmp( arg, "selftest" ) )
@@ -687,8 +932,22 @@ void do_memcheck( CHAR_DATA *ch, char *argument )
               mg_runs, mg_last_ms, mg_max_ms,
               mg_runs > 0 ? mg_sum_ms / (double) mg_runs : 0.0, mg_seen_ptrs );
     send_to_char( buf, ch );
+    recycle_tracked( &tracked_live, &tracked_dead );
+    snprintf( buf, sizeof(buf),
+              "  Tracked by address: %ld live, %ld in quarantine. A pointer to neither is\n\r"
+              "  taken as freed and never read; one to an address reused by the same\n\r"
+              "  kind reads as live and is not caught.\n\r",
+              tracked_live, tracked_dead );
+    send_to_char( buf, ch );
     snprintf( buf, sizeof(buf), "  Stale pointers caught since boot: %ld.\n\r", mg_total );
     send_to_char( buf, ch );
+    if ( mg_freed_total > 0 || mg_relinked > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+                  "    of them already freed: %ld; found again after a cut list: %ld.\n\r",
+                  mg_freed_total, mg_relinked );
+        send_to_char( buf, ch );
+    }
     for ( i = 0, shown = 0; i < MG_FIELDS; i++ )
     {
         if ( mg_caught[i] == 0 )

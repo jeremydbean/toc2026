@@ -5223,6 +5223,19 @@ saw a use after free or a double free in any of them. They are gone:
   `str_perm`) and a prototype's affects safe from extraction. Instance
   data that is freed later -- `create_object`'s random affects, notes,
   bans, an object's own extra descriptions -- comes from `alloc_mem`.
+- **"Is this pointer in that block" is asked on integers**
+  (`src/memrange.c`, review 2026-11-12). C defines `<`/`>=` only between
+  pointers into one object, and the pointer asked about is usually an
+  ordinary heap allocation, so `is_perm_memory` ordering it against
+  alloc_perm's bounds and `free_string`/`str_dup`/`str_perm` against
+  `string_space` were undefined (ASan `-fsanitize=pointer-compare`,
+  `detect_invalid_pointer_pairs=2`: invalid-pointer-pair). The perm blocks
+  are a `MEM_BLOCK_SET` of `uintptr_t` bases; membership is
+  `addr - base < size` in unsigned arithmetic (`mem_addr_in`), interior
+  pointers in, one past the end out; `in_string_space()` in `db.c` is the
+  one string-space test. Never write `p >= block && p < end` across
+  allocations again; `tests/test_memory_ranges.py` fails on it and runs
+  `tests/test_memrange.c` under that sanitizer.
 - **Characters (with their pcdata), objects and descriptors are released
   to `src/recycle.c`** (`char_data_release`, `obj_data_release`,
   `descriptor_data_release`) and freed by `recycle_flush()` at the top of
@@ -5239,18 +5252,35 @@ saw a use after free or a double free in any of them. They are gone:
 Owner, 2026-11-11: with the pools gone, a stale pointer that survives
 into a later pass reads freed memory, so any left in live play must be
 **seen at once and survived**, to be fixed at the next check-in.
-`src/recycle.c` and `src/memguard.c`; `tests/test_memory_guard.py`.
+`src/recycle.c`, `src/memtrack.c` and `src/memguard.c`;
+`tests/test_memory_guard.py`, `tests/test_memory_ranges.py`.
 
-- **Liveness tags.** CHAR_DATA, OBJ_DATA and DESCRIPTOR_DATA carry
-  `mem_magic`: `MEM_ALIVE_*` when made (`char_data_new`/`clear_char`,
-  `obj_data_new` and both `obj_zero` copies, `new_descriptor`),
-  `MEM_DEAD_*` when handed to recycle.c. `char_is_live`, `obj_is_live`
-  and `desc_is_live` are true for NULL and for anything **not tagged
-  dead** -- stack stand-ins (`offline_desc`, gear_compare's candidate,
-  save.c's vessel) carry no ALIVE tag and are not stale. A tag is only
-  meaningful within the quarantine window; a block freed after it reads
-  as whatever the allocator put there. A second release is refused by the
-  tag, as before.
+- **Liveness by address, never by reading** (`src/memtrack.c`, review
+  2026-11-12). Every CHAR_DATA, OBJ_DATA and DESCRIPTOR_DATA is
+  registered in an address set (open addressing, O(1)) by
+  `char_data_new`/`obj_data_new`/`descriptor_data_new`, marked dead by
+  its release and forgotten by `quarantine_free_block` before the
+  `free`. `char_liveness`/`obj_liveness`/`desc_liveness` answer
+  `MEM_STATE_LIVE` (NULL, or made and not released), `MEM_STATE_DEAD`
+  (in quarantine: whole, its own fields safe to read) or
+  `MEM_STATE_FREED` (anything else -- freed, the address now holding
+  another kind, or never made here) **without touching the memory**;
+  `*_is_live` is "LIVE". The checks used to read `mem_magic`, and once
+  the window was over or the cap passed that read was itself a use after
+  free (`tests/test_recycle_liveness.c`, cap saturation). `mem_magic`
+  (`MEM_ALIVE_*`/`MEM_DEAD_*`) is still written, for a debugger, and
+  decides nothing. A second release -- or a release of a stand-in -- is
+  refused by the set. **What it cannot see**: an address freed and handed
+  to a new block of the same kind reads LIVE, so a stale pointer to it is
+  indistinguishable from a fresh one (no generation is kept: every holder
+  would have to store one beside the pointer); the quarantine makes reuse
+  unlikely inside its window, not impossible after it. **Stand-ins read
+  as freed**: `offline_desc`, gear_compare's stack candidate and save.c's
+  static vessel are never registered, which is safe because each lives
+  inside one command and the sweep and hot spots run from the game loop,
+  never inside a command, and none is stored where they look (the
+  vessel's stash objects carry `carried_by` NULL). Never store a pointer
+  to a stack or static stand-in in a field the sweep checks.
 - **Quarantine.** A released block is kept whole (never poisoned, so a
   stale read behaves as the old pool did) for `MEM_QUARANTINE_SECS` (60;
   `TOC_MEM_QUARANTINE_SECS` overrides, 0 to 3600) and at most
@@ -5258,8 +5288,10 @@ into a later pass reads freed memory, so any left in live play must be
   `recycle_flush` at the top of the game loop -- never mid-pass, so the
   cap may be passed until the next flush. **Under ASan the window is 0**
   unless the environment sets one, so the sanitizer still reports a use
-  after free itself; a test that needs the sweep to see a tag sets the
-  window (`test_memory_guard` uses 30). Each entry keeps a label written
+  after free itself (in the game's own code; the guard's checks no longer
+  read, so they report "freed" instead); a test that needs the sweep to
+  find a block still dead sets the window (`test_memory_guard` uses 30,
+  and 0 for the freed case). Each entry keeps a label written
   at release from what is still safe to read: a player's name
   (`recycle_label_char`, called by `free_char` before the strings go), a
   mobile's or object's prototype, a descriptor's socket number -- never
@@ -5274,8 +5306,10 @@ into a later pass reads freed memory, so any left in live play must be
   `MEMORY: stale <field> on <who> -> dead <kind> (<label>)` to toc.log
   (ten a field a minute, then a count), a **nameless** BUG row to the play
   journal, and a WIZINFO once a field a minute at the holder's
-  `staff_notice_level`. Measured at about 2 ms a run on a full test
-  world (5,556 characters, 6,013 objects, 85,000 pointers).
+  `staff_notice_level`; a freed one writes `-> freed <kind> (gone from
+  quarantine; not read)` -- nothing is known of it, so there is no label
+  -- and MEMCHECK counts those apart. Measured at about 2 ms a run on a
+  full test world (5,556 characters, 6,013 objects, 85,000 pointers).
 - **Repairs**, each the least that leaves the game consistent:
   fighting is cleared *then* `stop_fighting(ch, FALSE)` resets the
   position (stop_fighting would write the dead opponent's battle ticks);
@@ -5284,7 +5318,13 @@ into a later pass reads freed memory, so any left in live play must be
   hunter-list slot is emptied; a dead master also lifts charm and
   `ridden`; a dead pet unmounts; a dead desc leaves the character
   link-dead; a list link to a dead object or character is unlinked
-  through the dead block's own link; an object whose holder or container
+  through the dead block's own link, and a list reaching a **freed** one
+  is cut there (its link cannot be read) and `mg_relink` puts back what
+  followed from the other side -- an object's `carried_by`, `in_obj` or
+  `in_room`, a character's `in_room`, a playing character's `desc` --
+  logging how many it found; a stash's objects keep no owner, so what
+  followed a cut there is lost to it (PRESTORE STASH), as is a descriptor
+  past a cut whose character is not in the game yet; an object whose holder or container
   is dead goes to the floor of Limbo (room 2) rather than being
   extracted, since it may be a player's -- the log line names its vnum;
   a character in a dead bottle is let out as `char_from_obj` would (a
@@ -5299,10 +5339,12 @@ into a later pass reads freed memory, so any left in live play must be
   sweep itself then read the purged corpse once the quarantine had freed
   it -- an ASan heap-use-after-free in `obj_is_live` with no quarantine,
   whenever the sweep ran a pass after the purge;
-  `tests/test_memcheck_purge.py`). **The sweep reads a pointer to learn
-  whether it is dead, so it is only safe inside the quarantine window:**
-  a field that is meant to outlive its target must be cleared at the
-  target's extraction, never left for the sweep.
+  `tests/test_memcheck_purge.py`). Since 2026-11-12 the sweep no longer
+  reads a pointer to learn whether it is dead, so it survives one past
+  the window -- but it can only say "freed", and an address reused by the
+  same kind it cannot see at all: a field that is meant to outlive its
+  target must still be cleared at the target's extraction, never left
+  for the sweep.
 - **Hot spots ask first**: `violence_update` (`memguard_fighting_ok`),
   `hunt_victim` (`memguard_hunting_ok`), `hunting_update`
   (`memguard_hunter_slot_ok`), the output loop
@@ -5310,15 +5352,19 @@ into a later pass reads freed memory, so any left in live play must be
   `do_reply` (`memguard_reply_ok`). A new timer that follows a stored
   pointer asks too; a new pointer field goes into the sweep.
 - **MEMCHECK** (IM, after MEMORY so MEM is still MEMORY): quarantine,
-  live counts, sweep cost, catches by field, the last five events. Each
+  live counts, the address set's live and quarantined counts (and the
+  limit above), sweep cost, catches by field (how many were already
+  freed, and how many relinked), the last five events. Each
   event keeps the trust that may read it -- the higher of the holder's
   and the dead target's `staff_notice_level`, the target's taken at its
   release (`recycle_label_char`) -- and MEMCHECK shows a viewer only the
   events at or below their trust (review, 2026-11-11: a level 60 read a
   wizinvis 70's name). Counts are not names and are shown to all.
   `MEMCHECK SELFTEST` works only with `TOC_MEMCHECK_SELFTEST=1`: it
-  retires a mobile straight through `char_data_release` behind the
-  caller's REPLY, for the next sweep to catch.
+  aims the caller's REPLY at a mobile in no list, which the next sweep
+  retires straight through `char_data_release` (`mg_selftest_retire`), so
+  the sweep after it is the first to look, across at least one flush:
+  "dead" inside a window, "freed" with `TOC_MEM_QUARANTINE_SECS=0`.
 - **crash.log has a backtrace**: the handler writes the build (first word
   of `../.code-revision` or `../log/deployed-commit`, read at boot) and
   `backtrace()`/`backtrace_symbols_fd()` under `__GLIBC__` (warmed once

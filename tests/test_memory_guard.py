@@ -4,7 +4,11 @@ Since ROM's pools went (2026-11-11), a character, object or descriptor
 handed to src/recycle.c is freed for real, and a pointer that outlives it
 reads freed memory. The safeguards (owner, 2026-11-11):
 
-1. Liveness tags: MEM_ALIVE_* when made, MEM_DEAD_* when released.
+1. Liveness by address (memtrack.c, 2026-11-12): registered live when
+   made, dead when released, forgotten when freed, and looked up without
+   reading the block -- so a pointer whose target the quarantine has
+   already freed reads as "freed" instead of being read (the old
+   MEM_ALIVE_*/MEM_DEAD_* tag check was itself a use after free then).
 2. Quarantine: a released block is kept whole for MEM_QUARANTINE_SECS
    (TOC_MEM_QUARANTINE_SECS overrides; 0 under ASan) and a count cap, so a
    stale read behaves as the old pool did and the dead tag can be seen.
@@ -79,7 +83,7 @@ class MemoryGuardSourceTests(unittest.TestCase):
                       "obj_is_live( obj->in_obj )", "&obj->contains",
                       "&room->contents", "&room->people",
                       "desc_is_live( d->snoop_by )", "char_is_live( d->original )",
-                      "char_is_live( d->character )", "desc_is_live( d )",
+                      "char_is_live( d->character )", "desc_liveness( d )",
                       "memguard_fighting_ok( ch )", "memguard_hunting_ok( ch )",
                       "memguard_reply_ok( ch )", "memguard_hunter_slot_ok( i )",
                       "FOR_EACH_CHARACTER", "FOR_EACH_OBJECT"):
@@ -136,20 +140,88 @@ class MemoryGuardSourceTests(unittest.TestCase):
         self.assertRegex(interp[memcheck:memcheck + 120], r"do_memcheck,\s*POS_DEAD,\s*IM,")
         selftest = body("memguard.c", "static void memcheck_selftest( CHAR_DATA *ch )")
         self.assertIn('getenv( "TOC_MEMCHECK_SELFTEST" )', selftest)
-        # Retired as a bug would leave it: no extract_char, no free_char.
-        self.assertNotIn("extract_char", selftest)
-        self.assertNotIn("free_char", selftest)
-        self.assertIn("char_data_release( mob );", selftest)
+        # Retired as a bug would leave it: no extract_char, no free_char --
+        # at the end of the next sweep, so the sweep after it is the first
+        # to look, across at least one recycle_flush.
+        retire = body("memguard.c", "static void mg_selftest_retire( void )")
+        for part in (selftest, retire):
+            self.assertNotIn("extract_char", part)
+            self.assertNotIn("free_char", part)
+        self.assertIn("char_data_release( mob );", retire)
+        sweep = body("memguard.c", "void memguard_sweep( void )")
+        self.assertIn("mg_selftest_retire( );", sweep)
         self.assertIn("60 MEMCHECK~", (ROOT / "area" / "commands.are").read_text(encoding="latin-1"))
+
+    def test_liveness_never_reads_the_block(self) -> None:
+        """A check of a pointer whose target may be freed reads only the
+        address set (review, 2026-11-12: the mem_magic read was a use after
+        free once the quarantine had freed the block)."""
+        recycle = source("recycle.c")
+        for sig in ("bool char_data_released( const CHAR_DATA *ch )",
+                    "int char_liveness( const CHAR_DATA *ch )",
+                    "bool char_is_live( const CHAR_DATA *ch )",
+                    "bool obj_data_released( const OBJ_DATA *obj )",
+                    "int obj_liveness( const OBJ_DATA *obj )",
+                    "bool obj_is_live( const OBJ_DATA *obj )",
+                    "int desc_liveness( const DESCRIPTOR_DATA *d )",
+                    "bool desc_is_live( const DESCRIPTOR_DATA *d )",
+                    "static int recycle_liveness( const void *p, int kind )"):
+            fn = body("recycle.c", sig)
+            self.assertNotIn("->", fn, sig)
+            self.assertNotIn("mem_magic", fn, sig)
+        # Registered at every allocation, marked dead at every release, and
+        # forgotten before the free.
+        for new, kind in (("CHAR_DATA *char_data_new( void )", "Q_CHAR"),
+                          ("OBJ_DATA *obj_data_new( void )", "Q_OBJ"),
+                          ("DESCRIPTOR_DATA *descriptor_data_new( void )", "Q_DESC")):
+            self.assertIn("recycle_track( ", body("recycle.c", new), new)
+            self.assertIn(kind, body("recycle.c", new), new)
+        for release in ("void char_data_release( CHAR_DATA *ch )",
+                        "void obj_data_release( OBJ_DATA *obj )",
+                        "void descriptor_data_release( DESCRIPTOR_DATA *d )"):
+            self.assertIn("memtrack_dead(", body("recycle.c", release), release)
+        free_block = body("recycle.c", "static void quarantine_free_block( QUARANTINE_ENTRY *e )")
+        self.assertLess(free_block.index("memtrack_forget( e->ptr );"),
+                        free_block.index("free( e->ptr );"))
+        self.assertIn("src/memtrack.c", (ROOT / "CMakeLists.txt").read_text())
+        self.assertNotIn("mem_magic", source("memguard.c"))
+
+    def test_a_freed_list_member_is_cut_never_followed(self) -> None:
+        """A dead (quarantined) list member is unlinked through its own
+        link; a freed one cannot be read, so the list is cut there and
+        mg_relink finds the rest from their own side."""
+        guard = source("memguard.c")
+        for sig in ("static void mg_obj_list(", "static void mg_char_room_list("):
+            fn = body("memguard.c", sig)
+            dead = fn.index("if ( state == MEM_STATE_DEAD )")
+            self.assertIn("next_", fn[dead:dead + 120], sig)
+            self.assertIn("*link = NULL;", fn[dead:], sig)
+        sweep = body("memguard.c", "void memguard_sweep( void )")
+        self.assertIn("mg_desc_cut = TRUE;", sweep)
+        self.assertIn("mg_relink( );", sweep)
+        relink = body("memguard.c", "static void mg_relink( void )")
+        for side in ("obj->carried_by->carrying", "obj->in_obj->contains",
+                     "obj->in_room->contents", "ch->in_room->people", "descriptor_list = ch->desc"):
+            self.assertIn(side, relink)
+        self.assertIn('"MEMORY: stale %s on %s -> freed %s (gone from quarantine; not read)"', guard)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class MemoryGuardLiveTests(unittest.TestCase):
     def test_a_stale_reply_is_caught_logged_and_repaired(self) -> None:
-        env = {"TOC_MEMCHECK_SELFTEST": "1",
-               # Long enough for the sweep to see the tag in every build;
-               # ASan's own default is no window at all.
-               "TOC_MEM_QUARANTINE_SECS": "30"}
+        # Long enough for the sweep to find the block still in quarantine in
+        # every build; ASan's own default is no window at all.
+        self.play_selftest("30", "dead", r"\(mob \d+ ")
+
+    def test_a_reply_to_a_freed_block_is_caught_without_reading_it(self) -> None:
+        """No window: the retired mobile is freed at the next pass, before
+        any sweep looks. The sweep used to read its tag -- a use after free
+        ASan stopped the server on -- and now asks the address set, says
+        "freed" and clears the pointer (review, 2026-11-12)."""
+        self.play_selftest("0", "freed", r"\(gone from quarantine; not read\)")
+
+    def play_selftest(self, window: str, state: str, detail: str) -> None:
+        env = {"TOC_MEMCHECK_SELFTEST": "1", "TOC_MEM_QUARANTINE_SECS": window}
         with LiveMud(extra_env=env) as mud:
             with mud.connect(timeout=120) as client:
                 create_character(client, "Zmemguard", PW)
@@ -164,7 +236,7 @@ class MemoryGuardLiveTests(unittest.TestCase):
                 staff.must("memcheck selftest", "Self-test")
 
                 log = mud.root / "log" / "toc.log"
-                wanted = re.compile(r"MEMORY: stale reply on Zmemguard -> dead character \(mob \d+ ")
+                wanted = re.compile(rf"MEMORY: stale reply on Zmemguard -> {state} character {detail}")
                 deadline = time.monotonic() + 15
                 text = ""
                 while time.monotonic() < deadline:
@@ -179,13 +251,18 @@ class MemoryGuardLiveTests(unittest.TestCase):
                 self.assertRegex(after, r"reply\s+1")
                 self.assertIn("MEMORY: stale reply on Zmemguard", after)
                 self.assertRegex(after, r"Sweep: \d+ runs; last \d+\.\d{3} ms")
+                self.assertRegex(after, r"Tracked by address: \d+ live, \d+ in quarantine")
+                if state == "freed":
+                    self.assertIn("of them already freed: 1;", after)
+                else:
+                    self.assertNotIn("already freed", after)
 
                 # Repaired: REPLY no longer follows it, and the game answers.
                 self.assertIn("They aren't here.", staff.sync("reply hello"))
                 self.assertIn("Zmemguard", staff.sync("who"))
 
                 journal = (mud.root / "log" / "play.tsv").read_text(encoding="latin-1")
-                self.assertIn("MEMORY: stale reply -> dead character, repaired", journal)
+                self.assertIn(f"MEMORY: stale reply -> {state} character, repaired", journal)
                 self.assertTrue(re.search(r"\tbug\t", journal))
                 staff.send("quit")
                 staff.wait_closed()
