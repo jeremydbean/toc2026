@@ -987,6 +987,9 @@ void playlog_coin( CHAR_DATA *ch, long amount, long unit, bool pile )
                    coin_override != NULL ? coin_override
                                          : own ? current_cmd : "other",
                    copper );
+        diary_coin( ch, true, coin_override != NULL ? coin_override
+                                                    : own ? current_cmd : "other",
+                    copper );
     }
     else
     {
@@ -1010,6 +1013,8 @@ void playlog_coin( CHAR_DATA *ch, long amount, long unit, bool pile )
         ch->pcdata->play_coin[kind] = LONG_MAX;
     else
         ch->pcdata->play_coin[kind] += copper;
+    if ( kind != COIN_SPENT )
+        diary_coin( ch, false, coin_source_names[kind], copper );   /* diary.c */
 
     /* Every change of purse, one row: how much, which tally it went to,
        the command, where it came from (the corpse or box, the keeper),
@@ -1046,6 +1051,8 @@ void playlog_bank( CHAR_DATA *ch, long copper, const char *why )
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || copper == 0 )
         return;
+    diary_coin( ch, copper < 0, copper < 0 ? "bank" : "interest",
+                copper < 0 ? ( copper == LONG_MIN ? LONG_MAX : -copper ) : copper );
     snprintf( fields, sizeof(fields), "%s%ld\t%s\t%s\t%s\t%ld",
               copper < 0 ? "-" : "+", copper < 0 ? -copper : copper,
               "bank", why != NULL ? why : "-", "bank", play_wealth( ch ) );
@@ -1070,6 +1077,7 @@ void playlog_got( CHAR_DATA *ch, OBJ_DATA *obj )
               obj->pIndexData->vnum, name, item_type_name( obj ), obj->level,
               (long) obj->cost, playlog_how( ch ), from );
     journal_write( "got", ch, fields );
+    diary_got( ch, obj );                       /* diary.c */
 }
 
 /* A level gained (advance_level): from, to, how long the last one took. */
@@ -1088,6 +1096,7 @@ void playlog_level( CHAR_DATA *ch, int from, bool is_advance )
               is_advance ? "advance" : playlog_how( ch ) );
     ch->pcdata->play_level_at = current_time;
     journal_write( "level", ch, fields );
+    diary_level( ch, from );                    /* diary.c */
 }
 
 /* From char_to_room: a player crossing into another area, with the time
@@ -1101,6 +1110,7 @@ void playlog_moved( CHAR_DATA *ch )
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || ch->in_room == NULL
     ||   ch->desc == NULL || ch->desc->connected != CON_PLAYING )
         return;
+    diary_moved( ch );                          /* diary.c: time in each area */
     area = ch->in_room->area;
     if ( area == ch->pcdata->play_area )
         return;
@@ -1146,6 +1156,7 @@ void playlog_skill( CHAR_DATA *ch, int sn, int before, bool from_success )
               ch->pcdata->learned[sn], from_success ? "success" : "mistake",
               playlog_how( ch ) );
     journal_write( "skill", ch, fields );
+    diary_skill( ch, sn, before );              /* diary.c */
 }
 
 /* A quest handed out: its kind, what to do, the target, its level and
@@ -1197,6 +1208,8 @@ void playlog_exp( CHAR_DATA *ch, long amount, bool capped )
         source = label;
     }
     tally_add( ch->pcdata->play_exp_from, ch->pcdata->play_exp, source, amount );
+    if ( !capped )
+        diary_exp( ch, amount );                /* diary.c */
 }
 
 /* "stash 1550p, heal 30g" -- "kills +12034, death -800" -- or "none". */

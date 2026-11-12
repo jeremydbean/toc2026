@@ -1516,6 +1516,8 @@ void char_update( void )
                 bank_interest( ch );
             /* The play journal's sanity checks (playlog.c). */
             playlog_tick( ch );
+            /* Today's page of the diary: time played, area (diary.c). */
+            diary_tick( ch );
         }
 
 //	if ( ch->timer > 20 )

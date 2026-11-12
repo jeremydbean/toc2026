@@ -149,6 +149,8 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	    }
 	}
 	durable_dir_sync( strsave );
+	/* The diary is set aside, so the name's next owner starts clean. */
+	diary_retire( ch );
 	log_string("[DELETE] Character self-deleted.");
 	playlog_result( ch, "success", "-" );
 	quit_discards_file = TRUE;

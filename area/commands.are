@@ -1032,6 +1032,37 @@ score sheet.  Use of the command is logged.
 See also: HOLYLIGHT, WIZINVIS, CLOAK, RESTORE
 ~
 
+0 DIARY~
+Syntax: diary
+        diary yesterday
+        diary <yyyy-mm-dd>
+        diary list
+
+Your diary writes down each day you play, by itself: how long you played,
+the levels and experience you gained, your kills (bosses and guardians by
+name), your deaths and close calls, the quests and dailies you finished
+with their points, the achievements you earned, the skills you improved,
+the areas you went through and how long you spent in each, the things you
+came by, and your coin -- what you earned, where from, and what you spent
+it on.
+
+DIARY shows today, DIARY YESTERDAY the day before, and DIARY with a date,
+such as DIARY 2026-11-12, any day it still holds.  DIARY LIST shows the
+days at a glance, one line each, newest first.  The diary keeps your last
+30 days; the oldest is let go as a new one begins.
+
+A day is the game's own calendar day, the one the holidays follow; the
+page turns at the game's midnight even while you are playing.  Things taken
+out of your own bag, corpse or stash are not counted as gained, and food,
+potions, scrolls and coin are left out of what you came by.
+
+Only you can read your diary.  The staff may read it to help you with a
+problem.  It never says who else was there, what anybody said, or which
+room you stood in.  The staff keep no diary.
+
+See also: SCORE, ACHIEVEMENTS, AQUEST, HISTORY
+~
+
 0 CHANGES~
 Syntax: changes
         changes all

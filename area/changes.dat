@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112diary 2026-11-12
+Your diary: DIARY shows what you did today -- time played, levels and
+experience, kills and close calls, quests, achievements, skills, the areas
+you went through, what you came by and your coin in and out. DIARY
+YESTERDAY, DIARY <yyyy-mm-dd> and DIARY LIST read the last 30 days. Only
+you can read it. HELP DIARY says more.
+
 @ 20261112wimpy 2026-11-12
 WIMPY now holds any number of hit points up to half your maximum. Past
 32,767 it used to be stored wrong -- WIMPY 40000 became a negative number --

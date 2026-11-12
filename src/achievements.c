@@ -1361,6 +1361,7 @@ static bool achievement_unlock(CHAR_DATA *ch, int index, bool announce)
     definition = &achievement_table[index];
     playlog_achieved(ch, definition->key, definition->points,
                      achievement_points(ch));               /* log/play.tsv */
+    diary_achieved(ch, definition->title, definition->points); /* diary.c */
 
     if (achievement_can_announce(ch, announce))
     {
@@ -1574,6 +1575,19 @@ static void achievement_hyrule_fair_fight(CHAR_DATA *credit, CHAR_DATA *victim,
     }
     achievement_party_event(credit, victim->in_room,
         (achievement_event_type)(ACHIEVEMENT_EVENT_HYRULE_BAND_FIRST + dungeon));
+}
+
+/* Whether a boss row names this mobile: the diary writes such a kill
+   down by name (diary.c). */
+bool achievement_boss_vnum(int vnum)
+{
+    int index;
+
+    for (index = 0; index < achievement_table_count(); index++)
+        if (achievement_table[index].requirement == ACH_REQ_BOSS
+            && achievement_table[index].target == vnum)
+            return true;
+    return false;
 }
 
 void achievement_record_kill(CHAR_DATA *killer, CHAR_DATA *victim)

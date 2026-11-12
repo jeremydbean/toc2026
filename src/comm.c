@@ -4120,6 +4120,11 @@ case CON_DEFAULT_CHOICE:
 	{
 	    bool is_new_character = ( ch->level == 0 );
 
+	    /* The diary's page for today, before anything moves them: a new
+	       character's name may hold an old diary, set aside here
+	       (diary.c). */
+	    diary_login( ch, is_new_character );
+
 	    if ( is_new_character )
 	    {
 	        ch->level   = 1;

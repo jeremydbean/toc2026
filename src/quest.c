@@ -421,6 +421,7 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     ch->questdaily = false;
     if ( ch->pcdata->session_quests < INT_MAX )
         ch->pcdata->session_quests++;
+    diary_quest_done( ch, true, points );           /* diary.c */
     quest_note_area( ch );
     achievement_record_quest(ch);
     achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_QUEST, true);
@@ -728,6 +729,7 @@ static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
 
     if ( !IS_NPC(ch) && ch->pcdata->session_quests < INT_MAX )
         ch->pcdata->session_quests++;
+    diary_quest_done( ch, false, 0 );           /* diary.c: points at the gamble */
     if ( completed_emergency )
         do_say(questman,
             "You answered the emergency in time - the realm will not "
@@ -1180,6 +1182,8 @@ void do_quest(CHAR_DATA *ch, char *argument)
             {
 		int awarded = add_quest_points(ch, wagered * 2);
 
+		diary_quest_points(ch, awarded);
+
                 snprintf(buf, sizeof(buf),
 		    "\n\r{0D** Fortune SMILES upon you!"
 		    " You WIN %d quest points! **{00\n\r\n\r",
@@ -1210,6 +1214,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 
             ch->questgamble_pts = 0;
 	    awarded = add_quest_points(ch, claimed);
+	    diary_quest_points(ch, awarded);
             snprintf(buf, sizeof(buf),
 		"{06Wise choice. You safely collect {0D%d{00{06 quest points.{00\n\r",
 		awarded);

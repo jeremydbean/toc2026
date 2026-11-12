@@ -238,7 +238,7 @@ if git diff --cached --quiet; then
 fi
 
 changed=$(git diff --cached --name-only | wc -l)
-players=$(git diff --cached --name-only -- player ':(exclude)player/versions' | wc -l)
+players=$(git diff --cached --name-only -- player ':(exclude)player/versions' ':(exclude)player/diary' | wc -l)
 git commit --quiet -m "State sync: $changed files, $players characters [skip ci]
 
 Automatic. Written by toc-state-sync on the host that is running the
