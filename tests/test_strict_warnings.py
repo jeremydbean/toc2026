@@ -89,8 +89,12 @@ def sanitizer_supported() -> bool:
 
 def compile_one(job: tuple[Path, tuple[str, ...]]) -> tuple[Path, str]:
     path, variant = job
+    # Compiled to an object, not -fsyntax-only: -Wformat-truncation and its
+    # kind are reported by the compiler's middle end, which syntax-only
+    # never runs -- eight snprintf sites the -O0 sanitizer build warned on
+    # passed this test until 2026-11-12.
     proc = subprocess.run(
-        [CC, "-std=c17", *variant, "-DROM", "-Dunix", "-I", str(SRC), "-fsyntax-only",
+        [CC, "-std=c17", *variant, "-DROM", "-Dunix", "-I", str(SRC), "-c", "-o", os.devnull,
          *STRICT_FLAGS, *ARITH, str(path)],
         cwd=ROOT, capture_output=True, text=True, errors="replace", timeout=300)
     return path, proc.stderr if proc.returncode == 0 else proc.stderr + "\n(compile failed)"
@@ -169,6 +173,9 @@ class BuildFlagTests(unittest.TestCase):
         self.assertIn("-Werror=format-overflow", cmake)
         self.assertIn(FORMAT_FLAG, validate)
         self.assertIn("-Werror=format-overflow", validate)
+        # -Wall's -Wformat-truncation, an error too (2026-11-12).
+        self.assertIn("-Werror=format-truncation", cmake)
+        self.assertIn("-Werror=format-truncation", validate)
 
 
 class WideCharacterFieldTests(unittest.TestCase):

@@ -32,6 +32,10 @@ if [ "${TOC_STRICT_CONVERSION:-0}" = "1" ]; then
   strict_warnings="$strict_warnings -Werror=shadow -Werror=sign-compare -Werror=conversion -Werror=sign-conversion"
   strict_warnings="$strict_warnings -Werror=cast-qual -Werror=missing-prototypes -Werror=unused-parameter $arith_error"
   strict_warnings="$strict_warnings -Werror=strict-prototypes -Werror=old-style-definition -Werror=format-overflow"
+  # An snprintf that may cut its text short: -Wall's -Wformat-truncation,
+  # which gcc reports only unoptimised (-O0, the sanitizer build) and
+  # clang reads differently; gcc only, like -Warith-conversion.
+  [ -n "$arith_error" ] && strict_warnings="$strict_warnings -Werror=format-truncation"
 fi
 python_bin="${PYTHON:-python3}"
 run_smoke="${RUN_SMOKE:-0}"

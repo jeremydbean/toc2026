@@ -160,6 +160,7 @@ set(TOC_CONVERSION_ERRORS
     -Werror=old-style-definition
     $<$<C_COMPILER_ID:GNU>:-Werror=arith-conversion>
     $<$<C_COMPILER_ID:GNU>:-Werror=format-overflow>
+    $<$<C_COMPILER_ID:GNU>:-Werror=format-truncation>
 )
 
 set(SANITIZER_FLAGS

@@ -931,8 +931,13 @@ each is kept clean:
 `-Wstrict-prototypes`, `-Wold-style-definition` and gcc's
 `-Wformat-overflow=2` joined the line on 2026-11-12 (Makefile
 `QUALITY_WARNINGS`, CMake's lists, `validate.sh`, the test). Still outside
-it: gcc's `-Wformat-truncation` (on by `-Wall`) reports eight `snprintf`
-sites in the -O0 sanitizer build.
+it: nothing. gcc's `-Wformat-truncation` (on by `-Wall`) is an error too
+since 2026-11-12: it is reported only unoptimised (-O0, which the
+sanitizer build is), so `tests/test_strict_warnings.py` compiles each file
+to an object (`-c -o /dev/null`) rather than `-fsyntax-only`, which never
+ran the pass that finds it. Eight `snprintf` sites had been cutting text
+short silently; each was given room or a stated precision, and BUILD's
+place answer is refused when PLACE could not take it whole.
 
 ## Player-Facing Bug Review
 

@@ -924,6 +924,36 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("sanctuary", guidance)
         self.assertIn("20 percent", guidance)
 
+    def test_the_triforce_is_the_best_light_there_is(self) -> None:
+        """Owner, 2026-11-12: the best light gear that exists, a little
+        better than the best-in-slot lights. Against every other light in
+        the world (item type 1), at every level: more hitroll, damroll,
+        hit points and mana than any, better armour and a better save than
+        any, and nothing taken away."""
+        def applies(obj) -> dict[int, int]:
+            out: dict[int, int] = {}
+            for affect in obj.affects or []:
+                out[affect["location"]] = out.get(affect["location"], 0) + affect["modifier"]
+            return out
+
+        triforce = applies(self.parser.objects[30286])
+        self.assertTrue(all(value > 0 for loc, value in triforce.items() if loc not in (17, 24)),
+                        triforce)
+        others = [o for vnum, o in self.parser.objects.items()
+                  if o.item_type == "1" and vnum != 30286]
+        self.assertGreater(len(others), 40)
+        for location, name in ((18, "hitroll"), (19, "damroll"), (13, "hit points"),
+                               (12, "mana")):
+            best = max(applies(o).get(location, 0) for o in others)
+            self.assertGreater(triforce.get(location, 0), best, name)
+            self.assertLessEqual(triforce.get(location, 0), best + 5,
+                                 name + ": slightly better, not out of reach")
+        best_ac = min(applies(o).get(17, 0) for o in others)
+        self.assertLess(triforce.get(17, 0), best_ac, "armour")
+        best_save = min(min(applies(o).get(loc, 0) for loc in (20, 21, 22, 23, 24))
+                        for o in others)
+        self.assertLessEqual(triforce.get(24, 0), best_save, "a save as good as any")
+
     def test_the_triforce_is_worn_as_a_light_and_gives_holy_sight(self) -> None:
         triforce = self.parser.objects[30286]
         self.assertEqual(triforce.item_type, "1", "WEAR puts a light in the light slot")

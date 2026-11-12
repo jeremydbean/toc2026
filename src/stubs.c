@@ -498,7 +498,8 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     int i, s;
     int selected = 0;
     int added = 0;     /* new powers, not ones handed back */
-    char granted[MAX_STRING_LENGTH];   /* their names, for the staff notice */
+    char granted[MAX_STRING_LENGTH - 256];   /* their names, for the staff notice;
+                                                room left in its sentence */
     char normalized_spec[MAX_STRING_LENGTH];
     char invalid[MAX_INPUT_LENGTH];
     bool spec_only;

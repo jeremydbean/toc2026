@@ -1641,8 +1641,11 @@ static void show_obj( CHAR_DATA *ch, OBJ_INDEX_DATA *o )
                   paf->modifier, enum_name( apply_names, paf->location ) );
         toc_strlcat( buf, one, sizeof(buf) );
     }
-    snprintf( flags, sizeof(flags), "affects: %s\n\r", buf[0] != '\0' ? buf : "none" );
-    toc_strlcat( out, flags, size );
+    /* Straight into out: through flags (1024) a long list was cut short
+       (-Wformat-truncation, 2026-11-12). */
+    toc_strlcat( out, "affects: ", size );
+    toc_strlcat( out, buf[0] != '\0' ? buf : "none", size );
+    toc_strlcat( out, "\n\r", size );
     if ( grants != 0 )
     {
         flag_names( affect_names, grants, flags, sizeof(flags) );
@@ -1657,8 +1660,9 @@ static void show_obj( CHAR_DATA *ch, OBJ_INDEX_DATA *o )
             toc_strlcat( buf, ", ", sizeof(buf) );
         toc_strlcat( buf, ed->keyword, sizeof(buf) );
     }
-    snprintf( flags, sizeof(flags), "details: %s\n\r", buf[0] != '\0' ? buf : "none" );
-    toc_strlcat( out, flags, size );
+    toc_strlcat( out, "details: ", size );
+    toc_strlcat( out, buf[0] != '\0' ? buf : "none", size );
+    toc_strlcat( out, "\n\r", size );
 
     snprintf( buf, sizeof(buf), "values:  %d %d %d %d %d\n\r",
               o->value[0], o->value[1], o->value[2], o->value[3], o->value[4] );
@@ -3919,7 +3923,10 @@ void build_wizard_input( CHAR_DATA *ch, const char *line )
             send_to_char( "Give a vnum to copy, or press Enter for a blank one.\n\r", ch );
             return;
         }
-        snprintf( cmd, sizeof(cmd), "%d %s", ch->pcdata->wizard_vnum, answer );
+        /* A number, checked above, so it always fits; the precision says
+           so to the compiler (-Wformat-truncation, 2026-11-12). */
+        snprintf( cmd, sizeof(cmd), "%d %.*s", ch->pcdata->wizard_vnum,
+                  (int) ( sizeof(cmd) - 16 ), answer );
         if ( ch->pcdata->wizard_kind == WIZ_MOB )
             do_mcreate( ch, cmd );
         else
@@ -3987,8 +3994,17 @@ void build_wizard_input( CHAR_DATA *ch, const char *line )
         {
             if ( !str_prefix( answer, "floor" ) )
                 snprintf( cmd, sizeof(cmd), "obj %d", ch->pcdata->wizard_vnum );
+            else if ( strlen( answer ) > sizeof(cmd) - 24 )
+            {
+                /* PLACE's own arguments are read into input-sized
+                   buffers: an answer that would not fit is refused, never
+                   cut into a different place (-Wformat-truncation). */
+                send_to_char( "That is too long for a place; give a room vnum or a keyword.\n\r", ch );
+                return;
+            }
             else
-                snprintf( cmd, sizeof(cmd), "obj %d %s", ch->pcdata->wizard_vnum, answer );
+                snprintf( cmd, sizeof(cmd), "obj %d %.*s", ch->pcdata->wizard_vnum,
+                          (int) ( sizeof(cmd) - 24 ), answer );
             do_place( ch, cmd );
         }
         wiz_next( ch );
@@ -4534,8 +4550,9 @@ void do_rshow( CHAR_DATA *ch, char *argument )
             toc_strlcat( buf, ", ", sizeof(buf) );
         toc_strlcat( buf, ed->keyword, sizeof(buf) );
     }
-    snprintf( flags, sizeof(flags), "details: %s\n\r", buf[0] != '\0' ? buf : "none" );
-    toc_strlcat( out, flags, size );
+    toc_strlcat( out, "details: ", size );
+    toc_strlcat( out, buf[0] != '\0' ? buf : "none", size );
+    toc_strlcat( out, "\n\r", size );
 
     if ( room->area != NULL )
         for ( r = room->area->reset_first; r != NULL; r = r->next )

@@ -1492,7 +1492,9 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
 
 			if ( end > 0 )
 			{
-			    char joined[MAX_INPUT_LENGTH];
+			    /* Room for both halves whole; the cut below is the
+			       one that decides (-Wformat-truncation). */
+			    char joined[2 * MAX_INPUT_LENGTH + 2];
 
 			    snprintf( joined, sizeof(joined), "%s %.*s",
 				      parts[last], (int)UMIN( end, (size_t)MAX_INPUT_LENGTH ),

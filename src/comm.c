@@ -5751,7 +5751,9 @@ void record_logout( const char *name, const char *host, const char *event,
 static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
 {
     DESCRIPTOR_DATA *od;
-    char names[MAX_STRING_LENGTH];
+    /* Room in buf for the sentence around the names (-Wformat-truncation,
+       2026-11-12): a list this long is dozens of players on one address. */
+    char names[MAX_STRING_LENGTH - 512];
     char buf[MAX_STRING_LENGTH];
     int others = 0;
     int level;

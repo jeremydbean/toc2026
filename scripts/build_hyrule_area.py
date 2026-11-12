@@ -1963,6 +1963,25 @@ A 0 0 {AFF_HASTE_FLAG}"""
     )
 
 
+# The Triforce is the best light a mortal can wear (owner, 2026-11-12:
+# "not only holylight, but the best light gear that exists ... slightly
+# better" than the best-in-slot lights). Measured against every light in
+# the world and the lights level 54-59 characters wear (the lucky clover,
+# Starlight, the black staff of ancient magic; Starlight and the elven
+# staff at 50-53): the best light gives +3 hitroll, +3 damroll, +20 hit
+# points, +50 mana (the Sphere of Lanatir, with penalties), -5 armour and
+# -5 to a save. The Triforce gives a little more of each, and no penalty.
+# tests/test_hyrule_progression.py holds it above every light in the world.
+TRIFORCE_APPLIES = (
+    (18, 4),       # hitroll
+    (19, 4),       # damroll
+    (13, 25),      # hit points
+    (12, 55),      # mana
+    (17, -6),      # armour class
+    (24, -5),      # save vs spell
+)
+
+
 def triforce_record() -> str:
     """The Triforce, whole: a light, so WEAR puts it in the light slot.
 
@@ -1986,8 +2005,11 @@ Power, Wisdom and Courage, joined as one:
            /  \\  /  \\
           /____\\/____\\
 
-Wear it as a light and you see what is hidden, invisible or in the dark.
+Wear it as a light and you see what is hidden, invisible or in the dark,
+and its three virtues make you stronger than any other light could.
 ~"""
+    description += "".join(f"\nA\n{location} {modifier}"
+                           for location, modifier in TRIFORCE_APPLIES)
     return object_record(
         30286,
         "triforce golden triangles",
