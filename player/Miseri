@@ -2,7 +2,7 @@
 Name Miseri~
 Id   10516
 Serial 16626392
-LogO 1794515689
+LogO 1794515958
 Vers 4
 Prom ~
 Race human~
@@ -18,7 +18,7 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261112-quest-serial~
 Cast none
 Levl 14
 Tru  70
-Plyd 3515
+Plyd 3784
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -57,7 +57,7 @@ Achv hyrule-eagle 1794515480
 Achv carry-ten-platinum 1793111546
 AchSet areas 840101374 1103516333 ~
 AchSet rooms 3700 3744 3757 3759 4207 ~
-LastOut  1794515689
+LastOut  1794515958
 Rested 2769 0
 Daily 0 0 0 0 0
 SesLogin 1794341148
@@ -69,7 +69,7 @@ SesPK    0
 SesDead  0
 SesQuest 0
 Exp  32048
-Act  76012
+Act  76028
 AfBy 3678336
 AfBy2 4104
 Comm 24576
@@ -112,7 +112,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 188 765 179
-Cond 0 30 30
+Cond 0 25 25
 Alias / who~
 Alias ] recall~
 Sk 1 'mindbar'
@@ -184,7 +184,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 142 0 0
+Val  0 0 137 0 0
 End
 
 #O

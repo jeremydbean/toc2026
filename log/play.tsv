@@ -23195,3 +23195,17 @@
 1794515480	coin	Miseri	14	30413	hyrule.are	+300	loot	(violence_update)	corpse of Aquamentus	102901261
 1794515480	coin	Miseri	14	30413	hyrule.are	+26	loot	(violence_update)	corpse of Aquamentus	102901287
 1794515480	coin	Miseri	14	30413	hyrule.are	+90000	loot	(violence_update)	corpse of Aquamentus	102991287
+1794515863	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794515876	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	autoloot		Automatic corpse looting set.	-	-
+1794515880	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	kill	aqu	Your punch hits Aquamentus. // Your punch hits Aquamentus. // Your punch injures Aquamentus.	-	-
+1794515885	cmd	Miseri	14	30413	hyrule.are	fighting	100	0	fight	who		[14 Human   Monk  ] Miseri the Novice of Fire // Players found: 1	-	-
+1794516017	got	Miseri	14	30413	hyrule.are	30652	a pair of dragonclaw gloves	armor	8	3200000	(violence_update)	corpse of Aquamentus
+1794516017	got	Miseri	14	30413	hyrule.are	30702	a pair of talon boots	armor	8	3200000	(violence_update)	corpse of Aquamentus
+1794516017	got	Miseri	14	30413	hyrule.are	30653	an Eagle-feather cloak	armor	8	3200000	(violence_update)	corpse of Aquamentus
+1794516017	got	Miseri	14	30413	hyrule.are	30339	the Heart Guard of the Eagle	armor	8	3200000	(violence_update)	corpse of Aquamentus
+1794516017	got	Miseri	14	30413	hyrule.are	30582	an Aquamentus horn-spear	weapon	8	3840000	(violence_update)	corpse of Aquamentus
+1794516017	got	Miseri	14	30413	hyrule.are	30591	the Eagle's Heart Container	armor	8	3200000	(violence_update)	corpse of Aquamentus
+1794516017	coin	Miseri	14	30413	hyrule.are	+300	loot	(violence_update)	corpse of Aquamentus	102991587
+1794516017	coin	Miseri	14	30413	hyrule.are	+26	loot	(violence_update)	corpse of Aquamentus	102991613
+1794516017	coin	Miseri	14	30413	hyrule.are	+90000	loot	(violence_update)	corpse of Aquamentus	103081613
+1794516017	coin	Miseri	14	30413	hyrule.are	+20	loot	(violence_update)	corpse of Aquamentus	103081633
