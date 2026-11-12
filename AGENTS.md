@@ -186,11 +186,17 @@ Current October 2026 Python baseline:
 
 ```text
 102 listed area entries
-2,507 mobiles
-3,760 objects
+2,508 mobiles
+3,761 objects
 7,766 rooms
-0 critical, 12 warning, 1,689 information findings
+0 critical, 12 warning, 1,690 information findings
 ```
+
+The exploration maps (2026-11-12) added one mobile and one object and
+exactly two information findings: the wandering cartographer (29942 in
+`seasonal.are`, `mob-has-no-spawn`: `maps.c` places him) and the area map
+(96 in `limbo.are`, `object-has-no-source`: `map_item_create` makes every
+one). The count read 2,507, 3,760 and 1,688 before them.
 
 The cleanup of 2026-11-11 took the Quest Zone's 13 rooms and its one
 mobile, Temple Despair (the list entry and its 7 rooms) and 18 information
@@ -4973,6 +4979,71 @@ bits. Appearances go to the log and WIZINFO, the room to WIZINFO only;
 kills to both with the room (he is dead); escapes and drifts to the log
 with the room he left. Staff command GOBLIN.
 `tests/test_treasure_goblin.py` chases one down live.
+
+## Exploration Maps And The Fog
+
+`src/maps.c` (owner, 2026-11-12: the Mudlet map shows only rooms a character
+has been to, unless they hold the area's map; Dresden and the starting areas
+always). The game decides and the package only draws:
+
+- **Known** is `map_room_known`: staff (trust) know everything; an area in
+  `map_always_known_files` (dresden, school, limbo, dummy -- the one table);
+  a room in the achievements' `rooms` set (walked into); or the room's
+  **region** held. A region is an area (`achievement_area_id`), except that
+  each Hyrule dungeon (its `hyrule_dungeon_gate` range) is its own
+  (`map_region_id`, a hash of `hyrule.are#dungeon-N`), so an area map of
+  Hyrule shows the overworld. A region is held when it is in the new set
+  `map-areas` (`AchSet`, case 'A'), or, for a dungeon, when its NES map's bit
+  is in `AchMaps` (`achievement_hyrule_maps`, set on getting the map since
+  October) -- so dungeon maps already found count, and nothing new is saved
+  for them.
+- **GMCP `Map.Known`** (`gmcp_send_map_known`, from the prompt block in
+  `comm.c` beside `gmcp_send_room`): the known rooms as vnum runs, in parts
+  of at most `MAP_KNOWN_PART_BYTES`, `"all": true` for staff. It is sent when
+  `d->gmcp_map_known_sent` is false -- a new connection or GMCP (reset in
+  `gmcp_reset_snapshots`) and `map_known_changed(ch)`, which every map
+  learned calls (`map_grant_region`, and `achievement_note_object_vnum` when
+  a Hyrule map bit is new). A room walked into needs no message: the package
+  reads `Room.Info`. A new way to learn a map goes through
+  `map_grant_region`.
+- **The package's fog** (1.5.12): unknown rooms are deleted from the profile's
+  map and kept, with coordinates, area, name, terrain, mark, doors and both
+  ends of every exit, in `toc-fog.lua`; `tocMudlet.unfog` puts one back and
+  relinks it. `Room.Info`, `Hyrule.MapRoom` and a new `Map.Known` unfog; a
+  new map in the profile (`tocgui atlas`, `sysMapDownloadEvent`) starts the
+  fog afresh. The atlas itself still holds every room it did: the fog is
+  the client's, never the generator's. `tests/mudlet_fog_spec.lua`.
+- **Map items**: one prototype, `OBJ_VNUM_AREA_MAP` (96, limbo.are, level 0),
+  `ITEM_MAP` with `value[0]` `MAP_ITEM_AREA` (92 -- never 0, which `save.c`
+  drops) and `value[1]` a room of its region; `map_item_create` names it.
+  READ learns it and extracts it (`map_item_read`, from `do_read` after the
+  Hyrule tools); one already known is left whole. `make_corpse` gives a
+  slain mobile's corpse its area's map `MAP_DROP_PER_MILLE` (5) in a
+  thousand (`map_corpse_drop`; never in Hyrule, for a pet or a charmed one;
+  `TOC_MAP_DROPS=always` in tests), tagged `map` for the balance feed.
+- **The cartographer** (mob 29942, `seasonal.are`): a twenty-to-forty-minute
+  visit every two to five hours (`cartographer_update` beside the goblin's),
+  in a room `black_market_room_ok` allows, not safe, outside Hyrule, in a
+  mappable area; scaled to the mean level of the area's mobiles; walks the
+  area himself (sentinel). Hidden as the dealer is (`is_unfindable_mob`),
+  arrival logged without a room, WIZINFO with it; `cartographer_forget` from
+  `extract_char`; `cartographer_slain` from `raw_kill_internal` puts the map
+  of where he fell into his pack before `make_corpse`.
+  `TOC_NO_CARTOGRAPHER` (set by `tests/live_mud.py`) and
+  `TOC_CARTOGRAPHER_STILL` are for tests; staff CARTOGRAPHER calls him.
+- **Explored**: every room of an area that counts (`map_room_countable`:
+  `achievement_room_counts`, not a death trap, newbie or hero room, not in a
+  guild hall, entered by some other room's exit) walked into, for an area of
+  `MAP_EXPLORE_MIN_ROOMS` (10) or more: the set `explored-areas`, checked by
+  `map_room_visited` when a room is new and by `map_login` at login from the
+  rooms already saved (the file proves it). The per-area lists are rebuilt
+  when `top_room` or `top_vnum_room` moves.
+- **Staff**: GRANTMAP (L5; online or offline, `rank_protects`, saved, logged,
+  WIZINFO at the pair's level) and CARTOGRAPHER (L5). Player: MAPS (last in
+  the command table, so no shorter word moved). Achievements `maps-*`
+  (`ACH_REQ_AREA_MAPS`, `map_held_count`), `explored-*`,
+  `cartographer-slain`, `master-cartographer` (cohort `cartography`).
+  `tests/test_exploration_maps.py`.
 
 ## Alignment
 

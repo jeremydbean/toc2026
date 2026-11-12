@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.11"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.12"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -472,6 +472,7 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
     d->gmcp_last_room = -1;
     d->gmcp_last_room_hash = 0;
     d->hyrule_maps_sent = 0;
+    d->gmcp_map_known_sent = false;
     d->gmcp_last_affect_hash = 0;
     d->gmcp_last_quest_hash = 0;
     d->gmcp_last_target_hash = 0;

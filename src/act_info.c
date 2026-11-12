@@ -1395,6 +1395,10 @@ void do_read (CHAR_DATA *ch, char *argument )
     if ( hyrule_look_tool( ch, argument ) )
         return;
 
+    /* An area's map: reading it teaches it (maps.c). */
+    if ( map_item_read( ch, argument ) )
+        return;
+
     /* The Magic Book: every recipe BREW, CONCOCT and SCRIBE know. */
     {
         char arg[MAX_INPUT_LENGTH];

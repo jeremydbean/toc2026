@@ -82,12 +82,15 @@ See also: COMMANDS, KEYWORDS, BEGINNERS
 ~
 
 0 MAP MAPPER AUTOMAP AUTOMAPPER MAPPING~
-There is no MAP command.  The automatic client-side map is a window in
-the Mudlet interface (HELP MUDLET) that follows you as you move.  The
-browser client and plain Telnet do not currently show it.
+The automatic client-side map is a window in the Mudlet interface (HELP
+MUDLET) that follows you as you move.  The
+browser client and plain Telnet do not currently show it.  MAPS lists the
+maps you hold (HELP MAPS).
 
-  - The whole world is drawn from the start.  A room you visit is
-    corrected from what the game reports: an exit that was
+  - The map shows what your character knows: every room you have walked
+    into, every room of an area whose map you hold, and all of Dresden and
+    the starting areas.  The rest stays hidden until you find it.  A room
+    you visit is corrected from what the game reports: an exit that was
     removed or points somewhere new is fixed there.
   - Secret exits are not sent until you find them.  Room descriptions,
     EXITS and SEARCH remain the authority.
@@ -102,7 +105,7 @@ browser client and plain Telnet do not currently show it.
 
 Click a room to walk there (HELP WALK).
 
-See also: MUDLET, WALK, WALKTO, EXITS, SEARCH
+See also: MUDLET, WALK, WALKTO, EXITS, SEARCH, MAPS
 ~
 
 0 MUDLET TOCGUI~
@@ -763,6 +766,68 @@ flights.  Staff see him anywhere; mortals only in his room, or one room away
 with SCAN.  BLACKMARKET SUMMON does the same for the black market.
 
 See also: 'TREASURE GOBLIN', BLACKMARKET
+~
+
+0 MAPS EXPLORATION 'AREA MAP' 'AREA MAPS'~
+Syntax: maps          the areas you hold a map of or have set foot in
+        maps all      every area, with how much of it you have walked
+
+Your map (HELP MAP) shows only what your character knows: the rooms you
+have walked into, every room of an area whose whole map you hold, and all
+of Dresden, Mud School and Limbo, which everybody knows.
+
+Maps of an area come from:
+  - a map dropped now and then by a monster slain in that area;
+  - the wandering cartographer, who drops the map of wherever he falls
+    (HELP 'WANDERING CARTOGRAPHER');
+  - in Hyrule, each dungeon's own map, found in the dungeon.
+
+READ a map to learn it for good; the old parchment crumbles as you do.
+A map you already know is left whole, to sell or give away.
+
+MAPS shows, area by area, whether you hold its map and how many of the
+rooms that count you have walked into.  Walk into every one -- death traps,
+guild halls and newbie or hero rooms do not count -- of an area with ten or
+more, and the area is explored.  Exploration achievements reward maps held
+and areas explored (ACHIEVEMENTS EXPLORATION).
+
+See also: MAP, MUDLET, ACHIEVEMENTS
+~
+
+65 CARTOGRAPHER GRANTMAP~
+Syntax: cartographer                (where he is and when he leaves or comes)
+        cartographer spawn          (bring him now, somewhere at random)
+        cartographer here           (bring him to your room)
+        cartographer dismiss        (send him away; he comes back in hours)
+        grantmap <player> <area|hyrule1..hyrule9|all>
+        grantmap list               (the words GRANTMAP takes)
+
+The cartographer (mob 29942) visits for twenty to forty minutes every two
+to five hours, the first visit half an hour to three hours after a boot, in
+an area a map can be made of, at the level of the monsters around him.  He
+walks the area a room at a time and never enters Hyrule.  Slain, he drops
+the map of the area he fell in.  Appearances come to WIZINFO with the room
+and to the log without it (the log is published).  Test worlds have none
+(TOC_NO_CARTOGRAPHER) unless called.
+
+GRANTMAP gives a player the whole map of an area -- by file name, as
+"camelot", or the start of its name -- of one of Hyrule's dungeons, or of
+everything.  It works on a player online or saved, saves their file, is
+logged and refused on a player who outranks you.
+
+See also: MAPS, 'WANDERING CARTOGRAPHER'
+~
+
+0 'WANDERING CARTOGRAPHER' CARTOGRAPHER ODRIC~
+Odric Penwhistle, a wandering cartographer, turns up now and then in one
+of the world's areas, walks it for half an hour or so and is gone again,
+often for hours.  Nothing finds him from afar; you have to come upon him.
+
+He will not part with his charts willingly, and he fights back as hard as
+the monsters around him.  Bring him down and his folio holds the whole map
+of the area he fell in: READ it to learn it.
+
+See also: MAPS, MAP
 ~
 
 0 'TREASURE GOBLIN' GOBLIN~

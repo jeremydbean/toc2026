@@ -9,8 +9,11 @@ automatic exploration map; the browser client prioritizes zero-install play.
 Create a Mudlet profile for the game host on port `9000`. For the public host,
 use `toc.jeremybean.com`; for local development, use `localhost`. Leave
 **Enable GMCP** and **Allow server to install script packages** enabled. The
-server advertises the official interface and the full-world map when GMCP
+server advertises the official interface and the world map when GMCP
 is negotiated, and a changed package version updates existing installations.
+The map shows only what the character knows -- rooms walked into, areas whose
+maps they hold, Dresden and the starting areas -- from GMCP `Map.Known`
+(`mudlet/README.md`, "The fog").
 
 The interface includes HP, mana, endurance, and experience gauges across
 the top, character status, room status, and an embedded mapper. Each part is built on its own: if one fails in some

@@ -67,6 +67,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `look`, `examine`, `read` | Inspect the room, targets, or text; `read` a Hyrule compass points toward the Triforce chest |
 | `listen <direction>` | Listen through a closed, non-secret door for anyone beyond it (Listen at Door skill) |
 | `score`, `attribute`, `affect` | Level, stats, resources, and active effects |
+| `maps [all]`, `read <map>` | The maps you hold and how much of each area you have walked; `read` an area's map to learn it (the Mudlet map shows only what you know) |
 | `alignment`, `devote light/dark/balance` | Your alignment tier, its perks and how to move it; `devote` works at the Temple |
 | `achievements [view]` | Points and progress for levels, bosses, relics, crafting, economy, unusual deaths, quests, exploration, and Hyrule |
 | `diary [yesterday \| yyyy-mm-dd \| list]` | Your day written down: time played, levels, kills, deaths, quests, achievements, skills, areas, things gained, coin in and out (the last 30 days) |

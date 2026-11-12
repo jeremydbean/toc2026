@@ -5,12 +5,12 @@ the progression and collection model used by modern MMORPGs. Achievements are
 recognition and long-term goals: they award points, dates, and announcements,
 but never combat stats or economic rewards.
 
-The catalog holds **389** achievements: 203 from before 2026-10-25, the
+The catalog holds **399** achievements: 203 from before 2026-10-25, the
 175 of the 2026-10-25 expansion (rare encounters, more named bosses,
 combat and teamwork, skills and crafting, quests and exploration, Hyrule's
 actions and secrets, collection, services and world events), 8 close
-calls and comedy rows from 2026-11-01, and 3 for the holiday fairs from
-2026-11-02. Every point
+calls and comedy rows from 2026-11-01, 3 for the holiday fairs from
+2026-11-02, and 10 for exploration maps from 2026-11-12. Every point
 earned is also a **mark** that can be spent at `REDEEM` on cosmetic and
 convenience perks; spending marks never lowers points.
 
@@ -189,7 +189,8 @@ New state is saved by name, never by position, so the lists may grow:
   brews, concoctions, scrolls, training-foods, rush-quests,
   emergency-quests, daily-quests, repairs).
 - `AchSet <name> <id or a-b> ... ~` for each identity set (vesh-items,
-  recipes, quest-areas, areas, rooms, daily-kinds, psi-disciplines),
+  recipes, quest-areas, areas, rooms, daily-kinds, psi-disciplines,
+  map-areas, explored-areas),
   sorted, with runs of consecutive ids written `a-b`. An unknown name is
   read through and dropped. Each set has a hard bound (rooms 16,384).
 - `AchSpent <spent> 0` for REDEEM.
@@ -397,6 +398,16 @@ the hooks are installed.
 | `holiday-rose` | A Rose by Any Name | Give a red rose to another adventurer. | 10 |  | holiday.c holiday_given (Love is in the Air's rose, to a player) | from now |
 | `holiday-firework` | Light Up the Sky | Set off a festival firework. | 5 |  | holiday.c holiday_dropped | from now |
 | `holiday-gold` | Pot of Gold | Slay a foe with a four-leaf clover's luck on you. | 10 |  | holiday.c holiday_kill (St. Patrick's clover) | from now |
+| `maps-1` | A Map of One's Own | Learn the whole map of an area. | 10 |  | maps.c map_grant_region (READ of a map, GRANTMAP) and a Hyrule dungeon map found (map_held_count) | Hyrule maps already found count |
+| `maps-5` | Well Charted I | Learn the whole maps of 5 areas. | 20 |  | as above | as above |
+| `maps-10` | Well Charted II | Learn the whole maps of 10 areas. | 30 |  | as above | as above |
+| `maps-25` | Well Charted III | Learn the whole maps of 25 areas. | 50 |  | as above | as above |
+| `explored-1` | No Stone Unturned I | Walk into every room of an area. | 15 |  | maps.c map_room_visited (the last room of an area of ten or more that count) | map_login, from the rooms already walked |
+| `explored-5` | No Stone Unturned II | Walk into every room of 5 areas. | 30 |  | as above | as above |
+| `explored-10` | No Stone Unturned III | Walk into every room of 10 areas. | 45 |  | as above | as above |
+| `explored-25` | No Stone Unturned IV | Walk into every room of 25 areas. | 60 |  | as above | as above |
+| `cartographer-slain` | Off the Map | Bring down the wandering cartographer. | 15 |  | maps.c cartographer_slain -> achievement_party_event | from now |
+| `master-cartographer` | Master Cartographer | Earn Well Charted III, No Stone Unturned IV and Off the Map. | 75 |  | meta: cartography | from the members |
 
 ### Deferred candidates
 
@@ -452,7 +463,7 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 
 The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 512
 timestamp slots through `MAX_ACHIEVEMENTS`, checked at compile time by
-`achievement_table_must_fit`; the current catalog uses 389. Add a new entry
+`achievement_table_must_fit`; the current catalog uses 399. Add a new entry
 only with a unique key that will never be repurposed, at the end of the
 table, and never move an old row.
 

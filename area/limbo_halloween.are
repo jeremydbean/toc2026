@@ -2336,6 +2336,21 @@ gold~
 8 A A
 0 0 0 0 0
 0 1 0 P
+#96
+map parchment~
+a blank map~
+A rolled map lies here.~
+paper~
+28 0 A
+92 0 0 0 0
+0 1 100 P
+E
+map parchment~
+A sheet of parchment covered edge to edge in fine ink: roads, rivers,
+doors and every turning between them, with a name across the top.  READ
+it to fix every path in your memory; the old parchment will not survive
+the reading.
+~
 #3000
 barrel beer~
 a barrel of beer~

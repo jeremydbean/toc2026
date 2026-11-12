@@ -204,7 +204,9 @@ typedef enum
     ACHIEVEMENT_EVENT_FLEE_NOTHING,
     ACHIEVEMENT_EVENT_HOLIDAY_ROSE,
     ACHIEVEMENT_EVENT_HOLIDAY_FIREWORK,
-    ACHIEVEMENT_EVENT_HOLIDAY_GOLD
+    ACHIEVEMENT_EVENT_HOLIDAY_GOLD,
+    /* Exploration maps (maps.c; owner, 2026-11-12). */
+    ACHIEVEMENT_EVENT_CARTOGRAPHER
 } achievement_event_type;
 
 /* Counted achievements (achievements.c). Saved by name as
@@ -242,6 +244,8 @@ typedef enum
     ACH_SET_ROOMS,              /* public room vnums entered */
     ACH_SET_DAILY_KINDS,        /* daily objective kinds finished */
     ACH_SET_PSI_DISCIPLINES,    /* psionic disciplines used successfully */
+    ACH_SET_MAP_AREAS,          /* map regions whose whole map is held (maps.c) */
+    ACH_SET_EXPLORED_AREAS,     /* area identity of areas walked end to end */
     ACH_SET_COUNT
 } achievement_set;
 
@@ -670,6 +674,7 @@ struct  descriptor_data
     bool                gmcp_items_valid;
     uint32_t            gmcp_last_room_hash;
     int                 hyrule_maps_sent;   /* bit per dungeon whose plan went out */
+    bool                gmcp_map_known_sent; /* Map.Known is current (maps.c) */
     int                 gmcp_last_wait;     /* Char.Lag: last wait sent */
     uint32_t            gmcp_last_group_hash;
     bool                gmcp_group_valid;
@@ -1602,6 +1607,11 @@ const char *default_prompt_text args( ( void ) );
    dungeon's level in value[4] (hyrule.c draws and points them). */
 #define HYRULE_DUNGEON_MAP         90
 #define HYRULE_DUNGEON_COMPASS     91
+/* An area's map (maps.c): ITEM_MAP with this in value[0] and a room of
+   the area it shows in value[1]. Never 0: save.c drops an ITEM_MAP whose
+   value[0] is 0. */
+#define MAP_ITEM_AREA              92
+#define OBJ_VNUM_AREA_MAP          96   /* limbo.are: the one prototype */
 
 /* What the caves, the shops and the chests hold, and what hyrule.c gives
    each its use. */
@@ -1674,6 +1684,7 @@ typedef struct hyrule_dungeon_gate
 #define MOB_VNUM_BLACK_MARKET      29940  /* the wandering black market dealer */
 #define MOB_VNUM_PSIONIC_PROJECTION 7550  /* what PROJECT walks through distant rooms */
 #define MOB_VNUM_TREASURE_GOBLIN   29941  /* the treasure goblin (goblin.c) */
+#define MOB_VNUM_CARTOGRAPHER      29942  /* the wandering cartographer (maps.c) */
 
 /* Seasonal event boss drop items (seasonal.are) */
 #define OBJ_VNUM_HORSEMAN_REAPER   29920  /* the Headless Horseman's Reaper (weapon) */
@@ -3609,6 +3620,9 @@ void    achievement_load_spent ( CHAR_DATA *ch, FILE *fp );
 void    achievement_free ( CHAR_DATA *ch );
 long    achievement_marks ( const CHAR_DATA *ch );
 long    achievement_area_id ( const AREA_DATA *area );
+bool    achievement_set_has ( const CHAR_DATA *ch, achievement_set set, long id );
+int     achievement_set_size ( const CHAR_DATA *ch, achievement_set set );
+bool    achievement_room_counts ( const ROOM_INDEX_DATA *room );
 void    do_redeem ( CHAR_DATA *ch, char *argument );
 
 /* quest.c */
@@ -4370,6 +4384,28 @@ ROOM_INDEX_DATA *black_market_random_room ( AREA_DATA *avoid );
 int     black_market_gear_for_level ( int level );
 int     black_market_rarity      ( void );
 long    black_market_kill_value  ( int level );
+
+/* maps.c: exploration maps, the fog on the client's map, the cartographer */
+bool    map_area_always_known    ( const AREA_DATA *area );
+bool    map_area_mappable        ( const AREA_DATA *area );
+long    map_region_id            ( const ROOM_INDEX_DATA *room );
+bool    map_room_known           ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
+bool    map_grant_region         ( CHAR_DATA *ch, ROOM_INDEX_DATA *anchor, bool announce );
+long    map_held_count           ( const CHAR_DATA *ch );
+bool    map_area_fully_explored  ( CHAR_DATA *ch, const AREA_DATA *area );
+void    map_room_visited         ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
+void    map_known_changed        ( CHAR_DATA *ch );
+void    map_login                ( CHAR_DATA *ch );
+bool    map_item_read            ( CHAR_DATA *ch, char *argument );
+OBJ_DATA *map_item_create        ( ROOM_INDEX_DATA *anchor );
+void    map_corpse_drop          ( OBJ_DATA *corpse, CHAR_DATA *victim );
+void    gmcp_send_map_known      ( DESCRIPTOR_DATA *d );
+extern CHAR_DATA *cartographer;
+bool    is_cartographer          ( const CHAR_DATA *ch );
+bool    cartographer_spawn       ( ROOM_INDEX_DATA *room );
+void    cartographer_forget      ( CHAR_DATA *ch );
+void    cartographer_slain       ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    cartographer_update      ( void );
 
 /* goblin.c */
 extern CHAR_DATA *treasure_goblin;

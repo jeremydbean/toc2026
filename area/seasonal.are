@@ -118,6 +118,27 @@ ABMUV DFJ 0 S
 8 8 1 0
 0 0 S 0
 
+#29942
+cartographer odric penwhistle~
+Odric Penwhistle~
+(Rare) Odric Penwhistle, a wandering cartographer, scribbles in a battered folio.
+~
+A stooped, ink-stained man in a dusty travelling coat whose every pocket
+bulges with rolled parchment.  This is Odric Penwhistle, who has walked
+further than any soul alive and set down every step of it.  He turns up
+only now and then, never stays long, and nothing finds him from afar.  He
+will not part with his charts willingly -- but it is said that whoever
+brings him down finds, among his papers, the whole map of the land where
+he fell.
+~
+human~
+ABMUV DFJ 0 S
+10 0 1d1+300 1d1+100 2d4+2 0
+0 0 0 0
+0 AB 0 0
+8 8 1 0
+0 0 M 0
+
 #0
 
 

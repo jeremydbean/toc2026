@@ -546,6 +546,9 @@ class LiveMud:
         # world starts without one so it cannot walk into somebody's
         # assertions. Pass extra_env={"TOC_NO_GOBLIN": None} to see him.
         env.setdefault("TOC_NO_GOBLIN", "1")
+        # The wandering cartographer (maps.c) visits now and then; a test
+        # world has none unless staff call one with CARTOGRAPHER HERE.
+        env.setdefault("TOC_NO_CARTOGRAPHER", "1")
         # Area disasters (disaster_update) strike an occupied area at
         # random: an earthquake damages and stuns everyone in it, which
         # once landed between a fixture's two commands in CI. Pass

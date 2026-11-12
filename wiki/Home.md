@@ -17,7 +17,7 @@ give the current figures. The live game runs on Oracle Cloud (`toc.jeremybean.co
   purpose with important syntax and restrictions
 - [Psionics Guide](psionics.md) - all 17 powers, costs, defenses, travel
   restrictions, and remort granting rules
-- [Achievement System](achievements.md) - the full catalog of accomplishments (389 on 2026-11-12) covering points,
+- [Achievement System](achievements.md) - the full catalog of accomplishments (399 on 2026-11-12) covering points,
   levels, bosses, relics, crafting, economy, unusual deaths, and Hyrule completion
 - [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,
   percentages, profile inference, modeled stats, and limitations

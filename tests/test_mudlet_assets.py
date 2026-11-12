@@ -72,6 +72,44 @@ class MudletAssetTests(unittest.TestCase):
                          result.stdout + result.stderr)
         self.assertIn("ALL PASS", result.stdout)
 
+    def test_the_map_fog_behaves_against_a_fake_mapper(self) -> None:
+        """Owner, 2026-11-12: the map shows only the rooms a character
+        knows. Map.Known takes the rest off the map and keeps them aside;
+        a step, a map learned or a Hyrule plan puts each back where the
+        atlas had it, linked both ways. tests/mudlet_fog_spec.lua plays it
+        against a fake mapper whose deleteRoom drops the exits into a room,
+        as Mudlet's does."""
+        lua = None
+        for candidate in ("lua5.4", "lua5.3", "lua", "luajit"):
+            lua = shutil.which(candidate)
+            if lua is not None:
+                break
+        if lua is None:
+            self.skipTest("no lua interpreter on PATH")
+        with tempfile.TemporaryDirectory() as tmp:
+            script = Path(tmp) / "package.lua"
+            script.write_text(self.package_script(), encoding="utf-8")
+            result = subprocess.run(
+                [lua, str(ROOT / "tests" / "mudlet_fog_spec.lua"), str(script)],
+                capture_output=True, text=True, timeout=120,
+            )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("ALL PASS", result.stdout)
+
+    def test_the_package_asks_for_and_handles_map_known(self) -> None:
+        script = self.package_script()
+        self.assertIn('"Hyrule 1","Map 1"]', script)
+        install = script.split("function tocMudlet.install()")[1].split("\nend\n")[0]
+        self.assertIn('register("gmcp.Map.Known"', install)
+        self.assertIn("pcall(tocMudlet.loadFog)", install)
+        room_info = script.split("function tocMudlet.onRoomInfo()")[1].split("\nend\n")[0]
+        self.assertLess(room_info.index("tocMudlet.unfog(roomId)"),
+                        room_info.index("ensureRoom(roomId, info)"))
+        map_room = script.split("function tocMudlet.onMapRoom()")[1].split("\nend\n")[0]
+        self.assertIn("tocMudlet.unfog(roomId)", map_room)
+        download = script.split("function tocMudlet.onDownloadDone(file)")[1].split("\nend\n")[0]
+        self.assertIn("tocMudlet.onMapReplaced()", download)
+
     def test_package_contains_valid_mudlet_xml(self) -> None:
         package = BUILDER.build_package_bytes()
         with zipfile.ZipFile(io.BytesIO(package)) as archive:
