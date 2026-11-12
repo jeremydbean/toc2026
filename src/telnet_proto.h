@@ -59,6 +59,14 @@ void    telnet_offer_options    ( struct descriptor_data *d );
 void    telnet_send_gmcp        ( struct descriptor_data *d,
                                   const char *package, const char *json );
 
+/* One GMCP message past telnet_send_gmcp's 2,048-byte frame, of at most
+   max_json bytes of JSON: true when it was sent, false when it was not
+   (GMCP off, or the JSON longer than max_json). For a payload built to a
+   bound, such as Char.Items. */
+bool    telnet_send_gmcp_large  ( struct descriptor_data *d,
+                                  const char *package, const char *json,
+                                  size_t max_json );
+
 /*
  * MCCP2 output compression. telnet_write_compressed() is the deflating half
  * of write_to_descriptor(); telnet_end_compression() must be called when a

@@ -1,6 +1,7 @@
 /*
  * Telnet option handling. See telnet_proto.h for why this exists.
  */
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -451,6 +452,42 @@ void telnet_send_gmcp( DESCRIPTOR_DATA *d, const char *package, const char *json
     buf[len++] = (char)(unsigned char)SE;
 
     telnet_send_raw( d, buf, len );
+}
+
+/*
+ * The same frame for a payload too big for that stack buffer, written in
+ * three pieces -- IAC SB GMCP and the package, the JSON, IAC SE -- so it
+ * needs no copy. Each goes through write_to_descriptor, compressed when
+ * MCCP is on; the client reads one subnegotiation from the stream however
+ * it was cut. The JSON never holds an IAC byte: every string in a GMCP
+ * payload is escaped past 0x7e (gmcp_json_char in gmcp.c).
+ */
+bool telnet_send_gmcp_large( DESCRIPTOR_DATA *d, const char *package,
+                             const char *json, size_t max_json )
+{
+    char head[3 + 64];
+    const char tail[2] = { (char)(unsigned char)IAC, (char)(unsigned char)SE };
+    size_t package_len, json_len;
+
+    if ( d == NULL || !d->gmcp_enabled || package == NULL || json == NULL )
+        return false;
+
+    package_len = strlen( package );
+    json_len = strlen( json );
+    if ( package_len + 4 > sizeof(head) || json_len > max_json
+    ||   json_len > (size_t)INT_MAX )
+        return false;
+
+    head[0] = (char)(unsigned char)IAC;
+    head[1] = (char)(unsigned char)SB;
+    head[2] = (char)TELOPT_GMCP;
+    memcpy( head + 3, package, package_len );
+    head[3 + package_len] = ' ';
+
+    telnet_send_raw( d, head, 3 + package_len + 1 );
+    telnet_send_raw( d, json, json_len );
+    telnet_send_raw( d, tail, sizeof(tail) );
+    return true;
 }
 
 /* --------------------------------------------------------- subnegotiation */

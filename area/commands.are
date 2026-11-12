@@ -120,11 +120,22 @@ install script packages" on: the game installs its interface and world map
 and offers updates by itself.
 
 Mudlet commands (local aliases; they do nothing in other clients):
-  tocgui status     package version and GMCP state (or TOCGUI alone)
-  tocgui atlas      download the whole world map into this profile
-  tocgui levels     also show the levels above and below yours (or not)
-  tocgui off | on   hide or restore the interface
-  walk ...          walk to a room or place (HELP WALK)
+  tocgui status          package version, GMCP state and these commands
+  tocgui mapcheck        which map and floor you are on, the floors
+                         setting, and squares or exits drawn wrong near you
+  tocgui levels on|off   draw the floors above and below yours, or not
+                         (alone it toggles; status says what it is)
+  tocgui atlas           what loading the world map does; it REPLACES this
+                         profile's map, so TOCGUI ATLAS BACKUP saves yours
+                         first and TOCGUI ATLAS CONFIRM saves it, then loads
+  tocgui off | on        hide or restore the interface
+  walk ...               walk to a room or place (HELP WALK)
+
+Drawing the floors above and below is Mudlet's own setting, shared by all
+your profiles.  The package hides them once, tells you it did and what it
+was before, and never changes it again after your own TOCGUI LEVELS.  The
+strip over the map names the map and the floor you are on.  An exit button
+opens a closed door before stepping through it, as a walk does.
 
 If the interface says GMCP is waiting, enable GMCP and server packages in
 the profile and reconnect.  Package files: github.com/jeremydbean/toc2026,

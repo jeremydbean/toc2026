@@ -86,6 +86,58 @@ the room is on the map: the atlas's area and square stand (a seasonal copy
 renames its area), and only a room it creates, or one `Room.Info` places
 with `map`, takes the game's.
 
+Package 1.5.15 (owner, 2026-11-12; review findings reproduced in
+`tests/mudlet_ui_spec.lua` and `tests/mudlet_fog_spec.lua`):
+
+- **A door on a walk no longer stops it.** The walker opens a door
+  `Room.Info` says is shut before the step; the game answers the OPEN with a
+  fresh `Room.Info` for the room you still stand in, and that used to count
+  as arriving in the wrong room. Only a changed room number is an arrival
+  now; a `Room.Info` for the same room still redraws its doors, exits,
+  marks and buttons. The watchdog takes a step that landed unannounced as an
+  arrival, and tries a door (never for a special exit like `enter portal`)
+  once before giving up.
+- **Exit buttons open doors.** A button is a step through the same
+  `tocMudlet.move` the walker uses: a closed door is opened first, a locked
+  one is tried and the package says to `unlock` it. Closed buttons are amber
+  with `+`, locked ones red with `#`; the door is read when the button is
+  pressed.
+- **Floors above and below are never changed silently.** Mudlet's "Draw
+  rooms on upper and lower levels" (`showUpperLowerLevels`) is Mudlet's
+  setting, shared by every profile. The package now hides those floors once
+  per profile and says so -- what it was (read with `getConfig`; when it
+  cannot be read, it says that instead of guessing), that it is now off, and
+  how to change it -- and remembers the old value. `tocgui levels
+  on|off|toggle` is the player's choice from then on and the package never
+  touches the setting again; `tocgui levels original` puts back the value it
+  found and `tocgui levels status` reports. A 1.5.13/1.5.14 toggle carries
+  over as a choice. All of it is kept in `toc-settings.lua`.
+- **A floor strip over the map** names the map area and floor (z) you are
+  on, and says when the floors above and below are drawn.
+- **`tocgui mapcheck`**: the room, map area and square; the floors setting
+  and the player's choice; the atlas layout the package draws against the
+  one this profile holds; rooms sharing a square in this area (5,000 rooms
+  at most); and exits within four steps (80 rooms at most) drawn at a wrong
+  angle, to another floor, or stretched past three squares -- five examples
+  of each at most.
+- **`tocgui atlas` never replaces the map on one word.** Alone it says what
+  is lost; `tocgui atlas backup` saves the current map (Mudlet's `saveMap`)
+  as `toc-map-backup-<date>.dat` in the profile's folder; `tocgui atlas
+  confirm` saves one and loads the atlas only if the save landed; `tocgui
+  atlas force` loads without a backup.
+- **The Items pane says when its list is cut.** `Char.Items` now carries
+  `inventory_total`, `equipment_total`, `truncated` and
+  `equipment_truncated`; the pane counts what you carry and says how many
+  are not shown.
+
+The atlas layout was measured before this release and left alone: 7,515
+rooms, no two of an area on one square, 95.0% of 16,448 exits drawn straight;
+893 squares are shared by rooms on different floors of one area (2,220
+rooms), of which 769 rooms sit over or under a room they are joined to by up
+or down -- staircases, drawn where they belong -- and the rest only matter
+when the floors above and below are drawn, which they no longer are unless
+the player asks.
+
 Package 1.5.8 delivers the 24 extended channel colors added to COLOR. The
 version increase makes existing 1.5.7 installations receive the updated chat
 palette automatically on reconnect, after the server is updated.
@@ -211,8 +263,10 @@ come back -- an exit is still drawn at an angle.
 
 Mudlet only installs a server's map into a profile that has none, so a
 profile that was mapping before the atlas existed keeps its own map.
-`tocgui atlas` downloads the current atlas on demand and **replaces** the
-profile's saved map with it -- deliberately never automatic. Use it, or
+`tocgui atlas confirm` saves a backup of the profile's map and then
+downloads the current atlas and **replaces** the profile's saved map with
+it -- deliberately never automatic, and `tocgui atlas` alone only explains
+it (1.5.15). Use it, or
 Mudlet's mapper tools, to clear a room that was deleted and can no longer
 be revisited. Map data belongs to the Mudlet profile, not to a ToC character
 file. Release notes above this section are a dated history of the package,

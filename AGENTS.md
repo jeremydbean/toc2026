@@ -2105,10 +2105,27 @@ everywhere. dresden is a mess"; Mudlet's source read for each):
 - **Mudlet 5 draws the level above and below** the one shown, in the same
   area -- the level below as filled grey squares, the level above outlined
   (`TMapPainter.cpp`, `mudlet::mDrawUpperLowerLevels`, default on; 4.x has
-  neither the drawing nor the key). The package turns it off at every start,
-  `setConfig("showUpperLowerLevels", false)` (Mudlet 5.0 on), unless the
-  profile asked for it with `tocgui levels` (`toc-settings.lua`). It is a
-  Mudlet-wide setting, not a profile's; say so if it comes up.
+  neither the drawing nor the key). It is a Mudlet-wide setting, not a
+  profile's, so **the package never changes it silently** (owner,
+  2026-11-12; package 1.5.15, `tocMudlet.applyLevels`): it hides the floors
+  once per profile with `setConfig("showUpperLowerLevels", false)` and a line
+  saying what it was (`getConfig`; when that cannot be read it says so and
+  never guesses), what it is now and how to change it, keeping the old value
+  as `levelsOriginal` in `toc-settings.lua`. After `tocgui levels
+  on|off|toggle` (`levelsChoice`) it never touches the setting again, at start
+  or anywhere; `original` and `status` exist too, and a 1.5.13/14
+  `showLevels` toggle is carried over as the choice. Never reintroduce an
+  apply-at-every-start. The strip over the mapper (`tocMudlet.showFloor`)
+  names the map area and floor, and `tocgui mapcheck` (`tocMudlet.mapCheck`,
+  bounded: 5,000 area rooms, 80 rooms within four steps, five examples a
+  kind) reports the floors setting, the atlas layout against the profile's,
+  rooms sharing a square in the area and bent or stretched exits near the
+  player, by `exit_drawn_straight`'s rule.
+- **`tocgui atlas` never replaces the map on one word** (owner, 2026-11-12):
+  alone it explains what is lost; `backup` saves the map with `saveMap` as
+  `toc-map-backup-<stamp>.dat` in the profile's folder; `confirm` backs up
+  and loads only if the save landed; `force` loads without one. Keep the
+  `ATLAS_LAYOUT` notice pointing at `tocgui atlas`.
 - **`layout_area` opens the level instead of bending an exit.** A room
   whose square is taken used to go to the nearest free one, which bent every
   exit around it and packed Dresden into a block where neighbouring squares
@@ -5178,7 +5195,7 @@ always). The game decides and the package only draws:
   `table.load`); `tocMudlet.unfog` puts one back and relinks it.
   `Room.Info`, `Hyrule.MapRoom` and a new `Map.Known` unfog, and a smaller
   `Map.Known` (GRANTMAP ... REVOKE) fogs again; a new map in the profile
-  (`tocgui atlas` after its own `loadMap`, or `sysMapDownloadEvent`, which
+  (`tocgui atlas confirm` or `force` after its own `loadMap`, or `sysMapDownloadEvent`, which
   Mudlet raises only after its own map download -- the GMCP `Client.Map`
   one -- has parsed) starts the fog afresh. The atlas itself still holds
   every room it did: the fog is the client's, never the generator's.
@@ -5719,7 +5736,36 @@ writes every one, drops `{HH` tokens: the client draws GMCP text in its
 own windows, and a coloured gossip reached Mudlet's chat pane as
 "{0Bshiny" (2026-10-23). A change to the package's Lua bumps
 `TOC_MUDLET_PACKAGE_VERSION`, `config.lua` and `tocMudlet.version`
-together, or installed packages never fetch it.
+together, or installed packages never fetch it. The escaping is one
+function, `gmcp_json_char`, under both the fixed-buffer writer and
+`gmcp_dstring_append_quoted`.
+
+**`telnet_send_gmcp` drops anything past its 2,048-byte frame, silently.**
+A feed whose payload can grow is built in a bounded `DString` and sent with
+`telnet_send_gmcp_large( d, package, json, max )` (three writes, no copy),
+and its snapshot is marked sent only when that returned true. **Char.Items**
+is (review, 2026-11-12: seventy-two 45-letter names overflowed the old
+4,096-byte array, the cut JSON was dropped and the snapshot marked sent):
+worn things whole within `GMCP_ITEMS_WORN_BYTES`, then carried things,
+whole entries only, at most `GMCP_ITEMS_MAX_ENTRIES` and within
+`GMCP_ITEMS_MAX_BYTES` with room kept for the worn list and the counts;
+`inventory_total`, `equipment_total`, `truncated` and `equipment_truncated`
+say what was left out, and the package's Items pane shows the cut. Its
+"changed?" signature (`gmcp_items_signature`, the fast path at every
+prompt) hashes each object's vnum, wear slot, **name bytes** and
+**`can_see_obj`**, never a name pointer: RESTRING frees and `str_dup`s, and
+the allocator may hand back the same address. A new field the pane shows
+goes into the signature too (`tests/test_gmcp_items.py`).
+
+**A Room.Info for the room you stand in is not an arrival** (package
+1.5.15). The game resends it when a door opens or a service changes;
+`tocMudlet.onRoomInfo` redraws doors, exits and buttons either way but
+calls `onWalkArrival` only when the room number changed, or a walk that
+opened a door on its route stopped one step short. Exit buttons and the
+walker step through one helper, `tocMudlet.move` (opens a door `Room.Info`
+calls closed or locked, says how to pass a locked one); the walk's
+watchdog retries a compass step once with OPEN and takes a step already
+landed as an arrival (`tests/mudlet_ui_spec.lua`).
 
 **Mudlet's extras** (2026-11-07; formats read from Mudlet's own source,
 since its wiki is unreachable from a cloud session). `gmcp_note_supports`

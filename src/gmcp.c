@@ -10,9 +10,10 @@
 #include <string.h>
 
 #include "merc.h"
+#include "dstring.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.14"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.15"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -101,51 +102,72 @@ static const char *gmcp_payload( const char *message )
  * rather than shown as the letters (2026-10-23). The main window still
  * gets the colour.
  */
+/*
+ * The JSON for the character at *cursor, written into escaped (eight
+ * bytes), or "" for a colour token -- *taken is then how many bytes the
+ * token used, so the caller steps past all of it. The one rule for every
+ * GMCP string: both writers below use it.
+ */
+static const char *gmcp_json_char( const unsigned char *cursor, char escaped[8],
+                                   size_t *taken )
+{
+    unsigned char slot;
+
+    *taken = 1;
+    if ( color_token_prefix( (char)*cursor )
+      && color_parse_slot( (const char *)cursor + 1, &slot ) )
+    {
+        *taken = 3;
+        return "";
+    }
+    switch ( *cursor )
+    {
+    case '\"': return "\\\"";
+    case '\\': return "\\\\";
+    case '\b': return "\\b";
+    case '\f': return "\\f";
+    case '\n': return "\\n";
+    case '\r': return "\\r";
+    case '\t': return "\\t";
+    default:
+        if ( *cursor < 0x20 || *cursor >= 0x7f )
+            snprintf( escaped, 8, "\\u%04x", (unsigned int)*cursor );
+        else
+        {
+            escaped[0] = (char)*cursor;
+            escaped[1] = '\0';
+        }
+        return escaped;
+    }
+}
+
 static void gmcp_json_append_quoted( char *buffer, size_t buffer_size,
                                      const char *value )
 {
     const unsigned char *cursor;
     char escaped[8];
-    unsigned char slot;
+    size_t taken;
 
     toc_strlcat( buffer, "\"", buffer_size );
     if ( value != NULL )
-    {
-        for ( cursor = (const unsigned char *)value; *cursor != '\0'; ++cursor )
-        {
-            if ( color_token_prefix( (char)*cursor )
-              && color_parse_slot( (const char *)cursor + 1, &slot ) )
-            {
-                cursor += 2;            /* and the loop's step: three */
-                continue;
-            }
-            switch ( *cursor )
-            {
-            case '\"': toc_strlcat( buffer, "\\\"", buffer_size ); break;
-            case '\\': toc_strlcat( buffer, "\\\\", buffer_size ); break;
-            case '\b': toc_strlcat( buffer, "\\b",  buffer_size ); break;
-            case '\f': toc_strlcat( buffer, "\\f",  buffer_size ); break;
-            case '\n': toc_strlcat( buffer, "\\n",  buffer_size ); break;
-            case '\r': toc_strlcat( buffer, "\\r",  buffer_size ); break;
-            case '\t': toc_strlcat( buffer, "\\t",  buffer_size ); break;
-            default:
-                if ( *cursor < 0x20 || *cursor >= 0x7f )
-                {
-                    snprintf( escaped, sizeof(escaped), "\\u%04x",
-                              (unsigned int)*cursor );
-                    toc_strlcat( buffer, escaped, buffer_size );
-                }
-                else
-                {
-                    escaped[0] = (char)*cursor;
-                    escaped[1] = '\0';
-                    toc_strlcat( buffer, escaped, buffer_size );
-                }
-                break;
-            }
-        }
-    }
+        for ( cursor = (const unsigned char *)value; *cursor != '\0'; cursor += taken )
+            toc_strlcat( buffer, gmcp_json_char( cursor, escaped, &taken ), buffer_size );
     toc_strlcat( buffer, "\"", buffer_size );
+}
+
+/* The same, onto a growing string: false when it would not fit whole. */
+static bool gmcp_dstring_append_quoted( DString *out, const char *value )
+{
+    const unsigned char *cursor;
+    char escaped[8];
+    size_t taken;
+    bool ok;
+
+    ok = dstring_append_char( out, '"' );
+    if ( value != NULL )
+        for ( cursor = (const unsigned char *)value; ok && *cursor != '\0'; cursor += taken )
+            ok = dstring_append_cstr( out, gmcp_json_char( cursor, escaped, &taken ) );
+    return ok && dstring_append_char( out, '"' );
 }
 
 static const char *gmcp_area_name( const char *raw_name )
@@ -1369,36 +1391,84 @@ void gmcp_send_chars( DESCRIPTOR_DATA *d )
  * finished payload: an inventory runs to dozens of items, this is
  * called from the main loop, and building all that string only to
  * throw it away four times a second is work nobody asked for. The
- * signature is integer arithmetic over the vnums and wear slots,
- * which is what a change to either would move.
+ * signature is integer arithmetic over what the pane shows of each
+ * object: its vnum and wear slot, the bytes of its name as the payload
+ * sends it, and whether this character can see it. The name is hashed
+ * as text, never by pointer: REDEEM RESTRING and STRING free the old
+ * name and str_dup the new, and the allocator may hand back the very
+ * same address (2026-11-12: a renamed weapon kept its old name in the
+ * pane). Sight is asked as the payload asks it (can_see_obj), so an
+ * invisible thing appearing when DETECT INVIS lands, or going when it
+ * wears off, sends the list again.
  */
 static uint32_t gmcp_items_signature( CHAR_DATA *ch )
 {
     OBJ_DATA *obj;
+    const unsigned char *name;
     uint32_t sig = 2166136261u;
-    int count = 0;
+    uint32_t count = 0;
 
-    for ( obj = ch->carrying; obj != NULL && count < 200; obj = obj->next_content )
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
         count++;
         sig = ( sig ^ (uint32_t)( obj->pIndexData != NULL
                                 ? obj->pIndexData->vnum : 0 ) ) * 16777619u;
         sig = ( sig ^ (uint32_t)( obj->wear_loc + 2 ) ) * 16777619u;
+        sig = ( sig ^ ( can_see_obj( ch, obj ) ? 0x5eu : 0xa1u ) ) * 16777619u;
+        for ( name = (const unsigned char *)( obj->short_descr != NULL
+                                              ? obj->short_descr : "" );
+              *name != '\0'; ++name )
+            sig = ( sig ^ (uint32_t)*name ) * 16777619u;
+        sig = ( sig ^ 0xffu ) * 16777619u;     /* where one name ends */
     }
 
-    return sig ^ (uint32_t)count;
+    return sig ^ count;
 }
 
+/*
+ * How much Char.Items carries. It used to be built in a 4,096-byte array
+ * and handed to telnet_send_gmcp, which drops anything past its 2,048-byte
+ * frame: 72 things with 45-letter names (REDEEM RESTRING allows 45) ran
+ * off the end, toc_strlcat cut the JSON mid-string, nothing reached the
+ * client, and the signature was marked sent, so the pane kept showing a
+ * list that was no longer true (review, 2026-11-12). Now the payload is a
+ * bounded DString sent through telnet_send_gmcp_large, and it is always
+ * whole: worn things first, each whole or not at all, within
+ * GMCP_ITEMS_WORN_BYTES; then carried things, each whole or not at all,
+ * at most GMCP_ITEMS_MAX_ENTRIES of them and only while what is worn and
+ * the closing counts still fit in GMCP_ITEMS_MAX_BYTES. What was left out
+ * is said: inventory_total and equipment_total are everything this
+ * character carries or wears and can see, truncated and
+ * equipment_truncated how many of those the lists leave out. The Mudlet
+ * package draws the cut ("... and 3 more not shown").
+ */
+#define GMCP_ITEMS_MAX_ENTRIES  200
+#define GMCP_ITEMS_MAX_BYTES    ( 24 * 1024 )
+#define GMCP_ITEMS_WORN_BYTES   ( 8 * 1024 )
+#define GMCP_ITEMS_TRAILER      192     /* the counts and the closing */
+
+/* One object as the pane shows it: {"name":"..."}, and its slot if worn. */
+static bool gmcp_items_entry( DString *entry, const OBJ_DATA *obj, bool worn )
+{
+    dstring_clear( entry );
+    return dstring_append_cstr( entry, "{\"name\":" )
+        && gmcp_dstring_append_quoted( entry,
+               obj->short_descr != NULL ? obj->short_descr : "something" )
+        && ( !worn || dstring_printf( entry, ",\"slot\":%d", obj->wear_loc ) )
+        && dstring_append_char( entry, '}' );
+}
 
 void gmcp_send_items( DESCRIPTOR_DATA *d )
 {
     CHAR_DATA *ch;
     OBJ_DATA *obj;
-    char json[MAX_STRING_LENGTH];
-    char number[64];
+    DString out, worn, entry;
     uint32_t sig;
-    int count;
-    bool first;
+    int worn_total = 0, worn_shown = 0;
+    int carried_total = 0, carried_shown = 0;
+    bool full = false;
+    bool sent = false;
+    bool ok = true;
 
     if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
         return;
@@ -1411,54 +1481,78 @@ void gmcp_send_items( DESCRIPTOR_DATA *d )
     if ( d->gmcp_items_valid && d->gmcp_last_items_sig == sig )
         return;
 
-    toc_strlcpy( json, "{\"inventory\":[", sizeof(json) );
-    first = true;
-    count = 0;
+    dstring_init_limit( &out, GMCP_ITEMS_MAX_BYTES );
+    dstring_init_limit( &worn, GMCP_ITEMS_WORN_BYTES );
+    dstring_init( &entry );
 
-    for ( obj = ch->carrying; obj != NULL && count < 100;
-          obj = obj->next_content )
-    {
-        if ( obj->wear_loc != WEAR_NONE || !can_see_obj( ch, obj ) )
-            continue;
-        count++;
-
-        if ( !first )
-            toc_strlcat( json, ",", sizeof(json) );
-        first = false;
-        toc_strlcat( json, "{\"name\":", sizeof(json) );
-        gmcp_json_append_quoted( json, sizeof(json),
-            obj->short_descr != NULL ? obj->short_descr : "something" );
-        toc_strlcat( json, "}", sizeof(json) );
-    }
-
-    toc_strlcat( json, "],\"equipment\":[", sizeof(json) );
-    first = true;
-    count = 0;
-
-    for ( obj = ch->carrying; obj != NULL && count < 100;
-          obj = obj->next_content )
+    /* What is worn, whole entries only. */
+    ok = dstring_append_char( &worn, '[' ) && ok;
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
         if ( obj->wear_loc == WEAR_NONE || !can_see_obj( ch, obj ) )
             continue;
-        count++;
+        worn_total++;
+        if ( !full && gmcp_items_entry( &entry, obj, true )
+          && dstring_fits( &worn, dstring_length( &entry ) + 2 ) )
+        {
+            if ( worn_shown > 0 )
+                ok = dstring_append_char( &worn, ',' ) && ok;
+            ok = dstring_append_cstr( &worn, dstring_cstr( &entry ) ) && ok;
+            worn_shown++;
+        }
+        else
+            full = true;
+    }
+    ok = dstring_append_char( &worn, ']' ) && ok;
 
-        if ( !first )
-            toc_strlcat( json, ",", sizeof(json) );
-        first = false;
-        toc_strlcat( json, "{\"name\":", sizeof(json) );
-        gmcp_json_append_quoted( json, sizeof(json),
-            obj->short_descr != NULL ? obj->short_descr : "something" );
-        toc_strlcat( json, ",\"slot\":", sizeof(json) );
-        snprintf( number, sizeof(number), "%d", obj->wear_loc );
-        toc_strlcat( json, number, sizeof(json) );
-        toc_strlcat( json, "}", sizeof(json) );
+    /* What is carried, while it and everything after it fit. */
+    full = false;
+    ok = dstring_append_cstr( &out, "{\"inventory\":[" ) && ok;
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->wear_loc != WEAR_NONE || !can_see_obj( ch, obj ) )
+            continue;
+        carried_total++;
+        if ( !full && carried_shown < GMCP_ITEMS_MAX_ENTRIES
+          && gmcp_items_entry( &entry, obj, false )
+          && dstring_fits( &out, dstring_length( &entry ) + 1
+                                 + dstring_length( &worn ) + GMCP_ITEMS_TRAILER ) )
+        {
+            if ( carried_shown > 0 )
+                ok = dstring_append_char( &out, ',' ) && ok;
+            ok = dstring_append_cstr( &out, dstring_cstr( &entry ) ) && ok;
+            carried_shown++;
+        }
+        else
+            full = true;        /* the list stops here, in order */
     }
 
-    toc_strlcat( json, "]}", sizeof(json) );
+    ok = dstring_append_cstr( &out, "],\"equipment\":" ) && ok;
+    ok = dstring_append_cstr( &out, dstring_cstr( &worn ) ) && ok;
+    ok = dstring_printf( &out,
+        ",\"inventory_total\":%d,\"equipment_total\":%d,"
+        "\"truncated\":%d,\"equipment_truncated\":%d}",
+        carried_total, worn_total, carried_total - carried_shown,
+        worn_total - worn_shown ) && ok;
 
-    telnet_send_gmcp( d, "Char.Items", json );
-    d->gmcp_last_items_sig = sig;
-    d->gmcp_items_valid = true;
+    /* Room for all of that was kept at every step; a refusal now would be
+       a broken payload, so nothing is sent and the next prompt tries
+       again rather than marking a list the client never had. */
+    if ( ok )
+        sent = telnet_send_gmcp_large( d, "Char.Items", dstring_cstr( &out ),
+                                       GMCP_ITEMS_MAX_BYTES );
+    else
+        bug( "gmcp_send_items: the payload did not fit its own bounds", 0 );
+
+    dstring_free( &entry );
+    dstring_free( &worn );
+    dstring_free( &out );
+
+    if ( sent )
+    {
+        d->gmcp_last_items_sig = sig;
+        d->gmcp_items_valid = true;
+    }
 }
 
 

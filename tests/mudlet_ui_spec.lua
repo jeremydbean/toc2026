@@ -539,5 +539,152 @@ do
     bt:find("shadowmeld") ~= nil and bt:find("on") ~= nil, bt)
 end
 
+-- ------------------------------------------------ a door on the route
+-- The walker opens a door Room.Info says is shut; the game answers the
+-- OPEN with a fresh Room.Info for the room you are still in (its doors
+-- changed). That is not an arrival: it used to read as "not where the
+-- route expected you" and stop the walk one step before the door.
+local function roomInfo(info)
+  gmcp.Room = gmcp.Room or {}
+  gmcp.Room.Info = info
+  tocMudlet.onRoomInfo()
+end
+
+do
+  reset()
+  tocMudlet.lastRoom = 800
+  tocMudlet.lastExits = { num = 800, exits = { n = 801 }, doors = { n = "closed" } }
+  startWalk({ "n", "e" }, { 801, 802 })
+  check("a closed door on the route is opened, then walked",
+    sent[1] == "open north" and sent[2] == "north" and #sent == 2,
+    table.concat(sent, ";"))
+  roomInfo({ num = 800, name = "Hall", area = "A", exits = { n = 801 },
+             doors = { n = "open" } })
+  check("the door opening is not an arrival", tocMudlet.walk.active == true)
+  check("and sends nothing", #sent == 2, table.concat(sent, ";"))
+  check("but the room's doors are updated",
+    tocMudlet.lastExits.doors and tocMudlet.lastExits.doors.n == "open")
+  roomInfo({ num = 800, name = "Hall", area = "A", exits = { n = 801 },
+             doors = { n = "open" }, services = { "shop" } })
+  check("a service change in the same room leaves the walk alone",
+    tocMudlet.walk.active == true and #sent == 2, table.concat(sent, ";"))
+  roomInfo({ num = 801, name = "Beyond", area = "A", exits = { s = 800, e = 802 } })
+  check("the real arrival sends the next step", sent[3] == "east", sent[3])
+  roomInfo({ num = 802, name = "End", area = "A", exits = { w = 801 } })
+  check("and the route finishes", tocMudlet.walk.active == false)
+  check("saying so", (echoed[#echoed] or ""):find("Arrived") ~= nil, echoed[#echoed])
+end
+
+do
+  reset()
+  tocMudlet.lastRoom = 810
+  tocMudlet.lastExits = { num = 810, exits = { n = 811 } }
+  startWalk({ "n", "n" }, { 811, 812 })
+  roomInfo({ num = 999, name = "Elsewhere", area = "A", exits = {} })
+  check("a genuine wrong room still stops the walk", tocMudlet.walk.active == false)
+  check("and says why", (echoed[#echoed] or ""):find("not where the route") ~= nil,
+    echoed[#echoed])
+end
+
+-- ------------------------------------------------ the watchdog
+do
+  -- A step that landed with no Room.Info to say so: the watchdog finds
+  -- you already in the step's room and goes on, rather than retrying.
+  reset()
+  tocMudlet.lastRoom = 820
+  tocMudlet.lastExits = { num = 820, exits = { n = 821 } }
+  startWalk({ "n", "e" }, { 821, 822 })
+  tocMudlet.lastRoom = 821
+  timers[#timers]()
+  check("a step already landed is taken as an arrival",
+    sent[2] == "east" and #sent == 2, table.concat(sent, ";"))
+  timers[#timers]()
+  check("a step that did not land tries the door once",
+    sent[3] == "open east" and sent[4] == "east", table.concat(sent, ";"))
+  timers[#timers]()
+  check("and then gives up", tocMudlet.walk.active == false and #sent == 4,
+    table.concat(sent, ";"))
+
+  reset()
+  tocMudlet.lastRoom = 830
+  tocMudlet.lastExits = { num = 830, exits = {} }
+  startWalk({ "enter portal" }, { 831 })
+  timers[#timers]()
+  check("a special exit is retried without opening a door",
+    sent[2] == "enter portal" and #sent == 2, table.concat(sent, ";"))
+  tocMudlet.walkCommand("stop")
+end
+
+-- ------------------------------------------------ exit buttons and doors
+do
+  reset()
+  tocMudlet.exitButtons = {}
+  for i = 1, 10 do tocMudlet.exitButtons[i] = console() end
+  tocMudlet.lastRoom = 840
+  tocMudlet.lastExits = { num = 840, exits = { n = 841, e = 842, s = 843 },
+                          doors = { n = "closed", e = "locked", s = "open" } }
+  tocMudlet.showExits(tocMudlet.lastExits.exits, tocMudlet.lastExits.doors)
+  local north, east, south = tocMudlet.exitButtons[1], tocMudlet.exitButtons[2],
+                             tocMudlet.exitButtons[3]
+  check("a closed door's button is marked", text(north):find("N%+") ~= nil, text(north))
+  check("a locked door's button is marked", text(east):find("E#") ~= nil, text(east))
+  check("an open door's button is plain", text(south):find(">S<") ~= nil, text(south))
+
+  sent, echoed = {}, {}
+  north.click()
+  check("a closed door's button opens it, then steps",
+    sent[1] == "open north" and sent[2] == "north" and #sent == 2, table.concat(sent, ";"))
+  sent, echoed = {}, {}
+  east.click()
+  check("a locked door's button tries it, as a walk does",
+    sent[1] == "open east" and sent[2] == "east", table.concat(sent, ";"))
+  check("and says it is locked and how to pass",
+    (echoed[1] or ""):find("locked") ~= nil and (echoed[1] or ""):find("unlock east") ~= nil,
+    echoed[1])
+  sent = {}
+  south.click()
+  check("an open door's button just steps", sent[1] == "south" and #sent == 1,
+    table.concat(sent, ";"))
+
+  -- The door is read when the button is pressed, not when it was drawn.
+  tocMudlet.lastExits.doors.n = "open"
+  sent = {}
+  north.click()
+  check("a door opened since is not opened again", sent[1] == "north" and #sent == 1,
+    table.concat(sent, ";"))
+
+  -- A click during a walk ends the walk, saying so.
+  startWalk({ "w", "w" }, { 850, 851 })
+  sent, echoed = {}, {}
+  south.click()
+  check("a step taken by hand ends a walk", tocMudlet.walk.active == false)
+  check("and is still taken", sent[#sent] == "south", sent[#sent])
+  tocMudlet.lastExits = nil
+end
+
+-- ------------------------------------------------ a list cut short
+do
+  tocMudlet.ui.items = console()
+  gmcp.Char.Items = { equipment = {}, inventory = { { name = "a rock" }, { name = "a stick" } },
+                      inventory_total = 5, truncated = 3 }
+  tocMudlet.onItems()
+  local cut = text(tocMudlet.ui.items)
+  check("a cut list counts every item", cut:find("CARRIED %(5%)") ~= nil, cut)
+  check("and says how many are not shown", cut:find("3 more not shown") ~= nil, cut)
+
+  tocMudlet.ui.items = console()
+  gmcp.Char.Items = { equipment = {}, inventory = { { name = "a rock" } } }
+  tocMudlet.onItems()
+  local whole = text(tocMudlet.ui.items)
+  check("an older server's list reads as whole", whole:find("not shown") == nil
+    and whole:find("CARRIED %(1%)") ~= nil, whole)
+
+  tocMudlet.ui.items = console()
+  gmcp.Char.Items = { equipment = {}, inventory = {}, inventory_total = 0, truncated = 0 }
+  tocMudlet.onItems()
+  check("an empty pack says nothing", text(tocMudlet.ui.items):find("nothing") ~= nil,
+    text(tocMudlet.ui.items))
+end
+
 print(failures == 0 and "ALL PASS" or (failures .. " FAILED"))
 os.exit(failures == 0 and 0 or 1)
