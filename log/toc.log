@@ -292181,3 +292181,7 @@ Thu Nov 12 21:10:22 2026 :: Log Miseri [30435]: coin +32 copper
 Thu Nov 12 21:15:31 2026 :: Connection guard: last hour 12 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
 Thu Nov 12 21:15:59 2026 :: Treasure goblin: vanished from room 7877 (The Small Valley, valley.are) (too long in one area).
 Thu Nov 12 21:18:30 2026 :: Closing link to Miseri.
+Thu Nov 12 21:24:18 2026 :: Sock.sinaddr:  18.116.101.220
+Thu Nov 12 21:24:18 2026 :: EOF encountered on read.
+Thu Nov 12 21:24:40 2026 :: Sock.sinaddr:  18.116.101.220
+Thu Nov 12 21:26:03 2026 :: Treasure goblin: vanished from room 18072 (The Throne Room, icekeep.are) (too long in one area).
