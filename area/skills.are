@@ -261,7 +261,11 @@ you.
     NOSUMMON, when either of you is fighting, or when either of you is
     serving a jail sentence.
   - Your room must not be no-recall, teleport, river or arena, nor one
-    you may not use magic from; theirs must be one travel magic reaches.
+    you may not use magic from; theirs must be one travel magic reaches,
+    and not safe or no-recall.
+  - They must be able to enter your room by magic: not another class's
+    guild, nor a guild hall whose guard would turn them away, nor -- for
+    a mobile -- a room mobiles may not enter.
   - You are stunned until the next tick, so you cannot pull a victim in
     and strike first.
 
@@ -1010,6 +1014,10 @@ Rides a mountable creature, which then pays the movement.
   - A mount cannot go indoors, into a law room, through a closed or
     secret exit, or into another class's guild.  The sky needs a flyer;
     deep water a flyer or swimmer.
+  - Your mount, wearing its saddle, is saved with you when you quit, if it
+    is beside you.  You come back dismounted, the mount saddled at your
+    side; RIDE it again, with no saddle needed in your pack.  A mount you
+    DISMOUNT is let go: it is not yours any more, and is not saved.
 
 Minimum level by class (GAINLIST shows who sells it):
 Mage:6  Cleric:6  Thief:5  Warrior:4  Monk:5  Necromancer:6

@@ -2449,8 +2449,18 @@ void do_shift( CHAR_DATA *ch, char *argument )
     ||   ch->fighting != NULL
     ||   (IS_NPC(victim) && IS_SET(victim->act,ACT_AGGRESSIVE))
     ||   psionic_remote_room_blocked(ch, ch->in_room, false, true)
-    ||   psionic_remote_room_blocked(ch, victim != NULL ? victim->in_room : NULL,
-                                     true, true)
+    /* The target's room: one the caster can see into, never safe or
+       no-recall -- the rift pulls them out of it. */
+    ||   psionic_remote_room_blocked(ch, victim->in_room, true, false)
+    ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
+    /* And what really happens: the target is carried into the caster's
+       room. It asked travel_spell_refuses( caster, target's room ), which
+       is astral walk's question, so anybody was pulled into a guild's
+       hall whose guard would never let them walk in (review,
+       2026-11-12). Asked of the target, as summon and teleport ask it,
+       with a mobile kept out of a no-mob room as wandering keeps it. */
+    ||   travel_spell_refuses(victim, ch->in_room)
+    ||   (IS_NPC(victim) && IS_SET(ch->in_room->room_flags, ROOM_NO_MOB))
     ||   IS_SET(ch->in_room->room_flags, ROOM_TELEPORT)
     ||   IS_SET(ch->in_room->room_flags, ROOM_RIVER)
     ||   IS_SET(ch->in_room->room_flags, ROOM_ARENA)

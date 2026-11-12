@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The exploration maps' four open items** (2026-11-12). Package 1.5.13
+  corrects the fog against Mudlet's source: doors are keyed `up`/`down`
+  (up and down doors were never drawn), and `deleteRoom` takes the doors
+  off the neighbours' exits, so a fog pass reads every room before
+  deleting any and leaves a stub with its door at the edge of the known.
+  A saddled mount is saved with its saddle (`Saddle <vnum> <level>` in
+  `#PET`) and comes back beside its rider, not ridden
+  (`tests/test_mount_persistence.py`). SHIFT asks whether the target may
+  enter the caster's room (`tests/test_shift_destination.py`). GRANTMAP
+  ... REVOKE takes maps back (`tests/test_grantmap_revoke.py`).
 - **Exploration maps and the fog on the Mudlet map** (owner, 2026-11-12).
   The game decides what each character knows (`src/maps.c`): rooms walked
   into, whole regions whose map they hold -- an area, or a Hyrule dungeon

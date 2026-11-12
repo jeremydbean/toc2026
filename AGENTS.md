@@ -4651,10 +4651,16 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   the cell, and a crash before the move logs them in at the Temple with
   the pet beside them. A rider remounted in the cell goes out mounted, the
   mount with them, as TRANSFER moves one; a rider whose mount is not
-  there is dismounted (`release_mount`). A saddled mount is never saved
-  (it carries the saddle), here as anywhere. SHIFT asks `jail_refuses` of
+  there is dismounted (`release_mount`). A saddled mount is saved with its
+  saddle (see "A Saddled Mount Is Saved"), so one led out of the cell
+  survives the quit too. SHIFT asks `jail_refuses` of
   the caster and `is_jailed` of the target before any cost: its room
-  tests read the cell's flags (`tests/test_jail_companions.py`).
+  tests read the cell's flags (`tests/test_jail_companions.py`). Its
+  destination test is the target's: `travel_spell_refuses( victim,
+  ch->in_room )`, and a mobile is kept out of a `ROOM_NO_MOB` caster room
+  (review, 2026-11-12: it asked `travel_spell_refuses( caster, target's
+  room )`, astral walk's question, and pulled anybody into a guild hall
+  whose guard turns them away; `tests/test_shift_destination.py`).
 - **Expiry** is elapsed wall-clock time, never ticks: `jail_update` once
   a second (`update_handler`, beside the memory sweep) releases a timed
   prisoner past the deadline, link-dead too, with nothing typed;
@@ -4677,6 +4683,31 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   A mount jailed under its rider is led in unridden and stays their pet;
   RIDE takes back a mount that is already the rider's own (its master is
   them), so they may sit it in the cell and go nowhere.
+
+## A Saddled Mount Is Saved
+
+2026-11-12. RIDE puts the rider's saddle on the mount (`WEAR_BODY`) and
+makes it their pet, and `save_char_obj` wrote no pet that carried
+anything, so a ridden mount and its saddle were destroyed at every quit.
+`pet_saveable(pet, &saddle)` in `save.c` is the one test: a pet carrying
+nothing, or only its own saddle, worn and holding nothing. `fwrite_pet`
+writes the saddle as `Saddle <vnum> <level>` in the `#PET` record (case
+'S' of `fread_pet`); `fread_pet_saddle` makes it again at the record's
+`End` -- never part way, so a refused record leaves none -- and puts it on
+(a vnum that is no saddle now is left out with a bug line, one the pet's
+alignment refuses goes to the owner's pack). A second `Saddle` refuses the
+character through the loader's trap ("has a pet record with two saddles"),
+as a second pet does; a malformed number refuses it as any does. Only the
+vnum and level are kept: the saddle comes back as its prototype makes it.
+**Nobody comes back riding**: `load_char_obj` clears `mounted` when no
+ridden pet came with the file (a loaded pet never is), before `jail_login`
+or anything at login asks, and the nanny clears it again. The rider enters
+on foot, the mount saddled beside them; RIDE lets anybody mount their own
+pet and needs no saddle in the pack when the mount wears one. A pet's carry
+limit is 0 (`can_carry_n`), so only RIDE ever puts anything on one, and a
+pet carrying anything else is still not written. DISMOUNT lets the mount
+go (not the pet any more, not saved), as it always did.
+`tests/test_mount_persistence.py`, `tests/test_jail_companions.py`.
 
 ## Where RECALL Goes
 
@@ -5018,13 +5049,28 @@ always). The game decides and the package only draws:
   a Hyrule map bit is new). A room walked into needs no message: the package
   reads `Room.Info`. A new way to learn a map goes through
   `map_grant_region`.
-- **The package's fog** (1.5.12): unknown rooms are deleted from the profile's
-  map and kept, with coordinates, area, name, terrain, mark, doors and both
-  ends of every exit, in `toc-fog.lua`; `tocMudlet.unfog` puts one back and
-  relinks it. `Room.Info`, `Hyrule.MapRoom` and a new `Map.Known` unfog; a
-  new map in the profile (`tocgui atlas`, `sysMapDownloadEvent`) starts the
-  fog afresh. The atlas itself still holds every room it did: the fog is
-  the client's, never the generator's. `tests/mudlet_fog_spec.lua`.
+- **The package's fog** (1.5.12, corrected in 1.5.13): unknown rooms are
+  deleted from the profile's map and kept, with coordinates, area, name,
+  terrain, mark, doors and both ends of every exit (with the door on the
+  exit into it), in `toc-fog.lua` (`getMudletHomeDir()`, `table.save`/
+  `table.load`); `tocMudlet.unfog` puts one back and relinks it.
+  `Room.Info`, `Hyrule.MapRoom` and a new `Map.Known` unfog, and a smaller
+  `Map.Known` (GRANTMAP ... REVOKE) fogs again; a new map in the profile
+  (`tocgui atlas` after its own `loadMap`, or `sysMapDownloadEvent`, which
+  Mudlet raises only after its own map download -- the GMCP `Client.Map`
+  one -- has parsed) starts the fog afresh. The atlas itself still holds
+  every room it did: the fog is the client's, never the generator's.
+  **Mudlet's rules, read from its source** (`TLuaInterpreterMapper.cpp`,
+  `TRoom.cpp`, `TRoomDB.cpp`, `TMap.cpp`, 2026-11-12) and played by the
+  fake mapper in `tests/mudlet_fog_spec.lua`: `getRoomExits` names exits
+  "north" ... "down"; `setExit`/`setExitStub` take short or long names;
+  **doors are keyed "n" ... "nw", "up", "down"** -- `setDoor(id, "u", n)`
+  is refused as a special exit, so `doorKey()` maps u/d (up and down doors
+  were never drawn before 1.5.13) -- and `setDoor` needs an exit or a stub
+  in that direction; **`deleteRoom` takes the doors off its neighbours'
+  exits into the room** (`removeExitExtras`), so a fog pass reads every
+  record before deleting any, and leaves an exit stub with its door on a
+  room still drawn where an exit went into the fog.
 - **Map items**: one prototype, `OBJ_VNUM_AREA_MAP` (96, limbo.are, level 0),
   `ITEM_MAP` with `value[0]` `MAP_ITEM_AREA` (92 -- never 0, which `save.c`
   drops) and `value[1]` a room of its region; `map_item_create` names it.
@@ -5051,7 +5097,14 @@ always). The game decides and the package only draws:
   rooms already saved (the file proves it). The per-area lists are rebuilt
   when `top_room` or `top_vnum_room` moves.
 - **Staff**: GRANTMAP (L5; online or offline, `rank_protects`, saved, logged,
-  WIZINFO at the pair's level) and CARTOGRAPHER (L5). Player: MAPS (last in
+  WIZINFO at the pair's level) and CARTOGRAPHER (L5). `GRANTMAP <player>
+  <map|all> REVOKE` takes maps back under the same rules
+  (`map_revoke_region`, `map_revoke_everything`, through
+  `achievement_set_remove`/`_clear`): only what the `map-areas` set holds;
+  rooms walked stay known, a dungeon's NES map bit (`AchMaps`) is the
+  achievements' record and is kept, and no achievement is taken back. It
+  calls `map_known_changed`, so the client gets the smaller list at the
+  next prompt (`tests/test_grantmap_revoke.py`). Player: MAPS (last in
   the command table, so no shorter word moved). Achievements `maps-*`
   (`ACH_REQ_AREA_MAPS`, `map_held_count`), `explored-*`,
   `cartographer-slain`, `master-cartographer` (cohort `cartography`).

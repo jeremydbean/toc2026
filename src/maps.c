@@ -945,10 +945,47 @@ static int map_grant_everything( CHAR_DATA *victim )
     return granted;
 }
 
+/*
+ * GRANTMAP ... REVOKE: the map of the anchor's region taken back. True when
+ * it was held through the map-areas set (a grant, a map READ, the
+ * cartographer's). A Hyrule dungeon's NES map found in play is the
+ * achievements' record (AchMaps) and stays: *kept says so. Rooms walked
+ * stay known whatever is revoked, and nothing earned is taken back.
+ */
+static bool map_revoke_region( CHAR_DATA *victim, ROOM_INDEX_DATA *anchor, bool *kept )
+{
+    int level = map_hyrule_level( anchor );
+    bool taken;
+
+    taken = achievement_set_remove( victim, ACH_SET_MAP_AREAS, map_region_id( anchor ) );
+    *kept = level > 0
+         && ( victim->pcdata->achievement_hyrule_maps & ( 1UL << ( level - 1 ) ) ) != 0;
+    if ( taken )
+        map_known_changed( victim );
+    return taken;
+}
+
+/* Every map held through the set; how many. Dungeon maps found in play
+   stay (*kept counts them). */
+static int map_revoke_everything( CHAR_DATA *victim, int *kept )
+{
+    int taken = achievement_set_clear( victim, ACH_SET_MAP_AREAS );
+    int level;
+
+    *kept = 0;
+    for ( level = 1; level <= MAP_HYRULE_LEVELS; level++ )
+        if ( ( victim->pcdata->achievement_hyrule_maps & ( 1UL << ( level - 1 ) ) ) != 0 )
+            ( *kept )++;
+    if ( taken > 0 )
+        map_known_changed( victim );
+    return taken;
+}
+
 void do_grantmap( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     char what[MAX_INPUT_LENGTH];
+    char verb[MAX_INPUT_LENGTH];
     char title[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA offline_desc;
@@ -956,20 +993,27 @@ void do_grantmap( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *anchor = NULL;
     bool offline = false;
     bool everything;
+    bool revoke = false;
     bool logging_in = false;
     int granted;
+    int kept = 0;
     int status;
 
     argument = one_argument( argument, arg );
-    one_argument( argument, what );
+    argument = one_argument( argument, what );
+    argument = one_argument( argument, verb );
     if ( arg[0] != '\0' && !str_cmp( arg, "list" ) )
     {
         map_grantmap_list( ch );
         return;
     }
-    if ( arg[0] == '\0' || what[0] == '\0' )
+    if ( verb[0] != '\0' && !str_cmp( verb, "revoke" ) )
+        revoke = true;
+    if ( arg[0] == '\0' || what[0] == '\0'
+    ||   ( verb[0] != '\0' && !revoke ) || argument[0] != '\0' )
     {
         send_to_char( "Syntax: grantmap <player> <area|hyrule1..hyrule9|all>\n\r"
+                      "        grantmap <player> <area|hyrule1..hyrule9|all> revoke\n\r"
                       "        grantmap list\n\r", ch );
         return;
     }
@@ -981,7 +1025,8 @@ void do_grantmap( CHAR_DATA *ch, char *argument )
     }
     if ( !everything && map_area_always_known( anchor->area ) )
     {
-        send_to_char( "Everybody knows that area already.\n\r", ch );
+        send_to_char( revoke ? "Everybody knows that area; there is no map to take back.\n\r"
+                             : "Everybody knows that area already.\n\r", ch );
         return;
     }
 
@@ -1010,6 +1055,77 @@ void do_grantmap( CHAR_DATA *ch, char *argument )
     if ( victim != ch && rank_protects( ch, victim ) )
     {
         send_to_char( "You failed.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    if ( revoke )
+    {
+        bool dungeon_kept = false;
+
+        if ( everything )
+        {
+            granted = map_revoke_everything( victim, &kept );
+            toc_strlcpy( title, "every map", sizeof(title) );
+        }
+        else
+        {
+            granted = map_revoke_region( victim, anchor, &dungeon_kept ) ? 1 : 0;
+            kept = dungeon_kept ? 1 : 0;
+            map_region_title( anchor, title, sizeof(title) );
+        }
+        if ( granted == 0 )
+        {
+            snprintf( buf, sizeof(buf), "%s holds no %s%s to take back%s.\n\r",
+                      victim->name, everything ? "map" : "map of ",
+                      everything ? "" : title,
+                      kept > 0 ? " (a Hyrule map found in play is kept)" : "" );
+            send_to_char( buf, ch );
+            if ( offline )
+                extract_char( victim, true );
+            return;
+        }
+        save_char_obj( victim );
+        status = save_char_obj_status( );
+        if ( offline && status == DURABLE_FAILED )
+        {
+            send_to_char( "Their player file could not be saved, so nothing was taken.\n\r", ch );
+            extract_char( victim, true );
+            return;
+        }
+        if ( everything )
+            snprintf( buf, sizeof(buf), "%s no longer holds any map (%d taken back).\n\r",
+                      victim->name, granted );
+        else
+            snprintf( buf, sizeof(buf), "%s no longer holds the map of %s.\n\r",
+                      victim->name, title );
+        send_to_char( buf, ch );
+        if ( kept > 0 )
+        {
+            snprintf( buf, sizeof(buf), "%d Hyrule dungeon map%s found in play %s kept: "
+                      "REVOKE takes back only what is held as a map.\n\r",
+                      kept, kept == 1 ? "" : "s", kept == 1 ? "is" : "are" );
+            send_to_char( buf, ch );
+        }
+        send_to_char( "Rooms they have walked stay on their map.\n\r", ch );
+        if ( status == DURABLE_UNCERTAIN )
+            send_to_char( "Written to their player file, but the disk has not confirmed it.\n\r", ch );
+        else if ( status == DURABLE_FAILED )
+            send_to_char( "Their file could not be saved just now; their next save writes it.\n\r", ch );
+        if ( !offline && map_playing( victim ) )
+        {
+            snprintf( buf, sizeof(buf), "{0E[map]{00 The gods take back %s%s; your map "
+                      "keeps only the rooms you have walked there.\n\r",
+                      everything ? "your maps" : "the map of ",
+                      everything ? "" : title );
+            send_to_char( buf, victim );
+        }
+        snprintf( buf, sizeof(buf), "%s revoked %s's %s%s (%d taken back)%s.", ch->name,
+                  victim->name, everything ? "maps" : "map of ",
+                  everything ? "" : title, granted, offline ? " while offline" : "" );
+        log_string( buf );
+        wizinfo( buf, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
         if ( offline )
             extract_char( victim, true );
         return;

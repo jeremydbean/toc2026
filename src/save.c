@@ -55,6 +55,7 @@ void	fwrite_char	args( ( CHAR_DATA *ch,  FILE *fp ) );
 void	fwrite_obj	args( ( CHAR_DATA *ch,  OBJ_DATA  *obj,
 			    FILE *fp, int iNest ) );
 void	fwrite_pet	args( ( CHAR_DATA *pet, FILE *fp) );
+static bool pet_saveable args( ( CHAR_DATA *pet, OBJ_DATA **saddle ) );
 void	fread_char	args( ( CHAR_DATA *ch,  FILE *fp ) );
 void    fread_pet	args( ( CHAR_DATA *ch,  FILE *fp ) );
 void	fread_obj	args( ( CHAR_DATA *ch,  FILE *fp ) );
@@ -1123,10 +1124,11 @@ bool save_char_obj( CHAR_DATA *ch )
 	    fwrite_obj( ch, ch->carrying, fp, 0 );
 	/* save the pets */
 	/* A pet not yet placed -- the owner was loaded offline, or is still
-	   logging in -- is still theirs: dropping it here erased it. */
+	   logging in -- is still theirs: dropping it here erased it. A pet
+	   carrying anything but its own saddle is still not written. */
 	if (ch->pet != NULL
         && (ch->pet->in_room == ch->in_room || ch->pet->in_room == NULL)
-        && ch->pet->carrying == NULL )
+        && pet_saveable( ch->pet, NULL ) )
 	    fwrite_pet(ch->pet,fp);
 	/* Last, and deliberately: the marker puts fread_obj into stash
 	   mode for every #O that follows, so nothing of the character's
@@ -1576,10 +1578,68 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     return;
 }
 
+/*
+ * Whether a pet may be written: it carries nothing, or nothing but its own
+ * saddle, worn on its back and holding nothing (the saddle in *saddle when
+ * asked). A ridden mount wears the saddle RIDE put on it, and a pet that
+ * carried anything was never written, so a mount was lost at every quit,
+ * saddle and all (2026-11-12). A pet carrying anything else still is not:
+ * its things have no place in the #PET record.
+ */
+static bool pet_saveable( CHAR_DATA *pet, OBJ_DATA **saddle )
+{
+    OBJ_DATA *obj = pet->carrying;
+
+    if ( saddle != NULL )
+	*saddle = NULL;
+    if ( obj == NULL )
+	return true;
+    if ( obj->next_content != NULL
+    ||   obj->item_type != ITEM_SADDLE
+    ||   obj->wear_loc != WEAR_BODY
+    ||   obj->contains != NULL
+    ||   obj->pIndexData == NULL )
+	return false;
+    if ( saddle != NULL )
+	*saddle = obj;
+    return true;
+}
+
+/*
+ * A pet's saddle, from its record's `Saddle <vnum> <level>`, made again and
+ * put on its back. A vnum that is no saddle now is left out, as a vanished
+ * object is; a saddle the pet's alignment refuses goes into its owner's
+ * pack instead of the floor of a room the pet is not in yet. Only ever
+ * one: the reader refuses a second Saddle key before anything is made.
+ */
+static void fread_pet_saddle( CHAR_DATA *ch, CHAR_DATA *pet, int vnum, int level )
+{
+    OBJ_INDEX_DATA *index = get_obj_index( vnum );
+    OBJ_DATA *saddle;
+
+    if ( index == NULL || index->item_type != ITEM_SADDLE )
+    {
+	bug( "Fread_pet: saddle %d is no saddle now; it is left out.", vnum );
+	return;
+    }
+    level = URANGE( 0, level, MAX_LEVEL );
+    /* Negative: nothing about it is rolled. */
+    saddle = create_object( index, -UMAX( 1, level ) );
+    saddle->level = (sh_int) level;
+    if ( get_eq_char( pet, WEAR_BODY ) != NULL || alignment_rejects_obj( pet, saddle ) )
+    {
+	obj_to_char( saddle, ch );
+	return;
+    }
+    obj_to_char( saddle, pet );
+    equip_char( pet, saddle, WEAR_BODY );
+}
+
 /* write a pet */
 void fwrite_pet( CHAR_DATA *pet, FILE *fp)
 {
     AFFECT_DATA *paf;
+    OBJ_DATA *saddle;
 
     fprintf(fp,"#PET\n");
 
@@ -1649,6 +1709,11 @@ void fwrite_pet( CHAR_DATA *pet, FILE *fp)
 	    paf->bitvector,
 	    paf->bitvector2);
     }
+
+    /* A mount's saddle, worn (pet_saveable): fread_pet_saddle makes it
+       again. Only the vnum and level go: a saddle is nothing more. */
+    if ( pet_saveable( pet, &saddle ) && saddle != NULL )
+	fprintf( fp, "Saddle %d %d\n", saddle->pIndexData->vnum, saddle->level );
 
     fprintf(fp,"End\n");
     return;
@@ -3175,6 +3240,15 @@ read_done:
     /* A sentence from before JailInfo, or none (jail.c). */
     if ( found )
         jail_load_fixup( ch );
+
+    /* Nobody comes back riding. A mount is written with its saddle
+       (fwrite_pet) but never as ridden, so the rider enters dismounted
+       with the horse saddled beside them, and RIDE -- which lets anybody
+       mount their own pet -- puts them back on it. Cleared here, before
+       anything at login asks (jail_login's release moves a rider and
+       their mount), not only at the end of the login. */
+    if ( ch->pcdata->mounted && ( ch->pet == NULL || !ch->pet->ridden ) )
+        ch->pcdata->mounted = false;
 
     /* A warning from before WarnLog: WARN always set LOG then, so a LOG
        standing beside it is taken for the warning's (the old rule). */
@@ -4996,6 +5070,9 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     CHAR_DATA *pet;
     MOB_INDEX_DATA *index;
     bool fMatch;
+    bool saddle_seen = false;
+    int saddle_vnum = 0;
+    int saddle_level = 0;
 
     /* One pet a file: every save writes at most one #PET. A second made
        another mobile and overwrote ch->pet, so the first was left
@@ -5158,6 +5235,10 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 		SET_CHAR_REF( pet, leader, ch );
 		SET_CHAR_REF( pet, master, ch );
 		SET_CHAR_REF( ch, pet, pet );
+		/* Made only once the record is whole, so a record refused
+		   part way leaves no saddle anywhere. */
+		if ( saddle_seen )
+		    fread_pet_saddle( ch, pet, saddle_vnum, saddle_level );
 		return;
 	     }
     	     KEY( "Exp",	pet->exp,		fread_number(fp));
@@ -5215,6 +5296,32 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	    break;
 
     	case 'S' :
+	    /* A mount's saddle (fwrite_pet). One a record: a second is
+	       refused, as a second pet or a second trap is, before anything
+	       is made; a reader with no trap keeps the first. */
+	    if ( !str_cmp( word, "Saddle" ) )
+	    {
+		int vnum = fread_number( fp );
+		int level = fread_number( fp );
+
+		if ( saddle_seen )
+		{
+		    bug( "Fread_pet: a second saddle.", 0 );
+		    if ( fread_player_trap != NULL )
+		    {
+			fread_obj_refused_why = "has a pet record with two saddles";
+			longjmp( *fread_player_trap, 2 );
+		    }
+		}
+		else
+		{
+		    saddle_seen = true;
+		    saddle_vnum = vnum;
+		    saddle_level = level;
+		}
+		fMatch = true;
+		break;
+	    }
 	    KEY( "Save",	pet->saving_throw,	fread_number(fp));
     	    KEY( "Sex",		pet->sex,		(sh_int)(fread_number(fp)));
 	    KEYS( "ShD",		pet->short_descr );

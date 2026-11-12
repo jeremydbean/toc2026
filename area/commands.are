@@ -800,6 +800,7 @@ Syntax: cartographer                (where he is and when he leaves or comes)
         cartographer here           (bring him to your room)
         cartographer dismiss        (send him away; he comes back in hours)
         grantmap <player> <area|hyrule1..hyrule9|all>
+        grantmap <player> <area|hyrule1..hyrule9|all> revoke
         grantmap list               (the words GRANTMAP takes)
 
 The cartographer (mob 29942) visits for twenty to forty minutes every two
@@ -814,6 +815,12 @@ GRANTMAP gives a player the whole map of an area -- by file name, as
 "camelot", or the start of its name -- of one of Hyrule's dungeons, or of
 everything.  It works on a player online or saved, saves their file, is
 logged and refused on a player who outranks you.
+
+REVOKE at the end takes the map back instead -- one area's, one dungeon's,
+or every map they hold -- under the same rules.  Rooms they have walked
+into stay known, a Hyrule dungeon map they found in play is kept, and no
+achievement is taken away.  A player online is told, and their Mudlet map
+hides the rooms they no longer know at once.
 
 See also: MAPS, 'WANDERING CARTOGRAPHER'
 ~
@@ -6223,8 +6230,9 @@ you and fights beside you.
   - A word after the pet's name is a name it also answers to: BUY DOG REX.
   - ORDER tells it what to do (ORDER ALL tells every charmed follower in
     the room).  It will not attack a player you could not attack.
-  - It is saved with you if it is in your room, carrying nothing, when you
-    save or quit; a REMORT takes it to the Temple with you.
+  - It is saved with you if it is in your room, carrying nothing (a mount
+    may wear its saddle), when you save or quit; a REMORT takes it to the
+    Temple with you.
 
 See also: ORDER, RIDE, GROUP, BUY
 ~

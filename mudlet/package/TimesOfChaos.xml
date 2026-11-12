@@ -64,7 +64,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.12"
+tocMudlet.version = "1.5.13"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -271,11 +271,18 @@ local DOOR_STATE = { open = 1, closed = 2, locked = 3 }
 local SHORT_DIRECTION = {}
 for short, long in pairs(LONG_DIRECTION) do SHORT_DIRECTION[long] = short end
 
+-- Mudlet keys a room's doors "n" ... "nw", "up", "down" (TRoom's
+-- dirCodeToShortString), not the "u" and "d" exits are recorded under
+-- here and Room.Info sends: setDoor(id, "u", 2) is refused as a special
+-- exit the room does not have, so up and down doors were never drawn.
+local DOOR_KEY = { u = "up", d = "down" }
+local function doorKey(direction) return DOOR_KEY[direction] or direction end
+
 local function markDoors(roomId, doors)
   if not setDoor then return end
   for direction in pairs(DIR_OFFSET) do
     local state = type(doors) == "table" and DOOR_STATE[doors[direction]] or 0
-    pcall(setDoor, roomId, direction, state)
+    pcall(setDoor, roomId, doorKey(direction), state)
   end
 end
 
@@ -1956,7 +1963,28 @@ local function shortExits(roomId)
   return result
 end
 
-local function fogRoom(roomId, incoming)
+-- A room's doors as Mudlet keeps them: {n = 2, up = 3}.
+local function roomDoors(roomId)
+  if not getDoors then return {} end
+  local ok, doors = pcall(getDoors, roomId)
+  if ok and type(doors) == "table" then return doors end
+  return {}
+end
+
+-- An exit whose far room is in the fog: drawn as an unexplored stub, with
+-- its door. setDoor needs an exit or a stub in that direction.
+local function stubWithDoor(roomId, direction, state)
+  if setExitStub then pcall(setExitStub, roomId, direction, true) end
+  state = tonumber(state)
+  if setDoor and state and state > 0 then
+    pcall(setDoor, roomId, doorKey(direction), state)
+  end
+end
+
+-- What a room is, read before it goes: deleting a room also takes the
+-- doors off its neighbours' exits into it (Mudlet's removeExitExtras), so
+-- every record of a pass is read before any room of it is deleted.
+local function fogRecord(roomId, incoming)
   local rec = { exits = shortExits(roomId), incoming = incoming or {} }
   if getRoomCoordinates then
     local ok, x, y, z = pcall(getRoomCoordinates, roomId)
@@ -1981,12 +2009,9 @@ local function fogRoom(roomId, incoming)
     local ok, mark = pcall(getRoomChar, roomId)
     if ok and type(mark) == "string" and mark ~= "" then rec.char = mark end
   end
-  if getDoors then
-    local ok, doors = pcall(getDoors, roomId)
-    if ok and type(doors) == "table" and next(doors) then rec.doors = doors end
-  end
-  tocMudlet.fog[roomId] = rec
-  pcall(deleteRoom, roomId)
+  local doors = roomDoors(roomId)
+  if next(doors) then rec.doors = doors end
+  return rec
 end
 
 -- Puts a room kept aside back on the map, linked to whatever of its
@@ -2008,20 +2033,27 @@ function tocMudlet.unfog(roomId)
   if setRoomName then pcall(setRoomName, roomId, tostring(rec.name or roomId)) end
   if setRoomEnv and rec.env then pcall(setRoomEnv, roomId, rec.env) end
   if setRoomChar and rec.char then pcall(setRoomChar, roomId, rec.char) end
+  local ownDoors = rec.doors or {}
   for direction, target in pairs(rec.exits or {}) do
     target = tonumber(target)
     if target and roomExistsSafe(target) then
       pcall(setExit, roomId, target, direction)
     elseif target and tocMudlet.fog[target] then
+      -- Still in the fog: a stub here, and a link for when it comes back.
+      if setExitStub then pcall(setExitStub, roomId, direction, true) end
       local other = tocMudlet.fog[target]
       other.incoming = other.incoming or {}
-      table.insert(other.incoming, {roomId, direction})
+      table.insert(other.incoming, {roomId, direction, ownDoors[doorKey(direction)]})
     end
   end
   for _, link in ipairs(rec.incoming or {}) do
-    local source, direction = tonumber(link[1]), link[2]
+    local source, direction, door = tonumber(link[1]), link[2], tonumber(link[3])
     if source and roomExistsSafe(source) then
       pcall(setExit, source, roomId, direction)
+      if setExitStub then pcall(setExitStub, source, direction, false) end
+      if setDoor and door and door > 0 then
+        pcall(setDoor, source, doorKey(direction), door)
+      end
     elseif source and tocMudlet.fog[source] then
       local other = tocMudlet.fog[source]
       other.exits = other.exits or {}
@@ -2065,14 +2097,30 @@ function tocMudlet.applyFog()
       if next(hide) then
         local incoming = {}
         for _, id in ipairs(ids) do
+          local doors = nil
           for direction, target in pairs(shortExits(id)) do
             if hide[target] then
+              doors = doors or roomDoors(id)
               incoming[target] = incoming[target] or {}
-              table.insert(incoming[target], {id, direction})
+              table.insert(incoming[target], {id, direction, doors[doorKey(direction)]})
             end
           end
         end
-        for id in pairs(hide) do fogRoom(id, incoming[id]) end
+        -- Read everything first, then delete: a deletion takes the doors
+        -- off the exits into the room it removes.
+        local records = {}
+        for id in pairs(hide) do records[id] = fogRecord(id, incoming[id]) end
+        for id, rec in pairs(records) do
+          tocMudlet.fog[id] = rec
+          pcall(deleteRoom, id)
+        end
+        -- A room still drawn keeps an unexplored stub, and its door, where
+        -- an exit went into the fog.
+        for _, links in pairs(incoming) do
+          for _, link in ipairs(links) do
+            if roomExistsSafe(link[1]) then stubWithDoor(link[1], link[2], link[3]) end
+          end
+        end
         changed = true
       end
     end

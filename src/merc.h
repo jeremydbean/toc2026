@@ -3622,6 +3622,8 @@ long    achievement_marks ( const CHAR_DATA *ch );
 long    achievement_area_id ( const AREA_DATA *area );
 bool    achievement_set_has ( const CHAR_DATA *ch, achievement_set set, long id );
 int     achievement_set_size ( const CHAR_DATA *ch, achievement_set set );
+bool    achievement_set_remove ( CHAR_DATA *ch, achievement_set set, long id );
+int     achievement_set_clear ( CHAR_DATA *ch, achievement_set set );
 bool    achievement_room_counts ( const ROOM_INDEX_DATA *room );
 void    do_redeem ( CHAR_DATA *ch, char *argument );
 
