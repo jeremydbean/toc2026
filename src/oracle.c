@@ -802,9 +802,15 @@ static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
         oracle_sanitize( clean, sizeof(clean), summary );
         oracle_state( ch, state, sizeof(state) );
         oracle_sanitize( state_clean, sizeof(state_clean), state );
-        snprintf( record, sizeof(record), "%ld\t%s\t%s\tABILITIES:%s\tSTATE:%s\n",
+        /* Joined piece by piece: one %s of the summary may run past the
+           4,095 bytes C promises a single conversion (-Wformat-truncation=2). */
+        snprintf( record, sizeof(record), "%ld\t%s\t%s\tABILITIES:",
                   (long) ( current_time > 0 ? current_time : time(NULL) ),
-                  ch->name, question, clean, state_clean );
+                  ch->name, question );
+        toc_strlcat( record, clean, sizeof(record) );
+        toc_strlcat( record, "\tSTATE:", sizeof(record) );
+        toc_strlcat( record, state_clean, sizeof(record) );
+        toc_strlcat( record, "\n", sizeof(record) );
     }
     else
         snprintf( record, sizeof(record), "%ld\t%s\t%s\n",
