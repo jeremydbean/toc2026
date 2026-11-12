@@ -45,7 +45,7 @@ Many character and object lookups support a numbered keyword such as
 | `walkto <place>` | Walk to an area, a guild hall, a guildmaster or trainer, the guild clerk, or the Temple from wherever you stand, a room every half second; any other command stops you |
 | `walkto`, `walkto guilds`, `walkto trainers`, `walkto areas` | List the places `walkto` knows |
 | `walkto stop` | Stop walking |
-| `enter <target>` | Enter a supported object, portal, or feature |
+| `enter <portal>` | Step into a portal in the room (`enter portal`); some charge or need an item |
 | `climb`, `crawl`, `jump` | Use area-defined movement features |
 | `ride`, `mount`, `dismount` | Control supported mounts |
 | `track <target>` | Use tracking skill where available |
@@ -64,13 +64,15 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 
 | Commands | Use |
 |---|---|
-| `look`, `examine`, `read`, `listen` | Inspect the room, targets, text, or sound |
+| `look`, `examine`, `read` | Inspect the room, targets, or text; `read` a Hyrule compass points toward the Triforce chest |
+| `listen <direction>` | Listen through a closed, non-secret door for anyone beyond it (Listen at Door skill) |
 | `score`, `attribute`, `affect` | Level, stats, resources, and active effects |
 | `alignment`, `devote light/dark/balance` | Your alignment tier, its perks and how to move it; `devote` works at the Temple |
 | `achievements [view]` | Points and progress for levels, bosses, relics, crafting, economy, unusual deaths, quests, exploration, and Hyrule |
 | `diary [yesterday \| yyyy-mm-dd \| list]` | Your day written down: time played, levels, kills, deaths, quests, achievements, skills, areas, things gained, coin in and out (the last 30 days) |
-| `equipment`, `inventory`, `worth` | Worn items, carried items, and money |
-| `consider <target>`, `danger` | Estimate nearby danger |
+| `equipment`, `inventory`, `worth` | Worn items, carried items, and carried coin with experience to level (`balance` shows the bank) |
+| `consider <target>` | Size up a fight before starting it |
+| `danger` | Danger Sense: the other players in your area, roughly how far, and how many are stealthed |
 | `compare <item> [item]`, `compare upgrades [slot]`, `compare profile` | Which gear makes you hit harder; the best gear you can get today |
 | `lore <object>` | Inspect an item with lore knowledge |
 | `count` | Show population/count information supported by the game |
@@ -86,17 +88,17 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `get`, `take` | Pick up an object or retrieve it from a container |
 | `pick` | Pick a lock on a door or container; a lock that cannot be picked says so at once |
 | `put` | Place an object in a container |
-| `drop` | Drop an object |
-| `give` | Give an object or currency to another character |
-| `wear`, `wield`, `hold` | Equip an object in a compatible slot |
+| `drop` | Drop an object, or coins: `drop 20 gold` |
+| `give` | Give an object or coins: `give 5 silver guard` |
+| `wear`, `wield`, `hold` | Equip an object; `hold` takes wands, staves and other held items (a light goes in the light slot) |
 | `secondary` | Equip or manage a secondary weapon where allowed |
 | `remove` | Unequip an object |
-| `sacrifice`, `junk` | Dispose of a supported object |
+| `sacrifice`, `junk` | Destroy an object lying on the ground for a little copper (`junk` is `sacrifice`) |
 | `open`, `close`, `lock`, `unlock`, `pick`, `doorbash` | Operate doors and containers |
 | `fill`, `drink`, `eat`, `feed` | Food, drink, and containers |
 | `quaff`, `recite`, `brandish`, `zap` | Activate potions, scrolls, staves, and wands |
 | `brew`, `concoct`, `scribe` | Create class-supported consumables |
-| `shoot` | Fire a bow at an adjacent target; in Hyrule, its bow (with a quiver, a rupee a shot) or a boomerang at an enemy in the room; or the Silver Arrow finisher |
+| `shoot` | Fire a bow at an adjacent target; in Hyrule, its bow (with a quiver, a gold coin a shot) or a boomerang at an enemy in the room; or the Silver Arrow finisher |
 | `bomb`, `burn`, `flip`, `play`, `pull`, `push`, `move`, `turn` | Item or area-specific interactions; in Hyrule `bomb` and `burn` also strike an enemy |
 | `hearts` | Your Hyrule heart count, which the White and Magical Swords ask for |
 
@@ -112,7 +114,7 @@ does not consume the Arrow.
 | Commands | Use |
 |---|---|
 | `list` | List a shop, healer, or context-specific service |
-| `buy`, `sell`, `value` | Trade with a shopkeeper |
+| `buy`, `sell`, `value` | Trade with a shopkeeper; `sell` is immediate, so `value` first |
 | `repair` | Repair a worn or carried item at a smith; price in coins |
 | `heal` | List or buy healer services |
 | `donate` | Send an eligible object to donation handling |
@@ -127,19 +129,19 @@ bank commands require the appropriate NPC or room.
 
 | Commands | Use |
 |---|---|
-| `kill`, `hit` | Start ordinary combat against an NPC target |
-| `murder` | Explicit hostile player attack; read PK rules first |
+| `kill`, `hit` | Start a fight with a creature; both refuse players |
+| `murder` | Attack a player; the victim yells and it is logged. `mur`/`murde` only say to type it in full |
 | `cast` | Cast a known spell |
 | `flee` | Attempt to escape combat |
 | `wimpy` | Set automatic flee threshold |
 | `rescue` | Attempt to redirect an ally's opponent |
 | `backstab`, `bs` | Thief-style opening attack when available |
 | `bash`, `trip`, `dirt`, `disarm`, `kick` | Common physical control and attacks |
-| `berserk`, `smite`, `shove`, `stunning`, `nerve` | Specialized physical abilities |
-| `blinding`, `fists`, `steel`, `crane`, `iron` | Monk and martial abilities |
+| `berserk`, `smite`, `shove` | Specialized physical abilities |
+| `blinding`, `fists`, `stunning`, `nerve`, `steel`, `crane`, `iron` | Monk martial arts, unarmed: Blinding Fists is a flurry of four to six blows, Stunning Blow stuns, Nerve Damage lowers dexterity and stops natural recovery |
 | `confuse`, `ego whip`, `mindblast`, `nightmare`, `pyrotechnics`, `torment` | Specialized magical or psionic combat |
 | `mindbar`, `mindleech`, `enervate`, `psionic`, `psychic`, `transfusion` | Specialized psionic defense, draining, and healing abilities |
-| `topten` | Show supported combat or PK ranking information |
+| `topten` | The leading player killers |
 | `dummy`, `dummy report`, `dummy leaderboard` | The training yard: set up the dummy, read a run, see the benchmark board (down then south from the Oak Tree Square) |
 
 This is not a skill list. `skills` and `spells` are authoritative for the
@@ -166,9 +168,9 @@ rejected, check position and active effects with `score` and `affect`.
 | `practice` | List or improve abilities with a trainer |
 | `train` | Improve supported attributes/resources |
 | `groups` | Review skill groups |
-| `gain`, `gainlist`, `teachlist` | Review or purchase guildmaster options |
-| `join` | Join a supported guild |
-| `remort` | Begin a remort after reaching the current life cap |
+| `gain`, `gainlist`, `teachlist` | Buy skills; list what you can learn and where; list who can practise what you know |
+| `join` | Join a guild at Melancholy the guild clerk, levels 3 to 6, one gold; a castle head adds castle members |
+| `remort` | Begin a new life at level 3 from levels 54-58 (`help remort`, `help 'remort gifts'`, `help 'remort classes'`) |
 | `outfit` | Request supported starter equipment |
 | `roll` | Use character-roll behavior where allowed |
 
@@ -182,9 +184,9 @@ remort thresholds and class/race restrictions.
 | `follow` | Follow another character or stop following self |
 | `group` | Review or change group membership |
 | `gtell` | Send a group message |
-| `report` | Report current resources |
+| `report` | Say your current and maximum hit points, mana and endurance, and your experience, to the room |
 | `order` | Command supported charmed followers |
-| `split` | Split currency with the group |
+| `split` | Split coins with the group: `split 30 silver` (gold if no kind is named) |
 | `autoassist`, `autosplit` | Toggle automatic group behavior |
 | `nofollow`, `noloot` | Set follower and corpse-loot preferences |
 | `nosummon` | Refuse supported summon effects |
@@ -200,10 +202,10 @@ remort thresholds and class/race restrictions.
 | `emote`, `pose` | Role-play actions |
 | `note` | Use the in-game note system |
 | `channels` | Review channel settings |
-| `quiet`, `deaf` | Suppress channel categories |
+| `quiet`, `deaf` | `quiet`: only says and emotes; `deaf`: no tells. `shout` alone toggles hearing shouts |
 | `ignore` | Ignore a named player |
 | `beep` | Staff-level or context-limited alert command |
-| `afk` | Mark yourself away from keyboard |
+| `afk [message]` | Mark yourself away; tellers see your message; sending a tell or reply clears it |
 
 Some channel commands are level-gated or may be disabled by local rules.
 
@@ -212,7 +214,7 @@ Some channel commands are level-gated or may be disabled by local rules.
 | Commands | Use |
 |---|---|
 | `aquest` | Main automated quest command family |
-| `pkill` | Review or control supported PK state |
+| `pkill <password>` | Become a player killer for good, from level 15 (staff can lift it; a remort clears it) |
 | `steal` | Attempt theft; rules and consequences apply. A fumble is bad luck; "too wary" means the target is beyond your level |
 | `murder` | Explicit player-hostile attack |
 
@@ -231,7 +233,7 @@ an irreversible action.
 | `prompt` | Configure the command prompt |
 | `alias` | Manage server-side aliases; one may run up to ten commands separated by `;` |
 | `description`, `title` | Customize character presentation; a title you set stays through levels until `title default` |
-| `afk` | Toggle away status |
+| `afk [message]` | Toggle away status |
 
 `AUTOGOLD` takes currency directly from a defeated mobile's corpse when
 `AUTOLOOT` is off. `AUTOSAC` sacrifices only empty corpses; anything that was
@@ -251,9 +253,9 @@ download, but does not currently include Mudlet's automatic mapper. See the
 
 | Commands | Use |
 |---|---|
-| `save` | Persist the character |
+| `save` | Save now (the game also saves about every five minutes); keys other than Hyrule's small keys, blank maps and quest recovery items are never saved |
 | `quit` | Leave the game normally |
-| `qui` | Deliberately incomplete guard against accidental abbreviation |
+| `qui` | Runs `quiet`, not `quit`: `quit` must be typed in full |
 | `password` | Change the character password |
 | `delete` | Begin permanent character deletion; read every confirmation |
 

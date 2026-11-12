@@ -1,31 +1,27 @@
 #HELPS
 
 0 ORACLE PRAY ASK SEER~
+Syntax: pray
+        ask <question>       in her sanctum
+        say <anything>       in her sanctum: all you say is said to her
+        say done             end the audience
+        say wrong            tell the gods her last answer was wrong
 
-The Oracle is an ancient seer who answers questions about Times of Chaos.
+The Oracle answers questions about the game: commands, classes, races,
+remorts, skills, areas, leveling and what gear to seek.  She can say where
+an item or creature is now, what someone wears and where an item drops,
+but only as far as you could see for yourself.  She remembers what you
+asked earlier in the same audience.
 
-  pray             go to her sanctum (one seeker at a time)
-  say <anything>   in her sanctum, everything you say is said to her
-  ask <question>   the same, as a command
-  say done         return to where you prayed (or step down the beads)
-  say wrong        tell the gods her last answer was wrong
+  - PRAY takes you to her sanctum, one seeker at a time.  Not in a fight,
+    while your blood is up, while something hunts you, or from a death
+    trap.  You cannot sleep there.
+  - An audience lasts at most five minutes, less if you fall silent.
+  - You return to where you prayed, dazed for a minute: every command but
+    QUIT is refused until it clears.  Pray from a safe room, such as the
+    Temple altar, and there is no daze.
 
-She knows commands, classes, races, remorts, skills, areas, leveling, and
-what gear to seek for your class and level, and she has read the game's
-own help.  She can see where an item or creature is right now, what a
-player or a creature is wearing, and where an item drops -- but only as
-far as you could see for yourself: never the gods, never anyone stealthed
-or hidden from you, and never what is in someone's pack.  She remembers
-what you asked earlier in the same audience, so you may follow up.  She
-answers only questions about the game and keeps it brief.
-
-An audience lasts at most five minutes and ends sooner if you fall silent.
-However it ends, you return to where you prayed, dazed for a minute: until
-your mind recovers, every command but QUIT is refused, and you are told how
-long is left and when your head clears.  Pray from a safe room (the altar
-of the Temple is one) and you come back with no daze at all.  You
-cannot pray in battle, while your blood is still up, while something hunts
-you, or from a death trap.  The gods may bar a troublemaker from her.
+The gods may bar a troublemaker from her.
 ~
 
 66 ORACLEADMIN 'ORACLE ADMIN'~
@@ -82,148 +78,75 @@ allows you to use.  Mortals and heroes will see only mortal commands here.
 Immortal-only commands are documented under WIZHELP and will not appear to
 non-immortals.
 
-See also: COMMANDS, KEYWORDS
+See also: COMMANDS, KEYWORDS, BEGINNERS
 ~
 
 0 MAP MAPPER AUTOMAP AUTOMAPPER MAPPING~
-Times of Chaos has an automatic client-side map in its official Mudlet
-interface.  There is no MAP game command: the mapper is a window in Mudlet
-that follows your character as you move.
+There is no MAP command.  The automatic client-side map is a window in
+the Mudlet interface (HELP MUDLET) that follows you as you move.  The
+browser client and plain Telnet do not currently show it.
 
-The server supplies a complete world atlas, so the surrounding rooms are
-already drawn before you take a step.  Rooms you visit refresh themselves from
-GMCP Room.Info data: name, area, terrain, and visible directional exits.  If a
-visible exit is removed or points somewhere new after a world update, the
-saved map corrects it when that room is visited again.
+  - The whole world is drawn from the start.  A room you visit is
+    corrected from what the game reports: an exit that was
+    removed or points somewhere new is fixed there.
+  - Secret exits are not sent until you find them.  Room descriptions,
+    EXITS and SEARCH remain the authority.
+  - Portals, ropes and the Hyrule cabinet are known too: clicking a room
+    beyond one walks you through it.
+  - Doors show as open, closed or locked, and a visited room shows what
+    it offers:  $ shop  ? questmaster  + healer  P practice  T trainer
+                & pet shop  # jail  X death trap (marked once it kills you)
+  - Symbols and doors appear only when zoomed in far enough to draw the
+    room boxes.  The map shows no people: LOOK does that.
+  - The map is kept in your Mudlet profile, not your character.
 
-The atlas draws rooms and their visible exits, and nothing more.
-Secret exits are not sent until the game reveals them.  Portals, ENTER
-routes, teleports, scripted movement, and other non-directional travel may
-not draw a normal map line.  Deleted rooms that can no longer be visited
-may remain in Mudlet's saved map.  Room descriptions, EXITS, and SEARCH
-remain authoritative.
+Click a room to walk there (HELP WALK).
 
-WHAT THE MAP MARKS
-Each room can carry one symbol saying what it is for:
-
-  $  a shop             ?  a questmaster      +  a healer
-  P  a practice guild   T  a trainer          &  a pet shop
-  #  a jail             X  a death trap
-
-A room is marked when you visit it, from what the game reports about the
-room you are standing in.  Nothing is marked in advance, and a room with no
-service carries no symbol - most rooms do not.  A death trap is therefore
-only ever marked after it has already killed you, which is the point of
-marking it.
-
-Doors are drawn as the game reports them: open, closed, or locked.
-
-Not every way through is a direction.  A portal you enter, a rope you climb,
-the arcade cabinet that takes you to Hyrule - the map knows those too, and
-clicking a room on the far side of one walks you through it.  They are
-loaded from the published route list, which the interface fetches for you a
-few seconds after you connect.
-
-Symbols and doors are drawn inside the room boxes, so they appear only when
-the map is zoomed in far enough to draw those boxes.  Zoom in with the mouse
-wheel over the map if you see coloured rooms and no symbols.
-
-The map draws rooms, exits, and doors.  It does not show who or what is
-standing in a room - use LOOK for that.
-
-WHERE CAN I GO?
-WALKTO lists every area you can walk to and how many rooms out it is.
-ROUTES explains how to follow one.
-
-The map belongs to your local Mudlet profile, not your character file.  The
-browser client and plain Telnet do not currently show this automatic map.
-
-See also: MUDLET, WALK, GMCP, EXITS, SEARCH, WEBCLIENT
+See also: MUDLET, WALK, WALKTO, EXITS, SEARCH
 ~
 
 0 MUDLET TOCGUI~
-Mudlet is the recommended desktop client for Times of Chaos.  Create a profile
-for toc.jeremybean.com on port 9000.  In Mudlet's profile settings, leave
-"Enable GMCP" and "Allow server to install script packages" enabled.  The
-server will offer the official interface and the world atlas automatically.
+Mudlet is the recommended desktop client.  Make a profile for
+toc.jeremybean.com, port 9000, and leave "Enable GMCP" and "Allow server to
+install script packages" on: the game installs its interface and world map
+and offers updates by itself.
 
-WHAT THE INTERFACE SHOWS
-  Gauges    HP, mana, endurance, and experience, across the top.
-  Identity  Your name, level, race, and class.
-  Affects   What is currently on you, shortest duration first, so the one
-            about to lapse is the one you see.  Five ticks or less turns
-            orange.  Shadowmeld shows no number because it does not run
-            out: it ends when you leave the room, strike, or go visible.
-  Target    Who you are fighting and how badly they are hurt, and
-            under it your damage per round: the fight you are in,
-            kept up to date every round, then the last fight once it
-            is over.  Every fight counts, not only the training dummy,
-            and it works with damage numbers off.
-  Quest     Your quest, what it wants, and the timer counting down,
-            and under it the room and region the quest master said
-            the target was last seen in.
-            An EMERGENCY contract says so, and the last minute turns
-            red.
-  Online    Who else is playing - the players you could see.  A wizi,
-            cloaked, stealthed, shadowmelded, hidden or invisible
-            player is left off unless you could see them anyway.
-  Map       The whole world, following you as you move.
-  Exits     A button for each way out of the room.  Click one to go.
-  Tabs      Below the map, four of them:
-              Chat   every channel you can hear
-              Tells  just the tells, so they are not lost in gossip
-              Here   who and what is in the room, aggressives marked
-              Items  what you are wearing and what you carry
-            The chat shows what you actually heard - a yell from
-            another area, or a channel you have switched off, never
-            reaches it - in the colours you chose with COLOR, so it
-            matches the main window.
-  Awards    An achievement is shown over the map for a few seconds
-            when you earn it.
-
-Package updates are offered automatically when the server advertises a new
-version.
-
-SOUNDS, DISCORD AND LOGIN
-  Sounds    A short sound for a level, a finished quest, an achievement,
-            a tell, a death and a Hyrule secret, when the profile allows
-            server media.  SOUND OFF silences them; SOUND ON brings them
-            back.
-  Discord   With Mudlet's Discord option on, Discord shows your
-            character, level, class and area while you play.  A wizinvis
-            character's area is not shown.
-  Login     A profile that keeps a character name and password logs in
-            by itself: Mudlet hands them to the game, which checks them
-            exactly as if you had typed them.  Leave them blank to type
-            them yourself.
-
-COMMANDS
-These are local Mudlet aliases, not game commands.  They do nothing over
-plain Telnet or in the browser client.
-
-  tocgui status  show the package version and GMCP state, which
-                 bare TOCGUI also does
-  tocgui atlas   download the world map into this profile
-  tocgui off     hide the interface
-  tocgui on      restore the interface
-
-  walk           report on a walk in progress
-  walk <vnum>    walk to a room by number
-  walk <name>    walk to a published destination, such as WALK THALOS
-  walk routes    fetch the published route list
-  walk stop      break off a walk
-
-Clicking a room on the map walks you there.  See WALK.
-
-Mapping continues while the interface is hidden.  Your map is saved in the
-Mudlet profile.  A profile that was mapped before the world atlas shipped
-keeps its old map; tocgui atlas replaces it with the full world.
+Mudlet commands (local aliases; they do nothing in other clients):
+  tocgui status     package version and GMCP state (or TOCGUI alone)
+  tocgui atlas      download the whole world map into this profile
+  tocgui off | on   hide or restore the interface
+  walk ...          walk to a room or place (HELP WALK)
 
 If the interface says GMCP is waiting, enable GMCP and server packages in
-the profile, then reconnect.  Manual package files and source are at:
-  github.com/jeremydbean/toc2026/tree/main/mudlet
+the profile and reconnect.  Package files: github.com/jeremydbean/toc2026,
+folder mudlet.
 
-See also: MAP, WALK, GMCP, SOUND, WEB, WEBCLIENT
+See also: 'MUDLET INTERFACE', MAP, WALK, SOUND, GMCP, WEBCLIENT
+~
+
+0 'MUDLET INTERFACE'~
+What the Mudlet interface shows:
+
+  Gauges    hit points, mana, endurance and experience
+  Identity  your name, level, race and class
+  Affects   what is on you, soonest to lapse first; five ticks or less
+            turns orange
+  Target    who you fight, how hurt they are, and your damage per round
+            in this fight or the last
+  Quest     your quest, its timer and where the target was last seen
+  Online    the players you could see
+  Map       the world, following you (HELP MAP)
+  Exits     a button for each way out
+  Tabs      Chat, Tells, Here (the room) and Items; the chat shows only
+            what you heard, in your COLOR choices
+  Awards    an achievement, shown for a few seconds as you earn it
+
+It also plays short sounds (HELP SOUND), shows your character and area in
+Discord when Mudlet's Discord option is on (not while wizinvis), and logs
+in by itself with a name and password saved in the profile, checked
+exactly as if typed.
+
+See also: MUDLET, MAP, SOUND, GMCP
 ~
 
 0 SOUND~
@@ -242,295 +165,164 @@ See also: MUDLET, GMCP
 ~
 
 0 WALK CLICKTOWALK~
-WALK is a Mudlet alias, not a game command.  It does nothing over plain
-Telnet or in the browser client.  For the game's own movement shortcut, see
-RUN.
+Syntax: walk <vnum>       walk to a room by number
+        walk <name>       walk to a destination, such as WALK THALOS
+        walk routes       load the published route list
+        walk              report on the walk in progress
+        walk stop         stop
 
-Click any room on the map to walk there, or:
+WALK is a Mudlet alias, not a game command; clicking a room on the map
+does the same.  For a walker that works in any client, use WALKTO.
 
-  walk <vnum>    walk to a room by number
-  walk <name>    walk to a published destination, such as WALK THALOS
-  walk routes    fetch the published route list
-  walk           report on a walk in progress
-  walk stop      break off
+It takes one step at a time and sends the next only once you arrive where
+the route expected, so lag, a mobile in the way or a recall stops it.  It
+opens a door it knows is shut, and tries OPEN once at a door it did not
+expect.  A named walk needs the place on your own map; otherwise it prints
+the published route, which starts at the Oak Tree Square.
 
-HOW IT WALKS
-One room at a time.  The next step is sent only once the game confirms you
-arrived in the room the route expected, so the walk keeps pace with the
-server, respects movement lag, and stops the moment something diverts you -
-a mobile in the way, a recall, a portal, being dragged.  It never fires a
-whole path at the server and hopes.
-
-A door the map already knows is shut is opened before the step rather than
-after it.  For a door nothing warned about, the walk waits a few seconds,
-tries OPEN once, and gives up if that does not work.
-
-NAMED DESTINATIONS
-WALK ROUTES loads the published route list, the same one the web dashboard
-shows.  WALK <name> then matches an area or room name: WALK THALOS, WALK
-WYVERN, WALK OZ.
-
-A named walk needs the destination on your own map.  If it is not there yet
-the published route is printed instead of walked, because those routes are
-written from the Oak Tree Square and are wrong from anywhere else.
-
-The same list carries every way through that is not a compass direction, so
-a walk can route through a portal, a rope, or the Hyrule cabinet without you
-naming it.  The walk sends the command the same way you would type it.
-
-See also: MUDLET, MAP, RUN, RECALL
+See also: WALKTO, MUDLET, MAP, RUN
 ~
 
 0 ROUTES DESTINATIONS TRAVEL~
-The realms publish a walking route to almost every area: 89 of the 92 areas
-that have rooms.  Each route is written from the Oak Tree Square, gives the
-commands to get there, and says how many rooms out it is.
+Almost every area has a published walking route from the Oak Tree Square,
+with the commands to follow and how many rooms out it is.  Dresden has
+none: the square is in it.
 
-WHERE TO SEE THEM
-  In game        WALKTO lists every area and how far out it is.
-  Mudlet         WALK ROUTES loads the list, then WALK <name> follows one,
-                 such as WALK THALOS or WALK WYVERN.  See WALK.
-  Browser client The Routes panel lists every destination.
-  Web dashboard  The Directions view, with the same data.
+  In game         WALKTO lists the areas and walks you there.
+  Mudlet          WALK ROUTES, then WALK <name> (HELP WALK).
+  Browser client  the Routes panel.
+  Web dashboard   the Directions view.
 
-A route is a walk, not a shortcut.  It uses ordinary movement, opens the
-doors along the way, and passes through whatever lives between here and
-there - a route to a distant area is not a safe route for a low level
-character.
+A route is ordinary walking: it opens doors on the way and passes whatever
+lives there, so a distant area is no safe trip for a low level character.
+A room that carries you, such as a river or a teleport, counts as several
+rooms, since you cannot steer it.  Secret doors are in no route.
 
-Routes count a room you have to wait in, such as a river or a teleport, as
-worth several rooms of walking, because you cannot steer while it carries
-you.  A published route may therefore walk you past a faster-looking ride.
-
-DRESDEN HAS NO ROUTE
-Dresden has none because it contains the Oak Tree Square, which is where
-every route starts.
-
-Secret doors, and anything the game has not shown you, are not in a route.
-EXITS and SEARCH remain authoritative.
-
-See also: WALKTO, MAP, WALK, MUDLET, RUN, RECALL
+See also: WALKTO, WALK, MAP, AREAS, RECALL
 ~
 
 0 DUMMY TRAINING YARD~
 Syntax: dummy                  the menu, and what it is set to
-        dummy <level>          what level it should pretend to be
-        dummy shape <name>     how it should defend
-        dummy hits <type>      what it should hit you with
-        dummy magic <kind>     what it should cast at you, or none
+        kill dummy             start a run
+        dummy report           stop early and read the numbers
+        dummy reset            back to the standard, ranked fight
+        dummy leaderboard      the benchmark board
+        dummy <level>          what level it pretends to be
+        dummy shape|hits|magic|haste|rounds|endless   see DUMMY SETTINGS
+        dummy defends yes|no   whether it dodges, parries and blocks
+        dummy fights yes|no    whether it hits you back
+
+A training dummy you can hit as hard as you like.  The yard lies under the
+Oak Tree Square: from its centre, down, south.  North walks you back out.
+In Mudlet, WALK DUMMY takes you there.
+
+  - One fighter at a time; anyone else is told to wait.
+  - Nobody dies there: the dummy absorbs everything, and its blows stop
+    at one hit point.
+  - When a run ends, or you leave mid-run, your hit points, mana and moves
+    go back to what they were when it began.  It never heals you.
+  - Skills and spells do not improve in the yard.
+
+THE STANDARD FIGHT - THE ONLY ONE THAT IS RANKED
+Twenty-five rounds and a bell, against a dummy at your level that defends
+itself and hits back.  Change anything, or stop early, and the run is not
+ranked; the menu, each change and the bell say so.  When the yard empties
+the dummy goes back to standard.
+
+See also: 'DUMMY SETTINGS', 'DUMMY REPORT', LEADERBOARD, COMPARE
+~
+
+0 'DUMMY SETTINGS'~
+Syntax: dummy shape <name>     soft, armored, evasive, brutal
+        dummy hits <type>      slash, pierce, bash, fire, cold, lightning,
+                               acid, energy, holy
+        dummy magic <kind>     none, force, fire, cold, lightning, acid,
+                               light, harm, negative
         dummy haste            an extra attack a round, on or off
         dummy rounds <n>       n rounds, then the bell
         dummy endless          no bell; DUMMY REPORT ends the run
         dummy defends yes|no   whether it dodges, parries and blocks
-        dummy fights yes|no    whether it hits you back
-        dummy reset            back to the standard, ranked fight
-        dummy report           stop early and read the numbers
-        dummy leaderboard      the benchmark leaderboard
+        dummy fights yes|no    whether it hits you back, spells included
 
-A training dummy you can hit as hard as you like.
+A weapon's damage type tests a resistance; a spell of the same school
+tests a saving throw too.  It casts the same spell every time.
 
-WHERE IT IS
-  In the Training Yard, beneath the great oak in the centre of the Oak
-  Tree Square.  From the centre of the square: down, south.  Go down the
-  staircase in the tree to the Entrance to the Hall of Heroes, and the
-  yard is through the archway to the south.  North walks you back out.
+DUMMY DEFENDS NO and DUMMY FIGHTS NO measure your damage alone; your own
+defences still work.  No setting can change mid-run except DUMMY RESET,
+which ends the run.  None of these runs is ranked.
 
-  In Mudlet, WALK DUMMY walks you there.  Anybody can get there, whatever
-  their class or guild.
+See also: DUMMY, 'DUMMY REPORT', LEADERBOARD
+~
 
-ONE AT A TIME
-  The yard takes one fighter at a time.  While somebody is in there you
-  are told they are training and to wait for them to come out -
-  immortals excepted - so a run is never shared and never interrupted.
+0 'DUMMY REPORT'~
+Syntax: dummy report
 
-  Walk out in the middle of a run, or recall, and the run is abandoned:
-  you are put back the way you were when it began.  DUMMY REPORT first
-  if you want the numbers.
+Ends a run early and shows its numbers; the bell shows the same.  The
+clock starts at the first blow either way.
 
-THE RULES OF THE YARD
-  Neither of you can die there.  The dummy soaks up everything, and its
-  blows take you down to one hit point and no further.
+  WHAT YOU DID     total, per second, per swing and per round (compare
+                   runs on per round), swings landed, best and average
+                   hit, what missed, and weapon against spells and skills
+  Attack by attack each spell, special attack and your weapon (second and
+                   third attack included in it): damage, share, landed,
+                   average and best
+  WHAT IT DID      its attempts, what you ducked, parried, dodged or
+                   blocked, what got through, your worst hit, and how long
+                   you would last from full
+  After a ranked run: your place on the board and your personal best.
 
-  When the run ends you are put back the way you were when it began -
-  hit points, mana and moves - not healed to full.  Walk in hurt and you
-  walk out hurt; the yard is for measuring, not for resting.  Leave in
-  the middle of a run, by recall or anything else, and the run is
-  abandoned and you are put back on the way out.
-
-  Nothing is learned there.  Your skills and spells do not improve
-  while you are in the yard, whatever you do.
-
-THE STANDARD FIGHT - THE ONLY ONE THAT IS RANKED
-  By default every run is the standard fight: walk in, KILL DUMMY, and
-  that is the ranked run - twenty-five rounds, then a bell, against a dummy at
-  your own level that fights normally.  It dodges,
-  parries and blocks, and it hits you back.  It is worth what a mobile
-  of your level really averages, measured across every mobile in the
-  world, so the time-to-kill in the report means something.
-
-  The leaderboard ranks the standard fight and nothing else.  A run
-  counts only if every one of these holds, from the first blow to the
-  bell:
-
-    - it is twenty-five rounds and reaches the bell
-    - the dummy is your own level
-    - it defends itself and it fights back
-    - its shape, damage type, spell and haste are as DUMMY RESET
-      leaves them
-
-  Change any of them - a longer or shorter fight, an endless one, a
-  dummy that will not hit you or will not defend itself, anything at
-  all - and the run is not ranked.  Stopping early with DUMMY REPORT is
-  not ranked either, and neither is a run during which somebody
-  changed the dummy.  Immortals are never ranked; trusted players are.
-
-  Whatever you change lasts while you are in the yard.  When the yard
-  empties the dummy goes back to the standard fight, so whoever comes in
-  next and simply attacks it gets the ranked run, not your settings.
-
-  You are never left guessing: the menu has a Ranked line, every change
-  you make tells you straight away whether runs will still count, and
-  an unranked run says exactly why at the bell.  DUMMY RESET puts
-  everything back to the standard fight.  DUMMY LEADERBOARD shows the
-  board.
-
-CHANGING IT
-  Shapes        soft, armored, evasive, brutal
-  Damage types  slash, pierce, bash, fire, cold, lightning, acid,
-                energy, holy
-  Spells        none, force, fire, cold, lightning, acid, light, harm,
-                negative
-
-  A damage school delivered by a weapon tests a resistance.  The same
-  school delivered by a spell tests a saving throw as well, which is a
-  different question about the same suit of armour.  DUMMY HASTE gives
-  it a second attack a round, for what your armour is worth against
-  something fast.  It casts once a pulse, always the same spell: a
-  reading you cannot reproduce is not a measurement.
-
-  To measure your damage alone, take the dummy's own part out of the
-  fight.  DUMMY DEFENDS NO makes it stand still: it stops dodging,
-  parrying, blocking and ducking, so every blow you throw is one it
-  takes.  DUMMY FIGHTS NO makes it stop hitting you, spells included.
-  Your own defences still work either way - that is your armour.
-
-  DUMMY ROUNDS <n> makes the fight n rounds long instead of twenty-five, and
-  DUMMY ENDLESS takes the bell away so the run lasts until DUMMY REPORT.
-
-  None of these is ranked.  They are for finding things out; the
-  standard fight is for comparing yourself with everybody else.
-
-  None of this can be changed in the middle of a run: a reading blended
-  from two opponents is worse than none.  DUMMY RESET is the exception -
-  it throws the run away and starts over, and works mid-fight.
-
-READING THE REPORT
-  The clock starts at the first blow in either direction, so taking a
-  moment to choose a weapon costs nothing.
-
-  WHAT YOU DID is your total, your damage per second, per swing and per
-  round - per round is the figure to compare two runs on, since it does
-  not move with how long the rounds happened to take.  Then how many
-  swings landed, your best and average hit, what missed and what it
-  turned aside, and whether the damage came from your weapon, your
-  spells or your skills.
-
-  Then attack by attack: every spell you cast, every special attack and
-  your weapon, each on its own line, biggest first, with its damage, its
-  share, how many of its attempts landed, its average and its best.
-  Second and third attack are not separable from the weapon itself - the
-  game swings them as the same attack - so they are in its line.
-
-  WHAT IT DID TO YOU is the same from the other side: how often it
-  tried, how many you ducked, parried, dodged or blocked, what got
-  through, your worst hit, and how long it would take you from full.
-
-  After a ranked run, the board: this run, your personal best, where you
-  stand among everybody who has run it, and how far the record is.
-
-See also: LEADERBOARD, COMPARE, LORE, DAMAGENUMBERS
+See also: DUMMY, LEADERBOARD, DAMAGENUMBERS
 ~
 
 0 LEADERBOARD BENCHMARK~
 Syntax: dummy leaderboard
 
-The training yard's benchmark board: the best twenty-five-round standard run
-each character has posted, best first.  It shows the top ten, and tells
-you where you stand among everybody who has ever run it.  Each line
-gives class and guild the way WHO does: T/T for a thief in the thieves'
-guild, T/W for a thief among the warriors, and Monk or Necro.
+The training yard's board: each character's best standard run, best first.
+It shows the top ten and where you stand, with class and guild as WHO
+shows them (T/W is a thief among the warriors).
 
-ONLY THE STANDARD FIGHT IS RANKED.  That is the default fight in the
-training yard: twenty-five rounds against a dummy at your own level that
-defends itself and hits back, with every setting exactly as DUMMY RESET
-leaves it, run all the way to the bell.
+ONLY THE STANDARD FIGHT IS RANKED: twenty-five rounds against a dummy at
+your level that defends itself and hits back, every setting as DUMMY RESET
+leaves it, run to the bell.  Not ranked:
 
-Anything else is not ranked:
-
-  - a longer or shorter fight (DUMMY ROUNDS), or an endless one
-  - a dummy that does not defend itself (DUMMY DEFENDS NO)
-  - a dummy that does not hit you (DUMMY FIGHTS NO)
-  - any other change: its level, shape, damage type, spell or haste
+  - a longer, shorter or endless fight (DUMMY ROUNDS, DUMMY ENDLESS)
+  - DUMMY DEFENDS NO, DUMMY FIGHTS NO, or any other change
   - stopping early with DUMMY REPORT
-  - somebody changing the dummy in the middle of your run
-  - an immortal's run - though a player trusted with staff commands is
-    ranked like anybody else, since they fight at their own level
+  - a run during which somebody changed the dummy
+  - an immortal's run (a trusted player is ranked)
 
-The game tells you which of these applies: the dummy's menu has a
-Ranked line, every change you make says whether runs still count, and
-an unranked run names the reason at the bell.
-
-When a ranked run ends you are told whether it is a personal best, your
-place on the board, and how far ahead the record is.  Post the best run
-anybody has run and you earn the achievement Top of the Board.
-
-To run it: DUMMY RESET in the training yard, then KILL DUMMY.
-
-Staff can tidy it: DUMMY LEADERBOARD REMOVE <name> takes one
-character's run off, and DUMMY LEADERBOARD CLEAR CONFIRM empties it.
-Both are logged.
+A ranked run tells you your place and whether it is a personal best.
+Posting the best run of all earns the achievement Top of the Board.  To
+run it: DUMMY RESET in the yard, then KILL DUMMY.
 
 See also: DUMMY, ACHIEVEMENTS
 ~
 
 0 GMCP~
-GMCP is the out-of-band protocol used by modern MUD clients.  It is not a game
-command and does not add text to normal Telnet output.  A client that enables
-GMCP can receive:
+GMCP is the out-of-band protocol modern clients use; it adds nothing to
+normal Telnet text, and clients without it work as before.  A client that
+turns it on receives:
 
-  Char.Vitals   - hit points, mana, movement, experience, and level
-  Char.Status   - character name, level, race, and class
-  Char.Affects  - the spells currently on you, with their durations
-  Room.Info     - room number, name, area, terrain, visible exits, the
-                  state of any doors, room flags, and what the room is
-                  for (shop, questmaster, healer, practice, trainer)
-  Char.Quest    - your current quest, its timer, your streak, and
-                  where the target was last seen
-  Char.Target   - who you are fighting and how they are doing, and
-                  your damage per round in this fight or the last
-  Char.Online   - who else is playing, as far as you could see
-  Char.Items    - what you carry and what you wear
-  Char.Achievement - one achievement, at the moment you earn it
-  Room.Chars    - who and what is in the room with you
-  Comm.Channel  - one line of channel talk, one say, or one tell, as
-                  you hear it, in the colour you chose for it
-  Client.Map    - location of the official world atlas
-  Client.GUI    - version and location of the official Mudlet package
-  Client.Media  - a short sound for a level, quest, achievement, tell,
-                  death or Hyrule secret (SOUND OFF stops them)
-  External.Discord.Status - your character and area, for Discord
-  Char.Login    - logs in with the name and password the client keeps,
-                  through the same checks as typing them
+  Char.Vitals       hit points, mana, movement, experience and level
+  Char.Status       name, level, race and class
+  Char.Affects      what is on you, with durations
+  Char.Quest        your quest, its timer, streak and last sighting
+  Char.Target       your foe's health and your damage per round
+  Char.Online       who is playing, as far as you could see
+  Char.Items        what you carry and wear
+  Char.Achievement  an achievement as you earn it
+  Char.Login        a login with the name and password the client keeps
+  Room.Info         the room, its visible exits and doors, flags, and what
+                    it offers (shop, questmaster, healer, trainer ...)
+  Room.Chars        who and what is in the room
+  Comm.Channel      each line of talk you actually hear
+  Client.Map, Client.GUI   where the world map and Mudlet package are
+  Client.Media      short sounds (SOUND OFF stops them)
+  External.Discord.Status  your character and area, for Discord
 
-Comm.Channel is sent where the line is delivered, so a client receives
-exactly what the character heard and nothing else: a yell from another
-area, or a channel you have switched off, never arrives.
+Core.Ping is answered.  Secret exits are never sent.
 
-Core.Ping requests are also answered.  Room.Info excludes secret exits and
-destinations the character cannot see.  Clients that do not negotiate GMCP
-continue to work normally.
-
-See also: MUDLET, MAP, PROMPT
+See also: MUDLET, MAP, SOUND
 ~
 
 0 WEBCLIENT BROWSERCLIENT BROWSER~
@@ -552,26 +344,34 @@ See also: WEB, MUDLET, MAP, ALIAS
 ~
 
 0 ENTER~
-Syntax: enter
+Syntax: enter <portal>
 
-ENTER steps into a portal, vehicle, or structure that does not map to a
-standard directional exit.  Use it for magic gates, wagons, boats, and any
-special entry point described in the room.  Look for keywords such as
-"portal", "gate", "boat", or "door" to identify what you can enter.
+Steps into a portal in the room: a magic gate, a cabinet, a raft, a window
+or anything else the room shows as one.  There is no default; name it.
 
-See also: RIDE, MOUNT, RECALL
+  - You must be standing.  Not every object can be entered.
+  - Some portals charge (the Hall of Heroes windows take 500 gold) or
+    need an item carried; you are told which.
+  - A private room, a guild you may not enter, or Hyrule's order on the
+    far side turns you back before anything is paid.
+
+Example: enter portal
+
+See also: CLIMB, CRAWL, JUMP, LOOK
 ~
 
 0 CASTLE CASTLES~
 Syntax: castle
-Syntax: castle <message>
+        castle <message>      (also CC or -)
 
-Castle chat is the private channel for members of your castle.  Typing
-castle with no arguments toggles whether you hear castle chat.  Supplying a
-message sends it to every logged-in member of your castle.  Synonyms: CC and
-"-".
+Castle chat reaches every logged-in member of your castle.  CASTLE alone
+turns the channel off or on.  CGOS talks to every castle at once.
 
-See also: CHANNELS, CGOS, CC
+Castles are guilds of player killers.  A castle head adds a member by
+standing in the castle's joining room and typing JOIN <player>; the
+player must be there, level 30 or more and a PKILLer.
+
+See also: CGOS, CHANNELS, JOIN, PKILL
 ~
 
 0 IGNORE~
@@ -600,50 +400,28 @@ Harassment breaks the RULES; tell the immortals with a NOTE.
 See also: DEAF, QUIET, CHANNELS, HISTORY, RULES
 ~
 
-0 LISTEN~
-Syntax: listen
-
-LISTEN receives a brief ambient sound description of your current room:
-wind through cracks, distant dripping water, faint movement in the
-shadows, and other atmospheric details that add flavor to the environment.
-The description varies by room type and current conditions.
-
-LISTEN is a flavor command, not a tactical warning.  It does not reveal
-hidden characters or notify you of nearby enemies.  Use SEARCH to
-uncover hidden exits or traps, and SCAN to see what mobs are in
-adjacent rooms.
-
-See also: SEARCH, SCAN, LOOK
-~
-
 0 REPAIR~
 Syntax: repair <object>
         repair all
         repair quote <object> | all
 
-A smith mends a damaged item and restores it to full condition.  The item
-may be worn or in your pack.  REPAIR ALL mends everything you wear and
-carry that needs it, cheapest first, as far as your purse goes.
+A smith mends an item you wear or carry back to full condition.  REPAIR
+ALL mends everything that needs it, cheapest first, as far as your purse
+goes.  REPAIR QUOTE, anywhere and free, shows what a repair would cost
+and restore; QUOTE ALL lists the pieces and how many your purse covers.
 
-  - The price is a few kills' worth of coin at the item's level, in
-    proportion to the damage: a dent costs little, a piece broken past
-    use about four kills' worth of what a mob of its level carries.
-  - Nothing is ever destroyed by damage or by repair.  A badly battered
-    item must be repaired before it can be worn again, and it always can
-    be, all the way back to new.
-  - Armour a blow, heat or acid has filed down is put back to the values
-    it was made with.  Repair never changes what an item will sell for: a
-    shop pays a third of its worth for a broken piece, and the full worth
-    once it is mended.
-  - REPAIR tells you how many times an item has been mended.
-  - REPAIR QUOTE shows, anywhere and without paying, what a repair would
-    cost and put back; QUOTE ALL lists the pieces cheapest first and how
-    many your purse covers, as REPAIR ALL would mend them.
+  - The price follows the damage and the item's level: a dent is cheap,
+    a piece broken past use about four kills' worth at its level.
+  - Nothing is destroyed by damage or by repair.  A broken piece must be
+    mended before it can be worn again, and always can be.
+  - Armour filed down by blows, heat or acid is put back as it was made.
+  - Repair never changes what an item sells for; a shop pays a third for
+    a broken piece.
 
-Smiths are found in some guild halls, market districts, and weapon or
-armour shops.  Not every shopkeeper repairs; look for those who say so.
+Only some shopkeepers repair: look for smiths in guild halls, markets and
+weapon or armour shops.
 
-See also: VALUE, BUY, LIST
+See also: VALUE, SELL
 ~
 
 0 SECONDARY 'DUAL WIELD' DUAL~
@@ -669,274 +447,126 @@ See also: WIELD, REMOVE, SECOND ATTACK
 ~
 
 
-0 DANGER~
-Syntax: danger
-
-DANGER SENSE gives you a quick pulse of psionic awareness about nearby
-threats.  It warns you if the current room or an adjacent area contains
-a particularly perilous mob, active trap, or other significant hazard.
-Useful for scouting before stepping into an unknown area.
-
-See also: CLAIRVOYANCE, SEARCH, PSIONICS
-~
-
 0 SHADOWMELD~
 Syntax: shadowmeld
 
-Draw the shadows around yourself.  You stay in them until you move.
+Draws the shadows around you.  While melded no creature can see you, and
+no player can either unless they have holy sight (staff holylight, or the
+Triforce worn).  It does not wear off with time.
 
-Shadowmeld is STEALTH with the timer taken off and the room nailed
-down.  It is exactly as good at hiding you as stealth is - the same
-roll, the same weather, the same odds - and unlike stealth it never
-runs out.  What you give up is the ability to walk anywhere.
+It ends when you:
+  - leave the room, however it happens (walking, recall, a portal)
+  - strike anyone; the blow is struck from the shadows
+  - type VISIBLE, or SHADOWMELD again
+  - are caught in FAERIE FOG
 
-Nothing but moving ends it.  Sit, sleep, read your notes, count your
-coin - the shadows hold.
+You may sit, sleep or read while melded.  You cannot start it in a fight,
+and a missed roll says so.  Melded, no aggressive creature will attack
+you, so it is the safe way to step away from the keyboard; players with
+holy sight still see you.
 
-WHAT IT IS FOR
-  Two things.
+It improves with use.  Nobody teaches it: the fourth remort grants it at
+50%, and no later remort takes it away.
 
-  Going AFK.  This is the one state in the game that is safe to leave
-  the keyboard in: while you are melded no creature in the world can
-  see you, so nothing will wander in and kill you while you are away.
-
-  Laying in wait.  Meld in a room somebody has to walk through, and
-  wait.  They will not see you unless they beat your skill, and you
-  strike first.  The blow itself is what ends the meld.
-
-Three things break it.  Leaving the room, however you leave it -
-walking, a portal, a recall, being dragged.  Striking at somebody.
-And VIS, which drops every concealment you are carrying.  Typing
-SHADOWMELD again steps you out deliberately.
-
-Against another player it behaves exactly like stealth: they roll
-against your skill, and looking for the hidden does not help them.
-The gods, with holylight, always see you.  Faerie fog reveals you.
-
-You cannot start a meld in the middle of a fight.
-
-THE SKILL
-  Shadowmeld is an ordinary skill and improves the ordinary way, with
-  use and with failure.  It cannot be practised from nothing, gained
-  at a guildmaster or bought: the only ways to hold it are the fourth
-  remort, which grants it at 50%, and the gift of a god.
-
-  Once you hold it you may practise it up like anything else, and no
-  later remort will take it away.
-
-See also: HIDE, SNEAK, STEALTH, VISIBLE, REMORT
-
-
+See also: STEALTH, HIDE, VISIBLE, REMORT
 ~
 
 0 HISTORY REPLAY~
-Syntax: history                  -- the last 20, every channel
-        history <number>         -- that many instead
-        history <channel>        -- just that one
-        history <channel> <num>  -- that many of just that one
-        history tell             -- your own tells, and nobody else's
-        history list             -- what is held, and how much
+Syntax: history                  the last 20 lines, every channel
+        history <number>         that many instead
+        history <channel> [num]  one channel only
+        history tell             your own tells
+        history list             what is held, and how much
 
-Read back what was said on gossip and the other channels, including
-what you missed while you were offline.
+Reads back what was said on the channels you can hear, oldest first, with
+the time of each.  A line '--- while you were away ---' marks the moment
+you last left.
 
-If your client stopped capturing, or you were fighting, or you simply
-scrolled past it - HISTORY on its own shows the last twenty lines from
-every channel you can hear, oldest first, with the time against each.
+  - Channels kept: gossip, shout, yell, question, answer, music, leveling,
+    and hero, immtalk and godtalk for those who can hear them.
+  - Each channel keeps its last 30 lines; your tells, the last 20.
+  - Tells are yours alone; nobody else can read them.
+  - SAY is never kept.
+  - It is memory only: a reboot clears it.
 
-    history            the last twenty
-    history 50         the last fifty
-    history gossip     only gossip
-    history gossip 5   the last five gossips
-    history tell       your tells
-
-CHANNELS WITH A HISTORY
-  gossip, shout, yell, question, answer, music, leveling, and - for
-  those who can hear them - hero, immtalk and godtalk.
-
-  HISTORY LIST names them and says how many lines each is holding.
-
-WHAT YOU CAN SEE
-  Only channels you are allowed to hear.  A mortal cannot read immtalk
-  back any more than they could hear it live.
-
-  Tells are private and are never in the shared history.  Each
-  character keeps their own copy of the tells they sent and received,
-  and no one else can read them.
-
-  SAY is not in the history either, and cannot be.  A say is heard by
-  the room, and the history is handed to whoever asks for it - there
-  is no honest way to replay a room conversation to somebody who was
-  not standing there.  Says are still recorded for staff, and still
-  reach the chat window of everyone who was in the room at the time.
-
-WHAT YOU MISSED
-  Nothing is thrown at you when you log in.  Type HISTORY and a line
-  reading '--- while you were away ---' is drawn at the moment you last
-  left, with everything said since below it.
-
-  So the lines you would have seen had you been here are there when you
-  want them, and not before.
-
-  Tells are not in it.  A tell to somebody who is not logged in is
-  never delivered, so there is nothing there to have missed.
-
-IT DOES NOT SURVIVE A REBOOT
-  History is held in memory.  When the game restarts it is gone.  It is
-  a way to catch up on what you missed, not a transcript.
-
-Only the last 30 lines of each channel are kept, and the last 20 tells.
+Example: history gossip 5
 
 See also: CHANNELS, GOSSIP, TELL
-
 ~
 
 0 STASH~
-Syntax: stash                          -- what is in it
-        stash put <item>               -- from anywhere in the world
-        stash put all                  -- everything you can spare
-        stash get <item or number>     -- at the altar only
-        stash buy                      -- more room, at the altar
-        stash link <character>         -- share with another of yours
-        stash unlink <character>       -- stop sharing
-        stash of <character>           -- what is in theirs
-        stash take <character> <item>  -- at the altar only
-        stash deny <character>         -- refuse an offer
-        stash block <character>        -- and stop them asking
-        stash unblock <character>      -- let them ask again
+Syntax: stash                       what is in it, and the next price
+        stash put <item> | all      from anywhere
+        stash get <item or number>  at the altar only
+        stash buy                   more room, at the altar
+        stash link <character>      share with another of yours
 
-Storage at the altar that survives a reboot: a place to keep items and
-loot you do not want to carry around.
+Storage for items you do not want to carry around.  It survives reboots
+and is kept at the Temple altar, one step west of where RECALL lands you.
 
-STASH on its own lists what is in it, and you can read that from
-anywhere - knowing what you own is not the same as reaching it.
+  - Items go in from anywhere and come out only at the altar.
+  - Room is counted in items, not weight: a bag of gems is one.
+  - You start with 50 slots.  Each STASH BUY adds 25, to 500, for 250,
+    then 1,000, then 2,250 gold and rising; STASH shows the next price.
+  - Anything on a timer, and corpses, are refused.
+  - The stash is saved the moment anything goes in or out.
 
-STASH PUT works from anywhere in the world, so you can set something
-aside the moment you find it.  STASH PUT ALL sends everything in your
-hands that is allowed in.  STASH GET takes an item's name or the number
-STASH shows beside it, and works only at the altar, one step
-west of where you land when you recall.  That is deliberate: the stash
-stores loot, it is not a way to carry it.
-
-You start with room for fifty things, counted as things rather than
-weight - a bag of gems is one.  STASH BUY at the altar adds another
-twenty-five, and the price climbs each time, up to five hundred.  The
-first purchase costs 250 gold, the second 1,000, the third 2,250 -- 250
-gold times the square of the purchase number -- and all eighteen come to
-527,250 gold.  STASH on its own always shows the price of the next one.
-
-Anything with a timer on it is refused, and so is a corpse.  They would
-only rot where you put them.
-
-SHARING BETWEEN YOUR CHARACTERS
-  Two characters who each name the other share one pool: either can
-  take what the other left.  It takes both halves, so nobody can reach
-  into your stash without you naming them back.  See HELP STASHLINK -
-  that entry covers linking, denying and blocking in full.
-
-Your stash is saved the instant anything goes in or comes out, so a
-crash cannot cost you what you put away.
+Example: stash put sword
 
 See also: STASHLINK, DONATE, RECALL
-
 ~
 
 0 STASHLINK LINK~
-Syntax: stash link <character>         -- offer, or accept
-        stash unlink <character>       -- stop sharing
-        stash of <character>           -- what is in theirs
-        stash take <character> <item>  -- at the altar only
-        stash deny <character>         -- refuse an offer
-        stash block <character>        -- and stop them asking
-        stash unblock <character>      -- let them ask again
+Syntax: stash link <character>         offer, or accept an offer
+        stash unlink <character>       stop sharing
+        stash of <character>           list theirs, from anywhere
+        stash take <character> <item>  at the altar only
+        stash deny <character>         refuse an offer
+        stash block <character>        refuse, and stop them asking
+        stash unblock <character>      let them ask again
 
-How to share one stash between two of your own characters.
+Two of your characters can share their stashes.  Each must name the other:
+STASH LINK from the first, then the same from the second.  Until both
+have, nothing is shared, so nobody can reach your stash uninvited.  You
+are told at login when someone has named you.
 
-IT TAKES BOTH HALVES
-  Naming somebody is only half of a link.  Log in as your first
-  character and type:
+  - The other character need not be logged in.
+  - A take saves both files; if either save fails the item goes back.
+  - Nothing can be taken while either of you has a death still being
+    recorded; both stashes can still be looked at.
+  - UNLINK ends your half at once; every item stays where it is.
+  - You may keep up to eight links.  STASH BLOCK alone lists who you block.
 
-      stash link <your other character>
-
-  You will be told that nothing is shared yet.  Log in as that other
-  character and type the same thing back, naming the first.  Now the
-  two of you share: either can see and take what the other left.
-
-  This is why nobody can reach into your stash uninvited.  Someone can
-  name you all they like; until you name them back it does nothing.
-
-WHEN SOMEBODY NAMES YOU
-  You are told at login that an offer is waiting and who made it.
-  Three answers:
-
-      stash link <name>    accept, and share from then on
-      stash deny <name>    refuse, and clear the offer
-      stash block <name>   refuse, and stop them asking again
-
-  DENY clears one offer.  If the same person keeps offering, BLOCK
-  turns them away before the offer is ever recorded - they are simply
-  told you are not accepting.  STASH BLOCK on its own lists everybody
-  you are turning away, and STASH UNBLOCK lets one of them ask again.
-
-USING A SHARED STASH
-  STASH OF <character> lists what is in theirs, from anywhere.
-  STASH TAKE <character> <item> pulls it out, at the altar only - the
-  same rule your own stash follows.
-
-  The other character does not have to be logged in.  Their saved
-  stash is read straight off the disk.
-
-  Both files are written when something is taken: theirs without it,
-  then yours with it.  If either cannot be written, you are told, and
-  the item goes back into their stash - never lost, never copied.
-  While either of you has a death still being laid to rest, nothing
-  can be taken, though both stashes can still be looked at.
-
-UNLINKING
-  STASH UNLINK <character> ends your half at once.  Nothing is lost:
-  every item stays in the stash of whoever put it there.
-
-  You may keep up to eight links.
-
-See also: STASH, RECALL
-
+See also: STASH
 ~
 
 0 BUFF HERMIE~
-Syntax: heal
-        heal <spell>
-        buff <spell>
+Syntax: buff               her menu
+        buff <spell|group> ask for one
+        heal <spell|group> the same, wherever she stands
 
-Hermie is the free healer.  She appears only when the immortals place her,
-wherever and for as long as they choose; WHERE HERMIE finds her if she is
-in your area.  She is not a quest and not random: when she is
-about, everything she does is free.
+Hermie is the free healer: she casts anything on her menu for nothing.
+She appears when the staff place her, and by herself after a restart that
+put players off the game: then she stands in the Oak Tree Square for four
+hours, whenever any player is on.
 
-Ask Hermie for a spell.  She works exactly like the healer at the pit -
-HEAL on its own reads out what she offers, HEAL <name> asks for one -
-except that everything she does is free.
+Ask by command or simply SAY the name to her.  Groups: DEFENSE, DETECTS,
+TRAVEL, CURES, RESTORE, COMBAT, or ALL.  HEAL, MANA, REFRESH and VITALS
+fill your pools outright.  EMPOWER is her bundle; she no longer gives
+TITANIC.  Her buffs last thirty ticks.
 
-BUFF is the same command under another name, for when a healer and
-Hermie are somehow in the same room and you want to be sure which one
-you are talking to.
+Example: buff defense
 
-Name a group instead of a spell to take a handful at once: DEFENSE,
-DETECTS, TRAVEL, CURES, RESTORE, COMBAT, or ALL for the lot.
-
-REFRESH, HEAL and MANA fill the pool rather than topping it up, and
-VITALS does all three, so there is no reason to ask twice.
-
-See also: HEAL
+See also: HEAL, EMPOWER
 ~
 
 0 ACCOUNT ACCOUNTS LOGIN~
-There are no accounts here.  Each character is its own login: the name you
-typed at the prompt and that character's password.  Make as many characters
-as you like, and log into each by name.
+There are no accounts here.  Each character is its own login: its name
+and its password.  Make as many characters as you like.
 
-PASSWORD changes the password of the character you are playing.  Every
-letter of a new password counts.  There is no way to recover a forgotten one by
-mail: ask an immortal, who can reset it.  DELETE removes the character you
+PASSWORD changes the password of the character you are playing; every
+letter of a new one counts.  A forgotten password cannot be mailed to
+you: ask an immortal, who can reset it.  DELETE removes the character you
 are playing, for good.
 
 See also: PASSWORD, DELETE, WHO
@@ -1091,29 +721,22 @@ See also: NOTE, BUG, RULES, WIZLIST
 ~
 
 0 'BLACK MARKET' DEALER MARKET VESH SMUGGLER~
-Rumour has it a smuggler called Vesh walks the world selling what cannot
-be had anywhere else: some of the finest gear a level 29 or better can
-wear, holiday
-treasures out of season, and now and then a cake that teaches as much as
-a training session, or a lucky clover.
+Vesh the smuggler sells what cannot be had elsewhere: some of the finest
+gear for level 29 and up, holiday treasures out of season, now and then a
+training cake or a lucky clover.
 
-He is rarely about -- in the world perhaps one hour in ten -- and while
-he is, he never stays put: he moves on every minute or so, and now and
-then simply vanishes and turns up somewhere else entirely.  Nothing finds
-him from afar: no spell, no tracking, no asking around.  You will see him
-if you walk into his room, or if you SCAN and he is standing one room
-away.  He does not wait on gawkers: start buying within a minute and a
-half or he moves on.
+  - He is in the world perhaps one hour in ten, and never stays put: he
+    moves every minute or so and sometimes vanishes to another place.
+  - Nothing finds him from afar.  You see him by walking into his room,
+    or with SCAN from the next one.
+  - Start buying within a minute and a half or he moves on.
+  - LIST shows his five items at most; BUY buys.  He buys nothing, does
+    not haggle, and sells one of each to a customer.
+  - Prices are steep, and five times that for what nothing else drops.
+  - While he serves you nobody else may buy.  When you are done or walk
+    away he is gone, and his stock is new next time.
 
-LIST shows what he has -- five things at most -- BUY buys it, and he buys
-nothing from you.  His prices are steep and not for haggling, and what
-cannot be had anywhere else costs five times as much again.  He sells
-one of each to a customer, and while he is selling to you nobody else
-may buy.  Once you have had what you want, or walk away, he is gone, and
-the next customer has to find him again.  What he carries changes every
-time he comes back.
-
-See also: SCAN, LIST, BUY
+See also: SCAN, LIST, BUY, 'TREASURE GOBLIN'
 ~
 
 65 GOBLIN~
@@ -1143,25 +766,17 @@ See also: 'TREASURE GOBLIN', BLACKMARKET
 ~
 
 0 'TREASURE GOBLIN' GOBLIN~
-There is always a treasure goblin somewhere in the world: a wiry little
-thief bent under a sack of stolen coin.  Nothing finds him from afar --
-no spell, no tracking, no asking around -- but SCAN shows him one room
-away, and he leaves a trail of dropped coin wherever he runs.
+There is always a treasure goblin somewhere: a little thief under a sack
+of coin.  Nothing finds him from afar, but SCAN shows him one room away,
+and he leaves dropped coin wherever he runs.
 
-He never fights back.  Every blow that lands spills coin from his sack
-and sends him scurrying out through a random exit, so killing him is a
-chase: twelve rooms at the very least for the hardest hitter, a few more
-for a gentler one.  Anyone patient enough can finish him.  Nothing holds
-him: stuns, sleep, a bash, confusion -- he shrugs them all off and runs.
-
-Keep at him.  Let a minute go by without landing a blow -- because you
-lost him, or because you stood there -- and he tears open a portal and
-is gone somewhere else, wounds and all.  A blow while the portal opens
-slams it shut.
-
-Run him down and his sack bursts: a great deal of coin for someone of
-your level, often a fine piece of gear for your level too, and now and
-then something rarer.  Another goblin turns up somewhere soon after.
+  - He never fights back.  Each blow that lands spills coin and sends him
+    out a random exit, so a kill is a chase of a dozen rooms or more.
+  - Stuns, sleep, bash and confusion do not hold him.
+  - Go a minute without landing a blow and he opens a portal and escapes,
+    wounds and all.  A blow while it opens shuts it.
+  - Killed, his sack bursts: much coin for your level, often a good piece
+    of gear for your level, now and then a rarity.  Another soon appears.
 
 See also: SCAN, 'BLACK MARKET'
 ~
@@ -1223,86 +838,86 @@ See also: 'BLACK MARKET'
 ~
 
 0 HOLIDAYS HOLIDAY FESTIVALS 'HOLIDAY FAIR'~
-Syntax: holidays               (what is on, and this year's dates)
-        holidays <year>        (the dates in another year)
-        holidays on <date>     (what any one day is: holidays on 2027-03-28)
+Syntax: holidays               what is on, and this year's dates
+        holidays <year>        the dates in another year
+        holidays on <date>     what one day is: holidays on 2027-03-28
 
-The world keeps a calendar of holidays.  While one is on, a vendor and a
-decoration stand in the Oak Tree Square, the creatures of the world now
-and then carry the holiday's treat, shopkeepers mention it, and TIME and
-your login say so.  The vendors sell (BUY) and buy nothing.
+While a holiday is on, a vendor and a decoration stand in the Oak Tree
+Square, creatures now and then carry its treat, and TIME and your login
+say so.  Vendors sell and buy nothing.  Dates follow the server's clock.
 
-  Winter Veil         Dec 16 - Jan  6   gifts; Father Winter; Tinsel
-  Lunar Festival      Jan 21 - Feb  4   red envelopes: OPEN them for
-                                        lucky money; lanterns, rockets
-  Love is in the Air  Feb  7 - Feb 20   candy hearts; GIVE a red rose to
-                                        another adventurer to bless you both
-  St. Patrick's Day   Mar 14 - Mar 17   four-leaf clovers: EAT one and the
-                                        next foe you slay spills a pot of gold
-  Noblegarden         Easter week       painted eggs hidden all over
-                                        Dresden: OPEN them
-  Children's Week     Apr 30 - May  6   lollipops; toys for the orphanage
-  Midsummer Fire      Jun 21 - Jul  5   a bonfire; DROP a festival
-                                        firework and the whole area sees it
-  Pirates' Day        Sep 19            grog and tricorn hats.  Arr.
-  Brewfest            Sep 20 - Oct  6   DRINK from the festival keg, free
-  Hallows End         Oct 18 - Nov  1   trick-or-treat candy: EAT it for a
-                                        treat or a trick; the Horseman
-  Day of the Dead     Nov  2 - Nov  3   sugar skulls let you see a little
-                                        of what the departed see
-  Pilgrim's Bounty    Thanksgiving week a feast; pie and roast turkey
+  Winter Veil         Dec 16 - Jan 6     Pirates' Day       Sep 19
+  Lunar Festival      Jan 21 - Feb 4     Brewfest           Sep 20 - Oct 6
+  Love is in the Air  Feb 7 - Feb 20     Hallows End        Oct 18 - Nov 1
+  St. Patrick's Day   Mar 14 - Mar 17    Day of the Dead    Nov 2 - Nov 3
+  Noblegarden         Easter week        Pilgrim's Bounty   Thanksgiving week
+  Children's Week     Apr 30 - May 6
+  Midsummer Fire      Jun 21 - Jul 5
 
-Clovers, candy hearts and trick-or-treat candy are a bite, not a meal:
-you can eat them even when you are full.  Each clover is luck for one
-kill, and you can carry luck for three at a time: eating one tells you
-how many you hold, and a fourth is refused (and kept) until a pot of
-gold has spilled.  Luck is not saved -- it is gone when you leave the
-game, so eat clovers when you mean to hunt.
+The decorated towns of Hallows End and Winter Veil appear when the world
+next restarts in their season.
 
-The dates follow the game's own clock, in the time zone the server runs
-in, and change at its midnight.  The fair in the square comes and goes
-by itself; the decorated towns of Hallows End and Winter Veil appear
-when the world next restarts in their season.
-
-See also: TIME, 'BLACK MARKET'
+See also: 'HOLIDAY TREATS', TIME, 'BLACK MARKET'
 ~
 
-0 DISASTERS 'BLACK DRAGON'~
-Now and then a disaster strikes an area somebody is in: a flood, a
-lightning storm, an earthquake, a tornado, a sand storm, a brush fire or
-a tidal wave.  You always get a warning first -- the ground trembles,
-the wind rises, smoke is on the air -- and the first blow lands a few
-seconds later, so there is time to get under cover.  After that it
+0 'HOLIDAY TREATS'~
+What the holiday treats do:
+
+  Red envelope (Lunar)        OPEN it for lucky money
+  Red rose (Love)             GIVE it to another player: it blesses you both
+  Clover (St. Patrick's)      EAT it: the next foe you slay spills a pot of
+                              gold.  You hold luck for three kills at most;
+                              a fourth clover is refused.  Luck is lost when
+                              you leave the game.
+  Painted egg (Noblegarden)   hidden around Dresden; OPEN it
+  Firework (Midsummer)        DROP it and the whole area sees it
+  Festival keg (Brewfest)     DRINK from it, free
+  Candy (Hallows End)         EAT it for a treat or a trick
+  Sugar skull (Day of Dead)   lets you see a little of what the dead see
+
+Clovers, candy hearts and Hallows End candy are a bite, not a meal: you
+can eat them when full.
+
+See also: HOLIDAYS
+~
+
+0 DISASTERS~
+Now and then a disaster strikes an area someone is in.  A warning comes
+first -- the ground trembles, the wind rises, smoke is on the air -- and
+the first blow a few seconds later, so there is time to take cover.  It
 strikes again every few seconds until it passes.
 
-What each one does:
-  Flood         sweeps you a few rooms along, hurting you as it goes,
-                unless you fly or are quick (dexterity); not indoors
+  Flood         sweeps you a few rooms along; flying or a quick dodge
+                avoids it; needs rain, never indoors
   Lightning     a bolt from a thunderstorm, outdoors only
-  Earthquake    falling rocks and timber, and it throws you down for a
-                moment; not on water or in the air
-  Tornado       picks you up and drops you somewhere else, hard
+  Earthquake    falling rubble, and it knocks you down; not on water or
+                in the air
+  Tornado       picks you up and drops you somewhere else
   Sand storm    chokes and blinds you, in the desert
   Brush fire    in fields, forests and hills
   Tidal wave    crashes over you on the water
 
-Most can be shrugged off with a good saving throw.  A disaster never
-kills: it always leaves you at least one hit point.  It passes you by in
-the Temple, at the altar, in a safe room or an arena, and it does not
-touch anybody below level 10.
+A good saving throw shrugs most of them off.  A disaster never kills: it
+leaves you at least one hit point.  It spares the Temple, the altar, safe
+rooms, arenas and anyone below level 10.
 
-THE BLACK DRAGON
-Sometimes the shadow overhead is the Great Black Dragon.  It snatches one
-person standing outdoors (level 10 or more), carries them off to another
-part of the same area and lands beside them.  It does not attack.  KILL
-DRAGON to fight it -- two levels above you, with three times the hit
-points of anything else your level, and it bashes, trips, disarms and
-sweeps with its tail; bring your best -- and it carries a hoard: coin,
-always a good piece of gear for your level, and now and then a rarity.
-Or simply walk away: it waits about three minutes, and leaves soon after
-you do.
+See also: 'BLACK DRAGON', WEATHER
+~
 
-See also: WEATHER
+0 'BLACK DRAGON'~
+Sometimes the Great Black Dragon swoops down on an area and carries one
+person standing outdoors (level 10 or more) to another part of it, and
+lands beside them.  It does not attack.
+
+  - KILL DRAGON to fight it: two levels above you, with three times the
+    hit points of a usual foe of your level, and it bashes, trips,
+    disarms and sweeps with its tail.
+  - Its hoard: coin, always a good piece of gear for your level, and now
+    and then a rarity.
+  - Or walk away: it leaves about three minutes after landing, or soon
+    after you go, never during a fight.
+
+See also: DISASTERS
 ~
 
 60 DISASTER~
@@ -1361,12 +976,16 @@ See also: QUAFF, RECITE, ZAP, BRANDISH, EAT, DRINK, WEAR, PLAY, BOMB
 
 0 AFK~
 Syntax: afk
+        afk <message>
 
-Toggles an "away from keyboard" flag on your character so other players
-know you are temporarily unavailable.  While AFK, auto-reply to tells is
-suppressed and your name may display differently in WHO.  Type AFK again
-to clear the flag when you return.  The flag does not persist across
-logins.
+Marks you away from the keyboard: [*AFK*] shows beside your name in WHO
+and before your prompt.  Anyone who sends you a TELL or REPLY is told you
+are AFK, with your message if you gave one.  Typing AFK again, or sending
+a TELL or REPLY yourself, clears it.  It lasts only for this session.
+
+AFK does not protect you from anything; see SHADOWMELD.
+
+Example: afk back in ten minutes
 
 See also: TELL, REPLY, WHO
 ~
@@ -1400,45 +1019,42 @@ See also: CRAWL, CLIMB, ENTER, LOOK
 0 DAMAGENUMBERS~
 Syntax: damagenumbers
 
-Toggles the exact damage figure after each blow you deal or take: with it
-on, "You slash the goblin hard [-47]" and "The goblin claws you [-12]".
-Everybody else in the room sees only the words, whatever their own
-setting.  With it on you are also told the small shifts in your alignment
-that a kill or a deed brings.  It is off for new characters and is saved.
+Turns on or off the exact damage figure after each blow you deal or take:
+"You slash the goblin hard [-47]".  Others in the room see only the
+words.  With it on you are also told each small shift in your alignment.
+It is off for new characters, and saved.
 
-See also: DAMAGE, ALIGNMENT, SETTINGS
+See also: SETTINGS, ALIGNMENT, DUMMY
 ~
 
 0 NEW SETTINGS CUSTOMIZE OPTIONS~
-Everything you can change about how the game reads. None of it affects the
-world -- only what your own screen shows you.
+The settings you can change, all saved with your character.  HELP any of
+them for detail; AUTO lists how they stand.
 
 Display
-  COLOR           turn colour on or off, and pick which colours
-  PROMPT          the status line at the bottom; PROMPT CODES lists the
-                  placeholders, PROMPT DEFAULT puts it back
-  BRIEF           short room descriptions once you know your way around
-  COMPACT         drop the blank line between messages
+  COLOR           colour on or off, and which colours
+  PROMPT          the status line; PROMPT DEFAULT puts it back
+  BRIEF           short room descriptions
+  COMPACT         no blank line between messages
+  SCROLL          lines per page
   DAMAGENUMBERS   exact damage figures in combat (off by default)
-  AUTOEXIT        list the exits every time you enter a room
+  AUTOEXIT        list the exits as you enter a room
 
-Automatic actions
-  AUTOLOOT        take from corpses you kill
-  AUTOGOLD        take coins from corpses you kill
-  AUTOSAC         sacrifice the corpse afterwards
-  AUTOSPLIT       share coins with your group
-  AUTOASSIST      join a fight your group is already in
-  WIMPY           flee automatically below a set number of hit points
+What happens for you
+  AUTOLOOT        take everything from corpses you kill
+  AUTOGOLD        take the coins from corpses you kill
+  AUTOSAC         sacrifice the empty corpse afterwards
+  AUTOSPLIT       share looted coin with your group
+  AUTOASSIST      join a fight your group is in
+  WIMPY           flee by yourself below a number of hit points
 
-Channels and privacy
-  CHANNELS        which channels you are listening to
-  NOSUMMON        stop other players summoning you (on by default)
-  NOFOLLOW        stop other players following you
+Others and you
+  CHANNELS        the channels you hear
+  NOSUMMON        stop others summoning you (on by default)
+  NOFOLLOW        stop others following you
+  NOLOOT          stop others looting your corpse
 
-Type HELP followed by any of those for the detail. Your settings are saved
-with your character, so you only need to do this once.
-
-See also: DAMAGENUMBERS, PROMPT, COLOR, CHANNELS, SCORE
+See also: AUTO, PROMPT, COLOR, CHANNELS
 ~
 
 0 PRACTICELIST~
@@ -1456,80 +1072,49 @@ See also: PRACTICE, GAINLIST, GAIN, GROUPS
 ~
 
 0 GAINLIST ABILITIES~
-Syntax: gainlist
-Syntax: abilities
-Syntax: gainlist trainers
-Syntax: gainlist preview <class> <guild>
+Syntax: gainlist                          (or ABILITIES)
+        gainlist trainers
+        gainlist preview <class> [guild]
 
-GAINLIST (or ABILITIES) lists every skill and spell your class and guild
-can learn, and whether you have it:
+GAINLIST lists every skill and spell your class and guild can learn:
 
-  X    not learned, and usable at your level -- go and GAIN it
-  -    not learned, usable at a later level (you may GAIN it now anyway)
+  X    not learned, usable at your level -- go and GAIN it
+  -    not learned, usable at a later level (you may GAIN it now)
   +    learned, with how well you know it
 
-Each thing still to learn is listed with what to GAIN for it -- a group
-brings several spells at once, and the group's spells are named with the
-level each becomes usable at -- what it costs in trains, the trainer who
-sells it, where they are, and what to type after WALKTO to be walked
-there.  The Oracle is given the same list, so you can also ask her what
-you are missing.
+Each thing still to learn shows what to GAIN for it (a group brings
+several spells), the cost in trains, the trainer, and the WALKTO that
+takes you there.  The Oracle is given the same list.
 
-GAINLIST PREVIEW shows any other build before you commit a life to it:
-every skill and spell a class in a guild can learn, at the level the class
-can first use it, starred where it has to be GAINed, with the trains the
-whole kit costs, how many blows a round it reaches at levels 10, 25, 40
-and 50, and -- for a class outside its own guild -- what the guild adds
-and what it gives up.  Monks and necromancers have no guild:
-GAINLIST PREVIEW MONK.
+GAINLIST TRAINERS lists each trainer you may use and everything they sell:
+'have' if you have it, 'n/a' if your class cannot gain it.
 
-GAINLIST TRAINERS shows the older view: each guildmaster your class and
-guild allow you to use, and everything each one sells.  The cost column
-shows the training cost, or:
+GAINLIST PREVIEW shows another build before you remort into it: its kit by
+level, starred where it must be GAINed, the trains it costs, blows a round
+at levels 10, 25, 40 and 50, and what a guild adds or gives up.  Monks and
+necromancers have no guild: GAINLIST PREVIEW MONK.
 
-  have    you already have it
-  n/a     it cannot be gained at your class
-
-Gaining costs training sessions, not practices.  Once you have something,
-PRACTICELIST and TEACHLIST say who can practise it with you.
-
-See also: GAIN, PRACTICELIST, TEACHLIST, TRAIN, GROUPS, WALKTO
+See also: GAIN, PRACTICELIST, TEACHLIST, TRAIN, WALKTO
 ~
 
 0 PROMPT~
-Syntax: prompt
-Syntax: prompt codes
-Syntax: prompt <format string>
-Syntax: prompt default
-Syntax: prompt on | off
-Syntax: prompt room on | off      (staff)
+Syntax: prompt                    what you use now
+        prompt codes              every placeholder
+        prompt <format>           set your own
+        prompt default            the standard one
+        prompt on | off           show or hide it
+        prompt room on | off      add the room vnum (staff)
 
-Customizes the status line shown at the bottom of your screen.
+Sets the status line shown after each command.  Codes: %h %H hit points
+now and maximum, %m %M mana, %v %V movement, %e experience to level,
+%X total experience, %g gold, %s silver, %r room name, %c %C your normal
+and highlight colours, %% a percent sign.  %R, the room vnum, shows for
+staff only.  Anything else prints as typed.
 
-PROMPT on its own shows the prompt you are using now and what else you can
-do with the command.  PROMPT CODES lists every placeholder, so you do not
-have to come back to this help file to build one.
+  prompt %C<%hhp %mm %vmv>%c      the default
+  prompt <%h/%H hp %m/%M mana>    current and maximum together
 
-The codes are %h and %H for current and maximum hit points, %m and %M for
-mana, %v and %V for movement, %e for experience to level, %X for total
-experience, %g for gold, %s for silver, %r for the room name, %c and %C for
-your regular and highlight colours, and %% for a literal percent sign.
-Everything else is printed as you typed it.
-
-%R shows the room vnum and works for staff only; in a mortal's prompt it
-renders as nothing.
-
-  prompt %C<%hhp %mm %vmv>%c     the default
-  prompt <%h/%H hp %m/%M mana>   current and maximum together
-  prompt <%hhp %mm %vmv> [%R]    with the room vnum on the end
-
-PROMPT DEFAULT restores the standard prompt.  PROMPT OFF hides the prompt
-entirely and PROMPT ON brings it back.
-
-Staff can use PROMPT ROOM ON and PROMPT ROOM OFF to add or remove the room
-vnum without retyping the whole format.  Anyone can use %R directly.
-
-See also: COLOR, COMPACT, BRIEF, HOLYLIGHT
+See also: COLOR, COMPACT, BRIEF
 ~
 
 0 QUESTION~
@@ -1544,26 +1129,21 @@ See also: GOSSIP, TELL, CHANNELS
 ~
 
 0 BANK INTEREST~
-There is no BANK command: banking is four commands, and all of them work
-only inside a bank room.  Entering one tells you that you are in a bank.
+There is no BANK command.  In a bank room you have four:
 
-  BALANCE                       shows what you have on deposit
-  DEPOSIT <amount> [coin type]  pays coins in (platinum if no type given)
-  WITHDRAW <amount> [coin type] takes coins out, if you can carry them
-  CONVERT                       changes your carried coins into the
-                                largest denominations they make
+  BALANCE                       what you have on deposit
+  DEPOSIT <amount> [coin type]  pay in (platinum unless you say)
+  WITHDRAW <amount> [coin type] take out, if you can carry it
+  CONVERT                       change your coins into the largest
+                                denominations they make
 
-Notes:
-  - The bank pays 0.25% interest per real day on your balance.  Interest
-    is applied automatically while you are logged in (catching up for up
-    to 7 days of offline time).  Accounts below 1 platinum do not earn
-    interest.
-  - No fees are charged on deposits or withdrawals.
-  - Successful deposits and withdrawals save your character immediately.
-  - Where a banker stands behind the counter, pkillers are refused service.
-  - Your bank balance is retained across deaths and remorts.
+  - Interest: 0.25% a real day on a balance of 1 platinum or more, paid
+    while you play and caught up for up to 7 days away.
+  - No fees.  Each deposit and withdrawal saves you at once.
+  - Your balance is kept through deaths and remorts.
+  - Where a banker stands, player killers are refused.
 
-See also: BALANCE, DEPOSIT, WITHDRAW, CONVERT, WORTH
+See also: BALANCE, DEPOSIT, WITHDRAW, WORTH
 ~
 
 0 BALANCE~
@@ -1715,71 +1295,50 @@ See also: CASINO, SLOTS, BET, ROULETTE
 
 0 BREW CONCOCT 'HERBAL BREWING'~
 Syntax: brew <herb>
-Syntax: concoct <component> <component>
-Syntax: brew preview <herb>
-Syntax: concoct preview <component> <component>
+        concoct <component> <component>
+        brew preview <herb>
+        concoct preview <component> <component>
 
-BREW turns one carried herb into an herbal tea. CONCOCT combines two carried
-spell components into a potion when they form a valid recipe. Component order
-does not matter. An herb with no known brew, or components that make nothing,
-are refused and left untouched, and so are more ingredients than the craft
-takes. A real attempt takes a few seconds of work; failing it consumes the
-ingredients, and a botched potion burns you -- the burn can kill, and the
-ingredients are spent before it lands. A belladonna tea now and then brews
-into something you would not want to drink.
+BREW makes an herbal tea from one herb you carry; CONCOCT makes a potion
+from two spell components, in either order.
 
-PREVIEW is free: no time passes and nothing is used. For ingredients you
-carry that make something, it shows what would come out, its spells and who
-they land on, the level it is cast at, your chance to make it, and what a
-failure costs. It finds only what trying would; it reveals no recipe for
-ingredients you do not hold.
+  - Ingredients that make nothing are refused and kept.
+  - An attempt takes a few seconds.  A failure uses the ingredients up,
+    and a botched potion burns you; the burn can kill.
+  - PREVIEW is free: what would come out, its spells, its level, your
+    chance and what failure costs.  It shows only what you could make
+    from what you carry.
+  - What you make is your level, and nobody below it can use it.
+  - Herbs and components lie about the world and wither in about twelve
+    hours.  Every recipe is in the Magic Book, in Hyrule's Level 8.
+  - The rarest concoctions hold TITANIC or EMPOWER.  They last half your
+    level in ticks, at most thirty.
 
-If the game cannot write your file at the moment of a craft, the attempt is
-undone and you are told: the ingredients stay in your pack, nothing is made.
-
-What you make is made at your level, and nobody below that level can drink
-it. Herbs and components turn up on the ground around the world and wither
-after about twelve hours. Every successful brew counts toward the crafting
-achievements, and every different recipe toward A Varied Recipe Book.
-
-The rarest concoctions hold TITANIC or EMPOWER, the two bundles Hermie gives
-free at the Temple, to carry where she is not.  Nobody casts either; they
-last half the maker's level in ticks, never longer than hers.
-
-Every recipe -- each brew, potion and scroll and what goes into it -- is
-written in the Magic Book, found in Hyrule's Level 8: READ or OPEN it.
-
-BREW is the herbal brewing skill.  Usable from level: Monk 12; never Mage,
-Cleric, Thief, Warrior, Necromancer.  Trainer: the Master of Movement.
-CONCOCT, likewise.  Usable from level: Mage 17, Cleric 17, Necromancer 19;
-never Thief, Warrior, Monk.  Trainers: Flame the fire mage, Tempora the high
-priestess, Marilith.  GAINLIST shows who sells them to your class and guild.
+BREW: Monk 12, from the Master of Movement.  CONCOCT: Mage 17, Cleric 17,
+Necromancer 19, from Flame the fire mage, Tempora the high priestess and
+Marilith.  GAINLIST shows who sells them to you.
 
 See also: SCRIBE, QUAFF, LORE, ACHIEVEMENTS
 ~
 
 0 SCRIBE~
 Syntax: scribe <component> <component> <component>
-Syntax: scribe preview <component> <component> <component>
+        scribe preview <component> <component> <component>
 
-SCRIBE combines three carried spell components into a single-use magical
-scroll when they form a valid recipe. Component order does not matter, and
-you do not need a separate blank scroll or quill. Components that make no ink
-are refused and left untouched; a real attempt takes a few seconds, and
-failing it consumes them. You must be awake to scribe.
+Writes a scroll from three spell components you carry.
+Component order does not matter, and no blank scroll or quill is needed.
+Components that make nothing are refused and kept; a failed attempt uses
+them up.
 
-The scroll is cast at your level and needs that level to read. A scroll whose
-spell works on an object asks for one you carry: RECITE <scroll> <object>.
-SCRIBE PREVIEW shows, for free, what the components you carry would make and
-your chance; reading the scroll later is a separate roll on your SCROLLS
-skill, which the preview also shows. See BREW for what PREVIEW tells you.
+  - The scroll is cast at your level and needs that level to read.  One
+    whose spell works on an object is read at one you carry: RECITE
+    <scroll> <object>.  Reading is a roll on your SCROLLS skill.
+  - PREVIEW is free and shows what you would make and your chances.
+  - Some inks write TITANIC or EMPOWER.  The Magic Book in Hyrule's
+    Level 8 lists every ink.
 
-Some inks write TITANIC or EMPOWER, which a scroll can lay on you or on
-another player.  The Magic Book in Hyrule lists every ink: READ BOOK.
-
-Usable from level: Mage 20, Cleric 25, Necromancer 30; never Thief, Warrior,
-Monk.  Trainers: Dawn the wand maker, Drixt the golden dragon, the Undead
-Spirit.  GAINLIST shows who sells it to your class and guild.
+Usable from level: Mage 20, Cleric 25, Necromancer 30.  Trainers: Dawn the
+wand maker, Drixt the golden dragon, the Undead Spirit.
 
 See also: BREW, RECITE, ACHIEVEMENTS
 ~
@@ -1787,210 +1346,158 @@ See also: BREW, RECITE, ACHIEVEMENTS
 0 SHOOT ARCHERY BOW~
 Syntax: shoot <target>
 
-SHOOT fires a wielded bow at a visible mobile through an open adjacent exit,
-in the next room; somebody in your own room is out of range.  You need the
-ARCHERY skill and cannot shoot while fighting, and players cannot be shot
-at from another room.  A hit deals 2d4 piercing damage; no arrows are
-needed or used.  It costs three seconds, hit or miss, and both can improve
-ARCHERY.  A wounded mobile may well come through the door after you, and
-one that cannot reach you still makes you pay a few hit points for it.
+Fires a wielded bow at a visible mobile through an open adjacent exit,
+in the next room; anyone in your own room is out of range.
 
-Hyrule's own bow and boomerangs shoot at an enemy in the same room, and need
-no ARCHERY.  The bow wants a quiver of arrows carried, and each arrow costs
-a gold coin; a boomerang comes back to your hand and stuns what it hits.  See
-HYRULE ITEMS.
+  - Needs the ARCHERY skill.  Not while fighting, and never at a player.
+  - A hit deals 2d4 piercing damage.  No arrows are needed.
+  - It costs three seconds, hit or miss.  A wounded creature may come
+    after you; one that cannot still makes you pay a few hit points.
 
-Hyrule's Silver Arrow is a special exception.  A level 54 or higher character
-who has it wielded can use SHOOT GANON in Ganon's room after he reaches one hit
-point and flashes bright red.  This finishing shot does not require ARCHERY
-and does not consume the Silver Arrow.  Normal attacks can wound Ganon but
-cannot deliver the final blow.
+ARCHERY is also the skill for a bow swung in melee.  Usable from level:
+Mage 35, Cleric 30, Thief 25, Warrior 15, Monk 20; never Necromancer.
+Trainer: Rakar the weaponsmaster.
 
-ARCHERY is also the weapon skill for a bow swung in melee.  Usable from
-level: Mage 35, Cleric 30, Thief 25, Warrior 15, Monk 20; never Necromancer.
-Trainer: Rakar the weaponsmaster.  GAINLIST shows who sells it to your class
-and guild.
+In Hyrule its own bow and boomerangs SHOOT an enemy in the same room, with
+no ARCHERY needed (HYRULE ITEMS).  Only a character of level 54 or more
+wielding the Silver Arrow can finish Ganon: SHOOT GANON once he flashes
+red.
 
-See also: WIELD, SCAN, HYRULE ITEMS
+See also: WIELD, SCAN, 'HYRULE ITEMS', GANON
 ~
 
-0 HYRULE DUNGEONS 'HYRULE ORDER' 'HYRULE LEVELS'~
-Hyrule is entered through the arcade cabinet in the Games Room, on the
-university campus.  ENTER CABINET and the screen takes you.  RECALL works
-on the overworld but not inside the nine numbered dungeons.
+0 HYRULE DUNGEONS~
+Hyrule lies inside the arcade cabinet in the Games Room on the university
+campus: ENTER CABINET.  RECALL works on its open land, not in the nine
+numbered dungeons.
 
-The nine dungeons are done IN ORDER, and every one works the same way:
-  - you need the previous dungeon's Triforce piece to enter it;
-  - inside, the way to its guardian needs a tool found in an earlier one;
-  - the guardian drops a key.  UNLOCK the door behind it, then UNLOCK and
-    OPEN the chest there: it holds this dungeon's piece.
-The tools lie where the old game kept them: most in a cellar down a block
-stair (PUSH BLOCK, then DOWN), the boomerangs with the goriyas who carry
-them.  Carry what you need in hand, worn or in a bag (not the stash).
+The dungeons are done in order, and each works the same way:
+  - Entering needs the previous dungeon's Triforce piece.
+  - The guardian's chamber needs a tool found in an earlier dungeon.
+  - The guardian gives a key to every player it credits: the killer,
+    their group in the room, and anyone in the room who struck it.
+  - The key opens the door behind the guardian and the chest there.
+    Taking the piece spends it; the chest keeps a piece for the rest of
+    the party.  Keys are lost at QUIT.
+  - Pieces and tools cannot be dropped, given or sold.  Most tools lie in
+    a cellar down a block stair (PUSH BLOCK, then DOWN), and each player
+    who takes one gets a copy of their own.
+  - COMBINE TRIFORCE joins all nine.
 
-The Levels column is the character levels each dungeon is built for.
+Once you hold the Recorder, PLAY RECORDER on the open land carries you to
+a dungeon's door.  The Oracle knows every path: PRAY and ask her.
 
-  Level  Levels  To enter     Before the guardian   Tools found inside
-  1      2-8     --           --                    boomerang, bow
-  2      8-14    piece 1      a boomerang           Magical Boomerang
-  3      14-20   piece 2      Mag. Boomerang        raft
-  4      20-27   piece 3+raft the raft              stepladder
-  5      27-33   piece 4      the stepladder        Recorder
-  6      33-40   piece 5      the bow               Magical Rod
-  7      40-46   piece 6      the Recorder          Red Candle
-  8      46-52   piece 7      the Red Candle        Magic Book, Magical Key
-  9      53-59   pieces 1-8   the Magical Key       Silver Arrow, Red Ring
-Ganon's chest holds the final piece and the Master Sword.  Digdogger, Level
-5's guardian, cannot be hurt until the Recorder is played at it.
+See also: 'HYRULE ORDER', 'HYRULE GUARDIANS', 'HYRULE ITEMS', GANON
+~
 
-Where they are, from The First Quest Begins where the cabinet sets you down:
+0 'HYRULE ORDER' 'HYRULE LEVELS'~
+  Level  For levels  To enter      Before the guardian  Tools found inside
+  1      2-8         --            --                   boomerang, bow
+  2      8-14        piece 1       a boomerang          Magical Boomerang
+  3      14-20       piece 2       Magical Boomerang    raft
+  4      20-27       piece 3+raft  the raft             stepladder
+  5      27-33       piece 4       the stepladder       Recorder
+  6      33-40       piece 5       the bow              Magical Rod
+  7      40-46       piece 6       the Recorder         Red Candle
+  8      46-52       piece 7       the Red Candle       Magic Book,
+                                                        Magical Key
+  9      53-59       pieces 1-8    the Magical Key      Silver Arrow,
+                                                        Red Ring
+
+From The First Quest Begins, where the cabinet sets you down; each
+entrance is DOWN from its screen:
   1  north up the I column to the River Landing, stepping stones west
   2  east to Moblin Hollow, north, west to the Eastern Dock, then north
   3  west through the woods to the Bramble Wood, south, then east
   4  Shore Below the Snake, plank bridge north, ENTER RAFT
-  5  north-east: the Lost Hills, west of Lone Armos Ridge -- north 4 times
+  5  north-east: the Lost Hills, west of Lone Armos Ridge, north 4 times
   6  far north-west, past the Lost Woods (north, west, south, west), the
      graveyard and Ghost Hill
   7  the Still Pond in the west: PLAY RECORDER to drain it
   8  the Lion's Thicket in the east: BURN BUSH
   9  Spectacle Rock: up the Mountain Stair, west twice, BOMB CRACKED
-Each entrance is DOWN from its screen.
 
-Nothing in Hyrule attacks first, and its creatures are a fair fight for
-the levels above: the land around each dungeon is graded for that dungeon.
-Each guardian is a hard fight for its band: an ordinary character at the
-top of the band loses alone.  Ask Hermie for her buffs first (BUFF EMPOWER,
-BUFF TITANIC, BUFF DEFENSE, BUFF COMBAT) and one can win alone, though it
-is close; a group does better.  The last two are group fights: the
-ashen Gleeok of Level 8 is sized for two players, and Ganon for three.
-One may try, but should expect to lose.  Gohma's eye
-closes against every finishing blow but an arrow: carry the bow.  A
-guardian carries its weapon and Heart Guard, and drops
-three more pieces from a table with one for every other slot, each the
-best in the game for its band, for fighters and casters alike.  Enemies
-near a cracked wall sometimes leave a bomb.
+Leaving a dungeon you have won, an owl tells you where the next one is.
 
-A lost piece or treasure comes back from the same chest after the next
-reset, when the guardian has a new key.  Pieces cannot
-be dropped, given or sold.  COMBINE TRIFORCE joins all nine.  Each dungeon's
-map and compass show you the way (HYRULE ITEMS).
+See also: HYRULE, 'HYRULE GUARDIANS'
+~
 
-Coming out of a dungeon you have won, by its returning light, an owl tells
-you where the next one is.  Once you hold the Recorder, PLAY RECORDER (or
-BLOW RECORDER) on the open land carries you to any dungeon you have won
-and to the one you are working on; PLAY RECORDER <level> picks one.  The
-Oracle knows every path in Hyrule: PRAY, and ask her the way.
+0 'HYRULE GUARDIANS'~
+Nothing in Hyrule attacks first, and the land around each dungeon is
+graded for it.  Each guardian is a hard fight for its band: an ordinary
+character at the top of the band loses alone.  With Hermie's buffs (BUFF
+EMPOWER, BUFF DEFENSE, BUFF COMBAT) one can win alone, narrowly; a group
+does better.
 
-See also: GANON, COMBINE, RECALL, HYRULE ITEMS, HYRULE SECRETS, HEARTS
+  - The ashen Gleeok of Level 8 is sized for two players, Ganon for
+    three.  One may try, and should expect to lose.
+  - The guardians of Levels 7 to 9 heal when left alone.
+  - Gohma's eye closes against every finishing blow but an arrow: carry
+    the bow.
+  - A digdogger, Level 5's guardian among them, cannot be hurt until the
+    Recorder is played at it.
+  - The first eight guardians carry a weapon, a Heart Guard and a Heart
+    Container.  Every guardian also drops three pieces from its own table
+    of ten or eleven, each the best a character of its band can find.
+
+See also: HYRULE, GANON, BUFF, HEARTS
 ~
 
 0 GANON RELICS 'MASTER SWORD' TRIFORCE 'RED RING'~
-Ganon is a fight for a group of three; fewer can try, but should expect
-to lose.  He blinks about the dark hurling fireballs that no parry stops,
-and his wounds close if he is left alone.  He can be wounded normally,
-but at one hit point he flashes red, becomes stunned, and
-can only be finished by a level 54 or higher character wielding the Silver
-Arrow and typing SHOOT GANON.  The Silver Arrow lies in one of Death
+Ganon, at the end of Death Mountain, is a fight for three; fewer may try,
+but should expect to lose.  He blinks about the dark hurling fireballs no
+parry stops, and heals if left alone.  At one hit point he flashes red and
+is stunned, and only a level 54 or higher character wielding the Silver
+Arrow can finish him: SHOOT GANON.  The Silver Arrow lies in one of Death
 Mountain's cellars; a group does best with two.
 
-The Red Ring of Hyrule (level 58) lies in Death Mountain's other cellar.
-Worn, it gives sanctuary and takes a fifth off all damage you take.
+  - Each player his death credits gets the Golden Key.  It opens Zelda's
+    chamber and the great chest there: the last Triforce piece and the
+    Master Sword (level 58), the finest blade a mortal can carry, which
+    hastens its wielder.
+  - He carries his crown and trident, and leaves three pieces of his drop
+    table and one relic:
+      Hero's Tunic (54)    heals you when you kill a creature yourself
+      Pegasus Boots (55)   walking costs a quarter fewer moves
+      Mirror Shield (56)   15% less damage from anything but blows
+  - The Red Ring (level 58, Death Mountain's other cellar) gives sanctuary
+    and takes a fifth off all damage, the Blue Ring (level 45, from the
+    ring shop) a tenth.  One of each may be worn: 28% together.
+  - COMBINE TRIFORCE, with all nine pieces, makes The Triforce (level 58).
+    Worn as your light, it gives the sight of a level 59 HOLYLIGHT and
+    counts as every piece at every door.
 
-Ganon carries the Golden Key, his crown and his trident, and leaves one
-random relic:
+EXAMINE a relic for its exact limits; COMPARE understands them.
 
-  Hero's Tunic, level 54 - heals after personally killing an NPC
-  Pegasus Boots, level 55 - walking on foot costs 25 percent fewer moves
-  Mirror Shield, level 56 - reduces nonphysical damage by 15 percent
-
-The Blue Ring of Hyrule (level 45, from the ring shop) takes a tenth off all
-damage.  The Red and Blue Rings stack -- 28 percent worn together -- but only
-one of each may be worn.  The Mirror Shield adds its own ward on top.  EXAMINE
-each relic for its exact limits, and COMPARE understands these special effects.
-
-The Golden Key opens Zelda's chamber and Ganon's great chest in it, which
-holds the ninth piece, the final Triforce piece, and the Master Sword (level
-58): the finest blade a mortal can carry, which hastens its wielder.
-
-With all nine pieces, COMBINE TRIFORCE makes The Triforce itself (level
-58).  WEAR it and it takes your light slot, and you see what a level 59
-hero with HOLYLIGHT would see: the invisible, the hidden and the dark --
-but not gods hidden above that.  It counts as every piece at every door.
-
-See also: HYRULE, SHOOT, COMBINE, COMPARE, EXAMINE
+See also: 'HYRULE GUARDIANS', SHOOT, COMBINE, COMPARE
 ~
 
 0 JUNK~
 Syntax: junk <object>
 
-JUNK destroys an unwanted object from your inventory, permanently removing
-it from the game.  Once junked, an item cannot be recovered.  Use JUNK to
-clear inventory space without dropping items on the ground.
+JUNK is another name for SACRIFICE.  It works only on an object lying on
+the ground here, never on one you carry: DROP it first.  The gods pay a
+few copper coins for it.
 
 See also: SACRIFICE, DROP, DONATE
 ~
 
-0 BLINDING~
-Syntax: blinding <victim>
-
-A precision strike or magical technique aimed directly at an enemy's eyes.
-On a failed save the target is blinded, suffering significant penalties to
-hit chance and losing the ability to see room descriptions or other
-characters clearly.  The blindness lasts for a limited duration and can be
-cured by spells or natural recovery.
-
-See also: DIRT, CONFUSE, STUNNING
-~
-
-
-
 0 "HEROIC GRIP" HEROICGRIP HEROIC GRIP~
-Syntax: (passive -- there is nothing to type)
+Syntax: (passive; nothing to type)
 
-Warrior/warrior only.  Available from level 35.
+Each time someone tries to disarm you, or anything knocks your weapon
+loose, heroic grip is a chance you keep hold of it; fully practised, you
+cannot be disarmed.  It covers both hands.  It does nothing to the weapon:
+REMOVE and WIELD work as ever, unlike BEWITCH WEAPON.
 
-A warrior who has spent their whole career with a weapon in hand learns
-to keep it there.  Heroic grip is a chance, every time somebody tries to
-disarm you, that the weapon simply does not leave your hand.  When you are
-fully practiced in it, you cannot be disarmed.
+Warriors of the warriors' guild only, from level 35; every one already
+holds it.  A guildmaster raises it quickly: Vladamir the veteran teaches
+it, and Dolonar the blacksmith and Breark the troll practise it.  Past
+that it is earned in fights: each grab at your weapon can improve it.
 
   You wrench at Karg's weapon, but he grips it like iron!
 
-This is nothing like BEWITCH WEAPON, and it is worth knowing the
-difference.  Bewitch curses the weapon so it cannot be removed at all --
-by anyone, including you, until the curse is lifted.  Heroic grip does
-nothing to the weapon.  You are just holding on.  REMOVE and WIELD work
-exactly as they always did, and you can change weapons mid-fight.
-
-It works only for you.  There is no way to put it on a weapon, on a
-follower, or on anyone else, and it does not stack with anything.
-
-Dual wielding is covered.  Nothing in the world reaches for your off hand,
-and the grip answers for the hand that anything does reach for -- including
-creatures that knock a weapon loose without calling it a disarm.
-
-Raising it:
-
-  A guildmaster will take you a good way, and quickly -- further per
-  session than most skills.
-
-  Past that point there is nothing left to teach.  The rest is earned in
-  a fight, by having your weapon grabbed at and keeping hold of it, and
-  it is a long road.  Every attempt against you is a chance to improve,
-  whether you keep the weapon or lose it.
-
-Who trains it:
-
-  Vladamir the veteran   -- the warrior guild's own master, and the only
-                            one who will teach it to you in the first place
-  Dolonar the blacksmith -- practice
-  Breark the troll       -- practice
-
-Every warrior/warrior already has heroic grip, including characters made
-before it existed.  You do not need to go and find it; you need to go and
-practice it.
-
-See also: DISARM, BEWITCH WEAPON, PRACTICE, PRACTICELIST, GAIN
+See also: DISARM, BEWITCH WEAPON, PRACTICE
 ~
 
 0 DOORBASH 'DOOR BASH'~
@@ -2012,49 +1519,24 @@ See also: PICK, UNLOCK, BASH
 
 
 0 HIT~
-Syntax: hit <victim>
+Syntax: hit <character>
 
-HIT is an alias for the KILL command and starts or continues combat
-against the chosen target.  Use it when you prefer not to type "kill".
-HIT does not carry the additional PK logging that MURDER does.
+HIT is KILL under another name: it starts a fight with a creature.  Both
+refuse players; use MURDER for those.
 
-See also: KILL, MURDER, BACKSTAB
+See also: KILL, MURDER, FLEE
 ~
 
 0 MURDER MURDE~
-Syntax: murder <victim>
-Syntax: murde <victim>
+Syntax: murder <character>
 
-MURDER (and its abbreviation MURDE) explicitly flags your action as a
-hostile assault against a player character.  Unlike HIT or KILL, MURDER
-is always logged and counts as a pk-flagged attack.  Against mobs it
-functions identically to KILL.  Use with care in populated areas.
+Attacks a player; KILL refuses players.  Your victim yells for help, and
+every MURDER is logged.  It works on creatures too.  Read PKILL and RULES
+before you use it.
 
-See also: HIT, KILL, PKILL
-~
+MURDE, or MUR, only tells you to type MURDER in full.
 
-0 NERVE~
-Syntax: nerve <victim>
-
-Strike a precise nerve cluster to temporarily cripple an opponent.  On a
-successful hit the target suffers reduced movement or attack speed,
-slowing their ability to act in combat.  The technique requires hand-to-
-hand training or knowledge of anatomy; the higher your skill the more
-effective and longer-lasting the effect.
-
-See also: KICK, TRIP, BASH
-~
-
-0 STUNNING~
-Syntax: stunning <victim>
-
-A focused blow or magical technique designed to leave a target senseless.
-On a failed save the victim is stunned: they cannot act, lose their
-dexterity bonus, and are easier to hit for the duration.  The chance to
-land and the stun length both improve with your skill level and the
-victim's current condition.
-
-See also: BASH, SMITE, BLINDING
+See also: KILL, PKILL, RULES
 ~
 
 0 DEATHTRAP DEATHTRAPS 'DEATH TRAP' 'DEATH TRAPS' DT~
@@ -2074,100 +1556,82 @@ and a recall point cannot be set in one.  Immortals are not harmed.
 See also: DEATH, CORPSE, WALKTO, RECALL
 ~
 
-0 AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS DAILY DAILIES~
-Syntax: aquest <info|points|time|gamble>          anywhere
-Syntax: aquest <request|complete|list|buy|abort>  at a questmaster
-Syntax: aquest daily [request|buy practice|buy train [n]]
+0 AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS~
+Syntax: aquest info | points | time | gamble <yes|no>    anywhere
+        aquest request | complete | list | buy | abort    at a questmaster
+        aquest daily ...                                  see DAILY
 
-Every subcommand may be abbreviated to its first letter, and AQUEST on its
-own prints the list.  Checking on yourself works wherever you are standing;
-the rest is business with the questmaster and needs one in the room.
+The questmaster sends you to kill a creature or recover an item.  Each
+subcommand may be cut to its first letter; AQUEST alone lists them.
 
-AQUEST INFO shows the active objective and time remaining, or your cooldown,
-quest points, pending gamble, and win streak, and when your next daily may
-be taken and why not yet.  On a quest it says what AQUEST ABORT would cost.
-A pending gamble must be settled before any quest, ordinary or daily.  The
-cooldown runs while you are logged out too. Suitable targets are selected
-from live, level-appropriate mobiles in rooms your character may enter.
+  - Targets are creatures no higher than your level, in places you may
+    go; never in Hyrule or the training yard.  Your group in the room at
+    the kill shares the credit, and a pet's kill counts.
+  - A recovery item is bound to you and vanishes when the quest ends.
+  - Completed quests may be turned in to any questmaster for coin and a
+    pending quest-point reward.  AQUEST GAMBLE YES then risks it on an
+    even chance of double; NO keeps it.  Settle it before your next quest.
+  - Most quests allow 10 to 30 minutes.  About one in five is a RUSH (5
+    to 8 minutes, double points), one in twenty an EMERGENCY (5 minutes,
+    five times the points); never both.
+  - Quests in a row build a streak bonus, up to 300% more points.
+    Aborting, timing out or quitting on a quest ends it.
+  - The wait between quests runs while you are logged out too.
 
-Every level may quest, immortals included. A target is never above your
-own level, so above the mortal cap that ceiling stops binding and the
-whole world is fair game.
+AQUEST INFO shows your quest or wait, points, gamble and streak, and what
+ABORT would cost.  AQUEST LIST and BUY are the questmaster's shop.
 
-Kill credit includes eligible group members present with the final attacker,
-including kills finished by a controlled pet. Recovery items are bound to the
-assigned player, may be carried inside a container, and disappear when the
-quest ends. Completed quests may be turned in to any questmaster for gold and
-a pending quest-point reward.
+See also: DAILY, TOPTEN, RESTED, 'SCROLL OF FARSLAY'
+~
 
-Resolve that reward with AQUEST GAMBLE YES for a 50% double-or-nothing chance,
-or AQUEST GAMBLE NO to collect it safely.
+0 DAILY DAILIES~
+Syntax: aquest daily                   your dailies, streak and points
+        aquest daily request           at a questmaster
+        aquest daily buy train [n]     160 daily points a train
+        aquest daily buy practice [n]  16 daily points a practice
 
-CONTRACTS
-  Most quests allow 10 to 30 minutes. About one in five is a RUSH CONTRACT:
-  5 to 8 minutes for double the base point reward. About one in twenty is an
-  EMERGENCY CONTRACT: five minutes flat for five times the base reward. A
-  quest is one or the other, never both.
+Three daily quests a day: the same kind of target, thirty minutes each,
+never a rush or emergency.  Each pays coin and 1 daily point, and all
+three in one day pay 1 more.  Days in a row with all three done are your
+daily streak; a full day then pays 1 extra from 7 days, 2 from 14, 3 from
+30 and 4 from 100.  A month of every daily buys about one train.
 
-STREAKS
-  Consecutive completions add a point bonus that keeps growing: 10% for each
-  of the first five, then 5% each to fifteen, 3% each to thirty, 2% each to
-  fifty, and 1% each after that, to a ceiling of 300%. Aborting, timing out,
-  or quitting during an active quest breaks the streak and loses all of it.
+  - Daily points are not quest points.
+  - A daily never touches your quest streak or the wait between quests.
+  - Giving one up, by abandoning it or leaving the game, means ten
+    minutes before the next.
+  - The day turns over at midnight UTC.
 
-DAILY QUESTS
-  AQUEST DAILY REQUEST, at a questmaster, gives one of the day's three daily
-  quests: the same kind of target, thirty minutes to do it, no rush and no
-  emergency. Each pays coin and 1 daily point, and finishing all three in a
-  day pays 1 more. Days in a row with all three done are your daily streak,
-  and a full day pays more as it grows: 1 extra from 7 days, 2 from 14, 3
-  from 30 and 4 from 100. Daily points are not quest points: AQUEST DAILY
-  BUY TRAIN spends 160 for a train -- a month of every daily -- and AQUEST
-  DAILY BUY PRACTICE 16 for a practice; a count after either buys several.
-  A daily never touches your quest streak or your cooldown; giving one up,
-  by abandoning it or leaving the game, means ten minutes before the next
-  daily. The day turns over at midnight UTC; AQUEST DAILY shows how many
-  you have done, your streak and your points.
-
-See also: QUEST, TOPTEN, RESTED
+See also: AQUEST
 ~
 
 0 TOPTEN~
 Syntax: topten
 
-Displays the current leaderboard of notable characters ranked by pkill
-score, quest points, or other tracked statistics depending on the current
-season or game mode.  Use it to see how you compare with other players
-and to identify top-ranked targets or allies.
+Lists the leading player killers: how many times each was killed by a
+player, how many players each killed, and the difference, which orders
+the list.
 
-See also: AQUEST, SCORE
+See also: PKILL, MURDER
 ~
 
 
 0 SHOVE~
 Syntax: shove <character> <direction>
 
-Push a target out of the room through an exit you name: SHOVE GUARD
-SOUTH, or any start of the direction's name (S, SO, NE).
+Pushes someone out of the room through the exit you name, to split one
+creature from a pack.  Any start of the direction works: SHOVE GUARD S.
 
-This skill is mainly used to separate one monster from a whole pack of
-monsters, enabling you to attack a single mob rather than all of them at
-once. Factors that affect your success are: Strength, Level, Size, Skill,
-and position of the victim.  Shoving something around is rather annoying,
-and on occasion, the victim will attack.  The chance is greater if the
-victim is of higher level than the shover.
+  - Your strength, size, level and skill against theirs decide it.
+  - Not someone fighting, an aggressive creature, a servant, or any of
+    Hyrule's creatures; not through a closed door, into the air or water
+    they cannot cross, or into a room they may not enter.
+  - It takes a moment.  A failed shove now and then provokes an attack,
+    more often from a foe above your level.
 
-Each attempt takes a moment, as any skill does.  Aggressive monsters, and
-Hyrule's enemies and guardians, cannot be shoved: a dungeon's shutters open
-for foes beaten, not foes pushed into the next room.
-
-The minimum level to use this skill depends on your primary class and is:
-
-Mage:16  Cleric:15  Thief:13  Warrior:10  Monk:11  Necromancer:16
-
-Number of trains required is 1 for W/* and Monk and 2 for all others.
-
-Trainer: Rakar (any), Jazair (any)
+Usable from level: Mage 16, Cleric 15, Thief 13, Warrior 10, Monk 11,
+Necromancer 16.  Trains: 1 for warriors and monks, 2 for others.
+Trainers: Rakar and Jazair.
 
 See also: BASH, TRIP, KICK
 ~
@@ -2210,54 +1674,33 @@ See also: IMMTALK, WIZINFO
 ~
 
 0 ALIAS ALIASES UNALIAS~
-Syntax:
-alias <word> <command as a string>     (sets the alias)
-alias delete <alias to delete>         (deletes an alias)
-alias <word>                           (shows an alias)
-unalias <alias>                        (same as alias delete)
+Syntax: alias                     list your aliases
+        alias <word>              show one
+        alias <word> <commands>   set it
+        alias delete <word>       remove it
+        unalias <alias>           the same
 
-e.g.: alias mm cast 'magic missile'
-      alias delete mm
+An alias is a word that types commands for you.  You may keep 20, each of
+up to 10 commands separated by semicolons.  They run one at a time as if
+typed, so lag from one delays the next, and anything typed after the
+alias goes on the end of its last command.
 
-To see all the aliases you have, type alias and to see a specific alias
-type: alias <alias name>.
+  alias mm cast 'magic missile'
+  alias kb kill;bash
+  kb orc                       kill, then bash orc
 
-There is a max of 20 aliases per character.
-
-An alias may hold up to 10 commands separated by semicolons.  They run in
-order, one at a time, exactly as if you had typed them: a command that
-leaves you waiting (a bash, a spell) makes the next one wait too.
-Whatever you type after the alias goes on the end of its last command.
-
-e.g.: alias prep wear all;get all corpse;sacrifice corpse
-      alias kb kill;bash
-      kb orc                  (kill, then bash orc)
-
-You can also type several commands on one line, separated by semicolons,
-in any client: n;kill orc.  They run one at a time, as an alias's do.
-A line that sets an alias is the exception: it is taken whole, so
-alias prep wear all;get all corpse stores both commands.
-
-Write \; for a semicolon that belongs inside a command rather than
-between two.  The browser client sends what you type whole, as any other
-client does, so an alias is typed the same way there.
-
-An alias cannot run another alias: a command that comes out of an alias
-is run as written, even if it has an alias's name.  If one of its
-commands shows you more than a screen, the next command ends the paging
-just as typing it would.  Typing ! repeats the alias, not its last
+Any line may chain commands with semicolons: n;kill orc.  Write \; for a
+semicolon inside a command.  A line that sets an alias is taken whole.
+An alias never runs another alias, and ! repeats the alias, not its last
 command.
 
-See also: COMMANDS, HELP
+See also: COMMANDS, !
 ~
 
 0 'HUNTING GROUNDS' 'WHERE TO HUNT' GROUNDS~
-Where ordinary foes gather in numbers, by level, and where the danger
-starts.  WALKTO <area> walks you there; AREAS has every area's range.
-These are rough bands for a first life alone, not promises: a group, a
-remort or good gear moves them, and a foe ten levels below you pays
-little.  What you slay moves your alignment (see ALIGNMENT): slaying the
-good darkens you, slaying the evil brightens you.
+Where ordinary foes gather in numbers, for a first life alone; a group, a
+remort or good gear moves the bands.  WALKTO <area> walks you there.
+Slaying the good darkens your alignment, slaying the evil brightens it.
 
   Levels  Area                 Ordinary foes          Keep clear of
   8-14    Dwarven Catacombs    templar pages,         templars and their
@@ -2287,10 +1730,10 @@ good darkens you, slaying the evil brightens you.
                                pirates, swashbucklers sight
                                (evil)
 
-A named creature in its own lair is a boss, not a hunting loop: it is
-meant to take a group.  CONSIDER tells you how a foe measures up.
+A named creature in its own lair is a boss, meant for a group.  CONSIDER
+tells you how a foe measures up.
 
-See also: WALKTO, AREAS, ALIGNMENT, CONSIDER, 'RESTED'
+See also: WALKTO, AREAS, ALIGNMENT, CONSIDER
 ~
 
 0 AREAS WORLD CITIES~
@@ -2358,8 +1801,8 @@ See also: AUTO, AUTOGOLD, AUTOSAC
 0 AUTOGOLD~
 Syntax: autogold
 
-Toggle automatic currency collection.  When on without AUTOLOOT, all money is
-automatically taken from mobiles you kill.  Other objects remain in the corpse.
+Turns automatic coin taking on or off.  With it on and AUTOLOOT off, you
+take the coins from creatures you kill and leave the rest in the corpse.
 
 See also: AUTO, AUTOLOOT, AUTOSPLIT
 ~
@@ -2454,15 +1897,12 @@ See also: BRANDISH, RECITE, HOLD
 5 TEACHLIST~
 Syntax: teachlist
 
-TEACHLIST shows a list of guildmasters and what they can teach you for
-skills and spells.  Each entry shows the trainer, their location, and the
-skill or spell they offer.  Some skills require that you first gain the
-group they belong to before you can practice them.
+Lists each guildmaster your class and guild may use, and the skills and
+spells you already know that each can practise you in.  PRACTICELIST is
+the same with your percentages; GAINLIST shows what you can still learn,
+who sells it and where they stand.
 
-Use GAINLIST to see which skill groups are available for purchase, and
-PRACTICE to improve skills once you have learned them.
-
-See also: GAINLIST, GAIN, PRACTICE, TRAIN
+See also: PRACTICELIST, GAINLIST, PRACTICE, GAIN
 ~
 
 69 BUILDING OLC~
@@ -3083,11 +2523,12 @@ See also: BUY, SELL, VALUE
 0 SELL~
 Syntax: sell <object>
 
-SELL offers an object to a shopkeeper in exchange for gold.  The price is
-shown before the transaction completes.  The shopkeeper may refuse items
-they do not buy; use VALUE to check first.
+Sells an item to the shopkeeper here.  The sale happens at once, with no
+confirmation: ask VALUE first to hear the price.  Keepers refuse what they
+do not trade in and anything on a timer, and pay less for a broken piece.
+The HAGGLE skill can raise the price.
 
-See also: BUY, VALUE, LIST
+See also: VALUE, BUY, LIST, REPAIR
 ~
 
 0 VALUE~
@@ -3100,66 +2541,54 @@ See also: SELL, BUY, LIST
 ~
 
 0 CAST~
-Syntax: cast <spell> <target>
+Syntax: cast <spell> [target]
 
-Before you can cast a spell, you have to practice it.  The more you practice,
-the higher chance you have of success when casting.  Casting spells costs mana.
-The mana cost decreases as your level increases.
+Casts a spell you know, for its mana.  The better you know it, the more
+often it works.  Many spells pick a sensible target, such as your foe in
+a fight.  A victim of an offensive spell usually gets a saving throw,
+which weakens or stops it.
 
-The <target> is optional.  Many spells which need targets will use an
-appropriate default target, especially during combat.
+  - No quotes needed: the longest run of words that names a spell is the
+    spell, and the rest is the target.  CAST CURE LIGHT DWARF heals the
+    dwarf; CAST 'CURE LIGHT' DWARF works too.
+  - Names may be shortened a word at a time (CAST CU LI), and a short
+    name finds a spell you know first.
+  - A slip in a name you started right is read as that spell, and a name
+    the game cannot place gets the nearest of your spells suggested.
 
-A spell name of more than one word needs no quotes: cast cure critic frag
-works, and so does cast 'cure critic' frag if you prefer them.  The longest
-run of words that names a spell is taken as the spell, and whatever is left
-is the target, so cast cure light dwarf finds cure light and heals the
-dwarf.  You can abbreviate the spell name, a word at a time if you like
-(cast cu li, cast mag mis), and an abbreviation finds a spell you know
-before one you do not.  A slip in the rest of a name you have started
-right is read as that spell (cast cure lgiht), and a name the game cannot
-place gets the spells of yours it is nearest to.
-
-When you cast an offensive spell, the victim usually gets a saving throw.
-The effect of the spell is reduced or eliminated if the victim makes the
-saving throw successfully.
-
-See also: SPELLGROUP, SPELLS, GAIN
+See also: SPELLS, GROUPS, GAIN, PRACTICE
 ~
 
 0 BOMB BURN FEED PLAY BLOW~
-Syntax: bomb <cracked surface|creature>
-        burn <bush|creature>
-        feed <guardian>
-        feed bait
-        play <instrument> [level]
-        blow <instrument> [level]
+Syntax: bomb <cracked surface | creature>
+        burn <bush | creature>
+        feed <goriya> | feed bait
+        play <instrument> [level]     (or BLOW)
 
-Hyrule's hidden ways open only to the act the NES asked for, with the tool
-in hand; OPEN, PICK, DOORBASH and UNLOCK will not shift them.
+Hyrule's hidden ways open only to the right act with the right tool in
+hand; OPEN, PICK, DOORBASH and UNLOCK will not shift them.
 
-BOMB uses up one of your bombs (the arrow shops sell four for 20 gold),
-carried anywhere in your bags but not in your stash.  At a cracked wall or
-rock it opens the way, and a surface that will not open costs no bomb.  At
-a creature -- anywhere, not only in Hyrule -- it is a blast of fire with
-three seconds of lag, and Dodongo swallows one whole and loses half his
-health.
-BURN needs a lit candle in your light slot, and does not use it up: a bush
-burns away to show what it hid, and a creature takes a lick of flame.  The
-Blue Candle burns a creature once in each room, the Red Candle as often as
-you like and hotter; a gibdo takes double.
-PLAY (or BLOW) needs the Recorder itself: it drains Level 7's lake and
-shrinks a Digdogger to a third of its health -- where a puzzle wants the
-tune, the puzzle always gets it.  Anywhere else on the open land it calls a
-whirlwind to a dungeon's door: any dungeon whose Triforce piece you carry,
-and the one you are working on next.  PLAY RECORDER goes to the next of
-those in turn; PLAY RECORDER <level> goes straight to that one.
-FEED gives bait to the hungry Goriya, who eats it.  FEED BAIT anywhere else
-sets it down: the room's enemies forget you and turn to the smell for a
-while, and you keep the bait.  A guardian is not fooled.
-PUSH moves an Armos, a gravestone or a block; the warp stones also need the
-Power Bracelet.
+  BOMB  uses one bomb you carry (not in your stash; the arrow shops sell
+        four for 20 gold).  It opens a cracked wall or rock; a surface
+        that will not open costs nothing.  At a creature, anywhere, it is
+        a blast of fire with three seconds of lag; Dodongo swallows one
+        and loses half his health.
+  BURN  needs a lit candle as your light and does not use it up.  A bush
+        burns away to show what it hid; a creature takes a lick of flame.
+        The Blue Candle burns a creature once a room, the Red as often as
+        you like and hotter.
+  PLAY (or BLOW) needs the Recorder.  It drains Level 7's lake and
+        shrinks a digdogger.  Elsewhere on the open land it calls a
+        whirlwind to the door of any dungeon whose piece you carry, or the
+        next you need: PLAY RECORDER <level> picks one.
+  FEED  gives bait to the hungry Goriya.  FEED BAIT anywhere else sets it
+        down: the room's enemies turn to the smell for a while, and you
+        keep the bait.  Guardians are not fooled.
 
-See also: HYRULE ITEMS, HYRULE SECRETS, PUSH, SHOOT, LOOK
+PUSH moves an Armos, a gravestone or a block; the warp stones also need
+the Power Bracelet.
+
+See also: 'HYRULE ITEMS', 'HYRULE SECRETS', PUSH, SHOOT
 ~
 
 0 GAMBLE~
@@ -3195,71 +2624,66 @@ See also: HYRULE SECRETS, HYRULE ITEMS
 ~
 
 0 'HYRULE SECRETS' 'TAKE ANY' 'MONEY CAVE' 'DOOR REPAIR'~
-Hyrule's caves keep the NES's rules, and what pays out once pays each
+Hyrule's caves keep the old game's rules, and what pays once pays each
 character once, for good:
 
   Money caves (14)    "It's a secret to everybody": the moblin pays 10, 30
-                      or 100 gold as you first walk in, and never again.
+                      or 100 gold the first time you walk in.
   Door repairs (9)    "Pay me for the door repair charge": 20 gold, once.
   Money games (5)     GAMBLE LEFT, MIDDLE or RIGHT.  See GAMBLE.
-  Take any one (4)    A Heart Container or a red potion.  Take one, and the
-                      other is refused; the Heart Container is a heart.
+  Take any one (4)    A Heart Container or a red potion: take one, and the
+                      other is refused.
   The dock heart      A Heart Container on a dock, reached by stepladder.
   White Sword         5 hearts.  Magical Sword: 12 hearts.  See HEARTS.
-  Hint caves          Two old women sell hints: GIVE them gold coins (one takes
-                      10, 30 or 50, the other 5, 10 or 20).  Two old men
-                      give theirs free.
+  Hint caves          Two old women sell hints: GIVE them gold coins (one
+                      takes 10, 30 or 50, the other 5, 10 or 20).  Two old
+                      men give theirs free.
   Bomb bags           The old men of Levels 5 and 7 each sell room for four
                       more bombs, 100 gold: BUY BAG.
   Potion shops        The old woman sells only to someone carrying Princess
                       Zelda's Letter, from the old man in the north-east.
   Fountains           The great fairies restore anyone not fighting.
 
-The swords, the Letter and the Power Bracelet are given one at a time: lose
-yours and the cave will give you another.
+The swords, the Letter and the Power Bracelet are given one at a time:
+lose yours and the cave gives you another.
 
-See also: HEARTS, GAMBLE, HYRULE ITEMS, HYRULE
+See also: HEARTS, GAMBLE, 'HYRULE ITEMS', HYRULE
 ~
 
 0 'HYRULE ITEMS' 'DUNGEON MAP' COMPASS 'BLUE RING' 'MAGICAL SHIELD'~
-What Hyrule's tools do:
+What Hyrule's things do:
 
-  Dungeon map     LOOK or READ it: the dungeon's floor plan, @ where you
-                  stand, the guardian's chamber, the Triforce chest, and
-                  what the guardian's door needs.
-  Compass         Inside its dungeon: the first step toward the Triforce
+  Dungeon map     LOOK or READ it: the floor plan, @ where you stand, the
+                  guardian's chamber, the Triforce chest, and what the
+                  guardian's door needs.
+  Compass         In its own dungeon: the first step toward the Triforce
                   chest, and how many rooms away it and the guardian are.
-  Bombs           BOMB a cracked wall, or an enemy.  Each uses one.
-  Bow + arrows    Wield the bow, carry a quiver: SHOOT an enemy in the room.
-                  Each arrow costs a gold coin; no Archery needed.  An arrow
-                  kills a pols voice outright, and only an arrow finishes
-                  Gohma.
-  Boomerangs      Wield one and SHOOT: it stuns an enemy out of the fight
-                  until struck again, and kills a keese or a gel outright.
-  Candles         A light; BURN a bush or an enemy.  The Blue Candle
-                  flares once a room; the Red burns hotter, at will.
+  Bombs           BOMB a cracked wall or an enemy; each uses one.
+  Bow + arrows    Wield the bow and carry a quiver: SHOOT an enemy in the
+                  room.  Each arrow costs a gold coin.  An arrow kills a
+                  pols voice outright, and only an arrow finishes Gohma.
+  Boomerangs      Wield one and SHOOT: it stuns an enemy until struck
+                  again, and kills a keese or a gel outright.
+  Candles         A light; BURN a bush or an enemy.
   Bait            FEED a hungry Goriya, or FEED BAIT to calm a room.
-  Recorder        PLAY it.  It shrinks every digdogger in the room, once;
-                  Level 7's cannot be hurt until it has.  See BOMB.
-  Magical Rod     ZAP it; it never runs dry.  With the Magic Book carried,
-                  its blast bursts into flame as well.
+  Recorder        PLAY it: every digdogger in the room shrinks, once.
+  Magical Rod     ZAP it; it never runs dry, and with the Magic Book
+                  carried its blast also burns.
   Potions         The red 2nd Potion heals twice and turns blue; the blue
                   Life Potion heals twice.
   Small keys      Each opens one locked door, and keeps through a quit.
                   The Magical Key opens them all and is never used up.
-  Blue Ring       The Blue Ring of Hyrule (level 45) takes a tenth off
-                  every blow; it stacks with the Red Ring, one of each.
-  Magical Shield  Takes a tenth off fire and magic (not with the Mirror
-                  Shield, which does more).
+  Blue Ring       Takes a tenth off every blow (level 45).
+  Magical Shield  Takes a tenth off fire and magic, but not with the
+                  Mirror Shield, which does more.
   Power Bracelet  Strength while worn, and it moves the warp stones.
-  Raft            ENTER RAFT to the Isle of the Snake, and the crossing
-                  from Lake Hylia's Eastern Dock to the Lonely Isle.
+  Raft            ENTER RAFT to the Isle of the Snake, and from the Eastern
+                  Dock of Lake Hylia to the Lonely Isle.
   Stepladder      The coast's Heart Container ledge, and Level 5's moat.
 
-Each guardian also leaves two pieces of a five-piece drop table, each a
-little better than anything else a character of its band can find.
+Guardians' drops: HELP 'HYRULE GUARDIANS'.
 
-See also: HYRULE SECRETS, BOMB, SHOOT, HEARTS, HYRULE
+See also: BOMB, SHOOT, HEARTS, 'HYRULE SECRETS', HYRULE
 ~
 
 0 CLIMB~
@@ -3362,44 +2786,30 @@ See also: INVENTORY, COMPACT, BRIEF
 ~
 
 0 ACHIEVEMENT ACHIEVEMENTS~
-Syntax: achievements
-Syntax: achievements <category>
-Syntax: achievements earned
-Syntax: achievements incomplete
-Syntax: achievements all
-Syntax: achievements <word or phrase>
+Syntax: achievements                    your summary and latest five
+        achievements <category>         one category, with progress
+        achievements earned | incomplete | all
+        achievements <word or phrase>   search
+        achievements <view> <part>      a later part of a long view
 
-ACHIEVEMENTS are permanent character accomplishments. They award achievement
-points, an earned date, and recognition to nearby players, but do not provide
-combat power. The summary shows your total points, category completion, and
-five most recent achievements.
+Achievements are lasting marks of what your character has done.  They
+earn points, which are also marks to spend with REDEEM (spending never
+lowers your points).  They give no combat power.
 
-Categories are CHARACTER, COMBAT, ENCOUNTERS, QUESTS, EXPLORATION, COLLECTION,
-CRAFTING, MISADVENTURE, ECONOMY, and HYRULE. Category views show each
-requirement and your current progress. EARNED and INCOMPLETE filter the full
-catalog; ALL shows everything. You may also search by a title, description, or
-achievement key.
-An unearned hidden achievement conceals its title and requirements until you
-discover it.
+Categories: CHARACTER, COMBAT, ENCOUNTERS, QUESTS, EXPLORATION,
+COLLECTION, CRAFTING, MISADVENTURE, ECONOMY, and HYRULE.
 
-Level, remort, play-time, player-kill, current quest-streak, bank, carried
-money, casino-total, and currently owned collection-item milestones are checked
-retroactively. Lifetime mobile kills, completed quests, and deaths begin when
-the achievement system first records them because older player files did not
-retain those totals. Listed boss credit is shared with grouped players who are
-present in the boss room.
+  - A hidden achievement shows nothing, and no search finds it, until
+    you earn it.
+  - Level, remort, play time, bank and money milestones count what you
+    already had.  Lifetime kills, quests and deaths count from when the
+    game began recording them.
+  - A boss's credit is shared with your group in its room.
+  - SCORE shows your total.
 
-Long views come in parts that fit the pager: ACHIEVEMENTS ALL 2 is the second
-part of the catalog, and any view or search takes a part number the same way.
-A hidden achievement is found by no search until you have earned it.
+Example: achievements combat
 
-Every achievement point is also a mark to spend: REDEEM shows how many you
-hold and what they buy. Spending marks never lowers your points.
-
-Achievement progress and earned dates are saved with your character. Use
-SCORE for a compact points total.
-
-See also: SCORE, QUEST, GROUP, HYRULE, REDEEM
+See also: REDEEM, SCORE
 ~
 
 0 REDEEM MARKS~
@@ -3447,72 +2857,51 @@ See also: BRIEF, COLOR, COMBINE
 ~
 
 0 COMPARE~
-Syntax: compare <item> [item]
-        compare upgrades [slot]
-        compare profile
-        compare defense ...
+Syntax: compare <item>              against what you wear in its slot
+        compare <item> <item>       two items against each other
+        compare upgrades [slot]     the best you could wear today
+        compare profile             how your damage is made
+        compare defense ...         rank by toughness instead
 
-COMPARE tells you which gear makes you hit harder.
+COMPARE tells you which gear makes you hit harder, worked out for your
+level, skills, stats, race and the rest of what you wear.
 
-  compare <item>          against what you wear in that slot (for rings,
-                          amulets and bracers, the weaker of your two),
-                          or against the empty slot
-  compare <item> <item>   two items against each other
-  compare upgrades        the best piece for every slot that you could
-                          wear today, from gear a mob in the world carries
-                          or sells, a chest holds, or a Hyrule guardian
-                          drops (with how often it falls)
-  compare upgrades <slot> the top five for one slot, and where to get them
-  compare profile         how your damage is made: swings, hit chance,
-                          damage a hit, and mana for casters
-  compare defense ...     rank by toughness instead (for tanks)
+  - Damage comes first: weapon damage a round for fighters, mana to cast
+    with for casters, a blend for hybrids.  Toughness counts a quarter as
+    much.
+  - For rings, amulets and bracers it compares against the weaker of the
+    pair you wear.  It says when you cannot use an item yet, and why.
+  - UPGRADES draws on gear creatures carry or sell, chests hold and
+    Hyrule's guardians drop (with how often); with a slot, the top five
+    and where to get them.
 
-How it ranks:
-  - Damage first: weapon damage per round for fighters, mana to cast with
-    for casters (a spell's damage is set by your level; gear only changes
-    how many casts you get).  Hybrids blend the two.
-  - Toughness second: effective hp against an equal-level foe, counting
-    hp, armor, saves, sanctuary, dodge, parry and shield block.  It counts
-    a quarter as much as damage.
-  - It is worked out for you: your level, skills, stats, race and the
-    rest of what you wear.  Hitroll stops helping once you land 95%.
-  - It says when you cannot use an item yet, and why.
+The website's Gear Finder ranks the same way by class and level.  To
+settle it by hitting something, see DUMMY.
 
-The website's gear finder ranks the same gear by class and level; this
-is the version that knows your character.  To settle it by hitting
-something, see DUMMY.
-
-See also: DUMMY, LORE, IDENTIFY, EQUIPMENT, SCORE
+See also: DUMMY, LORE, EQUIPMENT, SCORE
 ~
 
 0 CONSIDER~
 Syntax: consider <character>
 
-CONSIDER sizes up a fight before you start one:
+Sizes up a fight before you start it: their level against yours, their
+hit points against yours, about how many rounds each of you would need to
+bring the other down, and a verdict from "You should win easily" to "You
+would almost certainly die".  It also names sanctuary, unnatural speed, a
+foe that attacks on sight, one already fighting, and a player killer.
 
-  - how far above or below your level they are;
-  - how their hit points compare with yours;
-  - blow for blow, about how many rounds you would need to bring them
-    down at their current health, and they you at yours;
-  - a verdict, from "You should win easily" to "You would almost
-    certainly die";
-  - whatever about them changes a fight: sanctuary halving your blows,
-    unnatural speed, a monster that attacks anyone near it, or one
-    already busy fighting someone else.
-
-The rounds count weapons and armour as they stand, and leave out spells,
-dodging, parrying and fleeing, so treat them as a rough guide. A caster
-is reminded that their spells are not in it. A shopkeeper, trainer or
-anyone else nobody may fight is not rated. CONSIDER is never an attack,
-so it works anywhere, the Temple included.
+The rounds count weapons and armour only, not spells, dodging or fleeing,
+so treat them as a guide.  Shopkeepers, trainers and anyone nobody may
+fight are not rated.  It is never an attack, so it works anywhere.
 
 See also: SCORE, WIMPY, FLEE, COMPARE
 ~
 
 0 COUNT~
-The count command displays the number of people (that you can see) logged
-into the mud.  It also displays the highest number observed that day, if
-it is higher.
+Syntax: count
+
+Shows how many players you can see in the game, and the most there have
+been today if that is more.
 
 See also: WHO, WHERE
 ~
@@ -3601,12 +2990,13 @@ See also: DRINK, EAT
 
 0 DROP~
 Syntax: drop <object>
-Syntax: drop <amount> coins
-Syntax: drop all
-Syntax: drop all.<keyword>
+        drop all
+        drop all.<keyword>
+        drop <amount> <copper|silver|gold|platinum>
 
-DROP places an object or coins on the ground in the current room.  'drop
-all' drops everything; 'drop all.sword' drops all items named "sword".
+Puts things on the ground here.  Coins need their kind named in full.
+
+Example: drop 20 gold
 
 See also: GET, PUT, GIVE, DONATE
 ~
@@ -3630,10 +3020,12 @@ See also: DROP, PUT, INVENTORY
 
 0 GIVE~
 Syntax: give <object> <character>
-Syntax: give <amount> coins <character>
+        give <amount> <copper|silver|gold|platinum> <character>
 
-GIVE hands an object or a quantity of coins to another character in the
-same room.  The recipient must be present and able to receive it.
+Hands an object or coins to someone in the room who can carry it.  Coins
+need their kind named in full.
+
+Example: give 5 silver guard
 
 See also: DROP, SPLIT, DONATE
 ~
@@ -3672,50 +3064,15 @@ See also: EMOTE, SOCIAL
 ~
 
 0 SOCIAL SOCIALS~
-Syntax: social
 Syntax: socials
+        <social>
+        <social> <character>
 
-SOCIAL (or SOCIALS) lists all built-in social commands available in the
-game.  Each social is a named action you can direct at yourself, another
-player, or no target (e.g. smile, wave, bow, laugh).  Type the social's
-name alone or with a target name.
+SOCIALS lists every social: a ready-made action such as SMILE, WAVE or
+BOW that the room sees.  Type its name alone, or with someone's name to
+aim it at them.  EMOTE writes your own.
 
-The following is a (not necessarily complete) list of available socials:
-gack        kiss        eve         bounce      smile       dance
-cackle      laugh       giggle      shake       puke        growl
-scream      comfort     sigh        sulk        hug         snuggle
-cuddle      nuzzle      cry         poke        accuse      grin
-bow         applaud     blush       burp        chuckle     clap
-cough       curtsey     fart        flip        fondle      frown
-gasp        glare       groan       grope       hiccup      lick
-love        moan        nibble      pout        ruffle      shiver
-shrug       sing        slap        smirk       snap        sneeze
-snicker     sniff       snore       squeeze     stare       strut
-thank       twiddle     wave        whistle     wiggle      wink
-yawn        snowball    french      comb        massage     tickle
-pat         curse       pray        beg         cringe      daydream
-fume        grovel      hop         nudge       ponder      punch
-snarl       spank       hand        yodel       faint       pinch
-stroke      apologize   caress      stagger     snort       slobber
-blink       tease       knee        flirt       tip         lust
-flutter     bark        howl        babble      ramble      hush
-threaten    roll        swoon       bird        eyebrow     serenade
-grimace     boggle      beckon      wonder      worry       drool
-nod         purr        point       rub         bleed       highfive
-propose     peer        worship     bearhug     innocent    collapse
-stretch     spam        boast       squirm      moo         moon
-goose       wince       type        brb         mutter      rofl
-sob         pant        whine       flex        embrace     duck
-bonk        squeal      tackle      spit        life        mosh
-flinch      air         tweak       peck        explode     raspberry
-flash       strip       undress     tongue      view        grumble
-cheer       plead       charge      criticize   run         judge
-insane      cover       flare       head        pie         cower
-noogie      yeehaw      pissed      passout     adjust      scratch
-meditate    bkiss       beer        bcatch      claw        rose
-laces       tag         tank        starve      aargh       homework
-puff        differ      yae         lightbulb   voodoo      awkward
-dab         derp        facepalm    micdrop     panic       slowclap
+Example: wave guard
 
 See also: EMOTE, POSE
 ~
@@ -3741,28 +3098,22 @@ See also: EQUIPMENT, COMBINE, COMPARE, LORE
 ~
 
 0 LOOK READ~
-Syntax: look
-Syntax: look room
-Syntax: look <object>
-Syntax: look <character>
-Syntax: look <direction>
-Syntax: look <keyword>
-Syntax: look in <container>
-Syntax: look in <corpse>
-Syntax: read <map or compass>
+Syntax: look                        the room
+        look room                   the full room, even with BRIEF on
+        look <character|object>
+        look <direction>
+        look <keyword>              something the room mentions
+        look in <container|corpse>
+        read <object>
 
-LOOK examines whatever you specify.  Looking at a character shows their
-description and equipment.  LOOK alone describes the room you are in;
-with BRIEF on, only the short description is shown.  Use 'look room' to
-see the full, unbriefed room description.
+LOOK alone describes the room; looking at a character shows their
+description and what they wear.  READ is LOOK, except for things that
+can be read: a dungeon map shows its floor plan, and a dungeon compass,
+inside its own dungeon, points toward the Triforce chest and says how many
+rooms away it and the guardian's chamber are.  With several, name one:
+READ EAGLE COMPASS.
 
-READ normally behaves like LOOK. Some magical maps have a readable route
-chart. A dungeon compass can be read while inside its matching labyrinth to
-show the first general direction toward the boss and whether the chamber feels
-close or far away. If you carry several, include the dungeon name, such as
-'read eagle compass'.
-
-See also: EXAMINE, SEARCH, INVENTORY
+See also: EXAMINE, SCAN, 'HYRULE ITEMS'
 ~
 
 0 EXAMINE~
@@ -3802,18 +3153,15 @@ See also: AUTOEXIT, SEARCH, LOOK
 0 FLEE~
 Syntax: flee
 
-Once you start a fight, you can't just walk away from it.  If the fight
-is not going well, you can attempt to FLEE, or another character can
-RESCUE you.  (You can also RECALL, but this is less likely to work,
-and costs more experience points, then fleeing).
+Tries to escape the fight you are in through a random exit; it can fail.
+A successful flight costs 10 experience.  RECALL from a fight costs 25 and
+is a roll on your recall skill, and a friend can RESCUE you instead.  WIMPY
+makes you flee by yourself when your hit points fall low.
 
-If you lose your link during a fight, then your character will keep
-fighting, and will attempt to RECALL from time to time.  Your chances
-of making the recall are reduced, and you will lose much more experience.
+If you lose your link in a fight, you fight on and now and then try to
+recall.
 
-WIMPY will cause you to flee automatically if your hit points drop too low.
-
-See also: RESCUE, RECALL, WIMPY
+See also: WIMPY, RESCUE, RECALL
 ~
 
 0 FLIP MOVE PULL PUSH TURN~
@@ -3834,26 +3182,17 @@ See also: LOOK, SEARCH, OPEN, CLIMB
 
 0 FOLLOW GROUP ~
 Syntax: follow <character>
-Syntax: group
-Syntax: group <character>
+        follow self
+        group
+        group <character>
 
-FOLLOW starts you following another character.  To stop following anyone else,
-just FOLLOW <yourself>.  To keep yourself from being followed, use the
-NOFOLLOW command.
+FOLLOW makes you go where someone goes; FOLLOW SELF stops.  NOFOLLOW
+stops others following you.
 
-GROUP <character> makes someone who is following you a member of your group.
-Group members share experience points from kills and may use the GTELL and
-SPLIT commands.  If anyone in your group is attacked, you will automatically
-join the fight.
-
-If the <character> is already a member of your group, then GROUP will
-kick the <character> out of your group.  Characters can also leave your
-group by using a FOLLOW command to stop following you.
-
-GROUP with no argument shows statistics for each character in your group.
-
-You may FOLLOW anyone but you may only GROUP with characters within 8 levels
-of yourself.
+GROUP <character> takes someone who is following you into your group,
+or out of it again; GROUP alone shows your group.  Members must be
+within five levels of you.  They share experience from kills and may use
+GTELL and SPLIT; AUTOASSIST makes you join a fight one of them is in.
 
 See also: GTELL, SPLIT, NOFOLLOW, AUTOASSIST
 ~
@@ -3904,23 +3243,15 @@ See also: WALKTO, MUDLET
 Syntax: heal
         heal <spell>
 
-The Temple of Devota and some other locations provide healers for the
-assistance of adventurers.  The healer's services are generally free to
-players of level 10 or below.  Higher level adventurers may be healed of
-their wounds and ills on a fee for service basis.  The HEAL command without
-an argument shows a list of the healer's services.  To receive healing, be
-sure you have sufficient money and type heal <name of spell>.
+At a healer, such as the one by the Temple's pit, HEAL alone lists what is
+offered and the price, and HEAL <spell> buys it.  HEAL HEAL, HEAL MANA
+and HEAL REFRESH buy as many castings as you need to fill that pool, at
+one casting's price each, as far as your purse goes; a full pool is sold
+nothing.  Where Hermie stands, HEAL asks her instead, free (HELP BUFF).
 
-HEAL HEAL, HEAL MANA and HEAL REFRESH buy as many castings as your hit
-points, mana or legs need, at the price of one each, for one round, and
-say how many it took; if your purse runs short they buy what it can, and
-a pool already full is sold nothing.  Hermie, when she is about, does all
-of this for nothing: HELP BUFF.
+The cleric spell is HEALSPELL.
 
-For information on the heal spell used by those of the cleric class (and
-members of the cleric's guild), read help for HEALSPELL.
-
-See also: SCORE, AFFECT, BUFF
+See also: BUFF, SCORE, AFFECT
 ~
 
 0 HELP~
@@ -3962,8 +3293,8 @@ See also: WEAR, HOLD, REMOVE, SECONDARY, DUAL WIELD
 0 HOLD~
 Syntax: hold <object>
 
-HOLD equips a light source, wand, or staff in the held-item slot.  Only
-items designated for holding can be used this way.
+Holds an item in your hand: a wand, a staff, or anything else made to be
+held.  HOLD on a light puts it in your light slot instead.
 
 See also: WEAR, WIELD, ZAP, BRANDISH, REMOVE
 ~
@@ -3980,14 +3311,20 @@ See also: WEAR, WIELD, HOLD, EQUIPMENT
 ~
 
 0 JOIN~
-Syntax: join <guildname>
+Syntax: join
+        join <mage|cleric|thief|warrior>
 
-The JOIN command is used to join a guild.  It works only when you are in
-Melancholy's treehouse.  The possible guildnames are cleric, mage, thief,
-and warrior.  Joining a guild costs 500 coins, which Melancholy will
-take automatically when you use the join command.
+At Melancholy the guild clerk (WALKTO MELANCHOLY), joins a guild.  JOIN
+alone tells you the fee: one gold coin.
 
-See also: GUILDS, GAIN, GROUPS
+  - From level 3 to 6, and only if you have never been in a guild.
+  - A mage, cleric, thief or warrior in no guild at level 6 is put in
+    their own class's guild and charged 50 gold.
+  - Monks and necromancers have no guild to join.
+
+A castle head adds castle members with JOIN <player>: see CASTLE.
+
+See also: GUILDS, GAINLIST, CASTLE
 ~
 
 0 KILL~
@@ -4003,105 +3340,72 @@ See also: MURDER, HIT, FLEE, WIMPY
 0 PKILL~
 Syntax: pkill <password>
 
-PKILL is a permanent, irreversible setting.  Between level 15 and 30, you
-may choose to participate in player killing by typing PKILL followed by
-your password.  After level 30 the option is no longer available.  Once
-set, pkill status cannot be revoked under any circumstances.
+Makes you a player killer, for good.  From level 15; your password
+confirms it.  Player killers may MURDER one another; anyone else fights
+players only in the arena.
 
-You can identify other pkillers only by walking up to them and using
-CONSIDER.  Non-pkillers may only engage in player combat inside the arena.
+  - CONSIDER shows ***PKILLER*** on one; SCORE shows your own.
+  - You cannot undo it.  Staff can, and a remort clears it.
+  - Castles take only player killers.
 
-See also: MURDER, ARENA, KILL
+See also: MURDER, TOPTEN, CASTLE, ARENA
 ~
 
 0 NOFOLLOW  NOFOL~
+Syntax: nofollow       (or NOFOL)
 
-Syntax: nofollow
-        nofol
+Turns on or off whether others may follow you.  Turning it on sends away
+everyone following you, your pet and raised undead included, and ends
+your group.  To be grouped you must accept followers.  It is off for new
+characters; AUTO shows how it stands.
 
-NOFOLLOW toggles the follow flag, either on or off.
-
-If you have pets you need to get rid of, or people you don't want following
-you (i.e. members of a castle with whom you are at war), you can use this
-command to prevent them from following you.
-
-In order to be grouped, you must be able to accept followers.
-
-The default for NOFOL is OFF (meaning you can accept followers), and you can
-check the status of the NOFOL flag with the AUTO command.
-
-See also: GROUP, FOLLOW, AUTO
+See also: FOLLOW, GROUP, AUTO
 ~
 
 0 NOLOOT~
-
 Syntax: noloot
 
-NOLOOT toggles whether or not anyone can mess with your corpse.
-There are valid reasons why you might want someone to mess with your corpse:
-to retrieve it or to get certain items from it.  If your corpse is set NOLOOT
-then it cannot be picked up by, nor can objects be removed by, anyone else.
-
-The default for NOLOOT is on (i.e. your corpse cannot be looted).  You can
-check the status of this flag with the AUTO command.
+Turns on or off whether others may take things from your corpse, or pick
+it up.  It is on for new characters, so nobody can loot you; turn it off
+if you want a friend to bring your things back.  AUTO shows how it
+stands.
 
 See also: AUTO, NOSUMMON, NOFOLLOW
 ~
 
 0 NOSUMMON~
+Syntax: nosummon
 
-NOSUMMON toggles whether or not you can be summoned, gated to, or cancelled
-by other players.  Read help on SUMMON, GATE and CANCEL for more information
-on these spells.  In general, you will want to turn NOSUMMON off only to
-permit trusted wizard friends to assist you in transportation and in removing
-harmful spells.
-
-The default for NOSUMMON is on (you cannot be summoned, gated to or cancelled).
-While it is on, REMOVE CURSE cannot lift a curse from your gear either --
-not from you, a friend or a healer.
-The status of this flag can be checked with the AUTO command.
+Turns on or off your protection from other players' SUMMON, GATE and
+CANCEL.  It is on by default, and while it is on REMOVE CURSE cannot lift
+a curse from your gear either, whoever casts it.  Turn it off only for
+friends you trust.  AUTO shows how it stands.
 
 See also: AUTO, NOLOOT, NOFOLLOW
 ~
 
 0 NOTE NOTES~
-The following options are available:
+Syntax: note                         your notes (N marks unread)
+        note unread                  only the unread ones
+        note read [number]           one note; alone, the next unread
+        note search <word>           by sender, subject or text
+        note catchup                 mark them all read
+        note remove <number>         one you wrote or that is to you
+        note reply <number>          start a reply, subject Re: theirs
+        note forward <number> <player>
 
-reading notes:
-note list       : show all notes (unread notes are marked with an N)
-note unread     : show only the ones you have not read yet
-note read       : either by number, or read next to read unread notes
-note search     : find notes mentioning a word, in the sender, the
-		  subject or the body
-note catchup    : mark everything read without opening it
-note remove     : removes a note that you wrote or are the target of
+Writing:  note to <names | immortal | all | castle name>
+          note subject <text>
+          note + <line>        add a line
+          note -               take off the last line
+          note show | clear    see or discard what you have
+          note post            send it (also NOTE SEND)
 
-answering notes:
-note reply      : start a note back to whoever wrote number <n>, with
-		  the subject set to Re: theirs
-note forward    : send number <n> on to somebody else, with the original
-		  text carried across and marked as theirs
+A note's number is its place in your full list, in UNREAD and SEARCH
+too, so the number you see is the one to read.  At login you are told how
+many are unread.
 
-writing new notes:
-note to         : sets the to line for a new note (name(s), immortal, all,
-		  or the castle(s) name)
-note subject    : sets the subject for a new note
-note +          : adds a line to a new note (i.e. note + hi guys!)
-note -          : deletes the last line you typed (no argument required)
-note clear      : erase a note in progress
-note show       : shows the note you are working on
-note post       : posts a new note. This MUST be done to post a note.
-
-A number is always the note's place in your full list, even when you
-are looking at a filtered one, so a number you read off a search is the
-number to give to note read.
-
-When you log in, you will be informed if there are unread notes waiting. Type
-note read (or just note) to scroll through them one at a time.
-
-You must be at least level 2 to use the note system.
-
-See also: BUG, IDEA, TYPO, CHANNELS
+See also: BUG, IDEA, TYPO, IGNORE
 ~
 
 0 ORDER~
@@ -4136,67 +3440,54 @@ See also: EQUIPMENT, WEAR
 ~
 
 0 PASSWORD~
-Syntax: password <old-password> <new-password>
+Syntax: password <old password> <new password>
 
-PASSWORD changes your character's password.  The first argument must be
-your old password.  The second argument is your new password.
+Changes your password; it is never logged.  A new password is at least
+five characters long, and every character counts.
 
-The PASSWORD command is protected against being snooped or logged.
+  - A password set before November 2026 still accepts only its first
+    eight letters, as it always did, until you choose a new one.
+  - Five wrong passwords at login within fifteen minutes lock your
+    address out for fifteen minutes; each further lockout within a week
+    is longer: an hour, six hours, a day, a week.  An address you play
+    from is never locked out for more than an hour.
+  - At login you are told of failed attempts on your character since you
+    were last on.  If they were not yours, change your password.
 
-Passwords are kept with SHA-512 encryption.  A password chosen before
-November 2026 moved to it at your first login since, without changing
-anything you type: only its first eight letters still count, as they always
-did.  A new password -- choose one with PASSWORD -- counts every letter, so
-a longer one is stronger.
+A forgotten password cannot be mailed to you: an immortal can reset it.
 
-Wrong passwords at login are counted for your address.  Each one says how
-many more are allowed: five within fifteen minutes lock your address out
-for fifteen minutes, and each further lockout within a week lasts longer
--- an hour, six hours, a day, a week.  An address you play from is never
-locked out for more than an hour.  When you log in, you are told how many
-failed attempts were made on your character since your last login; if they
-were not yours, choose a new password.
-
-See also: DELETE, QUIT, SAVE
+See also: ACCOUNT, DELETE
 ~
 
 0 PRACTICE~
-Syntax: PRACTICE
-Syntax: PRACTICE <skill|spell>
-Syntax: PRACTICE <skill|spell> <count|max>
+Syntax: practice
+        practice <skill|spell> [count|max]
 
-With a count, PRACTICE spends that many sessions at once: 'practice dodge
-5'.  MAX spends as many as it takes to reach your adept level.  Either
-stops when you are learned or out of sessions, and says where you got to.
+PRACTICE alone shows how well you know each skill and spell; it works
+anywhere.  At a guildmaster, PRACTICE <name> spends a session raising it,
+by more the higher your intelligence.  A count spends several at once;
+MAX spends what it takes to reach your adept level.  Above 1% a skill also
+improves with use.  Wisdom gives more sessions a level, and unspent ones
+are kept.
 
-PRACTICE without an argument tells you your current ability level in all
-the skills and spells available to you.  You can check this anywhere.
+Example: practice dodge 5
 
-PRACTICE with an argument practice that skill or spell.  Your learning
-percentage varies from 1% (unlearned) to a maximum of 75%.  You will continue
-to improve in a skill or spell by using it as long as you are not at 1%.
-You must be at a guild master to practice.
-
-The higher your intelligence, the more you will learn at each practice
-session.  The higher your wisdom, the more practice sessions you will gain
-each time you gain a level.  Unused sessions are saved until you do use them.
-
-See also: TRAIN, GAIN, SKILLS, SPELLS
+See also: PRACTICELIST, TRAIN, GAIN, SKILLS
 ~
 
 0 SAVE~
 Syntax: save
 
-Immediately saves your character and carried inventory to disk.  The game
-also auto-saves every 15 minutes, so manual saves are rarely critical.
-Typing save can cause a brief command delay, so avoid spamming it.
-You must be at least level 3 to save.
+Saves your character now.  The game also saves you about every five
+minutes and when you quit, so you seldom need it; it costs a few seconds
+of lag.
 
-Note: some objects (keys, items more than two levels above yours) are not
-saved and will vanish on logout.  QUIT performs an automatic save, so
-you do not need to save before quitting.
+Some things are never saved, and are gone at your next login:
+  - keys, except Hyrule's small keys
+  - a blank map
+  - an active quest's recovery item
 
-See also: QUIT, PASSWORD
+See also: QUIT, STASH
 ~
 
 0 RENT~
@@ -4210,80 +3501,71 @@ See also: QUIT, SAVE
 ~
 
 0 RECALL /~
-Syntax: recall
-        recall set
-        recall default
-        recall where
+Syntax: recall            (or /)
+        recall set        make this room your recall point
+        recall default    put it back at the Temple
+        recall where      where it is, and when you may move it
 
-RECALL prays to the gods for miraculous transportation from where you are
-back to your recall point.  '/' is a synonym for RECALL.
+Prays to be carried to your recall point: the Temple of Devota in Dresden
+until you move it.
 
-Every character begins with their recall point at the Temple of Devota in
-Dresden.  You may move it:
+  - It is a roll on your recall skill, which every class holds at 100%
+    from level 1; now and then it goes unanswered, and about one time in
+    twenty-five it lands you somewhere else.  From the third remort it
+    always works and always goes home.
+  - It halves your movement, except out of a fight from level 58.  From a
+    fight it also costs 25 experience.
+  - Not from a no-recall room, a jail, or while you are cursed.
+  - Your pet comes with you; a mount is left behind.
+  - RECALL SET works once every 30 minutes, not in or just after a fight,
+    and not in a no-recall room, jail or death trap.  RECALL WHERE says
+    when you may move it next.  RECALL DEFAULT works at any time.
 
-  RECALL SET       makes the room you are standing in your recall point.
-  RECALL DEFAULT   puts it back to the Temple.
-  RECALL WHERE     tells you where it is, and whether you may move it yet.
+WORD OF RECALL, its scrolls and potions, and the Recall Ring always go to
+the Temple, and work while you are cursed.
 
-Choose somewhere you go often - a hunting ground you are working through,
-a questmaster, the shop you live out of.  Anywhere the gods have forsaken
-is refused, and so are jails and death traps.  A busy room is fine: who
-else happens to be standing there makes no difference.
-
-You may move your recall point once every 30 minutes, and not while you
-are fighting or while the blood is still up from a fight.  RECALL DEFAULT
-is exempt from all of that: you can send your recall back to the Temple at
-any moment, so a choice you regret can never strand you.
-
-The prayer is a roll on your recall skill, and even at 100% it now and
-then goes unanswered.  Very rarely it lands you somewhere else entirely.
-It halves your movement points (out of a fight, only to level 57).  In a
-fight it costs 25 experience when it works.  From the third remort it
-always works and always goes home.  Your pet comes with you; a mount is
-left behind.
-
-RECALL does not work in rooms the gods have forsaken, from a jail, or
-while you are cursed.
-
-WORD OF RECALL is a different journey, and worth knowing about.  It
-always goes to the Temple whatever you have set, so between the two you
-have two places to reach in a hurry.  It also works while you are cursed,
-where RECALL does not - a curse silences your own prayer but has no hold
-over somebody else's magic.  A scroll or potion of recall carries the same
-spell and behaves the same way.  The Recall Ring, and being pulled to
-safety while link-dead, also go to the Temple.
-
-Every class holds recall from level 1, at 100%.
-
-See also: WORD OF RECALL, PORTAL, DIRECTIONS, CHANGES
+See also: 'WORD OF RECALL', REDEEM, RESTED
 ~
 
 0 REMORT~
-Syntax: REMORT <password> <class> <guild> <race>
+Syntax: remort <password> <class> <guild> <race>
 
-REMORT starts your character over at level 3 as a new class, keeping the
-name.  Each remort raises the level you can reach by one, and five remorts
-take you all the way to 59.
+Starts your character over at level 3 in a new class, keeping the name.
+Each remort lets you reach one level higher, to 59 after the fifth.
 
-WHEN YOU CAN
-  At level 54 plus the remorts you have done: 54 for the first, 55 for the
-  second, up to 58 for the fifth and last.  You cannot remort from a jail
-  cell, or while an automatic quest is under way (finish or abort it).
+  - When: at level 54 for the first remort, 55 for the second, up to 58
+    for the fifth and last.  Not from a jail cell, nor during an
+    automatic quest.
+  - You become level 3 in the Temple with every stat at 13, and lose your
+    spells, skills, groups and affects; your player-killer flag is
+    cleared.
+  - You keep your coin, bank, quest points, items and stash.  Gear level
+    3 cannot wear goes into a bag in your stash; NODROP and timed items
+    stay in your pack.  Empty light, body, shield and weapon slots get
+    the newcomer's outfit.
+  - Your pet comes too; other charmed followers leave, and raised undead
+    crumble.  A title you chose is kept; a class title is replaced.
 
-WHAT CHANGES
-  You become level 3 in the Temple, with all stats at 13, and lose every
-  spell, skill and group.  Your class, guild and race are the new ones you
-  choose.  All affects on you are removed and your PK state is cleared.
-  You keep your gold, bank, quest points, items and stash.  Gear the new
-  level cannot wear goes into a bag in your stash; NODROP items and items
-  on a timer stay in your pack.  You are given the newcomer's outfit for
-  any empty light, body, shield and weapon slot.  Your pet comes with you;
-  anything else you had charmed wanders off, and raised undead crumble.
-  A title you chose is kept; a class title is replaced.  Wimpy is cut to
-  half your new hit points if it was higher, and a recall point your new
-  level may not use is set aside.
+Example: remort mypassword thief warrior elf
 
-EACH LIFE
+See also: 'REMORT GIFTS', 'REMORT CLASSES', HEROLEVELS, SHADOWMELD
+~
+
+0 'REMORT GIFTS'~
+Each remort keeps the gifts of those before it:
+
+  1st  Hunger and thirst no longer touch you.
+  2nd  Psionic powers: one from each of the four disciplines.
+  3rd  A second power from each discipline; twice the carrying room;
+       twice as long before the idle void takes you; RECALL never fails
+       (from a fight it still costs experience).
+  4th  A third power from each discipline, and SHADOWMELD at 50%.
+  5th  Every psionic power, no carrying limit, and a free choice of class.
+
+Psionic powers are never lost: each life hands them back at 1%, to
+practise again.  Each opens at its own level, from 17 to 28; until then
+you hold it but cannot use or practise it.
+
   Remort  At level  New max  Start HP/Mana/Move  +Pracs  +Trains  Per level
     1st       54       55          200 each         17      10       +1
     2nd       55       56          400 each         19      12       +2
@@ -4291,40 +3573,30 @@ EACH LIFE
     4th       57       58          800 each         23      16       +4
     5th       58       59         1000 each         25      18       +5
 
-  Practices and trains you had not spent are kept, and the new life's are
-  added to them.  "Per level" is added to the hit points, mana and movement
-  of every level you gain in that life.
+Unspent practices and trains are kept, and the new life's are added.  "Per
+level" is added to hit points, mana and movement at each level of that
+life.
 
-GIFTS (each remort keeps the ones before it)
-  1st  Hunger and thirst no longer touch you.
-  2nd  Psionic powers: one from each of the four disciplines.
-  3rd  A second power from each discipline; twice the carrying room; twice
-       as long before the idle void takes you; recall that never fails
-       (recall from a fight still costs experience).
-  4th  A third power from each discipline, and the SHADOWMELD skill at 50%
-       (HELP SHADOWMELD).
-  5th  Every psionic power, no carrying limit, and a free choice of class.
+See also: REMORT, PSIONICS, SHADOWMELD
+~
 
-  Psionic powers are never lost to a remort: every life hands them back at
-  1%, to practise again.  Each opens at its own level (17 to 28); until
-  then you hold it but cannot use or practise it.
+0 'REMORT CLASSES'~
+Every life must be a class you have not lived before, until the fifth
+remort, which lets you choose any; a refused class is answered with the
+list still open to you.  The guild is free: any, as often as you like, or
+none.
 
-CLASS, GUILD AND RACE
-  You may not live twice as the same class until your fifth remort, which
-  lets you choose any.  If a class is refused, the game lists the ones
-  still open to you.  The guild is free: any of them, as often as you
-  like, or none.  A mage, cleric, thief or warrior who picks none is
-  claimed by their class's guild at level 6, for a 50 gold fee.
-    Classes: mage, cleric, thief, warrior, monk, necro
-    Guilds:  mage, cleric, thief, warrior, none
-             (monks and necros have no guild and must use none)
-    Races:   human, elf, dwarf, hobbit, saurian
-             (monks may be dwarf or human; necros elf or human)
+  Classes  mage, cleric, thief, warrior, monk, necro
+  Guilds   mage, cleric, thief, warrior, none
+           (monks and necros have no guild and must give none)
+  Races    human, elf, dwarf, hobbit, saurian
+           (monks may be dwarf or human; necros elf or human)
 
-  Buying hero level (AQUEST BUY HERO) costs 5000 quest points once you
-  have remorted, instead of 7000.  SCORE shows your remort count.
+Class and guild may be shortened to two letters or more.  A mage, cleric,
+thief or warrior who picks none is put in their class's guild at level 6
+for 50 gold.
 
-See also: HERO, HEROLEVELS, GAIN, GROUPS, SHADOWMELD
+See also: REMORT, CLASS, GUILDS, GAINLIST
 ~
 
 0 AFFECT AFFECTS~
@@ -4360,12 +3632,12 @@ See also: SCORE, AFFECT, TRAIN
 0 REPORT~
 Syntax: report
 
-Announces your current hit points, mana, and movement to yourself and to
-every player in the same room.  Useful in group combat so healers and
-allies can gauge how much support you need.  Does not reveal your
-maximum values, only your current condition.
+Tells you and the room your hit points, mana and endurance, current and
+maximum, and your experience:
 
-See also: SCORE, GROUP, HEAL
+  You say 'I have 120/150 hp 80/100 mana 90/90 end 5230 xp.'
+
+See also: SCORE, WORTH, GROUP
 ~
 
 0 SCORE~
@@ -4383,12 +3655,11 @@ See also: ATTRIBUTE, AFFECT, WORTH, REPORT
 0 WORTH~
 Syntax: worth
 
-Shows a brief financial and experience summary: your current gold on hand,
-bank balance, total experience earned, and how much experience remains
-before your next level.  A quick alternative to the full SCORE display
-when you only need to check progress or wealth.
+Shows the coins you carry, platinum to copper, your experience and how
+much more you need for the next level.  Your bank balance is not in it:
+BALANCE shows that in a bank.  SCORE shows the whole sheet.
 
-See also: SCORE, BANK, BALANCE
+See also: SCORE, BALANCE, EXPERIENCE
 ~
 
 0 SLEEP~
@@ -4447,12 +3718,14 @@ See also: RUN, EXITS, AUTOEXIT
 ~
 
 0 SACRIFICE~
-Syntax: sacrifice <object>
+Syntax: sacrifice <object>      (also JUNK)
 
-SACRIFICE offers an object to the gods, who may reward you.
-The nature of the reward depends upon the type of object.
+Offers an object lying on the ground here to the gods, who destroy it and
+pay you twice its level in copper: no more than it is worth, except for a
+corpse.  With AUTOSPLIT on, the coin is shared with your group.  A
+player's corpse that still holds anything is refused.
 
-See also: JUNK, DONATE, AUTOSAC
+See also: JUNK, AUTOSAC, DONATE
 ~
 
 0 SCAN~
@@ -4545,12 +3818,13 @@ See also: GAIN, GROUPS, PRACTICE
 ~
 
 0 SPLIT~
-Syntax: split <amount>
+Syntax: split <amount> [platinum|gold|silver|copper]
 
-SPLIT splits some gold between you and all the members of your
-group who are in the same room as you.  It's customary to SPLIT
-the gold after a kill.  However, this is most conveniently done using
-the AUTOSPLIT option.
+Shares coins equally between you and your group members in the room;
+gold if you name no kind, and the kind may be shortened.  AUTOSPLIT does
+it for coin you loot.
+
+Example: split 30 silver
 
 See also: AUTOSPLIT, GROUP, GIVE
 ~
@@ -4599,31 +3873,19 @@ See also: DESCRIPTION, SCORE, WHO
 ~
 
 0 TRAIN~
-Syntax: train <str int wis dex con hp mana>
-Syntax: train <str int wis dex con hp mana> <count>
+Syntax: train <str|int|wis|dex|con|hp|mana> [count]
 
-With a count, TRAIN uses that many sessions at once, up to 100: 'train
-hp 10' raises your hit points by 100.  It stops when your sessions run
-out or the attribute reaches its maximum, and says how many it trained.
+At a trainer, spends training sessions: each raises an attribute by one,
+or your hit points or mana by 10.  A count trains several at once, up to
+100: TRAIN HP 10 adds 100 hit points.  It stops when your sessions run
+out or the attribute reaches its maximum, set by race and class.
 
-TRAIN increases one of your attributes.  When you start the game, your
-character has standard attributes based on your class, and several
-initial training sessions.  You can increase your attributes by
-using these sessions at a trainer.  Trainers can be found in mud school,
-wandering town or in guilds.
+You gain a session each level.  GAIN spends them on skills, and GAIN
+CONVERT turns 10 practices into one.  Trainers stand in Mud School, in
+the guilds and about town.  Wisdom and constitution are the usual first
+choices: more practices and more hit points each level.
 
-It takes one training session to improve an attribute, or to increase
-mana or hp by 10.  You receive one training session per level.  Training
-sessions are also used to buy new skills and practices may be converted to
-trains to help you in your studies.  See help on GAIN for more information.
-
-The best attributes to train first are WIS and CON.  WIS gives you more
-practices when you gain a level and  CON gives you more hit points.
-In the long run, your character will be most powerful if you train
-both WIS and CON to their maximum (which depends on your race and class)
-before training anything else.
-
-See also: PRACTICE, GAIN, SCORE, ATTRIBUTE
+See also: PRACTICE, GAIN, ATTRIBUTE
 ~
 
 0 VISIBLE~
@@ -4637,64 +3899,43 @@ See also: HIDE, SNEAK, STEALTH
 
 0 WHERE~
 Syntax: where
-Syntax: where <character>
+        where <character>
 
-WHERE without an argument tells you the location of visible players in the same
-area as you are.
-
-WHERE with an argument tells you the location of one character with that name
-within your area, including monsters.
+WHERE alone lists the players you can see in your area, and where each
+is.  WHERE <name> finds one character with that name in your area,
+creatures included.
 
 See also: WHO, SCAN, AREAS
 ~
 
 0 WHO WHOIS~
 Syntax: who
-Syntax: who <level-range>
-Syntax: who <class or race>
-Syntax: who <class or race> <level-range>
-Syntax: whois <character>
+        who <level> [level]
+        who <class or race> [level] [level]
+        who <castle>
+        whois <character>
 
-WHO shows the people currently in the game.  Some people may choose to
-remain unseen and won't appear when you use WHO.
+WHO lists the players in the game you can see; some stay unseen.  WHOIS
+shows one player.  Classes and races may be shortened.
 
-WHOIS provides information about a specific player, including their class
-and level.  That information may be useful in determining whether to respond
-to a request to group or in ascertaining that the person speaking to you is
-an immortal and should, therefore, really not be ignored.
+  who 10            level 10 and up
+  who 15 20         levels 15 to 20
+  who elf cleric    elven clerics
+  who immortal      immortals
 
-WHO without any arguments shows all of the (visible) people currently playing.
-
-With arguments, WHO can show players of certain classes or levels.
-For example:
-
-who 10          lists all players of level 10 or above
-who 15 20       lists all players between level 15 and 20
-who cleric      lists all clerics playing
-who immortal    lists all immortals playing
-who cleric 1 5  lists all clerics between levels 1 and 5
-who elf cleric  lists all elven clerics
-who <castle>    lists all members of a specified castle
-
-Classes and races may be abbreviated.
-
-See also: WHERE, SCORE
+See also: WHERE, SCORE, AFK
 ~
 
 0 WIMPY~
 Syntax: wimpy
-Syntax: wimpy <number>
+        wimpy <number>
 
-WIMPY sets your wimpy value.  When your character takes damage that reduces
-your hit points below your wimpy value, you will automatically attempt to flee.
-You will only flee if your character is not in a wait state -- i.e. has not
-been using combat commands like cast, trip and bash, and has not been
-tripped or bash by an enemy.
+When a blow leaves you below your wimpy hit points, you try to FLEE by
+yourself, unless you are still lagged from a command of your own or from
+a bash or trip.  WIMPY alone sets it to a fifth of your maximum hit
+points; a number may be anything from 0 to half your maximum.
 
-WIMPY with no argument sets your wimpy value to 20% of your maximum hit points.
-It may be anything from 0 to half your maximum hit points.
-
-Some monsters are wimpy.
+Some creatures are wimpy too.
 
 See also: FLEE, RECALL, SCORE
 ~
@@ -4708,32 +3949,16 @@ See also: COMMANDS
 ~
 
 0 NORTH SOUTH EAST WEST UP DOWN NORTHEAST NORTHWEST SOUTHEAST SOUTHWEST NE NW SE SW DIRECTIONS~
-Syntax: north
-Syntax: south
-Syntax: east
-Syntax: west
-Syntax: up
-Syntax: down
-Syntax: northeast
-Syntax: ne
-Syntax: northwest
-Syntax: nw
-Syntax: southeast
-Syntax: se
-Syntax: southwest
-Syntax: sw
+Syntax: north | south | east | west | up | down        (N S E W U D)
+        northeast | northwest | southeast | southwest  (NE NW SE SW)
 
-Use these commands to walk in a particular direction.  The ordinary directions
-are usually abbreviated as N, S, E, W, U and D.   The diagonal directions
-may be abbreviated as NE, NW, SE and SW.  Any start of a direction's name
-works too -- NO, NOR, WES, SOU -- and where it fits more than one direction
-the plain one wins: NO is north, SO is south, and NORTHE is northeast.
-OPEN, CLOSE, LOCK, UNLOCK, PICK, LOOK, RUN, SHOVE and the other commands
-that take a direction read it the same way.  If you are using a mud client to
-access the game, you may need to alter some of the files to allow for the
-abbreviated directions.
+Walks you one room that way.  Any start of a direction's name works too
+(NO, WES, SOU); where it fits more than one direction the plain one wins:
+NO is north, SO is south, NORTHE is northeast.  OPEN, CLOSE, LOCK,
+UNLOCK, PICK, LOOK, RUN, SHOVE and the other commands that take a
+direction read it the same way.
 
-See also: EXITS, OPEN, RUN
+See also: EXITS, RUN, SPEEDWALK, WALKTO
 ~
 
 0 BUG IDEA TYPO~
@@ -4756,39 +3981,34 @@ See also: NOTE
 ~
 
 0 GOSSIP CHAT .~
-Syntax: gossip <message>
-Syntax: gossip
-Syntax: . <message>
+Syntax: gossip <message>       (or . <message>)
+        gossip
 
-GOSSIP broadcasts a message to all players in the world who have the channel
-enabled.  The period (.) is a shortcut for GOSSIP.  This is the most
-frequently used public channel on ToC.  Typing GOSSIP without a message
-toggles the channel off; type it again to restore it.
+Talks to every player with the channel on.  GOSSIP alone turns the channel
+off or back on; speaking on it turns it on.
 
-You must be at least level 2 to use the gossip channel.
-
-See also: SHOUT, YELL, CHANNELS, DEAF, QUIET, TELL
+See also: CHANNELS, HISTORY, SHOUT, TELL, QUIET
 ~
 
 0 SHOUT~
 Syntax: shout <message>
+        shout
 
-SHOUT sends a message to all awake players in the world.  To curb excessive
-shouting, SHOUT imposes a three-second delay on the shouter.  Players must
-be at least level 3 to shout.  Use DEAF to block incoming shouts, or QUIET
-to silence all public channels at once.
+Talks to every player in the world, sleeping or awake, except those with
+shouts off or in QUIET mode.  Each shout costs three seconds.  SHOUT alone
+turns hearing shouts off or back on; with them off you cannot shout
+either.  From level 3.
 
-See also: GOSSIP, YELL, DEAF, CHANNELS
+See also: GOSSIP, YELL, QUIET, CHANNELS
 ~
 
 0 YELL~
 Syntax: yell <message>
 
-YELL broadcasts a message to all awake players within your current area
-only.  It is narrower than SHOUT (world-wide) and more broadly heard
-than SAY (room only).
+Talks to everyone in your area, sleeping or awake.  Narrower than SHOUT,
+wider than SAY.
 
-See also: SHOUT, GOSSIP, SAY, CHANNELS
+See also: SHOUT, SAY, CHANNELS
 ~
 
 0 INFO~
@@ -4827,23 +4047,23 @@ See also: GOSSIP, CHANNELS
 0 DEAF~
 Syntax: deaf
 
-Toggles the shout channel on or off.  When deaf is active you will not
-receive SHOUT messages from other players.  Type DEAF again to restore
-your ability to hear shouts.  The gossip and other channels are unaffected;
-use QUIET to silence everything at once.
+Turns tells off or back on.  While deaf you hear no TELL or REPLY, anyone
+who tries is told you are not receiving tells, and you cannot send them
+yourself.  Staff can still reach you.  Channels are not affected: SHOUT
+alone turns shouts off, and QUIET silences everything.
 
-See also: QUIET, CHANNELS, SHOUT
+See also: QUIET, SHOUT, TELL, IGNORE
 ~
 
 0 QUIET~
 Syntax: quiet
 
-Toggles all public channels off simultaneously, so you hear only EMOTES
-and SAY in your current room.  Useful for concentrating during difficult
-combat or roleplay scenes.  Type QUIET again to restore all channels.
-Individual channel states are preserved; they return to how they were.
+Turns quiet mode on or off.  While quiet you hear only says and emotes in
+your room: no channels, shouts or tells, and you cannot use the channels
+or send tells yourself.  Your channel settings are as you left them when
+it ends.
 
-See also: DEAF, CHANNELS
+See also: DEAF, CHANNELS, IGNORE
 ~
 
 0 TELL~
@@ -4896,25 +4116,15 @@ See also: GOSSIP, CHANNELS, HEROQUEST, HEROLEVELS
 0 CHANNELS~
 Syntax: channels
 
-The CHANNELS command is used to tell you the status (on or off) of all of
-your communications channels, e.g. gossip, shouts, info, etc..
+Shows which channels you hear.  Type a channel's name alone (GOSSIP,
+MUSIC ...) to turn it off or on; QUIET turns them all off, tells too.
 
-To toggle the on/off status of a channel, type the name of that channel.
-
-WHAT IS RECORDED
-Everything said on a channel is kept two ways: in the shared history that
-HISTORY reads back, and in a channel log published with the game's logs.
-You only ever see the channels you are allowed to hear - a channel you
-have switched off, or one above your rank, is not in your history and is
-not sent to your client.
-
-SAY is recorded in the channel log and shown to everyone in the room, but
-it is not in the shared history: see HISTORY for why.
-
-Tells are private.  They are never in the shared history or the channel
-log, and each character's own copy is theirs alone.  The command log
-leaves out their words as well -- unless staff have flagged that character
-with LOG, which records everything but passwords.
+What is said on a channel is kept for HISTORY and written to the
+channel log, which is published with the game's logs; you only ever see
+the channels you may hear.  SAY is logged but not kept for HISTORY.  Tells
+are private: never in the shared history or the channel log, and the
+command log leaves out their words -- unless staff have flagged that
+character with LOG <name>, which records everything but passwords.
 
 See also: GOSSIP, SHOUT, TELL, SAY, HISTORY, DEAF, QUIET
 ~
@@ -5448,21 +4658,6 @@ name and $n for the player name if you want those in the message.
 DO NOT USE ANY OTHER VARIABLES, DOING SO WILL CAUSE THE MUD TO CRASH.
 
 See also: STAT, LOAD, CLONE
-~
-
-63 NOCHANNEL~
-Syntax: nochannels <character>
-
-NOCHANNELS is the most broad communication restriction for a misbehaving
-player.  It prevents the target from using ANY global channel: gossip,
-auction, info, music, Q/A, etc.  The target can still say, tell, and
-emote normally.  Toggle again to restore channel privileges.
-
-Typically used for persistent channel spammers or players using channels
-for language violations.  For a complete communication lockdown, use MUTE
-instead, which also strips tell, shout, say, and emote simultaneously.
-
-See also: MUTE, NOSHOUT, NOEMOTE, NONOTE
 ~
 
 66 PARDON~
@@ -6112,16 +5307,6 @@ ANNOUNCE.
 See also: IMMTALK, GODTALK, ANNOUNCE, WIZINVIS
 ~
 
-68 WHINE~
-Syntax: whine <character>
-
-Flags target character as a "WHINER", this prevents them from noting to
-all or immortal, and causes cityguards to taunt them incessantly. This
-command is NOT to be abused!
-
-See also: WIZHELP, PUNISHED
-~
-
 67 NONOTE~
 Syntax: nonote <character>
 
@@ -6654,13 +5839,15 @@ Use SOCKETS to view current descriptor numbers.
 See also: SOCKETS, DUMP
 ~
 
-63 NOCHANNELS~
+63 NOCHANNELS NOCHANNEL~
 Syntax: nochannels <player>
 
-NOCHANNELS prevents a player from using any global communication channel
-(gossip, music, info, etc.).  Toggle again to restore access.
+Toggles a player's channel ban.  While it is on they cannot talk on
+gossip, question, music, leveling, hero, castle chat, CGOS or the staff
+channels; they can still SAY, EMOTE, TELL, SHOUT and YELL.  They are told
+either way.  MUTE is the heavier answer.
 
-See also: MUTE, NOSHOUT, NOEMOTE
+See also: MUTE, NOSHOUT, NOEMOTE, NOTELL
 ~
 
 64 NOEMOTE~
@@ -6740,14 +5927,15 @@ after the name is ignored: there is no message to send.
 See also: LOG, PARDON, FREEZE
 ~
 
-67 WHINER~
+67 WHINER WHINE~
 Syntax: whiner <player>
 
-WHINER toggles the WHINER communication flag on a player.  Flagged
-players have their channel messages marked, identifying them as chronic
-complainers.
+Toggles the WHINER flag.  A flagged player shows (WHINER) in WHO and
+WHINER on their SCORE, and city guards taunt them.  It changes nothing
+else: their channels and notes work as before.  They are told either
+way.
 
-See also: NOCHANNELS
+See also: NOCHANNELS, NONOTE
 ~
 
 62 WIZCHECK~
@@ -6773,59 +5961,58 @@ See also: WANTED, NOTE
 
 0 ALIGNMENT ALIGN GOOD EVIL NEUTRAL DEVOTE PARAGON VIRTUOUS RUTHLESS VILE FIEND~
 Syntax: alignment
-        devote light | dark | balance     (at the Temple)
+        devote light | dark | balance        at the Temple or its altar
         devote preview [light | dark | balance]
 
-Your alignment runs from -1000 to 1000 in seven tiers:
+Alignment runs from -1000 to 1000 in seven tiers:
 
   Fiend  Vile  Ruthless | Balanced | Kind  Virtuous  Paragon
   -900   -550    -300      -299..299   300    550       900
 
-Kind and brighter are of the light (good), Ruthless and darker of the
-dark (evil).  ALIGNMENT shows your tier, how far the next one is, what
-your tier gives you and when you may next DEVOTE; SCORE names the tier.
+Kind and brighter are good (the light), Ruthless and darker evil (the
+dark).  ALIGNMENT shows your tier, how far the next is, what yours gives
+you and when you may next DEVOTE; SCORE names your tier.
 
 What moves it -- you are what you slay:
-  - Slaying the evil moves you toward the light, slaying the good toward
-    the dark: a point for every hundred of the victim's alignment, half
-    for a foe eight or more levels below you, nothing fifteen below.
-    Slaying the neutral moves nothing.  To climb out of the dark, hunt
-    evil; to sink, hunt good.
-  - A quest target of either side moves you 25 further; the quest master
-    says which side its death serves.
-  - DEVOTE LIGHT, DARK or BALANCE at the Temple or its altar moves you
-    100 that way (BALANCE toward the middle) for an offering worth twenty
-    kills of your level, once every thirty minutes.  DEVOTE PREVIEW, from
-    anywhere and for nothing, shows where each would leave you, the
-    offering, when the gods will next hear you, and any worn piece that
-    would zap off.
-You are told whenever you cross into a new tier; DAMAGENUMBERS shows
-every small change.
+  - Slaying the evil moves you toward the light, the good toward the
+    dark: a point per hundred of the victim's alignment, half for a foe
+    eight levels below you, nothing fifteen below.  The neutral move
+    nothing.
+  - A quest target moves you 25 further; the questmaster says which way.
+  - DEVOTE moves you 100 toward the light, the dark or the middle, for an
+    offering worth twenty kills of your level, once every thirty minutes.
+    DEVOTE PREVIEW, free and from anywhere, shows where it would leave
+    you, the offering, the wait, and any worn piece that would zap off.
 
-What it gives (more for each tier further from the middle):
+You are told when you change tier; DAMAGENUMBERS shows each small move.
+
+See also: 'ALIGNMENT PERKS', SCORE, 'KNOW ALIGNMENT'
+~
+
+0 'ALIGNMENT PERKS'~
+What your alignment gives, more for each tier further from the middle:
+
   - Light: hit point regeneration +5/10/15%, holy damage +5/10/15%.
-  - Dark:  weapon blows drain 2/4/6% of their damage as hit points,
-           negative damage +5/10/15%.
+  - Dark: weapon blows drain 2/4/6% of their damage as hit points,
+    negative damage +5/10/15%.
   - Balanced: holy and negative damage against you -15%.
-  - Experience: +10% a tier for slaying the other side (balanced: +10%
-    for slaying either).  No kill ever pays less for its alignment.
-  - Shops: a keeper of your side charges up to 10% less (never below
-    what the thing is worth); one of the other side charges 10% more and
-    pays 10% less for what you sell.  Neutral keepers, balanced customers
-    and the black market trade at the list price.
-  - Gear: an item marked anti-good, anti-evil or anti-neutral will not be
-    worn by that side, and zaps off if you cross over while wearing it.
-    IDENTIFY says who may wear it.
-  - Spells: KNOW ALIGNMENT names a player's tier; DETECT GOOD and DETECT
-    EVIL mark the sides; DISPEL GOOD, DISPEL EVIL and PROTECTION EVIL
-    bite by side.
+  - Experience: +10% a tier for slaying the other side; balanced, +10%
+    for slaying either.  No kill pays less for its alignment.
+  - Shops: a keeper of your side charges up to 10% less, never below
+    worth; one of the other side charges 10% more and pays 10% less.
+    Neutral keepers, balanced customers and the black market keep to the
+    list price.
+  - Gear marked anti-good, anti-evil or anti-neutral will not be worn by
+    that side, and zaps off if you cross over; IDENTIFY says who may
+    wear it.
+  - Spells: KNOW ALIGNMENT names a tier; DETECT GOOD and DETECT EVIL mark
+    the sides; DISPEL GOOD, DISPEL EVIL and PROTECTION EVIL bite by side.
 
-See also: SCORE, 'KNOW ALIGNMENT', 'DETECT EVIL', 'DETECT GOOD'
+See also: ALIGNMENT, 'DETECT EVIL', 'DETECT GOOD'
 ~
 
 0 CLASS CLASSES MULTICLASS~
-Six classes are played in Times of Chaos.  Each has a help entry of its
-own, written by its guildmaster:
+Six classes are played.  Each has a help entry of its own:
 
   WARRIOR      strength, heavy weapons and armour; the front line
   THIEF        dexterity, daggers, stealth and backstab
@@ -6834,17 +6021,17 @@ own, written by its guildmaster:
   MONK         hand to hand, nerve strikes and discipline
   NECROMANCER  the dead raised to fight for you
 
-HELP <class> reads it.  Your class is chosen when the character is made
-and changes only at a REMORT, where every life must be a different class;
-HELP REMORT has the rules.  Guilds are a separate choice: HELP GUILDS.
+You choose a class when you make a character, and change it only at a
+REMORT: each life must be a class you have not lived, until the fifth
+remort, which may choose any ('REMORT CLASSES').  A guild is a separate
+choice (HELP GUILDS).
 
-There is no multiclassing as such.  A class with a guild is the nearest
-thing: a warrior in the thieves' guild (W/T) learns from both trainers,
-and a full warrior (W/W) gets what only the full class gets, like third
-attack.  Over several remorts a character lives as several classes in
-turn and keeps some of what each life earned.
+There is no multiclassing.  A class in another class's guild is the
+nearest thing: a warrior in the thieves' guild (W/T) learns from both,
+while a full warrior (W/W) gets what only the full class gets, such as
+third attack.
 
-See also: RACES, GUILDS, REMORT, ATTRIBUTES
+See also: GUILDS, REMORT, RACES, ATTRIBUTES
 ~
 
 0 WANTED KILLER~

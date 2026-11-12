@@ -185,11 +185,12 @@ world are of the first kind; a key or `doorbash` is the way through them.
 
 ### Recall
 
-`recall`, or `/`, prays for transport to your recall point. It costs half your
-movement, it can fail on a skill check, and on a rare bad roll it drops you in
-a random eligible room instead - so it is a good escape, not a guaranteed one.
-Recalling out of combat also costs experience. From the fourth remort on it
-always succeeds and never misfires.
+`recall`, or `/`, prays for transport to your recall point. It halves your
+movement (out of a fight, only up to level 57), it can fail on a skill check,
+and about one recall in twenty-five drops you in a random eligible room
+instead, so it is a good escape, not a guaranteed one. Recalling out of a
+fight also costs 25 experience. From the third remort on it always succeeds
+and never misfires.
 
 Your recall point starts at the Temple of Devota in Dresden, and you can move
 it:
@@ -605,9 +606,10 @@ emote <action>
 note ...
 ```
 
-Use `channels` to review channel state, `quiet` to suppress channels, `deaf` for
-shouts, `ignore <name>` for a player, and `afk` when stepping away. Read `rules`
-and `help rules` before using public channels or PK systems. Report content
+Use `channels` to review channel state, `quiet` to hear only says and emotes,
+`deaf` to stop tells, `shout` alone to stop shouts, `ignore <name>` for a
+player, and `afk [message]` when stepping away. Read `rules` and
+`help rules` before using public channels or PK systems. Report content
 problems with `bug`, `typo`, and `idea`.
 
 ## Quests And Player Killing
@@ -648,11 +650,12 @@ return portals.
   Container, and ordinary enemies sometimes drop gold coins, a heart, a bottled
   fairy or a clock-flask (quaff the last three).
 - The dungeons are done in order. Each needs the previous dungeon's Triforce
-  piece to enter and its treasure to reach the guardian; the guardian drops a
-  key to the locked room behind it, where a locked chest holds this dungeon's
-  piece and treasure. `help hyrule` has the whole chain. Every guardian is
-  sized to beat a lone character at the top of its band: go well above it,
-  or go with friends.
+  piece to enter and its treasure to reach the guardian; the guardian's death
+  gives every player it credits a key of their own to the locked room behind
+  it, where a locked chest holds this dungeon's piece and treasure. Taking the
+  piece spends the key, and a key is lost at `quit`. `help hyrule` has the
+  whole chain. Every guardian is sized to beat a lone character at the top
+  of its band: go well above it, or go with friends.
 - Ganon is a fight for a group, ideally with two Silver Arrows: he blinks
   about the dark throwing fireballs no parry stops, and heals if left alone.
   His Golden Key opens Zelda's chamber and the great chest there, which holds
@@ -677,8 +680,8 @@ return portals.
   you walk in, the take-any caves give a Heart Container or a red potion, and
   the White and Magical Swords want 5 and 12 hearts (`hearts`). `help hyrule
   secrets` has them all.
-- Every guardian also drops two pieces of a five-piece armour table, each a
-  little better than anything else a character of its band can find.
+- Every guardian also drops three pieces from its own table of ten or eleven,
+  each the best a character of its band can find.
 - Other weapons and spells can wound Ganon, but no normal attack can kill him.
   Normal strikes with the wielded Silver Arrow still use full weapon mastery
   and deal at least 10% of his maximum health after defenses.
@@ -688,8 +691,9 @@ return portals.
   room to deliver the final blow. This special shot always lands, requires no
   Archery skill, and does not consume the Arrow. `Look ganon` repeats the
   instruction during this vulnerable phase.
-- Ganon's corpse always contains the Golden Key, his crown and trident, two
-  pieces of his drop table, and one random mortal relic:
+- Ganon's death gives every player it credits the Golden Key, and his corpse
+  holds his crown and trident, three pieces of his drop table, and one random
+  mortal relic:
   the Hero's Tunic, Mirror Shield, or Pegasus Boots. Their levels range from
   54 through 56, and each has a real defensive, recovery, or travel passive
   described by `examine` and modeled by `compare`. The Red Ring of Hyrule is
@@ -752,7 +756,7 @@ normal hazard.
 
 Use `save` after leveling, changing equipment, training, receiving important
 items, or completing a difficult objective. Use the full `quit` command when
-leaving; the abbreviated `qui` exists to prevent accidental quits.
+leaving; `qui` runs `quiet`, not `quit`.
 
 Change a password with the documented `password` command, using a unique value.
 A new password counts every character. A password carried over from the old DES
