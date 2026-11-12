@@ -3495,6 +3495,10 @@ void update_handler( void )
     walkto_update( );
     playlog_phase_enter( "fight_lag_update" );
     fight_lag_update( );
+    /* A Hyrule dungeon's own map, compass and keys crumble once it is left
+       (hyrule.c). */
+    playlog_phase_enter( "hyrule_crumble_update" );
+    hyrule_crumble_update( );
     playlog_phase_enter( "oracle_daze_update" );
     oracle_daze_update( );
     /* Player corpses written down within a second of a change. */

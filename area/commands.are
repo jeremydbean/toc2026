@@ -1468,6 +1468,8 @@ The dungeons are done in order, and each works the same way:
   - The key opens the door behind the guardian and the chest there.
     Taking the piece spends it; the chest keeps a piece for the rest of
     the party.  Keys are lost at QUIT.
+  - The dungeon's map, compass and small keys crumble when you leave
+    it; see 'HYRULE ITEMS'.
   - Pieces and tools cannot be dropped, given or sold.  Most tools lie in
     a cellar down a block stair (PUSH BLOCK, then DOWN), and each player
     who takes one gets a copy of their own.
@@ -2772,6 +2774,13 @@ What Hyrule's things do:
                   Dock of Lake Hylia to the Lonely Isle.
   Stepladder      The coast's Heart Container ledge, and Level 5's moat.
 
+A dungeon's own things -- its map, its compass and the small keys found
+in it -- crumble to dust when you leave it, however you leave: walking
+out, recall, a portal, a death.  They are found again on your next visit.
+What the map showed you stays on your map (MAPS, and the Mudlet map).
+The small keys the shops sell are kept, and so is a guardian's key until
+its chest has given you its prize.  Quitting inside a dungeon keeps them.
+
 Guardians' drops: HELP 'HYRULE GUARDIANS'.
 
 See also: BOMB, SHOOT, HEARTS, 'HYRULE SECRETS', HYRULE
@@ -3607,7 +3616,8 @@ minutes and when you quit, so you seldom need it; it costs a few seconds
 of lag.
 
 Some things are never saved, and are gone at your next login:
-  - keys, except Hyrule's small keys
+  - keys, except Hyrule's small keys (a dungeon's own crumble when you
+    leave it: HELP 'HYRULE ITEMS')
   - a blank map
   - an active quest's recovery item
 

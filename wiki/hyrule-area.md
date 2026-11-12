@@ -1103,6 +1103,12 @@ Runtime rules add the behaviors the area format cannot express alone:
 
 - Hyrule small keys -- the dungeons' own and the two the shops sell -- are
   consumed by the lock and kept through a quit; the Magical Key is reusable.
+- A dungeon's map, its compass and the dungeons' own small keys (30227)
+  crumble when the dungeon is left, by any way out (owner, 2026-11-12:
+  `hyrule_crumble_update` in `src/hyrule.c`, once a pulse); so does a
+  guardian's key once its holder has the chest's prize. The shops' keys,
+  tools, pieces and everything else are kept, and the map's plan stays on
+  the client's map (`AchMaps`). `tests/test_hyrule_crumble.py`.
 - Shutters open when aggressive room guardians are defeated, and nothing
   opens them before: not OPEN, PICK, DOORBASH or a ghost's pass door.
 - A puzzle's way is secret (`D` reset state 4) until its act opens it, and an

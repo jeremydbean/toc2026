@@ -1091,6 +1091,7 @@ void  playlog_phase_enter    args( ( const char *phase ) );
 void  playlog_blow           args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
 void  playlog_death          args( ( CHAR_DATA *killer, CHAR_DATA *victim ) );
 void  playlog_obj_gone       args( ( OBJ_DATA *obj ) );
+void  playlog_obj_gone_as    args( ( const char *why ) );
 void  playlog_end            args( ( CHAR_DATA *ch, const char *cmd_name, const char *shown,
                                      bool secret, bool refused, const char *out, int out_len,
                                      long ms, int pos_before, int hp_pct_before,
@@ -2575,6 +2576,10 @@ struct  pc_data
        saved: a login starts outside. */
     int                 hylog_zone;
     time_t              hylog_since;
+    /* Where the dungeon-only things were last checked (hyrule.c,
+       hyrule_crumble_update): 0 not yet known, else hylog's zone + 1.
+       Not saved: a login starts unknown, so nothing crumbles for it. */
+    int                 hyrule_crumble_zone;
     /* The room the Blue Candle last flamed in; it flares once a room, and
        leaving clears it (char_from_room). Not saved. */
     int                 hyrule_candle_room;
@@ -4135,6 +4140,8 @@ void    hylog_guardian_down ( CHAR_DATA *ch, CHAR_DATA *guardian );
 void    hylog_flee          ( CHAR_DATA *ch, CHAR_DATA *foe );
 void    hylog_death         ( CHAR_DATA *killer, CHAR_DATA *victim );
 void    hylog_room_cleared  ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool foe_died );
+void    hylog_crumbled      ( CHAR_DATA *ch, int dungeon, int maps, int compasses,
+                              int keys, int guardian_keys, bool leaving );
 const char *playlog_how     ( CHAR_DATA *ch );
 void    playlog_from        ( const char *where );
 void    playlog_got         ( CHAR_DATA *ch, OBJ_DATA *obj );
@@ -4149,6 +4156,8 @@ void    playlog_quest       ( CHAR_DATA *ch, const char *kind, const char *targe
 
 /* hyrule.c */
 bool    hyrule_is_dungeon_tool ( const OBJ_DATA *obj );
+void    hyrule_crumble_update  ( void );
+int     hyrule_crumble_leftovers ( CHAR_DATA *ch );
 void    hyrule_show_map        ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    hyrule_show_compass    ( CHAR_DATA *ch, OBJ_DATA *obj );
 bool    hyrule_look_tool       ( CHAR_DATA *ch, char *argument );

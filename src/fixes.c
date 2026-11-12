@@ -206,6 +206,28 @@ static bool fix_quest_token_serials( CHAR_DATA *ch )
     return true;
 }
 
+/*
+ * A Hyrule dungeon's map, compass and small keys crumble once it is left
+ * (hyrule.c, owner 2026-11-12). Characters who left one before that carry
+ * them still: those that serve a dungeon they are not in now go the same
+ * way (inside a dungeon, its own stay). The maps they taught are kept.
+ */
+static bool fix_hyrule_dungeon_leftovers( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    int count;
+
+    if ( IS_NPC(ch) || IS_IMMORTAL(ch) )
+        return false;
+    count = hyrule_crumble_leftovers( ch );
+    if ( count == 0 )
+        return false;
+    snprintf( buf, sizeof(buf), "Hyrule leftovers: %d of %s's dungeon-only objects crumbled.",
+              count, ch->name );
+    log_string( buf );
+    return true;
+}
+
 static const PLAYER_FIX player_fixes[] =
 {
     /* Creation gave every new non-mage the mage's starting groups,
@@ -229,6 +251,12 @@ static const PLAYER_FIX player_fixes[] =
        too: binding a token to its holder takes nothing from anybody. */
     { "20261112-quest-serial", "quest items bound to the old Id",
       fix_quest_token_serials, true },
+    /* Hyrule dungeon maps, compasses and small keys carried out of their
+       dungeon before they crumbled on leaving. Run for every trust, so a
+       mortal trusted to build gets it too; the function leaves immortals
+       by level alone, as the crumbling does. */
+    { "20261112-hyrule-crumble", "Hyrule dungeon items carried out of their dungeon",
+      fix_hyrule_dungeon_leftovers, true },
 };
 
 #define PLAYER_FIX_COUNT ( (int)( sizeof(player_fixes) / sizeof(player_fixes[0]) ) )

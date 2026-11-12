@@ -1341,6 +1341,36 @@ candle and small keys stay tradeable: bought or spent, they carry nobody
 past a gate. A key goes at a quit like every key, and the guardian must be
 beaten again. `tests/test_hyrule_guardian_keys.py`.
 
+**A dungeon's own things crumble once it is left** (owner, 2026-11-12:
+"i don't want a players inventory cluttered with items that are useless
+after a dungeon run"). `crumble_kind` in `hyrule.c` names them: the
+dungeon's map and compass (`value[4]`, crumbled unless the holder is in
+that dungeon), the dungeons' own small keys (`HYRULE_SMALL_KEY`, 30227 --
+every reset that lays one is inside a dungeon, so one carried across a
+dungeon's edge either way opens nothing ahead), and a guardian's key once
+`holds_chest_prize` (an unspent one is kept, so a hurt player may step out
+to heal and come back for the chest). Never the shops' small keys (bought
+for any dungeon), a tool, a piece, gear, bombs or coin; never the stash or
+the floor; never an immortal by level. **It is checked once a pulse, never
+in `char_to_room`** (`hyrule_crumble_update`, beside `fight_lag_update`):
+each playing character's zone (hylog's numbering; the idle void and the
+Oracle's sanctum count as the room the character was taken from,
+`was_in_room` and `oracle_saved_room`) against `pcdata->hyrule_crumble_zone`
+from the last check, memory only -- so SCAN and AT, which step out and back
+within a pass, and those two trips crumble nothing; a new way of taking a
+player somewhere and back counts in `crumble_zone` the same way. No
+caller of `char_to_room` loses an object it holds, and a login starts
+unknown, so quitting inside a dungeon keeps its things. Everything carried or worn at any depth is collected
+first, then extracted, with `playlog_obj_gone_as("crumbled leaving Level
+N")` naming the journal's item rows, a `crumbled` row in
+`log/hyrule.tsv`, and a save. **What a map taught is never taken**:
+`AchMaps` is untouched, so Map.Known still unfogs the dungeon, MAPS lists
+it, and `hyrule_map_on_arrival` sends the plan from the prototype
+(`dungeon_plan`) when no map is carried. The login fix
+`20261112-hyrule-crumble` runs the same sweep for leftovers from before
+(`hyrule_crumble_leftovers`: inside a dungeon its own things stay).
+`tests/test_hyrule_crumble.py`.
+
 **Characters are known by serial, never by the file Id** (review of
 d19b0e92, 2026-11-12: two ungrouped characters sharing an Id, one fighting
 Aquamentus and one idle in its room, and the idle one got the key). `Id`
