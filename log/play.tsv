@@ -22338,3 +22338,12 @@
 1794451168	cmd	Trentlin	37	4208	dresden.are	standing	57	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body; that is all you can pay for. (2 castings, 1000 gold.)	-	-
 1794451172	coin	Trentlin	37	4208	dresden.are	-400000	spent	heal	-	15243410805
 1794451172	cmd	Trentlin	37	4208	dresden.are	standing	85	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
+1794451178	state	Trentlin	37	4208	dresden.are	lvl=37 hp=675/786 mana=281/1588 mv=407/407 align=-9 exp=85659 coin=4222398 bank=15239188407 qp=3716 prac=6 train=0 stash=47/75 remorts=1
+1794451178	cmd	Trentlin	37	4208	dresden.are	standing	85	0	-	score		| Name:       Trentlin | Level:      37 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794451185	cmd	Trentlin	37	4207	dresden.are	standing	85	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794451186	cmd	Trentlin	37	4205	dresden.are	standing	85	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794451186	cmd	Trentlin	37	4209	dresden.are	standing	85	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1794451186	cmd	Trentlin	37	4209	dresden.are	standing	85	0	-	south		Alas, you cannot go that way.	-	-
+1794451187	cmd	Trentlin	37	4209	dresden.are	standing	85	0	-	south		Alas, you cannot go that way.	-	-
+1794451187	cmd	Trentlin	37	4209	dresden.are	standing	85	0	-	sleep		You go to sleep.	-	-
+1794451188	session	Trentlin	37	4209	dresden.are	quit	107s	+0 levels	+0 exp	+2491728 copper	0 kills	0 deaths	1 quests	85 commands	0 refused	coin: quests 13p 59g 17s 28c, spent 11p 10g	spent on: heal 11p 10g	exp: none

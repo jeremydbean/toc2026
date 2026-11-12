@@ -290314,3 +290314,23 @@ Thu Nov 12 02:39:28 2026 :: Log Trentlin [4208]: gold -500
 Thu Nov 12 02:39:28 2026 :: Log Trentlin [4208]: gold -500
 Thu Nov 12 02:39:32 2026 :: Log Trentlin [4208]: heal refres
 Thu Nov 12 02:39:32 2026 :: Log Trentlin [4208]: gold -40
+Thu Nov 12 02:39:38 2026 :: Log Trentlin [4208]: sco
+Thu Nov 12 02:39:45 2026 :: Log Trentlin [4208]: e
+Thu Nov 12 02:39:45 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 02:39:46 2026 :: Log Trentlin [4207]: s
+Thu Nov 12 02:39:46 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4207
+Thu Nov 12 02:39:46 2026 :: Log Trentlin [4205]: s
+Thu Nov 12 02:39:46 2026 :: Log Trentlin [4209]: arrived (Private Prayer Room.) from 4205
+Thu Nov 12 02:39:46 2026 :: Log Trentlin [4209]: s
+Thu Nov 12 02:39:47 2026 :: Log Trentlin [4209]: s
+Thu Nov 12 02:39:47 2026 :: Log Trentlin [4209]: sleep
+Thu Nov 12 02:39:48 2026 :: Log Trentlin [4209]: quit
+Thu Nov 12 02:39:48 2026 :: Trentlin has quit.
+Thu Nov 12 02:39:48 2026 :: [QUIT] Player rejoined the real world.
+Thu Nov 12 02:41:29 2026 :: Black market: the dealer vanished from room 25277 (The second floor of the tower., mushroom.are) (wandering).
+Thu Nov 12 02:43:29 2026 :: Treasure goblin: vanished from room 28030 (The Ancient Hall, pyramid.are) (too long in one area).
+Thu Nov 12 02:43:58 2026 :: Log Killuminati [10176]: vnum magic
+Thu Nov 12 02:44:05 2026 :: Log Killuminati [10176]: load obj 30415
+Thu Nov 12 02:44:07 2026 :: Log Killuminati [10176]: look book
+Thu Nov 12 02:44:12 2026 :: Log Killuminati [10176]: read book
+Thu Nov 12 02:44:25 2026 :: Black market: the dealer vanished from room 1629 (The Dining Hall, wyvern.are) (wandering).
