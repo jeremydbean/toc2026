@@ -116,9 +116,11 @@ AGENTS.md for why they disagree.
 ### What the host is
 
 - Oracle Cloud Always Free, ARM (aarch64) Ubuntu 24.04
-- IP `129.159.105.156` (a reserved IP; `toc.jeremybean.com` resolves to it)
+- IP `129.159.105.156` (a reserved IP; `timesofchaos.com`, `www.timesofchaos.com`
+  and the older `toc.jeremybean.com` resolve to it)
 - SSH user `ubuntu`, port 22
-- Exposed: game 9000, dashboard 9001, SSH 22
+- Exposed: game 9000, website 80/443 (Caddy; the dashboard is on 127.0.0.1:9001
+  behind it once `toc-web-proxy` has run -- see disaster-recovery.md), SSH 22
 - On the box: `/srv/toc/build` (the checkout `toc-deploy` builds), `/srv/toc/current`
   (the live tree), units `toc-game`, `toc-web`, `toc-state-sync`,
   `toc-auto-deploy`, `toc-daily-backup`.

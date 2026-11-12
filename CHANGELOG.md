@@ -8,6 +8,34 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The website moves to https://timesofchaos.com, behind Caddy** (owner,
+  2026-11-12: "i purchased timesofchaos.com and want to host the admin
+  panel on port 80 and the game on 9000"). Caddy on 80 and 443
+  (`deploy/windows-vm/Caddyfile`; Let's Encrypt, 80 only redirects, `www.`
+  and `toc.jeremybean.com` redirect to it) reverse-proxies everything,
+  WebSockets included, to the dashboard on `127.0.0.1:9001`, which is no
+  longer public. The game stays plain Telnet on 9000. The dashboard gains a
+  proxy mode (`--proxy-headers`, `WEB_ADMIN_PROXY_HEADERS`, off by default):
+  `ForwardedPeerMiddleware` keeps the TCP peer and, only from
+  `--forwarded-allow-ips` (127.0.0.1; `*` refused), takes the client from
+  `X-Forwarded-For` and the scheme from `X-Forwarded-Proto` -- so the game
+  bridge's PROXY line names the player instead of a loopback address the
+  connection guard and login lockouts exempt, and same-origin checks pass
+  over https. uvicorn's own forwarded-header rewrite (on by default for
+  loopback) is turned off so the peer is kept. The loopback auto-unlock is
+  refused in proxy mode and for any request carrying a forwarding header,
+  and reads the socket peer, never the forwarded client: through a proxy on
+  the same machine it would have handed an admin cookie to anyone.
+  `toc-web.service` binds `WEB_ADMIN_LISTEN` (default `0.0.0.0`, so a deploy
+  of the unit moves nothing); `deploy/windows-vm/toc-web-proxy` (run once on
+  the host; `--dry-run`, `--rollback`) installs and validates Caddy, opens
+  80 and 443 in iptables, starts Caddy and checks it, and only then writes
+  the proxy lines into `/etc/toc/web.env` and restarts the dashboard,
+  putting both back if it does not return. The advertised name is
+  `timesofchaos.com` in help (WEB, WEBCLIENT, MUDLET, the greeting), the
+  web pages, `MUD_PUBLIC_HOST`'s default and the guides
+  (`tests/test_web_proxy.py`).
+
 - **The repository root is tidier: Docker, community files and fuzzing
   moved** (owner, 2026-11-12: "sort things in a logistically intuitive
   layout"). `Dockerfile` is `docker/Dockerfile` and `docker-compose.yml`

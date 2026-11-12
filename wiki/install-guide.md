@@ -3,8 +3,8 @@
 This is the guide to running your own copy of Times of Chaos: on your own
 computer to play or build, or on a server for other people. To play on the
 public server instead, nothing needs installing: open
-`http://toc.jeremybean.com:9001/client`, or point a MUD client at
-`toc.jeremybean.com` port `9000`.
+`https://timesofchaos.com/client`, or point a MUD client at
+`timesofchaos.com` port `9000`.
 
 Every installer is one command, safe to run again, and ends with the game
 running and a link to play it.

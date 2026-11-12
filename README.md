@@ -15,8 +15,8 @@ play, player killing, permanent achievements, advanced equipment comparison,
 and a large collection of hand-built areas.
 
 > **Where the live game runs:** the public server is an Oracle Cloud
-> instance (Always Free ARM, Ubuntu 24.04) that `toc.jeremybean.com`
-> resolves to. Operators and automated sessions should read
+> instance (Always Free ARM, Ubuntu 24.04) that `timesofchaos.com`
+> resolves to (the older `toc.jeremybean.com` points there too). Operators and automated sessions should read
 > [Disaster Recovery](wiki/disaster-recovery.md) for the deploy command,
 > backups, and rebuild procedure.
 
@@ -127,15 +127,16 @@ on this computer it unlocks itself, elsewhere it asks for `WEB_ADMIN_TOKEN`
 from `.env`, which the installers never print or replace.
 
 To reach the live public server instead of a local copy, use
-`http://toc.jeremybean.com:9001/client` for the browser client and
-`http://toc.jeremybean.com:9001/` for the dashboard. Keep the `:9001`
-port -- a bare URL targets port 80, where ToC does not listen. The game
-itself is `toc.jeremybean.com` port `9000` for any MUD client.
+`https://timesofchaos.com/client` for the browser client and
+`https://timesofchaos.com/` for the dashboard (Caddy serves the website on
+the standard ports there; the dashboard itself listens on the host's
+loopback). The game itself is `timesofchaos.com` port `9000` for any MUD
+client.
 
 ### Mudlet (Recommended Desktop Client)
 
 Leave **Enable GMCP** and **Allow server to install script packages** enabled,
-then connect to `toc.jeremybean.com` port `9000` (or `localhost:9000` for a
+then connect to `timesofchaos.com` port `9000` (or `localhost:9000` for a
 local server). The server automatically supplies the official package and Mud
 School map. The interface includes live health, mana, movement, and experience
 gauges plus an embedded mapper; `Room.Info` continues mapping as the character

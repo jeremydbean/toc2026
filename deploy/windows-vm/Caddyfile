@@ -1,0 +1,41 @@
+# Times of Chaos: the website at https://timesofchaos.com.
+#
+# Installed as /etc/caddy/Caddyfile by deploy/windows-vm/toc-web-proxy;
+# edit it here, not on the host, and run that script again.
+#
+# Caddy answers on 80 and 443 and gets the certificates itself (Let's
+# Encrypt, HTTP-01 and TLS-ALPN-01, renewed on its own). Port 80 only
+# redirects to HTTPS: the admin token travels in X-Admin-Token and must
+# never cross plain HTTP. The dashboard (webadmin.server) listens on
+# 127.0.0.1:9001 behind it with WEB_ADMIN_PROXY_HEADERS=1, so it takes the
+# player's address from X-Forwarded-For -- from loopback only. Caddy
+# replaces any X-Forwarded-For a client sends (no trusted_proxies here),
+# so the address it hands on is the one it saw.
+#
+# The game itself is plain Telnet on 9000 and does not pass through here.
+
+timesofchaos.com {
+	# Nothing the dashboard accepts is larger than a command line.
+	request_body {
+		max_size 1MB
+	}
+	# Every path, the WebSockets (/ws, /ws/logs, /ws/events) included:
+	# reverse_proxy carries an Upgrade through as it is. The Host header
+	# is passed as the browser sent it, which the dashboard's same-origin
+	# checks compare against Origin.
+	reverse_proxy 127.0.0.1:9001
+
+	# HSTS is deliberately not sent: a browser that had it would refuse
+	# plain http://timesofchaos.com:9001 after a rollback (toc-web-proxy
+	# --rollback puts the dashboard back on public 9001 over HTTP).
+}
+
+www.timesofchaos.com {
+	redir https://timesofchaos.com{uri} permanent
+}
+
+# The old name, while its DNS record still points here: every page goes
+# to the new one. The game on toc.jeremybean.com:9000 is untouched.
+toc.jeremybean.com {
+	redir https://timesofchaos.com{uri} permanent
+}

@@ -467,6 +467,16 @@ Recommended order: A1 -> A2 -> A3 -> A4 -> A5. The rest can go in any order.
 
 #### A1. TLS in front of the dashboard; admin refused over plaintext (M)
 
+- **Largely done, 2026-11-12, differently**: Caddy (not nginx) on 80 and
+  443 at `https://timesofchaos.com`, the dashboard moved straight to
+  `127.0.0.1:9001` (step 4 at once, so no plaintext admin path remains and
+  `WEB_ADMIN_REQUIRE_TLS` was not needed), proxy mode as
+  `WEB_ADMIN_PROXY_HEADERS` with the dashboard's own middleware (uvicorn's
+  turned off, so the true peer is kept), and the local unlock refused in
+  proxy mode or with any forwarding header. HSTS is not sent yet (it would
+  break a rollback to plain 9001). See `deploy/windows-vm/toc-web-proxy`,
+  `tests/test_web_proxy.py` and `wiki/disaster-recovery.md` "The website".
+  The text below is the original proposal.
 - **Exists**: the public HTTP listener (`toc-web.service` l.21,
   `--host 0.0.0.0`). `.github/SECURITY.md` "HTTPS Reverse Proxy" lists the
   requirements. "Planned: A TLS Player Port" already chooses Ubuntu's

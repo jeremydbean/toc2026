@@ -203,6 +203,14 @@ cat <<'NOTE'
        /srv/toc/.ssh/id_ed25519_state_sync (owned by toc, mode 600), its
        public half added to the repo as a deploy key with write access.
        Until it is there the game runs but backups do not resume.
+
+   The website comes up on public port 9001 (http). To put it back
+   behind Caddy at https://timesofchaos.com on 80 and 443, with the
+   dashboard on 127.0.0.1:9001, run once:
+       sudo sh /srv/toc/build/deploy/windows-vm/toc-web-proxy
+   (DNS for timesofchaos.com and www must point at this machine, and
+   TCP 80 and 443 be open in the provider's firewall, for its
+   certificate; see wiki/disaster-recovery.md.)
 NOTE
 
-say "done -- game is up and self-restarting; see the two manual steps above"
+say "done -- game is up and self-restarting; see the manual steps above"

@@ -1,0 +1,415 @@
+#!/bin/sh
+# Put the website behind Caddy at https://timesofchaos.com.
+#
+#   sudo sh /srv/toc/build/deploy/windows-vm/toc-web-proxy --dry-run
+#   sudo sh /srv/toc/build/deploy/windows-vm/toc-web-proxy
+#   sudo sh /srv/toc/build/deploy/windows-vm/toc-web-proxy --rollback
+#
+# Run once on the host, as root, after the commit that carries it is live
+# (toc-deploy leaves /srv/toc/build at the deployed commit). It is safe to
+# run again: every step checks before it changes anything.
+#
+# What it does, in this order, so the website is never left dark:
+#
+#   1. installs Caddy from Ubuntu's archive (`apt-get install caddy`) and
+#      the committed Caddyfile (deploy/windows-vm/Caddyfile), checked with
+#      `caddy validate` before it replaces anything;
+#   2. opens TCP 80 and 443 in the instance's iptables, an ACCEPT inserted
+#      before the image's REJECT rule, saved with netfilter-persistent;
+#   3. starts Caddy and checks it answers on port 80 -- the dashboard is
+#      still public on 9001 until this has passed, so a Caddy that will
+#      not install, validate or start changes nothing anybody sees;
+#   4. only then moves the dashboard: the committed toc-web.service, and in
+#      /etc/toc/web.env WEB_ADMIN_LISTEN=127.0.0.1, WEB_ADMIN_PROXY_HEADERS=1,
+#      WEB_ADMIN_FORWARDED_ALLOW_IPS=127.0.0.1, WEB_ADMIN_LOCAL_UNLOCK=0 and
+#      MUD_PUBLIC_HOST=timesofchaos.com (every other line, the token
+#      included, is kept, and the file keeps its owner and mode). If the
+#      dashboard does not come back on 127.0.0.1:9001, the unit and the
+#      file go back as they were and it is restarted on them.
+#   5. checks https://timesofchaos.com/api/health through Caddy, and only
+#      warns if that fails: the certificate needs the DNS records and the
+#      OCI security list (80 and 443) in place, and Caddy keeps trying.
+#
+# --rollback puts the dashboard back on public 9001 (the proxy lines come
+# out of web.env; MUD_PUBLIC_HOST and WEB_ADMIN_LOCAL_UNLOCK=0 stay), then
+# stops and disables Caddy. The Caddy package, its Caddyfile and the 80/443
+# firewall rules are left: nothing listens behind them once Caddy is
+# stopped, and running this again needs them.
+#
+# The 9001 firewall rule is left alone either way: once the dashboard
+# listens on 127.0.0.1 nothing outside can reach it, and a rollback needs
+# it open again. It never touches the game, its port 9000, player data or
+# the state sync, and it never prints a value from web.env.
+set -eu
+
+DOMAIN="${TOC_WEB_DOMAIN:-timesofchaos.com}"
+BUILD="${BUILD:-/srv/toc/build}"
+CURRENT="${CURRENT:-/srv/toc/current}"
+SRC="$BUILD/deploy/windows-vm"
+WEB_ENV="${TOC_WEB_ENV:-/etc/toc/web.env}"
+CADDY_DIR="${TOC_CADDY_DIR:-/etc/caddy}"
+UNIT_DIR="${TOC_UNIT_DIR:-/etc/systemd/system}"
+STATE="${TOC_WEB_PROXY_STATE:-/var/lib/toc-web-proxy}"
+WEB_PORT=9001
+# The keys proxy mode adds, which a rollback takes out again.
+PROXY_KEYS="WEB_ADMIN_LISTEN WEB_ADMIN_PROXY_HEADERS WEB_ADMIN_FORWARDED_ALLOW_IPS"
+
+MODE=apply
+case "${1:-}" in
+    '') ;;
+    --dry-run) MODE=dry ;;
+    --rollback) MODE=rollback ;;
+    -h|--help)
+        sed -n '2,40p' "$0" | sed 's/^# \{0,1\}//'
+        exit 0 ;;
+    *)
+        echo "usage: $0 [--dry-run | --rollback]" >&2
+        exit 2 ;;
+esac
+
+say() { printf '==> %s\n' "$*"; }
+note() { printf '   %s\n' "$*"; }
+warn() { printf '   WARNING: %s\n' "$*" >&2; }
+die() { printf '   FAILED: %s\n' "$*" >&2; exit 1; }
+
+# Change something, or in a dry run say what would be changed.
+run() {
+    if [ "$MODE" = dry ]; then
+        printf '   would run: %s\n' "$*"
+        return 0
+    fi
+    "$@"
+}
+
+if [ "$(id -u)" != 0 ] && [ "${TOC_WEB_PROXY_ANY_USER:-0}" != 1 ]; then
+    die "run it as root: sudo sh $0 ${1:-}"
+fi
+
+# A deploy restarts toc-web and resets the build tree this reads; wait for
+# neither, just refuse while one runs (the lock toc-deploy and
+# toc-game-recovery share).
+if [ "${TOC_DEPLOY_LOCKED:-0}" != 1 ] && command -v flock >/dev/null 2>&1; then
+    exec 9>"${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
+    flock -n 9 || die "a deploy is running; try again when it has finished"
+fi
+
+# ------------------------------------------------------------ web.env edits
+# Set KEY=VALUE, removing every earlier line for KEY, or (VALUE empty and
+# third argument "remove") take KEY out. Written aside in the same
+# directory and renamed over the file, keeping its owner and mode; the
+# values in it are never printed.
+env_edit() {
+    key=$1 value=$2 action=${3:-set}
+    tmp="$WEB_ENV.toc-web-proxy.$$"
+    ( umask 077
+      grep -v "^$key=" "$WEB_ENV" > "$tmp" || true
+      [ "$action" = remove ] || printf '%s=%s\n' "$key" "$value" >> "$tmp" )
+    chown --reference="$WEB_ENV" "$tmp" 2>/dev/null || true
+    chmod --reference="$WEB_ENV" "$tmp"
+    mv -f "$tmp" "$WEB_ENV"
+}
+
+# The value KEY has now (the last line wins, as systemd reads it). Used
+# only to compare, never shown.
+env_value() {
+    grep "^$1=" "$WEB_ENV" 2>/dev/null | tail -n 1 | cut -d= -f2- || true
+}
+
+env_set() {
+    if [ "$(env_value "$1")" = "$2" ] && [ "$(grep -c "^$1=" "$WEB_ENV")" = 1 ]; then
+        note "web.env: $1 already set"
+        return 0
+    fi
+    if [ "$MODE" = dry ]; then
+        note "would set $1 in $WEB_ENV"
+        return 0
+    fi
+    env_edit "$1" "$2"
+    note "web.env: set $1"
+}
+
+env_remove() {
+    grep -q "^$1=" "$WEB_ENV" 2>/dev/null || return 0
+    if [ "$MODE" = dry ]; then
+        note "would remove $1 from $WEB_ENV"
+        return 0
+    fi
+    env_edit "$1" "" remove
+    note "web.env: removed $1"
+}
+
+# ------------------------------------------------------------------ checks
+web_healthy() {
+    n=0
+    while [ "$n" -lt "${TOC_WEB_PROXY_WAIT:-15}" ]; do
+        if curl --fail --silent --max-time 3 "http://127.0.0.1:$WEB_PORT/api/health" |
+               grep -q '"status":"ok"'; then
+            return 0
+        fi
+        n=$((n + 1)); sleep 2
+    done
+    return 1
+}
+
+# Who listens on the dashboard's port: the local addresses, one a line.
+web_listeners() {
+    ss -Hltn "sport = :$WEB_PORT" 2>/dev/null | awk '{print $4}'
+}
+
+listening_only_on_loopback() {
+    found=0
+    for addr in $(web_listeners); do
+        found=1
+        case "$addr" in
+            127.0.0.1:*|'[::1]:'*) ;;
+            *) return 1 ;;
+        esac
+    done
+    [ "$found" = 1 ]
+}
+
+caddy_answers() {
+    n=0
+    while [ "$n" -lt "${TOC_WEB_PROXY_WAIT:-15}" ]; do
+        code=$(curl --silent --output /dev/null --max-time 3 --write-out '%{http_code}' \
+                    -H "Host: $DOMAIN" "http://127.0.0.1/" 2>/dev/null || true)
+        case "$code" in
+            301|302|307|308) return 0 ;;
+        esac
+        n=$((n + 1)); sleep 2
+    done
+    return 1
+}
+
+restart_web() {
+    run systemctl daemon-reload
+    run systemctl restart toc-web
+}
+
+# =================================================================== rollback
+if [ "$MODE" = rollback ]; then
+    say "putting the dashboard back on public port $WEB_PORT"
+    [ -f "$WEB_ENV" ] || die "$WEB_ENV is missing"
+    for key in $PROXY_KEYS; do
+        env_remove "$key"
+    done
+    restart_web
+    web_healthy || die "the dashboard did not answer on 127.0.0.1:$WEB_PORT after the restart; see journalctl -u toc-web"
+    if listening_only_on_loopback; then
+        warn "the dashboard still listens on loopback only -- is WEB_ADMIN_LISTEN set somewhere else?"
+    fi
+    note "dashboard answering on port $WEB_PORT"
+
+    say "stopping Caddy"
+    if systemctl cat caddy.service >/dev/null 2>&1; then
+        run systemctl disable --now caddy
+        note "Caddy stopped and disabled; the package, $CADDY_DIR/Caddyfile and the 80/443 firewall rules are left"
+    else
+        note "Caddy is not installed"
+    fi
+    say "rolled back: the website is http://$DOMAIN:$WEB_PORT/ again (if 9001 is open in the OCI security list)"
+    exit 0
+fi
+
+# =================================================================== preflight
+say "checking"
+[ -f "$SRC/Caddyfile" ] || die "no $SRC/Caddyfile -- is $BUILD at a commit that has it?"
+[ -f "$SRC/toc-web.service" ] || die "no $SRC/toc-web.service"
+[ -f "$WEB_ENV" ] || die "$WEB_ENV is missing (deploy/toc-restore writes it)"
+grep -q 'WEB_ADMIN_PROXY_HEADERS' "$CURRENT/webadmin/server.py" 2>/dev/null ||
+    die "the live dashboard ($CURRENT/webadmin/server.py) has no proxy mode yet: deploy the commit that carries this script first"
+grep -q 'WEB_ADMIN_LISTEN' "$SRC/toc-web.service" ||
+    die "$SRC/toc-web.service does not read WEB_ADMIN_LISTEN"
+grep -q "reverse_proxy 127.0.0.1:$WEB_PORT" "$SRC/Caddyfile" ||
+    die "$SRC/Caddyfile does not proxy to 127.0.0.1:$WEB_PORT"
+
+# Something other than Caddy on 80 or 443 (an nginx somebody installed)
+# would make Caddy fail to start; say so before touching anything.
+holders=$(ss -Hltnp '( sport = :80 or sport = :443 )' 2>/dev/null | grep -v '"caddy"' || true)
+if [ -n "$holders" ]; then
+    printf '%s\n' "$holders" >&2
+    die "something other than Caddy already listens on port 80 or 443"
+fi
+note "ok"
+
+# ===================================================================== caddy
+say "Caddy"
+if command -v caddy >/dev/null 2>&1; then
+    note "installed: $(caddy version 2>/dev/null | head -n 1)"
+else
+    # Ubuntu 24.04 carries it in universe, with a systemd unit and
+    # /etc/caddy/Caddyfile. The package starts it at once on its own
+    # sample site (port 80, a static page); the next step replaces that.
+    if [ "$MODE" = dry ]; then
+        note "would run: apt-get install -y caddy"
+    else
+        DEBIAN_FRONTEND=noninteractive apt-get install -y caddy ||
+            { DEBIAN_FRONTEND=noninteractive apt-get update &&
+              DEBIAN_FRONTEND=noninteractive apt-get install -y caddy; } ||
+            die "could not install caddy; nothing else was changed"
+    fi
+fi
+
+if command -v caddy >/dev/null 2>&1; then
+    caddy validate --config "$SRC/Caddyfile" --adapter caddyfile >/dev/null 2>&1 ||
+        { caddy validate --config "$SRC/Caddyfile" --adapter caddyfile >&2 || true
+          die "$SRC/Caddyfile does not validate; nothing was installed"; }
+    note "Caddyfile validates"
+else
+    note "would validate $SRC/Caddyfile once caddy is installed"
+fi
+
+caddy_changed=0
+if cmp -s "$SRC/Caddyfile" "$CADDY_DIR/Caddyfile"; then
+    note "$CADDY_DIR/Caddyfile is already this one"
+else
+    caddy_changed=1
+    if [ "$MODE" = dry ]; then
+        note "would install $SRC/Caddyfile as $CADDY_DIR/Caddyfile (the old one kept in $STATE/)"
+    else
+        mkdir -p "$STATE" "$CADDY_DIR"
+        chmod 700 "$STATE"
+        # The first one found is the package's sample; keep it once.
+        if [ -f "$CADDY_DIR/Caddyfile" ] && [ ! -f "$STATE/Caddyfile.before" ]; then
+            cp -p "$CADDY_DIR/Caddyfile" "$STATE/Caddyfile.before"
+        fi
+        install -m 0644 "$SRC/Caddyfile" "$CADDY_DIR/Caddyfile.toc-web-proxy.$$"
+        mv -f "$CADDY_DIR/Caddyfile.toc-web-proxy.$$" "$CADDY_DIR/Caddyfile"
+        note "installed $CADDY_DIR/Caddyfile"
+    fi
+fi
+
+# ================================================================== firewall
+say "firewall: TCP 80 and 443"
+if command -v iptables >/dev/null 2>&1; then
+    fw_changed=0
+    for port in 80 443; do
+        if iptables -C INPUT -p tcp -m state --state NEW -m tcp --dport "$port" -j ACCEPT 2>/dev/null; then
+            note "port $port already accepted"
+            continue
+        fi
+        # Before the image's REJECT (OCI's Ubuntu images end INPUT with
+        # one), or appended where there is none.
+        at=$(iptables -L INPUT --line-numbers -n 2>/dev/null |
+             awk '$2 == "REJECT" { print $1; exit }')
+        if [ -n "$at" ]; then
+            run iptables -I INPUT "$at" -p tcp -m state --state NEW -m tcp --dport "$port" -j ACCEPT
+        else
+            run iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport "$port" -j ACCEPT
+        fi
+        fw_changed=1
+        note "port $port accepted"
+    done
+    if [ "$fw_changed" = 1 ]; then
+        if command -v netfilter-persistent >/dev/null 2>&1; then
+            run netfilter-persistent save
+        else
+            warn "no netfilter-persistent: the rules last until the next reboot"
+        fi
+    fi
+else
+    warn "no iptables here; open 80 and 443 in whatever firewall the host has"
+fi
+
+# ============================================================== start caddy
+say "starting Caddy"
+run systemctl enable caddy
+if [ "$caddy_changed" = 1 ] || ! systemctl is-active --quiet caddy 2>/dev/null; then
+    run systemctl restart caddy
+fi
+if [ "$MODE" != dry ]; then
+    systemctl is-active --quiet caddy ||
+        die "caddy did not start (journalctl -u caddy); the dashboard is still on public $WEB_PORT, untouched"
+    caddy_answers ||
+        die "Caddy is running but not answering on port 80 (journalctl -u caddy); the dashboard is still on public $WEB_PORT, untouched"
+    note "Caddy answers on port 80 (it redirects to https)"
+fi
+
+# ======================================================== move the dashboard
+say "moving the dashboard behind Caddy (127.0.0.1:$WEB_PORT)"
+switching=0
+undo_switch() {
+    warn "putting the dashboard back as it was"
+    if [ -f "$STATE/web.env.run" ]; then
+        cp -p "$STATE/web.env.run" "$WEB_ENV"
+    fi
+    if [ -f "$STATE/toc-web.service.run" ]; then
+        cp -p "$STATE/toc-web.service.run" "$UNIT_DIR/toc-web.service"
+    fi
+    systemctl daemon-reload || true
+    systemctl restart toc-web || true
+}
+on_exit() {
+    status=$?
+    if [ "$switching" = 1 ] && [ "$status" != 0 ]; then
+        undo_switch
+    fi
+    rm -f "$STATE/web.env.run" "$STATE/toc-web.service.run"
+    exit "$status"
+}
+if [ "$MODE" != dry ]; then
+    mkdir -p "$STATE"
+    chmod 700 "$STATE"
+    # This run's way back: the file and the unit as they are now.
+    ( umask 077; cp -p "$WEB_ENV" "$STATE/web.env.run" )
+    rm -f "$STATE/toc-web.service.run"
+    [ -f "$UNIT_DIR/toc-web.service" ] &&
+        cp -p "$UNIT_DIR/toc-web.service" "$STATE/toc-web.service.run"
+    trap on_exit EXIT
+    trap 'exit 129' HUP
+    trap 'exit 130' INT
+    trap 'exit 143' TERM
+    switching=1
+fi
+
+if cmp -s "$SRC/toc-web.service" "$UNIT_DIR/toc-web.service"; then
+    note "toc-web.service is already the committed one"
+else
+    run install -m 0644 "$SRC/toc-web.service" "$UNIT_DIR/toc-web.service"
+    note "installed the committed toc-web.service"
+fi
+
+env_set WEB_ADMIN_LISTEN 127.0.0.1
+env_set WEB_ADMIN_PROXY_HEADERS 1
+env_set WEB_ADMIN_FORWARDED_ALLOW_IPS 127.0.0.1
+env_set WEB_ADMIN_LOCAL_UNLOCK 0
+env_set MUD_PUBLIC_HOST "$DOMAIN"
+
+if [ "$MODE" != dry ]; then
+    # Behind a proxy on this machine every request comes from loopback;
+    # the dashboard refuses the local unlock in proxy mode whatever this
+    # says, and the file says no as well.
+    [ "$(env_value WEB_ADMIN_LOCAL_UNLOCK)" = 0 ] ||
+        die "WEB_ADMIN_LOCAL_UNLOCK is not 0 in $WEB_ENV"
+fi
+
+restart_web
+if [ "$MODE" != dry ]; then
+    web_healthy ||
+        die "the dashboard did not answer on 127.0.0.1:$WEB_PORT (journalctl -u toc-web)"
+    listening_only_on_loopback ||
+        die "the dashboard is not listening on 127.0.0.1:$WEB_PORT only: $(web_listeners | tr '\n' ' ')"
+    switching=0
+    note "dashboard answering on 127.0.0.1:$WEB_PORT only"
+fi
+
+# ======================================================= through the proxy
+say "checking https://$DOMAIN"
+if [ "$MODE" = dry ]; then
+    note "would fetch https://$DOMAIN/api/health through Caddy"
+elif curl --fail --silent --max-time 10 --resolve "$DOMAIN:443:127.0.0.1" \
+        "https://$DOMAIN/api/health" | grep -q '"status":"ok"'; then
+    note "https://$DOMAIN answers with a valid certificate"
+else
+    warn "https://$DOMAIN does not answer yet. Caddy needs the DNS A records"
+    warn "for $DOMAIN and www.$DOMAIN pointing at this machine and TCP 80 and"
+    warn "443 open in the OCI security list to get its certificate; it keeps"
+    warn "trying on its own (journalctl -u caddy). Nothing needs running again."
+fi
+
+if [ "$MODE" = dry ]; then
+    say "dry run: nothing was changed"
+else
+    say "done: the website is https://$DOMAIN/ ; the game is still $DOMAIN port 9000"
+    note "undo with: sudo sh $0 --rollback"
+fi

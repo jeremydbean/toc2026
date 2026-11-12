@@ -1,7 +1,7 @@
 # Times of Chaos Hosting Guide
 
 > **The live server runs on Oracle Cloud.** For how the real
-> `toc.jeremybean.com` host is deployed, backed up and recovered, see
+> `timesofchaos.com` host is deployed, backed up and recovered, see
 > [disaster-recovery.md](disaster-recovery.md) -- that is the current,
 > authoritative page. This guide is a general reference for installing
 > and running your own copy (Docker or native).
@@ -124,8 +124,9 @@ Open `http://127.0.0.1:9001` locally while the tunnel is active.
 Binding the dashboard to a LAN (`WEB_ADMIN_BIND=0.0.0.0`,
 `WEB_ADMIN_LOCAL_UNLOCK=0`) is only for a private network where every device
 is trusted: keep the admin token enabled and do not forward port 9001 from the
-router. `:9001` cannot be omitted from the URL because ToC does not listen on
-port 80.
+router. `:9001` cannot be omitted from such a URL, since the dashboard itself
+does not listen on port 80; a public host puts an HTTPS proxy on 80 and 443 in
+front of a loopback dashboard instead (see "Behind A Reverse Proxy").
 
 To disable the dashboard process, set `WEB_ADMIN_ENABLED=0`. Remove or comment
 its published port as defense in depth when maintaining a custom Compose file.
@@ -256,7 +257,10 @@ consistent.
 | `WEB_ADMIN_ENABLED` | `1` | Docker entrypoint | `0` prevents dashboard startup |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Docker entrypoint | Dashboard bind address |
 | `WEB_ADMIN_TOKEN` | unset | Dashboard | Shared secret; protected routes return 503 when unset |
-| `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Dashboard | Issues a local browser session only when the configured bind and page host are loopback |
+| `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Dashboard | Issues a local browser session only when the configured bind and page host are loopback, never in proxy mode or to a request carrying a forwarding header |
+| `WEB_ADMIN_LISTEN` | unset (`0.0.0.0`) | Dashboard | Default for `--host`; the live unit passes it, and `toc-web-proxy` sets `127.0.0.1` |
+| `WEB_ADMIN_PROXY_HEADERS` | `0` | Dashboard | Default for `--proxy-headers`: believe `X-Forwarded-For`/`-Proto` from the addresses below |
+| `WEB_ADMIN_FORWARDED_ALLOW_IPS` | `127.0.0.1` | Dashboard | Default for `--forwarded-allow-ips`: the proxies believed, addresses or CIDRs; never `*` |
 | `WEB_ADMIN_HOST_STATUS` | `0` | Dashboard | Enables authenticated, read-only host resources, fixed-unit systemd status, boot history, repository metadata, and bounded operational journals |
 | `TOC_REPOSITORY_ROOT` | repository root | Dashboard | Fixed checkout inspected by host status; not controllable through the API |
 | `TOC_DEPLOYED_COMMIT_FILE` | `deployed-commit` beside `--log-file` | Dashboard | Fixed deployment marker read by host status (`toc-deploy` writes `log/deployed-commit`) |
@@ -284,7 +288,7 @@ Compose must keep internal `PORT` and `MUD_PORT` aligned.
 ```text
 python -m webadmin.server [options]
 
---host <address>          default 0.0.0.0
+--host <address>          default WEB_ADMIN_LISTEN, else 0.0.0.0
 --port <number>           default 9001
 --mud-host <address>      default MUD_HOST or 127.0.0.1
 --mud-port <number>       default MUD_PORT or 9000
@@ -293,9 +297,42 @@ python -m webadmin.server [options]
 --area-path <path>        default area
 --backup-path <path>      default backups
 --player-path <path>      default player
+--proxy-headers           default WEB_ADMIN_PROXY_HEADERS, else off
+--forwarded-allow-ips <l> default WEB_ADMIN_FORWARDED_ALLOW_IPS, else 127.0.0.1
 ```
 
 Run the module from the repository root when using relative defaults.
+
+### Behind A Reverse Proxy
+
+The live host serves the website through Caddy at `https://timesofchaos.com`
+(`deploy/windows-vm/Caddyfile`), with the dashboard bound to `127.0.0.1:9001`
+behind it. Any proxy on the same machine works the same way:
+
+- Bind the dashboard to loopback (`--host 127.0.0.1`) so nothing reaches it
+  but the proxy, and serve the proxy over HTTPS only: the admin token travels
+  in `X-Admin-Token` and the first WebSocket message.
+- Turn on `--proxy-headers` (`WEB_ADMIN_PROXY_HEADERS=1`). Every request then
+  comes from the proxy's address, so without it the game bridge's PROXY line
+  names `127.0.0.1` for every web player -- an address the game's connection
+  guard and login lockouts exempt -- and same-origin checks see `http` where
+  the browser used `https`. With it, `X-Forwarded-For` (read from the nearest
+  hop back) and `X-Forwarded-Proto` are believed only from the
+  `--forwarded-allow-ips` addresses (`127.0.0.1` by default; `*` is refused).
+  The proxy must replace a client's own `X-Forwarded-For`, as Caddy does by
+  default.
+- The loopback auto-unlock is refused in proxy mode, and for any request that
+  carries `X-Forwarded-For`, `X-Forwarded-Proto`, `X-Forwarded-Host`,
+  `X-Real-IP` or `Forwarded` even when proxy mode is off, because through a
+  local proxy every visitor would look local. It reads the TCP peer, never
+  the forwarded address. Use the admin token.
+- Pass the `Host` header through unchanged (Caddy's default): the dashboard
+  compares it with the browser's `Origin`, and WebSockets must be upgraded
+  through (`/ws`, `/ws/logs`, `/ws/events`).
+
+Off by default, so a dashboard with no proxy in front believes no header.
+uvicorn's own forwarded-header handling, on by default for loopback, is
+turned off by the dashboard so the true peer is kept.
 
 ## Persistent Data And Permissions
 
@@ -737,7 +774,8 @@ sudo ufw enable
 
 Do not add a public 9001 rule merely to expose administration. If remote users
 need the browser client, publish it through an HTTPS reverse proxy that forwards
-WebSocket upgrades and applies suitable access controls. If a specific
+WebSocket upgrades and applies suitable access controls (`sudo ufw allow 80/tcp`
+and `443/tcp` for it; see "Behind A Reverse Proxy"). If a specific
 administration network must reach it directly, scope the allow rule to that
 source and still use TLS.
 

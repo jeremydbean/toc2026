@@ -115,7 +115,7 @@ See also: MUDLET, WALK, WALKTO, EXITS, SEARCH, MAPS
 
 0 MUDLET TOCGUI~
 Mudlet is the recommended desktop client.  Make a profile for
-toc.jeremybean.com, port 9000, and leave "Enable GMCP" and "Allow server to
+timesofchaos.com, port 9000, and leave "Enable GMCP" and "Allow server to
 install script packages" on: the game installs its interface and world map
 and offers updates by itself.
 
@@ -355,10 +355,9 @@ On a local installation use:
   http://127.0.0.1:9001/client
 
 On the hosted game use:
-  http://toc.jeremybean.com:9001/client
+  https://timesofchaos.com/client
 
-The :9001 port is required.  The browser client
-does not currently include Mudlet's automatic mapper.
+The browser client does not currently include Mudlet's automatic mapper.
 
 See also: WEB, MUDLET, MAP, ALIAS
 ~

@@ -220,9 +220,13 @@ Treat the token as an immortal credential. Generate at least 32 random bytes,
 store it outside Git, limit who can read it, and rotate it when staff access
 changes or exposure is suspected.
 
-A dashboard whose bind is not loopback -- the live Oracle host's, for one
-(see [disaster-recovery.md](../wiki/disaster-recovery.md)) -- uses manual token
-entry. **Remember on this browser** stores the supplied token in that browser
+A dashboard whose bind is not loopback, or that runs behind a reverse proxy
+-- the live Oracle host's, behind Caddy (see
+[disaster-recovery.md](../wiki/disaster-recovery.md)) -- uses manual token
+entry. Proxy mode (`WEB_ADMIN_PROXY_HEADERS=1`) refuses the loopback unlock
+outright, and so does any request carrying `X-Forwarded-For`,
+`X-Forwarded-Proto`, `X-Forwarded-Host`, `X-Real-IP` or `Forwarded`: through
+a proxy on the same machine every visitor arrives from loopback. **Remember on this browser** stores the supplied token in that browser
 profile's local storage; **Lock**, clearing site data, or token rotation
 removes or invalidates that convenience. Never include the token in a URL,
 screenshot, repository file, issue, or chat transcript.
@@ -416,10 +420,25 @@ Requirements:
 TLS at the proxy protects browser-to-proxy traffic. It does not make direct TCP
 port 9000 Telnet secure.
 
+**The live host (2026-11-12)**: Caddy on 80 and 443 at
+`https://timesofchaos.com` (`deploy/windows-vm/Caddyfile`; Let's Encrypt,
+renewed by Caddy; port 80 only redirects), the dashboard on
+`127.0.0.1:9001` behind it in proxy mode: `X-Forwarded-For` and
+`X-Forwarded-Proto` are believed only from `127.0.0.1`
+(`WEB_ADMIN_FORWARDED_ALLOW_IPS`), Caddy replaces any `X-Forwarded-For` a
+client sends, and the loopback unlock is refused. There is no identity layer
+in front of FastAPI: the admin routes rely on the token, which now only ever
+crosses HTTPS. `deploy/windows-vm/toc-web-proxy` sets it up and rolls it
+back; [disaster-recovery.md](../wiki/disaster-recovery.md) "The website".
+
 ## Planned: A TLS Player Port For Mudlet's Secure Box
 
 **Status: planned and on hold** (owner, 2026-11-07: hold off on TLS, "keep
-it on the table for a future project"). Nothing in this section is
+it on the table for a future project"). **Since 2026-11-12 Caddy holds
+ports 80 and 443** for the website (see "HTTPS Reverse Proxy"), so the
+nginx-on-80 ACME webroot below no longer fits as written: a revival would
+reuse Caddy's certificate for the name, or answer the HTTP-01 challenge
+through Caddy, rather than run a second server on 80. Nothing in this section is
 implemented or deployed. It is written so the project can be picked up
 without re-deriving it; until the owner takes it off hold, port 9000 stays
 the only native-client port and nothing advertises another.
@@ -430,7 +449,7 @@ Every claim below is marked one of three ways:
   function named. True of `main` as of 2026-11-09; recheck before relying
   on it, since `src/comm.c` and `src/loginlock.c` change often.
 - **[host]** -- needs verification on the Oracle host
-  (`toc.jeremybean.com`, an Always Free ARM (aarch64) Ubuntu 24.04
+  (`timesofchaos.com`, an Always Free ARM (aarch64) Ubuntu 24.04
   instance) or in the OCI console.
 - **[mudlet]** -- needs a real Mudlet test; Mudlet's documentation is not
   reachable from a cloud session and its behaviour changes by version.
@@ -447,11 +466,9 @@ outside the game loop.
 Out of scope, and **not** secured by this work:
 
 - port 9000, which stays plain Telnet throughout;
-- the browser client and dashboard on 9001, which the live host serves as
-  plain HTTP on every interface [source: `deploy/windows-vm/toc-web.service`
-  runs `webadmin.server --host 0.0.0.0 --port 9001`;
-  `wiki/disaster-recovery.md` lists `:9001` as public]. HTTPS/WSS for the
-  browser path is a separate project (see "HTTPS Reverse Proxy" above);
+- the browser client and dashboard, which since 2026-11-12 the live host
+  serves over HTTPS/WSS through Caddy at `https://timesofchaos.com`, a
+  separate path (see "HTTPS Reverse Proxy" above);
 - TLS inside `merc` (OpenSSL in the game loop) and the Telnet START-TLS
   option. Both were considered and rejected: the first puts handshakes
   and certificate reloads on the single game thread, which AGENTS.md's
@@ -714,7 +731,7 @@ Policy:
 
 - New instructions and any distributed profile (README, `mudlet/README.md`,
   HELP MUDLET, the website, the Mudlet default-list entry) say:
-  `toc.jeremybean.com`, port 9443, **Secure on**. Plain 9000 is described
+  `timesofchaos.com`, port 9443, **Secure on**. Plain 9000 is described
   as legacy.
 - Existing profiles: migration is by notice, not by force -- the MSSP
   advertisement once enabled, a CHANGES entry, and a one-line hint after
@@ -758,7 +775,7 @@ API tokens, DNS-01 becomes the better choice.
   # /etc/nginx/conf.d/toc-acme.conf (http context on Ubuntu)
   server {
       listen 80;
-      server_name toc.jeremybean.com;
+      server_name timesofchaos.com;
       location ^~ /.well-known/acme-challenge/ {
           root /var/www/toc-acme;
           default_type text/plain;
@@ -768,7 +785,7 @@ API tokens, DNS-01 becomes the better choice.
   ```
 
 - **First issuance**, staging first so a mistake costs no rate limit:
-  `certbot certonly --webroot -w /var/www/toc-acme -d toc.jeremybean.com --staging`,
+  `certbot certonly --webroot -w /var/www/toc-acme -d timesofchaos.com --staging`,
   inspect, then the same without `--staging`. An account email is
   optional; Let's Encrypt has ended its expiry-reminder emails, so
   monitoring is ours (below).
@@ -806,7 +823,7 @@ API tokens, DNS-01 becomes the better choice.
        last certificate it loaded.
     4. `systemctl reload nginx`.
     5. Verify the served certificate is the new one: the SHA-256
-       fingerprint from `openssl s_client -connect 127.0.0.1:9443 -servername toc.jeremybean.com -verify_hostname toc.jeremybean.com -verify_return_error`
+       fingerprint from `openssl s_client -connect 127.0.0.1:9443 -servername timesofchaos.com -verify_hostname timesofchaos.com -verify_return_error`
        must equal `openssl x509 -in current/fullchain.pem -noout -fingerprint -sha256`,
        and `notAfter` must have moved; on mismatch, point `current` back,
        reload, alert.
@@ -892,8 +909,8 @@ All [host] unless marked:
   `proxy_header_accept()`]. Enable `listen [::]:9443` only after the VCN,
   subnet and VNIC have IPv6, the security list and ip6tables allow it, and
   an outside IPv6 client completes a session. Until then publish **no
-  AAAA** record for `toc.jeremybean.com` (check today: `dig AAAA
-  toc.jeremybean.com`), since 9000 has no IPv6 listener at all.
+  AAAA** record for `timesofchaos.com` (check today: `dig AAAA
+  timesofchaos.com`), since 9000 has no IPv6 listener at all.
 - **Automatic upgrades**: if `unattended-upgrades` is active, an nginx
   package upgrade restarts nginx and drops every TLS session. Either accept
   that or hold nginx and upgrade by hand -- an owner decision.
@@ -951,7 +968,7 @@ All [host] unless marked:
     SNI and hostname verification, then `IAC DO MSSP`, expecting a
     `PLAYERS` value -- the question `toc-game-probe` asks on 9000 [source],
     which can gain a `--tls` option. TCP-open is not healthy.
-  - An off-host probe of `toc.jeremybean.com:9443` doing the same, from
+  - An off-host probe of `timesofchaos.com:9443` doing the same, from
     the owner's desktop or a scheduled GitHub workflow outside `validate.yml`
     (owner decision: CI's gate and classifier policy must not change).
   - `toc-deploy`'s own health check stays on 9000; the TLS path is
@@ -964,7 +981,7 @@ All [host] unless marked:
   empty or invalid means not advertised -- the default, including in every
   test world. Set it only after the external checks pass.
 - **Three paths, documented separately**, everywhere they are described:
-  1. TLS Telnet: `toc.jeremybean.com` port 9443, Secure on (the
+  1. TLS Telnet: `timesofchaos.com` port 9443, Secure on (the
      recommended native path);
   2. legacy plaintext Telnet: port 9000, with the "Plain Telnet" warning
      above;
@@ -991,7 +1008,7 @@ All [host] unless marked:
 Each phase ships on its own and can be rolled back alone.
 
 0. **Survey, read-only** [host]: `nginx -V` (if installed), `ss -ltnp`,
-   `iptables -S`, `ip -6 addr`, `dig A/AAAA toc.jeremybean.com`, OCI
+   `iptables -S`, `ip -6 addr`, `dig A/AAAA timesofchaos.com`, OCI
    security list, `unattended-upgrades` status. No changes.
 1. **Game: classification and the backend listener, disabled by
    default.** `src/comm.c` (`init_socket()` generalised to bind a given
@@ -1117,7 +1134,7 @@ Host, with nginx (staging certificate first) [host]:
 - `nginx -t` passes; `nginx -T` shows one stream block; unrelated files
   unchanged (checksums before and after).
 - `openssl s_client` against 127.0.0.1:9443 and, from outside, against
-  `toc.jeremybean.com:9443` with `-verify_hostname` and
+  `timesofchaos.com:9443` with `-verify_hostname` and
   `-verify_return_error`: valid chain, right name, TLSv1.2 and TLSv1.3
   accepted, TLSv1.1 refused.
 - Wrong host (`-servername` another name, or connecting by IP), an expired
