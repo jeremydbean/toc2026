@@ -409,32 +409,35 @@ static void hero_date( long when, char *out, size_t size )
     strftime( out, size, "%Y-%m-%d", tm );
 }
 
-static char roll_out[65536];
+/* Built in a DString (growable output buffers, 2026-11-12): the rolls
+   were a static 64K array, and a tablet of HERO_RECORD_MAX reborn runs
+   past it. */
 
 bool show_hero_plaque( CHAR_DATA *ch )
 {
+    DString roll_out;
     char line[512];
     int count, dated = 0, rows, r, c, i;
 
     if ( ( count = hero_load_all() ) == 0 )
         return false;
 
-    roll_out[0] = '\0';
-    toc_strlcat( roll_out,
+    dstring_init_limit( &roll_out, DSTRING_OUTPUT_MAX );
+    dstring_append_cstr( &roll_out,
         "                          *********************\n\r"
         "                          *   Heroes of ToC   *\n\r"
-        "                          *********************\n\r\n\r", sizeof(roll_out) );
+        "                          *********************\n\r\n\r" );
     snprintf( line, sizeof(line),
         "  %d have reached the pinnacle of mortal power.  A name appears here\n\r"
         "  the moment its owner becomes a hero.\n\r\n\r", count );
-    toc_strlcat( roll_out, line, sizeof(roll_out) );
+    dstring_append_cstr( &roll_out, line );
 
     qsort( hero_all, (size_t) count, sizeof(hero_all[0]), hero_by_since );
     for ( i = 0; i < count && hero_all[i].since > 0; i++ )
         dated++;
     if ( dated > 0 )
     {
-        toc_strlcat( roll_out, "  The newest:\n\r", sizeof(roll_out) );
+        dstring_append_cstr( &roll_out, "  The newest:\n\r" );
         for ( i = 0; i < dated && i < 8; i++ )
         {
             char when[16];
@@ -443,15 +446,14 @@ bool show_hero_plaque( CHAR_DATA *ch )
             snprintf( line, sizeof(line), "    %-12.12s  %-10.10s  %-10.10s  hero since %s\n\r",
                       hero_all[i].name, hero_all[i].cls[0] ? hero_all[i].cls : "-",
                       hero_all[i].race[0] ? hero_all[i].race : "-", when );
-            toc_strlcat( roll_out, line, sizeof(roll_out) );
+            dstring_append_cstr( &roll_out, line );
         }
-        toc_strlcat( roll_out, "\n\r", sizeof(roll_out) );
+        dstring_append_cstr( &roll_out, "\n\r" );
     }
 
     qsort( hero_all, (size_t) count, sizeof(hero_all[0]), hero_by_name );
-    toc_strlcat( roll_out,
-        "|-----------------------------------------------------------------------------|\n\r",
-        sizeof(roll_out) );
+    dstring_append_cstr( &roll_out,
+        "|-----------------------------------------------------------------------------|\n\r" );
     /* Six columns, read down rather than across, as the old plaque was. */
     rows = ( count + 5 ) / 6;
     for ( r = 0; r < rows; r++ )
@@ -467,18 +469,19 @@ bool show_hero_plaque( CHAR_DATA *ch )
             toc_strlcat( line, cell, sizeof(line) );
         }
         toc_strlcat( line, "|\n\r", sizeof(line) );
-        toc_strlcat( roll_out, line, sizeof(roll_out) );
+        dstring_append_cstr( &roll_out, line );
     }
-    toc_strlcat( roll_out,
+    dstring_append_cstr( &roll_out,
         "|-----------------------------------------------------------------------------|\n\r"
-        "  Those who gave it up to begin again are named on the tablet beside it.\n\r",
-        sizeof(roll_out) );
-    page_to_char( roll_out, ch );
+        "  Those who gave it up to begin again are named on the tablet beside it.\n\r" );
+    page_to_char( dstring_cstr( &roll_out ), ch );
+    dstring_free( &roll_out );
     return true;
 }
 
 bool show_remort_tablet( CHAR_DATA *ch )
 {
+    DString roll_out;
     char line[512];
     int count, reborn = 0, i;
 
@@ -487,18 +490,18 @@ bool show_remort_tablet( CHAR_DATA *ch )
     for ( i = 0; i < count && hero_all[i].remorts > 0; i++ )
         reborn++;
 
-    roll_out[0] = '\0';
-    toc_strlcat( roll_out,
+    dstring_init_limit( &roll_out, DSTRING_OUTPUT_MAX );
+    dstring_append_cstr( &roll_out,
         "                       ****************************\n\r"
         "                       *    The Reborn of ToC     *\n\r"
-        "                       ****************************\n\r\n\r", sizeof(roll_out) );
+        "                       ****************************\n\r\n\r" );
     if ( reborn == 0 )
     {
-        toc_strlcat( roll_out,
+        dstring_append_cstr( &roll_out,
             "  The black stone is smooth: nobody has yet given up the pinnacle to\n\r"
-            "  begin again.  A name appears here the moment its owner is reborn.\n\r",
-            sizeof(roll_out) );
-        send_to_char( roll_out, ch );
+            "  begin again.  A name appears here the moment its owner is reborn.\n\r" );
+        send_to_char( dstring_cstr( &roll_out ), ch );
+        dstring_free( &roll_out );
         return true;
     }
     snprintf( line, sizeof(line),
@@ -506,7 +509,7 @@ bool show_remort_tablet( CHAR_DATA *ch )
         "  appears here the moment its owner is reborn, and climbs with each life.\n\r\n\r"
         "  Lives  Name          Class       Race        Last reborn\n\r"
         "  -----  ------------  ----------  ----------  -----------\n\r", reborn );
-    toc_strlcat( roll_out, line, sizeof(roll_out) );
+    dstring_append_cstr( &roll_out, line );
     for ( i = 0; i < reborn; i++ )
     {
         char when[16];
@@ -516,8 +519,9 @@ bool show_remort_tablet( CHAR_DATA *ch )
                   hero_all[i].remorts, hero_all[i].name,
                   hero_all[i].cls[0] ? hero_all[i].cls : "-",
                   hero_all[i].race[0] ? hero_all[i].race : "-", when );
-        toc_strlcat( roll_out, line, sizeof(roll_out) );
+        dstring_append_cstr( &roll_out, line );
     }
-    page_to_char( roll_out, ch );
+    page_to_char( dstring_cstr( &roll_out ), ch );
+    dstring_free( &roll_out );
     return true;
 }

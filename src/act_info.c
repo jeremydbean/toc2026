@@ -2773,7 +2773,7 @@ void do_who( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
     char buf2[MAX_STRING_LENGTH];
-    char output[4 * MAX_STRING_LENGTH];
+    DString output;     /* grown as it is written (2026-11-12) */
     DESCRIPTOR_DATA *d;
     int iClass;
     int iRace;
@@ -2884,7 +2884,7 @@ void do_who( CHAR_DATA *ch, char *argument )
      */
     nMatch = 0;
     buf[0] = '\0';
-    output[0] = '\0';
+    dstring_init_limit( &output, DSTRING_OUTPUT_MAX );
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
 	CHAR_DATA *wch;
@@ -2993,12 +2993,13 @@ void do_who( CHAR_DATA *ch, char *argument )
 	    IS_SET(wch->act, PLR_AFK)     ? "[*AFK*] " : "",
 	    wch->name,
 	    IS_NPC(wch) ? "" : wch->pcdata->title );
-        toc_strlcat(output,buf, sizeof(output));
+        dstring_append_cstr( &output, buf );
     }
 
     snprintf( buf2, sizeof(buf2), "\n\rPlayers found: %d\n\r", nMatch );
-    toc_strlcat(output,buf2, sizeof(output));
-    page_to_char( output, ch );
+    dstring_append_cstr( &output, buf2 );
+    page_to_char( dstring_cstr( &output ), ch );
+    dstring_free( &output );
     return;
 }
 

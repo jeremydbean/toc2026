@@ -702,6 +702,28 @@ Commands added or revived in September 2026, and where they live:
 - Use `send_to_char()` for immediate player text and `page_to_char()` for
   scrollable output. Both paths convert canonical `{HH}` color tokens; do not
   send raw player-facing color markup through `write_to_buffer()`.
+- **A listing that loops is built in a bounded `DString`, never a fixed
+  array** (growable output buffers, 2026-11-12). `src/dstring.h`:
+  `dstring_init_limit( &out, DSTRING_OUTPUT_MAX )` (256K), then
+  `dstring_printf` / `dstring_append_cstr`, then `page_to_char(
+  dstring_cstr( &out ), ch )` and `dstring_free( &out )` on every way out.
+  It grows with `realloc`, not `alloc_mem`, so the 32,704-byte size class
+  does not apply; `page_to_char` sends text past its 32,000-byte pager
+  block unpaged and `write_to_buffer` sends a large text in pieces, so no
+  sink has a ceiling it can reach. An append that would pass the limit
+  appends nothing, returns false and sets `out.truncated` -- whole lines
+  only -- and `dstring_fits( &out, n )` asks first, which is how a
+  listing keeps room for its trailer and says "... the rest" only when it
+  really was cut. STASH (a 500-slot stash listed about 185 in 4,096
+  bytes, while STASH GET takes the numbers shown), HISTORY, NOTE
+  LIST/UNREAD/SEARCH, WHO, REPORTS, GAINLIST and GAINLIST PREVIEW,
+  CHANGES, DIARY LIST and the Hall of Heroes' plaque and tablet were
+  converted; output is byte-identical whenever nothing was cut
+  (`tests/test_long_listings.py`, `tests/test_dstring.py`, which also
+  holds each to it). Commands that send line by line (INVENTORY,
+  EQUIPMENT, a shop's LIST, AFFECTS, PRACTICE, SCORE, WHERE, COMPARE
+  UPGRADES, MEMCHECK, DNS LIST) never had a ceiling and are left alone; a
+  line of its own is still a fixed `buf` with `snprintf`.
 - **Colour tokens are `{` and two hex digits, anywhere they appear.**
   Area names open with a level range in braces (`{30 50}`), so show one
   through `area_shown_name()` or the range is eaten. `act()` converts
@@ -5979,7 +6001,8 @@ test that fails on the old code. Keep them.
   block that size (a crash anyone could type), with paging off the
   connection was closed. `write_to_buffer` now sends what is queued and
   carries on, and `page_to_char` writes text too big for one pager block
-  unpaged (`tests/test_changes.py`). Keep both when touching either.
+  unpaged (`tests/test_changes.py`). Keep both when touching either: a
+  bounded `DString` (C Change Rules) leans on them.
 - **The dashboard's player-file parser tracks sections**: the player
   block ends at its `End`, `#PET` and `#STASH` are not the player's, so a
   character carrying nothing no longer reads their pet's stats as their own

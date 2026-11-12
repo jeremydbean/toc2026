@@ -785,13 +785,17 @@ static long stash_upgrade_copper( CHAR_DATA *ch )
 
 static void stash_show( CHAR_DATA *ch )
 {
-    char out[MAX_STRING_LENGTH];
+    /* Grown as it is written: a 4,096-byte array cut a stash off near
+       its 185th piece, and STASH GET <number> works by the numbers shown
+       (growable output buffers, 2026-11-12). */
+    DString out;
     char line[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     int number = 0;
     bool full = false;
 
-    snprintf( out, sizeof(out), "Your stash holds %d of %d thing%s.\n\r",
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    dstring_printf( &out, "Your stash holds %d of %d thing%s.\n\r",
         stash_count( ch ), ch->pcdata->stash_max,
         ch->pcdata->stash_max == 1 ? "" : "s" );
 
@@ -803,19 +807,18 @@ static void stash_show( CHAR_DATA *ch )
         snprintf( line, sizeof(line), "  %3d) %s\n\r", ++number,
             format_obj_to_char( obj, ch, true ) );
 
-        if ( strlen( out ) + strlen( line ) + 160 >= sizeof(out) )
+        if ( !dstring_fits( &out, strlen( line ) + 2 * MAX_STRING_LENGTH ) )
         {
             full = true;
             break;
         }
-        toc_strlcat( out, line, sizeof(out) );
+        dstring_append_cstr( &out, line );
     }
 
     if ( number == 0 )
-        toc_strlcat( out, "  It is empty.\n\r", sizeof(out) );
+        dstring_append_cstr( &out, "  It is empty.\n\r" );
     else if ( full )
-        toc_strlcat( out, "  ... and more than will fit on one screen.\n\r",
-            sizeof(out) );
+        dstring_append_cstr( &out, "  ... and more than will fit on one screen.\n\r" );
 
     {
         char shared[MAX_STRING_LENGTH];
@@ -825,9 +828,9 @@ static void stash_show( CHAR_DATA *ch )
         {
             /* Appended in pieces: the list can be longer than one input
                line, and staging it in `line' cut it short. */
-            toc_strlcat( out, "\n\rShared with: ", sizeof(out) );
-            toc_strlcat( out, shared, sizeof(out) );
-            toc_strlcat( out, "\n\r", sizeof(out) );
+            dstring_append_cstr( &out, "\n\rShared with: " );
+            dstring_append_cstr( &out, shared );
+            dstring_append_cstr( &out, "\n\r" );
         }
     }
 
@@ -841,10 +844,11 @@ static void stash_show( CHAR_DATA *ch )
         snprintf( line, sizeof(line),
             "\n\rAnother %d slots cost %s.  '{0Fstash buy{00' at the altar.\n\r",
             STASH_SLOTS_STEP, price );
-        toc_strlcat( out, line, sizeof(out) );
+        dstring_append_cstr( &out, line );
     }
 
-    page_to_char( out, ch );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 /* Put an object taken out of a stash back where it was, after `prev`
