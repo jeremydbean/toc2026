@@ -4798,3 +4798,4 @@
 1794451081	wizinfo	37	Trentlin has entered the game.
 1794451188	wizinfo	37	Trentlin has left the game (1m).
 1794451753	wizinfo	60	New Object Trap: the glass cabinet [Vnum: 5227]
+1794453865	wizinfo	60	Connection guard: 178.156.187.238 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 178.156.187.238 lifts it.
