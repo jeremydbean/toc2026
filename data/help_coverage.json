@@ -57,5 +57,17 @@
       "kind": "alias",
       "why": "Players ask for BUFF/HERMIE; the staff page is reached by its command, SPELLUP."
     }
-  }
+  },
+  "_distinct_pages_comment": "Keyword pairs where one is a stem of the other (WORD and WORDS, a command and its skill's whole name) that tools/help_audit.py would otherwise read as one command split over two pages. Key: '<shorter> / <longer>', lower case.",
+  "distinct_pages": {
+    "new / news": "NEW is the settings overview (NEW SETTINGS CUSTOMIZE OPTIONS); NEWS is the game's news, which the NEWS command shows. No NEW command exists.",
+    "scroll / scrolls": "SCROLL is the scroll-back command; SCROLLS names the item type on the wands, staves and scrolls page.",
+    "psionic / psionics": "PSIONIC is the psionic armor power's command; PSIONICS is the overview of every psionic power."
+  },
+  "_staff_commands_public_help_comment": "Commands at LEVEL_IMMORTAL or above whose page every mortal may read on purpose: the word is also a public topic and the staff command has its own page under another keyword.",
+  "staff_commands_public_help": {
+    "oracle": "ORACLE is the Oracle herself for players (PRAY, ASK); the staff command's page is ORACLEADMIN / 'ORACLE ADMIN'."
+  },
+  "_reference_aliases_comment": "See also destinations and advertised HELP topics accepted although they do not reach a page by its exact keyword, each with why. Key: the destination, lower case.",
+  "reference_aliases": {}
 }

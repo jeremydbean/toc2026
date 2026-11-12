@@ -245,5 +245,236 @@ class CorrectionsHold(unittest.TestCase):
             self.assertIn(word, words)
 
 
+def fixture_entries(*files: tuple) -> list:
+    """Help entries from synthetic area files, read through help_index as
+    the game reads them: each file is (name, '#HELPS' body), listed in
+    area.lst in the order given."""
+    with tempfile.TemporaryDirectory() as tmp:
+        area = Path(tmp)
+        (area / "area.lst").write_text(
+            "".join(name + "\n" for name, body in files) + "$\n", encoding="latin-1")
+        for name, body in files:
+            (area / name).write_text("#HELPS\n" + body + "0 $~\n#$\n", encoding="latin-1")
+        return help_index.load_helps(area)
+
+
+def page(level: int, keywords: str, body: str) -> str:
+    return "%d %s~\n%s\n~\n" % (level, keywords, body)
+
+
+GROUPS = ["rom basics", "necromancy", "necro basics", "weather"]
+
+
+def kinds(findings) -> list:
+    return sorted(f.kind for f in findings)
+
+
+class ResolveReadsLikeDoHelp(unittest.TestCase):
+    """help_index.resolve is do_help from the top, group and first word
+    included."""
+
+    def setUp(self) -> None:
+        self.entries = fixture_entries(("h.are", page(0, "WEATHER", "the command")
+                                        + page(0, "GAINLIST", "trainers")
+                                        + page(63, "PETRIFY", "staff")))
+
+    def test_each_step(self) -> None:
+        r = help_index.resolve
+        self.assertEqual(r(self.entries, "group weather", 1, GROUPS).how, "group-command")
+        self.assertEqual(r(self.entries, "weather", 1, GROUPS).how, "exact")
+        self.assertEqual(r(self.entries, "gain", 1, GROUPS).how, "prefix")
+        res = r(self.entries, "necro", 1, GROUPS)
+        self.assertEqual((res.how, res.group), ("group", "necromancy"))
+        self.assertEqual(r(self.entries, "gainlist trainers", 1, GROUPS).how, "first-word")
+        self.assertIsNone(r(self.entries, "pet", 1, GROUPS).how)
+        self.assertEqual(r(self.entries, "pet", 72, GROUPS).entry.keyword, "PETRIFY")
+
+
+class SeeAlsoAndHelpReferences(unittest.TestCase):
+    def test_lists_are_read_whole(self) -> None:
+        text = ("Body.\n\nSee also: ALPHA, 'BRAVO TWO', CHARLIE and DELTA,\nECHO\n"
+                "See also helps on FOXTROT, GOLF and HOTEL.\nSee also: HELP INDIA\n")
+        self.assertEqual(help_audit.see_also_lists(text), [
+            (3, ["ALPHA", "'BRAVO TWO'", "CHARLIE", "DELTA", "ECHO"]),
+            (5, ["FOXTROT", "GOLF", "HOTEL"]),
+            (6, ["INDIA"])])
+
+    def test_help_queries_in_prose(self) -> None:
+        text = ("See HELP STASHLINK for that, or HELP GROUP <name>.\n"
+                "HELP RULES        HELP BEGINNERS\nFor the spell, HELP EMPOWER SPELL.\n"
+                "Type 'help KEYWORD' or help <topic>.\nSee also: HELP NOTME\n")
+        self.assertEqual([t for n, t in help_audit.help_references(text)],
+                         ["STASHLINK", "RULES", "BEGINNERS", "EMPOWER SPELL", "KEYWORD"])
+
+    def findings(self, see: str, level: int = 0, aliases=None) -> list:
+        entries = fixture_entries(("h.are",
+                                   page(level, "RIDE", "Riding.\n\nSee also: " + see)
+                                   + page(0, "FLY", "fly") + page(0, "'SECOND ATTACK'", "two")
+                                   + page(0, "HIDE", "hide") + page(63, "PETRIFY", "staff")
+                                   + page(60, "WIZINVIS", "staff only")))
+        return help_audit.reference_findings(entries, GROUPS, aliases)
+
+    def test_exact_keywords_and_whole_groups_pass(self) -> None:
+        self.assertEqual(self.findings("FLY, 'SECOND ATTACK', SECOND ATTACK, NECROMANCY, "
+                                       "GROUP WEATHER"), [])
+
+    def test_a_prefix_to_another_topic_fails(self) -> None:
+        found = self.findings("PET")
+        self.assertEqual(kinds(found), ["see-also"])
+        self.assertEqual(found[0].key, "see-also: RIDE -> PET")
+        self.assertIn("reaches nothing at trust 1", found[0])
+        self.assertIn("PETRIFY (h.are:63) by prefix at trust 72", found[0])
+        self.assertEqual(kinds(self.findings("FL")), ["see-also"])
+
+    def test_a_group_by_prefix_fails(self) -> None:
+        self.assertEqual(kinds(self.findings("NECRO")), ["see-also"])
+
+    def test_the_first_word_fallback_fails(self) -> None:
+        found = self.findings("HIDE SNEAK")
+        self.assertEqual(kinds(found), ["see-also"])
+        self.assertIn("first-word fallback", found[0])
+
+    def test_a_page_above_the_reader_is_its_own_kind(self) -> None:
+        self.assertEqual(kinds(self.findings("WIZINVIS")), ["see-also-above-reader"])
+        self.assertEqual(self.findings("WIZINVIS", level=60), [])
+
+    def test_a_display_label_is_malformed(self) -> None:
+        found = self.findings("GODTALK (@), FLY")
+        self.assertEqual(kinds(found), ["see-also-malformed"])
+        self.assertEqual(found[0].key, "see-also-malformed: RIDE -> GODTALK (@)")
+
+    def test_a_listed_alias_passes(self) -> None:
+        self.assertEqual(self.findings("PET", aliases={"PET": "a reason long enough"}), [])
+
+    def test_help_queries_resolve_the_same_way(self) -> None:
+        entries = fixture_entries(("h.are", page(0, "STASH", "See HELP STASHLINK and HELP FLY.")
+                                   + page(0, "FLY", "fly")))
+        found = help_audit.reference_findings(entries, GROUPS)
+        self.assertEqual([(f.kind, f.key) for f in found],
+                         [("help-ref", "help-ref: STASH -> STASHLINK")])
+
+
+class AliasPairs(unittest.TestCase):
+    CMDS = {"nerve": "do_nerve_damage", "nochannels": "do_nochannels", "listen": "do_listen",
+            "group": "do_group", "groups": "do_groups", "remove": "do_remove"}
+    SKILLS = {"nerve damage", "listen at door", "remove curse"}
+    BODIES = {"do_listen": "chance = learned[gsn_listen_at_door];", "do_remove": "",
+              "do_nerve_damage": ""}
+
+    def pairs(self, body: str, distinct=None) -> list:
+        entries = fixture_entries(("h.are", body))
+        return help_audit.alias_pair_findings(entries, self.CMDS, self.SKILLS, self.BODIES,
+                                              {}, distinct or {})
+
+    def test_a_command_and_its_skill_on_two_pages_fail(self) -> None:
+        found = self.pairs(page(0, "NERVE", "a") + page(0, "'NERVE DAMAGE'", "b")
+                           + page(0, "LISTEN", "c") + page(0, "'LISTEN AT DOOR'", "d"))
+        self.assertEqual(sorted(f.key for f in found),
+                         ["alias-pair: listen / listen at door", "alias-pair: nerve / nerve damage"])
+
+    def test_a_suffix_of_one_command_fails(self) -> None:
+        self.assertEqual(kinds(self.pairs(page(63, "NOCHANNEL", "a") + page(63, "NOCHANNELS", "b"))),
+                         ["alias-pair"])
+
+    def test_distinct_things_pass(self) -> None:
+        # Two commands with functions of their own; a command and a spell it
+        # does not run; one page holding both words.
+        self.assertEqual(self.pairs(page(0, "GROUP", "a") + page(0, "GROUPS", "b")
+                                    + page(0, "REMOVE", "c") + page(0, "'REMOVE CURSE'", "d")
+                                    + page(0, "NERVE 'NERVE DAMAGE'", "e")), [])
+
+    def test_the_staff_split_and_a_listed_pair_pass(self) -> None:
+        self.assertEqual(self.pairs(page(63, "NOCHANNEL", "a") + page(0, "NOCHANNELS", "b")), [])
+        self.assertEqual(self.pairs(page(0, "NERVE", "a") + page(0, "'NERVE DAMAGE'", "b"),
+                                    {"nerve / nerve damage": "why"}), [])
+
+
+class StaffCommandsAndSyntax(unittest.TestCase):
+    ROWS = [("mirror", 65, 1, "do_mirror"), ("save", 0, 1, "do_save"),
+            ("drop", 0, 1, "do_drop"), ("goblin", 65, 1, "do_goblin")]
+
+    def test_a_staff_command_with_public_help_fails(self) -> None:
+        entries = fixture_entries(("h.are", page(0, "MIRROR", "a") + page(65, "GOBLIN", "s")
+                                   + page(0, "GOBLIN 'TREASURE GOBLIN'", "p")))
+        found = help_audit.staff_help_findings(entries, self.ROWS, {}, {})
+        self.assertEqual([f.key for f in found], ["staff-command-public-help: mirror"])
+        self.assertEqual(help_audit.staff_help_findings(entries, self.ROWS, {}, {"mirror": "x"}), [])
+        staff = fixture_entries(("h.are", page(65, "MIRROR", "a")))
+        self.assertEqual(help_audit.staff_help_findings(staff, self.ROWS, {}, {}), [])
+
+    def test_syntax_lines_start_with_something_the_game_answers(self) -> None:
+        entries = fixture_entries(("h.are", page(0, "X", "Syntax: mirr <name>\nSyntax: wave\n"
+                                                 "Syntax: cast 'nerve damage'\nSyntax: (automatic)\n"
+                                                 "Syntax: frobnicate <thing>")))
+        found = help_audit.syntax_findings(entries, self.ROWS + [("cast", 0, 1, "do_cast")],
+                                           {"wave"}, {"nerve damage"})
+        self.assertEqual([f.key for f in found], ["syntax-unknown-command: X: frobnicate"])
+
+    def test_a_refused_token_fails_while_the_source_refuses_it(self) -> None:
+        entries = fixture_entries(("h.are", page(0, "DROP", "Syntax: drop <object>\n"
+                                                 "Syntax: drop <amount> coins\n"
+                                                 "Syntax: drop <amount> gold")))
+        proof = {"do_drop": 'if (!str_cmp(arg,"coins")) send("specify which type of coin")'}
+        rules = {"drop": help_audit.SYNTAX_REFUSALS["drop"]}
+        found = help_audit.refused_token_findings(entries, proof, rules)
+        self.assertEqual([f.key for f in found], ["syntax-refused-token: drop coins"])
+        stale = help_audit.refused_token_findings(entries, {"do_drop": ""}, rules)
+        self.assertEqual([f.key for f in stale], ["syntax-refusal-stale: drop"])
+
+    def test_a_level_the_command_does_not_have(self) -> None:
+        entries = fixture_entries(("h.are", page(0, "SAVE", "You must be at least level 3 to save.")
+                                   + page(0, "DROP", "You must be level 1 to drop.")))
+        bodies = {"do_save": "save_char_obj(ch);", "do_drop": "drop();"}
+        found = help_audit.level_claim_findings(entries, self.ROWS, bodies)
+        self.assertEqual([f.key for f in found], ["help-level-claim: SAVE"])
+        gated = {"do_save": "if (ch->level < 3) return;"}
+        self.assertEqual(help_audit.level_claim_findings(entries, self.ROWS, gated), [])
+
+
+class Baseline(unittest.TestCase):
+    def test_known_findings_pass_new_ones_fail_and_stale_ones_are_named(self) -> None:
+        a = help_audit.Finding("see-also", "RIDE -> PET", "msg a")
+        b = help_audit.Finding("alias-pair", "nerve / nerve damage", "msg b")
+        new, known, stale = help_audit.split_by_baseline(
+            [a, b], {"see-also: RIDE -> PET", "help-ref: GONE -> AWAY"})
+        self.assertEqual((new, known, stale), ([b], [a], ["help-ref: GONE -> AWAY"]))
+        self.assertEqual(new[0], "msg b")
+
+    def test_write_and_read_back(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "baseline.json"
+            self.assertEqual(help_audit.load_baseline(path), set())
+            f = help_audit.Finding("see-also", "RIDE -> PET", "msg")
+            self.assertEqual(help_audit.write_baseline([f, f], path), 1)
+            self.assertEqual(help_audit.load_baseline(path), {"see-also: RIDE -> PET"})
+            self.assertTrue(path.read_bytes().isascii())
+
+    def test_the_shipped_baseline_names_only_known_kinds(self) -> None:
+        kinds_known = {"see-also", "see-also-above-reader", "see-also-malformed", "help-ref",
+                       "help-ref-above-reader", "alias-pair", "staff-command-public-help",
+                       "syntax-unknown-command", "syntax-refused-token", "help-level-claim"}
+        for key in help_audit.load_baseline():
+            self.assertIn(key.split(": ", 1)[0], kinds_known, key)
+
+    def test_the_new_exception_sections_say_why(self) -> None:
+        exc = help_audit.load_exceptions()
+        for section in ("distinct_pages", "staff_commands_public_help", "reference_aliases"):
+            for name, why in exc.get(section, {}).items():
+                self.assertTrue(isinstance(why, str) and len(why) > 20, (section, name))
+
+
+class Reports(unittest.TestCase):
+    def test_lengths_and_inventory(self) -> None:
+        entries = fixture_entries(("h.are", page(0, "SHORT TINY", "one two three")
+                                   + page(60, "LONG", " ".join(["word"] * 300))))
+        report = help_audit.lengths_report(entries)
+        self.assertIn("2 help pages, 303 words", report)
+        self.assertIn("over 250 words: 1 pages", report)
+        inv = help_audit.inventory(entries, {"shared_keywords": {}})
+        self.assertIn("| 1 | SHORT | TINY | 0 | h.are | 3 |", inv)
+        self.assertIn("| 2 | LONG |  | 60 | h.are | 300 |", inv)
+        self.assertIn("## Groups answered from the group table", inv)
+
+
 if __name__ == "__main__":
     unittest.main()
