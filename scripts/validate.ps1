@@ -97,13 +97,13 @@ Invoke-Step "Python syntax" {
 Invoke-Step "Area data checks" {
     Push-Location $RepoRoot
     try {
-        & $Python check_parser.py
+        & $Python scripts\check_parser.py
         Assert-NativeSuccess "Area parser check"
-        & $Python check_exits.py
+        & $Python scripts\check_exits.py
         Assert-NativeSuccess "Exit check"
-        & $Python check_resets.py
+        & $Python scripts\check_resets.py
         Assert-NativeSuccess "Reset check"
-        & $Python check_shops.py
+        & $Python scripts\check_shops.py
         Assert-NativeSuccess "Shop check"
         & $Python scripts\area_lint.py --fail-on critical --limit 20
         Assert-NativeSuccess "Area health check"

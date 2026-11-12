@@ -393,10 +393,10 @@ Focused checks:
 ```bash
 make
 cd area && ../merc --check-area && cd ..
-python3 check_parser.py
-python3 check_exits.py
-python3 check_resets.py
-python3 check_shops.py
+python3 scripts/check_parser.py
+python3 scripts/check_exits.py
+python3 scripts/check_resets.py
+python3 scripts/check_shops.py
 python3 scripts/area_lint.py --fail-on critical --limit 20
 python3 -m unittest discover -s tests
 git diff --check
@@ -416,13 +416,23 @@ object). Do not suppress a finding merely to reduce the count.
 | `src/` | C server, gameplay, persistence, networking, and commands |
 | `area/` | Latin-1 world files, help files, socials, and `area.lst` |
 | `webadmin/` | FastAPI dashboard, parser, and area-health engine |
-| `scripts/` | Setup, validation, Hyrule generation, and utility scripts |
+| `scripts/` | Setup, validation (`validate.sh`, `area_lint.py`, `check_*.py`), the Docker entrypoint, Hyrule generation, and utility scripts |
+| `tools/` | Operator and balance reports, generators for routes, sounds and prices |
+| `deploy/` | The live host's deploy, state sync, recovery and restore scripts and units |
 | `tests/` | Python tests for APIs, area health, and Hyrule progression |
 | `data/` | Checked-in source manifests, including Hyrule First Quest |
 | `wiki/` | Player, host, operator, developer, and area-building guides |
-| `notes/` | Design notes, audits, and implementation records |
+| `wiki/notes/` | Design notes, audits, and implementation records |
 | `.github/workflows/` | Continuous validation |
+| `mudlet/` | The Mudlet package and generated starter map |
+| `fuzz/` | libFuzzer targets for the file readers |
 | `player/`, `gods/`, `heroes/` | Mutable character and staff data |
+
+The root holds only what is typed or opened from a fresh clone -- the
+installers and launchers (`install.sh`, `install.ps1`, `toc.sh`, `toc.ps1`,
+`Install-ToC.*`, `Start-ToC.*`, `startup.sh`) -- the build files (`Makefile`,
+`CMakeLists.txt`, `Dockerfile`, `docker-compose.yml`) and the project
+documents. The live game runs the root `merc` from `area/`.
 
 Area files use Latin-1. Do not silently convert them to UTF-8. Do not edit
 production player or god files as part of routine development. Hyrule is

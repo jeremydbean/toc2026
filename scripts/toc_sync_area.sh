@@ -4,7 +4,7 @@
 #
 #   scripts/toc_sync_area.sh <code-area-dir> <live-area-dir>
 #
-# The Docker image (docker-entrypoint.sh) and the native installer
+# The Docker image (scripts/docker-entrypoint.sh) and the native installer
 # (scripts/toc_native.sh) both run the game in a live tree that is not
 # the checkout, so an update can replace the code without touching
 # player-made state. The rules are toc-deploy's, which learned them the

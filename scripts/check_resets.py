@@ -8,12 +8,12 @@ and anything after the last argument on the line is a comment.
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]  # the repository root
 sys.path.insert(0, str(ROOT))
 
 from webadmin.area_reader import read_world  # noqa: E402
 
-AREA_DIR = Path("area")
+AREA_DIR = ROOT / "area"
 
 areas = read_world(AREA_DIR)
 mob_vnums = {m.vnum for area in areas for m in area.mobiles}

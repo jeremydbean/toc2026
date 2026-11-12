@@ -82,11 +82,12 @@ The parsers have different purposes and both must pass.
 | `area/` | World, help, social, and load-list data |
 | `webadmin/` | FastAPI app, area parser, and health engine |
 | `tests/` | Python unit/API/progression tests |
-| `scripts/` | Validation, setup, Hyrule generation, and utilities |
+| `scripts/` | Validation (`validate.sh`, `area_lint.py`, `check_*.py`), setup, the Docker entrypoint, Hyrule generation, and utilities |
 | `deploy/` | Live host deploy, state sync, recovery and restore scripts and units (`deploy/windows-vm/`, a historical name) |
 | `data/` | Structured source manifests |
 | `wiki/` | Maintained user and technical documentation |
-| `notes/` | Design records and audits, not the primary user docs |
+| `wiki/notes/` | Design records and audits, not the primary user docs |
+| `wiki/code-review.md` | Recorded review findings and their status |
 | `player/` | Mutable character files; sensitive and normally off-limits |
 | `gods/`, `heroes/` | Mutable staff/hero data; sensitive |
 | `backups/`, `log/` | Runtime output |
@@ -199,10 +200,10 @@ cd area
 repository root. A server started from the wrong directory may fail to find
 `area.lst`, player files, logs, or backups.
 
-Compatibility entrypoints are intentionally conservative: root `startup` and
-`area/startup.sh` delegate to `startup.sh`; root `install` delegates to the
-Linux setup helper; `cleanup` only removes build output; and `refresh` builds
-and validates without killing or restarting a process.
+`area/startup.sh` delegates to the root `startup.sh` for hosts that launched from
+`area/`. The retired root names `startup`, `install`, `cleanup` and `refresh`
+were removed on 2026-11-12: use `startup.sh`, `install.sh`, `make clean` and
+`bash scripts/validate.sh build` instead.
 
 ## Python Environment
 
@@ -267,12 +268,12 @@ cd area
 cd ..
 
 # Parsed world inventory.
-python3 check_parser.py
+python3 scripts/check_parser.py
 
 # Cross-reference checks.
-python3 check_exits.py
-python3 check_resets.py
-python3 check_shops.py
+python3 scripts/check_exits.py
+python3 scripts/check_resets.py
+python3 scripts/check_shops.py
 
 # Shared dashboard/CLI health engine.
 python3 scripts/area_lint.py --fail-on critical --limit 20
@@ -447,8 +448,8 @@ Generated output is loaded as an area file. Normal workflow:
 ```bash
 make hyrule-area
 make test-hyrule
-python3 check_exits.py
-python3 check_resets.py
+python3 scripts/check_exits.py
+python3 scripts/check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 git diff --check
 ```

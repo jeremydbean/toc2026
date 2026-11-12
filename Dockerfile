@@ -69,7 +69,7 @@ COPY --from=build /src/merc /usr/local/bin/merc
 COPY --from=build /src/area /app/dist/area
 COPY --from=build /src/webadmin /app/webadmin
 COPY scripts/toc_sync_area.sh /usr/local/bin/toc-sync-area
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY scripts/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh /usr/local/bin/toc-sync-area \
  && chmod +x /usr/local/bin/docker-entrypoint.sh /usr/local/bin/toc-sync-area \
  && rm -f /app/dist/area/shutdown.txt /app/dist/area/webadmin.queue \
