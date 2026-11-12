@@ -420,6 +420,10 @@ void do_project( CHAR_DATA *ch, char *argument )
     if ( IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
         return;
 
+    /* A projection is a body outside the cell (jail.c). */
+    if ( jail_refuses( ch ) )
+        return;
+
     argument = one_argument (argument, arg);
 
     if ( (chance = get_skill(ch, gsn_project)) == 0 )
@@ -3905,6 +3909,7 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
     if ( victim->in_room == NULL || victim->fighting != NULL
     ||   victim->position < POS_RESTING
     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
+    ||   is_jailed( victim )
     ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
     ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
     ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
@@ -5215,6 +5220,11 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
+    /* A pocket room is a room outside the cell: refused before one is
+       made, never abandoned by the sentence (jail.c). */
+    if ( jail_refuses( ch ) )
+      return;
+
     /* Quitting in the pocket room loads the character in Limbo, which
        allows recall: a way out of a jail cell or a no-recall dungeon. */
     if ( IS_SET(ch->in_room->room_flags, ROOM_JAIL)
@@ -5336,6 +5346,11 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
       send_to_char("You failed.\n\r",ch);
       return;
     }
+
+    /* A pocket room is a room outside the cell: refused before one is
+       made, never abandoned by the sentence (jail.c). */
+    if ( jail_refuses( ch ) )
+      return;
 
     /* Quitting in the pocket room loads the character in Limbo, which
        allows recall: a way out of a jail cell or a no-recall dungeon. */

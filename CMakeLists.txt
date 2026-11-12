@@ -70,6 +70,7 @@ set(SRC_FILES
     src/stubs.c
     src/update.c
     src/walkto.c
+    src/jail.c
     src/build.c
     src/changes.c
     src/diary.c

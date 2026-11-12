@@ -1402,8 +1402,15 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf(fp,"Pk_State %d\n",	   	ch->pcdata->pk_state);
       else
 	fprintf(fp,"Pk_State %d\n",0);
-      if(ch->pcdata->jw_timer > 0 )
-	 fprintf( fp,"Jw_Timer %ld\n",	ch->pcdata->jw_timer);
+      /* The sentence (jail.c): the release time -- JAIL_INDEFINITE (-1)
+         for none -- and when it began, what it imposed and who set it. */
+      if ( IS_SET(ch->act, PLR_JAILED) )
+      {
+	 fprintf( fp, "Jw_Timer %ld\n", ch->pcdata->jw_timer );
+	 fprintf( fp, "JailInfo %ld %d %s\n", ch->pcdata->jail_since,
+		  ch->pcdata->jail_added,
+		  ch->pcdata->jail_by[0] != '\0' ? ch->pcdata->jail_by : "-" );
+      }
       else
 	 fprintf(fp,"Jw_Timer %d\n", 0);
       if(ch->pcdata->on_quest)
@@ -3095,6 +3102,10 @@ read_done:
     if ( found )
         revive_at_load( ch );
 
+    /* A sentence from before JailInfo, or none (jail.c). */
+    if ( found )
+        jail_load_fixup( ch );
+
     /* Powers learned before the list existed still count towards it.
        Silent, so it may run on any load. Everything that speaks -- the
        powers handed back, the remort top-up, a pending grant -- is
@@ -4515,7 +4526,23 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 
 	case 'J':
-	    KEY( "Jw_Timer",	ch->pcdata->jw_timer,	fread_number( fp ) );
+	    /* A long: a deadline past 2038 is past int's range, and
+	       fread_number refused the whole character for it. */
+	    KEY( "Jw_Timer",	ch->pcdata->jw_timer,	fread_long( fp ) );
+	    if ( !str_cmp( word, "JailInfo" ) )
+	    {
+		long since = fread_long( fp );
+		int added = fread_number( fp );
+		char *by = fread_word( fp );
+
+		ch->pcdata->jail_since = since;
+		ch->pcdata->jail_added = added & JAIL_ADDED_KNOWN;
+		toc_strlcpy( ch->pcdata->jail_by, strcmp( by, "-" ) ? by : "",
+			     sizeof(ch->pcdata->jail_by) );
+		ch->pcdata->jail_info_read = true;
+		fMatch = true;
+		break;
+	    }
 	    break;
 
 

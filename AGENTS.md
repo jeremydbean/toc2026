@@ -604,6 +604,8 @@ Live-test gotchas that look like product bugs and are not:
 - `src/act_move.c`: movement, exits, traps, recall, run/speedwalk
 - `src/walkto.c`: WALKTO -- named destinations, pathfinding from the
   player's room, and the paced walk
+- `src/jail.c`: JAIL, the sentence's hold at every placement
+  (`jail_hold_room` from `char_to_room`), its expiry, and the refusals
 - `src/build.c`: in-game building in words -- SET MOB/OBJ <vnum>, MSHOW, OSHOW, PLACE/RESETS/UNPLACE, BUILD,
   with the name tables for every mobile and object flag word; ANEW/ASAVE/MCREATE/
   OCREATE are in `act_wiz.c` and the area writer in `db.c`
@@ -2497,7 +2499,8 @@ gate, the portal spell, astral walk and ENTER ask before carrying a
 character anywhere, and what `random_travel_room()` -- recall misfires,
 tornadoes, teleport traps -- picks against: another class's guild
 rooms, rooms `guild_closed_rooms()` says a guard would turn this
-character from, and Hyrule's order. Staff, newbie and private rooms are
+character from, Hyrule's order, and -- before the staff exemption -- a
+jail sentence, which allows only the cell. Staff, newbie and private rooms are
 `can_see_room` and the flags the spells already test. A new spell that
 moves a character to another's room asks it too. Hyrule's check is
 `hyrule_gate_check(ch, from, to, speak)`; WALKTO asks it silently through
@@ -4318,6 +4321,78 @@ standing, had anything ever granted one.
 
 `set skill <char> all` skips abilities no class can reach, which is what
 kept these two out of players' skill lists.
+
+## Jail Sentences
+
+`src/jail.c` (owner, 2026-11-12: a mortal must not escape an active
+sentence; death, farslay, suicide, travel, items, remort, disconnecting,
+relogging and rebooting do not release them -- only staff release or the
+expiry of a timer staff set). `wiki/operator-guide.md` has the command.
+
+- **The sentence confines, never the room.** Every travel check used to
+  ask `ROOM_JAIL`, so a prisoner in a cell given an exit or stripped of
+  its flags walked out, and `raw_kill_internal` skipped the whole death
+  (no `extract_char`, no deaths log) only while the room carried the
+  flag. Now `char_to_room` asks `jail_hold_room(ch, room)` at every
+  placement: a prisoner (`is_jailed`: a player with `PLR_JAILED`, staff
+  included) put anywhere but `ROOM_VNUM_JAIL` is put in the cell
+  instead, logged `JAIL: <name> kept in the cell`. That covers the death
+  room (every death -- combat, SLAY, FARSLAY, the Farslay rite and its
+  backfire, death rays, poison, traps -- is a whole death, and lands in
+  the cell), recall, portals, spells, login placement and anything added
+  later. A missing cell holds nobody and says so with `bug`.
+- **Refuse before starting, so the boundary undoes nothing.**
+  `jail_refuses(ch)` -- "You are serving a jail sentence..." -- is asked
+  first by `move_char` (riding included), `recall_travel` (the prayer,
+  the ring, the link-dead rescue), ENTER, the manipulation objects,
+  PROJECT, SWITCH, ROPE TRICK, HAVEN, PRAY (before any audience); REMORT
+  and DELETE (both steps: a confirmation asked for before the sentence
+  dies with it) refuse a prisoner too, and `travel_spell_refuses`,
+  teleport, word of recall, summon, ACCEPT and RAISE DEAD ask
+  `is_jailed`. TRANSFER, ITRANS and DRAG refuse a prisoner unless the
+  destination is the cell (`jail_refuses_staff_move`). There is no
+  override that keeps the sentence and moves the prisoner: JAIL RELEASE,
+  logged, is the deliberate act. A new way of moving a character asks
+  `jail_refuses` before it starts anything the cell would undo.
+- **Representation** (pcdata, **case 'J'**): `Jw_Timer` is the absolute
+  release time, `JAIL_INDEFINITE` (-1) for none, 0 when free -- read with
+  `fread_long` (it was `fread_number`, so a deadline past 2038 refused the
+  whole character); `JailInfo <since> <added> <by>` is written only while
+  jailed: `JAIL_ADDED_NOCHANNELS`/`NOTITLE` say which restriction this
+  sentence turned on (it turns on only what was off), and the release
+  takes off only those. NOCHANNELS, NOTITLE or MUTE toggled by staff
+  during a sentence clear the matching bit (`jail_restriction_touched`):
+  from then on it is theirs. Jail never touches the title, WARNED or
+  EXCON (it overwrote the title with " . (JAILED)", cleared both flags,
+  and release wrote "the Jailbird." and cleared every channel ban).
+- **Migration**: a file with `PLR_JAILED` and no `JailInfo` is
+  `JAIL_LEGACY` (`jail_load_fixup`, end of `load_char_obj`): nothing
+  records what that sentence imposed, so its release lifts neither
+  restriction -- staff do it by hand -- and a `Jw_Timer 0`, which the old
+  code wrote for a sentence with no deadline, is indefinite, never one
+  that expired in 1970. A legacy " . (JAILED)" title goes back to the
+  class title at release.
+- **Saved at once, reported as it landed.** JAIL and RELEASE change
+  memory, save (`jail_write`; fault point `jail-write-<Name>` -- no
+  "save" in it), and on `DURABLE_FAILED` put everything back and say
+  nothing changed; on `DURABLE_UNCERTAIN` keep the change and say it is
+  not confirmed. Only then does an online prisoner move (forced back from
+  a switch or projection, out of a fight and a walk, off a mount). A file
+  saved free but in room 3 logs in at the Temple (`jail_login_place`).
+- **Expiry** is elapsed wall-clock time, never ticks: `jail_update` once
+  a second (`update_handler`, beside the memory sweep) releases a timed
+  prisoner past the deadline, link-dead too, with nothing typed;
+  `jail_login`, after `corpse_registry_login` and before the first LOOK,
+  releases one whose term ran out while away. A failed release save
+  leaves them jailed and retries in `JAIL_RETRY_SECS` (10).
+- **The command**: `jail <player> status | <30m|2h|7d|days> | indefinite
+  | release | 0`, online or offline through `player_in_game` and
+  `offline_player_load` (a login in progress refused), `rank_protects`,
+  a duration from now replacing the old term, at most `JAIL_MAX_SECONDS`
+  (30 days); anything malformed, zero, negative, too long or followed by
+  more words changes nobody. Logged `JAIL: ...` and WIZINFO at
+  `staff_notice_level_pair`. `tests/test_jail_confinement.py` (the stock
+  cell and a cell given an exit and no flags), `tests/test_jail_sentence.py`.
 
 ## Where RECALL Goes
 

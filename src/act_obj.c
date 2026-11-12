@@ -6380,6 +6380,9 @@ static bool manipulate_move_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *dest )
 	return true;
     }
 
+    if ( dest->vnum != ROOM_VNUM_JAIL && jail_refuses( ch ) )
+	return true;
+
     if ( ch->fighting != NULL )
     {
 	send_to_char( "No way!  You are still fighting!\n\r", ch );

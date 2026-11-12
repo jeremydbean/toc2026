@@ -312,6 +312,43 @@ Relevant command families include:
 - Correction: `restore`, `advance`, `transfer`, `goto`, `at`, `force`, and
   player-version restore, according to trust.
 
+### Jail sentences
+
+```text
+jail <player> status
+jail <player> 30m | 2h | 7d | <days>     timed, at most 30 days
+jail <player> indefinite                 until staff release them
+jail <player> release                    (or: jail <player> 0)
+```
+
+- Works on players online, link-dead or offline (not on somebody still at
+  the login prompts -- try again in a moment). Rank protects as for any
+  staff command.
+- A duration starts now and **replaces** any term being served; it never
+  adds to it. A bare number is days, as it always was.
+- The sentence is saved the moment it is given or lifted. If the save
+  fails you are told and nothing changed; "written, not confirmed" means
+  the change stands and the next save confirms it.
+- A timed sentence ends by itself at its time: online with nothing typed,
+  or at the next login if they are away. The release lands in the Temple.
+  A release whose save fails leaves them jailed and is tried again ten
+  seconds later (logged, and on WIZINFO).
+- Nothing else ends it. Death (any kind, including SLAY and FARSLAY),
+  recall, portals, travel spells, pocket rooms, PROJECT, PRAY, REMORT,
+  DELETE, quitting, link loss and reboots leave the prisoner in room 3.
+  TRANSFER, ITRANS and DRAG refuse a prisoner: release them first. FORCE
+  makes them try, and the sentence refuses them like anyone else.
+- Jailing turns on NOCHANNELS and NOTITLE only if they were off, and
+  remembers which; release takes off only those. A nochannel or notitle
+  you toggle during the sentence is yours, and release leaves it. Titles,
+  WARNED and EXCON are never touched.
+- STATUS shows the release time (UTC) and what is left, who set the term,
+  since when, and what it imposed. A sentence from before 2026-11-12 shows
+  as indefinite and "sentenced before sentences were recorded": nothing
+  says which restrictions it added, so release leaves channels and title
+  bans for you to lift by hand (an old " . (JAILED)" title is put back to
+  the class title).
+
 Use the least invasive action that stops harm. Preserve evidence before
 changing state, avoid discussing private account details publicly, and make
 time-bounded sanctions explicit in operator notes. `force` and arbitrary

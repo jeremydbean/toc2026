@@ -2482,7 +2482,15 @@ struct  pc_data
     int                 questor         [10];
     long                quest_pause;
     sh_int              pk_state;
+    /* A jail sentence (jail.c), while PLR_JAILED is set: jw_timer is the
+       absolute release time, or JAIL_INDEFINITE until staff release
+       them; 0 when free. Saved as Jw_Timer and JailInfo, case 'J'. */
     long                jw_timer;
+    long                jail_since;     /* when this sentence began */
+    int                 jail_added;     /* JAIL_ADDED_*: what it imposed */
+    char                jail_by[16];    /* who set the current term */
+    time_t              jail_retry_at;  /* memory: a failed release's retry */
+    bool                jail_info_read; /* memory: JailInfo was in the file */
     sh_int              lmb_timer;
     sh_int              col_table[32];
     bool                color;
@@ -4340,6 +4348,25 @@ void    treasure_goblin_update   ( void );
 void    hunt_victim     ( CHAR_DATA *ch, int ANNOY );
 void    do_stop_hunting ( CHAR_DATA *ch, char *args );
 void    do_start_hunting ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY);
+
+/* jail.c: a sentence confines the prisoner, wherever they are placed. */
+#define JAIL_INDEFINITE         (-1L)   /* jw_timer: until staff release */
+#define JAIL_MAX_SECONDS        (30L * 24L * 60L * 60L)
+#define JAIL_ADDED_NOCHANNELS   1       /* COMM_NOCHANNELS was this sentence's */
+#define JAIL_ADDED_NOTITLE      2       /* COMM_NOTITLE was this sentence's */
+#define JAIL_LEGACY             4       /* from before JailInfo: nothing known */
+#define JAIL_ADDED_KNOWN        ( JAIL_ADDED_NOCHANNELS | JAIL_ADDED_NOTITLE | JAIL_LEGACY )
+bool    is_jailed        ( const CHAR_DATA *ch );
+bool    jail_refuses     ( CHAR_DATA *ch );
+bool    jail_refuses_staff_move ( CHAR_DATA *ch, CHAR_DATA *victim,
+                                  ROOM_INDEX_DATA *to );
+ROOM_INDEX_DATA *jail_hold_room ( CHAR_DATA *ch, ROOM_INDEX_DATA *to );
+void    jail_load_fixup  ( CHAR_DATA *ch );
+void    jail_login_place ( CHAR_DATA *ch );
+void    jail_login       ( CHAR_DATA *ch );
+void    jail_update      ( void );
+void    jail_restriction_touched ( CHAR_DATA *victim, long comm_bits );
+void    jail_term_text   ( const CHAR_DATA *ch, char *buf, size_t size );
 
 /* walkto.c */
 void    walkto_load      ( void );

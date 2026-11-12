@@ -5,6 +5,17 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112jail 2026-11-12 staff
+JAIL keeps a prisoner in the cell whatever happens: death, slay, farslay,
+recall, portals, spells, items, the Oracle, remort, DELETE, quitting,
+link loss and reboots all leave them there, and TRANSFER refuses them.
+JAIL <name> STATUS, <duration> (30m, 2h, 7d or days, at most 30 days,
+replacing any term from now), INDEFINITE and RELEASE (or 0) work online
+or offline, and save at once -- a failed save changes nothing. A timed
+sentence now ends by itself, online or at the next login. Jail keeps the
+player's title and warning flags, and release lifts only the channel and
+title bans the sentence itself imposed.
+
 @ 20261112diary 2026-11-12
 Your diary: DIARY shows what you did today -- time played, levels and
 experience, kills and close calls, quests, achievements, skills, the areas

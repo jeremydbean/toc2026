@@ -1875,14 +1875,11 @@ void do_score( CHAR_DATA *ch, char *argument )
       send_to_char(buf, ch);
 
 
-      if (IS_SET( ch->act, PLR_JAILED ))
+      if ( is_jailed( ch ) )
       {
-        char jail_ts[32];
-        char *jail_nl;
-        toc_strlcpy( jail_ts, ctime(&ch->pcdata->jw_timer), sizeof(jail_ts) );
-        jail_nl = strchr( jail_ts, '\n' );
-        if ( jail_nl ) *jail_nl = '\0';
-        snprintf(buf, sizeof(buf), "You are jailed until %s.", jail_ts);
+        /* The release time and what is left, or "until staff release
+           you": an indefinite sentence used to print the epoch. */
+        jail_term_text( ch, buf, sizeof(buf) );
         score_box_row(ch, buf);
       }
 
@@ -5311,7 +5308,13 @@ void do_remort( CHAR_DATA *ch, char *arg)
      send_to_char("You are not allowed to remort anymore.\n\r",ch);
      return;
    }
-   /* A remort ends in the Temple, so it must not be a way out of jail. */
+   /* A remort ends in the Temple, so it must not be a way out of jail:
+      the sentence refuses it wherever they stand, before anything of
+      the remort is done (jail.c). */
+   if (is_jailed(ch)) {
+     send_to_char("Not while you are serving a jail sentence.\n\r",ch);
+     return;
+   }
    if (ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_JAIL)) {
      send_to_char("Not from a cell. Serve your time first.\n\r",ch);
      return;

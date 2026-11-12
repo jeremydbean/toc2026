@@ -75,6 +75,15 @@ void do_delete( CHAR_DATA *ch, char *argument)
     if (IS_NPC(ch))
 	return;
 
+    /* A sentence is not ended by deleting the character, nor by a
+       deletion asked for before it began (jail.c). */
+    if ( is_jailed( ch ) )
+    {
+	ch->pcdata->confirm_delete = FALSE;
+	send_to_char( "You cannot delete yourself while serving a jail sentence.\n\r", ch );
+	return;
+    }
+
     if (ch->pcdata->confirm_delete)
     {
 	if (argument[0] == '\0')

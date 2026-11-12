@@ -1946,6 +1946,10 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 	return;
     }
 
+    /* A jail sentence holds wherever the prisoner is placed: a death, a
+       spell, a portal, a login -- every placement is here (jail.c). */
+    pRoomIndex = jail_hold_room( ch, pRoomIndex );
+
     ch->in_room         = pRoomIndex;
     ch->next_in_room    = pRoomIndex->people;
     pRoomIndex->people  = ch;

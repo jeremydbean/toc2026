@@ -3801,7 +3801,11 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 	return;
     }
 
-    if(!IS_SET(victim->in_room->room_flags, ROOM_JAIL) )
+    /* Every player's death is a whole one. This used to be skipped in a
+       ROOM_JAIL room, which kept a prisoner in the cell only while the
+       cell was flagged and dropped the rest of the death; the sentence
+       itself now keeps them there (char_to_room, jail.c), so the death
+       room a death sends them to is the cell. */
     {
         /* Track PK kill and death for session stats */
         if (!IS_NPC(ch) && ch != victim)
