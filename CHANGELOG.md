@@ -8,6 +8,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Exploration maps and the fog on the Mudlet map** (owner, 2026-11-12).
+  The game decides what each character knows (`src/maps.c`): rooms walked
+  into, whole regions whose map they hold -- an area, or a Hyrule dungeon
+  through its NES map -- and Dresden, Mud School, Limbo and the yard;
+  staff everything. GMCP `Map.Known` sends it as room runs, and package
+  1.5.12 takes every other room off the map, keeping it aside in the
+  profile (`toc-fog.lua`) to put back, relinked, when it becomes known.
+  Map items (object 96) drop from slain mobiles one time in two hundred
+  and from the wandering cartographer (mob 29942, a short visit every few
+  hours); READ learns one. MAPS lists a character's maps and how much of
+  each area they have walked; GRANTMAP and CARTOGRAPHER are staff tools.
+  Ten achievements (399 in all): maps held, areas walked end to end, the
+  cartographer and a meta. `tests/test_exploration_maps.py`,
+  `tests/mudlet_fog_spec.lua`.
 - **The file readers are fuzzed** (owner, 2026-11-12: "do it all").
   `fuzz/` holds three libFuzzer targets with ASan and UBSan -- the number
   parser, the player-file loader through `offline_player_load`, and one

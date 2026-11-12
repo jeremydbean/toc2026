@@ -2577,6 +2577,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
             write_prompt( d );
 
 	gmcp_send_room( d );
+	gmcp_send_map_known( d );   /* the fog on the map (maps.c) */
 	gmcp_send_character( d );
 	gmcp_send_affects( d );
 	gmcp_send_quest( d );
@@ -4272,6 +4273,8 @@ case CON_DEFAULT_CHOICE:
 	    /* Psionics owed or handed back: here, past the password and with
 	       a real descriptor, never inside load_char_obj. */
 	    psionic_login( ch );
+	    /* Areas walked end to end before that was counted (maps.c). */
+	    map_login( ch );
 	    /* Rested experience banked while they were away (rested.c). */
 	    rest_xp_on_login( ch );
 	    /* The quest cooldown ran while they were away (quest.c). */

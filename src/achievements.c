@@ -68,7 +68,8 @@ typedef enum
     ACH_REQ_MASTERED_WEAPONS,   /* weapon proficiencies at 100% */
     ACH_REQ_PSI_POWERS,         /* psionic powers known */
     ACH_REQ_HYRULE_SECRETS,     /* auxiliary: which secret bits */
-    ACH_REQ_STASH_CEILING       /* stash bought to its ceiling */
+    ACH_REQ_STASH_CEILING,      /* stash bought to its ceiling */
+    ACH_REQ_AREA_MAPS           /* whole maps held: map_held_count (maps.c) */
 } ACHIEVEMENT_REQUIREMENT;
 
 typedef struct achievement_definition
@@ -125,6 +126,7 @@ enum
     ACH_COHORT_TRIPLE_CRAFT,
     ACH_COHORT_GUARDIAN_ANGEL,
     ACH_COHORT_RARE_SIGHTINGS,
+    ACH_COHORT_CARTOGRAPHY,
     ACH_COHORT_COUNT
 };
 
@@ -580,7 +582,21 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     /* The holiday fairs (holiday.c; owner, 2026-11-02). */
     { "holiday-rose", "A Rose by Any Name", "Give a red rose to another adventurer.", ACH_CAT_ENCOUNTERS, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_HOLIDAY_ROSE, 0 },
     { "holiday-firework", "Light Up the Sky", "Set off a festival firework.", ACH_CAT_ENCOUNTERS, 5, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_HOLIDAY_FIREWORK, 0 },
-    { "holiday-gold", "Pot of Gold", "Slay a foe with a four-leaf clover's luck on you.", ACH_CAT_ENCOUNTERS, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_HOLIDAY_GOLD, 0 }
+    { "holiday-gold", "Pot of Gold", "Slay a foe with a four-leaf clover's luck on you.", ACH_CAT_ENCOUNTERS, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_HOLIDAY_GOLD, 0 },
+
+    /* Exploration maps (maps.c; owner, 2026-11-12). A map is an area's
+       whole map, or a Hyrule dungeon's; an area explored is every room
+       of it that counts (map_room_countable) walked into. */
+    { "maps-1", "A Map of One's Own", "Learn the whole map of an area.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_AREA_MAPS, 1, 0 },
+    { "maps-5", "Well Charted I", "Learn the whole maps of 5 areas.", ACH_CAT_EXPLORATION, 20, false, ACH_REQ_AREA_MAPS, 5, 0 },
+    { "maps-10", "Well Charted II", "Learn the whole maps of 10 areas.", ACH_CAT_EXPLORATION, 30, false, ACH_REQ_AREA_MAPS, 10, 0 },
+    { "maps-25", "Well Charted III", "Learn the whole maps of 25 areas.", ACH_CAT_EXPLORATION, 50, false, ACH_REQ_AREA_MAPS, 25, 0 },
+    { "explored-1", "No Stone Unturned I", "Walk into every room of an area.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_SET, 1, ACH_SET_EXPLORED_AREAS },
+    { "explored-5", "No Stone Unturned II", "Walk into every room of 5 areas.", ACH_CAT_EXPLORATION, 30, false, ACH_REQ_SET, 5, ACH_SET_EXPLORED_AREAS },
+    { "explored-10", "No Stone Unturned III", "Walk into every room of 10 areas.", ACH_CAT_EXPLORATION, 45, false, ACH_REQ_SET, 10, ACH_SET_EXPLORED_AREAS },
+    { "explored-25", "No Stone Unturned IV", "Walk into every room of 25 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_SET, 25, ACH_SET_EXPLORED_AREAS },
+    { "cartographer-slain", "Off the Map", "Bring down the wandering cartographer.", ACH_CAT_ENCOUNTERS, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_CARTOGRAPHER, 0 },
+    { "master-cartographer", "Master Cartographer", "Earn Well Charted III, No Stone Unturned IV and Off the Map.", ACH_CAT_EXPLORATION, 75, false, ACH_REQ_COHORT, 0, ACH_COHORT_CARTOGRAPHY }
 };
 
 typedef char achievement_table_must_fit[
@@ -641,7 +657,15 @@ static bool achievement_has_object(const CHAR_DATA *ch, int vnum)
 static void achievement_note_object_vnum(CHAR_DATA *ch, int object_vnum)
 {
     if (object_vnum >= 30480 && object_vnum <= 30488)
-        ch->pcdata->achievement_hyrule_maps |= (1UL << (object_vnum - 30480));
+    {
+        unsigned long bit = 1UL << (object_vnum - 30480);
+
+        /* A dungeon's map shows the whole dungeon on the client's map
+           (maps.c reads these bits for Map.Known). */
+        if ((ch->pcdata->achievement_hyrule_maps & bit) == 0)
+            map_known_changed(ch);
+        ch->pcdata->achievement_hyrule_maps |= bit;
+    }
     else if (object_vnum >= 30489 && object_vnum <= 30497)
         ch->pcdata->achievement_hyrule_compasses |= (1UL << (object_vnum - 30489));
     else if (object_vnum >= 30400 && object_vnum <= 30407)
@@ -704,14 +728,14 @@ static const char *const achievement_counter_names[ACH_CTR_COUNT] =
 static const char *const achievement_set_names[ACH_SET_COUNT] =
 {
     "vesh-items", "recipes", "quest-areas", "areas", "rooms",
-    "daily-kinds", "psi-disciplines"
+    "daily-kinds", "psi-disciplines", "map-areas", "explored-areas"
 };
 
 /* Bounds a corrupt or hostile file cannot push past. Rooms are the
    largest honest set: the world has under 8,000. */
 static const int achievement_set_limits[ACH_SET_COUNT] =
 {
-    4096, 4096, 1024, 1024, 16384, 64, 16
+    4096, 4096, 1024, 1024, 16384, 64, 16, 1024, 1024
 };
 
 /* The largest id each set can honestly hold (review, 2026-10-26: a saved
@@ -728,7 +752,9 @@ static const long achievement_set_max_id[ACH_SET_COUNT] =
     INT_MAX,        /* areas */
     INT_MAX,        /* rooms: room vnums */
     63L,            /* daily-kinds */
-    15L             /* psi-disciplines */
+    15L,            /* psi-disciplines */
+    INT_MAX,        /* map-areas: map_region_id, 31 bits */
+    INT_MAX         /* explored-areas: achievement_area_id */
 };
 
 static int achievement_set_search(const CHAR_DATA *ch, int set, long id,
@@ -824,6 +850,26 @@ long achievement_area_id(const AREA_DATA *area)
         hash = (hash * 16777619UL) & 0xFFFFFFFFUL;
     }
     return (long)(hash & 0x7FFFFFFFUL);
+}
+
+/* Whether a set holds an id, and how many it holds (maps.c reads the
+   rooms walked and the maps learned through these). */
+bool achievement_set_has(const CHAR_DATA *ch, achievement_set set, long id)
+{
+    bool found;
+
+    if (!achievement_is_player(ch) || (int)set < 0 || set >= ACH_SET_COUNT
+        || ch->pcdata->achievement_set[set] == NULL)
+        return false;
+    (void)achievement_set_search(ch, (int)set, id, &found);
+    return found;
+}
+
+int achievement_set_size(const CHAR_DATA *ch, achievement_set set)
+{
+    if (!achievement_is_player(ch) || (int)set < 0 || set >= ACH_SET_COUNT)
+        return 0;
+    return ch->pcdata->achievement_set_len[set];
 }
 
 /* ------------------------------------------------------------------
@@ -969,6 +1015,11 @@ static const char *const cohort_rare_sightings[] =
     "goblin-kills-1", "dragon-kills-1", "vesh-visits-1", NULL
 };
 
+static const char *const cohort_cartography[] =
+{
+    "maps-25", "explored-25", "cartographer-slain", NULL
+};
+
 static const char *const *const achievement_cohorts[ACH_COHORT_COUNT] =
 {
     cohort_world_bosses_v1,
@@ -988,7 +1039,8 @@ static const char *const *const achievement_cohorts[ACH_COHORT_COUNT] =
     cohort_hyrule_bands,
     cohort_triple_craft,
     cohort_guardian_angel,
-    cohort_rare_sightings
+    cohort_rare_sightings,
+    cohort_cartography
 };
 
 static int achievement_index_by_key(const char *key);
@@ -1229,6 +1281,8 @@ static long achievement_progress(const CHAR_DATA *ch, int index)
                 & achievement_secret_mask(definition->auxiliary));
         case ACH_REQ_STASH_CEILING:
             return ch->pcdata->stash_max >= STASH_SLOTS_MAX ? 1 : 0;
+        case ACH_REQ_AREA_MAPS:
+            return map_held_count(ch);
         case ACH_REQ_ROOM:
         case ACH_REQ_BOSS:
         case ACH_REQ_EVENT:
@@ -1781,7 +1835,7 @@ bool achievement_note(CHAR_DATA *ch, achievement_set set, long id)
 
 /* Rooms and areas count toward exploration only where anybody can go:
    the shipped world, not built areas, staff rooms, Limbo or a jail cell. */
-static bool achievement_room_is_public(const ROOM_INDEX_DATA *room)
+bool achievement_room_counts(const ROOM_INDEX_DATA *room)
 {
     const char *file;
 
@@ -1803,10 +1857,14 @@ void achievement_record_room_visit(CHAR_DATA *ch, ROOM_INDEX_DATA *room)
     bool changed = false;
 
     if (!achievement_is_player(ch) || ACH_STAFF(ch)
-        || !achievement_room_is_public(room))
+        || !achievement_room_counts(room))
         return;
     if (achievement_set_insert(ch, ACH_SET_ROOMS, room->vnum))
+    {
         changed = true;
+        /* The last room of an area walked into (maps.c). */
+        map_room_visited(ch, room);
+    }
     if (achievement_set_insert(ch, ACH_SET_AREAS,
             achievement_area_id(room->area)))
         changed = true;

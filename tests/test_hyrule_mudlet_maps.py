@@ -81,6 +81,14 @@ class LiveTests(unittest.TestCase):
             self.assertIn(dungeon["entrance_vnum"], sent)
             self.assertIn(map_room, sent)
             self.assertEqual(json.loads(done[0].split(" ", 1)[1])["rooms"], len(rooms))
+            # The map is learned for good (maps.c): the fog's Map.Known that
+            # follows names the whole dungeon as known.
+            known = [json.loads(b.split(" ", 1)[1]) for b in blocks
+                     if b.startswith("Map.Known ")]
+            self.assertTrue(known, "no Map.Known after the dungeon map was found")
+            runs = [run for part in known for run in part["rooms"]]
+            for vnum in (dungeon["entrance_vnum"], dungeon["last_room_vnum"]):
+                self.assertTrue(any(a <= vnum <= b for a, b in runs), vnum)
 
 
 if __name__ == "__main__":

@@ -44,8 +44,9 @@ Windows installations do not enable the Telnet client by default.
 
 Mudlet is the recommended desktop client when you want gauges and automatic
 mapping. Enable GMCP and server-installed packages in the profile; the server
-then supplies the interface and the full-world map. In game, use `help
-mudlet`, `help map`, and `help gmcp` for current behavior and limitations.
+then supplies the interface and the world map, which shows what your character
+knows (see Maps And Exploration). In game, use `help mudlet`, `help map`,
+`help maps` and `help gmcp` for current behavior and limitations.
 
 ## Creating A Character
 
@@ -182,6 +183,28 @@ Some locks cannot be picked at all, and `pick` says so on the first try. A
 fumble -- the pick slipping, the tumblers dropping back -- means the lock can
 open and the roll missed, so trying again is worth it. Most locked doors in the
 world are of the first kind; a key or `doorbash` is the way through them.
+
+### Maps And Exploration
+
+The Mudlet map shows what your character knows: every room you have walked
+into, every room of an area whose whole map you hold, and all of Dresden, Mud
+School and Limbo. Everything else stays hidden until you find it.
+
+- **Map items.** A slain monster now and then drops the map of the area it fell
+  in. `read map` learns it for good and uses the parchment up; a map you already
+  know is left whole, to sell or give away.
+- **The wandering cartographer.** Odric Penwhistle turns up now and then in one
+  of the world's areas for half an hour or so. Nothing finds him from afar, he
+  fights back, and he drops the whole map of the area he falls in.
+- **Hyrule.** Each dungeon's own map, found inside it, fills in that dungeon.
+- `maps` lists the areas you hold a map of or have set foot in, with how many of
+  each area's rooms you have walked; `maps all` lists every area. Walk into
+  every room that counts of an area of ten rooms or more -- death traps, guild
+  halls and newbie or hero rooms do not -- and it is explored.
+
+Ten exploration achievements reward maps held (1, 5, 10 and 25), areas
+explored (1, 5, 10 and 25), the cartographer's defeat and all three together.
+See `help maps`.
 
 ### Recall
 

@@ -427,6 +427,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "hero",           do_hero,        POS_DEAD,       HE,  LOG_NORMAL, 1 },
     { "holylight",      do_holylight,   POS_DEAD,      L10,  LOG_NORMAL, 1 },
     { "grantpsi",       do_grantpsi, POS_DEAD,      ML,  LOG_ALWAYS, 1 },
+    { "grantmap",       do_grantmap,    POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "hpardon",        do_hpardon,     POS_DEAD,       L8,  LOG_NORMAL, 1 },
     { "immtalk",        do_immtalk,     POS_DEAD,       IM,  LOG_NORMAL, 1 },
     { "imotd",          do_imotd,       POS_DEAD,       IM,  LOG_NORMAL, 1 },
@@ -517,6 +518,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "blackmarket",    do_blackmarket, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "fixes",          do_fixes,       POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "goblin",         do_goblin,      POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "cartographer",   do_cartographer,POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "disaster",       do_disaster,    POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     /* Read-only staff views (review, 2026-10-22). Below every command a
        shorter word already means (al, align, quest, gear), so typing one
@@ -554,6 +556,9 @@ const	struct	cmd_type	cmd_table	[] =
     { "=",		do_hero,	POS_DEAD,	HE,  LOG_NORMAL, 0 },
     { ":",		do_immtalk,	POS_DEAD,	IM,  LOG_NORMAL, 0 },
     { "remort",         do_remort,      POS_STANDING,   54,  LOG_NEVER,  1 },
+    /* Exploration maps (maps.c; owner, 2026-11-12). Last, so no shorter
+       word that already meant something moves. */
+    { "maps",           do_maps,        POS_DEAD,        0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

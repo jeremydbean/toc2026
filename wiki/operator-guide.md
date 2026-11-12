@@ -305,6 +305,25 @@ checking carried followers, mounts, combat, and scripted state.
 For Hyrule, recall is intentionally disabled. Valid exits are the secret-tree
 return and post-Ganon portal; do not treat that design as a generic recall bug.
 
+### Maps And The Cartographer
+
+The Mudlet map shows a player only what their character knows (`src/maps.c`,
+HELP MAPS). Two level 65 commands, both logged:
+
+```text
+grantmap <player> <area|hyrule1..hyrule9|all>
+grantmap list
+cartographer [status|spawn|here|dismiss]
+```
+
+GRANTMAP gives the whole map of an area (by file name, as `camelot`, or the
+start of its name), of one Hyrule dungeon, or of everything, to a player online
+or saved. It saves their file, reports an unconfirmed save, refuses a player who
+outranks you, and goes to WIZINFO at the pair's notice level. A map cannot be
+taken away again. CARTOGRAPHER shows where the wandering cartographer (mob
+29942) is and when he leaves or next comes, or calls or dismisses him. His
+arrival goes to the public log without a room and to WIZINFO with it.
+
 ## Moderation And Player Safety
 
 Relevant command families include:

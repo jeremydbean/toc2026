@@ -53,6 +53,10 @@
       "kind": "staff-first",
       "why": "The staff GOBLIN command; everyone else gets the treasure goblin (TREASURE GOBLIN)."
     },
+    "cartographer": {
+      "kind": "staff-first",
+      "why": "The staff CARTOGRAPHER command; everyone else gets the wandering cartographer (WANDERING CARTOGRAPHER)."
+    },
     "hermie": {
       "kind": "alias",
       "why": "Players ask for BUFF/HERMIE; the staff page is reached by its command, SPELLUP."
@@ -63,6 +67,7 @@
     "new / news": "NEW is the settings overview (NEW SETTINGS CUSTOMIZE OPTIONS); NEWS is the game's news, which the NEWS command shows. No NEW command exists.",
     "scroll / scrolls": "SCROLL is the scroll-back command; SCROLLS names the item type on the wands, staves and scrolls page.",
     "psionic / psionics": "PSIONIC is the psionic armor power's command; PSIONICS is the overview of every psionic power.",
+    "map / maps": "MAP is the Mudlet map window and what it shows; MAPS is the command listing the maps a character holds, and the MAP page points to it.",
     "kill / killer": "KILL is the attack command; KILLER is the old name for the WANTED flag and is kept as a keyword on the WANTED page."
   },
   "_staff_commands_public_help_comment": "Commands at LEVEL_IMMORTAL or above whose page every mortal may read on purpose: the word is also a public topic and the staff command has its own page under another keyword.",

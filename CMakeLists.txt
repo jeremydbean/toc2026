@@ -78,6 +78,7 @@ set(SRC_FILES
     src/blackmarket.c
     src/fixes.c
     src/goblin.c
+    src/maps.c
     src/rested.c
     src/recovery.c
     src/recycle.c

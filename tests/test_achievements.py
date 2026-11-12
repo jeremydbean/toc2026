@@ -52,8 +52,10 @@ class AchievementSystemTests(unittest.TestCase):
         # (tests/test_achievement_expansion.py holds those); 386 from
         # 2026-11-01 with the close calls and comedy rows
         # (tests/test_achievement_close_calls.py); 389 from 2026-11-02
-        # with the holiday fairs' three (tests/test_holidays.py).
-        self.assertEqual(len(self.entries), 389)
+        # with the holiday fairs' three (tests/test_holidays.py); 399
+        # from 2026-11-12 with the exploration maps' ten
+        # (tests/test_exploration_maps.py).
+        self.assertEqual(len(self.entries), 399)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))

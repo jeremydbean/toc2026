@@ -204,11 +204,12 @@ bool black_market_sees( const CHAR_DATA *looker, const CHAR_DATA *dealer )
     return false;
 }
 
-/* The dealer and the treasure goblin: seen in their own room and nowhere
-   else, by the same rule (black_market_sees). */
+/* The dealer, the treasure goblin and the cartographer (maps.c): seen in
+   their own room and nowhere else, by the same rule (black_market_sees). */
 bool is_unfindable_mob( const CHAR_DATA *ch )
 {
-    return is_black_market_dealer( ch ) || is_treasure_goblin( ch );
+    return is_black_market_dealer( ch ) || is_treasure_goblin( ch )
+        || is_cartographer( ch );
 }
 
 /* The dealer carrying an object, however deep in a container, or NULL. */

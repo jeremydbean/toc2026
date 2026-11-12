@@ -2871,6 +2871,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 
     black_market_forget( ch );
     treasure_goblin_forget( ch );
+    cartographer_forget( ch );
     disaster_dragon_forget( ch );
     holiday_forget( ch );
     event_boss_forget( ch );

@@ -3452,6 +3452,13 @@ OBJ_DATA *make_corpse( CHAR_DATA *ch )
         corpse_tag_source( corpse, "holiday" );
     }
 
+    /* Now and then, the map of the area it fell in (maps.c). */
+    if ( IS_NPC(ch) )
+    {
+        map_corpse_drop( corpse, ch );
+        corpse_tag_source( corpse, "map" );
+    }
+
     /* Event boss drops: the table in season.c, which LOOK shows players,
        so what they were told and what falls cannot differ. */
     if ( IS_NPC(ch) && ch->pIndexData != NULL )
@@ -3746,6 +3753,9 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
       death_cry( victim );
       if ( is_treasure_goblin( victim ) )
         treasure_goblin_slain( ch, victim );
+      /* The map of where he fell, into his pack and so the corpse. */
+      if ( is_cartographer( victim ) )
+        cartographer_slain( ch, victim );
       if ( is_disaster_dragon( victim ) )
         disaster_dragon_slain( ch, victim );
       /* A four-leaf clover's pot of gold, into the purse the corpse

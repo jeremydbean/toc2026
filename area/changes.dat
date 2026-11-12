@@ -5,6 +5,21 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112explorationmaps 2026-11-12
+The Mudlet map now shows what your character knows: the rooms you have
+walked into, whole areas whose maps you hold, and all of Dresden, Mud
+School and Limbo. The rest appears as you explore. Maps of an area now and
+then drop from its monsters, and a wandering cartographer drops the map of
+wherever he falls; READ a map to learn it. Hyrule's dungeon maps fill in
+their dungeons. MAPS lists your maps and how much of each area you have
+walked, and ten new exploration achievements reward maps and areas walked
+end to end. Update the Mudlet package (it offers itself). See HELP MAPS.
+
+@ 20261112grantmap 2026-11-12 staff
+GRANTMAP <player> <area|hyrule1..hyrule9|all> gives a player whole maps,
+online or saved; GRANTMAP LIST names them. CARTOGRAPHER shows, calls or
+dismisses the wandering cartographer (mob 29942).
+
 @ 20261112jailpets 2026-11-12
 A pet standing with you in the jail cell now walks out with you when you
 are released, and a horse you are riding stays under you: it used to be
@@ -17,6 +32,7 @@ JAIL RELEASE and a term that runs out bring the pet standing in the cell
 to the Temple with the prisoner, and a mount under its rider. SHIFT
 refuses a jailed caster or target before the mana and the stun, whatever
 the cell's flags.
+
 
 @ 20261112connburst 2026-11-12 staff
 The game takes every waiting connection at once (a queue of SOMAXCONN,

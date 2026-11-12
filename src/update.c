@@ -3446,6 +3446,7 @@ void update_handler( void )
 	mobile_update	( );
 	black_market_update( );
 	treasure_goblin_update( );
+	cartographer_update( );     /* the wandering cartographer (maps.c) */
 	spellup_boot_update( );     /* Hermie after a restart (act_wiz.c) */
     }
 

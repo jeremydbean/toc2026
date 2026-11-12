@@ -10,6 +10,8 @@ names `mudlet/toc-world-map.xml` on GitHub. The package provides:
   below, laid out one Mudlet area per area file, with Mud School kept as
   area 1 so an older profile's map is not reshuffled;
 - automatic mapping of rooms the atlas leaves out, as they are visited;
+- the fog: the map shows only what the character knows (`Map.Known`,
+  below), and the rest appears as it is explored or a map is learned;
 - refresh of visited room names, areas, terrain, and visible exits after world
   updates, including removal or retargeting of stale exits; and
 - automatic updates through `Client.GUI` version negotiation.
@@ -20,6 +22,13 @@ a profile for `toc.jeremybean.com` port `9000`, and connect. The local Mudlet
 alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.
+
+Package 1.5.12 adds the fog (owner, 2026-11-12: the map shows only rooms
+you have been to, unless you hold the area's map, Dresden and the starting
+areas excepted). The game sends `Map.Known` -- see "The fog" below -- and
+the package takes every room the character does not know off the map,
+keeping it aside in `toc-fog.lua` in the profile, and puts it back where the
+atlas had it when it becomes known.
 
 Package 1.5.8 delivers the 24 extended channel colors added to COLOR. The
 version increase makes existing 1.5.7 installations receive the updated chat
@@ -138,6 +147,35 @@ Mudlet's mapper tools, to clear a room that was deleted and can no longer
 be revisited. Map data belongs to the Mudlet profile, not to a ToC character
 file. Release notes above this section are a dated history of the package,
 not a description of the current one.
+
+### The fog
+
+What a character knows is the game's to say (`src/maps.c`): every room they
+have walked into, every room of a region whose whole map they hold -- an
+area's, from READ of a map item or staff GRANTMAP, or a Hyrule dungeon's,
+from its NES map -- and all of Dresden, Mud School, Limbo and the training
+yard. Staff know everything. The package subscribes with `"Map 1"` in
+`Core.Supports` and the game sends, at the first prompt of a connection and
+again whenever a map is learned:
+
+```
+Map.Known {"part":1,"parts":2,"all":false,"rooms":[[3700,3722],[4200,4290]]}
+Map.Known {"part":2,"parts":2,"all":false,"rooms":[[6000,6070]]}
+```
+
+Each run holds known rooms only (vnums no room has are skipped over); each
+part fits one GMCP message; the package acts on the last part, and `"all":
+true` (staff) means every room. A room walked into after that is known from
+its `Room.Info`, and a Hyrule plan room from `Hyrule.MapRoom`.
+
+The package deletes each unknown room from the profile's map and keeps it,
+with its coordinates, area, name, terrain, mark, doors and both ends of its
+exits, in `toc-fog.lua` beside the map; putting it back relinks it to every
+neighbour that is on the map and leaves a note on any still in the fog.
+`tocgui atlas` (or Mudlet's own download on a first connection) starts the
+fog again from the whole atlas. Characters sharing a profile each see their
+own: the next `Map.Known` brings back what they know and hides the rest.
+`tests/mudlet_fog_spec.lua` plays it against a fake mapper.
 
 For local development, connect to `localhost` port `9000`. To build or verify
 the committed assets:

@@ -3,8 +3,8 @@
 What has to stay true:
 
 - 175 new achievements in the 2026-10-25 expansion and 8 close calls and
-  comedy rows after them (2026-11-01) and three holiday rows (2026-11-02),
-  389 in all, every key unique and
+  comedy rows after them (2026-11-01), three holiday rows (2026-11-02)
+  and ten exploration-map rows (2026-11-12), 399 in all, every key unique and
   every one of them reachable from a hook that fires at the successful
   event.
 - The five original metas count the lists they counted on 2026-10-24.
@@ -160,8 +160,8 @@ class CatalogTests(unittest.TestCase):
             if p.name != "achievements.c")
 
     def test_counts_capacity_and_keys(self) -> None:
-        self.assertEqual(len(self.rows), 389)
-        self.assertEqual(len(self.new), 186)
+        self.assertEqual(len(self.rows), 399)
+        self.assertEqual(len(self.new), 196)
         self.assertEqual(len(self.keys), len(set(self.keys)))
         merc = source("merc.h")
         self.assertGreaterEqual(int(re.search(r"#define MAX_ACHIEVEMENTS\s+(\d+)", merc).group(1)), 512)
@@ -176,7 +176,7 @@ class CatalogTests(unittest.TestCase):
         catalog = guide[guide.index("### Catalog"):guide.index("### Deferred candidates")]
         listed = re.findall(r"^\| `([a-z0-9-]+)` \|", catalog, re.MULTILINE)
         self.assertEqual(listed, [r["key"] for r in self.new])
-        self.assertIn("**389**", guide)
+        self.assertIn("**399**", guide)
         self.assertNotIn("uses 196", guide)
 
     def test_new_points_are_cosmetic_and_in_their_bands(self) -> None:
@@ -204,7 +204,7 @@ class CatalogTests(unittest.TestCase):
 
     def test_every_cohort_names_real_keys(self) -> None:
         names = re.findall(r"static const char \*const (cohort_\w+)\[\]", self.ach)
-        self.assertEqual(len(names), 18)
+        self.assertEqual(len(names), 19)
         for name in names:
             for key in cohort(self.ach, name):
                 with self.subTest(cohort=name, key=key):
