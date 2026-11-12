@@ -22399,3 +22399,70 @@
 1794484784	area	Alaric	57	2043	catacomb.are	underdrk.are	catacomb.are	3	up
 1794484784	cmd	Alaric	57	2043	catacomb.are	standing	100	0	-	up		Waterfall of mist //   River of hot mist pour down in a cascade from a hole in the cavern.  It // falls like water down from the heights like a waterfall and creates	-	+
 1794484794	coin	Alaric	57	2043	catacomb.are	+61597021	bank	interest	bank	25781270673
+1794484862	cmd	Alaric	57	2042	catacomb.are	standing	100	0	-	west		Mist cavern //   A warm wind blows in from the east.  The air is still stifling hot in // here despite the breeze.  The mist seems thick enough to be alive. . .	-	+
+1794484862	cmd	Alaric	57	2041	catacomb.are	standing	100	0	-	west		Misty cavern //   The temperature is a pleasant and mild here.  This is due to a warm wind // blowing in from the east and a chilly breeze blowing in from the west.	-	+
+1794484863	cmd	Alaric	57	2040	catacomb.are	standing	100	0	-	west		Misty cavern //   A chilling icy mist swirl about you.  The dampness and warmth has become // bitter cold.  The walls of the cavern are several feet thick with ice	-	+
+1794484863	cmd	Alaric	57	2048	catacomb.are	standing	100	0	-	south		Twisty cavern //   The way twist this way and that and its all you can do to keep your head // from spinning.  The air is very cold here and layers of ice on the wall.	-	+
+1794484863	cmd	Alaric	57	2049	catacomb.are	standing	100	0	-	east		Striped tunnel //   The walls of the tunnels have many brilliant colors in them from the // various veins of crystals running in them.  An odd twinkling comes from	-	+
+1794484863	cmd	Alaric	57	2050	catacomb.are	standing	100	0	-	east		Prism cave //   The roof of this cave peaks over a hundred feet high making it one of // the biggest in the catacombs.  Crystals of every color cast prismatic	-	+
+1794484864	cmd	Alaric	57	2058	catacomb.are	standing	100	0	-	east		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. Its just // a feeling you get from this tunnel.  The tunnel east and west.	-	+
+1794484864	cmd	Alaric	57	2059	catacomb.are	standing	100	0	-	east		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. You see a // gate to a burial ground to the north.  This lonesome tunnel sighs along	-	+
+1794484864	cmd	Alaric	57	2054	catacomb.are	standing	100	0	-	north		Southern gate //   A rusty gate here no longer keeps anyone out or in.  You see a lonely // E/W passage to the south.  A little used trail winds east through a	-	+
+1794484864	cmd	Alaric	57	2051	catacomb.are	standing	100	0	-	north		Ruined monument //   A monument to a famous king once stood here. Not much is left to even // signify that it was here at all.  A building of some sort can be entered	-	+
+1794484865	cmd	Alaric	57	2052	catacomb.are	standing	100	0	-	east		Basement //   Its dark and it smells like. ...BATS down here!  All you see is a swirl // of the darkness and lots of scratching bats madly flailing around. A set	-	+
+1794484867	cmd	Alaric	57	2046	catacomb.are	standing	100	0	-	up		Curators place //   The undertaker, the historian and the curator used to be here. Now they // too have joined the legions of the undead.  From the looks of the place	-	+
+1794484870	cmd	Alaric	57	2047	catacomb.are	standing	100	0	-	east		Fresh graves //   Graves of recent casualties lie here.  Even the most recent don't seem to // have been left undisturbed.  You hear sounds of digging in progress	-	+
+1794484877	cmd	Alaric	57	2039	catacomb.are	standing	100	0	-	north		New graves //   The tombs in this section seem somewhat more recent.  Rotting zombie // warriors groan and wail with blank stares.  You hear sounds of digging	-	+
+1794484877	cmd	Alaric	57	2038	catacomb.are	standing	100	0	-	west		The burial grounds //   Legions of skeletal warriors wander by and battle the enemy even in // death.  Old battlelines have been forgotten and new ones made. Its a	-	+
+1794484877	cmd	Alaric	57	2037	catacomb.are	standing	100	0	-	west		The burial grounds //   It seems as if many of the warriors could not stop fighting even in // death.  They fight amongst each other and flail at any living being	-	+
+1794484877	cmd	Alaric	57	2036	catacomb.are	standing	100	0	-	west		The burial grounds //   Random tombs to unknown warriors were lain in rows as far as the eye // can see.  To your horror many of the graves are empty and desecrated.	-	+
+1794484878	cmd	Alaric	57	2035	catacomb.are	standing	100	0	-	west		Entrance to the burial grounds //   You have entered what appears to be a burial ground of sorts. The // templars buried their dead here.  Chills go down your spine as you feel	-	+
+1794484878	cmd	Alaric	57	2034	catacomb.are	standing	100	0	-	west		Intersection of caverns //   Caverns head north, south and east from this peculiar spot. Medium // sized caverns from the east and the north join to form a huge cavern	-	+
+1794484878	cmd	Alaric	57	2031	catacomb.are	standing	100	0	-	north		Very dark cavern //   The cavern is hard to describe due to the extreme magical darkness. // Probing with a light source seems to reveal nothing but more darkness.	-	+
+1794484878	cmd	Alaric	57	2030	catacomb.are	standing	100	0	-	west		Deep within the catacombs //   It stinks like a lair in here.  A rotten smell of humanoid flesh // lingers.  You stumble over what you think are corpses in the utter	-	+
+1794484879	cmd	Alaric	57	2026	catacomb.are	standing	100	0	-	north		Very dark passage //   This room is so dark that even powerful magic lights seems to barely // illuminate the ground in front of you.  If its possible it seems even	-	+
+1794484879	cmd	Alaric	57	2019	catacomb.are	standing	100	0	-	north		Mossy intersection //   There is a turn off to the passage here.  The main passage leads north // and south. To the south it seems to get impossibly darker.  To the east	-	+
+1794484879	cmd	Alaric	57	2012	catacomb.are	standing	100	0	-	north		Humid, damp tunnel //   As the tunnel leads south it gets more humid and damp.  Moss covers the // walls and ferns even grow in the cracks here and there.  To the north it	-	+
+1794484879	cmd	Alaric	57	2007	catacomb.are	standing	100	0	-	north		Intersection //   The tunnel continues to the north and the south, becoming less hewn and // more natural to the south.  A passageway lined with paneling leads west.	-	+
+1794484880	cmd	Alaric	57	2002	catacomb.are	standing	100	0	-	north		North/south tunnel //   This part of the catacombs looked roughly hewn and man-made. There is // a large cross painted on the floor of the tunnel.To the south it seems	-	+
+1794484880	cmd	Alaric	57	2001	catacomb.are	standing	100	0	-	north		North entrance to the catacombs //   You are almost surprised to see a tunnel leading off to the south // into utter darkness.  The floorboards above you haven't been moved	-	+
+1794484883	area	Alaric	57	6524	dwarves.are	catacomb.are	dwarves.are	99	up
+1794484883	cmd	Alaric	57	6524	dwarves.are	standing	100	0	-	up		Back of Barracks //   Here is the back of the dwarven barracks.  There are rows // of beds here, and there is a stench that is unbearable.	-	+
+1794484887	cmd	Alaric	57	6523	dwarves.are	standing	100	0	-	north		First Barrack room //   Here is the first of two main rooms of barracks.  The // barracks continue to the south, and you can leave the room	-	+
+1794484902	cmd	Alaric	57	6523	dwarves.are	standing	100	0	-	open	north	Ok.	-	-
+1794484902	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	north		Entrance to barracks //   Here there is an entrance to the barracks to the south, and // the path continues to the west.	-	+
+1794484905	cmd	Alaric	57	6520	dwarves.are	standing	100	0	-	west		Path next to barracks //   Here the path continues west, and east to the barracks. // [Exits: east west]	-	-
+1794484905	cmd	Alaric	57	6519	dwarves.are	standing	100	0	-	west		Path by Hospital //   Here the path passes by the Hospital to the north.  It continues // to the east to the barracks, and to the west.	-	+
+1794484905	cmd	Alaric	57	6518	dwarves.are	standing	100	0	-	west		North of Shops //   Here the path bends to the east towards the barracks. To the // south you can see the shops.	-	+
+1794484905	cmd	Alaric	57	6517	dwarves.are	standing	100	0	-	south		Path to the north of shop //   You are on a path to the north of the Hide & Tooth shop.  The path continues // to the north, and there is Granite Head's bakery to the west.	-	+
+1794484906	cmd	Alaric	57	6516	dwarves.are	standing	100	0	-	south		Hide & Tooth Shop //   You are in the Hide & Tooth shop.  Here you may buy the finest in Dwarven // weapons and armors. The path continues to the north and east.	-	+
+1794484906	cmd	Alaric	57	6515	dwarves.are	standing	100	0	-	east		Turn in road //   You are on a path that leads to a Hide & Tooth shop to the west, and the // path continues to the south.	-	+
+1794484906	cmd	Alaric	57	6514	dwarves.are	standing	100	0	-	south		Path //   You are on a path in the dwarven village which leads north to the shops // and south to the corner of the area.	-	+
+1794484906	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	south		Inside the entrance //   Everything here is covered in soot and very grimy.  The path continues // to the east and north, and there is a door to the west.	-	+
+1794484907	cmd	Alaric	57	6526	dwarves.are	standing	100	0	-	west		A store room //   There is a layer of dust on the floor at least 3 inches thick!  It is // probable that not many people have been in here for many months.	-	+
+1794484910	cmd	Alaric	57	6526	dwarves.are	standing	100	0	-	down		The trapdoor is closed.	-	-
+1794484913	cmd	Alaric	57	6526	dwarves.are	standing	100	0	-	open	down	Ok.	-	-
+1794484913	cmd	Alaric	57	6527	dwarves.are	standing	100	0	-	down		Wine cellar //   This room smells like wine, and you can only assume it used to be // a wine cellar at one time.	-	+
+1794484915	area	Alaric	57	2065	catacomb.are	dwarves.are	catacomb.are	32	down
+1794484915	cmd	Alaric	57	2065	catacomb.are	standing	100	0	-	down		Southern entrance to the catacombs //   Through a trapdoor above you streams light.  Through a doorway to // the south streams darkness.  A message has been scrawled upon the wall	-	+
+1794484917	cmd	Alaric	57	2064	catacomb.are	standing	100	0	-	north		Tunnel //   The tunnel slopes noticeably down to the north and you sense the surface // could be reached to the south.	-	+
+1794484930	cmd	Alaric	57	2063	catacomb.are	standing	100	0	-	north		Tunnel //   The tunnel heads north and south.  North you see an intersection and // far to the south you sense light and smell a fresh breeze.	-	+
+1794484930	cmd	Alaric	57	2062	catacomb.are	standing	100	0	-	north		Intersection //   To the north you enter the burial grounds.  a trail of blood leads that // direction.  Also you feel an ominous sense of evil magic from there.	-	+
+1794484930	cmd	Alaric	57	2055	catacomb.are	standing	100	0	-	north		Scene of ghastly horror //   An army of undead creatures of all types are lined up patiently. Their // leader is an evil demonoid necromancer.  His plans to use his army of	-	+
+1794484931	cmd	Alaric	57	2053	catacomb.are	standing	100	0	-	north		Fresh graves //   The graves here seem very recent.  You notice many signs of digging and // defilement.  There are piles of fresh bodies here awaiting burial.  A	-	+
+1794484931	cmd	Alaric	57	2047	catacomb.are	standing	100	0	-	north		Fresh graves //   Graves of recent casualties lie here.  Even the most recent don't seem to // have been left undisturbed.  You hear sounds of digging in progress	-	+
+1794484931	cmd	Alaric	57	2039	catacomb.are	standing	100	0	-	north		New graves //   The tombs in this section seem somewhat more recent.  Rotting zombie // warriors groan and wail with blank stares.  You hear sounds of digging	-	+
+1794484931	cmd	Alaric	57	2038	catacomb.are	standing	100	0	-	west		The burial grounds //   Legions of skeletal warriors wander by and battle the enemy even in // death.  Old battlelines have been forgotten and new ones made. Its a	-	+
+1794484935	coin	Alaric	57	2038	catacomb.are	+6800	loot	kill	corpse of a skeleton	25781277473
+1794484935	coin	Alaric	57	2038	catacomb.are	+64	loot	kill	corpse of a skeleton	25781277537
+1794484935	coin	Alaric	57	2038	catacomb.are	+330000	loot	kill	corpse of a skeleton	25781607537
+1794484935	cmd	Alaric	57	2038	catacomb.are	standing	100	18	-	kill	so	Your punch >>> ANNIHILATES <<< a skeleton! [-223] // A skeleton is DEAD!! // You have almost finished your QUEST!	-	+
+1794484940	area	Alaric	57	2497	dresden.are	catacomb.are	dresden.are	25	recall
+1794484940	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794484940	coin	Alaric	57	2497	dresden.are	+107890398	quests	aquest	-	25889497935
+1794484940	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2022->2022 offered=31 daily=4->4 coin=+107890398 kill=15412914 streak=5 level=57 target=-1
+1794484940	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 6 in a row! A +50% bonus has been added!'	success:-	+
+1794484940	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	Wise choice. You safely collect 31 quest points.	-	-
+1794484943	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=334/983 align=897 exp=252749 coin=1189092497 bank=24700405438 qp=2053 prac=36 train=76 stash=95/350 remorts=3
+1794484943	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794484944	session	Alaric	57	2497	dresden.are	quit	190s	+0 levels	+0 exp	+108227262 copper	1 kills	0 deaths	1 quests	104 commands	0 refused	coin: loot 33g 68s 64c, quests 107p 89g 3s 98c	spent on: none	exp: none

@@ -290595,3 +290595,120 @@ Thu Nov 12 11:59:44 2026 :: Log Alaric [25174]: up
 Thu Nov 12 11:59:44 2026 :: Log Alaric [25175]: arrived (The hole upwards.) from 25174
 Thu Nov 12 11:59:44 2026 :: Log Alaric [25175]: up
 Thu Nov 12 11:59:44 2026 :: Log Alaric [2043]: arrived (Waterfall of mist) from 25175
+Thu Nov 12 12:01:02 2026 :: Log Alaric [2043]: west
+Thu Nov 12 12:01:02 2026 :: Log Alaric [2042]: arrived (Mist cavern) from 2043
+Thu Nov 12 12:01:02 2026 :: Log Alaric [2042]: west
+Thu Nov 12 12:01:02 2026 :: Log Alaric [2041]: arrived (Misty cavern) from 2042
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2041]: west
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2040]: arrived (Misty cavern) from 2041
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2040]: south
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2048]: arrived (Twisty cavern) from 2040
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2048]: east
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2049]: arrived (Striped tunnel) from 2048
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2049]: east
+Thu Nov 12 12:01:03 2026 :: Log Alaric [2050]: arrived (Prism cave) from 2049
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2050]: east
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2058]: arrived (Lonely tunnel) from 2050
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2058]: east
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2059]: arrived (Lonely tunnel) from 2058
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2059]: north
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2054]: arrived (Southern gate) from 2059
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2054]: north
+Thu Nov 12 12:01:04 2026 :: Log Alaric [2051]: arrived (Ruined monument) from 2054
+Thu Nov 12 12:01:05 2026 :: Log Alaric [2051]: east
+Thu Nov 12 12:01:05 2026 :: Log Alaric [2052]: arrived (Basement) from 2051
+Thu Nov 12 12:01:07 2026 :: Log Alaric [2052]: u
+Thu Nov 12 12:01:07 2026 :: Log Alaric [2046]: arrived (Curators place) from 2052
+Thu Nov 12 12:01:10 2026 :: Log Alaric [2046]: e
+Thu Nov 12 12:01:10 2026 :: Log Alaric [2047]: arrived (Fresh graves) from 2046
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2047]: north
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2039]: arrived (New graves) from 2047
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2039]: west
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2038]: arrived (The burial grounds) from 2039
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2038]: west
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2037]: arrived (The burial grounds) from 2038
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2037]: west
+Thu Nov 12 12:01:17 2026 :: Log Alaric [2036]: arrived (The burial grounds) from 2037
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2036]: west
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2035]: arrived (Entrance to the burial grounds) from 2036
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2035]: west
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2034]: arrived (Intersection of caverns) from 2035
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2034]: north
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2031]: arrived (Very dark cavern) from 2034
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2031]: west
+Thu Nov 12 12:01:18 2026 :: Log Alaric [2030]: arrived (Deep within the catacombs) from 2031
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2030]: north
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2026]: arrived (Very dark passage) from 2030
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2026]: north
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2019]: arrived (Mossy intersection) from 2026
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2019]: north
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2012]: arrived (Humid, damp tunnel) from 2019
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2012]: north
+Thu Nov 12 12:01:19 2026 :: Log Alaric [2007]: arrived (Intersection) from 2012
+Thu Nov 12 12:01:20 2026 :: Log Alaric [2007]: north
+Thu Nov 12 12:01:20 2026 :: Log Alaric [2002]: arrived (North/south tunnel) from 2007
+Thu Nov 12 12:01:20 2026 :: Log Alaric [2002]: north
+Thu Nov 12 12:01:20 2026 :: Log Alaric [2001]: arrived (North entrance to the catacombs) from 2002
+Thu Nov 12 12:01:23 2026 :: Log Alaric [2001]: u
+Thu Nov 12 12:01:23 2026 :: Log Alaric [6524]: arrived (Back of Barracks) from 2001
+Thu Nov 12 12:01:27 2026 :: Log Alaric [6524]: n
+Thu Nov 12 12:01:27 2026 :: Log Alaric [6523]: arrived (First Barrack room) from 6524
+Thu Nov 12 12:01:42 2026 :: Log Alaric [6523]: open north
+Thu Nov 12 12:01:42 2026 :: Log Alaric [6523]: north
+Thu Nov 12 12:01:42 2026 :: Log Alaric [6521]: arrived (Entrance to barracks) from 6523
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6521]: west
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6520]: arrived (Path next to barracks) from 6521
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6520]: west
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6519]: arrived (Path by Hospital) from 6520
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6519]: west
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6518]: arrived (North of Shops) from 6519
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6518]: south
+Thu Nov 12 12:01:45 2026 :: Log Alaric [6517]: arrived (Path to the north of shop) from 6518
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6517]: south
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6516]: arrived (Hide & Tooth Shop) from 6517
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6516]: east
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6515]: arrived (Turn in road) from 6516
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6515]: south
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6514]: arrived (Path) from 6515
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6514]: south
+Thu Nov 12 12:01:46 2026 :: Log Alaric [6513]: arrived (Inside the entrance) from 6514
+Thu Nov 12 12:01:47 2026 :: Log Alaric [6513]: west
+Thu Nov 12 12:01:47 2026 :: Log Alaric [6526]: arrived (A store room) from 6513
+Thu Nov 12 12:01:50 2026 :: Log Alaric [6526]: d
+Thu Nov 12 12:01:53 2026 :: Log Alaric [6526]: open down
+Thu Nov 12 12:01:53 2026 :: Log Alaric [6526]: d
+Thu Nov 12 12:01:53 2026 :: Log Alaric [6527]: arrived (Wine cellar) from 6526
+Thu Nov 12 12:01:55 2026 :: Log Alaric [6527]: d
+Thu Nov 12 12:01:55 2026 :: Log Alaric [2065]: arrived (Southern entrance to the catacombs) from 6527
+Thu Nov 12 12:01:57 2026 :: Log Alaric [2065]: n
+Thu Nov 12 12:01:57 2026 :: Log Alaric [2064]: arrived (Tunnel) from 2065
+Thu Nov 12 12:02:10 2026 :: Log Alaric [2064]: north
+Thu Nov 12 12:02:10 2026 :: Log Alaric [2063]: arrived (Tunnel) from 2064
+Thu Nov 12 12:02:10 2026 :: Log Alaric [2063]: north
+Thu Nov 12 12:02:10 2026 :: Log Alaric [2062]: arrived (Intersection) from 2063
+Thu Nov 12 12:02:10 2026 :: Log Alaric [2062]: north
+Thu Nov 12 12:02:10 2026 :: Log Alaric [2055]: arrived (Scene of ghastly horror) from 2062
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2055]: north
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2053]: arrived (Fresh graves) from 2055
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2053]: north
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2047]: arrived (Fresh graves) from 2053
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2047]: north
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2039]: arrived (New graves) from 2047
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2039]: west
+Thu Nov 12 12:02:11 2026 :: Log Alaric [2038]: arrived (The burial grounds) from 2039
+Thu Nov 12 12:02:15 2026 :: Log Alaric [2038]: kill so
+Thu Nov 12 12:02:15 2026 :: Log Alaric [2038]: killed a skeleton
+Thu Nov 12 12:02:15 2026 :: Log Alaric [2038]: coin +68 silver
+Thu Nov 12 12:02:15 2026 :: Log Alaric [2038]: coin +64 copper
+Thu Nov 12 12:02:15 2026 :: Log Alaric [2038]: coin +33 gold
+Thu Nov 12 12:02:20 2026 :: Log Alaric [2038]: recal
+Thu Nov 12 12:02:20 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2038
+Thu Nov 12 12:02:20 2026 :: Log Alaric [2497]: aq co
+Thu Nov 12 12:02:20 2026 :: Log Alaric [2497]: copper +107890398
+Thu Nov 12 12:02:20 2026 :: Log Alaric [2497]: quest complete: 107p 89g 3s 98c, 31 quest points (streak bonus 50%)
+Thu Nov 12 12:02:20 2026 :: Snapshot of Alaric taken before quest: Alaric.20261112_120220.quest (PRESTORE Alaric to see it).
+Thu Nov 12 12:02:20 2026 :: Log Alaric [2497]: aq ga no
+Thu Nov 12 12:02:23 2026 :: Log Alaric [2497]: score
+Thu Nov 12 12:02:24 2026 :: Log Alaric [2497]: quit
+Thu Nov 12 12:02:24 2026 :: Alaric has quit.
+Thu Nov 12 12:02:24 2026 :: [QUIT] Player rejoined the real world.
