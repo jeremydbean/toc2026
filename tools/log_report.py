@@ -716,7 +716,8 @@ def memory_report(lines, crash_text: str) -> None:
 
 
 # log/progress.tsv (src/playlog.c): epoch, kind (kill, flee, death), the
-# character's file Id (never a name), level, class, remorts, hp%, mana%,
+# character's serial (never a name; the file Id before 2026-11-12, which
+# two characters could share), level, class, remorts, hp%, mana%,
 # foe vnum, foe level, area file; a kill adds encounter ms, base, rested
 # and accepted xp, and group members, then (2026-10-26) guild, buffs worn
 # (T E S H or -), damage dealt and taken, hit points recovered and mana

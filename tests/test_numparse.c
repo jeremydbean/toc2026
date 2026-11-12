@@ -113,6 +113,54 @@ int main( void )
     long_ok( "100", 1, 100, 100 );
     long_refused( "101", 1, 100 );
 
+    /* Digit by digit, as the file readers go (review of d19b0e92): the
+       limit itself is reached, one past it is refused before any
+       arithmetic, and a refusal leaves the magnitude alone. */
+    {
+        unsigned long mag = 0, limit = (unsigned long) INT_MAX;
+        const char *digits = "2147483647";
+        int i;
+
+        for ( i = 0; digits[i] != '\0'; i++ )
+            CHECK( digit_append( &mag, digits[i] - '0', limit ), "digit %d of INT_MAX", i );
+        CHECK( mag == (unsigned long) INT_MAX, "INT_MAX read as %lu", mag );
+        CHECK( !digit_append( &mag, 0, limit ), "INT_MAX * 10 accepted" );
+        CHECK( mag == (unsigned long) INT_MAX, "a refusal changed the magnitude" );
+
+        mag = 214748364UL;
+        CHECK( !digit_append( &mag, 8, limit ), "2147483648 accepted under INT_MAX" );
+        CHECK( digit_append( &mag, 8, (unsigned long) INT_MAX + 1UL ),
+               "2147483648 refused under INT_MIN's magnitude" );
+        mag = 429496729UL;      /* 4295367296 is past any int */
+        CHECK( !digit_append( &mag, 6, limit ), "4295367296 accepted" );
+
+        mag = 0;
+        for ( i = 0; i < 40; i++ )
+            if ( !digit_append( &mag, 9, (unsigned long) LONG_MAX ) )
+                break;
+        CHECK( i == 18 || i == 9, "forty nines stopped after %d digits", i );
+        mag = (unsigned long) LONG_MAX / 10UL;
+        CHECK( digit_append( &mag, (int) ( (unsigned long) LONG_MAX % 10UL ),
+                             (unsigned long) LONG_MAX ) && mag == (unsigned long) LONG_MAX,
+               "LONG_MAX refused" );
+        CHECK( !digit_append( &mag, 0, ULONG_MAX / 100UL ), "past a small limit accepted" );
+        CHECK( !digit_append( &mag, 10, ULONG_MAX ), "a digit of 10 accepted" );
+        CHECK( !digit_append( &mag, -1, ULONG_MAX ), "a digit of -1 accepted" );
+    }
+    {
+        int sum = 7;
+        long lsum = 7;
+
+        CHECK( int_add_checked( INT_MAX - 1, 1, &sum ) && sum == INT_MAX, "INT_MAX - 1 + 1" );
+        CHECK( !int_add_checked( INT_MAX, 1, &sum ) && sum == INT_MAX, "INT_MAX + 1" );
+        CHECK( int_add_checked( INT_MIN + 1, -1, &sum ) && sum == INT_MIN, "INT_MIN + 1 - 1" );
+        CHECK( !int_add_checked( INT_MIN, -1, &sum ), "INT_MIN - 1" );
+        CHECK( int_add_checked( INT_MIN, INT_MAX, &sum ) && sum == -1, "INT_MIN + INT_MAX" );
+        CHECK( !long_add_checked( LONG_MAX, 1, &lsum ), "LONG_MAX + 1" );
+        CHECK( !long_add_checked( LONG_MIN, -1, &lsum ), "LONG_MIN - 1" );
+        CHECK( long_add_checked( 40, 2, &lsum ) && lsum == 42, "40 + 2" );
+    }
+
     if ( failures == 0 )
         printf( "ok\n" );
     return failures == 0 ? 0 : 1;

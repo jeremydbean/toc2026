@@ -1286,8 +1286,9 @@ void playlog_session( CHAR_DATA *ch, const char *how )
  * guessed from arrivals and adjacent timestamps.
  *
  * Columns, tab-separated: epoch, kind (kill, flee, death), character id
- * (the file's Id, never a name -- reports count independent histories by
- * it), level, class, remorts, hp%, mana%, foe vnum, foe level, area file,
+ * (never a name -- reports count independent histories by it: the file's
+ * Id until 2026-11-12, which two characters could share, and the
+ * character's serial since, 65536 and up and unique; save.c), level, class, remorts, hp%, mana%, foe vnum, foe level, area file,
  * then for a kill: encounter ms (from the mobile's first blow, set in
  * set_fighting), base xp, rested xp, accepted xp, group members.
  *
@@ -1347,7 +1348,9 @@ static void progress_trim( void )
 /*
  * The balance feed (owner, 2026-11-10: "log everything in a way that'll
  * allow you to balance the game learning from players who play"). Every
- * row is numbers and vnums: a character's file Id, never a name, an area
+ * row is numbers and vnums: a character's serial, never a name (rows
+ * before 2026-11-12 carry the file Id, below 65536, which two characters
+ * could share -- such rows may merge them; see webadmin/balance.py), an area
  * file, never a room, and nothing typed or said. Staff write none -- what
  * an immortal's kills take is no measure of anything -- and nor does a
  * wizinvis player. The rows, after the eleven columns every row has
@@ -1496,7 +1499,7 @@ static void progress_write_raw( const char *kind, CHAR_DATA *ch, int vnum, int l
     if ( ( fp = fopen( PROGRESS_FILE, "a" ) ) == NULL )
         return;
     fprintf( fp, "%ld\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s%s%s\n",
-             (long) current_time, kind, ch->pcdata->id, ch->level, ch->class,
+             (long) current_time, kind, player_serial( ch ), ch->level, ch->class,
              ch->pcdata->num_remorts, hp_pct, mana_pct, vnum, level,
              area != NULL && area[0] != '\0' ? area : "-",
              tail[0] != '\0' ? "\t" : "", tail );
@@ -1716,7 +1719,7 @@ void progress_drop( CHAR_DATA *killer, CHAR_DATA *victim, OBJ_DATA *corpse )
 
 /* What CONSIDER predicted (consider_fight): each side's damage a round,
    the rounds each would need, and the verdict's key -- so the fight that
-   follows, by the same Id against the same foe, can be held to it
+   follows, by the same character against the same foe, can be held to it
    (tools/consider_audit.py; owner, 2026-11-10: "i feel like the
    consider command isn't that accurate"). */
 void progress_consider( CHAR_DATA *ch, CHAR_DATA *victim, double yours, double theirs,

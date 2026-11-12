@@ -2222,10 +2222,14 @@ static OBJ_DATA *carried_top( CHAR_DATA *ch, int vnum )
 /* A player, or a pet's or servant's master, struck a guardian: they
    fought it, and are owed its key if they are in the room when it dies,
    whether they joined the killer's group or the fight late (owner,
-   2026-11-10: "joined late yes, left room no"). Staff never. */
+   2026-11-10: "joined late yes, left room no"). Staff never. They are
+   known by serial, never by the file Id: two characters can share an Id,
+   and an idle bystander sharing the fighter's was handed the key (review
+   of d19b0e92). A serial is saved, so one who strikes, quits and comes
+   back before it falls is still known. */
 void hyrule_note_striker( CHAR_DATA *ch, CHAR_DATA *guardian )
 {
-    int i;
+    int i, serial;
 
     if ( ch == NULL || guardian == NULL || !IS_NPC(guardian) || !is_hyrule_guardian( guardian ) )
         return;
@@ -2233,8 +2237,10 @@ void hyrule_note_striker( CHAR_DATA *ch, CHAR_DATA *guardian )
         ch = ch->master;
     if ( IS_NPC(ch) || ch->pcdata == NULL || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
         return;
+    if ( ( serial = player_serial( ch ) ) <= 0 )
+        return;
     for ( i = 0; i < guardian->hyrule_struck_n; i++ )
-        if ( guardian->hyrule_struck[i] == ch->pcdata->id )
+        if ( guardian->hyrule_struck[i] == serial )
             return;
     if ( guardian->hyrule_struck_n >= HYRULE_STRUCK_MAX )
     {
@@ -2243,17 +2249,17 @@ void hyrule_note_striker( CHAR_DATA *ch, CHAR_DATA *guardian )
                  sizeof(guardian->hyrule_struck[0]) * ( HYRULE_STRUCK_MAX - 1 ) );
         guardian->hyrule_struck_n = HYRULE_STRUCK_MAX - 1;
     }
-    guardian->hyrule_struck[guardian->hyrule_struck_n++] = ch->pcdata->id;
+    guardian->hyrule_struck[guardian->hyrule_struck_n++] = serial;
 }
 
-static bool hyrule_struck_by( const CHAR_DATA *guardian, const CHAR_DATA *ch )
+static bool hyrule_struck_by( const CHAR_DATA *guardian, CHAR_DATA *ch )
 {
-    int i;
+    int i, serial;
 
-    if ( ch->pcdata == NULL )
+    if ( ( serial = player_serial( ch ) ) <= 0 )
         return false;
     for ( i = 0; i < guardian->hyrule_struck_n; i++ )
-        if ( guardian->hyrule_struck[i] == ch->pcdata->id )
+        if ( guardian->hyrule_struck[i] == serial )
             return true;
     return false;
 }

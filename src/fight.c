@@ -5997,7 +5997,7 @@ bool check_hate (CHAR_DATA *ch, CHAR_DATA *vict)
     for (hate=ch->hates; hate != NULL; hate=nhate)
     {
 	nhate = hate->next;
-	if (hate->ch == vict->pcdata->id)
+	if (hate->ch == player_serial( vict ))
 	    return true;
     }
 
@@ -6030,7 +6030,7 @@ void add_hate (CHAR_DATA *ch, CHAR_DATA *vict)
 
     hate       = alloc_mem( sizeof(*hate) );
     hate->next = vict->hates;
-    hate->ch   = ch->pcdata->id;
+    hate->ch   = player_serial( ch );    /* never the Id: two characters can share one */
     vict->hates= hate;
 
     return;
@@ -6047,7 +6047,7 @@ void remove_hate (CHAR_DATA *ch, CHAR_DATA *vict)
     for ( hate = ch->hates; hate != NULL; hate=nhate)
     {
 	nhate = hate->next;
-	if (hate->ch == vict->pcdata->id)
+	if (hate->ch == player_serial( vict ))
 	    break;
 	phate = hate;
     }

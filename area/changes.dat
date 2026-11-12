@@ -5,6 +5,17 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112serials 2026-11-12 staff
+Every character now carries a serial of their own (Serial in the file),
+unique among all player files, given at their next login. A Hyrule
+guardian's strikers, a mobile's grudges and the balance log go by it, not
+by the file Id, which two characters could share: an idle bystander with
+the fighter's Id was handed the guardian's key. A new character's Id is
+one no other file holds. An area or player file holding a number too big
+for its field is now refused (the area stops the boot with its file and
+line, the player file refuses that character) instead of wrapping into a
+different number.
+
 @ 20261112consider 2026-11-12
 CONSIDER now counts a foe's sanctuary and other wards before its armour, as
 the fight does. It used to take the armour off first, so against a

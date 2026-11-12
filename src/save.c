@@ -1231,6 +1231,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 
     fprintf( fp, "Name %s~\n",	ch->name		);
     fprintf( fp, "Id   %d\n",	ch->pcdata->id		);
+    if ( ch->pcdata->serial > 0 )
+	fprintf( fp, "Serial %d\n",	ch->pcdata->serial	);
     fprintf( fp, "LogO %ld\n",  current_time            );
     fprintf( fp, "Vers %d\n",   4			);
     if (ch->short_descr[0] != '\0')
@@ -2292,6 +2294,259 @@ void player_archive_dormant( void )
 
 
 /*
+ * Character serials (review of d19b0e92, 2026-11-12). A file's Id is
+ * number_range( 0, 65535 ) with nothing making it unique, and a
+ * guardian's striker list took it for one: a bystander sharing the
+ * fighter's Id, standing idle in the room, was handed the guardian's key.
+ * The Id stays as it is -- quest objects are bound to it on disk -- and
+ * every character also gets a serial, saved as Serial: PLAYER_SERIAL_FIRST
+ * to PLAYER_SERIAL_LAST (number_range's reach), so it can never be read for
+ * an old Id, and checked against every
+ * file in player/ and player/archive/ (read once, at boot or at the first
+ * need) and every serial given since. A new character's Id is chosen the
+ * same way, so collisions stop growing. A serial two files hold -- a file
+ * copied by hand -- stays with the name the index first read it under, and
+ * the other character is given a new one at their next login.
+ */
+typedef struct
+{
+    char name[16];
+    int  id;
+    int  serial;
+} SERIAL_ENTRY;
+
+static SERIAL_ENTRY *serial_index = NULL;
+static int serial_index_n = 0;
+static int serial_index_cap = 0;
+static bool serial_index_built = false;
+
+static SERIAL_ENTRY *serial_entry( const char *name, bool make )
+{
+    int i;
+
+    for ( i = 0; i < serial_index_n; i++ )
+        if ( !str_cmp( serial_index[i].name, name ) )
+            return &serial_index[i];
+    if ( !make )
+        return NULL;
+    if ( serial_index_n >= serial_index_cap )
+    {
+        int cap = serial_index_cap > 0 ? serial_index_cap * 2 : 256;
+        SERIAL_ENTRY *grown = realloc( serial_index, (size_t) cap * sizeof(*grown) );
+
+        if ( grown == NULL )
+            return NULL;
+        serial_index = grown;
+        serial_index_cap = cap;
+    }
+    memset( &serial_index[serial_index_n], 0, sizeof(serial_index[0]) );
+    toc_strlcpy( serial_index[serial_index_n].name, capitalize( name ),
+                 sizeof(serial_index[0].name) );
+    serial_index[serial_index_n].id = -1;
+    return &serial_index[serial_index_n++];
+}
+
+/* Whether anybody but `name` holds this serial (or, with ids, this Id). */
+static bool serial_held_by_other( int value, bool ids, const char *name )
+{
+    int i;
+
+    for ( i = 0; i < serial_index_n; i++ )
+        if ( ( ids ? serial_index[i].id : serial_index[i].serial ) == value
+        &&   str_cmp( serial_index[i].name, name ) )
+            return true;
+    return false;
+}
+
+/* The player section's Id and Serial, read as text: nothing here may stop
+   the game, whatever a file holds. */
+static void serial_index_read( const char *path, const char *name )
+{
+    FILE *fp;
+    char line[256];
+    int lines = 0, id = -1, serial = 0;
+    long value;
+    SERIAL_ENTRY *entry;
+
+    if ( ( fp = fopen( path, "r" ) ) == NULL )
+        return;
+    while ( lines++ < 2000 && fgets( line, sizeof(line), fp ) != NULL )
+    {
+        if ( !strncmp( line, "End", 3 ) || !strncmp( line, "#O", 2 ) )
+            break;
+        if ( !strncmp( line, "Id ", 3 ) && sscanf( line + 3, " %ld", &value ) == 1
+        &&   value >= 0 && value <= INT_MAX )
+            id = (int) value;
+        else if ( !strncmp( line, "Serial ", 7 ) && sscanf( line + 7, " %ld", &value ) == 1
+             &&   value >= PLAYER_SERIAL_FIRST && value <= PLAYER_SERIAL_LAST )
+            serial = (int) value;
+    }
+    fclose( fp );
+    /* The active file is read first; an archived copy of the same name
+       adds nothing. A serial another name already holds is not taken. */
+    if ( serial_entry( name, false ) != NULL || ( entry = serial_entry( name, true ) ) == NULL )
+        return;
+    entry->id = id;
+    if ( serial > 0 && !serial_held_by_other( serial, false, name ) )
+        entry->serial = serial;
+}
+
+static void serial_index_scan( const char *dirname )
+{
+    DIR *dir;
+    struct dirent *ent;
+    char path[MAX_INPUT_LENGTH];
+    struct stat st;
+
+    if ( ( dir = opendir( dirname ) ) == NULL )
+        return;
+    while ( ( ent = readdir( dir ) ) != NULL )
+    {
+        if ( !player_archive_name_ok( ent->d_name )
+        ||   !isupper( (unsigned char) ent->d_name[0] ) )
+            continue;
+        snprintf( path, sizeof(path), "%s%s", dirname, ent->d_name );
+        if ( stat( path, &st ) != 0 || !S_ISREG( st.st_mode ) )
+            continue;
+        serial_index_read( path, ent->d_name );
+    }
+    closedir( dir );
+}
+
+void player_serial_boot( void )
+{
+    char buf[MAX_STRING_LENGTH];
+    int i, serials = 0;
+
+    if ( serial_index_built )
+        return;
+    serial_index_built = true;
+    serial_index_scan( PLAYER_DIR );
+    serial_index_scan( PLAYER_ARCHIVE_DIR );
+    for ( i = 0; i < serial_index_n; i++ )
+        if ( serial_index[i].serial > 0 )
+            serials++;
+    snprintf( buf, sizeof(buf), "Serials: %d character file%s read, %d with a serial.",
+              serial_index_n, serial_index_n == 1 ? "" : "s", serials );
+    log_string( buf );
+}
+
+/* A value from [lo, hi] nobody else holds: random first, then a walk. */
+static int serial_free_value( int lo, int hi, bool ids, const char *name )
+{
+    int tries, value;
+
+    for ( tries = 0; tries < 200; tries++ )
+    {
+        value = number_range( lo, hi );
+        if ( !serial_held_by_other( value, ids, name ) )
+            return value;
+    }
+    for ( value = lo; ; value++ )
+    {
+        if ( !serial_held_by_other( value, ids, name ) )
+            return value;
+        if ( value >= hi )
+            break;
+    }
+    return number_range( lo, hi );     /* every one taken: cannot happen */
+}
+
+static int serial_assign( CHAR_DATA *ch, bool fresh )
+{
+    SERIAL_ENTRY *entry;
+    int serial = 0;
+
+    player_serial_boot( );
+    entry = serial_entry( ch->name, true );
+    /* The serial this name's file held at boot -- a restore of a copy
+       from before serials gives it back -- unless this is a new
+       character who took a name somebody had before. */
+    if ( !fresh && entry != NULL && entry->serial > 0
+    &&   !serial_held_by_other( entry->serial, false, ch->name ) )
+        serial = entry->serial;
+    if ( serial <= 0 )
+        serial = serial_free_value( PLAYER_SERIAL_FIRST, PLAYER_SERIAL_LAST, false, ch->name );
+    if ( entry != NULL )
+    {
+        entry->serial = serial;
+        entry->id = ch->pcdata->id;
+    }
+    ch->pcdata->serial = serial;
+    return serial;
+}
+
+/* RENAME: the index's row follows the character to its new name. */
+void player_serial_rename( const char *old_name, const char *new_name )
+{
+    SERIAL_ENTRY *entry, *taken;
+
+    if ( old_name == NULL || new_name == NULL || ( entry = serial_entry( old_name, false ) ) == NULL )
+        return;
+    /* A row the new name had (a deleted character's) is forgotten. */
+    if ( ( taken = serial_entry( new_name, false ) ) != NULL && taken != entry )
+    {
+        taken->serial = 0;
+        taken->id = -1;
+        taken->name[0] = '\0';
+    }
+    toc_strlcpy( entry->name, capitalize( new_name ), sizeof(entry->name) );
+}
+
+/* What anything comparing characters asks; 0 for a mobile. */
+int player_serial( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || ch->name == NULL )
+        return 0;
+    if ( ch->pcdata->serial < PLAYER_SERIAL_FIRST || ch->pcdata->serial > PLAYER_SERIAL_LAST )
+        serial_assign( ch, false );
+    return ch->pcdata->serial;
+}
+
+/*
+ * From the nanny, once the character is in the game: a new character's
+ * Id is one no other file holds, and anybody without a serial of their
+ * own -- none yet, or one another file holds -- is given one. True when
+ * something changed, for the caller to save.
+ */
+bool player_identity_login( CHAR_DATA *ch, bool new_character )
+{
+    SERIAL_ENTRY *entry;
+    char buf[MAX_STRING_LENGTH];
+    int before;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || ch->name == NULL )
+        return false;
+    player_serial_boot( );
+    before = ch->pcdata->serial;
+    if ( new_character )
+    {
+        ch->pcdata->id = serial_free_value( 0, 65535, true, ch->name );
+        serial_assign( ch, true );
+        return true;
+    }
+    if ( before >= PLAYER_SERIAL_FIRST && before <= PLAYER_SERIAL_LAST
+    &&   !serial_held_by_other( before, false, ch->name ) )
+    {
+        if ( ( entry = serial_entry( ch->name, true ) ) != NULL )
+        {
+            entry->serial = before;
+            entry->id = ch->pcdata->id;
+        }
+        return false;
+    }
+    serial_assign( ch, false );
+    if ( before > 0 )
+    {
+        snprintf( buf, sizeof(buf), "Serials: %s's serial %d is another file's; given %d.",
+                  ch->name, before, ch->pcdata->serial );
+        log_string( buf );
+    }
+    return true;
+}
+
+
+/*
  * Whether a character's file is there (review, 2026-11-09). A failed
  * open is not absence: a file that could not be read -- its permissions,
  * an I/O error, a symlink loop -- was taken for a new name, and creating
@@ -2963,21 +3218,54 @@ static int scan_char( FILE *fp )
 }
 
 /* fread_number's shape: a sign, digits, and '|' joining another. */
-static bool scan_number( FILE *fp )
+/*
+ * A number as fread_number (or, wide, fread_long) reads it, and whether
+ * it fits: the reader refuses one past its type (review of d19b0e92), and
+ * this scan exists so that refusal is never met with no trap to catch it.
+ */
+static bool scan_number_value( FILE *fp, bool wide, long *value )
 {
     int c = scan_char( fp );
+    unsigned long mag = 0, limit;
+    bool sign = false, over = false;
+    long rest;
 
     if ( c == '+' || c == '-' )
+    {
+        sign = c == '-';
         c = getc( fp );
+    }
     if ( c == EOF || !isdigit( c ) )
         return false;
+    limit = wide ? (unsigned long) LONG_MAX : (unsigned long) INT_MAX;
+    if ( sign )
+        limit += 1UL;
     while ( c != EOF && isdigit( c ) )
+    {
+        if ( !over && !digit_append( &mag, c - '0', limit ) )
+            over = true;
         c = getc( fp );
-    if ( c == '|' )
-        return scan_number( fp );
-    if ( c != EOF )
+    }
+    if ( over )
+        return false;
+    *value = !sign || mag == 0 ? (long) mag : -(long) ( mag - 1UL ) - 1L;
+    if ( !wide && c == '|' )
+    {
+        if ( !scan_number_value( fp, false, &rest ) )
+            return false;
+        *value += rest;
+        return *value >= INT_MIN && *value <= INT_MAX;
+    }
+    if ( c != EOF && ( wide || c != ' ' ) )
         ungetc( c, fp );
     return true;
+}
+
+static bool scan_number( FILE *fp )
+{
+    long value;
+
+    return scan_number_value( fp, false, &value );
 }
 
 /* fread_word's shape: quoted, or up to the next blank. */
@@ -3105,7 +3393,7 @@ static bool scan_stash_object( FILE *fp, int version )
         else if ( !str_cmp( word, "Vnum" ) || !str_cmp( word, "Nest" )
              ||   !str_cmp( word, "Wear" ) || !str_cmp( word, "WearLoc" )
              ||   !str_cmp( word, "Lev" ) || !str_cmp( word, "Level" )
-             ||   !str_cmp( word, "Cond" ) || !str_cmp( word, "Cost" )
+             ||   !str_cmp( word, "Cond" )
              ||   !str_cmp( word, "ExtF" ) || !str_cmp( word, "ExtraFlags" )
              ||   !str_cmp( word, "Ityp" ) || !str_cmp( word, "ItemType" )
              ||   !str_cmp( word, "Repd" ) || !str_cmp( word, "Time" )
@@ -3114,6 +3402,13 @@ static bool scan_stash_object( FILE *fp, int version )
              ||   !str_cmp( word, "Wt" ) || !str_cmp( word, "Weight" ) )
         {
             if ( !scan_number( fp ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "Cost" ) )
+        {
+            long cost;
+
+            if ( !scan_number_value( fp, true, &cost ) )     /* fread_long */
                 return false;
         }
         else if ( !str_cmp( word, "Enchanted" ) || !str_cmp( word, "Oldstyle" ) )
@@ -4312,6 +4607,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "SavingThrow",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
 	    KEY( "Save",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
 	    KEY( "SavedOnce",	ch->pcdata->has_saved,	fread_number( fp ) );
+	    KEY( "Serial",	ch->pcdata->serial,	fread_number( fp ) );
 	    KEY( "StashMax",	ch->pcdata->stash_max,	fread_number( fp ) );
 	    KEY( "StashLinks",	ch->pcdata->stash_links, fread_string( fp ) );
 	    KEY( "StashOffers",	ch->pcdata->stash_offers, fread_string( fp ) );

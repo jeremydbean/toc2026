@@ -53,3 +53,34 @@ bool parse_int( const char *text, int min, int max, int *out )
     *out = (int) value;
     return true;
 }
+
+bool digit_append( unsigned long *mag, int digit, unsigned long limit )
+{
+    if ( mag == NULL || digit < 0 || digit > 9 )
+        return false;
+    if ( *mag > limit / 10UL
+    ||   ( *mag == limit / 10UL && (unsigned long) digit > limit % 10UL ) )
+        return false;
+    *mag = *mag * 10UL + (unsigned long) digit;
+    return true;
+}
+
+bool int_add_checked( int a, int b, int *out )
+{
+    if ( out == NULL )
+        return false;
+    if ( ( b > 0 && a > INT_MAX - b ) || ( b < 0 && a < INT_MIN - b ) )
+        return false;
+    *out = a + b;
+    return true;
+}
+
+bool long_add_checked( long a, long b, long *out )
+{
+    if ( out == NULL )
+        return false;
+    if ( ( b > 0 && a > LONG_MAX - b ) || ( b < 0 && a < LONG_MIN - b ) )
+        return false;
+    *out = a + b;
+    return true;
+}
