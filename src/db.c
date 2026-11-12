@@ -6798,8 +6798,11 @@ void fuzz_world_rewind( void )
 
     /* String space and permanent memory hand out zeroed memory, and the
        loaders rely on it (load_rooms reads a new room's exits). */
-    if ( top_string > fuzz_mark.top_string )
-        memset( fuzz_mark.top_string, 0, (size_t) ( top_string - fuzz_mark.top_string ) );
+    /* Compared as addresses (uintptr_t), as memrange.c does: relational
+       operators on pointers are only defined within one object. */
+    if ( (uintptr_t) top_string > (uintptr_t) fuzz_mark.top_string )
+        memset( fuzz_mark.top_string, 0,
+                (size_t) ( (uintptr_t) top_string - (uintptr_t) fuzz_mark.top_string ) );
     top_string = fuzz_mark.top_string;
     if ( pMemPerm == fuzz_mark.perm_block )
     {

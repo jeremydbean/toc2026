@@ -119,9 +119,13 @@ class DiaryLiveTests(unittest.TestCase):
                 staff.must("set char sparring hp 1", "now set to 1")
                 staff.must("restore sparring", "")
                 staff.must("set char zdiaryhero hitroll 300", "hitroll set to 300")
-                staff.must("set char zdiaryhero hp 50", "now set to 50")
+                # 500 of 20,000: under a twentieth (1,000), and room for
+                # ~25 of the guard's rounds -- on 50 the hero survived about
+                # two, and two dodged, parried or rolled-miss rounds in a row
+                # killed it (CI, 2026-11-12, both modules in one run).
+                staff.must("set char zdiaryhero hp 500", "now set to 500")
                 staff.must("restore zdiaryhero", "restored")
-                staff.must("set char zdiaryhero hp 2000", "now set to 2000")
+                staff.must("set char zdiaryhero hp 20000", "now set to 20000")
                 staff.must(f"transfer zdiaryhero {FLOOR}", "Ok.")
                 self.assertEqual(room_of(staff, "zdiaryhero"), FLOOR)
                 mark = len(hero.transcript)

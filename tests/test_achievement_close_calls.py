@@ -135,12 +135,16 @@ class CloseCallLiveTests(unittest.TestCase):
                 # And a tick may land between RESTORE and STAT (CI,
                 # 2026-11-06: 80 read as 94), so start at 50 and ask for
                 # what the award needs -- under a twentieth -- not a number.
-                staff.must("set char zcclose hp 50", "now set to 50")
+                # 500 of 20,000: under a twentieth (1,000), and room for
+                # ~25 of the guard's rounds -- on 50 the hero survived about
+                # two, and two dodged, parried or rolled-miss rounds in a row
+                # killed it (CI, 2026-11-12, both modules in one run).
+                staff.must("set char zcclose hp 500", "now set to 500")
                 staff.must("restore zcclose", "restored")
-                staff.must("set char zcclose hp 2000", "now set to 2000")
-                hp = re.search(r"Hp: (\d+)/2000\b", staff.must("stat char zcclose", "Hp:"))
+                staff.must("set char zcclose hp 20000", "now set to 20000")
+                hp = re.search(r"Hp: (\d+)/20000\b", staff.must("stat char zcclose", "Hp:"))
                 self.assertIsNotNone(hp)
-                self.assertLess(int(hp.group(1)), 100)
+                self.assertLess(int(hp.group(1)), 1000)
                 staff.must(f"transfer zcclose {FLOOR}", "Ok.")
                 mark = len(hero.transcript)
                 if "is DEAD" not in hero.sync("kill sparring"):

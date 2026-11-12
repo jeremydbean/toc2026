@@ -136,7 +136,9 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertIn("ITEM2_NO_TPORT", telekinesis)
         self.assertIn("psionic_remote_room_blocked", telekinesis)
         self.assertIn("!can_loot(ch, obj)", telekinesis)
-        self.assertIn("OBJ_VNUM_QUEST_TOKEN_FIRST", telekinesis)
+        # A quest token is checked by its owner's serial since 2026-11-12,
+        # through the one ownership test GET uses too.
+        self.assertIn("quest_token_owned_by( obj, ch )", telekinesis)
         self.assertIn("check_improve( ch, gsn_telekinesis, true, 4 )", telekinesis)
         self.assertIn("check_improve( ch, gsn_telekinesis, false, 4 )", telekinesis)
 
