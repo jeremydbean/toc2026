@@ -290365,3 +290365,12 @@ Thu Nov 12 05:01:06 2026 :: Treasure goblin: vanished from room 13065 (Underwate
 Thu Nov 12 05:11:11 2026 :: Treasure goblin: vanished from room 29098 (Metalurgy Plant, korzath1.are) (too long in one area).
 Thu Nov 12 05:11:14 2026 :: Sock.sinaddr:  172.105.128.13
 Thu Nov 12 05:11:14 2026 :: EOF encountered on read.
+Thu Nov 12 05:21:09 2026 :: Sock.sinaddr:  43.248.108.202
+Thu Nov 12 05:21:12 2026 :: Sock.sinaddr:  121.29.149.165
+Thu Nov 12 05:21:17 2026 :: EOF encountered on read.
+Thu Nov 12 05:21:29 2026 :: Sock.sinaddr:  183.6.187.231
+Thu Nov 12 05:21:37 2026 :: EOF encountered on read.
+Thu Nov 12 05:21:37 2026 :: Sock.sinaddr:  121.29.84.23
+Thu Nov 12 05:21:45 2026 :: EOF encountered on read.
+Thu Nov 12 05:22:24 2026 :: Connection guard: last hour 21 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 1 addresses paused and 0 refused now, 14 active player addresses.
+Thu Nov 12 05:23:20 2026 :: Treasure goblin: vanished from room 302 (Path in the plains, plains.are) (too long in one area).
