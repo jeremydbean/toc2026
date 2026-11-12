@@ -4035,6 +4035,7 @@ bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    wizinvis_hides  ( const CHAR_DATA *wch, const CHAR_DATA *looker );
 const char *pers_acting_on( CHAR_DATA *ch, CHAR_DATA *looker );
 const char *area_shown_name( const char *name );
+const char *trap_kind_name( int kind );   /* act_move.c: a trap kind for staff notices */
 
 /* disaster.c */
 #define DISASTER_FLOOD        1

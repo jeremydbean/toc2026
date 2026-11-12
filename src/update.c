@@ -2343,8 +2343,15 @@ void obj_update( void )
 
 	    SET_BIT(obj->value[1], CONT_TRAPPED);
 	    obj->value[4] = dice(1,10);
-	    snprintf( buf, sizeof(buf),"New Object Trap: %s [Vnum: %d]",obj->short_descr,
-			obj->pIndexData->vnum);
+	    /* Where it lies and what it does (owner, 2026-11-12: it gave only
+	       the object's vnum, never the room). */
+	    snprintf( buf, sizeof(buf), "New %s trap on %s [object %d] in %s [room %d], %s.",
+		      trap_kind_name( obj->value[4] ), obj->short_descr,
+		      obj->pIndexData->vnum,
+		      obj->in_room->name != NULL ? obj->in_room->name : "a room",
+		      obj->in_room->vnum,
+		      obj->in_room->area != NULL
+		          ? area_shown_name( obj->in_room->area->name ) : "no area" );
 	    wizinfo(buf,LEVEL_IMMORTAL);
 	  }
 

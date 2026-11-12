@@ -4281,151 +4281,70 @@ See also: WORD OF RECALL, PORTAL, MOVEMENT, CHANGES
 0 REMORT~
 Syntax: REMORT <password> <class> <guild> <race>
 
-REMORT allows a character at their current maximum level to start over as a
-reborn adventurer of the same name.  Each remort raises your permanent maximum
-level by one, increases your starting and per-level stats, and grants extra
-starting resources.  You may remort up to five times.
+REMORT starts your character over at level 3 as a new class, keeping the
+name.  Each remort raises the level you can reach by one, and five remorts
+take you all the way to 59.
 
-REQUIREMENT
-  You must reach level 54 + (number of remorts already done) to remort.
-  Example: first remort requires level 54; second requires level 55; etc.
+WHEN YOU CAN
+  At level 54 plus the remorts you have done: 54 for the first, 55 for the
+  second, up to 58 for the fifth and last.  You cannot remort from a jail
+  cell, or while an automatic quest is under way (finish or abort it).
 
-WHAT YOU KEEP vs. WHAT YOU LOSE
-  Keep: character name, gold (held and banked), quest points, remort bonuses,
-        titles earned, and every item you own -- worn gear included, though
-        most of it will out-level you until you climb back up.
-  Lose: all levels (restart at level 3), all spells and skills, all group
-        knowledge, current class/guild/race (replaced by your new choices).
-        Stats are reset to 13 in all categories.
+WHAT CHANGES
+  You become level 3 in the Temple, with all stats at 13, and lose every
+  spell, skill and group.  Your class, guild and race are the new ones you
+  choose.  All affects on you are removed and your PK state is cleared.
+  You keep your gold, bank, quest points, items and stash.  Gear the new
+  level cannot wear goes into a bag in your stash; NODROP items and items
+  on a timer stay in your pack.  You are given the newcomer's outfit for
+  any empty light, body, shield and weapon slot.  Your pet comes with you;
+  anything else you had charmed wanders off, and raised undead crumble.
+  A title you chose is kept; a class title is replaced.  Wimpy is cut to
+  half your new hit points if it was higher, and a recall point your new
+  level may not use is set aside.
 
-BENEFITS PER REMORT
-  The table below shows cumulative values AT THE START of each new life.
-  "Base HP/Mana/Move" is your starting maximum before any level gains.
-  "Per Level Bonus" is added to every normal level-up gain.
+EACH LIFE
+  Remort  At level  New max  Start HP/Mana/Move  +Pracs  +Trains  Per level
+    1st       54       55          200 each         17      10       +1
+    2nd       55       56          400 each         19      12       +2
+    3rd       56       57          600 each         21      14       +3
+    4th       57       58          800 each         23      16       +4
+    5th       58       59         1000 each         25      18       +5
 
-  Remort   Req.Lvl   Max Lvl   Base HP/Mana/Move   Pracs   Trains   Per-Lvl
-  ------   -------   -------   ----------------    -----   ------   -------
-    1st       54        55           200 each          17      10       +1
-    2nd       55        56           400 each          19      12       +2
-    3rd       56        57           600 each          21      14       +3
-    4th       57        58           800 each          23      16       +4
-    5th       58        59          1000 each          25      18       +5
+  Practices and trains you had not spent are kept, and the new life's are
+  added to them.  "Per level" is added to the hit points, mana and movement
+  of every level you gain in that life.
 
-  Practices and trains you have not spent are kept: the new life's
-  starting amounts above are added to them.
+GIFTS (each remort keeps the ones before it)
+  1st  Hunger and thirst no longer touch you.
+  2nd  Psionic powers: one from each of the four disciplines.
+  3rd  A second power from each discipline; twice the carrying room; twice
+       as long before the idle void takes you; recall that never fails
+       (recall from a fight still costs experience).
+  4th  A third power from each discipline, and the SHADOWMELD skill at 50%
+       (HELP SHADOWMELD).
+  5th  Every psionic power, no carrying limit, and a free choice of class.
 
-  Starting at remort 1 you are immune to hunger and thirst forever.
-  Starting at remort 2 you gain psionic powers, and every remort after that
-  deepens them: one power from each of the 4 disciplines at the 2nd remort,
-  two from each at the 3rd, three from each at the 4th.  They STACK.  A
-  remort wipes your skills, but the powers you have been given are
-  remembered and handed back at 1%, to be practised again, so a later
-  life never costs you one you already had.  The full pool contains 17: ego whip, mindblast, nightmare,
-  torment, clairvoyance, mindbar, psionic armor, psychic shield,
-  telekinesis, astral walk, shift, confuse, project, transfusion, mind
-  leech, enervate, and pyrotechnics.  At the final (5th) remort you are
-  given every one of them.
-  Starting at remort 3 you carry twice as many items and twice the weight,
-  you may idle twice as long before the void takes you, and your recall
-  always succeeds (no skill check, no random-room mishap).  Recall from
-  combat still costs experience.
-  At remort 4 you are taught SHADOWMELD at 50%.  It is a real skill from
-  there: practise it, improve it with use, and no later remort takes it
-  away.  See HELP SHADOWMELD.
-  On the 5th (final) remort you carry unlimited items and weight and may
-  choose any class and guild freely (the usual restriction of picking only
-  classes you have never been does not apply).
+  Psionic powers are never lost to a remort: every life hands them back at
+  1%, to practise again.  Each opens at its own level (17 to 28); until
+  then you hold it but cannot use or practise it.
 
-HERO QUEST COST
-  Buying level 51 (hero) via AQUEST BUY HERO costs:
-    7000 quest points for a character who has never remorted.
-    5000 quest points for any character who has remorted at least once.
+CLASS, GUILD AND RACE
+  You may not live twice as the same class until your fifth remort, which
+  lets you choose any.  If a class is refused, the game lists the ones
+  still open to you.  The guild is free: any of them, as often as you
+  like, or none.  A mage, cleric, thief or warrior who picks none is
+  claimed by their class's guild at level 6, for a 50 gold fee.
+    Classes: mage, cleric, thief, warrior, monk, necro
+    Guilds:  mage, cleric, thief, warrior, none
+             (monks and necros have no guild and must use none)
+    Races:   human, elf, dwarf, hobbit, saurian
+             (monks may be dwarf or human; necros elf or human)
 
-QUEST SHOP ITEMS
-  These items can be purchased from the quest master (AQUEST BUY <item>):
+  Buying hero level (AQUEST BUY HERO) costs 5000 quest points once you
+  have remorted, instead of 7000.  SCORE shows your remort count.
 
-  POTION OF POWER (450 qp)  - buy: AQUEST BUY EMPOWER  or  AQUEST BUY POWER
-    Bestows Sanctuary, Haste (+DEX), and Flight for the duration of the
-    cast.  A single vial of extraordinary divine energy.
-
-  POTION OF THE GIANT (450 qp)  - buy: AQUEST BUY GIANT
-    Grants Giant Strength, Stone Skin fortification, and the ability to
-    Pass Door.  Brewed from ancient mountain earth and raw elemental force.
-
-  SCROLL OF FARSLAY (600 qp)  - buy: AQUEST BUY FARSLAY  or  AQUEST BUY SCROLL
-    A black scroll inscribed with the ancient rite of Farslay. Targets one
-    named character anywhere in the world. One use only, with grave risks.
-
-  POTION OF SANCTUARY (150 qp)  - buy: AQUEST BUY SANCTUARY
-    A more modest blessing that wraps the drinker in a protective aura.
-
-  PRACTICES (500 qp)  - buy: AQUEST BUY PRAC
-    Awards 1-3 extra practice sessions for training skills.
-
-CLASS, GUILD, AND RACE OPTIONS
-  Every life must be a new one, so that levelling it is a different game
-  from the last -- and the CLASS is what decides that.  You may not live
-  twice as the same class.  Your current class counts as used the moment
-  you remort away from it, and the game remembers every class you have
-  ever been.
-
-  The classes are mage, cleric, thief, warrior, monk and necro, so a
-  character who remorts all the way through will have played nearly all
-  of them.
-
-  The GUILD is free.  Join any of them, as often as you like, or none.
-  Monks and necromancers must still use 'none', because those classes
-  have no guild.  A mage, cleric, thief or warrior who chooses 'none' only
-  puts the choice off: at level 6 the guild of the class claims you, as it
-  does any new character, for a 50 gold fee.
-
-  If a class is refused, the game lists every one still open to you.
-
-  On your final (5th) remort even the class history is set aside and you
-  may pick anything.
-  Classes: mage, cleric, thief, warrior, monk, necro
-  Guilds:  mage, cleric, thief, warrior, none
-           (Monks and Necros must use 'none' as their guild.)
-  Races:   human, elf, dwarf, hobbit, saurian
-           Monks are restricted to: dwarf, human.
-           Necromancers are restricted to: elf, human.
-
-NOTES
-  Finish or abort any active automatic quest before remorting.
-  Gear the new level cannot wear goes into a pack in your stash, which you
-  can always take back out at the altar, however heavy it is.  A NODROP
-  item or one on a timer stays with you instead.
-  A new life starts dressed: you are given the newcomer's outfit for any
-  empty light, body, shield and weapon slot.
-  Your wimpy is cut back if it was above half your new hit points.
-  A recall point in a room your new level may not enter is set aside.
-  If you supply a class with no guild (monk or necro), type 'none' for guild.
-  All affects, immunities, resistances, and flags are cleared on remort.
-  Your pk_state is reset; the title is set to match your new class.
-  Remort history is saved; HELP SCORE shows your remort count.
-
-See also: HERO, HEROLEVELS, GAIN, GROUPS
-
-Each remort carries its own gift, and they build on one another:
-
-    first   (at level 54)   hunger and thirst no longer touch you
-    second  (at level 55)   psionic powers, one from each discipline
-                            (usable from level 15, as all psionics are)
-    third   (at level 56)   twice the carrying room, twice as long before
-                            the idle void takes you, a recall that never
-                            fails, and a second power from each discipline
-    fourth  (at level 57)   the SHADOWMELD skill at 50%, and a third power
-                            from each discipline
-    fifth   (at level 58)   every psionic power, no carrying limit at all,
-                            a free choice of class and guild, and the
-                            climb to 59
-
-Every remort also raises the flat hit, mana and movement you start a
-life with, and the practices and trains you begin it holding.
-
-Psionic powers you already have -- from an awakening at 18-21 or a grant --
-are never lost to a remort, the first one included: every life gives them
-back.
+See also: HERO, HEROLEVELS, GAIN, GROUPS, SHADOWMELD
 ~
 
 0 AFFECT AFFECTS~

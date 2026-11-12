@@ -4502,6 +4502,21 @@ void do_enter( CHAR_DATA *ch, char *argument )
    return;
 }
 
+/* What a trap of this kind does, in a word, for staff notices: the cases
+   of trapped() below, in its order. */
+const char *trap_kind_name( int kind )
+{
+    static const char *const names[] =
+    {
+        "unknown", "fire", "gas", "drunk", "sleep", "teleport",
+        "dart", "summon", "stun", "plague", "flash"
+    };
+
+    if ( kind < 1 || kind > 10 )
+        return names[0];
+    return names[kind];
+}
+
 void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 {
   int door,darts, count, dam_size, dam;

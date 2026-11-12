@@ -106,6 +106,7 @@ char *                  help_greeting;
 char                    log_buf         [2*MAX_INPUT_LENGTH];
 KILL_DATA               kill_table      [MAX_LEVEL];
 NOTE_DATA *             note_list;
+extern char * const     dir_name[];     /* act_move.c */
 TELEPORT_ROOM_DATA *    teleport_room_list = NULL;
 ROOM_AFF_DATA      *    room_aff_list = NULL;
 TIME_INFO_DATA          time_info;
@@ -2704,7 +2705,16 @@ void reset_area( AREA_DATA *pArea )
                  REMOVE_BIT(pexit->exit_info, EX_PICKPROOF);
                SET_BIT( pexit->exit_info, EX_TRAPPED);
                pexit->trap = (sh_int)(dice(1,10));
-               snprintf(trap_buf, sizeof(trap_buf),"New Trap: [Room: %d]",pRoomIndex->vnum);
+               /* Where it is and what it does (owner, 2026-11-12: it gave
+                  a bare room number). */
+               snprintf( trap_buf, sizeof(trap_buf),
+                         "New %s trap on the %s door of %s [room %d], %s.",
+                         trap_kind_name( pexit->trap ),
+                         pReset->arg2 >= 0 && pReset->arg2 <= 9 ? dir_name[pReset->arg2] : "a",
+                         pRoomIndex->name != NULL ? pRoomIndex->name : "a room",
+                         pRoomIndex->vnum,
+                         pRoomIndex->area != NULL
+                             ? area_shown_name( pRoomIndex->area->name ) : "no area" );
                wizinfo(trap_buf,LEVEL_IMMORTAL);
              }
             last = true;

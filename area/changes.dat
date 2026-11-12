@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112trapnotice 2026-11-12 staff
+WIZINFO's new-trap lines now say where the trap is and what it does: the
+kind (fire, gas, dart...), the room by name and number, its area, and for a
+door its direction. A trapped chest gave only the object's vnum.
+
 @ 20261112empowerxp 2026-11-12
 EMPOWER now adds half again to the experience you earn while it lasts, so
 asking Hermie for it (BUFF EMPOWER) speeds your levelling. Hermie no longer
