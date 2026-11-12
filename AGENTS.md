@@ -4637,6 +4637,18 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   not confirmed. Only then does an online prisoner move (forced back from
   a switch or projection, out of a fight and a walk, off a mount). A file
   saved free but in room 3 logs in at the Temple (`jail_login_place`).
+  **The pet beside them moves with them both ways** (review, 2026-11-12):
+  `save_char_obj` writes a pet only from its owner's room, so one left in
+  the cell at a release was dropped by the next save. `jail_take_in` leads
+  it in and `jail_release_move` (staff release and expiry alike) leads it
+  out after the release's save -- which already holds it, both being in
+  the cell, and a crash before the move logs them in at the Temple with
+  the pet beside them. A rider remounted in the cell goes out mounted, the
+  mount with them, as TRANSFER moves one; a rider whose mount is not
+  there is dismounted (`release_mount`). A saddled mount is never saved
+  (it carries the saddle), here as anywhere. SHIFT asks `jail_refuses` of
+  the caster and `is_jailed` of the target before any cost: its room
+  tests read the cell's flags (`tests/test_jail_companions.py`).
 - **Expiry** is elapsed wall-clock time, never ticks: `jail_update` once
   a second (`update_handler`, beside the memory sweep) releases a timed
   prisoner past the deadline, link-dead too, with nothing typed;
