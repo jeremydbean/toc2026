@@ -4263,9 +4263,12 @@ case CON_DEFAULT_CHOICE:
 	        char_to_room( ch->pet, ch->in_room );
 	        act( "$n has entered the game.", ch->pet, NULL, NULL, TO_ROOM );
 	    }
-	    /* A mount is never saved, but the flag that you are riding was:
-	       it came back with no mount under it, and a rider cannot be
-	       bashed, tripped or shoved. */
+	    /* A mount is saved with its saddle but never as ridden (save.c,
+	       fwrite_pet): it comes in beside its owner, saddled, and RIDE
+	       mounts it again. The flag that you are riding was saved too,
+	       and came back with no mount under it -- a rider cannot be
+	       bashed, tripped or shoved -- so it is cleared at the load
+	       (load_char_obj) and once more here. */
 	    if ( !IS_NPC(ch) && ch->pcdata->mounted
 	    &&   ( ch->pet == NULL || !ch->pet->ridden ) )
 	        ch->pcdata->mounted = false;

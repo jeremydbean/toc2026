@@ -872,6 +872,41 @@ int achievement_set_size(const CHAR_DATA *ch, achievement_set set)
     return ch->pcdata->achievement_set_len[set];
 }
 
+/* Takes an id out of a set; true if it was there. Only staff undoing a
+   grant use it (GRANTMAP ... REVOKE, maps.c): nothing earned through the
+   set is taken back -- an achievement stays earned, as every other does. */
+bool achievement_set_remove(CHAR_DATA *ch, achievement_set set, long id)
+{
+    PC_DATA *pc;
+    bool found;
+    int at;
+
+    if (!achievement_is_player(ch) || (int)set < 0 || set >= ACH_SET_COUNT
+        || ch->pcdata->achievement_set[set] == NULL)
+        return false;
+    at = achievement_set_search(ch, (int)set, id, &found);
+    if (!found)
+        return false;
+    pc = ch->pcdata;
+    /* Found, so at < len: the count of ids after it is not negative. */
+    memmove(&pc->achievement_set[set][at], &pc->achievement_set[set][at + 1],
+        (size_t)(pc->achievement_set_len[set] - at - 1) * sizeof(long));
+    pc->achievement_set_len[set]--;
+    return true;
+}
+
+/* Empties a set; how many ids it held. The same rule as above. */
+int achievement_set_clear(CHAR_DATA *ch, achievement_set set)
+{
+    int held;
+
+    if (!achievement_is_player(ch) || (int)set < 0 || set >= ACH_SET_COUNT)
+        return 0;
+    held = ch->pcdata->achievement_set_len[set];
+    ch->pcdata->achievement_set_len[set] = 0;
+    return held;
+}
+
 /* ------------------------------------------------------------------
  * Frozen cohorts
  *

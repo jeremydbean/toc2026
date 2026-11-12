@@ -36,27 +36,55 @@ local LONG = { n = "north", e = "east", s = "south", w = "west", u = "up",
 local SHORT = {}
 for short, long in pairs(LONG) do SHORT[long] = short end
 
--- The fake mapper.
+-- The fake mapper. Its rules are Mudlet's own, read from its source
+-- (src/TLuaInterpreterMapper.cpp, TRoom.cpp, TRoomDB.cpp and TMap.cpp on
+-- the development branch, 2026-11-12):
+--   * getRoomExits names exits "north" ... "down"; setExit and setExitStub
+--     take "n" or "north", "u" or "up" (dirToNumber).
+--   * Doors are keyed "n" ... "nw", "up", "down", "in", "out"
+--     (dirCodeToShortString). setDoor refuses "u" and "d" (read as a
+--     special exit the room lacks) and any direction with neither an exit
+--     nor a stub, answering nil and a message; state 0 removes the door.
+--   * deleteRoom removes every exit into the room and, unless the entering
+--     room has a stub there, the door on that exit (removeExitExtras).
+--   * setExitStub(id, dir, true) changes nothing where an exit already is.
+--   * addAreaName refuses a name already used; getRoomAreaName answers -1
+--     and a message for an unknown area id; getRoomCoordinates answers
+--     nils for a room that is not there.
 local rooms, areas, areaNames, nextArea = {}, {}, {}, 1
 local timers = {}
 local saved = {}
 
-local function short(direction) return SHORT[direction] or direction end
+local DOOR_DIRECTION = { n = "n", e = "e", s = "s", w = "w", ne = "ne", nw = "nw",
+  se = "se", sw = "sw", up = "u", down = "d" }
+local DOOR_OF = { u = "up", d = "down" }
+
+local function short(direction)
+  direction = tostring(direction):lower()
+  if direction == "up" then return "u" end
+  if direction == "down" then return "d" end
+  return SHORT[direction] or direction
+end
+local function doorOf(direction) return DOOR_OF[direction] or direction end
 
 function roomExists(id) return rooms[tonumber(id)] ~= nil end
 function addRoom(id)
   id = tonumber(id)
   if rooms[id] then return false end
-  rooms[id] = { exits = {}, doors = {}, x = 0, y = 0, z = 0, area = -1, name = "", env = 201 }
+  rooms[id] = { exits = {}, doors = {}, stubs = {}, x = 0, y = 0, z = 0, area = -1,
+    name = "", env = 201 }
   return true
 end
 function deleteRoom(id)
   id = tonumber(id)
-  if not rooms[id] then return false end
+  if not id or id <= 0 or not rooms[id] then return nil, "invalid room id" end
   rooms[id] = nil
   for _, room in pairs(rooms) do
     for direction, to in pairs(room.exits) do
-      if to == id then room.exits[direction] = nil end
+      if to == id then
+        room.exits[direction] = nil
+        if not room.stubs[direction] then room.doors[doorOf(direction)] = nil end
+      end
     end
   end
   return true
@@ -74,32 +102,71 @@ end
 function setExit(from, to, direction)
   from, to = tonumber(from), tonumber(to)
   if not rooms[from] then return false end
-  if to == -1 then rooms[from].exits[short(direction)] = nil return true end
+  if to < 1 then rooms[from].exits[short(direction)] = nil return true end
   if not rooms[to] then return false end
   rooms[from].exits[short(direction)] = to
   return true
 end
-function setExitStub() end
-function getRoomCoordinates(id) local r = rooms[id] return r.x, r.y, r.z end
+function setExitStub(id, direction, status)
+  local room = rooms[tonumber(id)]
+  if not room then error("setExitStub: roomId doesn't exist") end
+  direction = short(direction)
+  if status then
+    if room.exits[direction] then return end -- Mudlet logs it and changes nothing
+    room.stubs[direction] = true
+  else
+    room.stubs[direction] = nil
+  end
+end
+function getRoomCoordinates(id)
+  local r = rooms[id]
+  if not r then return nil, nil, nil end
+  return r.x, r.y, r.z
+end
 function setRoomCoordinates(id, x, y, z) local r = rooms[id] r.x, r.y, r.z = x, y, z end
 function getAreaTable() return areas end
 function addAreaName(name)
+  if areas[name] then return nil, "area names may not be duplicated" end
   areas[name] = nextArea
   areaNames[nextArea] = name
   nextArea = nextArea + 1
   return areas[name]
 end
 function setRoomArea(id, area) rooms[id].area = area end
-function getRoomArea(id) return rooms[id].area end
-function getRoomAreaName(area) return areaNames[area] end
+function getRoomArea(id) return rooms[id] and rooms[id].area or nil end
+function getRoomAreaName(area)
+  if areaNames[area] then return areaNames[area] end
+  return -1, "not a valid area id"
+end
 function setRoomName(id, name) rooms[id].name = name end
 function getRoomName(id) return rooms[id].name end
 function setRoomEnv(id, env) rooms[id].env = env end
 function getRoomEnv(id) return rooms[id].env end
 function setRoomChar(id, mark) rooms[id].char = mark end
 function getRoomChar(id) return rooms[id].char or "" end
-function setDoor(id, direction, state) rooms[id].doors[short(direction)] = state end
-function getDoors(id) return rooms[id].doors end
+function setDoor(id, key, state)
+  local room = rooms[tonumber(id)]
+  if not room then return nil, "invalid room id" end
+  local direction = DOOR_DIRECTION[key]
+  if not direction then return nil, "no special exit '" .. tostring(key) .. "'" end
+  if not room.exits[direction] and not room.stubs[direction] then
+    return nil, "no normal exit or stub exit in direction '" .. key .. "'"
+  end
+  state = tonumber(state)
+  if not state or state < 0 or state > 3 then return nil, "bad door type" end
+  if state == 0 then
+    local had = room.doors[key] ~= nil
+    room.doors[key] = nil
+    return had
+  end
+  room.doors[key] = state
+  return true
+end
+function getDoors(id)
+  local out = {}
+  for key, state in pairs(rooms[id] and rooms[id].doors or {}) do out[key] = state end
+  return out
+end
 function updateMap() end
 function centerview() end
 function tempTimer(_, fn) timers[#timers + 1] = fn return #timers end
@@ -147,7 +214,11 @@ local function atlas()
   local function link(x, dir, y, back) setExit(x, y, dir) setExit(y, x, back) end
   link(1, "n", 2, "s") link(2, "n", 3, "s") link(3, "e", 4, "w")
   link(4, "e", 5, "w") link(5, "e", 6, "w") link(3, "u", 10, "d")
-  setDoor(5, "e", 2)
+  assert(setDoor(5, "e", 2))
+  assert(setDoor(2, "n", 2))
+  assert(setDoor(10, "down", 3))
+  assert(setDoor(3, "up", 1))
+  assert(setDoor(3, "u", 1) == nil, "the fake must refuse a door keyed u, as Mudlet does")
   setRoomChar(6, "$")
   tocMudlet.fog = {}
   tocMudlet.known, tocMudlet.knownAll, tocMudlet.walked = nil, false, {}
@@ -184,6 +255,12 @@ check("known rooms stay", present(1, 2, 10))
 check("unknown rooms leave the map", absent(3, 4, 5, 6))
 check("they are kept aside", tocMudlet.fog[3] and tocMudlet.fog[6] and not tocMudlet.fog[1])
 check("an exit into the fog goes with it", rooms[2].exits.n == nil and rooms[10].exits.d == nil)
+check("a room left on the map keeps a stub there", rooms[2].stubs.n and rooms[10].stubs.d)
+check("and the door on it", rooms[2].doors.n == 2 and rooms[10].doors.down == 3,
+  tostring(rooms[2].doors.n) .. "/" .. tostring(rooms[10].doors.down))
+check("a fogged room's doors are kept, whichever room went first",
+  tocMudlet.fog[5] and tocMudlet.fog[5].doors and tocMudlet.fog[5].doors.e == 2
+  and tocMudlet.fog[3].doors and tocMudlet.fog[3].doors.up == 1)
 check("the fog is kept aside to be saved", #timers > 0)
 for _, fn in ipairs(timers) do if fn then fn() end end
 check("and saved in the profile", saved["/nonexistent-toc-fog-spec/toc-fog.lua"] ~= nil
@@ -209,6 +286,11 @@ check("exits are linked both ways again",
   and rooms[10].exits.d == 3)
 check("names and marks come back", rooms[6].name == "Room 6" and rooms[6].char == "$")
 check("doors come back", rooms[5].doors.e == 2)
+check("doors on both ends of a link come back",
+  rooms[2].doors.n == 2 and rooms[10].doors.down == 3 and rooms[3].doors.up == 1)
+local stubbed = nil
+for id, room in pairs(rooms) do if next(room.stubs) then stubbed = id end end
+check("no stub is left where a room came back", stubbed == nil, stubbed)
 check("nothing is left aside", next(tocMudlet.fog) == nil)
 
 -- Fogged in two passes, revealed in the other order: still linked.
@@ -242,6 +324,26 @@ tocMudlet.fog = { [99] = { exits = {}, incoming = {} } }
 tocMudlet.onMapReplaced()
 check("the old fog is dropped", tocMudlet.fog[99] == nil)
 check("the new map is fogged", absent(3, 4, 5, 6, 10) and present(1, 2))
+
+-- A map taken away (staff GRANTMAP ... REVOKE): the next Map.Known is
+-- smaller, and the rooms no longer known leave the map again.
+atlas()
+known({ { rooms = { {1, 6}, {10, 10} } } })
+check("a whole area known", present(1, 2, 3, 4, 5, 6, 10))
+known({ { rooms = { {1, 3} } } })
+check("a map taken away fogs its rooms", present(1, 2, 3) and absent(4, 5, 6, 10))
+check("with stubs where they were",
+  rooms[3].stubs.e and rooms[3].stubs.u and rooms[3].doors.up == 1)
+
+-- Room.Info's doors are "u" and "d"; Mudlet's are "up" and "down".
+atlas()
+tocMudlet.lastRoom, tocMudlet.lastExits = nil, nil
+known({ { all = true } })
+gmcp.Room = { Info = { num = 3, name = "Room 3", area = "Area A", environment = "field",
+  exits = { s = 2, e = 4, u = 10 }, doors = { u = "locked", e = "closed" } } }
+tocMudlet.onRoomInfo()
+check("an up door from Room.Info is drawn", rooms[3].doors.up == 3, tostring(rooms[3].doors.up))
+check("an east door from Room.Info is drawn", rooms[3].doors.e == 2)
 
 -- Map.Known before any part 1 is ignored, not half-applied.
 atlas()

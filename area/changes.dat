@@ -5,6 +5,30 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112mountsaved 2026-11-12
+Your saddled mount is no longer lost when you quit. A horse you are riding
+is saved with you, saddle and all, and comes back at your side when you
+return: you come back on foot, and RIDE puts you back in the saddle. See
+HELP RIDE.
+
+@ 20261112shiftroom 2026-11-12
+SHIFT now asks whether the one you pull may enter the room you stand in:
+it will not drag somebody into a guild hall whose guard would turn them
+away, or a creature into a room creatures may not enter. As before, a
+refusal costs no mana.
+
+@ 20261112mapfog 2026-11-12
+The Mudlet map draws doors up and down, which it never did, and keeps the
+doors and an unexplored stub on the edge of what you know, where an exit
+leads into rooms you have not seen. Update the Mudlet package (it offers
+itself; 1.5.13).
+
+@ 20261112grantmaprevoke 2026-11-12 staff
+GRANTMAP <player> <area|hyrule1..hyrule9|all> REVOKE takes maps back,
+online or saved, under GRANTMAP's rank rule, saved, logged and on WIZINFO.
+Rooms walked stay known; a Hyrule dungeon map found in play is kept. The
+player's Mudlet map hides what they no longer know at once.
+
 @ 20261112explorationmaps 2026-11-12
 The Mudlet map now shows what your character knows: the rooms you have
 walked into, whole areas whose maps you hold, and all of Dresden, Mud

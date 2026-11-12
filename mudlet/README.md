@@ -30,6 +30,15 @@ the package takes every room the character does not know off the map,
 keeping it aside in `toc-fog.lua` in the profile, and puts it back where the
 atlas had it when it becomes known.
 
+Package 1.5.13 corrects the fog and the doors against Mudlet's own source
+(`TLuaInterpreterMapper.cpp`, `TRoom.cpp`): Mudlet keys doors `up` and
+`down`, not `u` and `d`, so up and down doors were never drawn; deleting a
+room takes the doors off its neighbours' exits into it, so a pass now reads
+every room before deleting any, and a room left on the map keeps an
+unexplored stub, with its door, where an exit leads into the fog. A
+shrinking `Map.Known` -- a map taken away by staff GRANTMAP REVOKE --
+fogs the rooms no longer known, like any other.
+
 Package 1.5.8 delivers the 24 extended channel colors added to COLOR. The
 version increase makes existing 1.5.7 installations receive the updated chat
 palette automatically on reconnect, after the server is updated.

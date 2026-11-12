@@ -17,11 +17,12 @@
 
 Both worlds use the synthetic cell -- room 3 with exits and no flags --
 so the sentence, never the room, is what is being asked. A ridden mount
-wears its saddle, and save_char_obj never writes a pet that carries
-anything (the comment in comm.c: "A mount is never saved"), here or
-anywhere else; the mount test therefore holds the rider and the horse
-together through SAVE, and checks that a reconnect leaves nobody riding
-a horse that is not there.
+wears its saddle, and save_char_obj used to write no pet that carried
+anything (comm.c: "A mount is never saved"); since 2026-11-12 a pet whose
+only possession is its worn saddle is written with it (save.c,
+pet_saveable), so the mount test follows the horse through QUIT twice: it
+comes back beside its rider, saddled and not ridden, and RIDE mounts it.
+tests/test_mount_persistence.py has the same outside the cell.
 
 Synthetic Z characters in throwaway worlds only.
 """
@@ -170,14 +171,24 @@ class ReleaseCompanionTests(unittest.TestCase):
                     ride(rider)
                     self.assertIn("riding on the back of", warden.sync("look"))
                     quit_client(rider)
-                # A saddled mount is never written (it carries the saddle),
-                # so the reconnect must not leave them riding nothing.
-                with mud.connect(timeout=120) as rider:
-                    login(rider, "Zrider", PW)
-                    self.assertEqual(TEMPLE, room_of(warden, "Zrider"))
-                    self.assertNotIn("mounted on a steed", rider.sync("score"))
-                    self.assertIn("aren't riding", rider.sync("dismount"))
-                    quit_client(rider)
+                self.assertIn("Saddle %d" % SADDLE, saved_pet(mud, "Zrider") or "",
+                              "the quit dropped the saddled mount")
+                # The saddled mount is written (save.c, pet_saveable): the
+                # reconnect brings it in beside them, saddled, never ridden,
+                # and RIDE -- with no saddle in the pack -- mounts it again.
+                for round_trip in (1, 2):
+                    with mud.connect(timeout=120) as rider:
+                        login(rider, "Zrider", PW)
+                        rider.sync("scroll 0")
+                        self.assertEqual(TEMPLE, room_of(warden, "Zrider"))
+                        self.assertEqual(TEMPLE, room_of(warden, "horse"),
+                                         "round %d: the mount was lost" % round_trip)
+                        self.assertNotIn("mounted on a steed", rider.sync("score"))
+                        self.assertIn("aren't riding", rider.sync("dismount"))
+                        self.assertNotIn("saddle", rider.sync("inventory").lower())
+                        ride(rider)
+                        self.assertIn("riding on the back of", warden.sync("look"))
+                        quit_client(rider)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
