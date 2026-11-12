@@ -32,12 +32,17 @@ sys.path.insert(0, str(ROOT))
 from webadmin import balance  # noqa: E402
 
 try:
-    import httpx  # noqa: F401
+    # httpx2 is what scripts/requirements.txt declares and CI installs;
+    # plain httpx is only there when something else pulled it in.
+    try:
+        import httpx2 as httpx  # noqa: F401
+    except ImportError:
+        import httpx  # noqa: F401
     from webadmin import server  # noqa: E402
     WEB_SKIP = None
 except Exception as exc:  # pragma: no cover - env dependent
     server = None
-    WEB_SKIP = f"webadmin.server or httpx unavailable: {exc}"
+    WEB_SKIP = f"webadmin.server or httpx2 unavailable: {exc}"
 
 
 def head(t, kind, who, level, vnum, foe_level, cls=3, area="zone.are"):
