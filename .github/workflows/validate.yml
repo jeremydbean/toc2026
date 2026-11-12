@@ -327,7 +327,7 @@ jobs:
             echo "lua=lua5.4" >> "$GITHUB_OUTPUT"
           fi
           # clang's libFuzzer and sanitizer runtimes build the readers'
-          # fuzz targets (fuzz/README.md); only their smoke test needs them.
+          # fuzz targets (tests/fuzz/README.md); only their smoke test needs them.
           if grep -qx test_fuzz_smoke shard-modules.txt; then
             echo "fuzz=clang libclang-rt-18-dev" >> "$GITHUB_OUTPUT"
           fi

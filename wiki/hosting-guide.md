@@ -31,7 +31,7 @@ the game port is public.
 
 ## Security Decisions Before Installation
 
-Read [SECURITY.md](../SECURITY.md) before opening firewall ports. At minimum:
+Read [SECURITY.md](../.github/SECURITY.md) before opening firewall ports. At minimum:
 
 - Use a unique, random `WEB_ADMIN_TOKEN`.
 - Bind the dashboard to `127.0.0.1` or restrict port 9001 by firewall/VPN.
@@ -39,7 +39,7 @@ Read [SECURITY.md](../SECURITY.md) before opening firewall ports. At minimum:
   and the browser game bridge remain public to clients that can reach the port.
 - Remember that game login uses unencrypted Telnet. Passwords are hashed with
   SHA-512 crypt (`src/password.c`); old DES hashes remain in files not yet
-  logged into and in git history (see [SECURITY.md](../SECURITY.md)).
+  logged into and in git history (see [SECURITY.md](../.github/SECURITY.md)).
 - Protect `player/`, `gods/`, `backups/`, and logs as sensitive data.
 - Keep encrypted off-host backups and test restoration.
 
@@ -146,37 +146,46 @@ preserve configuration, fetch or build the image, and wait for health:
 ```
 
 Windows uses the same command names through `.\toc.ps1`. Raw Compose remains
-available for automation and troubleshooting:
+available for automation and troubleshooting. The Compose file is
+`docker/compose.yml`, but its project is the checkout: run it from the
+checkout's root with `--project-directory .`, which is where compose reads
+`.env` and `./state` from and what it names the project after (the
+checkout folder, as the launchers do). Without it compose would look for
+both under `docker/` and start an empty world there.
 
 ```bash
+# From the checkout's root.
+compose() { docker compose --project-directory . -f docker/compose.yml "$@"; }
+
 # Fetch the published image, or build this checkout under the same name.
-docker compose pull game || docker compose build game
+compose pull game || compose build game
 
 # Start/recreate as needed.
-docker compose up -d
+compose up -d
 
 # Show container and port state.
-docker compose ps
+compose ps
 
 # Follow combined entrypoint, game, and dashboard output.
-docker compose logs -f --tail 200 game
+compose logs -f --tail 200 game
 
 # Stop while preserving the container and bind-mounted data.
-docker compose stop
+compose stop
 
 # Start an existing stopped container.
-docker compose start
+compose start
 
 # Recreate after configuration changes.
-docker compose up -d --force-recreate
+compose up -d --force-recreate
 
 # Remove the container/network; host bind mounts remain.
-docker compose down
+compose down
 ```
 
 The service uses `restart: unless-stopped`. Docker applies that policy even
 when the entrypoint exits cleanly after an in-game `shutdown`. Use
-`docker compose stop` or `docker compose down` when the instance must stay off.
+`./toc.sh stop` (or `compose stop` / `compose down`, above) when the instance
+must stay off.
 
 The entrypoint itself runs `merc` in a loop. An in-game `reboot` or unexpected
 game exit restarts `merc` after five seconds. An in-game `shutdown` writes
@@ -201,10 +210,10 @@ auto-restarting game loop. Build a standalone image first, then explicit
 arguments use one-shot behavior:
 
 ```bash
-docker build -t toc2026 .
+docker build -f docker/Dockerfile -t toc2026 .
 
 # Normal Compose/default mode.
-docker compose up -d
+docker compose --project-directory . -f docker/compose.yml up -d
 
 # One-shot game server on the configured port.
 docker run --rm toc2026 server
@@ -326,7 +335,7 @@ running the game process as root. Inspect effective IDs with:
 
 ```bash
 docker run --rm toc2026 id
-docker compose exec game id
+docker compose --project-directory . -f docker/compose.yml exec game id
 ```
 
 Never solve a permissions problem with world-writable player files.
@@ -640,10 +649,10 @@ a public browser session without TLS.
 ### Container Checks
 
 ```bash
-docker compose ps
-docker compose logs --tail 200 game
+docker compose --project-directory . -f docker/compose.yml ps
+docker compose --project-directory . -f docker/compose.yml logs --tail 200 game
 docker stats toc2026_game
-docker compose exec game ps -ef
+docker compose --project-directory . -f docker/compose.yml exec game ps -ef
 ```
 
 ### HTTP Health
@@ -698,9 +707,9 @@ Docker example for a clean tracking branch:
 git fetch origin
 git pull --ff-only
 bash scripts/validate.sh
-docker compose build --pull
-docker compose up -d
-docker compose logs -f --tail 200 game
+docker compose --project-directory . -f docker/compose.yml build --pull
+docker compose --project-directory . -f docker/compose.yml up -d
+docker compose --project-directory . -f docker/compose.yml logs -f --tail 200 game
 ```
 
 Do not update a dirty production checkout blindly. Preserve local area work on
@@ -748,7 +757,7 @@ server itself is an Oracle Cloud ARM instance: see
 ### Port Already In Use
 
 ```bash
-docker compose ps
+docker compose --project-directory . -f docker/compose.yml ps
 sudo ss -ltnp | grep -E ':9000|:9001'
 ```
 
@@ -805,9 +814,10 @@ to load area changes into the game.
 
 ### Bind-Mount Permission Errors
 
-Inspect `docker compose exec game id` and host ownership. On SELinux hosts,
-apply the appropriate container volume label (`:Z` for a private bind mount)
-according to local policy. Do not disable SELinux globally or make player files
+Inspect `docker compose --project-directory . -f docker/compose.yml exec game
+id` (from the checkout's root) and host ownership. On SELinux hosts, apply the
+appropriate container volume label (`:Z` for a private bind mount) according to
+local policy. Do not disable SELinux globally or make player files
 world writable.
 
 ### Update Refuses: "this checkout has local code changes"
@@ -826,8 +836,10 @@ recoverable from the host.
 ### Container Reappears After Shutdown
 
 `restart: unless-stopped` restarts a cleanly exited container. Use
-`docker compose stop` or change the deployment's restart policy to match the
-desired in-game shutdown semantics.
+`./toc.sh stop` (or, from the checkout's root,
+`docker compose --project-directory . -f docker/compose.yml stop`) or change
+the deployment's restart policy to match the desired in-game shutdown
+semantics.
 
 ### Backups Are Empty Or Missing
 
@@ -848,5 +860,5 @@ entire archive over a running server.
 - [Operator Guide](operator-guide.md)
 - [Developer Guide](developer-guide.md)
 - [Validation And Area Health](validation-and-area-health.md)
-- [Security](../SECURITY.md)
+- [Security](../.github/SECURITY.md)
 - [README](../README.md)

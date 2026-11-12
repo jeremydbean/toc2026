@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Write the libFuzzer dictionaries the readers' targets use.
 
-    python3 fuzz/make_dict.py      # rewrites fuzz/dict/{player,area}.dict
+    python3 tests/fuzz/make_dict.py      # rewrites tests/fuzz/dict/{player,area}.dict
 
 The player dictionary is every key the player-file reader matches, taken
 from src/save.c itself, so it follows the reader as keys are added. The
@@ -12,8 +12,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "fuzz" / "dict"
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "tests" / "fuzz" / "dict"
 
 MARKERS = ["#PLAYER", "#O", "#OBJECT", "#PET", "#STASH", "#END", "End", "~"]
 AREA = ["#AREA", "#AREADATA", "#HELPS", "#MOBILES", "#OBJECTS", "#RESETS",
@@ -38,10 +38,10 @@ def player_keys() -> list[str]:
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     with open(OUT / "player.dict", "w", encoding="ascii") as f:
-        f.write("# Keys the player-file reader knows (src/save.c); fuzz/make_dict.py.\n")
+        f.write("# Keys the player-file reader knows (src/save.c); tests/fuzz/make_dict.py.\n")
         f.writelines(quoted(k) for k in player_keys())
     with open(OUT / "area.dict", "w", encoding="ascii") as f:
-        f.write("# Section names and record letters of the area loader (src/db.c); fuzz/make_dict.py.\n")
+        f.write("# Section names and record letters of the area loader (src/db.c); tests/fuzz/make_dict.py.\n")
         f.writelines(quoted(k) for k in AREA)
     return 0
 

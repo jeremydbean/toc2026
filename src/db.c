@@ -6714,9 +6714,9 @@ void respawn_relic(int i)
 
 #if defined(TOC_FUZZ)
 /*
- * The fuzz build only (fuzz/build.sh defines TOC_FUZZ; neither the Makefile
+ * The fuzz build only (tests/fuzz/build.sh defines TOC_FUZZ; neither the Makefile
  * nor CMake does, so nothing here is in the game). The area-file target
- * (fuzz/fuzz_area.c) loads one fuzzed file into a booted world per input,
+ * (tests/fuzz/fuzz_area.c) loads one fuzzed file into a booted world per input,
  * and must then take every trace of it out again, or the next input would
  * meet its vnums and the world would grow without end. Every loader adds
  * by prepending to a hash chain or appending to a list, so the heads and

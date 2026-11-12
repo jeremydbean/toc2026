@@ -77,14 +77,19 @@ STATE_GLOBS = [
 # Paths that look narrow but are not: the shared harness, CI and deploy
 # policy, and dependency lists. Checked before the narrow classes.
 ALWAYS_FULL_GLOBS = [
-    "tests/live_mud.py", "tests/fixtures/**", "tests/ci_*.json", "tests/*.c",
-    "tests/*.lua", "scripts/ci/**", "scripts/test-parallel.sh", "scripts/validate.sh",
-    ".github/**", "deploy/**", "webadmin/requirements.txt", "scripts/requirements.txt",
-    "requirements*.txt", "Makefile", "CMakeLists.txt", "Dockerfile", "docker-*",
-    ".gitattributes", ".gitignore",
+    "tests/live_mud.py", "tests/fixtures/**", "tests/fuzz/**", "tests/ci_*.json",
+    "tests/*.c", "tests/*.lua", "scripts/ci/**", "scripts/test-parallel.sh",
+    "scripts/validate.sh", ".github/**", "deploy/**", "webadmin/requirements.txt",
+    "scripts/requirements.txt", "requirements*.txt", "Makefile", "CMakeLists.txt",
+    "docker/**", ".dockerignore", ".gitattributes", ".gitignore",
 ]
 
 DOC_GLOBS = ["wiki/**", "notes/**", "*.md", "**/*.md", "LICENSE", "LICENSE.*"]
+
+# GitHub's community files (SECURITY.md, CONTRIBUTING.md) live in .github/
+# beside the workflows; they are documents, not CI policy. Checked before
+# ALWAYS_FULL_GLOBS, whose ".github/**" would otherwise take them.
+GITHUB_DOC_GLOBS = [".github/*.md"]
 
 WEB_UI_GLOBS = ["webadmin/static/**"]
 # The browser tests (node) and the integration tests that serve or drive
@@ -178,6 +183,10 @@ def classify_path(path: str, tests: Path = TESTS) -> tuple[str, list[str], str]:
     """(class, modules it selects, the reason) for one changed path."""
     if match(path, STATE_GLOBS):
         return "state", [], "live state the game writes; never deployed"
+    if match(path, GITHUB_DOC_GLOBS) and "/workflows/" not in path:
+        contracts = doc_contract_modules(path, tests)
+        return "docs", contracts, ("documentation; the tests that hold it to the code"
+                                   if contracts else "documentation no code reads")
     if match(path, ALWAYS_FULL_GLOBS):
         return "full", [], "shared harness, CI/deploy policy, build or dependency"
     if path in oracle_docs():

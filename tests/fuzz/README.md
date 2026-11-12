@@ -17,22 +17,22 @@ From the repository root (Linux; clang with libFuzzer -- on Ubuntu
 `apt-get install clang libclang-rt-18-dev`):
 
 ```bash
-fuzz/build.sh                  # build-fuzz/fuzz_{numparse,player,area}
-fuzz/run.sh player 900         # fuzz for 15 minutes
-fuzz/run.sh area 900
-fuzz/run.sh numparse 300
+tests/fuzz/build.sh                  # build-fuzz/fuzz_{numparse,player,area}
+tests/fuzz/run.sh player 900         # fuzz for 15 minutes
+tests/fuzz/run.sh area 900
+tests/fuzz/run.sh numparse 300
 ```
 
 `run.sh` keeps its working corpus in `build-fuzz/work/<target>/corpus`
-(started from `fuzz/corpus/<target>`) and puts any finding in
+(started from `tests/fuzz/corpus/<target>`) and puts any finding in
 `build-fuzz/work/<target>/artifacts/`, then replays it with the report
 showing. To replay one input yourself, pass it to the binary by an
 **absolute** path (the harness changes directory into its world):
 
 ```bash
 build-fuzz/fuzz_player "$PWD/build-fuzz/work/player/artifacts/crash-..."
-build-fuzz/fuzz_area -detect_leaks=0 "$PWD/fuzz/regressions/area/hang-cut-mid-string.are"
-TOC_FUZZ_VERBOSE=1 build-fuzz/fuzz_area -detect_leaks=0 "$PWD/fuzz/corpus/area/synthetic.are"
+build-fuzz/fuzz_area -detect_leaks=0 "$PWD/tests/fuzz/regressions/area/hang-cut-mid-string.are"
+TOC_FUZZ_VERBOSE=1 build-fuzz/fuzz_area -detect_leaks=0 "$PWD/tests/fuzz/corpus/area/synthetic.are"
 ```
 
 `TOC_FUZZ_VERBOSE=1` makes the area target say whether each input loaded
@@ -41,7 +41,7 @@ whole or would stop the boot -- the check that a seed is a good one.
 or under `TOC_FUZZ_DIR`) behind to look at.
 
 `tests/test_fuzz_smoke.py` builds the targets, replays everything in
-`fuzz/regressions/`, and fuzzes each target for a fixed number of inputs
+`tests/fuzz/regressions/`, and fuzzes each target for a fixed number of inputs
 from a fixed seed (`-seed=1 -runs=N`; `TOC_FUZZ_SMOKE_SCALE` multiplies
 them), so CI cannot fail on luck -- the real search is `run.sh`'s. CI
 installs the toolchain on the shard that runs it. `tests/test_fuzz_findings.py` holds each finding to the real game
@@ -76,14 +76,14 @@ installs the toolchain on the shard that runs it. `tests/test_fuzz_findings.py` 
 
 ## Seeds and dictionaries
 
-Synthetic only. `fuzz/corpus/player/` is made by `python3
-fuzz/make_seeds.py` (after `make`): a character created and saved by the
+Synthetic only. `tests/fuzz/corpus/player/` is made by `python3
+tests/fuzz/make_seeds.py` (after `make`): a character created and saved by the
 game in a throwaway world, then given things, plus a `#PET` and `#STASH`
-record in the writer's shape. `fuzz/corpus/area/` is the test fixture area
+record in the writer's shape. `tests/fuzz/corpus/area/` is the test fixture area
 and `synthetic.are`, which has every section and record kind (an M-style
 mobile, F/A/E/T object records, teleport, river and affected rooms, doors,
 every reset letter, a shop, a special, helps, socials, `#AREADATA`).
-`python3 fuzz/make_dict.py` writes `fuzz/dict/`, the player dictionary
+`python3 tests/fuzz/make_dict.py` writes `tests/fuzz/dict/`, the player dictionary
 straight from the keys `src/save.c` matches.
 
 ## What it found (2026-11-12)
@@ -95,7 +95,7 @@ in the whole world), 45 minutes of the area target (about 17 million, at
 after each fix; the last runs of each -- ten minutes of the player target,
 ten and fifteen of the area target -- found nothing more. Each finding is fixed and has a test that fails
 on the old code (`tests/test_fuzz_findings.py`; the input is in
-`fuzz/regressions/`):
+`tests/fuzz/regressions/`):
 
 | input | what happened | fix |
 | --- | --- | --- |

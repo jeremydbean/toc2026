@@ -342,8 +342,9 @@ Confirm the server process received `WEB_ADMIN_TOKEN`, recreate the container
 after `.env` changes, and ensure the browser token matches exactly:
 
 ```bash
-docker compose config
-docker compose up -d --force-recreate
+# From the checkout's root.
+docker compose --project-directory . -f docker/compose.yml config
+docker compose --project-directory . -f docker/compose.yml up -d --force-recreate
 ```
 
 `GET /api/config` reports `admin_token_configured` but never returns the token.
@@ -359,8 +360,9 @@ Check the dashboard's configured endpoint and the game process:
 
 ```bash
 curl -fsS http://127.0.0.1:9001/api/health
-docker compose ps
-docker compose logs --tail 100 game
+# From the checkout's root.
+docker compose --project-directory . -f docker/compose.yml ps
+docker compose --project-directory . -f docker/compose.yml logs --tail 100 game
 ```
 
 For a split deployment, pass the reachable game address with `--mud-host` and

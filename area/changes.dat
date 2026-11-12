@@ -272,7 +272,7 @@ An alias name may no longer start with a quote mark. ALIAS "'X" LOOK used to
 be accepted and saved in a way that stopped you logging in next time.
 
 @ 20261112fuzzreaders 2026-11-12 staff
-The file readers are fuzzed (fuzz/README.md). Fixed from what that found: a
+The file readers are fuzzed (tests/fuzz/). Fixed from what that found: a
 player file with a key this build does not know -- what a rollback leaves --
 crashed the game at that login, and so did a refused file with a pet and no
 Room line. A file naming a class, race or guild the game does not have, or

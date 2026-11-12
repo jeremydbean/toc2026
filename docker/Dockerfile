@@ -5,6 +5,14 @@
 # Prebuilt images for amd64 and arm64 are published to
 # ghcr.io/jeremydbean/toc2026 by .github/workflows/docker-image.yml; the
 # installers pull one and fall back to building this file.
+#
+# The build context is the checkout's root, never docker/:
+#
+#     docker build -f docker/Dockerfile .
+#
+# so the root .dockerignore applies and keeps every player file, log and
+# report out of the image. Do not add a docker/Dockerfile.dockerignore:
+# BuildKit would read it instead of the root's.
 
 ARG BASE_IMAGE=ubuntu:24.04
 

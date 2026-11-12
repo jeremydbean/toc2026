@@ -35,7 +35,7 @@ page asks for is in place; two steps are the owner's.
 | Vitals along the top | HP, mana, moves and experience gauges |
 | Tabbed chat | Chat, Tells, Here and Items tabs, fed by Comm.Channel |
 | Interface can be turned off, said at creation | TOCGUI OFF / ON, named to every new character |
-| Secure (TLS) port | not yet -- planned, on hold (SECURITY.md) |
+| Secure (TLS) port | not yet -- planned, on hold (`.github/SECURITY.md`) |
 
 What the game speaks to Mudlet beyond that (2026-11-07):
 

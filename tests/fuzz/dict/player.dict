@@ -1,4 +1,4 @@
-# Keys the player-file reader knows (src/save.c); fuzz/make_dict.py.
+# Keys the player-file reader knows (src/save.c); tests/fuzz/make_dict.py.
 "#END"
 "#O"
 "#OBJECT"

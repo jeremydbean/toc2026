@@ -1,4 +1,4 @@
-"""What fuzzing the file readers found (fuzz/README.md, 2026-11-12).
+"""What fuzzing the file readers found (tests/fuzz/README.md, 2026-11-12).
 
 Each test fails on the code before its fix:
 

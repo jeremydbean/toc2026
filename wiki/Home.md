@@ -41,7 +41,7 @@ give the current figures. The live game runs on Oracle Cloud (`toc.jeremybean.co
   troubleshooting
 - [Operator Guide](operator-guide.md) - daily checks, diagnostics, planned
   reboot, player restore, moderation, incidents, and maintenance records
-- [Security Policy](../SECURITY.md) - Telnet/DES limitations, dashboard exposure,
+- [Security Policy](../.github/SECURITY.md) - Telnet/DES limitations, dashboard exposure,
   token handling, hardening, reporting, and incident response
 
 ## Developers
@@ -49,7 +49,7 @@ give the current figures. The live game runs on Oracle Cloud (`toc.jeremybean.co
 - [Developer Guide](developer-guide.md) - architecture, modules, builds, tests,
   extension points, persistence, generated content, debugging, and release
   checklist
-- [Contributing](../CONTRIBUTING.md) - focused contribution and review rules
+- [Contributing](../.github/CONTRIBUTING.md) - focused contribution and review rules
 - [Validation And Area Health](validation-and-area-health.md) - full validation,
   linter issue codes, CI, current warning review, and troubleshooting
 - [Code Review Status](code-review.md) - recorded review findings and their
@@ -93,5 +93,5 @@ pages disagree.
 Players should use in-game `help`, `commands`, `bug`, `typo`, and `idea` first.
 For repository problems, open a GitHub issue with the revision, platform,
 reproduction, expected/actual result, and sanitized logs. Report security issues
-privately as described in [SECURITY.md](../SECURITY.md); never post passwords,
+privately as described in [SECURITY.md](../.github/SECURITY.md); never post passwords,
 hashes, tokens, player files, or private logs.

@@ -6,11 +6,11 @@ more boundaries than their diff suggests.
 
 ## Read First
 
-- [Developer Guide](wiki/developer-guide.md)
+- [Developer Guide](../wiki/developer-guide.md)
 - [Security Policy](SECURITY.md)
-- [Area Building Guide](wiki/area-building-guide.md) for `.are` changes
-- [Validation And Area Health](wiki/validation-and-area-health.md)
-- [AGENTS.md](AGENTS.md) when using a coding agent
+- [Area Building Guide](../wiki/area-building-guide.md) for `.are` changes
+- [Validation And Area Health](../wiki/validation-and-area-health.md)
+- [AGENTS.md](../AGENTS.md) when using a coding agent
 
 ## Development Rules
 

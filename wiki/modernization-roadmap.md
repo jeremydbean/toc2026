@@ -6,7 +6,7 @@ items marked **shipped** below have landed since, and the rest is still a
 plan. It reviews `main` as it stood then against nine areas the owner
 asked about, beyond the
 SHA-512 password migration (done, 2026-11-07) and the TLS player port
-(planned and on hold, `SECURITY.md`). Each recommendation says what
+(planned and on hold, `.github/SECURITY.md`). Each recommendation says what
 already exists first, and favours small changes that can be reviewed and
 rolled back on their own.
 
@@ -272,9 +272,9 @@ some cross-references between them are by item id.
 ## Appendix 1: Shared-Admin Hardening, Trackable Admin Requests, Reproducible Releases (A, R, D)
 
 Read-only assessment of the working tree on branch `fix-review-20261109`
-(2026-11-09). Line numbers are from that tree; `SECURITY.md`, `src/comm.c`,
+(2026-11-09). Line numbers are from that tree; `.github/SECURITY.md`, `src/comm.c`,
 `src/merc.h` and others carry another engineer's uncommitted edits, so
-`SECURITY.md` is cited by section name. Nothing in the repository was changed.
+`.github/SECURITY.md` is cited by section name. Nothing in the repository was changed.
 
 Fixed constraints for everything below: keep the one shared
 `WEB_ADMIN_TOKEN`; no per-staff accounts, no MFA. Leave gameplay, save
@@ -333,7 +333,7 @@ field that an operator fills in is allowed, but it is labelled as typed by the o
   `webadmin.server --host 0.0.0.0 --port 9001`, and
   `wiki/disaster-recovery.md` l.22 lists `:9001` as public. **The admin
   token therefore crosses the internet in plaintext HTTP and `ws://`**
-  whenever anyone uses the dashboard remotely. `SECURITY.md` ("Dashboard
+  whenever anyone uses the dashboard remotely. `.github/SECURITY.md` ("Dashboard
   Read Endpoints", "Shared Admin Token", "HTTPS Reverse Proxy") says not to expose 9001. The live host does anyway.
 - `uvicorn.run(app, host=..., port=...)` (l.4949) runs with uvicorn's
   defaults: access log on, `proxy_headers=True`, `forwarded_allow_ips` = 127.0.0.1.
@@ -345,7 +345,7 @@ field that an operator fills in is allowed, but it is labelled as typed by the o
     restore keeps the old one as `.env.from-backup` (l.286). A backup archive is therefore a credential.
   - `deploy/toc-restore` l.165 generates a fresh token on the host, which is correct.
 - **Rotation** is documented only in prose ("rotate it when staff access
-  changes", `SECURITY.md` "Shared Admin Token"). There is no script, no
+  changes", `.github/SECURITY.md` "Shared Admin Token"). There is no script, no
   fingerprint to confirm which token is live, and no overlap window.
 
 #### 0.2 The queue (dashboard and deploy to game)
@@ -423,7 +423,7 @@ field that an operator fills in is allowed, but it is labelled as typed by the o
   silently turn the Oracle off. The Docker image cannot run the Oracle even with `ORACLE_ENABLED=1`.
 - The native installer (`scripts/toc_native.sh` `toc_native_venv`
   l.87-104) reinstalls when the `cksum` of `requirements.txt` changes. That is a good shape, but nothing is pinned.
-- `Dockerfile`: `ubuntu:24.04` by tag, not digest. The venv is built from
+- `docker/Dockerfile`: `ubuntu:24.04` by tag, not digest. The venv is built from
   the floating requirements in a separate stage.
 - CI (`.github/workflows/validate.yml`) uses Python 3.12 (matching Ubuntu
   24.04's python3) and installs with `pip install -r webadmin/requirements.txt -r scripts/requirements.txt`
@@ -468,7 +468,7 @@ Recommended order: A1 -> A2 -> A3 -> A4 -> A5. The rest can go in any order.
 #### A1. TLS in front of the dashboard; admin refused over plaintext (M)
 
 - **Exists**: the public HTTP listener (`toc-web.service` l.21,
-  `--host 0.0.0.0`). `SECURITY.md` "HTTPS Reverse Proxy" lists the
+  `--host 0.0.0.0`). `.github/SECURITY.md` "HTTPS Reverse Proxy" lists the
   requirements. "Planned: A TLS Player Port" already chooses Ubuntu's
   nginx, with certificates rotated through `/etc/nginx/toc-tls/current/`
   and the certbot webroot flow (the "Certificates" subsection).
@@ -505,7 +505,7 @@ Recommended order: A1 -> A2 -> A3 -> A4 -> A5. The rest can go in any order.
   - `websocket_origin_allowed` compares Origin to `Host`, so nginx must pass `Host` through unchanged.
 - **Files**: `webadmin/server.py` (gate helper, HSTS in
   `add_security_headers`); new `deploy/windows-vm/toc-web-nginx.conf`
-  sample. `toc-web.service` changes only in step 4. `SECURITY.md` is left to its owner.
+  sample. `toc-web.service` changes only in step 4. `.github/SECURITY.md` is left to its owner.
 - **Rollback**: set `WEB_ADMIN_REQUIRE_TLS=0` and restart toc-web. nginx can be stopped on its own.
 - **Acceptance**:
   - `tests/test_webadmin_tls_gate.py` uses TestClient with `base_url="https://..."`
@@ -690,7 +690,7 @@ States, used the same way in all three places:
   - `rid` matches `[a-z0-9-]{8,40}`.
   - `source` is one of `dashboard`, `deploy` or `host`. It is
     **self-declared, because file write access is administrative access**
-    (`SECURITY.md` "Local Command Queue"), so it is recorded as a claim.
+    (`.github/SECURITY.md` "Local Command Queue"), so it is recorded as a claim.
   - Unprefixed lines keep today's behaviour exactly, so an old
     `toc-deploy` and a new game work together, and the reverse.
   - The C side parses with the existing strtok and rejects a bad rid with a `bug()`.
@@ -2331,7 +2331,7 @@ Command boundary:
 
 | capability | plain Telnet (port 9000) | Mudlet (9000; Secure box planned) | browser (`/client`, 9001 WebSocket bridge) |
 | --- | --- | --- | --- |
-| transport security | none | none today; TLS port planned and on hold (SECURITY.md "Planned: A TLS Player Port", nginx stream + PROXY v1, outside the game loop) | plain HTTP/WS on the live host today; HTTPS is a separate project |
+| transport security | none | none today; TLS port planned and on hold (`.github/SECURITY.md` "Planned: A TLS Player Port", nginx stream + PROXY v1, outside the game loop) | plain HTTP/WS on the live host today; HTTPS is a separate project |
 | colour | COLOR ON/OFF, 16/256/true colour downgraded by MTTS | same; palette names mirrored in `GAME_COLOUR` | same; themes draw 0-15, exact 256/true colour |
 | output charset | ASCII | ASCII | ASCII (decoded as Latin-1) |
 | input charset | high bytes dropped today (P9.3) | same | Latin-1 with `?` replacement, then dropped (P9.3) |

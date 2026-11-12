@@ -1,8 +1,8 @@
 """The file readers' fuzz targets build, replay what they found, and run.
 
-fuzz/README.md has the design. This builds the three libFuzzer targets
-(fuzz/build.sh, into a scratch directory), replays every input in
-fuzz/regressions/ -- each one crashed, hung, leaked or tripped a sanitizer
+tests/fuzz/README.md has the design. This builds the three libFuzzer targets
+(tests/fuzz/build.sh, into a scratch directory), replays every input in
+tests/fuzz/regressions/ -- each one crashed, hung, leaked or tripped a sanitizer
 before its fix -- and fuzzes each target briefly from the committed seeds.
 A finding fails the test, with libFuzzer's report and the input left in
 the scratch directory's work/<target>/artifacts.
@@ -12,7 +12,7 @@ and libclang-rt-18-dev); CI's shard that runs this module installs them
 (.github/workflows/validate.yml). Without them it skips and says why.
 Each target fuzzes a fixed number of inputs from a fixed seed, so a run
 is the same run every time and CI cannot fail on luck; a real search is
-fuzz/run.sh's, for minutes, not this test's. TOC_FUZZ_SMOKE_SCALE
+tests/fuzz/run.sh's, for minutes, not this test's. TOC_FUZZ_SMOKE_SCALE
 multiplies the counts.
 """
 from __future__ import annotations
@@ -59,11 +59,11 @@ class FuzzSmoke(unittest.TestCase):
         cls.tmp = tempfile.TemporaryDirectory(prefix="toc-fuzz-")
         cls.out = Path(cls.tmp.name)
         env = dict(os.environ, OUT=str(cls.out))
-        proc = subprocess.run(["bash", str(ROOT / "fuzz" / "build.sh")], env=env,
+        proc = subprocess.run(["bash", str(ROOT / "tests" / "fuzz" / "build.sh")], env=env,
                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                               timeout=1800)
         if proc.returncode != 0:
-            raise AssertionError("fuzz/build.sh failed:\n"
+            raise AssertionError("tests/fuzz/build.sh failed:\n"
                                  + proc.stdout.decode("latin-1", "replace")[-4000:])
 
     @classmethod
@@ -76,7 +76,7 @@ class FuzzSmoke(unittest.TestCase):
 
     def test_regressions_replay_clean(self) -> None:
         for target in TARGETS:
-            inputs = sorted((ROOT / "fuzz" / "regressions" / target).glob("*"))
+            inputs = sorted((ROOT / "tests" / "fuzz" / "regressions" / target).glob("*"))
             if not inputs:
                 continue
             with self.subTest(target=target):
@@ -98,7 +98,7 @@ class FuzzSmoke(unittest.TestCase):
     def test_each_target_fuzzes_clean(self) -> None:
         for target in TARGETS:
             with self.subTest(target=target):
-                proc = subprocess.run(["bash", str(ROOT / "fuzz" / "run.sh"), target,
+                proc = subprocess.run(["bash", str(ROOT / "tests" / "fuzz" / "run.sh"), target,
                                        "600", "-seed=1", "-runs=%d" % (RUNS[target] * SCALE)],
                                       env=self.env(),
                                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT,

@@ -25,7 +25,7 @@ and a large collection of hand-built areas.
 > (hashing, not encryption), and a new or reset password counts every byte; a
 > character whose old DES password was carried over keeps DES's eight-byte
 > limit until the player sets a new one. Never reuse a real-world password.
-> Hosts should read [SECURITY.md](SECURITY.md) before exposing either port. The
+> Hosts should read [SECURITY.md](.github/SECURITY.md) before exposing either port. The
 > public repository's history also contains legacy DES character hashes; they
 > must be considered exposed credentials.
 
@@ -42,12 +42,12 @@ and a large collection of hand-built areas.
 | Working from a new/other machine | [New Machine Setup](wiki/new-machine-setup.md) |
 | Mudlet listing submission | [Listing Handoff](mudlet/listing-submission.md) |
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |
-| Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
+| Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](.github/CONTRIBUTING.md) |
 | Area builder | [Area Building Guide](wiki/area-building-guide.md) |
 | Immortal building in game | [In-Game Building Guide](wiki/building-guide.md) |
 | Hyrule player or builder | [Hyrule: First Quest](wiki/hyrule-area.md) |
 | Achievement hunter | [Achievement System](wiki/achievements.md) |
-| Security reviewer | [Security Policy and Deployment Guide](SECURITY.md) |
+| Security reviewer | [Security Policy and Deployment Guide](.github/SECURITY.md) |
 
 The [wiki home page](wiki/Home.md) indexes all current and historical
 documentation.
@@ -420,19 +420,22 @@ object). Do not suppress a finding merely to reduce the count.
 | `tools/` | Operator and balance reports, generators for routes, sounds and prices |
 | `deploy/` | The live host's deploy, state sync, recovery and restore scripts and units |
 | `tests/` | Python tests for APIs, area health, and Hyrule progression |
+| `tests/fuzz/` | libFuzzer targets for the file readers |
 | `data/` | Checked-in source manifests, including Hyrule First Quest |
 | `wiki/` | Player, host, operator, developer, and area-building guides |
 | `wiki/notes/` | Design notes, audits, and implementation records |
-| `.github/workflows/` | Continuous validation |
+| `docker/` | The Docker image (`Dockerfile`) and Compose file (`compose.yml`); built from the root |
+| `.github/` | Continuous validation (`workflows/`), the security policy and contributing rules |
 | `mudlet/` | The Mudlet package and generated starter map |
-| `fuzz/` | libFuzzer targets for the file readers |
 | `player/`, `gods/`, `heroes/` | Mutable character and staff data |
 
 The root holds only what is typed or opened from a fresh clone -- the
 installers and launchers (`install.sh`, `install.ps1`, `toc.sh`, `toc.ps1`,
 `Install-ToC.*`, `Start-ToC.*`, `startup.sh`) -- the build files (`Makefile`,
-`CMakeLists.txt`, `Dockerfile`, `docker-compose.yml`) and the project
-documents. The live game runs the root `merc` from `area/`.
+`CMakeLists.txt`) and the project documents (`README.md`, `AGENTS.md`,
+`CHANGELOG.md`). Docker's files are in `docker/`, and GitHub's community
+files (`SECURITY.md`, `CONTRIBUTING.md`) in `.github/`. The live game runs
+the root `merc` from `area/`.
 
 Area files use Latin-1. Do not silently convert them to UTF-8. Do not edit
 production player or god files as part of routine development. Hyrule is
@@ -448,8 +451,8 @@ then regenerate and test instead of hand-editing generated output.
 - [Hosting Guide](wiki/hosting-guide.md)
 - [Operator Guide](wiki/operator-guide.md)
 - [Developer Guide](wiki/developer-guide.md)
-- [Contributing](CONTRIBUTING.md)
-- [Security](SECURITY.md)
+- [Contributing](.github/CONTRIBUTING.md)
+- [Security](.github/SECURITY.md)
 - [Area Building Guide](wiki/area-building-guide.md)
 - [In-Game Building Guide](wiki/building-guide.md)
 - [Validation and Area Health](wiki/validation-and-area-health.md)

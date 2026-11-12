@@ -33,8 +33,8 @@ Maintained documentation:
 - `wiki/area-building-guide.md`: authoritative area format reference
 - `wiki/validation-and-area-health.md`: validators and issue codes
 - `wiki/hyrule-area.md`: generated Hyrule design and workflow
-- `SECURITY.md`: actual security boundaries and hardening
-- `CONTRIBUTING.md`: review checklist
+- `.github/SECURITY.md`: actual security boundaries and hardening
+- `.github/CONTRIBUTING.md`: review checklist
 
 ## Non-Negotiable Data Safety
 
@@ -2054,10 +2054,14 @@ there when it exercises code nothing else in the list does.
 ## Fuzzing The Readers
 
 Owner, 2026-11-12: every serious bug of late was in a file reader, so the
-readers are fuzzed. `fuzz/README.md` is the guide. Three libFuzzer targets
-with ASan and UBSan, built by `fuzz/build.sh` (clang and, on Ubuntu,
-`libclang-rt-18-dev`) into `build-fuzz/`, run by `fuzz/run.sh <target>
-<seconds>`:
+readers are fuzzed. `tests/fuzz/README.md` is the guide (the harness moved
+from a root `fuzz/` into `tests/fuzz/` on 2026-11-12). Three libFuzzer
+targets with ASan and UBSan, built by `tests/fuzz/build.sh` (clang and, on
+Ubuntu, `libclang-rt-18-dev`) into the root's `build-fuzz/`, run by
+`tests/fuzz/run.sh <target> <seconds>`. Nothing in it is a test module
+(`discover` and the runner take `tests/test_*.py` only), and
+`scripts/ci/classify.py` treats `tests/fuzz/**` as the harness: a change
+anywhere in it runs the full suite:
 
 - `fuzz_numparse` -- `numparse.c` against an independent 128-bit reference.
 - `fuzz_player` -- a player file through `offline_player_load`, in a booted
@@ -2075,14 +2079,14 @@ The fuzz build compiles the game again with `-DTOC_FUZZ`, which adds only
 `fuzz_world_mark`/`fuzz_world_rewind` to `db.c` (the Make and CMake
 builds never define it). **A loader that writes a new global must have it
 saved and put back there**, or the area target's inputs start meeting
-each other's records. Seeds are synthetic only (`fuzz/make_seeds.py` makes
+each other's records. Seeds are synthetic only (`tests/fuzz/make_seeds.py` makes
 the player ones in a throwaway world; never a real character's file);
-`fuzz/make_dict.py` takes the player dictionary from `save.c`'s keys.
-Every input that ever found something is in `fuzz/regressions/`, and
+`tests/fuzz/make_dict.py` takes the player dictionary from `save.c`'s keys.
+Every input that ever found something is in `tests/fuzz/regressions/`, and
 `tests/test_fuzz_smoke.py` builds the targets, replays them all and fuzzes
 each target for a fixed count of inputs from a fixed seed (so CI cannot
 fail on luck; the search proper is `run.sh`'s) -- CI installs clang on the
-shard that runs it. A new finding's input goes in `fuzz/regressions/`.
+shard that runs it. A new finding's input goes in `tests/fuzz/regressions/`.
 `tests/test_fuzz_findings.py` holds each finding to the real game.
 
 What the first runs found (2026-11-12; about an hour of the player
@@ -3058,7 +3062,7 @@ is still WAKE.
 - Do not provide offensive password-cracking automation from repository data.
   Defensive verification must use explicit authorization and sanitized inputs.
 
-See `SECURITY.md` for mitigation and reporting procedures.
+See `.github/SECURITY.md` for mitigation and reporting procedures.
 
 ## Documentation Rules
 

@@ -199,7 +199,8 @@ class PowerShellRestoreTests(unittest.TestCase):
         (self.root / "scripts").mkdir(parents=True)
         shutil.copy(ROOT / "toc.ps1", self.root / "toc.ps1")
         shutil.copy(ROOT / "scripts" / "toc_common.ps1", self.root / "scripts" / "toc_common.ps1")
-        shutil.copy(ROOT / "docker-compose.yml", self.root / "docker-compose.yml")
+        (self.root / "docker").mkdir()
+        shutil.copy(ROOT / "docker" / "compose.yml", self.root / "docker" / "compose.yml")
         bin_dir = self.tmp / "bin"
         bin_dir.mkdir()
         (bin_dir / "docker").write_text(FAKE_DOCKER)

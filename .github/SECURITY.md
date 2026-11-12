@@ -221,7 +221,7 @@ store it outside Git, limit who can read it, and rotate it when staff access
 changes or exposure is suspected.
 
 A dashboard whose bind is not loopback -- the live Oracle host's, for one
-(see [disaster-recovery.md](wiki/disaster-recovery.md)) -- uses manual token
+(see [disaster-recovery.md](../wiki/disaster-recovery.md)) -- uses manual token
 entry. **Remember on this browser** stores the supplied token in that browser
 profile's local storage; **Lock**, clearing site data, or token rotation
 removes or invalidates that convenience. Never include the token in a URL,
@@ -1258,6 +1258,6 @@ characters until the player changes it.
 - Inspect container user, published ports, bind mounts, and image contents.
 - Verify clean shutdown, backup, restore, and rollback behavior.
 
-See [Hosting Guide](wiki/hosting-guide.md),
-[Operator Guide](wiki/operator-guide.md), and
-[Developer Guide](wiki/developer-guide.md) for implementation procedures.
+See [Hosting Guide](../wiki/hosting-guide.md),
+[Operator Guide](../wiki/operator-guide.md), and
+[Developer Guide](../wiki/developer-guide.md) for implementation procedures.
