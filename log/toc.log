@@ -293185,3 +293185,481 @@ Thu Nov 12 23:16:33 2026 :: Log Trentlin [30477]: k po
 Thu Nov 12 23:16:37 2026 :: Log Trentlin [30477]: fists
 Thu Nov 12 23:16:39 2026 :: Log Alaric [13012]: n
 Thu Nov 12 23:16:39 2026 :: Log Alaric [13008]: arrived (West shore of Crystalmir Lake) from 13012
+Thu Nov 12 23:16:46 2026 :: Log Trentlin [30477]: fists
+Thu Nov 12 23:16:46 2026 :: Log Trentlin [30477]: killed a pols voice
+Thu Nov 12 23:16:46 2026 :: Log Trentlin [30477]: coin +98 silver
+Thu Nov 12 23:16:46 2026 :: Log Trentlin [30477]: coin +295 copper
+Thu Nov 12 23:16:46 2026 :: Log Trentlin [30477]: coin +37 gold
+Thu Nov 12 23:16:55 2026 :: Treasure goblin: vanished from room 20565 (The Tree House, emerald.are) (too long in one area).
+Thu Nov 12 23:16:55 2026 :: Log Trentlin [30477]: l in co
+Thu Nov 12 23:16:55 2026 :: Log Trentlin [30477]: get key
+Thu Nov 12 23:16:56 2026 :: Log Alaric [13008]: n
+Thu Nov 12 23:16:56 2026 :: Log Alaric [13009]: arrived (Path along the Lake) from 13008
+Thu Nov 12 23:16:56 2026 :: Log Trentlin [30477]: l
+Thu Nov 12 23:16:57 2026 :: Log Alaric [13009]: e
+Thu Nov 12 23:16:57 2026 :: Log Alaric [13006]: arrived (North shore of Crystalmir Lake) from 13009
+Thu Nov 12 23:16:58 2026 :: Log Alaric [13006]: e
+Thu Nov 12 23:16:58 2026 :: Log Alaric [13007]: arrived (Path along lake) from 13006
+Thu Nov 12 23:16:59 2026 :: Log Alaric [13007]: n
+Thu Nov 12 23:16:59 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13007
+Thu Nov 12 23:17:00 2026 :: Log Alaric [13013]: w
+Thu Nov 12 23:17:00 2026 :: Log Alaric [13014]: arrived (Northfields) from 13013
+Thu Nov 12 23:17:01 2026 :: Log Alaric [13014]: e
+Thu Nov 12 23:17:01 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13014
+Thu Nov 12 23:17:01 2026 :: Log Alaric [13013]: e
+Thu Nov 12 23:17:02 2026 :: Log Trentlin [30477]: bomb north
+Thu Nov 12 23:17:03 2026 :: Log Trentlin [30477]: n
+Thu Nov 12 23:17:03 2026 :: Log Trentlin [30481]: arrived (Level 5: Grey Brick Fireside) from 30477
+Thu Nov 12 23:17:04 2026 :: Log Alaric [13013]: n
+Thu Nov 12 23:17:04 2026 :: Log Alaric [13036]: arrived (Northfields) from 13013
+Thu Nov 12 23:17:04 2026 :: Log Alaric [13036]: e
+Thu Nov 12 23:17:04 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13036
+Thu Nov 12 23:17:05 2026 :: Log Alaric [13013]: n
+Thu Nov 12 23:17:05 2026 :: Log Alaric [13036]: arrived (Northfields) from 13013
+Thu Nov 12 23:17:06 2026 :: Log Alaric [13036]: e
+Thu Nov 12 23:17:06 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13036
+Thu Nov 12 23:17:06 2026 :: Log Alaric [13013]: e
+Thu Nov 12 23:17:07 2026 :: Log Alaric [13013]: n
+Thu Nov 12 23:17:07 2026 :: Log Alaric [13036]: arrived (Northfields) from 13013
+Thu Nov 12 23:17:07 2026 :: Log Alaric [13036]: n
+Thu Nov 12 23:17:07 2026 :: Log Alaric [13037]: arrived (Northfields) from 13036
+Thu Nov 12 23:17:08 2026 :: Log Trentlin [30481]: open west
+Thu Nov 12 23:17:09 2026 :: Log Trentlin [30481]: w
+Thu Nov 12 23:17:09 2026 :: Log Alaric [13037]: s
+Thu Nov 12 23:17:09 2026 :: Log Alaric [13039]: arrived (A Farmer's House) from 13037
+Thu Nov 12 23:17:10 2026 :: Log Trentlin [30481]: s
+Thu Nov 12 23:17:10 2026 :: Log Trentlin [30477]: arrived (Level 5: Echoing Chamber) from 30481
+Thu Nov 12 23:17:10 2026 :: Log Trentlin [30477]: w
+Thu Nov 12 23:17:10 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30477
+Thu Nov 12 23:17:10 2026 :: Log Trentlin [30476]: n
+Thu Nov 12 23:17:10 2026 :: Log Trentlin [30480]: arrived (Level 5: Embalmers' Hall) from 30476
+Thu Nov 12 23:17:11 2026 :: Log Alaric [13039]: oe
+Thu Nov 12 23:17:11 2026 :: Log Alaric [13039]: e
+Thu Nov 12 23:17:13 2026 :: Log Alaric [13039]: kill fa
+Thu Nov 12 23:17:13 2026 :: Log Alaric [13039]: killed Farmers guarddog
+Thu Nov 12 23:17:13 2026 :: Log Alaric [13039]: coin +3 silver
+Thu Nov 12 23:17:13 2026 :: Log Alaric [13039]: coin +12 copper
+Thu Nov 12 23:17:13 2026 :: Log Trentlin [30480]: con g
+Thu Nov 12 23:17:15 2026 :: Log Trentlin [30480]: k g
+Thu Nov 12 23:17:17 2026 :: Log Alaric [13039]: l i cor
+Thu Nov 12 23:17:20 2026 :: Log Alaric [13039]: get all cor
+Thu Nov 12 23:17:21 2026 :: Log Alaric [13039]: unl east
+Thu Nov 12 23:17:23 2026 :: Log Alaric [13039]: open east
+Thu Nov 12 23:17:23 2026 :: Log Alaric [13039]: e
+Thu Nov 12 23:17:23 2026 :: Log Alaric [13040]: arrived (Living Room) from 13039
+Thu Nov 12 23:17:27 2026 :: Log Alaric [13040]: u
+Thu Nov 12 23:17:27 2026 :: Log Alaric [13041]: arrived (Top of Stairs) from 13040
+Thu Nov 12 23:17:29 2026 :: Log Alaric [13041]: ex
+Thu Nov 12 23:17:30 2026 :: Log Alaric [13041]: e
+Thu Nov 12 23:17:30 2026 :: Log Alaric [13043]: arrived (Kids Room) from 13041
+Thu Nov 12 23:17:31 2026 :: Log Trentlin [30480]: killed a gibdo
+Thu Nov 12 23:17:31 2026 :: Log Trentlin [30480]: coin +111 silver
+Thu Nov 12 23:17:31 2026 :: Log Trentlin [30480]: coin +64 copper
+Thu Nov 12 23:17:31 2026 :: Log Trentlin [30480]: coin +6 gold
+Thu Nov 12 23:17:31 2026 :: Log Trentlin [30480]: l in co
+Thu Nov 12 23:17:32 2026 :: Log Alaric [13043]: open south
+Thu Nov 12 23:17:32 2026 :: Log Trentlin [30480]: n
+Thu Nov 12 23:17:32 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30480
+Thu Nov 12 23:17:33 2026 :: Log Alaric [13043]: s
+Thu Nov 12 23:17:33 2026 :: Log Alaric [13082]: arrived (Kids Closet.) from 13043
+Thu Nov 12 23:17:35 2026 :: Log Trentlin [30483]: e
+Thu Nov 12 23:17:35 2026 :: Log Trentlin [30484]: arrived (Level 5: Gray Junction) from 30483
+Thu Nov 12 23:17:35 2026 :: Log Alaric [13082]: open south
+Thu Nov 12 23:17:36 2026 :: Log Alaric [13082]: s
+Thu Nov 12 23:17:36 2026 :: Log Alaric [13401]: arrived (Stone Archway) from 13082
+Thu Nov 12 23:17:36 2026 :: Log Trentlin [30484]: n
+Thu Nov 12 23:17:36 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30484
+Thu Nov 12 23:17:38 2026 :: Log Trentlin [30486]: n
+Thu Nov 12 23:17:38 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30486
+Thu Nov 12 23:17:38 2026 :: Log Trentlin [30488]: n
+Thu Nov 12 23:17:38 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30488
+Thu Nov 12 23:17:39 2026 :: Log Alaric [13401]: w
+Thu Nov 12 23:17:39 2026 :: Log Alaric [13402]: arrived (Ancient Room) from 13401
+Thu Nov 12 23:17:40 2026 :: Log Alaric [13402]: ex
+Thu Nov 12 23:17:40 2026 :: Log Trentlin [30492]: get key
+Thu Nov 12 23:17:41 2026 :: Log Trentlin [30492]: w
+Thu Nov 12 23:17:42 2026 :: Log Alaric [13402]: d
+Thu Nov 12 23:17:42 2026 :: Log Alaric [13403]: arrived (Dark Stairway) from 13402
+Thu Nov 12 23:17:44 2026 :: Log Alaric [13403]: steel
+Thu Nov 12 23:17:44 2026 :: Log Trentlin [30492]: unlock west
+Thu Nov 12 23:17:44 2026 :: Log Trentlin [30492]: w
+Thu Nov 12 23:17:46 2026 :: Log Trentlin [30492]: open west
+Thu Nov 12 23:17:46 2026 :: Log Trentlin [30492]: w
+Thu Nov 12 23:17:46 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30492
+Thu Nov 12 23:17:47 2026 :: Log Trentlin [30491]: w
+Thu Nov 12 23:17:47 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30491
+Thu Nov 12 23:17:48 2026 :: Log Alaric [13403]: iron
+Thu Nov 12 23:17:51 2026 :: Log Trentlin [30490]: open west
+Thu Nov 12 23:17:54 2026 :: Log Trentlin [30490]: unlock west
+Thu Nov 12 23:17:55 2026 :: Log Trentlin [30490]: open west
+Thu Nov 12 23:17:55 2026 :: Log Trentlin [30490]: w
+Thu Nov 12 23:17:55 2026 :: Log Trentlin [30489]: arrived (Level 5: Digdogger's Den) from 30490
+Thu Nov 12 23:17:59 2026 :: Log Alaric [13403]: w
+Thu Nov 12 23:17:59 2026 :: Log Alaric [13404]: arrived (Landing) from 13403
+Thu Nov 12 23:18:01 2026 :: Log Alaric [13404]: scan
+Thu Nov 12 23:18:02 2026 :: Log Alaric [13404]: ex
+Thu Nov 12 23:18:03 2026 :: Log Alaric [13404]: ow
+Thu Nov 12 23:18:04 2026 :: Log Alaric [13404]: ex
+Thu Nov 12 23:18:05 2026 :: Log Alaric [13404]: w
+Thu Nov 12 23:18:05 2026 :: Log Alaric [13405]: arrived (Gateway to Hell) from 13404
+Thu Nov 12 23:18:06 2026 :: Log Trentlin [30489]: con dig
+Thu Nov 12 23:18:07 2026 :: Log Alaric [13405]: ex
+Thu Nov 12 23:18:08 2026 :: Log Alaric [13405]: scan
+Thu Nov 12 23:18:11 2026 :: Log Alaric [13405]: w
+Thu Nov 12 23:18:11 2026 :: Log Alaric [13406]: arrived (Hall of the Damned) from 13405
+Thu Nov 12 23:18:13 2026 :: Log Alaric [13406]: w
+Thu Nov 12 23:18:13 2026 :: Log Alaric [13407]: arrived (Hall of the Damned) from 13406
+Thu Nov 12 23:18:14 2026 :: Log Trentlin [30489]: play recorder
+Thu Nov 12 23:18:14 2026 :: Log Alaric [13407]: w
+Thu Nov 12 23:18:14 2026 :: Log Alaric [13408]: arrived (Hall of the Damned) from 13407
+Thu Nov 12 23:18:15 2026 :: Log Alaric [13408]: ex
+Thu Nov 12 23:18:17 2026 :: Log Alaric [13408]: s
+Thu Nov 12 23:18:17 2026 :: Log Alaric [13423]: arrived (Room of Lost Souls) from 13408
+Thu Nov 12 23:18:17 2026 :: Log Trentlin [30489]: play recorder
+Thu Nov 12 23:18:18 2026 :: Log Alaric [13423]: e
+Thu Nov 12 23:18:18 2026 :: Log Alaric [13424]: arrived (Room of Lost Souls) from 13423
+Thu Nov 12 23:18:19 2026 :: Log Alaric [13424]: ex
+Thu Nov 12 23:18:20 2026 :: Log Alaric [13424]: e
+Thu Nov 12 23:18:20 2026 :: Log Alaric [13425]: arrived (Pit of Fire) from 13424
+Thu Nov 12 23:18:20 2026 :: Log Alaric [13425]: ex
+Thu Nov 12 23:18:22 2026 :: Log Trentlin [30489]: play recorder
+Thu Nov 12 23:18:22 2026 :: Log Trentlin [30489]: con dig
+Thu Nov 12 23:18:23 2026 :: Log Alaric [13425]: e
+Thu Nov 12 23:18:23 2026 :: Log Alaric [13426]: arrived (Blackened Hallway) from 13425
+Thu Nov 12 23:18:24 2026 :: Log Alaric [13426]: ex
+Thu Nov 12 23:18:24 2026 :: Log Trentlin [30489]: l
+Thu Nov 12 23:18:26 2026 :: Log Alaric [13426]: e
+Thu Nov 12 23:18:26 2026 :: Log Alaric [13427]: arrived (Blackened Hallway) from 13426
+Thu Nov 12 23:18:26 2026 :: Log Alaric [13427]: ex
+Thu Nov 12 23:18:29 2026 :: Log Alaric [13427]: e
+Thu Nov 12 23:18:29 2026 :: Log Alaric [13428]: arrived (Blood Room) from 13427
+Thu Nov 12 23:18:29 2026 :: Log Trentlin [30489]: quaff prot
+Thu Nov 12 23:18:30 2026 :: Log Alaric [13428]: ex
+Thu Nov 12 23:18:31 2026 :: Log Alaric [13428]: e
+Thu Nov 12 23:18:31 2026 :: Log Alaric [13429]: arrived (Living Walls) from 13428
+Thu Nov 12 23:18:32 2026 :: Log Alaric [13429]: ex
+Thu Nov 12 23:18:32 2026 :: Log Trentlin [30489]: quaff opaq
+Thu Nov 12 23:18:33 2026 :: Log Trentlin [30489]: i
+Thu Nov 12 23:18:34 2026 :: Log Alaric [13429]: e
+Thu Nov 12 23:18:34 2026 :: Log Alaric [13430]: arrived (Skeleton Factory) from 13429
+Thu Nov 12 23:18:34 2026 :: Log Alaric [13430]: ex
+Thu Nov 12 23:18:36 2026 :: Log Alaric [13430]: n
+Thu Nov 12 23:18:36 2026 :: Log Alaric [13420]: arrived (Fountain of Blood.) from 13430
+Thu Nov 12 23:18:36 2026 :: Log Alaric [13420]: ex
+Thu Nov 12 23:18:37 2026 :: Log Trentlin [30489]: eat gua
+Thu Nov 12 23:18:37 2026 :: Log Alaric [13420]: w
+Thu Nov 12 23:18:37 2026 :: Log Alaric [13419]: arrived (Room full of Body Parts.) from 13420
+Thu Nov 12 23:18:38 2026 :: Log Alaric [13419]: e
+Thu Nov 12 23:18:38 2026 :: Log Alaric [13420]: arrived (Fountain of Blood.) from 13419
+Thu Nov 12 23:18:38 2026 :: Log Alaric [13420]: n
+Thu Nov 12 23:18:39 2026 :: Log Alaric [13420]: s
+Thu Nov 12 23:18:39 2026 :: Log Alaric [13430]: arrived (Skeleton Factory) from 13420
+Thu Nov 12 23:18:40 2026 :: Log Alaric [13430]: w
+Thu Nov 12 23:18:40 2026 :: Log Alaric [13429]: arrived (Living Walls) from 13430
+Thu Nov 12 23:18:40 2026 :: Log Alaric [13429]: w
+Thu Nov 12 23:18:40 2026 :: Log Alaric [13428]: arrived (Blood Room) from 13429
+Thu Nov 12 23:18:40 2026 :: Log Alaric [13428]: w
+Thu Nov 12 23:18:40 2026 :: Log Alaric [13427]: arrived (Blackened Hallway) from 13428
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13427]: w
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13426]: arrived (Blackened Hallway) from 13427
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13426]: w
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13425]: arrived (Pit of Fire) from 13426
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13425]: w
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13424]: arrived (Room of Lost Souls) from 13425
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13424]: w
+Thu Nov 12 23:18:41 2026 :: Log Alaric [13423]: arrived (Room of Lost Souls) from 13424
+Thu Nov 12 23:18:42 2026 :: Log Alaric [13423]: w
+Thu Nov 12 23:18:42 2026 :: Log Alaric [13422]: arrived (Ancient Room) from 13423
+Thu Nov 12 23:18:43 2026 :: Log Alaric [13422]: n
+Thu Nov 12 23:18:43 2026 :: Log Alaric [13409]: arrived (Hall of the Damned) from 13422
+Thu Nov 12 23:18:43 2026 :: Log Trentlin [30489]: k di
+Thu Nov 12 23:18:45 2026 :: Log Alaric [13409]: ex
+Thu Nov 12 23:18:47 2026 :: Log Trentlin [30489]: fists
+Thu Nov 12 23:18:47 2026 :: Log Alaric [13409]: w
+Thu Nov 12 23:18:47 2026 :: Log Alaric [13410]: arrived (Hall of the Damned) from 13409
+Thu Nov 12 23:18:48 2026 :: Log Alaric [13410]: n
+Thu Nov 12 23:18:48 2026 :: Log Alaric [13411]: arrived (Mural of the Dead) from 13410
+Thu Nov 12 23:18:49 2026 :: Log Alaric [13411]: e
+Thu Nov 12 23:18:49 2026 :: Log Alaric [13412]: arrived (Living Walls) from 13411
+Thu Nov 12 23:18:51 2026 :: Log Alaric [13412]: e
+Thu Nov 12 23:18:51 2026 :: Log Alaric [13413]: arrived (Trapped souls) from 13412
+Thu Nov 12 23:18:51 2026 :: Trentlin killed by Digdogger at 30489
+Thu Nov 12 23:18:51 2026 :: Snapshot of Trentlin taken before prepenalty: Trentlin.20261112_231851.prepenalty (PRESTORE Trentlin to see it).
+Thu Nov 12 23:18:51 2026 :: Snapshot of Trentlin taken before death: Trentlin.20261112_231851.death (PRESTORE Trentlin to see it).
+Thu Nov 12 23:18:51 2026 :: Log Trentlin [30489]: died to Digdogger
+Thu Nov 12 23:18:51 2026 :: Log Trentlin [4216]: arrived (Death room.) from 30489
+Thu Nov 12 23:18:51 2026 :: Log Alaric [13413]: e
+Thu Nov 12 23:18:51 2026 :: Log Alaric [13414]: arrived (Tortured Beings) from 13413
+Thu Nov 12 23:18:52 2026 :: Log Alaric [13414]: e
+Thu Nov 12 23:18:52 2026 :: Log Alaric [13415]: arrived (Gluttony) from 13414
+Thu Nov 12 23:18:52 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:53 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:53 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:53 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:53 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:54 2026 :: Log Alaric [13415]: e
+Thu Nov 12 23:18:54 2026 :: Log Alaric [13416]: arrived (Greed) from 13415
+Thu Nov 12 23:18:54 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:54 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:54 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:54 2026 :: Log Trentlin [4216]: flee
+Thu Nov 12 23:18:55 2026 :: Log Alaric [13416]: n
+Thu Nov 12 23:18:56 2026 :: Log Alaric [13416]: oe
+Thu Nov 12 23:18:57 2026 :: Log Alaric [13416]: ex
+Thu Nov 12 23:18:58 2026 :: Log Trentlin [4216]: wake
+Thu Nov 12 23:18:58 2026 :: Log Trentlin [4216]: l
+Thu Nov 12 23:18:58 2026 :: Log Alaric [13416]: e
+Thu Nov 12 23:18:58 2026 :: Log Alaric [13417]: arrived (Bedroom.) from 13416
+Thu Nov 12 23:18:59 2026 :: Log Trentlin [4216]: d
+Thu Nov 12 23:18:59 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4216
+Thu Nov 12 23:18:59 2026 :: Log Alaric [13417]: w
+Thu Nov 12 23:18:59 2026 :: Log Alaric [13416]: arrived (Greed) from 13417
+Thu Nov 12 23:19:00 2026 :: Log Alaric [13416]: w
+Thu Nov 12 23:19:00 2026 :: Log Alaric [13415]: arrived (Gluttony) from 13416
+Thu Nov 12 23:19:00 2026 :: Log Trentlin [4208]: e
+Thu Nov 12 23:19:00 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:19:01 2026 :: Log Alaric [13415]: w
+Thu Nov 12 23:19:01 2026 :: Log Alaric [13414]: arrived (Tortured Beings) from 13415
+Thu Nov 12 23:19:01 2026 :: Log Alaric [13414]: w
+Thu Nov 12 23:19:01 2026 :: Log Alaric [13413]: arrived (Trapped souls) from 13414
+Thu Nov 12 23:19:01 2026 :: Log Trentlin [4207]: n
+Thu Nov 12 23:19:01 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4207
+Thu Nov 12 23:19:01 2026 :: Log Trentlin [4204]: n
+Thu Nov 12 23:19:01 2026 :: Log Trentlin [4211]: arrived (Entrance to the inner Sanctum.) from 4204
+Thu Nov 12 23:19:01 2026 :: Log Alaric [13413]: s
+Thu Nov 12 23:19:01 2026 :: Log Alaric [13408]: arrived (Hall of the Damned) from 13413
+Thu Nov 12 23:19:02 2026 :: Log Alaric [13408]: w
+Thu Nov 12 23:19:02 2026 :: Log Alaric [13409]: arrived (Hall of the Damned) from 13408
+Thu Nov 12 23:19:03 2026 :: Log Alaric [13409]: d
+Thu Nov 12 23:19:03 2026 :: Log Alaric [13421]: arrived (Bloody Stairway.) from 13409
+Thu Nov 12 23:19:04 2026 :: Log Trentlin [4211]: s
+Thu Nov 12 23:19:04 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4211
+Thu Nov 12 23:19:04 2026 :: Log Alaric [13421]: d
+Thu Nov 12 23:19:04 2026 :: Log Alaric [13431]: arrived (Bottom of Stairway) from 13421
+Thu Nov 12 23:19:04 2026 :: Log Trentlin [4204]: e
+Thu Nov 12 23:19:04 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4204
+Thu Nov 12 23:19:04 2026 :: Log Trentlin [4203]: n
+Thu Nov 12 23:19:04 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Thu Nov 12 23:19:05 2026 :: Log Trentlin [4210]: n
+Thu Nov 12 23:19:05 2026 :: Log Trentlin [4210]: n
+Thu Nov 12 23:19:05 2026 :: Log Alaric [13431]: e
+Thu Nov 12 23:19:05 2026 :: Log Alaric [13432]: arrived (Stone Hall) from 13431
+Thu Nov 12 23:19:05 2026 :: Log Trentlin [4210]: sleep
+Thu Nov 12 23:19:06 2026 :: Log Alaric [13432]: s
+Thu Nov 12 23:19:06 2026 :: Log Alaric [13442]: arrived (Stone Hall) from 13432
+Thu Nov 12 23:19:07 2026 :: Log Alaric [13442]: e
+Thu Nov 12 23:19:07 2026 :: Log Alaric [13443]: arrived (Stone Hall) from 13442
+Thu Nov 12 23:19:09 2026 :: Log Alaric [13443]: on
+Thu Nov 12 23:19:09 2026 :: Log Alaric [13443]: ex
+Thu Nov 12 23:19:10 2026 :: Log Alaric [13443]: n
+Thu Nov 12 23:19:10 2026 :: Log Alaric [13433]: arrived (Cell) from 13443
+Thu Nov 12 23:19:11 2026 :: Log Alaric [13433]: s
+Thu Nov 12 23:19:11 2026 :: Log Alaric [13443]: arrived (Stone Hall) from 13433
+Thu Nov 12 23:19:11 2026 :: Log Trentlin [4210]: i
+Thu Nov 12 23:19:11 2026 :: Log Alaric [13443]: e
+Thu Nov 12 23:19:11 2026 :: Log Alaric [13444]: arrived (Stone Hall) from 13443
+Thu Nov 12 23:19:12 2026 :: Log Alaric [13444]: n
+Thu Nov 12 23:19:12 2026 :: Log Alaric [13434]: arrived (Stone Hall) from 13444
+Thu Nov 12 23:19:13 2026 :: Log Alaric [13434]: e
+Thu Nov 12 23:19:13 2026 :: Log Alaric [13435]: arrived (Stone Hall) from 13434
+Thu Nov 12 23:19:14 2026 :: Log Alaric [13435]: os
+Thu Nov 12 23:19:15 2026 :: Log Alaric [13435]: ex
+Thu Nov 12 23:19:16 2026 :: Log Alaric [13435]: s
+Thu Nov 12 23:19:16 2026 :: Log Alaric [13445]: arrived (Cell) from 13435
+Thu Nov 12 23:19:17 2026 :: Log Alaric [13445]: n
+Thu Nov 12 23:19:17 2026 :: Log Alaric [13435]: arrived (Stone Hall) from 13445
+Thu Nov 12 23:19:17 2026 :: Log Alaric [13435]: e
+Thu Nov 12 23:19:17 2026 :: Log Alaric [13436]: arrived (Stone Hall) from 13435
+Thu Nov 12 23:19:19 2026 :: Log Alaric [13436]: s
+Thu Nov 12 23:19:19 2026 :: Log Alaric [13446]: arrived (Stone Hall) from 13436
+Thu Nov 12 23:19:20 2026 :: Log Alaric [13446]: e
+Thu Nov 12 23:19:20 2026 :: Log Alaric [13447]: arrived (Stone Hall) from 13446
+Thu Nov 12 23:19:21 2026 :: Log Alaric [13447]: on
+Thu Nov 12 23:19:22 2026 :: Log Alaric [13447]: ex
+Thu Nov 12 23:19:22 2026 :: Log Alaric [13447]: n
+Thu Nov 12 23:19:22 2026 :: Log Alaric [13437]: arrived (Cell) from 13447
+Thu Nov 12 23:19:23 2026 :: Log Alaric [13437]: s
+Thu Nov 12 23:19:23 2026 :: Log Alaric [13447]: arrived (Stone Hall) from 13437
+Thu Nov 12 23:19:24 2026 :: Log Alaric [13447]: e
+Thu Nov 12 23:19:24 2026 :: Log Alaric [13448]: arrived (Stone Hall) from 13447
+Thu Nov 12 23:19:24 2026 :: Log Trentlin [4210]: go hey dude, may need a hand if you have a moment
+Thu Nov 12 23:19:28 2026 :: Log Alaric [13448]: n
+Thu Nov 12 23:19:28 2026 :: Log Alaric [13438]: arrived (Stone Hall) from 13448
+Thu Nov 12 23:19:29 2026 :: Log Trentlin [4210]: gr
+Thu Nov 12 23:19:31 2026 :: Log Alaric [13438]: gos What's up?
+Thu Nov 12 23:19:32 2026 :: Log Alaric [13438]: ex
+Thu Nov 12 23:19:33 2026 :: Log Alaric [13438]: w
+Thu Nov 12 23:19:33 2026 :: Log Alaric [13448]: arrived (Stone Hall) from 13438
+Thu Nov 12 23:19:34 2026 :: Log Alaric [13448]: e
+Thu Nov 12 23:19:35 2026 :: Log Alaric [13448]: n
+Thu Nov 12 23:19:35 2026 :: Log Alaric [13438]: arrived (Stone Hall) from 13448
+Thu Nov 12 23:19:36 2026 :: Log Alaric [13438]: e
+Thu Nov 12 23:19:36 2026 :: Log Alaric [13439]: arrived (Stone Hall) from 13438
+Thu Nov 12 23:19:37 2026 :: Log Alaric [13439]: os
+Thu Nov 12 23:19:37 2026 :: Log Alaric [13439]: oe
+Thu Nov 12 23:19:38 2026 :: Log Alaric [13439]: ex
+Thu Nov 12 23:19:40 2026 :: Log Alaric [13439]: e
+Thu Nov 12 23:19:40 2026 :: Log Alaric [13440]: arrived (Cell) from 13439
+Thu Nov 12 23:19:40 2026 :: Log Alaric [13440]: w
+Thu Nov 12 23:19:40 2026 :: Log Alaric [13439]: arrived (Stone Hall) from 13440
+Thu Nov 12 23:19:41 2026 :: Log Alaric [13439]: s
+Thu Nov 12 23:19:41 2026 :: Log Alaric [13449]: arrived (Cell) from 13439
+Thu Nov 12 23:19:41 2026 :: Log Alaric [13449]: n
+Thu Nov 12 23:19:41 2026 :: Log Alaric [13439]: arrived (Stone Hall) from 13449
+Thu Nov 12 23:19:42 2026 :: Log Alaric [13439]: d
+Thu Nov 12 23:19:42 2026 :: Log Alaric [13450]: arrived (Hot Stairs) from 13439
+Thu Nov 12 23:19:43 2026 :: Log Alaric [13450]: d
+Thu Nov 12 23:19:43 2026 :: Log Alaric [13461]: arrived (Fire Mural) from 13450
+Thu Nov 12 23:19:44 2026 :: Log Alaric [13461]: s
+Thu Nov 12 23:19:44 2026 :: Log Alaric [13471]: arrived (Hot Hall) from 13461
+Thu Nov 12 23:19:46 2026 :: Log Alaric [13471]: w
+Thu Nov 12 23:19:46 2026 :: Log Alaric [13470]: arrived (Lake of Fire) from 13471
+Thu Nov 12 23:19:47 2026 :: Log Alaric [13470]: scan
+Thu Nov 12 23:19:48 2026 :: Log Alaric [13470]: ex
+Thu Nov 12 23:19:49 2026 :: Log Alaric [13470]: w
+Thu Nov 12 23:19:49 2026 :: Log Alaric [13469]: arrived (Wall of Fire) from 13470
+Thu Nov 12 23:19:51 2026 :: Log Alaric [13469]: w
+Thu Nov 12 23:19:51 2026 :: Log Alaric [13469]: n
+Thu Nov 12 23:19:51 2026 :: Log Alaric [13459]: arrived (Hall of Fire) from 13469
+Thu Nov 12 23:19:52 2026 :: Log Alaric [13459]: ex
+Thu Nov 12 23:19:53 2026 :: Log Alaric [13459]: w
+Thu Nov 12 23:19:53 2026 :: Log Alaric [13458]: arrived (Hall of Fire) from 13459
+Thu Nov 12 23:19:53 2026 :: Log Alaric [13458]: ex
+Thu Nov 12 23:19:54 2026 :: Log Alaric [13458]: s
+Thu Nov 12 23:19:54 2026 :: Log Alaric [13468]: arrived (Hall of Fire) from 13458
+Thu Nov 12 23:19:55 2026 :: Log Trentlin [4210]: go lol the digdogger in hyrule wrecked me with his spines
+Thu Nov 12 23:20:00 2026 :: Log Alaric [13468]: n
+Thu Nov 12 23:20:00 2026 :: Log Alaric [13458]: arrived (Hall of Fire) from 13468
+Thu Nov 12 23:20:01 2026 :: Log Alaric [13458]: e
+Thu Nov 12 23:20:01 2026 :: Log Alaric [13459]: arrived (Hall of Fire) from 13458
+Thu Nov 12 23:20:02 2026 :: Log Alaric [13459]: e
+Thu Nov 12 23:20:02 2026 :: Log Alaric [13460]: arrived (Fire Pits of Hades) from 13459
+Thu Nov 12 23:20:04 2026 :: Log Alaric [13460]: s
+Thu Nov 12 23:20:04 2026 :: Log Alaric [13470]: arrived (Lake of Fire) from 13460
+Thu Nov 12 23:20:05 2026 :: Log Alaric [13470]: e
+Thu Nov 12 23:20:05 2026 :: Log Alaric [13471]: arrived (Hot Hall) from 13470
+Thu Nov 12 23:20:06 2026 :: Log Alaric [13471]: e
+Thu Nov 12 23:20:07 2026 :: Log Alaric [13471]: n
+Thu Nov 12 23:20:07 2026 :: Log Alaric [13461]: arrived (Fire Mural) from 13471
+Thu Nov 12 23:20:07 2026 :: Log Alaric [13461]: ex
+Thu Nov 12 23:20:08 2026 :: Log Alaric [13461]: where homer
+Thu Nov 12 23:20:09 2026 :: Log Alaric [13461]: n
+Thu Nov 12 23:20:10 2026 :: Log Alaric [13461]: l
+Thu Nov 12 23:20:11 2026 :: Log Alaric [13461]: s
+Thu Nov 12 23:20:11 2026 :: Log Alaric [13471]: arrived (Hot Hall) from 13461
+Thu Nov 12 23:20:11 2026 :: Log Alaric [13471]: w
+Thu Nov 12 23:20:11 2026 :: Log Alaric [13470]: arrived (Lake of Fire) from 13471
+Thu Nov 12 23:20:11 2026 :: Log Alaric [13470]: w
+Thu Nov 12 23:20:11 2026 :: Log Alaric [13469]: arrived (Wall of Fire) from 13470
+Thu Nov 12 23:20:12 2026 :: Log Alaric [13469]: w
+Thu Nov 12 23:20:12 2026 :: Log Trentlin [4210]: go last time i died there i had to get all the previous triforces to get back to my corpse in the dungeon it was in
+Thu Nov 12 23:20:13 2026 :: Log Alaric [13469]: n
+Thu Nov 12 23:20:13 2026 :: Log Alaric [13459]: arrived (Hall of Fire) from 13469
+Thu Nov 12 23:20:13 2026 :: Log Alaric [13459]: w
+Thu Nov 12 23:20:13 2026 :: Log Alaric [13458]: arrived (Hall of Fire) from 13459
+Thu Nov 12 23:20:14 2026 :: Log Alaric [13458]: s
+Thu Nov 12 23:20:14 2026 :: Log Alaric [13468]: arrived (Hall of Fire) from 13458
+Thu Nov 12 23:20:19 2026 :: Log Alaric [13468]: w
+Thu Nov 12 23:20:19 2026 :: Log Alaric [13467]: arrived (Construction Area) from 13468
+Thu Nov 12 23:20:20 2026 :: Log Alaric [13467]: affects off: iron skin
+Thu Nov 12 23:20:25 2026 :: Log Alaric [13467]: gos Ouch. Need a TK?
+Thu Nov 12 23:20:26 2026 :: Log Alaric [13467]: w
+Thu Nov 12 23:20:26 2026 :: Log Alaric [13466]: arrived (Construction Area) from 13467
+Thu Nov 12 23:20:27 2026 :: Log Alaric [13466]: ex
+Thu Nov 12 23:20:28 2026 :: Log Alaric [13466]: w
+Thu Nov 12 23:20:28 2026 :: Log Alaric [13465]: arrived (Construction Area) from 13466
+Thu Nov 12 23:20:28 2026 :: Log Alaric [13465]: ex
+Thu Nov 12 23:20:29 2026 :: Log Alaric [13465]: w
+Thu Nov 12 23:20:29 2026 :: Log Alaric [13464]: arrived (Hall of Fire) from 13465
+Thu Nov 12 23:20:30 2026 :: Log Alaric [13464]: ex
+Thu Nov 12 23:20:31 2026 :: Log Alaric [13464]: n
+Thu Nov 12 23:20:31 2026 :: Log Alaric [13454]: arrived (Hall of Fire) from 13464
+Thu Nov 12 23:20:33 2026 :: Log Alaric [13454]: w
+Thu Nov 12 23:20:33 2026 :: Log Alaric [13453]: arrived (Hall of Fire) from 13454
+Thu Nov 12 23:20:34 2026 :: Log Trentlin [4210]: go that would be amazing
+Thu Nov 12 23:20:35 2026 :: Log Alaric [13453]: w
+Thu Nov 12 23:20:35 2026 :: Log Alaric [13452]: arrived (Stone Arch) from 13453
+Thu Nov 12 23:20:36 2026 :: Log Alaric [13452]: os
+Thu Nov 12 23:20:37 2026 :: Log Alaric [13452]: ex
+Thu Nov 12 23:20:38 2026 :: Log Alaric [13452]: s
+Thu Nov 12 23:20:38 2026 :: Log Alaric [13462]: arrived (Foreman's Office) from 13452
+Thu Nov 12 23:20:38 2026 :: Log Alaric [13462]: ex
+Thu Nov 12 23:20:39 2026 :: Log Trentlin [4210]: noloot
+Thu Nov 12 23:20:41 2026 :: Log Alaric [13462]: fi
+Thu Nov 12 23:20:43 2026 :: Log Trentlin [4210]: gro
+Thu Nov 12 23:20:46 2026 :: Log Alaric [13462]: look fore
+Thu Nov 12 23:20:51 2026 :: Log Alaric [13462]: gos Sec. Lost in Hell atm trying to do a quest
+Thu Nov 12 23:20:52 2026 :: Log Alaric [13462]: fi
+Thu Nov 12 23:20:58 2026 :: Log Alaric [13462]: fi
+Thu Nov 12 23:21:04 2026 :: Log Alaric [13462]: look
+Thu Nov 12 23:21:05 2026 :: Log Alaric [13462]: n
+Thu Nov 12 23:21:06 2026 :: Log Alaric [13462]: flee
+Thu Nov 12 23:21:06 2026 :: Log Alaric [13452]: arrived (Stone Arch) from 13462
+Thu Nov 12 23:21:09 2026 :: Log Alaric [13452]: ex
+Thu Nov 12 23:21:10 2026 :: Log Alaric [13452]: e
+Thu Nov 12 23:21:10 2026 :: Log Alaric [13453]: arrived (Hall of Fire) from 13452
+Thu Nov 12 23:21:11 2026 :: Log Alaric [13453]: e
+Thu Nov 12 23:21:11 2026 :: Log Alaric [13454]: arrived (Hall of Fire) from 13453
+Thu Nov 12 23:21:12 2026 :: Log Alaric [13454]: s
+Thu Nov 12 23:21:12 2026 :: Log Alaric [13464]: arrived (Hall of Fire) from 13454
+Thu Nov 12 23:21:12 2026 :: Log Trentlin [4210]: gro
+Thu Nov 12 23:21:12 2026 :: Log Alaric [13464]: e
+Thu Nov 12 23:21:12 2026 :: Log Alaric [13465]: arrived (Construction Area) from 13464
+Thu Nov 12 23:21:13 2026 :: Log Alaric [13465]: ex
+Thu Nov 12 23:21:13 2026 :: Log Trentlin [4210]: wake
+Thu Nov 12 23:21:14 2026 :: Log Alaric [13465]: n
+Thu Nov 12 23:21:14 2026 :: Log Alaric [13455]: arrived (Construction Area) from 13465
+Thu Nov 12 23:21:14 2026 :: Log Alaric [13455]: ex
+Thu Nov 12 23:21:15 2026 :: Log Alaric [13455]: e
+Thu Nov 12 23:21:15 2026 :: Log Alaric [13456]: arrived (Construction Area) from 13455
+Thu Nov 12 23:21:17 2026 :: Log Alaric [13456]: e
+Thu Nov 12 23:21:17 2026 :: Log Alaric [13457]: arrived (Construction Area) from 13456
+Thu Nov 12 23:21:18 2026 :: Log Alaric [13457]: ex
+Thu Nov 12 23:21:18 2026 :: Log Alaric [13457]: s
+Thu Nov 12 23:21:18 2026 :: Log Alaric [13467]: arrived (Construction Area) from 13457
+Thu Nov 12 23:21:19 2026 :: Log Alaric [13467]: w
+Thu Nov 12 23:21:19 2026 :: Log Alaric [13466]: arrived (Construction Area) from 13467
+Thu Nov 12 23:21:19 2026 :: Log Alaric [13466]: w
+Thu Nov 12 23:21:19 2026 :: Log Alaric [13465]: arrived (Construction Area) from 13466
+Thu Nov 12 23:21:19 2026 :: Log Alaric [13465]: w
+Thu Nov 12 23:21:19 2026 :: Log Alaric [13464]: arrived (Hall of Fire) from 13465
+Thu Nov 12 23:21:20 2026 :: Log Alaric [13464]: n
+Thu Nov 12 23:21:20 2026 :: Log Alaric [13454]: arrived (Hall of Fire) from 13464
+Thu Nov 12 23:21:20 2026 :: Log Alaric [13454]: w
+Thu Nov 12 23:21:20 2026 :: Log Alaric [13453]: arrived (Hall of Fire) from 13454
+Thu Nov 12 23:21:21 2026 :: Log Alaric [13453]: w
+Thu Nov 12 23:21:21 2026 :: Log Alaric [13452]: arrived (Stone Arch) from 13453
+Thu Nov 12 23:21:21 2026 :: Log Alaric [13452]: d
+Thu Nov 12 23:21:21 2026 :: Log Alaric [13463]: arrived (Cold Stairway) from 13452
+Thu Nov 12 23:21:21 2026 :: Log Trentlin [4210]: sleep
+Thu Nov 12 23:21:23 2026 :: Log Alaric [13463]: d
+Thu Nov 12 23:21:23 2026 :: Log Alaric [13472]: arrived (Icy Landing) from 13463
+Thu Nov 12 23:21:24 2026 :: Log Alaric [13472]: e
+Thu Nov 12 23:21:24 2026 :: Log Alaric [13541]: arrived (Ice Room) from 13472
+Thu Nov 12 23:21:25 2026 :: Log Alaric [13541]: ex
+Thu Nov 12 23:21:26 2026 :: Log Alaric [13541]: e
+Thu Nov 12 23:21:26 2026 :: Log Alaric [13473]: arrived (Ice Room) from 13541
+Thu Nov 12 23:21:26 2026 :: Log Alaric [13473]: ex
+Thu Nov 12 23:21:27 2026 :: Log Alaric [13473]: s
+Thu Nov 12 23:21:27 2026 :: Log Alaric [13483]: arrived (Ice Room) from 13473
+Thu Nov 12 23:21:27 2026 :: Log Alaric [13483]: ex
+Thu Nov 12 23:21:28 2026 :: Log Alaric [13483]: oe
+Thu Nov 12 23:21:29 2026 :: Log Alaric [13483]: ex
+Thu Nov 12 23:21:32 2026 :: Log Alaric [13483]: flee
+Thu Nov 12 23:21:32 2026 :: Log Alaric [13484]: arrived (Meat Locker) from 13483
+Thu Nov 12 23:21:34 2026 :: Log Alaric [13484]: ex
+Thu Nov 12 23:21:35 2026 :: Log Alaric [13484]: e
+Thu Nov 12 23:21:35 2026 :: Log Alaric [13485]: arrived (Meat Locker) from 13484
+Thu Nov 12 23:21:36 2026 :: Log Alaric [13485]: ex
+Thu Nov 12 23:21:36 2026 :: Log Alaric [13485]: n
+Thu Nov 12 23:21:36 2026 :: Log Alaric [13475]: arrived (Meat Locker) from 13485
+Thu Nov 12 23:21:37 2026 :: Log Alaric [13475]: oe
+Thu Nov 12 23:21:38 2026 :: Log Alaric [13475]: e
+Thu Nov 12 23:21:38 2026 :: Log Alaric [13476]: arrived (Penguin Room) from 13475
+Thu Nov 12 23:21:38 2026 :: Log Trentlin [4210]: gr
+Thu Nov 12 23:21:39 2026 :: Log Alaric [13476]: ex
+Thu Nov 12 23:21:43 2026 :: Log Alaric [13476]: flee
+Thu Nov 12 23:21:43 2026 :: Log Alaric [13486]: arrived (Penguin Room) from 13476
+Thu Nov 12 23:21:43 2026 :: Log Alaric [13486]: recal
+Thu Nov 12 23:21:43 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 13486
+Thu Nov 12 23:21:44 2026 :: Log Trentlin [4210]: eq

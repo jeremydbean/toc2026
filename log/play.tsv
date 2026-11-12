@@ -23908,3 +23908,320 @@
 1794525393	cmd	Trentlin	40	30477	hyrule.are	standing	100	0	-	kill	po	A pols voice parries your attack. // Your punch ^^^ DESTROYS ^^^ a pols voice!	-	-
 1794525397	cmd	Trentlin	40	30477	hyrule.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a pols voice! // Your fists of fury scratches a pols voice.	-	+
 1794525399	cmd	Alaric	57	13008	lakes.are	standing	100	0	-	north		West shore of Crystalmir Lake //   The blue of the autumn sky darkens on the deep stillness of the lake. The // soft forests of giant vallenwood border the serene waters on the eastern,	-	+
+1794525406	coin	Trentlin	40	30477	hyrule.are	+9800	loot	fists	corpse of a pols voice	15287313523
+1794525406	coin	Trentlin	40	30477	hyrule.are	+295	loot	fists	corpse of a pols voice	15287313818
+1794525406	coin	Trentlin	40	30477	hyrule.are	+370000	loot	fists	corpse of a pols voice	15287683818
+1794525406	cmd	Trentlin	40	30477	hyrule.are	fighting	85	1	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a pols voice. // Your fists of fury scratches a pols voice.	-	+
+1794525415	cmd	Trentlin	40	30477	hyrule.are	standing	85	0	-	look	in co	Corpse of a pols voice contains: //      Nothing.	-	-
+1794525415	got	Trentlin	40	30477	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794525415	cmd	Trentlin	40	30477	hyrule.are	standing	85	0	-	get	key	You get a small key.	-	-
+1794525416	cmd	Alaric	57	13009	lakes.are	standing	100	0	-	north		Path along the Lake //   You are walking on a path that follows the shore of the lake. // [Exits: north east south west]	-	-
+1794525416	cmd	Trentlin	40	30477	hyrule.are	standing	85	0	-	look		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794525417	cmd	Alaric	57	13006	lakes.are	standing	100	0	-	east		North shore of Crystalmir Lake //   The blue of the autumn sky darkens on the deep stillness of the lake. The // soft forests of giant vallenwood border the serene waters on the eastern,	-	+
+1794525418	cmd	Alaric	57	13007	lakes.are	standing	100	0	-	east		Path along lake //   You are walking along a path that follows the shore of the lake. // [Exits: north south west]	-	-
+1794525419	cmd	Alaric	57	13013	lakes.are	standing	100	0	-	north		Nearfields //   Here, farmers and thief workers tread through fields of grain. The thick // wheat falls smoothly before the flickering scythes.	-	+
+1794525420	cmd	Alaric	57	13014	lakes.are	standing	100	0	-	west		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.	-	+
+1794525421	cmd	Alaric	57	13013	lakes.are	standing	100	0	-	east		Nearfields //   Here, farmers and thief workers tread through fields of grain. The thick // wheat falls smoothly before the flickering scythes.	-	+
+1794525421	cmd	Alaric	57	13013	lakes.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794525422	cmd	Trentlin	40	30477	hyrule.are	standing	85	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794525423	cmd	Trentlin	40	30481	hyrule.are	standing	85	0	-	north		Level 5: Grey Brick Fireside //   Grey brick walls curve gently inward here, and every sound rings back a // moment late, as if the room were listening. Two small fires flicker beside	-	+
+1794525424	cmd	Alaric	57	13036	lakes.are	standing	100	0	-	north		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.	-	+
+1794525424	cmd	Alaric	57	13013	lakes.are	standing	100	0	-	east		Nearfields //   Here, farmers and thief workers tread through fields of grain. The thick // wheat falls smoothly before the flickering scythes.	-	+
+1794525425	cmd	Alaric	57	13036	lakes.are	standing	100	0	-	north		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.	-	+
+1794525426	cmd	Alaric	57	13013	lakes.are	standing	100	0	-	east		Nearfields //   Here, farmers and thief workers tread through fields of grain. The thick // wheat falls smoothly before the flickering scythes.	-	+
+1794525426	cmd	Alaric	57	13013	lakes.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794525427	cmd	Alaric	57	13036	lakes.are	standing	100	0	-	north		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.	-	+
+1794525427	cmd	Alaric	57	13037	lakes.are	standing	100	0	-	north		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.	-	+
+1794525428	cmd	Trentlin	40	30481	hyrule.are	standing	85	0	-	open	west	It's locked.	-	-
+1794525429	cmd	Trentlin	40	30481	hyrule.are	standing	85	0	-	west		The locked is closed.	-	-
+1794525429	cmd	Alaric	57	13039	lakes.are	standing	100	0	-	south		A Farmer's House //   A typical farmers house is here next to the endless fields of grain. // [Exits: north (east)]	-	+
+1794525430	cmd	Trentlin	40	30477	hyrule.are	standing	85	0	-	south		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794525430	cmd	Trentlin	40	30476	hyrule.are	standing	85	0	-	west		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794525430	cmd	Trentlin	40	30480	hyrule.are	standing	85	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794525431	cmd	Alaric	57	13039	lakes.are	standing	100	0	-	open		It's locked.	-	-
+1794525431	cmd	Alaric	57	13039	lakes.are	standing	100	0	-	east		The door is closed.	-	-
+1794525433	coin	Alaric	57	13039	lakes.are	+300	loot	kill	corpse of Farmers guarddog	25888098235
+1794525433	coin	Alaric	57	13039	lakes.are	+12	loot	kill	corpse of Farmers guarddog	25888098247
+1794525433	cmd	Alaric	57	13039	lakes.are	standing	100	10	-	kill	fa	Your punch === OBLITERATES === Farmers guarddog! [-140] // Farmers guarddog is DEAD!! // You receive 0 experience points.	-	+
+1794525433	cmd	Trentlin	40	30480	hyrule.are	standing	85	0	-	consider	g	A gibdo is well below your level. // A gibdo has about as many hit points as you. // Blow for blow, you would need about 5 rounds to bring a gibdo down; it would need about 49 rounds for you.	-	+
+1794525435	cmd	Trentlin	40	30480	hyrule.are	standing	85	0	-	kill	g	A gibdo dodges your attack. // Your punch ^^^ DESTROYS ^^^ a gibdo! // Your punch <<< ERADICATES >>> a gibdo!	-	-
+1794525437	cmd	Alaric	57	13039	lakes.are	standing	100	0	-	look	i cor	Corpse of Farmers guarddog contains: //      house key	-	-
+1794525440	got	Alaric	57	13039	lakes.are	13006	house key	key	1	0	get	corpse of Farmers guarddog
+1794525440	cmd	Alaric	57	13039	lakes.are	standing	100	0	-	get	all cor	You get house key from corpse of Farmers guarddog.	-	-
+1794525441	cmd	Alaric	57	13039	lakes.are	standing	100	0	-	unlock	east	*Click*	-	-
+1794525443	cmd	Alaric	57	13039	lakes.are	standing	100	0	-	open	east	Ok.	-	-
+1794525443	cmd	Alaric	57	13040	lakes.are	standing	100	0	-	east		Living Room //   This is the living room of the farmer. you don't live here. // And you don't know the farmer. Why are you here?	-	+
+1794525447	cmd	Alaric	57	13041	lakes.are	standing	100	0	-	up		Top of Stairs //   You are standing at the top of the stairs. // There is a picture of Grandma on the wall.	-	+
+1794525449	cmd	Alaric	57	13041	lakes.are	standing	100	0	-	exits		Obvious exits: // North - Bedroom // East  - Kids Room	-	+
+1794525450	cmd	Alaric	57	13043	lakes.are	standing	100	0	-	east		Kids Room //   You are standing in the kids bedroom. // There are posters plastered to every inch of wallspace.	-	+
+1794525451	coin	Trentlin	40	30480	hyrule.are	+11100	loot	(violence_update)	corpse of a gibdo	15287694918
+1794525451	coin	Trentlin	40	30480	hyrule.are	+64	loot	(violence_update)	corpse of a gibdo	15287694982
+1794525451	coin	Trentlin	40	30480	hyrule.are	+60000	loot	(violence_update)	corpse of a gibdo	15287754982
+1794525451	cmd	Trentlin	40	30480	hyrule.are	standing	80	0	-	look	in co	Corpse of a gibdo contains: //      Nothing.	-	-
+1794525452	cmd	Alaric	57	13043	lakes.are	standing	100	0	-	open	south	Ok.	-	-
+1794525452	cmd	Trentlin	40	30483	hyrule.are	standing	80	0	-	north		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
+1794525453	cmd	Alaric	57	13082	lakes.are	standing	100	0	-	south		Kids Closet. //   You are standing in the kids closet. There are piles of unwashed laundry // and toys. You see an evil looking book  lying against the south wall.	-	+
+1794525455	cmd	Trentlin	40	30484	hyrule.are	standing	80	0	-	east		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794525455	cmd	Alaric	57	13082	lakes.are	standing	100	0	-	open	south	Ok.	-	-
+1794525456	area	Alaric	57	13401	hell.are	lakes.are	hell.are	65	south
+1794525456	achieved	Alaric	57	13401	hell.are	visit-hell	25	2185	south
+1794525456	cmd	Alaric	57	13401	hell.are	standing	100	0	-	south		                    ACHIEVEMENT EARNED // Stone Archway  +25 points // Pass under the stone archway of the Descent.	-	+
+1794525456	cmd	Trentlin	40	30486	hyrule.are	standing	80	0	-	north		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794525458	cmd	Trentlin	40	30488	hyrule.are	standing	80	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794525458	cmd	Trentlin	40	30492	hyrule.are	standing	80	0	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794525459	cmd	Alaric	57	13402	hell.are	standing	100	0	-	west		Ancient Room //   You are standing in a large stone room. Feels like a crypt. Ancient murals // of Hell and punishment cover the walls.In the middle of the room are stairs	-	+
+1794525460	cmd	Alaric	57	13402	hell.are	standing	100	0	-	exits		Obvious exits: // North - Along the Midgaard river // East  - Stone Archway	-	+
+1794525460	got	Trentlin	40	30492	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794525460	cmd	Trentlin	40	30492	hyrule.are	standing	80	0	-	get	key	You get a small key.	-	-
+1794525461	cmd	Trentlin	40	30492	hyrule.are	standing	80	0	-	west		The locked is closed.	-	-
+1794525462	cmd	Alaric	57	13403	hell.are	standing	100	0	-	down		Dark Stairway //   You are standing at the bottom of  long dark stairway. The smell of // brimstone and sulfur choke you. Screams of pain and terror fill the air.	-	+
+1794525464	cmd	Alaric	57	13403	hell.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794525464	cmd	Trentlin	40	30492	hyrule.are	standing	80	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794525464	cmd	Trentlin	40	30492	hyrule.are	standing	80	0	-	west		The locked is closed.	-	-
+1794525466	cmd	Trentlin	40	30492	hyrule.are	standing	80	0	-	open	west	Ok.	-	-
+1794525466	cmd	Trentlin	40	30491	hyrule.are	standing	80	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794525467	cmd	Trentlin	40	30490	hyrule.are	standing	80	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794525468	cmd	Alaric	57	13403	hell.are	standing	100	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794525471	cmd	Trentlin	40	30490	hyrule.are	standing	80	0	-	open	west	It's locked.	-	-
+1794525474	cmd	Trentlin	40	30490	hyrule.are	standing	80	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794525475	cmd	Trentlin	40	30490	hyrule.are	standing	80	0	-	open	west	Ok.	-	-
+1794525475	cmd	Trentlin	40	30489	hyrule.are	standing	80	0	-	west		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794525479	cmd	Alaric	57	13404	hell.are	standing	100	0	-	west		Landing //   This landing has been scorched as if a large brushfire swept through it. // Bits of ash and burnt vegetation covers everything. The walls and floor are	-	+
+1794525481	cmd	Alaric	57	13404	hell.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794525482	cmd	Alaric	57	13404	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Dark Stairway // West  - Closed gates	-	+
+1794525483	cmd	Alaric	57	13404	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525484	cmd	Alaric	57	13404	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Dark Stairway // West  - Gateway to Hell	-	+
+1794525485	cmd	Alaric	57	13405	hell.are	standing	100	0	-	west		Gateway to Hell //   You stand next to the very gateway of Hell. You are surrounded by  // the sounds of torture and pain. Screams pierce the air and rattle your	-	+
+1794525486	cmd	Trentlin	40	30489	hyrule.are	standing	80	0	-	consider	dig	Digdogger is a little below your level. // Digdogger has many times your hit points. // Blow for blow, you would need about 66 rounds to bring Digdogger down; it would need about 11 rounds for you.	-	+
+1794525487	cmd	Alaric	57	13405	hell.are	standing	100	0	-	exits		Obvious exits: // North - Greed // East  - Landing	-	+
+1794525488	cmd	Alaric	57	13405	hell.are	standing	100	0	-	scan		the gold bar                       -to the North. // the pile of gold coins             -to the North. // skeletal warrior                   -to the South.	-	+
+1794525491	cmd	Alaric	57	13406	hell.are	standing	100	0	-	west		Hall of the Damned //   This hallway is a monument to the millions of damned souls in hell. // The walls are made up of various body parts and other unidentifiable	-	+
+1794525493	cmd	Alaric	57	13407	hell.are	standing	100	0	-	west		Hall of the Damned //   This hallway is a monument to the millions of damned souls in hell. // The walls are made up of various body parts and other unidentifiable	-	+
+1794525494	cmd	Trentlin	40	30489	hyrule.are	standing	80	1	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Digdogger shudders as the sound tears through its defenses!	-	-
+1794525494	cmd	Alaric	57	13408	hell.are	standing	100	0	-	west		Hall of the Damned //   This hallway is a monument to the millions of damned souls in hell. // The walls are made up of various body parts and other unidentifiable	-	+
+1794525495	cmd	Alaric	57	13408	hell.are	standing	100	0	-	exits		Obvious exits: // North - Trapped souls // East  - Hall of the Damned	-	+
+1794525497	cmd	Alaric	57	13423	hell.are	standing	100	0	-	south		Room of Lost Souls //   This looks like a waiting room or sorts. Dust and cobwebs are everywhere. // Wooden benches line the walls. A digital number sign is posted on the wall.	-	+
+1794525497	cmd	Trentlin	40	30489	hyrule.are	standing	80	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Digdogger shudders at the melody and shrinks to a third of its size -- now a blade can bite!	-	-
+1794525498	cmd	Alaric	57	13424	hell.are	standing	100	0	-	east		Room of Lost Souls //   This looks like a waiting room or sorts. Dust and cobwebs are everywhere. // Wooden benches line the walls. A digital number sign is posted on the wall.	-	+
+1794525499	cmd	Alaric	57	13424	hell.are	standing	100	0	-	exits		Obvious exits: // North - Hall of the Damned // East  - Pit of Fire	-	+
+1794525500	cmd	Alaric	57	13425	hell.are	standing	100	0	-	east		Pit of Fire //   You enter a plain stone room with a large fire pit in the center of it. // As you look closer at the pit you realize that hundreds of people are being	-	+
+1794525500	cmd	Alaric	57	13425	hell.are	standing	100	0	-	exits		Obvious exits: // North - Hall of the Damned // East  - Blackened Hallway	-	+
+1794525502	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794525502	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	consider	dig	Digdogger is a little below your level. // Digdogger has many times your hit points. // Blow for blow, you would need about 22 rounds to bring Digdogger down; it would need about 12 rounds for you.	-	+
+1794525503	cmd	Alaric	57	13426	hell.are	standing	100	0	-	east		Blackened Hallway //   This dark hallway looks as if it was made by a lavaworm...All the surfaces // in it are melted and burnt. The smell of brimstone and sulfur fill the air.	-	+
+1794525504	cmd	Alaric	57	13426	hell.are	standing	100	0	-	exits		Obvious exits: // North - Gateway to Hell // East  - Blackened Hallway	-	+
+1794525504	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	look		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794525506	cmd	Alaric	57	13427	hell.are	standing	100	0	-	east		Blackened Hallway //   This dark hallway looks as if it was made by a lavaworm...All the surfaces // in it are melted and burnt. The smell of brimstone and sulfur fill the air.	-	+
+1794525506	cmd	Alaric	57	13427	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Blood Room // West  - Blackened Hallway	-	-
+1794525509	cmd	Alaric	57	13428	hell.are	standing	100	0	-	east		Blood Room //   You enter the room and are immediately assaulted by the smell of rotting // flesh and blood. The walls are covered with the crimson fluid as it runs	-	+
+1794525509	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794525510	cmd	Alaric	57	13428	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Living Walls // West  - Blackened Hallway	-	-
+1794525511	cmd	Alaric	57	13429	hell.are	standing	100	0	-	east		Living Walls //   The walls here actually consist of greying and sinewy flesh - faces, hands, // broken bones, feet, and toes jutting from the surface. You hear low moans	-	+
+1794525512	cmd	Alaric	57	13429	hell.are	standing	100	0	-	exits		Obvious exits: // North - Room full of Body Parts. // East  - Skeleton Factory	-	+
+1794525512	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	quaff	opaq	This liquid is too powerful for you to drink.	-	-
+1794525513	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	inventory		You are carrying: //      (Glowing) Starlight // ( 6) a small key	-	+
+1794525514	cmd	Alaric	57	13430	hell.are	standing	100	0	-	east		Skeleton Factory //   This is probably where they make all the skeletons for nightmares and // graveyards. The room is simply littered with bones. A poster on the	-	+
+1794525514	cmd	Alaric	57	13430	hell.are	standing	100	0	-	exits		Obvious exits: // North - Fountain of Blood. // West  - Living Walls	-	-
+1794525516	cmd	Alaric	57	13420	hell.are	standing	100	0	-	north		Fountain of Blood. //   This room is made of a rough black stone. The walls seem to ooze black // sludge. In the middle of the room stands a stone fountain of a demon spitting	-	+
+1794525516	cmd	Alaric	57	13420	hell.are	standing	100	0	-	exits		Obvious exits: // South - Skeleton Factory // West  - Room full of Body Parts.	-	-
+1794525517	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	eat	gua	You eat guano. // Stone skin never takes on a monk or a necromancer. // Your feet rise off the ground.	-	+
+1794525517	cmd	Alaric	57	13419	hell.are	standing	100	0	-	west		Room full of Body Parts. //   The room is filled with piles of arms, legs, heads, and other unidentifiable // parts of many different creatures. The stench is overwhelming. The body	-	+
+1794525518	cmd	Alaric	57	13420	hell.are	standing	100	0	-	east		Fountain of Blood. //   This room is made of a rough black stone. The walls seem to ooze black // sludge. In the middle of the room stands a stone fountain of a demon spitting	-	+
+1794525518	cmd	Alaric	57	13420	hell.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794525519	cmd	Alaric	57	13430	hell.are	standing	100	0	-	south		Skeleton Factory //   This is probably where they make all the skeletons for nightmares and // graveyards. The room is simply littered with bones. A poster on the	-	+
+1794525520	cmd	Alaric	57	13429	hell.are	standing	100	0	-	west		Living Walls //   The walls here actually consist of greying and sinewy flesh - faces, hands, // broken bones, feet, and toes jutting from the surface. You hear low moans	-	+
+1794525520	cmd	Alaric	57	13428	hell.are	standing	100	0	-	west		Blood Room //   You enter the room and are immediately assaulted by the smell of rotting // flesh and blood. The walls are covered with the crimson fluid as it runs	-	+
+1794525520	cmd	Alaric	57	13427	hell.are	standing	100	0	-	west		Blackened Hallway //   This dark hallway looks as if it was made by a lavaworm...All the surfaces // in it are melted and burnt. The smell of brimstone and sulfur fill the air.	-	+
+1794525521	cmd	Alaric	57	13426	hell.are	standing	100	0	-	west		Blackened Hallway //   This dark hallway looks as if it was made by a lavaworm...All the surfaces // in it are melted and burnt. The smell of brimstone and sulfur fill the air.	-	+
+1794525521	cmd	Alaric	57	13425	hell.are	standing	100	0	-	west		Pit of Fire //   You enter a plain stone room with a large fire pit in the center of it. // As you look closer at the pit you realize that hundreds of people are being	-	+
+1794525521	cmd	Alaric	57	13424	hell.are	standing	100	0	-	west		Room of Lost Souls //   This looks like a waiting room or sorts. Dust and cobwebs are everywhere. // Wooden benches line the walls. A digital number sign is posted on the wall.	-	+
+1794525521	cmd	Alaric	57	13423	hell.are	standing	100	0	-	west		Room of Lost Souls //   This looks like a waiting room or sorts. Dust and cobwebs are everywhere. // Wooden benches line the walls. A digital number sign is posted on the wall.	-	+
+1794525522	cmd	Alaric	57	13422	hell.are	standing	100	0	-	west		Ancient Room //   This is a very old and dusty room. It looks empty except for a few shards // or bone and flesh.	-	+
+1794525523	cmd	Alaric	57	13409	hell.are	standing	100	0	-	north		Hall of the Damned //   This hallway is a monument to the millions of damned souls in hell. // The walls are made up of various body parts and other unidentifiable	-	+
+1794525523	cmd	Trentlin	40	30489	hyrule.are	standing	82	0	-	kill	di	Digdogger dodges your attack. // Your punch DISMEMBERS Digdogger!	-	-
+1794525525	cmd	Alaric	57	13409	hell.are	standing	100	0	-	exits		Obvious exits: // North - Living Walls // East  - Hall of the Damned	-	+
+1794525527	cmd	Trentlin	40	30489	hyrule.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Digdogger. // Your fists of fury scratches Digdogger.	-	+
+1794525527	cmd	Alaric	57	13410	hell.are	standing	100	0	-	west		Hall of the Damned //   This hallway is a monument to the millions of damned souls in hell. // The walls are made up of various body parts and other unidentifiable	-	+
+1794525528	cmd	Alaric	57	13411	hell.are	standing	100	0	-	north		Mural of the Dead //   You stand before a large mural. The mural depicts mountains of dead // bodies piled up to the sky. The mural covers the whole north wall from	-	+
+1794525529	cmd	Alaric	57	13412	hell.are	standing	100	0	-	east		Living Walls //   The walls here actually consist of greying and sinewy flesh - faces, hands, // broken bones, feet, and toes jutting from the surface. You hear low moans	-	+
+1794525531	cmd	Alaric	57	13413	hell.are	standing	100	0	-	east		Trapped souls //   There are many souls trapped behind the walls of this room. Almost as if // trapped beneath the surface of a frozen lake. Even the floor and ceiling	-	+
+1794525531	death	Trentlin	40	30489	hyrule.are	mob 30309 Digdogger	killer_lvl=36 last=216 bash hp_before=162 from=30309 age=0s big=250 bash from=30309 age=4s max_hp=769 foes=1 wimpy=0 dt_room=0 sanct=0 linkdead=0
+1794525531	area	Trentlin	40	4216	dresden.are	hyrule.are	dresden.are	226	(mobile_update)
+1794525531	cmd	Alaric	57	13414	hell.are	standing	100	0	-	east		Tortured Beings //   This room is filled with instruments of torture. Beings of all shapes and // sizes are being brought to the thresholds of pain and beyond. Some are	-	+
+1794525532	cmd	Alaric	57	13415	hell.are	standing	100	0	-	east		Gluttony //   Before you is a room filled with all sorts of food. The smell of pastries and // Hamburger assault your senses. All sorts of food lay everywhere you look.	-	+
+1794525532	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525533	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525533	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525533	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525533	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525534	cmd	Alaric	57	13416	hell.are	standing	100	0	-	east		Greed //   What luck! A room full of treasure. Gold, diamonds, riches beyond // imagination! Wait! You suddenly feel as if it is all slowly disappearing.	-	+
+1794525534	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525534	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525534	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525534	refused	Trentlin	40	4216	dresden.are	resting	0	0	-	flee		Nah... You feel too relaxed...	refusal:position	-
+1794525535	cmd	Alaric	57	13416	hell.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794525536	cmd	Alaric	57	13416	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525537	cmd	Alaric	57	13416	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Bedroom. // South - Gateway to Hell	-	+
+1794525538	cmd	Trentlin	40	4216	dresden.are	resting	0	0	-	wake		You stand up.	-	-
+1794525538	cmd	Trentlin	40	4216	dresden.are	standing	0	0	-	look		Death room. //   Hrm, since you're reading this, guess you died! // Please insert coin(s) to continue.	-	+
+1794525538	cmd	Alaric	57	13417	hell.are	standing	100	0	-	east		Bedroom. //   This is a small bedroom. It is well furnished and a drastic change from // the room you just stepped out of. A bed stands against the far wall.	-	+
+1794525539	cmd	Trentlin	40	4208	dresden.are	standing	0	0	-	down		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525539	cmd	Alaric	57	13416	hell.are	standing	100	0	-	west		Greed //   What luck! A room full of treasure. Gold, diamonds, riches beyond // imagination! Wait! You suddenly feel as if it is all slowly disappearing.	-	+
+1794525540	cmd	Alaric	57	13415	hell.are	standing	100	0	-	west		Gluttony //   Before you is a room filled with all sorts of food. The smell of pastries and // Hamburger assault your senses. All sorts of food lay everywhere you look.	-	+
+1794525540	cmd	Trentlin	40	4207	dresden.are	standing	0	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794525541	cmd	Alaric	57	13414	hell.are	standing	100	0	-	west		Tortured Beings //   This room is filled with instruments of torture. Beings of all shapes and // sizes are being brought to the thresholds of pain and beyond. Some are	-	+
+1794525541	cmd	Alaric	57	13413	hell.are	standing	100	0	-	west		Trapped souls //   There are many souls trapped behind the walls of this room. Almost as if // trapped beneath the surface of a frozen lake. Even the floor and ceiling	-	+
+1794525541	cmd	Trentlin	40	4204	dresden.are	standing	0	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525541	cmd	Trentlin	40	4211	dresden.are	standing	0	0	-	north		Entrance to the inner Sanctum. //   This door is guarded by a very large warrior dressed in white robes and // wielding a two-handed sword.	-	+
+1794525541	cmd	Alaric	57	13408	hell.are	standing	100	0	-	south		Hall of the Damned //   This hallway is a monument to the millions of damned souls in hell. // The walls are made up of various body parts and other unidentifiable	-	+
+1794525542	cmd	Alaric	57	13409	hell.are	standing	100	0	-	west		Hall of the Damned //   This hallway is a monument to the millions of damned souls in hell. // The walls are made up of various body parts and other unidentifiable	-	+
+1794525543	cmd	Alaric	57	13421	hell.are	standing	100	0	-	down		Bloody Stairway. //   You are standing on a very slippy stairway. The walls and stairs are // covered with blood and gore. Pieces of goo and ooze drip from the	-	+
+1794525544	cmd	Trentlin	40	4204	dresden.are	standing	0	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525544	cmd	Alaric	57	13431	hell.are	standing	100	0	-	down		Bottom of Stairway //   You are standing at the bottom of a bloody stairway -- or so you thought. // Upon closer inspection, it seems to be merely a painting on the wall.	-	+
+1794525544	cmd	Trentlin	40	4203	dresden.are	standing	0	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525544	cmd	Trentlin	40	4210	dresden.are	standing	0	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794525545	cmd	Trentlin	40	4210	dresden.are	standing	0	0	-	north		Alas, you cannot go that way.	-	-
+1794525545	cmd	Trentlin	40	4210	dresden.are	standing	0	0	-	north		Alas, you cannot go that way.	-	-
+1794525545	cmd	Alaric	57	13432	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525545	cmd	Trentlin	40	4210	dresden.are	standing	0	0	-	sleep		You go to sleep.	-	-
+1794525546	cmd	Alaric	57	13442	hell.are	standing	100	0	-	south		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525547	cmd	Alaric	57	13443	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525549	cmd	Alaric	57	13443	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525549	cmd	Alaric	57	13443	hell.are	standing	100	0	-	exits		Obvious exits: // North - Cell // East  - Stone Hall	-	+
+1794525550	cmd	Alaric	57	13433	hell.are	standing	100	0	-	north		Cell //   The cell is very damp and very musty. The walls are covered with moisture // and dirt. The smell of urine is very potent here.	-	+
+1794525551	cmd	Alaric	57	13443	hell.are	standing	100	0	-	south		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525551	cmd	Trentlin	40	4210	dresden.are	sleeping	0	0	-	inventory		You are carrying: //      Nothing.	-	-
+1794525551	cmd	Alaric	57	13444	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525552	cmd	Alaric	57	13434	hell.are	standing	100	0	-	north		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525553	cmd	Alaric	57	13435	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525554	cmd	Alaric	57	13435	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525555	cmd	Alaric	57	13435	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Stone Hall // South - Cell	-	+
+1794525556	cmd	Alaric	57	13445	hell.are	standing	100	0	-	south		Cell //   The cell is very damp and very musty. The walls are covered with moisture // and dirt. The smell of urine is very potent here.	-	+
+1794525557	cmd	Alaric	57	13435	hell.are	standing	100	0	-	north		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525557	cmd	Alaric	57	13436	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525559	cmd	Alaric	57	13446	hell.are	standing	100	0	-	south		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525560	cmd	Alaric	57	13447	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525561	cmd	Alaric	57	13447	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525562	cmd	Alaric	57	13447	hell.are	standing	100	0	-	exits		Obvious exits: // North - Cell // East  - Stone Hall	-	+
+1794525562	cmd	Alaric	57	13437	hell.are	standing	100	2	-	north		Cell //   The cell is very damp and very musty. The walls are covered with moisture // and dirt. The smell of urine is very potent here.	-	+
+1794525563	cmd	Alaric	57	13447	hell.are	standing	100	0	-	south		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525564	cmd	Alaric	57	13448	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525564	cmd	Trentlin	40	4210	dresden.are	sleeping	0	0	-	gossip	hey dude, may need a hand if you have a moment	You gossip 'hey dude, may need a hand if you have a moment'	-	-
+1794525568	cmd	Alaric	57	13438	hell.are	standing	100	0	-	north		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525569	cmd	Trentlin	40	4210	dresden.are	sleeping	0	0	-	group		Trentlin's group: // [40 Monk ] Trentlin            1/ 725 hp 1359/1601 mana  406/ 459 mv 92169 xp	-	-
+1794525571	cmd	Alaric	57	13438	hell.are	standing	100	0	-	gossip	What's up?	You gossip 'What's up?'	-	-
+1794525572	cmd	Alaric	57	13438	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Stone Hall // West  - Stone Hall	-	-
+1794525573	cmd	Alaric	57	13448	hell.are	standing	100	0	-	west		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525574	cmd	Alaric	57	13448	hell.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794525575	cmd	Alaric	57	13438	hell.are	standing	100	0	-	north		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525576	cmd	Alaric	57	13439	hell.are	standing	100	0	-	east		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525577	cmd	Alaric	57	13439	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525577	cmd	Alaric	57	13439	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525578	cmd	Alaric	57	13439	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Cell // South - Cell	-	+
+1794525580	cmd	Alaric	57	13440	hell.are	standing	100	0	-	east		Cell //   The cell is very damp and very musty. The walls are covered with moisture // and dirt. The smell of urine is very potent here.	-	+
+1794525580	cmd	Alaric	57	13439	hell.are	standing	100	0	-	west		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525581	cmd	Alaric	57	13449	hell.are	standing	100	0	-	south		Cell //   The cell is very damp and very musty. The walls are covered with moisture // and dirt. The smell of urine is very potent here.	-	+
+1794525581	cmd	Alaric	57	13439	hell.are	standing	100	0	-	north		Stone Hall //   This is a roughly carved hallway. The air here is damp and musty. You  // hear the sound of something dripping in the distance. Your footsteps	-	+
+1794525582	cmd	Alaric	57	13450	hell.are	standing	100	0	-	down		Hot Stairs //   You are standing on a long stairway. The air around you is heavy and hot. // The stone walls are hot to the touch and your sweat sizzles as it hits the	-	+
+1794525583	cmd	Alaric	57	13461	hell.are	standing	100	0	-	down		Fire Mural //   Upon all the walls of this room is an enormous mural. Pictures of burning // bodies and tortured souls seem to be the main theme of the art. Bright reds	-	+
+1794525584	cmd	Alaric	57	13471	hell.are	standing	100	0	-	south		Hot Hall //   The stone floor below you heats your feet uncomfortably. The ceiling and // walls glow a dull red and you sweat uncomfortably under the heat.	-	+
+1794525586	cmd	Alaric	57	13470	hell.are	standing	100	0	-	west		Lake of Fire //   You stand one the shore of a large lake of fire. The smoke and heat fill this // enormous room. You can barely make out shapes of something moving	-	+
+1794525587	cmd	Alaric	57	13470	hell.are	standing	100	0	-	scan		Greater Fire Demon                 -to the North. // the burning fool                   -to the North. // wall of fire                       -to the West.	-	-
+1794525588	cmd	Alaric	57	13470	hell.are	standing	100	0	-	exits		Obvious exits: // North - Fire Pits of Hades // East  - Hot Hall	-	+
+1794525589	cmd	Alaric	57	13469	hell.are	standing	100	0	-	west		Wall of Fire //   This large room is cut in into sections by small walls of fire. The walls // to move slowly changing the layout of the room. As you examine the room	-	+
+1794525591	cmd	Alaric	57	13469	hell.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794525591	cmd	Alaric	57	13459	hell.are	standing	100	0	-	north		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525592	cmd	Alaric	57	13459	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Fire Pits of Hades // South - Wall of Fire	-	+
+1794525593	cmd	Alaric	57	13458	hell.are	standing	100	0	-	west		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525593	cmd	Alaric	57	13458	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Hall of Fire // South - Hall of Fire	-	-
+1794525594	cmd	Alaric	57	13468	hell.are	standing	100	0	-	south		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525595	cmd	Trentlin	40	4210	dresden.are	sleeping	23	0	-	gossip	lol the digdogger in hyrule wrecked me with his spines	You gossip 'lol the digdogger in hyrule wrecked me with his spines'	-	-
+1794525600	cmd	Alaric	57	13458	hell.are	standing	100	0	-	north		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525601	cmd	Alaric	57	13459	hell.are	standing	100	0	-	east		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525602	cmd	Alaric	57	13460	hell.are	standing	100	0	-	east		Fire Pits of Hades //   This room is filled with many small fire pits. Countless damned souls are // being burnt and roasted within the white flames that erupt from the	-	+
+1794525604	cmd	Alaric	57	13470	hell.are	standing	100	0	-	south		Lake of Fire //   You stand one the shore of a large lake of fire. The smoke and heat fill this // enormous room. You can barely make out shapes of something moving	-	+
+1794525605	cmd	Alaric	57	13471	hell.are	standing	100	0	-	east		Hot Hall //   The stone floor below you heats your feet uncomfortably. The ceiling and // walls glow a dull red and you sweat uncomfortably under the heat.	-	+
+1794525606	cmd	Alaric	57	13471	hell.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794525607	cmd	Alaric	57	13461	hell.are	standing	100	0	-	north		Fire Mural //   Upon all the walls of this room is an enormous mural. Pictures of burning // bodies and tortured souls seem to be the main theme of the art. Bright reds	-	+
+1794525607	cmd	Alaric	57	13461	hell.are	standing	100	0	-	exits		Obvious exits: // South - Hot Hall	-	-
+1794525608	cmd	Alaric	57	13461	hell.are	standing	100	0	-	where	homer	Homer Simpson                Secondary Control Room	-	-
+1794525609	cmd	Alaric	57	13461	hell.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794525610	cmd	Alaric	57	13461	hell.are	standing	100	0	-	look		Fire Mural //   Upon all the walls of this room is an enormous mural. Pictures of burning // bodies and tortured souls seem to be the main theme of the art. Bright reds	-	+
+1794525611	cmd	Alaric	57	13471	hell.are	standing	100	0	-	south		Hot Hall //   The stone floor below you heats your feet uncomfortably. The ceiling and // walls glow a dull red and you sweat uncomfortably under the heat.	-	+
+1794525611	cmd	Alaric	57	13470	hell.are	standing	100	0	-	west		Lake of Fire //   You stand one the shore of a large lake of fire. The smoke and heat fill this // enormous room. You can barely make out shapes of something moving	-	+
+1794525611	cmd	Alaric	57	13469	hell.are	standing	100	0	-	west		Wall of Fire //   This large room is cut in into sections by small walls of fire. The walls // to move slowly changing the layout of the room. As you examine the room	-	+
+1794525612	cmd	Alaric	57	13469	hell.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794525612	cmd	Trentlin	40	4210	dresden.are	sleeping	23	0	-	gossip	last time i died there i had to get all the previous triforces to get back to my corpse in the dungeon it was in	You gossip 'last time i died there i had to get all the previous triforces to get back to my corpse in the dungeon it was in'	-	-
+1794525613	cmd	Alaric	57	13459	hell.are	standing	100	0	-	north		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525613	cmd	Alaric	57	13458	hell.are	standing	100	0	-	west		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525614	cmd	Alaric	57	13468	hell.are	standing	100	0	-	south		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525619	cmd	Alaric	57	13467	hell.are	standing	100	0	-	west		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525625	cmd	Alaric	57	13467	hell.are	standing	100	0	-	gossip	Ouch. Need a TK?	You gossip 'Ouch. Need a TK?'	-	-
+1794525626	cmd	Alaric	57	13466	hell.are	standing	100	0	-	west		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525627	cmd	Alaric	57	13466	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Construction Area // West  - Construction Area	-	-
+1794525628	cmd	Alaric	57	13465	hell.are	standing	100	0	-	west		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525628	cmd	Alaric	57	13465	hell.are	standing	100	0	-	exits		Obvious exits: // North - Construction Area // East  - Construction Area	-	+
+1794525629	cmd	Alaric	57	13464	hell.are	standing	100	0	-	west		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525630	cmd	Alaric	57	13464	hell.are	standing	100	0	-	exits		Obvious exits: // North - Hall of Fire // East  - Construction Area	-	-
+1794525631	cmd	Alaric	57	13454	hell.are	standing	100	0	-	north		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525633	cmd	Alaric	57	13453	hell.are	standing	100	0	-	west		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525634	cmd	Trentlin	40	4210	dresden.are	sleeping	48	0	-	gossip	that would be amazing	You gossip 'that would be amazing'	-	-
+1794525635	cmd	Alaric	57	13452	hell.are	standing	100	0	-	west		Stone Arch //   Before you stands the a large stone arch decorated with many runes you // cannot decifer. It looks as though it has been closed up for a long time.	-	+
+1794525636	cmd	Alaric	57	13452	hell.are	standing	100	0	-	open		Ok.	-	-
+1794525637	cmd	Alaric	57	13452	hell.are	standing	100	0	-	exits		Obvious exits: // East  - Hall of Fire // South - Foreman's Office	-	+
+1794525638	cmd	Alaric	57	13462	hell.are	standing	100	0	-	south		Foreman's Office //   You stand in a crudly constructed office. Blueprints and change orders are // scattered everywhere. A metal filing cabinet stands in the corner. Before	-	+
+1794525638	cmd	Alaric	57	13462	hell.are	fighting	100	0	fight	exits		Obvious exits: // North - Stone Arch	-	-
+1794525639	cmd	Trentlin	40	4210	dresden.are	sleeping	48	0	-	noloot		Your corpse may now be looted.	-	-
+1794525641	cmd	Alaric	57	13462	hell.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Demonic Foreman. [-9] // Your fists of fury MANGLES Demonic Foreman! [-54]	-	+
+1794525643	cmd	Trentlin	40	4210	dresden.are	sleeping	48	0	-	group		Trentlin's group: // [40 Monk ] Trentlin          349/ 725 hp 1446/1601 mana  459/ 459 mv 92169 xp	-	-
+1794525646	cmd	Alaric	57	13462	hell.are	fighting	100	0	fight	look	fore	This huge demon has somehow managed to fit himself into // an oversized orange jumpsuit. The words, // '4th DEMONsion Construction Co.' are written on the 	-	+
+1794525651	cmd	Alaric	57	13462	hell.are	fighting	95	0	fight	gossip	Sec. Lost in Hell atm trying to do a quest	You gossip 'Sec. Lost in Hell atm trying to do a quest'	-	-
+1794525652	cmd	Alaric	57	13462	hell.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Demonic Foreman. [-4] // Your fists of fury MANGLES Demonic Foreman! [-53]	-	+
+1794525658	cmd	Alaric	57	13462	hell.are	fighting	84	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES Demonic Foreman! [-51] // Your fists of fury ^^^ DESTROYS ^^^ Demonic Foreman! [-115]	-	+
+1794525664	cmd	Alaric	57	13462	hell.are	fighting	80	0	fight	look		Foreman's Office //   You stand in a crudly constructed office. Blueprints and change orders are // scattered everywhere. A metal filing cabinet stands in the corner. Before	-	+
+1794525665	refused	Alaric	57	13462	hell.are	fighting	76	0	fight	north		No way!  You are still fighting!	refusal:position	-
+1794525666	cmd	Alaric	57	13452	hell.are	fighting	76	0	fight	flee		Stone Arch //   Before you stands the a large stone arch decorated with many runes you // cannot decifer. It looks as though it has been closed up for a long time.	-	+
+1794525669	cmd	Alaric	57	13452	hell.are	standing	76	0	-	exits		Obvious exits: // East  - Hall of Fire // South - Foreman's Office	-	+
+1794525670	cmd	Alaric	57	13453	hell.are	standing	76	0	-	east		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525671	cmd	Alaric	57	13454	hell.are	standing	76	0	-	east		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525672	cmd	Alaric	57	13464	hell.are	standing	76	0	-	south		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525672	cmd	Trentlin	40	4210	dresden.are	sleeping	48	0	-	group		Trentlin's group: // [40 Monk ] Trentlin          349/ 725 hp 1446/1601 mana  459/ 459 mv 92169 xp	-	-
+1794525672	cmd	Alaric	57	13465	hell.are	standing	76	0	-	east		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525673	cmd	Alaric	57	13465	hell.are	standing	76	0	-	exits		Obvious exits: // North - Construction Area // East  - Construction Area	-	+
+1794525673	cmd	Trentlin	40	4210	dresden.are	sleeping	48	0	-	wake		You wake and stand up.	-	-
+1794525674	cmd	Alaric	57	13455	hell.are	standing	76	0	-	north		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525674	cmd	Alaric	57	13455	hell.are	standing	76	0	-	exits		Obvious exits: // East  - Construction Area // South - Construction Area	-	-
+1794525675	cmd	Alaric	57	13456	hell.are	standing	76	0	-	east		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525677	cmd	Alaric	57	13457	hell.are	standing	76	0	-	east		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525678	cmd	Alaric	57	13457	hell.are	standing	76	0	-	exits		Obvious exits: // South - Construction Area // West  - Construction Area	-	-
+1794525678	cmd	Alaric	57	13467	hell.are	standing	76	0	-	south		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525679	cmd	Alaric	57	13466	hell.are	standing	76	0	-	west		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525679	cmd	Alaric	57	13465	hell.are	standing	76	0	-	west		Construction Area //   This part of Hell seems to be under repair. Workers are fixing and replacing // what look like various gas mains and other pipework. You can see many	-	+
+1794525679	cmd	Alaric	57	13464	hell.are	standing	76	0	-	west		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525680	cmd	Alaric	57	13454	hell.are	standing	76	0	-	north		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525680	cmd	Alaric	57	13453	hell.are	standing	76	0	-	west		Hall of Fire //   You are standing in a hallway made of fire. The walls are ablaze with // yellow and blue flames. The smell of the hot air and sulfur burn your	-	+
+1794525681	cmd	Alaric	57	13452	hell.are	standing	76	0	-	west		Stone Arch //   Before you stands the a large stone arch decorated with many runes you // cannot decifer. It looks as though it has been closed up for a long time.	-	+
+1794525681	cmd	Alaric	57	13463	hell.are	standing	76	0	-	down		Cold Stairway //   You stand upon a cold stone stairway. Hot air blows down on you from // higher up the stairwell. From below you a freezing gusts bite at your skin	-	+
+1794525681	cmd	Trentlin	40	4210	dresden.are	standing	48	0	-	sleep		You go to sleep.	-	-
+1794525683	cmd	Alaric	57	13472	hell.are	standing	76	0	-	down		Icy Landing //   This landing is made entirely of ice. Its walls bear carvings of battle and // hunting scenes in bas-relief. These carved scenes show ice devils slaying	-	+
+1794525684	cmd	Alaric	57	13541	hell.are	standing	76	0	-	east		Ice Room //   You are standing in a room of ice. Icicles of every size hang from the // ceiling. Some shake with every sound. Your reflection off the ice walls	-	+
+1794525685	cmd	Alaric	57	13541	hell.are	standing	76	0	-	exits		Obvious exits: // East  - Ice Room // South - Ice Room	-	+
+1794525686	cmd	Alaric	57	13473	hell.are	standing	76	0	-	east		Ice Room //   You are standing in a room of ice. Icicles of every size hang from the // ceiling. Some shake with every sound. Your reflection off the ice walls	-	+
+1794525686	cmd	Alaric	57	13473	hell.are	standing	76	0	-	exits		Obvious exits: // South - Ice Room // West  - Ice Room	-	-
+1794525687	cmd	Alaric	57	13483	hell.are	standing	76	0	-	south		Ice Room //   You are standing in a room of ice. Icicles of every size hang from the // ceiling. Some shake with every sound. Your reflection off the ice walls	-	+
+1794525687	cmd	Alaric	57	13483	hell.are	standing	76	0	-	exits		Obvious exits: // North - Ice Room // East  - Closed door	-	+
+1794525688	cmd	Alaric	57	13483	hell.are	fighting	73	0	fight	open		Ok.	-	-
+1794525689	cmd	Alaric	57	13483	hell.are	fighting	73	0	fight	exits		Obvious exits: // North - Ice Room // East  - Meat Locker	-	+
+1794525692	cmd	Alaric	57	13484	hell.are	fighting	73	0	fight	flee		Meat Locker //   You stand in a large meat locker. Chunks of meat hang on the wall and  // larger corpses hang from steel hooks. Frozen blood and other 	-	+
+1794525694	cmd	Alaric	57	13484	hell.are	standing	75	0	-	exits		Obvious exits: // North - Meat Locker // East  - Meat Locker	-	+
+1794525695	cmd	Alaric	57	13485	hell.are	standing	75	0	-	east		Meat Locker //   Rows of beef and other meats hang from large steel hooks.  // The meat locker continues to the north and west.	-	+
+1794525696	cmd	Alaric	57	13485	hell.are	standing	75	0	-	exits		Obvious exits: // North - Meat Locker // West  - Meat Locker	-	-
+1794525696	cmd	Alaric	57	13475	hell.are	standing	75	0	-	north		Meat Locker //   Rows of beef and other meats hang from large steel hooks. You notice that  // many of the things hanging from the hooks are corpses of people. They 	-	+
+1794525697	cmd	Alaric	57	13475	hell.are	standing	75	0	-	open		Ok.	-	-
+1794525698	cmd	Alaric	57	13476	hell.are	standing	75	0	-	east		Penguin Room //   This is what appears to be a replica of an iceberg. Penguins waddle about // the room pecking at many poor souls half trapped in the icy floor. You	-	+
+1794525698	cmd	Trentlin	40	4210	dresden.are	sleeping	73	0	-	group		Trentlin's group: // [40 Monk ] Trentlin          533/ 725 hp 1508/1601 mana  459/ 459 mv 92169 xp	-	-
+1794525699	cmd	Alaric	57	13476	hell.are	fighting	72	0	fight	exits		Obvious exits: // East  - Penguin Room // South - Penguin Room	-	+
+1794525703	cmd	Alaric	57	13486	hell.are	fighting	69	0	fight	flee		Penguin Room //   This is what appears to be a replica of an iceberg. Penguins waddle about // the room pecking at many poor souls half trapped in the icy floor. You	-	+
+1794525703	area	Alaric	57	2497	dresden.are	hell.are	dresden.are	247	recall
+1794525703	cmd	Alaric	57	2497	dresden.are	standing	69	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794525704	cmd	Trentlin	40	4210	dresden.are	sleeping	73	0	-	equipment		You are using: // Nothing.	-	-
