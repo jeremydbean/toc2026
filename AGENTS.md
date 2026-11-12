@@ -1689,10 +1689,13 @@ The owner and staff (`IS_TRUSTED(LEVEL_IMMORTAL)`, never a mobile's level)
 always may; **no mobile ever may** -- a charmed follower ORDERed, a
 janitor, a scavenger -- not even from a WANTED player's ownerless corpse;
 while the owner is **in the game** (a playing descriptor whose `CH(d)` is
-them -- not quit, not link-dead) their group may, and anybody when they
-are a player killer or NOLOOT gave leave (`PLR_CANLOOT`); while they are
-**not**, nobody else, whatever NOLOOT said. A WANTED player's corpse has
-no owner and stays anybody's (a player's). It returns why, for `act()`
+them -- not quit, not link-dead) their group may, and anybody when NOLOOT
+gave leave (`PLR_CANLOOT`); while they are **not**, nobody else, whatever
+NOLOOT said. **Killers are lootable, PKILL alone is not** (owner,
+2026-11-12): a WANTED player's corpse has no owner (`make_corpse`, before
+the death clears WANTED) and is anybody's -- a player's -- online or not;
+a player who only had PKILL on and was attacked is protected like anyone
+(`pk_state` is not leave). It returns why, for `act()`
 with `$p` the corpse, and every way of taking from a corpse asks it of
 the corpse at any depth (`loot_corpse_of`): GET of the corpse or out of
 it, GET ALL, AUTOGOLD, SACRIFICE/JUNK of an empty one, TELEKINESIS, and

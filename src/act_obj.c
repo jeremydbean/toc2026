@@ -121,10 +121,15 @@ static void resize_money_pile(OBJ_DATA *obj, int amount)
  *     creature cannot be asked to give anything back;
  *   - while the owner is in the game (a playing connection: not quit, not
  *     link-dead), what they allow: anybody if they typed NOLOOT to let
- *     others loot, or are a player killer; their group;
+ *     others loot; their group. Having PKILL on is not leave (owner,
+ *     2026-11-12: "anyone who is just attacked because they had pkill
+ *     enabled should not be able to be looted");
  *   - while the owner is NOT in the game, nobody else, whatever NOLOOT
  *     said: nobody can ask them, and the corpse lasts a week;
- *   - a corpse with no owner (a WANTED player's, by design) is anybody's.
+ *   - a corpse with no owner -- a WANTED player's: make_corpse leaves a
+ *     killer's corpse ownerless, before the death clears WANTED -- is
+ *     anybody's, online or not (owner, 2026-11-12: "killers are lootable,
+ *     which is the danger").
  *
  * A death still takes away leave to loot (make_corpse), as stock ROM
  * always did: the protection comes back, never goes.
@@ -183,9 +188,6 @@ const char *loot_refusal( CHAR_DATA *ch, OBJ_DATA *obj )
 	if ( owner == NULL )
 	    return NULL;
     }
-
-    if ( owner->pcdata != NULL && owner->pcdata->pk_state == 1 )
-	return NULL;
 
     if ( IS_SET(owner->act, PLR_CANLOOT) )
 	return NULL;

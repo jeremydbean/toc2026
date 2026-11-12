@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112killersloot 2026-11-12
+Killers are lootable, and only killers. If you are WANTED -- you attacked
+a player who was not -- anybody may take from your corpse, whether you
+stay or log out. Having PKILL on no longer opens your corpse: a player
+killer who is attacked and killed is protected like anyone else.
+
 @ 20261112monkflurries 2026-11-12
 BLINDING FISTS and FISTS OF FURY take their six seconds whether or not a
 blow lands. A flurry that missed every time used to cost no time at all.

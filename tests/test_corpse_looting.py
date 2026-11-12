@@ -9,8 +9,12 @@ janitors, took from them too. The rule now (loot_refusal in act_obj.c):
 
   - the owner and staff always;
   - never a mobile;
-  - while the owner is in the game, what they allow: NOLOOT's leave, a
-    player killer's corpse, their group;
+  - while the owner is in the game, what they allow: NOLOOT's leave,
+    their group -- never PKILL alone (owner, 2026-11-12: "anyone who is
+    just attacked because they had pkill enabled should not be able to be
+    looted");
+  - a WANTED killer's corpse has no owner and is anybody's, online or
+    not ("killers are lootable, which is the danger");
   - while the owner is not in the game -- quit or link-dead -- nobody
     else, whatever NOLOOT said.
 
@@ -196,6 +200,51 @@ class CorpseLootingTests(unittest.TestCase):
                                 seen["owner get all"] + pack)
         self.assertRegex(pack, r"(?i)bag", pack)
 
+
+    def test_killers_are_lootable_pkill_alone_is_not(self) -> None:
+        seen: dict[str, str] = {}
+        pk, killer = "Zlootpk", "Zlootwanted"
+        with LiveMud(fixtures=True) as mud:
+            make(mud, STAFF, Levl=70, Room=SPARRING_FLOOR)
+            make(mud, pk, Levl=20, Room=SPARRING_FLOOR, Pk_State=1,
+                 objects=obj(AMULET) + obj(DAGGER))
+            make(mud, killer, Levl=20, Room=SPARRING_FLOOR,
+                 objects=obj(AMULET) + obj(DAGGER))
+            make(mud, THIEF, Levl=25, Room=SPARRING_FLOOR)
+            staff = mud.connect(timeout=120)
+            thief = mud.connect(timeout=120)
+            pkc = mud.connect(timeout=120)
+            kc = mud.connect(timeout=120)
+            try:
+                for client, name in ((staff, STAFF), (thief, THIEF), (pkc, pk),
+                                     (kc, killer)):
+                    login(client, name, PW)
+                    client.sync("scroll 0")
+
+                # PKILL on, attacked and killed, still in the game: protected.
+                staff.must(f"at {SPARRING_FLOOR} slay {pk.lower()}", "")
+                pkc.drain(2.0)
+                seen["pk get all"] = settled(thief, f"get all {pk.lower()}")
+
+                # WANTED -- a killer -- is anybody's, and stays so once they quit.
+                staff.must(f"set char {killer.lower()} wanted on", "WANTED")
+                staff.must(f"at {SPARRING_FLOOR} slay {killer.lower()}", "")
+                kc.drain(2.0)
+                seen["wanted get dagger"] = settled(thief, f"get dagger {killer.lower()}")
+                kc.send("quit")
+                self.assertTrue(kc.wait_closed())
+                seen["wanted gone get amulet"] = settled(thief, f"get amulet {killer.lower()}")
+                seen["thief pack"] = thief.sync("inventory")
+            finally:
+                quit_all(kc, pkc, thief, staff)
+
+        self.assertIn(NO_LEAVE, seen["pk get all"], seen["pk get all"])
+        self.assertNotIn("You get", seen["pk get all"], seen["pk get all"])
+        self.assertRegex(seen["wanted get dagger"], r"You get .*dagger",
+                         seen["wanted get dagger"])
+        self.assertRegex(seen["wanted gone get amulet"], r"You get .*amulet",
+                         seen["wanted gone get amulet"])
+        self.assertRegex(seen["thief pack"], r"(?i)dagger", seen["thief pack"])
 
 if __name__ == "__main__":
     unittest.main()

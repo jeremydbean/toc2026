@@ -1029,11 +1029,13 @@ Who may take from your corpse, or pick it up:
   - you and staff, always;
   - never a monster, a charmed follower or a pet;
   - while you are in the game: anybody grouped with you, and anybody if
-    you have PKILL on or have typed NOLOOT since you died to give leave
-    (every death takes that leave back, so you are protected again);
+    you have typed NOLOOT since you died to give leave (every death takes
+    that leave back, so you are protected again);
   - while you are logged out or have lost your link: nobody else at all,
     whatever NOLOOT says;
-  - anybody, if you were WANTED: your corpse has no owner.
+  - anybody, if you were WANTED: a killer's corpse has no owner, whether
+    you stay or log out.  Having PKILL on is not enough -- a player killer
+    who is attacked and killed is protected like anyone else.
 Hyrule's bound items are yours alone whatever else is allowed (and are
 lost if the corpse rots away from you).  Nobody may take anything until
 your death has been saved ("still being laid to rest").

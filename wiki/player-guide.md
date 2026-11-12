@@ -287,11 +287,13 @@ character state but is not a substitute for recovering carried equipment.
 
 Your corpse lasts a week of real time and survives restarts. You and staff may
 always take from it. While you are in the game your group may too, and so may
-anybody if you are a player killer or have typed `noloot` since the death to
-give leave -- every death takes that leave back. While you are logged out or
-link-dead nobody else may touch it, whatever `noloot` says, and no monster or
-charmed follower ever may. A WANTED player's corpse has no owner and is
-anybody's. `help death` has the details.
+anybody if you have typed `noloot` since the death to give leave -- every
+death takes that leave back. While you are logged out or link-dead nobody
+else may touch it, whatever `noloot` says, and no monster or charmed follower
+ever may. Killers are lootable: a WANTED player's corpse has no owner and is
+anybody's, logged in or not. Having `pkill` on is not enough -- a player
+killer who is only attacked is protected like anyone. `help death` has the
+details.
 
 ## Advancement
 

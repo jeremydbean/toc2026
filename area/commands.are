@@ -3345,6 +3345,9 @@ confirms it.  Player killers may MURDER one another; anyone else fights
 players only in the arena.
 
   - CONSIDER shows ***PKILLER*** on one; SCORE shows your own.
+  - Attacking a player who is not WANTED, outside the arena, makes you
+    WANTED, and a WANTED corpse is anybody's to loot.  PKILL alone never
+    makes yours lootable.
   - You cannot undo it.  Staff can, and a remort clears it.
   - Castles take only player killers.
 
