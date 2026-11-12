@@ -93,11 +93,16 @@ class ShutterLiveTests(unittest.TestCase):
                 god.sync("purge")            # the room's foes: its shutters may open
                 god.must("goto 4207", "")
                 god.must(f"transfer zfollowhero {APPROACH}", "")
+                unlock = hero.sync("unlock north", timeout=60)
                 refused = hero.sync("north", timeout=60)
                 after = god.sync(f"at {APPROACH} stat room", timeout=60)
                 south = hero.sync("south", timeout=60)
                 hero.send("quit")
                 god.send("quit")
+        # A shutter has no lock: UNLOCK says so rather than "You lack the key."
+        # (2026-11-12: a player tried keys on this very shutter).
+        self.assertIn("The shutter has no lock", unlock, unlock)
+        self.assertNotIn("lack the key", unlock, unlock)
         self.assertIn("boomerang", refused.lower(), refused)
         self.assertNotIn("opens now that the chamber is clear", refused, refused)
         # Another shutter, with no gate behind it, still opens for a cleared room.

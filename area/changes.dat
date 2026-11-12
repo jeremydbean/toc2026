@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112shutterlock 2026-11-12
+Hyrule's shutters have no lock. UNLOCK, PICK and DOORBASH on one now say
+so instead of "You lack the key": once a room's enemies are beaten, just
+walk through the shutter (or OPEN it). A shutter into a guardian's chamber
+may still want a tool, and says which.
+
 @ 20261112dodongobombs 2026-11-12
 Dodongo is harder to blow up: each bomb he swallows takes a quarter of his
 health, not half, so it takes four bombs to finish him. A purchase is four

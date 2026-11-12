@@ -564,6 +564,24 @@ static bool hyrule_seal_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
     return true;
 }
 
+/* A shutter has no lock: once its room is clear, walking through it opens
+   it (move_char) and so does OPEN. UNLOCK, PICK and DOORBASH answered
+   "You lack the key." -- a player stood in Level 2 trying keys on a
+   shutter that only wanted walking through (2026-11-12). Asked after
+   hyrule_seal_refuses, which speaks while enemies remain. */
+static bool hyrule_shutter_needs_no_key( CHAR_DATA *ch, EXIT_DATA *pexit )
+{
+    if ( pexit == NULL || pexit->keyword == NULL || ch->in_room == NULL
+    ||   !is_hyrule_room(ch->in_room)
+    ||   !IS_SET(pexit->exit_info, EX_CLOSED)
+    ||   IS_SET(pexit->exit_info, EX_LOCKED)
+    ||   !is_name( "shutter", pexit->keyword ) )
+        return false;
+    send_to_char( "The shutter has no lock. Now that the room is clear, just walk through it\n\r"
+                  "(or OPEN it).\n\r", ch );
+    return true;
+}
+
 static void open_hyrule_shutter( ROOM_INDEX_DATA *room, EXIT_DATA *pexit,
                                  int door )
 {
@@ -2598,7 +2616,8 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
         EXIT_DATA *pexit_rev;
 
         pexit = ch->in_room->exit[door];
-        if ( hyrule_seal_refuses( ch, ch->in_room, pexit ) )
+        if ( hyrule_seal_refuses( ch, ch->in_room, pexit )
+        ||   hyrule_shutter_needs_no_key( ch, pexit ) )
             return;
         if ( !IS_SET(pexit->exit_info, EX_CLOSED) )
             { send_to_char( "It's not closed.\n\r", ch ); return; }
@@ -2705,7 +2724,8 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 	EXIT_DATA *pexit_rev;
 
 	pexit = ch->in_room->exit[door];
-	if ( hyrule_seal_refuses( ch, ch->in_room, pexit ) )
+	if ( hyrule_seal_refuses( ch, ch->in_room, pexit )
+	||   hyrule_shutter_needs_no_key( ch, pexit ) )
 	    return;
 	if ( !IS_SET(pexit->exit_info, EX_CLOSED) )
 	    { send_to_char( "It's not closed.\n\r",        ch ); return; }
@@ -2879,7 +2899,8 @@ void do_pick( CHAR_DATA *ch, char *argument )
 	EXIT_DATA *pexit_rev;
 
 	pexit = ch->in_room->exit[door];
-	if ( hyrule_seal_refuses( ch, ch->in_room, pexit ) )
+	if ( hyrule_seal_refuses( ch, ch->in_room, pexit )
+	||   hyrule_shutter_needs_no_key( ch, pexit ) )
 	    return;
 	if ( !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_IMMORTAL(ch))
 	    { send_to_char( "It's not closed.\n\r",        ch ); return; }
