@@ -424,7 +424,8 @@ def see_also_lists(text: str) -> list:
 # HELP X in prose: an upper-case topic, words run together while each is
 # upper case, never across another HELP; a placeholder after it (HELP
 # GROUP <name>) means the line shows syntax, not a topic.
-HELP_REF = re.compile(r"\b[Hh][Ee][Ll][Pp]\s+('[^'\n]+'|[A-Z][A-Z0-9_-]*(?: (?!HELP\b)[A-Z][A-Z0-9_-]*)*)\b(?!'?\s*<)")
+# An ampersand joins words too: HELP GROUP LIFE & UNDEATH names a group.
+HELP_REF = re.compile(r"\b[Hh][Ee][Ll][Pp]\s+('[^'\n]+'|[A-Z][A-Z0-9_-]*(?: (?!HELP\b)(?:[A-Z][A-Z0-9_-]*|&(?= [A-Z])))*)\b(?!'?\s*<)")
 
 
 def help_references(text: str) -> list:

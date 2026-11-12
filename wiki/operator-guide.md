@@ -10,12 +10,12 @@ command availability depends on trust level; use `wizhelp` and
 `set char <name> hp <value>`, `mana <value>` and `end <value>` accept up to
 `POOL_MAX` (1,000,000,000; `hp` from -10, the others from 0). Pools are
 `int`, no longer 16-bit, so the old 30,000 ceiling is gone. Each sets the
-character's maximum **and** their permanent base (`perm_hit`, `perm_mana`,
-`perm_move`) to the value, so any bonus gear or spells are adding at that
-moment is not kept on top: when that bonus later comes off, the maximum
-falls below the number you set. Take gear and spells off first, or allow
-for them. None of them refills the current pool; use `restore <name>` when
-a refill is intended. `set char <name> move <value>` sets the current
+character's permanent base (`perm_hit`, `perm_mana`, `perm_move`) to the
+value, and the bonuses standing at that moment -- gear, spells, TITANIC --
+stay on top of it (`pool_set_base`), as a reload would rebuild them; when a
+bonus later comes off, the maximum falls back to exactly the base you set.
+None of them refills the current pool; use `restore <name>` when a refill
+is intended. `set char <name> move <value>` sets the current
 movement only, and `maxmove <value>` (1 to `POOL_MAX`) the maximum alone,
 clamping the current pool to it.
 

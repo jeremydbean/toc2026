@@ -1694,7 +1694,7 @@ semicolon inside a command.  A line that sets an alias is taken whole.
 An alias never runs another alias, and ! repeats the alias, not its last
 command.
 
-See also: COMMANDS, !
+See also: COMMANDS
 ~
 
 0 'HUNTING GROUNDS' 'WHERE TO HUNT' GROUNDS~

@@ -62,7 +62,8 @@
   "distinct_pages": {
     "new / news": "NEW is the settings overview (NEW SETTINGS CUSTOMIZE OPTIONS); NEWS is the game's news, which the NEWS command shows. No NEW command exists.",
     "scroll / scrolls": "SCROLL is the scroll-back command; SCROLLS names the item type on the wands, staves and scrolls page.",
-    "psionic / psionics": "PSIONIC is the psionic armor power's command; PSIONICS is the overview of every psionic power."
+    "psionic / psionics": "PSIONIC is the psionic armor power's command; PSIONICS is the overview of every psionic power.",
+    "kill / killer": "KILL is the attack command; KILLER is the old name for the WANTED flag and is kept as a keyword on the WANTED page."
   },
   "_staff_commands_public_help_comment": "Commands at LEVEL_IMMORTAL or above whose page every mortal may read on purpose: the word is also a public topic and the staff command has its own page under another keyword.",
   "staff_commands_public_help": {
