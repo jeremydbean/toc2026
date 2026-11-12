@@ -68,6 +68,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `score`, `attribute`, `affect` | Level, stats, resources, and active effects |
 | `alignment`, `devote light/dark/balance` | Your alignment tier, its perks and how to move it; `devote` works at the Temple |
 | `achievements [view]` | Points and progress for levels, bosses, relics, crafting, economy, unusual deaths, quests, exploration, and Hyrule |
+| `diary [yesterday \| yyyy-mm-dd \| list]` | Your day written down: time played, levels, kills, deaths, quests, achievements, skills, areas, things gained, coin in and out (the last 30 days) |
 | `equipment`, `inventory`, `worth` | Worn items, carried items, and money |
 | `consider <target>`, `danger` | Estimate nearby danger |
 | `compare <item> [item]`, `compare upgrades [slot]`, `compare profile` | Which gear makes you hit harder; the best gear you can get today |

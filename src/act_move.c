@@ -3737,7 +3737,10 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
              points or less, by their own prayer (achievements.c). */
           if ( own_prayer && !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0
           &&   pool_at_most( ch->hit, ch->max_hit, 1, 20 ) )
+          {
              achievement_record_event( ch, ACHIEVEMENT_EVENT_RECALL_LOW_HP, true );
+             diary_close_call( ch, "recalled out of a fight near death" );
+          }
           if (chance < 5 && !sure)
           {
              location = get_random_room(ch);

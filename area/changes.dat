@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112diary 2026-11-12
+Your diary: DIARY shows what you did today -- time played, levels and
+experience, kills and close calls, quests, achievements, skills, the areas
+you went through, what you came by and your coin in and out. DIARY
+YESTERDAY, DIARY <yyyy-mm-dd> and DIARY LIST read the last 30 days. Only
+you can read it. HELP DIARY says more.
+
 @ 20261112questserial 2026-11-12
 A quest's stolen item now answers only the adventurer it was entrusted to,
 however their name changes. It was tied to a number two characters could

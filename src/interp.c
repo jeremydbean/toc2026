@@ -399,6 +399,9 @@ const	struct	cmd_type	cmd_table	[] =
     { "clone",          do_clone,       POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "deny",           do_deny,        POS_DEAD,       CR,  LOG_ALWAYS, 1 },
     { "diagnostics",    do_diagnostics, POS_DEAD,       L1,  LOG_NORMAL, 1 },
+    /* Everyone's, but after DIAGNOSTICS, so staff's DIA is still that;
+       a mortal's DIA (DI is DIRT) reaches this (diary.c). */
+    { "diary",          do_diary,       POS_DEAD,        0,  LOG_NORMAL, 1 },
 /*    { "disconnect",     do_disconnect,  POS_DEAD,       L3,  LOG_ALWAYS, 1 },*/
     { "dns",            do_dns,         POS_DEAD,       ML,  LOG_ALWAYS, 1 },
     { "dump",		do_disconnect,	POS_DEAD,	L3,  LOG_ALWAYS, 1 },

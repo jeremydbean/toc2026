@@ -409,7 +409,18 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	  break;
 	}
     } else {
+	/* Out of their own bag or their own corpse: moving their own
+	   things, which the diary does not count as gaining them. */
+	OBJ_DATA *outer = container;
+
+	while ( outer != NULL && outer->in_obj != NULL )
+	    outer = outer->in_obj;
+	diary_own_move( outer != NULL
+	    && ( outer->carried_by == ch
+	      || ( outer->item_type == ITEM_CORPSE_PC && outer->owner != NULL
+	        && ch->name != NULL && !str_cmp( outer->owner, ch->name ) ) ) );
 	obj_to_char( obj, ch );
+	diary_own_move( false );
 	/* A Hyrule dungeon's map fills in that dungeon on a client's map. */
 	if ( hyrule_is_dungeon_tool( obj ) )
 	    hyrule_send_map( ch, obj );
@@ -976,7 +987,9 @@ static void stash_take_commit( CHAR_DATA *ch, CHAR_DATA *owner, OBJ_DATA *obj,
                 else
                     before->next_content = obj->next_content;
                 obj->next_content = NULL;
+                diary_own_move( true );     /* counted when it first came */
                 obj_to_char( obj, ch );
+                diary_own_move( false );
             }
         }
         snprintf( note, sizeof(note),
@@ -1232,7 +1245,9 @@ void do_stash( CHAR_DATA *ch, char *argument )
             prev->next_content = obj->next_content;
         obj->next_content = NULL;
 
+        diary_own_move( true );     /* their own: no gain to the diary */
         obj_to_char( obj, ch );
+        diary_own_move( false );
         watch_log( ch, "withdrew %s (vnum %d) from the stash",
             obj->short_descr, obj->pIndexData->vnum );
         act( "You take $p out of your stash.", ch, obj, NULL, TO_CHAR );

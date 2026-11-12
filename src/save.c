@@ -1063,6 +1063,8 @@ bool save_char_obj( CHAR_DATA *ch )
 
     achievement_check_state(ch,
         ch->desc != NULL && ch->desc->connected == CON_PLAYING);
+    /* Today's page of the diary goes to its own file (diary.c). */
+    diary_save( ch );
 
     previous_has_saved = ch->pcdata->has_saved;
     previous_confirm_unsaved_quit = ch->pcdata->confirm_unsaved_quit;

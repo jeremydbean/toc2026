@@ -3658,6 +3658,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         if ( ch != NULL && ch != victim && IS_NPC(ch) )
             progress_event( victim, "death", ch );  /* log/progress.tsv */
         playlog_death( ch, victim );                /* log/play.tsv */
+        diary_death( victim, ch );                  /* diary.c */
         hylog_death( ch, victim );                  /* log/hyrule.tsv */
         gmcp_play_sound( victim, "death" );         /* Client.Media */
     }
@@ -3940,7 +3941,10 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
     /* A close call: the killing blow struck on a twentieth of your hit
        points or less (achievements.c). */
     if ( !IS_NPC(ch) && ch->hit > 0 && ch->max_hit > 0 && pool_at_most( ch->hit, ch->max_hit, 1, 20 ) )
+    {
 	achievement_record_event( ch, ACHIEVEMENT_EVENT_KILL_LOW_HP, true );
+	diary_close_call( ch, "won a fight near death" );      /* diary.c */
+    }
 
     members = 0;
     group_levels = 0;
@@ -4006,6 +4010,7 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 		   stop and the remort cap take some or all of it. */
 		progress_kill( gch, victim, xp, rested, gch->exp - before, members,
 		               coins_to_copper( victim ) );
+		diary_kill( gch, victim );              /* diary.c */
 	    }
 	}
 
@@ -5549,10 +5554,15 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	   the death room). */
 	if ( !IS_NPC(ch) && fled_on > 0 && ch->in_room == now_in )
 	{
+	    bool low = ch->max_hit > 0 && pool_at_most( fled_on, ch->max_hit, 1, 20 );
+
 	    if ( fled_on == 1 )
 		achievement_record_event( ch, ACHIEVEMENT_EVENT_FLEE_ONE_HP, true );
-	    if ( ch->max_hit > 0 && pool_at_most( fled_on, ch->max_hit, 1, 20 ) )
+	    if ( low )
 		achievement_record_event( ch, ACHIEVEMENT_EVENT_FLEE_LOW_HP, true );
+	    if ( fled_on == 1 || low )                              /* diary.c */
+		diary_close_call( ch, fled_on == 1 ? "fled on one hit point"
+		                                   : "fled near death" );
 	}
 	return;
     }

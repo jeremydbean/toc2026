@@ -113,6 +113,7 @@ typedef struct  were_form               WERE_FORM;
 typedef struct  pkill_list_data         PKILL_LIST_DATA;
 typedef struct  wiz_data                WIZ_DATA;
 typedef struct  offense_data            OFFENSE_DATA;
+typedef struct  diary_day               DIARY_DAY;
 
 /* Function types. */
 typedef void DO_FUN     ( CHAR_DATA *ch, char *argument );
@@ -1057,6 +1058,26 @@ bool  rest_room_ok     args( ( CHAR_DATA *ch, ROOM_INDEX_DATA *room ) );
 void  rest_xp_on_quit  args( ( CHAR_DATA *ch ) );
 void  rest_xp_on_login args( ( CHAR_DATA *ch ) );
 int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
+/* diary.c -- each mortal's daily summary, kept in player/diary/<Name> */
+void  diary_login         args( ( CHAR_DATA *ch, bool new_character ) );
+void  diary_tick          args( ( CHAR_DATA *ch ) );
+void  diary_save          args( ( CHAR_DATA *ch ) );
+void  diary_free          args( ( CHAR_DATA *ch ) );
+void  diary_rename        args( ( const char *old_name, const char *new_name ) );
+void  diary_retire        args( ( CHAR_DATA *ch ) );
+void  diary_moved         args( ( CHAR_DATA *ch ) );
+void  diary_coin          args( ( CHAR_DATA *ch, bool spent, const char *source, long copper ) );
+void  diary_got           args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
+void  diary_own_move      args( ( bool on ) );
+void  diary_level         args( ( CHAR_DATA *ch, int from ) );
+void  diary_exp           args( ( CHAR_DATA *ch, long amount ) );
+void  diary_skill         args( ( CHAR_DATA *ch, int sn, int before ) );
+void  diary_achieved      args( ( CHAR_DATA *ch, const char *title, int points ) );
+void  diary_kill          args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+void  diary_death         args( ( CHAR_DATA *victim, CHAR_DATA *killer ) );
+void  diary_close_call    args( ( CHAR_DATA *ch, const char *what ) );
+void  diary_quest_done    args( ( CHAR_DATA *ch, bool daily, int points ) );
+void  diary_quest_points  args( ( CHAR_DATA *ch, int points ) );
 /* playlog.c -- the play journal, crash recorder and anomaly checks */
 extern const char *playlog_phase;
 void  playlog_boot           args( ( void ) );
@@ -2554,6 +2575,9 @@ struct  pc_data
     AREA_DATA *         play_area;
     time_t              play_area_since;
     time_t              play_level_at;
+    /* diary.c: today's page of the character's diary, in memory until a
+       save writes it to player/diary/<Name> (never in the player file). */
+    DIARY_DAY *         diary;
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;
@@ -3507,6 +3531,7 @@ void    set_class_title ( CHAR_DATA *ch, bool force );
 void    achievement_check_state ( CHAR_DATA *ch, bool announce );
 void    achievement_check_economy ( CHAR_DATA *ch, bool announce );
 void    achievement_record_kill ( CHAR_DATA *killer, CHAR_DATA *victim );
+bool    achievement_boss_vnum ( int vnum );
 void    achievement_record_quest ( CHAR_DATA *ch );
 void    achievement_record_death ( CHAR_DATA *ch );
 void    achievement_record_event ( CHAR_DATA *ch, achievement_event_type event,

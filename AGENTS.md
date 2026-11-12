@@ -596,6 +596,7 @@ Live-test gotchas that look like product bugs and are not:
 - `src/color.c`: canonical game-color parsing and terminal color conversion
 - `src/telnet_proto.c`, `src/gmcp.c`: Telnet negotiation and Mudlet protocol data
 - `src/achievements.c`: achievement catalog, progress, display, and persistence helpers
+- `src/diary.c`: DIARY -- each mortal's daily summary, kept in `player/diary/<Name>`
 - `src/recycle.c`, `src/memguard.c`: allocation, liveness tags, the
   quarantine, the stale-pointer sweep and MEMCHECK
 - `src/db.c`: world boot and native area parser
@@ -3372,6 +3373,66 @@ with a count (the goblin's drift was 275 lines in two days), quests
 assigned by area and kind, anomalies with the buff that wore off just
 before, BUG lines with context, reports with their commands, sessions
 with their coin by source and crashes. The morning routine runs it.
+
+## The Diary
+
+`src/diary.c` (owner, 2026-11-12: "a diary feature that uses the player
+logging system to allow players to see their daily progress and what they
+did each day"). DIARY is today, DIARY YESTERDAY, DIARY <yyyy-mm-dd>, DIARY
+LIST (a line a day, newest first); staff (trust `LEVEL_IMMORTAL`) add a
+name, `DIARY <player> [list|yesterday|date]`, refused by rank as
+`rank_protects` asks (from the file's `Levl`/`Tru`/`Creator` when the
+player is not in the game). `tests/test_diary.py`.
+
+- **The journal's hooks feed it.** `playlog_coin` (gained by source,
+  spent by what it went on), `playlog_bank` (interest), `playlog_got`,
+  `playlog_level`, `playlog_moved` (time in each area), `playlog_skill`
+  and `playlog_exp` (never a capped gain) call `diary_*`; beside them
+  `group_gain` calls `diary_kill` for every player a kill pays (a boss
+  row of the achievements, a Hyrule guardian, a holiday boss, the goblin
+  or the black dragon is named), `raw_kill_internal` `diary_death`,
+  `achievement_unlock` `diary_achieved`, the three close calls
+  `diary_close_call`, and quest completion `diary_quest_done` (a daily's
+  points at once; an ordinary quest's when AQUEST GAMBLE settles them,
+  `diary_quest_points`). A new journal writer for something a player would
+  call progress feeds the diary too. It never reads the journal.
+- **Its own file, never the player file.** Today's page is
+  `pcdata->diary` (heap, freed by `free_char`), made on a playing
+  character's first event of a sitting (`diary_login` from the nanny,
+  `diary_tick` from `char_update`) and loaded from the file when they
+  played earlier that day; `save_char_obj` writes it (`diary_save`) when it
+  changed, so it reaches the disk with every save and at QUIT. The file is
+  `#DIARY 1`, then per day `Day yyyy-mm-dd`, `Played`, `Level from to
+  gained`, `Exp`, `Kills`, `Deaths`, `Close`, `Quests n pts`, `Dailies n
+  pts`, `List <list> a b <name>` rows and `More <list> n`, ending `End`, and
+  `#END`; written to `<Name>.tmp` and committed by `temp_file_commit`,
+  keeping the newest `DIARY_DAYS` (30). The reader takes whole records only
+  (a torn last record is dropped, an over-long line skipped whole, numbers
+  through `parse_long`). `player/diary/` is synced with `player/` and
+  excluded from deploys with it; its name is lowercase and a directory, so
+  nothing that lists characters reads it.
+- **A day is the holiday calendar's** (`holiday_date`: the host's
+  localtime, or `TOC_DATE`/`TOC_DATE_FILE` in tests). The page turns the
+  moment any hook or tick sees the date change: the old day is written and
+  the new one begun, while playing.
+- **Mortals only, and nobody else in it.** `diary_keeps`: not staff (by
+  trust), never wizinvis, file read whole -- so a wizinvis immortal leaves
+  no page. A page names no giver, no player killer ("another player", or
+  "unknown causes" for an unseen immortal), no room (an area, by
+  `quest_area_name`, is the finest place: the dealer and the goblin are
+  never placed), nothing said or typed.
+- **Moving one's own things is not gaining them**: `get_obj` from a
+  container the character carries or their own corpse, and STASH's own
+  withdrawals, run inside `diary_own_move(true)`. Food, potions, pills,
+  scrolls, coin, herbs, components, cakes, corpses, trash and Hyrule's
+  bombs are never listed.
+- **The name moves with the character**: RENAME moves the file
+  (`diary_rename`), DELETE sets it aside as `<Name>.deleted-<epoch>`
+  (`diary_retire`) and a new character finding an old diary under its name
+  sets it aside as `<Name>.old-<epoch>` (`diary_login`): nothing is read as
+  somebody else's, and nothing is destroyed. The archive leaves it where it
+  is. In the command table DIARY sits after DIAGNOSTICS, so staff's DIA is
+  unchanged; DI is still DIRT.
 
 ## Hermie
 
