@@ -134,6 +134,11 @@ class SparseDrawLiveTests(unittest.TestCase):
 
                 fizzled = []
                 for i in range(TRIES):
+                    # Every cast from the Temple: a teleport may land in a
+                    # room that carries its occupant on (ROOM_TELEPORT,
+                    # ROOM_RIVER) into a no-recall room, where the next
+                    # cast is rightly refused. The draw is what is measured.
+                    staff.must(f"goto {TEMPLE}", "")
                     staff.must("restore zsparstaff", "")
                     reply = staff.sync("cast teleport zsparstaff", timeout=30)
                     if "fizzles" in reply or "You failed" in reply:

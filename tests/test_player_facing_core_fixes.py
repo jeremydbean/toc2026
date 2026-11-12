@@ -84,10 +84,11 @@ class PlayerFacingCoreFixTests(unittest.TestCase):
             "Sleep spells and extremely wounded folks", 1
         )[0]
 
-        self.assertIn(
-            "apply_hyrule_relic_damage_reduction( ch, dam1, dam_type1 )",
-            reflection,
-        )
+        # The burn's arithmetic moved into shield_burn (2026-11-12), which
+        # CONSIDER shares; the relic reduction is still applied there.
+        self.assertIn("shield_burn( ch, dam, dam_type1, &immune )", reflection)
+        burn = function_body(self.fight, "static int shield_burn(", "/*\n * The expected outcome")
+        self.assertIn("apply_hyrule_relic_damage_reduction( ch, dam1, dam_type1 )", burn)
         self.assertLess(
             reflection.index("if(ch->hit <= 0)"),
             reflection.index("update_pos(ch)"),
