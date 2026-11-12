@@ -4320,10 +4320,13 @@ void dismiss_undead_servants( CHAR_DATA *master )
 static OBJ_DATA *raisable_corpse( CHAR_DATA *ch, const char *arg )
 {
     OBJ_DATA *obj;
+    char name[MAX_INPUT_LENGTH];
 
     if ( arg != NULL && arg[0] != '\0' )
     {
-        obj = get_obj_here( ch, (char *) arg );
+        /* get_obj_here takes a writable argument; give it a copy. */
+        toc_strlcpy( name, arg, sizeof(name) );
+        obj = get_obj_here( ch, name );
         return ( obj != NULL && obj->item_type == ITEM_CORPSE_NPC )
                ? obj : NULL;
     }
@@ -4797,7 +4800,7 @@ void spell_embalm( int sn, int level, CHAR_DATA *ch, void *vo )
     snprintf(buf, sizeof buf,"You throw a preservative powder on the %s, which is quickly absorbed.",
 	   obj->short_descr ? obj->short_descr : obj->name);
     act( buf, ch, NULL, NULL, TO_CHAR );
-    obj->timer += 5;
+    obj->timer = sh_int_clamp( obj->timer + 5 );
     SET_BIT( obj->extra_flags, ITEM_EMBALMED );
   }
   else

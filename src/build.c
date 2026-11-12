@@ -641,7 +641,7 @@ static MOB_INDEX_DATA *editable_mob( CHAR_DATA *ch, const char *arg )
     AREA_DATA *pArea;
     int vnum;
 
-    if ( !is_number( (char *) arg )
+    if ( !is_number( arg )
       || ( vnum = typed_vnum( arg ) ) <= 0
       || ( m = get_mob_index( vnum ) ) == NULL )
     {
@@ -1374,7 +1374,7 @@ static long plain_number( const char *s, long hi )
 {
     long n;
 
-    if ( s[0] == '\0' || !isdigit( (unsigned char) s[0] ) || !is_number( (char *) s )
+    if ( s[0] == '\0' || !isdigit( (unsigned char) s[0] ) || !is_number( s )
       || strlen( s ) > 12 || !parse_long( s, 0, hi, &n ) )
         return -1;
     return n;
@@ -1474,7 +1474,7 @@ static OBJ_INDEX_DATA *editable_obj( CHAR_DATA *ch, const char *arg )
     AREA_DATA *pArea;
     int vnum;
 
-    if ( !is_number( (char *) arg )
+    if ( !is_number( arg )
       || ( vnum = typed_vnum( arg ) ) <= 0
       || ( o = get_obj_index( vnum ) ) == NULL )
     {

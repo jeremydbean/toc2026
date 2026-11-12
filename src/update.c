@@ -681,7 +681,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
        if (ch->exp >= next_xp_level(ch))
        {
 	send_to_char( "You raise a level!!  ", ch );
-	ch->level += 1;
+	ch->level = sh_int_clamp( ch->level + 1 );
 	advance_level( ch, false );
 	gmcp_play_sound( ch, "levelup" );
 	save_char_obj(ch);
@@ -693,7 +693,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
 	while ( ch->level <= 49 && ch->exp >= next_xp_level(ch))
 	{
 	  send_to_char( "You raise a level!!  ", ch );
-	  ch->level += 1;
+	  ch->level = sh_int_clamp( ch->level + 1 );
 	  advance_level( ch, false );
 	  gmcp_play_sound( ch, "levelup" );
 

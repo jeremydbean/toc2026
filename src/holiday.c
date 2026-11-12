@@ -50,6 +50,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "merc.h"
+#include "interp.h"
 #include "list.h"
 #include "holiday_rules.h"
 

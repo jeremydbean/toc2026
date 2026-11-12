@@ -37,6 +37,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
 
 typedef struct player_fix
 {

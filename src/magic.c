@@ -2745,7 +2745,7 @@ void spell_enchant_item( int sn, int level, CHAR_DATA *ch, void *vo )
     obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1)
-        obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
+        obj->level = sh_int_clamp( UMIN(LEVEL_HERO1 - 1,obj->level + 1) );
 
     found = 0;
     do_extract = 0;
@@ -2913,7 +2913,7 @@ void spell_enchant_armor( int sn, int level, CHAR_DATA *ch, void *vo )
     obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1)
-	obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
+	obj->level = sh_int_clamp( UMIN(LEVEL_HERO1 - 1,obj->level + 1) );
 
     if (!ac_found)
     { paf = new_affect();
@@ -3050,7 +3050,7 @@ void spell_enchant_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
     obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1 - 1)
-	obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
+	obj->level = sh_int_clamp( UMIN(LEVEL_HERO1 - 1,obj->level + 1) );
 
     if (!dam_found)
     { paf = new_affect();
@@ -5174,6 +5174,7 @@ void spell_baura( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
+    UNUSED_PARAM(ch);
     if ( is_affected( victim, sn ) )
 	return;
 
@@ -5196,6 +5197,7 @@ void spell_dshield( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
+    UNUSED_PARAM(ch);
     if ( is_affected( victim, sn ) )
 	return;
 

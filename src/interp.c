@@ -736,7 +736,7 @@ static int line_privacy( const char *name, const char *args )
                            && str_cmp( name, "order" ) ) )
         return LINE_PUBLIC;
 
-    rest = one_argument( (char *) args, skip );
+    rest = one_argument_const( args, skip );
     if ( !isalpha( (unsigned char) rest[0] ) && rest[0] != '\0'
     &&   !isspace( (unsigned char) rest[0] ) )
     {
@@ -745,7 +745,7 @@ static int line_privacy( const char *name, const char *args )
         rest++;
     }
     else
-        rest = one_argument( (char *) rest, inner );
+        rest = one_argument_const( rest, inner );
     if ( inner[0] == '\0' )
         return LINE_PUBLIC;
     /* The first command the word could be, as interpret would take it. */
@@ -2251,7 +2251,7 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
 /*
  * Return true if an argument is completely numeric.
  */
-bool is_number ( char *arg )
+bool is_number ( const char *arg )
 {
 
     if ( *arg == '\0' )
@@ -2303,8 +2303,18 @@ int number_argument( char *argument, char *arg )
 /*
  * Pick off one argument from a string and return the rest.
  * Understands quotes.
+ *
+ * The rest is a pointer into the caller's own string, so one_argument
+ * hands back the same pointer it was given, advanced; one_argument_const
+ * is the walk itself, for a caller holding a const string (no cast is
+ * needed either way -- -Wcast-qual, AGENTS.md "Strict Warnings").
  */
 char *one_argument( char *argument, char *arg_first )
+{
+    return argument + ( one_argument_const( argument, arg_first ) - argument );
+}
+
+const char *one_argument_const( const char *argument, char *arg_first )
 {
     char cEnd;
 

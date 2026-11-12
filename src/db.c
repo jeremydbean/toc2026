@@ -4137,34 +4137,34 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
  
     if (IS_SET(mob->act,ACT_WARRIOR))
     {
-        mob->perm_stat[STAT_STR] += 3;
-        mob->perm_stat[STAT_INT] -= 1;
-        mob->perm_stat[STAT_CON] += 2;
+        mob->perm_stat[STAT_STR] = sh_int_clamp( mob->perm_stat[STAT_STR] + 3 );
+        mob->perm_stat[STAT_INT] = sh_int_clamp( mob->perm_stat[STAT_INT] - 1 );
+        mob->perm_stat[STAT_CON] = sh_int_clamp( mob->perm_stat[STAT_CON] + 2 );
     }
  
     if (IS_SET(mob->act,ACT_THIEF))
     {
-        mob->perm_stat[STAT_DEX] += 3;
-        mob->perm_stat[STAT_INT] += 1;
-        mob->perm_stat[STAT_WIS] -= 1;
+        mob->perm_stat[STAT_DEX] = sh_int_clamp( mob->perm_stat[STAT_DEX] + 3 );
+        mob->perm_stat[STAT_INT] = sh_int_clamp( mob->perm_stat[STAT_INT] + 1 );
+        mob->perm_stat[STAT_WIS] = sh_int_clamp( mob->perm_stat[STAT_WIS] - 1 );
     }
  
     if (IS_SET(mob->act,ACT_CLERIC))
     {
-        mob->perm_stat[STAT_WIS] += 3;
-        mob->perm_stat[STAT_DEX] -= 1;
-        mob->perm_stat[STAT_STR] += 1;
+        mob->perm_stat[STAT_WIS] = sh_int_clamp( mob->perm_stat[STAT_WIS] + 3 );
+        mob->perm_stat[STAT_DEX] = sh_int_clamp( mob->perm_stat[STAT_DEX] - 1 );
+        mob->perm_stat[STAT_STR] = sh_int_clamp( mob->perm_stat[STAT_STR] + 1 );
     }
  
     if (IS_SET(mob->act,ACT_MAGE))
     {
-        mob->perm_stat[STAT_INT] += 3;
-        mob->perm_stat[STAT_STR] -= 1;
-        mob->perm_stat[STAT_DEX] += 1;
+        mob->perm_stat[STAT_INT] = sh_int_clamp( mob->perm_stat[STAT_INT] + 3 );
+        mob->perm_stat[STAT_STR] = sh_int_clamp( mob->perm_stat[STAT_STR] - 1 );
+        mob->perm_stat[STAT_DEX] = sh_int_clamp( mob->perm_stat[STAT_DEX] + 1 );
     }
  
     if (IS_SET(mob->off_flags,OFF_FAST))
-          mob->perm_stat[STAT_DEX] += 2;
+          mob->perm_stat[STAT_DEX] = sh_int_clamp( mob->perm_stat[STAT_DEX] + 2 );
  
     mob->perm_stat[STAT_STR] = sh_int_clamp( mob->perm_stat[STAT_STR]
                                              + mob->size - SIZE_MEDIUM );
@@ -5818,8 +5818,10 @@ char *str_perm( const char *str )
     if ( str == NULL || str[0] == '\0' )
         return &str_empty[0];
 
+    /* Already permanent: the same string, reached through string_space
+       (one object, so the subtraction is defined) rather than a cast. */
     if ( in_string_space( str ) )
-        return (char *) str;
+        return string_space + ( str - string_space );
 
     len = strlen( str ) + 1;
     /* As an offset: top_string + len could point past the array. */

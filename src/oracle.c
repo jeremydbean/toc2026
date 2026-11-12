@@ -140,7 +140,7 @@ bool is_oracle_mob( CHAR_DATA *ch )
 /* Who the creator is: Killuminati, by name. is_creator() and
    is_creator_in_person() in handler.c are what everything else asks --
    the rank and its protections follow the creator, not this name. */
-bool is_killuminati( CHAR_DATA *ch )
+bool is_killuminati( const CHAR_DATA *ch )
 {
     return ch != NULL && !IS_NPC(ch) && ch->name != NULL
         && !str_cmp( ch->name, "Killuminati" );

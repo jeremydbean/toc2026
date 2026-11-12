@@ -472,7 +472,7 @@ static char *stash_name_list( const char *list, const char *name, bool adding )
     {
         if ( kept[0] != '\0' )
             toc_strlcat( kept, " ", sizeof(kept) );
-        toc_strlcat( kept, capitalize( (char *) name ), sizeof(kept) );
+        toc_strlcat( kept, capitalize( name ), sizeof(kept) );
     }
 
     return str_dup( kept );
@@ -575,7 +575,7 @@ bool stash_is_linked( CHAR_DATA *ch, const char *name )
       || ch->pcdata->stash_links == NULL || name == NULL )
         return false;
 
-    return is_name( (char *) name, ch->pcdata->stash_links );
+    return is_name( name, ch->pcdata->stash_links );
 }
 
 /*
@@ -625,12 +625,16 @@ static bool stash_link_is_mutual( CHAR_DATA *ch, const char *name )
 {
     CHAR_DATA *other;
     char theirs[MAX_STRING_LENGTH];
+    char who[MAX_INPUT_LENGTH];
 
     if ( !stash_is_linked( ch, name ) )
         return false;
 
-    /* Online, their list is in memory and current. */
-    if ( ( other = get_char_world( ch, (char *) name ) ) != NULL
+    /* Online, their list is in memory and current. get_char_world takes
+       a writable argument (number_argument cuts at a dot and puts it
+       back), so it gets a copy of the name. */
+    toc_strlcpy( who, name, sizeof(who) );
+    if ( ( other = get_char_world( ch, who ) ) != NULL
     &&   !IS_NPC(other) && other->pcdata != NULL )
         return stash_is_linked( other, ch->name );
 

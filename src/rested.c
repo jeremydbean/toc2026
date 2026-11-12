@@ -22,6 +22,7 @@
  */
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
 
 #define REST_PERCENT_PER_HOUR   5       /* of a level, per hour away */
 #define REST_CAP_PERCENT        150     /* a level and a half at most */

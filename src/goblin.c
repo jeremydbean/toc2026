@@ -41,6 +41,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "merc.h"
+#include "interp.h"
 
 extern char * const dir_name[];
 

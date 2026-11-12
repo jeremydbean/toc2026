@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include "merc.h"
 #include "interp.h"
+#include "magic.h"
 
 #define RESURRECT_OFFER_SECONDS  120
 /* The most top-level objects one ACCEPT carries (a corpse holds a

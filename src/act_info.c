@@ -5494,7 +5494,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
 
    old_level    = ch->level;   /* the life being left behind, for the bag name */
    ch->level    = 3;
-   ch->pcdata->points += 2500;
+   ch->pcdata->points = sh_int_clamp( ch->pcdata->points + 2500 );
    for (i=0;i<MAX_STATS;i++) ch->perm_stat[i] = 13;
    ch->pcdata->num_remorts += 1;
    free_string(ch->pcdata->list_remorts);

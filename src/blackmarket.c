@@ -41,6 +41,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "merc.h"
+#include "interp.h"
 #include "db.h"
 
 extern AREA_DATA *area_first;
@@ -183,7 +184,7 @@ bool black_market_sees( const CHAR_DATA *looker, const CHAR_DATA *dealer )
 
     if ( looker == NULL || dealer == NULL )
         return false;
-    if ( !IS_NPC(looker) && IS_TRUSTED( (CHAR_DATA *) looker, LEVEL_IMMORTAL ) )
+    if ( !IS_NPC(looker) && IS_TRUSTED( looker, LEVEL_IMMORTAL ) )
         return true;
     if ( IS_NPC(looker) && looker->pIndexData != NULL
     &&   looker->pIndexData->vnum == MOB_VNUM_PSIONIC_PROJECTION )
@@ -1123,7 +1124,7 @@ static bool bm_already_bought( CHAR_DATA *ch, int vnum )
         return false;
     for ( p = ch->pcdata->black_market_bought; *p != '\0'; )
     {
-        p = one_argument( (char *) p, word );
+        p = one_argument_const( p, word );
         if ( parse_int( word, INT_MIN, INT_MAX, &bought ) && bought == vnum )
             return true;
     }

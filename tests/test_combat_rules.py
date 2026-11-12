@@ -141,7 +141,7 @@ class CombatRulesCallSiteTests(unittest.TestCase):
 
     def test_smite_wears_its_weapon_down_before_it_breaks(self) -> None:
         body = function_body(self.fight, "void do_smite(")
-        self.assertIn("obj->condition -= (sh_int)number_range( SMITE_WEAR_MIN, SMITE_WEAR_MAX );", body)
+        self.assertIn("obj->condition = sh_int_clamp( obj->condition - number_range( SMITE_WEAR_MIN, SMITE_WEAR_MAX ) );", body)
         # The break is reached only by a weapon worn to nothing.
         self.assertRegex(body, r"obj->condition > 0 \)\s*\{[^}]*obj = NULL;")
         self.assertLess(body.index("SMITE_WEAR_MIN"), body.index("loud CRACK"))

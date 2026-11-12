@@ -2687,9 +2687,9 @@ bool spec_xp_converter( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      return true;
    }
 
-   ch->level -= 1;
+   ch->level = sh_int_clamp( ch->level - 1 );
    xp = (int)(next_xp_level(ch) + 5000); 
-   ch->level += 1;
+   ch->level = sh_int_clamp( ch->level + 1 );
 
    if( ch->exp >= xp )
    {
@@ -3359,7 +3359,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	 case 2:
 	 if(ch->train > 2)
 	 {
-	   ch->train -= 2;
+	   ch->train = sh_int_clamp( ch->train - 2 );
 	   send_to_char("You have lost some training sessions.\n\r",ch);
 	   found = true;
 	 }
@@ -3367,7 +3367,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	 case 3:
 	 if( ch->practice > 5)
 	 {
-	   ch->practice -= 5;
+	   ch->practice = sh_int_clamp( ch->practice - 5 );
 	   send_to_char("You have lost some practices.\n\r",ch);
 	   found = true;
 	 }
