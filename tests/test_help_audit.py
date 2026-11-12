@@ -148,8 +148,14 @@ class CorrectionsHold(unittest.TestCase):
         self.says("project", "moves on by itself", "passes closed doors")
         self.says("transfusion", "You lose exactly 50", "20 mana")
         self.assertLessEqual(self.page("transfusion").level, 0)
-        self.says("astral walk", "Type ASTRAL, not ASTRAL WALK", "stunned until the next tick",
-                  "out of a no-recall room")
+        # ASTRAL WALK <name> works since full_command_names (interp.c,
+        # 2026-10-30); the page used to warn that it looked for "walk".
+        self.says("astral walk", "astral walk <character>", "astral <character>",
+                  "stunned until the next tick", "out of a no-recall room")
+        self.lacks("astral walk", "Type ASTRAL, not ASTRAL WALK")
+        self.says("ego whip", "ego whip [victim]", "ego [victim]")
+        self.says("psionic armor", "psionic armor [character]")
+        self.lacks("psionic armor", "looks for a character")
         self.says("psionics", "28 transfusion", "WALKTO SALIR")
 
     def test_one_page_per_psionic_power(self) -> None:

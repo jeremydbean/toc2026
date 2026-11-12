@@ -1,166 +1,57 @@
 #HELPS
 
 -1 'NEWBIE INFO' START BEGIN BEGINNER 'GETTING STARTED'~
-Be welcome oh adventurer.  Since you are new to the game, your best course
-of action is to traverse the mud school before journeying on to other realms.
-It's designed to help you learn the basics of the game.  Make sure you read
-all the signs in the area, as they will add helpful hints on how things work.
-Just north of you, you will find rooms to the east and west. Make sure you
-visit them and follow the helps. To see a list of the Equipment you are
-wearing, type: equipment. To see if you have spells to cast type: spells.
-To see a list of your skills type: skills. For a list of available commands
-type: commands.  To see basic information about yourself type: score.
+Welcome!  New characters start at the Entrance to Mud School.  Walk
+through it first: the signs and room descriptions teach the basics, and
+the diploma at the end is worth wearing.  Don't try to kill the blob.
 
-* For new players:
-     Don't try to kill the blob in mudschool.
+Useful first commands:
 
-To see a lot more useful information, type: help beginners
+  score       your character          equipment   what you wear
+  skills      your skills             spells      your spells
+  commands    every command           help <word> help on anything
 
-To change how the game looks and behaves for you -- colour, your prompt,
-damage numbers, automatic looting and the rest -- type: help new
+HELP BEGINNERS is a short guide to moving, learning, dying and the
+settings.  HELP NEW lists the settings you can change.
 
-See also: NEW, BEGINNERS, RULES, GREETING
+See also: BEGINNERS, NEW, RULES, MUDSCHOOL
 ~
 
 
 -1 BEGINNERS~
+A short guide for your first hours.  HELP <word> explains any command;
+HELP KEYWORDS lists every topic.
 
-Welcome to Aaron's Time of Chaos...
+Moving
+  N, S, E, W, U, D (and NE, NW, SE, SW) move you; LOOK looks around.
+  WALKTO <place> walks you to an area, trainer or guild hall, and
+  RECALL takes you to the Temple when you are lost.
 
-This is a guide for new players. Help <name> will have most of the information
-you will need.  Typing 'help' by itself will bring up a command summary.
-Type 'help keyword' to see a list of the available help files.
+Your character
+  SCORE, INVENTORY, EQUIPMENT, AFFECTS and SKILLS show where you stand.
+  Hit points are your life, mana powers spells, and endurance pays for
+  moving.  At zero hit points you are helpless; much below it you die.
 
-Here's a list of useful commands to find out more about the game:
+Learning
+  PRACTICE improves skills you know, GAIN buys new ones with trains, and
+  TRAIN raises your stats.  GAINLIST shows what you can buy, and where.
+  Join a guild with Melancholy (WALKTO MELANCHOLY) from level 3 to 6.
 
-command - displays all the available commands in ToC
+Staying alive
+  CONSIDER a monster before you fight it, and set WIMPY so you flee when
+  badly hurt.  If you die your gear waits in your corpse: see DEATH.
 
-social  - displays all social commands in ToC. These socials do not
-affect the game in any way except to enhance playing as a more effective
-means to express your character.
-Note: There is no help available for socials. Feel free to try them out.
+Talking
+  GOSSIP <message> reaches everybody; TELL <name> <message> one player.
 
-gossip <...> - This is the usual way of how players speak to one another
-where <...> is what you want said. Gossip is one of many channels
-available to you. It is most useful as it is a public channel, meaning
-every player can 'listen' to gossip. Use it to ask for help or just to
-get to know the mud.  You cannot use the gossip channel (or other public
-channels) until you reach level 2.
+Settings and clients
+  HELP NEW lists your settings: colour, prompt, damage numbers, autoloot.
+  The Mudlet package and the browser client add maps and gauges.
 
-tell <name> <...> - Tell is another channel for private conversations
-between 2 people.
+In Dresden, the BANK keeps coin safe and pays 0.25% a day on balances of
+a platinum or more.  CHANGES lists what is new.
 
-color - You can enable color by typing color on, and color default.
-see help color for more information.
-
-Mudlet - The official Mudlet interface adds gauges and an automatic map.
-See help MUDLET and help MAP for setup and mapping details.
-
-Mud School
-==========
-
-New players should go through Mud School to learn the basics of mudding.
-When you first enter ToC, your character is placed at the Entrance to Mud
-School. Read the descriptions carefully as many instructions are shown in
-room descriptions.  Be sure to continue to the end to receive your MUD
-school diploma!  Wearing it will give you a boost to your leveling stats!
-
-To move in any direction, simply type the first letter.
-
-Example: To move north, type n or N (Upper/Lower case doesn't matter)
-
-To look at a room, type look.
-
-Your character has 3 vital signs, namely Hit Points (hp), Mana, and
-Endurance (end).
-
-Hit Points represent the amount of life your character has. Should your hp
-ever get below -10, you have died. If it reaches 0 or lower, you have
-been knocked unconscious and require assistance ... quickly.
-
-Mana is the magic force pulsing through your veins. Mana is used to cast
-magic spells and certain specialized skills. Spellcasting classes
-generally have more mana than non-spellcasting classes.
-
-Endurance is used each time your character moves. Certain spells/skills
-affect how much end is needed each time your character moves.
-
-
-Dying
-=====
-
-If you have died, all is not lost. Ask higher level players for help in a
-Corpse Retrieval (CR) or if possible, go back to the same place where you
-died and get back your stuff. Once you have reached your corpse, just get
-all the equipment from your corpse and you will be exactly the same as
-before -  give or take a couple of experience points :)
-See help DYING for more information.
-
-To get everything from corpse, type get all corpse.
-
-
-Places of interest
-==================
-
-Here are a couple of low level areas to attract your interest:
-
-Mob Factory - A stinking cesspool of drunks and workers, guarded by thugs
-employed by Foreman Floyd. Occasionally, you may come across horribly
-deformed guard dogs, affected by the slime pools around the facility.
-Be forewarned: this area is not for the meek.
-
-Dwarven Day Care - This delightful nursery cares for the offspring of
-the nearby dwarven kingdoms and mines. Nannies are scattered around the
-area, mothering these toddlers. They are quick to anger should one make a
-false move.
-
-Smurfs - Welcome to the world of those tiny little blue creatures we all
-know and love. The entire gang is here -  Papa Smurf, Smurfette, Brainy..etc.
-
-Some areas have aggressive monsters (monsters which attack without
-provocation) like Dwarven Day Care.
-
-There's a Newbie Train, up from the Entrance to Mud School, which can
-take you to these places and more.
-
-
-Dresden Services
-================
-
-The starting city of Dresden has several useful services:
-
-Bank        - Deposit and withdraw gold.  Your balance earns 1% interest
-              per real day and survives death and remort.  See help BANK.
-
-Casino      - The Lucky Dragon Casino in Market Plaza offers slots and
-              card games for those feeling lucky.  See help CASINO.
-
-Psionics    - Some characters can develop psionic abilities.  The PSIONIC
-              channel alerts you to nearby mental activity.  See help PSIONICS.
-
-
-General MUD Terms
-=================
-
-Some of the basic Mud abbreviations used are:
-
-AFK  - Away from Keyboard. Person is away from the keyboard; therefore
-       character is temporarily unavailable.
-BRB  - Be Right Back. Self-explanatory. Often used in conjunction with AFK.
-CR   - Corpse Retrieval. After a player has died, this is what the process
-       of getting back the corpse is called.
-ROFL - Roll On the Floor Laughing. A common social used to express humor.
-RL   - Real Life. Helps separates realities when speaking to other players.
-Mob  - Short for mobile, which is what most monsters in the game are referred
-       to as.
-NPC  - Non-Player-Character: all mobiles
-PC   - Player-Character: All Players. Immortals are considered NPC's.
-
-And that's it. Remember, this is only a game and we are all here to have FUN!
-
-Enjoy...
-
-See also: NEWBIE INFO, HELP, RULES
+See also: NORTH, WALKTO, PRACTICE, GUILDS, DEATH, NEW, MUDLET, WEB
 ~
 
 -1 GREETING~
@@ -219,10 +110,7 @@ Hope you enjoy the game!
 Please type HELP RULES, ignorance of the rules is not an excuse.
 Type MOTD to read this again.
 
-See also: NEWS, IMOTD, CHANGES
-
-
-
+See also: NEWS, CHANGES, RULES
 ~
 
 60 IMOTD~
@@ -234,8 +122,9 @@ Essential reading for new immortals:
   help QUESTS        - guidelines for running player quests
 
 Communication:
-  wiznet             - immortal broadcast channel (on by default)
-  wizinfo            - send a message to all immortals
+  immtalk <message>  - talk to the staff (also : <message>)
+  wizinfo            - turns the staff notices (logins, deaths, alerts)
+                       on or off
 
 Remember: your duty is to serve and improve gameplay for mortals.
 Do not use immortal powers to benefit your own mortal characters.
@@ -245,20 +134,23 @@ Do not use immortal powers to benefit your own mortal characters.
 See also: MOTD, JOBS, COMMANDMENTS
 ~
 
-62 JOBS~
-Helps for Immortals are listed under a help file for your corresponding
-level, i.e. help immortal, help angel, etc.
-All job descriptions work in a top down fashion, meaning you are also
-responsible for the jobs of the immortal levels below you, if there are
-any.  These jobs are just listed as general purpose and not all encompassing.
-There is also a help file for running 'quests' that all immortals need
-to read. It sets down guide-lines for prizes/difficulty level.  Also
-to be read by all immortals is: help commandments.
+60 JOBS~
+Each immortal rank has a help page describing its duties: MARTYR,
+'IMMORTAL RANK', AVATAR, ANGEL, ARCHANGEL, DEMIGODS and DEITY.  You can
+read the page for your own rank and those below it.  The duties work top
+down: you are also responsible for the jobs of every rank below yours.
+They are general guidance, not a complete list.
 
-See also: IMOTD, COMMANDMENTS, MARTYR
+Every immortal should also read COMMANDMENTS and QUESTS.
+
+These duty pages were written by the original implementors and have not
+been revised for the game's newer features; see the note at the top of
+COMMANDMENTS.
+
+See also: IMOTD, COMMANDMENTS, QUESTS
 ~
 
-62 QUESTS~
+60 QUESTS~
 The following guidelines apply to all quests run by immortals on ToC:
 
   - Quests should be fun and accessible to the target audience.
@@ -266,104 +158,112 @@ The following guidelines apply to all quests run by immortals on ToC:
     Do not load an item more than 4 levels below its normal level
     (e.g. level 5 ogre gauntlets are prohibited).
   - Larger prizes require greater group effort or problem-solving.
-  - Announce quest start on the INFO channel so all players may attend.
+  - Announce the quest's start so all players may attend: ANNOUNCE
+    (avatar rank and above) reaches everybody online.
   - Have at least 10 interested players before beginning a quest.
   - Do not use reboot as a reset mechanism mid-quest.
   - Leave a note summarising the quest and prizes awarded.
 
-See also: HEROQUEST, COMMANDMENTS, JOBS
+These are staff-run quests.  The questmaster's automatic quests are
+AQUEST.
+
+See also: COMMANDMENTS, JOBS, AQUEST
 ~
 0 HEROQUEST~
-Hero quests are no longer run. The clue hunt the questmaster once set
-heroes -- HEROQUEST, LISTCLUE, RETRIEVED and ENDQUEST -- is gone, and
-none of those commands exists any more.
+Hero quests are no longer run: HEROQUEST, LISTCLUE, RETRIEVED and
+ENDQUEST are gone.  Heroes quest like everybody else, with Questor Thews
+at the top of the Oak Tree: AQUEST REQUEST for an ordinary quest, AQUEST
+DAILY REQUEST for the day's three dailies.
 
-Heroes quest the way everyone does, with Questor Thews at the top of the
-Oak Tree: AQUEST REQUEST for an ordinary quest, and AQUEST DAILY REQUEST
-for the day's three daily quests. HELP AQUEST has the details.
-
-See also: AQUEST, HEROLEVELS, QUESTS
+See also: AQUEST, HEROLEVELS
 ~
 
 0 HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS'~
-Hero status is reached when a character attains level 51.  At that point
-normal experience leveling stops; experience is accumulated for other uses.
+Hero status is reached at level 51.
 
-The primary use of accumulated hero experience is exchanging it for
-additional practice sessions.  Each exchange costs 5,000 experience points
-and grants between 5 and 7 practices at random.  Exchanges must be made
-with the guru located in Hero Hall.
+  - Experience stops at level 50.  To become a hero, buy the level from
+    the questmaster: AQUEST BUY HERO (7000 quest points, 5000 once you
+    have remorted).
+  - From 51, experience levels you again, up to 54 plus your remorts:
+    54 before any remort, 59 after the fifth.  At that cap experience
+    no longer counts.
+  - REMORT starts a new life at level 3 from the cap.
+  - Freddy, the training guru (WALKTO GURU), trades a hero's spare
+    experience for practices: EXCHANGE.
 
-Heroes keep questing with the questmaster like everyone else, for quest
-points and coin.  See HELP AQUEST.
+Heroes keep questing with the questmaster like everybody else.
 
-See also: EXCHANGE, PRACTICE, AQUEST, GAIN
+See also: REMORT, EXCHANGE, AQUEST, EXPERIENCE
 ~
 
 62 MARTYR~
-You job is to prove to the Implementors that you are worthy of advancement
-to a higher Immortal level, either by running decent quests <not common
-place ones>, helping out the other immortals by finding bugs or assisting
-in finding bugs, area creation, and generally staying out of trouble.
-You were not given an immortal to boost your ego, so bragging to players
-that you have one will not be looked upon kindly.  At this level, you
-are subject to deletion at the discretion of the implementors, so don't
-screw up.  Some players are granted this status for helping out with
-the game in the past, and the above does not entirely apply to them.
+Your job is to prove to the Implementors that you are worthy of
+advancement to a higher Immortal level, either by running decent quests
+(not common place ones), helping the other immortals find bugs, area
+creation, and generally staying out of trouble.  You were not given an
+immortal to boost your ego, so bragging to players that you have one
+will not be looked upon kindly.  At this level you are subject to
+deletion at the discretion of the implementors, so don't screw up.
+Some players are granted this status for helping the game in the past,
+and the above does not entirely apply to them.
 
-See also: JOBS, IMMORTAL, COMMANDMENTS
+See also: JOBS, COMMANDMENTS, QUESTS
 ~
 
 63 'IMMORTAL RANK'~
-Your job is to help new players out.  This does not mean you
-will give out information about where stuff is, or what something does, or
-how to get somewhere. You could however tell them to go check out the newbie
-train. It means that if someone is clueless, you can say: 'go through the mud
-school and read the signs', or 'Well, when I was a newbie, I found it a good
-idea to train 'such and such' a skill/spell/attribute, but this is just my
-opinion.' You are not to nursemaid the players. Only help out when someone is
-in need of it.  Also, if someone has a bug to report, go listen to them.
-Getting player input is very important, even if their opinions or supposed
-bugs may seem off the wall so to speak.  You can also run minor quests,
-though you must have at least 10 people wishing to participate in them.
-Read the help file 'Quests' for more information.
+Your job is to help new players out.  This does not mean you will give
+out information about where stuff is, or what something does, or how to
+get somewhere.  You could however tell them to go check out the newbie
+train.  It means that if someone is clueless, you can say 'go through the
+mud school and read the signs', or 'Well, when I was a newbie, I found it
+a good idea to train such and such a skill/spell/attribute, but this is
+just my opinion.'  You are not to nursemaid the players.  Only help out
+when someone is in need of it.  Also, if someone has a bug to report, go
+listen to them.  Getting player input is very important, even if their
+opinions or supposed bugs may seem off the wall.  You can also run minor
+quests, though you must have at least 10 people wishing to participate.
+Read the help file QUESTS for more information.
 
-See also: AVATAR, COMMANDMENTS, JOBS
+(Written before WALKTO, the published routes, the Gear Finder and HELP
+pages that now tell every player where things are and what they do.  See
+the note in COMMANDMENTS.)
+
+See also: MARTYR, COMMANDMENTS, JOBS
 ~
 
 64 AVATAR~
 Your job is to run quests for the players.  One doesn't have to be run
-every day, but once a week at pre-set times, or even random intervals
+every day, but once a week at pre-set times, or even random intervals,
 would be good.  Having quests livens up the game and is a very important
 part of making the game interesting.
 
-See also: IMMORTAL, ANGEL, COMMANDMENTS
+See also: 'IMMORTAL RANK', COMMANDMENTS, QUESTS
 ~
 
 65 ANGEL~
-Your job is to socialize with the players. Don't bother them if they don't
-want your company. Ask questions pertaining to the game, get their opinions
-on how things are set up, or if they think something is unfair or out of
-balance, or needs changing.  Take their comments with a grain of salt, as
-a lot of people are going to say 'this sucks' or 'this is unfair' or
-'I need a spell that kills everything', etc.  You can also run quests, and
-are obligated to assist other immortals running them.  Read the help on
-quests.
+Your job is to socialize with the players.  Don't bother them if they
+don't want your company.  Ask questions pertaining to the game, get their
+opinions on how things are set up, or if they think something is unfair,
+out of balance, or needs changing.  Take their comments with a grain of
+salt, as a lot of people are going to say 'this sucks' or 'this is
+unfair' or 'I need a spell that kills everything'.  You can also run
+quests, and are obligated to assist other immortals running them.  Read
+the help on QUESTS.
 
-See also: AVATAR, ARCHANGEL, COMMANDMENTS
+See also: AVATAR, COMMANDMENTS, QUESTS
 ~
 
 66 ARCHANGEL ARCH-ANGEL~
-Your job is to keep tabs on game balance.  This covers many
-topics.  Keep tabs on object stats and whether they should be lowered or
-increased, or if something about the object isn't the way it should be.
-Discriminately watch how PC's go about playing the game.  In most
-cases do this by asking if you can follow them around.  In some cases you
-can follow without making your presence known, but avoid invading privacy.
-Check stats on mobs to see if they are correct, in your opinion, or if
+Your job is to keep tabs on game balance.  This covers many topics.  Keep
+tabs on object stats and whether they should be lowered or increased, or
+if something about the object isn't the way it should be.  Discreetly
+watch how players go about playing the game.  In most cases do this by
+asking if you can follow them around.  In some cases you can follow
+without making your presence known, but avoid invading privacy.  Check
+stats on mobs to see if they are correct, in your opinion, or if
 something needs changing.
 
-See also: ANGEL, DEMIGODS, COMMANDMENTS
+See also: ANGEL, COMMANDMENTS, JOBS
 ~
 
 67 DEMIGODS DEMI-GODS~
@@ -371,41 +271,53 @@ Your job is to keep the peace.  This means if someone is being
 obnoxious, kindly ask them to stop the annoying behavior.  If they
 persist, you can remove their channels until they simmer down.  If they
 are a blatant pain, gossiping foul language and such, nochannel them and
-dump them in jail.  Jailing is usually only for those players that
-log on a level one just to make trouble, not players who spend a lot of time
-on the game, though they too can be jailed if the circumstances are extreme.
-Make sure you leave a note concerning the incident.
+dump them in jail.  Jailing is usually only for those players that log
+on a level one just to make trouble, not players who spend a lot of time
+on the game, though they too can be jailed if the circumstances are
+extreme.  Make sure you leave a note concerning the incident.
 
-See also: ARCHANGEL, DEITY, COMMANDMENTS
+See also: ARCHANGEL, COMMANDMENTS, JOBS
 ~
 
 68 DEITY~
-Your job is to make sure that all the rules of the game are being followed.
-This includes both mortal and immortal.  You are also responsible for
-reimbursements, whether this includes loading a few items, or doing a
-complete restore of the character.  Characters that delete themselves will
-not be reimbursed 99% of the time; you'll have to make a judgement call for
-the other 1% of the cases.  Reimbursed items that are loaded will be loaded
-at the level of an existing item in the game, or the character's level if the
-object is known to be in that level range.
+Your job is to make sure that all the rules of the game are being
+followed.  This includes both mortal and immortal.  You are also
+responsible for reimbursements, whether this includes loading a few
+items, or doing a complete restore of the character.  Characters that
+delete themselves will not be reimbursed 99% of the time; you'll have to
+make a judgement call for the other 1% of the cases.  Reimbursed items
+that are loaded will be loaded at the level of an existing item in the
+game, or the character's level if the object is known to be in that
+level range.
 
-See also: DEMIGODS, GODS, COMMANDMENTS
+Restores now go through PRESTORE and the player snapshots; see
+wiki/player-backups.md and wiki/operator-guide.md.
+
+See also: DEMIGODS, COMMANDMENTS, JOBS
 ~
 
-62 COMMANDMENTS LAWS 'GOD RULES'~
+60 COMMANDMENTS LAWS 'GOD RULES'~
 .
-			 **********************
-			 ** The Rules of ToC **
-			 **********************
+                         **********************
+                         ** The Rules of ToC **
+                         **********************
+
+Note: these rules, the rank duties (JOBS) and QUESTS were written by the
+original implementors.  Since then the game itself has begun to show
+every player gear stats (LORE, IDENTIFY, COMPARE, the website's Gear
+Finder), routes (WALKTO, the client's Routes) and free buffs (Hermie).
+The rules below have not been revised for those features.  Where a rule
+and a feature seem to conflict, ask an implementor; do not assume either
+way.
 
 1)  Do not kill mortals, do not kill mortals, do not kill mortals.
     This includes transferring/summoning them to aggressive mobs.
 
 2)  Do not cheat for ANY mortal in ANY way, especially your own.
-    Unless of course you LIKE deletion. Yes this includes tanking,
-    healing/restoring, casting protection spells <armor, sanct>,
+    Unless of course you LIKE deletion.  Yes this includes tanking,
+    healing/restoring, casting protection spells (armor, sanct),
     and softening up or altering mobs.  It also includes giving out
-    object stats or mobs stats.
+    object stats or mob stats.
 
 3)  Do not transfer or summon mobs to mortals or mortals to mobs.
     Let them explore.
@@ -415,7 +327,7 @@ See also: DEMIGODS, GODS, COMMANDMENTS
 5)  DO NOT use reboot.  Plain and simple.
 
 6)  Do not give out free equipment.  Items for quests are ok, if the item
-    fits the difficulty of the quest listed in 'help quest'.
+    fits the difficulty of the quest listed in QUESTS.
 
 7)  Do not undermine the authority of a higher level god.  If you
     see that someone has been frozen or nochannelled do not restore
@@ -430,15 +342,14 @@ See also: DEMIGODS, GODS, COMMANDMENTS
     your immortal to get even, in any way shape or form.  Keep your mortals
     and your immortal disassociated from one another.
 
-See also: IMMORTAL, RULES, WIZLIST
-
+See also: JOBS, RULES, QUESTS
 ~
 
 -1 HERBIE ANGEL~
-Herbie, the wonder angel, will at odd times come to your aid and cure you of
-all your wounds. He's not something to be relied on though.
+Herbie, the wonder angel, now and then visits whoever in the world is
+most hurt and heals them.  He is a kindness, not something to rely on.
 
-See also: HEAL, GODS
+See also: HEAL, HERMIE
 ~
 
 -1 RULES~
@@ -454,37 +365,36 @@ Note that all punishments also include confiscation of any items obtained
 by breaking a rule.
 
 * Foul and/or abusive language will not be tolerated on ToC, from anyone
-  (including gods). This applies to all public channels and to say and
+  (including gods).  This applies to all public channels and to say and
   emote used in public areas.  On private channels, please respect other
-  people and discontinue using language they tell you they find offensive.
+  people and stop using language they tell you they find offensive.
 
-* Sexual harassment of any form will not be tolerated, punishable by deletion
-  This MUD does not exist for you to belittle others.. It exists solely for
-  the entertainment of all.. Violate someone's civil rights and you're gone,
-  no exceptions!!
+* Sexual harassment of any form will not be tolerated, punishable by
+  deletion.  This MUD does not exist for you to belittle others.  It
+  exists solely for the entertainment of all.  Violate someone's civil
+  rights and you're gone, no exceptions.
 
 * We created this game for your enjoyment.  While we don't like the line
   "your being here is a privilege not a right", your use of the game can
   and will be removed if we so deem it necessary for the good of the MUD.
 
-* Cheating will not be tolerated.  This includes accepting favors from gods
-  and exploiting bugs. If you find a bug, report it, then do not use it.
+* Cheating will not be tolerated.  This includes accepting favors from
+  gods and exploiting bugs.  If you find a bug, report it (BUG), then do
+  not use it.
 
-* If an immortal speaks to you, listen and do as told. Don't argue, just do
-  it.  Immortals have a tough enough job without dealing with bad attitudes.
+* If an immortal speaks to you, listen and do as told.  Don't argue, just
+  do it.  Immortals have a tough enough job without dealing with bad
+  attitudes.
 
-* This is a pKill MUD.  If you decide to become pKillable (SEE HELP PKILL),
-  then live (or die) with that decision.  Any complaints in regards to being
-  pKilled will fall upon deaf ears.
+* This is a pKill MUD.  If you decide to become pKillable (see PKILL),
+  then live (or die) with that decision.  Any complaints in regards to
+  being pKilled will fall upon deaf ears.
 
-* Do not bring aggressive mobs to lower level areas other than the ones they
-  belong in.  Charming aggressive mobs and bringing them to Dresden is
-  looked on particularly strongly.
+* Do not bring aggressive mobs to lower level areas other than the ones
+  they belong in.  Charming aggressive mobs and bringing them to Dresden
+  is looked on particularly strongly.
 
-See also: COMMANDMENTS, PUNISHED, PKILL
-
-
-
+See also: PKILL, ARENA, BUG
 ~
 62 PUNISHED~
 This space is intended to keep a running list of punishments.
@@ -499,81 +409,42 @@ See also: COMMANDMENTS, RULES
 ~
 
 -1 NEWS~
-(Last updated: 2026)
+For what has changed lately, type CHANGES (CHANGES ALL shows every
+entry).  This page is kept as history: the entries below are old and
+some no longer describe the game.
 
-- DAMAGENUMBERS command improved: each player now sees damage numbers
-        based on their own toggle, not the attacker's.  Bystanders always
-        see the descriptive message without raw numbers.
+Recent (2026)
+- DAMAGENUMBERS: each player sees damage numbers by their own setting.
+- PARDON (staff) clears one flag at a time -- wanted, excon, pkiller,
+  warned, freeze or deny -- and PARDON ALL clears wanted, excon,
+  pkiller and warned.  "killer" and "thief" still work as aliases.
 
-- SET CHAR expanded with new immortal fields: pkiller, excon, wanted,
-        freeze, deny, bank, dcount, pkills.  Type "set char" with no
-        arguments to see the full field list.
-
-- PARDON command expanded: now handles wanted, excon, pkiller, warned,
-        freeze, deny, and "all" (clears all punishment flags at once).
-        Old keywords "killer" and "thief" still work as aliases.  Each
-        change saves the character file immediately.  See HELP PARDON.
-
-(Previous entry: 07/16/2024)
-
-- Added a fresh change log entry to HELP NEWS so the latest updates are
-        visible in-game without checking outside resources.
-
-- Repair vendors now broadcast the gold cost before fixing damaged gear,
-        making it easier to budget for weapon and armor upkeep.
-
-- Clarified psionic notifications so INFO messages highlight who gained
-        abilities and when they were granted.
-
-- Smite now no longer destroys your weapon randomly, but has the same
-        chance to drop it, and set its durability to 1.  Repair it at any
-        weaponsmith before using it, or risk breaking it forever!
-
-- Blinding Fists damage has been increased significantly.
-
-- Fists of Fury Flee chance is being tweaked to be lower.
-
-- Components are once again properly scattering around the world.  Also,
-        all scribe & concoct recipes are once again working!
-
-- Psionic chance has been raised from (1) 10% chance to (3) 5% chances
-        between levels 18-22.  (Approximately a 5% chance increase). However,
-        the chance of being granted some of the better psionic abilities have been
-        lowered slightly.)
-
-- Visibility of the psionic message has been increased greatly.  Also, all
-        characters will now be notified via INFO if a player is granted
-        psionic abilities!
-
-- Bug causing the MUD to crash when some older pfiles were loaded has been
-        fixed!  (Send a note to Killuminati if this happens again.)
-
-- MUD Diploma at the end of the school now has +10 to all leveling stats. :)
-
-- Gossip channel level requirement required.
-
-- You can now save at level 1.
-
-- Eq can now get damaged, you need to go to an armorer or weaponsmith to
-  repair the items, using a repair <item> syntax.
-
-- Stats have changed a bit, some races are now able to go beyond the
-  original 25 max, depending on their base stat and possible magical
-  enhancement.
+History (2024 and earlier)
+- Repair vendors quote their price before fixing gear.
+- Smite wears a weapon down rather than breaking it at random.  Today a
+  weapon breaks only when worn to nothing, and REPAIR prevents that.
+- Blinding Fists damage was increased; the Fists of Fury flee chance
+  lowered.
+- Components scatter around the world again; scribe and concoct recipes
+  work.
+- Psionics: the awakening odds and messages were changed.  The current
+  rules are in HELP PSIONICS.
+- The Mud School diploma gives a bonus to your levelling stats.
+- You can save at level 1.
+- Equipment can be damaged; REPAIR <item> at an armourer or weaponsmith.
+- Some races can raise stats past the old maximum of 25, by race and
+  magical enhancement.
 
 See also: CHANGES, MOTD
 ~
 
 -1 LYCANTHROPY~
-Lycanthropy is a magical disease out of legend, with the main affect on
-the afflicted being that on the Full Moon, the diseased person turns into
-a Were-Creature. The most commonly known form is the Were-Wolf. The
-disease is transmitted by being bitten by a being that is already
-afflicted with Lycanthropy. The first Were-Creature was probably created
-by some kind of Curse long ago, and has mutated into its current form.
-Were-Creatures typically carry 1-4 items, depending on their size, and
-have no worries about death. There is currently no known cure for this
-disease.
+Lycanthropy is a disease out of legend: on the full moon the afflicted
+becomes a were-creature, most often a werewolf, and its bite passes the
+curse on.  No cure is known.
+
+It is switched off in the game today.  Nobody can catch it, and a
+character who carried it from the old days has it removed at login.
 
 See also: RACES, DEATH
 ~
@@ -602,11 +473,9 @@ See also: WEB, DIKU, MERC, ROM
 ~
 
 -1 TAX TAXES~
-Providing subissue equipment to newbies, training guards to protect the city
-of Dresden against killers and thieves, and furnishing the mayor's office
-in high style are all expensive.  In order to keep everything running
-smoothly, ToC taxes the wealthiest citizens.  This tax amounts to 50% of
-all gold above 1 million coins, each and every time you log on.
+There is no tax.  Long ago the city of Dresden took half of every gold
+coin above a million at each login; that tax no longer exists.  The BANK
+pays interest instead.
 
 See also: BANK, GUILDS
 ~
@@ -735,480 +604,370 @@ See also: DIKU, MERC
 ~
 
 -1 'RACE HELP' 'RACE' 'RACES'~
-ToC has the following races for player characters:
+The races a player can choose:
 
-Human    the standard race
-Dwarf    good warriors and priests
-Elf      good thieves and mages
-Hobbit   good thieves
-Saurian  unique race. difficult to play
+  Human    no special talents; may be any class
+  Dwarf    sturdy; good warriors and clerics
+  Elf      quick and clever; good mages and thieves
+  Hobbit   small and nimble; good thieves
+  Saurian  a reptile people, hard to play well
 
-Different races have different starting statistics, and also different
-stat maximums for magic items and training.
+Race sets your starting stats and how high they can go, and the
+experience each level costs.  Monks must be human or dwarf, and
+necromancers human or elf.
 
-Each race requires different experience to gain a new level depending
-on what class you chose to be. Also, some classes are race restricted,
-those being:
-
-Monk       : Human and Dwarf only
-Necromancer: Human and elf only
-
-See also: CLASS, REMORT, STATS
+See also: HUMAN, DWARF, ELF, HOBBIT, SAURIAN, CLASS, STATS
 ~
 
 -1 DWARF DWARVES~
-Dwarves are a short, stocky demi-human race, known for foul temper and great
-stamina.  Dwarves have high strength and constitution, but poor dexterity.
-They are not as smart as humans, but are usually wiser due to their long
-lifespans.  Dwarves make excellent fighters and priests, but are very poor
-mages or thieves.
+Dwarves are short, stocky and stubborn: strong and hardy but clumsy,
+less clever than humans and wiser.  They make fine warriors and clerics
+and poor mages and thieves.
 
-Dwarves are resistant to magic, poison and disease, but cannot swim, and
-so are very vulnerable to drowning.  They receive the bash skill for free.
+  - Resist magic and disease; vulnerable to drowning.
+  - See in the dark (infravision).
+  - Born holding BASH.
+  - May be monks; not necromancers.
 
-The experience needed per level for dwarves is:
+Experience per level is 2000, plus this once for your class and once
+more for your guild (monks are in their own guild):
 
-Mage:2200  Cleric:2150  Thief:2150  Warrior:2125  Monk:2400
+  Mage +200  Cleric +150  Thief +150  Warrior +125  Monk +150
 
-See also: RACES, ELF, HUMAN, HOBBIT
+See also: RACES, ELF, HUMAN, HOBBIT, SAURIAN
 ~
 
 -1 ELF ELVES~
-Elves are slightly taller than humans, but have a much lighter build.  They
-lack the strength and stamina of the other races, but are for more agile,
-both in body and mind.  Elves are superb mages and thieves, but have at
-best fair talent as warriors or priests.
+Elves are taller and lighter than humans: less strong and hardy, quicker
+in body and mind.  They make superb mages and thieves and fair warriors
+and clerics.
 
-Elves resist charm spells most effectively, due to their magical nature.
-However, they are burned by the touch of iron, and so are barred from the
-use of iron or steel in their adventuring careers.  Elves are notoriously
-hard to spot, and so receive the sneak skill automatically.
+  - Resist magic and poison; vulnerable to iron weapons.  They may wear
+    and wield anything.
+  - See in the dark (infravision).
+  - Born holding SNEAK.
+  - May be necromancers; not monks.
 
-The experience needed per level for elves is:
+Experience per level is 2000, plus this once for your class and once
+more for your guild (necromancers are in their own guild):
 
-Mage:2100  Cleric:2125  Thief:2150  Warrior:2200  Necro:2300
+  Mage +100  Cleric +125  Thief +150  Warrior +200  Necromancer +150
 
-See also: RACES, DWARF, HUMAN, HOBBIT
+See also: RACES, DWARF, HUMAN, HOBBIT, SAURIAN
 ~
 
 -1 HUMAN HUMANS MAN~
-Humans are the most common race in the world, and make up the majority of
-adventurers. Although they have no special talents like the other races,
-they are more versatile, being skilled in all four classes. Humans may
-also train their primary stat higher than any other race, and are able to
-gain more benefit from magical devices.
+Humans are the most common adventurers: no special talents, but they may
+be any class, monk and necromancer included.
 
-The experience needed per level for humans is:
+  - Train their class's main stat one point higher than other races.
+  - Gain one point more than other races from magic and gear that raise
+    stats.
 
-Mage:2000  Cleric:2000  Thief:2000  Warrior:2000  Monk:2300  Necro:2000
+Experience per level is 2000 for every class.  A human monk pays 75
+more, and 75 more again for the monks' guild; nothing else costs a human
+extra.
 
-See also: RACES, DWARF, ELF, HOBBIT
+See also: RACES, DWARF, ELF, HOBBIT, SAURIAN
 ~
 
 -1 HOBBIT HALFLING~
-Hobbits are a demi-human race, slightly shorter than dwarves. They resist
-poison and disease like dwarves.  They are vulnerable to strong wind,
-due to their small size and weight.  Of all the races, they have the
-highest dexterity.  Hobbits gain the hide skill automatically and are able
-to duck under attacks.
+Hobbits are small, a little shorter than dwarves, with the best
+dexterity of any race.
 
-The experience needed per level for hobbits is:
+  - Resist poison and disease; vulnerable to wind.
+  - Born holding HIDE.
+  - Now and then duck under a blow altogether.
+  - Cannot be monks or necromancers.
 
-Mage:2200  Cleric:2150  Thief:2125  Warrior:2150
+Experience per level is 2000, plus this once for your class and once
+more for your guild:
 
-See also: RACES, DWARF, ELF, HUMAN
+  Mage +200  Cleric +150  Thief +125  Warrior +150
+
+See also: RACES, DWARF, ELF, HUMAN, SAURIAN
 ~
 
 -1 SAURIAN~
-The Saurian race migrated to this world when theirs was on the brink of
-destruction.  When it was discovered that their world would soon perish,
-the mages created a powerful dimensional portal.  So much power was focused
-into it, though, that all that could be discerned was that the terminus world
-was habitable, and so they arrived here.  Their world's atmosphere was harsher
-than here, giving them a strong immune system.  They are Immune to poison,
-and resist fire, but are vulnerable to cold due to their reptilian nature.  They
-also have a chance of getting a bonus attack with their tail in combat.
+The Saurians came to this world through a great portal when their own
+was dying.  It was harsher than this one, and they are a hardy, reptile
+people.
 
-The experience needed per level for saurians is:
+  - Immune to poison and resist fire; vulnerable to cold.
+  - See in the dark (infravision).
+  - Now and then strike with their tail as well.
+  - Cannot be monks or necromancers.
 
-Mage:2200  Cleric:2150  Thief:2250  Warrior:2200
+Experience per level is 2000, plus this once for your class and once
+more for your guild:
 
-See also: RACES, DWARF, ELF, HUMAN
+  Mage +200  Cleric +150  Thief +250  Warrior +200
+
+See also: RACES, DWARF, ELF, HUMAN, HOBBIT
 ~
 
 -1 SPELLGROUP~
-Classes that can cast spells can gain certain groups of spells, depending on
-whether they are multi-class or full class. The following helps will show a
-list of what spells/skills are in each group, and how much it will cost to
-gain that group:
+Spells are bought in groups with GAIN.  Most groups come in versions
+for different buyers: full mages or clerics (class and guild the same),
+other classes in that guild, and necromancers.
 
-ATTACK          BEGUILING        BENEDICTIONS      COMBAT
-CREATION        CURATIVE         DETECTION         DRACONIAN
-ELEMENTAL       ENCHANTMENT      ENHANCEMENT       HARMFUL
-HEALING         LIFE-UNDEATH     MALADICTIONS      PROTECTIVE
-TRANSPORT       WEATHERSPELLS    NIGHT VISION
+  ATTACK        BEGUILING      BENEDICTIONS   COMBAT
+  CREATION      CURATIVE       DETECTION      DRACONIAN
+  ELEMENTAL     ENCHANTMENT    ENHANCEMENT    HARMFUL
+  HEALING       LIFE-UNDEATH   MALADICTIONS   PROTECTIVE
+  TRANSPORT     WEATHERSPELLS  NIGHT VISION   ARCANE STUDIES
 
-Note that occasionally you find a spell included in a spellgroup but
-not available to members of your class at mortal levels.  This is done
-for future flexibility.  The helps on the individual spells tell you
-what level they are for each class.  If the spell is not available to
-mortals, it is listed as N/A.
+Each of those pages names a group's versions.  HELP GROUP <name> -- for
+example HELP GROUP GUILD ATTACK -- lists that group's spells and what it
+costs you, straight from the game's own table.  GAINLIST shows what you
+can buy and from whom.  Each spell's own page gives its level by class.
 
 See also: GAIN, GAINLIST, GROUPS
 ~
 
 -1 ATTACK~
-The attack spell group is primarily for clerics and those in the cleric
-guild. If you are a full cleric, you gain the following spells at a cost of
-5 trains:
+Attack spells (demonfire, dispel evil, dispel good and more):
 
-Demonfire, Dispel Evil, Dispel Good, Earthquake, Heat Metal.
+  attack         full clerics
+  guild attack   others in the clerics' guild
 
-If you are not a full cleric, you will need to gain the 'guild attack'
-group. It has the following spells:
+HELP GROUP ATTACK or HELP GROUP GUILD ATTACK lists the spells and what
+the group costs you.  GAINLIST shows what you can buy and from whom.
 
-Demonfire, Dispel Evil, Dispel Good
-
-Cost is 4 trains for mages, 5 for thieves and warriors
-
-
-Trainer for C/C is Dominic. Trainer for ?/C, Fredar.
-
-See also: SPELLGROUP, GAIN, COMBAT
+See also: SPELLGROUP, GAIN, DEMONFIRE
 ~
 
 -1 BEGUILING~
-This group is primarily for mages. They gain the following spells:
+Beguiling spells (charm person, sleep, invis):
 
-Charm Person, Sleep, Invisibility, Mass Invisibility
+  beguiling         full mages; adds mass invis
+  guild beguiling   others in the mages' guild
 
-at a cost of 3 trains.
+HELP GROUP BEGUILING or HELP GROUP GUILD BEGUILING lists the spells and
+what the group costs you.  GAINLIST shows what you can buy and from whom.
 
-Guild members gain the following spells:
-
-Charm Person, Sleep, Invisibility
-
-at a cost of 3 trains.
-
-Trainer for M/M is Danko. Trainer for ?/M is Creole
-
-See also: SPELLGROUP, GAIN, MALADICTIONS
+See also: SPELLGROUP, GAIN, CHARM PERSON
 ~
 
 -1 BENEDICTIONS~
-This group is primarily for clerics. They gain the following spells:
+Blessings (bless, calm, holy word, remove curse, aid, mana convert):
 
-Bless, Calm, Frenzy, Holy Word, Remove Curse, Aid, Mana Convert,
-Raise Dead
+  benedictions         full clerics; adds frenzy and raise dead
+  guild benedictions   others in the clerics' guild
 
-at a cost of 4 trains.
+HELP GROUP BENEDICTIONS or HELP GROUP GUILD BENEDICTIONS lists the
+spells and what the group costs you.  GAINLIST shows what you can buy
+and from whom.
 
-Guild members gain the following:
-
-Bless, Calm, Holy Word, Remove Curse, Aid, Mana Convert
-
-at a cost of 4 trains.
-
-Trainer for C/C is Tempora.  Trainer for ?/C is Grill.
-
-See also: SPELLGROUP, GAIN, HEALING
+See also: SPELLGROUP, GAIN, BLESS
 ~
 
 -1 COMBAT~
-This group is primarily for mages. They gain the following spells:
+Mage combat spells (colour spray, fireball, shocking grasp and more):
 
-Acid Blast, Chain Lightning, Color Spray, Fireball, Shocking Grasp,
-Heat Metal
+  combat         full mages; adds acid blast, chain lightning, heat metal
+  guild combat   others in the mages' guild
 
-at a cost of 6 trains.
+HELP GROUP COMBAT or HELP GROUP GUILD COMBAT lists the spells and what
+the group costs you.  GAINLIST shows what you can buy and from whom.
 
-Guild members gain the following:
-
-Color Spray, Fireball, Shocking Grasp
-
-at a cost of 4 trains.
-
-Trainer for M/M is Flame.  Trainer for ?/M is Kilar.
-
-See also: SPELLGROUP, GAIN, HARMFUL
+See also: SPELLGROUP, GAIN, FIRE SPELLS
 ~
 
 -1 CREATION~
-The creation spell group contains the following spells:
+Creation (continual light, create food, create spring, create water) is
+sold to anybody in the clerics' guild.
 
-Continual Light, Create Food, Create Spring, Create Water
+HELP GROUP CREATION lists the spells and what the group costs you.
+GAINLIST shows what you can buy and from whom.
 
-Cost is 4 for mage and cleric, 5 for warrior and thief.
-Only full clerics or members of the cleric guild can gain this.
-
-Trainer is Silius.
-
-See also: SPELLGROUP, GAIN
+See also: SPELLGROUP, GAIN, CREATE FOOD
 ~
 
 -1 CURATIVE~
-This group is primarily for clerics. They gain the following spells:
+Curative (cure blindness, cure disease, cure poison, cure nightmare) is
+sold to anybody in the clerics' guild.
 
-Cure Blindness, Cure Disease, Cure Poison, Cure Nightmare
+HELP GROUP CURATIVE lists the spells and what the group costs you.
+GAINLIST shows what you can buy and from whom.
 
-Cost is 4 for clerics, 5 for mages, and 6 for warriors and thieves.
-
-Trainer is Qualo.
-
-See also: SPELLGROUP, GAIN, HEALING
+See also: SPELLGROUP, GAIN, CURE NIGHTMARE
 ~
 
 -1 DETECTION~
-This group is open to all spell casters except necromancers, and contains
-the following spells:
+Detection (the detect spells, identify, know alignment, locate object)
+is sold to anybody in the clerics' or mages' guild.
 
-Detect Evil, Detect Good, Detect Hidden, Detect Invis, Detect Magic,
-Detect Poison, Identify, Know Alignment, Locate Object, Detect Traps,
-Detect Stealth.
+HELP GROUP DETECTION lists the spells and what the group costs you.
+GAINLIST shows what you can buy and from whom.
 
-Cost is 4 for mage, 4 for cleric, 5 for warrior and thief.
-
-Trainers are Silius for ?/C (including C/C)
-	 and Diemos for ?/M (including M/M)
-
-See also: SPELLGROUP, GAIN
+See also: SPELLGROUP, GAIN, IDENTIFY
 ~
 
 -1 DRACONIAN~
-This group is restricted to full mages only, at a cost of 7 trains,
-and contains the following spells:
+Draconian (the five dragon breaths) is sold to full mages only.
 
-Acid Breath, Fire Breath, Frost Breath, Gas Breath, Lightning Breath.
+HELP GROUP DRACONIAN lists the spells and what the group costs you.
+GAINLIST shows what you can buy and from whom.
 
-The lowest level spell in this group is level 34.
-
-Trainer is Drixt.
-
-See also: SPELLGROUP, GAIN, ELEMENTAL
+See also: SPELLGROUP, GAIN, DRACONIAN SPELLS
 ~
 
 -1 ELEMENTAL~
-This group is gainable by all spell casters.  Listed by what each class gets:
+Elemental spells (cold, water, wind, light and fire):
 
-M/M:  Cone of Cold, Blizzard, Dustdevil, Vortex, Moonbeam, Meteor Swarm,
-      Sunray
-      Cost: 6 trains
+  mage elemental     full mages
+  cleric elemental   full clerics
+  necro elemental    necromancers
+  guild elemental    others in the mages' or clerics' guild
 
-C/C:  Icicle, Cone of Cold, Water Burst, Geyser, Dustdevil, Vortex, Sunray
-      Cost: 6 trains
+HELP GROUP MAGE ELEMENTAL (and so on) lists a version's spells and what
+it costs you.  GAINLIST shows what you can buy and from whom.
 
-Nec:  Icicle, Cone of Cold, Water Burst, Geyser, Dustdevil, Vortex, Moonbeam
-      Cost: 4 trains
-
-?/M:  Icicle, Sunray, Dustdevil
-?/C:  Icicle, Sunray, Water Burst, Dustdevil
-      Cost: 4 for mage or cleric, 5 for warrior or thief.
-
-Trainers are:  Tempora for C/C
-	       Lunk for ?/C
-	       Drixt for M/M
-	       Kilar for ?/M
-	 and   Marilith for Necro
-
-See also: SPELLGROUP, GAIN, DRACONIAN
+See also: SPELLGROUP, GAIN, COLD SPELLS
 ~
 
 -1 ENCHANTMENT~
-The enchantment group is for full mages only, and holds enchant item (level
-16), enchant armor (30) and enchant weapon (40).  It costs 5 trains.
-GAINLIST shows who sells it to you.
+Enchantment (enchant item, enchant armor, enchant weapon) is sold to
+full mages only.
 
-See also: ENCHANT ITEM, ENCHANT ARMOR, ENCHANT WEAPON, SPELLGROUP, GAIN
+HELP GROUP ENCHANTMENT lists the spells and what the group costs you.
+GAINLIST shows what you can buy and from whom.
+
+See also: ENCHANT ITEM, ENCHANT ARMOR, ENCHANT WEAPON, SPELLGROUP
 ~
 
 -1 ENHANCEMENT~
-This group contains the following spells for full mages:
+Enhancement spells (haste, slow, infravision, mana convert and more):
 
-Haste, Infravision, Power Gloves, Slow, Mana Convert,
-Fire Shield, Frost Shield, Force Sword.
-Cost: 5 trains
+  enhancement         full mages; adds power gloves, fire shield, frost
+                      shield and force sword
+  guild enhancement   others in the mages' guild
+  necro enhancement   necromancers; with death shroud and force sword
 
-Guild members gain the following:
-
-Haste, Infravision, Slow, Mana Convert
-Cost: 5 trains
-
-Necromancers gain the following:
-
-Infravision, Mana Convert, Death Shroud, Force Sword
-Cost: 5 trains
-
-Trainers are:  Tranis for M/M
-	       Creole for ?/M
-	 and   Marilith for Necro
-
-Infravision alone is also sold as NIGHT VISION, in any guild.
+HELP GROUP ENHANCEMENT (and so on) lists a version's spells and what it
+costs you.  GAINLIST shows what you can buy and from whom.  Infravision
+alone is also sold as NIGHT VISION.
 
 See also: SPELLGROUP, GAIN, NIGHT VISION
-
 ~
 
 -1 'NIGHT VISION'~
-This group holds a single spell, Infravision, and is open to mages,
-clerics, thieves and warriors whatever guild they are in:
+Night vision holds one spell, infravision.  Any mage, cleric, thief or
+warrior can buy it, whatever their guild, from their class guildmaster
+in Dresden, who practises the spell too.  Necromancers get infravision in
+necro enhancement.
 
-Cost: Mage 1, Cleric 1, Thief 2, Warrior 2 trains
-
-Trainers are the class guildmasters in Dresden, who teach their class
-in any guild: Gioli the magician for mages, the missionary of Devota for
-clerics, the ninja master for thieves and Kalak the blacksmith for
-warriors. Each will practise the spell too.
-
-Necromancers learn Infravision in the necro enhancement group, from
-Marilith (see ENHANCEMENT).
+HELP GROUP NIGHT VISION shows what it costs you.
 
 See also: INFRAVISION, ENHANCEMENT, SPELLGROUP, GAIN
 ~
 
 -1 HARMFUL~
-This is primarily a cleric group. Full clerics gain the following spells:
+Harmful spells (cause serious, cause critical):
 
-Cause Critical, Cause Serious, Harm
+  harmful         full clerics; adds harm
+  guild harmful   others in the clerics' guild
 
-Guild members gain all of the above except Harm.
+HELP GROUP HARMFUL or HELP GROUP GUILD HARMFUL lists the spells and what
+the group costs you.  GAINLIST shows what you can buy and from whom.
 
-Cost: 3 Trains both for full clerics, 2 for guild members
-
-Trainer for C/C is Eriak.  Trainer for ?/C is Lunk.
-
-See also: SPELLGROUP, GAIN, COMBAT
+See also: SPELLGROUP, GAIN, CAUSE CRITICAL
 ~
 
 -1 HEALING~
-The healing group is for full clerics, and holds cure critical, heal, mass
-healing and divine intervention, for 4 trains.  Mages, thieves and warriors
-in the clerics' guild buy guild healing instead -- cure critical and heal
--- also for 4 trains.  GAINLIST shows who sells them to you.
+Healing spells (cure critical, heal):
 
-See also: HEALSPELL, DIVINE INTERVENTION, SPELLGROUP, GAIN, CURATIVE
+  healing         full clerics; adds mass healing and divine
+                  intervention
+  guild healing   others in the clerics' guild
+
+HELP GROUP HEALING or HELP GROUP GUILD HEALING lists the spells and what
+the group costs you.  GAINLIST shows what you can buy and from whom.
+
+See also: HEALSPELL, DIVINE INTERVENTION, SPELLGROUP, CURATIVE
 ~
 
 -1 LIFE-UNDEATH~
-This groups is restricted to necromancers only, and contains the following
-spells:
+Life and undeath is the necromancers' own group: the create undead
+spells, energy drain, raise dead, trap the soul, ghostly presence and
+haven.  Every necromancer also starts with the NECROMANCY group.
 
-Create Skeleton, Create Wraith, Create Vampire, Energy Drain,
-Raise Dead, Trap the Soul, Haven, Ghostly Presence
+HELP GROUP LIFE & UNDEATH and HELP GROUP NECROMANCY list the spells and
+what they cost you.  GAINLIST shows what you can buy and from whom.
 
-Cost: 7 trains
-
-Trainer is the Soul Trapper.
-
-See also: SPELLGROUP, GAIN, ANIMATE PARTS
+See also: SPELLGROUP, NECROMANCER, CREATE SKELETON
 ~
 
 -1 'ARCANE STUDIES'~
-Spells another class's groups hold that yours may also learn, from Dawn
-the Wand Maker in Dresden, in any guild.  You learn the ones your class
-reaches, at the levels HELP gives for them:
+Arcane studies holds spells from other classes' groups -- earthquake,
+plague, harm, major globe and vortex -- for mages, thieves and warriors
+in any guild.  You learn each at the level its own page gives for your
+class.  Dawn the Wand Maker sells it.
 
-  Earthquake, Plague, Harm, Major Globe and Vortex.
-
-Cost: 6 trains for a mage, 8 for a thief or warrior.  Clerics, monks and
-necromancers have these spells in their own groups, or not at all.
+HELP GROUP ARCANE STUDIES shows what it costs you.
 
 See also: SPELLGROUP, GAIN
 ~
 
 -1 MALADICTIONS MALADICTION~
-This group is open to all spell casters.  Spells are listed by class:
+Curses and afflictions (blindness, curse, weaken, poison and more):
 
-M/M: Blindness, Curse, Energy Drain, Poison, Weaken, Maze
-     Cost: 5 trains
+  mage maladictions     full mages; adds maze
+  cleric maladictions   full clerics; adds plague and maze
+  guild maladictions    others in the mages' or clerics' guild
+  necro maladictions    necromancers; with plague, maze, cause serious
 
-C/C: Blindness, Curse, Energy Drain, Plague, Poison, Weaken, Maze
-     Cost: 5 trains
-
-?/M
-?/C: Blindness, Curse, Energy Drain, Poison, Weaken
-     Cost: 5 for mage or cleric, 6 for warrior or thief
-
-Necro: Blindness, Weaken, Maze, Plague, Cause Serious
-       Cost: 2 trains
-
-Note: Necro's already get Curse and Poison for free.
-
-Trainers are: Eriak for C/C
-	      Grill for ?/C
-	      Flame for M/M
-	      Kilar for ?/M
-         and  Necro Guild Master for Necro
+HELP GROUP MAGE MALADICTIONS (and so on) lists a version's spells and
+what it costs you.  GAINLIST shows what you can buy and from whom.
 
 See also: SPELLGROUP, GAIN, BEGUILING
 ~
 
 -1 PROTECTIVE~
-The protective group is available to all. Spells are listed by class:
+Protective spells (sanctuary, shield, cancellation and more):
 
-M/M:  Cancellation, Dispel Magic, Protection Evil, Sanctuary,
-      Shield, Stone Skin, Major Globe, Rope Trick
+  mage protective     full mages
+  cleric protective   full clerics; adds mass sanctuary
+  necro protective    necromancers; with shroud
+  guild protective    others in the mages' or clerics' guild
 
-C/C:  Cancellation, Dispel Magic, Protection Evil, Sanctuary,
-      Shield, Stone Skin, Mass Sanctuary, Major globe, Rope Trick
+HELP GROUP MAGE PROTECTIVE (and so on) lists a version's spells and what
+it costs you.  GAINLIST shows what you can buy and from whom.
 
-Nec:  Shield, Shroud, Sanctuary, Major Globe, Rope Trick
-
-?/M
-?/C:  Cancellation, Dispel Magic, Protection Evil, Sanctuary,
-      Shield, Stone Skin
-
-      Cost: 5 trains
-
-Trainers are: Dominic for C/C
-	      Lunk for ?/C
-	      Danko for M/M
-	      Chamis for ?/M
-	 and  Soul Trapper for Necro
-
-See also: SPELLGROUP, GAIN
-
+See also: SPELLGROUP, GAIN, SANCTUARY
 ~
 
 -1 TRANSPORT TRANSPORTATION~
-This group is available to all spell casters. Spells are listed by class:
+Travel spells (gate, pass door, summon, teleport and more):
 
-M/M:  Gate, Pass Door, Summon, Teleport, Portal, Haven
-      Cost: 5 trains
+  mage transportation     full mages; with portal and haven
+  cleric transportation   full clerics; with portal, haven and word of
+                          recall
+  necro transportation    necromancers; fly, pass door, earth travel
+  guild transportation    others in the mages' or clerics' guild
 
-C/C:  Fly, Gate, Pass Door, Summon, Teleport, Word of Recall, Portal,
-      Haven
-      Cost: 5 trains
+HELP GROUP MAGE TRANSPORTATION (and so on) lists a version's spells and
+what it costs you.  GAINLIST shows what you can buy and from whom.
 
-Nec:  Fly, Pass Door, Earth travel
-      Cost: 4 trains
-
-?/M
-?/C:  Fly, Gate, Pass Door, Summon, Teleport
-      Cost: 5 trains for mage or cleric, 6 for warrior or thief
-
-Trainers are: Eriak for C/C
-	      Fredar for ?/C
-	      Tranis for M/M
-	      Chamis for ?/M
-	 and  Undead Spirit for Necro
-
-See also: SPELLGROUP, GAIN
+See also: SPELLGROUP, GAIN, GATE
 ~
 
 -1 WEATHERSPELLS 'WEATHER GROUP' 'WEATHER SPELLS'~
-The weather group holds call lightning, control weather, faerie fire,
-faerie fog and lightning bolt.  Mages and clerics pay 4 trains for it,
-thieves and warriors 6; necromancers and monks cannot buy it.  Through it a
-cleric, thief or warrior can learn lightning bolt, which they cast with
-half a mage's dice.  HELP GROUP WEATHER lists it from the game's own
-table, and GAINLIST shows who sells it to you.
+The weather group (call lightning, control weather, faerie fire, faerie
+fog, lightning bolt) is sold to mages, clerics, thieves and warriors in
+the mages' or clerics' guild.  Through it a cleric, thief or warrior can
+learn lightning bolt, cast with half a mage's dice.
+
+HELP GROUP WEATHER lists it from the game's own table and what it costs
+you; GAINLIST shows who sells it.
 
 See also: ELECTRIC SPELLS, CONTROL WEATHER, SPELLGROUP, GAIN
 ~
 
 0 DAMAGE~
-When one character attacks another, the severity of the damage is shown in the
-verb used in the damage message.  Listed from least damage to most damage:
+The verb in a combat message tells you how hard a blow landed.  From
+least to most:
 
     miss          wound          MUTILATE       *** DEMOLISH ***
     scratch       maul           DISEMBOWEL     *** DEVASTATE ***
@@ -1217,135 +976,100 @@ verb used in the damage message.  Listed from least damage to most damage:
     injure        maim           MANGLE         <<< ERADICATE >>>
                                                 >>> ANNIHILATE <<<
 
-    At the far reaches of damaging power: "do UNSPEAKABLE things to"
+    Beyond that: "does UNSPEAKABLE things to".
 
-See also: COMBAT, ATTACK, WIMPY
+DAMAGENUMBERS shows the numbers as well.
+
+See also: DAMAGENUMBERS, CONSIDER, WIMPY
 ~
 
 0 DYING DEATH CORPSE CORPSES~
-When your character dies, you are reincarnated back at the Altar of the Temple
-of Devota.  Your corpse is left behind in the room where you were killed,
-together with all of your equipment.  Your gold stays with you, however.
-The act of retrieving your equipment is referred to as a corpse retrieval and
-is commonly abbreviated as CR.
+When you die you wake in the Death Room, just above the Temple altar,
+resting, with your spells gone.  Your corpse stays where you fell with
+everything you carried; your coin stays with you.  Go back and GET ALL
+CORPSE.
 
-Any spells which were affecting you are canceled by death.
+  - A death to a monster or to your own doing costs a sixteenth of the
+    experience you have earned into your level (a FATALITY, half).  A
+    death to another player costs none.
+  - Your corpse lasts a week of real time and survives restarts.  When it
+    rots, what it held falls to the floor; keys and some items crumble
+    sooner.
+  - RESURRECTION or RAISE DEAD can return you to your gear.
 
-Following and groups are not affected by death.
+Who may take from your corpse:
+  - you, anybody grouped with you, and staff;
+  - anybody, if you have typed NOLOOT since you died (a death turns it
+    back off), if you have PKILL on, or if you were WANTED;
+  - anybody while you are logged out.
+Hyrule's bound items are yours alone whatever else is allowed (and are
+lost if the corpse rots away from you).  Nobody may take anything until
+your death has been saved ("still being laid to rest").
 
-You lose experience points for dying.  The amount you lose is half-way back to
-the beginning of your level.  Thus, if you have a bad day and die several
-times, the penalties won't clobber you.
-
-Corpses decay after time. For mobiles, the objects inside corpses decay with
-the corpse.  If a player's corpse decays, his or her equipment will remain
-on the ground where he died.  Player corpses last *roughly* 30 hours of
-game time (i.e. 30 ticks; see help TICK for more info on how this corresponds
-to real time.)
-
-Normally, only the player who died, or someone in the same group, can
-retrieve objects from a player's corpse.  However, the noloot flag may be
-turned off to allow others to retrieve items from your corpse; read help
-NOLOOT for more information.  In addition, the corpses of those who have a
-KILLER, THIEF or TRAITOR flag may be looted by anyone.
-
-See also: NOLOOT, KILLER, THIEF, TRAITOR
+See also: NOLOOT, RESURRECTION, RAISE DEAD, PKILL
 ~
 
 0 EXPERIENCE LEVEL XP~
-Your character advances in power by gaining experience.  The number of
-experience points you need to advance a level is determined by your race
-and class.
+Experience comes from killing monsters, alone or in a group.  How much a
+level costs depends on your race, class and guild (see your race's page).
 
+A kill pays more for a monster above your level and little for one far
+below; slaying the other side of your alignment pays a bonus (see
+ALIGNMENT); a group shares it by level; monsters with special powers pay
+a little more; and every kill varies a little.  Rested experience and
+EMPOWER or TITANIC add more.
 
-You gain experience by:
+You lose experience by fleeing, recalling from a fight, to some spells,
+and by dying (see DEATH).
 
-    being part of a group that kills a monster
-
-You lose experience by:
-
-    fleeing from combat
-    recalling out of combat
-    being the target of certain spells
-    dying
-
-The experience you get from a kill depends on several things: how many players
-are in your group; your level versus the level of the monster; your alignment
-versus the monster's alignment; how many of this monster have been killed
-lately; your age in hours; and some random variation.
-
-See also: SCORE, LEVEL, DYING
+See also: SCORE, HEROLEVELS, DEATH, ALIGNMENT
 ~
 
 -1 GUILDS~
-The guild system on ToC is designed to allow players to gain knowledge in
-a class other than the one they started with or to become specialized in
-their chosen profession.  This creates something that is close to a
-multi-class character.  In order to pick up another class you will have to
-make some sacrifices in what you can learn.  For example, those whose
-primary class is other than mage cannot learn some of the higher level
-magical spells.  You can only join one guild in a lifetime and you cannot
-'un-guild' once you join.  When you join a guild, you will have access to
-that guild's meeting place, which is protected by a powerful guard whose
-sole job is keeping those who are not members from entering.
+A guild adds a second class's training to your own: a warrior in the
+mages' guild learns some magic, for instance.  Full members (a mage in
+the mages' guild) get each class's best.
 
-To join a guild, look for Melancholy in the oak tree as he has the
-necessary paperwork to register your membership in the guild of your choice.
-Read help JOIN for more information on joining a guild.  NOTE THAT IF
-YOU DO NOT JOIN A GUILD BY LEVEL 6, YOU WILL AUTOMATICALLY BE ENROLLED
-IN THE GUILD THAT CORRESPONDS TO YOUR CLASS AND WILL NOT AUTOMATICALLY
-GAIN THE DEFAULT GUILD SKILLS.  That is, you will have to spend trains to
-gain your guild default.  In addition, monks and necromancers are not
-permitted to multiclass and are, therefore, automatically enrolled in their
-corresponding guilds when they begin.
+  - Mages, clerics, thieves and warriors may join the mage, cleric, thief
+    or warrior guild, once, from level 3 to 6, with Melancholy the guild
+    clerk (WALKTO MELANCHOLY; JOIN <guild>, 1 gold).  Joining gives the
+    guild's free starting group.
+  - Anybody still without a guild on reaching level 6 is put in their
+    class's guild and loses up to 50 gold.
+  - Monks and necromancers belong to their own guild and cannot join
+    another.
+  - Each guild has a hall only members may enter.
+  - A guild may raise the experience your levels cost (see your race).
 
-If you multiclass it may raise the amount of experience you need per level,
-depending on your race.  The additional experience needed is:
+Extra experience per level by race and guild:
 
-	 mageguild   clericguild    thiefguild    warriorguild
+             mage guild  cleric guild  thief guild  warrior guild
+  dwarf         200          150           150          125
+  elf           100          125           150          200
+  human           0            0             0            0
+  hobbit        200          150           125          150
+  saurian       200          150           250          200
 
-dwarf     200           150             125            200
+The halls, each with its own page: UNIVERSITY OF MAGIC, TEMPLE OF BREAS,
+CITADEL OF WAR, HOUSE OF THIEVES, PALMS OF THE CREATOR (monks) and MORGUE
+OF DRESDEN (necromancers).  WALKTO UNIVERSITY, BREAS, CITADEL, THIEVES,
+PALM or MORGUE leads you to one.
+GAINLIST shows what you can buy and where; PRACTICELIST who practises
+what you know.
 
-elf       100           125             150            200
-
-human       0             0              0              0
-
-hobbit    200           150             125            150
-
-saurian   200           150             250            200
-
-
-For more help on the individual guilds see helps on:
-
-UNIVERSITY OF MAGIC (mages' guild)
-TEMPLE OF BREAS (clerics' guild)
-CITADEL OF WAR (warriors' guild
-HOUSE OF THIEVES (thieves' guild)
-PALM OF THE CREATOR (monks' guild - not available for multiclass)
-MORGUE OF DRESDEN (necromancers' guild - not available for multiclass)
-
-After you have joined a guild, you can type gainlist to show where you
-can gain which skill/group. You can then also type teachlist where you
-can learn your new skills/spells.
-
-See also: GAINLIST, TEACHLIST, SKILLS, SPELLS, MULTICLASS
+See also: GAINLIST, PRACTICELIST, JOIN, CLASS, REMORT
 ~
 
 
 0 TICK~
-Many of the game actions are based upon interval timers, including combat,
-most autonomous monster actions, hp/mana/move regeneration, spell duration,
-weather, and area resetting.
+A tick is the game's heartbeat for regeneration, spell durations and
+weather.  It comes about once a minute, anywhere from 40 to 80 seconds.
 
-Of these timers, the hp/mana/move regeneration timer is popularly called the
-'tick'.  Ticks on this mud average 60 seconds of real time, but the actual
-amount varies randomly from 40 seconds to 80 seconds.
+Areas reset (monsters and items return) every few minutes while nobody
+is in them, and about every fifteen minutes while someone is.  Items
+lying on the ground are not replaced while anyone is in the area.
 
-Area resetting happens roughly every 3 minutes if no one is in the area, less
-often (15 minutes) if some one is.  Also note that objects lying on the ground
-will not be regenerated if anyone is in the area when it resets.
-
-See also: FAST HEALING, MEDITATION, RESTING
+See also: FAST HEALING, MEDITATION, REST
 ~
 
 -1 KEYWORDS~
