@@ -129,7 +129,9 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         helper = function_body(
             self.magic2, "static CHAR_DATA *raise_undead", "void spell_create_skeleton"
         )
-        self.assertIn("af.duration   = victim->timer", helper)
+        # The timer is an int now (16-bit leftovers, 2026-11-12); the affect
+        # duration stays sh_int, so it is clamped, never wrapped.
+        self.assertIn("af.duration   = sh_int_clamp( victim->timer )", helper)
         self.assertIn("af.bitvector  = AFF_CHARM", helper)
         self.assertNotIn("number_fuzzy( ch->level )", helper)
 
