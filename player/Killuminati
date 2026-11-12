@@ -1,12 +1,12 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1794342794
+LogO 1794447298
 Vers 4
 Desc You see something very special about him.
 ~
 Prom <%hhp %mm %vmv> [Room: %R] %c~
-Ignoring spellup~
+Ignore Spellup~
 Race elf~
 Sex  1
 Cla  4
@@ -20,7 +20,7 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6545737
+Plyd 6545766
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -32,12 +32,11 @@ NewGold 465
 NewPlat 2503066
 NewCopp 876
 NewSilv 874
-BankCP 17096876566250
-IntTime 1794336658
-IntTotal 2038253964398
+BankCP 17139618757665
+IntTime 1794423058
+IntTotal 2080996155813
 Dcount 0
 SavedOnce 1
-Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 30
@@ -112,7 +111,7 @@ Achv weapons-5 1793019785
 Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
-LastOut  1794342794
+LastOut  1794447298
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1794342046
@@ -632,10 +631,10 @@ Lev  59
 Cost 208860000
 Cond 100
 Repd 0
-Affect -1 59 -1 -4 20 0 0
-Affect -1 59 -1 14 14 0 0
-Affect -1 59 -1 4 21 0 0
 Affect -1 59 -1 -13 12 0 0
+Affect -1 59 -1 4 21 0 0
+Affect -1 59 -1 14 14 0 0
+Affect -1 59 -1 -4 20 0 0
 End
 
 #O
