@@ -2,7 +2,7 @@
 Name Miseri~
 Id   10516
 Serial 16626392
-LogO 1794517237
+LogO 1794517450
 Vers 4
 Prom ~
 Race human~
@@ -18,17 +18,17 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261112-quest-serial~
 Cast none
 Levl 15
 Tru  70
-Plyd 5063
+Plyd 5276
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 Scro 22
-Room 30424
-HMV  348 358 1409 1460 469 475
-NewGold 401
+Room 30426
+HMV  358 358 1432 1460 475 475
+NewGold 410
 NewPlat 99
-NewCopp 4133
-NewSilv 675
+NewCopp 4307
+NewSilv 694
 BankCP 0
 IntTime 1794493774
 IntTotal 0
@@ -36,7 +36,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 43
+AchKills 45
 AchQuests 0
 AchDeaths 0
 AchExplore 3
@@ -59,8 +59,8 @@ Achv hyrule-eagle 1794515480
 Achv carry-ten-platinum 1793111546
 AchSet areas 840101374 1103516333 ~
 AchSet rooms 3700 3744 3757 3759 4207 ~
-LastOut  1794517237
-Rested 2645 0
+LastOut  1794517450
+Rested 2610 0
 Daily 0 0 0 0 0
 SesLogin 1794341148
 SesDur   98
@@ -70,7 +70,7 @@ SesKill  4
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  32296
+Exp  32366
 Act  76028
 AfBy 3678336
 AfBy2 4104
@@ -114,7 +114,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 198 816 185
-Cond 0 4 4
+Cond 0 0 0
 Alias / who~
 Alias ] recall~
 Sk 1 'mindbar'
@@ -186,7 +186,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 116 0 0
+Val  0 0 112 0 0
 End
 
 #O
@@ -876,6 +876,19 @@ Lev  8
 Cost 12000000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 30695
+Nest 0
+ShD  a bomb~
+ExtF 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+Val  1 0 0 0 0
 End
 
 #END
