@@ -361,7 +361,8 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
     /* A pet or a charmed follower goes where its master may. */
     if ( IS_NPC(subject) && subject->master != NULL )
         subject = subject->master;
-    if ( IS_NPC(subject) || IS_TRUSTED(subject, LEVEL_IMMORTAL) )
+    /* Immortals by level pass; a trusted mortal plays by the order. */
+    if ( IS_NPC(subject) || IS_IMMORTAL(subject) )
         return false;
 
     from_inside = from->vnum >= gate->first_room && from->vnum <= gate->last_room;
@@ -443,7 +444,7 @@ static void charge_hyrule_door_repair( CHAR_DATA *ch )
     long charge;
     int receipt_vnum;
 
-    if ( IS_NPC(ch) || IS_TRUSTED(ch, LEVEL_IMMORTAL) || ch->in_room == NULL
+    if ( IS_NPC(ch) || IS_IMMORTAL(ch) || ch->in_room == NULL
     ||   ch->in_room->vnum < HYRULE_REPAIR_ROOM_FIRST
     ||   ch->in_room->vnum > HYRULE_REPAIR_ROOM_LAST )
         return;
@@ -531,7 +532,7 @@ static bool hyrule_seal_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
     const char *keyword;
 
     if ( !is_hyrule_room(room) || pexit == NULL || pexit->keyword == NULL
-    ||   IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    ||   IS_IMMORTAL(ch) )
         return false;
 
     keyword = pexit->keyword;

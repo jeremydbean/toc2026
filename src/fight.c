@@ -6499,7 +6499,7 @@ void do_shoot( CHAR_DATA *ch, char *argument )
        doorway wounded a guardian from outside the chamber its tool gate
        keeps, and broke the fight off so it never answered (audit,
        2026-11-10). Said before the lag. */
-    if ( hyrule_native( victim ) && !IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( hyrule_native( victim ) && !IS_IMMORTAL(ch) )
     {
 	act( "$N is beyond a clear shot; in Hyrule you must face it in its own room.",
 	     ch, NULL, victim, TO_CHAR );

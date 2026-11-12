@@ -2328,6 +2328,12 @@ static OBJ_DATA *carried_top( CHAR_DATA *ch, int vnum )
    and an idle bystander sharing the fighter's was handed the key (review
    of d19b0e92). A serial is saved, so one who strikes, quits and comes
    back before it falls is still known. */
+/*
+ * Hyrule's order, its keys, chests and tools treat an immortal by level as
+ * staff, never a mortal by trust (owner, 2026-11-12: a trusted level 14
+ * killed Aquamentus and got no key -- the key handout skipped anyone at
+ * staff trust). A trusted mortal plays Hyrule as a player does.
+ */
 void hyrule_note_striker( CHAR_DATA *ch, CHAR_DATA *guardian )
 {
     int i, serial;
@@ -2336,7 +2342,7 @@ void hyrule_note_striker( CHAR_DATA *ch, CHAR_DATA *guardian )
         return;
     if ( IS_NPC(ch) && ch->master != NULL && !IS_NPC(ch->master) && IS_AFFECTED(ch, AFF_CHARM) )
         ch = ch->master;
-    if ( IS_NPC(ch) || ch->pcdata == NULL || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    if ( IS_NPC(ch) || ch->pcdata == NULL || IS_IMMORTAL(ch) )
         return;
     if ( ( serial = player_serial( ch ) ) <= 0 )
         return;
@@ -2393,7 +2399,7 @@ void hyrule_guardian_slain( CHAR_DATA *killer, CHAR_DATA *guardian )
     if ( credit != NULL && IS_NPC(credit) && credit->master != NULL
     &&   !IS_NPC(credit->master) )
         credit = credit->master;
-    if ( credit != NULL && ( IS_NPC(credit) || IS_TRUSTED(credit, LEVEL_IMMORTAL) ) )
+    if ( credit != NULL && ( IS_NPC(credit) || IS_IMMORTAL(credit) ) )
         credit = NULL;
     if ( ( index = get_obj_index( key ) ) == NULL )
         return;
@@ -2402,7 +2408,7 @@ void hyrule_guardian_slain( CHAR_DATA *killer, CHAR_DATA *guardian )
        grouped or not. Anybody who left the room before it fell has none. */
     for ( rch = guardian->in_room->people; rch != NULL; rch = rch->next_in_room )
     {
-        if ( IS_NPC(rch) || IS_TRUSTED(rch, LEVEL_IMMORTAL) )
+        if ( IS_NPC(rch) || IS_IMMORTAL(rch) )
             continue;
         if ( rch != credit && ( credit == NULL || !is_same_group( rch, credit ) )
         &&   !hyrule_struck_by( guardian, rch ) )
@@ -2446,7 +2452,7 @@ bool hyrule_tool_claim( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     OBJ_DATA *copy;
 
     if ( obj == NULL || obj->pIndexData == NULL || IS_NPC(ch)
-    ||   IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    ||   IS_IMMORTAL(ch)
     ||   !hyrule_progression_tool( obj->pIndexData->vnum ) )
         return false;
     /* Lying on the floor, where the dungeon lays them, and nowhere else:
@@ -2529,7 +2535,7 @@ bool hyrule_chest_claim( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     ||   container->pIndexData == NULL
     ||   container->pIndexData->vnum != OBJ_VNUM_HYRULE_CHEST_FIRST + level - 1
     ||   !IS_HYRULE_ROOM_VNUM( container->in_room->vnum )
-    ||   IS_NPC(ch) || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    ||   IS_NPC(ch) || IS_IMMORTAL(ch) )
         return false;
 
     if ( ( key_obj = carried_top( ch, key ) ) == NULL )

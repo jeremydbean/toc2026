@@ -215,6 +215,10 @@ class LateJoinerTests(unittest.TestCase):
             make(mud, "Zkeystaff", Levl=70, Room=TEMPLE, AfBy=0)
             for name in ("Zkeylead", "Zkeylate", "Zkeygone"):
                 make(mud, name, Levl=58, Room=TEMPLE)
+            # The killer holds staff trust and is a mortal by level: keyed
+            # like any player (owner, 2026-11-12: a trusted level 14 killed
+            # Aquamentus and was given no key).
+            patch_player_file(mud, "Zkeylead", Tru=60)
             staff, lead, late, gone = connect(mud, "Zkeystaff", "Zkeylead", "Zkeylate", "Zkeygone")
             lead.name = "Zkeylead"
             try:

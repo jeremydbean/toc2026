@@ -850,7 +850,7 @@ class HyruleProgressionTests(unittest.TestCase):
         # and WALKTO's silent hyrule_gate_would_refuse both call.
         self.assertIn("return hyrule_gate_check( ch, from, to, true );", move)
         gate = move.split("ROOM_INDEX_DATA *to, bool speak )\n{", 1)[1].split("\n}", 1)[0]
-        self.assertIn("IS_TRUSTED(subject, LEVEL_IMMORTAL)", gate)
+        self.assertIn("IS_IMMORTAL(subject)", gate)
         self.assertIn("subject = subject->master", gate)
 
     def test_every_dungeon_room_blocks_magical_arrival(self) -> None:
