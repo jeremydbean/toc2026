@@ -1,8 +1,8 @@
 #DIARY 1
 Day 2026-11-12
-Played 3731
+Played 3986
 Level 37 40 3
-Exp 6646 136
+Exp 6654 136
 Kills 15
 Deaths 1
 Close 0
@@ -15,7 +15,8 @@ List skill 86 90 enhanced damage
 List skill 79 81 fists of fury
 List skill 97 98 hand to hand
 List skill 82 83 parry
-List area 2170 0 City of Dresden
+List skill 75 76 fast healing
+List area 2420 0 City of Dresden
 List area 227 0 Sewer
 List area 3 0 Plains of the North
 List area 6 0 Continental Drift
@@ -27,16 +28,19 @@ List area 107 0 Korzath's Fortress
 List area 4 0 Haon Dor
 List area 25 0 Arachnos
 List area 5 0 Mud School
-More area 14
+More area 16
 List item 1 0 a crystal key
 List item 2 0 a small key
 List item 1 0 a long, curved knife
 List item 1 0 some platinum arm bands
 List item 1 0 a quick sheathe
 List item 2 0 a white bracer
+List item 1 0 the Shield of Dresden
+List item 1 0 some Black velvet robes
 List earn 38097971 0 interest
 List earn 17073800 0 loot
 List earn 5372406 0 quests
 List spend 26200000 0 heal
+List spend 32550 0 buy
 End
 #END

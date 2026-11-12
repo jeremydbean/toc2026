@@ -24696,3 +24696,208 @@
 1794526304	cmd	Alaric	57	10028	glitter.are	resting	87	0	-	wake		You stand up.	-	-
 1794526304	cmd	Alaric	57	10028	glitter.are	standing	87	0	-	south		Alas, you cannot go that way.	-	-
 1794526304	cmd	Alaric	57	10027	glitter.are	standing	87	0	-	down		The northern wing. //   A large stairway leads up to the second floor. // [Exits: south up]	-	-
+1794526304	cmd	Alaric	57	10027	glitter.are	standing	87	0	-	down		Alas, you cannot go that way.	-	-
+1794526305	cmd	Alaric	57	10027	glitter.are	standing	87	0	-	down		Alas, you cannot go that way.	-	-
+1794526305	cmd	Alaric	57	10027	glitter.are	standing	87	0	-	down		Alas, you cannot go that way.	-	-
+1794526305	cmd	Alaric	57	10000	glitter.are	standing	87	0	-	run	s	The northern wing. // [Exits: north south] // The northern wing.	-	+
+1794526306	cmd	Trentlin	40	4208	dresden.are	standing	99	14	-	stash	put hole	You put a black hole away for safe keeping.	-	-
+1794526306	cmd	Alaric	57	10000	glitter.are	resting	87	0	-	wake		You stand up.	-	-
+1794526307	cmd	Alaric	57	10000	glitter.are	standing	87	0	-	enter	do	You do not see that here.	-	-
+1794526308	area	Alaric	57	23	connect.are	glitter.are	connect.are	67	enter
+1794526308	cmd	Alaric	57	23	connect.are	standing	87	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Great Portal	-	+
+1794526309	cmd	Trentlin	40	4208	dresden.are	standing	99	9	-	stash	put cloak	You put an assassin's cloak away for safe keeping.	-	-
+1794526309	area	Alaric	57	2497	dresden.are	connect.are	dresden.are	1	recall
+1794526309	cmd	Alaric	57	2497	dresden.are	standing	87	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794526310	cmd	Alaric	57	2497	dresden.are	standing	87	0	-	enter	o	You do not see that here.	-	-
+1794526311	cmd	Alaric	57	2497	dresden.are	standing	87	0	-	jump	rock	I see no rock here.	-	-
+1794526313	cmd	Alaric	57	2497	dresden.are	standing	87	0	-	give	robe tre	They aren't here.	-	-
+1794526313	cmd	Alaric	57	2497	dresden.are	standing	87	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794526314	cmd	Alaric	57	2401	dresden.are	standing	87	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794526314	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	heal	uncurse	The healer says 'I see no curse on you or on anything you carry.'	-	-
+1794526315	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	6	jump
+1794526315	cmd	Alaric	57	1607	wyvern.are	standing	87	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1794526316	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	1	(room_update)
+1794526316	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526318	got	Trentlin	40	4208	dresden.are	10048	some Black velvet robes	armor	32	22000000	give(another's)	Alaric
+1794526318	cmd	Alaric	57	4208	dresden.are	standing	87	0	-	give	robe tr	You give some Black velvet robes to Trentlin.	-	-
+1794526320	cmd	Alaric	57	4208	dresden.are	standing	87	0	-	look	tr	You see nothing special about him. // Trentlin has a few bruises. // Trentlin is using:	-	+
+1794526332	cmd	Alaric	57	4208	dresden.are	standing	87	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794526335	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	say	so it wont let me drop my "level 54 gear" or put it in the stash, but it also says its not cursed	You say 'so it wont let me drop my "level 54 gear" or put it in the stash, but it also says its not cursed'	-	-
+1794526342	state	Trentlin	40	4208	dresden.are	lvl=40 hp=798/806 mana=1620/1620 mv=138/505 align=33 exp=92177 coin=436054 bank=15277286378 qp=3782 prac=18 train=3 stash=48/75 remorts=1
+1794526342	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	score		| Name:       Trentlin | Level:      40 | Class:        Monk | // | Played:     37 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794526343	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	compare	ro	A) some Black velvet robes (level 32) -- can't use: made for another side // B) an indigo blue livery (level 18), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794526344	cmd	Alaric	57	4208	dresden.are	standing	87	0	-	say	nosum?	You say 'nosum?'	-	-
+1794526346	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	ro	Some Black velvet robes rejects you: it is for the light (Kind or brighter), and you are Balanced.	-	-
+1794526347	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	nosummon		You are now immune to summoning.	-	-
+1794526349	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	nosummon		You are no longer immune to summon.	-	-
+1794526356	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	its off	You say 'its off'	-	-
+1794526359	cmd	Alaric	57	4208	dresden.are	standing	89	0	-	stash		Your stash holds 93 of 350 things. //     1) (Glowing) the Crystalline Sceptre of Commanding //     2) battle helmet	-	+
+1794526367	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Magical) some Black velvet robes //      (Magical) (Glowing) the Shield of Dresden	-	+
+1794526369	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn around neck>  (Magical) a Blue rimmed, white cloak	-	+
+1794526372	state	Trentlin	40	4208	dresden.are	lvl=40 hp=806/806 mana=1620/1620 mv=178/505 align=33 exp=92177 coin=436054 bank=15277286378 qp=3782 prac=18 train=3 stash=48/75 remorts=1
+1794526372	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      40 | Class:        Monk | // | Played:     37 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794526378	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn around neck>  (Magical) a Blue rimmed, white cloak	-	+
+1794526385	cmd	Alaric	57	4208	dresden.are	standing	89	0	-	wake		You are already standing.	-	-
+1794526385	cmd	Alaric	57	4208	dresden.are	standing	89	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526388	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	stash		Your stash holds 48 of 75 things. //     1) (Invis) (Humming) an assassin's cloak //     2) (Invis) (Magical) a black hole	-	+
+1794526388	coin	Alaric	57	4208	dresden.are	-900000	spent	heal	-	25889767607
+1794526388	cmd	Alaric	57	4208	dresden.are	standing	89	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (9 castings, 90 gold.)	-	-
+1794526392	cmd	Alaric	57	2427	dresden.are	standing	89	0	-	run	e 4	Before the Altar. // [Exits: north east south west up] // Halls of Healing.	-	+
+1794526393	cmd	Alaric	57	2404	dresden.are	standing	89	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794526393	cmd	Alaric	57	2401	dresden.are	standing	89	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794526393	cmd	Alaric	57	2405	dresden.are	standing	89	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794526393	cmd	Alaric	57	2433	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794526394	cmd	Alaric	57	2434	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526394	cmd	Alaric	57	2435	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526394	cmd	Alaric	57	2495	dresden.are	standing	89	0	-	south		The Jeweller's Shop //   You are in a small, beautifully furnished room.  The warm light emanating // from the small oil lamps on the walls is reflected in the hard, polished	-	+
+1794526394	cmd	Alaric	57	2495	dresden.are	standing	89	0	-	south		Alas, you cannot go that way.	-	-
+1794526395	cmd	Alaric	57	2495	dresden.are	standing	89	0	-	west		Alas, you cannot go that way.	-	-
+1794526395	cmd	Alaric	57	2495	dresden.are	standing	89	0	-	west		Alas, you cannot go that way.	-	-
+1794526395	cmd	Alaric	57	2495	dresden.are	standing	89	0	-	west		Alas, you cannot go that way.	-	-
+1794526395	cmd	Alaric	57	2495	dresden.are	standing	89	0	-	west		Alas, you cannot go that way.	-	-
+1794526397	cmd	Alaric	57	2435	dresden.are	standing	89	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526398	cmd	Alaric	57	2434	dresden.are	standing	89	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526399	cmd	Alaric	57	2435	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526399	cmd	Alaric	57	2436	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526399	cmd	Alaric	57	2437	dresden.are	standing	89	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526400	cmd	Alaric	57	2438	dresden.are	standing	89	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794526400	cmd	Alaric	57	2439	dresden.are	standing	89	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794526402	cmd	Alaric	57	2438	dresden.are	standing	89	1	-	east		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794526402	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn around neck>  (Magical) a Blue rimmed, white cloak	-	+
+1794526402	cmd	Alaric	57	2438	dresden.are	standing	89	0	-	north		Alas, you cannot go that way.	-	-
+1794526405	cmd	Alaric	57	2437	dresden.are	standing	89	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526406	cmd	Alaric	57	4601	dresden.are	standing	89	0	-	north		Entrance to the Temple of Breas. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794526407	got	Trentlin	40	4208	dresden.are	30708	a pair of pebble-hide mitts	armor	14	9800000	stash	-
+1794526407	cmd	Trentlin	40	4208	dresden.are	standing	100	12	-	stash	get mitt	You take a pair of pebble-hide mitts out of your stash.	-	-
+1794526408	cmd	Alaric	57	4601	dresden.are	standing	89	0	-	consider	gu	Guild Guard is far below your level. // Guild Guard has about twice your hit points. // Blow for blow, you would need about 53 rounds to bring Guild Guard down; he would need over a hundred rounds for you.	-	+
+1794526409	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	mitt	You wear a pair of pebble-hide mitts on your hands.	-	-
+1794526409	cmd	Alaric	57	4601	dresden.are	standing	89	0	-	iron		You lost your concentration.	-	-
+1794526410	got	Trentlin	40	4208	dresden.are	29010	some captain's boots	armor	6	11000	stash	-
+1794526410	cmd	Trentlin	40	4208	dresden.are	standing	92	5	-	stash	get boot	You take some captain's boots out of your stash.	-	-
+1794526411	cmd	Alaric	57	4601	dresden.are	standing	89	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794526413	cmd	Trentlin	40	4208	dresden.are	standing	92	0	-	wear	boot	You wear some captain's boots on your feet.	-	-
+1794526415	cmd	Trentlin	40	4208	dresden.are	standing	92	0	-	stash		Your stash holds 46 of 75 things. //     1) (Invis) (Humming) an assassin's cloak //     2) (Invis) (Magical) a black hole	-	+
+1794526425	state	Alaric	57	4601	dresden.are	lvl=57 hp=1422/1544 mana=2448/2875 mv=983/983 align=897 exp=252749 coin=1189362169 bank=24700405438 qp=2053 prac=36 train=76 stash=93/350 remorts=3
+1794526425	cmd	Alaric	57	4601	dresden.are	standing	92	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794526425	state	Alaric	57	4601	dresden.are	lvl=57 hp=1422/1544 mana=2448/2875 mv=983/983 align=897 exp=252749 coin=1189362169 bank=24700405438 qp=2053 prac=36 train=76 stash=93/350 remorts=3
+1794526425	cmd	Alaric	57	4601	dresden.are	standing	92	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794526427	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526428	cmd	Alaric	57	4601	dresden.are	standing	92	0	-	fists	guard	You attack in an all consuming fury! // Your fists of fury wounds Guild Guard. [-20] // Your fists of fury *** DEVASTATES *** Guild Guard! [-64]	-	+
+1794526430	got	Trentlin	40	4208	dresden.are	16030	an assassin's cloak	armor	52	25600000	stash	-
+1794526430	cmd	Trentlin	40	4208	dresden.are	standing	95	9	-	stash	get cloa	You take an assassin's cloak out of your stash.	-	-
+1794526433	got	Trentlin	40	4208	dresden.are	10022	a Blue rimmed, white cloak	armor	11	2800000	stash	-
+1794526433	cmd	Trentlin	40	4208	dresden.are	standing	95	5	-	stash	get cloa	You take a Blue rimmed, white cloak out of your stash.	-	-
+1794526433	cmd	Alaric	57	4601	dresden.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Guild Guard. [-9] // Your fists of fury devastates Guild Guard! [-29]	-	+
+1794526435	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	wear	rimm	You do not have that item.	-	-
+1794526438	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	wear	cloa	You wear a Blue rimmed, white cloak around your neck.	-	-
+1794526439	cmd	Alaric	57	4601	dresden.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS Guild Guard! [-43] // Your fists of fury devastates Guild Guard! [-32]	-	+
+1794526442	cmd	Trentlin	40	4208	dresden.are	standing	95	6	-	stash	put cloa	You put an assassin's cloak away for safe keeping.	-	-
+1794526443	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	inventory		You are carrying: //      (Magical) some Black velvet robes //      (Magical) (Glowing) the Shield of Dresden	-	+
+1794526448	cmd	Alaric	57	4601	dresden.are	fighting	91	0	fight	gossip	Submit that with the bug command, gets addressed quickly	You gossip 'Submit that with the bug command, gets addressed quickly'	-	-
+1794526448	cmd	Alaric	57	4601	dresden.are	fighting	91	0	fight	levitate		You slowly rise up off the ground.	-	-
+1794526448	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn around neck>  (Magical) a Blue rimmed, white cloak	-	+
+1794526448	cmd	Alaric	57	4601	dresden.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Guild Guard! [-27] // Your fists of fury hits Guild Guard. [-9]	-	+
+1794526454	report	Trentlin	40	4208	dresden.are	bug		827/868 hp	eq | i | stash put cloa | wear cloa | wear rimm | bug
+1794526454	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	bug		Bug logged.	-	-
+1794526454	cmd	Alaric	57	4601	dresden.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** Guild Guard! [-58] // Your fists of fury grazes Guild Guard. [-7]	-	+
+1794526460	cmd	Alaric	57	4601	dresden.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Guild Guard. [-12] // Your fists of fury injures Guild Guard. [-14]	-	+
+1794526461	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	drop	gear	You can't let go of it.	-	-
+1794526466	cmd	Alaric	57	4601	dresden.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Guild Guard. [-22] // Your fists of fury hits Guild Guard. [-11]	-	+
+1794526466	report	Trentlin	40	4208	dresden.are	bug	gear	827/868 hp	drop gear | bug | eq | i | stash put cloa | bug gear
+1794526466	cmd	Trentlin	40	4208	dresden.are	standing	95	0	-	bug	gear	Bug logged.	-	-
+1794526474	cmd	Alaric	57	4601	dresden.are	fighting	86	0	fight	gossip	Seemingly overnight, in a lot of cases.	You gossip 'Seemingly overnight, in a lot of cases.'	-	-
+1794526475	cmd	Alaric	57	4601	dresden.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Guild Guard. [-6] // Your fists of fury scratches Guild Guard. [-4]	-	+
+1794526481	cmd	Alaric	57	4601	dresden.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Guild Guard. [-5] // Your fists of fury hits Guild Guard. [-11]	-	+
+1794526487	cmd	Alaric	57	4601	dresden.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES Guild Guard! [-49] // Your fists of fury decimates Guild Guard! [-28]	-	+
+1794526492	cmd	Alaric	57	4601	dresden.are	fighting	81	0	fight	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794526493	cmd	Alaric	57	4601	dresden.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates Guild Guard! [-26] // Your fists of fury mauls Guild Guard. [-23]	-	+
+1794526494	report	Trentlin	40	4208	dresden.are	bug	i cant drop my level 54 gear from remort, or put it in my stash. i could take it out and put it back previously	849/868 hp	bug gear | drop gear | bug | eq | i | bug i cant drop my level 54 gear from remort, or put it in my stash. i could take it out and pu
+1794526494	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	bug	i cant drop my level 54 gear from remort, or put it in my stash. i could take it out and put it back previously	Bug logged.	-	-
+1794526498	cmd	Alaric	57	4601	dresden.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** Guild Guard! [-74] // Your fists of fury scratches Guild Guard. [-1]	-	+
+1794526500	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	gossip	done	You gossip 'done'	-	-
+1794526501	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	inventory		You are carrying: //      (Magical) some Black velvet robes //      (Magical) (Glowing) the Shield of Dresden	-	+
+1794526503	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn around neck>  (Magical) a Blue rimmed, white cloak	-	+
+1794526504	cmd	Alaric	57	4601	dresden.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Guild Guard. [-4] // Your fists of fury hits Guild Guard. [-12]	-	+
+1794526509	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn around neck>  (Magical) a Blue rimmed, white cloak	-	+
+1794526510	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526513	coin	Trentlin	40	4208	dresden.are	+38	loot	sacrifice	-	15277722470
+1794526513	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	sacrifice	kn	The Gods give you 38 copper coins for your sacrifice.	-	-
+1794526514	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	look	in co	A fresh corpse contains: //      Nothing.	-	-
+1794526515	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	sacrifice	co	The Gods give you 0 copper coins for your sacrifice.	-	-
+1794526517	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	look	in co	That is not a container.	-	-
+1794526518	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526530	cmd	Alaric	57	4601	dresden.are	fighting	71	0	fight	gossip	And that issue with not being able to get a corpse without going through all the triforce pieces. That seems like a gia	You gossip 'And that issue with not being able to get a corpse without going through all the triforce pieces. That seems like a giant hurdle from what you described.'	-	-
+1794526532	cmd	Alaric	57	4601	dresden.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Guild Guard. [-12] // Your fists of fury decimates Guild Guard! [-25]	-	+
+1794526538	coin	Alaric	57	4601	dresden.are	+20800	loot	(violence_update)	corpse of Guild Guard	25889788407
+1794526538	coin	Alaric	57	4601	dresden.are	+140	loot	(violence_update)	corpse of Guild Guard	25889788547
+1794526538	coin	Alaric	57	4601	dresden.are	+1060000	loot	(violence_update)	corpse of Guild Guard	25890848547
+1794526539	state	Alaric	57	4601	dresden.are	lvl=57 hp=1065/1544 mana=2033/2875 mv=830/983 align=897 exp=252749 coin=1190443109 bank=24700405438 qp=2053 prac=36 train=76 stash=93/350 remorts=3
+1794526539	cmd	Alaric	57	4601	dresden.are	standing	68	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794526540	cmd	Alaric	57	4602	dresden.are	standing	68	0	-	north		Courtyard. //   You are in an open courtyard made of packed dirt.  There are a number of doors // leading from the courtyard and there is a well in the northeast corner.	-	+
+1794526541	cmd	Alaric	57	4605	dresden.are	standing	68	0	-	north		Courtyard. //   You are in an open courtyard made of packed dirt.  There are a number of doors // leading from the courtyard and there is a well to the east.  To the north is	-	+
+1794526542	cmd	Alaric	57	4602	dresden.are	standing	68	0	-	south		Courtyard. //   You are in an open courtyard made of packed dirt.  There are a number of doors // leading from the courtyard and there is a well in the northeast corner.	-	+
+1794526542	cmd	Alaric	57	4607	dresden.are	standing	68	0	-	west		Courtyard. //   You are in an open courtyard made of packed dirt.  There are a number of doors // leading from the courtyard and there is a well in the northeast corner.	-	+
+1794526542	cmd	Alaric	57	4613	dresden.are	standing	68	0	-	west		Missionary Shop. //   This large room is stocked with all sorts of travelling equipment used for // going abroad.  There is even a few weapons and armor in amongst the gear.	-	+
+1794526542	cmd	Alaric	57	4613	dresden.are	standing	68	0	-	west		Alas, you cannot go that way.	-	-
+1794526543	cmd	Alaric	57	4613	dresden.are	standing	68	0	-	north		Alas, you cannot go that way.	-	-
+1794526544	cmd	Alaric	57	4607	dresden.are	standing	68	0	-	east		Courtyard. //   You are in an open courtyard made of packed dirt.  There are a number of doors // leading from the courtyard and there is a well in the northeast corner.	-	+
+1794526545	cmd	Alaric	57	4606	dresden.are	standing	68	0	-	north		Courtyard. //   You are in an open courtyard made of packed dirt.  There are a number of doors // leading from the courtyard and there is a well in the northeast corner.	-	+
+1794526545	cmd	Alaric	57	4612	dresden.are	standing	68	0	-	west		Blacksmith. //   This room is dominated by a large forge in the center.  There are tools for // making weapons and armor hanging everywhere.  There are a number of finished	-	+
+1794526546	cmd	Alaric	57	4612	dresden.are	standing	68	0	-	list		[Lv Price] Item // [20     4p 50g] a mace. // [20 5p 62g 50s] a warhammer.	-	+
+1794526547	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	gossip	yeah, it was, should i bug that too?	You gossip 'yeah, it was, should i bug that too?'	-	-
+1794526549	coin	Alaric	57	4612	dresden.are	-281250000	spent	buy	Valkur	25609598547
+1794526549	got	Alaric	57	4612	dresden.are	4619	a great war helmet	armor	25	250000000	buy	Valkur
+1794526549	cmd	Alaric	57	4612	dresden.are	standing	70	0	-	buy	helm	You buy a great war helmet.	-	-
+1794526551	cmd	Alaric	57	2497	dresden.are	standing	70	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794526552	cmd	Alaric	57	2401	dresden.are	standing	70	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794526554	cmd	Alaric	57	2401	dresden.are	standing	70	0	-	jump	rockk	I see no rockk here.	-	-
+1794526556	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	240	jump
+1794526556	cmd	Alaric	57	1607	wyvern.are	standing	70	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1794526556	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	0	(room_update)
+1794526560	cmd	Alaric	57	4208	dresden.are	standing	70	0	-	say	May as well	You say 'May as well'	-	-
+1794526561	cmd	Alaric	57	4208	dresden.are	standing	70	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526563	got	Trentlin	40	4208	dresden.are	4619	a great war helmet	armor	25	250000000	give(another's)	Alaric
+1794526563	cmd	Alaric	57	4208	dresden.are	standing	70	0	-	give	helm tr	You give a great war helmet to Trentlin.	-	-
+1794526565	cmd	Alaric	57	4208	dresden.are	standing	70	0	-	group		Alaric's group: // [57 Monk ] Alaric           1088/1544 hp 2055/2875 mana  439/ 983 mv 252749 xp	-	-
+1794526570	cmd	Alaric	57	4208	dresden.are	standing	70	0	-	look	tr	You see nothing special about him. // Trentlin is in excellent condition. // Trentlin is using:	-	+
+1794526578	coin	Alaric	57	4208	dresden.are	-1000000	spent	heal	-	25608598547
+1794526578	cmd	Alaric	57	4208	dresden.are	standing	70	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (10 castings, 100 gold.)	-	-
+1794526585	cmd	Alaric	57	4207	dresden.are	standing	70	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794526585	cmd	Alaric	57	4202	dresden.are	standing	70	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794526586	cmd	Alaric	57	4201	dresden.are	standing	70	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794526586	cmd	Alaric	57	2433	dresden.are	standing	70	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794526586	cmd	Alaric	57	2434	dresden.are	standing	70	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526586	cmd	Alaric	57	2435	dresden.are	standing	70	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526587	cmd	Alaric	57	2436	dresden.are	standing	70	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526587	cmd	Alaric	57	2437	dresden.are	standing	70	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794526587	cmd	Alaric	57	2438	dresden.are	standing	70	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794526587	cmd	Alaric	57	2439	dresden.are	standing	70	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794526588	cmd	Alaric	57	3900	dresden.are	standing	70	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794526588	cmd	Alaric	57	3901	dresden.are	standing	70	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794526588	cmd	Alaric	57	3902	dresden.are	standing	70	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794526588	cmd	Alaric	57	3903	dresden.are	standing	70	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794526589	cmd	Alaric	57	3904	dresden.are	standing	70	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794526589	area	Alaric	57	300	plains.are	dresden.are	plains.are	33	north
+1794526589	cmd	Alaric	57	300	plains.are	standing	70	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794526589	cmd	Alaric	57	316	plains.are	standing	70	0	-	west		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. Far to the north you can see the foothills and further on	-	+
+1794526589	cmd	Alaric	57	318	plains.are	standing	70	0	-	north		Grassy plains //   You walk in the beautiful grassy plains. The wind is strong and rough. // Far to the north you can see the foothills and further on mountain peaks	-	+
+1794526590	cmd	Alaric	57	319	plains.are	standing	70	0	-	north		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. To the north you can see the foothills and just behind	-	+
+1794526590	cmd	Alaric	57	330	plains.are	standing	70	0	-	north		In front of hut in foothills //   You are standing in the foothills. To the west, well hidden among the small // foothills and pines, you see a small hut. To the north you can see	-	+
+1794526590	cmd	Alaric	57	323	plains.are	standing	70	0	-	north		The steep foothills //   You walk in the steep foothills. It is rather hard to move here. // To the north you can see a grassy valley with wildflowers. To the west 	-	+
+1794526591	area	Alaric	57	24	connect.are	plains.are	connect.are	2	west
+1794526591	cmd	Alaric	57	24	connect.are	standing	70	0	-	west		Crossing the Foothills //   The hills grow steadily steeper as you trudge up the narrow trails.  To the // northwest, the trail degenerates into a narrow series of switchbacks, 	-	+
+1794526591	cmd	Alaric	57	25	connect.are	standing	70	0	-	northwest		The Switchbacks //   You continue climbing a rocky path.  You need to scramble over boulders and // jump crevices to make any progress.  The path twists so often you can never	-	+
+1794526591	area	Alaric	57	9201	canyon.are	connect.are	canyon.are	0	north
+1794526591	cmd	Alaric	57	9201	canyon.are	standing	70	0	-	north		A Mountain Path //   You are on a mountain path which ascends a steep mountainside.  The trail // curves around the mountain so that you cannot really see what lies ahead.	-	+
+1794526594	cmd	Alaric	57	9202	canyon.are	standing	70	0	-	up		A Mountain Path //   You are on a rocky mountain path leading up and around a steep mountainside. // You sense a glow from the area beyond the mountain, which you cannot see yet.	-	+
+1794526594	cmd	Alaric	57	9203	canyon.are	standing	70	0	-	up		Mountainside Tombs //   There are a few stone heaps here and there, the tombs of those who did not // last the arduous journey up the mountain.  Curiously you notice a few	-	+
+1794526595	cmd	Alaric	57	9204	canyon.are	standing	70	0	-	up		A Blind Curve on the Mountain Path. //   This looks like a normal mountain path, but it is NOT!  This section of the // path is habitated by a huge (and of course, man-eating) Cyclops.  The path	-	+
+1794526595	cmd	Alaric	57	9205	canyon.are	standing	70	0	-	up		Vista //   This is a stunning vista overlooking a canyon.  There is a sign here that says: // BEHOLD -- ELEMENTAL CANYON	-	+
+1794526596	cmd	Alaric	57	9206	canyon.are	standing	70	0	-	north		The Overlook //   You see various elemental servants wandering around the canyon.  The noise of // humming coming from the canyon gets louder.  The path makes a steep descent	-	+
+1794526597	cmd	Alaric	57	9207	canyon.are	standing	70	0	-	down		Entrance to Elemental Canyon //   You are awed by the sounds and sights of great powers at works here. // Elemental servants bustle back and forth doing the biddings of the elemental	-	+
+1794526598	cmd	Alaric	57	9261	canyon.are	standing	70	0	-	south		Lair of the Cyclops //   As your eyes adjust to the dark, you notice the bones and refuse that lie // scattered around the cave.  Your eyes wander to the back of the large room	-	+
+1794526600	cmd	Alaric	57	9261	canyon.are	standing	70	0	-	fists	cy	You attack in an all consuming fury! // Your fists of fury MASSACRES the cyclops! [-51] // Your fists of fury === OBLITERATES === the cyclops! [-144]	-	+
+1794526601	coin	Alaric	57	9261	canyon.are	+1000000	loot	(violence_update)	corpse of the cyclops	25609598547
+1794526601	coin	Alaric	57	9261	canyon.are	+7400	loot	(violence_update)	corpse of the cyclops	25609605947
+1794526601	coin	Alaric	57	9261	canyon.are	+56	loot	(violence_update)	corpse of the cyclops	25609606003
+1794526601	coin	Alaric	57	9261	canyon.are	+340000	loot	(violence_update)	corpse of the cyclops	25609946003
