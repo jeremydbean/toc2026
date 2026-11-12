@@ -1182,7 +1182,7 @@ pet's or servant's master, the mortals of their group in the room (the
 boss achievements' rule, `achievement_party_member`), and any mortal in
 the room who struck it, grouped or not, however late they joined
 (`hyrule_note_striker` from `damage()`: the latest `HYRULE_STRUCK_MAX`
-fighters of its life, by file id; owner, 2026-11-10: "joined late yes,
+fighters of its life, by character serial, never the file Id; owner, 2026-11-10: "joined late yes,
 left room no"), never staff -- is handed a NODROP key of their own (`hyrule_guardian_key`: 30630-30637,
 Ganon's Golden Key). A chest's prize -- the piece, and Ganon's Master
 Sword -- is claimed by `hyrule_chest_claim` from `get_obj`: only with the
@@ -1196,6 +1196,23 @@ each player a copy (`hyrule_tool_claim`), one each. Bombs, the shop's
 candle and small keys stay tradeable: bought or spent, they carry nobody
 past a gate. A key goes at a quit like every key, and the guardian must be
 beaten again. `tests/test_hyrule_guardian_keys.py`.
+
+**Characters are known by serial, never by the file Id** (review of
+d19b0e92, 2026-11-12: two ungrouped characters sharing an Id, one fighting
+Aquamentus and one idle in its room, and the idle one got the key). `Id`
+is `number_range( 0, 65535 )` and was never unique; quest objects are bound
+to it on disk, so it is left alone. `pcdata->serial` (`Serial`, case 'S',
+`PLAYER_SERIAL_FIRST` 65536 to `PLAYER_SERIAL_LAST` 2^30-1, so it is never
+read for an Id) is unique against an index of every file in `player/` and
+`player/archive/` built at boot (`player_serial_boot`) and every serial
+given since; `player_identity_login` (the nanny, beside
+`recovery_player_login`) gives one to anybody without their own -- none, or
+one another file holds -- and saves, and gives a new character an Id no
+file holds. `player_serial(ch)` is what anything asking "is this the same
+character" compares: `hyrule_note_striker`/`hyrule_struck_by`, the hate
+list, and column 2 of `log/progress.tsv`. It is saved, so a striker who
+quits and comes back before the kill is still known; RENAME carries it
+(`player_serial_rename`). `tests/test_guardian_serials.py`.
 
 **Ganon's finishing phase is his own marker** (review, 2026-11-10,
 confirmed live). It was `AFF2_NO_RECOVER`, which NERVE DAMAGE and
@@ -2121,6 +2138,30 @@ and player files always wrote vnums as plain decimal numbers, so nothing
 on disk changed and no migration exists. Never store a vnum in `sh_int`
 again (`tests/test_wide_vnums.py`, which also boots an area numbered from
 40,000 to 900,000 and plays it).
+
+**A number past its type is malformed, never wrapped** (review of
+d19b0e92, 2026-11-12). `fread_number`, `fread_long` and `fread_flag`'s
+digits accumulated with no check, so `#4295367296` overflowed (undefined
+behaviour) and wrapped to 400000 -- inside every range check after it --
+and `--check-area` passed. Each digit now goes through `digit_append`
+(`numparse.c`, before the arithmetic) and `|` sums through
+`int_add_checked`; an overflow is `fread_malformed`: the boot stops with
+the file and line, a player file refuses that character. Every digit is
+still consumed. `fread_flag`'s letters read as they always did. A field
+written as a `long` must be read with `fread_long`, or the first value
+past `INT_MAX` now refuses the file instead of wrapping (a note's stamp
+went to `fread_long` for that reason). **The stash/gear/corpse scan
+(`scan_number_value` in `save.c`) refuses exactly what the readers
+refuse**: `read_objects_aside` has no trap, and a number the scan passed
+and `fread_number` refused exited the game from PRESTORE STASH. A new
+reader without the trap needs a scan that agrees with it.
+`webadmin/area_reader.py` refuses the same numbers.
+`tests/test_number_overflow.py` (record, exit, key, reset, shop, special
+and `#AREADATA` numbers, cost, flags, player `Room`/`RecallRoom`/object
+`Vnum`, the PRESTORE STASH scan) and `tests/test_vnum_boundaries.py`
+(32767, 32768, 65535, 65536 and 1,000,000 loaded, walked, reset, saved by
+the writer and a player, and reloaded), both in `SANITIZE_MODULES`. The
+shipped world and player files held no such value on 2026-11-12.
 
 ## Fixing Characters At Their Next Login
 
@@ -3142,10 +3183,12 @@ log says what a player typed; the journal says what happened, in columns
 - **`log/progress.tsv` is the balance feed** (2026-10-22; rebuilt
   2026-11-10, owner: "log everything in a way that'll allow you to balance
   the game learning from players who play"). Numbers and vnums only: the
-  character's file **Id, never a name**, the **area file, never a room**,
+  character's **serial, never a name** (the file Id before 2026-11-12,
+  below 65536 and shared by some characters -- such old rows can merge
+  two; see Characters Are Known By Serial), the **area file, never a room**,
   nothing typed or said; staff (`IS_TRUSTED(LEVEL_IMMORTAL)`), wizinvis
   players, the dealer and the goblin write nothing. The common columns
-  are epoch, kind, Id, level, class, remorts, hp%, mana%, foe vnum and
+  are epoch, kind, serial, level, class, remorts, hp%, mana%, foe vnum and
   level, area file; the layouts are in `progress_write_raw`'s comment in
   `src/playlog.c` and `webadmin/balance.py`'s docstring. Kinds:
   `engage` (a mobile entering a fight with a player, from `set_fighting`:

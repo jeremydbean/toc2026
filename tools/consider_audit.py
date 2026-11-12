@@ -16,14 +16,15 @@ Three sources, best first:
   off it and that it took off players, so every fight is an exact
   comparison: rounds, damage a round each way, and the outcome.
 - A typed CONSIDER also writes a ``consider`` row to log/progress.tsv
-  (the character's Id, the foe, both predicted rounds, both predicted
+  (the character's serial -- the file Id before 2026-11-12 -- the foe,
+  both predicted rounds, both predicted
   damage a round, the verdict) and the fight that follows has its own
-  rows, so the join is exact: the same Id and foe vnum, the next outcome
+  rows, so the join is exact: the same character and foe vnum, the next outcome
   within ten minutes.
 - Before that, log/play.tsv kept the first three lines of every command's
   reply, which hold the predicted rounds (not the verdict). Those are
   joined to log/progress.tsv by the character's level, the area and the
-  time -- the two files name characters differently, by name and by Id,
+  time -- the two files name characters differently, by name and by number,
   and this never puts the two side by side -- and the mobile by its
   keywords in the area files. A join that finds two candidates is
   dropped. These are marked "inferred".

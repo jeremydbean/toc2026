@@ -14,8 +14,14 @@ class and gear tier, and compared with the others of the mobile's level
 band. The leveling guide, the Oracle, the Gear Finder and
 tools/balance_report.py all read this one answer.
 
-Only aggregates leave this module. The rows name characters by their
-file Id, never a name; the Ids are only counted.
+Only aggregates leave this module. The rows name characters by number,
+never a name, and the numbers are only counted. Since 2026-11-12 the
+number is the character's serial (65536 and up, unique: src/save.c);
+before it, the file Id (below 65536), which nothing kept unique, so two
+characters sharing one read as one in those rows -- in ``characters``,
+the farming share and the time between kills. The two ranges never meet,
+so an old row is never taken for a new character's, though one character
+whose rows span the change counts as two until the old rows age out.
 
 Legacy rows. Before 2026-11-10 a kill wrote one ``kill`` row per player
 it paid, and nothing else, so a group kill read as several. A legacy row
@@ -25,7 +31,7 @@ rows says how many it rests on (``legacy``).
 
 Columns (tab-separated; the first eleven are every row's):
 
-  0 epoch  1 kind  2 id  3 level  4 class  5 remorts  6 hp%  7 mana%
+  0 epoch  1 kind  2 serial (an Id before 2026-11-12)  3 level  4 class  5 remorts  6 hp%  7 mana%
   8 foe vnum  9 foe level  10 area file
   engage: 11 enc  12 foe max hp  13 hp  14 max hp  15 mana  16 max mana
           17 players  18 pets  19 gear tier  20 buffs

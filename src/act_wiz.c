@@ -9766,6 +9766,7 @@ void do_rename( CHAR_DATA *ch, char *argument )
 
     /* Capitalize and apply new name */
     arg2[0] = (char)UPPER( (unsigned char)arg2[0] );
+    player_serial_rename( victim->name, arg2 );     /* the serial goes with them */
     free_string( victim->name );
     victim->name = str_dup( arg2 );
 

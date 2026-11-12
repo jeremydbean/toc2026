@@ -108,9 +108,11 @@ class ProgressLogTests(unittest.TestCase):
                     client.wait_closed()
             text = (mud.root / "log" / "progress.tsv").read_text(encoding="latin-1")
             journal = (mud.root / "log" / "play.tsv").read_text(encoding="latin-1")
+            # The character's serial: unique, where the file Id is not
+            # (review of d19b0e92).
             hunter_id = next(line.split()[1] for line in
                              (mud.player_dir / "Zhunter").read_text(encoding="latin-1").splitlines()
-                             if line.startswith("Id "))
+                             if line.startswith("Serial "))
 
         rows = [line.split("\t") for line in text.splitlines()]
         # One reward row per player paid, one slain row per mobile death
@@ -126,7 +128,7 @@ class ProgressLogTests(unittest.TestCase):
         self.assertEqual([r[11] for r in slain], [kill[25], unpaid[25]], text)
         self.assertRegex(kill[25], r"^\d+-\d+$")
         self.assertEqual(kill[26], "1", "one foe at the kill")
-        self.assertEqual(kill[2], hunter_id)                  # the Id, not a name
+        self.assertEqual(kill[2], hunter_id)                  # the serial, not a name
         self.assertEqual((kill[3], kill[8], kill[9]), ("5", str(SMURF), "3"))
         self.assertTrue(kill[10].endswith(".are"), kill)       # an area file, never a room
         self.assertGreaterEqual(int(kill[11]), 0, "encounter length")

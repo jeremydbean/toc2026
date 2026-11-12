@@ -2216,7 +2216,8 @@ struct  char_data
     long                enc_by_pets;
     long                enc_dealt;
     int                 enc_rounds;     /* its rounds in this encounter */
-    /* A Hyrule guardian's fighters, by player file id, the latest
+    /* A Hyrule guardian's fighters, by character serial (never the
+       file Id, which two characters can share), the latest
        HYRULE_STRUCK_MAX of its life (a lull in the fight forgets nobody):
        each one in the room at its death gets a key, grouped or not, late
        or not (owner, 2026-11-10). Memory only. */
@@ -2366,7 +2367,14 @@ struct  dummy_source_data
 struct  pc_data
 {
     PC_DATA * next;
-    int                 id;
+    int                 id;     /* the file's Id: 0-65535, never unique (quest objects are bound to it) */
+    /* The character's serial (save.c, 2026-11-12): saved as Serial,
+       65536 to 2^30-1, unique among every file in player/ and its archive,
+       given at the first login without one. What anything asking "is
+       this the same character" compares -- a guardian's strikers, a
+       mobile's hates, the balance feed's column -- never the Id, which
+       two characters can share. */
+    int                 serial;
     char * pwd;
     bool                pwd_upgraded;   /* moved to SHA-512 this login: tell them (memory) */
     bool                load_failed;    /* the file could not be read: never entered, never saved */
@@ -3625,6 +3633,13 @@ int     player_file_presence( const char *name );
 bool    player_unarchive( const char *name );
 const char *player_file_read_path( const char *name, char *out, size_t size );
 void    player_archive_dormant( void );
+/* A character's serial: unique, wide, never the Id (save.c). */
+#define PLAYER_SERIAL_FIRST  65536
+#define PLAYER_SERIAL_LAST   0x3fffffff     /* number_range's 30 bits */
+int     player_serial( CHAR_DATA *ch );
+bool    player_identity_login( CHAR_DATA *ch, bool new_character );
+void    player_serial_boot( void );
+void    player_serial_rename( const char *old_name, const char *new_name );
 int     fread_number    ( FILE *fp );
 long    fread_long      ( FILE *fp );
 int     fireball_damage_roll ( int level );

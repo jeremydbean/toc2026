@@ -2001,7 +2001,7 @@ void load_notes( void )
  
         if ( str_cmp( fread_word( fp ), "stamp" ) )
             break;
-        pnote->date_stamp = fread_number(fp);
+        pnote->date_stamp = (time_t) fread_long(fp);   /* written as a long */
  
         if ( str_cmp( fread_word( fp ), "to" ) )
 	    break;
@@ -4919,10 +4919,46 @@ static void fread_malformed( const char *what )
     exit( 1 );
 }
 
+/*
+ * The digits of a number, checked as they are read (review of d19b0e92,
+ * 2026-11-12). The readers used to accumulate `number * 10 + digit` in an
+ * int with no check, so a record #4295367296 overflowed -- undefined
+ * behaviour -- and wrapped to 400000, inside every range check after it,
+ * and loaded as somebody else's number. Now a number past its type's
+ * range is malformed like any other: at boot it stops the game with the
+ * file and line (bug), in a player file it refuses that character
+ * (fread_player_trap). Every digit is still read, so nothing of the
+ * number is left for the next read.
+ */
+static char fread_digits( FILE *fp, char c, unsigned long limit, unsigned long *mag,
+                          bool *over )
+{
+    *mag = 0;
+    *over = false;
+    while ( isdigit(c) )
+    {
+        if ( !*over && !digit_append( mag, c - '0', limit ) )
+            *over = true;
+        c = (char)(getc( fp ));
+    }
+    return c;
+}
+
+/* The sign put back: -(mag) without ever negating the type's minimum's
+   magnitude in a signed type. mag is no more than the limit it was read
+   against. */
+static long fread_signed( unsigned long mag, bool sign )
+{
+    if ( !sign || mag == 0 )
+        return (long) mag;
+    return -(long) ( mag - 1UL ) - 1L;
+}
+
 int fread_number( FILE *fp )
 {
-    int number;
-    bool sign;
+    unsigned long mag;
+    bool sign, over;
+    int number, rest;
     char c;
  
     do
@@ -4930,8 +4966,6 @@ int fread_number( FILE *fp )
 	c = (char)(getc( fp ));
     }
     while ( isspace(c) );
- 
-    number = 0;
  
     sign   = false;
     if ( c == '+' )
@@ -4947,17 +4981,18 @@ int fread_number( FILE *fp )
     if ( !isdigit(c) )
         fread_malformed( "Fread_number: bad format." );
  
-    while ( isdigit(c) )
-    {
-        number = number * 10 + c - '0';
-        c      = (char)(getc( fp ));
-    }
- 
-    if ( sign )
-        number = 0 - number;
+    c = fread_digits( fp, c, sign ? (unsigned long) INT_MAX + 1UL : (unsigned long) INT_MAX,
+                      &mag, &over );
+    if ( over )
+        fread_malformed( "Fread_number: number out of range." );
+    number = (int) fread_signed( mag, sign );
  
     if ( c == '|' )
-        number += fread_number( fp );
+    {
+        rest = fread_number( fp );
+        if ( !int_add_checked( number, rest, &number ) )
+            fread_malformed( "Fread_number: number out of range." );
+    }
     else if ( c != ' ' )
         ungetc( c, fp );
  
@@ -4969,8 +5004,8 @@ int fread_number( FILE *fp )
  */
 long fread_long( FILE *fp )
 {
-    long number;
-    bool sign;
+    unsigned long mag;
+    bool sign, over;
     char c;
  
     do
@@ -4978,8 +5013,6 @@ long fread_long( FILE *fp )
 	c = (char)(getc( fp ));
     }
     while ( isspace(c) );
- 
-    number = 0;
  
     sign   = false;
     if ( c == '+' )
@@ -4995,24 +5028,26 @@ long fread_long( FILE *fp )
     if ( !isdigit(c) )
         fread_malformed( "Fread_number: bad format." );
  
-    while ( isdigit(c) )
-    {
-        number = number * 10 + c - '0';
-        c      = (char)(getc( fp ));
-    }
- 
-    if ( sign )
-        number = 0 - number;
+    c = fread_digits( fp, c, sign ? (unsigned long) LONG_MAX + 1UL : (unsigned long) LONG_MAX,
+                      &mag, &over );
+    if ( over )
+        fread_malformed( "Fread_long: number out of range." );
  
     if ( c != ' ' )
        ungetc( c, fp );
  
-    return number;
+    return fread_signed( mag, sign );
 }
 
 
+/*
+ * Flags: letters (flag_convert) or digits, joined by '|'. The letters are
+ * read as they always were; the digits and the sum are checked against
+ * int's range, like fread_number's, since the result is an int.
+ */
 long fread_flag( FILE *fp)
 {
+    long long wide;
     int number;
     char c;
  
@@ -5035,12 +5070,24 @@ long fread_flag( FILE *fp)
  
     while (isdigit(c))
     {
-        number = number * 10 + c - '0';
+        wide = (long long) number * 10 + ( c - '0' );
+        if ( wide > INT_MAX || wide < INT_MIN )
+        {
+            while ( isdigit(c) )
+                c = (char)(getc(fp));
+            fread_malformed( "Fread_flag: number out of range." );
+        }
+        number = (int) wide;
         c = (char)(getc(fp));
     }
  
     if (c == '|')
-        number += fread_flag(fp);
+    {
+        wide = (long long) number + fread_flag(fp);
+        if ( wide > INT_MAX || wide < INT_MIN )
+            fread_malformed( "Fread_flag: number out of range." );
+        number = (int) wide;
+    }
  
     else if  ( c != ' ')
         ungetc(c,fp);

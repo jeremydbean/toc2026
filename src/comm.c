@@ -561,6 +561,7 @@ int main( int argc, char **argv )
     playlog_boot( );        /* the crash recorder, once the world is up */
     spellup_boot_check( );  /* Hermie, if the restart put mortals off */
     player_archive_dormant( );   /* characters not seen in two years */
+    player_serial_boot( );       /* every file's serial, before anyone logs in */
     hero_records_backfill( );    /* the plaque's and tablet's fields */
     conn_guard_boot( );     /* players' addresses, read before the loop */
     login_lock_boot( );     /* lockouts a reboot must not forget */
@@ -4194,6 +4195,11 @@ case CON_DEFAULT_CHOICE:
 	    /* Their identity in the recovery ledger, which outlives any
 	       restore of their file (recovery.c). */
 	    recovery_player_login( ch, is_new_character );
+	    /* A serial of their own, and a new character an Id nobody else
+	       holds (save.c): written down at once, so a crash before the
+	       next save does not hand them another. */
+	    if ( player_identity_login( ch, is_new_character ) )
+	        save_char_obj( ch );
 	    player_fixes_login( ch, is_new_character );
 	    /* Their password moved to SHA-512 at this login: say so, once,
 	       and write it down (login_password_upgrade). */

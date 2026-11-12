@@ -59,6 +59,12 @@ ROOM_TELEPORT = 1 << 5      # (F)
 ROOM_AFFECTED_BY = 1 << 7   # (H)
 
 
+# The ranges fread_number and fread_long hold a number to (int and a
+# 64-bit long, as the game is built).
+INT_MIN, INT_MAX = -2**31, 2**31 - 1
+LONG_MIN, LONG_MAX = -2**63, 2**63 - 1
+
+
 class AreaFormatError(ValueError):
     """The file says something the game's loader would refuse."""
 
@@ -158,7 +164,12 @@ class TokenReader:
             end = self._digits(pos)
             if end == pos:
                 raise self.error("bad number", pos)
-            value += sign * int(self.text[pos:end])
+            part = sign * int(self.text[pos:end])
+            value += part
+            if not INT_MIN <= part <= INT_MAX or not INT_MIN <= value <= INT_MAX:
+                # fread_number refuses it as it reads (review of
+                # d19b0e92): it used to wrap, #4295367296 into 400000.
+                raise self.error("Fread_number: number out of range.", pos)
             self.pos = end
             if end < len(self.text) and self.text[end] == "|":
                 self.pos = end + 1
@@ -181,8 +192,11 @@ class TokenReader:
         end = self._digits(pos)
         if end == pos:
             raise self.error("bad number", pos)
+        value = sign * int(self.text[pos:end])
+        if not LONG_MIN <= value <= LONG_MAX:
+            raise self.error("Fread_long: number out of range.", pos)
         self.pos = end
-        return Token(self.text[start:end], start, end, sign * int(self.text[pos:end]))
+        return Token(self.text[start:end], start, end, value)
 
     def flag_token(self) -> Token:
         """fread_flag. A minus sign is neither a letter nor a digit, so on
@@ -195,7 +209,10 @@ class TokenReader:
             if pos < n and text[pos] not in DIGITS:
                 while pos < n and ("A" <= text[pos] <= "Z" or "a" <= text[pos] <= "z"):
                     pos += 1
+            digits_at = pos
             pos = self._digits(pos)
+            if pos > digits_at and int(text[digits_at:pos]) > INT_MAX:
+                raise self.error("Fread_flag: number out of range.", digits_at)
             self.pos = pos
             if pos < n and text[pos] == "|":
                 self.pos = pos + 1
