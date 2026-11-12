@@ -24901,3 +24901,60 @@
 1794526601	coin	Alaric	57	9261	canyon.are	+7400	loot	(violence_update)	corpse of the cyclops	25609605947
 1794526601	coin	Alaric	57	9261	canyon.are	+56	loot	(violence_update)	corpse of the cyclops	25609606003
 1794526601	coin	Alaric	57	9261	canyon.are	+340000	loot	(violence_update)	corpse of the cyclops	25609946003
+1794526608	got	Alaric	57	9261	canyon.are	9213	some platinum arm bands	armor	22	55660000	get	a stinking corpse
+1794526608	got	Alaric	57	9261	canyon.are	9214	some platinum leg bands	armor	22	50600000	get	a stinking corpse
+1794526608	cmd	Alaric	57	9261	canyon.are	standing	72	0	-	get	all cor	You get some platinum arm bands from a stinking corpse. // You get some platinum leg bands from a stinking corpse.	-	-
+1794526610	area	Alaric	57	2497	dresden.are	canyon.are	dresden.are	19	recall
+1794526610	cmd	Alaric	57	2497	dresden.are	standing	72	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794526610	cmd	Alaric	57	2401	dresden.are	standing	72	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794526611	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	1	jump
+1794526611	cmd	Alaric	57	1607	wyvern.are	standing	72	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1794526612	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	1	(room_update)
+1794526613	cmd	Alaric	57	4208	dresden.are	standing	72	0	-	look	tr	You see nothing special about him. // Trentlin is in excellent condition. // Trentlin is using:	-	+
+1794526616	got	Trentlin	40	4208	dresden.are	9214	some platinum leg bands	armor	22	50600000	give(another's)	Alaric
+1794526616	cmd	Alaric	57	4208	dresden.are	standing	72	0	-	give	leg tr	You give some platinum leg bands to Trentlin.	-	-
+1794526619	cmd	Alaric	57	4208	dresden.are	standing	72	0	-	drop	arm	You drop some platinum arm bands.	-	-
+1794526623	coin	Alaric	57	4208	dresden.are	+44	loot	sacrifice	-	25609946047
+1794526623	cmd	Alaric	57	4208	dresden.are	standing	72	0	-	sacrifice	arm	The Gods give you 44 copper coins for your sacrifice.	-	-
+1794526633	report	Trentlin	40	4208	dresden.are	bug	Not sure if this is a bug or not, but i died in the 5th dungeon in Hyrule, but it won't let me enter any dungeon without the previous triforce pieces, so its pretty much a giant pain to get the corps	868/868 hp	go yeah, it was, should i bug that too? | l | l in co | sac co | l in co | bug Not sure if this is a bug or not, but i died in the 5th dungeon in Hyrule, but it won't let
+1794526633	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	bug	Not sure if this is a bug or not, but i died in the 5th dungeon in Hyrule, but it won't let me enter any dungeon withou	Bug logged.	-	-
+1794526635	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      some platinum leg bands //      (Magical) (Humming) a great war helmet	-	+
+1794526637	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	all	You wear a great war helmet on your head. // Some Black velvet robes rejects you: it is for the light (Kind or brighter), and you are Balanced. // The Shield of Dresden rejects you: it is for the light (Kind or brighter), and you are Balan	-	+
+1794526640	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      some platinum leg bands //      (Magical) some Black velvet robes	-	+
+1794526643	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	leg	You stop using a pair of Roman-style leggings. // You wear some platinum leg bands on your legs.	-	-
+1794526645	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	compare	leg	A) a pair of Roman-style leggings (level 15) // B) some platinum leg bands (level 22), worn // Slot: legs.  Your damage comes from weapons.	-	+
+1794526652	cmd	Alaric	57	4208	dresden.are	standing	72	0	-	look	tr	You see nothing special about him. // Trentlin is in excellent condition. // Trentlin is using:	-	+
+1794526654	cmd	Trentlin	40	4208	dresden.are	standing	100	10	-	stash	put leg	You put a pair of Roman-style leggings away for safe keeping.	-	-
+1794526654	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Magical) some Black velvet robes //      (Magical) (Glowing) the Shield of Dresden	-	+
+1794526658	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	helm	You must be level 51 to use this object.	-	-
+1794526660	cmd	Trentlin	40	4208	dresden.are	standing	100	5	-	stash	put helm	You put battle helmet away for safe keeping.	-	-
+1794526662	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	stash	puit cord	Syntax: stash                     -- what is in it //         stash put <item>          -- from anywhere in the world //         stash get <item>          -- at the altar only	-	+
+1794526666	cmd	Trentlin	40	4208	dresden.are	standing	100	6	-	stash	put cord	You put some corduroys away for safe keeping.	-	-
+1794526666	cmd	Alaric	57	4208	dresden.are	standing	72	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794526667	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526687	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	that hyrule gear is pretty sweet though lol if you kill a few of the bosses	You say 'that hyrule gear is pretty sweet though lol if you kill a few of the bosses'	-	-
+1794526691	cmd	Alaric	57	4208	dresden.are	standing	75	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794526698	cmd	Alaric	57	4208	dresden.are	standing	75	0	-	say	That's what Kill keeps saying.	You say 'That's what Kill keeps saying.'	-	-
+1794526710	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	i got through a bunch with hermies buffs	You say 'i got through a bunch with hermies buffs'	-	-
+1794526726	cmd	Alaric	57	4208	dresden.are	standing	75	0	-	say	I tried to do a bit of it early on, but the dungeon orders were weird and items gatekept you. But I guess it's all viab	You say 'I tried to do a bit of it early on, but the dungeon orders were weird and items gatekept you. But I guess it's all viable now'	-	-
+1794526728	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	but didnt stash most it so was trying to get some of the stuff i didnt save	You say 'but didnt stash most it so was trying to get some of the stuff i didnt save'	-	-
+1794526737	cmd	Alaric	57	4208	dresden.are	standing	75	0	-	say	Some of the bosses have specific strats, can't just kill them.	You say 'Some of the bosses have specific strats, can't just kill them.'	-	-
+1794526743	cmd	Alaric	57	4208	dresden.are	standing	75	0	-	say	Saw that in the change log awhile back	You say 'Saw that in the change log awhile back'	-	-
+1794526752	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	yeah the digdogger youre supposed to play the recorder a few times, which i did	You say 'yeah the digdogger youre supposed to play the recorder a few times, which i did'	-	-
+1794526762	cmd	Alaric	57	4208	dresden.are	standing	77	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794526763	cmd	Alaric	57	4208	dresden.are	standing	77	0	-	inventory		You are carrying: //      the cadaver-toy //      house key	-	+
+1794526764	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	but then he used some special attack and killed me in 3 hits	You say 'but then he used some special attack and killed me in 3 hits'	-	-
+1794526768	cmd	Alaric	57	4208	dresden.are	standing	77	0	-	say	Ouch	You say 'Ouch'	-	-
+1794526777	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	(social)		You nod.	-	-
+1794526780	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Magical) some Black velvet robes //      (Magical) (Glowing) the Shield of Dresden	-	+
+1794526781	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn around neck>  (Magical) a Blue rimmed, white cloak	-	+
+1794526785	cmd	Alaric	57	4208	dresden.are	standing	77	0	-	say	A lot of the items show as best for their level ranges, and certainly the high level gear comes from there.	You say 'A lot of the items show as best for their level ranges, and certainly the high level gear comes from there.'	-	-
+1794526808	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	say	Have one more remort before then end, debating just doing W/C for the final one and trying to wade through as far as I 	You say 'Have one more remort before then end, debating just doing W/C for the final one and trying to wade through as far as I can.'	-	-
+1794526811	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794526826	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	yeah, ill probably try to do the first one or two tomorrow to get some stuff back	You say 'yeah, ill probably try to do the first one or two tomorrow to get some stuff back'	-	-
+1794526839	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	ill prob just go back to W/W when i get to the final one	You say 'ill prob just go back to W/W when i get to the final one'	-	-
+1794526843	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	say	Haven't gotten any BG3 gears as of yet, but should be fairly prepared for it.	You say 'Haven't gotten any BG3 gears as of yet, but should be fairly prepared for it.'	-	-
+1794526860	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	say	Changelog showed there was a damage buff to W/W and T/T, was curious how that went. I'd already done those	You say 'Changelog showed there was a damage buff to W/W and T/T, was curious how that went. I'd already done those'	-	-
+1794526875	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	say	I thought W/W is pretty strong	You say 'I thought W/W is pretty strong'	-	-
+1794526876	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	inventory		You are carrying: //      the cadaver-toy //      house key	-	+
+1794526903	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	yeah it was nice lol	You say 'yeah it was nice lol'	-	-

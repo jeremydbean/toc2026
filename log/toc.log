@@ -294557,3 +294557,64 @@ Thu Nov 12 23:36:41 2026 :: Log Alaric [9261]: coin +1 platinum
 Thu Nov 12 23:36:41 2026 :: Log Alaric [9261]: coin +74 silver
 Thu Nov 12 23:36:41 2026 :: Log Alaric [9261]: coin +56 copper
 Thu Nov 12 23:36:41 2026 :: Log Alaric [9261]: coin +34 gold
+Thu Nov 12 23:36:48 2026 :: Log Alaric [9261]: get all cor
+Thu Nov 12 23:36:50 2026 :: Log Alaric [9261]: recal
+Thu Nov 12 23:36:50 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 9261
+Thu Nov 12 23:36:50 2026 :: Log Alaric [2497]: en do
+Thu Nov 12 23:36:50 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 12 23:36:51 2026 :: Log Alaric [2401]: jump rock
+Thu Nov 12 23:36:51 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Thu Nov 12 23:36:52 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Thu Nov 12 23:36:53 2026 :: Log Alaric [4208]: look tr
+Thu Nov 12 23:36:56 2026 :: Log Alaric [4208]: give leg tr
+Thu Nov 12 23:36:56 2026 :: Log Alaric [4208]: gave some platinum leg bands (vnum 9214) to Trentlin
+Thu Nov 12 23:36:56 2026 :: Log Trentlin [4208]: received some platinum leg bands (vnum 9214) from Alaric
+Thu Nov 12 23:36:59 2026 :: Log Alaric [4208]: drop arm
+Thu Nov 12 23:37:03 2026 :: Log Alaric [4208]: sac arm
+Thu Nov 12 23:37:03 2026 :: Log Alaric [4208]: coin +44 copper
+Thu Nov 12 23:37:04 2026 :: Treasure goblin: vanished from room 18129 (A trail through the wilderness, icekeep.are) (too long in one area).
+Thu Nov 12 23:37:13 2026 :: Log Trentlin [4208]: bug Not sure if this is a bug or not, but i died in the 5th dungeon in Hyrule, but it won't let me enter any dungeon without the previous triforce pieces, so its pretty much a giant pain to get the corpse back, again maybe its supposed to be that way. Telekinesis was also unable to fetch the corpse
+Thu Nov 12 23:37:15 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:37:17 2026 :: Log Trentlin [4208]: wear all
+Thu Nov 12 23:37:20 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:37:23 2026 :: Log Trentlin [4208]: wear leg
+Thu Nov 12 23:37:25 2026 :: Log Trentlin [4208]: comp leg
+Thu Nov 12 23:37:32 2026 :: Log Alaric [4208]: look tr
+Thu Nov 12 23:37:34 2026 :: Log Trentlin [4208]: stash put leg
+Thu Nov 12 23:37:34 2026 :: Log Trentlin [4208]: stashed a pair of Roman-style leggings (vnum 10028)
+Thu Nov 12 23:37:34 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:37:38 2026 :: Log Trentlin [4208]: wear helm
+Thu Nov 12 23:37:40 2026 :: Log Trentlin [4208]: stash put helm
+Thu Nov 12 23:37:40 2026 :: Log Trentlin [4208]: stashed battle helmet (vnum 29215)
+Thu Nov 12 23:37:42 2026 :: Log Trentlin [4208]: stash puit cord
+Thu Nov 12 23:37:46 2026 :: Log Trentlin [4208]: stash put cord
+Thu Nov 12 23:37:46 2026 :: Log Trentlin [4208]: stashed some corduroys (vnum 29227)
+Thu Nov 12 23:37:46 2026 :: Log Alaric [4208]: eq
+Thu Nov 12 23:37:47 2026 :: Log Trentlin [4208]: l
+Thu Nov 12 23:38:07 2026 :: Log Trentlin [4208]: say that hyrule gear is pretty sweet though lol if you kill a few of the bosses
+Thu Nov 12 23:38:11 2026 :: Log Alaric [4208]: eq
+Thu Nov 12 23:38:18 2026 :: Log Alaric [4208]: say That's what Kill keeps saying.
+Thu Nov 12 23:38:30 2026 :: Log Trentlin [4208]: say i got through a bunch with hermies buffs
+Thu Nov 12 23:38:46 2026 :: Log Alaric [4208]: say I tried to do a bit of it early on, but the dungeon orders were weird and items gatekept you. But I guess it's all viable now
+Thu Nov 12 23:38:48 2026 :: Log Trentlin [4208]: say but didnt stash most it so was trying to get some of the stuff i didnt save
+Thu Nov 12 23:38:57 2026 :: Log Alaric [4208]: say Some of the bosses have specific strats, can't just kill them.
+Thu Nov 12 23:39:03 2026 :: Log Alaric [4208]: say Saw that in the change log awhile back
+Thu Nov 12 23:39:12 2026 :: Log Trentlin [4208]: say yeah the digdogger youre supposed to play the recorder a few times, which i did
+Thu Nov 12 23:39:22 2026 :: Log Alaric [4208]: l
+Thu Nov 12 23:39:23 2026 :: Log Alaric [4208]: i
+Thu Nov 12 23:39:24 2026 :: Log Trentlin [4208]: say but then he used some special attack and killed me in 3 hits
+Thu Nov 12 23:39:28 2026 :: Log Alaric [4208]: say Ouch
+Thu Nov 12 23:39:37 2026 :: Log Trentlin [4208]: (social) nod
+Thu Nov 12 23:39:40 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:39:41 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:39:45 2026 :: Log Alaric [4208]: say A lot of the items show as best for their level ranges, and certainly the high level gear comes from there.
+Thu Nov 12 23:40:02 2026 :: Log Alaric [4208]: affects off: levitate
+Thu Nov 12 23:40:08 2026 :: Log Alaric [4208]: say Have one more remort before then end, debating just doing W/C for the final one and trying to wade through as far as I can.
+Thu Nov 12 23:40:11 2026 :: Log Alaric [4208]: eq
+Thu Nov 12 23:40:26 2026 :: Log Trentlin [4208]: say yeah, ill probably try to do the first one or two tomorrow to get some stuff back
+Thu Nov 12 23:40:39 2026 :: Log Trentlin [4208]: say ill prob just go back to W/W when i get to the final one
+Thu Nov 12 23:40:43 2026 :: Log Alaric [4208]: say Haven't gotten any BG3 gears as of yet, but should be fairly prepared for it.
+Thu Nov 12 23:41:00 2026 :: Log Alaric [4208]: say Changelog showed there was a damage buff to W/W and T/T, was curious how that went. I'd already done those
+Thu Nov 12 23:41:15 2026 :: Log Alaric [4208]: say I thought W/W is pretty strong
+Thu Nov 12 23:41:16 2026 :: Log Alaric [4208]: i
+Thu Nov 12 23:41:43 2026 :: Log Trentlin [4208]: say yeah it was nice lol
