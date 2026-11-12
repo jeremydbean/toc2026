@@ -4827,13 +4827,11 @@ The Jail~
 2.   You broke one of the games rules, most likely more than once.
 3.   You were using offensive language, or were harassing another player.
 
-In most cases, you have been nochanneled, meaning your public channels
-have been taken away.  Tell may also have been removed, but the Say
-command should be functioning.  You will be released from jail if/when
-the Immortal who put you here decides, or if that Immortal left a note
-to the other Immortals to let you out when they see you.  In most cases
-you can be let out of jail by ceasing what ever it was that got you here
-in the first place.
+Your public channels have been taken away while you are here.  Type
+SCORE to see your sentence: a timed one ends by itself at the time shown
+and returns you to the Temple, whether you are online or not; any other
+lasts until an Immortal releases you.  Dying, quitting or any other way
+out leaves you here until then.
 ~
 0 BNX 0
 S

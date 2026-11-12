@@ -1616,6 +1616,11 @@ void do_pray( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* An audience is a room outside the cell (jail.c): refused before
+       she is asked, so nothing is left to undo. */
+    if ( jail_refuses( ch ) )
+        return;
+
     /* Never a way out of a death trap, a cell or a duel. */
     if ( IS_SET( ch->in_room->room_flags, ROOM_DT )
       || IS_SET( ch->in_room->room_flags, ROOM_JAIL )

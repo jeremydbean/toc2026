@@ -303,6 +303,9 @@ bool travel_spell_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
 
     if ( to == NULL )
         return true;
+    /* A prisoner goes nowhere by magic, rank or not (jail.c). */
+    if ( is_jailed( ch ) && to->vnum != ROOM_VNUM_JAIL )
+        return true;
     if ( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
         return false;
     /* A sealed Hyrule room takes nobody by magic, a mobile sent there
@@ -1184,6 +1187,14 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_STASIS) )
     {
 	send_to_char( "You are held in place and cannot move!\n\r", ch );
+	return;
+    }
+
+    /* A sentence is not served by walking, ridden or not, whatever exits
+       the cell has (jail.c; char_to_room holds them too). */
+    if ( jail_refuses( ch ) )
+    {
+	runner = 2;
 	return;
     }
 
@@ -3651,6 +3662,10 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
         return;
     }
 
+    /* Prayer, ring or rescue: no recall serves a sentence (jail.c). */
+    if ( jail_refuses( ch ) )
+        return;
+
     if ( ch->battleticks > 0 ) {
         send_to_char( "Not while you're in battletick mode.\n\r", ch );
         return;
@@ -4370,6 +4385,10 @@ void do_enter( CHAR_DATA *ch, char *argument )
      send_to_char("Enter what?\n\r",ch);
      return;
    }
+
+   /* No portal serves a sentence (jail.c). */
+   if ( jail_refuses( ch ) )
+     return;
 
    if ( ( obj = get_obj_here( ch, arg ) ) == NULL )
    {

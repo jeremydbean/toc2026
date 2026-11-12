@@ -4154,6 +4154,9 @@ case CON_DEFAULT_CHOICE:
 	    }
 	    else if ( ch->in_room != NULL )
 	    {
+	        /* A free character saved in the cell starts at the Temple;
+	           a prisoner is held in it by char_to_room (jail.c). */
+	        jail_login_place( ch );
 	        char_to_room( ch, ch->in_room );
 	    }
 	    else if ( IS_IMMORTAL(ch) )
@@ -4170,6 +4173,10 @@ case CON_DEFAULT_CHOICE:
 	       here saves them. */
 	    if ( !is_new_character )
 	        corpse_registry_login( ch );
+	    /* A jail term that ran out while they were away ends now, saved,
+	       before they look at anything (jail.c). */
+	    if ( !is_new_character )
+	        jail_login( ch );
 	    act( "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
 	    do_look( ch, "auto" );
 

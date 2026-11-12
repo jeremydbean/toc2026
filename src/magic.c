@@ -4993,6 +4993,7 @@ void spell_summon( int sn, int level, CHAR_DATA *ch, void *vo )
     ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
     ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
+    ||   is_jailed( ch ) || is_jailed( victim )
     ||   (IS_NPC(victim) && IS_SET(victim->act,ACT_AGGRESSIVE))
     ||   victim->fighting != NULL
     ||   victim->level >= level + 5
@@ -5036,6 +5037,7 @@ void spell_teleport( int sn, int level, CHAR_DATA *ch, void *vo )
     ROOM_INDEX_DATA *candidate;
 
     if ( victim->in_room == NULL
+    ||   is_jailed( victim )
     ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
     || ( !IS_NPC(ch) && victim->fighting != NULL )
@@ -5239,7 +5241,8 @@ void spell_word_of_recall( int sn, int level, CHAR_DATA *ch, void *vo )
     }
 
     if (IS_SET(victim->in_room->room_flags,ROOM_NO_RECALL)
-     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL))
+     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
+     ||   is_jailed( victim ))
     {
 	send_to_char("Spell failed.\n\r",victim);
 	return;

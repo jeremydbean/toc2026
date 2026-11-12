@@ -1878,6 +1878,7 @@ void char_update( void )
                 &&   ch->was_in_room == NULL
                 &&   ch->in_room != NULL
                 &&   ch->in_room->vnum != ROOM_VNUM_LIMBO
+                &&   !is_jailed( ch )
                 &&   !IS_SET(ch->in_room->room_flags, ROOM_JAIL) )
                 {
                     if ( ch->fighting != NULL )
@@ -3220,6 +3221,9 @@ void update_handler( void )
 	pulse_memory	= PULSE_PER_SECOND;
 	playlog_phase_enter( "memguard_sweep" );
 	memguard_sweep	( );
+	/* A jail term that has run out ends with nobody typing (jail.c). */
+	playlog_phase_enter( "jail_update" );
+	jail_update	( );
     }
     if ( --pulse_area     <= 0 )
     {

@@ -141,7 +141,8 @@ static const char *resurrect_refusal( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
         return "You are already standing beside your body.";
     if ( IS_SET( to->room_flags, ROOM_DT ) )
         return "Your body lies where nothing living can stand.";
-    if ( IS_SET( ch->in_room->room_flags, ROOM_JAIL )
+    if ( is_jailed( ch )
+    ||   IS_SET( ch->in_room->room_flags, ROOM_JAIL )
     ||   IS_SET( to->room_flags, ROOM_JAIL ) )
         return "No god's call reaches past those bars.";
     if ( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )

@@ -387,6 +387,8 @@ void do_nochannels( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* From now on the flag is staff's, not the sentence's (jail.c). */
+    jail_restriction_touched( victim, COMM_NOCHANNELS );
     if ( IS_SET(victim->comm, COMM_NOCHANNELS) )
     {
 	REMOVE_BIT(victim->comm, COMM_NOCHANNELS);
@@ -430,6 +432,7 @@ void do_notitle( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    jail_restriction_touched( victim, COMM_NOTITLE );
     if( IS_SET(victim->comm, COMM_NOTITLE) ) {
 	REMOVE_BIT(victim->comm, COMM_NOTITLE);
 	send_to_char("Your title command has been returned to you.\n\r",victim);
@@ -544,105 +547,7 @@ void do_warn( CHAR_DATA *ch, char *argument )
    return;
 }
 
-void do_jail( CHAR_DATA *ch, char *argument )
-{
-    char arg[MAX_INPUT_LENGTH];
-    char arg2[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim;
-    ROOM_INDEX_DATA *jail;
-    ROOM_INDEX_DATA *temple;
-    int days;
-
-/*    one_argument( argument, arg );*/
-
-    argument = one_argument( argument, arg );
-    argument = one_argument( argument, arg2 );
-
-    jail = get_room_index( ROOM_VNUM_JAIL);
-    temple = get_room_index( ROOM_VNUM_TEMPLE);
-
-    if ( jail == NULL || temple == NULL )
-    {
-        send_to_char( "Jail or temple room not found -- check ROOM_VNUM_JAIL/TEMPLE.\n\r", ch );
-        return;
-    }
-
-    if ( arg[0] == '\0' || !parse_int( arg2, 0, INT_MAX, &days ) )
-    {
-        send_to_char( "Syntax: jail <player> <# of days>.\n\r", ch );
-        send_to_char( "To release someone, days=0\n\r",ch);
-        return;
-    }
-
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
-    {
-	send_to_char( "They aren't here.\n\r",ch );
-	return;
-    }
-
-    if (days > 30)
-    {
-        send_to_char("Maximum days is 30.\n\r",ch);
-        return;
-    }
-
-    if (IS_NPC(victim))
-    {
-         send_to_char("Why would you need to jail a mob?\n\r",ch);
-         return;
-    }
-
-    if ( ( rank_protects( ch, victim ) )
-	&&( victim != ch ) )
-    {
-	send_to_char( "You failed.\n\r",ch );
-	return;
-    }
-
-    if ( IS_SET(victim->act, PLR_JAILED ) && days == 0)
-    {
-        REMOVE_BIT(victim->act, PLR_JAILED );
-        REMOVE_BIT(victim->comm, COMM_NOCHANNELS );
-        REMOVE_BIT(victim->comm, COMM_NOTITLE);
-        free_string(victim->pcdata->title);
-        victim->pcdata->title = str_dup(" the Jailbird.");
-        victim->pcdata->title_custom = false;
-        SET_BIT(victim->act, PLR_EXCON );
-        send_to_char( "You have been released from Jail.\n\r",victim );
-        snprintf(buf, sizeof(buf),"%s released from Jail.\n\r",victim->name);
-        send_to_char( buf,ch);
-        char_from_room( victim );
-        char_to_room( victim, temple );
-        victim->pcdata->jw_timer = 0;
-        return;
-    }
-
-    if ( !IS_SET(victim->act, PLR_JAILED ) && days == 0)
-    {
-        send_to_char("That player isn't in jail!\n\r",ch);
-        return;
-    }
-
-        SET_BIT(victim->act, PLR_JAILED );
-        SET_BIT(victim->comm, COMM_NOCHANNELS );
-        SET_BIT(victim->comm, COMM_NOTITLE);
-        free_string(victim->pcdata->title);
-        victim->pcdata->title = str_dup(" . (JAILED)");
-        victim->pcdata->title_custom = false;
-        REMOVE_BIT(victim->act, PLR_WARNED );
-        REMOVE_BIT(victim->act, PLR_EXCON );
-        send_to_char( "GO TO JAIL, do not pass GO, do not collect $200.\n\r", victim);
-        snprintf(buf, sizeof(buf),"%s is now in Jail.\n\r",victim->name);
-        send_to_char( buf,ch);
-        char_from_room( victim );
-        char_to_room( victim, jail );
-        victim->pcdata->jw_timer = current_time + (days*24*60*60);
-        snprintf( buf, sizeof(buf), "%s has been jailed for breaking the rules!", victim->name );
-        send_info(buf);
-        return;
-
-}
+/* JAIL is jail.c's. */
 
 void do_nonote( CHAR_DATA *ch, char *argument )
 {
@@ -1224,6 +1129,11 @@ void do_transfer( CHAR_DATA *ch, char *argument )
 	send_to_char( "They are in limbo.\n\r", ch );
 	return;
     }
+
+    /* A prisoner is moved by JAIL RELEASE, never by a staff summons
+       (jail.c). */
+    if ( jail_refuses_staff_move( ch, victim, location ) )
+	return;
 
     if ( victim->fighting != NULL )
 	stop_fighting( victim, true );
@@ -2907,6 +2817,10 @@ void do_switch( CHAR_DATA *ch, char *argument )
 	send_to_char( "You are already switched.\n\r", ch );
 	return;
     }
+
+    /* A body to act through outside the cell (jail.c). */
+    if ( jail_refuses( ch ) )
+	return;
 
     if ( ( victim = get_char_world( ch, arg ) ) == NULL )
     {
@@ -9385,6 +9299,11 @@ void do_itrans( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* A prisoner is moved by JAIL RELEASE, never by a staff summons
+       (jail.c). */
+    if ( jail_refuses_staff_move( ch, victim, location ) )
+	return;
+
     if ( victim->fighting != NULL )
 	stop_fighting( victim, true );
 
@@ -9823,6 +9742,7 @@ void do_mute( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    jail_restriction_touched( victim, COMM_NOCHANNELS );
     if ( IS_SET(victim->comm, COMM_MUTE) )
     {
         REMOVE_BIT( victim->comm, COMM_MUTE );
@@ -9896,6 +9816,9 @@ void do_drag( CHAR_DATA *ch, char *argument )
         send_to_char( "You are in limbo.\n\r", ch );
         return;
     }
+
+    if ( jail_refuses_staff_move( ch, victim, ch->in_room ) )
+        return;
 
     if ( victim->fighting != NULL )
         stop_fighting( victim, true );

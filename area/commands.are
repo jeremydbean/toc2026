@@ -5823,9 +5823,25 @@ See also: TRANSFER, DRAG
 ~
 
 62 JAIL~
-Syntax: jail <player>
+Syntax: jail <player> status
+        jail <player> <duration>    30m, 2h, 7d, or a bare number of days
+        jail <player> indefinite
+        jail <player> release       (or: jail <player> 0)
 
-JAIL teleports the specified player to the jail room.
+JAIL puts a player in the jail cell (room 3) and keeps them there.  It
+works on players online, link-dead or offline, and saves at once: if the
+save fails, nothing changes and you are told.
+
+A timed sentence runs from now, at most 30 days, and replaces any term
+already being served.  When it runs out they are released to the Temple,
+online or at their next login.  INDEFINITE lasts until staff release them.
+STATUS shows the release time, what is left, who set it and what it
+imposed.
+
+Nothing else ends a sentence: death, recall, portals, spells, items, the
+Oracle, remort, DELETE, quitting, link loss and reboots all leave them in
+the cell, and TRANSFER refuses a prisoner.  A sentence turns off channels
+and titles; release gives back only what the sentence itself took.
 
 See also: TRANSFER, STASIS
 ~
