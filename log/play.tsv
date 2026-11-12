@@ -23216,3 +23216,35 @@
 1794516420	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Eagle's Heart Container //      (Glowing) an Aquamentus horn-spear	-	+
 1794516429	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	stat	heart	Name(s): heart container eagle crystal // Vnum: 30591  Format: new  Type: armor  Resets: 1 // Short description: the Eagle's Heart Container	-	+
 1794516434	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794516752	cmd	Miseri	14	30413	hyrule.are	standing	100	2	-	vnum	guardian key	No mobiles by that name. // [30630] the Eagle's key // [30631] the Moon's key	-	+
+1794516756	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	load	ob 30630	Syntax: //   load mob <vnum> //   load obj <vnum> <level>	-	-
+1794516760	got	Miseri	14	30413	hyrule.are	30630	the Eagle's key	key	2	0	load	-
+1794516760	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	load	obj 30630	You create the Eagle's key.	-	-
+1794516761	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794516764	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	unlock	east	There is a flash of light as you unlock the eagle.	-	-
+1794516766	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	open	east	Ok.	-	-
+1794516767	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	east		Level 1: Eagle's Golden Sanctum //   Smooth teal stone encloses this small, hushed sanctum, its walls inlaid // with a triangle within a triangle. A soft golden glow hangs in the air	-	+
+1794516769	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	get	all	You can't take that. // You can't take that.	-	-
+1794516771	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	get	all chest	The chest is closed.	-	-
+1794516773	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	open	chest	It's locked.	-	-
+1794516775	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	unlock	ches	*Click*	-	-
+1794516776	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	open	chest	Ok.	-	-
+1794516778	achieved	Miseri	14	30414	hyrule.are	first-triforce-shard	10	120	get
+1794516778	got	Miseri	14	30414	hyrule.are	30400	the first Triforce shard	treasure	2	1000000	get	the Eagle's treasure chest
+1794516778	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	get	all chest	You get the first Triforce shard from the Eagle's treasure chest. //                     ACHIEVEMENT EARNED // A Fragment of Wisdom  +10 points	-	+
+1794516781	cmd	Miseri	14	30414	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard //      (Glowing) the Eagle's key	-	+
+1794516794	cmd	Miseri	14	30414	hyrule.are	standing	100	2	-	vnum	level 2	No mobiles by that name. // [30481] the Moon dungeon map // [30490] the Moon dungeon compass	-	+
+1794516798	cmd	Miseri	14	30414	hyrule.are	standing	100	1	-	rwhere	level 2	Level 2: Crescent Gate                   [30418] // Level 2: Shed Skin Chamber               [30419] // Level 2: Coiled Track Room               [30420]	-	+
+1794516803	cmd	Miseri	14	30418	hyrule.are	standing	100	0	-	goto	30418	Level 2: Crescent Gate //   Pale blue stone surrounds this entrance hall, its walls carved with // crescent moons worn soft by time and a pair of stone dragons crouched	-	+
+1794516807	cmd	Miseri	14	30419	hyrule.are	standing	100	0	-	east		Level 2: Shed Skin Chamber //   Papery snake skins lie curled in the corners of this blue-walled chamber, // and thin sinuous tracks wind through the dust, running straight and fast	-	+
+1794516808	cmd	Miseri	14	30418	hyrule.are	standing	100	0	-	west		Level 2: Crescent Gate //   Pale blue stone surrounds this entrance hall, its walls carved with // crescent moons worn soft by time and a pair of stone dragons crouched	-	+
+1794516808	cmd	Miseri	14	30418	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794516809	cmd	Miseri	14	30418	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794516811	cmd	Miseri	14	30419	hyrule.are	standing	100	0	-	east		Level 2: Shed Skin Chamber //   Papery snake skins lie curled in the corners of this blue-walled chamber, // and thin sinuous tracks wind through the dust, running straight and fast	-	+
+1794516812	cmd	Miseri	14	30422	hyrule.are	standing	100	0	-	north		Level 2: Moonstone Crossroads //   Wide and echoing, this chamber sits where several halls meet, its tiles // worn into shallow paths by the passage of countless scaled bellies. A	-	+
+1794516815	cmd	Miseri	14	30422	hyrule.are	standing	100	2	-	vnum	ma	[   11] Geko the gladiator // [   22] Quickfingers the pickpocket // [   24] Ni Hi the ninja master	-	+
+1794516817	cmd	Miseri	14	30422	hyrule.are	standing	100	4	-	vnum	map	No mobiles by that name. // [   96] a blank map // [  928] a secret map of Olympus	-	+
+1794516822	cmd	Miseri	14	30422	hyrule.are	standing	100	0	-	look		Level 2: Moonstone Crossroads //   Wide and echoing, this chamber sits where several halls meet, its tiles // worn into shallow paths by the passage of countless scaled bellies. A	-	+
+1794516826	got	Miseri	14	30422	hyrule.are	30481	the Moon dungeon map	map	8	12000000	load	-
+1794516826	cmd	Miseri	14	30422	hyrule.are	standing	100	0	-	load	obj 30481	You create the Moon dungeon map.	-	-
+1794516829	cmd	Miseri	14	30422	hyrule.are	standing	100	0	-	look	map	Level 2: The Moon -- the dungeon map              N //       T+B //         o o	-	+
