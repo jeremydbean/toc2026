@@ -275,9 +275,12 @@
                 </div>
             </aside>
         </main>
+        <!-- Inside the shell, not after it: the dragon theme makes the shell
+             its own stacking context (position: relative; z-index: 1), so a
+             scrim outside it covered the open menu too and nothing could be
+             clicked on a phone. -->
+        <div class="panel-scrim" id="panel-scrim"></div>
     </div>
-
-    <div class="panel-scrim" id="panel-scrim"></div>
 
     <dialog class="dialog" id="auth-dialog">
         <form method="dialog" id="auth-form">
