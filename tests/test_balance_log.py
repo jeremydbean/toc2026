@@ -285,7 +285,7 @@ class BalanceWiringTests(unittest.TestCase):
         self.assertIn("progress_loot( ch, top, obj, copper );", obj)
         playlog = (ROOT / "src" / "playlog.c").read_text(encoding="latin-1")
         raw = playlog.split("static void progress_write_raw(", 1)[1].split("\n}\n", 1)[0]
-        self.assertIn("IS_TRUSTED(ch, LEVEL_IMMORTAL)", raw, "staff write nothing")
+        self.assertIn("IS_IMMORTAL( ch )", raw, "immortals write nothing; a trusted mortal is counted")
         self.assertIn("play_hidden( ch )", raw)
 
 

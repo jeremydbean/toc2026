@@ -77,11 +77,14 @@ class HyruleLogSourceTests(unittest.TestCase):
         cmake = (ROOT / "CMakeLists.txt").read_text(encoding="utf-8")
         self.assertIn("src/hyrulelog.c", cmake)
 
-    def test_staff_and_wizinvis_are_never_written(self) -> None:
+    def test_immortals_and_wizinvis_are_never_written(self) -> None:
+        """Immortals by level, never a mortal by trust (owner, 2026-11-12:
+        trusted characters are logged; tests/test_trusted_logging.py)."""
         text = (ROOT / "src" / "hyrulelog.c").read_text(encoding="latin-1")
         counts = text.split("static bool hylog_counts(", 1)[1].split("\n}", 1)[0]
         self.assertIn("PLR_WIZINVIS", counts)
-        self.assertIn("LEVEL_IMMORTAL", counts)
+        self.assertIn("IS_IMMORTAL( ch )", counts)
+        self.assertNotIn("IS_TRUSTED", counts)
 
 
 class HyruleReportTests(unittest.TestCase):

@@ -69,11 +69,14 @@ static const char *zone_name( int zone )
     return zone >= 0 && zone <= 10 ? names[zone] : "?";
 }
 
+/* Immortals by level are left out, never a mortal by trust (owner,
+   2026-11-12: "trusted characters should actually be logged also. just
+   not immortals"): a builder's or helper's play is play. */
 static bool hylog_counts( CHAR_DATA *ch )
 {
     return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL
         && !IS_SET( ch->act, PLR_WIZINVIS )
-        && !IS_TRUSTED( ch, LEVEL_IMMORTAL );
+        && !IS_IMMORTAL( ch );
 }
 
 /* A pet or a charmed follower's deed is its master's. */
@@ -204,7 +207,7 @@ static void hylog_party( CHAR_DATA *guardian, char *out, size_t size )
     if ( guardian->in_room != NULL )
         for ( rch = guardian->in_room->people; rch != NULL; rch = rch->next_in_room )
         {
-            if ( IS_NPC(rch) || IS_TRUSTED( rch, LEVEL_IMMORTAL ) )
+            if ( IS_NPC(rch) || IS_IMMORTAL( rch ) )
                 continue;
             party++;
             snprintf( one, sizeof(one), "%s%d", party > 1 ? "," : "", rch->level );

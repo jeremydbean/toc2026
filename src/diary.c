@@ -533,13 +533,15 @@ static bool diary_write( const char *name, const DIARY_DAY *d )
 
 /* ------------------------------------------------------- today's page */
 
-/* Who keeps a diary: a mortal player whose file was read. Staff keep
-   none -- a wizinvis immortal leaves no trace in any diary. */
+/* Who keeps a diary: a mortal player whose file was read -- a mortal by
+   level, trusted or not (owner, 2026-11-12: trusted characters are logged,
+   immortals are not). Immortals keep none, and a wizinvis character leaves
+   no trace in any diary. */
 static bool diary_keeps( CHAR_DATA *ch )
 {
     return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL
         && !ch->pcdata->load_failed
-        && !IS_TRUSTED( ch, LEVEL_IMMORTAL )
+        && !IS_IMMORTAL( ch )
         && !IS_SET( ch->act, PLR_WIZINVIS )
         && diary_name_ok( ch->name );
 }

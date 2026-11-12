@@ -3573,7 +3573,9 @@ log says what a player typed; the journal says what happened, in columns
   character's **serial, never a name** (the file Id before 2026-11-12,
   below 65536 and shared by some characters -- such old rows can merge
   two; see Characters Are Known By Serial), the **area file, never a room**,
-  nothing typed or said; staff (`IS_TRUSTED(LEVEL_IMMORTAL)`), wizinvis
+  nothing typed or said; immortals by level (`IS_IMMORTAL`, never trust:
+  owner, 2026-11-12, a mortal trusted with staff commands is a player and is
+  counted), wizinvis
   players, the dealer and the goblin write nothing. The common columns
   are epoch, kind, serial, level, class, remorts, hp%, mana%, foe vnum and
   level, area file; the layouts are in `progress_write_raw`'s comment in
@@ -3647,7 +3649,8 @@ log says what a player typed; the journal says what happened, in columns
   guardian entering a fight, from `set_fighting`, with every mortal in
   the room: levels, classes, hit points, buffs), `guardian-down`, `flee`
   and `death` (the foe's health left -- the number that sizes a
-  guardian), `cleared`. Mortals only: staff and wizinvis are never
+  guardian), `cleared`. Mortals only, by level (a trusted mortal is
+  logged; owner, 2026-11-12): immortals and wizinvis are never
   written. A field holding a name is `obj_name`/`foe_name`, never `name`,
   and no field is `level`: the reader keys words beside the columns.
   `how` comes from `playlog_how()`. `tests/test_hyrule_log.py`; the
@@ -3704,8 +3707,8 @@ player is not in the game). `tests/test_diary.py`.
   localtime, or `TOC_DATE`/`TOC_DATE_FILE` in tests). The page turns the
   moment any hook or tick sees the date change: the old day is written and
   the new one begun, while playing.
-- **Mortals only, and nobody else in it.** `diary_keeps`: not staff (by
-  trust), never wizinvis, file read whole -- so a wizinvis immortal leaves
+- **Mortals only, and nobody else in it.** `diary_keeps`: not an immortal
+  by level (a trusted mortal keeps one; owner, 2026-11-12), never wizinvis, file read whole -- so a wizinvis immortal leaves
   no page. A page names no giver, no player killer ("another player", or
   "unknown causes" for an unseen immortal), no room (an area, by
   `quest_area_name`, is the finest place: the dealer and the goblin are

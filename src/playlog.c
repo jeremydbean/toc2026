@@ -1502,8 +1502,10 @@ static void progress_write_raw( const char *kind, CHAR_DATA *ch, int vnum, int l
     FILE *fp;
     int hp_pct, mana_pct;
 
+    /* Immortals by level write nothing; a mortal trusted with staff
+       commands is a player and is counted (owner, 2026-11-12). */
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || play_hidden( ch )
-    ||   IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    ||   IS_IMMORTAL( ch ) )
         return;
     if ( progress_lines < 0 || progress_lines >= PROGRESS_MAX )
         progress_trim();
@@ -1547,7 +1549,7 @@ void progress_engage( CHAR_DATA *mob, CHAR_DATA *opponent )
     mob->encounter_seq = 0;
     progress_encounter_id( mob );
     if ( pc == NULL || pc->in_room == NULL || pc->in_room != mob->in_room
-    ||   IS_TRUSTED(pc, LEVEL_IMMORTAL) || play_hidden( pc ) || is_unfindable_mob( mob ) )
+    ||   IS_IMMORTAL( pc ) || play_hidden( pc ) || is_unfindable_mob( mob ) )
         return;
     progress_party( pc, &players, &pets );
     progress_buffs( pc, buffs );
