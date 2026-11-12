@@ -360,11 +360,21 @@ static bool map_region_held( const CHAR_DATA *ch, const ROOM_INDEX_DATA *room )
     return achievement_set_has( ch, ACH_SET_MAP_AREAS, map_region_id( room ) );
 }
 
+/* Whose map shows every room: an immortal by level, never by trust
+   (owner, 2026-11-12: "trusted players shouldn't get all maps, only
+   actual level immortals"). A mortal given staff trust to build or help
+   explores like anyone. One of the deliberate level, not trust, tests
+   (AGENTS.md, Permission Helpers). */
+static bool map_sees_all( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL;
+}
+
 bool map_room_known( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
 {
     if ( ch == NULL || room == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return false;
-    if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( map_sees_all( ch ) )
         return true;
     if ( map_area_always_known( room->area ) )
         return true;
@@ -504,7 +514,7 @@ void gmcp_send_map_known( DESCRIPTOR_DATA *d )
         return;
     d->gmcp_map_known_sent = true;
 
-    if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    if ( map_sees_all( ch ) )
     {
         telnet_send_gmcp( d, "Map.Known",
                           "{\"part\":1,\"parts\":1,\"all\":true,\"rooms\":[]}" );
@@ -787,8 +797,8 @@ void do_maps( CHAR_DATA *ch, char *argument )
             }
         dstring_append_cstr( &out, "\n\r" );
     }
-    if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
-        dstring_append_cstr( &out, "  You are staff: your map shows every room.\n\r" );
+    if ( map_sees_all( ch ) )
+        dstring_append_cstr( &out, "  You are an immortal: your map shows every room.\n\r" );
 
     dstring_printf( &out, "\n\r  %-34s %-6s %s\n\r", "Area", "Map", "Walked" );
     for ( i = 0; i < map_info_count; i++ )

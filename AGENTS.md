@@ -5062,7 +5062,9 @@ with the room he left. Staff command GOBLIN.
 has been to, unless they hold the area's map; Dresden and the starting areas
 always). The game decides and the package only draws:
 
-- **Known** is `map_room_known`: staff (trust) know everything; an area in
+- **Known** is `map_room_known`: an immortal by level (`map_sees_all`,
+  never trust: owner, 2026-11-12, a mortal trusted to build explores like
+  anyone) knows everything; an area in
   `map_always_known_files` (dresden, school, limbo, dummy -- the one table);
   a room in the achievements' `rooms` set (walked into); or the room's
   **region** held. A region is an area (`achievement_area_id`), except that
@@ -5075,7 +5077,7 @@ always). The game decides and the package only draws:
   for them.
 - **GMCP `Map.Known`** (`gmcp_send_map_known`, from the prompt block in
   `comm.c` beside `gmcp_send_room`): the known rooms as vnum runs, in parts
-  of at most `MAP_KNOWN_PART_BYTES`, `"all": true` for staff. It is sent when
+  of at most `MAP_KNOWN_PART_BYTES`, `"all": true` for an immortal by level. It is sent when
   `d->gmcp_map_known_sent` is false -- a new connection or GMCP (reset in
   `gmcp_reset_snapshots`) and `map_known_changed(ch)`, which every map
   learned calls (`map_grant_region`, and `achievement_note_object_vnum` when

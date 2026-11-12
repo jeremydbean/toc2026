@@ -174,7 +174,7 @@ Map.Known {"part":2,"parts":2,"all":false,"rooms":[[6000,6070]]}
 
 Each run holds known rooms only (vnums no room has are skipped over); each
 part fits one GMCP message; the package acts on the last part, and `"all":
-true` (staff) means every room. A room walked into after that is known from
+true` (an immortal-level character) means every room. A room walked into after that is known from
 its `Room.Info`, and a Hyrule plan room from `Hyrule.MapRoom`.
 
 The package deletes each unknown room from the profile's map and keeps it,

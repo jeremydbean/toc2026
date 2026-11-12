@@ -244,5 +244,32 @@ class LiveTests(unittest.TestCase):
                 staff.send("quit")
 
 
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class ImmortalMapTests(unittest.TestCase):
+    def test_only_an_immortal_by_level_sees_every_room(self) -> None:
+        """Owner, 2026-11-12: "trusted players shouldn't get all maps,
+        only actual level immortals." A level 20 mortal trusted to 60
+        explores like anyone; a level 70 immortal sees everything."""
+        with LiveMud() as mud:
+            for name in ("Zmaptrusted", "Zmapimm"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PW)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zmaptrusted", Levl=20, Tru=60)
+            patch_player_file(mud, "Zmapimm", Levl=70)
+            with mud.connect(timeout=120) as trusted, mud.connect(timeout=120) as imm:
+                login(trusted, "Zmaptrusted", PW)
+                login(imm, "Zmapimm", PW)
+                trusted.sync("scroll 0")
+                imm.sync("scroll 0")
+                said_trusted = trusted.sync("maps")
+                said_imm = imm.sync("maps")
+                trusted.send("quit")
+                imm.send("quit")
+        self.assertNotIn("your map shows every room", said_trusted, said_trusted)
+        self.assertIn("your map shows every room", said_imm, said_imm)
+
 if __name__ == "__main__":
     unittest.main()
