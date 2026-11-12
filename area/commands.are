@@ -82,7 +82,7 @@ allows you to use.  Mortals and heroes will see only mortal commands here.
 Immortal-only commands are documented under WIZHELP and will not appear to
 non-immortals.
 
-See also: COMMANDS, WIZHELP
+See also: COMMANDS, KEYWORDS
 ~
 
 0 MAP MAPPER AUTOMAP AUTOMAPPER MAPPING~
@@ -926,7 +926,7 @@ DETECTS, TRAVEL, CURES, RESTORE, COMBAT, or ALL for the lot.
 REFRESH, HEAL and MANA fill the pool rather than topping it up, and
 VITALS does all three, so there is no reason to ask twice.
 
-See also: HEAL, SPELLUP
+See also: HEAL
 ~
 
 0 ACCOUNT ACCOUNTS LOGIN~
@@ -942,94 +942,65 @@ are playing, for good.
 See also: PASSWORD, DELETE, WHO
 ~
 
-0 REPORTS~
+62 REPORTS~
 Syntax: reports
         reports <bugs|typos|ideas> [count]
         reports clear <bugs|typos|ideas>
 
-What players have filed with BUG, TYPO and IDEA.  Each of those adds one
-line to a file, and until now nothing in the game ever mentioned them
-again, so they piled up unread - several hundred of them.
+Reads what players filed with BUG, TYPO and IDEA.  Staff only (trust 62).
 
-REPORTS on its own counts what has been filed and how much of it is new
-since you last looked.  Naming a kind shows the most recent ones, twenty
-by default, and marks them read; you are told at login when more arrive.
+REPORTS alone counts each kind and how much is new since you last looked.
+Naming a kind shows the newest, twenty unless you give a count, and marks
+them read; you are told at login when more arrive.
 
-Be warned that most of what is in there is not a report.  Typing BUG and
-your next command on the same line files the command, so these files are
-full of "wear all" and "short sword" among the real reports.
+REPORTS CLEAR sets that file aside under a dated name; nothing is deleted.
 
-REPORTS CLEAR sets a file aside under a dated name rather than deleting
-it.  What a player told us is worth keeping even when the file is mostly
-noise, and a mistyped command should not destroy it.
+Many lines are not reports: BUG typed with the next command on one line
+files the command ("wear all").
 
-See also: BUG, TYPO, IDEA, NOTE
+See also: BUG, NOTE
 ~
 
-0 MIRROR~
+65 MIRROR~
 Syntax: mirror <player>
         mirror restore
         mirror clear
 
-MIRROR takes off everything you are wearing and puts on what somebody
-else is wearing, so you can look at a character's setup from the inside -
-why they are taking the damage they are, whether a slot is empty, what a
-build actually adds up to - without asking them to hand anything over.
+Takes off your gear and puts on fresh copies of what a player is wearing,
+so you can study their setup from the inside.  Staff only (trust 65);
+you must be standing.  Every use is logged.
 
-It works whether or not they are logged in.  An online character is read
-from the game; an offline one from their last save, and MIRROR says which
-it used.
+  - Works online or offline (from their last save); it says which.
+  - Copies come from each item's prototype: their enchantments and wear
+    are not reproduced.  Alignment and two-hander rules are ignored, but
+    an action item is left out, and you are told.
+  - Your own gear goes to your inventory, never destroyed.
 
-Nothing about you can refuse a piece.  An item that would normally zap
-itself off someone of your alignment goes on anyway, and a two-handed
-weapon will not knock the shield back off.  The one exception is an
-ITEM_ACTION - wearing one of those recalls or kills you - and MIRROR says
-so when it leaves one out.
+MIRROR RESTORE packs the copies into "<player>'s gear" and puts your own
+gear back on.  MIRROR CLEAR takes everything off and forgets the mirror;
+so does logging out.
 
-MIRROR RESTORE undoes it: the borrowed kit goes into a pack called
-"<player>'s gear" in your inventory, and what you were wearing when you
-started goes back on.  The pack is yours to keep, look in, or purge.
-
-MIRROR CLEAR just takes everything off, borrowed or not, and remembers
-nothing.
-
-What you get is a fresh copy of each piece made from its prototype, not
-their copy of it: an enchantment they put on their own sword is not
-reproduced, and neither is its wear and tear.  Anything you already had
-on comes off into your inventory and is never destroyed.
-
-Use of the command is logged.
-
-See also: INVULN, LOAD, CLONE, FINGER, STAT
+See also: INVULN, FINGER, STAT
 ~
 
-0 INVULN INVULNERABLE~
+62 INVULN INVULNERABLE~
 Syntax: invuln
-        invuln damage
-        invuln absorb
-        invuln off
+        invuln damage | absorb | off
 
-INVULN is an immortal toggle.  While it is on, nothing takes hit points
-off you: no mobile, no player, no spell, and your equipment stops taking
-damage too.  Typing INVULN on its own turns it on, and again turns it off.
+Staff toggle (trust 62): while it is on nothing takes hit points off you
+-- no mobile, player, spell or shield -- and your equipment takes no
+damage.  INVULN alone turns it on, and again turns it off.
 
-The argument chooses only how a blow reads, not whether it lands:
+  DAMAGE   the default: blows read as normal, numbers and all, and you
+           lose nothing.  Use it to watch a fight behave.
+  ABSORB   blows read as against immunity ("Zog is unaffected by your
+           slash!").
+  OFF      turns it off.
 
-  DAMAGE   the default.  Attacks connect and are described exactly as
-           they would be normally, damage numbers and all - you simply
-           do not lose anything.  This is what you want when you are
-           watching a fight to see how it behaves.
+Nobody else is shown it, SCORE does not list it, and every use is logged.
+It protects your own body only, not a mobile you have switched into.
 
-  ABSORB   attacks visibly do nothing.  They read exactly as they would
-           against something immune to the weapon being used - "Zog is
-           unaffected by your slash!" - and name the attack that failed.
-
-  OFF      turn it off.
-
-Nothing about it is shown to anyone else, and it does not appear on your
-score sheet.  Use of the command is logged.
-
-See also: HOLYLIGHT, WIZINVIS, CLOAK, RESTORE
+See also: HOLYLIGHT, WIZINVIS, CLOAK
 ~
 
 0 DIARY~
@@ -1435,7 +1406,7 @@ Everybody else in the room sees only the words, whatever their own
 setting.  With it on you are also told the small shifts in your alignment
 that a kill or a deed brings.  It is off for new characters and is saved.
 
-See also: DAMAGE, ALIGNMENT, CONFIG
+See also: DAMAGE, ALIGNMENT, SETTINGS
 ~
 
 0 NEW SETTINGS CUSTOMIZE OPTIONS~
@@ -2198,7 +2169,7 @@ Number of trains required is 1 for W/* and Monk and 2 for all others.
 
 Trainer: Rakar (any), Jazair (any)
 
-See also: BASH, TRIP, KICK, DRAG
+See also: BASH, TRIP, KICK
 ~
 
 0 ROLL DICE~
@@ -2980,80 +2951,58 @@ Syntax: dns
         dns allow <address>
         dns <address or host name>
 
-DNS with no argument reports whether hostname lookups are on, how many are
-waiting, and what the resolver has done since boot: lookups asked, named,
-nameless, refused for a full queue, dropped because their connection
-closed or because they waited too long, names that came back after their
-connection had gone, and the average and slowest lookup.
+Host-name lookups and the connection guard.  Trust 70.
 
-DNS ON | OFF controls whether a connection is resolved to a host name.
-Lookups run on two threads of their own, so the game never waits on one: a
-connection shows its address until the name comes back, and only a
-connection that sends a line is looked up at all -- a scanner that
-connects and hangs up costs nothing.  A connection's address never
-changes; the name is only shown.  When a name arrives, the bans are asked
-again, and a banned connection is closed then.
+DNS alone says whether lookups are on and counts the resolver's work since
+boot (asked, named, nameless, queue full, dropped, average and slowest).
 
-The cost of off: bans written against host names will not match, because
-there is no host name to match against.  Bans on addresses always work.
-See BAN.
+DNS ON | OFF turns lookups on or off.  They run off the game loop, only for
+a connection that sends a line; when a name arrives the bans are asked
+again.  With lookups off, a ban on a host name never matches; a ban on an
+address always does (HELP BAN).
 
-DNS LIST shows the connections you could see in SOCKETS, each with the host
-name the resolver produced and the address behind it (IPv4 or IPv6, as it
-connected), which is how you tell a stale or spoofed-looking name from the
-address it really came from.  Anyone SOCKETS hides from you, DNS LIST
-hides too, address and all.
+DNS LIST shows each connection SOCKETS would show you, with its host name,
+its address and its client.  A name is only shown: the address decides.
 
-DNS GUARD shows the connection guard.  An address no player has logged in
-from in the last 90 days is paused for six hours after six connections in
-six hours that reach no password prompt, or twenty in a minute -- doubling
-each time it happens again in a week, to seven days.  A pause stops new
-characters only: the greeting still comes, a player logs in as usual, and
-that login lifts the pause.  Sixty connections in a minute is a flood,
-refused before the greeting for an hour.  No address may hold more than
-eight connections waiting to log in, and when two hundred are waiting
-across the whole game, new ones from addresses no player uses are refused
-until that falls.  An IPv6 address is counted with the rest of its /64.
-Pauses live in memory: a reboot lifts them all.
+DNS GUARD and DNS ALLOW: HELP 'DNS GUARD'.
 
-Never a strike: a connection the login prompt timed out (a client left
-open reconnects on its own), one that asked for MSSP (the listing
-crawlers), or one through the web client.  An address a player has logged
-in from in the last 90 days, or is playing from now, is never limited or
-paused.  A connection at the login prompts that types nothing for ten
-minutes is closed.  Silent connections are counted in one line an hour.
-BAN is a separate list and still shuts out anybody.
+DNS <address or name> resolves one now, and blocks the whole game until
+the answer comes: never point it at something that may hang.
 
-Staff hear each pause, flood and lifted pause on WIZINFO, and a new
-character or a waiting connection refused (once an address in ten
-minutes), with the hourly count when anything was refused.
+See also: 'DNS GUARD', BAN, SOCKETS
+~
 
-DNS ALLOW <address> lifts a pause and counts the address -- IPv4, or IPv6
-and with it its /64 -- as a player's for the next 90 days.  It also lifts a
-wrong-password lockout on it and forgets its history.
+70 'DNS GUARD' 'DNS ALLOW'~
+Syntax: dns guard
+        dns allow <address>
 
-DNS GUARD also lists wrong-password lockouts: five wrong passwords in
-fifteen minutes lock an address out for 15 minutes, then 1 hour, 6 hours,
-1 day and 7 days for each lockout in a week (a player's address an hour at
-most).  They are kept across reboots.  Staff hear each lockout, and a
-character drawing ten wrong passwords in an hour, on WIZINFO.
+DNS GUARD lists the connection guard's pauses, floods and wrong-password
+lockouts.  Pauses and floods live in memory: a reboot lifts them.
 
-The record of players' addresses is log/player_addresses.tsv: each login
-writes a line a day at most per address, every write is checked, and one
-that fails is tried again.  When the file does not exist it is started
-once from the login journals, from logins that name their own numeric
-address and nothing else; a player missed that way is never shut out,
-since their next login is recorded.
+  - An address no player has logged in from in 90 days, nor plays from
+    now, is paused for six hours after six connections in six hours that
+    reach no password prompt, or twenty in a minute: doubling each time
+    in a week, to seven days.  A pause refuses new characters only; a
+    player's login lifts it.
+  - Sixty connections in a minute is a flood: refused for an hour.
+  - At most eight connections from one address may wait at the login
+    prompts; while two hundred wait game-wide, untrusted addresses are
+    refused.  An IPv6 address counts with its /64.
+  - Never a strike: a login prompt that timed out, an MSSP query, the web
+    client.  A connection that types nothing for ten minutes is closed.
+  - Five wrong passwords in fifteen minutes lock an address out for 15
+    minutes, then 1 hour, 6 hours, 1 day, 7 days within a week (a
+    player's own address an hour at most).  Lockouts survive reboots.
 
-A shared-address notice ("shares an address with") compares exact
-addresses.  One address can be one household or network: it is an
-observation, not proof that the characters are one person.
+DNS ALLOW <address> lifts a pause and a lockout, forgets the address's
+history, and trusts it (with its /64) as a player's for 90 days.
 
-DNS <address> resolves one thing now: an IPv4 address gets a reverse
-lookup, anything else a forward one.  This one does block the game for the
-duration of the query, so do not point it at something you expect to hang.
+Staff hear each pause, flood, lockout and lifted pause on WIZINFO.  Player
+addresses are kept in log/player_addresses.tsv.  A shared address is an
+observation, not proof that two characters are one person.  BAN is a
+separate list.
 
-See also: BAN, ALLOW, SOCKETS
+See also: DNS, BAN, WIZINFO
 ~
 
 70 GRANTPSI~
@@ -3089,7 +3038,7 @@ This command will force all the players to save, but doesn't send them a
 message when you do it.  This command is also invoked on reboots and
 shutdowns.
 
-See also: SOCKETS, RESTORECHAR
+See also: SOCKETS, PRESTORE
 
 ~
 
@@ -3971,7 +3920,7 @@ of this for nothing: HELP BUFF.
 For information on the heal spell used by those of the cleric class (and
 members of the cleric's guild), read help for HEALSPELL.
 
-See also: SCORE, AFFECT, RESTORE
+See also: SCORE, AFFECT, BUFF
 ~
 
 0 HELP~
@@ -3981,7 +3930,7 @@ Syntax: help <keyword>
 HELP without any arguments shows a one-page command summary.
 
 HELP <keyword> shows a page of help on that keyword.  The keywords include
-all the commands, spells, and skills listed in the game.  Type HELP INDEX
+all the commands, spells, and skills listed in the game.  Type HELP KEYWORDS
 for an alphabetical listing of all keywords.  A word with no help names
 any topic within a letter or two of it, so a typo finds its way.
 
@@ -4306,7 +4255,7 @@ safety while link-dead, also go to the Temple.
 
 Every class holds recall from level 1, at 100%.
 
-See also: WORD OF RECALL, PORTAL, MOVEMENT, CHANGES
+See also: WORD OF RECALL, PORTAL, DIRECTIONS, CHANGES
 ~
 
 0 REMORT~
@@ -4729,7 +4678,7 @@ who <castle>    lists all members of a specified castle
 
 Classes and races may be abbreviated.
 
-See also: WHERE, FINGER, SCORE
+See also: WHERE, SCORE
 ~
 
 0 WIMPY~
@@ -4784,7 +4733,7 @@ that take a direction read it the same way.  If you are using a mud client to
 access the game, you may need to alter some of the files to allow for the
 abbreviated directions.
 
-See also: EXITS, OPEN, MOVEMENT
+See also: EXITS, OPEN, RUN
 ~
 
 0 BUG IDEA TYPO~
@@ -4799,7 +4748,9 @@ fill my waterskin" right after trying is all it takes.  Longer reports can
 go on the bug and idea note boards (see NOTE).
 
 What you type and what the game answers is recorded to help find bugs.
-Tells, replies, group tells and passwords never are.
+The words of tells, replies, group tells and notes are left out, and
+passwords always are -- though a character staff flag with LOG has
+everything but passwords recorded.
 
 See also: NOTE
 ~
@@ -4892,7 +4843,7 @@ and SAY in your current room.  Useful for concentrating during difficult
 combat or roleplay scenes.  Type QUIET again to restore all channels.
 Individual channel states are preserved; they return to how they were.
 
-See also: DEAF, CHANNELS, NOISY
+See also: DEAF, CHANNELS
 ~
 
 0 TELL~
@@ -4952,15 +4903,18 @@ To toggle the on/off status of a channel, type the name of that channel.
 
 WHAT IS RECORDED
 Everything said on a channel is kept two ways: in the shared history that
-HISTORY reads back, and in a staff log.  You only ever see the channels you
-are allowed to hear - a channel you have switched off, or one above your
-rank, is not in your history and is not sent to your client.
+HISTORY reads back, and in a channel log published with the game's logs.
+You only ever see the channels you are allowed to hear - a channel you
+have switched off, or one above your rank, is not in your history and is
+not sent to your client.
 
-SAY is recorded for staff and shown to everyone in the room, but it is not
-in the shared history: see HISTORY for why.
+SAY is recorded in the channel log and shown to everyone in the room, but
+it is not in the shared history: see HISTORY for why.
 
-Tells are private.  They are never in the shared history and never in the
-staff log; each character keeps their own copy and no one else can read it.
+Tells are private.  They are never in the shared history or the channel
+log, and each character's own copy is theirs alone.  The command log
+leaves out their words as well -- unless staff have flagged that character
+with LOG, which records everything but passwords.
 
 See also: GOSSIP, SHOUT, TELL, SAY, HISTORY, DEAF, QUIET
 ~
@@ -5095,7 +5049,8 @@ Syntax: allow   <site>
 
 BAN <site> prohibits players from that site from logging in.  BAN with
 no arguments lists the banned sites.  ALLOW <site> removes a site from
-the ban list.  The list is saved and kept across reboots.
+the ban list.  The list is saved and kept across reboots.  Creator only
+(trust 72).
 
 A site is an address or a host name, and the two are matched differently:
 
@@ -5153,40 +5108,32 @@ See also: SPLIT, GIVE, GET
 Syntax: reboot
         shutdown
 
-REBOOT shuts down and immediately restarts the game server.  When launched
-under the normal startup script, the server pauses roughly fifteen seconds
-for connections to drain, then launches a fresh copy.  All characters are
-automatically saved before the reboot sequence begins.
+Both save every player (as FSAVE does, then you), close every connection
+and stop the game.  Creator only: trust 72, the creator's rank, which no
+level or ordinary TRUST (at most 71) reaches.
 
-  reboot  - safe restart; the startup script brings the server back up
-            automatically after the delay
+  reboot     the game exits and comes back by itself: startup.sh and
+             the host's service start it again after five seconds.
+  shutdown   writes area/shutdown.txt, which tells startup.sh and the
+             host's service not to start it again.
 
-SHUTDOWN shuts the server down and signals the startup script NOT to
-restart it.  Use shutdown only when the server needs to stay offline for
-maintenance, patching, or emergency fixes.
+Unless you are wizinvis, everyone sees "Reboot by <name>." or "Shutdown
+by <name>.".  Warning: a wizinvis SHUTDOWN writes no shutdown.txt, so the
+game comes back as after a REBOOT.  Warn players with ANNOUNCE first.
 
-  shutdown - permanent stop; requires manual intervention to bring the
-             server back up
-
-Both commands are implementor-level only.  Before using either, notify
-the rest of the admin team so players are not caught off-guard.
-A brief WIZINFO warning before shutdown is strongly recommended.
-
-See also: WIZINFO, GECHO, WIZLOCK
+See also: ANNOUNCE, WIZLOCK, CREATOR, TRUST
 ~
 
 66 WIZLOCK~
 Syntax: wizlock
 
-WIZLOCK locks the game against new logins.  All players below immortal rank
-(level 62 and lower) are refused entry - except link-dead characters who are
-returning to their existing sessions, who are allowed back in.
+WIZLOCK toggles a lock on logins: a character below level 51 (hero) is
+refused with "The game is wizlocked."  A link-dead character may still
+reconnect, and nobody already playing is put out.  The lock is not saved:
+a reboot lifts it.  Creator only (trust 72).
 
-Wizlock should be used sparingly: typically only during a full reboot,
-critical maintenance, or an exploit emergency.  When wizlocking, send a
-GECHO or WIZINFO first so online players know what is happening.
-
-Type WIZLOCK again to unlock the game.
+Use it sparingly -- critical maintenance or an exploit emergency -- and
+ANNOUNCE it first.  Type WIZLOCK again to unlock.
 
 See also: NEWLOCK, SHUTDOWN, REBOOT, DENY
 ~
@@ -5194,14 +5141,14 @@ See also: NEWLOCK, SHUTDOWN, REBOOT, DENY
 62 NEWLOCK~
 Syntax: newlock
 
-NEWLOCK blocks new character creation.  Existing characters can still log
-in normally; only the creation of brand-new characters is prevented.  This
-is typically used when dealing with a ban-evading spammer who keeps making
-new alts.
+NEWLOCK toggles a lock on character creation: existing characters log in
+as normal, but a new name is refused with "The game is newlocked."  Use
+it against somebody making alternate characters to evade a ban.  The lock
+is not saved: a reboot lifts it.  Creator only (trust 72).
 
-Type NEWLOCK again to re-enable character creation.
+Type NEWLOCK again to allow new characters.
 
-See also: WIZLOCK, DENY, BAN
+See also: WIZLOCK, DENY
 ~
 
 67 DENY~
@@ -5212,8 +5159,8 @@ be unable to log in with that character; the game simply disconnects them
 during the login sequence.  This is a hard ban on a character file.
 
 DENY should be reserved for serious, repeated violations where a FREEZE or
-timeout is insufficient.  Unlike FREEZE, a denied character cannot be
-unblocked from within the game unless a staff member explicitly uses UNDENY.
+timeout is insufficient.  A denied character stays locked out until the
+creator uses UNDENY.  Creator only (trust 72), as is SET CHAR ... DENY.
 
 See also: UNDENY, FREEZE, BAN, WIZLOCK
 ~
@@ -5223,7 +5170,7 @@ Syntax: undeny <name>
 
 UNDENY removes a previously applied DENY flag from a character, restoring
 their ability to log in.  Only supply the character name - they do not need
-to be online for UNDENY to take effect.
+to be online for UNDENY to take effect.  Creator only (trust 72).
 
 See also: DENY
 ~
@@ -5366,72 +5313,71 @@ See also: LOAD, BREW, SCRIBE
 ~
 
 66 SET~
-Syntax: set char  <player> <field> <value>
-        set mob   <mobile> <field> <value>
+Syntax: set char  <player or mobile> <field> <value>
         set obj   <object> <field> <value>
-        set room  <number> <field> <value>
-        set skill <char>   <name>  <rating>
-        set skill <char>   all     <rating>
+        set room  <vnum> <field> <value>
+        set skill <character> <skill or spell | all> <percent>
 
-SET changes a live value on a character, object or room. The change takes
-effect immediately and, for a player, is saved with them. Type any of the
-forms above without a field to see what that form accepts.
+Changes a live value on a character, an object or a room; it takes effect
+at once and a player is saved with it.  Trust 66.  Any form without a
+field lists what it accepts.  PLAYER and MOB are other names for CHAR.
 
-SET MOB with a vnum instead of a name -- set mob 21003 race dwarf -- edits
-a mobile prototype you are building, in words.  See HELP MSHOW.  SET OBJ
-with a vnum does the same for an object.  See HELP OSHOW.
+  - Never on anyone who outranks you.  A player gets a snapshot first
+    (PRESTORE lists it as a staff change).
+  - SET MOB or SET OBJ with a vnum edits a prototype you are building:
+    HELP MSHOW, HELP OSHOW.
+  - A changed mobile or object lasts until it resets or the game reboots;
+    a room until you RSAVE its area.
 
-SET CHAR / SET MOB
+Details: HELP 'SET CHAR', HELP 'SET OBJECT', HELP 'SET ROOM'.
+
+See also: STRING, STAT, RSAVE, BUILDING
+~
+
+66 'SET CHAR' 'SET SKILL'~
+Syntax: set char <player or mobile> <field> <value>
+        set skill <character> <skill or spell> <percent>
+        set skill <character> all <percent>      (players only)
+
+The fields of SET CHAR (also SET PLAYER, SET MOB with a name):
+
   Stats       str int wis dex con
   Identity    sex class race level align guild
-  Resources   hp mana end move maxmove practice train exp
-  Combat      hitroll damroll armor wimpy hunt annoy
+  Resources   hp mana end move maxmove practice train exp stash
+  Combat      hitroll damroll armor hunt annoy
   Currency    platinum gold silver copper bank qp
   Conditions  thirst hunger drunk timer
   Estates     castle castlehead mountable were
-  Flags       pkiller excon wanted freeze deny
+  Flags       pkiller excon wanted freeze deny   (each on | off)
   Records     dcount pkills
 
-  armor sets all four armour classes at once; setting one and not the
-  others is almost never what is meant.
+  - ARMOR sets all four armour classes at once.
+  - QP adds to the points; below trust 70 at most 100 at a time.
+  - DENY is the creator's alone.  STASH sets a player's stash size and
+    never below what it already holds.
+  - Carry capacity has no field: raise strength, dexterity or level.
 
-  Carry capacity has no field of its own: it is computed from strength,
-  dexterity and level, so raise those instead. Every player already carries
-  half again what that formula alone would allow.
+SET SKILL ALL skips abilities no class can learn.
 
-  pkiller  <on|off>   toggle PKiller status
-  excon    <on|off>   toggle ex-convict (con-death) flag
-  wanted   <on|off>   toggle WANTED flag
-  freeze   <on|off>   freeze or unfreeze a player (saved)
-  deny     <on|off>   grant or revoke login access (saved)
+See also: SET, PARDON, ADVANCE, PRESTORE
+~
 
-SET OBJ
+66 'SET OBJECT'~
+Syntax: set obj <object> <field> <value>
+
   Numbers     level weight cost timer type condition material
-
-  COST is in copper.  A gold piece is 10000, a silver 100.  So
-
-    set obj bread cost 1          one copper
-    set obj sword cost 50000      five gold
   Values      value0 value1 value2 value3 value4  (v0 to v4)
   Flags       extra wear
-  Text        name short long
+  Text        name short long   (the rest of the line)
 
-  value0 to value4 mean different things for each item type; STAT OBJ
-  shows what they currently hold. Setting a portal or a manipulation item
-  requires level 70.
+COST is in copper: a silver is 100, a gold 10000 (set obj sword cost
+50000 is five gold).  value0-value4 mean different things for each type;
+STAT OBJ shows them.  A portal or manipulation item needs trust 70.
 
-  Flag fields (extra, wear, and SET ROOM's flags) take the same letters
-  the area files and STAT use. Give them together, and lead with + to add
-  to what is already set or - to take away:
+Flags take the letters STAT and area files use.  Lead with + to add or -
+to remove; without either the whole field is replaced.
 
-    set obj sword extra AG        replace: glow and magic, nothing else
     set obj sword extra +H        add nodrop, keep the rest
-    set obj sword extra -H        remove nodrop, keep the rest
-    set room 3700 flags +R        make this room newbies-only
-    set room 3700 flags -R        stop it being newbies-only
-
-  Without + or - the whole field is replaced, so a bare list clears every
-  flag you did not name. A plain number still works if you have one.
 
   EXTRA flags:
     A glow            B hum             C dark            D lock
@@ -5442,8 +5388,7 @@ SET OBJ
     U no identify     V no locate       W race restricted X adds affect
     Y embalmed
 
-  WEAR flags -- where it can go. A is required for anything a player is
-  meant to pick up at all:
+  WEAR flags (A is needed for anything a player may pick up):
     A take            B finger          C neck            D body
     E head            F legs            G feet            H hands
     I arms            J shield          K about body      L waist
@@ -5459,61 +5404,34 @@ SET OBJ
     34 herb      35 spell component        36 soul container
     37 action
 
-SET ROOM
+See also: SET, STRING, STAT
+~
+
+66 'SET ROOM'~
+Syntax: set room <vnum> <field> <value>
+
   Words       flags sector
   Text        name desc detail
 
-  In words, as RSHOW prints them:
-    set room 21001 flags +indoors -dark     names: +adds, -takes away
+    set room 21001 flags +indoors -dark     +adds, -takes away
     set room 21001 flags none               clears them
-    set room 21001 sector forest            inside city field forest hills
-                                            mountain water_swim water_noswim
-                                            underwater air desert underground
+    set room 21001 sector forest
     set room 21001 desc A long hall.        replaces, wrapped for you
     set room 21001 desc + More of it.       adds a line
     set room 21001 detail altar A stone altar, cracked.
-                                            what LOOK ALTAR shows; detail
-                                            altar + ... adds, none removes
-  A typed ; separates commands, so write \; for a semicolon in a text.
-  Flag names: dark jail no_mob indoors cult_entrance death_trap private
-  safe solitary pet_shop no_recall imp_only gods_only heroes_only
-  newbies_only law hp_regen mana_regen arena castle_join silent
-  no_teleport always_lit bank.  River, teleport and room-affect rooms keep
-  data a save cannot write yet, so those flags are not set by hand.
-  The old letters and sector numbers below still work.
 
-  A room you made yourself with GOTO is yours to change at any staff rank.
-  A room that came out of an area file may only be changed by an
-  implementor, because it is somebody else's work and RSAVE can now make
-  the change permanent.  See BUILDING.
+Sectors: inside city field forest hills mountain water_swim water_noswim
+underwater air desert underground.  Flag names: dark jail no_mob indoors
+cult_entrance death_trap private safe solitary pet_shop no_recall
+imp_only gods_only heroes_only newbies_only law hp_regen mana_regen arena
+castle_join silent no_teleport always_lit bank.  River, teleport and
+room-affect flags cannot be set by hand.  The old flag letters and sector
+numbers still work.  Write \; for a semicolon in a text.
 
-  FLAGS -- same letters, same + and - rules as above:
-    A dark            B jail            C no mobs         D indoors
-    E river           F teleport        G cult entrance   H affected by
-    I death trap      J private         K safe            L solitary
-    M pet shop        N no recall       O implementor only P gods only
-    Q heroes only     R newbies only    S law             T hp regen
-    U mana regen      V arena           W castle join     X silent
-    Y pathfinder mark
+A room you made with GOTO is yours to change at any staff rank; one from
+an area file needs an implementor.  RSAVE makes a change permanent.
 
-  SECTOR numbers:
-     0 inside     1 city       2 field      3 forest     4 hills
-     5 mountain   6 swimmable water         7 unswimmable water
-     8 underwater 9 air       10 desert    11 underground
-
-SET SKILL
-  set skill <char> <skill or spell> <percent>
-  set skill <char> all <percent>            (players only)
-
-Text fields take the rest of the line, spaces included, and replace what
-was there.
-
-Changes to mobiles and objects are to the one in front of you and last
-until it is reset or the game reboots. Changes to rooms are the same until
-you RSAVE, which writes that area's rooms to its file and makes them
-permanent. See BUILDING.
-
-See also: BUILDING, RSAVE, RLINK, STRING, STAT, MSET, OSET, RSET
+See also: SET, RSHOW, RSAVE, BUILDING
 ~
 
 63 STRING~
@@ -5616,7 +5534,7 @@ Herbie restores: hit points, mana, movement, hunger, and thirst.
 
 Cannot be used on players of equal or higher level.  Cannot target mobs.
 
-See also: RESTORE, EMPOWER
+See also: EMPOWER, SPELLUP
 ~
 
 66 HERMIE SPELLUP SPELLPURGE~
@@ -5744,7 +5662,7 @@ your WIZINVIS level hides you from them.
 Careful with a number: GOTO to a vnum where no room exists creates an empty
 room there ("You form order from nothingness.").
 
-See also: TRANSFER, AT, STAT, POOFIN, POOFOUT
+See also: WIZINVIS, POOFIN, POOFOUT, TRANSFER, RWHERE
 ~
 
 63 EXPLODE~
@@ -5774,7 +5692,7 @@ at level 59 for as long as it is worn -- no command needed.
 AFFECT lists holy sight while you have it, with the level it sees at.
 It does not change whether anybody else can see you.
 
-See also: AFFECT, TRIFORCE, WIZINVIS, DETECT
+See also: AFFECT, TRIFORCE, WIZINVIS, 'DETECT INVIS', 'DETECT HIDDEN'
 ~
 
 60 WIZINVIS~
@@ -5998,75 +5916,82 @@ Syntax: peace
 Peace causes all characters in a room to stop fighting. It also strips the
 AGGRESSIVE bit from mobiles.
 
-See also: SLAY, RESTORE, FORCE
+See also: SLAY, FORCE
 ~
 
 62 POOFIN~
-Syntax: poofin <message>
+Syntax: poofin
+        poofin <message>
 
-POOFIN sets the message other players see when you use GOTO to arrive in
-their room.  The default is '$n appears in a swirling mist.'  Your
-custom message must include your name somewhere (the game inserts $n for
-you if you include the literal text of your name, or simply write it
-in naturally).  Only players who can see you will see the message.
+Sets what the room sees when you arrive by GOTO.  POOFIN alone shows the
+current one.  Staff only (trust 62).
 
-Type 'poofin' with no argument to reset to the default message.
+  - The message must contain your name exactly as it is spelled,
+    capitals included ("You must include your name.").  It is shown as
+    you typed it: $n and the like are not replaced.
+  - Without one the room sees "<name> appears before you."  Once set it
+    cannot be cleared, only replaced.
+  - Only those whose trust reaches your WIZINVIS level see it.
 
-Example:  poofin Galdor rides in on a bolt of lightning.
+Example: poofin Galdor rides in on a bolt of lightning.
 
-See also: POOFOUT, GOTO, INVIS
+See also: POOFOUT, GOTO, WIZINVIS
 ~
 
 62 POOFOUT~
-Syntax: poofout <message>
+Syntax: poofout
+        poofout <message>
 
-POOFOUT sets the message other players see when you leave a room via GOTO.
-The default is '$n leaves in a swirling mist.'  Same rules as POOFIN -
-the message should read naturally with your name included, and only visible
-characters will see it.
+Sets what the room sees when you leave by GOTO; POOFOUT alone shows the
+current one.  The rules are POOFIN's: your name exactly as spelled, shown
+as typed, only to those whose trust reaches your WIZINVIS level.  Without
+one the room sees "<name> raises into the sky, and is gone."
 
-Type 'poofout' with no argument to reset to the default message.
+Example: poofout Galdor vanishes with a thunderclap.
 
-Example:  poofout Galdor vanishes with a thunderclap.
-
-See also: POOFIN, GOTO, INVIS
+See also: POOFIN, GOTO, WIZINVIS
 ~
 
-66 LOG~
+62 LOG~
 Syntax: log <character>
         log all
 
-LOG toggles command logging for the specified player.  When enabled, every
-command the player types is written to the server log file.  This is a
-persistent per-character toggle that survives reboots.
+LOG <name> toggles full recording of one player.  Creator only (trust
+72).  The flag is saved, so it lasts until LOG <name> again; WARN sets
+it too, and lifting a warning clears it.
 
-  log <name>  - toggle logging for that specific player
-  log all     - toggle server-wide logging of ALL players (session only;
-                does not persist across reboots)
+  - Every player is already watched by default (LOG ALL starts on): each
+    command is written to log/toc.log with its room, but the words of
+    tells, replies, group tells, notes and anything that reads them back
+    are withheld.
+  - A player flagged with LOG <name> is recorded in full, private words
+    included.
+  - Passwords never are: PASSWORD, RESETPWD, DELETE, REMORT and ALIAS are
+    written by name only, for everyone.
 
-Note: PASSWORD commands are never logged regardless of this flag.
-All immortal commands are always logged regardless of this flag.
-Requires creator level or higher.  Inform an implementor before use.
+LOG ALL switches the default watch off or on until the next boot.  The
+game's logs are copied to the public repository, so use LOG <name> only
+with a reason.
 
-See also: SNOOP, PSTAT
+See also: SNOOP, WARN, PSTAT
 ~
 
 67 SNOOP~
 Syntax: snoop <character>
         snoop <your own name>
 
-SNOOP lets you monitor a live copy of all input and output for the target
-character.  You see exactly what they type and exactly what their screen
-shows, in real time.  You may snoop multiple characters simultaneously.
+Shows you, live, the commands a player types (after "% ") and what their
+screen shows.  Creator only (trust 72).  Snooping yourself ends all your
+snoops.
 
-Snoop yourself (or your own name) to cancel ALL active snoops at once.
-
-Privacy guidelines:
-  - Only use snoop if you have a legitimate reason (cheating investigation,
-    bug reproduction, or explicit admin need).
-  - Ask for permission when the purpose is debugging rather than enforcement.
-  - Do not use snoop purely out of curiosity.  Snoops are logged and you
-    may be questioned about their use.
+  - One snooper per player ("Busy already"); never anyone who outranks
+    you.  A snoop ends by itself once you lose SNOOP's rank.
+  - It is not every keystroke: a password, RESETPWD, DELETE or REMORT
+    line, and every movement command, shows as an empty "% " line; a
+    social or a word that is no command is not echoed; and a password
+    prompt puts nothing on the screen.  Tells and alias bodies are shown.
+  - The player is not told.  Use it only with a legitimate reason, and
+    ask first when the purpose is debugging.
 
 See also: LOG, SWITCH, PSTAT
 ~
@@ -6106,14 +6031,14 @@ Syntax: immtalk <message>
         immtalk
         : <message>
 
-IMMTALK (alias :) sends a message to all immortals who have the immortal
-channel active.  Messages are prefixed with your name and level so other
-staff can identify the sender.
+Sends a message to every immortal (trust 60 and up) with the channel on,
+marked with your trust: "Zog [60] immtalks 'hello'".  IMMTALK alone
+turns the channel off or on for you.  The colon is a shortcut for it.
 
-Using IMMTALK with no argument toggles your own immortal channel on or off.
-When off, you will neither send nor receive immtalk messages.
+Lines are kept for HISTORY at the rank that may hear them, and in the
+channel log.
 
-See also: GODTALK (@), HERO (=), WIZINFO, BEEP, CHANNELS
+See also: GODTALK, HERO, WIZINFO, BEEP, CHANNELS
 ~
 
 60 WIZHELP~
@@ -6139,12 +6064,12 @@ See also: LOAD, VNUM
 
 62 SHOWHUNT~
 Syntax: showhunt
+        showhunt all
 
-SHOWHUNT reports how many mobile NPCs currently have an active hunt target
-set.  Hunting mobs pursue their targets across rooms until the quarry is
-killed, escapes too far, or the hunt expires.  High hunt counts can affect
-server performance; this command helps staff identify if hunting behavior
-is running out of control.
+SHOWHUNT counts the mobiles on the hunter list against its maximum.
+SHOWHUNT ALL also lists each one: its room, whether it is hunting or
+annoying, its quarry and the quarry's room, and its wait.  Staff only
+(trust 62).  A hunter whose quarry is gone is counted but not listed.
 
 See also: HPARDON, MWHERE
 ~
@@ -6153,12 +6078,11 @@ See also: HPARDON, MWHERE
 Syntax: hpardon <character>
         hpardon all
 
-HPARDON cancels any active hunts targeting the specified character, causing
-all mobs currently pursuing them to abandon the chase.  HPARDON ALL clears
-every active hunt in the game simultaneously.
+HPARDON <character> makes every mobile hunting that character give up.
+Staff only (trust 62).  HPARDON ALL ends every hunt in the game and needs
+trust 70; below that, ALL is read as a name.
 
-Use this when a hunt becomes stuck, when a player is being griefed by
-relentless hunting mobs after a crash or bug, or to clean up testing.
+Use it for a hunt stuck after a crash or a bug, or to clean up a test.
 
 See also: SHOWHUNT
 ~
@@ -6265,17 +6189,16 @@ See also: SMASH, PURGE, GATE, GOTO, TRANSFER, RECALL
 ~
 
 69 @ GODTALK~
-Syntax: @<message>
+Syntax: godtalk <message>
+        godtalk
+        @<message>
 
-The @ symbol is a shortcut for the GODTALK channel, available only to gods
-(level 69+).  This is a private channel for the highest immortals.
+The channel for trust 69 and above, marked with your trust like IMMTALK.
+GODTALK alone turns it off or on for you; @ is a shortcut.
 
-Typing:
-   @Anyone around for a reboot?
-is identical to:
-   godtalk Anyone around for a reboot?
+  @Anyone around for a reboot?
 
-See also: IMMTALK (:), HERO (=)
+See also: IMMTALK, HERO, WIZINFO
 ~
 
 70 DUMP_EXITS~
@@ -6346,7 +6269,7 @@ cannot be renamed.
 Use with caution - the old player file is deleted and replaced with a new
 one under the new name immediately.
 
-See also: STAT, PURGE
+See also: RESETPWD, PRESTORE
 ~
 
 63 MUTE~
@@ -6386,25 +6309,23 @@ See also: SLAY, PEACE
 ~
 
 63 IWEATHER~
-Syntax: iweather <sunny|cloudy|rain|storm>
+Syntax: iweather
+        iweather sunny | cloudy | rain | storm
 
-IWEATHER immediately forces a global weather change.  All outdoor rooms will
-reflect the new conditions, and atmospheric transition messages are sent to
-all players in outdoor areas.
+Sets the weather at once.  Staff only (trust 63).  IWEATHER alone shows
+the current sky.  Each takes a start of its name, or of the word beside
+it:
 
-  iweather sunny  - clear skies; barometric pressure rises to 1000+ mmhg
-  iweather cloudy - overcast skies; pressure sits at a middling 750 mmhg
-  iweather rain   - light-to-heavy rain; pressure drops below 700 mmhg
-  iweather storm  - full lightning storm; pressure plummets below 500 mmhg
+  sunny  (clear)      clear sky, pressure 1010
+  cloudy (overcast)   clouds, pressure 990
+  rain   (raining)    rain, pressure 970
+  storm  (lightning, thunder)   lightning, pressure 950
 
-Storm and rain conditions affect certain spells and skills (e.g. call
-lightning gains bonus damage during storms).  Sunny conditions speed up
-healing ticks for outdoor characters.
+Everyone playing, indoors or out, is told the change ("The sky erupts
+with lightning and thunder!").  The weather then drifts from there as it
+always does.  Players read it with WEATHER.
 
-The player-level WEATHER command (no arguments) simply reads the current
-conditions and is separate from this immortal command.
-
-See also: REPOP, LIGHTS
+See also: WEATHER, LIGHTS
 ~
 
 63 LIGHTS~
@@ -6421,12 +6342,16 @@ See also: SEAL
 63 SEAL~
 Syntax: seal <direction>
 
-SEAL toggles the WIZLOCKED flag on the specified exit of your current room.
-A sealed exit cannot be passed by any player, regardless of level, until
-unsealed.  Valid directions: north, east, south, west, up, down, ne, nw,
-se, sw.
+Toggles a wizard lock on that exit of your room.  Staff only (trust 63).
+A character below level 68 cannot pass it, even with pass door; level
+68 and above step through.  Only this side of the
+exit is sealed: seal the way back from the other room too.
 
-See also: LIGHTS
+Directions: north, east, south, west, up, down, northeast, northwest,
+southeast, southwest, or a start of one (n, sou, northe).  The short
+forms NE, NW, SE and SW are not accepted here.
+
+See also: LIGHTS, GOTO
 ~
 
 63 FINGER~
@@ -6521,33 +6446,27 @@ See also: FINGER, PSTAT
 ~
 
 63 RESETPWD~
-Syntax: resetpwd <player> <newpassword>
+Syntax: resetpwd <player> <new password>
+        resetpwd <player> '<new password with spaces>'
 
-RESETPWD resets the password of an OFFLINE player to the specified new
-password.  This is the "forgot password" rescue tool for when a player
-cannot log in and contacts an immortal for help.
+Sets a new password for a player who is not logged in, for one who has
+forgotten theirs.  Staff only (trust 63).
 
-  resetpwd Bob K7p4N2xQ
+  - The player must be offline and not at the login prompts; one who is
+    playing changes it with PASSWORD.
+  - At least five characters, and no tilde.  Case counts.
+  - Never on anyone who outranks you; below trust 70, not on your own
+    trust either.  Implementors may reset each other.
+  - Only the password line of the save file is rewritten.  It is stored
+    as a SHA-512 crypt hash, counting every character.  An old password
+    moved from DES keeps DES's eight-character limit until it is changed.
+  - The password is never logged and a snooper sees an empty line; the
+    reset itself is logged and announced on WIZINFO.
 
-Requirements and restrictions:
-  - The target player must be OFFLINE.  If they are logged in, ask them
-    to use the PASSWORD command themselves.
-  - The new password must be at least 5 characters and must not contain
-    the tilde character.
-  - You cannot reset the password of a character above your own level.
-  - Below level 70 you cannot reset a character at your own level either.
-    Implementors are the exception: a level 70 may reset any other level 70,
-    because there is no higher rank to ask when an implementor is locked out.
-    That means every implementor can take over every other implementor's
-    account, which is why each reset is announced and logged.
-  - The reset event is logged and broadcast on WIZINFO, but the password
-    argument is suppressed from command logs and snoop output.
+The game connection is plain Telnet: a password crosses it unencrypted,
+and the save file holds a hash, not an encrypted copy.
 
-The command rewrites only the hashed password field in the player save
-file, leaving all other character data untouched.  ToC currently uses
-traditional DES hashes, so only the first eight password bytes are effective.
-
-See also: FINGER, TRAIL
+See also: PASSWORD, FINGER
 ~
 
 60 NEWBIE~
@@ -6569,7 +6488,7 @@ the pack and warns you how many pieces were missing, rather than failing.
 
 The gift is logged and announced on WIZINFO.
 
-See also: LOAD, RESTORE, TRANSFER
+See also: LOAD, TRANSFER
 ~
 
 63 PETRIFY~
@@ -6683,12 +6602,18 @@ See also: TRANSFER, DRAG
 ~
 
 69 GKICK~
-Syntax: gkick
+Syntax: gkick <character> <direction>
 
-GKICK immediately disconnects all non-immortal players from the game.
-Use for emergencies or immediately before scheduled reboots.
+Kicks somebody standing in your room out through an exit: they RUN that
+way, as far as RUN would carry them.  Trust 69.
 
-See also: REBOOT, SHUTDOWN, WIZLOCK
+  - The target must be in your room, and not you; a mobile will do.
+  - The direction is any start of one (n, sou, ne) and your room must
+    have an exit there.
+  - The room sees "Zog kicks Bob full on his butt!" and Bob go screaming
+    out trailing fire.
+
+See also: RUN, DRAG, TRANSFER
 ~
 
 62 INVIS~
@@ -6765,7 +6690,7 @@ channel at once and is the heavier answer.
 
 The player is told either way, and the change is announced on WIZINFO.
 
-See also: MUTE, TELL, SILENCE
+See also: MUTE, TELL
 ~
 
 65 NOTITLE~
@@ -6774,7 +6699,7 @@ Syntax: notitle <player>
 NOTITLE prevents a player from changing their own title.
 Toggle again to allow title changes.
 
-See also: SET
+See also: TITLE, MUTE
 ~
 
 66 SLA~
@@ -6794,16 +6719,25 @@ rooms, mobile and object prototypes it loaded; how many connections,
 characters, objects and active mobiles exist now; and when the next player
 file backup and the next daily backup are due.  It changes nothing.
 
-See also: MEMORY, SOCKETS, UPTIME
+See also: MEMORY, SOCKETS
 ~
 
 62 WARN~
-Syntax: warn <player> <message>
+Syntax: warn <player>
 
-WARN sends a formal warning to the specified player and logs the action
-to the system log.
+Toggles the WARNED flag on a player.  Staff only (trust 62).  Anything
+after the name is ignored: there is no message to send.
 
-See also: FREEZE, STASIS
+  - Setting it tells the player "You have been warned about breaking the
+    rules." and everyone on INFO "<name> has been warned for breaking the
+    rules!"
+  - It also sets LOG on them: every command is recorded in full, tells
+    included (HELP LOG).  Lifting the warning lifts LOG too, even one set
+    with LOG <name>.
+  - Never on anyone who outranks you.  PARDON <player> WARNED lifts the
+    flag but leaves LOG on.
+
+See also: LOG, PARDON, FREEZE
 ~
 
 67 WHINER~
@@ -6911,6 +6845,96 @@ attack.  Over several remorts a character lives as several classes in
 turn and keeps some of what each life earned.
 
 See also: RACES, GUILDS, REMORT, ATTRIBUTES
+~
+
+0 WANTED KILLER~
+A player marked (WANTED) on WHO has attacked another player, or been
+caught stealing from one.  KILLER is the flag's old name.
+
+You become WANTED by:
+  - attacking a player who is not WANTED, outside an arena (an attack by
+    your charmed follower counts as yours);
+  - being caught trying to STEAL from a player;
+  - reading a Scroll of Farslay.
+
+While you are WANTED:
+  - city guards and executioners who see you attack you;
+  - the level range no longer shields you: a pkiller may attack you
+    with KILL, though both of you must still be pkillers;
+  - your corpse has no owner, so anyone may loot it.
+
+It never wears off.  It is lifted when a player who is not WANTED kills
+you, at a REMORT, or by the staff with PARDON.
+
+See also: TRAITOR, PKILL, STEAL, 'SCROLL OF FARSLAY', DYING
+~
+
+0 TRAPS TRAP~
+A trap sits on a locked door or a locked container and goes off as you
+work the lock.  HELP TRAP THE SOUL is the spell.
+
+  - Some areas lay traps when they reset, and now and then a locked door,
+    or a locked chest nobody is near, grows one.  A trapped lock can be
+    picked even if it was pickproof.
+  - PICK on a trapped lock sets it off.  UNLOCK with the key sets it off
+    four times in five; otherwise the trap is spent and the lock opens.
+  - SEARCH <door or container> looks for a trap on a locked lock and, when
+    it succeeds, disarms it.  It needs the SEARCH skill, takes a moment,
+    is refused while a mobile more than five levels above you watches, and
+    a failed search can set the trap off.
+
+What goes off: fire (half your hit points, or everyone's in the room),
+gas that spreads, a drunken mist, sleep, teleport (a random room, with
+your hit points, mana and moves at 10), poison darts, a summoned
+guardian, a lightning stun, plague, or a blinding flash.  The room sees
+it, and INFO tells everyone.
+
+Rooms can be hazards too -- a stinking cloud, a burning floor -- and some
+are death traps.  SEARCH does not clear those.
+
+See also: SEARCH, PICK, UNLOCK, DEATHTRAP
+~
+
+0 PET PETS~
+Syntax: list                 (in a pet shop)
+        buy <pet> [name]
+        order <pet | all> <command>
+
+A pet is a companion bought in a pet shop.  It follows you, groups with
+you and fights beside you.
+
+  - It costs ten gold times its level squared, less what HAGGLE takes
+    off, and you must be at least its level.
+  - One companion at a time: a pet or a mount (RIDE), not both.  If it
+    dies, you may buy another.
+  - A word after the pet's name is a name it also answers to: BUY DOG REX.
+  - ORDER tells it what to do (ORDER ALL tells every charmed follower in
+    the room).  It will not attack a player you could not attack.
+  - It is saved with you if it is in your room, carrying nothing, when you
+    save or quit; a REMORT takes it to the Temple with you.
+
+See also: ORDER, RIDE, GROUP, BUY
+~
+
+0 IMMUNE IMMUNITY RESISTANT RESISTANCE VULNERABLE VULNERABILITY~
+Some characters shrug off a kind of damage, and some suffer from it:
+
+  immune       none of it lands ("is unaffected by")
+  resistant    a third less
+  vulnerable   half as much again
+
+The kinds are the weapon blows (bash, pierce, slash) and the elements and
+powers (fire, cold, lightning, acid, poison, negative, holy, energy,
+mental, disease, drowning, light, wind), with two broad ones over them:
+WEAPON for the three blows and MAGIC for the rest.  A specific kind wins
+over a broad one: resistant to magic but vulnerable to fire takes extra
+fire damage.
+
+They come from race (HELP RACES), from monsters' own make-up, and from
+affects: IRON SKIN and some monsters' wards grant an immunity, and AFFECTS
+names what one turns.  Immunity to summon or charm stops those spells.
+
+See also: RACES, AFFECTS, 'IRON SKIN', DAMAGE
 ~
 
 0 $~
