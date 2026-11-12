@@ -2302,6 +2302,12 @@ struct  char_data
     int                 max_mana;
     int                 move;
     int                 max_move;
+    /* What each maximum would be past the clamp (pool_max_adjust,
+       handler.c): the amount the wide sum of the base and every bonus
+       lies beyond the stored value, kept so taking a bonus off undoes
+       exactly what putting it on did. Memory only; 0 almost always.
+       Indexed by POOL_CARRY_HIT/MANA/MOVE. */
+    long long           pool_carry[3];
     sh_int              battleticks;
     long                new_platinum;
     long                new_gold;
@@ -3219,6 +3225,16 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
    less than this; owner, 2026-11-12: 5x, not 5x added on top). */
 #define TITANIC_MULTIPLE 5
 
+/* A maximum (max_hit/mana/move) with every bonus on it stays within
+   [POOL_FLOOR, POOL_MAX]: the sums are made wide and the part past the
+   bound is carried (CHAR_DATA's pool_carry), so a bonus taken off undoes
+   exactly what it did (review, 2026-11-12). The floor is not 1: a
+   maximum below zero is the wreck reset_char looks for and rebuilds. */
+#define POOL_FLOOR      (-POOL_MAX)
+#define POOL_CARRY_HIT  0
+#define POOL_CARRY_MANA 1
+#define POOL_CARRY_MOVE 2
+
 /* Data files used by the server. */
 #define PLAYER_DIR      "../player/"
 /* Characters not seen for PLAYER_ARCHIVE_DAYS are moved here at boot and
@@ -3664,6 +3680,9 @@ char    fread_letter    ( FILE *fp );
 /* Armed by load_char_obj while it reads a player file: a malformed number
    there abandons that file instead of exiting the game (db.c). */
 extern jmp_buf *fread_player_trap;
+/* Armed while objects are read aside (a corpse, a snapshot): a malformed
+   value makes that file unreadable, never the game's end (db.c). */
+extern jmp_buf *fread_aside_trap;
 bool    player_file_unreadable( const CHAR_DATA *ch );
 /* player_file_presence(): only ABSENT is a free name. */
 #define PLAYER_FILE_ABSENT   0
@@ -3680,6 +3699,10 @@ int     player_serial( CHAR_DATA *ch );
 bool    player_identity_login( CHAR_DATA *ch, bool new_character );
 void    player_serial_boot( void );
 void    player_serial_rename( const char *old_name, const char *new_name );
+/* A quest's recovery token, bound to its questor's serial (quest.c). */
+bool    quest_token_bound( const OBJ_DATA *obj );
+bool    quest_token_owned_by( const OBJ_DATA *obj, CHAR_DATA *ch );
+int     quest_token_rebind_legacy( CHAR_DATA *ch );
 int     fread_number    ( FILE *fp );
 long    fread_long      ( FILE *fp );
 int     fireball_damage_roll ( int level );
@@ -3849,6 +3872,9 @@ int     get_weapon_sn   ( CHAR_DATA *ch );
 int     get_weapon_skill ( CHAR_DATA *ch, int sn );
 int     get_age         ( CHAR_DATA *ch );
 void    reset_char      ( CHAR_DATA *ch );
+void    pool_max_adjust ( CHAR_DATA *ch, int location, long long mod );
+void    pool_carry_clear( CHAR_DATA *ch );
+void    pool_set_base   ( CHAR_DATA *ch, int location, int value );
 int     get_trust       ( CHAR_DATA *ch );
 bool    rank_protects   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    flags_from_argument ( const char *argument, int current, int *result );

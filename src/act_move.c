@@ -4001,8 +4001,8 @@ static bool train_once( CHAR_DATA *ch, char *argument )
         }
 
 	ch->train = (int16_t)(ch->train - cost);
-        ch->pcdata->perm_hit += 10;
-        ch->max_hit += 10;
+        ch->pcdata->perm_hit = (int) UMIN( (long long) POOL_MAX, (long long) ch->pcdata->perm_hit + 10 );
+        pool_max_adjust( ch, APPLY_HIT, 10 );
         ch->hit +=10;
         act( "Your durability increases!",ch,NULL,NULL,TO_CHAR);
         act( "$n's durability increases!",ch,NULL,NULL,TO_ROOM);
@@ -4018,8 +4018,8 @@ static bool train_once( CHAR_DATA *ch, char *argument )
         }
 
 	ch->train = (int16_t)(ch->train - cost);
-        ch->pcdata->perm_mana += 10;
-        ch->max_mana += 10;
+        ch->pcdata->perm_mana = (int) UMIN( (long long) POOL_MAX, (long long) ch->pcdata->perm_mana + 10 );
+        pool_max_adjust( ch, APPLY_MANA, 10 );
 	ch->mana += 10;
         act( "Your power increases!",ch,NULL,NULL,TO_CHAR);
         act( "$n's power increases!",ch,NULL,NULL,TO_ROOM);

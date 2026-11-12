@@ -146,13 +146,16 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         self.assertIn("find_automatic_quest_token(obj->contains", self.quest)
         self.assertIn("remove_automatic_quest_tokens(ch)", completion)
 
-        for source in (self.act_obj, self.save):
-            with self.subTest(source=source[:20]):
-                self.assertIn("OBJ_VNUM_QUEST_TOKEN_FIRST", source)
-                self.assertIn("OBJ_VNUM_QUEST_TOKEN_LAST", source)
-                self.assertIn("obj->value[4] != 0", source)
-        self.assertIn("obj->value[4] != ch->pcdata->id + 1", self.act_obj)
-        self.assertIn("str_cmp(obj->owner, ch->name)", self.act_obj)
+        # The save leaves a bound token out; GET asks the one ownership
+        # test, which binds by serial since 2026-11-12 (quest.c,
+        # quest_token_owned_by; tests/test_quest_token_serial.py).
+        self.assertIn("OBJ_VNUM_QUEST_TOKEN_FIRST", self.save)
+        self.assertIn("OBJ_VNUM_QUEST_TOKEN_LAST", self.save)
+        self.assertIn("obj->value[4] != 0", self.save)
+        self.assertIn("quest_token_bound( obj )", self.act_obj)
+        self.assertIn("!quest_token_owned_by( obj, ch )", self.act_obj)
+        self.assertIn("return -player_serial( ch );", self.quest)
+        self.assertIn("str_cmp( obj->owner, ch->name )", self.quest)
 
     def test_turn_in_and_abort_work_at_any_questmaster(self) -> None:
         command = function_body(self.quest, "void do_quest", "void generate_quest")

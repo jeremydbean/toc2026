@@ -557,15 +557,16 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
 	add_mana = add_mana + number_range(4,6);
     }
 
-    ch->max_hit 	+= add_hp;
-    ch->max_mana	+= add_mana;
-    ch->max_move	+= add_move;
+    /* Through the clamp, as every bonus is (pool_max_adjust). */
+    pool_max_adjust( ch, APPLY_HIT,  add_hp );
+    pool_max_adjust( ch, APPLY_MANA, add_mana );
+    pool_max_adjust( ch, APPLY_MOVE, add_move );
     ch->practice	+= add_prac;
     ch->train		+= add_train;
 
-    ch->pcdata->perm_hit	+= add_hp;
-    ch->pcdata->perm_mana	+= add_mana;
-    ch->pcdata->perm_move	+= add_move;
+    ch->pcdata->perm_hit  = (int) UMIN( (long long) POOL_MAX, (long long) ch->pcdata->perm_hit  + add_hp );
+    ch->pcdata->perm_mana = (int) UMIN( (long long) POOL_MAX, (long long) ch->pcdata->perm_mana + add_mana );
+    ch->pcdata->perm_move = (int) UMIN( (long long) POOL_MAX, (long long) ch->pcdata->perm_move + add_move );
 
     if ( !IS_NPC(ch) )
 	REMOVE_BIT( ch->act, PLR_BOUGHT_PET );
@@ -2234,6 +2235,22 @@ static bool portal_shift_room_ok( ROOM_INDEX_DATA *room )
         && !IS_SET(room->room_flags, ROOM_NEWBIES_ONLY);
 }
 
+/* An object in no room and on nobody, at any depth of containers: one
+   kept in a stash (pcdata->stash), which is in the object list but
+   nowhere in the world. */
+static bool obj_held_nowhere( OBJ_DATA *obj )
+{
+    int depth;
+
+    for ( depth = 0; obj != NULL && depth < 64; depth++ )
+    {
+        if ( obj->in_room != NULL || obj->carried_by != NULL )
+            return false;
+        obj = obj->in_obj;
+    }
+    return true;
+}
+
 void obj_update( void )
 {
     OBJ_DATA *obj;
@@ -2528,6 +2545,14 @@ free_string(obj->description);
           }
        }
 
+
+	/* Nothing in a stash runs out (review, 2026-11-12). STASH refuses
+	   anything on a timer, but a file can still bring one in, and one
+	   that expired here was extracted while the stash list still held
+	   it -- and a bottle there was "opened" with nobody to open it. It
+	   keeps its timer until it is taken out. */
+	if ( obj->timer > 0 && obj_held_nowhere( obj ) )
+	    continue;
 
 	if ( obj->timer <= 0 || --obj->timer > 0 )
 	    continue;

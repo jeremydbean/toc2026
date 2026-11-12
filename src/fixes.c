@@ -182,6 +182,29 @@ static bool fix_spare_triforce_shards( CHAR_DATA *ch )
     return true;
 }
 
+/*
+ * Quest tokens were bound to the file Id, which two characters can share
+ * (review, 2026-11-12). Those a character carries, wears or keeps that
+ * carry their own old tag are bound to their serial (quest.c); one with
+ * somebody else's tag, or naming somebody else, is left alone and stays
+ * unusable to them. Tokens are not saved in a player file, so this finds
+ * one only where a corpse brought it back; it is harmless on anyone.
+ */
+static bool fix_quest_token_serials( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    int count = quest_token_rebind_legacy( ch );
+
+    if ( count == 0 )
+        return false;
+    snprintf( buf, sizeof(buf), "{0BA correction:{00 %s quest item%s you hold %s been "
+              "bound to you alone; nobody who shares your old number can take %s.\n\r",
+              count == 1 ? "a" : "your", count == 1 ? "" : "s",
+              count == 1 ? "has" : "have", count == 1 ? "it" : "them" );
+    send_to_char( buf, ch );
+    return true;
+}
+
 static const PLAYER_FIX player_fixes[] =
 {
     /* Creation gave every new non-mage the mage's starting groups,
@@ -201,6 +224,10 @@ static const PLAYER_FIX player_fixes[] =
        spare, so running it twice is harmless. */
     { "20261030-spare-shards-again", "spare Triforce shards the first sweep left",
       fix_spare_triforce_shards, false },
+    /* Quest tokens bound to the shared Id, bound to the serial. Staff
+       too: binding a token to its holder takes nothing from anybody. */
+    { "20261112-quest-serial", "quest items bound to the old Id",
+      fix_quest_token_serials, true },
 };
 
 #define PLAYER_FIX_COUNT ( (int)( sizeof(player_fixes) / sizeof(player_fixes[0]) ) )

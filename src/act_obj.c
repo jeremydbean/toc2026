@@ -159,16 +159,10 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	return;
     }
 
-    if ( obj->pIndexData != NULL
-    &&   obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
-    &&   obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
-    &&   obj->value[4] != 0
+    /* A quest's token is its questor's, by serial (quest.c). */
+    if ( quest_token_bound( obj )
     && ( IS_NPC(ch)
-      || ( !IS_IMMORTAL(ch)
-        && ( ch->pcdata == NULL
-          || obj->value[4] != ch->pcdata->id + 1
-          || obj->owner == NULL
-          || str_cmp(obj->owner, ch->name) ) ) ) )
+      || ( !IS_IMMORTAL(ch) && !quest_token_owned_by( obj, ch ) ) ) )
     {
 	act("$p was entrusted to another adventurer and rejects your touch.",
 	    ch, obj, NULL, TO_CHAR);
