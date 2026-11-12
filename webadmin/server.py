@@ -24,6 +24,7 @@ from urllib.parse import urlparse
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, WebSocket, WebSocketDisconnect
 from starlette.datastructures import Address
+from starlette.requests import HTTPConnection
 from fastapi.responses import FileResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -43,6 +44,165 @@ HOST_STATUS_ENABLED: bool = (
 LOCAL_ADMIN_COOKIE = "toc_admin_session"
 LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
 
+# Behind a reverse proxy (deploy/windows-vm/Caddyfile, 2026-11-12) every
+# request arrives from 127.0.0.1, so the player's address and the scheme
+# they used come from the proxy's X-Forwarded-For and X-Forwarded-Proto --
+# believed only when the connection itself comes from an address listed
+# here, and only when WEB_ADMIN_PROXY_HEADERS (--proxy-headers) is on. Off
+# by default, so a dashboard nobody stands in front of cannot be told a
+# false address by anybody who writes the header.
+#
+# uvicorn has its own copy of this, on by default and trusting loopback;
+# main() turns it off so this one, which runs under the test client too
+# and keeps the true peer, is the only one (see socket_peer).
+FORWARDING_HEADERS = (
+    "x-forwarded-for", "x-forwarded-proto", "x-forwarded-host",
+    "x-real-ip", "forwarded",
+)
+PEER_SCOPE_KEY = "toc.peer"
+
+
+def _env_flag(name: str, default: str = "0") -> bool:
+    return os.environ.get(name, default).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def parse_forwarded_allow(value: str) -> tuple:
+    """The proxies whose forwarding headers are believed, as networks.
+
+    Addresses or CIDR blocks, comma separated. A wildcard is refused: it
+    would let anybody who reaches the port name their own address.
+    """
+    networks = []
+    for item in (value or "").split(","):
+        item = item.strip()
+        if not item:
+            continue
+        if item == "*":
+            raise ValueError("forwarded-allow-ips may not be '*': name the proxy's address")
+        networks.append(ipaddress.ip_network(item, strict=False))
+    if not networks:
+        raise ValueError("forwarded-allow-ips names no address")
+    return tuple(networks)
+
+
+_PROXY_HEADERS: bool = _env_flag("WEB_ADMIN_PROXY_HEADERS")
+_FORWARDED_ALLOW: tuple = parse_forwarded_allow(
+    os.environ.get("WEB_ADMIN_FORWARDED_ALLOW_IPS", "127.0.0.1")
+)
+
+
+def configure_proxy_headers(enabled: bool, allow: str = "127.0.0.1") -> None:
+    """Turn proxy mode on or off; raises ValueError for a bad allow list."""
+    global _PROXY_HEADERS, _FORWARDED_ALLOW
+    networks = parse_forwarded_allow(allow)
+    _PROXY_HEADERS = bool(enabled)
+    _FORWARDED_ALLOW = networks
+
+
+def proxy_headers_enabled() -> bool:
+    return _PROXY_HEADERS
+
+
+def _address_in(host: str, networks: tuple) -> bool:
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        return False
+    return any(address in network for network in networks)
+
+
+def _forwarded_client(raw_headers) -> Optional[str]:
+    """The client X-Forwarded-For names, read from the nearest hop back.
+
+    Each trusted proxy appends the address it saw, so the last entry not a
+    trusted proxy's is the client; with every entry trusted, the first.
+    Anything unparseable in the chain and no address is believed.
+    """
+    values = [
+        value.decode("latin-1")
+        for name, value in raw_headers
+        if name.lower() == b"x-forwarded-for"
+    ]
+    if not values:
+        return None
+    entries = [entry.strip() for entry in ",".join(values).split(",")]
+    if not entries or any(not entry for entry in entries):
+        return None
+    try:
+        addresses = [ipaddress.ip_address(entry) for entry in entries]
+    except ValueError:
+        return None
+    for address in reversed(addresses):
+        if not any(address in network for network in _FORWARDED_ALLOW):
+            return address.compressed
+    return addresses[0].compressed
+
+
+def _forwarded_scheme(raw_headers, kind: str) -> Optional[str]:
+    values = [
+        value.decode("latin-1")
+        for name, value in raw_headers
+        if name.lower() == b"x-forwarded-proto"
+    ]
+    if not values:
+        return None
+    proto = values[-1].split(",")[-1].strip().lower()
+    if proto not in {"http", "https"}:
+        return None
+    if kind == "websocket":
+        return "wss" if proto == "https" else "ws"
+    return proto
+
+
+class ForwardedPeerMiddleware:
+    """Record the true peer, then believe a trusted proxy's headers.
+
+    The peer is kept in the scope under PEER_SCOPE_KEY before anything is
+    rewritten, because the security decisions (the local unlock) are about
+    the connection, never about what a header claims. Then, in proxy mode
+    and only for a connection from a listed proxy, `client` becomes the
+    address the proxy saw (port 0: the proxy does not say) and `scheme` the
+    one the browser used, so request.client, websocket.client, request.url
+    and the bridge's PROXY line all name the player.
+    """
+
+    def __init__(self, app) -> None:
+        self.app = app
+
+    async def __call__(self, scope, receive, send) -> None:
+        kind = scope.get("type")
+        if kind in ("http", "websocket"):
+            peer = scope.get("client")
+            scope[PEER_SCOPE_KEY] = tuple(peer) if peer else None
+            if _PROXY_HEADERS and peer and _address_in(str(peer[0]), _FORWARDED_ALLOW):
+                raw_headers = scope.get("headers") or []
+                client = _forwarded_client(raw_headers)
+                if client:
+                    scope["client"] = (client, 0)
+                scheme = _forwarded_scheme(raw_headers, kind)
+                if scheme:
+                    scope["scheme"] = scheme
+        await self.app(scope, receive, send)
+
+
+def socket_peer(connection: HTTPConnection) -> Optional[Address]:
+    """The far end of the TCP connection itself, whatever a header said.
+
+    ForwardedPeerMiddleware records it before rewriting `client`. Without
+    that record (the middleware did not run) `client` was never rewritten
+    by this module, so it is still the peer.
+    """
+    scope = connection.scope
+    if PEER_SCOPE_KEY in scope:
+        peer = scope[PEER_SCOPE_KEY]
+        return Address(*peer) if peer else None
+    return connection.client
+
+
+def forwarded_request(connection: HTTPConnection) -> bool:
+    """Did this request come through something that forwards for others?"""
+    return any(name in connection.headers for name in FORWARDING_HEADERS)
+
 
 def set_bind_address(host: str) -> None:
     """Record the address actually bound, so the unlock gate can see it.
@@ -61,7 +221,18 @@ def bound_to_loopback() -> bool:
 
 
 def local_admin_unlock_enabled() -> bool:
-    return _LOCAL_ADMIN_UNLOCK_REQUESTED and bound_to_loopback()
+    """The local unlock is possible at all: asked for, loopback, no proxy.
+
+    Behind a reverse proxy on the same machine every request arrives from
+    loopback, so the unlock would hand an admin session to the whole
+    internet. Proxy mode therefore turns it off whatever
+    WEB_ADMIN_LOCAL_UNLOCK says (2026-11-12).
+    """
+    return (
+        _LOCAL_ADMIN_UNLOCK_REQUESTED
+        and bound_to_loopback()
+        and not _PROXY_HEADERS
+    )
 
 
 def loopback_peer(client: Optional[Address]) -> bool:
@@ -94,15 +265,27 @@ def local_admin_request_allowed(request: Request) -> bool:
     likes: `Host: 127.0.0.1` from the far side of the internet was enough to
     be issued an admin session cookie. Gate on the peer address instead.
     """
+    return bool(_WEB_ADMIN_TOKEN) and local_admin_connection_allowed(request)
+
+
+def local_admin_connection_allowed(connection: HTTPConnection) -> bool:
+    """The unlock's test for an HTTP request or a WebSocket alike.
+
+    The peer is the TCP peer (socket_peer), never request.client, which
+    proxy mode rewrites to whatever the proxy forwarded; and a connection
+    carrying any forwarding header came through a proxy, so it is refused
+    even if proxy mode is off -- a proxy in front that nobody told this
+    process about is still a proxy.
+    """
     return (
-        bool(_WEB_ADMIN_TOKEN)
-        and local_admin_unlock_enabled()
-        and loopback_peer(request.client)
+        local_admin_unlock_enabled()
+        and not forwarded_request(connection)
+        and loopback_peer(socket_peer(connection))
     )
 
 
 def local_admin_websocket_authenticated(websocket: WebSocket) -> bool:
-    if not local_admin_unlock_enabled() or not loopback_peer(websocket.client):
+    if not local_admin_connection_allowed(websocket):
         return False
     supplied = websocket.cookies.get(LOCAL_ADMIN_COOKIE, "")
     expected = local_admin_session_value()
@@ -256,10 +439,10 @@ MUD_PORT = int(os.getenv("MUD_PORT", 9000))
 
 # What the dashboard *shows* as the game endpoint. MUD_HOST is where this
 # service dials, which is loopback because both run on the same box -- so
-# displaying it told a reader nothing they could connect to. The DDNS name
-# is the default because it follows the external IP instead of going stale
-# the next time the lease changes.
-MUD_PUBLIC_HOST = os.getenv("MUD_PUBLIC_HOST", "toc.jeremybean.com")
+# displaying it told a reader nothing they could connect to. The game's
+# name is the default because it follows the host's address instead of
+# going stale the next time it moves.
+MUD_PUBLIC_HOST = os.getenv("MUD_PUBLIC_HOST", "timesofchaos.com")
 MUD_PUBLIC_PORT = int(os.getenv("MUD_PUBLIC_PORT", MUD_PORT))
 
 # Resolved form of MUD_PUBLIC_HOST, so the dashboard shows the address
@@ -1613,6 +1796,11 @@ async def add_security_headers(request, call_next):
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
     return response
+
+
+# Added last, so it is the outermost layer: everything inside, routes and
+# WebSockets alike, sees the client and scheme it settles.
+app.add_middleware(ForwardedPeerMiddleware)
 
 
 class CommandRequest(BaseModel):
@@ -5290,7 +5478,13 @@ if __name__ == "__main__":
     import uvicorn
     
     arg_parser = argparse.ArgumentParser(description="ToC Web Admin Server")
-    arg_parser.add_argument("--host", default="0.0.0.0", help="Host to bind to")
+    # The live unit binds what WEB_ADMIN_LISTEN says (127.0.0.1 behind the
+    # reverse proxy); the default is unchanged for everybody else.
+    arg_parser.add_argument(
+        "--host",
+        default=os.environ.get("WEB_ADMIN_LISTEN", "").strip() or "0.0.0.0",
+        help="Host to bind to (default: WEB_ADMIN_LISTEN, else 0.0.0.0)",
+    )
     arg_parser.add_argument("--port", type=int, default=WEB_ADMIN_PORT, help="Port to bind to")
     arg_parser.add_argument("--mud-host", default=MUD_HOST, help="Game server host for health and console connections")
     arg_parser.add_argument("--mud-port", type=int, default=MUD_PORT, help="Game server port for health and console connections")
@@ -5300,8 +5494,26 @@ if __name__ == "__main__":
     arg_parser.add_argument("--area-path", type=Path, default=AREA_PATH, help="Path to area files")
     arg_parser.add_argument("--backup-path", type=Path, default=BACKUP_PATH, help="Path to backup archive directory")
     arg_parser.add_argument("--player-path", type=Path, default=PLAYER_PATH, help="Path to player save files")
-    
+    arg_parser.add_argument(
+        "--proxy-headers",
+        action=argparse.BooleanOptionalAction,
+        default=_PROXY_HEADERS,
+        help="Believe X-Forwarded-For/-Proto from --forwarded-allow-ips "
+             "(default: WEB_ADMIN_PROXY_HEADERS, else off)",
+    )
+    arg_parser.add_argument(
+        "--forwarded-allow-ips",
+        default=os.environ.get("WEB_ADMIN_FORWARDED_ALLOW_IPS", "127.0.0.1"),
+        help="Comma-separated proxy addresses or CIDRs whose forwarding "
+             "headers are believed (default: WEB_ADMIN_FORWARDED_ALLOW_IPS, "
+             "else 127.0.0.1); never '*'",
+    )
+
     args = arg_parser.parse_args()
+    try:
+        configure_proxy_headers(args.proxy_headers, args.forwarded_allow_ips)
+    except ValueError as exc:
+        arg_parser.error(str(exc))
     
     # Update globals
     QUEUE_PATH = args.queue
@@ -5320,5 +5532,12 @@ if __name__ == "__main__":
     # The unlock gate has to know what was really bound, not what an
     # environment variable guessed.
     set_bind_address(args.host)
+    if _LOCAL_ADMIN_UNLOCK_REQUESTED and _PROXY_HEADERS:
+        print("Warning: WEB_ADMIN_LOCAL_UNLOCK is ignored in proxy mode "
+              "(--proxy-headers); use the admin token.")
 
-    uvicorn.run(app, host=args.host, port=args.port)
+    # proxy_headers=False: uvicorn's own X-Forwarded-For handling is on by
+    # default and trusts loopback, and it would rewrite the client before
+    # ForwardedPeerMiddleware could record the true peer. That middleware
+    # does the same job, under --proxy-headers, and keeps the peer.
+    uvicorn.run(app, host=args.host, port=args.port, proxy_headers=False)

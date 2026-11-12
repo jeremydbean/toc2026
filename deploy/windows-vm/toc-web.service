@@ -11,6 +11,16 @@ Type=simple
 User=toc
 Group=toc
 WorkingDirectory=/srv/toc/current
+# Where it listens, and whether it believes a reverse proxy's
+# X-Forwarded-For. These are the defaults: /etc/toc/web.env overrides them
+# (an EnvironmentFile always beats Environment=), and
+# deploy/windows-vm/toc-web-proxy writes WEB_ADMIN_LISTEN=127.0.0.1 and
+# WEB_ADMIN_PROXY_HEADERS=1 there when Caddy fronts the site on 80/443.
+# Kept out of this file so toc-deploy and toc-restore install one unit
+# everywhere, and a deploy of it never moves the dashboard by itself.
+Environment=WEB_ADMIN_LISTEN=0.0.0.0
+Environment=WEB_ADMIN_PROXY_HEADERS=0
+Environment=WEB_ADMIN_FORWARDED_ALLOW_IPS=127.0.0.1
 EnvironmentFile=/etc/toc/web.env
 # --log-file is the game's own log, log/toc.log, which merc writes as toc.
 # It used to be /var/log/toc/game.log, toc-game's stdout capture -- but
@@ -18,7 +28,7 @@ EnvironmentFile=/etc/toc/web.env
 # is root:root 0600, and this service (User=toc) could not read it. The
 # live-log WebSocket accepted, failed its first read, closed, and the page
 # reconnected every three seconds (2026-10-06).
-ExecStart=/srv/toc/venv/bin/python -m webadmin.server --host 0.0.0.0 --port 9001 --mud-host 127.0.0.1 --mud-port 9000 --queue /srv/toc/current/area/webadmin.queue --log-file /srv/toc/current/log/toc.log --area-path /srv/toc/current/area --backup-path /var/backups/toc --player-path /srv/toc/current/player
+ExecStart=/srv/toc/venv/bin/python -m webadmin.server --host ${WEB_ADMIN_LISTEN} --port 9001 --mud-host 127.0.0.1 --mud-port 9000 --queue /srv/toc/current/area/webadmin.queue --log-file /srv/toc/current/log/toc.log --area-path /srv/toc/current/area --backup-path /var/backups/toc --player-path /srv/toc/current/player
 Restart=always
 RestartSec=5
 TimeoutStopSec=20

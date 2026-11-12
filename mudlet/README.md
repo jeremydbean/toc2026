@@ -18,7 +18,7 @@ names `mudlet/toc-world-map.xml` on GitHub. The package provides:
 
 Players normally do not need to install anything manually. In Mudlet, leave
 **Enable GMCP** and **Allow server to install script packages** enabled, create
-a profile for `toc.jeremybean.com` port `9000`, and connect. The local Mudlet
+a profile for `timesofchaos.com` port `9000`, and connect. The local Mudlet
 alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.

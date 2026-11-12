@@ -331,10 +331,14 @@ jobs:
           if grep -qx test_fuzz_smoke shard-modules.txt; then
             echo "fuzz=clang libclang-rt-18-dev" >> "$GITHUB_OUTPUT"
           fi
+          # caddy validates the website's Caddyfile (tests/test_web_proxy.py).
+          if grep -qx test_web_proxy shard-modules.txt; then
+            echo "caddy=caddy" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Install test dependencies
         # gdb gives a stalled server's backtrace (tests/live_mud.py).
-        run: scripts/ci/install_deps.sh gcc libcrypt-dev zlib1g-dev gdb ${{ steps.shard.outputs.lua }} ${{ steps.shard.outputs.fuzz }}
+        run: scripts/ci/install_deps.sh gcc libcrypt-dev zlib1g-dev gdb ${{ steps.shard.outputs.lua }} ${{ steps.shard.outputs.fuzz }} ${{ steps.shard.outputs.caddy }}
 
       - name: Set up Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0

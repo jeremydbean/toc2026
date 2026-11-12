@@ -2978,6 +2978,22 @@ is still WAKE.
   or `TOC_UPDATE_REQUEST_PATH` any more (the Pi's updater, 2026-11-11).
 - Protected routes use `WEB_ADMIN_TOKEN` in `X-Admin-Token`; an unset token
   disables them with 503.
+- **Behind a reverse proxy every request comes from loopback** (2026-11-12,
+  Caddy at timesofchaos.com). Proxy mode (`--proxy-headers`,
+  `WEB_ADMIN_PROXY_HEADERS`, off by default) is `ForwardedPeerMiddleware`:
+  it keeps the TCP peer in the scope (`PEER_SCOPE_KEY`) and, only for a
+  peer in `--forwarded-allow-ips` (`127.0.0.1`; `*` refused), sets
+  `client` from `X-Forwarded-For` (nearest untrusted hop back) and `scheme`
+  from `X-Forwarded-Proto` -- so `request.client`, `websocket.client`, the
+  bridge's PROXY line (the game's guard and lockouts) and the same-origin
+  checks see the player. uvicorn's own copy is turned off
+  (`proxy_headers=False`): it is on by default for loopback and would
+  rewrite the client before the peer is kept. **A security decision reads
+  `socket_peer()`, never `request.client`.** The local unlock
+  (`local_admin_connection_allowed`, HTTP and WebSocket) is refused in
+  proxy mode and for any request carrying a `FORWARDING_HEADERS` header,
+  proxy mode or not: through a local proxy everybody looks local
+  (`tests/test_web_proxy.py`).
 - Protected WebSockets use an authenticated local cookie or a first JSON auth
   message. Never place the token in a WebSocket URL or query parameter.
 - Player list/detail, logs, channel history (`/api/channels`), structured
@@ -3196,8 +3212,9 @@ descriptor so a full mud does not write every file in one tick.
 ## Where This Actually Runs
 
 **The game runs on Oracle Cloud: an Always Free ARM (aarch64) Ubuntu
-24.04 instance at `129.159.105.156`, which `toc.jeremybean.com` resolves
-to.** It moved there on 2026-10-01. That address is a **reserved** IP, a
+24.04 instance at `129.159.105.156`, which `timesofchaos.com` resolves
+to** (and `www.timesofchaos.com` and the older `toc.jeremybean.com`). It
+moved there on 2026-10-01. That address is a **reserved** IP, a
 standalone resource that survives a stop or recreate of the instance --
 so it outlives the box, and is deleted deliberately only when the whole
 project is torn down. (The first few hours used an ephemeral
@@ -3207,6 +3224,26 @@ powered off), and before that on a Raspberry Pi that died without
 warning on 2026-09-29 -- and the characters were carried forward through
 each move. Only Oracle is live: there is no VM to reach at `172.28.90.2`
 and no Pi at `toc.local`.
+
+**The website is Caddy on 80 and 443** (owner, 2026-11-12: "host the
+admin panel on port 80 and the game on 9000 at timesofchaos.com").
+`https://timesofchaos.com` is Caddy (`deploy/windows-vm/Caddyfile`,
+installed as `/etc/caddy/Caddyfile`, Let's Encrypt on its own; 80 only
+redirects), reverse-proxying everything, WebSockets included, to `toc-web`
+on `127.0.0.1:9001`; `www.` and `toc.jeremybean.com` redirect to it. The
+game stays plain Telnet on 9000. `deploy/windows-vm/toc-web-proxy` sets it
+up once (`ssh toc-oracle 'sudo sh
+/srv/toc/build/deploy/windows-vm/toc-web-proxy'`; `--dry-run`,
+`--rollback`): Caddy installed and validated and answering first, then the
+dashboard moved, with the unit and `web.env` put back if it does not
+return. The move is four lines in `/etc/toc/web.env`
+(`WEB_ADMIN_LISTEN=127.0.0.1`, `WEB_ADMIN_PROXY_HEADERS=1`,
+`WEB_ADMIN_FORWARDED_ALLOW_IPS=127.0.0.1`, `WEB_ADMIN_LOCAL_UNLOCK=0`),
+never in `toc-web.service`, whose own defaults are the old public bind:
+`toc-deploy` and `toc-restore` install that one committed unit, so a deploy
+never moves the dashboard by itself. The DNS records (Namecheap, `@` and
+`www`) and the OCI security list's 80/443 ingress are the owner's; the
+script opens iptables itself. `wiki/disaster-recovery.md` "The website".
 
 ### Connecting and shipping from a new session
 
@@ -3276,7 +3313,7 @@ the owner's, in game.
 
 **A cloud session has HTTPS only** -- no SSH, no key, no project memory;
 this file is all it gets, and the sandbox's proxy will not let it reach
-`toc.jeremybean.com` either. It should edit, build both trees, run the
+`timesofchaos.com` (or `toc.jeremybean.com`) either. It should edit, build both trees, run the
 relevant test module, commit, and push straight to `main` after
 `git fetch && git rebase origin/main` (no branch or pull request), then
 check rather than assume:
@@ -4614,7 +4651,8 @@ Other deploy facts:
   down from git**, and only onto a fresh box in a disaster.
 - `MUD_HOST` is where the web service dials (loopback, 127.0.0.1).
   `MUD_PUBLIC_HOST` is what the dashboard shows players; on Oracle it is
-  set to `toc.jeremybean.com` in `/etc/toc/web.env`.
+  set to `timesofchaos.com` in `/etc/toc/web.env` (by `toc-web-proxy`;
+  also the default).
 - The admin token lives in `/etc/toc/web.env` (mode 600, root) and is read
   with `sudo grep '^WEB_ADMIN_TOKEN=' /etc/toc/web.env`. Generate a
   replacement on the host with `openssl rand -hex 32` so the value never

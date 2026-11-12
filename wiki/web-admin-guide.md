@@ -25,11 +25,18 @@ The live server, on Oracle Cloud (see
 [disaster-recovery.md](disaster-recovery.md)), serves it at:
 
 ```text
-http://toc.jeremybean.com:9001/
+https://timesofchaos.com/
 ```
 
-The first-party client is the same service at `/client`. Port `9001` must be
-present in the URL; the host does not listen on HTTP port 80.
+The first-party client is the same service at `/client`. Caddy answers on 80
+and 443 there (80 only redirects to HTTPS, so the admin token never crosses
+plain HTTP) and hands every request, WebSockets included, to the dashboard
+on the host's `127.0.0.1:9001`. Behind it the dashboard runs in proxy mode
+(`WEB_ADMIN_PROXY_HEADERS=1`): it takes each visitor's address and scheme
+from Caddy's `X-Forwarded-For`/`X-Forwarded-Proto`, believed only from
+`WEB_ADMIN_FORWARDED_ALLOW_IPS` (127.0.0.1), and the loopback auto-unlock is
+always refused. See [hosting-guide.md](hosting-guide.md) "Behind A Reverse
+Proxy".
 
 Start a native development instance from the repository root with:
 

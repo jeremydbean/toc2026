@@ -7,7 +7,7 @@ automatic exploration map; the browser client prioritizes zero-install play.
 ## Mudlet And Automatic Mapping
 
 Create a Mudlet profile for the game host on port `9000`. For the public host,
-use `toc.jeremybean.com`; for local development, use `localhost`. Leave
+use `timesofchaos.com`; for local development, use `localhost`. Leave
 **Enable GMCP** and **Allow server to install script packages** enabled. The
 server advertises the official interface and the world map when GMCP
 is negotiated, and a changed package version updates existing installations.
@@ -62,11 +62,11 @@ http://127.0.0.1:9001/client
 The live server runs the same client. From any device, open:
 
 ```text
-http://toc.jeremybean.com:9001/client
+https://timesofchaos.com/client
 ```
 
-Port `9001` is required; a bare address selects port 80, where ToC does
-not listen.
+No port is needed: Caddy serves it on the standard web ports with a real
+certificate, and `http://` is redirected to `https://`.
 
 The launchers can open it directly:
 
@@ -259,17 +259,18 @@ in that browser profile until **Lock**, browser-data clearing, or token rotation
 
 ### The Address Refuses The Browser
 
-Use `http://toc.jeremybean.com:9001/` for the dashboard or
-`http://toc.jeremybean.com:9001/client` for play. If those fail, confirm the
-service and listener on the host:
+Use `https://timesofchaos.com/` for the dashboard or
+`https://timesofchaos.com/client` for play. If those fail, confirm the
+proxy, the service and its listener (loopback only) on the host:
 
 ```bash
-systemctl status toc-web
+systemctl status caddy toc-web
 ss -ltn 'sport = :9001'
 ```
 
-The live host should show `0.0.0.0:9001`. The generic Docker/default profile
-shows `127.0.0.1:9001` and requires a local browser or SSH tunnel.
+The live host should show `127.0.0.1:9001` only, with Caddy on 80 and 443 in
+front of it (`ss -ltn 'sport = :443'`). The generic Docker/default profile
+also shows `127.0.0.1:9001` and requires a local browser or SSH tunnel.
 
 ### Colors Look Wrong
 

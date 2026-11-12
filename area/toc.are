@@ -83,7 +83,7 @@ Killuminati   ( '))          |__>--<__|    /
 Welcome and Enjoy your Stay! Your Implementors are: Soulcrusher, Blackbird,
 Eclipse and Ungrim, we can be found at soul@kersur.net, armavirum@wxs.nl,
 belial@starlink.com and protaeseus@eudoramail.com.
-Times of Chaos (2018) is being maintained & hosted at ToC.jeremybean.com:9000
+Times of Chaos (2018) is being maintained & hosted at timesofchaos.com:9000
 by Killuminati, whom you can reach at j@jeremybean.com.
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 This mud is based on Dragons Legends and Lore (ROM 2.3).
@@ -478,14 +478,13 @@ See also: RACES, DEATH
 ~
 
 -1 WEB~
-Times of Chaos is hosted at toc.jeremybean.com on port 9000.
+Times of Chaos is hosted at timesofchaos.com on port 9000.
 
 Connect with any MUD client, or via telnet:
-  telnet toc.jeremybean.com 9000
+  telnet timesofchaos.com 9000
 
-The first-party browser client is served separately on port 9001.  Local
-installations use http://127.0.0.1:9001/client; the hosted game's is
-http://toc.jeremybean.com:9001/client.
+The first-party browser client is the website: https://timesofchaos.com/client
+for the hosted game.  Local installations use http://127.0.0.1:9001/client.
 
 For the desktop client with automatic mapping, see help MUDLET.
 

@@ -6,8 +6,10 @@ Mudlet's opening connection screen after the GMCP build is deployed publicly.
 ## Game metadata
 
 - **Name:** Times of Chaos
-- **Host:** `toc.jeremybean.com`
+- **Host:** `timesofchaos.com` (the older `toc.jeremybean.com` reaches the
+  same game)
 - **Port:** `9000`
+- **Website:** <https://timesofchaos.com> (browser client at `/client`)
 - **Transport:** Telnet
 - **Codebase:** Merc 2.1 / ROM 2.4, heavily customized
 - **Repository:** <https://github.com/jeremydbean/toc2026>
@@ -50,7 +52,7 @@ What the game speaks to Mudlet beyond that (2026-11-07):
 
 Still the owner's:
 
-- [ ] A clean Mudlet profile against toc.jeremybean.com:9000: the package
+- [ ] A clean Mudlet profile against timesofchaos.com:9000: the package
       installs, the map follows, gauges move, chat fills, a sound plays on a
       tell, and a screenshot of it.
 - [ ] Send the request (contact page or Discord), with a logo or icon, a
@@ -59,7 +61,7 @@ Still the owner's:
 ## Suggested contact message (2026-11-07)
 
 > Hello! We would like Times of Chaos considered for Mudlet's default game
-> list. It is at toc.jeremybean.com:9000 (Telnet). The game sends GA at every
+> list. It is at timesofchaos.com:9000 (Telnet). The game sends GA at every
 > prompt and speaks GMCP: Char.Vitals, Char.Status, Room.Info with numeric
 > room ids, Comm.Channel, Client.Map (a full world atlas) and Client.GUI (a
 > versioned interface with gauges, an embedded mapper with click-to-walk and

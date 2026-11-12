@@ -4,7 +4,8 @@ One page, in the order you will actually need it. Everything on it has
 been run at least once rather than only written down.
 
 The game runs on an Oracle Cloud instance (Always Free ARM, Ubuntu
-24.04) reached at `129.159.105.156`, which `toc.jeremybean.com` points to.
+24.04) reached at `129.159.105.156`, which `timesofchaos.com` (and
+`www.timesofchaos.com`, and the older `toc.jeremybean.com`) points to.
 It moved there on 2026-10-01. Two earlier hosts are gone and not coming
 back: a Hyper-V VM on the owner's Windows desktop (powered off), and
 before that a Raspberry Pi that died on 2026-09-29. Anything telling you
@@ -19,18 +20,21 @@ to `ssh toc@toc.local`, touch `/run/toc2026/update.request`, or start a
 | Public IP | `129.159.105.156` -- **reserved**, so it survives a stop/recreate |
 | Reach it | `ssh toc-oracle` from PowerShell or Git Bash on the owner's desktop (alias in `~/.ssh/config`, key `~/.ssh/toc-oracle`). Fallback, Git Bash only: `ssh -i /c/Users/JeremyBean/Downloads/oci_game_private_key ubuntu@129.159.105.156` -- PowerShell refuses that copy of the key as unprotected |
 | Game lives in | `/srv/toc/current` (state) and `/srv/toc/build` (git checkout) |
-| Public | `toc.jeremybean.com:9000` game, `:9001` dashboard and browser client |
-| Firewall | OCI VCN security list **and** the instance's own iptables -- a port must be open in both |
+| Public | `timesofchaos.com:9000` game (plain Telnet); `https://timesofchaos.com/` website -- dashboard and browser client -- through Caddy on 80 and 443 |
+| Dashboard | `toc-web` on `127.0.0.1:9001` behind Caddy, in proxy mode (see "The website" below) |
+| Firewall | OCI VCN security list **and** the instance's own iptables -- a port must be open in both (22, 80, 443, 9000) |
 | Admin token | `/etc/toc/web.env` on the host (mode 600) |
 
 ## Is it up?
 
 ```bash
-curl -s http://toc.jeremybean.com:9001/api/health
+curl -s https://timesofchaos.com/api/health
 ```
 
 `{"status":"ok","merc":true,"webadmin":true}` means the game process is
-alive and the dashboard can see it. Anything else, work down this page.
+alive and the dashboard can see it. Anything else, work down this page --
+and if only the website is down while the game answers on 9000, see "The
+website" below (`systemctl status caddy toc-web`).
 
 ## The game is down
 
@@ -69,6 +73,76 @@ recovery back on their own; a full reboot has been tested end to end. If
 the instance will not start with "out of host capacity", that is the ARM
 free-tier capacity limit -- retry later, or restore onto another shape
 or another provider (see "The machine is gone").
+
+## The website: Caddy on 80 and 443
+
+The dashboard and browser client are served at `https://timesofchaos.com`
+by Caddy (Ubuntu's `caddy` package), which gets and renews its Let's
+Encrypt certificates itself and only redirects on port 80, so the admin
+token never crosses plain HTTP. `www.timesofchaos.com` and
+`toc.jeremybean.com` redirect to it. Caddy hands every request, WebSockets
+included, to `toc-web` on `127.0.0.1:9001`, which is no longer reachable
+from outside. Its configuration is `deploy/windows-vm/Caddyfile` in git,
+installed as `/etc/caddy/Caddyfile`; the dashboard's side is four lines in
+`/etc/toc/web.env` -- `WEB_ADMIN_LISTEN=127.0.0.1`,
+`WEB_ADMIN_PROXY_HEADERS=1`, `WEB_ADMIN_FORWARDED_ALLOW_IPS=127.0.0.1`,
+`WEB_ADMIN_LOCAL_UNLOCK=0` -- plus `MUD_PUBLIC_HOST=timesofchaos.com`.
+`toc-web.service` reads them; a deploy never changes them.
+
+**Setting it up (once, and again on a new box).** In this order:
+
+1. **DNS** (Namecheap -> Domain List -> timesofchaos.com -> Advanced DNS):
+   an `A` record for host `@` and one for `www`, both `129.159.105.156`.
+   Remove Namecheap's parking `CNAME`/`URL Redirect` records for `@` and
+   `www` if present. Publish no `AAAA` record: nothing here listens on
+   IPv6. Keep `toc.jeremybean.com` pointing at the box -- old Mudlet
+   profiles use it.
+2. **OCI security list** (Networking -> Virtual Cloud Networks -> the VCN
+   -> the subnet's security list -> Add Ingress Rules): source
+   `0.0.0.0/0`, IP protocol TCP, destination port `80`; and the same for
+   `443`. Stateful, no source port.
+3. **The code**: the commit carrying `toc-web-proxy` must be live
+   (`log/deployed-commit`); the script refuses until the live dashboard
+   knows proxy mode.
+4. **The script**, from the owner's desktop (PowerShell or Git Bash):
+
+   ```bash
+   ssh toc-oracle 'sudo sh /srv/toc/build/deploy/windows-vm/toc-web-proxy --dry-run'
+   ssh toc-oracle 'sudo sh /srv/toc/build/deploy/windows-vm/toc-web-proxy'
+   ```
+
+   It installs Caddy and the Caddyfile (validated first), opens 80 and 443
+   in iptables before the REJECT rule (saved with `netfilter-persistent`),
+   starts Caddy and checks it answers, and only then moves the dashboard to
+   loopback -- putting the unit and `web.env` back if the dashboard does not
+   return. A failure before that last step leaves the website on public
+   9001, untouched. It is safe to run again. It ends by fetching
+   `https://timesofchaos.com/api/health` through Caddy; if DNS or the
+   security list is not ready yet it only warns, and Caddy keeps trying for
+   the certificate on its own (`journalctl -u caddy`).
+
+Steps 1 and 2 can be done in either order and before step 4; the
+certificate arrives within a minute of both being in place. DNS changes can
+take a while to propagate: `dig +short timesofchaos.com` should answer
+`129.159.105.156`.
+
+**Rolling it back**:
+
+```bash
+ssh toc-oracle 'sudo sh /srv/toc/build/deploy/windows-vm/toc-web-proxy --rollback'
+```
+
+That takes the three proxy lines out of `web.env` (the token,
+`MUD_PUBLIC_HOST` and `WEB_ADMIN_LOCAL_UNLOCK=0` stay), restarts the
+dashboard on public `0.0.0.0:9001` -- reachable as long as 9001 is still
+open in the security list and iptables, which setup leaves alone for this
+reason -- and stops and disables Caddy. The Caddy package, its Caddyfile
+and the 80/443 rules stay; nothing listens behind them.
+
+**When it breaks**: `systemctl status caddy toc-web`, `journalctl -u caddy
+-n 50`. `curl -s http://127.0.0.1:9001/api/health` on the host tells the
+dashboard from the proxy. A certificate problem is almost always DNS or the
+security list.
 
 ## Deploying a code change
 
@@ -202,15 +276,22 @@ iptables ACCEPT before the REJECT rule, saved with
 `netfilter-persistent` -- the OCI security list alone is not enough.
 Most other providers (Linode and the like) need nothing here.
 
+The restore brings the website up on public 9001 over plain HTTP. Put it
+back behind Caddy with `toc-web-proxy` (see "The website" above): it opens
+80 and 443 in iptables itself, but the provider's own firewall (the OCI
+security list) is still yours to open.
+
 ## Moving to a different machine on purpose
 
 Same as "The machine is gone", plus:
 
 1. Reserve the new box's public IP with the provider so it cannot change
    under you (on OCI, convert the ephemeral IP to a reserved one).
-2. Point `toc.jeremybean.com` at the new address. DNS is maintained by
-   hand now -- nothing on the host updates it.
-3. Copy the two secrets across, or make new ones, and open the firewall.
+2. Point `timesofchaos.com`, `www.timesofchaos.com` and
+   `toc.jeremybean.com` at the new address. DNS is maintained by hand
+   (Namecheap for timesofchaos.com) -- nothing on the host updates it.
+3. Copy the two secrets across, or make new ones, and open the firewall
+   (9000, 80 and 443). Run `toc-web-proxy` once DNS points at the new box.
 4. Bring the game up, then enable `toc-state-sync` on the new host --
    and make sure the old host is no longer syncing, or the two will
    fight over the branch.
