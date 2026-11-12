@@ -2960,23 +2960,48 @@ See also: DROP, SACRIFICE, JUNK
 Syntax: drink <object>
 
 DRINK consumes a liquid from a drink container to quench your thirst.
-Characters who become dehydrated suffer regeneration penalties.  Use
+Characters who become dehydrated suffer regeneration penalties, and left
+parched they lose hit points each tick and cannot sleep (see HUNGER).  Use
 FILL to refill empty drink containers from a fountain or pool.
 
-See also: EAT, FILL, QUAFF
+See also: EAT, FILL, QUAFF, HUNGER
 ~
 
 0 EAT~
 Syntax: eat <object>
 
 EAT consumes a food item to satisfy your hunger.  Characters who become
-hungry suffer regeneration penalties.  Some foods apply temporary magical
-or status effects when eaten.
+hungry suffer regeneration penalties, and left starving they lose hit
+points each tick and cannot sleep (see HUNGER).  Some foods apply
+temporary magical or status effects when eaten.
 
 Staff can eat anything they carry, which destroys it on the spot, and
 are never too full to.  An endless meal is still not used up.
 
-See also: DRINK, FILL
+See also: DRINK, FILL, HUNGER
+~
+
+0 HUNGER THIRST STARVING PARCHED~
+Hunger and thirst
+
+You grow hungry and thirsty as the ticks pass, and EAT and DRINK put that
+right.  While you are hungry or thirsty you heal more slowly.
+
+Left long enough, they begin to hurt.  Every tick you spend starving takes
+a share of your maximum hit points -- 2% the first tick, a point more each
+tick in a row, up to 8% -- and every tick parched takes 3%, rising to 10%.
+The game tells you which each tick.  It never takes you below one hit
+point: hunger kills nobody, but it leaves you easy prey.  Eating or
+drinking starts the count over.
+
+You are too hungry or too thirsty to SLEEP while starving or parched, and
+hunger or thirst wakes a sleeper.  A magical sleep holds.
+
+Nothing is taken while you have lost your link, are idling in the void or
+stand in the Oracle's sanctum.  Heroes, characters who have remorted and
+staff never hunger or thirst.
+
+See also: EAT, DRINK, FILL, SLEEP, REMORT GIFTS
 ~
 
 0 FILL~
@@ -3675,9 +3700,12 @@ regenerate hit points, mana, and movement at the fastest possible rate,
 but you are more vulnerable to attack and will not hear most events in
 the room.  Use WAKE or STAND to get up.
 
+You cannot sleep while you are starving or parched: eat and drink first.
+Hunger or thirst reaching nothing wakes you (see HUNGER).
+
 For information on the sleep spell, see SLEEPSPELL.
 
-See also: REST, STAND, WAKE, WIMPY
+See also: REST, STAND, WAKE, WIMPY, HUNGER
 ~
 
 0 REST STAND WAKE SIT~

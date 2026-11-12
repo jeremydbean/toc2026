@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112hungerhurts 2026-11-12
+Hunger and thirst bite. Each tick you spend starving takes 2% of your
+maximum hit points, a point more each tick in a row up to 8%; each tick
+parched takes 3%, up to 10%. They never take you below one hit point, and
+eating or drinking starts over. You are too hungry or thirsty to SLEEP
+while starving or parched, and either wakes you. See HELP HUNGER.
+
 @ 20261112monkflurries 2026-11-12
 BLINDING FISTS and FISTS OF FURY take their six seconds whether or not a
 blow lands. A flurry that missed every time used to cost no time at all.

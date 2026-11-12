@@ -20,10 +20,10 @@ the room, is what holds the prisoner:
 - a death by poison, alone in the cell with nobody striking: the tick's
   own blow, and the death lands in the cell.
 
-Starvation and thirst cannot be played: gain_condition only ever says
-"You are hungry." -- hunger and thirst take no hit points in this
-codebase, so neither can kill. The poison test holds a starving, parched
-prisoner at one hit point through the same tick to show it.
+Starvation and thirst cannot kill: they take hit points each tick, but
+never below one (hunger_thirst_tick in update.c; a cell is no shelter).
+The poison test holds a starving, parched prisoner at one hit point
+through the same tick to show it.
 
 Synthetic Z characters in throwaway worlds only.
 """
