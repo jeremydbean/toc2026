@@ -223,6 +223,44 @@ def first_word_fallback(entries: List[HelpEntry], argument: str,
     return None
 
 
+@dataclass
+class Resolution:
+    """What do_help does with an argument, whole: which step answered it
+    and with what.  `how` is "group-command" (HELP GROUP <name>), "exact",
+    "prefix", "phrase", "group" (group_lookup's fallback), "first-word",
+    or None when only the suggestions are left."""
+    argall: str
+    how: Optional[str]
+    entry: Optional[HelpEntry] = None
+    group: Optional[str] = None
+
+
+def resolve(entries: List[HelpEntry], argument: str, trust: int,
+            group_names: Iterable[str] = ()) -> Resolution:
+    """do_help from the top for somebody of this trust: HELP GROUP <name>
+    (help_group_exact), the three passes, group_lookup's prefix answer,
+    then the first word's page.  `group_names` is group_table in order."""
+    groups = list(group_names)
+    argall = ask(argument or "summary") or "summary"
+    if argall.startswith("group "):
+        name = argall[6:]
+        for group in groups:
+            if group.lower() == name:
+                return Resolution(argall, "group-command", group=group)
+    for how, test in (("exact", keyword_exact), ("prefix", is_name),
+                      ("phrase", phrase_prefix)):
+        for entry in entries:
+            if entry.level <= trust and test(argall, entry.keyword):
+                return Resolution(argall, how, entry=entry)
+    for group in groups:
+        if group.lower().startswith(argall):
+            return Resolution(argall, "group", group=group)
+    entry = first_word_fallback(entries, argall, trust)
+    if entry is not None:
+        return Resolution(argall, "first-word", entry=entry)
+    return Resolution(argall, None)
+
+
 def reachable_by(entries: List[HelpEntry], entry: HelpEntry, trust: int) -> Optional[str]:
     """A keyword that brings this entry up at this trust, or None when every
     keyword it has lands on an earlier entry first."""
