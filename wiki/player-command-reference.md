@@ -49,7 +49,7 @@ Many character and object lookups support a numbered keyword such as
 | `climb`, `crawl`, `jump` | Use area-defined movement features |
 | `ride`, `mount`, `dismount` | Control supported mounts |
 | `track <target>` | Use tracking skill where available |
-| `search` | Search the current room |
+| `search <container\|direction>` | Check a closed, locked container or door for traps and disarm one (search skill); not a room search for hidden exits |
 | `recall`, `/` | Pray for transport to your recall point; a curse blocks it |
 | `recall set` | Make this room your recall point (once per 30 minutes) |
 | `recall default` | Send your recall point back to the Temple |
@@ -256,8 +256,10 @@ download, but does not currently include Mudlet's automatic mapper. See the
 | `password` | Change the character password |
 | `delete` | Begin permanent character deletion; read every confirmation |
 
-Use a unique password. Only the first eight bytes affect the current DES hash,
-and the password travels over unencrypted Telnet.
+Use a unique password. Passwords are stored as SHA-512 crypt hashes and a new
+one counts every byte; a password carried over from the old DES format counts
+only its first eight until it is changed. The password travels over unencrypted
+Telnet.
 
 ## Feedback And Help
 

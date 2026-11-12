@@ -7,9 +7,17 @@ command availability depends on trust level; use `wizhelp` and
 
 ## Operating Principles
 
-`set char <name> mana <value>` and `set char <name> end <value>` accept
-0 through 30,000 and update the maximum and permanent base stat. They do not
-refill the current pool; use `restore <name>` when a refill is intended.
+`set char <name> hp <value>`, `mana <value>` and `end <value>` accept up to
+`POOL_MAX` (1,000,000,000; `hp` from -10, the others from 0). Pools are
+`int`, no longer 16-bit, so the old 30,000 ceiling is gone. Each sets the
+character's maximum **and** their permanent base (`perm_hit`, `perm_mana`,
+`perm_move`) to the value, so any bonus gear or spells are adding at that
+moment is not kept on top: when that bonus later comes off, the maximum
+falls below the number you set. Take gear and spells off first, or allow
+for them. None of them refills the current pool; use `restore <name>` when
+a refill is intended. `set char <name> move <value>` sets the current
+movement only, and `maxmove <value>` (1 to `POOL_MAX`) the maximum alone,
+clamping the current pool to it.
 
 1. Protect player continuity before convenience. Back up before upgrades,
    restores, mass edits, or experimental commands.
@@ -58,8 +66,10 @@ Confirm:
 - Disk space can accommodate player versions, logs, image layers, and archives.
 - Dashboard health agrees with a real MUD client connection.
 
-Current checked-in parser inventory is 102 listed area files, 7,787 rooms, 2,494
-mobiles, and 3,721 objects. Native and Python area totals differ because seven
+Recounted on 2026-11-12, the checked-in parser inventory is 102 listed area
+files, 7,766 rooms, 2,507 mobiles, and 3,760 objects (the native validator
+said `areas=95 mobs=2507 objects=3760 rooms=7766`); recount with the tools
+rather than trusting this line. Native and Python area totals differ because seven
 listed help/social files have no `#AREA` record: the native validator reports
 95 areas, including the `custom.are` builder workshop. Investigate unexpected deltas, not the known counting model.
 
@@ -256,10 +266,13 @@ without logging the password argument. Set a unique temporary value, deliver it
 through an appropriately private channel, and ask the player to change it after
 login. The command still crosses the operator's unencrypted Telnet connection.
 
-The current password format is traditional DES `crypt(3)` with the character
-name supplied as salt. Only the first eight password bytes are effective, and
-Telnet sends login traffic unencrypted. Encourage a unique random replacement
-and document the security limitation rather than promising modern protection.
+Passwords are stored as SHA-512 crypt hashes (`src/password.c`; see
+[SECURITY.md](../SECURITY.md)). A password set by RESETPWD or PASSWORD counts
+every byte. A character still on an old DES hash is moved to SHA-512 at their
+next login but keeps DES's effective limit -- the first eight bytes -- until
+they choose a new password, so ask a recovered player to change it. Telnet
+sends login traffic unencrypted. Encourage a unique random replacement and
+document the security limitation rather than promising modern protection.
 
 ### Corrupt Or Missing Player File
 
@@ -475,8 +488,9 @@ archive, or evidence from an active incident.
 
 Treat it as credential exposure. Preserve access logs, remove public dashboard
 access, notify affected users to use unique replacements, and remind them that
-DES hashes are fast to test offline. Do not publish the files or hashes while
-investigating.
+any DES hash still in a file, or in git history, is fast to test offline, and
+that SHA-512 crypt is slower but not proof against a weak password. Do not
+publish the files or hashes while investigating.
 
 ## Maintenance Record Template
 

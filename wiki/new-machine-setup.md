@@ -21,26 +21,40 @@ Two independent things:
 2. **Reach the host directly** -- deploy instantly, read the live game, run
    staff commands on the box, rotate secrets. Needs the SSH **key** on the
    machine and a network that allows outbound port 22 (or 443). **Works from
-   any real machine you set up; never from a cloud sandbox**, whose network
-   policy blocks the host on every port.
+   any real machine you set up.** A cloud or sandboxed session generally
+   cannot: the ones this project has used had no `ssh`, no copy of the key
+   and an HTTPS-only proxy that does not reach the host (see AGENTS.md,
+   "Where This Actually Runs"). Check the session you have rather than
+   assuming either way.
 
-For day-to-day work on a friends game, (1) is enough: a push deploys itself
-within about ten minutes (see below). (2) is for when you want it instant or
-need to touch the host.
+For day-to-day work on a friends game, (1) is enough: a push ships itself once
+CI vouches for it and nobody is playing (see below). (2) is for when you want
+it at once or need to touch the host.
 
-| Capability | Clone + GitHub | + key + port 22 | Cloud sandbox |
+| Capability | Clone + GitHub | + key + port 22 | Typical cloud sandbox |
 |---|---|---|---|
 | edit / build / test / commit / push -> deploy | yes | yes | yes |
-| instant SSH deploy, read live host, run restores, rotate token | no | yes | no |
+| instant SSH deploy, read live host, run restores, rotate token | no | yes | usually no |
 
 ---
 
 ## Ship code from anywhere (no host access needed)
 
-A push to `main` **is** the deploy. `toc-auto-deploy` runs on the host every
-ten minutes; when `main` carries new code whose CI Validate run is green, it
-deploys that commit and rolls back if the game does not come back healthy.
-Docs-, test-, and state-sync-only commits do not trigger it.
+A push to `main` **is** the deploy, but not at a fixed delay.
+`toc-auto-deploy` looks every ten minutes. It ships the newest commit that
+changed deployable code only when all of these hold:
+
+- the `deploy-gate` job of a Validate run on a push to `main`, for that
+  commit or one built on it, passed -- nothing else counts, and a
+  cancelled, failed or missing run ships nothing;
+- the game reports nobody playing: with players online the commit is held
+  (`holding <sha>: N player(s) online`) and looked at again every ten
+  minutes, and a count the probe cannot read holds it too;
+- that commit has not already failed to deploy or been rolled back.
+
+It then runs `toc-deploy` pinned to that commit, which rolls back if the game
+does not come back healthy. Docs-, test-, and state-sync-only commits do not
+trigger it.
 
 ```bash
 git clone https://github.com/jeremydbean/toc2026
@@ -49,10 +63,17 @@ cd toc2026
 git fetch && git rebase origin/main && git push origin HEAD:main
 ```
 
-CI takes about fifteen minutes. For an urgent fix, put `[deploy now]` on a line of its own in the message
-of the commit that changes the code to skip the CI wait (it does not cover
-code pushed after it) -- `toc-deploy` still refuses anything that does
-not build or whose world does not load.
+How long a full CI run takes varies (`tests/ci_durations.json` and the
+run's step summaries say what it is now), and the empty-game hold can add
+any amount. Two overrides exist, each read only from a line of its own in a
+commit message; when you merely mention one, keep it inside a sentence or
+in backticks as here. The marker `[deploy now]` on the commit that changes
+the code skips the wait for CI for that commit (it does not cover code
+pushed after it) -- `toc-deploy` still refuses anything that does not build
+or whose world does not load. The marker `[deploy with players]`, on any
+commit waiting to ship, lifts the empty-game hold and nothing else: CI must
+still pass, and players are warned and saved before the restart. Use it
+only when the owner has asked to ship with people on.
 
 Check what is live without any host access:
 

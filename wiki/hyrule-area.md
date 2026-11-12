@@ -16,7 +16,7 @@ the useful Hyrule mobile and object catalog.
 | Recall | Blocked only inside the nine dungeons (`30400-30645`) |
 | Level range | `1-59` |
 | Canonical geometry | 128 overworld screens plus 246 dungeon rooms and cellars |
-| Generated area size | 446 rooms and 1,519 reset records |
+| Generated area size | 446 rooms and 1,500 reset records (counted 2026-11-12) |
 
 There is no walking exit from the main world into Hyrule. Players arrive by
 entering the arcade cabinet, matching the intended "teleported into Zelda"

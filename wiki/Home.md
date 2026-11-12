@@ -1,8 +1,9 @@
 # Times of Chaos Documentation
 
-Welcome to the maintained documentation for Times of Chaos. The current world
-inventory is 102 listed area entries, 7,787 rooms, 2,494 mobiles, and 3,721
-objects. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
+Welcome to the maintained documentation for Times of Chaos. Recounted on
+2026-11-12, the world inventory is 102 listed area entries, 7,766 rooms, 2,507
+mobiles, and 3,760 objects; `../merc --check-area` and `scripts/area_lint.py`
+give the current figures. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
 [Disaster Recovery](disaster-recovery.md) for deploys and recovery.
 
 ## Players
@@ -16,7 +17,7 @@ objects. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
   purpose with important syntax and restrictions
 - [Psionics Guide](psionics.md) - all 17 powers, costs, defenses, travel
   restrictions, and remort granting rules
-- [Achievement System](achievements.md) - 196 accomplishments covering points,
+- [Achievement System](achievements.md) - the full catalog of accomplishments (389 on 2026-11-12) covering points,
   levels, bosses, relics, crafting, economy, unusual deaths, and Hyrule completion
 - [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,
   percentages, profile inference, modeled stats, and limitations
