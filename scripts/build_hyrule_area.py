@@ -1970,14 +1970,15 @@ A 0 0 {AFF_HASTE_FLAG}"""
 # Starlight, the black staff of ancient magic; Starlight and the elven
 # staff at 50-53): the best light gives +3 hitroll, +3 damroll, +20 hit
 # points, +50 mana (the Sphere of Lanatir, with penalties), -5 armour and
-# -5 to a save. The Triforce gives a little more of each, and no penalty.
+# -5 to a save. The Triforce gives more of each, and no penalty; the owner
+# set the figures (2026-11-12: "+5 hit and dam and +50 hp and +100 mana").
 # tests/test_hyrule_progression.py holds it above every light in the world.
 TRIFORCE_APPLIES = (
-    (18, 4),       # hitroll
-    (19, 4),       # damroll
-    (13, 25),      # hit points
-    (12, 55),      # mana
-    (17, -6),      # armour class
+    (18, 5),       # hitroll
+    (19, 5),       # damroll
+    (13, 50),      # hit points
+    (12, 100),     # mana
+    (17, -10),     # armour class (owner: "keep the saves and add armor also")
     (24, -5),      # save vs spell
 )
 

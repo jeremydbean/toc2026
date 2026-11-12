@@ -946,8 +946,10 @@ class HyruleProgressionTests(unittest.TestCase):
                                (12, "mana")):
             best = max(applies(o).get(location, 0) for o in others)
             self.assertGreater(triforce.get(location, 0), best, name)
-            self.assertLessEqual(triforce.get(location, 0), best + 5,
-                                 name + ": slightly better, not out of reach")
+        # The owner's figures (2026-11-12).
+        self.assertEqual((triforce.get(18), triforce.get(19), triforce.get(13), triforce.get(12),
+                          triforce.get(17), triforce.get(24)),
+                         (5, 5, 50, 100, -10, -5))
         best_ac = min(applies(o).get(17, 0) for o in others)
         self.assertLess(triforce.get(17, 0), best_ac, "armour")
         best_save = min(min(applies(o).get(loc, 0) for loc in (20, 21, 22, 23, 24))
