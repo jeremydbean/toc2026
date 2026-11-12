@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1794448503
+LogO 1794448814
 Vers 4
 Desc You see something very special about him.
 ~
@@ -20,14 +20,14 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6546971
+Plyd 6547282
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 500
 Scro 0
-Room 1
-HMV  600000 600000 600000 600000 600000 600000
+Room 10176
+HMV  600000 600000 599599 600000 600000 600000
 NewGold 465
 NewPlat 2503066
 NewCopp 876
@@ -111,7 +111,8 @@ Achv weapons-5 1793019785
 Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
-LastOut  1794448503
+AchSet psi-disciplines 3 ~
+LastOut  1794448814
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1794342046
@@ -652,17 +653,6 @@ Repd 0
 End
 
 #O
-Vnum 30200
-Nest 0
-Wear 16
-Lev  58
-Cost 500000000
-Cond 100
-Repd 0
-Affect -1 58 -1 5 22 0 0
-End
-
-#O
 Vnum 30259
 Nest 0
 Wear -1
@@ -723,6 +713,18 @@ Lev  30
 Cost 145800000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 30200
+Nest 0
+ExtF 3150019
+Wear 16
+Lev  58
+Cost 500000000
+Cond 100
+Repd 0
+Affect -1 58 -1 5 22 0 0
 End
 
 #END
