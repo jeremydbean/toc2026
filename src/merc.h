@@ -2301,7 +2301,7 @@ struct  char_data
     sh_int              hitroll;
     sh_int              damroll;
     sh_int              armor[4];
-    sh_int              wimpy;
+    int                 wimpy;          /* int: a threshold of a pool (POOL_MAX) */
     sh_int              perm_stat[MAX_STATS];
     sh_int              mod_stat[MAX_STATS];
     long                form;
@@ -3875,6 +3875,7 @@ void    affect_join     ( CHAR_DATA *ch, AFFECT_DATA *paf );
 void    char_from_room  ( CHAR_DATA *ch );
 void    char_to_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex );
 void    char_from_obj   ( OBJ_DATA *obj);
+void    captive_dispose ( OBJ_DATA *obj);
 void    char_to_obj     ( CHAR_DATA *ch, OBJ_DATA *obj);
 void    obj_to_char     ( OBJ_DATA *obj, CHAR_DATA *ch );
 void    obj_from_char   ( OBJ_DATA *obj );

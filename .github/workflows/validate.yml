@@ -101,6 +101,7 @@ env:
     test_achievement_set_load test_connection_guard test_client_addresses test_password
     test_mudlet_extras test_player_file_refusal test_memory_guard test_memcheck_purge
     test_number_overflow test_vnum_boundaries
+    test_bottled_captives test_duplicate_ownership
   # Modules that measure against the wall clock and need a machine to
   # themselves: the login throttle.
   SERIAL_MODULES: test_login_throttle

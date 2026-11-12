@@ -687,7 +687,7 @@ static void mg_check_char( CHAR_DATA *ch )
     }
 
     /* Last, since it may extract: a mobile shut in a bottle that is gone
-       goes with it, as char_from_obj does; a player is set down at the
+       goes with it, as captive_dispose does; a player is set down at the
        altar, as extract_char does. */
     if ( !obj_is_live( ch->in_object ) )
     {

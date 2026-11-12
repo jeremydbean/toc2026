@@ -54,8 +54,12 @@ class StalePointerSourceTests(unittest.TestCase):
         self.assertIn("!body_is_switched_from( ch )", update)
 
     def test_a_bottle_with_nowhere_to_open_takes_its_mobile(self) -> None:
+        # Moved into captive_dispose (review, 2026-11-12), which every
+        # extraction calls and char_from_obj falls back on.
         release = body("src/handler.c", "void char_from_obj( OBJ_DATA *obj )")
-        self.assertIn("extract_char( mob, true );", release)
+        self.assertIn("captive_dispose( obj );", release)
+        dispose = body("src/handler.c", "void captive_dispose( OBJ_DATA *obj )")
+        self.assertIn("extract_char( mob, true );", dispose)
 
     def test_corpse_tracks_and_relics(self) -> None:
         find = body("src/corpses.c", "static int track_find( const OBJ_DATA *corpse )")

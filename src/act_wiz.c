@@ -5700,12 +5700,13 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "wimpy" ) )
     {
-	if ( value < 0 || value > 30000 )
+	if ( value < 0 || value > POOL_MAX )
 	{
-	    send_to_char( "Wimpy range is 0 to 30000.\n\r", ch );
+	    snprintf( buf, sizeof(buf), "Wimpy range is 0 to %d.\n\r", POOL_MAX );
+	    send_to_char( buf, ch );
 	    return;
 	}
-	victim->wimpy = clamp_sh_int( value );
+	victim->wimpy = value;
 	snprintf(buf, sizeof(buf), "%s wimpy set to %d.\n\r", victim->name, value);
 	send_to_char(buf, ch);
 	return;

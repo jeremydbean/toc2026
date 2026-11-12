@@ -2679,8 +2679,16 @@ free_string(obj->description);
     {
         int i;
         for (i = 0; i < extract_count; i++)
+        {
+            /* A bottle that shatters with age sets its prisoner free
+               where it stood -- an act of play, unlike extract_obj,
+               which destroys what a bottle holds (captive_dispose).
+               Before obj_from_obj, which would leave it nowhere. */
+            if ( extract_list[i]->trapped != NULL )
+                char_from_obj( extract_list[i] );
             if ( extract_list[i]->in_obj != NULL )
                 obj_from_obj( extract_list[i] );
+        }
         for (i = 0; i < extract_count; i++)
         {
             extract_obj( extract_list[i] );

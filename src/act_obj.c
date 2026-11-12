@@ -6783,15 +6783,23 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 
 	 if(ch->in_room == find_obj->in_room)
 	 {
-	   bottled = obj->trapped;
+	   /* The bottle's captive, not the lever's: reading obj->trapped
+	      (the lever, which never holds one) let nothing out whenever
+	      the puller stood beside the bottle (review, 2026-11-12). */
+	   bottled = find_obj->trapped;
 	   if ( bottled == NULL )
 	     break;
 
-	   if(find_obj->trapped != NULL)
-	      char_from_obj(find_obj);
+	   char_from_obj(find_obj);
 
-	   if(IS_SET(bottled->act, ACT_AGGRESSIVE) )
-	     one_hit(bottled,ch, TYPE_UNDEFINED);
+	   /* The bottle lies in this room, so it was let out here. */
+	   if ( bottled->in_room == ch->in_room )
+	   {
+	     act( "$N bursts out of $p!", ch, find_obj, bottled, TO_CHAR );
+	     act( "$N bursts out of $p!", ch, find_obj, bottled, TO_ROOM );
+	     if( IS_NPC(bottled) && IS_SET(bottled->act, ACT_AGGRESSIVE) )
+	       one_hit(bottled,ch, TYPE_UNDEFINED);
+	   }
 	 }
 	 else if(find_obj->trapped != NULL)
 	   char_from_obj(find_obj);
