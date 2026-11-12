@@ -93,4 +93,50 @@ int pool_scale( long long value, long long num, long long den, int ceiling );
 /* current is at most num/den of maximum: current * den <= maximum * num. */
 int pool_at_most( long long current, long long maximum, long long num, long long den );
 
+/*
+ * damage()'s steps on a blow that got past the defender's ducking, parry,
+ * dodge and shield block, in damage()'s order (review, 2026-11-12):
+ *
+ *   1. the wards: sanctuary, protection from an evil attacker, divine
+ *      protection (a mental blow takes psionic_mental_reduce instead);
+ *   2. a fire or frost shield: a blow of its own element does half again;
+ *   3. alignment_damage_mod, for holy and negative blows;
+ *   4. immunity: none, a third off, or half again;
+ *   5. armour: number_range( blow_armor_floor(), dam ) -- a fixed cut, so
+ *      it has to come last of these: armour first made a sanctuaried
+ *      foe's blow of 100 against armour -20 read 40 where the fight
+ *      averages 30;
+ *   6. a Hyrule ring or shield on a player (fight.c).
+ *
+ * damage() and CONSIDER (blow_landed_expected in fight.c) both run these,
+ * so the estimate cannot drift from the fight.
+ */
+#define BLOW_WARD_SANCTUARY   1
+#define BLOW_WARD_PROTECT     2     /* the defender has protection */
+#define BLOW_WARD_DIVINE      4
+#define BLOW_WARD_EVIL_FOE    8     /* the attacker is evil: protection's cue */
+int blow_ward_cut( int dam, int wards );
+
+/* A fire or frost shield's wearer takes half again from its own element. */
+int blow_element_shield( int dam, int own_element );
+
+/* check_immune's verdicts, by merc.h's numbers (IS_NORMAL ... IS_VULNERABLE). */
+#define BLOW_NORMAL      0
+#define BLOW_IMMUNE      1
+#define BLOW_RESISTANT   2
+#define BLOW_VULNERABLE  3
+int blow_immunity_cut( int dam, int verdict );
+
+/* The low end of the armour roll: dam less (100 - ac) a third against a
+   mobile, a twelfth against a player, truncated as C divides; below zero
+   is 1. A blow of 1 or less is not rolled (the floor is the blow). */
+int blow_armor_floor( int dam, int ac, int npc_victim );
+
+/* What number_range( blow_armor_floor(), dam ) averages, number_range's
+   rules included: a floor at or above the blow is the floor. */
+double blow_armor_mean( int dam, int ac, int npc_victim );
+
+/* A fire or frost shield burns back 60% of a landed blow, truncated. */
+int blow_reflection( int dam );
+
 #endif

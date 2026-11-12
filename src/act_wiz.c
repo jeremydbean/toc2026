@@ -157,7 +157,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 	    int wiz_attempts;
 	    for ( wiz_attempts = 0; wiz_attempts < 200 && !found; wiz_attempts++ )
 	    {
-	        pMobIndex = get_mob_index( number_range( 0, top_vnum_mob ) );
+	        pMobIndex = random_mob_index( );
 	        if ( pMobIndex != NULL )
 	        {
 	            FOR_EACH_CHARACTER( iter, victim )
@@ -187,7 +187,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 		int attempts;
 		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		    pRoomIndex = get_room_index( number_range( 0, top_vnum_room ) );
+		    pRoomIndex = random_room_index( );
 		    if ( pRoomIndex != NULL )
 			break;
 		}
@@ -223,7 +223,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 		int attempts;
 		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		    pRoomIndex = get_room_index( number_range( 0, top_vnum_room ) );
+		    pRoomIndex = random_room_index( );
 		    if ( pRoomIndex != NULL )
 		    {
 			char_from_room(rch);

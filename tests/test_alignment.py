@@ -108,8 +108,13 @@ class AlignmentSourceTests(unittest.TestCase):
 
     def test_damage_hooks(self) -> None:
         damage = body("fight.c", "bool damage(")
-        self.assertLess(damage.index("alignment_damage_mod( ch, victim, dam, dam_type )"),
-                        damage.index("switch(check_immune(victim,dam_type))"))
+        # The modifier sits in the landed blow's shared steps (2026-11-12),
+        # before immunity, and damage() runs them before the armour's cut.
+        steps = body("fight.c", "static int blow_before_armor(")
+        self.assertLess(steps.index("alignment_damage_mod( ch, victim, dam, dam_type )"),
+                        steps.index("check_immune( victim, dam_type )"))
+        self.assertLess(damage.index("blow_before_armor( ch, victim, dam, dam_type, &immune )"),
+                        damage.index("blow_armor_floor("))
         sub = damage.index("victim->hit -= dam;")
         self.assertLess(sub, damage.index("alignment_drain( ch, victim, dam, dt );"))
         self.assertIn("gain = alignment_regen( ch, gain );", body("update.c", "int hit_gain("))

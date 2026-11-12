@@ -4458,6 +4458,7 @@ void extract_room( ROOM_INDEX_DATA *pRoom )
        room_index_hash[iHash] = pRoomIndex->next;
     else
       pPrev->next = pRoomIndex->next;
+    room_index_forget( pRoom );
 
     free_mem( pRoom, sizeof(*pRoom) );
 

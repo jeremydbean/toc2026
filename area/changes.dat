@@ -5,6 +5,17 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112consider 2026-11-12
+CONSIDER now counts a foe's sanctuary and other wards before its armour, as
+the fight does. It used to take the armour off first, so against a
+sanctuaried, well-armoured foe it promised your blows more than they land;
+its estimate is lower there now and closer to the fight.
+
+@ 20261112teleport 2026-11-12
+TELEPORT no longer fizzles, a misfired recall no longer drops you at the
+Temple, and a wandering portal no longer opens on nothing, for want of
+somewhere to go: all of them now pick from every room there is.
+
 @ 20261112memtrack 2026-11-12 staff
 MEMCHECK now says how many characters, objects and connections it tracks by
 address. The memory checks no longer read anything to find out whether it is
@@ -12,6 +23,7 @@ gone, so a pointer left behind after the minute's grace is caught too: it is
 logged as "-> freed" instead of "-> dead", and MEMCHECK counts those apart.
 A pointer to memory reused by something new of the same kind still cannot be
 told from a real one.
+
 
 @ 20261111vnums 2026-11-11 staff
 Vnums are no longer held under 32,767: rooms, mobiles and objects may be

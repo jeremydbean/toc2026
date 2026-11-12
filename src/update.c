@@ -2226,6 +2226,14 @@ static bool corpse_rots_with_owner( OBJ_DATA *corpse )
         && !str_cmp( top->carried_by->name, corpse->owner );
 }
 
+/* Where a random portal (value[0] 1) may shift to at the turn of the hour. */
+static bool portal_shift_room_ok( ROOM_INDEX_DATA *room )
+{
+    return !IS_SET(room->room_flags, ROOM_GODS_ONLY)
+        && !IS_SET(room->room_flags, ROOM_IMP_ONLY)
+        && !IS_SET(room->room_flags, ROOM_NEWBIES_ONLY);
+}
+
 void obj_update( void )
 {
     OBJ_DATA *obj;
@@ -2349,20 +2357,11 @@ void obj_update( void )
 	   case 1:
 	     if(time_info.hour == 6 || time_info.hour == 3)
 	     {
-	      {
-		int attempts;
-		for ( attempts = 0; attempts < 200; attempts++ )
-		{
-		    to_room = get_room_index( number_range( 0, top_vnum_room ) );
-		    if (  to_room != NULL
-		    &&   !IS_SET(to_room->room_flags, ROOM_GODS_ONLY)
-		    &&   !IS_SET(to_room->room_flags, ROOM_IMP_ONLY)
-		    &&   !IS_SET(to_room->room_flags, ROOM_NEWBIES_ONLY) )
-			break;
-		}
-		if ( to_room == NULL )
-		    break;
-	      }
+	      /* Drawn from the rooms there are (review, 2026-11-12): vnum
+	         guesses missed in a sparse world, and the last rejected one
+	         was used anyway. */
+	      if ( ( to_room = random_room_where( portal_shift_room_ok ) ) == NULL )
+		  break;
 	      obj->value[1] = to_room->vnum;
 	     }
 	      break;

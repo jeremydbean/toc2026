@@ -3491,6 +3491,10 @@ ROOM_INDEX_DATA *recall_room ( CHAR_DATA *ch );
 void    recall_char_to_temple ( CHAR_DATA *ch );
 bool    is_invulnerable ( CHAR_DATA *ch );
 ROOM_INDEX_DATA *random_scatter_room ( const AREA_DATA *area );
+ROOM_INDEX_DATA *random_room_index ( void );   /* db.c: any world room, evenly */
+MOB_INDEX_DATA  *random_mob_index ( void );    /* db.c: any mobile prototype, evenly */
+ROOM_INDEX_DATA *random_room_where ( bool (*ok)( ROOM_INDEX_DATA *room ) );
+void    room_index_forget ( ROOM_INDEX_DATA *room );
 void    count_components ( int *herbs, int *comps );
 int     telnet_count_players ( void );
 
@@ -3736,6 +3740,8 @@ void    one_hit         ( CHAR_DATA *ch, CHAR_DATA *victim, int dt );
 void    raw_kill        ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    hyrule_defies_instant_death ( CHAR_DATA *victim );
 bool    damage          ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int class );
+double  blow_landed_expected ( CHAR_DATA *ch, CHAR_DATA *victim, double blow,
+                               int dam_type, double *burn );
 void    damage_drain_next ( int divisor );
 void    update_pos      ( CHAR_DATA *victim );
 void    stop_fighting   ( CHAR_DATA *ch, bool fBoth );

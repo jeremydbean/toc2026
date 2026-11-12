@@ -82,13 +82,46 @@ class CombatRulesCallSiteTests(unittest.TestCase):
         body = function_body(self.fight, "bool damage(")
         self.assertNotIn('skill_lookup("psionic_armor")', body)
         self.assertNotIn('skill_lookup("psychic_shield")', body)
-        self.assertIn("dam = psionic_mental_reduce( victim, dam );", body)
+        # The wards moved into blow_before_armor (2026-11-12), which damage()
+        # and CONSIDER share.
+        self.assertIn("dam = blow_before_armor( ch, victim, dam, dam_type, &immune );", body)
+        steps = function_body(self.fight, "static int blow_before_armor(")
+        self.assertIn("dam = psionic_mental_reduce( victim, dam );", steps)
         rule = function_body(self.magic2, "int psionic_mental_reduce(")
         for gsn in ("gsn_psionic_armor", "gsn_psychic_shield", "gsn_mindbar"):
             self.assertIn(gsn, rule)
         # Every mana and movement drain still asks it, outside damage().
         text = self.magic2.read_text(encoding="latin-1")
         self.assertEqual(len(re.findall(r"= psionic_mental_reduce\(", text)), 2)
+
+    def test_damage_and_consider_share_a_blows_steps(self) -> None:
+        """A landed blow's steps are combat_rules.h's, in damage()'s order,
+        and CONSIDER runs the same code (review, 2026-11-12: it cut the
+        armour before the wards). The harness checks the numbers."""
+        body = function_body(self.fight, "bool damage(")
+        self.assertLess(body.index("check_shield_block( ch, victim )"),
+                        body.index("blow_before_armor("))
+        self.assertLess(body.index("blow_before_armor("), body.index("blow_armor_floor("))
+        self.assertLess(body.index("blow_armor_floor("),
+                        body.index("apply_hyrule_relic_damage_reduction( victim"))
+        self.assertNotIn("dam_reduce", body)
+        self.assertNotIn("AFF_SANCTUARY", body)
+        self.assertIn("dam1 = shield_burn( ch, dam, dam_type1, &immune );", body)
+        steps = function_body(self.fight, "static int blow_before_armor(")
+        order = [steps.index(step) for step in (
+            "blow_ward_cut(", "blow_element_shield(", "alignment_damage_mod(",
+            "blow_immunity_cut(")]
+        self.assertEqual(order, sorted(order))
+        outcome = function_body(self.fight, "static void blow_outcome(")
+        self.assertLess(outcome.index("blow_before_armor("), outcome.index("blow_armor_floor("))
+        self.assertIn("apply_hyrule_relic_damage_reduction( victim, r, dam_type )", outcome)
+        self.assertIn("shield_burn( ch, got, element, &immune )", outcome)
+        gear = (ROOT / "src" / "gear_compare.c").read_text(encoding="latin-1")
+        side = gear.split("static double consider_side(", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("blow_landed_expected( att, def, blow,", side)
+        for gone in ("consider_after_armor", "consider_blow_factor", "consider_shield",
+                     "consider_immune"):
+            self.assertNotIn(gone, gear)
 
     def test_a_failed_destruction_keeps_the_third_attack(self) -> None:
         body = function_body(self.fight, "void multi_hit(")

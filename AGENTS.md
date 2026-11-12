@@ -1110,6 +1110,8 @@ Hyrule room (`hyrule_room_sealed`) to a mobile too. The pools are
 otherwise as they were: `get_random_room` still refuses safe rooms and
 TELEPORT does not. `TOC_RANDOM_ROOM` (tests only) makes the first guess
 of both that room (`random_room_candidate`); `tests/test_random_arrival.py`.
+Both draw from the rooms there are, never a guessed vnum (see "Scattering
+Things Into The World").
 
 **The last two guardians are group fights, by balance, not by rule**
 (owner, 2026-10-28: the ashen Gleeok needs two average high-level
@@ -3506,6 +3508,28 @@ the same way -- class first, and only look for a guild token when the
 class was neither monk nor necro -- or the pairs misalign. `none` (-1) is
 always a legal guild, which is what guarantees a choice always exists.
 
+## A Landed Blow's Steps Are Shared With CONSIDER
+
+Review, 2026-11-12. After the defences (ducking, parry, dodge, shield
+block), `damage()` takes a blow through `blow_before_armor` in `fight.c`
+-- the wards (sanctuary, protection against an evil attacker, divine
+protection; a mental blow `psionic_mental_reduce` instead), a fire or
+frost shield's own element (half again), `alignment_damage_mod`, immunity
+-- then the armour's cut, `number_range( blow_armor_floor(), dam )`, then
+a Hyrule ring or shield on a player; a shield then burns the striker back
+through `shield_burn`. The arithmetic is `combat_rules.h`'s
+(`blow_ward_cut`, `blow_element_shield`, `blow_immunity_cut`,
+`blow_armor_floor`, `blow_armor_mean`, `blow_reflection`), held by
+`tests/test_combat_rules.c` to the inline code it replaced. CONSIDER runs
+the same steps through `blow_landed_expected`, averaging the armour roll,
+so it cannot drift from the fight: it used to cut the armour first and
+then halve for sanctuary, and armour is a fixed cut, so a blow of 100 on
+a sanctuaried mobile of armour -20 read 40 where the fight averages 30.
+A new step in a landed blow goes into those helpers, never inline in
+`damage()` (`tests/test_consider_effects.py` plays CONSIDER against the
+arithmetic). The wards ran before the defences until then; nothing there
+reads the blow.
+
 ## damage() Says Whether A Blow Landed
 
 **Never branch on `damage()`'s result.** It is true for nearly every blow
@@ -4047,6 +4071,25 @@ loop that gave up after a hundred tries -- and with 7,781 rooms spread
 over 65,536 vnums the inner loop failed about nine times in ten, so herbs
 and spell components had barely existed for years while the command that
 placed them reported success.
+
+**A random room or mobile prototype is drawn, never guessed** (review,
+2026-11-12). `random_room_index()` and `random_mob_index()` in `db.c` draw
+from dense lists of every world room and every mobile prototype, kept by
+`room_index_link`/`mob_index_link` -- the only places a prototype enters
+its hash -- and `room_index_forget` from `extract_room`. TELEPORT and
+`get_random_room` (through `random_room_candidate`, which still takes
+`TOC_RANDOM_ROOM` first), EXPLODE and a bounced object (`do_bounce`) all
+draw from them, keeping each caller's own tests; a random portal (value[0]
+1, made in `create_object` and moved in `obj_update`) picks with
+`random_room_where(ok)`, a reservoir over the rooms its predicate accepts.
+They guessed `number_range(0, top_vnum_room)` and vnums are sparse, so one
+room at 1,000,000 made two hundred guesses all miss about one time in
+five: TELEPORT fizzled, a misfire fell back to the Temple and a portal
+opened on nothing (or on the last room it had rejected) with eligible
+rooms to spare. Every room is as likely as before; a pocket room (rope
+trick, haven) is not a world room and is never drawn, and
+`random_scatter_room` walks the same list. A new room or mobile prototype made after boot goes
+through those link functions (`tests/test_sparse_room_draw.py`).
 
 Component rates live in `component_update()`: `HERB_CEILING` and
 `COMPONENT_CEILING` in `merc.h`, and `telnet_count_players() < 1` stops

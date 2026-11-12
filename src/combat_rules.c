@@ -185,3 +185,70 @@ int pool_at_most( long long current, long long maximum, long long num, long long
 {
     return current * den <= maximum * num;
 }
+
+/* damage()'s per-blow steps (combat_rules.h): the arithmetic exactly as
+   fight.c did it inline before 2026-11-12. */
+int blow_ward_cut( int dam, int wards )
+{
+    int sanct = ( wards & BLOW_WARD_SANCTUARY ) != 0;
+
+    if ( sanct )
+        dam /= 2;
+    if ( ( wards & BLOW_WARD_PROTECT ) && ( wards & BLOW_WARD_EVIL_FOE ) )
+        dam -= sanct ? dam / 16 : dam / 4;
+    if ( wards & BLOW_WARD_DIVINE )
+    {
+        if ( !sanct )
+            dam -= dam / 4;
+        else if ( !( wards & BLOW_WARD_PROTECT ) )
+            dam -= dam / 16;
+        else
+            dam -= dam / 8;
+    }
+    return dam;
+}
+
+int blow_element_shield( int dam, int own_element )
+{
+    return own_element ? dam + dam / 2 : dam;
+}
+
+int blow_immunity_cut( int dam, int verdict )
+{
+    switch ( verdict )
+    {
+    case BLOW_IMMUNE:     return 0;
+    case BLOW_RESISTANT:  return dam - dam / 3;
+    case BLOW_VULNERABLE: return dam + dam / 2;
+    default:              return dam;
+    }
+}
+
+int blow_armor_floor( int dam, int ac, int npc_victim )
+{
+    int low;
+
+    if ( dam <= 1 )
+        return dam;
+    low = dam + ( -100 + ac ) / ( npc_victim ? 3 : 12 );
+    if ( low < 0 )
+        low = 1;
+    return low;
+}
+
+double blow_armor_mean( int dam, int ac, int npc_victim )
+{
+    int low;
+
+    if ( dam <= 1 )
+        return dam;
+    low = blow_armor_floor( dam, ac, npc_victim );
+    if ( low >= dam )
+        return low;
+    return ( (double) low + dam ) / 2.0;
+}
+
+int blow_reflection( int dam )
+{
+    return (int) ( dam * 0.6 );
+}

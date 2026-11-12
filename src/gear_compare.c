@@ -2281,9 +2281,13 @@ static double gear_pc_round( CHAR_DATA *ch, bool *caster, GEAR_RESULT *out )
 /*
  * What damage() does to one side's blows on the other, as CONSIDER counts
  * it (owner, 2026-11-10: "consider should also account for spells on the
- * mob and you"). Each helper mirrors the code it names, in fight.c and
- * handler.c, so the estimate and the fight cannot drift apart unnoticed:
- * change one, change both.
+ * mob and you"). The steps a landed blow takes -- the wards, a shield's
+ * own element, alignment, immunity, then the armour's cut, a Hyrule ring
+ * -- are damage()'s own, through blow_landed_expected in fight.c, so they
+ * cannot drift apart (review, 2026-11-12: the armour was cut here first,
+ * and armour is a fixed cut, so sanctuary on a foe of armour -20 read a
+ * blow of 100 as 40 where the fight averages 30). The helpers below
+ * mirror what damage() does before those steps; change one, change both.
  */
 
 /* The damage type of a character's ordinary blow (one_hit). */
@@ -2294,62 +2298,6 @@ static int consider_dam_type( CHAR_DATA *ch )
     if ( wield != NULL && wield->item_type == ITEM_WEAPON )
         return attack_table[wield->value[3]].damage;
     return attack_table[ch->dam_type].damage;
-}
-
-/* check_immune's answer as a multiplier: immune, resistant, vulnerable. */
-static double consider_immune( CHAR_DATA *def, int dam_type )
-{
-    switch ( check_immune( def, dam_type ) )
-    {
-    case IS_IMMUNE:     return 0.0;
-    case IS_RESISTANT:  return 2.0 / 3.0;
-    case IS_VULNERABLE: return 1.5;
-    default:            return 1.0;
-    }
-}
-
-/* damage()'s modifiers: sanctuary, protection from an evil attacker and
-   divine protection, then immunity. */
-static double consider_blow_factor( CHAR_DATA *att, CHAR_DATA *def, int dam_type )
-{
-    double f = 1.0;
-    bool sanct = IS_AFFECTED( def, AFF_SANCTUARY );
-    bool prot = IS_AFFECTED( def, AFF_PROTECT );
-
-    if ( dam_type != DAM_MENTAL )
-    {
-        if ( sanct )
-            f *= 0.5;
-        if ( prot && IS_EVIL( att ) )
-            f *= sanct ? 15.0 / 16.0 : 0.75;
-        if ( IS_AFFECTED2( def, AFF2_DIVINE_PROT ) )
-            f *= !sanct ? 0.75 : !prot ? 15.0 / 16.0 : 7.0 / 8.0;
-    }
-    return f * consider_immune( def, dam_type );
-}
-
-/* damage()'s armour cut: each blow loses up to a third (against a
-   mobile) or a twelfth (against a player) of 100 less the defender's
-   armour against it, at random -- the expected blow, from its mean. */
-static double consider_after_armor( CHAR_DATA *def, int dam_type, double blow )
-{
-    double low;
-    int ac;
-
-    if ( blow <= 1.0 )
-        return blow;
-    switch ( dam_type )
-    {
-    case DAM_PIERCE: ac = GET_AC( def, AC_PIERCE ); break;
-    case DAM_BASH:   ac = GET_AC( def, AC_BASH );   break;
-    case DAM_SLASH:  ac = GET_AC( def, AC_SLASH );  break;
-    case DAM_NONE:   ac = 0;                        break;
-    default:         ac = GET_AC( def, AC_EXOTIC ); break;
-    }
-    low = blow + ( -100.0 + ac ) / ( IS_NPC(def) ? 3.0 : 12.0 );
-    if ( low < 1.0 )
-        low = 1.0;
-    return ( low + blow ) / 2.0;
 }
 
 /* The share of landed blows the defender does not turn aside: ducking,
@@ -2383,28 +2331,6 @@ static double consider_defence_pass( CHAR_DATA *att, CHAR_DATA *def )
     return pass;
 }
 
-/* A fire or frost shield on the defender: what it reflects of a blow it
-   takes (60%, at the attacker's own immunity), and the 50% more it takes
-   from a blow of its own element. */
-static void consider_shield( CHAR_DATA *att, CHAR_DATA *def, int att_type,
-                             double *reflect, double *extra )
-{
-    *reflect = 0.0;
-    *extra = 1.0;
-    if ( IS_AFFECTED2( def, AFF2_FLAMING_HOT ) )
-    {
-        *reflect = 0.6 * consider_immune( att, DAM_FIRE );
-        if ( att_type == DAM_FIRE )
-            *extra = 1.5;
-    }
-    else if ( IS_AFFECTED2( def, AFF2_FLAMING_COLD ) )
-    {
-        *reflect = 0.6 * consider_immune( att, DAM_COLD );
-        if ( att_type == DAM_COLD )
-            *extra = 1.5;
-    }
-}
-
 /* A player's hit chance against this foe's armour, over the standard
    foe's COMPARE measures against. */
 static double consider_accuracy_ratio( CHAR_DATA *ch, CHAR_DATA *victim,
@@ -2431,64 +2357,55 @@ static double consider_accuracy_ratio( CHAR_DATA *ch, CHAR_DATA *victim,
 /*
  * CONSIDER's fight: each side's weapon damage a round against the other,
  * as damage() would leave it -- the other's armour (to hit, and the cut
- * from each blow), dodge, parry, shield block and ducking, sanctuary,
- * protection, divine protection, immunities, both sides' haste, and a fire
- * or frost shield's burn back on whoever strikes it. Spells and skills
- * cast in the fight are still not in it: *caster says the looker's damage
- * is mostly spells. One model for both sides, so the two answers can be
- * set against each other. Before 2026-11-11 it counted sanctuary alone,
- * and the players' fights of "should win" took twice its rounds.
+ * from each blow), dodge, parry, shield block and ducking, then each
+ * landed blow through damage()'s own steps (blow_landed_expected:
+ * sanctuary, protection, divine protection, a fire or frost shield's
+ * element, alignment, immunities, the armour's cut, a Hyrule ring, in that
+ * order), both sides' haste, and a fire or frost shield's burn back on
+ * whoever strikes it. Spells and skills cast in the fight are still not
+ * in it: *caster says the looker's damage is mostly spells. One model for
+ * both sides, so the two answers can be set against each other. Before
+ * 2026-11-11 it counted sanctuary alone, and the players' fights of
+ * "should win" took twice its rounds; before 2026-11-12 it cut the armour
+ * before the wards.
  */
+static double consider_side( CHAR_DATA *att, CHAR_DATA *def, bool *caster,
+                             double *burn )
+{
+    GEAR_RESULT r;
+    double base, blow = 0.0, landed, burned = 0.0;
+
+    if ( IS_NPC( att ) )
+        base = gear_npc_round( att, def, &blow );
+    else
+    {
+        base = gear_pc_round( att, caster, &r );
+        base *= consider_accuracy_ratio( att, def, &r );
+        blow = r.per_hit;
+    }
+    *burn = 0.0;
+    if ( blow > 0.0 )
+    {
+        landed = blow_landed_expected( att, def, blow, consider_dam_type( att ),
+                                       &burned );
+        base *= landed / blow;
+        if ( landed > 0.0 )
+            *burn = burned / landed;
+    }
+    return base * consider_defence_pass( att, def );
+}
+
 void gear_consider_fight( CHAR_DATA *ch, CHAR_DATA *victim,
                           double *yours, double *theirs, bool *caster )
 {
-    GEAR_RESULT r;
-    double my_base, their_base, blow = 0.0;
-    double reflect, extra;
-    int my_type = consider_dam_type( ch );
-    int their_type = consider_dam_type( victim );
+    double my_burn, their_burn, mine, their;
 
     *caster = false;
-    if ( IS_NPC( ch ) )
-    {
-        my_base = gear_npc_round( ch, victim, &blow );
-        if ( blow > 0.0 )
-            my_base *= consider_after_armor( victim, my_type, blow ) / blow;
-    }
-    else
-    {
-        my_base = gear_pc_round( ch, caster, &r );
-        my_base *= consider_accuracy_ratio( ch, victim, &r );
-        if ( r.per_hit > 0.0 )
-            my_base *= consider_after_armor( victim, my_type, r.per_hit ) / r.per_hit;
-    }
-    my_base *= consider_defence_pass( ch, victim ) * consider_blow_factor( ch, victim, my_type );
-
-    if ( IS_NPC( victim ) )
-    {
-        their_base = gear_npc_round( victim, ch, &blow );
-        if ( blow > 0.0 )
-            their_base *= consider_after_armor( ch, their_type, blow ) / blow;
-    }
-    else
-    {
-        their_base = gear_pc_round( victim, NULL, &r );
-        their_base *= consider_accuracy_ratio( victim, ch, &r );
-        if ( r.per_hit > 0.0 )
-            their_base *= consider_after_armor( ch, their_type, r.per_hit ) / r.per_hit;
-    }
-    their_base *= consider_defence_pass( victim, ch ) * consider_blow_factor( victim, ch, their_type );
-
-    *yours = my_base;
-    *theirs = their_base;
-    /* The foe's shield: your blows of its element do more, and burn you
-       back; and yours does the same to it. */
-    consider_shield( ch, victim, my_type, &reflect, &extra );
-    *yours *= extra;
-    *theirs += my_base * extra * reflect;
-    consider_shield( victim, ch, their_type, &reflect, &extra );
-    *theirs *= extra;
-    *yours += their_base * extra * reflect;
+    mine = consider_side( ch, victim, caster, &my_burn );
+    their = consider_side( victim, ch, NULL, &their_burn );
+    /* A shield burns back a share of every blow that lands on it. */
+    *yours = mine + their * their_burn;
+    *theirs = their + mine * my_burn;
 }
 
 static void gear_send_usage( CHAR_DATA *ch )

@@ -5708,7 +5708,7 @@ void do_bounce( OBJ_DATA *obj )
                     int mob_attempts;
                     for ( mob_attempts = 0; mob_attempts < 200; mob_attempts++ )
                     {
-                        pMobIndex = get_mob_index( number_range( 0, top_vnum_mob ) );
+                        pMobIndex = random_mob_index( );
                         if ( pMobIndex != NULL )
                             break;
                     }
@@ -5744,7 +5744,7 @@ void do_bounce( OBJ_DATA *obj )
 	   {
 		   int fb_try; ROOM_INDEX_DATA *fb_room = NULL;
 		   for (fb_try = 0; fb_try < 200; fb_try++) {
-			   fb_room = get_room_index( number_range( 0, top_vnum_room ) );
+			   fb_room = random_room_index( );
 			   if (fb_room != NULL) break;
 		   }
 		   if (fb_room == NULL) fb_room = get_room_index(ROOM_VNUM_TEMPLE);
@@ -5761,7 +5761,7 @@ void do_bounce( OBJ_DATA *obj )
 		int attempts;
 		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		    pRoomIndex = get_room_index( number_range( 0, top_vnum_room ) );
+		    pRoomIndex = random_room_index( );
 		    if ( pRoomIndex != NULL )
 			break;
 		}
