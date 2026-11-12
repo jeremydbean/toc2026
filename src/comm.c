@@ -69,6 +69,7 @@
 #include <time.h>
 
 #include "merc.h"
+#include "tcpkeep.h"
 #include "interp.h"
 #include "telnet_proto.h"
 #include "db.h"
@@ -333,7 +334,8 @@ static bool shutting_down = FALSE;
  */
 int     init_socket             ( int port );
 DESCRIPTOR_DATA *new_descriptor ( int control );
-void    init_descriptor         ( int control );
+void    init_descriptors        ( int control );
+static bool init_descriptor     ( int control );
 bool    read_from_descriptor    ( DESCRIPTOR_DATA *d );
 bool    read_from_buffer        ( DESCRIPTOR_DATA *d );
 static bool split_typed_commands( DESCRIPTOR_DATA *d );
@@ -678,9 +680,26 @@ int init_socket( int port )
 	exit( 1 );
     }
 
-    if ( listen( fd, 3 ) < 0 )
+    /*
+     * The queue the kernel keeps for us, and a socket that never blocks
+     * (review, 2026-11-12). A backlog of three let a burst of four clients
+     * -- the live tests open every client before logging any in, and a
+     * reconnect storm after a restart does the same -- fill it: macOS reset
+     * the next connection and Linux left it without a greeting, while the
+     * game loop took one a pass. SOMAXCONN, and init_descriptors() taking
+     * every waiting connection in one pass, which needs accept() to say
+     * "none left" rather than wait for the next.
+     */
+    if ( listen( fd, SOMAXCONN ) < 0 )
     {
 	perror("Init_socket: listen" );
+	close(fd);
+	exit( 1 );
+    }
+
+    if ( fcntl( fd, F_SETFL, fcntl( fd, F_GETFL, 0 ) | O_NONBLOCK ) == -1 )
+    {
+	perror("Init_socket: O_NONBLOCK" );
 	close(fd);
 	exit( 1 );
     }
@@ -1076,7 +1095,7 @@ void game_loop_unix( int control )
 	 * New connection?
 	 */
 	if ( FD_ISSET( control, &in_set ) )
-	    init_descriptor( control );
+	    init_descriptors( control );
 
 	/*
 	 * Kick out the freaky folks.
@@ -1552,7 +1571,51 @@ static void login_note_success( DESCRIPTOR_DATA *d )
     login_lock_success( d, who );
 }
 
-void init_descriptor( int control )
+/*
+ * Whether the client on d has closed its end: a peek that reads nothing at
+ * the end of the stream, or an error other than "nothing yet". Takes no
+ * byte and never waits; the game loop closes such a descriptor itself on
+ * its next read. The connection guard asks it so a connection already gone
+ * is not counted as waiting at a prompt.
+ */
+bool descriptor_hung_up( DESCRIPTOR_DATA *d )
+{
+    char c;
+    ssize_t got;
+
+    if ( d == NULL || d->descriptor < 0 )
+        return true;
+    got = recv( d->descriptor, &c, 1, MSG_PEEK | MSG_DONTWAIT );
+    if ( got == 0 )
+        return true;
+    if ( got < 0 && errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR )
+        return true;
+    return false;
+}
+
+/*
+ * Every connection waiting on the listening socket, in one pass (review,
+ * 2026-11-12: one a pass, four passes a second, left a burst queued past
+ * the backlog). At most ACCEPT_BURST_MAX, so a flood cannot hold the loop:
+ * the rest wait for the next pass, and the connection guard still judges
+ * each one in init_descriptor as it always did.
+ */
+#define ACCEPT_BURST_MAX 64
+
+void init_descriptors( int control )
+{
+    int n;
+
+    for ( n = 0; n < ACCEPT_BURST_MAX; n++ )
+        if ( !init_descriptor( control ) )
+            break;
+}
+
+/* True when accept() took a connection (whatever became of it), false
+   when none was waiting or accept failed: the burst ends there. */
+static bool new_descriptor_accepted;
+
+static bool init_descriptor( int control )
 {
     DESCRIPTOR_DATA *dnew;
     struct sockaddr_in sock;
@@ -1560,8 +1623,9 @@ void init_descriptor( int control )
 
     size = sizeof(sock);
     getsockname( control, (struct sockaddr *) &sock, &size );
+    new_descriptor_accepted = false;
     if ( ( dnew = new_descriptor( control ) ) == NULL )
-        return;
+        return new_descriptor_accepted;
 
     dnew->next      = descriptor_list;
     descriptor_list = dnew;
@@ -1582,7 +1646,7 @@ void init_descriptor( int control )
             dnew->guard_refused = TRUE;
             write_to_buffer( dnew, refusal, 0 );
             close_socket( dnew );
-            return;
+            return true;
         }
     }
 
@@ -1597,7 +1661,7 @@ void init_descriptor( int control )
         login_lock_refusal( dnew, throttle_buf, sizeof(throttle_buf) );
         write_to_buffer( dnew, throttle_buf, 0 );
         close_socket( dnew );
-        return;
+        return true;
     }
 
     /* Offer the telnet options we support before any text goes out. */
@@ -1614,7 +1678,7 @@ void init_descriptor( int control )
 	    write_to_buffer( dnew, help_greeting  , 0 );
     }
 
-    return;
+    return true;
 }
 
 /*
@@ -1629,9 +1693,19 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
 
     size = sizeof(sock);
     if ((desc = accept(control, (struct sockaddr *)&sock, &size)) < 0) {
+        /* The listening socket does not block: none left this pass is
+           EAGAIN, and is no error. A connection its client gave up on
+           before we took it is gone, and the next may still be waiting. */
+        if (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR)
+            return NULL;
+        if (errno == ECONNABORTED) {
+            new_descriptor_accepted = true;
+            return NULL;
+        }
         perror("New_descriptor: accept");
         return NULL;
     }
+    new_descriptor_accepted = true;
 
     /*
      * The game loop waits with select(), whose sets hold descriptors below
@@ -1691,26 +1765,26 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
      * a few minutes rather than never.
      */
     {
-        int keepalive = 1;
-        int idle_secs = 120;
-        int probe_gap = 30;
-        int probe_max = 4;
+        int missing = 0;
+        int failed = tcp_keepalive_set( desc, 120, 30, 4, &missing );
 
-        if (setsockopt(desc, SOL_SOCKET, SO_KEEPALIVE,
-                       (void *)&keepalive, sizeof(keepalive)) < 0)
-            perror("New_descriptor: SO_KEEPALIVE");
-#if defined(TCP_KEEPIDLE)
-        setsockopt(desc, IPPROTO_TCP, TCP_KEEPIDLE,
-                   (void *)&idle_secs, sizeof(idle_secs));
-#endif
-#if defined(TCP_KEEPINTVL)
-        setsockopt(desc, IPPROTO_TCP, TCP_KEEPINTVL,
-                   (void *)&probe_gap, sizeof(probe_gap));
-#endif
-#if defined(TCP_KEEPCNT)
-        setsockopt(desc, IPPROTO_TCP, TCP_KEEPCNT,
-                   (void *)&probe_max, sizeof(probe_max));
-#endif
+        /* Said once a boot: the same failure would otherwise come with
+           every connection. */
+        static bool keep_said;
+
+        if ( ( failed || missing ) && !keep_said )
+        {
+            char kbuf[MAX_STRING_LENGTH];
+
+            keep_said = true;
+            snprintf( kbuf, sizeof(kbuf),
+                      "New_descriptor: keepalive: failed 0x%x, not on this platform "
+                      "0x%x (idle option %s): idle sessions may be dropped by NAT.",
+                      (unsigned) failed, (unsigned) missing,
+                      tcp_keepalive_idle_option() != NULL
+                          ? tcp_keepalive_idle_option() : "none" );
+            log_string( kbuf );
+        }
     }
 
     /*

@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112connburst 2026-11-12 staff
+The game takes every waiting connection at once (a queue of SOMAXCONN,
+not three), so a rush of logins after a restart no longer loses anyone's
+greeting. TCP keepalive now sets its two-minute idle time on macOS hosts
+too, and the balance report counts several kills in one second as that
+many kills, not one.
+
 @ 20261112warnlog 2026-11-12 staff
 Lifting a warning -- WARN again, or PARDON <player> WARNED -- now lifts
 only the LOG the warning turned on. A LOG set with LOG <name>, before or

@@ -3553,7 +3553,10 @@ log says what a player typed; the journal says what happened, in columns
   1/members of a kill and say so. `webadmin/balance.py` joins them into
   per-kill records and per-mobile figures (kill-time quantiles, xp per
   combat minute offered and accepted, xp an hour with the time between
-  kills, coin and gear generated against looted, hit point cost from the
+  kills -- `cycles()`: the seconds since a character's previous second
+  with a kill, shared among that second's kills, since the journal stamps
+  whole seconds and two kills a second read as one before (review,
+  2026-11-12) -- coin and gear generated against looted, hit point cost from the
   mobile's ledger, flee and death rate, hit rate, spell share, farming),
   sliced by player level band, solo/group, class and gear tier, and
   compared within five-level bands: generous, poor, risky, rich, farmed
@@ -5205,6 +5208,19 @@ crafted) and GRANTPSI named a wizinvis participant to every builder until
 (`tests/test_notice_visibility.py`).
 
 ## Connections: Lookups Off The Loop, And The Guard
+
+**Every waiting connection is taken in one pass** (review, 2026-11-12).
+`init_socket` listens with `SOMAXCONN` on a non-blocking socket, and
+`init_descriptors` accepts until `accept` says EAGAIN, at most
+`ACCEPT_BURST_MAX` (64) a pass; `init_descriptor` still runs the guard and
+the lockout on each one. The backlog was 3 and the loop took one a pass:
+four clients connecting before any logged in -- every live module does
+that -- lost a greeting (macOS reset the connection; Linux left it
+silent). `tests/test_connection_burst.py` opens 24 at once. **Keepalive**
+is `src/tcpkeep.c` (no `merc.h`): TCP_KEEPIDLE, or TCP_KEEPALIVE on macOS,
+which has no TCP_KEEPIDLE; every setsockopt is checked and a failure
+logged once a boot (`tests/test_tcpkeep.py` reads the options back from a
+real socket and builds the macOS branch on any host).
 
 Found by the play journal's stall rows (2026-11-06): every slow pulse
 lined up with an outside connection, because `new_descriptor` called

@@ -188,6 +188,44 @@ class BalanceModelTests(unittest.TestCase):
         self.assertLess(m["p25_seconds"], m["median_seconds"])
         self.assertLess(m["median_seconds"], m["p75_seconds"])
 
+    def test_kills_in_one_second_share_it(self) -> None:
+        """Review, 2026-11-12: the journal stamps whole seconds, and two
+        players each making two 100-xp kills a second read as 360,000 xp
+        an hour, not about 720,000: every reward in a second looked up the
+        one 1-second gap."""
+        f = Feed()
+        for second in range(6):
+            for who in (1, 2):
+                for _ in range(2):
+                    f.kill(1000 + second, 3500, 30, [who], 300, 100)
+        m = balance.compare(balance.summarize(f.text()))["mobs"][3500]
+        self.assertEqual(m["kills"], 24)
+        self.assertEqual(m["cycle_seconds"], 0.5, "two kills a second is half a second each")
+        self.assertAlmostEqual(m["xp_per_hour"], 100 * 3600 / 0.5)
+
+        # The seconds are counted once, never once per kill: each player's
+        # five seconds after the first are spread over that second's two.
+        cyc = balance.cycles(balance.records(f.text(), 0.0))
+        self.assertEqual(len(cyc), 10)
+        self.assertAlmostEqual(sum(v * 2 for v in cyc.values()), 2 * 5.0)
+
+    def test_single_kills_and_a_long_break(self) -> None:
+        f = Feed()
+        # One kill every 20 s, then a break past CYCLE_CAP_S, then two kills
+        # in one second ten seconds after a single one.
+        t = 1000
+        for _ in range(5):
+            f.kill(t, 3600, 30, [1], 4000, 100)
+            t += 20
+        t += balance.CYCLE_CAP_S + 1000          # a break: no cycle across it
+        f.kill(t, 3600, 30, [1], 4000, 100)
+        f.kill(t + 10, 3600, 30, [1], 4000, 100)
+        f.kill(t + 10, 3600, 30, [1], 4000, 100)
+        cyc = balance.cycles(balance.records(f.text(), 0.0))
+        times = sorted(cyc.items())
+        self.assertEqual([v for _k, v in times], [20.0, 20.0, 20.0, 20.0, 5.0],
+                         "four 20 s gaps, nothing across the break, 10 s shared by two")
+
     def test_sparse_data_falls_back(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "progress.tsv"

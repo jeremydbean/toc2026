@@ -243,21 +243,30 @@ def kill_records(rec: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 def cycles(rec: Dict[str, Any]) -> Dict[Tuple[str, int], float]:
-    """Seconds since the same character's previous paid kill, per reward:
-    the kill and the time between kills -- resting, walking, finding the
-    next one. Gaps past CYCLE_CAP_S are a break, not downtime, and none."""
-    by_who: Dict[str, List[int]] = defaultdict(list)
+    """Seconds a paid kill took the same character, per reward: the kill
+    and the time between kills -- resting, walking, finding the next one.
+    Gaps past CYCLE_CAP_S are a break, not downtime, and none.
+
+    The journal stamps whole seconds, so several kills by one character
+    can share an epoch (review, 2026-11-12: two 100-xp kills a second read
+    as one a second, half the rate). The time since the character's
+    previous second with a kill is shared among that second's kills --
+    each gets (b - a) / n -- so the seconds are counted once whatever the
+    number of kills, and every reward in the second looks up the same
+    share by (who, epoch). Kills in a character's first second, or the
+    first after a break, have no previous kill to measure from: none."""
+    by_who: Dict[str, Counter] = defaultdict(Counter)
     for rw in list(rec["rewards"].values()):
         for r in rw:
-            by_who[r["who"]].append(r["epoch"])
+            by_who[r["who"]][r["epoch"]] += 1
     for r in rec["legacy"]:
-        by_who[r["who"]].append(r["epoch"])
+        by_who[r["who"]][r["epoch"]] += 1
     out: Dict[Tuple[str, int], float] = {}
-    for who, times in by_who.items():
-        times.sort()
-        for a, b in zip(times, times[1:]):
-            if 0 < b - a <= CYCLE_CAP_S:
-                out[(who, b)] = float(b - a)
+    for who, counts in by_who.items():
+        seconds = sorted(counts)
+        for a, b in zip(seconds, seconds[1:]):
+            if b - a <= CYCLE_CAP_S:
+                out[(who, b)] = float(b - a) / counts[b]
     return out
 
 

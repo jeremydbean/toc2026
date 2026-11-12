@@ -96,6 +96,7 @@ set(SRC_FILES
     src/netaddr.c
     src/guardstore.c
     src/lockwindow.c
+    src/tcpkeep.c
     src/loginlock.c
     src/password.c
 )

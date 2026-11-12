@@ -438,8 +438,14 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
     &&   e->blocked_until <= current_time )
         guard_block( e, "too many connections in a minute" );
 
+    /* A connection whose client has already hung up is not waiting at a
+       prompt: it is closed on the next pass. All the connections waiting
+       on the port are accepted in one pass now (comm.c, init_descriptors),
+       so one that came and went -- a health probe, a port scan -- can still
+       be in the list beside the client that came after it, and counting it
+       turned that client away as "very busy" (review, 2026-11-12). */
     for ( od = descriptor_list; od != NULL; od = od->next )
-        if ( od != d && od->connected != CON_PLAYING )
+        if ( od != d && od->connected != CON_PLAYING && !descriptor_hung_up( od ) )
         {
             everyone++;
             if ( od->ip == d->ip )
