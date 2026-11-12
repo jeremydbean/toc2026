@@ -699,12 +699,14 @@ void gain_exp( CHAR_DATA *ch, int gain )
 
 	  if(ch->level == 50)
 	  {
-	    send_to_char("Congratulations on level 50! Unfortunately, you can't reach level 51\n\r",ch);
-	    send_to_char("in the normal manner. You must complete a Quest to advance to the next.\n\r",ch);
-	    send_to_char("level.  To do this, find the Quest Master and tell him you wish to prove\n\r",ch);
-	    send_to_char("your worthiness to become a Hero of the Realms.  The quest will not be an\n\r",ch);
-	    send_to_char("easy one, and will take you to many foreign places. Also, you WILL NOT\n\r",ch);
-	    send_to_char("be able to COMMUNICATE with anyone until your Quest has been finished.\n\r",ch);
+	    /* Level 50 is where experience stops, not where levels do: the
+	       hero level is bought, and heroes level again to 54 plus their
+	       remorts. This said a hero quest that silenced the player was
+	       the way on; that quest is long gone (HELP HEROQUEST). */
+	    send_to_char("Congratulations on level 50!  Experience takes you no further: buy\n\r",ch);
+	    send_to_char("level 51, the hero level, from the questmaster with quest points\n\r",ch);
+	    send_to_char("(AQUEST BUY HERO).  As a hero, experience levels you again, up to\n\r",ch);
+	    send_to_char("level 54 plus your remorts.  (Type 'HELP HERO' for more.)\n\r",ch);
 	  }
 
     if(ch->level == 59 && ch->pcdata->num_remorts >= 5)

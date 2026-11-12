@@ -1654,8 +1654,8 @@ Saves your character and leaves the game.  You cannot quit in a fight, and
 your things, purse, bank and stash are all kept.  Where you quit matters
 for rest: see RESTED.
 
-QUIT has to be typed in full.  Shorter words run other commands: Q and QU
-are QUESTION, QUI is QUIET.
+QUIT has to be typed in full.  QUI only reminds you to spell it out, and
+shorter words run other commands: Q and QU are QUESTION.
 
 See also: SAVE, RESTED, DELETE
 ~
@@ -4061,7 +4061,8 @@ Syntax: quiet
 Turns quiet mode on or off.  While quiet you hear only says and emotes in
 your room: no channels, shouts or tells, and you cannot use the channels
 or send tells yourself.  Your channel settings are as you left them when
-it ends.
+it ends.  QUIE is the shortest you can type it: QUI is kept for QUIT's
+reminder.
 
 See also: DEAF, CHANNELS, IGNORE
 ~
@@ -4325,11 +4326,14 @@ level or ordinary TRUST (at most 71) reaches.
   reboot     the game exits and comes back by itself: startup.sh and
              the host's service start it again after five seconds.
   shutdown   writes area/shutdown.txt, which tells startup.sh and the
-             host's service not to start it again.
+             host's service not to start it again.  If the file cannot
+             be written the game stays up and says so, since it would
+             only come back as after a REBOOT.
 
 Unless you are wizinvis, everyone sees "Reboot by <name>." or "Shutdown
-by <name>.".  Warning: a wizinvis SHUTDOWN writes no shutdown.txt, so the
-game comes back as after a REBOOT.  Warn players with ANNOUNCE first.
+by <name>.".  Wizinvis, a REBOOT says nothing and a SHUTDOWN says "The
+game is shutting down."; either does just the same.  Warn players with
+ANNOUNCE first.
 
 See also: ANNOUNCE, WIZLOCK, CREATOR, TRUST
 ~
@@ -5787,12 +5791,14 @@ See also: TRANSFER, DRAG
 ~
 
 69 GKICK~
-Syntax: gkick <character> <direction>
+Syntax: gkick <player> <direction>
 
-Kicks somebody standing in your room out through an exit: they RUN that
+Kicks a player standing in your room out through an exit: they RUN that
 way, as far as RUN would carry them.  Trust 69.
 
-  - The target must be in your room, and not you; a mobile will do.
+  - The target must be a player in your room, and not you.  Nobody
+    whose trust is at least yours (implementors may kick each other),
+    and never a prisoner out of the cell: release them with JAIL first.
   - The direction is any start of one (n, sou, ne) and your room must
     have an exit there.
   - The room sees "Zog kicks Bob full on his butt!" and Bob go screaming
@@ -5928,8 +5934,9 @@ See also: MEMORY, SOCKETS
 62 WARN~
 Syntax: warn <player>
 
-Toggles the WARNED flag on a player.  Staff only (trust 62).  Anything
-after the name is ignored: there is no message to send.
+Toggles the WARNED flag on a player.  Staff only (trust 62).  Players
+only: a mobile is refused.  Anything after the name is ignored: there is
+no message to send.
 
   - Setting it tells the player "You have been warned about breaking the
     rules." and everyone on INFO "<name> has been warned for breaking the

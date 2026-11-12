@@ -135,19 +135,42 @@ See also: MOTD, JOBS, COMMANDMENTS
 ~
 
 60 JOBS~
-Each immortal rank has a help page describing its duties: MARTYR,
-'IMMORTAL RANK', AVATAR, ANGEL, ARCHANGEL, DEMIGODS and DEITY.  You can
-read the page for your own rank and those below it.  The duties work top
-down: you are also responsible for the jobs of every rank below yours.
-They are general guidance, not a complete list.
+What staff do, by trust.  Trust is what every staff command checks: your
+level, or the trust you were given when that is higher.  WIZHELP lists
+what yours allows, and each command has its own page.  You also do the
+jobs of every trust below yours.
 
-Every immortal should also read COMMANDMENTS and QUESTS.
+  60  Help players and listen to them.  Answer from the help, pass on
+      what they report, and never play for them.  IMMTALK talks to
+      staff, WIZINFO turns the game's staff notices on or off, and
+      WIZINVIS, GOTO and HOLYLIGHT let you go where you are needed.
+  62  Keep order and read what players file: REPORTS reads BUG, TYPO and
+      IDEA, WARN and JAIL deal with trouble, QFLAG covers somebody on a
+      staff quest, MWHERE, OWHERE and PWHERE find things.
+  63  Look closer: STAT, SOCKETS, LASTLOG, AT, TRANSFER, FORCE and
+      NOCHANNELS.
+  64  Run quests and speak to everyone: ANNOUNCE, ECHO, PEACE, FREEZE,
+      SWITCH.
+  65  Investigate and restore: FINGER, ACTIVITY, PRESTORE (a player's
+      saved snapshots), RESETPWD, FIXES, QUESTDIAG, GEARDIAG, LOAD, REPOP,
+      MUTE.
+  66  Correct characters: SET, RESTORE, ADVANCE, RENAME, PARDON, PURGE,
+      HERMIE (places the free healer) and EMPOWER.
+  67  FSAVE and NONOTE.
+  68  Read the world as built: ALIST, ASTAT, MSHOW, OSHOW, RSHOW, RESETS.
+  69  Build: BUILD, the guided builder, and ANEW, MCREATE, OCREATE,
+      PLACE, RSAVE and ASAVE.
+  70  Implementors: TRUST (up to 70), GRANTPSI, DNS.
+  71  Given only by the creator, and outranks every implementor.
+  72  The creator: SHUTDOWN, REBOOT, LOG, SNOOP, BAN, ALLOW, WIZLOCK,
+      NEWLOCK, DENY, UNDENY and CREATOR.
 
-These duty pages were written by the original implementors and have not
-been revised for the game's newer features; see the note at the top of
-COMMANDMENTS.
+Rank protects: a command aimed at another member of staff refuses one
+whose trust is at least yours (implementors may act on each other).
+Read COMMANDMENTS and QUESTS.  The rank pages (MARTYR, AVATAR, DEITY and
+the rest) say what each rank was for when the game began.
 
-See also: IMOTD, COMMANDMENTS, QUESTS
+See also: IMOTD, COMMANDMENTS, QUESTS, WIZHELP
 ~
 
 60 QUESTS~
@@ -158,14 +181,17 @@ The following guidelines apply to all quests run by immortals on ToC:
     Do not load an item more than 4 levels below its normal level
     (e.g. level 5 ogre gauntlets are prohibited).
   - Larger prizes require greater group effort or problem-solving.
-  - Announce the quest's start so all players may attend: ANNOUNCE
-    (avatar rank and above) reaches everybody online.
+  - Announce the quest's start so all players may attend.  ANNOUNCE
+    reaches everybody online, from trust 64; below that, ask on IMMTALK
+    for somebody who can.
   - Have at least 10 interested players before beginning a quest.
-  - Do not use reboot as a reset mechanism mid-quest.
-  - Leave a note summarising the quest and prizes awarded.
+  - A quest never needs a restart: REPOP (trust 65) resets the area you
+    stand in.  QFLAG keeps a quester's experience and things safe while
+    the quest lasts.
+  - Leave a note to immortal summarising the quest and prizes awarded.
 
-These are staff-run quests.  The questmaster's automatic quests are
-AQUEST.
+These are staff-run quests.  The questmaster's automatic quests and the
+day's three dailies are AQUEST.
 
 See also: COMMANDMENTS, JOBS, AQUEST
 ~
@@ -224,9 +250,9 @@ opinions or supposed bugs may seem off the wall.  You can also run minor
 quests, though you must have at least 10 people wishing to participate.
 Read the help file QUESTS for more information.
 
-(Written before WALKTO, the published routes, the Gear Finder and HELP
-pages that now tell every player where things are and what they do.  See
-the note in COMMANDMENTS.)
+(Written before WALKTO, the published routes, the Gear Finder and the
+help that now tell every player where things are and what they do.  JOBS
+says what staff of each trust do now.)
 
 See also: MARTYR, COMMANDMENTS, JOBS
 ~
@@ -302,47 +328,49 @@ See also: DEMIGODS, COMMANDMENTS, JOBS
                          ** The Rules of ToC **
                          **********************
 
-Note: these rules, the rank duties (JOBS) and QUESTS were written by the
-original implementors.  Since then the game itself has begun to show
-every player gear stats (LORE, IDENTIFY, COMPARE, the website's Gear
-Finder), routes (WALKTO, the client's Routes) and free buffs (Hermie).
-The rules below have not been revised for those features.  Where a rule
-and a feature seem to conflict, ask an implementor; do not assume either
-way.
+These bind every member of staff, whatever their trust.  The players'
+own rules are RULES.
 
-1)  Do not kill mortals, do not kill mortals, do not kill mortals.
-    This includes transferring/summoning them to aggressive mobs.
+1)  Never kill a mortal, and never send one -- by TRANSFER, FORCE or a
+    spell -- to anything that will.
 
-2)  Do not cheat for ANY mortal in ANY way, especially your own.
-    Unless of course you LIKE deletion.  Yes this includes tanking,
-    healing/restoring, casting protection spells (armor, sanct),
-    and softening up or altering mobs.  It also includes giving out
-    object stats or mob stats.
+2)  Never play for a mortal, your own least of all: no tanking, healing,
+    restoring, buffing or softening mobiles for them, and no gear, coin,
+    experience or quest points they did not earn.  The game helps every
+    player the same way -- Hermie's free buffs, WALKTO and the published
+    routes, LORE and COMPARE, the website's Gear Finder -- so point
+    players to those instead of doing it for them.
 
-3)  Do not transfer or summon mobs to mortals or mortals to mobs.
-    Let them explore.
+3)  Keep your mortals and your staff character apart.  Trust given to a
+    mortal is never used for that mortal, and a quarrel your mortal has
+    is never settled by your staff character.
 
-4)  DO NOT kill the shopkeepers for any reason at ALL.
+4)  Do not undo another member of staff's sanction -- a jail sentence,
+    a freeze, NOCHANNELS, a warning -- or overrule them in front of
+    players.  Take it to IMMTALK or a note to immortal.
 
-5)  DO NOT use reboot.  Plain and simple.
+5)  Punish with the least that stops the harm: a word first, then WARN,
+    NOCHANNELS or a timed JAIL, then FREEZE.  Say why in a note to
+    immortal.  BAN and DENY are the creator's.
 
-6)  Do not give out free equipment.  Items for quests are ok, if the item
-    fits the difficulty of the quest listed in QUESTS.
+6)  Restarts are not yours: SHUTDOWN and REBOOT are the creator's.  A
+    deploy warns the players and saves everyone before it restarts.
 
-7)  Do not undermine the authority of a higher level god.  If you
-    see that someone has been frozen or nochannelled do not restore
-    their privileges.  They are being punished for a reason.
+7)  Put back what a bug or a crash took from the player's own saved
+    snapshots (PRESTORE: the whole character, gear, stash or a corpse)
+    rather than loading replacements, and never edit a player's file.
 
-8)  Try not to overrule each other.
+8)  What you see stays private.  Your commands are written to the game's
+    logs like everyone's; a player's address, password and private words
+    are never repeated.
 
-9)  Trusted mortals:  Do not use your god powers to help your mortal
-    character.  If you do, your trust will be taken away.
+9)  Do not kill shopkeepers, the questmaster or anything else players
+    rely on, and leave the black market dealer and the treasure goblin
+    to the players who find them.
 
-10) If your mortal character has a disagreement with a player, do not use
-    your immortal to get even, in any way shape or form.  Keep your mortals
-    and your immortal disassociated from one another.
+10) Report a bug you find with BUG, and do not use it.
 
-See also: JOBS, RULES, QUESTS
+See also: JOBS, QUESTS, RULES, IMOTD
 ~
 
 -1 HERBIE ANGEL~

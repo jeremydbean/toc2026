@@ -211,7 +211,7 @@ class CorrectionsHold(unittest.TestCase):
         self.says("empower spell", "+20 hitroll", trust=70)
 
     def test_guards_and_disabled_commands(self) -> None:
-        self.says("qui", "QUI is QUIET")
+        self.says("qui", "QUI only reminds you to spell it out")
         self.says("sla", "If you want to SLAY, spell it out.", trust=66)
         self.says("wizinfo", "does not send anything", trust=60)
         self.says("ignore", "IGNORE CLEAR empties it", "staff cannot be ignored")

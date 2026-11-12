@@ -103,6 +103,11 @@ wizlock
 - `reboot` exits the C server without the shutdown marker. `startup.sh` and the
   Docker entrypoint treat that as a restart request.
 - `shutdown` writes `area/shutdown.txt`. The wrappers see it and exit cleanly.
+  It does so wizinvis or not (until 2026-11-12 a wizinvis `shutdown` wrote no
+  marker and was a restart); wizinvis only changes the line players see to
+  "The game is shutting down." If the marker cannot be written the game stays
+  up and says so, since it would only come back as after a `reboot`.
+- Both are creator-only (trust 72).
 - `newlock` controls new-character creation.
 - `wizlock` restricts login according to the command's live help.
 

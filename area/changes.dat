@@ -5,6 +5,23 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112quireminder 2026-11-12
+QUI no longer turns quiet mode on: it reminds you that QUIT has to be
+typed in full, as it was always meant to. QUIE is the shortest QUIET.
+
+@ 20261112herolevel50 2026-11-12
+Reaching level 50 now says how to go on: buy level 51, the hero level,
+from the questmaster with AQUEST BUY HERO. It used to describe a hero
+quest that no longer exists.
+
+@ 20261112staffcmds 2026-11-12 staff
+SHUTDOWN typed while wizinvis shuts the game down instead of restarting
+it, and if area/shutdown.txt cannot be written the game stays up and says
+so. GKICK is players only and refuses anyone whose trust is at least
+yours, and a prisoner; WARN refuses mobiles. HELP JOBS lists what each
+trust can do now, HELP COMMANDMENTS is rewritten for the game as it is,
+and HELP QUESTS says ANNOUNCE needs trust 64.
+
 @ 20261112longlists 2026-11-12
 Long lists are shown whole. STASH used to stop near the 185th piece with
 "... and more than will fit on one screen", HISTORY 100 lost its newest

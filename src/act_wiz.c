@@ -518,6 +518,15 @@ void do_warn( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* A mobile's act bits are ACT_ flags: PLR_LOG on one is
+       ACT_MOUNTABLE, and the warning was announced on INFO for a
+       mobile nobody can warn. */
+    if ( IS_NPC(victim) )
+    {
+	send_to_char( "Only players can be warned.\n\r", ch );
+	return;
+    }
+
     if ( ( rank_protects( ch, victim ) )
 	&& ( victim != ch ))
     {
@@ -2640,6 +2649,20 @@ void do_owhere( CHAR_DATA *ch, char *argument )
     return;
 }
 
+static CHAR_DATA *staff_actor( CHAR_DATA *ch );
+
+/*
+ * Whether the staff member behind a command is wizinvis: a switched
+ * immortal's own character, never the body. A mobile's act bits are
+ * ACT_ flags, so reading PLR_WIZINVIS off the body read some other flag.
+ */
+static bool staff_wizinvis( CHAR_DATA *ch )
+{
+    CHAR_DATA *actor = staff_actor( ch );
+
+    return !IS_NPC(actor) && IS_SET(actor->act, PLR_WIZINVIS);
+}
+
 void do_reboot( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
@@ -2647,9 +2670,9 @@ void do_reboot( CHAR_DATA *ch, char *argument )
     extern bool merc_down;
     DESCRIPTOR_DATA *d,*d_next;
 
-    if (!IS_NPC(ch) && !IS_SET(ch->act,PLR_WIZINVIS))
+    if ( !staff_wizinvis( ch ) )
     {
-   snprintf( buf, sizeof(buf), "Reboot by %s.", ch->name );
+	snprintf( buf, sizeof(buf), "Reboot by %s.", staff_actor( ch )->name );
 	do_echo( ch, buf );
     }
 /*    do_force ( ch, "all save");*/
@@ -2672,17 +2695,38 @@ void do_shutdown( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     extern bool merc_down;
     DESCRIPTOR_DATA *d,*d_next;
+    CHAR_DATA *actor = staff_actor( ch );
+    FILE *fp;
+    bool marked;
 
-    if (!IS_SET(ch->act,PLR_WIZINVIS))
+    /*
+     * The marker is the whole difference between SHUTDOWN and REBOOT:
+     * startup.sh, the container's entrypoint and the host's service all
+     * start the game again unless area/shutdown.txt is there. It used to
+     * be written only when the caller was visible (and through
+     * append_file, which writes nothing for a mobile, so a switched
+     * immortal missed it too), so a wizinvis creator's SHUTDOWN was a
+     * REBOOT. Wizinvis now changes only what players are told. A marker
+     * that cannot be written would make this a reboot after all, so the
+     * game stays up and says why.
+     */
+    snprintf( buf, sizeof(buf), "Shutdown by %s.", actor->name );
+    reserve_release();
+    fp = fopen( SHUTDOWN_FILE, "a" );
+    marked = fp != NULL && fprintf( fp, "%s\n", buf ) > 0;
+    if ( fp != NULL && fclose( fp ) != 0 )
+        marked = false;
+    fpReserve = fopen( NULL_FILE, "r" );
+    if ( !marked )
     {
-        snprintf( buf, sizeof(buf), "Shutdown by %s.", ch->name );
-        append_file( ch, SHUTDOWN_FILE, buf );
+        log_string( "SHUTDOWN: could not write shutdown.txt; the game stays up." );
+        send_to_char( "Could not write area/shutdown.txt, so the game would only "
+                      "restart. Nothing was done.\n\r", ch );
+        return;
     }
-    else
-    {
+
+    if ( staff_wizinvis( ch ) )
         snprintf( buf, sizeof(buf), "The game is shutting down." );
-    }
-    toc_strlcat( buf, "\n\r", sizeof(buf) );
     do_echo( ch, buf );
 /*    do_force ( ch, "all save");*/
     do_forcesave(ch,"");
@@ -8974,6 +9018,22 @@ void do_gkick( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Players only, as the usage says: a kicked mobile is a shopkeeper
+       out of its shop or a guardian out of its chamber. */
+    if ( IS_NPC(vch) )
+    {
+	send_to_char( "You can only kick players.\n\r", ch );
+	return;
+    }
+
+    /* Rank, before anything is said or moved (review, 2026-11-12: a
+       lower staff member could kick a higher one out of the room). */
+    if ( rank_protects( ch, vch ) )
+    {
+	send_to_char( "You failed.\n\r", ch );
+	return;
+    }
+
     if ( ch->in_room == NULL )
     {
 	send_to_char( "You aren't in a room.\n\r", ch );
@@ -8992,6 +9052,10 @@ void do_gkick( CHAR_DATA *ch, char *argument )
 	send_to_char( "That's not a valid direction!\n\r", ch );
 	return;
     }
+
+    /* A prisoner leaves the cell only by JAIL RELEASE, as with TRANSFER. */
+    if ( jail_refuses_staff_move( ch, vch, pexit->u1.to_room ) )
+	return;
 
     act( "You kick $N full on $S butt!", ch, NULL, vch, TO_CHAR );
     act( "$n kicks you full on your butt!", ch, NULL, vch, TO_VICT );
