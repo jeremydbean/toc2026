@@ -290121,3 +290121,15 @@ Thu Nov 12 01:37:22 2026 :: Log Killuminati [1]: changes
 Thu Nov 12 01:43:01 2026 :: Treasure goblin: vanished from room 7539 (Walking the Silvery Strand, astral.are) (too long in one area).
 Thu Nov 12 01:43:36 2026 :: Log Killuminati [1]: /
 Thu Nov 12 01:43:55 2026 :: Log Killuminati [1]: changes all
+Thu Nov 12 01:50:54 2026 :: Log Killuminati [1]: set char self hp 100000
+Thu Nov 12 01:50:54 2026 :: Snapshot of Killuminati taken before staffset: Killuminati.20261112_015054.staffset (PRESTORE Killuminati to see it).
+Thu Nov 12 01:51:00 2026 :: Log Killuminati [1]: set char self mana 100000
+Thu Nov 12 01:51:00 2026 :: Snapshot of Killuminati taken before staffset: Killuminati.20261112_015100.staffset (PRESTORE Killuminati to see it).
+Thu Nov 12 01:51:04 2026 :: Log Killuminati [1]: set char self end 100000
+Thu Nov 12 01:51:04 2026 :: Snapshot of Killuminati taken before staffset: Killuminati.20261112_015104.staffset (PRESTORE Killuminati to see it).
+Thu Nov 12 01:51:05 2026 :: Log Killuminati [1]: restore self
+Thu Nov 12 01:51:29 2026 :: Log Killuminati [1]: lo
+Thu Nov 12 01:53:06 2026 :: Treasure goblin: vanished from room 20593 (The Dead Moors, emerald.are) (too long in one area).
+Thu Nov 12 01:53:51 2026 :: Sock.sinaddr:  20.65.203.10
+Thu Nov 12 01:53:51 2026 :: Sock.sinaddr:  20.65.203.10
+Thu Nov 12 01:54:29 2026 :: Log Killuminati [1]: tita
