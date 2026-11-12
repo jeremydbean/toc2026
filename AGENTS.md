@@ -2068,10 +2068,27 @@ skips a body whose player is switched (`body_is_switched_from`);
 `do_stop_hunting` clears a pointer the hunter list does not hold (a
 player's TRACK); a bottled mobile and its bottle are unlinked both ways,
 and a bottle leaving with nowhere to open takes its mobile with it
-(`char_from_obj`); corpse tracks match by pointer alone; the relic globals
+(`captive_dispose`); corpse tracks match by pointer alone; the relic globals
 are cleared when their object goes. A new field or global that points at a
 character or object is cleared in `extract_char`/`extract_obj` or a
 `*_forget` hook, or looked up by id.
+
+**A bottle destroyed is not a bottle opened** (review, 2026-11-12). An
+object saved with `Trap <vnum>` makes its creature again whenever the file
+is read, so letting it out when the object left memory -- the name
+prompt's copy freed (a hang-up, a wrong password, the reload after a right
+one), an offline load, a quit -- put one more in the world each time,
+without the password. `extract_obj` and `extract_obj_player` call
+`captive_dispose`, which unlinks the captive and extracts it, never
+placing it in a room. Only an act of play opening the bottle calls
+`char_from_obj`: OPEN, the genie's lever (manipulation case 2) and a
+bottle that shatters with age (`obj_update`, before `obj_from_obj`). It
+lets the creature out where the bottle lies or its holder, at any depth of
+containers, really stands (`captive_carrier_placed`: in the room's
+people, not a file copy's `in_room`), and disposes of it anywhere else. A
+second `Trap` key replaces the first captive. A new way of letting one out
+calls `char_from_obj` before destroying the bottle
+(`tests/test_bottled_captives.py`).
 
 ## Pools Are Not 16-Bit
 
@@ -2082,6 +2099,12 @@ pool plus its bonuses never overflows. SET HP/MANA/END/MOVE/MAXMOVE,
 TITANIC's five-fold boost and the black dragon's size stop there, not at
 the 30,000 the old 16-bit fields forced. Never cast a pool or a modifier
 through `(sh_int)` or `clamp_sh_int` again (`tests/test_pool_cap.py`).
+**So is WIMPY** (review, 2026-11-12: with 100,000 hit points WIMPY 40000
+said 40000 and stored -25536, which never flees). `ch->wimpy` is an
+`int`; WIMPY (a fifth of the maximum by default, at most half), SET CHAR
+WIMPY (0 to `POOL_MAX`), the remort cut and `Wimp` in the file carry it
+whole, and a wrapped negative an old file holds reads as 0
+(`tests/test_wide_wimpy.py`).
 **Arithmetic on a pool is wide too** (review, 2026-11-11: 100 * hit
 overflowed at 21 million, so LOOK called a character at 30 million of 30
 million dying, and divine protection's max * 3 / 4 wrapped negative at a
@@ -5287,7 +5310,7 @@ into a later pass reads freed memory, so any left in live play must be
   through the dead block's own link; an object whose holder or container
   is dead goes to the floor of Limbo (room 2) rather than being
   extracted, since it may be a player's -- the log line names its vnum;
-  a character in a dead bottle is let out as `char_from_obj` would (a
+  a character in a dead bottle goes as `captive_dispose` sends it (a
   mobile extracted, a player to the altar). A descriptor whose character
   is dead goes back to its `original` if that lives, else is marked
   `write_failed` and the output loop closes it. resurrect_corpse and

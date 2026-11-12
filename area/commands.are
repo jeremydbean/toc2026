@@ -4793,6 +4793,7 @@ been using combat commands like cast, trip and bash, and has not been
 tripped or bash by an enemy.
 
 WIMPY with no argument sets your wimpy value to 20% of your maximum hit points.
+It may be anything from 0 to half your maximum hit points.
 
 Some monsters are wimpy.
 

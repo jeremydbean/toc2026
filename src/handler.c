@@ -1647,47 +1647,110 @@ void char_to_obj( CHAR_DATA *ch, OBJ_DATA *obj)
 }
 
 /*
- * Ok, let the poor guy out.
+ * Is a character really standing in the room it names? One loaded from a
+ * player file -- the copy a name prompt holds, an offline load -- has
+ * in_room set and was never put there (see char_from_room).
+ */
+static bool captive_carrier_placed( CHAR_DATA *ch )
+{
+    CHAR_DATA *rch;
+
+    if ( ch == NULL || ch->in_room == NULL )
+        return false;
+    for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
+        if ( rch == ch )
+            return true;
+    return false;
+}
+
+/*
+ * The room a bottle opened in play lets its creature out into: where the
+ * bottle lies, or where whoever holds it -- at any depth of containers --
+ * really stands. NULL for a stash, a copy loaded from a file, or anything
+ * else not in the world.
+ */
+static ROOM_INDEX_DATA *captive_release_room( OBJ_DATA *obj )
+{
+    int depth;
+
+    for ( depth = 0; obj != NULL && depth < 64; depth++ )
+    {
+        if ( obj->in_room != NULL )
+            return obj->in_room;
+        if ( obj->carried_by != NULL )
+            return captive_carrier_placed( obj->carried_by )
+                 ? obj->carried_by->in_room : NULL;
+        obj = obj->in_obj;
+    }
+    return NULL;
+}
+
+/*
+ * The bottle is being destroyed, not opened (review, 2026-11-12): a
+ * character leaving the game, the copy a name prompt or an offline load
+ * made and frees, a snapshot read aside, a bottle junked or purged. What
+ * it holds goes with it and is never set loose: the file still says
+ * "Trap", and letting it out made one more creature in the world every
+ * time the name was typed at the prompt. Only char_from_obj, from an act
+ * of play that opens the bottle, releases one.
+ */
+void captive_dispose( OBJ_DATA *obj )
+{
+    CHAR_DATA *mob;
+
+    if ( obj == NULL || ( mob = obj->trapped ) == NULL )
+        return;
+
+    obj->trapped = NULL;
+    if ( mob->in_object == obj )
+        mob->in_object = NULL;
+
+    if ( !IS_NPC(mob) )
+    {
+        /* Nothing bottles a player; if anything did, they are set down
+           at the altar, as extract_char does. */
+        if ( mob->in_room == NULL && get_room_index( ROOM_VNUM_ALTAR ) != NULL )
+            char_to_room( mob, get_room_index( ROOM_VNUM_ALTAR ) );
+        return;
+    }
+
+    if ( mob->in_room == NULL )
+    {
+        ROOM_INDEX_DATA *limbo = get_room_index( ROOM_VNUM_LIMBO );
+
+        if ( limbo == NULL )
+            return;
+        char_to_room( mob, limbo );
+    }
+    extract_char( mob, true );
+}
+
+/*
+ * Ok, let the poor guy out: a bottle opened in play (OPEN, a genie's
+ * lever, a bottle that shatters with age). Where it cannot be let out --
+ * a stash, a copy loaded from a file -- it goes with the bottle.
  */
 void char_from_obj( OBJ_DATA *obj )
 {
+    ROOM_INDEX_DATA *room;
+    CHAR_DATA *mob;
 
-   if ( obj->trapped == NULL )
-   {
-       bug( "Char_from_obj: trapped is NULL.", 0 );
-       return;
-   }
-
-   if(obj->in_room != NULL)
-     char_to_room(obj->trapped,obj->in_room);
-   else if(obj->carried_by && obj->carried_by->in_room)
-     char_to_room(obj->trapped,obj->carried_by->in_room);
-   else if(obj->in_obj && obj->in_obj->in_room)
-     char_to_room(obj->trapped,obj->in_obj->in_room);
-   else if(obj->in_obj && obj->in_obj->carried_by &&
-	   obj->in_obj->carried_by->in_room)
-     char_to_room(obj->trapped,obj->in_obj->carried_by->in_room);
-    else
+    if ( obj->trapped == NULL )
     {
-	/* Nowhere to let it out (a stash, an object leaving the game):
-	   it goes with the bottle, never left pointing at freed memory
-	   or set loose to be made again at the next login. */
-	CHAR_DATA *mob = obj->trapped;
-
-	obj->trapped = NULL;
-	mob->in_object = NULL;
-	if ( IS_NPC(mob) && get_room_index( ROOM_VNUM_LIMBO ) != NULL )
-	{
-	    char_to_room( mob, get_room_index( ROOM_VNUM_LIMBO ) );
-	    extract_char( mob, true );
-	}
-	return;
+        bug( "Char_from_obj: trapped is NULL.", 0 );
+        return;
     }
 
-    obj->trapped->in_object = NULL;
-    obj->trapped = NULL;
+    if ( ( room = captive_release_room( obj ) ) == NULL )
+    {
+        captive_dispose( obj );
+        return;
+    }
 
-    return;
+    mob = obj->trapped;
+    obj->trapped = NULL;
+    mob->in_object = NULL;
+    char_to_room( mob, room );
 }
 /*
  * Move a char out of a room.
@@ -2505,8 +2568,10 @@ void extract_obj_player( OBJ_DATA *obj )
     else if(vnum == 6)	i=3;
     else if(vnum == 7)	i=4;
 
+    /* Leaving with its holder: what it holds goes too, never loose --
+       the file still holds it (captive_dispose). */
     if(obj->trapped != NULL)
-      char_from_obj(obj);
+      captive_dispose(obj);
 
     if ( obj->in_room != NULL )
         obj_from_room( obj );
@@ -2603,8 +2668,11 @@ void extract_obj( OBJ_DATA *obj )
     else if(vnum == 6)	i=3;
     else if(vnum == 7)	i=4;
 
+    /* Destroyed, not opened: an act of play that lets a creature out
+       calls char_from_obj first (OPEN, the genie's lever, a bottle that
+       shatters with age). */
     if(obj->trapped != NULL)
-      char_from_obj(obj);
+      captive_dispose(obj);
 
     if ( obj->in_room != NULL )
 	obj_from_room( obj );

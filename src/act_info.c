@@ -4372,7 +4372,7 @@ void do_wimpy( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    ch->wimpy   = (int16_t)wimpy;
+    ch->wimpy   = wimpy;
     snprintf(buf, sizeof(buf), "Wimpy set to %d hit points.\n\r", wimpy );
     send_to_char( buf, ch );
     return;
@@ -5525,7 +5525,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    /* do_wimpy's own cap. A level 54's wimpy of 800 against a new life's
       200 hit points fled from every blow that landed. */
    if ( ch->wimpy > ch->max_hit / 2 )
-      ch->wimpy = (int16_t)(ch->max_hit / 5);
+      ch->wimpy = ch->max_hit / 5;
     ch->class    = (int16_t)requested_class;
     ch->race     = (int16_t)requested_race;
    if (ch->class == CLASS_MONK)

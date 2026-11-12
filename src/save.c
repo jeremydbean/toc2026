@@ -2418,19 +2418,7 @@ static void fread_obj_release_unfinished( void )
             rgObjNest[iSlot] = NULL;
 
     /* A trap's mobile, loaded into it by the Trap key. */
-    if ( obj->trapped != NULL )
-    {
-        CHAR_DATA *mob = obj->trapped;
-        ROOM_INDEX_DATA *limbo = get_room_index( ROOM_VNUM_LIMBO );
-
-        obj->trapped = NULL;
-        mob->in_object = NULL;
-        if ( limbo != NULL )
-        {
-            char_to_room( mob, limbo );
-            extract_char( mob, true );
-        }
-    }
+    captive_dispose( obj );
 
     /* Nothing was put inside it, nor was it given to anybody: only its
        own allocations and, for one create_object made, its place in the
@@ -4410,8 +4398,18 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'W':
-	    KEY( "Wimpy",	ch->wimpy,		(sh_int)(fread_number( fp )) );
-	    KEY( "Wimp",	ch->wimpy,		(sh_int)(fread_number( fp )) );
+	    /* int, like the pool it is a threshold of (review, 2026-11-12):
+	       the short wrapped 40000 to -25536, which never fled. One
+	       written wrapped reads as 0. Read once into a local: URANGE
+	       evaluates its argument more than once. */
+	    if ( !str_cmp( word, "Wimpy" ) || !str_cmp( word, "Wimp" ) )
+	    {
+		int value = fread_number( fp );
+
+		ch->wimpy = URANGE( 0, value, POOL_MAX );
+		fMatch = true;
+		break;
+	    }
 	    if ( !str_cmp( word, "Were_type" ) )
 	    {
 		int value;
@@ -5138,8 +5136,13 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    {
 	      int trap_vnum = fread_number(fp);
 	      MOB_INDEX_DATA *trap_mob = get_mob_index(trap_vnum);
+	      /* A second Trap replaces the first, which goes, never left
+	         out of the world still pointing at the bottle. */
 	      if (trap_mob != NULL)
+	      {
+	          captive_dispose(obj);
 	          char_to_obj(create_mobile(trap_mob), obj);
+	      }
 	      else
 	          bug("fread_obj: bad trap vnum %d", trap_vnum);
 	      fMatch = true;

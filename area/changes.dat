@@ -5,6 +5,19 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112wimpy 2026-11-12
+WIMPY now holds any number of hit points up to half your maximum. Past
+32,767 it used to be stored wrong -- WIMPY 40000 became a negative number --
+and you never fled at all. Plain WIMPY sets a fifth of your maximum, however
+large.
+
+@ 20261112bottles 2026-11-12 staff
+A creature shut in a bottle is let out only by opening the bottle (or the
+bottle shattering with age). A bottle that is destroyed -- junked, purged,
+or a character's things leaving the game at a quit or a refused login --
+takes its creature with it. Before, each of those set the creature loose
+while the saved bottle kept it, so one more appeared every time.
+
 @ 20261111vnums 2026-11-11 staff
 Vnums are no longer held under 32,767: rooms, mobiles and objects may be
 numbered up to 1,000,000. ANEW, DIG and GOTO take the whole range, MSHOW,
