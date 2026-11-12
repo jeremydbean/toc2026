@@ -428,9 +428,10 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
    if (IS_NPC(ch))
      return;
 
+   /* Not the words of an empty area: this is somebody without the skill. */
    if( (chance = ch->pcdata->learned[gsn_danger_sense]) < 1)
    {
-     send_to_char("You sense no danger in the area.\n\r",ch);
+     send_to_char("You have no idea how to sense danger.\n\r",ch);
      return;
    }
 
@@ -445,7 +446,18 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
     count = 0;
     count2 = 0;
 
-    if ( skill_roll_landed( ch, number_percent() < chance ) )
+    /* A missed roll says it missed. It fell through to "You sense no
+       danger in the area." -- the answer for an area with nobody in it --
+       so a miss told the player, falsely, that they were alone (review,
+       2026-11-12). */
+    if ( !skill_roll_landed( ch, number_percent() < chance ) )
+    {
+        send_to_char( "You reach out with your senses, but cannot tell "
+                      "what lies about you.\n\r", ch );
+        WAIT_STATE( ch, skill_table[gsn_backstab].beats );
+        return;
+    }
+
     {
         for ( d = descriptor_list; d != NULL; d = d->next )
         {

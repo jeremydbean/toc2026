@@ -474,20 +474,25 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
         send_to_char(" ============================================================== \n\r",ch);
     }
 
-    if(ch->level == 6 && ch->pcdata->guild == GUILD_NONE)
+    /* The class's own guild for anyone who reached level 6 without
+       joining one. The player did not ask for it, so it costs nothing
+       (review, 2026-11-12): it took 50 gold -- fifty times the guild
+       clerk's fee for a join somebody chose -- and a purse short of 50
+       gold was emptied outright, every denomination, by a direct write no
+       journal saw. It now gives what the clerk's join gives, at once,
+       rather than waiting for the next login's repair. */
+    if(ch->level == 6 && ch->pcdata->guild == GUILD_NONE
+    && ch->class >= 0 && ch->class < MAX_CLASS)
     {
-      if(!has_enough_gold(ch, 50))
-      { ch->new_gold = 0;
-        ch->new_copper = 0;
-        ch->new_silver = 0;
-        ch->new_platinum = 0;
-      }
-      else
-	add_money(ch,-50);
-      ch->pcdata->guild = ch->class;
-      send_to_char("You have been ambushed by a group of men. They take some gold\n\r", ch);
-      send_to_char("from you and inform you that you are now a member of their guild.\n\r",ch);
+      const char *guild_group;
 
+      ch->pcdata->guild = (sh_int)(ch->class);
+      send_to_char("A group of men falls in beside you on the road and informs\n\r", ch);
+      send_to_char("you that you are now a member of their guild -- the guild of\n\r", ch);
+      send_to_char("your own class.  They ask nothing for it.\n\r", ch);
+      grant_heros_grip( ch );
+      if ( ( guild_group = guild_group_name( ch->pcdata->guild ) ) != NULL )
+	group_add( ch, guild_group, false );
     }
 
     if (guild < 0 || guild >= MAX_CLASS)    /* GUILD_NONE, GUILD_ANY */

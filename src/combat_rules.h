@@ -76,6 +76,18 @@ int swing_chance_percent( int chance );
 int expected_swings_x100( int second_skill, int third_skill,
                           int dual_skill, int dual_weapon_skill );
 
+/* Stunning blow's damage, number_range( *low, *high ) (review,
+   2026-11-12). A landed blow is level to STUN_LANDED_TOP times level; a
+   missed one is a glancing blow, half the level to the level -- never more
+   than the weakest landed blow. A miss used to roll half the level to three
+   times it against a landed blow's level to twice it, so the miss averaged
+   more and could reach half again the best hit. The landed blow's top was
+   raised to the miss's old top rather than the miss alone cut, so nothing
+   the skill could roll before is gone from the blow that lands. A level
+   below 1 is 1. */
+#define STUN_LANDED_TOP 3
+void stunning_blow_range( int level, int landed, int *low, int *high );
+
 /* Pool arithmetic in a wide type (review, 2026-11-11). Hit points, mana and
    endurance reach POOL_MAX (a billion) now, so 100 * hit overflowed an int
    at 21 million: a character at 30 million of 30 million read as dying.

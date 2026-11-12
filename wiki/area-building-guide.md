@@ -1489,12 +1489,13 @@ for anyone already down or at 20 hit points or fewer) kills them.
 Mobiles and immortals are never touched. WALKTO never walks into one.
 
 **ROOM_NEWBIES_ONLY** is Mud School's flag. `move_char`, WALKTO, the
-travel spells, MANIPULATE and random arrivals all close it to mortals
-above level 10 ("Mud School is for newbies only"). Note that
-`can_see_room` in `src/handler.c` still hides such a room from mortals
-above level 5, and `move_char` asks that first, so in practice a mortal
-of level 6 to 10 cannot walk in either -- the two limits disagree in the
-code. Immortals are never stopped.
+travel spells, MANIPULATE, random arrivals and `can_see_room` all close
+it to mortals above level 10 (`LEVEL_NEWBIE`), through the one test,
+`newbie_room_refuses` in `src/handler.c`, and walking up to one says
+"Mud School is for newbies only". Until 2026-11-12 `can_see_room` said
+above level 5 while the rest said above 10, so a mortal of level 6 to 10
+was routed to the school and refused at its door. Staff (by trust) are
+never stopped; mobiles above the line are kept out as well.
 
 When `Z` is present, place a ROOM_FLAGS2 token between ROOM_FLAGS and the sector type:
 

@@ -252,3 +252,22 @@ int blow_reflection( int dam )
 {
     return (int) ( dam * 0.6 );
 }
+
+/* Stunning blow: see combat_rules.h. */
+void stunning_blow_range( int level, int landed, int *low, int *high )
+{
+    if ( level < 1 )
+        level = 1;
+    if ( level > INT_MAX / STUN_LANDED_TOP )
+        level = INT_MAX / STUN_LANDED_TOP;
+    if ( landed )
+    {
+        *low = level;
+        *high = level * STUN_LANDED_TOP;
+    }
+    else
+    {
+        *low = level / 2;
+        *high = level;
+    }
+}

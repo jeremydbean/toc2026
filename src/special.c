@@ -2117,8 +2117,13 @@ bool spec_guild_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
     if (arg[0] == '\0')
     {
-	snprintf(buf, sizeof(buf), "%s tells you 'It will cost you %d to join a guild.'",
-	    mob->name, cost);
+	char price[64];
+
+	/* A price, never a bare number (it read "It will cost you 1"), and
+	   a line ending: the tell ran into the prompt. */
+	format_price( (long) cost * COPPER_PER_GOLD, price, sizeof(price) );
+	snprintf(buf, sizeof(buf), "%s tells you 'It will cost you %s to join a guild.'\n\r",
+	    mob->short_descr, price);
 	send_to_char(buf, ch);
 	return true;
     }
@@ -2156,7 +2161,7 @@ bool spec_guild_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
         {
             group_add(ch, guild_group, false);
             snprintf(buf, sizeof(buf),
-                "You will recieve free introductory training in the %s.",
+                "You will receive free introductory training in the %s.\n\r",
                 guild_group);
             send_to_char(buf, ch);
         }

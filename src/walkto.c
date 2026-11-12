@@ -249,8 +249,7 @@ static bool walk_room_ok( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
         return false;
     if ( !can_see_room( ch, room ) || !can_enter_private_room( ch, room ) )
         return false;
-    if ( !IS_IMMORTAL(ch) && ch->level > 10
-    &&   IS_SET(room->room_flags, ROOM_NEWBIES_ONLY) )
+    if ( newbie_room_refuses( ch, room ) )
         return false;
     if ( room != target && walk_is_ejector( room ) )
         return false;

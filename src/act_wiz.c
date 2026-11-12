@@ -10093,16 +10093,11 @@ void do_seal( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if      ( !str_prefix( arg, "north"     ) ) door = DIR_NORTH;
-    else if ( !str_prefix( arg, "east"      ) ) door = DIR_EAST;
-    else if ( !str_prefix( arg, "south"     ) ) door = DIR_SOUTH;
-    else if ( !str_prefix( arg, "west"      ) ) door = DIR_WEST;
-    else if ( !str_prefix( arg, "up"        ) ) door = DIR_UP;
-    else if ( !str_prefix( arg, "down"      ) ) door = DIR_DOWN;
-    else if ( !str_prefix( arg, "northeast" ) ) door = DIR_NORTHEAST;
-    else if ( !str_prefix( arg, "northwest" ) ) door = DIR_NORTHWEST;
-    else if ( !str_prefix( arg, "southeast" ) ) door = DIR_SOUTHEAST;
-    else if ( !str_prefix( arg, "southwest" ) ) door = DIR_SOUTHWEST;
+    /* Any start of a direction's name, and ne/nw/se/sw, as movement and
+       LISTEN read them (door_direction_word). The prefix chain here never
+       took "ne", "nw", "se" or "sw" -- the syntax line's own words -- since
+       none of them begins "northeast" or the rest (review, 2026-11-12). */
+    door = door_direction_word( arg );
 
     if ( door < 0 )
     {

@@ -3598,8 +3598,8 @@ none.
            (monks may be dwarf or human; necros elf or human)
 
 Class and guild may be shortened to two letters or more.  A mage, cleric,
-thief or warrior who picks none is put in their class's guild at level 6
-for 50 gold.
+thief or warrior who picks none is put in their class's guild, free, at
+level 6.
 
 See also: REMORT, CLASS, GUILDS, GAINLIST
 ~
@@ -5542,8 +5542,8 @@ A character below level 68 cannot pass it, even with pass door; level
 exit is sealed: seal the way back from the other room too.
 
 Directions: north, east, south, west, up, down, northeast, northwest,
-southeast, southwest, or a start of one (n, sou, northe).  The short
-forms NE, NW, SE and SW are not accepted here.
+southeast, southwest, a start of one (n, sou, northe), or the short
+forms NE, NW, SE and SW, as you would walk them.
 
 See also: LIGHTS, GOTO
 ~

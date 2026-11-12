@@ -4470,6 +4470,12 @@ def _gear_reachable_rooms():
     return rooms
 
 
+# merc.h's LEVEL_NEWBIE: a ROOM_NEWBIES_ONLY room turns away anyone past it
+# (newbie_room_refuses in handler.c). 5 here and in can_see_room, 10 in the
+# rest of the game, until 2026-11-12.
+LEVEL_NEWBIE = 10
+
+
 def _gear_room_open(room, level: int) -> bool:
     """A room a player of this level may stand in: not staff-only, and not
     Mud School past newbie level."""
@@ -4481,7 +4487,7 @@ def _gear_room_open(room, level: int) -> bool:
         return False
     flags = decode_flags(room.room_flags, ROOM_FLAGS)
     return not ("imp_only" in flags or "gods_only" in flags
-                or ("newbies_only" in flags and level > 5))
+                or ("newbies_only" in flags and level > LEVEL_NEWBIE))
 
 
 def _gear_obtainable_key(key_vnum: int, level: int, depth: int = 0) -> bool:
@@ -4551,7 +4557,7 @@ def _gear_sources(obj, item_type: int, level: int):
     its weapon dice or armour from that level. Rot-death gear crumbles
     after its carrier dies and inventory-flagged gear on anyone but a
     shopkeeper goes with the corpse. Staff rooms are not the world, and
-    Mud School turns away anyone past level 5."""
+    Mud School turns away anyone past LEVEL_NEWBIE (10)."""
     extra = decode_flags(obj.extra_flags, ITEM_FLAGS)
     if "rot-death" in extra:
         return

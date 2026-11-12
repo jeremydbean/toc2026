@@ -3426,11 +3426,29 @@ bool can_see_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
     && ch->level < 25)
 	return false;
 
-    if (IS_SET(pRoomIndex->room_flags,ROOM_NEWBIES_ONLY)
-    &&  ch->level > 5 && !IS_IMMORTAL(ch))
+    if ( newbie_room_refuses( ch, pRoomIndex ) )
 	return false;
 
     return true;
+}
+
+/*
+ * Whether a ROOM_NEWBIES_ONLY room turns this character away: anyone past
+ * LEVEL_NEWBIE but staff (by trust). The one test (review, 2026-11-12):
+ * can_see_room said past level 5 while walking, ENTER, the manipulation
+ * objects, the travel spells, random arrivals and WALKTO said past level
+ * 10, so a level 6 to 10 was routed to Mud School and refused at its door,
+ * and the "Mud School is for newbies only" refusal could never be reached.
+ * Mobiles are asked too, as can_see_room always asked them, which keeps
+ * the world's wanderers out of the school; callers that leave mobiles
+ * free say so themselves.
+ */
+bool newbie_room_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
+{
+    return ch != NULL && room != NULL
+        && IS_SET(room->room_flags, ROOM_NEWBIES_ONLY)
+        && ch->level > LEVEL_NEWBIE
+        && !IS_TRUSTED(ch, LEVEL_IMMORTAL);
 }
 
 

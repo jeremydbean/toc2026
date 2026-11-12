@@ -5,6 +5,39 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112monkflurries 2026-11-12
+BLINDING FISTS and FISTS OF FURY take their six seconds whether or not a
+blow lands. A flurry that missed every time used to cost no time at all.
+A blinding fist that misses now tells you so.
+
+@ 20261112stunglance 2026-11-12
+STUNNING BLOW's miss is a glancing blow, half your level to your level,
+and says so; it used to hit harder than a stun. A blow that stuns now
+deals your level to three times your level, up from twice.
+
+@ 20261112calmwave 2026-11-12
+CALM calms everybody in the room it can reach. Anybody undead, immune to
+magic, berserk, frenzied or already calm used to stop the wave for
+everyone after them. A calm that fails says the fighting was too fierce.
+
+@ 20261112skillmisses 2026-11-12
+LISTEN and DANGER SENSE say when you missed the roll, in words of their
+own. A miss used to read like an empty room or an empty area. SEARCH
+below 2% tells you why it will not work, and costs no lag.
+
+@ 20261112mudschool10 2026-11-12
+Mud School is open to characters up to level 10, everywhere: walking in
+stopped at level 5 while WALKTO and the rest said 10. Past 10, walking up
+to it says it is for newbies only.
+
+@ 20261112guildfree 2026-11-12
+Reaching level 6 without a guild puts you in your class's guild for
+free, with its starting group at once. It used to take 50 gold, or every
+coin you had if you had less.
+
+@ 20261112sealdiag 2026-11-12 staff
+SEAL takes NE, NW, SE and SW, as walking does.
+
 @ 20261112corpseloot 2026-11-12
 Your corpse is safe while you are away. Logged out or link-dead, nobody
 but you and the staff may take from it or pick it up, whatever NOLOOT

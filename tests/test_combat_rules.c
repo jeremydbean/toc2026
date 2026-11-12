@@ -400,5 +400,36 @@ int main( void )
         report( "blow_order_matters", ok && below > 0, ok ? "the old order never overstated" : detail );
     }
 
+    /* Stunning blow (review, 2026-11-12): a miss never out-damages a hit.
+       The old miss rolled level/2 to level*3 against a landed blow's level
+       to level*2, so it averaged more. */
+    {
+        int level, ok = 1, old_bad = 0;
+
+        for ( level = -3; level <= 2000 && ok; level++ )
+        {
+            int hit_low, hit_high, miss_low, miss_high;
+            int at = level < 1 ? 1 : level;
+
+            stunning_blow_range( level, 1, &hit_low, &hit_high );
+            stunning_blow_range( level, 0, &miss_low, &miss_high );
+            if ( miss_low < 0 || miss_low > miss_high || hit_low > hit_high
+            ||   miss_high > hit_low            /* the best miss, the worst hit */
+            ||   hit_low != at
+            ||   hit_high < at * 3 )            /* nothing the old rolls reached is lost */
+            {
+                snprintf( detail, sizeof( detail ),
+                          "level %d: landed %d-%d, missed %d-%d",
+                          level, hit_low, hit_high, miss_low, miss_high );
+                ok = 0;
+            }
+            /* The old means, doubled: the miss's above the hit's. */
+            if ( at / 2 + at * 3 > at + at * 2 )
+                old_bad++;
+        }
+        report( "stunning_blow_miss_never_out_damages", ok && old_bad > 0,
+                ok ? "the old ranges were never wrong" : detail );
+    }
+
     return failures;
 }

@@ -5090,15 +5090,30 @@ void do_listen( CHAR_DATA *ch, char *argument )
     &&   !IS_SET(pexit->exit_info, EX_SECRET)
     &&   IS_SET(pexit->exit_info, EX_CLOSED) )
     {
-      if(to_room->people != NULL)
-      {
-	if( skill_roll_landed( ch, number_percent () < chance ) )
-	  send_to_char("You hear someone, or something, moving around on the other side.\n\r",ch);
-	else
-	  send_to_char("You don't hear anything out of the ordinary.\n\r",ch);
-      }
+      /* The roll comes first, whoever is beyond the door, and a miss says
+	 it was one. It used to be rolled only with somebody there, and a
+	 miss read "You don't hear anything out of the ordinary." -- the
+	 words of an empty room -- so a listener at a low skill was told,
+	 falsely, that nothing waited behind the door (review, 2026-11-12).
+	 Rolled every time, a miss gives nothing away either. */
+      CHAR_DATA *rch;
+      bool heard = false;
+
+      /* Wizinvis staff leave no trace, not even a footstep. */
+      for ( rch = to_room->people; rch != NULL; rch = rch->next_in_room )
+	if ( !wizinvis_hides( rch, ch ) )
+	{
+	  heard = true;
+	  break;
+	}
+
+      if( !skill_roll_landed( ch, number_percent () < chance ) )
+	send_to_char("You press your ear to the door, but cannot make out "
+		     "anything over the thump of your own heart.\n\r",ch);
+      else if( heard )
+	send_to_char("You hear someone, or something, moving around on the other side.\n\r",ch);
       else
-	send_to_char("You don't hear anything out of the ordinary.\n\r",ch);
+	send_to_char("You listen carefully, and hear nothing on the other side.\n\r",ch);
     }
     else
       send_to_char("There's nothing there to listen to.\n\r",ch);

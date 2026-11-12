@@ -141,9 +141,10 @@ See also: ANIMATE PARTS, EMBALM, LIFE-UNDEATH
 Syntax: cast calm
 
 Tries to stop every fight in the room.  The more fighters, and the higher
-their levels, the harder it is.  Undead and magic-immune mobiles, and
-anybody berserk, frenzied or already calm, can spoil it.  Fighters may
-attack again at once.
+their levels, the harder it is; a failure says the fighting was too
+fierce.  Undead and magic-immune mobiles, and anybody berserk, frenzied
+or already calm, are passed over, and everybody else is calmed.
+Fighters may attack again at once.
 
 Minimum level depends on your primary class and is:
 Mage:22  Cleric:20  Thief:28  Warrior:30  Monk:N/A  Necromancer:N/A
