@@ -3112,26 +3112,33 @@ static bool parse_coin_amount(char *argument, long *amount, int *coin_type)
  */
 void format_price(long copper_amount, char *buf, size_t buf_size)
 {
+    /* Each denomination in a piece of its own and the whole in a buffer
+       that holds all four at any value (four of "%ld" and two bytes is
+       under 96), so no piece is ever cut short in the middle of a number;
+       only then copied to the caller's (format-truncation review,
+       2026-11-12: a price cut at the caller's size could read 12p 3). */
     long platinum, gold, silver, copper;
-    size_t len = 0;
+    long amounts[4];
+    static const char marks[4] = { 'p', 'g', 's', 'c' };
+    char text[96], piece[24];
+    int i;
 
+    if (buf == NULL || buf_size == 0)
+        return;
     copper_to_breakdown(copper_amount, &platinum, &gold, &silver, &copper);
-
-    buf[0] = '\0';
-
-    if (platinum > 0)
-        len += (size_t) snprintf(buf + len, buf_size - len, "%ldp ", platinum);
-    if (gold > 0 && len < buf_size)
-        len += (size_t) snprintf(buf + len, buf_size - len, "%ldg ", gold);
-    if (silver > 0 && len < buf_size)
-        len += (size_t) snprintf(buf + len, buf_size - len, "%lds ", silver);
-    if (copper > 0 && len < buf_size)
-        len += (size_t) snprintf(buf + len, buf_size - len, "%ldc ", copper);
-
-    if (buf[0] == '\0')
-        toc_strlcpy(buf, "free", buf_size);
-    else if (len > 0 && len <= buf_size && buf[len - 1] == ' ')
-        buf[len - 1] = '\0';
+    amounts[0] = platinum;
+    amounts[1] = gold;
+    amounts[2] = silver;
+    amounts[3] = copper;
+    text[0] = '\0';
+    for (i = 0; i < 4; i++)
+        if (amounts[i] > 0)
+        {
+            snprintf(piece, sizeof(piece), "%s%ld%c", text[0] != '\0' ? " " : "",
+                     amounts[i], marks[i]);
+            toc_strlcat(text, piece, sizeof(text));
+        }
+    toc_strlcpy(buf, text[0] != '\0' ? text : "free", buf_size);
 }
 
 

@@ -147,6 +147,7 @@ set(TOC_CONVERSION_WARNINGS
     -Wold-style-definition
     $<$<C_COMPILER_ID:GNU>:-Warith-conversion>
     $<$<C_COMPILER_ID:GNU>:-Wformat-overflow=2>
+    $<$<C_COMPILER_ID:GNU>:-Wformat-truncation=2>
 )
 set(TOC_CONVERSION_ERRORS
     -Werror=shadow

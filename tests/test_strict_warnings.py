@@ -38,6 +38,13 @@ QUALITY_FLAGS = ["-Wcast-qual", "-Wmissing-prototypes", "-Wunused-parameter",
                  "-Wstrict-prototypes", "-Wold-style-definition"]
 # gcc's alone, like -Warith-conversion: clang reads no level.
 FORMAT_FLAG = "-Wformat-overflow=2"
+# And an snprintf that may cut its text short, its result checked or not
+# (format-truncation review, 2026-11-12). Level 1 reports only a likely cut
+# whose result is ignored; gcc 15 reported eight there that gcc 13 and 14
+# do not (directory-entry paths: d_name is a trailing array it does not
+# bound). Level 2 is clean under gcc 13 and 14 at -O0, -O2 and the
+# sanitizers; gcc 15 was not available to check it.
+TRUNCATION_FLAG = "-Wformat-truncation=2"
 ARITH_FLAG = "-Warith-conversion"
 STRICT_FLAGS = [
     "-Wall", "-Wextra", "-Wpedantic", "-Wno-missing-field-initializers",
@@ -66,7 +73,7 @@ def arith_supported() -> bool:
     return proc.returncode == 0
 
 
-ARITH = [ARITH_FLAG, FORMAT_FLAG] if arith_supported() else []
+ARITH = [ARITH_FLAG, FORMAT_FLAG, TRUNCATION_FLAG] if arith_supported() else []
 
 
 # Every way the builds compile: Release is -O2, the sanitizer build -O0
@@ -144,6 +151,8 @@ class BuildFlagTests(unittest.TestCase):
         self.assertRegex(text, r"(?m)^ARITH_CONVERSION_WARNING\s*:=.*-Warith-conversion")
         self.assertIn("$(FORMAT_OVERFLOW_WARNING)", quality.group(1))
         self.assertRegex(text, r"(?m)^FORMAT_OVERFLOW_WARNING\s*:=.*-Wformat-overflow=2")
+        self.assertIn("$(FORMAT_TRUNCATION_WARNING)", quality.group(1))
+        self.assertRegex(text, r"(?m)^FORMAT_TRUNCATION_WARNING\s*:=.*-Wformat-truncation=2")
         warnflags = re.search(r"^WARNFLAGS\?=(.*)$", text, re.M)
         self.assertIsNotNone(warnflags)
         self.assertIn("$(CONVERSION_WARNINGS)", warnflags.group(1),
@@ -176,6 +185,9 @@ class BuildFlagTests(unittest.TestCase):
         # -Wall's -Wformat-truncation, an error too (2026-11-12).
         self.assertIn("-Werror=format-truncation", cmake)
         self.assertIn("-Werror=format-truncation", validate)
+        # At level 2, gcc only (clang reads no level).
+        self.assertIn("$<$<C_COMPILER_ID:GNU>:" + TRUNCATION_FLAG + ">", cmake)
+        self.assertIn(TRUNCATION_FLAG, validate)
 
 
 class WideCharacterFieldTests(unittest.TestCase):

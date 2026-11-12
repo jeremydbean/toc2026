@@ -939,6 +939,32 @@ ran the pass that finds it. Eight `snprintf` sites had been cutting text
 short silently; each was given room or a stated precision, and BUILD's
 place answer is refused when PLACE could not take it whole.
 
+**`-Wformat-truncation=2` joined the line the same day** (gcc only, like
+`-Wformat-overflow=2`: Makefile `FORMAT_TRUNCATION_WARNING`, CMake's GNU
+list, `validate.sh`'s gcc branch, the test). Level 1 reports only a likely
+cut whose result is ignored; level 2 any cut the compiler cannot rule out,
+checked or not. gcc 15 reported eight level-1 sites gcc 13 and 14 do not
+(a directory entry's `d_name` is the trailing array of `struct dirent`, which
+it does not bound) and eighteen at level 2. Clean under gcc 13 and 14 at
+-O0, -O2 and the sanitizers; gcc 15 was not available to recheck. The
+rules it leaves:
+
+- **Text read back later is refused, never cut.** A path from a directory
+  walk goes through `toc_path_join` (string_safe.c: true only when all of
+  it fits, no snprintf of `d_name`); a ledger record that would lose its
+  check and newline is refused (`recovery_record`); a telemetry row is
+  refused whole (`telemetry_append`); test an snprintf's result with
+  `snprintf_fits( n, size )` (merc.h).
+- **A double is never `%.1f` into a short buffer**: that is up to 312
+  bytes. `format_tenths( buf, size, value, limit )` writes one decimal
+  place through integers, held to a stated limit (at most
+  `FORMAT_TENTHS_MAX`); COMPARE's percentages and CONSIDER's progress row
+  use it.
+- **A pad is a precision on a run of spaces** (`"%.*s", pad, "      "`)
+  bounded by the box, never `%*s` of an unbounded int.
+- **A loop that appends lines uses a bounded DString** (ALIAS and RESETS
+  were fixed buffers).
+
 ## Player-Facing Bug Review
 
 For each changed command or gameplay path, check:
@@ -3449,6 +3475,25 @@ log says what a player typed; the journal says what happened, in columns
   last `other`; a new `gain_exp` caller names its source. Trimmed past `PLAY_JOURNAL_MAX` lines to the newest
   `PLAY_JOURNAL_KEEP`, like the channel journal; the whole of `log/`
   reaches git with the state sync and CI ignores it.
+- **play.tsv, progress.tsv and hyrule.tsv share one writer**
+  (`telemetry_append`, `TELEMETRY_LOG` in merc.h; review, 2026-11-12: a
+  row that never reached the disk was counted as written and nobody was
+  told). A row is formatted whole and written with one `write()`; a short
+  write is cut back off the file (`ftruncate`), so the next row never
+  lands on a torn one. Only rows that reached the file are counted
+  (`rows`); one that did not is `lost`, and toc.log hears of it at most
+  once a minute (`TOC_TELEMETRY_REPORT_SECS` for tests): "Telemetry:
+  log/progress.tsv: N rows not written since the last report (why); M rows
+  counted in the file", and "writing again" once it recovers -- never the
+  row. The trim is one sequential pass in 64K blocks, counting from the
+  start only when the count is unknown (the first row after a boot),
+  refuses a file that is not regular (`/dev/full` reads zeros for ever),
+  never replaces a file holding fewer rows than counted, logs "trimmed
+  from N to M rows in X ms", and after a failure waits a minute instead of
+  rescanning the file every row. A new telemetry file uses the writer
+  (`tests/test_telemetry_writes.py`). Rows a trim cuts are in git: the
+  state sync commits `log/` every five minutes and a trim comes every
+  `max - keep` rows, so no aggregate file is kept.
 - **`interpret()` is now a wrapper** round `interpret_body()`: it times
   the command, snapshots `d->outtop`, and after the body finds the
   descriptor again (QUIT frees it) before reading the answer from

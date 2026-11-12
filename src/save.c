@@ -898,7 +898,10 @@ bool player_snapshot_milestone_result( CHAR_DATA *ch, const char *tag,
 {
     SNAPSHOT_RESULT local;
     SNAPSHOT_RESULT *res = out != NULL ? out : &local;
-    char detail[MAX_INPUT_LENGTH + 64];
+    /* The ledger's detail: the snapshot's name, which the uid index reads
+       back (snap_uid_note), its check and size -- room for all of a name
+       res->name can hold, so the record is never cut. */
+    char detail[sizeof(res->name) + 80];
     int status;
 
     memset( res, 0, sizeof(*res) );
@@ -2359,10 +2362,12 @@ void player_archive_dormant( void )
     {
         long seen;
 
+        /* player_archive_name_ok holds the name to twelve letters; a path
+           that would not fit is never moved. */
         if ( !player_archive_name_ok( ent->d_name )
-        ||   !isupper( (unsigned char) ent->d_name[0] ) )
+        ||   !isupper( (unsigned char) ent->d_name[0] )
+        ||   !toc_path_join( path, sizeof(path), PLAYER_DIR, "", ent->d_name ) )
             continue;
-        snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, ent->d_name );
         if ( stat( path, &st ) != 0 || !S_ISREG( st.st_mode ) )
             continue;
         if ( ( seen = player_file_last_seen( path ) ) <= 0 || seen >= cutoff )
@@ -2372,8 +2377,8 @@ void player_archive_dormant( void )
             log_string( "Archive: player/archive/ could not be made; nobody archived." );
             break;
         }
-        snprintf( dest, sizeof(dest), "%s%s", PLAYER_ARCHIVE_DIR, ent->d_name );
-        if ( stat( dest, &st ) == 0 || rename( path, dest ) != 0 )
+        if ( !toc_path_join( dest, sizeof(dest), PLAYER_ARCHIVE_DIR, "", ent->d_name )
+        ||   stat( dest, &st ) == 0 || rename( path, dest ) != 0 )
         {
             failed++;
             continue;
@@ -2507,9 +2512,9 @@ static void serial_index_scan( const char *dirname )
     while ( ( ent = readdir( dir ) ) != NULL )
     {
         if ( !player_archive_name_ok( ent->d_name )
-        ||   !isupper( (unsigned char) ent->d_name[0] ) )
+        ||   !isupper( (unsigned char) ent->d_name[0] )
+        ||   !toc_path_join( path, sizeof(path), dirname, "", ent->d_name ) )
             continue;
-        snprintf( path, sizeof(path), "%s%s", dirname, ent->d_name );
         if ( stat( path, &st ) != 0 || !S_ISREG( st.st_mode ) )
             continue;
         serial_index_read( path, ent->d_name );

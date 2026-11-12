@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112aliaslist 2026-11-12
+ALIAS with nothing after it now lists every alias you have. A long list
+used to stop part way through.
+
 @ 20261112triforcelight 2026-11-12
 The Triforce is now the best light in the world as well as holy sight:
 +5 hitroll, +5 damroll, +50 hit points, +100 mana, -10 armour and -5 to

@@ -8,6 +8,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Telemetry rows are written whole or reported lost; the trims are
+  cheaper** (2026-11-12). `log/play.tsv`, `log/progress.tsv` and
+  `log/hyrule.tsv` go through one writer, `telemetry_append` in
+  `src/playlog.c`: a row is one `write()`, a short write is cut back off
+  the file, only rows that reached it are counted, and a loss is said in
+  toc.log at most once a minute with the count dropped and the count the
+  file stands at. A trim is one sequential pass in 64K blocks (counting
+  first only after a boot), refuses a non-regular file, and after a
+  failure waits a minute instead of rescanning the file for every row.
+  Measured on synthetic files: in game, 40,000 progress rows trimmed in 3-4
+  ms before and 2 ms after; standalone, see the commit message
+  (`tests/test_telemetry_writes.py`).
+- **`-Wformat-truncation=2` is clean and enforced** (gcc 13 and 14, -O0,
+  -O2, the sanitizers). Directory walks join paths with `toc_path_join`;
+  the recovery ledger refuses a record it cannot finish; CONSIDER's
+  progress row and COMPARE's percentages print through `format_tenths`;
+  the ALIAS list and RESETS are bounded DStrings (both were cut at 4K);
+  shop prices are built whole before they are copied
+  (`tests/test_format_bounds.py`).
 - **The exploration maps' four open items** (2026-11-12). Package 1.5.13
   corrects the fog against Mudlet's source: doors are keyed `up`/`down`
   (up and down doors were never drawn), and `deleteRoom` takes the doors

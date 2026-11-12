@@ -291,9 +291,11 @@ static int backfill_dir( const char *dirpath )
         HERO_RECORD rec;
         bool existed;
 
-        if ( !hero_name_ok( ent->d_name ) || !isupper( (unsigned char) ent->d_name[0] ) )
+        /* hero_name_ok holds the name to twelve letters; a path that would
+           not fit is skipped, never read under a cut-short name. */
+        if ( !hero_name_ok( ent->d_name ) || !isupper( (unsigned char) ent->d_name[0] )
+        ||   !toc_path_join( path, sizeof(path), dirpath, "", ent->d_name ) )
             continue;
-        snprintf( path, sizeof(path), "%s%s", dirpath, ent->d_name );
         if ( !hero_fields_from_file( path, &level, &trust, &remorts, &cls,
                                      race, sizeof(race) ) )
             continue;

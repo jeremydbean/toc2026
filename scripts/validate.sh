@@ -19,7 +19,9 @@ strict_warnings="-Wall -Wextra -Wshadow -Wsign-compare -Wconversion -Wsign-conve
 # -Warith-conversion is gcc's alone (clang warns that it does not know
 # it), so it is added only when the compiler make will use takes it.
 if ${CC:-gcc} -Werror -Warith-conversion -x c -fsyntax-only /dev/null >/dev/null 2>&1; then
-  strict_warnings="$strict_warnings -Warith-conversion"
+  # -Wformat-truncation=2 (an snprintf whose output may not fit, its
+  # result used or not) rides with it: gcc reads the level, clang none.
+  strict_warnings="$strict_warnings -Warith-conversion -Wformat-truncation=2"
   arith_error="-Werror=arith-conversion"
 else
   arith_error=""
