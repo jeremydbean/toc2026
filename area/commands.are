@@ -926,8 +926,19 @@ say so.  Vendors sell and buy nothing.  Dates follow the server's clock.
   Children's Week     Apr 30 - May 6
   Midsummer Fire      Jun 21 - Jul 5
 
-The decorated towns of Hallows End and Winter Veil appear when the world
-next restarts in their season.
+The decorated towns of Hallows End and Winter Veil change only when the
+world restarts, so it restarts itself for them, between 3 and 4 in the
+morning New York time: on the first day of each, and the day after each
+ends.  Everyone is warned five minutes and one minute before, and saved.
+No other holiday restarts anything.
+
+Staff: HOLIDAYS also shows where the date comes from, the fair, and which
+towns were loaded at boot -- and, when they disagree with the calendar,
+when the restart will be.  HOLIDAYS REFRESH puts the fair up now.
+HOLIDAYS RESTART shows the restart, HOLIDAYS RESTART CANCEL (implementor)
+calls it off and skips that night, and HOLIDAYS RESTART NOW (REBOOT's
+rank) starts the five-minute warning at once.  A game up less than an
+hour does not restart, so one restart a night is the most.
 
 See also: 'HOLIDAY TREATS', TIME, 'BLACK MARKET'
 ~

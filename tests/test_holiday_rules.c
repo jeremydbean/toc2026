@@ -2,11 +2,17 @@
  * tests/test_holiday_rules.c -- src/holiday_rules.c checked exactly:
  * the day arithmetic over every day from 1900 to 9999, date validation
  * and parsing, Easter and Thanksgiving against published dates, and the
- * firework cooldown table at its boundaries (review, 2026-11-02).
+ * firework cooldown table at its boundaries (review, 2026-11-02), and
+ * New York's wall clock across the daylight-saving changes (the automatic
+ * seasonal restart at 3am New York, 2026-11-12).
  * Prints "FAIL ..." for each failure and "ok" when there are none.
- * Built and run by tests/test_holiday_rules.py.
+ * Built and run by tests/test_holiday_rules.py. Given the argument "ny",
+ * it reads UTC epochs from stdin instead and prints each as New York's
+ * "epoch y m d hour minute offset", which the Python test holds to the
+ * system's America/New_York.
  */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "holiday_rules.h"
 
@@ -203,13 +209,150 @@ static void test_cooldown( void )
     CHECK( holiday_cooldown_ready( NULL, 0, &a, 0, gap ), "no table never refuses" );
 }
 
-int main( void )
+static void test_new_york( void )
 {
+    /* Published transitions and ordinary hours, from zoneinfo:
+       epoch, then New York's y m d hour minute and the offset. */
+    static const struct { long long utc; int y, m, d, h, mi; long off; } cases[] =
+    {
+        { 1772953199LL, 2026,  3,  8,  1, 59, -18000 },  /* a second before spring */
+        { 1772953200LL, 2026,  3,  8,  3,  0, -14400 },  /* 2:00 EST is 3:00 EDT */
+        { 1793512799LL, 2026, 11,  1,  1, 59, -14400 },  /* a second before autumn */
+        { 1793512800LL, 2026, 11,  1,  1,  0, -18000 },  /* 1:00 again, EST */
+        { 1805007600LL, 2027,  3, 14,  3,  0, -14400 },
+        { 1825567200LL, 2027, 11,  7,  1,  0, -18000 },
+        { 1762063199LL, 2025, 11,  2,  1, 59, -14400 },
+        { 1710053999LL, 2024,  3, 10,  1, 59, -18000 },
+        { 1857016800LL, 2028, 11,  5,  1,  0, -18000 },
+        { 1583650800LL, 2020,  3,  8,  3,  0, -14400 },
+        { 2140667999LL, 2037, 11,  1,  1, 59, -14400 },
+        { 1793606400LL, 2026, 11,  2,  3,  0, -18000 },  /* Hallows End over: 3am EST */
+        { 1792306800LL, 2026, 10, 18,  3,  0, -14400 },  /* Hallows End begins: 3am EDT */
+        { 1797409800LL, 2026, 12, 16,  3, 30, -18000 },  /* Winter Veil */
+        { 1798772400LL, 2026, 12, 31, 22,  0, -18000 },  /* UTC's new year, not New York's */
+        { 1798758000LL, 2026, 12, 31, 18,  0, -18000 },
+        { 0LL,          1969, 12, 31, 19,  0, -18000 },
+        { -1LL,         1969, 12, 31, 18, 59, -18000 },  /* floor division before 1970 */
+    };
+    size_t i;
+    int y;
+
+    for ( i = 0; i < sizeof(cases) / sizeof(cases[0]); i++ )
+    {
+        int yy = 0, mm = 0, dd = 0, hh = -1, mi = -1;
+        long off = holiday_new_york_offset( cases[i].utc );
+
+        holiday_new_york_time( cases[i].utc, &yy, &mm, &dd, &hh, &mi );
+        CHECK( off == cases[i].off && yy == cases[i].y && mm == cases[i].m
+               && dd == cases[i].d && hh == cases[i].h && mi == cases[i].mi,
+               "New York at %lld is %04d-%02d-%02d %02d:%02d (%ld), got "
+               "%04d-%02d-%02d %02d:%02d (%ld)", cases[i].utc, cases[i].y, cases[i].m,
+               cases[i].d, cases[i].h, cases[i].mi, cases[i].off, yy, mm, dd, hh, mi, off );
+    }
+    holiday_new_york_time( 1772953200LL, NULL, NULL, NULL, NULL, NULL );  /* NULLs are fine */
+
+    /* Every year from 2007 (the rule's first) to 2100: walking the year a
+       minute at a time, the offset changes exactly twice, from EST to EDT
+       at 07:00 UTC on a Sunday from March 8 to 14 and back at 06:00 UTC on
+       a Sunday from November 1 to 7; and every New York day has exactly
+       sixty minutes in the 3am hour -- the restart's window -- the two
+       changeover days included (2:00 to 3:00 is skipped in spring, 1:00
+       to 2:00 repeated in autumn, neither touches 3:00). */
+    for ( y = 2007; y <= 2100; y++ )
+    {
+        /* New York's January 1 to its December 31, midnight to midnight
+           (EST either end). */
+        long long from = (long long) holiday_days_from_civil( y, 1, 1 ) * 86400 + 5 * 3600;
+        long long to   = (long long) holiday_days_from_civil( y + 1, 1, 1 ) * 86400 + 5 * 3600;
+        long long t, spring = 0, autumn = 0;
+        long prev = holiday_new_york_offset( from );
+        int changes = 0, bad_window = 0, last_day = -1, window = 0, days = 0;
+
+        for ( t = from; t < to; t += 60 )
+        {
+            long off = holiday_new_york_offset( t );
+            int ny_y, ny_m, ny_d, hh, mi, key;
+
+            if ( off != prev )
+            {
+                changes++;
+                if ( off == -14400 )
+                    spring = t;
+                else
+                    autumn = t;
+                prev = off;
+            }
+            holiday_new_york_time( t, &ny_y, &ny_m, &ny_d, &hh, &mi );
+            key = ny_m * 100 + ny_d;
+            if ( key != last_day )
+            {
+                if ( last_day != -1 && window != 60 )
+                    bad_window++;
+                last_day = key;
+                window = 0;
+                days++;
+            }
+            if ( hh == 3 )
+                window++;
+        }
+        if ( window != 60 )
+            bad_window++;
+        CHECK( changes == 2, "%d: the offset changed %d times", y, changes );
+        CHECK( bad_window == 0, "%d: %d days without exactly sixty 3am minutes", y, bad_window );
+        CHECK( days == 365 + ( ( y % 4 == 0 && y % 100 != 0 ) || y % 400 == 0 ),
+               "%d: walked %d New York days", y, days );
+        if ( spring != 0 )
+        {
+            int sy, sm, sd;
+            long long day = spring / 86400;
+
+            holiday_civil_from_days( (long) day, &sy, &sm, &sd );
+            CHECK( spring % 86400 == 7 * 3600 && sm == 3 && sd >= 8 && sd <= 14
+                   && ( ( day % 7 ) + 7 + 4 ) % 7 == 0,
+                   "%d: spring forward at %lld is not 07:00 UTC on March's second Sunday",
+                   y, spring );
+        }
+        if ( autumn != 0 )
+        {
+            int ay, am, ad;
+            long long day = autumn / 86400;
+
+            holiday_civil_from_days( (long) day, &ay, &am, &ad );
+            CHECK( autumn % 86400 == 6 * 3600 && am == 11 && ad >= 1 && ad <= 7
+                   && ( ( day % 7 ) + 7 + 4 ) % 7 == 0,
+                   "%d: fall back at %lld is not 06:00 UTC on November's first Sunday",
+                   y, autumn );
+        }
+    }
+}
+
+/* "ny": UTC epochs on stdin, New York's clock out, for the Python test. */
+static int print_new_york( void )
+{
+    char line[64];
+
+    while ( fgets( line, sizeof(line), stdin ) != NULL )
+    {
+        long long utc = strtoll( line, NULL, 10 );
+        int y, m, d, h, mi;
+
+        holiday_new_york_time( utc, &y, &m, &d, &h, &mi );
+        printf( "%lld %d %d %d %d %d %ld\n", utc, y, m, d, h, mi,
+                holiday_new_york_offset( utc ) );
+    }
+    return 0;
+}
+
+int main( int argc, char **argv )
+{
+    if ( argc > 1 && !strcmp( argv[1], "ny" ) )
+        return print_new_york();
     test_round_trip();
     test_validation();
     test_parse();
     test_easter_and_thanksgiving();
     test_cooldown();
+    test_new_york();
     if ( failures == 0 )
         printf( "ok\n" );
     return failures != 0;

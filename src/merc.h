@@ -4112,6 +4112,8 @@ bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
 void    hyrule_note_striker ( CHAR_DATA *ch, CHAR_DATA *guardian ); /* hyrule.c */
 void    spellup_boot_check  ( void );       /* act_wiz.c: Hermie after a restart */
 void    spellup_boot_update ( void );
+void    game_reboot_close   ( void );       /* act_wiz.c: REBOOT's ending */
+void    game_reboot_unattended ( void );    /* every player saved, then that */
 bool    hyrule_holds_bound ( const OBJ_DATA *obj );       /* hyrule.c */
 int     hyrule_guardian_key ( int level );
 void    hyrule_guardian_slain ( CHAR_DATA *killer, CHAR_DATA *guardian );
@@ -4481,6 +4483,9 @@ const char *get_seasonal_area( const char *area_file );
 bool        verify_event_boss       ( void );
 void        event_boss_forget       ( CHAR_DATA *ch );
 const char *season_loaded_name      ( void );
+void        season_restart_update   ( void );   /* once a second */
+void        season_restart_staff_lines( CHAR_DATA *ch );
+void        season_restart_command  ( CHAR_DATA *ch, char *argument );
 void        spawn_event_boss        ( int forced_vnum );
 void        despawn_event_boss      ( void );
 void        record_event_boss_defeat( CHAR_DATA *boss );

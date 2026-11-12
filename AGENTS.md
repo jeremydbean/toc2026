@@ -1800,14 +1800,42 @@ decoration. Rules the code depends on:
   and a HOLIDAYS ON matrix of every holiday's boundaries.
 - **Staff HOLIDAYS** also says which seasonal areas boot loaded
   (`season_loaded_name()`; SUMMONEVENT STATUS too): they swap only at a
-  reboot, so they can disagree with the holiday on the calendar.
+  reboot, so they can disagree with the holiday on the calendar -- until
+  the automatic restart below.
+- **The game restarts itself for Hallows End and Winter Veil** (owner,
+  2026-11-12: "in the middle of the night the game will automatically
+  reboot itself to the new holiday. maybe 3-4am EST"). `season_restart_update`
+  (season.c, once a second from update_handler's memory pulse) holds
+  `season_loaded` to `get_current_season()`; when they differ, it is 3:00
+  to 3:59 in New York and the game has been up `SEASON_RESTART_MIN_UPTIME`
+  (an hour), it announces (`announce_to_world`) five minutes and one
+  minute ahead, saves every player and ends as REBOOT does --
+  `game_reboot_unattended()` then `game_reboot_close()` in act_wiz.c,
+  which `do_reboot` shares: no `shutdown.txt`, so `toc-game.service`
+  (`Restart=always`), `startup.sh` and the container start it again. It
+  is called off if the two agree again before it goes. **New York time is
+  `holiday_new_york_time()` in holiday_rules.c**, from UTC by the US rule
+  (second Sunday of March 07:00 UTC to first Sunday of November 06:00
+  UTC), never `localtime`: the live host runs in UTC. The hour of uptime
+  is the only loop guard: a boot that still disagrees is not an hour old
+  before the window closes; nothing is written to disk. Staff HOLIDAYS
+  RESTART [NOW|CANCEL]: CANCEL (trust `MAX_LEVEL`) skips that night's
+  window, NOW (`LEVEL_CREATOR`, REBOOT's rank) starts the warning at any
+  hour. Tests only: `TOC_SEASON_REBOOT_ANYHOUR`,
+  `TOC_SEASON_REBOOT_WARN_SECS`, `TOC_SEASON_REBOOT_MIN_UPTIME`
+  (`tests/test_season_restart.py`; the clock, every minute of 2007-2100
+  and against zoneinfo, `tests/test_holiday_rules.c`/`.py`). Every other
+  holiday follows the calendar on the tick and restarts nothing. A live
+  test that walks the date with `TOC_SEASON` unset across Oct 18, Nov 2,
+  Dec 16 or Jan 7 is safe: its world is never an hour old.
 
 ## The Seasonal Areas Are Generated
 
 `src/season.c` swaps three areas for a holiday copy **at boot**: `dresden`,
 `limbo` and `midennir` load as `<base>_halloween.are` from Oct 18 to Nov 1
-(Hallows End) and as `<base>_xmas.are` from Dec 16 to Jan 6 (Winter Veil).
-The copies are built by `python3 scripts/build_seasonal_areas.py` (`make
+(Hallows End) and as `<base>_xmas.are` from Dec 16 to Jan 6 (Winter Veil),
+and restarts itself at 3am New York when the copies loaded disagree with
+the calendar (The Holiday Calendar, above). The copies are built by `python3 scripts/build_seasonal_areas.py` (`make
 seasonal-areas`) from the base file as it is now plus an overlay in
 `data/seasonal/<base>_<tag>.json`: the `#AREA` line, the flavour text of
 the rooms and mobiles a season decorates (name and description only), the
