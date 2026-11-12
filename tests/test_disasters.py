@@ -32,6 +32,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 PW = "Zdisaster1"
 SQUARE = 2401            # Center of Oak Tree Square: outdoors, not safe
 TEMPLE = 4207
+QUIET_ROOM = 32700       # the fixture world's sparring floor: joined to nothing
 SOURCE = (ROOT / "src" / "disaster.c").read_text(encoding="latin-1")
 
 
@@ -131,7 +132,7 @@ class DisasterLiveTests(unittest.TestCase):
                 self.assertIn("No area is suffering", run(imm, "disaster", 1.0))
 
     def test_the_dragon_carries_you_off_waits_and_leaves(self) -> None:
-        with LiveMud(extra_env={"TOC_DRAGON_WAIT": "12"}) as mud:
+        with LiveMud(extra_env={"TOC_DRAGON_WAIT": "12"}, fixtures=True) as mud:
             make(mud, "Zkeeper", Levl=70, Room=TEMPLE)
             # The dragon lands outdoors, and at game night an outdoor room
             # is dark: LOOK lists nothing and LOOK IN finds no corpse.
@@ -179,19 +180,22 @@ class DisasterLiveTests(unittest.TestCase):
                 self.assertIn("No area is suffering", run(imm, "disaster", 1.0))
 
                 # Again, and this time it is fought: its hoard lies in the corpse.
+                # Fought in a room nothing can walk into (the fixture world's
+                # sparring floor): on a Dresden street a stray dog (spec_fido)
+                # or a janitor may wander in and eat the corpse or pick up the
+                # coin between the kill and the look (CI, run 40549604725:
+                # "You do not see that here"). Where the hoard lies is not what
+                # this proves, so the fight is moved, not the luck allowed for.
                 self.assertIn("Done.", run(imm, "disaster dragon zprey", 1.5))
                 run(imm, "goto zprey", 1.0)
-                slain_at = len(imm.transcript)
+                imm.must(f"transfer dragon {QUIET_ROOM}", "Ok.")
+                imm.must(f"transfer zprey {QUIET_ROOM}", "Ok.")
+                imm.must(f"goto {QUIET_ROOM}", "Sparring Floor")
+                here = imm.sync("look")
+                self.assertIn("black dragon", here.lower(), here)
                 slain = imm.sync("slay dragon")
                 self.assertIn("hoard it carried spills", slain + prey.transcript[-800:])
                 corpse = imm.sync("look in corpse")
-                # A Dresden street may hold a stray dog (spec_fido), which
-                # devours an NPC corpse and drops what it held on the
-                # ground (CI, run 40549604725: "You do not see that here").
-                # The hoard is then on the floor, not gone.
-                if ("devours a corpse" in imm.transcript[slain_at:]
-                        and "do not see that here" in corpse.lower()):
-                    corpse = imm.sync("look")
                 self.assertRegex(corpse.lower(), r"coin|gold|silver|platinum|copper")
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         self.assertIn("Black dragon: snatched Zprey (level 20) from dresden.are", log)

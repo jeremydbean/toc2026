@@ -563,6 +563,12 @@ Live-test gotchas that look like product bugs and are not:
   and `place_sparring_guard()` loads it and
   proves with STAT that it stands where it was put.
   `tests/test_fixture_hygiene.py` fails on the old habit.
+- **Something dropped or killed on a street may be eaten.** A stray dog
+  (`spec_fido`) devours an NPC corpse and a janitor picks up what lies
+  about; `test_disasters` failed on "You do not see that here" when one
+  wandered in between the dragon's death and LOOK IN CORPSE. Fight or drop
+  where nothing walks in -- `transfer` both to a fixture room (the
+  sparring floor, 32700, or 32703) -- rather than allowing for the luck.
 - **Confirm a setup command by what it says, not by a missing error.**
   `MudClient.must(command, *expected)` syncs and fails unless the reply
   names one of `expected`; `room_of()` reads a character's room from
@@ -1202,8 +1208,8 @@ beaten again. `tests/test_hyrule_guardian_keys.py`.
 **Characters are known by serial, never by the file Id** (review of
 d19b0e92, 2026-11-12: two ungrouped characters sharing an Id, one fighting
 Aquamentus and one idle in its room, and the idle one got the key). `Id`
-is `number_range( 0, 65535 )` and was never unique; quest objects are bound
-to it on disk, so it is left alone. `pcdata->serial` (`Serial`, case 'S',
+is `number_range( 0, 65535 )` and was never unique; it stays in the file,
+left alone. `pcdata->serial` (`Serial`, case 'S',
 `PLAYER_SERIAL_FIRST` 65536 to `PLAYER_SERIAL_LAST` 2^30-1, so it is never
 read for an Id) is unique against an index of every file in `player/` and
 `player/archive/` built at boot (`player_serial_boot`) and every serial
@@ -1215,6 +1221,18 @@ character" compares: `hyrule_note_striker`/`hyrule_struck_by`, the hate
 list, and column 2 of `log/progress.tsv`. It is saved, so a striker who
 quits and comes back before the kill is still known; RENAME carries it
 (`player_serial_rename`). `tests/test_guardian_serials.py`.
+**A quest's token is its questor's by serial too** (review, 2026-11-12:
+two characters sharing an Id could each pass the other's Id test). The
+token's `value[4]` is `-player_serial` -- negative, so it is never read for
+an old tag of Id + 1 -- and `quest_token_owned_by()` in `quest.c` is the one
+test, asked by GET, TELEKINESIS and the quest's own find and clear-up. An
+old tag still answers only its questor, by that Id and the name the token
+carries; the name is never saved, so one read from a file (a corpse) names
+nobody. The login fix `20261112-quest-serial` binds the old-tagged tokens a
+character carries, wears or stashes, at any depth, to their serial when the
+tag is their own Id and the token names them or nobody; one tagged for
+another Id is left nobody's. A serial-bound token follows a RENAME
+(`tests/test_quest_token_serial.py`).
 
 **Ganon's finishing phase is his own marker** (review, 2026-11-10,
 confirmed live). It was `AFF2_NO_RECOVER`, which NERVE DAMAGE and
@@ -1959,6 +1977,20 @@ keeps an unplaced pet, `nuke_pets` gives one a room before extracting
 it, and `free_char` clears the stash and an unplaced pet of a copy that
 never entered -- a wrong password, a reconnect.
 
+**A damaged corpse or snapshot is that file's problem, never the game's**
+(review, 2026-11-12: a six-megabyte string in a corpse file ran off the
+end of the string space and the boot died). `fread_string` and
+`fread_string_eol` stop at the end of `string_space` as a malformed value
+-- they used to check for room only once, before the string -- and
+`read_objects_aside` (corpses, PRESTORE GEAR and STASH) reads under
+`fread_aside_trap`, which only `fread_malformed` answers: the object part
+read is released, the rest discarded, and the caller gets -1 ("a value in
+its objects could not be read"), so a corpse at boot is renamed
+`.unreadable` and the boot goes on. The player trap is set aside while it
+reads, so a jump never lands in a loader further up the stack, and
+`fread_obj_refuse` keeps its trapless handling there
+(`tests/test_corpse_boot_damaged.py`).
+
 **A player file with a malformed number refuses that character, never
 the game** (roadmap, 2026-11-09). `fread_number`/`fread_long`/
 `fread_string_eol` went to `exit(1)`, so one damaged file stopped the game
@@ -2101,7 +2133,8 @@ without the password. `extract_obj` and `extract_obj_player` call
 `captive_dispose`, which unlinks the captive and extracts it, never
 placing it in a room. Only an act of play opening the bottle calls
 `char_from_obj`: OPEN, the genie's lever (manipulation case 2) and a
-bottle that shatters with age (`obj_update`, before `obj_from_obj`). It
+bottle that shatters with age (`obj_update`, before `obj_from_obj`; never
+one in a stash, whose timers do not run -- `obj_held_nowhere`). It
 lets the creature out where the bottle lies or its holder, at any depth of
 containers, really stands (`captive_carrier_placed`: in the room's
 people, not a file copy's `in_room`), and disposes of it anywhere else. A
@@ -2136,6 +2169,25 @@ said 40000 and stored -25536, which never flees). `ch->wimpy` is an
 WIMPY (0 to `POOL_MAX`), the remort cut and `Wimp` in the file carry it
 whole, and a wrapped negative an old file holds reads as 0
 (`tests/test_wide_wimpy.py`).
+**So is every sum on a maximum** (review, 2026-11-12). Every bonus to
+`max_hit`/`max_mana`/`max_move` -- `affect_modify`, `reset_char`, the
+load's unwear, a level, TRAIN -- goes through `pool_max_adjust()` in
+`handler.c`: the stored maximum, what an earlier clamp carried and the
+change are summed in long long, the maximum held to `[POOL_FLOOR,
+POOL_MAX]` (minus a billion to a billion: not 1, because a maximum below
+zero is the wreck `reset_char` rebuilds), and the rest kept in
+`ch->pool_carry[]`, so taking a bonus off gives back exactly what was
+there. The carry is saved as `PoolCarry <hit> <mana> <move>` under **case
+'P'** only when not zero: `reset_char`'s full rebuild takes the bonuses
+off the saved maximum, and without it took them off the clamped one. A
+maximum set outright from its base clears it (`pool_carry_clear`). **SET
+HP/MANA/END set the base** (`pool_set_base`): `perm_*` and the maximum
+with every standing bonus -- worn gear as `reset_char` counts it, spells
+-- on top, as a reload would make it; SET under a TITANIC used to leave
+the boost to come off a value it never went on, and the maximum at
+-799,999,900. A mobile has no base and gets the value. SET MAXMOVE and
+ADVANCE's lowering still set the maximum exactly (`tests/test_pool_sums.py`;
+the fixture ring of vigour, object 32713, is +1,000 hit points).
 **Arithmetic on a pool is wide too** (review, 2026-11-11: 100 * hit
 overflowed at 21 million, so LOOK called a character at 30 million of 30
 million dying, and divine protection's max * 3 / 4 wrapped negative at a
@@ -3856,9 +3908,12 @@ The objects live in `ch->pcdata->stash`. They are **not** in
 
 - `extract_char` never sees them and they need `stash_extract()`, or
   they leak on every quit.
-- `obj_update` never touches them, because its first test is
-  `obj->timer <= 0`, and anything with a timer is refused on the way
-  in.
+- `obj_update` never runs their timers: STASH refuses anything with a
+  timer, and an object in no room and on nobody at any depth
+  (`obj_held_nowhere`) keeps its timer anyway -- a file can bring a timed
+  one in, and one that expired there was extracted while the stash still
+  held it, and a bottle "shattered" with nobody to open it (review,
+  2026-11-12; `tests/test_untested_paths_nov12.py`).
 - They weigh nothing and count against nothing the character carries.
 
 They are written to the player file under a `#STASH` marker **after**

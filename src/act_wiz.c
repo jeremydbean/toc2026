@@ -3519,6 +3519,7 @@ void do_advance( CHAR_DATA *ch, char *argument )
 	victim->max_hit  = 20;
 	victim->max_mana = 100;
 	victim->max_move  = 100;
+	pool_carry_clear( victim );
 	victim->practice = 0;
 	victim->train    = 0;
 	victim->hit      = victim->max_hit;
@@ -5040,7 +5041,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	    send_to_char( "Hp range is -10 to 1,000,000,000 hit points.\n\r", ch );
 	    return;
 	}
-        victim->max_hit = value;
+        /* The base, under whatever bonuses stand (pool_set_base). */
+        pool_set_base( victim, APPLY_HIT, value );
 	if(victim != ch)
 	  snprintf(buf, sizeof(buf),"Hit Points on %s now set to %d.\n\r",IS_NPC(victim) ? victim->short_descr : victim->name,value);
 	else
@@ -5058,7 +5060,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	    send_to_char( "Mana range is 0 to 1,000,000,000 mana points.\n\r", ch );
 	    return;
 	}
-        victim->max_mana = value;
+        pool_set_base( victim, APPLY_MANA, value );
 	if(victim != ch)
 	  snprintf(buf, sizeof(buf),"Mana value on %s now set to %d.\n\r",IS_NPC(victim) ? victim->short_descr : victim->name,value);
 	else
@@ -5076,7 +5078,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	    send_to_char( "Endurance range is 0 to 1,000,000,000 points.\n\r", ch );
 	    return;
 	}
-        victim->max_move = value;
+        pool_set_base( victim, APPLY_MOVE, value );
 	if(victim != ch)
 	  snprintf(buf, sizeof(buf),"Endurance value on %s now set to %d.\n\r",IS_NPC(victim) ? victim->short_descr : victim->name,value);
 	else
@@ -5632,6 +5634,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 	victim->max_move = value;
+	victim->pool_carry[POOL_CARRY_MOVE] = 0;     /* the maximum, exactly */
 	if ( victim->move > victim->max_move )
 	    victim->move = victim->max_move;
 	snprintf(buf, sizeof(buf), "%s maximum movement set to %d.\n\r",

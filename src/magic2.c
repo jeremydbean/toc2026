@@ -1351,15 +1351,8 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
         ||   obj->level > ch->level
         ||   psionic_remote_room_blocked(ch, obj->in_room, true, true)
         ||   !can_loot(ch, obj)
-        ||   (obj->pIndexData != NULL
-          &&  obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
-          &&  obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
-          &&  obj->value[4] != 0
-          &&  (!IS_IMMORTAL(ch)
-           &&  (ch->pcdata == NULL
-            ||  obj->value[4] != ch->pcdata->id + 1
-            ||  obj->owner == NULL
-            ||  str_cmp(obj->owner, ch->name)))) )
+        ||   ( quest_token_bound( obj )
+          &&   !IS_IMMORTAL(ch) && !quest_token_owned_by( obj, ch ) ) )
             continue;
 
         /*

@@ -472,9 +472,16 @@ void reset_char(CHAR_DATA *ch)
      AFFECT_DATA *af;
      int i;
      bool fix_hit = false, fix_mana = false, fix_move = false;
+     /* The maxima with every bonus taken off, made wide: what an earlier
+        clamp carried is part of them (pool_max_adjust). */
+     long long wide_hit, wide_mana, wide_move;
 
      if (IS_NPC(ch))
 	return;
+
+     wide_hit  = (long long) ch->max_hit  + ch->pool_carry[POOL_CARRY_HIT];
+     wide_mana = (long long) ch->max_mana + ch->pool_carry[POOL_CARRY_MANA];
+     wide_move = (long long) ch->max_move + ch->pool_carry[POOL_CARRY_MOVE];
 
     if (ch->pcdata->perm_hit == 0
     ||  ch->pcdata->perm_mana == 0
@@ -501,9 +508,9 @@ void reset_char(CHAR_DATA *ch)
 						0 :
 						ch->pcdata->true_sex;
 									break;
-		    case APPLY_MANA:    ch->max_mana    -= mod;         break;
-		    case APPLY_HIT:     ch->max_hit     -= mod;         break;
-		    case APPLY_MOVE:    ch->max_move    -= mod;         break;
+		    case APPLY_MANA:    wide_mana       -= mod;         break;
+		    case APPLY_HIT:     wide_hit        -= mod;         break;
+		    case APPLY_MOVE:    wide_move       -= mod;         break;
 		}
 	    }
 
@@ -513,9 +520,9 @@ void reset_char(CHAR_DATA *ch)
 		switch(af->location)
 		{
 		    case APPLY_SEX:     ch->sex         -= mod;         break;
-		    case APPLY_MANA:    ch->max_mana    -= mod;         break;
-		    case APPLY_HIT:     ch->max_hit     -= mod;         break;
-		    case APPLY_MOVE:    ch->max_move    -= mod;         break;
+		    case APPLY_MANA:    wide_mana       -= mod;         break;
+		    case APPLY_HIT:     wide_hit        -= mod;         break;
+		    case APPLY_MOVE:    wide_move       -= mod;         break;
 		}
 	    }
 	}
@@ -524,9 +531,9 @@ void reset_char(CHAR_DATA *ch)
 		mod = af->modifier;
 		switch(af->location)
 		{
-		    case APPLY_MANA:    ch->max_mana    -= mod;         break;
-		    case APPLY_HIT:     ch->max_hit     -= mod;         break;
-		    case APPLY_MOVE:    ch->max_move    -= mod;         break;
+		    case APPLY_MANA:    wide_mana       -= mod;         break;
+		    case APPLY_HIT:     wide_hit        -= mod;         break;
+		    case APPLY_MOVE:    wide_move       -= mod;         break;
 		}
 	    }
 	/* now reset the permanent stats -- from the maxima, unless what that
@@ -543,24 +550,24 @@ void reset_char(CHAR_DATA *ch)
 	       spell worth less than the base, stripped after the reset. */
 	    int least = ch->pcdata->num_remorts > 0 ? floor : 1;
 
-	    if ( ch->max_hit >= least )
-		ch->pcdata->perm_hit = ch->max_hit;
+	    if ( wide_hit >= least )
+		ch->pcdata->perm_hit = (int) UMIN( wide_hit, (long long) POOL_MAX );
 	    else
 	    {
 		fix_hit = true;
 		if ( ch->pcdata->perm_hit < least )
 		    ch->pcdata->perm_hit = floor;
 	    }
-	    if ( ch->max_mana >= least )
-		ch->pcdata->perm_mana = ch->max_mana;
+	    if ( wide_mana >= least )
+		ch->pcdata->perm_mana = (int) UMIN( wide_mana, (long long) POOL_MAX );
 	    else
 	    {
 		fix_mana = true;
 		if ( ch->pcdata->perm_mana < least )
 		    ch->pcdata->perm_mana = floor;
 	    }
-	    if ( ch->max_move >= least )
-		ch->pcdata->perm_move = ch->max_move;
+	    if ( wide_move >= least )
+		ch->pcdata->perm_move = (int) UMIN( wide_move, (long long) POOL_MAX );
 	    else
 	    {
 		fix_move = true;
@@ -586,6 +593,7 @@ void reset_char(CHAR_DATA *ch)
     ch->max_hit         = ch->pcdata->perm_hit;
     ch->max_mana        = ch->pcdata->perm_mana;
     ch->max_move        = ch->pcdata->perm_move;
+    pool_carry_clear( ch );
 
     for (i = 0; i < 4; i++)
 	ch->armor[i]    = 100;
@@ -617,9 +625,9 @@ void reset_char(CHAR_DATA *ch)
 		case APPLY_CON:         ch->mod_stat[STAT_CON]  += mod; break;
 
 		case APPLY_SEX:         ch->sex                 += mod; break;
-		case APPLY_MANA:        ch->max_mana            += mod; break;
-		case APPLY_HIT:         ch->max_hit             += mod; break;
-		case APPLY_MOVE:        ch->max_move            += mod; break;
+		case APPLY_MANA:
+		case APPLY_HIT:
+		case APPLY_MOVE:        pool_max_adjust( ch, af->location, mod ); break;
 
 		case APPLY_AC:
 		    for (i = 0; i < 4; i ++)
@@ -648,9 +656,9 @@ void reset_char(CHAR_DATA *ch)
 		case APPLY_CON:         ch->mod_stat[STAT_CON]  += mod; break;
 
 		case APPLY_SEX:         ch->sex                 += mod; break;
-		case APPLY_MANA:        ch->max_mana            += mod; break;
-		case APPLY_HIT:         ch->max_hit             += mod; break;
-		case APPLY_MOVE:        ch->max_move            += mod; break;
+		case APPLY_MANA:
+		case APPLY_HIT:
+		case APPLY_MOVE:        pool_max_adjust( ch, af->location, mod ); break;
 
 		case APPLY_AC:
 		    for (i = 0; i < 4; i ++)
@@ -681,9 +689,9 @@ void reset_char(CHAR_DATA *ch)
 		case APPLY_CON:         ch->mod_stat[STAT_CON]  += mod; break;
 
 		case APPLY_SEX:         ch->sex                 += mod; break;
-		case APPLY_MANA:        ch->max_mana            += mod; break;
-		case APPLY_HIT:         ch->max_hit             += mod; break;
-		case APPLY_MOVE:        ch->max_move            += mod; break;
+		case APPLY_MANA:
+		case APPLY_HIT:
+		case APPLY_MOVE:        pool_max_adjust( ch, af->location, mod ); break;
 
 		case APPLY_AC:
 		    for (i = 0; i < 4; i ++)
@@ -1303,6 +1311,92 @@ void release_mount( CHAR_DATA *ch )
 }
 
 /*
+ * A maximum pool moved by a bonus (review, 2026-11-12). The sum is made
+ * wide -- the stored value, what an earlier clamp carried, the change --
+ * and the stored value held to [POOL_FLOOR, POOL_MAX]; whatever lies past
+ * the bound is carried, so taking the bonus off later gives back exactly
+ * the value before it went on, in any order. Multiplication was already
+ * wide (pool_scale); additions were not, and a SET under a standing
+ * TITANIC let the boost come off a base it never went on, leaving the
+ * maximum hundreds of millions below zero.
+ */
+static long long *pool_max_slot( CHAR_DATA *ch, int location, int **max )
+{
+    switch ( location )
+    {
+    case APPLY_HIT:  *max = &ch->max_hit;  return &ch->pool_carry[POOL_CARRY_HIT];
+    case APPLY_MANA: *max = &ch->max_mana; return &ch->pool_carry[POOL_CARRY_MANA];
+    case APPLY_MOVE: *max = &ch->max_move; return &ch->pool_carry[POOL_CARRY_MOVE];
+    }
+    *max = NULL;
+    return NULL;
+}
+
+void pool_max_adjust( CHAR_DATA *ch, int location, long long mod )
+{
+    long long *carry, wide, stored;
+    int *max;
+
+    if ( ch == NULL || ( carry = pool_max_slot( ch, location, &max ) ) == NULL )
+        return;
+    wide   = (long long) *max + *carry + mod;
+    stored = wide > POOL_MAX ? POOL_MAX : wide < POOL_FLOOR ? POOL_FLOOR : wide;
+    *max   = (int) stored;
+    *carry = wide - stored;
+}
+
+/* A maximum set outright from its base: nothing earlier is carried. */
+void pool_carry_clear( CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+        return;
+    ch->pool_carry[POOL_CARRY_HIT]  = 0;
+    ch->pool_carry[POOL_CARRY_MANA] = 0;
+    ch->pool_carry[POOL_CARRY_MOVE] = 0;
+}
+
+/*
+ * SET HP/MANA/END: a player's base becomes `value` and the maximum that
+ * base with every bonus still on them -- worn gear, as reset_char counts
+ * it, and their spells -- so a bonus that comes off later comes off what
+ * it went on. It used to set the maximum alone, under the bonuses: SET
+ * HP 100 under a TITANIC of 800 million, and the TITANIC's end left the
+ * maximum at -799,999,900. A mobile has no base: its maximum is the value.
+ */
+void pool_set_base( CHAR_DATA *ch, int location, int value )
+{
+    long long *carry;
+    AFFECT_DATA *af;
+    OBJ_DATA *obj;
+    int *max;
+    int loc;
+
+    if ( ch == NULL || ( carry = pool_max_slot( ch, location, &max ) ) == NULL )
+        return;
+    *max = value;
+    *carry = 0;
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    if ( location == APPLY_HIT )       ch->pcdata->perm_hit  = value;
+    else if ( location == APPLY_MANA ) ch->pcdata->perm_mana = value;
+    else                               ch->pcdata->perm_move = value;
+    for ( loc = 0; loc < MAX_WEAR; loc++ )
+    {
+        if ( ( obj = get_eq_char( ch, loc ) ) == NULL )
+            continue;
+        for ( af = obj->pIndexData->affected; af != NULL; af = af->next )
+            if ( af->location == location )
+                pool_max_adjust( ch, location, af->modifier );
+        for ( af = obj->affected; af != NULL; af = af->next )
+            if ( af->location == location )
+                pool_max_adjust( ch, location, af->modifier );
+    }
+    for ( af = ch->affected; af != NULL; af = af->next )
+        if ( af->location == location )
+            pool_max_adjust( ch, location, af->modifier );
+}
+
+/*
  * Apply or remove an affect to a character.
  */
 void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
@@ -1353,9 +1447,12 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_AGE:                                             break;
     case APPLY_HEIGHT:                                          break;
     case APPLY_WEIGHT:                                          break;
-    case APPLY_MANA:          ch->max_mana              += mod; break;
-    case APPLY_HIT:           ch->max_hit               += mod; break;
-    case APPLY_MOVE:          ch->max_move              += mod; break;
+    case APPLY_MANA:
+    case APPLY_HIT:
+    case APPLY_MOVE:
+	pool_max_adjust( ch, paf->location,
+	                 fAdd ? (long long) paf->modifier : -(long long) paf->modifier );
+	break;
     case APPLY_GOLD:                                            break;
     case APPLY_EXP:
         if ( !IS_NPC(ch) )

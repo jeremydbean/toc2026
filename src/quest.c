@@ -88,21 +88,86 @@ static bool is_automatic_quest_token( const OBJ_DATA *obj )
         && vnum <= OBJ_VNUM_QUEST_TOKEN_LAST;
 }
 
-static int quest_token_owner_tag( const CHAR_DATA *ch )
+/*
+ * Whose a quest's recovery token is (review, 2026-11-12). value[4] held
+ * the questor's file Id plus one, with obj->owner naming them -- but the
+ * Id is number_range( 0, 65535 ) and was never unique, and the name went
+ * with RENAME and was never saved, so a token in a corpse made again at
+ * boot was nobody's. It is bound to the character's serial now
+ * (player_serial, unique and kept across a rename), written negative so
+ * it can never be read for an old tag:
+ *
+ *    value[4] <  0   the serial -value[4], and only that character;
+ *    value[4] >  0   a token tagged before (Id + 1): its questor only,
+ *                    by that Id AND the name it carries, as it always
+ *                    was -- somebody who merely shares the Id, or holds
+ *                    one whose name is lost, cannot use it. The login
+ *                    fix 20261112-quest-serial binds the ones a character
+ *                    carries or keeps to their serial;
+ *    value[4] == 0   bound to nobody.
+ */
+static int quest_token_owner_tag( CHAR_DATA *ch )
 {
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return 0;
-    return ch->pcdata->id + 1;
+    return -player_serial( ch );
 }
 
-static bool quest_token_belongs_to( const OBJ_DATA *obj, const CHAR_DATA *ch )
+bool quest_token_bound( const OBJ_DATA *obj )
 {
-    if ( !is_automatic_quest_token(obj)
-    ||   obj->value[4] != quest_token_owner_tag(ch) )
-        return false;
+    return is_automatic_quest_token( obj ) && obj->value[4] != 0;
+}
 
-    return obj->owner != NULL && obj->owner[0] != '\0'
-        && !str_cmp(obj->owner, ch->name);
+bool quest_token_owned_by( const OBJ_DATA *obj, CHAR_DATA *ch )
+{
+    if ( !quest_token_bound( obj ) || ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return false;
+    if ( obj->value[4] < 0 )
+        return obj->value[4] == quest_token_owner_tag( ch );
+    return obj->value[4] == ch->pcdata->id + 1
+        && obj->owner != NULL && obj->owner[0] != '\0'
+        && !str_cmp( obj->owner, ch->name );
+}
+
+static bool quest_token_belongs_to( const OBJ_DATA *obj, CHAR_DATA *ch )
+{
+    return quest_token_owned_by( obj, ch );
+}
+
+/* Old-Id tokens a character carries, wears or keeps in the stash, at any
+   depth, bound to their serial. One whose holder's Id is not its tag, or
+   that names somebody else, is left as it was: it stays unusable to the
+   holder, and is never handed to somebody who merely shares the Id. A
+   token's owner name is never saved, so one read from a file names
+   nobody, and the file holding it is the only word on whose it is. */
+static int quest_token_rebind_list( OBJ_DATA *list, CHAR_DATA *ch, int depth )
+{
+    OBJ_DATA *obj;
+    int count = 0;
+
+    if ( depth > 64 )
+        return 0;
+    for ( obj = list; obj != NULL; obj = obj->next_content )
+    {
+        if ( quest_token_bound( obj ) && obj->value[4] > 0
+        &&   obj->value[4] == ch->pcdata->id + 1
+        &&   ( obj->owner == NULL || obj->owner[0] == '\0'
+            || !str_cmp( obj->owner, ch->name ) ) )
+        {
+            obj->value[4] = quest_token_owner_tag( ch );
+            count++;
+        }
+        count += quest_token_rebind_list( obj->contains, ch, depth + 1 );
+    }
+    return count;
+}
+
+int quest_token_rebind_legacy( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || quest_token_owner_tag( ch ) >= 0 )
+        return 0;
+    return quest_token_rebind_list( ch->carrying, ch, 0 )
+         + quest_token_rebind_list( ch->pcdata->stash, ch, 0 );
 }
 
 static void remove_automatic_quest_tokens( CHAR_DATA *ch )

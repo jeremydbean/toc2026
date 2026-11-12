@@ -1482,6 +1482,13 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "HMVP %d %d %d\n", ch->pcdata->perm_hit,
 						   ch->pcdata->perm_mana,
 						   ch->pcdata->perm_move);
+	/* What a clamped maximum carries past POOL_MAX (pool_max_adjust):
+	   reset_char's full rebuild takes the bonuses off the saved
+	   maximum, and without it took them off the clamped value. */
+	if ( ch->pool_carry[POOL_CARRY_HIT] != 0 || ch->pool_carry[POOL_CARRY_MANA] != 0
+	||   ch->pool_carry[POOL_CARRY_MOVE] != 0 )
+	    fprintf( fp, "PoolCarry %lld %lld %lld\n", ch->pool_carry[POOL_CARRY_HIT],
+		     ch->pool_carry[POOL_CARRY_MANA], ch->pool_carry[POOL_CARRY_MOVE] );
 
 
 /*	if(ch->were_shape.were_type != NULL)*/
@@ -2092,9 +2099,9 @@ static void unwear_illegal_at_load( CHAR_DATA *ch )
                     if ( full_reset )
                         switch ( paf->location )
                         {
-                        case APPLY_HIT:  ch->max_hit  -= paf->modifier; break;
-                        case APPLY_MANA: ch->max_mana -= paf->modifier; break;
-                        case APPLY_MOVE: ch->max_move -= paf->modifier; break;
+                        case APPLY_HIT: case APPLY_MANA: case APPLY_MOVE:
+                            pool_max_adjust( ch, paf->location, -(long long) paf->modifier );
+                            break;
                         }
                 }
             for ( paf = obj->affected; paf != NULL; paf = paf->next )
@@ -2104,9 +2111,9 @@ static void unwear_illegal_at_load( CHAR_DATA *ch )
                 if ( full_reset )
                     switch ( paf->location )
                     {
-                    case APPLY_HIT:  ch->max_hit  -= paf->modifier; break;
-                    case APPLY_MANA: ch->max_mana -= paf->modifier; break;
-                    case APPLY_MOVE: ch->max_move -= paf->modifier; break;
+                    case APPLY_HIT: case APPLY_MANA: case APPLY_MOVE:
+                        pool_max_adjust( ch, paf->location, -(long long) paf->modifier );
+                        break;
                     }
             }
             if ( IS_OBJ_STAT(obj, ITEM_ADD_AFFECT) )
@@ -3713,10 +3720,14 @@ static int read_objects_aside( CHAR_DATA *ch, FILE *fp, int version, int expecte
     int read_back;
     int added;
     sh_int live_version;
-    bool clean = true;
+    volatile bool clean = true;
+    volatile bool malformed = false;
     OBJ_DATA *live_stash;
     OBJ_DATA *restored;
     OBJ_DATA *obj;
+    jmp_buf trap;
+    jmp_buf *player_trap = fread_player_trap;
+    jmp_buf *aside_trap = fread_aside_trap;
 
     for ( iNest = 0; iNest < MAX_NEST; iNest++ )
         rgObjNest[iNest] = NULL;
@@ -3725,6 +3736,26 @@ static int read_objects_aside( CHAR_DATA *ch, FILE *fp, int version, int expecte
     live_stash = ch->pcdata->stash;
     ch->pcdata->stash = NULL;
     fread_to_stash = true;
+    fread_obj_unfinished = NULL;
+
+    /*
+     * A value the dry run passed and the reader still cannot take -- a
+     * string longer than the string space, say -- makes this file
+     * unreadable and nothing else (review, 2026-11-12: a damaged corpse
+     * file stopped the boot). The player's trap is set aside while this
+     * reads, so a malformed value here never jumps into a loader further
+     * up the stack; the object part way through its record is released
+     * and everything read so far discarded below.
+     */
+    fread_player_trap = NULL;
+    if ( setjmp( trap ) != 0 )
+    {
+        clean = false;
+        malformed = true;
+        fread_obj_release_unfinished();
+        goto read_done;
+    }
+    fread_aside_trap = &trap;
 
     for ( ; ; )
     {
@@ -3762,6 +3793,9 @@ static int read_objects_aside( CHAR_DATA *ch, FILE *fp, int version, int expecte
         }
     }
 
+read_done:
+    fread_aside_trap = aside_trap;
+    fread_player_trap = player_trap;
     fread_to_stash = false;
     ch->version = live_version;
     fclose( fp );
@@ -3780,7 +3814,9 @@ static int read_objects_aside( CHAR_DATA *ch, FILE *fp, int version, int expecte
                       "%d of its %d object%s could not be read back",
                       expected - read_back, expected, expected == 1 ? "" : "s" );
         else
-            snprintf( why, why_size, "its objects did not read cleanly" );
+            snprintf( why, why_size, malformed
+                      ? "a value in its objects could not be read"
+                      : "its objects did not read cleanly" );
         return -1;
     }
 
@@ -4522,6 +4558,21 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
             KEY( "PsiGrant",    ch->pcdata->psionic_grant_pending, fread_number( fp ) );
             KEY( "PsiSpec",     ch->pcdata->psionic_grant_spec, fread_string( fp ) );
             KEY( "PsiKnown",    ch->pcdata->psionic_known, fread_string( fp ) );
+	    if ( !str_cmp( word, "PoolCarry" ) )
+	    {
+		/* Read into locals first, then held well inside what the wide
+		   sums in pool_max_adjust can add to without overflow. */
+		long carry[3];
+		int iPool;
+
+		for ( iPool = 0; iPool < 3; iPool++ )
+		    carry[iPool] = fread_long( fp );
+		for ( iPool = 0; iPool < 3; iPool++ )
+		    ch->pool_carry[iPool] = URANGE( -1000LL * POOL_MAX, (long long) carry[iPool],
+		                                    1000LL * POOL_MAX );
+		fMatch = true;
+		break;
+	    }
 	    break;
 
 	case 'Q':

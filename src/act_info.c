@@ -5509,6 +5509,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->max_hit  = ch->pcdata->perm_hit;
    ch->max_mana = ch->pcdata->perm_mana;
    ch->max_move = ch->pcdata->perm_move;
+   pool_carry_clear( ch );     /* every bonus came off above */
     /* The new life's starting practices and trains go on top of whatever
        was left unspent, which used to be thrown away (owner, 2026-10-04).
        Saturated at the field's own maximum, as quest boons and training

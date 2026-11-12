@@ -5,6 +5,30 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112questserial 2026-11-12
+A quest's stolen item now answers only the adventurer it was entrusted to,
+however their name changes. It was tied to a number two characters could
+share. A quest item you already hold is bound to you at your next login.
+
+@ 20261112poolsums 2026-11-12 staff
+SET HP, MANA and END now set the base: bonuses still standing (TITANIC,
+gear, spells) stay on top of it, as they would after a reload. Setting the
+maximum under a standing TITANIC let the boost come off a value it never
+went on, leaving hundreds of millions below zero. Maxima with every bonus
+are held to a billion, and a bonus coming off gives back exactly what
+was there before it.
+
+@ 20261112corpseboot 2026-11-12 staff
+A damaged corpse file -- one holding a string too long to read -- is
+renamed .unreadable at boot and the boot goes on; it used to stop the game
+before it answered anybody. A player file with the same is refused at the
+name, and a damaged snapshot refuses PRESTORE instead of ending the game.
+
+@ 20261112stashtimers 2026-11-12 staff
+Nothing kept in a stash runs out. A timed object a file brought into one
+used to expire there, with the stash still pointing at it -- and a bottle
+there let its creature go with nobody holding it.
+
 @ 20261112wimpy 2026-11-12
 WIMPY now holds any number of hit points up to half your maximum. Past
 32,767 it used to be stored wrong -- WIMPY 40000 became a negative number --

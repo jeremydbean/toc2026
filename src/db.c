@@ -5017,12 +5017,22 @@ char fread_letter( FILE *fp )
  * never written over (pcdata->load_failed).
  */
 jmp_buf *fread_player_trap = NULL;
+/* Armed while objects are read aside from a corpse or a snapshot
+   (save.c, read_objects_aside): a malformed value there makes that one
+   file unreadable -- a corpse renamed .unreadable, a restore refused --
+   never the game's end, at boot or from a staff command (review,
+   2026-11-12). Only fread_malformed answers to it: a damaged record that
+   fread_obj_refuse would refuse a player for keeps its old, trapless
+   handling here. */
+jmp_buf *fread_aside_trap = NULL;
 
 static void fread_malformed( const char *what )
 {
     bug( what, 0 );
     if ( fread_player_trap != NULL )
         longjmp( *fread_player_trap, 1 );
+    if ( fread_aside_trap != NULL )
+        longjmp( *fread_aside_trap, 1 );
     exit( 1 );
 }
 
@@ -5276,6 +5286,17 @@ char *fread_string( FILE *fp )
             /* exit( 1 ); */
         }
 
+        /* Never past the string space (review, 2026-11-12). The check
+           above only promised MAX_STRING_LENGTH of room, and a string
+           longer than what was left -- six megabytes in a corpse file --
+           was written straight off the end of string_space and took the
+           boot down. Room is kept for two bytes and the terminator. */
+        if ( plast > &string_space[MAX_STRING - 3] )
+        {
+            fread_malformed( "Fread_string: a string longer than the string space." );
+            return str_empty;
+        }
+
         switch ( *plast = (char)(c) )
         {
         default:
@@ -5378,6 +5399,13 @@ char *fread_string_eol( FILE *fp )
         c = getc(fp);
         if (c == EOF)
             fread_malformed( "Fread_string_eol  EOF" );
+
+        /* Never past the string space, as fread_string. */
+        if ( plast > &string_space[MAX_STRING - 2] )
+        {
+            fread_malformed( "Fread_string_eol: a line longer than the string space." );
+            return str_empty;
+        }
 
         *plast++ = (char) c;
         if ( !char_special[ c - EOF ] )
