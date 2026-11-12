@@ -292907,3 +292907,281 @@ Thu Nov 12 23:09:17 2026 :: EOF encountered on read.
 Thu Nov 12 23:09:17 2026 :: Closing link to Killuminati.
 Thu Nov 12 23:10:17 2026 :: Log Trentlin [4210]: affects off: iron skin
 Thu Nov 12 23:10:43 2026 :: Disaster: an earthquake in hyrule.are.
+Thu Nov 12 23:12:01 2026 :: Log Trentlin [4210]: affects off: levitate
+Thu Nov 12 23:13:08 2026 :: Log Trentlin [4210]: l
+Thu Nov 12 23:13:09 2026 :: Log Trentlin [4210]: wake
+Thu Nov 12 23:13:10 2026 :: Log Trentlin [4210]: s
+Thu Nov 12 23:13:10 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Thu Nov 12 23:13:10 2026 :: Log Trentlin [4203]: s
+Thu Nov 12 23:13:10 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Thu Nov 12 23:13:11 2026 :: Log Trentlin [4202]: e
+Thu Nov 12 23:13:11 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 12 23:13:11 2026 :: Log Trentlin [4201]: e
+Thu Nov 12 23:13:11 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Thu Nov 12 23:13:12 2026 :: Log Trentlin [2427]: n
+Thu Nov 12 23:13:12 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Nov 12 23:13:12 2026 :: Log Trentlin [2404]: n
+Thu Nov 12 23:13:12 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Thu Nov 12 23:13:14 2026 :: Log Trentlin [2401]: say hermie
+Thu Nov 12 23:13:15 2026 :: Log Trentlin [2401]: l
+Thu Nov 12 23:13:19 2026 :: Sock.sinaddr:  208.126.22.104
+Thu Nov 12 23:13:19 2026 :: Loading Alaric's playerfile
+Thu Nov 12 23:13:20 2026 :: Loading Alaric's playerfile
+Thu Nov 12 23:13:20 2026 :: Alaric@208.126.22.104 has connected.
+Thu Nov 12 23:13:21 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Thu Nov 12 23:13:23 2026 :: Log Trentlin [2401]: eq
+Thu Nov 12 23:13:26 2026 :: Log Alaric [2497]: wake
+Thu Nov 12 23:13:29 2026 :: Log Alaric [2497]: ach
+Thu Nov 12 23:13:34 2026 :: Log Alaric [2497]: aq re
+Thu Nov 12 23:13:34 2026 :: Log Alaric [2497]: quest assigned: kill Homer Simpson (mob 13460, level 52) in hell.are, 19 minutes, ordinary
+Thu Nov 12 23:13:41 2026 :: Log Alaric [2497]: levi
+Thu Nov 12 23:14:08 2026 :: Log Alaric [2497]: en do
+Thu Nov 12 23:14:08 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 12 23:14:10 2026 :: Log Alaric [2401]: look tr
+Thu Nov 12 23:14:15 2026 :: Log Alaric [2401]: (social) nod
+Thu Nov 12 23:14:16 2026 :: Log Trentlin [2401]: (social) wave
+Thu Nov 12 23:14:19 2026 :: Log Trentlin [2401]: eq
+Thu Nov 12 23:14:24 2026 :: Log Trentlin [2401]: who
+Thu Nov 12 23:14:49 2026 :: Log Trentlin [2401]: eq
+Thu Nov 12 23:14:56 2026 :: Log Trentlin [2401]: i
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [2401]: south
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [2404]: south
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [2427]: west
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [4201]: west
+Thu Nov 12 23:15:01 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [4202]: west
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [4207]: up
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [3700]: up
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [3772]: up
+Thu Nov 12 23:15:02 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [3795]: enter portal
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [15000]: east
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [15001]: east
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [15002]: east
+Thu Nov 12 23:15:03 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15003]: east
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15004]: north
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15010]: north
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15011]: north
+Thu Nov 12 23:15:04 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [15012]: north
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [15013]: east
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [15038]: east
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [15068]: enter cabinet
+Thu Nov 12 23:15:05 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2401]: r w 7
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2438]: open gate
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2438]: w
+Thu Nov 12 23:15:17 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Thu Nov 12 23:15:18 2026 :: Log Alaric [2439]: r n 3
+Thu Nov 12 23:15:18 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Thu Nov 12 23:15:18 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Thu Nov 12 23:15:18 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Thu Nov 12 23:15:18 2026 :: Log Alaric [3902]: r e 2
+Thu Nov 12 23:15:18 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Thu Nov 12 23:15:18 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Thu Nov 12 23:15:18 2026 :: Log Alaric [3904]: r n 3
+Thu Nov 12 23:15:18 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Thu Nov 12 23:15:18 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Thu Nov 12 23:15:18 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Thu Nov 12 23:15:18 2026 :: Log Alaric [320]: e
+Thu Nov 12 23:15:18 2026 :: Log Alaric [305]: arrived (Path in the plains) from 320
+Thu Nov 12 23:15:19 2026 :: Log Alaric [305]: r n 2
+Thu Nov 12 23:15:19 2026 :: Log Alaric [306]: arrived (Path in the foothills) from 305
+Thu Nov 12 23:15:19 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 306
+Thu Nov 12 23:15:19 2026 :: Log Trentlin [30200]: affects off: steel fist
+Thu Nov 12 23:15:19 2026 :: Log Alaric [326]: r e 2
+Thu Nov 12 23:15:19 2026 :: Log Alaric [309]: arrived (Path in the foothills) from 326
+Thu Nov 12 23:15:19 2026 :: Log Alaric [310]: arrived (Path in the foothills) from 309
+Thu Nov 12 23:15:19 2026 :: Log Alaric [310]: n
+Thu Nov 12 23:15:19 2026 :: Log Alaric [327]: arrived (The foothills) from 310
+Thu Nov 12 23:15:19 2026 :: Log Alaric [327]: e
+Thu Nov 12 23:15:19 2026 :: Log Alaric [313]: arrived (Road to Ofcol) from 327
+Thu Nov 12 23:15:20 2026 :: Log Alaric [313]: r n 4
+Thu Nov 12 23:15:20 2026 :: Log Alaric [314]: arrived (Road to Ofcol) from 313
+Thu Nov 12 23:15:20 2026 :: Log Alaric [52]: arrived (Outside Ofcol) from 314
+Thu Nov 12 23:15:20 2026 :: Log Alaric [5550]: arrived (Village street) from 52
+Thu Nov 12 23:15:20 2026 :: Log Alaric [5551]: arrived (Village street) from 5550
+Thu Nov 12 23:15:20 2026 :: Log Alaric [5551]: r e 5
+Thu Nov 12 23:15:20 2026 :: Log Alaric [5553]: arrived (The small alley) from 5551
+Thu Nov 12 23:15:20 2026 :: Log Alaric [601]: arrived (The Big Intersection) from 5553
+Thu Nov 12 23:15:20 2026 :: Log Alaric [666]: arrived (Raff Way) from 601
+Thu Nov 12 23:15:20 2026 :: Log Alaric [667]: arrived (Raff Way) from 666
+Thu Nov 12 23:15:20 2026 :: Log Alaric [699]: arrived (Outside the Entrance to the Golden Citadel) from 667
+Thu Nov 12 23:15:20 2026 :: Log Alaric [699]: open east
+Thu Nov 12 23:15:20 2026 :: Log Alaric [699]: r e 4
+Thu Nov 12 23:15:20 2026 :: Log Alaric [698]: arrived (Inside the Entrance to the Golden Citadel) from 699
+Thu Nov 12 23:15:20 2026 :: Log Alaric [679]: arrived (A Hallway of the Golden Citadel) from 698
+Thu Nov 12 23:15:20 2026 :: Log Alaric [671]: arrived (The Anteroom to the Temple of Ofcol) from 679
+Thu Nov 12 23:15:20 2026 :: Log Alaric [669]: arrived (The Temple of Ofcol) from 671
+Thu Nov 12 23:15:21 2026 :: Log Alaric [669]: s
+Thu Nov 12 23:15:21 2026 :: Log Alaric [673]: arrived (The Anteroom to the Temple of Ofcol) from 669
+Thu Nov 12 23:15:21 2026 :: Log Alaric [673]: r u 6
+Thu Nov 12 23:15:21 2026 :: Log Alaric [690]: arrived (An Upper Chamber of the Golden Citadel) from 673
+Thu Nov 12 23:15:21 2026 :: Log Alaric [695]: arrived (A Top Chamber of the Golden Citadel) from 690
+Thu Nov 12 23:15:21 2026 :: Log Alaric [7914]: arrived (On the Huge Chain) from 695
+Thu Nov 12 23:15:21 2026 :: Log Alaric [7916]: arrived (On the Great Chain of Naris) from 7914
+Thu Nov 12 23:15:21 2026 :: Log Alaric [7918]: arrived (The Mighty Chain of Naris) from 7916
+Thu Nov 12 23:15:21 2026 :: Log Alaric [7900]: arrived (Outside Redferne's residence) from 7918
+Thu Nov 12 23:15:21 2026 :: Log Alaric [7900]: s
+Thu Nov 12 23:15:21 2026 :: Log Alaric [9101]: arrived (A fluffy white cloud.) from 7900
+Thu Nov 12 23:15:21 2026 :: Log Alaric [9101]: u
+Thu Nov 12 23:15:21 2026 :: Log Alaric [9102]: arrived (A fluffy white cloud.) from 9101
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9102]: e
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9103]: arrived (A fluffy white cloud.) from 9102
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9103]: n
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9128]: arrived (A fluffy white cloud.) from 9103
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9128]: d
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9127]: arrived (A fluffy white cloud.) from 9128
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9127]: n
+Thu Nov 12 23:15:22 2026 :: Log Alaric [9130]: arrived (Grumpy little cloud.) from 9127
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9130]: w
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9129]: arrived (Sleepy little cloud.) from 9130
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9129]: r n 3
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9132]: arrived (Bashful little cloud.) from 9129
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9133]: arrived (Sneezing little cloud.) from 9132
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9145]: arrived (Raging hurricane.) from 9133
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9145]: r w 2
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9150]: arrived (Raging hurricane.) from 9145
+Thu Nov 12 23:15:23 2026 :: Log Alaric [9150]: d
+Thu Nov 12 23:15:24 2026 :: Log Alaric [9150]: s
+Thu Nov 12 23:15:24 2026 :: Log Alaric [9150]: climb rope
+Thu Nov 12 23:15:24 2026 :: Log Alaric [9150]: r s 2
+Thu Nov 12 23:15:24 2026 :: Log Alaric [9150]: enter pool
+Thu Nov 12 23:15:29 2026 :: Log Alaric [9150]: e
+Thu Nov 12 23:15:31 2026 :: Connection guard: last hour 71 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
+Thu Nov 12 23:15:49 2026 :: Log Trentlin [30200]: eq
+Thu Nov 12 23:15:51 2026 :: Log Trentlin [30200]: i
+Thu Nov 12 23:15:53 2026 :: Log Alaric [9150]: wake
+Thu Nov 12 23:15:53 2026 :: Log Alaric [9150]: l
+Thu Nov 12 23:15:53 2026 :: Log Alaric [9150]: recal
+Thu Nov 12 23:15:54 2026 :: Log Alaric [9150]: w
+Thu Nov 12 23:15:57 2026 :: Log Alaric [9150]: e
+Thu Nov 12 23:15:57 2026 :: Log Alaric [9149]: arrived (Raging hurricane.) from 9150
+Thu Nov 12 23:16:00 2026 :: Log Alaric [9149]: w
+Thu Nov 12 23:16:00 2026 :: Log Alaric [9157]: arrived (Cumulative nimbus cloud.) from 9149
+Thu Nov 12 23:16:01 2026 :: Log Alaric [9157]: recal
+Thu Nov 12 23:16:01 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 9157
+Thu Nov 12 23:16:02 2026 :: Log Trentlin [30200]: play recorder 5
+Thu Nov 12 23:16:02 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30200
+Thu Nov 12 23:16:04 2026 :: Log Alaric [2497]: en do
+Thu Nov 12 23:16:04 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 12 23:16:05 2026 :: Log Alaric [2401]: jump rock
+Thu Nov 12 23:16:05 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Thu Nov 12 23:16:06 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Thu Nov 12 23:16:06 2026 :: Log Alaric [4208]: l
+Thu Nov 12 23:16:07 2026 :: Log Trentlin [30323]: d
+Thu Nov 12 23:16:07 2026 :: Log Trentlin [30476]: arrived (Level 5: Lizard's Gate) from 30323
+Thu Nov 12 23:16:08 2026 :: Log Trentlin [30476]: sca
+Thu Nov 12 23:16:08 2026 :: Log Alaric [4208]: heal ref
+Thu Nov 12 23:16:08 2026 :: Log Alaric [4208]: gold -140
+Thu Nov 12 23:16:11 2026 :: Log Trentlin [30476]: e
+Thu Nov 12 23:16:11 2026 :: Log Trentlin [30477]: arrived (Level 5: Echoing Chamber) from 30476
+Thu Nov 12 23:16:12 2026 :: Log Alaric [4208]: r e 4
+Thu Nov 12 23:16:12 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:16:12 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 12 23:16:12 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 12 23:16:12 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Thu Nov 12 23:16:12 2026 :: Log Alaric [2427]: n
+Thu Nov 12 23:16:12 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Nov 12 23:16:13 2026 :: Log Alaric [2404]: n
+Thu Nov 12 23:16:13 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Thu Nov 12 23:16:13 2026 :: Log Trentlin [30477]: con po
+Thu Nov 12 23:16:13 2026 :: Log Alaric [2401]: east
+Thu Nov 12 23:16:13 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Nov 12 23:16:15 2026 :: Log Alaric [2403]: west
+Thu Nov 12 23:16:15 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2403
+Thu Nov 12 23:16:15 2026 :: Log Alaric [2401]: west
+Thu Nov 12 23:16:15 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2405]: west
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2433]: west
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2434]: west
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2435]: west
+Thu Nov 12 23:16:16 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Thu Nov 12 23:16:17 2026 :: Log Alaric [2436]: west
+Thu Nov 12 23:16:17 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Thu Nov 12 23:16:17 2026 :: Log Alaric [2437]: west
+Thu Nov 12 23:16:17 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Thu Nov 12 23:16:17 2026 :: Log Alaric [2438]: open west
+Thu Nov 12 23:16:17 2026 :: Log Trentlin [30477]: steel
+Thu Nov 12 23:16:17 2026 :: Log Alaric [2438]: west
+Thu Nov 12 23:16:17 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Thu Nov 12 23:16:18 2026 :: Log Alaric [2439]: west
+Thu Nov 12 23:16:18 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Thu Nov 12 23:16:18 2026 :: Log Alaric [6000]: west
+Thu Nov 12 23:16:18 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Thu Nov 12 23:16:18 2026 :: Log Alaric [6001]: west
+Thu Nov 12 23:16:18 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Thu Nov 12 23:16:18 2026 :: Log Trentlin [30477]: steel
+Thu Nov 12 23:16:18 2026 :: Log Alaric [6002]: south
+Thu Nov 12 23:16:18 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6011]: south
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6008]: east
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6009]: arrived (Outside a small cabin in the forest) from 6008
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6009]: south
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6014]: arrived (An intersection in the dense forest) from 6009
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6014]: east
+Thu Nov 12 23:16:19 2026 :: Log Alaric [6015]: arrived (A small path in the dense forest) from 6014
+Thu Nov 12 23:16:20 2026 :: Log Alaric [6015]: south
+Thu Nov 12 23:16:20 2026 :: Log Alaric [6016]: arrived (A small path in the dense forest) from 6015
+Thu Nov 12 23:16:20 2026 :: Log Alaric [6016]: south
+Thu Nov 12 23:16:20 2026 :: Log Alaric [6017]: arrived (A small path in the dense forest) from 6016
+Thu Nov 12 23:16:20 2026 :: Log Alaric [6017]: west
+Thu Nov 12 23:16:20 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6017
+Thu Nov 12 23:16:20 2026 :: Log Alaric [6018]: south
+Thu Nov 12 23:16:20 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Thu Nov 12 23:16:21 2026 :: Log Alaric [51]: down
+Thu Nov 12 23:16:21 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Thu Nov 12 23:16:21 2026 :: Log Alaric [13001]: down
+Thu Nov 12 23:16:21 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Thu Nov 12 23:16:21 2026 :: Log Alaric [13002]: west
+Thu Nov 12 23:16:21 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Thu Nov 12 23:16:21 2026 :: Log Alaric [13003]: north
+Thu Nov 12 23:16:21 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13003
+Thu Nov 12 23:16:22 2026 :: Log Alaric [13201]: affects off: levitate
+Thu Nov 12 23:16:23 2026 :: Log Trentlin [30477]: iron
+Thu Nov 12 23:16:28 2026 :: Log Alaric [13201]: levi
+Thu Nov 12 23:16:31 2026 :: Log Alaric [13201]: open south
+Thu Nov 12 23:16:31 2026 :: Log Alaric [13201]: s
+Thu Nov 12 23:16:31 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13201
+Thu Nov 12 23:16:31 2026 :: Log Alaric [13003]: open south
+Thu Nov 12 23:16:31 2026 :: Log Alaric [13003]: s
+Thu Nov 12 23:16:31 2026 :: Log Alaric [13022]: arrived (Road through the forest) from 13003
+Thu Nov 12 23:16:32 2026 :: Log Alaric [13022]: w
+Thu Nov 12 23:16:32 2026 :: Log Alaric [13011]: arrived (Path along the lakeshore) from 13022
+Thu Nov 12 23:16:32 2026 :: Log Alaric [13011]: d
+Thu Nov 12 23:16:32 2026 :: Log Alaric [13011]: w
+Thu Nov 12 23:16:32 2026 :: Log Alaric [13010]: arrived (South shore of Crystalmir Lake) from 13011
+Thu Nov 12 23:16:32 2026 :: Log Alaric [13010]: open west
+Thu Nov 12 23:16:33 2026 :: Log Alaric [13010]: w
+Thu Nov 12 23:16:33 2026 :: Log Alaric [13012]: arrived (Path along the lakeshore) from 13010
+Thu Nov 12 23:16:33 2026 :: Log Trentlin [30477]: k po
+Thu Nov 12 23:16:37 2026 :: Log Trentlin [30477]: fists
+Thu Nov 12 23:16:39 2026 :: Log Alaric [13012]: n
+Thu Nov 12 23:16:39 2026 :: Log Alaric [13008]: arrived (West shore of Crystalmir Lake) from 13012

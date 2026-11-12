@@ -30,3 +30,6 @@
 1794346994	leave	Trentlin	34	1	Monk 	30476	L5	to=over how=up secs=278 hp=58
 1794346994	enter	Trentlin	34	1	Monk 	30323	over	from=L5 how=up hp=58
 1794346994	leave	Trentlin	34	1	Monk 	30323	over	to=out how=recall secs=0 hp=58
+1794525305	enter	Trentlin	40	1	Monk 	30200	over	from=out how=enter hp=100
+1794525367	leave	Trentlin	40	1	Monk 	30323	over	to=L5 how=down secs=62 hp=100
+1794525367	enter	Trentlin	40	1	Monk 	30476	L5	from=over how=down hp=100
