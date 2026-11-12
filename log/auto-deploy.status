@@ -1,1 +1,1 @@
-2026-11-12T03:41:40Z waiting for CI on 38300657 (in_progress) before deploying 50f290cb
+2026-11-12T03:51:40Z not deploying 671cd8a3: CI on 38300657 says failure; push a fix
