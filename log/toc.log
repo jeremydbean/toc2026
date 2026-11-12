@@ -292662,3 +292662,80 @@ Thu Nov 12 23:01:34 2026 :: Log Trentlin [16023]: fists pirate
 Thu Nov 12 23:01:41 2026 :: Log Trentlin [16023]: w
 Thu Nov 12 23:01:41 2026 :: Log Trentlin [16022]: arrived (Main Deck) from 16023
 Thu Nov 12 23:01:42 2026 :: Log Trentlin [16022]: fists pirate
+Thu Nov 12 23:01:49 2026 :: Log Trentlin [16022]: sca
+Thu Nov 12 23:01:50 2026 :: Log Trentlin [16022]: n
+Thu Nov 12 23:01:50 2026 :: Log Trentlin [16027]: arrived (Main Deck) from 16022
+Thu Nov 12 23:01:51 2026 :: Log Trentlin [16027]: affects off: iron skin
+Thu Nov 12 23:01:52 2026 :: Log Trentlin [16027]: k pira
+Thu Nov 12 23:01:56 2026 :: Log Trentlin [16027]: e
+Thu Nov 12 23:01:56 2026 :: Log Trentlin [16028]: arrived (Main Deck) from 16027
+Thu Nov 12 23:01:57 2026 :: Log Trentlin [16028]: k pira
+Thu Nov 12 23:01:57 2026 :: Log Trentlin [16028]: killed The pirate
+Thu Nov 12 23:01:57 2026 :: Log Trentlin [16028]: coin +2 platinum
+Thu Nov 12 23:01:57 2026 :: Log Trentlin [16028]: coin +12 silver
+Thu Nov 12 23:01:57 2026 :: Log Trentlin [16028]: coin +17 copper
+Thu Nov 12 23:01:57 2026 :: Log Trentlin [16028]: coin +7 gold
+Thu Nov 12 23:02:04 2026 :: Log Trentlin [16028]: iron
+Thu Nov 12 23:02:14 2026 :: Log Trentlin [16028]: sca
+Thu Nov 12 23:02:15 2026 :: Log Trentlin [16028]: e
+Thu Nov 12 23:02:15 2026 :: Log Trentlin [16029]: arrived (Main Deck) from 16028
+Thu Nov 12 23:02:16 2026 :: Log Trentlin [16029]: k p
+Thu Nov 12 23:02:19 2026 :: Log Trentlin [16029]: fists
+Thu Nov 12 23:02:26 2026 :: Log Trentlin [16029]: fists
+Thu Nov 12 23:02:33 2026 :: Log Trentlin [16029]: fists
+Thu Nov 12 23:02:33 2026 :: Log Trentlin [16029]: level 39 -> 40 (earned)
+Thu Nov 12 23:02:33 2026 :: Trentlin has achieved level 40!
+Thu Nov 12 23:02:33 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261112_230233.level (PRESTORE Trentlin to see it).
+Thu Nov 12 23:02:33 2026 :: Log Trentlin [16029]: killed The drunk pirate
+Thu Nov 12 23:02:33 2026 :: Log Trentlin [16029]: coin +1 platinum
+Thu Nov 12 23:02:33 2026 :: Log Trentlin [16029]: coin +5 silver
+Thu Nov 12 23:02:33 2026 :: Log Trentlin [16029]: coin +6 copper
+Thu Nov 12 23:02:33 2026 :: Log Trentlin [16029]: coin +2 gold
+Thu Nov 12 23:02:38 2026 :: Log Trentlin [16029]: affects off: levitate, steel fist
+Thu Nov 12 23:02:42 2026 :: Log Trentlin [16029]: reca
+Thu Nov 12 23:02:42 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 16029
+Thu Nov 12 23:04:18 2026 :: Log Trentlin [4207]: w
+Thu Nov 12 23:04:18 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Thu Nov 12 23:04:19 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:04:23 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:04:30 2026 :: Log Trentlin [4208]: comp white
+Thu Nov 12 23:04:32 2026 :: Log Trentlin [4208]: rem onyx
+Thu Nov 12 23:04:32 2026 :: Log Trentlin [4208]: rem onyx
+Thu Nov 12 23:04:35 2026 :: Log Trentlin [4208]: stash put onyx
+Thu Nov 12 23:04:35 2026 :: Log Trentlin [4208]: stashed an onyx bracelet (vnum 1388)
+Thu Nov 12 23:04:36 2026 :: Log Trentlin [4208]: wear white
+Thu Nov 12 23:04:36 2026 :: Log Trentlin [4208]: wear white
+Thu Nov 12 23:04:38 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:04:44 2026 :: Log Trentlin [4208]: comp gaunt
+Thu Nov 12 23:04:46 2026 :: Log Trentlin [4208]: wear gaunt
+Thu Nov 12 23:04:47 2026 :: Log Trentlin [4208]: affects off: iron skin
+Thu Nov 12 23:04:48 2026 :: Log Trentlin [4208]: stash put mitts
+Thu Nov 12 23:04:48 2026 :: Log Trentlin [4208]: stashed a pair of pebble-hide mitts (vnum 30708)
+Thu Nov 12 23:04:54 2026 :: Log Trentlin [4208]: comp mantle
+Thu Nov 12 23:05:01 2026 :: Log Trentlin [4208]: wear mant
+Thu Nov 12 23:05:04 2026 :: Log Trentlin [4208]: stash put cloak
+Thu Nov 12 23:05:04 2026 :: Log Trentlin [4208]: stashed an Eagle-feather cloak (vnum 30653)
+Thu Nov 12 23:05:05 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:05:09 2026 :: Log Trentlin [4208]: comp star
+Thu Nov 12 23:05:16 2026 :: Log Trentlin [4208]: com robes
+Thu Nov 12 23:05:22 2026 :: Log Trentlin [4208]: comp robes
+Thu Nov 12 23:05:26 2026 :: Log Trentlin [4208]: stash
+Thu Nov 12 23:05:47 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:05:49 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:05:52 2026 :: Log Trentlin [4208]: stash put dagger
+Thu Nov 12 23:05:52 2026 :: Log Trentlin [4208]: stashed (Flaming) the Crystalline Dagger of Wonders (vnum 10006)
+Thu Nov 12 23:05:58 2026 :: Log Trentlin [4208]: e
+Thu Nov 12 23:05:58 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:05:59 2026 :: Log Trentlin [4207]: e
+Thu Nov 12 23:05:59 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 12 23:06:00 2026 :: Log Trentlin [4202]: n
+Thu Nov 12 23:06:00 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Thu Nov 12 23:06:00 2026 :: Log Trentlin [4203]: n
+Thu Nov 12 23:06:00 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Thu Nov 12 23:06:00 2026 :: Log Trentlin [4210]: n
+Thu Nov 12 23:06:01 2026 :: Log Trentlin [4210]: sleep
+Thu Nov 12 23:06:07 2026 :: Log Trentlin [4210]: gr
+Thu Nov 12 23:06:08 2026 :: Log Trentlin [4210]: sco
+Thu Nov 12 23:06:19 2026 :: Log Trentlin [4210]: wo
+Thu Nov 12 23:06:30 2026 :: Log Trentlin [4210]: sk
+Thu Nov 12 23:06:42 2026 :: Log Trentlin [4210]: wake

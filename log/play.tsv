@@ -23601,3 +23601,62 @@
 1794524494	cmd	Trentlin	39	16023	pirate.are	standing	68	0	-	fists	pirate	You attack in an all consuming fury! // Your fists of fury scratches The pirate. // Your fists of fury injures The pirate.	-	+
 1794524501	cmd	Trentlin	39	16022	pirate.are	standing	68	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
 1794524502	cmd	Trentlin	39	16022	pirate.are	standing	68	0	-	fists	pirate	You attack in an all consuming fury! // Your fists of fury grazes The pirate. // The pirate walks off to the north.	-	+
+1794524509	cmd	Trentlin	39	16022	pirate.are	standing	68	0	-	scan		The pirate                         -to the North. // The swashbuckler                   -to the West.	-	-
+1794524510	cmd	Trentlin	39	16027	pirate.are	standing	68	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794524512	cmd	Trentlin	39	16027	pirate.are	standing	70	0	-	kill	pira	Your punch DISMEMBERS The pirate! // The pirate walks off to the east. // The pirate has fled!	-	-
+1794524516	cmd	Trentlin	39	16028	pirate.are	standing	70	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794524517	coin	Trentlin	39	16028	pirate.are	+2000000	loot	kill	corpse of The pirate	15286212000
+1794524517	coin	Trentlin	39	16028	pirate.are	+1200	loot	kill	corpse of The pirate	15286213200
+1794524517	coin	Trentlin	39	16028	pirate.are	+17	loot	kill	corpse of The pirate	15286213217
+1794524517	coin	Trentlin	39	16028	pirate.are	+70000	loot	kill	corpse of The pirate	15286283217
+1794524517	cmd	Trentlin	39	16028	pirate.are	standing	70	1	-	kill	pira	Your punch *** DEVASTATES *** The pirate! // Your punch ^^^ DESTROYS ^^^ The pirate! // Your punch *** DEVASTATES *** The pirate!	-	+
+1794524524	cmd	Trentlin	39	16028	pirate.are	standing	70	0	-	iron		Your skin hardens.	-	-
+1794524534	cmd	Trentlin	39	16028	pirate.are	standing	70	0	-	scan		The midshipman                     -to the North. // The drunk pirate                   -to the East.	-	-
+1794524535	cmd	Trentlin	39	16029	pirate.are	standing	70	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794524536	cmd	Trentlin	39	16029	pirate.are	standing	70	0	-	kill	p	The drunk pirate dodges your attack. // The drunk pirate parries your attack.	-	-
+1794524539	cmd	Trentlin	39	16029	pirate.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The drunk pirate! // Your fists of fury mauls The drunk pirate.	-	+
+1794524546	cmd	Trentlin	39	16029	pirate.are	fighting	53	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The drunk pirate! // Your fists of fury DISMEMBERS The drunk pirate!	-	+
+1794524553	cmd	Trentlin	39	16029	pirate.are	fighting	46	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The drunk pirate! // Your fists of fury scratches The drunk pirate.	-	+
+1794524553	level	Trentlin	40	16029	pirate.are	39	40	Monk 	1	92183	-1	(violence_update)
+1794524553	coin	Trentlin	40	16029	pirate.are	+1000000	loot	(violence_update)	corpse of The drunk pirate	15287283217
+1794524553	coin	Trentlin	40	16029	pirate.are	+500	loot	(violence_update)	corpse of The drunk pirate	15287283717
+1794524553	coin	Trentlin	40	16029	pirate.are	+6	loot	(violence_update)	corpse of The drunk pirate	15287283723
+1794524553	coin	Trentlin	40	16029	pirate.are	+20000	loot	(violence_update)	corpse of The drunk pirate	15287303723
+1794524562	area	Trentlin	40	4207	dresden.are	pirate.are	dresden.are	214	recall
+1794524562	cmd	Trentlin	40	4207	dresden.are	standing	49	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794524658	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794524659	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	inventory		You are carrying: //      (Glowing) Starlight // ( 2) (Glowing) (Humming) a white bracer	-	+
+1794524663	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794524670	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	compare	white	A) a white bracer (level 40) // B) an onyx bracelet (level 18), worn // Slot: wrist.  Your damage comes from weapons.	-	+
+1794524672	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	remove	onyx	You stop using an onyx bracelet.	-	-
+1794524672	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	remove	onyx	You stop using an onyx bracelet.	-	-
+1794524675	cmd	Trentlin	40	4208	dresden.are	standing	53	11	-	stash	put onyx	You put an onyx bracelet away for safe keeping.	-	-
+1794524676	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	wear	white	You wear a white bracer around your left wrist.	-	-
+1794524676	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	wear	white	You wear a white bracer around your right wrist.	-	-
+1794524678	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	inventory		You are carrying: //      (Glowing) Starlight //      (Flaming) the Crystalline Dagger of Wonders	-	+
+1794524684	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	compare	gaunt	A) a pair of pincer gauntlets (level 40) // B) a pair of pebble-hide mitts (level 14), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794524686	cmd	Trentlin	40	4208	dresden.are	standing	53	0	-	wear	gaunt	You stop using a pair of pebble-hide mitts. // You wear a pair of pincer gauntlets on your hands.	-	-
+1794524688	cmd	Trentlin	40	4208	dresden.are	standing	61	6	-	stash	put mitts	You put a pair of pebble-hide mitts away for safe keeping.	-	-
+1794524694	cmd	Trentlin	40	4208	dresden.are	standing	61	0	-	compare	mantle	A) a twin-headed mantle (level 27) // B) an Eagle-feather cloak (level 8), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794524701	cmd	Trentlin	40	4208	dresden.are	standing	61	0	-	wear	mant	You stop using an Eagle-feather cloak. // You wear a twin-headed mantle about your body.	-	-
+1794524704	cmd	Trentlin	40	4208	dresden.are	standing	60	7	-	stash	put cloak	You put an Eagle-feather cloak away for safe keeping.	-	-
+1794524705	cmd	Trentlin	40	4208	dresden.are	standing	60	0	-	inventory		You are carrying: //      (Glowing) Starlight //      (Flaming) the Crystalline Dagger of Wonders	-	+
+1794524709	cmd	Trentlin	40	4208	dresden.are	standing	60	0	-	compare	star	A) Starlight (level 45) -- can't use: needs level 45 // B) the Sceptre of Might (level 25), worn // Slot: light.  Your damage comes from weapons.	-	+
+1794524716	cmd	Trentlin	40	4208	dresden.are	standing	60	0	-	commands	robes	put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      	-	+
+1794524722	cmd	Trentlin	40	4208	dresden.are	standing	60	0	-	compare	robes	A) some Black velvet robes (level 32) -- can't use: made for another side // B) a twin-dragon hauberk (level 27), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794524726	cmd	Trentlin	40	4208	dresden.are	standing	60	0	-	stash		Your stash holds 49 of 75 things. //     1) an Eagle-feather cloak //     2) a pair of pebble-hide mitts	-	+
+1794524747	cmd	Trentlin	40	4208	dresden.are	standing	60	0	-	inventory		You are carrying: //      (Glowing) Starlight //      (Flaming) the Crystalline Dagger of Wonders	-	+
+1794524749	cmd	Trentlin	40	4208	dresden.are	standing	60	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794524752	cmd	Trentlin	40	4208	dresden.are	standing	60	13	-	stash	put dagger	You put (Flaming) the Crystalline Dagger of Wonders away for safe keeping.	-	-
+1794524758	cmd	Trentlin	40	4207	dresden.are	standing	60	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794524759	cmd	Trentlin	40	4202	dresden.are	standing	60	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794524760	cmd	Trentlin	40	4203	dresden.are	standing	60	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794524760	cmd	Trentlin	40	4210	dresden.are	standing	60	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794524760	cmd	Trentlin	40	4210	dresden.are	standing	60	0	-	north		Alas, you cannot go that way.	-	-
+1794524761	cmd	Trentlin	40	4210	dresden.are	standing	60	0	-	sleep		You go to sleep.	-	-
+1794524767	cmd	Trentlin	40	4210	dresden.are	sleeping	77	0	-	group		Trentlin's group: // [40 Monk ] Trentlin          595/ 769 hp 1209/1733 mana  214/ 428 mv 92183 xp	-	-
+1794524768	state	Trentlin	40	4210	dresden.are	lvl=40 hp=595/769 mana=1209/1733 mv=214/428 align=33 exp=92183 coin=10017345 bank=15277286378 qp=3782 prac=18 train=3 stash=50/75 remorts=1
+1794524768	cmd	Trentlin	40	4210	dresden.are	sleeping	77	0	-	score		| Name:       Trentlin | Level:      40 | Class:        Monk | // | Played:     36 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794524779	cmd	Trentlin	40	4210	dresden.are	sleeping	77	0	-	worth		You have 9 platinum, 101 gold, 72 silver, 145 copper // and 92183 experience (2117 exp to level).	-	-
+1794524790	cmd	Trentlin	40	4210	dresden.are	sleeping	77	0	-	skills		Level  1: dagger              75%      hand to hand        98%       //           recall             100%       // Level  3: kick                81%      	-	+
+1794524802	cmd	Trentlin	40	4210	dresden.are	sleeping	77	0	-	wake		You wake and stand up.	-	-
