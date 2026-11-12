@@ -878,7 +878,7 @@ bool flags_from_argument( const char *argument, int current, int *result )
     if ( *p == '\0' )
         return false;
 
-    if ( is_number( (char *) p ) )
+    if ( is_number( p ) )
     {
         /* Checked: "5abc" or a number past a long is refused, not misread. */
         if ( !parse_long( p, LONG_MIN, LONG_MAX, &parsed ) )
@@ -949,7 +949,7 @@ bool rank_protects( CHAR_DATA *ch, CHAR_DATA *victim )
  * holds it; anyone else holds it while their saved Creator flag is set,
  * which only he grants or takes away (do_creator).
  */
-bool is_creator( CHAR_DATA *ch )
+bool is_creator( const CHAR_DATA *ch )
 {
     if ( ch == NULL )
         return false;
@@ -963,7 +963,7 @@ bool is_creator( CHAR_DATA *ch )
 
 /* The founder: the one creator nobody can unmake, and the only one who
    grants the rank. */
-bool is_creator_founder( CHAR_DATA *ch )
+bool is_creator_founder( const CHAR_DATA *ch )
 {
     if ( ch == NULL )
         return false;
@@ -989,7 +989,7 @@ bool is_creator_in_person( CHAR_DATA *ch )
 /*
  * Retrieve a character's trusted level for permission checking.
  */
-int get_trust( CHAR_DATA *ch )
+int get_trust( const CHAR_DATA *ch )
 {
     if ( ch->desc != NULL && ch->desc->original != NULL )
 	ch = ch->desc->original;
@@ -1466,7 +1466,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_GOLD:                                            break;
     case APPLY_EXP:
         if ( !IS_NPC(ch) )
-            ch->pcdata->exp_bonus += (sh_int)mod;
+            ch->pcdata->exp_bonus += mod;
         break;
     case APPLY_AC:
 	for (i = 0; i < 4; i ++)
@@ -1728,8 +1728,8 @@ bool found __attribute__((unused));
     {
 	if ( paf_old->type == paf->type )
 	{
-	    paf->level += paf_old->level; paf->level = paf->level / 2;
-	    paf->duration += paf_old->duration;
+	    paf->level = sh_int_clamp( ( paf->level + paf_old->level ) / 2 );
+	    paf->duration = sh_int_clamp( paf->duration + paf_old->duration );
 	    paf->modifier += paf_old->modifier;
 	    affect_remove( ch, paf_old );
 	    break;
@@ -2033,7 +2033,7 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 	    return;
 
 	plague.type             = gsn_plague;
-	plague.level            = af->level - 1;
+	plague.level            = sh_int_clamp( af->level - 1 );
 	plague.duration         = (sh_int)(number_range(1,2 * plague.level));
 	plague.location         = APPLY_STR;
 	plague.modifier         = -5;
@@ -2222,7 +2222,7 @@ int apply_ac( OBJ_DATA *obj, int iWear, int type )
 /*
  * Find a piece of eq on a character.
  */
-OBJ_DATA *get_eq_char( CHAR_DATA *ch, int iWear )
+OBJ_DATA *get_eq_char( const CHAR_DATA *ch, int iWear )
 {
     OBJ_DATA *obj;
 
@@ -3453,7 +3453,7 @@ bool triforce_sight( const CHAR_DATA *ch )
     if ( ch == NULL || IS_NPC(ch) )
 	return false;
 
-    light = get_eq_char( (CHAR_DATA *) ch, WEAR_LIGHT );
+    light = get_eq_char( ch, WEAR_LIGHT );
     return light != NULL && light->pIndexData != NULL
 	&& light->pIndexData->vnum == OBJ_VNUM_HYRULE_TRIFORCE;
 }
@@ -3465,7 +3465,7 @@ bool triforce_sight( const CHAR_DATA *ch )
  */
 int sight_trust( const CHAR_DATA *ch )
 {
-    int trust = get_trust( (CHAR_DATA *) ch );
+    int trust = get_trust( ch );
 
     if ( triforce_sight( ch ) )
 	trust = UMAX( trust, TRIFORCE_SIGHT_LEVEL );
@@ -3492,7 +3492,7 @@ int holylight_level( const CHAR_DATA *ch, OBJ_DATA **source )
     if ( !own && !triforce_sight( ch ) )
 	return 0;
     if ( !own && source != NULL )
-	*source = get_eq_char( (CHAR_DATA *) ch, WEAR_LIGHT );
+	*source = get_eq_char( ch, WEAR_LIGHT );
     return sight_trust( ch );
 }
 

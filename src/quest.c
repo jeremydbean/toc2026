@@ -1408,7 +1408,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
             if (ch->questpoints >= hero_cost)
             {
                 ch->questpoints -= hero_cost;
-                ch->level += 1;
+                ch->level = sh_int_clamp( ch->level + 1 );
                 ch->exp = exp_per_level(ch,ch->pcdata->points) * ch->level;
                 send_to_char("You raise a level!  ", ch );
                 advance_level(ch,false);

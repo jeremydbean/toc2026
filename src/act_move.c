@@ -4058,7 +4058,7 @@ static bool train_once( CHAR_DATA *ch, char *argument )
 
     ch->train		= (int16_t)(ch->train - cost);
 
-    ch->perm_stat[stat]		+= 1;
+    ch->perm_stat[stat] = sh_int_clamp( ch->perm_stat[stat] + 1 );
     act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
     act( "$n's $T increases!", ch, NULL, pOutput, TO_ROOM );
     return true;
@@ -4706,7 +4706,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
        break;
        case 3:                              /* drunk trap (48) */
 	 send_to_char("A strange mist is sprayed on you.\n\r",ch);
-	 ch->pcdata->condition[0] += 12;
+	 ch->pcdata->condition[0] = sh_int_clamp( ch->pcdata->condition[0] + 12 );
     snprintf(buf, sizeof(buf), "%s has set off a Beer trap!!!", ch->name);
        break;
        case 4:                              /* sleep trap (24) */
@@ -4799,7 +4799,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	      pMobIndex = get_mob_index( 79 );
 	      guardian = create_mobile ( pMobIndex );
 	      char_to_room( guardian, ch->in_room );
-	      guardian->level = ch->level - 5;
+	      guardian->level = sh_int_clamp( ch->level - 5 );
 	      if(ch->level < 51 )
 	      {
 	          guardian->max_hit = (int16_t)(ch->max_hit + ch->max_hit / 2);

@@ -885,9 +885,41 @@ Keeping a file clean, without changing what the game does:
 - **A signed/unsigned comparison is fixed at the type**, not by casting
   away a negative that can really happen.
 
-`-Warith-conversion` (93 sites, nearly all `sh_int += 1` and `LOWER`/
-`UPPER` into a char) and the validate set's older `-Wcast-qual` (23) and
-`-Wmissing-prototypes` (12) are not part of the clean line yet.
+**The second pass (2026-11-12) added four more to the line**:
+`-Wcast-qual` (23 sites), `-Wmissing-prototypes` (12), `-Wunused-parameter`
+(3) and gcc's `-Warith-conversion` (51: `sh_int += 1` and its kin -- the
+`LOWER`/`UPPER` casts had already taken the rest). They ride in the
+Makefile's `QUALITY_WARNINGS` (`-Wno-unused-parameter` is gone from the
+default `WARNFLAGS`), in CMake's `TOC_CONVERSION_WARNINGS`/`_ERRORS`, and in
+`validate.sh`'s strict set and its `TOC_STRICT_CONVERSION` errors, and
+`tests/test_strict_warnings.py` compiles with all of them. **clang has no
+`-Warith-conversion`**: the Makefile and `validate.sh` add it only when
+`$(CC) -Werror -Warith-conversion` compiles, CMake only for
+`C_COMPILER_ID` GNU, and the test only where its compiler takes it. How
+each is kept clean:
+
+- **A const string stays const.** `is_number`, `get_trust`, `get_eq_char`,
+  `is_creator`, `is_creator_founder` and `is_killuminati` take const now;
+  `one_argument_const( const char *, char * )` is the walk itself and
+  `one_argument` hands the caller's own pointer back advanced (pointer
+  arithmetic, no cast). A function that writes its argument
+  (`get_char_world` and `get_obj_here`, through `number_argument`) is given
+  a local copy, never `(char *)` a const string -- a string literal there
+  would be written to.
+- **A function is declared where its table is**: `do_` functions in
+  `interp.h`, spell functions in `magic.h`, a spec function beside its
+  module's other declarations in `merc.h` -- include the header in the file
+  that defines it. A helper used by one file is `static`.
+- **An unused parameter is `UNUSED_PARAM(x)`**, at the top of the body.
+- **A 16-bit field's arithmetic is `x = sh_int_clamp( x + n )`**, never
+  `x += (sh_int) n`. A field that is really a sum of modifiers is widened
+  instead (`pcdata->exp_bonus`, the APPLY_EXP sum, is int: clamping it would
+  make adding and taking off a modifier disagree).
+
+Still outside the line: `validate.sh`'s `-Wstrict-prototypes`,
+`-Wold-style-definition` and `-Wformat-overflow=2` are clean but warnings
+only, and gcc's `-Wformat-truncation` (on by `-Wall`) still reports eight
+`snprintf` sites in the -O0 sanitizer build.
 
 ## Player-Facing Bug Review
 
@@ -4514,7 +4546,10 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   and DELETE (both steps: a confirmation asked for before the sentence
   dies with it) refuse a prisoner too, and `travel_spell_refuses`,
   teleport, word of recall, summon, ACCEPT and RAISE DEAD ask
-  `is_jailed`. TRANSFER, ITRANS and DRAG refuse a prisoner unless the
+  `is_jailed`; so does `travel_target` of the one sought, so GATE, the
+  portal spell, earth travel and astral walk never reach a prisoner (a
+  gate took its caster into a cell that had a door and no flags,
+  2026-11-12). TRANSFER, ITRANS and DRAG refuse a prisoner unless the
   destination is the cell (`jail_refuses_staff_move`). There is no
   override that keeps the sentence and moves the prisoner: JAIL RELEASE,
   logged, is the deliberate act. A new way of moving a character asks
@@ -4557,7 +4592,15 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   (30 days); anything malformed, zero, negative, too long or followed by
   more words changes nobody. Logged `JAIL: ...` and WIZINFO at
   `staff_notice_level_pair`. `tests/test_jail_confinement.py` (the stock
-  cell and a cell given an exit and no flags), `tests/test_jail_sentence.py`.
+  cell and a cell given an exit and no flags), `tests/test_jail_sentence.py`,
+  `tests/test_jail_paths.py` (a mount, SUMMON, GATE and portal both ways,
+  RAISE DEAD, a death trap's door, TRANSFER and saved room, a poison death
+  in the cell). Hunger and thirst never take hit points here
+  (`gain_condition` only speaks), so nobody starves in a cell or anywhere;
+  that test holds a starving, parched prisoner at one hit point through a
+  tick to show it. A mount jailed under its rider is led in unridden and
+  stays their pet, which RIDE then refuses (its master is set) and
+  DISMOUNT does not clear: an old quirk of `release_mount`, not a way out.
 
 ## Where RECALL Goes
 

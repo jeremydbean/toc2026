@@ -1174,7 +1174,7 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 	    help = create_mobile ( pMobIndex );
 	    if ( help == NULL ) break;  /* F2: guard against missing mob vnum */
 	    char_to_room( help, ch->in_room );
-	    help->level = victim->level - 5;
+	    help->level = sh_int_clamp( victim->level - 5 );
 	    if(victim->level < 51 )
 	     {
 	       help->max_hit = pool_scale( victim->max_hit, 3, 2, POOL_MAX );
@@ -5248,7 +5248,7 @@ void do_smite( CHAR_DATA *ch, char *argument )
               left a warrior unarmed mid-fight (class review,
               2026-10-26). A full repair is the same coin either way. */
            if ( obj != NULL )
-               obj->condition -= (sh_int)number_range( SMITE_WEAR_MIN, SMITE_WEAR_MAX );
+               obj->condition = sh_int_clamp( obj->condition - number_range( SMITE_WEAR_MIN, SMITE_WEAR_MAX ) );
            if ( obj != NULL && obj->condition > 0 )
            {
                act( "Your $p groans under the blow.", ch, obj, NULL, TO_CHAR );
@@ -7326,7 +7326,7 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
       {
 	af.type         = gsn_stunning_blow;
 	af.level        = ch->level;
-	af.duration     = 1 + ch->level/5;
+	af.duration     = sh_int_clamp( 1 + ch->level/5 );
 	af.location     = APPLY_DEX;
 	af.modifier     = +1;
 	af.bitvector    = 0;
@@ -7500,7 +7500,7 @@ void damage_eq(CHAR_DATA *victim, int dam)
 
                 if ( loss < 1 )
                     loss = 1;
-                obj->condition -= (sh_int) loss;
+                obj->condition = sh_int_clamp( obj->condition - loss );
             }
 
             /* Worn to nothing is broken (owner, 2026-10-22): a piece

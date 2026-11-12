@@ -22,6 +22,7 @@
 
 #include <string.h>
 #include "merc.h"
+#include "interp.h"
 #include "combat_rules.h"
 #include "magic.h"
 

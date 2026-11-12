@@ -181,8 +181,8 @@ void do_gain(CHAR_DATA *ch, char *argument)
 
 	act("$N helps you apply your practice to training",
 		ch,NULL,trainer,TO_CHAR);
-	ch->practice -= 10;
-	ch->train +=1 ;
+	ch->practice = sh_int_clamp( ch->practice - 10 );
+	ch->train = sh_int_clamp( ch->train + 1 );
 	return;
     }
 
@@ -205,8 +205,8 @@ void do_gain(CHAR_DATA *ch, char *argument)
 	act("$N trains you, and you feel more at ease with your skills.",
 	    ch,NULL,trainer,TO_CHAR);
 
-	ch->train -= 2;
-	ch->pcdata->points -= 1;
+	ch->train = sh_int_clamp( ch->train - 2 );
+	ch->pcdata->points = sh_int_clamp( ch->pcdata->points - 1 );
 	ch->exp = exp_per_level(ch,ch->pcdata->points) * ch->level;
 	return;
     }
@@ -246,7 +246,7 @@ void do_gain(CHAR_DATA *ch, char *argument)
 	gn_add(ch,gn);
 	act("$N trains you in the art of $t",
 	    ch,group_table[gn].name,trainer,TO_CHAR);
-	ch->train -= group_table[gn].rating[ch->class];
+	ch->train = sh_int_clamp( ch->train - group_table[gn].rating[ch->class] );
 	return;
     }
 
@@ -292,7 +292,7 @@ void do_gain(CHAR_DATA *ch, char *argument)
 	ch->pcdata->learned[sn] = 1;
         act("$N trains you in the art of $t.",
             ch,skill_table[sn].name,trainer,TO_CHAR);
-        ch->train -= skill_table[sn].rating[ch->class];
+        ch->train = sh_int_clamp( ch->train - skill_table[sn].rating[ch->class] );
         return;
     }
 
@@ -639,7 +639,7 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	    ch->gen_data->group_chosen[gn] = true;
 	    ch->gen_data->points_chosen += group_table[gn].rating[ch->class];
 	    gn_add(ch,gn);
-	    ch->pcdata->points += group_table[gn].rating[ch->class];
+	    ch->pcdata->points = sh_int_clamp( ch->pcdata->points + group_table[gn].rating[ch->class] );
 	    return true;
 	}
 
@@ -664,7 +664,7 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	    ch->gen_data->skill_chosen[sn] = true;
 	    ch->gen_data->points_chosen += skill_table[sn].rating[ch->class];
 	    ch->pcdata->learned[sn] = 1;
-	    ch->pcdata->points += skill_table[sn].rating[ch->class];
+	    ch->pcdata->points = sh_int_clamp( ch->pcdata->points + skill_table[sn].rating[ch->class] );
 	    return true;
 	}
 
@@ -692,7 +692,7 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 		if (ch->gen_data->group_chosen[i])
 		    gn_add(ch,i);
 	    }
-	    ch->pcdata->points -= group_table[gn].rating[ch->class];
+	    ch->pcdata->points = sh_int_clamp( ch->pcdata->points - group_table[gn].rating[ch->class] );
 	    return true;
 	}
 
@@ -703,7 +703,7 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	    ch->gen_data->skill_chosen[sn] = false;
 	    ch->gen_data->points_chosen -= skill_table[sn].rating[ch->class];
 	    ch->pcdata->learned[sn] = 0;
-	    ch->pcdata->points -= skill_table[sn].rating[ch->class];
+	    ch->pcdata->points = sh_int_clamp( ch->pcdata->points - skill_table[sn].rating[ch->class] );
 	    return true;
 	}
 
@@ -957,7 +957,7 @@ void group_add( CHAR_DATA *ch, const char *name, bool deduct)
 	{
 	    ch->pcdata->learned[sn] = 1;
 	    if (deduct)
-	   	ch->pcdata->points += skill_table[sn].rating[ch->class]; 
+		ch->pcdata->points = sh_int_clamp( ch->pcdata->points + skill_table[sn].rating[ch->class] );
 	}
 	return;
     }
@@ -972,7 +972,7 @@ void group_add( CHAR_DATA *ch, const char *name, bool deduct)
 	{
 	    ch->pcdata->group_known[gn] = true;
 	    if (deduct)
-		ch->pcdata->points += group_table[gn].rating[ch->class];
+		ch->pcdata->points = sh_int_clamp( ch->pcdata->points + group_table[gn].rating[ch->class] );
 	}
 	gn_add(ch,gn); /* make sure all skills in the group are known */
     }

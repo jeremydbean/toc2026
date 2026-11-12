@@ -2745,7 +2745,7 @@ void spell_enchant_item( int sn, int level, CHAR_DATA *ch, void *vo )
     obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1)
-        obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
+        obj->level = sh_int_clamp( UMIN(LEVEL_HERO1 - 1,obj->level + 1) );
 
     found = 0;
     do_extract = 0;
@@ -2913,7 +2913,7 @@ void spell_enchant_armor( int sn, int level, CHAR_DATA *ch, void *vo )
     obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1)
-	obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
+	obj->level = sh_int_clamp( UMIN(LEVEL_HERO1 - 1,obj->level + 1) );
 
     if (!ac_found)
     { paf = new_affect();
@@ -3050,7 +3050,7 @@ void spell_enchant_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
     obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1 - 1)
-	obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
+	obj->level = sh_int_clamp( UMIN(LEVEL_HERO1 - 1,obj->level + 1) );
 
     if (!dam_found)
     { paf = new_affect();
@@ -3400,7 +3400,12 @@ CHAR_DATA *travel_target( CHAR_DATA *ch, char *argument, int level, int mode )
 	||   !is_name( arg, wch->name ) || !can_see( ch, wch ) )
 	    continue;
 
+	/* A prisoner is reached by no travel spell, whatever the cell's
+	   flags (jail.c: the sentence holds, never the room). A cell given
+	   a door and no ROOM_JAIL let a gate take its caster in beside them,
+	   and a portal open onto the cell, where summon already refused. */
 	if ( IS_IMMORTAL(wch)
+	||   is_jailed( wch )
 	||   IS_SET(room->room_flags, ROOM_NO_RECALL)
 	||   IS_SET(room->room_flags, ROOM_JAIL)
 	||   IS_SET(room->room_flags, ROOM_DT)
@@ -5174,6 +5179,7 @@ void spell_baura( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
+    UNUSED_PARAM(ch);
     if ( is_affected( victim, sn ) )
 	return;
 
@@ -5196,6 +5202,7 @@ void spell_dshield( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
+    UNUSED_PARAM(ch);
     if ( is_affected( victim, sn ) )
 	return;
 

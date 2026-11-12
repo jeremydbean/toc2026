@@ -2569,7 +2569,7 @@ static bool redeem_name_ok(CHAR_DATA *ch, const OBJ_DATA *obj, const char *name)
     }
     while (rest != NULL && *rest != '\0')
     {
-        rest = one_argument((char *)rest, word);
+        rest = one_argument_const(rest, word);
         if (word[0] != '\0' && strlen(word) >= 3 && !str_infix(word, name))
             return true;
     }

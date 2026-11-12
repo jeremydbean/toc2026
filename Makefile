@@ -13,7 +13,16 @@ CFLAGS   ?= -std=c17 -O2 -DROM -Dunix
 # tests/test_strict_warnings.py keeps it that way -- see AGENTS.md,
 # "Strict Warnings". Keep them in any WARNFLAGS you pass.
 CONVERSION_WARNINGS := -Wshadow -Wsign-compare -Wconversion -Wsign-conversion
-WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers $(CONVERSION_WARNINGS)
+# QUALITY_WARNINGS: a cast that drops const, a function with no prototype
+# in scope (a header and its definition drifting apart) and an unused
+# parameter (UNUSED_PARAM says it is meant). Clean since 2026-11-12, the
+# same sweep's second pass. -Warith-conversion -- an int sum stored back
+# into a 16-bit field (sh_int += 1), fixed with sh_int_clamp -- is gcc's
+# alone; clang does not know it, so it is added only where the compiler
+# takes it.
+ARITH_CONVERSION_WARNING := $(shell $(CC) -Werror -Warith-conversion -x c -fsyntax-only /dev/null >/dev/null 2>&1 && echo -Warith-conversion)
+QUALITY_WARNINGS := -Wcast-qual -Wmissing-prototypes -Wunused-parameter $(ARITH_CONVERSION_WARNING)
+WARNFLAGS?= -Wall -Wextra -Wno-missing-field-initializers $(CONVERSION_WARNINGS) $(QUALITY_WARNINGS)
 
 # Emit a .d per object listing the headers it read. Without this a header
 # edit recompiles nothing, and a constant that sizes a struct member leaves

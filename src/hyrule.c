@@ -1751,7 +1751,7 @@ bool hyrule_play_recorder( CHAR_DATA *ch, const char *argument )
     recorder_choices( ch, choices, sizeof(choices) );
     if ( argument != NULL && argument[0] != '\0' )
     {
-        if ( !is_number( (char *) argument )
+        if ( !is_number( argument )
         ||   !parse_int( argument, 1, 9, &want ) )
         {
             snprintf( buf, sizeof(buf),

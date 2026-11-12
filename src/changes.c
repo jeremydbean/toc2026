@@ -20,6 +20,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
 
 #define CHANGES_FILE        "changes.dat"
 #define CHANGES_MAX         400

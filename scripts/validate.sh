@@ -16,10 +16,21 @@ case "$mode" in
 esac
 want() { [ "$mode" = all ] || [ "$mode" = "$1" ]; }
 strict_warnings="-Wall -Wextra -Wshadow -Wsign-compare -Wconversion -Wsign-conversion -Wformat-overflow=2 -Wunused-parameter -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wcast-qual"
-# The tree is clean under the conversion class (AGENTS.md, "Strict
-# Warnings"); TOC_STRICT_CONVERSION=1, which CI sets, makes it an error.
+# -Warith-conversion is gcc's alone (clang warns that it does not know
+# it), so it is added only when the compiler make will use takes it.
+if ${CC:-gcc} -Werror -Warith-conversion -x c -fsyntax-only /dev/null >/dev/null 2>&1; then
+  strict_warnings="$strict_warnings -Warith-conversion"
+  arith_error="-Werror=arith-conversion"
+else
+  arith_error=""
+fi
+# The tree is clean under the conversion class and the second pass's
+# -Wcast-qual, -Wmissing-prototypes, -Wunused-parameter and
+# -Warith-conversion (AGENTS.md, "Strict Warnings"); TOC_STRICT_CONVERSION=1,
+# which CI sets, makes them errors.
 if [ "${TOC_STRICT_CONVERSION:-0}" = "1" ]; then
   strict_warnings="$strict_warnings -Werror=shadow -Werror=sign-compare -Werror=conversion -Werror=sign-conversion"
+  strict_warnings="$strict_warnings -Werror=cast-qual -Werror=missing-prototypes -Werror=unused-parameter $arith_error"
 fi
 python_bin="${PYTHON:-python3}"
 run_smoke="${RUN_SMOKE:-0}"

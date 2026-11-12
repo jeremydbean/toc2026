@@ -2021,7 +2021,7 @@ static bool typed_line_whole( const char *line )
     char word[MAX_INPUT_LENGTH];
     int i;
 
-    one_argument( (char *)line, word );
+    one_argument_const( line, word );
     if ( strlen( word ) < 2 )
         return FALSE;
     for ( i = 0; whole[i] != NULL; i++ )

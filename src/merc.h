@@ -1146,7 +1146,8 @@ bool  oracle_refuses_sleep args( ( CHAR_DATA *ch ) );
 bool  oracle_dazed    args( ( CHAR_DATA *ch, const char *line ) );
 void  oracle_daze_update args( ( void ) );
 bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
-bool  is_killuminati  args( ( CHAR_DATA *ch ) );
+DECLARE_SPEC_FUN( spec_oracle );   /* oracle.c, named in special.c's table */
+bool  is_killuminati  args( ( const CHAR_DATA *ch ) );
 bool  is_divinely_warded args( ( CHAR_DATA *ch ) );
 void  divine_ward_backfire args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 const char *default_prompt_text args( ( void ) );
@@ -2551,7 +2552,7 @@ struct  pc_data
     int                 hyrule_candle_room;
     int                 trail[TRAIL_LEN];
     sh_int              trail_head;
-    sh_int              exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%) */
+    int                 exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%); a sum of modifiers, so int */
 
     /* Current session stats (in-memory, not saved to player file) */
     time_t              session_logon;        /* timestamp when this session started */
@@ -3925,7 +3926,7 @@ void    reset_char      ( CHAR_DATA *ch );
 void    pool_max_adjust ( CHAR_DATA *ch, int location, long long mod );
 void    pool_carry_clear( CHAR_DATA *ch );
 void    pool_set_base   ( CHAR_DATA *ch, int location, int value );
-int     get_trust       ( CHAR_DATA *ch );
+int     get_trust       ( const CHAR_DATA *ch );
 bool    rank_protects   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    flags_from_argument ( const char *argument, int current, int *result );
 
@@ -4023,7 +4024,7 @@ void    obj_to_char     ( OBJ_DATA *obj, CHAR_DATA *ch );
 void    obj_from_char   ( OBJ_DATA *obj );
 int     apply_ac        ( OBJ_DATA *obj, int iWear, int type );
 void    gear_file_armor ( CHAR_DATA *wearer, OBJ_DATA *obj );
-OD * get_eq_char     ( CHAR_DATA *ch, int iWear );
+OD * get_eq_char     ( const CHAR_DATA *ch, int iWear );
 void    equip_char      ( CHAR_DATA *ch, OBJ_DATA *obj, int iWear );
 void    unequip_char    ( CHAR_DATA *ch, OBJ_DATA *obj );
 int     count_obj_list  ( OBJ_INDEX_DATA *obj, OBJ_DATA *list );
@@ -4191,8 +4192,8 @@ void    disaster_update         ( void );
 bool    is_disaster_dragon      ( const CHAR_DATA *ch );
 void    disaster_dragon_forget  ( CHAR_DATA *ch );
 void    disaster_dragon_slain   ( CHAR_DATA *ch, CHAR_DATA *drake );
-bool    is_creator      ( CHAR_DATA *ch );
-bool    is_creator_founder ( CHAR_DATA *ch );
+bool    is_creator      ( const CHAR_DATA *ch );
+bool    is_creator_founder ( const CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );
 int     staff_notice_level ( const CHAR_DATA *ch, int level );
 int     staff_notice_level_pair ( const CHAR_DATA *a, const CHAR_DATA *b,
@@ -4234,11 +4235,12 @@ void    interpret       ( CHAR_DATA *ch, char *argument );
 int     alias_split     ( const char *body,
                           char (*out)[MAX_INPUT_LENGTH], int max );
 bool    check_specials  ( CHAR_DATA *ch, DO_FUN *cmd, char *arg);
-bool    is_number       ( char *arg );
+bool    is_number       ( const char *arg );
 int     number_argument ( char *argument, char *arg );
 void    fill_comm_table_index (void);
 void    fill_social_table_index (void);
 char * one_argument    ( char *argument, char *arg_first );
+const char * one_argument_const ( const char *argument, char *arg_first );
 char * one_argument_case( char *argument, char *arg_first );
 
 /* magic.c */

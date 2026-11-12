@@ -128,17 +128,30 @@ option(ENABLE_SANITIZERS "Enable address and undefined sanitizers for debug vali
 # makes any of them fail the build. tests/test_strict_warnings.py holds the
 # same line for gcc. See AGENTS.md, "Strict Warnings".
 option(TOC_STRICT_CONVERSION "Treat conversion, sign and shadow warnings as errors (CI)" OFF)
+#
+# The second pass (2026-11-12) made the tree clean under -Wcast-qual,
+# -Wmissing-prototypes, -Wunused-parameter and gcc's -Warith-conversion
+# (an int sum stored back into a sh_int; clang has no such flag, so it is
+# passed to gcc alone). They are held to the same line.
 set(TOC_CONVERSION_WARNINGS
     -Wshadow
     -Wsign-compare
     -Wconversion
     -Wsign-conversion
+    -Wcast-qual
+    -Wmissing-prototypes
+    -Wunused-parameter
+    $<$<C_COMPILER_ID:GNU>:-Warith-conversion>
 )
 set(TOC_CONVERSION_ERRORS
     -Werror=shadow
     -Werror=sign-compare
     -Werror=conversion
     -Werror=sign-conversion
+    -Werror=cast-qual
+    -Werror=missing-prototypes
+    -Werror=unused-parameter
+    $<$<C_COMPILER_ID:GNU>:-Werror=arith-conversion>
 )
 
 set(SANITIZER_FLAGS
@@ -153,7 +166,6 @@ target_compile_options(
         -Wextra
         -Wpedantic
         -Werror=implicit-function-declaration
-        -Wno-unused-parameter
         -Wno-strict-aliasing
         ${TOC_CONVERSION_WARNINGS}
         $<$<BOOL:${TOC_STRICT_CONVERSION}>:${TOC_CONVERSION_ERRORS}>

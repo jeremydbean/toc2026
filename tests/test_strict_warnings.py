@@ -10,6 +10,12 @@ them errors). This module is the line: it compiles every file in src/ with
 those flags and fails on any warning at all, naming the file, the line and
 the flag. See "Strict Warnings" in the agents' guide for how to fix one -- never by
 a bare cast that keeps the wrap.
+
+The second pass, the same day, made the tree clean under the rest of
+scripts/validate.sh's strict set -- -Wcast-qual, -Wmissing-prototypes and
+-Wunused-parameter -- and gcc's -Warith-conversion (an int sum stored back
+into a sh_int, `sh_int += 1`, fixed with sh_int_clamp). They are held to the
+same line; -Warith-conversion only where the compiler knows it (clang does not).
 """
 from __future__ import annotations
 
@@ -26,12 +32,14 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 
 # The class the sweep made clean, beside what both builds already use.
-STRICT_FLAGS = [
-    "-Wall", "-Wextra", "-Wpedantic",
-    "-Wno-unused-parameter", "-Wno-missing-field-initializers",
-    "-Wshadow", "-Wsign-compare", "-Wconversion", "-Wsign-conversion",
-]
 CONVERSION_FLAGS = ["-Wshadow", "-Wsign-compare", "-Wconversion", "-Wsign-conversion"]
+# The second pass's: both compilers know these.
+QUALITY_FLAGS = ["-Wcast-qual", "-Wmissing-prototypes", "-Wunused-parameter"]
+ARITH_FLAG = "-Warith-conversion"
+STRICT_FLAGS = [
+    "-Wall", "-Wextra", "-Wpedantic", "-Wno-missing-field-initializers",
+    *CONVERSION_FLAGS, *QUALITY_FLAGS,
+]
 
 
 def compiler() -> str | None:
@@ -43,6 +51,19 @@ def compiler() -> str | None:
 
 
 CC = compiler()
+
+
+def arith_supported() -> bool:
+    """gcc has -Warith-conversion; clang warns that it does not know it."""
+    if CC is None:
+        return False
+    proc = subprocess.run([CC, "-Werror", ARITH_FLAG, "-x", "c", "-fsyntax-only", "-"],
+                          input="int main(void) { return 0; }\n",
+                          capture_output=True, text=True)
+    return proc.returncode == 0
+
+
+ARITH = [ARITH_FLAG] if arith_supported() else []
 
 
 # Every way the builds compile: Release is -O2, the sanitizer build -O0
@@ -67,7 +88,7 @@ def compile_one(job: tuple[Path, tuple[str, ...]]) -> tuple[Path, str]:
     path, variant = job
     proc = subprocess.run(
         [CC, "-std=c17", *variant, "-DROM", "-Dunix", "-I", str(SRC), "-fsyntax-only",
-         *STRICT_FLAGS, str(path)],
+         *STRICT_FLAGS, *ARITH, str(path)],
         cwd=ROOT, capture_output=True, text=True, errors="replace", timeout=300)
     return path, proc.stderr if proc.returncode == 0 else proc.stderr + "\n(compile failed)"
 
@@ -95,7 +116,7 @@ class StrictWarningTests(unittest.TestCase):
         self.assertEqual(
             warnings, [],
             "%d warning(s) under %s, by kind %s; first ones:\n%s"
-            % (len(warnings), " ".join(CONVERSION_FLAGS), dict(kinds),
+            % (len(warnings), " ".join(CONVERSION_FLAGS + QUALITY_FLAGS + ARITH), dict(kinds),
                "\n".join(warnings[:40])))
 
 
@@ -108,15 +129,26 @@ class BuildFlagTests(unittest.TestCase):
         self.assertIsNotNone(line, "Makefile lost CONVERSION_WARNINGS")
         for flag in CONVERSION_FLAGS:
             self.assertIn(flag, line.group(1))
-        self.assertIsNotNone(
-            re.search(r"^WARNFLAGS\?=.*\$\(CONVERSION_WARNINGS\)", text, re.M),
-            "the default WARNFLAGS must carry $(CONVERSION_WARNINGS)")
+        quality = re.search(r"^QUALITY_WARNINGS\s*:=\s*(.*)$", text, re.M)
+        self.assertIsNotNone(quality, "Makefile lost QUALITY_WARNINGS")
+        for flag in QUALITY_FLAGS:
+            self.assertIn(flag, quality.group(1))
+        self.assertIn("$(ARITH_CONVERSION_WARNING)", quality.group(1))
+        self.assertRegex(text, r"(?m)^ARITH_CONVERSION_WARNING\s*:=.*-Warith-conversion")
+        warnflags = re.search(r"^WARNFLAGS\?=(.*)$", text, re.M)
+        self.assertIsNotNone(warnflags)
+        self.assertIn("$(CONVERSION_WARNINGS)", warnflags.group(1),
+                      "the default WARNFLAGS must carry $(CONVERSION_WARNINGS)")
+        self.assertIn("$(QUALITY_WARNINGS)", warnflags.group(1),
+                      "the default WARNFLAGS must carry $(QUALITY_WARNINGS)")
+        self.assertNotIn("-Wno-unused-parameter", warnflags.group(1))
 
     def test_cmake_carries_them_and_ci_makes_them_errors(self) -> None:
         cmake = (ROOT / "CMakeLists.txt").read_text()
         self.assertNotIn("-Wno-sign-compare", cmake)
+        self.assertNotIn("-Wno-unused-parameter", cmake)
         self.assertIn("${TOC_CONVERSION_WARNINGS}", cmake)
-        for flag in CONVERSION_FLAGS:
+        for flag in CONVERSION_FLAGS + QUALITY_FLAGS + [ARITH_FLAG]:
             self.assertIn(flag, cmake)
             self.assertIn("-Werror=" + flag[2:], cmake)
         workflow = (ROOT / ".github" / "workflows" / "validate.yml").read_text()
@@ -125,8 +157,9 @@ class BuildFlagTests(unittest.TestCase):
         self.assertIn('TOC_STRICT_CONVERSION: "1"', workflow)
         validate = (ROOT / "scripts" / "validate.sh").read_text()
         self.assertIn("TOC_STRICT_CONVERSION", validate)
-        for flag in CONVERSION_FLAGS:
+        for flag in CONVERSION_FLAGS + QUALITY_FLAGS + [ARITH_FLAG]:
             self.assertIn("-Werror=" + flag[2:], validate)
+        self.assertIn(ARITH_FLAG, validate)
 
 
 class WideCharacterFieldTests(unittest.TestCase):

@@ -529,7 +529,7 @@ static PC_DATA *dummy_session( CHAR_DATA *ch, CHAR_DATA *victim )
 }
 
 
-void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
+static void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
 {
     PC_DATA *pc = dummy_session( ch, victim );
     int from;

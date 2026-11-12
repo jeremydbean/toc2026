@@ -40,6 +40,7 @@
 #include <netdb.h>
 #include "merc.h"
 #include "interp.h"
+#include "magic.h"
 #include "dnsasync.h"
 #include "db.h"
 
@@ -3459,13 +3460,13 @@ void do_advance( CHAR_DATA *ch, char *argument )
     for ( iLevel = victim->level ; iLevel < level; iLevel++ )
     {
        send_to_char( "You raise a level!!  ", victim );
-       victim->level += 1;
+       victim->level = sh_int_clamp( victim->level + 1 );
        advance_level( victim, true );
 
     }
-  victim->level = victim->level - 1;
+  victim->level = sh_int_clamp( victim->level - 1 );
   victim->exp = next_xp_level(victim);
-  victim->level = victim->level + 1;
+  victim->level = sh_int_clamp( victim->level + 1 );
 
   /* victim->trust = 0; EC */
 
@@ -6203,7 +6204,7 @@ bool may_build_area( CHAR_DATA *ch, AREA_DATA *pArea )
 
     while ( *list != '\0' )
     {
-        list = one_argument( (char *) list, arg );
+        list = one_argument_const( list, arg );
         if ( arg[0] != '\0' && !str_cmp( arg, ch->name ) )
             return true;
     }
@@ -6677,7 +6678,7 @@ static int build_vnum_arg( const char *arg )
 {
     int vnum;
 
-    if ( arg[0] == '\0' || !is_number( (char *) arg )
+    if ( arg[0] == '\0' || !is_number( arg )
       || !parse_int( arg, INT_MIN, INT_MAX, &vnum ) )
         return -1;
     return vnum;
@@ -13153,7 +13154,7 @@ static const struct spellup_entry *spellup_match( const char *said )
     if ( said[0] == '\0' )
         return NULL;
 
-    if ( is_number( (char *) said ) )
+    if ( is_number( said ) )
     {
         int choice;
 
@@ -13489,6 +13490,7 @@ void do_spellpurge( CHAR_DATA *ch, char *argument )
     int bucket;
     int count = 0;
 
+    UNUSED_PARAM(argument);
     /* There is no global character list in this codebase, so sweep the room
      * index the way do_owhere does.  next_in_room is captured before the
      * extract because extract_char unlinks her from it. */
@@ -13580,7 +13582,7 @@ static int mortals_playing( void )
 static void hermie_say( const char *text )
 {
     log_string( text );
-    wizinfo( (char *) text, LEVEL_IMMORTAL );
+    wizinfo( text, LEVEL_IMMORTAL );
 }
 
 static int hermie_window_seconds( void )
