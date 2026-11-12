@@ -8,7 +8,7 @@ such store. The sweep left the whole tree clean under it, -Wsign-conversion,
 -Wsign-compare and -Wshadow, and both builds now carry the flags (CI makes
 them errors). This module is the line: it compiles every file in src/ with
 those flags and fails on any warning at all, naming the file, the line and
-the flag. See AGENTS.md, "Strict Warnings", for how to fix one -- never by
+the flag. See "Strict Warnings" in the agents' guide for how to fix one -- never by
 a bare cast that keeps the wrap.
 """
 from __future__ import annotations
