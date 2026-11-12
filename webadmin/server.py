@@ -160,6 +160,7 @@ try:
     from webadmin import help_index
     from webadmin import balance
     from webadmin import gear_drops
+    from webadmin import changes_index
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
@@ -171,6 +172,7 @@ except ImportError:
     import help_index
     import balance
     import gear_drops
+    import changes_index
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -2876,6 +2878,44 @@ async def help_topic(topic: str) -> Dict[str, Any]:
         "keywords": entry["keywords"],
         "body": entry["body"],
     }
+
+
+_CHANGES_CACHE: Dict[str, Any] = {"stamp": None, "entries": []}
+
+
+def load_changes() -> list[Dict[str, Any]]:
+    """area/changes.dat as entries, cached on the file's mtime: it changes
+    with a deploy, not on a timer."""
+    path = AREA_PATH / "changes.dat"
+    try:
+        stamp = path.stat().st_mtime
+    except OSError:
+        return []
+    if _CHANGES_CACHE["stamp"] != stamp:
+        _CHANGES_CACHE["entries"] = changes_index.read_changes(path)
+        _CHANGES_CACHE["stamp"] = stamp
+    return _CHANGES_CACHE["entries"]
+
+
+async def request_is_staff(request: Request, x_admin_token: str) -> bool:
+    """Whether the request carries what a protected route would accept,
+    without refusing one that does not."""
+    try:
+        await verify_token(request, x_admin_token)
+    except HTTPException:
+        return False
+    return True
+
+
+@app.get("/api/changes")
+async def changes_list(request: Request, x_admin_token: str = Header(default="")) -> Dict[str, Any]:
+    """The game's CHANGES list, newest first. Public: the entries players
+    see in game with CHANGES ALL. Entries headed `staff` are shown in game
+    to staff alone, so they are included only for a request the admin
+    token (or the local staff session) authenticates."""
+    staff = await request_is_staff(request, x_admin_token)
+    entries = changes_index.visible_changes(await asyncio.to_thread(load_changes), staff)
+    return {"changes": entries, "total": len(entries), "staff": staff}
 
 
 @app.get("/api/health")

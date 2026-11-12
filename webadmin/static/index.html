@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Admin</title>
-    <link rel="stylesheet" href="/static/app.css?v=19">
+    <link rel="stylesheet" href="/static/app.css?v=20">
     <link rel="stylesheet" href="/static/theme-dragon.css?v=2">
     <script src="/static/command-sequence.js?v=2" defer></script>
     <script src="/static/console-output.js?v=3" defer></script>
-    <script src="/static/app.js?v=30" defer></script>
+    <script src="/static/app.js?v=31" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -29,6 +29,7 @@
                 <button class="nav-item" type="button" data-view="gear">Gear finder</button>
                 <button class="nav-item" type="button" data-view="leveling">Leveling</button>
                 <button class="nav-item" type="button" data-view="routes">Directions</button>
+                <button class="nav-item" type="button" data-view="changes">Changes</button>
                 <button class="nav-item" type="button" data-admin data-view="console">Game console</button>
                 <button class="nav-item" type="button" data-admin data-view="logins">Logins</button>
                 <button class="nav-item" type="button" data-admin data-view="chat">Chat</button>
@@ -309,6 +310,23 @@
                     <label class="routes-mudlet"><input id="routes-mudlet" type="checkbox"><span>Mudlet style (<code>;;</code> between commands)</span></label>
                 </form>
                 <div id="routes-results" class="routes-results"><div class="empty-state large">Loading routes.</div></div>
+            </section>
+
+            <section class="view" id="changes-view" data-title="Changes">
+                <div class="section-heading">
+                    <div><span class="eyebrow">What CHANGES ALL shows in game</span><h2>Changes</h2></div>
+                    <span class="panel-subtitle" id="changes-count"></span>
+                </div>
+                <p class="routes-intro" id="changes-intro">Every change to the game, newest first. Type CHANGES in game for the last two weeks.</p>
+                <form class="filter-grid" id="changes-form">
+                    <label>Search<input id="changes-search" type="search" placeholder="Hyrule, stash, quest..." autocomplete="off" spellcheck="false"></label>
+                    <label id="changes-staff-label" hidden>Show<select id="changes-who">
+                        <option value="all">All changes</option>
+                        <option value="players">For players</option>
+                        <option value="staff">Staff only</option>
+                    </select></label>
+                </form>
+                <div id="changes-results" class="changes-results"><div class="empty-state large">Loading changes.</div></div>
             </section>
 
             <section class="view" data-admin id="console-view" data-title="Game Console">

@@ -10,7 +10,7 @@
     const ADMIN_VIEWS = new Set(["players", "console", "logins", "chat", "oracle", "logs", "host", "operations"]);
 
     const VIEW_NAMES = new Set([
-        "overview", "world", "areas", "players", "gear", "leveling", "routes", "console", "logins", "chat", "oracle", "logs", "host", "operations",
+        "overview", "world", "areas", "players", "gear", "leveling", "routes", "changes", "console", "logins", "chat", "oracle", "logs", "host", "operations",
     ]);
     const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -375,7 +375,88 @@
         else if (view === "operations") await loadOperations();
         else if (view === "routes") await loadRoutes();
         else if (view === "leveling") await loadLeveling();
+        else if (view === "changes") await loadChanges();
         else if (view === "oracle") await loadOracle();
+    }
+
+    // The game's CHANGES list (area/changes.dat). Public: staff entries
+    // come back only when the request is authenticated, and only then is
+    // the who-sees-it filter shown.
+    const changesState = { data: null, loading: false, staff: null };
+    const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"];
+
+    async function loadChanges() {
+        const staffNow = Boolean(state.authenticated);
+        if (changesState.loading) return;
+        if (changesState.data && changesState.staff === staffNow) { renderChanges(); return; }
+        changesState.loading = true;
+        try {
+            changesState.data = await api("/api/changes");
+            changesState.staff = staffNow;
+        } catch (error) {
+            byId("changes-results").replaceChildren(
+                node("div", { className: "empty-state large", text: error.message }));
+            return;
+        } finally {
+            changesState.loading = false;
+        }
+        byId("changes-staff-label").hidden = !changesState.data.staff;
+        renderChanges();
+    }
+
+    function changeDate(date) {
+        const [, month, day] = date.split("-");
+        return `${MONTH_NAMES[Number(month) - 1].slice(0, 3)} ${Number(day)}`;
+    }
+
+    function renderChanges() {
+        const data = changesState.data;
+        if (!data) return;
+        const query = byId("changes-search").value.trim().toLowerCase();
+        const who = data.staff ? byId("changes-who").value : "all";
+        const all_ = data.changes || [];
+        const shown = all_.filter((entry) =>
+            (who === "all" || (who === "staff") === entry.staff)
+            && (!query || entry.paragraphs.join(" ").toLowerCase().includes(query)
+                || entry.id.toLowerCase().includes(query)));
+        byId("changes-count").textContent = shown.length === all_.length
+            ? `${all_.length} changes` : `${shown.length} of ${all_.length} changes`;
+
+        const results = byId("changes-results");
+        if (!shown.length) {
+            results.replaceChildren(
+                node("div", { className: "empty-state large", text: "No change matches that." }));
+            return;
+        }
+        const months = new Map();
+        for (const entry of shown) {
+            const key = entry.date.slice(0, 7);
+            if (!months.has(key)) months.set(key, []);
+            months.get(key).push(entry);
+        }
+        const sections = [];
+        for (const [key, entries] of months) {
+            const [year, month] = key.split("-");
+            const section = node("section", { className: "changes-month" });
+            section.append(node("h3", {
+                text: `${MONTH_NAMES[Number(month) - 1]} ${year}`,
+            }));
+            for (const entry of entries) {
+                const card = node("article", { className: "change-entry" });
+                card.append(node("div", { className: "change-date", text: changeDate(entry.date) }));
+                const body = node("div", { className: "change-body" });
+                for (const paragraph of entry.paragraphs) body.append(node("p", { text: paragraph }));
+                const meta = node("div", { className: "change-meta" });
+                if (entry.staff) meta.append(node("span", { className: "change-staff", text: "Staff" }));
+                meta.append(node("span", { text: entry.id }));
+                body.append(meta);
+                card.append(body);
+                section.append(card);
+            }
+            sections.push(section);
+        }
+        results.replaceChildren(...sections);
     }
 
     // Travel directions. Public, like the help text -- the same feed the
@@ -2222,6 +2303,9 @@
         window.setInterval(() => { void loadRuntimeStatus(); }, 15000);
         byId("routes-form").addEventListener("submit", (event) => event.preventDefault());
         byId("routes-search").addEventListener("input", renderRoutes);
+        byId("changes-form").addEventListener("submit", (event) => event.preventDefault());
+        byId("changes-search").addEventListener("input", renderChanges);
+        byId("changes-who").addEventListener("change", renderChanges);
         byId("logins-prev").addEventListener("click", () => loadLogins(state.loginsPage - 1));
         byId("logins-next").addEventListener("click", () => loadLogins(state.loginsPage + 1));
         byId("activity-prev").addEventListener("click", () => {

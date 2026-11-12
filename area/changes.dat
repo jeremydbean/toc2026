@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112webchanges 2026-11-12
+The website has a Changes page: every change to the game, newest first,
+with a search box -- the same list CHANGES ALL shows in game.
+
 @ 20261112wimpy 2026-11-12
 WIMPY now holds any number of hit points up to half your maximum. Past
 32,767 it used to be stored wrong -- WIMPY 40000 became a negative number --

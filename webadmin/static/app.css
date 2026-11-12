@@ -2257,3 +2257,14 @@ label textarea {
         text-align: center;
     }
 }
+
+/* Changes: one entry a row, dated in a narrow column like the game's own list. */
+.changes-results { display: flex; flex-direction: column; gap: 4px; }
+.changes-month h3 { margin: 22px 0 6px; font-size: 16px; }
+.change-entry { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 4px 16px; padding: 12px 0; border-top: 1px solid var(--border); }
+.change-date { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.change-body { min-width: 0; }
+.change-body p { margin: 0 0 6px; line-height: 1.6; max-width: 70ch; }
+.change-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; }
+.change-staff { text-transform: uppercase; letter-spacing: .06em; font-size: 11px; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-strong); color: var(--amber); }
+@media (max-width: 560px) { .change-entry { grid-template-columns: 1fr; } }

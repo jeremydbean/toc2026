@@ -2520,6 +2520,11 @@ is still WAKE.
 - Add tests for no/wrong/correct token, malformed bodies, boundaries,
   filesystem races, and failed parser reload.
 - Document authentication status for every new route.
+- **`/api/changes` is public** (2026-11-12): `webadmin/changes_index.py`
+  reads `area/changes.dat` as `src/changes.c` does, and the Changes view
+  shows it newest first. Entries headed `staff` come back only to a
+  request `verify_token` accepts (`request_is_staff`, which never refuses);
+  `tests/test_web_changes.py`.
 - **Bump the `?v=` on any file you edit under `webadmin/static/`.** Both pages
   load their assets with a cache-busting query, and editing the file without
   changing the number ships nothing: the browser keeps what it has. This bit
