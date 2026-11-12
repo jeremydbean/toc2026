@@ -292108,3 +292108,27 @@ Thu Nov 12 20:53:42 2026 :: Log Miseri [30422]: lo
 Thu Nov 12 20:53:46 2026 :: Log Miseri [30422]: load obj 30481
 Thu Nov 12 20:53:49 2026 :: Log Miseri [30422]: look map
 Thu Nov 12 20:55:49 2026 :: Treasure goblin: vanished from room 15066 (Campus Pub, campus.are) (too long in one area).
+Thu Nov 12 21:00:18 2026 :: Log Miseri [30422]: lo
+Thu Nov 12 21:00:26 2026 :: Log Miseri [30422]: n
+Thu Nov 12 21:00:26 2026 :: Log Miseri [30424]: arrived (Level 2: Gouged Hall) from 30422
+Thu Nov 12 21:00:29 2026 :: Log Miseri [30424]: kil gor
+Thu Nov 12 21:00:32 2026 :: Log Miseri [30424]: con gor
+Thu Nov 12 21:00:37 2026 :: Log Miseri [30424]: level 14 -> 15 (earned)
+Thu Nov 12 21:00:37 2026 :: Miseri has achieved level 15!
+Thu Nov 12 21:00:37 2026 :: Snapshot of Miseri taken before level: Miseri.20261112_210037.level (PRESTORE Miseri to see it).
+Thu Nov 12 21:00:37 2026 :: Log Miseri [30424]: killed a red goriya
+Thu Nov 12 21:00:37 2026 :: Log Miseri [30424]: coin +1 silver
+Thu Nov 12 21:00:37 2026 :: Log Miseri [30424]: coin +74 copper
+Thu Nov 12 21:00:37 2026 :: Log Miseri [30424]: coin +6 gold
+Thu Nov 12 21:00:37 2026 :: Log Miseri [30424]: coin +20 copper
+Thu Nov 12 21:00:41 2026 :: Log Miseri [30424]: lo
+Thu Nov 12 21:00:44 2026 :: Log Miseri [30424]: op north
+Thu Nov 12 21:00:44 2026 :: Log Miseri [30424]: n
+Thu Nov 12 21:00:44 2026 :: Log Miseri [30426]: arrived (Level 2: Long Hall of the Moon) from 30424
+Thu Nov 12 21:00:46 2026 :: Log Miseri [30426]: kil rop
+Thu Nov 12 21:00:48 2026 :: Log Miseri [30426]: wor
+Thu Nov 12 21:00:49 2026 :: Log Miseri [30426]: killed a rope
+Thu Nov 12 21:00:49 2026 :: Log Miseri [30426]: coin +18 silver
+Thu Nov 12 21:00:49 2026 :: Log Miseri [30426]: coin +60 copper
+Thu Nov 12 21:00:49 2026 :: Log Miseri [30426]: coin +3 gold
+Thu Nov 12 21:00:49 2026 :: Log Miseri [30426]: coin +20 copper

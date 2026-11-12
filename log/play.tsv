@@ -23248,3 +23248,23 @@
 1794516826	got	Miseri	14	30422	hyrule.are	30481	the Moon dungeon map	map	8	12000000	load	-
 1794516826	cmd	Miseri	14	30422	hyrule.are	standing	100	0	-	load	obj 30481	You create the Moon dungeon map.	-	-
 1794516829	cmd	Miseri	14	30422	hyrule.are	standing	100	0	-	look	map	Level 2: The Moon -- the dungeon map              N //       T+B //         o o	-	+
+1794517218	cmd	Miseri	14	30422	hyrule.are	standing	100	0	-	look		Level 2: Moonstone Crossroads //   Wide and echoing, this chamber sits where several halls meet, its tiles // worn into shallow paths by the passage of countless scaled bellies. A	-	+
+1794517226	cmd	Miseri	14	30424	hyrule.are	standing	100	0	-	north		Level 2: Gouged Hall //   Curving gouges mark the walls of this chamber, and the floor is littered // with chips of blue stone knocked loose by boomerangs hurled hard and often	-	+
+1794517229	cmd	Miseri	14	30424	hyrule.are	standing	100	0	-	kill	gor	Your punch wounds a red goriya. // Your punch misses a red goriya. // A red goriya parries your attack.	-	-
+1794517232	cmd	Miseri	14	30424	hyrule.are	fighting	100	0	fight	consider	gor	A red goriya is a little below your level. // A red goriya has about half your hit points. // A red goriya could barely scratch you; you would need about 2 rounds to bring it down.	-	+
+1794517237	achieved	Miseri	15	30424	hyrule.are	level-15	5	125	(violence_update)
+1794517237	level	Miseri	15	30424	hyrule.are	14	15	Monk 	0	32296	-1	(violence_update)
+1794517237	coin	Miseri	15	30424	hyrule.are	+100	loot	(violence_update)	corpse of a red goriya	103081733
+1794517237	coin	Miseri	15	30424	hyrule.are	+74	loot	(violence_update)	corpse of a red goriya	103081807
+1794517237	coin	Miseri	15	30424	hyrule.are	+60000	loot	(violence_update)	corpse of a red goriya	103141807
+1794517237	coin	Miseri	15	30424	hyrule.are	+20	loot	(violence_update)	corpse of a red goriya	103141827
+1794517241	cmd	Miseri	15	30424	hyrule.are	standing	97	0	-	look		Level 2: Gouged Hall //   Curving gouges mark the walls of this chamber, and the floor is littered // with chips of blue stone knocked loose by boomerangs hurled hard and often	-	+
+1794517244	cmd	Miseri	15	30424	hyrule.are	standing	97	0	-	open	north	Ok.	-	-
+1794517244	cmd	Miseri	15	30426	hyrule.are	standing	97	0	-	north		Level 2: Long Hall of the Moon //   This chamber is part of the long north-south spine of the dungeon, its blue // walls rising unbroken to a shadowed vault carved with the phases of the	-	+
+1794517246	cmd	Miseri	15	30426	hyrule.are	standing	97	0	-	kill	rop	Your punch misses a rope. // Your punch mauls a rope. // Your punch decimates a rope!	-	-
+1794517248	cmd	Miseri	15	30426	hyrule.are	fighting	97	0	fight	worth		You have 99 platinum, 407 gold, 676 silver, 4227 copper // and 32296 experience (2104 exp to level).	-	-
+1794517249	got	Miseri	15	30426	hyrule.are	30695	four bombs	treasure	1	0	(violence_update)	-
+1794517249	coin	Miseri	15	30426	hyrule.are	+1800	loot	(violence_update)	corpse of a rope	103143627
+1794517249	coin	Miseri	15	30426	hyrule.are	+60	loot	(violence_update)	corpse of a rope	103143687
+1794517249	coin	Miseri	15	30426	hyrule.are	+30000	loot	(violence_update)	corpse of a rope	103173687
+1794517249	coin	Miseri	15	30426	hyrule.are	+20	loot	(violence_update)	corpse of a rope	103173707
