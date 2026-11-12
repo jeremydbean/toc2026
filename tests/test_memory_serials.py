@@ -3,7 +3,7 @@
 The address set (src/memtrack.c) answered "live" for any address holding a
 character, object or descriptor of the kind asked about, so a stale
 pointer whose address had been freed and handed to a new block of the same
-kind read as live and was followed (AGENTS.md, Memory Safeguards: "What it
+kind read as live and was followed (the agent guide, Memory Safeguards: "What it
 cannot see"). And the stand-ins that are never allocated -- the descriptor
 offline_player_load fills, gear_compare's candidate object, a corpse
 record's vessel -- were never registered, so they read as freed.
