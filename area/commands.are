@@ -5878,10 +5878,18 @@ character -- and any that still points at something dead is written to the
 log as a MEMORY line, announced on WIZINFO, and cleared so the game goes
 on.
 
+Whether something is gone is looked up by its address, never read from it.
+A pointer to something still in quarantine is "dead", and the line names
+what it was.  One whose memory has already been given back is "freed": it
+is caught all the same, but nothing is known of what it was.  One whose
+memory was given to something new of the same kind cannot be told from a
+real one, and is not caught.
+
   Quarantine   blocks held, the oldest one's age, the window and the cap
   Live         characters, players, objects and connections seen last check
+  Tracked      how many live and quarantined things are known by address
   Sweep        how many checks, and what the last, slowest and average cost
-  Stale        pointers caught since boot, by field
+  Stale        pointers caught since boot, by field; how many were freed
   Last events  the newest MEMORY lines
 
 Any MEMORY line is a bug to report: it names the field, who held it, and

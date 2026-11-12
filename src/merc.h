@@ -3658,14 +3658,22 @@ EXTRA_DESCR_DATA *extra_descr_new ( void );
 void    extra_descr_release ( EXTRA_DESCR_DATA *ed );
 void    recycle_flush       ( void );
 /*
- * Liveness tags (recycle.c). A character, object or descriptor carries
- * MEM_ALIVE_* from the moment it is made and MEM_DEAD_* from the moment it
- * is handed to recycle.c, which keeps the block whole in quarantine for
- * MEM_QUARANTINE_SECS before freeing it. *_is_live() is true for NULL and
- * for anything not tagged dead -- a stand-in on the stack or a static has
- * no ALIVE tag and is not stale -- and is only meaningful for a pointer
- * whose target is at most a quarantine window old.
+ * Liveness (recycle.c, memtrack.c). A character, object or descriptor is
+ * registered by address when it is made, marked dead when handed to
+ * recycle.c -- which keeps the block whole in quarantine for
+ * MEM_QUARANTINE_SECS -- and forgotten when it is freed. *_liveness() looks
+ * the address up and never reads it: MEM_STATE_LIVE for NULL and anything
+ * made and not released; MEM_STATE_DEAD for a block in quarantine, whose
+ * own fields are still safe to read; MEM_STATE_FREED for anything else --
+ * freed, reused by another kind, or never made here (a stand-in on the
+ * stack or a static) -- which must never be read. *_is_live() is "LIVE".
+ * An address freed and reused by the same kind reads LIVE again: a stale
+ * pointer to it cannot be told from a fresh one by address. The
+ * MEM_ALIVE_/MEM_DEAD_ tags are kept for a debugger, and decide nothing.
  */
+#define MEM_STATE_FREED         0
+#define MEM_STATE_LIVE          1
+#define MEM_STATE_DEAD          2
 #define MEM_ALIVE_CHAR          0x43484152u     /* "CHAR" */
 #define MEM_DEAD_CHAR           0xDEADC4A2u
 #define MEM_ALIVE_OBJ           0x4F424A21u     /* "OBJ!" */
@@ -3677,6 +3685,10 @@ void    recycle_flush       ( void );
 bool    char_is_live        ( const CHAR_DATA *ch );
 bool    obj_is_live         ( const OBJ_DATA *obj );
 bool    desc_is_live        ( const DESCRIPTOR_DATA *d );
+int     char_liveness       ( const CHAR_DATA *ch );
+int     obj_liveness        ( const OBJ_DATA *obj );
+int     desc_liveness       ( const DESCRIPTOR_DATA *d );
+void    recycle_tracked     ( long *live, long *dead );
 void    recycle_label_char  ( const CHAR_DATA *ch );
 bool    recycle_dead_label  ( const void *ptr, char *out, size_t size, int *level );
 void    recycle_stats       ( int *held, long *oldest_secs, long *freed,

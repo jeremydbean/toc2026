@@ -32,6 +32,7 @@
 #pragma GCC diagnostic ignored "-Wuse-after-free"
 #endif
 #include "db.h"
+#include "memrange.h"
 
 DECLARE_DO_FUN( do_look );
  
@@ -5467,53 +5468,36 @@ void free_mem( void *pMem, int sMem )
 /*
  * The blocks alloc_perm has carved, in address order, so free_mem can tell
  * permanent memory from the system allocator's. A few hundred at most.
+ * Kept and searched as integers (memrange.c): comparing an ordinary heap
+ * pointer with a block's bounds is undefined in C -- they are different
+ * objects -- and ASan's pointer-compare check reports it (review,
+ * 2026-11-12). An interior pointer counts; one past a block's end does not.
  */
-static char **          perm_blocks;
-static int              perm_block_count;
-static int              perm_block_size;
+static MEM_BLOCK_SET    perm_blocks = { NULL, 0, 0, MAX_PERM_BLOCK };
 
 static void perm_block_note( char *block )
 {
-    int i;
-
-    if ( perm_block_count == perm_block_size )
+    if ( !mem_block_set_add( &perm_blocks, block ) )
     {
-        int size = perm_block_size > 0 ? 2 * perm_block_size : 64;
-        char **grown = realloc( perm_blocks, (size_t) size * sizeof(*grown) );
-
-        if ( grown == NULL )
-        {
-            perror( "Alloc_perm" );
-            exit( 1 );
-        }
-        perm_blocks     = grown;
-        perm_block_size = size;
+        perror( "Alloc_perm" );
+        exit( 1 );
     }
-
-    for ( i = perm_block_count; i > 0 && perm_blocks[i - 1] > block; i-- )
-        perm_blocks[i] = perm_blocks[i - 1];
-    perm_blocks[i] = block;
-    perm_block_count++;
 }
 
 bool is_perm_memory( const void *pMem )
 {
-    const char *p = (const char *) pMem;
-    int lo = 0;
-    int hi = perm_block_count - 1;
+    return mem_block_set_has( &perm_blocks, pMem );
+}
 
-    while ( lo <= hi )
-    {
-        int mid = lo + ( hi - lo ) / 2;
-
-        if ( p < perm_blocks[mid] )
-            hi = mid - 1;
-        else if ( p >= perm_blocks[mid] + MAX_PERM_BLOCK )
-            lo = mid + 1;
-        else
-            return true;
-    }
-    return false;
+/*
+ * Whether a string lies in the boot string space, which nothing frees. As
+ * integers, for the same reason: the string asked about is usually a heap
+ * string, a different object from string_space.
+ */
+static bool in_string_space( const char *str )
+{
+    return string_space != NULL
+        && mem_addr_in( str, string_space, (size_t) ( top_string - string_space ) );
 }
  
  
@@ -5579,7 +5563,7 @@ char *str_dup( const char *str )
     len = strlen(str) + 1;
     alloc_len = ( len > (size_t) INT_MAX ) ? INT_MAX : (int) len;
 
-    if ( str >= string_space && str < top_string )
+    if ( in_string_space( str ) )
     {
         str_new = alloc_mem( alloc_len );
         toc_strlcpy( str_new, str, (size_t)alloc_len );
@@ -5610,11 +5594,12 @@ char *str_perm( const char *str )
     if ( str == NULL || str[0] == '\0' )
         return &str_empty[0];
 
-    if ( str >= string_space && str < top_string )
+    if ( in_string_space( str ) )
         return (char *) str;
 
     len = strlen( str ) + 1;
-    if ( top_string + len > &string_space[MAX_STRING - MAX_STRING_LENGTH] )
+    /* As an offset: top_string + len could point past the array. */
+    if ( len > (size_t) ( &string_space[MAX_STRING - MAX_STRING_LENGTH] - top_string ) )
     {
         bug( "Str_perm: string space is full (MAX_STRING %d).", MAX_STRING );
         return &str_empty[0];
@@ -5641,7 +5626,7 @@ void free_string( char *pstr )
 
     if ( pstr == NULL
     ||   pstr == &str_empty[0]
-    || ( pstr >= string_space && pstr < top_string ) )
+    ||   in_string_space( pstr ) )
         return;
 
     len = strlen(pstr) + 1;

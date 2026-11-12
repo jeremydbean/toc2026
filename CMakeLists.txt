@@ -80,6 +80,8 @@ set(SRC_FILES
     src/recovery.c
     src/recycle.c
     src/memguard.c
+    src/memrange.c
+    src/memtrack.c
     src/heroes.c
     src/restores.c
     src/alignment.c

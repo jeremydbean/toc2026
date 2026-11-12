@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112memtrack 2026-11-12 staff
+MEMCHECK now says how many characters, objects and connections it tracks by
+address. The memory checks no longer read anything to find out whether it is
+gone, so a pointer left behind after the minute's grace is caught too: it is
+logged as "-> freed" instead of "-> dead", and MEMCHECK counts those apart.
+A pointer to memory reused by something new of the same kind still cannot be
+told from a real one.
+
 @ 20261111vnums 2026-11-11 staff
 Vnums are no longer held under 32,767: rooms, mobiles and objects may be
 numbered up to 1,000,000. ANEW, DIG and GOTO take the whole range, MSHOW,
