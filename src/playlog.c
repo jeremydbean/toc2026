@@ -1876,14 +1876,11 @@ void playlog_pulse_end( void )
 /* What a blow was: a skill or spell by name, else the weapon's noun. */
 static const char *blow_noun( int dt )
 {
-    static int attacks = -1;
-
-    if ( attacks < 0 )
-        for ( attacks = 0; attack_table[attacks].name != NULL; attacks++ )
-            ;
+    /* attack_table has no NULL row: it ends at MAX_DAMAGE_MESSAGE (const.c
+       asserts it). Counting to a NULL ran past its end into race_table. */
     if ( dt >= 0 && dt < MAX_SKILL && skill_table[dt].name != NULL )
         return skill_table[dt].name;
-    if ( dt >= TYPE_HIT && dt - TYPE_HIT < attacks )
+    if ( dt >= TYPE_HIT && dt <= TYPE_HIT + MAX_DAMAGE_MESSAGE )
         return attack_table[dt - TYPE_HIT].name;
     return "hit";
 }

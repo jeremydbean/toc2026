@@ -168,7 +168,11 @@ class CorpseLootingTests(unittest.TestCase):
         for key in ("gone get all", "gone get amulet", "gone get corpse",
                     "gone room get all", "gone sacrifice", "gone tk"):
             self.assertIn(ABSENT, seen[key], f"{key}: {seen[key]}")
-            self.assertNotIn("You get", seen[key], f"{key}: {seen[key]}")
+            # A death may drop a body part (death_cry: a heart, an arm) on
+            # the floor beside the corpse; GET ALL in the room takes that,
+            # which is not the corpse's.
+            self.assertNotRegex(seen[key], r"(?i)You get [^\n]*(amulet|bag|dagger|corpse)",
+                                f"{key}: {seen[key]}")
         self.assertNotRegex(seen["thief pack"], r"(?i)amulet|bag|corpse", seen["thief pack"])
 
         self.assertIn(f"Master: {MAGE}", seen["charmed"], seen["charmed"])

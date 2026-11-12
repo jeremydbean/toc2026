@@ -66,6 +66,10 @@ const   struct attack_type      attack_table    []              =
     {   "acidic bite",  DAM_ACID        },
     {   "chomp",        DAM_PIERCE      }
 };
+/* No NULL row ends it: every reader stops at MAX_DAMAGE_MESSAGE. */
+_Static_assert( sizeof( attack_table ) / sizeof( attack_table[0] )
+                    == MAX_DAMAGE_MESSAGE + 1,
+                "attack_table and MAX_DAMAGE_MESSAGE must agree" );
 /* race table */
 /* arrival and depart messages added by Haiku and Drakk */
 const	struct	race_type	race_table	[]		=
