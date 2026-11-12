@@ -940,7 +940,7 @@ as `open <keyword>`, so a published route stays honest.
 | Wooden, White, Magical Sword | Weapons; the White and Magical need hearts |
 | Boomerang, Magical Boomerang | Wielded weapons; `SHOOT <enemy>` throws it: light damage and the enemy is stunned out of the fight for a moment; a keese or gel dies outright. The Magical one hits harder. |
 | Bow + Arrows | `SHOOT <enemy>` in the room, with the bow wielded and the quiver carried: bow damage plus your damroll, a gold coin a shot, no Archery skill needed. An arrow kills a pols voice outright and finishes Gohma. |
-| Bombs | `BOMB` a cracked wall (uses one), or `BOMB <enemy>` for fire damage (uses one); every Dodongo -- Level 2's guardian and those of Levels 5 and 7 -- swallows one for exactly half its health, so two kill it. Four to a purchase; the bag holds 8, 12 or 16. |
+| Bombs | `BOMB` a cracked wall (uses one), or `BOMB <enemy>` for fire damage (uses one); every Dodongo -- Level 2's guardian and those of Levels 5 and 7 -- swallows one for a quarter of its health, and the fourth it swallows kills it. Four to a purchase; the bag holds 8, 12 or 16. |
 | Blue and Red Candle | Light; `BURN` a bush; `BURN <enemy>` for fire damage. The Blue Candle flares once a room, as on the NES (leaving the room renews it); the Red Candle burns hotter and as often as you like |
 | Bait | `FEED` the hungry Goriya (used up), or `FEED BAIT` to set it down: the room's enemies stop fighting and turn to it for a while (kept; never a guardian) |
 | Recorder | Drains Level 7's lake, shrinks every digdogger in the room to a third of its health, once each (Level 7's cannot be hurt at all until it has), and on the overworld its whirlwind carries you to a dungeon's screen: any whose Triforce piece you carry, and the one you are working on (`hyrule_next_level`). `PLAY RECORDER` goes to the next of those in turn -- the one being worked on first from a screen that is no dungeon's -- and `PLAY RECORDER <level>` straight to one. `BLOW` is the same command. A puzzle that wants the tune always gets it, a level or not |
@@ -1084,7 +1084,7 @@ Warp stones require the Power Bracelet. Their route permutations are:
 | Command | Requirement | First Quest use |
 | --- | --- | --- |
 | `burn <target>` | A lit Blue or Red Candle in the light slot | Bushes, shops, hearts, repairs, Level 8; an enemy for fire |
-| `bomb <target>` | A bomb, used up | Rock walls, caves, Level 9; an enemy for fire, Dodongo for half his health |
+| `bomb <target>` | A bomb, used up | Rock walls, caves, Level 9; an enemy for fire, Dodongo for a quarter of his health (four kill him) |
 | `play recorder` | The Recorder itself | Level 7's lake, Digdogger, the whirlwind |
 | `feed <guardian>`, `feed bait` | Enemy bait | Hungry Goriya; calming a room |
 | `push <target>` | Context dependent | Blocks, Armos, the gravestone, warp stones |

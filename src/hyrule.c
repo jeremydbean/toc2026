@@ -1341,7 +1341,9 @@ static bool hyrule_is_dodongo( const CHAR_DATA *victim )
 }
 
 /* BOMB at a creature: fire, one bomb used, a round of lag. Dodongo
-   swallows it whole and loses half his health, as on the NES. */
+   swallows it whole and loses a quarter of his health; the fourth he
+   swallows finishes him (owner, 2026-11-12: four bombs, not the NES's
+   two). */
 bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     int dam;
@@ -1363,7 +1365,9 @@ bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
     WAIT_STATE( ch, PULSE_VIOLENCE );
     /* Every Dodongo, the Level 2 guardian and the ones that roam Levels 5
        and 7 alike (UpdateDodongo, Z_04.asm:5945: each counts the bombs it
-       eats). The blast is exactly half its health, so two kill it. */
+       eats). Each blast is a quarter of its health, and the bombs it has
+       swallowed are counted in its hyrule_state, so the fourth kills it
+       whatever a tick healed between them. */
     if ( hyrule_is_dodongo( victim ) )
     {
         act( "You roll a bomb beneath $N. It swallows it -- and the blast tears through its hide!",
@@ -1374,8 +1378,18 @@ bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
         /* The blast is inside it, past the hide: no damage type, so its
            immunity to fire -- the guardian's -- turns none of it aside.
            Rolled as DAM_FIRE, Level 2's guardian took nothing at all. */
-        hyrule_exact_blow = true;
-        damage( ch, victim, UMAX( 1, victim->max_hit / 2 ), TYPE_UNDEFINED, DAM_NONE );
+        {
+            int quarter = UMAX( 1, ( victim->max_hit + HYRULE_DODONGO_BOMBS - 1 )
+                                   / HYRULE_DODONGO_BOMBS );
+            int blast = quarter;
+
+            if ( victim->hyrule_state < HYRULE_DODONGO_BOMBS )
+                victim->hyrule_state = sh_int_clamp( victim->hyrule_state + 1 );
+            if ( victim->hyrule_state >= HYRULE_DODONGO_BOMBS )
+                blast = UMAX( quarter, victim->hit );
+            hyrule_exact_blow = true;
+            damage( ch, victim, blast, TYPE_UNDEFINED, DAM_NONE );
+        }
         return true;
     }
 

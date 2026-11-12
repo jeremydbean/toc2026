@@ -7,7 +7,7 @@ mechanics audit). Every check here failed on the code before it:
   where the armour roll used to save one shot in six to ten;
 * a patra's great eye cannot be touched until its ring of eyes is cut;
 * a bubble cannot be harmed at all, and the fight with it ends at once;
-* every Dodongo swallows a bomb for exactly half its health;
+* every Dodongo swallows a bomb for a quarter of its health, four kill it;
 * Digdogger cannot be hurt until the Recorder shrinks it, once;
 * the Blue Candle flares once a room and the Red as often as you like;
 * the money game wants the worst sign's 40 gold, so a loss is paid whole.
@@ -202,15 +202,20 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
                         god.must(f"transfer zmechhero {SPARRING_FLOOR}", "")
                         god.sync(f"goto {SPARRING_FLOOR}")
 
-                with self.subTest("every Dodongo swallows a bomb for half its health"):
+                with self.subTest("every Dodongo swallows a bomb for a quarter of its health"):
                     load(god, DODONGO, "dodongo", 1000)
-                    give(god, "zmechhero", BOMBS, "bombs")
+                    give(god, "zmechhero", BOMBS, "bombs")      # four
                     mark = len(hero.transcript)
                     hero.sync("bomb dodongo", 30)
                     self.assertIn("swallows it", hero.transcript[mark:])
-                    # Half of it at once; a tick's regeneration may follow.
-                    self.assertLessEqual(hit_points(god, "dodongo")[0], 560)
-                    hero.sync("bomb dodongo", 30)
+                    # A quarter at once; a tick's regeneration may follow.
+                    self.assertLessEqual(hit_points(god, "dodongo")[0], 810)
+                    self.assertGreater(hit_points(god, "dodongo")[0], 600)
+                    for _ in range(2):
+                        hero.sync("bomb dodongo", 30)
+                    self.assertNotIn("Dodongo is DEAD", hero.transcript[mark:],
+                                     "three bombs do not kill it")
+                    hero.sync("bomb dodongo", 30)       # the fourth
                     for _ in range(10):
                         if "Dodongo is DEAD" in hero.transcript[mark:]:
                             break

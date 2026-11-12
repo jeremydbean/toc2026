@@ -6153,8 +6153,8 @@ void do_burn( CHAR_DATA *ch, char *argument )
 /*
  * BOMB. Bombs are Hyrule's (four to a purchase, hyrule.c) and each blast
  * uses one, as on the NES: a cracked wall or rock opens to one, and at a
- * creature it is a blast of fire -- Dodongo swallows it and loses half
- * his health. The lag is paid inside hyrule_bomb_creature, before the
+ * creature it is a blast of fire -- Dodongo swallows it and loses a
+ * quarter of his health, and the fourth finishes him. The lag is paid inside hyrule_bomb_creature, before the
  * blow; the puzzle path deals no damage.
  */
 void do_bomb( CHAR_DATA *ch, char *argument )

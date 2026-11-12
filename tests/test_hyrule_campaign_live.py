@@ -7,7 +7,7 @@ way the chain needs, by the paths players use:
 * melee: a warrior hacks Level 1's Aquamentus down, takes its key from the
   corpse, opens the treasure door and the chest, and has the first piece;
 * caster: a mage burns Aquamentus down with spells alone;
-* group: two grouped characters bomb Level 2's Dodongos -- two bombs each,
+* group: two grouped characters bomb Level 2's Dodongos -- two bombs each, four in all,
   half its health a bomb -- and the kill is shared.
 
 Staff only stand the fixtures where they need to be and make the fights
@@ -151,7 +151,7 @@ class HyruleCampaignLiveTests(unittest.TestCase):
                 self.assertEqual(lair, room_of(god, "zcamptwo"))
 
                 mark_one, mark_two = len(one.transcript), len(two.transcript)
-                for _ in range(2):
+                for _ in range(2):          # four bombs between them
                     one.sync("bomb dodongo", 30)
                     two.sync("bomb dodongo", 30)
                     if "Dodongo is DEAD" in one.transcript[mark_one:]:

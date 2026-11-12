@@ -129,7 +129,7 @@ void damage_drain_next( int divisor )
 }
 /* Set by a caller for the one blow that follows: a blow whose size the
    NES fixes -- an arrow that bursts a pols voice, a boomerang that kills a
-   keese or a gel, the bomb a Dodongo swallows for half its health.
+   keese or a gel, the bomb a Dodongo swallows for a quarter of its health.
    damage() takes it at entry, and no armour roll, sanctuary or resistance
    shaves the blow below what it was asked to be. Passing "hit + 10" alone
    killed a level 31 pols voice one shot in six. */

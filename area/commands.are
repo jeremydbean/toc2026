@@ -2663,7 +2663,7 @@ hand; OPEN, PICK, DOORBASH and UNLOCK will not shift them.
         four for 20 gold).  It opens a cracked wall or rock; a surface
         that will not open costs nothing.  At a creature, anywhere, it is
         a blast of fire with three seconds of lag; Dodongo swallows one
-        and loses half his health.
+        and loses a quarter of his health; the fourth finishes him.
   BURN  needs a lit candle as your light and does not use it up.  A bush
         burns away to show what it hid; a creature takes a lick of flame.
         The Blue Candle burns a creature once a room, the Red as often as

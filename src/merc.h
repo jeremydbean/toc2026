@@ -1598,6 +1598,9 @@ const char *default_prompt_text args( ( void ) );
 #define HYRULE_KIND_POLS_VOICE     30308
 #define HYRULE_KIND_DIGDOGGER      30309
 #define HYRULE_DODONGO_VNUM        30218
+/* Bombs a Dodongo swallows to die (owner, 2026-11-12: four, a quarter of
+   its health each; it was two at a half). Counted in its hyrule_state. */
+#define HYRULE_DODONGO_BOMBS       4
 #define HYRULE_KIND_PATRA          30318
 #define HYRULE_KIND_BUBBLE         30304
 #define HYRULE_KIND_BLADE_TRAP     30337

@@ -707,7 +707,7 @@
     },
     "2": {
       "long": "Dodongo, a huge triceratops-like beast, stomps toward you.",
-      "description": "An enormous, stocky dinosaur with a thick, armoured hide and a mouth\nwide enough to swallow a man. Dodongo lumbers back and forth across\nits lair, its hide turning all but the hardest blows. Yet it dislikes\nsmoke: it will swallow a bomb set in its path, and the blast inside\ntakes half of it at once, and the smoke of a bomb stuns it long enough for a blade to\nbite. Guardian of the Moon, it leaves a heart container behind."
+      "description": "An enormous, stocky dinosaur with a thick, armoured hide and a mouth\nwide enough to swallow a man. Dodongo lumbers back and forth across\nits lair, its hide turning all but the hardest blows. Yet it dislikes\nsmoke: it will swallow a bomb set in its path, and the blast inside\ntakes a quarter of it at once, and the smoke of a bomb stuns it long enough for a blade to\nbite. Guardian of the Moon, it leaves a heart container behind."
     },
     "3": {
       "long": "Manhandla, a monstrous four-headed flower, writhes toward you.",
@@ -758,7 +758,7 @@
       "keywords": "old man sage sooty",
       "short": "a soot-streaked old man",
       "long": "A soot-streaked old man coughs into his sleeve and wheezes, \"Dodongo dislikes smoke.\"",
-      "description": "Soot has settled into every wrinkle of his face, and he coughs whenever the fires beside him gutter. He has lived too long beside smoke to love it, and he swears the horned beast called Dodongo shares his opinion. Feed the creature something that smokes and bursts, he hints, patting an empty pouch at his hip, and the blast will take half of it at once -- two, and it is done. He seems to find the thought funny, and laughs until the coughing takes him again."
+      "description": "Soot has settled into every wrinkle of his face, and he coughs whenever the fires beside him gutter. He has lived too long beside smoke to love it, and he swears the horned beast called Dodongo shares his opinion. Feed the creature something that smokes and bursts, he hints, patting an empty pouch at his hip, and the blast will take a quarter of it at once -- four, and it is done. He seems to find the thought funny, and laughs until the coughing takes him again."
     },
     "old_man:L3:C6": {
       "vnum": 30348,

@@ -107,7 +107,7 @@ class DamageAlwaysCostsLag(unittest.TestCase):
         )
 
     def test_the_bomb_stays_fixed(self) -> None:
-        """Half Dodongo's maximum hit points, no roll -- so never free.
+        """A quarter of Dodongo's maximum hit points, no roll -- so never free.
 
         Since October 2026 BOMB at a creature is hyrule_bomb_creature() in
         src/hyrule.c (do_bomb hands it the victim), and a bomb is used up
@@ -120,7 +120,8 @@ class DamageAlwaysCostsLag(unittest.TestCase):
         self.assertNotIn("damage(", body, "do_bomb deals its own damage again")
         hyrule = (ROOT / "src" / "hyrule.c").read_text(encoding="utf-8")
         bomb = hyrule.split("bool hyrule_bomb_creature(")[1].split(chr(10) + "}")[0]
-        self.assertIn("victim->max_hit / 2", bomb)
+        self.assertIn("/ HYRULE_DODONGO_BOMBS", bomb)
+        self.assertIn("UMAX( quarter, victim->hit )", bomb)
         first_blow = bomb.index("damage(")
         self.assertLess(bomb.index("WAIT_STATE"), first_blow,
                         "the bomb takes half a target's maximum hit points for free")
