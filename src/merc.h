@@ -2066,6 +2066,15 @@ typedef struct hyrule_dungeon_gate
 #define COND_THIRST                   2
 #define HERO_CONDITION               24    /* where a hero's hunger and thirst sit */
 
+/* Starving and parched (owner, 2026-11-12): each tick a mortal spends with
+   hunger or thirst at 0 takes this share of their maximum hit points,
+   rising a point a tick in a row to the cap, and never below one hit
+   point (hunger_thirst_tick in update.c). */
+#define HUNGER_HURT_FIRST             2    /* percent, the first tick */
+#define HUNGER_HURT_MAX               8
+#define THIRST_HURT_FIRST             3
+#define THIRST_HURT_MAX              10
+
 /* Positions. */
 #define POS_DEAD                      0
 #define POS_MORTAL                    1
@@ -2471,6 +2480,11 @@ struct  pc_data
     sh_int              tell_history_next;
     sh_int              tell_history_held;
     sh_int              condition       [3];
+    /* Not saved: how many ticks in a row hunger (COND_FULL) and thirst
+       have stood at 0 and hurt, which is how hard they hurt
+       (hunger_thirst_tick in update.c). */
+    int                 starving_ticks;
+    int                 parched_ticks;
     sh_int              learned         [MAX_SKILL];
     bool                group_known     [MAX_GROUP];
     ALIAS_DATA          alias           [MAX_ALIASES];
@@ -4406,6 +4420,8 @@ bool    walkto_trainer_place ( const char *name, char *place, size_t place_size,
 void    advance_level   ( CHAR_DATA *ch, bool is_advance );
 void    gain_exp        ( CHAR_DATA *ch, int gain );
 void    gain_condition  ( CHAR_DATA *ch, int iCond, int value );
+bool    hunger_thirst_applies ( CHAR_DATA *ch );
+bool    hunger_refuses_sleep  ( CHAR_DATA *ch );
 void    update_handler  ( void );
 void    ban_update      ( void );
 long    next_xp_level   ( CHAR_DATA *ch );

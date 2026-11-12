@@ -3083,6 +3083,11 @@ void do_sleep( CHAR_DATA *ch, char *argument )
       return;
     }
 
+    /* Starving or parched: too hungry or thirsty to sleep (update.c).
+       The SLEEP spell still works -- magic overrides the body. */
+    if ( hunger_refuses_sleep( ch ) )
+	return;
+
     switch ( ch->position )
     {
     case POS_SLEEPING:

@@ -1210,53 +1210,54 @@ hide               history            hit                hitroll
 hobbit             hold               holiday            holiday fair
 holiday treats     holidays           holy word          holylight
 house              house of thieves   hr                 human
-humans             hunting grounds    hyrule             hyrule guardians
-hyrule items       hyrule levels      hyrule order       hyrule secrets
-icaza              icicle             idea               identify
-ignore             immortal           immortals          immune
-immunity           info               infravision        intelligence
-interest           inventory          invis              invisspell
-iron               iron skin          issue              jazair
-join               jump               junk               kalak
-keepsake           keepsake trophy    keepsakes          kick
-kill               killer             know alignment     leaderboard
-level              leveling           levitate           life-undeath
-light spells       lightning bolt     lightning breath   link
-list               listen at door     locate object      lock
-login              look               lore               lost mage
-lucky              lycanthropy        mace               mage
-magic missile      magic user         magical shield     major globe
-maladiction        maladictions       man                mana convert
-map                mapper             mapping            market
-marks              mass healing       mass invis         mass sanctuary
-master             master sword       mastery            maze
-meditation         merc               meteor swarm       mind blast
-mind leech         mindbar            mindblast          mindleech
-money cave         monk               moonbeam           morgue
-morgue of dresden  motd               mount              move
-mudlet             mudlet interface   mudschool          multiclass
-murde              murder             music              ne
-necromancer        nerve damage       neutral            neutrality field
-new                newbie info        news               night vision
-nightmare          nofol              nofollow           noloot
-north              northeast          northwest          nosummon
-note               notes              nw                 open
-options            oracle             order              outfit
-palms              palms of the creator                  paragon
-parry              pass door          password           peek
-pet                pets               phase              pick
-pick lock          pkill              pkilling           plague
-play               poison             poker              polearm
-portal             pose               potion of power    potion of the giant
-power gloves       power potion       practice           practicelist
-pray               project            prompt             protection evil
-protective         psionic            psionic armor      psionics
-psionist trainer   pstealing          psychic            psychic shield
-pull               push               put                pyrotechnics
-quaff              quest              questing           question
-questor            questpoint         questpoints        qui
-quiet              quit               race               race help
-races              racial trainer     raise dead         rakar
+humans             hunger             hunting grounds    hyrule
+hyrule guardians   hyrule items       hyrule levels      hyrule order
+hyrule secrets     icaza              icicle             idea
+identify           ignore             immortal           immortals
+immune             immunity           info               infravision
+intelligence       interest           inventory          invis
+invisspell         iron               iron skin          issue
+jazair             join               jump               junk
+kalak              keepsake           keepsake trophy    keepsakes
+kick               kill               killer             know alignment
+leaderboard        level              leveling           levitate
+life-undeath       light spells       lightning bolt     lightning breath
+link               list               listen at door     locate object
+lock               login              look               lore
+lost mage          lucky              lycanthropy        mace
+mage               magic missile      magic user         magical shield
+major globe        maladiction        maladictions       man
+mana convert       map                mapper             mapping
+market             marks              mass healing       mass invis
+mass sanctuary     master             master sword       mastery
+maze               meditation         merc               meteor swarm
+mind blast         mind leech         mindbar            mindblast
+mindleech          money cave         monk               moonbeam
+morgue             morgue of dresden  motd               mount
+move               mudlet             mudlet interface   mudschool
+multiclass         murde              murder             music
+ne                 necromancer        nerve damage       neutral
+neutrality field   new                newbie info        news
+night vision       nightmare          nofol              nofollow
+noloot             north              northeast          northwest
+nosummon           note               notes              nw
+open               options            oracle             order
+outfit             palms              palms of the creator
+paragon            parched            parry              pass door
+password           peek               pet                pets
+phase              pick               pick lock          pkill
+pkilling           plague             play               poison
+poker              polearm            portal             pose
+potion of power    potion of the giant                   power gloves
+power potion       practice           practicelist       pray
+project            prompt             protection evil    protective
+psionic            psionic armor      psionics           psionist trainer
+pstealing          psychic            psychic shield     pull
+push               put                pyrotechnics       quaff
+quest              questing           question           questor
+questpoint         questpoints        qui                quiet
+quit               race               race help          races
+racial trainer     raise dead         rakar
 rakar the weaponsmaster               read               recall
 recite             red ring           redeem             refresh
 reissue            relics             remort             remort classes
@@ -1282,37 +1283,38 @@ sneak              social             socials            sound
 south              southeast          southwest          spear
 speedwalk          spellgroup         spells             spiritual hammer
 split              staff              stand              start
-stash              stashlink          stats              staves
-steal              stealth            steel              steel fist
-steelfist          stone skin         stop               story
-strength           stunning blow      sub issue          subissue
-summary            summon             sunray             sw
-sword              take               take any           tax
-taxes              teachlist          telekinesis        teleport
-teleportspell      tell               temple of breas    tentacles
-thews              thief              third attack       tia
-tick               tifarah            time               titanic
-titanic spell      title              tk                 to hit
-tocgui             topten             torment            track
-train              training           traitor            transfusion
-transport          transportation     trap               trap the soul
-traps              travel             treasure goblin    triforce
-trip               trophy             turn               typo
-unalias            university         university of magic
-unlock             up                 use                valley elf
-value              vampiric touch     vengeance          vengence
-ventriloquate      vesh               vile               virtuous
-visible            vortex             vulnerability      vulnerable
-wake               walk               walkto             wands
-wanted             warrior            water burst        water spells
-weaken             weapon             weapon mastery     weapons
-weaponsmaster      weaponsmastery     wear               weather
-weather group      weather spells     weatherspells      web
-webclient          west               where              where to hunt
-whip               who                whois              wield
-wimpy              wind spells        wisdom             withdraw
-wizlist            word of recall     world              worth
-xp                 yard               yell               zap
+starving           stash              stashlink          stats
+staves             steal              stealth            steel
+steel fist         steelfist          stone skin         stop
+story              strength           stunning blow      sub issue
+subissue           summary            summon             sunray
+sw                 sword              take               take any
+tax                taxes              teachlist          telekinesis
+teleport           teleportspell      tell               temple of breas
+tentacles          thews              thief              third attack
+thirst             tia                tick               tifarah
+time               titanic            titanic spell      title
+tk                 to hit             tocgui             topten
+torment            track              train              training
+traitor            transfusion        transport          transportation
+trap               trap the soul      traps              travel
+treasure goblin    triforce           trip               trophy
+turn               typo               unalias            university
+university of magic                   unlock             up                 use
+valley elf         value              vampiric touch     vengeance
+vengence           ventriloquate      vesh               vile
+virtuous           visible            vortex             vulnerability
+vulnerable         wake               walk               walkto
+wands              wanted             warrior            water burst
+water spells       weaken             weapon             weapon mastery
+weapons            weaponsmaster      weaponsmastery     wear
+weather            weather group      weather spells     weatherspells
+web                webclient          west               where
+where to hunt      whip               who                whois
+wield              wimpy              wind spells        wisdom
+withdraw           wizlist            word of recall     world
+worth              xp                 yard               yell
+zap
 ~
 
 0$~

@@ -943,7 +943,17 @@ int move_gain( CHAR_DATA *ch )
 
 
 
+/* gain_condition, and whether reaching 0 says "You are hungry." -- the
+   tick passes speak false and lets hunger_thirst_tick say it, in stronger
+   words where it hurts, so a starving player reads one line a tick. */
+static void condition_change( CHAR_DATA *ch, int iCond, int value, bool speak );
+
 void gain_condition( CHAR_DATA *ch, int iCond, int value )
+{
+    condition_change( ch, iCond, value, true );
+}
+
+static void condition_change( CHAR_DATA *ch, int iCond, int value, bool speak )
 {
     int condition;
 
@@ -991,11 +1001,13 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
 	switch ( iCond )
 	{
 	case COND_FULL:
-	    send_to_char( "You are hungry.\n\r",  ch );
+	    if ( speak )
+		send_to_char( "You are hungry.\n\r",  ch );
 	    break;
 
 	case COND_THIRST:
-	    send_to_char( "You are thirsty.\n\r", ch );
+	    if ( speak )
+		send_to_char( "You are thirsty.\n\r", ch );
 	    break;
 
 	case COND_DRUNK:
@@ -1006,6 +1018,173 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
     }
 
     return;
+}
+
+
+/*
+ * Starving and parched (owner, 2026-11-12: hunger and thirst "should
+ * damage you somewhat as they get extreme, and maybe prevent you from
+ * sleeping"). Whom hunger and thirst reach at all: a mortal player below
+ * hero level who has not had the first remort's gift. Staff by trust, as
+ * every other staff test asks; gain_condition already holds a hero's at a
+ * middling value and a remort's at -1, so neither ever reads 0 -- they are
+ * named here so SLEEP and the tick agree whatever SET did meanwhile.
+ */
+bool hunger_thirst_applies( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+	return false;
+    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+	return false;
+    if ( ch->level >= LEVEL_HERO || ch->pcdata->num_remorts >= 1 )
+	return false;
+    return true;
+}
+
+/* Where hunger and thirst may hurt as well as nag: not link-dead (nobody
+   is there to eat), not idled into the void, not in Limbo and not in the
+   Oracle's sanctum, where no time passes for the body. A jail cell is no
+   shelter -- it never kills, so it lets no death out. */
+static bool hunger_thirst_hurts_here( CHAR_DATA *ch )
+{
+    if ( !hunger_thirst_applies( ch ) )
+	return false;
+    if ( ch->desc == NULL || ch->was_in_room != NULL || ch->in_room == NULL )
+	return false;
+    if ( ch->in_room->vnum == ROOM_VNUM_LIMBO
+    ||   ch->in_room->vnum == ROOM_VNUM_ORACLE )
+	return false;
+    return true;
+}
+
+/* The share of the maximum one condition takes after ticks in a row. */
+static int condition_hurt_percent( int ticks, int first, int cap )
+{
+    if ( ticks < 1 )
+	return 0;
+    if ( ticks - 1 >= cap - first )
+	return cap;
+    return first + ticks - 1;
+}
+
+static const char *hunger_words( int ticks )
+{
+    if ( ticks <= 2 )
+	return "Your stomach cramps with hunger -- you need to eat.";
+    if ( ticks <= 5 )
+	return "You are weak from hunger.";
+    return "You are starving, and your body is wasting away.";
+}
+
+static const char *thirst_words( int ticks )
+{
+    if ( ticks <= 2 )
+	return "Your mouth is dry with thirst -- you need to drink.";
+    if ( ticks <= 5 )
+	return "Your throat is parched and cracked.";
+    return "You are desperate for water, and your head swims.";
+}
+
+/*
+ * One tick of starving and parched, after the conditions have fallen.
+ * Hit points come off directly, as disaster_harm's do, not through
+ * damage(): no kill is recorded, no drain or vampiric weapon feeds on it,
+ * no fight starts, and it never takes a character below one hit point --
+ * hunger kills nobody. A sleeper is woken, unless the sleep is magic
+ * (AFF_SLEEP), which holds: the spell overrides the body.
+ */
+static void hunger_thirst_tick( CHAR_DATA *ch )
+{
+    char line[MAX_STRING_LENGTH];
+    bool starving, parched;
+    int percent = 0;
+    int loss;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+	return;
+
+    starving = ch->pcdata->condition[COND_FULL]   == 0;
+    parched  = ch->pcdata->condition[COND_THIRST] == 0;
+
+    /* Fed or watered -- or never hungry -- starts the count again. */
+    if ( !starving )
+	ch->pcdata->starving_ticks = 0;
+    if ( !parched )
+	ch->pcdata->parched_ticks = 0;
+
+    if ( !starving && !parched )
+	return;
+
+    if ( !hunger_thirst_hurts_here( ch ) )
+    {
+	/* Held where it stands: the void, the sanctum and a lost link
+	   neither count a tick nor forgive one. Say what the tick used to. */
+	if ( starving )
+	    send_to_char( "You are hungry.\n\r", ch );
+	if ( parched )
+	    send_to_char( "You are thirsty.\n\r", ch );
+	return;
+    }
+
+    line[0] = '\0';
+    if ( starving )
+    {
+	if ( ch->pcdata->starving_ticks < 1000 )
+	    ch->pcdata->starving_ticks++;
+	percent += condition_hurt_percent( ch->pcdata->starving_ticks,
+	                                   HUNGER_HURT_FIRST, HUNGER_HURT_MAX );
+	toc_strlcat( line, hunger_words( ch->pcdata->starving_ticks ), sizeof(line) );
+    }
+    if ( parched )
+    {
+	if ( ch->pcdata->parched_ticks < 1000 )
+	    ch->pcdata->parched_ticks++;
+	percent += condition_hurt_percent( ch->pcdata->parched_ticks,
+	                                   THIRST_HURT_FIRST, THIRST_HURT_MAX );
+	if ( line[0] != '\0' )
+	    toc_strlcat( line, " ", sizeof(line) );
+	toc_strlcat( line, thirst_words( ch->pcdata->parched_ticks ), sizeof(line) );
+    }
+    toc_strlcat( line, "\n\r", sizeof(line) );
+    send_to_char( line, ch );
+
+    loss = pool_scale( ch->max_hit, percent, 100, POOL_MAX );
+    if ( loss < 1 )
+	loss = 1;
+    if ( ch->hit > 1 )
+    {
+	if ( loss > ch->hit - 1 )
+	    loss = ch->hit - 1;
+	ch->hit -= loss;
+    }
+
+    if ( ch->position == POS_SLEEPING && !IS_AFFECTED(ch, AFF_SLEEP) )
+    {
+	ch->position = POS_RESTING;
+	send_to_char( starving ? "Hunger gnaws you awake.\n\r"
+	                       : "Thirst drags you awake.\n\r", ch );
+	act( "$n stirs awake.", ch, NULL, NULL, TO_ROOM );
+    }
+}
+
+/* SLEEP refused while starving or parched, before anything changes. */
+bool hunger_refuses_sleep( CHAR_DATA *ch )
+{
+    if ( !hunger_thirst_applies( ch ) )
+	return false;
+    if ( ch->position == POS_SLEEPING || ch->position == POS_FIGHTING )
+	return false;
+    if ( ch->pcdata->condition[COND_FULL] == 0 )
+    {
+	send_to_char( "You are too hungry to sleep. Eat something first.\n\r", ch );
+	return true;
+    }
+    if ( ch->pcdata->condition[COND_THIRST] == 0 )
+    {
+	send_to_char( "You are too thirsty to sleep. Drink something first.\n\r", ch );
+	return true;
+    }
+    return false;
 }
 
 
@@ -1862,8 +2041,11 @@ void char_update( void )
 //	    }
 
 	    gain_condition( ch, COND_DRUNK,  -1 );
-	    gain_condition( ch, COND_FULL,   -1 );
-	    gain_condition( ch, COND_THIRST, -1 );
+	    /* hunger_thirst_tick says what hunger and thirst at 0 mean, and
+	       does what they do. */
+	    condition_change( ch, COND_FULL,   -1, false );
+	    condition_change( ch, COND_THIRST, -1, false );
+	    hunger_thirst_tick( ch );
 
                if (ch->pcdata->condition[COND_DRUNK] == 25)
                send_to_char("You start to feel a little less drunk.\n\r",ch);

@@ -3746,6 +3746,28 @@ and connected-but-idle -- and a test asserts `LINKDEAD_PURGE_TICKS` is
 never compared against directly there, so a new branch cannot quietly
 skip the bonus.
 
+## Starving And Parched
+
+Owner, 2026-11-12: hunger and thirst "should damage you somewhat as they
+get extreme, and maybe prevent you from sleeping". `hunger_thirst_tick` in
+`update.c`, after the tick lowers the conditions: each tick at 0 takes
+`HUNGER_HURT_FIRST` (2) percent of the maximum, a point more a tick in a
+row to `HUNGER_HURT_MAX` (8); thirst `THIRST_HURT_FIRST` (3) to
+`THIRST_HURT_MAX` (10); both add. The run is `pcdata->starving_ticks` and
+`parched_ticks`, memory only, reset at the first tick the condition is not
+0. Hit points come off directly through `pool_scale`, never `damage()` (no
+kill, drain or fight), and never below one: hunger kills
+nobody, a jailed prisoner included. One line a tick says why, in words
+that grow (the tick's own "You are hungry." is silenced for that
+character: `condition_change(..., speak)`). Who: `hunger_thirst_applies`
+-- a mortal player under `LEVEL_HERO` with no remort, not staff by trust;
+`hunger_thirst_hurts_here` also spares the link-dead, the idle in the void
+(`was_in_room`), Limbo and the Oracle's sanctum, whose ticks neither count
+nor reset the run. SLEEP asks `hunger_refuses_sleep` before anything
+changes; the tick wakes a sleeper to resting, but not one under
+`AFF_SLEEP` -- the SLEEP spell still works on the starving (magic
+overrides the body). `tests/test_hunger_thirst.py`.
+
 ## The Psionic Awakening
 
 **Psionics awaken between levels 18 and 21 and nowhere else.**

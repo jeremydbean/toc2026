@@ -277,6 +277,14 @@ Food, drink, healers, potions, spells, regeneration, and equipment can affect
 recovery. After the first remort, hunger and thirst conditions are disabled by
 the remort system.
 
+Hunger and thirst each halve your healing, and left alone they hurt: each tick
+spent starving takes 2% of your maximum hit points, rising a point a tick to
+8%, and each tick parched takes 3%, rising to 10%. They never take you below
+one hit point, and eating or drinking starts the count over. You cannot
+`sleep` while starving or parched, and either wakes you. Heroes, remorted
+characters and staff are spared, and nothing is taken while you are
+link-dead, idling in the void or in the Oracle's sanctum. See `help hunger`.
+
 ### Death And Corpses
 
 Death behavior can vary with character state, area, and PK context. Read the
