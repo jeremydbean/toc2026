@@ -22250,3 +22250,91 @@
 1794437812	cmd	Trentlin	37	4210	dresden.are	standing	55	0	-	score		| Name:       Trentlin | Level:      37 | Class:        Monk | // | Played:     35 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
 1794437813	cmd	Trentlin	37	4210	dresden.are	standing	55	0	-	sleep		You go to sleep.	-	-
 1794437814	session	Trentlin	37	4210	dresden.are	quit	1019s	+1 levels	+2452 exp	-19948607 copper	9 kills	0 deaths	1 quests	395 commands	1 refused	coin: loot 1p 9g 22s 49c, quests 4p 95g 91s 44c, spent 26p	spent on: heal 26p	exp: kills +2437, skilluse +40, recall -25
+1794451081	area	Trentlin	37	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794451083	cmd	Trentlin	37	4210	dresden.are	sleeping	55	0	-	wake		You wake and stand up.	-	-
+1794451083	cmd	Trentlin	37	4210	dresden.are	standing	55	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794451087	cmd	Trentlin	37	4210	dresden.are	standing	55	0	-	where	hermie	You didn't find any hermie.	-	-
+1794451088	cmd	Trentlin	37	4203	dresden.are	standing	55	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794451089	cmd	Trentlin	37	4202	dresden.are	standing	55	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794451089	cmd	Trentlin	37	4201	dresden.are	standing	55	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794451090	cmd	Trentlin	37	2427	dresden.are	standing	55	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794451090	cmd	Trentlin	37	2427	dresden.are	standing	55	0	-	east		Alas, you cannot go that way.	-	-
+1794451090	cmd	Trentlin	37	2404	dresden.are	standing	55	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794451091	cmd	Trentlin	37	2401	dresden.are	standing	55	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794451091	cmd	Trentlin	37	2410	dresden.are	standing	55	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794451091	cmd	Trentlin	37	2411	dresden.are	standing	55	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794451092	cmd	Trentlin	37	2414	dresden.are	standing	55	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794451092	cmd	Trentlin	37	2497	dresden.are	standing	55	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794451095	quest	Trentlin	37	2497	dresden.are	rush	recover	25040	The Crown of Eclipse	59	hood.are	7
+1794451095	cmd	Trentlin	37	2497	dresden.are	standing	55	18	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Bandits have made off with The Crown of Eclipse!'	-	+
+1794451097	cmd	Trentlin	37	2401	dresden.are	standing	55	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794451099	cmd	Trentlin	37	2403	dresden.are	standing	55	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794451099	cmd	Trentlin	37	2420	dresden.are	standing	55	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794451100	cmd	Trentlin	37	2421	dresden.are	standing	55	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794451100	cmd	Trentlin	37	2441	dresden.are	standing	55	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794451100	cmd	Trentlin	37	2442	dresden.are	standing	55	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794451100	cmd	Trentlin	37	2443	dresden.are	standing	55	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794451101	cmd	Trentlin	37	2444	dresden.are	standing	55	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794451101	cmd	Trentlin	37	2445	dresden.are	standing	55	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794451101	area	Trentlin	37	2101	hood.are	dresden.are	hood.are	20	east
+1794451101	cmd	Trentlin	37	2101	hood.are	standing	55	0	-	east		A Dark Alleyway //   The walls of the alleyway have been spray-painted over many times // over the years.  One section of graffiti actually looks legible,	-	+
+1794451103	cmd	Trentlin	37	2102	hood.are	standing	55	0	-	east		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1794451104	cmd	Trentlin	37	2103	hood.are	standing	55	0	-	east		Along White Dragon Boulevard //   Everywhere you look you see signs of recent violence.  Patches of blood // lie everywhere and broken sticks and abandoned knives are strewn here	-	+
+1794451107	cmd	Trentlin	37	2104	hood.are	standing	55	0	-	east		White Dragon Boulevard at Armory //   Only gang members dare wander the streets here. // What used to be the armory lies to the south.  White Dragon Boulevard	-	+
+1794451108	cmd	Trentlin	37	2105	hood.are	standing	55	0	-	east		White Dragon Blvd. //   Black Dragon Avenue used to run south from here but the way has been // blocked by the toppling of a building into the street.  White Dragon	-	+
+1794451108	cmd	Trentlin	37	2106	hood.are	standing	55	0	-	east		Corner of Ice and White Dragon //   Ice Dragon Way leads south from here.  It used to run the whole length // of the neighborhood and way lined with beautiful crystal sculptures.	-	+
+1794451109	cmd	Trentlin	37	2107	hood.are	standing	55	0	-	east		White Dragon Boulevard //   A once majestic inn with a white marble facade lies to the south. // Unfortunately, it has fallen into disrepair and decay.  You can continue	-	+
+1794451110	cmd	Trentlin	37	2108	hood.are	standing	55	0	-	east		Corner of Bronze and White Dragon //   This is the north-east corner of the neighborhood. White Dragon // boulevard heads west and Bronze Dragon street heads south.	-	+
+1794451110	cmd	Trentlin	37	2115	hood.are	standing	55	0	-	south		Bronze Dragon Street at wizard's back door //   Bronze Dragon street goes north and south.  The back door to what // remains of the magic shop is west.	-	+
+1794451111	cmd	Trentlin	37	2120	hood.are	standing	55	0	-	south		Bronze Dragon Street //   There used to be a gate out to the east here which led to distant lands. // The gate has rusted permanently shut.  The street goes north and south.	-	+
+1794451111	cmd	Trentlin	37	2125	hood.are	standing	55	0	-	south		Bronze Dragon Street at Warehouse //   The street runs north and south.  There is an old wooden door leading // to a warehouse to the west.  The warehouse LOOKS abandoned. . .	-	+
+1794451112	cmd	Trentlin	37	2125	hood.are	standing	55	0	-	west		The wooden is closed.	-	-
+1794451115	cmd	Trentlin	37	2130	hood.are	standing	55	0	-	south		Yellow Dragon Road //   Bronze Dragon Street intersects here and runs north.  Yellow Dragon ends // here but continues to the west.	-	+
+1794451116	cmd	Trentlin	37	2130	hood.are	standing	55	0	-	south		Alas, you cannot go that way.	-	-
+1794451116	cmd	Trentlin	37	2130	hood.are	standing	55	0	-	south		Alas, you cannot go that way.	-	-
+1794451116	cmd	Trentlin	37	2130	hood.are	standing	55	0	-	south		Alas, you cannot go that way.	-	-
+1794451118	cmd	Trentlin	37	2129	hood.are	standing	55	0	-	west		Yellow Dragon Road //   There is a barred window to the north.  There appears to be a light // coming from the cracks around it.  The road extends east and west	-	+
+1794451118	cmd	Trentlin	37	2129	hood.are	standing	55	0	-	south		You are too exhausted.	-	-
+1794451119	cmd	Trentlin	37	2128	hood.are	standing	55	0	-	west		Yellow Dragon Road //   The roads continues east and west.  There is a courtyard to the north. // You enter "no man's land" to the south.	-	+
+1794451122	cmd	Trentlin	37	2128	hood.are	standing	55	0	-	eat	guan	You eat guano. // Stone skin never takes on a monk or a necromancer. // Your feet rise off the ground.	-	+
+1794451125	cmd	Trentlin	37	2133	hood.are	standing	55	1	-	south		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south,	-	+
+1794451125	cmd	Trentlin	37	2138	hood.are	standing	55	0	-	south		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues north,	-	+
+1794451126	cmd	Trentlin	37	2139	hood.are	standing	57	0	-	east		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues north,	-	+
+1794451126	cmd	Trentlin	37	2140	hood.are	standing	57	0	-	east		NO MAN'S LAND //   This is the section of town between the two gang's territories.  This // is usually where the violence starts.  No Man's land continues south	-	+
+1794451127	cmd	Trentlin	37	2145	hood.are	standing	57	0	-	south		Corner of Ajax and Hector //   There is a grand fountain to the east but the water doesn't // look good to drink.  Ajax street heads south and Hector	-	+
+1794451127	cmd	Trentlin	37	2149	hood.are	standing	57	0	-	south		Ajax Avenue at chapel //   The temple to honor the minor gods is through a rusty metal door // to the west.  The street continues north and south.  You hear the	-	+
+1794451144	cmd	Trentlin	37	2154	hood.are	standing	57	0	-	south		Ajax street at Weaponshop (or whats left of it) //   The street goes north and south.  The stables used to be to the // east, but I bet all the horses are dead or gone.	-	+
+1794451144	cmd	Trentlin	37	2159	hood.are	standing	57	0	-	south		Curve in the road //   The street goes north or west from here.  A narrow street once // headed southeast from here.	-	+
+1794451145	cmd	Trentlin	37	2158	hood.are	standing	57	0	-	west		Ajax street //   A once prideful guildhouse was on the northeast corner of // this intersection.  Most of the walls and ceiling have long since	-	+
+1794451145	cmd	Trentlin	37	2165	hood.are	standing	57	0	-	south		The inn/pub //   The inn actually looks fairly functional despite its lack // of repair.  The boys come here to hoot it up and drink themselves	-	+
+1794451147	got	Trentlin	37	2165	hood.are	25040	The Crown of Eclipse	trash	59	0	get	the floor
+1794451147	cmd	Trentlin	37	2165	hood.are	standing	57	0	-	get	all	You get The Crown of Eclipse.	-	-
+1794451147	cmd	Trentlin	37	2170	hood.are	standing	57	0	-	south		Hallway //   The hallway heads back north to the main part of the inn/pub. // The stairs leading up to the guest rooms here do not seem	-	+
+1794451148	cmd	Trentlin	37	2169	hood.are	standing	57	0	-	west		Intersection of Ajax and Solomon //   The two roads meet at a corner here.  Ajax runs north and // Solomon heads west.  An inn/pub is through a back doorway	-	+
+1794451149	area	Trentlin	37	4207	dresden.are	hood.are	dresden.are	48	recall
+1794451149	cmd	Trentlin	37	4207	dresden.are	standing	57	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794451150	cmd	Trentlin	37	4208	dresden.are	standing	57	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794451151	coin	Trentlin	37	4208	dresden.are	-700000	spent	heal	-	15240219077
+1794451151	cmd	Trentlin	37	4208	dresden.are	standing	57	0	-	heal	reresh	The healer utters the words 'candusima'. // You feel fully refreshed! (7 castings, 70 gold.)	-	-
+1794451155	cmd	Trentlin	37	4207	dresden.are	standing	57	1	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794451156	cmd	Trentlin	37	4202	dresden.are	standing	57	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794451156	cmd	Trentlin	37	4201	dresden.are	standing	57	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794451156	cmd	Trentlin	37	2427	dresden.are	standing	57	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794451156	cmd	Trentlin	37	2427	dresden.are	standing	57	0	-	east		Alas, you cannot go that way.	-	-
+1794451157	cmd	Trentlin	37	2404	dresden.are	standing	57	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794451157	cmd	Trentlin	37	2401	dresden.are	standing	57	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794451158	cmd	Trentlin	37	2410	dresden.are	standing	57	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794451158	cmd	Trentlin	37	2411	dresden.are	standing	57	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794451159	cmd	Trentlin	37	2414	dresden.are	standing	57	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight	-	+
+1794451159	cmd	Trentlin	37	2497	dresden.are	standing	57	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794451161	coin	Trentlin	37	2497	dresden.are	+13591728	quests	aquest	-	15253810805
+1794451161	outcome	Trentlin	37	2497	dresden.are	quest-complete	success	-	-	rush qp=3716->3716 offered=103 daily=18->18 coin=+13591728 kill=566322 streak=44 level=37 target=0
+1794451161	cmd	Trentlin	37	2497	dresden.are	standing	57	24	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Crown of Eclipse to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'	success:-	+
+1794451163	cmd	Trentlin	37	2497	dresden.are	standing	57	5	-	aquest	gamble yes	The dice BETRAY you! Your 103 quest points are lost.	-	-
+1794451166	cmd	Trentlin	37	4207	dresden.are	standing	57	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794451166	cmd	Trentlin	37	4208	dresden.are	standing	57	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794451168	coin	Trentlin	37	4208	dresden.are	-5000000	spent	heal	-	15248810805
+1794451168	coin	Trentlin	37	4208	dresden.are	-5000000	spent	heal	-	15243810805
+1794451168	cmd	Trentlin	37	4208	dresden.are	standing	57	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body; that is all you can pay for. (2 castings, 1000 gold.)	-	-
+1794451172	coin	Trentlin	37	4208	dresden.are	-400000	spent	heal	-	15243410805
+1794451172	cmd	Trentlin	37	4208	dresden.are	standing	85	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
