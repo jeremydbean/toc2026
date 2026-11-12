@@ -2851,6 +2851,14 @@ is still WAKE.
 - Add tests for no/wrong/correct token, malformed bodies, boundaries,
   filesystem races, and failed parser reload.
 - Document authentication status for every new route.
+- **A query filter that cannot be read is a 400 that says why**, checked
+  once before the walk, never a bare `except: pass` that drops it:
+  `/api/objects`' `stat_filter` is `_parse_stat_filter` (`<stat>><n>`,
+  the stat part of an apply location; other operators refused)
+  (`tests/test_object_stat_filter.py`).
+- **The balance feed is parsed off the event loop**: a route reads it
+  through `await balance.load_async(PROGRESS_LOG)` once, and hands that
+  result on (see The Play Journal).
 - **`/api/changes` is public** (2026-11-12): `webadmin/changes_index.py`
   reads `area/changes.dat` as `src/changes.c` does, and the Changes view
   shows it newest first. Entries headed `staff` come back only to a
@@ -3610,6 +3618,23 @@ log says what a player typed; the journal says what happened, in columns
   prerequisites. The Gear Finder carries `seen_drops`. Trimmed past
   `PROGRESS_MAX` to `PROGRESS_KEEP`. `tests/test_progress_log.py`,
   `tests/test_balance_log.py`.
+  **The dashboard reads the feed as it grows** (review, 2026-11-12: a
+  full reparse after every row, ~0.35 s on a 40,000-row feed, on the event
+  loop). `balance.load` keeps one `_Engine` per file: an unchanged file
+  is the last answer; growth is read from where the last read stopped and
+  only the mobiles the new rows touch are figured again; another inode
+  (the trim's rename), a shorter file, a first or last 64 bytes not as
+  read, or a row rewriting a kill or encounter already read starts again
+  from the beginning. An unterminated last line is carried, never read.
+  The answer must equal `compare(summarize(text))` for the same complete
+  lines -- same functions, same order -- and `tests/test_balance_cache.py`
+  holds it to that and to the pre-change reader's digests. One lock: calls
+  together share a parse. Async routes call `await
+  balance.load_async(...)` and pass the result to `near`/`seen_drops`,
+  never a path, so no parse runs on the event loop. **A band's gap counts
+  reachable equal choices only** (`balance.band_choices`), in
+  `proposals()` and in the report's text and `--json` alike; the JSON
+  reads the world unless `--no-names` (`tests/test_balance_report_gaps.py`).
 
 - **More journal rows** (2026-11-10, owner: log everything so a lump of
   coin can be traced in minutes): `coin` (every purse change: amount,
@@ -6250,7 +6275,17 @@ test that fails on the old code. Keep them.
 - **The Oracle's answer cache keys on everything per-player that changes
   the answer**: the guild in `_oracle_cache_key`, and a digest of the
   asker's ABILITIES in `oracle.poll_once`, the one place that has them
-  (`tests/test_oracle.py`).
+  (`tests/test_oracle.py`). **And a cached answer is built from nothing
+  else** (review, 2026-11-12): a keyed question gets
+  `_oracle_context(shared=True)` -- no name, no worn gear, no live
+  lookup, no corpse, no Hyrule state -- and the prompt says "A player
+  asks", so it never names its first asker to the next. The key carries
+  `balance.version(PROGRESS_LOG)` when the context quotes the feed (the
+  leveling guide, the gear finder's drop counts: `_oracle_wants_*`, the
+  context's own tests) and the holidays on for the gear finder. The
+  shared context is a callable `consult` builds only on a miss. A new
+  context line that reads the asker belongs in the personal context only,
+  or in the key (`tests/test_oracle_cache_sharing.py`).
 - **Full PRESTORE finds its target with `player_in_game`, never by
   sight**, refuses a login in progress, rank-checks an offline target
   from a loaded copy, and refuses a snapshot without `#END` before

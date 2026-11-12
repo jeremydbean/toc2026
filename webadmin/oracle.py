@@ -600,7 +600,18 @@ def dispute(player: str) -> None:
     forget(player)
 
 
-def consult(player: str, question: str, context: str = "",
+def _context_text(context: Any) -> str:
+    """A context given as text, or built now from the callable that makes it
+    (the poller's shared context, built only on a cache miss)."""
+    if callable(context):
+        try:
+            context = context()
+        except Exception:
+            return ""
+    return context if isinstance(context, str) else ""
+
+
+def consult(player: str, question: str, context: Any = "",
             cache_key: Optional[str] = None) -> str:
     """Answer one question, enforcing the caps. Returns a single line of
     plain text for the mob to say. Never raises.
@@ -608,7 +619,14 @@ def consult(player: str, question: str, context: str = "",
     `context` is optional per-question grounding -- the asker's live gear,
     level and class, and obtainable best-in-slot gear -- built by the caller
     (the web poller, which has the world and the player files). The static
-    game docs stay prompt-cached; this dynamic block follows them uncached."""
+    game docs stay prompt-cached; this dynamic block follows them uncached.
+    It may be a callable returning the text: it is called only when the
+    model is (never on a cache hit, a cap or a dormant Oracle).
+
+    An answer with a cache_key may be handed to anybody whose question has
+    that key, so its context must be the shared one (nothing of the asker
+    the key does not hold) and the model is not told who asks: an answer
+    that named its first asker would greet the next by that name."""
     question = _one_line(question, 400)
     if not question:
         return "The Oracle waits. Ask something."
@@ -660,6 +678,8 @@ def consult(player: str, question: str, context: str = "",
         # Only the doc sections that bear on this question -- and on the ones
         # before it this sitting, so a follow-up keeps its subject.
         docs = _relevant_docs(" ".join([q for _t, q, _a in history] + [question]))
+        # Built only now, when the model is to be asked (never on a hit).
+        context = _context_text(context)
         system_blocks = [{"type": "text", "text": _SYSTEM_RULES}]
         if docs:
             system_blocks.append({
@@ -680,8 +700,8 @@ def consult(player: str, question: str, context: str = "",
             messages.append({"role": "user",
                              "content": f"A player named {player} asks: {q}"})
             messages.append({"role": "assistant", "content": a})
-        messages.append({"role": "user",
-                         "content": f"A player named {player} asks: {question}"})
+        asker = "A player" if cache_key else f"A player named {player}"
+        messages.append({"role": "user", "content": f"{asker} asks: {question}"})
         resp = client.messages.create(
             model=model,
             max_tokens=_max_answer_tokens(),
@@ -826,13 +846,19 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
                 cache_key = "%s|abilities:%s" % (
                     cache_key,
                     hashlib.sha256(abilities.encode("utf-8")).hexdigest()[:16])
-            context = (context + "\n\n" if context else "") + (
-                "From the game itself -- the supplicant's own skills and spells: "
-                "how many they hold, and every one their class and guild can "
-                "learn now that they have not, with what to GAIN, from whom, "
-                "where, and the WALKTO that reaches the trainer. Answer any "
-                "question about missing abilities from this, naming the trainer "
-                "and the WALKTO command: " + abilities)
+            told = ("From the game itself -- the supplicant's own skills and spells: "
+                    "how many they hold, and every one their class and guild can "
+                    "learn now that they have not, with what to GAIN, from whom, "
+                    "where, and the WALKTO that reaches the trainer. Answer any "
+                    "question about missing abilities from this, naming the trainer "
+                    "and the WALKTO command: " + abilities)
+            if callable(context):
+                # Still lazy: built only if the cache has no answer.
+                def context(base=context, told=told):
+                    text = _context_text(base)
+                    return (text + "\n\n" if text else "") + told
+            else:
+                context = (context + "\n\n" if context else "") + told
         answer = _one_line(_ascii(consult(player, question, context, cache_key)))
         try:
             with open(ans, "a", encoding="utf-8") as af:

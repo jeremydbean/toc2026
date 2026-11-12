@@ -21,8 +21,10 @@ median, not risky, and reachable) is a GAP. Placed mobiles nobody has
 fought are counted beside each band from the area files, so a gap says
 whether the world has nothing there or players have not found it.
 Hyrule's guardians and mobiles in areas no route reaches are not counted
-as choices. The last section proposes manual changes, each with its
-evidence and a confidence; nothing is edited.
+as choices -- in --json as in the text (balance.band_choices); with
+--no-names no area file is read and every mobile counts as reachable.
+The last section proposes manual changes, each with its evidence and a
+confidence; nothing is edited.
 
 Legacy rows (before 2026-11-10 a group kill wrote one "kill" row per
 member) count as 1/members of a kill and are marked.
@@ -150,15 +152,24 @@ def main() -> int:
     if args.since:
         since = datetime.strptime(args.since, "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp()
     result = balance.compare(balance.summarize(text, since))
-    mob_names, obj_names, placed, reachable = world(args.no_names or args.json)
+    # The world decides what is a choice -- a Hyrule guardian or a mobile
+    # nothing leads to is not -- in the JSON exactly as in the text (review,
+    # 2026-11-12: the JSON skipped it and counted every equal mobile).
+    # --no-names reads no area files, and then every mobile is reachable.
+    mob_names, obj_names, placed, reachable = world(args.no_names)
     name = lambda v: mob_names.get(v) or "?"    # noqa: E731
 
     if args.json:
-        out: Dict[str, Any] = {"bands": {}, "mobs": {}, "proposals": balance.proposals(result)}
+        out: Dict[str, Any] = {
+            "bands": {}, "mobs": {}, "world_read": reachable is not None,
+            "proposals": balance.proposals(result, names=name if mob_names else None,
+                                           reachable=reachable)}
         for (low, high), b in result["bands"].items():
+            equal, gap = balance.band_choices(b, reachable)
             out["bands"][f"{low}-{high}"] = {
                 "median_xp_per_min": b["median_xp_per_min"], "median_coin": b["median_coin"],
-                "equal": b["equal"], "gap": b["gap"], "mobs": b["mobs"]}
+                "equal": equal, "gap": gap, "mobs": b["mobs"],
+                "equal_not_reachable": [v for v in b["equal"] if v not in equal]}
         for v, m in result["mobs"].items():
             out["mobs"][str(v)] = m
         print(json.dumps(out, indent=1, sort_keys=True, default=str))
@@ -196,11 +207,11 @@ def main() -> int:
         if args.band and not low <= args.band <= high:
             continue
         b = result["bands"][(low, high)]
-        equal = [v for v in b["equal"] if reachable is None or reachable(v)]
+        equal, gap = balance.band_choices(b, reachable)
         world_n = placed.get((low, high))
         print(f"\n== foe levels {low}-{high}: median {b['median_xp_per_min']:.0f} xp/min, "
               f"{copper(b['median_coin'])} a kill; {len(equal)} equal choice(s)"
-              + ("  ** GAP **" if len(equal) < balance.EQUAL_CHOICES_WANTED else "")
+              + ("  ** GAP **" if gap else "")
               + f"; {len(b['mobs'])} kind(s) fought"
               + (f" of {world_n} placed and reachable" if world_n else ""))
         print(HEADER)

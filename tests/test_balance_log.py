@@ -265,7 +265,9 @@ class BalanceWiringTests(unittest.TestCase):
     def test_the_guide_the_oracle_and_the_finder_read_it(self) -> None:
         server = (ROOT / "webadmin" / "server.py").read_text(encoding="utf-8")
         guide = server.split("async def get_leveling(", 1)[1].split("\ndef ", 1)[0]
-        self.assertIn("balance.near(PROGRESS_LOG, int(mob.vnum), level)", guide)
+        # Loaded once, off the event loop, and every mobile read from that load.
+        self.assertIn("bal = await balance.load_async(PROGRESS_LOG)", guide)
+        self.assertIn("balance.near(bal, int(mob.vnum), level)", guide)
         self.assertIn('"basis": "measured" if close else "modelled"', guide)
         self.assertIn("if int(mob.vnum) in guardians:", guide)
         self.assertIn('"needs": needs', guide)
@@ -273,6 +275,7 @@ class BalanceWiringTests(unittest.TestCase):
         self.assertNotIn("never the order", guide)
         finder = server.split("async def get_best_gear(", 1)[1].split("\ndef ", 1)[0]
         self.assertIn('"seen_drops"', finder)
+        self.assertIn("balance.seen_drops(await balance.load_async(PROGRESS_LOG))", finder)
         self.assertIn("players: %s kills by %s characters", server)
         self.assertIn('PROGRESS_LOG = Path(args.log_file).parent / "progress.tsv"', server)
         app = (ROOT / "webadmin" / "static" / "app.js").read_text(encoding="utf-8")
