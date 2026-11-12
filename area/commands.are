@@ -99,6 +99,11 @@ maps you hold (HELP MAPS).
   - Doors show as open, closed or locked, and a visited room shows what
     it offers:  $ shop  ? questmaster  + healer  P practice  T trainer
                 & pet shop  # jail  X death trap (marked once it kills you)
+  - It shows one level at a time: the level you are on.  Stairs up and
+    down are marks inside a room; take them and the map shows that level.
+    TOCGUI LEVELS also shows, faintly, the levels above and below.
+  - Each Hyrule dungeon is a map of its own, laid out like its dungeon
+    map, with its cellars a level below.
   - Symbols and doors appear only when zoomed in far enough to draw the
     room boxes.  The map shows no people: LOOK does that.
   - The map is kept in your Mudlet profile, not your character.
@@ -117,6 +122,7 @@ and offers updates by itself.
 Mudlet commands (local aliases; they do nothing in other clients):
   tocgui status     package version and GMCP state (or TOCGUI alone)
   tocgui atlas      download the whole world map into this profile
+  tocgui levels     also show the levels above and below yours (or not)
   tocgui off | on   hide or restore the interface
   walk ...          walk to a room or place (HELP WALK)
 

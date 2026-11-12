@@ -2097,6 +2097,51 @@ no test ran in CI at all, because the Oracle's sanctum room had been added
 without regenerating it. Rebuild it in the same commit as the room change,
 and run `python3 scripts/build_mudlet_package.py --check` before pushing.
 
+**The layout is drawn for Mudlet's mapper, and three things kept it from
+reading** (owner, 2026-11-12, from a Mudlet 5.1.1 screenshot: "the way the
+layers look on the map in mudlet is disorienting ... it's the map
+everywhere. dresden is a mess"; Mudlet's source read for each):
+
+- **Mudlet 5 draws the level above and below** the one shown, in the same
+  area -- the level below as filled grey squares, the level above outlined
+  (`TMapPainter.cpp`, `mudlet::mDrawUpperLowerLevels`, default on; 4.x has
+  neither the drawing nor the key). The package turns it off at every start,
+  `setConfig("showUpperLowerLevels", false)` (Mudlet 5.0 on), unless the
+  profile asked for it with `tocgui levels` (`toc-settings.lua`). It is a
+  Mudlet-wide setting, not a profile's; say so if it comes up.
+- **`layout_area` opens the level instead of bending an exit.** A room
+  whose square is taken used to go to the nearest free one, which bent every
+  exit around it and packed Dresden into a block where neighbouring squares
+  were not neighbouring rooms. Now every room on that level past the square
+  moves one step on in the exit's direction (a half-plane moved alike can
+  never stack two rooms), so exits keep their direction and are only
+  stretched; `_settle` then moves or swaps single rooms while that
+  straightens exits; each connected part is laid out alone and `_pack`s
+  them in rows, the busiest level of each at z 0. Mudlet draws a planar exit
+  as a line to wherever its room sits in the area, on any level, and up and
+  down as a mark in the room: `exit_drawn_straight` is that rule, and
+  `tests/test_mudlet_map_layout.py` holds the share of exits it passes (95%
+  world-wide, 91% in Dresden on 2026-11-12; 89% and 73% before) and that no
+  two rooms of an area share a square -- `build_map_bytes` also refuses to
+  write one. A change to the layout changes every player's map only when
+  they type `tocgui atlas`; bump `tocMudlet.ATLAS_LAYOUT` with a layout
+  change so a profile on the old one is told once a session.
+- **Each Hyrule dungeon is a map area of its own**, `Hyrule: Level N
+  (<title>)` (`hyrule_map_area_name` in `src/hyrule.c`), on its floor plan:
+  column x, row -y, z 0, cellars z -1 under the room they open from
+  (`hyrule_map_place`, reading the plan from the dungeon map's prototype).
+  `Hyrule.MapRoom`'s `area` is that name, and `Room.Info` for a dungeon room
+  carries `"map": {"area", "x", "y", "z"}`; its own `area` stays the game's.
+  They used to be the overworld's area: a plan ten levels down per dungeon,
+  and a room walked into one step from the gate's, under the overworld. The
+  dungeons stay off the atlas itself (owner, 2026-10-04).
+- **The package keeps the atlas's area and square** for a room already on
+  the map; only a room it creates takes `Room.Info`'s area (placed beside
+  the room walked from), and a room `Room.Info` places with `map` goes
+  exactly there every time. Moving every room into the area Room.Info named
+  would undo any area split the atlas makes. The fog (`toc-fog.lua`) keeps
+  each room's area by name, so dungeon areas survive a fog round trip.
+
 ## Directions And Reachability
 
 `tools/build_directions.py` walks the world from the Oak Tree Square (room

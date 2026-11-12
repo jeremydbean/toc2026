@@ -39,6 +39,53 @@ unexplored stub, with its door, where an exit leads into the fog. A
 shrinking `Map.Known` -- a map taken away by staff GRANTMAP REVOKE --
 fogs the rooms no longer known, like any other.
 
+Package 1.5.14 and the atlas that ships with it redraw the map (owner,
+2026-11-12, from a Mudlet 5.1.1 screenshot: "the way the layers look on the
+map in mudlet is disorienting ... it's the map everywhere. dresden is a
+mess"). Three things stacked layouts on top of each other:
+
+- **Mudlet 5 draws the levels above and below.** In the same area it draws
+  the rooms of the level below the one shown as filled grey squares and the
+  level above as outlined squares (`TMapPainter.cpp`,
+  `mDrawUpperLowerLevels`, on by default; 4.x draws neither). Over a city
+  with sewers under it and towers over it, that is three maps laid across
+  each other. The package turns it off at every start with
+  `setConfig("showUpperLowerLevels", false)` (the key exists from Mudlet 5.0),
+  so the map shows only the level you are on. It is a Mudlet-wide setting,
+  not a profile's: `tocgui levels` turns it back on, and the choice is kept
+  in `toc-settings.lua` in the profile so the package stops turning it off.
+- **The atlas layout.** `scripts/build_mudlet_package.py` used to put a room
+  whose square was taken on the nearest free one, which bent every exit
+  around it and packed Dresden into a solid block where neighbouring squares
+  were not neighbouring rooms. It now opens the level instead -- every room
+  on it past that square moves one step on in the exit's direction -- so
+  exits keep their direction and are only stretched; a second pass moves or
+  swaps single rooms while that straightens exits, each connected part of an
+  area is laid out on its own and the parts are packed in rows, and the level
+  holding most of a part is z 0. 95% of the world's exits are drawn straight
+  in their own direction (89% before), 91% of Dresden's (73%), and still no
+  two rooms of an area share a square (the build refuses one). Loading a map
+  replaces the profile's, so it is never done for you: a profile holding the
+  old layout is told once a session to type `tocgui atlas`.
+- **Hyrule's dungeons shared the overworld's area.** A plan from a dungeon
+  map was drawn ten levels below the overworld per dungeon, and a room
+  walked into one step from the room walked from -- down from a dungeon's
+  gate, so under the overworld, with the other dungeons beside it. Each
+  dungeon is now a map area of its own, `Hyrule: Level 1 (The Eagle)` to
+  `Hyrule: Level 9 (Death Mountain)`, laid out on its floor plan (column x,
+  row -y), cellars on z -1 under the room they open from. The game sends the
+  square: `Hyrule.MapRoom`'s `area` is the dungeon's, and `Room.Info` for a
+  dungeon room carries `"map": {"area", "x", "y", "z"}` (`hyrule_map_place`
+  in `src/hyrule.c`), so a room walked into and the same room drawn from the
+  map land on one square, and a dungeon room drawn under the overworld by an
+  older package is moved on the next step into it. `Room.Info`'s own `area`
+  stays the game's name. The overworld is `Killum Hyrule` alone.
+
+The package also no longer moves a room into the area `Room.Info` names once
+the room is on the map: the atlas's area and square stand (a seasonal copy
+renames its area), and only a room it creates, or one `Room.Info` places
+with `map`, takes the game's.
+
 Package 1.5.8 delivers the 24 extended channel colors added to COLOR. The
 version increase makes existing 1.5.7 installations receive the updated chat
 palette automatically on reconnect, after the server is updated.
@@ -130,8 +177,9 @@ through `webadmin/area_parser.py`. It holds every room the base world lists
   `data/hyrule_first_quest.json`). A dungeon is drawn dynamically: when the
   character holds that dungeon's map, the game sends its plan room by room
   as `Hyrule.MapRoom` and then `Hyrule.MapDone`, and the package places it
-  on a z-level of its own below the overworld; otherwise it is mapped room
-  by room as it is walked. Hyrule's overworld is on the atlas from the start;
+  in a map area of the dungeon's own on its floor plan; otherwise it is
+  mapped room by room as it is walked, each room on the same square, from
+  `Room.Info`'s `map`. Hyrule's overworld is on the atlas from the start;
 - the seasonal copies (`*_halloween.are`, `*_xmas.are`), which are not in
   `area.lst`: the atlas is the base world.
 
@@ -147,6 +195,19 @@ mapping is different -- `Room.Info` never sends a secret exit or a room the
 character cannot see. Portals, `enter` routes, teleports, and scripted
 movement are not directional exits and are not drawn as links; the walker
 reads them from the published routes (`webadmin/directions.json`) instead.
+
+How it is laid out (`layout_area`; 2026-11-12): one Mudlet area per area
+file, each connected part of it grown from its best-connected room along the
+exits that come back the way they went first, a taken square answered by
+opening the level rather than bending the exit, then single rooms moved or
+swapped while that straightens exits; the parts are packed in rows, and each
+part's busiest level is z 0. Mudlet draws a planar exit as a straight line to
+wherever its room sits in the area (on any level) and up and down as marks in
+the room, so "straight" is what `exit_drawn_straight` counts and
+`tests/test_mudlet_map_layout.py` holds the share of it (95% world-wide, 91%
+in Dresden), with no two rooms of an area on one square. Where the world's
+own geometry disagrees -- a loop whose sides differ, an exit that does not
+come back -- an exit is still drawn at an angle.
 
 Mudlet only installs a server's map into a profile that has none, so a
 profile that was mapping before the atlas existed keeps its own map.

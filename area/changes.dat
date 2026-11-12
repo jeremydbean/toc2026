@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112maplayers 2026-11-12
+The Mudlet map is easier to read. It shows only the level you are on, not
+faint copies of the rooms above and below (TOCGUI LEVELS brings them back).
+Each Hyrule dungeon is a map of its own, laid out like its dungeon map,
+instead of sitting under the overworld. The world map is redrawn so streets
+and corridors run straight: type TOCGUI ATLAS in Mudlet to load it. Update
+the Mudlet package (it offers itself). See HELP MUDLET.
+
 @ 20261112triforcelight 2026-11-12
 The Triforce is now the best light in the world as well as holy sight:
 +5 hitroll, +5 damroll, +50 hit points, +100 mana, -10 armour and -5 to

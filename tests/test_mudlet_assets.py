@@ -271,7 +271,7 @@ assert(#calls == 0, "teardown must be safe")
         alias = (ROOT / "mudlet" / "package" / "TimesOfChaos.xml").read_text(
             encoding="utf-8"
         )
-        self.assertIn("(on|off|status|atlas)", alias)
+        self.assertIn("(on|off|status|atlas|levels)", alias)
 
     def test_world_map_covers_every_room_without_overlaps(self) -> None:
         """The shipped atlas is what makes the Mudlet map look deliberate.

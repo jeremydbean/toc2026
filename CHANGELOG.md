@@ -8,6 +8,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The Mudlet map reads cleanly** (2026-11-12; owner: "the way the layers
+  look on the map in mudlet is disorienting ... dresden is a mess").
+  Package 1.5.14 turns off Mudlet 5's drawing of the levels above and below
+  (`setConfig("showUpperLowerLevels", false)`; `tocgui levels` brings it
+  back). The atlas generator opens a level instead of bending an exit round
+  a taken square, settles single rooms, packs each area's parts in rows and
+  puts each part's busiest level at z 0: 95% of exits drawn straight (89%
+  before), 91% in Dresden (73%), no square shared. Each Hyrule dungeon is a
+  map area of its own on its floor plan (`hyrule_map_place`, Room.Info's
+  `map`, Hyrule.MapRoom's `area`) instead of sitting under the overworld,
+  and the package keeps the atlas's area for a room already on the map.
+  `tests/test_mudlet_map_layout.py`, `tests/mudlet_fog_spec.lua`.
+
 - **The exploration maps' four open items** (2026-11-12). Package 1.5.13
   corrects the fog against Mudlet's source: doors are keyed `up`/`down`
   (up and down doors were never drawn), and `deleteRoom` takes the doors
