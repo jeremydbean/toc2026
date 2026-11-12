@@ -141,7 +141,10 @@ set(TOC_CONVERSION_WARNINGS
     -Wcast-qual
     -Wmissing-prototypes
     -Wunused-parameter
+    -Wstrict-prototypes
+    -Wold-style-definition
     $<$<C_COMPILER_ID:GNU>:-Warith-conversion>
+    $<$<C_COMPILER_ID:GNU>:-Wformat-overflow=2>
 )
 set(TOC_CONVERSION_ERRORS
     -Werror=shadow
@@ -151,7 +154,10 @@ set(TOC_CONVERSION_ERRORS
     -Werror=cast-qual
     -Werror=missing-prototypes
     -Werror=unused-parameter
+    -Werror=strict-prototypes
+    -Werror=old-style-definition
     $<$<C_COMPILER_ID:GNU>:-Werror=arith-conversion>
+    $<$<C_COMPILER_ID:GNU>:-Werror=format-overflow>
 )
 
 set(SANITIZER_FLAGS

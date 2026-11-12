@@ -169,6 +169,12 @@ class JailPathTests(unittest.TestCase):
                 for door in ("north", "east"):
                     self.assertIn("serving a jail sentence", inmate.sync(door), door)
                     held("led in, " + door)
+                # Their own horse, led in with them, may be ridden again --
+                # still going nowhere.
+                ride(inmate)
+                self.assertIn("serving a jail sentence", inmate.sync("north"))
+                held("remounted in the cell")
+                inmate.must("dismount", "You dismount")
 
                 # --- Summons. ---
                 warden.sync("goto %d" % TEMPLE)

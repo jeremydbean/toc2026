@@ -1413,6 +1413,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
       }
       else
 	 fprintf(fp,"Jw_Timer %d\n", 0);
+      if ( IS_SET(ch->act, PLR_WARNED) )
+	 fprintf( fp, "WarnLog %d\n", ch->pcdata->warn_log ? 1 : 0 );
       if(ch->pcdata->on_quest)
 	fprintf( fp,"Quest_Items: %d %d %d %d %d %d %d %d %d %d\n",
 		 ch->pcdata->questor[0],
@@ -3174,6 +3176,11 @@ read_done:
     if ( found )
         jail_load_fixup( ch );
 
+    /* A warning from before WarnLog: WARN always set LOG then, so a LOG
+       standing beside it is taken for the warning's (the old rule). */
+    if ( found && IS_SET(ch->act, PLR_WARNED) && !ch->pcdata->warn_log_read )
+        ch->pcdata->warn_log = IS_SET(ch->act, PLR_LOG) ? true : false;
+
     /* Powers learned before the list existed still count towards it.
        Silent, so it may run on any load. Everything that speaks -- the
        powers handed back, the remort top-up, a pending grant -- is
@@ -4905,6 +4912,15 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'W':
+	    if ( !str_cmp( word, "WarnLog" ) )
+	    {
+		int value = fread_number( fp );
+
+		ch->pcdata->warn_log = value != 0;
+		ch->pcdata->warn_log_read = true;
+		fMatch = true;
+		break;
+	    }
 	    /* int, like the pool it is a threshold of (review, 2026-11-12):
 	       the short wrapped 40000 to -25536, which never fled. One
 	       written wrapped reads as 0. Read once into a local: URANGE

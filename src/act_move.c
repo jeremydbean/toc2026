@@ -5109,7 +5109,12 @@ void do_ride( CHAR_DATA *ch, char *argument)
         return;
     }
 
-    if ( victim->master != NULL || ( victim->leader != NULL && victim->leader != victim ) )
+    /* A mount already one's own -- one led into a jail cell with its rider
+       stays their pet (jail.c), so DISMOUNT there had left it unrideable --
+       may be mounted again; anybody else's may not. */
+    if ( ( victim->master != NULL && !( victim->master == ch && ch->pet == victim ) )
+    ||   ( victim->leader != NULL && victim->leader != victim
+           && !( victim->leader == ch && ch->pet == victim ) ) )
     {
         act("You can't ride $N right now.",ch,NULL,victim,TO_CHAR);
         return;

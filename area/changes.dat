@@ -5,6 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112warnlog 2026-11-12 staff
+Lifting a warning -- WARN again, or PARDON <player> WARNED -- now lifts
+only the LOG the warning turned on. A LOG set with LOG <name>, before or
+during the warning, stays. PRESTORE's and FIXES's help pages are now read
+at the trust the commands need.
+
+@ 20261112jailremount 2026-11-12
+A rider jailed in the saddle can mount their own horse again in the cell
+(it still goes nowhere). RIDE refused a mount that was already yours.
+
 @ 20261112hungerhurts 2026-11-12
 Hunger and thirst bite. Each tick you spend starving takes 2% of your
 maximum hit points, a point more each tick in a row up to 8%; each tick

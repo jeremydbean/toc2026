@@ -922,10 +922,11 @@ each is kept clean:
   instead (`pcdata->exp_bonus`, the APPLY_EXP sum, is int: clamping it would
   make adding and taking off a modifier disagree).
 
-Still outside the line: `validate.sh`'s `-Wstrict-prototypes`,
-`-Wold-style-definition` and `-Wformat-overflow=2` are clean but warnings
-only, and gcc's `-Wformat-truncation` (on by `-Wall`) still reports eight
-`snprintf` sites in the -O0 sanitizer build.
+`-Wstrict-prototypes`, `-Wold-style-definition` and gcc's
+`-Wformat-overflow=2` joined the line on 2026-11-12 (Makefile
+`QUALITY_WARNINGS`, CMake's lists, `validate.sh`, the test). Still outside
+it: gcc's `-Wformat-truncation` (on by `-Wall`) reports eight `snprintf`
+sites in the -O0 sanitizer build.
 
 ## Player-Facing Bug Review
 
@@ -4649,12 +4650,12 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   cell and a cell given an exit and no flags), `tests/test_jail_sentence.py`,
   `tests/test_jail_paths.py` (a mount, SUMMON, GATE and portal both ways,
   RAISE DEAD, a death trap's door, TRANSFER and saved room, a poison death
-  in the cell). Hunger and thirst never take hit points here
-  (`gain_condition` only speaks), so nobody starves in a cell or anywhere;
-  that test holds a starving, parched prisoner at one hit point through a
-  tick to show it. A mount jailed under its rider is led in unridden and
-  stays their pet, which RIDE then refuses (its master is set) and
-  DISMOUNT does not clear: an old quirk of `release_mount`, not a way out.
+  in the cell). Hunger and thirst hurt but never kill (see "Starving And
+  Parched"), so nobody starves in a cell or anywhere; that test holds a
+  starving, parched prisoner at one hit point through a tick to show it.
+  A mount jailed under its rider is led in unridden and stays their pet;
+  RIDE takes back a mount that is already the rider's own (its master is
+  them), so they may sit it in the cell and go nowhere.
 
 ## Where RECALL Goes
 

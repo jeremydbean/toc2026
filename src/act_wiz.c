@@ -498,6 +498,17 @@ void do_whiner( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/* Lift a warning: the flag, and the LOG only if the warning turned it on
+   (owner, 2026-11-12: a LOG staff set with LOG <name> outlives it). */
+static void warn_lift( CHAR_DATA *victim )
+{
+    REMOVE_BIT(victim->act, PLR_WARNED);
+    if ( victim->pcdata != NULL && victim->pcdata->warn_log )
+	REMOVE_BIT(victim->act, PLR_LOG);
+    if ( victim->pcdata != NULL )
+	victim->pcdata->warn_log = false;
+}
+
 void do_warn( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -536,8 +547,7 @@ void do_warn( CHAR_DATA *ch, char *argument )
 
     if ( IS_SET(victim->act, PLR_WARNED ) )
     {
-	REMOVE_BIT(victim->act, PLR_WARNED);
-	REMOVE_BIT(victim->act, PLR_LOG);
+	warn_lift( victim );
 	send_to_char( "Remember its not good to break the rules!\n\r", victim);
 	snprintf(buf, sizeof(buf),"%s no longer has a WARNING flag.\n\r",victim->name);
 	send_to_char( buf,ch );
@@ -546,6 +556,8 @@ void do_warn( CHAR_DATA *ch, char *argument )
     else
     {
 	SET_BIT(victim->act, PLR_WARNED);
+	/* Only a LOG the warning turned on is the warning's to lift. */
+	victim->pcdata->warn_log = !IS_SET(victim->act, PLR_LOG);
 	SET_BIT(victim->act, PLR_LOG);
 	send_to_char( "You have been warned about breaking the rules.\n\r", victim);
 	snprintf(buf, sizeof(buf),"WARNING flag set on %s.\n\r",victim->name);
@@ -865,7 +877,7 @@ void do_pardon( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "warned" ) )
     {
-	REMOVE_BIT( victim->act, PLR_WARNED );
+	warn_lift( victim );
 	snprintf(buf, sizeof(buf), "WARNED flag removed from %s.\n\r", victim->name);
 	send_to_char( buf, ch );
 	send_to_char( "Your WARNED flag has been cleared.\n\r", victim );
@@ -913,7 +925,7 @@ void do_pardon( CHAR_DATA *ch, char *argument )
 	victim->pcdata->pk_state = 0;
 	REMOVE_BIT( victim->act, PLR_WANTED );
 	REMOVE_BIT( victim->act, PLR_EXCON );
-	REMOVE_BIT( victim->act, PLR_WARNED );
+	warn_lift( victim );
 	snprintf(buf, sizeof(buf),
 	    "All punishment flags cleared from %s.\n\r", victim->name);
 	send_to_char( buf, ch );
@@ -4050,6 +4062,11 @@ void do_log( CHAR_DATA *ch, char *argument )
     /*
      * No level check, gods can log anyone.
      */
+    /* A LOG staff touch is staff's from then on: lifting a warning no
+       longer takes it off (warn_lift). */
+    if ( victim->pcdata != NULL )
+	victim->pcdata->warn_log = false;
+
     if ( IS_SET(victim->act, PLR_LOG) )
     {
 	REMOVE_BIT(victim->act, PLR_LOG);

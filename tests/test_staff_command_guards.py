@@ -218,5 +218,53 @@ class StaffCommandLiveTests(unittest.TestCase):
                     client.wait_closed()
 
 
+    def test_lifting_a_warning_lifts_only_its_own_log(self) -> None:
+        """Owner, 2026-11-12: WARN turned LOG on and lifting the warning
+        turned it off, even a LOG staff had set with LOG <name>. Now a
+        warning lifts only the LOG it turned on (WarnLog in the file)."""
+        log_bit = 1 << 22            # PLR_LOG is (W)
+
+        def saved(client, name: str) -> tuple[bool, str]:
+            client.sync("save")
+            text = (mud.player_dir / name).read_text(encoding="latin-1")
+            act = int(re.search(r"(?m)^Act\s+(-?\d+)", text).group(1))
+            warn = re.search(r"(?m)^WarnLog\s+(\d+)", text)
+            return bool(act & log_bit), warn.group(1) if warn else "-"
+
+        with LiveMud() as mud:
+            make(mud, "Killuminati", 70)
+            make(mud, "Zwarnone", 10)
+            make(mud, "Zwarntwo", 10)
+            with mud.connect(timeout=120) as creator, \
+                    mud.connect(timeout=120) as one, \
+                    mud.connect(timeout=120) as two:
+                login(creator, "Killuminati", PASSWORD)
+                login(one, "Zwarnone", PASSWORD)
+                login(two, "Zwarntwo", PASSWORD)
+
+                # The warning's own LOG goes with it, by WARN or by PARDON.
+                creator.must("warn zwarnone", "WARNING flag set")
+                self.assertEqual(saved(one, "Zwarnone"), (True, "1"))
+                creator.must("warn zwarnone", "no longer has a WARNING")
+                self.assertEqual(saved(one, "Zwarnone"), (False, "-"))
+                creator.must("warn zwarnone", "WARNING flag set")
+                creator.must("pardon zwarnone warned", "WARNED flag removed")
+                self.assertEqual(saved(one, "Zwarnone"), (False, "-"))
+
+                # A LOG staff set first outlives the warning.
+                creator.must("log zwarntwo", "now being LOGGED")
+                creator.must("warn zwarntwo", "WARNING flag set")
+                self.assertEqual(saved(two, "Zwarntwo"), (True, "0"))
+                creator.must("warn zwarntwo", "no longer has a WARNING")
+                self.assertEqual(saved(two, "Zwarntwo"), (True, "-"))
+
+                # And one set during the warning is staff's too.
+                creator.must("log zwarntwo", "no longer being LOGGED")
+                creator.must("warn zwarntwo", "WARNING flag set")
+                creator.must("log zwarntwo", "no longer being LOGGED")
+                creator.must("log zwarntwo", "now being LOGGED")
+                creator.must("warn zwarntwo", "no longer has a WARNING")
+                self.assertEqual(saved(two, "Zwarntwo"), (True, "-"))
+
 if __name__ == "__main__":
     unittest.main()

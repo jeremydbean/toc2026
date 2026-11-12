@@ -2507,6 +2507,11 @@ struct  pc_data
     char                jail_by[16];    /* who set the current term */
     time_t              jail_retry_at;  /* memory: a failed release's retry */
     bool                jail_info_read; /* memory: JailInfo was in the file */
+    /* WARN turned PLR_LOG on (it was off): lifting the warning lifts it,
+       and nothing else does. LOG <name> during the warning makes the LOG
+       staff's. Saved as WarnLog while PLR_WARNED, case 'W'. */
+    bool                warn_log;
+    bool                warn_log_read;  /* memory: WarnLog was in the file */
     sh_int              lmb_timer;
     sh_int              col_table[32];
     bool                color;

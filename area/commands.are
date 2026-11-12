@@ -802,7 +802,7 @@ ALIGNCHECK   alignment, tier, perks, worn gear the side rejects, and each
              devotion forecast as DEVOTE PREVIEW shows it.
 ~
 
-60 FIXES~
+65 FIXES~
 Syntax: fixes                (every login fix, oldest first)
         fixes <player>       (which of them an online player has had)
 
@@ -4710,7 +4710,7 @@ are:
   wanted   -- clears the WANTED flag
   excon    -- clears the EXCON (ex-convict / con-death) flag
   pkiller  -- clears active PKiller status
-  warned   -- clears the WARNED flag
+  warned   -- clears the WARNED flag (and the LOG the warning turned on)
   freeze   -- removes the FREEZE (total lockout) flag
   deny     -- restores login access denied by the DENY flag
   all      -- clears WANTED, EXCON, PKILLER, and WARNED in one step
@@ -5609,7 +5609,7 @@ the player file on quit.
 See also: FINGER, TRAIL, PSTAT
 ~
 
-63 PRESTORE~
+65 PRESTORE~
 Syntax: prestore <player>                    the newest 30 snapshots
         prestore <player> all [page]         every snapshot, 50 a page
         prestore <player> deaths [page]      one kind: deaths, remorts,
@@ -5977,11 +5977,12 @@ no message to send.
   - Setting it tells the player "You have been warned about breaking the
     rules." and everyone on INFO "<name> has been warned for breaking the
     rules!"
-  - It also sets LOG on them: every command is recorded in full, tells
-    included (HELP LOG).  Lifting the warning lifts LOG too, even one set
-    with LOG <name>.
-  - Never on anyone who outranks you.  PARDON <player> WARNED lifts the
-    flag but leaves LOG on.
+  - It also sets LOG on them, if it was off: every command is recorded in
+    full, tells included (HELP LOG).  Lifting the warning -- WARN again,
+    or PARDON <player> WARNED -- lifts the LOG the warning turned on, and
+    only that: a LOG set with LOG <name>, before or during the warning,
+    stays.
+  - Never on anyone who outranks you.
 
 See also: LOG, PARDON, FREEZE
 ~

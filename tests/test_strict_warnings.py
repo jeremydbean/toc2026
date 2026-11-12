@@ -34,7 +34,10 @@ SRC = ROOT / "src"
 # The class the sweep made clean, beside what both builds already use.
 CONVERSION_FLAGS = ["-Wshadow", "-Wsign-compare", "-Wconversion", "-Wsign-conversion"]
 # The second pass's: both compilers know these.
-QUALITY_FLAGS = ["-Wcast-qual", "-Wmissing-prototypes", "-Wunused-parameter"]
+QUALITY_FLAGS = ["-Wcast-qual", "-Wmissing-prototypes", "-Wunused-parameter",
+                 "-Wstrict-prototypes", "-Wold-style-definition"]
+# gcc's alone, like -Warith-conversion: clang reads no level.
+FORMAT_FLAG = "-Wformat-overflow=2"
 ARITH_FLAG = "-Warith-conversion"
 STRICT_FLAGS = [
     "-Wall", "-Wextra", "-Wpedantic", "-Wno-missing-field-initializers",
@@ -63,7 +66,7 @@ def arith_supported() -> bool:
     return proc.returncode == 0
 
 
-ARITH = [ARITH_FLAG] if arith_supported() else []
+ARITH = [ARITH_FLAG, FORMAT_FLAG] if arith_supported() else []
 
 
 # Every way the builds compile: Release is -O2, the sanitizer build -O0
@@ -135,6 +138,8 @@ class BuildFlagTests(unittest.TestCase):
             self.assertIn(flag, quality.group(1))
         self.assertIn("$(ARITH_CONVERSION_WARNING)", quality.group(1))
         self.assertRegex(text, r"(?m)^ARITH_CONVERSION_WARNING\s*:=.*-Warith-conversion")
+        self.assertIn("$(FORMAT_OVERFLOW_WARNING)", quality.group(1))
+        self.assertRegex(text, r"(?m)^FORMAT_OVERFLOW_WARNING\s*:=.*-Wformat-overflow=2")
         warnflags = re.search(r"^WARNFLAGS\?=(.*)$", text, re.M)
         self.assertIsNotNone(warnflags)
         self.assertIn("$(CONVERSION_WARNINGS)", warnflags.group(1),
@@ -160,6 +165,10 @@ class BuildFlagTests(unittest.TestCase):
         for flag in CONVERSION_FLAGS + QUALITY_FLAGS + [ARITH_FLAG]:
             self.assertIn("-Werror=" + flag[2:], validate)
         self.assertIn(ARITH_FLAG, validate)
+        self.assertIn(FORMAT_FLAG, cmake)
+        self.assertIn("-Werror=format-overflow", cmake)
+        self.assertIn(FORMAT_FLAG, validate)
+        self.assertIn("-Werror=format-overflow", validate)
 
 
 class WideCharacterFieldTests(unittest.TestCase):
