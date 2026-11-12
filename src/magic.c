@@ -3400,7 +3400,12 @@ CHAR_DATA *travel_target( CHAR_DATA *ch, char *argument, int level, int mode )
 	||   !is_name( arg, wch->name ) || !can_see( ch, wch ) )
 	    continue;
 
+	/* A prisoner is reached by no travel spell, whatever the cell's
+	   flags (jail.c: the sentence holds, never the room). A cell given
+	   a door and no ROOM_JAIL let a gate take its caster in beside them,
+	   and a portal open onto the cell, where summon already refused. */
 	if ( IS_IMMORTAL(wch)
+	||   is_jailed( wch )
 	||   IS_SET(room->room_flags, ROOM_NO_RECALL)
 	||   IS_SET(room->room_flags, ROOM_JAIL)
 	||   IS_SET(room->room_flags, ROOM_DT)

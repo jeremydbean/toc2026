@@ -4546,7 +4546,10 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   and DELETE (both steps: a confirmation asked for before the sentence
   dies with it) refuse a prisoner too, and `travel_spell_refuses`,
   teleport, word of recall, summon, ACCEPT and RAISE DEAD ask
-  `is_jailed`. TRANSFER, ITRANS and DRAG refuse a prisoner unless the
+  `is_jailed`; so does `travel_target` of the one sought, so GATE, the
+  portal spell, earth travel and astral walk never reach a prisoner (a
+  gate took its caster into a cell that had a door and no flags,
+  2026-11-12). TRANSFER, ITRANS and DRAG refuse a prisoner unless the
   destination is the cell (`jail_refuses_staff_move`). There is no
   override that keeps the sentence and moves the prisoner: JAIL RELEASE,
   logged, is the deliberate act. A new way of moving a character asks
@@ -4589,7 +4592,15 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   (30 days); anything malformed, zero, negative, too long or followed by
   more words changes nobody. Logged `JAIL: ...` and WIZINFO at
   `staff_notice_level_pair`. `tests/test_jail_confinement.py` (the stock
-  cell and a cell given an exit and no flags), `tests/test_jail_sentence.py`.
+  cell and a cell given an exit and no flags), `tests/test_jail_sentence.py`,
+  `tests/test_jail_paths.py` (a mount, SUMMON, GATE and portal both ways,
+  RAISE DEAD, a death trap's door, TRANSFER and saved room, a poison death
+  in the cell). Hunger and thirst never take hit points here
+  (`gain_condition` only speaks), so nobody starves in a cell or anywhere;
+  that test holds a starving, parched prisoner at one hit point through a
+  tick to show it. A mount jailed under its rider is led in unridden and
+  stays their pet, which RIDE then refuses (its master is set) and
+  DISMOUNT does not clear: an old quirk of `release_mount`, not a way out.
 
 ## Where RECALL Goes
 
