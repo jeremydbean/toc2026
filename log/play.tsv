@@ -23209,3 +23209,10 @@
 1794516017	coin	Miseri	14	30413	hyrule.are	+26	loot	(violence_update)	corpse of Aquamentus	102991613
 1794516017	coin	Miseri	14	30413	hyrule.are	+90000	loot	(violence_update)	corpse of Aquamentus	103081613
 1794516017	coin	Miseri	14	30413	hyrule.are	+20	loot	(violence_update)	corpse of Aquamentus	103081633
+1794516408	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	get	all cor	That's not a container.	-	-
+1794516409	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794516416	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	unlock	east	You lack the key.	-	-
+1794516419	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
+1794516420	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Eagle's Heart Container //      (Glowing) an Aquamentus horn-spear	-	+
+1794516429	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	stat	heart	Name(s): heart container eagle crystal // Vnum: 30591  Format: new  Type: armor  Resets: 1 // Short description: the Eagle's Heart Container	-	+
+1794516434	cmd	Miseri	14	30413	hyrule.are	standing	100	0	-	look		Level 1: Hall of Threefold Scorches //   Scorch marks blacken the floor of this long chamber, every blast fanning // out in three paths from a raised ledge of stone at the eastern end, its lip	-	+
