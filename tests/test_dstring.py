@@ -67,6 +67,12 @@ CONVERTED = {
     ("diary.c", "static void diary_show_list("): "calloc(",
     ("heroes.c", "bool show_hero_plaque( CHAR_DATA *ch )"): "roll_out[",
     ("heroes.c", "bool show_remort_tablet( CHAR_DATA *ch )"): "roll_out[",
+    # GAINLIST TRAINERS was sent a piece at a time; WALKTO's lists were
+    # fixed arrays (2026-11-12).
+    ("act_info.c", "void gainlist_by_trainer(CHAR_DATA *ch, char *argument)"): "send_to_char(buf,ch)",
+    ("walkto.c", "static void walkto_show_summary( CHAR_DATA *ch )"): "char buf[",
+    ("walkto.c", "static void walkto_show_trainers( CHAR_DATA *ch )"): "char buf[",
+    ("walkto.c", "static void walkto_show_areas( CHAR_DATA *ch )"): "char buf[",
 }
 
 

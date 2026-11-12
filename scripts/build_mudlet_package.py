@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import io
 import json
 import sys
@@ -40,6 +41,31 @@ SECTOR_COLOURS = {
 }
 
 
+def secret_exits(parser):
+    """Every exit a player finds secret: (room vnum, direction).
+
+    Read as the game reads it. load_rooms makes any exit whose keyword
+    starts with "secret" lock 4; a door with lock 4 is made secret by its
+    'D' reset (load_resets forces such a reset to state 4) and again by
+    CLOSE whenever somebody shuts it; and a 'D' reset in state 4 hides any
+    door it names -- Hyrule's bomb walls, bushes and Armos among them.
+    """
+    resets = {}
+    for area_resets in parser.resets.values():
+        for reset in area_resets:
+            if reset.command == "D":
+                resets[(reset.arg1, reset.arg2)] = reset.arg3
+    hidden = set()
+    for vnum, room in parser.rooms.items():
+        for room_exit in room.exits:
+            lock = room_exit.locks
+            if (room_exit.keyword or "").strip().lower().startswith("secret"):
+                lock = 4
+            if lock == 4 or resets.get((vnum, room_exit.direction)) == 4:
+                hidden.add((vnum, room_exit.direction))
+    return hidden
+
+
 def load_world_rooms():
     """Every room in the shipped world, grouped into Mudlet areas.
 
@@ -52,8 +78,10 @@ def load_world_rooms():
     from webadmin.area_parser import (  # pylint: disable=import-outside-toplevel
         ROOM_FLAGS, AreaParser, decode_flags)
 
+    # Only what is committed: an area built in game (area/built/) changes
+    # with every state sync, and a committed map must never depend on it.
     parser = AreaParser(ROOT / "area")
-    parser.parse_all()
+    parser.parse_all(built=False)
 
     # Death traps stay off the starter map: you should find one the hard
     # way, not read it off the atlas. Exits into them are dropped with them
@@ -70,7 +98,16 @@ def load_world_rooms():
     hidden = set()
     for dungeon in dungeons:
         hidden.update(range(dungeon["first_room_vnum"], dungeon["last_room_vnum"] + 1))
-    rooms = {vnum: room for vnum, room in parser.rooms.items()
+    #
+    # Secret exits are left off as well: the map would otherwise point at
+    # every hidden door in the world. The rooms behind one stay on the map,
+    # laid out only by the exits a player can see, so where they sit does
+    # not give the door away either.
+    secret = secret_exits(parser)
+    rooms = {vnum: dataclasses.replace(room, exits=[
+                 room_exit for room_exit in room.exits
+                 if (vnum, room_exit.direction) not in secret])
+             for vnum, room in parser.rooms.items()
              if "deathtrap" not in decode_flags(room.room_flags, ROOM_FLAGS)
              and vnum not in hidden}
     missing = STARTER_ROOM_IDS - rooms.keys()

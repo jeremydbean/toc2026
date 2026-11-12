@@ -288,6 +288,52 @@ assert(#calls == 0, "teardown must be safe")
         declared = {area.attrib["id"] for area in root.find("areas").findall("area")}
         self.assertEqual(declared, {str(area_id) for area_id, _, _ in areas})
 
+    def test_world_map_shows_no_secret_exit(self) -> None:
+        """A starter map that drew every hidden door would give them all away.
+
+        302 secret exits were on it until 2026-11-12. Secret is read as the
+        game reads it: a "secret..." keyword is lock 4 (load_rooms), and a
+        lock-4 door or a 'D' reset in state 4 is what makes EX_SECRET.
+        """
+        from webadmin.area_parser import AreaParser  # noqa: E402
+        parser = AreaParser(ROOT / "area")
+        parser.parse_all(built=False)
+        secret = BUILDER.secret_exits(parser)
+        self.assertGreater(len(secret), 300, "expected the world's secret doors")
+
+        directions = {name: index for index, name in enumerate(BUILDER.DIRECTION_NAMES)}
+        root = ElementTree.fromstring(BUILDER.build_map_bytes())
+        drawn = {(int(room.attrib["id"]), directions[e.attrib["direction"]])
+                 for room in root.find("rooms").findall("room")
+                 for e in room.findall("exit")}
+        self.assertEqual(drawn & secret, set(), "a secret exit is on the starter map")
+
+        # Both kinds are caught: a keyword the loader forces to lock 4, and
+        # a door only its 'D' reset hides.
+        by_keyword = {(vnum, e.direction) for vnum, room in parser.rooms.items()
+                      for e in room.exits
+                      if e.keyword.strip().lower().startswith("secret") and e.locks != 4}
+        self.assertTrue(by_keyword and by_keyword <= secret)
+
+    def test_world_map_reads_only_committed_areas(self) -> None:
+        """Areas built in game (area/built/) change with every state sync;
+        the committed map must never read them, or each sync leaves it
+        stale and fails CI."""
+        from webadmin import area_parser  # noqa: E402
+        calls = []
+        original = area_parser.AreaParser.parse_all
+
+        def spy(parser_self, built=True):
+            calls.append(built)
+            return original(parser_self, built=built)
+
+        area_parser.AreaParser.parse_all = spy
+        try:
+            BUILDER.load_world_rooms()
+        finally:
+            area_parser.AreaParser.parse_all = original
+        self.assertEqual(calls, [False])
+
     def test_world_map_area_names_match_what_gmcp_sends(self) -> None:
         """A name mismatch would silently duplicate every area.
 

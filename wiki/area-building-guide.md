@@ -1601,11 +1601,12 @@ bitvectors are non-zero.
 | 4 | SHOCKER | Lightning damage, with a metal rod |
 
 Type 2 (`EXTRA_DIMENSIONAL`) does nothing in `room_affect`. `load_rooms`
-names the affect from `room_aff_type` in `src/db.c`, which has entries
-only for 0 to 3 and is not range-checked, so a type 4 room reads past the
-end of that table at boot. No shipped room uses type 4 (the three that
-carry the flag are camelot 781 and canyon 9245, volcanic, and whouse
-14040, a stinking cloud); until the table is fixed, use 1 or 3.
+names the affect from `room_aff_type` in `src/db.c`, which names every
+type from 0 to 4 (`ROOM_AFF_TYPES` in `merc.h`); a type outside that
+range stops the boot with "bad room affect type". Until 2026-11-12 the
+table stopped at 3, so a type 4 room could not be loaded. The three
+shipped rooms that carry the flag are camelot 781 and canyon 9245,
+volcanic, and whouse 14040, a stinking cloud.
 
 **Example:** A volcanic room dealing 3d8 fire damage, level 20:
 ```

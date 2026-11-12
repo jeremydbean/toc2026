@@ -670,7 +670,14 @@ void gain_exp( CHAR_DATA *ch, int gain )
     }
 
      if ( gain > 0 && !IS_NPC(ch) && ch->pcdata->exp_bonus > 0 )
-         gain += gain * ch->pcdata->exp_bonus / 100;
+     {
+         /* Wide: exp_bonus is an int sum of APPLY_EXP modifiers now, and
+            gain * bonus overflowed an int long before it was widened. */
+         long long boosted = (long long) gain
+                           + (long long) gain * ch->pcdata->exp_bonus / 100;
+
+         gain = boosted > INT_MAX ? INT_MAX : (int) boosted;
+     }
 
      before = ch->exp;
      ch->exp = UMAX( exp_per_level(ch,ch->pcdata->points), ch->exp + gain );

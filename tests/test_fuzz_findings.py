@@ -122,6 +122,35 @@ class AreaReaderFindings(unittest.TestCase):
         self.assertEqual(status, 0, out[-2000:])
         self.assertIn("Validation OK", out)
 
+    def test_every_room_affect_type_room_affect_knows_loads(self) -> None:
+        # The table stopped at volcanic (3), so a SHOCKER room (4) was read
+        # past its end -- and, once the loader checked, refused the boot.
+        for kind in (0, 1, 2, 3, 4):
+            with self.subTest(kind=kind):
+                status, out = check_area(
+                    room(b"DH", b"%d 50 0 0 0 0 0 2 6\n" % kind))
+                self.assertEqual(status, 0, out[-2000:])
+                self.assertIn("Validation OK", out)
+        status, out = check_area(room(b"DH", b"5 50 0 0 0 0 0 200 100\n"))
+        self.assertEqual(status, 1, out[-2000:])
+        self.assertIn("bad room affect type", out)
+
+    def test_the_room_affect_table_names_every_type(self) -> None:
+        merc = (ROOT / "src" / "merc.h").read_text(encoding="latin-1")
+        db = (ROOT / "src" / "db.c").read_text(encoding="latin-1")
+        types = {name: int(value) for name, value in re.findall(
+            r"#define\s+(STINKING_CLOUD|EXTRA_DIMENSIONAL|VOLCANIC|SHOCKER)\s+(\d+)",
+            merc)}
+        self.assertEqual(len(types), 4, types)
+        count = int(re.search(r"#define\s+ROOM_AFF_TYPES\s+(\d+)", merc).group(1))
+        self.assertEqual(count, max(types.values()) + 1)
+        table = re.search(r"room_aff_type\s*\[ROOM_AFF_TYPES\]\s*=\s*\{(.*?)\};",
+                          db, re.S)
+        self.assertIsNotNone(table, "room_aff_type must be sized by ROOM_AFF_TYPES")
+        names = re.findall(r'"([^"]*)"', table.group(1))
+        self.assertEqual(len(names), count, names)
+        self.assertEqual(names[types["SHOCKER"]], "shocker")
+
     def test_a_door_reset_in_a_negative_room_is_refused(self) -> None:
         # get_room_index answers NULL for a negative vnum without stopping
         # the boot, and load_resets read the exit through it.

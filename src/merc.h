@@ -269,9 +269,6 @@ typedef enum
    trims the line and says so -- it never drops the connection. */
 #define MAX_INPUT_LENGTH         512
 #define PAGELEN                  22
-#define MAX_MSGS                 100
-#define SAVE_FILE               "board%d.msg"
-#define MAX_BOARD                5
 #define MAX_PKILL_LIST           20
 
 /* Game parameters. */
@@ -358,7 +355,6 @@ typedef enum
 #define PULSE_AREA              (60 * PULSE_PER_SECOND)
 #define PULSE_DISASTER          (30 * PULSE_PER_SECOND)
 #define PULSE_DEATHTRAP         ( 2 * PULSE_PER_SECOND)
-#define IDLE_TO_LIMBO_TICKS     5
 
 /*
  * How long a character may sit idle before the void takes them,
@@ -453,11 +449,9 @@ struct  ban_data
     char * name;
 };
 
-#define BAN_SUFFIX      0
-#define BAN_PREFIX      1
+/* What check_ban() is asked. Never saved: ban.txt holds names alone. */
 #define BAN_NEWBIES     2
 #define BAN_ALL         3
-#define BAN_PERMIT      4
 
 /* Pkill list data */
 struct pkill_list_data
@@ -539,7 +533,7 @@ struct  weather_data
 #define CON_READ_IMOTD                  13
 #define CON_READ_MOTD                   14
 #define CON_BREAK_CONNECT               15
-#define CON_RETRY_PASSWORD              16
+/* 16 was CON_RETRY_PASSWORD, which nothing ever entered. */
 #define CON_COPYOVER_RECOVER            17
 
 #define COL_MAX                  16
@@ -968,7 +962,7 @@ struct  affect_data
 struct  kill_data
 {
     sh_int              number;
-    sh_int              killed;
+    int                 killed;     /* int: counts every death since boot */
 };
 
 /* Well known mob virtual numbers. */
@@ -1200,7 +1194,7 @@ const char *default_prompt_text args( ( void ) );
 #define ACT_PRACTICE            (K)
 #define ACT_UPDATE_ALWAYS       (L)
 #define ACT_NOSHOVE             (M)
-#define ACT_B_BOY               (N)
+#define ACT_B_BOY               (N)     /* unused; kept so old files read the same */
 #define ACT_UNDEAD              (O)
 #define ACT_CLERIC              (Q)
 #define ACT_MAGE                (R)
@@ -1249,7 +1243,7 @@ const char *default_prompt_text args( ( void ) );
 #define DAM_DISEASE             13
 #define DAM_DROWNING            14
 #define DAM_LIGHT               15
-#define DAM_OTHER               16
+#define DAM_OTHER               16      /* unused; kept so the numbering after it stays */
 #define DAM_HARM                17
 #define DAM_UNHOLY              18
 #define DAM_WIND                19
@@ -2061,6 +2055,10 @@ typedef struct hyrule_dungeon_gate
 #define EXTRA_DIMENSIONAL             2
 #define VOLCANIC                      3
 #define SHOCKER                       4
+/* How many types room_aff_type[] in db.c names: 0 (none) to SHOCKER. A new
+   type goes at the end, its name in that table, and this grows with it --
+   load_rooms refuses a type at or past it, and the table is sized by it. */
+#define ROOM_AFF_TYPES                5
 
 /* Conditions. */
 #define COND_DRUNK                    0
@@ -2133,17 +2131,17 @@ typedef struct hyrule_dungeon_gate
 #define COMM_BRIEF              (M)
 #define COMM_PROMPT             (N)
 #define COMM_COMBINE            (O)
-#define COMM_TELNET_GA          (P)
+#define COMM_TELNET_GA          (P)     /* unused; kept so old files read the same */
 #define COMM_NOCGOS             (Q)
 #define COMM_NOGOD              (R)
-#define COMM_TELLOFF            (S)
+#define COMM_TELLOFF            (S)     /* unused; kept so old files read the same */
 #define COMM_NOEMOTE            (T)
 #define COMM_NOSHOUT            (U)
 #define COMM_NOTELL             (V)
 #define COMM_NOCHANNELS         (W)
 #define COMM_WHINE              (X)
 #define COMM_NONOTE             (Y)
-#define COMM_NORMUD             (Z)
+#define COMM_NORMUD             (Z)     /* unused; kept so old files read the same */
 #define COMM_NOTITLE            (aa)
 #define COMM_NOBEEP             (bb)
 #define COMM_MUTE               (cc)
@@ -2177,8 +2175,8 @@ struct  mob_index_data
     MOB_ACTION_DATA * action;
     int                 vnum;
     bool                new_format;
-    sh_int              count;
-    sh_int              killed;
+    int                 count;      /* int: instances in the world, which grow */
+    int                 killed;     /* int: counts every death since boot */
     char * player_name;
     char * short_descr;
     char * long_descr;
@@ -2314,7 +2312,7 @@ struct  char_data
     int                 lines;
     time_t              logon;
     time_t              last_note;
-    sh_int              timer;
+    int                 timer;          /* int: a link-dead immortal's idle ticks never stop */
     int                 wait;           /* int: WAIT_STATE takes any int pulse count */
     /* int, not sh_int: a guardian with 36,000 hit points wrapped to a
        negative number at 32,767 and fell to the first blow. */
@@ -2552,7 +2550,7 @@ struct  pc_data
     int                 hyrule_candle_room;
     int                 trail[TRAIL_LEN];
     sh_int              trail_head;
-    int                 exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%); a sum of modifiers, so int */
+    int                 exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%); a sum of APPLY_EXP modifiers, so int */
 
     /* Current session stats (in-memory, not saved to player file) */
     time_t              session_logon;        /* timestamp when this session started */
@@ -2775,7 +2773,7 @@ struct  obj_index_data
     sh_int              wear_flags;
     sh_int              level;
     sh_int              condition;
-    sh_int              count;
+    int                 count;      /* int: instances in the world, which grow */
     sh_int              weight;
     /* Copper.  long because the dearest object in the world is worth
        more than an int holds once prices are counted in copper. */
@@ -3109,7 +3107,6 @@ static inline sh_int sh_int_clamp( long long value )
 #define LOWER(c)                ((c) >= 'A' && (c) <= 'Z' ? (char)((c)+'a'-'A') : (c))
 #define UPPER(c)                ((c) >= 'a' && (c) <= 'z' ? (char)((c)+'A'-'a') : (c))
 #define IS_SET(flag, bit)       ((flag) & (bit))
-#define IS_SET2(flag,bit)       ((flag) & (bit))
 #define SET_BIT(var, bit)       ((var) |= (bit))
 #define REMOVE_BIT(var, bit)    ((var) &= ~(bit))
 #define VALIDATE(data)          ((data)->valid=true)

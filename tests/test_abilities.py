@@ -68,6 +68,9 @@ class LiveTests(unittest.TestCase):
             self.assertIn("Soul Trapper", out)
             self.assertIn("walkto", out)
             self.assertNotIn("Abilities for a level", trainers)
+            # GAINLIST TRAINERS is built in a DString now, whole as before.
+            self.assertIn("At guildmaster", trainers)
+            self.assertNotIn("more trainers than one list holds", trainers)
 
 
 if __name__ == "__main__":

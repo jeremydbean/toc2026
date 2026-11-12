@@ -1145,33 +1145,33 @@ static ROOM_INDEX_DATA *walkto_built_area( const char *argument, const char **na
  * The lists.
  * ------------------------------------------------------------------- */
 
-/* Append item to a comma-separated list in buf, wrapping lines at 76
+/* Append item to a comma-separated list in out, wrapping lines at 76
    columns under an indent. */
-static void walk_wrap( char *buf, size_t size, size_t *col, const char *item,
+static void walk_wrap( DString *out, size_t *col, const char *item,
                        bool first, int indent )
 {
     size_t len = strlen( item );
 
     if ( !first )
     {
-        toc_strlcat( buf, ",", size );
+        dstring_append_cstr( out, "," );
         (*col)++;
         if ( *col + 1 + len > 76 )
         {
             int i;
 
-            toc_strlcat( buf, "\n\r", size );
+            dstring_append_cstr( out, "\n\r" );
             for ( i = 0; i < indent; i++ )
-                toc_strlcat( buf, " ", size );
+                dstring_append_cstr( out, " " );
             *col = (size_t)indent;
         }
         else
         {
-            toc_strlcat( buf, " ", size );
+            dstring_append_cstr( out, " " );
             (*col)++;
         }
     }
-    toc_strlcat( buf, item, size );
+    dstring_append_cstr( out, item );
     *col += len;
 }
 
@@ -1191,40 +1191,42 @@ static void walk_short_name( const WALKTO_DEST *d, char *out, size_t size )
 
 static void walkto_show_summary( CHAR_DATA *ch )
 {
-    char buf[MAX_STRING_LENGTH * 2];
+    DString out;
     size_t col;
     bool first;
     int i;
 
-    toc_strlcpy( buf,
+    /* One screen, sent whole (never paged): walk_wrap builds in a DString,
+       bounded like every listing, though this one is a few lines. */
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    dstring_append_cstr( &out,
         "WALKTO <place> walks you there from wherever you are standing.\n\r"
-        "WALKTO STOP, or any other command, stops you on the way.\n\r\n\r",
-        sizeof(buf) );
+        "WALKTO STOP, or any other command, stops you on the way.\n\r\n\r" );
 
-    toc_strlcat( buf, "Places:      ", sizeof(buf) );
+    dstring_append_cstr( &out, "Places:      " );
     col = 13;
     first = true;
     for ( i = 0; i < walkto_count; i++ )
         if ( !str_cmp( walkto_dests[i].kind, "place" )
         ||   !str_cmp( walkto_dests[i].kind, "clerk" ) )
         {
-            walk_wrap( buf, sizeof(buf), &col, walkto_dests[i].name, first, 13 );
+            walk_wrap( &out, &col, walkto_dests[i].name, first, 13 );
             first = false;
         }
-    toc_strlcat( buf, "\n\rGuild halls: ", sizeof(buf) );
+    dstring_append_cstr( &out, "\n\rGuild halls: " );
     col = 13;
     first = true;
     for ( i = 0; i < walkto_count; i++ )
         if ( !str_cmp( walkto_dests[i].kind, "guild" ) )
         {
-            walk_wrap( buf, sizeof(buf), &col, walkto_dests[i].name, first, 13 );
+            walk_wrap( &out, &col, walkto_dests[i].name, first, 13 );
             first = false;
         }
-    toc_strlcat( buf,
+    dstring_append_cstr( &out,
         "\n\r\n\rWALKTO GUILDS, WALKTO TRAINERS and WALKTO AREAS list the rest.\n\r"
-        "Name a place by any part of its name: WALKTO NECRO MASTER.\n\r",
-        sizeof(buf) );
-    send_to_char( buf, ch );
+        "Name a place by any part of its name: WALKTO NECRO MASTER.\n\r" );
+    send_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 static void walkto_show_guilds( CHAR_DATA *ch )
@@ -1255,14 +1257,18 @@ static void walkto_show_guilds( CHAR_DATA *ch )
 
 static void walkto_show_trainers( CHAR_DATA *ch )
 {
-    char buf[MAX_STRING_LENGTH * 4];
+    DString out;
     char place[64];
     char name[96];
     size_t col = 0;
     bool first = true;
+    bool cut = false;
     int i;
 
-    toc_strlcpy( buf, "Guildmasters and trainers, by where they are:\n\r", sizeof(buf) );
+    /* A bounded DString, never a fixed array (growable output buffers):
+       16K of it cut the list short once the world held enough trainers. */
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    dstring_append_cstr( &out, "Guildmasters and trainers, by where they are:\n\r" );
     place[0] = '\0';
     for ( i = 0; i < walkto_count; i++ )
     {
@@ -1270,6 +1276,12 @@ static void walkto_show_trainers( CHAR_DATA *ch )
 
         if ( str_cmp( d->kind, "trainer" ) )
             continue;
+        /* Room kept for this name, its heading and the closing lines. */
+        if ( !dstring_fits( &out, 2 * MAX_STRING_LENGTH ) )
+        {
+            cut = true;
+            break;
+        }
         if ( strcmp( place, d->place ) )
         {
             char head[256];
@@ -1280,28 +1292,33 @@ static void walkto_show_trainers( CHAR_DATA *ch )
                       place[0] != '\0' ? place : "Elsewhere",
                       d->who[0] != '\0' ? " -- " : "",
                       d->who );
-            toc_strlcat( buf, head, sizeof(buf) );
+            dstring_append_cstr( &out, head );
             col = 4;
             first = true;
         }
         walk_short_name( d, name, sizeof(name) );
-        walk_wrap( buf, sizeof(buf), &col, name, first, 4 );
+        walk_wrap( &out, &col, name, first, 4 );
         first = false;
     }
-    toc_strlcat( buf,
-        "\n\rTEACHLIST and GAINLIST say which of them will teach you.\n\r",
-        sizeof(buf) );
-    page_to_char( buf, ch );
+    if ( cut || out.truncated )
+        dstring_append_cstr( &out, ",\n\r    ... and more than one list holds." );
+    dstring_append_cstr( &out,
+        "\n\rTEACHLIST and GAINLIST say which of them will teach you.\n\r" );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 static void walkto_show_areas( CHAR_DATA *ch )
 {
-    char buf[MAX_STRING_LENGTH * 4];
+    DString out;
     char cell[64];
+    bool cut = false;
     int i, n = 0;
 
-    toc_strlcpy( buf, "Areas you can walk to (HELP WALKTO says how far each is):\n\r",
-                 sizeof(buf) );
+    /* A bounded DString, never a fixed array (growable output buffers). */
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    dstring_append_cstr( &out,
+        "Areas you can walk to (HELP WALKTO says how far each is):\n\r" );
     for ( i = 0; i < walkto_count; i++ )
     {
         const WALKTO_DEST *d = &walkto_dests[i];
@@ -1309,6 +1326,12 @@ static void walkto_show_areas( CHAR_DATA *ch )
 
         if ( str_cmp( d->kind, "area" ) )
             continue;
+        /* Room kept for this cell and the closing lines. */
+        if ( !dstring_fits( &out, MAX_STRING_LENGTH ) )
+        {
+            cut = true;
+            break;
+        }
         /* "Moria (Alfa)": the builder's name is the help's business. */
         toc_strlcpy( cell, d->name, sizeof(cell) );
         if ( ( paren = strrchr( cell, '(' ) ) != NULL && paren > cell )
@@ -1323,14 +1346,17 @@ static void walkto_show_areas( CHAR_DATA *ch )
             char item[64];
 
             snprintf( item, sizeof(item), "%-26s", cell );
-            toc_strlcat( buf, item, sizeof(buf) );
+            dstring_append_cstr( &out, item );
         }
         if ( ++n % 3 == 0 )
-            toc_strlcat( buf, "\n\r", sizeof(buf) );
+            dstring_append_cstr( &out, "\n\r" );
     }
     if ( n % 3 != 0 )
-        toc_strlcat( buf, "\n\r", sizeof(buf) );
-    page_to_char( buf, ch );
+        dstring_append_cstr( &out, "\n\r" );
+    if ( cut || out.truncated )
+        dstring_append_cstr( &out, "... and more areas than one list holds.\n\r" );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 

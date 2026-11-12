@@ -4438,7 +4438,7 @@ static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
 
     af.type       = (sh_int)( skill_lookup( "charm person" ) );
     af.level      = ch->level;
-    af.duration   = victim->timer;
+    af.duration   = sh_int_clamp( victim->timer );
     af.location   = 0;
     af.modifier   = 0;
     af.bitvector  = AFF_CHARM;

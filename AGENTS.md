@@ -869,7 +869,13 @@ Keeping a file clean, without changing what the game does:
   `mod_stat[]` were sh_int with int modifiers added into them; they are
   int now, as the pools and WIMPY are. Widening a field changes nothing a
   value in range does; its readers (`fread_number`, no `(sh_int)` cast)
-  must not narrow it back.
+  must not narrow it back. So are `pcdata->exp_bonus` (a sum of
+  APPLY_EXP modifiers; `gain_exp` applies it in long long), the kill
+  counts (`kill_table[].killed`, a prototype's `killed`), a prototype's
+  `count` and `ch->timer`, which counts for ever for a link-dead immortal
+  (2026-11-12). Values a builder writes (a prototype's dice, a room
+  affect's numbers) and the capped ones (`queststreak`, practices,
+  conditions) stay sh_int.
 - **A value that must stay 16-bit goes through `sh_int_clamp(long long)`**
   (merc.h): unchanged when it fits, saturated at the ends otherwise --
   practices and trains at a level, the sex sums in `reset_char` and

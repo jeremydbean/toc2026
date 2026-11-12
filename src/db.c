@@ -398,10 +398,16 @@ const   int  dice_size       []              =
     6,6,6,7,7,7,6,6,6,9,9,9,8,7,6,6,9,9,9,9,8,7,7,7,7,7,7,7,7,7,7,7
 };
  
-char *  const   room_aff_type   []              =
+char *  const   room_aff_type   [ROOM_AFF_TYPES] =
 {
-  "none", "stinking cloud", "extra dimensional", "volcanic"
+  "none", "stinking cloud", "extra dimensional", "volcanic", "shocker"
 };
+/* Every type room_affect() acts on has a name here: the table stopped at
+   volcanic, so a SHOCKER room (4) was either read past its end or, once the
+   loader checked, refused at boot (2026-11-12). */
+_Static_assert( SHOCKER < ROOM_AFF_TYPES && STINKING_CLOUD < ROOM_AFF_TYPES
+                && EXTRA_DIMENSIONAL < ROOM_AFF_TYPES && VOLCANIC < ROOM_AFF_TYPES,
+                "room_aff_type[] must name every room affect type" );
  
 /*
  * Memory management.
@@ -1899,7 +1905,7 @@ void load_rooms( FILE *fp )
                 int type = fread_number( fp );
 
                 if ( type < 0
-                  || type >= (int) ( sizeof(room_aff_type) / sizeof(room_aff_type[0]) ) )
+                  || type >= ROOM_AFF_TYPES )
                 {
                     bug( "Load_rooms: vnum %d has a bad room affect type.", vnum );
                     exit( 1 );

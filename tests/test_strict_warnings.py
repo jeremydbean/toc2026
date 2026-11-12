@@ -174,6 +174,28 @@ class WideCharacterFieldTests(unittest.TestCase):
             self.assertRegex(body, r"\n\s*int\s+%s;" % field,
                              "CHAR_DATA.%s must stay int" % field.split("\\")[0])
 
+    def test_growing_counts_and_bonus_sums_are_int(self) -> None:
+        """The 16-bit leftovers widened on 2026-11-12: counts that grow for
+        as long as the game runs, and a sum of APPLY_EXP modifiers."""
+        header = (SRC / "merc.h").read_text(encoding="latin-1")
+
+        def struct(name: str) -> str:
+            start = re.search(r"^struct\s+%s\s*$" % name, header, re.M).start()
+            return header[start:header.index("};", start)]
+
+        wanted = {"kill_data": ("killed",),
+                  "mob_index_data": ("count", "killed"),
+                  "obj_index_data": ("count",),
+                  "char_data": ("timer",),
+                  "pc_data": ("exp_bonus",)}
+        for name, fields in wanted.items():
+            body = struct(name)
+            for field in fields:
+                self.assertRegex(body, r"\n\s*int\s+%s;" % field,
+                                 "%s.%s must stay int" % (name, field))
+        handler = (SRC / "handler.c").read_text(encoding="latin-1")
+        self.assertNotIn("exp_bonus += (sh_int)", handler)
+
     def test_sh_int_clamp_saturates(self) -> None:
         header = (SRC / "merc.h").read_text(encoding="latin-1")
         self.assertIn("static inline sh_int sh_int_clamp( long long value )", header)

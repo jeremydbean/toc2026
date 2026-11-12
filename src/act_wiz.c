@@ -5233,7 +5233,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-        victim->timer = clamp_sh_int( value );
+        victim->timer = value;
 	if(victim != ch)
 	  snprintf(buf, sizeof(buf),"Timer on %s now set to %d.\n\r",IS_NPC(victim) ? victim->short_descr : victim->name,value);
 	else
@@ -13458,7 +13458,7 @@ void spellup_listen( CHAR_DATA *ch, const char *argument )
    area, and she should leave on time whether anybody is there or not. */
 static void spellup_set_minutes( CHAR_DATA *mob, int minutes )
 {
-    mob->timer = (sh_int)( minutes * SPELLUP_TICKS_PER_MINUTE );
+    mob->timer = minutes * SPELLUP_TICKS_PER_MINUTE;
     SET_BIT( mob->act, ACT_UPDATE_ALWAYS );
 }
 
