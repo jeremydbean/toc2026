@@ -292178,3 +292178,5 @@ Thu Nov 12 21:10:22 2026 :: Log Miseri [30435]: coin +22 silver
 Thu Nov 12 21:10:22 2026 :: Log Miseri [30435]: coin +92 copper
 Thu Nov 12 21:10:22 2026 :: Log Miseri [30435]: coin +5 gold
 Thu Nov 12 21:10:22 2026 :: Log Miseri [30435]: coin +32 copper
+Thu Nov 12 21:15:31 2026 :: Connection guard: last hour 12 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 14 active player addresses.
+Thu Nov 12 21:15:59 2026 :: Treasure goblin: vanished from room 7877 (The Small Valley, valley.are) (too long in one area).
