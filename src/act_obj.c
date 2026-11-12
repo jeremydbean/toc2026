@@ -5498,7 +5498,7 @@ void do_sell( CHAR_DATA *ch, char *argument )
     {
 	act( "$n tells you 'You don't have that item'.",
 	    keeper, NULL, ch, TO_VICT );
-	ch->reply = keeper;
+	SET_CHAR_REF( ch, reply, keeper );
 	return;
     }
 
@@ -5637,7 +5637,7 @@ void do_value( CHAR_DATA *ch, char *argument )
     {
 	act( "$n tells you 'You don't have that item'.",
 	    keeper, NULL, ch, TO_VICT );
-	ch->reply = keeper;
+	SET_CHAR_REF( ch, reply, keeper );
 	return;
     }
 
@@ -5667,7 +5667,7 @@ void do_value( CHAR_DATA *ch, char *argument )
                   "$n tells you 'I'll give you %s for $p'.", price_buf );
     }
     act( buf, keeper, obj, ch, TO_VICT );
-    ch->reply = keeper;
+    SET_CHAR_REF( ch, reply, keeper );
 
     return;
 }

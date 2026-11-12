@@ -5142,8 +5142,8 @@ void do_ride( CHAR_DATA *ch, char *argument)
     check_improve(ch,gsn_ride,true,6);
 
     SET_BIT(victim->act, ACT_PET);
-    victim->master = ch;
-    ch->pet = victim;
+    SET_CHAR_REF( victim, master, ch );
+    SET_CHAR_REF( ch, pet, victim );
 
     ch->pet->ridden = true;
     ch->pcdata->mounted = true;
@@ -5189,9 +5189,9 @@ void do_dismount(CHAR_DATA *ch, char *argument)
    ch->pcdata->mounted = false;
 
     if (mount->master != NULL && mount->master->pet == mount)
-	mount->master->pet = NULL;
+	SET_CHAR_REF( mount->master, pet, NULL );
 
-    mount->master = NULL;
+    SET_CHAR_REF( mount, master, NULL );
     REMOVE_BIT(mount->act, ACT_PET);
 
    return;

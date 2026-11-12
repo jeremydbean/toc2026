@@ -74,16 +74,24 @@ class MemoryGuardSourceTests(unittest.TestCase):
 
     def test_the_sweep_checks_every_stored_pointer(self) -> None:
         guard = source("memguard.c")
-        for check in ("char_is_live( ch->master )", "char_is_live( ch->leader )",
-                      "char_is_live( ch->pet )", "char_is_live( ch->questgiver )",
-                      "desc_is_live( ch->desc )", "obj_is_live( ch->in_object )",
+        # The long-lived fields are checked with the serial kept beside them
+        # (mg_ref, 2026-11-12); the rest by address.
+        for check in ('mg_ref( "master", ch->master, &ch->master_ref',
+                      'mg_ref( "leader", ch->leader, &ch->leader_ref',
+                      'mg_ref( "pet", ch->pet, &ch->pet_ref',
+                      'mg_ref( "questgiver", ch->questgiver, &ch->questgiver_ref',
+                      'mg_ref( "desc", ch->desc, &ch->desc_ref',
+                      'mg_ref( "in_object", ch->in_object, &ch->in_object_ref',
                       "obj_is_live( ch->pcdata->resurrect_corpse )",
                       "&ch->carrying", "&ch->pcdata->stash",
-                      "char_is_live( obj->trapped )", "char_is_live( obj->carried_by )",
+                      'mg_ref( "trapped", obj->trapped, &obj->trapped_ref',
+                      "char_is_live( obj->carried_by )",
                       "obj_is_live( obj->in_obj )", "&obj->contains",
                       "&room->contents", "&room->people",
-                      "desc_is_live( d->snoop_by )", "char_is_live( d->original )",
-                      "char_is_live( d->character )", "desc_liveness( d )",
+                      'mg_ref( "d snoop_by", d->snoop_by, &d->snoop_by_ref',
+                      'mg_ref( "d original", d->original, &d->original_ref',
+                      'mg_ref( "d character", d->character, &d->character_ref',
+                      "desc_liveness( d )",
                       "memguard_fighting_ok( ch )", "memguard_hunting_ok( ch )",
                       "memguard_reply_ok( ch )", "memguard_hunter_slot_ok( i )",
                       "FOR_EACH_CHARACTER", "FOR_EACH_OBJECT"):
@@ -94,7 +102,7 @@ class MemoryGuardSourceTests(unittest.TestCase):
         self.assertIn("wizinfo( notice, level );", guard)
         # The repairs never follow the dead pointer into its strings.
         fighting = body("memguard.c", "bool memguard_fighting_ok( CHAR_DATA *ch )")
-        self.assertLess(fighting.index("ch->fighting = NULL;"),
+        self.assertLess(fighting.index("SET_CHAR_REF( ch, fighting, NULL );"),
                         fighting.index("stop_fighting( ch, FALSE );"))
         self.assertNotIn("do_stop_hunting", body("memguard.c", "bool memguard_hunting_ok( CHAR_DATA *ch )"))
         self.assertIn("src/memguard.c", (ROOT / "CMakeLists.txt").read_text())
@@ -138,7 +146,7 @@ class MemoryGuardSourceTests(unittest.TestCase):
         memcheck = interp.index('{ "memcheck",')
         self.assertLess(memory, memcheck, "MEM must stay MEMORY")
         self.assertRegex(interp[memcheck:memcheck + 120], r"do_memcheck,\s*POS_DEAD,\s*IM,")
-        selftest = body("memguard.c", "static void memcheck_selftest( CHAR_DATA *ch )")
+        selftest = body("memguard.c", "static void memcheck_selftest( CHAR_DATA *ch, bool reuse )")
         self.assertIn('getenv( "TOC_MEMCHECK_SELFTEST" )', selftest)
         # Retired as a bug would leave it: no extract_char, no free_char --
         # at the end of the next sweep, so the sweep after it is the first
@@ -217,8 +225,12 @@ class MemoryGuardLiveTests(unittest.TestCase):
         """No window: the retired mobile is freed at the next pass, before
         any sweep looks. The sweep used to read its tag -- a use after free
         ASan stopped the server on -- and now asks the address set, says
-        "freed" and clears the pointer (review, 2026-11-12)."""
-        self.play_selftest("0", "freed", r"\(gone from quarantine; not read\)")
+        "freed" and clears the pointer (review, 2026-11-12). Should the
+        allocator hand the freed address to a new character before the
+        sweep looks (a reset in that second), the serial says "reused"
+        instead -- the same catch, which the address alone would miss."""
+        self.play_selftest("0", "(?:freed|reused)",
+                           r"\((?:gone from quarantine|its address now holds a newer one); not read\)")
 
     def play_selftest(self, window: str, state: str, detail: str) -> None:
         env = {"TOC_MEMCHECK_SELFTEST": "1", "TOC_MEM_QUARANTINE_SECS": window}
@@ -252,8 +264,9 @@ class MemoryGuardLiveTests(unittest.TestCase):
                 self.assertIn("MEMORY: stale reply on Zmemguard", after)
                 self.assertRegex(after, r"Sweep: \d+ runs; last \d+\.\d{3} ms")
                 self.assertRegex(after, r"Tracked by address: \d+ live, \d+ in quarantine")
-                if state == "freed":
-                    self.assertIn("of them already freed: 1;", after)
+                if state != "dead":
+                    self.assertRegex(after, r"of them already freed: (?:1; reused by the same kind: 0"
+                                            r"|0; reused by the same kind: 1);")
                 else:
                     self.assertNotIn("already freed", after)
 
@@ -262,7 +275,7 @@ class MemoryGuardLiveTests(unittest.TestCase):
                 self.assertIn("Zmemguard", staff.sync("who"))
 
                 journal = (mud.root / "log" / "play.tsv").read_text(encoding="latin-1")
-                self.assertIn(f"MEMORY: stale reply -> {state} character, repaired", journal)
+                self.assertRegex(journal, rf"MEMORY: stale reply -> {state} character, repaired")
                 self.assertTrue(re.search(r"\tbug\t", journal))
                 staff.send("quit")
                 staff.wait_closed()

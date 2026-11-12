@@ -41,11 +41,11 @@ class StalePointerSourceTests(unittest.TestCase):
         self.assertIn("if ( wch->hunting == ch )", extract)
         self.assertIn('do_stop_hunting( wch, "the prey is gone" );', extract)
         self.assertIn("if ( d->original == ch )", extract)
-        self.assertIn("ch->in_object->trapped = NULL;", extract)
+        self.assertIn("SET_CHAR_REF( ch->in_object, trapped, NULL );", extract)
 
     def test_stop_hunting_clears_a_trackers_pointer(self) -> None:
         stop = body("src/hunt.c", "void do_stop_hunting( CHAR_DATA *ch, char *arg)")
-        self.assertIn("ch->hunting = NULL;", stop)
+        self.assertIn("SET_CHAR_REF( ch, hunting, NULL );", stop)
         fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
         self.assertNotIn("->hunting->name);", fight)
 

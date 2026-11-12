@@ -33,6 +33,18 @@
  * desc -- by mg_relink. Nothing here reads a dead block's strings:
  * free_char and extract_obj have freed them. What a dead block was comes
  * from the label recycle.c wrote at its release.
+ *
+ * Reuse (2026-11-12). An address freed and handed to a new block of the
+ * same kind reads live by address. The long-lived fields -- fighting,
+ * master, leader, pet, hunting, reply, questgiver, desc, in_object,
+ * trapped, the hunter list, a descriptor's character, original and
+ * snoop_by -- keep a MEM_REF beside the pointer (SET_CHAR_REF and its
+ * kin), and mem_ref_liveness answers MEM_STATE_REUSED when the address's
+ * serial is no longer the one the pointer was set with: logged "-> reused"
+ * and repaired exactly as "freed", never read. A field found written
+ * without its MEM_REF (a raw assignment the source test missed) is checked
+ * by address, its ref taken from it as it stands, and counted
+ * ("unverified").
  */
 
 #ifndef _DEFAULT_SOURCE
@@ -99,6 +111,11 @@ static const struct
 static long     mg_caught[MG_FIELDS];
 static long     mg_total;
 static long     mg_freed_total;     /* of mg_total, found already freed */
+static long     mg_reused_total;    /* of mg_total, the address reused by the same kind */
+static long     mg_unverified[MG_FIELDS]; /* fields written without their MEM_REF */
+static long     mg_unverified_total;
+static time_t   mg_unverified_logged[MG_FIELDS];
+static long     mg_standin_leaks;   /* sweeps that found a stand-in still registered */
 static long     mg_relinked;        /* found again after a list was cut */
 
 static void     mg_selftest_retire  ( void );
@@ -199,21 +216,63 @@ static int mg_liveness( const void *target, const char *kind )
 }
 
 /*
+ * A long-lived field and its MEM_REF: MEM_STATE_LIVE, DEAD, FREED or
+ * REUSED, never reading `p'. A ref that is not about this pointer means
+ * the field was written by hand: the address alone answers, the ref is
+ * taken from the pointer as it stands when that answer is live (it is then
+ * checked by serial from the next look on), and it is counted and logged
+ * once a field a minute, since it is a SET_*_REF the source missed.
+ */
+static int mg_ref( const char *field, const void *p, MEM_REF *ref, int kind )
+{
+    int state;
+
+    if ( p == NULL )
+        return MEM_STATE_LIVE;
+    if ( ref->ptr == p )
+        return mem_ref_liveness( p, ref, kind );
+
+    state = mem_ref_liveness( p, NULL, kind );
+    {
+        int f = mg_field( field );
+
+        mg_unverified[f]++;
+        mg_unverified_total++;
+        if ( current_time - mg_unverified_logged[f] >= 60 )
+        {
+            char line[MAX_INPUT_LENGTH];
+
+            mg_unverified_logged[f] = current_time;
+            snprintf( line, sizeof(line),
+                      "MEMORY: %s was written without its serial (not through "
+                      "SET_*_REF); checked by address, %s",
+                      field, state == MEM_STATE_LIVE ? "and its serial taken now"
+                                                     : "and found not live" );
+            log_string( line );
+        }
+    }
+    if ( state == MEM_STATE_LIVE )
+        mem_ref_note( ref, p, kind );
+    return state;
+}
+
+/*
  * One stale pointer: counted always; logged (MG_LOG_BURST a field a
  * minute, the rest counted and said with the next line); a nameless BUG
  * row in the play journal; a WIZINFO once a field a minute; and kept for
  * MEMCHECK. "dead" when the target is still in quarantine and its label
  * names it; "freed" when it is not, and was not read. The caller repairs.
  */
-static void mg_report( const char *field, const char *who, int level,
-                       const void *target, const char *kind )
+static void mg_report_state( const char *field, const char *who, int level,
+                             const void *target, const char *kind, int target_state )
 {
     char label[80];
     char line[MAX_STRING_LENGTH];
     int f = mg_field( field );
-    int target_level;
-    bool freed = mg_liveness( target, kind ) == MEM_STATE_FREED;
-    const char *state = freed ? "freed" : "dead";
+    int target_level = LEVEL_IMMORTAL;
+    bool freed  = target_state == MEM_STATE_FREED;
+    bool reused = target_state == MEM_STATE_REUSED;
+    const char *state = reused ? "reused" : freed ? "freed" : "dead";
 
     mg_caught[f]++;
     if ( mg_fields[f].quiet )
@@ -221,12 +280,22 @@ static void mg_report( const char *field, const char *who, int level,
     mg_total++;
     if ( freed )
         mg_freed_total++;
+    if ( reused )
+        mg_reused_total++;
 
     /* The event names the holder and the dead target: it is for staff who
-       could see both (a wizinvis name is for its own level and up). */
-    recycle_dead_label( target, label, sizeof(label), &target_level );
+       could see both (a wizinvis name is for its own level and up). A
+       reused address's quarantine label, if any, is the newer block's. */
+    if ( !reused )
+        recycle_dead_label( target, label, sizeof(label), &target_level );
     level = UMAX( level, target_level );
-    if ( freed )
+    if ( reused )
+        /* The address holds something newer of the same kind: the old
+           target is long gone, and the new one is not this pointer's. */
+        snprintf( line, sizeof(line),
+                  "MEMORY: stale %s on %s -> reused %s (its address now holds a newer one; not read)",
+                  field, who, kind );
+    else if ( freed )
         /* Out of quarantine, or never ours: nothing is known of it, and it
            was not read to find out. */
         snprintf( line, sizeof(line),
@@ -281,13 +350,26 @@ static void mg_report( const char *field, const char *who, int level,
     }
 }
 
-static void mg_report_char( const char *field, CHAR_DATA *holder,
-                            const void *target, const char *kind )
+/* A list link or another field kept with no MEM_REF: by address. */
+static void mg_report( const char *field, const char *who, int level,
+                       const void *target, const char *kind )
+{
+    mg_report_state( field, who, level, target, kind, mg_liveness( target, kind ) );
+}
+
+static void mg_report_char_state( const char *field, CHAR_DATA *holder,
+                                  const void *target, const char *kind, int state )
 {
     char who[MAX_INPUT_LENGTH];
 
     mg_char_label( holder, who, sizeof(who) );
-    mg_report( field, who, mg_notice_level( holder ), target, kind );
+    mg_report_state( field, who, mg_notice_level( holder ), target, kind, state );
+}
+
+static void mg_report_char( const char *field, CHAR_DATA *holder,
+                            const void *target, const char *kind )
+{
+    mg_report_char_state( field, holder, target, kind, mg_liveness( target, kind ) );
 }
 
 static void mg_report_obj( const char *field, OBJ_DATA *holder,
@@ -308,10 +390,14 @@ static void mg_report_obj( const char *field, OBJ_DATA *holder,
  */
 bool memguard_fighting_ok( CHAR_DATA *ch )
 {
-    if ( ch == NULL || char_is_live( ch->fighting ) )
+    int state;
+
+    if ( ch == NULL || ch->fighting == NULL
+    ||   ( state = mg_ref( "fighting", ch->fighting, &ch->fighting_ref,
+                           MEMTRACK_KIND_CHAR ) ) == MEM_STATE_LIVE )
         return TRUE;
-    mg_report_char( "fighting", ch, ch->fighting, "character" );
-    ch->fighting = NULL;
+    mg_report_char_state( "fighting", ch, ch->fighting, "character", state );
+    SET_CHAR_REF( ch, fighting, NULL );
     stop_fighting( ch, FALSE );
     return FALSE;
 }
@@ -322,11 +408,15 @@ bool memguard_fighting_ok( CHAR_DATA *ch )
  */
 bool memguard_hunting_ok( CHAR_DATA *ch )
 {
-    if ( ch == NULL || char_is_live( ch->hunting ) )
+    int state;
+
+    if ( ch == NULL || ch->hunting == NULL
+    ||   ( state = mg_ref( "hunting", ch->hunting, &ch->hunting_ref,
+                           MEMTRACK_KIND_CHAR ) ) == MEM_STATE_LIVE )
         return TRUE;
-    mg_report_char( "hunting", ch, ch->hunting, "character" );
+    mg_report_char_state( "hunting", ch, ch->hunting, "character", state );
     delete_from_hunter_list( ch );
-    ch->hunting = NULL;
+    SET_CHAR_REF( ch, hunting, NULL );
     return FALSE;
 }
 
@@ -334,24 +424,31 @@ bool memguard_hunting_ok( CHAR_DATA *ch )
 bool memguard_hunter_slot_ok( int slot )
 {
     CHAR_DATA *hunter;
+    int state;
 
     if ( slot < 0 || slot >= MAX_HUNTERS )
         return FALSE;
     hunter = hunter_list[slot].ch;
-    if ( char_is_live( hunter ) )
+    if ( ( state = mg_ref( "hunter_list", hunter, &hunter_list[slot].ch_ref,
+                           MEMTRACK_KIND_CHAR ) ) == MEM_STATE_LIVE )
         return TRUE;
-    mg_report( "hunter_list", "the hunter list", LEVEL_IMMORTAL, hunter, "character" );
-    hunter_list[slot].ch     = NULL;
+    mg_report_state( "hunter_list", "the hunter list", LEVEL_IMMORTAL, hunter,
+                     "character", state );
+    SET_CHAR_REF( &hunter_list[slot], ch, NULL );
     hunter_list[slot].status = 0;
     return FALSE;
 }
 
 bool memguard_reply_ok( CHAR_DATA *ch )
 {
-    if ( ch == NULL || char_is_live( ch->reply ) )
+    int state;
+
+    if ( ch == NULL || ch->reply == NULL
+    ||   ( state = mg_ref( "reply", ch->reply, &ch->reply_ref,
+                           MEMTRACK_KIND_CHAR ) ) == MEM_STATE_LIVE )
         return TRUE;
-    mg_report_char( "reply", ch, ch->reply, "character" );
-    ch->reply = NULL;
+    mg_report_char_state( "reply", ch, ch->reply, "character", state );
+    SET_CHAR_REF( ch, reply, NULL );
     return FALSE;
 }
 
@@ -366,15 +463,18 @@ bool memguard_reply_ok( CHAR_DATA *ch )
 bool memguard_descriptor_ok( DESCRIPTOR_DATA *d )
 {
     char who[MAX_INPUT_LENGTH];
+    int state;
 
     if ( d == NULL )
         return TRUE;
     snprintf( who, sizeof(who), "descriptor %d", d->descriptor );
 
-    if ( !desc_is_live( d->snoop_by ) )
+    if ( ( state = mg_ref( "d snoop_by", d->snoop_by, &d->snoop_by_ref,
+                           MEMTRACK_KIND_DESC ) ) != MEM_STATE_LIVE )
     {
-        mg_report( "d snoop_by", who, LEVEL_IMMORTAL, d->snoop_by, "descriptor" );
-        d->snoop_by = NULL;
+        mg_report_state( "d snoop_by", who, LEVEL_IMMORTAL, d->snoop_by,
+                         "descriptor", state );
+        SET_DESC_REF( d, snoop_by, NULL );
     }
     if ( !char_is_live( d->gmcp_last_character ) )
     {
@@ -382,20 +482,24 @@ bool memguard_descriptor_ok( DESCRIPTOR_DATA *d )
                    d->gmcp_last_character, "character" );
         d->gmcp_last_character = NULL;
     }
-    if ( !char_is_live( d->original ) )
+    if ( ( state = mg_ref( "d original", d->original, &d->original_ref,
+                           MEMTRACK_KIND_CHAR ) ) != MEM_STATE_LIVE )
     {
-        mg_report( "d original", who, LEVEL_IMMORTAL, d->original, "character" );
-        d->original = NULL;
+        mg_report_state( "d original", who, LEVEL_IMMORTAL, d->original,
+                         "character", state );
+        SET_CHAR_REF( d, original, NULL );
     }
-    if ( !char_is_live( d->character ) )
+    if ( ( state = mg_ref( "d character", d->character, &d->character_ref,
+                           MEMTRACK_KIND_CHAR ) ) != MEM_STATE_LIVE )
     {
-        mg_report( "d character", who, LEVEL_IMMORTAL, d->character, "character" );
-        d->character = NULL;
+        mg_report_state( "d character", who, LEVEL_IMMORTAL, d->character,
+                         "character", state );
+        SET_CHAR_REF( d, character, NULL );
         if ( d->original != NULL )
         {
-            d->character        = d->original;
-            d->original         = NULL;
-            d->character->desc  = d;
+            SET_CHAR_REF( d, character, d->original );
+            SET_CHAR_REF( d, original, NULL );
+            SET_DESC_REF( d->character, desc, d );
             send_to_char( "The body you were in is gone; you return to your own.\n\r",
                           d->character );
             return TRUE;
@@ -633,15 +737,18 @@ static void mg_relink( void )
 /* Every pointer a live character holds. */
 static void mg_check_char( CHAR_DATA *ch )
 {
+    int state;
+
     mg_seen_ptrs += 10;
     memguard_fighting_ok( ch );
     memguard_hunting_ok( ch );
     memguard_reply_ok( ch );
 
-    if ( !char_is_live( ch->master ) )
+    if ( ( state = mg_ref( "master", ch->master, &ch->master_ref,
+                           MEMTRACK_KIND_CHAR ) ) != MEM_STATE_LIVE )
     {
-        mg_report_char( "master", ch, ch->master, "character" );
-        ch->master = NULL;
+        mg_report_char_state( "master", ch, ch->master, "character", state );
+        SET_CHAR_REF( ch, master, NULL );
         if ( IS_NPC(ch) )
             ch->ridden = FALSE;
         if ( IS_AFFECTED(ch, AFF_CHARM) )
@@ -650,28 +757,32 @@ static void mg_check_char( CHAR_DATA *ch )
             affect_strip( ch, gsn_charm_person );
         }
     }
-    if ( !char_is_live( ch->leader ) )
+    if ( ( state = mg_ref( "leader", ch->leader, &ch->leader_ref,
+                           MEMTRACK_KIND_CHAR ) ) != MEM_STATE_LIVE )
     {
-        mg_report_char( "leader", ch, ch->leader, "character" );
-        ch->leader = NULL;
+        mg_report_char_state( "leader", ch, ch->leader, "character", state );
+        SET_CHAR_REF( ch, leader, NULL );
     }
-    if ( !char_is_live( ch->pet ) )
+    if ( ( state = mg_ref( "pet", ch->pet, &ch->pet_ref,
+                           MEMTRACK_KIND_CHAR ) ) != MEM_STATE_LIVE )
     {
-        mg_report_char( "pet", ch, ch->pet, "character" );
-        ch->pet = NULL;
+        mg_report_char_state( "pet", ch, ch->pet, "character", state );
+        SET_CHAR_REF( ch, pet, NULL );
         if ( !IS_NPC(ch) && ch->pcdata != NULL )
             ch->pcdata->mounted = FALSE;
     }
-    if ( !char_is_live( ch->questgiver ) )
+    if ( ( state = mg_ref( "questgiver", ch->questgiver, &ch->questgiver_ref,
+                           MEMTRACK_KIND_CHAR ) ) != MEM_STATE_LIVE )
     {
-        mg_report_char( "questgiver", ch, ch->questgiver, "character" );
-        ch->questgiver = NULL;
+        mg_report_char_state( "questgiver", ch, ch->questgiver, "character", state );
+        SET_CHAR_REF( ch, questgiver, NULL );
     }
-    if ( !desc_is_live( ch->desc ) )
+    if ( ( state = mg_ref( "desc", ch->desc, &ch->desc_ref,
+                           MEMTRACK_KIND_DESC ) ) != MEM_STATE_LIVE )
     {
         /* Its connection is gone: the character is link-dead. */
-        mg_report_char( "desc", ch, ch->desc, "descriptor" );
-        ch->desc = NULL;
+        mg_report_char_state( "desc", ch, ch->desc, "descriptor", state );
+        SET_DESC_REF( ch, desc, NULL );
     }
 
     mg_obj_list( &ch->carrying, "carrying", MG_CUT_CARRYING, ch, ch, NULL, NULL );
@@ -689,10 +800,11 @@ static void mg_check_char( CHAR_DATA *ch )
     /* Last, since it may extract: a mobile shut in a bottle that is gone
        goes with it, as captive_dispose does; a player is set down at the
        altar, as extract_char does. */
-    if ( !obj_is_live( ch->in_object ) )
+    if ( ( state = mg_ref( "in_object", ch->in_object, &ch->in_object_ref,
+                           MEMTRACK_KIND_OBJ ) ) != MEM_STATE_LIVE )
     {
-        mg_report_char( "in_object", ch, ch->in_object, "object" );
-        ch->in_object = NULL;
+        mg_report_char_state( "in_object", ch, ch->in_object, "object", state );
+        SET_OBJ_REF( ch, in_object, NULL );
         if ( ch->in_room == NULL )
         {
             if ( IS_NPC(ch) )
@@ -708,11 +820,17 @@ static void mg_check_char( CHAR_DATA *ch )
 
 static void mg_check_obj( OBJ_DATA *obj )
 {
+    int state;
+
     mg_seen_ptrs += 3;
-    if ( !char_is_live( obj->trapped ) )
+    if ( ( state = mg_ref( "trapped", obj->trapped, &obj->trapped_ref,
+                           MEMTRACK_KIND_CHAR ) ) != MEM_STATE_LIVE )
     {
-        mg_report_obj( "trapped", obj, obj->trapped, "character" );
-        obj->trapped = NULL;
+        char who[MAX_INPUT_LENGTH];
+
+        mg_obj_label( obj, who, sizeof(who) );
+        mg_report_state( "trapped", who, LEVEL_IMMORTAL, obj->trapped, "character", state );
+        SET_CHAR_REF( obj, trapped, NULL );
     }
     mg_obj_list( &obj->contains, "contains", MG_CUT_CONTAINS, obj, NULL, obj, NULL );
     if ( !char_is_live( obj->carried_by ) )
@@ -824,6 +942,30 @@ void memguard_sweep( void )
 
     if ( mg_cut_count > 0 || mg_cut_overflow || mg_desc_cut )
         mg_relink( );
+
+    /* A stand-in is registered only inside the command that uses it, and
+       the sweep never runs inside a command: one still registered here is
+       a mem_standin_end missed on some way out. Said once a minute. */
+    {
+        static time_t said;
+        long now, ever;
+
+        recycle_standins( &now, &ever );
+        if ( now > 0 )
+        {
+            mg_standin_leaks++;
+            if ( current_time - said >= 60 )
+            {
+                char line[MAX_INPUT_LENGTH];
+
+                said = current_time;
+                snprintf( line, sizeof(line),
+                          "MEMORY: %ld stand-in%s still registered at the sweep "
+                          "(a mem_standin_end missed)", now, now == 1 ? "" : "s" );
+                log_string( line );
+            }
+        }
+    }
     mg_selftest_retire( );
 
     took = mg_now_ms( ) - started;
@@ -844,6 +986,14 @@ void memguard_sweep( void )
  * sweep after that is the first to see it, and always across at least one
  * recycle_flush: inside the quarantine window the catch reads "dead", with
  * no window (TOC_MEM_QUARANTINE_SECS=0) "freed", never read.
+ *
+ * MEMCHECK SELFTEST REUSE plays the case an address alone cannot see: the
+ * mobile's registration is ended and its address registered again as a
+ * new character -- what the allocator does when it hands a freed block's
+ * address to the next character made -- with the caller's reply still set
+ * from the old one. The address reads live; the next sweep must catch the
+ * reply as "reused" by its serial. The block itself is never freed in
+ * between, so nothing is read that is not there; that sweep retires it.
  */
 static CHAR_DATA *mg_selftest_mob;
 
@@ -858,7 +1008,7 @@ static void mg_selftest_retire( void )
     char_data_release( mob );
 }
 
-static void memcheck_selftest( CHAR_DATA *ch )
+static void memcheck_selftest( CHAR_DATA *ch, bool reuse )
 {
     const char *env = getenv( "TOC_MEMCHECK_SELFTEST" );
     MOB_INDEX_DATA *pMob = NULL;
@@ -891,10 +1041,21 @@ static void memcheck_selftest( CHAR_DATA *ch )
     --pMob->count;
     mobile_count--;
     mg_selftest_mob = mob;
-    ch->reply = mob;
-    snprintf( buf, sizeof(buf),
-              "Self-test: your reply now points at a mobile (vnum %d) the next sweep "
-              "retires; the sweep after must catch it.\n\r", pMob->vnum );
+    SET_CHAR_REF( ch, reply, mob );
+    if ( reuse )
+    {
+        /* The address handed to a new character: live again, new serial. */
+        memtrack_forget( mob );
+        memtrack_alive( mob, MEMTRACK_KIND_CHAR );
+        snprintf( buf, sizeof(buf),
+                  "Self-test: your reply points at a mobile (vnum %d) whose address now "
+                  "reads as a newer character; the next sweep must catch it as reused.\n\r",
+                  pMob->vnum );
+    }
+    else
+        snprintf( buf, sizeof(buf),
+                  "Self-test: your reply now points at a mobile (vnum %d) the next sweep "
+                  "retires; the sweep after must catch it.\n\r", pMob->vnum );
     send_to_char( buf, ch );
 }
 
@@ -903,17 +1064,23 @@ void do_memcheck( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     int held, window, cap, i, shown;
-    long oldest, freed, tracked_live, tracked_dead;
+    long oldest, freed, tracked_live, tracked_dead, standins_now, standins_ever;
 
-    one_argument( argument, arg );
+    argument = one_argument( argument, arg );
     if ( !str_cmp( arg, "selftest" ) )
     {
-        memcheck_selftest( ch );
+        one_argument( argument, arg );
+        if ( arg[0] != '\0' && str_cmp( arg, "reuse" ) )
+        {
+            send_to_char( "Syntax: memcheck selftest [reuse]\n\r", ch );
+            return;
+        }
+        memcheck_selftest( ch, arg[0] != '\0' );
         return;
     }
     if ( arg[0] != '\0' )
     {
-        send_to_char( "Syntax: memcheck\n\r", ch );
+        send_to_char( "Syntax: memcheck [selftest [reuse]]\n\r", ch );
         return;
     }
 
@@ -933,19 +1100,33 @@ void do_memcheck( CHAR_DATA *ch, char *argument )
               mg_runs > 0 ? mg_sum_ms / (double) mg_runs : 0.0, mg_seen_ptrs );
     send_to_char( buf, ch );
     recycle_tracked( &tracked_live, &tracked_dead );
+    recycle_standins( &standins_now, &standins_ever );
     snprintf( buf, sizeof(buf),
               "  Tracked by address: %ld live, %ld in quarantine. A pointer to neither is\n\r"
-              "  taken as freed and never read; one to an address reused by the same\n\r"
-              "  kind reads as live and is not caught.\n\r",
+              "  taken as freed and never read. Long-lived pointers keep the serial of\n\r"
+              "  what they named, so an address reused by the same kind is caught;\n\r"
+              "  list links and the other fields are checked by address alone.\n\r",
               tracked_live, tracked_dead );
     send_to_char( buf, ch );
-    snprintf( buf, sizeof(buf), "  Stale pointers caught since boot: %ld.\n\r", mg_total );
+    snprintf( buf, sizeof(buf),
+              "  Stand-ins: %ld registered now, %ld since boot; %ld sweep%s found one left over.\n\r",
+              standins_now, standins_ever, mg_standin_leaks, mg_standin_leaks == 1 ? "" : "s" );
     send_to_char( buf, ch );
-    if ( mg_freed_total > 0 || mg_relinked > 0 )
+    if ( mg_unverified_total > 0 )
     {
         snprintf( buf, sizeof(buf),
-                  "    of them already freed: %ld; found again after a cut list: %ld.\n\r",
-                  mg_freed_total, mg_relinked );
+                  "  Fields found written without their serial (checked by address): %ld.\n\r",
+                  mg_unverified_total );
+        send_to_char( buf, ch );
+    }
+    snprintf( buf, sizeof(buf), "  Stale pointers caught since boot: %ld.\n\r", mg_total );
+    send_to_char( buf, ch );
+    if ( mg_freed_total > 0 || mg_relinked > 0 || mg_reused_total > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+                  "    of them already freed: %ld; reused by the same kind: %ld;\n\r"
+                  "    found again after a cut list: %ld.\n\r",
+                  mg_freed_total, mg_reused_total, mg_relinked );
         send_to_char( buf, ch );
     }
     for ( i = 0, shown = 0; i < MG_FIELDS; i++ )

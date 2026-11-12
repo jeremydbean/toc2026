@@ -119,7 +119,7 @@ class DamageResultTests(unittest.TestCase):
         body = stubs[stubs.index("void die_follower( CHAR_DATA *ch )"):]
         body = body[:body.index("\n}\n")]
         self.assertIn("stop_follower( fch )", body)
-        self.assertIn("fch->leader = fch", body)
+        self.assertIn("SET_CHAR_REF( fch, leader, fch )", body)
         self.assertIn("dismiss_undead_servants( ch )", body)
 
     def test_raised_undead_are_no_kill_and_do_not_outlive_their_master(self) -> None:

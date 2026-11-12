@@ -31,6 +31,13 @@
  * every allocation, marked dead at release, forgotten at the free --      *
  * never by reading the block: once the window is over or the cap passed, *
  * the block is freed and reading its tag was itself a use after free.    *
+ *                                                                         *
+ * Serials (2026-11-12). Each registration has a serial of its own, and a *
+ * long-lived pointer keeps the serial it was set with in a MEM_REF       *
+ * (SET_CHAR_REF and its kin), so an address freed and reused by the same *
+ * kind -- live again by address -- is told from the pointer's own target *
+ * (mem_ref_liveness). Stand-ins on the stack or in a static are         *
+ * registered while in use (mem_standin_begin/_end) and never released.  *
  ***************************************************************************/
 
 #include "merc.h"
@@ -46,9 +53,9 @@
 static CHAR_DATA        char_released_end;
 static OBJ_DATA         obj_released_end;
 
-#define Q_CHAR  1
-#define Q_OBJ   2
-#define Q_DESC  3
+#define Q_CHAR  MEMTRACK_KIND_CHAR
+#define Q_OBJ   MEMTRACK_KIND_OBJ
+#define Q_DESC  MEMTRACK_KIND_DESC
 #define Q_LABEL 64
 
 /*
@@ -140,6 +147,66 @@ static int recycle_liveness( const void *p, int kind )
     case MEMTRACK_DEAD: return MEM_STATE_DEAD;
     default:            return MEM_STATE_FREED;
     }
+}
+
+
+/*
+ * A stored pointer, with the MEM_REF written beside it: what the address
+ * says, except that a live or quarantined block registered under another
+ * serial than the one the pointer was set with is MEM_STATE_REUSED -- the
+ * address was freed and handed to something new of the same kind. A ref
+ * that names another pointer (the field was written by hand) or no serial
+ * (set while its target was not live) leaves the address's answer. Never
+ * reads `p'.
+ */
+int mem_ref_liveness( const void *p, const MEM_REF *ref, int kind )
+{
+    uint64_t serial;
+    int state;
+
+    if ( p == NULL )
+        return MEM_STATE_LIVE;
+    state = memtrack_lookup( p, kind, &serial );
+    if ( state != MEMTRACK_LIVE && state != MEMTRACK_DEAD )
+        return MEM_STATE_FREED;
+    if ( ref != NULL && ref->ptr == p && ref->serial != 0 && ref->serial != serial )
+        return MEM_STATE_REUSED;
+    return state == MEMTRACK_LIVE ? MEM_STATE_LIVE : MEM_STATE_DEAD;
+}
+
+/* The serial of what `p' names now: it is live when a pointer is set. */
+void mem_ref_note( MEM_REF *ref, const void *p, int kind )
+{
+    ref->ptr    = p;
+    ref->serial = p != NULL ? memtrack_serial( p, kind ) : 0;
+}
+
+/*
+ * A stand-in (offline_player_load's descriptor, gear_compare's candidate,
+ * a corpse record's vessel) reads live while it is in use and is forgotten
+ * after. Begin and end around the use, on every way out.
+ */
+void mem_standin_begin( const void *p, int kind )
+{
+    if ( p != NULL && !memtrack_standin( p, kind ) )
+        bug( "Mem_standin_begin: the address set is out of memory.", 0 );
+}
+
+void mem_standin_end( const void *p )
+{
+    /* Only a stand-in: a real block's registration is the allocator's. */
+    if ( p != NULL && memtrack_is_standin( p ) )
+        memtrack_forget( p );
+}
+
+void recycle_standins( long *now, long *ever )
+{
+    size_t n;
+    uint64_t e;
+
+    memtrack_standin_counts( &n, &e );
+    *now  = (long) n;
+    *ever = (long) e;
 }
 
 
@@ -257,6 +324,11 @@ void char_data_release( CHAR_DATA *ch )
 {
     if ( ch == NULL || ch == &char_released_end )
         return;
+    if ( memtrack_is_standin( ch ) )
+    {
+        bug( "Char_data_release: a stand-in, never made here.", 0 );
+        return;
+    }
     if ( char_data_released( ch ) )
     {
         bug( "Char_data_release: released twice, or never made here.", 0 );
@@ -310,6 +382,11 @@ void obj_data_release( OBJ_DATA *obj )
 
     if ( obj == NULL || obj == &obj_released_end )
         return;
+    if ( memtrack_is_standin( obj ) )
+    {
+        bug( "Obj_data_release: a stand-in, never made here.", 0 );
+        return;
+    }
     if ( obj_data_released( obj ) )
     {
         bug( "Obj_data_release: released twice, or never made here.", 0 );
@@ -355,7 +432,7 @@ void descriptor_data_release( DESCRIPTOR_DATA *d )
 
     if ( d == NULL )
         return;
-    if ( memtrack_state( d, Q_DESC ) != MEMTRACK_LIVE )
+    if ( memtrack_is_standin( d ) || memtrack_state( d, Q_DESC ) != MEMTRACK_LIVE )
     {
         bug( "Descriptor_data_release: released twice, or never made here.", 0 );
         return;

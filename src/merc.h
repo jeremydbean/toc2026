@@ -33,6 +33,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "netaddr.h"
+#include "memtrack.h"
 #include "password.h"
 #if !defined(NOCRYPT) && !defined(__APPLE__)
 #include <crypt.h>
@@ -65,6 +66,21 @@ typedef int16_t     sh_int;
 
 /* Structure types. */
 typedef struct  affect_data             AFFECT_DATA;
+
+/*
+ * A long-lived pointer's companion (Memory Safeguards in AGENTS.md): the
+ * pointer as it was set and the memtrack serial of what it named then.
+ * SET_CHAR_REF and its kin write both; memguard.c compares the serial with
+ * the address's serial now, without reading the target, and so tells a
+ * pointer to an address freed and reused by the same kind -- which reads
+ * live by address -- from a fresh one. `ptr' differing from the field means
+ * the field was written without the macro: the check is by address only.
+ */
+typedef struct  mem_ref
+{
+    const void *    ptr;
+    uint64_t        serial;
+} MEM_REF;
 typedef struct  area_data               AREA_DATA;
 typedef struct  ban_data                BAN_DATA;
 typedef struct  char_data               CHAR_DATA;
@@ -570,6 +586,10 @@ struct  descriptor_data
     DESCRIPTOR_DATA * snoop_by;
     CHAR_DATA * character;
     CHAR_DATA * original;
+    /* Written beside the three above by SET_DESC_REF/SET_CHAR_REF. */
+    MEM_REF             snoop_by_ref;
+    MEM_REF             character_ref;
+    MEM_REF             original_ref;
     char * host;                /* display: the address, or the name the resolver gave */
     /*
      * The client's address, by family and bytes, as accepted or as the web
@@ -2204,6 +2224,17 @@ struct  char_data
     CHAR_DATA * master;
     CHAR_DATA * leader;
     CHAR_DATA * fighting;
+    /* Each written beside its pointer by SET_CHAR_REF, SET_DESC_REF or
+       SET_OBJ_REF, never by hand (tests/test_memory_serials.py). */
+    MEM_REF             master_ref;
+    MEM_REF             leader_ref;
+    MEM_REF             fighting_ref;
+    MEM_REF             hunting_ref;
+    MEM_REF             reply_ref;
+    MEM_REF             pet_ref;
+    MEM_REF             questgiver_ref;
+    MEM_REF             desc_ref;
+    MEM_REF             in_object_ref;
     long                fight_began_ms; /* a mobile's encounter start, for log/progress.tsv */
     long                bounce_said_ms; /* a refused Hyrule blow last told (hyrule.c) */
     long                bounce_hint_ms; /* ... and its full hint */
@@ -2345,6 +2376,7 @@ struct hate_data
 struct hunter_data
 {
     CHAR_DATA   *ch;
+    MEM_REF     ch_ref;         /* SET_CHAR_REF */
     int         status;
 };
 
@@ -2724,6 +2756,7 @@ struct  obj_data
     OBJ_DATA * in_obj;
     CHAR_DATA * carried_by;
     CHAR_DATA * trapped;
+    MEM_REF             trapped_ref;    /* SET_CHAR_REF */
     EXTRA_DESCR_DATA * extra_descr;
     AFFECT_DATA * affected;
     OBJ_INDEX_DATA * pIndexData;
@@ -3685,14 +3718,17 @@ void    recycle_flush       ( void );
  * made and not released; MEM_STATE_DEAD for a block in quarantine, whose
  * own fields are still safe to read; MEM_STATE_FREED for anything else --
  * freed, reused by another kind, or never made here (a stand-in on the
- * stack or a static) -- which must never be read. *_is_live() is "LIVE".
- * An address freed and reused by the same kind reads LIVE again: a stale
- * pointer to it cannot be told from a fresh one by address. The
- * MEM_ALIVE_/MEM_DEAD_ tags are kept for a debugger, and decide nothing.
+ * stack or a static not in use) -- which must never be read. *_is_live()
+ * is "LIVE". An address freed and reused by the same kind reads LIVE again
+ * by address; mem_ref_liveness() asks with the MEM_REF kept beside the
+ * pointer, and answers MEM_STATE_REUSED when the address's serial is no
+ * longer the one the pointer was set with. The MEM_ALIVE_/MEM_DEAD_ tags
+ * are kept for a debugger, and decide nothing.
  */
 #define MEM_STATE_FREED         0
 #define MEM_STATE_LIVE          1
 #define MEM_STATE_DEAD          2
+#define MEM_STATE_REUSED        3
 #define MEM_ALIVE_CHAR          0x43484152u     /* "CHAR" */
 #define MEM_DEAD_CHAR           0xDEADC4A2u
 #define MEM_ALIVE_OBJ           0x4F424A21u     /* "OBJ!" */
@@ -3707,6 +3743,33 @@ bool    desc_is_live        ( const DESCRIPTOR_DATA *d );
 int     char_liveness       ( const CHAR_DATA *ch );
 int     obj_liveness        ( const OBJ_DATA *obj );
 int     desc_liveness       ( const DESCRIPTOR_DATA *d );
+/* A stored pointer and its MEM_REF: MEM_STATE_REUSED, or what the address
+   says. A ref whose ptr is not `p' (written by hand) is checked by address. */
+int     mem_ref_liveness    ( const void *p, const MEM_REF *ref, int kind );
+void    mem_ref_note        ( MEM_REF *ref, const void *p, int kind );
+/* A character, object or descriptor on the stack or in a static, registered
+   while it is in use, so it reads live and is never released. */
+void    mem_standin_begin   ( const void *p, int kind );
+void    mem_standin_end     ( const void *p );
+void    recycle_standins    ( long *now, long *ever );
+/* Write a long-lived pointer field and its MEM_REF together (`holder' is
+   evaluated twice, `value' once). The only way to set the fields named in
+   tests/test_memory_serials.py. */
+#define SET_CHAR_REF( holder, field, value ) \
+    do { CHAR_DATA *set_ref_value_ = (value); \
+         (holder)->field = set_ref_value_; \
+         mem_ref_note( &(holder)->field##_ref, set_ref_value_, \
+                       MEMTRACK_KIND_CHAR ); } while ( 0 )
+#define SET_DESC_REF( holder, field, value ) \
+    do { DESCRIPTOR_DATA *set_ref_value_ = (value); \
+         (holder)->field = set_ref_value_; \
+         mem_ref_note( &(holder)->field##_ref, set_ref_value_, \
+                       MEMTRACK_KIND_DESC ); } while ( 0 )
+#define SET_OBJ_REF( holder, field, value ) \
+    do { OBJ_DATA *set_ref_value_ = (value); \
+         (holder)->field = set_ref_value_; \
+         mem_ref_note( &(holder)->field##_ref, set_ref_value_, \
+                       MEMTRACK_KIND_OBJ ); } while ( 0 )
 void    recycle_tracked     ( long *live, long *dead );
 void    recycle_label_char  ( const CHAR_DATA *ch );
 bool    recycle_dead_label  ( const void *ptr, char *out, size_t size, int *level );

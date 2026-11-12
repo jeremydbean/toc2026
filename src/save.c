@@ -1888,14 +1888,19 @@ CHAR_DATA *offline_player_load( DESCRIPTOR_DATA *d, const char *name,
         return NULL;
     }
 
+    /* The caller's descriptor is a stand-in on its stack: registered while
+       the loader holds it as the character's desc, forgotten before any
+       return -- the loaded character never keeps it (Memory Safeguards). */
     memset( d, 0, sizeof(*d) );
+    mem_standin_begin( d, MEMTRACK_KIND_DESC );
     found = load_char_obj( d, proper );
     if ( found && player_file_unreadable( d->character ) )
     {
         if ( why != NULL )
             *why = "Their file could not be read; it is left as it is.\n\r";
         free_char( d->character );
-        d->character = NULL;
+        SET_CHAR_REF( d, character, NULL );
+        mem_standin_end( d );
         return NULL;
     }
     if ( !found )
@@ -1903,13 +1908,15 @@ CHAR_DATA *offline_player_load( DESCRIPTOR_DATA *d, const char *name,
         if ( d->character != NULL )
         {
             free_char( d->character );
-            d->character = NULL;
+            SET_CHAR_REF( d, character, NULL );
         }
+        mem_standin_end( d );
         return NULL;
     }
 
     ch = d->character;
-    ch->desc = NULL;
+    SET_DESC_REF( ch, desc, NULL );
+    mem_standin_end( d );
     register_character( ch );
     d->connected = CON_PLAYING;
     reset_char( ch );
@@ -2733,8 +2740,8 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata			= alloc_mem( sizeof(*ch->pcdata) );
     *ch->pcdata				= pcdata_zero;
 
-    d->character			= ch;
-    ch->desc				= d;
+    SET_CHAR_REF( d, character, ch );
+    SET_DESC_REF( ch, desc, d );
     ch->name				= str_dup( name );
     ch->pcdata->id			= number_range( 0, 65535 );
     ch->version				= 0;
@@ -4052,7 +4059,7 @@ int corpse_file_read( const char *path, CORPSE_RECORD *rec, OBJ_DATA **contents,
     static PC_DATA vessel_pc;
     FILE *fp;
     long section;
-    int version, expected;
+    int version, expected, result;
 
     *contents = NULL;
     snprintf( why, why_size, "it is not a whole corpse record" );
@@ -4076,7 +4083,11 @@ int corpse_file_read( const char *path, CORPSE_RECORD *rec, OBJ_DATA **contents,
     memset( &vessel_pc, 0, sizeof(vessel_pc) );
     vessel.pcdata = &vessel_pc;
     vessel.name = "the corpse keeper";
-    return read_objects_aside( &vessel, fp, version, expected, contents, why, why_size );
+    /* A stand-in: registered for the read, never released. */
+    mem_standin_begin( &vessel, MEMTRACK_KIND_CHAR );
+    result = read_objects_aside( &vessel, fp, version, expected, contents, why, why_size );
+    mem_standin_end( &vessel );
+    return result;
 }
 
 
@@ -4818,9 +4829,9 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     /* Theirs from the start, so a file abandoned part way through the pet
        (load_char_obj's trap) leaves it to free_char, not loose with no
        room in the character list. */
-    pet->leader = ch;
-    pet->master = ch;
-    ch->pet = pet;
+    SET_CHAR_REF( pet, leader, ch );
+    SET_CHAR_REF( pet, master, ch );
+    SET_CHAR_REF( ch, pet, pet );
 
     for ( ; ; )
     {
@@ -4908,9 +4919,9 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	 case 'E':
     	     if (!str_cmp(word,"End"))
 	     {
-		pet->leader = ch;
-		pet->master = ch;
-		ch->pet = pet;
+		SET_CHAR_REF( pet, leader, ch );
+		SET_CHAR_REF( pet, master, ch );
+		SET_CHAR_REF( ch, pet, pet );
 		return;
 	     }
     	     KEY( "Exp",	pet->exp,		fread_number(fp));

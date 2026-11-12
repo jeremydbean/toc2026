@@ -2848,7 +2848,7 @@ void do_snoop( CHAR_DATA *ch, char *argument )
 	for ( d = descriptor_list; d != NULL; d = d->next )
 	{
 	    if ( d->snoop_by == ch->desc )
-		d->snoop_by = NULL;
+		SET_DESC_REF( d, snoop_by, NULL );
 	}
 	return;
     }
@@ -2877,7 +2877,7 @@ void do_snoop( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    victim->desc->snoop_by = ch->desc;
+    SET_DESC_REF( victim->desc, snoop_by, ch->desc );
     snprintf(buf, sizeof(buf),"%s now being snooped.\n\r",victim->name);
     send_to_char( buf, ch );
     return;
@@ -2945,10 +2945,10 @@ void do_switch( CHAR_DATA *ch, char *argument )
        char_to_room(ch,get_room_index(9) );
        victim->were_shape = ch->were_shape;
      }
-    ch->desc->character = victim;
-    ch->desc->original  = ch;
-    victim->desc        = ch->desc;
-    ch->desc            = NULL;
+    SET_CHAR_REF( ch->desc, character, victim );
+    SET_CHAR_REF( ch->desc, original, ch );
+    SET_DESC_REF( victim, desc, ch->desc );
+    SET_DESC_REF( ch, desc, NULL );
     /* change communications to match */
     victim->comm = ch->comm;
     victim->lines = ch->lines;
@@ -2977,9 +2977,9 @@ void do_return( CHAR_DATA *ch, char *argument )
     else if(strcmp(ch->name,"ghost") != 0)
       send_to_char( "Your body feels like it's old self.\n\r", ch );
 
-    ch->desc->character       = ch->desc->original;
-    ch->desc->original        = NULL;
-    ch->desc->character->desc = ch->desc;
+    SET_CHAR_REF( ch->desc, character, ch->desc->original );
+    SET_CHAR_REF( ch->desc, original, NULL );
+    SET_DESC_REF( ch->desc->character, desc, ch->desc );
 
     if(found)
     {
@@ -3010,11 +3010,11 @@ void do_return( CHAR_DATA *ch, char *argument )
       char_from_room(human);
       char_to_room(human,ch->in_room);
       human->timer               = 0;
-      ch->desc                   = NULL;
+      SET_DESC_REF( ch, desc, NULL );
       extract_char(ch,true);
       return;
     }
-    ch->desc                  = NULL;
+    SET_DESC_REF( ch, desc, NULL );
 
     return;
 }
@@ -8393,7 +8393,7 @@ void do_invis( CHAR_DATA *ch, char *argument )
       }
       else
       {
-	  ch->reply = NULL;
+	  SET_CHAR_REF( ch, reply, NULL );
 	  SET_BIT(ch->act, PLR_WIZINVIS);
           ch->invis_level = clamp_sh_int( level );
 	  act( "There is a strange shimmering in the air",
@@ -8447,7 +8447,7 @@ void do_cloak( CHAR_DATA *ch, char *argument )
 	}
 	else
 	{
-	    ch->reply = NULL;
+	    SET_CHAR_REF( ch, reply, NULL );
 	    SET_BIT(ch->act, PLR_CLOAKED);
             ch->cloak_level = clamp_sh_int( level );
 	    act("The air shimmers and ripples.",ch,NULL,NULL,TO_ROOM);

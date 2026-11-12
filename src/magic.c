@@ -1799,7 +1799,7 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
     if ( victim->master )
   	stop_follower( victim );
     add_follower( victim, ch );
-    victim->leader = ch;
+    SET_CHAR_REF( victim, leader, ch );
     af.type      = (sh_int)(sn);
     af.level	 = (sh_int)(level);
     af.duration  = (sh_int)(number_fuzzy( 5 + level / 20 ));

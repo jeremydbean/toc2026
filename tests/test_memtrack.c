@@ -6,6 +6,12 @@
  * Only addresses are stored and compared; no tracked block is ever read,
  * which is the point: memguard.c asks of pointers whose target may already
  * be freed.
+ *
+ * "ok serials" (2026-11-12): every registration has a serial of its own,
+ * so an address released, forgotten and registered again as the same kind
+ * -- live again by address, which is all the old set could say -- carries
+ * a new serial a stored one no longer matches. "ok standins": a stand-in
+ * reads live, is refused by memtrack_dead, and is unknown once forgotten.
  */
 #include <stdint.h>
 #include <stdio.h>
@@ -28,6 +34,7 @@ static void expect( int ok, const char *what, long n )
 /* The reference: one state and kind per slot of a fake address range. */
 static unsigned char ref_state[N];
 static unsigned char ref_kind[N];
+static uint64_t ref_serial[N];      /* as memtrack gave it at registration */
 static char *arena;
 
 static unsigned long rng = 88172645463325252UL;
@@ -80,6 +87,65 @@ int main( void )
         printf( "ok basics\n" );
     }
 
+    /* Serials: what tells a reused address from the one a pointer named. */
+    {
+        int x, y;
+        uint64_t s1, s2, s3, got;
+
+        expect( memtrack_serial( &x, 1 ) == 0, "no serial unregistered", 0 );
+        expect( memtrack_alive( &x, 1 ), "register", 0 );
+        s1 = memtrack_serial( &x, 1 );
+        expect( s1 != 0, "a serial", 0 );
+        expect( memtrack_serial( &x, 2 ) == 0, "no serial as another kind", 0 );
+        expect( memtrack_lookup( &x, 1, &got ) == MEMTRACK_LIVE && got == s1, "lookup live", 0 );
+        expect( memtrack_dead( &x ), "release", 0 );
+        expect( memtrack_lookup( &x, 1, &got ) == MEMTRACK_DEAD && got == s1,
+                "a dead block keeps its serial", 0 );
+        expect( memtrack_serial( &x, 1 ) == 0, "no live serial when dead", 0 );
+        memtrack_forget( &x );
+        expect( memtrack_lookup( &x, 1, &got ) == MEMTRACK_UNKNOWN && got == 0, "forgotten", 0 );
+        /* The allocator hands the address to a new block of the same kind:
+           the address alone says live, as before; the serial says new. */
+        expect( memtrack_alive( &x, 1 ), "reused", 0 );
+        s2 = memtrack_serial( &x, 1 );
+        expect( memtrack_state( &x, 1 ) == MEMTRACK_LIVE, "reused reads live", 0 );
+        expect( s2 != 0 && s2 != s1, "reused has a new serial", 0 );
+        /* Never repeated, whatever the address. */
+        expect( memtrack_alive( &y, 1 ), "another", 0 );
+        s3 = memtrack_serial( &y, 1 );
+        expect( s3 != s1 && s3 != s2, "serials unique", 0 );
+        memtrack_forget( &x );
+        memtrack_forget( &y );
+        printf( "ok serials\n" );
+    }
+
+    /* Stand-ins: live while in use, never released, gone after. */
+    {
+        int s;
+        size_t now;
+        uint64_t ever;
+
+        expect( memtrack_standin( &s, 3 ), "stand-in registered", 0 );
+        expect( memtrack_state( &s, 3 ) == MEMTRACK_LIVE, "stand-in live", 0 );
+        expect( memtrack_serial( &s, 3 ) != 0, "stand-in has a serial", 0 );
+        expect( memtrack_is_standin( &s ), "is a stand-in", 0 );
+        expect( !memtrack_dead( &s ), "a stand-in is never released", 0 );
+        expect( memtrack_state( &s, 3 ) == MEMTRACK_LIVE, "still live after a refused release", 0 );
+        memtrack_standin_counts( &now, &ever );
+        expect( now == 1 && ever == 1, "counted", (long) now );
+        memtrack_forget( &s );
+        expect( memtrack_state( &s, 3 ) == MEMTRACK_UNKNOWN, "stand-in ended", 0 );
+        expect( !memtrack_is_standin( &s ), "no longer a stand-in", 0 );
+        memtrack_standin_counts( &now, &ever );
+        expect( now == 0 && ever == 1, "counted after", (long) now );
+        /* An address registered for real is not a stand-in. */
+        expect( memtrack_alive( &s, 3 ) && !memtrack_is_standin( &s ), "real is not", 0 );
+        memtrack_forget( &s );
+        memtrack_counts( &live, &dead, &capacity );
+        expect( live == 0 && dead == 0, "empty after stand-ins", 0 );
+        printf( "ok standins\n" );
+    }
+
     /* Random churn against the reference: register, release, forget,
        re-register as another kind -- every lookup must agree, which is what
        proves the backward-shift deletion never strands an entry. */
@@ -93,10 +159,16 @@ int main( void )
         switch ( op )
         {
         case 0:
+        {
+            uint64_t before = ref_serial[slot];
+
             expect( memtrack_alive( p, kind ), "alive", i );
-            ref_state[slot] = MEMTRACK_LIVE;
-            ref_kind[slot]  = (unsigned char) kind;
+            ref_state[slot]  = MEMTRACK_LIVE;
+            ref_kind[slot]   = (unsigned char) kind;
+            ref_serial[slot] = memtrack_serial( p, kind );
+            expect( ref_serial[slot] != 0 && ref_serial[slot] != before, "new serial", i );
             break;
+        }
         case 1:
             expect( memtrack_dead( p ) == ( ref_state[slot] != 0 ), "dead result", i );
             if ( ref_state[slot] != 0 )
@@ -112,7 +184,12 @@ int main( void )
                      : ref_kind[slot] != kind ? MEMTRACK_OTHER
                      : ref_state[slot];
 
-            expect( memtrack_state( p, kind ) == want, "lookup", i );
+            uint64_t got;
+
+            expect( memtrack_lookup( p, kind, &got ) == want, "lookup", i );
+            /* The serial survives every backward shift of its slot. */
+            if ( want == MEMTRACK_LIVE || want == MEMTRACK_DEAD )
+                expect( got == ref_serial[slot], "serial kept", i );
             break;
         }
         }

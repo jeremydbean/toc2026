@@ -2317,8 +2317,8 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
  
 	char_to_room( pet, ch->in_room );
 	add_follower( pet, ch );
-	pet->leader = ch;
-	ch->pet = pet;
+	SET_CHAR_REF( pet, leader, ch );
+	SET_CHAR_REF( ch, pet, pet );
 	send_to_char( "Enjoy your pet.\n\r", ch );
 	act( "$n bought $N as a pet.", ch, NULL, pet, TO_ROOM );
 	return true;
@@ -2370,7 +2370,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	{
 	    act( "$n tells you 'You don't have that item'.",
 		mob, NULL, ch, TO_VICT );
-	    ch->reply = mob;
+	    SET_CHAR_REF( ch, reply, mob );
 	    return true;
 	}
  
@@ -2399,7 +2399,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	snprintf(buf, sizeof(buf), "$n tells you 'I'll give you between "
 		"%d and %d gold coins for $p'.", cost*30, cost*50 );
 	act( buf, mob, obj, ch, TO_VICT );
-	ch->reply = mob;
+	SET_CHAR_REF( ch, reply, mob );
  
 	return true;
     }
@@ -2418,7 +2418,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	{
 	    act( "$n tells you 'You don't have that item'.",
 		mob, NULL, ch, TO_VICT );
-	    ch->reply = mob;
+	    SET_CHAR_REF( ch, reply, mob );
 	    return true;
 	}
  
@@ -3193,8 +3193,8 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
       else
 	ch->pcdata->quest_pause = 0;
  
-     ch->master = NULL;
-     ch->leader = NULL;
+     SET_CHAR_REF( ch, master, NULL );
+     SET_CHAR_REF( ch, leader, NULL );
      SET_BIT(ch->act,PLR_NOFOLLOW);
      free_string(ch->pcdata->title);
      ch->pcdata->title = str_dup(" is (HERO QUESTING) <Nochanneled>");

@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112memreuse 2026-11-12 staff
+MEMCHECK now catches a pointer to something whose memory was handed to a
+new thing of the same kind ("reused"), which it could not tell apart
+before: the long-lived pointers keep the serial of what they named. It
+also lists the stand-ins commands register while they run, and MEMCHECK
+SELFTEST REUSE (test worlds only) plays the case.
+
 @ 20261112wimpy 2026-11-12
 WIMPY now holds any number of hit points up to half your maximum. Past
 32,767 it used to be stored wrong -- WIMPY 40000 became a negative number --

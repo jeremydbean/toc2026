@@ -412,7 +412,7 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
         ch->pcdata->daily_points += points;
 
     REMOVE_BIT(ch->act, PLR_QUESTOR);
-    ch->questgiver = NULL;
+    SET_CHAR_REF( ch, questgiver, NULL );
     ch->countdown = 0;
     ch->questmob = 0;
     ch->questobj = 0;
@@ -626,7 +626,7 @@ static void quest_daily_request( CHAR_DATA *ch )
         sh_int nextquest = ch->nextquest;
 
         remove_automatic_quest_tokens(ch);
-        ch->questgiver = NULL;
+        SET_CHAR_REF( ch, questgiver, NULL );
         ch->questmob = 0;
         ch->questobj = 0;
         ch->countdown = 0;
@@ -744,7 +744,7 @@ static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
     }
 
     REMOVE_BIT(ch->act, PLR_QUESTOR);
-    ch->questgiver = NULL;
+    SET_CHAR_REF( ch, questgiver, NULL );
     ch->countdown = 0;
     ch->questmob = 0;
     ch->questobj = 0;
@@ -904,7 +904,7 @@ void quest_handle_logout( CHAR_DATA *ch )
 
     remove_automatic_quest_tokens(ch);
     REMOVE_BIT(ch->act, PLR_QUESTOR);
-    ch->questgiver = NULL;
+    SET_CHAR_REF( ch, questgiver, NULL );
     ch->countdown = 0;
     ch->questmob = 0;
     ch->questobj = 0;
@@ -1684,7 +1684,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	}
 
 	remove_automatic_quest_tokens(ch);
-	ch->questgiver = NULL;
+	SET_CHAR_REF( ch, questgiver, NULL );
 	ch->questmob = 0;
 	ch->questobj = 0;
 	ch->countdown = 0;
@@ -1856,7 +1856,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 
 	    remove_automatic_quest_tokens(ch);
 	    REMOVE_BIT(ch->act, PLR_QUESTOR);
-	    ch->questgiver = NULL;
+	    SET_CHAR_REF( ch, questgiver, NULL );
 	    ch->countdown  = 0;
 	    ch->questmob   = 0;
 	    ch->questobj   = 0;
@@ -2364,7 +2364,7 @@ void quest_update(void)
 		quest_log_failed(ch, "timeout");
 		remove_automatic_quest_tokens(ch);
                 REMOVE_BIT(ch->act, PLR_QUESTOR);
-                ch->questgiver = NULL;
+                SET_CHAR_REF( ch, questgiver, NULL );
                 ch->countdown = 0;
                 ch->questmob = 0;
                 ch->questobj = 0;
@@ -2394,7 +2394,7 @@ void quest_update(void)
 		ch->queststreak = 0;
 		remove_automatic_quest_tokens(ch);
                 REMOVE_BIT(ch->act, PLR_QUESTOR);
-                ch->questgiver = NULL;
+                SET_CHAR_REF( ch, questgiver, NULL );
                 ch->countdown = 0;
                 ch->questmob = 0;
                 ch->questobj = 0;
