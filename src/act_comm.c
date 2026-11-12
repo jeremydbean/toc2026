@@ -3017,7 +3017,7 @@ void do_tell( CHAR_DATA *ch, char *argument )
     }
     tell_history_add( victim, stamp );
     gmcp_play_sound( victim, "tell" );
-    victim->reply	= ch;
+    SET_CHAR_REF( victim, reply, ch );
 
     return;
 }
@@ -3127,7 +3127,7 @@ void do_reply( CHAR_DATA *ch, char *argument )
     }
     tell_history_add( victim, stamp );
     gmcp_play_sound( victim, "tell" );
-    victim->reply	= ch;
+    SET_CHAR_REF( victim, reply, ch );
 
     return;
 }
@@ -4309,8 +4309,8 @@ void add_follower( CHAR_DATA *ch, CHAR_DATA *master )
 	return;
     }
 
-    ch->master        = master;
-    ch->leader        = NULL;
+    SET_CHAR_REF( ch, master, master );
+    SET_CHAR_REF( ch, leader, NULL );
 
     if ( can_see( master, ch ) )
 	act( "$n now follows you.", ch, NULL, master, TO_VICT );
@@ -4341,10 +4341,10 @@ void stop_follower( CHAR_DATA *ch )
     	act( "You stop following $N.",      ch, NULL, ch->master, TO_CHAR );
     }
     if (ch->master->pet == ch)
-	ch->master->pet = NULL;
+	SET_CHAR_REF( ch->master, pet, NULL );
 
-    ch->master = NULL;
-    ch->leader = NULL;
+    SET_CHAR_REF( ch, master, NULL );
+    SET_CHAR_REF( ch, leader, NULL );
     return;
 }
 
@@ -4365,7 +4365,7 @@ void nuke_pets( CHAR_DATA *ch )
 	    char_to_room( pet, get_room_index( ROOM_VNUM_LIMBO ) );
     	extract_char(pet,TRUE);
     }
-    ch->pet = NULL;
+    SET_CHAR_REF( ch, pet, NULL );
 
     return;
 }
@@ -4537,7 +4537,7 @@ void do_group( CHAR_DATA *ch, char *argument )
 
     if ( is_same_group( victim, ch ) && ch != victim )
     {
-	victim->leader = NULL;
+	SET_CHAR_REF( victim, leader, NULL );
 	act( "$n removes $N from $s group.",   ch, NULL, victim, TO_NOTVICT );
 	act( "$n removes you from $s group.",  ch, NULL, victim, TO_VICT    );
 	act( "You remove $N from your group.", ch, NULL, victim, TO_CHAR    );
@@ -4553,7 +4553,7 @@ void do_group( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    victim->leader = ch;
+    SET_CHAR_REF( victim, leader, ch );
     act( "$N joins $n's group.", ch, NULL, victim, TO_NOTVICT );
     act( "You join $n's group.", ch, NULL, victim, TO_VICT    );
     act( "$N joins your group.", ch, NULL, victim, TO_CHAR    );

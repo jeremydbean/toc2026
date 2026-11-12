@@ -24,6 +24,14 @@ guard, each held by a C harness built from the real source:
   real src/recycle.c and plays a zero window, a 60 s window, cap saturation
   and stack stand-ins under ASan (the old recycle.c failed the cap and zero
   cases with heap-use-after-free in char_is_live).
+
+* **An address reused by the same kind read live** (2026-11-12). The set
+  gives every registration a serial, a long-lived pointer keeps the one it
+  was set with (MEM_REF, SET_CHAR_REF), and mem_ref_liveness says
+  MEM_STATE_REUSED when they differ: "ok serials" in test_memtrack.c and
+  the "reuse" mode of test_recycle_liveness.c, which the old sources do
+  not build. Stand-ins are registered while in use ("ok standins",
+  "standin").
 """
 from __future__ import annotations
 
@@ -31,6 +39,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -117,7 +126,7 @@ class MemoryHarnessTests(unittest.TestCase):
         out = self.build_and_run(
             "test_memtrack", [TESTS / "test_memtrack.c", SRC / "memtrack.c"], flags,
             {"ASAN_OPTIONS": "halt_on_error=1:detect_leaks=0"}, [[]])
-        for step in ("ok basics", "ok churn", "ok forget"):
+        for step in ("ok basics", "ok serials", "ok standins", "ok churn", "ok forget"):
             self.assertIn(step, out[0])
 
     def test_recycle_liveness_never_reads_a_freed_block(self) -> None:
@@ -126,10 +135,23 @@ class MemoryHarnessTests(unittest.TestCase):
             "test_recycle_liveness",
             [TESTS / "test_recycle_liveness.c", SRC / "recycle.c", SRC / "memtrack.c"],
             flags, {"ASAN_OPTIONS": "halt_on_error=1:detect_leaks=0"},
-            [["zero"], ["window"], ["cap"], ["standin"]],
+            [["zero"], ["window"], ["cap"], ["standin"], ["reuse"]],
             extra=["-DROM", "-Dunix", "-DNOCRYPT"])
-        for mode, text in zip(("zero", "window", "cap", "standin"), out):
-            self.assertRegex(text, rf"^{mode}: \d+ checks, 0 failures", text)
+        for mode, text in zip(("zero", "window", "cap", "standin", "reuse"), out):
+            self.assertRegex(text, rf"(?m)^{mode}: \d+ checks, 0 failures", text)
+
+    def test_real_address_reuse_is_caught_by_serial(self) -> None:
+        """Without ASan (whose quarantine never hands a freed block back),
+        glibc gives freed characters' addresses to new ones within a few
+        allocations; every one the reuse mode finds must read live by
+        address and reused by its serial."""
+        out = self.build_and_run(
+            "test_recycle_reuse",
+            [TESTS / "test_recycle_liveness.c", SRC / "recycle.c", SRC / "memtrack.c"],
+            ["-O2"], {}, [["reuse"]], extra=["-DROM", "-Dunix", "-DNOCRYPT"])
+        self.assertRegex(out[0], r"(?m)^reuse: \d+ checks, 0 failures", out[0])
+        if sys.platform.startswith("linux"):
+            self.assertRegex(out[0], r"real allocator reuse seen \([1-9]\d*\)", out[0])
 
 
 class MemoryRangeSourceTests(unittest.TestCase):

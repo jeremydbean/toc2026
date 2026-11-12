@@ -5788,6 +5788,7 @@ See also: SOCKETS, STAT, MEMCHECK
 
 60 MEMCHECK~
 Syntax: memcheck
+        memcheck selftest [reuse]
 
 Memcheck reports the game's memory safeguards.  A character, object or
 connection that leaves the game is kept, whole and marked dead, for a
@@ -5801,19 +5802,27 @@ on.
 Whether something is gone is looked up by its address, never read from it.
 A pointer to something still in quarantine is "dead", and the line names
 what it was.  One whose memory has already been given back is "freed": it
-is caught all the same, but nothing is known of what it was.  One whose
-memory was given to something new of the same kind cannot be told from a
-real one, and is not caught.
+is caught all the same, but nothing is known of what it was.  Everything
+made gets a serial of its own, and the long-lived pointers (fighting,
+following, leading, pets, hunting, reply, quest giver, a character's
+connection, a bottle and its captive, which connection plays or snoops
+whom) keep the serial of what they named: one whose memory was given to
+something new of the same kind is "reused", and caught too.  Lists of what
+is carried or in a room are checked by address alone.
 
   Quarantine   blocks held, the oldest one's age, the window and the cap
   Live         characters, players, objects and connections seen last check
   Tracked      how many live and quarantined things are known by address
+  Stand-ins    temporary copies a command registers while it runs; any
+               still registered when the check runs is a bug
   Sweep        how many checks, and what the last, slowest and average cost
   Stale        pointers caught since boot, by field; how many were freed
+               or reused
   Last events  the newest MEMORY lines
 
 Any MEMORY line is a bug to report: it names the field, who held it, and
-what it pointed at.  MEMCHECK SELFTEST exists only in a test world.
+what it pointed at.  MEMCHECK SELFTEST (and SELFTEST REUSE) exists only in
+a test world.
 
 See also: MEMORY, WIZINFO
 ~

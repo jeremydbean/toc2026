@@ -1641,8 +1641,8 @@ void char_to_obj( CHAR_DATA *ch, OBJ_DATA *obj)
 
    if(ch->in_room != NULL)
       char_from_room(ch);
-   ch->in_object = obj;
-   obj->trapped = ch;
+   SET_OBJ_REF( ch, in_object, obj );
+   SET_CHAR_REF( obj, trapped, ch );
 
 }
 
@@ -1701,9 +1701,9 @@ void captive_dispose( OBJ_DATA *obj )
     if ( obj == NULL || ( mob = obj->trapped ) == NULL )
         return;
 
-    obj->trapped = NULL;
+    SET_CHAR_REF( obj, trapped, NULL );
     if ( mob->in_object == obj )
-        mob->in_object = NULL;
+        SET_OBJ_REF( mob, in_object, NULL );
 
     if ( !IS_NPC(mob) )
     {
@@ -1748,8 +1748,8 @@ void char_from_obj( OBJ_DATA *obj )
     }
 
     mob = obj->trapped;
-    obj->trapped = NULL;
-    mob->in_object = NULL;
+    SET_CHAR_REF( obj, trapped, NULL );
+    SET_OBJ_REF( mob, in_object, NULL );
     char_to_room( mob, room );
 }
 /*
@@ -2770,8 +2770,8 @@ void extract_char( CHAR_DATA *ch, bool fPull )
       else
       {
 	/* Out of the bottle for good: nothing may point either way. */
-	ch->in_object->trapped = NULL;
-	ch->in_object = NULL;
+	SET_CHAR_REF( ch->in_object, trapped, NULL );
+	SET_OBJ_REF( ch, in_object, NULL );
 	char_to_room(ch,get_room_index(1));
       }
     }
@@ -2783,7 +2783,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     }
 
     nuke_pets(ch);
-    ch->pet = NULL; /* just in case */
+    SET_CHAR_REF( ch, pet, NULL ); /* just in case */
 
     if ( fPull )
 
@@ -2829,7 +2829,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     while ( ( wch = list_iterator_next( &iter ) ) != NULL )
     {
         if ( wch->reply == ch )
-            wch->reply = NULL;
+            SET_CHAR_REF( wch, reply, NULL );
         /* A hunter or a tracker keeps no pointer to somebody gone: it
            was read a second later by hunting_update and TRACK (stale-
            pointer audit, 2026-11-11). */
@@ -2846,7 +2846,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 d->gmcp_last_character = NULL;  /* compared by address; never kept past it */
             if ( d->original == ch )
             {
-                d->original = NULL;
+                SET_CHAR_REF( d, original, NULL );
                 if ( d->character != NULL )
                     send_to_char( "Your own body is gone; you are left where you are.\n\r",
                                   d->character );
@@ -2857,7 +2857,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     unregister_character( ch );
 
     if ( ch->desc )
-        ch->desc->character = NULL;
+        SET_CHAR_REF( ch->desc, character, NULL );
     free_char( ch );
     return;
 }

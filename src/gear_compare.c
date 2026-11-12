@@ -1928,6 +1928,9 @@ static void gear_find_guardian_drops( CHAR_DATA *ch, const GEAR_PROFILE *profile
     int count;
     int i;
 
+    /* A stand-in on the stack, never stored: registered while in use. */
+    memset( &candidate, 0, sizeof( candidate ) );
+    mem_standin_begin( &candidate, MEMTRACK_KIND_OBJ );
     for ( level = 1; hyrule_guardian_vnum( level ) != 0; level++ )
     {
         if ( ( pMob = get_mob_index( hyrule_guardian_vnum( level ) ) ) == NULL )
@@ -1977,6 +1980,7 @@ static void gear_find_guardian_drops( CHAR_DATA *ch, const GEAR_PROFILE *profile
                            &candidate, &source, best, found );
         }
     }
+    mem_standin_end( &candidate );
 }
 
 /*
@@ -2018,6 +2022,9 @@ static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     }
 
     chest_count = gear_collect_chests( chests, GEAR_MAX_CHESTS );
+    /* A stand-in on the stack, never stored: registered while in use. */
+    memset( &candidate, 0, sizeof( candidate ) );
+    mem_standin_begin( &candidate, MEMTRACK_KIND_OBJ );
 
     for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
     {
@@ -2081,6 +2088,7 @@ static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
         }
     }
 
+    mem_standin_end( &candidate );
     gear_find_guardian_drops( ch, profile, only_group, defense, states,
                               best, found );
 }

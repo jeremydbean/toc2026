@@ -105,10 +105,10 @@ static bool psionic_switch_into( CHAR_DATA *ch, CHAR_DATA *projection )
     ||   ch->desc->original != NULL || projection->desc != NULL )
         return false;
 
-    ch->desc->character = projection;
-    ch->desc->original  = ch;
-    projection->desc    = ch->desc;
-    ch->desc             = NULL;
+    SET_CHAR_REF( ch->desc, character, projection );
+    SET_CHAR_REF( ch->desc, original, ch );
+    SET_DESC_REF( projection, desc, ch->desc );
+    SET_DESC_REF( ch, desc, NULL );
     projection->comm     = ch->comm;
     projection->lines    = ch->lines;
     return true;
@@ -4305,8 +4305,8 @@ void dismiss_undead_servants( CHAR_DATA *master )
         if ( gch->in_room != NULL )
             act( "$n crumbles into dust.", gch, NULL, NULL, TO_ROOM );
         REMOVE_BIT( gch->affected_by, AFF_CHARM );
-        gch->master = NULL;
-        gch->leader = NULL;
+        SET_CHAR_REF( gch, master, NULL );
+        SET_CHAR_REF( gch, leader, NULL );
         extract_char( gch, true );
     }
 }
@@ -4433,7 +4433,7 @@ static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
     victim->long_descr = str_dup( buf );
 
     add_follower( victim, ch );
-    victim->leader = ch;
+    SET_CHAR_REF( victim, leader, ch );
 
     af.type       = (sh_int)( skill_lookup( "charm person" ) );
     af.level      = ch->level;

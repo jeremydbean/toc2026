@@ -3110,7 +3110,7 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( IS_AFFECTED(ch, AFF_SLEEP) )
 	affect_strip( ch, gsn_sleep );
 
-    ch->fighting = victim;
+    SET_CHAR_REF( ch, fighting, victim );
     ch->position = POS_FIGHTING;
     /* An encounter's start, for log/progress.tsv: a mobile entering a
        fight (set_fighting is only ever for one not already in one), or
@@ -3186,7 +3186,7 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
 		fch->pcdata->meter_active = false;
 		fch->pcdata->fight_stopped_ms = playlog_now_ms();
 	    }
-	    fch->fighting       = NULL;
+	    SET_CHAR_REF( fch, fighting, NULL );
 	    fch->position = IS_NPC(fch) ? fch->default_pos : POS_STANDING;
 	    update_pos( fch );
 	}
@@ -3778,7 +3778,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
          the pointer too, stranding the real pet or mount -- unsaved,
          unkillable, and still pointing at its owner after they quit. */
       if (victim->master != NULL && victim->master->pet == victim)
-         victim->master->pet = NULL;
+         SET_CHAR_REF( victim->master, pet, NULL );
 
 	victim->pIndexData->killed++;
 	kill_table[URANGE(0, victim->level, MAX_LEVEL-1)].killed++;

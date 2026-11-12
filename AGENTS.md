@@ -5402,17 +5402,52 @@ into a later pass reads freed memory, so any left in live play must be
   free (`tests/test_recycle_liveness.c`, cap saturation). `mem_magic`
   (`MEM_ALIVE_*`/`MEM_DEAD_*`) is still written, for a debugger, and
   decides nothing. A second release -- or a release of a stand-in -- is
-  refused by the set. **What it cannot see**: an address freed and handed
-  to a new block of the same kind reads LIVE, so a stale pointer to it is
-  indistinguishable from a fresh one (no generation is kept: every holder
-  would have to store one beside the pointer); the quarantine makes reuse
-  unlikely inside its window, not impossible after it. **Stand-ins read
-  as freed**: `offline_desc`, gear_compare's stack candidate and save.c's
-  static vessel are never registered, which is safe because each lives
-  inside one command and the sweep and hot spots run from the game loop,
-  never inside a command, and none is stored where they look (the
-  vessel's stash objects carry `carried_by` NULL). Never store a pointer
-  to a stack or static stand-in in a field the sweep checks.
+  refused by the set.
+- **Serials: an address reused by the same kind** (2026-11-12). Every
+  registration -- each allocation, and each stand-in -- gets a 64-bit
+  serial, never 0 and never repeated, kept in the set's slot (not in the
+  block, which `*ch = ch_zero` and the like overwrite). The long-lived
+  pointers keep a `MEM_REF` beside them -- the pointer as set and the
+  serial of what it named then: on CHAR_DATA `fighting`, `master`,
+  `leader`, `pet`, `hunting`, `reply`, `questgiver`, `desc`, `in_object`;
+  on OBJ_DATA `trapped`; on DESCRIPTOR_DATA `character`, `original`,
+  `snoop_by`; and each hunter-list slot's `ch`. **They are written only
+  through `SET_CHAR_REF`, `SET_OBJ_REF` and `SET_DESC_REF`** (merc.h:
+  holder, field, value; the holder is evaluated twice), and
+  `tests/test_memory_serials.py` fails on any raw `->field =` for them in
+  `src/*.c`. `mem_ref_liveness(p, ref, kind)` (recycle.c) answers
+  `MEM_STATE_REUSED` when the address is live or dead under another
+  serial than the ref's -- one probe, never reading `p` -- and memguard's
+  `mg_ref` asks it for every one of those fields, in the sweep and in the
+  hot spots. A field found written without its ref (`ref.ptr` is not the
+  pointer: a raw write the source test missed, or memory copied whole) is
+  checked by address as before, its ref taken from it then if it is live,
+  counted ("written without their serial" in MEMCHECK) and logged once a
+  field a minute. **What serials do not cover**: the list links
+  (`carrying`/`next_content`, `contains`, room `people`/`contents`,
+  `next_in_room`, the character, object and descriptor lists), an
+  object's `carried_by`/`in_obj`, `resurrect_corpse`,
+  `gmcp_last_character`, the stash, and any pointer not on that list --
+  each still checked by address alone, so a stale one whose address the
+  same kind has reused reads live. Those are either kept consistent by the
+  list code itself or cleared where their target goes; a new long-lived
+  field should get a `MEM_REF` and a setter, and go into `mg_ref`.
+- **Stand-ins are registered while in use** (2026-11-12):
+  `mem_standin_begin(p, kind)` and `mem_standin_end(p)` around the use,
+  on every way out -- `offline_player_load`'s descriptor (begun at its
+  `memset`, ended before each return: the loaded character never keeps
+  it), gear_compare's two stack candidates, `corpse_file_read`'s static
+  vessel. A registered stand-in reads LIVE, has a serial a ref can keep,
+  and is refused by every release (`memtrack_dead` refuses it; the
+  `*_data_release` functions say "a stand-in"), so it is never queued or
+  freed. `mem_standin_end` ends only a stand-in, never a real block. The
+  sweep never runs inside a command, so one still registered when it runs
+  is a missed end: it is logged once a minute and counted in MEMCHECK's
+  `Stand-ins` line. The zero templates (`ch_zero`, `obj_zero`, `d_zero`)
+  and recycle.c's `next_free` sentinels are never pointed at by a checked
+  field and stay unregistered; never store a pointer to a stack or static
+  object in a checked field unless it is registered for as long as it is
+  stored.
 - **Quarantine.** A released block is kept whole (never poisoned, so a
   stale read behaves as the old pool did) for `MEM_QUARANTINE_SECS` (60;
   `TOC_MEM_QUARANTINE_SECS` overrides, 0 to 3600) and at most
@@ -5441,7 +5476,8 @@ into a later pass reads freed memory, so any left in live play must be
   `staff_notice_level`; a freed one writes `-> freed <kind> (gone from
   quarantine; not read)` -- nothing is known of it, so there is no label
   -- and MEMCHECK counts those apart. Measured at about 2 ms a run on a
-  full test world (5,556 characters, 6,013 objects, 85,000 pointers).
+  full test world (5,556 characters, 6,013 objects, 85,000 pointers),
+  with or without the serial comparison (one probe either way).
 - **Repairs**, each the least that leaves the game consistent:
   fighting is cleared *then* `stop_fighting(ch, FALSE)` resets the
   position (stop_fighting would write the dead opponent's battle ticks);
@@ -5473,10 +5509,14 @@ into a later pass reads freed memory, so any left in live play must be
   whenever the sweep ran a pass after the purge;
   `tests/test_memcheck_purge.py`). Since 2026-11-12 the sweep no longer
   reads a pointer to learn whether it is dead, so it survives one past
-  the window -- but it can only say "freed", and an address reused by the
-  same kind it cannot see at all: a field that is meant to outlive its
+  the window -- but it can only say "freed", or "reused" for a field kept
+  with a serial, and an address reused by the same kind behind any other
+  field it cannot see at all: a field that is meant to outlive its
   target must still be cleared at the target's extraction, never left
-  for the sweep.
+  for the sweep. A reused target is repaired exactly as a freed one and
+  logged `-> reused <kind> (its address now holds a newer one; not
+  read)`; nothing is known of the old target, and the quarantine label at
+  that address, if any, is the newer block's, so it is not shown.
 - **Hot spots ask first**: `violence_update` (`memguard_fighting_ok`),
   `hunt_victim` (`memguard_hunting_ok`), `hunting_update`
   (`memguard_hunter_slot_ok`), the output loop
@@ -5496,7 +5536,14 @@ into a later pass reads freed memory, so any left in live play must be
   aims the caller's REPLY at a mobile in no list, which the next sweep
   retires straight through `char_data_release` (`mg_selftest_retire`), so
   the sweep after it is the first to look, across at least one flush:
-  "dead" inside a window, "freed" with `TOC_MEM_QUARANTINE_SECS=0`.
+  "dead" inside a window, "freed" with `TOC_MEM_QUARANTINE_SECS=0` (or
+  "reused", should a reset hand the freed address to a new mobile before
+  the sweep looks). `MEMCHECK SELFTEST REUSE` instead ends the mobile's
+  registration and registers its address again as a new character -- what
+  the allocator does -- without freeing it, so the next sweep must say
+  "reused" by the serial while the address alone reads live
+  (`tests/test_memory_serials.py`; the C harness's `reuse` mode also plays
+  real glibc reuse, without ASan, in `tests/test_memory_ranges.py`).
 - **crash.log has a backtrace**: the handler writes the build (first word
   of `../.code-revision` or `../log/deployed-commit`, read at boot) and
   `backtrace()`/`backtrace_symbols_fd()` under `__GLIBC__` (warmed once

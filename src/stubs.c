@@ -155,11 +155,11 @@ void die_follower( CHAR_DATA *ch )
             ch->ridden = false;
         }
         if ( ch->master->pet == ch )
-            ch->master->pet = NULL;
+            SET_CHAR_REF( ch->master, pet, NULL );
         stop_follower( ch );
     }
 
-    ch->leader = NULL;
+    SET_CHAR_REF( ch, leader, NULL );
 
     dismiss_undead_servants( ch );
 
@@ -170,7 +170,7 @@ void die_follower( CHAR_DATA *ch )
         if ( fch->master == ch )
             stop_follower( fch );
         if ( fch->leader == ch )
-            fch->leader = fch;
+            SET_CHAR_REF( fch, leader, fch );
     }
 }
 

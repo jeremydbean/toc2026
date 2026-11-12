@@ -112,7 +112,7 @@ int insert_into_hunter_list( CHAR_DATA *hunter, int ANNOY )
     for (i=0; i < MAX_HUNTERS; i++)
         if (hunter_list[i].ch == NULL || hunter_list[i].ch == hunter)
         {
-            hunter_list[i].ch = hunter;
+            SET_CHAR_REF( &hunter_list[i], ch, hunter );
             hunter_list[i].status = ANNOY;
             return i;
         }
@@ -126,8 +126,8 @@ int delete_from_hunter_list( CHAR_DATA *hunter )
     for (i=0; i < MAX_HUNTERS; i++)
         if (hunter_list[i].ch == hunter)
         {
-            hunter_list[i].ch->hunting = NULL;
-            hunter_list[i].ch = NULL;
+            SET_CHAR_REF( hunter_list[i].ch, hunting, NULL );
+            SET_CHAR_REF( &hunter_list[i], ch, NULL );
             hunter_list[i].status = 0;
             return i;
         }
@@ -299,7 +299,7 @@ void do_start_hunting ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY )
 
     if (hunter->hunting == NULL )
     {
-	hunter->hunting = target;
+	SET_CHAR_REF( hunter, hunting, target );
 	if (insert_into_hunter_list(hunter, ANNOY) >= 0)
 	{
             snprintf(buf, sizeof(buf), "[Room: %d] %s is now %s [Room: %d] %s.",
@@ -327,7 +327,7 @@ void do_start_hunting ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY )
                      IS_NPC(hunter->hunting) ? hunter->hunting->short_descr
                                              : hunter->hunting->name);
             wizinfo(buf, LEVEL_IMMORTAL);
-            hunter->hunting = target;
+            SET_CHAR_REF( hunter, hunting, target );
         } else {
             /* This isn't supposed to happen at all */
             snprintf(buf, sizeof(buf),
@@ -387,7 +387,7 @@ void do_stop_hunting( CHAR_DATA *ch, char *arg)
             }
             /* Never left pointing at somebody: the target may be extracted
                and freed (memory is the system allocator's, 2026-11-11). */
-            ch->hunting = NULL;
+            SET_CHAR_REF( ch, hunting, NULL );
             return;
         }
         snprintf(buf, sizeof(buf), "[Room: %d] %s stops %s %s because %s.",
@@ -547,7 +547,7 @@ void do_track( CHAR_DATA *ch, char *argument )
                          ? ch->hunting->short_descr
                          : ch->hunting->name);
             send_to_char(buf,ch);
-            ch->hunting = NULL;
+            SET_CHAR_REF( ch, hunting, NULL );
         }
 	return;
     }
@@ -556,7 +556,7 @@ void do_track( CHAR_DATA *ch, char *argument )
     {
         snprintf(buf, sizeof(buf), "No-one around by that name: %s.\n\r", arg);
         send_to_char(buf,ch);
-        ch->hunting = NULL;
+        SET_CHAR_REF( ch, hunting, NULL );
         return;
     }
 
@@ -567,7 +567,7 @@ void do_track( CHAR_DATA *ch, char *argument )
     if ( ch->move > 2 )
     {
 	ch->move -= 3;
-	ch->hunting = vict;
+	SET_CHAR_REF( ch, hunting, vict );
     }
     else
     {
@@ -591,7 +591,7 @@ void do_track( CHAR_DATA *ch, char *argument )
 	    break;
 	case BFS_ALREADY_THERE:
 	    send_to_char("If it was a snake it would have bit you!\n\r", ch);
-            ch->hunting = NULL;
+            SET_CHAR_REF( ch, hunting, NULL );
 	    break;
 	case BFS_NO_PATH:
 	    act( "You can't sense a trail to $M from here.",

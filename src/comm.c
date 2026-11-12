@@ -1777,7 +1777,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
     {
 	write_to_buffer( dclose->snoop_by,
 	    "Your victim has left the game.\n\r", 0 );
-	dclose->snoop_by = NULL;
+	SET_DESC_REF( dclose, snoop_by, NULL );
     }
 
     {
@@ -1786,7 +1786,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 	for ( d = descriptor_list; d != NULL; d = d->next )
 	{
 	    if ( d->snoop_by == dclose )
-		d->snoop_by = NULL;
+		SET_DESC_REF( d, snoop_by, NULL );
 	}
     }
 
@@ -1831,7 +1831,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
             /* Nobody walks on without a link, or resumes on reconnecting. */
             walkto_clear( ch );
             build_wizard_clear( ch );
-	    ch->desc = NULL;
+	    SET_DESC_REF( ch, desc, NULL );
 	}
 	else
 	{
@@ -2533,7 +2533,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
     if ( d->snoop_by != NULL && !snoop_still_allowed( d ) )
     {
 	write_to_buffer( d->snoop_by, "Your snoop has ended.\n\r", 0 );
-	d->snoop_by = NULL;
+	SET_DESC_REF( d, snoop_by, NULL );
     }
     if ( d->snoop_by != NULL )
     {
@@ -3144,7 +3144,7 @@ static bool new_name_still_free( DESCRIPTOR_DATA *d )
         "\n\rThat name was taken by someone else while you were creating your\n\r"
         "character; choose another.\n\rName: ", 0 );
     free_char( ch );
-    d->character = NULL;
+    SET_CHAR_REF( d, character, NULL );
     d->connected = CON_GET_NAME;
     return FALSE;
 }
@@ -3169,7 +3169,7 @@ static bool login_reload_character( DESCRIPTOR_DATA *d, const char *password )
 
     toc_strlcpy( name, d->character->name, sizeof(name) );
     free_char( d->character );
-    d->character = NULL;
+    SET_CHAR_REF( d, character, NULL );
 
     found = load_char_obj( d, name );
     ch    = d->character;
@@ -3188,7 +3188,7 @@ static bool login_reload_character( DESCRIPTOR_DATA *d, const char *password )
         write_to_buffer( d,
             "That character no longer exists.\n\rName: ", 0 );
         free_char( ch );
-        d->character = NULL;
+        SET_CHAR_REF( d, character, NULL );
         d->connected = CON_GET_NAME;
         return FALSE;
     }
@@ -3551,7 +3551,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 			{
 			    write_to_buffer( d, "That name belongs to an NPC, try another.\n\rName: ", 0 );
 			    free_char( d->character );
-			    d->character = NULL;
+			    SET_CHAR_REF( d, character, NULL );
 			    return;
 			}
 		    }
@@ -3563,7 +3563,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 		    "That name is being taken by someone else right now; "
 		    "choose another.\n\rName: ", 0 );
 		free_char( d->character );
-		d->character = NULL;
+		SET_CHAR_REF( d, character, NULL );
 		return;
 	    }
 	    if (newlock)
@@ -3589,7 +3589,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 		{
 		    write_to_buffer( d, refusal, 0 );
 		    free_char( d->character );
-		    d->character = NULL;
+		    SET_CHAR_REF( d, character, NULL );
 		    return;
 		}
 	    }
@@ -3717,7 +3717,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             if ( d->character != NULL )
             {
                 free_char( d->character );
-                d->character = NULL;
+                SET_CHAR_REF( d, character, NULL );
             }
 	    d->connected = CON_GET_NAME;
 	    break;
@@ -3727,7 +3727,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             if ( d->character != NULL )
             {
                 free_char( d->character );
-                d->character = NULL;
+                SET_CHAR_REF( d, character, NULL );
             }
 	    d->connected = CON_GET_NAME;
 	    break;
@@ -3752,7 +3752,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	case 'n': case 'N':
 	    write_to_buffer( d, "Ok, what IS it, then? ", 0 );
 	    free_char( d->character );
-	    d->character = NULL;
+	    SET_CHAR_REF( d, character, NULL );
 	    d->connected = CON_GET_NAME;
 	    break;
 
@@ -4427,8 +4427,8 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 	    else
 	    {
 		free_char( d->character );
-		d->character = ch;
-		ch->desc	 = d;
+		SET_CHAR_REF( d, character, ch );
+		SET_DESC_REF( ch, desc, d );
 		ch->timer	 = 0;
 		/* A reconnect is an arrival too (review, 2026-10-23). */
 		creator_arrives_unseen( ch );

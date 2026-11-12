@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112memreuse 2026-11-12 staff
+MEMCHECK now catches a pointer to something whose memory was handed to a
+new thing of the same kind ("reused"), which it could not tell apart
+before: the long-lived pointers keep the serial of what they named. It
+also lists the stand-ins commands register while they run, and MEMCHECK
+SELFTEST REUSE (test worlds only) plays the case.
+
 @ 20261112trapnotice 2026-11-12 staff
 WIZINFO's new-trap lines now say where the trap is and what it does: the
 kind (fire, gas, dart...), the room by name and number, its area, and for a
@@ -19,6 +26,7 @@ movement five times what they were; it had been adding five times on top.
 @ 20261112webchanges 2026-11-12
 The website has a Changes page: every change to the game, newest first,
 with a search box -- the same list CHANGES ALL shows in game.
+
 
 @ 20261112wimpy 2026-11-12
 WIMPY now holds any number of hit points up to half your maximum. Past
