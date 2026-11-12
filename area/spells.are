@@ -887,19 +887,18 @@ See also: AID, HOLY WORD, BENEDICTIONS
 ~
 
 0 EMPOWER TITANIC 'EMPOWER SPELL' 'TITANIC SPELL'~
-EMPOWER and TITANIC are two bundles of power.  Hermie hands them out free
-at the Temple when she is about (ask her: BUFF EMPOWER, BUFF TITANIC), and
-the rarest concoctions and scrolls carry them; nobody can learn to cast
-them.
+EMPOWER and TITANIC are two bundles of power.  Hermie hands out EMPOWER
+free at the Temple when she is about (ask her: BUFF EMPOWER), and the
+rarest concoctions and scrolls carry both; nobody can learn to cast them.
 
 EMPOWER lays on sanctuary, haste, fly, pass door, protection from evil, a
 fire shield, divine protection and giant strength, each its own effect,
 together with +15 INT, WIS and CON, +11 DEX, +20 hitroll and damroll and
--100 armour class.
+-100 armour class, and adds half again to the experience you earn.
 
-TITANIC raises your maximum hit points, mana and movement to six times
-what they were (to at most 30000), fills all three, and adds half again to
-the experience you earn.
+TITANIC makes your maximum hit points, mana and movement five times what
+they were, fills all three, and adds half again to the experience you
+earn.
 
 A crafted one lasts half its maker's level in ticks, never more than 30,
 and anybody below the maker's level cannot use it.  It takes on players

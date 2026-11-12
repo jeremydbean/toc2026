@@ -5698,7 +5698,7 @@ She offers armor, bless, shield, stone skin, sanctuary, haste, fly, pass
 door, protection evil, fire shield, frost shield, divine protection, giant
 strength, frenzy, major globe, infravision, detect invis, detect hidden,
 detect magic, detect good, detect evil, refresh, heal and restore mana
-individually, plus empower and titanic as bundles.
+individually, plus empower as a bundle.
 
 Every spell she hands out lasts 30 ticks, whoever asks for it, and every
 one is written to the game log.
@@ -6632,7 +6632,8 @@ Syntax: empower <player>
 
 EMPOWER grants a player a full suite of divine buffs: sanctuary, haste,
 fly, pass door, protection, regeneration, divine shielding, and large
-boosts to all five stats plus hitroll, damroll, and armor class.
+boosts to all five stats plus hitroll, damroll, and armor class, and
+50% more experience for as long as it lasts.
 
   empower bob           -- permanent (duration -1); default when no arg given
   empower bob 200       -- applies for 200 ticks; expires naturally
@@ -6656,9 +6657,9 @@ Syntax: titanic <player>
         titanic <player> perm
         titanic <player> toggle
 
-TITANIC grants a player a 500% bonus to maximum HP, mana, and move
-(capped at +30000 per resource to prevent overflow), then heals them to
-full immediately.  Also grants +50% bonus experience for the duration.
+TITANIC makes a player's maximum HP, mana, and move five times what they
+were (capped at 1,000,000,000 each), then heals them to full immediately.
+Also grants +50% bonus experience for the duration.
 
   titanic bob          -- permanent (duration -1); default when no arg given
   titanic bob 300      -- 300-tick duration

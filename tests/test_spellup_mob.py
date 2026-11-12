@@ -95,7 +95,9 @@ class SpellupMobTests(unittest.TestCase):
                 menu = run(client, "buff", settle=3.0)
                 self.assertIn("sanctuary", menu)
                 self.assertIn("empower", menu)
-                self.assertIn("titanic", menu)
+                # TITANIC is staff's and crafted bundles' only (owner,
+                # 2026-11-12); EMPOWER carries the experience bonus.
+                self.assertNotIn("titanic", menu)
                 self.assertIn(f"lasts {DURATION} ticks", menu)
 
                 # By name.

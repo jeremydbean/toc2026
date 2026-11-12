@@ -3182,6 +3182,9 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
    the 16-bit fields that held them at 32,767 are gone). Far from INT_MAX,
    so a pool plus its bonuses never overflows. */
 #define POOL_MAX        1000000000
+/* TITANIC makes each pool this many times what it was (a boost of one
+   less than this; owner, 2026-11-12: 5x, not 5x added on top). */
+#define TITANIC_MULTIPLE 5
 
 /* Data files used by the server. */
 #define PLAYER_DIR      "../player/"

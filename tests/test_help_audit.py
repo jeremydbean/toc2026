@@ -186,7 +186,8 @@ class CorrectionsHold(unittest.TestCase):
         self.says("remove align", "destroys the object")
         self.says("restore mana", "5d10 mana")
         self.says("empower", "+20 hitroll and damroll", "not the quest master's")
-        self.says("titanic", "six times")
+        self.says("titanic", "five times")          # 5x in all since 2026-11-12
+        self.says("empower spell", "half again to the experience")
         self.says("divine protection", "counter-strike")
         self.says("vengeance", "for good")
         self.says("vengence", "for good")

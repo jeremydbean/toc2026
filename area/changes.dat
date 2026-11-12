@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112empowerxp 2026-11-12
+EMPOWER now adds half again to the experience you earn while it lasts, so
+asking Hermie for it (BUFF EMPOWER) speeds your levelling. Hermie no longer
+hands out TITANIC. TITANIC itself now makes your hit points, mana and
+movement five times what they were; it had been adding five times on top.
+
 @ 20261112webchanges 2026-11-12
 The website has a Changes page: every change to the game, newest first,
 with a search box -- the same list CHANGES ALL shows in game.

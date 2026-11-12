@@ -12480,11 +12480,17 @@ static void empower_apply( CHAR_DATA *victim, int level, int duration )
     af.location = APPLY_HITROLL; af.modifier = 20;   affect_to_char( victim, &af );
     af.location = APPLY_DAMROLL; af.modifier = 20;   affect_to_char( victim, &af );
     af.location = APPLY_AC;      af.modifier = -100; affect_to_char( victim, &af );
+    /* Half again the experience while it lasts (owner, 2026-11-12: EMPOWER
+       was always meant to speed levelling; it carries TITANIC's bonus now
+       that Hermie no longer hands TITANIC out). gain_exp reads it through
+       pcdata->exp_bonus, and toggling EMPOWER off strips it with the rest. */
+    af.location = APPLY_EXP;     af.modifier = 50;   affect_to_char( victim, &af );
 
 }
 
-/* TITANIC's effects, without a word said: five times each pool, capped
-   at POOL_MAX, and every pool filled. Shared like
+/* TITANIC's effects, without a word said: each pool made five times what
+   it was -- a boost of four times, so the total is 5x, not 6x (owner,
+   2026-11-12) -- capped at POOL_MAX, and every pool filled. Shared like
    empower_apply. The boosts given come back through the pointers. */
 static void titanic_apply( CHAR_DATA *victim, int level, int duration,
                            int *hp_out, int *mana_out, int *move_out )
@@ -12492,11 +12498,11 @@ static void titanic_apply( CHAR_DATA *victim, int level, int duration,
     AFFECT_DATA af;
     int hp_boost, mana_boost, move_boost;
 
-    /* 500% bonus: five times the current maximum, held so the pool plus
-       its boost stays within POOL_MAX (it was 30,000, for 16-bit fields). */
-    hp_boost   = pool_scale( victim->max_hit, 5, 1, POOL_MAX );
-    mana_boost = pool_scale( victim->max_mana, 5, 1, POOL_MAX );
-    move_boost = pool_scale( victim->max_move, 5, 1, POOL_MAX );
+    /* Five times in all: a boost of four times the current maximum, held so
+       the pool plus its boost stays within POOL_MAX. */
+    hp_boost   = pool_scale( victim->max_hit, TITANIC_MULTIPLE - 1, 1, POOL_MAX );
+    mana_boost = pool_scale( victim->max_mana, TITANIC_MULTIPLE - 1, 1, POOL_MAX );
+    move_boost = pool_scale( victim->max_move, TITANIC_MULTIPLE - 1, 1, POOL_MAX );
     if ( (long)victim->max_hit  + hp_boost   > POOL_MAX ) hp_boost   = POOL_MAX - victim->max_hit;
     if ( (long)victim->max_mana + mana_boost > POOL_MAX ) mana_boost = POOL_MAX - victim->max_mana;
     if ( (long)victim->max_move + move_boost > POOL_MAX ) move_boost = POOL_MAX - victim->max_move;
@@ -12593,7 +12599,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
     empower_apply( victim, ch->level, duration );
 
     act( "$n is surrounded by a blazing divine aura!", victim, NULL, NULL, TO_ROOM );
-    send_to_char( "You are filled with divine power -- all buffs applied!\n\r", victim );
+    send_to_char( "You are filled with divine power -- all buffs applied, and 50% more experience!\n\r", victim );
     {
         char note[MAX_STRING_LENGTH];
 
@@ -12616,7 +12622,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
 
 
 /*
- * TITANIC: massively boost HP, mana, and movement (500% bonus).
+ * TITANIC: each of HP, mana and movement made five times what it was.
  */
 void do_titanic( CHAR_DATA *ch, char *argument )
 {
@@ -12683,7 +12689,7 @@ void do_titanic( CHAR_DATA *ch, char *argument )
         wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
     }
     act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
-    send_to_char( "Your body surges with titanic power -- HP, mana, and move multiplied, and you gain 50% bonus experience!\n\r", victim );
+    send_to_char( "Your body surges with titanic power -- HP, mana, and move five times over, and you gain 50% bonus experience!\n\r", victim );
     if ( duration == -1 )
         snprintf( buf, sizeof(buf), "%s made titanic permanently (+%d HP, +%d mana, +%d move, +50%% exp).\n\r",
                   victim->name, hp_boost, mana_boost, move_boost );
@@ -12799,7 +12805,7 @@ DECLARE_SPELL_FUN( spell_null );
 
 #define SPELLUP_SPELL       0
 #define SPELLUP_EMPOWER     1
-#define SPELLUP_TITANIC     2
+/* 2 was SPELLUP_TITANIC, retired 2026-11-12 */
 #define SPELLUP_RESTORE     3   /* fill a pool rather than cast at it */
 #define SPELLUP_UNCURSE_MAX 30  /* remove curse castings for one ask   */
 
@@ -12894,7 +12900,8 @@ static const struct spellup_entry spellup_table[] =
     { "align",      "know alignment",    "know alignment",    SPELLUP_SPELL, 0 },
 
     { "empower",    NULL,                "empower (bundle)",  SPELLUP_EMPOWER, 0 },
-    { "titanic",    NULL,                "titanic (bundle)",  SPELLUP_TITANIC, 0 },
+    /* TITANIC is staff's and crafted bundles' only (owner, 2026-11-12):
+       Hermie no longer offers it; EMPOWER carries its experience bonus. */
     { NULL,         NULL,                NULL,                0,               0 }
 };
 
@@ -12971,22 +12978,6 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
         snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
         buff_giver = mob->short_descr;
         do_empower( victim, buf );
-        buff_giver = NULL;
-        return TRUE;
-    }
-
-    if ( entry->kind == SPELLUP_TITANIC )
-    {
-        if ( is_affected( victim, gsn_titanic ) )
-        {
-            act( "$n says 'You are quite large enough already.'",
-                mob, NULL, victim, TO_VICT );
-            return FALSE;
-        }
-        /* Same reason as empower above. */
-        snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
-        buff_giver = mob->short_descr;
-        do_titanic( victim, buf );
         buff_giver = NULL;
         return TRUE;
     }

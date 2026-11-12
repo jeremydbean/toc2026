@@ -134,8 +134,9 @@ class UndeadBudgetTests(unittest.TestCase):
 
     def test_a_lent_maximum_does_not_build_a_servant(self) -> None:
         """A servant's hit points come from the caster's lasting maximum.
-        TITANIC lends six times it for thirty ticks; a servant lives for
-        hundreds, so one raised under it was six times as tough for good.
+        TITANIC lends five times it for thirty ticks (six before
+        2026-11-12); a servant lives for hundreds, so one raised under it
+        was that much tougher for good.
         A skeleton with no corpse has 8d8 + max/10: at a 2000 maximum,
         264 at most, buffed or not (about 1264 on the old code)."""
         with LiveMud(fixtures=True) as mud:

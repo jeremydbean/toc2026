@@ -1437,6 +1437,12 @@ crafted potion or scroll can carry them. The staff commands, Hermie and
 the spells all go through `titanic_apply`/`empower_apply` in `act_wiz.c`;
 change an effect there, once. A crafted one lasts half the maker's level,
 never more than `SPELLUP_DURATION`, and refuses rather than toggles off.
+**Hermie offers EMPOWER, never TITANIC** (owner, 2026-11-12), and EMPOWER
+carries +50% experience (`APPLY_EXP`, read by `gain_exp` through
+`pcdata->exp_bonus`). **TITANIC makes each pool `TITANIC_MULTIPLE` (5)
+times what it was** -- a boost of four times; it added five on top, six in
+all, before that day. The guardian calibration below was measured with
+Hermie's TITANIC; it no longer applies as written.
 
 ## Resurrection
 
@@ -2127,7 +2133,7 @@ Owner, 2026-11-11. Hit points, mana and endurance -- the live pools, the
 permanent ones (`pcdata->perm_hit/mana/move`) and every affect's
 `modifier` -- are `int`, held to `POOL_MAX` (a billion, in `merc.h`) so a
 pool plus its bonuses never overflows. SET HP/MANA/END/MOVE/MAXMOVE,
-TITANIC's five-fold boost and the black dragon's size stop there, not at
+TITANIC's boost and the black dragon's size stop there, not at
 the 30,000 the old 16-bit fields forced. Never cast a pool or a modifier
 through `(sh_int)` or `clamp_sh_int` again (`tests/test_pool_cap.py`).
 **So is WIMPY** (review, 2026-11-12: with 100,000 hit points WIMPY 40000

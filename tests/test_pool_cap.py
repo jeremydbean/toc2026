@@ -73,10 +73,17 @@ class PoolLiveTests(unittest.TestCase):
                 login(player, "Zpoolbig", PW)
                 staff.sync("scroll 0")
                 self.assertEqual(max_hit(staff, "zpoolbig"), 100000, "kept across a reload")
-                # Five times the pool is past what a short holds.
+                # Five times the pool is past what a short holds -- and it is
+                # five times in all, not five times added on top (owner,
+                # 2026-11-12: it read 120,000 here before).
                 staff.must("set char zpoolbig hp 20000", "20000")
                 staff.sync("titanic zpoolbig", timeout=60)
-                self.assertEqual(max_hit(staff, "zpoolbig"), 120000)
+                self.assertEqual(max_hit(staff, "zpoolbig"), 100000)
+                staff.sync("titanic zpoolbig", timeout=60)      # toggles off
+                self.assertEqual(max_hit(staff, "zpoolbig"), 20000)
+                # EMPOWER carries half again the experience now.
+                staff.sync("empower zpoolbig 10", timeout=60)
+                self.assertRegex(player.sync("affects", timeout=60), r"experience by 50")
                 for client in (player, staff):
                     client.send("quit")
                     client.wait_closed()
