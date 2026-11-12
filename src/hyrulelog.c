@@ -19,7 +19,7 @@
  * fields are key=value words, so a reader can take what it knows and
  * skip the rest, and a later field never moves an earlier one. Kinds:
  * enter, leave, gate, seal, got, claim, engage, guardian-down, flee,
- * death, cleared. tools/log_report.py reads them.
+ * death, cleared, crumbled. tools/log_report.py reads them.
  *
  * Mortals only: staff testing would skew every number, and wizinvis
  * staff leave no trace in any journal. Like the play journal it names
@@ -433,4 +433,18 @@ void hylog_room_cleared( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool foe_died )
         if ( hyrule_foe( rch ) )
             return;
     hylog_write( "cleared", ch, room, "foes=0" );
+}
+
+/* What crumbled because its dungeon was left (hyrule.c): the dungeon
+   left (0 for a stray found outside one), and how many of each. */
+void hylog_crumbled( CHAR_DATA *ch, int dungeon, int maps, int compasses,
+                     int keys, int guardian_keys, bool leaving )
+{
+    char fields[200];
+
+    snprintf( fields, sizeof(fields),
+              "dungeon=%d maps=%d compasses=%d keys=%d guardian_keys=%d why=%s how=%s",
+              dungeon, maps, compasses, keys, guardian_keys,
+              leaving ? "left" : "stray", playlog_how( ch ) );
+    hylog_write( "crumbled", ch, NULL, fields );
 }

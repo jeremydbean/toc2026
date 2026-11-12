@@ -852,6 +852,7 @@ def hyrule_summary(rows) -> dict:
     seals: Counter = Counter()
     cleared: Counter = Counter()
     deaths: Counter = Counter()
+    crumbled: Counter = Counter()
     for r in rows:
         kind, zone, who = r["kind"], r["zone"], r["name"]
         if kind == "enter" and zone in ZONE_ORDER:
@@ -880,6 +881,10 @@ def hyrule_summary(rows) -> dict:
             cleared[zone] += 1
         elif kind == "death":
             deaths[(zone, r.get("foe_name", "-"), r.get("guardian", "0"))] += 1
+        elif kind == "crumbled":
+            where = "L" + r.get("dungeon", "?") if r.get("why") == "left" else "stray"
+            for what in ("maps", "compasses", "keys", "guardian_keys"):
+                crumbled[(where, what)] += _num(r, what, 0)
         if kind in ("engage", "guardian-down") or (kind in ("flee", "death")
                                                      and r.get("guardian") == "1"):
             foe = (r.get("foe", "?"), r.get("foe_name", "?"))
@@ -909,7 +914,7 @@ def hyrule_summary(rows) -> dict:
                     g["death_hp"].append(_num(r, "foe_hp"))
     return {"zones": zones, "furthest": furthest, "guardians": guardians, "gates": gates,
             "got": got, "got_how": got_how, "claims": claims, "seals": seals,
-            "cleared": cleared, "deaths": deaths,
+            "cleared": cleared, "deaths": deaths, "crumbled": crumbled,
             "characters": len({r["name"] for r in rows})}
 
 
@@ -964,6 +969,9 @@ def hyrule_report(args, since) -> None:
                                       sorted(s["cleared"].items(), key=lambda kv:
                                              ZONE_ORDER.index(kv[0]) if kv[0] in ZONE_ORDER else 99))
           or "(none)")
+    print("  crumbled (left a dungeon, or carried outside one):",
+          ", ".join(f"{where} {what.replace('_', ' ')} {n}" for (where, what), n
+                    in sorted(s["crumbled"].items()) if n) or "(none)")
 
 
 # The play journal's activity rows (src/playlog.c, 2026-11-10): coin, got,

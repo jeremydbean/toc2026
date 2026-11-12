@@ -1990,6 +1990,16 @@ void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
  * components, cakes, Hyrule's bombs, a key UNLOCK spends, a quest's item
  * AQUEST takes) are left out; a container counts what went with it.
  */
+/* Why the objects extracted next are gone, when it is neither a command
+   nor the phase alone (hyrule.c: "crumbled leaving Level 3"); NULL puts
+   the ordinary reason back. */
+static const char *obj_gone_override;
+
+void playlog_obj_gone_as( const char *why )
+{
+    obj_gone_override = why;
+}
+
 void playlog_obj_gone( OBJ_DATA *obj )
 {
     char fields[PLAY_LINE];
@@ -2027,7 +2037,9 @@ void playlog_obj_gone( OBJ_DATA *obj )
         return;
     for ( in = obj->contains; in != NULL; in = in->next_content )
         inside++;
-    if ( current_set && holder->name != NULL && !str_cmp( current_name, holder->name ) )
+    if ( obj_gone_override != NULL )
+        snprintf( why, sizeof(why), "%s", obj_gone_override );
+    else if ( current_set && holder->name != NULL && !str_cmp( current_name, holder->name ) )
         snprintf( why, sizeof(why), "%s", current_cmd );
     else if ( current_set )
         snprintf( why, sizeof(why), "%s (another's)", current_cmd );

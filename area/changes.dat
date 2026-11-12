@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112hyrulecrumble 2026-11-12
+A Hyrule dungeon's own things no longer clutter your pack after a run:
+its map, its compass and the small keys found in it crumble to dust when
+you leave the dungeon, however you leave. They are found again on your
+next visit, and the dungeon stays on your map (MAPS, and the Mudlet map).
+Keys bought in Hyrule's shops are kept, and so is a guardian's key until
+its chest has given you its prize. Quitting inside a dungeon keeps them.
+See HELP 'HYRULE ITEMS'.
+
 @ 20261112shutterlock 2026-11-12
 Hyrule's shutters have no lock. UNLOCK, PICK and DOORBASH on one now say
 so instead of "You lack the key": once a room's enemies are beaten, just
@@ -15,6 +24,7 @@ may still want a tool, and says which.
 Dodongo is harder to blow up: each bomb he swallows takes a quarter of his
 health, not half, so it takes four bombs to finish him. A purchase is four
 bombs. This goes for every Dodongo, in Levels 2, 5 and 7.
+
 
 @ 20261112maplayers 2026-11-12
 The Mudlet map is easier to read. It shows only the level you are on, not

@@ -210,8 +210,8 @@ bool hyrule_map_place( const ROOM_INDEX_DATA *room, int *level, int *x, int *y, 
     const HYRULE_DUNGEON_GATE *gate = NULL;
     const HYRULE_PLAN *plan;
     int dungeon;
-    int row;
-    int col;
+    int row = 0;        /* set by plan_find on every way that reads them */
+    int col = 0;
     int i;
 
     if ( room == NULL )
@@ -430,34 +430,30 @@ void hyrule_show_map( CHAR_DATA *ch, OBJ_DATA *obj )
  * what fills one in). Sent on picking the map up, on reading it, and on
  * walking into its dungeon with it in hand, once a session.
  */
-void hyrule_send_map( CHAR_DATA *ch, OBJ_DATA *obj )
+static void send_plan( CHAR_DATA *ch, int level, const HYRULE_PLAN *plan )
 {
-    HYRULE_PLAN plan;
     ROOM_INDEX_DATA *room;
     DESCRIPTOR_DATA *d;
-    int level;
     int row;
     int col;
     int i;
     int sent = 0;
 
     if ( ch == NULL || IS_NPC(ch) || ( d = ch->desc ) == NULL || !d->gmcp_enabled
-    ||   !hyrule_is_dungeon_tool( obj ) || obj->value[0] != HYRULE_DUNGEON_MAP
-    ||   !read_plan( obj, &plan ) )
+    ||   plan == NULL || level < 1 || level > 9 )
         return;
-    level = obj->value[4];
 
     for ( row = 0; row < HYRULE_PLAN_SIDE; row++ )
         for ( col = 0; col < HYRULE_PLAN_SIDE; col++ )
-            if ( plan.cell[row][col] > 0
-            &&   ( room = get_room_index( plan.cell[row][col] ) ) != NULL )
+            if ( plan->cell[row][col] > 0
+            &&   ( room = get_room_index( plan->cell[row][col] ) ) != NULL )
             {
                 gmcp_send_map_room( d, room, level, col, -row, 0 );
                 sent++;
             }
-    for ( i = 0; i < plan.cellars; i++ )
-        if ( plan_find( &plan, plan.cellar_above[i], &row, &col )
-        &&   ( room = get_room_index( plan.cellar[i] ) ) != NULL )
+    for ( i = 0; i < plan->cellars; i++ )
+        if ( plan_find( plan, plan->cellar_above[i], &row, &col )
+        &&   ( room = get_room_index( plan->cellar[i] ) ) != NULL )
         {
             gmcp_send_map_room( d, room, level, col, -row, -1 );
             sent++;
@@ -466,8 +462,28 @@ void hyrule_send_map( CHAR_DATA *ch, OBJ_DATA *obj )
     d->hyrule_maps_sent |= 1 << level;
 }
 
-/* Into a dungeon whose map you carry, in hand or one bag down: its plan
-   goes to the client, if it has not this session. */
+void hyrule_send_map( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    HYRULE_PLAN plan;
+
+    if ( !hyrule_is_dungeon_tool( obj ) || obj->value[0] != HYRULE_DUNGEON_MAP
+    ||   !read_plan( obj, &plan ) )
+        return;
+    send_plan( ch, obj->value[4], &plan );
+}
+
+/* Whether a character has ever held dungeon `level`'s map: the
+   achievements' bit, set on getting it (AchMaps), which maps.c reads for
+   Map.Known too. The map item crumbles when its dungeon is left
+   (hyrule_crumble_update); what it taught does not. */
+static bool map_learned( CHAR_DATA *ch, int level )
+{
+    return ch != NULL && ch->pcdata != NULL && level >= 1 && level <= 9
+        && ( ch->pcdata->achievement_hyrule_maps & ( 1UL << ( level - 1 ) ) ) != 0;
+}
+
+/* Into a dungeon whose map you carry, in hand or one bag down, or have
+   held before: its plan goes to the client, if it has not this session. */
 void hyrule_map_on_arrival( CHAR_DATA *ch )
 {
     const HYRULE_DUNGEON_GATE *gate;
@@ -503,6 +519,10 @@ void hyrule_map_on_arrival( CHAR_DATA *ch )
                 return;
             }
     }
+    /* The map crumbled when its dungeon was last left; the plan it taught
+       is still theirs (owner, 2026-11-12). */
+    if ( map_learned( ch, level ) )
+        send_plan( ch, level, dungeon_plan( level ) );
 }
 
 /*
@@ -2774,4 +2794,263 @@ void do_hyrulestatus( CHAR_DATA *ch, char *argument )
         send_to_char( buf, ch );
         next_named = true;
     }
+}
+
+/* --------------------------------------------------------------------
+ * What serves only inside one dungeon crumbles once you are out of it
+ * (owner, 2026-11-12: "once you leave a dungeon in hyrule, the items that
+ * are used only in that dungeon, like small keys and compass and map once
+ * used should crumble"). Those things are:
+ *
+ *   - a dungeon's map and compass (value[4] names the dungeon). What the
+ *     map taught stays: the achievements' AchMaps bit, which Map.Known and
+ *     hyrule_map_on_arrival read, is never touched;
+ *   - the dungeons' own small keys (HYRULE_SMALL_KEY), which only resets
+ *     inside a dungeon lay: one carried out of its dungeon, or into one
+ *     from outside, belongs to no door ahead. The two keys Hyrule's shops
+ *     sell are bought for any dungeon and are kept;
+ *   - a guardian's key whose holder already has what its chest gives (the
+ *     piece, and for Ganon's the Master Sword too). One still unspent is
+ *     kept, so a hurt player may step out to heal and come back for the
+ *     chest; keys go at a quit anyway.
+ *
+ * Progression tools, pieces, the Master Sword, hearts, gear, bombs,
+ * potions and coin are never touched. Only what a character carries or
+ * wears, at any depth; the stash and the floor are left alone.
+ *
+ * It is checked once a pulse, for every playing character, against where
+ * they were at the last check (pcdata->hyrule_crumble_zone, memory only):
+ * not inside char_to_room, so a move that comes straight back -- SCAN and
+ * AT within a pass, the idle void and the Oracle's audience, whose room is
+ * taken to be the one left -- crumbles nothing, and no caller of char_to_room has an object it holds taken from
+ * under it. A login starts unknown, so quitting inside a dungeon and
+ * coming back to it keeps its things. Immortals by level are left alone.
+ * ------------------------------------------------------------------ */
+
+#define CRUMBLE_MAX     64      /* objects taken in one pass of the walk */
+
+/* 0 outside Hyrule, 1 the overworld, 2-10 dungeons 1-9 -- the same
+   numbering as log/hyrule.tsv's zones. The idle void and an audience in
+   the Oracle's sanctum are trips there and back: each counts as the room
+   the character was taken from, and goes back to. */
+static int crumble_zone( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *room = ch->in_room;
+    const HYRULE_DUNGEON_GATE *gate;
+    int level;
+
+    if ( room != NULL && room->vnum == ROOM_VNUM_LIMBO && ch->was_in_room != NULL )
+        room = ch->was_in_room;
+    else if ( room != NULL && room->vnum == ROOM_VNUM_ORACLE )
+    {
+        int origin = oracle_saved_room( ch );
+
+        if ( origin > 0 )
+            room = get_room_index( origin );
+    }
+    if ( room == NULL || !IS_HYRULE_ROOM_VNUM( room->vnum ) )
+        return 0;
+    for ( level = 1; level <= 9; level++ )
+        if ( ( gate = hyrule_dungeon_gate( level ) ) != NULL
+        &&   room->vnum >= gate->first_room && room->vnum <= gate->last_room )
+            return level + 1;
+    return 1;
+}
+
+/* The level of a guardian's key, 1-9, or 0. */
+static int guardian_key_level( int vnum )
+{
+    int level;
+
+    for ( level = 1; level <= 9; level++ )
+        if ( hyrule_guardian_key( level ) == vnum )
+            return level;
+    return 0;
+}
+
+/* Whether `ch` already has what dungeon `level`'s chest gives. */
+static bool holds_chest_prize( CHAR_DATA *ch, int level )
+{
+    if ( !hyrule_carries( ch, HYRULE_PIECE_FIRST_VNUM + level - 1 ) )
+        return false;
+    return level < 9 || hyrule_carries( ch, OBJ_VNUM_HYRULE_MASTER_SWORD );
+}
+
+/* Kinds, for the counts the Hyrule log keeps. */
+#define CRUMBLE_NONE    0
+#define CRUMBLE_MAP     1
+#define CRUMBLE_COMPASS 2
+#define CRUMBLE_KEY     3
+#define CRUMBLE_BOSSKEY 4
+
+/* What kind of dungeon-only thing `obj` is, and so whether it goes when
+   its holder is in dungeon `to` (0 for none) having last been in dungeon
+   `from` (0 for none). */
+static int crumble_kind( CHAR_DATA *ch, const OBJ_DATA *obj, int from, int to )
+{
+    int vnum;
+    int level;
+
+    if ( obj == NULL || obj->pIndexData == NULL )
+        return CRUMBLE_NONE;
+    vnum = obj->pIndexData->vnum;
+    if ( hyrule_is_dungeon_tool( obj ) )
+    {
+        if ( obj->value[4] == to )
+            return CRUMBLE_NONE;
+        return obj->value[0] == HYRULE_DUNGEON_MAP ? CRUMBLE_MAP : CRUMBLE_COMPASS;
+    }
+    /* A small key belongs to the dungeon it is carried in; crossing in or
+       out of one leaves it nothing to open. */
+    if ( vnum == HYRULE_SMALL_KEY )
+        return from != 0 && from == to ? CRUMBLE_NONE : CRUMBLE_KEY;
+    if ( ( level = guardian_key_level( vnum ) ) != 0 )
+        return level != to && holds_chest_prize( ch, level ) ? CRUMBLE_BOSSKEY : CRUMBLE_NONE;
+    return CRUMBLE_NONE;
+}
+
+/* Every dungeon-only thing in `list` and the containers in it, into
+   gone[]; the walk does not go inside one it takes. */
+static void crumble_collect( CHAR_DATA *ch, OBJ_DATA *list, int from, int to,
+                             OBJ_DATA **gone, int *kinds, int *count )
+{
+    OBJ_DATA *obj;
+    int kind;
+
+    for ( obj = list; obj != NULL && *count < CRUMBLE_MAX; obj = obj->next_content )
+    {
+        if ( ( kind = crumble_kind( ch, obj, from, to ) ) != CRUMBLE_NONE )
+        {
+            kinds[*count] = kind;
+            gone[(*count)++] = obj;
+        }
+        else if ( obj->contains != NULL )
+            crumble_collect( ch, obj->contains, from, to, gone, kinds, count );
+    }
+}
+
+/*
+ * Takes them. `from` and `to` are dungeons (1-9) or 0; `leaving` says the
+ * character has just stepped out of `from`, for the words. Returns how
+ * many objects crumbled.
+ */
+static int crumble_sweep( CHAR_DATA *ch, int from, int to, bool leaving )
+{
+    OBJ_DATA *gone[CRUMBLE_MAX];
+    int kinds[CRUMBLE_MAX];
+    int tally[5] = { 0, 0, 0, 0, 0 };
+    char buf[MAX_STRING_LENGTH];
+    char why[64];
+    char line[MAX_STRING_LENGTH];
+    int count, total = 0, round, i, j;
+    bool told = false;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+    if ( leaving && from >= 1 && from <= 9 )
+        snprintf( why, sizeof(why), "crumbled leaving Level %d", from );
+    else
+        snprintf( why, sizeof(why), "crumbled outside its dungeon" );
+
+    /* A pass takes at most CRUMBLE_MAX; nobody carries more, but a pack
+       that did is emptied in a few. Nothing is taken from a list while
+       it is walked. */
+    for ( round = 0; round < 8; round++ )
+    {
+        count = 0;
+        crumble_collect( ch, ch->carrying, from, to, gone, kinds, &count );
+        if ( count == 0 )
+            break;
+        if ( !told )
+        {
+            if ( leaving && from >= 1 && from <= 9 )
+                snprintf( buf, sizeof(buf),
+                          "As you leave Level %d (%s), what served only inside it crumbles to dust:\n\r",
+                          from, hyrule_dungeon_titles[from] );
+            else
+                snprintf( buf, sizeof(buf),
+                          "What you carry for a Hyrule dungeon you are not in crumbles to dust:\n\r" );
+            send_to_char( buf, ch );
+            told = true;
+        }
+        /* One line a kind of thing, with how many. */
+        for ( i = 0; i < count; i++ )
+        {
+            int same = 0;
+            bool listed = false;
+
+            for ( j = 0; j < i; j++ )
+                if ( gone[j]->pIndexData == gone[i]->pIndexData )
+                    listed = true;
+            if ( listed )
+                continue;
+            for ( j = i; j < count; j++ )
+                if ( gone[j]->pIndexData == gone[i]->pIndexData )
+                    same++;
+            if ( same > 1 )
+                snprintf( line, sizeof(line), "  %s (%d)\n\r", gone[i]->short_descr, same );
+            else
+                snprintf( line, sizeof(line), "  %s\n\r", gone[i]->short_descr );
+            send_to_char( line, ch );
+        }
+        playlog_obj_gone_as( why );
+        for ( i = 0; i < count; i++ )
+        {
+            tally[kinds[i]]++;
+            extract_obj( gone[i] );
+        }
+        playlog_obj_gone_as( NULL );
+        total += count;
+    }
+    if ( total == 0 )
+        return 0;
+    if ( tally[CRUMBLE_MAP] > 0 )
+        send_to_char( "What the map showed you stays with you: the dungeon is still on your map.\n\r", ch );
+    if ( tally[CRUMBLE_MAP] + tally[CRUMBLE_COMPASS] + tally[CRUMBLE_KEY] > 0 )
+        send_to_char( "A dungeon's map, compass and small keys are found again on your next visit.\n\r", ch );
+    if ( tally[CRUMBLE_BOSSKEY] > 0 )
+        send_to_char( "A guardian's key whose chest has given you its prize has nothing left to open.\n\r", ch );
+    hylog_crumbled( ch, from, tally[CRUMBLE_MAP], tally[CRUMBLE_COMPASS],
+                    tally[CRUMBLE_KEY], tally[CRUMBLE_BOSSKEY], leaving );
+    return total;
+}
+
+/* Once a pulse (update_handler): each playing character who has moved
+   between outside, the overworld and the dungeons since the last check. */
+void hyrule_crumble_update( void )
+{
+    DESCRIPTOR_DATA *d;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *ch = d->original != NULL ? d->original : d->character;
+        int zone, was, from, to;
+
+        if ( d->connected != CON_PLAYING || ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+            continue;
+        zone = crumble_zone( ch );
+        was = ch->pcdata->hyrule_crumble_zone - 1;      /* -1: not known yet */
+        ch->pcdata->hyrule_crumble_zone = zone + 1;
+        if ( was < 0 || was == zone || IS_IMMORTAL( ch ) )
+            continue;
+        from = was >= 2 ? was - 1 : 0;
+        to = zone >= 2 ? zone - 1 : 0;
+        if ( crumble_sweep( ch, from, to, from != 0 ) > 0 )
+            save_char_obj( ch );
+    }
+}
+
+/* The login fix (fixes.c): what a character brought into this login that
+   serves only in a dungeon they are not in -- from before things
+   crumbled. Inside a dungeon its own things stay. Returns how many went. */
+int hyrule_crumble_leftovers( CHAR_DATA *ch )
+{
+    int zone, here;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+    zone = crumble_zone( ch );
+    here = zone >= 2 ? zone - 1 : 0;
+    ch->pcdata->hyrule_crumble_zone = zone + 1;
+    return crumble_sweep( ch, here, here, false );
 }
