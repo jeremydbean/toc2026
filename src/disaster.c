@@ -71,8 +71,8 @@ static const char *const disaster_warning[DISASTER_COUNT] =
     "A wall of darkness rises on the horizon, racing toward you.",
     "You smell smoke on the wind, and the air turns hot and dry.",
     "The water draws back from the shore, strangely, all at once.",
-    "A vast shadow sweeps across the ground. Something enormous is "
-        "circling overhead."
+    ( "A vast shadow sweeps across the ground. Something enormous is "
+      "circling overhead." )
 };
 
 /* And when it is over. */

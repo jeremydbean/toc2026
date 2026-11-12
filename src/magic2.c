@@ -3405,7 +3405,7 @@ bool craft_recipe_book( CHAR_DATA *ch, OBJ_DATA *obj )
     ||   obj->pIndexData->vnum != OBJ_VNUM_HYRULE_MAGIC_BOOK )
         return false;
 
-    buf = alloc_mem( size );
+    buf = alloc_mem( (int) size );   /* 30000: fits */
     buf[0] = '\0';
     toc_strlcat( buf,
         "{0F         .-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-.{00\n\r"
@@ -3463,7 +3463,7 @@ bool craft_recipe_book( CHAR_DATA *ch, OBJ_DATA *obj )
     act( "You open $p, and fire crackles along its ancient pages.", ch, obj, NULL, TO_CHAR );
     act( "$n opens $p and reads.", ch, obj, NULL, TO_ROOM );
     page_to_char( buf, ch );
-    free_mem( buf, size );
+    free_mem( buf, (int) size );
     return true;
 }
 

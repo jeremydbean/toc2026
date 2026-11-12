@@ -1560,7 +1560,7 @@ static void dps_board_submit( CHAR_DATA *ch, long total, int seconds )
         if ( own >= 0 )
         {
             memmove( &dps_board[own], &dps_board[own + 1],
-                     ( dps_board_count - own - 1 ) * sizeof(dps_board[0]) );
+                     (size_t) ( dps_board_count - own - 1 ) * sizeof(dps_board[0]) );
             dps_board_count--;
         }
 
@@ -1570,7 +1570,7 @@ static void dps_board_submit( CHAR_DATA *ch, long total, int seconds )
             if ( total > dps_board[at].total )
                 break;
         memmove( &dps_board[at + 1], &dps_board[at],
-                 ( dps_board_count - at ) * sizeof(dps_board[0]) );
+                 (size_t) ( dps_board_count - at ) * sizeof(dps_board[0]) );
 
         memset( &entry, 0, sizeof(entry) );
         toc_strlcpy( entry.name, ch->name, sizeof(entry.name) );
@@ -1762,7 +1762,7 @@ static void dps_board_staff( CHAR_DATA *ch, const char *what,
                 dps_ordinal( at + 1, place, sizeof(place) ), dps_board_count );
         }
         memmove( &dps_board[at], &dps_board[at + 1],
-                 ( dps_board_count - at - 1 ) * sizeof(dps_board[0]) );
+                 (size_t) ( dps_board_count - at - 1 ) * sizeof(dps_board[0]) );
         dps_board_count--;
         dps_board_save();
         log_string( buf );

@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112carryweight 2026-11-12 staff
+SCORE's Encumbrance counts past 32,767. Carrying more than that -- only
+staff and the fifth remort have no limit -- read as 2147483647, and every
+weight check after it compared against that. Hit and damage roll, armour,
+saving throw and stat bonuses no longer wrap past 32,767 either.
+
 @ 20261112jail 2026-11-12 staff
 JAIL keeps a prisoner in the cell whatever happens: death, slay, farslay,
 recall, portals, spells, items, the Oracle, remort, DELETE, quitting,

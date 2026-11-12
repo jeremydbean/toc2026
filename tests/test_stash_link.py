@@ -193,7 +193,9 @@ class StashLinkSourceTests(unittest.TestCase):
         # Since 2026-11-03 the move is stash_take_commit's: the owner saved
         # without it first, then the taker with it, each save checked
         # (tests/test_stash_shared_transfer.py plays the failures).
-        self.assertIn("stash_take_commit( ch, owner, obj, prev, offline )", body)
+        # (The piece taken is `item`: the strict-warnings sweep renamed it
+        # from an `obj` that shadowed do_stash's own, 2026-11-12.)
+        self.assertIn("stash_take_commit( ch, owner, item, prev, offline )", body)
         commit = self.obj.split("static void stash_take_commit(", 1)[1]
         commit = commit.split("\nvoid do_stash(", 1)[0]
         owner_save = commit.index('stash_transfer_save( owner, "stash-owner-save" )')

@@ -15,7 +15,12 @@ case "$mode" in
   *) printf 'usage: %s [all|quick|build]\n' "$0" >&2; exit 2 ;;
 esac
 want() { [ "$mode" = all ] || [ "$mode" = "$1" ]; }
-strict_warnings="-Wall -Wextra -Wshadow -Wsign-compare -Wformat-overflow=2 -Wunused-parameter -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wcast-qual"
+strict_warnings="-Wall -Wextra -Wshadow -Wsign-compare -Wconversion -Wsign-conversion -Wformat-overflow=2 -Wunused-parameter -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wcast-qual"
+# The tree is clean under the conversion class (AGENTS.md, "Strict
+# Warnings"); TOC_STRICT_CONVERSION=1, which CI sets, makes it an error.
+if [ "${TOC_STRICT_CONVERSION:-0}" = "1" ]; then
+  strict_warnings="$strict_warnings -Werror=shadow -Werror=sign-compare -Werror=conversion -Werror=sign-conversion"
+fi
 python_bin="${PYTHON:-python3}"
 run_smoke="${RUN_SMOKE:-0}"
 smoke_port="${SMOKE_PORT:-9999}"

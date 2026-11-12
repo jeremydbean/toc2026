@@ -7443,7 +7443,7 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
         if (pick >= 1 && pick <= 3)
         {
             AFFECT_DATA imm_af;
-            long imm_flag = (pick == 1) ? IMM_BASH
+            int imm_flag = (pick == 1) ? IMM_BASH
                           : (pick == 2) ? IMM_PIERCE
                           :               IMM_SLASH;
             imm_af.type      = gsn_iron_skin;

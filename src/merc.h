@@ -2314,7 +2314,7 @@ struct  char_data
     time_t              logon;
     time_t              last_note;
     sh_int              timer;
-    sh_int              wait;
+    int                 wait;           /* int: WAIT_STATE takes any int pulse count */
     /* int, not sh_int: a guardian with 36,000 hit points wrapped to a
        negative number at 32,767 and fell to the first blow. */
     int                 hit;
@@ -2352,16 +2352,19 @@ struct  char_data
     sh_int              position;
     sh_int              practice;
     sh_int              train;
-    sh_int              carry_weight;
-    sh_int              carry_number;
-    sh_int              saving_throw;
+    /* int, not sh_int (strict-warnings sweep, 2026-11-12): these are
+       sums of whatever is carried, worn and cast, and every affect's
+       modifier is an int, so a 16-bit field wrapped silently. */
+    int                 carry_weight;
+    int                 carry_number;
+    int                 saving_throw;
     sh_int              alignment;
-    sh_int              hitroll;
-    sh_int              damroll;
-    sh_int              armor[4];
+    int                 hitroll;
+    int                 damroll;
+    int                 armor[4];
     int                 wimpy;          /* int: a threshold of a pool (POOL_MAX) */
     sh_int              perm_stat[MAX_STATS];
-    sh_int              mod_stat[MAX_STATS];
+    int                 mod_stat[MAX_STATS];
     long                form;
     long                parts;
     sh_int              size;
@@ -3084,12 +3087,26 @@ extern sh_int  gsn_empower;
 extern sh_int  gsn_titanic;
 extern sh_int  gsn_petrify;
 
+/* A value narrowed into a 16-bit field, saturated at its ends rather than
+   wrapped (strict-warnings sweep, 2026-11-12). Anything that fits is
+   unchanged; use it where a sum of ints lands in an sh_int and the range
+   is not provable. Never use a bare (sh_int) cast for that. */
+static inline sh_int sh_int_clamp( long long value )
+{
+    if ( value > INT16_MAX )
+        return INT16_MAX;
+    if ( value < INT16_MIN )
+        return INT16_MIN;
+    return (sh_int) value;
+}
+
 /* Utility macros. */
 #define UMIN(a, b)              ((a) < (b) ? (a) : (b))
 #define UMAX(a, b)              ((a) > (b) ? (a) : (b))
 #define URANGE(a, b, c)         ((b) < (a) ? (a) : ((b) > (c) ? (c) : (b)))
-#define LOWER(c)                ((c) >= 'A' && (c) <= 'Z' ? (c)+'a'-'A' : (c))
-#define UPPER(c)                ((c) >= 'a' && (c) <= 'z' ? (c)+'A'-'a' : (c))
+/* The shifted branch is a letter, so it fits a char whatever c's type. */
+#define LOWER(c)                ((c) >= 'A' && (c) <= 'Z' ? (char)((c)+'a'-'A') : (c))
+#define UPPER(c)                ((c) >= 'a' && (c) <= 'z' ? (char)((c)+'A'-'a') : (c))
 #define IS_SET(flag, bit)       ((flag) & (bit))
 #define IS_SET2(flag,bit)       ((flag) & (bit))
 #define SET_BIT(var, bit)       ((var) |= (bit))

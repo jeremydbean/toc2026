@@ -214,13 +214,17 @@ jobs:
           # codebase has been bitten by stale objects before -- so the
           # compiler cache is what stops that costing a full rebuild.
           CC: ccache gcc
+          # A conversion, sign or shadow warning fails the build here
+          # (AGENTS.md, "Strict Warnings").
+          TOC_STRICT_CONVERSION: "1"
         run: bash scripts/validate.sh build
 
       # Both trees are C17; they differ in warning flags and definitions,
       # so both builds have to compile on every change (see AGENTS.md).
       - name: Strict C17 CMake build and world load
         run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DTOC_STRICT_CONVERSION=ON
           cmake --build build --parallel
           cd area && ../bin/rom --check-area
 
@@ -254,7 +258,8 @@ jobs:
       - name: Sanitizer build
         run: |
           cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug \
-            -DENABLE_SANITIZERS=ON -DCMAKE_C_COMPILER_LAUNCHER=ccache
+            -DENABLE_SANITIZERS=ON -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DTOC_STRICT_CONVERSION=ON
           cmake --build build-sanitize --parallel
 
       - name: Boot the full world under sanitizers

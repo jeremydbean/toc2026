@@ -6812,7 +6812,7 @@ void do_ocreate( CHAR_DATA *ch, char *argument )
  * and exit_info is what the game plays with, so a room that behaved one
  * way before a save has to behave the same way after a reboot.
  */
-static void set_exit_lock( EXIT_DATA *pexit, int lock )
+static void set_exit_lock( EXIT_DATA *pexit, sh_int lock )
 {
     pexit->lock      = lock;
     pexit->exit_info = 0;
@@ -7009,12 +7009,12 @@ void do_rlink( CHAR_DATA *ch, char *argument )
         if ( !str_cmp( arg2, "open" ) || !str_cmp( arg2, "door" )
           || !str_prefix( arg2, "pickproof" ) || !str_cmp( arg2, "key" ) )
         {
-            ROOM_INDEX_DATA *there = pexit->u1.to_room;
+            ROOM_INDEX_DATA *far_room = pexit->u1.to_room;
             EXIT_DATA *back;
 
-            if ( there != NULL && there != here
-              && ( back = there->exit[rev_dir[door]] ) != NULL
-              && back->u1.to_room == here && may_edit_room( ch, there )
+            if ( far_room != NULL && far_room != here
+              && ( back = far_room->exit[rev_dir[door]] ) != NULL
+              && back->u1.to_room == here && may_edit_room( ch, far_room )
               && back->lock != 4 && back->lock != 5 )
             {
                 if ( !str_cmp( arg2, "key" ) )
@@ -7022,9 +7022,9 @@ void do_rlink( CHAR_DATA *ch, char *argument )
                 else
                     set_exit_lock( back, pexit->lock );
                 if ( pexit->lock == 0 )
-                    build_forget_door( there, rev_dir[door] );
+                    build_forget_door( far_room, rev_dir[door] );
                 snprintf( buf, sizeof(buf), "The way back, %s from room %d, "
-                          "matches.\n\r", dir_name[rev_dir[door]], there->vnum );
+                          "matches.\n\r", dir_name[rev_dir[door]], far_room->vnum );
                 send_to_char( buf, ch );
             }
         }
@@ -8864,7 +8864,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     {
         char note[MAX_STRING_LENGTH];
 
-        int added, status;
+        int added;
 
         victim->pcdata->psionic_grant_pending = PSI_GRANT_NONE;
         added = grant_psionics( victim, 100, true );
@@ -12339,7 +12339,7 @@ void do_petrify( CHAR_DATA *ch, char *argument )
 static void empower_add_spell( CHAR_DATA *victim, AFFECT_DATA *af,
                                 const char *spell_name,
                                 int location, int modifier,
-                                long bitvector, long bitvector2 )
+                                int bitvector, int bitvector2 )
 {
     sh_int sn = (sh_int)skill_lookup( spell_name );
     if ( sn < 0 ) sn = 0;   /* fallback: won't display prettily but won't crash */

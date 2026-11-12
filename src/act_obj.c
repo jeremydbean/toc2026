@@ -1207,14 +1207,14 @@ void do_stash( CHAR_DATA *ch, char *argument )
             }
             if ( obj == NULL )
             {
-                char buf[MAX_INPUT_LENGTH];
+                char msg[MAX_INPUT_LENGTH];
 
                 if ( seen == 0 )
-                    snprintf( buf, sizeof(buf), "Your stash is empty.\n\r" );
+                    snprintf( msg, sizeof(msg), "Your stash is empty.\n\r" );
                 else
-                    snprintf( buf, sizeof(buf), "Your stash has no number %s: "
+                    snprintf( msg, sizeof(msg), "Your stash has no number %s: "
                               "STASH lists 1 to %d.\n\r", argument, seen );
-                send_to_char( buf, ch );
+                send_to_char( msg, ch );
                 return;
             }
         }
@@ -1520,7 +1520,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
 
         if ( !taking )
         {
-            OBJ_DATA *obj;
+            OBJ_DATA *item;
             int number = 0;
 
             snprintf( buf, sizeof(buf), "%s's stash holds %d of %d:\n\r",
@@ -1528,11 +1528,11 @@ void do_stash( CHAR_DATA *ch, char *argument )
                 owner->pcdata->stash_max );
             send_to_char( buf, ch );
 
-            for ( obj = owner->pcdata->stash; obj != NULL;
-                  obj = obj->next_content )
+            for ( item = owner->pcdata->stash; item != NULL;
+                  item = item->next_content )
             {
                 snprintf( buf, sizeof(buf), "  %3d) %s\n\r", ++number,
-                    format_obj_to_char( obj, ch, true ) );
+                    format_obj_to_char( item, ch, true ) );
                 send_to_char( buf, ch );
             }
 
@@ -1545,22 +1545,22 @@ void do_stash( CHAR_DATA *ch, char *argument )
         }
         else
         {
-            OBJ_DATA *obj;
+            OBJ_DATA *item;
             OBJ_DATA *prev = NULL;
 
-            for ( obj = owner->pcdata->stash; obj != NULL;
-                  obj = obj->next_content )
+            for ( item = owner->pcdata->stash; item != NULL;
+                  item = item->next_content )
             {
-                if ( can_see_obj( ch, obj ) && is_name( argument, obj->name ) )
+                if ( can_see_obj( ch, item ) && is_name( argument, item->name ) )
                     break;
-                prev = obj;
+                prev = item;
             }
 
-            if ( obj == NULL )
+            if ( item == NULL )
                 send_to_char( "There is nothing like that in their stash.\n\r",
                     ch );
             else
-                stash_take_commit( ch, owner, obj, prev, offline );
+                stash_take_commit( ch, owner, item, prev, offline );
         }
 
         if ( offline )
@@ -4347,7 +4347,8 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
     copper = UMAX(1,obj->level * 2);
 
     if(obj->item_type != ITEM_CORPSE_NPC && obj->item_type != ITEM_CORPSE_PC)
-	copper = UMIN(copper,obj->cost);
+	copper = obj->cost < copper	/* below copper, so it fits an int */
+	       ? (int) UMAX( obj->cost, (long) INT_MIN ) : copper;
 
     if (!can_adjust_coin_balance(ch, copper, TYPE_COPPER)
     ||  query_carry_coins(ch, copper) > can_carry_w(ch))

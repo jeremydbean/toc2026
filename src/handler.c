@@ -502,7 +502,7 @@ void reset_char(CHAR_DATA *ch)
 		mod = af->modifier;
 		switch(af->location)
 		{
-		    case APPLY_SEX:     ch->sex         -= mod;
+		    case APPLY_SEX:     ch->sex = sh_int_clamp( (long long) ch->sex - mod );
 					if (ch->sex < 0 || ch->sex >2)
 					    ch->sex = IS_NPC(ch) ?
 						0 :
@@ -519,7 +519,7 @@ void reset_char(CHAR_DATA *ch)
 		mod = af->modifier;
 		switch(af->location)
 		{
-		    case APPLY_SEX:     ch->sex         -= mod;         break;
+		    case APPLY_SEX:     ch->sex = sh_int_clamp( (long long) ch->sex - mod );         break;
 		    case APPLY_MANA:    wide_mana       -= mod;         break;
 		    case APPLY_HIT:     wide_hit        -= mod;         break;
 		    case APPLY_MOVE:    wide_move       -= mod;         break;
@@ -624,7 +624,7 @@ void reset_char(CHAR_DATA *ch)
 		case APPLY_WIS:         ch->mod_stat[STAT_WIS]  += mod; break;
 		case APPLY_CON:         ch->mod_stat[STAT_CON]  += mod; break;
 
-		case APPLY_SEX:         ch->sex                 += mod; break;
+		case APPLY_SEX:         ch->sex = sh_int_clamp( (long long) ch->sex + mod ); break;
 		case APPLY_MANA:
 		case APPLY_HIT:
 		case APPLY_MOVE:        pool_max_adjust( ch, af->location, mod ); break;
@@ -655,7 +655,7 @@ void reset_char(CHAR_DATA *ch)
 		case APPLY_WIS:         ch->mod_stat[STAT_WIS]  += mod; break;
 		case APPLY_CON:         ch->mod_stat[STAT_CON]  += mod; break;
 
-		case APPLY_SEX:         ch->sex                 += mod; break;
+		case APPLY_SEX:         ch->sex = sh_int_clamp( (long long) ch->sex + mod ); break;
 		case APPLY_MANA:
 		case APPLY_HIT:
 		case APPLY_MOVE:        pool_max_adjust( ch, af->location, mod ); break;
@@ -688,7 +688,7 @@ void reset_char(CHAR_DATA *ch)
 		case APPLY_WIS:         ch->mod_stat[STAT_WIS]  += mod; break;
 		case APPLY_CON:         ch->mod_stat[STAT_CON]  += mod; break;
 
-		case APPLY_SEX:         ch->sex                 += mod; break;
+		case APPLY_SEX:         ch->sex = sh_int_clamp( (long long) ch->sex + mod ); break;
 		case APPLY_MANA:
 		case APPLY_HIT:
 		case APPLY_MOVE:        pool_max_adjust( ch, af->location, mod ); break;
@@ -1445,7 +1445,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_WIS:           ch->mod_stat[STAT_WIS]    += mod; break;
     case APPLY_CON:           ch->mod_stat[STAT_CON]    += mod; break;
     case APPLY_SEX:
-	ch->sex += mod;
+	ch->sex = sh_int_clamp( (long long) ch->sex + mod );
 	/* An affect that wears off after the base sex was changed under
 	   it lands outside 0..2; the base is the honest answer then. */
 	if ( ch->sex < 0 || ch->sex > 2 )
@@ -4563,9 +4563,9 @@ void room_affect(CHAR_DATA *ch, ROOM_INDEX_DATA *pRoom, int door)
 /* Above if statement commented out because it gives 2 pointer errors
    and replaced with the if statement shown below - Rico */
 
-      if (raf->dam_dice == 0 &&
-      (!raf->bitvector || !raf->bitvector2))
-      return;
+    if (raf->dam_dice == 0 &&
+        (!raf->bitvector || !raf->bitvector2))
+        return;
 
     switch(raf->type)
     {
