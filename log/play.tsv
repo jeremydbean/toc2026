@@ -23749,3 +23749,162 @@
 1794524916	cmd	Trentlin	40	4210	dresden.are	standing	26	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
 1794524917	cmd	Trentlin	40	4210	dresden.are	standing	26	0	-	north		Alas, you cannot go that way.	-	-
 1794524917	cmd	Trentlin	40	4210	dresden.are	standing	26	0	-	sleep		You go to sleep.	-	-
+1794525188	refused	Trentlin	40	4210	dresden.are	sleeping	100	0	-	look		In your dreams, or what?	refusal:position	-
+1794525189	cmd	Trentlin	40	4210	dresden.are	sleeping	100	0	-	wake		You wake and stand up.	-	-
+1794525190	cmd	Trentlin	40	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525190	cmd	Trentlin	40	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525191	cmd	Trentlin	40	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794525191	cmd	Trentlin	40	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794525192	cmd	Trentlin	40	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794525192	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794525194	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	say	hermie	You say 'hermie'	-	-
+1794525195	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794525201	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	(game loop)
+1794525201	achieved	Alaric	57	2497	dresden.are	maps-1	10	2160	(game loop)
+1794525203	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794525206	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794525209	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	achievements		========================= ACHIEVEMENTS ========================= // Points: 2160 / 12071     Earned: 120 / 399 // Marks to spend: 2160 (see REDEEM)	-	+
+1794525214	quest	Alaric	57	2497	dresden.are	ordinary	kill	13460	Homer Simpson	52	hell.are	19
+1794525214	cmd	Alaric	57	2497	dresden.are	standing	100	22	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'Homer Simpson threatens the peace of the realm!'	-	+
+1794525221	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	levitate		You are already airborne.	-	-
+1794525248	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794525250	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	look	tr	You see nothing special about him. // Trentlin is in excellent condition. // Trentlin is using:	-	+
+1794525255	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	(social)		You nod.	-	-
+1794525256	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	(social)		You wave.	-	-
+1794525259	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794525264	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794525289	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794525296	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) Starlight // ( 6) a small key	-	+
+1794525301	cmd	Trentlin	40	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794525301	cmd	Trentlin	40	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794525301	cmd	Trentlin	40	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794525301	cmd	Trentlin	40	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794525302	cmd	Trentlin	40	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794525302	area	Trentlin	40	3700	school.are	dresden.are	school.are	388	up
+1794525302	cmd	Trentlin	40	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794525302	cmd	Trentlin	40	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794525302	cmd	Trentlin	40	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794525303	area	Trentlin	40	15000	campus.are	school.are	campus.are	1	enter
+1794525303	cmd	Trentlin	40	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794525303	cmd	Trentlin	40	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525303	cmd	Trentlin	40	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525303	cmd	Trentlin	40	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794525304	cmd	Trentlin	40	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794525304	cmd	Trentlin	40	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794525304	cmd	Trentlin	40	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794525304	cmd	Trentlin	40	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794525305	cmd	Trentlin	40	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794525305	cmd	Trentlin	40	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794525305	cmd	Trentlin	40	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794525305	area	Trentlin	40	30200	hyrule.are	campus.are	hyrule.are	2	enter
+1794525305	cmd	Trentlin	40	30200	hyrule.are	standing	100	1	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794525317	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1794525317	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	gate	Ok.	-	-
+1794525317	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794525318	cmd	Alaric	57	3902	dresden.are	standing	100	0	-	run	n 3	West trail around Dresden // [Exits: north south] // West trail around Dresden	-	+
+1794525318	cmd	Alaric	57	3904	dresden.are	standing	100	0	-	run	e 2	Dusty trail along north wall. // [Exits: east west] // The long dusty trail following the north wall.	-	+
+1794525318	area	Alaric	57	300	plains.are	dresden.are	plains.are	117	run
+1794525318	cmd	Alaric	57	320	plains.are	standing	100	0	-	run	n 3	Path in the plains // [Exits: north east south west] // Gallow hill	-	+
+1794525318	cmd	Alaric	57	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the	-	+
+1794525319	cmd	Alaric	57	326	plains.are	standing	100	0	-	run	n 2	Path in the foothills // [Exits: north east south] // The pool in the foothills	-	+
+1794525319	cmd	Alaric	57	310	plains.are	standing	100	0	-	run	e 2	Path in the foothills // [Exits: east south west] // Path in the foothills	-	+
+1794525319	cmd	Alaric	57	327	plains.are	standing	100	0	-	north		The foothills //   You are walking in some foothills. It is rather hard to move here. // Further to the north you can see the mountains towering over you.	-	+
+1794525319	cmd	Alaric	57	313	plains.are	standing	100	0	-	east		Road to Ofcol //   You are walking on a wide road with trail marks on it.  To the north // you see the village of Ofcol and to the south there is the T intersection.	-	+
+1794525320	area	Alaric	57	52	connect.are	plains.are	connect.are	2	run
+1794525320	area	Alaric	57	5550	ofcol.are	connect.are	ofcol.are	0	run
+1794525320	cmd	Alaric	57	5551	ofcol.are	standing	100	0	-	run	n 4	Road to Ofcol // [Exits: north south] // Outside Ofcol	-	+
+1794525320	cmd	Alaric	57	699	ofcol.are	standing	100	0	-	run	e 5	The small alley // [Exits: east south west] // The Big Intersection	-	+
+1794525320	cmd	Alaric	57	699	ofcol.are	standing	100	0	-	open	east	It's already open.	-	-
+1794525320	cmd	Alaric	57	669	ofcol.are	standing	100	0	-	run	e 4	Inside the Entrance to the Golden Citadel // [Exits: east west] // A Hallway of the Golden Citadel	-	+
+1794525321	cmd	Alaric	57	673	ofcol.are	standing	100	0	-	south		The Anteroom to the Temple of Ofcol //   You are in an anteroom to the Temple of Ofcol.  Gold tiles cover the // floor, and servants in golden livery pass you by peaceably.  The temple is to	-	+
+1794525321	area	Alaric	57	7914	redfern.are	ofcol.are	redfern.are	1	run
+1794525321	cmd	Alaric	57	7900	redfern.are	standing	100	0	-	run	u 6	An Upper Chamber of the Golden Citadel // [Exits: north up down] // A Top Chamber of the Golden Citadel	-	+
+1794525321	area	Alaric	57	9101	dylan.are	redfern.are	dylan.are	0	south
+1794525321	cmd	Alaric	57	9101	dylan.are	standing	100	0	-	south		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794525321	cmd	Alaric	57	9102	dylan.are	standing	100	0	-	up		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794525322	cmd	Alaric	57	9103	dylan.are	standing	100	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794525322	cmd	Alaric	57	9128	dylan.are	standing	100	0	-	north		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794525322	cmd	Alaric	57	9127	dylan.are	standing	100	0	-	down		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794525322	cmd	Alaric	57	9130	dylan.are	standing	100	0	-	north		Grumpy little cloud. //   This cloud mutters and grumbles at you.  You have to jump quickly // to avoid a lightning bolt that passes by your toe.  Your aren't	-	+
+1794525323	cmd	Alaric	57	9129	dylan.are	standing	100	0	-	west		Sleepy little cloud. //   This cloud is peacefully snoozing away, enjoying himself.  There // is grumpy cloud to the east and a rather shy cloud north of here.	-	+
+1794525323	cmd	Alaric	57	9145	dylan.are	standing	100	0	-	run	n 3	Bashful little cloud. // [Exits: north south west] // Sneezing little cloud.	-	+
+1794525323	cmd	Alaric	57	9150	dylan.are	standing	100	0	-	run	w 2	Raging hurricane. // [Exits: north east up] // You slam into a wall!.	-	-
+1794525323	refused	Alaric	57	9150	dylan.are	resting	100	0	-	down		Nah... You feel too relaxed...	refusal:position	-
+1794525324	refused	Alaric	57	9150	dylan.are	resting	100	0	-	south		Nah... You feel too relaxed...	refusal:position	-
+1794525324	refused	Alaric	57	9150	dylan.are	resting	100	0	-	climb	rope	Nah... You feel too relaxed...	refusal:position	-
+1794525324	refused	Alaric	57	9150	dylan.are	resting	100	0	-	run	s 2	Nah... You feel too relaxed...	refusal:position	-
+1794525324	refused	Alaric	57	9150	dylan.are	resting	100	0	-	enter	pool	Nah... You feel too relaxed...	refusal:position	-
+1794525329	refused	Alaric	57	9150	dylan.are	resting	100	0	-	east		Nah... You feel too relaxed...	refusal:position	-
+1794525349	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a ring of braided thorn	-	+
+1794525351	cmd	Trentlin	40	30200	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) Starlight // ( 6) a small key	-	+
+1794525353	cmd	Alaric	57	9150	dylan.are	resting	100	0	-	wake		You stand up.	-	-
+1794525353	cmd	Alaric	57	9150	dylan.are	standing	100	0	-	look		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794525353	cmd	Alaric	57	9150	dylan.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794525354	cmd	Alaric	57	9150	dylan.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794525357	cmd	Alaric	57	9149	dylan.are	standing	100	0	-	east		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794525360	cmd	Alaric	57	9157	dylan.are	standing	100	0	-	west		Cumulative nimbus cloud. //   This cloud looks like it belongs to the phylum of cumulative nimbus clouds. // [Exits: south west up]	-	-
+1794525361	area	Alaric	57	2497	dresden.are	dylan.are	dresden.are	40	recall
+1794525361	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794525362	cmd	Trentlin	40	30323	hyrule.are	standing	100	0	-	play	recorder 5	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794525364	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794525365	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	4	jump
+1794525365	cmd	Alaric	57	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1794525366	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	1	(room_update)
+1794525366	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794525367	cmd	Trentlin	40	30476	hyrule.are	standing	100	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794525368	cmd	Trentlin	40	30476	hyrule.are	standing	100	0	-	scan		a gibdo                            -to the North. // a pols voice                       -to the East. // a red leever                       -right above you.	-	-
+1794525368	coin	Alaric	57	4208	dresden.are	-1400000	spent	heal	-	25888097935
+1794525368	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (14 castings, 140 gold.)	-	-
+1794525371	cmd	Trentlin	40	30477	hyrule.are	standing	100	0	-	east		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794525372	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	run	e 4	Before the Altar. // [Exits: north east south west up] // Halls of Healing.	-	+
+1794525372	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794525373	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794525373	cmd	Trentlin	40	30477	hyrule.are	standing	100	0	-	consider	po	A pols voice is well below your level. // A pols voice has about as many hit points as you. // Blow for blow, you would need about 7 rounds to bring a pols voice down; it would need about 63 rounds for you.	-	+
+1794525373	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794525375	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	west		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794525375	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794525376	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794525376	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794525376	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794525376	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794525377	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794525377	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794525377	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794525377	cmd	Trentlin	40	30477	hyrule.are	standing	100	0	-	steel		You lost your concentration.	-	-
+1794525377	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794525378	area	Alaric	57	6000	haon.are	dresden.are	haon.are	12	west
+1794525378	cmd	Alaric	57	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794525378	cmd	Alaric	57	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794525378	cmd	Alaric	57	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794525378	cmd	Trentlin	40	30477	hyrule.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794525378	cmd	Alaric	57	6011	haon.are	standing	100	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.	-	+
+1794525379	cmd	Alaric	57	6008	haon.are	standing	100	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile	-	+
+1794525379	cmd	Alaric	57	6009	haon.are	standing	100	0	-	east		Outside a small cabin in the forest //   You are outside a small cabin built entirely from heavy logs.  There is a // wooden door to the north and small paths lead west and south through the	-	+
+1794525379	cmd	Alaric	57	6014	haon.are	standing	100	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest. The forest // gradually lightens to the north.  Paths lead north, east and west.	-	+
+1794525379	cmd	Alaric	57	6015	haon.are	standing	100	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of // the old trees leave the forest in a surreal twilight illumination.	-	+
+1794525380	cmd	Alaric	57	6016	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  To the west	-	+
+1794525380	cmd	Alaric	57	6017	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest // seems to become lighter to the west. The path continues north and west.	-	+
+1794525380	cmd	Alaric	57	6018	haon.are	standing	100	0	-	west		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.	-	+
+1794525380	area	Alaric	57	51	connect.are	haon.are	connect.are	2	south
+1794525380	cmd	Alaric	57	51	connect.are	standing	100	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so	-	+
+1794525381	area	Alaric	57	13001	lakes.are	connect.are	lakes.are	1	down
+1794525381	cmd	Alaric	57	13001	lakes.are	standing	100	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen	-	+
+1794525381	cmd	Alaric	57	13002	lakes.are	standing	100	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises	-	+
+1794525381	cmd	Alaric	57	13003	lakes.are	standing	100	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.	-	+
+1794525381	area	Alaric	57	13201	solace.are	lakes.are	solace.are	0	north
+1794525381	cmd	Alaric	57	13201	solace.are	standing	100	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir	-	+
+1794525383	cmd	Trentlin	40	30477	hyrule.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794525388	cmd	Alaric	57	13201	solace.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794525391	cmd	Alaric	57	13201	solace.are	standing	100	0	-	open	south	It's already open.	-	-
+1794525391	area	Alaric	57	13003	lakes.are	solace.are	lakes.are	10	south
+1794525391	cmd	Alaric	57	13003	lakes.are	standing	100	0	-	south		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.	-	+
+1794525391	cmd	Alaric	57	13003	lakes.are	standing	100	0	-	open	south	There is no door to the south, just open passage.	-	-
+1794525391	cmd	Alaric	57	13022	lakes.are	standing	100	0	-	south		Road through the forest //   This is a well travelled dirt road. // [Exits: north east south west]	-	-
+1794525392	cmd	Alaric	57	13011	lakes.are	standing	100	0	-	west		Path along the lakeshore //   You are walking along a path that follows the shore of Crystalmir Lake. // [Exits: north east west]	-	+
+1794525392	cmd	Alaric	57	13011	lakes.are	standing	100	0	-	down		Alas, you cannot go that way.	-	-
+1794525392	cmd	Alaric	57	13010	lakes.are	standing	100	0	-	west		South shore of Crystalmir Lake //   The blue of the autumn sky darkens on the deep stillness of the lake. The // soft forests of giant vallenwood border the serene waters on the eastern,	-	+
+1794525392	cmd	Alaric	57	13010	lakes.are	standing	100	0	-	open	west	There is no door to the west, just open passage.	-	-
+1794525393	cmd	Alaric	57	13012	lakes.are	standing	100	0	-	west		Path along the lakeshore //   You are walking along a path that follows the shore of Crystalmir Lake. // [Exits: north east]	-	-
+1794525393	cmd	Trentlin	40	30477	hyrule.are	standing	100	0	-	kill	po	A pols voice parries your attack. // Your punch ^^^ DESTROYS ^^^ a pols voice!	-	-
+1794525397	cmd	Trentlin	40	30477	hyrule.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a pols voice! // Your fists of fury scratches a pols voice.	-	+
+1794525399	cmd	Alaric	57	13008	lakes.are	standing	100	0	-	north		West shore of Crystalmir Lake //   The blue of the autumn sky darkens on the deep stillness of the lake. The // soft forests of giant vallenwood border the serene waters on the eastern,	-	+
