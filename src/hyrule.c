@@ -1898,7 +1898,7 @@ static void hyrule_send_wrapped( CHAR_DATA *ch, const char *text, int indent )
 
             for ( i = 0; i < indent; i++ )
                 toc_strlcat( out, " ", sizeof(out) );
-            col = indent;
+            col = indent > 0 ? (size_t) indent : 0;
         }
         else if ( col + 1 + word > 76 )
         {

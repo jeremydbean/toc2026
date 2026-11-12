@@ -952,10 +952,11 @@ static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
 static void history_print( CHAR_DATA *ch, HISTORY_ENTRY *entry, int count,
                            int wanted, const char *what )
 {
-    char out[MAX_STRING_LENGTH];
+    /* Grown as it is written: HISTORY 100 ran past a 4,096-byte array and
+       left the newest lines off (growable output buffers, 2026-11-12). */
+    DString out;
     char line[MAX_STRING_LENGTH];
     char stamp[16];
-    size_t used;
     int first;
     int i;
 
@@ -969,9 +970,9 @@ static void history_print( CHAR_DATA *ch, HISTORY_ENTRY *entry, int count,
 
     first = count > wanted ? count - wanted : 0;
 
-    snprintf( out, sizeof(out), "{%02XThe last %d on %s:{00\n\r",
-              COL_HIGHLIGHT, count - first, what );
-    used = strlen( out );
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    dstring_printf( &out, "{%02XThe last %d on %s:{00\n\r",
+                    COL_HIGHLIGHT, count - first, what );
 
     for ( i = first; i < count; i++ )
     {
@@ -991,11 +992,8 @@ static void history_print( CHAR_DATA *ch, HISTORY_ENTRY *entry, int count,
         {
             snprintf( line, sizeof(line),
                 "{%02X--- while you were away ---{00\n\r", COL_HIGHLIGHT );
-            if ( used + strlen( line ) + 64 < sizeof(out) )
-            {
-                toc_strlcat( out, line, sizeof(out) );
-                used = strlen( out );
-            }
+            if ( dstring_fits( &out, strlen( line ) + 64 ) )
+                dstring_append_cstr( &out, line );
         }
 
         history_stamp( entry[i].when, stamp, sizeof(stamp) );
@@ -1008,18 +1006,17 @@ static void history_print( CHAR_DATA *ch, HISTORY_ENTRY *entry, int count,
                       entry[i].meta->colour, stamp, entry[i].name,
                       entry[i].meta->verb, entry[i].text );
 
-        if ( used + strlen( line ) + 64 >= sizeof(out) )
+        if ( !dstring_fits( &out, strlen( line ) + 64 ) )
         {
-            toc_strlcat( out, "... the rest is older than this screen.\n\r",
-                         sizeof(out) );
+            dstring_append_cstr( &out, "... the rest is older than this screen.\n\r" );
             break;
         }
 
-        toc_strlcat( out, line, sizeof(out) );
-        used = strlen( out );
+        dstring_append_cstr( &out, line );
     }
 
-    page_to_char( out, ch );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 void do_history( CHAR_DATA *ch, char *argument )
@@ -2226,14 +2223,17 @@ static bool note_contains( const char *haystack, const char *needle )
 
 static void note_list_filtered( CHAR_DATA *ch, int filter, const char *needle )
 {
-    char out[MAX_STRING_LENGTH];
+    /* Grown as it is written: the board lists oldest first, and a
+       4,096-byte array left the newest notes off (growable output
+       buffers, 2026-11-12). */
+    DString out;
     char line[MAX_INPUT_LENGTH];
     NOTE_DATA *pnote;
     int number = 0;
     int shown = 0;
     bool full = false;
 
-    out[0] = '\0';
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
 
     for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
     {
@@ -2260,12 +2260,12 @@ static void note_list_filtered( CHAR_DATA *ch, int filter, const char *needle )
             pnote->subject ? pnote->subject : "(no subject)",
             pnote->date    ? pnote->date    : "" );
 
-        if ( strlen( out ) + strlen( line ) + 128 >= sizeof(out) )
+        if ( !dstring_fits( &out, strlen( line ) + 128 ) )
         {
             full = true;
             break;
         }
-        toc_strlcat( out, line, sizeof(out) );
+        dstring_append_cstr( &out, line );
         shown++;
     }
 
@@ -2277,6 +2277,7 @@ static void note_list_filtered( CHAR_DATA *ch, int filter, const char *needle )
             send_to_char( "No note of yours mentions that.\n\r", ch );
         else
             send_to_char( "There are none.\n\r", ch );
+        dstring_free( &out );
         return;
     }
 
@@ -2286,9 +2287,10 @@ static void note_list_filtered( CHAR_DATA *ch, int filter, const char *needle )
         full ? " (more would not fit)" : "",
         filter == NOTE_FILTER_ALL
             ? ", or reply with '{0Fnote reply <number>{00'." : "." );
-    toc_strlcat( out, line, sizeof(out) );
+    dstring_append_cstr( &out, line );
 
-    page_to_char( out, ch );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 void do_note( CHAR_DATA *ch, char *argument )
@@ -3788,7 +3790,7 @@ void do_reports( CHAR_DATA *ch, char *argument )
 	int line = 0;
 	bool full = false;
 	char record[MAX_INPUT_LENGTH];
-	char output[MAX_STRING_LENGTH];
+	DString output;
 
 	if ( is_number( arg2 ) && !parse_int( arg2, INT_MIN, INT_MAX, &want ) )
 	{
@@ -3797,9 +3799,9 @@ void do_reports( CHAR_DATA *ch, char *argument )
 	}
 	if ( want < 1 )
 	    want = 1;
-	/* One page of output is one buffer here: this fork has no
-	   growable BUFFER, so the cap is what MAX_STRING_LENGTH holds
-	   rather than an arbitrary number. */
+	/* Forty is the page staff asked for; the buffer grows to hold it
+	   (growable output buffers, 2026-11-12: forty long reports ran
+	   past the 4,096-byte array this used to be). */
 	if ( want > 40 )
 	    want = 40;
 
@@ -3811,7 +3813,8 @@ void do_reports( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	snprintf( output, sizeof(output),
+	dstring_init_limit( &output, DSTRING_OUTPUT_MAX );
+	dstring_printf( &output,
 	    "The %d most recent of %d %s report%s:\n\r",
 	    UMIN( want, have ), have, report_kind_name( kind ),
 	    have == 1 ? "" : "s" );
@@ -3836,12 +3839,12 @@ void do_reports( CHAR_DATA *ch, char *argument )
 		   colour token in one is left as the literal characters
 		   the player typed rather than interpreted. */
 		snprintf( buf, sizeof(buf), "  %s\n\r", record );
-		if ( strlen( output ) + strlen( buf ) + 64 >= sizeof(output) )
+		if ( !dstring_fits( &output, strlen( buf ) + 64 ) )
 		{
 		    full = true;
 		    break;
 		}
-		toc_strlcat( output, buf, sizeof(output) );
+		dstring_append_cstr( &output, buf );
 		shown++;
 	    }
 	    fclose( fp );
@@ -3849,14 +3852,13 @@ void do_reports( CHAR_DATA *ch, char *argument )
 	fpReserve = fopen( NULL_FILE, "r" );
 
 	if ( shown < 1 )
-	    toc_strlcat( output, "  (nothing readable in the file)\n\r",
-		sizeof(output) );
+	    dstring_append_cstr( &output, "  (nothing readable in the file)\n\r" );
 	else if ( full )
-	    toc_strlcat( output,
-		"  ... the rest would not fit; ask for fewer.\n\r",
-		sizeof(output) );
+	    dstring_append_cstr( &output,
+		"  ... the rest would not fit; ask for fewer.\n\r" );
 
-	page_to_char( output, ch );
+	page_to_char( dstring_cstr( &output ), ch );
+	dstring_free( &output );
 
 	/* Everything up to here has now been seen, so the login notice
 	   should not raise it again. Only what was actually shown: a

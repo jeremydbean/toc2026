@@ -1178,17 +1178,16 @@ static void diary_show_day( CHAR_DATA *ch, const char *owner, const DIARY_DAY *d
 
 static void diary_show_list( CHAR_DATA *ch, const char *owner, DIARY_DAY *days, int n )
 {
-    char *out;
+    DString out;        /* grown as it is written (2026-11-12) */
     char line[256], date[16], dur[24], lvl[24], coin[64], price[48];
     int i;
     long net;
 
-    if ( ( out = calloc( 1, DIARY_OUT ) ) == NULL )
-        return;
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
     snprintf( line, sizeof(line), "{0E%s diary, newest first (the last %d days are kept){00\n\r",
               owner, DIARY_DAYS );
-    toc_strlcat( out, line, DIARY_OUT );
-    toc_strlcat( out, "{0BDate        Played   Level    Kills Deaths Quests  Coin{00\n\r", DIARY_OUT );
+    dstring_append_cstr( &out, line );
+    dstring_append_cstr( &out, "{0BDate        Played   Level    Kills Deaths Quests  Coin{00\n\r" );
     for ( i = n - 1; i >= 0; i-- )
     {
         const DIARY_DAY *d = &days[i];
@@ -1211,11 +1210,11 @@ static void diary_show_list( CHAR_DATA *ch, const char *owner, DIARY_DAY *days, 
         snprintf( line, sizeof(line), "%-10s  %-7s  %-7s %6ld %6ld %6ld  %s\n\r",
                   date, dur, lvl, d->kills, d->deaths,
                   sat_add( d->quests, d->dailies ), coin );
-        toc_strlcat( out, line, DIARY_OUT );
+        dstring_append_cstr( &out, line );
     }
-    toc_strlcat( out, "DIARY <yyyy-mm-dd> reads one day.\n\r", DIARY_OUT );
-    page_to_char( out, ch );
-    free( out );
+    dstring_append_cstr( &out, "DIARY <yyyy-mm-dd> reads one day.\n\r" );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 /* The trust a player file names, read without loading the character --

@@ -144,8 +144,14 @@ Override warning flags without editing the Makefile:
 
 ```bash
 make clean
-make WARNFLAGS='-Wall -Wextra -Wshadow -Wsign-compare -Wformat-overflow=2 -Wunused-parameter -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wcast-qual'
+make WARNFLAGS='-Wall -Wextra -Wshadow -Wsign-compare -Wconversion -Wsign-conversion -Wformat-overflow=2 -Wunused-parameter -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wcast-qual'
 ```
+
+The tree is clean under `-Wshadow -Wsign-compare -Wconversion
+-Wsign-conversion`; keep them in any `WARNFLAGS` you pass (the default
+carries them). CI makes them errors (`TOC_STRICT_CONVERSION`), and
+`tests/test_strict_warnings.py` fails on any. See "Strict Warnings" in
+`AGENTS.md`.
 
 The output is `./merc`.
 

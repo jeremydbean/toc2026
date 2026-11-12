@@ -1299,7 +1299,8 @@ void load_mobiles( FILE *fp )
         pMobIndex->level                = fread_sh_int( fp );
         pMobIndex->hitroll              = fread_sh_int( fp );
 
-        pMobIndex->hitroll              = UMAX(pMobIndex->level/2,pMobIndex->hitroll);
+        /* Both are sh_int values: so is the larger. */
+        pMobIndex->hitroll              = (sh_int) UMAX(pMobIndex->level/2,pMobIndex->hitroll);
  
         /* read hit dice -- full ints, bounded: fread_sh_int clamped the
            bonus at 32,767, and a guardian's 35,912 came out as that. */
@@ -3800,7 +3801,7 @@ MOB_INDEX_DATA *new_mob_index( int vnum, MOB_INDEX_DATA *copy_from )
         m->dam_type    = (sh_int) attack_index( "punch" );
         /* The armour cap load_mobiles applies at this level. */
         m->ac[AC_PIERCE] = m->ac[AC_BASH] = m->ac[AC_SLASH]
-                         = m->ac[AC_EXOTIC] = 100 - 6 * m->level;
+                         = m->ac[AC_EXOTIC] = sh_int_clamp( 100 - 6 * m->level );
         m->start_pos   = POS_STANDING;
         m->default_pos = POS_STANDING;
         m->sex         = SEX_NEUTRAL;
@@ -4131,7 +4132,8 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
         /* computed on the spot */
  
     for (i = 0; i < MAX_STATS; i ++)
-        mob->perm_stat[i] = UMIN(MAX_STAT,11 + mob->level/4);
+        /* At most MAX_STAT; a sh_int level / 4 + 11 fits below it. */
+        mob->perm_stat[i] = (sh_int) UMIN(MAX_STAT,11 + mob->level/4);
  
     if (IS_SET(mob->act,ACT_WARRIOR))
     {
@@ -4164,8 +4166,10 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
     if (IS_SET(mob->off_flags,OFF_FAST))
           mob->perm_stat[STAT_DEX] += 2;
  
-    mob->perm_stat[STAT_STR] += mob->size - SIZE_MEDIUM;
-    mob->perm_stat[STAT_CON] += (mob->size - SIZE_MEDIUM) / 2;
+    mob->perm_stat[STAT_STR] = sh_int_clamp( mob->perm_stat[STAT_STR]
+                                             + mob->size - SIZE_MEDIUM );
+    mob->perm_stat[STAT_CON] = sh_int_clamp( mob->perm_stat[STAT_CON]
+                                             + (mob->size - SIZE_MEDIUM) / 2 );
  
     mob->position = mob->start_pos;
  
@@ -5211,7 +5215,10 @@ long fread_flag( FILE *fp)
     {
         while (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'))
         {
-            number += flag_convert(c);
+            /* Bit arithmetic, as it always was: 'f' is bit 31, the sign
+               bit of an int, and a letter past it has no bit in one. */
+            number = (int) ( (unsigned int) number
+                             + (unsigned int) flag_convert(c) );
             c = (char)(getc(fp));
         }
     }
@@ -5380,7 +5387,8 @@ char *fread_string( FILE *fp )
                     string_hash[iHash]  = pString;
  
 		    nAllocString += 1;
-                    sAllocString += top_string - pString;
+                    /* One string's length: the string space is far below INT_MAX. */
+                    sAllocString += (int) ( top_string - pString );
                     return pString + sizeof(char *);
                 }
                 else
@@ -5484,7 +5492,8 @@ char *fread_string_eol( FILE *fp )
                     string_hash[iHash]  = pString;
  
                     nAllocString += 1;
-                    sAllocString += top_string - pString;
+                    /* One string's length: the string space is far below INT_MAX. */
+                    sAllocString += (int) ( top_string - pString );
                     return pString + sizeof(char *);
 		}
                 else

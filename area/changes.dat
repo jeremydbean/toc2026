@@ -5,6 +5,19 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112longlists 2026-11-12
+Long lists are shown whole. STASH used to stop near the 185th piece with
+"... and more than will fit on one screen", HISTORY 100 lost its newest
+lines, and NOTE LIST its newest notes; they, WHO, GAINLIST, CHANGES ALL,
+DIARY and the Hall of Heroes' plaque and tablet now list everything, a
+page at a time if you page.
+
+@ 20261112carryweight 2026-11-12 staff
+SCORE's Encumbrance counts past 32,767. Carrying more than that -- only
+staff and the fifth remort have no limit -- read as 2147483647, and every
+weight check after it compared against that. Hit and damage roll, armour,
+saving throw and stat bonuses no longer wrap past 32,767 either.
+
 @ 20261112jail 2026-11-12 staff
 JAIL keeps a prisoner in the cell whatever happens: death, slay, farslay,
 recall, portals, spells, items, the Oracle, remort, DELETE, quitting,

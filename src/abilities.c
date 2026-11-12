@@ -282,7 +282,7 @@ static void buy_contents( CHAR_DATA *ch, const ABILITY_SOURCE *src,
 
 /* Append text to out, breaking lines before 78 columns under a 5-space
    indent; *col is the current column. */
-static void ability_wrap( char *out, size_t size, size_t *col, const char *text )
+static void ability_wrap( DString *out, size_t *col, const char *text )
 {
     const char *p = text;
 
@@ -294,19 +294,19 @@ static void ability_wrap( char *out, size_t size, size_t *col, const char *text 
 
         if ( *col > 5 && *col + 1 + word > 77 )
         {
-            toc_strlcat( out, "\n\r     ", size );
+            dstring_append_cstr( out, "\n\r     " );
             *col = 5;
         }
         else if ( *col > 5 )
         {
-            toc_strlcat( out, " ", size );
+            dstring_append_cstr( out, " " );
             (*col)++;
         }
         if ( word >= sizeof(piece) )
             word = sizeof(piece) - 1;
         memcpy( piece, p, word );
         piece[word] = '\0';
-        toc_strlcat( out, piece, size );
+        dstring_append_cstr( out, piece );
         *col += word;
         p += word;
         while ( *p == ' ' )
@@ -329,7 +329,7 @@ static void show_abilities( CHAR_DATA *ch )
 {
     static ABILITY_SOURCE src[MAX_SKILL];
     static ABILITY_BUY buys[MAX_SKILL];
-    static char out[32768];
+    DString out;        /* grown as it is written (2026-11-12) */
     char buf[2 * MAX_STRING_LENGTH];
     char what[MAX_STRING_LENGTH];
     char name[MAX_INPUT_LENGTH];
@@ -356,7 +356,7 @@ static void show_abilities( CHAR_DATA *ch )
     }
     nbuys = ability_buys( ch, src, buys );
 
-    out[0] = '\0';
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
     snprintf( buf, sizeof(buf),
               "{0BAbilities for a level %d %s%s%s%s:{00 %d learned, %s%d not yet{00.\n\r\n\r",
               ch->level, class_table[ch->class].name,
@@ -365,12 +365,12 @@ static void show_abilities( CHAR_DATA *ch )
                   ? get_guildname( ch->pcdata->guild ) : "",
               ch->pcdata->guild >= 0 && ch->pcdata->guild < MAX_CLASS ? " guild" : "",
               learned, missing > 0 ? "{0C" : "", missing );
-    toc_strlcat( out, buf, sizeof(out) );
+    dstring_append_cstr( &out, buf );
 
     if ( nbuys > 0 )
     {
-        toc_strlcat( out, "{0BNot yet learned{00 ({0CX{00 usable now, - at a later level), "
-                          "and what to GAIN:\n\r", sizeof(out) );
+        dstring_append_cstr( &out, "{0BNot yet learned{00 ({0CX{00 usable now, - at a later level), "
+                          "and what to GAIN:\n\r" );
         for ( i = 0; i < nbuys; i++ )
         {
             size_t wcol;
@@ -387,45 +387,45 @@ static void show_abilities( CHAR_DATA *ch )
                 snprintf( buf, sizeof(buf), " %s %s (%d train%s):",
                           now ? "{0CX{00" : "-", skill_table[buys[i].sn].name,
                           buys[i].cost, buys[i].cost == 1 ? "" : "s" );
-            toc_strlcat( out, buf, sizeof(out) );
+            dstring_append_cstr( &out, buf );
             /* the visible width of what was just written */
             wcol = strlen( buf ) - ( now ? 6 : 0 );
             if ( buys[i].group != ABILITY_NONE )
-                ability_wrap( out, sizeof(out), &wcol, what );
+                ability_wrap( &out, &wcol, what );
             snprintf( buf, sizeof(buf), "\n\r     %s, %s%s%s\n\r", name, place,
                       walk[0] != '\0' ? " -- walkto " : "", walk );
-            toc_strlcat( out, buf, sizeof(out) );
+            dstring_append_cstr( &out, buf );
         }
-        toc_strlcat( out, "\n\r", sizeof(out) );
+        dstring_append_cstr( &out, "\n\r" );
     }
 
     if ( learned > 0 )
     {
-        toc_strlcat( out, "{0BLearned{00 ({0A+{00):\n\r", sizeof(out) );
+        dstring_append_cstr( &out, "{0BLearned{00 ({0A+{00):\n\r" );
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
             if ( !ability_listed( ch, sn, src ) || ch->pcdata->learned[sn] <= 0 )
                 continue;
             snprintf( buf, sizeof(buf), " {0A+{00 %-18s %3d%%",
                       skill_table[sn].name, ch->pcdata->learned[sn] );
-            toc_strlcat( out, buf, sizeof(out) );
+            dstring_append_cstr( &out, buf );
             if ( ++col % 3 == 0 )
-                toc_strlcat( out, "\n\r", sizeof(out) );
+                dstring_append_cstr( &out, "\n\r" );
         }
         if ( col % 3 != 0 )
-            toc_strlcat( out, "\n\r", sizeof(out) );
-        toc_strlcat( out, "\n\r", sizeof(out) );
+            dstring_append_cstr( &out, "\n\r" );
+        dstring_append_cstr( &out, "\n\r" );
     }
 
     snprintf( buf, sizeof(buf),
               "Psionic powers: %d of 17 held. They awaken between levels 18 and 21\n\r"
               "for those owed them (a second remort, or a gift); Salir the Monk\n\r"
               "trains them -- walkto salir.\n\r", psionics_held( ch ) );
-    toc_strlcat( out, buf, sizeof(out) );
-    toc_strlcat( out, "GAINLIST TRAINERS lists what each of your trainers sells.\n\r",
-                 sizeof(out) );
+    dstring_append_cstr( &out, buf );
+    dstring_append_cstr( &out, "GAINLIST TRAINERS lists what each of your trainers sells.\n\r" );
 
-    page_to_char( out, ch );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 /*
@@ -535,7 +535,7 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
     static ABILITY_SOURCE src[MAX_SKILL], own_src[MAX_SKILL];
     static bool given[MAX_SKILL], own_given[MAX_SKILL];
     static int order[MAX_SKILL];
-    static char out[16384];
+    DString out;        /* grown as it is written (2026-11-12) */
     char buf[MAX_STRING_LENGTH];
     int seen_gm[MAX_SKILL], seen_key[MAX_SKILL];
     int sn, i, j, n = 0, bought = 0, trains = 0, nseen = 0, col = 0;
@@ -577,17 +577,17 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
             order[j - 1] = tmp;
         }
 
-    out[0] = '\0';
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
     if ( cls == CLASS_MONK || cls == CLASS_NECRO )
         snprintf( buf, sizeof(buf), "{0BA %s, level by level:{00\n\r", class_table[cls].name );
     else
         snprintf( buf, sizeof(buf), "{0BA %s of the %s guild, level by level:{00\n\r",
                   class_table[cls].name, get_guildname( guild ) );
-    toc_strlcat( out, buf, sizeof(out) );
+    dstring_append_cstr( &out, buf );
     snprintf( buf, sizeof(buf),
               "%d abilities: %d given, %d more to GAIN (* below) for %d trains in all.\n\r\n\r",
               n, n - bought, bought, trains );
-    toc_strlcat( out, buf, sizeof(out) );
+    dstring_append_cstr( &out, buf );
 
     for ( i = 0; i < n; i++ )
     {
@@ -595,12 +595,12 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
         snprintf( buf, sizeof(buf), " %2d %s%-19.19s",
                   skill_table[sn].skill_level[cls], given[sn] ? " " : "*",
                   skill_table[sn].name );
-        toc_strlcat( out, buf, sizeof(out) );
+        dstring_append_cstr( &out, buf );
         if ( ++col % 3 == 0 )
-            toc_strlcat( out, "\n\r", sizeof(out) );
+            dstring_append_cstr( &out, "\n\r" );
     }
     if ( col % 3 != 0 )
-        toc_strlcat( out, "\n\r", sizeof(out) );
+        dstring_append_cstr( &out, "\n\r" );
 
     /* Swings a round before haste, as multi_hit rolls them: two sure, and
        each extra swing a chance, not a sure blow (review, 2026-10-27: this
@@ -613,7 +613,7 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
         snprintf( buf, sizeof(buf), "\n\rSwings a round at full skill, before haste: two "
                   "sure, then second attack %d%%, third attack %d%%.\n\r",
                   swing_chance_percent( 100 / 2 ), swing_chance_percent( 100 / 4 ) );
-        toc_strlcat( out, buf, sizeof(out) );
+        dstring_append_cstr( &out, buf );
         for ( i = 0; i < 4; i++ )
         {
             int second = preview_holds( cls, gsn_second_attack, given, src )
@@ -623,9 +623,9 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
 
             x = expected_swings_x100( second, third, 0, 0 );
             snprintf( buf, sizeof(buf), "  level %d: %d.%02d", marks[i], x / 100, x % 100 );
-            toc_strlcat( out, buf, sizeof(out) );
+            dstring_append_cstr( &out, buf );
         }
-        toc_strlcat( out, "\n\r", sizeof(out) );
+        dstring_append_cstr( &out, "\n\r" );
         if ( preview_holds( cls, gsn_dual_wield, given, src ) )
             dual_from = skill_table[gsn_dual_wield].skill_level[cls];
         if ( dual_from >= 0 && dual_from < LEVEL_IMMORTAL )
@@ -633,7 +633,7 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
             x = swing_chance_percent( ( 100 + 100 ) / 5 );
             snprintf( buf, sizeof(buf), "  Dual wield, with a weapon in the off hand: "
                       "+0.%02d a round from level %d.\n\r", x, dual_from );
-            toc_strlcat( out, buf, sizeof(out) );
+            dstring_append_cstr( &out, buf );
         }
     }
 
@@ -664,18 +664,18 @@ static void build_preview( CHAR_DATA *ch, int cls, int guild )
         }
         snprintf( buf, sizeof(buf), "Against a %s in the %s guild, this adds:",
                   class_table[cls].name, get_guildname( cls ) );
-        toc_strlcat( out, "\n\r", sizeof(out) );
-        toc_strlcat( out, buf, sizeof(out) );
+        dstring_append_cstr( &out, "\n\r" );
+        dstring_append_cstr( &out, buf );
         gcol = strlen( buf );
-        ability_wrap( out, sizeof(out), &gcol, gains[0] != '\0' ? gains : "nothing" );
-        toc_strlcat( out, "\n\rand gives up:", sizeof(out) );
+        ability_wrap( &out, &gcol, gains[0] != '\0' ? gains : "nothing" );
+        dstring_append_cstr( &out, "\n\rand gives up:" );
         lcol = 13;
-        ability_wrap( out, sizeof(out), &lcol, loses[0] != '\0' ? loses : "nothing" );
-        toc_strlcat( out, "\n\r", sizeof(out) );
+        ability_wrap( &out, &lcol, loses[0] != '\0' ? loses : "nothing" );
+        dstring_append_cstr( &out, "\n\r" );
     }
-    toc_strlcat( out, "\n\rA level is the earliest the class can use it. GAINLIST shows your own.\n\r",
-                 sizeof(out) );
-    page_to_char( out, ch );
+    dstring_append_cstr( &out, "\n\rA level is the earliest the class can use it. GAINLIST shows your own.\n\r" );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 static void gainlist_preview( CHAR_DATA *ch, char *argument )

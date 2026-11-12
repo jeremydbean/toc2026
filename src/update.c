@@ -561,8 +561,9 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
     pool_max_adjust( ch, APPLY_HIT,  add_hp );
     pool_max_adjust( ch, APPLY_MANA, add_mana );
     pool_max_adjust( ch, APPLY_MOVE, add_move );
-    ch->practice	+= add_prac;
-    ch->train		+= add_train;
+    /* Saturating, as REMORT's are: never wrapped negative. */
+    ch->practice	= sh_int_clamp( ch->practice + add_prac );
+    ch->train		= sh_int_clamp( ch->train + add_train );
 
     ch->pcdata->perm_hit  = (int) UMIN( (long long) POOL_MAX, (long long) ch->pcdata->perm_hit  + add_hp );
     ch->pcdata->perm_mana = (int) UMIN( (long long) POOL_MAX, (long long) ch->pcdata->perm_mana + add_mana );
@@ -1051,7 +1052,7 @@ void mobile_update( void )
 	{
 	    OBJ_DATA *obj;
 	    OBJ_DATA *obj_best;
-	    int max;
+	    long max;      /* an object's cost is a long */
 
 	    max         = 1;
 	    obj_best    = 0;

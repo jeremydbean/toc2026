@@ -702,6 +702,28 @@ Commands added or revived in September 2026, and where they live:
 - Use `send_to_char()` for immediate player text and `page_to_char()` for
   scrollable output. Both paths convert canonical `{HH}` color tokens; do not
   send raw player-facing color markup through `write_to_buffer()`.
+- **A listing that loops is built in a bounded `DString`, never a fixed
+  array** (growable output buffers, 2026-11-12). `src/dstring.h`:
+  `dstring_init_limit( &out, DSTRING_OUTPUT_MAX )` (256K), then
+  `dstring_printf` / `dstring_append_cstr`, then `page_to_char(
+  dstring_cstr( &out ), ch )` and `dstring_free( &out )` on every way out.
+  It grows with `realloc`, not `alloc_mem`, so the 32,704-byte size class
+  does not apply; `page_to_char` sends text past its 32,000-byte pager
+  block unpaged and `write_to_buffer` sends a large text in pieces, so no
+  sink has a ceiling it can reach. An append that would pass the limit
+  appends nothing, returns false and sets `out.truncated` -- whole lines
+  only -- and `dstring_fits( &out, n )` asks first, which is how a
+  listing keeps room for its trailer and says "... the rest" only when it
+  really was cut. STASH (a 500-slot stash listed about 185 in 4,096
+  bytes, while STASH GET takes the numbers shown), HISTORY, NOTE
+  LIST/UNREAD/SEARCH, WHO, REPORTS, GAINLIST and GAINLIST PREVIEW,
+  CHANGES, DIARY LIST and the Hall of Heroes' plaque and tablet were
+  converted; output is byte-identical whenever nothing was cut
+  (`tests/test_long_listings.py`, `tests/test_dstring.py`, which also
+  holds each to it). Commands that send line by line (INVENTORY,
+  EQUIPMENT, a shop's LIST, AFFECTS, PRACTICE, SCORE, WHERE, COMPARE
+  UPGRADES, MEMCHECK, DNS LIST) never had a ceiling and are left alone; a
+  line of its own is still a fixed `buf` with `snprintf`.
 - **Colour tokens are `{` and two hex digits, anywhere they appear.**
   Area names open with a level range in braces (`{30 50}`), so show one
   through `area_shown_name()` or the range is eaten. `act()` converts
@@ -819,6 +841,53 @@ Commands added or revived in September 2026, and where they live:
   weigh a payment, which otherwise weighs it as its own value in single
   coppers. Money objects hold an `int` pile size and larger corpse balances
   must be split into representable piles.
+
+## Strict Warnings
+
+Owner, 2026-11-12 ("do it all"). Silent narrowing -- an int stored into a
+16-bit field -- is the class behind the WIMPY and pool bugs, so the whole
+of `src/` is clean under **`-Wshadow -Wsign-compare -Wconversion
+-Wsign-conversion`** (gcc 13 and clang 18, at -O0, at -O2 and under
+ASan/UBSan), and both
+builds carry them: the Makefile's default `WARNFLAGS` through
+`CONVERSION_WARNINGS`, `scripts/validate.sh`'s strict set, and CMake's
+`TOC_CONVERSION_WARNINGS` (CMake no longer passes `-Wno-sign-compare`).
+CI makes them errors: `TOC_STRICT_CONVERSION=ON` on both CMake builds and
+`TOC_STRICT_CONVERSION=1` for `validate.sh build`.
+`tests/test_strict_warnings.py` compiles every `src/*.c` with them at -O0,
+at -O2 and at -O0 with `-fsanitize=address,undefined`, and fails on any
+warning, naming the file, line and flag. The three disagree: gcc folds
+constants at -O2 it warns about at -O0 (a const size_t handed to
+`alloc_mem`), and UBSan's instrumentation hides the ranges -Wconversion
+reads (`LOWER`/`UPPER` into a char, clean until `-fsanitize=undefined`;
+the shifted branch is cast to char now).
+
+Keeping a file clean, without changing what the game does:
+
+- **A sum of modifiers is an int.** `CHAR_DATA`'s `wait`, `carry_weight`,
+  `carry_number`, `saving_throw`, `hitroll`, `damroll`, `armor[4]` and
+  `mod_stat[]` were sh_int with int modifiers added into them; they are
+  int now, as the pools and WIMPY are. Widening a field changes nothing a
+  value in range does; its readers (`fread_number`, no `(sh_int)` cast)
+  must not narrow it back.
+- **A value that must stay 16-bit goes through `sh_int_clamp(long long)`**
+  (merc.h): unchanged when it fits, saturated at the ends otherwise --
+  practices and trains at a level, the sex sums in `reset_char` and
+  `affect_modify`, a mobile's computed armour and stats, a saved
+  `PsiGrant`. Never a bare `(sh_int)` cast to quiet the warning: that
+  keeps the wrap.
+- **A cast is for a range you can see**: a constant (`(int) size` of a
+  30000 buffer), a count already known non-negative (`(size_t) (count -
+  at)` when `at < count`), a bit set read back as the bits it was written
+  as. Say why in a short comment when it is not obvious.
+- **Shadowing is fixed by renaming the inner one**, never by reusing the
+  outer variable, which can change what a later line reads.
+- **A signed/unsigned comparison is fixed at the type**, not by casting
+  away a negative that can really happen.
+
+`-Warith-conversion` (93 sites, nearly all `sh_int += 1` and `LOWER`/
+`UPPER` into a char) and the validate set's older `-Wcast-qual` (23) and
+`-Wmissing-prototypes` (12) are not part of the clean line yet.
 
 ## Player-Facing Bug Review
 
@@ -5932,7 +6001,8 @@ test that fails on the old code. Keep them.
   block that size (a crash anyone could type), with paging off the
   connection was closed. `write_to_buffer` now sends what is queued and
   carries on, and `page_to_char` writes text too big for one pager block
-  unpaged (`tests/test_changes.py`). Keep both when touching either.
+  unpaged (`tests/test_changes.py`). Keep both when touching either: a
+  bounded `DString` (C Change Rules) leans on them.
 - **The dashboard's player-file parser tracks sections**: the player
   block ends at its `End`, `#PET` and `#STASH` are not the player's, so a
   character carrying nothing no longer reads their pet's stats as their own

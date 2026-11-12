@@ -930,7 +930,7 @@ static void login_idle_sweep( void )
 {
     static time_t last;
     static long limit = -1;
-    DESCRIPTOR_DATA *d, *d_next;
+    DESCRIPTOR_DATA *d, *d_after;   /* its own cursor: never the loop's global d_next */
 
     if ( current_time == last )
         return;
@@ -943,9 +943,9 @@ static void login_idle_sweep( void )
         if ( limit <= 0 || limit > 86400 )
             limit = LOGIN_IDLE_SECS;
     }
-    for ( d = descriptor_list; d != NULL; d = d_next )
+    for ( d = descriptor_list; d != NULL; d = d_after )
     {
-        d_next = d->next;
+        d_after = d->next;
         if ( d->connected == CON_PLAYING || d->connected == CON_COPYOVER_RECOVER
         ||   d->input_at <= 0 || current_time - d->input_at < limit )
             continue;
@@ -2862,7 +2862,7 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 	    return;
  	}
 	outbuf      = alloc_mem( 2 * d->outsize );
-	strncpy( outbuf, d->outbuf, d->outtop );
+	strncpy( outbuf, d->outbuf, (size_t) d->outtop );   /* outtop is never negative */
 	free_mem( d->outbuf, d->outsize );
         d->outbuf   = outbuf;
         d->outsize *= 2;

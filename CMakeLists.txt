@@ -121,6 +121,26 @@ endif()
 
 option(ENABLE_SANITIZERS "Enable address and undefined sanitizers for debug validation" OFF)
 
+# Silent narrowing -- an int stored into a 16-bit field, the class behind
+# the WIMPY and pool bugs -- a shadowed local and a signed/unsigned
+# comparison. The whole tree is clean under these (strict-warnings sweep,
+# 2026-11-12) and they are always on; TOC_STRICT_CONVERSION, which CI sets,
+# makes any of them fail the build. tests/test_strict_warnings.py holds the
+# same line for gcc. See AGENTS.md, "Strict Warnings".
+option(TOC_STRICT_CONVERSION "Treat conversion, sign and shadow warnings as errors (CI)" OFF)
+set(TOC_CONVERSION_WARNINGS
+    -Wshadow
+    -Wsign-compare
+    -Wconversion
+    -Wsign-conversion
+)
+set(TOC_CONVERSION_ERRORS
+    -Werror=shadow
+    -Werror=sign-compare
+    -Werror=conversion
+    -Werror=sign-conversion
+)
+
 set(SANITIZER_FLAGS
     -fsanitize=address
     -fsanitize=undefined
@@ -134,8 +154,9 @@ target_compile_options(
         -Wpedantic
         -Werror=implicit-function-declaration
         -Wno-unused-parameter
-        -Wno-sign-compare
         -Wno-strict-aliasing
+        ${TOC_CONVERSION_WARNINGS}
+        $<$<BOOL:${TOC_STRICT_CONVERSION}>:${TOC_CONVERSION_ERRORS}>
         $<$<AND:$<BOOL:${ENABLE_SANITIZERS}>,$<CONFIG:Debug>>:${SANITIZER_FLAGS}>
 )
 

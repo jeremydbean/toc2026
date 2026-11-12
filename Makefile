@@ -7,7 +7,13 @@ PYTHON   ?= python3
 # Default flags favor stability while still surfacing helpful warnings. Use
 # `make CFLAGS="..."` to override for local builds.
 CFLAGS   ?= -std=c17 -O2 -DROM -Dunix
-WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+# CONVERSION_WARNINGS: silent narrowing (an int into a 16-bit field), a
+# shadowed local and a signed/unsigned comparison. The whole tree is clean
+# under them (strict-warnings sweep, 2026-11-12), and
+# tests/test_strict_warnings.py keeps it that way -- see AGENTS.md,
+# "Strict Warnings". Keep them in any WARNFLAGS you pass.
+CONVERSION_WARNINGS := -Wshadow -Wsign-compare -Wconversion -Wsign-conversion
+WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers $(CONVERSION_WARNINGS)
 
 # Emit a .d per object listing the headers it read. Without this a header
 # edit recompiles nothing, and a constant that sizes a struct member leaves

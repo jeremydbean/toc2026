@@ -176,25 +176,28 @@ static void count_shown( CHAR_DATA *ch, const bool *shown )
     ch->pcdata->changes_seen = str_dup( out );
 }
 
-static void changes_append( char *buf, size_t size, int i, const char **last_date )
+static void changes_append( DString *buf, int i, const char **last_date )
 {
     if ( *last_date == NULL || strcmp( *last_date, changes[i].date ) )
     {
-        toc_strlcat( buf, "{0B", size );
-        toc_strlcat( buf, changes[i].date, size );
-        toc_strlcat( buf, "{00\n\r", size );
+        dstring_append_cstr( buf, "{0B" );
+        dstring_append_cstr( buf, changes[i].date );
+        dstring_append_cstr( buf, "{00\n\r" );
         *last_date = changes[i].date;
     }
     if ( changes[i].staff )
-        toc_strlcat( buf, "  (staff only)\n\r", size );
-    toc_strlcat( buf, changes[i].text, size );
-    toc_strlcat( buf, "\n\r\n\r", size );
+        dstring_append_cstr( buf, "  (staff only)\n\r" );
+    dstring_append_cstr( buf, changes[i].text );
+    dstring_append_cstr( buf, "\n\r\n\r" );
 }
 
 /* CHANGES, and CHANGES ALL. */
 void do_changes( CHAR_DATA *ch, char *argument )
 {
-    static char buf[128 * 1024];
+    /* Grown as it is written (growable output buffers, 2026-11-12): CHANGES
+       ALL is past 80K, and the static 128K array it was would have cut the
+       oldest entries -- and the tail -- off without a word. */
+    DString buf;
     static bool shown[CHANGES_MAX];
     char arg[MAX_INPUT_LENGTH];
     const char *last_date = NULL;
@@ -210,9 +213,9 @@ void do_changes( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    buf[0] = '\0';
-    toc_strlcat( buf, all ? "{0BEvery change, newest first:{00\n\r\n\r"
-                          : "{0BWhat is new, newest first:{00\n\r\n\r", sizeof(buf) );
+    dstring_init_limit( &buf, DSTRING_OUTPUT_MAX );
+    dstring_append_cstr( &buf, all ? "{0BEvery change, newest first:{00\n\r\n\r"
+                                   : "{0BWhat is new, newest first:{00\n\r\n\r" );
     for ( i = 0; i < changes_count; i++ )
     {
         shown[i] = false;
@@ -228,13 +231,14 @@ void do_changes( CHAR_DATA *ch, char *argument )
             }
             shown[i] = true;
         }
-        changes_append( buf, sizeof(buf), i, &last_date );
+        changes_append( &buf, i, &last_date );
         count++;
     }
 
     if ( !all && count == 0 )
     {
         send_to_char( "Nothing new since you last looked.  CHANGES ALL shows every change.\n\r", ch );
+        dstring_free( &buf );
         return;
     }
     if ( !all )
@@ -244,8 +248,9 @@ void do_changes( CHAR_DATA *ch, char *argument )
         snprintf( tail, sizeof(tail),
                   "An entry stops showing here once you have seen it three times, or\n\r"
                   "after two weeks.  CHANGES ALL shows all %d.\n\r", count + hidden );
-        toc_strlcat( buf, tail, sizeof(buf) );
+        dstring_append_cstr( &buf, tail );
         count_shown( ch, shown );
     }
-    page_to_char( buf, ch );
+    page_to_char( dstring_cstr( &buf ), ch );
+    dstring_free( &buf );
 }

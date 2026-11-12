@@ -785,13 +785,17 @@ static long stash_upgrade_copper( CHAR_DATA *ch )
 
 static void stash_show( CHAR_DATA *ch )
 {
-    char out[MAX_STRING_LENGTH];
+    /* Grown as it is written: a 4,096-byte array cut a stash off near
+       its 185th piece, and STASH GET <number> works by the numbers shown
+       (growable output buffers, 2026-11-12). */
+    DString out;
     char line[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     int number = 0;
     bool full = false;
 
-    snprintf( out, sizeof(out), "Your stash holds %d of %d thing%s.\n\r",
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    dstring_printf( &out, "Your stash holds %d of %d thing%s.\n\r",
         stash_count( ch ), ch->pcdata->stash_max,
         ch->pcdata->stash_max == 1 ? "" : "s" );
 
@@ -803,19 +807,18 @@ static void stash_show( CHAR_DATA *ch )
         snprintf( line, sizeof(line), "  %3d) %s\n\r", ++number,
             format_obj_to_char( obj, ch, true ) );
 
-        if ( strlen( out ) + strlen( line ) + 160 >= sizeof(out) )
+        if ( !dstring_fits( &out, strlen( line ) + 2 * MAX_STRING_LENGTH ) )
         {
             full = true;
             break;
         }
-        toc_strlcat( out, line, sizeof(out) );
+        dstring_append_cstr( &out, line );
     }
 
     if ( number == 0 )
-        toc_strlcat( out, "  It is empty.\n\r", sizeof(out) );
+        dstring_append_cstr( &out, "  It is empty.\n\r" );
     else if ( full )
-        toc_strlcat( out, "  ... and more than will fit on one screen.\n\r",
-            sizeof(out) );
+        dstring_append_cstr( &out, "  ... and more than will fit on one screen.\n\r" );
 
     {
         char shared[MAX_STRING_LENGTH];
@@ -825,9 +828,9 @@ static void stash_show( CHAR_DATA *ch )
         {
             /* Appended in pieces: the list can be longer than one input
                line, and staging it in `line' cut it short. */
-            toc_strlcat( out, "\n\rShared with: ", sizeof(out) );
-            toc_strlcat( out, shared, sizeof(out) );
-            toc_strlcat( out, "\n\r", sizeof(out) );
+            dstring_append_cstr( &out, "\n\rShared with: " );
+            dstring_append_cstr( &out, shared );
+            dstring_append_cstr( &out, "\n\r" );
         }
     }
 
@@ -841,10 +844,11 @@ static void stash_show( CHAR_DATA *ch )
         snprintf( line, sizeof(line),
             "\n\rAnother %d slots cost %s.  '{0Fstash buy{00' at the altar.\n\r",
             STASH_SLOTS_STEP, price );
-        toc_strlcat( out, line, sizeof(out) );
+        dstring_append_cstr( &out, line );
     }
 
-    page_to_char( out, ch );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
 }
 
 /* Put an object taken out of a stash back where it was, after `prev`
@@ -1207,14 +1211,14 @@ void do_stash( CHAR_DATA *ch, char *argument )
             }
             if ( obj == NULL )
             {
-                char buf[MAX_INPUT_LENGTH];
+                char msg[MAX_INPUT_LENGTH];
 
                 if ( seen == 0 )
-                    snprintf( buf, sizeof(buf), "Your stash is empty.\n\r" );
+                    snprintf( msg, sizeof(msg), "Your stash is empty.\n\r" );
                 else
-                    snprintf( buf, sizeof(buf), "Your stash has no number %s: "
+                    snprintf( msg, sizeof(msg), "Your stash has no number %s: "
                               "STASH lists 1 to %d.\n\r", argument, seen );
-                send_to_char( buf, ch );
+                send_to_char( msg, ch );
                 return;
             }
         }
@@ -1520,7 +1524,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
 
         if ( !taking )
         {
-            OBJ_DATA *obj;
+            OBJ_DATA *item;
             int number = 0;
 
             snprintf( buf, sizeof(buf), "%s's stash holds %d of %d:\n\r",
@@ -1528,11 +1532,11 @@ void do_stash( CHAR_DATA *ch, char *argument )
                 owner->pcdata->stash_max );
             send_to_char( buf, ch );
 
-            for ( obj = owner->pcdata->stash; obj != NULL;
-                  obj = obj->next_content )
+            for ( item = owner->pcdata->stash; item != NULL;
+                  item = item->next_content )
             {
                 snprintf( buf, sizeof(buf), "  %3d) %s\n\r", ++number,
-                    format_obj_to_char( obj, ch, true ) );
+                    format_obj_to_char( item, ch, true ) );
                 send_to_char( buf, ch );
             }
 
@@ -1545,22 +1549,22 @@ void do_stash( CHAR_DATA *ch, char *argument )
         }
         else
         {
-            OBJ_DATA *obj;
+            OBJ_DATA *item;
             OBJ_DATA *prev = NULL;
 
-            for ( obj = owner->pcdata->stash; obj != NULL;
-                  obj = obj->next_content )
+            for ( item = owner->pcdata->stash; item != NULL;
+                  item = item->next_content )
             {
-                if ( can_see_obj( ch, obj ) && is_name( argument, obj->name ) )
+                if ( can_see_obj( ch, item ) && is_name( argument, item->name ) )
                     break;
-                prev = obj;
+                prev = item;
             }
 
-            if ( obj == NULL )
+            if ( item == NULL )
                 send_to_char( "There is nothing like that in their stash.\n\r",
                     ch );
             else
-                stash_take_commit( ch, owner, obj, prev, offline );
+                stash_take_commit( ch, owner, item, prev, offline );
         }
 
         if ( offline )
@@ -4347,7 +4351,8 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
     copper = UMAX(1,obj->level * 2);
 
     if(obj->item_type != ITEM_CORPSE_NPC && obj->item_type != ITEM_CORPSE_PC)
-	copper = UMIN(copper,obj->cost);
+	copper = obj->cost < copper	/* below copper, so it fits an int */
+	       ? (int) UMAX( obj->cost, (long) INT_MIN ) : copper;
 
     if (!can_adjust_coin_balance(ch, copper, TYPE_COPPER)
     ||  query_carry_coins(ch, copper) > can_carry_w(ch))

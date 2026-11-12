@@ -1427,7 +1427,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 		 ch->pcdata->questor[9]  );
 
       /* used for color by Theo. EC */
-	fprintf(fp,"ColFlag %d\n", ch->pcdata->color);
+      fprintf(fp,"ColFlag %d\n", ch->pcdata->color);
         for ( t = 0; t <= COL_MAX; t++ )
         {
 	    fprintf (fp, "Color %d %d\n",t, ch->pcdata->col_table[t]);
@@ -4245,13 +4245,15 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "AchKills", ch->pcdata->achievement_mob_kills, fread_long( fp ) );
 	    KEY( "AchQuests", ch->pcdata->achievement_quests_completed, fread_long( fp ) );
 	    KEY( "AchDeaths", ch->pcdata->achievement_deaths, fread_long( fp ) );
+	    /* Bit sets, read back as the bits they were written as. */
 	    KEY( "AchExplore", ch->pcdata->achievement_hyrule_dungeons,
-		 fread_long( fp ) );
-	    KEY( "AchMaps", ch->pcdata->achievement_hyrule_maps, fread_long( fp ) );
+		 (unsigned long) fread_long( fp ) );
+	    KEY( "AchMaps", ch->pcdata->achievement_hyrule_maps,
+		 (unsigned long) fread_long( fp ) );
 	    KEY( "AchCompass", ch->pcdata->achievement_hyrule_compasses,
-		 fread_long( fp ) );
+		 (unsigned long) fread_long( fp ) );
 	    KEY( "AchTriforce", ch->pcdata->achievement_triforce_shards,
-		 fread_long( fp ) );
+		 (unsigned long) fread_long( fp ) );
 	    /* A player is never an NPC, whatever the file says: with bit A
 	       the copy read as a mobile with no prototype, and the first
 	       thing to ask its prototype -- extract_char, here -- read
@@ -4332,7 +4334,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		int i;
 
 		for (i = 0; i < 4; i++)
-		    ch->armor[i] = (sh_int)(fread_number(fp));
+		    ch->armor[i] = fread_number(fp);
 		fMatch = true;
 		break;
 	    }
@@ -4405,7 +4407,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    {
 		int stat;
 		for (stat = 0; stat < MAX_STATS; stat ++)
-		   ch->mod_stat[stat] = (sh_int)(fread_number(fp));
+		   ch->mod_stat[stat] = fread_number(fp);
 		fMatch = true;
 		break;
 	    }
@@ -4531,8 +4533,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		fMatch = true;
 		break;
 	    }
-	    KEY( "Damroll",	ch->damroll,		(sh_int)(fread_number( fp )) );
-	    KEY( "Dam",		ch->damroll,		(sh_int)(fread_number( fp )) );
+	    KEY( "Damroll",	ch->damroll,		fread_number( fp ) );
+	    KEY( "Dam",		ch->damroll,		fread_number( fp ) );
 	    KEYS( "Depart",	ch->pcdata->depart );
 	    KEYS( "Dprt",	ch->pcdata->depart );
 	    KEYS( "Description",	ch->description );
@@ -4586,8 +4588,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'H':
-	    KEY( "Hitroll",	ch->hitroll,		(sh_int)(fread_number( fp )) );
-	    KEY( "Hit",		ch->hitroll,		(sh_int)(fread_number( fp )) );
+	    KEY( "Hitroll",	ch->hitroll,		fread_number( fp ) );
+	    KEY( "Hit",		ch->hitroll,		fread_number( fp ) );
 	    KEY( "HyruleSecrets", ch->pcdata->hyrule_secrets,
 		 (unsigned long) fread_long( fp ) & 0xffffffffUL );
 
@@ -4704,7 +4706,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
             KEYS( "Prompt",      ch->prompt );
             KEYS( "Prom",        ch->prompt );
 	    KEY( "Psionic",     ch->pcdata->psionic,    (sh_int)(fread_number( fp )) );
-            KEY( "PsiGrant",    ch->pcdata->psionic_grant_pending, fread_number( fp ) );
+            KEY( "PsiGrant",    ch->pcdata->psionic_grant_pending, sh_int_clamp( fread_number( fp ) ) );
             KEYS( "PsiSpec",     ch->pcdata->psionic_grant_spec );
             KEYS( "PsiKnown",    ch->pcdata->psionic_known );
 	    if ( !str_cmp( word, "PoolCarry" ) )
@@ -4800,8 +4802,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'S':
-	    KEY( "SavingThrow",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
-	    KEY( "Save",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
+	    KEY( "SavingThrow",	ch->saving_throw,	fread_number( fp ) );
+	    KEY( "Save",	ch->saving_throw,	fread_number( fp ) );
 	    KEY( "SavedOnce",	ch->pcdata->has_saved,	fread_number( fp ) );
 	    KEY( "Serial",	ch->pcdata->serial,	fread_number( fp ) );
 	    KEY( "StashMax",	ch->pcdata->stash_max,	fread_number( fp ) );
@@ -5073,7 +5075,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	    	int i;
 
     	    	for (i = 0; i < 4; i++)
-    	    	    pet->armor[i] = (sh_int)(fread_number(fp));
+                    pet->armor[i] = fread_number(fp);
     	    	fMatch = true;
     	    	break;
     	    }
@@ -5109,7 +5111,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	     	int stat;
 
     	     	for (stat = 0; stat < MAX_STATS; stat++)
-    	     	    pet->mod_stat[stat] = (sh_int)(fread_number(fp));
+                    pet->mod_stat[stat] = fread_number(fp);
     	     	fMatch = true;
     	     	break;
     	    }
@@ -5130,7 +5132,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	     break;
 
     	 case 'D':
-    	     KEY( "Dam",	pet->damroll,		(sh_int)(fread_number(fp)));
+             KEY( "Dam",	pet->damroll,		fread_number(fp));
 	     KEYS( "Desc",	pet->description );
     	     break;
 
@@ -5151,7 +5153,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	     break;
 
     	 case 'H':
-    	     KEY( "Hit",	pet->hitroll,		(sh_int)(fread_number(fp)));
+             KEY( "Hit",	pet->hitroll,		fread_number(fp));
 
     	     if (!str_cmp(word,"HMV"))
     	     {
@@ -5197,7 +5199,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	    break;
 
     	case 'S' :
-	    KEY( "Save",	pet->saving_throw,	(sh_int)(fread_number(fp)));
+	    KEY( "Save",	pet->saving_throw,	fread_number(fp));
     	    KEY( "Sex",		pet->sex,		(sh_int)(fread_number(fp)));
 	    KEYS( "ShD",		pet->short_descr );
     	    break;

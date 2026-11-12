@@ -883,8 +883,8 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
 	    {
 		int before = ch->pcdata->learned[sn];
 
-		ch->pcdata->learned[sn] += number_range(1,3);
-		ch->pcdata->learned[sn] = UMIN(ch->pcdata->learned[sn],100);
+		/* At most 100, and above before: fits a sh_int. */
+		ch->pcdata->learned[sn] = (sh_int) UMIN( before + number_range(1,3), 100 );
 		playlog_skill( ch, sn, before, false );
 	    }
 	    playlog_exp_as( "skill use" );
