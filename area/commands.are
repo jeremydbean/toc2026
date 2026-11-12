@@ -5876,9 +5876,10 @@ save fails, nothing changes and you are told.
 
 A timed sentence runs from now, at most 30 days, and replaces any term
 already being served.  When it runs out they are released to the Temple,
-online or at their next login.  INDEFINITE lasts until staff release them.
-STATUS shows the release time, what is left, who set it and what it
-imposed.
+online or at their next login.  A pet standing with them in the cell
+goes with them, and a mount they are riding stays under them.  INDEFINITE
+lasts until staff release them.  STATUS shows the release time, what is
+left, who set it and what it imposed.
 
 Nothing else ends a sentence: death, recall, portals, spells, items, the
 Oracle, remort, DELETE, quitting, link loss and reboots all leave them in

@@ -258,7 +258,8 @@ you.
   - Costs 70 mana.  A mobile may resist, and the mana and wait are spent.
   - Refused, with nothing spent, for yourself, an immortal, somebody
     already here, an aggressive or summon-proof mobile, a player on
-    NOSUMMON, or when either of you is fighting.
+    NOSUMMON, when either of you is fighting, or when either of you is
+    serving a jail sentence.
   - Your room must not be no-recall, teleport, river or arena, nor one
     you may not use magic from; theirs must be one travel magic reaches.
   - You are stunned until the next tick, so you cannot pull a victim in

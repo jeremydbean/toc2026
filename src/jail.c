@@ -336,17 +336,50 @@ static void jail_take_in( CHAR_DATA *victim )
     }
 }
 
+/*
+ * Out of the cell to the Temple, with the pet that stands beside them
+ * (review, 2026-11-12). save_char_obj writes a pet only from its owner's
+ * room, so a pet left in the cell was dropped from the next save and lost
+ * at the quit. The release's own save, made before this with both in the
+ * cell, already holds the pet; a crash between it and this move logs the
+ * owner in at the Temple (jail_login_place) with the pet placed beside
+ * them, so the file and the world agree either way.
+ *
+ * A rider is moved mounted, the mount with them, as TRANSFER moves one:
+ * RIDE lets a prisoner mount their own horse again in the cell, and the
+ * rider alone in the Temple was left "mounted" on a horse still "ridden"
+ * in the cell. A rider whose mount is not beside them is not riding
+ * (release_mount).
+ */
 static void jail_release_move( CHAR_DATA *victim )
 {
     ROOM_INDEX_DATA *temple = get_room_index( ROOM_VNUM_TEMPLE );
+    ROOM_INDEX_DATA *cell;
+    CHAR_DATA *pet;
 
     if ( temple == NULL || victim->in_room == NULL || victim->in_room == temple )
         return;
     if ( victim->in_room->vnum != ROOM_VNUM_JAIL
     &&   !IS_SET(victim->in_room->room_flags, ROOM_JAIL) )
         return;
+    cell = victim->in_room;
+    pet = victim->pet;
+    if ( pet != NULL && pet->in_room != cell )
+        pet = NULL;
+    if ( victim->pcdata->mounted && pet == NULL )
+        release_mount( victim );
+
     char_from_room( victim );
     char_to_room( victim, temple );
+    if ( pet != NULL )
+    {
+        if ( pet->fighting != NULL )
+            stop_fighting( pet, true );
+        char_from_room( pet );
+        char_to_room( pet, temple );
+        if ( !pet->ridden )
+            act( "$n follows $N out of the cell.", pet, NULL, victim, TO_NOTVICT );
+    }
     if ( victim->desc != NULL )
         do_look( victim, "auto" );
 }

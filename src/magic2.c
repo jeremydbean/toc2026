@@ -2426,7 +2426,21 @@ void do_shift( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* A sentence holds caster and target alike, before any mana, stun or
+       rift (jail.c). The room tests below ask the cell's flags, and a
+       cell without them let the cost and the success line through while
+       char_to_room kept the prisoner where they were (review,
+       2026-11-12). */
+    if ( jail_refuses( ch ) )
+        return;
+
     victim = get_char_world( ch, arg );
+    if ( victim != NULL && victim != ch && is_jailed( victim ) )
+    {
+        act( "$N is serving a jail sentence. Nothing takes $M out of the cell "
+             "but $S release.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
     if ( victim == NULL
     ||   victim == ch
     ||   IS_IMMORTAL(victim)
