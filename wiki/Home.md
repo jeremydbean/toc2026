@@ -52,6 +52,10 @@ give the current figures. The live game runs on Oracle Cloud (`toc.jeremybean.co
 - [Contributing](../CONTRIBUTING.md) - focused contribution and review rules
 - [Validation And Area Health](validation-and-area-health.md) - full validation,
   linter issue codes, CI, current warning review, and troubleshooting
+- [Code Review Status](code-review.md) - recorded review findings and their
+  status
+- Design notes in [`notes/`](notes/) - older design records and audits, context
+  rather than current behavior
 - [Changelog](../CHANGELOG.md) - notable repository changes
 - [Agent Instructions](../AGENTS.md) - repository rules for coding agents
 

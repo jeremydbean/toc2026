@@ -51,10 +51,10 @@ Useful focused checks:
 ```bash
 make
 cd area && ../merc --check-area && cd ..
-python3 check_parser.py
-python3 check_exits.py
-python3 check_resets.py
-python3 check_shops.py
+python3 scripts/check_parser.py
+python3 scripts/check_exits.py
+python3 scripts/check_resets.py
+python3 scripts/check_shops.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 python3 -m unittest discover -s tests
 git diff --check

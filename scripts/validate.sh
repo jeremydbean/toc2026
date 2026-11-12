@@ -160,15 +160,15 @@ check "Seasonal area variants" \
 
 area_checks() {
   local rc=0
-  "$python_bin" check_parser.py || rc=1
-  "$python_bin" check_exits.py || rc=1
-  "$python_bin" check_resets.py || rc=1
-  "$python_bin" check_shops.py || rc=1
+  "$python_bin" scripts/check_parser.py || rc=1
+  "$python_bin" scripts/check_exits.py || rc=1
+  "$python_bin" scripts/check_resets.py || rc=1
+  "$python_bin" scripts/check_shops.py || rc=1
   "$python_bin" scripts/area_lint.py --fail-on critical --limit 20 || rc=1
   return $rc
 }
 check "Area data checks" \
-  "run the failing check_*.py / area_lint.py on its own" \
+  "run the failing scripts/check_*.py / area_lint.py on its own" \
   area_checks
 fi  # want quick
 

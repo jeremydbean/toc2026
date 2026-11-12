@@ -148,8 +148,10 @@ Supported long-running native wrapper:
 ./startup.sh 9000
 ```
 
-The root compatibility file named `startup` and `area/startup.sh` delegate to
-the maintained root `startup.sh`.
+`area/startup.sh` delegates to the root `startup.sh`, for hosts that launched
+from `area/`. The other retired root names (`startup`, `install`, `cleanup`,
+`refresh`) were removed on 2026-11-12; use `startup.sh`, `install.sh`,
+`make clean`, and `bash scripts/validate.sh build`.
 
 Installed copies (Docker by default, `--native` without it):
 
@@ -186,10 +188,10 @@ Focused checks:
 ```bash
 make
 cd area && ../merc --check-area && cd ..
-python3 check_parser.py
-python3 check_exits.py
-python3 check_resets.py
-python3 check_shops.py
+python3 scripts/check_parser.py
+python3 scripts/check_exits.py
+python3 scripts/check_resets.py
+python3 scripts/check_shops.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 python3 -m unittest discover -s tests
 python3 -m unittest tests.test_money_safety tests.test_bank_interest tests.test_pkill_persistence tests.test_achievements
@@ -1047,7 +1049,8 @@ some point, and the dropped content was then acted on: 176 resets across
 `chess.are`, `korzath1.are` and `world.are` had been commented out as
 "(removed: room/obj does not exist)" when every vnum they named was present
 and every room reachable. If a validator says something is missing, confirm
-against `../merc --check-area` and `check_exits.py` before deleting anything.
+against `../merc --check-area` and `scripts/check_exits.py` before deleting
+anything.
 
 Before restoring a reset that was commented out, read what it does. One of
 those 176 was a button whose `value[4] == 3` kills everyone in the room except
@@ -1061,7 +1064,7 @@ whoever pushes it; arming that is a gameplay decision, not a repair.
 reads it; every token keeps its offset, and files are read and written as
 bytes, so an in-place writer changes one token and nothing else, CRLF
 included. `AreaParser`, the area lint, the directions router, the Mudlet
-map, the seasonal builder, both price tools and the root `check_*.py` all
+map, the seasonal builder, both price tools and `scripts/check_*.py` all
 use it; `listed_area_files(dir, built=False)` is the list for anything
 committed. Do not write another reader -- add what a tool needs to this one.
 Help keeps its own reader (`webadmin/help_index.py`), and the Hyrule
@@ -1442,8 +1445,8 @@ Hyrule workflow:
 ```bash
 make hyrule-area
 make test-hyrule
-python3 check_exits.py
-python3 check_resets.py
+python3 scripts/check_exits.py
+python3 scripts/check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
 
@@ -1903,7 +1906,7 @@ it. Rules this leaves:
   names (`look pump`, `look coffins` in the October 2026 logs), so a
   decorated room's nouns should each have one.
 - **The Python tools do not know the seasons.** `area_lint.py`,
-  `check_exits.py` and the shop price test read `area.lst`, so they
+  `scripts/check_exits.py` and the shop price test read `area.lst`, so they
   check the base files only; the generator is what keeps the copies
   honest.
 
@@ -1930,7 +1933,7 @@ safe:
   to `toc-deploy`'s: change one, change both. It compares checksums, because
   rsync's size-and-mtime check skipped a same-size edit made within the
   second.
-- **The entrypoint (`docker-entrypoint.sh`) and the native runner
+- **The entrypoint (`scripts/docker-entrypoint.sh`) and the native runner
   (`scripts/toc_run_game.sh`) forward SIGTERM to merc** and wait for it, so
   a stop saves every player. The shell is PID 1 in the container and ignored
   the signal before; Docker then killed the game unsaved. `merc`'s output

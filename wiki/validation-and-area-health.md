@@ -85,7 +85,7 @@ PYTHON=python3 RUN_SMOKE=1 SMOKE_PORT=9999 bash scripts/validate.sh
 | Area validation mode | `cd area && ../merc --check-area` | Boots the world database and exits without listening on a port |
 | Optional smoke | `timeout 25s ../merc <port>` | Confirms the server can start and remain alive briefly |
 | Python syntax | `python -m py_compile ...` | Catches import and syntax errors in admin/helper scripts |
-| Legacy area checks | `check_parser.py`, `check_exits.py`, `check_resets.py`, `check_shops.py` | Validates basic parser counts and cross-reference integrity |
+| Legacy area checks | `scripts/check_parser.py`, `scripts/check_exits.py`, `scripts/check_resets.py`, `scripts/check_shops.py` | Validates basic parser counts and cross-reference integrity |
 | Area-health lint | `scripts/area_lint.py --fail-on critical` | Catches structural area issues with severity tiers |
 | Unit tests | `python -m unittest discover -s tests` | Exercises area-health output and web-admin API behavior |
 | Whitespace check | `git diff --check` | Catches trailing whitespace and patch formatting problems |

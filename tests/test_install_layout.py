@@ -277,7 +277,7 @@ while :; do sleep 1; done
         self.assertFalse((state / "area" / "shutdown.txt").exists())
 
     def test_the_container_entrypoint_does_the_same(self) -> None:
-        entry = (ROOT / "docker-entrypoint.sh").read_text()
+        entry = (ROOT / "scripts" / "docker-entrypoint.sh").read_text()
         self.assertIn("trap on_signal TERM INT HUP", entry)
         self.assertIn('kill -TERM "$merc_pid"', entry)
         self.assertIn("toc-sync-area /app/dist/area /app/area", entry)

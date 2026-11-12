@@ -8,6 +8,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The repository root holds only entry points, build files and project
+  documents** (owner, 2026-11-12: "clean up all the root files"). The area
+  checks moved to `scripts/check_{parser,exits,resets,shops}.py` (they now
+  find the repository from their own path, so they run from anywhere), the
+  container's entrypoint to `scripts/docker-entrypoint.sh`, `CODE_REVIEW.md`
+  to `wiki/code-review.md` and `notes/` to `wiki/notes/`. The retired root
+  shims `startup`, `install`, `cleanup` and `refresh` are gone: use
+  `startup.sh`, `install.sh`, `make clean` and `bash scripts/validate.sh
+  build`. `startup.sh`, the installers and the launchers stay at the root,
+  where the guides tell people to run them; `area/startup.sh` still
+  delegates to `startup.sh`.
+
 - **The Mudlet map reads cleanly** (2026-11-12; owner: "the way the layers
   look on the map in mudlet is disorienting ... dresden is a mess").
   Package 1.5.14 turns off Mudlet 5's drawing of the levels above and below

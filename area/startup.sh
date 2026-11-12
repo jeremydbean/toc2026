@@ -4,5 +4,5 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-echo "area/startup.sh now delegates to the maintained root startup.sh." >&2
+echo "area/startup.sh delegates to the repository root startup.sh." >&2
 exec "$REPO_ROOT/startup.sh" "$@"

@@ -51,5 +51,4 @@ build-*
 bin
 tests
 wiki
-notes
 *.log

@@ -438,14 +438,13 @@ Run with the checked-in restart/log wrapper:
 ./startup.sh 9000
 ```
 
-The root compatibility file named `startup` and `area/startup.sh` both delegate
-to the maintained root `startup.sh`. Use `startup.sh` directly in new service
-definitions.
+`area/startup.sh` delegates to the root `startup.sh`, for hosts that launched
+from `area/`. Use `startup.sh` directly in new service definitions.
 
-Other retired root names are now safe compatibility helpers: `install`
-delegates to cross-platform `install.sh`, `cleanup` only runs `make clean`, and
-`refresh` performs a clean build plus native area validation without killing or
-restarting any process.
+The retired root names `startup`, `install`, `cleanup` and `refresh` were
+removed on 2026-11-12. Use `startup.sh`, `install.sh`, `make clean`, and
+`bash scripts/validate.sh build` (a clean build plus native area validation)
+in their place.
 
 ### systemd Example
 
@@ -777,10 +776,10 @@ Run:
 cd area
 ../merc --check-area
 cd ..
-python3 check_parser.py
-python3 check_exits.py
-python3 check_resets.py
-python3 check_shops.py
+python3 scripts/check_parser.py
+python3 scripts/check_exits.py
+python3 scripts/check_resets.py
+python3 scripts/check_shops.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
 

@@ -52,7 +52,7 @@ class RouterReadsTheWholeWorld(unittest.TestCase):
     def test_no_exit_points_at_a_room_that_does_not_exist(self) -> None:
         """A dangling exit here means a record was misread, not deleted.
 
-        check_exits.py reports the world clean, so any disagreement is the
+        scripts/check_exits.py reports the world clean, so any disagreement is the
         router's fault.
         """
         dangling = [(v, door, e[0])

@@ -272,7 +272,7 @@ class NoSecondReaderTests(unittest.TestCase):
 
     def test_no_tool_scans_area_sections_itself(self) -> None:
         files = (list((ROOT / "tools").rglob("*.py")) + list((ROOT / "scripts").rglob("*.py"))
-                 + list((ROOT / "webadmin").glob("*.py")) + list(ROOT.glob("check_*.py")))
+                 + list((ROOT / "webadmin").glob("*.py")))
         offenders = []
         for path in files:
             name = path.relative_to(ROOT).as_posix()
