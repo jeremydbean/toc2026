@@ -1,7 +1,7 @@
 /*
  * The fuzz targets' shared harness: a disposable world booted once per
  * process, and exit() redirected while an input is read (fuzz_world.h).
- * Not part of the game; see fuzz/README.md.
+ * Not part of the game; see tests/fuzz/README.md.
  */
 #include "merc.h"
 #include "fuzz_world.h"

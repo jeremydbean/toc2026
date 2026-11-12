@@ -5,7 +5,7 @@ Every seed is a character this script creates in a throwaway world
 (tests/live_mud.LiveMud) and the game itself saves -- never a real
 player's file. Run from the repository root after `make`:
 
-    python3 fuzz/make_seeds.py            # rewrites fuzz/corpus/player/
+    python3 tests/fuzz/make_seeds.py            # rewrites tests/fuzz/corpus/player/
 
 The seeds:
   new       a level 1 warrior straight out of creation
@@ -22,7 +22,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tests"))
 
 import live_mud  # noqa: E402
@@ -30,7 +30,7 @@ from live_mud import LiveMud, create_character, login, patch_player_file  # noqa
 
 NAME = "Zfuzz"
 PASSWORD = "fuzzseed1"
-OUT = ROOT / "fuzz" / "corpus" / "player"
+OUT = ROOT / "tests" / "fuzz" / "corpus" / "player"
 
 # A container (a black robe, htower.are), a weapon, armour, a light, a wand
 # and a trinket -- ordinary shipped prototypes.

@@ -19,7 +19,7 @@
  *     the reader must read.
  *
  * Synthetic files only: the seed corpus is made in a disposable world
- * (fuzz/make_seeds.py); never a real character's file.
+ * (tests/fuzz/make_seeds.py); never a real character's file.
  */
 #include "merc.h"
 #include "fuzz_world.h"

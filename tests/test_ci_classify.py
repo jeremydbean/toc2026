@@ -67,10 +67,30 @@ class PathClassTests(unittest.TestCase):
             "mudlet/package/script.lua": "full", "some/new/thing.xyz": "full",
             # Shipped content, not state, whatever its extension says.
             "area/changes.dat": "full", "area/walkto.dat": "full", "area/shutdown.txt": "full",
+            # The Docker files (docker/, 2026-11-12) build the published image.
+            "docker/Dockerfile": "full", "docker/compose.yml": "full", ".dockerignore": "full",
+            # The fuzz harness moved into tests/ and is still the harness, not
+            # a test module: everything runs, as for fuzz/ before it.
+            "tests/fuzz/build.sh": "full", "tests/fuzz/fuzz_world.c": "full",
+            "tests/fuzz/make_seeds.py": "full", "tests/fuzz/regressions/area/x.are": "full",
+            "tests/fuzz/dict/player.dict": "full", "tests/fuzz/README.md": "full",
+            # GitHub's community files are documents, though they sit in .github/.
+            ".github/SECURITY.md": "docs", ".github/CONTRIBUTING.md": "docs",
+            ".github/dependabot.yml": "full",
         }
         for path, expected in cases.items():
             with self.subTest(path=path):
                 self.assertEqual(C.classify_path(path)[0], expected)
+
+    def test_the_fuzz_harness_is_not_a_test_module(self) -> None:
+        # tests/fuzz/ is harness (2026-11-12): nothing in it may be found by
+        # discover -s tests or the runner's tests/test_*.py, or inventoried.
+        fuzz = ROOT / "tests" / "fuzz"
+        self.assertTrue((fuzz / "build.sh").is_file())
+        self.assertEqual(sorted(str(p.relative_to(fuzz)) for p in fuzz.rglob("test_*")), [])
+        self.assertFalse(list(fuzz.rglob("__init__.py")))
+        self.assertTrue(all("/" not in m and not m.startswith("fuzz") for m in C.test_modules()))
+        self.assertIn("tests/**", C.DEPLOY_EXCLUDES)
 
     def test_a_document_a_test_holds_to_the_code_runs_that_test(self) -> None:
         cls, modules, _ = C.classify_path("wiki/hosting-guide.md")

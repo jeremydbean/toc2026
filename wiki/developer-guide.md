@@ -16,7 +16,7 @@ characters or private working-tree state into a deployment or a publication.
 
 This guide explains the repository architecture, development environment,
 validation workflow, extension points, data rules, debugging tools, and release
-expectations. Read [CONTRIBUTING.md](../CONTRIBUTING.md) for the concise change
+expectations. Read [CONTRIBUTING.md](../.github/CONTRIBUTING.md) for the concise change
 checklist and [AGENTS.md](../AGENTS.md) for automation-specific repository rules.
 
 ## Architecture
@@ -666,8 +666,8 @@ Before requesting review:
 
 ## Related Documentation
 
-- [Contributing](../CONTRIBUTING.md)
-- [Security](../SECURITY.md)
+- [Contributing](../.github/CONTRIBUTING.md)
+- [Security](../.github/SECURITY.md)
 - [Hosting Guide](hosting-guide.md)
 - [Operator Guide](operator-guide.md)
 - [Area Building Guide](area-building-guide.md)

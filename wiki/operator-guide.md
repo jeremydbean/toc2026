@@ -157,7 +157,7 @@ The Docker Compose service uses `restart: unless-stopped`, which can restart the
 whole container even after a clean in-game shutdown. To keep it stopped, run:
 
 ```bash
-./toc.sh stop        # or: docker compose stop
+./toc.sh stop        # or, from the checkout: docker compose --project-directory . -f docker/compose.yml stop
 ```
 
 On the live host, use systemd instead:
@@ -197,8 +197,8 @@ world totals, connected descriptors, global list counts, active mobile state,
 and scheduled backups. Pair it with host information:
 
 ```bash
-docker compose ps
-docker compose logs --tail 300 game
+./toc.sh status    # or, from the checkout: docker compose --project-directory . -f docker/compose.yml ps
+docker compose --project-directory . -f docker/compose.yml logs --tail 300 game
 docker stats toc2026_game
 curl -fsS http://127.0.0.1:9001/api/health
 curl -fsS http://127.0.0.1:9001/api/stats
@@ -314,7 +314,7 @@ through an appropriately private channel, and ask the player to change it after
 login. The command still crosses the operator's unencrypted Telnet connection.
 
 Passwords are stored as SHA-512 crypt hashes (`src/password.c`; see
-[SECURITY.md](../SECURITY.md)). A password set by RESETPWD or PASSWORD counts
+[SECURITY.md](../.github/SECURITY.md)). A password set by RESETPWD or PASSWORD counts
 every byte. A character still on an old DES hash is moved to SHA-512 at their
 next login but keeps DES's effective limit -- the first eight bytes -- until
 they choose a new password, so ask a recovered player to change it. Telnet
@@ -615,7 +615,7 @@ Follow-up:
 ## Related Documentation
 
 - [Hosting Guide](hosting-guide.md)
-- [Security](../SECURITY.md)
+- [Security](../.github/SECURITY.md)
 - [Validation And Area Health](validation-and-area-health.md)
 - [Developer Guide](developer-guide.md)
 - [Area Building Guide](area-building-guide.md)

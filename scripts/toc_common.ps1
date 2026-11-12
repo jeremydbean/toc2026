@@ -2,8 +2,19 @@
 
 $script:TocRepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $script:TocEnvFile = Join-Path $script:TocRepoRoot '.env'
+# The compose file is docker/compose.yml; the project directory stays the
+# checkout. That directory is what compose reads .env and every relative
+# path from, and what it names the project after -- the checkout folder,
+# as when the file sat at the root -- so an installation updated across
+# the move keeps its project and container. toc.sh's toc_compose mirrors it.
+$script:TocComposeFile = Join-Path (Join-Path $script:TocRepoRoot 'docker') 'compose.yml'
 $script:TocDockerWaitSeconds = 300
 $script:TocGameWaitSeconds = 180
+
+# The arguments that start every compose command: docker compose ...
+function Get-TocComposeArguments {
+    return @('compose', '--project-directory', $script:TocRepoRoot, '-f', $script:TocComposeFile)
+}
 
 function Get-TocEnvValue {
     param(
@@ -426,7 +437,7 @@ function Get-TocPurgeRefusal {
 function Install-TocImage {
     param([switch]$Build)
 
-    $arguments = @('compose', '--project-directory', $script:TocRepoRoot)
+    $arguments = Get-TocComposeArguments
     if ($Build -or (Get-TocEnvValue -Name 'TOC_BUILD') -eq 'local') {
         Write-Host 'Building the Times of Chaos image from this checkout...' -ForegroundColor Cyan
         Invoke-TocDocker -ArgumentList ($arguments + @('build', 'game')) | Out-Null
@@ -585,8 +596,8 @@ function Wait-TocGame {
     param([int]$WaitSeconds = $script:TocGameWaitSeconds)
 
     $docker = Get-TocDockerExecutable
-    $containerId = & $docker compose --project-directory $script:TocRepoRoot `
-        ps -q game | Select-Object -First 1
+    $compose = Get-TocComposeArguments
+    $containerId = & $docker @compose ps -q game | Select-Object -First 1
     if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($containerId)) {
         throw 'The ToC container was not created.'
     }
@@ -604,8 +615,7 @@ function Wait-TocGame {
             }
             { $_ -in 'unhealthy', 'exited', 'dead' } {
                 Write-Host ' failed.' -ForegroundColor Red
-                & $docker compose --project-directory $script:TocRepoRoot `
-                    logs --tail 80 game
+                & $docker @compose logs --tail 80 game
                 throw "The ToC container entered the '$health' state."
             }
         }
@@ -614,7 +624,7 @@ function Wait-TocGame {
     }
 
     Write-Host ' timed out.' -ForegroundColor Red
-    & $docker compose --project-directory $script:TocRepoRoot logs --tail 80 game
+    & $docker @compose logs --tail 80 game
     throw "Times of Chaos did not become healthy within $WaitSeconds seconds."
 }
 

@@ -298,4 +298,4 @@ report the exact command if the markers remain.
 - [Web Admin Guide](web-admin-guide.md)
 - [Hosting Guide](hosting-guide.md)
 - [Operator Guide](operator-guide.md)
-- [Security Policy](../SECURITY.md)
+- [Security Policy](../.github/SECURITY.md)

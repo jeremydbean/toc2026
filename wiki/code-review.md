@@ -4,7 +4,7 @@ This file records high-signal review findings and their current status. Use it
 for bug-hunt context, not as a replacement for the full validation suite in
 `scripts/validate.ps1` and `scripts/validate.sh`. The maintained review workflow
 and risk checklist are in `wiki/developer-guide.md`; security findings follow
-`SECURITY.md`.
+`.github/SECURITY.md`.
 
 ## Current Status
 

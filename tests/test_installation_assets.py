@@ -30,7 +30,7 @@ class InstallationAssetsTests(unittest.TestCase):
                 self.assertTrue((ROOT / relative_path).is_file())
 
     def test_compose_defaults_are_private_and_state_is_persistent(self):
-        compose = read("docker-compose.yml")
+        compose = read("docker/compose.yml")
         self.assertIn("${MUD_BIND:-127.0.0.1}", compose)
         self.assertIn("${WEB_ADMIN_BIND:-127.0.0.1}", compose)
         self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=${WEB_ADMIN_LOCAL_UNLOCK:-1}", compose)
@@ -53,7 +53,7 @@ class InstallationAssetsTests(unittest.TestCase):
             with self.subTest(entry=entry):
                 self.assertIn(entry, dockerignore)
 
-        dockerfile = read("Dockerfile")
+        dockerfile = read("docker/Dockerfile")
         # The image's mount points exist and the world is loaded at build
         # time, so an image whose areas do not boot is never produced.
         self.assertIn("mkdir -p /app/area /app/player /app/gods /app/heroes /app/corpse /app/log /app/backups",
@@ -154,7 +154,7 @@ class InstallationAssetsTests(unittest.TestCase):
 
     def test_documentation_covers_access_auth_and_builds(self):
         hosting = read("wiki/hosting-guide.md")
-        security = read("SECURITY.md")
+        security = read(".github/SECURITY.md")
         self.assertIn("make -j1", hosting)
         self.assertIn("do not forward port 9001", security)
 

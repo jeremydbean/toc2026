@@ -1,6 +1,18 @@
 # Times of Chaos under Docker Compose. Use the launchers (./toc.sh or
 # .\toc.ps1), which create .env, pick a prebuilt image or build one, and
-# wait for the game to answer; plain `docker compose up -d` also works.
+# wait for the game to answer.
+#
+# This file lives in docker/, but its project is the checkout: run it from
+# the checkout's root as
+#
+#     docker compose --project-directory . -f docker/compose.yml up -d
+#
+# which is what the launchers do. The project directory is what every
+# relative path below is read from (the build context, ./state), where
+# .env is found, and what names the project -- the checkout folder's
+# name, as it was before this file moved here, so an installation keeps
+# its project and container across the move. Without --project-directory
+# compose would read all three from docker/ instead.
 #
 # Everything the game writes lives under ./state (TOC_STATE in .env), one
 # folder to back up or move: characters, immortals, logs, backups, and
@@ -12,7 +24,10 @@ services:
     # checkout built locally under the same name (`toc.sh build`).
     image: ${TOC_IMAGE:-ghcr.io/jeremydbean/toc2026:latest}
     build:
+      # The checkout's root, so the root .dockerignore keeps runtime state
+      # (player files, logs, reports) out of every image.
       context: .
+      dockerfile: docker/Dockerfile
       # Behind a proxy or mirror: TOC_BASE_IMAGE for another Ubuntu 24.04
       # source, TOC_BUILD_NETWORK=host when builds cannot resolve names.
       network: ${TOC_BUILD_NETWORK:-default}
@@ -65,5 +80,5 @@ services:
     # before it exits; give it time to finish.
     stop_grace_period: 60s
     # unless-stopped applies after any container-process exit, including a clean
-    # in-game shutdown. Use `toc.sh stop` / `docker compose stop` to keep it stopped.
+    # in-game shutdown. Use `toc.sh stop` (or compose's own stop) to keep it stopped.
     restart: unless-stopped

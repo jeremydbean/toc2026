@@ -18,7 +18,7 @@
  * own records, and fuzz_world_rewind (db.c, TOC_FUZZ only) takes them all
  * back out before the next input.
  *
- * Leak detection is off for this target (fuzz/run.sh): the loaders take
+ * Leak detection is off for this target (tests/fuzz/run.sh): the loaders take
  * strings at boot that are never meant to be freed.
  */
 #include "merc.h"

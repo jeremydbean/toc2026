@@ -1,4 +1,4 @@
-# Section names and record letters of the area loader (src/db.c); fuzz/make_dict.py.
+# Section names and record letters of the area loader (src/db.c); tests/fuzz/make_dict.py.
 "#AREA"
 "#AREADATA"
 "#HELPS"

@@ -474,8 +474,14 @@ toc_start_docker() {
     done
 }
 
+# The compose file is docker/compose.yml; the project directory stays the
+# checkout. That directory is what compose reads .env and every relative
+# path from, and what it names the project after -- the checkout folder,
+# as when the file sat at the root -- so an installation updated across
+# the move keeps its project and container.
 toc_compose() {
-    docker compose --project-directory "$TOC_REPO_ROOT" "$@"
+    docker compose --project-directory "$TOC_REPO_ROOT" \
+        -f "$TOC_REPO_ROOT/docker/compose.yml" "$@"
 }
 
 # Have an image to run: the published one unless TOC_BUILD=local (or a

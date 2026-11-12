@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Build the libFuzzer targets for the file readers (fuzz/README.md).
+# Build the libFuzzer targets for the file readers (tests/fuzz/README.md).
 #
-#   fuzz/build.sh            # build-fuzz/fuzz_{numparse,player,area}
-#   OUT=dir fuzz/build.sh    # somewhere else
+#   tests/fuzz/build.sh            # build-fuzz/fuzz_{numparse,player,area}
+#   OUT=dir tests/fuzz/build.sh    # somewhere else
 #
 # Needs clang with libFuzzer and the sanitizer runtimes (Ubuntu:
 # clang and libclang-rt-<version>-dev). The game is compiled again with
@@ -12,7 +12,8 @@
 # Run from anywhere; paths are taken from this script's place.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+FUZZ="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$FUZZ/../.." && pwd)"
 OUT="${OUT:-$ROOT/build-fuzz}"
 CC="${FUZZ_CC:-clang}"
 JOBS="${JOBS:-$(nproc 2>/dev/null || echo 2)}"
@@ -24,7 +25,7 @@ LIBS="-lcrypt -lm -lz -pthread"
 
 if ! printf 'int LLVMFuzzerTestOneInput(const char *d, unsigned long s){return 0;}\n' \
      | "$CC" -x c - -fsanitize=fuzzer,address,undefined -o /dev/null 2>/dev/null; then
-    echo "fuzz/build.sh: $CC cannot link -fsanitize=fuzzer,address,undefined" >&2
+    echo "tests/fuzz/build.sh: $CC cannot link -fsanitize=fuzzer,address,undefined" >&2
     echo "(on Ubuntu: apt-get install clang libclang-rt-18-dev)" >&2
     exit 2
 fi
@@ -44,7 +45,7 @@ compile() {
 export -f compile
 export CC CFLAGS WARN OUT ROOT
 
-ls "$ROOT"/src/*.c "$ROOT"/fuzz/fuzz_*.c | xargs -P "$JOBS" -I{} bash -c 'compile "$@"' _ {}
+ls "$ROOT"/src/*.c "$FUZZ"/fuzz_*.c | xargs -P "$JOBS" -I{} bash -c 'compile "$@"' _ {}
 
 GAME_OBJS=()
 for src in "$ROOT"/src/*.c; do

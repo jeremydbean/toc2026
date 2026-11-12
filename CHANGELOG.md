@@ -8,6 +8,29 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The repository root is tidier: Docker, community files and fuzzing
+  moved** (owner, 2026-11-12: "sort things in a logistically intuitive
+  layout"). `Dockerfile` is `docker/Dockerfile` and `docker-compose.yml`
+  is `docker/compose.yml`; the build context is still the root, so the
+  root `.dockerignore` keeps player data out of the image
+  (`docker-image.yml` builds `file: docker/Dockerfile`, context `.`).
+  The launchers (`toc.sh`, `toc.ps1`) call `docker compose
+  --project-directory <checkout> -f <checkout>/docker/compose.yml`: the
+  project directory is where compose reads `.env` and `./state` from and
+  what it names the project after, so an installation keeps its project
+  name -- the checkout folder's -- and finds the container it started.
+  `toc.sh update` pulls the move and execs the launcher it pulled, which
+  carries the new arguments; `tests/test_docker_layout.py` plays an update
+  across the move in a throwaway checkout against a stand-in docker, and
+  asks real compose (where installed) what it makes of the file. Raw
+  compose commands in the guides name both flags. `SECURITY.md` and
+  `CONTRIBUTING.md` are in `.github/`, where GitHub still finds them
+  (classified as documents, not CI policy). `fuzz/` is `tests/fuzz/`: the
+  scripts find the root two levels up and keep building into the root's
+  `build-fuzz/`, nothing in it is a test module, and `classify.py` treats
+  `tests/fuzz/**` as the harness (full suite). `.vscode/` (one personal
+  setting) is gone and ignored.
+
 - **Staff are immortals by level; trust is command authority** (owner,
   2026-11-12: "no let trusted players act as mortals across the board",
   "staff-only should ONLY apply to actual immortals level 60+"). It

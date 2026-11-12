@@ -22,7 +22,7 @@ function Invoke-Compose {
         [switch]$AllowFailure
     )
 
-    $arguments = @('compose', '--project-directory', $script:TocRepoRoot) + $ArgumentList
+    $arguments = (Get-TocComposeArguments) + $ArgumentList
     Invoke-TocDocker -ArgumentList $arguments -AllowFailure:$AllowFailure
 }
 
@@ -71,8 +71,8 @@ function Test-TocGameRunning {
     if (-not (Get-TocDockerExecutable) -or -not (Test-TocDockerReady)) {
         return $false
     }
-    $ids = & (Get-TocDockerExecutable) compose --project-directory $script:TocRepoRoot `
-        ps --status running -q game 2>$null
+    $compose = Get-TocComposeArguments
+    $ids = & (Get-TocDockerExecutable) @compose ps --status running -q game 2>$null
     return [bool]$ids
 }
 

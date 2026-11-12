@@ -1,6 +1,6 @@
 /*
- * The fuzz targets' shared harness (fuzz/README.md). Not part of the game:
- * fuzz/build.sh links it with the game's objects, the game's main()
+ * The fuzz targets' shared harness (tests/fuzz/README.md). Not part of the game:
+ * tests/fuzz/build.sh links it with the game's objects, the game's main()
  * renamed away, under libFuzzer.
  */
 #ifndef FUZZ_WORLD_H

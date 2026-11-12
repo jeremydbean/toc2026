@@ -203,7 +203,7 @@ the dashboard stays on this computer.
 For players outside your network, forward **TCP port 9000** on your router
 to this computer and allow it in its firewall. **Never forward 9001**: the
 dashboard is not built to face the internet. Players then connect with a
-MUD client to your public address, port 9000. Read [SECURITY.md](../SECURITY.md)
+MUD client to your public address, port 9000. Read [SECURITY.md](../.github/SECURITY.md)
 first: the game protocol is plain Telnet.
 
 For a server that runs nothing else, the [hosting guide](hosting-guide.md)
