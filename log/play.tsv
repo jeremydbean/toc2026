@@ -24958,3 +24958,60 @@
 1794526875	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	say	I thought W/W is pretty strong	You say 'I thought W/W is pretty strong'	-	-
 1794526876	cmd	Alaric	57	4208	dresden.are	standing	79	0	-	inventory		You are carrying: //      the cadaver-toy //      house key	-	+
 1794526903	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	yeah it was nice lol	You say 'yeah it was nice lol'	-	-
+1794526906	state	Alaric	57	4208	dresden.are	lvl=57 hp=1272/1544 mana=2131/2875 mv=719/983 align=897 exp=252749 coin=909540609 bank=24700405438 qp=2053 prac=36 train=76 stash=93/350 remorts=3
+1794526906	cmd	Alaric	57	4208	dresden.are	standing	82	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794526912	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	monks not bad but that smite skill wrecks stuff	You say 'monks not bad but that smite skill wrecks stuff'	-	-
+1794526921	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	as long as you dont bust your weapon	You say 'as long as you dont bust your weapon'	-	-
+1794526935	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	say	If you need a hand tomorrow I'll run through some stuff. I'm off and on questing	You say 'If you need a hand tomorrow I'll run through some stuff. I'm off and on questing'	-	-
+1794526941	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	say	Least it's cheaper for remorts	You say 'Least it's cheaper for remorts'	-	-
+1794526942	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794526942	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794526946	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	ive also noticed components seem a lot more rare. like for concoct and what not	You say 'ive also noticed components seem a lot more rare. like for concoct and what not'	-	-
+1794526961	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	look	in pack	Trentlin's level 54 gear contains: //      Nothing.	-	-
+1794526965	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	say	Yeah, I haven't seen many at all. Mostly brewing comps for Monks	You say 'Yeah, I haven't seen many at all. Mostly brewing comps for Monks'	-	-
+1794526965	cmd	Trentlin	40	4208	dresden.are	standing	100	13	-	stash	put pack	You put Trentlin's level 54 gear away for safe keeping.	-	-
+1794526969	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	inventory		You are carrying: //      the cadaver-toy //      house key	-	+
+1794526972	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	well it went away that timne	You say 'well it went away that timne'	-	-
+1794526976	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	look	in pack	You do not see that here.	-	-
+1794526981	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	say	Weird	You say 'Weird'	-	-
+1794526982	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	inventory		You are carrying: //      the cadaver-toy //      house key	-	+
+1794526983	cmd	Alaric	57	4208	dresden.are	standing	84	0	-	changes		What is new, newest first: // 2026-11-12 //   The decorated towns of Hallows End and Winter Veil now arrive on time: the	-	+
+1794526992	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	i had 2 dragon claws, thats all ive found	You say 'i had 2 dragon claws, thats all ive found'	-	-
+1794527005	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	i was excited for herbal brewing lol but havent seen any	You say 'i was excited for herbal brewing lol but havent seen any'	-	-
+1794527012	cmd	Alaric	57	4208	dresden.are	standing	86	0	-	(social)		You nod.	-	-
+1794527013	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      some Black velvet robes //      (Glowing) the Shield of Dresden	-	+
+1794527019	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a *twinkling* ball of light // <worn around neck>  a Blue rimmed, white cloak	-	+
+1794527032	cmd	Alaric	57	4208	dresden.are	standing	86	1	-	say	I am trying to take only what I need to level after I realized your remort carries the trains and practices over	You say 'I am trying to take only what I need to level after I realized your remort carries the trains and practices over'	-	-
+1794527039	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	(social)		You nod.	-	-
+1794527039	cmd	Alaric	57	4208	dresden.are	standing	86	0	-	say	lol, that might already be addressing the issues	You say 'lol, that might already be addressing the issues'	-	-
+1794527045	state	Alaric	57	4208	dresden.are	lvl=57 hp=1364/1544 mana=2193/2875 mv=890/983 align=897 exp=252749 coin=909540609 bank=24700405438 qp=2053 prac=36 train=76 stash=93/350 remorts=3
+1794527045	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794527063	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	yeah hoping to have a ton of trains when i get to final remort to dump into hp	You say 'yeah hoping to have a ton of trains when i get to final remort to dump into hp'	-	-
+1794527070	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	say	Figured a W/C with a ton of mana could just wade through stuff	You say 'Figured a W/C with a ton of mana could just wade through stuff'	-	-
+1794527071	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	(social)		You nod.	-	-
+1794527079	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	well i may hang and see if you can tk me now haha	You say 'well i may hang and see if you can tk me now haha'	-	-
+1794527086	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	say	Seems like it'd be the way to go. Suffer your remorts to end up bigger	You say 'Seems like it'd be the way to go. Suffer your remorts to end up bigger'	-	-
+1794527086	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	(social)		You nod.	-	-
+1794527089	state	Alaric	57	4208	dresden.are	lvl=57 hp=1364/1544 mana=2193/2875 mv=890/983 align=897 exp=252749 coin=909540609 bank=24700405438 qp=2053 prac=36 train=76 stash=93/350 remorts=3
+1794527089	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794527094	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	say	I'm at 76 trains, so far.	You say 'I'm at 76 trains, so far.'	-	-
+1794527097	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	or the restart will make the corpse go away	You say 'or the restart will make the corpse go away'	-	-
+1794527102	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	nice	You say 'nice'	-	-
+1794527103	cmd	Alaric	57	4208	dresden.are	standing	88	0	-	say	Corpses stay	You say 'Corpses stay'	-	-
+1794527107	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	oh cool	You say 'oh cool'	-	-
+1794527114	cmd	Alaric	57	4208	dresden.are	standing	90	0	-	say	That was added maybe a week or so ago	You say 'That was added maybe a week or so ago'	-	-
+1794527134	cmd	Alaric	57	4208	dresden.are	standing	90	0	-	say	I always check the change log. There a lot of tweaking going on every other day or so	You say 'I always check the change log. There a lot of tweaking going on every other day or so'	-	-
+1794527152	session	Alaric	57	4208	dresden.are	shutdown	1951s	+0 levels	+0 exp	-279551888 copper	5 kills	0 deaths	0 quests	732 commands	8 refused	coin: loot 6p 39g 81s 12c, spent 285p 95g	spent on: heal 4p 70g, buy 281p 25g	exp: none
+1794527152	session	Trentlin	40	4208	dresden.are	shutdown	3182s	+1 levels	+2303 exp	-2053663 copper	8 kills	1 deaths	1 quests	726 commands	14 refused	coin: loot 8p 20g 64s 81c, quests 5p 37g 24s 6c, spent 15p 63g 25s 50c	spent on: heal 15p 60g, buy 3g 25s 50c	exp: skilluse +46, recall -50, kills +2318, death -11
+1794527160	area	Alaric	57	4208	dresden.are	-	dresden.are	-1	(game loop)
+1794527163	cmd	Alaric	57	4208	dresden.are	standing	90	1	-	tk	trentlin	Corpse of Trentlin is protected while its owner is out of the game: only they may take from it.	-	-
+1794527168	area	Trentlin	40	4208	dresden.are	-	dresden.are	-1	(game loop)
+1794527169	cmd	Alaric	57	4208	dresden.are	standing	90	1	-	tk	trentlin	Your mind slides off the trentlin: that is a thing TK cannot fetch.  You will have to go and get it.	-	-
+1794527173	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	noloot		Your corpse is now safe from thieves.	-	-
+1794527174	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	noloot		Your corpse may now be looted.	-	-
+1794527185	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      some Black velvet robes //      (Glowing) the Shield of Dresden	-	+
+1794527190	cmd	Alaric	57	4208	dresden.are	standing	90	0	-	say	Corpse of Trentlin is protected while its owner is out of the game: only they may take from it.	You say 'Corpse of Trentlin is protected while its owner is out of the game: only they may take from it.'	-	-
+1794527190	cmd	Alaric	57	4208	dresden.are	standing	90	0	-	say	then: Your mind slides off the trentlin: that is a thing TK cannot fetch.  You will have to go and get it.	You say 'then: Your mind slides off the trentlin: that is a thing TK cannot fetch.  You will have to go and get it.'	-	-
+1794527203	cmd	Alaric	57	4208	dresden.are	standing	92	0	-	say	Was hopeful	You say 'Was hopeful'	-	-
+1794527204	cmd	Alaric	57	4208	dresden.are	standing	92	1	-	changes		What is new, newest first: // 2026-11-12 //   The game has a new name: timesofchaos.com. Point Mudlet or any MUD client	-	+
+1794527207	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	noooooo	You say 'noooooo'	-	-

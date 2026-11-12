@@ -294618,3 +294618,91 @@ Thu Nov 12 23:41:00 2026 :: Log Alaric [4208]: say Changelog showed there was a 
 Thu Nov 12 23:41:15 2026 :: Log Alaric [4208]: say I thought W/W is pretty strong
 Thu Nov 12 23:41:16 2026 :: Log Alaric [4208]: i
 Thu Nov 12 23:41:43 2026 :: Log Trentlin [4208]: say yeah it was nice lol
+Thu Nov 12 23:41:46 2026 :: Log Alaric [4208]: score
+Thu Nov 12 23:41:52 2026 :: Log Trentlin [4208]: say monks not bad but that smite skill wrecks stuff
+Thu Nov 12 23:42:01 2026 :: Log Trentlin [4208]: say as long as you dont bust your weapon
+Thu Nov 12 23:42:13 2026 :: Log Trentlin [4208]: affects off: detect hidden, detect magic, detect invis
+Thu Nov 12 23:42:15 2026 :: Log Alaric [4208]: say If you need a hand tomorrow I'll run through some stuff. I'm off and on questing
+Thu Nov 12 23:42:21 2026 :: Log Alaric [4208]: say Least it's cheaper for remorts
+Thu Nov 12 23:42:22 2026 :: Log Alaric [4208]: who
+Thu Nov 12 23:42:22 2026 :: Log Alaric [4208]: eq
+Thu Nov 12 23:42:26 2026 :: Log Trentlin [4208]: say ive also noticed components seem a lot more rare. like for concoct and what not
+Thu Nov 12 23:42:41 2026 :: Log Trentlin [4208]: l in pack
+Thu Nov 12 23:42:45 2026 :: Log Alaric [4208]: say Yeah, I haven't seen many at all. Mostly brewing comps for Monks
+Thu Nov 12 23:42:45 2026 :: Log Trentlin [4208]: stash put pack
+Thu Nov 12 23:42:45 2026 :: Log Trentlin [4208]: stashed Trentlin's level 54 gear (vnum 3032)
+Thu Nov 12 23:42:49 2026 :: Log Alaric [4208]: i
+Thu Nov 12 23:42:52 2026 :: Log Trentlin [4208]: say well it went away that timne
+Thu Nov 12 23:42:56 2026 :: Log Trentlin [4208]: l in pack
+Thu Nov 12 23:43:01 2026 :: Log Alaric [4208]: say Weird
+Thu Nov 12 23:43:02 2026 :: Log Alaric [4208]: i
+Thu Nov 12 23:43:03 2026 :: Log Alaric [4208]: changes
+Thu Nov 12 23:43:12 2026 :: Log Trentlin [4208]: say i had 2 dragon claws, thats all ive found
+Thu Nov 12 23:43:25 2026 :: Log Trentlin [4208]: say i was excited for herbal brewing lol but havent seen any
+Thu Nov 12 23:43:32 2026 :: Log Alaric [4208]: (social) nod
+Thu Nov 12 23:43:33 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:43:39 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:43:48 2026 :: ANNOUNCE: The game restarts for an update in one minute. Finish your fight; everyone is saved first.
+Thu Nov 12 23:43:52 2026 :: Log Alaric [4208]: say I am trying to take only what I need to level after I realized your remort carries the trains and practices over
+Thu Nov 12 23:43:59 2026 :: Log Trentlin [4208]: (social) nod
+Thu Nov 12 23:43:59 2026 :: Log Alaric [4208]: say lol, that might already be addressing the issues
+Thu Nov 12 23:44:05 2026 :: Log Alaric [4208]: sc
+Thu Nov 12 23:44:23 2026 :: Log Trentlin [4208]: say yeah hoping to have a ton of trains when i get to final remort to dump into hp
+Thu Nov 12 23:44:30 2026 :: Log Alaric [4208]: say Figured a W/C with a ton of mana could just wade through stuff
+Thu Nov 12 23:44:31 2026 :: Log Alaric [4208]: (social) nod
+Thu Nov 12 23:44:39 2026 :: Log Trentlin [4208]: say well i may hang and see if you can tk me now haha
+Thu Nov 12 23:44:46 2026 :: Log Alaric [4208]: say Seems like it'd be the way to go. Suffer your remorts to end up bigger
+Thu Nov 12 23:44:46 2026 :: Log Alaric [4208]: (social) nod
+Thu Nov 12 23:44:49 2026 :: Log Alaric [4208]: sc
+Thu Nov 12 23:44:54 2026 :: Log Alaric [4208]: say I'm at 76 trains, so far.
+Thu Nov 12 23:44:57 2026 :: Log Trentlin [4208]: say or the restart will make the corpse go away
+Thu Nov 12 23:45:02 2026 :: Log Trentlin [4208]: say nice
+Thu Nov 12 23:45:03 2026 :: Log Alaric [4208]: say Corpses stay
+Thu Nov 12 23:45:07 2026 :: Log Trentlin [4208]: say oh cool
+Thu Nov 12 23:45:14 2026 :: Log Alaric [4208]: say That was added maybe a week or so ago
+Thu Nov 12 23:45:34 2026 :: Log Alaric [4208]: say I always check the change log. There a lot of tweaking going on every other day or so
+Thu Nov 12 23:45:38 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Thu Nov 12 23:45:42 2026 :: Log WebAdmin: fsave
+Thu Nov 12 23:45:48 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Thu Nov 12 23:45:52 2026 :: Received signal 15; saving players and shutting down.
+Thu Nov 12 23:45:52 2026 :: Closing link to Alaric.
+Thu Nov 12 23:45:52 2026 :: Closing link to Trentlin.
+Thu Nov 12 23:45:52 2026 :: Normal termination of game.
+Thu Nov 12 23:45:52 2026 ::  INIT OK 
+Thu Nov 12 23:45:52 2026 :: walkto_load: 157 destinations.
+Thu Nov 12 23:45:52 2026 :: changes_load: 317 entries.
+Thu Nov 12 23:45:52 2026 :: Hermie: the restart put 2 mortals off; she keeps the Oak Tree Square (2401) for 240 minutes, while any mortal plays.
+Thu Nov 12 23:45:52 2026 :: Serials: 962 character files read, 4 with a serial.
+Thu Nov 12 23:45:52 2026 :: Passwords: SHA-512 crypt self-test passed.
+Thu Nov 12 23:45:52 2026 :: Recovery ledger: 386 records (0 from before the check), 3 requests, 8 players.
+Thu Nov 12 23:45:52 2026 :: Corpse keeper: Trentlin's corpse c6aef57d8014fe2 made again in room 15009 with 0 objects.
+Thu Nov 12 23:45:52 2026 :: Corpse keeper: Trentlin's corpse c6af06a99014a1f made again in room 30443 with 2 objects.
+Thu Nov 12 23:45:52 2026 :: Corpse keeper: Trentlin's corpse c6af6495b017e2f made again in room 30489 with 55 objects.
+Thu Nov 12 23:45:52 2026 :: Corpse keeper: 3 corpses made again, 0 set aside.
+Thu Nov 12 23:45:52 2026 :: ROM is ready to rock on port 9000.
+Thu Nov 12 23:45:52 2026 :: Treasure goblin: appeared.
+Thu Nov 12 23:45:52 2026 :: Automated backup started.
+Thu Nov 12 23:45:52 2026 :: Daily backup started.
+Thu Nov 12 23:45:53 2026 :: Automated backup complete.
+Thu Nov 12 23:45:54 2026 :: Daily backup complete.
+Thu Nov 12 23:45:58 2026 :: Sock.sinaddr:  208.126.22.104
+Thu Nov 12 23:45:58 2026 :: Loading Alaric's playerfile
+Thu Nov 12 23:45:59 2026 :: Loading Alaric's playerfile
+Thu Nov 12 23:45:59 2026 :: Alaric@208.126.22.104 has connected.
+Thu Nov 12 23:46:00 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 0
+Thu Nov 12 23:46:01 2026 :: Hermie: at the Oak Tree Square (2401) for the restart, 1 mortal playing; 239 minutes of the window left.
+Thu Nov 12 23:46:03 2026 :: Log Alaric [4208]: tk trentlin
+Thu Nov 12 23:46:05 2026 :: Sock.sinaddr:  24.2.118.125
+Thu Nov 12 23:46:05 2026 :: Loading Trentlin's playerfile
+Thu Nov 12 23:46:07 2026 :: Loading Trentlin's playerfile
+Thu Nov 12 23:46:07 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Thu Nov 12 23:46:08 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 0
+Thu Nov 12 23:46:09 2026 :: Log Alaric [4208]: tk trentlin
+Thu Nov 12 23:46:13 2026 :: Log Trentlin [4208]: noloot
+Thu Nov 12 23:46:14 2026 :: Log Trentlin [4208]: noloot
+Thu Nov 12 23:46:25 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:46:30 2026 :: Log Alaric [4208]: say Corpse of Trentlin is protected while its owner is out of the game: only they may take from it.
+Thu Nov 12 23:46:30 2026 :: Log Alaric [4208]: say then: Your mind slides off the trentlin: that is a thing TK cannot fetch.  You will have to go and get it.
+Thu Nov 12 23:46:43 2026 :: Log Alaric [4208]: say Was hopeful
+Thu Nov 12 23:46:44 2026 :: Log Alaric [4208]: change
+Thu Nov 12 23:46:47 2026 :: Log Trentlin [4208]: say noooooo
