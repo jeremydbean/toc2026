@@ -1056,7 +1056,41 @@ def _oracle_world_graph(rooms: Dict[int, Any], directions: Dict[str, Any]):
     return graph
 
 
-def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] = None) -> str:
+def _oracle_wants_bis(ql: str, cls: str, race: str) -> bool:
+    """Whether the context carries the gear finder's best-in-slot."""
+    return (cls in CLASS_WEIGHTS and race in RACE_FLAGS
+            and (any(k in ql for k in _ORACLE_GEAR_HINTS) or bool(_oracle_slots_named(ql))))
+
+
+def _oracle_wants_top(ql: str, has_profile: bool) -> bool:
+    """Whether the context carries the game's strongest weapons."""
+    return (any(h in ql for h in _ORACLE_TOP_HINTS)
+            and any(w in ql for w in _ORACLE_WEAPON_WORDS)
+            and (any(w in ql for w in _ORACLE_WORLD_HINTS) or not has_profile))
+
+
+def _oracle_wants_leveling(ql: str) -> bool:
+    """Whether the context carries the leveling guide."""
+    return any(h in ql for h in _ORACLE_LEVEL_HINTS)
+
+
+def _oracle_wants_corpse(ql: str) -> bool:
+    """Whether the question is about the asker's own death or corpse."""
+    return any(h in ql for h in _ORACLE_CORPSE_HINTS) or bool(re.search(r"\bdie\b", ql))
+
+
+def _oracle_gear_season() -> str:
+    """The holidays whose items the gear finder offers today (gear_drops):
+    a cached gear answer from one season is not another's."""
+    today = _gear_today()
+    on = [name for name, start, end, *_rest in
+          list(gear_drops.EVENT_BOSSES.values()) + list(gear_drops.HOLIDAY_TREATS.values())
+          if gear_drops.in_window(today, start, end)]
+    return ",".join(sorted(on)) or "none"
+
+
+def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] = None,
+                    shared: bool = False) -> str:
     """Build live grounding for one question: the asker's level, class and worn
     gear, and -- for gear questions -- the obtainable best-in-slot for their
     class and level, with where it drops. Runs in the poller's thread; the
@@ -1065,10 +1099,18 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
     state is what the game sends with the question (oracle.parse_state): the
     room the asker stands in and their Hyrule progress. Hyrule questions, and
     any from somebody standing in Hyrule, lead with hyrule_oracle's guide,
-    progress and routes, which get the room the rest would crowd out."""
+    progress and routes, which get the room the rest would crowd out.
+
+    shared is for an answer the cache will hand to others (_oracle_provider
+    asks for it only with a cache key): nothing of this character but what
+    the key holds -- level, class, race and guild -- goes in. Not their name,
+    not what they wear, no live lookup, no corpse, no Hyrule progress: a
+    second player with the same key would be answered from it."""
     # Without a readable player file there is nothing personal to say, but
     # the help, the drop tables and the live world still answer the question.
     prof = parse_player_file(player) or {}
+    if shared:
+        state = {}
 
     cls = str(prof.get("class_name", "")).lower()
     race = str(prof.get("race", "")).lower()
@@ -1082,8 +1124,12 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
     mobs = getattr(parser, "mobiles", None) or getattr(parser, "mobs", {}) or {}
     rooms = getattr(parser, "rooms", {}) or {}
 
-    lines = (["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
-             if prof else [])
+    if not prof:
+        lines = []
+    elif shared:
+        lines = ["Supplicant: a level %d %s %s." % (lvl, race or "?", cls or "?")]
+    else:
+        lines = ["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
     ql = (question or "").lower()
 
     # Who is connected is asked of the game itself (the "who" lookup below),
@@ -1096,7 +1142,7 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
         name = getattr(obj, "short_desc", None) or ("item %s" % it.get("vnum"))
         slot = WEAR_SLOT_NAMES.get(it.get("wear", -1), "worn")
         worn.append("%s: %s (lvl %s)" % (slot, name, it.get("level", "?")))
-    if prof:
+    if prof and not shared:
         lines.append("Currently worn -- " + ("; ".join(worn[:20]) if worn
                                               else "nothing of note") + ".")
 
@@ -1140,6 +1186,8 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
         reqs.append(("obj", " ".join(_oracle_correct(item.split(), "obj"))))
     if any(h in ql for h in _ORACLE_WHO_HINTS):
         reqs.append(("who", "all"))
+    if shared:
+        reqs = []       # a live finding is never a cached answer's (no key is given)
     live_rooms: list = []
     if reqs:
         for (kind, _arg), found in zip(reqs, _oracle_live_lookup(reqs, asker=player)):
@@ -1191,16 +1239,14 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
     except Exception:
         pass
 
-    if prof and (any(h in ql for h in _ORACLE_CORPSE_HINTS)
-                 or re.search(r"\bdie\b", ql)):
+    if prof and not shared and _oracle_wants_corpse(ql):
         try:
             lines += _oracle_corpse_lines(player, rooms)
         except Exception:
             pass
 
     slots_named = _oracle_slots_named(ql)
-    if cls in CLASS_WEIGHTS and race in RACE_FLAGS \
-            and (any(k in ql for k in _ORACLE_GEAR_HINTS) or slots_named):
+    if _oracle_wants_bis(ql, cls, race):
         try:
             best = asyncio.run(get_best_gear(
                 class_name=cls, race_name=race, level=lvl, limit=1))
@@ -1251,9 +1297,7 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
 
     # "The most powerful weapon in the game" is not a best-in-slot question --
     # it has no level -- so answer it at the mortal cap, from the same finder.
-    if any(h in ql for h in _ORACLE_TOP_HINTS) \
-            and any(w in ql for w in _ORACLE_WEAPON_WORDS) \
-            and (any(w in ql for w in _ORACLE_WORLD_HINTS) or not prof):
+    if _oracle_wants_top(ql, bool(prof)):
         c = cls if cls in CLASS_WEIGHTS else "warrior"
         r = race if race in RACE_FLAGS else "human"
         try:
@@ -1315,7 +1359,7 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
                     r.get("rooms_away", "?"), r.get("commands", "")))
 
     # The website's Leveling guide: best mobs for the asker's level.
-    if any(h in ql for h in _ORACLE_LEVEL_HINTS):
+    if _oracle_wants_leveling(ql):
         try:
             lv = asyncio.run(get_leveling(level=lvl, limit=5))
         except Exception:
@@ -1367,13 +1411,25 @@ def _oracle_cache_key(player: str, question: str):
     """A cache key for a question whose answer depends only on class, race and
     level -- "best sword for my level", "how do I remort", "where should I
     level" -- or None for anything about the asker's own current state, a named
-    player, or a live "where is / who has" lookup, which must be fresh."""
+    player, a live "where is / who has" lookup, or their own death, which must
+    be fresh.
+
+    The answer given under a key is built from the shared context alone
+    (_oracle_context(shared=True)), so the key holds everything that context
+    reads of the asker -- class, race, level, guild; their ABILITIES are added
+    by oracle.poll_once -- and of the world that changes between deploys: the
+    balance feed's version when the answer quotes players' kills (the leveling
+    guide, and the gear finder's drop counts), and the holidays on when it
+    quotes the gear finder. A new row in log/progress.tsv retires a leveling
+    answer; a question that reads none of it keeps its key."""
     ql = " ".join(re.findall(r"[a-z0-9']+", (question or "").lower()))
     if not ql:
         return None
+    raw = (question or "").lower()
     if any(h in ql for h in _ORACLE_PERSONAL_HINTS) or _oracle_live_keyword(question) \
             or _oracle_wear_question(question)[0] \
-            or any(h in ql for h in _ORACLE_WHO_HINTS):
+            or any(h in ql for h in _ORACLE_WHO_HINTS) \
+            or _oracle_wants_corpse(raw):
         return None
     for tok in re.findall(r"[A-Za-z]{3,12}", question or ""):
         cap = tok.capitalize()
@@ -1388,20 +1444,38 @@ def _oracle_cache_key(player: str, question: str):
     # The guild too: it decides what a character may learn and from whom.
     # The asker's ABILITIES, which the game sends with the question, are
     # folded in by oracle.poll_once, the one place that has them.
-    return "|".join((ql, str(prof.get("class_name", "")).lower(),
-                     str(prof.get("race", "")).lower(), str(prof.get("level", "")),
-                     str(prof.get("guild_name", "")).lower()))
+    cls = str(prof.get("class_name", "")).lower()
+    race = str(prof.get("race", "")).lower()
+    key = "|".join((ql, cls, race, str(prof.get("level", "")),
+                    str(prof.get("guild_name", "")).lower()))
+    # What the shared context reads that changes while the game runs. The
+    # conditions are the context's own (_oracle_wants_*), on the same text.
+    bis = _oracle_wants_bis(raw, cls, race)
+    top = _oracle_wants_top(raw, bool(prof))
+    if bis or top or _oracle_wants_leveling(raw):
+        key += "|balance:" + balance.version(PROGRESS_LOG)
+    if bis or top:
+        key += "|season:" + _oracle_gear_season()
+    return key
 
 
 def _oracle_provider(player: str, question: str, state: Optional[Dict[str, Any]] = None):
     """What the poller hands each question: (live grounding, cache key). A
     question about Hyrule, or from somebody standing in it, depends on where
-    they stand and what they carry, so it is never cached."""
+    they stand and what they carry, so it is never cached.
+
+    A question with a key gets the shared context -- nothing of the asker but
+    what the key holds -- and gets it lazily: oracle.consult builds it only
+    when the cache has no answer, so a hit costs no gear finder, leveling
+    guide or help search. A question without one gets the asker's own
+    context, now."""
     key = _oracle_cache_key(player, question)
     if hyrule_oracle.is_hyrule_question(question) \
             or hyrule_oracle.in_hyrule(int((state or {}).get("room") or 0)):
         key = None
-    return _oracle_context(player, question, state), key
+    if key is None:
+        return _oracle_context(player, question, state), None
+    return (lambda: _oracle_context(player, question, state, shared=True)), key
 
 
 async def _oracle_poll_loop():
@@ -4091,6 +4165,40 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
     return map_result
 
 
+_STAT_FILTER_RE = re.compile(r"^\s*([a-z][a-z _]*?)\s*(>=|<=|==|!=|>|<|=)\s*([+-]?\d{1,10})\s*$")
+
+
+def _parse_stat_filter(text: Optional[str]) -> Optional[Tuple[str, int]]:
+    """stat_filter as (stat words, threshold) -- "hitroll>5", "hit points>20",
+    "save_vs_spell>-3" -- or None when there is none. Checked once, before
+    the objects are walked: a filter that cannot be read used to be dropped
+    without a word, and every object came back as though it had matched
+    (review, 2026-11-12). Only ">" is supported, and the words must name
+    part of an apply location (APPLY_LOCATIONS), as the match below reads
+    them. Anything else is a 400 that says why."""
+    if text is None or not text.strip():
+        return None
+    if len(text) > 64:
+        raise HTTPException(status_code=400, detail="stat_filter is too long (64 characters at most)")
+    found = _STAT_FILTER_RE.match(text.lower())
+    if not found:
+        raise HTTPException(status_code=400, detail=(
+            "stat_filter must be <stat>><number>, e.g. hitroll>5"))
+    words, op, number = found.groups()
+    if op != ">":
+        raise HTTPException(status_code=400, detail=(
+            "stat_filter supports only '>' (e.g. hitroll>5), not '%s'" % op))
+    words = " ".join(words.replace("_", " ").split())
+    if not any(words in name.lower() for name in APPLY_LOCATIONS.values()):
+        raise HTTPException(status_code=400, detail=(
+            "stat_filter names no stat an object can raise: %s (try one of: %s)"
+            % (words, ", ".join(sorted(set(APPLY_LOCATIONS.values()))))))
+    value = int(number)
+    if abs(value) > 1_000_000_000:
+        raise HTTPException(status_code=400, detail="stat_filter's number is out of range")
+    return words, value
+
+
 @app.get("/api/objects")
 async def get_objects(
     response: Response,
@@ -4106,6 +4214,7 @@ async def get_objects(
 ) -> list:
     limit = max(1, min(limit, 50000))
     offset = max(0, offset)
+    stat_wanted = _parse_stat_filter(stat_filter)
     result = []
     total = 0
     
@@ -4150,22 +4259,21 @@ async def get_objects(
             if not all(rf in all_obj_flags for rf in req_flags):
                 continue
         
-        # Stat filter (e.g. "hitroll>5")
-        if stat_filter:
-            try:
-                if '>' in stat_filter:
-                    s_name, s_val = stat_filter.split('>')
-                    s_val = int(s_val)
-                    found_stat = False
-                    for aff in obj.affects:
-                        loc_name = APPLY_LOCATIONS.get(aff.get('location', 0), '').lower()
-                        if s_name.lower() in loc_name and aff.get('modifier', 0) > s_val:
-                            found_stat = True
-                            break
-                    if not found_stat:
-                        continue
-            except:
-                pass
+        # Stat filter (e.g. "hitroll>5"), read once above.
+        if stat_wanted is not None:
+            s_name, s_val = stat_wanted
+            found_stat = False
+            for aff in obj.affects:
+                loc_name = APPLY_LOCATIONS.get(aff.get('location', 0), '').lower()
+                try:
+                    modifier = int(aff.get('modifier', 0))
+                except (TypeError, ValueError):
+                    continue
+                if s_name in loc_name and modifier > s_val:
+                    found_stat = True
+                    break
+            if not found_stat:
+                continue
 
         total += 1
         if total <= offset or len(result) >= limit:
@@ -4631,8 +4739,10 @@ async def get_best_gear(
     # entry for each even when nothing fits -- so a blank slot reads as
     # "nothing at this level" rather than as a slot the finder forgot.
     best_items: dict[str, list] = {key: [] for key, _label in GEAR_FINDER_SLOTS}
+    # The feed is parsed off the event loop (balance.load_async): a full
+    # parse of a long one takes a while, and other routes answer meanwhile.
     try:
-        seen_counts = balance.seen_drops(PROGRESS_LOG)
+        seen_counts = balance.seen_drops(await balance.load_async(PROGRESS_LOG))
     except Exception:
         seen_counts = {}
     # What the game makes when something dies, which no reset shows: a
@@ -4902,11 +5012,13 @@ async def get_leveling(
     # and their flee and death rate replace the model's; xp per kill
     # stays fight.c's, for this level. The rest rank by the model,
     # calibrated by the measured ones (below). `seen` is the all-levels
-    # figure the row reports as "observed".
+    # figure the row reports as "observed". Loaded once, off the event loop
+    # (balance.load_async), and every mobile below is read from that load.
     try:
-        seen = balance.load(PROGRESS_LOG)["mobs"]
+        bal = await balance.load_async(PROGRESS_LOG)
     except Exception:
-        seen = {}
+        bal = {"mobs": {}, "summary": None}
+    seen = bal.get("mobs") or {}
 
     # Who is ordinary prey. A Hyrule guardian never is: its chamber asks
     # for a tool from an earlier dungeon and the dungeon for the piece
@@ -4962,7 +5074,7 @@ async def get_leveling(
         # Measured only from players near this level: a level 1 and a
         # level 20 do not take the same time over a goblin.
         try:
-            close = balance.near(PROGRESS_LOG, int(mob.vnum), level)
+            close = balance.near(bal, int(mob.vnum), level)
         except Exception:
             close = None
         modelled_time = kill_time

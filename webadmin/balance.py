@@ -58,8 +58,11 @@ Columns (tab-separated; the first eleven are every row's):
 
 from __future__ import annotations
 
+import asyncio
 import os
+import threading
 from collections import Counter, defaultdict
+from itertools import chain, islice
 from pathlib import Path
 from statistics import median
 from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
@@ -141,49 +144,70 @@ def _reward(f: List[str], legacy: bool) -> Dict[str, Any]:
     }
 
 
-def records(text: str, since: float = 0.0) -> Dict[str, Any]:
-    """Kills, encounters and the rows that hang on them."""
-    kills: Dict[str, Dict[str, Any]] = {}
-    rewards: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
-    drops: Dict[str, Dict[str, Any]] = {}
-    loots: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
-    engages: Dict[str, Dict[str, Any]] = {}
-    outcomes: Dict[str, str] = {}
-    legacy: List[Dict[str, Any]] = []
-    events: List[Dict[str, Any]] = []      # flee and death, keyed or not
-    legacy_drops: List[Dict[str, Any]] = []
-    for f in read_rows(text, since):
+class _Fold:
+    """records() as a left fold over rows, so the rows of a growing file
+    can be fed a piece at a time (the dashboard's cache, below) and come
+    to exactly what one pass over the whole text gives.
+
+    A list hanging on a kill (its rewards, its loot) is replaced, never
+    appended to, so a figure already built from it is never changed under
+    a reader. `touched` collects the kill ids whose record a row may have
+    changed; `moved` says a row rewrote a kill or an encounter already
+    seen, which only a rebuild from the start reproduces exactly."""
+
+    def __init__(self) -> None:
+        self.kills: Dict[str, Dict[str, Any]] = {}
+        self.rewards: Dict[str, List[Dict[str, Any]]] = {}
+        self.drops: Dict[str, Dict[str, Any]] = {}
+        self.loots: Dict[str, List[Dict[str, Any]]] = {}
+        self.engages: Dict[str, Dict[str, Any]] = {}
+        self.outcomes: Dict[str, str] = {}
+        self.legacy: List[Dict[str, Any]] = []
+        self.events: List[Dict[str, Any]] = []      # flee and death, keyed or not
+        self.legacy_drops: List[Dict[str, Any]] = []
+        self.touched: set = set()
+        self.moved = False
+
+    def feed(self, f: List[str]) -> None:
         kind, vnum = f[1], _int(f[8], -1)
         if vnum < 0:
-            continue
+            return
         mob = {"vnum": vnum, "mob_level": _int(f[9]), "area": f[10]}
         if kind == "engage" and len(f) > 19:
-            engages[f[11]] = dict(mob, epoch=_int(f[0]), who=f[2], level=_int(f[3]),
-                                  cls=_int(f[4]), players=_int(f[17], 1), pets=_int(f[18]),
-                                  gear=_int(f[19], -1))
+            if f[11] in self.engages:
+                self.moved = True
+            self.engages[f[11]] = dict(mob, epoch=_int(f[0]), who=f[2], level=_int(f[3]),
+                                       cls=_int(f[4]), players=_int(f[17], 1),
+                                       pets=_int(f[18]), gear=_int(f[19], -1))
         elif kind == "slain" and len(f) > 21:
-            kills[f[11]] = dict(mob, epoch=_int(f[0]), ms=_int(f[12], -1),
-                                instant=f[13] == "instant", by_pet=f[14] == "pet",
-                                players=max(1, _int(f[15], 1)), pets=_int(f[16]),
-                                foe_hp=_int(f[17]), taken=_int(f[18]), by_pets=_int(f[19]),
-                                dealt=_int(f[20]), coin=_int(f[21]), who=f[2],
-                                rounds=_int(f[22], -1) if len(f) > 22 else -1,
-                                swings=_int(f[23]) if len(f) > 25 else 0,
-                                landed=_int(f[24]) if len(f) > 25 else 0,
-                                by_skills=_int(f[25]) if len(f) > 25 else 0,
-                                level=_int(f[3]), cls=_int(f[4]))
-            outcomes[f[11]] = "kill"
+            old = self.kills.get(f[11])
+            if old is not None and old["vnum"] != vnum:
+                self.moved = True
+            self.kills[f[11]] = dict(mob, epoch=_int(f[0]), ms=_int(f[12], -1),
+                                     instant=f[13] == "instant", by_pet=f[14] == "pet",
+                                     players=max(1, _int(f[15], 1)), pets=_int(f[16]),
+                                     foe_hp=_int(f[17]), taken=_int(f[18]),
+                                     by_pets=_int(f[19]), dealt=_int(f[20]), coin=_int(f[21]),
+                                     who=f[2],
+                                     rounds=_int(f[22], -1) if len(f) > 22 else -1,
+                                     swings=_int(f[23]) if len(f) > 25 else 0,
+                                     landed=_int(f[24]) if len(f) > 25 else 0,
+                                     by_skills=_int(f[25]) if len(f) > 25 else 0,
+                                     level=_int(f[3]), cls=_int(f[4]))
+            self.outcomes[f[11]] = "kill"
+            self.touched.add(f[11])
         elif kind == "reward" and len(f) > 25:
-            rewards[f[25]].append(dict(_reward(f, False), **mob))
+            self.rewards[f[25]] = self.rewards.get(f[25], []) + [dict(_reward(f, False), **mob)]
+            self.touched.add(f[25])
         elif kind == "kill" and len(f) >= 16:
-            legacy.append(dict(_reward(f, True), **mob))
+            self.legacy.append(dict(_reward(f, True), **mob))
         elif kind in ("flee", "death"):
             enc = f[14] if len(f) > 14 else None
-            events.append(dict(mob, kind=kind, who=f[2], level=_int(f[3]), cls=_int(f[4]),
-                               epoch=_int(f[0]), enc=enc,
-                               foe_pct=_int(f[11], -1) if len(f) > 11 else -1))
+            self.events.append(dict(mob, kind=kind, who=f[2], level=_int(f[3]), cls=_int(f[4]),
+                                    epoch=_int(f[0]), enc=enc,
+                                    foe_pct=_int(f[11], -1) if len(f) > 11 else -1))
             if enc and enc != "-":
-                outcomes.setdefault(enc, kind)
+                self.outcomes.setdefault(enc, kind)
         elif kind == "drop":
             if len(f) > 15 and "-" in f[11]:
                 items = []
@@ -192,53 +216,80 @@ def records(text: str, since: float = 0.0) -> Dict[str, Any]:
                         v, _, src = tok.partition(":")
                         if v.isdigit():
                             items.append((int(v), src or "carried"))
-                drops[f[11]] = {"count": _int(f[12]), "worth": _int(f[13]),
-                                "top": _int(f[14]), "items": items}
+                self.drops[f[11]] = {"count": _int(f[12]), "worth": _int(f[13]),
+                                     "top": _int(f[14]), "items": items}
+                self.touched.add(f[11])
             elif len(f) > 14:
-                legacy_drops.append(dict(mob, count=_int(f[11]), worth=_int(f[12]),
-                                         items=[(int(v), "carried") for v in f[14].split(",")
-                                                if v.isdigit()]))
+                self.legacy_drops.append(dict(mob, count=_int(f[11]), worth=_int(f[12]),
+                                              items=[(int(v), "carried")
+                                                     for v in f[14].split(",") if v.isdigit()]))
         elif kind == "loot" and len(f) > 17:
-            loots[f[11]].append({"coin": f[12] == "coin", "vnum": _int(f[13]),
-                                 "worth": _int(f[14]), "source": f[16], "who": f[2]})
-    return {"kills": kills, "rewards": rewards, "drops": drops, "loots": loots,
-            "engages": engages, "outcomes": outcomes, "legacy": legacy,
-            "events": events, "legacy_drops": legacy_drops}
+            self.loots[f[11]] = self.loots.get(f[11], []) + [
+                {"coin": f[12] == "coin", "vnum": _int(f[13]), "worth": _int(f[14]),
+                 "source": f[16], "who": f[2]}]
+            self.touched.add(f[11])
+
+    def view(self) -> Dict[str, Any]:
+        """The records as records() returns them, in containers of their
+        own, so feeding more rows never changes a view already given."""
+        return {"kills": dict(self.kills), "rewards": defaultdict(list, self.rewards),
+                "drops": dict(self.drops), "loots": defaultdict(list, self.loots),
+                "engages": dict(self.engages), "outcomes": dict(self.outcomes),
+                "legacy": list(self.legacy), "events": list(self.events),
+                "legacy_drops": list(self.legacy_drops)}
+
+
+def records(text: str, since: float = 0.0) -> Dict[str, Any]:
+    """Kills, encounters and the rows that hang on them."""
+    fold = _Fold()
+    for f in read_rows(text, since):
+        fold.feed(f)
+    return fold.view()
+
+
+_NO_DROP = {"count": 0, "worth": 0, "items": []}
+
+
+def _kill_record(kid: str, k: Dict[str, Any], rec: Dict[str, Any]) -> Dict[str, Any]:
+    """One kill: its slain row with its rewards, drop and loot joined."""
+    rw = rec["rewards"].get(kid, [])
+    drop = rec["drops"].get(kid, _NO_DROP)
+    loot = rec["loots"].get(kid, [])
+    return dict(
+        k, kill=kid, weight=1.0, legacy=False, rewards=rw,
+        recipients=[r["who"] for r in rw] or [k["who"]],
+        levels=[r["level"] for r in rw] or [k["level"]],
+        classes=[r["class"] for r in rw] or [k["cls"]],
+        gear=[r["gear"] for r in rw],
+        solo=k["players"] <= 1 and k["pets"] == 0,
+        multi=any(r["foes"] > 1 for r in rw),
+        gen_items=drop["count"], gen_worth=drop["worth"], gen_vnums=drop["items"],
+        loot_coin=sum(x["worth"] for x in loot if x["coin"]),
+        loot_items=sum(1 for x in loot if not x["coin"]),
+        loot_worth=sum(x["worth"] for x in loot if not x["coin"]),
+        looted=bool(loot),
+    )
+
+
+def _legacy_record(r: Dict[str, Any]) -> Dict[str, Any]:
+    """A legacy kill row, at a weight of 1/members."""
+    return dict(
+        vnum=r["vnum"], mob_level=r["mob_level"], area=r["area"], epoch=r["epoch"],
+        ms=r["ms"], instant=r["ms"] < 0, by_pet=False, players=r["members"], pets=0,
+        foe_hp=r["foe_hp"], taken=0, by_pets=0, dealt=r["lost"] if r["members"] == 1 else 0,
+        coin=r["coin"], who=r["who"], level=r["level"], cls=r["class"],
+        kill=None, weight=1.0 / r["members"], legacy=True, rewards=[r],
+        recipients=[r["who"]], levels=[r["level"]], classes=[r["class"]], gear=[],
+        solo=r["members"] == 1, multi=False, gen_items=0, gen_worth=0, gen_vnums=[],
+        loot_coin=0, loot_items=0, loot_worth=0, looted=None,
+    )
 
 
 def kill_records(rec: Dict[str, Any]) -> List[Dict[str, Any]]:
     """One record per kill: the slain row with its rewards, drop and loot
     joined, then legacy kill rows at a weight of 1/members each."""
-    out = []
-    for kid, k in rec["kills"].items():
-        rw = rec["rewards"].get(kid, [])
-        drop = rec["drops"].get(kid, {"count": 0, "worth": 0, "items": []})
-        loot = rec["loots"].get(kid, [])
-        out.append(dict(
-            k, kill=kid, weight=1.0, legacy=False, rewards=rw,
-            recipients=[r["who"] for r in rw] or [k["who"]],
-            levels=[r["level"] for r in rw] or [k["level"]],
-            classes=[r["class"] for r in rw] or [k["cls"]],
-            gear=[r["gear"] for r in rw],
-            solo=k["players"] <= 1 and k["pets"] == 0,
-            multi=any(r["foes"] > 1 for r in rw),
-            gen_items=drop["count"], gen_worth=drop["worth"], gen_vnums=drop["items"],
-            loot_coin=sum(x["worth"] for x in loot if x["coin"]),
-            loot_items=sum(1 for x in loot if not x["coin"]),
-            loot_worth=sum(x["worth"] for x in loot if not x["coin"]),
-            looted=bool(loot),
-        ))
-    for r in rec["legacy"]:
-        out.append(dict(
-            vnum=r["vnum"], mob_level=r["mob_level"], area=r["area"], epoch=r["epoch"],
-            ms=r["ms"], instant=r["ms"] < 0, by_pet=False, players=r["members"], pets=0,
-            foe_hp=r["foe_hp"], taken=0, by_pets=0, dealt=r["lost"] if r["members"] == 1 else 0,
-            coin=r["coin"], who=r["who"], level=r["level"], cls=r["class"],
-            kill=None, weight=1.0 / r["members"], legacy=True, rewards=[r],
-            recipients=[r["who"]], levels=[r["level"]], classes=[r["class"]], gear=[],
-            solo=r["members"] == 1, multi=False, gen_items=0, gen_worth=0, gen_vnums=[],
-            loot_coin=0, loot_items=0, loot_worth=0, looted=None,
-        ))
+    out = [_kill_record(kid, k, rec) for kid, k in rec["kills"].items()]
+    out += [_legacy_record(r) for r in rec["legacy"]]
     return out
 
 
@@ -409,16 +460,29 @@ def compare(summary: Dict[str, Any]) -> Dict[str, Any]:
     cyc = summary["cycles"]
     mobs: Dict[int, Dict[str, Any]] = {}
     for vnum, data in summary["by_vnum"].items():
-        level, area = data.get("meta", (0, "-"))
-        m = figures(data["kills"], data["events"], cyc, summary["unresolved"].get(vnum, 0))
-        m.update(level=level, area=area, vnum=vnum)
-        m["slices"] = _slices(data["kills"], cyc)
-        dropped: Counter = Counter()
-        for k in data["kills"]:
-            for v, _src in k["gen_vnums"]:
-                dropped[v] += 1
-        m["dropped"] = dict(dropped.most_common(5))
-        mobs[vnum] = m
+        mobs[vnum] = _mob_entry(vnum, data, cyc, summary["unresolved"].get(vnum, 0))
+    return {"mobs": mobs, "bands": _band_pass(mobs), "seen": summary["seen"],
+            "summary": summary}
+
+
+def _mob_entry(vnum: int, data: Dict[str, Any], cyc: Dict[Tuple[str, int], float],
+               unresolved: int) -> Dict[str, Any]:
+    """One mobile's figures and slices, before its band is read."""
+    level, area = data.get("meta", (0, "-"))
+    m = figures(data["kills"], data["events"], cyc, unresolved)
+    m.update(level=level, area=area, vnum=vnum)
+    m["slices"] = _slices(data["kills"], cyc)
+    dropped: Counter = Counter()
+    for k in data["kills"]:
+        for v, _src in k["gen_vnums"]:
+            dropped[v] += 1
+    m["dropped"] = dict(dropped.most_common(5))
+    return m
+
+
+def _band_pass(mobs: Dict[int, Dict[str, Any]]) -> Dict[Tuple[int, int], Dict[str, Any]]:
+    """Each band's medians, and every mobile's ratio and flags against its
+    band (written into the mobile's figures)."""
     bands: Dict[Tuple[int, int], Dict[str, Any]] = {}
     for vnum, m in mobs.items():
         b = bands.setdefault(band_of(m["level"] or 1), {"mobs": [], "trusted": []})
@@ -452,7 +516,19 @@ def compare(summary: Dict[str, Any]) -> Dict[str, Any]:
             m["flags"] = flags
         b["equal"] = equal
         b["gap"] = len(equal) < EQUAL_CHOICES_WANTED
-    return {"mobs": mobs, "bands": bands, "seen": summary["seen"], "summary": summary}
+    return bands
+
+
+def band_choices(b: Dict[str, Any],
+                 reachable: Optional[Callable[[int], bool]] = None) -> Tuple[List[int], bool]:
+    """A band's equal choices a player can actually take -- reachable
+    ordinary prey, when the world was read -- and whether that is a gap.
+    The band's own "gap" counts every equal mobile, a Hyrule guardian or
+    one in an area nothing leads to included; three equal mobiles of which
+    one is reachable are one choice, and a gap (review, 2026-11-12). Every
+    reader -- the proposals, the report's bands and its JSON -- asks this."""
+    choices = [v for v in b["equal"] if reachable is None or reachable(v)]
+    return choices, len(choices) < EQUAL_CHOICES_WANTED
 
 
 def confidence(m: Dict[str, Any]) -> str:
@@ -493,8 +569,8 @@ def proposals(result: Dict[str, Any], names: Optional[Callable[[int], str]] = No
                     out.append({"vnum": v, "name": name(v), "band": f"{low}-{high}",
                                 "finding": flag, "proposal": what, "evidence": ev,
                                 "confidence": confidence(m)})
-        if b["gap"]:
-            choices = [v for v in b["equal"] if reachable is None or reachable(v)]
+        choices, gap = band_choices(b, reachable)
+        if gap:
             out.append({"vnum": None, "name": "-", "band": f"{low}-{high}", "finding": "gap",
                         "proposal": ("too few comparable places to level: add or retune "
                                      "mobiles here so there are at least "
@@ -507,44 +583,272 @@ def proposals(result: Dict[str, Any], names: Optional[Callable[[int], str]] = No
 
 
 # --------------------------------------------------------------------
-# The dashboard's view: the live file, cached by its identity and size.
+# The dashboard's view: the live file, kept up to date as it grows.
 # --------------------------------------------------------------------
+#
+# The game appends to log/progress.tsv on every fight and, past
+# PROGRESS_MAX lines, rewrites it to the newest PROGRESS_KEEP through a
+# temporary file and a rename (progress_trim in src/playlog.c). Reading
+# and reparsing the whole feed after every append cost the dashboard most
+# of a second a request on a full feed, on the event loop. Now:
+#
+#   * an unchanged file (same device, inode, size and mtime) is the last
+#     answer, untouched;
+#   * a file that only grew is read from where the last read stopped, and
+#     only the mobiles the new rows touch are figured again (_Engine) --
+#     the same functions in the same order, so the answer is exactly what
+#     compare(summarize(text)) gives for the same complete lines;
+#   * anything else -- another inode (the trim's rename), a shorter file,
+#     a first or last 64 bytes that are not what was read (a rewrite in
+#     place), a row that rewrites a kill or an encounter already seen --
+#     is read again from the start.
+#
+# A last line with no newline yet is a row the game is still writing: it
+# is carried, never read, until its newline arrives (a torn row read as
+# numbers would skew a figure). One lock serialises it, so requests that
+# arrive together share one parse; the async routes call load_async(),
+# which runs it off the event loop.
 
 def _empty() -> Dict[str, Any]:
     return {"mobs": {}, "bands": {}, "seen": Counter(), "summary": None}
 
 
-_CACHE: Dict[str, Any] = {"key": None, "value": None}
+def _rows_of(data: bytes) -> Iterable[List[str]]:
+    return read_rows(data.decode("latin-1"))
+
+
+class _Engine:
+    """compare(summarize(...)) kept up to date, batch of rows by batch."""
+
+    def __init__(self) -> None:
+        self.fold = _Fold()
+        self.kill_rec: Dict[str, Dict[str, Any]] = {}
+        self.kids_by_vnum: Dict[int, List[str]] = defaultdict(list)
+        self.legacy_by_vnum: Dict[int, List[Dict[str, Any]]] = defaultdict(list)
+        self.events_by_vnum: Dict[int, List[Dict[str, Any]]] = defaultdict(list)
+        self.engage_meta: Dict[int, Tuple[int, str]] = {}
+        self.cyc_kids: Dict[Tuple[str, int], set] = defaultdict(set)
+        self.cyc_legacy: Dict[Tuple[str, int], set] = defaultdict(set)
+        self.cycles: Dict[Tuple[str, int], float] = {}
+        self.unresolved: Counter = Counter()
+        self.data: Dict[int, Dict[str, Any]] = {}
+        self.entry: Dict[int, Dict[str, Any]] = {}
+        self.result: Dict[str, Any] = _empty()
+        self.fresh = True
+
+    def apply(self, rows: Iterable[List[str]]) -> bool:
+        """Fold the rows in and figure again what they touched. False when
+        a row rewrote a kill or an encounter from an earlier batch: only a
+        rebuild from the start gives the same answer then."""
+        fold = self.fold
+        n_kills, n_legacy = len(fold.kills), len(fold.legacy)
+        n_events, n_engages = len(fold.events), len(fold.engages)
+        fold.touched, fold.moved = set(), False
+        count = 0
+        for f in rows:
+            fold.feed(f)
+            count += 1
+        if fold.moved and not self.fresh:
+            return False
+        if count == 0 and not self.fresh:
+            return True
+        dirty: set = set()
+        rec = {"rewards": fold.rewards, "drops": fold.drops, "loots": fold.loots}
+        for kid in islice(fold.kills, n_kills, None):
+            self.kids_by_vnum[fold.kills[kid]["vnum"]].append(kid)
+        for kid in fold.touched:
+            for r in fold.rewards.get(kid, ()):
+                self.cyc_kids[(r["who"], r["epoch"])].add(kid)
+            k = fold.kills.get(kid)
+            if k is not None:
+                self.kill_rec[kid] = _kill_record(kid, k, rec)
+                dirty.add(k["vnum"])
+        for r in fold.legacy[n_legacy:]:
+            self.legacy_by_vnum[r["vnum"]].append(_legacy_record(r))
+            self.cyc_legacy[(r["who"], r["epoch"])].add(r["vnum"])
+            dirty.add(r["vnum"])
+        for e in fold.events[n_events:]:
+            self.events_by_vnum[e["vnum"]].append(e)
+            dirty.add(e["vnum"])
+        for enc in islice(fold.engages, n_engages, None):
+            e = fold.engages[enc]
+            self.engage_meta.setdefault(e["vnum"], (e["mob_level"], e["area"]))
+            if e["vnum"] not in self.data:
+                dirty.add(e["vnum"])
+        # The time between kills is the whole feed's: figure it again, and
+        # every mobile one of whose rewards it changed for.
+        cyc = cycles({"rewards": fold.rewards, "legacy": fold.legacy})
+        unresolved: Counter = Counter()
+        for enc, e in fold.engages.items():
+            if enc not in fold.outcomes:
+                unresolved[e["vnum"]] += 1
+        if not self.fresh:      # a first build figures every mobile anyway
+            for key in cyc.keys() | self.cycles.keys():
+                if cyc.get(key) != self.cycles.get(key):
+                    dirty.update(self.kill_rec[k]["vnum"] for k in self.cyc_kids.get(key, ())
+                                 if k in self.kill_rec)
+                    dirty.update(self.cyc_legacy.get(key, ()))
+            for v in unresolved.keys() | self.unresolved.keys():
+                if unresolved.get(v, 0) != self.unresolved.get(v, 0):
+                    dirty.add(v)
+        # summarize()'s order: kills, then legacy rows, events, encounters.
+        order = dict.fromkeys(chain((k["vnum"] for k in fold.kills.values()),
+                                    (r["vnum"] for r in fold.legacy),
+                                    (e["vnum"] for e in fold.events),
+                                    (e["vnum"] for e in fold.engages.values())))
+        if self.fresh:
+            dirty = set(order)
+        for v in dirty:
+            if v not in order:
+                continue
+            kills = ([self.kill_rec[k] for k in self.kids_by_vnum.get(v, ())]
+                     + list(self.legacy_by_vnum.get(v, ())))
+            events = list(self.events_by_vnum.get(v, ()))
+            if kills:
+                meta = (kills[0]["mob_level"], kills[0]["area"])
+            elif events:
+                meta = (events[0]["mob_level"], events[0]["area"])
+            else:
+                meta = self.engage_meta[v]
+            data = {"kills": kills, "events": events, "meta": meta}
+            self.data[v] = data
+            self.entry[v] = _mob_entry(v, data, cyc, unresolved.get(v, 0))
+        seen: Counter = Counter()
+        for k in self.kill_rec.values():
+            for v, _src in k["gen_vnums"]:
+                seen[v] += 1
+        for d in fold.legacy_drops:
+            for v, _src in d["items"]:
+                seen[v] += 1
+        # Fresh containers each time, so a result already handed out is
+        # never changed under its reader.
+        mobs = {v: dict(self.entry[v]) for v in order}
+        summary = {"by_vnum": {v: self.data[v] for v in order}, "unresolved": unresolved,
+                   "seen": seen, "cycles": cyc, "records": fold.view()}
+        self.cycles, self.unresolved = cyc, unresolved
+        self.result = {"mobs": mobs, "bands": _band_pass(mobs), "seen": seen,
+                       "summary": summary}
+        self.fresh = False
+        return True
+
+
+_CHECK = 64             # bytes at each end of what was read, compared before growing
+_STATES_MAX = 4         # files kept at once (the live feed, and a test's or two)
+_LOCK = threading.Lock()
+_STATES: Dict[str, "_FeedState"] = {}
+STATS: Counter = Counter()      # "full", "grow", "same": how each load was answered
+
+
+class _FeedState:
+    def __init__(self) -> None:
+        self.ident: Tuple[int, int] = (-1, -1)
+        self.mtime_ns = -1
+        self.consumed = 0       # bytes read, the carry included
+        self.carry = b""        # a last line with no newline yet
+        self.head = b""
+        self.tail = b""
+        self.engine = _Engine()
+
+
+def _full(path: Path, st: os.stat_result) -> Dict[str, Any]:
+    with open(path, "rb") as fh:
+        data = fh.read()
+    s = _FeedState()
+    cut = data.rfind(b"\n") + 1
+    s.engine.apply(_rows_of(data[:cut]))
+    s.ident, s.mtime_ns = (st.st_dev, st.st_ino), st.st_mtime_ns
+    s.consumed, s.carry = len(data), data[cut:]
+    s.head, s.tail = data[:_CHECK], data[-_CHECK:]
+    _STATES.pop(str(path), None)
+    _STATES[str(path)] = s
+    while len(_STATES) > _STATES_MAX:
+        _STATES.pop(next(iter(_STATES)))
+    STATS["full"] += 1
+    return s.engine.result
+
+
+def _grow(path: Path, st: os.stat_result, s: _FeedState) -> Optional[Dict[str, Any]]:
+    """Read what was appended; None when the file is not the one read."""
+    with open(path, "rb") as fh:
+        if fh.read(len(s.head)) != s.head:
+            return None
+        fh.seek(s.consumed - len(s.tail))
+        if fh.read(len(s.tail)) != s.tail:
+            return None
+        new = fh.read()
+    data = s.carry + new
+    cut = data.rfind(b"\n") + 1
+    if not s.engine.apply(_rows_of(data[:cut])):
+        return None
+    s.carry = data[cut:]
+    s.consumed += len(new)
+    if len(s.head) < _CHECK:
+        s.head = (s.head + new)[:_CHECK]
+    s.tail = (s.tail + new)[-_CHECK:]
+    s.mtime_ns = st.st_mtime_ns
+    STATS["grow"] += 1
+    return s.engine.result
 
 
 def load(path: Path) -> Dict[str, Any]:
+    """Every mobile's figures and every band's, from the feed at `path`."""
+    with _LOCK:
+        try:
+            st = os.stat(path)
+        except OSError:
+            _STATES.pop(str(path), None)
+            return _empty()
+        s = _STATES.get(str(path))
+        try:
+            if s is not None and s.ident == (st.st_dev, st.st_ino) \
+                    and st.st_size >= s.consumed:
+                if st.st_size == s.consumed and st.st_mtime_ns == s.mtime_ns:
+                    STATS["same"] += 1
+                    return s.engine.result
+                got = _grow(path, st, s)
+                if got is not None:
+                    return got
+            return _full(path, st)
+        except OSError:
+            _STATES.pop(str(path), None)
+            return _empty()
+
+
+async def load_async(path: Path) -> Dict[str, Any]:
+    """load(), off the event loop: a full parse of a long feed takes a
+    while, and the dashboard's other routes must answer meanwhile."""
+    return await asyncio.to_thread(load, path)
+
+
+def version(path: Path) -> str:
+    """Which feed an answer was given from: anything built on these
+    figures (the Oracle's cached leveling and gear advice) keys on it, so
+    a new row retires it. One stat, no read."""
     try:
         st = os.stat(path)
     except OSError:
-        return _empty()
-    key = (str(path), st.st_ino, st.st_size, int(st.st_mtime))
-    if _CACHE["key"] == key and _CACHE["value"] is not None:
-        return _CACHE["value"]
-    try:
-        text = Path(path).read_text(encoding="latin-1")
-    except OSError:
-        return _empty()
-    value = compare(summarize(text))
-    _CACHE["key"], _CACHE["value"] = key, value
-    return value
+        return "none"
+    return "%d.%d.%d.%d" % (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns)
 
 
-def observed(path: Path, vnum: int) -> Optional[Dict[str, Any]]:
-    """A mobile's figures if players have killed it enough to trust them."""
-    m = load(path)["mobs"].get(vnum)
+def _loaded(source: Any) -> Dict[str, Any]:
+    """A loaded result as it is, or the feed at a path, loaded."""
+    return source if isinstance(source, dict) else load(source)
+
+
+def observed(source: Any, vnum: int) -> Optional[Dict[str, Any]]:
+    """A mobile's figures if players have killed it enough to trust them.
+    `source` is the feed's path or what load() returned for it."""
+    m = _loaded(source)["mobs"].get(vnum)
     return m if m and m["trusted"] else None
 
 
-def near(path: Path, vnum: int, level: int, spread: int = 5) -> Optional[Dict[str, Any]]:
+def near(source: Any, vnum: int, level: int, spread: int = 5) -> Optional[Dict[str, Any]]:
     """A mobile as players within `spread` levels of `level` found it --
     a level 1 and a level 20 do not take the same time over a goblin --
-    or None below MIN_KILLS such kills by MIN_CHARACTERS characters."""
-    summary = load(path).get("summary")
+    or None below MIN_KILLS such kills by MIN_CHARACTERS characters.
+    `source` is the feed's path or what load() returned for it."""
+    summary = _loaded(source).get("summary")
     if not summary:
         return None
     data = summary["by_vnum"].get(vnum)
@@ -561,6 +865,7 @@ def near(path: Path, vnum: int, level: int, spread: int = 5) -> Optional[Dict[st
     return m
 
 
-def seen_drops(path: Path) -> Counter:
-    """How often each object vnum has fallen from a kill a player made."""
-    return load(path).get("seen") or Counter()
+def seen_drops(source: Any) -> Counter:
+    """How often each object vnum has fallen from a kill a player made.
+    `source` is the feed's path or what load() returned for it."""
+    return _loaded(source).get("seen") or Counter()
