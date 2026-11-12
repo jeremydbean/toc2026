@@ -1642,6 +1642,29 @@ stay open to a frozen character, and the actor's guard in `do_stash`
 sits below them (`tests/test_stash_shared_transfer.py`,
 `tests/test_split_frozen.py`).
 
+## Who May Loot A Player's Corpse
+
+`loot_refusal(ch, obj)` in `act_obj.c` is the one rule (owner, 2026-11-12:
+a quit player's corpse was anybody's, and after a restart every corpse in
+the world was, for the week a corpse lasts); `can_loot` is it as a bool.
+The owner and staff (`IS_TRUSTED(LEVEL_IMMORTAL)`, never a mobile's level)
+always may; **no mobile ever may** -- a charmed follower ORDERed, a
+janitor, a scavenger -- not even from a WANTED player's ownerless corpse;
+while the owner is **in the game** (a playing descriptor whose `CH(d)` is
+them -- not quit, not link-dead) their group may, and anybody when they
+are a player killer or NOLOOT gave leave (`PLR_CANLOOT`); while they are
+**not**, nobody else, whatever NOLOOT said. A WANTED player's corpse has
+no owner and stays anybody's (a player's). It returns why, for `act()`
+with `$p` the corpse, and every way of taking from a corpse asks it of
+the corpse at any depth (`loot_corpse_of`): GET of the corpse or out of
+it, GET ALL, AUTOGOLD, SACRIFICE/JUNK of an empty one, TELEKINESIS, and
+the mobiles' pick-ups (`spec_janitor`, the scavenger in `update.c`). A new
+way of taking from or moving a player's corpse asks it too. **A death
+still clears `PLR_CANLOOT`** (stock ROM, kept): leave is given per death
+and the protection is what comes back, never what goes -- the review
+that called this "death clears NOLOOT protection" had the flag backwards.
+`tests/test_corpse_looting.py`.
+
 ## The Holiday Calendar
 
 `src/holiday.c` (owner, 2026-11-02: World of Warcraft's schedule; minor

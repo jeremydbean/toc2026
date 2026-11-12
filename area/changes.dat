@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112corpseloot 2026-11-12
+Your corpse is safe while you are away. Logged out or link-dead, nobody
+but you and the staff may take from it or pick it up, whatever NOLOOT
+says -- before, it was anybody's the moment you left. No monster or
+charmed follower may ever take from a player's corpse, and SACRIFICE and
+TELEKINESIS keep the same rule. A refusal now says why. A death still
+puts NOLOOT's protection back on: give leave after the death you want
+help with.
+
 @ 20261112longlists 2026-11-12
 Long lists are shown whole. STASH used to stop near the 185th piece with
 "... and more than will fit on one screen", HISTORY 100 lost its newest

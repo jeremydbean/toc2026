@@ -1285,6 +1285,8 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
     bool found = false;
     bool too_heavy = false;
     bool unreachable = false;   /* a match TK never moves (no-locate) */
+    OBJ_DATA *guarded = NULL;   /* a player's corpse its rule protects */
+    const char *guarded_why = NULL;
     int chance;
     LIST_ITERATOR iter;
 
@@ -1349,6 +1351,18 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
             continue;
         }
 
+        /* A player's corpse is fetched only by whoever GET would let take
+           it (loot_refusal): said so, not taken for a miss. */
+        if ( obj->item_type == ITEM_CORPSE_PC && !can_loot(ch, obj) )
+        {
+            if ( guarded == NULL )
+            {
+                guarded = obj;
+                guarded_why = loot_refusal( ch, obj );
+            }
+            continue;
+        }
+
         if ( obj->item_type == ITEM_TREASURE
         ||   obj->item_type == ITEM_MONEY
         ||   !CAN_WEAR(obj, ITEM_TAKE)
@@ -1386,6 +1400,8 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
         if ( too_heavy )
             act( "You find the $T, but you cannot carry it.", ch,
                 NULL, arg, TO_CHAR );
+        else if ( guarded != NULL && guarded_why != NULL )
+            act( guarded_why, ch, guarded, NULL, TO_CHAR );
         else if ( unreachable )
             act( "Your mind slides off the $T: that is a thing TK cannot "
                  "fetch.  You will have to go and get it.", ch, NULL, arg, TO_CHAR );

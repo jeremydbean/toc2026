@@ -108,40 +108,111 @@ static void resize_money_pile(OBJ_DATA *obj, int amount)
     extract_obj(obj);
 }
 
-/* RT part of the corpse looting code */
+/*
+ * RT part of the corpse looting code.
+ *
+ * Who may take from a player's corpse, or take the corpse (owner,
+ * 2026-11-12: "fix it all"; a review found a quit player's corpse open to
+ * everybody, and every corpse in the world open after a restart):
+ *
+ *   - its owner, always, and staff (trust, never a mobile's level);
+ *   - never a mobile -- a charmed follower ORDERed to GET, a janitor, a
+ *     scavenger -- whatever the owner allows, ownerless corpses too: a
+ *     creature cannot be asked to give anything back;
+ *   - while the owner is in the game (a playing connection: not quit, not
+ *     link-dead), what they allow: anybody if they typed NOLOOT to let
+ *     others loot, or are a player killer; their group;
+ *   - while the owner is NOT in the game, nobody else, whatever NOLOOT
+ *     said: nobody can ask them, and the corpse lasts a week;
+ *   - a corpse with no owner (a WANTED player's, by design) is anybody's.
+ *
+ * A death still takes away leave to loot (make_corpse), as stock ROM
+ * always did: the protection comes back, never goes.
+ *
+ * Returns NULL when ch may, else why not, for act() with $p the object.
+ */
+static CHAR_DATA *loot_owner_playing( const char *name )
+{
+    DESCRIPTOR_DATA *d;
 
-bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+	CHAR_DATA *who = CH(d);
+
+	if ( d->connected == CON_PLAYING && who != NULL && !IS_NPC(who)
+	&&   who->name != NULL && !str_cmp( who->name, name ) )
+	    return who;
+    }
+    return NULL;
+}
+
+const char *loot_refusal( CHAR_DATA *ch, OBJ_DATA *obj )
 {
     CHAR_DATA *owner, *wch;
     LIST_ITERATOR iter;
+    bool corpse;
 
-    if (IS_IMMORTAL(ch))
-	return true;
+    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+	return NULL;
 
-    if (obj->owner == NULL || obj->owner[0] == '\0')
-	return true;
+    corpse = obj->item_type == ITEM_CORPSE_PC;
+    if ( corpse && IS_NPC(ch) )
+	return "$p belongs to a fallen adventurer; no creature may take from it.";
 
-    owner = NULL;
-    FOR_EACH_CHARACTER( iter, wch )
-        if (!IS_NPC(wch) && !str_cmp(wch->name,obj->owner))
-            owner = wch;
+    if ( obj->owner == NULL || obj->owner[0] == '\0' )
+	return NULL;
 
-    if (owner == NULL)
-	return true;
+    if ( !IS_NPC(ch) && ch->name != NULL && !str_cmp( ch->name, obj->owner ) )
+	return NULL;
 
-    if (owner->pcdata->pk_state == 1)
-	return true;
+    if ( corpse )
+    {
+	owner = loot_owner_playing( obj->owner );
+	if ( owner == NULL )
+	    return "$p is protected while its owner is out of the game: "
+		   "only they may take from it.";
+    }
+    else
+    {
+	/* Anything else with an owner (a quest's item) keeps the old rule:
+	   an owner nowhere in the world protects nothing. */
+	owner = NULL;
+	FOR_EACH_CHARACTER( iter, wch )
+	    if ( !IS_NPC(wch) && !str_cmp( wch->name, obj->owner ) )
+		owner = wch;
+	if ( owner == NULL )
+	    return NULL;
+    }
 
-    if (!str_cmp(ch->name,owner->name))
-	return true;
+    if ( owner->pcdata != NULL && owner->pcdata->pk_state == 1 )
+	return NULL;
 
-    if (!IS_NPC(owner) && IS_SET(owner->act,PLR_CANLOOT))
-	return true;
+    if ( IS_SET(owner->act, PLR_CANLOOT) )
+	return NULL;
 
-    if (is_same_group(ch,owner))
-	return true;
+    if ( is_same_group( ch, owner ) )
+	return NULL;
 
-    return false;
+    return corpse
+	? "$p is protected: its owner has not given leave to loot it (NOLOOT)."
+	: "Corpse looting is not permitted.";
+}
+
+bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+    return loot_refusal( ch, obj ) == NULL;
+}
+
+/* The player's corpse an object lies in, at any depth, or the object
+   itself when it is one; NULL when neither. */
+static OBJ_DATA *loot_corpse_of( OBJ_DATA *obj )
+{
+    OBJ_DATA *top;
+
+    for ( top = obj; top != NULL; top = top->in_obj )
+	if ( top->item_type == ITEM_CORPSE_PC )
+	    return top;
+    return NULL;
 }
 
 
@@ -157,6 +228,20 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     if(!CAN_WEAR(obj,ITEM_TAKE)) {
 	send_to_char("You can't take that.\n\r",ch);
 	return;
+    }
+
+    /* The corpse itself, or anything in it at any depth -- a bag in the
+       corpse included -- by the corpse's rule, asked of every actor, a
+       mobile too (loot_refusal). */
+    {
+	OBJ_DATA *corpse = loot_corpse_of( container != NULL ? container : obj );
+	const char *why = loot_refusal( ch, corpse != NULL ? corpse : obj );
+
+	if ( why != NULL )
+	{
+	    act( why, ch, corpse != NULL ? corpse : obj, NULL, TO_CHAR );
+	    return;
+	}
     }
 
     /* A quest's token is its questor's, by serial (quest.c). */
@@ -181,11 +266,6 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     && query_carry_weight(ch) + get_obj_weight(obj) > can_carry_w(ch)) {
 	act( "$d: you can't carry that much weight.",
 	    ch, NULL, obj->name, TO_CHAR );
-	return;
-    }
-
-    if (!can_loot(ch,obj)) {
-	act("Corpse looting is not permitted.",ch,NULL,NULL,TO_CHAR );
 	return;
     }
 
@@ -1912,10 +1992,11 @@ void do_get( CHAR_DATA *ch, char *argument )
 
 	case ITEM_CORPSE_PC:
 	    {
+		const char *why = loot_refusal( ch, container );
 
-		if (!can_loot(ch,container))
+		if ( why != NULL )
 		{
-		    send_to_char( "You can't do that.\n\r", ch );
+		    act( why, ch, container, NULL, TO_CHAR );
 		    return;
 		}
 	    }
@@ -4336,6 +4417,19 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
     if(!obj) {
 	send_to_char( "You can't find it.\n\r", ch );
 	return;
+    }
+
+    /* An empty corpse is still its owner's: RESURRECTION and RAISE DEAD
+       need it, and its record ends when it does. */
+    if ( obj->item_type == ITEM_CORPSE_PC )
+    {
+	const char *why = loot_refusal( ch, obj );
+
+	if ( why != NULL )
+	{
+	    act( why, ch, obj, NULL, TO_CHAR );
+	    return;
+	}
     }
 
     if(obj->item_type == ITEM_CORPSE_PC && obj->contains) {
