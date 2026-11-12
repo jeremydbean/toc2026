@@ -293822,3 +293822,463 @@ Thu Nov 12 23:26:08 2026 :: Log Trentlin [30200]: l ala
 Thu Nov 12 23:26:12 2026 :: Log Alaric [30200]: say Supposed to be viable all through leveling, but I've been chasing the remorts hoping to do the end game stuff after leveling up
 Thu Nov 12 23:26:22 2026 :: Log Alaric [30200]: say I can grab quite a bit of that gear, too
 Thu Nov 12 23:26:24 2026 :: Log Alaric [30200]: who
+Thu Nov 12 23:26:46 2026 :: Log Alaric [30200]: recal
+Thu Nov 12 23:26:46 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 30200
+Thu Nov 12 23:26:46 2026 :: Log Alaric [2497]: w
+Thu Nov 12 23:26:48 2026 :: Log Alaric [2497]: en do
+Thu Nov 12 23:26:48 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 12 23:26:49 2026 :: Log Alaric [2401]: jump rock
+Thu Nov 12 23:26:49 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Thu Nov 12 23:26:49 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Thu Nov 12 23:26:50 2026 :: Log Alaric [4208]: stash
+Thu Nov 12 23:26:53 2026 :: Log Trentlin [30200]: reca
+Thu Nov 12 23:26:53 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30200
+Thu Nov 12 23:26:59 2026 :: Treasure goblin: vanished from room 5058 (Beside the camels, eastern.are) (too long in one area).
+Thu Nov 12 23:27:04 2026 :: Log Trentlin [4207]: w
+Thu Nov 12 23:27:04 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Thu Nov 12 23:27:07 2026 :: Log Trentlin [4208]: l in pit
+Thu Nov 12 23:27:09 2026 :: Log Trentlin [4208]: stash
+Thu Nov 12 23:27:17 2026 :: Log Trentlin [4208]: stash get onyx
+Thu Nov 12 23:27:17 2026 :: Log Trentlin [4208]: withdrew an onyx bracelet (vnum 1388) from the stash
+Thu Nov 12 23:27:18 2026 :: Log Trentlin [4208]: stash get onyx
+Thu Nov 12 23:27:20 2026 :: Log Trentlin [4208]: wear on
+Thu Nov 12 23:27:20 2026 :: Log Trentlin [4208]: wear on
+Thu Nov 12 23:27:21 2026 :: Log Alaric [4208]: stash get 42
+Thu Nov 12 23:27:21 2026 :: Log Alaric [4208]: withdrew some platinum arm bands (vnum 9213) from the stash
+Thu Nov 12 23:27:24 2026 :: Log Alaric [4208]: give arm tr
+Thu Nov 12 23:27:24 2026 :: Log Alaric [4208]: gave some platinum arm bands (vnum 9213) to Trentlin
+Thu Nov 12 23:27:24 2026 :: Log Trentlin [4208]: received some platinum arm bands (vnum 9213) from Alaric
+Thu Nov 12 23:27:28 2026 :: Log Trentlin [4208]: stash
+Thu Nov 12 23:27:29 2026 :: Log Alaric [4208]: say Looking for what I have doubles of
+Thu Nov 12 23:27:31 2026 :: Log Alaric [4208]: stash
+Thu Nov 12 23:27:35 2026 :: Log Trentlin [4208]: wear arm
+Thu Nov 12 23:27:43 2026 :: Log Trentlin [4208]: stash get gear
+Thu Nov 12 23:27:43 2026 :: Log Trentlin [4208]: withdrew Trentlin's level 54 gear (vnum 3032) from the stash
+Thu Nov 12 23:27:45 2026 :: Log Trentlin [4208]: get all gear
+Thu Nov 12 23:27:49 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:27:57 2026 :: Log Alaric [4208]: stash get 65
+Thu Nov 12 23:27:57 2026 :: Log Alaric [4208]: withdrew a quick sheathe (vnum 8713) from the stash
+Thu Nov 12 23:27:58 2026 :: Log Trentlin [4208]: l in gear
+Thu Nov 12 23:27:58 2026 :: Log Alaric [4208]: stash
+Thu Nov 12 23:28:01 2026 :: Log Alaric [4208]: stash
+Thu Nov 12 23:28:01 2026 :: Log Trentlin [4208]: drop gear
+Thu Nov 12 23:28:04 2026 :: Log Trentlin [4208]: heal uncurse
+Thu Nov 12 23:28:08 2026 :: Log Alaric [4208]: give quick tr
+Thu Nov 12 23:28:08 2026 :: Log Alaric [4208]: gave a quick sheathe (vnum 8713) to Trentlin
+Thu Nov 12 23:28:08 2026 :: Log Trentlin [4208]: received a quick sheathe (vnum 8713) from Alaric
+Thu Nov 12 23:28:08 2026 :: Log Alaric [4208]: i
+Thu Nov 12 23:28:12 2026 :: Log Trentlin [4208]: stash put gear
+Thu Nov 12 23:28:14 2026 :: Log Alaric [4208]: wake
+Thu Nov 12 23:28:15 2026 :: Log Alaric [4208]: l
+Thu Nov 12 23:28:21 2026 :: Log Trentlin [4208]: say interesting
+Thu Nov 12 23:28:24 2026 :: Log Alaric [4208]: east
+Thu Nov 12 23:28:24 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:28:24 2026 :: Log Alaric [4207]: east
+Thu Nov 12 23:28:24 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 12 23:28:25 2026 :: Log Alaric [4202]: east
+Thu Nov 12 23:28:25 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 12 23:28:25 2026 :: Log Alaric [4201]: north
+Thu Nov 12 23:28:25 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Thu Nov 12 23:28:25 2026 :: Log Alaric [2433]: west
+Thu Nov 12 23:28:25 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Thu Nov 12 23:28:25 2026 :: Log Alaric [2434]: west
+Thu Nov 12 23:28:25 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Thu Nov 12 23:28:26 2026 :: Log Alaric [2435]: west
+Thu Nov 12 23:28:26 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Thu Nov 12 23:28:26 2026 :: Log Alaric [2436]: west
+Thu Nov 12 23:28:26 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Thu Nov 12 23:28:26 2026 :: Log Alaric [2437]: west
+Thu Nov 12 23:28:26 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Thu Nov 12 23:28:26 2026 :: Log Alaric [2438]: open west
+Thu Nov 12 23:28:27 2026 :: Log Alaric [2438]: west
+Thu Nov 12 23:28:27 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Thu Nov 12 23:28:27 2026 :: Log Alaric [2439]: west
+Thu Nov 12 23:28:27 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Thu Nov 12 23:28:27 2026 :: Log Alaric [6000]: west
+Thu Nov 12 23:28:27 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Thu Nov 12 23:28:27 2026 :: Log Alaric [6001]: west
+Thu Nov 12 23:28:27 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6002]: west
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6003]: west
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6004]: west
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6100]: west
+Thu Nov 12 23:28:28 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6101]: south
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6104]: south
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6105]: west
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6106]: south
+Thu Nov 12 23:28:29 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6117]: west
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6116]: south
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6115]: west
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6114]: west
+Thu Nov 12 23:28:30 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Thu Nov 12 23:28:31 2026 :: Log Alaric [6122]: south
+Thu Nov 12 23:28:31 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Thu Nov 12 23:28:31 2026 :: Log Alaric [6123]: south
+Thu Nov 12 23:28:31 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 6123
+Thu Nov 12 23:28:31 2026 :: Log Alaric [9774]: south
+Thu Nov 12 23:28:31 2026 :: Log Alaric [8301]: arrived (Muddy Path) from 9774
+Thu Nov 12 23:28:31 2026 :: Log Alaric [8301]: south
+Thu Nov 12 23:28:31 2026 :: Log Alaric [8302]: arrived (Swamp's Edge) from 8301
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8302]: south
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8304]: arrived (On a hill.) from 8302
+Thu Nov 12 23:28:32 2026 :: Log Trentlin [4208]: wear ring
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8304]: east
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8309]: arrived (A Dark Pool.) from 8304
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8309]: east
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8308]: arrived (Pool of Quick Sand) from 8309
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8308]: south
+Thu Nov 12 23:28:32 2026 :: Log Alaric [8314]: arrived (Murky Bog.) from 8308
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8314]: east
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8315]: arrived (Northern Lake Side.) from 8314
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8315]: south
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8316]: arrived (Southern Lake Side.) from 8315
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8316]: west
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8317]: arrived (Beach) from 8316
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8317]: west
+Thu Nov 12 23:28:33 2026 :: Log Alaric [8318]: arrived (The Approach) from 8317
+Thu Nov 12 23:28:34 2026 :: Log Alaric [8318]: north
+Thu Nov 12 23:28:34 2026 :: Log Alaric [43]: arrived (Pathway to Arden.) from 8318
+Thu Nov 12 23:28:34 2026 :: Log Alaric [43]: west
+Thu Nov 12 23:28:34 2026 :: Log Alaric [701]: arrived (Before the Forest Arden) from 43
+Thu Nov 12 23:28:37 2026 :: Log Trentlin [4208]: wear contain
+Thu Nov 12 23:28:38 2026 :: Log Alaric [701]: n
+Thu Nov 12 23:28:38 2026 :: Log Alaric [702]: arrived (The Crossroads of Arden) from 701
+Thu Nov 12 23:28:38 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:28:40 2026 :: Log Alaric [702]: e
+Thu Nov 12 23:28:40 2026 :: Log Alaric [706]: arrived (A Fork in the Dirty Trail) from 702
+Thu Nov 12 23:28:40 2026 :: Log Alaric [706]: n
+Thu Nov 12 23:28:40 2026 :: Log Alaric [709]: arrived (Mists of Arden) from 706
+Thu Nov 12 23:28:41 2026 :: Log Trentlin [4208]: wear qui
+Thu Nov 12 23:28:41 2026 :: Log Alaric [709]: n
+Thu Nov 12 23:28:41 2026 :: Log Alaric [713]: arrived (The Forest Arden) from 709
+Thu Nov 12 23:28:42 2026 :: Log Alaric [713]: e
+Thu Nov 12 23:28:42 2026 :: Log Alaric [719]: arrived (The Chasm) from 713
+Thu Nov 12 23:28:42 2026 :: Log Alaric [719]: e
+Thu Nov 12 23:28:43 2026 :: Log Alaric [719]: d
+Thu Nov 12 23:28:43 2026 :: Log Alaric [720]: arrived (Hanging on the Rope Bridge) from 719
+Thu Nov 12 23:28:44 2026 :: Log Alaric [720]: e
+Thu Nov 12 23:28:44 2026 :: Log Alaric [721]: arrived (Hanging on the Rope Bridge) from 720
+Thu Nov 12 23:28:45 2026 :: Log Alaric [721]: u
+Thu Nov 12 23:28:45 2026 :: Log Alaric [722]: arrived (The Chasm) from 721
+Thu Nov 12 23:28:45 2026 :: Log Alaric [722]: e
+Thu Nov 12 23:28:45 2026 :: Log Alaric [725]: arrived (The Green Field Before Camelot) from 722
+Thu Nov 12 23:28:46 2026 :: Log Alaric [725]: e
+Thu Nov 12 23:28:46 2026 :: Log Alaric [726]: arrived (The Western Gate of Camelot) from 725
+Thu Nov 12 23:28:47 2026 :: Log Trentlin [4208]: wear shield
+Thu Nov 12 23:28:48 2026 :: Log Alaric [726]: where gal
+Thu Nov 12 23:28:49 2026 :: Log Alaric [726]: e
+Thu Nov 12 23:28:50 2026 :: Log Trentlin [4208]: stash put lance
+Thu Nov 12 23:28:50 2026 :: Log Trentlin [4208]: stashed the Gohma eye-lance (vnum 30587)
+Thu Nov 12 23:28:56 2026 :: Log Trentlin [4208]: stash put glaive
+Thu Nov 12 23:28:56 2026 :: Log Trentlin [4208]: stashed the Gleeok twin-fang glaive (vnum 30585)
+Thu Nov 12 23:28:58 2026 :: Log Trentlin [4208]: stash
+Thu Nov 12 23:29:02 2026 :: Log Alaric [726]: west
+Thu Nov 12 23:29:02 2026 :: Log Alaric [725]: arrived (The Green Field Before Camelot) from 726
+Thu Nov 12 23:29:02 2026 :: Log Alaric [725]: west
+Thu Nov 12 23:29:02 2026 :: Log Alaric [722]: arrived (The Chasm) from 725
+Thu Nov 12 23:29:02 2026 :: Log Trentlin [4208]: stash egt legg
+Thu Nov 12 23:29:02 2026 :: Log Alaric [722]: down
+Thu Nov 12 23:29:02 2026 :: Log Alaric [721]: arrived (Hanging on the Rope Bridge) from 722
+Thu Nov 12 23:29:03 2026 :: Log Alaric [721]: west
+Thu Nov 12 23:29:03 2026 :: Log Alaric [720]: arrived (Hanging on the Rope Bridge) from 721
+Thu Nov 12 23:29:03 2026 :: Log Alaric [720]: up
+Thu Nov 12 23:29:03 2026 :: Log Alaric [719]: arrived (The Chasm) from 720
+Thu Nov 12 23:29:03 2026 :: Log Alaric [719]: west
+Thu Nov 12 23:29:03 2026 :: Log Alaric [713]: arrived (The Forest Arden) from 719
+Thu Nov 12 23:29:04 2026 :: Log Alaric [713]: n
+Thu Nov 12 23:29:04 2026 :: Log Alaric [714]: arrived (A Creek in the Forest Arden) from 713
+Thu Nov 12 23:29:05 2026 :: Log Trentlin [4208]: stash get legg
+Thu Nov 12 23:29:05 2026 :: Log Trentlin [4208]: withdrew a pair of Roman-style leggings (vnum 10028) from the stash
+Thu Nov 12 23:29:07 2026 :: Log Alaric [714]: scan
+Thu Nov 12 23:29:08 2026 :: Log Trentlin [4208]: stash get cloak
+Thu Nov 12 23:29:08 2026 :: Log Trentlin [4208]: withdrew an Eagle-feather cloak (vnum 30653) from the stash
+Thu Nov 12 23:29:09 2026 :: Log Alaric [714]: w
+Thu Nov 12 23:29:09 2026 :: Log Alaric [715]: arrived (Battleplain of Arden) from 714
+Thu Nov 12 23:29:10 2026 :: Log Trentlin [4208]: stash get roman
+Thu Nov 12 23:29:10 2026 :: Log Trentlin [4208]: withdrew a Roman-style breastplate (vnum 10027) from the stash
+Thu Nov 12 23:29:11 2026 :: Log Alaric [715]: look gal
+Thu Nov 12 23:29:12 2026 :: Log Trentlin [4208]: stash egt cloak
+Thu Nov 12 23:29:14 2026 :: Log Alaric [715]: iron
+Thu Nov 12 23:29:15 2026 :: Log Trentlin [4208]: wear brea
+Thu Nov 12 23:29:16 2026 :: Log Trentlin [4208]: wear leg
+Thu Nov 12 23:29:17 2026 :: Log Trentlin [4208]: stash get cloa
+Thu Nov 12 23:29:17 2026 :: Log Trentlin [4208]: withdrew a Blue rimmed, white cloak (vnum 10022) from the stash
+Thu Nov 12 23:29:18 2026 :: Log Trentlin [4208]: wear cloa
+Thu Nov 12 23:29:19 2026 :: Log Trentlin [4208]: wear cloa
+Thu Nov 12 23:29:21 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:29:23 2026 :: Log Alaric [715]: fi gal
+Thu Nov 12 23:29:24 2026 :: Log Trentlin [4208]: stash
+Thu Nov 12 23:29:29 2026 :: Log Trentlin [4208]: stash get ball
+Thu Nov 12 23:29:29 2026 :: Log Trentlin [4208]: withdrew a *twinkling* ball of light (vnum 24002) from the stash
+Thu Nov 12 23:29:29 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:29:31 2026 :: Log Trentlin [4208]: wear ba
+Thu Nov 12 23:29:34 2026 :: Log Trentlin [4208]: stash get live
+Thu Nov 12 23:29:34 2026 :: Log Trentlin [4208]: withdrew an indigo blue livery (vnum 10030) from the stash
+Thu Nov 12 23:29:35 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:29:36 2026 :: Log Trentlin [4208]: wear live
+Thu Nov 12 23:29:42 2026 :: Log Alaric [715]: gos On Galahad, has his bracers at least
+Thu Nov 12 23:29:42 2026 :: Log Trentlin [4208]: stash put brest
+Thu Nov 12 23:29:42 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:29:46 2026 :: Log Trentlin [4208]: stash put brea
+Thu Nov 12 23:29:46 2026 :: Log Trentlin [4208]: stashed a Roman-style breastplate (vnum 10027)
+Thu Nov 12 23:29:48 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:29:48 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:29:50 2026 :: Log Trentlin [4208]: eq
+Thu Nov 12 23:29:54 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:29:59 2026 :: Log Alaric [715]: who
+Thu Nov 12 23:30:00 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:30:05 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:30:11 2026 :: Log Alaric [715]: fi
+Thu Nov 12 23:30:14 2026 :: Log Alaric [715]: killed Sir Galahad
+Thu Nov 12 23:30:14 2026 :: Log Alaric [715]: coin +1 platinum
+Thu Nov 12 23:30:14 2026 :: Log Alaric [715]: coin +6 silver
+Thu Nov 12 23:30:14 2026 :: Log Alaric [715]: coin +8 copper
+Thu Nov 12 23:30:14 2026 :: Log Alaric [715]: coin +3 gold
+Thu Nov 12 23:30:19 2026 :: Log Alaric [715]: get brac cor
+Thu Nov 12 23:30:20 2026 :: Log Alaric [715]: get brac cor
+Thu Nov 12 23:30:21 2026 :: Log Alaric [715]: recal
+Thu Nov 12 23:30:21 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 715
+Thu Nov 12 23:30:22 2026 :: Log Alaric [2497]: en do
+Thu Nov 12 23:30:22 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 12 23:30:23 2026 :: Log Alaric [2401]: jump rock
+Thu Nov 12 23:30:23 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Thu Nov 12 23:30:24 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Thu Nov 12 23:30:24 2026 :: Log Alaric [4208]: l
+Thu Nov 12 23:30:28 2026 :: Log Alaric [4208]: give brac tre
+Thu Nov 12 23:30:28 2026 :: Log Alaric [4208]: gave a white bracer (vnum 717) to Trentlin
+Thu Nov 12 23:30:28 2026 :: Log Trentlin [4208]: received a white bracer (vnum 717) from Alaric
+Thu Nov 12 23:30:28 2026 :: Log Alaric [4208]: give brac tre
+Thu Nov 12 23:30:28 2026 :: Log Alaric [4208]: gave a white bracer (vnum 717) to Trentlin
+Thu Nov 12 23:30:28 2026 :: Log Trentlin [4208]: received a white bracer (vnum 717) from Alaric
+Thu Nov 12 23:30:29 2026 :: Log Alaric [4208]: heal ref
+Thu Nov 12 23:30:29 2026 :: Log Alaric [4208]: gold -140
+Thu Nov 12 23:30:32 2026 :: Log Trentlin [4208]: rem onyx
+Thu Nov 12 23:30:34 2026 :: Log Alaric [4208]: r e 4
+Thu Nov 12 23:30:34 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:30:34 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 12 23:30:34 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 12 23:30:34 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Thu Nov 12 23:30:34 2026 :: Log Alaric [2427]: n
+Thu Nov 12 23:30:34 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Nov 12 23:30:34 2026 :: Log Alaric [2404]: n
+Thu Nov 12 23:30:34 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Thu Nov 12 23:30:35 2026 :: Log Trentlin [4208]: stash put onyx
+Thu Nov 12 23:30:35 2026 :: Log Trentlin [4208]: stashed an onyx bracelet (vnum 1388)
+Thu Nov 12 23:30:36 2026 :: Log Alaric [2401]: affects off: iron skin, levitate
+Thu Nov 12 23:30:37 2026 :: Log Alaric [2401]: east
+Thu Nov 12 23:30:37 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Nov 12 23:30:37 2026 :: Log Trentlin [4208]: wear bra
+Thu Nov 12 23:30:37 2026 :: Log Alaric [2403]: east
+Thu Nov 12 23:30:37 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Thu Nov 12 23:30:37 2026 :: Log Trentlin [4208]: wear bra
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2420]: east
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2421]: east
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2422]: east
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2423]: east
+Thu Nov 12 23:30:38 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Thu Nov 12 23:30:39 2026 :: Log Alaric [2424]: east
+Thu Nov 12 23:30:39 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Thu Nov 12 23:30:39 2026 :: Log Alaric [2425]: east
+Thu Nov 12 23:30:39 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Thu Nov 12 23:30:39 2026 :: Log Alaric [2426]: open east
+Thu Nov 12 23:30:39 2026 :: Log Alaric [2426]: east
+Thu Nov 12 23:30:39 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Thu Nov 12 23:30:40 2026 :: Log Alaric [2440]: east
+Thu Nov 12 23:30:40 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Thu Nov 12 23:30:40 2026 :: Log Alaric [3503]: east
+Thu Nov 12 23:30:40 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Thu Nov 12 23:30:40 2026 :: Log Trentlin [4208]: drop gear
+Thu Nov 12 23:30:40 2026 :: Log Alaric [3502]: north
+Thu Nov 12 23:30:40 2026 :: Log Alaric [3501]: arrived (The Lane) from 3502
+Thu Nov 12 23:30:40 2026 :: Log Alaric [3501]: north
+Thu Nov 12 23:30:40 2026 :: Log Alaric [3500]: arrived (The Plains) from 3501
+Thu Nov 12 23:30:41 2026 :: Log Alaric [3500]: northwest
+Thu Nov 12 23:30:41 2026 :: Log Alaric [21]: arrived (A twisting path) from 3500
+Thu Nov 12 23:30:41 2026 :: Log Alaric [21]: west
+Thu Nov 12 23:30:41 2026 :: Log Alaric [22]: arrived (Before the great circle) from 21
+Thu Nov 12 23:30:41 2026 :: Log Alaric [22]: south
+Thu Nov 12 23:30:41 2026 :: Log Alaric [23]: arrived (The Great Portal) from 22
+Thu Nov 12 23:30:41 2026 :: Log Alaric [23]: enter portal
+Thu Nov 12 23:30:41 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 23
+Thu Nov 12 23:30:43 2026 :: Log Alaric [10000]: n
+Thu Nov 12 23:30:43 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10000
+Thu Nov 12 23:30:43 2026 :: Log Alaric [10001]: n
+Thu Nov 12 23:30:43 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10001
+Thu Nov 12 23:30:44 2026 :: Log Alaric [10002]: on
+Thu Nov 12 23:30:44 2026 :: Log Alaric [10002]: n
+Thu Nov 12 23:30:44 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10002
+Thu Nov 12 23:30:45 2026 :: Log Alaric [10003]: on
+Thu Nov 12 23:30:45 2026 :: Log Alaric [10003]: n
+Thu Nov 12 23:30:45 2026 :: Log Alaric [10004]: arrived (A large hall.) from 10003
+Thu Nov 12 23:30:45 2026 :: Log Alaric [10004]: n
+Thu Nov 12 23:30:45 2026 :: Log Alaric [10006]: arrived (A large hall.) from 10004
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10006]: n
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10007]: arrived (A large hall.) from 10006
+Thu Nov 12 23:30:46 2026 :: Log Trentlin [4208]: stash put gear
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10007]: n
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10007
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10008]: n
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10025]: arrived (The northern wing.) from 10008
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10025]: n
+Thu Nov 12 23:30:46 2026 :: Log Alaric [10026]: arrived (The northern wing.) from 10025
+Thu Nov 12 23:30:47 2026 :: Log Alaric [10026]: n
+Thu Nov 12 23:30:47 2026 :: Log Alaric [10027]: arrived (The northern wing.) from 10026
+Thu Nov 12 23:30:47 2026 :: Log Alaric [10027]: n
+Thu Nov 12 23:30:47 2026 :: Log Alaric [10027]: n
+Thu Nov 12 23:30:48 2026 :: Log Alaric [10027]: u
+Thu Nov 12 23:30:48 2026 :: Log Alaric [10028]: arrived (The royal stairway.) from 10027
+Thu Nov 12 23:30:49 2026 :: Log Alaric [10028]: u
+Thu Nov 12 23:30:49 2026 :: Log Alaric [10029]: arrived (A grand hallway.) from 10028
+Thu Nov 12 23:30:49 2026 :: Log Trentlin [4208]: l in gear
+Thu Nov 12 23:30:50 2026 :: Log Alaric [10029]: n
+Thu Nov 12 23:30:50 2026 :: Log Alaric [10030]: arrived (A grand hallway.) from 10029
+Thu Nov 12 23:30:50 2026 :: Log Alaric [10030]: n
+Thu Nov 12 23:30:50 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10030
+Thu Nov 12 23:30:50 2026 :: Log Alaric [10031]: w
+Thu Nov 12 23:30:50 2026 :: Log Alaric [10033]: arrived (A grand hallway.) from 10031
+Thu Nov 12 23:30:51 2026 :: Log Alaric [10033]: w
+Thu Nov 12 23:30:51 2026 :: Log Alaric [10034]: arrived (Intersection in the hall of commerce.) from 10033
+Thu Nov 12 23:30:51 2026 :: Log Alaric [10034]: s
+Thu Nov 12 23:30:51 2026 :: Log Alaric [10041]: arrived (The hall of commerce.) from 10034
+Thu Nov 12 23:30:52 2026 :: Log Alaric [10041]: s
+Thu Nov 12 23:30:52 2026 :: Log Alaric [10042]: arrived (The hall of commerce.) from 10041
+Thu Nov 12 23:30:52 2026 :: Log Alaric [10042]: s
+Thu Nov 12 23:30:52 2026 :: Log Alaric [10046]: arrived (A cul-de-sac.) from 10042
+Thu Nov 12 23:30:52 2026 :: Log Trentlin [4208]: e
+Thu Nov 12 23:30:52 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 12 23:30:52 2026 :: Log Trentlin [4207]: e
+Thu Nov 12 23:30:52 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 12 23:30:53 2026 :: Log Trentlin [4202]: e
+Thu Nov 12 23:30:53 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 12 23:30:53 2026 :: Log Trentlin [4201]: e
+Thu Nov 12 23:30:53 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Thu Nov 12 23:30:54 2026 :: Log Trentlin [2427]: n
+Thu Nov 12 23:30:54 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Nov 12 23:30:54 2026 :: Log Trentlin [2404]: n
+Thu Nov 12 23:30:54 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Thu Nov 12 23:30:55 2026 :: Log Alaric [10046]: open hidden
+Thu Nov 12 23:30:55 2026 :: Log Trentlin [2401]: n
+Thu Nov 12 23:30:55 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Thu Nov 12 23:30:55 2026 :: Log Alaric [10046]: s
+Thu Nov 12 23:30:55 2026 :: Log Alaric [10047]: arrived (A secret hallway.) from 10046
+Thu Nov 12 23:30:55 2026 :: Log Trentlin [2402]: n
+Thu Nov 12 23:30:55 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2402
+Thu Nov 12 23:30:56 2026 :: Log Trentlin [2415]: w
+Thu Nov 12 23:30:56 2026 :: Log Trentlin [2470]: arrived (Wizards Way.) from 2415
+Thu Nov 12 23:30:56 2026 :: Log Trentlin [2470]: w
+Thu Nov 12 23:30:56 2026 :: Log Trentlin [2471]: arrived (Wizards Way.) from 2470
+Thu Nov 12 23:30:56 2026 :: Log Alaric [10047]: os
+Thu Nov 12 23:30:57 2026 :: Log Trentlin [2471]: n
+Thu Nov 12 23:30:57 2026 :: Log Trentlin [4319]: arrived (Outside the doors to the University of Magic.) from 2471
+Thu Nov 12 23:30:57 2026 :: Log Alaric [10047]: s
+Thu Nov 12 23:30:57 2026 :: Log Alaric [10048]: arrived (Temple of Adamant.) from 10047
+Thu Nov 12 23:30:58 2026 :: Log Trentlin [4319]: s
+Thu Nov 12 23:30:58 2026 :: Log Trentlin [2471]: arrived (Wizards Way.) from 4319
+Thu Nov 12 23:30:59 2026 :: Log Alaric [10048]: open hidden
+Thu Nov 12 23:30:59 2026 :: Log Alaric [10048]: s
+Thu Nov 12 23:30:59 2026 :: Log Alaric [10049]: arrived (A dark back passage.) from 10048
+Thu Nov 12 23:30:59 2026 :: Log Trentlin [2471]: get sh
+Thu Nov 12 23:31:00 2026 :: Log Alaric [10049]: s
+Thu Nov 12 23:31:00 2026 :: Log Alaric [10050]: arrived (An Room of Adamant.) from 10049
+Thu Nov 12 23:31:00 2026 :: Log Trentlin [2471]: wear sh
+Thu Nov 12 23:31:02 2026 :: Log Alaric [10050]: look wa
+Thu Nov 12 23:31:03 2026 :: Log Trentlin [2471]: w
+Thu Nov 12 23:31:03 2026 :: Log Trentlin [2472]: arrived (Corner of Wizards Way and Magic Street.) from 2471
+Thu Nov 12 23:31:03 2026 :: Log Trentlin [2472]: w
+Thu Nov 12 23:31:04 2026 :: Log Alaric [10050]: fi war
+Thu Nov 12 23:31:04 2026 :: Log Trentlin [2472]: n
+Thu Nov 12 23:31:04 2026 :: Log Trentlin [2473]: arrived (Magic Street.) from 2472
+Thu Nov 12 23:31:05 2026 :: Log Trentlin [2473]: e
+Thu Nov 12 23:31:05 2026 :: Log Trentlin [4321]: arrived (Outside the doors to the University of Magic.) from 2473
+Thu Nov 12 23:31:05 2026 :: Log Trentlin [4321]: w
+Thu Nov 12 23:31:05 2026 :: Log Trentlin [2473]: arrived (Magic Street.) from 4321
+Thu Nov 12 23:31:06 2026 :: Log Trentlin [2473]: w
+Thu Nov 12 23:31:06 2026 :: Log Trentlin [2474]: arrived (Bidom's Magic Shop.) from 2473
+Thu Nov 12 23:31:06 2026 :: Log Trentlin [2474]: list
+Thu Nov 12 23:31:09 2026 :: Log Trentlin [2474]: buy true
+Thu Nov 12 23:31:09 2026 :: Log Trentlin [2474]: copper -32550
+Thu Nov 12 23:31:09 2026 :: Log Trentlin [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Thu Nov 12 23:31:09 2026 :: Log Alaric [10050]: fi
+Thu Nov 12 23:31:10 2026 :: Log Trentlin [2474]: (refused) reac
+Thu Nov 12 23:31:12 2026 :: Log Trentlin [2474]: reca
+Thu Nov 12 23:31:12 2026 :: Log Trentlin [10231]: arrived (The yellow cave) from 2474
+Thu Nov 12 23:31:14 2026 :: Log Trentlin [10231]: quaff tru
+Thu Nov 12 23:31:15 2026 :: Log Trentlin [10231]: reca
+Thu Nov 12 23:31:15 2026 :: Log Alaric [10050]: fi
+Thu Nov 12 23:31:17 2026 :: Log Trentlin [10231]: reca
+Thu Nov 12 23:31:17 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 10231
+Thu Nov 12 23:31:18 2026 :: Log Trentlin [4207]: w
+Thu Nov 12 23:31:18 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Thu Nov 12 23:31:18 2026 :: Log Trentlin [4208]: w
+Thu Nov 12 23:31:21 2026 :: Log Alaric [10050]: fi
+Thu Nov 12 23:31:21 2026 :: Log Trentlin [4208]: l in gear
+Thu Nov 12 23:31:24 2026 :: Log Trentlin [4208]: l gear
+Thu Nov 12 23:31:25 2026 :: Log Trentlin [4208]: i
+Thu Nov 12 23:31:27 2026 :: Log Alaric [10050]: fi
+Thu Nov 12 23:31:27 2026 :: Log Alaric [10050]: killed the Warrior-Priest
+Thu Nov 12 23:31:27 2026 :: Log Alaric [10050]: coin +2 platinum
+Thu Nov 12 23:31:27 2026 :: Log Alaric [10050]: coin +87 silver
+Thu Nov 12 23:31:27 2026 :: Log Alaric [10050]: coin +52 copper
+Thu Nov 12 23:31:27 2026 :: Log Alaric [10050]: coin +93 gold
+Thu Nov 12 23:31:28 2026 :: Log Trentlin [4208]: l in trent
+Thu Nov 12 23:31:31 2026 :: Log Trentlin [4208]: get all trent
+Thu Nov 12 23:31:35 2026 :: Log Alaric [10050]: get robe cor
+Thu Nov 12 23:31:35 2026 :: Log Trentlin [4208]: drop gear
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10050]: n
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10049]: arrived (A dark back passage.) from 10050
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10049]: n
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10048]: arrived (Temple of Adamant.) from 10049
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10048]: n
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10047]: arrived (A secret hallway.) from 10048
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10047]: n
+Thu Nov 12 23:31:36 2026 :: Log Alaric [10046]: arrived (A cul-de-sac.) from 10047
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10046]: n
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10042]: arrived (The hall of commerce.) from 10046
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10042]: n
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10041]: arrived (The hall of commerce.) from 10042
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10041]: n
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10034]: arrived (Intersection in the hall of commerce.) from 10041
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10034]: n
+Thu Nov 12 23:31:37 2026 :: Log Alaric [10035]: arrived (The hall of commerce.) from 10034
+Thu Nov 12 23:31:38 2026 :: Log Alaric [10035]: n
+Thu Nov 12 23:31:38 2026 :: Log Alaric [10038]: arrived (North end of the hall of commerce.) from 10035
+Thu Nov 12 23:31:38 2026 :: Log Alaric [10038]: e
+Thu Nov 12 23:31:38 2026 :: Log Trentlin [4208]: stash put gear
+Thu Nov 12 23:31:38 2026 :: Log Alaric [10038]: s
+Thu Nov 12 23:31:38 2026 :: Log Alaric [10035]: arrived (The hall of commerce.) from 10038
+Thu Nov 12 23:31:39 2026 :: Log Alaric [10035]: s
+Thu Nov 12 23:31:39 2026 :: Log Alaric [10034]: arrived (Intersection in the hall of commerce.) from 10035
+Thu Nov 12 23:31:39 2026 :: Log Alaric [10034]: e
+Thu Nov 12 23:31:39 2026 :: Log Alaric [10033]: arrived (A grand hallway.) from 10034
+Thu Nov 12 23:31:39 2026 :: Log Alaric [10033]: e
+Thu Nov 12 23:31:39 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10033
+Thu Nov 12 23:31:40 2026 :: Log Alaric [10031]: s
+Thu Nov 12 23:31:40 2026 :: Log Alaric [10030]: arrived (A grand hallway.) from 10031
+Thu Nov 12 23:31:40 2026 :: Log Alaric [10030]: s
+Thu Nov 12 23:31:40 2026 :: Log Alaric [10029]: arrived (A grand hallway.) from 10030
+Thu Nov 12 23:31:40 2026 :: Log Alaric [10029]: s
+Thu Nov 12 23:31:40 2026 :: Log Trentlin [4208]: l in hole
+Thu Nov 12 23:31:41 2026 :: Log Alaric [10029]: s
+Thu Nov 12 23:31:41 2026 :: Log Alaric [10029]: d
+Thu Nov 12 23:31:41 2026 :: Log Alaric [10028]: arrived (The royal stairway.) from 10029
+Thu Nov 12 23:31:41 2026 :: Log Alaric [10028]: r s
+Thu Nov 12 23:31:42 2026 :: Log Trentlin [4208]: open hole
+Thu Nov 12 23:31:42 2026 :: Log Alaric [10028]: affects off: steel fist
+Thu Nov 12 23:31:44 2026 :: Log Alaric [10028]: wake
+Thu Nov 12 23:31:44 2026 :: Log Alaric [10028]: s
+Thu Nov 12 23:31:44 2026 :: Log Alaric [10028]: d
+Thu Nov 12 23:31:44 2026 :: Log Alaric [10027]: arrived (The northern wing.) from 10028

@@ -43,3 +43,15 @@
 1794525531	leave	Trentlin	40	1	Monk 	30489	L5	to=out how=(mobile_update) secs=164 hp=-7
 1794525855	enter	Trentlin	40	1	Monk 	30200	over	from=out how=enter hp=100
 1794525864	enter	Alaric	57	3	Monk 	30200	over	from=out how=enter hp=76
+1794526006	leave	Alaric	57	3	Monk 	30200	over	to=out how=recall secs=142 hp=79
+1794526013	leave	Trentlin	40	1	Monk 	30200	over	to=out how=recall secs=158 hp=100
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30232 obj_name=a_small_boomerang type=weapon obj_level=4 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30410 obj_name=the_Magical_Boomerang type=weapon obj_level=12 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30666 obj_name=a_coiled-snake_shield type=armor obj_level=27 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30595 obj_name=the_Lizard's_Heart_Container type=armor obj_level=33 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30222 obj_name=a_short_bow type=weapon obj_level=6 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30585 obj_name=the_Gleeok_twin-fang_glaive type=weapon obj_level=27 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30587 obj_name=the_Gohma_eye-lance type=weapon obj_level=40 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30552 obj_name=enemy_bait type=food obj_level=20 how=get
+1794526065	got	Trentlin	40	1	Monk 	4208	out	obj=30552 obj_name=enemy_bait type=food obj_level=20 how=get
+1794526148	got	Trentlin	40	1	Monk 	4208	out	obj=30653 obj_name=an_Eagle-feather_cloak type=armor obj_level=8 how=stash
