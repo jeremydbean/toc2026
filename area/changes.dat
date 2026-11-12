@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112weaponflags 2026-11-12
+New help: HELP WEAPON FLAGS (or HELP VORPAL, SHARP, FLAMING, TWO HANDED)
+says what a weapon's flaming, frost, vampiric, sharp, vorpal and
+two-handed magic does in a fight.
+
 @ 20261112mudletdoors 2026-11-12
 The Mudlet interface (package 1.5.15): a walk no longer stops at a closed
 door on its route, and the exit buttons open a closed door before stepping
