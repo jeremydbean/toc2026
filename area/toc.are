@@ -1025,11 +1025,15 @@ CORPSE.
     sooner.
   - RESURRECTION or RAISE DEAD can return you to your gear.
 
-Who may take from your corpse:
-  - you, anybody grouped with you, and staff;
-  - anybody, if you have typed NOLOOT since you died (a death turns it
-    back off), if you have PKILL on, or if you were WANTED;
-  - anybody while you are logged out.
+Who may take from your corpse, or pick it up:
+  - you and staff, always;
+  - never a monster, a charmed follower or a pet;
+  - while you are in the game: anybody grouped with you, and anybody if
+    you have PKILL on or have typed NOLOOT since you died to give leave
+    (every death takes that leave back, so you are protected again);
+  - while you are logged out or have lost your link: nobody else at all,
+    whatever NOLOOT says;
+  - anybody, if you were WANTED: your corpse has no owner.
 Hyrule's bound items are yours alone whatever else is allowed (and are
 lost if the corpse rots away from you).  Nobody may take anything until
 your death has been saved ("still being laid to rest").

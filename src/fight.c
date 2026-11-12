@@ -3321,6 +3321,10 @@ OBJ_DATA *make_corpse( CHAR_DATA *ch )
 	/* A week, not half an hour (owner, 2026-10-23): Alaric's rotted while
 	   he was away and a restart took the gear off the floor. */
 	corpse->timer   = (sh_int) PC_CORPSE_TICKS;
+	/* A death takes back any leave to loot NOLOOT gave (stock ROM, kept
+	   on purpose, 2026-11-12): the protection is what comes back, never
+	   what goes -- a leave given for one corpse is not left standing over
+	   every later one. NOLOOT again after the death gives it. */
 	REMOVE_BIT(ch->act,PLR_CANLOOT);
 	if (!IS_SET(ch->act,PLR_WANTED))
 	    corpse->owner = str_dup(ch->name);

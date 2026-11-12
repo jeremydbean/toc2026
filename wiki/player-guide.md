@@ -285,6 +285,14 @@ another player for retrieval help when needed. Avoid quitting in the middle of
 recovery unless the game explicitly says it is safe. Saving protects persistent
 character state but is not a substitute for recovering carried equipment.
 
+Your corpse lasts a week of real time and survives restarts. You and staff may
+always take from it. While you are in the game your group may too, and so may
+anybody if you are a player killer or have typed `noloot` since the death to
+give leave -- every death takes that leave back. While you are logged out or
+link-dead nobody else may touch it, whatever `noloot` says, and no monster or
+charmed follower ever may. A WANTED player's corpse has no owner and is
+anybody's. `help death` has the details.
+
 ## Advancement
 
 Experience advances the character through mortal levels. `leveling` summarizes
@@ -582,8 +590,8 @@ gone when you leave the game. `HELP HOLIDAYS` has the whole list.
 
 Use `follow <leader>`, `group <name>`, `gtell <message>`, `report`, `rescue`,
 `split`, `autosplit`, and `autoassist` to coordinate. `nofollow` prevents
-unwanted followers, and `noloot` controls whether group members may loot your
-corpse under supported rules.
+unwanted followers, and `noloot` decides whether players outside your group may
+loot your corpse while you are in the game (see Death And Corpses).
 
 Group before the fight, confirm who is leading, decide whether autoloot and
 autosac are appropriate, and keep enough movement to retreat. Experience,

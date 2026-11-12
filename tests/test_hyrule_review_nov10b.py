@@ -5,8 +5,10 @@
    offline player's corpse: the ownership guard in get_obj began with
    !IS_NPC(ch), so a mobile was never asked. Once the follower died its
    corpse was an NPC's, which the guard does not know, and anybody could
-   loot the piece from it. A mobile is never the owner now; ordinary loot
-   still goes, and the owner still recovers their own corpse.
+   loot the piece from it. A mobile is never the owner now, and since
+   2026-11-12 no mobile takes anything from a player's corpse at all
+   (loot_refusal in act_obj.c): the dagger stays for its owner too, who
+   still recovers their own corpse.
 
 2. TRAP THE SOUL asked is_protected_npc, which is not Hyrule's: a level
    51-59 caster with the necromancers' bottle (Neerabd sells it) took a
@@ -127,7 +129,7 @@ class FollowerLaunderingTests(unittest.TestCase):
                     orders += attacker.sync(f"order guard {order}", timeout=60)
 
                 # The follower dies in ordinary combat, and autoloot takes
-                # what it carried.
+                # what it carried -- which is nothing of the corpse's.
                 staff.must("set char zrevattack hitroll 300", "")
                 staff.must("set char zrevattack damroll 300", "")
                 attacker.sync("autoloot", timeout=60)
@@ -161,8 +163,11 @@ class FollowerLaunderingTests(unittest.TestCase):
 
         self.assertNotRegex(pack, r"(?i)triforce shard", looted + pack)
         self.assertNotRegex(pack, r"(?i)master sword", looted + pack)
-        self.assertRegex(pack, r"(?i)dagger", "ordinary loot still goes: " + looted + pack)
+        # No creature takes from a player's corpse (2026-11-12): the
+        # ordinary dagger stays there for its owner too.
+        self.assertNotRegex(pack, r"(?i)dagger", "a creature took loot: " + orders + looted + pack)
         for held in (mine, again):
+            self.assertRegex(held, r"(?i)dagger", held)
             self.assertEqual(len(re.findall(r"(?i)triforce shard", held)), 2, held)
             self.assertRegex(held, r"(?i)master sword", held)
 

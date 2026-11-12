@@ -3615,6 +3615,7 @@ RID     *get_random_room( CHAR_DATA *ch );
 
 /* act_obj.c */
 bool    can_loot           (CHAR_DATA *ch, OBJ_DATA *obj);
+const char *loot_refusal   (CHAR_DATA *ch, OBJ_DATA *obj);
 void    get_obj            ( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container );
 void    do_bounce          (OBJ_DATA *obj);
 void    add_money          (CHAR_DATA *ch, long amount);

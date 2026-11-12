@@ -150,20 +150,25 @@ class BoundItemTests(unittest.TestCase):
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as looter:
                 login(staff, "Zauditstaff", PW)
                 login(looter, "Zauditlooter", PW)
+                # The owner stays in the game and gives leave to loot after
+                # the death (NOLOOT): only then may a stranger take from the
+                # corpse at all (2026-11-12: an absent owner's corpse is
+                # nobody else's), and the bound things still refuse.
                 with mud.connect(timeout=120) as dead:
                     login(dead, "Zauditdead", PW)
                     staff.must(f"goto {WEST_PADDOCK}", "")
                     staff.must("slay zauditdead", "")
                     dead.drain(2.0)
+                    dead.must("noloot", "may now be looted")
+                    looted = ""
+                    for _ in range(5):
+                        looted = looter.sync("get all corpse", timeout=60)
+                        if "laid to rest" not in looted:
+                            break
+                        looter.drain(2.0)
+                    pack = looter.sync("inventory", timeout=60)
                     dead.send("quit")
                     dead.wait_closed()
-                looted = ""
-                for _ in range(5):
-                    looted = looter.sync("get all corpse", timeout=60)
-                    if "laid to rest" not in looted:
-                        break
-                    looter.drain(2.0)
-                pack = looter.sync("inventory", timeout=60)
                 for client in (staff, looter):
                     client.send("quit")
                     client.wait_closed()

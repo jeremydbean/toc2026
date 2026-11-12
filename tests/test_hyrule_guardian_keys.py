@@ -405,7 +405,7 @@ class CorpseRecoveryTests(unittest.TestCase):
         # Counted while the fallen is away: the chest's copy left with them.
         self.assertEqual((shards_after, swords_after), (shards, swords), "no copy was made")
         # Refused, by the looting rule or the bound one.
-        self.assertRegex(taken, r"bound to the one who fell|can't do that", taken)
+        self.assertRegex(taken, r"bound to the one who fell|given leave to loot it", taken)
         self.assertNotIn("You get", taken, taken)
         self.assertNotRegex(other_pack, r"Triforce|Master Sword|bag", taken + other_pack)
 

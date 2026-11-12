@@ -3370,7 +3370,12 @@ it up.  It is on for new characters, so nobody can loot you; turn it off
 if you want a friend to bring your things back.  AUTO shows how it
 stands.
 
-See also: AUTO, NOSUMMON, NOFOLLOW
+Every death turns it back on, so give leave after the death you want
+help with.  Leave counts only while you are in the game: logged out or
+link-dead, your corpse is yours and the staff's alone, and no monster or
+follower ever takes from it.  HELP DEATH has the whole rule.
+
+See also: AUTO, NOSUMMON, NOFOLLOW, DEATH
 ~
 
 0 NOSUMMON~
