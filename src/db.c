@@ -963,6 +963,19 @@ void load_helps( FILE *fp )
     return;
 }
  
+/* One social into the table, which is a fixed MAX_SOCIALS long: a socials
+   file with more wrote past its end (fuzzing, 2026-11-12). At boot that is
+   a malformed file, which stops it like every other. */
+static void social_add( const struct social_type *social )
+{
+    if ( social_count >= MAX_SOCIALS )
+    {
+        bug( "Load_socials: more than %d socials.", MAX_SOCIALS );
+        exit( 1 );
+    }
+    social_table[social_count++] = *social;
+}
+
 /* snarf a socials file */
 void load_socials( FILE *fp)
 {
@@ -992,8 +1005,7 @@ void load_socials( FILE *fp)
              social.char_no_arg = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
@@ -1004,8 +1016,7 @@ void load_socials( FILE *fp)
              social.others_no_arg = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
@@ -1016,8 +1027,7 @@ void load_socials( FILE *fp)
              social.char_found = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
@@ -1028,8 +1038,7 @@ void load_socials( FILE *fp)
              social.others_found = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
@@ -1040,8 +1049,7 @@ void load_socials( FILE *fp)
              social.vict_found = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
@@ -1052,8 +1060,7 @@ void load_socials( FILE *fp)
              social.char_not_found = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
@@ -1064,8 +1071,7 @@ void load_socials( FILE *fp)
              social.char_auto = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
@@ -1076,15 +1082,13 @@ void load_socials( FILE *fp)
              social.others_auto = NULL;
         else if (!strcmp(temp,"#"))
         {
-             social_table[social_count] = social;
-             social_count++;
+             social_add( &social );
              continue;
         }
         else
             social.others_auto = temp; 
         
-        social_table[social_count] = social;
-        social_count++;
+        social_add( &social );
    }
    return;
 }
@@ -1674,8 +1678,12 @@ void load_resets( FILE *fp )
  
         case 'D':
             pRoomIndex = get_room_index( pReset->arg1 );
- 
-            if ( pReset->arg2 < 0
+
+            /* get_room_index answers NULL for a negative vnum without
+               stopping the boot, and the exit below was read through it
+               (fuzzing, 2026-11-12). */
+            if ( pRoomIndex == NULL
+            ||   pReset->arg2 < 0
             ||   pReset->arg2 > 9
             || ( pexit = pRoomIndex->exit[pReset->arg2] ) == NULL
             || !IS_SET( pexit->exit_info, EX_ISDOOR ) )
@@ -1884,7 +1892,19 @@ void load_rooms( FILE *fp )
                 pRoomAff         = alloc_perm(sizeof(*pRoomAff) );
             pRoomAff->room       = pRoomIndex;
             pRoomAff->timer      = -1;
-            pRoomAff->type       = (sh_int)(fread_number( fp ));
+            {
+                /* The type names an entry of room_aff_type; one outside it
+                   read before or past the table (fuzzing, 2026-11-12). */
+                int type = fread_number( fp );
+
+                if ( type < 0
+                  || type >= (int) ( sizeof(room_aff_type) / sizeof(room_aff_type[0]) ) )
+                {
+                    bug( "Load_rooms: vnum %d has a bad room affect type.", vnum );
+                    exit( 1 );
+                }
+                pRoomAff->type   = (sh_int) type;
+            }
             pRoomAff->level      = (sh_int)(fread_number( fp ));
             pRoomAff->name       = room_aff_type[pRoomAff->type];
             pRoomAff->bitvector  = (int)(fread_flag( fp ));
@@ -5699,10 +5719,13 @@ static bool in_string_space( const char *str )
  * Permanent memory is never freed,
  *   pointers into it may be copied safely.
  */
+/* The block alloc_perm is carving and how far into it. At file scope only
+   so the fuzz build's rewind (TOC_FUZZ, below) can reach them. */
+static char *pMemPerm;
+static int iMemPerm;
+
 void *alloc_perm( int sMem )
 {
-    static char *pMemPerm;
-    static int iMemPerm;
     void *pMem;
  
     {
@@ -6220,21 +6243,29 @@ bool str_suffix( const char *astr, const char *bstr )
  
  
 /*
- * Returns an initial-capped string.
+ * Returns an initial-capped string, in one of a ring of static buffers:
+ * the copy is good for CAPITALIZE_RING more calls, which is more than any
+ * one expression or format needs (two is the most any caller passes). It
+ * was a fresh str_dup nobody freed -- a leak at every login, save, file
+ * path and display that capitalised a name (fuzzing, 2026-11-12). Every
+ * caller uses the result at once or copies it; none keeps the pointer.
  */
+#define CAPITALIZE_RING 16
 char *capitalize( const char *str )
 {
+    static char ring[CAPITALIZE_RING][MAX_STRING_LENGTH];
+    static int next;
+    char *out = ring[next];
     int i;
-    char *bla = str_dup(str);
-    
-    for (i=0;bla[i] != '\0';i++)
-    { if (i != 0)
-        bla[i] = LOWER(bla[i]);
-      else
-        bla[i] = UPPER(bla[i]);
-    }
-    return bla;
-} 
+
+    next = ( next + 1 ) % CAPITALIZE_RING;
+    if ( str == NULL )
+        str = "";
+    for ( i = 0; str[i] != '\0' && i < MAX_STRING_LENGTH - 1; i++ )
+        out[i] = i == 0 ? UPPER( str[i] ) : LOWER( str[i] );
+    out[i] = '\0';
+    return out;
+}
  
  
 /*
@@ -6298,10 +6329,18 @@ void bug( const char *str, int param )
         {
 	    iChar = (int)(ftell( fpArea ));
             fseek( fpArea, 0, 0 );
+            /* EOF ends the count: a file whose last line has no newline
+               -- one cut off mid-string -- read past its end for ever
+               here, and the boot hung instead of failing (fuzzing,
+               2026-11-12; tests/test_fuzz_findings.py). */
             for ( iLine = 0; ftell( fpArea ) < iChar; iLine++ )
             {
-                while ( getc( fpArea ) != '\n' )
+                int c;
+
+                while ( ( c = getc( fpArea ) ) != '\n' && c != EOF )
                     ;
+                if ( c == EOF )
+                    break;
             }
             fseek( fpArea, iChar, 0 );
         }
@@ -6654,3 +6693,156 @@ void respawn_relic(int i)
 
     return;
 }
+
+
+#if defined(TOC_FUZZ)
+/*
+ * The fuzz build only (fuzz/build.sh defines TOC_FUZZ; neither the Makefile
+ * nor CMake does, so nothing here is in the game). The area-file target
+ * (fuzz/fuzz_area.c) loads one fuzzed file into a booted world per input,
+ * and must then take every trace of it out again, or the next input would
+ * meet its vnums and the world would grow without end. Every loader adds
+ * by prepending to a hash chain or appending to a list, so the heads and
+ * tails saved here, put back, undo it; the permanent memory and string
+ * space it used are zeroed and handed out again, which is what lets a
+ * long run stay in bounded memory. Nothing the input built may be reached
+ * from anywhere after the rewind: a new global a loader writes belongs here.
+ */
+static struct
+{
+    bool                  marked;
+    AREA_DATA            *area_last;
+    RESET_DATA           *area_reset_first;
+    RESET_DATA           *area_reset_last;
+    int                   top_area;
+    MOB_INDEX_DATA       *mob_hash[MAX_KEY_HASH];
+    OBJ_INDEX_DATA       *obj_hash[MAX_KEY_HASH];
+    ROOM_INDEX_DATA      *room_hash[MAX_KEY_HASH];
+    char                 *string_hash[MAX_KEY_HASH];
+    int                   room_list_count;
+    int                   mob_list_count;
+    char                 *top_string;
+    char                 *perm_block;
+    int                   perm_used;
+    int                   n_alloc_perm, s_alloc_perm, n_alloc_string, s_alloc_string;
+    HELP_DATA            *help_first, *help_last;
+    char                 *help_greeting;
+    SHOP_DATA            *shop_first, *shop_last;
+    int                   social_count;
+    TELEPORT_ROOM_DATA   *teleport_room_list;
+    ROOM_AFF_DATA        *room_aff_list;
+    KILL_DATA             kill_table[MAX_LEVEL];
+    int                   tops[16];
+} fuzz_mark;
+
+void fuzz_world_mark( void )
+{
+    fuzz_mark.marked            = true;
+    fuzz_mark.area_last         = area_last;
+    fuzz_mark.area_reset_first  = area_last != NULL ? area_last->reset_first : NULL;
+    fuzz_mark.area_reset_last   = area_last != NULL ? area_last->reset_last : NULL;
+    fuzz_mark.top_area          = top_area;
+    memcpy( fuzz_mark.mob_hash, mob_index_hash, sizeof(mob_index_hash) );
+    memcpy( fuzz_mark.obj_hash, obj_index_hash, sizeof(obj_index_hash) );
+    memcpy( fuzz_mark.room_hash, room_index_hash, sizeof(room_index_hash) );
+    memcpy( fuzz_mark.string_hash, string_hash, sizeof(string_hash) );
+    fuzz_mark.room_list_count   = room_index_list.count;
+    fuzz_mark.mob_list_count    = mob_index_list.count;
+    fuzz_mark.top_string        = top_string;
+    fuzz_mark.perm_block        = pMemPerm;
+    fuzz_mark.perm_used         = iMemPerm;
+    fuzz_mark.n_alloc_perm      = nAllocPerm;
+    fuzz_mark.s_alloc_perm      = sAllocPerm;
+    fuzz_mark.n_alloc_string    = nAllocString;
+    fuzz_mark.s_alloc_string    = sAllocString;
+    fuzz_mark.help_first        = help_first;
+    fuzz_mark.help_last         = help_last;
+    fuzz_mark.help_greeting     = help_greeting;
+    fuzz_mark.shop_first        = shop_first;
+    fuzz_mark.shop_last         = shop_last;
+    fuzz_mark.social_count      = social_count;
+    fuzz_mark.teleport_room_list = teleport_room_list;
+    fuzz_mark.room_aff_list     = room_aff_list;
+    memcpy( fuzz_mark.kill_table, kill_table, sizeof(fuzz_mark.kill_table) );
+    fuzz_mark.tops[0]  = top_affect;      fuzz_mark.tops[1]  = top_ed;
+    fuzz_mark.tops[2]  = top_new_action;  fuzz_mark.tops[3]  = top_exit;
+    fuzz_mark.tops[4]  = top_help;        fuzz_mark.tops[5]  = top_mob_index;
+    fuzz_mark.tops[6]  = top_obj_index;   fuzz_mark.tops[7]  = top_reset;
+    fuzz_mark.tops[8]  = top_room;        fuzz_mark.tops[9]  = top_vnum_room;
+    fuzz_mark.tops[10] = top_vnum_mob;    fuzz_mark.tops[11] = top_vnum_obj;
+    fuzz_mark.tops[12] = top_shop;        fuzz_mark.tops[13] = newmobs;
+    fuzz_mark.tops[14] = newobjs;
+}
+
+void fuzz_world_rewind( void )
+{
+    if ( !fuzz_mark.marked )
+        return;
+
+    if ( fuzz_mark.area_last != NULL )
+    {
+        fuzz_mark.area_last->next        = NULL;
+        fuzz_mark.area_last->reset_first = fuzz_mark.area_reset_first;
+        fuzz_mark.area_last->reset_last  = fuzz_mark.area_reset_last;
+        if ( fuzz_mark.area_reset_last != NULL )
+            fuzz_mark.area_reset_last->next = NULL;
+    }
+    area_last = fuzz_mark.area_last;
+    top_area  = fuzz_mark.top_area;
+    memcpy( mob_index_hash, fuzz_mark.mob_hash, sizeof(mob_index_hash) );
+    memcpy( obj_index_hash, fuzz_mark.obj_hash, sizeof(obj_index_hash) );
+    memcpy( room_index_hash, fuzz_mark.room_hash, sizeof(room_index_hash) );
+    memcpy( string_hash, fuzz_mark.string_hash, sizeof(string_hash) );
+    room_index_list.count = fuzz_mark.room_list_count;
+    mob_index_list.count  = fuzz_mark.mob_list_count;
+
+    /* String space and permanent memory hand out zeroed memory, and the
+       loaders rely on it (load_rooms reads a new room's exits). */
+    if ( top_string > fuzz_mark.top_string )
+        memset( fuzz_mark.top_string, 0, (size_t) ( top_string - fuzz_mark.top_string ) );
+    top_string = fuzz_mark.top_string;
+    if ( pMemPerm == fuzz_mark.perm_block )
+    {
+        if ( iMemPerm > fuzz_mark.perm_used )
+            memset( pMemPerm + fuzz_mark.perm_used, 0,
+                    (size_t) ( iMemPerm - fuzz_mark.perm_used ) );
+        iMemPerm = fuzz_mark.perm_used;
+    }
+    else
+    {
+        /* The input started a block: this input's records are all in it
+           (or in the old block's tail, which is simply never used again). */
+        memset( pMemPerm, 0, (size_t) iMemPerm );
+        iMemPerm = 0;
+        fuzz_mark.perm_block = pMemPerm;
+        fuzz_mark.perm_used  = 0;
+    }
+    nAllocPerm   = fuzz_mark.n_alloc_perm;
+    sAllocPerm   = fuzz_mark.s_alloc_perm;
+    nAllocString = fuzz_mark.n_alloc_string;
+    sAllocString = fuzz_mark.s_alloc_string;
+
+    help_first    = fuzz_mark.help_first;
+    help_last     = fuzz_mark.help_last;
+    if ( help_last != NULL )
+        help_last->next = NULL;
+    help_greeting = fuzz_mark.help_greeting;
+    shop_first    = fuzz_mark.shop_first;
+    shop_last     = fuzz_mark.shop_last;
+    if ( shop_last != NULL )
+        shop_last->next = NULL;
+    social_count  = fuzz_mark.social_count;
+    teleport_room_list = fuzz_mark.teleport_room_list;
+    room_aff_list = fuzz_mark.room_aff_list;
+    memcpy( kill_table, fuzz_mark.kill_table, sizeof(fuzz_mark.kill_table) );
+    top_affect     = fuzz_mark.tops[0];  top_ed         = fuzz_mark.tops[1];
+    top_new_action = fuzz_mark.tops[2];  top_exit       = fuzz_mark.tops[3];
+    top_help       = fuzz_mark.tops[4];  top_mob_index  = fuzz_mark.tops[5];
+    top_obj_index  = fuzz_mark.tops[6];  top_reset      = fuzz_mark.tops[7];
+    top_room       = fuzz_mark.tops[8];  top_vnum_room  = fuzz_mark.tops[9];
+    top_vnum_mob   = fuzz_mark.tops[10]; top_vnum_obj   = fuzz_mark.tops[11];
+    top_shop       = fuzz_mark.tops[12]; newmobs        = fuzz_mark.tops[13];
+    newobjs        = fuzz_mark.tops[14];
+    fpArea = NULL;
+}
+#endif

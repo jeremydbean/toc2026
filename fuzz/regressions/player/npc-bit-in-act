@@ -1,0 +1,260 @@
+#PLAYER
+Name Zfuzz~
+Id   53922
+Serial 887185
+LogO 1794448017
+Vers 4
+Prom ~
+Race human~
+Sex  1
+Cla  3
+Gui  11
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
+ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again~
+Cast none
+Levl 70
+Plyd 19
+ListRemorts ~
+NumRemorts 0
+Note!0
+Scro 22
+Room 3700
+HMV  20 20 100 100 100 100
+NewGold 0
+NewPlat 0
+NewCopp 0
+NewSilv 0
+BankCP 0
+IntTime 0
+IntTotal 0
+Dcount 0
+SavedOnce 1
+PkRec 0
+PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1794448007
+Achv level-10 1794448007
+Achv level-15 1794448007
+Achv level-20 1794448007
+Achv level-25 1794448007
+Achv level-30 1794448007
+Ac-v level-40 1794448007
+Achv level-50 1794448007
+Achv level-55 1794448007
+Achv level-58 1794448007
+Achv level-59 1794448007
+Achv visit-mud-school 1794448003
+Achv level-35 1794448007
+Achv level-45 1794448007
+AchSet areas 1103516333 ~
+AchSet rooms 3700 ~
+LastOut  1794448017
+Rested 0 0
+Daily 0 0 0 0 0
+SesLogin 1794448007
+SesDur   10
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
+Exp  0
+Act  65o87Cm8
+m 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+C/lor 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Prac 5
+Trai 3
+Save  -1
+Alig  0
+Hit   2
+Dam   2
+ACs 92 94 94 98
+Attr 13 13 13 13 13
+AMod 0 0 1 0 0
+Pass $6$DYDNhL6GGlvNS0GM$AIwpGuyNksVaxT.zSiXtbnPMyhdCBwqoQKFQpimjbMvomQl.2rjxGYiEH91wbloY6bEKvW3PvdoNqNg5tq0nn/~
+Titl  the fuzzed~
+TitleSet 1
+Pnts 0
+TSex 1
+LLev 0
+HMVP 20 100 100
+Cond 0 48 48
+Alias zz look~
+Sk 30 'axe'
+Sk 30 'dagger'
+Sk 25 'flail'
+Sk 25 'mace'
+Sk 35 'polearm'
+Sk 1 'shield block'
+Sk 30 'spear'
+Sk 80 'sword'
+Sk 30 'whip'
+Sk 1 'disarm'
+Sk 1 'kick'
+Sk 1 'parry'
+Sk 1 'rescue'
+Sk 50 'recall'
+Gr 'rom basics'
+Gr 'warrior basics'
+Gr 'warrior default'
+End
+
+#O
+Vnum 3716
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3703
+Nest 0
+Wear 5
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3702
+Nest 0
+Wear 16
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 1387
+Nest 0
+Wear -1
+Lev  70
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 630
+Nest 1
+Wear -1
+Lev  70
+Cost 1000000
+Cond 100
+Repd 0
+Val  1 8 7 1 32
+End
+
+#O
+Vnum 101
+Nest 0
+Wear 6
+Lev  2
+Cost 500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3365
+Nest 0
+Wear 0
+Lev  70
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 28024
+Nest 0
+Wear -1
+Lev  70
+Cost 10000000
+Cond 100
+Repd 0
+Val  70 2 2 84 0
+Spell 3 'lightning bolt'
+End
+
+#O
+Vnum 607
+Nest 0
+Wear -1
+Lev  1
+Cost 80
+Cond 100
+Repd 0
+End
+
+#PET
+Vnum 2404
+Name mercenary pet~
+Sex  1
+HMV  30 30 100 100 100 100
+Pos  8
+ACs  95 95 95 95
+Attr 13 13 13 13 13
+
+AchCompass 0
+AchTriforce 0
+Achv level-5 1794448007
+Achv level-10 1794448007
+Achv level-15 179t 0
+Wear -1
+Cost 0
+Cond 100
+End
+he killer607
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+End
+
+#END

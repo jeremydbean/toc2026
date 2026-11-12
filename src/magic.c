@@ -301,10 +301,14 @@ int slot_lookup( int slot )
 	    return sn;
     }
 
+    /* At boot a spell slot no spell has is a malformed area file, which
+       stops the boot like every other (bug names the file and line) --
+       cleanly, not by abort(), which took the whole loader down with a
+       core dump (fuzzing, 2026-11-12). */
     if ( fBootDb )
     {
 	bug( "Slot_lookup: bad slot %d.", slot );
-	abort( );
+	exit( 1 );
     }
 
     return -1;

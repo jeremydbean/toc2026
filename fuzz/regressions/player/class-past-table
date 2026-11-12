@@ -1,0 +1,220 @@
+#PLAYER
+Name Zfuzz~
+Id   53922
+Serial 887185
+LogO 1794448017
+Vers 4
+Prom ~
+Race human~
+Sex  1
+Cla  3
+Gui  11
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown  areas 1103516333 ~
+AchSet rooms 3700 ~
+Lasolor 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color#END12
+Color 13 7
+Class 14 11
+BamfinColor 15 6
+Color 16 6
+Pos  8
+Prac 5
+Traiwarrior basics'
+Gr 'warrior default'
+End
+
+#O
+Vnum 3717
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3703
+Nest 0
+Wear 5
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3702
+Nest 0
+Wear 16
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 1387
+Nest 0
+Wear -1
+Lev  70
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 630
+Nest 1
+Wear -1
+Lev  70
+Cost 1000000
+Cond 100
+Repd 0
+Val  1 8 7 1 32
+End
+
+#O
+Vnum 101
+Nest 0
+Wear 6
+Lev  2
+Cost 500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3365
+Nest 0
+Wear 0
+Lev  7 0
+Color 12 12
+Color 13 7
+Color 14 11
+BamfinColor 15 6
+Color 16 6
+Pos  8
+Prac 5
+Traiwarrior basics'
+Gr 'warrior default'
+End
+
+#O
+Vnum 3717
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3703
+Nest 0
+Wear 5
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3702
+Nest 0
+Wear 16
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 1387
+Nest 0
+Wear -1
+Lev  70
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 630
+Nest 1
+Wear -1
+Lev  70
+Cost 1000000
+Cond 100
+Repd 0
+Val  1 8 7 1 32
+End
+
+#O
+Vnum 101
+Nest 0
+Wear 6
+Lev  2
+Cost 500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3365
+Nest 0
+Wear 0
+Lev  70
+CosAchQuests100
+Repd 0
+End
+
+#O
+Vnum 28024
+Nest 0
+Wear -1Lev  70
+Cost 10000000
+Cond 100
+Repd 0
+Val  70 2 2 84 0
+SpellHMV'lightning bolt'
+End
+
+#O
+Vnum 607
+Nest 0
+Wear -1
+Lev  1
+Cost 80
+Cond 100
+Repd 0
+End
+
+#END

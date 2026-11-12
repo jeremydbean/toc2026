@@ -320,10 +320,15 @@ jobs:
           if grep -qx test_mudlet_assets shard-modules.txt; then
             echo "lua=lua5.4" >> "$GITHUB_OUTPUT"
           fi
+          # clang's libFuzzer and sanitizer runtimes build the readers'
+          # fuzz targets (fuzz/README.md); only their smoke test needs them.
+          if grep -qx test_fuzz_smoke shard-modules.txt; then
+            echo "fuzz=clang libclang-rt-18-dev" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Install test dependencies
         # gdb gives a stalled server's backtrace (tests/live_mud.py).
-        run: scripts/ci/install_deps.sh gcc libcrypt-dev zlib1g-dev gdb ${{ steps.shard.outputs.lua }}
+        run: scripts/ci/install_deps.sh gcc libcrypt-dev zlib1g-dev gdb ${{ steps.shard.outputs.lua }} ${{ steps.shard.outputs.fuzz }}
 
       - name: Set up Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0

@@ -3989,6 +3989,15 @@ void do_alias( CHAR_DATA *ch, char *argument )
                 send_to_char( "An alias name is one word.\n\r", ch );
                 return;
             }
+        /* And it may not start with a quote: the file reader takes one as
+           an opening quote, so ALIAS "'X" LOOK read the rest of the
+           character's file out of step and the next login refused them
+           (fuzzing, 2026-11-12). */
+        if ( arg[0] == '\'' || arg[0] == '"' )
+        {
+            send_to_char( "An alias name may not start with a quote.\n\r", ch );
+            return;
+        }
     }
 
     {
@@ -4337,7 +4346,12 @@ void stop_follower( CHAR_DATA *ch )
 	affect_strip( ch, gsn_charm_person );
     }
 
-    if ( can_see( ch->master, ch ) && ch->in_room != NULL)
+    /* Rooms first: can_see reads the looker's room, and a copy loaded from
+       a file and never placed has none -- a file with a pet and no Room
+       line, refused, crashed the game in free_char's nuke_pets (fuzzing,
+       2026-11-12). Nobody hears anything there anyway. */
+    if ( ch->in_room != NULL && ch->master->in_room != NULL
+    &&   can_see( ch->master, ch ) )
     {
 	act( "$n stops following you.",     ch, NULL, ch->master, TO_VICT );
     	act( "You stop following $N.",      ch, NULL, ch->master, TO_CHAR );

@@ -1,0 +1,65 @@
+#PLAYER
+Name Zfuzz~
+Id   53922
+Serial 887185
+LogO 1794448017
+Vers 4
+Prom ~
+Race human~
+Sex  1
+Cla  3
+Gui  11
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
+ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again~
+Cast none
+Levl 70
+Plyd 19
+ListRemorts ~
+NumRemorts 0
+toNghtning bolt'
+End
+
+#O
+Vnum 607
+Nest 0
+Wear -1
+Lev  1
+Cost 80
+Cond 100
+Repd 0
+End
+
+#PET
+Vnum 2404
+Name mercenary petƒ
+Sex  1
+HMV  30 30 100 100 100 100
+Pos  8
+ACs  95 95 95 95
+Attr 13 13 13 13 13
+AMod 0 0 0 0 0
+AffD 'armor'  10  12 -20  17          0          0
+End
+
+#STASH
+#O
+Vnum 1387
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+End
+
+#O
+Vnumÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ 607
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+End
+
+#END

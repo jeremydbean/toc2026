@@ -1,0 +1,242 @@
+#PLAYER
+Name Zfuzz~
+Id   53922
+Serial 887185
+LogO 1794448017
+Vers 4
+Prom ~
+Race human~
+Sex  1
+Cla  3
+Gui  11
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
+ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again~
+Cast none
+Levl 70
+Plyd 19
+ListRemorts ~
+NumRemorts 0
+Note 0
+Scro 22
+Room 3700
+HMV  20 20 100 100 100 100
+NewGold 0
+NewPlat 0
+NewCopp 0
+NewSilv 0
+BankCounted 0
+On_Quest 0
+QuestP 0
+IntTime 0
+IntTotal 0
+Dcount 0
+SavedOnce 1
+PkRec 0
+PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1794448007
+Achv level-10 1794448R
+Name Zfuzz~
+Id   53922
+Serial 887185
+LogO 1794448017
+Vers 4
+Prom ~
+Race human~
+Sex  1
+Cla  3
+Gui  11
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
+ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shspare-shards-again~
+Cast none
+Levl 70
+Plyd 19
+ListRemorts ~
+NumRemorts 0
+Note 0
+Scro 22
+Room 3700
+HMV  20 20 100 100 100 100
+NewGold 0
+NewPlat 0
+NewCopp 0
+NewSilv 0
+BankCP 0
+IntTime 0
+IntTotal 0
+Dcount 0
+SavedOnce 1
+PkRec 0
+PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1794448007
+Achv level-10 1794448007
+Achv level-15 1794448007
+Achv level-20 1794448007
+Achv level-25 1794448007
+Achv level-30 1794448007
+Achv level-40 1794448007
+Achv level-50 1794448007
+Achv level-55 1794nt 0
+SavedOnce 1
+PkRec 0
+PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1794448007
+Achv level-10 1794448007
+Achv level-15 1794448007
+Achv level-20 1794448007
+Achv level-25 1794448007
+Achv level-30 1794448007
+Achv level-40 1794448007
+Achv level-50 1794448007
+Achv level-55 1794448007
+Achv level-58 1794448007
+ 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+JCond 100
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3702
+Nest 0
+Wear 16
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 1387
+Nest 0
+Wear -1
+Lev  70
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 630
+Nest 1
+Wear -1
+Lev  70
+Cost 1000000
+Cond 100
+Repd 0
+Val  1 8 7 1 32
+End
+
+#O
+Vnum 101
+Nest 0
+Wear 6
+Lev  2
+Cost 500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3365
+Nest 0
+Wear 0
+Lev  70
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 28024
+Nest 0
+Wear -1
+Lev  70
+Cost 10000000
+Cond 100
+Repd 0
+Val  70 2 2 84 0
+Spell 3 'lightning bolt'
+End
+
+#O
+Vnum 607
+Nest 0
+Wear -1
+Lev  1
+Cost 80
+Cond 100
+Repd 0
+End
+
+#PET
+Vnum 2404
+Name mercenary pet~
+Sex  2
+HMV  30 30 100 100 100 100
+Pos  8
+ACs  95 95 95 95
+Attr 13 13 13 13 13
+AMod 0 0 0 0 0
+AffD 'armor'  105
+Attr 13 13 13 13 13
+AMod 0 0 0 0 0
+AffD 'armor'  10  12 -20  17          0          0
+End
+
+#STASH
+#O
+Vnum 1387
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+End
+
+#O
+Vnum 607
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+End
+
+#END
