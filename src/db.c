@@ -260,6 +260,123 @@ int                     top_vnum_room;
 int                     top_vnum_mob;
 int                     top_vnum_obj;
 int                     top_shop;
+
+/*
+ * Every world room and every mobile prototype, densely, so a random pick
+ * is one draw (review, 2026-11-12). Vnums are not dense: with 7,767 rooms
+ * below 32,768 and one at 999,999, a guess between 0 and top_vnum_room
+ * found a room about one try in 129, and two hundred tries all missed one
+ * time in five -- TELEPORT fizzled and a recall misfire fell back to the
+ * Temple for want of a room, not for want of an eligible one. Drawing
+ * from these keeps the old distribution (every room equally likely) and
+ * never misses. A pocket room (rope trick, haven) is not a world room and
+ * is not listed: nothing random should land in somebody's pocket.
+ */
+typedef struct
+{
+    void **items;
+    int    count;
+    int    cap;
+} INDEX_LIST;
+
+static INDEX_LIST room_index_list;
+static INDEX_LIST mob_index_list;
+
+static void index_list_add( INDEX_LIST *list, void *item )
+{
+    if ( list->count >= list->cap )
+    {
+	int cap = list->cap > 0 ? list->cap * 2 : 1024;
+	void **grown = realloc( list->items, (size_t) cap * sizeof( *grown ) );
+
+	if ( grown == NULL )
+	{
+	    bug( "index_list_add: out of memory at %d entries.", list->count );
+	    exit( 1 );
+	}
+	list->items = grown;
+	list->cap = cap;
+    }
+    list->items[list->count++] = item;
+}
+
+/* Order does not matter to a uniform draw, so the last takes its place. */
+static void index_list_remove( INDEX_LIST *list, const void *item )
+{
+    int i;
+
+    for ( i = 0; i < list->count; i++ )
+	if ( list->items[i] == item )
+	{
+	    list->items[i] = list->items[--list->count];
+	    return;
+	}
+}
+
+static void *index_list_pick( const INDEX_LIST *list )
+{
+    if ( list->count <= 0 )
+	return NULL;
+    return list->items[number_range( 0, list->count - 1 )];
+}
+
+/* A room joins the world: the hash GET_ROOM_INDEX reads, and the list a
+   random pick draws from. */
+static void room_index_link( ROOM_INDEX_DATA *room )
+{
+    int iHash = room->vnum % MAX_KEY_HASH;
+
+    room->next = room_index_hash[iHash];
+    room_index_hash[iHash] = room;
+    index_list_add( &room_index_list, room );
+}
+
+/* extract_room's half: a freed room is never drawn. */
+void room_index_forget( ROOM_INDEX_DATA *room )
+{
+    index_list_remove( &room_index_list, room );
+}
+
+static void mob_index_link( MOB_INDEX_DATA *mob )
+{
+    int iHash = mob->vnum % MAX_KEY_HASH;
+
+    mob->next = mob_index_hash[iHash];
+    mob_index_hash[iHash] = mob;
+    index_list_add( &mob_index_list, mob );
+}
+
+/* One world room, every one equally likely; NULL only in an empty world. */
+ROOM_INDEX_DATA *random_room_index( void )
+{
+    return (ROOM_INDEX_DATA *) index_list_pick( &room_index_list );
+}
+
+/* One world room ok() accepts, every one equally likely; NULL when none
+   does. One pass with reservoir sampling, so it never misses a room that
+   is there, however the vnums are spread. */
+ROOM_INDEX_DATA *random_room_where( bool (*ok)( ROOM_INDEX_DATA *room ) )
+{
+    ROOM_INDEX_DATA *chosen = NULL;
+    int seen = 0;
+    int i;
+
+    for ( i = 0; i < room_index_list.count; i++ )
+    {
+	ROOM_INDEX_DATA *room = (ROOM_INDEX_DATA *) room_index_list.items[i];
+
+	if ( ok( room ) && number_range( 1, ++seen ) == 1 )
+	    chosen = room;
+    }
+    return chosen;
+}
+
+/* One mobile prototype, every one equally likely. */
+MOB_INDEX_DATA *random_mob_index( void )
+{
+    return (MOB_INDEX_DATA *) index_list_pick( &mob_index_list );
+}
+
 int                     mobile_count = 0;
 int                     newmobs = 0;
 int                     newobjs = 0;
@@ -1126,7 +1243,7 @@ void load_mobiles( FILE *fp )
     {
         int vnum;
         char letter,temp;
-        int iHash,total;
+        int total;
  
         letter                          = fread_letter( fp );
         if ( letter != '#' )
@@ -1271,9 +1388,7 @@ void load_mobiles( FILE *fp )
             read_m_mob_extras(fp, pMobIndex);
         }
  
-        iHash                   = vnum % MAX_KEY_HASH;
-        pMobIndex->next         = mob_index_hash[iHash];
-        mob_index_hash[iHash]   = pMobIndex;
+        mob_index_link( pMobIndex );
         top_mob_index++;
         top_vnum_mob = UMAX( top_vnum_mob, vnum );
         kill_table[URANGE(0, pMobIndex->level, MAX_LEVEL-1)].number++;
@@ -1627,7 +1742,6 @@ void load_rooms( FILE *fp )
     int vnum;
     char letter;
     int door;
-    int iHash;
     bool tempFlag;
  
     if ( area_last == NULL )
@@ -1859,9 +1973,7 @@ void load_rooms( FILE *fp )
             }
         }
  
-        iHash                   = vnum % MAX_KEY_HASH;
-        pRoomIndex->next        = room_index_hash[iHash];
-        room_index_hash[iHash]  = pRoomIndex;
+        room_index_link( pRoomIndex );
         top_room++;
         top_vnum_room = UMAX( top_vnum_room, vnum );
     }
@@ -2666,7 +2778,6 @@ void reset_area( AREA_DATA *pArea )
 void create_room( int vnum )
 {
     int door;
-    int iHash;
     ROOM_INDEX_DATA *pRoomIndex;
     char *defaultRoomName = "An Empty Room";
     char *defaultRoomDesc = "A newly created room.\n\r";
@@ -2694,9 +2805,7 @@ void create_room( int vnum )
     for ( door = 0; door <= 9; door++ )
         pRoomIndex->exit[door] = NULL;
  
-    iHash                       = vnum % MAX_KEY_HASH;
-    pRoomIndex->next            = room_index_hash[iHash];
-    room_index_hash[iHash]      = pRoomIndex;
+    room_index_link( pRoomIndex );
     top_room++;
     top_vnum_room = UMAX( top_vnum_room, vnum );
 }
@@ -3584,7 +3693,6 @@ static int attack_index( const char *name )
 MOB_INDEX_DATA *new_mob_index( int vnum, MOB_INDEX_DATA *copy_from )
 {
     MOB_INDEX_DATA *m;
-    int iHash;
 
     m = alloc_perm( sizeof(*m) );
 
@@ -3675,9 +3783,7 @@ MOB_INDEX_DATA *new_mob_index( int vnum, MOB_INDEX_DATA *copy_from )
     m->count      = 0;
     m->killed     = 0;
 
-    iHash          = vnum % MAX_KEY_HASH;
-    m->next        = mob_index_hash[iHash];
-    mob_index_hash[iHash] = m;
+    mob_index_link( m );
     top_mob_index++;
     top_vnum_mob = UMAX( top_vnum_mob, vnum );
     newmobs++;
@@ -4257,38 +4363,48 @@ int calc_apply_stats(void)
  * roughly nine times in ten, so most of what component_update() meant to
  * scatter was never placed at all.
  *
- * A single sweep of the room hash with reservoir sampling costs one pass
- * over 7,781 rooms and always answers.
+ * A single sweep of the world's rooms with reservoir sampling costs one
+ * pass over 7,781 rooms and always answers. It walks the room list
+ * random_room_index() draws from, so a pocket room (rope trick, haven) is
+ * never chosen.
  */
 ROOM_INDEX_DATA *random_scatter_room( const AREA_DATA *area )
 {
     ROOM_INDEX_DATA *room;
     ROOM_INDEX_DATA *chosen = NULL;
     int seen = 0;
-    int iHash;
+    int i;
 
-    for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
+    for ( i = 0; i < room_index_list.count; i++ )
     {
-	for ( room = room_index_hash[iHash]; room != NULL; room = room->next )
-	{
-	    if ( area != NULL && room->area != area )
-		continue;
+	room = (ROOM_INDEX_DATA *) room_index_list.items[i];
+	if ( area != NULL && room->area != area )
+	    continue;
 
-	    /* Somewhere a thing can lie and somebody can pick it up. */
-	    if ( IS_SET(room->room_flags, ROOM_DT)
-	    ||   IS_SET(room->room_flags, ROOM_JAIL)
-	    ||   IS_SET(room->room_flags, ROOM_PRIVATE)
-	    ||   IS_SET(room->room_flags, ROOM_SOLITARY)
-	    ||   IS_SET(room->room_flags, ROOM_IMP_ONLY)
-	    ||   IS_SET(room->room_flags, ROOM_GODS_ONLY) )
-		continue;
+	/* Somewhere a thing can lie and somebody can pick it up. */
+	if ( IS_SET(room->room_flags, ROOM_DT)
+	||   IS_SET(room->room_flags, ROOM_JAIL)
+	||   IS_SET(room->room_flags, ROOM_PRIVATE)
+	||   IS_SET(room->room_flags, ROOM_SOLITARY)
+	||   IS_SET(room->room_flags, ROOM_IMP_ONLY)
+	||   IS_SET(room->room_flags, ROOM_GODS_ONLY) )
+	    continue;
 
-	    if ( number_range( 1, ++seen ) == 1 )
-		chosen = room;
-	}
+	if ( number_range( 1, ++seen ) == 1 )
+	    chosen = room;
     }
 
     return chosen;
+}
+
+/* Where a random portal (value[0] 1) may open when it is made. */
+static bool random_portal_room_ok( ROOM_INDEX_DATA *room )
+{
+    return !IS_SET(room->room_flags, ROOM_GODS_ONLY)
+        && !IS_SET(room->room_flags, ROOM_NO_RECALL)
+        && !IS_SET(room->room_flags, ROOM_JAIL)
+        && !IS_SET(room->room_flags2, ROOM2_NO_TPORT)
+        && !IS_SET(room->room_flags, ROOM_IMP_ONLY);
 }
 
 OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
@@ -4394,22 +4510,12 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
          switch (obj->value[0] )
          {
          case 1:
-          {
-            int attempts;
-            for ( attempts = 0; attempts < 200; attempts++ )
-            {
-                to_room = get_room_index( number_range( 0, top_vnum_room ) );
-                if (  to_room != NULL
-                &&   !IS_SET(to_room->room_flags, ROOM_GODS_ONLY)
-                &&   !IS_SET(to_room->room_flags, ROOM_NO_RECALL)
-                &&   !IS_SET(to_room->room_flags, ROOM_JAIL)
-                &&   !IS_SET(to_room->room_flags2, ROOM2_NO_TPORT)
-                &&   !IS_SET(to_room->room_flags, ROOM_IMP_ONLY) )
-                    break;
-            }
-            if ( to_room == NULL )
-                break;
-          }
+          /* Any room the portal may open on, drawn from the rooms there
+             are: two hundred vnum guesses missed in a sparse world, and
+             then the last rejected guess was used anyway (review,
+             2026-11-12). */
+          if ( ( to_room = random_room_where( random_portal_room_ok ) ) == NULL )
+              break;
           obj->value[1] = to_room->vnum;
           break;
         }

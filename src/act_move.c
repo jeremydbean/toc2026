@@ -611,10 +611,14 @@ ROOM_INDEX_DATA *random_travel_room( CHAR_DATA *ch, bool allow_safe )
 }
 
 /*
- * One guess for a selector that picks rooms by vnum at random (TELEPORT,
- * get_random_room). TOC_RANDOM_ROOM, for tests only, makes the first
- * guess that room, so a test can ask whether a given room would be taken
- * without retrying a random draw.
+ * One guess for a selector that picks rooms at random (TELEPORT,
+ * get_random_room): a world room, every one equally likely. It guessed a
+ * vnum between 0 and top_vnum_room and hoped, and vnums are sparse -- one
+ * room at 999,999 left two hundred guesses all missing about one time in
+ * five, so TELEPORT fizzled and a misfire fell back to the Temple with
+ * eligible rooms to spare (review, 2026-11-12). TOC_RANDOM_ROOM, for tests
+ * only, makes the first guess that room, so a test can ask whether a given
+ * room would be taken without retrying a random draw.
  */
 ROOM_INDEX_DATA *random_room_candidate( int attempt )
 {
@@ -629,7 +633,7 @@ ROOM_INDEX_DATA *random_room_candidate( int attempt )
     }
     if ( attempt == 0 && forced > 0 )
         return get_room_index( forced );
-    return get_room_index( number_range( 0, top_vnum_room ) );
+    return random_room_index( );
 }
 
 /*

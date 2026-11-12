@@ -40,6 +40,84 @@ static int old_crane_mean( int hp )
     return (int) ( hp * .065 );
 }
 
+
+/*
+ * damage()'s steps on a landed blow, as fight.c wrote them inline until
+ * 2026-11-12, so the shared functions can be held to them exactly.
+ */
+static int inline_wards( int dam, int sanct, int prot, int divine, int evil )
+{
+    if ( sanct )
+        dam /= 2;
+    if ( prot && evil )
+    {
+        if ( !sanct )
+            dam -= dam / 4;
+        else
+            dam -= dam / 16;
+    }
+    if ( divine )
+    {
+        if ( !sanct )
+            dam -= dam / 4;
+        else if ( !prot )
+            dam -= dam / 16;
+        else
+            dam -= dam / 8;
+    }
+    return dam;
+}
+
+/* damage()'s armour cut, the roll's two ends: number_range( reduce, dam ). */
+static int inline_armor_low( int dam, int ac, int npc )
+{
+    int dam_reduce;
+
+    if ( dam <= 1 )
+        return dam;
+    if ( !npc )
+        dam_reduce = dam + ( -100 + ac ) / 12;
+    else
+        dam_reduce = dam + ( -100 + ac ) / 3;
+    if ( dam_reduce < 0 )
+        dam_reduce = 1;
+    return dam_reduce;
+}
+
+/* The mean of number_range( from, to ), by db.c's rules: 0 for (0, 0),
+   from when the range holds one value or none, else every value once. */
+static double number_range_mean( int from, int to )
+{
+    long long sum = 0;
+    int v;
+
+    if ( from == 0 && to == 0 )
+        return 0.0;
+    if ( to - from + 1 <= 1 )
+        return from;
+    for ( v = from; v <= to; v++ )
+        sum += v;
+    return (double) sum / ( to - from + 1 );
+}
+
+/* CONSIDER before 2026-11-12: the armour's mean cut first, then the
+   wards as a factor (consider_after_armor, then consider_blow_factor). */
+static double old_consider_blow( double blow, int ac, int npc, int sanct )
+{
+    double low, after;
+
+    if ( blow <= 1.0 )
+        after = blow;
+    else
+    {
+        low = blow + ( -100.0 + ac ) / ( npc ? 3.0 : 12.0 );
+        if ( low < 1.0 )
+            low = 1.0;
+        after = ( low + blow ) / 2.0;
+    }
+    return sanct ? after * 0.5 : after;
+}
+
 int main( void )
 {
     char detail[256];
@@ -209,6 +287,117 @@ int main( void )
                 && expected_swings_x100( 100, 100, 100, 100 ) == 312
                 && expected_swings_x100( 75, 75, 0, 0 ) == 200 + 36 + 17,
                 "two sure swings, then each extra one a number_percent() chance" );
+    }
+
+
+    /* A landed blow's steps (review, 2026-11-12): the reviewer's case. A
+       sanctuaried mobile of armour -20 takes a blow of 100 as 50 before
+       its armour, and the armour then cuts up to 40: 10 to 50, 30 on
+       average. CONSIDER cut the armour first and halved what was left:
+       40. */
+    {
+        int warded = blow_ward_cut( 100, BLOW_WARD_SANCTUARY );
+
+        snprintf( detail, sizeof( detail ), "ward %d floor %d mean %.2f old %.2f",
+                  warded, blow_armor_floor( warded, -20, 1 ),
+                  blow_armor_mean( warded, -20, 1 ), old_consider_blow( 100, -20, 1, 1 ) );
+        report( "blow_order_sanctuary_then_armor",
+                warded == 50 && blow_armor_floor( warded, -20, 1 ) == 10
+                && blow_armor_mean( warded, -20, 1 ) == 30.0
+                && number_range_mean( inline_armor_low( inline_wards( 100, 1, 0, 0, 0 ), -20, 1 ),
+                                      inline_wards( 100, 1, 0, 0, 0 ) ) == 30.0
+                && old_consider_blow( 100, -20, 1, 1 ) == 40.0, detail );
+    }
+
+    /* The wards are damage()'s arithmetic exactly, every combination. */
+    {
+        int dam, w, bad = -1;
+
+        for ( dam = -50; dam <= 5000 && bad < 0; dam++ )
+            for ( w = 0; w < 16; w++ )
+                if ( blow_ward_cut( dam, w )
+                     != inline_wards( dam, w & BLOW_WARD_SANCTUARY, w & BLOW_WARD_PROTECT,
+                                      w & BLOW_WARD_DIVINE, w & BLOW_WARD_EVIL_FOE ) )
+                {
+                    bad = dam * 16 + w;
+                    break;
+                }
+        snprintf( detail, sizeof( detail ), "first mismatch at dam*16+wards %d", bad );
+        report( "blow_wards_exact", bad < 0, detail );
+    }
+
+    /* The armour roll: the floor is damage()'s, and the mean is what
+       number_range( floor, dam ) averages -- a positive armour's floor
+       above the blow included, and a floor that comes to 0. */
+    {
+        int dam, ac, npc, ok = 1;
+
+        for ( npc = 0; npc <= 1 && ok; npc++ )
+            for ( dam = -5; dam <= 400 && ok; dam++ )
+                for ( ac = -420; ac <= 260 && ok; ac += 7 )
+                {
+                    int low = inline_armor_low( dam, ac, npc );
+                    double want = dam > 1 ? number_range_mean( low, dam ) : dam;
+
+                    if ( blow_armor_floor( dam, ac, npc ) != low
+                    ||   blow_armor_mean( dam, ac, npc ) != want )
+                    {
+                        snprintf( detail, sizeof( detail ),
+                                  "dam %d ac %d npc %d: floor %d/%d mean %.3f/%.3f",
+                                  dam, ac, npc, blow_armor_floor( dam, ac, npc ), low,
+                                  blow_armor_mean( dam, ac, npc ), want );
+                        ok = 0;
+                    }
+                }
+        report( "blow_armor_roll", ok, ok ? "" : detail );
+        report( "blow_armor_edges",
+                blow_armor_floor( 3, -100, 1 ) == 1          /* below zero is 1 */
+                && blow_armor_floor( 66, -98, 1 ) == 0       /* zero stays zero */
+                && blow_armor_mean( 66, -98, 1 ) == 33.0
+                && blow_armor_floor( 10, 160, 1 ) == 30      /* above the blow */
+                && blow_armor_mean( 10, 160, 1 ) == 30.0
+                && blow_armor_mean( 1, -500, 1 ) == 1.0,
+                "floors below, at and above the blow" );
+    }
+
+    /* Immunity, a shield's own element and its burn. */
+    {
+        int dam, ok = 1;
+
+        for ( dam = 0; dam <= 3000 && ok; dam++ )
+            ok = blow_immunity_cut( dam, BLOW_NORMAL ) == dam
+              && blow_immunity_cut( dam, BLOW_IMMUNE ) == 0
+              && blow_immunity_cut( dam, BLOW_RESISTANT ) == dam - dam / 3
+              && blow_immunity_cut( dam, BLOW_VULNERABLE ) == dam + dam / 2
+              && blow_element_shield( dam, 1 ) == dam + dam / 2
+              && blow_element_shield( dam, 0 ) == dam
+              && blow_reflection( dam ) == (int) ( dam * 0.6 );
+        report( "blow_immunity_and_shield", ok, "damage()'s arithmetic" );
+    }
+
+    /* The order matters wherever armour cuts: across blows and armours the
+       wards-then-armour mean is never above the old armour-then-wards
+       estimate, and is below it wherever the floor does not clamp. */
+    {
+        int dam, ac, ok = 1, below = 0;
+
+        for ( dam = 20; dam <= 1000 && ok; dam += 2 )
+            for ( ac = -300; ac <= 100; ac += 10 )
+            {
+                double now = blow_armor_mean( blow_ward_cut( dam, BLOW_WARD_SANCTUARY ), ac, 1 );
+                double old = old_consider_blow( dam, ac, 1, 1 );
+
+                if ( now > old + 0.5 )
+                {
+                    snprintf( detail, sizeof( detail ), "dam %d ac %d: %.2f over %.2f",
+                              dam, ac, now, old );
+                    ok = 0;
+                    break;
+                }
+                if ( now < old - 1.0 )
+                    below++;
+            }
+        report( "blow_order_matters", ok && below > 0, ok ? "the old order never overstated" : detail );
     }
 
     return failures;

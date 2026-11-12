@@ -1545,6 +1545,180 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 /*
  * Inflict damage from a hit.
  */
+/*
+ * A landed blow's arithmetic, shared by damage() and CONSIDER
+ * (blow_landed_expected) so the estimate cannot drift from the fight
+ * (review, 2026-11-12: CONSIDER cut the armour first and the wards after,
+ * and armour is a fixed cut, so a sanctuaried foe's blows read harder
+ * than they land). The steps are combat_rules.h's; these add game state.
+ */
+_Static_assert( BLOW_NORMAL == IS_NORMAL && BLOW_IMMUNE == IS_IMMUNE
+                && BLOW_RESISTANT == IS_RESISTANT && BLOW_VULNERABLE == IS_VULNERABLE,
+                "combat_rules.h's immunity verdicts are check_immune's" );
+
+/* The defender's armour against a blow of this type. */
+static int blow_armor_ac( CHAR_DATA *victim, int dam_type )
+{
+    switch ( dam_type )
+    {
+    case DAM_PIERCE: return GET_AC( victim, AC_PIERCE );
+    case DAM_BASH:   return GET_AC( victim, AC_BASH );
+    case DAM_SLASH:  return GET_AC( victim, AC_SLASH );
+    case DAM_NONE:   return 0;
+    default:         return GET_AC( victim, AC_EXOTIC );
+    }
+}
+
+/* The element a fire or frost shield on victim burns with, or -1. A
+   character's own harm (poison, a brew) meets no shield of their own. */
+static int blow_shield_element( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( ch == victim )
+	return -1;
+    if ( IS_AFFECTED2( victim, AFF2_FLAMING_HOT ) )
+	return DAM_FIRE;
+    if ( IS_AFFECTED2( victim, AFF2_FLAMING_COLD ) )
+	return DAM_COLD;
+    return -1;
+}
+
+/* Steps 1-4 of combat_rules.h: the wards (or a mental blow's psionic
+   defences), the shield's own element, alignment, immunity. *immune is
+   set when the victim is immune; it is never cleared here. */
+static int blow_before_armor( CHAR_DATA *ch, CHAR_DATA *victim, int dam,
+                              int dam_type, bool *immune )
+{
+    int verdict;
+
+    if ( dam_type != DAM_MENTAL )
+    {
+	int wards = 0;
+
+	if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
+	    wards |= BLOW_WARD_SANCTUARY;
+	if ( IS_AFFECTED( victim, AFF_PROTECT ) )
+	    wards |= BLOW_WARD_PROTECT;
+	if ( IS_AFFECTED2( victim, AFF2_DIVINE_PROT ) )
+	    wards |= BLOW_WARD_DIVINE;
+	if ( IS_EVIL( ch ) )
+	    wards |= BLOW_WARD_EVIL_FOE;
+	dam = blow_ward_cut( dam, wards );
+    }
+    else
+	/* The same rule the mana and movement drains use, by gsn: the
+	   names "psionic_armor" and "psychic_shield" matched no skill, so
+	   only mindbar ever turned a mental blow (review, 2026-10-26). */
+	dam = psionic_mental_reduce( victim, dam );
+
+    dam = blow_element_shield( dam, dam_type == blow_shield_element( ch, victim ) );
+    /* Holy and negative power by alignment tier (alignment.c). */
+    dam = alignment_damage_mod( ch, victim, dam, dam_type );
+    verdict = check_immune( victim, dam_type );
+    if ( verdict == IS_IMMUNE )
+	*immune = true;
+    return blow_immunity_cut( dam, verdict );
+}
+
+/* What a fire or frost shield burns the striker ch for, of a blow of dam
+   that landed: 60%, at ch's own immunity to the element and its Hyrule
+   rings, and nothing on a Hyrule creature nothing can hurt yet. */
+static int shield_burn( CHAR_DATA *ch, int dam, int dam_type1, bool *immune )
+{
+    int dam1 = blow_reflection( dam );
+    int verdict = check_immune( ch, dam_type1 );
+
+    if ( verdict == IS_IMMUNE )
+	*immune = true;
+    dam1 = blow_immunity_cut( dam1, verdict );
+    dam1 = apply_hyrule_relic_damage_reduction( ch, dam1, dam_type1 );
+    if ( hyrule_shrugs_off( ch ) )
+	dam1 = 0;
+    return dam1;
+}
+
+/*
+ * The expected outcome of one landed blow of exactly dam, by damage()'s
+ * own steps: what the victim loses (*landed) and what a shield on the
+ * victim burns ch for (*burn). The armour roll is number_range(floor,
+ * dam), every value equally likely, so it is averaged over that range
+ * (past BLOW_SPAN_MAX values, sampled evenly across it). Not counted: the
+ * special blows (Ganon's Silver Arrow, Hyrule's exact blows, the treasure
+ * goblin's shares), staff invulnerability and the training dummy.
+ */
+#define BLOW_SPAN_MAX 4096
+static void blow_outcome( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dam_type,
+                          double *landed, double *burn )
+{
+    bool immune = false;
+    int element = blow_shield_element( ch, victim );
+    int ac = blow_armor_ac( victim, dam_type );
+    int low, high, step, r, n = 0;
+    double sum_landed = 0.0, sum_burn = 0.0;
+
+    *landed = *burn = 0.0;
+    if ( dam <= 0 )
+	return;
+    dam = blow_before_armor( ch, victim, dam, dam_type, &immune );
+    if ( IS_NPC(victim) && element < 0 )
+    {
+	/* Nothing after the roll: its mean is the answer. */
+	*landed = UMAX( 0.0, blow_armor_mean( dam, ac, true ) );
+	return;
+    }
+    /* number_range( floor, dam ) for a blow over 1, as damage() rolls it;
+       a floor at or above the blow is the floor. */
+    high = dam;
+    low = dam > 1 ? blow_armor_floor( dam, ac, IS_NPC(victim) ) : dam;
+    if ( low >= high )
+	high = low;
+    if ( high < 0 )
+	low = high = 0;
+    step = high - low + 1 > BLOW_SPAN_MAX
+	 ? ( high - low + BLOW_SPAN_MAX ) / BLOW_SPAN_MAX : 1;
+    for ( r = low; r <= high; r += step, n++ )
+    {
+	int got = apply_hyrule_relic_damage_reduction( victim, r, dam_type );
+
+	sum_landed += got;
+	if ( element >= 0 && got > 0 )
+	    sum_burn += shield_burn( ch, got, element, &immune );
+    }
+    *landed = sum_landed / n;
+    *burn = sum_burn / n;
+}
+
+/*
+ * CONSIDER's blow: the expected loss from a blow of `blow` (a mean, so not
+ * always a whole number) that got past the defences, and in *burn what a
+ * fire or frost shield on the victim burns ch for meanwhile. Between whole
+ * blows it is the straight line between them.
+ */
+double blow_landed_expected( CHAR_DATA *ch, CHAR_DATA *victim, double blow,
+                             int dam_type, double *burn )
+{
+    double landed, burned, landed_hi, burned_hi, frac;
+    int low;
+
+    if ( burn != NULL )
+	*burn = 0.0;
+    if ( !( blow > 0.0 ) )
+	return 0.0;
+    if ( blow > INT_MAX / 4 )
+	blow = INT_MAX / 4;
+    low = (int) blow;
+    frac = blow - low;
+    blow_outcome( ch, victim, low, dam_type, &landed, &burned );
+    if ( frac > 0.0 )
+    {
+	blow_outcome( ch, victim, low + 1, dam_type, &landed_hi, &burned_hi );
+	landed += ( landed_hi - landed ) * frac;
+	burned += ( burned_hi - burned ) * frac;
+    }
+    if ( burn != NULL )
+	*burn = burned;
+    return landed;
+}
+
 bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 {
     CHAR_DATA *vch;
@@ -1676,40 +1850,6 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	act( "$n fades into vision.",ch, NULL,NULL,TO_ROOM );
     }
 
-    /*
-     * Damage modifiers.
-     */
-    if( dam_type != DAM_MENTAL)
-   {
-    if ( IS_AFFECTED(victim, AFF_SANCTUARY) )
-    {   dam /= 2;
-    }
-
-    if ( IS_AFFECTED(victim, AFF_PROTECT) && IS_EVIL(ch) )
-    {   if (!IS_AFFECTED(victim, AFF_SANCTUARY))
-          dam -= dam / 4;
-        else
-          dam -= dam / 16;
-    }
-
-    if( IS_AFFECTED2( victim, AFF2_DIVINE_PROT ) )
-    {   if (!IS_AFFECTED(victim, AFF_SANCTUARY) )
-          dam -= dam / 4;
-        else
-          if (!IS_AFFECTED(victim,AFF_PROTECT))
-            dam -= dam / 16;
-          else
-            dam -= dam / 8;
-    }
-   }
-   else
-   {
-	/* The same rule the mana and movement drains use, by gsn: the
-	   names "psionic_armor" and "psychic_shield" matched no skill, so
-	   only mindbar ever turned a mental blow (review, 2026-10-26). */
-	dam = psionic_mental_reduce( victim, dam );
-   }
-
     immune = false;
 
 
@@ -1745,52 +1885,15 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	}
     }
 
-    if( shield > 0)
-    {
-      if(shield == 1 )
-	if(dam_type == DAM_FIRE)
-	  dam += dam/2;
-
-      if(shield == 2)
-	if(dam_type == DAM_COLD)
-	  dam += dam/2;
-    }
-
-    /* Holy and negative power by alignment tier (alignment.c). */
-    dam = alignment_damage_mod( ch, victim, dam, dam_type );
-
-    switch(check_immune(victim,dam_type))
-    {
-	case(IS_IMMUNE):
-	    immune = true;
-	    dam = 0;
-	    break;
-	case(IS_RESISTANT):
-	    dam -= dam/3;
-	    break;
-	case(IS_VULNERABLE):
-	    dam += dam/2;
-	    break;
-    }
-
-    { int vict_ac, dam_reduce;
-      switch(dam_type)
-      {
-        case(DAM_PIERCE): vict_ac = GET_AC(victim,AC_PIERCE);      break;
-        case(DAM_BASH):  vict_ac = GET_AC(victim,AC_BASH);         break;
-        case(DAM_SLASH): vict_ac = GET_AC(victim,AC_SLASH);        break;
-        case(DAM_NONE):  vict_ac = 0;                              break;
-        default:         vict_ac = GET_AC(victim,AC_EXOTIC);       break;
-      };
-      if (dam > 1) {
-        if (!IS_NPC(victim))
-           dam_reduce = dam + (-100 + vict_ac)/12;
-        else
-           dam_reduce = dam + (-100 + vict_ac)/3;
-        if (dam_reduce < 0) dam_reduce = 1;
-        dam = number_range(dam_reduce,dam);
-      }
-    }
+    /* The wards, a shield's own element, alignment and immunity, then
+       the armour's cut last (blow_before_armor, combat_rules.h), as
+       CONSIDER counts them too (blow_landed_expected). The wards came
+       before the defences above until 2026-11-12; nothing there reads
+       the blow, so moving them here changes nothing. */
+    dam = blow_before_armor( ch, victim, dam, dam_type, &immune );
+    if ( dam > 1 )
+	dam = number_range( blow_armor_floor( dam, blow_armor_ac( victim, dam_type ),
+	                                      IS_NPC(victim) ), dam );
 
     if (dam < 0) dam = 0;
 
@@ -2004,7 +2107,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if( shield > 0 )
     {
      int dt1, dam_type1;
-     int dam1 = (int)(dam * 0.6);
+     int dam1;
 
      if(shield == 1 )
      {
@@ -2017,24 +2120,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	dam_type1 = DAM_COLD;
      }
 
-      switch(check_immune(ch,dam_type1))
-      {
-	case(IS_IMMUNE):
-	    immune = true;
-	    dam1 = 0;
-	    break;
-	case(IS_RESISTANT):
-	    dam1 -= dam1/3;
-	    break;
-	case(IS_VULNERABLE):
-	    dam1 += dam1/2;
-	    break;
-      }
-
-      dam1 = apply_hyrule_relic_damage_reduction( ch, dam1, dam_type1 );
-      /* Nor a Hyrule creature that nothing can hurt yet (hyrule.c). */
-      if ( hyrule_shrugs_off( ch ) )
-	dam1 = 0;
+      /* 60% back, at the striker's immunity and rings, and nothing on a
+         Hyrule creature nothing can hurt yet (shield_burn: CONSIDER
+         counts it the same way). */
+      dam1 = shield_burn( ch, dam, dam_type1, &immune );
 
       /* Staff invulnerability holds against a shield's reflection as it
          does against a blow (review, 2026-11-04: the reflection took hit
