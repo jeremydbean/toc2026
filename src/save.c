@@ -4463,6 +4463,29 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     MOB_INDEX_DATA *index;
     bool fMatch;
 
+    /* One pet a file: every save writes at most one #PET. A second made
+       another mobile and overwrote ch->pet, so the first was left
+       registered with its master pointing at a character that was then
+       freed (review, 2026-11-12: a use after free in the memory sweep).
+       Refused before anything is made, so the file is kept as it is and
+       never saved over; a reader with no trap passes the record over. */
+    if ( ch->pet != NULL )
+    {
+        bug( "Fread_pet: a second pet record.", 0 );
+        if ( fread_player_trap != NULL )
+        {
+            fread_obj_refused_why = "has two pet records";
+            longjmp( *fread_player_trap, 2 );
+        }
+        for ( ; ; )
+        {
+            word = feof(fp) ? "END" : fread_word(fp);
+            if ( !str_cmp( word, "End" ) || !str_cmp( word, "END" ) )
+                return;
+            fread_to_eol( fp );
+        }
+    }
+
     /* first entry had BETTER be the vnum or we barf */
     word = feof(fp) ? "END" : fread_word(fp);
     if (!str_cmp(word,"Vnum"))
@@ -5136,13 +5159,19 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    {
 	      int trap_vnum = fread_number(fp);
 	      MOB_INDEX_DATA *trap_mob = get_mob_index(trap_vnum);
-	      /* A second Trap replaces the first, which goes, never left
-	         out of the world still pointing at the bottle. */
-	      if (trap_mob != NULL)
+	      /* One captive a bottle: every save writes at most one Trap.
+	         A second made another mobile and overwrote obj->trapped,
+	         leaving the first registered and pointing at the bottle
+	         after it was freed (review, 2026-11-12). Refused before
+	         anything is made, as two Nests are; a reader with no trap
+	         keeps the first and makes nothing. */
+	      if (obj->trapped != NULL)
 	      {
-	          captive_dispose(obj);
-	          char_to_obj(create_mobile(trap_mob), obj);
+	          fread_obj_refuse( "has an object record with two traps" );
+	          bug("fread_obj: a second trap %d ignored", trap_vnum);
 	      }
+	      else if (trap_mob != NULL)
+	          char_to_obj(create_mobile(trap_mob), obj);
 	      else
 	          bug("fread_obj: bad trap vnum %d", trap_vnum);
 	      fMatch = true;

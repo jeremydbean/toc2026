@@ -2086,9 +2086,21 @@ bottle that shatters with age (`obj_update`, before `obj_from_obj`). It
 lets the creature out where the bottle lies or its holder, at any depth of
 containers, really stands (`captive_carrier_placed`: in the room's
 people, not a file copy's `in_room`), and disposes of it anywhere else. A
-second `Trap` key replaces the first captive. A new way of letting one out
-calls `char_from_obj` before destroying the bottle
-(`tests/test_bottled_captives.py`).
+new way of letting one out calls `char_from_obj` before destroying the
+bottle (`tests/test_bottled_captives.py`). The genie lever (manipulation
+`value[4]` 2) lets out the captive of the bottle it names
+(`find_obj->trapped`); it read its own and let nothing out.
+
+**One pet a file and one captive a bottle** (review, 2026-11-12). A
+second `#PET` or a second `Trap` in one object made another mobile and
+overwrote `ch->pet` or `obj->trapped`, leaving the first registered and
+pointing at a character or bottle that was then freed -- a use after free
+in the memory sweep. Both refuse the character through the loader's trap
+(`fread_obj_refuse`; "has two pet records", "has an object record with two
+traps") before anything is made, so the file stays as it is; a reader
+with no trap makes nothing for the second. A record malformed after a pet
+or captive was made is refused and frees it (`free_char`'s `nuke_pets`,
+`fread_obj_release_unfinished`) (`tests/test_duplicate_ownership.py`).
 
 ## Pools Are Not 16-Bit
 

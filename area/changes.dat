@@ -11,6 +11,12 @@ WIMPY now holds any number of hit points up to half your maximum. Past
 and you never fled at all. Plain WIMPY sets a fifth of your maximum, however
 large.
 
+@ 20261112owners 2026-11-12 staff
+A player file naming two pets, or a bottle with two creatures in it, is
+refused at the name and left as it is, like any other damaged file: the
+extra copy was left behind in memory. A genie lever now lets out the
+creature in the bottle it names when you pull it beside the bottle.
+
 @ 20261112bottles 2026-11-12 staff
 A creature shut in a bottle is let out only by opening the bottle (or the
 bottle shattering with age). A bottle that is destroyed -- junked, purged,
