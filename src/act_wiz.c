@@ -14086,7 +14086,7 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
     {
         fclose( fpin );
         send_to_char( "Failed to open temp file for writing.  Check server logs.\n\r", ch );
-        bug( "do_resetpwd: fopen('%s', 'w') failed for %s", 0 );
+        bug( "do_resetpwd: could not open the temporary file to write.", 0 );
         return;
     }
 
@@ -14146,7 +14146,7 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
     {
         remove( tmpname );
         send_to_char( "Failed to save the new password.  Check server logs.\n\r", ch );
-        bug( "do_resetpwd: rename failed for %s", 0 );
+        bug( "do_resetpwd: the rename over the player file failed.", 0 );
         return;
     }
 

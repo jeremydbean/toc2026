@@ -1510,7 +1510,13 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	    char *ptr1, *ptr2;
 	    ptr1 = ch->pcdata->alias[i].first;
 	    ptr2 = ch->pcdata->alias[i].second;
-	    if (ptr1 != NULL && ptr2 != NULL )
+	    /* The name is read back with fread_word: an empty one, or one
+	       that starts with a quote, which fread_word takes as an
+	       opening quote, read the rest of the file out of step and the
+	       next login refused the character (fuzzing, 2026-11-12). Such
+	       an alias is not written. */
+	    if (ptr1 != NULL && ptr2 != NULL
+	    &&  ptr1[0] != '\0' && ptr1[0] != '\'' && ptr1[0] != '"' )
 		fprintf( fp, "Alias %s %s~\n", ch->pcdata->alias[i].first,
 			ch->pcdata->alias[i].second);
 	}
@@ -1910,6 +1916,14 @@ CHAR_DATA *offline_player_load( DESCRIPTOR_DATA *d, const char *name,
 
     ch = d->character;
     ch->desc = NULL;
+    /* A file with no Room line leaves the copy roomless, and extract_char
+       refuses a roomless character ("Extract_char: NULL"): the copy stayed
+       in the character list for the life of the process, "in the game" to
+       player_in_game. It goes where a login would put it (fuzzing,
+       2026-11-12). */
+    if ( ch->in_room == NULL )
+        ch->in_room = get_room_index( IS_IMMORTAL(ch) ? ROOM_VNUM_CHAT
+                                                       : ROOM_VNUM_TEMPLE );
     register_character( ch );
     d->connected = CON_PLAYING;
     reset_char( ch );
@@ -2913,6 +2927,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	int iNest;
 	jmp_buf trap;
 	char fault[MAX_INPUT_LENGTH];
+	volatile bool seen_player = false;
 
 	for ( iNest = 0; iNest < MAX_NEST; iNest++ )
 	    rgObjNest[iNest] = NULL;
@@ -2956,7 +2971,17 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	    }
 
 	    word = fread_word( fp );
-	    if      ( !str_cmp( word, "PLAYER" ) ) fread_char ( ch, fp );
+	    /* One player record a file, as one pet: every save writes one.
+	       A second read the character again over the first, and its
+	       aliases took the first's slots without freeing them (fuzzing,
+	       2026-11-12). */
+	    if ( !str_cmp( word, "PLAYER" ) && seen_player )
+	    {
+		bug( "Load_char_obj: a second player record.", 0 );
+		why = "has two player records";
+		break;
+	    }
+	    if      ( !str_cmp( word, "PLAYER" ) ) { seen_player = true; fread_char ( ch, fp ); }
 	    else if ( !str_cmp( word, "OBJECT" ) ) fread_obj  ( ch, fp );
 	    else if ( !str_cmp( word, "O"      ) ) fread_obj  ( ch, fp );
 	    else if ( !str_cmp( word, "PET"    ) ) fread_pet  ( ch, fp );
@@ -2991,6 +3016,49 @@ read_done:
     }
 
     fpReserve = fopen( NULL_FILE, "r" );
+
+    /* The values the class, race and guild tables are indexed by. The
+       game never writes one outside them (SET refuses a race no player
+       may be), so one here is a damaged file -- and was read past the end
+       of class_table and pc_race_table from the first stat asked for --
+       freeing the copy, too, which takes off its worn things (fuzzing,
+       2026-11-12). The character is refused, and the copy, which nothing
+       will ever save, is given values the tables hold so it can be freed
+       -- whatever else refused it. */
+    if ( found )
+    {
+        const char *bad = NULL;
+
+        if ( ch->class < 0 || ch->class >= MAX_CLASS )
+        {
+            bad = "names a class the game does not have";
+            ch->class = 0;
+        }
+        if ( ch->race < 0 || ch->race >= MAX_PC_RACE )
+        {
+            bad = "names a race no player may be";
+            ch->race = (sh_int) race_lookup( "human" );
+        }
+        if ( ch->pcdata->guild != GUILD_NONE
+          && ( ch->pcdata->guild < 0 || ch->pcdata->guild >= MAX_GUILD ) )
+        {
+            bad = "names a guild the game does not have";
+            ch->pcdata->guild = GUILD_NONE;
+        }
+        /* A remort is a level: no character has more than there are
+           levels, and reset_char's 200 a remort overflowed an int on a
+           count of a few million. */
+        if ( ch->pcdata->num_remorts < 0 || ch->pcdata->num_remorts > MAX_LEVEL )
+        {
+            bad = "has a remort count no character can have";
+            ch->pcdata->num_remorts = 0;
+        }
+        if ( bad != NULL && !unreadable )
+        {
+            unreadable = true;
+            why = bad;
+        }
+    }
 
     /* Unreadable: whatever was read stays with the copy for free_char to
        release, nothing below runs on it, and every caller refuses it
@@ -3143,6 +3211,20 @@ read_done:
 #endif
 
 #define KEY( literal, field, value )if ( !str_cmp( word, literal ) ){field  = value;fMatch = true;break;}
+/* A string field: the value it held is released first. KEY's plain
+   assignment leaked whatever was there -- the name load_char_obj starts
+   every character with, at every login, and the first of any key a file
+   repeats (fuzzing, 2026-11-12). free_string leaves alone a prototype's
+   string or str_empty, which is what a new object or pet holds. */
+#define KEYS( literal, field ) \
+    if ( !str_cmp( word, literal ) ) \
+    { \
+        char *keys_read = fread_string( fp ); \
+        free_string( field ); \
+        field = keys_read; \
+        fMatch = true; \
+        break; \
+    }
 
 /*
  * One skill name from a player file: everything up to the end of the line,
@@ -4110,7 +4192,17 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		 fread_long( fp ) );
 	    KEY( "AchTriforce", ch->pcdata->achievement_triforce_shards,
 		 fread_long( fp ) );
-	    KEY( "Act",		ch->act,		fread_number( fp ) );
+	    /* A player is never an NPC, whatever the file says: with bit A
+	       the copy read as a mobile with no prototype, and the first
+	       thing to ask its prototype -- extract_char, here -- read
+	       through NULL (fuzzing, 2026-11-12). */
+	    if ( !str_cmp( word, "Act" ) )
+	    {
+		ch->act = fread_number( fp );
+		REMOVE_BIT( ch->act, PLR_IS_NPC );
+		fMatch = true;
+		break;
+	    }
 	    KEY( "AffectedBy",	ch->affected_by,	fread_number( fp ) );
 	    KEY( "AfBy",	ch->affected_by,	fread_number( fp ) );
 	    KEY( "AfBy2",       ch->affected_by2,       fread_number( fp ) );
@@ -4133,8 +4225,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		fMatch = true;
 		break;
 	    }
-	    KEY( "Arrive",	ch->pcdata->arrive,	fread_string( fp ) );
-	    KEY( "Ariv",	ch->pcdata->arrive,	fread_string( fp ) );
+	    KEYS( "Arrive",	ch->pcdata->arrive );
+	    KEYS( "Ariv",	ch->pcdata->arrive );
 
 	    if ( !str_cmp( word, "AchCount" ) )
 	    {
@@ -4190,6 +4282,11 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    {
 		AFFECT_DATA *paf;
                 paf = new_affect();
+		/* Linked at once, as an object's is: a malformed value below
+		   jumps to load_char_obj's trap, and an affect not yet linked
+		   belonged to nothing (fuzzing, 2026-11-12). */
+		paf->next	= ch->affected;
+		ch->affected	= paf;
 		if (!str_cmp(word,"AffD"))
 		{
 		    int sn;
@@ -4210,8 +4307,6 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		paf->location	= (sh_int)(fread_number( fp ));
 		paf->bitvector	= fread_number( fp );
 		paf->bitvector2 = fread_number( fp );
-		paf->next	= ch->affected;
-		ch->affected	= paf;
 		fMatch = true;
 		break;
 	    }
@@ -4220,9 +4315,23 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    {
 		if ( cur_alias < MAX_ALIASES )
 		{
-		    ch->pcdata->alias[cur_alias].first = str_dup( fread_word(fp) );
-		    ch->pcdata->alias[cur_alias].second = fread_string( fp );
-		    cur_alias++;
+		    char *first = str_dup( fread_word(fp) );
+		    char *second = fread_string( fp );
+
+		    /* An alias with no name answers to nothing, and saved
+		       again it wrote a line this reader takes out of step
+		       (fuzzing, 2026-11-12): dropped. */
+		    if ( first[0] == '\0' )
+		    {
+			free_string( first );
+			free_string( second );
+		    }
+		    else
+		    {
+			ch->pcdata->alias[cur_alias].first = first;
+			ch->pcdata->alias[cur_alias].second = second;
+			cur_alias++;
+		    }
 		}
 		else
 		{
@@ -4253,8 +4362,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'B':
-	    KEY( "Bamfin",	ch->pcdata->bamfin,	fread_string( fp ) );
-	    KEY( "Bamfout",	ch->pcdata->bamfout,	fread_string( fp ) );
+	    KEYS( "Bamfin",	ch->pcdata->bamfin );
+	    KEYS( "Bamfout",	ch->pcdata->bamfout );
 	    if ( !str_cmp( word, "Bank" ) )
 	    {
 	        long legacy_bank = fread_long( fp );
@@ -4269,8 +4378,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	        break;
 	    }
 	    KEY( "BankCP",	ch->pcdata->bank,	fread_long( fp ) );
-	    KEY( "Bin",		ch->pcdata->bamfin,	fread_string( fp ) );
-	    KEY( "Bout",	ch->pcdata->bamfout,	fread_string( fp ) );
+	    KEYS( "Bin",		ch->pcdata->bamfin );
+	    KEYS( "Bout",	ch->pcdata->bamfout );
 	    /* What was bought from the black market's stock <id>: one of
 	       each (blackmarket.c). */
 	    if ( !str_cmp( word, "BlackMarket" ) )
@@ -4287,7 +4396,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Cast",	ch->pcdata->castle,
 					(sh_int)(castle_lookup(fread_word( fp ) )) );
 	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	fread_long( fp ) );
-	    KEY( "ChangesSeen",	ch->pcdata->changes_seen,	fread_string( fp ) );
+	    KEYS( "ChangesSeen",	ch->pcdata->changes_seen );
 	    KEY( "Creator",	ch->pcdata->creator,	fread_number( fp ) != 0 );
 	    KEY( "CasinoLost",	ch->pcdata->casino_losses,	fread_long( fp ) );
 	    KEY( "Class",	ch->class,		(sh_int)(fread_number( fp )) );
@@ -4364,10 +4473,10 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    }
 	    KEY( "Damroll",	ch->damroll,		(sh_int)(fread_number( fp )) );
 	    KEY( "Dam",		ch->damroll,		(sh_int)(fread_number( fp )) );
-	    KEY( "Depart",	ch->pcdata->depart,	fread_string( fp ) );
-	    KEY( "Dprt",	ch->pcdata->depart,	fread_string( fp ) );
-	    KEY( "Description",	ch->description,	fread_string( fp ) );
-	    KEY( "Desc",	ch->description,	fread_string( fp ) );
+	    KEYS( "Depart",	ch->pcdata->depart );
+	    KEYS( "Dprt",	ch->pcdata->depart );
+	    KEYS( "Description",	ch->description );
+	    KEYS( "Desc",	ch->description );
 	    KEY( "Dcount",	ch->pcdata->dcount,	fread_number( fp ) );
  	    break;
 
@@ -4388,7 +4497,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	case 'F':
 	    /* Login fixes already applied (fixes.c). */
-	    KEY( "Fixes",	ch->pcdata->fixes_done,	fread_string( fp ) );
+	    KEYS( "Fixes",	ch->pcdata->fixes_done );
 	    break;
 
 	case 'G':
@@ -4477,10 +4586,10 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Level",	ch->level,		(sh_int)(fread_number( fp )) );
 	    KEY( "Lev",		ch->level,		(sh_int)(fread_number( fp )) );
 	    KEY( "Levl",	ch->level,		(sh_int)(fread_number( fp )) );
-            KEY( "ListRemorts", ch->pcdata->list_remorts, fread_string( fp ) );
+            KEYS( "ListRemorts", ch->pcdata->list_remorts );
 	    KEY( "LogO",	temp,			fread_number( fp ) );
-	    KEY( "LongDescr",	ch->long_descr,		fread_string( fp ) );
-	    KEY( "LnD",		ch->long_descr,		fread_string( fp ) );
+	    KEYS( "LongDescr",	ch->long_descr );
+	    KEYS( "LnD",		ch->long_descr );
 	    break;
 
 	case 'M':
@@ -4492,7 +4601,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
             KEY( "NewPlat",     ch->new_platinum,        fread_long( fp ) );
             KEY( "NewCopp",     ch->new_copper,          fread_long( fp ) );
             KEY( "NewSilv",     ch->new_silver,          fread_long( fp ) );
-	    KEY( "Name",	ch->name,		fread_string( fp ) );
+	    KEYS( "Name",	ch->name );
 	    KEY( "Note",	ch->last_note,		fread_number( fp ) );
             KEY( "NoOracle",    ch->pcdata->no_oracle,   fread_number( fp ) );
             KEY( "NumRemorts",  ch->pcdata->num_remorts, fread_number( fp ) );
@@ -4503,8 +4612,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	break;
 
 	case 'P':
-	    KEY( "Password",	ch->pcdata->pwd,	fread_string( fp ) );
-	    KEY( "Pass",	ch->pcdata->pwd,	fread_string( fp ) );
+	    KEYS( "Password",	ch->pcdata->pwd );
+	    KEYS( "Pass",	ch->pcdata->pwd );
             KEY( "PkRec",       ch->pcdata->pkills_received,fread_long( fp ) );
             KEY( "PkGiv",       ch->pcdata->pkills_given,fread_long( fp ) );
 	    KEY( "Played",	ch->played,		fread_number( fp ) );
@@ -4516,12 +4625,12 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Pk_State",	ch->pcdata->pk_state,	(sh_int)(fread_number( fp )) );
 	    KEY( "Practice",	ch->practice,		(sh_int)(fread_number( fp )) );
 	    KEY( "Prac",	ch->practice,		(sh_int)(fread_number( fp )) );
-            KEY( "Prompt",      ch->prompt,             fread_string( fp ) );
-            KEY( "Prom",        ch->prompt,             fread_string( fp ) );
+            KEYS( "Prompt",      ch->prompt );
+            KEYS( "Prom",        ch->prompt );
 	    KEY( "Psionic",     ch->pcdata->psionic,    (sh_int)(fread_number( fp )) );
             KEY( "PsiGrant",    ch->pcdata->psionic_grant_pending, fread_number( fp ) );
-            KEY( "PsiSpec",     ch->pcdata->psionic_grant_spec, fread_string( fp ) );
-            KEY( "PsiKnown",    ch->pcdata->psionic_known, fread_string( fp ) );
+            KEYS( "PsiSpec",     ch->pcdata->psionic_grant_spec );
+            KEYS( "PsiKnown",    ch->pcdata->psionic_known );
 	    break;
 
 	case 'Q':
@@ -4549,8 +4658,16 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY("QuestNext",	ch->nextquest,		(sh_int)(fread_number(fp)));
 	      break;
 	case 'R':
-	    KEY( "Race",        ch->race,
-				(sh_int)(race_lookup(fread_string( fp ))) );
+	    if ( !str_cmp( word, "Race" ) )
+	    {
+		/* fread_string's copy was never freed (fuzzing, 2026-11-12). */
+		char *race = fread_string( fp );
+
+		ch->race = (sh_int) race_lookup( race );
+		free_string( race );
+		fMatch = true;
+		break;
+	    }
 	    if ( !str_cmp( word, "Rested" ) )
 	    {
 		/* One read per value: UMAX would read the file twice. */
@@ -4597,9 +4714,9 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "SavedOnce",	ch->pcdata->has_saved,	fread_number( fp ) );
 	    KEY( "Serial",	ch->pcdata->serial,	fread_number( fp ) );
 	    KEY( "StashMax",	ch->pcdata->stash_max,	fread_number( fp ) );
-	    KEY( "StashLinks",	ch->pcdata->stash_links, fread_string( fp ) );
-	    KEY( "StashOffers",	ch->pcdata->stash_offers, fread_string( fp ) );
-	    KEY( "StashBlocks",	ch->pcdata->stash_blocks, fread_string( fp ) );
+	    KEYS( "StashLinks",	ch->pcdata->stash_links );
+	    KEYS( "StashOffers",	ch->pcdata->stash_offers );
+	    KEYS( "StashBlocks",	ch->pcdata->stash_blocks );
 	    KEY( "Scro",	ch->lines,		fread_number( fp ) );
 	    KEY( "SesLogin",	ch->pcdata->last_session_login,	 fread_long( fp ) );
 	    KEY( "SesDur",	ch->pcdata->last_session_dur,	 fread_long( fp ) );
@@ -4610,8 +4727,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "SesDead",	ch->pcdata->last_session_deaths,  fread_number( fp ) );
 	    KEY( "SesQuest",	ch->pcdata->last_session_quests,  fread_number( fp ) );
 	    KEY( "Sex",		ch->sex,		(sh_int)(fread_number( fp )) );
-	    KEY( "ShortDescr",	ch->short_descr,	fread_string( fp ) );
-	    KEY( "ShD",		ch->short_descr,	fread_string( fp ) );
+	    KEYS( "ShortDescr",	ch->short_descr );
+	    KEYS( "ShD",		ch->short_descr );
 
 	    if ( !str_cmp( word, "Skill" ) || !str_cmp(word,"Sk"))
 	    {
@@ -4648,7 +4765,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'T':
-	    KEY( "Trans",	ch->pcdata->trans,	fread_string( fp ) );
+	    KEYS( "Trans",	ch->pcdata->trans );
 	    KEY( "TrueSex",     ch->pcdata->true_sex,  	(sh_int)(fread_number( fp )) );
 	    KEY( "TSex",	ch->pcdata->true_sex,   (sh_int)(fread_number( fp )) );
 	    KEY( "Trai",	ch->train,		(sh_int)(fread_number( fp )) );
@@ -4658,6 +4775,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	    if ( !str_cmp( word, "Title" )  || !str_cmp( word, "Titl"))
 	    {
+		free_string( ch->pcdata->title );
 		ch->pcdata->title = fread_string( fp );
 		if ( ch->pcdata->title == NULL )
 		    ch->pcdata->title = str_dup( "" );
@@ -4745,7 +4863,18 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	if ( !fMatch )
 	{
-	    bug( "Fread_char: no match. '%s'", (int)((long) word));
+	    /* bug() formats an int: the word's pointer, cut to an int and
+	       read back as %s, was a wild read, and any key this build does
+	       not know -- one from a newer build, after a rollback --
+	       crashed the game at that player's login (fuzzing, 2026-11-12). */
+	    /* And bug() takes its text as a format, so the word's own '%'s
+	       are taken out: "%n" in a file wrote through a null pointer. */
+	    char *pct;
+
+	    snprintf( buf, sizeof(buf), "Fread_char: no match. '%.80s'", word );
+	    for ( pct = buf; ( pct = strchr( pct, '%' ) ) != NULL; )
+		*pct = '?';
+	    bug( buf, 0 );
 	    fread_to_eol( fp );
 	}
     }
@@ -4835,7 +4964,15 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	    break;
 
     	case 'A':
-    	    KEY( "Act",		pet->act,		fread_number(fp));
+	    /* And a pet is always one: without bit A it read as a player
+	       with no pcdata (fuzzing, 2026-11-12). */
+	    if ( !str_cmp( word, "Act" ) )
+	    {
+	        pet->act = fread_number( fp );
+	        SET_BIT( pet->act, ACT_IS_NPC );
+	        fMatch = true;
+	        break;
+	    }
 	    KEY( "AfBy",	pet->affected_by,	fread_number(fp));
 	    KEY( "AfBy2",	pet->affected_by2,	fread_number(fp));
 	    KEY( "Alig",	pet->alignment,		(sh_int)(fread_number(fp)));
@@ -4856,6 +4993,9 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	    	int sn;
 
     	        paf = new_affect();
+		/* Linked at once, as a character's is (fuzzing, 2026-11-12). */
+		paf->next	= pet->affected;
+		pet->affected	= paf;
 
     	    	sn = skill_lookup(fread_word(fp));
     	     	if (sn < 0)
@@ -4869,8 +5009,6 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	     	paf->location	= (sh_int)(fread_number(fp));
 		paf->bitvector	= fread_number(fp);
 		paf->bitvector2 = fread_number(fp);
-		paf->next	= pet->affected;
-    	     	pet->affected	= paf;
     	     	fMatch		= true;
     	     	break;
 	    }
@@ -4902,7 +5040,7 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 
     	 case 'D':
     	     KEY( "Dam",	pet->damroll,		(sh_int)(fread_number(fp)));
-    	     KEY( "Desc",	pet->description,	fread_string(fp));
+	     KEYS( "Desc",	pet->description );
     	     break;
 
     	 case 'E':
@@ -4939,11 +5077,11 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 
      	case 'L':
     	     KEY( "Levl",	pet->level,		(sh_int)(fread_number(fp)));
-    	     KEY( "LnD",	pet->long_descr,	fread_string(fp));
+	     KEYS( "LnD",	pet->long_descr );
     	     break;
 
     	case 'N':
-    	     KEY( "Name",	pet->name,		fread_string(fp));
+	     KEYS( "Name",	pet->name );
              KEY( "NewGold",    pet->new_gold,          fread_long(fp));
              KEY( "NewSilv",    pet->new_silver,        fread_long(fp));
              KEY( "NewCopp",    pet->new_copper,        fread_long(fp));
@@ -4955,13 +5093,22 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
     	     break;
 
 	case 'R':
-    	    KEY( "Race",	pet->race, (sh_int)(race_lookup(fread_string(fp))));
+	    if ( !str_cmp( word, "Race" ) )
+	    {
+	        /* fread_string's copy was never freed (fuzzing, 2026-11-12). */
+	        char *race = fread_string( fp );
+
+	        pet->race = (sh_int) race_lookup( race );
+	        free_string( race );
+	        fMatch = true;
+	        break;
+	    }
     	    break;
 
     	case 'S' :
 	    KEY( "Save",	pet->saving_throw,	(sh_int)(fread_number(fp)));
     	    KEY( "Sex",		pet->sex,		(sh_int)(fread_number(fp)));
-    	    KEY( "ShD",		pet->short_descr,	fread_string(fp));
+	    KEYS( "ShD",		pet->short_descr );
     	    break;
 
     	if ( !fMatch )
@@ -5118,8 +5265,8 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'A':
-            KEY( "Act_room", obj->action_to_room, fread_string(fp));
-            KEY( "Act_char", obj->action_to_char, fread_string(fp));
+            KEYS( "Act_room", obj->action_to_room );
+            KEYS( "Act_char", obj->action_to_char );
 
 	    /* The damage ledger (gear_file_armor). A file from before it has
 	       none, and its piece repairs as it always did, to the floor. Each
@@ -5195,7 +5342,20 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		   anybody is carrying would come back worth a ten thousandth
 		   of what they put it down with. */
 		if ( ch->version < 4 )
-		    obj->cost *= COPPER_PER_GOLD;
+		{
+		    /* A gold figure past what copper can hold overflowed the
+		       multiply (fuzzing, 2026-11-12): no price is that, so the
+		       file is damaged -- refused where a trap is armed, held
+		       to the limit by a reader without one. */
+		    if ( obj->cost > LONG_MAX / COPPER_PER_GOLD
+		      || obj->cost < LONG_MIN / COPPER_PER_GOLD )
+		    {
+			fread_obj_refuse( "has an object whose gold price no price can be" );
+			obj->cost = obj->cost > 0 ? LONG_MAX : LONG_MIN;
+		    }
+		    else
+			obj->cost *= COPPER_PER_GOLD;
+		}
 		fMatch = true;
 		break;
 	    }
@@ -5203,8 +5363,8 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'D':
-	    KEY( "Description",	obj->description,	fread_string( fp ) );
-	    KEY( "Desc",	obj->description,	fread_string( fp ) );
+	    KEYS( "Description",	obj->description );
+	    KEYS( "Desc",	obj->description );
 	    break;
 
 	case 'E':
@@ -5375,7 +5535,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'N':
-	    KEY( "Name",	obj->name,		fread_string( fp ) );
+	    KEYS( "Name",	obj->name );
 
 	    if ( !str_cmp( word, "Nest" ) )
 	    {
@@ -5420,8 +5580,8 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'S':
-	    KEY( "ShortDescr",	obj->short_descr,	fread_string( fp ) );
-	    KEY( "ShD",		obj->short_descr,	fread_string( fp ) );
+	    KEYS( "ShortDescr",	obj->short_descr );
+	    KEYS( "ShD",		obj->short_descr );
 
 	    if ( !str_cmp( word, "Spell" ) )
 	    {

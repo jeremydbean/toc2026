@@ -1775,6 +1775,102 @@ somewhere, and run `TOC_SERVER_BINARY=<it> JOBS=2 scripts/test-parallel.sh
 <modules>` with `ASAN_OPTIONS=detect_leaks=0:halt_on_error=1`. Add a module
 there when it exercises code nothing else in the list does.
 
+## Fuzzing The Readers
+
+Owner, 2026-11-12: every serious bug of late was in a file reader, so the
+readers are fuzzed. `fuzz/README.md` is the guide. Three libFuzzer targets
+with ASan and UBSan, built by `fuzz/build.sh` (clang and, on Ubuntu,
+`libclang-rt-18-dev`) into `build-fuzz/`, run by `fuzz/run.sh <target>
+<seconds>`:
+
+- `fuzz_numparse` -- `numparse.c` against an independent 128-bit reference.
+- `fuzz_player` -- a player file through `offline_player_load`, in a booted
+  copy of the world: any `exit()` while reading is a crash (a player file
+  refuses that character, never the game), no player may be left in the
+  character list after `extract_char`, a file it accepts must survive the
+  game's own save and load again, and LeakSanitizer checks (at the run's
+  end at least: libFuzzer stops checking per input once global state grows).
+- `fuzz_area` -- one extra area file at boot, every section loader plus
+  `fix_exits`/`fix_reset_room_limits`, on an empty world: a malformed file
+  must stop the boot through `exit()` (which the harness catches with
+  `-Wl,--wrap=exit`), never crash, read out of bounds or hang.
+
+The fuzz build compiles the game again with `-DTOC_FUZZ`, which adds only
+`fuzz_world_mark`/`fuzz_world_rewind` to `db.c` (the Make and CMake
+builds never define it). **A loader that writes a new global must have it
+saved and put back there**, or the area target's inputs start meeting
+each other's records. Seeds are synthetic only (`fuzz/make_seeds.py` makes
+the player ones in a throwaway world; never a real character's file);
+`fuzz/make_dict.py` takes the player dictionary from `save.c`'s keys.
+Every input that ever found something is in `fuzz/regressions/`, and
+`tests/test_fuzz_smoke.py` builds the targets, replays them all and fuzzes
+each target for a fixed count of inputs from a fixed seed (so CI cannot
+fail on luck; the search proper is `run.sh`'s) -- CI installs clang on the
+shard that runs it. A new finding's input goes in `fuzz/regressions/`.
+`tests/test_fuzz_findings.py` holds each finding to the real game.
+
+What the first runs found (2026-11-12; about an hour of the player
+target and 45 minutes of the area target, some 19 million inputs between
+them, the last ten minutes of each clean; the README's table has them
+all), each fixed:
+
+- **An unknown key in a player file crashed the game** at that player's
+  login: `bug()` formats an `int`, and `fread_char` passed the word's
+  pointer cut to one, printed with `%s`. A rollback to an older build meets
+  exactly that. Format a string into a buffer before `bug()`; never pass a
+  pointer as its parameter -- and **`bug()` takes its text as a format**:
+  a buffer holding anything a file or a player wrote has its `%`s taken
+  out first, or a key `%n` writes through a null pointer (the second
+  finding, once the first was fixed).
+- **A refused player file with a pet and no `Room` crashed the game** in
+  `free_char`'s `nuke_pets`: `stop_follower` asked `can_see` of a master
+  with no room. Rooms are checked first now.
+- **A player file whose `Act` carries bit A (`ACT_IS_NPC`) crashed the
+  game at that login**: the player read as a mobile with no prototype.
+  `fread_char` clears the bit and `fread_pet` sets it (a pet without it
+  read as a player with no `pcdata`).
+- **Quitting could duplicate a wielded weapon** (found as a crash freeing
+  a refused, roomless copy): `extract_char` takes a player's things off
+  one by one, and taking off a strength item let `affect_modify`'s
+  low-strength check drop the wielded weapon into the room -- a copy the
+  saved file still held, left on the floor whenever another object was
+  carried between the two. `extract_obj_player` now holds that drop off
+  (`unequip_leaving` in `handler.c`), and a roomless character never drops.
+- **A player could lock themselves out with ALIAS** (the roundtrip
+  oracle): `ALIAS "'ZQ" LOOK` saved `Alias 'zq look~`, which
+  `fread_word` reads as an opening quote, so the rest of the file was
+  read out of step and the next login refused the character. ALIAS
+  refuses a name starting with a quote, the writer skips one (and an
+  empty name), and the reader drops a nameless alias. Anything written
+  as a bare word ahead of a string must be a word `fread_word` reads back.
+- **A class, race or guild outside the tables** (`Cla 14`, a race no
+  player may be, `Gui 9`) was read past the end of `class_table` and
+  `pc_race_table` from the first stat asked for, and a `NumRemorts` of
+  millions overflowed `reset_char`'s arithmetic, as an old file's gold
+  `Cost` did multiplied into copper. `load_char_obj` refuses
+  the character, file untouched, and gives the discarded copy values the
+  tables hold so `free_char` can take off its worn things safely. A new
+  field that indexes a table or scales arithmetic is checked there too.
+  A second `#PLAYER` record is refused, as a second pet is.
+- **An offline load of a file with no `Room`** left the copy in the
+  character list (`extract_char` refuses a roomless character), and the
+  player's next login "reconnected" into it. `offline_player_load` places
+  it where a login would.
+- **An area file cut off mid-string hung the boot** -- `bug()`'s line
+  count read past EOF for ever -- a spell slot no spell has `abort()`ed
+  it, a door reset in a negative room crashed it (`get_room_index`
+  answers NULL for a negative vnum even at boot), a room affect type
+  outside `room_aff_type[]` was read out of bounds, and a `#SOCIALS`
+  section past `MAX_SOCIALS` wrote past the table. Each stops the boot
+  cleanly now.
+- **Leaks on every load**: the name `load_char_obj` starts with, the first
+  of any repeated string key (`KEYS` in `save.c` frees what it replaces --
+  use it for a new string key), the race name, a pet's or character's
+  affect cut short by a malformed number (linked at once now, as an
+  object's was), and every `capitalize()` -- a fresh `str_dup` nobody
+  freed, at every save, file path and display. It returns one of a ring of
+  sixteen static buffers now: use the result at once or copy it.
+
 ## The Mudlet Starter Map Is Generated
 
 `mudlet/toc-world-map.xml` is built from the rooms by

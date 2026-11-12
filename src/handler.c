@@ -1303,6 +1303,16 @@ void release_mount( CHAR_DATA *ch )
 }
 
 /*
+ * Above zero while a player's things leave the game with them
+ * (extract_obj_player): taking off a strength item then must not make
+ * affect_modify drop the wielded weapon into the room. It put a copy of a
+ * weapon the file still holds on the floor at a quit, and for a copy loaded
+ * from a file and never placed -- a refused login, an offline command --
+ * into no room at all, which crashed (fuzzing, 2026-11-12).
+ */
+static int unequip_leaving;
+
+/*
  * Apply or remove an affect to a character.
  */
 void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
@@ -1389,7 +1399,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     {
 	static int depth;
 
-	if ( depth == 0 )
+	if ( depth == 0 && unequip_leaving == 0 && ch->in_room != NULL )
 	{
 	    depth++;
 	    act( "You drop $p.", ch, wield, NULL, TO_CHAR );
@@ -2576,7 +2586,11 @@ void extract_obj_player( OBJ_DATA *obj )
     if ( obj->in_room != NULL )
         obj_from_room( obj );
     else if ( obj->carried_by != NULL )
+    {
+        unequip_leaving++;
         obj_from_char( obj );
+        unequip_leaving--;
+    }
     else if ( obj->in_obj != NULL )
         obj_from_obj( obj );
 

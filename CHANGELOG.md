@@ -8,6 +8,30 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The file readers are fuzzed** (owner, 2026-11-12: "do it all").
+  `fuzz/` holds three libFuzzer targets with ASan and UBSan -- the number
+  parser, the player-file loader through `offline_player_load`, and one
+  extra area file at boot -- with synthetic seeds, dictionaries, a build
+  and a run script; `tests/test_fuzz_smoke.py` replays every input that
+  ever found something and fuzzes each target briefly (CI installs clang
+  for it). Fixed from what they found: an unknown player-file key, and
+  then one holding `%n`, crashed the game at that login (`bug()` was given
+  a pointer as an int, then its text as a format); a player file with
+  bit A in `Act` made its player a mobile with no prototype; a class,
+  race or guild past the tables was read out of bounds (now refused);
+  `ALIAS "'X" LOOK` saved a line the reader took out of step, locking
+  the player out at the next login (ALIAS refuses it now); quitting
+  with strength from worn gear and a weapon wielded left a copy of the
+  weapon on the floor; a refused
+  file with a pet and no `Room` crashed `free_char`; an offline load of a
+  file with no `Room` stayed in the character list and the next login
+  reconnected into it; an area file cut off mid-string hung the boot; a
+  bad spell slot `abort()`ed it; a door reset in a negative room crashed
+  it; a room affect type and a `#SOCIALS` section past their tables were
+  read and written out of bounds; and every load leaked the starting
+  name, repeated string keys, race names, an affect cut short, and every
+  `capitalize()`. `tests/test_fuzz_findings.py`.
+
 - **One reader for area files** (modernization project 3, 2026-11-11).
   `webadmin/area_reader.py` reads `.are` files token for token as
   `src/db.c` does, with offsets, and the dashboard parser, the area lint,

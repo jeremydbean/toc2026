@@ -5,6 +5,22 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261112aliasquote 2026-11-12
+An alias name may no longer start with a quote mark. ALIAS "'X" LOOK used to
+be accepted and saved in a way that stopped you logging in next time.
+
+@ 20261112fuzzreaders 2026-11-12 staff
+The file readers are fuzzed (fuzz/README.md). Fixed from what that found: a
+player file with a key this build does not know -- what a rollback leaves --
+crashed the game at that login, and so did a refused file with a pet and no
+Room line. A file naming a class, race or guild the game does not have, or
+making its player a mobile, is refused at the name and left as it is. An
+offline command (GRANTPSI, UNDENY, the stash) on a file with no Room no
+longer leaves a copy behind that the next login reconnects into. An area
+file cut off mid-string no longer hangs the boot. Quitting no longer leaves a
+copy of a wielded weapon on the floor when the wielder's strength came from
+worn gear.
+
 @ 20261112wimpy 2026-11-12
 WIMPY now holds any number of hit points up to half your maximum. Past
 32,767 it used to be stored wrong -- WIMPY 40000 became a negative number --

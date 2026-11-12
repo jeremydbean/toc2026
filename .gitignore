@@ -6,6 +6,7 @@ merc
 bin/
 build/
 build-sanitize/
+build-fuzz/
 build-cmake/
 *.ini
 *.driveupload
