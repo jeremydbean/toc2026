@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1794452736
+LogO 1794453068
 Vers 4
 Desc You see something very special about him.
 ~
@@ -20,7 +20,7 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6551204
+Plyd 6551536
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -112,7 +112,7 @@ Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
 AchSet psi-disciplines 3 ~
-LastOut  1794452736
+LastOut  1794453068
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1794342046
