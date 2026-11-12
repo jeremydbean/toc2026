@@ -8,10 +8,17 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 set(TARGET_NAME rom)
 
-# Place build outputs in dedicated directories.
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/obj")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/obj")
+# Place build outputs in dedicated directories. TOC_BIN_DIR (and
+# TOC_OBJ_DIR) default to the repository's bin/ and obj/, where the docs,
+# the area scripts (../bin/rom) and CI look; a second build tree -- the
+# sanitizer one beside the Release one -- can point elsewhere so the two
+# never overwrite one binary (2026-11-12: a Release rebuild silently
+# replaced the ASan bin/rom a test was about to use).
+set(TOC_BIN_DIR "${CMAKE_SOURCE_DIR}/bin" CACHE PATH "Where the rom binary is written")
+set(TOC_OBJ_DIR "${CMAKE_SOURCE_DIR}/obj" CACHE PATH "Where archives and libraries are written")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${TOC_BIN_DIR}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${TOC_OBJ_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${TOC_OBJ_DIR}")
 
 # Mirror the output directories for multi-config generators.
 if(CMAKE_CONFIGURATION_TYPES)

@@ -124,9 +124,23 @@ Sanitizers:
 ```bash
 cmake -S . -B build-sanitize \
   -DCMAKE_BUILD_TYPE=Debug \
-  -DENABLE_SANITIZERS=ON
+  -DENABLE_SANITIZERS=ON \
+  -DTOC_BIN_DIR="$PWD/build-sanitize/bin"
 cmake --build build-sanitize
 ```
+
+Every CMake tree writes `bin/rom` unless `TOC_BIN_DIR` says otherwise
+(2026-11-12), so a Release rebuild used to overwrite the sanitizer binary
+a test was about to run; give a second tree its own `TOC_BIN_DIR`. The
+default stays `bin/` for the docs, the area scripts and CI.
+
+**Build cost, measured 2026-11-12** (4 cores, gcc 13, no ccache): a clean
+Make build is 6.8 s at -j4 (24.3 s at -j1), CMake 8.0 s; touching
+`merc.h` rebuilds 62 of 75 objects in 6.1 s; touching one `.c` file, 1.0
+s. Parsing `merc.h` alone is 24 ms a file (about 1.5 s of CPU across a
+build); the time is the large files (`act_wiz.c` 1.8 s). Splitting
+`merc.h`, or a precompiled header, would save at most those seconds, and
+only for edits to a part few files use, so neither was done.
 
 Supported long-running native wrapper:
 
