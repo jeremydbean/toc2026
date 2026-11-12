@@ -290772,3 +290772,24 @@ Thu Nov 12 16:14:01 2026 :: Black market: the dealer vanished from room 24106 (O
 Thu Nov 12 16:14:13 2026 :: Treasure goblin: vanished from room 4066 (The maze, moria.are) (too long in one area).
 Thu Nov 12 16:15:01 2026 :: Black market: the dealer vanished from room 17286 (In an unused room, highland.are) (wandering).
 Thu Nov 12 16:18:45 2026 :: Black market: the dealer vanished from room 651 (The end of Swiftest Way, ofcol.are) (wandering).
+Thu Nov 12 16:23:38 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Thu Nov 12 16:23:42 2026 :: Log WebAdmin: fsave
+Thu Nov 12 16:23:48 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Thu Nov 12 16:23:51 2026 :: Received signal 15; saving players and shutting down.
+Thu Nov 12 16:23:51 2026 :: Normal termination of game.
+Thu Nov 12 16:23:52 2026 ::  INIT OK 
+Thu Nov 12 16:23:52 2026 :: walkto_load: 157 destinations.
+Thu Nov 12 16:23:52 2026 :: changes_load: 296 entries.
+Thu Nov 12 16:23:52 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 6 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Thu Nov 12 16:23:52 2026 :: Serials: 962 character files read, 1 with a serial.
+Thu Nov 12 16:23:52 2026 :: Passwords: SHA-512 crypt self-test passed.
+Thu Nov 12 16:23:52 2026 :: Recovery ledger: 376 records (0 from before the check), 2 requests, 8 players.
+Thu Nov 12 16:23:52 2026 :: Corpse keeper: Trentlin's corpse c6aef57d8014fe2 made again in room 15009 with 0 objects.
+Thu Nov 12 16:23:52 2026 :: Corpse keeper: Trentlin's corpse c6af06a99014a1f made again in room 30443 with 2 objects.
+Thu Nov 12 16:23:52 2026 :: Corpse keeper: 2 corpses made again, 0 set aside.
+Thu Nov 12 16:23:52 2026 :: ROM is ready to rock on port 9000.
+Thu Nov 12 16:23:52 2026 :: Treasure goblin: appeared.
+Thu Nov 12 16:23:52 2026 :: Automated backup started.
+Thu Nov 12 16:23:52 2026 :: Daily backup started.
+Thu Nov 12 16:23:52 2026 :: Automated backup complete.
+Thu Nov 12 16:23:53 2026 :: Daily backup complete.
