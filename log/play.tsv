@@ -25015,3 +25015,17 @@
 1794527203	cmd	Alaric	57	4208	dresden.are	standing	92	0	-	say	Was hopeful	You say 'Was hopeful'	-	-
 1794527204	cmd	Alaric	57	4208	dresden.are	standing	92	1	-	changes		What is new, newest first: // 2026-11-12 //   The game has a new name: timesofchaos.com. Point Mudlet or any MUD client	-	+
 1794527207	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	noooooo	You say 'noooooo'	-	-
+1794527213	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	well thanks for trying	You say 'well thanks for trying'	-	-
+1794527240	cmd	Alaric	57	4208	dresden.are	standing	92	0	-	(social)		You nod.	-	-
+1794527244	cmd	Alaric	57	4208	dresden.are	standing	92	0	-	say	changelog looks like dns entry changes. That's kind of sweet	You say 'changelog looks like dns entry changes. That's kind of sweet'	-	-
+1794527246	cmd	Alaric	57	4208	dresden.are	standing	92	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794527248	cmd	Alaric	57	4208	dresden.are	standing	92	0	-	who		[40 Dwarf   Monk  ] Trentlin the Master Monk // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1794527258	refused	Trentlin	40	4208	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794527261	skill	Alaric	57	4208	dresden.are	meditation	87	88	success	(char_update)
+1794527267	cmd	Alaric	57	4208	dresden.are	standing	94	0	-	who		[40 Dwarf   Monk  ] Trentlin the Master Monk // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1794527275	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	say	well gotta go	You say 'well gotta go'	-	-
+1794527276	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	(social)		You wave.	-	-
+1794527276	cmd	Alaric	57	4208	dresden.are	standing	94	0	-	say	And secured the domain name, that's cool.	You say 'And secured the domain name, that's cool.'	-	-
+1794527277	cmd	Alaric	57	4208	dresden.are	standing	94	0	-	(social)		You nod.	-	-
+1794527282	session	Trentlin	40	4208	dresden.are	quit	114s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	9 commands	1 refused	coin: none	spent on: none	exp: none
+1794527283	session	Alaric	57	4208	dresden.are	quit	123s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	14 commands	0 refused	coin: none	spent on: none	exp: capped:skilluse +10
