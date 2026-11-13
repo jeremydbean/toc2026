@@ -296281,3 +296281,6 @@ Fri Nov 13 23:28:02 2026 :: Log Alaric [2497]: wake
 Fri Nov 13 23:28:02 2026 :: Log Alaric [2497]: l
 Fri Nov 13 23:28:32 2026 :: Connection guard: 23.31.96.97 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 13 23:28:34 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 13 23:32:09 2026 :: Log Alaric [2497]: affects off: levitate
+Fri Nov 13 23:32:26 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 23:33:25 2026 :: Log Alaric [2497]: affects off: steel fist
