@@ -291,15 +291,15 @@ private recovery key stays off the host and outside Git. The six-hour timer,
 successful remote push, and a periodic decrypt/list test should all be
 checked; a ciphertext file alone is not proof of restorable data.
 
-This repository currently tracks a large legacy set of player, god, and hero
-files, and the Dockerfile copies those tracked files into the runtime image.
-Their password hashes must be considered publicly exposed. Character owners
-must change any password reused elsewhere immediately, and hosts must not trust
-the checked-in hashes as private credentials. Treat built images and registries
-as sensitive until the runtime image is redesigned to initialize from a
-sanitized seed set. The ignore rules prevent newly created character/staff files
-from being added accidentally, but they do not remove data already tracked or
-present in Git history.
+This repository tracks player, god, and hero files on purpose: the state
+sync publishes them every five minutes so the game can be rebuilt from Git
+alone (see AGENTS.md, "Live State Goes To GitHub"). Their password hashes
+must be considered publicly exposed. Character owners must change any password
+reused elsewhere, and hosts must not trust the checked-in hashes as private
+credentials. The runtime image does not carry them: `.dockerignore` keeps
+player, god, hero, corpse, log and backup data out of the build context (see
+Compose Binding, below), and a new installation starts with an empty world
+unless `--import-players` copies the repository's characters in.
 
 ## Recommended Network Layout
 
@@ -1177,8 +1177,6 @@ offer against its saved-password login is recorded in this section.
 - Set a random admin token and rotate it on staff changes.
 - Restrict `.env`, player data, queue, logs, and backups with filesystem ACLs.
 - Keep production source and mutable data writable only where necessary.
-- Use a private image registry while runtime images contain tracked legacy
-  player/god/hero files.
 - Never run the game or dashboard as root to work around a bind-mount problem.
 - Keep an encrypted, versioned, off-host backup and test restoration.
 - Monitor authentication anomalies, queue actions, unexpected reboots, archive
