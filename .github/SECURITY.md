@@ -7,7 +7,7 @@ informed decisions.
 
 ## Reporting A Vulnerability
 
-Report security issues privately to `j@jeremybean.com`. Include:
+Report security issues privately to `support@timesofchaos.com`. Include:
 
 - affected revision or image
 - deployment model and relevant configuration
