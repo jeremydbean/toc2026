@@ -338,8 +338,13 @@ class CraftingTableTests(unittest.TestCase):
 
     def test_component_ceiling_counts_components_only(self) -> None:
         update = source("update.c")
-        count = update[update.index("count_components"):]
-        self.assertIn("pObjIndex->item_type == ITEM_SPELL_COMPONENT", count[:1200])
+        # Objects 74 and 75 (BREW's tea, CONCOCT's potion) sit in the
+        # component range; only a real spell component counts. The test
+        # moved into is_forage_obj (2026-11-13), which the count asks.
+        forage = update[update.index("bool is_forage_obj( const OBJ_DATA *obj )"):]
+        self.assertIn("obj->item_type == ITEM_SPELL_COMPONENT", forage[:800])
+        count = update[update.index("void count_components( int *herbs, int *comps )"):]
+        self.assertIn("is_forage_obj( obj )", count[:800])
         self.assertIn("component_scatter_room(", update)
         interp = source("interp.c")
         self.assertRegex(interp, r'"scribe",\s*do_scribe,\s*POS_RESTING')
