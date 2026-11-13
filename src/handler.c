@@ -1211,6 +1211,30 @@ int can_carry_w( CHAR_DATA *ch )
  * See if a string is one of the names of an object.
  */
 
+/*
+ * An object named in more than one word: DROP POT PIE, EAT POT PIE
+ * (players' logs, 2026-11-13: DROP POT PIE read "pot" alone, dropped six
+ * potions before the pie, and said nothing of the word it ignored). The
+ * whole of what was typed, trimmed; a quoted name as one_argument reads
+ * it. is_name then wants every word to match.
+ */
+void object_phrase( const char *argument, char *out, size_t size )
+{
+    size_t len;
+
+    while ( *argument == ' ' )
+        argument++;
+    if ( *argument == '\'' || *argument == '"' )
+    {
+        one_argument_const( argument, out );
+        return;
+    }
+    toc_strlcpy( out, argument, size );
+    len = strlen( out );
+    while ( len > 0 && out[len - 1] == ' ' )
+        out[--len] = '\0';
+}
+
 bool is_name ( const char *str, const char *namelist )
 {
     char name[MAX_INPUT_LENGTH], part[MAX_INPUT_LENGTH];
@@ -4728,6 +4752,20 @@ void extract_room( ROOM_INDEX_DATA *pRoom )
  * Anything else -- a numbered "2.lever", a word nothing has exactly --
  * is found as get_obj_here always found it.
  */
+/*
+ * The word a manipulation verb is aimed at: PULL LEVER 5 is PULL 5, as
+ * PUSH BUTTON RED is PUSH RED (players' logs, 2026-11-13: room 29217's
+ * levers answered only to their numbers). A lone LEVER is still a lever.
+ */
+void manipulation_argument( const char *argument, char *arg )
+{
+    const char *rest = one_argument_const( argument, arg );
+
+    if ( ( !str_cmp( arg, "lever" ) || !str_cmp( arg, "switch" ) || !str_cmp( arg, "button" ) )
+    &&   rest[0] != '\0' )
+        one_argument_const( rest, arg );
+}
+
 OBJ_DATA *get_manipulation_here( CHAR_DATA *ch, char *arg )
 {
     OBJ_DATA *obj;
@@ -4750,7 +4788,7 @@ void do_flip( CHAR_DATA *ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    bool check_social args( ( CHAR_DATA *ch, char *command, char *argument ) );
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    /*
     * FLIP is a switch you throw and a social you do, and the command
@@ -4788,7 +4826,7 @@ void do_move( CHAR_DATA *ch, char *argument )
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
@@ -4812,7 +4850,7 @@ void do_pull( CHAR_DATA *ch, char *argument )
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
@@ -4838,7 +4876,7 @@ void do_push( CHAR_DATA *ch, char *argument )
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
@@ -4862,7 +4900,7 @@ void do_turn( CHAR_DATA *ch, char *argument )
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
@@ -4886,7 +4924,7 @@ void do_climb( CHAR_DATA *ch, char *argument )
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if( ( obj = get_manipulation_here( ch, arg ) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
@@ -4910,7 +4948,7 @@ void do_crawl( CHAR_DATA *ch, char *argument )
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if ( arg[0] == '\0' )
    { send_to_char( "Crawl through what?\n\r", ch ); return; }
@@ -4937,7 +4975,7 @@ void do_jump( CHAR_DATA *ch, char *argument )
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if ( arg[0] == '\0' )
    { send_to_char( "Jump where?\n\r", ch ); return; }

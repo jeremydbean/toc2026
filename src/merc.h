@@ -1967,6 +1967,7 @@ typedef struct hyrule_dungeon_gate
  */
 #define RECALL_MOVE_COOLDOWN       (30 * 60)
 #define ROOM_VNUM_ALTAR            4208
+#define ROOM_VNUM_OAK_TOP          2414   /* one climb below Questor Thews */
 
 /*
  * The stash: storage that outlives a reboot, kept at the altar one step
@@ -2160,6 +2161,7 @@ typedef struct hyrule_dungeon_gate
 #define PLR_LOG                 (W)
 #define PLR_DENY                (X)
 #define PLR_FREEZE              (Y)
+#define PLR_NOGAMBLE            (Z)     /* AQUEST GAMBLE NEVER (2026-11-13) */
 #define PLR_WANTED              (aa)
 #define PLR_TRAITOR             (bb)
 #define PLR_WARNED              (cc)
@@ -3787,6 +3789,10 @@ void    write_to_buffer_raw  ( const char *txt, CHAR_DATA *ch );
 void    send_to_room    ( const char *txt, int vnum );
 void    page_to_char    ( const char *txt, CHAR_DATA *ch );
 void    act             ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type );
+void    door_noun       ( const char *keywords, char *out, size_t size );
+bool    stash_meant     ( CHAR_DATA *ch, const char *word, OBJ_DATA *container );
+void    object_phrase   ( const char *argument, char *out, size_t size );
+void    manipulation_argument ( const char *argument, char *arg );
 void    act_new         ( const DString *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
 void    act_new_cstr    ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
 void    act_speech      ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos );

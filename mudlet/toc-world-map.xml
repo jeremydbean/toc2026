@@ -6735,7 +6735,7 @@
    <exit direction="north" target="2416" />
    <exit direction="south" target="2415" />
   </room>
-  <room id="2497" area="23" title="A sudden wind blows you from the tree!" environment="4">
+  <room id="2497" area="23" title="The Questmaster's Globe, above the Oak" environment="4">
    <coord x="10" y="-31" z="4" />
   </room>
   <room id="2498" area="23" title="Inside the treehouse." environment="4">

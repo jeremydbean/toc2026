@@ -559,6 +559,10 @@ const	struct	cmd_type	cmd_table	[] =
     /* Exploration maps (maps.c; owner, 2026-11-12). Last, so no shorter
        word that already meant something moves. */
     { "maps",           do_maps,        POS_DEAD,        0,  LOG_NORMAL, 1 },
+    /* CROSS is ENTER (players' logs, 2026-11-13: CROSS GAP and CROSS
+       WATER at Hyrule's stepladder ledge, which only ENTER crossed). Last,
+       so CR still means what it did. */
+    { "cross",          do_enter,       POS_STANDING,    0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };
@@ -870,6 +874,11 @@ static const struct
                  "GAINLIST shows what you can buy." },
     { "talk",    "To talk to someone here, SAY it; TELL <name> reaches them anywhere." },
     { "speak",   "To talk to someone here, SAY it; TELL <name> reaches them anywhere." },
+    /* Players' logs, 2026-11-13: words typed and refused. */
+    { "changelog", "CHANGES lists what has changed lately; CHANGES ALL shows everything." },
+    { "trains",  "SCORE shows how many trains you have; TRAIN <stat> [number] spends them "
+                 "at a trainer." },
+    { "land",    "There is no LAND: flying lasts until its spell wears off." },
     { NULL,      NULL }
 };
 

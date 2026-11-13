@@ -141,6 +141,16 @@ class SparseDrawLiveTests(unittest.TestCase):
                     staff.must(f"goto {TEMPLE}", "")
                     staff.must("restore zsparstaff", "")
                     reply = staff.sync("cast teleport zsparstaff", timeout=30)
+                    if "You failed" in reply:
+                        # A precondition, not the draw: spell_teleport says
+                        # "You failed." to a caster still fighting (a mobile
+                        # where the last cast landed can start one; CI
+                        # 43352000350 counted one as a fizzle). Out of it,
+                        # once more; the draw alone says "fizzles".
+                        staff.must(f"goto {TEMPLE}", "")
+                        staff.sync("peace")
+                        staff.must("restore zsparstaff", "")
+                        reply = staff.sync("cast teleport zsparstaff", timeout=30)
                     if "fizzles" in reply or "You failed" in reply:
                         fizzled.append(reply[:200])
 

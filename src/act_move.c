@@ -901,7 +901,13 @@ void do_look( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( ( obj = get_obj_here( ch, arg2 ) ) == NULL )
+        obj = get_obj_here( ch, arg2 );
+        if ( stash_meant( ch, arg2, obj ) )
+        {
+            do_stash( ch, "" );
+            return;
+        }
+        if ( obj == NULL )
         {
             send_to_char( "You do not see that here.\n\r", ch );
             return;
@@ -1553,7 +1559,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	   }
 	   if ( !found )
 	   {
-		send_to_char( "You need a boat to go there.\n\r", ch );
+		send_to_char( "You need a boat to go there, or to fly.\n\r", ch );
 		runner = 2;
 		return;
 	   }
@@ -4165,6 +4171,10 @@ void do_train( CHAR_DATA *ch, char *argument )
 	}
 	count = UMIN( count, TRAIN_MAX_COUNT );
     }
+    /* The third time running, say the count exists (players' logs,
+       2026-11-13: TRAIN CON twelve times in a row). */
+    else if ( ch->desc != NULL && ch->desc->repeat == 2 && arg[0] != '\0' )
+	send_to_char( "(Tip: TRAIN <stat> <number> trains several at once.)\n\r", ch );
 
     while ( done < count && train_once( ch, arg ) )
 	done++;

@@ -6850,6 +6850,36 @@ has a live or behaviour test that fails on the old code.
   WALKTO's; bash and trip lag still hold wimpy off until they wear away
   (`tests/test_wimpy_idle.py`).
 
+## The Players' Logs Of 2026-11-13
+
+A read of three weeks of logs found these; each is fixed and played by
+`tests/test_player_log_frictions_nov13.py`:
+
+- **`$d` is the door's noun** (`door_noun` in `comm.c`): the first of
+  door, gate, trapdoor, hatch, portcullis, grate... among the keywords,
+  else the first word. "The locked is closed." came 32 times from Hyrule's
+  "locked dungeon door".
+- **"stash" where a container goes means the stash** (`stash_meant`): GET X
+  STASH, PUT X STASH and LOOK IN STASH forward to STASH unless a real
+  container by that name is here (the altar's decorative chest 4250 answers
+  to "stash" and was "not a container"). STASH GET ALL and ALL.<name>
+  exist, STASH BUY takes a count.
+- **An object named in more than one word is the whole phrase**
+  (`object_phrase`): DROP's single-object form, EAT and QUAFF. `is_name`
+  wants every word; DROP POT PIE used to drop potions.
+- **Manipulation verbs skip LEVER, SWITCH and BUTTON before a name**
+  (`manipulation_argument`): PULL LEVER 5 is PULL 5.
+- **CROSS is ENTER**, last in the command table; `command_hints` answer
+  CHANGELOG, TRAINS and LAND. `ROOM_VNUM_OAK_TOP` (2414) tells AQUEST
+  that the questmaster is one more climb up; his room (2497) is named for
+  him.
+- **`PLR_NOGAMBLE` (Z)**: AQUEST GAMBLE NEVER collects every offer at once
+  (`quest_gamble_collect`), ASK clears it. Abandoning a quest still costs
+  `quest_abort_rest` and the streak; the logs showed it waited out, not
+  abused, so it is unchanged.
+- **A third identical TRAIN, PRACTICE or STASH BUY says it takes a
+  count** (`d->repeat == 2`).
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

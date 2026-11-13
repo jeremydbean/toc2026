@@ -362,8 +362,9 @@ The browser client does not currently include Mudlet's automatic mapper.
 See also: WEB, MUDLET, MAP, ALIAS
 ~
 
-0 ENTER~
+0 ENTER CROSS~
 Syntax: enter <portal>
+        cross <portal>
 
 Steps into a portal in the room: a magic gate, a cabinet, a raft, a window
 or anything else the room shows as one.  There is no default; name it.
@@ -374,7 +375,7 @@ or anything else the room shows as one.  There is no default; name it.
   - A private room, a guild you may not enter, or Hyrule's order on the
     far side turns you back before anything is paid.
 
-Example: enter portal
+Example: enter portal, or at Hyrule's ledges and rivers, cross gap
 
 See also: CLIMB, CRAWL, JUMP, LOOK
 ~
@@ -1675,6 +1676,7 @@ subcommand may be cut to its first letter; AQUEST alone lists them.
   - Completed quests may be turned in to any questmaster for coin and a
     pending quest-point reward.  AQUEST GAMBLE YES then risks it on an
     even chance of double; NO keeps it.  Settle it before your next quest.
+    AQUEST GAMBLE NEVER always keeps it, with no offer; ASK brings it back.
   - Most quests allow 10 to 30 minutes.  About one in five is a RUSH (5
     to 8 minutes, double points), one in twenty an EMERGENCY (5 minutes,
     five times the points); never both.

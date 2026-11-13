@@ -5,6 +5,23 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113frictions 2026-11-13
+A round of fixes from what players tripped over:
+  - A door is called a door: no more "The locked is closed."
+  - GET <item> STASH, PUT <item> STASH and LOOK IN STASH use your stash,
+    and STASH GET ALL takes everything out.  STASH BUY <number> buys
+    several steps of room at once.
+  - DROP, EAT and QUAFF read every word you type: DROP POT PIE drops the
+    pie, not your potions.
+  - The questmaster's globe is named for him, and from the top of the
+    oak he tells you it is one more climb up.
+  - PULL LEVER 5 works as PULL 5.  CROSS is ENTER, at a river or a ledge.
+  - "You need a boat to go there, or to fly."  CHANGELOG, TRAINS and
+    LAND say what to type instead.
+  - AQUEST GAMBLE NEVER always keeps your quest points, with no
+    double-or-nothing offer; AQUEST GAMBLE ASK brings it back.
+  - TRAIN and PRACTICE remind you they take a count when you repeat them.
+
 @ 20261113forage 2026-11-13
 Herbs and spell components are far more common: the world lays new ones
 every few minutes, up to about 150 herbs and 100 components lying around

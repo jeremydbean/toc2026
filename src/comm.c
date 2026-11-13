@@ -4815,6 +4815,35 @@ static void act_log_missing_arg( const char *code_desc, char code_char,
  */
 static bool act_is_speech = false;
 
+/*
+ * What to call an exit in "The $d is closed.": the noun among its
+ * keywords, not the first word (players' logs, 2026-11-13: "The locked is
+ * closed." 32 times, from Hyrule's "locked dungeon door", and "The wooden
+ * is closed."). A door, gate or the like named anywhere in the list wins;
+ * otherwise the first word, as it always was.
+ */
+void door_noun( const char *keywords, char *out, size_t size )
+{
+    static const char *const nouns[] = {
+        "door", "gate", "trapdoor", "hatch", "portcullis", "grate", "grating",
+        "doors", "gates", "panel", "curtain", "shutter", "bars", NULL
+    };
+    char word[MAX_INPUT_LENGTH];
+    const char *p;
+    int n;
+
+    for ( n = 0; nouns[n] != NULL; n++ )
+        for ( p = one_argument_const( keywords, word ); word[0] != '\0';
+              p = one_argument_const( p, word ) )
+            if ( !str_cmp( word, nouns[n] ) )
+            {
+                toc_strlcpy( out, nouns[n], size );
+                return;
+            }
+    one_argument_const( keywords, word );
+    toc_strlcpy( out, word[0] != '\0' ? word : "door", size );
+}
+
 void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
               const void *arg2, int type, int min_pos )
 {
@@ -5064,7 +5093,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 }
                 else
                 {
-                    one_argument( (char *)(uintptr_t) arg2, fname );
+                    door_noun( (const char *)(uintptr_t) arg2, fname, sizeof(fname) );
                     i = fname;
                 }
                 break;

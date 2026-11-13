@@ -372,6 +372,26 @@ static int quest_abort_rest( CHAR_DATA *ch )
     return ch->level >= 50 ? 7 : 15;
 }
 
+/* The points a gamble offer holds, collected safely: AQUEST GAMBLE NO, or
+   at once for a player who said AQUEST GAMBLE NEVER. */
+static void quest_gamble_collect( CHAR_DATA *ch, bool save )
+{
+    char buf[MAX_STRING_LENGTH];
+    int claimed = ch->questgamble_pts;
+    int awarded;
+
+    if ( claimed <= 0 )
+        return;
+    ch->questgamble_pts = 0;
+    awarded = add_quest_points( ch, claimed );
+    diary_quest_points( ch, awarded );
+    snprintf( buf, sizeof(buf),
+        "{06You safely collect {0D%d{00{06 quest points.{00\n\r", awarded );
+    send_to_char( buf, ch );
+    if ( save )
+        save_char_obj( ch );
+}
+
 static int quest_dailies_today( CHAR_DATA *ch )
 {
     if ( ch->questdaily || ch->pcdata->daily_day == (long) ( current_time / 86400 ) )
@@ -854,6 +874,12 @@ static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
         snprintf(buf, sizeof(buf), "Your purse can hold no more coin - but the points are yours.");
     }
     do_say(questman, buf);
+    /* AQUEST GAMBLE NEVER: collected at once, no offer (players' logs,
+       2026-11-13: declined 37 times of 37). */
+    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_NOGAMBLE) )
+        quest_gamble_collect( ch, false );
+    else
+    {
     send_to_char(
         "{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);
     snprintf(buf, sizeof(buf),
@@ -861,9 +887,11 @@ static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
         "{09|{00 {06Win     :{00 50%% chance to earn {0D%d{00 pts\n\r"
         "{09|{00 {07Lose    :{00 50%% chance to earn {0D0{00 pts\n\r"
         "{09|{00  Type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r"
+        "{09|{00  ({0DAQUEST GAMBLE NEVER{00 always collects, no offer.)\n\r"
         "{09'---------------------------------------------------------------'{00\n\r",
         pointreward, pointreward * 2);
     send_to_char(buf, ch);
+    }
 
     ch->nextquest = ch->level >= 50 ? 5 : 15;
     save_char_obj(ch);
@@ -1217,6 +1245,25 @@ void do_quest(CHAR_DATA *ch, char *argument)
     else if (!str_prefix(arg1, "gamble") && arg1[0] != '\0')
     {
         if (IS_NPC(ch)) return;
+        /* NEVER: every offer collected at once; ASK: offered again. */
+        if (!str_cmp(arg2, "never") || !str_cmp(arg2, "ask"))
+        {
+            if (!str_cmp(arg2, "never"))
+            {
+                SET_BIT(ch->act, PLR_NOGAMBLE);
+                send_to_char("From now on your quest points are collected at once, with no "
+                             "double-or-nothing offer.  AQUEST GAMBLE ASK brings it back.\n\r", ch);
+                if (ch->questgamble_pts > 0)
+                    quest_gamble_collect(ch, true);
+            }
+            else
+            {
+                REMOVE_BIT(ch->act, PLR_NOGAMBLE);
+                send_to_char("The questmaster will offer double-or-nothing again.\n\r", ch);
+            }
+            save_char_obj(ch);
+            return;
+        }
         if (ch->questgamble_pts <= 0)
         {
             send_to_char("{07You have no pending double-or-nothing offer.{00\n\r", ch);
@@ -1273,20 +1320,8 @@ void do_quest(CHAR_DATA *ch, char *argument)
             return;
         }
         /* arg2 == "no" or "n" */
-        {
-            int claimed = ch->questgamble_pts;
-	    int awarded;
-
-            ch->questgamble_pts = 0;
-	    awarded = add_quest_points(ch, claimed);
-	    diary_quest_points(ch, awarded);
-            snprintf(buf, sizeof(buf),
-		"{06Wise choice. You safely collect {0D%d{00{06 quest points.{00\n\r",
-		awarded);
-            send_to_char(buf, ch);
-            save_char_obj(ch);
-            return;
-        }
+        quest_gamble_collect(ch, true);
+        return;
     }
 
     if ( !str_prefix(arg1, "daily") && arg1[0] != '\0' )
@@ -1326,9 +1361,15 @@ void do_quest(CHAR_DATA *ch, char *argument)
     {
         /* Say where, not just no: players typed AQUEST COMPLETE again and
            again one room short of him (play journal, 2026-10-28). */
-        send_to_char("There is no questmaster here.  Questor Thews waits at the very "
-                     "top of the great oak:\n\rclimb up from the Oak Tree Square.  "
-                     "AQUEST INFO works anywhere.\n\r", ch);
+        /* From the top branch he is one climb away (players' logs,
+           2026-11-13: five refusals there, one room short). */
+        if ( ch->in_room->vnum == ROOM_VNUM_OAK_TOP )
+            send_to_char("There is no questmaster here.  Questor Thews is one more climb "
+                         "UP, in the globe above you.\n\r", ch);
+        else
+            send_to_char("There is no questmaster here.  Questor Thews waits at the very "
+                         "top of the great oak:\n\rclimb up from the Oak Tree Square.  "
+                         "AQUEST INFO works anywhere.\n\r", ch);
         return;
     }
 

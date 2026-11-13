@@ -4241,6 +4241,12 @@ void do_practice(CHAR_DATA *ch, char *argument)
                 what[strlen(what) - 1] = '\0';
         }
 
+        /* The third time running, say the count exists (players' logs,
+           2026-11-13: PRACTICE SWORD seventeen times in a row). */
+        if ( count == 1 && ch->desc != NULL && ch->desc->repeat == 2 )
+            send_to_char( "(Tip: PRACTICE <skill> <number> or PRACTICE <skill> MAX "
+                          "spends several sessions at once.)\n\r", ch );
+
         if ( !IS_AWAKE(ch) )
         {
             send_to_char( "In your dreams, or what?\n\r", ch );

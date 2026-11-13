@@ -1277,6 +1277,50 @@ void do_stash( CHAR_DATA *ch, char *argument )
             return;
         }
 
+        /* ALL, or ALL.<name> (players' logs, 2026-11-13: STASH PUT ALL
+           existed and STASH GET ALL did not). No carry check, as below. */
+        if ( !str_cmp( argument, "all" ) || !str_prefix( "all.", argument ) )
+        {
+            const char *want = argument[3] == '.' ? argument + 4 : "";
+            OBJ_DATA *next;
+            int taken = 0;
+
+            for ( obj = ch->pcdata->stash; obj != NULL; obj = next )
+            {
+                next = obj->next_content;
+                if ( !can_see_obj( ch, obj )
+                ||   ( want[0] != '\0' && !is_name( want, obj->name ) ) )
+                {
+                    prev = obj;
+                    continue;
+                }
+                if ( prev == NULL )
+                    ch->pcdata->stash = next;
+                else
+                    prev->next_content = next;
+                obj->next_content = NULL;
+                diary_own_move( true );
+                obj_to_char( obj, ch );
+                diary_own_move( false );
+                watch_log( ch, "withdrew %s (vnum %d) from the stash",
+                    obj->short_descr, obj->pIndexData->vnum );
+                taken++;
+            }
+            if ( taken == 0 )
+            {
+                send_to_char( want[0] != '\0' ? "There is nothing like that in your stash.\n\r"
+                                              : "Your stash is empty.\n\r", ch );
+                return;
+            }
+            snprintf( buf, sizeof(buf), "You take %d thing%s out of your stash.\n\r",
+                      taken, taken == 1 ? "" : "s" );
+            send_to_char( buf, ch );
+            act( "$n takes a few things out of their stash.", ch, NULL, NULL, TO_ROOM );
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_STASH_WITHDRAW, true );
+            save_char_obj( ch );
+            return;
+        }
+
         /* By the number STASH shows beside it, or by name. The list is
            numbered, and players typed the number (play journal,
            2026-11-05: STASH GET 57 found nothing). The count walks the
@@ -1660,7 +1704,8 @@ void do_stash( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg, "buy" ) )
     {
-        long cost;
+        long cost, paid = 0;
+        int want = 1, bought = 0;
 
         if ( !at_altar )
         {
@@ -1668,47 +1713,66 @@ void do_stash( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( ch->pcdata->stash_max >= STASH_SLOTS_MAX )
+        /* STASH BUY <n> buys that many steps at once (players' logs,
+           2026-11-13: STASH BUY twelve times in a row). */
+        if ( argument[0] != '\0'
+        &&   ( !is_number( argument ) || strlen( argument ) > 3
+            || !parse_int( argument, 1, 999, &want ) ) )
         {
-            send_to_char( "Your stash is already as large as it goes.\n\r",
-                ch );
+            send_to_char( "Buy how many steps of room?\n\r", ch );
             return;
         }
+        if ( want == 1 && ch->desc != NULL && ch->desc->repeat == 2 )
+            send_to_char( "(Tip: STASH BUY <number> buys several steps at once.)\n\r", ch );
 
-        cost = stash_upgrade_copper( ch );
+        while ( bought < want )
+        {
+            if ( ch->pcdata->stash_max >= STASH_SLOTS_MAX )
+            {
+                if ( bought == 0 )
+                    send_to_char( "Your stash is already as large as it goes.\n\r", ch );
+                break;
+            }
 
-        if ( !has_enough_copper( ch, cost ) )
+            cost = stash_upgrade_copper( ch );
+
+            if ( !has_enough_copper( ch, cost ) )
+            {
+                char price[MAX_INPUT_LENGTH];
+
+                format_price( cost, price, sizeof(price) );
+                snprintf( buf, sizeof(buf),
+                    "%s %d slots cost %s, and you do not have it.\n\r",
+                    bought == 0 ? "Another" : "The next", STASH_SLOTS_STEP, price );
+                send_to_char( buf, ch );
+                break;
+            }
+
+            if ( !spend_copper( ch, cost ) )
+            {
+                send_to_char( "Something went wrong counting your coin.\n\r", ch );
+                break;
+            }
+
+            ch->pcdata->stash_max = UMIN( ch->pcdata->stash_max + STASH_SLOTS_STEP,
+                                          STASH_SLOTS_MAX );
+            paid += cost;
+            bought++;
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_STASH_EXPAND, true );
+        }
+
+        if ( bought == 0 )
+            return;
         {
             char price[MAX_INPUT_LENGTH];
 
-            format_price( cost, price, sizeof(price) );
-            snprintf( buf, sizeof(buf),
-                "Another %d slots cost %s, and you do not have it.\n\r",
-                STASH_SLOTS_STEP, price );
-            send_to_char( buf, ch );
-            return;
-        }
-
-        if ( !spend_copper( ch, cost ) )
-        {
-            send_to_char( "Something went wrong counting your coin.\n\r", ch );
-            return;
-        }
-
-        ch->pcdata->stash_max = UMIN( ch->pcdata->stash_max + STASH_SLOTS_STEP,
-                                      STASH_SLOTS_MAX );
-
-        {
-            char price[MAX_INPUT_LENGTH];
-
-            format_price( cost, price, sizeof(price) );
+            format_price( paid, price, sizeof(price) );
             snprintf( buf, sizeof(buf),
                 "You pay %s.  Your stash now holds %d.\n\r",
                 price, ch->pcdata->stash_max );
         }
         send_to_char( buf, ch );
         act( "$n pays for more room at the altar.", ch, NULL, NULL, TO_ROOM );
-        achievement_record_event( ch, ACHIEVEMENT_EVENT_STASH_EXPAND, true );
         achievement_check_state( ch, true );
 
         save_char_obj( ch );
@@ -1718,8 +1782,8 @@ void do_stash( CHAR_DATA *ch, char *argument )
     send_to_char(
         "Syntax: stash                     -- what is in it\n\r"
         "        stash put <item>          -- from anywhere in the world\n\r"
-        "        stash get <item>          -- at the altar only\n\r"
-        "        stash buy                 -- more room, at the altar\n\r"
+        "        stash get <item>|all     -- at the altar only\n\r"
+        "        stash buy [<number>]      -- more room, at the altar\n\r"
         "        stash link <character>    -- share with another of yours\n\r"
         "        stash unlink <character>  -- stop sharing\n\r"
         "        stash of <character>      -- what is in theirs\n\r"
@@ -1841,6 +1905,22 @@ void do_donate( CHAR_DATA *ch, char *argument )
 }
 
 
+/*
+ * "The stash" named where a container goes: GET X STASH, PUT X STASH,
+ * LOOK IN STASH (players' logs, 2026-11-13: seven times "That's not a
+ * container.", from the altar's decorative chest, which answers to
+ * "stash"). Means STASH unless a real container by that name is here.
+ */
+bool stash_meant( CHAR_DATA *ch, const char *word, OBJ_DATA *container )
+{
+    if ( IS_NPC(ch) || ch->pcdata == NULL || word == NULL || str_cmp( word, "stash" ) )
+        return false;
+    return container == NULL
+        || ( container->item_type != ITEM_CONTAINER
+          && container->item_type != ITEM_CORPSE_NPC
+          && container->item_type != ITEM_CORPSE_PC );
+}
+
 void do_get( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -1930,7 +2010,16 @@ void do_get( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( ( container = get_obj_here( ch, arg2 ) ) == NULL )
+	container = get_obj_here( ch, arg2 );
+	if ( stash_meant( ch, arg2, container ) )
+	{
+	    char line[MAX_INPUT_LENGTH + 8];
+
+	    snprintf( line, sizeof(line), "get %s", arg1 );
+	    do_stash( ch, line );
+	    return;
+	}
+	if ( container == NULL )
 	{
 	    act( "I see no $T here.", ch, NULL, arg2, TO_CHAR );
 	    return;
@@ -2119,7 +2208,16 @@ void do_put( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( container = get_obj_here( ch, arg2 ) ) == NULL
+    container = get_obj_here( ch, arg2 );
+    if ( stash_meant( ch, arg2, container ) )
+    {
+	char line[MAX_INPUT_LENGTH + 8];
+
+	snprintf( line, sizeof(line), "put %s", arg1 );
+	do_stash( ch, line );
+	return;
+    }
+    if ( container == NULL
 	|| container->item_type == ITEM_MANIPULATION )
     {
 	act( "I see no $T here.", ch, NULL, arg2, TO_CHAR );
@@ -2446,7 +2544,14 @@ void do_drop( CHAR_DATA *ch, char *argument )
 
     if ( str_cmp( arg, "all" ) && str_prefix( "all.", arg ) )
     {
-	/* 'drop obj' */
+	/* 'drop obj', in as many words as were typed */
+	if ( argument[0] != '\0' )
+	{
+	    char whole[MAX_INPUT_LENGTH * 2 + 2];
+
+	    snprintf( whole, sizeof(whole), "%s %s", arg, argument );
+	    object_phrase( whole, arg, sizeof(arg) );
+	}
 	if ( ( obj = get_obj_carry( ch, arg ) ) == NULL )
 	{
 	    send_to_char( "You do not have that item.\n\r", ch );
@@ -3536,7 +3641,7 @@ void do_eat( CHAR_DATA *ch, char *argument )
     bool save_reward = false;
     int eaten_vnum;
 
-    one_argument( argument, arg );
+    object_phrase( argument, arg, sizeof(arg) );
     if ( arg[0] == '\0' )
     {
 	send_to_char( "Eat what?\n\r", ch );
@@ -4501,7 +4606,7 @@ void do_quaff( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
 
-    one_argument( argument, arg );
+    object_phrase( argument, arg, sizeof(arg) );
 
     if ( arg[0] == '\0' )
     {
@@ -6538,7 +6643,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
   int which_trap = 0;
   LIST_ITERATOR iter;
 
-   one_argument( argument, arg );
+   manipulation_argument( argument, arg );
 
    if ( arg[0] == '\0' )
    {
