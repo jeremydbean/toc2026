@@ -295257,3 +295257,6 @@ Fri Nov 13 08:40:53 2026 :: Connection guard: 204.76.203.214 closed before a pas
 Fri Nov 13 08:40:53 2026 :: Connection guard: 204.76.203.213 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 13 08:43:48 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 6 of 6 in 6 hours).
 Fri Nov 13 08:43:48 2026 :: Connection guard: 5.161.215.244 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.215.244 lifts it.
+Fri Nov 13 08:48:09 2026 :: Treasure goblin: vanished from room 5938 (A grassy clearing, mid_ruin.are) (too long in one area).
+Fri Nov 13 08:48:53 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 08:48:53 2026 :: Connection guard: 3.212.128.62 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.212.128.62 lifts it.

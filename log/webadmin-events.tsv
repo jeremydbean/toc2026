@@ -4910,3 +4910,4 @@
 1794551753	wizinfo	60	New drunk trap on book cabinet [object 20539] in The Tree House [room 20565], [10-50] FeaR    The Emerald Forest.
 1794554739	wizinfo	60	Connection guard: last hour 17 closed without a word, 9 refused, 0 new characters refused, 1 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
 1794559428	wizinfo	60	Connection guard: 5.161.215.244 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.215.244 lifts it.
+1794559733	wizinfo	60	Connection guard: 3.212.128.62 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.212.128.62 lifts it.
