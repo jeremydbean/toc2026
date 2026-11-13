@@ -82,6 +82,7 @@ set(SRC_FILES
     src/changes.c
     src/diary.c
     src/encounter.c
+    src/tutorial.c
     src/abilities.c
     src/blackmarket.c
     src/fixes.c

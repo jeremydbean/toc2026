@@ -321,6 +321,7 @@ DECLARE_DO_FUN( do_blackmarket );
 DECLARE_DO_FUN( do_fixes );
 DECLARE_DO_FUN( do_goblin );
 DECLARE_DO_FUN( do_maps );
+DECLARE_DO_FUN( do_tutorial );
 DECLARE_DO_FUN( do_grantmap );
 DECLARE_DO_FUN( do_cartographer );
 DECLARE_DO_FUN( do_disaster );

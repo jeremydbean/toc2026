@@ -3113,6 +3113,7 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
     SET_CHAR_REF( ch, fighting, victim );
     ch->position = POS_FIGHTING;
     encounter_fight( ch, victim );      /* seen against fought: encounter.c */
+    tutorial_fight( ch, victim );       /* a hint for after it: tutorial.c */
     /* An encounter's start, for log/progress.tsv: a mobile entering a
        fight (set_fighting is only ever for one not already in one), or
        struck by a player while in none, since a blow that kills never puts
@@ -3173,6 +3174,9 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
 	    } else {
 	       ch->battleticks     = BATTLE_TICKS;
                victim->battleticks = BATTLE_TICKS;
+	       /* And no PRAY for a while after (oracle.c). */
+	       oracle_note_pk_fight( ch );
+	       oracle_note_pk_fight( victim );
 	    }
 	}
     }
@@ -3671,6 +3675,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
             progress_event( victim, "death", ch );  /* log/progress.tsv */
         playlog_death( ch, victim );                /* log/play.tsv */
         diary_death( victim, ch );                  /* diary.c */
+        tutorial_death( victim );                   /* tutorial.c */
         hylog_death( ch, victim );                  /* log/hyrule.tsv */
         gmcp_play_sound( victim, "death" );         /* Client.Media */
     }
@@ -4030,6 +4035,7 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 		progress_kill( gch, victim, xp, rested, gch->exp - before, members,
 		               coins_to_copper( victim ) );
 		diary_kill( gch, victim );              /* diary.c */
+		tutorial_kill( gch );                   /* tutorial.c */
 	    }
 	}
 
@@ -5561,6 +5567,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	if ( !IS_NPC(ch) )
 	{
 	    send_to_char( "You flee from combat!  You lose 10 exps.\n\r", ch );
+	    oracle_note_flight( ch, victim );       /* no PRAY just yet */
 	    playlog_exp_as( "flee" );
 	    gain_exp( ch, -10 );
 	    progress_event( ch, "flee", victim );   /* log/progress.tsv */

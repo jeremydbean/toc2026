@@ -210,7 +210,10 @@ typedef enum
     ACHIEVEMENT_EVENT_CARTOGRAPHER,
     /* More of them (owner, 2026-11-13). */
     ACHIEVEMENT_EVENT_MAP_FROM_FOE,     /* learned a map found on a fallen foe */
-    ACHIEVEMENT_EVENT_MAP_TOO_LATE      /* read the map of an area already walked */
+    ACHIEVEMENT_EVENT_MAP_TOO_LATE,     /* read the map of an area already walked */
+    /* The tutorial (owner, 2026-11-13). */
+    ACHIEVEMENT_EVENT_ORACLE_ASKED,     /* asked the Oracle a question */
+    ACHIEVEMENT_EVENT_TUTORIAL_DONE     /* saw every hint the tutorial had */
 } achievement_event_type;
 
 /* Counted achievements (achievements.c). Saved by name as
@@ -304,6 +307,7 @@ typedef enum
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define PLAY_RECENT             6     /* commands kept for a BUG report (playlog.c) */
+#define TUTORIAL_QUEUE          4     /* hints waiting to be shown (tutorial.c) */
 #define PLAY_COIN_KINDS         7     /* a session's coin by source (playlog.c) */
 #define PLAY_TALLY_KINDS        8     /* labels in a session's spend and exp tallies */
 #define PLAY_TALLY_NAME         16    /* a tally label, the last slot "other" */
@@ -1079,6 +1083,24 @@ void  encounter_mob_acted    args( ( CHAR_DATA *ch, CHAR_DATA *mob, const char *
 void  encounter_session_end  args( ( CHAR_DATA *ch, const char *how ) );
 void  encounter_free         args( ( CHAR_DATA *ch ) );
 void  encounter_census       args( ( void ) );
+/* oracle.c: no PRAY straight out of trouble (owner, 2026-11-13) */
+void  oracle_note_flight     args( ( CHAR_DATA *ch, CHAR_DATA *from ) );
+void  oracle_note_pk_fight   args( ( CHAR_DATA *ch ) );
+/* tutorial.c -- the new-player tutorial: hints tied to events */
+void  tutorial_new_character args( ( CHAR_DATA *ch ) );
+void  tutorial_login         args( ( CHAR_DATA *ch, bool is_new_character ) );
+void  tutorial_room_seen     args( ( CHAR_DATA *ch, bool arrived ) );
+void  tutorial_got           args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
+void  tutorial_command       args( ( CHAR_DATA *ch, const char *cmd ) );
+void  tutorial_fight         args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+void  tutorial_kill          args( ( CHAR_DATA *ch ) );
+void  tutorial_death         args( ( CHAR_DATA *ch ) );
+void  tutorial_door          args( ( CHAR_DATA *ch ) );
+void  tutorial_hunger        args( ( CHAR_DATA *ch ) );
+void  tutorial_refused       args( ( CHAR_DATA *ch ) );
+void  tutorial_oracle        args( ( CHAR_DATA *ch ) );
+void  tutorial_level         args( ( CHAR_DATA *ch, bool guild_given ) );
+void  tutorial_update        args( ( void ) );
 /* playlog.c, for encounter.c */
 void  playlog_row            args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
 void  playlog_clean          args( ( char *dest, size_t size, const char *src ) );
@@ -2666,6 +2688,7 @@ struct  pc_data
     /* Last session snapshot (persisted to player file) */
     long                last_logout;          /* when they last left the game */
     long                oracle_daze_until;    /* back from the Oracle, dazed until (memory only) */
+    long                pray_after;           /* no PRAY before this: a flee, a fight with a player (memory only) */
     int                 holiday_luck;         /* four-leaf clovers eaten, not yet spent (memory only) */
     long                rest_xp;              /* rested bonus experience left (rested.c) */
     bool                rest_eligible;        /* quit somewhere they could rest */
@@ -2692,6 +2715,16 @@ struct  pc_data
     /* encounter.c (memory only): what this sitting has seen and done
        about it; heap, freed by encounter_free from free_char. */
     ENCOUNTER_STATE *   encounter;
+    /* tutorial.c: the new-player hints. tutorial_on and tutorial_done (a
+       bit a step shown or known) are saved as "Tutorial <on> <done>" under
+       case 'T'; a file without the line reads as off. The queue and the
+       time of the last hint are memory only. */
+    bool                tutorial_on;
+    int                 tutorial_done;
+    sh_int              tutorial_queue[TUTORIAL_QUEUE];
+    int                 tutorial_queued;
+    time_t              tutorial_last;
+    int                 tutorial_misses;      /* unknown words this sitting */
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;

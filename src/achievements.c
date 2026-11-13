@@ -605,7 +605,10 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "map-from-foe", "Treasure Map", "Learn an area's map from one found on a fallen foe.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_MAP_FROM_FOE, 0 },
     { "funny-map-too-late", "Hindsight", "Read the map of an area you have already walked end to end.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_MAP_TOO_LATE, 0 },
     { "maps-50", "Well Charted IV", "Learn the whole maps of 50 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_AREA_MAPS, 50, 0 },
-    { "explored-50", "No Stone Unturned V", "Walk into every room of 50 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_SET, 50, ACH_SET_EXPLORED_AREAS }
+    { "explored-50", "No Stone Unturned V", "Walk into every room of 50 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_SET, 50, ACH_SET_EXPLORED_AREAS },
+    /* The tutorial and the Oracle it sends you to (owner, 2026-11-13). */
+    { "oracle-asked", "Seeker of Answers", "Ask the Oracle a question in her sanctum.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_ORACLE_ASKED, 0 },
+    { "tutorial-done", "Schooled", "See every hint the tutorial has for you.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_TUTORIAL_DONE, 0 }
 };
 
 typedef char achievement_table_must_fit[

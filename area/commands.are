@@ -14,12 +14,16 @@ but only as far as you could see for yourself.  She remembers what you
 asked earlier in the same audience.
 
   - PRAY takes you to her sanctum, one seeker at a time.  Not in a fight,
-    while your blood is up, while something hunts you, or from a death
-    trap.  You cannot sleep there.
+    while something or somebody hunts you, or from a death trap.  You
+    cannot sleep there.
+  - She hides nobody from a fight: after you FLEE, PRAY waits three
+    minutes, and after any fight with another player, ten.
   - An audience lasts at most five minutes, less if you fall silent.
-  - You return to where you prayed, dazed for a minute: every command but
-    QUIT is refused until it clears.  Pray from a safe room, such as the
-    Temple altar, and there is no daze.
+  - You return to where you prayed.  A player killer comes back dazed for
+    a minute, every command but QUIT refused until it clears -- unless
+    they prayed from a safe room, such as the Temple altar.  Nobody else
+    is dazed.
+  - Asking her a question earns Seeker of Answers.
 
 The gods may bar a troublemaker from her.
 ~
@@ -3460,10 +3464,14 @@ Syntax: join
 At Melancholy the guild clerk (WALKTO MELANCHOLY), joins a guild.  JOIN
 alone tells you the fee: one gold coin.
 
-  - From level 3 to 6, and only if you have never been in a guild.
-  - A mage, cleric, thief or warrior in no guild at level 6 is put in
-    their own class's guild and charged 50 gold.
-  - Monks and necromancers have no guild to join.
+  - From level 3 until you reach level 6, and only if you have never been
+    in a guild: the choice is made once.
+  - A mage, cleric, thief or warrior still in no guild on reaching level 6
+    is put in their own class's guild, free, with its starting group.
+    From then on the choice is over until a REMORT.
+  - Monks and necromancers have their own guild and join no other.
+  - Before you choose: HELP GUILDS, and GAINLIST PREVIEW <class> <guild>
+    to see a build (GAINLIST PREVIEW WARRIOR THIEF).
 
 A castle head adds castle members with JOIN <player>: see CASTLE.
 
@@ -4041,6 +4049,35 @@ the guilds and about town.  Wisdom and constitution are the usual first
 choices: more practices and more hit points each level.
 
 See also: PRACTICE, GAIN, ATTRIBUTE
+~
+
+0 TUTORIAL~
+Syntax: tutorial            (or TUTORIAL STATUS)
+        tutorial on
+        tutorial off
+        tutorial next
+
+The tutorial gives short hints as you play, each tied to something that
+just happened: your first steps and Mud School's signs, picking up and
+wearing things, sizing up and fighting monsters, your first kill and
+death, a new level, finding your way with WALKTO and RECALL, closed
+doors, food and drink, your stash, the questmaster, the Oracle, choosing
+a guild at level 3, and the optional player-killer choice at level 15.
+
+  - New characters start with it on; older ones start with it off and
+    may turn it on.  It remembers what you have seen, across logins,
+    lost links and remorts, and never repeats a hint.
+  - One hint at a time, never in the middle of a fight, a WALKTO or a
+    page of text.  There is no quest to follow and nothing is required.
+  - TUTORIAL OFF stops the hints and keeps your progress; TUTORIAL ON
+    picks up where you left off.
+  - TUTORIAL NEXT shows the next hint now.  TUTORIAL STATUS lists the
+    hints and which you have seen.
+  - It will ask you to try the Oracle (PRAY), who answers questions about
+    the game; asking her earns Seeker of Answers, and seeing every hint
+    earns Schooled.
+
+See also: BEGINNERS, 'NEWBIE INFO', MUDSCHOOL, GUILDS
 ~
 
 0 VISIBLE~

@@ -105,6 +105,17 @@ areas
 save
 ```
 
+New characters start with the **tutorial** on: short hints tied to what
+just happened -- your first steps and Mud School's signs, picking up and
+wearing gear, `consider`, `wimpy` and your first fight, kill and death,
+`train`, `practice` and `gainlist` at a new level, `walkto` and `recall`,
+the guild choice at level 3, and the optional `pkill` at level 15. One hint
+at a time, never in a fight, a `walkto` or a page of text. `tutorial next`
+shows one now, `tutorial status` your progress, `tutorial off` stops them
+and `tutorial on` picks up where you left off (characters made before it
+start with it off). While you make a character, `help` at the class or
+alignment question reads about the choices without making one.
+
 Then:
 
 1. Read room descriptions and signs. Builders often place directions and
@@ -112,7 +123,9 @@ Then:
 2. Find opponents near your level and use `consider <target>` before attacking.
 3. Return to a trainer or guildmaster when you have practices, trains, or new
    skills available.
-4. Choose a guild before advancing beyond level 5.
+4. Mages, clerics, thieves and warriors: choose a guild at level 3, 4 or 5
+   (`help guilds`, `gainlist preview <class> <guild>`, `walkto melancholy`,
+   `join <guild>`).
 5. Use `save` after meaningful progress and before disconnecting.
 
 `score`, `attribute`, `affect`, `worth`, `equipment`, and `compare profile`
@@ -352,10 +365,12 @@ Cleric, Thief, and Warrior are valid optional guild choices. Monk and
 Necromancer use their class-specific path and do not select one of those four
 guilds.
 
-The game warns at level 5. If the character still has no guild upon reaching
-level 6, the game assigns the guild matching the primary class, free, with
-that guild's starting group. Use `join`, `gainlist`, `teachlist`, and the relevant in-game guild
-help before that point.
+Joining is possible from level 3 with Melancholy the guild clerk
+(`walkto melancholy`, then `join <guild>`, one gold), and `gainlist preview
+<class> <guild>` shows a build first. The game warns at level 5. If the
+character still has no guild upon reaching level 6, the game assigns the guild
+matching the primary class, free, with that guild's starting group, and the
+choice is over until a remort.
 
 ### Heroes, Remorts, And The Mortal Cap
 

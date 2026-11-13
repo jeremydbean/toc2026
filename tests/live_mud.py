@@ -549,6 +549,11 @@ class LiveMud:
         # The wandering cartographer (maps.c) visits now and then; a test
         # world has none unless staff call one with CARTOGRAPHER HERE.
         env.setdefault("TOC_NO_CARTOGRAPHER", "1")
+        # New characters start with the tutorial on (tutorial.c), and its
+        # hints arrive on their own a second after an event -- inside other
+        # tests' reply windows. A test world's new characters start with it
+        # off; pass extra_env={"TOC_NO_TUTORIAL": None} to have it on.
+        env.setdefault("TOC_NO_TUTORIAL", "1")
         # Area disasters (disaster_update) strike an occupied area at
         # random: an earthquake damages and stuns everyone in it, which
         # once landed between a fixture's two commands in CI. Pass

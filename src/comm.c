@@ -3451,6 +3451,89 @@ static bool connect_anyway_still_allowed( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
 /*
  * Deal with sockets that haven't logged in yet.
  */
+/* ---------------------------------------------------- creation help
+ *
+ * The race question always took HELP; class and alignment did not, so a
+ * new player chose both blind (onboarding review, 2026-11-13). Each now
+ * shows a line a choice and reads HELP <topic> without choosing. The
+ * pager is held off as at first entry: the player is not playing yet. */
+static const struct
+{
+    const char *name;
+    const char *summary;
+} creation_class_summaries[] =
+{
+    { "mage",        "intelligence: offensive and utility magic" },
+    { "cleric",      "wisdom: healing and protective magic" },
+    { "thief",       "dexterity: daggers, stealth and backstab" },
+    { "warrior",     "strength: heavy weapons and armour, the front line" },
+    { "monk",        "hand to hand, nerve strikes and discipline" },
+    { "necromancer", "the dead raised to fight for you" },
+    { NULL, NULL }
+};
+
+static void creation_help( CHAR_DATA *ch, const char *what )
+{
+    char topic[MAX_INPUT_LENGTH];
+    int save_lines = ch->lines;
+
+    toc_strlcpy( topic, what, sizeof(topic) );
+    ch->lines = 0;
+    do_help( ch, topic );
+    ch->lines = save_lines;
+}
+
+static void creation_class_prompt( DESCRIPTOR_DATA *d )
+{
+    char buf[MAX_STRING_LENGTH];
+    int iClass;
+
+    safe_strcpy( buf, sizeof(buf), "Select a class [" );
+    for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
+    {
+        if ( iClass > 0 )
+            safe_strcat( buf, sizeof(buf), " " );
+        safe_strcat( buf, sizeof(buf), class_table[iClass].name );
+    }
+    safe_strcat( buf, sizeof(buf), "] or HELP <class>: " );
+    write_to_buffer( d, buf, 0 );
+}
+
+static void creation_class_menu( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    int iClass, i;
+
+    write_to_buffer( d, "\n\rChoose a class:\n\r", 0 );
+    for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
+    {
+        const char *summary = "";
+
+        for ( i = 0; creation_class_summaries[i].name != NULL; i++ )
+            if ( !str_cmp( creation_class_summaries[i].name, class_table[iClass].name ) )
+                summary = creation_class_summaries[i].summary;
+        snprintf( buf, sizeof(buf), "  %-12s %s%s\n\r", class_table[iClass].name, summary,
+                  class_race_refusal( iClass, ch->race ) != NULL ? " (not for your race)" : "" );
+        write_to_buffer( d, buf, 0 );
+    }
+    write_to_buffer( d,
+        "Mages, clerics, thieves and warriors also choose a guild from level 3\n\r"
+        "(HELP GUILDS).  HELP CLASS compares them; HELP <class> reads about one.\n\r", 0 );
+    creation_class_prompt( d );
+}
+
+static void creation_alignment_menu( DESCRIPTOR_DATA *d )
+{
+    write_to_buffer( d,
+        "Choose an alignment.  What you slay moves it, and DEVOTE at the Temple\n\r"
+        "moves it later (HELP ALIGNMENT):\n\r"
+        "  G  good     faster healing, stronger holy damage\n\r"
+        "  N  neutral  balanced: holy and negative damage hurt you less\n\r"
+        "  E  evil     your weapon blows drain life, stronger negative damage\n\r"
+        "Some gear suits only one side.\n\r"
+        "Which alignment (G/N/E, or HELP)? ", 0 );
+}
+
 void nanny( DESCRIPTOR_DATA *d, char *argument )
 {
     DESCRIPTOR_DATA *d_old, *d_next_local;
@@ -3968,25 +4051,28 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             return;
         }
 
-        safe_strcpy( buf, sizeof(buf), "Select a class [" );
-        for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-        {
-            if ( iClass > 0 )
-                safe_strcat( buf, sizeof(buf), " " );
-            safe_strcat( buf, sizeof(buf), class_table[iClass].name );
-        }
-        safe_strcat( buf, sizeof(buf), "]: " );
-        write_to_buffer( d, buf, 0 );
+        creation_class_menu( d, ch );
         d->connected = CON_GET_NEW_CLASS;
         break;
 
     case CON_GET_NEW_CLASS:
+	/* HELP, or HELP <class>, reads without choosing (as the race
+	   question always allowed). */
+	one_argument( argument, arg );
+	if ( !str_cmp( arg, "help" ) || !str_cmp( arg, "?" ) )
+	{
+	    argument = one_argument( argument, arg );
+	    creation_help( ch, argument[0] == '\0' ? "class" : argument );
+	    creation_class_prompt( d );
+	    break;
+	}
+
 	iClass = class_lookup(argument);
 
 	if ( iClass == -1 )
 	{
-	    write_to_buffer( d,
-		"That's not a class.\n\rWhat IS your class? ", 0 );
+	    write_to_buffer( d, "That's not a class.\n\r", 0 );
+	    creation_class_menu( d, ch );
 	    return;
 	}
 
@@ -4017,12 +4103,19 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
            most want to see was the one that never reached them. */
         wizinfo( log_buf, LEVEL_IMMORTAL );
 	write_to_buffer( d, "\n\r", 2 );
-	write_to_buffer( d, "You may be good, neutral, or evil.\n\r",0);
-	write_to_buffer( d, "Which alignment (G/N/E)? ",0);
+	creation_alignment_menu( d );
 	d->connected = CON_GET_ALIGNMENT;
 	break;
 
 case CON_GET_ALIGNMENT:
+	one_argument( argument, arg );
+	if ( !str_cmp( arg, "help" ) || !str_cmp( arg, "?" ) )
+	{
+	    argument = one_argument( argument, arg );
+	    creation_help( ch, argument[0] == '\0' ? "alignment" : argument );
+	    write_to_buffer( d, "Which alignment (G/N/E, or HELP)? ", 0 );
+	    break;
+	}
 	switch( argument[0])
 	{
 	    case 'g' : case 'G' : ch->alignment = 750;  break;
@@ -4030,7 +4123,7 @@ case CON_GET_ALIGNMENT:
 	    case 'e' : case 'E' : ch->alignment = -750; break;
 	    default:
 		write_to_buffer(d,"That's not a valid alignment.\n\r",0);
-		write_to_buffer(d,"Which alignment (G/N/E)? ",0);
+		creation_alignment_menu( d );
 		return;
 	}
 
@@ -4179,7 +4272,7 @@ case CON_DEFAULT_CHOICE:
         if ( ch->level == 0 && !new_name_still_free( d ) )
             return;
 
-        write_to_buffer( d, "\n\rWelcome to ROM 2.4.  Please do not feed the mobiles.\n\r", 0 );
+        write_to_buffer( d, "\n\rWelcome to the Times of Chaos.  May your stay be ... interesting.\n\r", 0 );
 	register_character( ch );
 	d->connected	= CON_PLAYING;
 	reset_char(ch);
@@ -4215,6 +4308,9 @@ case CON_DEFAULT_CHOICE:
 	        ch->practice = 5;
                 set_class_title( ch, true );
 	        do_outfit(ch,"");
+	        /* On for every character made from now (tutorial.c); after
+	           the outfit, so the starting kit is no "first thing". */
+	        tutorial_new_character( ch );
 	        char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
 	        send_to_char("\n\r",ch);
 	        {
@@ -4342,6 +4438,8 @@ case CON_DEFAULT_CHOICE:
 	       anyone, and player reports for staff. Both used to be
 	       silent -- a report went into a flat file that nothing in
 	       the game ever mentioned again. */
+	    /* The tutorial says it is on, and how to turn it off. */
+	    tutorial_login( ch, is_new_character );
 	    holiday_login_notice( ch );
 	    report_login_notice( ch );
 	}

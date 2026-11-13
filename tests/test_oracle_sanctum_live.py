@@ -17,13 +17,18 @@ TEMPLE_NAME = "Before the Altar"
 _SKIP = skip_reason()
 
 
-def make(mud, name):
+def make(mud, name, pk=True):
+    """A character in the Temple. A player killer by default: since
+    2026-11-13 only they come back from her dazed (owner)."""
     with mud.connect(timeout=120) as client:
         create_character(client, name, PW)
         client.send("quit")
         if not client.wait_closed():
             raise AssertionError("character did not quit")
-    patch_player_file(mud, name, Room=4207)
+    if pk:
+        patch_player_file(mud, name, Room=4207, Levl=15, Pk_State=1)
+    else:
+        patch_player_file(mud, name, Room=4207)
 
 
 @unittest.skipIf(_SKIP is not None, _SKIP or "")
@@ -121,6 +126,17 @@ class OracleDazeLive(unittest.TestCase):
                 self.assertNotIn("dazed", out)
                 self.assertIn("Altar of the Temple", client.sync("look"))
 
+            # Nobody but a player killer is dazed (owner, 2026-11-13), even
+            # praying from the Temple floor, which is no safe room.
+            make(mud, "Zpraycalm", pk=False)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zpraycalm", PW)
+                self.assertIn("The Oracle's Sanctum", client.command("pray", 1.5))
+                out = client.command("say done", 1.5)
+                self.assertIn("settles gently", out)
+                self.assertNotIn("dazed", out)
+                self.assertIn(TEMPLE_NAME, client.sync("look"))
+
             # QUIT is never refused: leaving the game escapes nothing.
             with mud.connect(timeout=120) as client:
                 login(client, "Zprayleave", PW)
@@ -132,3 +148,44 @@ class OracleDazeLive(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipIf(_SKIP is not None, _SKIP or "")
+class OracleAfterAFleeLive(unittest.TestCase):
+    """Owner, 2026-11-13: "prevent players from fleeing and then
+    immediately praying just to get away from a mob or a pkiller". A flee
+    holds PRAY off (three minutes; TOC_ORACLE_FLEE_WAIT shortens it here),
+    the refusal says how long, and it clears by itself."""
+
+    def test_no_prayer_straight_after_a_flee(self):
+        from live_mud import SPARRING_FLOOR, place_sparring_guard
+        with LiveMud(fixtures=True, extra_env={"TOC_ORACLE_FLEE_WAIT": "8"}) as mud:
+            make(mud, "Zfleegod")
+            patch_player_file(mud, "Zfleegod", Levl=70)
+            make(mud, "Zfleer", pk=False)
+            patch_player_file(mud, "Zfleer", Levl=20, HMV="20000 20000 500 500 5000 5000",
+                              HMVP="20000 500 5000")
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zfleegod", PW)
+                login(hero, "Zfleer", PW)
+                place_sparring_guard(staff, "Zfleegod", SPARRING_FLOOR)
+                staff.must(f"transfer zfleer {SPARRING_FLOOR}", "")
+                hero.sync("kill sparring", 10)
+                fled = ""
+                for _ in range(30):
+                    fled = hero.sync("flee", 10)
+                    if "You flee from combat" in fled:
+                        break
+                    hero.drain(1)
+                self.assertIn("You flee from combat", fled)
+                refused = hero.sync("pray")
+                self.assertIn("fresh from a fight", refused)
+                self.assertRegex(refused, r"\(\d+ seconds? more\)")
+                self.assertNotIn("The Oracle's Sanctum", refused)
+                hero.drain(9)
+                self.assertIn("The Oracle's Sanctum", hero.command("pray", 1.5))
+                hero.command("say done", 1.5)
+                hero.send("quit")
+                hero.wait_closed()
+                staff.send("quit")
+                staff.wait_closed()

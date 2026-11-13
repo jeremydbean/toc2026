@@ -5,13 +5,14 @@ the progression and collection model used by modern MMORPGs. Achievements are
 recognition and long-term goals: they award points, dates, and announcements,
 but never combat stats or economic rewards.
 
-The catalog holds **406** achievements: 203 from before 2026-10-25, the
+The catalog holds **408** achievements: 203 from before 2026-10-25, the
 175 of the 2026-10-25 expansion (rare encounters, more named bosses,
 combat and teamwork, skills and crafting, quests and exploration, Hyrule's
 actions and secrets, collection, services and world events), 8 close
 calls and comedy rows from 2026-11-01, 3 for the holiday fairs from
 2026-11-02, 10 for exploration maps from 2026-11-12, and 7 more for maps
-and the cartographer from 2026-11-13. Every point
+and the cartographer from 2026-11-13, and 2 for the tutorial and the
+Oracle the same day. Every point
 earned is also a **mark** that can be spent at `REDEEM` on cosmetic and
 convenience perks; spending marks never lowers points.
 
@@ -417,6 +418,8 @@ the hooks are installed.
 | `funny-map-too-late` | Hindsight | Read the map of an area you have already walked end to end. | 5 | yes | maps.c map_item_read (area in explored-areas) | from now |
 | `maps-50` | Well Charted IV | Learn the whole maps of 50 areas. | 60 |  | as maps-1 | as maps-1 |
 | `explored-50` | No Stone Unturned V | Walk into every room of 50 areas. | 60 |  | as explored-1 | as explored-1 |
+| `oracle-asked` | Seeker of Answers | Ask the Oracle a question in her sanctum. | 10 |  | oracle.c, the question accepted (beside oracle_journal) | from now |
+| `tutorial-done` | Schooled | See every hint the tutorial has for you. | 10 |  | tutorial.c tut_finished | from now |
 
 ### Deferred candidates
 
@@ -472,7 +475,7 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 
 The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 512
 timestamp slots through `MAX_ACHIEVEMENTS`, checked at compile time by
-`achievement_table_must_fit`; the current catalog uses 406. Add a new entry
+`achievement_table_must_fit`; the current catalog uses 408. Add a new entry
 only with a unique key that will never be repurposed, at the end of the
 table, and never move an old row.
 

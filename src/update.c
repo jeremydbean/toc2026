@@ -413,6 +413,7 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
     int add_move;
     int add_prac, add_train;
     int guild;
+    bool guild_given = false;
 
     if (IS_NPC(ch) )
 	return;
@@ -430,11 +431,14 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
       send_to_char("Type 'save' anytime to protect your progress (see 'help save' for details).\n\r\n\r", ch);
     }
 
-    if(ch->level == 5)
+    /* Only for those who can still choose: monks and necromancers have
+       their own guild, and a member has chosen. */
+    if(ch->level == 5 && ch->pcdata->guild == GUILD_NONE
+    && ch->class >= CLASS_MAGE && ch->class <= CLASS_WARRIOR)
     {
       send_to_char("\n\r",ch);
-      send_to_char("         NOTE: Remember to join a guild before your next level.    \n\r",ch);
-      send_to_char("   If you don't, you will be placed in the same guild as your class.\n\r",ch);
+      send_to_char("   NOTE: Join a guild before your next level (WALKTO MELANCHOLY, then\n\r",ch);
+      send_to_char("   JOIN <guild>).  If you don't, you join your own class's guild, free.\n\r",ch);
       send_to_char("\n\r",ch);
     }
 
@@ -487,6 +491,7 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
       const char *guild_group;
 
       ch->pcdata->guild = (sh_int)(ch->class);
+      guild_given = true;
       send_to_char("A group of men falls in beside you on the road and informs\n\r", ch);
       send_to_char("you that you are now a member of their guild -- the guild of\n\r", ch);
       send_to_char("your own class.  They ask nothing for it.\n\r", ch);
@@ -494,6 +499,10 @@ static void advance_level_body( CHAR_DATA *ch, bool is_advance )
       if ( ( guild_group = guild_group_name( ch->pcdata->guild ) ) != NULL )
 	group_add( ch, guild_group, false );
     }
+
+    /* The tutorial's word on this level (tutorial.c): shown when it is
+       safe to, never in the middle of these lines. */
+    tutorial_level( ch, guild_given );
 
     if (guild < 0 || guild >= MAX_CLASS)    /* GUILD_NONE, GUILD_ANY */
 	guild = ch->class;
@@ -1003,11 +1012,13 @@ static void condition_change( CHAR_DATA *ch, int iCond, int value, bool speak )
 	case COND_FULL:
 	    if ( speak )
 		send_to_char( "You are hungry.\n\r",  ch );
+	    tutorial_hunger( ch );
 	    break;
 
 	case COND_THIRST:
 	    if ( speak )
 		send_to_char( "You are thirsty.\n\r", ch );
+	    tutorial_hunger( ch );
 	    break;
 
 	case COND_DRUNK:
@@ -3422,6 +3433,8 @@ void update_handler( void )
 	jail_update	( );
 	playlog_phase_enter( "encounter_census" );
 	encounter_census( );
+	playlog_phase_enter( "tutorial_update" );
+	tutorial_update( );
 	/* The seasonal areas held to the calendar: a restart at 3am New
 	   York when they differ (season.c). */
 	playlog_phase_enter( "season_restart" );

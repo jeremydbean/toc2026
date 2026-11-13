@@ -2180,6 +2180,7 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
     {
         hylog_got(ch, obj);
         playlog_got(ch, obj);
+        tutorial_got(ch, obj);
     }
 }
 

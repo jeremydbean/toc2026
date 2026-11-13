@@ -1447,6 +1447,12 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "Prac %d\n",	ch->practice	);
     if (ch->train != 0)
 	fprintf( fp, "Trai %d\n",	ch->train	);
+    /* The tutorial's switch and the steps seen (tutorial.c). Always
+       written, so only a file from before the tutorial lacks it -- and
+       reads as off. */
+    if ( ch->pcdata != NULL )
+	fprintf( fp, "Tutorial %d %d\n", ch->pcdata->tutorial_on ? 1 : 0,
+		 ch->pcdata->tutorial_done );
     if (ch->saving_throw != 0)
 	fprintf( fp, "Save  %d\n",	ch->saving_throw);
     fprintf( fp, "Alig  %d\n",	ch->alignment		);
@@ -4951,6 +4957,16 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Trust",	ch->trust,		(sh_int)(fread_number( fp )) );
 	    KEY( "Tru",		ch->trust,		(sh_int)(fread_number( fp )) );
 	    KEY( "TitleSet",	ch->pcdata->title_custom, fread_number( fp ) != 0 );
+	    if ( !str_cmp( word, "Tutorial" ) )
+	    {
+		int on = fread_number( fp );
+		int done = fread_number( fp );
+
+		ch->pcdata->tutorial_on = on != 0;
+		ch->pcdata->tutorial_done = done;
+		fMatch = true;
+		break;
+	    }
 
 	    if ( !str_cmp( word, "Title" )  || !str_cmp( word, "Titl"))
 	    {

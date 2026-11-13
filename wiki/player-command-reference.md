@@ -270,6 +270,7 @@ Telnet.
 | Commands | Use |
 |---|---|
 | `help <topic>` | Search in-game help |
+| `tutorial`, `tutorial on`, `tutorial off`, `tutorial next` | The new-player hints: status, turn them on or off (progress is kept), or show the next one now |
 | `commands` | Show currently available commands |
 | `socials` | List social actions |
 | `bug` | Report incorrect behavior |

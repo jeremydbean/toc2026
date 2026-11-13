@@ -1559,7 +1559,7 @@ go south.
   There is also a newbie train station above you.  It will take you to all
 low level areas and even give you directions how to get there on your own.
 
-A sign warns 'You may not pass these doors once you have passed level 5.'
+A sign warns 'You may not pass these doors once you have passed level 10.'
 ~
 2 CD 0
 D5
@@ -1616,8 +1616,8 @@ Copyright 1992, 1993.
 E
 sign~
 Equipment check time!  Type 'EQUIPMENT' to see your current equipment.  Right
-now, you have just a vest, a shield, and a weapon.  As you go through Mud
-School you will acquire a complete set of equipment.
+now, you have just a banner, a vest, a shield, and a weapon.  As you go
+through Mud School you will acquire a complete set of equipment.
 
 To pick up items on the ground as you see them, type 'GET item'.
 To wear a piece of armor, type 'WEAR item'.
@@ -1625,7 +1625,8 @@ To hold a light source, type 'HOLD item'.
 To wield a weapon, type 'WIELD weapon'.
 To wear, hold, and wield everything you have, type 'WEAR ALL'.
 To stop using a piece of equipment, type 'REMOVE item'.
-Finally, to see the items in your inventory, type 'INVENTORY'.
+To see the items in your inventory, type 'INVENTORY'.
+To weigh something you carry against what you wear, type 'COMPARE item'.
 
 When you are ready to continue, go west.
 ~
@@ -2120,10 +2121,12 @@ You have graduated from Mud School!  Take your diploma...if you can.
 Go 'NORTH' from here to visit our arena.  There are plenty of low-level
 monsters, but DON'T attack other players.
 
-If you want to go directly back to the temple at any time, type 'RECALL'.
+To pray your way back to the temple, type 'RECALL'.  Now and then the gods
+do not answer, or set you down somewhere else; 'HELP RECALL' says more.
+To walk to a place instead, type 'WALKTO <place>'.
 
-Don't forget to type save to protect your character.  Always type save before
-you type quit to make sure your progress is protected.
+The game saves you as you play and when you QUIT; type 'SAVE' whenever you
+like to be sure.
 
 If you need more help during the game, type 'HELP'.  If you see something
 wrong or have comments, use 'BUG', 'IDEA', or 'TYPO' to report them.
@@ -3030,11 +3033,12 @@ You see the room you came from, and the room you should go to.
 0 0 3757
 E
 sign~
-Welcome to Eclipse's Training Room.  Here you can train your attributes.  To
-train an attribute, you need enough practices.  To find out how many practice
-sessions you have, type 'train' while you are in this room.  To train for a 
-specific attribute, type 'train <attr>' where attr is the first 3 letters of
-the attribute you want increased.  Type 'help train' for more information.
+Welcome to Eclipse's Training Room.  Here you can train your attributes.
+Training spends training sessions, not practices: you start with three and
+gain one each level.  Type 'train' while you are in this room to see how
+many you have.  Type 'train <attr>', where attr is str, int, wis, dex or
+con, to raise that attribute by one, or 'train hp' for ten hit points.
+Type 'help train' for more information.
 ~
 S
 #3759

@@ -55,8 +55,9 @@ class AchievementSystemTests(unittest.TestCase):
         # with the holiday fairs' three (tests/test_holidays.py); 399
         # from 2026-11-12 with the exploration maps' ten
         # (tests/test_exploration_maps.py); 406 from 2026-11-13 with seven
-        # more for the maps and the cartographer.
-        self.assertEqual(len(self.entries), 406)
+        # more for the maps and the cartographer; 408 the same day with
+        # Seeker of Answers and Schooled (tests/test_tutorial.py).
+        self.assertEqual(len(self.entries), 408)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))

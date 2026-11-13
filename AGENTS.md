@@ -1585,7 +1585,9 @@ one hit point, other close calls, funny things;
 test counts) since the maps' second round (owner, 2026-11-13): the
 cartographer found per visit (`ACH_SET_CARTOGRAPHER_VISITS`, keyed by his
 arrival time), a map found on a fallen foe (`value[2]` `MAP_FOUND_ON_FOE`),
-a hidden Hindsight and the fifty-area tiers.
+a hidden Hindsight and the fifty-area tiers. 408 (414 rows) with Seeker
+of Answers (a question put to the Oracle) and Schooled (the tutorial seen
+through), 2026-11-13.
 Rules the code depends on:
 
 - **The table is append-only.** Earned achievements are saved by key
@@ -5578,6 +5580,18 @@ kick them out immediately). Her supplicant's audience ends through
 `oracle_dismiss(TRUE)`; anyone else goes to `oracle_saved_room()`'s
 answer. Staff are exempt. `tests/test_oracle_sanctum_live.py`.
 
+**Only a player killer comes back dazed** (owner, 2026-11-13: "the oracle
+should have no stun for players that are not pkill"), and **PRAY waits out
+trouble instead** (owner, the same day: "prevent players from fleeing and
+then immediately praying just to get away from a mob or a pkiller"):
+`pcdata->pray_after` (memory only) is set by `oracle_note_flight` on a
+successful FLEE (`ORACLE_FLEE_WAIT`, 3 minutes; `ORACLE_PK_WAIT`, 10, from a
+player) and by `oracle_note_pk_fight` every round of a fight between players
+(beside the battleticks), and `oracle_is_hunted` counts any character whose
+`hunting` is them, a player's TRACK too. `TOC_ORACLE_FLEE_WAIT` shortens
+both for tests. A question put to her raises `ACHIEVEMENT_EVENT_ORACLE_ASKED`
+(Seeker of Answers) and tells the tutorial (`tutorial_oracle`).
+
 **Coming back from her is a minute's daze on the clock, never lag**
 (owner, 2026-10-27: it looked like the mud was lagging). It was
 `WAIT_STATE` for a tick, and lag counts down only while a command waits,
@@ -6916,6 +6930,44 @@ rooms, and BOMB finds a seal by keyword or direction after any creature
 by that name. LIST in a Hyrule cave with a bystander and no shopkeeper
 explains the cave from the tables it uses. **A LOOK detail wins only on a
 whole word** (`do_look`): "look w" looks west, never at "walls".
+
+## The Tutorial
+
+`src/tutorial.c` (owner, 2026-11-13; "use all your best judgement with what
+you know from existing players"). Hints tied to events, one at a time,
+never a timed stream or a quest. TUTORIAL ON|OFF|STATUS|NEXT, last in the
+command table (the staff NEWBIE command is another thing).
+
+- **Who has it.** `tutorial_new_character` (nanny, after the outfit) turns
+  it on for every character made; `Tutorial <on> <done>` is written for
+  everyone (case 'T' of `fread_char`), so only a file from before it lacks
+  the line, and reads as off. `TOC_NO_TUTORIAL` (set by
+  `tests/live_mud.py`) makes new characters with it off, so hints never
+  land in other tests' replies; `tests/test_tutorial.py` unsets it.
+- **Steps are bits of `tutorial_done`**, saved: append to the enum, never
+  renumber. A step shown or made unnecessary (`tut_known`: the player typed
+  CONSIDER, WIMPY, WALKTO, COMPARE, STASH, AQUEST, OPEN, EAT, HELP or PRAY
+  first, or asked the Oracle) is never shown again, across quits, links
+  and remorts. The queue (`TUTORIAL_QUEUE`) is memory only.
+- **Events**: do_look's room view (`tutorial_room_seen`: moving, a Mud
+  School sign, a creature worth CONSIDER, leaving Mud School, the altar,
+  the oak below the questmaster), `obj_to_char` (`tutorial_got`), a command
+  run (`tutorial_command`) or refused twice (`tutorial_refused`),
+  `set_fighting`, `group_gain`, a player's death, a closed door in
+  `move_char`, "You are hungry/thirsty", `advance_level_body`
+  (`tutorial_level`: level, the Oracle, the guild steps, PKILL at 15).
+- **Delivery** is `tutorial_update`, once a second: out of a fight, not
+  paging, not on WALKTO or BUILD, awake, `TUTORIAL_GAP` after the last.
+- **Guild steps** are for a mage, cleric, thief or warrior in no guild,
+  levels 3-5; level 6 gives the class's guild free (`advance_level_body`)
+  and the tutorial says so. **PKILL** is optional and lasting in its words,
+  never a password, never turned on (a test greps for an assignment).
+- Seeing it through raises `ACHIEVEMENT_EVENT_TUTORIAL_DONE` (Schooled);
+  counts, never names, go to `log/play.tsv` as a `tutorial` row an hour
+  (`TOC_TUTORIAL_CENSUS_SECS`).
+- **Making a character**, HELP at the class and alignment questions reads
+  without choosing (`creation_help`, `creation_class_menu`,
+  `creation_alignment_menu` in comm.c), as the race question always did.
 
 ## The Players' Logs Of 2026-11-13
 

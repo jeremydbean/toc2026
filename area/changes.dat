@@ -1,5 +1,28 @@
 # CHANGES -- what the game tells players has changed (src/changes.c).
-# Each entry: a line '@ <id> <yyyy-mm-dd>', its text, then a blank line.
+# Each entry: a line '@ 20261113oraclewait 2026-11-13
+The Oracle no longer dazes anyone but player killers on the way back
+from her sanctum. In exchange she hides nobody from a fight: after you
+FLEE, PRAY waits three minutes; after any fight with another player, ten;
+and not while a player is TRACKing you, as before with a monster. Asking
+her a question earns a new achievement, Seeker of Answers, and seeing the
+tutorial through earns Schooled.
+
+@ 20261113tutorial 2026-11-13
+A tutorial for new players: short hints as you play, each tied to what
+just happened -- Mud School's signs, gear, CONSIDER and WIMPY, your first
+fight, kill and death, a new level, WALKTO and RECALL, the guild choice at
+level 3 and the optional PKILL at 15. New characters start with it on;
+anyone may type TUTORIAL ON. TUTORIAL OFF stops it, TUTORIAL NEXT shows a
+hint now. Making a character, HELP at the class and alignment questions
+now reads about them without choosing.
+
+@ 20261113onboardinghelp 2026-11-13
+Corrections for newcomers: the level 6 guild is free (HELP JOIN said 50
+gold), Mud School's training room says TRAIN spends training sessions,
+its door sign says level 10, and BEGINNERS says RECALL now and then lands
+you somewhere else.
+
+@ <id> <yyyy-mm-dd>', its text, then a blank line.
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players. A change only
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):

@@ -913,6 +913,7 @@ void do_look( CHAR_DATA *ch, char *argument )
            show_char_to_char( ch->in_room->people,   ch );
            /* What the player was just shown (encounter.c). */
            encounter_room_seen( ch, !str_cmp( arg1, "auto" ) );
+           tutorial_room_seen( ch, !str_cmp( arg1, "auto" ) );
         }
 /*      if ((ch->hunting != NULL)  && (!IS_NPC(ch)))
             do_track(ch,ch->hunting->name);
@@ -1420,7 +1421,10 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 			  return;
 			}
 		   else
+		   {
 			act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
+			tutorial_door( ch );
+		   }
 		   return;
         }
     }
@@ -1483,6 +1487,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	else
 	  {
 	    act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
+	    tutorial_door( ch );
 	    return;
 	  }
     }

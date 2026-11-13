@@ -563,6 +563,9 @@ const	struct	cmd_type	cmd_table	[] =
        WATER at Hyrule's stepladder ledge, which only ENTER crossed). Last,
        so CR still means what it did. */
     { "cross",          do_enter,       POS_STANDING,    0,  LOG_NORMAL, 1 },
+    /* The new-player tutorial (tutorial.c). Last, so no shorter word that
+       meant something moves (TU, TUR are still what they were). */
+    { "tutorial",       do_tutorial,    POS_DEAD,        0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };
@@ -1385,6 +1388,10 @@ void interpret( CHAR_DATA *ch, char *argument )
     playlog_end( ch, play_cmd_name, play_shown, play_secret, play_refused,
                  d->outbuf + out_before, d->outtop - out_before,
                  ms, pos, hp_pct, fighting );
+    if ( !play_refused )
+        tutorial_command( ch, play_cmd_name );  /* what they already use */
+    else
+        tutorial_refused( ch );                 /* HELP, COMMANDS, the Oracle */
 }
 
 static void interpret_body( CHAR_DATA *ch, char *argument )

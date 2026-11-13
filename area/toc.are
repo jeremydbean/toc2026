@@ -11,10 +11,14 @@ Useful first commands:
   skills      your skills             spells      your spells
   commands    every command           help <word> help on anything
 
+New characters have the tutorial on: short hints appear as you play,
+one at a time.  TUTORIAL NEXT shows one now and TUTORIAL OFF stops them
+(HELP TUTORIAL).
+
 HELP BEGINNERS is a short guide to moving, learning, dying and the
 settings.  HELP NEW lists the settings you can change.
 
-See also: BEGINNERS, NEW, RULES, MUDSCHOOL
+See also: BEGINNERS, TUTORIAL, NEW, RULES, MUDSCHOOL
 ~
 
 
@@ -24,8 +28,9 @@ HELP KEYWORDS lists every topic.
 
 Moving
   N, S, E, W, U, D (and NE, NW, SE, SW) move you; LOOK looks around.
-  WALKTO <place> walks you to an area, trainer or guild hall, and
-  RECALL takes you to the Temple when you are lost.
+  WALKTO <place> walks you to an area, trainer or guild hall.  RECALL
+  prays you back to the Temple when you are lost; now and then it goes
+  unanswered, or sets you down somewhere else (HELP RECALL).
 
 Your character
   SCORE, INVENTORY, EQUIPMENT, AFFECTS and SKILLS show where you stand.
@@ -33,9 +38,12 @@ Your character
   moving.  At zero hit points you are helpless; much below it you die.
 
 Learning
-  PRACTICE improves skills you know, GAIN buys new ones with trains, and
-  TRAIN raises your stats.  GAINLIST shows what you can buy, and where.
-  Join a guild with Melancholy (WALKTO MELANCHOLY) from level 3 to 6.
+  PRACTICE spends practice sessions on skills you know, GAIN buys new
+  ones with training sessions, and TRAIN spends training sessions on your
+  stats.  GAINLIST shows what you can buy, and where.  Mages, clerics,
+  thieves and warriors join a guild with Melancholy (WALKTO MELANCHOLY,
+  JOIN <guild>) from level 3; anyone still without one on reaching level
+  6 joins their own class's guild, free.
 
 Staying alive
   CONSIDER a monster before you fight it, and set WIMPY so you flee when
@@ -47,11 +55,12 @@ Talking
 Settings and clients
   HELP NEW lists your settings: colour, prompt, damage numbers, autoloot.
   The Mudlet package and the browser client add maps and gauges.
+  TUTORIAL ON or OFF turns the in-game hints on or off.
 
 In Dresden, the BANK keeps coin safe and pays 0.25% a day on balances of
 a platinum or more.  CHANGES lists what is new.
 
-See also: NORTH, WALKTO, PRACTICE, GUILDS, DEATH, NEW, MUDLET, WEB
+See also: NORTH, WALKTO, PRACTICE, GUILDS, DEATH, TUTORIAL, NEW, MUDLET, WEB
 ~
 
 -1 GREETING~
@@ -1064,11 +1073,13 @@ mages' guild learns some magic, for instance.  Full members (a mage in
 the mages' guild) get each class's best.
 
   - Mages, clerics, thieves and warriors may join the mage, cleric, thief
-    or warrior guild, once, from level 3 to 6, with Melancholy the guild
-    clerk (WALKTO MELANCHOLY; JOIN <guild>, 1 gold).  Joining gives the
-    guild's free starting group.
+    or warrior guild, once, from level 3 until they reach level 6, with
+    Melancholy the guild clerk (WALKTO MELANCHOLY; JOIN <guild>, 1 gold).
+    Joining gives the guild's free starting group.  GAINLIST PREVIEW
+    <class> <guild> shows a build before you choose.
   - Anybody still without a guild on reaching level 6 is put in their
-    class's guild, free, with that guild's starting group.
+    class's guild, free, with that guild's starting group; the choice is
+    then over until a REMORT.
   - Monks and necromancers belong to their own guild and cannot join
     another.
   - Each guild has a hall only members may enter.
@@ -1300,24 +1311,24 @@ topten             torment            track              train
 training           traitor            transfusion        transport
 transportation     trap               trap the soul      traps
 travel             treasure goblin    triforce           trip
-trophy             turn               two handed         two-handed
-typo               unalias            university         university of magic
-unlock             up                 use                valley elf
-value              vampiric touch     vampiric weapon    vengeance
-vengence           ventriloquate      vesh               vile
-virtuous           visible            vorpal             vortex
-vulnerability      vulnerable         wake               walk
-walkto             wandering cartographer                wands
-wanted             warrior            water burst        water spells
-weaken             weapon             weapon flag        weapon flags
-weapon mastery     weapons            weaponsmaster      weaponsmastery
-wear               weather            weather group      weather spells
-weatherspells      web                webclient          west
-where              where to hunt      whip               who
-whois              wield              wimpy              wind spells
-wisdom             withdraw           wizlist            word of recall
-world              worth              xp                 yard
-yell               zap
+trophy             turn               tutorial           two handed
+two-handed         typo               unalias            university
+university of magic                   unlock             up                 use
+valley elf         value              vampiric touch     vampiric weapon
+vengeance          vengence           ventriloquate      vesh
+vile               virtuous           visible            vorpal
+vortex             vulnerability      vulnerable         wake
+walk               walkto             wandering cartographer
+wands              wanted             warrior            water burst
+water spells       weaken             weapon             weapon flag
+weapon flags       weapon mastery     weapons            weaponsmaster
+weaponsmastery     wear               weather            weather group
+weather spells     weatherspells      web                webclient
+west               where              where to hunt      whip
+who                whois              wield              wimpy
+wind spells        wisdom             withdraw           wizlist
+word of recall     world              worth              xp
+yard               yell               zap
 ~
 
 

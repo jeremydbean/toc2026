@@ -267,7 +267,12 @@ static void oracle_come_back( CHAR_DATA *ch, ROOM_INDEX_DATA *prayed_from )
 
     if ( ch == NULL )
         return;
-    if ( prayed_from != NULL && IS_SET(prayed_from->room_flags, ROOM_SAFE) )
+    /* Only a player killer comes back dazed (owner, 2026-11-13: "the
+       oracle should have no stun for players that are not pkill"): PRAY
+       now waits out a flee and a fight with a player (pray_after), and a
+       hunt, so the sanctum is no way out of trouble without it. */
+    if ( ( prayed_from != NULL && IS_SET(prayed_from->room_flags, ROOM_SAFE) )
+    ||   IS_NPC(ch) || ch->pcdata == NULL || ch->pcdata->pk_state != 1 )
     {
         send_to_char( "The world settles gently back around you.\n\r", ch );
         return;
@@ -971,6 +976,8 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
     toc_strlcpy( oracle_last_question, question, sizeof(oracle_last_question) );
     oracle_journal( "Q", ch->name,
                     ch->in_room != NULL ? ch->in_room->vnum : 0, question );
+    achievement_record_event( ch, ACHIEVEMENT_EVENT_ORACLE_ASKED, true );
+    tutorial_oracle( ch );              /* the tutorial asked them to */
 
     act( "$n gazes at you, then closes $s eyes, considering your question.",
         mob, NULL, ch, TO_VICT );
@@ -1734,7 +1741,8 @@ bool spec_oracle( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 }
 
 
-/* Is any mobile hunting this character right now? */
+/* Is anybody hunting this character right now -- a mobile, or a player
+   on their trail with TRACK? */
 static bool oracle_is_hunted( CHAR_DATA *ch )
 {
     LIST_ITERATOR iter;
@@ -1742,10 +1750,51 @@ static bool oracle_is_hunted( CHAR_DATA *ch )
 
     FOR_EACH_CHARACTER( iter, vch )
     {
-        if ( IS_NPC(vch) && vch->hunting == ch )
+        if ( vch != ch && vch->hunting == ch )
             return TRUE;
     }
     return FALSE;
+}
+
+/*
+ * No PRAY straight out of trouble (owner, 2026-11-13: "prevent players
+ * from fleeing and then immediately praying just to get away from a mob or
+ * a pkiller"). A flee holds PRAY off ORACLE_FLEE_WAIT seconds, or
+ * ORACLE_PK_WAIT from a player; every round of a fight between players
+ * holds it off ORACLE_PK_WAIT for both. Memory only: quitting is its own
+ * way out and needs none. TOC_ORACLE_FLEE_WAIT (seconds, both) for tests.
+ */
+#define ORACLE_FLEE_WAIT    180
+#define ORACLE_PK_WAIT      600
+
+static long oracle_wait_secs( long normal )
+{
+    const char *env = getenv( "TOC_ORACLE_FLEE_WAIT" );
+
+    if ( env != NULL && atol( env ) > 0 )
+        return UMIN( atol( env ), normal );
+    return normal;
+}
+
+static void oracle_hold_prayer( CHAR_DATA *ch, long seconds )
+{
+    long until;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    until = (long) current_time + oracle_wait_secs( seconds );
+    if ( until > ch->pcdata->pray_after )
+        ch->pcdata->pray_after = until;
+}
+
+void oracle_note_flight( CHAR_DATA *ch, CHAR_DATA *from )
+{
+    oracle_hold_prayer( ch, from != NULL && !IS_NPC(from) ? ORACLE_PK_WAIT : ORACLE_FLEE_WAIT );
+}
+
+void oracle_note_pk_fight( CHAR_DATA *ch )
+{
+    oracle_hold_prayer( ch, ORACLE_PK_WAIT );
 }
 
 
@@ -1799,6 +1848,18 @@ void do_pray( CHAR_DATA *ch, char *argument )
     if ( oracle_is_hunted( ch ) )
     {
         send_to_char( "Something is hunting you.  The Oracle will not hide you from it.\n\r", ch );
+        return;
+    }
+
+    /* Fled, or fought a player, a moment ago (oracle_note_flight). */
+    if ( ch->pcdata != NULL && ch->pcdata->pray_after > (long) current_time
+    &&   !IS_IMMORTAL(ch) )
+    {
+        long left = ch->pcdata->pray_after - (long) current_time;
+
+        snprintf( buf, sizeof(buf), "You are fresh from a fight.  The Oracle will not hide you "
+                  "from it (%ld second%s more).\n\r", left, left == 1 ? "" : "s" );
+        send_to_char( buf, ch );
         return;
     }
 
