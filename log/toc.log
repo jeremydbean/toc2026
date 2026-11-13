@@ -295685,3 +295685,32 @@ Fri Nov 13 13:25:39 2026 :: Connection guard: last hour 16 closed without a word
 Fri Nov 13 13:28:12 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 4 of 6 in 6 hours).
 Fri Nov 13 13:32:16 2026 :: Treasure goblin: vanished from room 5028 (The Sands of Sorrow, eastern.are) (too long in one area).
 Fri Nov 13 13:33:17 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 1 refused in all, pause 1 this week, 76 minutes left).
+Fri Nov 13 13:38:22 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 13:38:40 2026 :: Sock.sinaddr:  99.62.115.159
+Fri Nov 13 13:38:40 2026 :: Loading Killuminati's playerfile
+Fri Nov 13 13:38:41 2026 :: Loading Killuminati's playerfile
+Fri Nov 13 13:38:41 2026 :: Killuminati@99.62.115.159 has connected.
+Fri Nov 13 13:38:42 2026 :: Log Killuminati [30489]: arrived (Level 5: Digdogger's Den) from 0
+Fri Nov 13 13:38:42 2026 :: Log Killuminati [30489]: /
+Fri Nov 13 13:38:44 2026 :: Log Killuminati [30489]: note (arguments withheld)
+Fri Nov 13 13:38:52 2026 :: Log Killuminati [30489]: note (arguments withheld)
+Fri Nov 13 13:39:24 2026 :: Log Killuminati [30489]: lo
+Fri Nov 13 13:39:26 2026 :: Log Killuminati [30489]: ]
+Fri Nov 13 13:39:27 2026 :: Log Killuminati [30489]: goto 1
+Fri Nov 13 13:39:27 2026 :: Log Killuminati [1]: arrived (The Void) from 30489
+Fri Nov 13 13:39:31 2026 :: Log Killuminati [1]: ]\
+Fri Nov 13 13:39:31 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 1
+Fri Nov 13 13:39:40 2026 :: Log Killuminati [2401]: east
+Fri Nov 13 13:39:43 2026 :: Log Killuminati [2401]: west
+Fri Nov 13 13:39:46 2026 :: Log Killuminati [2401]: wa
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2401]: restore self
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2401]: open west
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2401]: west
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2405]: arrived (Western Oak Tree Square.) from 2401
+Fri Nov 13 13:39:48 2026 :: Log Killuminati [2405]: west
+Fri Nov 13 13:39:52 2026 :: Log Killuminati [2405]: open west
+Fri Nov 13 13:39:52 2026 :: Log Killuminati [2405]: west
+Fri Nov 13 13:40:38 2026 :: Log Killuminati [2405]: goto 30489
+Fri Nov 13 13:40:38 2026 :: Log Killuminati [30489]: arrived (Level 5: Digdogger's Den) from 2405
+Fri Nov 13 13:40:40 2026 :: Cartographer: appeared.
+Fri Nov 13 13:42:20 2026 :: Treasure goblin: vanished from room 14021 (Main Room, whouse.are) (too long in one area).
