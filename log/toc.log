@@ -295848,3 +295848,17 @@ Fri Nov 13 16:26:02 2026 :: Sock.sinaddr:  40.119.46.93
 Fri Nov 13 16:26:02 2026 :: Connection guard: 40.119.46.93 closed before a password prompt (strike 2 of 6 in 6 hours).
 Fri Nov 13 16:26:31 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 16:28:22 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 16:28:54 2026 :: Connection guard: 185.93.89.79 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 16:30:57 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 16:34:05 2026 :: Treasure goblin: vanished from room 7538 (Walking the Silvery Strand, astral.are) (too long in one area).
+Fri Nov 13 16:36:02 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 16:36:25 2026 :: Connection guard: last hour 20 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 16:36:32 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 16:41:06 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 16:44:10 2026 :: Treasure goblin: vanished from room 24247 (The Inner Crypt, crypt.are) (too long in one area).
+Fri Nov 13 16:46:10 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 16:46:33 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 16:51:16 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 16:54:15 2026 :: Treasure goblin: vanished from room 1647 (Third Level of Eastern Tower, wyvern.are) (too long in one area).
+Fri Nov 13 16:56:20 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 16:56:35 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
