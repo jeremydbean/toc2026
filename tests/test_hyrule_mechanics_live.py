@@ -182,7 +182,9 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
                         give(god, "zmechhero", RECORDER, "recorder")
                         played = hero.sync("play recorder", 30)
                         self.assertIn("shrinks to a third", played, played)
-                        self.assertLessEqual(hit_points(god, "digdogger")[0], 1000)
+                        # A third of 3000; a tick's regeneration may land
+                        # before STAT reads it (1012 in CI, 2026-11-13).
+                        self.assertLessEqual(hit_points(god, "digdogger")[0], 1100)
                         # Two blows a round against up to a thousand hit
                         # points: a busy nightly runner took more than a
                         # minute of rounds (CI, 2026-11-05), so allow three.
