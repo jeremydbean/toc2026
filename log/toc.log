@@ -295881,3 +295881,4 @@ Fri Nov 13 17:27:53 2026 :: Connection guard: 151.245.151.122 closed without a w
 Fri Nov 13 17:27:53 2026 :: Sock.sinaddr:  151.245.151.122
 Fri Nov 13 17:27:54 2026 :: EOF encountered on read.
 Fri Nov 13 17:27:54 2026 :: Connection guard: 151.245.151.122 closed before a password prompt (strike 4 of 6 in 6 hours).
+Fri Nov 13 17:31:53 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 1 of 6 in 6 hours).
