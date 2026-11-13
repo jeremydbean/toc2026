@@ -295937,3 +295937,7 @@ Fri Nov 13 18:45:06 2026 :: Treasure goblin: vanished from room 10082 (A dark ha
 Fri Nov 13 18:46:46 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 18:48:02 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 4 of 6 in 6 hours).
 Fri Nov 13 18:53:06 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 18:53:41 2026 :: Connection guard: 193.47.62.31 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 18:55:11 2026 :: Treasure goblin: vanished from room 29444 (The thick forest, world.are) (too long in one area).
+Fri Nov 13 18:56:47 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 18:58:11 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 2 refused in all, pause 1 this week, 81 minutes left).
