@@ -295781,3 +295781,6 @@ Fri Nov 13 15:07:27 2026 :: Connection guard: 99.62.115.159 closed without a wor
 Fri Nov 13 15:07:45 2026 :: Treasure goblin: vanished from room 16080 (Out on the Mast, pirate.are) (too long in one area).
 Fri Nov 13 15:09:43 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 13 15:10:39 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 13 15:14:48 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 15:17:21 2026 :: Connection guard: last hour 18 closed without a word, 0 refused, 0 new characters refused, 1 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 15:17:28 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
