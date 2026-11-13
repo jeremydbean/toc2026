@@ -1602,6 +1602,14 @@ const char *default_prompt_text args( ( void ) );
 #define HYRULE_OVERWORLD_LAST      30327
 #define HYRULE_POTION_SHOP_FIRST   30692
 #define HYRULE_POTION_SHOP_LAST    30698
+/* The door-repair caves (act_move.c charges on the way in) and the
+   money-making game (do_gamble); LIST in each says so (hyrule.c). */
+#define HYRULE_REPAIR_ROOM_FIRST   30700
+#define HYRULE_REPAIR_ROOM_LAST    30708
+#define HYRULE_DOOR_REPAIR_GOLD    20
+#define HYRULE_GAMBLE_LOW          30710
+#define HYRULE_GAMBLE_HIGH         30714
+#define HYRULE_GAMBLE_STAKE        40
 #define HYRULE_NPC_FIRST           30346
 #define HYRULE_NPC_LAST            30449
 #define HYRULE_ZELDA_VNUM          30338
@@ -4259,6 +4267,7 @@ bool    hyrule_rod_is_endless  ( const OBJ_DATA *wand );
 void    hyrule_after_zap       ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *wand );
 bool    hyrule_paid_to_talk    ( CHAR_DATA *ch, CHAR_DATA *victim, int amount );
 bool    hyrule_keeper_refuses  ( CHAR_DATA *keeper, CHAR_DATA *ch );
+bool    hyrule_list_cave       ( CHAR_DATA *ch );
 void    hyrule_boss_drops      ( CHAR_DATA *boss, OBJ_DATA *corpse );
 int     hyrule_guardian_vnum   ( int level );
 int     hyrule_boss_drop_count ( int level );

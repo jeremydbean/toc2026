@@ -5651,6 +5651,10 @@ void do_list( CHAR_DATA *ch, char *argument )
 	char arg[MAX_INPUT_LENGTH];
 	char price_buf[MAX_INPUT_LENGTH];
 
+	/* A Hyrule cave whose keeper keeps no shop says what it offers
+	   instead of "You can't do that here" (hyrule.c). */
+	if ( hyrule_list_cave( ch ) )
+	    return;
 	if ( ( keeper = find_keeper( ch ) ) == NULL )
 	    return;
         one_argument(argument,arg);
@@ -6263,6 +6267,39 @@ void do_burn( CHAR_DATA *ch, char *argument )
 }
 
 /*
+ * The bomb puzzle in the room whose sealed way `argument` names, by its
+ * direction or by a word of the way's keyword: BOMB ROCK at Spectacle
+ * Rock, whose way down answers to rock, boulder, left and the rest (play
+ * log, 2026-11-13: twenty tries at the left rock found nothing). The
+ * generator gives an overworld seal the words its room describes it by.
+ * Changes nothing; NULL when no seal answers.
+ */
+static OBJ_DATA *bomb_puzzle_for_way( CHAR_DATA *ch, const char *argument )
+{
+    OBJ_DATA *obj;
+    ROOM_INDEX_DATA *room;
+    EXIT_DATA *pexit;
+    int door;
+
+    if ( ch->in_room == NULL || argument[0] == '\0' )
+        return NULL;
+    door = door_direction_word( argument );
+    for ( obj = ch->in_room->contents; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->item_type != ITEM_MANIPULATION || obj->value[0] != PUZZLE_BOMB
+        ||   !can_see_obj( ch, obj ) )
+            continue;
+        if ( ( pexit = puzzle_exit( ch, obj, &room ) ) == NULL || room != ch->in_room )
+            continue;
+        if ( door == obj->value[2]
+        ||   ( pexit->keyword != NULL && pexit->keyword[0] != '\0'
+            && is_name( argument, pexit->keyword ) ) )
+            return obj;
+    }
+    return NULL;
+}
+
+/*
  * BOMB. Bombs are Hyrule's (four to a purchase, hyrule.c) and each blast
  * uses one, as on the NES: a cracked wall or rock opens to one, and at a
  * creature it is a blast of fire -- Dodongo swallows it and loses a
@@ -6289,6 +6326,11 @@ void do_bomb( CHAR_DATA *ch, char *argument )
             hyrule_bomb_creature( ch, victim );
             return;
         }
+        /* Then the sealed way itself, by what the room calls it. */
+        target = bomb_puzzle_for_way( ch, argument );
+    }
+    if ( target == NULL )
+    {
         send_to_char( "You find no cracked surface to bomb there.\n\r", ch );
         return;
     }
@@ -7732,8 +7774,6 @@ void add_money(CHAR_DATA *ch, long amount)
 #define CASINO_PENDING_BET      1
 #define CASINO_PENDING_ROULETTE 2
 #define CASINO_PENDING_POKER    3
-#define HYRULE_GAMBLE_LOW       30710
-#define HYRULE_GAMBLE_HIGH      30714
 
 /* SEVEN occupies two virtual stops (indices 0 and 1) to double its hit
  * frequency on each reel.  All payout comparisons MUST use SYM_NORM so
@@ -7782,7 +7822,6 @@ static void casino_record_total( CHAR_DATA *ch, bool winnings, long amount )
  * achievements, whose totals are gross and would reward sheer volume. Each
  * game costs a round of lag.
  */
-#define HYRULE_GAMBLE_STAKE 40
 
 void do_gamble( CHAR_DATA *ch, char *argument )
 {

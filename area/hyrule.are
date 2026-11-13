@@ -7189,29 +7189,48 @@ energy~
 5 30229 0 0 0
 0 0 0 P
 #30538
-raft level four crossing~
+raft level four crossing water lake entrance serpent~
 a waiting dungeon raft~
-A raft waits at the water's edge.~
+A raft waits to carry a raft-holder to the serpent's door: ENTER RAFT.~
 wood~
 30 GOV 0
 6 30456 0 0 30411
 0 0 0 P
+E
+raft level four crossing water lake entrance serpent~
+The raft rocks at the water's edge, ready to carry you to the serpent's
+doorway. It answers only to someone with a raft of their own: carrying one,
+ENTER RAFT.
+~
 #30539
-raft heart crossing~
+raft heart crossing water lake cave mouth~
 a waiting heart raft~
-A raft waits to cross the open water.~
+A raft waits to carry a raft-holder to the cave mouth: ENTER RAFT.~
 wood~
 30 GOV 0
 6 30657 0 0 30411
 0 0 0 P
+E
+raft heart crossing water lake cave mouth~
+The raft rocks at the water's edge, ready to carry you round to the firelit
+cave mouth. It answers only to someone with a raft of their own: carrying
+one, ENTER RAFT.
+~
 #30540
-stepladder heart crossing~
+stepladder heart crossing gap water channel ledge ladder~
 a narrow water crossing~
-A gap in the water can be crossed with the stepladder.~
+A narrow gap of water could be bridged with a stepladder: ENTER the crossing.~
 water~
 30 GOV 0
 6 30658 0 0 30412
 0 0 0 P
+E
+stepladder heart crossing gap water channel ledge ladder~
+A channel of sea water runs between the shore and the little ledge where
+the red glow beats, too wide to step and too narrow to swim. A stepladder
+would bridge it: carrying one, ENTER the CROSSING, or ENTER GAP, and climb
+across.
+~
 #30541
 magical shield shop~
 a Magical Shield~
@@ -10409,6 +10428,15 @@ D5
 ~
 cave opening~
 0 0 30650
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30201
 Southwest Meadow~
@@ -10428,6 +10456,14 @@ D5
 ~
 open hint cave~
 0 0 30330
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30202
 Woodland Rock Face~
@@ -10453,8 +10489,27 @@ D3
 0 0 30201
 D5
 ~
-bomb coin grotto~
+bomb coin grotto crack cracks rock wall face~
 4 0 30661
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The stone is solid, except where it is cracked and sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30203
 Southern Woods~
@@ -10477,6 +10532,14 @@ D3
 ~
 ~
 0 0 30202
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30204
 Path to the Manji~
@@ -10499,6 +10562,10 @@ D3
 ~
 ~
 0 0 30203
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30205
 Grove of the Manji~
@@ -10518,6 +10585,23 @@ D5
 ~
 stone dungeon entrance~
 0 0 30437
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30206
 Sandy Glade~
@@ -10541,6 +10625,14 @@ D5
 ~
 open hint cave~
 0 0 30332
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30207
 Crags West of the Start~
@@ -10566,8 +10658,18 @@ D3
 0 0 30206
 D5
 ~
-bomb gamble entrance~
+bomb gamble entrance rock face~
 4 0 30712
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30208
 Meadow East of the Cave~
@@ -10595,6 +10697,15 @@ D5
 ~
 burn shop entrance~
 4 0 30696
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30209
 Stone Field~
@@ -10618,6 +10729,11 @@ D5
 ~
 bracelet warp hall entrance~
 4 0 30722
+E
+rock rocks boulder boulders stone stones~
+One heavy stone sits loose. Carrying the Power Bracelet, you could shift
+it: PUSH STONE.
+~
 S
 #30210
 Rocky Southern Ridge~
@@ -10636,6 +10752,10 @@ D3
 ~
 ~
 0 0 30209
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30211
 Southern Sands~
@@ -10661,8 +10781,28 @@ D3
 0 0 30210
 D5
 ~
-bomb opening~
+bomb opening rock wall~
 4 0 30654
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The stone is solid, except where it is cracked and sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30212
 Leever Dunes~
@@ -10684,8 +10824,18 @@ D3
 0 0 30211
 D5
 ~
-bomb gamble entrance~
+bomb gamble entrance rock face~
 4 0 30713
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30213
 Southern Shore Path~
@@ -10707,8 +10857,32 @@ D3
 0 0 30212
 D5
 ~
-bomb door repair entrance~
+bomb door repair entrance rock wall~
 4 0 30707
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The stone is solid, except where it is cracked and sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30214
 Southeast Grassland~
@@ -10728,6 +10902,14 @@ D3
 ~
 ~
 0 0 30213
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30215
 Southeast Coast~
@@ -10746,6 +10928,10 @@ D3
 ~
 ~
 0 0 30214
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30216
 Western Meadow Edge~
@@ -10765,6 +10951,10 @@ D1
 ~
 ~
 0 0 30217
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30217
 The Lost Woods~
@@ -10792,6 +10982,10 @@ D3
 ~
 ~
 0 0 30217
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30218
 Old Forest Clearing~
@@ -10823,6 +11017,11 @@ D5
 ~
 burn coin grotto~
 4 0 30662
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
 S
 #30219
 Bramble Wood~
@@ -10854,6 +11053,15 @@ D5
 ~
 burn door repair entrance~
 4 0 30702
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30220
 The Herb-Gatherers' Wood~
@@ -10883,6 +11091,16 @@ D5
 ~
 burn opening~
 4 0 30659
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+tree trees~
+Old trees, and among them one dry bush that a lit candle would burn away:
+BURN BUSH.
+~
 S
 #30221
 Forest Stream~
@@ -10910,6 +11128,18 @@ D3
 ~
 ~
 0 0 30220
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30222
 Candle Shop Knoll~
@@ -10937,6 +11167,10 @@ D5
 ~
 open shop entrance~
 0 0 30682
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30223
 Rock Wall Above the Start~
@@ -10962,8 +11196,23 @@ D3
 0 0 30222
 D5
 ~
-bomb coin grotto~
+bomb coin grotto rock wall face~
 4 0 30665
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The stone is solid, except where it is cracked and sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30224
 Bush Row~
@@ -10995,6 +11244,11 @@ D5
 ~
 burn door repair entrance~
 4 0 30705
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
 S
 #30225
 River Bend~
@@ -11017,6 +11271,10 @@ D3
 ~
 ~
 0 0 30224
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30226
 Riverbank Thicket~
@@ -11044,6 +11302,15 @@ D5
 ~
 burn door repair entrance~
 4 0 30706
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30227
 Shaded Grove~
@@ -11075,6 +11342,11 @@ D5
 ~
 burn coin grotto~
 4 0 30669
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
 S
 #30228
 Dark Pine Stand~
@@ -11098,6 +11370,10 @@ D3
 ~
 ~
 0 0 30227
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30229
 The Lion's Thicket~
@@ -11125,6 +11401,11 @@ D5
 ~
 burn dungeon entrance~
 4 0 30562
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
 S
 #30230
 Eastern Wood Path~
@@ -11143,6 +11424,10 @@ D3
 ~
 ~
 0 0 30229
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30231
 Coastal Shop Cave~
@@ -11170,6 +11455,14 @@ D5
 ~
 open shop entrance~
 0 0 30686
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30232
 Western Crags~
@@ -11188,6 +11481,14 @@ D2
 ~
 ~
 0 0 30216
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30233
 Deepwood Corner~
@@ -11210,6 +11511,16 @@ D5
 ~
 burn coin grotto~
 4 0 30660
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+tree trees~
+Old trees, and among them one dry bush that a lit candle would burn away:
+BURN BUSH.
+~
 S
 #30234
 Lost Woods Crossing~
@@ -11236,6 +11547,10 @@ D3
 ~
 ~
 0 0 30233
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30235
 The Fairy Path~
@@ -11262,6 +11577,10 @@ D3
 ~
 ~
 0 0 30234
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30236
 Forest River Ford~
@@ -11288,6 +11607,10 @@ D3
 ~
 ~
 0 0 30235
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30237
 Shore Below the Snake~
@@ -11314,6 +11637,15 @@ D3
 ~
 ~
 0 0 30236
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30238
 Lake Hylia, Southwest Bank~
@@ -11341,6 +11673,15 @@ D5
 ~
 burn coin grotto~
 4 0 30664
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30239
 Lakeside Meadow~
@@ -11359,6 +11700,14 @@ D3
 ~
 ~
 0 0 30238
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30240
 Crossroads South of the Lake~
@@ -11385,6 +11734,14 @@ D3
 ~
 ~
 0 0 30239
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30241
 Flower Field~
@@ -11434,6 +11791,14 @@ D3
 ~
 ~
 0 0 30241
+E
+bush bushes shrub shrubs~
+Thick green bushes, too full of sap to catch light.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30243
 Eastwood Glade~
@@ -11464,6 +11829,16 @@ D5
 ~
 burn coin grotto~
 4 0 30668
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+tree trees~
+Old trees, and among them one dry bush that a lit candle would burn away:
+BURN BUSH.
+~
 S
 #30244
 Pinewood Rise~
@@ -11486,6 +11861,14 @@ D3
 ~
 ~
 0 0 30243
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30245
 Moblin Hollow~
@@ -11512,6 +11895,10 @@ D3
 ~
 ~
 0 0 30244
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30246
 Candlemaker's Dead End~
@@ -11530,6 +11917,14 @@ D5
 ~
 open shop entrance~
 0 0 30685
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30247
 The Coast's Lonely Ledge~
@@ -11548,6 +11943,22 @@ D2
 ~
 ~
 0 0 30231
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The channel is too wide to step across, but a stepladder would bridge it.
+Carrying one, ENTER the CROSSING (or ENTER GAP).
+~
+E
+ledge glow heart~
+A small flat ledge of stone sits just offshore, and on it a red glow beats
+like a heart: a Heart Container, waiting for whoever crosses. The strip of
+water between is too wide to step and too narrow to swim; a stepladder
+would bridge it. Carrying one, ENTER the CROSSING (or ENTER GAP).
+~
 S
 #30248
 The Graveyard's Southern Fence~
@@ -11570,6 +11981,23 @@ D2
 ~
 ~
 0 0 30232
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30249
 Hollow of Headstones~
@@ -11589,6 +12017,19 @@ D3
 ~
 ~
 0 0 30248
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30250
 The Still Pond~
@@ -11608,6 +12049,19 @@ D5
 ~
 recorder dungeon entrance~
 4 0 30527
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water lies still and deep, as if it were waiting for an ancient melody:
+PLAY RECORDER.
+~
 S
 #30251
 Fairy Pond of the Woods~
@@ -11622,6 +12076,14 @@ D2
 ~
 ~
 0 0 30235
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30252
 Riverside Cave~
@@ -11645,6 +12107,14 @@ D5
 ~
 open shop entrance~
 0 0 30680
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30253
 Isle of the Snake~
@@ -11658,6 +12128,21 @@ D2
 ~
 ~
 0 0 30237
+E
+door doors doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+water lake pond river sea stream pool~
+Open water. Only a raft crosses it: carrying one, ENTER RAFT.
+~
+E
+entrance serpent doorway~
+The serpent's doorway is carved in coils of dark stone, breathing out damp
+air. It is reached only by the raft at the water's edge: carrying a raft of
+your own, ENTER RAFT.
+~
 S
 #30254
 Lake Hylia, Western Reeds~
@@ -11681,6 +12166,15 @@ D5
 ~
 burn shop entrance~
 4 0 30690
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30255
 Lake Hylia, South Shore~
@@ -11704,6 +12198,20 @@ D5
 ~
 burn opening~
 4 0 30656
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30256
 Lake Hylia Sand Bar~
@@ -11731,6 +12239,15 @@ D5
 ~
 burn coin grotto~
 4 0 30667
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30257
 Boulder Meadow~
@@ -11757,6 +12274,11 @@ D5
 ~
 bracelet warp hall entrance~
 4 0 30721
+E
+rock rocks boulder boulders stone stones~
+One heavy stone sits loose. Carrying the Power Bracelet, you could shift
+it: PUSH STONE.
+~
 S
 #30258
 Craggy Rise~
@@ -11783,6 +12305,10 @@ D5
 ~
 open shop entrance~
 0 0 30683
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30259
 Eastern Thicket~
@@ -11810,6 +12336,16 @@ D5
 ~
 burn shop entrance~
 4 0 30697
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+tree trees~
+Old trees, and among them one dry bush that a lit candle would burn away:
+BURN BUSH.
+~
 S
 #30260
 The Eastern Dock~
@@ -11828,6 +12364,14 @@ D1
 ~
 ~
 0 0 30261
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30261
 Wooded Crossroads~
@@ -11858,6 +12402,16 @@ D5
 ~
 burn shop entrance~
 4 0 30691
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
+E
+tree trees~
+Old trees, and among them one dry bush that a lit candle would burn away:
+BURN BUSH.
+~
 S
 #30262
 Armos Sentinel Grove~
@@ -11876,6 +12430,15 @@ D5
 ~
 armos coin grotto~
 4 0 30672
+E
+statue statues armos~
+One of the statues sits a little off its base, as if it could be shoved
+aside: PUSH STATUE.
+~
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30263
 Eastern Cliffs~
@@ -11894,6 +12457,14 @@ D2
 ~
 ~
 0 0 30247
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30264
 The Graveyard, Lower Rows~
@@ -11917,6 +12488,11 @@ D2
 ~
 ~
 0 0 30248
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
 S
 #30265
 The Graveyard Gate~
@@ -11943,6 +12519,11 @@ D3
 ~
 ~
 0 0 30264
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
 S
 #30266
 Ghost Hill~
@@ -11965,6 +12546,15 @@ D3
 ~
 ~
 0 0 30265
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30267
 The Cracked Bluff~
@@ -11985,8 +12575,31 @@ D3
 0 0 30266
 D5
 ~
-bomb shop entrance~
+bomb shop entrance rock wall face~
 4 0 30692
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The stone is solid, except where it is cracked and sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30268
 The Silent Sentinels~
@@ -12006,6 +12619,11 @@ D5
 ~
 armos shop entrance~
 4 0 30688
+E
+statue statues armos~
+One of the statues sits a little off its base, as if it could be shoved
+aside: PUSH STATUE.
+~
 S
 #30269
 The Quiet Glade~
@@ -12023,6 +12641,14 @@ D1
 ~
 ~
 0 0 30270
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30270
 The Sheltered Hollow~
@@ -12041,6 +12667,18 @@ D3
 ~
 ~
 0 0 30269
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30271
 The Eagle's Gate~
@@ -12059,6 +12697,18 @@ D5
 ~
 stone dungeon entrance~
 0 0 30401
+E
+statue statues armos~
+Weathered stone statues, set solidly on their bases. They will not move.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30272
 The River Landing~
@@ -12081,6 +12731,14 @@ D3
 ~
 ~
 0 0 30271
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30273
 The Fairy Fountain, North~
@@ -12095,6 +12753,14 @@ D2
 ~
 ~
 0 0 30257
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30274
 The Peahat Fields~
@@ -12157,6 +12823,19 @@ D5
 ~
 stone dungeon entrance~
 0 0 30418
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30277
 The Armos Shore~
@@ -12179,6 +12858,19 @@ D5
 ~
 armos coin grotto~
 4 0 30671
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+statue statues armos~
+One of the statues sits a little off its base, as if it could be shoved
+aside: PUSH STATUE.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30278
 The Octorok Banks~
@@ -12197,6 +12889,14 @@ D1
 ~
 ~
 0 0 30279
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30279
 Lake Hylia, Eastern Dock~
@@ -12219,6 +12919,11 @@ D3
 ~
 ~
 0 0 30278
+E
+water lake pond river sea stream pool~
+Open water lies to the north. Carrying a raft, simply go north; without one
+there is no way across.
+~
 S
 #30280
 The Old Graveyard~
@@ -12237,6 +12942,15 @@ D2
 ~
 ~
 0 0 30264
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30281
 The Hero's Grave~
@@ -12260,6 +12974,11 @@ D5
 ~
 grave opening~
 4 0 30652
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+One gravestone sits askew on its slab, as though it could be pushed aside:
+PUSH GRAVESTONE.
+~
 S
 #30282
 The Dragon's Gate~
@@ -12278,6 +12997,14 @@ D5
 ~
 stone dungeon entrance~
 0 0 30501
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30283
 The Western Warp Stone~
@@ -12300,6 +13027,15 @@ D5
 ~
 bracelet warp hall entrance~
 4 0 30720
+E
+rock rocks boulder boulders stone stones~
+One heavy stone sits loose. Carrying the Power Bracelet, you could shift
+it: PUSH STONE.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30284
 The Armos Gallery~
@@ -12327,6 +13063,10 @@ D5
 ~
 armos opening~
 4 0 30674
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30285
 The Bomb Merchant's Cave~
@@ -12353,6 +13093,10 @@ D5
 ~
 open shop entrance~
 0 0 30681
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30286
 The Meadow Bluff~
@@ -12374,8 +13118,13 @@ D2
 0 0 30270
 D5
 ~
-bomb shop entrance~
+bomb shop entrance cracks face~
 4 0 30689
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30287
 Foot of Death Mountain~
@@ -12401,8 +13150,18 @@ D3
 0 0 30286
 D5
 ~
-bomb shop entrance~
+bomb shop entrance boulders~
 4 0 30695
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30288
 The Withered Thicket~
@@ -12429,6 +13188,11 @@ D5
 ~
 burn coin grotto~
 4 0 30666
+E
+bush bushes shrub shrubs~
+One bush is strangely dry and brittle among the green. A lit candle would
+burn it away: BURN BUSH.
+~
 S
 #30289
 The Sandy Flats~
@@ -12491,6 +13255,14 @@ D3
 ~
 ~
 0 0 30290
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30292
 Lake Hylia, North Cliffs~
@@ -12516,8 +13288,26 @@ D3
 0 0 30291
 D5
 ~
-bomb opening~
+bomb opening cracks rock cliff cliffs face~
 4 0 30655
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30293
 Lake Hylia, North Shore~
@@ -12546,8 +13336,26 @@ D3
 0 0 30292
 D5
 ~
-bomb coin grotto~
+bomb coin grotto rock face~
 4 0 30670
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30294
 Lake Hylia, Northeast Shore~
@@ -12566,6 +13374,14 @@ D3
 ~
 ~
 0 0 30293
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30295
 The Lonely Isle~
@@ -12580,6 +13396,16 @@ D2
 Open water lies that way. Only a raft will carry you across.~
 raft crossing~
 0 0 30279
+E
+water lake pond river sea stream pool~
+Open water. Only a raft crosses it: carrying one, ENTER RAFT.
+~
+E
+cave mouth firelight~
+The low cave mouth glows with firelight, and a red pulse beats somewhere
+inside. The only way to it is by the raft at the water's edge: carrying a
+raft of your own, ENTER RAFT.
+~
 S
 #30296
 The Western Gorge~
@@ -12601,8 +13427,27 @@ D1
 0 0 30297
 D5
 ~
-bomb gamble entrance~
+bomb gamble entrance crack rock wall walls~
 4 0 30710
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The stone is solid, except where it is cracked and sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30297
 The Windswept Shelf~
@@ -12621,6 +13466,14 @@ D3
 ~
 ~
 0 0 30296
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30298
 The Shieldmaker's Bluff~
@@ -12642,8 +13495,22 @@ D1
 0 0 30299
 D5
 ~
-bomb shop entrance~
+bomb shop entrance rock face~
 4 0 30687
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30299
 Broken Stone Terrace~
@@ -12668,8 +13535,12 @@ D3
 0 0 30298
 D5
 ~
-bomb coin grotto~
+bomb coin grotto cliff~
 4 0 30663
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30300
 The Crumbling Scarp~
@@ -12694,8 +13565,23 @@ D3
 0 0 30299
 D5
 ~
-bomb door repair entrance~
+bomb door repair entrance cracks boulders face~
 4 0 30703
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30301
 Highland Overlook~
@@ -12718,6 +13604,10 @@ D3
 ~
 ~
 0 0 30300
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30302
 The Rumbling Gully~
@@ -12738,8 +13628,23 @@ D3
 0 0 30301
 D5
 ~
-bomb gamble entrance~
+bomb gamble entrance cracks rock cliff wall~
 4 0 30711
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The stone is solid, except where it is cracked and sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30303
 The Mountain Stair~
@@ -12766,6 +13671,14 @@ D3
 ~
 ~
 0 0 30302
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30304
 The Boulder Run~
@@ -12784,6 +13697,10 @@ D3
 ~
 ~
 0 0 30303
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30305
 Rolling Stone Ravine~
@@ -12801,6 +13718,14 @@ D3
 ~
 ~
 0 0 30304
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30306
 The Springing Hills~
@@ -12828,6 +13753,18 @@ D5
 ~
 open hint cave~
 0 0 30331
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30307
 The Lost Hills~
@@ -12855,6 +13792,10 @@ D3
 ~
 ~
 0 0 30306
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30308
 Lone Armos Ridge~
@@ -12886,6 +13827,19 @@ D5
 ~
 armos hint cave~
 4 0 30333
+E
+statue statues armos~
+One of the statues sits a little off its base, as if it could be shoved
+aside: PUSH STATUE.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30309
 The Heavy Boulder~
@@ -12916,6 +13870,11 @@ D5
 ~
 bracelet warp hall entrance~
 4 0 30723
+E
+rock rocks boulder boulders stone stones~
+One heavy stone sits loose. Carrying the Power Bracelet, you could shift
+it: PUSH STONE.
+~
 S
 #30310
 The Scarred Cliffs~
@@ -12940,8 +13899,22 @@ D3
 0 0 30309
 D5
 ~
-bomb door repair entrance~
+bomb door repair entrance cracks rock cliffs~
 4 0 30708
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30311
 The Eastern Cliffs~
@@ -12966,6 +13939,14 @@ D5
 ~
 open gamble entrance~
 0 0 30714
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30312
 Death Mountain's Western Summit~
@@ -12984,6 +13965,18 @@ D2
 ~
 ~
 0 0 30296
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30313
 Lynel Ridge~
@@ -13008,8 +14001,27 @@ D3
 0 0 30312
 D5
 ~
-bomb door repair entrance~
+bomb door repair entrance cracks rock cliff face~
 4 0 30700
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30314
 The High Boulder Pass~
@@ -13032,6 +14044,14 @@ D3
 ~
 ~
 0 0 30313
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30315
 Rockfall Crest~
@@ -13053,8 +14073,17 @@ D3
 0 0 30314
 D5
 ~
-bomb door repair entrance~
+bomb door repair entrance rock cliff~
 4 0 30701
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30316
 The Medicine Woman's Ledge~
@@ -13073,6 +14102,10 @@ D5
 ~
 open shop entrance~
 0 0 30693
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30317
 Spectacle Rock~
@@ -13094,8 +14127,30 @@ D3
 0 0 30316
 D5
 ~
-triforce bomb dungeon entrance~
+triforce bomb dungeon entrance cracks rock boulders boulder left crack hollow spectacle spectacles~
 4 0 30590
+E
+rocks stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+left rock hollow crack cracks cracked seam seams~
+The left-hand rock is seamed with hairline cracks, and it rings hollow when
+you knock on it. Cold air seeps out of the cracks, as though a great space
+lay beneath. A bomb set against it would blow it open: BOMB ROCK.
+~
+E
+boulders boulder spectacles spectacle right saddle~
+Two great round boulders, joined by a low saddle of stone. The right-hand
+one is sound rock all the way through. The left-hand one is not: it is
+seamed with cracks and rings hollow.
+~
+E
+sand drifts drift~
+Sand blown up from the lowlands has drifted between the boulders. It hides
+nothing; it is only sand.
+~
 S
 #30318
 East of Spectacle Rock~
@@ -13114,6 +14169,14 @@ D3
 ~
 ~
 0 0 30317
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30319
 The Summit Road~
@@ -13138,8 +14201,22 @@ D3
 0 0 30318
 D5
 ~
-bomb door repair entrance~
+bomb door repair entrance crack boulders cliff face~
 4 0 30704
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30320
 Avalanche Slope~
@@ -13157,6 +14234,10 @@ D3
 ~
 ~
 0 0 30319
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30321
 Death Mountain's Dead End~
@@ -13171,6 +14252,10 @@ D3
 ~
 ~
 0 0 30320
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30322
 The White Sword Falls~
@@ -13190,6 +14275,18 @@ D5
 ~
 cave opening~
 0 0 30651
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30323
 The Lizard's Gate~
@@ -13209,6 +14306,15 @@ D5
 ~
 stone dungeon entrance~
 0 0 30476
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30324
 The Candle Merchant's Hollow~
@@ -13232,6 +14338,14 @@ D5
 ~
 open shop entrance~
 0 0 30684
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30325
 Tektite Heights~
@@ -13253,8 +14367,22 @@ D3
 0 0 30324
 D5
 ~
-bomb shop entrance~
+bomb shop entrance rock cliffs seams~
 4 0 30698
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30326
 Ledge of the Letter Cave~
@@ -13273,6 +14401,15 @@ D5
 ~
 cave opening~
 0 0 30653
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30327
 The Northeast Crag~
@@ -13292,6 +14429,14 @@ D5
 ~
 hidden coin grotto~
 0 0 30673
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+bush bushes shrub shrubs~
+Thick green bushes, too full of sap to catch light.
+~
 S
 #30330
 The Whispering Hearth~
@@ -13306,6 +14451,23 @@ D4
 ~
 open hint cave~
 0 0 30201
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30331
 The Cave Behind the Falls~
@@ -13321,6 +14483,23 @@ D4
 ~
 open hint cave~
 0 0 30306
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30332
 Sand-Floored Hermitage~
@@ -13336,6 +14515,23 @@ D4
 ~
 open hint cave~
 0 0 30206
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30333
 The Statue's Undercroft~
@@ -13351,6 +14547,32 @@ D4
 ~
 armos hint cave~
 4 0 30308
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+statue statues armos~
+The statue that hid the way in stands on the far side of it, already shoved
+aside. Nothing down here will move.
+~
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30400
 Level 1: West Guardroom~
@@ -13366,6 +14588,11 @@ D1
 ~
 ~
 0 0 30401
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30401
 Level 1: Eagle Gate~
@@ -13393,6 +14620,22 @@ D4
 ~
 stone dungeon entrance~
 0 0 30271
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30402
 Level 1: East Bone Room~
@@ -13407,6 +14650,20 @@ D3
 ~
 ~
 0 0 30401
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+statue statues armos~
+Weathered stone statues, set solidly on their bases. They will not move.
+~
 S
 #30403
 Level 1: Rattling Passage~
@@ -13426,6 +14683,15 @@ D2
 ~
 locked dungeon door~
 2 30227 30401
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30404
 Level 1: Shuttered West Room~
@@ -13445,6 +14711,22 @@ D1
 ~
 shutter~
 1 0 30405
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The
+shutter to the east has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30405
 Level 1: Diamond-Tiled Crossing~
@@ -13471,6 +14753,26 @@ D3
 ~
 shutter~
 1 0 30404
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30406
 Level 1: Keese-Fouled Gallery~
@@ -13490,6 +14792,26 @@ D3
 ~
 ~
 0 0 30405
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30407
 Level 1: Eagle's Ember Alcove~
@@ -13505,6 +14827,25 @@ D1
 ~
 shutter~
 1 0 30408
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30408
 Level 1: Slime-Slick Hall~
@@ -13528,6 +14869,22 @@ D3
 ~
 shutter~
 1 0 30407
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The
+shutter to the west has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30409
 Level 1: Chamber of Pillars~
@@ -13554,6 +14911,25 @@ D3
 ~
 ~
 0 0 30408
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30410
 Level 1: Scarred Hall~
@@ -13576,6 +14952,15 @@ D3
 ~
 locked dungeon door~
 2 30227 30409
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30411
 Level 1: Hall of Grasping Walls~
@@ -13594,6 +14979,14 @@ D3
 ~
 ~
 0 0 30410
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
 S
 #30412
 Level 1: Ossuary Hall~
@@ -13612,6 +15005,19 @@ D2
 ~
 ~
 0 0 30409
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30413
 Level 1: Hall of Threefold Scorches~
@@ -13631,6 +15037,16 @@ D2
 ~
 locked dungeon door~
 2 30227 30411
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The east
+door is the guardian's own. Only the key the guardian leaves to whoever
+beats it will open it.
+~
 S
 #30414
 Level 1: Eagle's Golden Sanctum~
@@ -13646,6 +15062,15 @@ D3
 ~
 eagle treasure door~
 2 30630 30413
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30415
 Level 1: Chamber of Blade Traps~
@@ -13664,6 +15089,19 @@ D5
 ~
 block stair~
 4 0 30417
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30416
 Level 1: Northern Guardroom~
@@ -13682,6 +15120,23 @@ D3
 ~
 locked dungeon door~
 2 30227 30415
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The west
+door is locked, and a small key opens it: UNLOCK WEST.
+~
+E
+statue statues armos~
+Weathered stone statues, set solidly on their bases. They will not move.
+~
 S
 #30417
 Level 1: Undercroft of Brick Ledges~
@@ -13719,6 +15174,23 @@ D4
 ~
 stone dungeon entrance~
 0 0 30276
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30419
 Level 2: Shed Skin Chamber~
@@ -13737,6 +15209,16 @@ D3
 ~
 ~
 0 0 30418
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30420
 Level 2: Coiled Track Room~
@@ -13751,6 +15233,20 @@ D1
 ~
 shutter~
 1 0 30421
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30421
 Level 2: Blue Antechamber~
@@ -13773,6 +15269,25 @@ D3
 ~
 shutter~
 1 0 30420
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30422
 Level 2: Moonstone Crossroads~
@@ -13799,6 +15314,10 @@ D3
 ~
 ~
 0 0 30421
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
 S
 #30423
 Level 2: Dripping Chamber~
@@ -13817,6 +15336,29 @@ D3
 ~
 locked dungeon door~
 2 30227 30422
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30424
 Level 2: Gouged Hall~
@@ -13839,6 +15381,26 @@ D2
 ~
 ~
 0 0 30422
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the north has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30425
 Level 2: Cracked Eastern Room~
@@ -13861,6 +15423,20 @@ D3
 ~
 locked dungeon door~
 2 30227 30424
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north and south, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30426
 Level 2: Long Hall of the Moon~
@@ -13883,6 +15459,25 @@ D2
 ~
 shutter~
 1 0 30424
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30427
 Level 2: Eastern Hall of Cuts~
@@ -13906,6 +15501,25 @@ D3
 ~
 ~
 0 0 30426
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north and south, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+statue statues armos~
+Weathered stone statues, set solidly on their bases. They will not move.
+~
 S
 #30428
 Level 2: Silent Chamber~
@@ -13928,6 +15542,15 @@ D2
 ~
 ~
 0 0 30426
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30429
 Level 2: Trap-Grooved Room~
@@ -13950,6 +15573,21 @@ D3
 ~
 ~
 0 0 30428
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north and south, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30430
 Level 2: Serpent Hall~
@@ -13972,6 +15610,22 @@ D2
 ~
 ~
 0 0 30428
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the north has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30431
 Level 2: Slime-Pooled Cell~
@@ -13994,6 +15648,25 @@ D3
 ~
 locked dungeon door~
 2 30227 30430
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30432
 Level 2: Smoke-Stained Antechamber~
@@ -14016,6 +15689,28 @@ D2
 ~
 shutter~
 1 0 30430
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30433
 Level 2: Moonlit Smoke Hollow~
@@ -14035,6 +15730,26 @@ D3
 ~
 cracked west wall~
 4 0 30432
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30434
 Level 2: Crescent Moon Sanctum~
@@ -14050,6 +15765,15 @@ D1
 ~
 moon treasure door~
 2 30631 30435
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30435
 Level 2: Dodongo's Lair~
@@ -14068,6 +15792,22 @@ D3
 ~
 moon treasure door~
 2 30631 30434
+E
+door doors doorway doorways keyhole keyholes~
+The west door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it. The shutter to the south has no lock and no
+handle. It stays shut while enemies remain in the room; once it is clear,
+walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30436
 Level 3: Ooze Chamber~
@@ -14086,6 +15826,16 @@ D1
 ~
 ~
 0 0 30437
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30437
 Level 3: Manji Gate~
@@ -14104,6 +15854,19 @@ D4
 ~
 stone dungeon entrance~
 0 0 30205
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30438
 Level 3: Knight's Dead End~
@@ -14122,6 +15885,29 @@ D5
 ~
 block stair~
 4 0 30454
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30439
 Level 3: Streaked Hall~
@@ -14139,6 +15925,15 @@ D2
 ~
 ~
 0 0 30436
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30440
 Level 3: Armored Hall~
@@ -14161,6 +15956,30 @@ D2
 ~
 shutter~
 1 0 30438
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the south has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30441
 Level 3: Hall of Blades~
@@ -14183,6 +16002,14 @@ D3
 ~
 locked dungeon door~
 2 30227 30440
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30442
 Level 3: Manji Crossing~
@@ -14209,6 +16036,21 @@ D3
 ~
 ~
 0 0 30441
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30443
 Level 3: Eastern Slime Hall~
@@ -14231,6 +16073,26 @@ D3
 ~
 cracked west wall~
 4 0 30442
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30444
 Level 3: Chamber of Cold Flickers~
@@ -14249,6 +16111,22 @@ D3
 ~
 shutter~
 1 0 30443
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the north and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the north and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30445
 Level 3: Haunted West Room~
@@ -14266,6 +16144,11 @@ D2
 ~
 ~
 0 0 30440
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30446
 Level 3: Bat Gallery~
@@ -14288,6 +16171,15 @@ D3
 ~
 ~
 0 0 30445
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30447
 Level 3: Hall of Three Locks~
@@ -14314,6 +16206,16 @@ D3
 ~
 locked dungeon door~
 2 30227 30446
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The east
+door is locked, and a small key opens it: UNLOCK EAST. The west door is
+locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30448
 Level 3: Room of Sliding Blades~
@@ -14336,6 +16238,20 @@ D3
 ~
 locked dungeon door~
 2 30227 30447
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30449
 Level 3: Manhandla's Lair~
@@ -14358,6 +16274,28 @@ D3
 ~
 cracked west wall~
 4 0 30448
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it. The shutter to the south has no lock and no
+handle. It stays shut while enemies remain in the room; once it is clear,
+walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30450
 Level 3: Manji Hall of Grinding Grooves~
@@ -14377,6 +16315,21 @@ D2
 ~
 locked dungeon door~
 2 30227 30447
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The
+shutter to the north has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30451
 Level 3: Sanctum of the Golden Cross~
@@ -14392,6 +16345,11 @@ D2
 ~
 manji treasure door~
 2 30632 30449
+E
+door doors doorway doorways keyhole keyholes~
+The south door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30452
 Level 3: Northwest Roost~
@@ -14406,6 +16364,16 @@ D1
 ~
 shutter~
 1 0 30453
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30453
 Level 3: Manji Hearth Chamber~
@@ -14425,6 +16393,27 @@ D3
 ~
 shutter~
 1 0 30452
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the south and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the south and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30454
 Level 3: Pitch-Scented Cellar~
@@ -14439,6 +16428,14 @@ D4
 ~
 block stair~
 4 0 30438
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30455
 Level 4: Dripping Roost~
@@ -14453,6 +16450,14 @@ D1
 ~
 ~
 0 0 30456
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30456
 Level 4: Mouth of the Snake~
@@ -14475,6 +16480,18 @@ D4
 ~
 ~
 0 0 30253
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30457
 Level 4: Moat Crossing~
@@ -14498,6 +16515,18 @@ D2
 ~
 ~
 0 0 30456
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30458
 Level 4: Serpent Coil Chamber~
@@ -14513,6 +16542,19 @@ D3
 ~
 locked dungeon door~
 2 30227 30457
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30459
 Level 4: Lane of Blocks~
@@ -14530,6 +16572,15 @@ D1
 ~
 ~
 0 0 30460
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30460
 Level 4: Seeping Gallery~
@@ -14547,6 +16598,10 @@ D3
 ~
 ~
 0 0 30459
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30461
 Level 4: Still Corridor~
@@ -14565,6 +16620,14 @@ D2
 ~
 ~
 0 0 30459
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30462
 Level 4: Crackling Antechamber~
@@ -14588,6 +16651,11 @@ D2
 ~
 ~
 0 0 30461
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The east
+door is locked, and a small key opens it: UNLOCK EAST.
+~
 S
 #30463
 Level 4: Hall of Biting Serpents~
@@ -14610,6 +16678,22 @@ D3
 ~
 locked dungeon door~
 2 30227 30462
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The west
+door is locked, and a small key opens it: UNLOCK WEST. The shutter to the
+east has no lock and no handle. It stays shut while enemies remain in the
+room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30464
 Level 4: Room of the Sunken Block~
@@ -14628,6 +16712,29 @@ D5
 ~
 block stair~
 4 0 30475
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30465
 Level 4: Divided Hall~
@@ -14650,6 +16757,22 @@ D2
 ~
 locked dungeon door~
 2 30227 30462
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The
+shutter to the north has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30466
 Level 4: Slick Chamber~
@@ -14672,6 +16795,20 @@ D3
 ~
 ~
 0 0 30465
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
 S
 #30467
 Level 4: Cold Crossing~
@@ -14694,6 +16831,32 @@ D2
 ~
 shutter~
 1 0 30465
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30468
 Level 4: The Sealed Heart~
@@ -14720,6 +16883,25 @@ D3
 ~
 cracked west wall~
 4 0 30467
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, east, south and west, where
+the cracked stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30469
 Level 4: Knight's Approach~
@@ -14742,6 +16924,26 @@ D3
 ~
 cracked west wall~
 4 0 30468
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30470
 Level 4: Hall of the Twin Necks~
@@ -14761,6 +16963,26 @@ D3
 ~
 shutter~
 1 0 30469
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it. The shutter to the west has no lock and no
+handle. It stays shut while enemies remain in the room; once it is clear,
+walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30471
 Level 4: Serpent Hearth Cell~
@@ -14779,6 +17001,30 @@ D2
 ~
 shutter~
 1 0 30467
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the south has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30472
 Level 4: Rafter Roost~
@@ -14800,6 +17046,15 @@ D3
 ~
 locked dungeon door~
 2 30227 30471
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30473
 Level 4: Gauntlet of Blades~
@@ -14818,6 +17073,15 @@ D3
 ~
 ~
 0 0 30472
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30474
 Level 4: Sanctum of Bowed Serpents~
@@ -14833,6 +17097,19 @@ D2
 ~
 snake treasure door~
 2 30633 30470
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30475
 Level 4: Seeping Red-Brick Cellar~
@@ -14848,6 +17125,15 @@ D4
 ~
 block stair~
 4 0 30464
+E
+block blocks~
+The block that hides this cellar sits above, already shoved aside. Nothing
+down here will move.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30476
 Level 5: Lizard's Gate~
@@ -14870,6 +17156,15 @@ D4
 ~
 stone dungeon entrance~
 0 0 30323
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30477
 Level 5: Echoing Chamber~
@@ -14888,6 +17183,16 @@ D3
 ~
 ~
 0 0 30476
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30478
 Level 5: Western Stairwell~
@@ -14906,6 +17211,15 @@ D5
 ~
 ~
 0 0 30498
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30479
 Level 5: Hall of Linen Biers~
@@ -14929,6 +17243,26 @@ D3
 ~
 cracked west wall~
 4 0 30478
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east and west, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30480
 Level 5: Embalmers' Hall~
@@ -14955,6 +17289,32 @@ D3
 ~
 cracked west wall~
 4 0 30479
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the north has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
 S
 #30481
 Level 5: Grey Brick Fireside~
@@ -14974,6 +17334,21 @@ D3
 ~
 locked dungeon door~
 2 30227 30480
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30482
 Level 5: Slime-Glazed Vault~
@@ -14991,6 +17366,27 @@ D2
 ~
 shutter~
 1 0 30479
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the east and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the east and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30483
 Level 5: Hall of Heavy Tracks~
@@ -15017,6 +17413,18 @@ D3
 ~
 shutter~
 1 0 30482
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The
+shutters to the south and west have no lock and no handle. They stay shut
+while enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutters to the south and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30484
 Level 5: Gray Junction~
@@ -15034,6 +17442,24 @@ D3
 ~
 ~
 0 0 30483
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30485
 Level 5: Hushed Archive~
@@ -15052,6 +17478,14 @@ D2
 ~
 locked dungeon door~
 2 30227 30483
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
 S
 #30486
 Level 5: Shuffling Passage~
@@ -15073,6 +17507,21 @@ D3
 ~
 ~
 0 0 30485
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+Weathered headstones, their names worn away. They are set fast in the
+earth.
+~
 S
 #30487
 Level 5: Sealed Crypt~
@@ -15086,6 +17535,15 @@ D0
 ~
 shutter~
 1 0 30489
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30488
 Level 5: Lizard Shrine~
@@ -15103,6 +17561,15 @@ D2
 ~
 ~
 0 0 30486
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30489
 Level 5: Digdogger's Den~
@@ -15125,6 +17592,19 @@ D2
 ~
 shutter~
 1 0 30487
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The north
+door is the guardian's own. Only the key the guardian leaves to whoever
+beats it will open it. The shutter to the south has no lock and no handle.
+It stays shut while enemies remain in the room; once it is clear, walk
+straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30490
 Level 5: Whispering Gallery~
@@ -15147,6 +17627,20 @@ D3
 ~
 locked dungeon door~
 2 30227 30489
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30491
 Level 5: Ossuary~
@@ -15164,6 +17658,10 @@ D3
 ~
 ~
 0 0 30490
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
 S
 #30492
 Level 5: Bat-Haunted Tomb~
@@ -15182,6 +17680,18 @@ D3
 ~
 locked dungeon door~
 2 30227 30491
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30493
 Level 5: Sanctum of Turning Lizards~
@@ -15197,6 +17707,11 @@ D2
 ~
 lizard treasure door~
 2 30634 30489
+E
+door doors doorway doorways keyhole keyholes~
+The south door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30494
 Level 5: Nook Behind the False Wall~
@@ -15212,6 +17727,21 @@ D2
 ~
 cracked south wall~
 4 0 30490
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30495
 Level 5: Rafter Hall~
@@ -15229,6 +17759,20 @@ D1
 ~
 cracked east wall~
 4 0 30496
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
 S
 #30496
 Level 5: Bomb Seller's Back Room~
@@ -15244,6 +17788,26 @@ D3
 ~
 cracked west wall~
 4 0 30495
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30497
 Level 5: Room of the Scraped Block~
@@ -15262,6 +17826,15 @@ D5
 ~
 block stair~
 4 0 30499
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30498
 Level 5: Stair Landing~
@@ -15284,6 +17857,19 @@ D4
 ~
 ~
 0 0 30478
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The west
+door is locked, and a small key opens it: UNLOCK WEST.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30499
 Level 5: Whistling Brick Cellar~
@@ -15298,6 +17884,11 @@ D4
 ~
 block stair~
 4 0 30497
+E
+block blocks~
+The block that hides this cellar sits above, already shoved aside. Nothing
+down here will move.
+~
 S
 #30500
 Level 6: Scorched Antechamber~
@@ -15316,6 +17907,14 @@ D1
 ~
 locked dungeon door~
 2 30227 30501
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
 S
 #30501
 Level 6: Dragon's Gate~
@@ -15338,6 +17937,22 @@ D4
 ~
 stone dungeon entrance~
 0 0 30282
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
+E
+statue statues armos~
+Weathered stone statues, set solidly on their bases. They will not move.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30502
 Level 6: Rune-Scored Hall~
@@ -15355,6 +17970,14 @@ D3
 ~
 ~
 0 0 30501
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
 S
 #30503
 Level 6: Slime Cistern~
@@ -15372,6 +17995,14 @@ D2
 ~
 ~
 0 0 30500
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30504
 Level 6: Cramped Ember Cell~
@@ -15387,6 +18018,24 @@ D2
 ~
 locked dungeon door~
 2 30227 30502
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30505
 Level 6: Smoky Roost~
@@ -15404,6 +18053,20 @@ D2
 ~
 ~
 0 0 30503
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30506
 Level 6: Crossed Grooves of the Dragon~
@@ -15422,6 +18085,18 @@ D2
 ~
 shutter~
 1 0 30505
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30507
 Level 6: Flickering Hall~
@@ -15440,6 +18115,27 @@ D2
 ~
 shutter~
 1 0 30506
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30508
 Level 6: Taloned Corner~
@@ -15457,6 +18153,27 @@ D1
 ~
 shutter~
 1 0 30509
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the north and east have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the north and east have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30509
 Level 6: Sorcerer's Stair~
@@ -15474,6 +18191,24 @@ D5
 ~
 ~
 0 0 30520
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30510
 Level 6: Mage's Dead End~
@@ -15487,6 +18222,15 @@ D0
 ~
 shutter~
 1 0 30513
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30511
 Level 6: Statue Gallery~
@@ -15509,6 +18253,32 @@ D2
 ~
 shutter~
 1 0 30507
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+statue statues armos~
+Weathered stone statues, set solidly on their bases. They will not move.
+~
 S
 #30512
 Level 6: Ash Chamber~
@@ -15530,6 +18300,32 @@ D3
 ~
 cracked west wall~
 4 0 30511
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The
+shutter to the south has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30513
 Level 6: Threshold of the Nest~
@@ -15551,6 +18347,21 @@ D2
 ~
 shutter~
 1 0 30510
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The
+shutter to the south has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30514
 Level 6: Eastern Bend~
@@ -15569,6 +18380,15 @@ D3
 ~
 ~
 0 0 30513
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30515
 Level 6: Hushed Red Vault~
@@ -15587,6 +18407,27 @@ D2
 ~
 shutter~
 1 0 30511
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the east and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the east and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30516
 Level 6: Hall of Many Doors~
@@ -15613,6 +18454,22 @@ D3
 ~
 shutter~
 1 0 30515
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The south
+door is locked, and a small key opens it: UNLOCK SOUTH. The shutter to the
+west has no lock and no handle. It stays shut while enemies remain in the
+room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30517
 Level 6: Ember Hall~
@@ -15635,6 +18492,19 @@ D3
 ~
 ~
 0 0 30516
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30518
 Level 6: Northern Ascent~
@@ -15652,6 +18522,19 @@ D3
 ~
 ~
 0 0 30517
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30519
 Level 6: Gohma's Nest~
@@ -15670,6 +18553,16 @@ D2
 ~
 locked dungeon door~
 2 30227 30513
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The north
+door is the guardian's own. Only the key the guardian leaves to whoever
+beats it will open it.
+~
 S
 #30520
 Level 6: Eastern Stairwell~
@@ -15687,6 +18580,19 @@ D4
 ~
 ~
 0 0 30509
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30521
 Level 6: Room of the Loose Block~
@@ -15708,6 +18614,25 @@ D5
 ~
 block stair~
 4 0 30525
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30522
 Level 6: Hall of Weak Walls~
@@ -15730,6 +18655,21 @@ D3
 ~
 cracked west wall~
 4 0 30521
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east and west, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30523
 Level 6: Dragon Brazier Hall~
@@ -15749,6 +18689,26 @@ D3
 ~
 cracked west wall~
 4 0 30522
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30524
 Level 6: Dragon's Glowing Sanctum~
@@ -15763,6 +18723,15 @@ D2
 ~
 dragon treasure door~
 2 30635 30519
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30525
 Level 6: Magical Rod Cellar~
@@ -15776,6 +18745,11 @@ D4
 ~
 block stair~
 4 0 30521
+E
+block blocks~
+The block that hides this cellar sits above, already shoved aside. Nothing
+down here will move.
+~
 S
 #30526
 Level 7: Hall of Shed Skins~
@@ -15790,6 +18764,15 @@ D0
 ~
 ~
 0 0 30529
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30527
 Level 7: Demon's Gate~
@@ -15812,6 +18795,18 @@ D4
 ~
 recorder dungeon entrance~
 4 0 30250
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30528
 Level 7: Dripping Antechamber~
@@ -15830,6 +18825,18 @@ D3
 ~
 ~
 0 0 30527
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30529
 Level 7: Blade Trap Corridor~
@@ -15852,6 +18859,26 @@ D2
 ~
 ~
 0 0 30526
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30530
 Level 7: Moat Crossroads~
@@ -15878,6 +18905,20 @@ D3
 ~
 cracked west wall~
 4 0 30529
+E
+wall walls~
+The walls are solid stone, except to the north and west, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30531
 Level 7: Guano-Streaked Crossing~
@@ -15904,6 +18945,21 @@ D3
 ~
 ~
 0 0 30530
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30532
 Level 7: Shuttered Gallery~
@@ -15925,6 +18981,21 @@ D3
 ~
 ~
 0 0 30531
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30533
 Level 7: Urchin's Hollow~
@@ -15944,6 +19015,10 @@ D3
 ~
 ~
 0 0 30532
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
 S
 #30534
 Level 7: Bone-Strewn Alcove~
@@ -15980,6 +19055,14 @@ D2
 ~
 ~
 0 0 30529
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
 S
 #30536
 Level 7: Boomerang Hall~
@@ -16006,6 +19089,31 @@ D3
 ~
 ~
 0 0 30535
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30537
 Level 7: Hall of Bones~
@@ -16024,6 +19132,31 @@ D3
 ~
 shutter~
 1 0 30536
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30538
 Level 7: Hall of the Horned Mask~
@@ -16039,6 +19172,25 @@ D2
 ~
 shutter~
 1 0 30532
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30539
 Level 7: Demon's Powder Store~
@@ -16054,6 +19206,19 @@ D2
 ~
 locked dungeon door~
 2 30227 30535
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30540
 Level 7: Hall of Lingering Chill~
@@ -16072,6 +19237,20 @@ D2
 ~
 ~
 0 0 30536
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30541
 Level 7: Western Moat~
@@ -16091,6 +19270,21 @@ D1
 ~
 shutter~
 1 0 30542
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The
+shutter to the east has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30542
 Level 7: Island Chamber~
@@ -16113,6 +19307,27 @@ D3
 ~
 shutter~
 1 0 30541
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the south and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the south and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30543
 Level 7: Hidden Cistern~
@@ -16127,6 +19342,15 @@ D3
 ~
 cracked west wall~
 4 0 30542
+E
+walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 E
 cistern water floor~
 Black water stands an inch deep over the sunken floor, still as glass until
@@ -16169,6 +19393,19 @@ D2
 ~
 locked dungeon door~
 2 30227 30541
+E
+doors doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+shutters~
+A heavy iron shutter with no lock and no handle. A shutter stays shut while
+enemies remain in its room, and opens to anyone once the room is clear.
+~
+E
+rock rocks boulder boulders~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 E
 bowl bones clay gnawed~
 The clay bowl is licked clean and the bones are gnawed to splinters.
@@ -16220,6 +19457,25 @@ D5
 ~
 ~
 0 0 30558
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30546
 Level 7: Hall of the Horned Ledge~
@@ -16238,6 +19494,21 @@ D3
 ~
 cracked west wall~
 4 0 30545
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30547
 Level 7: Demon's Stepped Sanctum~
@@ -16252,6 +19523,19 @@ D3
 ~
 demon treasure door~
 2 30636 30546
+E
+door doors doorway doorways keyhole keyholes~
+The west door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30548
 Level 7: Teeming Moat Hall~
@@ -16274,6 +19558,31 @@ D2
 ~
 shutter~
 1 0 30544
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the south has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30549
 Level 7: Twin Pillar Hall~
@@ -16296,6 +19605,26 @@ D3
 ~
 locked dungeon door~
 2 30227 30548
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST. The shutter
+to the north has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30550
 Level 7: Hall of the Loose Block~
@@ -16318,6 +19647,21 @@ D5
 ~
 block stair~
 4 0 30559
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east and west, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30551
 Level 7: Hall of Keyholes~
@@ -16340,6 +19684,21 @@ D3
 ~
 cracked west wall~
 4 0 30550
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The east
+door is locked, and a small key opens it: UNLOCK EAST.
+~
 S
 #30552
 Level 7: Spined Sand Pit~
@@ -16358,6 +19717,17 @@ D3
 ~
 locked dungeon door~
 2 30227 30551
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST. The shutter
+to the north has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30553
 Level 7: Forgotten Corner~
@@ -16376,6 +19746,16 @@ D2
 ~
 cracked south wall~
 4 0 30548
+E
+wall walls~
+The walls are solid stone, except to the east and south, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30554
 Level 7: Northern Moat Room~
@@ -16398,6 +19778,32 @@ D3
 ~
 cracked west wall~
 4 0 30553
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutters to the east and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+shutter shutters~
+The shutters to the east and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30555
 Level 7: Goriya Barracks~
@@ -16411,6 +19817,15 @@ D3
 ~
 shutter~
 1 0 30554
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30556
 Level 7: Vault of the Sleeping Face~
@@ -16425,6 +19840,10 @@ D2
 ~
 locked dungeon door~
 2 30227 30551
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
 S
 #30557
 Level 7: Smoke-Stained Den~
@@ -16443,6 +19862,21 @@ D2
 ~
 shutter~
 1 0 30552
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30558
 Level 7: Grasping Wall Chamber~
@@ -16461,6 +19895,20 @@ D4
 ~
 ~
 0 0 30545
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30559
 Level 7: Waxen Ledge Cellar~
@@ -16476,6 +19924,11 @@ D4
 ~
 block stair~
 4 0 30550
+E
+block blocks~
+The block that hides this cellar sits above, already shoved aside. Nothing
+down here will move.
+~
 S
 #30560
 Level 8: Spiced Linen Crypt~
@@ -16494,6 +19947,21 @@ D5
 ~
 block stair~
 4 0 30585
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30561
 Level 8: Western Antechamber~
@@ -16511,6 +19979,20 @@ D3
 ~
 shutter~
 1 0 30560
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+stair stairs staircase steps~
+Worn steps, smoothed by the passing of many feet.
+~
 S
 #30562
 Level 8: Lion's Gate~
@@ -16536,6 +20018,15 @@ D4
 ~
 burn dungeon entrance~
 4 0 30229
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30563
 Level 8: Eastern Roost~
@@ -16549,6 +20040,10 @@ D3
 ~
 ~
 0 0 30562
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
 S
 #30564
 Level 8: Narrow Passage Hall~
@@ -16566,6 +20061,16 @@ D2
 ~
 ~
 0 0 30562
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30565
 Level 8: Quiet Western Cell~
@@ -16580,6 +20085,15 @@ D1
 ~
 ~
 0 0 30566
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30566
 Level 8: Hall of Echoes~
@@ -16602,6 +20116,20 @@ D3
 ~
 ~
 0 0 30565
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30567
 Level 8: Slime-Slick Crossing~
@@ -16628,6 +20156,28 @@ D3
 ~
 shutter~
 1 0 30566
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The
+shutters to the north and west have no lock and no handle. They stay shut
+while enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutters to the north and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30568
 Level 8: Warren of Long Ears~
@@ -16642,6 +20192,14 @@ D3
 ~
 locked dungeon door~
 2 30227 30567
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30569
 Level 8: Gel-Streaked Chamber~
@@ -16659,6 +20217,20 @@ D1
 ~
 shutter~
 1 0 30570
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30570
 Level 8: Stair Beneath the Lion~
@@ -16681,6 +20253,25 @@ D5
 ~
 ~
 0 0 30577
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30571
 Level 8: Hall of Crouching Lions~
@@ -16703,6 +20294,21 @@ D2
 ~
 ~
 0 0 30566
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the north has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30572
 Level 8: Locked Crossway~
@@ -16724,6 +20330,22 @@ D3
 ~
 locked dungeon door~
 2 30227 30571
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The west
+door is locked, and a small key opens it: UNLOCK WEST. The shutter to the
+south has no lock and no handle. It stays shut while enemies remain in the
+room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30573
 Level 8: Lion's Warm Hearth~
@@ -16742,6 +20364,26 @@ D2
 ~
 ~
 0 0 30569
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30574
 Level 8: Hall of Four Gouges~
@@ -16764,6 +20406,21 @@ D3
 ~
 cracked west wall~
 4 0 30573
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south and west, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30575
 Level 8: Ash-Grey Watch Chamber~
@@ -16778,6 +20435,20 @@ D2
 ~
 shutter~
 1 0 30571
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30576
 Level 8: Chamber of Three Doors~
@@ -16799,6 +20470,27 @@ D2
 ~
 locked dungeon door~
 2 30227 30572
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The
+shutter to the east has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30577
 Level 8: Knight's Guardroom~
@@ -16817,6 +20509,24 @@ D4
 ~
 ~
 0 0 30570
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30578
 Level 8: Lion's Last Sanctum~
@@ -16832,6 +20542,15 @@ D2
 ~
 lion treasure door~
 2 30637 30574
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
 S
 #30579
 Level 8: Lion's Den~
@@ -16849,6 +20568,16 @@ D1
 ~
 cracked east wall~
 4 0 30580
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30580
 Level 8: Cartographer's Hall~
@@ -16870,6 +20599,25 @@ D3
 ~
 cracked west wall~
 4 0 30579
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south and west, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
+E
+rock rocks boulder boulders stone stones~
+Most of the rock is solid, but where it is cracked it sounds hollow. A bomb
+would blow it open: BOMB CRACK.
+~
 S
 #30581
 Level 8: Burrow Chamber~
@@ -16888,6 +20636,11 @@ D2
 ~
 ~
 0 0 30579
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30582
 Level 8: Northern Crossroads~
@@ -16913,6 +20666,28 @@ D3
 ~
 cracked west wall~
 4 0 30581
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The
+shutters to the north and east have no lock and no handle. They stay shut
+while enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutters to the north and east have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30583
 Level 8: Hall of the Shifted Block~
@@ -16930,6 +20705,21 @@ D5
 ~
 block stair~
 4 0 30586
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the west has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30584
 Level 8: Ooze-Drenched Chamber~
@@ -16943,6 +20733,15 @@ D2
 ~
 shutter~
 1 0 30582
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30585
 Level 8: Magic Book Cellar~
@@ -16957,6 +20756,15 @@ D4
 ~
 block stair~
 4 0 30560
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+block blocks~
+The block that hides this cellar sits above, already shoved aside. Nothing
+down here will move.
+~
 S
 #30586
 Level 8: Cellar of the Doorless Keyhole~
@@ -16971,6 +20779,20 @@ D4
 ~
 block stair~
 4 0 30583
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+The block that hides this cellar sits above, already shoved aside. Nothing
+down here will move.
+~
 S
 #30587
 Level 9: Stairwell Antechamber~
@@ -16989,6 +20811,27 @@ D4
 ~
 ~
 0 0 30589
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30588
 Level 9: Chamber of Locked Doors~
@@ -17007,6 +20850,15 @@ D1
 ~
 locked dungeon door~
 2 30227 30589
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The east
+door is locked, and a small key opens it: UNLOCK EAST.
+~
 S
 #30589
 Level 9: Furrowed Sand Pit~
@@ -17025,6 +20877,14 @@ D5
 ~
 ~
 0 0 30587
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30590
 Level 9: Gate Beneath Spectacle Rock~
@@ -17044,6 +20904,21 @@ D4
 ~
 triforce bomb dungeon entrance~
 4 0 30317
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
 S
 #30591
 Level 9: Eye of the Western Hall~
@@ -17070,6 +20945,19 @@ D5
 ~
 ~
 0 0 30621
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30592
 Level 9: Roost of the Keese~
@@ -17088,6 +20976,15 @@ D3
 ~
 ~
 0 0 30591
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30593
 Level 9: Slime-Slick Junction~
@@ -17114,6 +21011,20 @@ D5
 ~
 ~
 0 0 30641
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The south
+door is locked, and a small key opens it: UNLOCK SOUTH. The west door is
+locked, and a small key opens it: UNLOCK WEST.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30594
 Level 9: Crossroads of Ash~
@@ -17132,6 +21043,11 @@ D1
 ~
 ~
 0 0 30595
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30595
 Level 9: Scorched Vestibule~
@@ -17154,6 +21070,21 @@ D3
 ~
 ~
 0 0 30594
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30596
 Level 9: Mountain Gate Fireside~
@@ -17177,6 +21108,25 @@ D3
 ~
 shutter~
 1 0 30595
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutters to the north and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30597
 Level 9: Ooze-Pooled Corner~
@@ -17194,6 +21144,21 @@ D1
 ~
 shutter~
 1 0 30598
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The
+shutter to the east has no lock and no handle. It stays shut while enemies
+remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the east has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30598
 Level 9: Hall of Half-Eaten Shields~
@@ -17216,6 +21181,16 @@ D3
 ~
 shutter~
 1 0 30597
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+shutter shutters~
+The shutters to the north and west have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30599
 Level 9: Whirling Dust Chamber~
@@ -17234,6 +21209,29 @@ D5
 ~
 ~
 0 0 30639
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30600
 Level 9: Hall of Shadows and Flame~
@@ -17252,6 +21250,20 @@ D2
 ~
 locked dungeon door~
 2 30227 30593
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30601
 Level 9: Hall of Twin Pillars~
@@ -17274,6 +21286,16 @@ D2
 ~
 ~
 0 0 30594
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30602
 Level 9: The Sealed Sand Hollow~
@@ -17304,6 +21326,16 @@ D5
 ~
 ~
 0 0 30633
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, east, south and west, where
+the cracked stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30603
 Level 9: Gallery of Ooze~
@@ -17326,6 +21358,31 @@ D3
 ~
 cracked west wall~
 4 0 30602
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30604
 Level 9: Eastern Spellward~
@@ -17339,6 +21396,15 @@ D0
 ~
 ~
 0 0 30612
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30605
 Level 9: Corridor of Burnt Runes~
@@ -17356,6 +21422,15 @@ D2
 ~
 locked dungeon door~
 2 30227 30597
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The south
+door is locked, and a small key opens it: UNLOCK SOUTH.
+~
 S
 #30606
 Level 9: Hall of Grinding Blades~
@@ -17374,6 +21449,12 @@ D2
 ~
 shutter~
 1 0 30598
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30607
 Level 9: Ganon's Dark Chamber~
@@ -17393,6 +21474,22 @@ D2
 ~
 shutter~
 1 0 30599
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it. The shutter to the south has no lock and no
+handle. It stays shut while enemies remain in the room; once it is clear,
+walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30608
 Level 9: Sealed Alcove of Embers~
@@ -17408,6 +21505,21 @@ D2
 ~
 cracked south wall~
 4 0 30600
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30609
 Level 9: Chamber of Scorch Rings~
@@ -17425,6 +21537,11 @@ D2
 ~
 ~
 0 0 30601
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30610
 Level 9: Crowded Sorcery Hall~
@@ -17447,6 +21564,26 @@ D3
 ~
 ~
 0 0 30609
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30611
 Level 9: Hall of Blue Flames~
@@ -17465,6 +21602,20 @@ D3
 ~
 ~
 0 0 30610
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30612
 Level 9: Eastern Wardroom~
@@ -17483,6 +21634,15 @@ D2
 ~
 ~
 0 0 30604
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30613
 Level 9: Blade-Trap Stairwell~
@@ -17505,6 +21665,19 @@ D5
 ~
 ~
 0 0 30640
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30614
 Level 9: Hall of Many Dangers~
@@ -17527,6 +21700,27 @@ D3
 ~
 cracked west wall~
 4 0 30613
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30615
 Level 9: Princess Zelda's Chamber~
@@ -17541,6 +21735,16 @@ D2
 ~
 golden door~
 2 30243 30607
+E
+door doors doorway doorways keyhole keyholes~
+The south door is the guardian's own. Only the key the guardian leaves to
+whoever beats it will open it.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30616
 Level 9: Pool of Gel~
@@ -17558,6 +21762,15 @@ D1
 ~
 cracked east wall~
 4 0 30617
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
 S
 #30617
 Level 9: Bat-Haunted Gallery~
@@ -17575,6 +21788,16 @@ D3
 ~
 cracked west wall~
 4 0 30616
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30618
 Level 9: Chamber of the Needle~
@@ -17589,6 +21812,16 @@ D0
 ~
 cracked north wall~
 4 0 30626
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30619
 Level 9: Murky Junction~
@@ -17606,6 +21839,20 @@ D1
 ~
 cracked east wall~
 4 0 30620
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30620
 Level 9: Belfry of the Vires~
@@ -17628,6 +21875,16 @@ D3
 ~
 cracked west wall~
 4 0 30619
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north and west, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30621
 Level 9: Western Stair Room~
@@ -17646,6 +21903,20 @@ D4
 ~
 ~
 0 0 30591
+E
+wall walls~
+The walls are solid stone, except to the north, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30622
 Level 9: Circling Wind Chamber~
@@ -17668,6 +21939,22 @@ D2
 ~
 shutter~
 1 0 30614
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30623
 Level 9: Hall of Slime and Shadow~
@@ -17689,6 +21976,21 @@ D3
 ~
 cracked west wall~
 4 0 30622
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The east
+door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30624
 Level 9: Gel-Choked Crossway~
@@ -17715,6 +22017,22 @@ D3
 ~
 locked dungeon door~
 2 30227 30623
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH. The south
+door is locked, and a small key opens it: UNLOCK SOUTH. The west door is
+locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30625
 Level 9: Winged Watchtower~
@@ -17736,6 +22054,16 @@ D3
 ~
 cracked west wall~
 4 0 30624
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
 S
 #30626
 Level 9: Ooze-Streaked Passage~
@@ -17757,6 +22085,25 @@ D2
 ~
 cracked south wall~
 4 0 30618
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north and south, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30627
 Level 9: Hall of Quivering Gel~
@@ -17782,6 +22129,21 @@ D3
 ~
 locked dungeon door~
 2 30227 30626
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The west
+door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30628
 Level 9: The Cartographer's Vault~
@@ -17804,6 +22166,21 @@ D3
 ~
 cracked west wall~
 4 0 30627
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north, south and west, where the
+cracked stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
 S
 #30629
 Level 9: Sealed Western Sanctum~
@@ -17822,6 +22199,21 @@ D5
 ~
 block stair~
 4 0 30644
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30630
 Level 9: Sand Burrow Hall~
@@ -17840,6 +22232,12 @@ D2
 ~
 shutter~
 1 0 30622
+E
+shutter shutters~
+The shutters to the north and south have no lock and no handle. They stay
+shut while enemies remain in the room; once it is clear, walk straight
+through.
+~
 S
 #30631
 Level 9: Red Sand Hall~
@@ -17861,6 +22259,18 @@ D2
 ~
 locked dungeon door~
 2 30227 30623
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The south
+door is locked, and a small key opens it: UNLOCK SOUTH. The shutter to the
+north has no lock and no handle. It stays shut while enemies remain in the
+room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the north has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
 S
 #30632
 Level 9: Silent Cell~
@@ -17878,6 +22288,15 @@ D3
 ~
 locked dungeon door~
 2 30227 30631
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH. The west
+door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30633
 Level 9: Stair of the Devourers~
@@ -17900,6 +22319,18 @@ D4
 ~
 ~
 0 0 30602
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30634
 Level 9: Blue-Scorched Hall~
@@ -17922,6 +22353,20 @@ D3
 ~
 locked dungeon door~
 2 30227 30633
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST.
+~
 S
 #30635
 Level 9: Northern Whirl Chamber~
@@ -17944,6 +22389,19 @@ D3
 ~
 ~
 0 0 30634
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The north door is locked, and a small key opens it: UNLOCK NORTH.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30636
 Level 9: Eastern Gauntlet~
@@ -17961,6 +22419,21 @@ D2
 ~
 cracked south wall~
 4 0 30628
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the north and south, where the cracked
+stone sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30637
 Level 9: Northwestern Den~
@@ -17978,6 +22451,22 @@ D2
 ~
 shutter~
 1 0 30630
+E
+door doors doorway doorways keyhole keyholes~
+The east door is locked, and a small key opens it: UNLOCK EAST. The shutter
+to the south has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
 S
 #30638
 Level 9: Chamber of Watching Eyes~
@@ -17997,6 +22486,26 @@ D3
 ~
 locked dungeon door~
 2 30227 30637
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The west door is locked, and a small key opens it: UNLOCK WEST. The shutter
+to the south has no lock and no handle. It stays shut while enemies remain
+in the room; once it is clear, walk straight through.
+~
+E
+shutter shutters~
+The shutter to the south has no lock and no handle. It stays shut while
+enemies remain in the room; once it is clear, walk straight through.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30639
 Level 9: Stair of Slime~
@@ -18014,6 +22523,20 @@ D4
 ~
 ~
 0 0 30599
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30640
 Level 9: Quiet Stair Landing~
@@ -18031,6 +22554,20 @@ D4
 ~
 ~
 0 0 30613
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30641
 Level 9: Northern Stair of Flame~
@@ -18049,6 +22586,20 @@ D4
 ~
 ~
 0 0 30593
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the east, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30642
 Level 9: Whispering Hearth Room~
@@ -18068,6 +22619,25 @@ D3
 ~
 cracked west wall~
 4 0 30641
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the west, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+door doors doorway doorways keyhole keyholes~
+The south door is locked, and a small key opens it: UNLOCK SOUTH.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30643
 Level 9: Northeastern Sanctum~
@@ -18086,6 +22656,21 @@ D5
 ~
 block stair~
 4 0 30645
+E
+crack cracks cracked~
+The cracks run deep, and the stone behind them sounds hollow when you knock
+on it. A bomb would blow it open: BOMB CRACK.
+~
+E
+wall walls~
+The walls are solid stone, except to the south, where the cracked stone
+sounds hollow. A bomb would blow it open: BOMB CRACK.
+~
+E
+block blocks~
+Most of the blocks are set fast, but one sits a little askew, scraped along
+its base as if it has been moved before: PUSH BLOCK.
+~
 S
 #30644
 Level 9: Silver Arrow Cellar~
@@ -18100,6 +22685,14 @@ D4
 ~
 block stair~
 4 0 30629
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30645
 Level 9: Red Ring Cellar~
@@ -18114,6 +22707,14 @@ D4
 ~
 block stair~
 4 0 30643
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30650
 The Old Man's Cave~
@@ -18128,6 +22729,19 @@ D4
 ~
 cave opening~
 0 0 30200
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30651
 The White Sword Cave~
@@ -18143,6 +22757,19 @@ D4
 ~
 cave opening~
 0 0 30322
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30652
 Beneath the Hero's Grave~
@@ -18158,6 +22785,19 @@ D4
 ~
 grave opening~
 4 0 30281
+E
+gravestone gravestones headstone headstones tombstone tombstones grave graves~
+The gravestone that hid the way in stands above, already pushed aside.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30653
 The Hermit's Cave~
@@ -18173,6 +22813,19 @@ D4
 ~
 cave opening~
 0 0 30326
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30654
 Grotto Beneath the Sands~
@@ -18188,6 +22841,20 @@ D4
 ~
 bomb opening~
 4 0 30211
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30655
 Heartglow Hollow~
@@ -18203,6 +22870,30 @@ D4
 ~
 bomb opening~
 4 0 30292
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30656
 Cellar Under the Lakeside Bush~
@@ -18218,6 +22909,28 @@ D4
 ~
 burn opening~
 4 0 30255
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30657
 Sanctum Under the Lonely Isle~
@@ -18233,6 +22946,19 @@ D4
 ~
 ~
 0 0 30295
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30658
 Across the Narrow Water~
@@ -18248,6 +22974,14 @@ D4
 ~
 ~
 0 0 30247
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
 S
 #30659
 Hollow of the Old Tree~
@@ -18263,6 +22997,25 @@ D4
 ~
 burn opening~
 4 0 30220
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+tree trees~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
 S
 #30660
 The Root Burrow~
@@ -18278,6 +23031,33 @@ D4
 ~
 burn coin grotto~
 4 0 30233
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+tree trees~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30661
 Den Behind the Woodland Rock~
@@ -18292,6 +23072,25 @@ D4
 ~
 bomb coin grotto~
 4 0 30202
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30662
 The Generous Hollow~
@@ -18307,6 +23106,24 @@ D4
 ~
 burn coin grotto~
 4 0 30218
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30663
 Terrace Strongroom~
@@ -18322,6 +23139,21 @@ D4
 ~
 bomb coin grotto~
 4 0 30299
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30664
 Reedbed Hideaway~
@@ -18337,6 +23169,28 @@ D4
 ~
 burn coin grotto~
 4 0 30238
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30665
 The Hoard Above the Start~
@@ -18352,6 +23206,26 @@ D4
 ~
 bomb coin grotto~
 4 0 30223
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30666
 Ashen Thicket Burrow~
@@ -18367,6 +23241,32 @@ D4
 ~
 burn coin grotto~
 4 0 30288
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30667
 Sandbar Strongbox~
@@ -18382,6 +23282,20 @@ D4
 ~
 burn coin grotto~
 4 0 30256
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30668
 Glade Keeper's Den~
@@ -18396,6 +23310,24 @@ D4
 ~
 burn coin grotto~
 4 0 30243
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30669
 Treasury of the Shaded Grove~
@@ -18411,6 +23343,24 @@ D4
 ~
 burn coin grotto~
 4 0 30227
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30670
 Pebble-Strewn Coin Cellar~
@@ -18426,6 +23376,34 @@ D4
 ~
 bomb coin grotto~
 4 0 30293
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30671
 Vault Beneath the Stone Soldier~
@@ -18441,6 +23419,20 @@ D4
 ~
 armos coin grotto~
 4 0 30277
+E
+statue statues armos~
+The statue that hid the way in stands on the far side of it, already shoved
+aside. Nothing down here will move.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30672
 Den Under the Sentinels~
@@ -18456,6 +23448,28 @@ D4
 ~
 armos coin grotto~
 4 0 30262
+E
+statue statues armos~
+The statue that hid the way in stands on the far side of it, already shoved
+aside. Nothing down here will move.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30673
 The Crag's Secret Fortune~
@@ -18471,6 +23485,27 @@ D4
 ~
 hidden coin grotto~
 0 0 30327
+E
+crack cracks cracked~
+The cracks are old and shallow. No bomb would open a way here.
+~
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30674
 Under the Armos Statue~
@@ -18486,6 +23521,19 @@ D4
 ~
 armos opening~
 4 0 30284
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+statue statues armos~
+The statue that hid the way in stands on the far side of it, already shoved
+aside. Nothing down here will move.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30680
 The Riverbank Powder Store~
@@ -18500,6 +23548,23 @@ D4
 ~
 open shop entrance~
 0 0 30252
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30681
 Fuse and Fletching~
@@ -18515,6 +23580,15 @@ D4
 ~
 open shop entrance~
 0 0 30285
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30682
 The Waxlight Shop~
@@ -18530,6 +23604,20 @@ D4
 ~
 open shop entrance~
 0 0 30222
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30683
 Ledge-Shadowed Armoury~
@@ -18545,6 +23633,19 @@ D4
 ~
 open shop entrance~
 0 0 30258
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30684
 The Lampsmoke Cave~
@@ -18560,6 +23661,15 @@ D4
 ~
 open shop entrance~
 0 0 30324
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30685
 Wick and Tallow Den~
@@ -18575,6 +23685,23 @@ D4
 ~
 open shop entrance~
 0 0 30246
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30686
 The Salt-Air Arsenal~
@@ -18590,6 +23717,19 @@ D4
 ~
 open shop entrance~
 0 0 30231
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30687
 The Hammer-Ringing Store~
@@ -18605,6 +23745,21 @@ D4
 ~
 bomb shop entrance~
 4 0 30298
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30688
 Under the Middle Sentinel~
@@ -18620,6 +23775,20 @@ D4
 ~
 armos shop entrance~
 4 0 30268
+E
+statue statues armos~
+The statue that hid the way in stands on the far side of it, already shoved
+aside. Nothing down here will move.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30689
 Polished Metal Shop~
@@ -18635,6 +23804,16 @@ D4
 ~
 bomb shop entrance~
 4 0 30286
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30690
 The Reedside Trading Post~
@@ -18650,6 +23829,24 @@ D4
 ~
 burn shop entrance~
 4 0 30254
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30691
 The Crossroads Cellar Shop~
@@ -18665,6 +23862,29 @@ D4
 ~
 burn shop entrance~
 4 0 30261
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30692
 Apothecary in the Bluff~
@@ -18680,6 +23900,20 @@ D4
 ~
 bomb shop entrance~
 4 0 30267
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30693
 The Herbwife's Cave~
@@ -18695,6 +23929,11 @@ D4
 ~
 open shop entrance~
 0 0 30316
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30694
 Simmering Herb Cellar~
@@ -18710,6 +23949,19 @@ D5
 ~
 open shop entrance~
 0 0 30220
+E
+wall walls~
+The walls are solid, and nothing in them gives.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead down: go DOWN.
+~
 S
 #30695
 Dispensary at the Mountain's Foot~
@@ -18725,6 +23977,21 @@ D4
 ~
 bomb shop entrance~
 4 0 30287
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30696
 The Root-Brewer's Hollow~
@@ -18740,6 +24007,20 @@ D4
 ~
 burn shop entrance~
 4 0 30208
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30697
 Thicket Medicine Cellar~
@@ -18755,6 +24036,20 @@ D4
 ~
 burn shop entrance~
 4 0 30259
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30698
 The Draughty Remedy Shop~
@@ -18770,6 +24065,16 @@ D4
 ~
 bomb shop entrance~
 4 0 30325
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30700
 The Patched Ridge Door~
@@ -18785,6 +24090,21 @@ D4
 ~
 bomb door repair entrance~
 4 0 30313
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30701
 The Mason's Grievance~
@@ -18800,6 +24120,20 @@ D4
 ~
 bomb door repair entrance~
 4 0 30315
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30702
 The Scorched Trapdoor~
@@ -18815,6 +24149,20 @@ D4
 ~
 burn door repair entrance~
 4 0 30219
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30703
 The Shored-Up Scarp Room~
@@ -18830,6 +24178,25 @@ D4
 ~
 bomb door repair entrance~
 4 0 30300
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30704
 The Summit Repair Room~
@@ -18845,6 +24212,25 @@ D4
 ~
 bomb door repair entrance~
 4 0 30319
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30705
 Under the Hedge Doorframe~
@@ -18859,6 +24245,25 @@ D4
 ~
 burn door repair entrance~
 4 0 30224
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30706
 The River-Damp Repair Shop~
@@ -18874,6 +24279,29 @@ D4
 ~
 burn door repair entrance~
 4 0 30226
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+bush bushes shrub shrubs~
+The bush that hid the way in grew on the far side of it, and it has already
+been burned away.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30707
 Seaside Mended Door~
@@ -18889,6 +24317,34 @@ D4
 ~
 bomb door repair entrance~
 4 0 30213
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30708
 Behind the Gouged Cliff~
@@ -18904,6 +24360,30 @@ D4
 ~
 bomb door repair entrance~
 4 0 30310
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+door doors doorway doorways keyhole keyholes~
+However they look, none of the doors here is locked or barred: each opens
+at a step.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30710
 The Gorge Gaming Den~
@@ -18919,6 +24399,21 @@ D4
 ~
 bomb gamble entrance~
 4 0 30296
+E
+wall walls~
+The walls are solid stone. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30711
 The Wager Room~
@@ -18934,6 +24429,25 @@ D4
 ~
 bomb gamble entrance~
 4 0 30302
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30712
 Dice Rattle Cavern~
@@ -18949,6 +24463,25 @@ D4
 ~
 bomb gamble entrance~
 4 0 30207
+E
+crack cracks cracked~
+The way in was cracked rock, and it has already been blasted open. The rest
+of the stone here is solid.
+~
+E
+rock rocks boulder boulders stone stones~
+The rock is solid here. Only the way in was cracked, and it has already
+been blasted open.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30713
 Sandblown Gambling Cave~
@@ -18964,6 +24497,15 @@ D4
 ~
 bomb gamble entrance~
 4 0 30212
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30714
 The Cliffside Game Parlour~
@@ -18979,6 +24521,15 @@ D4
 ~
 open gamble entrance~
 0 0 30311
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30720
 The Western Crossway~
@@ -18994,6 +24545,19 @@ D4
 ~
 bracelet warp hall entrance~
 4 0 30283
+E
+rock rocks boulder boulders stone stones~
+The stone that hid the way in lies above, already heaved aside.
+~
+E
+water lake pond river sea stream pool~
+The water is cold and clear. Nothing beneath it catches your eye.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30721
 Hall Beneath the Meadow Stone~
@@ -19009,6 +24573,19 @@ D4
 ~
 bracelet warp hall entrance~
 4 0 30257
+E
+rock rocks boulder boulders stone stones~
+The stone that hid the way in lies above, already heaved aside.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30722
 The Southern Warp Gallery~
@@ -19023,6 +24600,20 @@ D4
 ~
 bracelet warp hall entrance~
 4 0 30209
+E
+block blocks~
+Squat stone blocks, set fast. However scraped or askew they look, none of
+them will move.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
+E
+stair stairs staircase steps~
+The steps lead up: go UP.
+~
 S
 #30723
 Frost-Rimed Crossroads Hall~
@@ -19038,6 +24629,15 @@ D4
 ~
 bracelet warp hall entrance~
 4 0 30309
+E
+rock rocks boulder boulders stone stones~
+The stone that hid the way in lies above, already heaved aside.
+~
+E
+fire fires flame flames brazier braziers~
+The fires burn low and steady, giving off a dry warmth. They need no
+tending.
+~
 S
 #30750
 The Lost Woods~
@@ -19065,6 +24665,10 @@ D3
 ~
 ~
 0 0 30751
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30751
 The Lost Woods~
@@ -19092,6 +24696,10 @@ D3
 ~
 ~
 0 0 30217
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30752
 The Lost Woods~
@@ -19119,6 +24727,10 @@ D3
 ~
 ~
 0 0 30216
+E
+tree trees~
+Old trees with thick trunks and dense, rustling crowns.
+~
 S
 #30753
 The Lost Hills~
@@ -19146,6 +24758,10 @@ D3
 ~
 ~
 0 0 30306
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30754
 The Lost Hills~
@@ -19173,6 +24789,10 @@ D3
 ~
 ~
 0 0 30306
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #30755
 The Lost Hills~
@@ -19200,6 +24820,10 @@ D3
 ~
 ~
 0 0 30306
+E
+rock rocks boulder boulders stone stones~
+Rough, weathered rock. It is solid, and nothing in it gives.
+~
 S
 #0
 

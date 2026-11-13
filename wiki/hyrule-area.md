@@ -1093,6 +1093,8 @@ Warp stones require the Power Bracelet. Their route permutations are:
 | `give <n> gold <old woman>` | 10/30/50 or 5/10/20 gold | The two "pay me and I'll talk" caves |
 | `buy bag` | 100 gold | The Level 5 and Level 7 bomb bags |
 | `hearts` | -- | The heart count the swords ask for |
+| `list` | -- | In a cave with no shop: what it offers and how to have it |
+| `enter <crossing>` | The raft or the stepladder | The two crossings and Level 4's raft (`enter gap`, `enter water`) |
 
 Puzzle objects use `ITEM_MANIPULATION` type `31`. Generated overworld targets
 use a zero destination plus dynamic-target flag `value[4] = 9`, allowing one
@@ -1153,6 +1155,53 @@ Runtime rules add the behaviors the area format cannot express alone:
   (`LadderRoomsOW`, Z_07.asm:3175; docks only in rooms $3F and $55).
   `EDGE_OVERRIDES` in `scripts/build_hyrule_manifest.py` carries the
   corrections, and also removes `L6`/`L7`, which the NES does not join.
+
+### What A Player Can Find By Looking
+
+Owner, 2026-11-13, from the play logs: a stepladder holder at the coast
+tried CROSS GAP, CROSS WATER and JUMP GAP and gave up; twenty tries at BOMB
+and PUSH on Spectacle Rock's cracked left rock found nothing; LIST was
+refused 21 times in the old men's caves; and rooms described stones,
+statues and blocks LOOK could not find. All of it is generated or read
+from the cave's own tables:
+
+- **The crossings** (30538-30540) answer to the words their rooms use --
+  gap, water, ledge, channel, cave, entrance -- after the first keyword the
+  router names, carry a LOOK text, and their room lines say ENTER.
+- **An overworld bomb seal answers to its surface**: `discoverability()` in
+  the generator adds the words of `BOMB_SURFACE_WORDS` the room describes
+  (rock, cliff, wall, crack...) to the sealed exit's keyword, after its
+  first words, plus a room's `seal_keywords` in the prose (Spectacle Rock:
+  rock, boulder, left, hollow, spectacle). BOMB takes a puzzle object, then
+  a creature, then the sealed way by its keyword or direction
+  (`bomb_puzzle_for_way` in `src/act_obj.c`); a refused word still costs no
+  bomb.
+- **Every noun a room names has a LOOK detail**: `NOUN_DETAILS` (crack,
+  wall, door, shutter, block, statue, grave, bush, tree, rock, water, fire,
+  stairs) adds one detail per row whose words the description uses and the
+  room's prose extras do not answer. The text is chosen from the room as
+  built -- its puzzle objects, locked doors, shutters, crossings and stairs
+  -- so it names the act that works there (BOMB CRACK, PUSH BLOCK, BURN
+  BUSH, UNLOCK SOUTH, ENTER RAFT) and says plainly where nothing will
+  ("none of them will move"); a cave or cellar below a seal is told the
+  seal's far side (`FAR_SIDE`). Generated details are written ahead of the
+  prose's, because `load_rooms` links each `E` record at the head of the
+  list: the prose's own detail answers a word first. Add a specific detail
+  in `data/hyrule_room_prose.json`, never in the area file.
+- **LOOK W is still west**: a room detail overrides a direction word only
+  when one of its keywords is that word whole (`room_detail_names_word` in
+  `src/act_move.c`), so details answering to WALL and STAIRS never hide
+  LOOK W or LOOK S.
+- **LIST where nobody keeps a shop** (`hyrule_list_cave` in `src/hyrule.c`,
+  before `find_keeper`) says what the cave offers: the gifts lying there
+  and GET word (`hyrule_claims`, with hearts asked and choices made), the
+  paid hints' prices, the money cave's sum, the door repair's charge, the
+  money-making game, a fairy's healing, or -- the dungeons' old men and the
+  free hints -- the words they give for nothing. A real shop still lists.
+
+`tests/test_hyrule_discoverability.py` holds the details to the room (no
+detail promises an act the room cannot do), the seals to their surfaces,
+and plays the crossing, the bomb, LOOK W and LIST live.
 
 ### What A Cleared Room Gives
 
