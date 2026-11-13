@@ -295269,3 +295269,5 @@ Fri Nov 13 09:09:11 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Fri Nov 13 09:13:47 2026 :: Cartographer: appeared.
 Fri Nov 13 09:14:17 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 6 of 6 in 6 hours).
 Fri Nov 13 09:14:17 2026 :: Connection guard: 52.22.236.30 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.22.236.30 lifts it.
+Fri Nov 13 09:18:23 2026 :: Treasure goblin: vanished from room 15217 (C.S.E., campus.are) (too long in one area).
+Fri Nov 13 09:19:21 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 2 of 6 in 6 hours).
