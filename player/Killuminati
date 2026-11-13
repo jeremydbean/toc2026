@@ -2,7 +2,7 @@
 Name Killuminati~
 Id   30948
 Serial 15065367
-LogO 1794596889
+LogO 1794597178
 Vers 4
 Desc You see something very special about him.
 ~
@@ -21,14 +21,14 @@ Fixes 20261112-quest-serial 20261112-hyrule-crumble~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6577613
+Plyd 6577902
 ListRemorts ~
 NumRemorts 0
 Note 1794571056
 StashMax 500
 Scro 0
 Room 600
-HMV  100150 100150 100100 100100 -29534 100000
+HMV  100150 100150 100100 100100 -29359 100000
 NewGold 468
 NewPlat 2503066
 NewCopp 913
@@ -114,7 +114,7 @@ Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
 AchSet psi-disciplines 3 ~
 AchSet map-areas 1807702998 ~
-LastOut  1794596889
+LastOut  1794597178
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1794342046
