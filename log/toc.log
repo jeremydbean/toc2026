@@ -295959,3 +295959,38 @@ Fri Nov 13 19:18:30 2026 :: Connection guard: refused 1 connection from 3.133.22
 Fri Nov 13 19:23:35 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 13 19:25:27 2026 :: Treasure goblin: vanished from room 1511 (A Small Gnome House, gnome.are) (too long in one area).
 Fri Nov 13 19:28:39 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 19:33:44 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 19:35:32 2026 :: Treasure goblin: vanished from room 13436 (Stone Hall, hell.are) (too long in one area).
+Fri Nov 13 19:36:25 2026 :: Connection guard: last hour 16 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 19:36:34 2026 :: Automated backup started.
+Fri Nov 13 19:36:34 2026 :: Automated backup complete.
+Fri Nov 13 19:38:49 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 19:43:54 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 19:45:36 2026 :: Treasure goblin: vanished from room 29078 (Coffee Break Room, korzath1.are) (too long in one area).
+Fri Nov 13 19:48:57 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 19:48:57 2026 :: Connection guard: 5.161.113.195 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.113.195 lifts it.
+Fri Nov 13 19:54:01 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 19:58:31 2026 :: Closing link to Killuminati.
+Fri Nov 13 19:59:07 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 20:04:12 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 20:04:12 2026 :: Connection guard: 52.87.72.16 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.87.72.16 lifts it.
+Fri Nov 13 20:07:34 2026 :: Treasure goblin: vanished from room 9667 (Outside the Northern Gate of New Thalos, newthalo.are) (too long in one area).
+Fri Nov 13 20:09:17 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 20:10:08 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 13 20:13:47 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 20:14:21 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 20:17:38 2026 :: Treasure goblin: vanished from room 24540 (The Central Courtyard, abyss.are) (too long in one area).
+Fri Nov 13 20:19:26 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 20:20:45 2026 :: Sock.sinaddr:  18.218.118.203
+Fri Nov 13 20:20:45 2026 :: Connection guard: 18.218.118.203 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 13 20:21:35 2026 :: Sock.sinaddr:  18.218.118.203
+Fri Nov 13 20:21:36 2026 :: EOF encountered on read.
+Fri Nov 13 20:21:36 2026 :: Connection guard: 18.218.118.203 closed before a password prompt (strike 2 of 6 in 6 hours).
+Fri Nov 13 20:23:25 2026 :: Sock.sinaddr:  18.218.118.203
+Fri Nov 13 20:23:26 2026 :: EOF encountered on read.
+Fri Nov 13 20:23:26 2026 :: Connection guard: 18.218.118.203 closed before a password prompt (strike 3 of 6 in 6 hours).
+Fri Nov 13 20:23:48 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 20:24:32 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 20:24:44 2026 :: Connection guard: 18.218.118.203 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 20:26:11 2026 :: Connection guard: 18.218.118.203 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 20:27:43 2026 :: Treasure goblin: vanished from room 5102 (City street, drow1.are) (too long in one area).

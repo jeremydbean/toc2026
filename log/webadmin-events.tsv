@@ -4945,3 +4945,7 @@
 1794596401	wizinfo	72	Killuminati@99.62.115.159 has connected.
 1794596411	wizinfo	72	Killuminati has entered the game.
 1794596429	wizinfo	60	New sleep trap on a bronze chest [object 24123] in The Hideout [room 24160], [25 35] Lok     Coven.
+1794598585	wizinfo	60	Connection guard: last hour 16 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+1794599337	wizinfo	60	Connection guard: 5.161.113.195 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.113.195 lifts it.
+1794599911	wizinfo	72	Killuminati has lost his link.
+1794600252	wizinfo	60	Connection guard: 52.87.72.16 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.87.72.16 lifts it.
