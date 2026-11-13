@@ -1612,7 +1612,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     }
 
     WAIT_STATE( ch, 1 );
-    ch->move = (int16_t)(ch->move - move);
+    ch->move -= move;    /* an int: (int16_t) wrapped past 32,767 (2026-11-13) */
 
     if ( (!IS_AFFECTED(ch, AFF_SNEAK) && !IS_AFFECTED2(ch,AFF2_STEALTH) )
     && ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) )
@@ -4912,7 +4912,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	      guardian->level = sh_int_clamp( ch->level - 5 );
 	      if(ch->level < 51 )
 	      {
-	          guardian->max_hit = (int16_t)(ch->max_hit + ch->max_hit / 2);
+	          guardian->max_hit = pool_scale( ch->max_hit, 3, 2, POOL_MAX );
 	          guardian->hit = guardian->max_hit;
 	      }
 	      else
@@ -5478,7 +5478,7 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     }
 
     WAIT_STATE( temp_ch, 1 );
-    ch->move = (int16_t)(ch->move - move);
+    ch->move -= move;    /* an int: (int16_t) wrapped past 32,767 (2026-11-13) */
 
     if ( IS_NPC(ch) || !IS_SET(temp_ch->act, PLR_WIZINVIS) )
       act( "$n rides off $Tward.", temp_ch, NULL, dir_name[door], TO_ROOM );

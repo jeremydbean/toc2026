@@ -2607,6 +2607,11 @@ pool plus its bonuses never overflows. SET HP/MANA/END/MOVE/MAXMOVE,
 TITANIC's boost and the black dragon's size stop there, not at
 the 30,000 the old 16-bit fields forced. Never cast a pool or a modifier
 through `(sh_int)` or `clamp_sh_int` again (`tests/test_pool_cap.py`).
+**Nor through `(int16_t)`** (2026-11-13: a step and a ridden step stored
+`(int16_t)(move - cost)`, so 100,100 endurance read about -29,000 after one
+move, and a summoned guardian's hit points wrapped the same way): the
+test sweeps every pool, live and permanent, for either cast and walks a
+step at 40,000 endurance.
 **So is WIMPY** (review, 2026-11-12: with 100,000 hit points WIMPY 40000
 said 40000 and stored -25536, which never flees). `ch->wimpy` is an
 `int`; WIMPY (a fifth of the maximum by default, at most half), SET CHAR

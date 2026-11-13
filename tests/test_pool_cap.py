@@ -34,6 +34,14 @@ class PoolSourceTests(unittest.TestCase):
             self.assertNotRegex(text, r"(perm_(hit|mana|move)|(\.|->)modifier)\s*[-+]?=\s*\(sh_int\)"
                                 if path.name != "db.c" else r"perm_(hit|mana|move)\s*=\s*\(sh_int\)",
                                 path.name)
+            # The live pools too, and int16_t as well as sh_int (2026-11-13:
+            # a step stored (int16_t)(move - cost), so 100,100 endurance read
+            # about -29,000 after one step).
+            self.assertNotRegex(
+                text,
+                r"\b(hit|mana|move|max_hit|max_mana|max_move|perm_hit|perm_mana|perm_move)"
+                r"\s*[-+]?=\s*\((int16_t|sh_int)\)",
+                path.name)
         wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="latin-1")
         self.assertNotIn("30,000 hit points", wiz)
 
@@ -84,6 +92,15 @@ class PoolLiveTests(unittest.TestCase):
                 # EMPOWER carries half again the experience now.
                 staff.sync("empower zpoolbig 10", timeout=60)
                 self.assertRegex(player.sync("affects", timeout=60), r"experience by 50")
+                # A step past the old short costs a step, never wraps.
+                staff.must("set char zpoolbig end 40000", "40000")
+                staff.must("restore zpoolbig", "restored")
+                player.sync("west", timeout=60)
+                moves = re.search(r"End:\s*(-?\d+)/(\d+)",
+                                  staff.sync("stat zpoolbig", timeout=60))
+                self.assertIsNotNone(moves)
+                self.assertGreater(int(moves.group(1)), 39000, moves.group(0))
+                self.assertLessEqual(int(moves.group(1)), int(moves.group(2)))
                 for client in (player, staff):
                     client.send("quit")
                     client.wait_closed()
