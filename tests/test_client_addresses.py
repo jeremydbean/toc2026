@@ -27,7 +27,7 @@ import unittest
 from contextlib import ExitStack
 from pathlib import Path
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import LiveMud, _enter_game, create_character, login, patch_player_file, skip_reason
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = skip_reason()
@@ -265,7 +265,12 @@ class AddressStaffLiveTests(unittest.TestCase):
 
             def pause(address: str) -> None:
                 for port in range(3):           # three in a minute: paused
-                    probe = proxied(mud, f"PROXY TCP4 {address} 127.0.0.1 5100{port} {mud.port}")
+                    try:
+                        probe = proxied(mud, f"PROXY TCP4 {address} 127.0.0.1 5100{port} {mud.port}")
+                    except AssertionError as err:
+                        # Paused already: refused at once with no reply.
+                        self.assertIn("hung up", str(err))
+                        continue
                     probe.close()
                 deadline = time.monotonic() + 15
                 while time.monotonic() < deadline:
@@ -280,20 +285,34 @@ class AddressStaffLiveTests(unittest.TestCase):
                 (a wizinfo is not a reply to anything it typed)."""
                 return client.drain(1.0)
 
+            def at_the_prompt(address: str, port: int):
+                """A connection already at the name prompt when the pause
+                begins: a pause refuses new connections at once (owner,
+                2026-11-13), so only one already in can log in and lift it."""
+                client = stack.enter_context(mud.connect(timeout=120))
+                client.expect("by what name", "name:")
+                client.send(f"PROXY TCP4 {address} 127.0.0.1 {port} {mud.port}")
+                client.expect("name:")
+                return client
+
+            def log_in_at_prompt(client, name: str) -> None:
+                client.send(name)
+                client.expect("password")
+                client.send(PW)
+                _enter_game(client)
+
             # Ordinary staff hear a mortal's login lift a pause.
+            mortal = at_the_prompt("203.0.113.81", 51010)
             pause("203.0.113.81")
-            mortal = stack.enter_context(mud.connect(timeout=120))
-            mortal.send(f"PROXY TCP4 203.0.113.81 127.0.0.1 51010 {mud.port}")
-            login(mortal, "Zgdmort", PW)
+            log_in_at_prompt(mortal, "Zgdmort")
             impl.drain(1.0)
             self.assertIn("pause on 203.0.113.81 lifted -- Zgdmort logged in from it", impl.transcript)
 
             # The creator, wizinvis at 72, lifting one: named to nobody below.
+            creator = at_the_prompt("203.0.113.80", 51020)
             pause("203.0.113.80")
             marks = {id(c): len(c.transcript) for c in (impl, seventy_one)}
-            creator = stack.enter_context(mud.connect(timeout=120))
-            creator.send(f"PROXY TCP4 203.0.113.80 127.0.0.1 51020 {mud.port}")
-            login(creator, "Killuminati", PW)
+            log_in_at_prompt(creator, "Killuminati")
             creator.sync("scroll 0")
             for client in (impl, seventy_one):
                 client.drain(1.0)

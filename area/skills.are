@@ -287,8 +287,8 @@ yours.
   - It cannot fetch money, treasure, hidden containers, carried items,
     NOLOCATE items, or from protected or no-teleport rooms, and respects
     carry limits, ownership and quest binding.
-  - A player's corpse you may loot comes from anywhere, a dungeon or a
-    no-recall room included, whole, gear and all.
+  - A player's corpse you may loot comes from anywhere but a jail, a
+    dungeon or a no-recall room included, whole, gear and all.
 
 Level 21 psionic power.
 

@@ -1337,11 +1337,20 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
         ||   !can_see_obj( ch, obj ) )
             continue;
 
-        /* A player's corpse is fetched from anywhere (owner, 2026-11-13:
+        /* A player's corpse is fetched from anywhere but a jail (owner, 2026-11-13:
            a death in a no-recall Hyrule dungeon left the corpse out of
            TK's reach) -- by whoever GET would let take it, below, and
            never one holding something bound in Hyrule but by its owner. */
         is_corpse = obj->item_type == ITEM_CORPSE_PC;
+        /* Anywhere but a jail (owner, the same day): what lies in a cell
+           is the sentence's. */
+        if ( is_corpse
+        &&   ( IS_SET( obj->in_room->room_flags, ROOM_JAIL )
+            || obj->in_room->vnum == ROOM_VNUM_JAIL ) )
+        {
+            unreachable = true;
+            continue;
+        }
         if ( is_corpse && hyrule_holds_bound( obj )
         &&   ( obj->owner == NULL || str_cmp( obj->owner, ch->name ) ) )
         {

@@ -707,8 +707,11 @@ struct  descriptor_data
     /* When input last arrived, or the connection was accepted: a login
        prompt left this long untouched is closed (LOGIN_IDLE_SECS). */
     time_t              input_at;
-    /* Refused at accept by the connection guard: not a silent connection. */
+    /* Refused at accept by the connection guard: not a silent connection.
+       guard_reset: refused again during a pause it was already told of, so
+       it is reset with no reply (close_socket), as a closed port is. */
     bool                guard_refused;
+    bool                guard_reset;
     /* The connection guard's view of this connection (connguard.c): its
        address was paused when it came (no new characters); it reached a
        password prompt; the login prompt timed it out; it asked for MSSP;

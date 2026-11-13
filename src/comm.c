@@ -1635,11 +1635,10 @@ static bool init_descriptor( int control )
     descriptor_list = dnew;
 
     /*
-     * The connection guard (connguard.c): an address flooding the port
-     * (sixty connections a minute) that has never carried a player is
-     * refused here, before the greeting and without a lookup or a log line.
-     * A paused address is let through -- a player may be behind it -- and
-     * only a new character is refused.
+     * The connection guard (connguard.c): an address no player uses that
+     * is paused or flooding the port is refused here, before the greeting
+     * and without a lookup (owner, 2026-11-13: a paused address used to be
+     * let through, and only a new character refused).
      */
     {
         char guard_buf[MAX_INPUT_LENGTH];
@@ -1648,7 +1647,8 @@ static bool init_descriptor( int control )
         if ( refusal != NULL )
         {
             dnew->guard_refused = TRUE;
-            write_to_buffer( dnew, refusal, 0 );
+            if ( !dnew->guard_reset )
+                write_to_buffer( dnew, refusal, 0 );
             close_socket( dnew );
             return true;
         }
@@ -1948,7 +1948,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
     /* One dropped for not reading is reset, not closed: its unsent
        output would otherwise sit in the kernel for a client that is not
        going to take it. */
-    if ( dclose->write_failed )
+    if ( dclose->write_failed || dclose->guard_reset )
     {
         struct linger ld;
 
@@ -3511,7 +3511,8 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
                     if ( refusal != NULL )
                     {
                         d->guard_refused = TRUE;
-                        write_to_buffer( d, refusal, 0 );
+                        if ( !d->guard_reset )
+                            write_to_buffer( d, refusal, 0 );
                         close_socket( d );
                         return;
                     }

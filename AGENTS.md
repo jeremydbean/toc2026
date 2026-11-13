@@ -1246,7 +1246,8 @@ DOOR BASH stop at a locked Hyrule door. Leaving a dungeon by PORTAL or
 ASTRAL WALK is allowed (owner, 2026-11-10); lending a dungeon tool is not
 -- see the keys, below.
 `tests/test_hyrule_audit_nov10.py`. **TELEKINESIS fetches a player's corpse from anywhere** (owner,
-2026-11-13): no room rule -- no-recall, safe, private, Hyrule -- stops it,
+2026-11-13): no room rule -- no-recall, safe, private, Hyrule -- stops it
+but a jail (`ROOM_JAIL` or `ROOM_VNUM_JAIL`),
 only who may loot it (`can_loot`), a corpse still settling, and the bound
 rule above; everything else TK lifts keeps the room rules. **A gate counts the player's own
 corpse** (bug report, 2026-11-12: a death in Level 5 left the pieces in a
@@ -5714,12 +5715,31 @@ harness for `netaddr.c` and `guardstore.c`).
 
 **The connection guard** (`src/connguard.c`; owner's rules, 2026-11-06:
 never auto-ban an address a player uses; staff BAN still applies; staff
-hear of every automatic action). **A pause stops new characters, never a
-login** (false-positive review, the same day): a real player on an address
-the guard does not know yet -- a new ISP, a phone, a carrier's shared
-address -- gets the greeting, logs in, and that login trusts the address
-and lifts the pause; `conn_guard_new_char()` in the nanny's new-name path
-refuses creation with the minutes left and re-prompts. An address is
+hear of every automatic action). **A paused address is reset at
+connect with no reply** (owner, 2026-11-13, superseding the same day's
+"a pause stops new characters, never a login": "prevent them from even
+establishing a connection at all when paused", "i'm not sure paused
+should get any notification"). `conn_guard_admit` sets
+`d->guard_reset` for a pause or a flood, and `init_descriptor` and the
+PROXY path then write nothing and `close_socket` closes with
+`SO_LINGER` 0 -- an RST, as a closed port answers. The kernel completes
+the handshake before the game sees it; refusing that needs a firewall. A
+player's address is never paused, so a player is refused only on an
+address the guard does not know; DNS ALLOW lets them in, and a login
+already at the prompt when a pause begins still lifts it.
+`conn_guard_new_char()` still refuses creation from a pause that began
+mid-connection. **Pauses survive a restart** (owner, the same day):
+`log/guard_pauses.tsv` -- address, paused until, pauses this week, last
+pause, flood until, strike window, strikes, refused in all -- written
+aside and renamed in at once when a pause starts or ends and within
+`GUARD_SAVE_SECS` of a strike, read at boot by `guard_pause_load` (whole
+records, nothing past the longest pause ahead; a file there and not read
+whole is never written over, as `login_lockouts.tsv`), so a pause keeps
+its length and doubles across deploys. **Every connection that goes
+nowhere is logged with its address** -- `<addr> closed without a word
+(strike n of 6 in 6 hours)`, or `(...; not counted)` with the reason --
+and refusals by address, the first at once and then a line a minute
+with how many came since and the total refused. An address is
 paused after `GUARD_STRIKES` (6) strikes in `GUARD_STRIKE_WINDOW` (6 h) or
 `GUARD_BURST` (20) connections in a minute, `GUARD_BLOCK_BASE` (6 h)
 doubling per pause in a week to `GUARD_BLOCK_MAX` (7 days). **A strike is
@@ -5755,9 +5775,8 @@ numeric address (`guard_seed_login_row`, `guard_seed_log_line`), and
 nothing else: a host-name login ties no address, and a `Sock.sinaddr`
 line is never joined to a later login by nearness -- the old seeding
 did, and an interleaved connection gave the trust to the wrong address.
-A player missed is never shut out (a pause stops only new characters,
-and their login is recorded). Pauses, strikes and floods are memory
-only: a restart lifts them, deliberately. **The file is read whole or
+A player missed is reset at connect only once their address is paused,
+and DNS ALLOW lets them in. **The file is read whole or
 not trusted** (review of f1388da0): `guard_store_load` returns
 `GUARD_LOAD_ABSENT` only for ENOENT -- the one case that starts the
 record from the journals -- and `GUARD_LOAD_UNREADABLE` for a file that

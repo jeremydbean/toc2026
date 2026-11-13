@@ -9,9 +9,11 @@ replaces the address when it comes.
 
 The connection guard (src/connguard.c): an address no player has logged in
 from in the last 90 days is paused after repeated connections that reach no
-password prompt -- and a pause stops only new characters: a player behind
-it still logs in, which lifts it. A flood is refused outright. One a player
-has logged in from is never held back; a login prompt left untouched is
+password prompt, and a paused or flooding address is reset at connect with
+no reply (owner, 2026-11-13). Pauses, their history and the strikes behind
+them survive a restart (log/guard_pauses.tsv), and every connection that
+goes nowhere is logged with its address. One a player has logged in from
+is never held back; a login prompt left untouched is
 closed, and that close, an MSSP poll and a web-bridge connection are never
 strikes. Staff hear of each as WIZINFO.
 
@@ -24,6 +26,7 @@ see.
 from __future__ import annotations
 
 import re
+import socket
 import time
 import unittest
 from pathlib import Path
@@ -118,6 +121,25 @@ def ctime(when: float) -> str:
     return time.strftime("%a %b %e %H:%M:%S %Y", time.localtime(when))
 
 
+def greets(mud: LiveMud) -> bool:
+    """Whether a connection is greeted: True on the greeting, False when the
+    game closes or resets it having said nothing at all."""
+    with socket.create_connection(("127.0.0.1", mud.port), timeout=10) as sock:
+        sock.settimeout(10)
+        got = b""
+        try:
+            while b"name" not in got.lower():
+                chunk = sock.recv(4096)
+                if not chunk:
+                    break
+                got += chunk
+        except ConnectionResetError:
+            pass
+        if got and b"name" not in got.lower():
+            raise AssertionError(f"a refused connection was told something: {got!r}")
+        return b"name" in got.lower()
+
+
 def make(mud: LiveMud, name: str, **fields) -> None:
     with mud.connect(timeout=120) as client:
         create_character(client, name, PW)
@@ -129,7 +151,10 @@ def make(mud: LiveMud, name: str, **fields) -> None:
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class GuardLiveTests(unittest.TestCase):
-    def test_a_paused_address_still_logs_in(self) -> None:
+    def test_a_paused_address_is_refused_silently_and_remembered(self) -> None:
+        """Owner, 2026-11-13: a paused address is refused at connect with no
+        reply, every connection that goes nowhere is logged by address with
+        its strike, and a restart forgets nothing."""
         env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3"}
         with LiveMud(extra_env=env) as mud:
             make(mud, "Zguardold", Levl=70)
@@ -142,20 +167,29 @@ class GuardLiveTests(unittest.TestCase):
                 with mud.connect(timeout=30) as probe:
                     probe.expect("by what name", "name:", timeout=20)
             self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 paused for 6 hours"))
-
-            with mud.connect(timeout=60) as client:
-                got = client.expect("by what name", "name:", "paused", timeout=20)
-                self.assertNotIn("paused", got.lower(), "a pause still greets")
-                client.send("Zguardnew")
-                client.expect("New characters cannot be made", timeout=20)
-                login(client, "Zguardold", PW)       # the re-prompt's Name: is still to read
-                self.assertRegex(client.transcript, r"for \d+ more minutes?\.")
-                self.assertIn("log in with your character", client.transcript)
-                self.assertIn("Nobody is paused", client.must("dns guard", "Connection guard"))
+            self.assertFalse(greets(mud), "a paused address is not greeted")
+            self.assertFalse(greets(mud), "nor the next time")
+            self.assertTrue(wait_for_log(mud, "Connection guard: refused 1 connection from 127.0.0.1 (paused"))
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
-        self.assertIn("new character 'Zguardnew' refused from paused 127.0.0.1", log)
-        self.assertIn("Connection guard: pause on 127.0.0.1 lifted -- Zguardold logged in from it.", log)
-        # A connection that never said a word is not logged one by one.
+            kept = (mud.root / "log" / "guard_pauses.tsv").read_text(encoding="latin-1")
+
+            # A restart remembers the pause.
+            mud._stop()
+            mud._launch()
+            self.assertTrue(wait_for_log(mud, "remembered from before the boot, 1 paused now"))
+            self.assertFalse(greets(mud), "the pause outlives a restart")
+
+            # A player's address is never refused, even with a pause on file.
+            mud._stop()
+            (mud.root / "log" / "player_addresses.tsv").write_text(
+                f"127.0.0.1\t{int(time.time())}\n", encoding="latin-1")
+            mud._launch()
+            self.assertTrue(greets(mud), "a player's address is greeted")
+        for strike in (1, 2, 3):
+            self.assertIn(f"Connection guard: 127.0.0.1 closed without a word "
+                          f"(strike {strike} of 3 in 6 hours).", log)
+        self.assertIn("Its connections are refused until then.", log)
+        self.assertRegex(kept, r"(?m)^127\.0\.0\.1\t\d+\t1\t\d+\t0\t\d+\t0\t\d+$")
         self.assertNotIn("EOF encountered on read.", log)
 
     def test_the_record_starts_once_from_logins_that_name_an_address(self) -> None:
@@ -250,13 +284,10 @@ class GuardLiveTests(unittest.TestCase):
         with LiveMud(extra_env=env) as mud:
             greeted = refused = 0
             for _ in range(7):
-                with mud.connect(timeout=30) as probe:
-                    got = probe.expect("by what name", "name:", "paused", timeout=20)
-                    if "paused" in got.lower():
-                        refused += 1
-                        self.assertTrue(probe.wait_closed(), "a refused connection is closed")
-                    else:
-                        greeted += 1
+                if greets(mud):
+                    greeted += 1
+                else:
+                    refused += 1
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         # The harness's own wait for the port is a connection too, so the
         # fourth of the minute may come one probe sooner.
