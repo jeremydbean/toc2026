@@ -203,6 +203,12 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
                         god.sync(f"goto {SPARRING_FLOOR}")
 
                 with self.subTest("every Dodongo swallows a bomb for a quarter of its health"):
+                    # A bomb starts a fight, and its round of lag lets the
+                    # hero's sword swing before the next command: with the
+                    # patra's damroll 100 one round took 221 and read 529
+                    # (nightly CI, 2026-11-13). A blow of one point a hit
+                    # leaves the bombs to do the counting.
+                    god.must("set char zmechhero damroll -500", "damroll set")
                     load(god, DODONGO, "dodongo", 1000)
                     give(god, "zmechhero", BOMBS, "bombs")      # four
                     mark = len(hero.transcript)
