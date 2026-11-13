@@ -296284,3 +296284,15 @@ Fri Nov 13 23:28:34 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Fri Nov 13 23:32:09 2026 :: Log Alaric [2497]: affects off: levitate
 Fri Nov 13 23:32:26 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 13 23:33:25 2026 :: Log Alaric [2497]: affects off: steel fist
+Fri Nov 13 23:36:57 2026 :: Connection guard: last hour 20 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 23:37:15 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 23:37:31 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 23:37:52 2026 :: Log Alaric [2497]: wake
+Fri Nov 13 23:37:53 2026 :: Log Alaric [2497]: l
+Fri Nov 13 23:37:54 2026 :: Treasure goblin: vanished from room 29365 (Across the Sea, voyage.are) (too long in one area).
+Fri Nov 13 23:37:54 2026 :: Log Alaric [2497]: quit
+Fri Nov 13 23:37:54 2026 :: Alaric has quit.
+Fri Nov 13 23:37:54 2026 :: [QUIT] Player rejoined the real world.
+Fri Nov 13 23:38:31 2026 :: Sock.sinaddr:  195.182.16.183
+Fri Nov 13 23:38:31 2026 :: EOF encountered on read.
+Fri Nov 13 23:38:31 2026 :: Connection guard: 195.182.16.183 closed before a password prompt (strike 1 of 6 in 6 hours).
