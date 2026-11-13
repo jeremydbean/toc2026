@@ -295300,3 +295300,5 @@ Fri Nov 13 10:25:23 2026 :: Connection guard: 178.156.181.172 closed without a w
 Fri Nov 13 10:25:39 2026 :: Connection guard: last hour 13 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
 Fri Nov 13 10:26:32 2026 :: Automated backup started.
 Fri Nov 13 10:26:32 2026 :: Automated backup complete.
+Fri Nov 13 10:28:56 2026 :: Treasure goblin: vanished from room 24385 (The Second Dock, chess.are) (too long in one area).
+Fri Nov 13 10:30:27 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 1 refused in all, pause 1 this week, 284 minutes left).
