@@ -39,19 +39,23 @@ List spend 4700000 0 heal
 List spend 281250000 0 buy
 End
 Day 2026-11-13
-Played 179
+Played 251
 Level 57 57 0
 Exp 0 0
-Kills 0
+Kills 1
 Deaths 0
 Close 0
-Quests 1 29
+Quests 2 45
 Dailies 0 0
 List achv 15 0 No Stone Unturned I
-List area 24 0 City of Dresden
+List area 44 0 City of Dresden
 List area 1 0 Mud School
 List area 154 0 Froboz Factory
+List area 5 0 Sewer
+List area 2 0 The Underdark
+List area 45 0 Dwarven Catacombs
 List earn 61751013 0 interest
-List earn 184954968 0 quests
+List earn 308258280 0 quests
+List earn 336864 0 loot
 End
 #END
