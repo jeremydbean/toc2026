@@ -295113,3 +295113,25 @@ Fri Nov 13 05:05:27 2026 :: Treasure goblin: vanished from room 9363 (Approachin
 Fri Nov 13 05:05:31 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 13 05:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Fri Nov 13 05:10:35 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 05:15:13 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Nov 13 05:15:18 2026 :: Log WebAdmin: fsave
+Fri Nov 13 05:15:24 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Nov 13 05:15:26 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 05:15:27 2026 :: Received signal 15; saving players and shutting down.
+Fri Nov 13 05:15:27 2026 :: Connection guard: 99.62.115.159 closed without a word (an MSSP poll; not counted).
+Fri Nov 13 05:15:27 2026 :: Normal termination of game.
+Fri Nov 13 05:15:27 2026 ::  INIT OK 
+Fri Nov 13 05:15:27 2026 :: walkto_load: 157 destinations.
+Fri Nov 13 05:15:27 2026 :: changes_load: 325 entries.
+Fri Nov 13 05:15:27 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 7 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Fri Nov 13 05:15:27 2026 :: Serials: 962 character files read, 4 with a serial.
+Fri Nov 13 05:15:27 2026 :: Connection guard: 4 addresses remembered from before the boot, 0 paused now.
+Fri Nov 13 05:15:27 2026 :: Passwords: SHA-512 crypt self-test passed.
+Fri Nov 13 05:15:27 2026 :: Recovery ledger: 393 records (0 from before the check), 4 requests, 8 players.
+Fri Nov 13 05:15:27 2026 :: ROM is ready to rock on port 9000.
+Fri Nov 13 05:15:28 2026 :: Treasure goblin: appeared.
+Fri Nov 13 05:15:28 2026 :: Automated backup started.
+Fri Nov 13 05:15:28 2026 :: Daily backup started.
+Fri Nov 13 05:15:28 2026 :: Automated backup complete.
+Fri Nov 13 05:15:29 2026 :: Daily backup complete.
+Fri Nov 13 05:15:40 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 4 of 6 in 6 hours).
