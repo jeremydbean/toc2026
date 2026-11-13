@@ -658,10 +658,31 @@ void corpse_registry_forget_player( const char *name )
 {
     int i;
 
+    /* The corpse leaves the world too (bug, 2026-11-13: a FORCE restore
+       of a corpse still lying in Level 5 gave its 53 things back and left
+       the corpse there holding the same 53, for the owner to pick up a
+       second time). Its record goes to history first, so the extraction
+       finds no track; a corpse in the middle of a transfer keeps both. */
     for ( i = track_count - 1; i >= 0; i-- )
         if ( !str_cmp( tracks[i].rec.owner, name ) )
+        {
+            OBJ_DATA *corpse = tracks[i].corpse;
+            bool settled = !tracks[i].held && tracks[i].pending == PEND_NONE;
+
             track_archive( i, "restored", "the player was restored; it will not "
                            "come back after a restart" );
+            if ( settled && corpse != NULL && !obj_data_released( corpse ) )
+            {
+                if ( corpse->in_room != NULL && corpse->in_room->people != NULL )
+                {
+                    act( "$p crumbles to dust.", corpse->in_room->people, corpse,
+                         NULL, TO_CHAR );
+                    act( "$p crumbles to dust.", corpse->in_room->people, corpse,
+                         NULL, TO_ROOM );
+                }
+                extract_obj( corpse );
+            }
+        }
 }
 
 

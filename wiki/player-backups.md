@@ -56,7 +56,9 @@ prestore <player> corpse <id> gear    that, into their inventory, once
   second time for the same corpse; FORCE overrides either, deliberately.
 - A full restore of an online player saves and disconnects them first. GEAR,
   STASH and CORPSE work online or offline.
-- Any restore of a player ends their corpses' keeping (they go to history).
+- Any restore of a player ends their corpses' keeping (they go to history),
+  and a corpse still lying in the world crumbles to dust, so a FORCE restore
+  of a corpse never leaves its things to be taken twice.
 
 A "before death" copy is written inside the death, below zero hit points
 in the room of the death. Anybody read from a file that way -- a full

@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113restorecorpse 2026-11-13 staff
+PRESTORE ... CORPSE <id> GEAR FORCE on a corpse still lying in the world
+now takes the corpse away ("crumbles to dust") once its things are given
+back. It used to leave the corpse there holding the same things. Any
+restore does the same with the player's other corpses.
+
 @ 20261113hyrulecorpse 2026-11-13
 Died in a Hyrule dungeon with your Triforce pieces? The dungeon's seals now
 count what lies in your own corpse, so you can walk back in to fetch it.

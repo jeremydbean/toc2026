@@ -155,6 +155,41 @@ class CorpseKeeperLiveTests(unittest.TestCase):
         self.assertNotIn("Corpse keeper", saved)
         self.assertIn(f"Zkeepdead's corpse {corpse_id} made again in room {ROOM}", toc)
 
+    def test_a_forced_restore_of_a_lying_corpse_takes_the_corpse_away(self) -> None:
+        """Bug, 2026-11-13: PRESTORE ... CORPSE <id> GEAR FORCE on a corpse
+        still in the world gave its things back and left the corpse lying
+        there with the same things, for the owner to take a second time."""
+        with LiveMud() as mud:
+            for name, level in (("Zkeepstaff", 70), ("Zkeepdead", 20)):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PW)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=level, Room=ROOM)
+
+            live = mud.root / "corpse" / "live"
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as dead:
+                login(staff, "Zkeepstaff", PW)
+                login(dead, "Zkeepdead", PW)
+                run(staff, "scroll 0", 0.5)
+                run(staff, "slay zkeepdead", 2.0)
+                self.assertIn("corpse of Zkeepdead", run(staff, "look", 1.0))
+                files = list(live.glob("*.corpse"))
+                self.assertEqual(len(files), 1, files)
+                corpse_id = files[0].name[:-len(".corpse")]
+                refused = run(staff, f"prestore zkeepdead corpse {corpse_id} gear", 2.0)
+                given = run(staff, f"prestore zkeepdead corpse {corpse_id} gear force", 2.5)
+                after = run(staff, "look", 1.0)
+                for client in (staff, dead):
+                    client.send("quit")
+                    client.wait_closed()
+
+        self.assertIn("theirs to fetch", refused)
+        self.assertRegex(given, r"Restored \d+ object")
+        self.assertIn("crumbles to dust", given)
+        self.assertNotIn("corpse of Zkeepdead", after)
+        self.assertFalse(list(live.glob("*.corpse")))
+
 
 if __name__ == "__main__":
     unittest.main()

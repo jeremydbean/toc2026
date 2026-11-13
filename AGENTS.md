@@ -2869,7 +2869,9 @@ parent); STASH TAKE's
   FORCE. `make_corpse` wraps
   its `obj_to_room` in `corpse_registry_making` so a death is not taken
   for a corpse put down. PRESTORE GEAR and the git requests wait while
-  the corpse holds things; any restore ends the owner's corpses.
+  the corpse holds things; any restore ends the owner's corpses and takes any
+  still in the world out of it (`corpse_registry_forget_player`; a FORCE
+  restore of a lying corpse left it there holding the same things, 2026-11-13).
 - **A cloud session restores through `area/restores.dat`**
   (`src/restores.c`): `<id> <player> gear|stash|import <stamp> [<file>]`.
   `tools/player_history.py` finds a state in git and `export`s it.
