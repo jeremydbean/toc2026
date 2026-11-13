@@ -295276,3 +295276,8 @@ Fri Nov 13 09:25:39 2026 :: Connection guard: last hour 13 closed without a word
 Fri Nov 13 09:28:28 2026 :: Treasure goblin: vanished from room 2321 (The rocky shoreline, mahntor.are) (too long in one area).
 Fri Nov 13 09:29:31 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 13 09:34:36 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 09:38:32 2026 :: Treasure goblin: vanished from room 5959 (Wall Road, mid_ruin.are) (too long in one area).
+Fri Nov 13 09:39:40 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 09:41:14 2026 :: Sock.sinaddr:  184.36.109.193
+Fri Nov 13 09:41:25 2026 :: EOF encountered on read.
+Fri Nov 13 09:41:25 2026 :: Connection guard: 184.36.109.193 closed before a password prompt (strike 1 of 6 in 6 hours).
