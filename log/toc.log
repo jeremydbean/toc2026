@@ -295868,3 +295868,6 @@ Fri Nov 13 17:06:29 2026 :: Connection guard: 54.167.223.174 closed without a wo
 Fri Nov 13 17:06:36 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 17:10:01 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Fri Nov 13 17:11:34 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 17:14:24 2026 :: Treasure goblin: vanished from room 7401 (Cave tunnel, sewer.are) (too long in one area).
+Fri Nov 13 17:16:37 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 17:16:38 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
