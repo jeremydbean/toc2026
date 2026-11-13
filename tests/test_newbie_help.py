@@ -95,7 +95,7 @@ class NewbiePackTests(unittest.TestCase):
                 run(god, "get all from pack", settle=4.0)
                 dropped = run(god, "drop all", settle=4.0)
 
-                self.assertNotIn("can't let go of it", dropped,
+                self.assertNotIn("can't let go of", dropped,
                                  "something in the pack is still NODROP")
                 self.assertNotIn("cursed", dropped)
 

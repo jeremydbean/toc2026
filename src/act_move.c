@@ -244,6 +244,52 @@ bool hyrule_carries( CHAR_DATA *ch, int vnum )
     return false;
 }
 
+/* What a dead player's corpse holds is still theirs, and a dungeon's gate
+   counts it (bug report, 2026-11-12: Trentlin died in Level 5 with his
+   pieces, and every entrance then asked for a piece lying in his own
+   corpse inside -- the only way back to it). Their own corpse only, by
+   name, anywhere it lies; nothing anybody else holds counts. */
+static bool hyrule_list_holds( OBJ_DATA *list, int vnum )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = list; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == vnum )
+            return true;
+        if ( obj->contains != NULL && hyrule_list_holds( obj->contains, vnum ) )
+            return true;
+    }
+    return false;
+}
+
+static bool hyrule_own_corpse_holds( CHAR_DATA *ch, int vnum )
+{
+    LIST_ITERATOR iter;
+    OBJ_DATA *obj;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->name == NULL || vnum <= 0 )
+        return false;
+    FOR_EACH_OBJECT( iter, obj )
+    {
+        if ( obj->item_type != ITEM_CORPSE_PC || obj->owner == NULL
+        ||   str_cmp( obj->owner, ch->name ) )
+            continue;
+        if ( hyrule_list_holds( obj->contains, vnum ) )
+            return true;
+        if ( vnum >= HYRULE_PIECE_FIRST_VNUM && vnum <= HYRULE_PIECE_LAST_VNUM
+        &&   hyrule_list_holds( obj->contains, OBJ_VNUM_HYRULE_TRIFORCE ) )
+            return true;
+    }
+    return false;
+}
+
+/* Carried, or lying in the character's own corpse: what a gate asks. */
+static bool hyrule_holds_for_gate( CHAR_DATA *ch, int vnum )
+{
+    return hyrule_carries( ch, vnum ) || hyrule_own_corpse_holds( ch, vnum );
+}
+
 /*
  * Whether Hyrule's order refuses this move, and if so say why. from may
  * be NULL (a character placed with no room to come from is never asked).
@@ -369,7 +415,7 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
 
     /* Coming in from outside, by the entrance or any other way. */
     if ( !from_inside
-    &&   gate->entry_need != 0 && !hyrule_carries( subject, gate->entry_need ) )
+    &&   gate->entry_need != 0 && !hyrule_holds_for_gate( subject, gate->entry_need ) )
     {
         if ( speak )
         {
@@ -383,8 +429,8 @@ static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
        behind it comes back in free. */
     if ( to->vnum == gate->boss_room
     &&   from->vnum != gate->goal_room && gate->boss_need != 0
-    &&   !hyrule_carries( subject, gate->boss_need )
-    &&   ( gate->boss_also == 0 || !hyrule_carries( subject, gate->boss_also ) ) )
+    &&   !hyrule_holds_for_gate( subject, gate->boss_need )
+    &&   ( gate->boss_also == 0 || !hyrule_holds_for_gate( subject, gate->boss_also ) ) )
     {
         if ( speak )
         {

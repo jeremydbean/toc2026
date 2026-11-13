@@ -2387,7 +2387,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
  
 	if ( !can_drop_obj( ch, obj ) )
 	{
-	    send_to_char( "You can't let go of it.\n\r", ch );
+	    act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	    return true;
 	}
  
@@ -2429,7 +2429,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
  
 	if ( !can_drop_obj( ch, obj ) )
 	{
-	    send_to_char( "You can't let go of it.\n\r", ch );
+	    act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	    return true;
 	}
  

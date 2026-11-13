@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113hyrulecorpse 2026-11-13
+Died in a Hyrule dungeon with your Triforce pieces? The dungeon's seals now
+count what lies in your own corpse, so you can walk back in to fetch it.
+And an item that cannot be dropped now says which item it is ("You can't
+let go of a Magical Boomerang."), so DROP GEAR picking a Hyrule piece
+instead of your remort pack is plain to see -- try DROP PACK.
+
 @ 20261113emergencystreak 2026-11-13
 An emergency quest that runs out of time no longer breaks your quest
 streak: five minutes is not always enough to reach the target. Giving one

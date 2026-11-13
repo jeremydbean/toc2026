@@ -1239,7 +1239,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
 
         if ( !can_drop_obj( ch, obj ) )
         {
-            send_to_char( "You can't let go of it.\n\r", ch );
+            act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
             return;
         }
 
@@ -1764,7 +1764,7 @@ void do_donate( CHAR_DATA *ch, char *argument )
 
     if ( !can_drop_obj( ch, obj ) )
 	{
-	    send_to_char( "You can't let go of it.\n\r", ch );
+	    act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	    return;
 	}
 
@@ -2160,7 +2160,7 @@ void do_put( CHAR_DATA *ch, char *argument )
 
 	if ( !can_drop_obj( ch, obj ) )
 	{
-	    send_to_char( "You can't let go of it.\n\r", ch );
+	    act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	    return;
 	}
 
@@ -2455,7 +2455,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 
 	if ( !can_drop_obj( ch, obj ) )
 	{
-	    send_to_char( "You can't let go of it.\n\r", ch );
+	    act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	    return;
 	}
 
@@ -2705,7 +2705,7 @@ void do_give( CHAR_DATA *ch, char *argument )
 
     if ( !can_drop_obj( ch, obj ) )
     {
-	send_to_char( "You can't let go of it.\n\r", ch );
+	act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	return;
     }
 
@@ -5625,7 +5625,7 @@ void do_sell( CHAR_DATA *ch, char *argument )
 
     if ( !can_drop_obj( ch, obj ) )
     {
-	send_to_char( "You can't let go of it.\n\r", ch );
+	act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	return;
     }
 
@@ -5770,7 +5770,7 @@ void do_value( CHAR_DATA *ch, char *argument )
 
     if ( !can_drop_obj( ch, obj ) )
     {
-	send_to_char( "You can't let go of it.\n\r", ch );
+	act( "You can't let go of $p.", ch, obj, NULL, TO_CHAR );
 	return;
     }
 

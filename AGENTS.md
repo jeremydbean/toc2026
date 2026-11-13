@@ -1244,7 +1244,12 @@ that rots destroys it rather than spill it. PASS DOOR, ghost form and
 DOOR BASH stop at a locked Hyrule door. Leaving a dungeon by PORTAL or
 ASTRAL WALK is allowed (owner, 2026-11-10); lending a dungeon tool is not
 -- see the keys, below.
-`tests/test_hyrule_audit_nov10.py`.
+`tests/test_hyrule_audit_nov10.py`. **A gate counts the player's own
+corpse** (bug report, 2026-11-12: a death in Level 5 left the pieces in a
+corpse no entrance would let its owner reach): `hyrule_holds_for_gate` is
+carried, or lying in their own `ITEM_CORPSE_PC` (owner by name) anywhere,
+for the entry piece and the guardian's tool alike; nobody else's corpse
+counts (`tests/test_hyrule_gate_own_corpse.py`).
 
 **A mobile is never a corpse's owner, and nothing of Hyrule's is bottled**
 (review, 2026-11-10). `get_obj`'s bound-item guard asks every actor but
