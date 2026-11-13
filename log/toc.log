@@ -295886,3 +295886,22 @@ Fri Nov 13 17:34:33 2026 :: Treasure goblin: vanished from room 1437 (The entran
 Fri Nov 13 17:36:25 2026 :: Connection guard: last hour 21 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
 Fri Nov 13 17:36:39 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 17:36:58 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 17:41:53 2026 :: Connection guard: 104.237.151.205 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 17:42:02 2026 :: Cartographer: appeared.
+Fri Nov 13 17:42:03 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 17:42:08 2026 :: Sock.sinaddr:  104.237.151.205
+Fri Nov 13 17:42:13 2026 :: EOF encountered on read.
+Fri Nov 13 17:42:13 2026 :: Connection guard: 104.237.151.205 closed before a password prompt (strike 2 of 6 in 6 hours).
+Fri Nov 13 17:42:14 2026 :: Sock.sinaddr:  104.237.151.205
+Fri Nov 13 17:42:18 2026 :: EOF encountered on read.
+Fri Nov 13 17:42:18 2026 :: Connection guard: 104.237.151.205 closed before a password prompt (strike 3 of 6 in 6 hours).
+Fri Nov 13 17:42:23 2026 :: Connection guard: 104.237.151.205 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 17:42:24 2026 :: Sock.sinaddr:  104.237.151.205
+Fri Nov 13 17:42:31 2026 :: EOF encountered on read.
+Fri Nov 13 17:42:31 2026 :: Connection guard: 104.237.151.205 closed before a password prompt (strike 5 of 6 in 6 hours).
+Fri Nov 13 17:42:31 2026 :: Sock.sinaddr:  104.237.151.205
+Fri Nov 13 17:42:38 2026 :: EOF encountered on read.
+Fri Nov 13 17:42:38 2026 :: Connection guard: 104.237.151.205 closed before a password prompt (strike 6 of 6 in 6 hours).
+Fri Nov 13 17:42:38 2026 :: Connection guard: 104.237.151.205 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 104.237.151.205 lifts it.
+Fri Nov 13 17:42:43 2026 :: Connection guard: refused 1 connection from 104.237.151.205 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Fri Nov 13 17:42:43 2026 :: Connection guard: 104.237.151.205 closed without a word (strike 1 of 6 in 6 hours).
