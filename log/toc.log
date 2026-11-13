@@ -296098,3 +296098,8 @@ Fri Nov 13 22:51:50 2026 :: Connection guard: 3.149.57.90 closed without a word 
 Fri Nov 13 22:56:56 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 13 22:57:11 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 22:57:35 2026 :: Treasure goblin: vanished from room 8003 (Intersection of Junket Way and Megway, mega1.are) (too long in one area).
+Fri Nov 13 23:00:45 2026 :: Sock.sinaddr:  216.25.90.27
+Fri Nov 13 23:00:45 2026 :: EOF encountered on read.
+Fri Nov 13 23:00:45 2026 :: Connection guard: 216.25.90.27 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 13 23:01:59 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 23:02:59 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
