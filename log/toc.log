@@ -295980,3 +295980,12 @@ Fri Nov 13 20:10:08 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Fri Nov 13 20:13:47 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 20:14:21 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 4 of 6 in 6 hours).
 Fri Nov 13 20:17:38 2026 :: Treasure goblin: vanished from room 24540 (The Central Courtyard, abyss.are) (too long in one area).
+Fri Nov 13 20:19:26 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 20:20:45 2026 :: Sock.sinaddr:  18.218.118.203
+Fri Nov 13 20:20:45 2026 :: Connection guard: 18.218.118.203 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 13 20:21:35 2026 :: Sock.sinaddr:  18.218.118.203
+Fri Nov 13 20:21:36 2026 :: EOF encountered on read.
+Fri Nov 13 20:21:36 2026 :: Connection guard: 18.218.118.203 closed before a password prompt (strike 2 of 6 in 6 hours).
+Fri Nov 13 20:23:25 2026 :: Sock.sinaddr:  18.218.118.203
+Fri Nov 13 20:23:26 2026 :: EOF encountered on read.
+Fri Nov 13 20:23:26 2026 :: Connection guard: 18.218.118.203 closed before a password prompt (strike 3 of 6 in 6 hours).
