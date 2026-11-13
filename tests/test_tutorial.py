@@ -95,8 +95,10 @@ def drain_queue(client) -> None:
     raise AssertionError("the waiting hints never came")
 
 
-def wait_for(client, text: str, seconds: int = 20) -> str:
-    mark = len(client.transcript)
+def wait_for(client, text: str, seconds: int = 20, mark: int | None = None) -> str:
+    """What arrived from `mark` (now, by default) until `text` did: pass the
+    mark taken before a command when the hint may come with its reply."""
+    mark = len(client.transcript) if mark is None else mark
     for _ in range(seconds):
         if text in client.transcript[mark:]:
             break
@@ -199,16 +201,23 @@ class TutorialLiveTests(unittest.TestCase):
                 self.assertIn("TUTORIAL OFF", entry)
                 self.assertIn("ON", client.sync("tutorial status"))
 
-                # The first hint comes by itself: moving about, at the
-                # school's entrance.
-                self.assertIn(f"{HINT} moving about]", wait_for(client, f"{HINT} moving about]"))
-                client.sync("north")                      # a room with a sign
-                signs = wait_for(client, f"{HINT} Mud School's signs]")
-                self.assertIn("LOOK SIGN", signs)
+                # Mud School, walked through to the diploma: the entrance's
+                # step comes by itself, before the general ones.
+                first = wait_for(client, f"{HINT} Mud School, step 1 of 11]", mark=0)
+                self.assertIn("LOOK SIGN", first)
+                self.assertIn("diploma", first)
+                self.assertIn(f"{HINT} moving about]", wait_for(client, f"{HINT} moving about]", mark=0))
+                before = len(client.transcript)
+                client.sync("north")                      # 3757: train and practice
+                second = wait_for(client, f"{HINT} Mud School, step 2 of 11]", mark=before)
+                self.assertIn("TRAIN", second)
                 client.sync("south")
                 client.sync("north")
                 client.drain(8)
-                self.assertEqual(1, client.transcript.count(f"{HINT} Mud School's signs]"))
+                self.assertEqual(1, client.transcript.count("Mud School, step 2 of 11]"))
+                self.assertEqual(1, client.transcript.count("Mud School, step 1 of 11]"))
+                self.assertNotIn(f"{HINT} Mud School's signs]", client.transcript)
+                self.assertIn("Mud School: 2 of 11 steps seen", client.sync("tutorial status"))
 
                 # NEXT shows the next unseen one at once; CONSIDER typed
                 # first makes its hint unnecessary.
@@ -242,6 +251,7 @@ class TutorialLiveTests(unittest.TestCase):
                 self.assertIn("[x] moving about", status)
                 self.assertIn("[x] Mud School's signs", status)
                 self.assertIn("[x] sizing up a fight", status)
+                self.assertIn("Mud School: 2 of 11 steps seen", status)
                 client.must("tutorial on", "The tutorial is ON")
                 again = client.sync("tutorial next")
                 self.assertNotIn("moving about]", again)
@@ -288,6 +298,13 @@ class TutorialLiveTests(unittest.TestCase):
                 with mud.connect(timeout=120) as war:
                     login(war, "Ztutwar", PW)
                     clear_hints(war)
+                    # The diploma reaching them says what it is worth.
+                    staff.must("load obj 3715", "You create")
+                    staff.must("give diploma ztutwar", "You give")
+                    got = wait_for(war, "the Mud School diploma]", 20)
+                    self.assertIn("HOLD DIPLOMA", got)
+                    war.must("hold diploma", "")
+                    self.assertIn("diploma in hand", war.sync("tutorial status"))
                     staff.must("advance ztutwar 3", "")
                     choice = wait_for(war, "choosing a guild]", 30)
                     for command in ("HELP GUILDS", "GAINLIST PREVIEW <class> <guild>",
@@ -311,7 +328,8 @@ class TutorialLiveTests(unittest.TestCase):
                     self.assertNotIn("PKILLER", war.sync("score"))
                     war.send("quit")
                     self.assertTrue(war.wait_closed())
-                self.assertIn("Gui 3", (mud.player_dir / "Ztutwar").read_text(encoding="latin-1"))
+                self.assertRegex((mud.player_dir / "Ztutwar").read_text(encoding="latin-1"),
+                                 r"\nGui\s+3\n")
 
                 for name in ("Ztutmonk", "Ztutjoin"):
                     with mud.connect(timeout=120) as other:

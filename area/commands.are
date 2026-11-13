@@ -4057,8 +4057,12 @@ Syntax: tutorial            (or TUTORIAL STATUS)
         tutorial off
         tutorial next
 
-The tutorial gives short hints as you play, each tied to something that
-just happened: your first steps and Mud School's signs, picking up and
+The tutorial walks you through Mud School room by room to its end, where
+the educated goblin holds the Mud School diploma: held, it adds 10 to
+your intelligence, wisdom and constitution, and every level you gain with
+it in hand gives more hit points, mana and practices.  After that it
+gives short hints as you play, each tied to something that just happened:
+your first steps, picking up and
 wearing things, sizing up and fighting monsters, your first kill and
 death, a new level, finding your way with WALKTO and RECALL, closed
 doors, food and drink, your stash, the questmaster, the Oracle, choosing

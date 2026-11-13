@@ -71,6 +71,10 @@ enum
     /* The Oracle, tried once (owner, 2026-11-13: "make sure to have them
        test the oracle"); asking her a question earns Seeker of Answers. */
     TUT_ORACLE,
+    /* The Mud School diploma in hand (owner, 2026-11-13: "walk through to
+       getting the MUD diploma, which is an invaluable piece of leveling
+       gear"). */
+    TUT_DIPLOMA,
     TUT_MAX
 };
 
@@ -105,10 +109,95 @@ static const struct
     { "quest",        "quests",                       false, true  },
     { "help",         "finding help",                 false, true  },
     { "oracle",       "asking the Oracle",            true,  true  },
+    { "diploma",      "the Mud School diploma",       true,  false },
 };
 
+/*
+ * Mud School, walked through to the diploma (owner, 2026-11-13). Each
+ * station is a room on the way from the entrance (3700) to the End of Mud
+ * School (3721), where the educated goblin (mob 3720) holds the diploma
+ * (object 3715: +10 intelligence, wisdom and constitution, held; worn gear
+ * counts when a level is rolled, get_level_stat). Arriving at a station
+ * not yet seen shows its step at once -- before anything else waiting,
+ * and only while the player is still standing there. A bit a station in
+ * pcdata->tutorial_school, saved as TutSchool: append, never renumber.
+ * The route is the school's own, sign by sign (area/school.are).
+ */
+#define OBJ_VNUM_DIPLOMA   3715
+
+static const struct
+{
+    int         room;
+    const char *text;
+} school_route[] =
+{
+    { 3700,
+      "Mud School starts north of here.  Every room on the way has a sign:\n\r"
+      "LOOK SIGN reads it.  At the end the educated goblin holds the Mud School\n\r"
+      "diploma -- held, it adds 10 to your intelligence, wisdom and\n\r"
+      "constitution, and every level you gain with it in hand gives more hit\n\r"
+      "points, mana and practices.  Go NORTH.\n\r" },
+    { 3757,
+      "WEST is Eclipse's Training Room: TRAIN shows your training sessions,\n\r"
+      "and TRAIN CON or TRAIN WIS spends one.  EAST is Soulcrusher's: PRACTICE\n\r"
+      "lists your skills and PRACTICE <skill> improves one.  Then come back and\n\r"
+      "go NORTH.\n\r" },
+    { 3701,
+      "EQUIPMENT shows what you wear and INVENTORY what you carry.  WEAR ALL\n\r"
+      "puts on anything that fits.  Then go WEST.\n\r" },
+    { 3702,
+      "The direction room: try each way out (EXITS lists them), then go NORTH.\n\r" },
+    { 3703,
+      "SCORE shows your character: hit points, stats, experience to your next\n\r"
+      "level.  Then go NORTH to combat training.\n\r" },
+    { 3709,
+      "DOWN is a blob too strong to kill.  Go down, CONSIDER BLOB, KILL BLOB,\n\r"
+      "and FLEE once you have the feel of a fight -- you come back up here.\n\r"
+      "WIMPY makes you flee by yourself.  Then go WEST.\n\r" },
+    { 3711,
+      "Real fights from here: kill what you meet, and take what it carries.\n\r"
+      "Go DOWN to the cage room.\n\r" },
+    { 3712,
+      "Four cages, four monsters: kill each, then GET ALL CORPSE and WEAR ALL.\n\r"
+      "The NORTH cage attacks the moment you walk in -- REST to full first.\n\r"
+      "When you are done, go DOWN.\n\r" },
+    { 3717,
+      "Hungry?  The store is SOUTH: LIST, BUY bread or water, then EAT and\n\r"
+      "DRINK.  Buy a lantern too if you have lost yours.  Then go EAST.\n\r" },
+    { 3719,
+      "The way EAST is locked.  NORTH is a dark room where a monster carries\n\r"
+      "the key: kill it, GET ALL CORPSE, come back, then UNLOCK EAST, OPEN EAST\n\r"
+      "and go EAST.\n\r" },
+    { 3721,
+      "The educated goblin holds your diploma.  CONSIDER GOBLIN, KILL GOBLIN,\n\r"
+      "GET ALL CORPSE, then HOLD DIPLOMA -- and keep it held while you level.\n\r"
+      "NORTH is the arena; RECALL or WALKTO take you on into the world.\n\r" },
+};
+
+#define SCHOOL_STATIONS  ( (int) ( sizeof(school_route) / sizeof(school_route[0]) ) )
+
+static int school_station( int vnum )
+{
+    int i;
+
+    for ( i = 0; i < SCHOOL_STATIONS; i++ )
+        if ( school_route[i].room == vnum )
+            return i;
+    return -1;
+}
+
+static int school_seen( CHAR_DATA *ch )
+{
+    int i, n = 0;
+
+    for ( i = 0; i < SCHOOL_STATIONS; i++ )
+        if ( ch->pcdata->tutorial_school & ( 1 << i ) )
+            n++;
+    return n;
+}
+
 static long tut_shown[TUT_MAX];
-static long tut_next_used, tut_turned_on, tut_turned_off, tut_completed;
+static long tut_next_used, tut_turned_on, tut_turned_off, tut_completed, tut_school_shown;
 
 static bool tut_done( CHAR_DATA *ch, int step )
 {
@@ -354,6 +443,13 @@ static void tut_text( CHAR_DATA *ch, int step, char *buf, size_t size )
             "brings you back where you prayed.  She will not hide you from a fight:\n\r"
             "not during one, nor just after you flee.\n\r" );
         break;
+    case TUT_DIPLOMA:
+        snprintf( buf, size,
+            "That is the Mud School diploma.  HOLD DIPLOMA, and keep it held: it\n\r"
+            "adds 10 to your intelligence, wisdom and constitution, and every level\n\r"
+            "you gain with it in hand gives more hit points, mana and practices.\n\r"
+            "Mud School is done -- RECALL or WALKTO take you on into the world.\n\r" );
+        break;
     case TUT_PKILL:
         snprintf( buf, size,
             "Level 15 opens player killing.  It is entirely optional -- nothing in\n\r"
@@ -398,6 +494,8 @@ void tutorial_new_character( CHAR_DATA *ch )
        so its hints never land in another test's replies. */
     ch->pcdata->tutorial_on     = off == NULL || off[0] == '\0' || !strcmp( off, "0" );
     ch->pcdata->tutorial_done   = 0;
+    ch->pcdata->tutorial_school = 0;
+    ch->pcdata->tutorial_school_pending = 0;
     ch->pcdata->tutorial_queued = 0;
     ch->pcdata->tutorial_last   = 0;
 }
@@ -439,6 +537,12 @@ void tutorial_room_seen( CHAR_DATA *ch, bool arrived )
         return;
     if ( arrived )
         tut_event( ch, TUT_MOVE );
+    {
+        int station = school_station( ch->in_room->vnum );
+
+        if ( station >= 0 && !( ch->pcdata->tutorial_school & ( 1 << station ) ) )
+            ch->pcdata->tutorial_school_pending = station + 1;
+    }
     if ( is_school( ch->in_room ) )
     {
         for ( ed = ch->in_room->extra_descr; ed != NULL; ed = ed->next )
@@ -479,6 +583,8 @@ void tutorial_got( CHAR_DATA *ch, OBJ_DATA *obj )
         return;
     if ( obj->wear_flags & ~ITEM_TAKE )
         tut_event( ch, TUT_ITEM );
+    if ( obj->pIndexData != NULL && obj->pIndexData->vnum == OBJ_VNUM_DIPLOMA )
+        tut_event( ch, TUT_DIPLOMA );
 }
 
 /* After a command of the player's own (interpret): what they already use
@@ -507,6 +613,11 @@ void tutorial_command( CHAR_DATA *ch, const char *cmd )
         tut_known( ch, TUT_WEAR );
     else if ( !str_cmp( cmd, "wear" ) || !str_cmp( cmd, "wield" ) || !str_cmp( cmd, "hold" ) )
     {
+        OBJ_DATA *held = get_eq_char( ch, WEAR_HOLD );
+
+        if ( held != NULL && held->pIndexData != NULL
+        &&   held->pIndexData->vnum == OBJ_VNUM_DIPLOMA )
+            tut_known( ch, TUT_DIPLOMA );
         tut_known( ch, TUT_ITEM );
         tut_event( ch, TUT_WEAR );
     }
@@ -599,6 +710,20 @@ static int tut_first_queued( CHAR_DATA *ch )
     return -1;
 }
 
+static void school_show( CHAR_DATA *ch, int station )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    snprintf( buf, sizeof(buf), "\n\r{0E[Tutorial: Mud School, step %d of %d]{00\n\r%s",
+              station + 1, SCHOOL_STATIONS, school_route[station].text );
+    send_to_char( buf, ch );
+    ch->pcdata->tutorial_school |= ( 1 << station );
+    ch->pcdata->tutorial_last = current_time;
+    tut_school_shown++;
+    /* The route covers the signs' lesson. */
+    tut_known( ch, TUT_SIGN );
+}
+
 static long census_secs( void )
 {
     static long secs = -1;
@@ -619,7 +744,7 @@ static void tut_census( void )
 {
     static time_t last;
     char fields[900], part[160];
-    long any = tut_next_used + tut_turned_on + tut_turned_off + tut_completed;
+    long any = tut_next_used + tut_turned_on + tut_turned_off + tut_completed + tut_school_shown;
     int step;
 
     if ( last == 0 )
@@ -641,10 +766,10 @@ static void tut_census( void )
         toc_strlcat( fields, part, sizeof(fields) );
         tut_shown[step] = 0;
     }
-    snprintf( part, sizeof(part), "\tnext=%ld on=%ld off=%ld completed=%ld",
-              tut_next_used, tut_turned_on, tut_turned_off, tut_completed );
+    snprintf( part, sizeof(part), "\tnext=%ld on=%ld off=%ld completed=%ld school=%ld",
+              tut_next_used, tut_turned_on, tut_turned_off, tut_completed, tut_school_shown );
     toc_strlcat( fields, part, sizeof(fields) );
-    tut_next_used = tut_turned_on = tut_turned_off = tut_completed = 0;
+    tut_next_used = tut_turned_on = tut_turned_off = tut_completed = tut_school_shown = 0;
     playlog_row( "tutorial", NULL, fields );
 }
 
@@ -661,13 +786,27 @@ void tutorial_update( void )
 
         if ( d->connected != CON_PLAYING || d->original != NULL || ch == NULL
         ||   !tut_counted( ch ) || !ch->pcdata->tutorial_on
-        ||   ch->pcdata->tutorial_queued <= 0 )
+        ||   ( ch->pcdata->tutorial_queued <= 0
+            && ch->pcdata->tutorial_school_pending <= 0 ) )
             continue;
         if ( ch->fighting != NULL || ch->position < POS_RESTING
         ||   d->showstr_point != NULL || ch->pcdata->walkto_vnum != 0
         ||   build_wizard_active( ch )
         ||   current_time - ch->pcdata->tutorial_last < TUTORIAL_GAP )
             continue;
+        if ( ch->pcdata->tutorial_school_pending > 0 )
+        {
+            int station = ch->pcdata->tutorial_school_pending - 1;
+
+            ch->pcdata->tutorial_school_pending = 0;
+            /* Only where it is: one walked past is shown on coming back. */
+            if ( station < SCHOOL_STATIONS && ch->in_room != NULL
+            &&   ch->in_room->vnum == school_route[station].room )
+            {
+                school_show( ch, station );
+                continue;
+            }
+        }
         if ( ( step = tut_first_queued( ch ) ) >= 0 )
             tut_show( ch, step, false );
     }
@@ -693,6 +832,9 @@ static void tut_status( CHAR_DATA *ch )
                   tut_steps[step].title );
         send_to_char( buf, ch );
     }
+    snprintf( buf, sizeof(buf), "Mud School: %d of %d steps seen%s.\n\r", school_seen( ch ),
+              SCHOOL_STATIONS, tut_done( ch, TUT_DIPLOMA ) ? ", diploma in hand" : "" );
+    send_to_char( buf, ch );
     snprintf( buf, sizeof(buf), "%d of %d seen%s.\n\r", seen, shown,
               ch->pcdata->tutorial_queued > 0 ? "; a hint is waiting" : "" );
     send_to_char( buf, ch );
@@ -741,6 +883,7 @@ void do_tutorial( CHAR_DATA *ch, char *argument )
         }
         ch->pcdata->tutorial_on = false;
         ch->pcdata->tutorial_queued = 0;
+        ch->pcdata->tutorial_school_pending = 0;
         if ( tut_counted( ch ) )
             tut_turned_off++;
         send_to_char( "The tutorial is OFF.  What you have seen is kept: TUTORIAL ON picks up\n\r"

@@ -1453,6 +1453,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     if ( ch->pcdata != NULL )
 	fprintf( fp, "Tutorial %d %d\n", ch->pcdata->tutorial_on ? 1 : 0,
 		 ch->pcdata->tutorial_done );
+    if ( ch->pcdata != NULL && ch->pcdata->tutorial_school != 0 )
+	fprintf( fp, "TutSchool %d\n", ch->pcdata->tutorial_school );
     if (ch->saving_throw != 0)
 	fprintf( fp, "Save  %d\n",	ch->saving_throw);
     fprintf( fp, "Alig  %d\n",	ch->alignment		);
@@ -4957,6 +4959,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Trust",	ch->trust,		(sh_int)(fread_number( fp )) );
 	    KEY( "Tru",		ch->trust,		(sh_int)(fread_number( fp )) );
 	    KEY( "TitleSet",	ch->pcdata->title_custom, fread_number( fp ) != 0 );
+	    KEY( "TutSchool",	ch->pcdata->tutorial_school, fread_number( fp ) );
 	    if ( !str_cmp( word, "Tutorial" ) )
 	    {
 		int on = fread_number( fp );

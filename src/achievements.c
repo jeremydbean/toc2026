@@ -608,7 +608,7 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "explored-50", "No Stone Unturned V", "Walk into every room of 50 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_SET, 50, ACH_SET_EXPLORED_AREAS },
     /* The tutorial and the Oracle it sends you to (owner, 2026-11-13). */
     { "oracle-asked", "Seeker of Answers", "Ask the Oracle a question in her sanctum.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_ORACLE_ASKED, 0 },
-    { "tutorial-done", "Schooled", "See every hint the tutorial has for you.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_TUTORIAL_DONE, 0 }
+    { "tutorial-done", "Schooled", "Follow the tutorial to its last word.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_TUTORIAL_DONE, 0 }
 };
 
 typedef char achievement_table_must_fit[

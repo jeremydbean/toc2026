@@ -2725,6 +2725,8 @@ struct  pc_data
     int                 tutorial_queued;
     time_t              tutorial_last;
     int                 tutorial_misses;      /* unknown words this sitting */
+    int                 tutorial_school;      /* Mud School steps seen, a bit each (TutSchool) */
+    int                 tutorial_school_pending; /* a station to show, + 1 (memory only) */
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;

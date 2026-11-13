@@ -1,5 +1,11 @@
 # CHANGES -- what the game tells players has changed (src/changes.c).
-# Each entry: a line '@ 20261113oraclewait 2026-11-13
+# Each entry: a line '@ 20261113schoolwalk 2026-11-13
+The tutorial now walks new players through Mud School, room by room, to
+its last room, where the educated goblin holds the Mud School diploma.
+HOLD it while you level: its +10 to intelligence, wisdom and constitution
+count when each level is rolled.
+
+@ 20261113oraclewait 2026-11-13
 The Oracle no longer dazes anyone but player killers on the way back
 from her sanctum. In exchange she hides nobody from a fight: after you
 FLEE, PRAY waits three minutes; after any fight with another player, ten;

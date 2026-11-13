@@ -6956,6 +6956,16 @@ command table (the staff NEWBIE command is another thing).
   `set_fighting`, `group_gain`, a player's death, a closed door in
   `move_char`, "You are hungry/thirsty", `advance_level_body`
   (`tutorial_level`: level, the Oracle, the guild steps, PKILL at 15).
+- **Mud School, walked through to the diploma** (owner, 2026-11-13: "walk
+  through to getting the MUD diploma, which is an invaluable piece of
+  leveling gear"): `school_route[]`, one step per room from the entrance
+  (3700) to the End of Mud School (3721), where the educated goblin (mob
+  3720) holds the diploma (object 3715, +10 INT/WIS/CON held, counted by
+  `get_level_stat` at each level). A station not yet seen is shown on
+  arrival, ahead of the queue and only while the player still stands
+  there; a bit a station in `tutorial_school`, saved as `TutSchool` (case
+  'T'). The diploma reaching them is `TUT_DIPLOMA` (core, never offered
+  by NEXT); HOLD DIPLOMA marks it known. Change the route with the school.
 - **Delivery** is `tutorial_update`, once a second: out of a fight, not
   paging, not on WALKTO or BUILD, awake, `TUTORIAL_GAP` after the last.
 - **Guild steps** are for a mage, cleric, thief or warrior in no guild,
