@@ -295967,3 +295967,5 @@ Fri Nov 13 19:36:34 2026 :: Automated backup complete.
 Fri Nov 13 19:38:49 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 4 of 6 in 6 hours).
 Fri Nov 13 19:43:54 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 5 of 6 in 6 hours).
 Fri Nov 13 19:45:36 2026 :: Treasure goblin: vanished from room 29078 (Coffee Break Room, korzath1.are) (too long in one area).
+Fri Nov 13 19:48:57 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 19:48:57 2026 :: Connection guard: 5.161.113.195 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.113.195 lifts it.
