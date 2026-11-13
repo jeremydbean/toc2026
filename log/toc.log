@@ -295587,3 +295587,68 @@ Fri Nov 13 12:02:59 2026 :: Log Trentlin [29071]: n
 Fri Nov 13 12:02:59 2026 :: Log Trentlin [29080]: arrived (Hallway) from 29071
 Fri Nov 13 12:03:00 2026 :: Log Trentlin [29080]: n
 Fri Nov 13 12:03:00 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29080
+Fri Nov 13 12:03:03 2026 :: Log Trentlin [29082]: w
+Fri Nov 13 12:03:03 2026 :: Log Trentlin [29081]: arrived (Engineering Department) from 29082
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29081]: e
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29081
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29082]: n
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29085]: arrived (Engineering Department) from 29082
+Fri Nov 13 12:03:05 2026 :: Log Trentlin [29085]: n
+Fri Nov 13 12:03:05 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29085
+Fri Nov 13 12:03:06 2026 :: Log Trentlin [29089]: e
+Fri Nov 13 12:03:07 2026 :: Log Trentlin [29089]: n
+Fri Nov 13 12:03:07 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29089
+Fri Nov 13 12:03:10 2026 :: Log Trentlin [29090]: open east
+Fri Nov 13 12:03:10 2026 :: Log Trentlin [29090]: e
+Fri Nov 13 12:03:10 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29090
+Fri Nov 13 12:03:11 2026 :: Log Trentlin [29093]: sca
+Fri Nov 13 12:03:13 2026 :: Log Trentlin [29093]: s
+Fri Nov 13 12:03:13 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29093
+Fri Nov 13 12:03:13 2026 :: Log Trentlin [29095]: k bla
+Fri Nov 13 12:03:20 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:26 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:33 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:38 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: killed a blacksmith
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +3 platinum
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +34 silver
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +40 copper
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +67 gold
+Fri Nov 13 12:03:47 2026 :: Log Trentlin [29095]: l in co
+Fri Nov 13 12:03:48 2026 :: Log Trentlin [29095]: sac co
+Fri Nov 13 12:03:48 2026 :: Log Trentlin [29095]: coin +80 copper
+Fri Nov 13 12:03:49 2026 :: Log Trentlin [29095]: sca
+Fri Nov 13 12:03:54 2026 :: Log Trentlin [29095]: e
+Fri Nov 13 12:03:54 2026 :: Log Trentlin [29096]: arrived (Metalworks) from 29095
+Fri Nov 13 12:04:00 2026 :: Log Trentlin [29096]: k bla
+Fri Nov 13 12:04:01 2026 :: Log Trentlin [29096]: fists
+Fri Nov 13 12:04:07 2026 :: Log Trentlin [29096]: fists
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: fists
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: killed a blacksmith
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +3 platinum
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +34 silver
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +40 copper
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +67 gold
+Fri Nov 13 12:04:28 2026 :: Log Trentlin [29096]: sac co
+Fri Nov 13 12:04:28 2026 :: Log Trentlin [29096]: coin +80 copper
+Fri Nov 13 12:04:29 2026 :: Log Trentlin [29096]: w
+Fri Nov 13 12:04:29 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29096
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29095]: n
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29095
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29093]: w
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29093
+Fri Nov 13 12:04:31 2026 :: Log Trentlin [29090]: s
+Fri Nov 13 12:04:31 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29090
+Fri Nov 13 12:04:32 2026 :: Log Trentlin [29089]: reca
+Fri Nov 13 12:04:32 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29089
+Fri Nov 13 12:04:33 2026 :: Log Trentlin [4207]: e
+Fri Nov 13 12:04:33 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4202]: n
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4203]: n
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Fri Nov 13 12:04:35 2026 :: Log Trentlin [4210]: sleep
+Fri Nov 13 12:04:35 2026 :: Log Trentlin [4210]: quit
+Fri Nov 13 12:04:35 2026 :: Trentlin has quit.
+Fri Nov 13 12:04:35 2026 :: [QUIT] Player rejoined the real world.
+Fri Nov 13 12:06:57 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 2 refused in all, pause 1 this week, 188 minutes left).
