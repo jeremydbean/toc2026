@@ -296103,3 +296103,6 @@ Fri Nov 13 23:00:45 2026 :: EOF encountered on read.
 Fri Nov 13 23:00:45 2026 :: Connection guard: 216.25.90.27 closed before a password prompt (strike 1 of 6 in 6 hours).
 Fri Nov 13 23:01:59 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 13 23:02:59 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 23:07:03 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 23:07:12 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 23:07:40 2026 :: Treasure goblin: vanished from room 18152 (On the frozen pond, icekeep.are) (too long in one area).
