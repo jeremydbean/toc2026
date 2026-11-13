@@ -6147,6 +6147,7 @@ static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
     EXIT_DATA *reverse;
     CHAR_DATA *victim;
     bool changed = false;
+    int shrink;
 
     if ( !puzzle_manipulation_ready( ch, obj ) )
         return false;
@@ -6178,6 +6179,16 @@ static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
             if ( !puzzle_sound_victim( ch, obj, victim ) )
                 continue;
 
+            /* A digdogger shrinks as the Recorder makes it, marked so a
+               blade can bite; this branch used to take its third and
+               leave every blow bouncing (playtest, 2026-11-13). */
+            shrink = hyrule_digdogger_shrink( victim );
+            if ( shrink != 0 )
+            {
+                if ( shrink > 0 )
+                    changed = true;
+                continue;
+            }
             victim->hit = UMAX( 1, victim->hit / 3 );
             act( "$n shudders as the sound tears through $s defenses!",
                  victim, NULL, NULL, TO_ROOM );

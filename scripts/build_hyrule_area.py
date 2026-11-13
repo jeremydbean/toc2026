@@ -650,42 +650,52 @@ def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
 # four of 290-385 (900 to 1,350 on average; the biggest is 192 through
 # sanctuary), and the blow 250 to 350 -- not 375, whose 5d59+225 can roll
 # 520, UNSPEAKABLE through sanctuary; 5d55+210 tops out at 485.
+#
+# All of that was for players buffed by Hermie, whose TITANIC alone made
+# every pool five or six times what it was. Since Hermie stands in the
+# square only after a restart that put players off, every guardian is
+# sized for players without her (owner, 2026-11-13), below.
 # --------------------------------------------------------------------------
 
 #
-# The guardians of Levels 1-8 were sized the same way, by simulation (the
-# player model and the results are in wiki/hyrule-area.md): a lone
-# character at the top of the band usually loses, one six levels above
-# usually wins, and a group of three at the band usually wins. Each now
-# has an NES attack in spec_hyrule_guardian (src/special.c), a volley of
-# spell blows at random members of the fight -- BOSS_VOLLEYS, which that
-# table must match.
+# Every guardian is sized for players WITHOUT Hermie's buffs (owner,
+# 2026-11-13: she appears only after a restart that put players off). A
+# median player at the top of the band -- the warrior of
+# tools/hyrule_playtest/playtest.py, in average gear, unbuffed -- wins
+# about two fights in three against Levels 1-7; Level 8 is a fight for
+# two such players and Ganon one for three, played with
+# tools/hyrule_playtest/ganon_group.py. Measured live, and the numbers are
+# in "Guardian Fights" in wiki/hyrule-area.md. Each guardian has an NES
+# attack in spec_hyrule_guardian (src/special.c), a volley of spell blows
+# at random members of the fight -- BOSS_VOLLEYS, which that table must
+# match. Before 2026-11-13 they were up to forty times as hard (the old
+# numbers are in the wiki): a level 40 died to Digdogger in eight seconds.
 # --------------------------------------------------------------------------
 
 BOSS_STATS = {
     # dungeon: (level, hit points, average damage per blow)
-    1: (10, 1590, 19),     # Aquamentus
-    2: (16, 3300, 59),    # Dodongo
-    3: (23, 4500, 83),    # Manhandla
-    4: (30, 6000, 75),    # Gleeok, two heads
-    5: (36, 7500, 195),   # Digdogger
-    6: (43, 9000, 100),   # Gohma: haste; her sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
-    7: (49, 9500, 116),   # Aquamentus again, older and harder
-    8: (55, 35000, 212),   # Gleeok, four heads: a fight for two (2026-10-28)
-    9: (64, 67500, 350),  # Ganon -- see above, and spec_ganon: a fight for three, +50% (2026-11-03)
+    1: (10, 180, 9),       # Aquamentus: his sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
+    2: (16, 290, 18),      # Dodongo
+    3: (23, 620, 22),      # Manhandla
+    4: (30, 1880, 24),     # Gleeok, two heads
+    5: (36, 2000, 29),     # Digdogger: the Recorder takes it to a third
+    6: (43, 2200, 34),     # Gohma: haste; her sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
+    7: (49, 2450, 38),     # Aquamentus again, older and harder
+    8: (55, 9200, 45),     # Gleeok, four heads: a fight for two
+    9: (64, 67500, 100),   # Ganon -- see above, and spec_ganon: a fight for three
 }
 # dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
 # spec_ganon; src/special.c's tables must say the same.
 BOSS_VOLLEYS = {
-    1: (3, 8, 11),         # Aquamentus's fan of three fireballs
-    2: (1, 68, 95),       # Dodongo's charge
-    3: (4, 26, 35),        # Manhandla's four heads
-    4: (2, 46, 64),       # Gleeok's two heads
-    5: (1, 382, 530),       # Digdogger's roll; two at half each once split
-    6: (1, 119, 168),       # Gohma's eye
-    7: (3, 46, 63),       # the ancient Aquamentus's fan
-    8: (4, 159, 222),     # the ashen Gleeok's four heads
-    9: (4, 290, 385),     # Ganon's fireballs: a fight for three, +50% (2026-11-03)
+    1: (3, 1, 2),          # Aquamentus's fan of three fireballs
+    2: (1, 10, 14),        # Dodongo's charge
+    3: (4, 4, 6),          # Manhandla's four heads
+    4: (2, 5, 8),          # Gleeok's two heads
+    5: (1, 47, 63),        # Digdogger's roll; two at half each once split
+    6: (1, 15, 20),        # Gohma's eye
+    7: (3, 8, 12),         # the ancient Aquamentus's fan
+    8: (4, 12, 18),        # the ashen Gleeok's four heads
+    9: (4, 130, 170),      # Ganon's fireballs: a fight for three
 }
 GANON_VNUM = 30225
 GANON_ARMOR = -40
@@ -3516,7 +3526,15 @@ ACT_AGGRESSIVE_BIT = 1 << 5
 # sanctuary, and with it halving every blow a buffed solo player of her
 # band could not wear her down at all -- her armoured eye, which only an
 # arrow passes, is what makes her fight hers (2026-10-04 playtest).
-GUARDIAN_AFFECTS_REMOVED = {30223: "H"}
+# Ganon kept the catalog's hide (Q), which only detect hidden sees past:
+# Hermie's detects did that for everybody, and without her (owner,
+# 2026-11-13) a group with no caster could not even attack him. His
+# chamber is dark and he blinks about in it (spec_ganon); that is enough.
+#
+# Aquamentus's catalog sanctuary goes too (owner, 2026-11-13, sizing for
+# players without Hermie): it halved every blow of a level 8, who then
+# needed twenty minutes to wear down even the first guardian.
+GUARDIAN_AFFECTS_REMOVED = {30222: "H", 30223: "H", 30225: "Q"}
 # No guardian may shrug off a whole weapon type: the playtest found a level
 # 20 warrior helpless against Manhandla with the tail-club Level 2 hands
 # out, because the "tree" race is immune to bash, and Gohma immune to slash
