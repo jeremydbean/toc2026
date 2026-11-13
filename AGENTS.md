@@ -1239,12 +1239,16 @@ on any arrival into the chamber but from its own treasure room;
 `travel_spell_refuses` also refuses a Hyrule room whose every exit is a
 closed secret exit (`hyrule_room_sealed`). A bound Hyrule object
 (`hyrule_bound_object`) in a player's corpse is the owner's alone: GET
-refuses anybody else, TELEKINESIS will not fetch the corpse, and a corpse
+refuses anybody else, TELEKINESIS will not fetch the corpse for anybody
+but its owner, and a corpse
 that rots destroys it rather than spill it. PASS DOOR, ghost form and
 DOOR BASH stop at a locked Hyrule door. Leaving a dungeon by PORTAL or
 ASTRAL WALK is allowed (owner, 2026-11-10); lending a dungeon tool is not
 -- see the keys, below.
-`tests/test_hyrule_audit_nov10.py`. **A gate counts the player's own
+`tests/test_hyrule_audit_nov10.py`. **TELEKINESIS fetches a player's corpse from anywhere** (owner,
+2026-11-13): no room rule -- no-recall, safe, private, Hyrule -- stops it,
+only who may loot it (`can_loot`), a corpse still settling, and the bound
+rule above; everything else TK lifts keeps the room rules. **A gate counts the player's own
 corpse** (bug report, 2026-11-12: a death in Level 5 left the pieces in a
 corpse no entrance would let its owner reach): `hyrule_holds_for_gate` is
 carried, or lying in their own `ITEM_CORPSE_PC` (owner by name) anywhere,

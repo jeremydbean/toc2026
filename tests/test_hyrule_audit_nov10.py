@@ -198,6 +198,35 @@ class BoundItemTests(unittest.TestCase):
         self.assertIn("slides off", lifted, lifted)
         self.assertNotEqual(where, HEART_CAVE, walked)
 
+    def test_telekinesis_fetches_a_players_corpse_out_of_a_dungeon(self) -> None:
+        """Owner, 2026-11-13: TK pulls a player's corpse from anywhere --
+        Trentlin died in a no-recall dungeon and TK could not reach it."""
+        with LiveMud() as mud:
+            make(mud, "Zauditpsi", Levl=50, Room=L1_KEY_DOOR_ROOM, Cla=0,
+                 Sk="100 'telekinesis'", HMV="2000 2000 20000 20000 1000 1000",
+                 HMVP="2000 20000 1000", AfBy=SIGHT)
+            make(mud, "Zauditstaff", Levl=70, Room=TEMPLE)
+            with mud.connect(timeout=120) as psi, mud.connect(timeout=120) as staff:
+                login(psi, "Zauditpsi", PW)
+                login(staff, "Zauditstaff", PW)
+                psi.sync("scroll 0")
+                staff.must(f"goto {L1_KEY_DOOR_ROOM}", "")
+                staff.must("slay zauditpsi", "")
+                psi.drain(2.0)
+                psi.sync("stand")
+                lifted = ""
+                for _ in range(5):
+                    lifted = psi.sync("telekinesis zauditpsi", timeout=60)
+                    if "laid to rest" not in lifted and "concentration" not in lifted:
+                        break
+                    psi.drain(2.0)
+                pack = psi.sync("inventory", timeout=60)
+                for client in (psi, staff):
+                    client.send("quit")
+                    client.wait_closed()
+        self.assertIn("flies to your hand", lifted, lifted)
+        self.assertIn("corpse of Zauditpsi", pack, pack)
+
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class GateTests(unittest.TestCase):

@@ -1287,6 +1287,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
     bool unreachable = false;   /* a match TK never moves (no-locate) */
     OBJ_DATA *guarded = NULL;   /* a player's corpse its rule protects */
     const char *guarded_why = NULL;
+    bool is_corpse;
     int chance;
     LIST_ITERATOR iter;
 
@@ -1336,16 +1337,27 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
         ||   !can_see_obj( ch, obj ) )
             continue;
 
+        /* A player's corpse is fetched from anywhere (owner, 2026-11-13:
+           a death in a no-recall Hyrule dungeon left the corpse out of
+           TK's reach) -- by whoever GET would let take it, below, and
+           never one holding something bound in Hyrule but by its owner. */
+        is_corpse = obj->item_type == ITEM_CORPSE_PC;
+        if ( is_corpse && hyrule_holds_bound( obj )
+        &&   ( obj->owner == NULL || str_cmp( obj->owner, ch->name ) ) )
+        {
+            unreachable = true;
+            continue;
+        }
+
         /* Named and lying somewhere, but of a kind TK never moves. */
-        /* Nothing lying in Hyrule: a cave's gift is given as a copy, once
-           a character (hyrule_claim), and TK lifted the cave's own Heart
-           Container out from anywhere in the world (audit, 2026-11-10).
-           Nor a player's corpse holding something bound there. */
-        if ( IS_OBJ_STAT(obj, ITEM_NOLOCATE)
-        ||   IS_SET(obj->extra_flags2, ITEM2_NO_TPORT)
-        ||   IS_HYRULE_ROOM_VNUM( obj->in_room->vnum )
-        ||   ( obj->item_type == ITEM_CORPSE_PC && hyrule_holds_bound( obj )
-            && ( obj->owner == NULL || str_cmp( obj->owner, ch->name ) ) ) )
+        /* Nothing else lying in Hyrule: a cave's gift is given as a copy,
+           once a character (hyrule_claim), and TK lifted the cave's own
+           Heart Container out from anywhere in the world (audit,
+           2026-11-10). */
+        if ( !is_corpse
+        &&   ( IS_OBJ_STAT(obj, ITEM_NOLOCATE)
+            || IS_SET(obj->extra_flags2, ITEM2_NO_TPORT)
+            || IS_HYRULE_ROOM_VNUM( obj->in_room->vnum ) ) )
         {
             unreachable = true;
             continue;
@@ -1363,11 +1375,23 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
             continue;
         }
 
-        if ( obj->item_type == ITEM_TREASURE
-        ||   obj->item_type == ITEM_MONEY
-        ||   !CAN_WEAR(obj, ITEM_TAKE)
-        ||   obj->level > ch->level
-        ||   psionic_remote_room_blocked(ch, obj->in_room, true, true)
+        /* Still being laid to rest: GET refuses it, and so does TK. */
+        if ( is_corpse && corpse_registry_settling( obj ) )
+        {
+            if ( guarded == NULL )
+            {
+                guarded = obj;
+                guarded_why = "$p is still being laid to rest; try again in a moment.";
+            }
+            continue;
+        }
+
+        if ( ( !is_corpse
+            && ( obj->item_type == ITEM_TREASURE
+              || obj->item_type == ITEM_MONEY
+              || !CAN_WEAR(obj, ITEM_TAKE)
+              || obj->level > ch->level
+              || psionic_remote_room_blocked(ch, obj->in_room, true, true) ) )
         ||   !can_loot(ch, obj)
         ||   ( quest_token_bound( obj )
           &&   !IS_IMMORTAL(ch) && !quest_token_owned_by( obj, ch ) ) )

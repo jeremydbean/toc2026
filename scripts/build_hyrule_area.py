@@ -731,6 +731,22 @@ def rename_object(body: str, vnum: int, keywords: str, short: str) -> str:
             + f"{short}~" + body[record.end(2):])
 
 
+def drop_gear_keyword(body: str) -> str:
+    """Take "gear" out of every object's keywords (owner, 2026-11-13).
+
+    The retained catalog gave its gear, its Heart Guards and the Magical
+    Boomerang the keywords "hyrule gear", so DROP GEAR or STASH PUT GEAR
+    found a Hyrule tool before the bag a remort leaves ("<Name>'s level
+    54 gear"), and the boomerang, which cannot be dropped, refused. Only
+    the keyword line, the first string after a record's "#vnum", is read.
+    """
+    def strip(match: re.Match[str]) -> str:
+        words = [word for word in match.group(2).split() if word.lower() != "gear"]
+        return f"{match.group(1)}{' '.join(words)}~"
+
+    return re.sub(r"(?m)^(#\d+\r?\n)([^~\r\n]*)~", strip, body)
+
+
 def redescribe_mobile(body: str, vnum: int, long: str, description: str,
                       short: str | None = None) -> str:
     """Replace a retained mobile's room line and description.
@@ -2498,7 +2514,7 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30512, "hundred gold money coins", "100 gold coins", "One hundred gold coins gleam here.", "gold", "20 0 A", "100 2 0 0 0", 1, 0, 100),
         object_record(30513, "movable stone block", "a movable stone block", "Scrape marks show that this block can be pushed.", "stone", "31 UV 0", "4 0 5 1 9"),
         object_record(30514, "sleeping armos statue", "a sleeping Armos statue", "An Armos statue rests over something hidden.", "stone", "31 UV 0", "4 0 5 1 9"),
-        object_record(30520, "death mountain gear chest", "Death Mountain's equipment chest", "A black-and-gold chest waits here.", "iron", "15 0 0", "250 A 0 0 0", 0, 25, 0),
+        object_record(30520, "death mountain chest", "Death Mountain's equipment chest", "A black-and-gold chest waits here.", "iron", "15 0 0", "250 A 0 0 0", 0, 25, 0),
     ])
 
     world_vnums = {room["coordinate"]: room["vnum"] for room in manifest["overworld"]["rooms"]}
@@ -3246,6 +3262,7 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))
     object_body = relevel_catalog_items(object_body, manifest)
+    object_body = drop_gear_keyword(object_body)
     for vnum in PROGRESSION_TOOLS:
         object_body = bind_object(object_body, vnum)
     for level, applies in HEART_GUARD_APPLIES.items():

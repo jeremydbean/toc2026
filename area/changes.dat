@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113tkcorpse 2026-11-13
+Telekinesis now pulls a player's corpse you may loot from anywhere --
+a Hyrule dungeon or any no-recall room included. And Hyrule's items no
+longer answer to "gear", so DROP GEAR and STASH PUT GEAR find the pack a
+remort leaves you instead of a Hyrule item.
+
 @ 20261113restorecorpse 2026-11-13 staff
 PRESTORE ... CORPSE <id> GEAR FORCE on a corpse still lying in the world
 now takes the corpse away ("crumbles to dust") once its things are given
