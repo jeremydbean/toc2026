@@ -295684,3 +295684,4 @@ Fri Nov 13 13:23:07 2026 :: Connection guard: 5.161.194.92 closed without a word
 Fri Nov 13 13:25:39 2026 :: Connection guard: last hour 16 closed without a word, 0 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
 Fri Nov 13 13:28:12 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 4 of 6 in 6 hours).
 Fri Nov 13 13:32:16 2026 :: Treasure goblin: vanished from room 5028 (The Sands of Sorrow, eastern.are) (too long in one area).
+Fri Nov 13 13:33:17 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 1 refused in all, pause 1 this week, 76 minutes left).
