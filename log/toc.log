@@ -295822,3 +295822,6 @@ Fri Nov 13 15:48:26 2026 :: Connection guard: 157.245.157.191 closed before a pa
 Fri Nov 13 15:50:19 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 13 15:51:23 2026 :: Black market: stock 1794585083: staff of strength (29054, level 45, 41p); (Dark) platinum helmet (29061, level 43, 39p); the platinum spiked shield (645, level 33, 30p); (Dark) platinum sleeves (29065, level 43, 39p); Crown of Truth (18013, level 48, 150p).
 Fri Nov 13 15:51:23 2026 :: Black market: the dealer appeared with 5 items (stock 1794585083), for 22 minutes.
+Fri Nov 13 15:55:24 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 15:56:28 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 15:56:35 2026 :: Treasure goblin: vanished from room 6320 (The Webless Path, arac.are) (too long in one area).
