@@ -2377,7 +2377,9 @@ static double consider_accuracy_ratio( CHAR_DATA *ch, CHAR_DATA *victim,
  * element, alignment, immunities, the armour's cut, a Hyrule ring, in that
  * order), both sides' haste, and a fire or frost shield's burn back on
  * whoever strikes it. Spells and skills cast in the fight are still not
- * in it: *caster says the looker's damage is mostly spells. One model for
+ * in it: *caster says the looker's damage is mostly spells. A Hyrule
+ * guardian's own attack is, added by gear_consider_fight
+ * (guardian_special_expected_per_round in special.c). One model for
  * both sides, so the two answers can be set against each other. Before
  * 2026-11-11 it counted sanctuary alone, and the players' fights of
  * "should win" took twice its rounds; before 2026-11-12 it cut the armour
@@ -2417,6 +2419,11 @@ void gear_consider_fight( CHAR_DATA *ch, CHAR_DATA *victim,
     *caster = false;
     mine = consider_side( ch, victim, caster, &my_burn );
     their = consider_side( victim, ch, NULL, &their_burn );
+    /* A Hyrule guardian's volley or Ganon's fireballs, every mobile pulse
+       beside its melee (owner, 2026-11-13: CONSIDER said twelve rounds
+       for a Digdogger that killed in three). */
+    mine += guardian_special_expected_per_round( ch, victim );
+    their += guardian_special_expected_per_round( victim, ch );
     /* A shield burns back a share of every blow that lands on it. */
     *yours = mine + their * their_burn;
     *theirs = their + mine * my_burn;

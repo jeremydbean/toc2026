@@ -378,15 +378,15 @@ Guardian Fights below). Each carries its Heart Guard, a weapon
 
 | Level | Boss | Boss level | Hit points | Weapon | Weapon level | Avg + damroll | Best existing |
 | --- | --- | ---: | ---: | --- | ---: | ---: | --- |
-| 1 | Aquamentus | 10 | 820 | Aquamentus horn-spear 3d6, +2 hit +1 dam | 8 | 11.5 | 10.0, the large mace |
-| 2 | Dodongo | 16 | 2,200 | Dodongo tail-club 4d8, +2/+2 | 14 | 20.0 | 17.0, an icy dagger |
-| 3 | Manhandla | 23 | 3,400 | Manhandla bloom-whip 6d9, +2/+2 | 20 | 32.0 | 28.0, a barbed whip |
-| 4 | Gleeok | 30 | 6,000 | Gleeok twin-fang glaive 7d8, +3/+2 | 27 | 33.5 | 28.0, a barbed whip |
-| 5 | Digdogger | 36 | 16,800 | Digdogger urchin flail 7d9, +3/+2 | 33 | 37.0 | 32.0, Hyrule's White Sword (level 30) |
-| 6 | Gohma | 43 | 20,000 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
-| 7 | ancient Aquamentus | 49 | 30,000 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
-| 8 | ashen Gleeok | 55 | 33,000 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
-| 9 | Ganon | 64 | 36,000 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
+| 1 | Aquamentus | 10 | 160 | Aquamentus horn-spear 3d6, +2 hit +1 dam | 8 | 11.5 | 10.0, the large mace |
+| 2 | Dodongo | 16 | 290 | Dodongo tail-club 4d8, +2/+2 | 14 | 20.0 | 17.0, an icy dagger |
+| 3 | Manhandla | 23 | 620 | Manhandla bloom-whip 6d9, +2/+2 | 20 | 32.0 | 28.0, a barbed whip |
+| 4 | Gleeok | 30 | 1,880 | Gleeok twin-fang glaive 7d8, +3/+2 | 27 | 33.5 | 28.0, a barbed whip |
+| 5 | Digdogger | 36 | 2,000 | Digdogger urchin flail 7d9, +3/+2 | 33 | 37.0 | 32.0, Hyrule's White Sword (level 30) |
+| 6 | Gohma | 43 | 2,200 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
+| 7 | ancient Aquamentus | 49 | 2,650 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
+| 8 | ashen Gleeok | 55 | 9,200 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
+| 9 | Ganon | 64 | 67,500 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
 
 "Best existing" is the best weapon a character of that level could otherwise
 carry: every mobile-carried weapon in the world at or below the weapon's level,
@@ -513,19 +513,24 @@ worn. IDENTIFY lists them as "Grants haste while worn."
 ### Ganon's Fight
 
 Ganon is a fight for three (owner, 2026-10-28): three average players at
-the top of the band, buffed by Hermie, should need everything they have, a
-pair should lose, and one may try but should expect to die. See "The Last
-Two Guardians" below for how that was measured. The numbers:
+the top of the band should need everything they have, a pair should lose,
+and one may try but should expect to die. Since 2026-11-13 (owner: tuned
+for players without Hermie's buffs) the three are unbuffed; until then they
+were buffed by Hermie. See "Guardian Fights" below for how that was
+measured. The numbers:
 
-- **Level 64, 67,500 hit points, armour -40 (-400 in game), average blow 350,
-  sanctuary and haste as before.** Half as hard again since 2026-11-03
-  (owner): see "Half As Hard Again" below. Level 64 parries and dodges a
+- **Level 64, 67,500 hit points, armour -40 (-400 in game), average blow 100,
+  sanctuary and haste as before; no longer hidden.** The catalog's hide
+  (`Q`) is taken off (`GUARDIAN_AFFECTS_REMOVED`): only detect hidden saw
+  past it, which Hermie's detects gave everybody, so without her a group of
+  fighters could not even attack him. Level 64 parries and dodges a
   level 59 35% of the time each (`min(30, level) + level - 59`), so about four
   in ten blows land. The armour shaves about 80 off each ordinary blow; the
   Silver Arrow's tenth of his health is taken after armour, so it is untouched.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
-  throws four fireballs of 290-385, each at a random player in the fight:
+  throws four fireballs of 130-170 (290-385 before 2026-11-13), each at a
+  random player in the fight:
   anyone fighting him or grouped with someone who is. A fireball is a spell
   blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
   Red Ring takes a fifth, the Blue Ring a further tenth, and the Mirror
@@ -573,11 +578,20 @@ leads home.
 
 ### Guardian Fights
 
-**Every guardian is hard, and Hermie is what makes it possible** (owner,
-2026-10-04). A median player at the top of the band loses alone; the same
-player buffed by Hermie first -- EMPOWER, TITANIC, the defence and combat
-groups -- wins, usually with little health to spare. Ganon is the exception:
-he is a fight for a buffed group.
+**The guardians are sized for players without Hermie** (owner, 2026-11-13:
+tuned for players without Hermie's buffs). Hermie stands in the square only
+after a restart that put players off, so players meet the guardians
+unbuffed. A median player at the top of the band, unbuffed, wins about two
+fights in three against the guardians of Levels 1-7; the ashen Gleeok is a
+fight for two such players and Ganon one for three.
+
+Until then every guardian was sized for players buffed by Hermie --
+EMPOWER, TITANIC (five or six times every pool), the defence and combat
+groups: a median player lost alone and won two in three buffed. Unbuffed
+they died in seconds having barely scratched it. On 2026-11-12 a level 40
+died to Digdogger in about eight seconds, and the playtest below, unbuffed,
+lost every first-seven fight in 6 to 23 seconds, the guardian left with
+85-100% of its health.
 
 The sizes were found by playing the fights, not only by simulating them. A
 human warrior at the top of each band, with the skills at 75%, the hit points
@@ -585,11 +599,41 @@ of a typical player of that level, and average gear -- the Gear Finder's
 median piece for each slot, or the Hyrule gear they would hold by then where
 that is better (earlier guardians' weapons, Heart Guards, three random drops
 each, and the map-room chests) -- fought each guardian in the live game,
-unbuffed and then buffed, with exactly one guardian in the room and the
-weapon picked back up after a disarm, as a player would. The saved player
-files confirm that warrior is the median player: by level, its hitroll is
-the files' median, its damroll a little under and its hit points a little
-over.
+unbuffed, autoattacking, with exactly one guardian in the room, the weapon
+picked back up after a disarm, the Recorder played at Digdogger and a light
+held in the last two chambers, as a player would. The saved player files
+confirm that warrior is the median player: by level, its hitroll is the
+files' median, its damroll a little under and its hit points a little over.
+It uses no skills (kick, bash) and no potions, so a real player of the band
+has a little more than it.
+
+`tools/hyrule_playtest/playtest.py <dungeon> <gear_plan.json> <out.json>
+guardians` plays the fights (`PLAYTEST_TRIES`, default 3; `PLAYTEST_HERMIE=1`
+adds two buffed tries, the old basis); `PLAYTEST_RATES=<seconds>` first
+plays one fight the player cannot lose and reads both sides' damage a
+second, with what CONSIDER predicted beside it. A lost fight records the
+guardian's health left. `ganon_group.py` plays a group, unbuffed unless
+`PLAYTEST_HERMIE=1`; its leader fights Ganon with the Silver Arrow wielded
+from the first blow (`GANON_ARROW=red` keeps his weapon until Ganon flashes
+red, the tool's old way, which leaves the group wearing down all 67,500
+hit points by hand).
+
+Things the retune found and fixed on the way:
+
+- **Digdogger could not be hurt after the first tune in its den.** The den
+  holds a PLAY puzzle aimed at it (the resonant shell, object 30430), and
+  PLAY RECORDER there took a third of its health without marking it
+  shrunk, so every blow went on bouncing off. The puzzle now shrinks a
+  digdogger exactly as the Recorder does (`hyrule_digdogger_shrink`;
+  `tests/test_digdogger_recorder.py`).
+- **Ganon was hidden** (the catalog's `Q`), which only detect hidden saw
+  past: Hermie's detects gave it to everybody, and without her a group of
+  fighters could not attack him. The hide is taken off.
+- **Aquamentus had the catalog's sanctuary**, halving a level 8's blows:
+  unbuffed, the first guardian took twenty minutes to wear down. It is
+  taken off, as Gohma's was.
+- **CONSIDER counted only melee** and told the level 40 Digdogger would need
+  "about 12 rounds". It counts the guardian's own attack now (below).
 
 Three things the old simulation got wrong, kept here so they are not
 repeated:
@@ -616,23 +660,63 @@ and Digdogger splits in two below half, each half rolling for half. A patra,
 Death Mountain's orbiting eye, lashes everyone fighting it each pulse
 (`spec_hyrule_patra`).
 
-| Level | Guardian | Level | Hit points | Blow | Volley a pulse | Alone, unbuffed | Alone, buffed (live) |
+CONSIDER counts the volley (owner, 2026-11-13): `gear_consider_fight` adds
+`guardian_special_expected_per_round` (`src/special.c`) to the guardian's
+melee -- the volley it would throw now (`hyrule_guardian_volley_now`, which
+the special itself uses, or Ganon's fireballs), three quarters of a pulse's
+a round (a round is three seconds, a pulse four), each blow through
+`blow_landed_expected` and shared among the members of the fight, and says
+"That counts its own attack too: about N a round of it lands on you." In
+the playtests CONSIDER's rounds held to the fights: Gohma's 25 a round
+predicted against 8.3 a second measured, Manhandla's 20.5 against 6.7.
+
+Since 2026-11-13, unbuffed, from the playtests at these numbers (each try
+a fresh guardian; "used" is the player's health spent in a win):
+
+| Level | Guardian | Level | Hit points | Blow | Volley a pulse | Unbuffed, alone (live) | Fight |
 | --- | --- | ---: | ---: | ---: | --- | --- | --- |
-| 1 | Aquamentus | 10 | 1,590 | 19 | 3 fireballs 8-11 | lost | won 2 of 2, most of the health used |
-| 2 | Dodongo | 16 | 3,300 | 59 | a charge 68-95 | lost | won 2 of 2, ~80% used |
-| 3 | Manhandla | 23 | 4,500 | 83 | 4 heads 26-35 | lost | won 2 of 2, ~85% used |
-| 4 | Gleeok | 30 | 6,000 | 75 | 2 heads 46-64 | lost | won 2 of 2, 75-85% used |
-| 5 | Digdogger | 36 | 7,500 | 195 | a roll 382-530 | lost | won; a long fight |
-| 6 | Gohma | 43 | 9,000 | 100 | the eye 119-168 | lost | won 1 of 2, the win nearly spent |
-| 7 | ancient Aquamentus | 49 | 9,500 | 116 | 3 fireballs 46-63 | lost | won 2 of 2, one at 1% |
-| 8 | ashen Gleeok | 55 | 35,000 | 212 | 4 heads 159-222 | lost | lost; a buffed pair lost, a trio won narrowly |
-| 9 | Ganon | 64 | 67,500 | 350 | 4 fireballs 290-385 | lost | +50% on 2026-11-03; see "Half As Hard Again" |
+| 1 | Aquamentus | 10 | 180 | 9 | 3 fireballs 1-2 | won 5 of 6, 41-92% used | 75-115 s |
+| 2 | Dodongo | 16 | 290 | 18 | a charge 10-14 | won 4 of 5, 51-87% used | 50-65 s |
+| 3 | Manhandla | 23 | 620 | 22 | 4 heads 4-6 | won 4 of 6, 75-96% used; lost with 16 and 77 left | 70-100 s |
+| 4 | Gleeok | 30 | 1,880 | 24 | 2 heads 5-8 | won 8 of 10, 62-100% used | 130-170 s |
+| 5 | Digdogger | 36 | 2,000 (667 once the Recorder plays) | 29 | a roll 47-63, split two at half | won 5 of 6, 40-91% used | 35-65 s |
+| 6 | Gohma | 43 | 2,200 | 34 | the eye 15-20 | won 3 of 6, 56-86% used; lost with 63-558 left | 90-120 s |
+| 7 | ancient Aquamentus | 49 | 2,450 | 38 | 3 fireballs 8-12 | won 5 of 6, 62-82% used | 100-130 s |
+| 8 | ashen Gleeok | 55 | 9,200 | 45 | 4 heads 12-18 | a pair won 3 of 4 (one left at 1-42); alone lost 2 of 2 | 150-185 s |
+| 9 | Ganon | 64 | 67,500 | 100 | 4 fireballs 130-170 | a trio won 3 of 3 (one or two dead each time); a pair lost 2 of 2 | 20-40 s |
+
+Across the first seven that is 34 wins in 45, a little over two in three;
+single guardians sit between three in six and five in six, which six tries
+cannot tell apart from two in three. Ganon's trio at four fireballs of
+140-180 won one of two. Ganon's fight is short because the leader's
+wielded Silver Arrow takes a tenth of his health with each landed blow;
+his fire is what decides it, his hit points barely.
+
+Before 2026-11-13 (buffed basis):
+
+| Level | Guardian | Hit points | Blow | Volley a pulse | Alone, unbuffed | Alone, buffed (live) |
+| --- | --- | ---: | ---: | --- | --- | --- |
+| 1 | Aquamentus | 1,590 | 19 | 3 fireballs 8-11 | lost in 20 s, the guardian at 1,585 | won 2 of 2, most of the health used |
+| 2 | Dodongo | 3,300 | 59 | a charge 68-95 | lost in 10 s | won 2 of 2, ~80% used |
+| 3 | Manhandla | 4,500 | 83 | 4 heads 26-35 | lost in 10 s | won 2 of 2, ~85% used |
+| 4 | Gleeok | 6,000 | 75 | 2 heads 46-64 | lost in 18 s | won 2 of 2, 75-85% used |
+| 5 | Digdogger | 7,500 | 195 | a roll 382-530 | lost in 6 s | won; a long fight |
+| 6 | Gohma | 9,000 | 100 | the eye 119-168 | lost in 20 s | won 1 of 2, the win nearly spent |
+| 7 | ancient Aquamentus | 9,500 | 116 | 3 fireballs 46-63 | lost in 23 s | won 2 of 2, one at 1% |
+| 8 | ashen Gleeok | 35,000 | 212 | 4 heads 159-222 | lost | lost; a buffed pair lost, a trio won narrowly |
+| 9 | Ganon | 67,500 | 350 | 4 fireballs 290-385 | lost | +50% on 2026-11-03; see "Half As Hard Again" |
 
 #### The Last Two Guardians
 
 The ashen Gleeok is a fight for two and Ganon for three (owner,
 2026-10-28), by balance, not by rule: one may try, and should expect to
-lose. They were sized with `tools/hyrule_playtest/ganon_group.py`, which
+lose. Since 2026-11-13 (owner) the group is unbuffed, and the sizes are in
+the table above: a pair of median level 52s beats the ashen Gleeok about
+three times in four and one alone loses; a trio of level 59s beats Ganon
+and a pair loses. What follows is how they were sized for buffed groups
+before.
+
+They were sized with `tools/hyrule_playtest/ganon_group.py`, which
 plays any guardian against a group of the median warriors above, each
 buffed by Hermie, grouped and attacking together (Ganon's leader carries
 the Silver Arrow). First the point where the group just wins was found,

@@ -58,7 +58,7 @@ bite. Guardian of the Moon, it leaves a heart container behind.
 ~
 lizard~
 ABMV DEFV -750 S
-16 8 4d10+3278 1d10+0 2d23+35 7
+16 8 4d10+268 1d10+0 2d5+12 7
 0 0 0 0
 0 H L I
 8 8 0 0
@@ -77,8 +77,8 @@ of the Eagle, it bars the way to the first shard of wisdom, and it
 leaves a heart container behind when it falls.
 ~
 dragon~
-ABMV DFHJ -450 S
-10 5 2d10+1579 1d10+0 1d15+11 7
+ABMV DFJ -450 S
+10 5 2d10+169 1d10+0 1d3+7 7
 0 0 0 0
 CMO BHL HQ I
 8 8 0 0
@@ -97,7 +97,7 @@ Guardian of the Dragon, it leaves a heart container behind.
 ~
 unique~
 ABMV CDFJTV -750 S
-43 21 10d10+8945 15d10+720 3d26+60 7
+43 21 10d10+2145 15d10+720 3d2+32 7
 0 0 0 0
 H B 0 HL
 8 8 0 0
@@ -131,8 +131,8 @@ down, he collapses flashing red, and a level 54+ hero must wield the Silver
 Arrow and SHOOT GANON to end it.
 ~
 pig~
-ABMRV CDFHJQUV -800 S
-64 32 16d10+67412 17d10+840 5d55+210 7
+ABMRV CDFHJUV -800 S
+64 32 16d10+67412 17d10+840 5d15+60 7
 -40 -40 -40 -40
 BCDE B CP Y
 8 8 0 0
@@ -225,7 +225,7 @@ leaves a heart container behind.
 ~
 plant~
 ABMV 0 -200 S
-23 11 5d10+4472 1d10+0 2d32+50 7
+23 11 5d10+592 1d10+0 2d4+17 7
 0 0 0 0
 0 0 0 0
 8 8 0 3200
@@ -245,7 +245,7 @@ collapses. Guardian of the Snake, it leaves a heart container.
 ~
 dragon~
 ABMV 0 -200 S
-30 15 7d10+5962 12d10+600 3d19+45 7
+30 15 7d10+1842 12d10+600 3d2+22 7
 0 0 0 0
 0 0 0 0
 8 8 0 5000
@@ -265,7 +265,7 @@ of the Lizard, it leaves a heart container behind.
 ~
 human~
 ABMV 0 -200 S
-36 18 9d10+7450 13d10+660 3d51+117 7
+36 18 9d10+1950 13d10+660 3d2+27 7
 0 0 0 0
 0 0 0 0
 8 8 0 6050
@@ -315,7 +315,7 @@ to the seventh shard of wisdom and leaves a heart container behind.
 ~
 dragon~
 ABMV 0 -200 S
-49 24 12d10+9434 16d10+768 4d22+70 7
+49 24 12d10+2384 16d10+768 4d2+36 7
 0 0 0 0
 0 0 0 0
 8 8 0 8192
@@ -336,7 +336,7 @@ the last shard of wisdom and leaves a heart container behind.
 ~
 dragon~
 ABMV 0 -200 S
-55 27 13d10+34928 16d10+804 4d42+127 7
+55 27 13d10+9128 16d10+804 4d2+41 7
 0 0 0 0
 0 0 0 0
 8 8 0 8978

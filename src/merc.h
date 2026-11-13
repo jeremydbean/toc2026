@@ -4166,6 +4166,7 @@ const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate ( int level );
 bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
 bool    is_hyrule_bystander ( CHAR_DATA *victim );
 bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
+double  guardian_special_expected_per_round ( CHAR_DATA *mob, CHAR_DATA *target ); /* special.c */
 void    hyrule_note_striker ( CHAR_DATA *ch, CHAR_DATA *guardian ); /* hyrule.c */
 void    spellup_boot_check  ( void );       /* act_wiz.c: Hermie after a restart */
 void    spellup_boot_update ( void );
@@ -4237,6 +4238,7 @@ void    hyrule_room_cleared    ( ROOM_INDEX_DATA *room, bool foe_died );
 void    hyrule_room_populated  ( ROOM_INDEX_DATA *room, CHAR_DATA *mob );
 bool    hyrule_set_bait        ( CHAR_DATA *ch, OBJ_DATA *bait );
 bool    hyrule_play_recorder   ( CHAR_DATA *ch, const char *argument );
+int     hyrule_digdogger_shrink ( CHAR_DATA *victim );
 int     hyrule_next_level      ( CHAR_DATA *ch );
 void    hyrule_owl_advice      ( CHAR_DATA *ch );
 void    hyrule_owl_after_portal( CHAR_DATA *ch, ROOM_INDEX_DATA *from );

@@ -340,10 +340,15 @@ class HyruleMechanicsSourceTests(unittest.TestCase):
     def test_manhandlas_heads_change_the_fight(self) -> None:
         """The heads left decide how many blows and how hard
         (UpdateManhandla, Z_04.asm:7832); it used to throw four whatever
-        the message said."""
-        guardian = SPECIAL_C.split("mob->pIndexData->vnum == 30305", 1)[1][:1200]
-        self.assertIn("count = heads == 1 ? 2 : heads;", guardian)
-        self.assertIn("( 6 - heads )", guardian)
+        the message said. The volley is worked out in
+        hyrule_guardian_volley_now (2026-11-13), which the special and
+        CONSIDER both use."""
+        now = c_function(SPECIAL_C, "static int hyrule_guardian_volley_now(")
+        guardian = now.split("volley->vnum == 30305", 1)[1][:1200]
+        self.assertIn("*count = *heads == 1 ? 2 : *heads;", guardian)
+        self.assertIn("( 6 - *heads )", guardian)
+        self.assertIn("hyrule_guardian_volley_now(",
+                      c_function(SPECIAL_C, "bool spec_hyrule_guardian("))
 
     def test_a_money_cave_pays_before_it_is_claimed(self) -> None:
         enter = c_function(HYRULE_C, "void hyrule_enter_room(")

@@ -9,8 +9,13 @@ fight is in the dungeon's treasure room (dark, empty), from full health:
      (world_controls.json), so "on par with the world" is measured, not
      assumed.
   B. Each kind of enemy that lives in this dungeon, once.
-  C. The guardian, unbuffed, then after Hermie's buffs (EMPOWER, TITANIC,
-     the defence and combat groups, bless).
+  C. The guardian, unbuffed, PLAYTEST_TRIES times (default 3): the basis
+     the guardians are sized on since owner, 2026-11-13, when Hermie stopped
+     standing in the square and players met them without her buffs. With
+     PLAYTEST_HERMIE=1, two more tries after Hermie's buffs (EMPOWER,
+     TITANIC, the defence and combat groups, bless), the old basis. After
+     each fight the guardian's hit points are read with STAT, so a lost
+     fight still says how far the player got (guardian_hp_left).
 
 Ganon is finished with the Silver Arrow when he collapses, as players must.
 Usage (repository root, WSL):
@@ -57,7 +62,7 @@ boss_room = dungeon["boss_vnum"]
 arena = 29390 + LEVEL
 GUARDIANS_ONLY = len(sys.argv) > 4 and sys.argv[4] == "guardians"
 ENEMIES_ONLY = len(sys.argv) > 4 and sys.argv[4] == "enemies"
-BOW, QUIVER = 30222, 30543
+BOW, QUIVER, RECORDER, RED_CANDLE = 30222, 30543, 30413, 30414
 L = PLAN["level"]
 hp_max = int(8 + 10 * L + 0.3 * L * L)
 mana = int(100 + 4 * L)
@@ -105,6 +110,10 @@ def fight(hero, target, limit=240, ganon=False):
     start = time.time()
     mark = len(hero.transcript)
     hero.send(f"kill {target}")
+    if LEVEL == 5 and target == mob_keyword(boss_vnum):
+        # Digdogger: the Recorder shrinks it to a third, as a player must
+        # before a blade can bite.
+        hero.send("play recorder")
     shot = False
     disarms = 0
     while time.time() - start < limit:
@@ -139,7 +148,9 @@ def fight(hero, target, limit=240, ganon=False):
     return None, hp_of(hero.transcript[mark:]), time.time() - start
 
 
-extras = ([SILVER_ARROW] if LEVEL == 9 else []) + ([BOW, QUIVER] if LEVEL == 6 else [])
+extras = ([SILVER_ARROW] if LEVEL == 9 else []) + ([BOW, QUIVER] if LEVEL == 6 else []) \
+    + ([RECORDER] if LEVEL == 5 else []) \
+    + ([RED_CANDLE] if LEVEL >= 8 else [])   # the last two chambers are dark
 light_vnum = next((v for v in PLAN["vnums"] if parser.objects[v].item_type == "1"), None)
 weapon_vnum = next((v for v in PLAN["vnums"] if parser.objects[v].item_type == "5"), None)
 
@@ -148,6 +159,8 @@ def equip(hero, god):
     for vnum in PLAN["vnums"] + extras:
         give(god, vnum)
     run(hero, "wear all", 3.0)
+    if LEVEL >= 8:
+        run(hero, "wear candle", 1.0)
     if weapon_vnum:
         run(hero, f"wield {obj_keyword(weapon_vnum)}", 1.0)
 
@@ -187,20 +200,99 @@ def one_fight(hero, god, vnum, label, keyword, limit=240):
     run(god, "goto 4207", 0.8)
     mob = parser.mobiles.get(vnum)
     if label in ("unbuffed", "buffed"):
+        # A won Gohma fight ends with the bow wielded (only an arrow
+        # finishes her), and the next fight would start with it.
+        if weapon_vnum:
+            run(hero, f"wield {obj_keyword(weapon_vnum)}", 1.0)
         run(hero, "look", 1.0)
     won, left, secs = fight(hero, keyword, limit=limit, ganon=(label != "world" and vnum == gen.GANON_VNUM))
     lost = None if left is None else round(100 * (hp_max - left) / hp_max)
+    guardian_left = None
+    if label in ("unbuffed", "buffed") and won is not True:
+        run(god, f"goto {where}", 0.5)
+        stat = run(god, f"stat mob {keyword}", 0.8)
+        found = re.search(r"Hp: (-?\d+)/(\d+)", stat)
+        guardian_left = int(found.group(1)) if found else None
+        run(god, "goto 4207", 0.5)
     result = dict(kind=label, vnum=vnum, name=mob.short_desc if mob else "?",
                   mob_level=mob.level if mob else None, won=won, hp_left=left,
-                  hp_lost_pct=lost, secs=round(secs))
+                  hp_lost_pct=lost, secs=round(secs), guardian_hp_left=guardian_left)
     note(f"{label:8} {result['name'][:28]:28} L{result['mob_level']}: "
-         f"{'WON ' if won else 'LOST' if won is False else 'n/a '} lost {lost}% hp, {secs:.0f}s")
+         f"{'WON ' if won else 'LOST' if won is False else 'n/a '} lost {lost}% hp, {secs:.0f}s"
+         + (f", guardian left at {guardian_left}" if guardian_left is not None else ""))
     if won is False:
         recover(hero, god)
     elif won is None:
         run(god, f"goto {arena}", 0.8)
         run(god, "purge", 0.8)
         run(god, "goto 4207", 0.8)
+    return result
+
+
+def rate_fight(hero, god, seconds):
+    """PLAYTEST_RATES=<seconds>: one fight the hero cannot lose, to read
+    both sides' damage a second. The hero is given a huge pool and the
+    fight runs that long; then the guardian's hit points (STAT) and the
+    hero's (the prompt) say what each dealt. Nothing else about the hero
+    changes, so the rates are a real fight's."""
+    keyword = mob_keyword(boss_vnum)
+    big = 500000
+    run(god, f"goto {boss_room}", 1.0)
+    exactly_one(god, boss_vnum, keyword)
+    stat = run(god, f"stat mob {keyword}", 0.8)
+    start_hp = int(re.search(r"Hp: (-?\d+)/(\d+)", stat).group(1))
+    run(god, f"restore {HERO.lower()}", 0.8)
+    run(god, f"transfer {HERO.lower()} {boss_room}", 1.2)
+    run(god, "goto 4207", 0.5)
+    if LEVEL == 5:
+        # Shrunk to a third by the Recorder first, as a player must.
+        run(hero, "play recorder", 1.0)
+        run(god, f"goto {boss_room}", 0.5)
+        stat = run(god, f"stat mob {keyword}", 0.8)
+        start_hp = int(re.search(r"Hp: (-?\d+)/(\d+)", stat).group(1))
+        run(god, "goto 4207", 0.5)
+    # What CONSIDER predicts, to hold beside what the fight does.
+    said = run(hero, f"consider {keyword}", 1.0)
+    found = re.search(r"would need ([^.;]+) for you", said)
+    special = re.search(r"about (\d+) a round of it lands on you", said)
+    considered = dict(their_rounds=found.group(1) if found else None,
+                      special_per_round=int(special.group(1)) if special else None)
+    results.setdefault("considered", []).append(considered)
+    note(f"consider: {considered}")
+    run(god, f"set char {HERO.lower()} hp {big}", 0.8)
+    run(god, f"restore {HERO.lower()}", 0.8)
+    mark = len(hero.transcript)
+    hero.send(f"kill {keyword}")
+    begin = time.time()
+    disarms = 0
+    while time.time() - begin < seconds:
+        hero.drain(2.0)
+        text = hero.transcript[mark:]
+        if text.count("DISARMS") > disarms and weapon_vnum:
+            disarms = text.count("DISARMS")
+            kw = obj_keyword(weapon_vnum)
+            hero.send(f"get {kw}")
+            hero.send(f"wield {kw}")
+        if re.search(r"(?<!You have been )\bis DEAD!!", text):
+            break
+    secs = time.time() - begin
+    text = hero.transcript[mark:]
+    taken = big - (hp_of(text) or big)
+    run(god, f"goto {boss_room}", 0.5)
+    stat = run(god, f"stat mob {keyword}", 0.8)
+    found = re.search(r"Hp: (-?\d+)/(\d+)", stat)
+    left = int(found.group(1)) if found else 0
+    dealt = start_hp - left
+    run(god, f"slay {keyword}", 0.8)
+    run(god, "goto 4207", 0.5)
+    run(god, f"transfer {HERO.lower()} 4207", 1.0)
+    run(god, f"set char {HERO.lower()} hp {hp_max}", 0.8)
+    run(god, f"restore {HERO.lower()}", 0.8)
+    result = dict(secs=round(secs, 1), dealt=dealt, taken=taken,
+                  dealt_per_sec=round(dealt / secs, 1), taken_per_sec=round(taken / secs, 1),
+                  guardian_hp=start_hp, hero_hp=hp_max)
+    note(f"rates: dealt {dealt} ({result['dealt_per_sec']}/s), taken {taken} "
+         f"({result['taken_per_sec']}/s) in {secs:.0f}s; guardian {start_hp}, hero {hp_max}")
     return result
 
 
@@ -221,7 +313,8 @@ with LiveMud() as mud:
             run(c, "scroll 0")
         run(god, "holylight")
         # Hermie appears only when staff place her (owner, 2026-10-27): put her at the altar.
-        run(god, "at 4208 spellup", 1.2)
+        if os.environ.get("PLAYTEST_HERMIE", "") == "1":
+            run(god, "at 4208 spellup", 1.2)
         run(god, f"set skill {HERO.lower()} all 75", 1.0)
         equip(hero, god)
         run(god, f"set char {HERO.lower()} gold 500", 0.8)
@@ -254,7 +347,13 @@ with LiveMud() as mud:
         for vnum in ([] if GUARDIANS_ONLY else [v for v in (only or kinds) if v > 0]):
             results["fights"].append(one_fight(hero, god, vnum, "hyrule", mob_keyword(vnum)))
 
-        for label in (() if ENEMIES_ONLY else ("unbuffed", "buffed", "buffed")):
+        rates = int(os.environ.get("PLAYTEST_RATES", "0"))
+        if rates and not ENEMIES_ONLY:
+            results["rates"] = rate_fight(hero, god, rates)
+        tries = int(os.environ.get("PLAYTEST_TRIES", "3"))
+        hermie = os.environ.get("PLAYTEST_HERMIE", "") == "1"
+        for label in (() if ENEMIES_ONLY
+                      else ("unbuffed",) * tries + (("buffed", "buffed") if hermie else ())):
             run(god, f"goto {boss_room}", 1.0)
             for _ in range(4):
                 if "aren't here" in run(god, f"slay {mob_keyword(boss_vnum)}", 0.8):
@@ -262,8 +361,8 @@ with LiveMud() as mud:
             run(god, "goto 4207", 0.8)
             run(god, f"restore {HERO.lower()}", 1.0)
             run(god, f"transfer {HERO.lower()} 4208", 1.2)
-            run(hero, "buff detects", 2.0)
             if label == "buffed":
+                run(hero, "buff detects", 2.0)
                 run(god, f"transfer {HERO.lower()} 4208", 1.5)
                 for b in ("empower", "titanic", "defense", "combat", "bless"):
                     run(hero, f"buff {b}", 2.0)

@@ -1826,6 +1826,30 @@ static void recorder_choices( CHAR_DATA *ch, char *out, size_t size )
 }
 
 /*
+ * The Recorder's tune on one digdogger: 1 when it shrinks to a third and
+ * a blade can bite, -1 for one already shrunk (the tune does nothing
+ * more), 0 for anything that is not a digdogger. Once for each digdogger
+ * (L_Digdogger_AfterFlute, Z_04.asm:5166: the flute splits it for good);
+ * it used to shrink again whenever one had healed back above a third.
+ * Level 5's guardian room holds a PLAY puzzle aimed at Digdogger (its
+ * resonant shell), and the puzzle took a third of its health without
+ * marking it shrunk, so the first tune there left every blow bouncing
+ * (playtest, 2026-11-13): trigger_puzzle_manipulation asks this first.
+ */
+int hyrule_digdogger_shrink( CHAR_DATA *victim )
+{
+    if ( !hyrule_is_digdogger( victim ) )
+        return 0;
+    if ( victim->hyrule_state == HYRULE_DIGDOGGER_SHRUNK )
+        return -1;
+    victim->hyrule_state = HYRULE_DIGDOGGER_SHRUNK;
+    victim->hit = UMIN( victim->hit, UMAX( 1, victim->max_hit / 3 ) );
+    act( "$n shudders at the melody and shrinks to a third of its size -- now a blade can bite!",
+         victim, NULL, NULL, TO_ROOM );
+    return 1;
+}
+
+/*
  * The Recorder with no lake to drain. It shrinks every digdogger in the
  * room to a third of its health, once; and on the overworld its whirlwind
  * carries you to a dungeon's entrance -- any you have won, and the one you
@@ -1847,19 +1871,8 @@ bool hyrule_play_recorder( CHAR_DATA *ch, const char *argument )
     int i;
 
     for ( victim = ch->in_room->people; victim != NULL; victim = victim->next_in_room )
-    {
-        if ( !hyrule_is_digdogger( victim )
-        ||   victim->hyrule_state == HYRULE_DIGDOGGER_SHRUNK )
-            continue;
-        /* Once for each digdogger (L_Digdogger_AfterFlute, Z_04.asm:5166:
-           the flute splits it for good). It used to shrink again whenever
-           one had healed back above a third. */
-        victim->hyrule_state = HYRULE_DIGDOGGER_SHRUNK;
-        victim->hit = UMIN( victim->hit, UMAX( 1, victim->max_hit / 3 ) );
-        act( "$n shudders at the melody and shrinks to a third of its size -- now a blade can bite!",
-             victim, NULL, NULL, TO_ROOM );
-        shrank = true;
-    }
+        if ( hyrule_digdogger_shrink( victim ) > 0 )
+            shrank = true;
     if ( shrank )
     {
         WAIT_STATE( ch, PULSE_VIOLENCE );

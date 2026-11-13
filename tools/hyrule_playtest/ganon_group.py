@@ -5,8 +5,10 @@ The guardian playtests (playtest.py) measure one character. Ganon is meant
 for a buffed group, and the simulation that sized him overrated players by
 2.5 times, so this plays the claim: N human warriors at the top of Death
 Mountain's band, in the gear gear_plan.py chose for dungeon 9, skills at
-75%, the hit points of a typical player of that level, each buffed by
-Hermie (EMPOWER, TITANIC, the defence and combat groups, bless), grouped,
+75%, the hit points of a typical player of that level, unbuffed (owner,
+2026-11-13: the guardians are sized for players without Hermie;
+PLAYTEST_HERMIE=1 buffs each by Hermie first -- EMPOWER, TITANIC, the
+defence and combat groups, bless -- as the old basis did), grouped,
 attacking together. The leader carries the Silver Arrow and shoots when
 Ganon flashes red, as a player must.
 
@@ -18,6 +20,7 @@ the Silver Arrow.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -39,8 +42,17 @@ MEMBERS = int(sys.argv[3]) if len(sys.argv) > 3 else 3
 TRIES = int(sys.argv[4]) if len(sys.argv) > 4 else 2
 PW = "Zplaypass1"
 NAMES = ["Zgana", "Zganb", "Zganc", "Zgand", "Zgane"][:MEMBERS]
+# Unbuffed is the basis since owner, 2026-11-13; PLAYTEST_HERMIE=1 plays
+# the old one, every member buffed by Hermie first.
+HERMIE = os.environ.get("PLAYTEST_HERMIE", "") == "1"
+# The leader fights Ganon with the Silver Arrow wielded from the first blow
+# (2026-11-13); GANON_ARROW=red keeps his own weapon until Ganon flashes
+# red, as the tool did before, which leaves three players wearing down
+# all of his hit points by hand first.
+ARROW_FIRST = os.environ.get("GANON_ARROW", "start") != "red"
 GOD = "Zganon"
 SILVER_ARROW = 30218
+RED_CANDLE = 30414
 
 parser = AreaParser(ROOT / "area")
 parser.parse_all()
@@ -84,12 +96,16 @@ def obj_keyword(vnum):
 
 
 def equip(god, hero, name, arrow):
-    for vnum in PLAN["vnums"] + ([SILVER_ARROW] if arrow else []):
+    # The last two chambers are dark: without Hermie's detects, a light.
+    for vnum in PLAN["vnums"] + ([SILVER_ARROW] if arrow else []) \
+            + ([RED_CANDLE] if DUNGEON >= 8 else []):
         proto = parser.objects[vnum].level
         olevel = proto if 0 < proto <= L else L
         run(god, f"load obj {vnum} {olevel}", 0.5)
         run(god, f"give {obj_keyword(vnum)} {name.lower()}", 0.5)
     run(hero, "wear all", 3.0)
+    if DUNGEON >= 8:
+        run(hero, "wear candle", 1.0)
     if weapon_vnum:
         run(hero, f"wield {obj_keyword(weapon_vnum)}", 1.0)
 
@@ -98,9 +114,16 @@ def fight(heroes, limit=600):
     """(won, survivors, seconds, hp_left per member)."""
     start = time.time()
     marks = [len(h.transcript) for h in heroes]
+    shot = False
+    if DUNGEON == 9 and ARROW_FIRST:
+        # Every landed blow of the wielded Silver Arrow takes a tenth of
+        # his health (HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR): ten of them
+        # beat him down, as "Ganon's Fight" in wiki/hyrule-area.md has it.
+        heroes[0].send("wield arrow")
+        heroes[0].drain(1.0)
+        shot = True
     for h in heroes:
         h.send(f"kill {BOSS_WORD}")
-    shot = False
     disarms = [0] * len(heroes)
     dead = [False] * len(heroes)
     while time.time() - start < limit:
@@ -115,7 +138,7 @@ def fight(heroes, limit=600):
                 dead[i] = True
             if text.count("DISARMS") > disarms[i] and weapon_vnum:
                 disarms[i] = text.count("DISARMS")
-                kw = obj_keyword(weapon_vnum)
+                kw = "arrow" if (i == 0 and shot) else obj_keyword(weapon_vnum)
                 h.send(f"get {kw}")
                 h.send(f"wield {kw}")
             if BOSS_DEAD.search(text):
@@ -162,7 +185,8 @@ with LiveMud() as mud:
         run(god, "scroll 0")
         run(god, "holylight")
         # Hermie appears only when staff place her (owner, 2026-10-27): put her at the altar.
-        run(god, "at 4208 spellup", 1.2)
+        if HERMIE:
+            run(god, "at 4208 spellup", 1.2)
         for i, (h, name) in enumerate(zip(heroes, NAMES)):
             run(god, f"set skill {name.lower()} all 75", 1.0)
             equip(god, h, name, arrow=(i == 0 and DUNGEON == 9))
@@ -182,9 +206,10 @@ with LiveMud() as mud:
                 run(god, f"transfer {name.lower()} 4208", 1.0)
                 run(god, f"restore {name.lower()}", 0.8)
                 run(h, "stand", 0.5)
-                run(h, "buff detects", 2.0)
-                for b in ("empower", "titanic", "defense", "combat", "bless"):
-                    run(h, f"buff {b}", 2.0)
+                if HERMIE:
+                    run(h, "buff detects", 2.0)
+                    for b in ("empower", "titanic", "defense", "combat", "bless"):
+                        run(h, f"buff {b}", 2.0)
             for h, name in zip(heroes, NAMES):
                 run(god, f"restore {name.lower()}", 0.6)
                 run(god, f"transfer {name.lower()} {boss_room}", 1.0)

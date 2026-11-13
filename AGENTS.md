@@ -1299,12 +1299,13 @@ Things Into The World").
 (owner, 2026-10-28: the ashen Gleeok needs two average high-level
 players, Ganon three, and "one person CAN try" -- a party rule that
 turned a soloist's blows aside was built and taken out the same day).
-The sizes are the point where Hermie-buffed median players just win,
-measured live with `tools/hyrule_playtest/ganon_group.py` (any guardian,
-any group size), **plus 25%**, because real players are good and get
-good gear (owner). Ganon was then made half as hard again (owner,
-2026-11-03): 67,500 hit points, a 350 blow (not 375, whose biggest roll
-is UNSPEAKABLE through sanctuary) and fire a pulse +50%. His fireballs
+Since 2026-11-13 (owner) the sizes are for median players without
+Hermie, measured live with `tools/hyrule_playtest/ganon_group.py` (any
+guardian, any group size; the leader fights Ganon with the Silver Arrow
+wielded, whose landed blows take a tenth of his health): a pair just wins
+the ashen Gleeok, a trio Ganon. (Before, they were the point where
+Hermie-buffed players just won, plus 25%, and Ganon half as hard again
+on 2026-11-03.) His fireballs
 are spell blows no parry stops, four every four seconds at random members
 of the fight; add fireballs rather than enlarge them, since none may read
 UNSPEAKABLE (over 250) through sanctuary -- and neither may his biggest
@@ -1323,20 +1324,30 @@ buffs) spares each buffed player one death at three quarters of their
 health; the tool counts those saves. An instant kill takes a tenth of
 either guardian's health (`hyrule_defies_instant_death`).
 
-**The first seven guardians are hard, and Hermie is what makes them
-possible** (owner, 2026-10-04). A median player at the top of the band
-loses alone; the same player buffed by Hermie (EMPOWER, TITANIC, the
-defence and combat groups) wins about two fights in three. "Median" is
-measured, not assumed: the saved player files' hitroll, damroll and hit
-points by level, and a live playtest of a warrior in average gear (the
-Gear Finder's median per slot, or the Hyrule gear they would hold by then)
--- see "Guardian Fights" in `wiki/hyrule-area.md`. The old simulation
-scaled player damage by 2.5 to match the training yard's best runs, which
-sized every guardian for players far above the median; do not reach for
-that scale again. Hit points still climb guardian by guardian to Ganon's,
-and no guardian's blow may reach his (`tests/test_hyrule_progression.py`).
-Gohma's catalog sanctuary is stripped (`GUARDIAN_AFFECTS_REMOVED`): with it,
-a buffed solo player could not wear her down at all.
+**The guardians are sized for players without Hermie** (owner,
+2026-11-13: tuned for players without Hermie's buffs -- she appears only
+after a restart that put players off). A median player at the top of the
+band, unbuffed, wins about two fights in three against the first seven;
+Level 8 is a fight for two such players and Ganon one for three. Until
+then a median player lost alone and won two in three only after Hermie's
+EMPOWER, TITANIC and the defence groups, and unbuffed died in seconds (a
+level 40 to Digdogger in eight). "Median" is measured, not assumed: the
+saved player files' hitroll, damroll and hit points by level, and a live
+playtest of a warrior in average gear (the Gear Finder's median per slot,
+or the Hyrule gear they would hold by then), autoattacking --
+`tools/hyrule_playtest/playtest.py` (`PLAYTEST_TRIES`, `PLAYTEST_RATES`
+for both sides' damage a second; `PLAYTEST_HERMIE=1` plays the old basis)
+and `ganon_group.py`; see "Guardian Fights" in `wiki/hyrule-area.md`.
+The old simulation scaled player damage by 2.5 to match the training
+yard's best runs; do not reach for that scale again. Hit points still
+climb guardian by guardian to Ganon's, and no guardian's blow may reach
+his (`tests/test_hyrule_progression.py`). Gohma's and Aquamentus's catalog
+sanctuary and Ganon's hide are stripped (`GUARDIAN_AFFECTS_REMOVED`):
+hide wanted Hermie's detects to attack him at all. **CONSIDER counts a
+guardian's own attack** (`guardian_special_expected_per_round` in
+`special.c`, from `gear_consider_fight`): the volley the fight would throw
+now, three quarters of a pulse's a round, through `blow_landed_expected`,
+shared by the members of the fight (`tests/test_consider_guardian.py`).
 
 **The dungeons are done in order, and the chain is data in three places
 that must agree.** Each guardian drops its dungeon's key (Ganon's is the

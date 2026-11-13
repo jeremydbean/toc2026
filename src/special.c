@@ -527,13 +527,15 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  * group of three median level 59s wins narrowly and two lose (owner,
  * 2026-10-28: the calibrated point plus a quarter); then half as hard
  * again (owner, 2026-11-03): four at 290-385 (145-192 through
- * sanctuary) and 67,500 hit points. Add fireballs rather
+ * sanctuary) and 67,500 hit points. All of that was for players buffed
+ * by Hermie; since 2026-11-13 (owner) he is sized for three median
+ * level 59s without her: four at 130-170. Add fireballs rather
  * than enlarge them: none may read UNSPEAKABLE through sanctuary. See
  * "Ganon's Fight" in wiki/hyrule-area.md.
  */
 #define GANON_FIREBALLS          4
-#define GANON_FIREBALL_MIN    290
-#define GANON_FIREBALL_MAX    385
+#define GANON_FIREBALL_MIN    130
+#define GANON_FIREBALL_MAX    170
 #define GANON_REGEN_DIVISOR     10
 
 static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )
@@ -647,11 +649,11 @@ bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  *   - Digdogger splits in two below half, each half rolling for half.
  *
  * The counts and damage are BOSS_VOLLEYS in scripts/build_hyrule_area.py,
- * sized by the same simulation as Ganon so that a lone character at the
- * top of the dungeon's band usually loses, one six levels above usually
- * wins, and a group of three at the band usually wins (wiki/hyrule-area.md
- * has the numbers). tests/test_hyrule_progression.py holds the two tables
- * together.
+ * played live so that a median player at the top of the dungeon's band,
+ * without Hermie's buffs, wins about two fights in three (Level 8: two
+ * such players) -- owner, 2026-11-13; wiki/hyrule-area.md has the numbers.
+ * tests/test_hyrule_progression.py holds the two tables together, and
+ * CONSIDER counts the volley (guardian_special_expected_per_round).
  */
 typedef struct hyrule_guardian_volley
 {
@@ -668,35 +670,35 @@ typedef struct hyrule_guardian_volley
 
 static const HYRULE_GUARDIAN_VOLLEY hyrule_guardian_volleys[] =
 {
-    { 30222, 3,   8,  11, DAM_FIRE, "fireball",
+    { 30222, 3,   1,   2, DAM_FIRE, "fireball",
       "Aquamentus rears back and spits a fan of three fireballs!",
       "A fireball from the fan streaks straight at you!",
       "A fireball from the fan streaks at $N!" },
-    { 30218, 1,  68,  95, DAM_BASH, "bash",
+    { 30218, 1,  10,  14, DAM_BASH, "bash",
       "Dodongo lowers its great head and charges!",
       "Dodongo tramples you underfoot!",
       "Dodongo tramples $N underfoot!" },
-    { 30305, 4,  26,  35, DAM_FIRE, "fireball",
+    { 30305, 4,   4,   6, DAM_FIRE, "fireball",
       "Manhandla's heads snap open and spit fire every way at once!",
       "A spitting head finds you!",
       "A spitting head finds $N!" },
-    { 30307, 2,  46,  64, DAM_FIRE, "fireball",
+    { 30307, 2,   5,   8, DAM_FIRE, "fireball",
       "Gleeok's two heads weave on their long necks and spit fire!",
       "A gout of fire from a Gleeok head hits you!",
       "A gout of fire from a Gleeok head hits $N!" },
-    { 30309, 1, 382, 530, DAM_BASH, "bash",
+    { 30309, 1,  47,  63, DAM_BASH, "bash",
       "Digdogger rolls its great spiny bulk across the den!",
       "Digdogger's spines roll right over you!",
       "Digdogger's spines roll right over $N!" },
-    { 30223, 1, 119, 168, DAM_FIRE, "fireball",
+    { 30223, 1,  15,  20, DAM_FIRE, "fireball",
       "Gohma's great eye snaps open, and a bolt of fire lances out!",
       "The bolt from Gohma's eye sears you!",
       "The bolt from Gohma's eye sears $N!" },
-    { 30314, 3,  46,  63, DAM_FIRE, "fireball",
+    { 30314, 3,   8,  12, DAM_FIRE, "fireball",
       "The ancient Aquamentus spits a roaring fan of three fireballs!",
       "A fireball from the fan streaks straight at you!",
       "A fireball from the fan streaks at $N!" },
-    { 30316, 4, 159, 222, DAM_FIRE, "fireball",
+    { 30316, 4,  12,  18, DAM_FIRE, "fireball",
       "The ashen Gleeok's four heads rear back and spit fire!",
       "A gout of fire from a Gleeok head hits you!",
       "A gout of fire from a Gleeok head hits $N!" },
@@ -722,17 +724,73 @@ static bool hyrule_guardian_heals( const CHAR_DATA *mob )
     return false;
 }
 
+/* This guardian's row of hyrule_guardian_volleys, or NULL. */
+static const HYRULE_GUARDIAN_VOLLEY *hyrule_guardian_volley_of( const CHAR_DATA *mob )
+{
+    size_t n;
+
+    if ( mob == NULL || !IS_NPC(mob) || mob->pIndexData == NULL )
+	return NULL;
+    for ( n = 0; n < sizeof(hyrule_guardian_volleys) / sizeof(hyrule_guardian_volleys[0]); n++ )
+	if ( hyrule_guardian_volleys[n].vnum == mob->pIndexData->vnum )
+	    return &hyrule_guardian_volleys[n];
+    return NULL;
+}
+
+/* The volley a guardian throws at its health now: how many blows and
+   their range. Three change as they are hurt -- Manhandla spits from the
+   heads it has left, harder for each one gone; Digdogger, split, rolls
+   twice at half each; Gleeok's loose heads change only the words. One
+   function for the fight and for CONSIDER
+   (guardian_special_expected_per_round), so the two cannot drift. Returns
+   which words to say: 0 the volley's own, 1 Manhandla's heads (*heads
+   of them), 2 Gleeok's loose heads, 3 Digdogger split. */
+static int hyrule_guardian_volley_now( const CHAR_DATA *mob, const HYRULE_GUARDIAN_VOLLEY *volley,
+                                       int *count, int *dam_min, int *dam_max, int *heads )
+{
+    *count = volley->count;
+    *dam_min = volley->dam_min;
+    *dam_max = volley->dam_max;
+    *heads = 0;
+
+    if ( volley->vnum == 30305 )
+    {
+	/* Manhandla: a head falls with each quarter of its health, and each
+	   one lost speeds up the rest (UpdateManhandla, Z_04.asm:7832): the
+	   heads left spit that many times, each harder -- half again for
+	   every head gone -- and the last one whirls twice as often. It
+	   used to say how many heads were left and spit four times anyway. */
+	*heads = URANGE( 1, pool_scale( 4LL * mob->hit + mob->max_hit - 1, 1, UMAX( 1, mob->max_hit ), 4 ), 4 );
+	*count = *heads == 1 ? 2 : *heads;
+	*dam_min = *dam_min * ( 6 - *heads ) / 2;
+	*dam_max = UMAX( *dam_min, *dam_max * ( 6 - *heads ) / 2 );
+	return 1;
+    }
+    if ( ( volley->vnum == 30307 || volley->vnum == 30316 )
+    &&   (long long) mob->hit * 2 < mob->max_hit )
+	return 2;
+    if ( volley->vnum == 30309 && (long long) mob->hit * 2 < mob->max_hit )
+    {
+	/* Digdogger has split: two smaller urchins, each half the weight. */
+	*count = 2;
+	*dam_min = UMAX( 1, *dam_min / 2 );
+	*dam_max = UMAX( *dam_min, *dam_max / 2 );
+	return 3;
+    }
+    return 0;
+}
+
 bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
-    const HYRULE_GUARDIAN_VOLLEY *volley = NULL;
+    const HYRULE_GUARDIAN_VOLLEY *volley;
     CHAR_DATA *victim;
     char buf[MAX_STRING_LENGTH];
     int count;
     int dam_min;
     int dam_max;
+    int heads;
     int sn;
     int i;
-    size_t n;
 
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
@@ -756,53 +814,31 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	return false;
     }
 
-    for ( n = 0; n < sizeof(hyrule_guardian_volleys) / sizeof(hyrule_guardian_volleys[0]); n++ )
-	if ( hyrule_guardian_volleys[n].vnum == mob->pIndexData->vnum )
-	{
-	    volley = &hyrule_guardian_volleys[n];
-	    break;
-	}
+    volley = hyrule_guardian_volley_of( mob );
     if ( volley == NULL || ( sn = skill_lookup( volley->noun ) ) < 0 )
 	return false;
 
-    count = volley->count;
-    dam_min = volley->dam_min;
-    dam_max = volley->dam_max;
-
-    if ( mob->pIndexData->vnum == 30305 )
+    switch ( hyrule_guardian_volley_now( mob, volley, &count, &dam_min, &dam_max, &heads ) )
     {
-	/* Manhandla: a head falls with each quarter of its health, and each
-	   one lost speeds up the rest (UpdateManhandla, Z_04.asm:7832): the
-	   heads left spit that many times, each harder -- half again for
-	   every head gone -- and the last one whirls twice as often. It
-	   used to say how many heads were left and spit four times anyway. */
-	int heads = URANGE( 1, pool_scale( 4LL * mob->hit + mob->max_hit - 1, 1, UMAX( 1, mob->max_hit ), 4 ), 4 );
-
-	count = heads == 1 ? 2 : heads;
-	dam_min = dam_min * ( 6 - heads ) / 2;
-	dam_max = UMAX( dam_min, dam_max * ( 6 - heads ) / 2 );
-
+    case 1:
 	snprintf( buf, sizeof(buf),
 		  heads == 1 ? "Manhandla's last head whirls about the chamber, spitting fire!"
 			     : "Manhandla's %d remaining heads snap open and spit fire!",
 		  heads );
 	act( buf, mob, NULL, NULL, TO_ROOM );
-    }
-    else if ( ( mob->pIndexData->vnum == 30307 || mob->pIndexData->vnum == 30316 )
-    &&        (long long) mob->hit * 2 < mob->max_hit )
+	break;
+    case 2:
 	act( "Severed Gleeok heads fly loose about the chamber, still spitting fire!",
 	     mob, NULL, NULL, TO_ROOM );
-    else if ( mob->pIndexData->vnum == 30309 && (long long) mob->hit * 2 < mob->max_hit )
-    {
-	/* Digdogger has split: two smaller urchins, each half the weight. */
+	break;
+    case 3:
 	act( "Digdogger has split in two, and both smaller urchins roll at you!",
 	     mob, NULL, NULL, TO_ROOM );
-	count = 2;
-	dam_min = UMAX( 1, dam_min / 2 );
-	dam_max = UMAX( dam_min, dam_max / 2 );
-    }
-    else
+	break;
+    default:
 	act( volley->volley, mob, NULL, NULL, TO_ROOM );
+	break;
+    }
 
     for ( i = 0; i < count; i++ )
     {
@@ -814,6 +850,72 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	damage( mob, victim, number_range( dam_min, dam_max ), sn, volley->dam_type );
     }
     return true;
+}
+
+/*
+ * What a guardian's special attack costs target a fight round, as
+ * CONSIDER counts it (owner, 2026-11-13: CONSIDER on Digdogger said
+ * "about 12 rounds" just before it killed a level 40 in about three, its
+ * roll uncounted). The special fires every mobile pulse and a round is a
+ * violence pulse, so PULSE_VIOLENCE / PULSE_MOBILE volleys a round. Each
+ * blow goes to a random member of the fight, so target takes its share
+ * -- itself, its group in the room and anybody already fighting the
+ * guardian. Each is a spell blow, which no parry, dodge or shield block
+ * stops, taken through damage()'s own steps (blow_landed_expected:
+ * sanctuary, armour, a Hyrule ring) and averaged over the range the
+ * special rolls from. The volley is the one the fight would throw now
+ * (hyrule_guardian_volley_now; Ganon's fireballs). 0 for anything that
+ * is not a guardian.
+ */
+#define GUARDIAN_EXPECT_SAMPLES 64
+double guardian_special_expected_per_round( CHAR_DATA *mob, CHAR_DATA *target )
+{
+    const HYRULE_GUARDIAN_VOLLEY *volley;
+    CHAR_DATA *rch;
+    double sum = 0.0;
+    int count, dam_min, dam_max, heads, dam_type, samples, i;
+    int targets = 0;
+
+    if ( mob == NULL || target == NULL || mob == target || !IS_NPC(mob)
+    ||   mob->pIndexData == NULL )
+	return 0.0;
+
+    if ( mob->spec_fun == spec_ganon )
+    {
+	count = GANON_FIREBALLS;
+	dam_min = GANON_FIREBALL_MIN;
+	dam_max = GANON_FIREBALL_MAX;
+	dam_type = DAM_FIRE;
+    }
+    else if ( mob->spec_fun == spec_hyrule_guardian
+    &&        ( volley = hyrule_guardian_volley_of( mob ) ) != NULL )
+    {
+	hyrule_guardian_volley_now( mob, volley, &count, &dam_min, &dam_max, &heads );
+	dam_type = volley->dam_type;
+    }
+    else
+	return 0.0;
+
+    if ( mob->in_room != NULL && mob->in_room == target->in_room )
+	for ( rch = mob->in_room->people; rch != NULL; rch = rch->next_in_room )
+	    if ( !IS_NPC(rch) && rch->position > POS_STUNNED
+	    &&   ( rch == target || is_same_group( rch, target ) || rch->fighting == mob ) )
+		targets++;
+    targets = UMAX( 1, targets );
+
+    samples = UMIN( dam_max - dam_min + 1, GUARDIAN_EXPECT_SAMPLES );
+    if ( samples < 1 )
+	samples = 1;
+    for ( i = 0; i < samples; i++ )
+    {
+	/* Evenly across [dam_min, dam_max], both ends included. */
+	double blow = samples > 1
+	    ? dam_min + (double) ( dam_max - dam_min ) * i / ( samples - 1 )
+	    : (double) dam_min;
+
+	sum += blow_landed_expected( mob, target, blow, dam_type, NULL );
+    }
+    return (double) PULSE_VIOLENCE / PULSE_MOBILE * count * ( sum / samples ) / targets;
 }
 
 /*

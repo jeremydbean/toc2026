@@ -3341,10 +3341,11 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     double theirs;
     double your_rounds;
     double their_rounds;
+    double special;
     bool caster;
     const char *verdict;
 
-    ratio = (double) UMAX( 1, victim->max_hit ) / UMAX( 1, ch->max_hit );
+    ratio =(double) UMAX( 1, victim->max_hit ) / UMAX( 1, ch->max_hit );
          if ( ratio < 0.2  ) msg = "$N has a fraction of your hit points.";
     else if ( ratio < 0.4  ) msg = "$N has about a third of your hit points.";
     else if ( ratio < 0.75 ) msg = "$N has about half your hit points.";
@@ -3394,6 +3395,14 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     progress_consider( ch, victim, yours, theirs, your_rounds, their_rounds, verdict, caster );
     if ( caster )
         send_to_char( "(That counts your weapons only; your spells are not in it.)\n\r", ch );
+    if ( is_hyrule_guardian( victim )
+    &&   ( special = guardian_special_expected_per_round( victim, ch ) ) >= 0.5 )
+    {
+        snprintf( buf, sizeof(buf),
+            "That counts $S own attack too: about %ld a round of it lands on you.",
+            (long) ( special + 0.5 ) );
+        act( buf, ch, NULL, victim, TO_CHAR );
+    }
 
     if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
         act( "$N is wrapped in sanctuary: your blows do half.", ch, NULL, victim, TO_CHAR );
