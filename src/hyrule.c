@@ -2154,6 +2154,16 @@ void hyrule_after_zap( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *wand )
 #define HYRULE_HINT_ROOM_WOODS      30330   /* A8 on the NES map */
 #define HYRULE_HINT_ROOM_WATERFALL  30331   /* K2, behind the waterfall */
 
+/* What she will take, for her refusal and for LIST. NULL in any other room. */
+static const char *hint_prices( int room )
+{
+    if ( room == HYRULE_HINT_ROOM_WOODS )
+        return "She will take 10, 30 or 50 gold.\n\r";
+    if ( room == HYRULE_HINT_ROOM_WATERFALL )
+        return "She will take 5, 10 or 20 gold.\n\r";
+    return NULL;
+}
+
 /* do_give asks before gold changes hands. True when she has dealt with it
    (whether or not she kept the money). */
 bool hyrule_paid_to_talk( CHAR_DATA *ch, CHAR_DATA *victim, int amount )
@@ -2185,9 +2195,7 @@ bool hyrule_paid_to_talk( CHAR_DATA *ch, CHAR_DATA *victim, int amount )
     if ( answer == NULL )
     {
         act( "$N pushes the coins back at you. \"Pay me and I'll talk.\"", ch, NULL, victim, TO_CHAR );
-        send_to_char( ch->in_room->vnum == HYRULE_HINT_ROOM_WOODS
-                      ? "She will take 10, 30 or 50 gold.\n\r"
-                      : "She will take 5, 10 or 20 gold.\n\r", ch );
+        send_to_char( hint_prices( ch->in_room->vnum ), ch );
         return true;
     }
 
@@ -2211,6 +2219,173 @@ bool hyrule_keeper_refuses( CHAR_DATA *keeper, CHAR_DATA *ch )
         return false;
     act( "$n looks you over for a royal seal. \"Show me the Princess's letter first.\"",
          keeper, NULL, ch, TO_VICT );
+    return true;
+}
+
+/* --------------------------------------------------------------------
+ * LIST where somebody stands who keeps no shop (owner, 2026-11-13: LIST
+ * was refused 21 times in the old men's and old women's caves; players
+ * take every cave keeper for a shopkeeper). Each kind of cave says what
+ * it offers and how to have it, from the tables the cave itself uses:
+ * the gifts (hyrule_claims), the paid hints (hint_prices), the money
+ * caves, the door repair and the money-making game. Anyone else -- the
+ * dungeons' old men, the free hints -- has nothing to sell, and says
+ * what they say for nothing.
+ * ------------------------------------------------------------------ */
+
+/* The first word of an object's keywords, upper case: what GET takes. */
+static void get_word( const OBJ_DATA *obj, char *out, size_t size )
+{
+    char word[MAX_INPUT_LENGTH];
+    size_t i;
+
+    one_argument_const( obj->name != NULL ? obj->name : "", word );
+    for ( i = 0; word[i] != '\0'; i++ )
+        word[i] = (char) UPPER( word[i] );
+    toc_strlcpy( out, word, size );
+}
+
+/* The gifts lying in this cave: a line each, and true when there were any. */
+static bool list_cave_gifts( CHAR_DATA *ch, CHAR_DATA *keeper )
+{
+    char buf[MAX_STRING_LENGTH];
+    char word[MAX_INPUT_LENGTH];
+    const char *note;
+    OBJ_DATA *obj;
+    size_t i;
+    bool found = false;
+    bool choice = false;
+
+    for ( i = 0; i < sizeof(hyrule_claims) / sizeof(hyrule_claims[0]); i++ )
+    {
+        const HYRULE_CLAIM *claim = &hyrule_claims[i];
+
+        if ( claim->room != ch->in_room->vnum )
+            continue;
+        for ( obj = ch->in_room->contents; obj != NULL; obj = obj->next_content )
+            if ( obj->pIndexData != NULL && obj->pIndexData->vnum == claim->obj
+            &&   can_see_obj( ch, obj ) )
+                break;
+        if ( obj == NULL )
+            continue;
+        if ( !found )
+            act( "$N sells nothing. What lies here is a gift, free for the taking:",
+                 ch, NULL, keeper, TO_CHAR );
+        found = true;
+        get_word( obj, word, sizeof(word) );
+        note = "";
+        if ( claim->choice_bit >= 0 )
+        {
+            choice = choice || claim->heart_bit != claim->choice_bit;
+            if ( secret_has( ch, claim->choice_bit ) )
+                note = "  (you have had yours)";
+        }
+        else if ( hyrule_carries( ch, claim->obj ) )
+            note = "  (you carry one already)";
+        snprintf( buf, sizeof(buf), "  %s: GET %s%s\n\r", obj->short_descr, word, note );
+        send_to_char( buf, ch );
+        if ( claim->hearts > 0 )
+        {
+            snprintf( buf, sizeof(buf),
+                      "    He gives it only to a hero of %d hearts; you have %d (see HEARTS).\n\r",
+                      claim->hearts, hyrule_hearts( ch ) );
+            send_to_char( buf, ch );
+        }
+    }
+    if ( choice )
+        send_to_char( "Take ONE of them, once for good: the other is then no longer yours.\n\r", ch );
+    return found;
+}
+
+bool hyrule_list_cave( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    char said[MAX_INPUT_LENGTH];
+    CHAR_DATA *keeper;
+    const char *open;
+    const char *close;
+    const char *prices;
+    size_t i;
+    int room;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->in_room == NULL
+    ||   !is_hyrule_vnum( ch->in_room->vnum ) )
+        return false;
+    /* A real shop answers as a shop, however its keeper is dressed. */
+    for ( keeper = ch->in_room->people; keeper != NULL; keeper = keeper->next_in_room )
+        if ( IS_NPC(keeper) && keeper->pIndexData != NULL && keeper->pIndexData->pShop != NULL )
+            return false;
+    for ( keeper = ch->in_room->people; keeper != NULL; keeper = keeper->next_in_room )
+        if ( is_hyrule_bystander( keeper ) && can_see( ch, keeper ) )
+            break;
+    if ( keeper == NULL )
+        return false;
+    room = ch->in_room->vnum;
+
+    if ( list_cave_gifts( ch, keeper ) )
+        return true;
+
+    if ( ( prices = hint_prices( room ) ) != NULL )
+    {
+        act( "$N sells nothing but words. Pay her for a hint: GIVE <amount> GOLD WOMAN.",
+             ch, NULL, keeper, TO_CHAR );
+        send_to_char( prices, ch );
+        send_to_char( "The right sum buys the hint worth having.\n\r", ch );
+        return true;
+    }
+
+    for ( i = 0; i < sizeof(hyrule_money_caves) / sizeof(hyrule_money_caves[0]); i++ )
+    {
+        if ( hyrule_money_caves[i].room != room )
+            continue;
+        snprintf( buf, sizeof(buf),
+                  "$N sells nothing. He pays %d gold to each adventurer who finds\n\r"
+                  "this cave, once, as they walk in%s",
+                  hyrule_money_caves[i].rupees,
+                  secret_has( ch, (int) i ) ? " -- and you have had your share." : "." );
+        act( buf, ch, NULL, keeper, TO_CHAR );
+        return true;
+    }
+
+    if ( room >= HYRULE_REPAIR_ROOM_FIRST && room <= HYRULE_REPAIR_ROOM_LAST )
+    {
+        snprintf( buf, sizeof(buf),
+                  "$N sells nothing. He takes %d gold for the door repair from\n\r"
+                  "anyone who walks in without his receipt, and nothing more.",
+                  HYRULE_DOOR_REPAIR_GOLD );
+        act( buf, ch, NULL, keeper, TO_CHAR );
+        return true;
+    }
+
+    if ( room >= HYRULE_GAMBLE_LOW && room <= HYRULE_GAMBLE_HIGH )
+    {
+        snprintf( buf, sizeof(buf),
+                  "$N sells nothing, but he will play: GAMBLE LEFT, GAMBLE MIDDLE\n\r"
+                  "or GAMBLE RIGHT. You need %d gold to play.", HYRULE_GAMBLE_STAKE );
+        act( buf, ch, NULL, keeper, TO_CHAR );
+        return true;
+    }
+
+    if ( keeper->spec_fun != NULL && keeper->spec_fun == spec_lookup( "spec_hyrule_fairy" ) )
+    {
+        act( "$N sells nothing.\n\rStay here, out of a fight, and every wound you carry will close.",
+             ch, NULL, keeper, TO_CHAR );
+        return true;
+    }
+
+    /* Everyone else has a word to give for nothing: the quoted part of the
+       line the room shows them by, when there is one. */
+    open = keeper->long_descr != NULL ? strchr( keeper->long_descr, '"' ) : NULL;
+    close = open != NULL ? strrchr( open + 1, '"' ) : NULL;
+    if ( open != NULL && close != NULL && close > open + 1 )
+    {
+        toc_strlcpy( said, open, UMIN( sizeof(said), (size_t) ( close - open ) + 2 ) );
+        snprintf( buf, sizeof(buf), "$N has nothing to sell, and these words cost nothing:\n\r  %s",
+                  said );
+        act( buf, ch, NULL, keeper, TO_CHAR );
+    }
+    else
+        act( "$N has nothing to sell.", ch, NULL, keeper, TO_CHAR );
     return true;
 }
 

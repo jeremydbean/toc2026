@@ -199,7 +199,13 @@
     },
     "P3": {
       "name": "The Coast's Lonely Ledge",
-      "description": "Rough grass runs down to the eastern shore, where the sea washes against tumbled rocks. Just offshore a small flat ledge of stone sits alone above the waves, separated from the land by a strip of water too wide to step and narrow enough to bridge with a ladder. A faint red glow pulses on the ledge like a heartbeat. The coast path leads north and south."
+      "description": "Rough grass runs down to the eastern shore, where the sea washes against tumbled rocks. Just offshore a small flat ledge of stone sits alone above the waves, separated from the land by a strip of water too wide to step and narrow enough to bridge with a ladder. A faint red glow pulses on the ledge like a heartbeat. The coast path leads north and south.",
+      "extras": [
+        {
+          "keywords": "ledge glow heart",
+          "text": "A small flat ledge of stone sits just offshore, and on it a red glow beats like a heart: a Heart Container, waiting for whoever crosses. The strip of water between is too wide to step and too narrow to swim; a stepladder would bridge it. Carrying one, ENTER the CROSSING (or ENTER GAP)."
+        }
+      ]
     },
     "A4": {
       "name": "The Graveyard's Southern Fence",
@@ -223,7 +229,13 @@
     },
     "F4": {
       "name": "Isle of the Snake",
-      "description": "A small green island rises out of the lake, ringed on every side by cold, lapping water. At its heart a dark stone entrance is carved in the coiled shape of a serpent, its doorway breathing out damp air. A narrow plank bridge runs back south over the water to the lakeshore."
+      "description": "A small green island rises out of the lake, ringed on every side by cold, lapping water. At its heart a dark stone entrance is carved in the coiled shape of a serpent, its doorway breathing out damp air. A narrow plank bridge runs back south over the water to the lakeshore.",
+      "extras": [
+        {
+          "keywords": "entrance serpent doorway",
+          "text": "The serpent's doorway is carved in coils of dark stone, breathing out damp air. It is reached only by the raft at the water's edge: carrying a raft of your own, ENTER RAFT."
+        }
+      ]
     },
     "G4": {
       "name": "Lake Hylia, Western Reeds",
@@ -391,7 +403,13 @@
     },
     "P6": {
       "name": "The Lonely Isle",
-      "description": "A small island sits alone in the eastern waters of Lake Hylia, a patch of green grass ringed by blue, and at its middle a low cave mouth glows with firelight while a faint red pulse beats somewhere within. Waves slap gently at its edges. No path leads here except across the water, and the only way back is by a little dock on the southern side, where a raft can be put in."
+      "description": "A small island sits alone in the eastern waters of Lake Hylia, a patch of green grass ringed by blue, and at its middle a low cave mouth glows with firelight while a faint red pulse beats somewhere within. Waves slap gently at its edges. No path leads here except across the water, and the only way back is by a little dock on the southern side, where a raft can be put in.",
+      "extras": [
+        {
+          "keywords": "cave mouth firelight",
+          "text": "The low cave mouth glows with firelight, and a red pulse beats somewhere inside. The only way to it is by the raft at the water's edge: carrying a raft of your own, ENTER RAFT."
+        }
+      ]
     },
     "A7": {
       "name": "The Western Gorge",
@@ -479,7 +497,22 @@
     },
     "F8": {
       "name": "Spectacle Rock",
-      "description": "Two great round boulders stand side by side on the summit, joined by a low saddle of stone like a giant's pair of spectacles left on the mountaintop. Sand has blown into drifts between them. The left-hand rock sounds hollow and is seamed with hairline cracks, and the air near it is colder than it ought to be, as if the way to death itself lay behind. Paths lead east and west."
+      "description": "Two great round boulders stand side by side on the summit, joined by a low saddle of stone like a giant's pair of spectacles left on the mountaintop. Sand has blown into drifts between them. The left-hand rock sounds hollow and is seamed with hairline cracks, and the air near it is colder than it ought to be, as if the way to death itself lay behind. Paths lead east and west.",
+      "seal_keywords": "rock boulder left crack hollow spectacle spectacles",
+      "extras": [
+        {
+          "keywords": "left rock hollow crack cracks cracked seam seams",
+          "text": "The left-hand rock is seamed with hairline cracks, and it rings hollow when you knock on it. Cold air seeps out of the cracks, as though a great space lay beneath. A bomb set against it would blow it open: BOMB ROCK."
+        },
+        {
+          "keywords": "boulders boulder spectacles spectacle right saddle",
+          "text": "Two great round boulders, joined by a low saddle of stone. The right-hand one is sound rock all the way through. The left-hand one is not: it is seamed with cracks and rings hollow."
+        },
+        {
+          "keywords": "sand drifts drift",
+          "text": "Sand blown up from the lowlands has drifted between the boulders. It hides nothing; it is only sand."
+        }
+      ]
     },
     "G8": {
       "name": "East of Spectacle Rock",

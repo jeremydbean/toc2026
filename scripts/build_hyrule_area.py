@@ -24,7 +24,7 @@ import json
 import re
 import textwrap
 from collections import Counter
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
@@ -1668,6 +1668,9 @@ class RoomSpec:
     boss_level: int | None = None
     extras: list[tuple[str, str]] = field(default_factory=list)
     dark: bool = False
+    # Words the room's own sealed way also answers to (BOMB ROCK at
+    # Spectacle Rock): "seal_keywords" in the prose. See discoverability().
+    seal_words: str = ""
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -2491,6 +2494,11 @@ A
     ]
 
 
+def crossing_lore(keywords: str, text: str) -> str:
+    """A crossing's LOOK text, under every word ENTER takes for it."""
+    return f"E\n{keywords}~\n{wrap_description(text)}\n~"
+
+
 def new_object_records(manifest: dict[str, Any]) -> str:
     objects = [
         object_record(30500, "letter parchment zelda", "Princess Zelda's letter", "A sealed royal letter lies here.", "paper", "8 G AO", "0 0 0 0 0", 1, 1, 100),
@@ -2559,10 +2567,35 @@ def new_object_records(manifest: dict[str, Any]) -> str:
             "energy", "30 GOV 0", f"5 {world_vnums[dungeon['overworld_coordinate']]} 0 0 0",
         ))
     level_four = manifest["dungeons"][3]
+    # The crossings answer to the words their rooms use, and their room
+    # lines say how to use them: a stepladder holder at the coast typed
+    # CROSS GAP, CROSS WATER and JUMP GAP and gave up (play log,
+    # 2026-11-13). The first keyword stays the one the router names.
     objects.extend([
-        object_record(30538, "raft level four crossing", "a waiting dungeon raft", "A raft waits at the water's edge.", "wood", "30 GOV 0", f"6 {level_four['entrance_vnum']} 0 0 30411"),
-        object_record(30539, "raft heart crossing", "a waiting heart raft", "A raft waits to cross the open water.", "wood", "30 GOV 0", "6 30657 0 0 30411"),
-        object_record(30540, "stepladder heart crossing", "a narrow water crossing", "A gap in the water can be crossed with the stepladder.", "water", "30 GOV 0", "6 30658 0 0 30412"),
+        object_record(30538, "raft level four crossing water lake entrance serpent",
+                      "a waiting dungeon raft",
+                      "A raft waits to carry a raft-holder to the serpent's door: ENTER RAFT.",
+                      "wood", "30 GOV 0", f"6 {level_four['entrance_vnum']} 0 0 30411",
+                      extras=crossing_lore("raft level four crossing water lake entrance serpent",
+                                           "The raft rocks at the water's edge, ready to carry you to the "
+                                           "serpent's doorway. It answers only to someone with a raft of "
+                                           "their own: carrying one, ENTER RAFT.")),
+        object_record(30539, "raft heart crossing water lake cave mouth", "a waiting heart raft",
+                      "A raft waits to carry a raft-holder to the cave mouth: ENTER RAFT.",
+                      "wood", "30 GOV 0", "6 30657 0 0 30411",
+                      extras=crossing_lore("raft heart crossing water lake cave mouth",
+                                           "The raft rocks at the water's edge, ready to carry you round to "
+                                           "the firelit cave mouth. It answers only to someone with a raft "
+                                           "of their own: carrying one, ENTER RAFT.")),
+        object_record(30540, "stepladder heart crossing gap water channel ledge ladder",
+                      "a narrow water crossing",
+                      "A narrow gap of water could be bridged with a stepladder: ENTER the crossing.",
+                      "water", "30 GOV 0", "6 30658 0 0 30412",
+                      extras=crossing_lore("stepladder heart crossing gap water channel ledge ladder",
+                                           "A channel of sea water runs between the shore and the little "
+                                           "ledge where the red glow beats, too wide to step and too narrow "
+                                           "to swim. A stepladder would bridge it: carrying one, ENTER the "
+                                           "CROSSING, or ENTER GAP, and climb across.")),
         object_record(30541, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 130 gold.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 130, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
         object_record(30543, "arrows arrow quiver shop", "a quiver of arrows", "A quiver of arrows is displayed for 80 gold.", "wood", "8 N AO", "0 0 0 0 0", 8, 2, 80,
                       "E\narrows arrow quiver~\nA quiver of arrows for the bow. Wield the bow and SHOOT an enemy in the\n"
@@ -2681,6 +2714,11 @@ class Prose:
         return [(extra["keywords"], wrap_description(extra["text"]))
                 for extra in self.entry(group, key).get("extras", [])]
 
+    def seal_words(self, group: str, key: str) -> str:
+        """More names for the room's sealed way, beyond the ones its
+        description already gives it (discoverability())."""
+        return " ".join(self.entry(group, key).get("seal_keywords", "").split())
+
 
 def add_two_way_exit(
     rooms: dict[int, RoomSpec],
@@ -2714,6 +2752,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
             prose.description("overworld", coordinate), "N", world_sector(room),
             entities={str(vnum): count for vnum, count in world_spawns(room, bands).items()},
             extras=prose.extras("overworld", coordinate),
+            seal_words=prose.seal_words("overworld", coordinate),
         )
         for direction, exit_data in room["exits"].items():
             gate = exit_data["gate"]
@@ -2981,7 +3020,332 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
         map_room_vnum = next(room["vnum"] for room in dungeon["rooms"] if room["coordinate"] == dungeon["map_coordinate"])
         rooms[map_room_vnum].objects.append(chest_vnum)
 
+    discoverability(rooms)
     return rooms, world_vnums
+
+
+# --------------------------------------------------------------------------
+# What a player can find by looking and by naming what they see (owner,
+# 2026-11-13, from the play logs: a stepladder holder tried CROSS GAP,
+# CROSS WATER and JUMP GAP at the coast and gave up; twenty tries at BOMB
+# and PUSH on Spectacle Rock's cracked left rock found nothing; and almost
+# every room described stones, statues and blocks that LOOK could not
+# find). Three things, all generated so a regeneration keeps them:
+#
+#   - the crossings answer to the words their rooms use (gap, water...)
+#     and their room lines say how: ENTER it;
+#   - an overworld seal that wants a bomb answers to the surface its room
+#     describes (rock, cliff, wall...), so BOMB ROCK finds it (do_bomb also
+#     takes the sealed way's keywords; act_obj.c);
+#   - every room gets a LOOK detail for each noun of NOUN_DETAILS its
+#     description names and its own prose extras do not answer. The text
+#     is told by the room as built -- its puzzles, doors and crossings --
+#     so it says what will work there and never promises what will not.
+# --------------------------------------------------------------------------
+
+# The crossings ENTER takes (item type 30, value[0] 6, value[4] the tool).
+CROSSING_OBJECTS = {30538: "raft", 30539: "raft", 30540: "stepladder"}
+BOMB_PUZZLE_DIRECTIONS = {vnum: direction for direction, vnum in PUZZLE_OBJECTS["bomb"].items()}
+# The first word of an exit keyword that marks a bomb seal (hyrule_seal_refuses).
+BOMB_SEAL_WORDS = frozenset({"bomb", "cracked", "triforce"})
+# The surfaces an overworld room names that BOMB should find its seal by.
+BOMB_SURFACE_WORDS = ("crack", "cracks", "rock", "rocks", "boulder", "boulders",
+                      "cliff", "cliffs", "wall", "walls", "face", "seam", "seams")
+
+
+def cracked_exit_puzzle(direction: str, exit_spec: ExitSpec) -> int | None:
+    """The bomb puzzle a dungeon's cracked wall resets beside it, or None.
+    Both sides of a cracked wall carry one (render_resets lays them)."""
+    if exit_spec.locks == 4 and exit_spec.keyword.startswith("cracked"):
+        return PUZZLE_OBJECTS["bomb"].get(direction)
+    return None
+
+
+def room_puzzles(room: RoomSpec) -> set[int]:
+    """Every puzzle object a reset lays in the room."""
+    found = set(room.puzzles)
+    for direction, exit_spec in room.exits.items():
+        vnum = cracked_exit_puzzle(direction, exit_spec)
+        if vnum:
+            found.add(vnum)
+    return found
+
+
+def word_list(words: list[str]) -> str:
+    """north / north and south / north, east and south."""
+    if len(words) < 2:
+        return "".join(words)
+    return f"{', '.join(words[:-1])} and {words[-1]}"
+
+
+def exits_where(room: RoomSpec, test) -> list[str]:
+    return [direction for direction, exit_spec
+            in sorted(room.exits.items(), key=lambda item: DIRECTION_NUMBERS[item[0]])
+            if test(exit_spec)]
+
+
+def detail_crack(room: RoomSpec, puzzles: set[int]) -> str:
+    if puzzles & set(BOMB_PUZZLE_DIRECTIONS):
+        return ("The cracks run deep, and the stone behind them sounds hollow when you "
+                "knock on it. A bomb would blow it open: BOMB CRACK.")
+    return "The cracks are old and shallow. No bomb would open a way here."
+
+
+def detail_wall(room: RoomSpec, puzzles: set[int]) -> str:
+    sides = [BOMB_PUZZLE_DIRECTIONS[vnum] for vnum in sorted(puzzles)
+             if BOMB_PUZZLE_DIRECTIONS.get(vnum, "down") != "down"]
+    if sides:
+        return (f"The walls are solid stone, except to the {word_list(sides)}, where "
+                "the cracked stone sounds hollow. A bomb would blow it open: BOMB CRACK.")
+    if puzzles & set(BOMB_PUZZLE_DIRECTIONS):
+        return ("The stone is solid, except where it is cracked and sounds hollow. A bomb "
+                "would blow it open: BOMB CRACK.")
+    return "The walls are solid, and nothing in them gives."
+
+
+def detail_door(room: RoomSpec, puzzles: set[int]) -> str:
+    small = exits_where(room, lambda e: e.locks == LOCKED_DOOR and e.key_vnum == HYRULE_SMALL_KEY)
+    guardian = exits_where(room, lambda e: e.key_vnum in BOSS_KEYS.values())
+    lines = []
+    for direction in small:
+        lines.append(f"The {direction} door is locked, and a small key opens it: "
+                     f"UNLOCK {direction.upper()}.")
+    for direction in guardian:
+        lines.append(f"The {direction} door is the guardian's own. Only the key the "
+                     "guardian leaves to whoever beats it will open it.")
+    shutters = detail_shutter(room, puzzles, required=True)
+    if shutters:
+        lines.append(shutters)
+    if not lines:
+        return ("However they look, none of the doors here is locked or barred: each "
+                "opens at a step.")
+    return " ".join(lines)
+
+
+def detail_shutter(room: RoomSpec, puzzles: set[int], required: bool = False) -> str:
+    sides = exits_where(room, lambda e: e.keyword == "shutter")
+    if sides:
+        if len(sides) == 1:
+            noun, has, stays = "shutter", "has", "It stays"
+        else:
+            noun, has, stays = "shutters", "have", "They stay"
+        return (f"The {noun} to the {word_list(sides)} {has} no lock and no handle. "
+                f"{stays} shut while enemies remain in the room; once it is clear, "
+                "walk straight through.")
+    if required:
+        return ""
+    return ("A heavy iron shutter with no lock and no handle. A shutter stays shut while "
+            "enemies remain in its room, and opens to anyone once the room is clear.")
+
+
+def detail_block(room: RoomSpec, puzzles: set[int]) -> str:
+    if PUZZLE_OBJECTS["push"] in puzzles:
+        return ("Most of the blocks are set fast, but one sits a little askew, scraped "
+                "along its base as if it has been moved before: PUSH BLOCK.")
+    return ("Squat stone blocks, set fast. However scraped or askew they look, none of "
+            "them will move.")
+
+
+def detail_statue(room: RoomSpec, puzzles: set[int]) -> str:
+    if PUZZLE_OBJECTS["armos"] in puzzles:
+        return ("One of the statues sits a little off its base, as if it could be "
+                "shoved aside: PUSH STATUE.")
+    if PUZZLE_OBJECTS["bracelet"] in puzzles:
+        return ("Among the stones one heavy statue-stone sits loose. Carrying the Power "
+                "Bracelet, you could shift it: PUSH STONE.")
+    return "Weathered stone statues, set solidly on their bases. They will not move."
+
+
+def detail_grave(room: RoomSpec, puzzles: set[int]) -> str:
+    if PUZZLE_OBJECTS["grave"] in puzzles:
+        return ("One gravestone sits askew on its slab, as though it could be pushed "
+                "aside: PUSH GRAVESTONE.")
+    return "Weathered headstones, their names worn away. They are set fast in the earth."
+
+
+def detail_bush(room: RoomSpec, puzzles: set[int]) -> str:
+    if PUZZLE_OBJECTS["burn"] in puzzles:
+        return ("One bush is strangely dry and brittle among the green. A lit candle "
+                "would burn it away: BURN BUSH.")
+    return "Thick green bushes, too full of sap to catch light."
+
+
+def detail_tree(room: RoomSpec, puzzles: set[int]) -> str:
+    if PUZZLE_OBJECTS["burn"] in puzzles:
+        return ("Old trees, and among them one dry bush that a lit candle would burn "
+                "away: BURN BUSH.")
+    return "Old trees with thick trunks and dense, rustling crowns."
+
+
+def detail_rock(room: RoomSpec, puzzles: set[int]) -> str:
+    if puzzles & set(BOMB_PUZZLE_DIRECTIONS):
+        return ("Most of the rock is solid, but where it is cracked it sounds hollow. "
+                "A bomb would blow it open: BOMB CRACK.")
+    if PUZZLE_OBJECTS["bracelet"] in puzzles:
+        return ("One heavy stone sits loose. Carrying the Power Bracelet, you could "
+                "shift it: PUSH STONE.")
+    return "Rough, weathered rock. It is solid, and nothing in it gives."
+
+
+def detail_water(room: RoomSpec, puzzles: set[int]) -> str:
+    crossings = [vnum for vnum in room.objects if vnum in CROSSING_OBJECTS]
+    rafts = exits_where(room, lambda e: e.keyword == "raft crossing")
+    if crossings and CROSSING_OBJECTS[crossings[0]] == "stepladder":
+        return ("The channel is too wide to step across, but a stepladder would bridge "
+                "it. Carrying one, ENTER the CROSSING (or ENTER GAP).")
+    if crossings:
+        return "Open water. Only a raft crosses it: carrying one, ENTER RAFT."
+    if rafts:
+        return (f"Open water lies to the {word_list(rafts)}. Carrying a raft, simply go "
+                f"{rafts[0]}; without one there is no way across.")
+    if PUZZLE_OBJECTS["recorder"] in puzzles:
+        return ("The water lies still and deep, as if it were waiting for an ancient "
+                "melody: PLAY RECORDER.")
+    return "The water is cold and clear. Nothing beneath it catches your eye."
+
+
+def detail_fire(room: RoomSpec, puzzles: set[int]) -> str:
+    return "The fires burn low and steady, giving off a dry warmth. They need no tending."
+
+
+def detail_stairs(room: RoomSpec, puzzles: set[int]) -> str:
+    # A sealed stair counts from its far side, where the seal is already
+    # open behind whoever came down it (a cave, a cellar).
+    ways = exits_where(room, lambda e: e.locks == 0 or (e.locks == 4 and not puzzles))
+    ways = [direction for direction in ways if direction in ("up", "down")]
+    if ways:
+        return f"The steps lead {word_list(ways)}: go {word_list([w.upper() for w in ways])}."
+    return "Worn steps, smoothed by the passing of many feet."
+
+
+@dataclass(frozen=True)
+class NounDetail:
+    name: str
+    triggers: tuple[str, ...]       # whole words in the description
+    keywords: tuple[str, ...]       # what LOOK answers to
+    text: Any                       # (room, puzzles) -> str
+
+
+# A room below or behind a seal sees the seal's far side: the cave under a
+# bombed rock, the cellar under a pushed block. Its description names the
+# thing, and the thing has nothing left to give from here. Keyed by the
+# seal's keyword (its first word) and the detail's name; the puzzle is the
+# object whose presence would make it the near side instead.
+FAR_SIDE = {
+    ("bomb", "crack"): "The way in was cracked rock, and it has already been blasted open. "
+                       "The rest of the stone here is solid.",
+    ("bomb", "wall"): "The walls are solid stone. Only the way in was cracked, and it has "
+                      "already been blasted open.",
+    ("bomb", "rock"): "The rock is solid here. Only the way in was cracked, and it has "
+                      "already been blasted open.",
+    ("burn", "bush"): "The bush that hid the way in grew on the far side of it, and it has "
+                      "already been burned away.",
+    ("burn", "tree"): "The bush that hid the way in grew on the far side of it, and it has "
+                      "already been burned away.",
+    ("armos", "statue"): "The statue that hid the way in stands on the far side of it, "
+                         "already shoved aside. Nothing down here will move.",
+    ("block", "block"): "The block that hides this cellar sits above, already shoved aside. "
+                        "Nothing down here will move.",
+    ("grave", "grave"): "The gravestone that hid the way in stands above, already pushed "
+                        "aside.",
+    ("bracelet", "statue"): "The stone that hid the way in lies above, already heaved aside.",
+    ("bracelet", "rock"): "The stone that hid the way in lies above, already heaved aside.",
+}
+SEAL_PUZZLES = {
+    "bomb": set(BOMB_PUZZLE_DIRECTIONS), "burn": {PUZZLE_OBJECTS["burn"]},
+    "armos": {PUZZLE_OBJECTS["armos"]}, "block": {PUZZLE_OBJECTS["push"]},
+    "grave": {PUZZLE_OBJECTS["grave"]}, "bracelet": {PUZZLE_OBJECTS["bracelet"]},
+}
+
+
+def far_side_detail(room: RoomSpec, puzzles: set[int], name: str) -> str:
+    for exit_spec in room.exits.values():
+        words = exit_spec.keyword.split()
+        if exit_spec.locks != 4 or not words:
+            continue
+        seal = "bomb" if words[0] in BOMB_SEAL_WORDS else words[0]
+        if (seal, name) in FAR_SIDE and not puzzles & SEAL_PUZZLES[seal]:
+            return FAR_SIDE[(seal, name)]
+    return ""
+
+
+# In the order a room lists them. Keywords never repeat across rows, so a
+# room's details never answer the same word twice.
+NOUN_DETAILS = (
+    NounDetail("crack", ("crack", "cracks", "cracked"), ("crack", "cracks", "cracked"), detail_crack),
+    NounDetail("wall", ("wall", "walls"), ("wall", "walls"), detail_wall),
+    NounDetail("door", ("door", "doors", "doorway", "doorways", "keyhole", "keyholes"),
+               ("door", "doors", "doorway", "doorways", "keyhole", "keyholes"), detail_door),
+    NounDetail("shutter", ("shutter", "shutters"), ("shutter", "shutters"), detail_shutter),
+    NounDetail("block", ("block", "blocks"), ("block", "blocks"), detail_block),
+    NounDetail("statue", ("statue", "statues", "armos"), ("statue", "statues", "armos"), detail_statue),
+    NounDetail("grave", ("grave", "graves", "gravestone", "gravestones", "headstone", "headstones",
+                "tombstone", "tombstones"),
+               ("gravestone", "gravestones", "headstone", "headstones", "tombstone",
+                "tombstones", "grave", "graves"), detail_grave),
+    NounDetail("bush", ("bush", "bushes", "shrub", "shrubs"), ("bush", "bushes", "shrub", "shrubs"),
+               detail_bush),
+    NounDetail("tree", ("tree", "trees"), ("tree", "trees"), detail_tree),
+    NounDetail("rock", ("rock", "rocks", "boulder", "boulders", "stones"),
+               ("rock", "rocks", "boulder", "boulders", "stone", "stones"), detail_rock),
+    NounDetail("water", ("water", "lake", "pond", "river", "sea", "stream", "pool"),
+               ("water", "lake", "pond", "river", "sea", "stream", "pool"), detail_water),
+    NounDetail("fire", ("fires", "brazier", "braziers", "flames"),
+               ("fire", "fires", "flame", "flames", "brazier", "braziers"), detail_fire),
+    NounDetail("stairs", ("stair", "stairs", "staircase", "steps"),
+               ("stair", "stairs", "staircase", "steps"), detail_stairs),
+)
+
+
+def description_words(text: str) -> set[str]:
+    return set(re.findall(r"[a-z]+", text.lower()))
+
+
+def noun_details(room: RoomSpec) -> list[tuple[str, str]]:
+    """The LOOK details room's description calls for that its own prose
+    extras do not already answer."""
+    named = description_words(room.description)
+    answered = {word.lower() for keywords, _ in room.extras for word in keywords.split()}
+    puzzles = room_puzzles(room)
+    details = []
+    for detail in NOUN_DETAILS:
+        if not named & set(detail.triggers):
+            continue
+        keywords = [word for word in detail.keywords if word not in answered]
+        if not keywords:
+            continue
+        text = far_side_detail(room, puzzles, detail.name) or detail.text(room, puzzles)
+        if text:
+            details.append((" ".join(keywords), wrap_description(text)))
+    return details
+
+
+def bomb_seal_words(room: RoomSpec) -> str:
+    """The surfaces this overworld room describes, for its bomb seal."""
+    named = description_words(room.description)
+    words = [word for word in BOMB_SURFACE_WORDS if word in named]
+    return " ".join(dict.fromkeys(words + room.seal_words.split()))
+
+
+def discoverability(rooms: dict[int, RoomSpec]) -> None:
+    for room in rooms.values():
+        # Only the screen that holds the bomb: the cave below keeps its
+        # own name for the way out. Exits are replaced, never changed in
+        # place -- a maze's copies share their base's ExitSpecs.
+        if not room.dungeon and room_puzzles(room) & set(BOMB_PUZZLE_DIRECTIONS):
+            extra_words = bomb_seal_words(room).split()
+            for direction, exit_spec in list(room.exits.items()):
+                words = exit_spec.keyword.split()
+                if exit_spec.locks != 4 or not words or words[0] not in BOMB_SEAL_WORDS:
+                    continue
+                room.exits[direction] = replace(
+                    exit_spec,
+                    keyword=" ".join(words + [w for w in extra_words if w not in words]))
+        # Written ahead of the room's own prose extras: load_rooms links each
+        # E record at the head of the list, so the last written is asked
+        # first, and LOOK ROCK at Spectacle Rock must find the left rock
+        # before the general "rocks" a prefix would also match.
+        room.extras = noun_details(room) + list(room.extras)
 
 
 def room_flag_word(room: RoomSpec) -> str:
@@ -3080,10 +3444,9 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                 else:
                     state = 2 if exit_spec.locks == LOCKED_DOOR else 1
                 lines.append(f"D 0 {room.vnum} {DIRECTION_NUMBERS[direction]} {state}")
-                if exit_spec.locks == 4 and exit_spec.keyword.startswith("cracked"):
-                    puzzle_vnum = PUZZLE_OBJECTS["bomb"].get(direction)
-                    if puzzle_vnum:
-                        lines.append(f"O 0 {puzzle_vnum} 0 {room.vnum}")
+                puzzle_vnum = cracked_exit_puzzle(direction, exit_spec)
+                if puzzle_vnum:
+                    lines.append(f"O 0 {puzzle_vnum} 0 {room.vnum}")
 
     for stage, (chest_vnum, gear_vnums) in GEAR_STAGES.items():
         for gear_vnum in gear_vnums:

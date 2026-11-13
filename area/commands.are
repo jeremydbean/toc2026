@@ -2738,7 +2738,8 @@ character once, for good:
   Money games (5)     GAMBLE LEFT, MIDDLE or RIGHT.  See GAMBLE.
   Take any one (4)    A Heart Container or a red potion: take one, and the
                       other is refused.
-  The dock heart      A Heart Container on a dock, reached by stepladder.
+  The dock heart      A Heart Container on a ledge off the eastern coast:
+                      carrying the stepladder, ENTER GAP.
   White Sword         5 hearts.  Magical Sword: 12 hearts.  See HEARTS.
   Hint caves          Two old women sell hints: GIVE them gold coins (one
                       takes 10, 30 or 50, the other 5, 10 or 20).  Two old
@@ -2748,6 +2749,8 @@ character once, for good:
   Potion shops        The old woman sells only to someone carrying Princess
                       Zelda's Letter, from the old man in the north-east.
   Fountains           The great fairies restore anyone not fighting.
+
+LIST in any cave says what it offers and how to have it.
 
 The swords, the Letter and the Power Bracelet are given one at a time:
 lose yours and the cave gives you another.
@@ -2784,7 +2787,8 @@ What Hyrule's things do:
   Power Bracelet  Strength while worn, and it moves the warp stones.
   Raft            ENTER RAFT to the Isle of the Snake, and from the Eastern
                   Dock of Lake Hylia to the Lonely Isle.
-  Stepladder      The coast's Heart Container ledge, and Level 5's moat.
+  Stepladder      The coast's Heart Container ledge (ENTER GAP), and Level
+                  5's moat.
 
 A dungeon's own things -- its map, its compass and the small keys found
 in it -- crumble to dust when you leave it, however you leave: walking

@@ -90,8 +90,6 @@ bool    check_blind             args( ( CHAR_DATA *ch ) );
 #define HYRULE_MAGICAL_KEY_VNUM     30416
 #define HYRULE_TRIFORCE_FIRST_VNUM  30400
 #define HYRULE_TRIFORCE_LAST_VNUM   30407
-#define HYRULE_REPAIR_ROOM_FIRST    30700
-#define HYRULE_REPAIR_ROOM_LAST     30708
 #define HYRULE_REPAIR_TOKEN_FIRST   30555
 
 
@@ -500,7 +498,7 @@ static void charge_hyrule_door_repair( CHAR_DATA *ch )
     if ( hyrule_object_list_has_vnum( ch->carrying, receipt_vnum ) )
         return;
 
-    charge = UMIN( 20, query_gold(ch) );
+    charge = UMIN( HYRULE_DOOR_REPAIR_GOLD, query_gold(ch) );
     if ( charge > 0 )
         add_money( ch, -charge );
 
@@ -511,7 +509,7 @@ static void charge_hyrule_door_repair( CHAR_DATA *ch )
         obj_to_char( receipt, ch );
     }
 
-    if ( charge == 20 )
+    if ( charge == HYRULE_DOOR_REPAIR_GOLD )
         send_to_char( "The old man collects 20 gold for the door repair.\n\r", ch );
     else if ( charge > 0 )
         send_to_char( "The old man takes your remaining gold coins for the door repair.\n\r", ch );
@@ -792,6 +790,33 @@ static void look_at_exit( CHAR_DATA *ch, int door )
     }
 }
 
+/* Whether one of the room's own LOOK details has `word` as a whole
+   keyword -- equal to it, not merely begun by it (do_look's directions). */
+static bool room_detail_names_word( const ROOM_INDEX_DATA *room, const char *word )
+{
+    const EXTRA_DESCR_DATA *ed;
+    const char *cursor;
+    char name[MAX_INPUT_LENGTH];
+
+    if ( room == NULL || word == NULL || word[0] == '\0' )
+        return false;
+    for ( ed = room->extra_descr; ed != NULL; ed = ed->next )
+    {
+        if ( ed->keyword == NULL )
+            continue;
+        cursor = ed->keyword;
+        for ( ; ; )
+        {
+            cursor = one_argument_const( cursor, name );
+            if ( name[0] == '\0' )
+                break;
+            if ( !str_cmp( word, name ) )
+                return true;
+        }
+    }
+    return false;
+}
+
 void do_look( CHAR_DATA *ch, char *argument )
 {
     char buf  [MAX_STRING_LENGTH];
@@ -1001,12 +1026,14 @@ void do_look( CHAR_DATA *ch, char *argument )
        prioritized): LOOK S is south, not the sword in your pack. A
        secret exit is not given away by it, LOOK 2.S is a thing, and a
        room's own detail by that word still answers first -- eleven rooms
-       describe a wall or a shutter as "north" or "west wall". */
+       describe a wall or a shutter as "north" or "west wall". By that
+       word whole: Hyrule's rooms answer to WALL, STAIRS and STATUE
+       (2026-11-13), and LOOK W and LOOK S must still be west and south. */
     if ( number == 1
     &&   ( door = door_direction_word( arg1 ) ) >= 0
     &&   ( pexit = ch->in_room->exit[door] ) != NULL
     &&   !IS_SET(pexit->exit_info, EX_SECRET)
-    &&   get_extra_descr( arg1, ch->in_room->extra_descr ) == NULL )
+    &&   !room_detail_names_word( ch->in_room, arg1 ) )
     {
         look_at_exit( ch, door );
         return;
