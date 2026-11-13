@@ -390,3 +390,4 @@
 390	1794535602	corpse	archived	P6adca00b00079e30	Trentlin	c6af06a99014a1f	restored	Killuminati: prestore	ended (restored): the player was restored; it will not come back after a restart; 2 objects left in it	1b37c896
 391	1794535602	corpse	archived	P6adca00b00079e30	Trentlin	c6aef57d8014fe2	restored	Killuminati: prestore	ended (restored): the player was restored; it will not come back after a restart; 0 objects left in it	be0d9ca8
 392	1794535602	request	committed	P6adca00b00079e30	Trentlin	corpse:c6af6495b017e2f	corpse	Killuminati	53 objects from corpse c6af6495b017e2f (live); undo with Trentlin.20261113_020642.corpserestore	1d9e9f4a
+393	1794537451	snapshot	committed	P6adc9d850001b1ba	Alaric	-	quest	-	Alaric.20261113_023731.quest fnv 85259efe 32678 bytes	8f9cdc17
