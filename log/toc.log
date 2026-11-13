@@ -296006,3 +296006,6 @@ Fri Nov 13 20:39:14 2026 :: EOF encountered on read.
 Fri Nov 13 20:39:14 2026 :: Connection guard: 198.235.24.17 closed before a password prompt (strike 1 of 6 in 6 hours).
 Fri Nov 13 20:39:32 2026 :: Black market: the dealer vanished from room 13288 (Hallway, solace.are) (wandering).
 Fri Nov 13 20:39:46 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 20:43:50 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 20:44:51 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 20:47:52 2026 :: Treasure goblin: vanished from room 13080 (Nest Entrance, lakes.are) (too long in one area).
