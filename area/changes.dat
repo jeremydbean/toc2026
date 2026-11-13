@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113guardians 2026-11-13
+Hyrule's guardians are retuned for players fighting on their own power,
+without Hermie's spell-ups: a player at the top of a dungeon's level band,
+in ordinary gear, should beat the first seven guardians about two times
+in three.  The ashen Gleeok is still a fight for two, and Ganon for three.
+CONSIDER now counts a guardian's own attacks (fire, rocks, volleys) as
+well as its blows, and says how much of them lands on you.  Digdogger's
+den now shrinks it properly when you play the Recorder there.
+
 @ 20261113hyrulelook 2026-11-13
 Hyrule is easier to read:
   - The stepladder and the rafts answer to what you see: ENTER GAP, ENTER
