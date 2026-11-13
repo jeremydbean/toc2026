@@ -1589,6 +1589,16 @@ D3
 ~
 ~
 0 -1 17
+E
+sign~
+The sign reads:
+
+   Mud School is NORTH.  Every room in it has a sign like this one: read
+   it with LOOK SIGN, do what it says, and go on.  At the end, the
+   educated goblin holds the Mud School diploma.
+
+   You may not pass these doors once you have passed level 10.
+~
 S
 #3701
 A Room in Mud School~

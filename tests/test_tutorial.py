@@ -219,12 +219,12 @@ class TutorialLiveTests(unittest.TestCase):
                 self.assertNotIn(f"{HINT} Mud School's signs]", client.transcript)
                 self.assertIn("Mud School: 2 of 11 steps seen", client.sync("tutorial status"))
 
-                # NEXT shows the next unseen one at once; CONSIDER typed
-                # first makes its hint unnecessary.
+                # NEXT shows the next unseen one at once. A CONSIDER that
+                # found nobody teaches nothing, so its hint still comes.
                 client.sync("consider nobody")
                 nxt = client.sync("tutorial next")
                 self.assertIn(HINT, nxt)
-                self.assertNotIn("sizing up a fight", nxt)
+                self.assertIn("sizing up a fight", nxt)
                 self.assertNotIn("moving about", nxt)
 
                 # The Oracle: tried once, the hint is done and the
@@ -379,7 +379,7 @@ class TutorialLiveTests(unittest.TestCase):
                 staff.send("quit")
                 staff.wait_closed()
 
-            before = file_line(mud, "Ztutfight", "Tutorial")
+            before = int(file_line(mud, "Ztutfight", "Tutorial").split()[2])
             patch_player_file(mud, "Ztutfight", Levl=54, Room=TEMPLE, Attr="25 25 25 25 25")
             with mud.connect(timeout=120) as hero:
                 login(hero, "Ztutfight", PW)
@@ -390,7 +390,261 @@ class TutorialLiveTests(unittest.TestCase):
                 self.assertIn("[x] dying", status)
                 hero.send("quit")
                 self.assertTrue(hero.wait_closed())
-            self.assertEqual(before, file_line(mud, "Ztutfight", "Tutorial"))
+            # Nothing seen is lost (the remort's outfit may add "carrying and
+            # wearing things": gear went on).
+            after = file_line(mud, "Ztutfight", "Tutorial").split()
+            self.assertEqual("1", after[1])
+            self.assertEqual(before, before & int(after[2]))
+
+
+# The review of 2026-11-13: tutorial_done bits (src/tutorial.c's enum, which
+# is saved: append, never renumber).
+BIT = {"move": 0, "sign": 1, "consider": 2, "item": 3, "wear": 4, "fight": 5,
+       "kill": 6, "death": 7, "level": 8, "walkto": 9, "guild": 10,
+       "guild-remind": 11, "guild-auto": 12, "pkill": 13, "door": 14,
+       "hunger": 15, "stash": 16, "quest": 17, "help": 18, "oracle": 19,
+       "diploma": 20}
+ALL_SCHOOL = (1 << 11) - 1
+QUIET = {"TOC_NO_TUTORIAL": None, "TOC_TUTORIAL_CENSUS_SECS": "2",
+         "TOC_TUTORIAL_GAP": "300"}       # nothing comes out unasked
+
+
+def mask(*keys: str) -> int:
+    value = 0
+    for key in keys:
+        value |= 1 << BIT[key]
+    return value
+
+
+def drained_next(client, limit: int = 24) -> str:
+    """TUTORIAL NEXT until it runs out; everything it said."""
+    said = ""
+    for _ in range(limit):
+        reply = client.sync("tutorial next")
+        said += reply
+        if "seen every hint" in reply:
+            return said
+    raise AssertionError("TUTORIAL NEXT never ran out")
+
+
+class TutorialReviewSourceTests(unittest.TestCase):
+    def test_the_copy_says_what_the_game_does(self) -> None:
+        tut = read("src/tutorial.c")
+        blob = tut[tut.index("{ 3709,"):tut.index("{ 3711,")]
+        self.assertIn("FLEE", blob)
+        self.assertIn("not to beat it", " ".join(re.findall(r'"([^"]*)"', blob)))
+        death = tut[tut.index("case TUT_DEATH:"):tut.index("case TUT_LEVEL:")]
+        death_text = " ".join(re.findall(r'"([^"]*)"', death))
+        for word in ("group", "WANTED", "NOLOOT"):
+            self.assertIn(word, death_text)
+        # The entrance's "LOOK SIGN" has a sign to read.
+        rooms = read("area/school.are")
+        rooms = rooms[rooms.index("#ROOMS"):]              # 3700 is a mobile too
+        entrance = rooms[rooms.index("\n#3700\n"):rooms.index("\n#3701\n")]
+        self.assertRegex(entrance, r"\nE\nsign~\n")
+
+    def test_schooled_needs_no_death_and_no_pk(self) -> None:
+        tut = read("src/tutorial.c")
+        table = tut[tut.index("tut_steps[TUT_MAX] ="):tut.index("};", tut.index("tut_steps[TUT_MAX] ="))]
+        core = re.findall(r'\{ "([a-z-]+)",\s+"[^"]+",\s+true,', table)
+        self.assertNotIn("death", core)
+        self.assertNotIn("pkill", core)
+        self.assertIn("diploma", core)
+        self.assertIn("oracle", core)
+        complete = tut[tut.index("static bool tut_complete"):tut.index("static void tut_finished")]
+        self.assertNotIn("level", complete)
+        self.assertNotIn("pk_state", complete)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class TutorialReviewLiveTests(unittest.TestCase):
+    def test_school_steps_at_a_run_on_return_and_after_a_reconnect(self) -> None:
+        with LiveMud(extra_env=TUTORIAL_ON) as mud:
+            make(mud, "Zrevstaff", Levl=70, Room=TEMPLE)
+            make(mud, "Zrevrun", Room=3700, Tutorial=f"1 {mask('move', 'consider')}",
+                 TutSchool=0, TutPending=0)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zrevstaff", PW)
+                login(hero, "Zrevrun", PW)
+                # No waiting between the moves: every station still speaks,
+                # once, as its room is shown.
+                for way in ("north", "north", "west", "north"):
+                    hero.send(way)
+                hero.drain(3)
+                for step in range(1, 6):
+                    self.assertEqual(1, hero.transcript.count(f"Mud School, step {step} of 11]"),
+                                     (step, hero.transcript[-3000:]))
+                hero.sync("south")
+                hero.sync("north")
+                hero.drain(2)
+                for step in range(1, 6):
+                    self.assertEqual(1, hero.transcript.count(f"Mud School, step {step} of 11]"), step)
+
+                # Carried asleep into a station: no room view, so nothing yet;
+                # the link drops; back and awake, the step comes.
+                hero.sync("sleep")
+                staff.must("transfer zrevrun 3709", "")
+                hero.drain(2)
+                self.assertNotIn("step 6 of 11]", hero.transcript)
+                hero.sock.close()
+            with mud.connect(timeout=120) as hero:
+                login(hero, "Zrevrun", PW)
+                hero.sync("wake")
+                shown = wait_for(hero, "Mud School, step 6 of 11]", 10, mark=0)
+                self.assertIn("not to beat it", " ".join(shown.split()))
+                hero.drain(2)
+                self.assertEqual(1, hero.transcript.count("step 6 of 11]"))
+                hero.send("quit")
+                self.assertTrue(hero.wait_closed())
+
+    def test_every_milestone_waits_across_a_quit(self) -> None:
+        with LiveMud(extra_env=QUIET) as mud:
+            make(mud, "Zrevgod", Levl=70, Room=TEMPLE)
+            make(mud, "Zrevfull", Room=TEMPLE, Tutorial="1 0", TutSchool=ALL_SCHOOL, TutPending=0)
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zrevgod", PW)
+                with mud.connect(timeout=120) as hero:
+                    login(hero, "Zrevfull", PW)
+                    staff.must("load obj 3715", "You create")
+                    staff.must("give diploma zrevfull", "You give")
+                    staff.must("advance zrevfull 6", "")      # level, Oracle, guild, guild given
+                    hero.send("quit")
+                    self.assertTrue(hero.wait_closed())
+                pending = file_line(mud, "Zrevfull", "TutPending")
+                self.assertIsNotNone(pending, "pending guidance was not saved")
+                with mud.connect(timeout=120) as hero:
+                    login(hero, "Zrevfull", PW)
+                    self.assertIn("a hint is waiting", hero.sync("tutorial status"))
+                    said = " ".join(drained_next(hero).split())
+                    for text in ("now in the warrior guild, free", "That is the Mud School diploma",
+                                 "A new level!", "Try the Oracle", "You picked something up"):
+                        self.assertIn(text, said)
+                    # The guild news is the most urgent of them.
+                    self.assertLess(said.index("now in the warrior guild"),
+                                    said.index("That is the Mud School diploma"))
+                    hero.send("quit")
+                    hero.wait_closed()
+                staff.send("quit")
+                staff.wait_closed()
+
+    def test_turning_it_on_reads_where_you_stand(self) -> None:
+        with LiveMud(extra_env=QUIET) as mud:
+            make(mud, "Zrevkeeper", Levl=70, Room=TEMPLE)
+            make(mud, "Zrevlate", Room=TEMPLE, Levl=5)                 # warrior, no guild
+            make(mud, "Zrevchose", Room=TEMPLE, Levl=5,
+                 Tutorial=f"0 {mask('guild')}")                        # choice seen
+            make(mud, "Zrevmonk", Room=TEMPLE, Levl=5, Cla=4)
+            make(mud, "Zrevmember", Room=TEMPLE, Levl=5, Gui=2)
+            make(mud, "Zrevpk", Room=TEMPLE, Levl=15, Gui=3)
+            for name in ("Zrevlate", "Zrevmonk", "Zrevmember", "Zrevpk"):
+                path = mud.player_dir / name
+                text = path.read_text(encoding="latin-1")
+                path.write_text("\n".join(l for l in text.split("\n")
+                                          if not l.startswith(("Tutorial ", "TutSchool ", "TutPending "))),
+                                encoding="latin-1", newline="")
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zrevkeeper", PW)
+
+                def opt_in(name: str) -> str:
+                    with mud.connect(timeout=120) as client:
+                        login(client, name, PW)
+                        self.assertIn("The tutorial is OFF", client.sync("tutorial"))
+                        if name == "Zrevmember":
+                            staff.must("load obj 3715", "You create")
+                            staff.must(f"give diploma {name.lower()}", "You give")
+                        # TUTORIAL ON may speak at once: the first hint is
+                        # whatever comes first after it, by itself or asked.
+                        mark = len(client.transcript)
+                        client.must("tutorial on", "The tutorial is ON")
+                        client.sync("tutorial next")
+                        after = client.transcript[mark:]
+                        start = after.index("[Tutorial:")
+                        nxt = after.find("[Tutorial:", start + 1)
+                        first = after[start:nxt if nxt > 0 else len(after)]
+                        said = after + drained_next(client)
+                        client.send("quit")
+                        client.wait_closed()
+                        return " ".join(first.split()), " ".join(said.split())
+
+                first, said = opt_in("Zrevlate")
+                self.assertIn("You may now join a guild", first)
+                self.assertIn("GAINLIST PREVIEW WARRIOR THIEF", first)
+                first, said = opt_in("Zrevchose")
+                self.assertIn("level 6 ends the choice", first)
+                self.assertNotIn("You may now join a guild", said)
+                for name in ("Zrevmonk", "Zrevmember"):
+                    first, said = opt_in(name)
+                    self.assertNotIn("join a guild", said, name)
+                    self.assertNotIn("JOIN <", said, name)
+                self.assertIn("That is the Mud School diploma", said)       # the member's
+                first, said = opt_in("Zrevpk")
+                self.assertIn("Level 15 opens player killing", said)
+                staff.send("quit")
+                staff.wait_closed()
+
+    def test_only_a_command_that_worked_counts_as_learned(self) -> None:
+        with LiveMud(extra_env=QUIET) as mud:
+            make(mud, "Zrevadmin", Levl=70, Room=TEMPLE)
+            make(mud, "Zrevtry", Room=TEMPLE, Tutorial="1 0", TutSchool=ALL_SCHOOL, TutPending=0)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zrevadmin", PW)
+                login(hero, "Zrevtry", PW)
+
+                def seen(title: str) -> bool:
+                    return f"[x] {title}" in hero.sync("tutorial status")
+
+                hero.sync("consider nobody")
+                hero.sync("wear nothinghere")
+                hero.sync("walkto nowhereatall")
+                hero.sync("compare nothinghere")
+                self.assertFalse(seen("sizing up a fight"))
+                self.assertFalse(seen("carrying and wearing things"))
+                self.assertFalse(seen("finding your way"))
+                self.assertFalse(seen("your equipment"))
+
+                # While it is off: a failure teaches nothing -- its hint still
+                # comes once it is back on (ON lets the most urgent out at once)
+                # -- and a success teaches without a word.
+                hero.must("tutorial off", "The tutorial is OFF")
+                hero.sync("consider nobody")
+                mark = len(hero.transcript)
+                hero.must("tutorial on", "The tutorial is ON")
+                self.assertIn("sizing up a fight]", wait_for(hero, "sizing up a fight]", 10, mark=mark))
+                hero.must("tutorial off", "The tutorial is OFF")
+                hero.sync("walkto square")
+                hero.sync("walkto stop")
+                hero.must("tutorial on", "The tutorial is ON")
+                hero.drain(2)
+                self.assertTrue(seen("finding your way"))
+                self.assertNotIn("[Tutorial: finding your way]", hero.transcript)
+                self.assertFalse(seen("carrying and wearing things"))
+                hero.send("quit")
+                hero.wait_closed()
+                staff.send("quit")
+                staff.wait_closed()
+
+    def test_schooled_comes_once_before_or_after_level_fifteen(self) -> None:
+        everything_but = sum(1 << b for b in range(21)) & ~mask("oracle", "pkill")
+        with LiveMud(extra_env=QUIET) as mud:
+            make(mud, "Zrevjudge", Levl=70, Room=TEMPLE)
+            make(mud, "Zrevdone", Room=TEMPLE, Levl=10, Tutorial=f"1 {everything_but}",
+                 TutSchool=ALL_SCHOOL, TutPending=0)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zrevjudge", PW)
+                login(hero, "Zrevdone", PW)
+                drained_next(hero)                         # the Oracle: done
+                self.assertEqual(1, hero.transcript.count("every hint so far"))
+                self.assertEqual(1, hero.transcript.count("Schooled"))
+                staff.must("advance zrevdone 15", "")
+                said = drained_next(hero)                  # PK, optional
+                self.assertIn("Level 15 opens player killing", said)
+                hero.drain(2)
+                self.assertEqual(1, hero.transcript.count("every hint so far"))
+                self.assertEqual(1, hero.transcript.count("Schooled"))
+                hero.send("quit")
+                hero.wait_closed()
+                staff.send("quit")
+                staff.wait_closed()
 
 
 if __name__ == "__main__":

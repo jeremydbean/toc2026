@@ -307,7 +307,6 @@ typedef enum
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define PLAY_RECENT             6     /* commands kept for a BUG report (playlog.c) */
-#define TUTORIAL_QUEUE          4     /* hints waiting to be shown (tutorial.c) */
 #define PLAY_COIN_KINDS         7     /* a session's coin by source (playlog.c) */
 #define PLAY_TALLY_KINDS        8     /* labels in a session's spend and exp tallies */
 #define PLAY_TALLY_NAME         16    /* a tally label, the last slot "other" */
@@ -1092,6 +1091,8 @@ void  tutorial_login         args( ( CHAR_DATA *ch, bool is_new_character ) );
 void  tutorial_room_seen     args( ( CHAR_DATA *ch, bool arrived ) );
 void  tutorial_got           args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
 void  tutorial_command       args( ( CHAR_DATA *ch, const char *cmd ) );
+void  tutorial_command_begin args( ( CHAR_DATA *ch ) );
+void  tutorial_learned       args( ( CHAR_DATA *ch, const char *key ) );
 void  tutorial_fight         args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void  tutorial_kill          args( ( CHAR_DATA *ch ) );
 void  tutorial_death         args( ( CHAR_DATA *ch ) );
@@ -2721,12 +2722,10 @@ struct  pc_data
        time of the last hint are memory only. */
     bool                tutorial_on;
     int                 tutorial_done;
-    sh_int              tutorial_queue[TUTORIAL_QUEUE];
-    int                 tutorial_queued;
+    int                 tutorial_pending;     /* steps waiting, a bit each (TutPending) */
     time_t              tutorial_last;
     int                 tutorial_misses;      /* unknown words this sitting */
     int                 tutorial_school;      /* Mud School steps seen, a bit each (TutSchool) */
-    int                 tutorial_school_pending; /* a station to show, + 1 (memory only) */
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;

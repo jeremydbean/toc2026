@@ -1455,6 +1455,9 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 		 ch->pcdata->tutorial_done );
     if ( ch->pcdata != NULL && ch->pcdata->tutorial_school != 0 )
 	fprintf( fp, "TutSchool %d\n", ch->pcdata->tutorial_school );
+    /* What was waiting to be said: said at the next login, not lost. */
+    if ( ch->pcdata != NULL && ch->pcdata->tutorial_pending != 0 )
+	fprintf( fp, "TutPending %d\n", ch->pcdata->tutorial_pending );
     if (ch->saving_throw != 0)
 	fprintf( fp, "Save  %d\n",	ch->saving_throw);
     fprintf( fp, "Alig  %d\n",	ch->alignment		);
@@ -4960,6 +4963,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Tru",		ch->trust,		(sh_int)(fread_number( fp )) );
 	    KEY( "TitleSet",	ch->pcdata->title_custom, fread_number( fp ) != 0 );
 	    KEY( "TutSchool",	ch->pcdata->tutorial_school, fread_number( fp ) );
+	    KEY( "TutPending",	ch->pcdata->tutorial_pending, fread_number( fp ) );
 	    if ( !str_cmp( word, "Tutorial" ) )
 	    {
 		int on = fread_number( fp );

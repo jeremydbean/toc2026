@@ -1118,6 +1118,7 @@ static void play_note( CHAR_DATA *ch, const char *name, const char *shown,
     play_refused = refused;
     play_begun = true;
     playlog_begin( ch, name, play_shown );
+    tutorial_command_begin( ch );       /* what a command changes (tutorial.c) */
 }
 
 

@@ -6945,10 +6945,28 @@ command table (the staff NEWBIE command is another thing).
   `tests/live_mud.py`) makes new characters with it off, so hints never
   land in other tests' replies; `tests/test_tutorial.py` unsets it.
 - **Steps are bits of `tutorial_done`**, saved: append to the enum, never
-  renumber. A step shown or made unnecessary (`tut_known`: the player typed
-  CONSIDER, WIMPY, WALKTO, COMPARE, STASH, AQUEST, OPEN, EAT, HELP or PRAY
-  first, or asked the Oracle) is never shown again, across quits, links
-  and remorts. The queue (`TUTORIAL_QUEUE`) is memory only.
+  renumber; bit 30 (`TUT_FINISHED_BIT`) says the tutorial was finished,
+  so Schooled is awarded and counted once. **Waiting steps are bits of
+  `tutorial_pending`** (`TutPending`, saved): bounded by the steps there
+  are, so no milestone is dropped, and a quit keeps them (review,
+  2026-11-13: a four-slot memory queue dropped a fifth event -- the
+  diploma, the level 6 guild -- and a quit dropped the rest). They are
+  said by `tut_priority`, the guild deadline first; `tut_priority`'s size
+  is checked against the enum at compile time.
+- **A hint is learned early only by succeeding** (review, 2026-11-13: a
+  command's name alone used to mark it): `tutorial_learned` where CONSIDER
+  found somebody and WALKTO set off; worn count, WIMPY, hunger, thirst and
+  a held diploma compared before and after a command
+  (`tutorial_command_begin` from `play_note`, `tutorial_command`). Any
+  other hint is simply shown once.
+- **TUTORIAL ON and a login read the character** (`tut_seed`): a guild
+  still open (the choice, or at level 5 the deadline), a diploma carried
+  but not held, a level above 1 (the level and Oracle steps), PKILL from
+  15, the altar or the oak they stand in. Never a step seen, never a guild
+  step to a monk, a necromancer or a member.
+- **Finished means the core set**: MOVE, CONSIDER, ITEM, WEAR, FIGHT,
+  KILL, LEVEL, WALKTO, ORACLE and DIPLOMA -- never DEATH or PKILL, and
+  nothing that depends on level, so it cannot be unfinished later.
 - **Events**: do_look's room view (`tutorial_room_seen`: moving, a Mud
   School sign, a creature worth CONSIDER, leaving Mud School, the altar,
   the oak below the questmaster), `obj_to_char` (`tutorial_got`), a command
@@ -6966,8 +6984,14 @@ command table (the staff NEWBIE command is another thing).
   there; a bit a station in `tutorial_school`, saved as `TutSchool` (case
   'T'). The diploma reaching them is `TUT_DIPLOMA` (core, never offered
   by NEXT); HOLD DIPLOMA marks it known. Change the route with the school.
-- **Delivery** is `tutorial_update`, once a second: out of a fight, not
-  paging, not on WALKTO or BUILD, awake, `TUTORIAL_GAP` after the last.
+  The entrance (3700) has a sign of its own (`E sign`), so its "LOOK SIGN"
+  works.
+- **Delivery** is `tutorial_update`, once a second, when `tut_safe` (in
+  the game in their own body, out of a fight, awake, not paging, not on
+  WALKTO or BUILD) and `TUTORIAL_GAP` after the last (`TOC_TUTORIAL_GAP`
+  for tests). A Mud School step is said with its room view, without the
+  gap (`school_now`), or the moment it is safe while they stand there or
+  come back -- each room once, however fast they walk.
 - **Guild steps** are for a mage, cleric, thief or warrior in no guild,
   levels 3-5; level 6 gives the class's guild free (`advance_level_body`)
   and the tutorial says so. **PKILL** is optional and lasting in its words,

@@ -1590,6 +1590,7 @@ void do_walkto( CHAR_DATA *ch, char *argument )
     }
 
     ch->pcdata->walkto_vnum   = target->vnum;
+    tutorial_learned( ch, "walkto" );   /* a walk that set off: tutorial.c */
     ch->pcdata->walkto_dest   = found;
     ch->pcdata->walkto_steps  = 0;
     ch->pcdata->walkto_waited = 0;

@@ -4078,8 +4078,14 @@ a guild at level 3, and the optional player-killer choice at level 15.
   - TUTORIAL NEXT shows the next hint now.  TUTORIAL STATUS lists the
     hints and which you have seen.
   - It will ask you to try the Oracle (PRAY), who answers questions about
-    the game; asking her earns Seeker of Answers, and seeing every hint
-    earns Schooled.
+    the game; asking her earns Seeker of Answers.  Seeing it through --
+    Mud School to the diploma, a first fight, kill and level, your gear,
+    WALKTO and the Oracle -- earns Schooled, once.  Dying and PKILL are
+    never part of it.
+  - TUTORIAL ON looks at where you stand: a guild still to choose, a
+    diploma not yet held, a new level, PKILL at 15.  A hint you show you
+    know -- a CONSIDER that found someone, a WALKTO that set off, gear
+    put on -- is not shown again; a failed try teaches nothing.
 
 See also: BEGINNERS, 'NEWBIE INFO', MUDSCHOOL, GUILDS
 ~

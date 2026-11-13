@@ -9,18 +9,22 @@
  * Tutorial line and reads as off, and TUTORIAL ON opts in. TUTORIAL
  * ON|OFF|STATUS|NEXT.
  *
- * State: pcdata->tutorial_on and tutorial_done (a bit a step: TUT_*) are
- * saved as "Tutorial <on> <done>" under case 'T' of fread_char; the queue
- * of hints waiting to be shown is memory only, so a reconnect keeps it and
- * a quit drops it (the event will come again, or TUTORIAL NEXT finds it).
- * A remort keeps both: a step shown is never shown again.
+ * State, all saved: tutorial_on and tutorial_done (a bit a step: TUT_*,
+ * and TUT_FINISHED_BIT) as "Tutorial <on> <done>", the Mud School steps
+ * seen as TutSchool and the steps waiting to be said as TutPending, all
+ * under case 'T' of fread_char. A quit, a lost link and a remort keep it
+ * all: a step shown is never shown again, one waiting is never lost.
  *
- * One hint at a time: an event queues its step (never one already shown or
- * queued), and tutorial_update, once a second, shows the oldest only when
- * the player is out of a fight, not paging, not on a WALKTO or a BUILD,
- * awake, and TUTORIAL_GAP seconds past the last one. Using a command a hint
- * teaches before the hint comes marks it done without a word (CONSIDER,
- * WIMPY, WALKTO, COMPARE, WEAR).
+ * One hint at a time: an event marks its step waiting (never one already
+ * shown), and tutorial_update, once a second, says the most urgent
+ * (tut_priority) when it is safe -- in the game, out of a fight, awake, not
+ * paging, not on a WALKTO or a BUILD (tut_safe) -- and TUTORIAL_GAP seconds
+ * after the last. A Mud School step is said with its room view, without
+ * waiting on the gap, or as soon as it is safe while they stand there or
+ * come back. TUTORIAL ON and a login read the character as they stand
+ * (tut_seed). A hint is learned early only by doing what it teaches,
+ * successfully (tutorial_learned, tutorial_command); a failed attempt
+ * teaches nothing.
  *
  * The guild steps are for a mage, cleric, thief or warrior in no guild:
  * monks and necromancers have their own, and a member has chosen. At level
@@ -56,6 +60,9 @@
 #include "numparse.h"
 
 #define TUTORIAL_GAP            6       /* seconds between two hints */
+/* In tutorial_done beside the steps: the tutorial was finished, so it is
+   never finished again. Above every step bit. */
+#define TUT_FINISHED_BIT        ( 1 << 30 )
 #define TUTORIAL_CENSUS_SECS    3600
 
 /* A bit each in pcdata->tutorial_done, saved: append, never renumber. */
@@ -79,8 +86,12 @@ enum
 };
 
 /* The steps, in the order TUTORIAL NEXT and STATUS take them. `core`
-   steps are the ones every character meets; seeing them all, and PKILL
-   once level 15 comes, is a completed tutorial. */
+   steps are what finishing the tutorial means (Schooled): Mud School to
+   the diploma, a first fight, kill and level, gear, finding your way and
+   the Oracle -- a set that only grows, so finishing is once and for good
+   (review, 2026-11-13: PKILL was required from level 15, so a character
+   finished before 15 was unfinished at it and finished a second time).
+   Dying and PKILL are never required. */
 static const struct
 {
     const char *key;
@@ -90,13 +101,13 @@ static const struct
 } tut_steps[TUT_MAX] =
 {
     { "move",         "moving about",                 true,  true  },
-    { "sign",         "Mud School's signs",           true,  true  },
+    { "sign",         "Mud School's signs",           false, true  },
     { "consider",     "sizing up a fight",            true,  true  },
     { "item",         "carrying and wearing things",  true,  true  },
     { "wear",         "your equipment",               true,  true  },
     { "fight",        "fighting and fleeing",         true,  true  },
     { "kill",         "after a kill",                 true,  true  },
-    { "death",        "dying",                        true,  true  },
+    { "death",        "dying",                        false, true  },
     { "level",        "a new level",                  true,  true  },
     { "walkto",       "finding your way",             true,  true  },
     { "guild",        "choosing a guild",             false, true  },
@@ -132,8 +143,8 @@ static const struct
 } school_route[] =
 {
     { 3700,
-      "Mud School starts north of here.  Every room on the way has a sign:\n\r"
-      "LOOK SIGN reads it.  At the end the educated goblin holds the Mud School\n\r"
+      "Mud School starts north of here.  This room and every one on the way\n\r"
+      "has a sign: LOOK SIGN reads it.  At the end the educated goblin holds the Mud School\n\r"
       "diploma -- held, it adds 10 to your intelligence, wisdom and\n\r"
       "constitution, and every level you gain with it in hand gives more hit\n\r"
       "points, mana and practices.  Go NORTH.\n\r" },
@@ -151,9 +162,10 @@ static const struct
       "SCORE shows your character: hit points, stats, experience to your next\n\r"
       "level.  Then go NORTH to combat training.\n\r" },
     { 3709,
-      "DOWN is a blob too strong to kill.  Go down, CONSIDER BLOB, KILL BLOB,\n\r"
-      "and FLEE once you have the feel of a fight -- you come back up here.\n\r"
-      "WIMPY makes you flee by yourself.  Then go WEST.\n\r" },
+      "DOWN is a blob far too strong for you, and the lesson is not to beat it\n\r"
+      "but to get away: go DOWN, CONSIDER BLOB, KILL BLOB to start the fight,\n\r"
+      "then FLEE after a round or two -- you come back up here.  WIMPY makes\n\r"
+      "you flee by yourself.  Then go WEST.\n\r" },
     { 3711,
       "Real fights from here: kill what you meet, and take what it carries.\n\r"
       "Go DOWN to the cage room.\n\r" },
@@ -195,6 +207,8 @@ static int school_seen( CHAR_DATA *ch )
             n++;
     return n;
 }
+
+static bool school_now( CHAR_DATA *ch );
 
 static long tut_shown[TUT_MAX];
 static long tut_next_used, tut_turned_on, tut_turned_off, tut_completed, tut_school_shown;
@@ -239,6 +253,37 @@ static bool tut_counted( CHAR_DATA *ch )
     return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && !is_staff( ch );
 }
 
+/* Whether a hint may be written now: in the game in their own body, out
+   of a fight, awake, not paging, not on a WALKTO or a BUILD. */
+static bool tut_safe( CHAR_DATA *ch )
+{
+    DESCRIPTOR_DATA *d = ch->desc;
+
+    return d != NULL && d->connected == CON_PLAYING && d->original == NULL
+        && d->character == ch && ch->fighting == NULL
+        && ch->position >= POS_RESTING && d->showstr_point == NULL
+        && ch->pcdata->walkto_vnum == 0 && !build_wizard_active( ch );
+}
+
+/* Seconds between two hints: TUTORIAL_GAP, or TOC_TUTORIAL_GAP (0 to
+   600) for tests that want nothing shown unasked. Mud School's steps do
+   not wait on it. */
+static long tut_gap( void )
+{
+    static long gap = -1;
+
+    if ( gap < 0 )
+    {
+        const char *env = getenv( "TOC_TUTORIAL_GAP" );
+        long v = 0;
+
+        gap = TUTORIAL_GAP;
+        if ( env != NULL && parse_long( env, 0, 600, &v ) )
+            gap = v;
+    }
+    return gap;
+}
+
 static bool tut_complete( CHAR_DATA *ch )
 {
     int step;
@@ -246,33 +291,43 @@ static bool tut_complete( CHAR_DATA *ch )
     for ( step = 0; step < TUT_MAX; step++ )
         if ( tut_steps[step].core && !tut_done( ch, step ) )
             return false;
-    /* And, from level 15, the word on player killing (unless they took it). */
-    return ch->level < 15 || ch->pcdata->pk_state == 1 || tut_done( ch, TUT_PKILL );
+    return true;
 }
 
-/* The tutorial done: once, an achievement (Schooled) and a word. */
+/* The tutorial done: once, ever -- the finished bit is saved with the
+   steps -- an achievement (Schooled), a count and a word. */
 static void tut_finished( CHAR_DATA *ch, bool was_complete )
 {
-    if ( was_complete || !tut_complete( ch ) )
+    UNUSED_PARAM( was_complete );
+    if ( ( ch->pcdata->tutorial_done & TUT_FINISHED_BIT ) || !tut_complete( ch ) )
         return;
+    ch->pcdata->tutorial_done |= TUT_FINISHED_BIT;
     tut_completed++;
     achievement_record_event( ch, ACHIEVEMENT_EVENT_TUTORIAL_DONE, true );
     send_to_char( "{0E[Tutorial]{00 That is every hint so far.  TUTORIAL OFF puts the "
                   "tutorial away;\n\rHELP BEGINNERS and HELP TUTORIAL are always there.\n\r", ch );
 }
 
+/* Waiting steps are a bit each in tutorial_pending -- bounded by the
+   steps there are, so no milestone is ever dropped for want of room
+   (review, 2026-11-13: a fifth event, the diploma or the level 6 guild
+   among them, was lost from a queue of four) -- and saved as TutPending,
+   so what was waiting at a quit is waiting at the next login. They are
+   shown in this order: what has a deadline or happened once first. */
+static const int tut_priority[] =
+{
+    TUT_GUILD_REMIND, TUT_GUILD_CHOICE, TUT_GUILD_AUTO, TUT_DIPLOMA,
+    TUT_DEATH, TUT_PKILL, TUT_LEVEL, TUT_FIGHT, TUT_KILL, TUT_ITEM,
+    TUT_WEAR, TUT_CONSIDER, TUT_MOVE, TUT_SIGN, TUT_WALKTO, TUT_ORACLE,
+    TUT_DOOR, TUT_HUNGER, TUT_STASH, TUT_QUEST, TUT_HELP
+};
+
+typedef char tut_priority_names_every_step[
+    ( sizeof(tut_priority) / sizeof(tut_priority[0]) == TUT_MAX ) ? 1 : -1 ];
+
 static void tut_unqueue( CHAR_DATA *ch, int step )
 {
-    int i, j;
-
-    for ( i = 0; i < ch->pcdata->tutorial_queued; i++ )
-        if ( ch->pcdata->tutorial_queue[i] == step )
-        {
-            for ( j = i; j + 1 < ch->pcdata->tutorial_queued; j++ )
-                ch->pcdata->tutorial_queue[j] = ch->pcdata->tutorial_queue[j + 1];
-            ch->pcdata->tutorial_queued--;
-            return;
-        }
+    ch->pcdata->tutorial_pending &= ~( 1 << step );
 }
 
 /* Done without a word: the player used what the hint would teach. */
@@ -289,20 +344,13 @@ static void tut_known( CHAR_DATA *ch, int step )
         tut_finished( ch, was_complete );
 }
 
-/* An event: queue its step, once, while the tutorial is on. */
+/* An event: its step waits, once, while the tutorial is on. */
 static void tut_event( CHAR_DATA *ch, int step )
 {
-    int i;
-
     if ( !tut_counted( ch ) || !ch->pcdata->tutorial_on
     ||   tut_done( ch, step ) || !tut_applies( ch, step ) )
         return;
-    for ( i = 0; i < ch->pcdata->tutorial_queued; i++ )
-        if ( ch->pcdata->tutorial_queue[i] == step )
-            return;
-    if ( ch->pcdata->tutorial_queued >= TUTORIAL_QUEUE )
-        return;                 /* full: the event comes again, or NEXT */
-    ch->pcdata->tutorial_queue[ch->pcdata->tutorial_queued++] = (sh_int) step;
+    ch->pcdata->tutorial_pending |= ( 1 << step );
 }
 
 /* ------------------------------------------------------------ the text */
@@ -362,8 +410,10 @@ static void tut_text( CHAR_DATA *ch, int step, char *buf, size_t size )
     case TUT_DEATH:
         snprintf( buf, size,
             "You died.  Your things are in your corpse where you fell: go back and\n\r"
-            "GET ALL CORPSE.  Nobody else may loot it unless you allow it (HELP\n\r"
-            "NOLOOT).  HELP DEATH says what a death costs.\n\r" );
+            "GET ALL CORPSE.  While you are in the game your group may loot it too,\n\r"
+            "and so may anyone if you turn NOLOOT off; logged out, nobody else may.\n\r"
+            "A WANTED player's corpse is anybody's (HELP NOLOOT, HELP WANTED).\n\r"
+            "HELP DEATH says what a death costs.\n\r" );
         break;
     case TUT_LEVEL:
         snprintf( buf, size,
@@ -495,14 +545,54 @@ void tutorial_new_character( CHAR_DATA *ch )
     ch->pcdata->tutorial_on     = off == NULL || off[0] == '\0' || !strcmp( off, "0" );
     ch->pcdata->tutorial_done   = 0;
     ch->pcdata->tutorial_school = 0;
-    ch->pcdata->tutorial_school_pending = 0;
-    ch->pcdata->tutorial_queued = 0;
+    ch->pcdata->tutorial_pending = 0;
     ch->pcdata->tutorial_last   = 0;
 }
 
+/* What the character's state calls for now, at TUTORIAL ON and at every
+   login with it on (review, 2026-11-13: a guildless level 5 opting in
+   heard nothing of the guild deadline). Urgent first by tut_priority;
+   nothing seen is repeated (tut_event), and the guild steps never reach
+   a monk, a necromancer or a member (tut_applies). */
+static void tut_seed( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj;
+
+    if ( guild_choice_open( ch ) )
+    {
+        if ( !tut_done( ch, TUT_GUILD_CHOICE ) )
+            tut_event( ch, TUT_GUILD_CHOICE );
+        else if ( ch->level >= 5 )
+            tut_event( ch, TUT_GUILD_REMIND );
+    }
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == OBJ_VNUM_DIPLOMA )
+        {
+            if ( obj->wear_loc == WEAR_HOLD )
+                tut_known( ch, TUT_DIPLOMA );
+            else
+                tut_event( ch, TUT_DIPLOMA );
+            break;
+        }
+    if ( ch->level >= 2 )
+    {
+        tut_event( ch, TUT_LEVEL );
+        tut_event( ch, TUT_ORACLE );
+    }
+    tut_event( ch, TUT_PKILL );
+    if ( ch->in_room != NULL )
+    {
+        if ( ch->in_room->vnum == ROOM_VNUM_ALTAR )
+            tut_event( ch, TUT_STASH );
+        if ( ch->in_room->vnum == 2401 || ch->in_room->vnum == 2410
+        ||   ch->in_room->vnum == 2411 || ch->in_room->vnum == ROOM_VNUM_OAK_TOP )
+            tut_event( ch, TUT_QUEST );
+    }
+}
+
 /* Entering the game: the first entry says the tutorial is on and how to
-   turn it off; a later one, briefly, that it still is; and what an
-   opted-in character's level already calls for is queued. */
+   turn it off; a later one, briefly, that it still is; and what the
+   character's state already calls for waits (tut_seed). */
 void tutorial_login( CHAR_DATA *ch, bool is_new_character )
 {
     if ( !tut_counted( ch ) || !ch->pcdata->tutorial_on )
@@ -515,10 +605,7 @@ void tutorial_login( CHAR_DATA *ch, bool is_new_character )
     else
         send_to_char( "{0E[Tutorial]{00 Hints are on: TUTORIAL NEXT for one, TUTORIAL OFF to stop.\n\r", ch );
     ch->pcdata->tutorial_last = current_time;
-    tut_event( ch, TUT_GUILD_CHOICE );
-    if ( ch->level >= 5 && tut_done( ch, TUT_GUILD_CHOICE ) )
-        tut_event( ch, TUT_GUILD_REMIND );
-    tut_event( ch, TUT_PKILL );
+    tut_seed( ch );
 }
 
 static bool is_school( ROOM_INDEX_DATA *room )
@@ -537,12 +624,12 @@ void tutorial_room_seen( CHAR_DATA *ch, bool arrived )
         return;
     if ( arrived )
         tut_event( ch, TUT_MOVE );
-    {
-        int station = school_station( ch->in_room->vnum );
-
-        if ( station >= 0 && !( ch->pcdata->tutorial_school & ( 1 << station ) ) )
-            ch->pcdata->tutorial_school_pending = station + 1;
-    }
+    /* A Mud School station speaks the moment its room is shown, when it
+       is safe to; otherwise tutorial_update says it once it is, while
+       they stand there, or on their next visit (review, 2026-11-13: one
+       pending slot and the gap between hints lost the steps of a quick
+       walk through). */
+    school_now( ch );
     if ( is_school( ch->in_room ) )
     {
         for ( ed = ch->in_room->extra_descr; ed != NULL; ed = ed->next )
@@ -587,40 +674,76 @@ void tutorial_got( CHAR_DATA *ch, OBJ_DATA *obj )
         tut_event( ch, TUT_DIPLOMA );
 }
 
-/* After a command of the player's own (interpret): what they already use
-   needs no hint, and wearing something opens the equipment one. */
+/*
+ * A hint is learned only by doing what it teaches, and doing it right
+ * (review, 2026-11-13: CONSIDER NOBODY, WEAR of nothing and a WALKTO that
+ * found no way each marked their hint learned by the command's name alone).
+ * CONSIDER and WALKTO say so where they succeed (tutorial_learned); WEAR,
+ * WIELD and HOLD, WIMPY, EAT and DRINK are read from the character before
+ * and after the command (tutorial_command_begin, tutorial_command). Every
+ * other hint is never suppressed: it is shown once, and that is all.
+ */
+static int  tut_before_worn;
+static int  tut_before_wimpy;
+static int  tut_before_full, tut_before_thirst;
+static bool tut_before_set;
+
+static int tut_worn_count( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj;
+    int n = 0;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->wear_loc != WEAR_NONE )
+            n++;
+    return n;
+}
+
+void tutorial_command_begin( CHAR_DATA *ch )
+{
+    tut_before_set = false;
+    if ( !tut_counted( ch ) )
+        return;
+    tut_before_worn   = tut_worn_count( ch );
+    tut_before_wimpy  = ch->wimpy;
+    tut_before_full   = ch->pcdata->condition[COND_FULL];
+    tut_before_thirst = ch->pcdata->condition[COND_THIRST];
+    tut_before_set    = true;
+}
+
+void tutorial_learned( CHAR_DATA *ch, const char *key )
+{
+    int step;
+
+    for ( step = 0; step < TUT_MAX; step++ )
+        if ( !str_cmp( tut_steps[step].key, key ) )
+        {
+            tut_known( ch, step );
+            return;
+        }
+}
+
+/* After a command of the player's own that the game knew (interpret). */
 void tutorial_command( CHAR_DATA *ch, const char *cmd )
 {
-    if ( !tut_counted( ch ) || cmd == NULL )
-        return;
-    if ( !str_cmp( cmd, "consider" ) )
-        tut_known( ch, TUT_CONSIDER );
-    else if ( !str_cmp( cmd, "wimpy" ) )
-        tut_known( ch, TUT_FIGHT );
-    else if ( !str_cmp( cmd, "walkto" ) )
-        tut_known( ch, TUT_WALKTO );
-    else if ( !str_cmp( cmd, "stash" ) )
-        tut_known( ch, TUT_STASH );
-    else if ( !str_cmp( cmd, "aquest" ) )
-        tut_known( ch, TUT_QUEST );
-    else if ( !str_cmp( cmd, "open" ) || !str_cmp( cmd, "unlock" ) )
-        tut_known( ch, TUT_DOOR );
-    else if ( !str_cmp( cmd, "eat" ) || !str_cmp( cmd, "drink" ) )
-        tut_known( ch, TUT_HUNGER );
-    else if ( !str_cmp( cmd, "help" ) || !str_cmp( cmd, "pray" ) )
-        tut_known( ch, TUT_HELP );
-    else if ( !str_cmp( cmd, "compare" ) )
-        tut_known( ch, TUT_WEAR );
-    else if ( !str_cmp( cmd, "wear" ) || !str_cmp( cmd, "wield" ) || !str_cmp( cmd, "hold" ) )
-    {
-        OBJ_DATA *held = get_eq_char( ch, WEAR_HOLD );
+    OBJ_DATA *held;
 
-        if ( held != NULL && held->pIndexData != NULL
-        &&   held->pIndexData->vnum == OBJ_VNUM_DIPLOMA )
-            tut_known( ch, TUT_DIPLOMA );
+    if ( !tut_counted( ch ) || cmd == NULL || !tut_before_set )
+        return;
+    tut_before_set = false;
+    if ( tut_worn_count( ch ) > tut_before_worn )
+    {
         tut_known( ch, TUT_ITEM );
         tut_event( ch, TUT_WEAR );
     }
+    if ( ch->wimpy != tut_before_wimpy && ch->wimpy > 0 )
+        tut_known( ch, TUT_FIGHT );
+    if ( ch->pcdata->condition[COND_FULL] > tut_before_full
+    ||   ch->pcdata->condition[COND_THIRST] > tut_before_thirst )
+        tut_known( ch, TUT_HUNGER );
+    if ( ( held = get_eq_char( ch, WEAR_HOLD ) ) != NULL && held->pIndexData != NULL
+    &&   held->pIndexData->vnum == OBJ_VNUM_DIPLOMA )
+        tut_known( ch, TUT_DIPLOMA );
 }
 
 /* set_fighting: a player in a fight with a mobile; shown once it is over. */
@@ -695,15 +818,19 @@ void tutorial_level( CHAR_DATA *ch, bool guild_given )
         tut_event( ch, TUT_PKILL );
 }
 
-/* A queued step that no longer applies (they joined a guild, took PKILL)
-   is dropped rather than shown late. */
+/* The most urgent waiting step that still applies; one that no longer
+   does (they joined a guild, took PKILL) is dropped rather than shown late. */
 static int tut_first_queued( CHAR_DATA *ch )
 {
-    while ( ch->pcdata->tutorial_queued > 0 )
-    {
-        int step = ch->pcdata->tutorial_queue[0];
+    size_t i;
 
-        if ( step >= 0 && step < TUT_MAX && !tut_done( ch, step ) && tut_applies( ch, step ) )
+    for ( i = 0; i < sizeof(tut_priority) / sizeof(tut_priority[0]); i++ )
+    {
+        int step = tut_priority[i];
+
+        if ( !( ch->pcdata->tutorial_pending & ( 1 << step ) ) )
+            continue;
+        if ( !tut_done( ch, step ) && tut_applies( ch, step ) )
             return step;
         tut_unqueue( ch, step );
     }
@@ -722,6 +849,20 @@ static void school_show( CHAR_DATA *ch, int station )
     tut_school_shown++;
     /* The route covers the signs' lesson. */
     tut_known( ch, TUT_SIGN );
+}
+
+/* The room they stand in, if it is a Mud School station they have not
+   been shown and it is safe to say so now. */
+static bool school_now( CHAR_DATA *ch )
+{
+    int station;
+
+    if ( ch->in_room == NULL || !ch->pcdata->tutorial_on || !tut_safe( ch )
+    ||   ( station = school_station( ch->in_room->vnum ) ) < 0
+    ||   ( ch->pcdata->tutorial_school & ( 1 << station ) ) )
+        return false;
+    school_show( ch, station );
+    return true;
 }
 
 static long census_secs( void )
@@ -785,28 +926,12 @@ void tutorial_update( void )
         int step;
 
         if ( d->connected != CON_PLAYING || d->original != NULL || ch == NULL
-        ||   !tut_counted( ch ) || !ch->pcdata->tutorial_on
-        ||   ( ch->pcdata->tutorial_queued <= 0
-            && ch->pcdata->tutorial_school_pending <= 0 ) )
+        ||   !tut_counted( ch ) || !ch->pcdata->tutorial_on || !tut_safe( ch ) )
             continue;
-        if ( ch->fighting != NULL || ch->position < POS_RESTING
-        ||   d->showstr_point != NULL || ch->pcdata->walkto_vnum != 0
-        ||   build_wizard_active( ch )
-        ||   current_time - ch->pcdata->tutorial_last < TUTORIAL_GAP )
+        if ( school_now( ch ) )
             continue;
-        if ( ch->pcdata->tutorial_school_pending > 0 )
-        {
-            int station = ch->pcdata->tutorial_school_pending - 1;
-
-            ch->pcdata->tutorial_school_pending = 0;
-            /* Only where it is: one walked past is shown on coming back. */
-            if ( station < SCHOOL_STATIONS && ch->in_room != NULL
-            &&   ch->in_room->vnum == school_route[station].room )
-            {
-                school_show( ch, station );
-                continue;
-            }
-        }
+        if ( current_time - ch->pcdata->tutorial_last < tut_gap() )
+            continue;
         if ( ( step = tut_first_queued( ch ) ) >= 0 )
             tut_show( ch, step, false );
     }
@@ -836,7 +961,7 @@ static void tut_status( CHAR_DATA *ch )
               SCHOOL_STATIONS, tut_done( ch, TUT_DIPLOMA ) ? ", diploma in hand" : "" );
     send_to_char( buf, ch );
     snprintf( buf, sizeof(buf), "%d of %d seen%s.\n\r", seen, shown,
-              ch->pcdata->tutorial_queued > 0 ? "; a hint is waiting" : "" );
+              ch->pcdata->tutorial_pending != 0 ? "; a hint is waiting" : "" );
     send_to_char( buf, ch );
     send_to_char( "TUTORIAL ON, TUTORIAL OFF, TUTORIAL NEXT.  HELP TUTORIAL says more.\n\r", ch );
 }
@@ -866,7 +991,10 @@ void do_tutorial( CHAR_DATA *ch, char *argument )
             return;
         }
         ch->pcdata->tutorial_on = true;
-        ch->pcdata->tutorial_last = current_time;
+        /* Allowed at once: the most urgent of what applies now first. */
+        ch->pcdata->tutorial_last = current_time - tut_gap();
+        tut_seed( ch );
+        tut_finished( ch, false );      /* learned it all while it was off */
         if ( tut_counted( ch ) )
             tut_turned_on++;
         send_to_char( "The tutorial is ON.  Hints come as you play, picking up where you\n\r"
@@ -882,8 +1010,6 @@ void do_tutorial( CHAR_DATA *ch, char *argument )
             return;
         }
         ch->pcdata->tutorial_on = false;
-        ch->pcdata->tutorial_queued = 0;
-        ch->pcdata->tutorial_school_pending = 0;
         if ( tut_counted( ch ) )
             tut_turned_off++;
         send_to_char( "The tutorial is OFF.  What you have seen is kept: TUTORIAL ON picks up\n\r"

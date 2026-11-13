@@ -3465,6 +3465,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
     else                    msg = "$N is far above your level.";
 
     act(msg, ch, NULL, victim, TO_CHAR);
+    tutorial_learned( ch, "consider" );     /* sized something up: tutorial.c */
 
     if ( victim != ch )
         consider_fight( ch, victim );

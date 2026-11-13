@@ -419,7 +419,7 @@ the hooks are installed.
 | `maps-50` | Well Charted IV | Learn the whole maps of 50 areas. | 60 |  | as maps-1 | as maps-1 |
 | `explored-50` | No Stone Unturned V | Walk into every room of 50 areas. | 60 |  | as explored-1 | as explored-1 |
 | `oracle-asked` | Seeker of Answers | Ask the Oracle a question in her sanctum. | 10 |  | oracle.c, the question accepted (beside oracle_journal) | from now |
-| `tutorial-done` | Schooled | Follow the tutorial to its last word. | 10 |  | tutorial.c tut_finished | from now |
+| `tutorial-done` | Schooled | See the tutorial through: Mud School to its diploma, a first fight and level, and the Oracle. | 10 |  | tutorial.c tut_finished | from now |
 
 ### Deferred candidates
 
