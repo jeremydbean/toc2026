@@ -4728,6 +4728,13 @@ so there is no persisted state to migrate and no `fread_char` case to
 get wrong. `tests/test_aquest_system.py` walks every `questrush`
 clear and fails if one of them leaves the emergency flag set.
 
+**An emergency lost to the clock keeps the streak** (owner, 2026-11-13: a
+streak of 45 went to an emergency in the sewers, reached from Dresden with
+21 seconds left). Its five minutes take no account of the distance, so the
+timeout branch of `quest_update` spares `queststreak` when
+`questemergency` is set; an ordinary or rush timeout, ABORT and quitting
+still end it (`tests/test_aquest_system.py`).
+
 `complete_automatic_quest` reads both flags into locals at the top,
 before anything clears them. Reading `ch->questemergency` later in that
 function is reading a flag that has already gone.

@@ -1678,7 +1678,8 @@ subcommand may be cut to its first letter; AQUEST alone lists them.
     to 8 minutes, double points), one in twenty an EMERGENCY (5 minutes,
     five times the points); never both.
   - Quests in a row build a streak bonus, up to 300% more points.
-    Aborting, timing out or quitting on a quest ends it.
+    Aborting, timing out or quitting on a quest ends it -- except an
+    EMERGENCY that runs out of time, which keeps your streak.
   - The wait between quests runs while you are logged out too.
 
 AQUEST INFO shows your quest or wait, points, gamble and streak, and what

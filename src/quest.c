@@ -2454,14 +2454,32 @@ void quest_update(void)
                 snprintf(buf, sizeof(buf), "You have run out of time for your quest!\n\rYou may quest again in %d minutes.\n\r",ch->nextquest);
                 send_to_char(buf, ch);
                 quest_log_failed(ch, "timeout");
-                if (ch->queststreak > 0)
+                /* An emergency contract's five minutes run from Dresden to
+                   wherever the target lies, which may be past reach: losing
+                   one to the clock spares the streak (owner, 2026-11-13: a
+                   streak of 45 was lost to an emergency in the sewers,
+                   reached with 21 seconds left). Giving one up still costs it. */
+                if (ch->questemergency)
                 {
-                    snprintf(buf, sizeof(buf),
-                        "Your winning streak of %d is lost from failing to complete in time!\n\r",
-                        ch->queststreak);
-                    send_to_char(buf, ch);
+                    if (ch->queststreak > 0)
+                    {
+                        snprintf(buf, sizeof(buf),
+                            "An emergency contract is a long shot; your winning streak of %d is kept.\n\r",
+                            ch->queststreak);
+                        send_to_char(buf, ch);
+                    }
                 }
-		ch->queststreak = 0;
+                else
+                {
+                    if (ch->queststreak > 0)
+                    {
+                        snprintf(buf, sizeof(buf),
+                            "Your winning streak of %d is lost from failing to complete in time!\n\r",
+                            ch->queststreak);
+                        send_to_char(buf, ch);
+                    }
+                    ch->queststreak = 0;
+                }
 		remove_automatic_quest_tokens(ch);
                 REMOVE_BIT(ch->act, PLR_QUESTOR);
                 SET_CHAR_REF( ch, questgiver, NULL );

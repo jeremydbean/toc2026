@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113emergencystreak 2026-11-13
+An emergency quest that runs out of time no longer breaks your quest
+streak: five minutes is not always enough to reach the target. Giving one
+up (ABORT) or quitting on it still does, as with any quest.
+
 @ 20261112timesofchaos 2026-11-12
 The game has a new name: timesofchaos.com. Point Mudlet or any MUD client
 at timesofchaos.com port 9000; the old toc.jeremybean.com keeps working.

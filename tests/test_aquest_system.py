@@ -417,6 +417,19 @@ class EmergencyContractTests(unittest.TestCase):
         cleared_at = body.index("ch->questemergency = false")
         self.assertLess(read_at, cleared_at)
 
+    def test_an_emergency_lost_to_the_clock_keeps_the_streak(self) -> None:
+        """Owner, 2026-11-13: a streak of 45 was lost to an emergency whose
+        target lay farther than five minutes away. A timed-out emergency
+        keeps the streak; an ordinary or rush timeout still loses it, and
+        the emergency flag is read before the branch clears it."""
+        body = self.quest.split('quest_log_failed(ch, "timeout");', 2)[2]
+        body = body[:body.index("remove_automatic_quest_tokens(ch);")]
+        emergency, ordinary = body.split("else", 1)
+        self.assertIn("if (ch->questemergency)", emergency)
+        self.assertIn("is kept", emergency)
+        self.assertNotIn("queststreak = 0", emergency)
+        self.assertIn("ch->queststreak = 0;", ordinary)
+
     def test_every_questrush_clear_clears_the_emergency_too(self) -> None:
         """A stale flag would pay five times on the following quest."""
         lines = self.quest.split("\n")
