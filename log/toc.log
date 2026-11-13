@@ -295941,3 +295941,12 @@ Fri Nov 13 18:53:41 2026 :: Connection guard: 193.47.62.31 closed without a word
 Fri Nov 13 18:55:11 2026 :: Treasure goblin: vanished from room 29444 (The thick forest, world.are) (too long in one area).
 Fri Nov 13 18:56:47 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 18:58:11 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 2 refused in all, pause 1 this week, 81 minutes left).
+Fri Nov 13 19:00:00 2026 :: Sock.sinaddr:  99.62.115.159
+Fri Nov 13 19:00:00 2026 :: Loading Killuminati's playerfile
+Fri Nov 13 19:00:01 2026 :: Loading Killuminati's playerfile
+Fri Nov 13 19:00:01 2026 :: Killuminati@99.62.115.159 has connected.
+Fri Nov 13 19:00:11 2026 :: Log Killuminati [600]: arrived (Granny's Still Room) from 0
+Fri Nov 13 19:00:17 2026 :: Log Killuminati [600]: /
+Fri Nov 13 19:02:25 2026 :: Connection guard: 35.203.210.155 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 19:02:25 2026 :: Connection guard: 35.203.210.155 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 19:03:16 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 2 of 6 in 6 hours).
