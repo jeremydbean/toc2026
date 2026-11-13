@@ -295848,3 +295848,5 @@ Fri Nov 13 16:26:02 2026 :: Sock.sinaddr:  40.119.46.93
 Fri Nov 13 16:26:02 2026 :: Connection guard: 40.119.46.93 closed before a password prompt (strike 2 of 6 in 6 hours).
 Fri Nov 13 16:26:31 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 16:28:22 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 16:28:54 2026 :: Connection guard: 185.93.89.79 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 16:30:57 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 3 of 6 in 6 hours).
