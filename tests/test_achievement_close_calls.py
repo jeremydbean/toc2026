@@ -114,6 +114,13 @@ class CloseCallLiveTests(unittest.TestCase):
                 hero.sync("kill dummy")
                 prayed = ""
                 for _ in range(30):
+                    # A tick regenerates between tries (CI, 2026-11-13: 1
+                    # hit point became 9 before the prayer, a ninth of the
+                    # maximum, and the close call rightly did not count):
+                    # back to one before each.
+                    staff.must("set char zcclose hp 1", "now set to 1")
+                    staff.must("restore zcclose", "restored")
+                    staff.must("set char zcclose hp 100", "now set to 100")
                     prayed = hero.sync("recall")
                     if "You recall from combat" in prayed or "Something is very wrong" in prayed:
                         break
