@@ -295997,3 +295997,7 @@ Fri Nov 13 20:27:43 2026 :: Treasure goblin: vanished from room 5102 (City stree
 Fri Nov 13 20:29:37 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 13 20:32:15 2026 :: Black market: stock 1794601935: an emerald necklace (741, level 40, 37p); a studded leather belt (1013, level 31, 28p); the platinum spiked shield (645, level 33, 30p); a shark tooth belt (6420, level 40, 37p); a shield of many colors (720, level 34, 31p).
 Fri Nov 13 20:32:15 2026 :: Black market: the dealer appeared with 5 items (stock 1794601935), for 32 minutes.
+Fri Nov 13 20:33:49 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 20:34:41 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 1 refused in all, pause 1 this week, 330 minutes left).
+Fri Nov 13 20:36:25 2026 :: Connection guard: last hour 17 closed without a word, 1 refused, 0 new characters refused, 2 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 20:37:48 2026 :: Treasure goblin: vanished from room 20598 (Inside a Cottage, emerald.are) (too long in one area).
