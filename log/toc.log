@@ -295872,3 +295872,12 @@ Fri Nov 13 17:14:24 2026 :: Treasure goblin: vanished from room 7401 (Cave tunne
 Fri Nov 13 17:16:37 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 17:16:38 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 13 17:21:44 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 17:24:29 2026 :: Treasure goblin: vanished from room 3816 (A Storage Room, ratslair.are) (too long in one area).
+Fri Nov 13 17:26:38 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 17:26:48 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 17:27:52 2026 :: Connection guard: 151.245.151.122 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 17:27:52 2026 :: Connection guard: 151.245.151.122 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 17:27:53 2026 :: Connection guard: 151.245.151.122 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 17:27:53 2026 :: Sock.sinaddr:  151.245.151.122
+Fri Nov 13 17:27:54 2026 :: EOF encountered on read.
+Fri Nov 13 17:27:54 2026 :: Connection guard: 151.245.151.122 closed before a password prompt (strike 4 of 6 in 6 hours).
