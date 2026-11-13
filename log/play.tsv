@@ -25169,3 +25169,19 @@
 1794537457	session	Alaric	57	2497	dresden.are	quit	179s	+0 levels	+0 exp	+184954968 copper	0 kills	0 deaths	1 quests	126 commands	1 refused	coin: quests 184p 95g 49s 68c	spent on: none	exp: none
 1794537573	cmd	Killuminati	70	30489	hyrule.are	standing	100	0	-	wizinvis		You slowly fade back into existence.	-	-
 1794540360	session	Killuminati	70	30489	hyrule.are	linkdead	6076s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	0 commands	0 refused	coin: none	spent on: none	exp: none
+1794571012	area	Trentlin	40	4208	dresden.are	-	dresden.are	-1	(game loop)
+1794571015	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571024	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571029	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571031	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571040	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571045	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571053	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571056	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571059	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571060	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	all	You must be level 46 to use this object. // You wear a pink ice ring on your left finger. // You must be level 51 to use this object.	-	+
+1794571065	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571068	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	wear	diplo	You stop using the Lizard's Heart Container. // You hold a mud school diploma in your hands.	-	-
+1794571076	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	look	in hearty	You do not see that here.	-	-
+1794571077	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	look	in heart	That is not a container.	-	-
+1794571081	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	look	heart	The heart guard of the manji rests here, ready for another hero. // The the Heart Guard of the Manji is in perfect condition.	-	-
