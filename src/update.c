@@ -1311,7 +1311,6 @@ void weather_update( void )
     case  5:
 	weather_info.sunlight = SUN_LIGHT;
 	toc_strlcat( buf, "The day has begun.\n\r" , sizeof(buf) );
-  component_update();
 	break;
 
     case  6:
@@ -1320,7 +1319,6 @@ void weather_update( void )
 	{
 	  case 1:
 	  toc_strlcat( buf, "Daylight paints the sky a bright red, heralding a new day.\n\r", sizeof(buf) );
-    component_update();
 	  break;
 	  case 2:
 	  toc_strlcat( buf, "The sun rises on the eastern horizen.\n\r", sizeof(buf) );
@@ -1348,7 +1346,6 @@ void weather_update( void )
 
 	    case 3:
 	    toc_strlcat( buf, "Stars begin to shine coldly as the night begins.\n\r", sizeof(buf) );
-      component_update();
 	    break;
 
 	    case 4:
@@ -1368,7 +1365,6 @@ void weather_update( void )
     case 20:
 	weather_info.sunlight = SUN_DARK;
 	toc_strlcat( buf, "The night has begun.\n\r" , sizeof(buf) );
-  component_update();
 	break;
 
     case 24:
@@ -1406,7 +1402,6 @@ void weather_update( void )
 	  break;
 	  case MOON_FULL:
 	    toc_strlcat( buf, "A full moon sets.\n\r", sizeof(buf) );
-	    component_update();
 	  break;
 	  case MOON_WANING:
 	    toc_strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
@@ -1425,7 +1420,6 @@ void weather_update( void )
 	  break;
 	  case MOON_FULL:
 	    toc_strlcat( buf, "A full moon rises.\n\r", sizeof(buf) );
-	    component_update();
 	  break;
 	  case MOON_WANING:
 	    toc_strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
@@ -2746,6 +2740,11 @@ free_string(obj->description);
        }
 
 
+	/* Herbs and spell components no longer rot (owner, 2026-11-13); one
+	   laid or carried before then loses its old twelve-hour clock. */
+	if ( obj->timer > 0 && is_forage_obj( obj ) )
+	    obj->timer = 0;
+
 	/* Nothing in a stash runs out (review, 2026-11-12). STASH refuses
 	   anything on a timer, but a file can still bring one in, and one
 	   that expired here was extracted while the stash list still held
@@ -3480,6 +3479,8 @@ void update_handler( void )
 	playlog_phase_enter( "obj_update" );
 	obj_update	( );
 	room_aff_update ( );
+	playlog_phase_enter( "component_update" );
+	component_update ( );
 //	update_relics   ();  REMOVERELIC
     }
 
@@ -3541,27 +3542,41 @@ void update_handler( void )
  * it counts the ones sitting in a player's pack too. Herbs are vnums
  * 34-53 and spell components 54-88.
  */
+/* A herb or spell component the spawner lays: herbs are 34-53, spell
+   components 54-88 (74 and 75 in that range are what BREW and CONCOCT
+   make, and are neither). */
+bool is_forage_obj( const OBJ_DATA *obj )
+{
+  int vnum;
+
+  if ( obj == NULL || obj->pIndexData == NULL )
+    return false;
+  vnum = obj->pIndexData->vnum;
+  return ( vnum >= 34 && vnum <= 53 && obj->item_type == ITEM_HERB )
+      || ( vnum >= 54 && vnum <= 88 && obj->item_type == ITEM_SPELL_COMPONENT );
+}
+
+/*
+ * How many lie on the ground, waiting to be found (owner, 2026-11-13).
+ * The ceiling is on these alone: what players carry or stash no longer
+ * stops the world laying more, and since nothing rots now, what lies
+ * unfound holds the world at its ceiling until someone picks it up.
+ */
 void count_components( int *herbs, int *comps )
 {
-  OBJ_INDEX_DATA *pObjIndex;
-  int vnum;
+  LIST_ITERATOR iter;
+  OBJ_DATA *obj;
 
   *herbs = 0;
   *comps = 0;
-
-  for (vnum = 34; vnum <= 53; vnum++)
+  FOR_EACH_OBJECT( iter, obj )
   {
-    if ((pObjIndex = get_obj_index(vnum)) != NULL)
-      *herbs += pObjIndex->count;
-  }
-  /* Components only: 74 and 75 sit in this range and are what BREW and
-     CONCOCT make, so twenty-five teas and potions anywhere in the world
-     once stopped every component from spawning again. */
-  for (vnum = 54; vnum <= 88; vnum++)
-  {
-    if ((pObjIndex = get_obj_index(vnum)) != NULL
-    &&  pObjIndex->item_type == ITEM_SPELL_COMPONENT)
-      *comps += pObjIndex->count;
+    if ( obj->in_room == NULL || !is_forage_obj( obj ) )
+      continue;
+    if ( obj->item_type == ITEM_HERB )
+      ( *herbs )++;
+    else
+      ( *comps )++;
   }
 }
 
@@ -3591,6 +3606,13 @@ static ROOM_INDEX_DATA *component_scatter_room( AREA_DATA *area )
 
 void component_update( void )
 {
+  component_scatter( false );
+}
+
+/* One round of laying: every tick a chance of each, or ALWAYS for staff
+   COMPONENT, which lays as much as a round can. */
+void component_scatter( bool always )
+{
   ROOM_INDEX_DATA *component_area, *component_room;
   OBJ_DATA *component;
   int count, count2, areas, herb, spell_comp, pick;
@@ -3602,9 +3624,12 @@ void component_update( void )
 
   count_components( &herb_count, &spell_comp_count );
 
-  if (herb_count >= HERB_CEILING)
+  /* Every tick now (owner, 2026-11-13: more common; they were laid at a
+     few hours of the game day only, about nine herbs and three
+     components an hour, and rotted in twelve). */
+  if (herb_count >= HERB_CEILING || ( !always && number_percent() > 60 ))
   {
-    /* Skip herb spawning if we have too many */
+    /* Enough lying about, or not this tick */
   }
   else
   {
@@ -3631,7 +3656,7 @@ void component_update( void )
 
         pick = component_table[dice(1,20) - 1].herb;
         component = create_object( get_obj_index(pick), 1 );
-        component->timer = 720;  /* 12 hours (720 ticks) */
+        component->timer = 0;    /* it waits to be found (owner, 2026-11-13) */
         obj_to_room(component, component_room);
         herb_count++;
 
@@ -3641,7 +3666,7 @@ void component_update( void )
     }
   }
 
-  if(number_percent () < 50)
+  if ( !always && number_percent() < 50 )
     return;
 
   if (spell_comp_count >= COMPONENT_CEILING)
@@ -3670,8 +3695,7 @@ void component_update( void )
 
       pick = component_table[dice(1,33) - 1].component;
       component = create_object( get_obj_index(pick), 1 );
-      /* BUG FIX: Spell components were missing timer, causing them to never rot */
-      component->timer = 720;  /* 12 hours (720 ticks) */
+      component->timer = 0;      /* it waits to be found (owner, 2026-11-13) */
       obj_to_room(component, component_room);
       spell_comp_count++;
 

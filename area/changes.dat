@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113forage 2026-11-13
+Herbs and spell components are far more common: the world lays new ones
+every few minutes, up to about 150 herbs and 100 components lying around
+at once, and they no longer wither -- one stays where it fell, or in your
+pack, until it is used. Any you already carry stop rotting too.
+
 @ 20261113connguard 2026-11-13 staff
 The connection guard now refuses a paused address at connect with no reply
 at all (a reset, as a closed port answers), instead of letting it log in.

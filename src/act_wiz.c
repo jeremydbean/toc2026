@@ -9464,14 +9464,14 @@ void do_component_update( CHAR_DATA *ch, char *argument )
     UNUSED_PARAM(argument);
 
     count_components( &before_herbs, &before_comps );
-    component_update();
-    component_update();
-    component_update();
+    component_scatter( true );
+    component_scatter( true );
+    component_scatter( true );
     count_components( &after_herbs, &after_comps );
 
     snprintf( buf, sizeof(buf),
         "Scattered %d herb%s and %d spell component%s.\n\r"
-        "The world now holds %d of %d herbs and %d of %d components.\n\r",
+        "%d of %d herbs and %d of %d components now lie waiting to be found.\n\r",
         after_herbs - before_herbs,
         after_herbs - before_herbs == 1 ? "" : "s",
         after_comps - before_comps,

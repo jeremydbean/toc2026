@@ -33,8 +33,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PASSWORD = "Zcomp1"
 MUD_SCHOOL = 3700
 
-HERB_CEILING = 40
-COMPONENT_CEILING = 25
+HERB_CEILING = 150
+COMPONENT_CEILING = 100
 
 
 def run(client, command: str, settle: float = 3.0) -> str:
@@ -45,7 +45,7 @@ def run(client, command: str, settle: float = 3.0) -> str:
 
 
 def holdings(text: str) -> tuple[int, int]:
-    found = re.search(r"holds (\d+) of \d+ herbs and (\d+) of \d+ components",
+    found = re.search(r"(\d+) of \d+ herbs and (\d+) of \d+ components now lie",
                       text)
     assert found is not None, text
     return int(found.group(1)), int(found.group(2))
@@ -110,8 +110,20 @@ class ComponentSourceTests(unittest.TestCase):
         cls.wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="utf-8")
 
     def scatterer(self) -> str:
-        body = self.update.split("void component_update( void )", 1)[1]
+        body = self.update.split("void component_scatter( bool always )", 1)[1]
         return body.split("\nvoid ", 1)[0]
+
+    def test_they_never_rot_and_come_every_tick(self) -> None:
+        """Owner, 2026-11-13: more common, and lying there until found."""
+        body = self.scatterer()
+        self.assertNotIn("720", body)
+        self.assertEqual(body.count("component->timer = 0;"), 2)
+        obj_update = self.update.split("void obj_update( void )", 1)[1].split("\nvoid ", 1)[0]
+        self.assertIn("if ( obj->timer > 0 && is_forage_obj( obj ) )", obj_update)
+        tick = self.update.split("pulse_point     = number_range", 1)[1].split("}", 1)[0]
+        self.assertIn("component_update ( );", tick)
+        weather = self.update.split("void weather_update( void )", 1)[1].split("\nvoid ", 1)[0]
+        self.assertNotIn("component_update", weather)
 
     def test_the_vnum_lottery_is_gone(self) -> None:
         body = self.scatterer()
@@ -148,10 +160,10 @@ class ComponentSourceTests(unittest.TestCase):
         self.assertNotIn("200", body)
 
         merc = (ROOT / "src" / "merc.h").read_text(encoding="utf-8")
-        self.assertIn("#define HERB_CEILING            %d" % HERB_CEILING,
+        self.assertIn("#define HERB_CEILING           %d" % HERB_CEILING,
                       merc)
         self.assertIn(
-            "#define COMPONENT_CEILING       %d" % COMPONENT_CEILING, merc)
+            "#define COMPONENT_CEILING      %d" % COMPONENT_CEILING, merc)
 
     def test_the_command_reports_what_it_did(self) -> None:
         body = self.wiz.split("void do_component_update", 1)[1]

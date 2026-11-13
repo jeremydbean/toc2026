@@ -4844,9 +4844,15 @@ trick, haven) is not a world room and is never drawn, and
 `random_scatter_room` walks the same list. A new room or mobile prototype made after boot goes
 through those link functions (`tests/test_sparse_room_draw.py`).
 
-Component rates live in `component_update()`: `HERB_CEILING` and
-`COMPONENT_CEILING` in `merc.h`, and `telnet_count_players() < 1` stops
-the world filling up while it is empty.
+Component rates live in `component_scatter()` (`component_update()` is
+its tick, from the `pulse_point` block: a herb or two at 60% and a
+component at 50% a tick; staff COMPONENT lays every time):
+`HERB_CEILING` (150) and `COMPONENT_CEILING` (100) in `merc.h` count only
+what lies on the ground (`count_components`), and `telnet_count_players()
+< 1` stops the world filling up while it is empty. **They never rot**
+(owner, 2026-11-13): laid with timer 0, and `obj_update` clears an old
+twelve-hour clock on any `is_forage_obj` carried from before; the ceiling
+on the ground is what keeps a long uptime from filling the world.
 
 ## Monster Wards
 

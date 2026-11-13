@@ -1408,8 +1408,9 @@ from two spell components, in either order.
     chance and what failure costs.  It shows only what you could make
     from what you carry.
   - What you make is your level, and nobody below it can use it.
-  - Herbs and components lie about the world and wither in about twelve
-    hours.  Every recipe is in the Magic Book, in Hyrule's Level 8.
+  - Herbs and components turn up all over the world, outside Hyrule, and
+    lie where they fell until somebody picks them up; they never wither.
+    Every recipe is in the Magic Book, in Hyrule's Level 8.
   - The rarest concoctions hold TITANIC or EMPOWER.  They last half your
     level in ticks, at most thirty.
 

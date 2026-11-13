@@ -3692,11 +3692,16 @@ MOB_INDEX_DATA  *random_mob_index ( void );    /* db.c: any mobile prototype, ev
 ROOM_INDEX_DATA *random_room_where ( bool (*ok)( ROOM_INDEX_DATA *room ) );
 void    room_index_forget ( ROOM_INDEX_DATA *room );
 void    count_components ( int *herbs, int *comps );
+bool    is_forage_obj ( const OBJ_DATA *obj );
+void    component_scatter ( bool always );
 int     telnet_count_players ( void );
 
-/* Defined in update.c, beside the scatterer that enforces them. */
-#define HERB_CEILING            40
-#define COMPONENT_CEILING       25
+/* Defined in update.c, beside the scatterer that enforces them: how many
+   may lie on the ground at once (owner, 2026-11-13: more common, and
+   never rotting, but not without end). Carried and stashed ones do not
+   count. */
+#define HERB_CEILING           150
+#define COMPONENT_CEILING      100
 bool    room_allows_recall_point ( ROOM_INDEX_DATA *room );
 void    recheck_sneak   ( CHAR_DATA *ch );
 RID     *get_random_room( CHAR_DATA *ch );
