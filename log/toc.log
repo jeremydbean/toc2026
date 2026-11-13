@@ -296297,3 +296297,6 @@ Fri Nov 13 23:38:31 2026 :: Sock.sinaddr:  195.182.16.183
 Fri Nov 13 23:38:31 2026 :: EOF encountered on read.
 Fri Nov 13 23:38:31 2026 :: Connection guard: 195.182.16.183 closed before a password prompt (strike 1 of 6 in 6 hours).
 Fri Nov 13 23:42:36 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 23:47:16 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 23:47:41 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 23:47:58 2026 :: Treasure goblin: vanished from room 1633 (Servant's Quarters, wyvern.are) (too long in one area).
