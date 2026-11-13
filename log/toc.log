@@ -295971,3 +295971,4 @@ Fri Nov 13 19:48:57 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Fri Nov 13 19:48:57 2026 :: Connection guard: 5.161.113.195 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.113.195 lifts it.
 Fri Nov 13 19:54:01 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 13 19:58:31 2026 :: Closing link to Killuminati.
+Fri Nov 13 19:59:07 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
