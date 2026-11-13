@@ -30,6 +30,12 @@ minutes. This reads them from a git ref (origin/main by default, after
   deep        pulses past their budget and what took the time, deaths
               with the killing blow (one-blow deaths apart), things gone
               from players and why, quests lost and their targets
+  encounters  herbs, components, eggs, maps and coin on the ground: laid,
+              seen, picked up or passed by, cleared, and by whom; the rare
+              visitors (dealer, goblin, cartographer, holiday bosses, the
+              dragon, Hermie) seen, used and passed; mobiles seen against
+              fought and floor items seen against taken; the census of what
+              lies about (src/encounter.c)
   memory      MEMORY lines (stale pointers memguard.c caught and repaired)
               by field, the newest five, and the backtraces of the latest
               crashes in log/crash.log
@@ -448,6 +454,7 @@ def main() -> int:
     progress_report(args, since)
     hyrule_report(args, since)
     activity_report(args, since)
+    encounter_report(args, since)
 
     print("\n== public chat")
     rows = []
@@ -1071,6 +1078,213 @@ def activity_report(args, since) -> None:
         f"{k} {n}" for k, n in s["skills"].most_common(10)) or "(none)")
     print("  quests assigned:", ", ".join(
         f"{k}/{t} {n}" for (k, t), n in s["quests"].most_common()) or "(none)")
+
+
+# --------------------------------------------------------------- encounters
+#
+# src/encounter.c's rows in log/play.tsv (after the six common columns:
+# epoch, kind, name, level, room, area):
+#   laid        id  kind  vnum  name  room  area  source
+#   spotted     id  kind  vnum  name  lain_s  seers  source  arrive|look
+#   picked      id  kind  vnum  name  lain_s  since_spotted_s  seers  source  command
+#   passed      id  kind  vnum  name  lain_s  in_view_s  seers  source  room  how
+#   cleared     id  kind  vnum  name  lain_s  seers  source  why  actor  room  area
+#   rare-seen   kind  vnum  visit  how
+#   rare-acted  kind  vnum  visit  what  since_seen_s
+#   rare-passed kind  vnum  visit  in_view_s  how
+#   sightings   mob|item  "vnum:seen/fought/attacked ..." | "vnum:seen/taken ..."
+#   census      "herbs=a/b components=..."  "herbs_held=..."  "laid=... secs=..."
+ENCOUNTER_KINDS = ("laid", "spotted", "picked", "passed", "cleared", "rare-seen",
+                   "rare-acted", "rare-passed", "sightings", "census", "session")
+
+
+def encounter_rows(text: str, since: datetime) -> list:
+    out = []
+    for raw in text.splitlines():
+        f = raw.split("\t")
+        if len(f) < 7 or not f[0].isdigit() or f[1] not in ENCOUNTER_KINDS:
+            continue
+        if datetime.fromtimestamp(int(f[0]), timezone.utc) >= since:
+            out.append(f)
+    return out
+
+
+def _int(text: str, default: int = -1) -> int:
+    return int(text) if text.lstrip("-").isdigit() else default
+
+
+def _words(text: str) -> dict:
+    out = {}
+    for word in text.split():
+        key, _, value = word.partition("=")
+        out[key] = value
+    return out
+
+
+def encounter_summary(rows) -> dict:
+    """Herbs, components, eggs, maps and coin from laid to picked or passed;
+    the rare visitors; mobiles and floor items seen against fought or taken;
+    the census. Pure, for tests."""
+    kinds = defaultdict(Counter)        # kind -> laid/sightings/objects/picked/passed/cleared
+    seen_ids = defaultdict(set)         # kind -> ids spotted
+    lain_first = defaultdict(list)      # kind -> minutes lain at first sighting
+    lain_picked = defaultdict(list)     # kind -> minutes lain when picked
+    first_seen = set()
+    per_vnum = defaultdict(Counter)     # (kind, vnum, name) -> spotted/picked/passed
+    cleared_why = defaultdict(Counter)  # kind -> why
+    players = defaultdict(set)          # kind -> players who spotted one
+    rare = defaultdict(Counter)         # kind -> sightings/visits/acted:<what>/passed
+    rare_visits = defaultdict(set)
+    rare_players = defaultdict(set)
+    mobs = defaultdict(lambda: [0, 0, 0])
+    items = defaultdict(lambda: [0, 0])
+    census = []
+    play_secs = 0
+    for f in rows:
+        kind = f[1]
+        if kind == "session" and len(f) > 7:
+            play_secs += max(0, _int(f[7].rstrip("s"), 0))
+        elif kind == "laid" and len(f) > 12:
+            kinds[f[7]]["laid"] += 1
+        elif kind == "spotted" and len(f) > 13:
+            k = f[7]
+            kinds[k]["sightings"] += 1
+            seen_ids[k].add(f[6])
+            players[k].add(f[2])
+            per_vnum[(k, f[8], f[9])]["spotted"] += 1
+            if f[6] not in first_seen and _int(f[10]) >= 0 and f[12] != "dropped":
+                first_seen.add(f[6])
+                lain_first[k].append(_int(f[10]) / 60)
+        elif kind == "picked" and len(f) > 14:
+            k = f[7]
+            kinds[k]["picked"] += 1
+            if _int(f[11]) < 0:
+                kinds[k]["picked unseen"] += 1
+            per_vnum[(k, f[8], f[9])]["picked"] += 1
+            if _int(f[10]) >= 0 and f[13] != "dropped":
+                lain_picked[k].append(_int(f[10]) / 60)
+        elif kind == "passed" and len(f) > 15:
+            kinds[f[7]]["passed"] += 1
+            per_vnum[(f[7], f[8], f[9])]["passed"] += 1
+        elif kind == "cleared" and len(f) > 16:
+            kinds[f[7]]["cleared"] += 1
+            why = f[13].split()[0] if f[13] else "?"
+            cleared_why[f[7]][why] += 1
+        elif kind == "rare-seen" and len(f) > 9:
+            rare[f[6]]["sightings"] += 1
+            rare_visits[f[6]].add(f[8])
+            rare_players[f[6]].add(f[2])
+        elif kind == "rare-acted" and len(f) > 10:
+            rare[f[6]][f[9]] += 1
+        elif kind == "rare-passed" and len(f) > 10:
+            rare[f[6]]["passed"] += 1
+        elif kind == "sightings" and len(f) > 7:
+            for entry in f[7].split():
+                vnum, _, counts = entry.partition(":")
+                parts = [_int(x, 0) for x in counts.split("/")]
+                if f[6] == "mob" and len(parts) == 3:
+                    for i in range(3):
+                        mobs[vnum][i] += parts[i]
+                elif f[6] == "item" and len(parts) == 2:
+                    for i in range(2):
+                        items[vnum][i] += parts[i]
+        elif kind == "census" and len(f) > 8:
+            words = _words(" ".join(f[6:9]))
+            census.append((int(f[0]), words))
+    for k in kinds:
+        kinds[k]["objects"] = len(seen_ids[k])
+        kinds[k]["players"] = len(players[k])
+    for k in rare:
+        rare[k]["visits"] = len(rare_visits[k])
+        rare[k]["players"] = len(rare_players[k])
+    return {"kinds": kinds, "lain_first": lain_first, "lain_picked": lain_picked,
+            "per_vnum": per_vnum, "cleared_why": cleared_why, "rare": rare,
+            "mobs": dict(mobs), "items": dict(items), "census": census,
+            "play_hours": play_secs / 3600}
+
+
+def _names(kind: str) -> dict:
+    """vnum -> short description from the area files beside this tool, best
+    effort: the report still prints without them."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from webadmin import area_reader            # noqa: E402
+        root = Path(__file__).resolve().parents[1] / "area"
+        out = {}
+        for name in area_reader.listed_area_files(root, built=False):
+            path = root / name
+            if not path.exists():
+                continue
+            area = area_reader.read_area_file(path)
+            for rec in (area.mobiles if kind == "mob" else area.objects):
+                out[str(rec.vnum)] = clean(rec.short_desc)[:28]
+        return out
+    except Exception:                               # pragma: no cover - names are a nicety
+        return {}
+
+
+def _rate(part: int, whole: int) -> str:
+    return f"{100 * part / whole:3.0f}%" if whole else "   -"
+
+
+def encounter_report(args, since) -> None:
+    rows = encounter_rows(git_show(args.ref, "log/play.tsv"), since)
+    s = encounter_summary(rows)
+    print(f"\n== encounters (herbs, components, eggs, coin; rare visitors; seen against "
+          f"fought or taken; {s['play_hours']:.1f} hours played in the window)")
+    if not any(f[1] != "session" for f in rows):
+        print("  (none in the window)")
+        return
+    hours = s["play_hours"]
+    print("  on the ground (laid, objects seen, sightings, by players, picked, passed, "
+          "cleared, pick rate, sightings an hour played):")
+    for k, c in sorted(s["kinds"].items()):
+        choice = c["picked"] + c["passed"]
+        per_hour = f"{c['sightings'] / hours:5.1f}" if hours > 0 else "    -"
+        print(f"    {k:<10} laid {c['laid']:<5} seen {c['objects']:<5} sightings {c['sightings']:<5}"
+              f" players {c['players']:<3} picked {c['picked']:<4} passed {c['passed']:<4}"
+              f" cleared {c['cleared']:<4} pick {_rate(c['picked'], choice)} {per_hour}/h"
+              + (f" ({c['picked unseen']} picked unseen)" if c["picked unseen"] else ""))
+    for k in sorted(s["lain_first"]):
+        print(f"    {k:<10} minutes lain before first seen: median "
+              f"{_median(s['lain_first'][k]):.0f}; before picked: median "
+              f"{_median(s['lain_picked'][k]) if s['lain_picked'][k] else 0:.0f}")
+    for k, why in sorted(s["cleared_why"].items()):
+        print(f"    {k:<10} cleared by: " + ", ".join(f"{w} {n}" for w, n in why.most_common(6)))
+    print("  which ones (kind, vnum, name: spotted, picked, passed, pick rate):")
+    ranked = sorted(s["per_vnum"].items(), key=lambda kv: -(kv[1]["spotted"] + kv[1]["picked"]))
+    for (k, vnum, name), c in ranked[:20]:
+        print(f"    {k:<10} {vnum:>6} {name[:28]:<28} spotted {c['spotted']:<4} picked {c['picked']:<4}"
+              f" passed {c['passed']:<4} {_rate(c['picked'], c['picked'] + c['passed'])}")
+    print("  rare visitors (visits seen, sightings, players, what they did, passed):")
+    for k, c in sorted(s["rare"].items()):
+        acted = ", ".join(f"{w} {n}" for w, n in c.items()
+                          if w not in ("sightings", "visits", "players", "passed"))
+        print(f"    {k:<13} visits {c['visits']:<3} sightings {c['sightings']:<4} players "
+              f"{c['players']:<3} {acted or 'nothing done'}; passed {c['passed']}")
+    if not s["rare"]:
+        print("    (none seen)")
+    if s["mobs"]:
+        names = _names("mob")
+        print("  mobiles seen and fought (most seen first: vnum, name, seen, fought, "
+              "of those they attacked first, fight rate):")
+        for vnum, (seen, fought, attacked) in sorted(s["mobs"].items(), key=lambda kv: -kv[1][0])[:20]:
+            print(f"    {vnum:>6} {names.get(vnum, '?'):<28} seen {seen:<5} fought {fought:<4}"
+                  f" attacked {attacked:<4} {_rate(fought, seen)}")
+        never = [(v, c) for v, c in s["mobs"].items() if c[1] == 0 and c[0] >= 5]
+        print(f"  mobiles seen 5+ times and never fought: {len(never)}")
+    if s["items"]:
+        names = _names("obj")
+        print("  things lying about (most seen first: vnum, name, seen, taken, take rate):")
+        for vnum, (seen, taken) in sorted(s["items"].items(), key=lambda kv: -kv[1][0])[:15]:
+            print(f"    {vnum:>6} {names.get(vnum, '?'):<28} seen {seen:<5} taken {taken:<4} {_rate(taken, seen)}")
+    if s["census"]:
+        print("  census (on the ground / ceiling; first, last):")
+        for when, words in (s["census"][0], s["census"][-1]):
+            print(f"    {datetime.fromtimestamp(when, timezone.utc):%m-%d %H:%M}  herbs {words.get('herbs')}"
+                  f"  components {words.get('components')}  eggs {words.get('eggs')}"
+                  f"  coin piles {words.get('coin_piles')}  held: herbs {words.get('herbs_held')}"
+                  f" components {words.get('components_held')}  players {words.get('players')}")
 
 
 if __name__ == "__main__":

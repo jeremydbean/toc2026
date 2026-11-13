@@ -419,6 +419,9 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	act( "You get $p.", ch, obj, container, TO_CHAR );
 	if(!hidden)
 	 act( "$n gets $p.", ch, obj, container, TO_ROOM );
+	/* Picked from the ground (encounter.c); here, since coin never
+	   reaches obj_to_char. */
+	encounter_obj_held( obj, ch );
 	obj_from_room( obj );
     }
 

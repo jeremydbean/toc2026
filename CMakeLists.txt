@@ -81,6 +81,7 @@ set(SRC_FILES
     src/build.c
     src/changes.c
     src/diary.c
+    src/encounter.c
     src/abilities.c
     src/blackmarket.c
     src/fixes.c

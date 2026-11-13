@@ -1178,6 +1178,8 @@ void black_market_record( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
     char price[MAX_INPUT_LENGTH];
     char line[MAX_STRING_LENGTH * 2];
 
+    encounter_mob_acted( ch, keeper, "bought" );   /* encounter.c */
+
     if ( !is_black_market_dealer( keeper ) || keeper != black_market_dealer
     ||   obj == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return;

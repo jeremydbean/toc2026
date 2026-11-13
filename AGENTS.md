@@ -3881,6 +3881,38 @@ log says what a player typed; the journal says what happened, in columns
   `tools/log_report.py`'s activity section reads them
   (`tests/test_playlog_activity.py`).
 
+- **Encounters** (`src/encounter.c`, owner 2026-11-13: "see how often
+  players are coming across them ... and which ones they choose to pick up
+  or move past"; beta balance wants as much real play data as it can get).
+  Rows in `log/play.tsv`, columns in the file's header comment and in
+  `log_report.py`'s `ENCOUNTER_KINDS` comment. Herbs, components, eggs, area
+  maps and coin on the ground (`life_kind`) are followed one by one: a stint
+  on the ground starts in `obj_to_room` (`encounter_obj_floor`: a fresh
+  `enc_id`, the time, source `dropped` under a command, else `world`) and
+  ends in `obj_to_char`/`get_obj`'s room branch (`encounter_obj_held`: a
+  counted player's `picked`, or `cleared` by a mobile or staff),
+  `obj_to_obj` or `extract_obj` (`encounter_obj_off_floor`: `cleared`).
+  `laid` comes from the scatterers (`encounter_laid`: `component_scatter`,
+  the egg hunt, a goblin's spill), `spotted` from do_look's room view
+  (`encounter_room_seen`, arriving or LOOK, only standing in the room --
+  clairvoyance borrows `in_room`), once per player per stint (a ring of
+  `ENC_RING` ids in `pcdata->encounter`, memory only, freed by
+  `encounter_free`), and `passed` when that player looks at another room or
+  ends the sitting with it still lying there unpicked. The rare visitors
+  (`rare_kind`: dealer, goblin, cartographer, holiday bosses, the black
+  dragon, Hermie) get `rare-seen`, `rare-acted` (`encounter_fight`: fought
+  or attacked; `black_market_record`: bought) and `rare-passed`. Every
+  mobile seen against fought -- and, of those, attacked first, when no
+  command of the player's started the fight (`playlog_own_command`) -- and
+  every takeable floor object seen against taken are counted per sitting
+  and written as `sightings` rows at its end (`encounter_session_end` from
+  `playlog_session`). A `census` row every `ENC_CENSUS_SECS` (15 minutes,
+  `TOC_ENCOUNTER_CENSUS_SECS` for tests) while anybody plays. Staff by
+  level and wizinvis players are never counted. The report's `==
+  encounters` section reads it all (`tests/test_encounter_log.py`). A new
+  scatterer calls `encounter_laid` after its `obj_to_room`; a new way off
+  the ground goes through one of the three hooks.
+
 - **`log/hyrule.tsv`** (`src/hyrulelog.c`, owner 2026-11-10: Hyrule
   logged heavily for balance and trends). Columns: epoch, kind, name,
   level, remorts, class, room, zone (`over`, `L1`-`L9`, `out`), then

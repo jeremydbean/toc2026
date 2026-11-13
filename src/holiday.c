@@ -899,6 +899,7 @@ static void hide_an_egg( void )
         return;
     holiday_fill( egg, number_range( 5, 30 ) );
     obj_to_room( egg, room );
+    encounter_laid( egg, "holiday" );
 }
 
 /* Once a tick, from tick_event_boss, and by HOLIDAYS REFRESH: put the

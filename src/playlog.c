@@ -589,6 +589,44 @@ static void journal_write( const char *kind, CHAR_DATA *ch, const char *fields )
     journal_busy = false;
 }
 
+/* For encounter.c: a row of its own kind through the same writer and
+   rules (wizinvis writes nothing, the dealer's room is "-"), text made
+   safe for a column, and whose command is running. */
+void playlog_row( const char *kind, CHAR_DATA *ch, const char *fields )
+{
+    journal_write( kind, ch, fields );
+}
+
+void playlog_clean( char *dest, size_t size, const char *src )
+{
+    play_clean( dest, size, src );
+}
+
+/* True while ch's own typed command is running: what a player chose to
+   do, as against a mobile's attack or a tick. */
+bool playlog_own_command( CHAR_DATA *ch )
+{
+    return current_set && ch != NULL && ch->name != NULL
+        && !str_cmp( ch->name, current_name );
+}
+
+/* Who or what is doing it now, for a row about a thing rather than a
+   player: "<name>:<command>", "-" for a wizinvis command, or the update
+   phase in brackets. */
+const char *playlog_actor( void )
+{
+    static char actor[96];
+
+    if ( !current_set )
+        snprintf( actor, sizeof(actor), "(%s)", playlog_phase );
+    else if ( current_hidden )
+        snprintf( actor, sizeof(actor), "-" );
+    else
+        snprintf( actor, sizeof(actor), "%s:%s", current_name,
+                  current_cmd[0] != '\0' ? current_cmd : "-" );
+    return actor;
+}
+
 /* One line of the answer onto what is kept, " // " between lines (SCORE
    and the boxed displays draw with "|"). A line of nothing but rules and
    borders says nothing and is skipped. */
@@ -1567,6 +1605,7 @@ void playlog_session( CHAR_DATA *ch, const char *how )
     ||   ch->pcdata->session_logon <= 0 )
         return;
     hylog_session_end( ch, how );       /* log/hyrule.tsv */
+    encounter_session_end( ch, how );   /* passed by, and the sightings */
     coin_summary( ch, coin, sizeof(coin) );
     tally_summary( ch->pcdata->play_spent_on, ch->pcdata->play_spent, true,
                    spent, sizeof(spent) );

@@ -114,6 +114,7 @@ typedef struct  pkill_list_data         PKILL_LIST_DATA;
 typedef struct  wiz_data                WIZ_DATA;
 typedef struct  offense_data            OFFENSE_DATA;
 typedef struct  diary_day               DIARY_DAY;
+typedef struct  encounter_state         ENCOUNTER_STATE;
 
 /* Function types. */
 typedef void DO_FUN     ( CHAR_DATA *ch, char *argument );
@@ -1064,6 +1065,25 @@ bool  rest_room_ok     args( ( CHAR_DATA *ch, ROOM_INDEX_DATA *room ) );
 void  rest_xp_on_quit  args( ( CHAR_DATA *ch ) );
 void  rest_xp_on_login args( ( CHAR_DATA *ch ) );
 int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
+/* encounter.c -- what players come across and what they do about it
+   (owner, 2026-11-13): herbs, components, eggs and coin on the ground
+   from laid to picked or passed; mobiles and floor objects seen against
+   fought or taken; the rare visitors; a census of what lies about. */
+void  encounter_obj_floor    args( ( OBJ_DATA *obj ) );
+void  encounter_laid         args( ( OBJ_DATA *obj, const char *source ) );
+void  encounter_obj_held     args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
+void  encounter_obj_off_floor args( ( OBJ_DATA *obj, const char *why ) );
+void  encounter_room_seen    args( ( CHAR_DATA *ch, bool arrived ) );
+void  encounter_fight        args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+void  encounter_mob_acted    args( ( CHAR_DATA *ch, CHAR_DATA *mob, const char *what ) );
+void  encounter_session_end  args( ( CHAR_DATA *ch, const char *how ) );
+void  encounter_free         args( ( CHAR_DATA *ch ) );
+void  encounter_census       args( ( void ) );
+/* playlog.c, for encounter.c */
+void  playlog_row            args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
+void  playlog_clean          args( ( char *dest, size_t size, const char *src ) );
+bool  playlog_own_command    args( ( CHAR_DATA *ch ) );
+const char *playlog_actor    args( ( void ) );
 /* diary.c -- each mortal's daily summary, kept in player/diary/<Name> */
 void  diary_login         args( ( CHAR_DATA *ch, bool new_character ) );
 void  diary_tick          args( ( CHAR_DATA *ch ) );
@@ -2329,6 +2349,7 @@ struct  char_data
        that came off it (never the overkill) and how many of them a pet
        or servant took, and what it took off players. Memory only. */
     long                encounter_seq;
+    long                enc_id;         /* encounter.c: this one as seen (memory only) */
     long                enc_taken;
     long                enc_by_pets;
     long                enc_dealt;
@@ -2668,6 +2689,9 @@ struct  pc_data
     /* diary.c: today's page of the character's diary, in memory until a
        save writes it to player/diary/<Name> (never in the player file). */
     DIARY_DAY *         diary;
+    /* encounter.c (memory only): what this sitting has seen and done
+       about it; heap, freed by encounter_free from free_char. */
+    ENCOUNTER_STATE *   encounter;
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;
@@ -2885,6 +2909,15 @@ struct  obj_data
     /* A corpse's kill (log/progress.tsv's loot rows join it to the slain
        row), and where a corpse's object came from (make_corpse). Memory
        only; drop_source is a static string. */
+    /* encounter.c (memory only): an id for sightings, when it came to
+       lie where it is, who has seen it there, and whether it is on the
+       ground (set by obj_to_room, cleared when it leaves it for anywhere
+       but another room). enc_source is a static string. */
+    long                enc_id;
+    time_t              enc_since;
+    int                 enc_seers;
+    bool                enc_floor;
+    const char *        enc_source;
     long                kill_seq;
     int                 kill_vnum;
     int                 kill_level;

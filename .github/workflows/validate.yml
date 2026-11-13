@@ -103,6 +103,7 @@ env:
     test_number_overflow test_vnum_boundaries
     test_bottled_captives test_duplicate_ownership test_jail_sentence
     test_long_listings test_jail_paths test_corpse_looting test_connection_burst test_mount_persistence
+    test_encounter_log
   # Modules that measure against the wall clock and need a machine to
   # themselves: the login throttle.
   SERIAL_MODULES: test_login_throttle

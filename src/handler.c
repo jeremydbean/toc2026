@@ -2141,6 +2141,9 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
  */
 void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
 {
+    /* Off the ground into somebody's hands (encounter.c): a player's
+       pick, a mobile's or staff's clearing. */
+    encounter_obj_held( obj, ch );
     /* A player's corpse picked up ends its keeping (corpses.c). */
     if ( obj->item_type == ITEM_CORPSE_PC )
     {
@@ -2641,6 +2644,7 @@ void obj_to_room( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex )
     obj->carried_by             = NULL;
     obj->in_obj                 = NULL;
     corpse_registry_moved( obj );
+    encounter_obj_floor( obj );         /* a stint on the ground begins */
     return;
 }
 
@@ -2652,6 +2656,7 @@ void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
 {
     corpse_note_change( obj_to, obj, true );
     corpse_registry_moved( obj );
+    encounter_obj_off_floor( obj, "container" );
     obj->next_content           = obj_to->contains;
     obj_to->contains            = obj;
     obj->in_obj                 = obj_to;
@@ -2844,6 +2849,7 @@ void extract_obj( OBJ_DATA *obj )
     }
 
     corpse_registry_touched( obj, "it is gone" );
+    encounter_obj_off_floor( obj, "gone" );     /* off the ground for good */
     /* Gone from a player's hands for good: the play journal says what
        and why (playlog_obj_gone). Quitting never comes here. */
     playlog_obj_gone( obj );

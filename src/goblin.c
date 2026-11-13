@@ -381,6 +381,7 @@ static OBJ_DATA *gob_spill( ROOM_INDEX_DATA *room, long copper )
         copper -= n * unit[i];
         pile = create_money( (int) n, type[i] );
         obj_to_room( pile, room );
+        encounter_laid( pile, "goblin" );
         if ( first == NULL )
             first = pile;
     }

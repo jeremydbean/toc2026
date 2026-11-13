@@ -3420,6 +3420,8 @@ void update_handler( void )
 	/* A jail term that has run out ends with nobody typing (jail.c). */
 	playlog_phase_enter( "jail_update" );
 	jail_update	( );
+	playlog_phase_enter( "encounter_census" );
+	encounter_census( );
 	/* The seasonal areas held to the calendar: a restart at 3am New
 	   York when they differ (season.c). */
 	playlog_phase_enter( "season_restart" );
@@ -3658,6 +3660,7 @@ void component_scatter( bool always )
         component = create_object( get_obj_index(pick), 1 );
         component->timer = 0;    /* it waits to be found (owner, 2026-11-13) */
         obj_to_room(component, component_room);
+        encounter_laid( component, "scatter" );
         herb_count++;
 
         send_to_room("You notice a strange plant on the ground.\n\r",
@@ -3697,6 +3700,7 @@ void component_scatter( bool always )
       component = create_object( get_obj_index(pick), 1 );
       component->timer = 0;      /* it waits to be found (owner, 2026-11-13) */
       obj_to_room(component, component_room);
+      encounter_laid( component, "scatter" );
       spell_comp_count++;
 
       send_to_room("You notice something strange on the ground.\n\r",

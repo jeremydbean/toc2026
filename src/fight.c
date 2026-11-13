@@ -3112,6 +3112,7 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
 
     SET_CHAR_REF( ch, fighting, victim );
     ch->position = POS_FIGHTING;
+    encounter_fight( ch, victim );      /* seen against fought: encounter.c */
     /* An encounter's start, for log/progress.tsv: a mobile entering a
        fight (set_fighting is only ever for one not already in one), or
        struck by a player while in none, since a blow that kills never puts
