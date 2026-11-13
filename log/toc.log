@@ -295787,3 +295787,5 @@ Fri Nov 13 15:17:28 2026 :: Connection guard: 99.62.115.159 closed without a wor
 Fri Nov 13 15:18:50 2026 :: Treasure goblin: vanished from room 5059 (The warrior's tent., eastern.are) (too long in one area).
 Fri Nov 13 15:19:53 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 6 of 6 in 6 hours).
 Fri Nov 13 15:19:53 2026 :: Connection guard: 52.15.147.27 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.15.147.27 lifts it.
+Fri Nov 13 15:24:58 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 15:27:29 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
