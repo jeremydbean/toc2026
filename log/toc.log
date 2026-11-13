@@ -295166,3 +295166,551 @@ Fri Nov 13 05:41:03 2026 :: Connection guard: 5.161.75.7 closed without a word (
 Fri Nov 13 05:45:42 2026 :: Treasure goblin: vanished from room 5616 (Guardmens corridors, tarin.are) (too long in one area).
 Fri Nov 13 05:46:08 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 13 05:51:12 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 05:55:46 2026 :: Treasure goblin: vanished from room 25121 (The hole downward., underdrk.are) (too long in one area).
+Fri Nov 13 05:56:17 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:01:22 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:05:51 2026 :: Treasure goblin: vanished from room 16036 (Main Deck - Port, pirate.are) (too long in one area).
+Fri Nov 13 06:06:27 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:09:57 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 13 06:11:31 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:15:27 2026 :: Connection guard: last hour 13 closed without a word, 11 refused, 0 new characters refused, 1 newly paused; 1 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 06:15:56 2026 :: Treasure goblin: vanished from room 8838 (A City on the Edge, kerofk.are) (too long in one area).
+Fri Nov 13 06:16:36 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 06:21:41 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 06:25:26 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Nov 13 06:25:30 2026 :: Log WebAdmin: fsave
+Fri Nov 13 06:25:36 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Nov 13 06:25:39 2026 :: Received signal 15; saving players and shutting down.
+Fri Nov 13 06:25:39 2026 :: Normal termination of game.
+Fri Nov 13 06:25:39 2026 ::  INIT OK 
+Fri Nov 13 06:25:39 2026 :: walkto_load: 157 destinations.
+Fri Nov 13 06:25:39 2026 :: changes_load: 326 entries.
+Fri Nov 13 06:25:39 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 7 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Fri Nov 13 06:25:39 2026 :: Serials: 962 character files read, 4 with a serial.
+Fri Nov 13 06:25:39 2026 :: Connection guard: 12 addresses remembered from before the boot, 1 paused now.
+Fri Nov 13 06:25:39 2026 :: Passwords: SHA-512 crypt self-test passed.
+Fri Nov 13 06:25:39 2026 :: Recovery ledger: 393 records (0 from before the check), 4 requests, 8 players.
+Fri Nov 13 06:25:39 2026 :: ROM is ready to rock on port 9000.
+Fri Nov 13 06:25:40 2026 :: Treasure goblin: appeared.
+Fri Nov 13 06:25:40 2026 :: Automated backup started.
+Fri Nov 13 06:25:40 2026 :: Daily backup started.
+Fri Nov 13 06:25:40 2026 :: Automated backup complete.
+Fri Nov 13 06:25:41 2026 :: Daily backup complete.
+Fri Nov 13 06:25:41 2026 :: Connection guard: 123.58.210.134 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:25:43 2026 :: Connection guard: 123.58.210.134 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 06:25:46 2026 :: Connection guard: 123.58.210.134 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 06:25:47 2026 :: Connection guard: 123.58.210.134 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 06:25:47 2026 :: Sock.sinaddr:  123.58.210.134
+Fri Nov 13 06:25:47 2026 :: EOF encountered on read.
+Fri Nov 13 06:25:47 2026 :: Connection guard: 123.58.210.134 closed before a password prompt (strike 5 of 6 in 6 hours).
+Fri Nov 13 06:25:48 2026 :: Sock.sinaddr:  123.58.210.134
+Fri Nov 13 06:25:55 2026 :: EOF encountered on read.
+Fri Nov 13 06:25:55 2026 :: Connection guard: 123.58.210.134 closed before a password prompt (strike 6 of 6 in 6 hours).
+Fri Nov 13 06:25:55 2026 :: Connection guard: 123.58.210.134 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 123.58.210.134 lifts it.
+Fri Nov 13 06:25:56 2026 :: Connection guard: refused 1 connection from 123.58.210.134 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Fri Nov 13 06:26:46 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:26:56 2026 :: Connection guard: refused 8 connections from 123.58.210.134 (since the last line; 9 refused in all, pause 1 this week, 359 minutes left).
+Fri Nov 13 06:31:51 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 06:35:44 2026 :: Treasure goblin: vanished from room 10138 (A forgotten hallway., glitter.are) (too long in one area).
+Fri Nov 13 06:36:54 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:41:59 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:45:49 2026 :: Treasure goblin: vanished from room 4067 (The maze, moria.are) (too long in one area).
+Fri Nov 13 06:47:04 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:52:09 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 06:55:54 2026 :: Treasure goblin: vanished from room 3839 (On the Other Side of the Dimensional Portal, ratslair.are) (too long in one area).
+Fri Nov 13 06:57:14 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 07:02:18 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 07:05:58 2026 :: Treasure goblin: vanished from room 29100 (Metalurgy Plant, korzath1.are) (too long in one area).
+Fri Nov 13 07:07:23 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 07:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 13 07:12:28 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 07:16:03 2026 :: Treasure goblin: vanished from room 20577 (The Green Vines, emerald.are) (too long in one area).
+Fri Nov 13 07:17:34 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 07:22:38 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 07:25:39 2026 :: Connection guard: last hour 17 closed without a word, 9 refused, 0 new characters refused, 1 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 07:27:42 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 07:32:45 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 07:37:36 2026 :: Treasure goblin: vanished from room 9524 (West Main Street, newthalo.are) (too long in one area).
+Fri Nov 13 07:37:48 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 07:42:51 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 07:47:41 2026 :: Treasure goblin: vanished from room 24342 (The Black Square, chess.are) (too long in one area).
+Fri Nov 13 07:47:56 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 07:53:01 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 07:57:46 2026 :: Treasure goblin: vanished from room 28023 (The Vault of the Lamp, pyramid.are) (too long in one area).
+Fri Nov 13 07:58:06 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 08:03:10 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 08:07:50 2026 :: Treasure goblin: vanished from room 5030 (The Sands of Sorrow, eastern.are) (too long in one area).
+Fri Nov 13 08:08:15 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 08:10:01 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 13 08:13:19 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 08:17:55 2026 :: Treasure goblin: vanished from room 13487 (Penguin Room, hell.are) (too long in one area).
+Fri Nov 13 08:18:24 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 08:23:29 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 08:25:39 2026 :: Connection guard: last hour 13 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 08:28:00 2026 :: Treasure goblin: vanished from room 28021 (Down the Crevasse, pyramid.are) (too long in one area).
+Fri Nov 13 08:28:33 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 08:33:38 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 08:38:04 2026 :: Treasure goblin: vanished from room 29413 (East-West trail, world.are) (too long in one area).
+Fri Nov 13 08:38:44 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 08:40:53 2026 :: Sock.sinaddr:  204.76.203.214
+Fri Nov 13 08:40:53 2026 :: Connection guard: 204.76.203.214 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 13 08:40:53 2026 :: Connection guard: 204.76.203.213 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 08:43:48 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 08:43:48 2026 :: Connection guard: 5.161.215.244 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.215.244 lifts it.
+Fri Nov 13 08:48:09 2026 :: Treasure goblin: vanished from room 5938 (A grassy clearing, mid_ruin.are) (too long in one area).
+Fri Nov 13 08:48:53 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 08:48:53 2026 :: Connection guard: 3.212.128.62 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.212.128.62 lifts it.
+Fri Nov 13 08:53:58 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 08:58:14 2026 :: Treasure goblin: vanished from room 2398 (Dorgar's Dismal Domicile, mahntor.are) (too long in one area).
+Fri Nov 13 08:59:02 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 09:04:07 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 09:08:18 2026 :: Treasure goblin: vanished from room 7509 (Exploring the Astral Plane, astral.are) (too long in one area).
+Fri Nov 13 09:09:11 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 09:13:47 2026 :: Cartographer: appeared.
+Fri Nov 13 09:14:17 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 09:14:17 2026 :: Connection guard: 52.22.236.30 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.22.236.30 lifts it.
+Fri Nov 13 09:18:23 2026 :: Treasure goblin: vanished from room 15217 (C.S.E., campus.are) (too long in one area).
+Fri Nov 13 09:19:21 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 09:24:26 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 09:25:39 2026 :: Connection guard: last hour 13 closed without a word, 0 refused, 0 new characters refused, 3 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 09:28:28 2026 :: Treasure goblin: vanished from room 2321 (The rocky shoreline, mahntor.are) (too long in one area).
+Fri Nov 13 09:29:31 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 09:34:36 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 09:38:32 2026 :: Treasure goblin: vanished from room 5959 (Wall Road, mid_ruin.are) (too long in one area).
+Fri Nov 13 09:39:40 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 09:41:14 2026 :: Sock.sinaddr:  184.36.109.193
+Fri Nov 13 09:41:25 2026 :: EOF encountered on read.
+Fri Nov 13 09:41:25 2026 :: Connection guard: 184.36.109.193 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 13 09:44:05 2026 :: Cartographer: left room 7627 (Library, ultima.are) (his visit is over).
+Fri Nov 13 09:44:45 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 09:48:37 2026 :: Treasure goblin: vanished from room 1404 (A hallway, htower.are) (too long in one area).
+Fri Nov 13 09:49:50 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 09:52:27 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 09:54:55 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 09:58:42 2026 :: Treasure goblin: vanished from room 6127 (A narrow trail through the deep, dark forest, haon.are) (too long in one area).
+Fri Nov 13 10:00:00 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:00:12 2026 :: Connection guard: 170.231.236.98 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 10:05:04 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:08:46 2026 :: Treasure goblin: vanished from room 15159 (The Centre Aisle Of The Auditorium, campus.are) (too long in one area).
+Fri Nov 13 10:10:09 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 1 refused in all, pause 1 this week, 274 minutes left).
+Fri Nov 13 10:15:14 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 10:18:51 2026 :: Treasure goblin: vanished from room 9229 (In the River, canyon.are) (too long in one area).
+Fri Nov 13 10:20:18 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:25:23 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:25:39 2026 :: Connection guard: last hour 13 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 10:26:32 2026 :: Automated backup started.
+Fri Nov 13 10:26:32 2026 :: Automated backup complete.
+Fri Nov 13 10:28:56 2026 :: Treasure goblin: vanished from room 24385 (The Second Dock, chess.are) (too long in one area).
+Fri Nov 13 10:30:27 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 1 refused in all, pause 1 this week, 284 minutes left).
+Fri Nov 13 10:35:32 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 10:39:00 2026 :: Treasure goblin: vanished from room 5213 (A side street, oldthalo.are) (too long in one area).
+Fri Nov 13 10:40:37 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 10:45:42 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:49:05 2026 :: Treasure goblin: vanished from room 18141 (A path around the pond, icekeep.are) (too long in one area).
+Fri Nov 13 10:50:47 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:55:51 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 10:58:10 2026 :: Black market: stock 1794567490: The holy armor (17113, level 35, 168p); some Black velvet robes (10048, level 32, 66p); bronze arm plates (29209, level 51, 827p); a slice of Winter Veil yule log (29927, level 0, 2704p); the Winter Veil mantle (29923, level 50, 13500p).
+Fri Nov 13 10:58:10 2026 :: Black market: the dealer appeared with 5 items (stock 1794567490), for 24 minutes.
+Fri Nov 13 10:59:10 2026 :: Treasure goblin: vanished from room 19164 (Before Rome, rome.are) (too long in one area).
+Fri Nov 13 10:59:26 2026 :: Black market: the dealer vanished from room 28155 (Dirt Trail Around the Fortress, azeroth.are) (wandering).
+Fri Nov 13 11:00:14 2026 :: Black market: the dealer vanished from room 1502 (A Dusty Path, gnome.are) (wandering).
+Fri Nov 13 11:00:55 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 11:06:00 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 11:09:14 2026 :: Treasure goblin: vanished from room 5316 (A back alley, mirror.are) (too long in one area).
+Fri Nov 13 11:10:18 2026 :: Black market: the dealer vanished from room 6518 (North of Shops, dwarves.are) (too long in one area).
+Fri Nov 13 11:11:05 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 11:16:10 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 11:19:19 2026 :: Treasure goblin: vanished from room 13456 (Construction Area, hell.are) (too long in one area).
+Fri Nov 13 11:20:23 2026 :: Black market: the dealer vanished from room 7412 (The stalagmite tunnel, sewer.are) (too long in one area).
+Fri Nov 13 11:21:15 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 11:23:03 2026 :: Black market: the dealer left the world from room 1358 (A hallway, htower.are).
+Fri Nov 13 11:25:39 2026 :: Connection guard: last hour 10 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 11:26:20 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 11:29:24 2026 :: Treasure goblin: vanished from room 18063 (Inside the Palace of Lanatir, icekeep.are) (too long in one area).
+Fri Nov 13 11:31:25 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 11:36:29 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 11:39:28 2026 :: Treasure goblin: vanished from room 5959 (Wall Road, mid_ruin.are) (too long in one area).
+Fri Nov 13 11:41:33 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 11:46:37 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 11:51:29 2026 :: Treasure goblin: vanished from room 25144 (A hole in the wall., underdrk.are) (too long in one area).
+Fri Nov 13 11:51:42 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 11:56:47 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 11:56:49 2026 :: Sock.sinaddr:  24.2.118.125
+Fri Nov 13 11:56:49 2026 :: Loading Trentlin's playerfile
+Fri Nov 13 11:56:51 2026 :: Loading Trentlin's playerfile
+Fri Nov 13 11:56:51 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Fri Nov 13 11:56:52 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 0
+Fri Nov 13 11:56:55 2026 :: Log Trentlin [4208]: note (arguments withheld)
+Fri Nov 13 11:57:04 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:57:09 2026 :: Log Trentlin [4208]: note (arguments withheld)
+Fri Nov 13 11:57:11 2026 :: Log Trentlin [4208]: note (arguments withheld)
+Fri Nov 13 11:57:20 2026 :: Log Trentlin [4208]: note (arguments withheld)
+Fri Nov 13 11:57:25 2026 :: Log Trentlin [4208]: note (arguments withheld)
+Fri Nov 13 11:57:33 2026 :: Log Trentlin [4208]: note (arguments withheld)
+Fri Nov 13 11:57:36 2026 :: Log Trentlin [4208]: note (arguments withheld)
+Fri Nov 13 11:57:36 2026 :: Trentlin posted a note to killuminati.
+Fri Nov 13 11:57:39 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:57:40 2026 :: Log Trentlin [4208]: wear all
+Fri Nov 13 11:57:45 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:57:48 2026 :: Log Trentlin [4208]: wear diplo
+Fri Nov 13 11:57:56 2026 :: Log Trentlin [4208]: l in hearty
+Fri Nov 13 11:57:57 2026 :: Log Trentlin [4208]: l in heart
+Fri Nov 13 11:58:01 2026 :: Log Trentlin [4208]: l heart
+Fri Nov 13 11:58:06 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:58:09 2026 :: Log Trentlin [4208]: wear quick
+Fri Nov 13 11:58:13 2026 :: Log Trentlin [4208]: stash put quick
+Fri Nov 13 11:58:13 2026 :: Log Trentlin [4208]: stashed a quick sheathe (vnum 8713)
+Fri Nov 13 11:58:21 2026 :: Log Trentlin [4208]: stash put robes
+Fri Nov 13 11:58:21 2026 :: Log Trentlin [4208]: stashed some Black velvet robes (vnum 10048)
+Fri Nov 13 11:58:27 2026 :: Log Trentlin [4208]: stash put white
+Fri Nov 13 11:58:27 2026 :: Log Trentlin [4208]: stashed a white bracer (vnum 717)
+Fri Nov 13 11:58:27 2026 :: Log Trentlin [4208]: stash put white
+Fri Nov 13 11:58:27 2026 :: Log Trentlin [4208]: stashed a white bracer (vnum 717)
+Fri Nov 13 11:58:30 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:58:33 2026 :: Log Trentlin [4208]: wear gaunt
+Fri Nov 13 11:58:37 2026 :: Log Trentlin [4208]: stash put mitts'
+Fri Nov 13 11:58:39 2026 :: Log Trentlin [4208]: stash put mitts
+Fri Nov 13 11:58:39 2026 :: Log Trentlin [4208]: stashed a pair of pebble-hide mitts (vnum 30708)
+Fri Nov 13 11:58:42 2026 :: Log Trentlin [4208]: wear scep
+Fri Nov 13 11:58:45 2026 :: Log Trentlin [4208]: stash put light
+Fri Nov 13 11:58:45 2026 :: Log Trentlin [4208]: stashed a *twinkling* ball of light (vnum 24002)
+Fri Nov 13 11:58:46 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:58:49 2026 :: Log Trentlin [4208]: wear stomp
+Fri Nov 13 11:58:54 2026 :: Log Trentlin [4208]: stash put boots
+Fri Nov 13 11:58:54 2026 :: Log Trentlin [4208]: stashed some captain's boots (vnum 29010)
+Fri Nov 13 11:58:56 2026 :: Log Trentlin [4208]: wear colla
+Fri Nov 13 11:59:00 2026 :: Log Trentlin [4208]: stash put rimmed
+Fri Nov 13 11:59:03 2026 :: Log Trentlin [4208]: stash put cloak
+Fri Nov 13 11:59:03 2026 :: Log Trentlin [4208]: stashed a Blue rimmed, white cloak (vnum 10022)
+Fri Nov 13 11:59:05 2026 :: Log Trentlin [4208]: rem cloak
+Fri Nov 13 11:59:08 2026 :: Log Trentlin [4208]: stash put cloak
+Fri Nov 13 11:59:08 2026 :: Log Trentlin [4208]: stashed a Blue rimmed, white cloak (vnum 10022)
+Fri Nov 13 11:59:11 2026 :: Log Trentlin [4208]: wear all
+Fri Nov 13 11:59:14 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:59:16 2026 :: Log Trentlin [4208]: wear war
+Fri Nov 13 11:59:20 2026 :: Log Trentlin [4208]: stash put war
+Fri Nov 13 11:59:20 2026 :: Log Trentlin [4208]: stashed a great war helmet (vnum 4619)
+Fri Nov 13 11:59:22 2026 :: Log Trentlin [4208]: wear vam
+Fri Nov 13 11:59:25 2026 :: Log Trentlin [4208]: drop plat
+Fri Nov 13 11:59:26 2026 :: Log Trentlin [4208]: sac plat
+Fri Nov 13 11:59:26 2026 :: Log Trentlin [4208]: coin +44 copper
+Fri Nov 13 11:59:27 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:59:30 2026 :: Log Trentlin [4208]: wear grea
+Fri Nov 13 11:59:34 2026 :: Log Trentlin [4208]: stash put plat
+Fri Nov 13 11:59:34 2026 :: Log Trentlin [4208]: stashed some platinum leg bands (vnum 9214)
+Fri Nov 13 11:59:37 2026 :: Log Trentlin [4208]: wear mant
+Fri Nov 13 11:59:40 2026 :: Log Trentlin [4208]: stash put cloak
+Fri Nov 13 11:59:40 2026 :: Log Trentlin [4208]: stashed an Eagle-feather cloak (vnum 30653)
+Fri Nov 13 11:59:41 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 11:59:49 2026 :: Log Trentlin [4208]: stash put onyx
+Fri Nov 13 11:59:49 2026 :: Log Trentlin [4208]: stashed an onyx bracelet (vnum 1388)
+Fri Nov 13 11:59:51 2026 :: Log Trentlin [4208]: wear lion
+Fri Nov 13 11:59:56 2026 :: Log Trentlin [4208]: wear shi
+Fri Nov 13 11:59:59 2026 :: Log Trentlin [4208]: comp shie
+Fri Nov 13 12:00:08 2026 :: Log Trentlin [4208]: comp 2.shield
+Fri Nov 13 12:00:13 2026 :: Log Trentlin [4208]: drop dres
+Fri Nov 13 12:00:17 2026 :: Log Trentlin [4208]: drop 2.shie
+Fri Nov 13 12:00:18 2026 :: Log Trentlin [4208]: sac shsie
+Fri Nov 13 12:00:20 2026 :: Log Trentlin [4208]: sac shie
+Fri Nov 13 12:00:20 2026 :: Log Trentlin [4208]: coin +80 copper
+Fri Nov 13 12:00:22 2026 :: Log Trentlin [4208]: comp 2.shie
+Fri Nov 13 12:00:32 2026 :: Log Trentlin [4208]: wear shie
+Fri Nov 13 12:00:34 2026 :: Log Trentlin [4208]: wear 2.shie
+Fri Nov 13 12:00:36 2026 :: Log Trentlin [4208]: drop small
+Fri Nov 13 12:00:39 2026 :: Log Trentlin [4208]: get small
+Fri Nov 13 12:00:41 2026 :: Log Trentlin [4208]: drop 2.shie
+Fri Nov 13 12:00:43 2026 :: Log Trentlin [4208]: get shie
+Fri Nov 13 12:00:45 2026 :: Log Trentlin [4208]: drop 2.shie
+Fri Nov 13 12:00:47 2026 :: Log Trentlin [4208]: sac shie
+Fri Nov 13 12:00:47 2026 :: Log Trentlin [4208]: coin +50 copper
+Fri Nov 13 12:00:48 2026 :: Log Trentlin [4208]: i
+Fri Nov 13 12:00:56 2026 :: Log Trentlin [4208]: wear hau
+Fri Nov 13 12:01:05 2026 :: Log Trentlin [4208]: stash put liver
+Fri Nov 13 12:01:05 2026 :: Log Trentlin [4208]: stashed an indigo blue livery (vnum 10030)
+Fri Nov 13 12:01:09 2026 :: Log Trentlin [4208]: comp ring
+Fri Nov 13 12:01:14 2026 :: Log Trentlin [4208]: l
+Fri Nov 13 12:01:15 2026 :: Log Trentlin [4208]: where hermie
+Fri Nov 13 12:01:20 2026 :: Log Trentlin [4208]: e
+Fri Nov 13 12:01:20 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 13 12:01:20 2026 :: Log Trentlin [4207]: e
+Fri Nov 13 12:01:20 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Fri Nov 13 12:01:21 2026 :: Log Trentlin [4202]: e
+Fri Nov 13 12:01:21 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Fri Nov 13 12:01:21 2026 :: Log Trentlin [4201]: e
+Fri Nov 13 12:01:21 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Fri Nov 13 12:01:21 2026 :: Log Trentlin [2427]: e
+Fri Nov 13 12:01:22 2026 :: Log Trentlin [2427]: n
+Fri Nov 13 12:01:22 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Fri Nov 13 12:01:22 2026 :: Log Trentlin [2404]: n
+Fri Nov 13 12:01:22 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Fri Nov 13 12:01:23 2026 :: Log Trentlin [2401]: i
+Fri Nov 13 12:01:34 2026 :: Treasure goblin: vanished from room 646 (Swiftest Way, ofcol.are) (too long in one area).
+Fri Nov 13 12:01:37 2026 :: Log Trentlin [2401]: comp contain
+Fri Nov 13 12:01:46 2026 :: Log Trentlin [2401]: wear contain
+Fri Nov 13 12:01:52 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 12:01:56 2026 :: Log Trentlin [2401]: east
+Fri Nov 13 12:01:56 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Nov 13 12:01:56 2026 :: Log Trentlin [2403]: east
+Fri Nov 13 12:01:56 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2420]: east
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2421]: east
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2422]: east
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2423]: east
+Fri Nov 13 12:01:57 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Fri Nov 13 12:01:58 2026 :: Log Trentlin [2424]: east
+Fri Nov 13 12:01:58 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Fri Nov 13 12:01:58 2026 :: Log Trentlin [2425]: east
+Fri Nov 13 12:01:58 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Fri Nov 13 12:01:58 2026 :: Log Trentlin [2426]: open east
+Fri Nov 13 12:01:58 2026 :: Log Trentlin [2426]: east
+Fri Nov 13 12:01:58 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [2440]: east
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [3503]: east
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [3502]: east
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [3525]: east
+Fri Nov 13 12:01:59 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3526]: east
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3527]: east
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3528]: east
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3529]: east
+Fri Nov 13 12:02:00 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [3530]: east
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [3531]: east
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [3532]: east
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [42]: east
+Fri Nov 13 12:02:01 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9669]: east
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9523]: east
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9524]: east
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9525]: east
+Fri Nov 13 12:02:02 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9526]: east
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9509]: north
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9514]: arrived (The Northwestern Market Square) from 9509
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9514]: east
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9514
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9515]: north
+Fri Nov 13 12:02:03 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9515
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9518]: north
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9518
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9519]: north
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9519
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9520]: north
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9520
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9521]: north
+Fri Nov 13 12:02:04 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Fri Nov 13 12:02:05 2026 :: Log Trentlin [9522]: open north
+Fri Nov 13 12:02:05 2026 :: Log Trentlin [9522]: north
+Fri Nov 13 12:02:05 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Fri Nov 13 12:02:05 2026 :: Log Trentlin [9667]: north
+Fri Nov 13 12:02:05 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9667
+Fri Nov 13 12:02:05 2026 :: Log Trentlin [9781]: north
+Fri Nov 13 12:02:05 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9781
+Fri Nov 13 12:02:06 2026 :: Log Trentlin [9782]: north
+Fri Nov 13 12:02:06 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 9782
+Fri Nov 13 12:02:06 2026 :: Log Trentlin [9783]: north
+Fri Nov 13 12:02:06 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 9783
+Fri Nov 13 12:02:06 2026 :: Log Trentlin [64]: north
+Fri Nov 13 12:02:06 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 64
+Fri Nov 13 12:02:08 2026 :: Log Trentlin [29001]: n
+Fri Nov 13 12:02:08 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Fri Nov 13 12:02:08 2026 :: Log Trentlin [29002]: n
+Fri Nov 13 12:02:08 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29002
+Fri Nov 13 12:02:09 2026 :: Log Trentlin [29003]: ne
+Fri Nov 13 12:02:09 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29003
+Fri Nov 13 12:02:10 2026 :: Log Trentlin [29060]: k c\
+Fri Nov 13 12:02:12 2026 :: Log Trentlin [29060]: k ch
+Fri Nov 13 12:02:16 2026 :: Log Trentlin [29060]: eq
+Fri Nov 13 12:02:18 2026 :: Log Trentlin [29060]: rem bow
+Fri Nov 13 12:02:18 2026 :: Do_remove: Trentlin : bow
+Fri Nov 13 12:02:25 2026 :: Log Trentlin [29060]: fists
+Fri Nov 13 12:02:26 2026 :: Log Trentlin [29060]: killed Security Chief
+Fri Nov 13 12:02:26 2026 :: Log Trentlin [29060]: coin +1 platinum
+Fri Nov 13 12:02:26 2026 :: Log Trentlin [29060]: coin +5 silver
+Fri Nov 13 12:02:26 2026 :: Log Trentlin [29060]: coin +6 copper
+Fri Nov 13 12:02:26 2026 :: Log Trentlin [29060]: coin +2 gold
+Fri Nov 13 12:02:34 2026 :: Log Trentlin [29060]: steel
+Fri Nov 13 12:02:34 2026 :: Log Trentlin [29060]: get key co
+Fri Nov 13 12:02:35 2026 :: Log Trentlin [29060]: unlock east
+Fri Nov 13 12:02:36 2026 :: Log Trentlin [29060]: open east
+Fri Nov 13 12:02:37 2026 :: Log Trentlin [29060]: drop key
+Fri Nov 13 12:02:38 2026 :: Log Trentlin [29060]: e
+Fri Nov 13 12:02:38 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Fri Nov 13 12:02:39 2026 :: Log Trentlin [29061]: iron
+Fri Nov 13 12:02:46 2026 :: Log Trentlin [29061]: steel
+Fri Nov 13 12:02:50 2026 :: Log Trentlin [29061]: s
+Fri Nov 13 12:02:50 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Fri Nov 13 12:02:50 2026 :: Log Trentlin [29062]: s
+Fri Nov 13 12:02:50 2026 :: Log Trentlin [29063]: arrived (Corridor) from 29062
+Fri Nov 13 12:02:51 2026 :: Log Trentlin [29063]: s
+Fri Nov 13 12:02:51 2026 :: Log Trentlin [29065]: arrived (Service Hallway) from 29063
+Fri Nov 13 12:02:51 2026 :: Log Trentlin [29065]: s
+Fri Nov 13 12:02:51 2026 :: Log Trentlin [29065]: s
+Fri Nov 13 12:02:51 2026 :: Log Trentlin [29065]: s
+Fri Nov 13 12:02:52 2026 :: Log Trentlin [29065]: e
+Fri Nov 13 12:02:52 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29065
+Fri Nov 13 12:02:52 2026 :: Log Trentlin [29066]: e
+Fri Nov 13 12:02:52 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29066
+Fri Nov 13 12:02:52 2026 :: Log Trentlin [29067]: e
+Fri Nov 13 12:02:52 2026 :: Log Trentlin [29070]: arrived (Service Hallway) from 29067
+Fri Nov 13 12:02:53 2026 :: Log Trentlin [29070]: e
+Fri Nov 13 12:02:53 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29070
+Fri Nov 13 12:02:53 2026 :: Log Trentlin [29071]: e
+Fri Nov 13 12:02:53 2026 :: Log Trentlin [29072]: arrived (Machine Room) from 29071
+Fri Nov 13 12:02:54 2026 :: Log Trentlin [29072]: e
+Fri Nov 13 12:02:54 2026 :: Log Trentlin [29073]: arrived (Machine Room) from 29072
+Fri Nov 13 12:02:54 2026 :: Log Trentlin [29073]: n
+Fri Nov 13 12:02:54 2026 :: Log Trentlin [29075]: arrived (Machine Room) from 29073
+Fri Nov 13 12:02:57 2026 :: Log Trentlin [29075]: w
+Fri Nov 13 12:02:57 2026 :: Log Trentlin [29074]: arrived (Machine Room) from 29075
+Fri Nov 13 12:02:58 2026 :: Log Trentlin [29074]: s
+Fri Nov 13 12:02:58 2026 :: Log Trentlin [29072]: arrived (Machine Room) from 29074
+Fri Nov 13 12:02:59 2026 :: Log Trentlin [29072]: w
+Fri Nov 13 12:02:59 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29072
+Fri Nov 13 12:02:59 2026 :: Log Trentlin [29071]: n
+Fri Nov 13 12:02:59 2026 :: Log Trentlin [29080]: arrived (Hallway) from 29071
+Fri Nov 13 12:03:00 2026 :: Log Trentlin [29080]: n
+Fri Nov 13 12:03:00 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29080
+Fri Nov 13 12:03:03 2026 :: Log Trentlin [29082]: w
+Fri Nov 13 12:03:03 2026 :: Log Trentlin [29081]: arrived (Engineering Department) from 29082
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29081]: e
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29081
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29082]: n
+Fri Nov 13 12:03:04 2026 :: Log Trentlin [29085]: arrived (Engineering Department) from 29082
+Fri Nov 13 12:03:05 2026 :: Log Trentlin [29085]: n
+Fri Nov 13 12:03:05 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29085
+Fri Nov 13 12:03:06 2026 :: Log Trentlin [29089]: e
+Fri Nov 13 12:03:07 2026 :: Log Trentlin [29089]: n
+Fri Nov 13 12:03:07 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29089
+Fri Nov 13 12:03:10 2026 :: Log Trentlin [29090]: open east
+Fri Nov 13 12:03:10 2026 :: Log Trentlin [29090]: e
+Fri Nov 13 12:03:10 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29090
+Fri Nov 13 12:03:11 2026 :: Log Trentlin [29093]: sca
+Fri Nov 13 12:03:13 2026 :: Log Trentlin [29093]: s
+Fri Nov 13 12:03:13 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29093
+Fri Nov 13 12:03:13 2026 :: Log Trentlin [29095]: k bla
+Fri Nov 13 12:03:20 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:26 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:33 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:38 2026 :: Log Trentlin [29095]: fists
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: killed a blacksmith
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +3 platinum
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +34 silver
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +40 copper
+Fri Nov 13 12:03:41 2026 :: Log Trentlin [29095]: coin +67 gold
+Fri Nov 13 12:03:47 2026 :: Log Trentlin [29095]: l in co
+Fri Nov 13 12:03:48 2026 :: Log Trentlin [29095]: sac co
+Fri Nov 13 12:03:48 2026 :: Log Trentlin [29095]: coin +80 copper
+Fri Nov 13 12:03:49 2026 :: Log Trentlin [29095]: sca
+Fri Nov 13 12:03:54 2026 :: Log Trentlin [29095]: e
+Fri Nov 13 12:03:54 2026 :: Log Trentlin [29096]: arrived (Metalworks) from 29095
+Fri Nov 13 12:04:00 2026 :: Log Trentlin [29096]: k bla
+Fri Nov 13 12:04:01 2026 :: Log Trentlin [29096]: fists
+Fri Nov 13 12:04:07 2026 :: Log Trentlin [29096]: fists
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: fists
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: killed a blacksmith
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +3 platinum
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +34 silver
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +40 copper
+Fri Nov 13 12:04:20 2026 :: Log Trentlin [29096]: coin +67 gold
+Fri Nov 13 12:04:28 2026 :: Log Trentlin [29096]: sac co
+Fri Nov 13 12:04:28 2026 :: Log Trentlin [29096]: coin +80 copper
+Fri Nov 13 12:04:29 2026 :: Log Trentlin [29096]: w
+Fri Nov 13 12:04:29 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29096
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29095]: n
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29095
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29093]: w
+Fri Nov 13 12:04:30 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29093
+Fri Nov 13 12:04:31 2026 :: Log Trentlin [29090]: s
+Fri Nov 13 12:04:31 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29090
+Fri Nov 13 12:04:32 2026 :: Log Trentlin [29089]: reca
+Fri Nov 13 12:04:32 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29089
+Fri Nov 13 12:04:33 2026 :: Log Trentlin [4207]: e
+Fri Nov 13 12:04:33 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4202]: n
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4203]: n
+Fri Nov 13 12:04:34 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Fri Nov 13 12:04:35 2026 :: Log Trentlin [4210]: sleep
+Fri Nov 13 12:04:35 2026 :: Log Trentlin [4210]: quit
+Fri Nov 13 12:04:35 2026 :: Trentlin has quit.
+Fri Nov 13 12:04:35 2026 :: [QUIT] Player rejoined the real world.
+Fri Nov 13 12:06:57 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 2 refused in all, pause 1 this week, 188 minutes left).
+Fri Nov 13 12:11:38 2026 :: Treasure goblin: vanished from room 2917 (The tunnel, firenewt.are) (too long in one area).
+Fri Nov 13 12:12:01 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 12:17:06 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 12:21:43 2026 :: Treasure goblin: vanished from room 793 (Farms, camelot.are) (too long in one area).
+Fri Nov 13 12:22:11 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 12:25:39 2026 :: Connection guard: last hour 11 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 12:27:16 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 12:31:48 2026 :: Treasure goblin: vanished from room 13065 (Underwater, lakes.are) (too long in one area).
+Fri Nov 13 12:32:20 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 12:37:25 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 12:41:52 2026 :: Treasure goblin: vanished from room 3764 (A dark cavern, school.are) (too long in one area).
+Fri Nov 13 12:42:30 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 12:47:34 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 12:51:57 2026 :: Treasure goblin: vanished from room 7516 (Roaming the Astral Plane, astral.are) (too long in one area).
+Fri Nov 13 12:52:39 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 12:52:39 2026 :: Connection guard: 178.156.184.20 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.184.20 lifts it.
+Fri Nov 13 12:57:43 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 13:02:02 2026 :: Treasure goblin: vanished from room 8023 (Bazza's Home for the Terminally Sarky, mega1.are) (too long in one area).
+Fri Nov 13 13:02:48 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 13:07:52 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 13:08:13 2026 :: Connection guard: 45.79.128.205 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 13:08:13 2026 :: Connection guard: 45.79.128.205 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 13:12:06 2026 :: Treasure goblin: vanished from room 24125 (Main Street, Dunkeldorf, coven.are) (too long in one area).
+Fri Nov 13 13:12:57 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 13:14:37 2026 :: Connection guard: 195.96.139.141 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 13:14:51 2026 :: Connection guard: 87.236.176.121 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 13:18:02 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 5 of 6 in 6 hours).
+Fri Nov 13 13:22:11 2026 :: Treasure goblin: vanished from room 20101 (The Prison of Dresden, prison.are) (too long in one area).
+Fri Nov 13 13:23:07 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 13 13:25:39 2026 :: Connection guard: last hour 16 closed without a word, 0 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 13:28:12 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 13:32:16 2026 :: Treasure goblin: vanished from room 5028 (The Sands of Sorrow, eastern.are) (too long in one area).
+Fri Nov 13 13:33:17 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 1 refused in all, pause 1 this week, 76 minutes left).
+Fri Nov 13 13:38:22 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 13:38:40 2026 :: Sock.sinaddr:  99.62.115.159
+Fri Nov 13 13:38:40 2026 :: Loading Killuminati's playerfile
+Fri Nov 13 13:38:41 2026 :: Loading Killuminati's playerfile
+Fri Nov 13 13:38:41 2026 :: Killuminati@99.62.115.159 has connected.
+Fri Nov 13 13:38:42 2026 :: Log Killuminati [30489]: arrived (Level 5: Digdogger's Den) from 0
+Fri Nov 13 13:38:42 2026 :: Log Killuminati [30489]: /
+Fri Nov 13 13:38:44 2026 :: Log Killuminati [30489]: note (arguments withheld)
+Fri Nov 13 13:38:52 2026 :: Log Killuminati [30489]: note (arguments withheld)
+Fri Nov 13 13:39:24 2026 :: Log Killuminati [30489]: lo
+Fri Nov 13 13:39:26 2026 :: Log Killuminati [30489]: ]
+Fri Nov 13 13:39:27 2026 :: Log Killuminati [30489]: goto 1
+Fri Nov 13 13:39:27 2026 :: Log Killuminati [1]: arrived (The Void) from 30489
+Fri Nov 13 13:39:31 2026 :: Log Killuminati [1]: ]\
+Fri Nov 13 13:39:31 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 1
+Fri Nov 13 13:39:40 2026 :: Log Killuminati [2401]: east
+Fri Nov 13 13:39:43 2026 :: Log Killuminati [2401]: west
+Fri Nov 13 13:39:46 2026 :: Log Killuminati [2401]: wa
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2401]: restore self
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2401]: open west
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2401]: west
+Fri Nov 13 13:39:47 2026 :: Log Killuminati [2405]: arrived (Western Oak Tree Square.) from 2401
+Fri Nov 13 13:39:48 2026 :: Log Killuminati [2405]: west
+Fri Nov 13 13:39:52 2026 :: Log Killuminati [2405]: open west
+Fri Nov 13 13:39:52 2026 :: Log Killuminati [2405]: west
+Fri Nov 13 13:40:38 2026 :: Log Killuminati [2405]: goto 30489
+Fri Nov 13 13:40:38 2026 :: Log Killuminati [30489]: arrived (Level 5: Digdogger's Den) from 2405
+Fri Nov 13 13:40:40 2026 :: Cartographer: appeared.
+Fri Nov 13 13:42:20 2026 :: Treasure goblin: vanished from room 14021 (Main Room, whouse.are) (too long in one area).

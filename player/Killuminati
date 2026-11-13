@@ -2,7 +2,7 @@
 Name Killuminati~
 Id   30948
 Serial 15065367
-LogO 1794545117
+LogO 1794577182
 Vers 4
 Desc You see something very special about him.
 ~
@@ -21,14 +21,14 @@ Fixes 20261112-quest-serial 20261112-hyrule-crumble~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6574805
+Plyd 6574866
 ListRemorts ~
 NumRemorts 0
-Note 1792619733
+Note 1794571056
 StashMax 500
 Scro 0
-Room 30489
-HMV  100150 100150 100100 100100 -23516 100000
+Room 2401
+HMV  100150 100150 100100 100100 -23481 100000
 NewGold 465
 NewPlat 2503066
 NewCopp 876
@@ -113,7 +113,7 @@ Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
 AchSet psi-disciplines 3 ~
-LastOut  1794540360
+LastOut  1794577182
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1794342046
@@ -131,9 +131,10 @@ QuestStrk 3
 CasinoWon  102
 CasinoLost 204
 Exp  1927300
-Act  276684
+Act  293068
 AfBy 2097792
 Comm 155680
+Invi 72
 Mounted 0
 On_Quest 0
 Quest_Pause 0
@@ -632,10 +633,10 @@ Lev  59
 Cost 208860000
 Cond 100
 Repd 0
-Affect -1 59 -1 -4 20 0 0
-Affect -1 59 -1 14 14 0 0
-Affect -1 59 -1 4 21 0 0
 Affect -1 59 -1 -13 12 0 0
+Affect -1 59 -1 4 21 0 0
+Affect -1 59 -1 14 14 0 0
+Affect -1 59 -1 -4 20 0 0
 End
 
 #O
@@ -1114,8 +1115,8 @@ Lev  30
 Cost 40000000
 Cond 94
 Repd 1
-Affect -1 30 -1 -3 3 0 0
 Affect -1 30 -1 1 20 0 0
+Affect -1 30 -1 -3 3 0 0
 End
 
 #O

@@ -25169,3 +25169,223 @@
 1794537457	session	Alaric	57	2497	dresden.are	quit	179s	+0 levels	+0 exp	+184954968 copper	0 kills	0 deaths	1 quests	126 commands	1 refused	coin: quests 184p 95g 49s 68c	spent on: none	exp: none
 1794537573	cmd	Killuminati	70	30489	hyrule.are	standing	100	0	-	wizinvis		You slowly fade back into existence.	-	-
 1794540360	session	Killuminati	70	30489	hyrule.are	linkdead	6076s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	0 commands	0 refused	coin: none	spent on: none	exp: none
+1794571012	area	Trentlin	40	4208	dresden.are	-	dresden.are	-1	(game loop)
+1794571015	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571024	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571029	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571031	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571040	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571045	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571053	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571056	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1794571059	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571060	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	all	You must be level 46 to use this object. // You wear a pink ice ring on your left finger. // You must be level 51 to use this object.	-	+
+1794571065	cmd	Trentlin	40	4208	dresden.are	standing	97	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571068	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	wear	diplo	You stop using the Lizard's Heart Container. // You hold a mud school diploma in your hands.	-	-
+1794571076	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	look	in hearty	You do not see that here.	-	-
+1794571077	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	look	in heart	That is not a container.	-	-
+1794571081	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	look	heart	The heart guard of the manji rests here, ready for another hero. // The the Heart Guard of the Manji is in perfect condition.	-	-
+1794571086	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571089	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	wear	quick	You stop using a quick sheathe. // You wear a quick sheathe about your waist.	-	-
+1794571093	cmd	Trentlin	40	4208	dresden.are	standing	107	18	-	stash	put quick	You put a quick sheathe away for safe keeping.	-	-
+1794571101	cmd	Trentlin	40	4208	dresden.are	standing	107	6	-	stash	put robes	You put some Black velvet robes away for safe keeping.	-	-
+1794571107	cmd	Trentlin	40	4208	dresden.are	standing	107	6	-	stash	put white	You put a white bracer away for safe keeping.	-	-
+1794571107	cmd	Trentlin	40	4208	dresden.are	standing	107	4	-	stash	put white	You put a white bracer away for safe keeping.	-	-
+1794571110	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571113	cmd	Trentlin	40	4208	dresden.are	standing	107	0	-	wear	gaunt	You stop using a pair of pebble-hide mitts. // You wear a pair of pincer gauntlets on your hands.	-	-
+1794571117	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	stash	put mitts'	You are not carrying that.	-	-
+1794571119	cmd	Trentlin	40	4208	dresden.are	standing	100	6	-	stash	put mitts	You put a pair of pebble-hide mitts away for safe keeping.	-	-
+1794571122	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	scep	You stop using a *twinkling* ball of light. // You light the Sceptre of Might and hold it.	-	-
+1794571125	cmd	Trentlin	40	4208	dresden.are	standing	100	6	-	stash	put light	You put a *twinkling* ball of light away for safe keeping.	-	-
+1794571126	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571129	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	stomp	You stop using some captain's boots. // You wear a pair of Dodongo stompers on your feet.	-	-
+1794571134	cmd	Trentlin	40	4208	dresden.are	standing	96	6	-	stash	put boots	You put some captain's boots away for safe keeping.	-	-
+1794571136	cmd	Trentlin	40	4208	dresden.are	standing	96	0	-	wear	colla	You stop using a Blue rimmed, white cloak. // You wear a spiked collar around your neck.	-	-
+1794571140	cmd	Trentlin	40	4208	dresden.are	standing	96	0	-	stash	put rimmed	You are not carrying that.	-	-
+1794571143	cmd	Trentlin	40	4208	dresden.are	standing	96	6	-	stash	put cloak	You put a Blue rimmed, white cloak away for safe keeping.	-	-
+1794571145	cmd	Trentlin	40	4208	dresden.are	standing	96	0	-	remove	cloak	You stop using a Blue rimmed, white cloak.	-	-
+1794571148	cmd	Trentlin	40	4208	dresden.are	standing	96	6	-	stash	put cloak	You put a Blue rimmed, white cloak away for safe keeping.	-	-
+1794571151	cmd	Trentlin	40	4208	dresden.are	standing	96	0	-	wear	all	You must be level 46 to use this object. // You must be level 51 to use this object. // You must be level 51 to use this object.	-	+
+1794571154	cmd	Trentlin	40	4208	dresden.are	standing	96	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571156	cmd	Trentlin	40	4208	dresden.are	standing	96	0	-	wear	war	You stop using a great war helmet. // You wear a great war helmet on your head.	-	-
+1794571160	cmd	Trentlin	40	4208	dresden.are	standing	96	12	-	stash	put war	You put a great war helmet away for safe keeping.	-	-
+1794571162	cmd	Trentlin	40	4208	dresden.are	standing	96	0	-	wear	vam	You stop using some platinum arm bands. // You wear black steel vambraces on your arms.	-	-
+1794571165	cmd	Trentlin	40	4208	dresden.are	standing	98	0	-	drop	plat	You drop some platinum arm bands.	-	-
+1794571166	coin	Trentlin	40	4208	dresden.are	+44	loot	sacrifice	-	15277722514
+1794571166	cmd	Trentlin	40	4208	dresden.are	standing	98	0	-	sacrifice	plat	The Gods give you 44 copper coins for your sacrifice.	-	-
+1794571167	cmd	Trentlin	40	4208	dresden.are	standing	98	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571170	cmd	Trentlin	40	4208	dresden.are	standing	98	0	-	wear	grea	You stop using some platinum leg bands. // You wear a pair of blackened steel greaves on your legs.	-	-
+1794571174	cmd	Trentlin	40	4208	dresden.are	standing	100	5	-	stash	put plat	You put some platinum leg bands away for safe keeping.	-	-
+1794571177	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	mant	You stop using an Eagle-feather cloak. // You wear a twin-headed mantle about your body.	-	-
+1794571180	cmd	Trentlin	40	4208	dresden.are	standing	99	6	-	stash	put cloak	You put an Eagle-feather cloak away for safe keeping.	-	-
+1794571181	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	inventory		You are carrying: //      (Glowing) the first Triforce shard // ( 6) a small key	-	+
+1794571189	cmd	Trentlin	40	4208	dresden.are	standing	99	6	-	stash	put onyx	You put an onyx bracelet away for safe keeping.	-	-
+1794571191	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	wear	lion	You must be level 52 to use this object.	-	-
+1794571196	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	wear	shi	You stop using a coiled-snake shield. // You wear a small round shield as a shield.	-	-
+1794571199	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	compare	shie	A) the four-crowned lion shield (level 52) -- can't use: needs level 52 // B) a small round shield (level 25), worn // Slot: off hand.  Your damage comes from weapons.	-	+
+1794571208	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	compare	2.shield	A) the Shield of Dresden (level 40) -- can't use: made for another side // B) a small round shield (level 25), worn // Slot: off hand.  Your damage comes from weapons.	-	+
+1794571213	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	drop	dres	You do not have that item.	-	-
+1794571217	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	drop	2.shie	You drop the Shield of Dresden.	-	-
+1794571218	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	sacrifice	shsie	You can't find it.	-	-
+1794571220	coin	Trentlin	40	4208	dresden.are	+80	loot	sacrifice	-	15277722594
+1794571220	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	sacrifice	shie	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794571222	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	compare	2.shie	A) a coiled-snake shield (level 27) // B) a small round shield (level 25), worn // Slot: off hand.  Your damage comes from weapons.	-	+
+1794571232	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	wear	shie	You must be level 52 to use this object.	-	-
+1794571234	cmd	Trentlin	40	4208	dresden.are	standing	101	0	-	wear	2.shie	You stop using a small round shield. // You wear a coiled-snake shield as a shield.	-	-
+1794571236	cmd	Trentlin	40	4208	dresden.are	standing	99	0	-	drop	small	You drop a small key.	-	-
+1794571239	got	Trentlin	40	4208	dresden.are	30227	a small key	key	1	0	get	the floor
+1794571239	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	get	small	You get a small key.	-	-
+1794571241	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	drop	2.shie	You drop the four-crowned lion shield.	-	-
+1794571243	got	Trentlin	40	4208	dresden.are	30686	the four-crowned lion shield	armor	52	135200000	get	the floor
+1794571243	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	get	shie	You get the four-crowned lion shield.	-	-
+1794571245	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	drop	2.shie	You drop a small round shield.	-	-
+1794571247	coin	Trentlin	40	4208	dresden.are	+50	loot	sacrifice	-	15277722644
+1794571247	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	sacrifice	shie	The Gods give you 50 copper coins for your sacrifice.	-	-
+1794571248	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      the four-crowned lion shield // ( 6) a small key	-	+
+1794571256	cmd	Trentlin	40	4208	dresden.are	standing	100	0	-	wear	hau	You stop using an indigo blue livery. // You wear a twin-dragon hauberk on your body.	-	-
+1794571265	cmd	Trentlin	40	4208	dresden.are	standing	98	14	-	stash	put liver	You put an indigo blue livery away for safe keeping.	-	-
+1794571269	cmd	Trentlin	40	4208	dresden.are	standing	98	0	-	compare	ring	A) a pirate's ring (level 43) -- can't use: needs level 43 // B) a pink ice ring (level 3), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1794571274	cmd	Trentlin	40	4208	dresden.are	standing	98	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794571275	cmd	Trentlin	40	4208	dresden.are	standing	98	0	-	where	hermie	You didn't find any hermie.	-	-
+1794571280	cmd	Trentlin	40	4207	dresden.are	standing	98	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794571280	cmd	Trentlin	40	4202	dresden.are	standing	98	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794571281	cmd	Trentlin	40	4201	dresden.are	standing	98	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794571281	cmd	Trentlin	40	2427	dresden.are	standing	98	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794571281	cmd	Trentlin	40	2427	dresden.are	standing	98	0	-	east		Alas, you cannot go that way.	-	-
+1794571282	cmd	Trentlin	40	2404	dresden.are	standing	98	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794571282	cmd	Trentlin	40	2401	dresden.are	standing	98	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794571283	cmd	Trentlin	40	2401	dresden.are	standing	98	0	-	inventory		You are carrying: //      the four-crowned lion shield // ( 6) a small key	-	+
+1794571297	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	compare	contain	A) the Lizard's Heart Container (level 33) // B) a mud school diploma (level 0), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794571306	cmd	Trentlin	40	2401	dresden.are	standing	100	0	-	wear	contain	You stop using a mud school diploma. // You hold the Lizard's Heart Container in your hands.	-	-
+1794571316	cmd	Trentlin	40	2403	dresden.are	standing	92	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794571316	cmd	Trentlin	40	2420	dresden.are	standing	92	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794571317	cmd	Trentlin	40	2421	dresden.are	standing	92	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794571317	cmd	Trentlin	40	2422	dresden.are	standing	92	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794571317	cmd	Trentlin	40	2423	dresden.are	standing	92	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794571317	cmd	Trentlin	40	2424	dresden.are	standing	92	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794571318	cmd	Trentlin	40	2425	dresden.are	standing	92	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794571318	cmd	Trentlin	40	2426	dresden.are	standing	92	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794571318	cmd	Trentlin	40	2426	dresden.are	standing	92	0	-	open	east	Ok.	-	-
+1794571318	cmd	Trentlin	40	2440	dresden.are	standing	92	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794571319	area	Trentlin	40	3503	midennir.are	dresden.are	midennir.are	307	east
+1794571319	cmd	Trentlin	40	3503	midennir.are	standing	92	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794571319	cmd	Trentlin	40	3502	midennir.are	standing	92	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794571319	cmd	Trentlin	40	3525	midennir.are	standing	92	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794571319	cmd	Trentlin	40	3526	midennir.are	standing	92	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794571320	cmd	Trentlin	40	3527	midennir.are	standing	92	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794571320	cmd	Trentlin	40	3528	midennir.are	standing	92	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794571320	cmd	Trentlin	40	3529	midennir.are	standing	92	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794571320	cmd	Trentlin	40	3530	midennir.are	standing	92	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794571321	cmd	Trentlin	40	3531	midennir.are	standing	92	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794571321	cmd	Trentlin	40	3532	midennir.are	standing	92	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794571321	area	Trentlin	40	42	connect.are	midennir.are	connect.are	2	east
+1794571321	cmd	Trentlin	40	42	connect.are	standing	92	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794571321	area	Trentlin	40	9669	newthalo.are	connect.are	newthalo.are	0	east
+1794571321	cmd	Trentlin	40	9669	newthalo.are	standing	92	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794571322	cmd	Trentlin	40	9523	newthalo.are	standing	92	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794571322	cmd	Trentlin	40	9524	newthalo.are	standing	92	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794571322	cmd	Trentlin	40	9525	newthalo.are	standing	92	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794571322	cmd	Trentlin	40	9526	newthalo.are	standing	92	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794571323	cmd	Trentlin	40	9509	newthalo.are	standing	92	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794571323	cmd	Trentlin	40	9514	newthalo.are	standing	92	0	-	north		The Northwestern Market Square //   This corner of the market contains some of the most civilized folk in // New Thalos. To the north lies the humble store of the merchant Ahkeem, his	-	+
+1794571323	cmd	Trentlin	40	9515	newthalo.are	standing	92	0	-	east		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794571323	cmd	Trentlin	40	9518	newthalo.are	standing	92	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794571324	cmd	Trentlin	40	9519	newthalo.are	standing	92	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794571324	cmd	Trentlin	40	9520	newthalo.are	standing	92	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794571324	cmd	Trentlin	40	9521	newthalo.are	standing	92	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794571324	cmd	Trentlin	40	9522	newthalo.are	standing	92	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794571325	cmd	Trentlin	40	9522	newthalo.are	standing	92	0	-	open	north	Ok.	-	-
+1794571325	cmd	Trentlin	40	9667	newthalo.are	standing	92	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1794571325	cmd	Trentlin	40	9781	newthalo.are	standing	92	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1794571325	cmd	Trentlin	40	9782	newthalo.are	standing	92	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1794571326	cmd	Trentlin	40	9783	newthalo.are	standing	92	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1794571326	area	Trentlin	40	64	connect.are	newthalo.are	connect.are	5	north
+1794571326	cmd	Trentlin	40	64	connect.are	standing	92	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1794571326	area	Trentlin	40	29001	korzath1.are	connect.are	korzath1.are	0	north
+1794571326	cmd	Trentlin	40	29001	korzath1.are	standing	92	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1794571328	cmd	Trentlin	40	29002	korzath1.are	standing	92	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1794571328	cmd	Trentlin	40	29003	korzath1.are	standing	92	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794571329	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794571330	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	kill	c\	They aren't here.	-	-
+1794571332	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	kill	ch	Your blast scratches Security Chief. // Your blast scratches Security Chief.	-	-
+1794571336	cmd	Trentlin	40	29060	korzath1.are	fighting	92	0	fight	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a pink ice ring	-	+
+1794571338	cmd	Trentlin	40	29060	korzath1.are	fighting	92	0	fight	remove	bow	You stop using a short bow.	-	-
+1794571345	cmd	Trentlin	40	29060	korzath1.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Security Chief. // Your fists of fury DISMEMBERS Security Chief!	-	+
+1794571346	coin	Trentlin	40	29060	korzath1.are	+1000000	loot	(violence_update)	corpse of Security Chief	15278722644
+1794571346	coin	Trentlin	40	29060	korzath1.are	+500	loot	(violence_update)	corpse of Security Chief	15278723144
+1794571346	coin	Trentlin	40	29060	korzath1.are	+6	loot	(violence_update)	corpse of Security Chief	15278723150
+1794571346	coin	Trentlin	40	29060	korzath1.are	+20000	loot	(violence_update)	corpse of Security Chief	15278743150
+1794571354	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	steel		You lost your concentration.	-	-
+1794571354	got	Trentlin	40	29060	korzath1.are	29002	a crystal key	key	20	1000000	get	corpse of Security Chief
+1794571354	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	get	key co	You get a crystal key from corpse of Security Chief.	-	-
+1794571355	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	unlock	east	*Click*	-	-
+1794571356	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	open	east	Ok.	-	-
+1794571357	cmd	Trentlin	40	29060	korzath1.are	standing	92	0	-	drop	key	You drop a crystal key.	-	-
+1794571358	cmd	Trentlin	40	29061	korzath1.are	standing	92	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794571359	cmd	Trentlin	40	29061	korzath1.are	standing	92	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794571366	cmd	Trentlin	40	29061	korzath1.are	standing	92	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794571370	cmd	Trentlin	40	29062	korzath1.are	standing	94	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794571370	cmd	Trentlin	40	29063	korzath1.are	standing	94	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside	-	+
+1794571371	cmd	Trentlin	40	29065	korzath1.are	standing	94	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794571371	cmd	Trentlin	40	29065	korzath1.are	standing	94	0	-	south		Alas, you cannot go that way.	-	-
+1794571371	cmd	Trentlin	40	29065	korzath1.are	standing	94	0	-	south		Alas, you cannot go that way.	-	-
+1794571371	cmd	Trentlin	40	29065	korzath1.are	standing	94	0	-	south		Alas, you cannot go that way.	-	-
+1794571372	cmd	Trentlin	40	29066	korzath1.are	standing	94	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.	-	+
+1794571372	cmd	Trentlin	40	29067	korzath1.are	standing	94	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.	-	+
+1794571372	cmd	Trentlin	40	29070	korzath1.are	standing	94	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've	-	+
+1794571373	cmd	Trentlin	40	29071	korzath1.are	standing	94	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.	-	+
+1794571373	cmd	Trentlin	40	29072	korzath1.are	standing	94	0	-	east		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much	-	+
+1794571374	cmd	Trentlin	40	29073	korzath1.are	standing	94	0	-	east		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,	-	+
+1794571374	cmd	Trentlin	40	29075	korzath1.are	standing	94	0	-	north		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that	-	+
+1794571377	cmd	Trentlin	40	29074	korzath1.are	standing	94	0	-	west		Machine Room //   Workers in this room use drill bits to make the proper holes in the // metal sheets.  You see other workers taking cartfulls of finished sheets	-	+
+1794571378	cmd	Trentlin	40	29072	korzath1.are	standing	94	0	-	south		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much	-	+
+1794571379	cmd	Trentlin	40	29071	korzath1.are	standing	94	0	-	west		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.	-	+
+1794571379	cmd	Trentlin	40	29080	korzath1.are	standing	94	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.	-	+
+1794571380	cmd	Trentlin	40	29082	korzath1.are	standing	94	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the	-	+
+1794571383	cmd	Trentlin	40	29081	korzath1.are	standing	94	0	-	west		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.	-	+
+1794571384	cmd	Trentlin	40	29082	korzath1.are	standing	94	0	-	east		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the	-	+
+1794571384	cmd	Trentlin	40	29085	korzath1.are	standing	94	0	-	north		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare	-	+
+1794571385	cmd	Trentlin	40	29089	korzath1.are	standing	94	0	-	north		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel	-	+
+1794571386	cmd	Trentlin	40	29089	korzath1.are	standing	94	0	-	east		Alas, you cannot go that way.	-	-
+1794571387	cmd	Trentlin	40	29090	korzath1.are	standing	94	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794571390	cmd	Trentlin	40	29090	korzath1.are	standing	94	0	-	open	east	Ok.	-	-
+1794571390	cmd	Trentlin	40	29093	korzath1.are	standing	94	0	-	east		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794571391	cmd	Trentlin	40	29093	korzath1.are	standing	94	0	-	scan		a blacksmith                       -to the North. // a blacksmith                       -to the East. // a blacksmith                       -to the South.	-	-
+1794571393	cmd	Trentlin	40	29095	korzath1.are	standing	94	0	-	south		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794571393	cmd	Trentlin	40	29095	korzath1.are	standing	94	0	-	kill	bla	Your punch === OBLITERATES === a blacksmith! // Your punch ^^^ DESTROYS ^^^ a blacksmith! // A blacksmith parries your attack.	-	-
+1794571400	cmd	Trentlin	40	29095	korzath1.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a blacksmith! // Your fists of fury DISMEMBERS a blacksmith!	-	+
+1794571406	cmd	Trentlin	40	29095	korzath1.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a blacksmith! // Your fists of fury maims a blacksmith!	-	+
+1794571413	cmd	Trentlin	40	29095	korzath1.are	fighting	62	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a blacksmith! // Your fists of fury injures a blacksmith.	-	+
+1794571418	skill	Trentlin	40	29095	korzath1.are	parry	83	84	success	(violence_update)
+1794571418	cmd	Trentlin	40	29095	korzath1.are	fighting	50	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a blacksmith! // Your fists of fury devastates a blacksmith!	-	+
+1794571421	coin	Trentlin	40	29095	korzath1.are	+3000000	loot	(violence_update)	corpse of a blacksmith	15281743150
+1794571421	coin	Trentlin	40	29095	korzath1.are	+3400	loot	(violence_update)	corpse of a blacksmith	15281746550
+1794571421	coin	Trentlin	40	29095	korzath1.are	+40	loot	(violence_update)	corpse of a blacksmith	15281746590
+1794571421	coin	Trentlin	40	29095	korzath1.are	+670000	loot	(violence_update)	corpse of a blacksmith	15282416590
+1794571427	cmd	Trentlin	40	29095	korzath1.are	standing	50	0	-	look	in co	Corpse of a blacksmith contains: //      dented hammer //      titanium arm plates	-	-
+1794571428	coin	Trentlin	40	29095	korzath1.are	+80	loot	sacrifice	-	15282416670
+1794571428	cmd	Trentlin	40	29095	korzath1.are	standing	50	0	-	sacrifice	co	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794571429	cmd	Trentlin	40	29095	korzath1.are	standing	50	0	-	scan		a blacksmith                       -to the East.	-	-
+1794571434	cmd	Trentlin	40	29096	korzath1.are	standing	50	0	-	east		Metalworks //   This corner of the metalworks facility seems strange.  There is an anvil // here but no blacksmiths are using this particular one.  Bins full of finished	-	+
+1794571440	cmd	Trentlin	40	29096	korzath1.are	fighting	40	0	fight	kill	bla	You do the best you can!	-	-
+1794571441	cmd	Trentlin	40	29096	korzath1.are	fighting	40	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a blacksmith! // Your fists of fury injures a blacksmith.	-	+
+1794571447	cmd	Trentlin	40	29096	korzath1.are	fighting	29	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a blacksmith! // Your fists of fury maims a blacksmith!	-	+
+1794571457	skill	Trentlin	40	29096	korzath1.are	dodge	78	79	success	(violence_update)
+1794571460	coin	Trentlin	40	29096	korzath1.are	+3000000	loot	fists	corpse of a blacksmith	15285416670
+1794571460	coin	Trentlin	40	29096	korzath1.are	+3400	loot	fists	corpse of a blacksmith	15285420070
+1794571460	coin	Trentlin	40	29096	korzath1.are	+40	loot	fists	corpse of a blacksmith	15285420110
+1794571460	coin	Trentlin	40	29096	korzath1.are	+670000	loot	fists	corpse of a blacksmith	15286090110
+1794571460	cmd	Trentlin	40	29096	korzath1.are	fighting	18	1	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a blacksmith. // Your fists of fury wounds a blacksmith.	-	+
+1794571468	coin	Trentlin	40	29096	korzath1.are	+80	loot	sacrifice	-	15286090190
+1794571468	cmd	Trentlin	40	29096	korzath1.are	standing	18	0	-	sacrifice	co	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794571469	cmd	Trentlin	40	29095	korzath1.are	standing	18	0	-	west		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794571470	cmd	Trentlin	40	29093	korzath1.are	standing	18	0	-	north		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794571470	cmd	Trentlin	40	29090	korzath1.are	standing	18	0	-	west		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794571471	cmd	Trentlin	40	29089	korzath1.are	standing	18	0	-	south		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel	-	+
+1794571472	area	Trentlin	40	4207	dresden.are	korzath1.are	dresden.are	146	recall
+1794571472	cmd	Trentlin	40	4207	dresden.are	standing	18	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794571473	cmd	Trentlin	40	4202	dresden.are	standing	18	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794571474	cmd	Trentlin	40	4203	dresden.are	standing	18	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794571474	cmd	Trentlin	40	4210	dresden.are	standing	18	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794571475	cmd	Trentlin	40	4210	dresden.are	standing	18	0	-	sleep		You go to sleep.	-	-
+1794571475	session	Trentlin	40	4210	dresden.are	quit	463s	+0 levels	+1042 exp	+8367720 copper	3 kills	0 deaths	0 quests	191 commands	0 refused	coin: loot 8p 36g 77s 20c	spent on: none	exp: skilluse +12, kills +1030
