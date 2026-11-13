@@ -5,12 +5,12 @@ Uid P6adca00b00079e30
 Owned 1
 Room 30443
 Level 25
-Timer 3507
+Timer 3495
 Died 1794140825
-Saved 1794534952
+Saved 1794535602
 Snapshot Trentlin.20261108_122705.death
-State live
-Why -
+State restored
+Why the player was restored; it will not come back after a restart
 Objects 2
 Vers 4
 End

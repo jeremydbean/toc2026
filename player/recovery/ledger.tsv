@@ -384,3 +384,9 @@
 384	1794525531	request	pending	P6adca00b00079e30	Trentlin	death:c6af6495b017e2f	death	(mobile_update)	corpse c6af6495b017e2f in room 30489	c4d4cfa5
 385	1794525531	corpse	created	P6adca00b00079e30	Trentlin	c6af6495b017e2f	death	-	made in room 30489 holding 53 objects; death snapshot Trentlin.20261112_231851.death	c1d716d8
 386	1794525531	request	committed	P6adca00b00079e30	Trentlin	death:c6af6495b017e2f	death	-	their save reached the disk	da4a342c
+387	1794535602	snapshot	committed	P6adca00b00079e30	Trentlin	-	corpserestore	-	Trentlin.20261113_020642.corpserestore fnv 477a51eb 19722 bytes	bfc64354
+388	1794535602	request	pending	P6adca00b00079e30	Trentlin	corpse:c6af6495b017e2f	corpse	Killuminati	53 objects from corpse c6af6495b017e2f (live); undo with Trentlin.20261113_020642.corpserestore	1b9abce6
+389	1794535602	corpse	archived	P6adca00b00079e30	Trentlin	c6af6495b017e2f	restored	Killuminati: prestore	ended (restored): the player was restored; it will not come back after a restart; 0 objects left in it	0386deef
+390	1794535602	corpse	archived	P6adca00b00079e30	Trentlin	c6af06a99014a1f	restored	Killuminati: prestore	ended (restored): the player was restored; it will not come back after a restart; 2 objects left in it	1b37c896
+391	1794535602	corpse	archived	P6adca00b00079e30	Trentlin	c6aef57d8014fe2	restored	Killuminati: prestore	ended (restored): the player was restored; it will not come back after a restart; 0 objects left in it	be0d9ca8
+392	1794535602	request	committed	P6adca00b00079e30	Trentlin	corpse:c6af6495b017e2f	corpse	Killuminati	53 objects from corpse c6af6495b017e2f (live); undo with Trentlin.20261113_020642.corpserestore	1d9e9f4a
