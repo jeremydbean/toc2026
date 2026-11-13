@@ -295296,3 +295296,7 @@ Fri Nov 13 10:10:09 2026 :: Connection guard: refused 1 connection from 5.161.21
 Fri Nov 13 10:15:14 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 13 10:18:51 2026 :: Treasure goblin: vanished from room 9229 (In the River, canyon.are) (too long in one area).
 Fri Nov 13 10:20:18 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:25:23 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 10:25:39 2026 :: Connection guard: last hour 13 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 13 10:26:32 2026 :: Automated backup started.
+Fri Nov 13 10:26:32 2026 :: Automated backup complete.
