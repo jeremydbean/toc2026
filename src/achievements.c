@@ -597,7 +597,15 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "explored-10", "No Stone Unturned III", "Walk into every room of 10 areas.", ACH_CAT_EXPLORATION, 45, false, ACH_REQ_SET, 10, ACH_SET_EXPLORED_AREAS },
     { "explored-25", "No Stone Unturned IV", "Walk into every room of 25 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_SET, 25, ACH_SET_EXPLORED_AREAS },
     { "cartographer-slain", "Off the Map", "Bring down the wandering cartographer.", ACH_CAT_ENCOUNTERS, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_CARTOGRAPHER, 0 },
-    { "master-cartographer", "Master Cartographer", "Earn Well Charted III, No Stone Unturned IV and Off the Map.", ACH_CAT_EXPLORATION, 75, false, ACH_REQ_COHORT, 0, ACH_COHORT_CARTOGRAPHY }
+    { "master-cartographer", "Master Cartographer", "Earn Well Charted III, No Stone Unturned IV and Off the Map.", ACH_CAT_EXPLORATION, 75, false, ACH_REQ_COHORT, 0, ACH_COHORT_CARTOGRAPHY },
+    /* More for the maps and the cartographer (owner, 2026-11-13). */
+    { "cartographer-met-1", "A Man With a Map I", "Find the wandering cartographer on one of his visits.", ACH_CAT_ENCOUNTERS, 10, false, ACH_REQ_SET, 1, ACH_SET_CARTOGRAPHER_VISITS },
+    { "cartographer-met-5", "A Man With a Map II", "Find the wandering cartographer on 5 of his visits.", ACH_CAT_ENCOUNTERS, 25, false, ACH_REQ_SET, 5, ACH_SET_CARTOGRAPHER_VISITS },
+    { "cartographer-met-15", "A Man With a Map III", "Find the wandering cartographer on 15 of his visits.", ACH_CAT_ENCOUNTERS, 40, false, ACH_REQ_SET, 15, ACH_SET_CARTOGRAPHER_VISITS },
+    { "map-from-foe", "Treasure Map", "Learn an area's map from one found on a fallen foe.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_MAP_FROM_FOE, 0 },
+    { "funny-map-too-late", "Hindsight", "Read the map of an area you have already walked end to end.", ACH_CAT_MISADVENTURE, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_MAP_TOO_LATE, 0 },
+    { "maps-50", "Well Charted IV", "Learn the whole maps of 50 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_AREA_MAPS, 50, 0 },
+    { "explored-50", "No Stone Unturned V", "Walk into every room of 50 areas.", ACH_CAT_EXPLORATION, 60, false, ACH_REQ_SET, 50, ACH_SET_EXPLORED_AREAS }
 };
 
 typedef char achievement_table_must_fit[
@@ -729,14 +737,15 @@ static const char *const achievement_counter_names[ACH_CTR_COUNT] =
 static const char *const achievement_set_names[ACH_SET_COUNT] =
 {
     "vesh-items", "recipes", "quest-areas", "areas", "rooms",
-    "daily-kinds", "psi-disciplines", "map-areas", "explored-areas"
+    "daily-kinds", "psi-disciplines", "map-areas", "explored-areas",
+    "cartographer-visits"
 };
 
 /* Bounds a corrupt or hostile file cannot push past. Rooms are the
    largest honest set: the world has under 8,000. */
 static const int achievement_set_limits[ACH_SET_COUNT] =
 {
-    4096, 4096, 1024, 1024, 16384, 64, 16, 1024, 1024
+    4096, 4096, 1024, 1024, 16384, 64, 16, 1024, 1024, 4096
 };
 
 /* The largest id each set can honestly hold (review, 2026-10-26: a saved
@@ -755,7 +764,8 @@ static const long achievement_set_max_id[ACH_SET_COUNT] =
     63L,            /* daily-kinds */
     15L,            /* psi-disciplines */
     INT_MAX,        /* map-areas: map_region_id, 31 bits */
-    INT_MAX         /* explored-areas: achievement_area_id */
+    INT_MAX,        /* explored-areas: achievement_area_id */
+    INT_MAX         /* cartographer-visits: the visit's arrival time */
 };
 
 static int achievement_set_search(const CHAR_DATA *ch, int set, long id,

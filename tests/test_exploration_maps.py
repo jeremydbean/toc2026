@@ -29,6 +29,8 @@ MANIFEST = json.loads((ROOT / "data" / "hyrule_first_quest.json").read_text(enco
 DUNGEON_ONE = next(d for d in MANIFEST["dungeons"] if d["level"] == 1)
 HAON_ROOM = 6000        # haon.are, The edge of the forest
 HAON_RABBIT = 6003      # haon.are, a rabbit (level 3)
+MARSH_MOB = 8301        # marsh.are, a swamp troll
+MARSH_MOB_WORD = "troll"
 
 
 def source(name: str) -> str:
@@ -179,6 +181,8 @@ class LiveTests(unittest.TestCase):
                 self.assertIsNotNone(after, "no Map.Known after a map was learned")
                 self.assertTrue(knows(after, HAON_ROOM))
                 self.assertIn("A Map of One's Own", walker.transcript)
+                # It came off a slain rabbit: Treasure Map (2026-11-13).
+                self.assertIn("Treasure Map", walker.transcript)
                 self.assertNotIn("map", walker.sync("inventory").lower())
 
                 # GRANTMAP: a dungeon's map, and the rank check.
@@ -202,6 +206,13 @@ class LiveTests(unittest.TestCase):
                 staff.must("goto 6001", "forest", "path", "trail", "")
                 staff.must("cartographer here", "The cartographer is in room")
                 staff.must("cartographer", "The cartographer is in room")
+                # A mortal who stands with him has found him: once a visit.
+                staff.must("transfer zmapwalker", "")
+                walker.drain(2.0)
+                walker.sync("look")
+                self.assertIn("A Man With a Map I", walker.transcript)
+                self.assertEqual(walker.transcript.count("A Man With a Map I"), 1)
+                staff.must("transfer zmapwalker 4207", "")
                 staff.must("slay cartographer", "cartographer", "Odric", "slay")
                 body = staff.must("look in corpse", "map of")
                 self.assertIn("a map of Haon Dor", body)
@@ -228,6 +239,16 @@ class LiveTests(unittest.TestCase):
                     self.assertIn("No Stone Unturned I", again.transcript)
                     listing = again.must("maps", "Old Marsh")
                     self.assertIn("explored", listing)
+                    # Hindsight: the map of an area already walked end to end.
+                    staff.must("goto %d" % marsh[0], "")
+                    staff.must("load mob %d" % MARSH_MOB, "Ok", "You have created", "")
+                    staff.must("slay %s" % MARSH_MOB_WORD, "slay", "")
+                    staff.must("get map corpse", "map")
+                    staff.must("goto 4207", "Temple", "Altar")
+                    staff.must("give map zmapwalker", "map")
+                    again.drain(1.0)
+                    again.must("read map", "map")
+                    self.assertIn("Hindsight", again.transcript)
                     self.assertRegex(listing, r"Haon Dor\s+held")
                     self.assertRegex(listing, r"Camelot\s+held")
                     again.send("quit")

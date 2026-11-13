@@ -39,6 +39,9 @@
 #include <ctype.h>
 #include <time.h>
 #include "merc.h"
+
+/* value[2] of an area map found on a fallen foe (Treasure Map). */
+#define MAP_FOUND_ON_FOE 1
 #include "interp.h"
 #include "telnet_proto.h"
 #include "dstring.h"
@@ -676,6 +679,10 @@ bool map_item_read( CHAR_DATA *ch, char *argument )
         return true;
     }
     map_region_title( anchor, title, sizeof(title) );
+    /* Hindsight: the map of an area already walked end to end. */
+    if ( achievement_set_has( ch, ACH_SET_EXPLORED_AREAS,
+                              achievement_area_id( anchor->area ) ) )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_MAP_TOO_LATE, true );
     if ( map_region_held( ch, anchor ) || map_area_always_known( anchor->area ) )
     {
         snprintf( buf, sizeof(buf), "You already know every path of %s; this map "
@@ -694,6 +701,8 @@ bool map_item_read( CHAR_DATA *ch, char *argument )
     send_to_char( buf, ch );
     snprintf( buf, sizeof(buf), "%s learned the map of %s.", ch->name, title );
     log_string( buf );
+    if ( obj->value[2] == MAP_FOUND_ON_FOE )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_MAP_FROM_FOE, true );
     extract_obj( obj );
     save_char_obj( ch );
     return true;
@@ -722,6 +731,7 @@ void map_corpse_drop( OBJ_DATA *corpse, CHAR_DATA *victim )
     if ( ( anchor = map_area_anchor( area ) ) == NULL
     ||   ( map = map_item_create( anchor ) ) == NULL )
         return;
+    map->value[2] = MAP_FOUND_ON_FOE;       /* Treasure Map, when it is read */
     obj_to_obj( map, corpse );
 }
 
@@ -1210,6 +1220,7 @@ static time_t cart_next_spawn = 0;
 static time_t cart_leaves = 0;
 static time_t cart_next_step = 0;
 static AREA_DATA *cart_area = NULL;
+static time_t cart_arrived = 0;     /* names the visit: A Man With a Map */
 
 #define CART_FIRST_MIN      ( 30 * 60 )
 #define CART_FIRST_MAX      ( 3 * 60 * 60 )
@@ -1325,6 +1336,7 @@ bool cartographer_spawn( ROOM_INDEX_DATA *room )
     act( "$n strides in, a folio of charts under one arm, and looks about with a "
          "keen, measuring eye.", cartographer, NULL, NULL, TO_ROOM );
     cart_area = room->area;
+    cart_arrived = current_time;
     cart_leaves = current_time + number_range( CART_VISIT_MIN, CART_VISIT_MAX );
     cart_next_step = current_time + number_range( CART_STEP_MIN, CART_STEP_MAX );
 
@@ -1387,6 +1399,7 @@ void cartographer_slain( CHAR_DATA *ch, CHAR_DATA *victim )
         anchor = map_area_anchor( cart_area );
     if ( anchor != NULL && ( map = map_item_create( anchor ) ) != NULL )
     {
+        map->value[2] = MAP_FOUND_ON_FOE;   /* Treasure Map, when it is read */
         obj_to_char( map, victim );
         act( "Charts spill from $n's folio as $e falls.", victim, NULL, NULL, TO_ROOM );
     }
@@ -1438,7 +1451,19 @@ void cartographer_update( void )
             cart_next_spawn = current_time + 5 * 60;
         return;
     }
-    if ( cart->in_room == NULL || cart->fighting != NULL || cart->position < POS_STANDING )
+    if ( cart->in_room == NULL )
+        return;
+    /* A Man With a Map: every mortal who stands with him and sees him has
+       found him, once a visit (the set keeps the visit's arrival time). */
+    {
+        CHAR_DATA *rch;
+
+        for ( rch = cart->in_room->people; rch != NULL; rch = rch->next_in_room )
+            if ( !IS_NPC(rch) && !is_staff( rch ) && can_see( rch, cart ) )
+                achievement_note( rch, ACH_SET_CARTOGRAPHER_VISITS,
+                                  (long) UMIN( cart_arrived, (time_t) INT_MAX ) );
+    }
+    if ( cart->fighting != NULL || cart->position < POS_STANDING )
         return;
     cart->move = cart->max_move;
     if ( current_time >= cart_leaves

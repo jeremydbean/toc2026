@@ -160,8 +160,8 @@ class CatalogTests(unittest.TestCase):
             if p.name != "achievements.c")
 
     def test_counts_capacity_and_keys(self) -> None:
-        self.assertEqual(len(self.rows), 399)
-        self.assertEqual(len(self.new), 196)
+        self.assertEqual(len(self.rows), 406)
+        self.assertEqual(len(self.new), 203)
         self.assertEqual(len(self.keys), len(set(self.keys)))
         merc = source("merc.h")
         self.assertGreaterEqual(int(re.search(r"#define MAX_ACHIEVEMENTS\s+(\d+)", merc).group(1)), 512)
@@ -176,7 +176,7 @@ class CatalogTests(unittest.TestCase):
         catalog = guide[guide.index("### Catalog"):guide.index("### Deferred candidates")]
         listed = re.findall(r"^\| `([a-z0-9-]+)` \|", catalog, re.MULTILINE)
         self.assertEqual(listed, [r["key"] for r in self.new])
-        self.assertIn("**399**", guide)
+        self.assertIn("**406**", guide)
         self.assertNotIn("uses 196", guide)
 
     def test_new_points_are_cosmetic_and_in_their_bands(self) -> None:

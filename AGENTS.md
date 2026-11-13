@@ -1581,7 +1581,11 @@ catalog table `tests/test_achievement_expansion.py` holds to the source.
 378 entries since the 2026-10-25 expansion (owner: about 175 new ones),
 386 since the close calls and comedy rows (owner, 2026-11-01: fleeing on
 one hit point, other close calls, funny things;
-`tests/test_achievement_close_calls.py`).
+`tests/test_achievement_close_calls.py`). 412 rows (406 the catalog
+test counts) since the maps' second round (owner, 2026-11-13): the
+cartographer found per visit (`ACH_SET_CARTOGRAPHER_VISITS`, keyed by his
+arrival time), a map found on a fallen foe (`value[2]` `MAP_FOUND_ON_FOE`),
+a hidden Hindsight and the fifty-area tiers.
 Rules the code depends on:
 
 - **The table is append-only.** Earned achievements are saved by key

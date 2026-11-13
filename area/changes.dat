@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113mapachievements 2026-11-13
+Seven new achievements for maps and the wandering cartographer: find him
+on 1, 5 and 15 of his visits (A Man With a Map), learn a map you found on
+a fallen foe (Treasure Map), Well Charted IV and No Stone Unturned V at
+fifty areas, and one hidden one for the forgetful.
+
 @ 20261113endurance 2026-11-13
 Endurance past 32,767 no longer turns negative when you take a step or
 ride.  Hit points and mana were never affected.

@@ -5,12 +5,13 @@ the progression and collection model used by modern MMORPGs. Achievements are
 recognition and long-term goals: they award points, dates, and announcements,
 but never combat stats or economic rewards.
 
-The catalog holds **399** achievements: 203 from before 2026-10-25, the
+The catalog holds **406** achievements: 203 from before 2026-10-25, the
 175 of the 2026-10-25 expansion (rare encounters, more named bosses,
 combat and teamwork, skills and crafting, quests and exploration, Hyrule's
 actions and secrets, collection, services and world events), 8 close
 calls and comedy rows from 2026-11-01, 3 for the holiday fairs from
-2026-11-02, and 10 for exploration maps from 2026-11-12. Every point
+2026-11-02, 10 for exploration maps from 2026-11-12, and 7 more for maps
+and the cartographer from 2026-11-13. Every point
 earned is also a **mark** that can be spent at `REDEEM` on cosmetic and
 convenience perks; spending marks never lowers points.
 
@@ -409,6 +410,13 @@ the hooks are installed.
 | `explored-25` | No Stone Unturned IV | Walk into every room of 25 areas. | 60 |  | as above | as above |
 | `cartographer-slain` | Off the Map | Bring down the wandering cartographer. | 15 |  | maps.c cartographer_slain -> achievement_party_event | from now |
 | `master-cartographer` | Master Cartographer | Earn Well Charted III, No Stone Unturned IV and Off the Map. | 75 |  | meta: cartography | from the members |
+| `cartographer-met-1` | A Man With a Map I | Find the wandering cartographer on one of his visits. | 10 |  | maps.c cartographer_update (a mortal in his room who sees him; set cartographer-visits, by arrival time) | from now |
+| `cartographer-met-5` | A Man With a Map II | Find the wandering cartographer on 5 of his visits. | 25 |  | as above | as above |
+| `cartographer-met-15` | A Man With a Map III | Find the wandering cartographer on 15 of his visits. | 40 |  | as above | as above |
+| `map-from-foe` | Treasure Map | Learn an area's map from one found on a fallen foe. | 15 |  | maps.c map_item_read (a map map_corpse_drop or cartographer_slain made) | from now |
+| `funny-map-too-late` | Hindsight | Read the map of an area you have already walked end to end. | 5 | yes | maps.c map_item_read (area in explored-areas) | from now |
+| `maps-50` | Well Charted IV | Learn the whole maps of 50 areas. | 60 |  | as maps-1 | as maps-1 |
+| `explored-50` | No Stone Unturned V | Walk into every room of 50 areas. | 60 |  | as explored-1 | as explored-1 |
 
 ### Deferred candidates
 
@@ -464,7 +472,7 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 
 The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 512
 timestamp slots through `MAX_ACHIEVEMENTS`, checked at compile time by
-`achievement_table_must_fit`; the current catalog uses 399. Add a new entry
+`achievement_table_must_fit`; the current catalog uses 406. Add a new entry
 only with a unique key that will never be repurposed, at the end of the
 table, and never move an old row.
 

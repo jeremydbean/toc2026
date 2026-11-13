@@ -206,7 +206,10 @@ typedef enum
     ACHIEVEMENT_EVENT_HOLIDAY_FIREWORK,
     ACHIEVEMENT_EVENT_HOLIDAY_GOLD,
     /* Exploration maps (maps.c; owner, 2026-11-12). */
-    ACHIEVEMENT_EVENT_CARTOGRAPHER
+    ACHIEVEMENT_EVENT_CARTOGRAPHER,
+    /* More of them (owner, 2026-11-13). */
+    ACHIEVEMENT_EVENT_MAP_FROM_FOE,     /* learned a map found on a fallen foe */
+    ACHIEVEMENT_EVENT_MAP_TOO_LATE      /* read the map of an area already walked */
 } achievement_event_type;
 
 /* Counted achievements (achievements.c). Saved by name as
@@ -246,6 +249,7 @@ typedef enum
     ACH_SET_PSI_DISCIPLINES,    /* psionic disciplines used successfully */
     ACH_SET_MAP_AREAS,          /* map regions whose whole map is held (maps.c) */
     ACH_SET_EXPLORED_AREAS,     /* area identity of areas walked end to end */
+    ACH_SET_CARTOGRAPHER_VISITS,/* the cartographer's visits found (arrival time) */
     ACH_SET_COUNT
 } achievement_set;
 
