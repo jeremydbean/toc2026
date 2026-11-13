@@ -295665,3 +295665,6 @@ Fri Nov 13 12:37:25 2026 :: Connection guard: 5.161.73.160 closed without a word
 Fri Nov 13 12:41:52 2026 :: Treasure goblin: vanished from room 3764 (A dark cavern, school.are) (too long in one area).
 Fri Nov 13 12:42:30 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 13 12:47:34 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 12:51:57 2026 :: Treasure goblin: vanished from room 7516 (Roaming the Astral Plane, astral.are) (too long in one area).
+Fri Nov 13 12:52:39 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 13 12:52:39 2026 :: Connection guard: 178.156.184.20 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.184.20 lifts it.
