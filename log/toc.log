@@ -295718,3 +295718,18 @@ Fri Nov 13 13:43:27 2026 :: Connection guard: 3.133.226.214 closed without a wor
 Fri Nov 13 13:48:31 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 4 of 6 in 6 hours).
 Fri Nov 13 13:52:25 2026 :: Treasure goblin: vanished from room 10128 (Cook's Kitchen, Quantum Homeshopping Ltd., glitter.are) (too long in one area).
 Fri Nov 13 13:53:34 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 13 13:58:30 2026 :: Log Killuminati [30489]: goto 600
+Fri Nov 13 13:58:30 2026 :: Log Killuminati [-]: arrived (-) from 30489
+Fri Nov 13 13:58:38 2026 :: Log Killuminati [-]: kill car
+Fri Nov 13 13:58:38 2026 :: Log Killuminati [-]: killed Odric Penwhistle
+Fri Nov 13 13:58:38 2026 :: Cartographer: slain by Killuminati in room 600 (Granny's Still Room, ofcol.are).
+Fri Nov 13 13:58:38 2026 :: Log Killuminati [600]: coin +3 silver
+Fri Nov 13 13:58:38 2026 :: Log Killuminati [600]: coin +37 copper
+Fri Nov 13 13:58:38 2026 :: Log Killuminati [600]: coin +3 gold
+Fri Nov 13 13:58:39 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 13 13:58:41 2026 :: Log Killuminati [600]: get all cor
+Fri Nov 13 13:58:44 2026 :: Log Killuminati [600]: look map
+Fri Nov 13 13:58:49 2026 :: Log Killuminati [600]: read map
+Fri Nov 13 13:58:49 2026 :: Killuminati learned the map of Ofcol.
+Fri Nov 13 14:00:53 2026 :: Log Killuminati [600]: /
+Fri Nov 13 14:02:30 2026 :: Treasure goblin: vanished from room 20154 (A cellblock, prison.are) (too long in one area).
