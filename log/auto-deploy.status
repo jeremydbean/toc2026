@@ -1,1 +1,1 @@
-2026-11-13T18:15:39Z waiting for CI on 0594679a (in_progress) before deploying 4411c0db
+2026-11-13T18:25:40Z not deploying 600f600e: CI on 0594679a says failure; push a fix
