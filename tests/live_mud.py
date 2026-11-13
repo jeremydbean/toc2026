@@ -673,6 +673,21 @@ class LiveMud:
         except OSError:
             pass
 
+    def _cleanup_tmp(self) -> None:
+        """Remove the world. A backup the game started runs as a detached
+        shell that appends to log/toc.log when it ends, and may outlive the
+        server (src/update.c, backup_launch), so a removal can meet a file
+        written a moment after its directory was emptied (CI, 2026-11-13:
+        "Directory not empty: .../log"). Try again a few times, then leave
+        what is left: it is a temporary directory."""
+        for attempt in range(10):
+            try:
+                self.tmp.cleanup()
+                return
+            except OSError:
+                time.sleep(0.5)
+        shutil.rmtree(self.tmp.name, ignore_errors=True)
+
     def __exit__(self, exc_type, exc, tb) -> None:
         report = None
         try:
@@ -681,7 +696,7 @@ class LiveMud:
             self._save_artifacts()
         finally:
             if self.tmp is not None:
-                self.tmp.cleanup()
+                self._cleanup_tmp()
         if report is not None:
             message = "the server wrote a sanitizer report:\n" + report
             if exc_type is None:

@@ -101,6 +101,16 @@ class HungerAndThirstTests(unittest.TestCase):
                 with mud.connect(timeout=120) as linkdead:
                     login(linkdead, "Zlinkdead", PW)
                 # The socket closed without QUIT: link-dead in the gallery.
+                # A tick can fall between that login and the server reading
+                # the closed socket, while Zlinkdead is still connected and
+                # rightly hurt (CI, 2026-11-13: 9512 of 10000). Wait until the
+                # game holds it link-dead, then put it back to full, so only
+                # link-dead ticks are measured.
+                for _ in range(40):
+                    if "zlinkdead" not in warden.sync("sockets").lower():
+                        break
+                    warden.drain(0.25)
+                warden.must("restore zlinkdead", "restored")
                 for client, name in ((hero, "Zhero"), (builder, "Zbuilder"),
                                      (frail, "Zfrail"), (starve, "Zstarve")):
                     login(client, name, PW)
