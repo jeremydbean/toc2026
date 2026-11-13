@@ -4888,3 +4888,6 @@
 1794537277	wizinfo	60	Alaric@208.126.22.104 has connected.
 1794537278	wizinfo	57	Alaric has entered the game.
 1794537280	wizinfo	60	Hermie: at the Oak Tree Square (2401) for the restart, 1 mortal playing; 71 minutes of the window left.
+1794537457	wizinfo	57	Alaric has left the game (2m).
+1794537460	wizinfo	60	Hermie: no mortal playing; she steps away from the Oak Tree Square until one is.
+1794537706	wizinfo	60	Connection guard: 35.210.75.155 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 35.210.75.155 lifts it.

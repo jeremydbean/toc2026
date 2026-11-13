@@ -25139,3 +25139,32 @@
 1794537422	cmd	Alaric	57	12001	froboz.are	standing	99	0	-	east		Alas, you cannot go that way.	-	-
 1794537423	cmd	Alaric	57	12006	froboz.are	standing	99	0	-	north		Outside the Factory //   Here are the giant doors of Froboz's huge complex.  They are kept ajar, to // let give all the heat and noise inside a means of escaping.  The doors are	-	+
 1794537424	cmd	Alaric	57	12007	froboz.are	standing	99	0	-	north		Entrance Area //   There is a big round desk in this room, with all sorts of security // equipment arrayed around it.  It looks like some sort of high-magic, what	-	+
+1794537425	cmd	Alaric	57	12007	froboz.are	standing	99	0	-	north		Alas, you cannot go that way.	-	-
+1794537426	cmd	Alaric	57	12018	froboz.are	standing	99	0	-	east		Employees' Lounge //   This ever-so-small room seems to be the floor worker's coat room, closet, // lunch area, time-clock area, and everything else the administration here	-	+
+1794537426	cmd	Alaric	57	12019	froboz.are	standing	99	0	-	north		Work Floor //   This is a part of the assembly line for Froboz' products.  Here you see // wands of invisibility being assembled.  Small sticks are placed on the	-	+
+1794537427	cmd	Alaric	57	12025	froboz.are	standing	99	0	-	north		Work Floor //   This is odd.  Workers here are opening giant wooden crates and fishing // about hastily in the insides with fishing nets.  Then, they take the	-	+
+1794537427	cmd	Alaric	57	12024	froboz.are	standing	99	0	-	west		Work Floor //   This appears to be a central area in the factory, with ladders leading up // and down, and a huge loading/unloading area to the north. All around, huge	-	+
+1794537430	cmd	Alaric	57	12031	froboz.are	standing	99	0	-	up		Catwalks //   These small walkways above the factory floor enable the foreman to keep a // careful eye and whip on the poor workers below.  It doesn't feel too safe	-	+
+1794537431	cmd	Alaric	57	12031	froboz.are	standing	99	0	-	exits		Obvious exits: // East  - Catwalks // South - Catwalks	-	+
+1794537433	cmd	Alaric	57	12032	froboz.are	standing	99	0	-	east		Catwalks //   Carefully you edge your way around something slippery that's been spilled // on the catwalk.  The last thing you want is to fall the twenty feet or so	-	+
+1794537436	cmd	Alaric	57	12031	froboz.are	standing	99	0	-	west		Catwalks //   These small walkways above the factory floor enable the foreman to keep a // careful eye and whip on the poor workers below.  It doesn't feel too safe	-	+
+1794537437	cmd	Alaric	57	12031	froboz.are	standing	99	0	-	exits		Obvious exits: // East  - Catwalks // South - Catwalks	-	+
+1794537438	cmd	Alaric	57	12034	froboz.are	standing	99	0	-	south		Catwalks //   The rails here are in ill-repair, and you try to keep exactly in the center // of the catwalk, just in case.  Doesn't look like many foreman come to this	-	+
+1794537440	cmd	Alaric	57	12034	froboz.are	standing	99	0	-	exits		Obvious exits: // North - Catwalks // East  - Catwalks	-	-
+1794537442	achieved	Alaric	57	12033	froboz.are	explored-1	15	2200	east
+1794537442	cmd	Alaric	57	12033	froboz.are	standing	99	0	-	east		                    ACHIEVEMENT EARNED // No Stone Unturned I  +15 points // Walk into every room of an area.	-	+
+1794537448	got	Alaric	57	12033	froboz.are	25038	The Journal of Trinidad	trash	59	0	get	the floor
+1794537448	cmd	Alaric	57	12033	froboz.are	standing	99	0	-	get	all	You get The Journal of Trinidad.	-	-
+1794537449	area	Alaric	57	2497	dresden.are	froboz.are	dresden.are	154	recall
+1794537449	cmd	Alaric	57	2497	dresden.are	standing	99	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.	-	+
+1794537451	coin	Alaric	57	2497	dresden.are	+184954968	quests	aquest	-	25856652028
+1794537451	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2053->2053 offered=29 daily=4->4 coin=+184954968 kill=15412914 streak=0 level=57 target=0
+1794537451	cmd	Alaric	57	2497	dresden.are	standing	99	27	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1794537452	cmd	Alaric	57	2497	dresden.are	standing	99	5	-	aquest	ga no	Wise choice. You safely collect 29 quest points.	-	-
+1794537453	state	Alaric	57	2497	dresden.are	lvl=57 hp=1539/1544 mana=2350/2875 mv=484/983 align=897 exp=252749 coin=1094495577 bank=24762156451 qp=2082 prac=36 train=76 stash=93/350 remorts=3
+1794537453	cmd	Alaric	57	2497	dresden.are	standing	99	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794537455	state	Alaric	57	2497	dresden.are	lvl=57 hp=1539/1544 mana=2350/2875 mv=484/983 align=897 exp=252749 coin=1094495577 bank=24762156451 qp=2082 prac=36 train=76 stash=93/350 remorts=3
+1794537455	cmd	Alaric	57	2497	dresden.are	standing	99	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794537456	cmd	Alaric	57	2497	dresden.are	standing	99	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794537457	session	Alaric	57	2497	dresden.are	quit	179s	+0 levels	+0 exp	+184954968 copper	0 kills	0 deaths	1 quests	126 commands	1 refused	coin: quests 184p 95g 49s 68c	spent on: none	exp: none
+1794537573	cmd	Killuminati	70	30489	hyrule.are	standing	100	0	-	wizinvis		You slowly fade back into existence.	-	-

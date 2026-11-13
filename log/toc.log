@@ -294988,3 +294988,52 @@ Fri Nov 13 02:37:03 2026 :: Log Alaric [12001]: n
 Fri Nov 13 02:37:03 2026 :: Log Alaric [12006]: arrived (Outside the Factory) from 12001
 Fri Nov 13 02:37:04 2026 :: Log Alaric [12006]: n
 Fri Nov 13 02:37:04 2026 :: Log Alaric [12007]: arrived (Entrance Area) from 12006
+Fri Nov 13 02:37:05 2026 :: Log Alaric [12007]: n
+Fri Nov 13 02:37:06 2026 :: Log Alaric [12007]: e
+Fri Nov 13 02:37:06 2026 :: Log Alaric [12018]: arrived (Employees' Lounge) from 12007
+Fri Nov 13 02:37:06 2026 :: Log Alaric [12018]: n
+Fri Nov 13 02:37:06 2026 :: Log Alaric [12019]: arrived (Work Floor) from 12018
+Fri Nov 13 02:37:07 2026 :: Log Alaric [12019]: n
+Fri Nov 13 02:37:07 2026 :: Log Alaric [12025]: arrived (Work Floor) from 12019
+Fri Nov 13 02:37:07 2026 :: Log Alaric [12025]: w
+Fri Nov 13 02:37:07 2026 :: Log Alaric [12024]: arrived (Work Floor) from 12025
+Fri Nov 13 02:37:10 2026 :: Log Alaric [12024]: u
+Fri Nov 13 02:37:10 2026 :: Log Alaric [12031]: arrived (Catwalks) from 12024
+Fri Nov 13 02:37:11 2026 :: Log Alaric [12031]: ex
+Fri Nov 13 02:37:12 2026 :: Treasure goblin: vanished from room 29085 (Engineering Department, korzath1.are) (too long in one area).
+Fri Nov 13 02:37:13 2026 :: Log Alaric [12031]: e
+Fri Nov 13 02:37:13 2026 :: Log Alaric [12032]: arrived (Catwalks) from 12031
+Fri Nov 13 02:37:16 2026 :: Log Alaric [12032]: w
+Fri Nov 13 02:37:16 2026 :: Log Alaric [12031]: arrived (Catwalks) from 12032
+Fri Nov 13 02:37:17 2026 :: Log Alaric [12031]: ex
+Fri Nov 13 02:37:18 2026 :: Log Alaric [12031]: s
+Fri Nov 13 02:37:18 2026 :: Log Alaric [12034]: arrived (Catwalks) from 12031
+Fri Nov 13 02:37:20 2026 :: Log Alaric [12034]: ex
+Fri Nov 13 02:37:22 2026 :: Log Alaric [12034]: e
+Fri Nov 13 02:37:22 2026 :: Log Alaric [12033]: arrived (Catwalks) from 12034
+Fri Nov 13 02:37:28 2026 :: Log Alaric [12033]: get all
+Fri Nov 13 02:37:29 2026 :: Log Alaric [12033]: recal
+Fri Nov 13 02:37:29 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 12033
+Fri Nov 13 02:37:31 2026 :: Log Alaric [2497]: aq co
+Fri Nov 13 02:37:31 2026 :: Log Alaric [2497]: copper +184954968
+Fri Nov 13 02:37:31 2026 :: Log Alaric [2497]: quest complete: 184p 95g 49s 68c, 29 quest points (streak bonus 0%)
+Fri Nov 13 02:37:31 2026 :: Snapshot of Alaric taken before quest: Alaric.20261113_023731.quest (PRESTORE Alaric to see it).
+Fri Nov 13 02:37:32 2026 :: Log Alaric [2497]: aq ga no
+Fri Nov 13 02:37:33 2026 :: Log Alaric [2497]: score
+Fri Nov 13 02:37:35 2026 :: Log Alaric [2497]: score
+Fri Nov 13 02:37:36 2026 :: Log Alaric [2497]: who
+Fri Nov 13 02:37:37 2026 :: Log Alaric [2497]: quit
+Fri Nov 13 02:37:37 2026 :: Alaric has quit.
+Fri Nov 13 02:37:37 2026 :: [QUIT] Player rejoined the real world.
+Fri Nov 13 02:37:40 2026 :: Hermie: no mortal playing; she steps away from the Oak Tree Square until one is.
+Fri Nov 13 02:39:01 2026 :: Sock.sinaddr:  205.210.31.237
+Fri Nov 13 02:39:01 2026 :: EOF encountered on read.
+Fri Nov 13 02:39:33 2026 :: Log Killuminati [30489]: wizi
+Fri Nov 13 02:41:45 2026 :: Sock.sinaddr:  35.210.75.155
+Fri Nov 13 02:41:46 2026 :: EOF encountered on read.
+Fri Nov 13 02:41:46 2026 :: Connection guard: 35.210.75.155 paused for 6 hours (kept connecting without logging in; no player has logged in from it in 90 days). Logins still work; new characters wait. DNS ALLOW 35.210.75.155 lifts it.
+Fri Nov 13 02:41:48 2026 :: Sock.sinaddr:  35.210.75.155
+Fri Nov 13 02:41:48 2026 :: EOF encountered on read.
+Fri Nov 13 02:41:51 2026 :: Sock.sinaddr:  35.210.75.155
+Fri Nov 13 02:41:52 2026 :: Sock.sinaddr:  35.210.75.155
+Fri Nov 13 02:41:53 2026 :: Sock.sinaddr:  35.210.75.155
