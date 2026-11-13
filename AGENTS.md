@@ -6850,6 +6850,21 @@ has a live or behaviour test that fails on the old code.
   WALKTO's; bash and trip lag still hold wimpy off until they wear away
   (`tests/test_wimpy_idle.py`).
 
+**Hyrule tells a player what its rooms can do** (players' logs,
+2026-11-13; `tests/test_hyrule_discoverability.py`, and "What A Player Can
+Find By Looking" in `wiki/hyrule-area.md`). The generator adds a LOOK
+detail for each of thirteen nouns a room's description names (crack, wall,
+door, shutter, block, statue, grave, bush, tree, rock, water, fire,
+stairs) unless its prose covers it, naming the command that works there or
+saying that nothing moves -- a test holds that no detail promises a
+command the room cannot do -- and writes them ahead of the prose's own, so
+a hand-written detail answers first. The crossings (30538-30540) answer to
+gap, water, ledge and the like; bomb seals to the surface words of their
+rooms, and BOMB finds a seal by keyword or direction after any creature
+by that name. LIST in a Hyrule cave with a bystander and no shopkeeper
+explains the cave from the tables it uses. **A LOOK detail wins only on a
+whole word** (`do_look`): "look w" looks west, never at "walls".
+
 ## The Players' Logs Of 2026-11-13
 
 A read of three weeks of logs found these; each is fixed and played by

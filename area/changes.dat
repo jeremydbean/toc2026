@@ -5,6 +5,18 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113hyrulelook 2026-11-13
+Hyrule is easier to read:
+  - The stepladder and the rafts answer to what you see: ENTER GAP, ENTER
+    WATER, CROSS LEDGE.  Their lines say how.
+  - Spectacle Rock's cracked rock answers to BOMB ROCK, BOMB CRACK or BOMB
+    LEFT, and other bomb walls to the words their rooms use.
+  - LOOK at the statues, blocks, cracks, bushes, graves and doors a room
+    describes, and it tells you what works there.
+  - LIST in a cave says what the old man or woman offers and how to take it.
+  - LOOK W and its kin always look at the exit, never a detail that only
+    begins with the letter.
+
 @ 20261113frictions 2026-11-13
 A round of fixes from what players tripped over:
   - A door is called a door: no more "The locked is closed."
