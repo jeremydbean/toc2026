@@ -118,9 +118,13 @@ class CloseCallLiveTests(unittest.TestCase):
                     # hit point became 9 before the prayer, a ninth of the
                     # maximum, and the close call rightly did not count):
                     # back to one before each.
+                    # And the maximum is 2,000, not 100 (CI, 2026-11-13:
+                    # 9 of 100 at the prayer, past a twentieth, when a tick
+                    # landed between this and the RECALL): a tick's few
+                    # points stay far under a twentieth (100).
                     staff.must("set char zcclose hp 1", "now set to 1")
                     staff.must("restore zcclose", "restored")
-                    staff.must("set char zcclose hp 100", "now set to 100")
+                    staff.must("set char zcclose hp 2000", "now set to 2000")
                     prayed = hero.sync("recall")
                     if "You recall from combat" in prayed or "Something is very wrong" in prayed:
                         break
