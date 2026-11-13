@@ -295919,3 +295919,6 @@ Fri Nov 13 18:06:42 2026 :: Connection guard: 99.62.115.159 closed without a wor
 Fri Nov 13 18:07:24 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 1 refused in all, pause 1 this week, 46 minutes left).
 Fri Nov 13 18:10:14 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Fri Nov 13 18:12:30 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 13 18:14:52 2026 :: Treasure goblin: vanished from room 7623 (Library, ultima.are) (too long in one area).
+Fri Nov 13 18:16:43 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Fri Nov 13 18:17:35 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 4 of 6 in 6 hours).
