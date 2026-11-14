@@ -28863,3 +28863,173 @@
 1794678342	cmd	Alaric	57	7035	sewer.are	standing	100	0	-	east		The sewer pipe bend //   You can look in two different directions where the pipe goes : west and  // north.	-	+
 1794678342	cmd	Alaric	57	7035	sewer.are	standing	100	0	-	scan		You don't see anything near you.	-	-
 1794678343	cmd	Alaric	57	7034	sewer.are	standing	100	0	-	north		A bend in the sewer pipe //   You can look in two directions where the pipe leads : south and west. // [Exits: south west]	-	-
+1794678343	cmd	Alaric	57	7034	sewer.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794678344	cmd	Alaric	57	7028	sewer.are	standing	100	0	-	west		The sewer junction //   You stand in a junction of sewer pipes leading north, east and west. // [Exits: north east west]	-	-
+1794678344	cmd	Alaric	57	7028	sewer.are	standing	100	0	-	scan		the small bat                      -to the far North.	-	-
+1794678350	laid	-	0	0	-	946	herb	39	a chervil leaf	9542	newthalo.are	scatter
+1794678350	laid	-	0	0	-	947	herb	52	an asparagus shoot	9670	newthalo.are	scatter
+1794678350	laid	-	0	0	-	948	component	81	a vial of squid ink	6365	arac.are	scatter
+1794678352	cmd	Alaric	57	7034	sewer.are	standing	100	0	-	east		A bend in the sewer pipe //   You can look in two directions where the pipe leads : south and west. // [Exits: south west]	-	-
+1794678352	cmd	Alaric	57	7035	sewer.are	standing	100	0	-	south		The sewer pipe bend //   You can look in two different directions where the pipe goes : west and  // north.	-	+
+1794678352	cmd	Alaric	57	7029	sewer.are	standing	100	0	-	west		The Triple Junction //   You stand in the middle of a huge junction of concrete sewer pipes. The  // pipes lead into three different directions : east, south and west.	-	+
+1794678352	cmd	Alaric	57	7030	sewer.are	standing	100	0	-	south		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1794678353	cmd	Alaric	57	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1794678353	cmd	Alaric	57	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1794678353	cmd	Alaric	57	7104	sewer.are	standing	100	0	-	west		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1794678353	cmd	Alaric	57	7102	sewer.are	standing	100	0	-	west		Under the Dark Pit //   Nice place you found yourself. You stand in the middle of a room with only // two exits, Up and East. A tall ladder is left here so that you can climb	-	+
+1794678354	cmd	Alaric	57	7004	sewer.are	standing	100	0	-	up		The Dark Pit //   You are standing by the edge of a dark pit that leads down into even // deeper darkness. >BWWAAADDRR< - The smell from down there is unbearable.	-	+
+1794678357	cmd	Alaric	57	7004	sewer.are	standing	100	0	-	scan		the slithering snake               -right below you. // the giant earth beetle             -right below you.	-	-
+1794678358	cmd	Alaric	57	7102	sewer.are	standing	100	0	-	down		Under the Dark Pit //   Nice place you found yourself. You stand in the middle of a room with only // two exits, Up and East. A tall ladder is left here so that you can climb	-	+
+1794678359	cmd	Alaric	57	7102	sewer.are	standing	100	0	-	scan		the slithering snake               -to the East. // the great sewer rat                -to the East. // the maggot                         -to the far East.	-	+
+1794678361	cmd	Alaric	57	7400	sewer.are	standing	100	0	-	down		Cave entrance //   You are standing in the cave entrance. It is very dark // down here. There is writing at the wall. There is an exit	-	+
+1794678361	cmd	Alaric	57	7400	sewer.are	standing	100	0	-	scan		the homonculus                     -to the North. // the slithering snake               -right above you. // the giant earth beetle             -right above you.	-	+
+1794678362	cmd	Alaric	57	7401	sewer.are	standing	100	0	-	north		Cave tunnel //   You are walking in a tunnel. It is very cold. You // can feel the presence of a living thing ... SOMEWHERE.	-	+
+1794678363	cmd	Alaric	57	7401	sewer.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794678363	cmd	Alaric	57	7402	sewer.are	standing	100	0	-	north		Cave room //   You are standing in a room. It's much cooler now. // The walls are glowing.	-	+
+1794678364	cmd	Alaric	57	7402	sewer.are	standing	100	0	-	scan		the horrifying mudmonster          -to the East. // the homonculus                     -to the South.	-	-
+1794678366	cmd	Alaric	57	7403	sewer.are	standing	100	0	-	east		Cave T-cross //   You are standing in a mud-like substance. The smell here is // awful, it is rotten. To the west you can see some light.	-	+
+1794678369	coin	Alaric	57	7403	sewer.are	+7400	loot	kill	corpse of the horrifying mudmonster	27091280467
+1794678369	coin	Alaric	57	7403	sewer.are	+88	loot	kill	corpse of the horrifying mudmonster	27091280555
+1794678369	coin	Alaric	57	7403	sewer.are	+360000	loot	kill	corpse of the horrifying mudmonster	27091640555
+1794678369	cmd	Alaric	57	7403	sewer.are	standing	100	2	-	kill	mud	Your punch === OBLITERATES === the horrifying mudmonster! [-145] // Your punch === OBLITERATES === the horrifying mudmonster! [-146] // The horrifying mudmonster is DEAD!!	-	+
+1794678374	cmd	Alaric	57	7403	sewer.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794678375	cmd	Alaric	57	7408	sewer.are	standing	100	0	-	south		The long tunnel //   Here There is almost no mud, as you stand at the top // of a small rock. Just beside you there are a sign which	-	+
+1794678376	cmd	Alaric	57	7403	sewer.are	standing	100	0	-	north		Cave T-cross //   You are standing in a mud-like substance. The smell here is // awful, it is rotten. To the west you can see some light.	-	+
+1794678377	cmd	Alaric	57	7404	sewer.are	standing	100	0	-	east		Cave turning-point //   The mud are getting deeper. You are wondering, 'Would // it be an idea to leave, before I disappear?'. To the	-	+
+1794678378	cmd	Alaric	57	7404	sewer.are	standing	100	0	-	open		Ok.	-	-
+1794678378	cmd	Alaric	57	7405	sewer.are	standing	100	0	-	south		The secret room //   There is dust all over the place. It looks like nobody // has been here for ages. In the middle of the room you see	-	+
+1794678379	cmd	Alaric	57	7405	sewer.are	standing	100	0	-	open		Ok.	-	-
+1794678379	cmd	Alaric	57	7406	sewer.are	standing	100	0	-	south		The mudhole //   You are standing in a lot of mud. The mud goes to your // chest. You feel the presence of something IN the mud.	-	+
+1794678381	cmd	Alaric	57	7407	sewer.are	standing	100	0	-	west		Tunnel //   The mud goes to your knees. Otherwise the tunnel looks // very normal.	-	+
+1794678383	cmd	Alaric	57	7409	sewer.are	standing	100	0	-	south		The hot room //   You are very surprised, as this room for a change are // hot instead of cold. To the north it goes downwards into	-	+
+1794678384	cmd	Alaric	57	7410	sewer.are	standing	100	0	-	west		The small room //   As you look around you notice a small statue. There are // exits to the west and to the east.	-	+
+1794678385	cmd	Alaric	57	7411	sewer.are	standing	100	0	-	west		The stalagmite cave //   You are standing in a stalagmite cave. Water is dripping // from the walls. It is very cold in here.	-	+
+1794678387	cmd	Alaric	57	7411	sewer.are	standing	100	0	-	scan		the horrifying mudmonster          -to the South.	-	-
+1794678388	cmd	Alaric	57	7414	sewer.are	standing	100	0	-	north		The stalagmite T-cross //   You are standing in a cross. To the north you can see // some light. Otherwise it is dark.	-	+
+1794678388	cmd	Alaric	57	7417	sewer.are	standing	100	0	-	north		The square lair //   You are standing in the south-east part of the lair. You can // see a skeleton lying at the wall.	-	+
+1794678389	cmd	Alaric	57	7414	sewer.are	standing	100	0	-	south		The stalagmite T-cross //   You are standing in a cross. To the north you can see // some light. Otherwise it is dark.	-	+
+1794678389	cmd	Alaric	57	7411	sewer.are	standing	100	0	-	south		The stalagmite cave //   You are standing in a stalagmite cave. Water is dripping // from the walls. It is very cold in here.	-	+
+1794678389	cmd	Alaric	57	7412	sewer.are	standing	100	0	-	south		The stalagmite tunnel //   You has entered a small tunnel. Here it is quite dry. // Maybe it would be an idea to rest here.	-	+
+1794678391	cmd	Alaric	57	7413	sewer.are	standing	100	0	-	west		The spongy room //   You definitely NOT like this area. It is very dank, and most // of the places it is wet.	-	+
+1794678391	cmd	Alaric	57	7445	sewer.are	standing	100	0	-	west		The pool //   You are swimming in DARKNESS. You feel something // touching your right leg.	-	+
+1794678393	cmd	Alaric	57	7445	sewer.are	standing	100	0	-	scan		the horrifying mudmonster          -to the far East. // the sea hag                        -to the West.	-	-
+1794678395	cmd	Alaric	57	7444	sewer.are	standing	100	0	-	west		The south end of the pool //   You standing in water up to you neck. You can only see water. // [Exits: north east]	-	+
+1794678396	cmd	Alaric	57	7442	sewer.are	standing	100	0	-	north		The northern end of the pool //   You have wet feet, you are standing in water. The water looks calm. You can // see that it's a big lake. Light seeps from the water.	-	+
+1794678397	cmd	Alaric	57	7443	sewer.are	standing	100	0	-	east		The pool //   You are swimming in water. It is getting deep here. It is dark in this end. // [Exits: south west]	-	-
+1794678397	cmd	Alaric	57	7443	sewer.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794678398	cmd	Alaric	57	7442	sewer.are	standing	100	0	-	west		The northern end of the pool //   You have wet feet, you are standing in water. The water looks calm. You can // see that it's a big lake. Light seeps from the water.	-	+
+1794678399	cmd	Alaric	57	7441	sewer.are	standing	100	0	-	north		The small cave //   You are standing in small cave. You can see // some light in the end. Exits are north and south.	-	+
+1794678400	cmd	Alaric	57	7440	sewer.are	standing	100	0	-	north		South-western part of basilisks cave //   You can see nothing but smoke.  // [Exits: north east south]	-	-
+1794678401	cmd	Alaric	57	7438	sewer.are	standing	100	0	-	east		South-eastern part of basilisks cave //   There are a very small hole in wall, from where the smoke // are coming from. Otherwise it is pitch dark. Exits are north	-	+
+1794678401	cmd	Alaric	57	7438	sewer.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794678402	cmd	Alaric	57	7437	sewer.are	standing	100	0	-	north		North-eastern part of Basilisks cave //   It is hard to see here because of the smoke. To the north you // can see barely see a small tunnel. Other exits are to the south	-	+
+1794678403	cmd	Alaric	57	7439	sewer.are	standing	100	0	-	west		North-western part of basilisks cave //   You can see some hay spread on the floor. The smell is awful here, // and it makes you feel sick.  The basilisk sleeps here.	-	+
+1794678406	cmd	Alaric	57	7439	sewer.are	standing	100	0	-	look	i back	A backpack contains: //      Nothing.	-	-
+1794678409	cmd	Alaric	57	7440	sewer.are	standing	100	0	-	south		South-western part of basilisks cave //   You can see nothing but smoke.  // [Exits: north east south]	-	-
+1794678409	cmd	Alaric	57	7438	sewer.are	standing	100	0	-	east		South-eastern part of basilisks cave //   There are a very small hole in wall, from where the smoke // are coming from. Otherwise it is pitch dark. Exits are north	-	+
+1794678410	cmd	Alaric	57	7437	sewer.are	standing	100	0	-	north		North-eastern part of Basilisks cave //   It is hard to see here because of the smoke. To the north you // can see barely see a small tunnel. Other exits are to the south	-	+
+1794678410	cmd	Alaric	57	7436	sewer.are	standing	100	0	-	north		Entrance to lair //   The smell here is awful.  To the south you can see some smoke. // A tunnel leads north, and east.	-	+
+1794678411	cmd	Alaric	57	7422	sewer.are	standing	100	0	-	east		North tunnel //   You are standing in a dark tunnel, it leads upwards. // [Exits: north south west]	-	+
+1794678412	cmd	Alaric	57	7422	sewer.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794678413	cmd	Alaric	57	7422	sewer.are	standing	100	0	-	scan		the shadowy morkoth                -to the North. // Jones                              -to the South.	-	-
+1794678414	cmd	Alaric	57	7419	sewer.are	standing	100	0	-	south		The square lair //   You are standing in the north-west part of the lair. Here's // another sign. There are a exit from the lair to the north.	-	+
+1794678416	cmd	Alaric	57	7420	sewer.are	standing	100	0	-	south		The lair end //   You can see a table in front of you. It's very dusty. // Around the table five skeletons are siting. Exits are	-	+
+1794678417	cmd	Alaric	57	7417	sewer.are	standing	100	0	-	east		The square lair //   You are standing in the south-east part of the lair. You can // see a skeleton lying at the wall.	-	+
+1794678417	cmd	Alaric	57	7418	sewer.are	standing	100	0	-	north		The square lair //   You are standing in the north-east part of the lair. You see // a sign at the wall	-	+
+1794678419	cmd	Alaric	57	7418	sewer.are	standing	100	0	-	open		Ok.	-	-
+1794678419	cmd	Alaric	57	7421	sewer.are	standing	100	0	-	east		East tunnel //   You are standing in dark tunnel, the exits are east // and west. To the west you see a wooden door.	-	+
+1794678421	cmd	Alaric	57	7418	sewer.are	standing	100	0	-	west		The square lair //   You are standing in the north-east part of the lair. You see // a sign at the wall	-	+
+1794678421	cmd	Alaric	57	7418	sewer.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794678422	cmd	Alaric	57	7419	sewer.are	standing	100	0	-	west		The square lair //   You are standing in the north-west part of the lair. Here's // another sign. There are a exit from the lair to the north.	-	+
+1794678422	cmd	Alaric	57	7422	sewer.are	standing	100	0	-	north		North tunnel //   You are standing in a dark tunnel, it leads upwards. // [Exits: north south west]	-	+
+1794678422	cmd	Alaric	57	7423	sewer.are	standing	100	0	-	north		The L-shaped room. //   You are standing in deep darkness. To the south there is a small exit. // To the east you can see a gaping hole.	-	+
+1794678423	cmd	Alaric	57	7424	sewer.are	standing	100	0	-	east		The Circular hall. //   You are standing in round hall. To the north, east and south you // can see a stone head hanging on the walls.	-	+
+1794678423	laid	-	0	0	-	968	component	78	a vial of demons blood	17794	landoz.are	scatter
+1794678425	cmd	Alaric	57	7424	sewer.are	standing	100	0	-	open		Ok.	-	-
+1794678425	cmd	Alaric	57	7425	sewer.are	standing	100	0	-	east		Dusty tunnel //   You are standing in dust. This place has not been // touched for a long time. Otherwise it is quite boring	-	+
+1794678426	cmd	Alaric	57	7426	sewer.are	standing	100	0	-	east		The crossing //   You are standing in a crossing of hallways. You can leave this place // in every direction, except up and down. In the dust you notice strange	-	+
+1794678427	cmd	Alaric	57	7427	sewer.are	standing	100	0	-	south		The L-shaped room //   You are standing in a L-shaped room. You can hear noises from the long // tunnel to the east. You can feel fear! A sign is hanging on the wall.	-	+
+1794678428	refused	Alaric	57	7427	sewer.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794678429	refused	Alaric	57	7427	sewer.are	standing	100	0	-	(unknown)		Huh? Did you mean SCAN?	refusal:unknown-command	-
+1794678430	cmd	Alaric	57	7426	sewer.are	standing	100	0	-	north		The crossing //   You are standing in a crossing of hallways. You can leave this place // in every direction, except up and down. In the dust you notice strange	-	+
+1794678430	cmd	Alaric	57	7426	sewer.are	standing	100	0	-	scan		the evil chreffn                   -to the far East. // Herald                             -to the far West.	-	-
+1794678431	cmd	Alaric	57	7431	sewer.are	standing	100	0	-	north		The glittering room //   This room are all bright. In the walls you can see some // silver. Exits are: West, east and south.	-	+
+1794678431	cmd	Alaric	57	7426	sewer.are	standing	100	0	-	south		The crossing //   You are standing in a crossing of hallways. You can leave this place // in every direction, except up and down. In the dust you notice strange	-	+
+1794678432	cmd	Alaric	57	7425	sewer.are	standing	100	0	-	west		Dusty tunnel //   You are standing in dust. This place has not been // touched for a long time. Otherwise it is quite boring	-	+
+1794678432	cmd	Alaric	57	7425	sewer.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794678433	cmd	Alaric	57	7424	sewer.are	standing	100	0	-	west		The Circular hall. //   You are standing in round hall. To the north, east and south you // can see a stone head hanging on the walls.	-	+
+1794678433	cmd	Alaric	57	7424	sewer.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794678434	cmd	Alaric	57	7423	sewer.are	standing	100	0	-	west		The L-shaped room. //   You are standing in deep darkness. To the south there is a small exit. // To the east you can see a gaping hole.	-	+
+1794678434	cmd	Alaric	57	7422	sewer.are	standing	100	0	-	south		North tunnel //   You are standing in a dark tunnel, it leads upwards. // [Exits: north south west]	-	+
+1794678434	cmd	Alaric	57	7436	sewer.are	standing	100	0	-	west		Entrance to lair //   The smell here is awful.  To the south you can see some smoke. // A tunnel leads north, and east.	-	+
+1794678435	cmd	Alaric	57	7435	sewer.are	standing	100	0	-	north		Dark tunnel //   You are standing in a dark tunnel. It continues to the north // and to the south. Bones are spread on the floor	-	+
+1794678436	cmd	Alaric	57	7434	sewer.are	standing	100	0	-	north		Stair-room //   You are standing in a small room. Drawings of faces in pain // are on the walls. You can fell darkness is ruling the place.	-	+
+1794678437	cmd	Alaric	57	7435	sewer.are	standing	100	0	-	south		Dark tunnel //   You are standing in a dark tunnel. It continues to the north // and to the south. Bones are spread on the floor	-	+
+1794678437	cmd	Alaric	57	7436	sewer.are	standing	100	0	-	south		Entrance to lair //   The smell here is awful.  To the south you can see some smoke. // A tunnel leads north, and east.	-	+
+1794678437	cmd	Alaric	57	7437	sewer.are	standing	100	0	-	south		North-eastern part of Basilisks cave //   It is hard to see here because of the smoke. To the north you // can see barely see a small tunnel. Other exits are to the south	-	+
+1794678437	cmd	Alaric	57	7438	sewer.are	standing	100	0	-	south		South-eastern part of basilisks cave //   There are a very small hole in wall, from where the smoke // are coming from. Otherwise it is pitch dark. Exits are north	-	+
+1794678438	cmd	Alaric	57	7440	sewer.are	standing	100	0	-	west		South-western part of basilisks cave //   You can see nothing but smoke.  // [Exits: north east south]	-	-
+1794678439	cmd	Alaric	57	7441	sewer.are	standing	100	0	-	south		The small cave //   You are standing in small cave. You can see // some light in the end. Exits are north and south.	-	+
+1794678439	cmd	Alaric	57	7442	sewer.are	standing	100	0	-	south		The northern end of the pool //   You have wet feet, you are standing in water. The water looks calm. You can // see that it's a big lake. Light seeps from the water.	-	+
+1794678440	cmd	Alaric	57	7443	sewer.are	standing	100	0	-	east		The pool //   You are swimming in water. It is getting deep here. It is dark in this end. // [Exits: south west]	-	-
+1794678440	cmd	Alaric	57	7445	sewer.are	standing	100	0	-	south		The pool //   You are swimming in DARKNESS. You feel something // touching your right leg.	-	+
+1794678441	cmd	Alaric	57	7413	sewer.are	standing	100	0	-	east		The spongy room //   You definitely NOT like this area. It is very dank, and most // of the places it is wet.	-	+
+1794678442	cmd	Alaric	57	7412	sewer.are	standing	100	0	-	east		The stalagmite tunnel //   You has entered a small tunnel. Here it is quite dry. // Maybe it would be an idea to rest here.	-	+
+1794678442	cmd	Alaric	57	7411	sewer.are	standing	100	0	-	north		The stalagmite cave //   You are standing in a stalagmite cave. Water is dripping // from the walls. It is very cold in here.	-	+
+1794678444	cmd	Alaric	57	7410	sewer.are	standing	100	0	-	east		The small room //   As you look around you notice a small statue. There are // exits to the west and to the east.	-	+
+1794678445	cmd	Alaric	57	7409	sewer.are	standing	100	0	-	east		The hot room //   You are very surprised, as this room for a change are // hot instead of cold. To the north it goes downwards into	-	+
+1794678446	cmd	Alaric	57	7409	sewer.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794678446	cmd	Alaric	57	7407	sewer.are	standing	100	0	-	north		Tunnel //   The mud goes to your knees. Otherwise the tunnel looks // very normal.	-	+
+1794678447	cmd	Alaric	57	7407	sewer.are	standing	100	0	-	scan		the lemure blob                    -to the East.	-	-
+1794678448	cmd	Alaric	57	7406	sewer.are	standing	100	0	-	east		The mudhole //   You are standing in a lot of mud. The mud goes to your // chest. You feel the presence of something IN the mud.	-	+
+1794678448	cmd	Alaric	57	7406	sewer.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794678449	cmd	Alaric	57	7405	sewer.are	standing	100	0	-	north		The secret room //   There is dust all over the place. It looks like nobody // has been here for ages. In the middle of the room you see	-	+
+1794678450	cmd	Alaric	57	7405	sewer.are	standing	100	0	-	scan		the lemure blob                    -to the South.	-	-
+1794678451	cmd	Alaric	57	7404	sewer.are	standing	100	0	-	north		Cave turning-point //   The mud are getting deeper. You are wondering, 'Would // it be an idea to leave, before I disappear?'. To the	-	+
+1794678451	cmd	Alaric	57	7404	sewer.are	standing	100	0	-	scan		the lemure blob                    -to the far South.	-	-
+1794678452	cmd	Alaric	57	7403	sewer.are	standing	100	0	-	west		Cave T-cross //   You are standing in a mud-like substance. The smell here is // awful, it is rotten. To the west you can see some light.	-	+
+1794678453	cmd	Alaric	57	7403	sewer.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794678453	cmd	Alaric	57	7402	sewer.are	standing	100	0	-	west		Cave room //   You are standing in a room. It's much cooler now. // The walls are glowing.	-	+
+1794678454	cmd	Alaric	57	7421	sewer.are	standing	100	0	-	west		East tunnel //   You are standing in dark tunnel, the exits are east // and west. To the west you see a wooden door.	-	+
+1794678455	cmd	Alaric	57	7402	sewer.are	standing	100	0	-	east		Cave room //   You are standing in a room. It's much cooler now. // The walls are glowing.	-	+
+1794678455	cmd	Alaric	57	7403	sewer.are	standing	100	0	-	east		Cave T-cross //   You are standing in a mud-like substance. The smell here is // awful, it is rotten. To the west you can see some light.	-	+
+1794678455	cmd	Alaric	57	7404	sewer.are	standing	100	0	-	east		Cave turning-point //   The mud are getting deeper. You are wondering, 'Would // it be an idea to leave, before I disappear?'. To the	-	+
+1794678459	cmd	Alaric	57	7403	sewer.are	standing	100	0	-	west		Cave T-cross //   You are standing in a mud-like substance. The smell here is // awful, it is rotten. To the west you can see some light.	-	+
+1794678459	cmd	Alaric	57	7402	sewer.are	standing	100	0	-	west		Cave room //   You are standing in a room. It's much cooler now. // The walls are glowing.	-	+
+1794678459	cmd	Alaric	57	7401	sewer.are	standing	100	0	-	south		Cave tunnel //   You are walking in a tunnel. It is very cold. You // can feel the presence of a living thing ... SOMEWHERE.	-	+
+1794678459	cmd	Alaric	57	7400	sewer.are	standing	100	0	-	south		Cave entrance //   You are standing in the cave entrance. It is very dark // down here. There is writing at the wall. There is an exit	-	+
+1794678460	cmd	Alaric	57	7102	sewer.are	standing	100	0	-	up		Under the Dark Pit //   Nice place you found yourself. You stand in the middle of a room with only // two exits, Up and East. A tall ladder is left here so that you can climb	-	+
+1794678460	cmd	Alaric	57	7104	sewer.are	standing	100	0	-	east		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1794678460	cmd	Alaric	57	7112	sewer.are	standing	100	0	-	east		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1794678460	cmd	Alaric	57	7111	sewer.are	standing	100	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 	-	+
+1794678461	cmd	Alaric	57	7115	sewer.are	standing	100	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit	-	+
+1794678461	cmd	Alaric	57	7129	sewer.are	standing	100	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.	-	+
+1794678461	cmd	Alaric	57	7221	sewer.are	standing	100	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.	-	+
+1794678461	cmd	Alaric	57	7220	sewer.are	standing	100	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]	-	-
+1794678462	cmd	Alaric	57	7219	sewer.are	standing	100	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]	-	+
+1794678462	cmd	Alaric	57	7217	sewer.are	standing	100	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west	-	+
+1794678462	cmd	Alaric	57	7216	sewer.are	standing	100	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light	-	+
+1794678464	cmd	Alaric	57	7216	sewer.are	standing	100	0	-	scan		the ugly wererat                   -to the North. // the ugly wererat                   -to the South.	-	-
+1794678465	cmd	Alaric	57	7215	sewer.are	standing	100	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.	-	+
+1794678466	cmd	Alaric	57	7215	sewer.are	standing	100	0	-	scan		the ugly wererat                   -to the far South.	-	-
+1794678467	cmd	Alaric	57	7215	sewer.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794678468	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1794678469	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	scan		the ugly wererat                   -to the South.	-	-
+1794678470	cmd	Alaric	57	7212	sewer.are	standing	100	0	-	east		The sewer drain. //   You are in a dry sewer drain which bends to the north. // [Exits: north west]	-	-
+1794678470	cmd	Alaric	57	7212	sewer.are	standing	100	0	-	scan		the ugly wererat                   -to the North.	-	-
+1794678471	cmd	Alaric	57	7213	sewer.are	standing	100	0	-	north		The sewer drain. //   You are in a dry sewer drain which bends to the east. // [Exits: east south]	-	+
+1794678472	cmd	Alaric	57	7213	sewer.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794678472	cmd	Alaric	57	7212	sewer.are	standing	100	0	-	south		The sewer drain. //   You are in a dry sewer drain which bends to the north. // [Exits: north west]	-	-
+1794678473	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	west		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1794678473	cmd	Alaric	57	7211	sewer.are	standing	100	0	-	north		The small cave. //   You are in a collapsed sewer drain, which now is more like a small cave. // [Exits: south]	-	-
+1794678474	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	south		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1794678474	cmd	Alaric	57	7212	sewer.are	standing	100	0	-	east		The sewer drain. //   You are in a dry sewer drain which bends to the north. // [Exits: north west]	-	-
+1794678475	cmd	Alaric	57	7213	sewer.are	standing	100	0	-	north		The sewer drain. //   You are in a dry sewer drain which bends to the east. // [Exits: east south]	-	+
+1794678475	cmd	Alaric	57	7214	sewer.are	standing	100	0	-	east		The drain end. //   You are at the end of the drain around you the sewer has collapsed, the only // exit is west.	-	+
+1794678477	area	Alaric	57	2497	dresden.are	sewer.are	dresden.are	148	recall
+1794678477	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794678479	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=mob:7000 level=12 alive=5 area=sewer.are there=0 streak=1
+1794678479	cmd	Alaric	57	2497	dresden.are	standing	100	8	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 1 in a row - all gone now!'	failure:abandoned	+
+1794678480	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 2435:2/0/0 2434:3/0/0 4445:1/0/0 4457:1/0/0 9543:1/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9533:2/0/0 9592:5/0/0 9540:1/0/0 9537:1/0/0 9568:2/0/0 9544:3/0/0 29350:3/0/0 29352:2/0/0 29354:2/0/0 29351:2/0/0 29355:2/0/0 58:1/0/0 1706:1/0/0 1704:2/0/0 1702:2/0/0 1710:2/0/0 1711:2/0/0 4451:1/0/0 4458:1/0/0 4450:1/0/0 4452:1/0/0 7005:2/0/0 7006:2/0/0 7002:1/0/0 7004:1/0/0 7001:2/0/0 7008:1/0/0 7013:2/1/0 7044:1/0/0 7041:1/0/0 7043:1/0/0 7007:1/0/0 7045:1/0/0 7011:1/0/0 7046:1/0/0 7042:2/0/0 7203:6/0/0
+1794678480	sightings	Alaric	57	2497	dresden.are	item	4444:1/0 29360:1/0 25042:1/1 7300:1/0
+1794678480	session	Alaric	57	2497	dresden.are	quit	1539s	+0 levels	+0 exp	+139083714 copper	1 kills	0 deaths	1 quests	398 commands	2 refused	coin: loot 36g 74s 88c, quests 138p 71g 62s 26c	spent on: none	exp: none

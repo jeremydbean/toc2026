@@ -301613,3 +301613,290 @@ Sat Nov 14 17:45:42 2026 :: Log Alaric [7035]: arrived (The sewer pipe bend) fro
 Sat Nov 14 17:45:42 2026 :: Log Alaric [7035]: scan
 Sat Nov 14 17:45:43 2026 :: Log Alaric [7035]: n
 Sat Nov 14 17:45:43 2026 :: Log Alaric [7034]: arrived (A bend in the sewer pipe) from 7035
+Sat Nov 14 17:45:43 2026 :: Log Alaric [7034]: scan
+Sat Nov 14 17:45:44 2026 :: Log Alaric [7034]: w
+Sat Nov 14 17:45:44 2026 :: Log Alaric [7028]: arrived (The sewer junction) from 7034
+Sat Nov 14 17:45:44 2026 :: Log Alaric [7028]: scan
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7028]: east
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7034]: arrived (A bend in the sewer pipe) from 7028
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7034]: south
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7035]: arrived (The sewer pipe bend) from 7034
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7035]: west
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7029]: arrived (The Triple Junction) from 7035
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7029]: south
+Sat Nov 14 17:45:52 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 7029
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7030]: west
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7022]: down
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7112]: west
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7104]: arrived (A junction in the sewer pipes) from 7112
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7104]: west
+Sat Nov 14 17:45:53 2026 :: Log Alaric [7102]: arrived (Under the Dark Pit) from 7104
+Sat Nov 14 17:45:54 2026 :: Log Alaric [7102]: up
+Sat Nov 14 17:45:54 2026 :: Log Alaric [7004]: arrived (The Dark Pit) from 7102
+Sat Nov 14 17:45:57 2026 :: Log Alaric [7004]: scan
+Sat Nov 14 17:45:58 2026 :: Log Alaric [7004]: d
+Sat Nov 14 17:45:58 2026 :: Log Alaric [7102]: arrived (Under the Dark Pit) from 7004
+Sat Nov 14 17:45:59 2026 :: Log Alaric [7102]: scan
+Sat Nov 14 17:46:01 2026 :: Log Alaric [7102]: d
+Sat Nov 14 17:46:01 2026 :: Log Alaric [7400]: arrived (Cave entrance) from 7102
+Sat Nov 14 17:46:01 2026 :: Log Alaric [7400]: scan
+Sat Nov 14 17:46:02 2026 :: Log Alaric [7400]: n
+Sat Nov 14 17:46:02 2026 :: Log Alaric [7401]: arrived (Cave tunnel) from 7400
+Sat Nov 14 17:46:03 2026 :: Log Alaric [7401]: scan
+Sat Nov 14 17:46:03 2026 :: Log Alaric [7401]: n
+Sat Nov 14 17:46:03 2026 :: Log Alaric [7402]: arrived (Cave room) from 7401
+Sat Nov 14 17:46:04 2026 :: Log Alaric [7402]: scan
+Sat Nov 14 17:46:06 2026 :: Log Alaric [7402]: e
+Sat Nov 14 17:46:06 2026 :: Log Alaric [7403]: arrived (Cave T-cross) from 7402
+Sat Nov 14 17:46:09 2026 :: Log Alaric [7403]: kill mud
+Sat Nov 14 17:46:09 2026 :: Log Alaric [7403]: killed the horrifying mudmonster
+Sat Nov 14 17:46:09 2026 :: Log Alaric [7403]: coin +74 silver
+Sat Nov 14 17:46:09 2026 :: Log Alaric [7403]: coin +88 copper
+Sat Nov 14 17:46:09 2026 :: Log Alaric [7403]: coin +36 gold
+Sat Nov 14 17:46:14 2026 :: Log Alaric [7403]: scan
+Sat Nov 14 17:46:15 2026 :: Log Alaric [7403]: s
+Sat Nov 14 17:46:15 2026 :: Log Alaric [7408]: arrived (The long tunnel) from 7403
+Sat Nov 14 17:46:16 2026 :: Log Alaric [7408]: n
+Sat Nov 14 17:46:16 2026 :: Log Alaric [7403]: arrived (Cave T-cross) from 7408
+Sat Nov 14 17:46:17 2026 :: Log Alaric [7403]: e
+Sat Nov 14 17:46:17 2026 :: Log Alaric [7404]: arrived (Cave turning-point) from 7403
+Sat Nov 14 17:46:18 2026 :: Log Alaric [7404]: os
+Sat Nov 14 17:46:18 2026 :: Log Alaric [7404]: s
+Sat Nov 14 17:46:18 2026 :: Log Alaric [7405]: arrived (The secret room) from 7404
+Sat Nov 14 17:46:19 2026 :: Log Alaric [7405]: os
+Sat Nov 14 17:46:19 2026 :: Log Alaric [7405]: s
+Sat Nov 14 17:46:19 2026 :: Log Alaric [7406]: arrived (The mudhole) from 7405
+Sat Nov 14 17:46:21 2026 :: Log Alaric [7406]: w
+Sat Nov 14 17:46:21 2026 :: Log Alaric [7407]: arrived (Tunnel) from 7406
+Sat Nov 14 17:46:23 2026 :: Log Alaric [7407]: s
+Sat Nov 14 17:46:23 2026 :: Log Alaric [7409]: arrived (The hot room) from 7407
+Sat Nov 14 17:46:24 2026 :: Log Alaric [7409]: w
+Sat Nov 14 17:46:24 2026 :: Log Alaric [7410]: arrived (The small room) from 7409
+Sat Nov 14 17:46:25 2026 :: Log Alaric [7410]: w
+Sat Nov 14 17:46:25 2026 :: Log Alaric [7411]: arrived (The stalagmite cave) from 7410
+Sat Nov 14 17:46:27 2026 :: Log Alaric [7411]: scan
+Sat Nov 14 17:46:28 2026 :: Log Alaric [7411]: n
+Sat Nov 14 17:46:28 2026 :: Log Alaric [7414]: arrived (The stalagmite T-cross) from 7411
+Sat Nov 14 17:46:28 2026 :: Log Alaric [7414]: n
+Sat Nov 14 17:46:28 2026 :: Log Alaric [7417]: arrived (The square lair) from 7414
+Sat Nov 14 17:46:29 2026 :: Log Alaric [7417]: s
+Sat Nov 14 17:46:29 2026 :: Log Alaric [7414]: arrived (The stalagmite T-cross) from 7417
+Sat Nov 14 17:46:29 2026 :: Log Alaric [7414]: s
+Sat Nov 14 17:46:29 2026 :: Log Alaric [7411]: arrived (The stalagmite cave) from 7414
+Sat Nov 14 17:46:29 2026 :: Log Alaric [7411]: s
+Sat Nov 14 17:46:29 2026 :: Log Alaric [7412]: arrived (The stalagmite tunnel) from 7411
+Sat Nov 14 17:46:31 2026 :: Log Alaric [7412]: w
+Sat Nov 14 17:46:31 2026 :: Log Alaric [7413]: arrived (The spongy room) from 7412
+Sat Nov 14 17:46:31 2026 :: Log Alaric [7413]: w
+Sat Nov 14 17:46:31 2026 :: Log Alaric [7445]: arrived (The pool) from 7413
+Sat Nov 14 17:46:33 2026 :: Log Alaric [7445]: scan
+Sat Nov 14 17:46:35 2026 :: Log Alaric [7445]: w
+Sat Nov 14 17:46:35 2026 :: Log Alaric [7444]: arrived (The south end of the pool) from 7445
+Sat Nov 14 17:46:36 2026 :: Log Alaric [7444]: n
+Sat Nov 14 17:46:36 2026 :: Log Alaric [7442]: arrived (The northern end of the pool) from 7444
+Sat Nov 14 17:46:37 2026 :: Log Alaric [7442]: e
+Sat Nov 14 17:46:37 2026 :: Log Alaric [7443]: arrived (The pool) from 7442
+Sat Nov 14 17:46:37 2026 :: Log Alaric [7443]: n
+Sat Nov 14 17:46:38 2026 :: Log Alaric [7443]: w
+Sat Nov 14 17:46:38 2026 :: Log Alaric [7442]: arrived (The northern end of the pool) from 7443
+Sat Nov 14 17:46:39 2026 :: Log Alaric [7442]: n
+Sat Nov 14 17:46:39 2026 :: Log Alaric [7441]: arrived (The small cave) from 7442
+Sat Nov 14 17:46:40 2026 :: Log Alaric [7441]: n
+Sat Nov 14 17:46:40 2026 :: Log Alaric [7440]: arrived (South-western part of basilisks cave) from 7441
+Sat Nov 14 17:46:41 2026 :: Log Alaric [7440]: e
+Sat Nov 14 17:46:41 2026 :: Log Alaric [7438]: arrived (South-eastern part of basilisks cave) from 7440
+Sat Nov 14 17:46:41 2026 :: Log Alaric [7438]: e
+Sat Nov 14 17:46:42 2026 :: Log Alaric [7438]: n
+Sat Nov 14 17:46:42 2026 :: Log Alaric [7437]: arrived (North-eastern part of Basilisks cave) from 7438
+Sat Nov 14 17:46:43 2026 :: Log Alaric [7437]: w
+Sat Nov 14 17:46:43 2026 :: Log Alaric [7439]: arrived (North-western part of basilisks cave) from 7437
+Sat Nov 14 17:46:46 2026 :: Log Alaric [7439]: l i back
+Sat Nov 14 17:46:49 2026 :: Log Alaric [7439]: s
+Sat Nov 14 17:46:49 2026 :: Log Alaric [7440]: arrived (South-western part of basilisks cave) from 7439
+Sat Nov 14 17:46:49 2026 :: Log Alaric [7440]: e
+Sat Nov 14 17:46:49 2026 :: Log Alaric [7438]: arrived (South-eastern part of basilisks cave) from 7440
+Sat Nov 14 17:46:50 2026 :: Log Alaric [7438]: n
+Sat Nov 14 17:46:50 2026 :: Log Alaric [7437]: arrived (North-eastern part of Basilisks cave) from 7438
+Sat Nov 14 17:46:50 2026 :: Log Alaric [7437]: n
+Sat Nov 14 17:46:50 2026 :: Log Alaric [7436]: arrived (Entrance to lair) from 7437
+Sat Nov 14 17:46:51 2026 :: Log Alaric [7436]: e
+Sat Nov 14 17:46:51 2026 :: Log Alaric [7422]: arrived (North tunnel) from 7436
+Sat Nov 14 17:46:52 2026 :: Log Alaric [7422]: e
+Sat Nov 14 17:46:53 2026 :: Log Alaric [7422]: scan
+Sat Nov 14 17:46:54 2026 :: Log Alaric [7422]: s
+Sat Nov 14 17:46:54 2026 :: Log Alaric [7419]: arrived (The square lair) from 7422
+Sat Nov 14 17:46:56 2026 :: Log Alaric [7419]: s
+Sat Nov 14 17:46:56 2026 :: Log Alaric [7420]: arrived (The lair end) from 7419
+Sat Nov 14 17:46:57 2026 :: Log Alaric [7420]: e
+Sat Nov 14 17:46:57 2026 :: Log Alaric [7417]: arrived (The square lair) from 7420
+Sat Nov 14 17:46:57 2026 :: Log Alaric [7417]: n
+Sat Nov 14 17:46:57 2026 :: Log Alaric [7418]: arrived (The square lair) from 7417
+Sat Nov 14 17:46:59 2026 :: Log Alaric [7418]: oe
+Sat Nov 14 17:46:59 2026 :: Log Alaric [7418]: e
+Sat Nov 14 17:46:59 2026 :: Log Alaric [7421]: arrived (East tunnel) from 7418
+Sat Nov 14 17:47:01 2026 :: Log Alaric [7421]: w
+Sat Nov 14 17:47:01 2026 :: Log Alaric [7418]: arrived (The square lair) from 7421
+Sat Nov 14 17:47:01 2026 :: Log Alaric [7418]: n
+Sat Nov 14 17:47:02 2026 :: Log Alaric [7418]: w
+Sat Nov 14 17:47:02 2026 :: Log Alaric [7419]: arrived (The square lair) from 7418
+Sat Nov 14 17:47:02 2026 :: Log Alaric [7419]: n
+Sat Nov 14 17:47:02 2026 :: Log Alaric [7422]: arrived (North tunnel) from 7419
+Sat Nov 14 17:47:02 2026 :: Log Alaric [7422]: n
+Sat Nov 14 17:47:02 2026 :: Log Alaric [7423]: arrived (The L-shaped room.) from 7422
+Sat Nov 14 17:47:03 2026 :: Log Alaric [7423]: e
+Sat Nov 14 17:47:03 2026 :: Log Alaric [7424]: arrived (The Circular hall.) from 7423
+Sat Nov 14 17:47:05 2026 :: Log Alaric [7424]: oe
+Sat Nov 14 17:47:05 2026 :: Log Alaric [7424]: e
+Sat Nov 14 17:47:05 2026 :: Log Alaric [7425]: arrived (Dusty tunnel) from 7424
+Sat Nov 14 17:47:06 2026 :: Log Alaric [7425]: e
+Sat Nov 14 17:47:06 2026 :: Log Alaric [7426]: arrived (The crossing) from 7425
+Sat Nov 14 17:47:07 2026 :: Log Alaric [7426]: s
+Sat Nov 14 17:47:07 2026 :: Log Alaric [7427]: arrived (The L-shaped room) from 7426
+Sat Nov 14 17:47:08 2026 :: Log Alaric [7427]: (refused) ns
+Sat Nov 14 17:47:09 2026 :: Log Alaric [7427]: (refused) can
+Sat Nov 14 17:47:10 2026 :: Log Alaric [7427]: n
+Sat Nov 14 17:47:10 2026 :: Log Alaric [7426]: arrived (The crossing) from 7427
+Sat Nov 14 17:47:10 2026 :: Log Alaric [7426]: scan
+Sat Nov 14 17:47:11 2026 :: Log Alaric [7426]: n
+Sat Nov 14 17:47:11 2026 :: Log Alaric [7431]: arrived (The glittering room) from 7426
+Sat Nov 14 17:47:11 2026 :: Log Alaric [7431]: s
+Sat Nov 14 17:47:11 2026 :: Log Alaric [7426]: arrived (The crossing) from 7431
+Sat Nov 14 17:47:12 2026 :: Log Alaric [7426]: w
+Sat Nov 14 17:47:12 2026 :: Log Alaric [7425]: arrived (Dusty tunnel) from 7426
+Sat Nov 14 17:47:12 2026 :: Log Alaric [7425]: s
+Sat Nov 14 17:47:13 2026 :: Log Alaric [7425]: w
+Sat Nov 14 17:47:13 2026 :: Log Alaric [7424]: arrived (The Circular hall.) from 7425
+Sat Nov 14 17:47:13 2026 :: Log Alaric [7424]: s
+Sat Nov 14 17:47:14 2026 :: Log Alaric [7424]: w
+Sat Nov 14 17:47:14 2026 :: Log Alaric [7423]: arrived (The L-shaped room.) from 7424
+Sat Nov 14 17:47:14 2026 :: Log Alaric [7423]: s
+Sat Nov 14 17:47:14 2026 :: Log Alaric [7422]: arrived (North tunnel) from 7423
+Sat Nov 14 17:47:14 2026 :: Log Alaric [7422]: w
+Sat Nov 14 17:47:14 2026 :: Log Alaric [7436]: arrived (Entrance to lair) from 7422
+Sat Nov 14 17:47:15 2026 :: Log Alaric [7436]: n
+Sat Nov 14 17:47:15 2026 :: Log Alaric [7435]: arrived (Dark tunnel) from 7436
+Sat Nov 14 17:47:16 2026 :: Log Alaric [7435]: n
+Sat Nov 14 17:47:16 2026 :: Log Alaric [7434]: arrived (Stair-room) from 7435
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7434]: s
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7435]: arrived (Dark tunnel) from 7434
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7435]: s
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7436]: arrived (Entrance to lair) from 7435
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7436]: s
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7437]: arrived (North-eastern part of Basilisks cave) from 7436
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7437]: s
+Sat Nov 14 17:47:17 2026 :: Log Alaric [7438]: arrived (South-eastern part of basilisks cave) from 7437
+Sat Nov 14 17:47:18 2026 :: Log Alaric [7438]: w
+Sat Nov 14 17:47:18 2026 :: Log Alaric [7440]: arrived (South-western part of basilisks cave) from 7438
+Sat Nov 14 17:47:19 2026 :: Log Alaric [7440]: s
+Sat Nov 14 17:47:19 2026 :: Log Alaric [7441]: arrived (The small cave) from 7440
+Sat Nov 14 17:47:19 2026 :: Log Alaric [7441]: s
+Sat Nov 14 17:47:19 2026 :: Log Alaric [7442]: arrived (The northern end of the pool) from 7441
+Sat Nov 14 17:47:20 2026 :: Log Alaric [7442]: e
+Sat Nov 14 17:47:20 2026 :: Log Alaric [7443]: arrived (The pool) from 7442
+Sat Nov 14 17:47:20 2026 :: Log Alaric [7443]: s
+Sat Nov 14 17:47:20 2026 :: Log Alaric [7445]: arrived (The pool) from 7443
+Sat Nov 14 17:47:21 2026 :: Log Alaric [7445]: e
+Sat Nov 14 17:47:21 2026 :: Log Alaric [7413]: arrived (The spongy room) from 7445
+Sat Nov 14 17:47:22 2026 :: Log Alaric [7413]: e
+Sat Nov 14 17:47:22 2026 :: Log Alaric [7412]: arrived (The stalagmite tunnel) from 7413
+Sat Nov 14 17:47:22 2026 :: Log Alaric [7412]: n
+Sat Nov 14 17:47:22 2026 :: Log Alaric [7411]: arrived (The stalagmite cave) from 7412
+Sat Nov 14 17:47:24 2026 :: Log Alaric [7411]: e
+Sat Nov 14 17:47:24 2026 :: Log Alaric [7410]: arrived (The small room) from 7411
+Sat Nov 14 17:47:25 2026 :: Log Alaric [7410]: e
+Sat Nov 14 17:47:25 2026 :: Log Alaric [7409]: arrived (The hot room) from 7410
+Sat Nov 14 17:47:26 2026 :: Log Alaric [7409]: scan
+Sat Nov 14 17:47:26 2026 :: Log Alaric [7409]: n
+Sat Nov 14 17:47:26 2026 :: Log Alaric [7407]: arrived (Tunnel) from 7409
+Sat Nov 14 17:47:27 2026 :: Log Alaric [7407]: scan
+Sat Nov 14 17:47:28 2026 :: Log Alaric [7407]: e
+Sat Nov 14 17:47:28 2026 :: Log Alaric [7406]: arrived (The mudhole) from 7407
+Sat Nov 14 17:47:28 2026 :: Log Alaric [7406]: scan
+Sat Nov 14 17:47:29 2026 :: Log Alaric [7406]: n
+Sat Nov 14 17:47:29 2026 :: Log Alaric [7405]: arrived (The secret room) from 7406
+Sat Nov 14 17:47:30 2026 :: Log Alaric [7405]: scan
+Sat Nov 14 17:47:31 2026 :: Log Alaric [7405]: n
+Sat Nov 14 17:47:31 2026 :: Log Alaric [7404]: arrived (Cave turning-point) from 7405
+Sat Nov 14 17:47:31 2026 :: Log Alaric [7404]: scan
+Sat Nov 14 17:47:32 2026 :: Log Alaric [7404]: w
+Sat Nov 14 17:47:32 2026 :: Log Alaric [7403]: arrived (Cave T-cross) from 7404
+Sat Nov 14 17:47:33 2026 :: Log Alaric [7403]: scan
+Sat Nov 14 17:47:33 2026 :: Log Alaric [7403]: w
+Sat Nov 14 17:47:33 2026 :: Log Alaric [7402]: arrived (Cave room) from 7403
+Sat Nov 14 17:47:34 2026 :: Log Alaric [7402]: w
+Sat Nov 14 17:47:34 2026 :: Log Alaric [7421]: arrived (East tunnel) from 7402
+Sat Nov 14 17:47:35 2026 :: Log Alaric [7421]: e
+Sat Nov 14 17:47:35 2026 :: Log Alaric [7402]: arrived (Cave room) from 7421
+Sat Nov 14 17:47:35 2026 :: Log Alaric [7402]: e
+Sat Nov 14 17:47:35 2026 :: Log Alaric [7403]: arrived (Cave T-cross) from 7402
+Sat Nov 14 17:47:35 2026 :: Log Alaric [7403]: e
+Sat Nov 14 17:47:35 2026 :: Log Alaric [7404]: arrived (Cave turning-point) from 7403
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7404]: west
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7403]: arrived (Cave T-cross) from 7404
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7403]: west
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7402]: arrived (Cave room) from 7403
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7402]: south
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7401]: arrived (Cave tunnel) from 7402
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7401]: south
+Sat Nov 14 17:47:39 2026 :: Log Alaric [7400]: arrived (Cave entrance) from 7401
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7400]: up
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7102]: arrived (Under the Dark Pit) from 7400
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7102]: east
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7104]: arrived (A junction in the sewer pipes) from 7102
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7104]: east
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7104
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7112]: north
+Sat Nov 14 17:47:40 2026 :: Log Alaric [7111]: arrived (The southwestern corner of the ledge) from 7112
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7111]: east
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7115]: arrived (The Broad ledge) from 7111
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7115]: south
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7129]: arrived (The sewer line.) from 7115
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7129]: down
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7221]: arrived (The sewer drain.) from 7129
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7221]: west
+Sat Nov 14 17:47:41 2026 :: Log Alaric [7220]: arrived (A boring drain.) from 7221
+Sat Nov 14 17:47:42 2026 :: Log Alaric [7220]: north
+Sat Nov 14 17:47:42 2026 :: Log Alaric [7219]: arrived (A dry sewer drain.) from 7220
+Sat Nov 14 17:47:42 2026 :: Log Alaric [7219]: east
+Sat Nov 14 17:47:42 2026 :: Log Alaric [7217]: arrived (The half-dry drain.) from 7219
+Sat Nov 14 17:47:42 2026 :: Log Alaric [7217]: north
+Sat Nov 14 17:47:42 2026 :: Log Alaric [7216]: arrived (Under water in the sewer.) from 7217
+Sat Nov 14 17:47:44 2026 :: Log Alaric [7216]: scan
+Sat Nov 14 17:47:45 2026 :: Log Alaric [7216]: n
+Sat Nov 14 17:47:45 2026 :: Log Alaric [7215]: arrived (The half-wet drain.) from 7216
+Sat Nov 14 17:47:46 2026 :: Log Alaric [7215]: scan
+Sat Nov 14 17:47:47 2026 :: Log Alaric [7215]: e
+Sat Nov 14 17:47:48 2026 :: Log Alaric [7215]: n
+Sat Nov 14 17:47:48 2026 :: Log Alaric [7210]: arrived (The four-way junction.) from 7215
+Sat Nov 14 17:47:49 2026 :: Log Alaric [7210]: scan
+Sat Nov 14 17:47:50 2026 :: Log Alaric [7210]: e
+Sat Nov 14 17:47:50 2026 :: Log Alaric [7212]: arrived (The sewer drain.) from 7210
+Sat Nov 14 17:47:50 2026 :: Log Alaric [7212]: scan
+Sat Nov 14 17:47:51 2026 :: Log Alaric [7212]: n
+Sat Nov 14 17:47:51 2026 :: Log Alaric [7213]: arrived (The sewer drain.) from 7212
+Sat Nov 14 17:47:52 2026 :: Log Alaric [7213]: w
+Sat Nov 14 17:47:52 2026 :: Log Alaric [7213]: s
+Sat Nov 14 17:47:52 2026 :: Log Alaric [7212]: arrived (The sewer drain.) from 7213
+Sat Nov 14 17:47:53 2026 :: Log Alaric [7212]: w
+Sat Nov 14 17:47:53 2026 :: Log Alaric [7210]: arrived (The four-way junction.) from 7212
+Sat Nov 14 17:47:53 2026 :: Log Alaric [7210]: n
+Sat Nov 14 17:47:53 2026 :: Log Alaric [7211]: arrived (The small cave.) from 7210
+Sat Nov 14 17:47:54 2026 :: Log Alaric [7211]: s
+Sat Nov 14 17:47:54 2026 :: Log Alaric [7210]: arrived (The four-way junction.) from 7211
+Sat Nov 14 17:47:54 2026 :: Log Alaric [7210]: e
+Sat Nov 14 17:47:54 2026 :: Log Alaric [7212]: arrived (The sewer drain.) from 7210
+Sat Nov 14 17:47:55 2026 :: Log Alaric [7212]: n
+Sat Nov 14 17:47:55 2026 :: Log Alaric [7213]: arrived (The sewer drain.) from 7212
+Sat Nov 14 17:47:55 2026 :: Log Alaric [7213]: e
+Sat Nov 14 17:47:55 2026 :: Log Alaric [7214]: arrived (The drain end.) from 7213
+Sat Nov 14 17:47:57 2026 :: Log Alaric [7214]: recal
+Sat Nov 14 17:47:57 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 7214
+Sat Nov 14 17:47:59 2026 :: Log Alaric [2497]: aq ab
+Sat Nov 14 17:48:00 2026 :: Log Alaric [2497]: quit
+Sat Nov 14 17:48:00 2026 :: Alaric has quit.
+Sat Nov 14 17:48:00 2026 :: [QUIT] Player rejoined the real world.
+Sat Nov 14 17:48:53 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 17:49:10 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 17:49:47 2026 :: Treasure goblin: vanished from room 2124 (Old Abandoned Warehouse, hood.are) (too long in one area).
