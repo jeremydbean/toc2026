@@ -298065,3 +298065,6 @@ Sat Nov 14 09:51:52 2026 :: Connection guard: 5.161.73.160 closed without a word
 Sat Nov 14 09:53:03 2026 :: Sock.sinaddr:  184.105.247.195
 Sat Nov 14 09:53:03 2026 :: EOF encountered on read.
 Sat Nov 14 09:53:03 2026 :: Connection guard: 184.105.247.195 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 14 09:56:57 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 14 09:57:18 2026 :: Treasure goblin: vanished from room 5914 (A grassy clearing, mid_ruin.are) (too long in one area).
+Sat Nov 14 09:58:11 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
