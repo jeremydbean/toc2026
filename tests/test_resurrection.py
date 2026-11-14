@@ -170,7 +170,8 @@ class LiveTests(unittest.TestCase):
                  HMV="400 400 400 400 400 400", HMVP="400 400 400")
             add_lines(mud, "Zbrewbig",
                       objects=[obj(57), obj(72), obj(57), obj(72),
-                               obj(78), obj(80), obj(83), obj(78), obj(80), obj(83)],
+                               obj(78), obj(80), obj(83), obj(78), obj(80), obj(83),
+                               obj(78), obj(80), obj(83)],
                       player_lines=["Sk 100 'concoct'", "Sk 100 'scribe'",
                                     "Sk 100 'scrolls'"])
             with mud.connect(timeout=120) as client:
@@ -189,13 +190,19 @@ class LiveTests(unittest.TestCase):
                 self.assertIn("titanic power", drunk, drunk)
                 self.assertIn("titanic", run(client, "affects", 1.5))
 
-                scroll = ""
-                for _ in range(2):
+                # Each try may miss: SCRIBE has its roll, and RECITE fails
+                # one time in a hundred even at 100% (number_percent() of
+                # 100 against 20 + 100*4/5; CI, 2026-11-14), using the
+                # scroll up. Three sets of ingredients, three tries.
+                scroll = read = ""
+                for _ in range(3):
                     scroll = run(client, "scribe demon fairy venom", 4.5)
-                    if "gilded" in scroll:
+                    if "gilded" not in scroll:
+                        continue
+                    read = run(client, "recite gilded", 5.5)
+                    if "divine power" in read:
                         break
                 self.assertIn("gilded scroll", scroll, scroll)
-                read = run(client, "recite gilded", 5.5)
                 self.assertIn("divine power", read, read)
                 # RECITE's six seconds of lag run before AFFECTS answers.
                 affects = run(client, "affects", 8.5)
