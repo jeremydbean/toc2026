@@ -301098,3 +301098,5 @@ Sat Nov 14 15:08:32 2026 :: Daily backup started.
 Sat Nov 14 15:08:33 2026 :: Automated backup complete.
 Sat Nov 14 15:08:34 2026 :: Daily backup complete.
 Sat Nov 14 15:09:58 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 15:11:44 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 14 15:15:01 2026 :: Connection guard: 185.93.89.79 closed without a word (strike 1 of 6 in 6 hours).
