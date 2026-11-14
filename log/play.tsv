@@ -26564,3 +26564,9 @@
 1794630657	laid	-	0	0	-	1223	component	56	a dragons claw	12026	froboz.are	scatter
 1794630714	laid	-	0	0	-	1224	component	82	a vial of purple worm stinger poison	2004	catacomb.are	scatter
 1794630859	laid	-	0	0	-	1225	component	84	a vial of froghemoth saliva	17799	landoz.are	scatter
+1794630893	cleared	-	0	0	-	1180	herb	42	a marjoram plant	1949	0	scatter	mob 4613	(mobile_update)	0	-
+1794630924	laid	-	0	0	-	1226	herb	52	an asparagus shoot	2802	trollden.are	scatter
+1794630924	laid	-	0	0	-	1227	herb	53	a huckleberry	2802	trollden.are	scatter
+1794630985	laid	-	0	0	-	1228	herb	37	a sprig of catnip	1508	gnome.are	scatter
+1794630985	laid	-	0	0	-	1229	component	87	a vial of grey ooze	5823	mid_ruin.are	scatter
+1794631018	census	-	0	0	-	herbs=127/150 components=61/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=19 spotted=0 picked=0 passed=0 cleared=1 rare=0 mobs_seen=0 mobs_fought=0 secs=900
