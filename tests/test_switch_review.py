@@ -85,6 +85,12 @@ class SwitchOrderTests(unittest.TestCase):
                 tried = ""
                 for _ in range(40):
                     imm.must("restore zswmage", "")
+                    # A missed charm starts a fight, and a master's blow on
+                    # their own charmed follower breaks the charm (damage()),
+                    # so a charm that landed mid-fight could be gone before
+                    # STAT looked -- on a slow runner, every time (CI,
+                    # 2026-11-14). Stop the fight before each try.
+                    imm.sync("peace")
                     mage.sync("stand")
                     tried = mage.sync("cast 'charm person' guard")
                     if "Master: Zswmage" in imm.sync("stat mob guard"):
