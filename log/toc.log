@@ -298138,3 +298138,5 @@ Sat Nov 14 11:17:55 2026 :: Treasure goblin: vanished from room 9675 (Entrance t
 Sat Nov 14 11:18:10 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 3 of 6 in 6 hours).
 Sat Nov 14 11:18:19 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 11:20:08 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 11:23:15 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 6 of 6 in 6 hours).
+Sat Nov 14 11:23:15 2026 :: Connection guard: 178.156.184.20 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.184.20 lifts it.
