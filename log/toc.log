@@ -296304,3 +296304,17 @@ Fri Nov 13 23:52:45 2026 :: Connection guard: 5.161.61.238 closed without a word
 Fri Nov 13 23:57:17 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Fri Nov 13 23:57:50 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 13 23:58:03 2026 :: Treasure goblin: vanished from room 9208 (The Floor of the Canyon, canyon.are) (too long in one area).
+Sat Nov 14 00:02:43 2026 :: Sock.sinaddr:  108.81.26.245
+Sat Nov 14 00:02:43 2026 :: Loading Killuminati's playerfile
+Sat Nov 14 00:02:45 2026 :: Loading Killuminati's playerfile
+Sat Nov 14 00:02:45 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Sat Nov 14 00:02:46 2026 :: Log Killuminati [600]: arrived (Granny's Still Room) from 0
+Sat Nov 14 00:02:48 2026 :: Log Killuminati [600]: /
+Sat Nov 14 00:02:53 2026 :: Log Killuminati [600]: ]
+Sat Nov 14 00:02:53 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 600
+Sat Nov 14 00:02:56 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 00:02:59 2026 :: Log Killuminati [2401]: c word
+Sat Nov 14 00:02:59 2026 :: Log Killuminati [4207]: arrived (Before the Altar.) from 2401
+Sat Nov 14 00:03:03 2026 :: Log Killuminati [4207]: quit
+Sat Nov 14 00:03:03 2026 :: Killuminati has quit.
+Sat Nov 14 00:03:03 2026 :: [QUIT] Player rejoined the real world.
