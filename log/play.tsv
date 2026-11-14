@@ -28762,3 +28762,64 @@
 1794677375	laid	-	0	0	-	903	component	57	a trolls fingernail	29264	korzath2.are	scatter
 1794677430	laid	-	0	0	-	904	herb	53	a huckleberry	24352	chess.are	scatter
 1794677430	laid	-	0	0	-	905	herb	53	a huckleberry	24300	chess.are	scatter
+1794677497	laid	-	0	0	-	906	component	54	eye of newt	13441	hell.are	scatter
+1794677545	laid	-	0	0	-	907	herb	37	a sprig of catnip	10117	glitter.are	scatter
+1794677545	laid	-	0	0	-	908	herb	35	a sprig of angelica	10166	glitter.are	scatter
+1794677545	laid	-	0	0	-	909	component	78	a vial of demons blood	9680	newthalo.are	scatter
+1794677587	laid	-	0	0	-	910	herb	42	a marjoram plant	7586	astral.are	scatter
+1794677587	laid	-	0	0	-	911	herb	35	a sprig of angelica	7550	astral.are	scatter
+1794677702	quest	Alaric	57	2497	dresden.are	ordinary	recover	25042	The Heart of Tifarah	59	wyvern.are	11
+1794677702	cmd	Alaric	57	2497	dresden.are	standing	100	14	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A prized artifact - The Heart of Tifarah - has gone missing!'	-	+
+1794677708	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794677708	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794677709	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794677709	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794677709	cmd	Alaric	57	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794677709	cmd	Alaric	57	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794677710	cmd	Alaric	57	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794677710	cmd	Alaric	57	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794677710	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794677710	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794677711	cmd	Alaric	57	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794677711	area	Alaric	57	3503	midennir.are	dresden.are	midennir.are	511	east
+1794677711	cmd	Alaric	57	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794677711	cmd	Alaric	57	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794677711	area	Alaric	57	5261	oldthalo.are	midennir.are	oldthalo.are	0	south
+1794677711	cmd	Alaric	57	5261	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1794677712	cmd	Alaric	57	5260	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794677712	cmd	Alaric	57	5259	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794677712	cmd	Alaric	57	5258	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1794677712	cmd	Alaric	57	5262	oldthalo.are	standing	100	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks	-	+
+1794677713	cmd	Alaric	57	5263	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south	-	+
+1794677713	cmd	Alaric	57	5264	oldthalo.are	standing	100	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east	-	+
+1794677713	cmd	Alaric	57	5265	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1794677713	cmd	Alaric	57	5266	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1794677714	cmd	Alaric	57	5267	oldthalo.are	standing	100	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and	-	+
+1794677714	area	Alaric	57	62	connect.are	oldthalo.are	connect.are	3	south
+1794677714	cmd	Alaric	57	62	connect.are	standing	100	0	-	south		Minor Path //   Before you, lies the main eastern road. Go to the west and you are back // in the dark valley.	-	+
+1794677714	area	Alaric	57	1701	wyvern.are	connect.are	wyvern.are	0	east
+1794677714	cmd	Alaric	57	1701	wyvern.are	standing	100	0	-	east		Main Eastern Road //   You are on the old Eastern Road.  The crossroads to the east joins ANOTHER // northern route to this road, which continues east.  South of the crossroads is	-	+
+1794677718	laid	-	0	0	-	915	herb	48	an alfalfa sprout	2236	draconia.are	scatter
+1794677718	laid	-	0	0	-	916	herb	39	a chervil leaf	2222	draconia.are	scatter
+1794677719	cmd	Alaric	57	1702	wyvern.are	standing	100	0	-	east		Crossroads to the Wilderness //   You are at a crossroads to the wilderness areas east and north of here, // and the more civilized areas to the west. The main road is west, an	-	+
+1794677720	cmd	Alaric	57	1703	wyvern.are	standing	100	0	-	south		Trading Post //   You are in a trading post just south of the crossroads, where rangers, // trappers and hunters from the surrounding area come to buy, sell, and	-	+
+1794677721	cmd	Alaric	57	1702	wyvern.are	standing	100	0	-	north		Crossroads to the Wilderness //   You are at a crossroads to the wilderness areas east and north of here, // and the more civilized areas to the west. The main road is west, an	-	+
+1794677722	cmd	Alaric	57	1601	wyvern.are	standing	100	0	-	east		Rough East-West Path //   You are on a very rough and overgrown path heading east-west over rugged // terrain.  To the east the path passes between low hills.	-	+
+1794677723	cmd	Alaric	57	1702	wyvern.are	standing	100	0	-	west		Crossroads to the Wilderness //   You are at a crossroads to the wilderness areas east and north of here, // and the more civilized areas to the west. The main road is west, an	-	+
+1794677724	cmd	Alaric	57	1704	wyvern.are	standing	100	0	-	north		Trail north of crossroads //   You are on a primitive north-south trail. South of here is a major cross- // roads and an old building. To the north the trail continues toward a	-	+
+1794677724	cmd	Alaric	57	1705	wyvern.are	standing	100	0	-	north		Trail south of forest //   You are on a primitive north-south trail.  Just north of here looms the // entrance to a deep, dark forest. To the south the trail continues.	-	+
+1794677725	cmd	Alaric	57	1706	wyvern.are	standing	100	0	-	north		Entrance to the forest //   You are at the entrance to the dark forest comprised mostly of huge black oak // and towering firs.  A trail from the south continues north on into the	-	+
+1794677726	cmd	Alaric	57	1707	wyvern.are	standing	100	0	-	north		Trail in Dark Oak Forest //   The trail here passes through groves of closely knit Black Oak. Some of // these trees are of enormous size.  Rustling and other low noises come	-	+
+1794677727	cmd	Alaric	57	1708	wyvern.are	standing	100	0	-	north		Junction in Dark Forest //   You are in the midst of a deep dark forest of huge oak trees.  There is a // junction of trails here, with paths leading south, west and east.	-	+
+1794677728	cmd	Alaric	57	1708	wyvern.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794677729	cmd	Alaric	57	1709	wyvern.are	standing	100	0	-	west		Path to Centaur Village //   You are on an east-west path in the forest.  Here the forest is mostly // towering firs, not quite as dense as the oak groves that can be seen eastward.	-	+
+1794677731	got	Alaric	57	1709	wyvern.are	25042	The Heart of Tifarah	trash	59	0	get	the floor
+1794677731	cmd	Alaric	57	1709	wyvern.are	standing	100	0	-	get	all	You get The Heart of Tifarah.	-	-
+1794677732	area	Alaric	57	2497	dresden.are	wyvern.are	dresden.are	18	recall
+1794677732	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794677733	coin	Alaric	57	2497	dresden.are	+138716226	quests	aquest	-	27091273067
+1794677733	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2245->2245 offered=32 daily=4->4 coin=+138716226 kill=15412914 streak=0 level=57 target=0
+1794677733	cmd	Alaric	57	2497	dresden.are	standing	100	23	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1794677736	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 32 quest points.	-	-
+1794677736	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=354/983 align=922 exp=252749 coin=2267211225 bank=24824061842 qp=2277 prac=36 train=76 stash=93/350 remorts=3
+1794677736	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+

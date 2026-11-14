@@ -301485,3 +301485,87 @@ Sat Nov 14 17:27:48 2026 :: Log Alaric [2497]: affects off: levitate
 Sat Nov 14 17:28:50 2026 :: Connection guard: refused 1 connection from 5.161.61.238 (paused; 2 refused in all, pause 1 this week, 30 minutes left).
 Sat Nov 14 17:28:51 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 17:29:37 2026 :: Treasure goblin: vanished from room 15222 (Hallway, campus.are) (too long in one area).
+Sat Nov 14 17:33:55 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 14 17:35:02 2026 :: Log Alaric [2497]: aq re
+Sat Nov 14 17:35:02 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in wyvern.are, 11 minutes, ordinary
+Sat Nov 14 17:35:08 2026 :: Log Alaric [2497]: enter door
+Sat Nov 14 17:35:08 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 17:35:08 2026 :: Log Alaric [2401]: east
+Sat Nov 14 17:35:08 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2403]: east
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2420]: east
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2421]: east
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2422]: east
+Sat Nov 14 17:35:09 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Nov 14 17:35:10 2026 :: Log Alaric [2423]: east
+Sat Nov 14 17:35:10 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Nov 14 17:35:10 2026 :: Log Alaric [2424]: east
+Sat Nov 14 17:35:10 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Nov 14 17:35:10 2026 :: Log Alaric [2425]: east
+Sat Nov 14 17:35:10 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Nov 14 17:35:10 2026 :: Log Alaric [2426]: open east
+Sat Nov 14 17:35:11 2026 :: Log Alaric [2426]: east
+Sat Nov 14 17:35:11 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Nov 14 17:35:11 2026 :: Log Alaric [2440]: east
+Sat Nov 14 17:35:11 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Nov 14 17:35:11 2026 :: Log Alaric [3503]: east
+Sat Nov 14 17:35:11 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Nov 14 17:35:11 2026 :: Log Alaric [3502]: south
+Sat Nov 14 17:35:11 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5261]: south
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5260]: south
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5259]: south
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5258]: east
+Sat Nov 14 17:35:12 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5262]: east
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5263]: south
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5264]: east
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5265]: east
+Sat Nov 14 17:35:13 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Sat Nov 14 17:35:14 2026 :: Log Alaric [5266]: down
+Sat Nov 14 17:35:14 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Sat Nov 14 17:35:14 2026 :: Log Alaric [5267]: south
+Sat Nov 14 17:35:14 2026 :: Log Alaric [62]: arrived (Minor Path) from 5267
+Sat Nov 14 17:35:14 2026 :: Log Alaric [62]: east
+Sat Nov 14 17:35:14 2026 :: Log Alaric [1701]: arrived (Main Eastern Road) from 62
+Sat Nov 14 17:35:19 2026 :: Log Alaric [1701]: e
+Sat Nov 14 17:35:19 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1701
+Sat Nov 14 17:35:20 2026 :: Log Alaric [1702]: s
+Sat Nov 14 17:35:20 2026 :: Log Alaric [1703]: arrived (Trading Post) from 1702
+Sat Nov 14 17:35:21 2026 :: Log Alaric [1703]: n
+Sat Nov 14 17:35:21 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1703
+Sat Nov 14 17:35:22 2026 :: Log Alaric [1702]: e
+Sat Nov 14 17:35:22 2026 :: Log Alaric [1601]: arrived (Rough East-West Path) from 1702
+Sat Nov 14 17:35:23 2026 :: Log Alaric [1601]: w
+Sat Nov 14 17:35:23 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1601
+Sat Nov 14 17:35:24 2026 :: Log Alaric [1702]: n
+Sat Nov 14 17:35:24 2026 :: Log Alaric [1704]: arrived (Trail north of crossroads) from 1702
+Sat Nov 14 17:35:24 2026 :: Log Alaric [1704]: n
+Sat Nov 14 17:35:24 2026 :: Log Alaric [1705]: arrived (Trail south of forest) from 1704
+Sat Nov 14 17:35:25 2026 :: Log Alaric [1705]: n
+Sat Nov 14 17:35:25 2026 :: Log Alaric [1706]: arrived (Entrance to the forest) from 1705
+Sat Nov 14 17:35:26 2026 :: Log Alaric [1706]: n
+Sat Nov 14 17:35:26 2026 :: Log Alaric [1707]: arrived (Trail in Dark Oak Forest) from 1706
+Sat Nov 14 17:35:27 2026 :: Log Alaric [1707]: n
+Sat Nov 14 17:35:27 2026 :: Log Alaric [1708]: arrived (Junction in Dark Forest) from 1707
+Sat Nov 14 17:35:28 2026 :: Log Alaric [1708]: n
+Sat Nov 14 17:35:29 2026 :: Log Alaric [1708]: w
+Sat Nov 14 17:35:29 2026 :: Log Alaric [1709]: arrived (Path to Centaur Village) from 1708
+Sat Nov 14 17:35:31 2026 :: Log Alaric [1709]: get all
+Sat Nov 14 17:35:32 2026 :: Log Alaric [1709]: recal
+Sat Nov 14 17:35:32 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 1709
+Sat Nov 14 17:35:33 2026 :: Log Alaric [2497]: aq co
+Sat Nov 14 17:35:33 2026 :: Log Alaric [2497]: copper +138716226
+Sat Nov 14 17:35:33 2026 :: Log Alaric [2497]: quest complete: 138p 71g 62s 26c, 32 quest points (streak bonus 0%)
+Sat Nov 14 17:35:33 2026 :: Snapshot of Alaric taken before quest: Alaric.20261114_173533.quest (PRESTORE Alaric to see it).
+Sat Nov 14 17:35:36 2026 :: Log Alaric [2497]: aq ga no
+Sat Nov 14 17:35:36 2026 :: Log Alaric [2497]: sc
