@@ -232,6 +232,28 @@ def encounter_pairs(progress: str) -> List[dict]:
     return out
 
 
+def fmt(value: Optional[float], spec: str) -> str:
+    return "-" if value is None else format(value, spec)
+
+
+def band_columns(kills: List[dict], solo: List[dict]) -> Dict[str, Optional[float]]:
+    """A verdict row's figures, each prediction beside its actual over the
+    same fights: rounds and the foe's damage over the band's timed kills,
+    the player's damage over the solo ones (a group's damage is not one
+    player's)."""
+    def med(values):
+        values = list(values)
+        return median(values) if values else None
+    return {
+        "pred_rds": med(p["your_rounds"] for p in kills),
+        "act_rds": med(p["outcome"]["rounds"] for p in kills),
+        "pred_yours": med(p["yours"] for p in solo),
+        "act_yours": med(p["outcome"]["taken"] / p["outcome"]["rounds"] for p in solo),
+        "pred_theirs": med(p["theirs"] for p in kills),
+        "act_theirs": med(p["outcome"]["dealt"] / p["outcome"]["rounds"] for p in kills),
+    }
+
+
 def encounter_report(pairs: List[dict]) -> None:
     if not pairs:
         print("\nNo encounters carry the silent prediction yet (rows from 2026-11-10 on).")
@@ -252,17 +274,20 @@ def encounter_report(pairs: List[dict]) -> None:
         kills = [p for p in ps if p["outcome"]["kind"] == "kill"
                  and p["outcome"]["rounds"] > 0 and not p["outcome"]["instant"]]
         solo = [p for p in kills if p["outcome"]["solo"]]
-        act_rds = median(p["outcome"]["rounds"] for p in kills) if kills else None
-        your_act = median(p["outcome"]["taken"] / p["outcome"]["rounds"] for p in solo) if solo else None
-        foe_act = median(p["outcome"]["dealt"] / p["outcome"]["rounds"] for p in kills) if kills else None
+        # Each predicted figure is taken over the same fights as the actual
+        # beside it. The prediction was the median of every encounter in the
+        # band while the actual counted timed kills only, so a band of
+        # one-blow kills read 0.8 rounds predicted against 11 actual: the
+        # few long fights against all the short ones (2026-11-14).
+        cols = band_columns(kills, solo)
         print(f"  {band:<31} {len(ps):>4} "
               f"{sum(p['outcome']['kind'] == 'kill' for p in ps):>5} "
               f"{sum(p['outcome']['kind'] == 'flee' for p in ps):>4} "
               f"{sum(p['outcome']['kind'] == 'death' for p in ps):>5} "
-              f"{median(p['your_rounds'] for p in ps):>9.1f} "
-              f"{'-' if act_rds is None else f'{act_rds:.1f}':>11} "
-              f"{median(p['yours'] for p in ps):>12.0f}-{'-' if your_act is None else f'{your_act:.0f}':<8}"
-              f"{median(p['theirs'] for p in ps):>12.0f}-{'-' if foe_act is None else f'{foe_act:.0f}'}")
+              f"{fmt(cols['pred_rds'], '.1f'):>9} "
+              f"{fmt(cols['act_rds'], '.1f'):>11} "
+              f"{fmt(cols['pred_yours'], '.0f'):>12}-{fmt(cols['act_yours'], '.0f'):<8}"
+              f"{fmt(cols['pred_theirs'], '.0f'):>12}-{fmt(cols['act_theirs'], '.0f')}")
     kills = [p["outcome"] for p in pairs if p["outcome"]["kind"] == "kill"]
     swings = sum(o.get("swings", 0) for o in kills)
     if swings:
@@ -309,12 +334,13 @@ def report(pairs: List[dict]) -> None:
                         for p in timed if p["pred_yours"] and p["pred_yours"] < 101)
         ratios_all += ratios
         q = (lambda k: ratios[min(len(ratios) - 1, int(k * (len(ratios) - 1) + 0.5))]) if ratios else None
-        pred = median(p["pred_yours"] for p in ps)
+        # Both over the timed kills, as encounter_report's columns are.
+        pred = median(p["pred_yours"] for p in timed) if timed else None
         act = median(p["outcome"]["ms"] / 1000 / ROUND_SECONDS for p in timed) if timed else None
         print(f"  {band:<31} {len(ps):>3} {len(kills):>5} "
               f"{sum(p['outcome']['kind'] == 'flee' for p in ps):>4} "
-              f"{sum(p['outcome']['kind'] == 'death' for p in ps):>5} {pred:>9.1f} "
-              f"{'-' if act is None else f'{act:.1f}':>11}  "
+              f"{sum(p['outcome']['kind'] == 'death' for p in ps):>5} {fmt(pred, '.1f'):>9} "
+              f"{fmt(act, '.1f'):>11}  "
               + (f"{q(0.25):.2f}-{q(0.5):.2f}-{q(0.75):.2f}" if ratios else "-"))
     if ratios_all:
         ratios_all.sort()

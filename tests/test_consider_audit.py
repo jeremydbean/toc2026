@@ -53,6 +53,24 @@ class ConsiderAuditTests(unittest.TestCase):
         self.assertEqual(pairs[0]["outcome"]["rounds"], 10)
         self.assertEqual((pairs[0]["outcome"]["swings"], pairs[0]["outcome"]["landed"]), (20, 12))
 
+    def test_a_rows_prediction_and_actual_come_from_the_same_fights(self) -> None:
+        """A band of many one-blow kills and a few long fights read 0.8
+        rounds predicted against 11 actual: the prediction's median was over
+        every encounter, the actual's over timed kills only (2026-11-14)."""
+        def fight(rounds_pred, rounds_act, solo=True):
+            return {"your_rounds": rounds_pred, "yours": 100.0, "theirs": 5.0,
+                    "outcome": {"kind": "kill", "rounds": rounds_act, "instant": False,
+                                "solo": solo, "taken": 100 * max(rounds_act, 1),
+                                "dealt": 5 * max(rounds_act, 1)}}
+        quick = [fight(0.5, 0) for _ in range(20)]       # one blow: not timed
+        long_ = [fight(11.0, 10), fight(12.0, 13), fight(10.0, 11)]
+        kills = [p for p in quick + long_ if p["outcome"]["rounds"] > 0]
+        cols = consider_audit.band_columns(kills, [p for p in kills if p["outcome"]["solo"]])
+        self.assertEqual(cols["pred_rds"], 11.0)
+        self.assertEqual(cols["act_rds"], 11)
+        self.assertEqual((cols["pred_yours"], cols["act_yours"]), (100.0, 100.0))
+        self.assertIsNone(consider_audit.band_columns([], [])["pred_rds"])
+
 
 if __name__ == "__main__":
     unittest.main()
