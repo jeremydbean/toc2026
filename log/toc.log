@@ -296365,3 +296365,7 @@ Sat Nov 14 01:37:18 2026 :: Automated backup complete.
 Sat Nov 14 01:37:27 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 01:38:38 2026 :: Treasure goblin: vanished from room 5941 (A small dust trail, mid_ruin.are) (too long in one area).
 Sat Nov 14 01:39:21 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 14 01:44:25 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 6 of 6 in 6 hours).
+Sat Nov 14 01:44:25 2026 :: Connection guard: 5.161.177.47 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.177.47 lifts it.
+Sat Nov 14 01:47:28 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 01:48:42 2026 :: Treasure goblin: vanished from room 17144 (Path along lake, highland.are) (too long in one area).

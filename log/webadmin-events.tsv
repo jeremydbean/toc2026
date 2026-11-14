@@ -4972,3 +4972,4 @@
 1794619268	wizinfo	60	New dart trap on a chest [object 1315] in The master Enchanter's chamber [room 1382], [10 30] Anon    High Tower of Sorcery.
 1794620194	wizinfo	60	New drunk trap on a wooden chest [object 6005] in Inside the cabin [room 6010], [ 5 10] Diku    Haon Dor.
 1794620217	wizinfo	60	Connection guard: last hour 17 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+1794620665	wizinfo	60	Connection guard: 5.161.177.47 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.177.47 lifts it.
