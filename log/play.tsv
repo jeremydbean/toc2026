@@ -26139,3 +26139,8 @@
 1794625126	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
 1794625126	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
 1794625126	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794625161	laid	-	0	0	-	1026	component	85	a vial of crushed tarrasque scale	13026	lakes.are	scatter
+1794625307	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794625311	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794625407	laid	-	0	0	-	1027	herb	52	an asparagus shoot	10035	glitter.are	scatter
+1794625407	laid	-	0	0	-	1028	component	55	a unicorn horn	4157	moria.are	scatter
