@@ -26582,3 +26582,8 @@
 1794631661	laid	-	0	0	-	1239	component	77	a vial of medusa eye fluid	1609	wyvern.are	scatter
 1794631719	laid	-	0	0	-	1240	herb	42	a marjoram plant	13450	hell.are	scatter
 1794631719	laid	-	0	0	-	1241	component	81	a vial of squid ink	751	camelot.are	scatter
+1794631788	laid	-	0	0	-	1242	herb	49	a pomegranate	1372	htower.are	scatter
+1794631788	laid	-	0	0	-	1243	component	72	a minotaur's ear	767	camelot.are	scatter
+1794631911	laid	-	0	0	-	1244	herb	51	a piece of kelp	19159	rome.are	scatter
+1794631911	laid	-	0	0	-	1245	herb	35	a sprig of angelica	19134	rome.are	scatter
+1794631918	census	-	0	0	-	herbs=137/150 components=67/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=16 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
