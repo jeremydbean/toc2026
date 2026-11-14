@@ -303126,3 +303126,7 @@ Sat Nov 14 22:58:52 2026 :: Connection guard: 178.156.185.127 closed without a w
 Sat Nov 14 22:58:55 2026 :: Connection guard: last hour 14 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov 14 22:59:17 2026 :: Automated backup started.
 Sat Nov 14 22:59:18 2026 :: Automated backup complete.
+Sat Nov 14 23:03:56 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 23:05:33 2026 :: Sock.sinaddr:  198.235.24.131
+Sat Nov 14 23:05:33 2026 :: EOF encountered on read.
+Sat Nov 14 23:05:33 2026 :: Connection guard: 198.235.24.131 closed before a password prompt (strike 1 of 6 in 6 hours).
