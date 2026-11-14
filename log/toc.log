@@ -296346,3 +296346,6 @@ Sat Nov 14 00:57:23 2026 :: Connection guard: 99.62.115.159 closed without a wor
 Sat Nov 14 00:58:19 2026 :: Treasure goblin: vanished from room 5761 (Old Cobblestone Road., mid_ruin.are) (too long in one area).
 Sat Nov 14 00:58:46 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 5 refused in all, pause 1 this week, 66 minutes left).
 Sat Nov 14 01:03:52 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 01:07:24 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 01:08:24 2026 :: Treasure goblin: vanished from room 13006 (North shore of Crystalmir Lake, lakes.are) (too long in one area).
+Sat Nov 14 01:08:56 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 2 of 6 in 6 hours).
