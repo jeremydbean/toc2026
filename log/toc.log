@@ -298056,3 +298056,8 @@ Sat Nov 14 09:44:29 2026 :: Connection guard: 35.210.173.124 closed without a wo
 Sat Nov 14 09:44:29 2026 :: Connection guard: 35.210.173.124 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.173.124 lifts it.
 Sat Nov 14 09:44:30 2026 :: Connection guard: refused 1 connection from 35.210.173.124 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
 Sat Nov 14 09:44:30 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 09:45:30 2026 :: Connection guard: refused 24 connections from 35.210.173.124 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
+Sat Nov 14 09:46:48 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 6 of 6 in 6 hours).
+Sat Nov 14 09:46:48 2026 :: Connection guard: 5.161.194.92 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.194.92 lifts it.
+Sat Nov 14 09:47:13 2026 :: Treasure goblin: vanished from room 9581 (Underground, newthalo.are) (too long in one area).
+Sat Nov 14 09:48:10 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
