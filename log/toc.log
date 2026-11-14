@@ -301436,3 +301436,52 @@ Sat Nov 14 17:25:35 2026 :: Log Alaric [29378]: southeast
 Sat Nov 14 17:25:35 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29378
 Sat Nov 14 17:25:39 2026 :: Log Alaric [29355]: east
 Sat Nov 14 17:25:39 2026 :: Log Alaric [29356]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:25:43 2026 :: Log Alaric [29356]: west
+Sat Nov 14 17:25:43 2026 :: Log Alaric [29377]: arrived (Across the Sea) from 29356
+Sat Nov 14 17:25:46 2026 :: Log Alaric [29377]: east
+Sat Nov 14 17:25:46 2026 :: Log Alaric [29356]: arrived (Across the Sea) from 29377
+Sat Nov 14 17:25:46 2026 :: Log Alaric [29356]: east
+Sat Nov 14 17:25:46 2026 :: Log Alaric [29357]: arrived (Across the Sea) from 29356
+Sat Nov 14 17:25:50 2026 :: Log Alaric [29357]: southeast
+Sat Nov 14 17:25:50 2026 :: Log Alaric [29358]: arrived (Across the Sea) from 29357
+Sat Nov 14 17:25:50 2026 :: Log Alaric [29358]: northwest
+Sat Nov 14 17:25:50 2026 :: Log Alaric [29375]: arrived (Across the Sea) from 29358
+Sat Nov 14 17:25:53 2026 :: Log Alaric [29375]: southeast
+Sat Nov 14 17:25:53 2026 :: Log Alaric [29358]: arrived (Across the Sea) from 29375
+Sat Nov 14 17:25:56 2026 :: Log Alaric [29358]: northeast
+Sat Nov 14 17:25:56 2026 :: Log Alaric [29359]: arrived (Across the Sea) from 29358
+Sat Nov 14 17:25:56 2026 :: Log Alaric [29359]: southwest
+Sat Nov 14 17:25:56 2026 :: Log Alaric [29374]: arrived (Across the Sea) from 29359
+Sat Nov 14 17:25:59 2026 :: Log Alaric [29374]: northeast
+Sat Nov 14 17:25:59 2026 :: Log Alaric [29359]: arrived (Across the Sea) from 29374
+Sat Nov 14 17:26:03 2026 :: Log Alaric [29359]: north
+Sat Nov 14 17:26:03 2026 :: Log Alaric [29360]: arrived (Across the Sea) from 29359
+Sat Nov 14 17:26:06 2026 :: Log Alaric [29360]: northeast
+Sat Nov 14 17:26:06 2026 :: Log Alaric [29361]: arrived (Across the Sea) from 29360
+Sat Nov 14 17:26:12 2026 :: Log Alaric [29361]: open down
+Sat Nov 14 17:26:13 2026 :: Log Alaric [29361]: ex
+Sat Nov 14 17:26:14 2026 :: Log Alaric [29361]: d
+Sat Nov 14 17:26:14 2026 :: Log Alaric [29382]: arrived (In the Hull) from 29361
+Sat Nov 14 17:26:17 2026 :: Log Alaric [29382]: u
+Sat Nov 14 17:26:17 2026 :: Log Alaric [29361]: arrived (Across the Sea) from 29382
+Sat Nov 14 17:26:19 2026 :: Log Alaric [29361]: recal
+Sat Nov 14 17:26:20 2026 :: Log Alaric [29361]: aq ab
+Sat Nov 14 17:26:28 2026 :: Log Alaric [29361]: l
+Sat Nov 14 17:26:30 2026 :: Log Alaric [29361]: e
+Sat Nov 14 17:26:30 2026 :: Log Alaric [29362]: arrived (Across the Sea) from 29361
+Sat Nov 14 17:26:31 2026 :: Log Alaric [29362]: s
+Sat Nov 14 17:26:32 2026 :: Log Alaric [29362]: e
+Sat Nov 14 17:26:32 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29362
+Sat Nov 14 17:26:37 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:26:38 2026 :: Log Alaric [29350]: recal
+Sat Nov 14 17:26:39 2026 :: Log Alaric [29350]: w
+Sat Nov 14 17:26:39 2026 :: Log Alaric [41]: arrived (The new pier) from 29350
+Sat Nov 14 17:26:40 2026 :: Log Alaric [41]: recal
+Sat Nov 14 17:26:40 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 41
+Sat Nov 14 17:26:42 2026 :: Log Alaric [2497]: aq ab
+Sat Nov 14 17:26:43 2026 :: Log Alaric [2497]: i
+Sat Nov 14 17:26:45 2026 :: Log Alaric [2497]: eq
+Sat Nov 14 17:27:48 2026 :: Log Alaric [2497]: affects off: levitate
+Sat Nov 14 17:28:50 2026 :: Connection guard: refused 1 connection from 5.161.61.238 (paused; 2 refused in all, pause 1 this week, 30 minutes left).
+Sat Nov 14 17:28:51 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 17:29:37 2026 :: Treasure goblin: vanished from room 15222 (Hallway, campus.are) (too long in one area).

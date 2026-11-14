@@ -28721,3 +28721,44 @@
 1794677135	cmd	Alaric	57	29378	voyage.are	standing	100	0	-	northwest		Across the Sea //   The ship heads back towards the port... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
 1794677135	cmd	Alaric	57	29355	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
 1794677139	cmd	Alaric	57	29356	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1794677143	cmd	Alaric	57	29377	voyage.are	standing	100	0	-	west		Across the Sea //   The ship heads back towards the port... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1794677146	cmd	Alaric	57	29356	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1794677146	cmd	Alaric	57	29357	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1794677150	cmd	Alaric	57	29358	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1794677150	cmd	Alaric	57	29375	voyage.are	standing	100	0	-	northwest		Across the Sea //   The ship heads back towards the port... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1794677153	cmd	Alaric	57	29358	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1794677156	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1794677156	cmd	Alaric	57	29374	voyage.are	standing	100	0	-	southwest		Across the Sea //   The ship heads back towards the port... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1794677159	cmd	Alaric	57	29359	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1794677160	laid	-	0	0	-	895	herb	41	a sprig of mistletoe	4027	moria.are	scatter
+1794677160	laid	-	0	0	-	896	herb	49	a pomegranate	4125	moria.are	scatter
+1794677163	cmd	Alaric	57	29360	voyage.are	standing	100	0	-	north		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1794677166	cmd	Alaric	57	29361	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1794677172	cmd	Alaric	57	29361	voyage.are	standing	100	0	-	open	down	Ok.	-	-
+1794677173	cmd	Alaric	57	29361	voyage.are	standing	100	0	-	exits		Obvious exits: // East  - Across the Sea // West  - Across the Sea	-	+
+1794677174	cmd	Alaric	57	29382	voyage.are	standing	100	0	-	down		In the Hull //   The hull has been slightly compromised by the crushing waters of the // sea.  The water only rises above the soles of your feet though but it would	-	+
+1794677177	cmd	Alaric	57	29361	voyage.are	standing	100	0	-	up		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1794677179	cmd	Alaric	57	29361	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794677180	cmd	Alaric	57	29361	voyage.are	standing	100	0	-	aquest	ab	There is no questmaster here.  Questor Thews waits at the very top of the great oak: // climb up from the Oak Tree Square.  AQUEST INFO works anywhere.	-	-
+1794677188	cmd	Alaric	57	29361	voyage.are	standing	100	0	-	look		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1794677190	cmd	Alaric	57	29362	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1794677191	cmd	Alaric	57	29362	voyage.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794677192	cmd	Alaric	57	29380	voyage.are	standing	100	0	-	east		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1794677198	cmd	Alaric	57	29350	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794677199	area	Alaric	57	41	connect.are	voyage.are	connect.are	233	west
+1794677199	cmd	Alaric	57	41	connect.are	standing	100	0	-	west		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794677200	area	Alaric	57	2497	dresden.are	connect.are	dresden.are	1	recall
+1794677200	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794677202	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=obj:25041 level=59 alive=1 area=voyage.are there=0 streak=4
+1794677202	cmd	Alaric	57	2497	dresden.are	standing	100	14	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 4 in a row - all gone now!'	failure:abandoned	+
+1794677203	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a multi-colored key ring //      (Glowing) British's amulet	-	+
+1794677204	laid	-	0	0	-	897	component	82	a vial of purple worm stinger poison	16072	pirate.are	scatter
+1794677205	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794677268	laid	-	0	0	-	898	herb	52	an asparagus shoot	10202	tritia.are	scatter
+1794677268	laid	-	0	0	-	899	component	73	a roper's tentacle	25035	mountain.are	scatter
+1794677323	laid	-	0	0	-	900	herb	46	a juniper berry	13012	lakes.are	scatter
+1794677323	laid	-	0	0	-	901	herb	51	a piece of kelp	13035	lakes.are	scatter
+1794677375	laid	-	0	0	-	902	herb	52	an asparagus shoot	8760	kerofk.are	scatter
+1794677375	laid	-	0	0	-	903	component	57	a trolls fingernail	29264	korzath2.are	scatter
+1794677430	laid	-	0	0	-	904	herb	53	a huckleberry	24352	chess.are	scatter
+1794677430	laid	-	0	0	-	905	herb	53	a huckleberry	24300	chess.are	scatter
