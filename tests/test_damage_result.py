@@ -118,9 +118,16 @@ class DamageResultTests(unittest.TestCase):
         stubs = (SRC / "stubs.c").read_text(encoding="latin-1")
         body = stubs[stubs.index("void die_follower( CHAR_DATA *ch )"):]
         body = body[:body.index("\n}\n")]
-        self.assertIn("stop_follower( fch )", body)
-        self.assertIn("SET_CHAR_REF( fch, leader, fch )", body)
-        self.assertIn("dismiss_undead_servants( ch )", body)
+        self.assertIn("stop_follower( ch )", body)
+        # Letting go of everyone following moved into release_followers
+        # (2026-11-14), which NOFOLLOW uses alone for a charmed player;
+        # die_follower must still call it.
+        self.assertIn("release_followers( ch )", body)
+        release = stubs[stubs.index("void release_followers( CHAR_DATA *ch )"):]
+        release = release[:release.index("\n}\n")]
+        self.assertIn("stop_follower( fch )", release)
+        self.assertIn("SET_CHAR_REF( fch, leader, fch )", release)
+        self.assertIn("dismiss_undead_servants( ch )", release)
 
     def test_raised_undead_are_no_kill_and_do_not_outlive_their_master(self) -> None:
         fight = (SRC / "fight.c").read_text(encoding="latin-1")
