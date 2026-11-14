@@ -296318,3 +296318,6 @@ Sat Nov 14 00:02:59 2026 :: Log Killuminati [4207]: arrived (Before the Altar.) 
 Sat Nov 14 00:03:03 2026 :: Log Killuminati [4207]: quit
 Sat Nov 14 00:03:03 2026 :: Killuminati has quit.
 Sat Nov 14 00:03:03 2026 :: [QUIT] Player rejoined the real world.
+Sat Nov 14 00:07:18 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 00:08:00 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 2 refused in all, pause 1 this week, 117 minutes left).
+Sat Nov 14 00:08:08 2026 :: Treasure goblin: vanished from room 18080 (A secret room, icekeep.are) (too long in one area).
