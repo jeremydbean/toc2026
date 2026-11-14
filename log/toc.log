@@ -298117,3 +298117,11 @@ Sat Nov 14 10:51:24 2026 :: Connection guard: refused 1 connection from 35.210.1
 Sat Nov 14 10:51:24 2026 :: Connection guard: 35.210.115.86 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 14 10:52:24 2026 :: Connection guard: refused 24 connections from 35.210.115.86 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
 Sat Nov 14 10:52:47 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 10:57:46 2026 :: Treasure goblin: vanished from room 13300 (Private Room, solace.are) (too long in one area).
+Sat Nov 14 10:57:51 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 14 10:58:17 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 10:59:16 2026 :: Connection guard: 20.120.252.89 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 10:59:16 2026 :: Sock.sinaddr:  20.120.252.89
+Sat Nov 14 10:59:16 2026 :: EOF encountered on read.
+Sat Nov 14 10:59:16 2026 :: Connection guard: 20.120.252.89 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sat Nov 14 10:59:16 2026 :: Connection guard: 20.120.252.89 closed without a word (strike 3 of 6 in 6 hours).
