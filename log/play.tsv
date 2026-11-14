@@ -26489,3 +26489,9 @@
 1794628037	laid	-	0	0	-	1157	herb	50	a head of cabbage	2169	hood.are	scatter
 1794628156	item	Alaric	57	2497	dresden.are	2359	a runed key	type=key level=26 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
 1794628156	laid	-	0	0	-	1158	herb	34	an amaranth plant	10071	glitter.are	scatter
+1794628232	laid	-	0	0	-	1159	component	64	a manticore's spine	13003	lakes.are	scatter
+1794628318	census	-	0	0	-	herbs=81/150 components=38/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=23 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794628353	laid	-	0	0	-	1160	herb	38	a foxglove flower	2313	mahntor.are	scatter
+1794628416	laid	-	0	0	-	1161	herb	50	a head of cabbage	7589	astral.are	scatter
+1794628416	laid	-	0	0	-	1162	herb	44	a sprig of aconite	7558	astral.are	scatter
+1794628416	laid	-	0	0	-	1163	component	87	a vial of grey ooze	9120	dylan.are	scatter
