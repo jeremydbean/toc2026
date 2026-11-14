@@ -296321,3 +296321,6 @@ Sat Nov 14 00:03:03 2026 :: [QUIT] Player rejoined the real world.
 Sat Nov 14 00:07:18 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 00:08:00 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 2 refused in all, pause 1 this week, 117 minutes left).
 Sat Nov 14 00:08:08 2026 :: Treasure goblin: vanished from room 18080 (A secret room, icekeep.are) (too long in one area).
+Sat Nov 14 00:11:17 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 00:13:05 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 14 00:13:32 2026 :: Cartographer: appeared.
