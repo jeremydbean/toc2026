@@ -26644,3 +26644,9 @@
 1794636087	laid	-	0	0	-	1288	component	64	a manticore's spine	7104	sewer.are	scatter
 1794636146	laid	-	0	0	-	1289	component	63	a phoenix feather	13530	hell.are	scatter
 1794636217	laid	-	0	0	-	1290	component	58	some pixie dust	8792	kerofk.are	scatter
+1794636341	laid	-	0	0	-	1291	component	78	a vial of demons blood	7533	astral.are	scatter
+1794636418	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=9 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794636568	sightings	Alaric	57	2497	dresden.are	mob	201:2/0/0 4458:2/0/0 2435:3/0/0 4449:1/0/0 4451:1/0/0 4446:1/0/0 4450:1/0/0 2433:2/0/0 4452:1/0/0 7006:1/0/0 7005:2/0/0 7203:4/0/0 7201:1/0/0 7200:1/0/0 25114:2/0/0 25100:2/0/0 25112:1/0/0 25111:5/0/0 25105:3/0/0 2005:8/0/0 2006:3/0/0 2016:1/0/0 2001:6/1/0 2013:1/0/0 7202:1/0/0 25103:2/0/0 25113:4/2/0 2324:1/1/0 2320:2/2/0 2319:2/2/0 2321:2/2/0 2322:5/0/0 2323:1/1/0 25110:1/0/0 25106:1/0/0 25104:2/0/0 5105:1/0/0 5106:1/0/0 4457:1/0/0 4469:2/0/0 2434:4/0/0 2430:1/0/0 5011:2/0/0 5010:1/0/0 25108:10/0/0 25107:1/0/0 2223:1/0/0 2240:5/4/0 2202:1/0/0 10:1/0/0 4201:1/0/0 4202:1/0/0
+1794636568	sightings	Alaric	57	2497	dresden.are	mob	58:1/0/0 4445:1/0/0 6501:3/0/0 6500:2/2/0 6502:1/0/0 2003:1/0/0 4468:1/0/0 4444:1/0/0 4456:1/0/0 6102:2/0/0 17705:9/0/0 17704:9/0/0 17703:1/0/0 17714:1/0/0 17709:1/0/0 17710:1/0/0 17702:1/0/0 17701:1/0/0
+1794636568	sightings	Alaric	57	2497	dresden.are	item	25102:1/0 2004:1/0 5005:1/0 6507:3/0 25039:1/1 4446:1/0 4444:1/0 25040:1/1
+1794636568	session	Alaric	57	2497	dresden.are	shutdown	12214s	+0 levels	+0 exp	+663752621 copper	17 kills	0 deaths	3 quests	747 commands	0 refused	coin: loot 2p 9g 73s 19c, quests 662p 75g 53s 2c, spent 1p 10g	spent on: heal 1p 10g	exp: none
