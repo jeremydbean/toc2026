@@ -296391,3 +296391,4 @@ Sat Nov 14 02:35:12 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Sat Nov 14 02:36:57 2026 :: Connection guard: last hour 18 closed without a word, 1 refused, 0 new characters refused, 1 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov 14 02:37:33 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 02:39:06 2026 :: Treasure goblin: vanished from room 9525 (West Main Street, newthalo.are) (too long in one area).
+Sat Nov 14 02:40:16 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
