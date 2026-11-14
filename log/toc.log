@@ -297959,3 +297959,6 @@ Sat Nov 14 06:59:38 2026 :: EOF encountered on read.
 Sat Nov 14 06:59:38 2026 :: Connection guard: 211.154.20.136 closed before a password prompt (strike 2 of 6 in 6 hours).
 Sat Nov 14 06:59:52 2026 :: Treasure goblin: vanished from room 24580 (The Sanctuary, abyss.are) (too long in one area).
 Sat Nov 14 07:04:19 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 07:09:23 2026 :: Connection guard: refused 1 connection from 54.87.112.51 (paused; 1 refused in all, pause 1 this week, 234 minutes left).
+Sat Nov 14 07:09:28 2026 :: Connection guard: last hour 17 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Sat Nov 14 07:09:34 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
