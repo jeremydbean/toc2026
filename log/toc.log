@@ -298091,3 +298091,6 @@ Sat Nov 14 10:17:27 2026 :: Treasure goblin: vanished from room 24561 (The Tower
 Sat Nov 14 10:17:55 2026 :: Connection guard: last hour 31 closed without a word, 50 refused, 0 new characters refused, 3 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov 14 10:18:13 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 10:22:20 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 10:27:25 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 10:27:32 2026 :: Treasure goblin: vanished from room 24103 (On a Road in the Forest Murkmire, coven.are) (too long in one area).
+Sat Nov 14 10:28:14 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
