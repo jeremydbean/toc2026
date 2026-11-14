@@ -297987,3 +297987,5 @@ Sat Nov 14 08:05:15 2026 :: Connection guard: 178.156.184.20 closed without a wo
 Sat Nov 14 08:07:24 2026 :: Treasure goblin: vanished from room 1626 (The Musty Corridor, wyvern.are) (too long in one area).
 Sat Nov 14 08:09:28 2026 :: Connection guard: last hour 17 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov 14 08:09:40 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 08:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 08:10:20 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 2 of 6 in 6 hours).
