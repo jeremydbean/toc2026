@@ -303078,3 +303078,5 @@ Sat Nov 14 20:58:55 2026 :: Connection guard: last hour 12 closed without a word
 Sat Nov 14 21:02:05 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 5 of 6 in 6 hours).
 Sat Nov 14 21:07:10 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 14 21:09:50 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 21:12:15 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 5 refused in all, pause 2 this week, 131 minutes left).
+Sat Nov 14 21:15:48 2026 :: Treasure goblin: vanished from room 2480 (Market Plaza., dresden.are) (too long in one area).
