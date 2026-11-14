@@ -1,1 +1,1 @@
-2026-11-14T07:36:47Z waiting for CI on bf6c960a (in_progress) before deploying 52ee46c6
+2026-11-14T07:46:47Z not deploying d25bcf3e: CI on bf6c960a says failure; push a fix
