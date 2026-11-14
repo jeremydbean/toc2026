@@ -67,10 +67,10 @@ List item 1 0 a crystal key
 List earn 8367720 0 loot
 End
 Day 2026-11-14
-Played 3396
+Played 3631
 Level 40 42 2
-Exp 3456 70
-Kills 20
+Exp 3674 95
+Kills 22
 Deaths 0
 Close 0
 Quests 4 458
@@ -82,12 +82,12 @@ List achv 22 0 The Lizard's Cache
 List skill 90 92 enhanced damage
 List skill 79 81 dodge
 List skill 78 80 second attack
-List area 1090 0 City of Dresden
-List area 17 0 Miden'nir
+List area 1218 0 City of Dresden
+List area 20 0 Miden'nir
 List area 174 0 Thalos
 List area 33 0 Continental Drift
-List area 66 0 New Thalos
-List area 280 0 Pirate Ship
+List area 71 0 New Thalos
+List area 379 0 Pirate Ship
 List area 311 0 Korzath's Fortress
 List area 101 0 Gangland
 List area 15 0 Haon Dor
@@ -110,8 +110,8 @@ List item 1 0 the Lizard dungeon map
 More item 8
 List earn 38193215 0 interest
 List earn 42520068 0 quests
-List earn 25575540 0 loot
-List spend 11800000 0 heal
+List earn 27616626 0 loot
+List spend 36800000 0 heal
 List spend 12550920 0 devote
 End
 #END
