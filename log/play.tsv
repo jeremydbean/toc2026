@@ -29133,3 +29133,204 @@
 1794680133	cmd	Trentlin	41	18009	icekeep.are	standing	100	0	-	exits		Obvious exits: // East  - Whoops! // West  - An icy trail	-	+
 1794680152	cmd	Trentlin	41	18013	icekeep.are	standing	100	0	-	se		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
 1794680153	cmd	Trentlin	41	18013	icekeep.are	standing	100	0	-	exits		Obvious exits: // South - An icy trail // Northwest - An icy trail	-	+
+1794680156	cmd	Trentlin	41	18009	icekeep.are	standing	100	0	-	nw		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
+1794680156	cmd	Trentlin	41	18009	icekeep.are	standing	100	0	-	exits		Obvious exits: // East  - Whoops! // West  - An icy trail	-	+
+1794680157	laid	-	0	0	-	885	component	86	an inert gelatinous cube	17209	highland.are	scatter
+1794680159	cmd	Trentlin	41	18007	icekeep.are	standing	100	0	-	west		An icy trail //   This trail is very slippery and you have trouble staying // on your feet.  You can tell by the way the ice is solidly	-	+
+1794680160	cmd	Trentlin	41	18007	icekeep.are	standing	100	0	-	exits		Obvious exits: // North - An icy trail // East  - An icy trail	-	+
+1794680162	cmd	Trentlin	41	18008	icekeep.are	standing	100	0	-	north		An icy trail //   The trail continues onward and as the sky darkens it begins // to snow.  The snowflakes are coming down rapidly and you know	-	+
+1794680163	cmd	Trentlin	41	18008	icekeep.are	standing	100	0	-	exits		Obvious exits: // North - An icy trail // South - An icy trail	-	-
+1794680164	cmd	Trentlin	41	18010	icekeep.are	standing	100	0	-	north		An icy trail //   The trail continues onward and as the sky darkens it begins // to snow.  The snowflakes are coming down rapidly and you know	-	+
+1794680164	cmd	Trentlin	41	18010	icekeep.are	standing	100	0	-	exits		Obvious exits: // South - An icy trail // Northwest - A snow covered trail	-	-
+1794680166	cmd	Trentlin	41	18022	icekeep.are	standing	100	0	-	nw		A snow covered trail //   It has begun to snow very heavily and it looks like it will // be a blizzard.  The trail is getting harder to see now as	-	+
+1794680167	cmd	Trentlin	41	18022	icekeep.are	standing	100	0	-	exits		Obvious exits: // North - A snow covered trail // Southeast - An icy trail	-	-
+1794680168	cmd	Trentlin	41	18023	icekeep.are	standing	100	0	-	north		A snow covered trail //   The snow is coming down in huge flakes now and very quickly // the trail begins to fill with snow.  You had better find	-	+
+1794680169	cmd	Trentlin	41	18023	icekeep.are	standing	100	0	-	exits		Obvious exits: // North - A snow covered trail // South - A snow covered trail	-	-
+1794680170	cmd	Trentlin	41	18024	icekeep.are	standing	100	0	-	north		A snow covered trail //   The snow almost completely covers the trail now and you begin // to seek a refuge from the storm.  In the distance you can make	-	+
+1794680171	cmd	Trentlin	41	18024	icekeep.are	standing	100	0	-	exits		Obvious exits: // South - A snow covered trail // Northeast - A snow covered trail	-	-
+1794680174	cmd	Trentlin	41	18025	icekeep.are	standing	100	0	-	ne		A snow covered trail //   The blanket of snow that has fallen now completely covers // the trail and off to the east you can see a giant, ice covered	-	+
+1794680174	cmd	Trentlin	41	18025	icekeep.are	standing	100	0	-	exits		Obvious exits: // East  - Entrance to the ice keep // Southwest - A snow covered trail	-	-
+1794680176	cmd	Trentlin	41	18024	icekeep.are	standing	100	0	-	sw		A snow covered trail //   The snow almost completely covers the trail now and you begin // to seek a refuge from the storm.  In the distance you can make	-	+
+1794680177	cmd	Trentlin	41	18023	icekeep.are	standing	100	0	-	south		A snow covered trail //   The snow is coming down in huge flakes now and very quickly // the trail begins to fill with snow.  You had better find	-	+
+1794680177	cmd	Trentlin	41	18022	icekeep.are	standing	100	0	-	south		A snow covered trail //   It has begun to snow very heavily and it looks like it will // be a blizzard.  The trail is getting harder to see now as	-	+
+1794680178	cmd	Trentlin	41	18022	icekeep.are	standing	100	0	-	sw		Alas, you cannot go that way.	-	-
+1794680179	cmd	Trentlin	41	18010	icekeep.are	standing	100	0	-	se		An icy trail //   The trail continues onward and as the sky darkens it begins // to snow.  The snowflakes are coming down rapidly and you know	-	+
+1794680180	cmd	Trentlin	41	18008	icekeep.are	standing	100	0	-	south		An icy trail //   The trail continues onward and as the sky darkens it begins // to snow.  The snowflakes are coming down rapidly and you know	-	+
+1794680181	cmd	Trentlin	41	18007	icekeep.are	standing	100	0	-	south		An icy trail //   This trail is very slippery and you have trouble staying // on your feet.  You can tell by the way the ice is solidly	-	+
+1794680181	cmd	Trentlin	41	18009	icekeep.are	standing	100	0	-	east		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
+1794680182	cmd	Trentlin	41	18009	icekeep.are	standing	100	0	-	exits		Obvious exits: // East  - Whoops! // West  - An icy trail	-	+
+1794680190	cmd	Trentlin	41	18013	icekeep.are	standing	100	0	-	se		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
+1794680191	cmd	Trentlin	41	18013	icekeep.are	standing	100	0	-	exits		Obvious exits: // South - An icy trail // Northwest - An icy trail	-	+
+1794680220	cmd	Trentlin	41	18015	icekeep.are	standing	100	0	-	south		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
+1794680221	cmd	Trentlin	41	18015	icekeep.are	standing	100	0	-	exits		Obvious exits: // North - An icy trail // South - An icy trail	-	+
+1794680222	cmd	Trentlin	41	18018	icekeep.are	standing	100	0	-	south		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
+1794680223	cmd	Trentlin	41	18018	icekeep.are	standing	100	0	-	exits		Obvious exits: // North - An icy trail // East  - An icy trail	-	+
+1794680224	cmd	Trentlin	41	18019	icekeep.are	standing	100	0	-	east		An icy trail //   You have almost reached the top of the icy mountain.  At  // the top of the peak you can faintly see an old man huddled	-	+
+1794680225	cmd	Trentlin	41	18019	icekeep.are	standing	100	0	-	exits		Obvious exits: // South - The peak of the mountain // West  - An icy trail	-	-
+1794680227	cmd	Trentlin	41	18021	icekeep.are	standing	100	0	-	south		The peak of the mountain //   You have reached the peak of the mountain and see a small // old man huddled underneath a rock facing trying to keep	-	+
+1794680228	got	Trentlin	41	18021	icekeep.are	25042	The Heart of Tifarah	trash	59	0	get	the floor
+1794680228	cmd	Trentlin	41	18021	icekeep.are	standing	100	0	-	get	all	You get The Heart of Tifarah.	-	-
+1794680229	area	Trentlin	41	4207	dresden.are	icekeep.are	dresden.are	194	recall
+1794680229	cmd	Trentlin	41	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794680230	cmd	Trentlin	41	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794680230	cmd	Trentlin	41	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794680231	cmd	Trentlin	41	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794680231	cmd	Trentlin	41	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794680231	cmd	Trentlin	41	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794680231	cmd	Trentlin	41	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794680232	cmd	Trentlin	41	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794680232	cmd	Trentlin	41	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794680232	cmd	Trentlin	41	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794680232	cmd	Trentlin	41	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794680233	cmd	Trentlin	41	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794680234	coin	Trentlin	41	2497	dresden.are	+25101840	quests	aquest	-	15377066784
+1794680234	outcome	Trentlin	41	2497	dresden.are	quest-complete	success	-	-	emergency qp=3918->3918 offered=161 daily=18->18 coin=+25101840 kill=627546 streak=4 level=41 target=0
+1794680234	cmd	Trentlin	41	2497	dresden.are	standing	100	24	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1794680238	cmd	Trentlin	41	2497	dresden.are	standing	100	6	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 322 quest points! **	-	-
+1794680241	cmd	Trentlin	41	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794680242	cmd	Trentlin	41	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794680242	cmd	Trentlin	41	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794680243	cmd	Trentlin	41	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794680243	cmd	Trentlin	41	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794680243	cmd	Trentlin	41	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794680243	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794680244	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794680244	laid	-	0	0	-	898	herb	43	a sprig of hyssop	2481	dresden.are	scatter
+1794680244	laid	-	0	0	-	899	component	83	a vial of thessalhydra venom	2913	firenewt.are	scatter
+1794680245	coin	Trentlin	41	4208	dresden.are	-600000	spent	heal	-	15376466784
+1794680245	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (6 castings, 60 gold.)	-	-
+1794680249	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	worth		You have 60 platinum, 98 gold, 71 silver, 91 copper // and 95419 experience (1181 exp to level).	-	-
+1794680253	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	devote		DEVOTE LIGHT, DEVOTE DARK or DEVOTE BALANCE, at the Temple; DEVOTE PREVIEW to see first. See ALIGNMENT.	-	-
+1794680257	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	devote	preview	A devotion would make it (nothing is offered by looking): //   light    -2 -> 98 (Balanced -> Balanced), offering 12p 55g 9s 20c. //   dark     -2 -> -102 (Balanced -> Balanced), offering 12p 55g 9s 20c.	-	+
+1794680264	coin	Trentlin	41	4208	dresden.are	-12550920	spent	devote	-	15363915864
+1794680264	cmd	Trentlin	41	4208	dresden.are	standing	100	9	-	devote	light	You lay 12p 55g 9s 20c upon the altar and pray for the light. // You are Balanced (alignment 98).	-	-
+1794680271	cmd	Trentlin	41	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794680271	cmd	Trentlin	41	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794680271	cmd	Trentlin	41	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794680271	cmd	Trentlin	41	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794680272	cmd	Trentlin	41	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794680272	cmd	Trentlin	41	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794680273	cmd	Trentlin	41	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794680273	cmd	Trentlin	41	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794680274	cmd	Trentlin	41	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794680274	cmd	Trentlin	41	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794680274	cmd	Trentlin	41	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794680274	cmd	Trentlin	41	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794680275	cmd	Trentlin	41	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794680275	cmd	Trentlin	41	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794680275	cmd	Trentlin	41	2426	dresden.are	standing	100	0	-	east		The gate is closed.	-	-
+1794680275	cmd	Trentlin	41	2426	dresden.are	standing	100	0	-	east		The gate is closed.	-	-
+1794680276	cmd	Trentlin	41	2426	dresden.are	standing	100	0	-	east		The gate is closed.	-	-
+1794680277	cmd	Trentlin	41	2426	dresden.are	standing	100	0	-	open	est	I see no est here.	-	-
+1794680279	cmd	Trentlin	41	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794680280	cmd	Trentlin	41	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794680280	area	Trentlin	41	3503	midennir.are	dresden.are	midennir.are	51	east
+1794680280	cmd	Trentlin	41	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794680280	cmd	Trentlin	41	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794680280	cmd	Trentlin	41	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794680281	cmd	Trentlin	41	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794680281	cmd	Trentlin	41	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794680281	cmd	Trentlin	41	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794680282	cmd	Trentlin	41	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794680283	cmd	Trentlin	41	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794680283	cmd	Trentlin	41	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794680283	cmd	Trentlin	41	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794680283	area	Trentlin	41	42	connect.are	midennir.are	connect.are	3	east
+1794680283	cmd	Trentlin	41	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794680284	area	Trentlin	41	9669	newthalo.are	connect.are	newthalo.are	1	east
+1794680284	cmd	Trentlin	41	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794680284	cmd	Trentlin	41	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794680285	cmd	Trentlin	41	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794680285	cmd	Trentlin	41	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794680286	cmd	Trentlin	41	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794680286	cmd	Trentlin	41	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794680286	cmd	Trentlin	41	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794680286	cmd	Trentlin	41	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1794680287	cmd	Trentlin	41	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794680287	cmd	Trentlin	41	9528	newthalo.are	standing	100	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794680287	cmd	Trentlin	41	9529	newthalo.are	standing	100	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794680287	cmd	Trentlin	41	9530	newthalo.are	standing	100	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794680288	cmd	Trentlin	41	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794680290	cmd	Trentlin	41	9531	newthalo.are	standing	100	0	-	open	east	Ok.	-	-
+1794680290	cmd	Trentlin	41	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794680290	cmd	Trentlin	41	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794680291	cmd	Trentlin	41	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794680291	cmd	Trentlin	41	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794680292	cmd	Trentlin	41	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794680292	cmd	Trentlin	41	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794680293	area	Trentlin	41	41	connect.are	newthalo.are	connect.are	9	north
+1794680293	cmd	Trentlin	41	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794680295	cmd	Trentlin	41	41	connect.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794680299	cmd	Trentlin	41	41	connect.are	standing	100	0	-	look	sign	Pirates up ahead, watch your money purse and remember leave drunk pirates  // lie.	-	-
+1794680301	cmd	Trentlin	41	41	connect.are	standing	100	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794680309	area	Trentlin	41	16000	pirate.are	connect.are	pirate.are	16	north
+1794680309	cmd	Trentlin	41	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794680309	cmd	Trentlin	41	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794680310	cmd	Trentlin	41	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794680310	cmd	Trentlin	41	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794680312	cmd	Trentlin	41	16003	pirate.are	standing	100	0	-	scan		The sailor                         -to the North. // The drunk pirate                   -to the North.	-	-
+1794680313	cmd	Trentlin	41	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.	-	+
+1794680314	cmd	Trentlin	41	16004	pirate.are	standing	100	1	-	kill	dr	Your punch *** DEVASTATES *** The drunk pirate! // The drunk pirate parries your attack. // Your punch ^^^ DESTROYS ^^^ The drunk pirate!	-	-
+1794680317	cmd	Trentlin	41	16004	pirate.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The drunk pirate. // Your fists of fury decimates The drunk pirate!	-	+
+1794680323	cmd	Trentlin	41	16004	pirate.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The drunk pirate. // Your fists of fury hits The drunk pirate.	-	+
+1794680329	cmd	Trentlin	41	16004	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The drunk pirate! // Your fists of fury grazes The drunk pirate.	-	+
+1794680330	coin	Trentlin	41	16004	pirate.are	+1000000	loot	(violence_update)	corpse of The drunk pirate	15364915864
+1794680330	coin	Trentlin	41	16004	pirate.are	+500	loot	(violence_update)	corpse of The drunk pirate	15364916364
+1794680330	coin	Trentlin	41	16004	pirate.are	+6	loot	(violence_update)	corpse of The drunk pirate	15364916370
+1794680330	coin	Trentlin	41	16004	pirate.are	+20000	loot	(violence_update)	corpse of The drunk pirate	15364936370
+1794680337	cmd	Trentlin	41	16004	pirate.are	standing	86	0	-	scan		The bucaneer                       -to the East. // The sailor                         -to the South. // She                                -to the West.	-	-
+1794680338	cmd	Trentlin	41	16005	pirate.are	standing	86	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like	-	+
+1794680340	cmd	Trentlin	41	16005	pirate.are	standing	86	0	-	consider	b	The bucaneer is well above your level. // The bucaneer has about twice your hit points. // Blow for blow, you would need about 33 rounds to bring The bucaneer down; he would need about 18 rounds for you.	-	+
+1794680345	cmd	Trentlin	41	16005	pirate.are	standing	86	0	-	scan		The sailor                         -to the West. // The midshipman                     -right above you. // The swashbuckler                   -right above you.	-	-
+1794680347	cmd	Trentlin	41	16021	pirate.are	standing	86	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794680348	cmd	Trentlin	41	16026	pirate.are	standing	86	0	-	north		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680349	cmd	Trentlin	41	16026	pirate.are	standing	86	0	-	scan		The midshipman                     -to the South. // The swashbuckler                   -to the South.	-	-
+1794680350	cmd	Trentlin	41	16031	pirate.are	standing	86	0	-	north		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680350	cmd	Trentlin	41	16031	pirate.are	standing	86	0	-	scan		The pirate                         -to the North. // The pirate                         -to the North.	-	-
+1794680353	cmd	Trentlin	41	16032	pirate.are	standing	86	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680354	cmd	Trentlin	41	16032	pirate.are	standing	86	0	-	scan		The drunk pirate                   -to the North. // The pirate                         -to the North. // The midshipman                     -to the East.	-	+
+1794680357	cmd	Trentlin	41	16033	pirate.are	standing	86	0	-	east		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680357	cmd	Trentlin	41	16033	pirate.are	standing	86	0	-	scan		The drunk pirate                   -to the East. // The pirate                         -to the South.	-	-
+1794680359	cmd	Trentlin	41	16028	pirate.are	standing	86	0	-	south		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680360	cmd	Trentlin	41	16028	pirate.are	standing	86	0	-	scan		The midshipman                     -to the North. // The swashbuckler                   -to the North. // The drunk pirate                   -to the South.	-	-
+1794680363	cmd	Trentlin	41	16028	pirate.are	standing	86	0	-	kill	pira	The pirate parries your attack. // The pirate parries your attack.	-	-
+1794680366	cmd	Trentlin	41	16028	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The pirate! // Your fists of fury DISMEMBERS The pirate!	-	+
+1794680372	cmd	Trentlin	41	16028	pirate.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The pirate! // Your fists of fury MUTILATES The pirate!	-	+
+1794680377	cmd	Trentlin	41	16028	pirate.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** The pirate! // Your fists of fury maims The pirate!	-	+
+1794680383	cmd	Trentlin	41	16028	pirate.are	standing	76	0	-	fists		Who do you want to attack?	-	-
+1794680383	cmd	Trentlin	41	16033	pirate.are	standing	76	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680385	coin	Trentlin	41	16033	pirate.are	+2000000	loot	kill	corpse of The pirate	15366936370
+1794680385	coin	Trentlin	41	16033	pirate.are	+1200	loot	kill	corpse of The pirate	15366937570
+1794680385	coin	Trentlin	41	16033	pirate.are	+17	loot	kill	corpse of The pirate	15366937587
+1794680385	coin	Trentlin	41	16033	pirate.are	+70000	loot	kill	corpse of The pirate	15367007587
+1794680385	cmd	Trentlin	41	16033	pirate.are	standing	76	1	-	kill	pira	Your punch === OBLITERATES === The pirate! // The pirate is DEAD!! // You receive 844 experience points (422 of them rested).	-	+
+1794680390	cmd	Trentlin	41	16033	pirate.are	standing	76	0	-	scan		The drunk pirate                   -to the East.	-	-
+1794680391	state	Trentlin	41	16033	pirate.are	lvl=41 hp=652/855 mana=1587/1818 mv=294/462 align=106 exp=96429 coin=51527994 bank=15315479593 qp=4240 prac=21 train=4 stash=63/75 remorts=1
+1794680391	cmd	Trentlin	41	16033	pirate.are	standing	76	0	-	score		| Name:       Trentlin | Level:      41 | Class:        Monk | // | Played:     38 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794680393	cmd	Trentlin	41	16028	pirate.are	standing	76	0	-	south		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680393	cmd	Trentlin	41	16028	pirate.are	standing	76	0	-	scan		The midshipman                     -to the North. // The swashbuckler                   -to the North.	-	-
+1794680394	cmd	Trentlin	41	16023	pirate.are	standing	76	0	-	south		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794680395	cmd	Trentlin	41	16023	pirate.are	standing	76	0	-	scan		The drunk pirate                   -to the South. // The sailor                         -to the West.	-	-
+1794680396	cmd	Trentlin	41	16018	pirate.are	standing	76	0	-	south		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are	-	+
+1794680397	laid	-	0	0	-	940	herb	34	an amaranth plant	18027	icekeep.are	scatter
+1794680397	laid	-	0	0	-	941	component	80	a glass encased wing of a fairy	29089	korzath1.are	scatter
+1794680399	cmd	Trentlin	41	16018	pirate.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** The drunk pirate! // Your fists of fury scratches The drunk pirate.	-	+
+1794680408	cmd	Trentlin	41	16018	pirate.are	fighting	58	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The drunk pirate. // Your fists of fury injures The drunk pirate.	-	+
+1794680413	cmd	Trentlin	41	16018	pirate.are	fighting	52	0	fight	wear	dip\	You do not have that item.	-	-
+1794680414	cmd	Trentlin	41	16018	pirate.are	fighting	52	0	fight	wear	dip	You stop using the Lizard's Heart Container. // You hold a mud school diploma in your hands.	-	-
+1794680416	cmd	Trentlin	41	16018	pirate.are	fighting	57	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The drunk pirate. // Your fists of fury wounds The drunk pirate.	-	+
+1794680417	coin	Trentlin	41	16018	pirate.are	+1000000	loot	(violence_update)	corpse of The drunk pirate	15368007587
+1794680417	coin	Trentlin	41	16018	pirate.are	+500	loot	(violence_update)	corpse of The drunk pirate	15368008087
+1794680417	coin	Trentlin	41	16018	pirate.are	+6	loot	(violence_update)	corpse of The drunk pirate	15368008093
+1794680417	coin	Trentlin	41	16018	pirate.are	+20000	loot	(violence_update)	corpse of The drunk pirate	15368028093
+1794680424	cmd	Trentlin	41	16018	pirate.are	standing	57	0	-	scan		The swashbuckler                   -to the East.	-	-
+1794680425	cmd	Trentlin	41	16017	pirate.are	standing	57	0	-	west		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are	-	+
+1794680426	cmd	Trentlin	41	16017	pirate.are	standing	57	0	-	scan		The sailor                         -to the West. // The pirate                         -to the West.	-	-
+1794680427	cmd	Trentlin	41	16016	pirate.are	standing	57	0	-	west		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794680430	cmd	Trentlin	41	16016	pirate.are	standing	57	0	-	kill	pira	Your punch === OBLITERATES === The pirate! // The pirate dodges your attack.	-	-
+1794680433	cmd	Trentlin	41	16016	pirate.are	fighting	47	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The pirate. // Your fists of fury maims The pirate!	-	+
+1794680444	skill	Trentlin	41	16016	pirate.are	second attack	79	80	success	(violence_update)
+1794680444	level	Trentlin	42	16016	pirate.are	41	42	Monk 	1	96605	-1	(violence_update)
+1794680448	cmd	Trentlin	42	16016	pirate.are	fighting	21	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The pirate! // Your fists of fury wounds The pirate.	-	+
+1794680454	area	Trentlin	42	4207	dresden.are	pirate.are	dresden.are	145	recall
+1794680454	cmd	Trentlin	42	4207	dresden.are	fighting	14	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
