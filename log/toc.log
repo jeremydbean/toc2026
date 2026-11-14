@@ -297829,3 +297829,5 @@ Sat Nov 14 03:41:14 2026 :: Connection guard: 178.156.189.113 closed without a w
 Sat Nov 14 03:41:14 2026 :: Connection guard: 178.156.189.113 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.189.113 lifts it.
 Sat Nov 14 03:43:50 2026 :: Black market: the dealer vanished from room 7630 (Library, ultima.are) (too long in one area).
 Sat Nov 14 03:44:22 2026 :: Black market: the dealer left the world from room 5653 (Bottom of a mountain, tarin.are).
+Sat Nov 14 03:46:19 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 03:47:40 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).

@@ -26483,3 +26483,9 @@
 1794627766	laid	-	0	0	-	1151	component	82	a vial of purple worm stinger poison	3218	school.are	scatter
 1794627817	laid	-	0	0	-	1152	herb	46	a juniper berry	13295	solace.are	scatter
 1794627817	laid	-	0	0	-	1153	component	64	a manticore's spine	15158	campus.are	scatter
+1794627863	laid	-	0	0	-	1154	herb	43	a sprig of hyssop	15084	campus.are	scatter
+1794627912	laid	-	0	0	-	1155	component	65	a dragon's scale	14016	whouse.are	scatter
+1794627961	laid	-	0	0	-	1156	herb	51	a piece of kelp	18070	icekeep.are	scatter
+1794628037	laid	-	0	0	-	1157	herb	50	a head of cabbage	2169	hood.are	scatter
+1794628156	item	Alaric	57	2497	dresden.are	2359	a runed key	type=key level=26 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
+1794628156	laid	-	0	0	-	1158	herb	34	an amaranth plant	10071	glitter.are	scatter
