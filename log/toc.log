@@ -297934,3 +297934,6 @@ Sat Nov 14 06:14:24 2026 :: EOF encountered on read.
 Sat Nov 14 06:14:24 2026 :: Connection guard: 4.148.17.168 closed before a password prompt (strike 1 of 6 in 6 hours).
 Sat Nov 14 06:14:24 2026 :: Sock.sinaddr:  4.148.17.168
 Sat Nov 14 06:14:24 2026 :: Connection guard: 4.148.17.168 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sat Nov 14 06:18:35 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 06:19:29 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 06:19:33 2026 :: Treasure goblin: vanished from room 10135 (A bend in the forgotten hallway., glitter.are) (too long in one area).
