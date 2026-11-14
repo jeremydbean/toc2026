@@ -101,3 +101,10 @@
 1794665012	enter	Trentlin	41	1	Monk 	30323	over	from=L5 how=enter hp=63
 1794665012	crumbled	Trentlin	41	1	Monk 	30323	over	dungeon=5 maps=0 compasses=0 keys=0 guardian_keys=1 why=left how=(hyrule_crumble_update)
 1794665086	got	Trentlin	41	1	Monk 	30323	over	obj=30729 obj_name=a_lizard-crest_helm type=armor obj_level=33 how=get
+1794665133	leave	Trentlin	41	1	Monk 	30282	over	to=L6 how=down secs=121 hp=70
+1794665133	enter	Trentlin	41	1	Monk 	30501	L6	from=over how=down hp=70
+1794665166	cleared	Trentlin	41	1	Monk 	30502	L6	foes=0
+1794665169	got	Trentlin	41	1	Monk 	30502	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794665195	leave	Trentlin	41	1	Monk 	30501	L6	to=over how=up secs=62 hp=53
+1794665195	enter	Trentlin	41	1	Monk 	30282	over	from=L6 how=up hp=53
+1794665220	leave	Trentlin	41	1	Monk 	30266	over	to=out how=recall secs=25 hp=38

@@ -28335,3 +28335,189 @@
 1794665101	cmd	Trentlin	41	30323	hyrule.are	standing	70	0	-	inventory		You are carrying: //      the four-crowned lion shield //      (Glowing) the first Triforce shard	-	+
 1794665109	cmd	Trentlin	41	30323	hyrule.are	standing	70	0	-	play	recorder 5	You play the Recorder, and an ancient melody fills the room. // The wind circles you and settles: you are already at Level 5's door. // PLAY RECORDER <level> goes to another -- 1 2 3 4 5 6 7 8 9.	-	-
 1794665115	cmd	Trentlin	41	30282	hyrule.are	standing	70	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Dragon's Gate	-	+
+1794665121	cmd	Trentlin	41	30282	hyrule.are	standing	70	0	-	levitate		You slowly rise up off the ground.	-	-
+1794665122	cmd	Trentlin	41	30282	hyrule.are	standing	70	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794665130	cmd	Trentlin	41	30282	hyrule.are	standing	70	0	-	steel		Your hands can't get any harder.	-	-
+1794665131	state	Trentlin	41	30282	hyrule.are	lvl=41 hp=602/855 mana=1282/1818 mv=462/462 align=23 exp=95144 coin=30837730 bank=15315479593 qp=3820 prac=21 train=4 stash=64/75 remorts=1
+1794665131	cmd	Trentlin	41	30282	hyrule.are	standing	70	0	-	score		| Name:       Trentlin | Level:      41 | Class:        Monk | // | Played:     38 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794665133	cmd	Trentlin	41	30501	hyrule.are	standing	70	0	-	down		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794665137	cmd	Trentlin	41	30502	hyrule.are	standing	70	0	-	east		Level 6: Rune-Scored Hall //   Arcane sigils are scratched across the flagstones here, and a few still // glow faintly before fading, the marks where robed sorcerers blink in and	-	+
+1794665138	cmd	Trentlin	41	30502	hyrule.are	standing	70	0	-	north		The door is closed.	-	-
+1794665139	cmd	Trentlin	41	30502	hyrule.are	standing	70	0	-	consider	w	A red wizzrobe is a little below your level. // A red wizzrobe has about as many hit points as you. // Blow for blow, you would need about 8 rounds to bring a red wizzrobe down; it would need about 51 rounds for you.	-	+
+1794665141	cmd	Trentlin	41	30502	hyrule.are	standing	70	0	-	kill	w	A red wizzrobe parries your attack. // Your punch ^^^ DESTROYS ^^^ a red wizzrobe!	-	-
+1794665142	skill	Trentlin	41	30502	hyrule.are	second attack	78	79	success	(violence_update)
+1794665144	cmd	Trentlin	41	30502	hyrule.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a red wizzrobe! // Your fists of fury grazes a red wizzrobe.	-	+
+1794665144	laid	-	0	0	-	1285	component	63	a phoenix feather	17749	landoz.are	scatter
+1794665150	cmd	Trentlin	41	30502	hyrule.are	fighting	61	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a red wizzrobe! // Your fists of fury decimates a red wizzrobe!	-	+
+1794665158	cmd	Trentlin	41	30502	hyrule.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a red wizzrobe! // Your fists of fury hits a red wizzrobe.	-	+
+1794665164	cmd	Trentlin	41	30502	hyrule.are	fighting	53	0	fight	kick		Your kick grazes a red wizzrobe.	-	-
+1794665166	coin	Trentlin	41	30502	hyrule.are	+1600	loot	(violence_update)	corpse of a red wizzrobe	15346318923
+1794665166	coin	Trentlin	41	30502	hyrule.are	+145	loot	(violence_update)	corpse of a red wizzrobe	15346319068
+1794665166	coin	Trentlin	41	30502	hyrule.are	+620000	loot	(violence_update)	corpse of a red wizzrobe	15346939068
+1794665169	got	Trentlin	41	30502	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794665169	cmd	Trentlin	41	30502	hyrule.are	standing	53	0	-	get	key	You get a small key.	-	-
+1794665169	cmd	Trentlin	41	30502	hyrule.are	standing	53	0	-	look		Level 6: Rune-Scored Hall //   Arcane sigils are scratched across the flagstones here, and a few still // glow faintly before fading, the marks where robed sorcerers blink in and	-	+
+1794665173	cmd	Trentlin	41	30502	hyrule.are	standing	53	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794665176	cmd	Trentlin	41	30502	hyrule.are	standing	53	0	-	open	north	Ok.	-	-
+1794665176	cmd	Trentlin	41	30504	hyrule.are	standing	53	0	-	north		Level 6: Cramped Ember Cell //   Red-tinged walls press close around this cramped cell, and the air is sour // with the smoke of a pair of fires that have burned here longer than anyone	-	+
+1794665178	cmd	Trentlin	41	30504	hyrule.are	standing	53	0	-	list		An old man with an eyepatch has nothing to sell, and these words cost nothing: //   "Aim at the eyes of Gohma."	-	-
+1794665184	cmd	Trentlin	41	30502	hyrule.are	standing	53	0	-	south		Level 6: Rune-Scored Hall //   Arcane sigils are scratched across the flagstones here, and a few still // glow faintly before fading, the marks where robed sorcerers blink in and	-	+
+1794665184	cmd	Trentlin	41	30501	hyrule.are	standing	53	0	-	west		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794665187	cmd	Trentlin	41	30501	hyrule.are	standing	53	0	-	open	west	It's locked.	-	-
+1794665187	cmd	Trentlin	41	30501	hyrule.are	standing	53	0	-	west		The door is closed.	-	-
+1794665191	cmd	Trentlin	41	30501	hyrule.are	standing	53	0	-	unlock	west	You lack the key.	-	-
+1794665192	cmd	Trentlin	41	30502	hyrule.are	standing	53	0	-	east		Level 6: Rune-Scored Hall //   Arcane sigils are scratched across the flagstones here, and a few still // glow faintly before fading, the marks where robed sorcerers blink in and	-	+
+1794665194	cmd	Trentlin	41	30501	hyrule.are	standing	53	0	-	west		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794665195	cmd	Trentlin	41	30282	hyrule.are	standing	53	0	-	up		The Dragon's Gate //   Bare highland rock surrounds a dark entrance carved into a low outcrop, its // mouth framed by stone shaped like the head and coiled body of a dragon.	-	+
+1794665198	cmd	Trentlin	41	30282	hyrule.are	standing	53	0	-	consider	l	A red lynel is a little below your level. // A red lynel has about twice your hit points. // Blow for blow, you would need about 20 rounds to bring a red lynel down; it would need about 15 rounds for you.	-	+
+1794665208	cmd	Trentlin	41	30266	hyrule.are	standing	53	0	-	south		Ghost Hill //   A low grassy hill overlooks the graveyard to the west, its slopes dotted // with wildflowers and scarred by heavy hoofprints and black scorch marks	-	+
+1794665210	cmd	Trentlin	41	30266	hyrule.are	standing	53	0	-	consider	pea	A peahat is well below your level. // A peahat has about twice your hit points. // Blow for blow, you would need about 11 rounds to bring a peahat down; it would need about 26 rounds for you.	-	+
+1794665213	cmd	Trentlin	41	30266	hyrule.are	standing	53	0	-	kill	pea	Your punch *** DEVASTATES *** a peahat! // Your punch ^^^ DESTROYS ^^^ a peahat!	-	-
+1794665218	laid	-	0	0	-	1291	herb	34	an amaranth plant	28148	azeroth.are	scatter
+1794665218	laid	-	0	0	-	1292	component	72	a minotaur's ear	18064	icekeep.are	scatter
+1794665220	area	Trentlin	41	4207	dresden.are	hyrule.are	dresden.are	676	recall
+1794665220	cmd	Trentlin	41	4207	dresden.are	fighting	38	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794665227	cmd	Trentlin	41	4208	dresden.are	standing	38	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794665230	cmd	Trentlin	41	4207	dresden.are	standing	38	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794665231	cmd	Trentlin	41	4202	dresden.are	standing	38	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794665231	cmd	Trentlin	41	4201	dresden.are	standing	38	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794665231	cmd	Trentlin	41	2427	dresden.are	standing	38	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794665231	cmd	Trentlin	41	2427	dresden.are	standing	38	0	-	east		Alas, you cannot go that way.	-	-
+1794665232	cmd	Trentlin	41	2404	dresden.are	standing	38	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794665232	cmd	Trentlin	41	2401	dresden.are	standing	38	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794665233	cmd	Trentlin	41	2410	dresden.are	standing	38	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794665233	cmd	Trentlin	41	2411	dresden.are	standing	38	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794665233	cmd	Trentlin	41	2414	dresden.are	standing	38	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794665234	cmd	Trentlin	41	2497	dresden.are	standing	38	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794665236	quest	Trentlin	41	2497	dresden.are	rush	kill	1326	a young mage	9	htower.are	8
+1794665236	cmd	Trentlin	41	2497	dresden.are	standing	38	19	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'A bounty has been posted on a young mage.'	-	+
+1794665240	cmd	Trentlin	41	2401	dresden.are	standing	38	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794665242	cmd	Trentlin	41	2405	dresden.are	standing	38	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794665242	cmd	Trentlin	41	2433	dresden.are	standing	38	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794665242	cmd	Trentlin	41	2434	dresden.are	standing	38	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794665242	cmd	Trentlin	41	2435	dresden.are	standing	38	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794665243	cmd	Trentlin	41	2436	dresden.are	standing	38	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794665243	cmd	Trentlin	41	2437	dresden.are	standing	38	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794665243	cmd	Trentlin	41	2438	dresden.are	standing	38	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794665243	cmd	Trentlin	41	2438	dresden.are	standing	38	0	-	open	west	Ok.	-	-
+1794665244	cmd	Trentlin	41	2439	dresden.are	standing	38	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794665244	area	Trentlin	41	6000	haon.are	dresden.are	haon.are	24	west
+1794665244	cmd	Trentlin	41	6000	haon.are	standing	38	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794665244	cmd	Trentlin	41	6001	haon.are	standing	38	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794665244	cmd	Trentlin	41	6002	haon.are	standing	38	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794665245	cmd	Trentlin	41	6003	haon.are	standing	38	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794665245	cmd	Trentlin	41	6004	haon.are	standing	38	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794665245	cmd	Trentlin	41	6100	haon.are	standing	38	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794665245	cmd	Trentlin	41	6101	haon.are	standing	38	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794665246	cmd	Trentlin	41	6104	haon.are	standing	38	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1794665246	cmd	Trentlin	41	6105	haon.are	standing	38	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1794665246	cmd	Trentlin	41	6106	haon.are	standing	38	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794665246	cmd	Trentlin	41	6117	haon.are	standing	38	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794665247	cmd	Trentlin	41	6116	haon.are	standing	38	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794665247	cmd	Trentlin	41	6115	haon.are	standing	38	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794665247	cmd	Trentlin	41	6114	haon.are	standing	38	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.	-	+
+1794665247	cmd	Trentlin	41	6122	haon.are	standing	38	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.	-	+
+1794665248	cmd	Trentlin	41	6123	haon.are	standing	38	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows	-	+
+1794665248	area	Trentlin	41	9774	newthalo.are	haon.are	newthalo.are	4	south
+1794665248	cmd	Trentlin	41	9774	newthalo.are	standing	38	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.	-	+
+1794665248	cmd	Trentlin	41	9775	newthalo.are	standing	38	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]	-	-
+1794665248	area	Trentlin	41	15	connect.are	newthalo.are	connect.are	0	southwest
+1794665248	cmd	Trentlin	41	15	connect.are	standing	38	0	-	southwest		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the	-	+
+1794665249	cmd	Trentlin	41	16	connect.are	standing	38	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank	-	+
+1794665249	area	Trentlin	41	1300	htower.are	connect.are	htower.are	1	north
+1794665249	cmd	Trentlin	41	1300	htower.are	standing	38	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and	-	+
+1794665251	cmd	Trentlin	41	1308	htower.are	standing	38	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794665254	cmd	Trentlin	41	1308	htower.are	standing	38	0	-	exchange		Only heroes may trade experience for practice.	-	-
+1794665254	cleared	-	0	0	-	1170	herb	50	a head of cabbage	1396	0	scatter	mob 4613	(mobile_update)	0	-
+1794665255	cmd	Trentlin	41	1308	htower.are	standing	38	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1794665263	cmd	Trentlin	41	1305	htower.are	standing	38	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794665264	cmd	Trentlin	41	1306	htower.are	standing	38	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794665265	cmd	Trentlin	41	1305	htower.are	standing	38	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794665265	cmd	Trentlin	41	1302	htower.are	standing	38	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794665266	cmd	Trentlin	41	1301	htower.are	standing	38	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794665267	cmd	Trentlin	41	1302	htower.are	standing	38	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1794665267	cmd	Trentlin	41	1311	htower.are	standing	38	0	-	east		A small clearing //   You are in a small clearing in the shadow grove. There is charred grass // underfoot, and the signs of fire here and there. It is almost as if the	-	+
+1794665268	cmd	Trentlin	41	1312	htower.are	standing	38	0	-	north		Entrance to the High Tower //   You have reached the entrance to the high tower of sorcerery. The // tower looms above you at an incredible height. It seems to disappear	-	+
+1794665271	cmd	Trentlin	41	1312	htower.are	standing	38	0	-	consider	go	The golem is far below your level. // The golem has about half your hit points. // Blow for blow, you would need about 3 rounds to bring the golem down; it would need about 72 rounds for you.	-	+
+1794665274	cmd	Trentlin	41	1313	htower.are	standing	38	0	-	north		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the	-	+
+1794665278	cmd	Trentlin	41	1315	htower.are	standing	38	0	-	east		The Hallway //   You are in a long hallway, it seems rather unremarkable. //   The hallway continues east and back west.	-	+
+1794665278	cmd	Trentlin	41	1315	htower.are	standing	38	0	-	exits		Obvious exits: // East  - The hallway // West  - Inside the High Tower of Sorcerery	-	-
+1794665279	cmd	Trentlin	41	1330	htower.are	standing	38	0	-	east		The hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665280	cmd	Trentlin	41	1330	htower.are	standing	38	0	-	exits		Obvious exits: // North - Closed door // East  - A bend in the hallway	-	+
+1794665282	cmd	Trentlin	41	1330	htower.are	standing	38	0	-	open	north	Ok.	-	-
+1794665283	cmd	Trentlin	41	1330	htower.are	standing	38	0	-	open	south	Ok.	-	-
+1794665284	cmd	Trentlin	41	1330	htower.are	standing	38	0	-	exits		Obvious exits: // North - A store room // East  - A bend in the hallway	-	+
+1794665285	cmd	Trentlin	41	1331	htower.are	standing	38	0	-	east		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.	-	+
+1794665286	laid	-	0	0	-	1306	herb	51	a piece of kelp	7118	sewer.are	scatter
+1794665288	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	open	north	Ok.	-	-
+1794665290	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	open	south	Ok.	-	-
+1794665290	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	exits		Obvious exits: // North - A hallway // East  - Closed door	-	+
+1794665293	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	open	est	I see no est here.	-	-
+1794665293	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	east		The door is closed.	-	-
+1794665295	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	open	east	Ok.	-	-
+1794665296	cmd	Trentlin	41	1336	htower.are	standing	41	0	-	east		A guest bedroom //   You are in a small guest bedroom. A small cot is in one corner, and a // dusty mirror on one wall, other than that the room looks quite bare, and	-	+
+1794665297	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	west		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.	-	+
+1794665298	cmd	Trentlin	41	1330	htower.are	standing	41	0	-	west		The hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665298	cmd	Trentlin	41	1315	htower.are	standing	41	0	-	west		The Hallway //   You are in a long hallway, it seems rather unremarkable. //   The hallway continues east and back west.	-	+
+1794665298	cmd	Trentlin	41	1313	htower.are	standing	41	0	-	west		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the	-	+
+1794665299	cmd	Trentlin	41	1316	htower.are	standing	41	0	-	west		Dining Room //   You are in the dining area of the student mages. From the number of // tables and chairs here, you can see that this room could easily seat	-	+
+1794665301	cmd	Trentlin	41	1316	htower.are	standing	41	0	-	open	est	I see no est here.	-	-
+1794665301	cmd	Trentlin	41	1316	htower.are	standing	41	0	-	exits		Obvious exits: // East  - Inside the High Tower of Sorcerery // West  - Closed door	-	-
+1794665302	cmd	Trentlin	41	1313	htower.are	standing	41	0	-	east		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the	-	+
+1794665302	cmd	Trentlin	41	1314	htower.are	standing	41	0	-	north		Common Room //   You are in the common room. There are many apprentice warlocks here // talking and resting, playing games, comparing notes. Obviously they	-	+
+1794665303	refused	Trentlin	41	1314	htower.are	standing	41	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794665306	cmd	Trentlin	41	1314	htower.are	standing	41	0	-	exits		Obvious exits: // North - Dark Hallway // East  - Mages Tavern	-	+
+1794665310	cmd	Trentlin	41	1319	htower.are	standing	41	0	-	west		The Magic Shop //   You are in the High Tower's store of magic. Tatorious stands behind // the counter, selling all sorts of herbs, parchment and other reagents	-	+
+1794665310	refused	Trentlin	41	1319	htower.are	standing	41	0	-	(unknown)		Huh? Did you mean LIST?	refusal:unknown-command	-
+1794665311	cmd	Trentlin	41	1319	htower.are	standing	41	0	-	list		You can't buy anything here.	-	-
+1794665312	cmd	Trentlin	41	1314	htower.are	standing	41	0	-	east		Common Room //   You are in the common room. There are many apprentice warlocks here // talking and resting, playing games, comparing notes. Obviously they	-	+
+1794665312	cmd	Trentlin	41	1317	htower.are	standing	41	0	-	north		Dark Hallway //   You are in a dark hallway. It is apparent that this area is seldom // used by the regular occupants of the tower. Dust covers the floors	-	+
+1794665343	cmd	Trentlin	41	1314	htower.are	standing	41	0	-	south		Common Room //   You are in the common room. There are many apprentice warlocks here // talking and resting, playing games, comparing notes. Obviously they	-	+
+1794665344	cmd	Trentlin	41	1313	htower.are	standing	41	0	-	south		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the	-	+
+1794665344	cmd	Trentlin	41	1315	htower.are	standing	41	0	-	east		The Hallway //   You are in a long hallway, it seems rather unremarkable. //   The hallway continues east and back west.	-	+
+1794665345	cmd	Trentlin	41	1330	htower.are	standing	41	0	-	east		The hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665346	cmd	Trentlin	41	1332	htower.are	standing	41	0	-	north		A store room //   You are in a small store room. Assorted junk is piled on shelves or // leaning against walls.	-	+
+1794665347	cmd	Trentlin	41	1330	htower.are	standing	41	0	-	south		The hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665348	cmd	Trentlin	41	1331	htower.are	standing	41	0	-	east		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.	-	+
+1794665348	cmd	Trentlin	41	1334	htower.are	standing	41	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a // faint magical glow which provides enough light to see by.	-	+
+1794665351	cmd	Trentlin	41	1334	htower.are	standing	41	0	-	open	est	I see no est here.	-	-
+1794665352	cmd	Trentlin	41	1334	htower.are	standing	41	0	-	exits		Obvious exits: // North - A hallway // East  - Closed door	-	+
+1794665354	cmd	Trentlin	41	1334	htower.are	standing	41	0	-	open	east	Ok.	-	-
+1794665355	cmd	Trentlin	41	1334	htower.are	standing	41	0	-	exits		Obvious exits: // North - A hallway // East  - A guest bedroom	-	+
+1794665356	cmd	Trentlin	41	1338	htower.are	standing	41	0	-	north		A hallway //   You are in a long hallway leading from the south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665357	laid	-	0	0	-	1312	herb	34	an amaranth plant	24243	crypt.are	scatter
+1794665360	cmd	Trentlin	41	1338	htower.are	standing	44	0	-	open	east	Ok.	-	-
+1794665360	cmd	Trentlin	41	1338	htower.are	standing	44	0	-	exits		Obvious exits: // East  - The burnt room // South - A hallway	-	+
+1794665361	cmd	Trentlin	41	1340	htower.are	standing	44	0	-	up		A hallway //   You are in a long hallway leading west from here. The walls emit a faint // magical glow which provides enough light to see by. Some faint moonlight	-	+
+1794665364	cmd	Trentlin	41	1340	htower.are	standing	44	0	-	open	north	Ok.	-	-
+1794665364	cmd	Trentlin	41	1340	htower.are	standing	44	0	-	exits		Obvious exits: // North - The Apprentice's Barracks // East  - A culdesac	-	+
+1794665385	cmd	Trentlin	41	1343	htower.are	standing	44	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665388	cmd	Trentlin	41	1343	htower.are	standing	44	0	-	open	north	Ok.	-	-
+1794665389	cmd	Trentlin	41	1343	htower.are	standing	44	0	-	exits		Obvious exits: // North - The Apprentice's barracks // East  - A hallway	-	+
+1794665390	cmd	Trentlin	41	1343	htower.are	standing	44	0	-	question		Q/A channel is now OFF.	-	-
+1794665391	cmd	Trentlin	41	1343	htower.are	standing	44	0	-	question		Q/A channel is now ON.	-	-
+1794665392	cmd	Trentlin	41	1345	htower.are	standing	44	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by. Flashes of light can	-	+
+1794665395	cmd	Trentlin	41	1345	htower.are	standing	44	0	-	open	north	Ok.	-	-
+1794665395	cmd	Trentlin	41	1345	htower.are	standing	44	0	-	exits		Obvious exits: // North - The apprentice's workshop // East  - A hallway	-	+
+1794665397	cmd	Trentlin	41	1347	htower.are	standing	44	0	-	west		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.	-	+
+1794665398	cmd	Trentlin	41	1348	htower.are	standing	44	0	-	south		The hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665400	cmd	Trentlin	41	1348	htower.are	standing	44	0	-	open	west	Ok.	-	-
+1794665400	cmd	Trentlin	41	1348	htower.are	standing	44	0	-	exits		Obvious exits: // North - A bend in the hallway // South - A hallway	-	+
+1794665404	cmd	Trentlin	41	1350	htower.are	standing	44	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665406	cmd	Trentlin	41	1350	htower.are	standing	44	0	-	open	west	Ok.	-	-
+1794665406	cmd	Trentlin	41	1350	htower.are	standing	44	0	-	exits		Obvious exits: // North - The hallway // South - A hallway	-	+
+1794665408	spotted	Trentlin	41	1351	htower.are	1235	component	60	a rakshasa's claw	727	1	scatter	arrive
+1794665408	cmd	Trentlin	41	1351	htower.are	standing	44	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665409	cmd	Trentlin	41	1351	htower.are	standing	44	0	-	open	west	Ok.	-	-
+1794665410	cmd	Trentlin	41	1351	htower.are	standing	44	0	-	exits		Obvious exits: // North - A hallway // South - A bend in the hallway	-	+
+1794665411	picked	Trentlin	41	1351	htower.are	1235	component	60	a rakshasa's claw	730	3	1	scatter	get
+1794665411	got	Trentlin	41	1351	htower.are	60	a rakshasa's claw	spell component	0	0	get	the floor
+1794665411	cmd	Trentlin	41	1351	htower.are	standing	44	0	-	get	all	You get a rakshasa's claw.	-	-
+1794665411	cmd	Trentlin	41	1353	htower.are	standing	44	0	-	south		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.	-	+
+1794665412	cmd	Trentlin	41	1355	htower.are	standing	44	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665414	cmd	Trentlin	41	1355	htower.are	standing	44	0	-	open	south	Ok.	-	-
+1794665415	cmd	Trentlin	41	1355	htower.are	standing	44	0	-	exits		Obvious exits: // East  - A hallway // South - The Amphitheater	-	+
+1794665416	cmd	Trentlin	41	1356	htower.are	standing	44	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1794665418	cmd	Trentlin	41	1356	htower.are	standing	44	0	-	open	south	Ok.	-	-
+1794665418	cmd	Trentlin	41	1356	htower.are	standing	44	0	-	exits		Obvious exits: // East  - A hallway // South - The training room	-	+
+1794665419	cmd	Trentlin	41	1359	htower.are	standing	44	0	-	south		The training room //   You are in a large training room. It is filled with battle scared manikins // , and many other devices used in the practice of fighting.	-	+
