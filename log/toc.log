@@ -299205,3 +299205,399 @@ Sat Nov 14 13:35:16 2026 :: Log Alaric [13229]: n
 Sat Nov 14 13:35:16 2026 :: Log Alaric [13272]: arrived (Cobblestone Path) from 13229
 Sat Nov 14 13:35:17 2026 :: Log Alaric [13272]: n
 Sat Nov 14 13:35:17 2026 :: Log Alaric [13282]: arrived (Outside the Inn of the Last Home.) from 13272
+Sat Nov 14 13:35:18 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 14 13:35:18 2026 :: Log Alaric [13282]: on
+Sat Nov 14 13:35:18 2026 :: Log Trentlin [16004]: fists
+Sat Nov 14 13:35:19 2026 :: Log Alaric [13282]: n
+Sat Nov 14 13:35:19 2026 :: Log Alaric [13292]: arrived (Captain's Office.) from 13282
+Sat Nov 14 13:35:19 2026 :: Log Trentlin [16004]: affects off: iron skin
+Sat Nov 14 13:35:20 2026 :: Log Alaric [13292]: on
+Sat Nov 14 13:35:20 2026 :: Log Alaric [13292]: n
+Sat Nov 14 13:35:20 2026 :: Log Alaric [13302]: arrived (Captain's Meeting room.) from 13292
+Sat Nov 14 13:35:22 2026 :: Log Alaric [13302]: on
+Sat Nov 14 13:35:22 2026 :: Log Alaric [13302]: n
+Sat Nov 14 13:35:22 2026 :: Log Alaric [13312]: arrived (Captain's Waiting Room.) from 13302
+Sat Nov 14 13:35:23 2026 :: Log Alaric [13312]: oe
+Sat Nov 14 13:35:23 2026 :: Log Alaric [13312]: e
+Sat Nov 14 13:35:23 2026 :: Log Alaric [13313]: arrived (Administration Hallway) from 13312
+Sat Nov 14 13:35:24 2026 :: Log Trentlin [16004]: fists
+Sat Nov 14 13:35:24 2026 :: Log Trentlin [16004]: killed The drunk pirate
+Sat Nov 14 13:35:24 2026 :: Log Trentlin [16004]: coin +1 platinum
+Sat Nov 14 13:35:24 2026 :: Log Trentlin [16004]: coin +5 silver
+Sat Nov 14 13:35:24 2026 :: Log Trentlin [16004]: coin +6 copper
+Sat Nov 14 13:35:24 2026 :: Log Trentlin [16004]: coin +2 gold
+Sat Nov 14 13:35:25 2026 :: Log Alaric [13313]: s
+Sat Nov 14 13:35:25 2026 :: Log Alaric [13303]: arrived (Administration Hallway) from 13313
+Sat Nov 14 13:35:27 2026 :: Log Alaric [13303]: n
+Sat Nov 14 13:35:27 2026 :: Log Alaric [13313]: arrived (Administration Hallway) from 13303
+Sat Nov 14 13:35:27 2026 :: Log Alaric [13313]: e
+Sat Nov 14 13:35:27 2026 :: Log Alaric [13314]: arrived (Administration Hallway) from 13313
+Sat Nov 14 13:35:28 2026 :: Log Alaric [13314]: os
+Sat Nov 14 13:35:28 2026 :: Log Alaric [13314]: s
+Sat Nov 14 13:35:28 2026 :: Log Alaric [13304]: arrived (Guards Room.) from 13314
+Sat Nov 14 13:35:29 2026 :: Log Alaric [13304]: n
+Sat Nov 14 13:35:29 2026 :: Log Alaric [13314]: arrived (Administration Hallway) from 13304
+Sat Nov 14 13:35:31 2026 :: Log Alaric [13314]: e
+Sat Nov 14 13:35:31 2026 :: Log Alaric [13315]: arrived (Administration Hallway) from 13314
+Sat Nov 14 13:35:31 2026 :: Log Alaric [13315]: e
+Sat Nov 14 13:35:31 2026 :: Log Alaric [13316]: arrived (Administration Hallway) from 13315
+Sat Nov 14 13:35:32 2026 :: Log Alaric [13316]: s
+Sat Nov 14 13:35:32 2026 :: Log Alaric [13306]: arrived (Administration Hallway) from 13316
+Sat Nov 14 13:35:33 2026 :: Log Trentlin [16004]: iron
+Sat Nov 14 13:35:33 2026 :: Log Alaric [13306]: s
+Sat Nov 14 13:35:33 2026 :: Log Alaric [13296]: arrived (Administration Hallway) from 13306
+Sat Nov 14 13:35:34 2026 :: Log Trentlin [16004]: iron
+Sat Nov 14 13:35:34 2026 :: Log Alaric [13296]: s
+Sat Nov 14 13:35:34 2026 :: Log Alaric [13286]: arrived (Administration Hallway) from 13296
+Sat Nov 14 13:35:35 2026 :: Log Trentlin [16004]: iron
+Sat Nov 14 13:35:36 2026 :: Log Alaric [13286]: s
+Sat Nov 14 13:35:36 2026 :: Log Alaric [13276]: arrived (Administration Hallway) from 13286
+Sat Nov 14 13:35:37 2026 :: Log Alaric [13276]: os
+Sat Nov 14 13:35:38 2026 :: Log Alaric [13276]: s
+Sat Nov 14 13:35:38 2026 :: Log Alaric [13270]: arrived (Hallway Intersection.) from 13276
+Sat Nov 14 13:35:40 2026 :: Log Alaric [13270]: ow
+Sat Nov 14 13:35:41 2026 :: Log Alaric [13270]: oe
+Sat Nov 14 13:35:42 2026 :: Log Alaric [13270]: os
+Sat Nov 14 13:35:42 2026 :: Log Alaric [13270]: ex
+Sat Nov 14 13:35:43 2026 :: Log Trentlin [16004]: s
+Sat Nov 14 13:35:43 2026 :: Log Trentlin [16003]: arrived (Along the Pier) from 16004
+Sat Nov 14 13:35:43 2026 :: Log Trentlin [16003]: s
+Sat Nov 14 13:35:43 2026 :: Log Trentlin [16002]: arrived (Along the Pier) from 16003
+Sat Nov 14 13:35:43 2026 :: Log Alaric [13270]: w
+Sat Nov 14 13:35:43 2026 :: Log Alaric [13264]: arrived (Entrance Hall.) from 13270
+Sat Nov 14 13:35:43 2026 :: Log Trentlin [16002]: s
+Sat Nov 14 13:35:43 2026 :: Log Trentlin [16001]: arrived (Along the Pier) from 16002
+Sat Nov 14 13:35:44 2026 :: Log Alaric [13264]: ex
+Sat Nov 14 13:35:44 2026 :: Log Trentlin [16001]: s
+Sat Nov 14 13:35:44 2026 :: Log Trentlin [16000]: arrived (Beginning of the Pier) from 16001
+Sat Nov 14 13:35:45 2026 :: Log Alaric [13264]: ow
+Sat Nov 14 13:35:45 2026 :: Log Alaric [13264]: ex
+Sat Nov 14 13:35:45 2026 :: Log Trentlin [16000]: s
+Sat Nov 14 13:35:45 2026 :: Log Trentlin [41]: arrived (The new pier) from 16000
+Sat Nov 14 13:35:46 2026 :: Log Trentlin [41]: s
+Sat Nov 14 13:35:46 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 41
+Sat Nov 14 13:35:47 2026 :: Log Alaric [13264]: n
+Sat Nov 14 13:35:48 2026 :: Log Trentlin [9794]: w
+Sat Nov 14 13:35:48 2026 :: Log Trentlin [9793]: arrived (On a road) from 9794
+Sat Nov 14 13:35:48 2026 :: Log Alaric [13264]: w
+Sat Nov 14 13:35:48 2026 :: Log Alaric [13263]: arrived (Townguard Administration Building.) from 13264
+Sat Nov 14 13:35:48 2026 :: Log Trentlin [9793]: w
+Sat Nov 14 13:35:48 2026 :: Log Trentlin [9792]: arrived (On a road) from 9793
+Sat Nov 14 13:35:48 2026 :: Log Trentlin [9792]: w
+Sat Nov 14 13:35:48 2026 :: Log Trentlin [9791]: arrived (On a road) from 9792
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9791]: w
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9790]: arrived (On a road) from 9791
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9790]: w
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9790
+Sat Nov 14 13:35:49 2026 :: Log Alaric [13263]: ex
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9668]: w
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9668
+Sat Nov 14 13:35:49 2026 :: Log Alaric [13263]: w
+Sat Nov 14 13:35:49 2026 :: Log Alaric [13262]: arrived (Dusty road.) from 13263
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9531]: w
+Sat Nov 14 13:35:49 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9531
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9530]: w
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9530
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9529]: w
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9529
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9528]: w
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9528
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9527]: w
+Sat Nov 14 13:35:50 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9527
+Sat Nov 14 13:35:51 2026 :: Log Trentlin [9517]: w
+Sat Nov 14 13:35:51 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9517
+Sat Nov 14 13:35:51 2026 :: Log Alaric [13262]: w
+Sat Nov 14 13:35:51 2026 :: Log Alaric [13229]: arrived (End of the Main Road) from 13262
+Sat Nov 14 13:35:51 2026 :: Log Trentlin [9506]: w
+Sat Nov 14 13:35:51 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9506
+Sat Nov 14 13:35:51 2026 :: Log Trentlin [9509]: w
+Sat Nov 14 13:35:51 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9509
+Sat Nov 14 13:35:51 2026 :: Log Alaric [13229]: n
+Sat Nov 14 13:35:51 2026 :: Log Alaric [13272]: arrived (Cobblestone Path) from 13229
+Sat Nov 14 13:35:52 2026 :: Log Alaric [13272]: n
+Sat Nov 14 13:35:52 2026 :: Log Alaric [13282]: arrived (Outside the Inn of the Last Home.) from 13272
+Sat Nov 14 13:35:52 2026 :: Log Trentlin [9526]: w
+Sat Nov 14 13:35:52 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9526
+Sat Nov 14 13:35:52 2026 :: Log Trentlin [9525]: w
+Sat Nov 14 13:35:52 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9525
+Sat Nov 14 13:35:53 2026 :: Log Trentlin [9524]: w
+Sat Nov 14 13:35:53 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9524
+Sat Nov 14 13:35:53 2026 :: Log Trentlin [9523]: w
+Sat Nov 14 13:35:53 2026 :: Log Alaric [13282]: w
+Sat Nov 14 13:35:54 2026 :: Log Alaric [13282]: ex
+Sat Nov 14 13:35:55 2026 :: Log Alaric [13282]: ow
+Sat Nov 14 13:35:55 2026 :: Log Alaric [13282]: ex
+Sat Nov 14 13:35:56 2026 :: Log Trentlin [9523]: open west
+Sat Nov 14 13:35:57 2026 :: Log Trentlin [9523]: w
+Sat Nov 14 13:35:57 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 9523
+Sat Nov 14 13:35:59 2026 :: Log Trentlin [9669]: e
+Sat Nov 14 13:35:59 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Nov 14 13:35:59 2026 :: Log Trentlin [9523]: e
+Sat Nov 14 13:35:59 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Sat Nov 14 13:36:00 2026 :: Log Alaric [13282]: ow
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9524]: e
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9525]: e
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9526]: e
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9509]: e
+Sat Nov 14 13:36:00 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Sat Nov 14 13:36:01 2026 :: Log Alaric [13282]: w
+Sat Nov 14 13:36:01 2026 :: Log Alaric [13281]: arrived (Inn of the Last Home.) from 13282
+Sat Nov 14 13:36:02 2026 :: Log Trentlin [9506]: n
+Sat Nov 14 13:36:02 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9506
+Sat Nov 14 13:36:02 2026 :: Log Trentlin [9515]: n
+Sat Nov 14 13:36:02 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9515
+Sat Nov 14 13:36:02 2026 :: Log Trentlin [9518]: n
+Sat Nov 14 13:36:02 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9518
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9519]: n
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9519
+Sat Nov 14 13:36:03 2026 :: Log Alaric [13281]: ex
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9520]: n
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9520
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9521]: n
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9522]: n
+Sat Nov 14 13:36:03 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [9667]: n
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9667
+Sat Nov 14 13:36:04 2026 :: Log Alaric [13281]: n
+Sat Nov 14 13:36:04 2026 :: Log Alaric [13291]: arrived (North End of Bar.) from 13281
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [9781]: n
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9781
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [9782]: n
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 9782
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [9783]: n
+Sat Nov 14 13:36:04 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 9783
+Sat Nov 14 13:36:05 2026 :: Log Trentlin [64]: n
+Sat Nov 14 13:36:05 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 64
+Sat Nov 14 13:36:05 2026 :: Log Alaric [13291]: s
+Sat Nov 14 13:36:05 2026 :: Log Alaric [13281]: arrived (Inn of the Last Home.) from 13291
+Sat Nov 14 13:36:05 2026 :: Log Trentlin [29001]: n
+Sat Nov 14 13:36:05 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Sat Nov 14 13:36:05 2026 :: Log Alaric [13281]: w
+Sat Nov 14 13:36:05 2026 :: Log Alaric [13280]: arrived (West end of Bar.) from 13281
+Sat Nov 14 13:36:06 2026 :: Log Trentlin [29002]: n
+Sat Nov 14 13:36:06 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29002
+Sat Nov 14 13:36:06 2026 :: Log Trentlin [29003]: n
+Sat Nov 14 13:36:06 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29003
+Sat Nov 14 13:36:06 2026 :: Log Alaric [13280]: e
+Sat Nov 14 13:36:06 2026 :: Log Alaric [13281]: arrived (Inn of the Last Home.) from 13280
+Sat Nov 14 13:36:07 2026 :: Log Alaric [13281]: e
+Sat Nov 14 13:36:07 2026 :: Log Alaric [13282]: arrived (Outside the Inn of the Last Home.) from 13281
+Sat Nov 14 13:36:07 2026 :: Log Trentlin [29004]: s
+Sat Nov 14 13:36:07 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Sat Nov 14 13:36:08 2026 :: Log Trentlin [29003]: ne
+Sat Nov 14 13:36:08 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29003
+Sat Nov 14 13:36:08 2026 :: Log Alaric [13282]: n
+Sat Nov 14 13:36:08 2026 :: Log Alaric [13292]: arrived (Captain's Office.) from 13282
+Sat Nov 14 13:36:08 2026 :: Log Trentlin [29060]: e
+Sat Nov 14 13:36:09 2026 :: Log Trentlin [29060]: get key
+Sat Nov 14 13:36:10 2026 :: Log Alaric [13292]: n
+Sat Nov 14 13:36:10 2026 :: Log Alaric [13302]: arrived (Captain's Meeting room.) from 13292
+Sat Nov 14 13:36:11 2026 :: Log Trentlin [29060]: unlock esat
+Sat Nov 14 13:36:12 2026 :: Log Alaric [13302]: n
+Sat Nov 14 13:36:12 2026 :: Log Alaric [13312]: arrived (Captain's Waiting Room.) from 13302
+Sat Nov 14 13:36:13 2026 :: Log Alaric [13312]: e
+Sat Nov 14 13:36:13 2026 :: Log Alaric [13313]: arrived (Administration Hallway) from 13312
+Sat Nov 14 13:36:14 2026 :: Log Alaric [13313]: s
+Sat Nov 14 13:36:14 2026 :: Log Alaric [13303]: arrived (Administration Hallway) from 13313
+Sat Nov 14 13:36:14 2026 :: Log Trentlin [29060]: unlock east
+Sat Nov 14 13:36:15 2026 :: Log Trentlin [29060]: open east
+Sat Nov 14 13:36:15 2026 :: Log Alaric [13303]: s
+Sat Nov 14 13:36:15 2026 :: Log Alaric [13293]: arrived (Administration Hallway) from 13303
+Sat Nov 14 13:36:16 2026 :: Log Alaric [13293]: e
+Sat Nov 14 13:36:16 2026 :: Log Alaric [13294]: arrived (Administration Hallway) from 13293
+Sat Nov 14 13:36:16 2026 :: Log Trentlin [29060]: drop key
+Sat Nov 14 13:36:17 2026 :: Log Trentlin [29060]: e
+Sat Nov 14 13:36:17 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sat Nov 14 13:36:17 2026 :: Log Alaric [13294]: ex
+Sat Nov 14 13:36:18 2026 :: Log Trentlin [29061]: s
+Sat Nov 14 13:36:18 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sat Nov 14 13:36:18 2026 :: Log Alaric [13294]: e
+Sat Nov 14 13:36:18 2026 :: Log Alaric [13295]: arrived (Lieutenant's Reception Area.) from 13294
+Sat Nov 14 13:36:18 2026 :: Log Trentlin [29062]: s
+Sat Nov 14 13:36:18 2026 :: Log Trentlin [29063]: arrived (Corridor) from 29062
+Sat Nov 14 13:36:19 2026 :: Log Alaric [13295]: ex
+Sat Nov 14 13:36:19 2026 :: Log Trentlin [29063]: s
+Sat Nov 14 13:36:19 2026 :: Log Trentlin [29065]: arrived (Service Hallway) from 29063
+Sat Nov 14 13:36:19 2026 :: Log Trentlin [29065]: s
+Sat Nov 14 13:36:19 2026 :: Log Trentlin [29065]: s
+Sat Nov 14 13:36:19 2026 :: Log Alaric [13295]: on
+Sat Nov 14 13:36:19 2026 :: Log Trentlin [29065]: e
+Sat Nov 14 13:36:19 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29065
+Sat Nov 14 13:36:20 2026 :: Log Trentlin [29066]: e
+Sat Nov 14 13:36:20 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29066
+Sat Nov 14 13:36:20 2026 :: Log Trentlin [29067]: e
+Sat Nov 14 13:36:20 2026 :: Log Trentlin [29070]: arrived (Service Hallway) from 29067
+Sat Nov 14 13:36:21 2026 :: Log Trentlin [29070]: e
+Sat Nov 14 13:36:21 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29070
+Sat Nov 14 13:36:22 2026 :: Log Alaric [13295]: look li
+Sat Nov 14 13:36:22 2026 :: Log Trentlin [29071]: n
+Sat Nov 14 13:36:22 2026 :: Log Trentlin [29080]: arrived (Hallway) from 29071
+Sat Nov 14 13:36:22 2026 :: Log Trentlin [29080]: n
+Sat Nov 14 13:36:22 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29080
+Sat Nov 14 13:36:23 2026 :: Log Trentlin [29082]: n
+Sat Nov 14 13:36:23 2026 :: Log Trentlin [29085]: arrived (Engineering Department) from 29082
+Sat Nov 14 13:36:23 2026 :: Log Alaric [13295]: n
+Sat Nov 14 13:36:23 2026 :: Log Alaric [13305]: arrived (Lieutenant's Office.) from 13295
+Sat Nov 14 13:36:23 2026 :: Log Trentlin [29085]: n
+Sat Nov 14 13:36:23 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29085
+Sat Nov 14 13:36:23 2026 :: Log Trentlin [29089]: n
+Sat Nov 14 13:36:23 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29089
+Sat Nov 14 13:36:24 2026 :: Log Trentlin [29090]: n
+Sat Nov 14 13:36:24 2026 :: Log Trentlin [29103]: arrived (Checkpoint) from 29090
+Sat Nov 14 13:36:25 2026 :: Log Alaric [13305]: look li
+Sat Nov 14 13:36:25 2026 :: Log Trentlin [29103]: s
+Sat Nov 14 13:36:26 2026 :: Log Trentlin [29103]: flee
+Sat Nov 14 13:36:26 2026 :: Log Trentlin [29103]: flee
+Sat Nov 14 13:36:27 2026 :: Log Trentlin [29103]: flee
+Sat Nov 14 13:36:27 2026 :: Log Trentlin [29103]: flee
+Sat Nov 14 13:36:27 2026 :: Log Trentlin [29103]: flee
+Sat Nov 14 13:36:27 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29103
+Sat Nov 14 13:36:27 2026 :: Log Trentlin [29090]: flee
+Sat Nov 14 13:36:28 2026 :: Log Trentlin [29090]: flee
+Sat Nov 14 13:36:29 2026 :: Log Alaric [13305]: s
+Sat Nov 14 13:36:29 2026 :: Log Alaric [13295]: arrived (Lieutenant's Reception Area.) from 13305
+Sat Nov 14 13:36:31 2026 :: Log Trentlin [29090]: open east
+Sat Nov 14 13:36:32 2026 :: Log Trentlin [29090]: e
+Sat Nov 14 13:36:32 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29090
+Sat Nov 14 13:36:34 2026 :: Log Trentlin [29093]: sca
+Sat Nov 14 13:36:35 2026 :: Log Trentlin [29093]: s
+Sat Nov 14 13:36:35 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29093
+Sat Nov 14 13:36:36 2026 :: Log Trentlin [29095]: k bla
+Sat Nov 14 13:36:39 2026 :: Log Trentlin [29095]: fists
+Sat Nov 14 13:36:46 2026 :: Log Trentlin [29095]: fists
+Sat Nov 14 13:36:49 2026 :: Log Alaric [13295]: west
+Sat Nov 14 13:36:49 2026 :: Log Alaric [13294]: arrived (Administration Hallway) from 13295
+Sat Nov 14 13:36:49 2026 :: Log Alaric [13294]: west
+Sat Nov 14 13:36:49 2026 :: Log Alaric [13293]: arrived (Administration Hallway) from 13294
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13293]: north
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13303]: arrived (Administration Hallway) from 13293
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13303]: north
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13313]: arrived (Administration Hallway) from 13303
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13313]: east
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13314]: arrived (Administration Hallway) from 13313
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13314]: south
+Sat Nov 14 13:36:50 2026 :: Log Alaric [13304]: arrived (Guards Room.) from 13314
+Sat Nov 14 13:36:54 2026 :: Log Trentlin [29095]: fists
+Sat Nov 14 13:36:55 2026 :: Log Trentlin [29095]: killed a blacksmith
+Sat Nov 14 13:36:55 2026 :: Log Trentlin [29095]: coin +3 platinum
+Sat Nov 14 13:36:55 2026 :: Log Trentlin [29095]: coin +34 silver
+Sat Nov 14 13:36:55 2026 :: Log Trentlin [29095]: coin +40 copper
+Sat Nov 14 13:36:55 2026 :: Log Trentlin [29095]: coin +67 gold
+Sat Nov 14 13:37:03 2026 :: Log Trentlin [29095]: sac co
+Sat Nov 14 13:37:03 2026 :: Log Trentlin [29095]: coin +80 copper
+Sat Nov 14 13:37:04 2026 :: Log Trentlin [29095]: sca
+Sat Nov 14 13:37:05 2026 :: Log Trentlin [29095]: e
+Sat Nov 14 13:37:05 2026 :: Log Trentlin [29096]: arrived (Metalworks) from 29095
+Sat Nov 14 13:37:06 2026 :: Log Trentlin [29096]: k bla
+Sat Nov 14 13:37:09 2026 :: Log Alaric [13304]: north
+Sat Nov 14 13:37:09 2026 :: Log Alaric [13314]: arrived (Administration Hallway) from 13304
+Sat Nov 14 13:37:09 2026 :: Log Alaric [13314]: west
+Sat Nov 14 13:37:09 2026 :: Log Alaric [13313]: arrived (Administration Hallway) from 13314
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13313]: south
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13303]: arrived (Administration Hallway) from 13313
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13303]: south
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13293]: arrived (Administration Hallway) from 13303
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13293]: east
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13294]: arrived (Administration Hallway) from 13293
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13294]: south
+Sat Nov 14 13:37:10 2026 :: Log Alaric [13284]: arrived (Administration Hallway) from 13294
+Sat Nov 14 13:37:11 2026 :: Log Alaric [13284]: south
+Sat Nov 14 13:37:11 2026 :: Log Alaric [13274]: arrived (Administration Hallway) from 13284
+Sat Nov 14 13:37:11 2026 :: Log Alaric [13274]: east
+Sat Nov 14 13:37:11 2026 :: Log Alaric [13275]: arrived (Administration Hallway) from 13274
+Sat Nov 14 13:37:11 2026 :: Log Alaric [13275]: open north
+Sat Nov 14 13:37:11 2026 :: Log Alaric [13275]: north
+Sat Nov 14 13:37:11 2026 :: Log Alaric [13285]: arrived (Guards Room.) from 13275
+Sat Nov 14 13:37:13 2026 :: Log Alaric [13285]: get all
+Sat Nov 14 13:37:14 2026 :: Log Alaric [13285]: recal
+Sat Nov 14 13:37:14 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 13285
+Sat Nov 14 13:37:14 2026 :: Log Trentlin [29096]: fists
+Sat Nov 14 13:37:15 2026 :: Log Alaric [2497]: aq co
+Sat Nov 14 13:37:15 2026 :: Log Alaric [2497]: copper +184954968
+Sat Nov 14 13:37:15 2026 :: Log Alaric [2497]: quest complete: 184p 95g 49s 68c, 16 quest points (streak bonus 30%)
+Sat Nov 14 13:37:15 2026 :: Snapshot of Alaric taken before quest: Alaric.20261114_133715.quest (PRESTORE Alaric to see it).
+Sat Nov 14 13:37:17 2026 :: Log Alaric [2497]: aq ga no
+Sat Nov 14 13:37:17 2026 :: Log Alaric [2497]: score
+Sat Nov 14 13:37:18 2026 :: Log Alaric [2497]: who
+Sat Nov 14 13:37:23 2026 :: Log Trentlin [29096]: flee
+Sat Nov 14 13:37:24 2026 :: Log Trentlin [29096]: flee
+Sat Nov 14 13:37:25 2026 :: Log Trentlin [29096]: flee
+Sat Nov 14 13:37:25 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29096
+Sat Nov 14 13:37:25 2026 :: Log Trentlin [29095]: flee
+Sat Nov 14 13:37:27 2026 :: Log Trentlin [29095]: n
+Sat Nov 14 13:37:27 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29095
+Sat Nov 14 13:37:27 2026 :: Log Trentlin [29093]: w
+Sat Nov 14 13:37:27 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29093
+Sat Nov 14 13:37:28 2026 :: Log Trentlin [29090]: s
+Sat Nov 14 13:37:28 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29090
+Sat Nov 14 13:37:28 2026 :: Log Alaric [2497]: who
+Sat Nov 14 13:37:29 2026 :: Log Trentlin [29089]: sleep
+Sat Nov 14 13:37:31 2026 :: Log Trentlin [29089]: gro
+Sat Nov 14 13:37:33 2026 :: Log Trentlin [29089]: who
+Sat Nov 14 13:37:43 2026 :: Log Alaric [2497]: i
+Sat Nov 14 13:37:45 2026 :: Log Alaric [2497]: quit
+Sat Nov 14 13:37:45 2026 :: Alaric has quit.
+Sat Nov 14 13:37:45 2026 :: [QUIT] Player rejoined the real world.
+Sat Nov 14 13:38:40 2026 :: Log Trentlin [29089]: n
+Sat Nov 14 13:38:40 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29089
+Sat Nov 14 13:38:41 2026 :: Log Trentlin [29090]: affects off: iron skin, levitate
+Sat Nov 14 13:38:41 2026 :: Log Trentlin [29090]: e
+Sat Nov 14 13:38:41 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29090
+Sat Nov 14 13:38:43 2026 :: Log Trentlin [29093]: iron
+Sat Nov 14 13:38:51 2026 :: Log Trentlin [29093]: levitate
+Sat Nov 14 13:38:58 2026 :: Log Trentlin [29093]: s
+Sat Nov 14 13:38:58 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29093
+Sat Nov 14 13:39:01 2026 :: Treasure goblin: vanished from room 13073 (Underwater Cave, lakes.are) (too long in one area).
+Sat Nov 14 13:39:05 2026 :: Log Trentlin [29095]: fists
+Sat Nov 14 13:39:12 2026 :: Log Trentlin [29095]: fists
+Sat Nov 14 13:39:17 2026 :: Log Trentlin [29095]: killed a blacksmith
+Sat Nov 14 13:39:17 2026 :: Log Trentlin [29095]: coin +3 platinum
+Sat Nov 14 13:39:17 2026 :: Log Trentlin [29095]: coin +34 silver
+Sat Nov 14 13:39:17 2026 :: Log Trentlin [29095]: coin +40 copper
+Sat Nov 14 13:39:17 2026 :: Log Trentlin [29095]: coin +67 gold
+Sat Nov 14 13:39:20 2026 :: Log Trentlin [29095]: sac co
+Sat Nov 14 13:39:20 2026 :: Log Trentlin [29095]: coin +80 copper
+Sat Nov 14 13:39:20 2026 :: Log Trentlin [29095]: sca
+Sat Nov 14 13:39:21 2026 :: Log Trentlin [29095]: e
+Sat Nov 14 13:39:21 2026 :: Log Trentlin [29096]: arrived (Metalworks) from 29095
+Sat Nov 14 13:39:23 2026 :: Log Trentlin [29096]: sca
+Sat Nov 14 13:39:24 2026 :: Log Trentlin [29096]: n
+Sat Nov 14 13:39:24 2026 :: Log Trentlin [29094]: arrived (Metalworks) from 29096
+Sat Nov 14 13:39:25 2026 :: Log Trentlin [29094]: k bla
+Sat Nov 14 13:39:28 2026 :: Log Trentlin [29094]: fists
+Sat Nov 14 13:39:41 2026 :: Log Trentlin [29094]: fists
+Sat Nov 14 13:39:47 2026 :: Log Trentlin [29094]: fists
+Sat Nov 14 13:39:47 2026 :: Log Trentlin [29094]: level 40 -> 41 (earned)
+Sat Nov 14 13:39:47 2026 :: Trentlin has achieved level 41!
+Sat Nov 14 13:39:47 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261114_133947.level (PRESTORE Trentlin to see it).
+Sat Nov 14 13:39:47 2026 :: Log Trentlin [29094]: killed a blacksmith
+Sat Nov 14 13:39:47 2026 :: Log Trentlin [29094]: coin +3 platinum
+Sat Nov 14 13:39:47 2026 :: Log Trentlin [29094]: coin +34 silver
+Sat Nov 14 13:39:47 2026 :: Log Trentlin [29094]: coin +40 copper
+Sat Nov 14 13:39:47 2026 :: Log Trentlin [29094]: coin +67 gold
+Sat Nov 14 13:39:57 2026 :: Log Trentlin [29094]: sac co
+Sat Nov 14 13:39:57 2026 :: Log Trentlin [29094]: coin +80 copper
+Sat Nov 14 13:39:57 2026 :: Log Trentlin [29094]: l
+Sat Nov 14 13:39:59 2026 :: Log Trentlin [29094]: sk
+Sat Nov 14 13:40:00 2026 :: Log Trentlin [29094]: sca
+Sat Nov 14 13:40:01 2026 :: Log Trentlin [29094]: w
+Sat Nov 14 13:40:01 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29094
+Sat Nov 14 13:40:02 2026 :: Log Trentlin [29093]: w
+Sat Nov 14 13:40:02 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29093
+Sat Nov 14 13:40:03 2026 :: Log Trentlin [29090]: s
+Sat Nov 14 13:40:03 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29090
+Sat Nov 14 13:40:04 2026 :: Log Trentlin [29089]: reca
+Sat Nov 14 13:40:04 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29089
+Sat Nov 14 13:40:05 2026 :: Log Trentlin [4207]: e
+Sat Nov 14 13:40:05 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov 14 13:40:05 2026 :: Log Trentlin [4202]: n
+Sat Nov 14 13:40:05 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sat Nov 14 13:40:06 2026 :: Log Trentlin [4203]: n
+Sat Nov 14 13:40:06 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Nov 14 13:40:06 2026 :: Log Trentlin [4210]: n
+Sat Nov 14 13:40:06 2026 :: Log Trentlin [4210]: sleep
+Sat Nov 14 13:40:16 2026 :: Log Trentlin [4210]: affects off: iron skin

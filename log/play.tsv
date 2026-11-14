@@ -27265,3 +27265,270 @@
 1794663316	cmd	Alaric	57	13229	solace.are	standing	100	0	-	north		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.	-	+
 1794663316	cmd	Alaric	57	13272	solace.are	standing	100	0	-	north		Cobblestone Path //   You are walking on a cobblestone path. It leads to a large building to the // north.	-	+
 1794663317	cmd	Alaric	57	13282	solace.are	standing	100	0	-	north		Outside the Inn of the Last Home. //   The Inn of the Last Home rests within the trunk of a huge vallenwood tree. // Warm laughter tumbles from the inn. The worn steps wind around the heavy	-	+
+1794663318	cmd	Alaric	57	13282	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663318	cmd	Trentlin	40	16004	pirate.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The drunk pirate! // Your fists of fury devastates The drunk pirate!	-	+
+1794663319	cmd	Alaric	57	13292	solace.are	standing	100	0	-	north		Captain's Office. //   This is the office of the Captain of the Guard. Leather couches // and a solid marble desk sit against the far wall. A weapons	-	+
+1794663319	laid	-	0	0	-	1027	component	63	a phoenix feather	15101	campus.are	scatter
+1794663320	cmd	Alaric	57	13292	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663320	cmd	Alaric	57	13302	solace.are	standing	100	0	-	north		Captain's Meeting room. //   You are standing in the meeting room of the Captain of the Guard. This // is where he holds his administrative meetings and other official functions.	-	+
+1794663322	cmd	Alaric	57	13302	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663322	cmd	Alaric	57	13312	solace.are	standing	100	0	-	north		Captain's Waiting Room. //   This is the Reception area for the Captain of the Guard.  A large portrait // of the Captain is on the north wall.  With the amount of extravagance and	-	+
+1794663323	cmd	Alaric	57	13312	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663323	cmd	Alaric	57	13313	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663324	coin	Trentlin	40	16004	pirate.are	+1000000	loot	fists	corpse of The drunk pirate	15321726311
+1794663324	coin	Trentlin	40	16004	pirate.are	+500	loot	fists	corpse of The drunk pirate	15321726811
+1794663324	coin	Trentlin	40	16004	pirate.are	+6	loot	fists	corpse of The drunk pirate	15321726817
+1794663324	coin	Trentlin	40	16004	pirate.are	+20000	loot	fists	corpse of The drunk pirate	15321746817
+1794663324	cmd	Trentlin	40	16004	pirate.are	fighting	91	1	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The drunk pirate! // The drunk pirate is DEAD!!	-	+
+1794663325	cmd	Alaric	57	13303	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663327	cmd	Alaric	57	13313	solace.are	standing	100	0	-	north		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663327	cmd	Alaric	57	13314	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663328	cmd	Alaric	57	13314	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663328	cmd	Alaric	57	13304	solace.are	standing	100	0	-	south		Guards Room. //   There are many barrels and chests of food in here. All of it looks spoiled. // This is where the town guards hang out when not on duty.	-	+
+1794663329	cmd	Alaric	57	13314	solace.are	standing	100	0	-	north		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663331	cmd	Alaric	57	13315	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663331	cmd	Alaric	57	13316	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663332	cmd	Alaric	57	13306	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663333	cmd	Trentlin	40	16004	pirate.are	standing	91	0	-	iron		You lost your concentration.	-	-
+1794663333	cmd	Alaric	57	13296	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this buillls, and intricate patterns are carved in the // gold laden floors. This doesn't look like an admistration building,	-	+
+1794663334	cmd	Trentlin	40	16004	pirate.are	standing	91	0	-	iron		You lost your concentration.	-	-
+1794663334	cmd	Alaric	57	13286	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663335	cmd	Trentlin	40	16004	pirate.are	standing	91	0	-	iron		Your skin hardens.	-	-
+1794663336	cmd	Alaric	57	13276	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663337	cmd	Alaric	57	13276	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663338	cmd	Alaric	57	13270	solace.are	standing	100	0	-	south		Hallway Intersection. //   This is the intersection of four large hallways. Light streams in from the // stainglass skylight above. Large double doors close off each hallway.	-	+
+1794663340	cmd	Alaric	57	13270	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663341	cmd	Alaric	57	13270	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663342	cmd	Alaric	57	13270	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663342	cmd	Alaric	57	13270	solace.are	standing	100	0	-	exits		Obvious exits: // North - Administration Hallway // East  - End of Long Hall	-	+
+1794663343	cmd	Trentlin	40	16003	pirate.are	standing	91	0	-	south		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794663343	cmd	Trentlin	40	16002	pirate.are	standing	91	0	-	south		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794663343	cmd	Alaric	57	13264	solace.are	standing	100	0	-	west		Entrance Hall. //   The entrance hall is made entirely of marble and granite. It seems sort of // extravagant for a townguard administration building. The 30 foot high	-	+
+1794663343	cmd	Trentlin	40	16001	pirate.are	standing	91	0	-	south		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794663344	cmd	Alaric	57	13264	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Hallway Intersection. // South - Marble Corridor.	-	+
+1794663344	cmd	Trentlin	40	16000	pirate.are	standing	91	0	-	south		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794663345	cmd	Alaric	57	13264	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663345	cmd	Alaric	57	13264	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Hallway Intersection. // South - Marble Corridor.	-	+
+1794663345	area	Trentlin	40	41	connect.are	pirate.are	connect.are	40	south
+1794663345	cmd	Trentlin	40	41	connect.are	standing	91	0	-	south		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794663346	area	Trentlin	40	9794	newthalo.are	connect.are	newthalo.are	1	south
+1794663346	cmd	Trentlin	40	9794	newthalo.are	standing	91	0	-	south		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794663347	cmd	Alaric	57	13264	solace.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794663348	cmd	Trentlin	40	9793	newthalo.are	standing	91	0	-	west		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794663348	cmd	Alaric	57	13263	solace.are	standing	100	0	-	west		Townguard Administration Building. //   Before you stands the Townguard Administration Building. This is a large // building with various statues and other artwork decorating the building.	-	+
+1794663348	cmd	Trentlin	40	9792	newthalo.are	standing	91	0	-	west		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794663348	cmd	Trentlin	40	9791	newthalo.are	standing	91	0	-	west		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794663349	cmd	Trentlin	40	9790	newthalo.are	standing	91	0	-	west		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794663349	cmd	Trentlin	40	9668	newthalo.are	standing	91	0	-	west		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794663349	cmd	Alaric	57	13263	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Entrance Hall. // West  - Dusty road.	-	-
+1794663349	cmd	Trentlin	40	9531	newthalo.are	standing	91	0	-	west		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794663349	cmd	Alaric	57	13262	solace.are	standing	100	0	-	west		Dusty road. //   This dusty road looks well traveled. To the East you see the Townguard // Administration Building.	-	+
+1794663349	cmd	Trentlin	40	9530	newthalo.are	standing	91	0	-	west		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794663350	cmd	Trentlin	40	9529	newthalo.are	standing	91	0	-	west		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794663350	cmd	Trentlin	40	9528	newthalo.are	standing	91	0	-	west		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794663350	cmd	Trentlin	40	9527	newthalo.are	standing	91	0	-	west		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794663350	cmd	Trentlin	40	9517	newthalo.are	standing	91	0	-	west		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1794663351	cmd	Trentlin	40	9506	newthalo.are	standing	91	0	-	west		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794663351	cmd	Alaric	57	13229	solace.are	standing	100	0	-	west		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.	-	+
+1794663351	cmd	Trentlin	40	9509	newthalo.are	standing	91	0	-	west		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794663351	cmd	Trentlin	40	9526	newthalo.are	standing	91	0	-	west		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794663351	cmd	Alaric	57	13272	solace.are	standing	100	0	-	north		Cobblestone Path //   You are walking on a cobblestone path. It leads to a large building to the // north.	-	+
+1794663352	cmd	Alaric	57	13282	solace.are	standing	100	0	-	north		Outside the Inn of the Last Home. //   The Inn of the Last Home rests within the trunk of a huge vallenwood tree. // Warm laughter tumbles from the inn. The worn steps wind around the heavy	-	+
+1794663352	cmd	Trentlin	40	9525	newthalo.are	standing	91	0	-	west		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794663352	cmd	Trentlin	40	9524	newthalo.are	standing	91	0	-	west		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794663353	cmd	Trentlin	40	9523	newthalo.are	standing	91	0	-	west		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794663353	cmd	Trentlin	40	9523	newthalo.are	standing	91	0	-	west		The gate is closed.	-	-
+1794663353	cmd	Alaric	57	13282	solace.are	standing	100	0	-	west		The door is closed.	-	-
+1794663354	cmd	Alaric	57	13282	solace.are	standing	100	0	-	exits		Obvious exits: // North - Captain's Office. // South - Cobblestone Path	-	+
+1794663355	cmd	Alaric	57	13282	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663355	cmd	Alaric	57	13282	solace.are	standing	100	0	-	exits		Obvious exits: // North - Captain's Office. // South - Cobblestone Path	-	+
+1794663356	cmd	Trentlin	40	9523	newthalo.are	standing	91	0	-	open	west	Ok.	-	-
+1794663357	cmd	Trentlin	40	9669	newthalo.are	standing	91	0	-	west		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794663359	cmd	Trentlin	40	9523	newthalo.are	standing	91	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794663359	cmd	Trentlin	40	9524	newthalo.are	standing	91	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794663360	cmd	Alaric	57	13282	solace.are	standing	100	0	-	open		It's already open.	-	-
+1794663360	cmd	Trentlin	40	9525	newthalo.are	standing	91	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794663360	cmd	Trentlin	40	9526	newthalo.are	standing	91	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794663360	cmd	Trentlin	40	9509	newthalo.are	standing	91	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794663360	cmd	Trentlin	40	9506	newthalo.are	standing	91	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794663361	cmd	Alaric	57	13281	solace.are	standing	100	0	-	west		Inn of the Last Home. //   The Inn of the Last Home never changes. The polished wooden bar curves // around several living branches. An old man weaves stories in the corner and	-	+
+1794663362	cmd	Trentlin	40	9515	newthalo.are	standing	91	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794663362	cmd	Trentlin	40	9518	newthalo.are	standing	91	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794663362	cmd	Trentlin	40	9519	newthalo.are	standing	91	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794663363	cmd	Trentlin	40	9520	newthalo.are	standing	91	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794663363	cmd	Alaric	57	13281	solace.are	standing	100	0	-	exits		Obvious exits: // North - North End of Bar. // East  - Outside the Inn of the Last Home.	-	+
+1794663363	cmd	Trentlin	40	9521	newthalo.are	standing	91	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794663363	cmd	Trentlin	40	9522	newthalo.are	standing	91	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794663363	cmd	Trentlin	40	9667	newthalo.are	standing	91	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1794663364	cmd	Trentlin	40	9781	newthalo.are	standing	91	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1794663364	cmd	Alaric	57	13291	solace.are	standing	100	0	-	north		North End of Bar. //   A smoky fire struggles in the blackened stove, feebly challenging // the gloom in the town. In sharp contrast to the usual lively crowd,	-	+
+1794663364	cmd	Trentlin	40	9782	newthalo.are	standing	91	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1794663364	cmd	Trentlin	40	9783	newthalo.are	standing	91	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1794663364	area	Trentlin	40	64	connect.are	newthalo.are	connect.are	18	north
+1794663364	cmd	Trentlin	40	64	connect.are	standing	91	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1794663365	area	Trentlin	40	29001	korzath1.are	connect.are	korzath1.are	1	north
+1794663365	cmd	Trentlin	40	29001	korzath1.are	standing	91	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1794663365	cmd	Alaric	57	13281	solace.are	standing	100	0	-	south		Inn of the Last Home. //   The Inn of the Last Home never changes. The polished wooden bar curves // around several living branches. An old man weaves stories in the corner and	-	+
+1794663365	cmd	Trentlin	40	29002	korzath1.are	standing	91	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1794663365	cmd	Alaric	57	13280	solace.are	standing	100	0	-	west		West end of Bar. //   You are standing of the west end of the bar. This is a darker corner where // less seems to occur. Maybe a beer and a nap would be nice.	-	+
+1794663366	cmd	Trentlin	40	29003	korzath1.are	standing	91	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794663366	cmd	Trentlin	40	29004	korzath1.are	standing	91	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive	-	+
+1794663366	cmd	Alaric	57	13281	solace.are	standing	100	0	-	east		Inn of the Last Home. //   The Inn of the Last Home never changes. The polished wooden bar curves // around several living branches. An old man weaves stories in the corner and	-	+
+1794663367	cmd	Alaric	57	13282	solace.are	standing	100	0	-	east		Outside the Inn of the Last Home. //   The Inn of the Last Home rests within the trunk of a huge vallenwood tree. // Warm laughter tumbles from the inn. The worn steps wind around the heavy	-	+
+1794663367	cmd	Trentlin	40	29003	korzath1.are	standing	91	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794663368	cmd	Trentlin	40	29060	korzath1.are	standing	91	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794663368	cmd	Alaric	57	13292	solace.are	standing	100	0	-	north		Captain's Office. //   This is the office of the Captain of the Guard. Leather couches // and a solid marble desk sit against the far wall. A weapons	-	+
+1794663368	cmd	Trentlin	40	29060	korzath1.are	standing	91	0	-	east		The door is closed.	-	-
+1794663369	got	Trentlin	40	29060	korzath1.are	29002	a crystal key	key	20	1000000	get	the floor
+1794663369	cmd	Trentlin	40	29060	korzath1.are	standing	91	0	-	get	key	You get a crystal key.	-	-
+1794663370	cmd	Alaric	57	13302	solace.are	standing	100	0	-	north		Captain's Meeting room. //   You are standing in the meeting room of the Captain of the Guard. This // is where he holds his administrative meetings and other official functions.	-	+
+1794663371	cmd	Trentlin	40	29060	korzath1.are	standing	91	0	-	unlock	esat	I see no esat here.	-	-
+1794663372	cmd	Alaric	57	13312	solace.are	standing	100	0	-	north		Captain's Waiting Room. //   This is the Reception area for the Captain of the Guard.  A large portrait // of the Captain is on the north wall.  With the amount of extravagance and	-	+
+1794663373	cmd	Alaric	57	13313	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663374	cmd	Alaric	57	13303	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663374	cmd	Trentlin	40	29060	korzath1.are	standing	91	0	-	unlock	east	*Click*	-	-
+1794663375	cmd	Trentlin	40	29060	korzath1.are	standing	91	0	-	open	east	Ok.	-	-
+1794663375	cmd	Alaric	57	13293	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663376	cmd	Alaric	57	13294	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663376	cmd	Trentlin	40	29060	korzath1.are	standing	91	0	-	drop	key	You drop a crystal key.	-	-
+1794663377	cmd	Trentlin	40	29061	korzath1.are	standing	91	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794663377	cmd	Alaric	57	13294	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Lieutenant's Reception Area. // South - Administration Hallway	-	+
+1794663378	cmd	Trentlin	40	29062	korzath1.are	standing	91	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794663378	cmd	Alaric	57	13295	solace.are	standing	100	0	-	east		Lieutenant's Reception Area. //   This is the waiting room for meetings with the Lieutenant Commander. // The furniture is made of vallenwood and the walls are covered with	-	+
+1794663378	cmd	Trentlin	40	29063	korzath1.are	standing	91	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside	-	+
+1794663379	cmd	Alaric	57	13295	solace.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // West  - Administration Hallway	-	-
+1794663379	cmd	Trentlin	40	29065	korzath1.are	standing	91	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794663379	cmd	Trentlin	40	29065	korzath1.are	standing	91	0	-	south		Alas, you cannot go that way.	-	-
+1794663379	cmd	Trentlin	40	29065	korzath1.are	standing	91	0	-	south		Alas, you cannot go that way.	-	-
+1794663379	cmd	Alaric	57	13295	solace.are	standing	100	0	-	open		Ok.	-	-
+1794663379	cmd	Trentlin	40	29066	korzath1.are	standing	91	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.	-	+
+1794663380	cmd	Trentlin	40	29067	korzath1.are	standing	91	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.	-	+
+1794663380	cmd	Trentlin	40	29070	korzath1.are	standing	91	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've	-	+
+1794663381	cmd	Trentlin	40	29071	korzath1.are	standing	91	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.	-	+
+1794663382	cmd	Alaric	57	13295	solace.are	standing	100	0	-	look	li	She looks very busy. // The Secretary says 'Sorry, but the Lieutenant is extremely busy today'. // The Secretary says 'Please sit down and have a seat in the meantime'.	-	+
+1794663382	cmd	Trentlin	40	29080	korzath1.are	standing	91	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.	-	+
+1794663382	cmd	Trentlin	40	29082	korzath1.are	standing	91	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the	-	+
+1794663383	cmd	Trentlin	40	29085	korzath1.are	standing	91	0	-	north		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare	-	+
+1794663383	cmd	Alaric	57	13305	solace.are	standing	100	0	-	north		Lieutenant's Office. //   This is the Office of the Lieutenant Commander. He basicially does // nothing all day. Hence the fingerpainting tacked to all the walls.	-	+
+1794663383	cmd	Trentlin	40	29089	korzath1.are	standing	91	0	-	north		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel	-	+
+1794663383	cmd	Trentlin	40	29090	korzath1.are	standing	91	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794663384	cmd	Trentlin	40	29103	korzath1.are	standing	91	0	-	north		Checkpoint //   Korzath's secret guard protect this checkpoint.  Not many secrets have // been kept from you thus far but the buck stops here as far as Korzath is	-	+
+1794663385	cmd	Alaric	57	13305	solace.are	standing	100	0	-	look	li	The Lieutenant seems like a happy fellow. Although he seems to haveT // the brain of a 7 year old. His steel armor is covered with finger paint. // Despite his mental problems he is quite a challenge. If you would like	-	+
+1794663385	refused	Trentlin	40	29103	korzath1.are	fighting	71	0	fight	south		No way!  You are still fighting!	refusal:position	-
+1794663386	cmd	Trentlin	40	29103	korzath1.are	fighting	65	0	fight	flee		A secret guard is overcome with a feeling of despair and flees the battle.	-	-
+1794663386	cmd	Trentlin	40	29103	korzath1.are	fighting	65	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794663387	cmd	Trentlin	40	29103	korzath1.are	fighting	65	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794663387	cmd	Trentlin	40	29103	korzath1.are	fighting	65	0	fight	flee		A secret guard is overcome with a feeling of despair and flees the battle.	-	-
+1794663387	cmd	Trentlin	40	29090	korzath1.are	fighting	65	0	fight	flee		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794663387	cmd	Trentlin	40	29090	korzath1.are	standing	65	0	-	flee		You aren't fighting anyone.	-	-
+1794663388	cmd	Trentlin	40	29090	korzath1.are	standing	65	0	-	flee		You aren't fighting anyone.	-	-
+1794663389	cmd	Alaric	57	13295	solace.are	standing	100	0	-	south		Lieutenant's Reception Area. //   This is the waiting room for meetings with the Lieutenant Commander. // The furniture is made of vallenwood and the walls are covered with	-	+
+1794663391	cmd	Trentlin	40	29090	korzath1.are	standing	65	0	-	open	east	Ok.	-	-
+1794663392	cmd	Trentlin	40	29093	korzath1.are	standing	65	0	-	east		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794663394	cmd	Trentlin	40	29093	korzath1.are	standing	65	0	-	scan		a blacksmith                       -to the North. // a blacksmith                       -to the East. // a blacksmith                       -to the South.	-	-
+1794663395	cmd	Trentlin	40	29095	korzath1.are	standing	65	0	-	south		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794663396	cmd	Trentlin	40	29095	korzath1.are	standing	65	0	-	kill	bla	A blacksmith parries your attack. // Your punch ^^^ DESTROYS ^^^ a blacksmith!	-	-
+1794663397	laid	-	0	0	-	1076	herb	50	a head of cabbage	4647	dresden.are	scatter
+1794663397	laid	-	0	0	-	1077	component	83	a vial of thessalhydra venom	7108	sewer.are	scatter
+1794663399	cmd	Trentlin	40	29095	korzath1.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a blacksmith! // Your fists of fury scratches a blacksmith.	-	+
+1794663406	cmd	Trentlin	40	29095	korzath1.are	fighting	56	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a blacksmith. // Your fists of fury grazes a blacksmith.	-	+
+1794663409	cmd	Alaric	57	13294	solace.are	standing	100	0	-	west		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663409	cmd	Alaric	57	13293	solace.are	standing	100	0	-	west		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663410	cmd	Alaric	57	13303	solace.are	standing	100	0	-	north		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663410	cmd	Alaric	57	13313	solace.are	standing	100	0	-	north		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663410	cmd	Alaric	57	13314	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663410	cmd	Alaric	57	13304	solace.are	standing	100	0	-	south		Guards Room. //   There are many barrels and chests of food in here. All of it looks spoiled. // This is where the town guards hang out when not on duty.	-	+
+1794663414	cmd	Trentlin	40	29095	korzath1.are	fighting	38	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a blacksmith. // Your fists of fury wounds a blacksmith.	-	+
+1794663415	coin	Trentlin	40	29095	korzath1.are	+3000000	loot	(violence_update)	corpse of a blacksmith	15324746817
+1794663415	coin	Trentlin	40	29095	korzath1.are	+3400	loot	(violence_update)	corpse of a blacksmith	15324750217
+1794663415	coin	Trentlin	40	29095	korzath1.are	+40	loot	(violence_update)	corpse of a blacksmith	15324750257
+1794663415	coin	Trentlin	40	29095	korzath1.are	+670000	loot	(violence_update)	corpse of a blacksmith	15325420257
+1794663423	coin	Trentlin	40	29095	korzath1.are	+80	loot	sacrifice	corpse of a blacksmith	15325420337
+1794663423	cmd	Trentlin	40	29095	korzath1.are	standing	38	0	-	sacrifice	co	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794663424	cmd	Trentlin	40	29095	korzath1.are	standing	38	0	-	scan		a blacksmith                       -to the East.	-	-
+1794663425	cmd	Trentlin	40	29096	korzath1.are	standing	38	0	-	east		Metalworks //   This corner of the metalworks facility seems strange.  There is an anvil // here but no blacksmiths are using this particular one.  Bins full of finished	-	+
+1794663426	cmd	Trentlin	40	29096	korzath1.are	standing	38	0	-	kill	bla	Your punch *** DEVASTATES *** a blacksmith! // A blacksmith parries your attack.	-	-
+1794663429	cmd	Alaric	57	13314	solace.are	standing	100	0	-	north		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663429	cmd	Alaric	57	13313	solace.are	standing	100	0	-	west		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663430	cmd	Alaric	57	13303	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663430	cmd	Alaric	57	13293	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663430	cmd	Alaric	57	13294	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663430	cmd	Alaric	57	13284	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663431	cmd	Alaric	57	13274	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663431	cmd	Alaric	57	13275	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the	-	+
+1794663431	cmd	Alaric	57	13275	solace.are	standing	100	0	-	open	north	Ok.	-	-
+1794663431	cmd	Alaric	57	13285	solace.are	standing	100	0	-	north		Guards Room. //   There are many barrels and chests of food in here. All of it looks spoiled. // This is where the town guards hang out when not on duty.	-	+
+1794663433	got	Alaric	57	13285	solace.are	25041	The Sceptre of Gravestone	trash	59	0	get	the floor
+1794663433	cmd	Alaric	57	13285	solace.are	standing	100	0	-	get	all	You get The Sceptre of Gravestone.	-	-
+1794663434	area	Alaric	57	2497	dresden.are	solace.are	dresden.are	121	recall
+1794663434	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794663434	cmd	Trentlin	40	29096	korzath1.are	fighting	31	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a blacksmith. // Your fists of fury *** DEMOLISHES *** a blacksmith!	-	+
+1794663435	coin	Alaric	57	2497	dresden.are	+184954968	quests	aquest	-	26952556841
+1794663435	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2229->2229 offered=16 daily=4->4 coin=+184954968 kill=15412914 streak=3 level=57 target=0
+1794663435	cmd	Alaric	57	2497	dresden.are	standing	100	33	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Sceptre of Gravestone to Questor Thews. // Questor Thews says 'Excellent work! The realm is in your debt!'	success:-	+
+1794663437	cmd	Alaric	57	2497	dresden.are	standing	100	8	-	aquest	ga no	You safely collect 16 quest points.	-	-
+1794663437	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=296/983 align=922 exp=252749 coin=2128494999 bank=24824061842 qp=2245 prac=36 train=76 stash=93/350 remorts=3
+1794663437	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794663438	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663441	laid	-	0	0	-	1088	herb	44	a sprig of aconite	3725	school.are	scatter
+1794663441	laid	-	0	0	-	1089	herb	36	a belladonna plant	3232	school.are	scatter
+1794663443	cmd	Trentlin	40	29096	korzath1.are	fighting	16	0	fight	flee		A blacksmith is overcome with a feeling of despair and flees the battle.	-	-
+1794663444	cmd	Trentlin	40	29096	korzath1.are	fighting	16	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794663445	cmd	Trentlin	40	29095	korzath1.are	fighting	16	0	fight	flee		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794663445	cmd	Trentlin	40	29095	korzath1.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1794663447	cmd	Trentlin	40	29093	korzath1.are	standing	16	0	-	north		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794663447	cmd	Trentlin	40	29090	korzath1.are	standing	16	0	-	west		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794663448	cmd	Trentlin	40	29089	korzath1.are	standing	16	0	-	south		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel	-	+
+1794663448	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663449	cmd	Trentlin	40	29089	korzath1.are	standing	16	0	-	sleep		You go to sleep.	-	-
+1794663451	cmd	Trentlin	40	29089	korzath1.are	sleeping	16	0	-	group		Trentlin's group: // [40 Monk ] Trentlin          144/ 850 hp 1415/1738 mana  233/ 474 mv 93844 xp	-	-
+1794663453	cmd	Trentlin	40	29089	korzath1.are	sleeping	16	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663463	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a multi-colored key ring //      (Glowing) British's amulet	-	+
+1794663465	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 58:1/0/0 10:1/0/0 2435:2/0/0 2434:1/0/0 4445:1/0/0 4457:1/0/0 1100:1/0/0 1125:1/0/0 1122:4/0/0 1133:2/0/0 1115:6/0/0 1114:1/0/0 1119:1/0/0 1111:2/0/0 1110:4/0/0 1118:1/0/0 1120:1/0/0 1103:6/0/0 1104:2/0/0 1126:3/0/0 1121:1/0/0 1128:2/0/0 1112:1/0/0 1108:1/0/0 1109:4/0/0 1105:3/1/0 4201:1/0/0 4202:1/0/0 4468:1/0/0 53:1/0/0 4444:1/0/0 4456:1/0/0 6000:1/0/0 6005:1/0/0 6003:2/0/0 13003:1/0/0 13001:1/0/0 13215:24/0/0 13241:2/0/0 13201:1/0/0 13246:1/0/0 13245:1/0/0 13247:1/0/0 13204:8/0/0 13206:2/0/0 13228:1/0/0 13227:1/0/0 13236:3/0/0 13235:3/0/0 13234:3/0/0 13233:3/0/0
+1794663465	sightings	Alaric	57	2497	dresden.are	mob	13231:1/0/0 13230:1/0/0 13229:1/0/0 13242:1/0/0 13248:1/0/0 13202:1/0/0
+1794663465	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 6011:1/0 25041:1/1
+1794663465	session	Alaric	57	2497	dresden.are	quit	521s	+0 levels	+0 exp	+246606625 copper	1 kills	0 deaths	2 quests	269 commands	0 refused	coin: loot 1c, quests 246p 60g 66s 24c	spent on: none	exp: none
+1794663520	cmd	Trentlin	40	29090	korzath1.are	standing	100	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794663521	laid	-	0	0	-	1090	herb	44	a sprig of aconite	25176	underdrk.are	scatter
+1794663521	laid	-	0	0	-	1091	herb	50	a head of cabbage	25107	underdrk.are	scatter
+1794663521	cmd	Trentlin	40	29093	korzath1.are	standing	100	0	-	east		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794663523	cmd	Trentlin	40	29093	korzath1.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794663531	cmd	Trentlin	40	29093	korzath1.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794663538	cmd	Trentlin	40	29095	korzath1.are	standing	100	0	-	south		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794663542	skill	Trentlin	40	29095	korzath1.are	enhanced damage	91	92	success	(violence_update)
+1794663545	cmd	Trentlin	40	29095	korzath1.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a blacksmith. // Your fists of fury *** DEVASTATES *** a blacksmith!	-	+
+1794663552	cmd	Trentlin	40	29095	korzath1.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a blacksmith. // Your fists of fury MASSACRES a blacksmith!	-	+
+1794663557	coin	Trentlin	40	29095	korzath1.are	+3000000	loot	(violence_update)	corpse of a blacksmith	15328420337
+1794663557	coin	Trentlin	40	29095	korzath1.are	+3400	loot	(violence_update)	corpse of a blacksmith	15328423737
+1794663557	coin	Trentlin	40	29095	korzath1.are	+40	loot	(violence_update)	corpse of a blacksmith	15328423777
+1794663557	coin	Trentlin	40	29095	korzath1.are	+670000	loot	(violence_update)	corpse of a blacksmith	15329093777
+1794663560	coin	Trentlin	40	29095	korzath1.are	+80	loot	sacrifice	corpse of a blacksmith	15329093857
+1794663560	cmd	Trentlin	40	29095	korzath1.are	standing	67	0	-	sacrifice	co	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794663560	cmd	Trentlin	40	29095	korzath1.are	standing	67	0	-	scan		You don't see anything near you.	-	-
+1794663561	cmd	Trentlin	40	29096	korzath1.are	standing	67	0	-	east		Metalworks //   This corner of the metalworks facility seems strange.  There is an anvil // here but no blacksmiths are using this particular one.  Bins full of finished	-	+
+1794663563	cmd	Trentlin	40	29096	korzath1.are	standing	67	0	-	scan		a blacksmith                       -to the North.	-	-
+1794663564	cmd	Trentlin	40	29094	korzath1.are	standing	67	0	-	north		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794663565	cmd	Trentlin	40	29094	korzath1.are	standing	67	0	-	kill	bla	Your punch ^^^ DESTROYS ^^^ a blacksmith! // A blacksmith dodges your attack.	-	-
+1794663568	cmd	Trentlin	40	29094	korzath1.are	fighting	58	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a blacksmith! // Your fists of fury injures a blacksmith.	-	+
+1794663581	cmd	Trentlin	40	29094	korzath1.are	fighting	36	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a blacksmith! // Your fists of fury hits a blacksmith.	-	+
+1794663587	level	Trentlin	41	29094	korzath1.are	40	41	Monk 	1	94648	-1	fists
+1794663587	coin	Trentlin	41	29094	korzath1.are	+3000000	loot	fists	corpse of a blacksmith	15332093857
+1794663587	coin	Trentlin	41	29094	korzath1.are	+3400	loot	fists	corpse of a blacksmith	15332097257
+1794663587	coin	Trentlin	41	29094	korzath1.are	+40	loot	fists	corpse of a blacksmith	15332097297
+1794663587	coin	Trentlin	41	29094	korzath1.are	+670000	loot	fists	corpse of a blacksmith	15332767297
+1794663587	cmd	Trentlin	41	29094	korzath1.are	fighting	36	20	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a blacksmith! // Your fists of fury mauls a blacksmith.	-	+
+1794663597	coin	Trentlin	41	29094	korzath1.are	+80	loot	sacrifice	-	15332767377
+1794663597	cmd	Trentlin	41	29094	korzath1.are	standing	35	0	-	sacrifice	co	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794663597	cmd	Trentlin	41	29094	korzath1.are	standing	35	0	-	look		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making	-	+
+1794663599	cmd	Trentlin	41	29094	korzath1.are	standing	35	0	-	skills		Level  1: dagger              75%      hand to hand        98%       //           recall             100%       // Level  3: kick                81%      	-	+
+1794663600	cmd	Trentlin	41	29094	korzath1.are	standing	35	0	-	scan		You don't see anything near you.	-	-
+1794663601	cmd	Trentlin	41	29093	korzath1.are	standing	35	0	-	west		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The	-	+
+1794663602	cmd	Trentlin	41	29090	korzath1.are	standing	35	0	-	west		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and	-	+
+1794663603	cmd	Trentlin	41	29089	korzath1.are	standing	35	0	-	south		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel	-	+
+1794663604	area	Trentlin	41	4207	dresden.are	korzath1.are	dresden.are	239	recall
+1794663604	cmd	Trentlin	41	4207	dresden.are	standing	35	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794663605	cmd	Trentlin	41	4202	dresden.are	standing	35	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794663605	cmd	Trentlin	41	4203	dresden.are	standing	35	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794663606	cmd	Trentlin	41	4210	dresden.are	standing	35	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794663606	cmd	Trentlin	41	4210	dresden.are	standing	35	0	-	north		Alas, you cannot go that way.	-	-
+1794663606	cmd	Trentlin	41	4210	dresden.are	standing	35	0	-	sleep		You go to sleep.	-	-
