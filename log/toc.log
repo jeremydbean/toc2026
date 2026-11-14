@@ -301076,3 +301076,25 @@ Sat Nov 14 14:59:38 2026 :: Treasure goblin: vanished from room 5653 (Bottom of 
 Sat Nov 14 15:01:35 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 6 of 6 in 6 hours).
 Sat Nov 14 15:01:35 2026 :: Connection guard: 178.156.181.172 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.181.172 lifts it.
 Sat Nov 14 15:04:34 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 15:06:40 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 15:08:18 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Nov 14 15:08:22 2026 :: Log WebAdmin: fsave
+Sat Nov 14 15:08:28 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Nov 14 15:08:31 2026 :: Received signal 15; saving players and shutting down.
+Sat Nov 14 15:08:31 2026 :: Connection guard: 99.62.115.159 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 15:08:31 2026 :: Normal termination of game.
+Sat Nov 14 15:08:31 2026 ::  INIT OK 
+Sat Nov 14 15:08:31 2026 :: walkto_load: 157 destinations.
+Sat Nov 14 15:08:31 2026 :: changes_load: 338 entries.
+Sat Nov 14 15:08:31 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 49 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Sat Nov 14 15:08:31 2026 :: Serials: 962 character files read, 4 with a serial.
+Sat Nov 14 15:08:31 2026 :: Connection guard: 38 addresses remembered from before the boot, 7 paused now.
+Sat Nov 14 15:08:31 2026 :: Passwords: SHA-512 crypt self-test passed.
+Sat Nov 14 15:08:31 2026 :: Recovery ledger: 403 records (0 from before the check), 4 requests, 8 players.
+Sat Nov 14 15:08:31 2026 :: ROM is ready to rock on port 9000.
+Sat Nov 14 15:08:32 2026 :: Treasure goblin: appeared.
+Sat Nov 14 15:08:32 2026 :: Automated backup started.
+Sat Nov 14 15:08:32 2026 :: Daily backup started.
+Sat Nov 14 15:08:33 2026 :: Automated backup complete.
+Sat Nov 14 15:08:34 2026 :: Daily backup complete.
+Sat Nov 14 15:09:58 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
