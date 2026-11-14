@@ -301054,3 +301054,10 @@ Sat Nov 14 14:17:55 2026 :: Connection guard: last hour 19 closed without a word
 Sat Nov 14 14:19:19 2026 :: Treasure goblin: vanished from room 13421 (Bloody Stairway., hell.are) (too long in one area).
 Sat Nov 14 14:20:59 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 14 14:24:30 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 14:26:03 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 14:29:05 2026 :: Sock.sinaddr:  4.148.240.235
+Sat Nov 14 14:29:05 2026 :: EOF encountered on read.
+Sat Nov 14 14:29:05 2026 :: Connection guard: 4.148.240.235 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 14 14:29:05 2026 :: Sock.sinaddr:  4.148.240.235
+Sat Nov 14 14:29:05 2026 :: Connection guard: 4.148.240.235 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sat Nov 14 14:29:24 2026 :: Treasure goblin: vanished from room 1454 (The main chamber, htower.are) (too long in one area).
