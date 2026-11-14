@@ -297873,3 +297873,5 @@ Sat Nov 14 05:03:25 2026 :: Log Alaric [2]: arrived (Limbo) from 2497
 Sat Nov 14 05:03:25 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2
 Sat Nov 14 05:03:25 2026 :: Log Alaric [2497]: who
 Sat Nov 14 05:03:25 2026 :: Log Alaric [2497]: worth
+Sat Nov 14 05:07:31 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 05:07:48 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
