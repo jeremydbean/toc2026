@@ -58,3 +58,26 @@
 1794526407	got	Trentlin	40	1	Monk 	4208	out	obj=30708 obj_name=a_pair_of_pebble-hide_mitts type=armor obj_level=14 how=stash
 1794571239	got	Trentlin	40	1	Monk 	4208	out	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
 1794571243	got	Trentlin	40	1	Monk 	4208	out	obj=30686 obj_name=the_four-crowned_lion_shield type=armor obj_level=52 how=get
+1794664544	enter	Trentlin	41	1	Monk 	30200	over	from=out how=enter hp=85
+1794664544	crumbled	Trentlin	41	1	Monk 	30200	over	dungeon=0 maps=0 compasses=0 keys=6 guardian_keys=0 why=stray how=(hyrule_crumble_update)
+1794664556	leave	Trentlin	41	1	Monk 	30205	over	to=L3 how=down secs=12 hp=85
+1794664556	enter	Trentlin	41	1	Monk 	30437	L3	from=over how=down hp=85
+1794664560	got	Trentlin	41	1	Monk 	30436	L3	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794664585	got	Trentlin	41	1	Monk 	30448	L3	obj=30339 obj_name=the_Heart_Guard_of_the_Eagle type=armor obj_level=8 how=get
+1794664620	seal	Trentlin	41	1	Monk 	30448	L3	obj=30503 obj_name=a_cracked_east_wall dir=1 how=bomb
+1794664654	engage	Trentlin	41	1	Monk 	30449	L3	foe=30305 foe_name=Manhandla foe_hp=100 foe_max=619 party=1 levels=41 classes=Monk  hps=90 buffs=-
+1794664659	guardian-down	Trentlin	41	1	Monk 	30449	L3	foe=30305 foe_name=Manhandla secs=5 foe_max=619 party=1 levels=41 classes=Monk  hps=89 buffs=-
+1794664659	got	Trentlin	41	1	Monk 	30449	L3	obj=30632 obj_name=the_Manji's_key type=key obj_level=14 how=(violence_update)
+1794664659	cleared	Trentlin	41	1	Monk 	30449	L3	foes=0
+1794664669	got	Trentlin	41	1	Monk 	30449	L3	obj=30359 obj_name=the_Heart_Guard_of_the_Manji type=armor obj_level=20 how=get
+1794664704	got	Trentlin	41	1	Monk 	30449	L3	obj=30715 obj_name=a_bloom-plated_breastplate type=armor obj_level=20 how=get
+1794664732	got	Trentlin	41	1	Monk 	30449	L3	obj=30664 obj_name=a_flower-crowned_helm type=armor obj_level=20 how=get
+1794664747	got	Trentlin	41	1	Monk 	30449	L3	obj=30662 obj_name=a_pair_of_four-bloom_gauntlets type=armor obj_level=20 how=get
+1794664761	leave	Trentlin	41	1	Monk 	30437	L3	to=over how=up secs=205 hp=88
+1794664761	enter	Trentlin	41	1	Monk 	30205	over	from=L3 how=up hp=88
+1794664761	crumbled	Trentlin	41	1	Monk 	30205	over	dungeon=3 maps=0 compasses=0 keys=0 guardian_keys=1 why=left how=(hyrule_crumble_update)
+1794664781	leave	Trentlin	41	1	Monk 	30323	over	to=L5 how=down secs=20 hp=88
+1794664781	enter	Trentlin	41	1	Monk 	30476	L5	from=over how=down hp=88
+1794664789	seal	Trentlin	41	1	Monk 	30477	L5	obj=30502 obj_name=a_cracked_north_wall dir=0 how=bomb
+1794664815	cleared	Trentlin	41	1	Monk 	30480	L5	foes=0
+1794664818	got	Trentlin	41	1	Monk 	30480	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get

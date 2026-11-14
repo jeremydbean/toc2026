@@ -28010,3 +28010,163 @@
 1794664438	laid	-	0	0	-	1218	component	63	a phoenix feather	29566	lud.are	scatter
 1794664438	cmd	Trentlin	41	4210	dresden.are	standing	67	0	-	sleep		You go to sleep.	-	-
 1794664457	cmd	Trentlin	41	4210	dresden.are	sleeping	67	0	-	equipment		You are using: // <used as light>     (Invis) (Magical) (Glowing) the Sceptre of Might // <worn on finger>    (Invis) (Magical) a sapphire ring	-	+
+1794664530	cmd	Trentlin	41	4210	dresden.are	sleeping	85	0	-	wake		You wake and stand up.	-	-
+1794664531	cmd	Trentlin	41	4203	dresden.are	standing	85	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794664531	cmd	Trentlin	41	4204	dresden.are	standing	85	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794664532	cmd	Trentlin	41	4204	dresden.are	standing	85	0	-	west		Alas, you cannot go that way.	-	-
+1794664532	cmd	Trentlin	41	4207	dresden.are	standing	85	0	-	south		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794664533	cmd	Trentlin	41	4208	dresden.are	standing	85	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794664535	coin	Trentlin	41	4208	dresden.are	-500000	spent	heal	-	15339583895
+1794664535	cmd	Trentlin	41	4208	dresden.are	standing	85	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794664540	cmd	Trentlin	41	4207	dresden.are	standing	85	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794664541	area	Trentlin	41	3700	school.are	dresden.are	school.are	105	up
+1794664541	cmd	Trentlin	41	3700	school.are	standing	85	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794664541	cmd	Trentlin	41	3772	school.are	standing	85	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794664541	cmd	Trentlin	41	3795	school.are	standing	85	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794664541	area	Trentlin	41	15000	campus.are	school.are	campus.are	0	enter
+1794664541	cmd	Trentlin	41	15000	campus.are	standing	85	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794664542	cmd	Trentlin	41	15001	campus.are	standing	85	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794664542	cmd	Trentlin	41	15002	campus.are	standing	85	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794664542	cmd	Trentlin	41	15003	campus.are	standing	85	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794664542	cmd	Trentlin	41	15004	campus.are	standing	85	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794664543	cmd	Trentlin	41	15010	campus.are	standing	85	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794664543	cmd	Trentlin	41	15011	campus.are	standing	85	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794664543	cmd	Trentlin	41	15012	campus.are	standing	85	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794664543	cmd	Trentlin	41	15013	campus.are	standing	85	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794664544	cmd	Trentlin	41	15038	campus.are	standing	85	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794664544	cmd	Trentlin	41	15068	campus.are	standing	85	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794664544	area	Trentlin	41	30200	hyrule.are	campus.are	hyrule.are	3	enter
+1794664544	cmd	Trentlin	41	30200	hyrule.are	standing	85	1	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794664544	item	Trentlin	41	30200	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled outside its dungeon
+1794664544	item	Trentlin	41	30200	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled outside its dungeon
+1794664544	item	Trentlin	41	30200	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled outside its dungeon
+1794664544	item	Trentlin	41	30200	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled outside its dungeon
+1794664544	item	Trentlin	41	30200	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled outside its dungeon
+1794664544	item	Trentlin	41	30200	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled outside its dungeon
+1794664552	cmd	Trentlin	41	30205	hyrule.are	standing	85	0	-	play	recorder 3	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Grove of the Manji	-	+
+1794664556	cmd	Trentlin	41	30437	hyrule.are	standing	85	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794664558	cmd	Trentlin	41	30436	hyrule.are	standing	85	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794664560	got	Trentlin	41	30436	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794664560	cmd	Trentlin	41	30436	hyrule.are	standing	85	0	-	get	ke	You get a small key.	-	-
+1794664560	cmd	Trentlin	41	30439	hyrule.are	standing	85	0	-	north		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794664561	cmd	Trentlin	41	30442	hyrule.are	standing	85	0	-	north		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794664562	cmd	Trentlin	41	30447	hyrule.are	standing	85	0	-	north		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794664562	cmd	Trentlin	41	30447	hyrule.are	standing	85	0	-	north		The door is closed.	-	-
+1794664567	cmd	Trentlin	41	30447	hyrule.are	standing	85	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794664568	cmd	Trentlin	41	30447	hyrule.are	standing	85	0	-	open	est	I see no est here.	-	-
+1794664569	cmd	Trentlin	41	30447	hyrule.are	standing	85	0	-	east		The door is closed.	-	-
+1794664571	cmd	Trentlin	41	30447	hyrule.are	standing	85	0	-	open	east	Ok.	-	-
+1794664571	cmd	Trentlin	41	30448	hyrule.are	standing	85	0	-	east		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794664575	cmd	Trentlin	41	30448	hyrule.are	standing	85	0	-	look	in ches	The Manji's equipment chest contains: //      a pair of Rope-hide boots //      the Heart Guard of the Eagle	-	+
+1794664581	cmd	Trentlin	41	30448	hyrule.are	standing	85	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    something.	-	+
+1794664582	laid	-	0	0	-	1228	component	70	a dragon tooth	29002	korzath1.are	scatter
+1794664585	got	Trentlin	41	30448	hyrule.are	30339	the Heart Guard of the Eagle	armor	8	3200000	get	the Manji's equipment chest
+1794664585	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	get	eagle chest	You get the Heart Guard of the Eagle from the Manji's equipment chest.	-	-
+1794664586	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	compare	eagle	A) the Heart Guard of the Eagle (level 8) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794664589	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	remove	colla	You stop using a spiked collar.	-	-
+1794664591	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	wear	colla	You wear a spiked collar around your neck.	-	-
+1794664593	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	compare	eagle	A) the Heart Guard of the Eagle (level 8) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794664599	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	remove	man	You stop using a twin-headed mantle.	-	-
+1794664602	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	wear	man	You wear a twin-headed mantle about your body.	-	-
+1794664604	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	remove	heart	You stop using the Heart Guard of the Manji.	-	-
+1794664606	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	compare	eagle	A) the Heart Guard of the Eagle (level 8) // B) a spiked collar (level 23), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794664611	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	wear	man	You wear the Heart Guard of the Manji around your neck.	-	-
+1794664612	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	drop	eagle	You drop the Heart Guard of the Eagle.	-	-
+1794664613	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	look		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794664620	cmd	Trentlin	41	30448	hyrule.are	standing	87	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794664621	cmd	Trentlin	41	30449	hyrule.are	standing	87	0	-	east		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794664624	cmd	Trentlin	41	30449	hyrule.are	standing	87	0	-	consider	man	Manhandla is far below your level. // Manhandla has about half your hit points. // Blow for blow, you would need about 3 rounds to bring Manhandla down; it would need about 82 rounds for you.	-	+
+1794664636	cmd	Trentlin	41	30449	hyrule.are	standing	87	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794664641	laid	-	0	0	-	1231	component	61	a mummy's wrapping	5711	mid_ruin.are	scatter
+1794664645	cmd	Trentlin	41	30449	hyrule.are	standing	90	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794664650	cmd	Trentlin	41	30449	hyrule.are	standing	90	0	-	levitate		You slowly rise up off the ground.	-	-
+1794664654	cmd	Trentlin	41	30449	hyrule.are	standing	90	0	-	kill	man	Your punch ^^^ DESTROYS ^^^ Manhandla! // Your punch ^^^ DESTROYS ^^^ Manhandla!	-	-
+1794664656	cmd	Trentlin	41	30449	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Manhandla. // Your fists of fury MUTILATES Manhandla!	-	+
+1794664659	got	Trentlin	41	30449	hyrule.are	30632	the Manji's key	key	14	0	(violence_update)	-
+1794664659	coin	Trentlin	41	30449	hyrule.are	+1000000	loot	(violence_update)	corpse of Manhandla	15340583895
+1794664659	coin	Trentlin	41	30449	hyrule.are	+8700	loot	(violence_update)	corpse of Manhandla	15340592595
+1794664659	coin	Trentlin	41	30449	hyrule.are	+4	loot	(violence_update)	corpse of Manhandla	15340592599
+1794664659	coin	Trentlin	41	30449	hyrule.are	+400000	loot	(violence_update)	corpse of Manhandla	15340992599
+1794664663	cmd	Trentlin	41	30449	hyrule.are	standing	89	0	-	look	in cor	Corpse of Manhandla contains: //      a pair of four-bloom gauntlets //      a bloom-plated breastplate	-	+
+1794664669	got	Trentlin	41	30449	hyrule.are	30359	the Heart Guard of the Manji	armor	20	20000000	get	corpse of Manhandla
+1794664669	cmd	Trentlin	41	30449	hyrule.are	standing	89	0	-	get	heart cor	You get the Heart Guard of the Manji from corpse of Manhandla.	-	-
+1794664671	cmd	Trentlin	41	30449	hyrule.are	standing	89	0	-	compare	heart	A) the Heart Guard of the Manji (level 20) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794664674	cmd	Trentlin	41	30449	hyrule.are	standing	89	0	-	remove	heart	You stop using the Heart Guard of the Manji.	-	-
+1794664675	cmd	Trentlin	41	30449	hyrule.are	standing	89	0	-	compare	heart	A) the Heart Guard of the Manji (level 20) // B) a spiked collar (level 23), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794664681	laid	-	0	0	-	1233	herb	48	an alfalfa sprout	17129	highland.are	scatter
+1794664681	laid	-	0	0	-	1234	herb	37	a sprig of catnip	17140	highland.are	scatter
+1794664681	laid	-	0	0	-	1235	component	60	a rakshasa's claw	1351	htower.are	scatter
+1794664681	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	remove	colla	You stop using a spiked collar.	-	-
+1794664683	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	wear	heart	You wear the Heart Guard of the Manji around your neck.	-	-
+1794664683	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	wear	heart	You wear the Heart Guard of the Manji around your neck.	-	-
+1794664685	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	drop	colla	You drop a spiked collar.	-	-
+1794664686	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	inventory		You are carrying: //      (Glowing) the Manji's key //      the four-crowned lion shield	-	+
+1794664692	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	compare	shie	A) the four-crowned lion shield (level 52) -- can't use: needs level 52 // B) a coiled-snake shield (level 27), worn // Slot: off hand.  Your damage comes from weapons.	-	+
+1794664694	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	look	in cor	A stinking corpse contains: //      a pair of four-bloom gauntlets //      a bloom-plated breastplate	-	+
+1794664699	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	get	breas for	I see no for here.	-	-
+1794664704	got	Trentlin	41	30449	hyrule.are	30715	a bloom-plated breastplate	armor	20	20000000	get	a stinking corpse
+1794664704	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	get	bre cor	You get a bloom-plated breastplate from a stinking corpse.	-	-
+1794664706	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	compare	bre	A) a bloom-plated breastplate (level 20) // B) a twin-dragon hauberk (level 27), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794664716	cmd	Trentlin	41	30449	hyrule.are	standing	92	0	-	wear	bre	You stop using a twin-dragon hauberk. // You wear a bloom-plated breastplate on your body.	-	-
+1794664718	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	drop	haub	You drop a twin-dragon hauberk.	-	-
+1794664719	coin	Trentlin	41	30449	hyrule.are	+54	loot	sacrifice	-	15340992653
+1794664719	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	sacrifice	haub	The Gods give you 54 copper coins for your sacrifice.	-	-
+1794664722	coin	Trentlin	41	30449	hyrule.are	+46	loot	sacrifice	-	15340992699
+1794664722	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	sacrifice	colla	The Gods give you 46 copper coins for your sacrifice.	-	-
+1794664722	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	look		Level 3: Manhandla's Lair //   Thick vines and torn, fleshy petals carpet this chamber, heavy with the // sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots	-	+
+1794664724	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	look	in co	A stinking corpse contains: //      a pair of four-bloom gauntlets //      a flower-crowned helm	-	+
+1794664727	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    something.	-	+
+1794664732	got	Trentlin	41	30449	hyrule.are	30664	a flower-crowned helm	armor	20	20000000	get	a stinking corpse
+1794664732	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	get	helm cor	You get a flower-crowned helm from a stinking corpse.	-	-
+1794664733	cmd	Trentlin	41	30449	hyrule.are	standing	86	0	-	compare	helm	A) a flower-crowned helm (level 20) // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794664734	laid	-	0	0	-	1238	herb	36	a belladonna plant	6616	daycare.are	scatter
+1794664734	laid	-	0	0	-	1239	herb	35	a sprig of angelica	6624	daycare.are	scatter
+1794664741	cmd	Trentlin	41	30449	hyrule.are	standing	88	0	-	drop	helm	You drop a flower-crowned helm.	-	-
+1794664743	coin	Trentlin	41	30449	hyrule.are	+40	loot	sacrifice	-	15340992739
+1794664743	cmd	Trentlin	41	30449	hyrule.are	standing	88	0	-	sacrifice	helm	The Gods give you 40 copper coins for your sacrifice.	-	-
+1794664744	cmd	Trentlin	41	30449	hyrule.are	standing	88	0	-	look	in co	A rotting corpse contains: //      a pair of four-bloom gauntlets //      (Glowing) the Manhandla bloom-whip	-	+
+1794664747	got	Trentlin	41	30449	hyrule.are	30662	a pair of four-bloom gauntlets	armor	20	20000000	get	a rotting corpse
+1794664747	cmd	Trentlin	41	30449	hyrule.are	standing	88	1	-	get	gaunt co	You get a pair of four-bloom gauntlets from a rotting corpse.	-	-
+1794664750	cmd	Trentlin	41	30449	hyrule.are	standing	88	0	-	compare	gaun	A) a pair of four-bloom gauntlets (level 20) // B) a pair of pincer gauntlets (level 40), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794664752	cmd	Trentlin	41	30449	hyrule.are	standing	88	0	-	drop	gau	You drop a pair of four-bloom gauntlets.	-	-
+1794664753	cmd	Trentlin	41	30448	hyrule.are	standing	88	0	-	west		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794664753	cmd	Trentlin	41	30443	hyrule.are	standing	88	0	-	south		Level 3: Eastern Slime Hall //   Glistening sludge coats the floor of this chamber in thick, drying layers, // and the smell of damp moss hangs heavy. A row of blocks lines the far wall.	-	+
+1794664753	cmd	Trentlin	41	30443	hyrule.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1794664754	cmd	Trentlin	41	30443	hyrule.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1794664754	cmd	Trentlin	41	30443	hyrule.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1794664754	cmd	Trentlin	41	30443	hyrule.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1794664756	cmd	Trentlin	41	30443	hyrule.are	standing	88	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794664757	cmd	Trentlin	41	30448	hyrule.are	standing	88	0	-	north		Level 3: Room of Sliding Blades //   Four spiked traps rest in the corners of this chamber, and the floor // between them is cut with straight, polished grooves where they slam	-	+
+1794664758	cmd	Trentlin	41	30447	hyrule.are	standing	88	0	-	west		Level 3: Hall of Three Locks //   Locked doors stand on three sides of this chamber, north, east and west, // each with a heavy keyhole set in iron, and only the southern arch stands	-	+
+1794664758	cmd	Trentlin	41	30442	hyrule.are	standing	88	0	-	south		Level 3: Manji Crossing //   This is the heart of the dungeon's crooked cross, a broad chamber where // halls meet from every side and the hooked carvings on the walls all point	-	+
+1794664758	cmd	Trentlin	41	30439	hyrule.are	standing	88	0	-	south		Level 3: Streaked Hall //   Long streaks of slime run down the walls of this hall, as if something // heavy had tried to climb them and slid back down. The air is damp and	-	+
+1794664759	cmd	Trentlin	41	30436	hyrule.are	standing	88	0	-	south		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the	-	+
+1794664759	cmd	Trentlin	41	30436	hyrule.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1794664759	cmd	Trentlin	41	30436	hyrule.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1794664760	cmd	Trentlin	41	30437	hyrule.are	standing	88	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own	-	+
+1794664761	cmd	Trentlin	41	30205	hyrule.are	standing	88	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the	-	+
+1794664761	item	Trentlin	41	30205	hyrule.are	30632	the Manji's key	type=key level=14 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 3
+1794664773	cmd	Trentlin	41	30253	hyrule.are	standing	88	0	-	play	recorder 4	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Isle of the Snake	-	+
+1794664778	cmd	Trentlin	41	30323	hyrule.are	standing	88	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794664781	cmd	Trentlin	41	30476	hyrule.are	standing	88	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794664782	cmd	Trentlin	41	30476	hyrule.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1794664784	cmd	Trentlin	41	30477	hyrule.are	standing	88	0	-	east		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794664789	cmd	Trentlin	41	30477	hyrule.are	standing	88	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794664790	cmd	Trentlin	41	30481	hyrule.are	standing	88	0	-	north		Level 5: Grey Brick Fireside //   Grey brick walls curve gently inward here, and every sound rings back a // moment late, as if the room were listening. Two small fires flicker beside	-	+
+1794664792	cmd	Trentlin	41	30481	hyrule.are	standing	88	0	-	list		A half-deaf old man has nothing to sell, and these words cost nothing: //   "Digdogger hates certain kind of sound."	-	-
+1794664794	cmd	Trentlin	41	30481	hyrule.are	standing	88	0	-	open	west	It's locked.	-	-
+1794664794	cmd	Trentlin	41	30481	hyrule.are	standing	88	0	-	west		The door is closed.	-	-
+1794664795	cmd	Trentlin	41	30477	hyrule.are	standing	88	0	-	south		Level 5: Echoing Chamber //   Sound behaves strangely here: footsteps return from the walls doubled and // distorted, and even a whisper hums back, and the long-eared things that hop	-	+
+1794664796	cmd	Trentlin	41	30476	hyrule.are	standing	88	0	-	west		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794664796	cmd	Trentlin	41	30480	hyrule.are	standing	88	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794664799	cmd	Trentlin	41	30480	hyrule.are	standing	88	0	-	open	north	The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794664804	cmd	Trentlin	41	30480	hyrule.are	standing	88	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794664812	cmd	Trentlin	41	30480	hyrule.are	standing	88	0	-	kill	gib	Your punch <<< ERADICATES >>> a gibdo! // Your punch <<< ERADICATES >>> a gibdo! // Your punch >>> ANNIHILATES <<< a gibdo!	-	-
+1794664812	laid	-	0	0	-	1248	component	59	a patch of lycanthrope fur	2511	dresden.are	scatter
+1794664815	coin	Trentlin	41	30480	hyrule.are	+50000	loot	(violence_update)	corpse of a gibdo	15341042739
+1794664815	coin	Trentlin	41	30480	hyrule.are	+9000	loot	(violence_update)	corpse of a gibdo	15341051739
+1794664815	coin	Trentlin	41	30480	hyrule.are	+53	loot	(violence_update)	corpse of a gibdo	15341051792
+1794664815	coin	Trentlin	41	30480	hyrule.are	+250000	loot	(violence_update)	corpse of a gibdo	15341301792
+1794664818	got	Trentlin	41	30480	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794664818	cmd	Trentlin	41	30480	hyrule.are	standing	82	0	-	get	key	You get a small key.	-	-
+1794664818	cmd	Trentlin	41	30483	hyrule.are	standing	82	0	-	north		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
