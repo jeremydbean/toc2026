@@ -297969,3 +297969,5 @@ Sat Nov 14 07:19:32 2026 :: Connection guard: 178.156.185.231 closed without a w
 Sat Nov 14 07:19:35 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 07:20:01 2026 :: Treasure goblin: vanished from room 24236 (A Crypt, crypt.are) (too long in one area).
 Sat Nov 14 07:24:37 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 1 refused in all, pause 1 this week, 137 minutes left).
+Sat Nov 14 07:29:36 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 07:29:42 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 1 of 6 in 6 hours).
