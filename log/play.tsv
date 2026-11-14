@@ -26427,3 +26427,17 @@
 1794626324	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
 1794626329	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2860/2875 mv=388/983 align=922 exp=252749 coin=1881888374 bank=24824061842 qp=2210 prac=36 train=76 stash=93/350 remorts=3
 1794626329	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    294 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794626368	laid	-	0	0	-	1100	herb	36	a belladonna plant	6529	dwarves.are	scatter
+1794626368	laid	-	0	0	-	1101	herb	53	a huckleberry	6500	dwarves.are	scatter
+1794626368	laid	-	0	0	-	1102	component	78	a vial of demons blood	19110	rome.are	scatter
+1794626419	laid	-	0	0	-	1103	herb	41	a sprig of mistletoe	15039	campus.are	scatter
+1794626419	laid	-	0	0	-	1104	component	83	a vial of thessalhydra venom	17184	highland.are	scatter
+1794626464	laid	-	0	0	-	1105	herb	53	a huckleberry	1136	shire.are	scatter
+1794626464	laid	-	0	0	-	1106	herb	46	a juniper berry	1155	shire.are	scatter
+1794626513	laid	-	0	0	-	1107	herb	34	an amaranth plant	17717	landoz.are	scatter
+1794626513	laid	-	0	0	-	1108	herb	43	a sprig of hyssop	17732	landoz.are	scatter
+1794626518	census	-	0	0	-	herbs=45/150 components=23/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=29 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=44 mobs_fought=2 secs=900
+1794626593	laid	-	0	0	-	1109	herb	51	a piece of kelp	25246	mushroom.are	scatter
+1794626593	laid	-	0	0	-	1110	herb	52	an asparagus shoot	25287	mushroom.are	scatter
+1794626636	laid	-	0	0	-	1111	herb	42	a marjoram plant	29429	world.are	scatter
+1794626636	laid	-	0	0	-	1112	herb	49	a pomegranate	29422	world.are	scatter

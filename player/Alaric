@@ -2,7 +2,7 @@
 Name Alaric~
 Id   22012
 Serial 1251902
-LogO 1794626315
+LogO 1794626533
 Vers 4
 Prom ~
 Race dwarf~
@@ -18,14 +18,14 @@ ChangesSeen 20261112timesofchaos:1 20261112weaponflags:1 20261112mudletdoors:1 2
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble~
 Cast none
 Levl 57
-Plyd 1060289
+Plyd 1060507
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
 StashMax 350
 Scro 22
 Room 2497
-HMV  1544 1544 2875 2875 388 983
+HMV  1544 1544 2875 2875 616 983
 NewGold 88
 NewPlat 1881
 NewCopp 74
@@ -179,7 +179,7 @@ AchSet rooms 2 4 10-16 18 21-25 28-43 45-47 51-52 54-57 59 61-64 66 70 300 305-3
 AchSet daily-kinds 1 ~
 AchSet psi-disciplines 1-2 ~
 AchSet explored-areas 1819706833 ~
-LastOut  1794626315
+LastOut  1794626533
 Rested 46163 0
 Daily 4 20751 3 1 20751
 SesLogin 1794612356
@@ -196,7 +196,6 @@ QuestPnts 2210
 QuestStrk 2
 CasinoWon  51
 CasinoLost 304
-QuestNext 5
 Exp  252749
 Act  4261068
 AfBy 524800
@@ -231,7 +230,7 @@ Tutorial 0 0
 Save  -4
 Alig  922
 Hit   52
-Dam   62
+Dam   77
 ACs -254 -233 -278 -32
 Attr 20 13 13 16 21
 AMod 12 -1 2 9 0
@@ -289,7 +288,8 @@ Sk 100 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'levitate'   0   4   0   0     524288          0
+AffD 'steel fist'   0   4  15  19          0          0
+AffD 'levitate'   0   0   0   0     524288          0
 End
 
 #O
