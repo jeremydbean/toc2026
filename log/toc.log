@@ -301061,3 +301061,5 @@ Sat Nov 14 14:29:05 2026 :: Connection guard: 4.148.240.235 closed before a pass
 Sat Nov 14 14:29:05 2026 :: Sock.sinaddr:  4.148.240.235
 Sat Nov 14 14:29:05 2026 :: Connection guard: 4.148.240.235 closed before a password prompt (strike 2 of 6 in 6 hours).
 Sat Nov 14 14:29:24 2026 :: Treasure goblin: vanished from room 1454 (The main chamber, htower.are) (too long in one area).
+Sat Nov 14 14:31:07 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 14:34:31 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
