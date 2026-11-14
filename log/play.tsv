@@ -25517,3 +25517,82 @@
 1794613074	session	Alaric	57	2497	dresden.are	quit	718s	+0 levels	+0 exp	+123640176 copper	1 kills	0 deaths	1 quests	93 commands	0 refused	coin: loot 33g 68s 64c, quests 123p 30g 33s 12c	spent on: none	exp: none
 1794614573	laid	-	0	0	-	919	herb	38	a foxglove flower	18067	icekeep.are	scatter
 1794614573	laid	-	0	0	-	920	herb	51	a piece of kelp	18138	icekeep.are	scatter
+1794624354	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	(game loop)
+1794624359	quest	Alaric	57	2497	dresden.are	rush	kill	2001	a bat	5	catacomb.are	7
+1794624359	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'a bat threatens the peace of the realm!'	-	+
+1794624364	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794624364	cmd	Alaric	57	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794624364	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794624364	cmd	Alaric	57	2485	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794624365	cmd	Alaric	57	2486	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794624365	cmd	Alaric	57	2487	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794624365	cmd	Alaric	57	2509	dresden.are	standing	100	0	-	east		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1794624365	cmd	Alaric	57	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794624366	cmd	Alaric	57	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794624366	cmd	Alaric	57	2505	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794624366	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at	-	+
+1794624366	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	open	down	Ok.	-	-
+1794624367	area	Alaric	57	7030	sewer.are	dresden.are	sewer.are	13	down
+1794624367	cmd	Alaric	57	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1794624367	cmd	Alaric	57	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1794624367	cmd	Alaric	57	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1794624367	cmd	Alaric	57	7111	sewer.are	standing	100	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 	-	+
+1794624368	cmd	Alaric	57	7115	sewer.are	standing	100	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit	-	+
+1794624368	cmd	Alaric	57	7129	sewer.are	standing	100	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.	-	+
+1794624368	cmd	Alaric	57	7221	sewer.are	standing	100	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.	-	+
+1794624368	cmd	Alaric	57	7220	sewer.are	standing	100	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]	-	-
+1794624369	cmd	Alaric	57	7219	sewer.are	standing	100	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]	-	+
+1794624369	cmd	Alaric	57	7217	sewer.are	standing	100	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west	-	+
+1794624369	cmd	Alaric	57	7216	sewer.are	standing	100	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light	-	+
+1794624369	cmd	Alaric	57	7215	sewer.are	standing	100	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.	-	+
+1794624370	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1794624370	coin	Alaric	57	7210	sewer.are	+61905391	bank	interest	bank	26042197595
+1794624370	laid	-	0	0	-	927	herb	35	a sprig of angelica	1362	htower.are	scatter
+1794624370	laid	-	0	0	-	928	herb	41	a sprig of mistletoe	1433	htower.are	scatter
+1794624370	laid	-	0	0	-	929	component	57	a trolls fingernail	6005	haon.are	scatter
+1794624370	cmd	Alaric	57	7209	sewer.are	standing	100	0	-	west		The crawlway. //   You are in a narrow crawlway.  You don't notice anything interesting here. // [Exits: east west]	-	-
+1794624370	cmd	Alaric	57	7208	sewer.are	standing	100	0	-	west		The lair entrance. //   You are in a dry part of the sewer. To the north is a wooden door, you  // can see some slime at the lower part of the door. You also see some skulls	-	+
+1794624370	cmd	Alaric	57	7208	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794624371	cmd	Alaric	57	7204	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794624371	cmd	Alaric	57	7203	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794624371	cmd	Alaric	57	7202	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce. To the north 	-	+
+1794624371	cmd	Alaric	57	7202	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794624372	cmd	Alaric	57	7201	sewer.are	standing	100	0	-	north		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.	-	+
+1794624372	area	Alaric	57	25171	underdrk.are	sewer.are	underdrk.are	5	down
+1794624372	cmd	Alaric	57	25171	underdrk.are	standing	100	0	-	down		The climb up. //   You can hear something above you talking to itself in the darkness.  The smell // coming from there reminds you of a SEWER.  The rocks in this climb were made	-	+
+1794624372	cmd	Alaric	57	25170	underdrk.are	standing	100	0	-	down		The end of the sloping passage. //   The passage ends here and makes a straight vertical climb upwards into onyx // darkness.  You can also go to the down the slope to the east.	-	+
+1794624372	cmd	Alaric	57	25169	underdrk.are	standing	100	0	-	east		The slope steepens. //   The slope starts to steepen here into a sharper angle. The roaring of the // waterfall now is so far in the distance that dripping water drowns out the	-	+
+1794624373	cmd	Alaric	57	25168	underdrk.are	standing	100	0	-	east		The slope upwards. //   The passageway starts to slope upwards here.  The roaring of the waterfall is // more distant now and you can no longer feel the moisture on your face that	-	+
+1794624373	cmd	Alaric	57	25167	underdrk.are	standing	100	0	-	east		The dark passage. //   It's dark here.  You feel moisture on your face and you can hear a roaring of // a waterfall in the distance.  The passage continues to the east and the west.	-	+
+1794624373	cmd	Alaric	57	25166	underdrk.are	standing	100	0	-	east		The Intersection. //   The dark corridor turns west here and also continues to the south.  The roar // of the waterfall comes from the south and no sounds at all come from the	-	+
+1794624373	cmd	Alaric	57	25172	underdrk.are	standing	100	0	-	south		The passageway. //   The roaring of the waterfall here is almost deafening.  The moisture is making // your armor and clothes damp.  The walls are dripping wet and there is mud on	-	+
+1794624374	cmd	Alaric	57	25173	underdrk.are	standing	100	0	-	south		At the bottom of the waterfall. //   You walk into a huge cavern with water falling out of a hole in the ceiling. // Glowing moss is thriving on the moisture so abundant in this cavern.  There	-	+
+1794624374	cmd	Alaric	57	25174	underdrk.are	standing	100	0	-	up		A path upwards. //   You climb a path that runs up the side of the waterfall.  Ahead of you is a // rock wall that has several good rocks that could be used for climbing.  The	-	+
+1794624374	cmd	Alaric	57	25175	underdrk.are	standing	100	0	-	up		The hole upwards. //   The rocks did make good handholds.  You find yourself above the cavern and // right underneath the hole that the waterfall originates from.  It seems to	-	+
+1794624374	area	Alaric	57	2043	catacomb.are	underdrk.are	catacomb.are	2	up
+1794624374	cmd	Alaric	57	2043	catacomb.are	standing	100	0	-	up		Waterfall of mist //   River of hot mist pour down in a cascade from a hole in the cavern.  It // falls like water down from the heights like a waterfall and creates	-	+
+1794624376	cmd	Alaric	57	2043	catacomb.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794624382	cmd	Alaric	57	2042	catacomb.are	standing	100	0	-	west		Mist cavern //   A warm wind blows in from the east.  The air is still stifling hot in // here despite the breeze.  The mist seems thick enough to be alive. . .	-	+
+1794624382	cmd	Alaric	57	2041	catacomb.are	standing	100	0	-	west		Misty cavern //   The temperature is a pleasant and mild here.  This is due to a warm wind // blowing in from the east and a chilly breeze blowing in from the west.	-	+
+1794624382	cmd	Alaric	57	2040	catacomb.are	standing	100	0	-	west		Misty cavern //   A chilling icy mist swirl about you.  The dampness and warmth has become // bitter cold.  The walls of the cavern are several feet thick with ice	-	+
+1794624382	cmd	Alaric	57	2048	catacomb.are	standing	100	0	-	south		Twisty cavern //   The way twist this way and that and its all you can do to keep your head // from spinning.  The air is very cold here and layers of ice on the wall.	-	+
+1794624383	cmd	Alaric	57	2049	catacomb.are	standing	100	0	-	east		Striped tunnel //   The walls of the tunnels have many brilliant colors in them from the // various veins of crystals running in them.  An odd twinkling comes from	-	+
+1794624383	cmd	Alaric	57	2050	catacomb.are	standing	100	0	-	east		Prism cave //   The roof of this cave peaks over a hundred feet high making it one of // the biggest in the catacombs.  Crystals of every color cast prismatic	-	+
+1794624383	cmd	Alaric	57	2058	catacomb.are	standing	100	0	-	east		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. Its just // a feeling you get from this tunnel.  The tunnel east and west.	-	+
+1794624383	cmd	Alaric	57	2059	catacomb.are	standing	100	0	-	east		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. You see a // gate to a burial ground to the north.  This lonesome tunnel sighs along	-	+
+1794624384	cmd	Alaric	57	2054	catacomb.are	standing	100	0	-	north		Southern gate //   A rusty gate here no longer keeps anyone out or in.  You see a lonely // E/W passage to the south.  A little used trail winds east through a	-	+
+1794624384	cmd	Alaric	57	2051	catacomb.are	standing	100	0	-	north		Ruined monument //   A monument to a famous king once stood here. Not much is left to even // signify that it was here at all.  A building of some sort can be entered	-	+
+1794624384	cmd	Alaric	57	2052	catacomb.are	standing	100	0	-	east		Basement //   Its dark and it smells like. ...BATS down here!  All you see is a swirl // of the darkness and lots of scratching bats madly flailing around. A set	-	+
+1794624387	coin	Alaric	57	2052	catacomb.are	+3000	loot	kill	corpse of a bat	26042200595
+1794624387	coin	Alaric	57	2052	catacomb.are	+60	loot	kill	corpse of a bat	26042200655
+1794624387	cmd	Alaric	57	2052	catacomb.are	standing	100	13	-	kill	bat	Your punch misses a bat. [-0] // Your punch ^^^ DESTROYS ^^^ a bat! [-87] // A bat is DEAD!!	-	+
+1794624391	area	Alaric	57	2497	dresden.are	catacomb.are	dresden.are	17	recall
+1794624391	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794624392	coin	Alaric	57	2497	dresden.are	+184954968	quests	aquest	-	26227155623
+1794624392	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	rush qp=2098->2098 offered=50 daily=4->4 coin=+184954968 kill=15412914 streak=2 level=57 target=-1
+1794624392	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
+1794624393	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 50 quest points.	-	-
+1794624395	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2618/2875 mv=391/983 align=922 exp=252749 coin=1403093781 bank=24824061842 qp=2148 prac=36 train=76 stash=93/350 remorts=3
+1794624395	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794624509	laid	-	0	0	-	938	herb	46	a juniper berry	29038	korzath1.are	scatter
+1794624509	laid	-	0	0	-	939	herb	52	an asparagus shoot	29090	korzath1.are	scatter

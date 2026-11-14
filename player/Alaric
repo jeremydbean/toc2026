@@ -2,7 +2,7 @@
 Name Alaric~
 Id   22012
 Serial 1251902
-LogO 1794613074
+LogO 1794624393
 Vers 4
 Prom ~
 Race dwarf~
@@ -18,27 +18,27 @@ ChangesSeen 20261112timesofchaos:1 20261112weaponflags:1 20261112mudletdoors:1 2
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble~
 Cast none
 Levl 57
-Plyd 1058327
+Plyd 1058367
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
 StashMax 350
 Scro 22
 Room 2497
-HMV  1544 1544 2613 2875 864 983
-NewGold 13
-NewPlat 1218
-NewCopp 53
-NewSilv 57
-BankCP 24762156451
-IntTime 1794531484
-IntTotal 1120156451
+HMV  1544 1544 2618 2875 391 983
+NewGold 9
+NewPlat 1403
+NewCopp 81
+NewSilv 37
+BankCP 24824061842
+IntTime 1794617884
+IntTotal 1182061842
 Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 3740
-AchQuests 407
+AchKills 3741
+AchQuests 408
 AchDeaths 9
 AchExplore 5
 AchMaps 5
@@ -168,7 +168,7 @@ Achv maps-1 1794525201
 Achv explored-1 1794537442
 AchCount vesh-visits 1
 AchCount narrow-wins 1
-AchCount rush-quests 24
+AchCount rush-quests 25
 AchCount emergency-quests 2
 AchCount daily-quests 3
 AchCount repairs 16
@@ -179,8 +179,8 @@ AchSet rooms 2 4 10-16 18 21-25 28-43 45-47 51-52 54-57 59 61-64 66 70 300 305-3
 AchSet daily-kinds 1 ~
 AchSet psi-disciplines 1-2 ~
 AchSet explored-areas 1819706833 ~
-LastOut  1794613074
-Rested 46163 1
+LastOut  1794624393
+Rested 46163 0
 Daily 4 20751 3 1 20751
 SesLogin 1794612356
 SesDur   718
@@ -192,13 +192,14 @@ SesDead  0
 SesQuest 1
 RecallRoom 2497
 RecallSet  1793672488
-QuestPnts 2098
-QuestStrk 2
+QuestPnts 2148
+QuestStrk 3
 CasinoWon  51
 CasinoLost 304
+QuestNext 5
 Exp  252749
 Act  4261068
-AfBy 512
+AfBy 524800
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -288,6 +289,7 @@ Sk 100 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
+AffD 'levitate'   0   5   0   0     524288          0
 End
 
 #O
@@ -867,8 +869,8 @@ Lev  52
 Cost 0
 Cond 100
 Repd 0
-Affect -1 52 -1 4 22 0 0
 Affect -1 52 -1 1 17 0 0
+Affect -1 52 -1 4 22 0 0
 End
 
 #O
@@ -890,8 +892,8 @@ Lev  54
 Cost 25000000
 Cond 100
 Repd 0
-Affect -1 54 -1 17 12 0 0
 Affect -1 54 -1 -13 14 0 0
+Affect -1 54 -1 17 12 0 0
 End
 
 #O
@@ -999,8 +1001,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 4 23 0 0
 Affect -1 51 -1 20 14 0 0
+Affect -1 51 -1 4 23 0 0
 End
 
 #O
@@ -1054,9 +1056,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 2 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 1 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 2 0 0
 End
 
 #O
@@ -1068,8 +1070,8 @@ Lev  52
 Cost 50000000
 Cond 100
 Repd 0
-Affect -1 52 -1 5 17 0 0
 Affect -1 52 -1 2 24 0 0
+Affect -1 52 -1 5 17 0 0
 End
 
 #O
@@ -1141,8 +1143,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 3 22 0 0
 Affect -1 52 -1 2 24 0 0
+Affect -1 52 -1 3 22 0 0
 End
 
 #O
@@ -1153,9 +1155,9 @@ Lev  23
 Cost 13000000
 Cond 100
 Repd 0
-Affect -1 23 -1 -9 12 0 0
-Affect -1 23 -1 -4 1 0 0
 Affect -1 23 -1 31 14 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 -9 12 0 0
 End
 
 #O
@@ -1283,8 +1285,8 @@ Lev  53
 Cost 15000000
 Cond 99
 Repd 0
-Affect -1 53 -1 1 4 0 0
 Affect -1 53 -1 -1 2 0 0
+Affect -1 53 -1 1 4 0 0
 End
 
 #O
@@ -1328,8 +1330,8 @@ Lev  23
 Cost 13000000
 Cond 88
 Repd 0
-Affect -1 23 -1 -5 12 0 0
 Affect -1 23 -1 1 17 0 0
+Affect -1 23 -1 -5 12 0 0
 End
 
 #O
@@ -1384,8 +1386,8 @@ Cost 23000000
 Cond 98
 Repd 0
 Affect -1 32 -1 -4 4 0 0
-Affect -1 32 -1 2 24 0 0
 Affect -1 32 -1 3 22 0 0
+Affect -1 32 -1 2 24 0 0
 Affect -1 32 -1 -4 4 0 0
 End
 
@@ -1397,8 +1399,8 @@ Lev  31
 Cost 20000000
 Cond 98
 Repd 0
-Affect -1 31 -1 1 17 0 0
 Affect -1 31 -1 -2 22 0 0
+Affect -1 31 -1 1 17 0 0
 End
 
 #O
@@ -1869,9 +1871,9 @@ Lev  49
 Cost 40000000
 Cond 100
 Repd 0
-Affect -1 49 -1 3 24 0 0
-Affect -1 49 -1 -1 12 0 0
 Affect -1 49 -1 -1 13 0 0
+Affect -1 49 -1 -1 12 0 0
+Affect -1 49 -1 3 24 0 0
 End
 
 #O
@@ -2078,8 +2080,8 @@ Lev  51
 Cost 20000000
 Cond 100
 Repd 0
-Affect -1 51 -1 -3 4 0 0
 Affect -1 51 -1 4 24 0 0
+Affect -1 51 -1 -3 4 0 0
 End
 
 #O
@@ -2215,8 +2217,8 @@ Lev  41
 Cost 14980000
 Cond 100
 Repd 0
-Affect -1 41 -1 -2 1 0 0
 Affect -1 41 -1 -2 4 0 0
+Affect -1 41 -1 -2 1 0 0
 End
 
 #O
