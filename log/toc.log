@@ -297858,3 +297858,5 @@ Sat Nov 14 04:31:59 2026 :: Connection guard: 52.87.72.16 closed without a word 
 Sat Nov 14 04:36:57 2026 :: Connection guard: last hour 18 closed without a word, 0 refused, 0 new characters refused, 1 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov 14 04:37:03 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 14 04:37:45 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 04:40:02 2026 :: Treasure goblin: vanished from room 1706 (Entrance to the forest, wyvern.are) (too long in one area).
+Sat Nov 14 04:42:08 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 3 of 6 in 6 hours).

@@ -26570,3 +26570,8 @@
 1794630985	laid	-	0	0	-	1228	herb	37	a sprig of catnip	1508	gnome.are	scatter
 1794630985	laid	-	0	0	-	1229	component	87	a vial of grey ooze	5823	mid_ruin.are	scatter
 1794631018	census	-	0	0	-	herbs=127/150 components=61/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=19 spotted=0 picked=0 passed=0 cleared=1 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794631180	laid	-	0	0	-	1230	component	83	a vial of thessalhydra venom	29077	korzath1.are	scatter
+1794631245	laid	-	0	0	-	1231	herb	48	an alfalfa sprout	6605	daycare.are	scatter
+1794631245	laid	-	0	0	-	1232	herb	53	a huckleberry	6602	daycare.are	scatter
+1794631319	laid	-	0	0	-	1233	herb	35	a sprig of angelica	25157	underdrk.are	scatter
+1794631395	laid	-	0	0	-	1234	herb	50	a head of cabbage	9111	dylan.are	scatter
