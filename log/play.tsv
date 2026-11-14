@@ -26650,3 +26650,81 @@
 1794636568	sightings	Alaric	57	2497	dresden.are	mob	58:1/0/0 4445:1/0/0 6501:3/0/0 6500:2/2/0 6502:1/0/0 2003:1/0/0 4468:1/0/0 4444:1/0/0 4456:1/0/0 6102:2/0/0 17705:9/0/0 17704:9/0/0 17703:1/0/0 17714:1/0/0 17709:1/0/0 17710:1/0/0 17702:1/0/0 17701:1/0/0
 1794636568	sightings	Alaric	57	2497	dresden.are	item	25102:1/0 2004:1/0 5005:1/0 6507:3/0 25039:1/1 4446:1/0 4444:1/0 25040:1/1
 1794636568	session	Alaric	57	2497	dresden.are	shutdown	12214s	+0 levels	+0 exp	+663752621 copper	17 kills	0 deaths	3 quests	747 commands	0 refused	coin: loot 2p 9g 73s 19c, quests 662p 75g 53s 2c, spent 1p 10g	spent on: heal 1p 10g	exp: none
+1794662543	area	Trentlin	40	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794662545	cmd	Trentlin	40	4210	dresden.are	sleeping	18	0	-	note		(withheld)	-	-
+1794662548	cmd	Trentlin	40	4210	dresden.are	sleeping	18	0	-	note		(withheld)	-	-
+1794662550	coin	Trentlin	40	4210	dresden.are	+38193215	bank	interest	bank	15324283405
+1794662550	laid	-	0	0	-	853	herb	38	a foxglove flower	7881	valley.are	scatter
+1794662550	laid	-	0	0	-	854	herb	47	a sprig of saffron	7845	valley.are	scatter
+1794662559	cmd	Trentlin	40	4210	dresden.are	sleeping	35	0	-	note		(withheld)	-	-
+1794662563	refused	Trentlin	40	4210	dresden.are	sleeping	35	0	-	look		In your dreams, or what?	refusal:position	-
+1794662564	cmd	Trentlin	40	4210	dresden.are	sleeping	35	0	-	wake		You wake and stand up.	-	-
+1794662565	cmd	Trentlin	40	4210	dresden.are	standing	35	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794662569	cmd	Trentlin	40	4210	dresden.are	standing	35	0	-	where	hermie	You didn't find any hermie.	-	-
+1794662570	cmd	Trentlin	40	4210	dresden.are	standing	35	0	-	sleep		You go to sleep.	-	-
+1794662598	cmd	Trentlin	40	4210	dresden.are	sleeping	35	0	-	worth		You have 7 platinum, 179 gold, 133 silver, 512 copper // and 93219 experience (1081 exp to level).	-	-
+1794662601	laid	-	0	0	-	855	herb	43	a sprig of hyssop	5326	mirror.are	scatter
+1794662609	cmd	Trentlin	40	4210	dresden.are	sleeping	49	0	-	help	map	MAP MAPPER AUTOMAP AUTOMAPPER MAPPING // The automatic client-side map is a window in the Mudlet interface (HELP // MUDLET) that follows you as you move.  The	-	+
+1794662639	cmd	Trentlin	40	4210	dresden.are	sleeping	49	0	-	help	search	SEARCH // Syntax: search <container> //         search <direction>	-	+
+1794662652	cmd	Trentlin	40	4210	dresden.are	sleeping	49	0	-	wake		You wake and stand up.	-	-
+1794662653	cmd	Trentlin	40	4210	dresden.are	standing	49	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794662654	cmd	Trentlin	40	4203	dresden.are	standing	49	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794662655	cmd	Trentlin	40	4202	dresden.are	standing	49	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794662655	cmd	Trentlin	40	4201	dresden.are	standing	49	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794662655	cmd	Trentlin	40	2427	dresden.are	standing	49	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794662656	cmd	Trentlin	40	2404	dresden.are	standing	49	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794662656	cmd	Trentlin	40	2401	dresden.are	standing	49	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794662657	cmd	Trentlin	40	2410	dresden.are	standing	49	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794662657	cmd	Trentlin	40	2411	dresden.are	standing	49	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794662657	cmd	Trentlin	40	2414	dresden.are	standing	49	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794662658	cmd	Trentlin	40	2497	dresden.are	standing	49	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794662660	quest	Trentlin	40	2497	dresden.are	ordinary	recover	25042	The Heart of Tifarah	59	oldthalo.are	21
+1794662660	cmd	Trentlin	40	2497	dresden.are	standing	49	18	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Raiders stole The Heart of Tifarah from the realm!'	-	+
+1794662671	cmd	Trentlin	40	2401	dresden.are	standing	49	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794662674	cmd	Trentlin	40	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794662674	cmd	Trentlin	40	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794662674	cmd	Trentlin	40	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794662674	cmd	Trentlin	40	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794662675	laid	-	0	0	-	861	herb	43	a sprig of hyssop	6390	arac.are	scatter
+1794662675	cmd	Trentlin	40	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794662675	cmd	Trentlin	40	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794662676	cmd	Trentlin	40	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794662676	cmd	Trentlin	40	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794662676	cmd	Trentlin	40	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794662677	cmd	Trentlin	40	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794662677	area	Trentlin	40	3503	midennir.are	dresden.are	midennir.are	134	east
+1794662677	cmd	Trentlin	40	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794662677	cmd	Trentlin	40	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794662678	area	Trentlin	40	5261	oldthalo.are	midennir.are	oldthalo.are	1	south
+1794662678	cmd	Trentlin	40	5261	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1794662681	cmd	Trentlin	40	5260	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794662681	cmd	Trentlin	40	5259	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794662682	cmd	Trentlin	40	5258	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1794662683	cmd	Trentlin	40	5257	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest //   A side trail here leads from the dwarf forest.  It is definitely drier // and hotter here.  The trail continues to the west, and to the east, you see	-	+
+1794662683	cmd	Trentlin	40	5256	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest //   The trail ends here, with short, dry stumps of trees all around you. // To the west, you can see the ruins of a huge city.  Something about it gives	-	+
+1794662684	cmd	Trentlin	40	5200	oldthalo.are	standing	100	0	-	west		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates have been forced open and have rusted in place. A hollow	-	+
+1794662685	cmd	Trentlin	40	5201	oldthalo.are	standing	100	0	-	west		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending.  A dark alley	-	+
+1794662686	cmd	Trentlin	40	5201	oldthalo.are	standing	100	0	-	exits		Obvious exits: // North - A back alley // East  - The Grand Gate of Thalos	-	+
+1794662688	cmd	Trentlin	40	5255	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A ruined building is to the west.	-	+
+1794662688	cmd	Trentlin	40	5255	oldthalo.are	standing	100	0	-	exits		Obvious exits: // North - Main Street // South - A back alley	-	+
+1794662690	cmd	Trentlin	40	5235	oldthalo.are	standing	100	0	-	west		A small guard house //   This was once the barracks for Thalos' cityguards. Now just an empty // shell, this small shack still stands guarding the entrance both to the	-	+
+1794662691	cmd	Trentlin	40	5255	oldthalo.are	standing	100	0	-	east		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A ruined building is to the west.	-	+
+1794662692	cmd	Trentlin	40	5253	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow alley leads south to one of the city watchtowers. // [Exits: north south]	-	-
+1794662693	cmd	Trentlin	40	5252	oldthalo.are	standing	100	0	-	south		Under a ruined watchtower //   You stand at the base of a tall watchtower built to protect the city // from invaders. From the looks of things, it did not do a good job.	-	+
+1794662695	cmd	Trentlin	40	5251	oldthalo.are	standing	100	0	-	west		A back alley //   A narrow alley leads east to a wider street and west to one of // the city watchtowers.	-	+
+1794662697	cmd	Trentlin	40	5214	oldthalo.are	standing	100	0	-	west		A side street //   You are at the end of a long street leading to the center of the city. // A long dark alley runs east and west.	-	+
+1794662698	cmd	Trentlin	40	5214	oldthalo.are	standing	100	0	-	exits		Obvious exits: // North - A side street // East  - A back alley	-	+
+1794662699	cmd	Trentlin	40	5213	oldthalo.are	standing	100	0	-	north		A side street //   This small side street is lined with the remains of once great // buildings. To the north is a dark, foreboding structure while to the	-	+
+1794662701	cmd	Trentlin	40	5230	oldthalo.are	standing	100	0	-	east		The Tavern of the Sun //   A glorious place in it's prime, this tavern now lies in ruin; tables // and chairs are broken scattered, bottles and glasses shattered, and	-	+
+1794662702	cmd	Trentlin	40	5213	oldthalo.are	standing	100	0	-	west		A side street //   This small side street is lined with the remains of once great // buildings. To the north is a dark, foreboding structure while to the	-	+
+1794662702	cmd	Trentlin	40	5219	oldthalo.are	standing	100	0	-	west		The guild house //   You are standing in what once was this city's ONLY guild house. // Tables and chairs have been smashed and broken weapons lie strewn about	-	+
+1794662707	cmd	Trentlin	40	5213	oldthalo.are	standing	100	0	-	east		A side street //   This small side street is lined with the remains of once great // buildings. To the north is a dark, foreboding structure while to the	-	+
+1794662707	cmd	Trentlin	40	5212	oldthalo.are	standing	100	0	-	north		A side street //   This small side street leads south away from the temple into the // business section of town. The destruction that leveled this city was not	-	+
+1794662708	cmd	Trentlin	40	5232	oldthalo.are	standing	100	0	-	east		The city hall //   This is the main reception area of Thalos' city hall. The walls have // been charred and scored massively and debris is spread from wall to wall.	-	+
+1794662710	cmd	Trentlin	40	5212	oldthalo.are	standing	100	0	-	west		A side street //   This small side street leads south away from the temple into the // business section of town. The destruction that leveled this city was not	-	+
+1794662711	cmd	Trentlin	40	5221	oldthalo.are	standing	100	0	-	west		The smithy //   In here you find tools and anvils used to make various weapons // and items. The walls have been stripped clean and only a few incomplete	-	+
+1794662712	cmd	Trentlin	40	5212	oldthalo.are	standing	100	0	-	east		A side street //   This small side street leads south away from the temple into the // business section of town. The destruction that leveled this city was not	-	+
+1794662712	cmd	Trentlin	40	5206	oldthalo.are	standing	100	0	-	north		A Garden Path //   A circular path surrounds a magnificent domed temple in the center of // the city. Flowers have withered away and the once lush trees are bare.	-	+
+1794662713	cmd	Trentlin	40	5203	oldthalo.are	standing	100	0	-	north		A Garden Path //   A circular path surrounds a magnificent domed temple in the center of // the city. Flowers have withered away and the once lush trees are bare.	-	+
+1794662714	cmd	Trentlin	40	5202	oldthalo.are	standing	100	0	-	east		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending. On one	-	+
+1794662716	cmd	Trentlin	40	5202	oldthalo.are	standing	100	0	-	exits		Obvious exits: // North - A collapsed home // East  - Main Street	-	+
