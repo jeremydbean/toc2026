@@ -298104,3 +298104,16 @@ Sat Nov 14 10:47:41 2026 :: Treasure goblin: vanished from room 28126 (A Giant C
 Sat Nov 14 10:47:42 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 3 of 6 in 6 hours).
 Sat Nov 14 10:48:16 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 10:49:01 2026 :: Cartographer: appeared.
+Sat Nov 14 10:51:12 2026 :: Connection guard: 35.210.115.86 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 10:51:22 2026 :: Connection guard: 35.210.115.86 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 10:51:22 2026 :: Sock.sinaddr:  35.210.115.86
+Sat Nov 14 10:51:22 2026 :: EOF encountered on read.
+Sat Nov 14 10:51:22 2026 :: Connection guard: 35.210.115.86 closed before a password prompt (strike 3 of 6 in 6 hours).
+Sat Nov 14 10:51:23 2026 :: Connection guard: 35.210.115.86 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 14 10:51:23 2026 :: Connection guard: 35.210.115.86 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 14 10:51:23 2026 :: Connection guard: 35.210.115.86 closed without a word (strike 6 of 6 in 6 hours).
+Sat Nov 14 10:51:23 2026 :: Connection guard: 35.210.115.86 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.115.86 lifts it.
+Sat Nov 14 10:51:24 2026 :: Connection guard: refused 1 connection from 35.210.115.86 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Sat Nov 14 10:51:24 2026 :: Connection guard: 35.210.115.86 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 10:52:24 2026 :: Connection guard: refused 24 connections from 35.210.115.86 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
+Sat Nov 14 10:52:47 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
