@@ -298127,3 +298127,8 @@ Sat Nov 14 10:59:16 2026 :: Connection guard: 20.120.252.89 closed before a pass
 Sat Nov 14 10:59:16 2026 :: Connection guard: 20.120.252.89 closed without a word (strike 3 of 6 in 6 hours).
 Sat Nov 14 11:00:52 2026 :: Connection guard: 199.165.159.185 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 14 11:02:56 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 11:07:51 2026 :: Treasure goblin: vanished from room 29058 (Korzath's Quarters, korzath1.are) (too long in one area).
+Sat Nov 14 11:08:01 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 14 11:08:18 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 11:09:27 2026 :: Cartographer: left room 5768 (Old Market Road, mid_ruin.are) (his visit is over).
+Sat Nov 14 11:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
