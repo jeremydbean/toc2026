@@ -26147,3 +26147,195 @@
 1794625606	laid	-	0	0	-	1029	herb	53	a huckleberry	308	plains.are	scatter
 1794625618	census	-	0	0	-	herbs=26/150 components=13/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=11 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=42 mobs_fought=11 secs=900
 1794625711	laid	-	0	0	-	1030	herb	42	a marjoram plant	7744	ultima.are	scatter
+1794625763	laid	-	0	0	-	1031	component	72	a minotaur's ear	7672	ultima.are	scatter
+1794625806	laid	-	0	0	-	1032	component	73	a roper's tentacle	10132	glitter.are	scatter
+1794625829	quest	Alaric	57	2497	dresden.are	ordinary	recover	25039	The Amulet of Soulcrusher	59	underdrk.are	25
+1794625829	cmd	Alaric	57	2497	dresden.are	standing	100	15	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'Raiders stole The Amulet of Soulcrusher from the realm!'	-	+
+1794625834	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794625835	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794625835	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794625835	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794625835	cmd	Alaric	57	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794625836	cmd	Alaric	57	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794625836	cmd	Alaric	57	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794625836	cmd	Alaric	57	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794625836	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794625837	cmd	Alaric	57	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794625837	area	Alaric	57	3503	midennir.are	dresden.are	midennir.are	723	east
+1794625837	cmd	Alaric	57	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794625837	cmd	Alaric	57	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794625837	area	Alaric	57	5261	oldthalo.are	midennir.are	oldthalo.are	0	south
+1794625837	cmd	Alaric	57	5261	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1794625838	cmd	Alaric	57	5260	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794625838	cmd	Alaric	57	5259	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794625838	cmd	Alaric	57	5258	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1794625838	cmd	Alaric	57	5262	oldthalo.are	standing	100	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks	-	+
+1794625839	cmd	Alaric	57	5263	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south	-	+
+1794625839	cmd	Alaric	57	5264	oldthalo.are	standing	100	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east	-	+
+1794625839	cmd	Alaric	57	5265	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1794625839	cmd	Alaric	57	5266	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1794625840	cmd	Alaric	57	5267	oldthalo.are	standing	100	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and	-	+
+1794625840	cmd	Alaric	57	5267	oldthalo.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794625843	cmd	Alaric	57	5271	oldthalo.are	standing	100	0	-	north		The Valley in the dark dwarf forest //   You are in a valley in the forest.  To the north is a trail out of this // dark valley.  South is more of this valley.	-	+
+1794625843	cmd	Alaric	57	5272	oldthalo.are	standing	100	0	-	north		A dim trail in the dwarf forest //   You are in a dim trail in the dwarf forest.  Not much light passes through // here.  To the south is a gloomy valley, while to the north the light grows	-	+
+1794625844	cmd	Alaric	57	5273	oldthalo.are	standing	100	0	-	north		A dim trail in the dwarf forest //   You are in a dim trail in the dwarf forest.  Not much light passes through // here.  The trail runs north and south, and the light seems to come from the	-	+
+1794625844	cmd	Alaric	57	5280	oldthalo.are	standing	100	0	-	east		A dark bend in the forest //   You are in a dark bend in the forest.  To the west, you see the trail // leading back to the dwarven forest, and to the south, you see a dark and	-	+
+1794625844	area	Alaric	57	39	connect.are	oldthalo.are	connect.are	7	south
+1794625844	cmd	Alaric	57	39	connect.are	standing	100	0	-	south		Dark Path //   Your thoughts wander to past adventures as you trudge down the dismal // path but your progress is suddenly halted by a large dark mountain range	-	+
+1794625844	area	Alaric	57	6500	dwarves.are	connect.are	dwarves.are	0	east
+1794625844	cmd	Alaric	57	6500	dwarves.are	standing	100	0	-	east		Path to Dwarven Village //   All around you are the mountains of the southern range, home of dwarves and  // giants.  You can climb back down the mountains to the west and leave these 	-	+
+1794625845	cmd	Alaric	57	6501	dwarves.are	standing	100	0	-	north		Path, base of mountain //   Now you are at the bottom of a rugged mountain.  The forest around you is // very dense, and it seems very dark to the north.	-	+
+1794625845	cmd	Alaric	57	6502	dwarves.are	standing	100	0	-	north		Path, middle of mountain //   Standing on the middle of the mountain, you can easily see the turning // point to the south, and the top of the mountain is very near to the north.	-	+
+1794625845	cmd	Alaric	57	6503	dwarves.are	standing	100	0	-	north		Top of mountain //   You are now on the top of the mountain.  To the south you see a path // leading down the mountain.  To the east and west you see entrances to	-	+
+1794625845	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	west		Entrance to Mountain //   Here is an entrance to the mountain.  The door looks very well built, // and you can hear noise coming from within.	-	+
+1794625846	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	open	west	It's locked.	-	-
+1794625846	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	west		The door is closed.	-	-
+1794625850	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	open	west	It's locked.	-	-
+1794625850	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	west		The door is closed.	-	-
+1794625850	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794625852	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	look		Entrance to Mountain //   Here is an entrance to the mountain.  The door looks very well built, // and you can hear noise coming from within.	-	+
+1794625855	coin	Alaric	57	6505	dwarves.are	+1000000	loot	kill	corpse of the dwarven guard	26227108870
+1794625855	coin	Alaric	57	6505	dwarves.are	+500	loot	kill	corpse of the dwarven guard	26227109370
+1794625855	coin	Alaric	57	6505	dwarves.are	+6	loot	kill	corpse of the dwarven guard	26227109376
+1794625855	coin	Alaric	57	6505	dwarves.are	+20000	loot	kill	corpse of the dwarven guard	26227129376
+1794625855	cmd	Alaric	57	6505	dwarves.are	standing	100	1	-	kill	gu	Your punch >>> ANNIHILATES <<< the dwarven guard! [-220] // Your punch ^^^ DESTROYS ^^^ the dwarven guard! [-120] // Your punch <<< ERADICATES >>> the dwarven guard! [-171]	-	+
+1794625860	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794625862	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	kill	gu	Your punch <<< ERADICATES >>> the dwarven guard! [-173] // Your punch <<< ERADICATES >>> the dwarven guard! [-182]	-	-
+1794625865	coin	Alaric	57	6505	dwarves.are	+1000000	loot	(violence_update)	corpse of the dwarven guard	26228129376
+1794625865	coin	Alaric	57	6505	dwarves.are	+500	loot	(violence_update)	corpse of the dwarven guard	26228129876
+1794625865	coin	Alaric	57	6505	dwarves.are	+6	loot	(violence_update)	corpse of the dwarven guard	26228129882
+1794625865	coin	Alaric	57	6505	dwarves.are	+20000	loot	(violence_update)	corpse of the dwarven guard	26228149882
+1794625865	got	Alaric	57	6505	dwarves.are	6502	a deep green key	key	1	0	get	corpse of the dwarven guard
+1794625865	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	get	key cor	You get a deep green key from corpse of the dwarven guard.	-	-
+1794625866	laid	-	0	0	-	1048	herb	35	a sprig of angelica	9637	newthalo.are	scatter
+1794625866	laid	-	0	0	-	1049	herb	37	a sprig of catnip	9559	newthalo.are	scatter
+1794625866	laid	-	0	0	-	1050	component	76	a vial of dragons blood	2426	dresden.are	scatter
+1794625869	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	unlock	west	*Click*	-	-
+1794625869	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	open		Ok.	-	-
+1794625871	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	west		Inside the entrance //   Everything here is covered in soot and very grimy.  The path continues // to the east and north, and there is a door to the west.	-	+
+1794625871	cmd	Alaric	57	6526	dwarves.are	standing	100	0	-	west		A store room //   There is a layer of dust on the floor at least 3 inches thick!  It is // probable that not many people have been in here for many months.	-	+
+1794625871	cmd	Alaric	57	6526	dwarves.are	standing	100	0	-	open	down	Ok.	-	-
+1794625872	cmd	Alaric	57	6527	dwarves.are	standing	100	0	-	down		Wine cellar //   This room smells like wine, and you can only assume it used to be // a wine cellar at one time.	-	+
+1794625872	area	Alaric	57	2065	catacomb.are	dwarves.are	catacomb.are	28	down
+1794625872	cmd	Alaric	57	2065	catacomb.are	standing	100	0	-	down		Southern entrance to the catacombs //   Through a trapdoor above you streams light.  Through a doorway to // the south streams darkness.  A message has been scrawled upon the wall	-	+
+1794625872	cmd	Alaric	57	2064	catacomb.are	standing	100	0	-	north		Tunnel //   The tunnel slopes noticeably down to the north and you sense the surface // could be reached to the south.	-	+
+1794625872	cmd	Alaric	57	2063	catacomb.are	standing	100	0	-	north		Tunnel //   The tunnel heads north and south.  North you see an intersection and // far to the south you sense light and smell a fresh breeze.	-	+
+1794625873	cmd	Alaric	57	2062	catacomb.are	standing	100	0	-	north		Intersection //   To the north you enter the burial grounds.  a trail of blood leads that // direction.  Also you feel an ominous sense of evil magic from there.	-	+
+1794625873	cmd	Alaric	57	2061	catacomb.are	standing	100	0	-	west		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. The very // walls of the tunnel seems to groan.  to the north the tunnel bends and	-	+
+1794625873	cmd	Alaric	57	2060	catacomb.are	standing	100	0	-	north		Bend in the lonely tunnel //   Something indescribable makes you feel lonesome and sad here. The // tunnel bends west and south.	-	+
+1794625873	cmd	Alaric	57	2059	catacomb.are	standing	100	0	-	west		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. You see a // gate to a burial ground to the north.  This lonesome tunnel sighs along	-	+
+1794625874	cmd	Alaric	57	2058	catacomb.are	standing	100	0	-	west		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. Its just // a feeling you get from this tunnel.  The tunnel east and west.	-	+
+1794625874	cmd	Alaric	57	2050	catacomb.are	standing	100	0	-	west		Prism cave //   The roof of this cave peaks over a hundred feet high making it one of // the biggest in the catacombs.  Crystals of every color cast prismatic	-	+
+1794625874	cmd	Alaric	57	2049	catacomb.are	standing	100	0	-	west		Striped tunnel //   The walls of the tunnels have many brilliant colors in them from the // various veins of crystals running in them.  An odd twinkling comes from	-	+
+1794625874	cmd	Alaric	57	2048	catacomb.are	standing	100	0	-	west		Twisty cavern //   The way twist this way and that and its all you can do to keep your head // from spinning.  The air is very cold here and layers of ice on the wall.	-	+
+1794625875	cmd	Alaric	57	2040	catacomb.are	standing	100	0	-	north		Misty cavern //   A chilling icy mist swirl about you.  The dampness and warmth has become // bitter cold.  The walls of the cavern are several feet thick with ice	-	+
+1794625875	cmd	Alaric	57	2041	catacomb.are	standing	100	0	-	east		Misty cavern //   The temperature is a pleasant and mild here.  This is due to a warm wind // blowing in from the east and a chilly breeze blowing in from the west.	-	+
+1794625875	cmd	Alaric	57	2042	catacomb.are	standing	100	0	-	east		Mist cavern //   A warm wind blows in from the east.  The air is still stifling hot in // here despite the breeze.  The mist seems thick enough to be alive. . .	-	+
+1794625875	cmd	Alaric	57	2043	catacomb.are	standing	100	0	-	east		Waterfall of mist //   River of hot mist pour down in a cascade from a hole in the cavern.  It // falls like water down from the heights like a waterfall and creates	-	+
+1794625876	area	Alaric	57	25175	underdrk.are	catacomb.are	underdrk.are	4	down
+1794625876	cmd	Alaric	57	25175	underdrk.are	standing	100	0	-	down		The hole upwards. //   The rocks did make good handholds.  You find yourself above the cavern and // right underneath the hole that the waterfall originates from.  It seems to	-	+
+1794625876	cmd	Alaric	57	25174	underdrk.are	standing	100	0	-	down		A path upwards. //   You climb a path that runs up the side of the waterfall.  Ahead of you is a // rock wall that has several good rocks that could be used for climbing.  The	-	+
+1794625876	cmd	Alaric	57	25173	underdrk.are	standing	100	0	-	down		At the bottom of the waterfall. //   You walk into a huge cavern with water falling out of a hole in the ceiling. // Glowing moss is thriving on the moisture so abundant in this cavern.  There	-	+
+1794625876	cmd	Alaric	57	25172	underdrk.are	standing	100	0	-	north		The passageway. //   The roaring of the waterfall here is almost deafening.  The moisture is making // your armor and clothes damp.  The walls are dripping wet and there is mud on	-	+
+1794625877	cmd	Alaric	57	25166	underdrk.are	standing	100	0	-	north		The Intersection. //   The dark corridor turns west here and also continues to the south.  The roar // of the waterfall comes from the south and no sounds at all come from the	-	+
+1794625877	cmd	Alaric	57	25165	underdrk.are	standing	100	0	-	north		The dim passage. //   Light from the passage north fills this room with soft light.  The walls // look carved from the rock.  There is little dust on the ground and the air	-	+
+1794625877	cmd	Alaric	57	25159	underdrk.are	standing	100	0	-	north		The Trade Route. //   Glowing moss covers the walls of this huge corridor giving off more than // enough light to see by.  The floor is covered in wagon and animal tracks.	-	+
+1794625877	cmd	Alaric	57	25160	underdrk.are	standing	100	0	-	east		The Trade Route. //   The glowing moss that covers the walls gives off more than enough light to see // by.  This huge corridor is used for trade between the different underground	-	+
+1794625894	cmd	Alaric	57	25161	underdrk.are	standing	100	0	-	east		The Trade Route. //   The glowing moss that covers the walls gives off more than enough light to see // by.  This huge corridor is used for trade between the different underground	-	+
+1794625894	cmd	Alaric	57	25162	underdrk.are	standing	100	0	-	east		The Trade Route. //   The corridor seems to expand into infinity in either direction.  The glowing // moss that has grown on the walls gives off more than enough light to see by.	-	+
+1794625894	cmd	Alaric	57	25163	underdrk.are	standing	100	0	-	east		The Trade Route. //   The air in this part of the corridor is deathly still.  The walls are still // covered with the glowing moss, but it seems to dim here.  Wagon and animal	-	+
+1794625895	cmd	Alaric	57	25164	underdrk.are	standing	100	0	-	east		Before the gates. //   These two massive gates are always left open for trade, but there are always // two drow guards standing watch.  Looking to the west the corridor continues	-	+
+1794625895	area	Alaric	57	5114	drow1.are	underdrk.are	drow1.are	19	east
+1794625895	cmd	Alaric	57	5114	drow1.are	standing	100	0	-	east		City street //   You walk along a highly ornate city street leading north-south and east. // [Exits: north east south west]	-	-
+1794625895	cmd	Alaric	57	5117	drow1.are	standing	100	0	-	east		City street //   You walk along a highly ornate city street going east-west. To the north // is a giant temple.	-	+
+1794625895	cmd	Alaric	57	5121	drow1.are	standing	100	0	-	east		City street //   You walk along a highly ornate city street going eastward. To the north is // a building.	-	+
+1794625896	cmd	Alaric	57	5123	drow1.are	standing	100	0	-	east		City street //   You walk along a highly ornate city street leading west and south. To the // north is a relatively small house.	-	+
+1794625896	cmd	Alaric	57	5101	drow1.are	standing	100	0	-	south		City street //   You walk along a highly ornate street going north-south. A large gate // lies to the east while a building lies to the west.	-	+
+1794625896	cmd	Alaric	57	5100	drow1.are	standing	100	0	-	east		City Entrance //   You are at the entrance to a small underground city. A great adamantite // gate lies open to the west allowing entrance into the city.	-	+
+1794625896	cmd	Alaric	57	5100	drow1.are	standing	100	0	-	open	up	Ok.	-	-
+1794625897	area	Alaric	57	5270	oldthalo.are	drow1.are	oldthalo.are	2	up
+1794625897	cmd	Alaric	57	5270	oldthalo.are	standing	100	0	-	up		Down the path into a dead end //   You are down the path.  There is no obvious exit in this place, exit the // one back up north.  All around you, you see skeletons.	-	+
+1794625897	cmd	Alaric	57	5269	oldthalo.are	standing	100	0	-	up		A small ugly cave //   You are in a small ugly cave.  More skeletons lie around.  It is obvious // that the owner doesn't want you here.  The exit north is still visible.	-	+
+1794625897	cmd	Alaric	57	5268	oldthalo.are	standing	100	0	-	north		A small ugly cave //   You see a small cave.  Skeletons of many types of creatures litter the area. // Obviously, no fox lives here!  The oppression makes you want to leave and	-	+
+1794625897	cmd	Alaric	57	5268	oldthalo.are	standing	100	0	-	open	east	Ok.	-	-
+1794625898	cmd	Alaric	57	5267	oldthalo.are	standing	100	0	-	east		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and	-	+
+1794625898	cmd	Alaric	57	5266	oldthalo.are	standing	100	0	-	up		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1794625898	cmd	Alaric	57	5265	oldthalo.are	standing	100	0	-	west		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1794625898	cmd	Alaric	57	5264	oldthalo.are	standing	100	0	-	west		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east	-	+
+1794625899	cmd	Alaric	57	5263	oldthalo.are	standing	100	0	-	north		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south	-	+
+1794625899	cmd	Alaric	57	5262	oldthalo.are	standing	100	0	-	west		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks	-	+
+1794625899	cmd	Alaric	57	5258	oldthalo.are	standing	100	0	-	west		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1794625899	cmd	Alaric	57	5259	oldthalo.are	standing	100	0	-	north		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794625900	cmd	Alaric	57	5260	oldthalo.are	standing	100	0	-	north		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1794625900	cmd	Alaric	57	5261	oldthalo.are	standing	100	0	-	north		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1794625900	area	Alaric	57	3502	midennir.are	oldthalo.are	midennir.are	3	north
+1794625900	cmd	Alaric	57	3502	midennir.are	standing	100	0	-	north		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794625900	cmd	Alaric	57	3503	midennir.are	standing	100	0	-	west		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794625901	area	Alaric	57	2440	dresden.are	midennir.are	dresden.are	1	west
+1794625901	cmd	Alaric	57	2440	dresden.are	standing	100	0	-	west		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794625901	spotted	Alaric	57	2426	dresden.are	1050	component	76	a vial of dragons blood	35	1	scatter	arrive
+1794625901	cmd	Alaric	57	2426	dresden.are	standing	100	0	-	west		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794625901	area	Alaric	57	2571	limbo.are	dresden.are	limbo.are	0	south
+1794625901	passed	Alaric	57	2571	limbo.are	1050	component	76	a vial of dragons blood	35	0	1	scatter	2426	left
+1794625901	cmd	Alaric	57	2571	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1794625901	cmd	Alaric	57	2572	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1794625902	cmd	Alaric	57	2573	limbo.are	standing	100	0	-	south		Wall Road. //   The darkness begins to fade away as you go farther south.  You feel as though // someone is watching you from the shadows.	-	+
+1794625902	cmd	Alaric	57	2574	limbo.are	standing	100	0	-	south		Wall Road. //   A cloud passes over the sun, sinking the alley into darkness.  The hair on // your back begins to stick up, and you shake yet it is not cold.	-	+
+1794625902	cmd	Alaric	57	2575	limbo.are	standing	100	0	-	south		Wall Road. //   Sunlight shines down on the guard post to the south, as though some God were // blessing the building with their almighty power.	-	+
+1794625902	cmd	Alaric	57	2575	limbo.are	standing	100	0	-	open	south	Ok.	-	-
+1794625903	cmd	Alaric	57	2576	limbo.are	standing	100	0	-	south		Southeast Guardpost and Watchtower. //   This is the Southeast guardpost of Dresden. // It is used as a watch station and coffee break area for the guards of Dresden.	-	+
+1794625903	cmd	Alaric	57	2576	limbo.are	standing	100	0	-	open	west	Ok.	-	-
+1794625903	cmd	Alaric	57	2578	limbo.are	standing	100	0	-	west		Path along the river. //   You walk along the path beside the river.  The bustle from the docks can be // heard from the west, and an oak door leads east into the southeast guardpost	-	+
+1794625903	area	Alaric	57	2447	dresden.are	limbo.are	dresden.are	2	west
+1794625903	cmd	Alaric	57	2447	dresden.are	standing	100	0	-	west		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794625904	cmd	Alaric	57	2449	dresden.are	standing	100	0	-	south		Second Pier. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794625904	cmd	Alaric	57	2517	dresden.are	standing	100	0	-	south		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the	-	+
+1794625904	cmd	Alaric	57	2516	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794625904	cmd	Alaric	57	2515	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794625905	area	Alaric	57	5000	eastern.are	dresden.are	eastern.are	2	east
+1794625905	cmd	Alaric	57	5000	eastern.are	standing	100	0	-	east		A long tunnel //   You encounter some rapids as you enter this tunnel cut out of // the mountains by the river.	-	+
+1794625905	cmd	Alaric	57	5001	eastern.are	standing	100	0	-	east		A long, branched tunnel //   The tunnel continues east and it also branches to the southeast. // [Exits: east west southeast]	-	-
+1794625905	cmd	Alaric	57	5002	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off north. // [Exits: north east west]	-	-
+1794625905	cmd	Alaric	57	5008	eastern.are	standing	100	0	-	north		Cave-in //   You stand at the edge of a large pile of rubble created from the last // rockslide.	-	+
+1794625906	cmd	Alaric	57	5009	eastern.are	standing	100	0	-	down		At the foot of the rubble //   You are at the bottom of a large pile of rubble. A tunnel branches // off to the north and east.	-	+
+1794625906	cmd	Alaric	57	5010	eastern.are	standing	100	0	-	north		Cave entrance //   You stand in the middle of a large and beautiful cave. A path leads // deeper into the darkness.	-	+
+1794625906	cmd	Alaric	57	5011	eastern.are	standing	100	0	-	down		Giant cave //   This cavern overwhelms you. The walls and ceiling seem miles away. // Bones of previous adventurers lie strewn on the cavern floor.	-	+
+1794625906	area	Alaric	57	25139	underdrk.are	eastern.are	underdrk.are	1	down
+1794625906	cmd	Alaric	57	25139	underdrk.are	standing	100	0	-	down		The refuse pit. //   Half-eaten bodies and bones of things long dead are scattered around the // room.  You can't see any creature, but then a leg bone falls from a hole	-	+
+1794625907	cmd	Alaric	57	25138	underdrk.are	standing	100	0	-	east		The bend in the corridor. //   The corridor makes another turn here.  The dust is still undisturbed and // the air is as still as death.  The smell of the sulfur is gone, but you	-	+
+1794625907	cmd	Alaric	57	25137	underdrk.are	standing	100	0	-	north		The straight run. //   The corridor tightens here and runs straight for as far as you can see. // Little comfort considering you can only see as far as your light will allow.	-	+
+1794625907	cmd	Alaric	57	25136	underdrk.are	standing	100	0	-	north		The bend in the corridor. //   The mud starts to turn to dust again.  The only time you smell sulfur now is // when the geyser erupts.  The walls look like they were carved by some halfling	-	+
+1794625907	cmd	Alaric	57	25135	underdrk.are	standing	100	0	-	west		The corridor past the pool. //   You start to feel cold as the sweat that rose on your body from the previous // room starts to cool.  There is some moisture in this room, and the floor is	-	+
+1794625908	cmd	Alaric	57	25133	underdrk.are	standing	100	0	-	west		The edge of the pool. //   You walk into this chamber on a stone ledge.  Before you lies a deep dark // pool.  It's been a few minutes since you've heard any roaring.  Suddenly,	-	+
+1794625908	cmd	Alaric	57	25132	underdrk.are	standing	100	0	-	north		The corridor. //   The moisture is now running off of you in beads.  The smell of the sulfur // is stronger still and the ground is covered in a thin coating of water.  The	-	+
+1794625908	cmd	Alaric	57	25131	underdrk.are	standing	100	0	-	west		The corridor. //   The moisture is now starting to gather on your weapons and armor.  The smell // of the sulfur is getting stronger, but isn't overpowering yet.  The floor	-	+
+1794625908	cmd	Alaric	57	25130	underdrk.are	standing	100	0	-	north		Into the wind. //   The wind is starting to smell of sulfur and the air is getting warmer.  You // can hear a soft roaring in the background every few minutes.  The corridor	-	+
+1794625909	cmd	Alaric	57	25129	underdrk.are	standing	100	0	-	west		Beneath the windy hole. //   The wind is strong here.  It's fed by some unseen source in the darkness to // the east.  The walls are smoother here and you can feel moisture in the wind.	-	+
+1794625909	cmd	Alaric	57	25121	underdrk.are	standing	100	0	-	up		The hole downward. //   You come into a small chamber with exits in two of the walls.  In the floor // is a large hole that the wind is apparently coming from.  You hear sounds	-	+
+1794625909	cmd	Alaric	57	25123	underdrk.are	standing	100	0	-	south		Past the hole in the ground. //   The wind isn't coming this way and the air is suffocating.  Feelings of // anxiety envelop your body and you keep having feelings of drowning in stone.	-	+
+1794625909	cmd	Alaric	57	25124	underdrk.are	standing	100	0	-	south		A curve in the passage. //   The passageway curves here and the prints are even more noticeable in the // dust.  You can hear whispers and conversations in the darkness in some	-	+
+1794625910	cmd	Alaric	57	25125	underdrk.are	standing	100	0	-	west		Light in the tunnel. //   You can see flickering torch light on the walls.  The shadows of the beings // whose conversation's you can hear are walking in front of the light.  There	-	+
+1794625910	cmd	Alaric	57	25126	underdrk.are	standing	100	0	-	south		At the top of a shaft. //   Torches line the walls in what is the only light you've seen besides your // own since you've been in these tunnels.  There is a small fire by the side	-	+
+1794625910	cmd	Alaric	57	25140	underdrk.are	standing	100	0	-	down		Down the shaft. //   The walls are jagged in this shaft and offer good hand holds.  There is litter // and refuse caught on some of the rocks.  You grab onto something soft and	-	+
+1794625910	cmd	Alaric	57	25141	underdrk.are	standing	100	0	-	down		The bottom of the shaft. //   The garbage in this room is knee high.  It all comes from the shaft above. // Rotted food, paper, and 'items' that belong better in a sewer completely cover	-	+
+1794625916	cmd	Alaric	57	25140	underdrk.are	standing	100	0	-	up		Down the shaft. //   The walls are jagged in this shaft and offer good hand holds.  There is litter // and refuse caught on some of the rocks.  You grab onto something soft and	-	+
+1794625917	cmd	Alaric	57	25126	underdrk.are	standing	100	0	-	up		At the top of a shaft. //   Torches line the walls in what is the only light you've seen besides your // own since you've been in these tunnels.  There is a small fire by the side	-	+
+1794625918	got	Alaric	57	25126	underdrk.are	25039	The Amulet of Soulcrusher	trash	59	0	get	the floor
+1794625918	cmd	Alaric	57	25126	underdrk.are	standing	100	0	-	get	all	You get The Amulet of Soulcrusher.	-	-
+1794625919	area	Alaric	57	2497	dresden.are	underdrk.are	dresden.are	13	recall
+1794625919	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794625921	coin	Alaric	57	2497	dresden.are	+107890398	quests	aquest	-	26336040280
+1794625921	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2148->2148 offered=14 daily=4->4 coin=+107890398 kill=15412914 streak=0 level=57 target=0
+1794625921	cmd	Alaric	57	2497	dresden.are	standing	100	33	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Amulet of Soulcrusher to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1794625922	cmd	Alaric	57	2497	dresden.are	standing	100	8	-	aquest	ga no	You safely collect 14 quest points.	-	-
+1794625923	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=432/983 align=922 exp=252749 coin=1511978438 bank=24824061842 qp=2162 prac=36 train=76 stash=93/350 remorts=3
+1794625923	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    294 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794625990	laid	-	0	0	-	1054	herb	49	a pomegranate	28033	pyramid.are	scatter
+1794625990	laid	-	0	0	-	1055	herb	39	a chervil leaf	28050	pyramid.are	scatter
+1794625990	laid	-	0	0	-	1056	component	64	a manticore's spine	7107	sewer.are	scatter
+1794626022	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a deep green key //      a multi-colored key ring	-	+
+1794626026	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	drop	cad	You drop the cadaver-toy.	-	-
+1794626028	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	sacrifice	cad	The Gods give you 0 copper coins for your sacrifice.	-	-
+1794626030	laid	-	0	0	-	1058	herb	40	a clove	9566	newthalo.are	scatter
+1794626030	laid	-	0	0	-	1059	herb	51	a piece of kelp	9635	newthalo.are	scatter
+1794626030	laid	-	0	0	-	1060	component	82	a vial of purple worm stinger poison	3203	school.are	scatter

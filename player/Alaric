@@ -2,7 +2,7 @@
 Name Alaric~
 Id   22012
 Serial 1251902
-LogO 1794625534
+LogO 1794625922
 Vers 4
 Prom ~
 Race dwarf~
@@ -18,18 +18,18 @@ ChangesSeen 20261112timesofchaos:1 20261112weaponflags:1 20261112mudletdoors:1 2
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble~
 Cast none
 Levl 57
-Plyd 1059508
+Plyd 1059896
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
 StashMax 350
 Scro 22
 Room 2497
-HMV  1544 1544 2875 2875 983 983
-NewGold 4
-NewPlat 1402
-NewCopp 28
-NewSilv 70
+HMV  1544 1544 2875 2875 432 983
+NewGold 97
+NewPlat 1511
+NewCopp 38
+NewSilv 84
 BankCP 24824061842
 IntTime 1794617884
 IntTotal 1182061842
@@ -37,8 +37,8 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 3755
-AchQuests 408
+AchKills 3757
+AchQuests 409
 AchDeaths 9
 AchExplore 5
 AchMaps 5
@@ -179,7 +179,7 @@ AchSet rooms 2 4 10-16 18 21-25 28-43 45-47 51-52 54-57 59 61-64 66 70 300 305-3
 AchSet daily-kinds 1 ~
 AchSet psi-disciplines 1-2 ~
 AchSet explored-areas 1819706833 ~
-LastOut  1794625534
+LastOut  1794625922
 Rested 46163 0
 Daily 4 20751 3 1 20751
 SesLogin 1794612356
@@ -192,9 +192,11 @@ SesDead  0
 SesQuest 1
 RecallRoom 2497
 RecallSet  1793672488
-QuestPnts 2148
+QuestPnts 2162
+QuestStrk 1
 CasinoWon  51
 CasinoLost 304
+QuestNext 5
 Exp  252749
 Act  4261068
 AfBy 524800
@@ -229,7 +231,7 @@ Tutorial 0 0
 Save  -4
 Alig  922
 Hit   52
-Dam   78
+Dam   62
 ACs -254 -233 -278 -32
 Attr 20 13 13 16 21
 AMod 12 -1 2 9 0
@@ -287,8 +289,7 @@ Sk 100 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'levitate'   0   1   0   0     524288          0
-AffD 'steel fist'   0   1  16  19          0          0
+AffD 'levitate'   0   4   0   0     524288          0
 End
 
 #O

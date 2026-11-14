@@ -297380,3 +297380,294 @@ Sat Nov 14 03:05:41 2026 :: Connection guard: refused 1 connection from 54.167.2
 Sat Nov 14 03:07:36 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 03:07:37 2026 :: Log Alaric [2497]: affects off: levitate, steel fist
 Sat Nov 14 03:09:20 2026 :: Treasure goblin: vanished from room 25222 (On the northern road., mushroom.are) (too long in one area).
+Sat Nov 14 03:10:12 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 03:10:29 2026 :: Log Alaric [2497]: aq re
+Sat Nov 14 03:10:29 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in underdrk.are, 25 minutes, ordinary
+Sat Nov 14 03:10:34 2026 :: Log Alaric [2497]: enter door
+Sat Nov 14 03:10:34 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2401]: east
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2403]: east
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2420]: east
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2421]: east
+Sat Nov 14 03:10:35 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2422]: east
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2423]: east
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2424]: east
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2425]: east
+Sat Nov 14 03:10:36 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Nov 14 03:10:37 2026 :: Log Alaric [2426]: east
+Sat Nov 14 03:10:37 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Nov 14 03:10:37 2026 :: Log Alaric [2440]: east
+Sat Nov 14 03:10:37 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Nov 14 03:10:37 2026 :: Log Alaric [3503]: east
+Sat Nov 14 03:10:37 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Nov 14 03:10:37 2026 :: Log Alaric [3502]: south
+Sat Nov 14 03:10:37 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5261]: south
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5260]: south
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5259]: south
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5258]: east
+Sat Nov 14 03:10:38 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5262]: east
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5263]: south
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5264]: east
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5265]: east
+Sat Nov 14 03:10:39 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Sat Nov 14 03:10:40 2026 :: Log Alaric [5266]: down
+Sat Nov 14 03:10:40 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Sat Nov 14 03:10:40 2026 :: Log Alaric [5267]: west
+Sat Nov 14 03:10:43 2026 :: Log Alaric [5267]: north
+Sat Nov 14 03:10:43 2026 :: Log Alaric [5271]: arrived (The Valley in the dark dwarf forest) from 5267
+Sat Nov 14 03:10:43 2026 :: Log Alaric [5271]: north
+Sat Nov 14 03:10:43 2026 :: Log Alaric [5272]: arrived (A dim trail in the dwarf forest) from 5271
+Sat Nov 14 03:10:44 2026 :: Log Alaric [5272]: north
+Sat Nov 14 03:10:44 2026 :: Log Alaric [5273]: arrived (A dim trail in the dwarf forest) from 5272
+Sat Nov 14 03:10:44 2026 :: Log Alaric [5273]: east
+Sat Nov 14 03:10:44 2026 :: Log Alaric [5280]: arrived (A dark bend in the forest) from 5273
+Sat Nov 14 03:10:44 2026 :: Log Alaric [5280]: south
+Sat Nov 14 03:10:44 2026 :: Log Alaric [39]: arrived (Dark Path) from 5280
+Sat Nov 14 03:10:44 2026 :: Log Alaric [39]: east
+Sat Nov 14 03:10:44 2026 :: Log Alaric [6500]: arrived (Path to Dwarven Village) from 39
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6500]: north
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6501]: arrived (Path, base of mountain) from 6500
+Sat Nov 14 03:10:45 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6501]: north
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6502]: arrived (Path, middle of mountain) from 6501
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6502]: north
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6503]: arrived (Top of mountain) from 6502
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6503]: west
+Sat Nov 14 03:10:45 2026 :: Log Alaric [6505]: arrived (Entrance to Mountain) from 6503
+Sat Nov 14 03:10:46 2026 :: Log Alaric [6505]: open west
+Sat Nov 14 03:10:46 2026 :: Log Alaric [6505]: west
+Sat Nov 14 03:10:50 2026 :: Log Alaric [6505]: open west
+Sat Nov 14 03:10:50 2026 :: Log Alaric [6505]: west
+Sat Nov 14 03:10:50 2026 :: Log Alaric [6505]: levi
+Sat Nov 14 03:10:52 2026 :: Log Alaric [6505]: l
+Sat Nov 14 03:10:55 2026 :: Log Alaric [6505]: kill gu
+Sat Nov 14 03:10:55 2026 :: Log Alaric [6505]: killed the dwarven guard
+Sat Nov 14 03:10:55 2026 :: Log Alaric [6505]: coin +1 platinum
+Sat Nov 14 03:10:55 2026 :: Log Alaric [6505]: coin +5 silver
+Sat Nov 14 03:10:55 2026 :: Log Alaric [6505]: coin +6 copper
+Sat Nov 14 03:10:55 2026 :: Log Alaric [6505]: coin +2 gold
+Sat Nov 14 03:11:00 2026 :: Log Alaric [6505]: get key cor
+Sat Nov 14 03:11:02 2026 :: Log Alaric [6505]: kill gu
+Sat Nov 14 03:11:05 2026 :: Log Alaric [6505]: killed the dwarven guard
+Sat Nov 14 03:11:05 2026 :: Log Alaric [6505]: coin +1 platinum
+Sat Nov 14 03:11:05 2026 :: Log Alaric [6505]: coin +5 silver
+Sat Nov 14 03:11:05 2026 :: Log Alaric [6505]: coin +6 copper
+Sat Nov 14 03:11:05 2026 :: Log Alaric [6505]: coin +2 gold
+Sat Nov 14 03:11:05 2026 :: Log Alaric [6505]: get key cor
+Sat Nov 14 03:11:09 2026 :: Log Alaric [6505]: unl west
+Sat Nov 14 03:11:09 2026 :: Log Alaric [6505]: ow
+Sat Nov 14 03:11:11 2026 :: Log Alaric [6505]: west
+Sat Nov 14 03:11:11 2026 :: Log Alaric [6513]: arrived (Inside the entrance) from 6505
+Sat Nov 14 03:11:11 2026 :: Log Alaric [6513]: west
+Sat Nov 14 03:11:11 2026 :: Log Alaric [6526]: arrived (A store room) from 6513
+Sat Nov 14 03:11:11 2026 :: Log Alaric [6526]: open down
+Sat Nov 14 03:11:12 2026 :: Log Alaric [6526]: down
+Sat Nov 14 03:11:12 2026 :: Log Alaric [6527]: arrived (Wine cellar) from 6526
+Sat Nov 14 03:11:12 2026 :: Log Alaric [6527]: down
+Sat Nov 14 03:11:12 2026 :: Log Alaric [2065]: arrived (Southern entrance to the catacombs) from 6527
+Sat Nov 14 03:11:12 2026 :: Log Alaric [2065]: north
+Sat Nov 14 03:11:12 2026 :: Log Alaric [2064]: arrived (Tunnel) from 2065
+Sat Nov 14 03:11:12 2026 :: Log Alaric [2064]: north
+Sat Nov 14 03:11:12 2026 :: Log Alaric [2063]: arrived (Tunnel) from 2064
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2063]: north
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2062]: arrived (Intersection) from 2063
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2062]: west
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2061]: arrived (Lonely tunnel) from 2062
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2061]: north
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2060]: arrived (Bend in the lonely tunnel) from 2061
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2060]: west
+Sat Nov 14 03:11:13 2026 :: Log Alaric [2059]: arrived (Lonely tunnel) from 2060
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2059]: west
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2058]: arrived (Lonely tunnel) from 2059
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2058]: west
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2050]: arrived (Prism cave) from 2058
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2050]: west
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2049]: arrived (Striped tunnel) from 2050
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2049]: west
+Sat Nov 14 03:11:14 2026 :: Log Alaric [2048]: arrived (Twisty cavern) from 2049
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2048]: north
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2040]: arrived (Misty cavern) from 2048
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2040]: east
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2041]: arrived (Misty cavern) from 2040
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2041]: east
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2042]: arrived (Mist cavern) from 2041
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2042]: east
+Sat Nov 14 03:11:15 2026 :: Log Alaric [2043]: arrived (Waterfall of mist) from 2042
+Sat Nov 14 03:11:16 2026 :: Log Alaric [2043]: down
+Sat Nov 14 03:11:16 2026 :: Log Alaric [25175]: arrived (The hole upwards.) from 2043
+Sat Nov 14 03:11:16 2026 :: Log Alaric [25175]: down
+Sat Nov 14 03:11:16 2026 :: Log Alaric [25174]: arrived (A path upwards.) from 25175
+Sat Nov 14 03:11:16 2026 :: Log Alaric [25174]: down
+Sat Nov 14 03:11:16 2026 :: Log Alaric [25173]: arrived (At the bottom of the waterfall.) from 25174
+Sat Nov 14 03:11:16 2026 :: Log Alaric [25173]: north
+Sat Nov 14 03:11:16 2026 :: Log Alaric [25172]: arrived (The passageway.) from 25173
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25172]: north
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25166]: arrived (The Intersection.) from 25172
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25166]: north
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25165]: arrived (The dim passage.) from 25166
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25165]: north
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25159]: arrived (The Trade Route.) from 25165
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25159]: east
+Sat Nov 14 03:11:17 2026 :: Log Alaric [25160]: arrived (The Trade Route.) from 25159
+Sat Nov 14 03:11:34 2026 :: Log Alaric [25160]: east
+Sat Nov 14 03:11:34 2026 :: Log Alaric [25161]: arrived (The Trade Route.) from 25160
+Sat Nov 14 03:11:34 2026 :: Log Alaric [25161]: east
+Sat Nov 14 03:11:34 2026 :: Log Alaric [25162]: arrived (The Trade Route.) from 25161
+Sat Nov 14 03:11:34 2026 :: Log Alaric [25162]: east
+Sat Nov 14 03:11:34 2026 :: Log Alaric [25163]: arrived (The Trade Route.) from 25162
+Sat Nov 14 03:11:35 2026 :: Log Alaric [25163]: east
+Sat Nov 14 03:11:35 2026 :: Log Alaric [25164]: arrived (Before the gates.) from 25163
+Sat Nov 14 03:11:35 2026 :: Log Alaric [25164]: east
+Sat Nov 14 03:11:35 2026 :: Log Alaric [5114]: arrived (City street) from 25164
+Sat Nov 14 03:11:35 2026 :: Log Alaric [5114]: east
+Sat Nov 14 03:11:35 2026 :: Log Alaric [5117]: arrived (City street) from 5114
+Sat Nov 14 03:11:35 2026 :: Log Alaric [5117]: east
+Sat Nov 14 03:11:35 2026 :: Log Alaric [5121]: arrived (City street) from 5117
+Sat Nov 14 03:11:36 2026 :: Log Alaric [5121]: east
+Sat Nov 14 03:11:36 2026 :: Log Alaric [5123]: arrived (City street) from 5121
+Sat Nov 14 03:11:36 2026 :: Log Alaric [5123]: south
+Sat Nov 14 03:11:36 2026 :: Log Alaric [5101]: arrived (City street) from 5123
+Sat Nov 14 03:11:36 2026 :: Log Alaric [5101]: east
+Sat Nov 14 03:11:36 2026 :: Log Alaric [5100]: arrived (City Entrance) from 5101
+Sat Nov 14 03:11:36 2026 :: Log Alaric [5100]: open up
+Sat Nov 14 03:11:37 2026 :: Log Alaric [5100]: up
+Sat Nov 14 03:11:37 2026 :: Log Alaric [5270]: arrived (Down the path into a dead end) from 5100
+Sat Nov 14 03:11:37 2026 :: Log Alaric [5270]: up
+Sat Nov 14 03:11:37 2026 :: Log Alaric [5269]: arrived (A small ugly cave) from 5270
+Sat Nov 14 03:11:37 2026 :: Log Alaric [5269]: north
+Sat Nov 14 03:11:37 2026 :: Log Alaric [5268]: arrived (A small ugly cave) from 5269
+Sat Nov 14 03:11:37 2026 :: Log Alaric [5268]: open east
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5268]: east
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5268
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5267]: up
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5267
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5266]: west
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5266
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5265]: west
+Sat Nov 14 03:11:38 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5265
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5264]: north
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5264
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5263]: west
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5263
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5262]: west
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5262
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5258]: north
+Sat Nov 14 03:11:39 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5258
+Sat Nov 14 03:11:40 2026 :: Log Alaric [5259]: north
+Sat Nov 14 03:11:40 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5259
+Sat Nov 14 03:11:40 2026 :: Log Alaric [5260]: north
+Sat Nov 14 03:11:40 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 5260
+Sat Nov 14 03:11:40 2026 :: Log Alaric [5261]: north
+Sat Nov 14 03:11:40 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 5261
+Sat Nov 14 03:11:40 2026 :: Log Alaric [3502]: west
+Sat Nov 14 03:11:40 2026 :: Log Alaric [3503]: arrived (City Entrance) from 3502
+Sat Nov 14 03:11:41 2026 :: Log Alaric [3503]: west
+Sat Nov 14 03:11:41 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 3503
+Sat Nov 14 03:11:41 2026 :: Log Alaric [2440]: west
+Sat Nov 14 03:11:41 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2440
+Sat Nov 14 03:11:41 2026 :: Log Alaric [2426]: south
+Sat Nov 14 03:11:41 2026 :: Log Alaric [2571]: arrived (Wall Road.) from 2426
+Sat Nov 14 03:11:41 2026 :: Log Alaric [2571]: south
+Sat Nov 14 03:11:41 2026 :: Log Alaric [2572]: arrived (Wall Road.) from 2571
+Sat Nov 14 03:11:42 2026 :: Log Alaric [2572]: south
+Sat Nov 14 03:11:42 2026 :: Log Alaric [2573]: arrived (Wall Road.) from 2572
+Sat Nov 14 03:11:42 2026 :: Log Alaric [2573]: south
+Sat Nov 14 03:11:42 2026 :: Log Alaric [2574]: arrived (Wall Road.) from 2573
+Sat Nov 14 03:11:42 2026 :: Log Alaric [2574]: south
+Sat Nov 14 03:11:42 2026 :: Log Alaric [2575]: arrived (Wall Road.) from 2574
+Sat Nov 14 03:11:42 2026 :: Log Alaric [2575]: open south
+Sat Nov 14 03:11:43 2026 :: Log Alaric [2575]: south
+Sat Nov 14 03:11:43 2026 :: Log Alaric [2576]: arrived (Southeast Guardpost and Watchtower.) from 2575
+Sat Nov 14 03:11:43 2026 :: Log Alaric [2576]: open west
+Sat Nov 14 03:11:43 2026 :: Log Alaric [2576]: west
+Sat Nov 14 03:11:43 2026 :: Log Alaric [2578]: arrived (Path along the river.) from 2576
+Sat Nov 14 03:11:43 2026 :: Log Alaric [2578]: west
+Sat Nov 14 03:11:43 2026 :: Log Alaric [2447]: arrived (Docks of Dresden.) from 2578
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2447]: south
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2449]: arrived (Second Pier.) from 2447
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2449]: south
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2517]: arrived (River of Wonders.) from 2449
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2517]: east
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2516]: arrived (Tunnel on the River of Wonders.) from 2517
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2516]: east
+Sat Nov 14 03:11:44 2026 :: Log Alaric [2515]: arrived (Tunnel on the River of Wonders.) from 2516
+Sat Nov 14 03:11:45 2026 :: Log Alaric [2515]: east
+Sat Nov 14 03:11:45 2026 :: Log Alaric [5000]: arrived (A long tunnel) from 2515
+Sat Nov 14 03:11:45 2026 :: Log Alaric [5000]: east
+Sat Nov 14 03:11:45 2026 :: Log Alaric [5001]: arrived (A long, branched tunnel) from 5000
+Sat Nov 14 03:11:45 2026 :: Log Alaric [5001]: east
+Sat Nov 14 03:11:45 2026 :: Log Alaric [5002]: arrived (A long tunnel) from 5001
+Sat Nov 14 03:11:45 2026 :: Log Alaric [5002]: north
+Sat Nov 14 03:11:45 2026 :: Log Alaric [5008]: arrived (Cave-in) from 5002
+Sat Nov 14 03:11:46 2026 :: Log Alaric [5008]: down
+Sat Nov 14 03:11:46 2026 :: Log Alaric [5009]: arrived (At the foot of the rubble) from 5008
+Sat Nov 14 03:11:46 2026 :: Log Alaric [5009]: north
+Sat Nov 14 03:11:46 2026 :: Log Alaric [5010]: arrived (Cave entrance) from 5009
+Sat Nov 14 03:11:46 2026 :: Log Alaric [5010]: down
+Sat Nov 14 03:11:46 2026 :: Log Alaric [5011]: arrived (Giant cave) from 5010
+Sat Nov 14 03:11:46 2026 :: Log Alaric [5011]: down
+Sat Nov 14 03:11:46 2026 :: Log Alaric [25139]: arrived (The refuse pit.) from 5011
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25139]: east
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25138]: arrived (The bend in the corridor.) from 25139
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25138]: north
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25137]: arrived (The straight run.) from 25138
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25137]: north
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25136]: arrived (The bend in the corridor.) from 25137
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25136]: west
+Sat Nov 14 03:11:47 2026 :: Log Alaric [25135]: arrived (The corridor past the pool.) from 25136
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25135]: west
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25133]: arrived (The edge of the pool.) from 25135
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25133]: north
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25132]: arrived (The corridor.) from 25133
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25132]: west
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25131]: arrived (The corridor.) from 25132
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25131]: north
+Sat Nov 14 03:11:48 2026 :: Log Alaric [25130]: arrived (Into the wind.) from 25131
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25130]: west
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25129]: arrived (Beneath the windy hole.) from 25130
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25129]: up
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25121]: arrived (The hole downward.) from 25129
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25121]: south
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25123]: arrived (Past the hole in the ground.
+) from 25121
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25123]: south
+Sat Nov 14 03:11:49 2026 :: Log Alaric [25124]: arrived (A curve in the passage.) from 25123
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25124]: west
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25125]: arrived (Light in the tunnel.) from 25124
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25125]: south
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25126]: arrived (At the top of a shaft.) from 25125
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25126]: down
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25140]: arrived (Down the shaft.) from 25126
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25140]: down
+Sat Nov 14 03:11:50 2026 :: Log Alaric [25141]: arrived (The bottom of the shaft.) from 25140
+Sat Nov 14 03:11:56 2026 :: Log Alaric [25141]: u
+Sat Nov 14 03:11:56 2026 :: Log Alaric [25140]: arrived (Down the shaft.) from 25141
+Sat Nov 14 03:11:57 2026 :: Log Alaric [25140]: u
+Sat Nov 14 03:11:57 2026 :: Log Alaric [25126]: arrived (At the top of a shaft.) from 25140
+Sat Nov 14 03:11:58 2026 :: Log Alaric [25126]: get all
+Sat Nov 14 03:11:59 2026 :: Log Alaric [25126]: recal
+Sat Nov 14 03:11:59 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 25126
+Sat Nov 14 03:12:01 2026 :: Log Alaric [2497]: aq co
+Sat Nov 14 03:12:01 2026 :: Log Alaric [2497]: copper +107890398
+Sat Nov 14 03:12:01 2026 :: Log Alaric [2497]: quest complete: 107p 89g 3s 98c, 14 quest points (streak bonus 0%)
+Sat Nov 14 03:12:01 2026 :: Snapshot of Alaric taken before quest: Alaric.20261114_031201.quest (PRESTORE Alaric to see it).
+Sat Nov 14 03:12:02 2026 :: Log Alaric [2497]: aq ga no
+Sat Nov 14 03:12:03 2026 :: Log Alaric [2497]: sc
+Sat Nov 14 03:13:42 2026 :: Log Alaric [2497]: i
+Sat Nov 14 03:13:46 2026 :: Log Alaric [2497]: drop cad
+Sat Nov 14 03:13:48 2026 :: Log Alaric [2497]: sac cad
