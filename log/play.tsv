@@ -27792,3 +27792,119 @@
 1794663917	cmd	Trentlin	41	3525	midennir.are	standing	61	0	-	west		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
 1794663917	cmd	Trentlin	41	3502	midennir.are	standing	61	0	-	west		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
 1794663917	cmd	Trentlin	41	3503	midennir.are	standing	61	0	-	west		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794663918	area	Trentlin	41	2440	dresden.are	midennir.are	dresden.are	3	west
+1794663918	cmd	Trentlin	41	2440	dresden.are	standing	61	0	-	west		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794663918	cmd	Trentlin	41	3908	dresden.are	standing	61	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1794663918	cmd	Trentlin	41	3907	dresden.are	standing	61	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1794663919	cmd	Trentlin	41	3906	dresden.are	standing	61	0	-	north		Northeast corner of dusty trail. //   You are standing outside the northeastern corner of the city wall. // The trail leads west following the north wall and south towards the gate.	-	+
+1794663919	cmd	Trentlin	41	3905	dresden.are	standing	61	0	-	west		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794663919	cmd	Trentlin	41	3904	dresden.are	standing	61	0	-	west		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794663919	cmd	Trentlin	41	3903	dresden.are	standing	61	0	-	west		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794663920	cmd	Trentlin	41	3902	dresden.are	standing	61	0	-	west		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794663920	cmd	Trentlin	41	3901	dresden.are	standing	61	0	-	south		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794663920	cmd	Trentlin	41	3900	dresden.are	standing	61	0	-	south		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794663920	cmd	Trentlin	41	2439	dresden.are	standing	61	0	-	south		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794663921	area	Trentlin	41	6000	haon.are	dresden.are	haon.are	3	west
+1794663921	cmd	Trentlin	41	6000	haon.are	standing	61	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794663921	cmd	Trentlin	41	6001	haon.are	standing	61	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794663921	cmd	Trentlin	41	6002	haon.are	standing	61	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794663921	cmd	Trentlin	41	6003	haon.are	standing	61	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794663922	cmd	Trentlin	41	6004	haon.are	standing	61	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794663922	cmd	Trentlin	41	6100	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794663922	cmd	Trentlin	41	6101	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794663922	cmd	Trentlin	41	6102	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard.. everything	-	+
+1794663923	cmd	Trentlin	41	6103	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are where the dusty trail bends, as to avoid conflict with a colossal // trunk to the west.  Not a sound is to be heard.. everything is ominously	-	+
+1794663923	cmd	Trentlin	41	6108	haon.are	standing	61	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west and to the south, a frail	-	+
+1794663923	cmd	Trentlin	41	6109	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard..	-	+
+1794663923	cmd	Trentlin	41	6110	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees that // stand close on all sides.  The trail leads east and south.  To the north,	-	+
+1794663924	cmd	Trentlin	41	6111	haon.are	standing	61	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way north-south between huge, ancient // trees that loom ominously above you.	-	+
+1794663924	cmd	Trentlin	41	6112	haon.are	standing	61	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees // standing close on all sides.  The trail leads north and west and to the	-	+
+1794663924	cmd	Trentlin	41	6127	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees // standing close on all sides.  The trail leads east and south.	-	+
+1794663924	cmd	Trentlin	41	6126	haon.are	standing	61	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west, and to the south a frail	-	+
+1794663925	cmd	Trentlin	41	6128	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard.. everything	-	+
+1794663925	cmd	Trentlin	41	6129	haon.are	standing	61	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard - everything	-	+
+1794663925	cmd	Trentlin	41	6135	haon.are	standing	61	0	-	west		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The trail continues north and east.	-	+
+1794663925	cmd	Trentlin	41	6136	haon.are	standing	61	0	-	north		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The trail continues south and west.  A broad	-	+
+1794663926	cmd	Trentlin	41	6137	haon.are	standing	61	0	-	west		At the end of the trail through the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  You see a forest clearing to the north of you.	-	+
+1794663926	area	Trentlin	41	30	connect.are	haon.are	connect.are	5	north
+1794663926	cmd	Trentlin	41	30	connect.are	standing	61	0	-	north		Forest Clearing //   The bleak oppression of the forest ends suddenly as you step out into a wide // glade. From here you can continue south, back into the forest, or northwest	-	+
+1794663926	cmd	Trentlin	41	31	connect.are	standing	61	0	-	northwest		A Twisting Path //   You twist and turn your way thru a low set of hill's that lead up to the  // great peaks of the mountains. You notice that in these far northern 	-	+
+1794663926	area	Trentlin	41	901	olympus.are	connect.are	olympus.are	0	north
+1794663926	cmd	Trentlin	41	901	olympus.are	standing	61	0	-	north		Mountain //   You are climbing a large mountain which towers over the forest.  The path // continues up the mountain, but part of it is gone.  There is no way to	-	+
+1794663929	cmd	Trentlin	41	902	olympus.are	standing	61	0	-	up		Mountain //   You are making your way up the mountain.  The rigorous climb has left you // tired, and you are ready to take a break.	-	+
+1794663930	cmd	Trentlin	41	903	olympus.are	standing	61	0	-	up		Mountain //   You have finally reached the top of the mountain.  The air here is so thin // that you must gasp for breath.  To the north, you see what seems to be the	-	+
+1794663930	cmd	Trentlin	41	903	olympus.are	standing	61	0	-	up		Alas, you cannot go that way.	-	-
+1794663931	cmd	Trentlin	41	904	olympus.are	standing	61	0	-	north		Entrance //   You are at the entrance to a huge city.  As you look around, you realize // that the inhabitants of this city must be very wealthy indeed - you have never	-	+
+1794663932	cmd	Trentlin	41	905	olympus.are	standing	61	0	-	north		Zeus Street //   You are walking down a huge street.  You notice that there are not many // people in this town.  On a corner, you see a sign marked 'Zeus Street'.	-	+
+1794663933	cmd	Trentlin	41	906	olympus.are	standing	61	0	-	north		Zeus Street //   You are walking down what appears to be the main street of this city. // You see large residences to the east and west, while the street continues	-	+
+1794663935	cmd	Trentlin	41	905	olympus.are	standing	61	0	-	south		Zeus Street //   You are walking down a huge street.  You notice that there are not many // people in this town.  On a corner, you see a sign marked 'Zeus Street'.	-	+
+1794663935	cmd	Trentlin	41	924	olympus.are	standing	61	0	-	west		Bakery //   You are in the small store which supplies the residents of this town with // their food.  It smells wonderful in here!	-	+
+1794663936	cmd	Trentlin	41	905	olympus.are	standing	61	0	-	east		Zeus Street //   You are walking down a huge street.  You notice that there are not many // people in this town.  On a corner, you see a sign marked 'Zeus Street'.	-	+
+1794663939	cmd	Trentlin	41	905	olympus.are	standing	61	0	-	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.	-	+
+1794663941	cmd	Trentlin	41	906	olympus.are	standing	61	0	-	north		Zeus Street //   You are walking down what appears to be the main street of this city. // You see large residences to the east and west, while the street continues	-	+
+1794663941	cmd	Trentlin	41	907	olympus.are	standing	61	0	-	north		Zeus Street //   You are on the main street of this town, called Zeus street. // [Exits: north south west]	-	+
+1794663941	cmd	Trentlin	41	908	olympus.are	standing	61	0	-	north		Zeus Street //   You are still on the main thoroughfare of this town.  To the north, you see // a large castle.  To the east there is a smaller road, while there is some sort	-	+
+1794663946	cmd	Trentlin	41	908	olympus.are	standing	61	0	-	where	sam	Samuel the Armourer          Armory	-	-
+1794663949	cmd	Trentlin	41	909	olympus.are	standing	61	0	-	north		Castle Entryway //   You are in the entryway of a large castle.  It is very beautiful, with // large paintings and a lovely carpet.  You hear jovial laughter to the north,	-	+
+1794663950	cmd	Trentlin	41	915	olympus.are	standing	61	0	-	east		Eastern Wing //   You are in the eastern wing of the castle.  The hall continues to the // east, while the entrance is back to the west.	-	+
+1794663950	cmd	Trentlin	41	915	olympus.are	standing	61	0	-	exits		Obvious exits: // East  - Eastern Wing // West  - Castle Entryway	-	-
+1794663951	cmd	Trentlin	41	916	olympus.are	standing	61	0	-	east		Eastern Wing //   You are in the eastern wing of the castle.  The hall turns to the north // here, while there are private rooms to the east and the south.	-	+
+1794663951	cmd	Trentlin	41	916	olympus.are	standing	61	0	-	exits		Obvious exits: // North - Eastern Wing // East  - Guest Quarters	-	+
+1794663953	cmd	Trentlin	41	931	olympus.are	standing	61	0	-	east		Guest Quarters //   You have entered a room reserved for visitors to this castle.  You are // amazed as you recognize the occupant - Ra, the Egyptian Sun God.  He must be	-	+
+1794663953	cmd	Trentlin	41	931	olympus.are	standing	61	0	-	exits		Obvious exits: // West  - Eastern Wing	-	-
+1794663955	cmd	Trentlin	41	916	olympus.are	standing	61	0	-	west		Eastern Wing //   You are in the eastern wing of the castle.  The hall turns to the north // here, while there are private rooms to the east and the south.	-	+
+1794663956	cmd	Trentlin	41	915	olympus.are	standing	61	0	-	west		Eastern Wing //   You are in the eastern wing of the castle.  The hall continues to the // east, while the entrance is back to the west.	-	+
+1794663958	cmd	Trentlin	41	909	olympus.are	standing	61	0	-	west		Castle Entryway //   You are in the entryway of a large castle.  It is very beautiful, with // large paintings and a lovely carpet.  You hear jovial laughter to the north,	-	+
+1794663959	cmd	Trentlin	41	908	olympus.are	standing	61	0	-	south		Zeus Street //   You are still on the main thoroughfare of this town.  To the north, you see // a large castle.  To the east there is a smaller road, while there is some sort	-	+
+1794663959	cmd	Trentlin	41	928	olympus.are	standing	61	0	-	east		Ares Street //   You are on a smaller road which branches off from the main street.  On a // sign, you notice that the name of this road is Ares Street.	-	+
+1794663960	cmd	Trentlin	41	934	olympus.are	standing	61	0	-	east		Ares Street //   You have reached the end of Ares Street.  To the south you see an armory, // while there is a weapons shop to the east.  To the north, you hear the sounds	-	+
+1794663961	cmd	Trentlin	41	934	olympus.are	standing	61	0	-	exits		Obvious exits: // North - Smithy // East  - Weapon Shop	-	+
+1794663963	cmd	Trentlin	41	934	olympus.are	standing	61	0	-	scan		A Golden Maiden                    -to the North. // A Golden Maiden                    -to the North. // Hephaestus                         -to the North.	-	+
+1794663967	cmd	Trentlin	41	934	olympus.are	standing	63	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794663976	cmd	Trentlin	41	935	olympus.are	standing	63	0	-	south		Armory //   This small store is almost empty.  It seems as if there is not much here, // but the shopkeeper doesn't want to do business with you anyways.	-	+
+1794663980	cmd	Trentlin	41	935	olympus.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Samuel the Armourer. // Your fists of fury hits Samuel the Armourer.	-	+
+1794663986	cmd	Trentlin	41	935	olympus.are	fighting	53	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Samuel the Armourer. // Your fists of fury scratches Samuel the Armourer.	-	+
+1794663994	cmd	Trentlin	41	935	olympus.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Samuel the Armourer. // Your fists of fury injures Samuel the Armourer.	-	+
+1794664002	cmd	Trentlin	41	935	olympus.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Samuel the Armourer. // Your fists of fury wounds Samuel the Armourer.	-	+
+1794664009	cmd	Trentlin	41	935	olympus.are	fighting	38	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Samuel the Armourer. // Your fists of fury wounds Samuel the Armourer.	-	+
+1794664014	laid	-	0	0	-	1192	herb	52	an asparagus shoot	20592	emerald.are	scatter
+1794664017	cmd	Trentlin	41	935	olympus.are	fighting	33	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Samuel the Armourer. // Your fists of fury hits Samuel the Armourer.	-	+
+1794664022	coin	Trentlin	41	935	olympus.are	+200	loot	(violence_update)	corpse of Samuel the Armourer	15340063543
+1794664022	coin	Trentlin	41	935	olympus.are	+3	loot	(violence_update)	corpse of Samuel the Armourer	15340063546
+1794664022	coin	Trentlin	41	935	olympus.are	+10000	loot	(violence_update)	corpse of Samuel the Armourer	15340073546
+1794664025	cmd	Trentlin	41	935	olympus.are	standing	28	0	-	look	in co	Corpse of Samuel the Armourer contains: //      (Invis) (Magical) a pair of winged sandals //      (Invis) (Magical) flaming gauntlets	-	+
+1794664029	got	Trentlin	41	935	olympus.are	904	a pair of winged sandals	armor	35	5000000	get	corpse of Samuel the Armourer
+1794664029	got	Trentlin	41	935	olympus.are	908	flaming gauntlets	armor	35	5000000	get	corpse of Samuel the Armourer
+1794664029	got	Trentlin	41	935	olympus.are	911	a sapphire ring	armor	34	26000000	get	corpse of Samuel the Armourer
+1794664029	cmd	Trentlin	41	935	olympus.are	standing	28	0	-	get	all co	You get a pair of winged sandals from corpse of Samuel the Armourer. // You get flaming gauntlets from corpse of Samuel the Armourer. // You get a sapphire ring from corpse of Samuel the Armourer.	-	-
+1794664029	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	north		Ares Street //   You have reached the end of Ares Street.  To the south you see an armory, // while there is a weapons shop to the east.  To the north, you hear the sounds	-	+
+1794664031	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	compare	sand	A) a pair of winged sandals (level 35) // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794664033	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	drop	sand	You drop a pair of winged sandals.	-	-
+1794664034	coin	Trentlin	41	934	olympus.are	+70	loot	sacrifice	-	15340073616
+1794664034	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	sacrifice	sand	The Gods give you 70 copper coins for your sacrifice.	-	-
+1794664035	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	compare	gunt	You do not have that item.	-	-
+1794664037	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	compare	gaunt	A) flaming gauntlets (level 35) // B) a pair of pincer gauntlets (level 40), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794664039	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	drop	gaunt	You drop flaming gauntlets.	-	-
+1794664040	coin	Trentlin	41	934	olympus.are	+70	loot	sacrifice	-	15340073686
+1794664040	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	sacrifice	gaunt	The Gods give you 70 copper coins for your sacrifice.	-	-
+1794664043	cmd	Trentlin	41	934	olympus.are	standing	28	0	-	compare	sapp	A) a sapphire ring (level 34) // B) a pink ice ring (level 3), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1794664066	laid	-	0	0	-	1197	herb	52	an asparagus shoot	10282	tritia.are	scatter
+1794664066	laid	-	0	0	-	1198	herb	39	a chervil leaf	10251	tritia.are	scatter
+1794664067	cmd	Trentlin	41	934	olympus.are	standing	32	0	-	remove	ice	You stop using a pink ice ring.	-	-
+1794664067	cmd	Trentlin	41	934	olympus.are	standing	32	0	-	wear	sap	You wear a sapphire ring on your left finger.	-	-
+1794664068	cmd	Trentlin	41	934	olympus.are	standing	32	0	-	drop	ice	You drop a pink ice ring.	-	-
+1794664069	coin	Trentlin	41	934	olympus.are	+6	loot	sacrifice	-	15340073692
+1794664069	cmd	Trentlin	41	934	olympus.are	standing	32	0	-	sacrifice	ice	The Gods give you 6 copper coins for your sacrifice.	-	-
+1794664070	cmd	Trentlin	41	934	olympus.are	standing	32	0	-	scan		A Golden Maiden                    -to the North. // A Golden Maiden                    -to the North. // Hephaestus                         -to the North.	-	+
+1794664075	census	-	0	0	-	herbs=23/150 components=12/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=189 mobs_fought=9 secs=900
+1794664078	area	Trentlin	41	4207	dresden.are	olympus.are	dresden.are	152	recall
+1794664078	cmd	Trentlin	41	4207	dresden.are	standing	32	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794664080	cmd	Trentlin	41	4202	dresden.are	standing	32	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794664081	cmd	Trentlin	41	4203	dresden.are	standing	32	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794664081	cmd	Trentlin	41	4210	dresden.are	standing	32	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794664081	cmd	Trentlin	41	4210	dresden.are	standing	32	0	-	north		Alas, you cannot go that way.	-	-
+1794664082	cmd	Trentlin	41	4210	dresden.are	standing	32	0	-	sleep		You go to sleep.	-	-
+1794664110	laid	-	0	0	-	1200	component	70	a dragon tooth	7816	valley.are	scatter
+1794664177	laid	-	0	0	-	1201	herb	48	an alfalfa sprout	4522	dresden.are	scatter
+1794664177	laid	-	0	0	-	1202	component	67	a beholder's eye	18233	gelidia.are	scatter
+1794664217	cmd	Trentlin	41	4210	dresden.are	sleeping	57	0	-	group		Trentlin's group: // [41 Monk ] Trentlin          488/ 846 hp 1506/1749 mana  179/ 481 mv 94856 xp	-	-
