@@ -26597,3 +26597,10 @@
 1794632309	laid	-	0	0	-	1253	herb	39	a chervil leaf	6535	dwarves.are	scatter
 1794632309	laid	-	0	0	-	1254	component	61	a mummy's wrapping	1626	wyvern.are	scatter
 1794632356	laid	-	0	0	-	1255	component	54	eye of newt	24218	crypt.are	scatter
+1794632534	laid	-	0	0	-	1256	component	77	a vial of medusa eye fluid	6553	dwarves.are	scatter
+1794632605	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3179	(char_update)
+1794632605	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	0	(game loop)
+1794632605	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794632605	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 1881 platinum, 88 gold, 83 silver, 74 copper // and 252749 experience (39551 exp to level).	-	-
+1794632655	laid	-	0	0	-	1257	herb	34	an amaranth plant	5352	mirror.are	scatter
+1794632655	laid	-	0	0	-	1258	herb	38	a foxglove flower	5374	mirror.are	scatter

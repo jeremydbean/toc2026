@@ -297866,3 +297866,10 @@ Sat Nov 14 04:50:06 2026 :: Treasure goblin: vanished from room 5947 (A small gr
 Sat Nov 14 04:52:17 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 14 04:57:21 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 1 refused in all, pause 1 this week, 168 minutes left).
 Sat Nov 14 04:57:47 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 05:00:11 2026 :: Treasure goblin: vanished from room 5311 (A Side Street, mirror.are) (too long in one area).
+Sat Nov 14 05:02:27 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 6 of 6 in 6 hours).
+Sat Nov 14 05:02:27 2026 :: Connection guard: 54.87.112.51 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 54.87.112.51 lifts it.
+Sat Nov 14 05:03:25 2026 :: Log Alaric [2]: arrived (Limbo) from 2497
+Sat Nov 14 05:03:25 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2
+Sat Nov 14 05:03:25 2026 :: Log Alaric [2497]: who
+Sat Nov 14 05:03:25 2026 :: Log Alaric [2497]: worth
