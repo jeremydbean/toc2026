@@ -6061,7 +6061,10 @@ somebody else runs it at the immortal's trust. Rules (review, 2026-11-13;
   before the mana and the provocation, and in the spell for scrolls and
   wands -- and ORDER skips any follower with one, `order all` included. A
   new way of making a mobile run a typed command asks `victim->desc`
-  first. FORCE already compares rank with the borrowed trust.
+  first. FORCE already compares rank with the borrowed trust. **A mobile's
+  descriptor only** (`IS_NPC(victim) && victim->desc`): every player in
+  the game has one, and asking it of anybody made every connected player
+  uncharmable and unorderable (caught before it shipped, 2026-11-14).
 - **QUIT returns, SAVE saves the player.** Both did nothing and said
   nothing for a mobile. A switched QUIT returns to the body (RETURN needs
   immortal trust, which a demoted immortal no longer has), and SAVE saves
@@ -6086,6 +6089,45 @@ somebody else runs it at the immortal's trust. Rules (review, 2026-11-13;
   the lycanthrope branches of SWITCH and RETURN (`LYCANTHROPY_ENABLED` 0)
   would, if enabled, call `char_to_room` with a NULL room and extract the
   beast twice from `extract_char`.
+
+## Charm, ORDER And Following
+
+Review, 2026-11-14 (`tests/test_charm_order.py`). CHARM PERSON on a
+player needs both to be player killers (`is_safe_spell`), and lasts a
+few ticks; what the charm hands its master is ORDER.
+
+- **One test decides who obeys**: `order_refusal(ch, och)` in
+  `act_comm.c`, for ORDER <name> and ORDER ALL alike -- ORDER ALL asked no
+  rank and ran a command at a follower's own trust that ORDER <name>
+  refused. An order runs at the follower's trust (`interpret` asks
+  `get_trust` of whoever runs it), so nobody obeys who holds authority
+  the master lacks: an immortal of rank, a player trusted above the
+  master, a mobile somebody is in.
+- **A charmed player obeys in the room only.** `do_order` sets
+  `interp_ordered` for that one `interpret`; `interpret_body` then takes
+  the words as typed (no alias of the follower's expands) and refuses
+  whatever `order_refuses_command()` names, matched by `do_fun` so every
+  name of a command is the same answer: the account and its settings
+  (ALIAS, PASSWORD, QUIT, the toggles, NOSUMMON, NOLOOT, PKILL...), words
+  past the room (TELL, the channels, NOTE, BUG), and what was saved or a
+  choice for good (STASH, WITHDRAW, GAIN, TRAIN, DEVOTE, the casino,
+  RECALL with an argument). An ALIAS planted in a charmed player's name
+  outlived the charm; STASH LINK gave the master a key once the victim
+  linked back. Fighting, moving, GIVE, DROP, SAY and socials obey as in
+  stock ROM. A new command that outlasts a charm or speaks past the room
+  goes on the list.
+- **Charmed, you follow.** FOLLOW SELF is refused, and NOFOLLOW was the
+  way round it: `die_follower` lets go of your own master, which strips
+  the charm. NOFOLLOW sets the flag and, charmed, lets go only of your
+  followers (`release_followers`, the second half of `die_follower`).
+- **A mobile's flag is asked of a mobile.** `act` holds ACT_ bits on a
+  mobile and PLR_ bits on a player, and the same letter means different
+  things: ACT_MOUNTABLE is PLR_LOG (a player staff watched with LOG could
+  never be charmed), ACT_AGGRESSIVE is PLR_AUTOSAC (SHOVE refused anyone
+  with AUTOSAC on as an aggressive monster), ACT_NOSHOVE is
+  PLR_INVULN_ABSORB and ACT_NOALIGN is PLR_AFK (an AFK victim counted as
+  no side for kill experience). Guard any `IS_SET(x->act, ACT_...)` that
+  can see a player with `IS_NPC(x)`.
 
 ## The GMCP Feeds
 

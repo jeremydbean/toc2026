@@ -794,6 +794,15 @@ static int social_exact_index( const char *name )
  */
 bool interp_from_alias = FALSE;
 
+/*
+ * Set by ORDER for exactly one interpret() call: a charmed player is
+ * running a line their master gave them. The words are taken as typed (no
+ * alias of theirs expands), and order_refuses_command() refuses whatever
+ * would outlast the charm, speak for them past the room, or is their
+ * account's (review, 2026-11-14).
+ */
+bool interp_ordered = FALSE;
+
 
 /*
  * Split an alias body into its commands.
@@ -1398,12 +1407,86 @@ void interpret( CHAR_DATA *ch, char *argument )
         tutorial_refused( ch );                 /* HELP, COMMANDS, the Oracle */
 }
 
+/*
+ * What a charmed player will not do on their master's ORDER (review,
+ * 2026-11-14). A charm lasts a few ticks; these would outlast it, speak
+ * for them beyond the room, spend what they saved, or are their account's:
+ * an ALIAS planted in their name ran long after (ALIAS N QUIT), STASH LINK
+ * left the master a key to their stash once they linked back, NOTE and the
+ * channels put words in their mouth to everyone, and the toggles turned
+ * off NOSUMMON or NOLOOT without their knowing. What happens in the room
+ * -- fighting, moving, GIVE, DROP, SAY, a social -- still obeys, as it
+ * always has. Matched by the command's function, so every name and
+ * abbreviation of one is the same answer.
+ */
+static const char * const order_refused_names[] =
+{
+    /* the account and its settings */
+    "alias", "unalias", "password", "delete", "delet", "remort", "quit",
+    "description", "title", "prompt", "ignore", "nofollow", "noloot",
+    "nosummon", "pkill", "wimpy", "afk", "color", "scroll", "compact",
+    "brief", "autolist", "autoassist", "autoexit", "autogold", "autoloot",
+    "autosac", "autosplit", "damagenumbers", "swedish", "beep", "sound",
+    "channels", "deaf", "quiet", "tutorial", "castle",
+    /* words past the room */
+    "tell", "reply", "gossip", "cgos", "shout", "yell", "question",
+    "music", "gtell", "note", "bug", "idea", "typo",
+    /* what was saved, spent, or a choice for good */
+    "stash", "withdraw", "redeem", "devote", "gain", "train", "practice",
+    "join", "aquest", "gamble", "slots", "bet", "roulette", "poker",
+    "combine", "accept",
+    NULL
+};
+
+bool order_refuses_command( int cmd, const char *argument )
+{
+    static DO_FUN *refused[sizeof(order_refused_names) / sizeof(order_refused_names[0])];
+    static bool built = false;
+    DO_FUN *fun;
+    size_t i;
+
+    if ( cmd < 0 )
+	return false;
+    if ( !built )
+    {
+	for ( i = 0; order_refused_names[i] != NULL; i++ )
+	{
+	    int c;
+
+	    refused[i] = NULL;
+	    for ( c = 0; cmd_table[c].name[0] != '\0'; c++ )
+		if ( !str_cmp( cmd_table[c].name, order_refused_names[i] ) )
+		{
+		    refused[i] = cmd_table[c].do_fun;
+		    break;
+		}
+	}
+	built = true;
+    }
+
+    fun = cmd_table[cmd].do_fun;
+    for ( i = 0; order_refused_names[i] != NULL; i++ )
+	if ( refused[i] != NULL && refused[i] == fun )
+	    return true;
+
+    /* RECALL itself is a walk home; RECALL SET moves the point for good. */
+    if ( fun == do_recall && argument != NULL )
+    {
+	while ( isspace( (unsigned char) *argument ) )
+	    argument++;
+	if ( *argument != '\0' )
+	    return true;
+    }
+    return false;
+}
+
 static void interpret_body( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
     char logline[MAX_INPUT_LENGTH];
     bool watched;
     bool from_alias;
+    bool ordered;
     char buf[MAX_INPUT_LENGTH];
     int cmd;
     int trust;
@@ -1415,6 +1498,8 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
        (FORCE, ORDER) is not mistaken for alias output too. */
     from_alias = interp_from_alias;
     interp_from_alias = FALSE;
+    ordered = interp_ordered;
+    interp_ordered = FALSE;
 
     /*
      * Strip leading spaces.
@@ -1473,7 +1558,7 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
      * Check for aliases. Not for a line an alias produced: that is the
      * recursion limit (see interp_from_alias).
      */
-    if ( !IS_NPC(ch) && ch->pcdata != NULL && !from_alias )
+    if ( !IS_NPC(ch) && ch->pcdata != NULL && !from_alias && !ordered )
         for (counter=0; counter<MAX_ALIASES; counter++)
         {
             char * ptr;
@@ -1775,6 +1860,19 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
 	    break;
 
 	}
+	return;
+    }
+
+    /*
+     * A charmed player ORDERed: only what a charm can reach.
+     */
+    if ( ordered && !IS_NPC(ch) && order_refuses_command( cmd, argument ) )
+    {
+	play_refused = true;
+	playlog_result( ch, "refusal", "ordered" );
+	send_to_char( "Even charmed, some things are yours alone; you do not obey.\n\r", ch );
+	if ( ch->master != NULL && ch->master->in_room == ch->in_room )
+	    act( "$n will not do that, however charmed.", ch, NULL, ch->master, TO_VICT );
 	return;
     }
 

@@ -1331,7 +1331,13 @@ void do_nofollow(CHAR_DATA *ch, char *argument)
     {
       send_to_char("You no longer accept followers.\n\r",ch);
       SET_BIT(ch->act,PLR_NOFOLLOW);
-      die_follower( ch );
+      /* Charmed, you still follow: FOLLOW SELF is refused, and this was
+         the way round it -- die_follower lets go of your own master too,
+         which strips the charm (review, 2026-11-14). */
+      if ( IS_AFFECTED(ch, AFF_CHARM) && ch->master != NULL )
+	release_followers( ch );
+      else
+	die_follower( ch );
     }
 }
 

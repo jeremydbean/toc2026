@@ -3647,6 +3647,7 @@ void    add_follower    ( CHAR_DATA *ch, CHAR_DATA *master );
 void    stop_follower   ( CHAR_DATA *ch );
 void    nuke_pets       ( CHAR_DATA *ch );
 void    die_follower    ( CHAR_DATA *ch );
+void    release_followers ( CHAR_DATA *ch );
 bool    is_same_group   ( CHAR_DATA *ach, CHAR_DATA *bch );
 void    wizinfo         ( const char *info, int level );
 void    send_info       ( char *argument );
@@ -4426,6 +4427,8 @@ void    extract_room    ( ROOM_INDEX_DATA *pRoom );
 
 /* interp.c */
 extern  bool    interp_from_alias;
+extern  bool    interp_ordered;
+bool    order_refuses_command( int cmd, const char *argument );
 void    interpret       ( CHAR_DATA *ch, char *argument );
 int     alias_split     ( const char *body,
                           char (*out)[MAX_INPUT_LENGTH], int max );

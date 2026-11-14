@@ -196,6 +196,8 @@ for what your followers do.
   - Hyrule's creatures cannot be charmed.
   - It is an attack: cast at a player outside the arena it makes you
     WANTED.
+  - A charmed player obeys only some orders (see ORDER), and NOFOLLOW
+    does not break the charm.
 
 Minimum level depends on your primary class and is:
 Mage:20  Cleric:22  Thief:24  Warrior:26  Monk:N/A  Necromancer:N/A

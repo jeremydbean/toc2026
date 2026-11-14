@@ -144,9 +144,6 @@ void send_info( char *argument )
  */
 void die_follower( CHAR_DATA *ch )
 {
-    LIST_ITERATOR iter;
-    CHAR_DATA *fch;
-
     if ( ch->master != NULL )
     {
         if ( IS_NPC(ch) && ch->ridden && !IS_NPC(ch->master) )
@@ -160,6 +157,16 @@ void die_follower( CHAR_DATA *ch )
     }
 
     SET_CHAR_REF( ch, leader, NULL );
+
+    release_followers( ch );
+}
+
+/* Everyone following ch lets go; ch's own master is not touched. NOFOLLOW
+   uses this half alone for a charmed player, who keeps following. */
+void release_followers( CHAR_DATA *ch )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *fch;
 
     dismiss_undead_servants( ch );
 

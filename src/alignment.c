@@ -175,7 +175,7 @@ int alignment_xp_percent( CHAR_DATA *gch, CHAR_DATA *victim )
     int tier, side;
 
     if ( gch == NULL || victim == NULL || IS_NPC(gch)
-    ||   IS_SET(victim->act, ACT_NOALIGN) )
+    ||   ( IS_NPC(victim) && IS_SET(victim->act, ACT_NOALIGN) ) )   /* PLR_AFK on a player */
         return 100;
     side = alignment_side( victim->alignment );
     if ( side == 0 )

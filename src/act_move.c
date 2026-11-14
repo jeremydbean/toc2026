@@ -4270,13 +4270,16 @@ do_shove( CHAR_DATA *ch, char *argument )
     if( IS_IMMORTAL(victim)
      || victim->ridden
      || (!IS_NPC(victim) && victim->pcdata->mounted)
-     || IS_SET( victim->act, ACT_NOSHOVE) )
+     || ( IS_NPC(victim) && IS_SET( victim->act, ACT_NOSHOVE) ) )
 	 {
 	   send_to_char("You can't budge em.\n\r",ch);
 	   return;
 	 }
 
-    if( IS_SET(victim->act, ACT_AGGRESSIVE) )
+    /* Mobile flags, asked of mobiles: on a player ACT_AGGRESSIVE is
+       PLR_AUTOSAC and ACT_NOSHOVE PLR_INVULN_ABSORB, so everybody with
+       AUTOSAC on was an aggressive monster nobody could shove. */
+    if( IS_NPC(victim) && IS_SET(victim->act, ACT_AGGRESSIVE) )
     {
       send_to_char("Aggresive monsters can't be shoved around.\n\r",ch);
       return;

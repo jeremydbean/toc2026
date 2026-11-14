@@ -3511,7 +3511,8 @@ Syntax: nofollow       (or NOFOL)
 Turns on or off whether others may follow you.  Turning it on sends away
 everyone following you, your pet and raised undead included, and ends
 your group.  To be grouped you must accept followers.  It is off for new
-characters; AUTO shows how it stands.
+characters; AUTO shows how it stands.  Charmed, you still follow whoever
+charmed you until the charm wears off.
 
 See also: FOLLOW, GROUP, AUTO
 ~
@@ -3572,10 +3573,15 @@ Syntax: order <character> <command>
 Syntax: order all <command>
 
 ORDER orders one or all of your charmed followers (including pets) to
-perform any command.  The command may have arguments.  A follower that
-somebody else is controlling answers only to them.  You are responsible
-for the actions of your followers, and others who attack your followers
-will incur the same penalty as if they attacked you directly.
+perform a command.  The command may have arguments.  A follower that
+somebody else is controlling answers only to them, and none obeys a
+command with more authority than yours.  A charmed player obeys what
+happens in the room -- fighting, moving, giving, saying -- but not what
+would outlast the charm or speak past the room: aliases, channels, tells,
+notes, settings, the stash, withdrawing, spending or quitting.  Their own
+aliases are not used.  You are responsible for the actions of your
+followers, and others who attack your followers will incur the same
+penalty as if they attacked you directly.
 
 Most charmed creatures lose their aggressive nature (while charmed).  However,
 they will become aggressive again when the charm wears off.  For that reason,

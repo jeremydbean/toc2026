@@ -1815,8 +1815,10 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
 
     /* Somebody is in it -- a switched immortal, a projection -- and a
        charm handed its master ORDERs run at their trust (review,
-       2026-11-13). Said, not failed. */
-    if ( victim->desc != NULL )
+       2026-11-13). Said, not failed. A mobile only: every player in the
+       game has a descriptor, and asking it of them made every connected
+       player uncharmable. */
+    if ( IS_NPC(victim) && victim->desc != NULL )
     {
 	act( "$N's mind is already occupied; your charm finds no hold on it.",
 	     ch, NULL, victim, TO_CHAR );
@@ -1827,7 +1829,9 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
     ||   IS_AFFECTED(ch, AFF_CHARM)
     ||   ch->level < victim->level
     ||   IS_SET(victim->imm_flags,IMM_CHARM)
-    ||   IS_SET(victim->act, ACT_MOUNTABLE)
+    /* A mobile's flag: on a player the same bit is PLR_LOG, and every
+       player staff were watching could not be charmed. */
+    ||   ( IS_NPC(victim) && IS_SET(victim->act, ACT_MOUNTABLE) )
 /*    ||   saves_spell( level, victim )) */
     ||   number_percent() < 50)
     {

@@ -5,6 +5,21 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261114charmorder 2026-11-14
+Charm: a charmed player still obeys ORDER in the room -- fighting, moving,
+giving, saying -- but no longer sets aliases, speaks on channels, tells,
+writes notes, changes settings, touches the stash, withdraws, spends, or
+quits on their charmer's word. NOFOLLOW no longer breaks your own charm.
+Fixed: some players could never be charmed, and SHOVE called anyone with
+AUTOSAC on an aggressive monster and refused them.
+
+@ 20261114switch 2026-11-14 staff
+SWITCH fixes: no mortal can CHARM a mobile you are in, or ORDER one you
+have switched into -- a charmed, possessed mobile ran its master's ORDERs
+at your trust. SAVE while switched saves you, QUIT returns you to your
+body first, and a body forced to quit while you are switched takes you
+with it instead of leaving you stranded in the mobile.
+
 @ 20261113reviewfixes 2026-11-13
 Fixes: a late striker who earns a Hyrule guardian's key now earns its
 achievement too, and anyone who claims from a guardian's chest with their
@@ -17,13 +32,6 @@ In season, Dresden and Limbo stay on your map and maps you hold still
 count. The Mudlet package (1.5.16) keeps the room you stand in on the
 map and keeps portals and climbs when rooms leave and come back. The
 CHANGES list now shows each entry whole.
-
-@ 20261114switch 2026-11-14 staff
-SWITCH fixes: no mortal can CHARM a mobile you are in, or ORDER one you
-have switched into -- a charmed, possessed mobile ran its master's ORDERs
-at your trust. SAVE while switched saves you, QUIT returns you to your
-body first, and a body forced to quit while you are switched takes you
-with it instead of leaving you stranded in the mobile.
 
 @ 20261113jailrename 2026-11-13 staff
 JAIL and RELEASE of an offline player now move their saved room to the

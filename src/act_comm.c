@@ -4451,6 +4451,32 @@ void nuke_pets( CHAR_DATA *ch )
 }
 
 
+/*
+ * Why och will not take ch's order, or NULL when it will. One test for
+ * ORDER <name> and ORDER ALL: rank was asked of a single follower only,
+ * so ORDER ALL reached what ORDER <name> refused.
+ *
+ * An order runs at the follower's own trust (interpret asks get_trust of
+ * whoever runs it), so nobody may be ordered who holds authority their
+ * master lacks: an immortal of rank, a mortal given trust above their
+ * master's, or a mobile somebody is in -- a switched immortal's trust is
+ * the mobile's (review, 2026-11-13: a mortal ADVANCEd themselves through
+ * a charmed guard an immortal had switched into). A player is a
+ * descriptor's owner, never "somebody in them".
+ */
+static const char *order_refusal( CHAR_DATA *ch, CHAR_DATA *och )
+{
+    if ( !IS_AFFECTED(och, AFF_CHARM) || och->master != ch )
+        return "Do it yourself!\n\r";
+    if ( IS_NPC(och) && och->desc != NULL )
+        return "answers";
+    if ( IS_IMMORTAL(och) && rank_protects( ch, och ) )
+        return "Do it yourself!\n\r";
+    if ( !IS_NPC(och) && get_trust( och ) > get_trust( ch ) )
+        return "Do it yourself!\n\r";
+    return NULL;
+}
+
 void do_order( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -4496,20 +4522,19 @@ void do_order( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( !IS_AFFECTED(victim, AFF_CHARM) || victim->master != ch 
-	|| (IS_IMMORTAL(victim) && rank_protects( ch, victim )))
 	{
-	    send_to_char( "Do it yourself!\n\r", ch );
-	    return;
-	}
-	/* Somebody is in it -- a switched immortal, a projection: an order
-	   ran at their trust, not the mobile's (get_trust follows the
-	   descriptor), and a mortal ADVANCEd themselves through a charmed
-	   guard an immortal had switched into (review, 2026-11-13). */
-	if ( victim->desc != NULL )
-	{
-	    act( "$N answers to the one inside $M, not to you.", ch, NULL, victim, TO_CHAR );
-	    return;
+	    const char *why = order_refusal( ch, victim );
+
+	    if ( why != NULL && !str_cmp( why, "answers" ) )
+	    {
+		act( "$N answers to the one inside $M, not to you.", ch, NULL, victim, TO_CHAR );
+		return;
+	    }
+	    if ( why != NULL )
+	    {
+		send_to_char( why, ch );
+		return;
+	    }
 	}
     }
 
@@ -4518,14 +4543,15 @@ void do_order( CHAR_DATA *ch, char *argument )
     {
 	och_next = och->next_in_room;
 
-	if ( IS_AFFECTED(och, AFF_CHARM)
-	&&   och->master == ch
-	&&   och->desc == NULL
-	&& ( fAll || och == victim ) )
+	if ( ( fAll || och == victim ) && order_refusal( ch, och ) == NULL )
 	{
 	    found = TRUE;
 	    act( "$n orders you to '$t'.", ch, argument, och, TO_VICT );
+	    /* A player obeys only in what a charm can reach: interpret
+	       refuses the rest (order_refuses_command). */
+	    interp_ordered = !IS_NPC(och);
 	    interpret( och, argument );
+	    interp_ordered = FALSE;
 	}
     }
 
