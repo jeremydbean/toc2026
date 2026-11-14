@@ -296522,3 +296522,360 @@ Sat Nov 14 02:46:33 2026 :: Log Alaric [2497]: aq ga no
 Sat Nov 14 02:46:35 2026 :: Log Alaric [2497]: score
 Sat Nov 14 02:47:34 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 02:49:10 2026 :: Treasure goblin: vanished from room 3554 (A Small Alcove, midennir.are) (too long in one area).
+Sat Nov 14 02:50:26 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 14 02:50:53 2026 :: Log Alaric [2497]: aq re
+Sat Nov 14 02:50:53 2026 :: Log Alaric [2497]: quest assigned: kill the Minotaur Gatekeeper (mob 2318, level 25) in mahntor.are, 14 minutes, ordinary
+Sat Nov 14 02:50:57 2026 :: Log Alaric [2497]: enter door
+Sat Nov 14 02:50:57 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2401]: north
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2402]: north
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2415]: east
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2485]: east
+Sat Nov 14 02:50:58 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2486]: east
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2486
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2487]: east
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2509]: arrived (Dark Alley.) from 2487
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2509]: north
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2508]: arrived (Dark Alley.) from 2509
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2508]: east
+Sat Nov 14 02:50:59 2026 :: Log Alaric [2507]: arrived (Dark Alley.) from 2508
+Sat Nov 14 02:51:00 2026 :: Log Alaric [2507]: north
+Sat Nov 14 02:51:00 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2507
+Sat Nov 14 02:51:00 2026 :: Log Alaric [2505]: north
+Sat Nov 14 02:51:00 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Sat Nov 14 02:51:00 2026 :: Log Alaric [2506]: down
+Sat Nov 14 02:51:00 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Sat Nov 14 02:51:00 2026 :: Log Alaric [7030]: west
+Sat Nov 14 02:51:00 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7022]: down
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7112]: north
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7111]: arrived (The southwestern corner of the ledge) from 7112
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7111]: east
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7115]: arrived (The Broad ledge) from 7111
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7115]: south
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7129]: arrived (The sewer line.) from 7115
+Sat Nov 14 02:51:01 2026 :: Log Alaric [7129]: affects off: levitate
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7129]: down
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7221]: arrived (The sewer drain.) from 7129
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7221]: west
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7220]: arrived (A boring drain.) from 7221
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7220]: north
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7219]: arrived (A dry sewer drain.) from 7220
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7219]: east
+Sat Nov 14 02:51:02 2026 :: Log Alaric [7217]: arrived (The half-dry drain.) from 7219
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7217]: north
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7216]: arrived (Under water in the sewer.) from 7217
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7216]: north
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7215]: arrived (The half-wet drain.) from 7216
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7215]: north
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7210]: arrived (The four-way junction.) from 7215
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7210]: west
+Sat Nov 14 02:51:03 2026 :: Log Alaric [7209]: arrived (The crawlway.) from 7210
+Sat Nov 14 02:51:04 2026 :: Log Alaric [7209]: west
+Sat Nov 14 02:51:04 2026 :: Log Alaric [7208]: arrived (The lair entrance.) from 7209
+Sat Nov 14 02:51:04 2026 :: Log Alaric [7208]: open north
+Sat Nov 14 02:51:04 2026 :: Log Alaric [7208]: north
+Sat Nov 14 02:51:04 2026 :: Log Alaric [7204]: arrived (The Lair) from 7208
+Sat Nov 14 02:51:04 2026 :: Log Alaric [7204]: north
+Sat Nov 14 02:51:04 2026 :: Log Alaric [7203]: arrived (The Lair) from 7204
+Sat Nov 14 02:51:05 2026 :: Log Alaric [7203]: north
+Sat Nov 14 02:51:05 2026 :: Log Alaric [7202]: arrived (The Lair) from 7203
+Sat Nov 14 02:51:05 2026 :: Log Alaric [7202]: open north
+Sat Nov 14 02:51:05 2026 :: Log Alaric [7202]: north
+Sat Nov 14 02:51:05 2026 :: Log Alaric [7201]: arrived (The inner Lair) from 7202
+Sat Nov 14 02:51:05 2026 :: Log Alaric [7201]: down
+Sat Nov 14 02:51:05 2026 :: Log Alaric [25171]: arrived (The climb up.) from 7201
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25171]: down
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25170]: arrived (The end of the sloping passage.) from 25171
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25170]: east
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25169]: arrived (The slope steepens.) from 25170
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25169]: east
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25168]: arrived (The slope upwards.) from 25169
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25168]: east
+Sat Nov 14 02:51:06 2026 :: Log Alaric [25167]: arrived (The dark passage.) from 25168
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25167]: east
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25166]: arrived (The Intersection.) from 25167
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25166]: north
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25165]: arrived (The dim passage.) from 25166
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25165]: north
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25159]: arrived (The Trade Route.) from 25165
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25159]: west
+Sat Nov 14 02:51:07 2026 :: Log Alaric [25158]: arrived (The Trade Route.) from 25159
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25158]: west
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25153]: arrived (The Trade Route.) from 25158
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25153]: north
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25152]: arrived (The passage in between.) from 25153
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25152]: north
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25151]: arrived (The hole in the wall.) from 25152
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25151]: up
+Sat Nov 14 02:51:08 2026 :: Log Alaric [25185]: arrived (The ledge.) from 25151
+Sat Nov 14 02:51:09 2026 :: Log Alaric [25185]: up
+Sat Nov 14 02:51:09 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 25185
+Sat Nov 14 02:51:11 2026 :: Log Alaric [2397]: n
+Sat Nov 14 02:51:11 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2397
+Sat Nov 14 02:51:11 2026 :: Log Alaric [2392]: n
+Sat Nov 14 02:51:11 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2392
+Sat Nov 14 02:51:12 2026 :: Log Alaric [2389]: n
+Sat Nov 14 02:51:12 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2389
+Sat Nov 14 02:51:13 2026 :: Log Alaric [2388]: n
+Sat Nov 14 02:51:13 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2388
+Sat Nov 14 02:51:13 2026 :: Log Alaric [2387]: n
+Sat Nov 14 02:51:13 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2387
+Sat Nov 14 02:51:13 2026 :: Log Alaric [2382]: n
+Sat Nov 14 02:51:13 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2382
+Sat Nov 14 02:51:14 2026 :: Log Alaric [2381]: w
+Sat Nov 14 02:51:14 2026 :: Log Alaric [2380]: arrived (The Hall) from 2381
+Sat Nov 14 02:51:14 2026 :: Log Alaric [2380]: w
+Sat Nov 14 02:51:14 2026 :: Log Alaric [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Sat Nov 14 02:51:15 2026 :: Log Alaric [2379]: w
+Sat Nov 14 02:51:17 2026 :: Log Alaric [2379]: ow
+Sat Nov 14 02:51:19 2026 :: Log Alaric [2379]: kill gu
+Sat Nov 14 02:51:21 2026 :: Log Alaric [2379]: killed the High Minotaur Guard
+Sat Nov 14 02:51:21 2026 :: Log Alaric [2379]: coin +1 silver
+Sat Nov 14 02:51:21 2026 :: Log Alaric [2379]: coin +1 copper
+Sat Nov 14 02:51:24 2026 :: Log Alaric [2379]: get key cor
+Sat Nov 14 02:51:25 2026 :: Log Alaric [2379]: l
+Sat Nov 14 02:51:25 2026 :: Log Alaric [2379]: e
+Sat Nov 14 02:51:25 2026 :: Log Alaric [2380]: arrived (The Hall) from 2379
+Sat Nov 14 02:51:26 2026 :: Log Alaric [2380]: e
+Sat Nov 14 02:51:26 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2380
+Sat Nov 14 02:51:26 2026 :: Log Alaric [2381]: e
+Sat Nov 14 02:51:26 2026 :: Log Alaric [2383]: arrived (Standing before the throne) from 2381
+Sat Nov 14 02:51:28 2026 :: Log Alaric [2383]: e
+Sat Nov 14 02:51:29 2026 :: Log Alaric [2383]: oe
+Sat Nov 14 02:51:29 2026 :: Log Alaric [2383]: e
+Sat Nov 14 02:51:29 2026 :: Log Alaric [2385]: arrived (The secret hallway) from 2383
+Sat Nov 14 02:51:30 2026 :: Log Alaric [2385]: oe
+Sat Nov 14 02:51:31 2026 :: Log Alaric [2385]: e
+Sat Nov 14 02:51:33 2026 :: Log Alaric [2385]: kill gu
+Sat Nov 14 02:51:33 2026 :: Log Alaric [2385]: killed the Elite Minotaur Guard
+Sat Nov 14 02:51:33 2026 :: Log Alaric [2385]: coin +1 silver
+Sat Nov 14 02:51:33 2026 :: Log Alaric [2385]: coin +1 copper
+Sat Nov 14 02:51:39 2026 :: Log Alaric [2385]: get key cor
+Sat Nov 14 02:51:39 2026 :: Log Alaric [2385]: kill gu
+Sat Nov 14 02:51:42 2026 :: Log Alaric [2385]: killed the Elite Minotaur Guard
+Sat Nov 14 02:51:42 2026 :: Log Alaric [2385]: coin +1 silver
+Sat Nov 14 02:51:42 2026 :: Log Alaric [2385]: coin +1 copper
+Sat Nov 14 02:51:43 2026 :: Log Alaric [2385]: unl east
+Sat Nov 14 02:51:43 2026 :: Log Alaric [2385]: oe
+Sat Nov 14 02:51:44 2026 :: Log Alaric [2385]: e
+Sat Nov 14 02:51:44 2026 :: Log Alaric [2386]: arrived (Entry to the Royal Chambers) from 2385
+Sat Nov 14 02:51:46 2026 :: Log Alaric [2386]: s
+Sat Nov 14 02:51:46 2026 :: Log Alaric [2393]: arrived (The Harem Room) from 2386
+Sat Nov 14 02:51:47 2026 :: Log Alaric [2393]: e
+Sat Nov 14 02:51:47 2026 :: Log Alaric [2396]: arrived (The Master Bedroom) from 2393
+Sat Nov 14 02:51:48 2026 :: Log Alaric [2396]: n
+Sat Nov 14 02:51:48 2026 :: Log Alaric [2395]: arrived (The main living room) from 2396
+Sat Nov 14 02:51:49 2026 :: Log Alaric [2395]: w
+Sat Nov 14 02:51:49 2026 :: Log Alaric [2386]: arrived (Entry to the Royal Chambers) from 2395
+Sat Nov 14 02:51:49 2026 :: Log Alaric [2386]: w
+Sat Nov 14 02:51:49 2026 :: Log Alaric [2385]: arrived (The secret hallway) from 2386
+Sat Nov 14 02:51:49 2026 :: Log Alaric [2385]: w
+Sat Nov 14 02:51:49 2026 :: Log Alaric [2383]: arrived (Standing before the throne) from 2385
+Sat Nov 14 02:51:50 2026 :: Log Alaric [2383]: s
+Sat Nov 14 02:51:50 2026 :: Log Alaric [2384]: arrived (The Great Hall) from 2383
+Sat Nov 14 02:51:51 2026 :: Log Alaric [2384]: w
+Sat Nov 14 02:51:51 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2384
+Sat Nov 14 02:51:52 2026 :: Log Alaric [2382]: s
+Sat Nov 14 02:51:52 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2382
+Sat Nov 14 02:51:53 2026 :: Log Alaric [2387]: s
+Sat Nov 14 02:51:53 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2387
+Sat Nov 14 02:51:53 2026 :: Log Alaric [2388]: w
+Sat Nov 14 02:51:54 2026 :: Log Alaric [2388]: ow
+Sat Nov 14 02:51:54 2026 :: Log Alaric [2388]: w
+Sat Nov 14 02:51:55 2026 :: Log Alaric [2388]: s
+Sat Nov 14 02:51:55 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2388
+Sat Nov 14 02:51:56 2026 :: Log Alaric [2389]: s
+Sat Nov 14 02:51:56 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2389
+Sat Nov 14 02:51:56 2026 :: Log Alaric [2392]: s
+Sat Nov 14 02:51:56 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 2392
+Sat Nov 14 02:51:58 2026 :: Log Alaric [2397]: ow
+Sat Nov 14 02:51:59 2026 :: Log Alaric [2397]: oe
+Sat Nov 14 02:52:00 2026 :: Log Alaric [2397]: d
+Sat Nov 14 02:52:00 2026 :: Log Alaric [25185]: arrived (The ledge.) from 2397
+Sat Nov 14 02:52:01 2026 :: Log Alaric [25185]: d
+Sat Nov 14 02:52:01 2026 :: Log Alaric [25151]: arrived (The hole in the wall.) from 25185
+Sat Nov 14 02:52:03 2026 :: Log Alaric [25151]: scan
+Sat Nov 14 02:52:05 2026 :: Log Alaric [25151]: u
+Sat Nov 14 02:52:05 2026 :: Log Alaric [25185]: arrived (The ledge.) from 25151
+Sat Nov 14 02:52:07 2026 :: Log Alaric [25185]: u
+Sat Nov 14 02:52:07 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 25185
+Sat Nov 14 02:52:08 2026 :: Log Alaric [2397]: n
+Sat Nov 14 02:52:08 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2397
+Sat Nov 14 02:52:08 2026 :: Log Alaric [2392]: n
+Sat Nov 14 02:52:08 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2392
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2389]: n
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2389
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2388]: n
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2388
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2387]: n
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2387
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2382]: n
+Sat Nov 14 02:52:09 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2382
+Sat Nov 14 02:52:10 2026 :: Log Alaric [2381]: n
+Sat Nov 14 02:52:10 2026 :: Log Alaric [2381]: w
+Sat Nov 14 02:52:10 2026 :: Log Alaric [2380]: arrived (The Hall) from 2381
+Sat Nov 14 02:52:10 2026 :: Log Alaric [2380]: w
+Sat Nov 14 02:52:10 2026 :: Log Alaric [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Sat Nov 14 02:52:10 2026 :: Log Alaric [2379]: w
+Sat Nov 14 02:52:12 2026 :: Log Alaric [2379]: unl west
+Sat Nov 14 02:52:14 2026 :: Log Alaric [2379]: e
+Sat Nov 14 02:52:14 2026 :: Log Alaric [2380]: arrived (The Hall) from 2379
+Sat Nov 14 02:52:16 2026 :: Log Alaric [2380]: kill gu
+Sat Nov 14 02:52:18 2026 :: Log Alaric [2380]: killed the High Minotaur Guard
+Sat Nov 14 02:52:18 2026 :: Log Alaric [2380]: coin +1 silver
+Sat Nov 14 02:52:18 2026 :: Log Alaric [2380]: coin +1 copper
+Sat Nov 14 02:52:19 2026 :: Log Alaric [2380]: get key cor
+Sat Nov 14 02:52:23 2026 :: Log Alaric [2380]: l i cor
+Sat Nov 14 02:52:24 2026 :: Log Alaric [2380]: e
+Sat Nov 14 02:52:24 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2380
+Sat Nov 14 02:52:26 2026 :: Log Alaric [2381]: s
+Sat Nov 14 02:52:26 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2381
+Sat Nov 14 02:52:28 2026 :: Log Alaric [2382]: kill gu
+Sat Nov 14 02:52:30 2026 :: Log Alaric [2382]: killed the Royal Minotaur Guard
+Sat Nov 14 02:52:30 2026 :: Log Alaric [2382]: coin +1 silver
+Sat Nov 14 02:52:30 2026 :: Log Alaric [2382]: coin +1 copper
+Sat Nov 14 02:52:31 2026 :: Log Alaric [2382]: get key cor
+Sat Nov 14 02:52:33 2026 :: Log Alaric [2382]: steel
+Sat Nov 14 02:52:39 2026 :: Log Alaric [2382]: s
+Sat Nov 14 02:52:39 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2382
+Sat Nov 14 02:52:42 2026 :: Log Alaric [2387]: kill ri
+Sat Nov 14 02:52:52 2026 :: Log Alaric [2387]: killed the Minotaur Ring-Keeper
+Sat Nov 14 02:52:52 2026 :: Log Alaric [2387]: coin +2 silver
+Sat Nov 14 02:52:52 2026 :: Log Alaric [2387]: coin +3 copper
+Sat Nov 14 02:52:52 2026 :: Log Alaric [2387]: coin +1 gold
+Sat Nov 14 02:52:52 2026 :: Log Alaric [2387]: get key cor
+Sat Nov 14 02:52:53 2026 :: Log Alaric [2387]: n
+Sat Nov 14 02:52:53 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2387
+Sat Nov 14 02:52:54 2026 :: Log Alaric [2382]: n
+Sat Nov 14 02:52:54 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2382
+Sat Nov 14 02:52:54 2026 :: Log Alaric [2381]: n
+Sat Nov 14 02:52:54 2026 :: Log Alaric [2381]: n
+Sat Nov 14 02:52:54 2026 :: Log Alaric [2381]: w
+Sat Nov 14 02:52:54 2026 :: Log Alaric [2380]: arrived (The Hall) from 2381
+Sat Nov 14 02:52:55 2026 :: Log Alaric [2380]: w
+Sat Nov 14 02:52:55 2026 :: Log Alaric [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Sat Nov 14 02:52:55 2026 :: Log Alaric [2379]: w
+Sat Nov 14 02:52:56 2026 :: Log Alaric [2379]: unl west
+Sat Nov 14 02:52:57 2026 :: Log Alaric [2379]: e
+Sat Nov 14 02:52:57 2026 :: Log Alaric [2380]: arrived (The Hall) from 2379
+Sat Nov 14 02:52:58 2026 :: Log Alaric [2380]: e
+Sat Nov 14 02:52:58 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2380
+Sat Nov 14 02:52:59 2026 :: Log Alaric [2381]: s
+Sat Nov 14 02:52:59 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2381
+Sat Nov 14 02:53:01 2026 :: Log Alaric [2382]: s
+Sat Nov 14 02:53:01 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2382
+Sat Nov 14 02:53:02 2026 :: Log Alaric [2387]: s
+Sat Nov 14 02:53:02 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2387
+Sat Nov 14 02:53:05 2026 :: Log Alaric [2388]: unl west
+Sat Nov 14 02:53:06 2026 :: Log Alaric [2388]: s
+Sat Nov 14 02:53:06 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2388
+Sat Nov 14 02:53:07 2026 :: Log Alaric [2389]: s
+Sat Nov 14 02:53:07 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2389
+Sat Nov 14 02:53:08 2026 :: Log Alaric [2392]: s
+Sat Nov 14 02:53:08 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 2392
+Sat Nov 14 02:53:09 2026 :: Log Alaric [2397]: d
+Sat Nov 14 02:53:09 2026 :: Log Alaric [25185]: arrived (The ledge.) from 2397
+Sat Nov 14 02:53:11 2026 :: Log Alaric [25185]: kill m
+Sat Nov 14 02:53:11 2026 :: Log Alaric [25185]: killed the minotaur guard
+Sat Nov 14 02:53:11 2026 :: Log Alaric [25185]: coin +2 silver
+Sat Nov 14 02:53:11 2026 :: Log Alaric [25185]: coin +3 copper
+Sat Nov 14 02:53:11 2026 :: Log Alaric [25185]: coin +1 gold
+Sat Nov 14 02:53:16 2026 :: Log Alaric [25185]: l i cor
+Sat Nov 14 02:53:16 2026 :: Log Alaric [25185]: kill min
+Sat Nov 14 02:53:16 2026 :: Log Alaric [25185]: killed the minotaur guard
+Sat Nov 14 02:53:16 2026 :: Log Alaric [25185]: coin +2 silver
+Sat Nov 14 02:53:16 2026 :: Log Alaric [25185]: coin +3 copper
+Sat Nov 14 02:53:16 2026 :: Log Alaric [25185]: coin +1 gold
+Sat Nov 14 02:53:20 2026 :: Log Alaric [25185]: l i cor
+Sat Nov 14 02:53:22 2026 :: Log Alaric [25185]: u
+Sat Nov 14 02:53:22 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 25185
+Sat Nov 14 02:53:23 2026 :: Log Alaric [2397]: n
+Sat Nov 14 02:53:23 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2397
+Sat Nov 14 02:53:24 2026 :: Log Alaric [2392]: n
+Sat Nov 14 02:53:24 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2392
+Sat Nov 14 02:53:24 2026 :: Log Alaric [2389]: n
+Sat Nov 14 02:53:24 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2389
+Sat Nov 14 02:53:25 2026 :: Log Alaric [2388]: n
+Sat Nov 14 02:53:25 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2388
+Sat Nov 14 02:53:25 2026 :: Log Alaric [2387]: n
+Sat Nov 14 02:53:25 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2387
+Sat Nov 14 02:53:26 2026 :: Log Alaric [2382]: s
+Sat Nov 14 02:53:26 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2382
+Sat Nov 14 02:53:26 2026 :: Log Alaric [2387]: s
+Sat Nov 14 02:53:26 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2387
+Sat Nov 14 02:53:27 2026 :: Log Alaric [2388]: ow
+Sat Nov 14 02:53:28 2026 :: Log Alaric [2388]: oe
+Sat Nov 14 02:53:28 2026 :: Log Alaric [2388]: s
+Sat Nov 14 02:53:28 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2388
+Sat Nov 14 02:53:29 2026 :: Log Alaric [2389]: ow
+Sat Nov 14 02:53:29 2026 :: Log Alaric [2389]: oe
+Sat Nov 14 02:53:30 2026 :: Log Alaric [2389]: s
+Sat Nov 14 02:53:30 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2389
+Sat Nov 14 02:53:31 2026 :: Log Alaric [2392]: ow
+Sat Nov 14 02:53:32 2026 :: Log Alaric [2392]: oe
+Sat Nov 14 02:53:33 2026 :: Log Alaric [2392]: s
+Sat Nov 14 02:53:33 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 2392
+Sat Nov 14 02:53:34 2026 :: Log Alaric [2397]: ow
+Sat Nov 14 02:53:35 2026 :: Log Alaric [2397]: oe
+Sat Nov 14 02:53:36 2026 :: Log Alaric [2397]: n
+Sat Nov 14 02:53:36 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2397
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2392]: n
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2392
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2389]: n
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2389
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2388]: n
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2388
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2387]: n
+Sat Nov 14 02:53:37 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2387
+Sat Nov 14 02:53:38 2026 :: Log Alaric [2382]: e
+Sat Nov 14 02:53:38 2026 :: Log Alaric [2384]: arrived (The Great Hall) from 2382
+Sat Nov 14 02:53:39 2026 :: Log Alaric [2384]: n
+Sat Nov 14 02:53:39 2026 :: Log Alaric [2383]: arrived (Standing before the throne) from 2384
+Sat Nov 14 02:53:41 2026 :: Log Alaric [2383]: kill gu
+Sat Nov 14 02:53:45 2026 :: Log Alaric [2383]: get key cor
+Sat Nov 14 02:53:46 2026 :: Log Alaric [2383]: killed the Royal Minotaur Guard
+Sat Nov 14 02:53:46 2026 :: Log Alaric [2383]: coin +1 silver
+Sat Nov 14 02:53:46 2026 :: Log Alaric [2383]: coin +1 copper
+Sat Nov 14 02:53:46 2026 :: Log Alaric [2383]: get key cor
+Sat Nov 14 02:53:48 2026 :: Log Alaric [2383]: e
+Sat Nov 14 02:53:48 2026 :: Log Alaric [2385]: arrived (The secret hallway) from 2383
+Sat Nov 14 02:53:49 2026 :: Log Alaric [2385]: e
+Sat Nov 14 02:53:49 2026 :: Log Alaric [2386]: arrived (Entry to the Royal Chambers) from 2385
+Sat Nov 14 02:53:50 2026 :: Log Alaric [2386]: s
+Sat Nov 14 02:53:50 2026 :: Log Alaric [2393]: arrived (The Harem Room) from 2386
+Sat Nov 14 02:53:51 2026 :: Log Alaric [2393]: e
+Sat Nov 14 02:53:51 2026 :: Log Alaric [2396]: arrived (The Master Bedroom) from 2393
+Sat Nov 14 02:53:52 2026 :: Log Alaric [2396]: n
+Sat Nov 14 02:53:52 2026 :: Log Alaric [2395]: arrived (The main living room) from 2396
+Sat Nov 14 02:53:54 2026 :: Log Alaric [2395]: kill bu
+Sat Nov 14 02:53:54 2026 :: Log Alaric [2395]: killed the Minotaur Butler
+Sat Nov 14 02:53:59 2026 :: Log Alaric [2395]: get key cor
+Sat Nov 14 02:54:00 2026 :: Log Alaric [2395]: l i cor
+Sat Nov 14 02:54:02 2026 :: Log Alaric [2395]: w
+Sat Nov 14 02:54:02 2026 :: Log Alaric [2386]: arrived (Entry to the Royal Chambers) from 2395
+Sat Nov 14 02:54:03 2026 :: Log Alaric [2386]: w
+Sat Nov 14 02:54:03 2026 :: Log Alaric [2385]: arrived (The secret hallway) from 2386
+Sat Nov 14 02:54:05 2026 :: Log Alaric [2385]: w
+Sat Nov 14 02:54:05 2026 :: Log Alaric [2383]: arrived (Standing before the throne) from 2385
+Sat Nov 14 02:54:06 2026 :: Log Alaric [2383]: s
+Sat Nov 14 02:54:06 2026 :: Log Alaric [2384]: arrived (The Great Hall) from 2383
+Sat Nov 14 02:54:06 2026 :: Log Alaric [2384]: w
+Sat Nov 14 02:54:06 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2384
+Sat Nov 14 02:54:07 2026 :: Log Alaric [2382]: n
+Sat Nov 14 02:54:07 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2382
+Sat Nov 14 02:54:08 2026 :: Log Alaric [2381]: w
+Sat Nov 14 02:54:08 2026 :: Log Alaric [2380]: arrived (The Hall) from 2381
+Sat Nov 14 02:54:09 2026 :: Log Alaric [2380]: w
+Sat Nov 14 02:54:09 2026 :: Log Alaric [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Sat Nov 14 02:54:10 2026 :: Log Alaric [2379]: w
+Sat Nov 14 02:54:11 2026 :: Log Alaric [2379]: ow
+Sat Nov 14 02:54:15 2026 :: Log Alaric [2379]: open west
+Sat Nov 14 02:54:15 2026 :: Log Alaric [2379]: west
+Sat Nov 14 02:54:17 2026 :: Log Alaric [2379]: open west
+Sat Nov 14 02:54:17 2026 :: Log Alaric [2379]: west

@@ -25596,3 +25596,238 @@
 1794624395	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    293 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
 1794624509	laid	-	0	0	-	938	herb	46	a juniper berry	29038	korzath1.are	scatter
 1794624509	laid	-	0	0	-	939	herb	52	an asparagus shoot	29090	korzath1.are	scatter
+1794624598	laid	-	0	0	-	940	herb	41	a sprig of mistletoe	9984	valhalla.are	scatter
+1794624598	laid	-	0	0	-	941	herb	50	a head of cabbage	9927	valhalla.are	scatter
+1794624598	laid	-	0	0	-	942	component	81	a vial of squid ink	4303	dresden.are	scatter
+1794624653	quest	Alaric	57	2497	dresden.are	ordinary	kill	2318	the Minotaur Gatekeeper	25	mahntor.are	14
+1794624653	cmd	Alaric	57	2497	dresden.are	standing	100	15	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'The criminal known as the Minotaur Gatekeeper has escaped from prison!'	-	+
+1794624657	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794624658	cmd	Alaric	57	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794624658	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794624658	cmd	Alaric	57	2485	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794624658	cmd	Alaric	57	2486	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794624659	cmd	Alaric	57	2487	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794624659	cmd	Alaric	57	2509	dresden.are	standing	100	0	-	east		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1794624659	cmd	Alaric	57	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794624659	cmd	Alaric	57	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794624660	cmd	Alaric	57	2505	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794624660	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at	-	+
+1794624660	area	Alaric	57	7030	sewer.are	dresden.are	sewer.are	269	down
+1794624660	cmd	Alaric	57	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1794624660	cmd	Alaric	57	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1794624661	cmd	Alaric	57	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1794624661	cmd	Alaric	57	7111	sewer.are	standing	100	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 	-	+
+1794624661	cmd	Alaric	57	7115	sewer.are	standing	100	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit	-	+
+1794624661	cmd	Alaric	57	7129	sewer.are	standing	100	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.	-	+
+1794624662	cmd	Alaric	57	7221	sewer.are	standing	100	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.	-	+
+1794624662	cmd	Alaric	57	7220	sewer.are	standing	100	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]	-	-
+1794624662	cmd	Alaric	57	7219	sewer.are	standing	100	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]	-	+
+1794624662	cmd	Alaric	57	7217	sewer.are	standing	100	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west	-	+
+1794624663	cmd	Alaric	57	7216	sewer.are	standing	100	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light	-	+
+1794624663	cmd	Alaric	57	7215	sewer.are	standing	100	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.	-	+
+1794624663	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1794624663	cmd	Alaric	57	7209	sewer.are	standing	100	0	-	west		The crawlway. //   You are in a narrow crawlway.  You don't notice anything interesting here. // [Exits: east west]	-	-
+1794624664	cmd	Alaric	57	7208	sewer.are	standing	100	0	-	west		The lair entrance. //   You are in a dry part of the sewer. To the north is a wooden door, you  // can see some slime at the lower part of the door. You also see some skulls	-	+
+1794624664	cmd	Alaric	57	7208	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794624664	cmd	Alaric	57	7204	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794624664	cmd	Alaric	57	7203	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794624665	cmd	Alaric	57	7202	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce. To the north 	-	+
+1794624665	cmd	Alaric	57	7202	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794624665	cmd	Alaric	57	7201	sewer.are	standing	100	0	-	north		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.	-	+
+1794624665	area	Alaric	57	25171	underdrk.are	sewer.are	underdrk.are	5	down
+1794624665	cmd	Alaric	57	25171	underdrk.are	standing	100	0	-	down		The climb up. //   You can hear something above you talking to itself in the darkness.  The smell // coming from there reminds you of a SEWER.  The rocks in this climb were made	-	+
+1794624666	cmd	Alaric	57	25170	underdrk.are	standing	100	0	-	down		The end of the sloping passage. //   The passage ends here and makes a straight vertical climb upwards into onyx // darkness.  You can also go to the down the slope to the east.	-	+
+1794624666	cmd	Alaric	57	25169	underdrk.are	standing	100	0	-	east		The slope steepens. //   The slope starts to steepen here into a sharper angle. The roaring of the // waterfall now is so far in the distance that dripping water drowns out the	-	+
+1794624666	cmd	Alaric	57	25168	underdrk.are	standing	100	0	-	east		The slope upwards. //   The passageway starts to slope upwards here.  The roaring of the waterfall is // more distant now and you can no longer feel the moisture on your face that	-	+
+1794624666	cmd	Alaric	57	25167	underdrk.are	standing	100	0	-	east		The dark passage. //   It's dark here.  You feel moisture on your face and you can hear a roaring of // a waterfall in the distance.  The passage continues to the east and the west.	-	+
+1794624667	cmd	Alaric	57	25166	underdrk.are	standing	100	0	-	east		The Intersection. //   The dark corridor turns west here and also continues to the south.  The roar // of the waterfall comes from the south and no sounds at all come from the	-	+
+1794624667	cmd	Alaric	57	25165	underdrk.are	standing	100	0	-	north		The dim passage. //   Light from the passage north fills this room with soft light.  The walls // look carved from the rock.  There is little dust on the ground and the air	-	+
+1794624667	cmd	Alaric	57	25159	underdrk.are	standing	100	0	-	north		The Trade Route. //   Glowing moss covers the walls of this huge corridor giving off more than // enough light to see by.  The floor is covered in wagon and animal tracks.	-	+
+1794624667	cmd	Alaric	57	25158	underdrk.are	standing	100	0	-	west		The Trade Route. //   Glowing moss covers the walls of this huge corridor giving off more than // enough light to see by.  The floor is covered in wagon and animal tracks.	-	+
+1794624668	cmd	Alaric	57	25153	underdrk.are	standing	100	0	-	west		The Trade Route. //   This corridor is HUGE.  It's the largest one you've seen so far since you've // been in the depths of the world.  It's about one hundred feet wide and	-	+
+1794624668	cmd	Alaric	57	25152	underdrk.are	standing	100	0	-	north		The passage in between. //   This corridor is dark, but you can see light to the south.  There is no dust // on the ground here.  On a rock by the lighted corridor to the south you can	-	+
+1794624668	cmd	Alaric	57	25151	underdrk.are	standing	100	0	-	north		The hole in the wall. //   There is a hole in the wall here and the corridor turns to the south.  There // is also a shaft leading upward.  There is no dust on the floor of the	-	+
+1794624668	cmd	Alaric	57	25185	underdrk.are	standing	100	0	-	up		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1794624669	area	Alaric	57	2397	mahntor.are	underdrk.are	mahntor.are	4	up
+1794624669	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	up		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1794624671	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794624671	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794624672	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794624673	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	north		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624673	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624673	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794624674	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794624674	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1794624675	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The gate is closed.	-	-
+1794624677	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624679	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	kill	gu	Your punch === OBLITERATES === the High Minotaur Guard! [-135] // Your punch ^^^ DESTROYS ^^^ the High Minotaur Guard! [-108] // Your punch ^^^ DESTROYS ^^^ the High Minotaur Guard! [-94]	-	-
+1794624681	coin	Alaric	57	2379	mahntor.are	+100	loot	(violence_update)	corpse of the High Minotaur Guard	26227155723
+1794624681	coin	Alaric	57	2379	mahntor.are	+1	loot	(violence_update)	corpse of the High Minotaur Guard	26227155724
+1794624684	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794624685	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	look		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1794624685	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794624686	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794624686	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	east		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1794624688	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	east		The throne is closed.	-	-
+1794624689	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	open		Ok.	-	-
+1794624689	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	east		The secret hallway //   You are in a small, torch lit hall. It leads from east to west. A large gold // door is to the west. To the east, you see a heavy stone door.	-	+
+1794624690	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624691	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	east		The door is closed.	-	-
+1794624693	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	kill	gu	Your punch <<< ERADICATES >>> the Elite Minotaur Guard! [-167] // Your punch === OBLITERATES === the Elite Minotaur Guard! [-150]	-	-
+1794624693	coin	Alaric	57	2385	mahntor.are	+100	loot	(violence_update)	corpse of the Elite Minotaur Guard	26227155824
+1794624693	coin	Alaric	57	2385	mahntor.are	+1	loot	(violence_update)	corpse of the Elite Minotaur Guard	26227155825
+1794624699	got	Alaric	57	2385	mahntor.are	2359	a runed key	key	26	1000000	get	corpse of the Elite Minotaur Guard
+1794624699	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	get	key cor	You get a runed key from corpse of the Elite Minotaur Guard.	-	-
+1794624699	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	kill	gu	Your punch === OBLITERATES === the Elite Minotaur Guard! [-133] // Your punch ^^^ DESTROYS ^^^ the Elite Minotaur Guard! [-112] // Your punch *** DEVASTATES *** the Elite Minotaur Guard! [-65]	-	-
+1794624702	coin	Alaric	57	2385	mahntor.are	+100	loot	(violence_update)	corpse of the Elite Minotaur Guard	26227155925
+1794624702	coin	Alaric	57	2385	mahntor.are	+1	loot	(violence_update)	corpse of the Elite Minotaur Guard	26227155926
+1794624703	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	unlock	east	*Click*	-	-
+1794624703	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	open		Ok.	-	-
+1794624704	cmd	Alaric	57	2386	mahntor.are	standing	100	0	-	east		Entry to the Royal Chambers //   You are at the entrance to the royal chambers of the keep. A plush shag rug // covers the stone floor. Large candelabras hang from the ceiling, lighting the	-	+
+1794624706	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	south		The Harem Room //   This appears to be the harem room of the Keep. Huge piles of furs and beds // fill the room. The lighting is dim, but the room is very warm. You can hear	-	+
+1794624707	cmd	Alaric	57	2396	mahntor.are	standing	100	0	-	east		The Master Bedroom //   This appears to be the master bedroom. A huge bed fills the rooms. Piles of // furs and other rich furnishings adorn the room. Candles are everywhere and	-	+
+1794624708	cmd	Alaric	57	2395	mahntor.are	standing	100	0	-	north		The main living room //   This room is decorated with sturdy stone furniture that is carved and gilded. // Large candles light the room. A thick rug covers the floor. Thick furs and	-	+
+1794624709	cmd	Alaric	57	2386	mahntor.are	standing	100	0	-	west		Entry to the Royal Chambers //   You are at the entrance to the royal chambers of the keep. A plush shag rug // covers the stone floor. Large candelabras hang from the ceiling, lighting the	-	+
+1794624709	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	west		The secret hallway //   You are in a small, torch lit hall. It leads from east to west. A large gold // door is to the west. To the east, you see a heavy stone door.	-	+
+1794624709	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	west		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1794624710	cmd	Alaric	57	2384	mahntor.are	standing	100	0	-	south		The Great Hall //   You are in a great hall. Huge torches light the room and their light shimmers // off the marble floor below you. To the north, you see a huge golden throne.	-	+
+1794624711	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	west		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624712	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	south		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624713	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794624713	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	west		The red is closed.	-	-
+1794624714	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624714	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	west		The red is closed.	-	-
+1794624715	laid	-	0	0	-	964	herb	35	a sprig of angelica	18105	icekeep.are	scatter
+1794624715	laid	-	0	0	-	965	component	69	a basilisks tongue	9542	newthalo.are	scatter
+1794624715	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794624716	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794624716	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	south		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1794624718	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624718	census	-	0	0	-	herbs=19/150 components=9/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=10 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=65 mobs_fought=4 secs=900
+1794624719	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624720	area	Alaric	57	25185	underdrk.are	mahntor.are	underdrk.are	51	down
+1794624720	cmd	Alaric	57	25185	underdrk.are	standing	100	0	-	down		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1794624721	cmd	Alaric	57	25151	underdrk.are	standing	100	0	-	down		The hole in the wall. //   There is a hole in the wall here and the corridor turns to the south.  There // is also a shaft leading upward.  There is no dust on the floor of the	-	+
+1794624723	cmd	Alaric	57	25151	underdrk.are	standing	100	0	-	scan		the minotaur guard                 -right above you. // the minotaur guard                 -right above you.	-	-
+1794624725	cmd	Alaric	57	25185	underdrk.are	standing	100	0	-	up		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1794624727	area	Alaric	57	2397	mahntor.are	underdrk.are	mahntor.are	7	up
+1794624727	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	up		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1794624728	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794624728	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794624729	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794624729	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	north		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624729	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624729	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794624730	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794624730	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794624730	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1794624730	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The gate is closed.	-	-
+1794624732	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	unlock	west	You lack the key.	-	-
+1794624734	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794624736	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	kill	gu	Your punch === OBLITERATES === the High Minotaur Guard! [-134] // Your punch ^^^ DESTROYS ^^^ the High Minotaur Guard! [-120] // Your punch === OBLITERATES === the High Minotaur Guard! [-123]	-	-
+1794624738	coin	Alaric	57	2380	mahntor.are	+100	loot	(violence_update)	corpse of the High Minotaur Guard	26227156026
+1794624738	coin	Alaric	57	2380	mahntor.are	+1	loot	(violence_update)	corpse of the High Minotaur Guard	26227156027
+1794624739	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794624743	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	look	i cor	Corpse of the High Minotaur Guard contains: //      a blue steel helm and visor //      a pair of blue steel greaves	-	+
+1794624744	cmd	Alaric	57	2381	mahntor.are	standing	100	3	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794624746	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	south		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624748	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	kill	gu	Your punch <<< ERADICATES >>> the Royal Minotaur Guard! [-169] // Your punch ^^^ DESTROYS ^^^ the Royal Minotaur Guard! [-98] // Your punch <<< ERADICATES >>> the Royal Minotaur Guard! [-189]	-	-
+1794624750	coin	Alaric	57	2382	mahntor.are	+100	loot	(violence_update)	corpse of the Royal Minotaur Guard	26227156127
+1794624750	coin	Alaric	57	2382	mahntor.are	+1	loot	(violence_update)	corpse of the Royal Minotaur Guard	26227156128
+1794624751	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794624753	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794624756	laid	-	0	0	-	968	herb	49	a pomegranate	18132	icekeep.are	scatter
+1794624756	laid	-	0	0	-	969	herb	34	an amaranth plant	18081	icekeep.are	scatter
+1794624759	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	south		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624762	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	kill	ri	Your punch *** DEVASTATES *** the Minotaur Ring-Keeper! [-65] // Your punch ^^^ DESTROYS ^^^ the Minotaur Ring-Keeper! [-90] // Your punch devastates the Minotaur Ring-Keeper! [-30]	-	-
+1794624772	coin	Alaric	57	2387	mahntor.are	+200	loot	(violence_update)	corpse of the Minotaur Ring-Keeper	26227156328
+1794624772	coin	Alaric	57	2387	mahntor.are	+3	loot	(violence_update)	corpse of the Minotaur Ring-Keeper	26227156331
+1794624772	coin	Alaric	57	2387	mahntor.are	+10000	loot	(violence_update)	corpse of the Minotaur Ring-Keeper	26227166331
+1794624772	got	Alaric	57	2387	mahntor.are	2382	a multi-colored key ring	container	27	50000000	get	corpse of the Minotaur Ring-Keeper
+1794624772	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	get	key cor	You get a multi-colored key ring from corpse of the Minotaur Ring-Keeper.	-	-
+1794624773	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624774	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794624774	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794624774	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794624774	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794624775	cmd	Alaric	57	2379	mahntor.are	standing	100	2	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1794624775	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The gate is closed.	-	-
+1794624776	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	unlock	west	You lack the key.	-	-
+1794624777	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794624778	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794624779	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	south		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624781	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	south		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624782	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794624785	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	unlock	west	You lack the key.	-	-
+1794624786	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794624787	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794624788	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	south		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1794624789	area	Alaric	57	25185	underdrk.are	mahntor.are	underdrk.are	62	down
+1794624789	cmd	Alaric	57	25185	underdrk.are	standing	100	0	-	down		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1794624791	coin	Alaric	57	25185	underdrk.are	+200	loot	kill	corpse of the minotaur guard	26227166531
+1794624791	coin	Alaric	57	25185	underdrk.are	+3	loot	kill	corpse of the minotaur guard	26227166534
+1794624791	coin	Alaric	57	25185	underdrk.are	+10000	loot	kill	corpse of the minotaur guard	26227176534
+1794624791	cmd	Alaric	57	25185	underdrk.are	standing	100	1	-	kill	m	Your punch === OBLITERATES === the minotaur guard! [-137] // Your punch >>> ANNIHILATES <<< the minotaur guard! [-210] // The minotaur guard is DEAD!!	-	+
+1794624796	cmd	Alaric	57	25185	underdrk.are	standing	100	0	-	look	i cor	Corpse of the minotaur guard contains: //      a battle axe	-	-
+1794624796	coin	Alaric	57	25185	underdrk.are	+200	loot	kill	corpse of the minotaur guard	26227176734
+1794624796	coin	Alaric	57	25185	underdrk.are	+3	loot	kill	corpse of the minotaur guard	26227176737
+1794624796	coin	Alaric	57	25185	underdrk.are	+10000	loot	kill	corpse of the minotaur guard	26227186737
+1794624796	cmd	Alaric	57	25185	underdrk.are	standing	100	1	-	kill	min	Your punch === OBLITERATES === the minotaur guard! [-139] // Your punch >>> ANNIHILATES <<< the minotaur guard! [-208] // The minotaur guard is DEAD!!	-	+
+1794624800	cmd	Alaric	57	25185	underdrk.are	standing	100	0	-	look	i cor	Corpse of the minotaur guard contains: //      a battle axe	-	-
+1794624802	area	Alaric	57	2397	mahntor.are	underdrk.are	mahntor.are	13	up
+1794624802	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	up		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1794624803	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794624804	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794624804	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794624805	cmd	Alaric	57	2387	mahntor.are	standing	100	1	-	north		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624805	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624806	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	south		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624806	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794624807	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624808	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624808	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794624809	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624809	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624810	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	south		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794624811	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624812	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624813	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	south		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1794624814	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624815	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624816	laid	-	0	0	-	973	herb	49	a pomegranate	24155	coven.are	scatter
+1794624816	laid	-	0	0	-	974	herb	45	a sarsaparilla vine	24124	coven.are	scatter
+1794624816	laid	-	0	0	-	975	component	67	a beholder's eye	4314	dresden.are	scatter
+1794624816	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794624817	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794624817	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794624817	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	north		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794624817	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624818	cmd	Alaric	57	2384	mahntor.are	standing	100	0	-	east		The Great Hall //   You are in a great hall. Huge torches light the room and their light shimmers // off the marble floor below you. To the north, you see a huge golden throne.	-	+
+1794624819	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	north		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1794624821	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	kill	gu	Your punch <<< ERADICATES >>> the Royal Minotaur Guard! [-159] // Your punch misses the Royal Minotaur Guard. [-0]	-	-
+1794624825	cmd	Alaric	57	2383	mahntor.are	fighting	100	0	fight	get	key cor	I see nothing like that in the cor.	-	-
+1794624826	coin	Alaric	57	2383	mahntor.are	+100	loot	(violence_update)	corpse of the Royal Minotaur Guard	26227186837
+1794624826	coin	Alaric	57	2383	mahntor.are	+1	loot	(violence_update)	corpse of the Royal Minotaur Guard	26227186838
+1794624826	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794624828	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	east		The secret hallway //   You are in a small, torch lit hall. It leads from east to west. A large gold // door is to the west. To the east, you see a heavy stone door.	-	+
+1794624829	cmd	Alaric	57	2386	mahntor.are	standing	100	0	-	east		Entry to the Royal Chambers //   You are at the entrance to the royal chambers of the keep. A plush shag rug // covers the stone floor. Large candelabras hang from the ceiling, lighting the	-	+
+1794624830	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	south		The Harem Room //   This appears to be the harem room of the Keep. Huge piles of furs and beds // fill the room. The lighting is dim, but the room is very warm. You can hear	-	+
+1794624831	cmd	Alaric	57	2396	mahntor.are	standing	100	0	-	east		The Master Bedroom //   This appears to be the master bedroom. A huge bed fills the rooms. Piles of // furs and other rich furnishings adorn the room. Candles are everywhere and	-	+
+1794624832	cmd	Alaric	57	2395	mahntor.are	standing	100	0	-	north		The main living room //   This room is decorated with sturdy stone furniture that is carved and gilded. // Large candles light the room. A thick rug covers the floor. Thick furs and	-	+
+1794624834	cmd	Alaric	57	2395	mahntor.are	standing	100	1	-	kill	bu	Your punch <<< ERADICATES >>> the Minotaur Butler! [-189] // Your punch <<< ERADICATES >>> the Minotaur Butler! [-187] // The Minotaur Butler is DEAD!!	-	+
+1794624839	cmd	Alaric	57	2395	mahntor.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794624840	cmd	Alaric	57	2395	mahntor.are	standing	100	0	-	look	i cor	Corpse of the Minotaur Butler contains: //      Nothing.	-	-
+1794624842	cmd	Alaric	57	2386	mahntor.are	standing	100	0	-	west		Entry to the Royal Chambers //   You are at the entrance to the royal chambers of the keep. A plush shag rug // covers the stone floor. Large candelabras hang from the ceiling, lighting the	-	+
+1794624843	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	west		The secret hallway //   You are in a small, torch lit hall. It leads from east to west. A large gold // door is to the west. To the east, you see a heavy stone door.	-	+
+1794624845	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	west		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1794624846	cmd	Alaric	57	2384	mahntor.are	standing	100	0	-	south		The Great Hall //   You are in a great hall. Huge torches light the room and their light shimmers // off the marble floor below you. To the north, you see a huge golden throne.	-	+
+1794624846	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	west		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794624847	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794624848	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794624849	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1794624850	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The gate is closed.	-	-
+1794624851	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794624855	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	open	west	It's locked.	-	-
+1794624855	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The gate is closed.	-	-
+1794624857	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	open	west	It's locked.	-	-
+1794624857	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The gate is closed.	-	-
