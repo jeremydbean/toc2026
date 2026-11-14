@@ -26495,3 +26495,13 @@
 1794628416	laid	-	0	0	-	1161	herb	50	a head of cabbage	7589	astral.are	scatter
 1794628416	laid	-	0	0	-	1162	herb	44	a sprig of aconite	7558	astral.are	scatter
 1794628416	laid	-	0	0	-	1163	component	87	a vial of grey ooze	9120	dylan.are	scatter
+1794628464	laid	-	0	0	-	1164	herb	50	a head of cabbage	9119	dylan.are	scatter
+1794628464	laid	-	0	0	-	1165	herb	49	a pomegranate	9111	dylan.are	scatter
+1794628464	laid	-	0	0	-	1166	component	60	a rakshasa's claw	25184	underdrk.are	scatter
+1794628520	laid	-	0	0	-	1167	herb	52	an asparagus shoot	9410	mobfact.are	scatter
+1794628520	laid	-	0	0	-	1168	herb	46	a juniper berry	9422	mobfact.are	scatter
+1794628520	laid	-	0	0	-	1169	component	76	a vial of dragons blood	309	plains.are	scatter
+1794628561	item	Alaric	57	2497	dresden.are	6502	a deep green key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
+1794628620	laid	-	0	0	-	1170	herb	41	a sprig of mistletoe	19139	rome.are	scatter
+1794628620	laid	-	0	0	-	1171	component	73	a roper's tentacle	29249	korzath2.are	scatter
+1794628759	laid	-	0	0	-	1172	component	76	a vial of dragons blood	116	smurf.are	scatter
