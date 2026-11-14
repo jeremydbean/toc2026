@@ -296336,3 +296336,5 @@ Sat Nov 14 00:33:23 2026 :: Connection guard: 52.15.147.27 closed without a word
 Sat Nov 14 00:36:57 2026 :: Connection guard: last hour 17 closed without a word, 3 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
 Sat Nov 14 00:37:21 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 00:38:28 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 4 refused in all, pause 1 this week, 86 minutes left).
+Sat Nov 14 00:43:18 2026 :: Cartographer: left room 4037 (The foothills path, moria.are) (his visit is over).
+Sat Nov 14 00:43:33 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 2 of 6 in 6 hours).
