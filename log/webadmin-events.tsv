@@ -4979,3 +4979,4 @@
 1794626384	wizinfo	60	Black market: the dealer appeared in room 2577 (Inside Southeast Watchtower., limbo.are) with 5 items (stock 1794626384), for 24 minutes.
 1794626781	wizinfo	60	Cartographer: appeared in room 5744 (Poor Alley, mid_ruin.are) (level 21).
 1794627417	wizinfo	60	Connection guard: last hour 18 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+1794627674	wizinfo	60	Connection guard: 178.156.189.113 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.189.113 lifts it.
