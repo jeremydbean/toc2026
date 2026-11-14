@@ -26629,3 +26629,12 @@
 1794634774	laid	-	0	0	-	1278	component	72	a minotaur's ear	2207	draconia.are	scatter
 1794635293	laid	-	0	0	-	1279	component	85	a vial of crushed tarrasque scale	9370	galaxy.are	scatter
 1794635344	laid	-	0	0	-	1280	component	62	a nightmare's hoof clipping	10284	tritia.are	scatter
+1794635402	laid	-	0	0	-	1281	component	70	a dragon tooth	3804	ratslair.are	scatter
+1794635465	laid	-	0	0	-	1282	component	59	a patch of lycanthrope fur	13278	solace.are	scatter
+1794635518	census	-	0	0	-	herbs=150/150 components=91/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=6 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794635536	laid	-	0	0	-	1283	component	68	a gorgon's horn	20112	prison.are	scatter
+1794635603	laid	-	0	0	-	1284	component	58	some pixie dust	2919	firenewt.are	scatter
+1794635655	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3050	(char_update)
+1794635656	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	1	(game loop)
+1794635656	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794635656	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 1881 platinum, 88 gold, 83 silver, 74 copper // and 252749 experience (39551 exp to level).	-	-
