@@ -301160,3 +301160,279 @@ Sat Nov 14 17:13:35 2026 :: Connection guard: 54.167.223.174 closed without a wo
 Sat Nov 14 17:18:41 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 4 of 6 in 6 hours).
 Sat Nov 14 17:18:50 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 17:19:33 2026 :: Treasure goblin: vanished from room 1447 (The end of the corridor, htower.are) (too long in one area).
+Sat Nov 14 17:22:20 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Nov 14 17:22:20 2026 :: Loading Alaric's playerfile
+Sat Nov 14 17:22:21 2026 :: Loading Alaric's playerfile
+Sat Nov 14 17:22:21 2026 :: Alaric@208.126.22.104 has connected.
+Sat Nov 14 17:22:21 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 0
+Sat Nov 14 17:22:21 2026 :: Login fix 20261114-season-area-ids (holiday areas recorded under the copy's name) applied to Alaric.
+Sat Nov 14 17:22:24 2026 :: Log Alaric [2497]: who
+Sat Nov 14 17:22:24 2026 :: Log Alaric [2497]: wake
+Sat Nov 14 17:22:25 2026 :: Log Alaric [2497]: l
+Sat Nov 14 17:22:26 2026 :: Log Alaric [2497]: aq re
+Sat Nov 14 17:22:26 2026 :: Log Alaric [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in voyage.are, 20 minutes, ordinary
+Sat Nov 14 17:22:31 2026 :: Log Alaric [2497]: levi
+Sat Nov 14 17:22:35 2026 :: Log Alaric [2497]: enter door
+Sat Nov 14 17:22:35 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 17:22:35 2026 :: Log Alaric [2401]: east
+Sat Nov 14 17:22:35 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2403]: east
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2420]: east
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2421]: east
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2422]: east
+Sat Nov 14 17:22:36 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Nov 14 17:22:37 2026 :: Log Alaric [2423]: east
+Sat Nov 14 17:22:37 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Nov 14 17:22:37 2026 :: Log Alaric [2424]: east
+Sat Nov 14 17:22:37 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Nov 14 17:22:37 2026 :: Log Alaric [2425]: east
+Sat Nov 14 17:22:37 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Nov 14 17:22:37 2026 :: Log Alaric [2426]: open east
+Sat Nov 14 17:22:38 2026 :: Log Alaric [2426]: east
+Sat Nov 14 17:22:38 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Nov 14 17:22:38 2026 :: Log Alaric [2440]: east
+Sat Nov 14 17:22:38 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Nov 14 17:22:38 2026 :: Log Alaric [3503]: east
+Sat Nov 14 17:22:38 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Nov 14 17:22:38 2026 :: Log Alaric [3502]: east
+Sat Nov 14 17:22:38 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3525]: east
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3526]: east
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3527]: east
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3528]: east
+Sat Nov 14 17:22:39 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sat Nov 14 17:22:40 2026 :: Log Alaric [3529]: east
+Sat Nov 14 17:22:40 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Nov 14 17:22:40 2026 :: Log Alaric [3530]: east
+Sat Nov 14 17:22:40 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Nov 14 17:22:40 2026 :: Log Alaric [3531]: east
+Sat Nov 14 17:22:40 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Nov 14 17:22:40 2026 :: Log Alaric [3532]: east
+Sat Nov 14 17:22:40 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Nov 14 17:22:41 2026 :: Log Alaric [42]: east
+Sat Nov 14 17:22:41 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Nov 14 17:22:41 2026 :: Log Alaric [9669]: east
+Sat Nov 14 17:22:41 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Nov 14 17:22:41 2026 :: Log Alaric [9523]: east
+Sat Nov 14 17:22:41 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sat Nov 14 17:22:41 2026 :: Log Alaric [9524]: east
+Sat Nov 14 17:22:41 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9525]: east
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9526]: east
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9509]: east
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9506]: east
+Sat Nov 14 17:22:42 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9506
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9517]: east
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9517
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9527]: east
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9527
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9528]: east
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9529]: east
+Sat Nov 14 17:22:43 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
+Sat Nov 14 17:22:44 2026 :: Log Alaric [9530]: east
+Sat Nov 14 17:22:44 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sat Nov 14 17:22:44 2026 :: Log Alaric [9531]: open east
+Sat Nov 14 17:22:44 2026 :: Log Alaric [9531]: east
+Sat Nov 14 17:22:44 2026 :: Log Alaric [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Sat Nov 14 17:22:44 2026 :: Log Alaric [9668]: east
+Sat Nov 14 17:22:44 2026 :: Log Alaric [9790]: arrived (On a road) from 9668
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9790]: east
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9791]: arrived (On a road) from 9790
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9791]: east
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9792]: arrived (On a road) from 9791
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9792]: east
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9793]: arrived (On a road) from 9792
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9793]: east
+Sat Nov 14 17:22:45 2026 :: Log Alaric [9794]: arrived (Near the shore) from 9793
+Sat Nov 14 17:22:46 2026 :: Log Alaric [9794]: north
+Sat Nov 14 17:22:46 2026 :: Log Alaric [41]: arrived (The new pier) from 9794
+Sat Nov 14 17:22:46 2026 :: Log Alaric [41]: east
+Sat Nov 14 17:22:46 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 41
+Sat Nov 14 17:22:47 2026 :: Log Alaric [29350]: e
+Sat Nov 14 17:22:47 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:22:48 2026 :: Log Alaric [29351]: ex
+Sat Nov 14 17:22:50 2026 :: Log Alaric [29351]: e
+Sat Nov 14 17:22:50 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:22:51 2026 :: Log Alaric [29352]: ex
+Sat Nov 14 17:22:53 2026 :: Log Alaric [29352]: ne
+Sat Nov 14 17:22:53 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:22:53 2026 :: Log Alaric [29353]: ex
+Sat Nov 14 17:22:56 2026 :: Log Alaric [29353]: ne
+Sat Nov 14 17:22:56 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:22:57 2026 :: Log Alaric [29354]: ex
+Sat Nov 14 17:22:59 2026 :: Log Alaric [29354]: e
+Sat Nov 14 17:22:59 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:23:03 2026 :: Log Alaric [29380]: recal
+Sat Nov 14 17:23:04 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:23:05 2026 :: Log Alaric [29350]: e
+Sat Nov 14 17:23:05 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:23:05 2026 :: Log Alaric [29351]: e
+Sat Nov 14 17:23:05 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:23:07 2026 :: Log Alaric [29352]: ne
+Sat Nov 14 17:23:07 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:23:07 2026 :: Log Alaric [29353]: ne
+Sat Nov 14 17:23:07 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:23:10 2026 :: Log Alaric [29354]: ex
+Sat Nov 14 17:23:11 2026 :: Log Alaric [29354]: n
+Sat Nov 14 17:23:17 2026 :: Log Alaric [29354]: s
+Sat Nov 14 17:23:17 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:23:21 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:23:22 2026 :: Log Alaric [29350]: e
+Sat Nov 14 17:23:22 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:23:22 2026 :: Log Alaric [29351]: e
+Sat Nov 14 17:23:22 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:23:24 2026 :: Log Alaric [29352]: ne
+Sat Nov 14 17:23:24 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:23:24 2026 :: Log Alaric [29353]: ne
+Sat Nov 14 17:23:24 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:23:24 2026 :: Log Alaric [29354]: se
+Sat Nov 14 17:23:24 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:23:26 2026 :: Log Alaric [29355]: ex
+Sat Nov 14 17:23:28 2026 :: Log Alaric [29355]: e
+Sat Nov 14 17:23:28 2026 :: Log Alaric [29356]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:23:30 2026 :: Log Alaric [29356]: ex
+Sat Nov 14 17:23:33 2026 :: Log Alaric [29356]: e
+Sat Nov 14 17:23:33 2026 :: Log Alaric [29357]: arrived (Across the Sea) from 29356
+Sat Nov 14 17:23:35 2026 :: Log Alaric [29357]: scan
+Sat Nov 14 17:23:36 2026 :: Log Alaric [29357]: n
+Sat Nov 14 17:23:36 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29357
+Sat Nov 14 17:23:41 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:23:42 2026 :: Log Alaric [29350]: e
+Sat Nov 14 17:23:42 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:23:42 2026 :: Log Alaric [29351]: e
+Sat Nov 14 17:23:42 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:23:42 2026 :: Log Alaric [29352]: e
+Sat Nov 14 17:23:43 2026 :: Log Alaric [29352]: ne
+Sat Nov 14 17:23:43 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:23:43 2026 :: Log Alaric [29353]: ne
+Sat Nov 14 17:23:43 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:23:44 2026 :: Log Alaric [29354]: se
+Sat Nov 14 17:23:44 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:23:45 2026 :: Log Alaric [29355]: e
+Sat Nov 14 17:23:45 2026 :: Log Alaric [29356]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:23:45 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 14 17:23:45 2026 :: Log Alaric [29356]: ex
+Sat Nov 14 17:23:46 2026 :: Log Alaric [29356]: scan
+Sat Nov 14 17:23:47 2026 :: Log Alaric [29356]: e
+Sat Nov 14 17:23:47 2026 :: Log Alaric [29357]: arrived (Across the Sea) from 29356
+Sat Nov 14 17:23:48 2026 :: Log Alaric [29357]: scan
+Sat Nov 14 17:23:50 2026 :: Log Alaric [29357]: se
+Sat Nov 14 17:23:50 2026 :: Log Alaric [29358]: arrived (Across the Sea) from 29357
+Sat Nov 14 17:23:52 2026 :: Log Alaric [29358]: scan
+Sat Nov 14 17:23:54 2026 :: Log Alaric [29358]: ne
+Sat Nov 14 17:23:54 2026 :: Log Alaric [29359]: arrived (Across the Sea) from 29358
+Sat Nov 14 17:23:55 2026 :: Log Alaric [29359]: sw
+Sat Nov 14 17:23:55 2026 :: Log Alaric [29374]: arrived (Across the Sea) from 29359
+Sat Nov 14 17:23:56 2026 :: Log Alaric [29374]: nw
+Sat Nov 14 17:23:56 2026 :: Log Alaric [29375]: arrived (Across the Sea) from 29374
+Sat Nov 14 17:23:58 2026 :: Log Alaric [29375]: scan
+Sat Nov 14 17:23:59 2026 :: Log Alaric [29375]: w
+Sat Nov 14 17:23:59 2026 :: Log Alaric [29376]: arrived (Across the Sea) from 29375
+Sat Nov 14 17:24:01 2026 :: Log Alaric [29376]: scan
+Sat Nov 14 17:24:02 2026 :: Log Alaric [29376]: e
+Sat Nov 14 17:24:02 2026 :: Log Alaric [29357]: arrived (Across the Sea) from 29376
+Sat Nov 14 17:24:03 2026 :: Log Alaric [29357]: scan
+Sat Nov 14 17:24:06 2026 :: Log Alaric [29357]: se
+Sat Nov 14 17:24:06 2026 :: Log Alaric [29358]: arrived (Across the Sea) from 29357
+Sat Nov 14 17:24:06 2026 :: Log Alaric [29358]: scan
+Sat Nov 14 17:24:09 2026 :: Log Alaric [29358]: ne
+Sat Nov 14 17:24:09 2026 :: Log Alaric [29359]: arrived (Across the Sea) from 29358
+Sat Nov 14 17:24:10 2026 :: Log Alaric [29359]: scan
+Sat Nov 14 17:24:12 2026 :: Log Alaric [29359]: n
+Sat Nov 14 17:24:12 2026 :: Log Alaric [29360]: arrived (Across the Sea) from 29359
+Sat Nov 14 17:24:14 2026 :: Log Alaric [29360]: scan
+Sat Nov 14 17:24:16 2026 :: Log Alaric [29360]: ne
+Sat Nov 14 17:24:16 2026 :: Log Alaric [29361]: arrived (Across the Sea) from 29360
+Sat Nov 14 17:24:18 2026 :: Log Alaric [29361]: scan
+Sat Nov 14 17:24:21 2026 :: Log Alaric [29361]: ex
+Sat Nov 14 17:24:25 2026 :: Log Alaric [29361]: w
+Sat Nov 14 17:24:25 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29361
+Sat Nov 14 17:24:29 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:24:35 2026 :: Log Alaric [29350]: l
+Sat Nov 14 17:24:36 2026 :: Log Alaric [29350]: e
+Sat Nov 14 17:24:36 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:24:37 2026 :: Log Alaric [29351]: e
+Sat Nov 14 17:24:37 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:24:39 2026 :: Log Alaric [29352]: ne
+Sat Nov 14 17:24:39 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:24:40 2026 :: Log Alaric [29353]: ne
+Sat Nov 14 17:24:40 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:24:43 2026 :: Log Alaric [29354]: se
+Sat Nov 14 17:24:43 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:24:44 2026 :: Log Alaric [29355]: se
+Sat Nov 14 17:24:44 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:24:49 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:24:50 2026 :: Log Alaric [29350]: e
+Sat Nov 14 17:24:50 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:24:50 2026 :: Log Alaric [29351]: e
+Sat Nov 14 17:24:50 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:24:51 2026 :: Log Alaric [29352]: ne
+Sat Nov 14 17:24:51 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:24:53 2026 :: Log Alaric [29353]: s
+Sat Nov 14 17:24:53 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:24:57 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:24:59 2026 :: Log Alaric [29350]: e
+Sat Nov 14 17:24:59 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:25:00 2026 :: Log Alaric [29351]: e
+Sat Nov 14 17:25:00 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:25:00 2026 :: Log Alaric [29352]: ne
+Sat Nov 14 17:25:00 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:25:00 2026 :: Log Alaric [29353]: ne
+Sat Nov 14 17:25:00 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:25:01 2026 :: Log Alaric [29354]: se
+Sat Nov 14 17:25:01 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:25:02 2026 :: Log Alaric [29355]: e
+Sat Nov 14 17:25:02 2026 :: Log Alaric [29356]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:25:06 2026 :: Log Alaric [29356]: se
+Sat Nov 14 17:25:06 2026 :: Log Alaric [29380]: arrived (Across the Sea) from 29356
+Sat Nov 14 17:25:10 2026 :: Log Alaric [29350]: arrived (Dock before the Sea) from 29380
+Sat Nov 14 17:25:12 2026 :: Log Alaric [29350]: east
+Sat Nov 14 17:25:12 2026 :: Log Alaric [29351]: arrived (Along the Dock) from 29350
+Sat Nov 14 17:25:13 2026 :: Log Alaric [29351]: east
+Sat Nov 14 17:25:13 2026 :: Log Alaric [29352]: arrived (Rope bridge to the ship) from 29351
+Sat Nov 14 17:25:13 2026 :: Log Alaric [29352]: northeast
+Sat Nov 14 17:25:13 2026 :: Log Alaric [29353]: arrived (Across the Sea) from 29352
+Sat Nov 14 17:25:16 2026 :: Log Alaric [29353]: northeast
+Sat Nov 14 17:25:16 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29353
+Sat Nov 14 17:25:16 2026 :: Log Alaric [29354]: southwest
+Sat Nov 14 17:25:16 2026 :: Log Alaric [29379]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:25:20 2026 :: Log Alaric [29379]: northeast
+Sat Nov 14 17:25:20 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29379
+Sat Nov 14 17:25:20 2026 :: Log Alaric [29354]: southeast
+Sat Nov 14 17:25:20 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:25:24 2026 :: Log Alaric [29355]: northwest
+Sat Nov 14 17:25:24 2026 :: Log Alaric [29378]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:25:25 2026 :: Log Alaric [29378]: southwest
+Sat Nov 14 17:25:25 2026 :: Log Alaric [29379]: arrived (Across the Sea) from 29378
+Sat Nov 14 17:25:25 2026 :: Log Alaric [29379]: northeast
+Sat Nov 14 17:25:25 2026 :: Log Alaric [29354]: arrived (Across the Sea) from 29379
+Sat Nov 14 17:25:27 2026 :: Log Alaric [29354]: southeast
+Sat Nov 14 17:25:27 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29354
+Sat Nov 14 17:25:27 2026 :: Log Alaric [29355]: northwest
+Sat Nov 14 17:25:27 2026 :: Log Alaric [29378]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:25:31 2026 :: Log Alaric [29378]: southeast
+Sat Nov 14 17:25:31 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29378
+Sat Nov 14 17:25:32 2026 :: Log Alaric [29355]: east
+Sat Nov 14 17:25:32 2026 :: Log Alaric [29356]: arrived (Across the Sea) from 29355
+Sat Nov 14 17:25:32 2026 :: Log Alaric [29356]: east
+Sat Nov 14 17:25:32 2026 :: Log Alaric [29357]: arrived (Across the Sea) from 29356
+Sat Nov 14 17:25:32 2026 :: Log Alaric [29357]: west
+Sat Nov 14 17:25:32 2026 :: Log Alaric [29376]: arrived (Across the Sea) from 29357
+Sat Nov 14 17:25:35 2026 :: Log Alaric [29376]: west
+Sat Nov 14 17:25:35 2026 :: Log Alaric [29377]: arrived (Across the Sea) from 29376
+Sat Nov 14 17:25:35 2026 :: Log Alaric [29377]: northwest
+Sat Nov 14 17:25:35 2026 :: Log Alaric [29378]: arrived (Across the Sea) from 29377
+Sat Nov 14 17:25:35 2026 :: Log Alaric [29378]: southeast
+Sat Nov 14 17:25:35 2026 :: Log Alaric [29355]: arrived (Across the Sea) from 29378
+Sat Nov 14 17:25:39 2026 :: Log Alaric [29355]: east
+Sat Nov 14 17:25:39 2026 :: Log Alaric [29356]: arrived (Across the Sea) from 29355
