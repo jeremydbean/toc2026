@@ -298336,3 +298336,459 @@ Sat Nov 14 13:25:13 2026 :: Log Trentlin [5203]: arrived (A Garden Path) from 52
 Sat Nov 14 13:25:14 2026 :: Log Trentlin [5203]: e
 Sat Nov 14 13:25:14 2026 :: Log Trentlin [5202]: arrived (Main Street) from 5203
 Sat Nov 14 13:25:16 2026 :: Log Trentlin [5202]: ex
+Sat Nov 14 13:25:17 2026 :: Log Trentlin [5202]: n
+Sat Nov 14 13:25:17 2026 :: Log Trentlin [5236]: arrived (A collapsed home) from 5202
+Sat Nov 14 13:25:19 2026 :: Log Trentlin [5236]: s
+Sat Nov 14 13:25:19 2026 :: Log Trentlin [5202]: arrived (Main Street) from 5236
+Sat Nov 14 13:25:19 2026 :: Log Trentlin [5202]: s
+Sat Nov 14 13:25:19 2026 :: Log Trentlin [5232]: arrived (The city hall) from 5202
+Sat Nov 14 13:25:21 2026 :: Log Trentlin [5232]: n
+Sat Nov 14 13:25:21 2026 :: Log Trentlin [5202]: arrived (Main Street) from 5232
+Sat Nov 14 13:25:24 2026 :: Log Trentlin [5202]: w
+Sat Nov 14 13:25:24 2026 :: Log Trentlin [5203]: arrived (A Garden Path) from 5202
+Sat Nov 14 13:25:24 2026 :: Log Trentlin [5203]: n
+Sat Nov 14 13:25:24 2026 :: Log Trentlin [5204]: arrived (A Garden Path) from 5203
+Sat Nov 14 13:25:25 2026 :: Log Trentlin [5204]: w
+Sat Nov 14 13:25:25 2026 :: Log Trentlin [5205]: arrived (A Garden Path) from 5204
+Sat Nov 14 13:25:27 2026 :: Log Trentlin [5205]: s
+Sat Nov 14 13:25:27 2026 :: Log Trentlin [5250]: arrived (The Temple of Thalos) from 5205
+Sat Nov 14 13:25:27 2026 :: Log Trentlin [5250]: s
+Sat Nov 14 13:25:28 2026 :: Log Trentlin [5250]: e
+Sat Nov 14 13:25:28 2026 :: Log Trentlin [5203]: arrived (A Garden Path) from 5250
+Sat Nov 14 13:25:30 2026 :: Log Trentlin [5203]: s
+Sat Nov 14 13:25:30 2026 :: Log Trentlin [5206]: arrived (A Garden Path) from 5203
+Sat Nov 14 13:25:31 2026 :: Log Trentlin [5206]: s
+Sat Nov 14 13:25:31 2026 :: Log Trentlin [5212]: arrived (A side street) from 5206
+Sat Nov 14 13:25:32 2026 :: Log Trentlin [5212]: w
+Sat Nov 14 13:25:32 2026 :: Log Trentlin [5221]: arrived (The smithy) from 5212
+Sat Nov 14 13:25:34 2026 :: Log Trentlin [5221]: e
+Sat Nov 14 13:25:34 2026 :: Log Trentlin [5212]: arrived (A side street) from 5221
+Sat Nov 14 13:25:34 2026 :: Log Trentlin [5212]: s
+Sat Nov 14 13:25:34 2026 :: Log Trentlin [5213]: arrived (A side street) from 5212
+Sat Nov 14 13:25:35 2026 :: Log Trentlin [5213]: s
+Sat Nov 14 13:25:35 2026 :: Log Trentlin [5214]: arrived (A side street) from 5213
+Sat Nov 14 13:25:35 2026 :: Log Trentlin [5214]: w
+Sat Nov 14 13:25:35 2026 :: Log Trentlin [5218]: arrived (A back alley) from 5214
+Sat Nov 14 13:25:36 2026 :: Log Trentlin [5218]: w
+Sat Nov 14 13:25:36 2026 :: Log Trentlin [5215]: arrived (Under a ruined watchtower) from 5218
+Sat Nov 14 13:25:37 2026 :: Log Trentlin [5215]: n
+Sat Nov 14 13:25:37 2026 :: Log Trentlin [5216]: arrived (A back alley) from 5215
+Sat Nov 14 13:25:39 2026 :: Log Trentlin [5216]: n
+Sat Nov 14 13:25:39 2026 :: Log Trentlin [5217]: arrived (The meat stand) from 5216
+Sat Nov 14 13:25:40 2026 :: Log Trentlin [5217]: e
+Sat Nov 14 13:25:40 2026 :: Log Trentlin [5220]: arrived (The produce stand) from 5217
+Sat Nov 14 13:25:42 2026 :: Log Trentlin [5220]: w
+Sat Nov 14 13:25:42 2026 :: Log Trentlin [5217]: arrived (The meat stand) from 5220
+Sat Nov 14 13:25:43 2026 :: Log Trentlin [5217]: n
+Sat Nov 14 13:25:43 2026 :: Log Trentlin [5208]: arrived (The market place) from 5217
+Sat Nov 14 13:25:44 2026 :: Log Trentlin [5208]: n
+Sat Nov 14 13:25:44 2026 :: Log Trentlin [5222]: arrived (The tapestry stand) from 5208
+Sat Nov 14 13:25:44 2026 :: Log Trentlin [5222]: n
+Sat Nov 14 13:25:44 2026 :: Log Trentlin [5223]: arrived (A back alley) from 5222
+Sat Nov 14 13:25:45 2026 :: Log Trentlin [5223]: s
+Sat Nov 14 13:25:45 2026 :: Log Trentlin [5222]: arrived (The tapestry stand) from 5223
+Sat Nov 14 13:25:46 2026 :: Log Trentlin [5222]: e
+Sat Nov 14 13:25:46 2026 :: Log Trentlin [5225]: arrived (The jewelery stand) from 5222
+Sat Nov 14 13:25:46 2026 :: Log Trentlin [5225]: affects off: steel fist
+Sat Nov 14 13:25:48 2026 :: Log Trentlin [5225]: w
+Sat Nov 14 13:25:48 2026 :: Log Trentlin [5222]: arrived (The tapestry stand) from 5225
+Sat Nov 14 13:25:49 2026 :: Log Trentlin [5222]: n
+Sat Nov 14 13:25:49 2026 :: Log Trentlin [5223]: arrived (A back alley) from 5222
+Sat Nov 14 13:25:49 2026 :: Log Trentlin [5223]: n
+Sat Nov 14 13:25:49 2026 :: Log Trentlin [5224]: arrived (Under the watchtower) from 5223
+Sat Nov 14 13:25:50 2026 :: Log Trentlin [5224]: e
+Sat Nov 14 13:25:50 2026 :: Log Trentlin [5228]: arrived (A back alley) from 5224
+Sat Nov 14 13:25:51 2026 :: Log Trentlin [5228]: e
+Sat Nov 14 13:25:51 2026 :: Log Trentlin [5209]: arrived (A Side Street) from 5228
+Sat Nov 14 13:25:52 2026 :: Log Trentlin [5209]: s
+Sat Nov 14 13:25:52 2026 :: Log Trentlin [5210]: arrived (A Side Street) from 5209
+Sat Nov 14 13:25:54 2026 :: Log Trentlin [5210]: ex
+Sat Nov 14 13:25:56 2026 :: Log Trentlin [5210]: n
+Sat Nov 14 13:25:56 2026 :: Log Trentlin [5209]: arrived (A Side Street) from 5210
+Sat Nov 14 13:25:57 2026 :: Log Trentlin [5209]: e
+Sat Nov 14 13:25:57 2026 :: Log Trentlin [5243]: arrived (A back alley) from 5209
+Sat Nov 14 13:25:58 2026 :: Log Trentlin [5243]: ex
+Sat Nov 14 13:26:01 2026 :: Log Trentlin [5243]: e
+Sat Nov 14 13:26:01 2026 :: Log Trentlin [5241]: arrived (Under a watchtower) from 5243
+Sat Nov 14 13:26:16 2026 :: Log Trentlin [5241]: west
+Sat Nov 14 13:26:16 2026 :: Log Trentlin [5243]: arrived (A back alley) from 5241
+Sat Nov 14 13:26:16 2026 :: Log Trentlin [5243]: west
+Sat Nov 14 13:26:16 2026 :: Log Trentlin [5209]: arrived (A Side Street) from 5243
+Sat Nov 14 13:26:16 2026 :: Log Trentlin [5209]: west
+Sat Nov 14 13:26:16 2026 :: Log Trentlin [5228]: arrived (A back alley) from 5209
+Sat Nov 14 13:26:17 2026 :: Log Trentlin [5228]: west
+Sat Nov 14 13:26:17 2026 :: Log Trentlin [5224]: arrived (Under the watchtower) from 5228
+Sat Nov 14 13:26:17 2026 :: Log Trentlin [5224]: south
+Sat Nov 14 13:26:17 2026 :: Log Trentlin [5223]: arrived (A back alley) from 5224
+Sat Nov 14 13:26:17 2026 :: Log Trentlin [5223]: south
+Sat Nov 14 13:26:17 2026 :: Log Trentlin [5222]: arrived (The tapestry stand) from 5223
+Sat Nov 14 13:26:18 2026 :: Log Trentlin [5222]: east
+Sat Nov 14 13:26:18 2026 :: Log Trentlin [5225]: arrived (The jewelery stand) from 5222
+Sat Nov 14 13:26:18 2026 :: Log Trentlin [5225]: south
+Sat Nov 14 13:26:18 2026 :: Log Trentlin [5207]: arrived (The market place) from 5225
+Sat Nov 14 13:26:42 2026 :: Log Trentlin [5207]: north
+Sat Nov 14 13:26:42 2026 :: Log Trentlin [5225]: arrived (The jewelery stand) from 5207
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5225]: west
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5222]: arrived (The tapestry stand) from 5225
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5222]: north
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5223]: arrived (A back alley) from 5222
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5223]: north
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5224]: arrived (Under the watchtower) from 5223
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5224]: east
+Sat Nov 14 13:26:43 2026 :: Log Trentlin [5228]: arrived (A back alley) from 5224
+Sat Nov 14 13:26:44 2026 :: Log Trentlin [5228]: east
+Sat Nov 14 13:26:44 2026 :: Log Trentlin [5209]: arrived (A Side Street) from 5228
+Sat Nov 14 13:26:44 2026 :: Log Trentlin [5209]: south
+Sat Nov 14 13:26:44 2026 :: Log Trentlin [5210]: arrived (A Side Street) from 5209
+Sat Nov 14 13:26:44 2026 :: Log Trentlin [5210]: east
+Sat Nov 14 13:26:44 2026 :: Log Trentlin [5244]: arrived (An upright house) from 5210
+Sat Nov 14 13:26:53 2026 :: Log Trentlin [5244]: e
+Sat Nov 14 13:26:53 2026 :: Log Trentlin [5242]: arrived (A bath house) from 5244
+Sat Nov 14 13:26:54 2026 :: Log Trentlin [5242]: ex
+Sat Nov 14 13:26:55 2026 :: Log Trentlin [5242]: w
+Sat Nov 14 13:26:55 2026 :: Log Trentlin [5244]: arrived (An upright house) from 5242
+Sat Nov 14 13:26:56 2026 :: Log Trentlin [5244]: w
+Sat Nov 14 13:26:56 2026 :: Log Trentlin [5210]: arrived (A Side Street) from 5244
+Sat Nov 14 13:26:57 2026 :: Log Trentlin [5210]: w
+Sat Nov 14 13:26:57 2026 :: Log Trentlin [5226]: arrived (A ruined clay dwelling) from 5210
+Sat Nov 14 13:27:00 2026 :: Log Trentlin [5226]: e
+Sat Nov 14 13:27:00 2026 :: Log Trentlin [5210]: arrived (A Side Street) from 5226
+Sat Nov 14 13:27:02 2026 :: Log Trentlin [5210]: n
+Sat Nov 14 13:27:02 2026 :: Log Trentlin [5209]: arrived (A Side Street) from 5210
+Sat Nov 14 13:27:03 2026 :: Log Trentlin [5209]: w
+Sat Nov 14 13:27:03 2026 :: Log Trentlin [5228]: arrived (A back alley) from 5209
+Sat Nov 14 13:27:06 2026 :: Log Trentlin [5228]: e
+Sat Nov 14 13:27:06 2026 :: Log Trentlin [5209]: arrived (A Side Street) from 5228
+Sat Nov 14 13:27:15 2026 :: Log Trentlin [5209]: s
+Sat Nov 14 13:27:15 2026 :: Log Trentlin [5210]: arrived (A Side Street) from 5209
+Sat Nov 14 13:27:16 2026 :: Log Trentlin [5210]: w
+Sat Nov 14 13:27:16 2026 :: Log Trentlin [5226]: arrived (A ruined clay dwelling) from 5210
+Sat Nov 14 13:27:17 2026 :: Log Trentlin [5226]: w
+Sat Nov 14 13:27:27 2026 :: Log Trentlin [5226]: e
+Sat Nov 14 13:27:27 2026 :: Log Trentlin [5210]: arrived (A Side Street) from 5226
+Sat Nov 14 13:27:28 2026 :: Log Trentlin [5210]: s
+Sat Nov 14 13:27:28 2026 :: Log Trentlin [5211]: arrived (A Side Street) from 5210
+Sat Nov 14 13:27:29 2026 :: Log Trentlin [5211]: w
+Sat Nov 14 13:27:29 2026 :: Log Trentlin [5227]: arrived (A collapsed stone dwelling) from 5211
+Sat Nov 14 13:27:30 2026 :: Log Trentlin [5227]: get all
+Sat Nov 14 13:27:32 2026 :: Log Trentlin [5227]: reca
+Sat Nov 14 13:27:32 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 5227
+Sat Nov 14 13:27:32 2026 :: Log Trentlin [4207]: w
+Sat Nov 14 13:27:32 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Nov 14 13:27:37 2026 :: Log Trentlin [4208]: heal refres
+Sat Nov 14 13:27:37 2026 :: Log Trentlin [4208]: gold -70
+Sat Nov 14 13:27:41 2026 :: Log Trentlin [4208]: e
+Sat Nov 14 13:27:41 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sat Nov 14 13:27:41 2026 :: Log Trentlin [4207]: e
+Sat Nov 14 13:27:41 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov 14 13:27:41 2026 :: Log Trentlin [4202]: e
+Sat Nov 14 13:27:41 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Nov 14 13:27:42 2026 :: Log Trentlin [4201]: e
+Sat Nov 14 13:27:42 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sat Nov 14 13:27:42 2026 :: Log Trentlin [2427]: e
+Sat Nov 14 13:27:42 2026 :: Log Trentlin [2427]: n
+Sat Nov 14 13:27:42 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Nov 14 13:27:42 2026 :: Log Trentlin [2404]: n
+Sat Nov 14 13:27:42 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2401]: u
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2410]: u
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2411]: u
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2414]: u
+Sat Nov 14 13:27:43 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Sat Nov 14 13:27:44 2026 :: Log Trentlin [2497]: aquest complete
+Sat Nov 14 13:27:44 2026 :: Log Trentlin [2497]: copper +6122400
+Sat Nov 14 13:27:44 2026 :: Log Trentlin [2497]: quest complete: 6p 12g 24s, 38 quest points (streak bonus 10%)
+Sat Nov 14 13:27:44 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261114_132744.quest (PRESTORE Trentlin to see it).
+Sat Nov 14 13:27:49 2026 :: Log Trentlin [2497]: aquest gamble no
+Sat Nov 14 13:27:53 2026 :: Log Trentlin [2497]: enter door
+Sat Nov 14 13:27:53 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 13:27:57 2026 :: Log Trentlin [2401]: levitate
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2401]: east
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2403]: east
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2420]: east
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2421]: east
+Sat Nov 14 13:28:01 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2422]: east
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2423]: east
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2424]: east
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2425]: east
+Sat Nov 14 13:28:02 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Nov 14 13:28:03 2026 :: Log Trentlin [2426]: open east
+Sat Nov 14 13:28:03 2026 :: Log Trentlin [2426]: east
+Sat Nov 14 13:28:03 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Nov 14 13:28:03 2026 :: Log Trentlin [2440]: east
+Sat Nov 14 13:28:03 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Sat Nov 14 13:28:04 2026 :: Log Trentlin [3503]: east
+Sat Nov 14 13:28:04 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Sat Nov 14 13:28:04 2026 :: Log Trentlin [3502]: east
+Sat Nov 14 13:28:04 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3525]: east
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3526]: east
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3527]: east
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3528]: east
+Sat Nov 14 13:28:05 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Sat Nov 14 13:28:06 2026 :: Log Trentlin [3529]: east
+Sat Nov 14 13:28:06 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Nov 14 13:28:06 2026 :: Log Trentlin [3530]: east
+Sat Nov 14 13:28:06 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Nov 14 13:28:07 2026 :: Log Trentlin [3531]: east
+Sat Nov 14 13:28:07 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Nov 14 13:28:07 2026 :: Log Trentlin [3532]: east
+Sat Nov 14 13:28:07 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Nov 14 13:28:07 2026 :: Log Trentlin [42]: east
+Sat Nov 14 13:28:07 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Nov 14 13:28:08 2026 :: Log Trentlin [9669]: east
+Sat Nov 14 13:28:08 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Nov 14 13:28:08 2026 :: Log Trentlin [9523]: east
+Sat Nov 14 13:28:08 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9524]: east
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9525]: east
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9526]: east
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9509]: east
+Sat Nov 14 13:28:09 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Sat Nov 14 13:28:10 2026 :: Log Trentlin [9506]: east
+Sat Nov 14 13:28:10 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9506
+Sat Nov 14 13:28:10 2026 :: Log Trentlin [9517]: east
+Sat Nov 14 13:28:10 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9517
+Sat Nov 14 13:28:10 2026 :: Log Trentlin [9527]: east
+Sat Nov 14 13:28:10 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9527
+Sat Nov 14 13:28:11 2026 :: Log Trentlin [9528]: east
+Sat Nov 14 13:28:11 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9528
+Sat Nov 14 13:28:11 2026 :: Log Trentlin [9529]: east
+Sat Nov 14 13:28:11 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9529
+Sat Nov 14 13:28:11 2026 :: Log Trentlin [9530]: east
+Sat Nov 14 13:28:11 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sat Nov 14 13:28:12 2026 :: Log Trentlin [9531]: open east
+Sat Nov 14 13:28:12 2026 :: Log Trentlin [9531]: east
+Sat Nov 14 13:28:12 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Sat Nov 14 13:28:12 2026 :: Log Trentlin [9668]: east
+Sat Nov 14 13:28:12 2026 :: Log Trentlin [9790]: arrived (On a road) from 9668
+Sat Nov 14 13:28:13 2026 :: Log Trentlin [9790]: east
+Sat Nov 14 13:28:13 2026 :: Log Trentlin [9791]: arrived (On a road) from 9790
+Sat Nov 14 13:28:13 2026 :: Log Trentlin [9791]: east
+Sat Nov 14 13:28:13 2026 :: Log Trentlin [9792]: arrived (On a road) from 9791
+Sat Nov 14 13:28:13 2026 :: Log Trentlin [9792]: east
+Sat Nov 14 13:28:13 2026 :: Log Trentlin [9793]: arrived (On a road) from 9792
+Sat Nov 14 13:28:14 2026 :: Log Trentlin [9793]: east
+Sat Nov 14 13:28:14 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9793
+Sat Nov 14 13:28:14 2026 :: Log Trentlin [9794]: north
+Sat Nov 14 13:28:14 2026 :: Log Trentlin [41]: arrived (The new pier) from 9794
+Sat Nov 14 13:28:15 2026 :: Log Trentlin [41]: north
+Sat Nov 14 13:28:15 2026 :: Log Trentlin [16000]: arrived (Beginning of the Pier) from 41
+Sat Nov 14 13:28:20 2026 :: Log Trentlin [16000]: steel
+Sat Nov 14 13:28:25 2026 :: Log Trentlin [16000]: iron
+Sat Nov 14 13:28:26 2026 :: Log Trentlin [16000]: iron
+Sat Nov 14 13:28:34 2026 :: Log Trentlin [16000]: n
+Sat Nov 14 13:28:34 2026 :: Log Trentlin [16001]: arrived (Along the Pier) from 16000
+Sat Nov 14 13:28:35 2026 :: Log Trentlin [16001]: n
+Sat Nov 14 13:28:35 2026 :: Log Trentlin [16002]: arrived (Along the Pier) from 16001
+Sat Nov 14 13:28:36 2026 :: Log Trentlin [16002]: n
+Sat Nov 14 13:28:36 2026 :: Log Trentlin [16003]: arrived (Along the Pier) from 16002
+Sat Nov 14 13:28:37 2026 :: Log Trentlin [16003]: n
+Sat Nov 14 13:28:37 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 16003
+Sat Nov 14 13:28:38 2026 :: Log Trentlin [16004]: e
+Sat Nov 14 13:28:38 2026 :: Log Trentlin [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Sat Nov 14 13:28:40 2026 :: Log Trentlin [16005]: u
+Sat Nov 14 13:28:40 2026 :: Log Trentlin [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Sat Nov 14 13:28:40 2026 :: Log Trentlin [16021]: sca
+Sat Nov 14 13:28:45 2026 :: Log Trentlin [16021]: k swas
+Sat Nov 14 13:28:47 2026 :: Log Trentlin [16021]: fists
+Sat Nov 14 13:28:54 2026 :: Log Trentlin [16021]: fists
+Sat Nov 14 13:28:56 2026 :: Treasure goblin: vanished from room 17203 (In Nessy's cave, highland.are) (too long in one area).
+Sat Nov 14 13:29:00 2026 :: Log Trentlin [16021]: fists
+Sat Nov 14 13:29:01 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Nov 14 13:29:01 2026 :: Loading Alaric's playerfile
+Sat Nov 14 13:29:04 2026 :: Loading Alaric's playerfile
+Sat Nov 14 13:29:04 2026 :: Alaric@208.126.22.104 has connected.
+Sat Nov 14 13:29:04 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 0
+Sat Nov 14 13:29:07 2026 :: Log Alaric [2497]: who
+Sat Nov 14 13:29:08 2026 :: Log Alaric [2497]: aq re
+Sat Nov 14 13:29:08 2026 :: Log Alaric [2497]: quest assigned: kill a cow (mob 1105, level 4) in shire.are, 16 minutes, ordinary
+Sat Nov 14 13:29:08 2026 :: Log Trentlin [16021]: fists
+Sat Nov 14 13:29:13 2026 :: Log Alaric [2497]: enter door
+Sat Nov 14 13:29:13 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 13:29:13 2026 :: Log Alaric [2401]: east
+Sat Nov 14 13:29:13 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2403]: east
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2420]: east
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2421]: east
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2422]: east
+Sat Nov 14 13:29:14 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2423]: east
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2424]: east
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Nov 14 13:29:15 2026 :: Log Trentlin [16021]: reca
+Sat Nov 14 13:29:15 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 16021
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2425]: east
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2426]: east
+Sat Nov 14 13:29:15 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Nov 14 13:29:16 2026 :: Log Alaric [2440]: east
+Sat Nov 14 13:29:16 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Nov 14 13:29:16 2026 :: Log Alaric [3503]: east
+Sat Nov 14 13:29:16 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Nov 14 13:29:16 2026 :: Log Alaric [3502]: east
+Sat Nov 14 13:29:16 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Nov 14 13:29:16 2026 :: Log Alaric [3525]: east
+Sat Nov 14 13:29:16 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Nov 14 13:29:17 2026 :: Log Alaric [3526]: north
+Sat Nov 14 13:29:17 2026 :: Log Alaric [38]: arrived (Well Kept Path) from 3526
+Sat Nov 14 13:29:17 2026 :: Log Alaric [38]: north
+Sat Nov 14 13:29:17 2026 :: Log Alaric [1100]: arrived (A well kept path) from 38
+Sat Nov 14 13:29:18 2026 :: Log Trentlin [4207]: w
+Sat Nov 14 13:29:18 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Nov 14 13:29:19 2026 :: Log Trentlin [4208]: heal
+Sat Nov 14 13:29:22 2026 :: Log Trentlin [4208]: heal heal
+Sat Nov 14 13:29:22 2026 :: Log Trentlin [4208]: gold -500
+Sat Nov 14 13:29:22 2026 :: Log Trentlin [4208]: gold -500
+Sat Nov 14 13:29:23 2026 :: Log Alaric [1100]: n
+Sat Nov 14 13:29:23 2026 :: Log Alaric [1101]: arrived (A well kept path) from 1100
+Sat Nov 14 13:29:23 2026 :: Log Alaric [1101]: n
+Sat Nov 14 13:29:23 2026 :: Log Alaric [1102]: arrived (A well kept path) from 1101
+Sat Nov 14 13:29:24 2026 :: Log Alaric [1102]: n
+Sat Nov 14 13:29:24 2026 :: Log Alaric [1103]: arrived (Entrance to the Shire) from 1102
+Sat Nov 14 13:29:25 2026 :: Log Alaric [1103]: scan
+Sat Nov 14 13:29:26 2026 :: Log Alaric [1103]: e
+Sat Nov 14 13:29:26 2026 :: Log Alaric [1104]: arrived (Bywater Road) from 1103
+Sat Nov 14 13:29:27 2026 :: Log Alaric [1104]: w
+Sat Nov 14 13:29:27 2026 :: Log Alaric [1103]: arrived (Entrance to the Shire) from 1104
+Sat Nov 14 13:29:27 2026 :: Log Alaric [1103]: w
+Sat Nov 14 13:29:27 2026 :: Log Alaric [1118]: arrived (Bywater Road) from 1103
+Sat Nov 14 13:29:28 2026 :: Log Alaric [1118]: scan
+Sat Nov 14 13:29:28 2026 :: Log Trentlin [4208]: e
+Sat Nov 14 13:29:28 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sat Nov 14 13:29:29 2026 :: Log Alaric [1118]: w
+Sat Nov 14 13:29:29 2026 :: Log Alaric [1120]: arrived (Bywater Road) from 1118
+Sat Nov 14 13:29:29 2026 :: Log Trentlin [4207]: e
+Sat Nov 14 13:29:29 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov 14 13:29:29 2026 :: Log Alaric [1120]: scan
+Sat Nov 14 13:29:29 2026 :: Log Trentlin [4202]: n
+Sat Nov 14 13:29:29 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sat Nov 14 13:29:29 2026 :: Log Trentlin [4203]: n
+Sat Nov 14 13:29:29 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Nov 14 13:29:30 2026 :: Log Trentlin [4210]: n
+Sat Nov 14 13:29:30 2026 :: Log Trentlin [4210]: sleep
+Sat Nov 14 13:29:31 2026 :: Log Alaric [1120]: w
+Sat Nov 14 13:29:31 2026 :: Log Alaric [1122]: arrived (Bywater Road) from 1120
+Sat Nov 14 13:29:32 2026 :: Log Alaric [1122]: w
+Sat Nov 14 13:29:32 2026 :: Log Alaric [1126]: arrived (Took Hill) from 1122
+Sat Nov 14 13:29:33 2026 :: Log Alaric [1126]: scan
+Sat Nov 14 13:29:33 2026 :: Log Alaric [1126]: e
+Sat Nov 14 13:29:33 2026 :: Log Alaric [1122]: arrived (Bywater Road) from 1126
+Sat Nov 14 13:29:34 2026 :: Log Alaric [1122]: scan
+Sat Nov 14 13:29:34 2026 :: Log Alaric [1122]: w
+Sat Nov 14 13:29:34 2026 :: Log Alaric [1126]: arrived (Took Hill) from 1122
+Sat Nov 14 13:29:35 2026 :: Log Alaric [1126]: scan
+Sat Nov 14 13:29:36 2026 :: Log Alaric [1126]: w
+Sat Nov 14 13:29:36 2026 :: Log Alaric [1128]: arrived (A grassy field) from 1126
+Sat Nov 14 13:29:36 2026 :: Log Alaric [1128]: scan
+Sat Nov 14 13:29:37 2026 :: Log Alaric [1128]: w
+Sat Nov 14 13:29:37 2026 :: Log Alaric [1130]: arrived (Western end of grassy field) from 1128
+Sat Nov 14 13:29:38 2026 :: Log Alaric [1130]: scan
+Sat Nov 14 13:29:40 2026 :: Log Alaric [1130]: w
+Sat Nov 14 13:29:41 2026 :: Log Alaric [1130]: s
+Sat Nov 14 13:29:41 2026 :: Log Alaric [1129]: arrived (Southern end of grassy field) from 1130
+Sat Nov 14 13:29:42 2026 :: Log Alaric [1129]: n
+Sat Nov 14 13:29:42 2026 :: Log Alaric [1130]: arrived (Western end of grassy field) from 1129
+Sat Nov 14 13:29:44 2026 :: Log Alaric [1130]: e
+Sat Nov 14 13:29:44 2026 :: Log Alaric [1128]: arrived (A grassy field) from 1130
+Sat Nov 14 13:29:44 2026 :: Log Alaric [1128]: e
+Sat Nov 14 13:29:44 2026 :: Log Alaric [1126]: arrived (Took Hill) from 1128
+Sat Nov 14 13:29:45 2026 :: Log Alaric [1126]: e
+Sat Nov 14 13:29:45 2026 :: Log Alaric [1122]: arrived (Bywater Road) from 1126
+Sat Nov 14 13:29:46 2026 :: Log Alaric [1122]: s
+Sat Nov 14 13:29:46 2026 :: Log Alaric [1123]: arrived (Entrance to Watermill) from 1122
+Sat Nov 14 13:29:47 2026 :: Log Alaric [1123]: s
+Sat Nov 14 13:29:47 2026 :: Log Alaric [1124]: arrived (The Watermill) from 1123
+Sat Nov 14 13:29:48 2026 :: Log Alaric [1124]: scan
+Sat Nov 14 13:29:49 2026 :: Log Alaric [1124]: s
+Sat Nov 14 13:29:49 2026 :: Log Alaric [1125]: arrived (Rear of watermill) from 1124
+Sat Nov 14 13:29:51 2026 :: Log Alaric [1125]: ex
+Sat Nov 14 13:29:52 2026 :: Log Alaric [1125]: n
+Sat Nov 14 13:29:52 2026 :: Log Alaric [1124]: arrived (The Watermill) from 1125
+Sat Nov 14 13:29:52 2026 :: Log Alaric [1124]: n
+Sat Nov 14 13:29:52 2026 :: Log Alaric [1123]: arrived (Entrance to Watermill) from 1124
+Sat Nov 14 13:29:53 2026 :: Log Alaric [1123]: n
+Sat Nov 14 13:29:53 2026 :: Log Alaric [1122]: arrived (Bywater Road) from 1123
+Sat Nov 14 13:29:54 2026 :: Log Alaric [1122]: e
+Sat Nov 14 13:29:54 2026 :: Log Alaric [1120]: arrived (Bywater Road) from 1122
+Sat Nov 14 13:29:54 2026 :: Log Alaric [1120]: s
+Sat Nov 14 13:29:54 2026 :: Log Alaric [1121]: arrived (The Grocer's Delight) from 1120
+Sat Nov 14 13:29:54 2026 :: Log Alaric [1121]: s
+Sat Nov 14 13:29:55 2026 :: Log Alaric [1121]: n
+Sat Nov 14 13:29:55 2026 :: Log Alaric [1120]: arrived (Bywater Road) from 1121
+Sat Nov 14 13:29:56 2026 :: Log Alaric [1120]: e
+Sat Nov 14 13:29:56 2026 :: Log Alaric [1118]: arrived (Bywater Road) from 1120
+Sat Nov 14 13:29:56 2026 :: Log Alaric [1118]: s
+Sat Nov 14 13:29:56 2026 :: Log Alaric [1119]: arrived (Sheriff Post of the Bridge) from 1118
+Sat Nov 14 13:29:58 2026 :: Log Alaric [1119]: n
+Sat Nov 14 13:29:58 2026 :: Log Alaric [1118]: arrived (Bywater Road) from 1119
+Sat Nov 14 13:29:58 2026 :: Log Alaric [1118]: e
+Sat Nov 14 13:29:58 2026 :: Log Alaric [1103]: arrived (Entrance to the Shire) from 1118
+Sat Nov 14 13:29:58 2026 :: Log Alaric [1103]: e
+Sat Nov 14 13:29:58 2026 :: Log Alaric [1104]: arrived (Bywater Road) from 1103
+Sat Nov 14 13:29:59 2026 :: Log Alaric [1104]: ex
+Sat Nov 14 13:30:00 2026 :: Log Alaric [1104]: n
+Sat Nov 14 13:30:00 2026 :: Log Alaric [1105]: arrived (The General Store) from 1104
+Sat Nov 14 13:30:01 2026 :: Log Alaric [1105]: s
+Sat Nov 14 13:30:01 2026 :: Log Alaric [1104]: arrived (Bywater Road) from 1105
+Sat Nov 14 13:30:01 2026 :: Log Alaric [1104]: e
+Sat Nov 14 13:30:01 2026 :: Log Alaric [1106]: arrived (Bywater Road) from 1104
+Sat Nov 14 13:30:02 2026 :: Log Alaric [1106]: n
+Sat Nov 14 13:30:02 2026 :: Log Alaric [1107]: arrived (The House of Arms) from 1106
+Sat Nov 14 13:30:03 2026 :: Log Alaric [1107]: s
+Sat Nov 14 13:30:03 2026 :: Log Alaric [1106]: arrived (Bywater Road) from 1107
+Sat Nov 14 13:30:03 2026 :: Log Alaric [1106]: e
+Sat Nov 14 13:30:03 2026 :: Log Alaric [1109]: arrived (A bend in the road) from 1106
+Sat Nov 14 13:30:04 2026 :: Log Alaric [1109]: e
+Sat Nov 14 13:30:04 2026 :: Log Alaric [1110]: arrived (Sheriff Post of the Eastern Shire) from 1109
+Sat Nov 14 13:30:06 2026 :: Log Alaric [1110]: w
+Sat Nov 14 13:30:06 2026 :: Log Alaric [1109]: arrived (A bend in the road) from 1110
+Sat Nov 14 13:30:06 2026 :: Log Alaric [1109]: w
+Sat Nov 14 13:30:06 2026 :: Log Alaric [1106]: arrived (Bywater Road) from 1109
+Sat Nov 14 13:30:07 2026 :: Log Alaric [1106]: s
+Sat Nov 14 13:30:07 2026 :: Log Alaric [1108]: arrived (Kid'n Keep) from 1106
+Sat Nov 14 13:30:08 2026 :: Log Alaric [1108]: e
+Sat Nov 14 13:30:09 2026 :: Log Alaric [1108]: n
+Sat Nov 14 13:30:09 2026 :: Log Alaric [1106]: arrived (Bywater Road) from 1108
+Sat Nov 14 13:30:09 2026 :: Log Alaric [1106]: e
+Sat Nov 14 13:30:09 2026 :: Log Alaric [1109]: arrived (A bend in the road) from 1106
+Sat Nov 14 13:30:10 2026 :: Log Alaric [1109]: s
+Sat Nov 14 13:30:10 2026 :: Log Alaric [1112]: arrived (Bywater Road) from 1109
+Sat Nov 14 13:30:10 2026 :: Log Alaric [1112]: e
+Sat Nov 14 13:30:10 2026 :: Log Alaric [1117]: arrived (Sheriff Training Grounds) from 1112
+Sat Nov 14 13:30:12 2026 :: Log Alaric [1117]: w
+Sat Nov 14 13:30:12 2026 :: Log Alaric [1112]: arrived (Bywater Road) from 1117
+Sat Nov 14 13:30:12 2026 :: Log Alaric [1112]: s
+Sat Nov 14 13:30:12 2026 :: Log Alaric [1113]: arrived (Bywater Road) from 1112
+Sat Nov 14 13:30:13 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 13:30:13 2026 :: Log Alaric [1113]: w
+Sat Nov 14 13:30:13 2026 :: Log Alaric [1114]: arrived (A smial) from 1113
+Sat Nov 14 13:30:14 2026 :: Log Alaric [1114]: e
+Sat Nov 14 13:30:14 2026 :: Log Alaric [1113]: arrived (Bywater Road) from 1114
+Sat Nov 14 13:30:14 2026 :: Log Alaric [1113]: e
+Sat Nov 14 13:30:14 2026 :: Log Alaric [1115]: arrived (A smial) from 1113
+Sat Nov 14 13:30:14 2026 :: Log Trentlin [4210]: help vorpal
+Sat Nov 14 13:30:16 2026 :: Log Alaric [1115]: w
+Sat Nov 14 13:30:16 2026 :: Log Alaric [1113]: arrived (Bywater Road) from 1115
+Sat Nov 14 13:30:17 2026 :: Log Alaric [1113]: n
+Sat Nov 14 13:30:17 2026 :: Log Alaric [1112]: arrived (Bywater Road) from 1113
