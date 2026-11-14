@@ -297888,3 +297888,8 @@ Sat Nov 14 05:27:50 2026 :: Connection guard: 99.62.115.159 closed without a wor
 Sat Nov 14 05:30:25 2026 :: Treasure goblin: vanished from room 13212 (Ketra Road., solace.are) (too long in one area).
 Sat Nov 14 05:32:54 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 3 of 6 in 6 hours).
 Sat Nov 14 05:34:27 2026 :: Connection guard: 64.93.12.85 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 05:36:57 2026 :: Connection guard: last hour 19 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Sat Nov 14 05:37:31 2026 :: Automated backup started.
+Sat Nov 14 05:37:32 2026 :: Automated backup complete.
+Sat Nov 14 05:37:51 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 05:37:59 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
