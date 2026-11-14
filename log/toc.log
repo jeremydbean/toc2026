@@ -301120,3 +301120,4 @@ Sat Nov 14 15:52:23 2026 :: Connection guard: 34.198.201.66 closed without a wor
 Sat Nov 14 15:57:27 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 3 refused in all, pause 2 this week, 446 minutes left).
 Sat Nov 14 15:58:42 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 15:58:55 2026 :: Treasure goblin: vanished from room 24003 (Puck's Room, faerie.are) (too long in one area).
+Sat Nov 14 16:02:32 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 2 of 6 in 6 hours).
