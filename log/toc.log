@@ -297864,3 +297864,5 @@ Sat Nov 14 04:47:13 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Sat Nov 14 04:47:46 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 04:50:06 2026 :: Treasure goblin: vanished from room 5947 (A small grassy clearing, mid_ruin.are) (too long in one area).
 Sat Nov 14 04:52:17 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 04:57:21 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 1 refused in all, pause 1 this week, 168 minutes left).
+Sat Nov 14 04:57:47 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).

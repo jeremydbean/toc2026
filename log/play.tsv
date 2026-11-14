@@ -26587,3 +26587,13 @@
 1794631911	laid	-	0	0	-	1244	herb	51	a piece of kelp	19159	rome.are	scatter
 1794631911	laid	-	0	0	-	1245	herb	35	a sprig of angelica	19134	rome.are	scatter
 1794631918	census	-	0	0	-	herbs=137/150 components=67/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=16 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794632069	laid	-	0	0	-	1246	component	66	a strand of hair	2165	hood.are	scatter
+1794632136	laid	-	0	0	-	1247	herb	37	a sprig of catnip	25148	underdrk.are	scatter
+1794632136	laid	-	0	0	-	1248	herb	48	an alfalfa sprout	25125	underdrk.are	scatter
+1794632136	laid	-	0	0	-	1249	component	56	a dragons claw	25267	mushroom.are	scatter
+1794632204	laid	-	0	0	-	1250	herb	35	a sprig of angelica	5326	mirror.are	scatter
+1794632204	laid	-	0	0	-	1251	herb	42	a marjoram plant	5357	mirror.are	scatter
+1794632265	laid	-	0	0	-	1252	herb	38	a foxglove flower	1154	shire.are	scatter
+1794632309	laid	-	0	0	-	1253	herb	39	a chervil leaf	6535	dwarves.are	scatter
+1794632309	laid	-	0	0	-	1254	component	61	a mummy's wrapping	1626	wyvern.are	scatter
+1794632356	laid	-	0	0	-	1255	component	54	eye of newt	24218	crypt.are	scatter
