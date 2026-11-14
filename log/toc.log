@@ -298061,3 +298061,7 @@ Sat Nov 14 09:46:48 2026 :: Connection guard: 5.161.194.92 closed without a word
 Sat Nov 14 09:46:48 2026 :: Connection guard: 5.161.194.92 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.194.92 lifts it.
 Sat Nov 14 09:47:13 2026 :: Treasure goblin: vanished from room 9581 (Underground, newthalo.are) (too long in one area).
 Sat Nov 14 09:48:10 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 09:51:52 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 14 09:53:03 2026 :: Sock.sinaddr:  184.105.247.195
+Sat Nov 14 09:53:03 2026 :: EOF encountered on read.
+Sat Nov 14 09:53:03 2026 :: Connection guard: 184.105.247.195 closed before a password prompt (strike 1 of 6 in 6 hours).
