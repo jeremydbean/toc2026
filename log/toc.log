@@ -298189,3 +298189,11 @@ Sat Nov 14 12:49:35 2026 :: Connection guard: 52.87.72.16 closed without a word 
 Sat Nov 14 12:54:22 2026 :: Black market: the dealer vanished from room 9400 (Entrance to the Mob Factory, mobfact.are) (wandering).
 Sat Nov 14 12:54:30 2026 :: Connection guard: 106.53.139.68 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 14 12:54:40 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 12:55:17 2026 :: Connection guard: 47.109.148.130 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 12:55:21 2026 :: Connection guard: 47.109.148.130 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 12:55:22 2026 :: Sock.sinaddr:  47.109.148.130
+Sat Nov 14 12:55:23 2026 :: EOF encountered on read.
+Sat Nov 14 12:55:23 2026 :: Connection guard: 47.109.148.130 closed before a password prompt (strike 3 of 6 in 6 hours).
+Sat Nov 14 12:58:29 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 12:58:42 2026 :: Treasure goblin: vanished from room 9634 (Tournament and Practice Yard, newthalo.are) (too long in one area).
+Sat Nov 14 12:59:45 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
