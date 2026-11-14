@@ -26525,3 +26525,14 @@
 1794629290	laid	-	0	0	-	1189	component	55	a unicorn horn	16021	pirate.are	scatter
 1794629348	laid	-	0	0	-	1190	herb	39	a chervil leaf	342	plains.are	scatter
 1794629348	laid	-	0	0	-	1191	herb	35	a sprig of angelica	336	plains.are	scatter
+1794629426	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3117	(char_update)
+1794629426	laid	-	0	0	-	1192	herb	35	a sprig of angelica	2337	mahntor.are	scatter
+1794629426	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	0	(game loop)
+1794629426	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794629426	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 1881 platinum, 88 gold, 83 silver, 74 copper // and 252749 experience (39551 exp to level).	-	-
+1794629474	laid	-	0	0	-	1193	herb	49	a pomegranate	29381	voyage.are	scatter
+1794629474	laid	-	0	0	-	1194	herb	47	a sprig of saffron	29379	voyage.are	scatter
+1794629535	laid	-	0	0	-	1195	herb	42	a marjoram plant	5338	mirror.are	scatter
+1794629535	laid	-	0	0	-	1196	herb	41	a sprig of mistletoe	5335	mirror.are	scatter
+1794629580	laid	-	0	0	-	1197	component	57	a trolls fingernail	3508	midennir.are	scatter
+1794629627	laid	-	0	0	-	1198	component	55	a unicorn horn	4156	moria.are	scatter
