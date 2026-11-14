@@ -297671,3 +297671,139 @@ Sat Nov 14 03:12:03 2026 :: Log Alaric [2497]: sc
 Sat Nov 14 03:13:42 2026 :: Log Alaric [2497]: i
 Sat Nov 14 03:13:46 2026 :: Log Alaric [2497]: drop cad
 Sat Nov 14 03:13:48 2026 :: Log Alaric [2497]: sac cad
+Sat Nov 14 03:15:50 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 14 03:16:15 2026 :: Log Alaric [2497]: affects off: levitate
+Sat Nov 14 03:17:14 2026 :: Log Alaric [2497]: aq re
+Sat Nov 14 03:17:14 2026 :: Log Alaric [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in landoz.are, 8 minutes, rush
+Sat Nov 14 03:17:22 2026 :: Log Alaric [2497]: levi
+Sat Nov 14 03:17:25 2026 :: Log Alaric [2497]: enter door
+Sat Nov 14 03:17:25 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 03:17:25 2026 :: Log Alaric [2401]: west
+Sat Nov 14 03:17:25 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2405]: west
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2433]: west
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2434]: west
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2435]: west
+Sat Nov 14 03:17:26 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sat Nov 14 03:17:27 2026 :: Log Alaric [2436]: west
+Sat Nov 14 03:17:27 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sat Nov 14 03:17:27 2026 :: Log Alaric [2437]: west
+Sat Nov 14 03:17:27 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Nov 14 03:17:27 2026 :: Log Alaric [2438]: open west
+Sat Nov 14 03:17:27 2026 :: Log Alaric [2438]: west
+Sat Nov 14 03:17:27 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Nov 14 03:17:28 2026 :: Log Alaric [2439]: west
+Sat Nov 14 03:17:28 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sat Nov 14 03:17:28 2026 :: Log Alaric [6000]: west
+Sat Nov 14 03:17:28 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sat Nov 14 03:17:28 2026 :: Log Alaric [6001]: west
+Sat Nov 14 03:17:28 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sat Nov 14 03:17:28 2026 :: Log Alaric [6002]: west
+Sat Nov 14 03:17:28 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6003]: west
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6004]: west
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6100]: west
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6101]: west
+Sat Nov 14 03:17:29 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6102]: west
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6103]: south
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6108]: arrived (A narrow trail through the deep, dark forest) from 6103
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6108]: west
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6109]: arrived (A narrow trail through the deep, dark forest) from 6108
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6109]: west
+Sat Nov 14 03:17:30 2026 :: Log Alaric [6110]: arrived (A narrow trail through the deep, dark forest) from 6109
+Sat Nov 14 03:17:31 2026 :: Log Alaric [6110]: north
+Sat Nov 14 03:17:31 2026 :: Log Alaric [6144]: arrived (A small path in the deep, dark forest) from 6110
+Sat Nov 14 03:17:31 2026 :: Log Alaric [6144]: west
+Sat Nov 14 03:17:31 2026 :: Log Alaric [6130]: arrived (A narrow trail through the deep, dark forest) from 6144
+Sat Nov 14 03:17:31 2026 :: Log Alaric [6130]: north
+Sat Nov 14 03:17:31 2026 :: Log Alaric [66]: arrived (A dark section of the forest) from 6130
+Sat Nov 14 03:17:31 2026 :: Log Alaric [66]: enter portal
+Sat Nov 14 03:17:31 2026 :: Log Alaric [17700]: arrived (Entrance to the Land of Oz) from 66
+Sat Nov 14 03:17:37 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 03:17:41 2026 :: Log Alaric [17700]: north
+Sat Nov 14 03:17:41 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17700
+Sat Nov 14 03:17:44 2026 :: Log Alaric [17752]: n
+Sat Nov 14 03:17:44 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17752
+Sat Nov 14 03:17:45 2026 :: Log Alaric [17753]: w
+Sat Nov 14 03:17:45 2026 :: Log Alaric [17756]: arrived (Munchkin Land) from 17753
+Sat Nov 14 03:17:47 2026 :: Log Alaric [17756]: n
+Sat Nov 14 03:17:47 2026 :: Log Alaric [17757]: arrived (Munchkin Land) from 17756
+Sat Nov 14 03:17:48 2026 :: Log Alaric [17757]: e
+Sat Nov 14 03:17:48 2026 :: Log Alaric [17758]: arrived (The Yellow Brick Road) from 17757
+Sat Nov 14 03:17:50 2026 :: Log Alaric [17758]: n
+Sat Nov 14 03:17:50 2026 :: Log Alaric [17762]: arrived (The Yellow Brick Road) from 17758
+Sat Nov 14 03:17:50 2026 :: Log Alaric [17762]: n
+Sat Nov 14 03:17:50 2026 :: Log Alaric [17763]: arrived (The Yellow Brick Road) from 17762
+Sat Nov 14 03:17:51 2026 :: Log Alaric [17763]: n
+Sat Nov 14 03:17:51 2026 :: Log Alaric [17764]: arrived (The Yellow Brick Road) from 17763
+Sat Nov 14 03:17:52 2026 :: Log Alaric [17764]: n
+Sat Nov 14 03:17:52 2026 :: Log Alaric [17765]: arrived (The Yellow Brick Road) from 17764
+Sat Nov 14 03:17:53 2026 :: Log Alaric [17765]: w
+Sat Nov 14 03:17:53 2026 :: Log Alaric [17766]: arrived (Inside the cabin) from 17765
+Sat Nov 14 03:17:54 2026 :: Log Alaric [17766]: e
+Sat Nov 14 03:17:54 2026 :: Log Alaric [17765]: arrived (The Yellow Brick Road) from 17766
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17765]: s
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17764]: arrived (The Yellow Brick Road) from 17765
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17764]: s
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17763]: arrived (The Yellow Brick Road) from 17764
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17763]: s
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17762]: arrived (The Yellow Brick Road) from 17763
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17762]: s
+Sat Nov 14 03:17:55 2026 :: Log Alaric [17758]: arrived (The Yellow Brick Road) from 17762
+Sat Nov 14 03:17:56 2026 :: Log Alaric [17758]: e
+Sat Nov 14 03:17:56 2026 :: Log Alaric [17759]: arrived (Munchkin Land) from 17758
+Sat Nov 14 03:17:58 2026 :: Log Alaric [17759]: get all
+Sat Nov 14 03:17:59 2026 :: Log Alaric [17759]: s
+Sat Nov 14 03:17:59 2026 :: Log Alaric [17760]: arrived (Munchkin Land) from 17759
+Sat Nov 14 03:18:00 2026 :: Log Alaric [17760]: recal
+Sat Nov 14 03:18:01 2026 :: Log Alaric [17760]: w
+Sat Nov 14 03:18:01 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17760
+Sat Nov 14 03:18:01 2026 :: Log Alaric [17753]: s
+Sat Nov 14 03:18:01 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17753
+Sat Nov 14 03:18:02 2026 :: Log Alaric [17752]: s
+Sat Nov 14 03:18:02 2026 :: Log Alaric [17700]: arrived (Entrance to the Land of Oz) from 17752
+Sat Nov 14 03:18:03 2026 :: Log Alaric [17700]: n
+Sat Nov 14 03:18:03 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17700
+Sat Nov 14 03:18:05 2026 :: Log Alaric [17752]: recal
+Sat Nov 14 03:18:14 2026 :: Log Alaric [17752]: w
+Sat Nov 14 03:18:14 2026 :: Log Alaric [17755]: arrived (A small house) from 17752
+Sat Nov 14 03:18:15 2026 :: Log Alaric [17755]: e
+Sat Nov 14 03:18:15 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17755
+Sat Nov 14 03:18:17 2026 :: Log Alaric [17752]: s
+Sat Nov 14 03:18:17 2026 :: Log Alaric [17700]: arrived (Entrance to the Land of Oz) from 17752
+Sat Nov 14 03:18:19 2026 :: Log Alaric [17700]: n
+Sat Nov 14 03:18:19 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17700
+Sat Nov 14 03:18:19 2026 :: Log Alaric [17752]: n
+Sat Nov 14 03:18:19 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17752
+Sat Nov 14 03:18:21 2026 :: Log Alaric [17753]: w
+Sat Nov 14 03:18:21 2026 :: Log Alaric [17756]: arrived (Munchkin Land) from 17753
+Sat Nov 14 03:18:21 2026 :: Log Alaric [17756]: e
+Sat Nov 14 03:18:21 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17756
+Sat Nov 14 03:18:23 2026 :: Log Alaric [17753]: n
+Sat Nov 14 03:18:23 2026 :: Log Alaric [17758]: arrived (The Yellow Brick Road) from 17753
+Sat Nov 14 03:18:23 2026 :: Log Alaric [17758]: recal
+Sat Nov 14 03:18:25 2026 :: Log Alaric [17758]: s
+Sat Nov 14 03:18:25 2026 :: Log Alaric [17753]: arrived (Beginning of the Yellow Brick Road) from 17758
+Sat Nov 14 03:18:25 2026 :: Log Alaric [17753]: recal
+Sat Nov 14 03:18:26 2026 :: Log Alaric [17753]: s
+Sat Nov 14 03:18:26 2026 :: Log Alaric [17752]: arrived (Munchkin Land) from 17753
+Sat Nov 14 03:18:27 2026 :: Log Alaric [17752]: recal
+Sat Nov 14 03:18:28 2026 :: Log Alaric [17752]: s
+Sat Nov 14 03:18:28 2026 :: Log Alaric [17700]: arrived (Entrance to the Land of Oz) from 17752
+Sat Nov 14 03:18:29 2026 :: Log Alaric [17700]: recal
+Sat Nov 14 03:18:29 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 17700
+Sat Nov 14 03:18:31 2026 :: Log Alaric [2497]: aq co
+Sat Nov 14 03:18:31 2026 :: Log Alaric [2497]: copper +369909936
+Sat Nov 14 03:18:31 2026 :: Log Alaric [2497]: quest complete: 369p 90g 99s 36c, 48 quest points, rush (streak bonus 10%)
+Sat Nov 14 03:18:31 2026 :: Snapshot of Alaric taken before quest: Alaric.20261114_031831.quest (PRESTORE Alaric to see it).
+Sat Nov 14 03:18:35 2026 :: Log Alaric [2497]: aq ga no
+Sat Nov 14 03:18:44 2026 :: Log Alaric [2497]: steel
+Sat Nov 14 03:18:49 2026 :: Log Alaric [2497]: score

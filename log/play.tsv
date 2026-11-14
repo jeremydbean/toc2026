@@ -26339,3 +26339,91 @@
 1794626030	laid	-	0	0	-	1058	herb	40	a clove	9566	newthalo.are	scatter
 1794626030	laid	-	0	0	-	1059	herb	51	a piece of kelp	9635	newthalo.are	scatter
 1794626030	laid	-	0	0	-	1060	component	82	a vial of purple worm stinger poison	3203	school.are	scatter
+1794626106	laid	-	0	0	-	1061	herb	37	a sprig of catnip	7108	sewer.are	scatter
+1794626106	laid	-	0	0	-	1062	component	59	a patch of lycanthrope fur	7762	ultima.are	scatter
+1794626175	laid	-	0	0	-	1063	herb	43	a sprig of hyssop	17780	landoz.are	scatter
+1794626175	laid	-	0	0	-	1064	herb	43	a sprig of hyssop	17801	landoz.are	scatter
+1794626216	laid	-	0	0	-	1065	component	86	an inert gelatinous cube	17130	highland.are	scatter
+1794626234	quest	Alaric	57	2497	dresden.are	rush	recover	25040	The Crown of Eclipse	59	landoz.are	8
+1794626234	cmd	Alaric	57	2497	dresden.are	standing	100	15	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A prized artifact - The Crown of Eclipse - has gone missing!'	-	+
+1794626242	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794626245	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794626245	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794626246	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794626246	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794626246	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794626246	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794626247	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794626247	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794626247	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794626247	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794626248	area	Alaric	57	6000	haon.are	dresden.are	haon.are	329	west
+1794626248	cmd	Alaric	57	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794626248	cmd	Alaric	57	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794626248	cmd	Alaric	57	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794626248	cmd	Alaric	57	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794626249	cmd	Alaric	57	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794626249	cmd	Alaric	57	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794626249	cmd	Alaric	57	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794626249	cmd	Alaric	57	6102	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard.. everything	-	+
+1794626250	cmd	Alaric	57	6103	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are where the dusty trail bends, as to avoid conflict with a colossal // trunk to the west.  Not a sound is to be heard.. everything is ominously	-	+
+1794626250	cmd	Alaric	57	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west and to the south, a frail	-	+
+1794626250	cmd	Alaric	57	6109	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard..	-	+
+1794626250	cmd	Alaric	57	6110	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees that // stand close on all sides.  The trail leads east and south.  To the north,	-	+
+1794626251	cmd	Alaric	57	6144	haon.are	standing	100	0	-	north		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The tree trunks here seem to be covered in	-	+
+1794626251	cmd	Alaric	57	6130	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way westwards just below huge sticky // wires suspended like ropes between the trees. To the west the path seems	-	+
+1794626251	area	Alaric	57	66	connect.are	haon.are	connect.are	3	north
+1794626251	cmd	Alaric	57	66	connect.are	standing	100	0	-	north		A dark section of the forest //   You have reached a very dark section of the forest, the only thing you can // see is a dark tornado swirling in the air ahead of you.	-	+
+1794626251	area	Alaric	57	17700	landoz.are	connect.are	landoz.are	0	enter
+1794626251	cmd	Alaric	57	17700	landoz.are	standing	100	0	-	enter	portal	You enter The swirling tornado // Your stomach flip flops. Everything goes black for a moment. // Entrance to the Land of Oz	-	+
+1794626261	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	north		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1794626264	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	north		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1794626265	cmd	Alaric	57	17756	landoz.are	standing	100	0	-	west		Munchkin Land //   You are on a side street in the land of munchkins.  All // around you are little munchkins going about their daily	-	+
+1794626267	cmd	Alaric	57	17757	landoz.are	standing	100	0	-	north		Munchkin Land //   You are on a side street in the land of munchkins.  All // around you are little munchkins going about their daily	-	+
+1794626268	cmd	Alaric	57	17758	landoz.are	standing	100	0	-	east		The Yellow Brick Road //   You have reached the exit leading out of the land of the // munchkins.  To the north continues a road constructed out	-	+
+1794626270	cmd	Alaric	57	17762	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You make your way along the road stopping from time to time // to enjoy the beauty of the great Land of Oz.  This road leads	-	+
+1794626270	cmd	Alaric	57	17763	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   As you continue along the road you stop and notice that // beside the road in a giant field of corn is a man made of 	-	+
+1794626271	cmd	Alaric	57	17764	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down up you.  You feel very safe	-	+
+1794626272	cmd	Alaric	57	17765	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   As you continue along the road you stop and see a very rusty // man standing next to a log cabin.  	-	+
+1794626273	cmd	Alaric	57	17766	landoz.are	standing	100	0	-	west		Inside the cabin //   You are inside a log cabin that the tinman resides in.  It is // sparsely decorated with just a fireplace and a bed made of tin.	-	+
+1794626274	cmd	Alaric	57	17765	landoz.are	standing	100	0	-	east		The Yellow Brick Road //   As you continue along the road you stop and see a very rusty // man standing next to a log cabin.  	-	+
+1794626275	cmd	Alaric	57	17764	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down up you.  You feel very safe	-	+
+1794626275	cmd	Alaric	57	17763	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   As you continue along the road you stop and notice that // beside the road in a giant field of corn is a man made of 	-	+
+1794626275	cmd	Alaric	57	17762	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   You make your way along the road stopping from time to time // to enjoy the beauty of the great Land of Oz.  This road leads	-	+
+1794626275	cmd	Alaric	57	17758	landoz.are	standing	100	0	-	south		The Yellow Brick Road //   You have reached the exit leading out of the land of the // munchkins.  To the north continues a road constructed out	-	+
+1794626276	cmd	Alaric	57	17759	landoz.are	standing	100	0	-	east		Munchkin Land //   You are on a side street in the land of munchkins.  All // around you are little munchkins going about their daily	-	+
+1794626278	got	Alaric	57	17759	landoz.are	25040	The Crown of Eclipse	trash	59	0	get	the floor
+1794626278	cmd	Alaric	57	17759	landoz.are	standing	100	0	-	get	all	You get The Crown of Eclipse.	-	-
+1794626279	cmd	Alaric	57	17760	landoz.are	standing	100	0	-	south		Munchkin Land //   You are on a side street in the land of munchkins.  All // around you are little munchkins going about their daily	-	+
+1794626280	cmd	Alaric	57	17760	landoz.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794626281	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	west		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1794626281	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	south		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1794626282	cmd	Alaric	57	17700	landoz.are	standing	100	0	-	south		Entrance to the Land of Oz //   As you enter the Land of Oz you can't help but marvel at the  // beautiful landscape that surrounds you.  In the distance you 	-	+
+1794626283	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	north		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1794626285	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794626290	laid	-	0	0	-	1097	herb	38	a foxglove flower	13480	hell.are	scatter
+1794626290	laid	-	0	0	-	1098	herb	44	a sprig of aconite	13418	hell.are	scatter
+1794626290	laid	-	0	0	-	1099	component	76	a vial of dragons blood	20189	prison.are	scatter
+1794626294	cmd	Alaric	57	17755	landoz.are	standing	100	1	-	west		A small house //   You are inside a small house which doesn't seem quite in // place with the rest of the village.  It feels as if the	-	+
+1794626295	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	east		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1794626297	cmd	Alaric	57	17700	landoz.are	standing	100	0	-	south		Entrance to the Land of Oz //   As you enter the Land of Oz you can't help but marvel at the  // beautiful landscape that surrounds you.  In the distance you 	-	+
+1794626299	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	north		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1794626299	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	north		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1794626301	cmd	Alaric	57	17756	landoz.are	standing	100	0	-	west		Munchkin Land //   You are on a side street in the land of munchkins.  All // around you are little munchkins going about their daily	-	+
+1794626301	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	east		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1794626303	cmd	Alaric	57	17758	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You have reached the exit leading out of the land of the // munchkins.  To the north continues a road constructed out	-	+
+1794626303	cmd	Alaric	57	17758	landoz.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794626305	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	south		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1794626305	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794626306	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	south		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1794626307	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794626308	cmd	Alaric	57	17700	landoz.are	standing	100	0	-	south		Entrance to the Land of Oz //   As you enter the Land of Oz you can't help but marvel at the  // beautiful landscape that surrounds you.  In the distance you 	-	+
+1794626309	area	Alaric	57	2497	dresden.are	landoz.are	dresden.are	58	recall
+1794626309	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794626311	coin	Alaric	57	2497	dresden.are	+369909936	quests	aquest	-	26705950216
+1794626311	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	rush qp=2162->2162 offered=48 daily=4->4 coin=+369909936 kill=15412914 streak=1 level=57 target=0
+1794626311	cmd	Alaric	57	2497	dresden.are	standing	100	25	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Crown of Eclipse to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'	success:-	+
+1794626315	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 48 quest points.	-	-
+1794626324	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794626329	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2860/2875 mv=388/983 align=922 exp=252749 coin=1881888374 bank=24824061842 qp=2210 prac=36 train=76 stash=93/350 remorts=3
+1794626329	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    294 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
