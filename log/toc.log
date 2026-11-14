@@ -300543,3 +300543,178 @@ Sat Nov 14 14:00:15 2026 :: Log Trentlin [30480]: coin +25 gold
 Sat Nov 14 14:00:18 2026 :: Log Trentlin [30480]: get key
 Sat Nov 14 14:00:18 2026 :: Log Trentlin [30480]: n
 Sat Nov 14 14:00:18 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30480
+Sat Nov 14 14:00:21 2026 :: Log Trentlin [30483]: n
+Sat Nov 14 14:00:25 2026 :: Log Trentlin [30483]: open north
+Sat Nov 14 14:00:28 2026 :: Log Trentlin [30483]: unlock north
+Sat Nov 14 14:00:28 2026 :: Log Trentlin [30483]: n
+Sat Nov 14 14:00:30 2026 :: Log Trentlin [30483]: open north
+Sat Nov 14 14:00:31 2026 :: Log Trentlin [30483]: n
+Sat Nov 14 14:00:31 2026 :: Log Trentlin [30485]: arrived (Level 5: Hushed Archive) from 30483
+Sat Nov 14 14:00:34 2026 :: Log Trentlin [30485]: l in ches
+Sat Nov 14 14:00:41 2026 :: Log Trentlin [30485]: e
+Sat Nov 14 14:00:41 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30485
+Sat Nov 14 14:00:42 2026 :: Log Trentlin [30486]: n
+Sat Nov 14 14:00:42 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30486
+Sat Nov 14 14:00:43 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 14 14:00:43 2026 :: Log Trentlin [30488]: n
+Sat Nov 14 14:00:43 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30488
+Sat Nov 14 14:00:44 2026 :: Log Trentlin [30492]: w
+Sat Nov 14 14:00:47 2026 :: Log Trentlin [30492]: unlock west
+Sat Nov 14 14:00:48 2026 :: Log Trentlin [30492]: get all
+Sat Nov 14 14:00:50 2026 :: Log Trentlin [30492]: w
+Sat Nov 14 14:00:51 2026 :: Log Trentlin [30492]: open west
+Sat Nov 14 14:01:00 2026 :: Log Trentlin [30492]: k g
+Sat Nov 14 14:01:06 2026 :: Log Trentlin [30492]: killed a gibdo
+Sat Nov 14 14:01:06 2026 :: Log Trentlin [30492]: coin +5 gold
+Sat Nov 14 14:01:06 2026 :: Log Trentlin [30492]: coin +90 silver
+Sat Nov 14 14:01:06 2026 :: Log Trentlin [30492]: coin +53 copper
+Sat Nov 14 14:01:06 2026 :: Log Trentlin [30492]: coin +25 gold
+Sat Nov 14 14:01:08 2026 :: Log Trentlin [30492]: sac co
+Sat Nov 14 14:01:08 2026 :: Log Trentlin [30492]: coin +62 copper
+Sat Nov 14 14:01:08 2026 :: Log Trentlin [30492]: l
+Sat Nov 14 14:01:10 2026 :: Log Trentlin [30492]: k kee
+Sat Nov 14 14:01:10 2026 :: Log Trentlin [30492]: killed a keese
+Sat Nov 14 14:01:10 2026 :: Log Trentlin [30492]: coin +75 silver
+Sat Nov 14 14:01:10 2026 :: Log Trentlin [30492]: coin +198 copper
+Sat Nov 14 14:01:10 2026 :: Log Trentlin [30492]: coin +41 gold
+Sat Nov 14 14:01:14 2026 :: Log Trentlin [30492]: w
+Sat Nov 14 14:01:15 2026 :: Log Trentlin [30492]: open west
+Sat Nov 14 14:01:17 2026 :: Log Trentlin [30492]: i
+Sat Nov 14 14:01:18 2026 :: Log Trentlin [30492]: unlock west
+Sat Nov 14 14:01:22 2026 :: Log Trentlin [30492]: open west
+Sat Nov 14 14:01:22 2026 :: Log Trentlin [30492]: w
+Sat Nov 14 14:01:22 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30492
+Sat Nov 14 14:01:23 2026 :: Log Trentlin [30491]: w
+Sat Nov 14 14:01:23 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30491
+Sat Nov 14 14:01:25 2026 :: Log Trentlin [30490]: open west
+Sat Nov 14 14:01:28 2026 :: Log Trentlin [30490]: unlock west
+Sat Nov 14 14:01:31 2026 :: Log Trentlin [30490]: k po
+Sat Nov 14 14:01:34 2026 :: Log Trentlin [30490]: fists
+Sat Nov 14 14:01:41 2026 :: Log Trentlin [30490]: fists
+Sat Nov 14 14:01:46 2026 :: Log Trentlin [30490]: fists
+Sat Nov 14 14:01:46 2026 :: Log Trentlin [30490]: killed a pols voice
+Sat Nov 14 14:01:46 2026 :: Log Trentlin [30490]: coin +5 gold
+Sat Nov 14 14:01:46 2026 :: Log Trentlin [30490]: coin +28 silver
+Sat Nov 14 14:01:46 2026 :: Log Trentlin [30490]: coin +363 copper
+Sat Nov 14 14:01:46 2026 :: Log Trentlin [30490]: coin +62 gold
+Sat Nov 14 14:01:55 2026 :: Log Trentlin [30490]: l in co
+Sat Nov 14 14:01:57 2026 :: Log Trentlin [30490]: sac co
+Sat Nov 14 14:01:57 2026 :: Log Trentlin [30490]: coin +62 copper
+Sat Nov 14 14:01:58 2026 :: Log Trentlin [30490]: l
+Sat Nov 14 14:01:59 2026 :: Log Trentlin [30490]: e
+Sat Nov 14 14:01:59 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30490
+Sat Nov 14 14:02:01 2026 :: Log Trentlin [30491]: e
+Sat Nov 14 14:02:01 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30491
+Sat Nov 14 14:02:02 2026 :: Log Trentlin [30492]: s
+Sat Nov 14 14:02:02 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30492
+Sat Nov 14 14:02:03 2026 :: Log Trentlin [30488]: s
+Sat Nov 14 14:02:03 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30488
+Sat Nov 14 14:02:04 2026 :: Log Trentlin [30486]: s
+Sat Nov 14 14:02:04 2026 :: Log Trentlin [30484]: arrived (Level 5: Gray Junction) from 30486
+Sat Nov 14 14:02:05 2026 :: Log Trentlin [30484]: w
+Sat Nov 14 14:02:05 2026 :: Log Trentlin [30483]: arrived (Level 5: Hall of Heavy Tracks) from 30484
+Sat Nov 14 14:02:06 2026 :: Log Trentlin [30483]: n
+Sat Nov 14 14:02:06 2026 :: Log Trentlin [30485]: arrived (Level 5: Hushed Archive) from 30483
+Sat Nov 14 14:02:06 2026 :: Log Trentlin [30485]: e
+Sat Nov 14 14:02:06 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30485
+Sat Nov 14 14:02:08 2026 :: Log Trentlin [30486]: w
+Sat Nov 14 14:02:08 2026 :: Log Trentlin [30485]: arrived (Level 5: Hushed Archive) from 30486
+Sat Nov 14 14:02:10 2026 :: Log Trentlin [30485]: l in ches
+Sat Nov 14 14:02:11 2026 :: Log Trentlin [30485]: get map
+Sat Nov 14 14:02:15 2026 :: Log Trentlin [30485]: drop map
+Sat Nov 14 14:02:16 2026 :: Log Trentlin [30485]: e
+Sat Nov 14 14:02:16 2026 :: Log Trentlin [30486]: arrived (Level 5: Shuffling Passage) from 30485
+Sat Nov 14 14:02:16 2026 :: Log Trentlin [30486]: affects off: iron skin, levitate
+Sat Nov 14 14:02:18 2026 :: Log Trentlin [30486]: n
+Sat Nov 14 14:02:18 2026 :: Log Trentlin [30488]: arrived (Level 5: Lizard Shrine) from 30486
+Sat Nov 14 14:02:19 2026 :: Log Trentlin [30488]: n
+Sat Nov 14 14:02:19 2026 :: Log Trentlin [30492]: arrived (Level 5: Bat-Haunted Tomb) from 30488
+Sat Nov 14 14:02:19 2026 :: Log Trentlin [30492]: n
+Sat Nov 14 14:02:20 2026 :: Log Trentlin [30492]: w
+Sat Nov 14 14:02:20 2026 :: Log Trentlin [30491]: arrived (Level 5: Ossuary) from 30492
+Sat Nov 14 14:02:22 2026 :: Log Trentlin [30491]: iron
+Sat Nov 14 14:02:29 2026 :: Log Trentlin [30491]: k g
+Sat Nov 14 14:02:32 2026 :: Log Trentlin [30491]: fists
+Sat Nov 14 14:02:33 2026 :: Log Trentlin [30491]: killed a gibdo
+Sat Nov 14 14:02:33 2026 :: Log Trentlin [30491]: coin +5 gold
+Sat Nov 14 14:02:33 2026 :: Log Trentlin [30491]: coin +90 silver
+Sat Nov 14 14:02:33 2026 :: Log Trentlin [30491]: coin +53 copper
+Sat Nov 14 14:02:33 2026 :: Log Trentlin [30491]: coin +25 gold
+Sat Nov 14 14:02:40 2026 :: Log Trentlin [30491]: get key
+Sat Nov 14 14:02:40 2026 :: Log Trentlin [30491]: w
+Sat Nov 14 14:02:40 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30491
+Sat Nov 14 14:02:40 2026 :: Log Trentlin [30490]: w
+Sat Nov 14 14:02:41 2026 :: Log Trentlin [30490]: w
+Sat Nov 14 14:02:41 2026 :: Log Trentlin [30490]: unlock west
+Sat Nov 14 14:02:43 2026 :: Log Trentlin [30490]: open west
+Sat Nov 14 14:02:43 2026 :: Log Trentlin [30490]: w
+Sat Nov 14 14:02:43 2026 :: Log Trentlin [30489]: arrived (Level 5: Digdogger's Den) from 30490
+Sat Nov 14 14:02:45 2026 :: Log Trentlin [30489]: con d
+Sat Nov 14 14:02:52 2026 :: Log Trentlin [30489]: play recorder
+Sat Nov 14 14:02:54 2026 :: Log Trentlin [30489]: play recorder
+Sat Nov 14 14:02:55 2026 :: Log Trentlin [30489]: play recorder
+Sat Nov 14 14:02:56 2026 :: Log Trentlin [30489]: con d
+Sat Nov 14 14:03:02 2026 :: Log Trentlin [30489]: e
+Sat Nov 14 14:03:02 2026 :: Log Trentlin [30490]: arrived (Level 5: Whispering Gallery) from 30489
+Sat Nov 14 14:03:03 2026 :: Log Trentlin [30490]: w
+Sat Nov 14 14:03:03 2026 :: Log Trentlin [30489]: arrived (Level 5: Digdogger's Den) from 30490
+Sat Nov 14 14:03:06 2026 :: Log Trentlin [30489]: k d
+Sat Nov 14 14:03:12 2026 :: Log Trentlin [30489]: killed Digdogger
+Sat Nov 14 14:03:12 2026 :: Log Trentlin [30489]: coin +3 platinum
+Sat Nov 14 14:03:12 2026 :: Log Trentlin [30489]: coin +60 silver
+Sat Nov 14 14:03:12 2026 :: Log Trentlin [30489]: coin +96 copper
+Sat Nov 14 14:03:12 2026 :: Log Trentlin [30489]: coin +30 gold
+Sat Nov 14 14:03:16 2026 :: Log Trentlin [30489]: get all co
+Sat Nov 14 14:03:17 2026 :: Log Trentlin [30489]: l
+Sat Nov 14 14:03:20 2026 :: Log Trentlin [30489]: unlock north
+Sat Nov 14 14:03:21 2026 :: Log Trentlin [30489]: n
+Sat Nov 14 14:03:23 2026 :: Log Trentlin [30489]: open north
+Sat Nov 14 14:03:23 2026 :: Log Trentlin [30489]: n
+Sat Nov 14 14:03:23 2026 :: Log Trentlin [30493]: arrived (Level 5: Sanctum of Turning Lizards) from 30489
+Sat Nov 14 14:03:25 2026 :: Log Trentlin [30493]: open chest
+Sat Nov 14 14:03:27 2026 :: Log Trentlin [30493]: unlock chest
+Sat Nov 14 14:03:28 2026 :: Log Trentlin [30493]: open chest
+Sat Nov 14 14:03:29 2026 :: Log Trentlin [30493]: get all chest
+Sat Nov 14 14:03:32 2026 :: Log Trentlin [30493]: enter light
+Sat Nov 14 14:03:32 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30493
+Sat Nov 14 14:03:35 2026 :: Log Trentlin [30323]: i
+Sat Nov 14 14:03:40 2026 :: Log Trentlin [30323]: drop flail
+Sat Nov 14 14:03:41 2026 :: Log Trentlin [30323]: sac flail
+Sat Nov 14 14:03:41 2026 :: Log Trentlin [30323]: coin +66 copper
+Sat Nov 14 14:03:42 2026 :: Log Trentlin [30323]: i
+Sat Nov 14 14:03:45 2026 :: Log Trentlin [30323]: comp heart
+Sat Nov 14 14:03:59 2026 :: Log Trentlin [30323]: drop heart
+Sat Nov 14 14:04:02 2026 :: Log Trentlin [30323]: sac heart
+Sat Nov 14 14:04:02 2026 :: Log Trentlin [30323]: coin +66 copper
+Sat Nov 14 14:04:03 2026 :: Log Trentlin [30323]: i
+Sat Nov 14 14:04:14 2026 :: Log Trentlin [30323]: comp heart
+Sat Nov 14 14:04:20 2026 :: Log Trentlin [30323]: wear heart
+Sat Nov 14 14:04:22 2026 :: Log Trentlin [30323]: drop heart
+Sat Nov 14 14:04:23 2026 :: Log Trentlin [30323]: sac heart
+Sat Nov 14 14:04:23 2026 :: Log Trentlin [30323]: coin +40 copper
+Sat Nov 14 14:04:24 2026 :: Log Trentlin [30323]: i
+Sat Nov 14 14:04:26 2026 :: Log Trentlin [30323]: comp mail
+Sat Nov 14 14:04:28 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 14:04:33 2026 :: Log Trentlin [30323]: wear mail
+Sat Nov 14 14:04:35 2026 :: Log Trentlin [30323]: drop bre
+Sat Nov 14 14:04:36 2026 :: Log Trentlin [30323]: sac bre
+Sat Nov 14 14:04:36 2026 :: Log Trentlin [30323]: coin +40 copper
+Sat Nov 14 14:04:36 2026 :: Log Trentlin [30323]: i
+Sat Nov 14 14:04:39 2026 :: Log Trentlin [30323]: comp helm
+Sat Nov 14 14:04:42 2026 :: Log Trentlin [30323]: drop helm
+Sat Nov 14 14:04:46 2026 :: Log Trentlin [30323]: get helm
+Sat Nov 14 14:04:46 2026 :: Log Trentlin [30323]: sco
+Sat Nov 14 14:04:50 2026 :: Log Trentlin [30323]: comp helm
+Sat Nov 14 14:04:52 2026 :: Log Trentlin [30323]: drop helm
+Sat Nov 14 14:04:53 2026 :: Log Trentlin [30323]: sac helm
+Sat Nov 14 14:04:53 2026 :: Log Trentlin [30323]: coin +66 copper
+Sat Nov 14 14:04:54 2026 :: Log Trentlin [30323]: i
+Sat Nov 14 14:04:56 2026 :: Log Trentlin [30323]: comp ring
+Sat Nov 14 14:04:59 2026 :: Log Trentlin [30323]: affects off: iron skin
+Sat Nov 14 14:05:00 2026 :: Log Trentlin [30323]: drop ring
+Sat Nov 14 14:05:01 2026 :: Log Trentlin [30323]: sac ring
+Sat Nov 14 14:05:01 2026 :: Log Trentlin [30323]: coin +66 copper
+Sat Nov 14 14:05:01 2026 :: Log Trentlin [30323]: i
+Sat Nov 14 14:05:09 2026 :: Log Trentlin [30323]: play recorder 5
+Sat Nov 14 14:05:15 2026 :: Log Trentlin [30323]: play recorder 6
+Sat Nov 14 14:05:15 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30323

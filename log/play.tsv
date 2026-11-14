@@ -28170,3 +28170,168 @@
 1794664818	got	Trentlin	41	30480	hyrule.are	30227	a small key	key	1	0	get	the floor
 1794664818	cmd	Trentlin	41	30480	hyrule.are	standing	82	0	-	get	key	You get a small key.	-	-
 1794664818	cmd	Trentlin	41	30483	hyrule.are	standing	82	0	-	north		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
+1794664821	cmd	Trentlin	41	30483	hyrule.are	standing	82	1	-	north		The door is closed.	-	-
+1794664825	cmd	Trentlin	41	30483	hyrule.are	standing	82	0	-	open	north	It's locked.	-	-
+1794664828	cmd	Trentlin	41	30483	hyrule.are	standing	82	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794664828	cmd	Trentlin	41	30483	hyrule.are	standing	82	0	-	north		The door is closed.	-	-
+1794664830	cmd	Trentlin	41	30483	hyrule.are	standing	82	0	-	open	north	Ok.	-	-
+1794664831	cmd	Trentlin	41	30485	hyrule.are	standing	82	0	-	north		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794664834	cmd	Trentlin	41	30485	hyrule.are	standing	82	0	-	look	in ches	The Lizard's equipment chest contains: //      a raftmaster's cutlass //      a red Darknut shield	-	+
+1794664841	cmd	Trentlin	41	30486	hyrule.are	standing	82	0	-	east		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794664842	cmd	Trentlin	41	30488	hyrule.are	standing	82	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794664843	cmd	Trentlin	41	30492	hyrule.are	standing	82	0	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794664844	cmd	Trentlin	41	30492	hyrule.are	standing	82	0	-	west		The door is closed.	-	-
+1794664847	cmd	Trentlin	41	30492	hyrule.are	standing	82	0	-	unlock	west	You lack the key.	-	-
+1794664848	got	Trentlin	41	30492	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794664848	cmd	Trentlin	41	30492	hyrule.are	standing	82	0	-	get	all	You get a small key.	-	-
+1794664850	cmd	Trentlin	41	30492	hyrule.are	standing	82	0	-	west		The door is closed.	-	-
+1794664851	cmd	Trentlin	41	30492	hyrule.are	standing	82	0	-	open	west	It's locked.	-	-
+1794664859	laid	-	0	0	-	1257	component	56	a dragons claw	1524	gnome.are	scatter
+1794664860	cmd	Trentlin	41	30492	hyrule.are	standing	84	0	-	kill	g	Your punch >>> ANNIHILATES <<< a gibdo! // Your punch <<< ERADICATES >>> a gibdo!	-	-
+1794664866	coin	Trentlin	41	30492	hyrule.are	+50000	loot	(violence_update)	corpse of a gibdo	15341351792
+1794664866	coin	Trentlin	41	30492	hyrule.are	+9000	loot	(violence_update)	corpse of a gibdo	15341360792
+1794664866	coin	Trentlin	41	30492	hyrule.are	+53	loot	(violence_update)	corpse of a gibdo	15341360845
+1794664866	coin	Trentlin	41	30492	hyrule.are	+250000	loot	(violence_update)	corpse of a gibdo	15341610845
+1794664868	coin	Trentlin	41	30492	hyrule.are	+62	loot	sacrifice	corpse of a gibdo	15341610907
+1794664868	cmd	Trentlin	41	30492	hyrule.are	standing	78	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794664868	cmd	Trentlin	41	30492	hyrule.are	standing	78	0	-	look		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794664870	coin	Trentlin	41	30492	hyrule.are	+7500	loot	kill	corpse of a keese	15341618407
+1794664870	coin	Trentlin	41	30492	hyrule.are	+198	loot	kill	corpse of a keese	15341618605
+1794664870	coin	Trentlin	41	30492	hyrule.are	+410000	loot	kill	corpse of a keese	15342028605
+1794664870	cmd	Trentlin	41	30492	hyrule.are	standing	78	1	-	kill	kee	Your punch === OBLITERATES === a keese! // Your punch === OBLITERATES === a keese! // Your punch ^^^ DESTROYS ^^^ a keese!	-	+
+1794664874	cmd	Trentlin	41	30492	hyrule.are	standing	78	0	-	west		The door is closed.	-	-
+1794664875	cmd	Trentlin	41	30492	hyrule.are	standing	78	0	-	open	west	It's locked.	-	-
+1794664877	cmd	Trentlin	41	30492	hyrule.are	standing	78	0	-	inventory		You are carrying: //      a small key //      the four-crowned lion shield	-	+
+1794664878	cmd	Trentlin	41	30492	hyrule.are	standing	78	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794664882	cmd	Trentlin	41	30492	hyrule.are	standing	78	0	-	open	west	Ok.	-	-
+1794664882	cmd	Trentlin	41	30491	hyrule.are	standing	78	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794664883	cmd	Trentlin	41	30490	hyrule.are	standing	78	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794664885	cmd	Trentlin	41	30490	hyrule.are	standing	78	0	-	open	west	It's locked.	-	-
+1794664888	cmd	Trentlin	41	30490	hyrule.are	standing	78	0	-	unlock	west	You lack the key.	-	-
+1794664891	cmd	Trentlin	41	30490	hyrule.are	standing	78	0	-	kill	po	Your punch ^^^ DESTROYS ^^^ a pols voice! // A pols voice parries your attack.	-	-
+1794664894	cmd	Trentlin	41	30490	hyrule.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a pols voice. // Your fists of fury mauls a pols voice.	-	+
+1794664901	cmd	Trentlin	41	30490	hyrule.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a pols voice! // Your fists of fury MANGLES a pols voice!	-	+
+1794664906	coin	Trentlin	41	30490	hyrule.are	+50000	loot	fists	corpse of a pols voice	15342078605
+1794664906	coin	Trentlin	41	30490	hyrule.are	+2800	loot	fists	corpse of a pols voice	15342081405
+1794664906	coin	Trentlin	41	30490	hyrule.are	+363	loot	fists	corpse of a pols voice	15342081768
+1794664906	coin	Trentlin	41	30490	hyrule.are	+620000	loot	fists	corpse of a pols voice	15342701768
+1794664906	cmd	Trentlin	41	30490	hyrule.are	fighting	66	1	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a pols voice. // Your fists of fury devastates a pols voice!	-	+
+1794664915	cmd	Trentlin	41	30490	hyrule.are	standing	66	0	-	look	in co	Corpse of a pols voice contains: //      Nothing.	-	-
+1794664917	coin	Trentlin	41	30490	hyrule.are	+62	loot	sacrifice	-	15342701830
+1794664917	cmd	Trentlin	41	30490	hyrule.are	standing	66	0	-	sacrifice	co	The Gods give you 62 copper coins for your sacrifice.	-	-
+1794664918	cmd	Trentlin	41	30490	hyrule.are	standing	66	0	-	look		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794664919	cmd	Trentlin	41	30491	hyrule.are	standing	66	0	-	east		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794664921	cmd	Trentlin	41	30492	hyrule.are	standing	66	0	-	east		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794664922	cmd	Trentlin	41	30488	hyrule.are	standing	66	0	-	south		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794664923	cmd	Trentlin	41	30486	hyrule.are	standing	66	0	-	south		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794664924	cmd	Trentlin	41	30484	hyrule.are	standing	66	0	-	south		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794664925	cmd	Trentlin	41	30483	hyrule.are	standing	66	0	-	west		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794664926	cmd	Trentlin	41	30485	hyrule.are	standing	66	0	-	north		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794664926	cmd	Trentlin	41	30486	hyrule.are	standing	66	0	-	east		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794664928	cmd	Trentlin	41	30485	hyrule.are	standing	66	0	-	west		Level 5: Hushed Archive //   This silent chamber is lined with niches holding crumbling clay tablets // etched with lizard glyphs, and one wall is scratched with the outline of	-	+
+1794664930	cmd	Trentlin	41	30485	hyrule.are	standing	66	0	-	look	in ches	The Lizard's equipment chest contains: //      a raftmaster's cutlass //      a red Darknut shield	-	+
+1794664931	got	Trentlin	41	30485	hyrule.are	30484	the Lizard dungeon map	map	27	0	get	the floor
+1794664931	cmd	Trentlin	41	30485	hyrule.are	standing	66	0	-	get	map	You get the Lizard dungeon map.	-	-
+1794664935	cmd	Trentlin	41	30485	hyrule.are	standing	66	0	-	drop	map	You drop the Lizard dungeon map.	-	-
+1794664936	cmd	Trentlin	41	30486	hyrule.are	standing	66	0	-	east		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794664936	laid	-	0	0	-	1265	herb	51	a piece of kelp	29094	korzath1.are	scatter
+1794664936	laid	-	0	0	-	1266	herb	44	a sprig of aconite	29011	korzath1.are	scatter
+1794664936	laid	-	0	0	-	1267	component	72	a minotaur's ear	2141	hood.are	scatter
+1794664938	cmd	Trentlin	41	30488	hyrule.are	standing	69	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794664939	cmd	Trentlin	41	30492	hyrule.are	standing	69	0	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794664939	cmd	Trentlin	41	30492	hyrule.are	standing	69	0	-	north		Alas, you cannot go that way.	-	-
+1794664940	cmd	Trentlin	41	30491	hyrule.are	standing	69	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794664942	cmd	Trentlin	41	30491	hyrule.are	standing	69	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794664949	cmd	Trentlin	41	30491	hyrule.are	standing	69	0	-	kill	g	Your punch === OBLITERATES === a gibdo! // Your punch misses a gibdo.	-	-
+1794664952	cmd	Trentlin	41	30491	hyrule.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a gibdo! // Your fists of fury maims a gibdo!	-	+
+1794664953	coin	Trentlin	41	30491	hyrule.are	+50000	loot	(violence_update)	corpse of a gibdo	15342751830
+1794664953	coin	Trentlin	41	30491	hyrule.are	+9000	loot	(violence_update)	corpse of a gibdo	15342760830
+1794664953	coin	Trentlin	41	30491	hyrule.are	+53	loot	(violence_update)	corpse of a gibdo	15342760883
+1794664953	coin	Trentlin	41	30491	hyrule.are	+250000	loot	(violence_update)	corpse of a gibdo	15343010883
+1794664960	got	Trentlin	41	30491	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794664960	cmd	Trentlin	41	30491	hyrule.are	standing	69	0	-	get	key	You get a small key.	-	-
+1794664960	cmd	Trentlin	41	30490	hyrule.are	standing	69	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794664960	cmd	Trentlin	41	30490	hyrule.are	standing	69	0	-	west		The door is closed.	-	-
+1794664961	cmd	Trentlin	41	30490	hyrule.are	standing	69	0	-	west		The door is closed.	-	-
+1794664961	cmd	Trentlin	41	30490	hyrule.are	standing	69	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794664963	cmd	Trentlin	41	30490	hyrule.are	standing	69	0	-	open	west	Ok.	-	-
+1794664963	cmd	Trentlin	41	30489	hyrule.are	standing	69	0	-	west		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794664965	cmd	Trentlin	41	30489	hyrule.are	standing	69	1	-	consider	d	Digdogger is well below your level. // Digdogger has about twice your hit points. // Digdogger is far too big to hurt as it is: something must make it smaller first.	-	+
+1794664972	cmd	Trentlin	41	30489	hyrule.are	standing	69	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Digdogger shudders at the melody and shrinks to a third of its size -- now a blade can bite!	-	-
+1794664974	cmd	Trentlin	41	30489	hyrule.are	standing	69	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794664975	cmd	Trentlin	41	30489	hyrule.are	standing	69	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794664975	census	-	0	0	-	herbs=36/150 components=24/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=25 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=36 mobs_fought=7 secs=900
+1794664976	cmd	Trentlin	41	30489	hyrule.are	standing	69	0	-	consider	d	Digdogger is well below your level. // Digdogger has about twice your hit points. // Blow for blow, you would need about 6 rounds to bring Digdogger down; it would need about 18 rounds for you.	-	+
+1794664982	cmd	Trentlin	41	30490	hyrule.are	standing	69	0	-	east		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794664983	cmd	Trentlin	41	30489	hyrule.are	standing	69	0	-	west		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794664986	cmd	Trentlin	41	30489	hyrule.are	standing	69	0	-	kill	d	Your punch ^^^ DESTROYS ^^^ Digdogger! // Your punch ^^^ DESTROYS ^^^ Digdogger!	-	-
+1794664989	skill	Trentlin	41	30489	hyrule.are	dodge	80	81	success	(violence_update)
+1794664992	got	Trentlin	41	30489	hyrule.are	30634	the Lizard's key	key	27	0	(violence_update)	-
+1794664992	coin	Trentlin	41	30489	hyrule.are	+3000000	loot	(violence_update)	corpse of Digdogger	15346010883
+1794664992	coin	Trentlin	41	30489	hyrule.are	+6000	loot	(violence_update)	corpse of Digdogger	15346016883
+1794664992	coin	Trentlin	41	30489	hyrule.are	+96	loot	(violence_update)	corpse of Digdogger	15346016979
+1794664992	coin	Trentlin	41	30489	hyrule.are	+300000	loot	(violence_update)	corpse of Digdogger	15346316979
+1794664996	got	Trentlin	41	30489	hyrule.are	30728	an urchin-spine ring	armor	33	54450000	get	corpse of Digdogger
+1794664996	got	Trentlin	41	30489	hyrule.are	30729	a lizard-crest helm	armor	33	54450000	get	corpse of Digdogger
+1794664996	got	Trentlin	41	30489	hyrule.are	30670	a coat of urchin-spine mail	armor	33	54450000	get	corpse of Digdogger
+1794664996	got	Trentlin	41	30489	hyrule.are	30374	the Heart Guard of the Lizard	armor	33	54450000	get	corpse of Digdogger
+1794664996	got	Trentlin	41	30489	hyrule.are	30586	the Digdogger urchin flail	weapon	33	65340000	get	corpse of Digdogger
+1794664996	got	Trentlin	41	30489	hyrule.are	30595	the Lizard's Heart Container	armor	33	54450000	get	corpse of Digdogger
+1794664996	cmd	Trentlin	41	30489	hyrule.are	standing	63	0	-	get	all co	You get an urchin-spine ring from corpse of Digdogger. // You get a lizard-crest helm from corpse of Digdogger. // You get a coat of urchin-spine mail from corpse of Digdogger.	-	+
+1794664997	sightings	Trentlin	41	30489	hyrule.are	mob	58:1/0/0 201:1/0/0 2435:4/0/0 2434:4/0/0 4445:1/0/0 4457:1/0/0 5204:1/0/0 5201:10/0/0 5207:4/0/0 5206:1/0/0 5200:1/0/0 5203:1/0/0 4202:2/0/0 4201:2/0/0 10:1/0/0 9543:1/0/0 9562:6/0/0 9542:2/0/0 9519:1/0/0 9520:2/0/0 9533:3/0/0 9592:6/0/0 9540:1/0/0 9537:1/0/0 9568:3/0/0 9544:7/0/0 16012:3/0/0 16008:2/2/2 16010:1/0/0 16011:1/0/0 16009:1/1/0 9582:3/0/0 9541:1/0/0 9538:1/0/0 9561:3/0/0 29031:2/1/0 29012:5/0/0 29013:3/0/0 29032:1/0/0 29015:2/0/0 29020:2/2/2 29017:3/3/0 2433:3/0/0 52:1/0/0 2432:1/0/0 2430:3/0/0 4448:1/0/0 4459:1/0/0 2101:16/0/0 2107:3/0/0 2104:3/0/0 2105:3/0/0
+1794664997	sightings	Trentlin	41	30489	hyrule.are	mob	2106:10/0/0 2102:15/0/0 4458:1/0/0 2401:1/0/0 6102:2/0/0 6103:2/0/0 6101:2/0/0 923:8/0/0 919:1/0/0 918:2/2/2 53:1/0/0 4468:1/0/0 4456:1/0/0 6115:1/0/0 15018:1/0/0 15029:2/0/0 32222:1/0/0 31132:3/0/0 31202:2/0/0 32372:1/0/0 30305:1/1/0 32353:1/0/0 31064:1/0/0 32084:2/1/0 30350:1/0/0 31194:4/3/0 31184:1/0/0 31204:1/0/0 31114:1/1/0 31134:1/0/0 30309:1/1/0
+1794664997	sightings	Trentlin	41	30489	hyrule.are	item	5219:1/0 5228:1/0 25042:1/1 29002:1/1 13:1/0 25041:1/1 12:1/0 6106:1/0 4446:1/0 30227:4/4 30482:1/0 30339:1/0 30484:1/1
+1794664997	cmd	Trentlin	41	30489	hyrule.are	standing	63	0	-	look		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794665000	cmd	Trentlin	41	30489	hyrule.are	standing	63	0	-	unlock	north	There is a flash of light as you unlock the door.	-	-
+1794665001	cmd	Trentlin	41	30489	hyrule.are	standing	63	0	-	north		The door is closed.	-	-
+1794665003	cmd	Trentlin	41	30489	hyrule.are	standing	63	0	-	open	north	Ok.	-	-
+1794665003	cmd	Trentlin	41	30493	hyrule.are	standing	63	0	-	north		Level 5: Sanctum of Turning Lizards //   Lizards carved in pale grey stone line this quiet sanctum above the // battered den, every one turning its head toward an iron-banded chest locked	-	+
+1794665005	cmd	Trentlin	41	30493	hyrule.are	standing	63	0	-	open	chest	It's locked.	-	-
+1794665007	cmd	Trentlin	41	30493	hyrule.are	standing	63	0	-	unlock	chest	*Click*	-	-
+1794665008	achieved	Trentlin	41	30493	hyrule.are	hyrule-chest-5	22	2279	open
+1794665008	cmd	Trentlin	41	30493	hyrule.are	standing	63	0	-	open	chest	Ok. //                     ACHIEVEMENT EARNED // The Lizard's Cache  +22 points	-	+
+1794665009	cmd	Trentlin	41	30493	hyrule.are	standing	63	0	-	get	all chest	You already hold the fifth Triforce shard; one is all the Triforce needs.	-	-
+1794665012	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	enter	light	You enter the Lizard's returning light // Your stomach flip flops. Everything goes black for a moment. // The Lizard's Gate	-	+
+1794665012	item	Trentlin	41	30323	hyrule.are	30634	the Lizard's key	type=key level=27 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 5
+1794665015	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	inventory		You are carrying: //      (Glowing) the Lizard's Heart Container //      (Glowing) the Digdogger urchin flail	-	+
+1794665020	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	drop	flail	You drop the Digdogger urchin flail.	-	-
+1794665021	coin	Trentlin	41	30323	hyrule.are	+66	loot	sacrifice	-	15346317045
+1794665021	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	sacrifice	flail	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794665022	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	inventory		You are carrying: //      (Glowing) the Lizard's Heart Container //      the Heart Guard of the Lizard	-	+
+1794665025	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	compare	heart	A) the Lizard's Heart Container (level 33) // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794665039	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	drop	heart	You drop the Lizard's Heart Container.	-	-
+1794665042	coin	Trentlin	41	30323	hyrule.are	+66	loot	sacrifice	-	15346317111
+1794665042	cmd	Trentlin	41	30323	hyrule.are	standing	63	1	-	sacrifice	heart	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794665043	cmd	Trentlin	41	30323	hyrule.are	standing	63	0	-	inventory		You are carrying: //      the Heart Guard of the Lizard //      a coat of urchin-spine mail	-	+
+1794665048	laid	-	0	0	-	1276	herb	38	a foxglove flower	7232	sewer.are	scatter
+1794665048	laid	-	0	0	-	1277	component	69	a basilisks tongue	29260	korzath2.are	scatter
+1794665054	cmd	Trentlin	41	30323	hyrule.are	standing	64	0	-	compare	heart	A) the Heart Guard of the Lizard (level 33) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794665060	cmd	Trentlin	41	30323	hyrule.are	standing	64	0	-	wear	heart	You stop using the Heart Guard of the Manji. // You wear the Heart Guard of the Lizard around your neck.	-	-
+1794665062	cmd	Trentlin	41	30323	hyrule.are	standing	64	0	-	drop	heart	You drop the Heart Guard of the Manji.	-	-
+1794665063	coin	Trentlin	41	30323	hyrule.are	+40	loot	sacrifice	-	15346317151
+1794665063	cmd	Trentlin	41	30323	hyrule.are	standing	64	0	-	sacrifice	heart	The Gods give you 40 copper coins for your sacrifice.	-	-
+1794665064	cmd	Trentlin	41	30323	hyrule.are	standing	64	0	-	inventory		You are carrying: //      a coat of urchin-spine mail //      a lizard-crest helm	-	+
+1794665066	cmd	Trentlin	41	30323	hyrule.are	standing	64	0	-	compare	mail	A) a coat of urchin-spine mail (level 33) // B) a bloom-plated breastplate (level 20), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794665073	cmd	Trentlin	41	30323	hyrule.are	standing	64	0	-	wear	mail	You stop using a bloom-plated breastplate. // You wear a coat of urchin-spine mail on your body.	-	-
+1794665075	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	drop	bre	You drop a bloom-plated breastplate.	-	-
+1794665076	coin	Trentlin	41	30323	hyrule.are	+40	loot	sacrifice	-	15346317191
+1794665076	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	sacrifice	bre	The Gods give you 40 copper coins for your sacrifice.	-	-
+1794665076	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	inventory		You are carrying: //      a lizard-crest helm //      an urchin-spine ring	-	+
+1794665079	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	compare	helm	A) a lizard-crest helm (level 33) // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794665082	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	drop	helm	You drop a lizard-crest helm.	-	-
+1794665086	got	Trentlin	41	30323	hyrule.are	30729	a lizard-crest helm	armor	33	54450000	get	the floor
+1794665086	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	get	helm	You get a lizard-crest helm.	-	-
+1794665086	state	Trentlin	41	30323	hyrule.are	lvl=41 hp=573/855 mana=1313/1818 mv=462/462 align=23 exp=95144 coin=30837598 bank=15315479593 qp=3820 prac=21 train=4 stash=64/75 remorts=1
+1794665086	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	score		| Name:       Trentlin | Level:      41 | Class:        Monk | // | Played:     38 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794665090	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	compare	helm	A) a lizard-crest helm (level 33) // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794665092	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	drop	helm	You drop a lizard-crest helm.	-	-
+1794665093	coin	Trentlin	41	30323	hyrule.are	+66	loot	sacrifice	-	15346317257
+1794665093	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	sacrifice	helm	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794665094	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	inventory		You are carrying: //      an urchin-spine ring //      the four-crowned lion shield	-	+
+1794665096	cmd	Trentlin	41	30323	hyrule.are	standing	67	0	-	compare	ring	A) an urchin-spine ring (level 33) // B) a sapphire ring (level 34), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1794665100	cmd	Trentlin	41	30323	hyrule.are	standing	70	0	-	drop	ring	You drop an urchin-spine ring.	-	-
+1794665101	coin	Trentlin	41	30323	hyrule.are	+66	loot	sacrifice	-	15346317323
+1794665101	cmd	Trentlin	41	30323	hyrule.are	standing	70	0	-	sacrifice	ring	The Gods give you 66 copper coins for your sacrifice.	-	-
+1794665101	cmd	Trentlin	41	30323	hyrule.are	standing	70	0	-	inventory		You are carrying: //      the four-crowned lion shield //      (Glowing) the first Triforce shard	-	+
+1794665109	cmd	Trentlin	41	30323	hyrule.are	standing	70	0	-	play	recorder 5	You play the Recorder, and an ancient melody fills the room. // The wind circles you and settles: you are already at Level 5's door. // PLAY RECORDER <level> goes to another -- 1 2 3 4 5 6 7 8 9.	-	-
+1794665115	cmd	Trentlin	41	30282	hyrule.are	standing	70	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Dragon's Gate	-	+

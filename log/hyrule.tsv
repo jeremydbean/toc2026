@@ -81,3 +81,23 @@
 1794664789	seal	Trentlin	41	1	Monk 	30477	L5	obj=30502 obj_name=a_cracked_north_wall dir=0 how=bomb
 1794664815	cleared	Trentlin	41	1	Monk 	30480	L5	foes=0
 1794664818	got	Trentlin	41	1	Monk 	30480	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794664848	got	Trentlin	41	1	Monk 	30492	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794664870	cleared	Trentlin	41	1	Monk 	30492	L5	foes=0
+1794664906	cleared	Trentlin	41	1	Monk 	30490	L5	foes=0
+1794664931	got	Trentlin	41	1	Monk 	30485	L5	obj=30484 obj_name=the_Lizard_dungeon_map type=map obj_level=27 how=get
+1794664953	cleared	Trentlin	41	1	Monk 	30491	L5	foes=0
+1794664960	got	Trentlin	41	1	Monk 	30491	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794664986	engage	Trentlin	41	1	Monk 	30489	L5	foe=30309 foe_name=Digdogger foe_hp=33 foe_max=2002 party=1 levels=41 classes=Monk  hps=69 buffs=-
+1794664992	guardian-down	Trentlin	41	1	Monk 	30489	L5	foe=30309 foe_name=Digdogger secs=6 foe_max=2002 party=1 levels=41 classes=Monk  hps=63 buffs=-
+1794664992	got	Trentlin	41	1	Monk 	30489	L5	obj=30634 obj_name=the_Lizard's_key type=key obj_level=27 how=(violence_update)
+1794664992	cleared	Trentlin	41	1	Monk 	30489	L5	foes=0
+1794664996	got	Trentlin	41	1	Monk 	30489	L5	obj=30728 obj_name=an_urchin-spine_ring type=armor obj_level=33 how=get
+1794664996	got	Trentlin	41	1	Monk 	30489	L5	obj=30729 obj_name=a_lizard-crest_helm type=armor obj_level=33 how=get
+1794664996	got	Trentlin	41	1	Monk 	30489	L5	obj=30670 obj_name=a_coat_of_urchin-spine_mail type=armor obj_level=33 how=get
+1794664996	got	Trentlin	41	1	Monk 	30489	L5	obj=30374 obj_name=the_Heart_Guard_of_the_Lizard type=armor obj_level=33 how=get
+1794664996	got	Trentlin	41	1	Monk 	30489	L5	obj=30586 obj_name=the_Digdogger_urchin_flail type=weapon obj_level=33 how=get
+1794664996	got	Trentlin	41	1	Monk 	30489	L5	obj=30595 obj_name=the_Lizard's_Heart_Container type=armor obj_level=33 how=get
+1794665012	leave	Trentlin	41	1	Monk 	30493	L5	to=over how=enter secs=231 hp=63
+1794665012	enter	Trentlin	41	1	Monk 	30323	over	from=L5 how=enter hp=63
+1794665012	crumbled	Trentlin	41	1	Monk 	30323	over	dungeon=5 maps=0 compasses=0 keys=0 guardian_keys=1 why=left how=(hyrule_crumble_update)
+1794665086	got	Trentlin	41	1	Monk 	30323	over	obj=30729 obj_name=a_lizard-crest_helm type=armor obj_level=33 how=get
