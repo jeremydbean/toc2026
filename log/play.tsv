@@ -26144,3 +26144,6 @@
 1794625311	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
 1794625407	laid	-	0	0	-	1027	herb	52	an asparagus shoot	10035	glitter.are	scatter
 1794625407	laid	-	0	0	-	1028	component	55	a unicorn horn	4157	moria.are	scatter
+1794625606	laid	-	0	0	-	1029	herb	53	a huckleberry	308	plains.are	scatter
+1794625618	census	-	0	0	-	herbs=26/150 components=13/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=11 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=42 mobs_fought=11 secs=900
+1794625711	laid	-	0	0	-	1030	herb	42	a marjoram plant	7744	ultima.are	scatter
