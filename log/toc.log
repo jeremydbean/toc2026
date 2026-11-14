@@ -297927,3 +297927,10 @@ Sat Nov 14 06:09:28 2026 :: Automated backup started.
 Sat Nov 14 06:09:28 2026 :: Daily backup started.
 Sat Nov 14 06:09:29 2026 :: Automated backup complete.
 Sat Nov 14 06:09:30 2026 :: Daily backup complete.
+Sat Nov 14 06:10:12 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 06:13:30 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 14 06:14:24 2026 :: Sock.sinaddr:  4.148.17.168
+Sat Nov 14 06:14:24 2026 :: EOF encountered on read.
+Sat Nov 14 06:14:24 2026 :: Connection guard: 4.148.17.168 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 14 06:14:24 2026 :: Sock.sinaddr:  4.148.17.168
+Sat Nov 14 06:14:24 2026 :: Connection guard: 4.148.17.168 closed before a password prompt (strike 2 of 6 in 6 hours).
