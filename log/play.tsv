@@ -28823,3 +28823,13 @@
 1794677736	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 32 quest points.	-	-
 1794677736	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=354/983 align=922 exp=252749 coin=2267211225 bank=24824061842 qp=2277 prac=36 train=76 stash=93/350 remorts=3
 1794677736	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794677841	laid	-	0	0	-	926	herb	50	a head of cabbage	4328	dresden.are	scatter
+1794677841	laid	-	0	0	-	927	herb	35	a sprig of angelica	4409	dresden.are	scatter
+1794677841	laid	-	0	0	-	928	component	88	a vial of green slime	15168	campus.are	scatter
+1794677895	laid	-	0	0	-	929	herb	50	a head of cabbage	2158	hood.are	scatter
+1794677895	laid	-	0	0	-	930	herb	49	a pomegranate	2134	hood.are	scatter
+1794677895	laid	-	0	0	-	931	component	54	eye of newt	656	ofcol.are	scatter
+1794677912	census	-	0	0	-	herbs=22/150 components=7/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=27 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=21 mobs_fought=0 secs=900
+1794677937	laid	-	0	0	-	932	herb	34	an amaranth plant	8766	kerofk.are	scatter
+1794677937	laid	-	0	0	-	933	herb	41	a sprig of mistletoe	8735	kerofk.are	scatter
+1794677992	laid	-	0	0	-	934	herb	52	an asparagus shoot	9700	newthalo.are	scatter

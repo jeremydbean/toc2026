@@ -301569,3 +301569,7 @@ Sat Nov 14 17:35:33 2026 :: Log Alaric [2497]: quest complete: 138p 71g 62s 26c,
 Sat Nov 14 17:35:33 2026 :: Snapshot of Alaric taken before quest: Alaric.20261114_173533.quest (PRESTORE Alaric to see it).
 Sat Nov 14 17:35:36 2026 :: Log Alaric [2497]: aq ga no
 Sat Nov 14 17:35:36 2026 :: Log Alaric [2497]: sc
+Sat Nov 14 17:38:10 2026 :: Cartographer: left room 343 (Dark smelly tunnels, plains.are) (his visit is over).
+Sat Nov 14 17:38:52 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 17:38:59 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 14 17:39:42 2026 :: Treasure goblin: vanished from room 7584 (A meditation chamber, astral.are) (too long in one area).
