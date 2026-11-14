@@ -75,5 +75,65 @@ class SeasonalMapTests(unittest.TestCase):
                          % (plain_maps, season_maps))
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class SeasonIdMigrationTests(unittest.TestCase):
+    def test_holiday_copy_ids_move_to_their_area_at_login(self) -> None:
+        """Visits and maps saved during Hallows End 2026 sat under the
+        copy's own id; the login fix 20261114-season-area-ids moves them to
+        the base area, once, and says so."""
+        import re
+        copy = {
+            "map-areas": fnv_area_id("midennir_halloween.are"),
+            "quest-areas": fnv_area_id("dresden_halloween.are"),
+            "areas": fnv_area_id("limbo_halloween.are"),
+        }
+        base = {
+            "map-areas": fnv_area_id("midennir.are"),
+            "quest-areas": fnv_area_id("dresden.are"),
+            "areas": fnv_area_id("limbo.are"),
+        }
+        with LiveMud(extra_env={"TOC_SEASON": "none"}) as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zseasonids", PW)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zseasonids", Levl=10, Room=TEMPLE)
+            path = mud.player_dir / "Zseasonids"
+            # A fixture is a new character, marked for every fix: unmark it.
+            path.write_text(re.sub(r"(?m)^Fixes .*\n", "",
+                                   path.read_text(encoding="latin-1")),
+                            encoding="latin-1", newline="")
+            for name, ident in copy.items():
+                append_player_line(mud, "Zseasonids", "AchSet %s %d ~" % (name, ident))
+
+            with mud.connect(timeout=120) as walker:
+                walker.send_raw(bytes([IAC, DO, TELOPT_GMCP]))
+                login(walker, "Zseasonids", PW)
+                said = walker.drain(2.0)
+                self.assertIn("counted as the areas they stand for", said)
+                self.assertTrue(knows(known_ranges(walker), MIDENNIR_ROOM),
+                                "a Miden'nir map learned in season is honoured")
+                walker.sync("save")
+                walker.send("quit")
+                self.assertTrue(walker.wait_closed())
+
+            saved = path.read_text(encoding="latin-1")
+            ids = {}
+            for line in saved.split("\n"):
+                parts = line.split()
+                if parts[:1] == ["AchSet"] and len(parts) > 2:
+                    ids.setdefault(parts[1], set()).update(
+                        int(t) for t in parts[2:] if t.isdigit())
+            for name in copy:
+                self.assertNotIn(copy[name], ids.get(name, set()), name)
+                self.assertIn(base[name], ids.get(name, set()), name)
+            self.assertIn("20261114-season-area-ids", saved)
+
+            with mud.connect(timeout=120) as again:
+                login(again, "Zseasonids", PW)
+                self.assertNotIn("counted as the areas they stand for", again.drain(2.0))
+                again.send("quit")
+
+
 if __name__ == "__main__":
     unittest.main()

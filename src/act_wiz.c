@@ -2933,20 +2933,37 @@ void do_switch( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    /* Trust, deliberately: this picks SWITCH's own message over the
-       werewolf shapeshift below, so anybody the command table let type
-       SWITCH must take this branch (command authority, not staff-ness). */
-    if( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+    /* Possession is staff's, by level (owner, 2026-11-12: trusted players
+       act as mortals across the board). A mortal given trust may type
+       SWITCH and is told so, as INVULN tells them: through a mobile they
+       acted at their trust past the PK rules, with kills credited to it
+       (review, 2026-11-14). The werewolf shapeshift below (lycanthropy,
+       disabled) is the only other way in. */
+    if ( !is_staff( ch ) && ch->were_shape.name == NULL )
+    {
+	send_to_char( "Possessing a mobile is an immortal's power; your trust lets you\n\r"
+		      "type SWITCH, not use it.\n\r", ch );
+	return;
+    }
+
+    if ( is_staff( ch ) )
     {
 	snprintf(buf, sizeof(buf),"%s is now Possessed by you.\n\r",victim->name);
 	send_to_char( buf, ch );
     }
-    else if(ch->were_shape.name != NULL && strcmp(victim->name,"ghost") != 0)
+    else if(strcmp(victim->name,"ghost") != 0)
      {
+       ROOM_INDEX_DATA *hold = get_room_index( 9 );
+
+       if ( hold == NULL )
+       {
+	 send_to_char( "The change will not come.\n\r", ch );
+	 return;
+       }
        snprintf(buf, sizeof(buf),"You turn into a %s.\n\r",victim->name);
        send_to_char(buf,ch);
        char_from_room(ch);
-       char_to_room(ch,get_room_index(9) );
+       char_to_room(ch,hold);
        victim->were_shape = ch->were_shape;
      }
     /* A walk the body was on stops: walkto_update follows the descriptor,
@@ -3018,7 +3035,11 @@ void do_return( CHAR_DATA *ch, char *argument )
       char_to_room(human,ch->in_room);
       human->timer               = 0;
       SET_DESC_REF( ch, desc, NULL );
-      extract_char(ch,true);
+      /* extract_char returns a switched mobile before extracting it, and
+         extracted the beast a second time on its way out (review,
+         2026-11-14): leave a beast already going to that extraction. */
+      if ( !extract_char_returning )
+        extract_char(ch,true);
       return;
     }
     SET_DESC_REF( ch, desc, NULL );

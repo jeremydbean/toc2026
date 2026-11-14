@@ -5417,6 +5417,8 @@ Restrictions:
   - You cannot switch into a mob that already has a descriptor (i.e. one
     another immortal is already controlling).
   - You cannot switch into link-dead PCs.
+  - Possession is an immortal's: a mortal given trust may type SWITCH
+    but is refused.
 
 Use RETURN to exit the mob and return to your immortal body; QUIT
 also brings you back first.  SAVE saves your own character.  If the mob

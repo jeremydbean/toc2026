@@ -2940,6 +2940,10 @@ void extract_obj( OBJ_DATA *obj )
 /*
  * Extract a char from the world.
  */
+/* True while extract_char returns a switched mobile's player to their body:
+   the werewolf RETURN must not extract the beast itself then. */
+bool extract_char_returning = false;
+
 void extract_char( CHAR_DATA *ch, bool fPull )
 {
     CHAR_DATA *wch;
@@ -3017,7 +3021,11 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 	--ch->pIndexData->count;
 
     if ( ch->desc != NULL && ch->desc->original != NULL )
+    {
+	extract_char_returning = true;
 	do_return( ch, "" );
+	extract_char_returning = false;
+    }
 
     list_iterator_start( &iter, &character_list );
     while ( ( wch = list_iterator_next( &iter ) ) != NULL )

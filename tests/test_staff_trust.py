@@ -125,16 +125,14 @@ class StaffTrustSourceTests(unittest.TestCase):
 
     def test_no_staff_test_by_trust_is_left(self) -> None:
         """IS_TRUSTED( x, LEVEL_IMMORTAL ) asks whether somebody is staff
-        by trust. The one survivor picks SWITCH's message over the
-        werewolf branch: command authority, not staff-ness."""
+        by trust. The last one, SWITCH's, went on 2026-11-14: possession
+        is staff's by level."""
         found = []
         for name, text in sorted(self.sources.items()):
             for m in re.finditer(r"IS_TRUSTED\s*\([^;]*?LEVEL_IMMORTAL\s*\)", text):
                 line = text.count("\n", 0, m.start()) + 1
                 found.append("%s:%d" % (name, line))
-        switch = self.body("act_wiz.c", "do_switch")
-        self.assertEqual(len(found), 1, found)
-        self.assertIn("IS_TRUSTED(ch, LEVEL_IMMORTAL)", switch)
+        self.assertEqual(found, [])
         staff_compare = re.compile(r"get_trust\s*\([^)]*\)\s*(?:>=|<)\s*LEVEL_IMMORTAL")
         for name, text in sorted(self.sources.items()):
             with self.subTest(file=name):
@@ -187,13 +185,16 @@ class StaffTrustSourceTests(unittest.TestCase):
         snoop = self.sources["comm.c"]
         self.assertIn("if ( get_trust( snooper ) < snoop_level )", snoop)
 
-    def test_switch_does_not_drop_staff_into_the_werewolf_branch(self) -> None:
-        """The else arm moves the character to room 9 and copies a
-        were_shape onto the mobile. Anybody SWITCH's trust lets in must
-        take the first arm, so it stays trust's."""
+    def test_switch_is_staffs_and_never_drops_staff_into_the_werewolf_branch(self) -> None:
+        """Possession is staff's by level: a mortal given trust without a
+        werewolf shape is refused before anything moves, and staff take
+        the first arm, never the werewolf one (room 9, the were_shape)."""
         body = self.body("act_wiz.c", "do_switch")
-        self.assertIn("IS_TRUSTED(ch, LEVEL_IMMORTAL)", body)
-        self.assertLess(body.index("IS_TRUSTED"), body.index("were_shape"))
+        refusal = body.index("if ( !is_staff( ch ) && ch->were_shape.name == NULL )")
+        arm = body.index("if ( is_staff( ch ) )")
+        self.assertLess(refusal, arm)
+        self.assertLess(arm, body.index("victim->were_shape"))
+        self.assertLess(refusal, body.index("SET_CHAR_REF( ch->desc, character, victim )"))
 
 
 if __name__ == "__main__":

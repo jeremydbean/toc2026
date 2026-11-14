@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261114seasonareas 2026-11-14
+Fixed: areas you visited, mapped or explored during Hallows End are now
+counted as the areas they stand for. A map of Miden'nir learned during the
+holiday works again, and a holiday visit no longer counts as a second area.
+
+@ 20261114switchtrust 2026-11-14 staff
+SWITCH is an immortal's power: a mortal given trust may type it and is
+refused, as INVULN refuses them.
+
 @ 20261114charmorder 2026-11-14
 Charm: a charmed player still obeys ORDER in the room -- fighting, moving,
 giving, saying -- but no longer sets aliases, speaks on channels, tells,

@@ -228,6 +228,18 @@ static bool fix_hyrule_dungeon_leftovers( CHAR_DATA *ch )
     return true;
 }
 
+/* Visits and maps saved under a holiday copy's own name (Hallows End
+   2026, before the copy came to stand for its area): moved to the area. */
+static bool fix_season_area_ids( CHAR_DATA *ch )
+{
+    if ( achievement_season_ids_migrate( ch ) == 0 )
+        return false;
+    map_known_changed( ch );
+    send_to_char( "{0BA correction:{00 the areas you visited, mapped or explored during a "
+                  "holiday are now counted as the areas they stand for.\n\r", ch );
+    return true;
+}
+
 static const PLAYER_FIX player_fixes[] =
 {
     /* Creation gave every new non-mage the mage's starting groups,
@@ -257,6 +269,11 @@ static const PLAYER_FIX player_fixes[] =
        by level alone, as the crumbling does. */
     { "20261112-hyrule-crumble", "Hyrule dungeon items carried out of their dungeon",
       fix_hyrule_dungeon_leftovers, true },
+    /* Areas recorded under dresden_halloween.are and the other holiday
+       copies, moved to the base area (season_base_area, 2026-11-13).
+       Moving an id takes nothing from anybody, so staff too. */
+    { "20261114-season-area-ids", "holiday areas recorded under the copy's name",
+      fix_season_area_ids, true },
 };
 
 #define PLAYER_FIX_COUNT ( (int)( sizeof(player_fixes) / sizeof(player_fixes[0]) ) )

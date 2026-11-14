@@ -150,6 +150,13 @@ class TrustedMortalTests(unittest.TestCase):
                 place_sparring_guard(god, "Zgodly", FLOOR)
                 god.must("transfer ztrustee", "")
                 self.assertEqual(FLOOR, room_of(god, "ztrustee"))
+
+                # --- SWITCH: possession is an immortal's (2026-11-14). ---
+                refused = trustee.sync("switch sparring")
+                self.assertIn("immortal's power", refused)
+                self.assertNotIn("Possessed", refused)
+                self.assertIn("aren't switched", trustee.sync("return"))
+
                 before = hitpoints(trustee)
                 self.assertGreater(before, 0)
                 trustee.send("kill sparring")

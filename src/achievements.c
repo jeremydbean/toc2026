@@ -851,20 +851,65 @@ void achievement_free(CHAR_DATA *ch)
 
 /* A stable number for an area: its file name, hashed (FNV-1a, 31 bits).
    Area pointers and list order change with every boot. */
-long achievement_area_id(const AREA_DATA *area)
+static long area_file_id(const char *file)
 {
     unsigned long hash = 2166136261UL;
     const char *p;
 
-    if (area == NULL || area->file_name == NULL)
-        return -1;
-    /* A seasonal copy is the area it stands in for (season_base_area). */
-    for (p = season_base_area(area->file_name); *p != '\0'; p++)
+    for (p = file; *p != '\0'; p++)
     {
         hash ^= (unsigned char)LOWER(*p);
         hash = (hash * 16777619UL) & 0xFFFFFFFFUL;
     }
     return (long)(hash & 0x7FFFFFFFUL);
+}
+
+long achievement_area_id(const AREA_DATA *area)
+{
+    if (area == NULL || area->file_name == NULL)
+        return -1;
+    /* A seasonal copy is the area it stands in for (season_base_area). */
+    return area_file_id(season_base_area(area->file_name));
+}
+
+/* Visits, quest areas, maps learned and areas explored that were saved
+   under a seasonal copy's own name -- dresden_halloween.are and the rest,
+   before 2026-11-13 -- moved to the area the copy stands in for, so a map
+   learned during Hallows End is honoured and a visit is not counted as a
+   second area. Returns how many entries moved (the login fix
+   20261114-season-area-ids). A duplicate is dropped, never counted twice;
+   nothing earned is taken back. */
+int achievement_season_ids_migrate(CHAR_DATA *ch)
+{
+    static const char *const copies[] = {
+        "dresden_halloween.are", "limbo_halloween.are", "midennir_halloween.are",
+        "dresden_xmas.are", "limbo_xmas.are", "midennir_xmas.are", NULL
+    };
+    static const achievement_set sets[] = {
+        ACH_SET_AREAS, ACH_SET_QUEST_AREAS, ACH_SET_MAP_AREAS, ACH_SET_EXPLORED_AREAS
+    };
+    int moved = 0;
+    int i;
+    size_t s;
+
+    if (!achievement_is_player(ch))
+        return 0;
+    for (i = 0; copies[i] != NULL; i++)
+    {
+        long old_id = area_file_id(copies[i]);
+        long new_id = area_file_id(season_base_area(copies[i]));
+
+        if (old_id == new_id)
+            continue;
+        for (s = 0; s < sizeof(sets) / sizeof(sets[0]); s++)
+            if (achievement_set_has(ch, sets[s], old_id))
+            {
+                achievement_set_remove(ch, sets[s], old_id);
+                (void)achievement_set_insert(ch, (int)sets[s], new_id);
+                moved++;
+            }
+    }
+    return moved;
 }
 
 /* Whether a set holds an id, and how many it holds (maps.c reads the

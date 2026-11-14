@@ -2026,8 +2026,9 @@ it. Rules this leaves:
   map's always-known areas and GRANTMAP words. In season, Dresden and
   Limbo had stopped being always known on the map, and a map learned out
   of season was not honoured in it (`tests/test_maps_seasonal.py`).
-  Visits and maps recorded during Hallows End 2026 under the copies' ids
-  are not migrated.
+  Visits, quest areas, maps and explored areas recorded during Hallows
+  End 2026 under the copies' ids are moved to the base area by the login
+  fix `20261114-season-area-ids` (`achievement_season_ids_migrate`).
 - **The Python tools do not know the seasons.** `area_lint.py`,
   `scripts/check_exits.py` and the shop price test read `area.lst`, so they
   check the base files only; the generator is what keeps the copies
@@ -6082,13 +6083,17 @@ somebody else runs it at the immortal's trust. Rules (review, 2026-11-13;
   reconnecting; the idle purge skips a switched body
   (`body_is_switched_from`); every GMCP feed guards an NPC character;
   SWITCH stops a walk the body was on (`walkto_clear`).
-- **Not changed, for the owner to decide**: SWITCH is gated by trust, so a
-  mortal given immortal trust can switch into any mobile and act through
-  it (kills credited to the mobile, PK rules bypassed); `victim->comm` is
-  copied from the immortal at SWITCH and nothing is copied back at RETURN;
-  the lycanthrope branches of SWITCH and RETURN (`LYCANTHROPY_ENABLED` 0)
-  would, if enabled, call `char_to_room` with a NULL room and extract the
-  beast twice from `extract_char`.
+- **Possession is staff's, by level** (2026-11-14, the owner's best
+  judgement call): SWITCH refuses anybody `is_staff` does not name before
+  anything moves -- a mortal given trust acted through any mobile at that
+  trust, past the PK rules, with kills credited to it -- unless they hold a
+  werewolf shape (lycanthropy, `LYCANTHROPY_ENABLED` 0). That disabled
+  path is made safe: its room is checked before `char_to_room`, and
+  RETURN of a beast leaves the extraction to `extract_char` when called
+  from it (`extract_char_returning`), which extracted the beast twice.
+  `victim->comm` is copied from the immortal at SWITCH and nothing is
+  copied back at RETURN, on purpose: it is stock ROM, and copying back
+  would hand the immortal the mobile's settings.
 
 ## Charm, ORDER And Following
 
@@ -6384,9 +6389,8 @@ everywhere. The helpers:
   and CLONE's tiers, a command's own `get_trust(ch) < MAX_LEVEL` that
   mirrors the command table, help pages' levels (`do_help`), the creator's
   72. Never read `ch->trust` directly: it is 0 unless explicitly set.
-  One `IS_TRUSTED(ch, LEVEL_IMMORTAL)` survives on purpose: `do_switch`
-  picks SWITCH's message over the werewolf shapeshift below it, so anybody
-  the table let type SWITCH must take that arm.
+  None survive: SWITCH's last one went on 2026-11-14 (possession is
+  staff's by level; see Switched Characters).
 - A command a trusted mortal can start and that then refuses them a
   staff-only effect by level is expected, not a bug. Holy light is the one
   exception kept: HOLYLIGHT's sight (not of wizinvis, which is
