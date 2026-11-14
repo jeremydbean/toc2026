@@ -297989,3 +297989,25 @@ Sat Nov 14 08:09:28 2026 :: Connection guard: last hour 17 closed without a word
 Sat Nov 14 08:09:40 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 08:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 14 08:10:20 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 08:15:24 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 08:17:29 2026 :: Treasure goblin: vanished from room 9236 (Water Chamber, canyon.are) (too long in one area).
+Sat Nov 14 08:17:42 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Nov 14 08:17:46 2026 :: Log WebAdmin: fsave
+Sat Nov 14 08:17:52 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Nov 14 08:17:55 2026 :: Received signal 15; saving players and shutting down.
+Sat Nov 14 08:17:55 2026 :: Connection guard: 99.62.115.159 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 08:17:55 2026 :: Normal termination of game.
+Sat Nov 14 08:17:55 2026 ::  INIT OK 
+Sat Nov 14 08:17:55 2026 :: walkto_load: 157 destinations.
+Sat Nov 14 08:17:55 2026 :: changes_load: 336 entries.
+Sat Nov 14 08:17:55 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 18 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Sat Nov 14 08:17:55 2026 :: Serials: 962 character files read, 4 with a serial.
+Sat Nov 14 08:17:55 2026 :: Connection guard: 32 addresses remembered from before the boot, 3 paused now.
+Sat Nov 14 08:17:55 2026 :: Passwords: SHA-512 crypt self-test passed.
+Sat Nov 14 08:17:55 2026 :: Recovery ledger: 397 records (0 from before the check), 4 requests, 8 players.
+Sat Nov 14 08:17:55 2026 :: ROM is ready to rock on port 9000.
+Sat Nov 14 08:17:55 2026 :: Treasure goblin: appeared.
+Sat Nov 14 08:17:55 2026 :: Automated backup started.
+Sat Nov 14 08:17:55 2026 :: Daily backup started.
+Sat Nov 14 08:17:56 2026 :: Automated backup complete.
+Sat Nov 14 08:17:57 2026 :: Daily backup complete.
