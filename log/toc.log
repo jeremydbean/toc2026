@@ -303021,3 +303021,9 @@ Sat Nov 14 18:58:56 2026 :: Automated backup complete.
 Sat Nov 14 18:58:57 2026 :: Daily backup complete.
 Sat Nov 14 19:00:14 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 3 of 6 in 6 hours).
 Sat Nov 14 19:05:19 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 14 19:07:16 2026 :: Sock.sinaddr:  147.185.132.21
+Sat Nov 14 19:07:16 2026 :: EOF encountered on read.
+Sat Nov 14 19:07:16 2026 :: Connection guard: 147.185.132.21 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 14 19:09:00 2026 :: Treasure goblin: vanished from room 9549 (The Casbah, newthalo.are) (too long in one area).
+Sat Nov 14 19:09:54 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 14 19:10:24 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 1 of 6 in 6 hours).
