@@ -26615,3 +26615,5 @@
 1794632959	laid	-	0	0	-	1266	herb	38	a foxglove flower	29291	korzath2.are	scatter
 1794633197	laid	-	0	0	-	1267	component	86	an inert gelatinous cube	7833	valley.are	scatter
 1794633519	laid	-	0	0	-	1268	component	67	a beholder's eye	7861	valley.are	scatter
+1794633718	census	-	0	0	-	herbs=150/150 components=77/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=6 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794633862	laid	-	0	0	-	1269	component	83	a vial of thessalhydra venom	15003	campus.are	scatter
