@@ -29033,3 +29033,103 @@
 1794678480	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 2435:2/0/0 2434:3/0/0 4445:1/0/0 4457:1/0/0 9543:1/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9533:2/0/0 9592:5/0/0 9540:1/0/0 9537:1/0/0 9568:2/0/0 9544:3/0/0 29350:3/0/0 29352:2/0/0 29354:2/0/0 29351:2/0/0 29355:2/0/0 58:1/0/0 1706:1/0/0 1704:2/0/0 1702:2/0/0 1710:2/0/0 1711:2/0/0 4451:1/0/0 4458:1/0/0 4450:1/0/0 4452:1/0/0 7005:2/0/0 7006:2/0/0 7002:1/0/0 7004:1/0/0 7001:2/0/0 7008:1/0/0 7013:2/1/0 7044:1/0/0 7041:1/0/0 7043:1/0/0 7007:1/0/0 7045:1/0/0 7011:1/0/0 7046:1/0/0 7042:2/0/0 7203:6/0/0
 1794678480	sightings	Alaric	57	2497	dresden.are	item	4444:1/0 29360:1/0 25042:1/1 7300:1/0
 1794678480	session	Alaric	57	2497	dresden.are	quit	1539s	+0 levels	+0 exp	+139083714 copper	1 kills	0 deaths	1 quests	398 commands	2 refused	coin: loot 36g 74s 88c, quests 138p 71g 62s 26c	spent on: none	exp: none
+1794680002	area	Trentlin	41	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794680003	laid	-	0	0	-	851	herb	53	a huckleberry	7112	sewer.are	scatter
+1794680003	laid	-	0	0	-	852	component	71	a goblin's finger	947	olympus.are	scatter
+1794680004	cmd	Trentlin	41	4210	dresden.are	sleeping	100	0	-	wake		You wake and stand up.	-	-
+1794680005	cmd	Trentlin	41	4210	dresden.are	standing	100	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794680007	cmd	Trentlin	41	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794680007	cmd	Trentlin	41	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794680008	cmd	Trentlin	41	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794680008	cmd	Trentlin	41	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794680008	cmd	Trentlin	41	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794680009	cmd	Trentlin	41	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794680009	cmd	Trentlin	41	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794680011	cmd	Trentlin	41	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794680012	cmd	Trentlin	41	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794680012	cmd	Trentlin	41	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794680012	cmd	Trentlin	41	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794680012	cmd	Trentlin	41	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794680013	cmd	Trentlin	41	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794680014	quest	Trentlin	41	2497	dresden.are	emergency	recover	25042	The Heart of Tifarah	59	icekeep.are	5
+1794680014	cmd	Trentlin	41	2497	dresden.are	standing	100	12	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'A prized artifact - The Heart of Tifarah - has gone missing!'	-	+
+1794680020	cmd	Trentlin	41	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794680022	cmd	Trentlin	41	2401	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794680022	census	-	0	0	-	herbs=1/150 components=1/100 eggs=0 coin_piles=10	herbs_held=0 components_held=1 players=1	laid=2 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=2 mobs_fought=0 secs=900
+1794680024	cmd	Trentlin	41	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794680024	cmd	Trentlin	41	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794680024	cmd	Trentlin	41	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794680025	cmd	Trentlin	41	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794680025	cmd	Trentlin	41	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794680025	cmd	Trentlin	41	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794680025	cmd	Trentlin	41	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794680026	cmd	Trentlin	41	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794680026	cmd	Trentlin	41	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794680026	cmd	Trentlin	41	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794680026	cmd	Trentlin	41	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794680027	cmd	Trentlin	41	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794680027	cmd	Trentlin	41	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794680027	cmd	Trentlin	41	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794680027	area	Trentlin	41	300	plains.are	dresden.are	plains.are	25	north
+1794680027	cmd	Trentlin	41	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794680028	cmd	Trentlin	41	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794680028	cmd	Trentlin	41	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794680028	cmd	Trentlin	41	322	plains.are	standing	100	0	-	north		Grassy foothills //   You walk in the grassy foothills north of the plains. The wind is rough. // To the north you can see foothills and just behind them mountain peaks	-	+
+1794680028	cmd	Trentlin	41	324	plains.are	standing	100	0	-	north		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // To the north you can see the mountains towering over you.  Pine trees	-	+
+1794680029	area	Trentlin	41	45	connect.are	plains.are	connect.are	2	north
+1794680029	cmd	Trentlin	41	45	connect.are	standing	100	0	-	north		Base of Mount Ulmo //   Before you is a mountainous path, which leads upward into the clouds // overhead!	-	+
+1794680029	area	Trentlin	41	1000	uargo.are	connect.are	uargo.are	0	north
+1794680029	cmd	Trentlin	41	1000	uargo.are	standing	100	0	-	north		A mountain path //   A fresh mountain breeze blows in your face. You walk on a small path,  // which winds its way up the Mount Ulmo. The grassy fields along the dusty 	-	+
+1794680029	cmd	Trentlin	41	1001	uargo.are	standing	100	0	-	north		A mountain path //   A steep climb lies ahead and your surroundings are filled with debris, // a few small boulders and various small stones, that have been chipped off	-	+
+1794680029	cmd	Trentlin	41	1002	uargo.are	standing	100	0	-	up		A mountain path //   After climbing up the steep path you are now able to see the Mt. Ulmo  // pass right ahead of you. From afar the pass looks more like a small crack	-	+
+1794680030	area	Trentlin	41	46	connect.are	uargo.are	connect.are	1	east
+1794680030	cmd	Trentlin	41	46	connect.are	standing	100	0	-	east		Steep and Winding Path //   The path continues on its difficult climb upwards. From this vantage point // you can make out the Town of Dresden far to the south, the Village of Ofcol	-	+
+1794680030	cmd	Trentlin	41	47	connect.are	standing	100	0	-	up		Chilly Path //   Whew! Sure are feeling winded.. Silently, you hope you are almost to the // top.. Starting to notice a chill in the air.. hmmm.. is that frost forming	-	+
+1794680030	area	Trentlin	41	18224	gelidia.are	connect.are	gelidia.are	0	north
+1794680030	cmd	Trentlin	41	18224	gelidia.are	standing	100	0	-	north		Outside the gates of Gelidia //   As you stand outside the gates to the town of Gelidia you can // feel the bitter cold that fills the town and the surrounding	-	+
+1794680030	cmd	Trentlin	41	18224	gelidia.are	standing	100	0	-	open	north	Ok.	-	-
+1794680031	cmd	Trentlin	41	18223	gelidia.are	standing	100	0	-	north		Inside the gates of Gelidia //   You are inside the gates of Gelidia and are welcomed to the  // town by a gust of cold air.  The road leads off to the north	-	+
+1794680031	cmd	Trentlin	41	18222	gelidia.are	standing	100	0	-	north		A short road //   You are on a short road that leads into the heart of the town. // The buildings that surround you are beautifully built from 	-	+
+1794680031	cmd	Trentlin	41	18221	gelidia.are	standing	100	0	-	east		End of a short road //   You have reached the end of a very short road and off to the // northeast you can see the citizens of the town going about	-	+
+1794680031	cmd	Trentlin	41	18213	gelidia.are	standing	100	0	-	northeast		Town Square //   You are in the heart of the town and all around you are  // people walking and chatting together.  The ground beneath	-	+
+1794680032	cmd	Trentlin	41	18212	gelidia.are	standing	100	0	-	north		Town Square //   As you make your way through the town square you feel at // ease with the people around you and although you are a 	-	+
+1794680032	cmd	Trentlin	41	18211	gelidia.are	standing	100	0	-	north		Town Square //   You are in the northwestern section of town square and to // the northwest you can see a small street that leads off into	-	+
+1794680032	cmd	Trentlin	41	18210	gelidia.are	standing	100	0	-	northwest		On a narrow street //   You have reached a small, narrow street that leads throughout // the town.  To the southeast you can see citizens milling around	-	+
+1794680032	cmd	Trentlin	41	18209	gelidia.are	standing	100	0	-	north		On a narrow street //   You continue along the street and to the north you can see // where the path divides leading off into different sections of	-	+
+1794680033	cmd	Trentlin	41	18208	gelidia.are	standing	100	0	-	north		A turn in the street //   You have reached a small branch in the street and a small // sign off to the side indicates that town square is to the	-	+
+1794680033	cmd	Trentlin	41	18207	gelidia.are	standing	100	0	-	east		On a narrow street //   You begin to feel colder as you make your way along the street. // All around you are dirty brown patches of ice on the ground and	-	+
+1794680033	cmd	Trentlin	41	18206	gelidia.are	standing	100	0	-	east		On a narrow street //   As you make your way along the street you notice a cold // breeze coming from the west.  You begin to wonder how anyone	-	+
+1794680033	cmd	Trentlin	41	18205	gelidia.are	standing	100	0	-	northeast		On a narrow street //   This section of the street is slightly wider than the rest // of the street and off to the side you can see a street	-	+
+1794680034	cmd	Trentlin	41	18204	gelidia.are	standing	100	0	-	north		On a narrow street //   You are on a section of the street that looks like it has // been recently repaired.  The ground beneath your feet is 	-	+
+1794680034	cmd	Trentlin	41	18203	gelidia.are	standing	100	0	-	north		On a narrow street //   As you continue along the street you notice quite a few // deep cracks in the road.  You assume that the extreme cold	-	+
+1794680034	cmd	Trentlin	41	18202	gelidia.are	standing	100	0	-	north		On a narrow street //   You are in the middle of a narrow street and as you walk  // forward you notice that the street is in poor condition and	-	+
+1794680034	cmd	Trentlin	41	18201	gelidia.are	standing	100	0	-	north		Inside the gates of Gelidia //   You have reached the inside of Gelidia and you are at the  // beginning of a narrow street that leads both to the south 	-	+
+1794680035	cmd	Trentlin	41	18201	gelidia.are	standing	100	0	-	open	north	Ok.	-	-
+1794680035	cmd	Trentlin	41	18200	gelidia.are	standing	100	0	-	north		Outside the gates of Gelidia //   You are outside the gates of Gelidia and you can feel the // wind blowing much harder now that you are outside of the 	-	+
+1794680035	area	Trentlin	41	18138	icekeep.are	gelidia.are	icekeep.are	5	north
+1794680035	cmd	Trentlin	41	18138	icekeep.are	standing	100	0	-	north		Beginning of a small trail //   This is the beginning of a small trail that appears to stretch  // for miles ahead of you into the wintery land of this frozen realm.	-	+
+1794680050	laid	-	0	0	-	877	herb	47	a sprig of saffron	7006	sewer.are	scatter
+1794680050	laid	-	0	0	-	878	herb	44	a sprig of aconite	7108	sewer.are	scatter
+1794680050	laid	-	0	0	-	879	component	65	a dragon's scale	2470	dresden.are	scatter
+1794680112	cmd	Trentlin	41	18137	icekeep.are	standing	100	0	-	north		A trail through the wilderness //   This small, winding trail seems to stretch as far as the eye  // can see.  You prepare yourself for a long journey as you travel 	-	+
+1794680112	cmd	Trentlin	41	18136	icekeep.are	standing	100	0	-	west		A trail through the wilderness //   It has begun to get slightly darker as you emerge onto this // section of the trail.  The sun is partially obscured behind	-	+
+1794680112	cmd	Trentlin	41	18135	icekeep.are	standing	100	0	-	nw		A trail through the wilderness //   The wind has begun to get much stronger now and you can feel // it swirl around you from all directions.  You can see the trail	-	+
+1794680113	cmd	Trentlin	41	18134	icekeep.are	standing	100	0	-	north		A trail through the wilderness //   The wind continues to swirl around you and it begins to get // even colder.  You can feel your extremities begin to get numb 	-	+
+1794680114	cmd	Trentlin	41	18127	icekeep.are	standing	100	0	-	east		A trail through the wilderness //   The landscape begins to become darker and the sounds of wild // animals can be heard around you.  You continue to shiver as you	-	+
+1794680115	cmd	Trentlin	41	18126	icekeep.are	standing	100	0	-	east		A trail through the wilderness //   This part of the trail feels slightly colder than the // rest of the trail and branches off to the southeast and	-	+
+1794680116	cmd	Trentlin	41	18125	icekeep.are	standing	100	0	-	ne		A trail through the wilderness //   This section of the trail looks very well traveled upon // and you can see the faint outline of wheel marks on the 	-	+
+1794680117	cmd	Trentlin	41	18124	icekeep.are	standing	100	0	-	north		A trail through the wilderness //   The trail has begun to slope upward and you start to feel // out of breath as you make the tough hike up the trail.	-	+
+1794680118	cmd	Trentlin	41	18123	icekeep.are	standing	100	0	-	west		A trail through the wilderness //   This small trail has become increasingly icy and the wind // has begun to howl around you.  You trudge onward through the	-	+
+1794680118	cmd	Trentlin	41	18122	icekeep.are	standing	100	0	-	north		A trail through the wilderness //   You have reached a fork in a very winding trail through the  // wilderness.  The path continues off to the west and you can	-	+
+1794680121	cmd	Trentlin	41	18119	icekeep.are	standing	100	0	-	ne		A small field //   You have reached a small, icy field far out in the wilderness. // The landscape seems to stretch for miles and you are stunned by               	-	+
+1794680122	cmd	Trentlin	41	18119	icekeep.are	standing	100	0	-	scan		a polar bear                       -to the North.	-	-
+1794680124	cmd	Trentlin	41	18004	icekeep.are	standing	100	0	-	north		A small field //   As you make your way inside the field a strong gust of wind // almost lifts you off of the ground and you are quite sure that	-	+
+1794680125	cmd	Trentlin	41	18005	icekeep.are	standing	100	0	-	north		A small field //   You are in the northeastern part of the field and far off // to the east you think you can see a trail leading off into	-	+
+1794680126	cmd	Trentlin	41	18002	icekeep.are	standing	100	0	-	east		A small field //   You are standing in a field completely covered in ice. // Off to the east you think you can make out a small trail	-	+
+1794680127	cmd	Trentlin	41	18006	icekeep.are	standing	100	0	-	east		A small field //   You have reached the beginning of a small trail that leads // far off into the mountains.  The trail is very icy and you	-	+
+1794680129	cmd	Trentlin	41	18006	icekeep.are	standing	100	0	-	exits		Obvious exits: // South - A small field // West  - A small field	-	+
+1794680130	cmd	Trentlin	41	18007	icekeep.are	standing	100	0	-	ne		An icy trail //   This trail is very slippery and you have trouble staying // on your feet.  You can tell by the way the ice is solidly	-	+
+1794680132	cmd	Trentlin	41	18009	icekeep.are	standing	100	0	-	east		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
+1794680133	cmd	Trentlin	41	18009	icekeep.are	standing	100	0	-	exits		Obvious exits: // East  - Whoops! // West  - An icy trail	-	+
+1794680152	cmd	Trentlin	41	18013	icekeep.are	standing	100	0	-	se		An icy trail //   This trail is very steep and slippery as it winds along an // ice covered mountain.  One wrong step and you would find	-	+
+1794680153	cmd	Trentlin	41	18013	icekeep.are	standing	100	0	-	exits		Obvious exits: // South - An icy trail // Northwest - An icy trail	-	+
