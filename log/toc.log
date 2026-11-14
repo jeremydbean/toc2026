@@ -297949,3 +297949,6 @@ Sat Nov 14 06:39:42 2026 :: Treasure goblin: vanished from room 7622 (Library, u
 Sat Nov 14 06:44:00 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 3 refused in all, pause 1 this week, 61 minutes left).
 Sat Nov 14 06:49:04 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 5 of 6 in 6 hours).
 Sat Nov 14 06:49:32 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
+Sat Nov 14 06:49:47 2026 :: Treasure goblin: vanished from room 3767 (Entrance to a dark cavern, school.are) (too long in one area).
+Sat Nov 14 06:54:09 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 6 of 6 in 6 hours).
+Sat Nov 14 06:54:09 2026 :: Connection guard: 5.161.75.7 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.75.7 lifts it.
