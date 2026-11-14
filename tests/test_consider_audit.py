@@ -71,6 +71,20 @@ class ConsiderAuditTests(unittest.TestCase):
         self.assertEqual((cols["pred_yours"], cols["act_yours"]), (100.0, 100.0))
         self.assertIsNone(consider_audit.band_columns([], [])["pred_rds"])
 
+    def test_a_chase_ends_in_its_kill_and_coverage_counts_every_outcome(self) -> None:
+        engage = ("2000\tengage\t5\t30\t3\t0\t100\t100\t4000\t30\tzone.are\t%s\t300\t500\t500\t"
+                  "100\t100\t1\t0\t28\t-\t50.0\t20.0\t6.0\t25.0\twin\t0\n")
+        fled = "2010\tfled\t5\t30\t3\t0\t90\t100\t4000\t30\tzone.are\t40\t300\t20\t9-1\n"
+        slain = ("2030\tslain\t5\t30\t3\t0\t80\t100\t4000\t30\tzone.are\t9-1\t30000\tblow\tplayer\t"
+                 "1\t0\t300\t300\t0\t100\t0\t10\t20\t12\t60\n")
+        parted = ("2040\tparted\t5\t30\t3\t0\t90\t100\t4000\t30\tzone.are\t60\t300\t20\t9-2"
+                  "\tstopped\n")
+        text = engage % "9-1" + fled + slain + engage % "9-2" + parted + engage % "9-3"
+        pairs = {p["outcome"]["kind"] for p in consider_audit.encounter_pairs(text)}
+        self.assertEqual(pairs, {"kill", "parted"})
+        engaged, ended, since = consider_audit.encounter_coverage(text)
+        self.assertEqual((engaged, ended, since), (3, 2, 2010))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1190,9 +1190,13 @@ void  progress_kill          args( ( CHAR_DATA *gch, CHAR_DATA *victim, int base
 void  progress_event         args( ( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe ) );
 void  progress_drop          args( ( CHAR_DATA *killer, CHAR_DATA *victim, OBJ_DATA *corpse ) );
 void  progress_engage        args( ( CHAR_DATA *mob, CHAR_DATA *opponent ) );
+bool  progress_resume        args( ( CHAR_DATA *mob, CHAR_DATA *opponent ) );
+void  progress_fight_stopped args( ( CHAR_DATA *mob, CHAR_DATA *opponent, const char *how ) );
 void  progress_slain         args( ( CHAR_DATA *killer, CHAR_DATA *victim, int players, int pets ) );
 void  progress_loot          args( ( CHAR_DATA *ch, OBJ_DATA *corpse, OBJ_DATA *obj, long copper ) );
 long  progress_encounter_id  args( ( CHAR_DATA *mob ) );
+void  consider_learn_fight   args( ( CHAR_DATA *pc, CHAR_DATA *victim, int players, int pets ) );
+double consider_learned_skills args( ( CHAR_DATA *ch ) );
 const char *consider_predict args( ( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
                                      double *theirs, double *your_rounds,
                                      double *their_rounds, bool *caster ) );
@@ -2379,6 +2383,14 @@ struct  char_data
     long                enc_by_pets;
     long                enc_dealt;
     int                 enc_rounds;     /* its rounds in this encounter */
+    /* An encounter is open from its engage row until an outcome row
+       (slain, flee, death, fled, parted) closes it; enc_with is the
+       player it was against (serial) and enc_left_ms when its fight last
+       stopped, so a chase -- the mobile flees, is followed and fought
+       again -- stays one encounter (progress_resume). Memory only. */
+    bool                enc_open;
+    long                enc_with;
+    long                enc_left_ms;
     /* A Hyrule guardian's fighters, by character serial (never the
        file Id, which two characters can share), the latest
        HYRULE_STRUCK_MAX of its life (a lull in the fight forgets nobody):
@@ -2691,6 +2703,14 @@ struct  pc_data
     /* Last session snapshot (persisted to player file) */
     long                last_logout;          /* when they last left the game */
     long                oracle_daze_until;    /* back from the Oracle, dazed until (memory only) */
+    /* What CONSIDER has learned of this player's fighting (act_info.c,
+       consider_learn_fight): skill and spell damage a round in their
+       recent fights alone, in tenths, over how many fights (an average
+       of the last ten, more or less), at what level. Saved as
+       SkillDamage under 'S'. */
+    long                fight_skill_tenths;
+    int                 fight_skill_fights;
+    int                 fight_skill_level;
     long                pray_after;           /* no PRAY before this: a flee, a fight with a player (memory only) */
     int                 holiday_luck;         /* four-leaf clovers eaten, not yet spent (memory only) */
     long                rest_xp;              /* rested bonus experience left (rested.c) */
@@ -3431,6 +3451,14 @@ bool toc_path_join(char *dst, size_t size, const char *dir, const char *sep,
    the 16-bit fields that held them at 32,767 are gone). Far from INT_MAX,
    so a pool plus its bonuses never overflows. */
 #define POOL_MAX        1000000000
+/* CONSIDER's learning of a player's skills and spells (act_info.c,
+   consider_learn_fight): an average over about the last SPAN fights alone,
+   counted once MIN fights are in, while the level is within LEVELS of
+   the level it was learned at. KEEP caps the count saved. */
+#define CONSIDER_LEARN_SPAN     10
+#define CONSIDER_LEARN_MIN      3
+#define CONSIDER_LEARN_LEVELS   5
+#define CONSIDER_LEARN_KEEP     1000
 /* TITANIC makes each pool this many times what it was (a boost of one
    less than this; owner, 2026-11-12: 5x, not 5x added on top). */
 #define TITANIC_MULTIPLE 5

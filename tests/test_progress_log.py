@@ -15,7 +15,7 @@ import time
 import unittest
 
 from live_mud import (SPARRING_GUARD, LiveMud, create_character, login, patch_player_file,
-                      skip_reason)
+                      place_sparring_guard, room_of, skip_reason)
 
 SKIP = skip_reason()
 PW = "Zprogress1"
@@ -167,6 +167,67 @@ class ProgressLogTests(unittest.TestCase):
         self.assertRegex(exp, r"kills \+\d+", session)
         self.assertIn("flee -10", exp, session)
 
+
+    def test_a_chase_is_one_encounter_and_every_fight_ends_in_a_row(self) -> None:
+        """2026-11-14: 35 of the first 125 encounters had no outcome. A
+        mobile that fled and was followed and fought again began a new
+        encounter, with a new prediction against a wounded foe and a
+        ledger begun at the second fight, and the first was never closed.
+        Its flight is a "fled" row now, the chase carries the encounter
+        on, and a fight that just stops (PEACE) is "parted"."""
+        floor, gallery = 32700, 32701       # the sparring floor's one exit is north
+        with LiveMud(fixtures=True) as mud:
+            for name, level in (("Zchaser", 20), ("Zreferee", 70)):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PW)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=level, Room=floor,
+                                  HMV="9000 9000 500 500 500 500", HMVP="9000 500 500")
+            with mud.connect(timeout=120) as chaser, mud.connect(timeout=120) as ref:
+                login(chaser, "Zchaser", PW)
+                login(ref, "Zreferee", PW)
+                ref.must("set char zchaser hitroll 40", "")
+                place_sparring_guard(ref, "Zreferee", floor)
+                mark = len(chaser.transcript)
+                chaser.send("kill sparring")
+                # Until a blow has landed: a foe at full health is a new fight.
+                self.assertTrue(seen(chaser, mark, "sparring guard", 30), chaser.transcript[-800:])
+                chaser.drain(4.0)
+                mark = len(ref.transcript)
+                for _ in range(25):
+                    ref.send("force sparring flee")
+                    ref.drain(1.5)
+                    if "has fled" in ref.transcript[mark:]:
+                        break
+                else:
+                    self.fail("the guard never fled:\n" + ref.transcript[-1000:])
+                self.assertEqual(gallery, room_of(ref, "sparring"))
+                chaser.sync("north")
+                mark = len(chaser.transcript)
+                chaser.send("kill sparring")
+                self.assertTrue(seen(chaser, mark, "sparring guard", 30), chaser.transcript[-800:])
+                chaser.drain(3.0)
+                ref.must(f"at {gallery} peace", "")
+                for client in (chaser, ref):
+                    client.send("quit")
+                    client.wait_closed()
+            text = (mud.root / "log" / "progress.tsv").read_text(encoding="latin-1")
+
+        rows = [line.split("\t") for line in text.splitlines() if "\t" in line]
+        guard = str(SPARRING_GUARD)
+        engages = [r for r in rows if r[1] == "engage" and r[8] == guard]
+        self.assertEqual(len(engages), 1, "the chase began a second encounter:\n" + text)
+        enc = engages[0][11]
+        fled = [r for r in rows if r[1] == "fled"]
+        self.assertEqual(len(fled), 1, text)
+        self.assertEqual(len(fled[0]), 15, fled[0])       # laid out as a flee row
+        self.assertEqual(fled[0][14], enc)
+        self.assertLess(int(fled[0][11]), 100, "fled hurt")
+        parted = [r for r in rows if r[1] == "parted"]
+        self.assertEqual(len(parted), 1, text)
+        self.assertEqual((parted[0][14], parted[0][15]), (enc, "stopped"))
+        self.assertNotIn("Zchaser", text)
 
     def test_reflected_damage_is_a_loss_not_negative_healing(self) -> None:
         """A foe's fire shield burns the attacker outside damage(): the

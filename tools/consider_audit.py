@@ -48,7 +48,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 from statistics import median
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -219,7 +219,9 @@ def encounter_pairs(progress: str) -> List[dict]:
                            "dealt": int(f[20]), "solo": f[15] == "1" and f[16] == "0",
                            "instant": f[13] == "instant",
                            "ms": int(f[12]) if f[12].lstrip("-").isdigit() else -1}
-        elif f[1] in ("flee", "death") and len(f) > 14 and f[14] != "-":
+        elif f[1] in ("flee", "death", "fled", "parted") and len(f) > 14 and f[14] != "-":
+            # A slain row wins over all of these: a mobile that fled and
+            # was chased down is the same encounter (2026-11-14).
             ends.setdefault(f[14], {"kind": f[1]})
     out = []
     for enc, e in engages.items():
@@ -230,6 +232,27 @@ def encounter_pairs(progress: str) -> List[dict]:
         out.append(dict(e, outcome=ends[enc], edge=edge,
                         band=VERDICT_BAND.get(e["verdict"], edge_band(edge))))
     return out
+
+
+def encounter_coverage(progress: str) -> Tuple[int, int, int]:
+    """How many encounters carry a prediction, how many of those have an
+    outcome row, and how many began after the outcome rows for a mobile's
+    flight and a fight that stops were added (2026-11-14) -- before that a
+    mobile that fled left its encounter with none."""
+    engaged, ended, after = {}, set(), 0
+    for raw in progress.splitlines():
+        f = raw.split("\t")
+        if len(f) < 15 or not f[0].isdigit():
+            continue
+        if f[1] == "engage" and len(f) > 26 and f[25] != "-":
+            engaged[f[11]] = int(f[0])
+        elif f[1] == "slain":
+            ended.add(f[11])
+        elif f[1] in ("flee", "death", "fled", "parted"):
+            ended.add(f[14])
+        if f[1] in ("fled", "parted") and after == 0:
+            after = int(f[0])
+    return len(engaged), len(set(engaged) & ended), after
 
 
 def fmt(value: Optional[float], spec: str) -> str:
@@ -259,7 +282,7 @@ def encounter_report(pairs: List[dict]) -> None:
         print("\nNo encounters carry the silent prediction yet (rows from 2026-11-10 on).")
         return
     print(f"\n== every encounter, held to what CONSIDER would have said ({len(pairs)})")
-    print("  verdict                            n  kill flee death  pred rds  actual rds"
+    print("  verdict                            n  kill flee death away  pred rds  actual rds"
           "  your dmg/rd pred-actual  foe dmg/rd pred-actual")
     order = ["barely scratched (win easily)", "edge >= 4 (win easily)", "1.5-4 (should win)",
              "1-1.5 (win, not by much)", "0.67-1 (either way)", "0.25-0.67 (probably lose)",
@@ -284,6 +307,7 @@ def encounter_report(pairs: List[dict]) -> None:
               f"{sum(p['outcome']['kind'] == 'kill' for p in ps):>5} "
               f"{sum(p['outcome']['kind'] == 'flee' for p in ps):>4} "
               f"{sum(p['outcome']['kind'] == 'death' for p in ps):>5} "
+              f"{sum(p['outcome']['kind'] in ('fled', 'parted') for p in ps):>4} "
               f"{fmt(cols['pred_rds'], '.1f'):>9} "
               f"{fmt(cols['act_rds'], '.1f'):>11} "
               f"{fmt(cols['pred_yours'], '.0f'):>12}-{fmt(cols['act_yours'], '.0f'):<8}"
@@ -293,11 +317,12 @@ def encounter_report(pairs: List[dict]) -> None:
     if swings:
         landed = sum(o.get("landed", 0) for o in kills)
         print(f"  Players' melee swings that took hit points: {landed / swings:.0%} "
-              f"({swings} swings) -- CONSIDER counts every one as landing.")
+              f"({swings} swings) -- CONSIDER counts the hit chance and the foe's defences.")
     taken = sum(o["taken"] for o in kills)
     if taken:
         print(f"  Hit points that came off by spells and skills: "
-              f"{sum(o.get('by_skills', 0) for o in kills) / taken:.0%} -- CONSIDER counts none.")
+              f"{sum(o.get('by_skills', 0) for o in kills) / taken:.0%} -- CONSIDER counts "
+              "each player's own, learned from their fights alone, since 2026-11-14.")
     by_class = defaultdict(list)
     for p in pairs:
         o = p["outcome"]
@@ -387,6 +412,12 @@ def main() -> int:
     pairs = exact_pairs(rows) + inferred_pairs(play, rows, keyword_matcher(args.no_names))
     report(pairs)
     encounter_report(encounter_pairs(progress))
+    engaged, ended, _ = encounter_coverage(progress)
+    if engaged:
+        print(f"  Encounters with a prediction: {engaged}; with an outcome: {ended} "
+              f"({ended / engaged:.0%}). The rest are fights still going, mobiles that "
+              "died crediting nobody, or fights from before 2026-11-14, when a mobile's "
+              "flight (fled) and a fight that stops (parted) were first written.")
     return 0
 
 

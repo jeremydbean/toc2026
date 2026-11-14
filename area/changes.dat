@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261114considerskills 2026-11-14
+CONSIDER now counts your skills and spells. Once you have killed three foes
+alone, it adds the damage your skills and spells did each round in your
+recent fights, and tells you how much. It learns your habits again as you
+level. Weapons alone left out about a third of what players really dealt.
+
 @ 20261114seasonareas 2026-11-14
 Fixed: areas you visited, mapped or explored during Hallows End are now
 counted as the areas they stand for. A map of Miden'nir learned during the

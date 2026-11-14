@@ -1352,7 +1352,19 @@ yard's best runs; do not reach for that scale again. Hit points still
 climb guardian by guardian to Ganon's, and no guardian's blow may reach
 his (`tests/test_hyrule_progression.py`). Gohma's and Aquamentus's catalog
 sanctuary and Ganon's hide are stripped (`GUARDIAN_AFFECTS_REMOVED`):
-hide wanted Hermie's detects to attack him at all. **CONSIDER counts a
+hide wanted Hermie's detects to attack him at all. **CONSIDER learns each player's
+skills and spells** (owner, 2026-11-14: "do anything you can do to improve
+consider"; weapons predicted melee at 1.13x and the foe's blows at 1.01x,
+but skills and spells added about half again): `consider_learn_fight` in
+`act_info.c`, from `progress_slain`, feeds each kill alone (one player, no
+pet, not instant, two rounds or more) into an average of the skill and
+spell damage a round (`enc_by_skills / enc_rounds`) over about the last
+`CONSIDER_LEARN_SPAN` (10) fights, saved as `SkillDamage <tenths> <fights>
+<level>` under case 'S'; `consider_learned_skills` adds it to each player's
+side in `gear_consider_fight` once `CONSIDER_LEARN_MIN` (3) fights are in,
+while the level is within `CONSIDER_LEARN_LEVELS` (5) of where it was
+learned, and CONSIDER says how much (`tests/test_consider_learning.py`).
+The silent prediction in every engage row includes it. **CONSIDER counts a
 guardian's own attack** (`guardian_special_expected_per_round` in
 `special.c`, from `gear_consider_fight`): the volley the fight would throw
 now, three quarters of a pulse's a round, through `blow_landed_expected`,
@@ -3877,7 +3889,19 @@ log says what a player typed; the journal says what happened, in columns
   event -- through `corpse_tag_source`); `loot` (anything a player takes
   out of a mobile's corpse, at any depth, from `get_obj`, joined by the
   corpse's `kill_seq`: coin gross, before an autosplit, which is a
-  transfer); `consider` (a typed CONSIDER's prediction). Rows before
+  transfer); `consider` (a typed CONSIDER's prediction); `fled` and
+  `parted` (2026-11-14: 35 of the first 125 encounters had no outcome).
+  **Every encounter ends in a row** -- slain, flee, death, `fled` (the
+  mobile ran, from `do_flee`) or `parted` (its fight stopped otherwise,
+  from `stop_fighting` through `progress_fight_stopped`; never for a
+  mobile not awake, whose death is the slain row) -- unless it is still
+  going or died crediting nobody. **A chase is one encounter**
+  (`progress_resume`): a mobile back in a fight with the same player
+  within `ENC_RESUME_MS` (two minutes) of its last stopping, healed or
+  not, carries on the encounter -- id, ledger and start -- with no second
+  engage, so the kill is held to the prediction made before the first
+  blow; a slain row wins over a `fled` or `parted` for the same id.
+  `tests/test_progress_log.py` chases a fled guard down. Rows before
   2026-11-10 are legacy `kill` rows, one per member: readers count each as
   1/members of a kill and say so. `webadmin/balance.py` joins them into
   per-kill records and per-mobile figures (kill-time quantiles, xp per

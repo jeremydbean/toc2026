@@ -1293,6 +1293,10 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Note %d\n",	(int)	ch->last_note	);
     if ( ch->pcdata->stash_max != STASH_SLOTS_START )
 	fprintf( fp, "StashMax %d\n", ch->pcdata->stash_max );
+    /* What CONSIDER has learned of their fighting (act_info.c). */
+    if ( ch->pcdata->fight_skill_fights > 0 )
+	fprintf( fp, "SkillDamage %ld %d %d\n", ch->pcdata->fight_skill_tenths,
+		 ch->pcdata->fight_skill_fights, ch->pcdata->fight_skill_level );
     if ( ch->pcdata->no_oracle )
 	fprintf( fp, "NoOracle %d\n", ch->pcdata->no_oracle );
     /* Hyrule's once-per-character secrets (hyrule.c); read under 'H'. */
@@ -4941,6 +4945,20 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Sex",		ch->sex,		(sh_int)(fread_number( fp )) );
 	    KEYS( "ShortDescr",	ch->short_descr );
 	    KEYS( "ShD",		ch->short_descr );
+
+	    if ( !str_cmp( word, "SkillDamage" ) )
+	    {
+		/* Read into locals before clamping: the clamps read twice. */
+		long tenths = fread_long( fp );
+		int fights = fread_number( fp );
+		int level = fread_number( fp );
+
+		ch->pcdata->fight_skill_tenths = URANGE( 0L, tenths, (long) POOL_MAX );
+		ch->pcdata->fight_skill_fights = URANGE( 0, fights, CONSIDER_LEARN_KEEP );
+		ch->pcdata->fight_skill_level = URANGE( 0, level, MAX_LEVEL );
+		fMatch = true;
+		break;
+	    }
 
 	    if ( !str_cmp( word, "Skill" ) || !str_cmp(word,"Sk"))
 	    {

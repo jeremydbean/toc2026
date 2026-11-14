@@ -2376,8 +2376,10 @@ static double consider_accuracy_ratio( CHAR_DATA *ch, CHAR_DATA *victim,
  * sanctuary, protection, divine protection, a fire or frost shield's
  * element, alignment, immunities, the armour's cut, a Hyrule ring, in that
  * order), both sides' haste, and a fire or frost shield's burn back on
- * whoever strikes it. Spells and skills cast in the fight are still not
- * in it: *caster says the looker's damage is mostly spells. A Hyrule
+ * whoever strikes it. Spells and skills cast in the fight are not in
+ * this side's figure: gear_consider_fight adds what a player has been
+ * dealing with them in their own fights (consider_learned_skills), and
+ * *caster says the looker's weapons are the lesser part. A Hyrule
  * guardian's own attack is, added by gear_consider_fight
  * (guardian_special_expected_per_round in special.c). One model for
  * both sides, so the two answers can be set against each other. Before
@@ -2424,6 +2426,11 @@ void gear_consider_fight( CHAR_DATA *ch, CHAR_DATA *victim,
        for a Digdogger that killed in three). */
     mine += guardian_special_expected_per_round( ch, victim );
     their += guardian_special_expected_per_round( victim, ch );
+    /* The skills and spells each player has used in their fights alone
+       (consider_learn_fight in act_info.c; 2026-11-14): weapons alone
+       left out about a third of what players dealt. */
+    mine += consider_learned_skills( ch );
+    their += consider_learned_skills( victim );
     /* A shield burns back a share of every blow that lands on it. */
     *yours = mine + their * their_burn;
     *theirs = their + mine * my_burn;

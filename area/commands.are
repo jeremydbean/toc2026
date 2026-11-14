@@ -3012,9 +3012,14 @@ bring the other down, and a verdict from "You should win easily" to "You
 would almost certainly die".  It also names sanctuary, unnatural speed, a
 foe that attacks on sight, one already fighting, and a player killer.
 
-The rounds count weapons and armour only, not spells, dodging or fleeing,
-so treat them as a guide.  Shopkeepers, trainers and anyone nobody may
-fight are not rated.  It is never an attack, so it works anywhere.
+The rounds count both sides' weapons, armour, hit chance and defences
+(dodge, parry, shield block), and sanctuary and the like.  Skills and
+spells are counted from your own fights: once you have killed three foes
+alone, CONSIDER adds the damage your skills and spells did a round in your
+recent fights, and says how much.  It learns again as you level.  Fleeing
+and luck are not in it, so treat it as a guide.  Shopkeepers, trainers and
+anyone nobody may fight are not rated.  It is never an attack, so it works
+anywhere.
 
 See also: SCORE, WIMPY, FLEE, COMPARE
 ~

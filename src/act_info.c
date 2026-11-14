@@ -3303,6 +3303,62 @@ static void consider_rounds( double rounds, char *out, size_t size )
  * every fight can be held to what CONSIDER would have told the player
  * (owner, 2026-11-10).
  */
+/*
+ * CONSIDER learns how each player fights (owner, 2026-11-14: "do anything
+ * you can do to improve consider"). It counts weapons, and the fights
+ * showed weapons predicted well -- melee 1.13x what it said, the foe's
+ * blows 1.01x -- while skills and spells, which it never counted, added
+ * about half again: 47 a round over 86 of melee in 56 solo kills. Which
+ * skills and spells a player uses, and how often, is theirs to choose,
+ * so it is learned from their own fights: each kill alone (one player, no
+ * pet, not an instant kill, two rounds or more) feeds the damage the foe
+ * took from skills and spells a round into an average of about the last
+ * CONSIDER_LEARN_SPAN fights. Learned at one level, it holds within
+ * CONSIDER_LEARN_LEVELS of it; further away (a remort, a long climb) the
+ * next fight starts it again.
+ */
+void consider_learn_fight( CHAR_DATA *pc, CHAR_DATA *victim, int players, int pets )
+{
+    PC_DATA *p;
+    long tenths;
+    int span;
+
+    if ( pc == NULL || IS_NPC(pc) || ( p = pc->pcdata ) == NULL
+    ||   victim == NULL || !IS_NPC(victim) )
+        return;
+    if ( players != 1 || pets != 0 || victim->hit > 0 || victim->enc_rounds < 2 )
+        return;
+    tenths = 10L * UMAX( 0L, victim->enc_by_skills ) / victim->enc_rounds;
+    tenths = UMIN( tenths, (long) POOL_MAX );
+    if ( p->fight_skill_fights <= 0
+    ||   abs( pc->level - p->fight_skill_level ) > CONSIDER_LEARN_LEVELS )
+    {
+        p->fight_skill_tenths = tenths;
+        p->fight_skill_fights = 1;
+    }
+    else
+    {
+        span = UMIN( p->fight_skill_fights + 1, CONSIDER_LEARN_SPAN );
+        p->fight_skill_tenths += ( tenths - p->fight_skill_tenths ) / span;
+        p->fight_skill_fights = UMIN( p->fight_skill_fights + 1, CONSIDER_LEARN_KEEP );
+    }
+    p->fight_skill_level = pc->level;
+}
+
+/* Skill and spell damage a round CONSIDER adds for this player: nothing
+   until CONSIDER_LEARN_MIN fights are learned, or once the level has
+   moved away from where they were. */
+double consider_learned_skills( CHAR_DATA *ch )
+{
+    PC_DATA *p;
+
+    if ( ch == NULL || IS_NPC(ch) || ( p = ch->pcdata ) == NULL
+    ||   p->fight_skill_fights < CONSIDER_LEARN_MIN
+    ||   abs( ch->level - p->fight_skill_level ) > CONSIDER_LEARN_LEVELS )
+        return 0.0;
+    return (double) p->fight_skill_tenths / 10.0;
+}
+
 const char *consider_predict( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
                               double *theirs, double *your_rounds, double *their_rounds,
                               bool *caster )
@@ -3359,6 +3415,7 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     double your_rounds;
     double their_rounds;
     double special;
+    double learned;
     bool caster;
     const char *verdict;
 
@@ -3440,8 +3497,16 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     act( msg, ch, NULL, victim, TO_CHAR );
     /* The prediction, for holding it to the fight that follows. */
     progress_consider( ch, victim, yours, theirs, your_rounds, their_rounds, verdict, caster );
-    if ( caster )
-        send_to_char( "(That counts your weapons only; your spells are not in it.)\n\r", ch );
+    if ( ( learned = consider_learned_skills( ch ) ) >= 1.0 )
+    {
+        snprintf( buf, sizeof(buf),
+            "That counts about %ld a round from the skills and spells you used in your\n\r"
+            "recent fights alone.\n\r", (long) ( learned + 0.5 ) );
+        send_to_char( buf, ch );
+    }
+    else if ( caster )
+        send_to_char( "(That counts your weapons only; after a few fights alone it counts the spells\n\r"
+                      "you use too.)\n\r", ch );
     if ( is_hyrule_guardian( victim )
     &&   ( special = guardian_special_expected_per_round( victim, ch ) ) >= 0.5 )
     {

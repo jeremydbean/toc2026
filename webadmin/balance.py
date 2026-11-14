@@ -50,6 +50,9 @@ Columns (tab-separated; the first eleven are every row's):
           27 gear tier  28 hp at start  29 max hp  30 mana at start
           31 max mana
   flee, death: 11 foe hp%  12 foe max hp  13 hp lost  14 enc
+  fled, parted (2026-11-14; the mobile ran, or the fight stopped): a flee
+          row's columns, parted then 15 how. Not read here: a chase that
+          ends in a kill is the same encounter's slain row.
   drop:   11 kill  12 objects  13 worth  14 top level  15 vnum:source,...
           (legacy, 2026-11-10 only: 11 objects 12 worth 13 top 14 vnums)
   loot:   11 kill  12 coin|obj  13 vnum  14 worth  15 level  16 source

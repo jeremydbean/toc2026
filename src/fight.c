@@ -1992,7 +1992,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 		if ( IS_NPC(ch) )
 		    victim->enc_by_pets += taken;
 		/* A player's swing that took hit points; or a spell's or a
-		   skill's -- which CONSIDER does not count. */
+		   skill's -- which CONSIDER learns from fights alone
+		   (consider_learn_fight in act_info.c). */
 		else if ( dt >= TYPE_HIT )
 		    victim->enc_landed++;
 		else
@@ -3133,12 +3134,16 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
        dead victim's fight before group_gain reads this. */
     if ( IS_NPC(ch) )
     {
-	ch->fight_began_ms = playlog_now_ms();
-	ch->encounter_seq = 0;          /* a new encounter: log/progress.tsv */
-	progress_engage( ch, victim );
+	if ( !progress_resume( ch, victim ) )     /* a chase carries on */
+	{
+	    ch->fight_began_ms = playlog_now_ms();
+	    ch->encounter_seq = 0;      /* a new encounter: log/progress.tsv */
+	    progress_engage( ch, victim );
+	}
 	hylog_engage( ch, victim );     /* a guardian's fight: log/hyrule.tsv */
     }
-    else if ( victim != NULL && IS_NPC(victim) && victim->fighting == NULL )
+    else if ( victim != NULL && IS_NPC(victim) && victim->fighting == NULL
+    &&        !progress_resume( victim, ch ) )
     {
 	victim->fight_began_ms = playlog_now_ms();
 	victim->encounter_seq = 0;
@@ -3203,6 +3208,10 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
 		fch->pcdata->meter_active = false;
 		fch->pcdata->fight_stopped_ms = playlog_now_ms();
 	    }
+	    /* The mobile's encounter, for log/progress.tsv: closed as
+	       "parted" if nothing else closed it, kept for a chase. */
+	    if ( IS_NPC(fch) && fch->fighting != NULL )
+		progress_fight_stopped( fch, fch->fighting, "stopped" );
 	    SET_CHAR_REF( fch, fighting, NULL );
 	    fch->position = IS_NPC(fch) ? fch->default_pos : POS_STANDING;
 	    update_pos( fch );
@@ -5586,6 +5595,8 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	    hylog_flee( ch, victim );               /* log/hyrule.tsv */
 	}
 
+	if ( IS_NPC(ch) )                   /* a mobile's flight: log/progress.tsv */
+	    progress_fight_stopped( ch, victim, "fled" );
 	stop_fighting( ch, true );
 	/* Close calls, after the flight is done (achievements.c) -- and
 	   only if the way out did not kill them (a trap moves the dead to

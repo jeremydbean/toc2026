@@ -1729,6 +1729,9 @@ long playlog_now_ms( void )
  *           tier, hp and mana at the fight's start and their maxima
  *   flee, death  how much of the foe was left (hp%), its max hp, the hit
  *           points the fight cost, the encounter id
+ *   fled    the mobile ran (do_flee): laid out as a flee row
+ *   parted  a fight that stopped otherwise (PEACE, the player gone or
+ *           asleep): a flee row's columns, then how ("stopped")
  *   drop    what the corpse was made with: the kill id, objects, worth
  *           (copper), highest level, then vnum:source for the first few
  *   consider  a CONSIDER typed: the player's and the foe's damage a
@@ -1880,6 +1883,8 @@ void progress_engage( CHAR_DATA *mob, CHAR_DATA *opponent )
     if ( mob == NULL || !IS_NPC(mob) )
         return;
     mob->encounter_seq = 0;
+    mob->enc_open = false;
+    mob->enc_with = 0;
     progress_encounter_id( mob );
     if ( pc == NULL || pc->in_room == NULL || pc->in_room != mob->in_room
     ||   IS_IMMORTAL( pc ) || play_hidden( pc ) || is_unfindable_mob( mob ) )
@@ -1892,6 +1897,9 @@ void progress_engage( CHAR_DATA *mob, CHAR_DATA *opponent )
        the verdict. The slain row's rounds and the mobile's ledger are
        what it came to. */
     verdict = consider_predict( pc, mob, &yours, &theirs, &your_rounds, &their_rounds, &caster );
+    mob->enc_open = true;
+    mob->enc_with = player_serial( pc );
+    mob->enc_left_ms = 0;
     snprintf( tail, sizeof(tail),
               "%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s\t%.1f\t%.1f\t%.1f\t%.1f\t%s\t%d",
               encounter_text( mob->encounter_seq, id, sizeof(id) ), mob->max_hit,
@@ -1920,6 +1928,8 @@ void progress_slain( CHAR_DATA *killer, CHAR_DATA *victim, int players, int pets
               coins_to_copper( victim ), victim->enc_rounds, victim->enc_swings,
               victim->enc_landed, victim->enc_by_skills );
     progress_write( "slain", pc, victim, tail );
+    victim->enc_open = false;
+    consider_learn_fight( pc, victim, players, pets );   /* act_info.c */
 }
 
 void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_xp,
@@ -2002,6 +2012,80 @@ void progress_event( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe )
               pc != NULL ? pc->fight_taken + pc->fight_direct : 0L,
               encounter_text( foe->encounter_seq, id, sizeof(id) ) );
     progress_write( kind, ch, foe, tail );
+    if ( IS_NPC(foe) )
+        foe->enc_open = false;
+}
+
+/* A chase is one encounter (2026-11-14: 35 of the first 125 encounters
+   had no outcome, most of them a mobile that fled, was followed and was
+   fought again under a new id, whose prediction was made against a
+   wounded foe and whose ledger began at the second fight). A mobile
+   that comes back into a fight with the same player within
+   ENC_RESUME_MS of its last one stopping carries on the
+   encounter it was in: the same id, ledger and start, and no second
+   engage row -- healed or not: a test run under load saw the tick heal a
+   lightly wounded guard to full while it was chased, and the two
+   minutes and the one player are what make it a chase. The rounds are the rounds it fought (enc_rounds); the
+   slain row's milliseconds include the chase. */
+#define ENC_RESUME_MS   120000L
+
+bool progress_resume( CHAR_DATA *mob, CHAR_DATA *opponent )
+{
+    CHAR_DATA *pc = progress_player( opponent );
+
+    if ( mob == NULL || !IS_NPC(mob) || pc == NULL || mob->encounter_seq <= 0
+    ||   mob->enc_with == 0 || mob->enc_with != player_serial( pc ) )
+        return false;
+    /* The same fight entered from its other side: the player's
+       set_fighting engaged the mobile, then the mobile's own follows
+       (a spell's order), or the other way about after a resume. */
+    if ( mob->enc_open && mob->enc_left_ms <= 0 )
+        return true;
+    if ( mob->enc_left_ms <= 0
+    ||   playlog_now_ms() - mob->enc_left_ms > ENC_RESUME_MS )
+        return false;
+    mob->enc_open = true;
+    mob->enc_left_ms = 0;
+    return true;
+}
+
+/* A mobile's fight stopping (stop_fighting, and do_flee for its own
+   flight): an encounter still open closes with "fled" -- the mobile ran,
+   laid out as a flee row -- or "parted" with how ("stopped": PEACE, the
+   player gone from the room or asleep, a recall, a quit). Either way the
+   time is kept for progress_resume. A mobile not awake writes nothing
+   here: damage() stops the fight of a victim asleep, stunned, mortally
+   wounded or dead -- the last before group_gain, whose slain row is the
+   outcome -- so the encounter stays open for the blow that ends it, or
+   for the fight it wakes into. Every engage
+   row then has an outcome unless the mobile is still fighting or died
+   crediting nobody. */
+void progress_fight_stopped( CHAR_DATA *mob, CHAR_DATA *opponent, const char *how )
+{
+    CHAR_DATA *pc;
+
+    if ( mob == NULL || !IS_NPC(mob) )
+        return;
+    mob->enc_left_ms = playlog_now_ms();
+    if ( !mob->enc_open || !IS_AWAKE(mob) )
+        return;
+    mob->enc_open = false;
+    pc = progress_player( opponent );
+    if ( pc == NULL )
+        return;
+    if ( !str_cmp( how, "fled" ) )
+        progress_event( pc, "fled", mob );
+    else
+    {
+        char tail[160], id[48];
+
+        snprintf( tail, sizeof(tail), "%d\t%d\t%ld\t%s\t%s",
+                  mob->max_hit > 0 ? (int) ( 100L * UMAX( 0, mob->hit ) / mob->max_hit ) : 0,
+                  mob->max_hit,
+                  pc->pcdata != NULL ? pc->pcdata->fight_taken + pc->pcdata->fight_direct : 0L,
+                  encounter_text( mob->encounter_seq, id, sizeof(id) ), how );
+        progress_write( "parted", pc, mob, tail );
+    }
 }
 
 /* What a kill left to take (owner: "how much gold/experience/gear is
