@@ -301573,3 +301573,43 @@ Sat Nov 14 17:38:10 2026 :: Cartographer: left room 343 (Dark smelly tunnels, pl
 Sat Nov 14 17:38:52 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 17:38:59 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 5 of 6 in 6 hours).
 Sat Nov 14 17:39:42 2026 :: Treasure goblin: vanished from room 7584 (A meditation chamber, astral.are) (too long in one area).
+Sat Nov 14 17:44:04 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 17:45:22 2026 :: Log Alaric [2497]: aq re
+Sat Nov 14 17:45:22 2026 :: Log Alaric [2497]: quest assigned: kill the horrifying Mudmonster (mob 7000, level 12) in sewer.are, 23 minutes, ordinary
+Sat Nov 14 17:45:26 2026 :: Log Alaric [2497]: enter door
+Sat Nov 14 17:45:26 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Nov 14 17:45:26 2026 :: Log Alaric [2401]: north
+Sat Nov 14 17:45:26 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Nov 14 17:45:26 2026 :: Log Alaric [2402]: north
+Sat Nov 14 17:45:26 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2415]: east
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2485]: east
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2486]: east
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2486
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2487]: east
+Sat Nov 14 17:45:27 2026 :: Log Alaric [2509]: arrived (Dark Alley.) from 2487
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2509]: north
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2508]: arrived (Dark Alley.) from 2509
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2508]: east
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2507]: arrived (Dark Alley.) from 2508
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2507]: north
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2507
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2505]: north
+Sat Nov 14 17:45:28 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Sat Nov 14 17:45:29 2026 :: Log Alaric [2506]: open down
+Sat Nov 14 17:45:29 2026 :: Log Alaric [2506]: down
+Sat Nov 14 17:45:29 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Sat Nov 14 17:45:32 2026 :: Log Alaric [7030]: scan
+Sat Nov 14 17:45:37 2026 :: Log Alaric [7030]: n
+Sat Nov 14 17:45:37 2026 :: Log Alaric [7029]: arrived (The Triple Junction) from 7030
+Sat Nov 14 17:45:38 2026 :: Log Alaric [7029]: scan
+Sat Nov 14 17:45:39 2026 :: Log Alaric [7029]: n
+Sat Nov 14 17:45:41 2026 :: Log Alaric [7029]: se
+Sat Nov 14 17:45:41 2026 :: Log Alaric [7029]: scan
+Sat Nov 14 17:45:42 2026 :: Log Alaric [7029]: e
+Sat Nov 14 17:45:42 2026 :: Log Alaric [7035]: arrived (The sewer pipe bend) from 7029
+Sat Nov 14 17:45:42 2026 :: Log Alaric [7035]: scan
+Sat Nov 14 17:45:43 2026 :: Log Alaric [7035]: n
+Sat Nov 14 17:45:43 2026 :: Log Alaric [7034]: arrived (A bend in the sewer pipe) from 7035
